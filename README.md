@@ -1,5 +1,14 @@
 # benchmark-intent
 
+## 当前交付物（v0.13）
+
+- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿，用于精读、论文写作和细节核对。
+- `deliverables/DeepAlign-Bench_完整人话版.pdf`：逻辑、内容和方法不变，改为直白语言，适合组内讨论。
+- `deliverables/DeepAlign-Bench_汇报精简版.pdf`：10 页导师汇报稿，适合 15–20 分钟讲解。
+- `deliverables/DeepAlign-Bench_HTML汇报版.html`：离线可打开的统一阅读入口，可下载三版 PDF/Word。
+
+三版共用同一研究设计；差别只在语言密度与细节层级，不构成方法变更。
+
 ## 研究协作约定
 
 - 将讨论中提出的想法视为待检验的研究假设，而不是默认正确的设计结论。

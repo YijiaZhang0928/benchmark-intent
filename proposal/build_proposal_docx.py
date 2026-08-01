@@ -13,6 +13,29 @@ MD = ROOT / "proposal" / "DeepAlign-Bench_研究Proposal.md"
 FIG = ROOT / "proposal_assets" / "DeepAlign-Bench_主图.png"
 OUT = ROOT / "deliverables" / "DeepAlign-Bench_正式研究Proposal.docx"
 
+# The formal proposal is the default. Communication variants override these
+# module-level values from build_readable_variants.py while reusing the same
+# deterministic layout and Markdown parser.
+COVER_KICKER = "RESEARCH PROPOSAL"
+COVER_TITLE = "DeepAlign-Bench"
+COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
+COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
+DOC_VERSION = "v0.13 · 组内讨论稿"
+DOC_DATE = "2026 年 8 月 2 日"
+RESEARCH_LINE = "Evaluation Atlas · 反事实适配 · Rubric Compiler · JudgeBench"
+CORE_CLAIM = "固定任务与证据，只改变用户；只有匹配用户的交付物在反事实交换中仍占优，才能称为真正个性化。"
+CONTENTS_ITEMS = [
+    "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
+    "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",
+    "严格审稿风险与防守", "里程碑、论文结构与最小可行版本", "参考文献",
+]
+READING_NOTE = "阅读提示：主图给出整体逻辑；第 7–8 节是本 proposal 的测量学核心；第 11 节按顶会审稿视角集中列出可预见攻击与防守。"
+FIGURE_TRIGGER = "2. 关键文献"
+FIGURE_TITLE = "总体框架：从受控用户信号到反事实评估"
+FIGURE_CAPTION = "图 1  DeepAlign-Bench 主流程。主榜先检查共同任务质量与事实性门槛，再比较用户适配；JudgeBench 独立验证自动评委。"
+RUNNING_HEADER = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
+STYLE_PRESET = "narrative_proposal"
+
 BLUE = "2E74B5"
 DARK = "163A63"
 MUTED = "5B6B7A"
@@ -139,7 +162,7 @@ def configure_section(section, landscape=False):
     section.footer.is_linked_to_previous = False
     header = section.header
     p = header.paragraphs[0]
-    p.text = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
+    p.text = RUNNING_HEADER
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
     p.paragraph_format.space_after = Pt(0)
     for r in p.runs:
@@ -149,7 +172,7 @@ def configure_section(section, landscape=False):
     p.text = ""
     p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     p.paragraph_format.space_before = Pt(0)
-    label = p.add_run("2026-08-01   ·   ")
+    label = p.add_run(f"{DOC_DATE.replace(' 年 ', '-').replace(' 月 ', '-').replace(' 日', '')}   ·   ")
     set_font(label, size=9, color=MUTED)
     add_field(p, "PAGE")
 
@@ -166,11 +189,21 @@ def configure_styles(doc):
     normal.paragraph_format.space_after = Pt(8)
     normal.paragraph_format.line_spacing = 1.333
     normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    for name, size, color, before, after in (
+    heading_tokens = (
         ("Heading 1", 16, BLUE, 18, 10),
         ("Heading 2", 13, BLUE, 12, 6),
         ("Heading 3", 12, DARK, 8, 4),
-    ):
+    )
+    if STYLE_PRESET == "compact_reference_guide":
+        normal.paragraph_format.space_after = Pt(6)
+        normal.paragraph_format.line_spacing = 1.25
+        normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        heading_tokens = (
+            ("Heading 1", 16, BLUE, 18, 10),
+            ("Heading 2", 13, BLUE, 14, 7),
+            ("Heading 3", 12, DARK, 10, 5),
+        )
+    for name, size, color, before, after in heading_tokens:
         st = styles[name]
         st.font.name = FONT
         st._element.rPr.rFonts.set(qn("w:ascii"), FONT)
@@ -236,30 +269,30 @@ def add_cover(doc):
     p.paragraph_format.space_before = Pt(92)
     p.paragraph_format.space_after = Pt(18)
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = p.add_run("RESEARCH PROPOSAL")
+    r = p.add_run(COVER_KICKER)
     set_font(r, size=11, bold=True, color=GOLD)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_after = Pt(8)
-    r = p.add_run("DeepAlign-Bench")
+    r = p.add_run(COVER_TITLE)
     set_font(r, size=30, bold=True, color=DARK)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_after = Pt(18)
-    r = p.add_run("长程 Deep Research 智能体个性化最终交付物评测")
+    r = p.add_run(COVER_SUBTITLE)
     set_font(r, size=17, color=BLUE)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_after = Pt(26)
-    r = p.add_run("Benchmark · Evaluation · Human-Centered Agents")
+    r = p.add_run(COVER_MODE)
     set_font(r, size=10.5, bold=True, color=MUTED)
     paragraph_border_bottom(p, color="7A9BB7", size="8", space="8")
     table = doc.add_table(rows=3, cols=2)
     set_table_geometry(table, [4680, 4680])
     values = [
-        ("文档版本", "v0.12 · 组内讨论稿"),
-        ("日期", "2026 年 8 月 1 日"),
-        ("研究主线", "Evaluation Atlas · 反事实适配 · Rubric Compiler · JudgeBench"),
+        ("文档版本", DOC_VERSION),
+        ("日期", DOC_DATE),
+        ("研究主线", RESEARCH_LINE),
     ]
     for i, (a, b) in enumerate(values):
         for j, value in enumerate((a, b)):
@@ -283,7 +316,7 @@ def add_cover(doc):
     p.paragraph_format.left_indent = Inches(0.5)
     p.paragraph_format.right_indent = Inches(0.5)
     p.paragraph_format.space_after = Pt(0)
-    r = p.add_run("固定任务与证据，只改变用户；只有匹配用户的交付物在反事实交换中仍占优，才能称为真正个性化。")
+    r = p.add_run(CORE_CLAIM)
     set_font(r, size=12, bold=True, color=DARK)
     doc.add_page_break()
 
@@ -291,11 +324,7 @@ def add_cover(doc):
 def add_contents(doc):
     p = doc.add_paragraph("内容导航", style="Heading 1")
     p.paragraph_format.space_before = Pt(0)
-    items = [
-        "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
-        "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",
-        "严格审稿风险与防守", "里程碑、论文结构与最小可行版本", "参考文献",
-    ]
+    items = CONTENTS_ITEMS
     num_id = new_numbering_instance(doc)
     for idx, item in enumerate(items, 1):
         p = doc.add_paragraph()
@@ -305,7 +334,7 @@ def add_contents(doc):
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(12)
     p.paragraph_format.space_after = Pt(0)
-    r = p.add_run("阅读提示：主图给出整体逻辑；第 7–8 节是本 proposal 的测量学核心；第 11 节按顶会审稿视角集中列出可预见攻击与防守。")
+    r = p.add_run(READING_NOTE)
     set_font(r, size=10.5, color=MUTED, italic=True)
     doc.add_page_break()
 
@@ -385,7 +414,7 @@ def add_figure_section(doc):
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_after = Pt(8)
-    r = p.add_run("总体框架：从受控用户信号到反事实评估")
+    r = p.add_run(FIGURE_TITLE)
     set_font(r, size=17, bold=True, color=DARK)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -395,20 +424,20 @@ def add_figure_section(doc):
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_after = Pt(0)
-    r = p.add_run("图 1  DeepAlign-Bench 主流程。主榜先检查共同任务质量与事实性门槛，再比较用户适配；JudgeBench 独立验证自动评委。")
+    r = p.add_run(FIGURE_CAPTION)
     set_font(r, size=9.5, color=MUTED, italic=True)
     sec2 = doc.add_section(WD_SECTION.NEW_PAGE)
     configure_section(sec2, landscape=False)
 
 
-def build():
+def build(md_path=MD, out_path=OUT):
     doc = Document()
     configure_styles(doc)
     configure_section(doc.sections[0], landscape=False)
     add_cover(doc)
     add_contents(doc)
 
-    lines = MD.read_text(encoding="utf-8").splitlines()
+    lines = Path(md_path).read_text(encoding="utf-8").splitlines()
     # Skip markdown title and metadata; start from the research overview.
     start = next(i for i, line in enumerate(lines) if line.strip() == "## 研究概要")
     lines = lines[start:]
@@ -439,10 +468,12 @@ def build():
                 code_buf = []
             else:
                 p = doc.add_paragraph()
+                p.alignment = WD_ALIGN_PARAGRAPH.LEFT
                 p.paragraph_format.left_indent = Inches(0.25)
                 p.paragraph_format.right_indent = Inches(0.15)
                 p.paragraph_format.space_before = Pt(4)
                 p.paragraph_format.space_after = Pt(8)
+                p.paragraph_format.line_spacing = 1.0
                 p_pr = p._p.get_or_add_pPr()
                 shd = OxmlElement("w:shd")
                 shd.set(qn("w:fill"), "EEF2F5")
@@ -468,7 +499,7 @@ def build():
         if stripped.startswith("## "):
             flush_paragraph()
             title = stripped[3:]
-            if title.startswith("2. 关键文献") and not figure_added:
+            if title.startswith(FIGURE_TRIGGER) and not figure_added:
                 # Figure follows the research questions and precedes literature review.
                 add_figure_section(doc)
                 figure_added = True
@@ -535,9 +566,10 @@ def build():
             for r in p.runs:
                 set_font(r, size=9.5)
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    doc.save(OUT)
-    print(OUT)
+    out_path = Path(out_path)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    doc.save(out_path)
+    print(out_path)
 
 
 if __name__ == "__main__":

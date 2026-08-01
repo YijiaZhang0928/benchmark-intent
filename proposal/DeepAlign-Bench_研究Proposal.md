@@ -1,8 +1,9 @@
 # DeepAlign-Bench：长程 Deep Research 智能体个性化最终交付物评测
 
 **正式研究 Proposal（组内讨论稿）**  
-版本：v0.12 · 2026 年 8 月 1 日  
+版本：v0.13 · 2026 年 8 月 2 日  
 定位：Benchmark / Evaluation / Human-Centered Agents  
+配套阅读版本：《完整人话版》保留全部方法与论证；《汇报精简版》仅压缩表达，不改变研究设计。
 
 ## 研究概要
 

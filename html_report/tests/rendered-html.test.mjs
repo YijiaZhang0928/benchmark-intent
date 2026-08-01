@@ -38,6 +38,9 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /MUST CHANGE/i);
   assert.match(html, /href="\/case\.schema\.yaml"/i);
   assert.match(html, /href="\/DeepAlign-Bench_正式研究Proposal\.pdf"/i);
+  assert.match(html, /href="\/DeepAlign-Bench_完整人话版\.pdf"/i);
+  assert.match(html, /href="\/DeepAlign-Bench_汇报精简版\.pdf"/i);
+  assert.match(html, /同一套方法，按阅读场景分成三版/);
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
 });
 
@@ -68,5 +71,9 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
     access(
       new URL("../public/DeepAlign-Bench_正式研究Proposal.pdf", import.meta.url),
     ),
+    access(new URL("../public/DeepAlign-Bench_完整人话版.docx", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_完整人话版.pdf", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_汇报精简版.docx", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_汇报精简版.pdf", import.meta.url)),
   ]);
 });

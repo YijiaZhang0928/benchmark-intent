@@ -38,7 +38,7 @@ export default function Home() {
           <div className="navlinks">
             <a href="#design">设计</a><a href="#spec">四个对象</a><a href="#metrics">指标</a><a href="#scope">评测边界</a><a href="#review">审稿防守</a>
           </div>
-          <a className="navCta" href="/DeepAlign-Bench_正式研究Proposal.pdf" download>下载 Proposal</a>
+          <a className="navCta" href="#editions">选择阅读版本</a>
         </nav>
         <div className="heroGrid shell">
           <section>
@@ -67,6 +67,27 @@ export default function Home() {
           <article><span>01</span><h3>元数据是实验骨架</h3><p>任务、环境、用户状态、信号渠道和 agent 系统共同定义一个 case；coverage manifest 明确测了什么、缺什么。</p></article>
           <article><span>02</span><h3>反事实识别</h3><p>同任务、同证据、不同用户；将报告交换评分，排除篇幅、文风与“信息更多”这些替代解释。</p></article>
           <article><span>03</span><h3>Rubric 由元数据编译</h3><p>统一的是叶节点 schema、适用条件和校准程序，而不是强迫所有任务共用一张总体评分表。</p></article>
+        </div>
+      </section>
+
+      <section className="editionSection" id="editions">
+        <div className="shell">
+          <p className="sectionTag">THREE READING EDITIONS</p>
+          <div className="sectionHead"><h2>同一套方法，按阅读场景分成三版</h2><p>没有删改研究逻辑、实验设计、rubric、metrics 或 judge；只调整语言密度和细节层级。</p></div>
+          <div className="editionGrid">
+            <article>
+              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>方法学底稿。保留完整文献论证、实验细节、统计边界和参考文献，适合精读与写论文。</p>
+              <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
+            </article>
+            <article className="recommended">
+              <span>PLAIN LANGUAGE · 18 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
+              <div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div>
+            </article>
+            <article>
+              <span>ADVISOR BRIEF · 10 PAGES</span><h3>汇报精简版</h3><p>15–20 分钟讲清研究问题、反事实设计、数据规模、评分方法、八周范围与导师待决策项。</p>
+              <div className="editionLinks"><a href="/DeepAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_汇报精简版.docx" download>Word</a></div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -342,7 +363,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · 2026-08-01</p><div><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.13 · 2026-08-02</p><div><a href="#editions">三个版本</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }
