@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.14 · 2026 年 8 月 2 日
+版本：v0.15 · 2026 年 8 月 2 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -264,6 +264,20 @@ HELM 先系统枚举场景与指标空间，再基于覆盖和可行性选择子
 
 每个 family 标注完整 Atlas 元数据，但不运行所有组合。核心矩阵只比较 `task-only / structured persona / semantic-equivalent natural history / clarification-allowed` 四种信号条件和三类可比 agent；`shuffled persona / irrelevant persona / stale-conflict / context dilution / dynamic update` 只在 8 个 anchor family 上以分数因子方式测试。目标是最大化测试算子的辨识力，而不是最大化运行数量。120 个任务、480 个 user-task 实例保留为论文后的扩展路线，不写入两个月主实验承诺。
 
+这里的 **anchor family 是压力测试宿主，不是 persona 类别，也不是扰动名称**。实验分两阶段。第一阶段先构造 clean counterfactual family：Ua/Ub 都与任务自然匹配并通过六项 compatibility gate，冻结 matched/swapped 预测、must-change 与 must-hold；persona–task 匹配只解决这一步。第二阶段才固定目标用户、任务、证据和预算，对可见信号、上下文、agent 结构或 episode 时点施加一个预注册扰动。只有相对同一 clean baseline 的配对差值才进入扰动效应。
+
+| 处理条件 | 保持不变 | 受控改变 | 主要判定 |
+|---|---|---|---|
+| Persona swap | 目标用户 U_target、任务、证据、预算 | 暴露另一用户的 signal bundle | ΔPF、错误用户采用率、CFA 变化 |
+| Irrelevant attributes | 相关用户事实与总长度对照 | 注入任务无关 persona 事实 | invariance、MP、非必要披露 |
+| Conflict / stale | 当前真值与证据 | 同时提供带来源/时间戳的新旧事实 | 冲突解析准确率、当前事实采用率 |
+| Context dilution | 用户事实语义与资源预算 | 位置、间隔、matched-length 噪声 | PF retention/AUC，并与 TQ 衰减比较 |
+| Agent handoff | 任务、目标用户、运行前缀 | 固定交接点传完整/缺失/损坏摘要 | handoff loss、约束保持率 |
+| Dynamic update | episode 前半段 | 预注册回合更新目标、预算或状态 | update correctness、旧状态残留率 |
+| Re-anchor | 同一运行前缀与目标用户 | 交付前重申最小必要约束 | paired recovery gain 与副作用 |
+
+为控制两个月预算，不构造完整笛卡尔积。8 个 anchor 全部运行 clean baseline、persona swap 与 irrelevant-signal 控制；其余扰动只分配给满足 eligibility predicate 的 family，并在 coverage manifest 中公开缺格。Re-anchor 是**恢复干预**而非 attack/failure class，必须在预注册子集上无条件成对运行，不能只挑已经失败的 episode，否则会产生 selection-on-failure bias。每次扰动保存 `base_user_state_id`、`signal_bundle_id`、`type/target/insert_step`、`authorized_visibility`、`expected_invariants`、`paired_control_id`、`recovery_policy` 与 `seed`。
+
 领域和交付物作为交叉切片：领域至少覆盖消费与旅行、教育与职业、金融决策、健康信息、企业/合规、软件工程与数据、科研与政策、内容与传播；交付物覆盖研究报告、决策备忘录、表格/工作簿、代码与技术说明、幻灯、网页和多文件项目。高风险任务只评估信息支持和升级决策，不评估无监督执行医疗、法律或金融交易。
 
 ### 5.3 三条评测轨道
@@ -474,12 +488,12 @@ JudgeBench 同时比较三类系统：（a）强通用 prompted judge；（b）�
 3. 语义等价的自然对话历史；
 4. 历史 + 检索式 memory；
 5. 主动澄清；
-6. Persona shuffled（错配用户，负对照）；
+6. Persona shuffled（目标用户不变、只交换可见 signal bundle 的负对照）；
 7. Irrelevant persona（无关属性，过度个性化探针）；
 8. Contradictory/dated history（冲突与时效）；
 9. Context dilution（不同长度和位置）；
 10. Multi-agent handoff（含/不含用户模型交接）；
-11. Re-anchor / pre-delivery checklist / verifier 修复。
+11. Re-anchor / pre-delivery checklist / verifier 修复（预注册配对子集，无论基线是否显式失败都运行）。
 
 ### 9.3 两个月论文矩阵与扩展路线
 

@@ -20,7 +20,7 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.14 · 组内讨论稿"
+DOC_VERSION = "v0.15 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 2 日"
 RESEARCH_LINE = "Evaluation Atlas · 反事实适配 · Rubric Compiler · JudgeBench"
 CORE_CLAIM = "固定任务与证据，只改变用户；只有匹配用户的交付物在反事实交换中仍占优，才能称为真正个性化。"
@@ -152,7 +152,7 @@ def configure_section(section, landscape=False):
         section.orientation = WD_ORIENT.PORTRAIT
         section.page_width = Inches(8.5)
         section.page_height = Inches(11)
-        margin = Inches(1)
+        margin = Inches(0.9 if STYLE_PRESET == "formal_condensed" else 1)
     section.top_margin = margin
     section.bottom_margin = margin
     section.left_margin = margin

@@ -42,6 +42,8 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /href="\/DeepAlign-Bench_完整人话版\.pdf"/i);
   assert.match(html, /href="\/DeepAlign-Bench_汇报精简版\.pdf"/i);
   assert.match(html, /同一套方法，按阅读场景分成四版/);
+  assert.match(html, /先建立有效配对，再施加独立扰动/);
+  assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
 });
 
@@ -57,7 +59,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.12/m);
+  assert.match(schema, /^schema_version:\s*0\.15/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
   assert.match(manifest, /coverage_status/);
@@ -78,5 +80,6 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
     access(new URL("../public/DeepAlign-Bench_完整人话版.pdf", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_汇报精简版.docx", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_汇报精简版.pdf", import.meta.url)),
+    access(new URL("../public/PROJECT_MEMORY.md", import.meta.url)),
   ]);
 });

@@ -16,7 +16,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench",
         "subtitle": "长程 Deep Research 智能体个性化最终交付物评测",
         "mode": "正式论文 Proposal 精简版 · 约 10 页",
-        "version": "v0.14 · 正式精简版",
+        "version": "v0.15 · 正式精简版",
         "research_line": "Problem · Research Questions · Method · Evaluation · Validity · Timeline",
         "claim": "固定任务与证据，只改变用户；用 matched/swapped 对照检验用户特异价值，同时对事实性、共同质量和隐私设置不可补偿门槛。",
         "contents": [
@@ -39,7 +39,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜完整人话版",
         "subtitle": "方法、假设与实验不变，把每一步说清楚",
         "mode": "适合组内共识 · 导师讨论 · 正式写作前校验",
-        "version": "v0.13 · 完整人话版",
+        "version": "v0.15 · 完整人话版",
         "research_line": "为什么测 · 测什么 · 怎么测 · 如何判分 · 能声称什么",
         "claim": "同一任务和证据下，只改变用户；匹配用户的结果必须优于错配结果，而且事实和共同质量不能变差。",
         "contents": [
@@ -61,7 +61,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜汇报精简版",
         "subtitle": "15–20 分钟讲清研究问题、方法、实验与两个月范围",
         "mode": "导师汇报 · 组会讲解 · 决策讨论",
-        "version": "v0.13 · 汇报精简版",
+        "version": "v0.15 · 汇报精简版",
         "research_line": "问题 → 数据 → 实验 → 评分 → 风险 → 决策",
         "claim": "不是测报告写得多漂亮，而是测同一任务下，agent 能不能把正确结果交给正确用户。",
         "contents": [

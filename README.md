@@ -1,6 +1,8 @@
 # benchmark-intent
 
-## 当前交付物（v0.14）
+> **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
+
+## 当前交付物（v0.15）
 
 - `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿，用于精读、论文写作和细节核对。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：10 页标准论文 Proposal，保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
@@ -19,4 +21,5 @@
 - 对 taxonomy、rubric、ground truth、judge、数据划分和统计结论分别检查循环论证、信息泄漏、分布外泛化、测量效度与可复现性。
 - 每轮交付前进行内容一致性检查、文档渲染检查和网页离线可用性检查。
 - 每次实质性更新在上述检查通过后，将 Proposal 源稿、HTML 源码、主图和 DOCX/PDF/单文件 HTML 一并提交到 `main`，并推送至 `github.com/YijiaZhang0928/benchmark-intent`。
+- 每次实质性对话也要更新 `PROJECT_MEMORY.md`；新 Session 以该文件而不是模型会话记忆作为项目状态真源。
 - Git commit message 使用 `proposal vX.Y: <核心变化>`；`CHANGELOG.md` 记录设计判断和范围变化，QA 图片、构建缓存与临时文件不进入版本库。

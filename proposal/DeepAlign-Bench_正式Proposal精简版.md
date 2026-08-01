@@ -2,11 +2,11 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.14 · 2026 年 8 月 2 日
+版本：v0.15 · 2026 年 8 月 2 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.14
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.15
 
 ---
 
@@ -95,7 +95,9 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 - **Live Web：** 记录日期、搜索服务和网页快照，仅用于生态有效性；
 - **Longitudinal/Interactive：** 用户状态中途变化，用于保持、更新和恢复测试。
 
-8 个 anchor family 加入 persona 错配、无关属性、新旧信息冲突、context dilution、agent handoff、动态更新和 re-anchor。证据轨道、工具预算和产品可复现性分开报告，不混合为单一总榜。
+8 个 anchor family 是压力测试宿主，不是 persona 类别。先构造两个用户都与任务合理匹配的 clean family，冻结 must-change/must-hold 和 matched/swapped 真值；再固定目标用户、任务、证据和预算，只改变可见 signal bundle、上下文位置、交接摘要或更新时间。Persona–task 匹配只是基线的前置门。
+
+所有 anchor 运行 clean、persona swap 和 irrelevant-signal；冲突/过期、dilution、handoff 和动态更新按预注册适用性分配。Re-anchor 是恢复干预，在固定子集上无论基线是否失败都成对运行，避免选择偏差。报告 ΔPF/invariance、冲突解析、retention/AUC、handoff loss、update correctness、recovery gain 及 TQ/事实/隐私副作用；不同轨道和预算不混榜。
 
 ### 4.3 最终结果与过程证据
 

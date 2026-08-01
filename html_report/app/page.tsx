@@ -321,14 +321,30 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="shell gapSection">
+      <section className="shell gapSection" id="experiments">
         <p className="sectionTag">EXPERIMENTS</p>
         <div className="sectionHead"><h2>两个月分数因子矩阵：不跑全笛卡尔积</h2><p>所有 case 都完整标注 Atlas；只有能回答主假设的高信息量组合进入实验，受控 harness 与端到端产品结果分开。</p></div>
         <div className="matrix">
           <article><b>核心信号条件</b><p>Task only · structured persona · 语义等价自然历史 · clarification-allowed</p></article>
-          <article><b>8 个 anchor 压测</b><p>错配 · 无关属性 · 冲突/过期 · context dilution · dynamic update</p></article>
+          <article><b>8 个 anchor 压测</b><p>clean 基线之上施加错配、无关、冲突/过期、稀释、handoff、更新和恢复干预</p></article>
           <article><b>三类核心 Agent</b><p>商业 Deep Research · 统一搜索/工具 harness · 可复现开源 Deep Research</p></article>
           <article><b>适用性探针</b><p>代码、多 agent、memory 系统只运行 eligibility predicate 为真的 anchor family</p></article>
+        </div>
+        <div className="anchorExplainer">
+          <div className="anchorLead"><span>ANCHOR ≠ PERSONA TYPE</span><h3>先建立有效配对，再施加独立扰动</h3><p>Persona–task compatibility 只负责构造 clean family：Ua/Ub 都应自然地提出同一任务，并产生可验证的 must-change 差异。压力测试固定目标用户、任务、证据和预算，只改变一个信号或过程变量。</p></div>
+          <div className="anchorFlow"><b>Clean matched baseline</b><i>→</i><b>单一 perturbation</b><i>→</i><b>paired Δ metric</b><i>→</i><b>共同质量/隐私副作用</b></div>
+          <div className="anchorTable">
+            {[
+              ["Persona swap","换可见 signal bundle","ΔPF · 错误用户采用率"],
+              ["Irrelevant","加任务无关事实","Invariance · MP"],
+              ["Conflict / stale","加入带时效的新旧冲突","冲突解析率"],
+              ["Context dilution","改变位置与长度匹配噪声","PF retention · AUC"],
+              ["Agent handoff","改变交接摘要完整性","Handoff loss"],
+              ["Dynamic update","固定回合更新用户状态","Update correctness"],
+              ["Re-anchor","交付前重申最小约束","Recovery gain + side effects"],
+            ].map(x=><article key={x[0]}><b>{x[0]}</b><span>{x[1]}</span><small>{x[2]}</small></article>)}
+          </div>
+          <p className="anchorRule"><b>关键防偏：</b>Re-anchor 是恢复干预，不是攻击类型；预注册固定子集，无论 clean run 是否显式失败都成对重跑。其余复杂扰动按 eligibility predicate 分配，不补齐不自然的笛卡尔积。</p>
         </div>
         <div className="pilot"><span>PAPER SCOPE · 8 周</span><div><b>24</b><small>任务 family</small></div><div><b>48</b><small>核心 user-task</small></div><div><b>4</b><small>核心信号条件</small></div><div><b>3</b><small>核心 Agent</small></div><p>最多 576 个核心 episode；8 个 anchor family 加压力测试，约 20% 分层样本复跑第二 seed，并做人评。</p></div>
       </section>
@@ -367,7 +383,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.14 · 2026-08-02</p><div><a href="#editions">四个版本</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.15 · 2026-08-02</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }

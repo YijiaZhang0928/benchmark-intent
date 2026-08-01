@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.13 · 2026 年 8 月 2 日  
+版本：v0.15 · 2026 年 8 月 2 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -79,7 +79,11 @@ Persona 不是人物小传，而是 task-conditioned user state 的一种展示�
 
 三类核心 agent：商业 Deep Research、统一搜索/工具 harness、可复现开源 Deep Research。
 
-8 个 anchor family 增加：persona 错配、无关属性、冲突/过期信息、context dilution、agent handoff、动态更新和 re-anchor。
+8 个 anchor family 是压力测试宿主，不是 8 种 persona。流程是：先让两个用户都与 task 合理匹配，建立 clean matched/swapped 真值；再固定目标用户、task、证据和预算，只改变可见 persona、上下文位置、交接摘要或更新时间。
+
+所有 anchor 都有 clean + persona swap + irrelevant-signal 配对；冲突/过期、context dilution、agent handoff、动态更新按预注册适用性分配。Re-anchor 是恢复干预，不是攻击类型；固定子集无论是否先失败都重跑，避免高估恢复收益。
+
+指标：ΔPF / invariance、冲突解析率、PF retention/AUC、handoff loss、update correctness、recovery gain；同时报告 TQ、事实性、隐私和长度副作用。
 
 Frozen Core、Live Web、Longitudinal 三条轨道分开报告；不同工具预算和不可复现产品不混成一个榜。
 
