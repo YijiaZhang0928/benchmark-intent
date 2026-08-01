@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7F9FD"/><stop offset="1" stop-color="#EEF4F9"/>
+    </linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#102B57"/><stop offset="1" stop-color="#225B78"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#16324F" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#315B7D"/>
+    </marker>
+    <style>
+      .cn{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}
+      .title{font-size:38px;font-weight:700;fill:white;letter-spacing:1px}
+      .subtitle{font-size:18px;fill:#D8E9F3}
+      .section{font-size:23px;font-weight:700;fill:#163A63}
+      .body{font-size:17px;fill:#20364D}
+      .small{font-size:14px;fill:#496177}
+      .label{font-size:16px;font-weight:700;fill:#173B61}
+      .white{fill:white}
+      .card{fill:white;stroke:#B8CBE0;stroke-width:1.5;rx:16;filter:url(#shadow)}
+      .chip{rx:10;stroke-width:1.2}
+      .arrow{stroke:#315B7D;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#7892AB;stroke-width:2;stroke-dasharray:7 7;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1920" height="112" fill="url(#head)"/>
+  <text x="960" y="52" text-anchor="middle" class="cn title">DeepAlign-Bench：长程 Deep Research 个性化交付物评测</text>
+  <text x="960" y="84" text-anchor="middle" class="cn subtitle">五平面 Atlas 元数据 × 行为测试算子 × 反事实任务族；两个月用分数因子设计完成可审计覆盖</text>
+
+  <!-- Research question ribbon -->
+  <rect x="54" y="134" width="1812" height="82" rx="18" fill="#E6F1F5" stroke="#6FA5B5" stroke-width="1.5"/>
+  <circle cx="105" cy="175" r="25" fill="#1E7584"/>
+  <text x="105" y="184" text-anchor="middle" class="cn white" font-size="26" font-weight="700">?</text>
+  <text x="147" y="164" class="cn label">核心因果问题</text>
+  <text x="147" y="194" class="cn body">同一任务 T、同一证据 E 下，agent 是否因不同用户 U 产生必要、正确且有用的交付差异，同时不牺牲事实性、任务质量与隐私？</text>
+
+  <!-- Column 1 -->
+  <rect x="54" y="250" width="400" height="558" class="card"/>
+  <rect x="54" y="250" width="400" height="58" rx="16" fill="#DCE9F8"/>
+  <text x="254" y="287" text-anchor="middle" class="cn section">① Evaluation Atlas 元数据</text>
+  <text x="82" y="342" class="cn label">A/B · Task + Environment</text>
+  <rect x="78" y="360" width="352" height="86" class="chip" fill="#F4F8FD" stroke="#96B4D4"/>
+  <text x="96" y="388" class="cn body">• stratum · intent · deliverable · demand</text>
+  <text x="96" y="417" class="cn body">• evidence · freshness · tools · budget</text>
+
+  <text x="82" y="485" class="cn label">C/D · User State + Signal</text>
+  <rect x="78" y="503" width="352" height="142" class="chip" fill="#F0FAF7" stroke="#73AF9B"/>
+  <text x="96" y="532" class="cn body">目标 · 知识 · 约束 · 风险 · 受众 · 权限</text>
+  <text x="96" y="563" class="cn body">brief · persona · clarification · history</text>
+  <text x="96" y="594" class="cn body">behavior · workspace · feedback · update</text>
+  <text x="96" y="624" class="cn small">每条事实带 provenance、时间、置信度与敏感级别</text>
+
+  <text x="82" y="684" class="cn label">E · Agent System + Test Operator</text>
+  <rect x="78" y="702" width="352" height="80" class="chip" fill="#FFF7EA" stroke="#D6A657"/>
+  <text x="96" y="731" class="cn body">search · memory · planning · orchestration</text>
+  <text x="96" y="761" class="cn body">Acquire · Preserve · Use · Update/Recover</text>
+
+  <!-- Column 2 -->
+  <rect x="496" y="250" width="430" height="558" class="card"/>
+  <rect x="496" y="250" width="430" height="58" rx="16" fill="#E5E0F5"/>
+  <text x="711" y="287" text-anchor="middle" class="cn section">② 分数因子设计 + 反事实族</text>
+  <text x="711" y="338" text-anchor="middle" class="cn label">24 families · 48 user-task · 4 signal modes</text>
+  <line x1="711" y1="360" x2="711" y2="402" stroke="#6D6794" stroke-width="3"/>
+  <line x1="575" y1="402" x2="847" y2="402" stroke="#6D6794" stroke-width="3"/>
+  <line x1="575" y1="402" x2="575" y2="427" stroke="#6D6794" stroke-width="3"/>
+  <line x1="666" y1="402" x2="666" y2="427" stroke="#6D6794" stroke-width="3"/>
+  <line x1="756" y1="402" x2="756" y2="427" stroke="#6D6794" stroke-width="3"/>
+  <line x1="847" y1="402" x2="847" y2="427" stroke="#6D6794" stroke-width="3"/>
+  <rect x="532" y="427" width="86" height="70" rx="12" fill="#E8F2FB" stroke="#78A5CD"/>
+  <rect x="623" y="427" width="86" height="70" rx="12" fill="#F1EAF8" stroke="#9A80BC"/>
+  <rect x="713" y="427" width="86" height="70" rx="12" fill="#FFF0E6" stroke="#D79A6C"/>
+  <rect x="804" y="427" width="86" height="70" rx="12" fill="#EEF2F4" stroke="#91A0AB"/>
+  <text x="575" y="457" text-anchor="middle" class="cn label">Ua</text><text x="575" y="480" text-anchor="middle" class="cn small">强对比</text>
+  <text x="666" y="457" text-anchor="middle" class="cn label">Ub</text><text x="666" y="480" text-anchor="middle" class="cn small">强对比</text>
+  <text x="756" y="457" text-anchor="middle" class="cn label">Uc</text><text x="756" y="480" text-anchor="middle" class="cn small">冲突/重叠</text>
+  <text x="847" y="457" text-anchor="middle" class="cn label">U0</text><text x="847" y="480" text-anchor="middle" class="cn small">中性控制</text>
+
+  <text x="711" y="542" text-anchor="middle" class="cn label">主矩阵 Ua/Ub；anchor 才加入 Uc/U0</text>
+  <rect x="537" y="564" width="348" height="94" rx="14" fill="#F8F7FC" stroke="#A69BC9"/>
+  <text x="711" y="595" text-anchor="middle" class="cn body">Ya = A(T,E,Sa)　Yb = A(T,E,Sb)</text>
+  <text x="711" y="627" text-anchor="middle" class="cn small">再将 Ya/Yb 交换给 Ua/Ub 评分</text>
+
+  <rect x="537" y="686" width="348" height="88" rx="14" fill="#FFF8EE" stroke="#D8A758"/>
+  <text x="711" y="716" text-anchor="middle" class="cn label">反事实识别</text>
+  <text x="711" y="746" text-anchor="middle" class="cn body">Matched 优于 Swapped，且共同事实保持不变</text>
+
+  <!-- Column 3 -->
+  <rect x="968" y="250" width="404" height="558" class="card"/>
+  <rect x="968" y="250" width="404" height="58" rx="16" fill="#E5F1EC"/>
+  <text x="1170" y="287" text-anchor="middle" class="cn section">③ 预注册可比运行</text>
+  <rect x="998" y="335" width="344" height="64" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
+  <text x="1170" y="375" text-anchor="middle" class="cn body">商业 Deep Research · 统一搜索 Harness</text>
+  <rect x="998" y="418" width="344" height="64" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
+  <text x="1170" y="458" text-anchor="middle" class="cn body">可复现开源 Deep Research Agent</text>
+  <rect x="998" y="501" width="344" height="64" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
+  <text x="1170" y="541" text-anchor="middle" class="cn body">Anchor probes：Code · Multi-agent · Memory</text>
+
+  <text x="1010" y="616" class="cn label">轨迹检查点</text>
+  <line x1="1025" y1="654" x2="1315" y2="654" stroke="#477A68" stroke-width="4" marker-end="url(#arrow)"/>
+  <circle cx="1040" cy="654" r="9" fill="#477A68"/><circle cx="1120" cy="654" r="9" fill="#477A68"/>
+  <circle cx="1200" cy="654" r="9" fill="#477A68"/><circle cx="1280" cy="654" r="9" fill="#477A68"/>
+  <text x="1040" y="687" text-anchor="middle" class="cn small">形成</text>
+  <text x="1120" y="687" text-anchor="middle" class="cn small">保持</text>
+  <text x="1200" y="687" text-anchor="middle" class="cn small">利用</text>
+  <text x="1280" y="687" text-anchor="middle" class="cn small">恢复</text>
+  <rect x="998" y="718" width="344" height="58" rx="12" fill="#F9FCFA" stroke="#A4C2B4"/>
+  <text x="1170" y="754" text-anchor="middle" class="cn body">保存轨迹、交付物、版本、成本与时间戳</text>
+
+  <!-- Column 4 -->
+  <rect x="1414" y="250" width="452" height="558" class="card"/>
+  <rect x="1414" y="250" width="452" height="58" rx="16" fill="#F7E6E2"/>
+  <text x="1640" y="287" text-anchor="middle" class="cn section">④ Rubric Compiler + JudgeBench</text>
+  <rect x="1444" y="332" width="392" height="70" rx="12" fill="#F6FAFC" stroke="#91ABC0"/>
+  <text x="1464" y="360" class="cn label">L0 确定性 verifier</text><text x="1464" y="386" class="cn small">文件、测试、格式、预算、权限与硬约束</text>
+  <rect x="1444" y="418" width="392" height="70" rx="12" fill="#F6FAFC" stroke="#91ABC0"/>
+  <text x="1464" y="446" class="cn label">L1 证据 verifier</text><text x="1464" y="472" class="cn small">claim 支持、引用覆盖、关联与来源质量</text>
+  <rect x="1444" y="504" width="392" height="70" rx="12" fill="#FFF8F5" stroke="#CE9382"/>
+  <text x="1464" y="532" class="cn label">L2 元数据驱动 rubric judge</text><text x="1464" y="558" class="cn small">core + intent + deliverable + operator + risk</text>
+  <rect x="1444" y="590" width="392" height="70" rx="12" fill="#FFF8F5" stroke="#CE9382"/>
+  <text x="1464" y="618" class="cn label">L3 强 Judge + 20% 人评</text><text x="1464" y="644" class="cn small">分层复核与分歧仲裁；SFT 仅可选附录</text>
+  <rect x="1444" y="688" width="392" height="86" rx="12" fill="#FCEDEA" stroke="#BF7463" stroke-width="1.5"/>
+  <text x="1640" y="719" text-anchor="middle" class="cn label">JudgeBench 竞争式选型</text>
+  <text x="1640" y="749" text-anchor="middle" class="cn small">240 units · 人类金标 · 偏差/诱饵 · 模块校准</text>
+
+  <!-- arrows between columns -->
+  <path d="M454 530 L486 530" class="arrow"/>
+  <path d="M926 530 L958 530" class="arrow"/>
+  <path d="M1372 530 L1404 530" class="arrow"/>
+
+  <!-- bottom scorecard -->
+  <rect x="54" y="844" width="1812" height="178" rx="18" fill="#FFFFFF" stroke="#9CB1C6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="92" y="885" class="cn section">主榜规则：先过共同质量门槛，再比较个性化；禁止“迎合换分”</text>
+  <rect x="90" y="910" width="245" height="75" rx="12" fill="#E7F0FA" stroke="#7FA4CB"/>
+  <text x="212" y="941" text-anchor="middle" class="cn label">TQ / FR</text><text x="212" y="968" text-anchor="middle" class="cn small">任务质量 · 事实与引用</text>
+  <rect x="358" y="910" width="245" height="75" rx="12" fill="#E9F6F1" stroke="#72AE95"/>
+  <text x="480" y="941" text-anchor="middle" class="cn label">PF − MP</text><text x="480" y="968" text-anchor="middle" class="cn small">用户适配 · 误用惩罚</text>
+  <rect x="626" y="910" width="245" height="75" rx="12" fill="#EFEAF9" stroke="#9984BF"/>
+  <text x="748" y="941" text-anchor="middle" class="cn label">CFA / Swap</text><text x="748" y="968" text-anchor="middle" class="cn small">反事实优势 · 错配失败</text>
+  <rect x="894" y="910" width="245" height="75" rx="12" fill="#FFF4E4" stroke="#D6A150"/>
+  <text x="1016" y="941" text-anchor="middle" class="cn label">Retention / Recovery</text><text x="1016" y="968" text-anchor="middle" class="cn small">衰减曲线 · 恢复收益</text>
+  <rect x="1162" y="910" width="245" height="75" rx="12" fill="#FBEDEA" stroke="#CC8677"/>
+  <text x="1284" y="941" text-anchor="middle" class="cn label">Privacy / Calibration</text><text x="1284" y="968" text-anchor="middle" class="cn small">隐私边界 · 推断校准</text>
+  <rect x="1430" y="910" width="397" height="75" rx="12" fill="#EDF2F5" stroke="#91A3B0"/>
+  <text x="1628" y="941" text-anchor="middle" class="cn label">Coverage：Atlas × Operator × Agent</text>
+  <text x="1628" y="968" text-anchor="middle" class="cn small">tested / defined-only / N/A / deferred + 95% CI</text>
+  <text x="960" y="1054" text-anchor="middle" class="cn small">核心创新：Evaluation Atlas · Coverage Manifest · Counterfactual Families · Rubric Compiler · JudgeBench</text>
+</svg>

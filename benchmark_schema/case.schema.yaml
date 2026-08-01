@@ -1,0 +1,140 @@
+schema_name: deepalign_case
+schema_version: 0.12
+description: >-
+  Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
+  Expected labels describe test intent; observed labels are written only after a run.
+
+required:
+  - family_id
+  - task
+  - environment
+  - user_states
+  - counterfactual_design
+  - signal_condition
+  - agent
+  - behavioral_operator
+  - evaluation_contract
+  - rubric_modules
+  - provenance
+
+family_id: string
+
+task:
+  task_stratum: [everyday_personal, professional_enterprise, academic_frontier]
+  primary_intent: [understand_synthesize, discover_enumerate, compare_decide, assess_forecast, plan_design_troubleshoot, verify_audit]
+  secondary_intents: list
+  domain: string
+  deliverable_type: [report, decision_memo, table_or_workbook, code_and_docs, slides, webpage, multi_file]
+  demand_profile:
+    conceptual_breadth: [low, medium, high]
+    logical_nesting: [shallow, intermediate, deep]
+    exploration: [low, medium, high]
+    search_fanout_target: integer_or_range
+    freshness: [static, time_bounded, live]
+    stakes: [low, medium, high]
+    reversibility: [reversible, partly_reversible, hard_to_reverse]
+    interaction_need: [single_turn, optional_clarification, required_clarification, longitudinal]
+
+environment:
+  evidence_regime: [frozen, live_web, private_workspace, hybrid]
+  evidence_snapshot_id: string
+  source_topology: [single_corpus, multi_source, web_plus_private, tool_generated]
+  tools: list
+  budget:
+    wall_clock_minutes: number
+    token_budget: integer_or_null
+    search_budget: integer_or_null
+    tool_call_budget: integer_or_null
+  permissions: list
+  interaction_horizon: integer
+
+user_states:
+  type: list
+  min_items: 2
+  item:
+    user_id: string
+    provenance_tier: [real_user_gold, user_anchored, synthetic_control]
+    facts:
+      type: list
+      item:
+        fact_id: string
+        category: [goal, knowledge, constraint, preference, risk_or_value, audience, permission, dynamic_state]
+        value: any
+        source: string
+        timestamp: datetime_or_null
+        reliability: [confirmed, high, medium, low]
+        task_relevance: [critical, useful, irrelevant_control]
+        sensitivity: [public, internal, sensitive, highly_sensitive]
+        allowed_for_reasoning: boolean
+        allowed_to_disclose: boolean
+    compatibility_gate:
+      plausibility: boolean
+      decision_relevance: boolean
+      counterfactual_separability: boolean
+      invariant_core: boolean
+      minimality_and_privacy: boolean
+      non_stereotyping: boolean
+
+counterfactual_design:
+  family_key: string
+  counterfactual_partner_id: string
+  invariant_task_fields: list
+  invariant_evidence_snapshot: boolean
+  discriminating_user_fact_ids: list
+  expected_decision_differences: list
+
+signal_condition:
+  channel: [task_only, structured_persona, natural_history, clarification, behavior_trace, private_workspace, organizational_context, dynamic_feedback]
+  view_id: string
+  semantic_equivalence_group: string_or_null
+  visibility: [prompt, retrieved, tool_accessible, hidden_control]
+  reliability: [reliable, noisy, conflicting]
+  temporal_status: [current, stale, mixed]
+
+agent:
+  system_id: string
+  system_class: [commercial_deep_research, controlled_harness, open_source_deep_research, code_agent, multi_agent, memory_augmented]
+  model_or_product_version: string
+  run_date: date
+  search_backend: string_or_null
+  memory_mode: [none, context_only, retrieval, structured_user_model, external_memory]
+  orchestration: [single_agent, planner_executor, multi_agent]
+  visible_tools: list
+  eligibility_predicate: string
+
+behavioral_operator: [acquire, preserve, use, update_recover]
+perturbation: [none, missing_signal, shuffled_persona, irrelevant_persona, stale_conflict, context_dilution, tool_noise, agent_handoff, dynamic_update, reanchor]
+expected_failure_modes: list
+
+evaluation_contract:
+  must_change: list
+  must_hold: list
+  must_not: list
+  clarify_if_unknown: list
+
+rubric_modules:
+  core: list
+  personalization: list
+  intent: list
+  deliverable: list
+  operator: list
+  risk: list
+
+provenance:
+  author_ids: list
+  reviewer_ids: list
+  created_at: datetime
+  last_modified_at: datetime
+  evidence_hash: string
+  rubric_version: string
+  license_or_consent: string
+
+post_run_only:
+  artifact_hashes: list
+  trajectory_hash: string_or_null
+  cost: object
+  observed_outcome_risks: list
+  observed_failure_evidence: list
+  judge_version: string
+  scores: object
+  confidence: number
