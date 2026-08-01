@@ -10,6 +10,29 @@ ROOT = Path(__file__).resolve().parents[1]
 
 VARIANTS = [
     {
+        "md": ROOT / "proposal" / "DeepAlign-Bench_正式Proposal精简版.md",
+        "out": ROOT / "deliverables" / "DeepAlign-Bench_正式Proposal精简版.docx",
+        "kicker": "CONDENSED RESEARCH PROPOSAL",
+        "title": "DeepAlign-Bench",
+        "subtitle": "长程 Deep Research 智能体个性化最终交付物评测",
+        "mode": "正式论文 Proposal 精简版 · 约 10 页",
+        "version": "v0.14 · 正式精简版",
+        "research_line": "Problem · Research Questions · Method · Evaluation · Validity · Timeline",
+        "claim": "固定任务与证据，只改变用户；用 matched/swapped 对照检验用户特异价值，同时对事实性、共同质量和隐私设置不可补偿门槛。",
+        "contents": [
+            "研究背景与问题", "研究问题与假设", "基准设计", "实验设计",
+            "评分方法", "数据质量、统计与可复现性", "预期贡献与成功标准",
+            "时间表、风险与论文边界", "参考文献",
+        ],
+        "note": "本版按标准论文 Proposal 结构压缩正式稿，保留研究问题、可证伪假设、方法、实验、评分、效度风险、时间表与参考文献。",
+        "trigger": "3. 基准设计",
+        "figure_title": "DeepAlign-Bench 研究设计",
+        "figure_caption": "图 1  元数据定义 case，反事实任务族提供识别，rubric compiler 选择适用评价契约，分层 judge 与人评完成评分和校准。",
+        "header": "DEEPALIGN-BENCH  ·  正式 PROPOSAL 精简版",
+        "style": "formal_condensed",
+        "include_contents": False,
+    },
+    {
         "md": ROOT / "proposal" / "DeepAlign-Bench_人话版.md",
         "out": ROOT / "deliverables" / "DeepAlign-Bench_完整人话版.docx",
         "kicker": "PLAIN-LANGUAGE RESEARCH PROPOSAL",
@@ -72,6 +95,7 @@ def build_variant(spec):
     base.FIGURE_CAPTION = spec["figure_caption"]
     base.RUNNING_HEADER = spec["header"]
     base.STYLE_PRESET = spec["style"]
+    base.INCLUDE_CONTENTS = spec.get("include_contents", True)
     base.build(spec["md"], spec["out"])
 
 

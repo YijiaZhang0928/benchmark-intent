@@ -72,14 +72,18 @@ export default function Home() {
 
       <section className="editionSection" id="editions">
         <div className="shell">
-          <p className="sectionTag">THREE READING EDITIONS</p>
-          <div className="sectionHead"><h2>同一套方法，按阅读场景分成三版</h2><p>没有删改研究逻辑、实验设计、rubric、metrics 或 judge；只调整语言密度和细节层级。</p></div>
+          <p className="sectionTag">FOUR READING EDITIONS</p>
+          <div className="sectionHead"><h2>同一套方法，按阅读场景分成四版</h2><p>没有删改研究逻辑、实验设计、rubric、metrics 或 judge；只调整结构、语言密度和细节层级。</p></div>
           <div className="editionGrid">
             <article>
               <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>方法学底稿。保留完整文献论证、实验细节、统计边界和参考文献，适合精读与写论文。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
             </article>
             <article className="recommended">
+              <span>CONDENSED PROPOSAL · 10 PAGES</span><h3>正式 Proposal 精简版</h3><p>按标准论文 Proposal 结构保留摘要、研究问题与假设、方法、实验、统计、效度风险、时间表和参考文献。</p>
+              <div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div>
+            </article>
+            <article>
               <span>PLAIN LANGUAGE · 18 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div>
             </article>
@@ -363,7 +367,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.13 · 2026-08-02</p><div><a href="#editions">三个版本</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.14 · 2026-08-02</p><div><a href="#editions">四个版本</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }

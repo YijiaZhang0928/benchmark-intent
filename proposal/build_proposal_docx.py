@@ -20,7 +20,7 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.13 · 组内讨论稿"
+DOC_VERSION = "v0.14 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 2 日"
 RESEARCH_LINE = "Evaluation Atlas · 反事实适配 · Rubric Compiler · JudgeBench"
 CORE_CLAIM = "固定任务与证据，只改变用户；只有匹配用户的交付物在反事实交换中仍占优，才能称为真正个性化。"
@@ -35,6 +35,7 @@ FIGURE_TITLE = "总体框架：从受控用户信号到反事实评估"
 FIGURE_CAPTION = "图 1  DeepAlign-Bench 主流程。主榜先检查共同任务质量与事实性门槛，再比较用户适配；JudgeBench 独立验证自动评委。"
 RUNNING_HEADER = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
 STYLE_PRESET = "narrative_proposal"
+INCLUDE_CONTENTS = True
 
 BLUE = "2E74B5"
 DARK = "163A63"
@@ -203,6 +204,18 @@ def configure_styles(doc):
             ("Heading 2", 13, BLUE, 14, 7),
             ("Heading 3", 12, DARK, 10, 5),
         )
+    elif STYLE_PRESET == "formal_condensed":
+        # Named override for the <=10-page academic proposal edition. The
+        # hierarchy remains formal; only paragraph rhythm is tightened.
+        normal.font.size = Pt(10.5)
+        normal.paragraph_format.space_after = Pt(4)
+        normal.paragraph_format.line_spacing = 1.15
+        normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        heading_tokens = (
+            ("Heading 1", 15, BLUE, 12, 6),
+            ("Heading 2", 12.5, BLUE, 8, 4),
+            ("Heading 3", 11.5, DARK, 6, 3),
+        )
     for name, size, color, before, after in heading_tokens:
         st = styles[name]
         st.font.name = FONT
@@ -219,11 +232,11 @@ def configure_styles(doc):
         st = styles[name]
         st.font.name = FONT
         st._element.rPr.rFonts.set(qn("w:eastAsia"), CN_FONT)
-        st.font.size = Pt(11)
+        st.font.size = Pt(10.5 if STYLE_PRESET == "formal_condensed" else 11)
         st.paragraph_format.left_indent = Inches(0.375)
         st.paragraph_format.first_line_indent = Inches(-0.194)
         st.paragraph_format.space_after = Pt(4)
-        st.paragraph_format.line_spacing = 1.208
+        st.paragraph_format.line_spacing = 1.15 if STYLE_PRESET == "formal_condensed" else 1.208
 
 
 def add_inline(paragraph, text, size=None, color=None):
@@ -419,7 +432,12 @@ def add_figure_section(doc):
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = p.add_run()
-    run.add_picture(str(FIG), width=Inches(9.55))
+    picture = run.add_picture(str(FIG), width=Inches(9.55))
+    picture._inline.docPr.set(
+        "descr",
+        "DeepAlign-Bench 研究流程：从五平面元数据、反事实任务族和跨 agent 运行，到 rubric compiler、分层 judge 与人评校准。",
+    )
+    picture._inline.docPr.set("title", "DeepAlign-Bench 研究设计")
     p.paragraph_format.space_after = Pt(5)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -435,11 +453,17 @@ def build(md_path=MD, out_path=OUT):
     configure_styles(doc)
     configure_section(doc.sections[0], landscape=False)
     add_cover(doc)
-    add_contents(doc)
+    if INCLUDE_CONTENTS:
+        add_contents(doc)
 
     lines = Path(md_path).read_text(encoding="utf-8").splitlines()
-    # Skip markdown title and metadata; start from the research overview.
-    start = next(i for i, line in enumerate(lines) if line.strip() == "## 研究概要")
+    # Skip the Markdown title and metadata. Formal variants may open with either
+    # a research overview or a conventional abstract.
+    start = next(
+        i
+        for i, line in enumerate(lines)
+        if line.strip() in {"## 研究概要", "## 摘要"}
+    )
     lines = lines[start:]
     paragraph_buf = []
     in_code = False
