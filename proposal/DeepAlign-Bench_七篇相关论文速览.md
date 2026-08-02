@@ -4,7 +4,7 @@
 
 **用途：重写 DeepAlign-Bench 的 related-work 故事，不代替逐节复现性审查**
 
-**版本：v0.16 · 2026 年 8 月 2 日**
+**版本：v0.17 · 2026 年 8 月 2 日**
 
 ## 一页结论
 
@@ -22,9 +22,9 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 
 最直接的威胁不是一篇论文，而是三组工作拼起来后的覆盖面：
 
-1. **Setoka + PersonaTrail + APeB** 已经覆盖“从异构/行为历史理解用户并利用信息”；
-2. **PASB + Temporal Interventions** 已经覆盖“状态写入、时间变化和跨阶段影响”；
-3. **TARS** 已经说明个性化效用可以落到用户时间、认知负担和主观适配，而不只是输出文字。
+1. **Setoka + PersonaTrail + APeB** 已经覆盖“从异构/行为历史理解用户并利用信息”；[Setoka](https://arxiv.org/abs/2607.27056) [PersonaTrail](https://arxiv.org/abs/2607.20482) [APeB](https://arxiv.org/abs/2607.03162)
+2. **PASB + Temporal Interventions** 已经覆盖“状态写入、时间变化和跨阶段影响”；[PASB](https://arxiv.org/abs/2607.10526) [Temporal Interventions](https://arxiv.org/abs/2607.21635)
+3. **TARS** 已经说明个性化效用可以落到用户时间、认知负担和主观适配，而不只是输出文字。[TARS](https://arxiv.org/abs/2607.15948)
 
 我们的贡献只有在反事实效用、人类真值、跨任务交付物和长程干预被同一协议实际验证时才成立；单纯增加 metadata 维度不构成贡献。
 

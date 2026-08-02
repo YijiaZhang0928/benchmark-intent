@@ -78,7 +78,7 @@ export default function Home() {
       </section>
 
       <section className="relatedUpdate shell" aria-labelledby="related-title">
-        <div><p className="sectionTag">RELATED-WORK UPDATE · JULY 2026</p><h2 id="related-title">现有工作已经各测一段，缺的是交叉协议</h2><p>Setoka 测分层用户理解，PersonaTrail/APeB 测历史利用，TARS 测单域人类效用，PASB 与 temporal-intervention 工作测持久风险和时间变化。DeepAlign-Bench 的可辩护 gap 是：把这些能力连接到广义 DR 最终交付物的反事实、纵向、可审计评价。</p></div>
+        <div><p className="sectionTag">RELATED-WORK UPDATE · JULY 2026</p><h2 id="related-title">现有工作已经各测一段，缺的是交叉协议</h2><p>Setoka 测分层用户理解<a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a>，PersonaTrail/APeB 测历史利用<a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a>，TARS 测单域人类效用<a className="inlineCite" href="https://arxiv.org/abs/2607.15948" target="_blank" rel="noreferrer">[29]</a>，PASB 与 temporal-intervention 工作测持久风险和时间变化<a className="inlineCite" href="https://arxiv.org/abs/2607.10526" target="_blank" rel="noreferrer">[31]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.21635" target="_blank" rel="noreferrer">[27]</a>。DeepAlign-Bench 的可辩护 gap 是：把这些能力连接到广义 DR 最终交付物的反事实、纵向、可审计评价。</p></div>
         <a className="button primary" href="/literature">打开七篇论文速览 →</a>
       </section>
 
@@ -197,7 +197,7 @@ export default function Home() {
 
       <section className="shell gapSection">
         <p className="sectionTag">NOVELTY</p>
-        <div className="sectionHead"><h2>不是 PDR-Bench 的扩大版</h2><p>PDR-Bench 是最重要的直接前作；差异必须落在测量逻辑，而不是只落在规模。</p></div>
+        <div className="sectionHead"><h2>不是 PDR-Bench 的扩大版</h2><p>PDR-Bench 是最重要的直接前作<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>；差异必须落在测量逻辑，而不是只落在规模。</p></div>
         <div className="compare" role="table" aria-label="PDR-Bench 与 DeepAlign-Bench 比较">
           <div className="compareRow head" role="row"><span>评审会问什么</span><span>PDR-Bench</span><span>DeepAlign-Bench</span></div>
           {[

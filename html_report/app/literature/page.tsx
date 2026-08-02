@@ -138,18 +138,18 @@ export default function LiteratureBrief() {
         <p className="sectionTag">ONE-PAGE TAKEAWAY</p>
         <div className="sectionHead"><h2>现有论文覆盖的是一条能力链的不同区段</h2><p>同一篇论文不需要覆盖所有区段；我们的主张也只有在最后的交叉协议被真实实验验证时才成立。</p></div>
         <div className="litChain" role="img" aria-label="从用户理解、历史利用到持久状态和最终交付物的相关工作链条">
-          <article><span>01</span><h3>理解用户</h3><b>Setoka</b><p>异构记录、四层抽象</p></article>
+          <article><span>01</span><h3>理解用户</h3><b>Setoka <a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a></b><p>异构记录、四层抽象</p></article>
           <i>→</i>
-          <article><span>02</span><h3>从历史行动</h3><b>PersonaTrail · APeB</b><p>轨迹、意图、偏好、hard alternatives</p></article>
+          <article><span>02</span><h3>从历史行动</h3><b>PersonaTrail <a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a> · APeB <a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a></b><p>轨迹、意图、偏好、hard alternatives</p></article>
           <i>→</i>
-          <article><span>03</span><h3>保持与更新</h3><b>PASB · Temporal</b><p>写入边界、时间事件、跨维影响</p></article>
+          <article><span>03</span><h3>保持与更新</h3><b>PASB <a className="inlineCite" href="https://arxiv.org/abs/2607.10526" target="_blank" rel="noreferrer">[31]</a> · Temporal <a className="inlineCite" href="https://arxiv.org/abs/2607.21635" target="_blank" rel="noreferrer">[27]</a></b><p>写入边界、时间事件、跨维影响</p></article>
           <i>→</i>
           <article className="target"><span>04</span><h3>用户特异交付物</h3><b>DeepAlign-Bench</b><p>反事实效用 + 通用质量 + 纵向干预</p></article>
         </div>
         <div className="litThreats">
-          <article><b>最直接的方法威胁</b><h3>Temporal Interventions</h3><p>我们的动态更新必须实际满足 C1–C4，不能只在 schema 里出现。</p></article>
-          <article><b>最直接的安全威胁</b><h3>PASB</h3><p>必须评价“该不该写、如何标记来源/作用域”，不能只奖励记住用户。</p></article>
-          <article><b>最直接的信号威胁</b><h3>Setoka + PersonaTrail + APeB</h3><p>异构记录、浏览轨迹和行为日志都已有 benchmark；我们的新意不在“信号更多”。</p></article>
+          <article><b>最直接的方法威胁</b><h3>Temporal Interventions <a className="inlineCite" href="https://arxiv.org/abs/2607.21635" target="_blank" rel="noreferrer">[27]</a></h3><p>我们的动态更新必须实际满足 C1–C4，不能只在 schema 里出现。</p></article>
+          <article><b>最直接的安全威胁</b><h3>PASB <a className="inlineCite" href="https://arxiv.org/abs/2607.10526" target="_blank" rel="noreferrer">[31]</a></h3><p>必须评价“该不该写、如何标记来源/作用域”，不能只奖励记住用户。</p></article>
+          <article><b>最直接的信号威胁</b><h3>Setoka <a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a> + PersonaTrail <a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a> + APeB <a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a></h3><p>异构记录、浏览轨迹和行为日志都已有 benchmark；我们的新意不在“信号更多”。</p></article>
         </div>
       </section>
 
@@ -181,7 +181,7 @@ export default function LiteratureBrief() {
         <div className="shell">
           <p className="sectionTag invert">WHAT CHANGED</p>
           <div className="sectionHead light"><h2>Proposal 1.1 现在应该怎么讲</h2><p>从“没人测”改成“已有模块，缺少交叉识别”。</p></div>
-          <ol><li><b>第一层：</b>通用 DR benchmark 建立事实、搜索、引用和报告质量底线。</li><li><b>第二层：</b>Setoka、PersonaTrail、APeB 已经测用户理解与历史利用。</li><li><b>第三层：</b>TARS、PASB、Temporal work 已经触及单域效用、持久风险和时间变化。</li><li><b>第四层：</b>PDR-Bench 最接近个性化 DR，但仍缺 matched/swapped 反事实识别、预冻结差异真值与长程机制校准。</li></ol>
+          <ol><li><b>第一层：</b>通用 DR benchmark 建立事实、搜索、引用和报告质量底线。</li><li><b>第二层：</b>Setoka <a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a>、PersonaTrail <a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a>、APeB <a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a> 已经测用户理解与历史利用。</li><li><b>第三层：</b>TARS <a className="inlineCite" href="https://arxiv.org/abs/2607.15948" target="_blank" rel="noreferrer">[29]</a>、PASB <a className="inlineCite" href="https://arxiv.org/abs/2607.10526" target="_blank" rel="noreferrer">[31]</a>、Temporal work <a className="inlineCite" href="https://arxiv.org/abs/2607.21635" target="_blank" rel="noreferrer">[27]</a> 已经触及单域效用、持久风险和时间变化。</li><li><b>第四层：</b>PDR-Bench <a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a> 最接近个性化 DR，但仍缺 matched/swapped 反事实识别、预冻结差异真值与长程机制校准。</li></ol>
           <div className="litGo"><b>三项最低成立条件</b><span>matched/swapped 人评稳定</span><span>效应不由长度/风格/共同质量解释</span><span>至少一个 signal/operator 效应可重复</span></div>
         </div>
       </section>

@@ -51,6 +51,8 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /同一套方法，按阅读场景分成四版/);
   assert.match(html, /先建立有效配对，再施加独立扰动/);
   assert.match(html, /href="\/literature"/i);
+  assert.match(html, /class="inlineCite"[^>]+2607\.27056/i);
+  assert.match(html, /class="inlineCite"[^>]+2509\.25106/i);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
 });
@@ -65,6 +67,8 @@ test("server-renders the seven-paper related-work brief", async () => {
   assert.match(html, /PASB/);
   assert.match(html, /APeB/);
   assert.match(html, /三项最低成立条件/);
+  assert.match(html, /class="inlineCite"[^>]+2607\.21635/i);
+  assert.match(html, /class="inlineCite"[^>]+2607\.10526/i);
 });
 
 test("keeps the machine-readable metadata and downloadable artifacts in sync", async () => {
@@ -101,5 +105,6 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
     access(new URL("../public/DeepAlign-Bench_汇报精简版.docx", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_汇报精简版.pdf", import.meta.url)),
     access(new URL("../public/PROJECT_MEMORY.md", import.meta.url)),
+    access(new URL("../public/og.png", import.meta.url)),
   ]);
 });
