@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.17 · 2026 年 8 月 2 日
+版本：v0.18 · 2026 年 8 月 3 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -14,7 +14,7 @@
 
 ### 为什么需要新的 benchmark
 
-Setoka、PersonaTrail/APeB、TARS、PASB 和 temporal-intervention 工作已经分别覆盖“理解—利用—单域效用—持久风险—时间更新”的一段；[9-12][14][15] SARSI 提供受治理的 personal-agent 架构。[13] PDR-Bench 已把 persona 引入 Deep Research。[3] 缺少的是把异构用户信号、广义 DR 交付物、matched/swapped 交换和长程干预放进同一协议。给模型 persona 后分数提高，仍可能只是 prompt/报告更长、复述了 persona，或 judge 偏爱更具体的文本。
+Setoka、PersonaTrail/APeB、TARS、PASB 和 temporal-intervention 工作已经分别覆盖“理解—利用—单域效用—持久风险—时间更新”的一段；[[9]](https://arxiv.org/abs/2607.27056)[[10]](https://arxiv.org/abs/2607.21635)[[11]](https://arxiv.org/abs/2607.20482)[[12]](https://arxiv.org/abs/2607.15948)[[14]](https://arxiv.org/abs/2607.10526)[[15]](https://arxiv.org/abs/2607.03162) SARSI 提供受治理的 personal-agent 架构。[[13]](https://arxiv.org/abs/2607.12254) PDR-Bench 已把 persona 引入 Deep Research。[[3]](https://arxiv.org/abs/2509.25106) 缺少的是把异构用户信号、广义 DR 交付物、matched/swapped 交换和长程干预放进同一协议。给模型 persona 后分数提高，仍可能只是 prompt/报告更长、复述了 persona，或 judge 偏爱更具体的文本。
 
 因此我们采用反事实对照：固定任务、证据、工具和预算，只改变用户；再把两个用户的交付物交换评分。只有 matched 持续优于 swapped，同时事实和共同质量不下降，才算真正个性化。
 

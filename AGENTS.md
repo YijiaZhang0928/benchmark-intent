@@ -10,4 +10,6 @@ For every substantive research discussion or modification:
 4. Render and inspect changed DOCX/PDF files; keep the formal condensed proposal at no more than 10 pages. Build/test the HTML and verify the standalone edition.
 5. Update `CHANGELOG.md`, stage only project-owned relevant files, commit as `proposal vX.Y: <core change>`, and push `main` to `origin`.
 
+Citation preference: every numbered in-text citation must be a clickable link to the original paper or official documentation in Markdown, DOCX, PDF, and HTML outputs. Expand citation ranges when necessary so each source has its own destination.
+
 Preserve unrelated tracked changes and the user's untracked research/reference directories. Never stage them without explicit instruction.

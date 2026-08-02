@@ -7,6 +7,7 @@ from docx.enum.section import WD_SECTION, WD_ORIENT
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT, WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 ROOT = Path(__file__).resolve().parents[1]
 MD = ROOT / "proposal" / "DeepAlign-Bench_研究Proposal.md"
@@ -20,8 +21,8 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.17 · 组内讨论稿"
-DOC_DATE = "2026 年 8 月 2 日"
+DOC_VERSION = "v0.18 · 组内讨论稿"
+DOC_DATE = "2026 年 8 月 3 日"
 RESEARCH_LINE = "Evaluation Atlas · 反事实适配 · Rubric Compiler · JudgeBench"
 CORE_CLAIM = "固定任务与证据，只改变用户；只有匹配用户的交付物在反事实交换中仍占优，才能称为真正个性化。"
 CONTENTS_ITEMS = [
@@ -245,16 +246,69 @@ def configure_styles(doc):
         st.paragraph_format.line_spacing = 1.15 if STYLE_PRESET == "formal_condensed" else 1.208
 
 
+def add_hyperlink(paragraph, label, url, size=None, color=BLUE):
+    """Append a clickable external link while preserving the document type system."""
+    rel_id = paragraph.part.relate_to(url, RT.HYPERLINK, is_external=True)
+    hyperlink = OxmlElement("w:hyperlink")
+    hyperlink.set(qn("r:id"), rel_id)
+    run = OxmlElement("w:r")
+    run_props = OxmlElement("w:rPr")
+    run_fonts = OxmlElement("w:rFonts")
+    run_fonts.set(qn("w:ascii"), FONT)
+    run_fonts.set(qn("w:hAnsi"), FONT)
+    run_fonts.set(qn("w:eastAsia"), CN_FONT)
+    run_props.append(run_fonts)
+    link_color = OxmlElement("w:color")
+    link_color.set(qn("w:val"), color or BLUE)
+    run_props.append(link_color)
+    underline = OxmlElement("w:u")
+    underline.set(qn("w:val"), "single")
+    run_props.append(underline)
+    if size is not None:
+        half_points = str(int(round(size * 2)))
+        font_size = OxmlElement("w:sz")
+        font_size.set(qn("w:val"), half_points)
+        run_props.append(font_size)
+        font_size_cs = OxmlElement("w:szCs")
+        font_size_cs.set(qn("w:val"), half_points)
+        run_props.append(font_size_cs)
+    run.append(run_props)
+    node = OxmlElement("w:t")
+    if label.startswith(" ") or label.endswith(" "):
+        node.set(qn("xml:space"), "preserve")
+    node.text = label
+    run.append(node)
+    hyperlink.append(run)
+    paragraph._p.append(hyperlink)
+
+
 def add_inline(paragraph, text, size=None, color=None):
-    # Small Markdown subset: bold and inline code; URLs become hyperlinks only in references.
+    # Small Markdown subset: bold, emphasis, inline code, Markdown links and bare URLs.
     pos = 0
-    pattern = re.compile(r"(\*\*.+?\*\*|(?<!\*)\*[^*]+?\*(?!\*)|`.+?`)")
+    pattern = re.compile(
+        r"(\[\[\d+\]\]\(https?://[^)\s]+\)|\[[^\]]+\]\(https?://[^)\s]+\)|https?://[^\s]+|\*\*.+?\*\*|(?<!\*)\*[^*]+?\*(?!\*)|`.+?`)"
+    )
     for m in pattern.finditer(text):
         if m.start() > pos:
             r = paragraph.add_run(text[pos:m.start()])
             set_font(r, size=size, color=color)
         token = m.group(0)
-        if token.startswith("**"):
+        citation_link = re.fullmatch(r"\[\[(\d+)\]\]\((https?://[^)\s]+)\)", token)
+        markdown_link = re.fullmatch(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", token)
+        if citation_link:
+            add_hyperlink(paragraph, f"[{citation_link.group(1)}]", citation_link.group(2), size=size)
+        elif markdown_link:
+            add_hyperlink(paragraph, markdown_link.group(1), markdown_link.group(2), size=size)
+        elif token.startswith("http://") or token.startswith("https://"):
+            trailing = ""
+            while token and token[-1] in ".,;:!?，。；：！？":
+                trailing = token[-1] + trailing
+                token = token[:-1]
+            add_hyperlink(paragraph, token, token, size=size)
+            if trailing:
+                r = paragraph.add_run(trailing)
+                set_font(r, size=size, color=color)
+        elif token.startswith("**"):
             r = paragraph.add_run(token[2:-2])
             set_font(r, size=size, bold=True, color=color)
         elif token.startswith("*"):
@@ -563,7 +617,13 @@ def build(md_path=MD, out_path=OUT):
         if re.match(r"^\[\d+\]\s", stripped):
             flush_paragraph()
             p = doc.add_paragraph()
-            add_inline(p, stripped)
+            if STYLE_PRESET == "formal_condensed":
+                reference_size = 8.5
+            elif STYLE_PRESET == "compact_reference_guide":
+                reference_size = 9
+            else:
+                reference_size = 9.5
+            add_inline(p, stripped, size=reference_size)
             current_num_id = None
             i += 1
             continue

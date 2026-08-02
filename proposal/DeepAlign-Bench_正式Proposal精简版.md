@@ -2,17 +2,17 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.17 · 2026 年 8 月 2 日
+版本：v0.18 · 2026 年 8 月 3 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.15
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.18
 
 ---
 
 ## 摘要
 
-现有工作已经分别评价 Deep Research 通用质量、分层用户理解、行为历史利用、单域个性化效用、持久状态安全和时间干预，[5][7][16-22] 但尚未在广义 Deep Research 的多类最终交付物上统一检验“该结果是否对这个用户具有特异价值”。本项目拟构建 DeepAlign-Bench，用于评估长程智能体能否从不同渠道获得与任务相关的用户信息，在执行过程中保持、使用和更新这些信息，并交付必要且正确的用户特异结果。
+现有工作已经分别评价 Deep Research 通用质量、分层用户理解、行为历史利用、单域个性化效用、持久状态安全和时间干预，[[5]](https://arxiv.org/abs/2510.14240)[[7]](https://openai.com/index/paperbench/)[[16]](https://arxiv.org/abs/2607.27056)[[17]](https://arxiv.org/abs/2607.21635)[[18]](https://arxiv.org/abs/2607.20482)[[19]](https://arxiv.org/abs/2607.15948)[[20]](https://arxiv.org/abs/2607.12254)[[21]](https://arxiv.org/abs/2607.10526)[[22]](https://arxiv.org/abs/2607.03162) 但尚未在广义 Deep Research 的多类最终交付物上统一检验“该结果是否对这个用户具有特异价值”。本项目拟构建 DeepAlign-Bench，用于评估长程智能体能否从不同渠道获得与任务相关的用户信息，在执行过程中保持、使用和更新这些信息，并交付必要且正确的用户特异结果。
 
 核心方法是反事实任务族：固定任务、证据、工具与资源预算，只改变目标用户；再将两个用户的交付物进行 matched/swapped 交换评分。只有匹配交付物稳定优于错配交付物，且共同任务质量、事实性、安全与隐私不下降时，才认定为有效个性化。评测框架包括五平面元数据、反事实任务族、元数据驱动的 rubric compiler、分层指标和独立 JudgeBench。
 
@@ -22,11 +22,11 @@
 
 ### 1.1 现有评测的不足
 
-OpenCompass 和 EvalScope 提供模型适配、任务调度、评估与报告框架，但不定义个性化构念。[1][2] LiveResearchBench、PaperBench 等主要回答任务是否完成、事实与引用是否可靠、报告是否完整。[5][7] 这一层建立了通用能力底线，但评价函数通常不随目标用户改变。
+OpenCompass 和 EvalScope 提供模型适配、任务调度、评估与报告框架，但不定义个性化构念。[[1]](https://arxiv.org/abs/2605.19276)[[2]](https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html) LiveResearchBench、PaperBench 等主要回答任务是否完成、事实与引用是否可靠、报告是否完整。[[5]](https://arxiv.org/abs/2510.14240)[[7]](https://openai.com/index/paperbench/) 这一层建立了通用能力底线，但评价函数通常不随目标用户改变。
 
-2026 年 7 月的工作已经向个性化内部推进：Setoka 从语义事实到人格特质测四层用户理解；[16] PersonaTrail 与 APeB 分别从浏览轨迹和商品行为历史测偏好、情景记忆与意图利用；[18][22] TARS 在代码理解中报告个性化解释对时间、认知负担和主观适配的影响；[19] PASB 让 agent 自主写入持久状态并发现 commit 后下游失败显著增加；[21] Qian 等提出显式时间事件、跨事件持久状态、跨维度影响和用户条件化差异四项要求；[17] SARSI 则给出受治理的 personal-agent 系统架构。[20] 这些工作说明“用户理解、历史利用、时间变化和持久风险无人评测”已经是错误表述。
+2026 年 7 月的工作已经向个性化内部推进：Setoka 从语义事实到人格特质测四层用户理解；[[16]](https://arxiv.org/abs/2607.27056) PersonaTrail 与 APeB 分别从浏览轨迹和商品行为历史测偏好、情景记忆与意图利用；[[18]](https://arxiv.org/abs/2607.20482)[[22]](https://arxiv.org/abs/2607.03162) TARS 在代码理解中报告个性化解释对时间、认知负担和主观适配的影响；[[19]](https://arxiv.org/abs/2607.15948) PASB 让 agent 自主写入持久状态并发现 commit 后下游失败显著增加；[[21]](https://arxiv.org/abs/2607.10526) Qian 等提出显式时间事件、跨事件持久状态、跨维度影响和用户条件化差异四项要求；[[17]](https://arxiv.org/abs/2607.21635) SARSI 则给出受治理的 personal-agent 系统架构。[[20]](https://arxiv.org/abs/2607.12254) 这些工作说明“用户理解、历史利用、时间变化和持久风险无人评测”已经是错误表述。
 
-PDR-Bench 最接近本项目：它把真实 persona 引入 Deep Research，但主要比较 task-only、context 和 persona 条件平均分。[4] 现有文献仍缺少同一协议中的四个连接：**异构用户信号 → 广义 DR 执行 → 用户特异最终交付物 → 反事实且经校准的评分**。因此尚难排除输入更长、输出更长、persona 关键词、文风偏好或额外任务信息等替代解释。
+PDR-Bench 最接近本项目：它把真实 persona 引入 Deep Research，但主要比较 task-only、context 和 persona 条件平均分。[[4]](https://arxiv.org/abs/2509.25106) 现有文献仍缺少同一协议中的四个连接：**异构用户信号 → 广义 DR 执行 → 用户特异最终交付物 → 反事实且经校准的评分**。因此尚难排除输入更长、输出更长、persona 关键词、文风偏好或额外任务信息等替代解释。
 
 ### 1.2 研究空缺
 

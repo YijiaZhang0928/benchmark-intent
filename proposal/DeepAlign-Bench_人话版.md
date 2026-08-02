@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **完整人话版：方法不变，只把话说清楚**  
-版本：v0.17 · 2026 年 8 月 2 日
+版本：v0.18 · 2026 年 8 月 3 日
 用途：组内讨论、导师沟通、正式稿写作前的共同理解  
 
 ---
@@ -32,16 +32,16 @@
 
 先把故事讲准确。现有 Deep Research benchmark 大多关注答案是否正确、搜索是否充分、引用是否可靠、报告是否完整。这些工作回答“报告好不好”。但最近的个性化 benchmark 已经开始回答更多问题：
 
-- Setoka 测 agent 能否从异构记录中由事实逐步推到情景、行为模式和人格特质；[13]
-- PersonaTrail 和 APeB 测 agent 能否从浏览或商品行为历史中恢复偏好、意图和过去事件；[15][19]
-- TARS 测个性化代码解释是否降低用户时间与认知负担；[16]
-- PASB 测错误用户观点写入长期状态后，是否污染之后的新任务；[18]
-- temporal-intervention 工作提出：必须有明确时间事件、跨事件持久状态、跨能力影响和用户间差异；[14]
-- SARSI 提出 personal agent 的任务契约、外部验证、交接和治理架构。[17]
+- Setoka 测 agent 能否从异构记录中由事实逐步推到情景、行为模式和人格特质；[[13]](https://arxiv.org/abs/2607.27056)
+- PersonaTrail 和 APeB 测 agent 能否从浏览或商品行为历史中恢复偏好、意图和过去事件；[[15]](https://arxiv.org/abs/2607.20482)[[19]](https://arxiv.org/abs/2607.03162)
+- TARS 测个性化代码解释是否降低用户时间与认知负担；[[16]](https://arxiv.org/abs/2607.15948)
+- PASB 测错误用户观点写入长期状态后，是否污染之后的新任务；[[18]](https://arxiv.org/abs/2607.10526)
+- temporal-intervention 工作提出：必须有明确时间事件、跨事件持久状态、跨能力影响和用户间差异；[[14]](https://arxiv.org/abs/2607.21635)
+- SARSI 提出 personal agent 的任务契约、外部验证、交接和治理架构。[[17]](https://arxiv.org/abs/2607.12254)
 
 所以我们不能说“没人测用户理解、历史或长程状态”。更准确的说法是：这些工作大多各测能力链的一段，还没有在广义 Deep Research 中，把**用户信息从哪里来、agent 如何长程执行、最终交付物该怎样因用户而变、这种变化如何被反事实验证**连成一个可审计协议。
 
-PDR-Bench 已经最接近最后一步，[4] 但如果给 agent 一份 persona 后得分更高，仍然可能有三种替代解释：
+PDR-Bench 已经最接近最后一步，[[4]](https://arxiv.org/abs/2509.25106) 但如果给 agent 一份 persona 后得分更高，仍然可能有三种替代解释：
 
 如果给 agent 一份 persona 后得分更高，仍然可能有三种替代解释：
 
@@ -64,7 +64,7 @@ PDR-Bench 已经最接近最后一步，[4] 但如果给 agent 一份 persona �
 
 ### 1.3 论文的核心贡献不应是“任务更多”
 
-如果只是把 persona、任务和 agent 数量扩大，评审很容易把本项目看成 PDR-Bench、Setoka、PersonaTrail 或 APeB 的拼接版。[4][13][15][19] 因此核心贡献必须是可以单独验证的方法：
+如果只是把 persona、任务和 agent 数量扩大，评审很容易把本项目看成 PDR-Bench、Setoka、PersonaTrail 或 APeB 的拼接版。[[4]](https://arxiv.org/abs/2509.25106)[[13]](https://arxiv.org/abs/2607.27056)[[15]](https://arxiv.org/abs/2607.20482)[[19]](https://arxiv.org/abs/2607.03162) 因此核心贡献必须是可以单独验证的方法：
 
 1. 用统一元数据描述不同 Deep Research 场景；
 2. 用反事实任务族识别真正的用户适配；

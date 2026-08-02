@@ -186,7 +186,7 @@ export default function LiteratureBrief() {
         </div>
       </section>
 
-      <footer><div className="shell"><b>DeepAlign-Bench · v0.16</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
+      <footer><div className="shell"><b>DeepAlign-Bench · v0.18</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
     </main>
   );
 }

@@ -2,14 +2,14 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.17 · 2026 年 8 月 2 日
+版本：v0.18 · 2026 年 8 月 3 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
 
 ## 研究概要
 
-Deep Research 智能体已经能检索、综合并交付长报告，但“报告正确”不等于“报告适合这个用户”。同一项研究任务，面对知识水平、决策目标、资源约束、风险偏好和交付场景不同的用户，理想交付物应在证据不变的前提下产生可解释、必要且有用的差异。相关工作已经不只是测事实与引用：Setoka 测分层用户理解，[26] PersonaTrail 与 APeB 测历史中的偏好/意图利用，[28][32] TARS 在代码理解中测个性化效用，[29] PASB 测持久状态写入风险，[31] 另有工作形式化了用户条件化时间干预。[27] 更准确的缺口是：这些能力尚未在**广义 Deep Research 最终交付物**上被一个统一协议连接起来，同时识别正向用户效用、过度个性化、长程状态变化和通用质量之间的关系。已有 Personalized Deep Research Bench（PDR-Bench）最接近这一目标，[4] 但仍难排除循环定义、风格偏好和“提供更多文字自然得更高分”等替代解释。
+Deep Research 智能体已经能检索、综合并交付长报告，但“报告正确”不等于“报告适合这个用户”。同一项研究任务，面对知识水平、决策目标、资源约束、风险偏好和交付场景不同的用户，理想交付物应在证据不变的前提下产生可解释、必要且有用的差异。相关工作已经不只是测事实与引用：Setoka 测分层用户理解，[[26]](https://arxiv.org/abs/2607.27056) PersonaTrail 与 APeB 测历史中的偏好/意图利用，[[28]](https://arxiv.org/abs/2607.20482)[[32]](https://arxiv.org/abs/2607.03162) TARS 在代码理解中测个性化效用，[[29]](https://arxiv.org/abs/2607.15948) PASB 测持久状态写入风险，[[31]](https://arxiv.org/abs/2607.10526) 另有工作形式化了用户条件化时间干预。[[27]](https://arxiv.org/abs/2607.21635) 更准确的缺口是：这些能力尚未在**广义 Deep Research 最终交付物**上被一个统一协议连接起来，同时识别正向用户效用、过度个性化、长程状态变化和通用质量之间的关系。已有 Personalized Deep Research Bench（PDR-Bench）最接近这一目标，[[4]](https://arxiv.org/abs/2509.25106) 但仍难排除循环定义、风格偏好和“提供更多文字自然得更高分”等替代解释。
 
 本项目拟构建 **DeepAlign-Bench**：一个面向广义长程 Deep Research 的、以最终交付物为核心、可扩展到执行轨迹的个性化评测基准。核心不是“有 persona 时分数是否更高”，而是建立**反事实任务族**：固定任务、证据环境与资源预算，只改变目标用户及用户信息的呈现渠道；再检验 agent 是否产生了与差异真值一致的交付物变化，同时保持通用任务质量、事实可靠性、安全与隐私。
 
@@ -47,19 +47,19 @@ Deep Research 智能体已经能检索、综合并交付长报告，但“报告
 
 ### 2.1 OpenCompass：它解决的是评测工程，不替代构念设计
 
-OpenCompass 将评测流程拆为配置系统、任务切分器、执行/调度器、任务单元和结果汇总器，并把流程标准化为配置、推理、评估和可视化四阶段。它支持规则评估、LLM-as-a-Judge 以及级联评估：规则先处理可确定样本，复杂边界样本再交给模型评委。其关键价值是模型—数据笛卡尔积的任务化、可重试并行执行、统一后处理与结果聚合，而不是提出新的个性化构念。[1]
+OpenCompass 将评测流程拆为配置系统、任务切分器、执行/调度器、任务单元和结果汇总器，并把流程标准化为配置、推理、评估和可视化四阶段。它支持规则评估、LLM-as-a-Judge 以及级联评估：规则先处理可确定样本，复杂边界样本再交给模型评委。其关键价值是模型—数据笛卡尔积的任务化、可重试并行执行、统一后处理与结果聚合，而不是提出新的个性化构念。[[1]](https://arxiv.org/abs/2605.19276)
 
 对本项目的直接启示是：把 `user_source × task_family × perturbation × agent × seed` 声明为配置维度；推理与评分完全分离；每次运行保存模型版本、搜索后端、时间戳、工具轨迹、交付物哈希和 judge 版本。OpenCompass 目前仍以静态 benchmark 和单轮文本为主，论文也把多轮、多模态列为未来方向，因此我们需要自定义 episode runner、artifact collector 与 trajectory checkpoint，而不能把本项目简化为普通 QA dataset。
 
 ### 2.2 EvalScope：适合作为入口与报告层，但核心评分需自建
 
-EvalScope 通过 Model Adapter、Data Adapter、Native/OpenCompass/VLMEvalKit/ThirdParty backend、Performance Evaluator、报告与可视化统一多模型评测，并提供 single、pairwise-baseline、全量 pairwise arena 等模式。[2] 它提示我们将 benchmark 设计为可插拔的三层：统一 agent adapter、统一 case schema、可组合 evaluator。其 arena 模式尤其适合目标用户盲评；性能评估模块则可统一记录时延、token、搜索与工具调用成本。
+EvalScope 通过 Model Adapter、Data Adapter、Native/OpenCompass/VLMEvalKit/ThirdParty backend、Performance Evaluator、报告与可视化统一多模型评测，并提供 single、pairwise-baseline、全量 pairwise arena 等模式。[[2]](https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html) 它提示我们将 benchmark 设计为可插拔的三层：统一 agent adapter、统一 case schema、可组合 evaluator。其 arena 模式尤其适合目标用户盲评；性能评估模块则可统一记录时延、token、搜索与工具调用成本。
 
 但 EvalScope 的“expert model 自动评估”只是执行能力，不构成 judge 有效性的证据。DeepAlign-Bench 必须另建 JudgeBench，先证明评委能识别真正的用户特异性，而不是长度、语气或显式复述 persona。
 
 ### 2.3 Agent-SafetyBench：最值得仿照的是“结果类别 × 失败机制”
 
-Agent-SafetyBench 构造 349 个交互环境和 2,000 个案例，覆盖 8 类风险与 10 种失败模式；每个案例记录风险类别、对话/指令、环境和预期失败模式，并通过人工预检、自动环境验证、模型运行后的人工后检形成质量闭环。它发现直接使用 GPT-4o 对行为安全评分只有 75.5% 准确率，因此用 4,000 条人工标签训练本地 scorer，在独立的 200 条交互上达到 91.5%。[3]
+Agent-SafetyBench 构造 349 个交互环境和 2,000 个案例，覆盖 8 类风险与 10 种失败模式；每个案例记录风险类别、对话/指令、环境和预期失败模式，并通过人工预检、自动环境验证、模型运行后的人工后检形成质量闭环。它发现直接使用 GPT-4o 对行为安全评分只有 75.5% 准确率，因此用 4,000 条人工标签训练本地 scorer，在独立的 200 条交互上达到 91.5%。[[3]](https://arxiv.org/abs/2412.14470)
 
 本项目将采用同样的正交结构：
 
@@ -74,7 +74,7 @@ Agent-SafetyBench 构造 349 个交互环境和 2,000 个案例，覆盖 8 类�
 
 ### 2.4 PDR-Bench（arXiv:2509.25106）：最直接的前作，也是必须超越的基线
 
-PDR-Bench 设计 50 个任务、10 个领域、25 个真实志愿者 persona，每个任务匹配 5 个用户，形成 250 个用户—任务对。用户信息包括结构化 persona 和由专业标注员模拟的长期记忆/对话上下文。其 PQR 框架分别衡量 Personalization、Quality 和 Reliability：个性化含 Goal Alignment、Content Alignment、Presentation Fit、Actionability；可靠性由事实准确率与引用覆盖率组成。[4]
+PDR-Bench 设计 50 个任务、10 个领域、25 个真实志愿者 persona，每个任务匹配 5 个用户，形成 250 个用户—任务对。用户信息包括结构化 persona 和由专业标注员模拟的长期记忆/对话上下文。其 PQR 框架分别衡量 Personalization、Quality 和 Reliability：个性化含 Goal Alignment、Content Alignment、Presentation Fit、Actionability；可靠性由事实准确率与引用覆盖率组成。[[4]](https://arxiv.org/abs/2509.25106)
 
 论文的贡献应被正面承认：它首先把真实用户画像和深度调研结合；包含 task-only、context 和 persona 条件；对若干 memory system 做实验；并用人类评分比较 judge。但从顶会评审角度看，仍存在以下可攻击点：
 
@@ -90,26 +90,26 @@ DeepAlign-Bench 的核心增量因此不是“再加几个 persona”，而是�
 
 ### 2.5 LivingBench：动态用户与环境值得吸收，但目前证据透明度不足
 
-Macaron 团队将 LivingBench 描述为从真实产品需求中蒸馏的动态个人生活 benchmark：同时模拟动态噪声、动态生活环境与动态用户；用户信息逐步披露，任务中途变化，最终以 world end-state、case rubric 和时延、侵扰、错误恢复等过程指标评分。公开技术文章还给出 preview 协议：30 个多轮 case、10 轮预算、每个用户轮次至多 3 次工具决策，综合分为 `0.7 × need score + 0.3 × process score`。[5]
+Macaron 团队将 LivingBench 描述为从真实产品需求中蒸馏的动态个人生活 benchmark：同时模拟动态噪声、动态生活环境与动态用户；用户信息逐步披露，任务中途变化，最终以 world end-state、case rubric 和时延、侵扰、错误恢复等过程指标评分。公开技术文章还给出 preview 协议：30 个多轮 case、10 轮预算、每个用户轮次至多 3 次工具决策，综合分为 `0.7 × need score + 0.3 × process score`。[[5]](https://macaron.im/mindlab/research/macaron-v1-preview)
 
 这对本项目有三点启示：用户状态应允许变化；环境事实应有冲突和陈旧；最终评价不仅看文字，还看用户所处世界是否改善。但截至本 proposal 所核材料，LivingBench 主要依据产品方技术文章，完整数据、rubric、模拟器验证和人类一致性证据尚不如论文 benchmark 透明。因此它应作为设计灵感和对照案例，而不能作为未经审计的方法学金标准。小红书链接无法直接读取的部分不作为事实依据，核心论点均由作者公开技术文章交叉核验。
 
 ### 2.6 近两年代表性 benchmark 的可迁移经验
 
-- **DeepResearch Bench**：100 个专家任务、22 个领域，采用自适应报告质量标准并分开评估引用有效性与准确性；说明深度调研需要“内容质量”和“检索证据”双轨评分。[6]
-- **Mind2Web 2**：130 个长程实时 web 任务、超过 1,000 小时人工构建，以树状 rubric 和 Agent-as-a-Judge 同时评估答案正确性与来源归因；说明复杂任务应拆成可追踪的证据树。[7]
-- **BrowseComp-Plus**：固定语料、人工核验支持文档与困难负例，以解决实时搜索 API 带来的不公平和不可复现；说明主榜应有 frozen corpus 轨，live web 只能作为生态有效性轨。[8]
-- **PaperBench**：20 个论文复现任务被拆为 8,316 个可单独评分要求，rubric 与论文作者共建，并另建 judge benchmark；说明复杂交付物需要层级原子 rubric 与“评委也要被考试”。[9]
-- **LiveResearchBench / DeepEval**：100 个实时任务，明确覆盖日常生活、企业和学术使用者，并按领域与研究意图组织任务；其用户调查表明目标受众、内容、格式和呈现适配是现实需求。值得注意的是，正文称“10 类任务”，附录百分比分布实际枚举了 11 类（topic understanding、wide search、top ranking 等），说明直接复制自然语言类别会产生边界重叠与计数不一致；本项目因此合并为较稳定的上位意图，并公开映射表。[10]
-- **DeepResearchGym**：用固定 ClueWeb22/FineWeb 索引替代动态商业搜索，并用人评验证自动协议；说明可复现主榜与真实世界 live track 应并存。[11]
-- **DRBench**：把公开 web 与企业私有文件、邮件、聊天和云盘结合，以 insight recall、distractor avoidance、事实性和报告质量评分；说明用户信息和任务证据在真实环境中经常来自私有空间。[12]
-- **LiveBench/LiveCodeBench 的更新机制**：周期性加入新题、强调客观评分与时间切分，提醒我们采用公开开发集、私有测试集和定期刷新，减轻污染与 benchmark 过拟合。[13]
-- **JudgeLM / Prometheus 2**：专用 SFT evaluator 可以显著降低成本、冻结版本，并支持自定义 rubric；但 position、knowledge、format bias 仍需交换增强、参考答案和对抗集处理。[14][15]
-- **SFT judge 泛化研究**：微调评委在同分布集合上可能超过强通用模型，却容易退化为 task-specific classifier，在跨任务泛化、公平性和细粒度维度上下降；因此不能先验指定 SFT scorer 为金标准。[16]
-- **LiveDRBench**：把 Deep Research 定义为同时具有高搜索强度与非平凡推理强度，并覆盖科学事实、数据集发现、prior art、实体枚举和现实事件；说明“长报告”不是任务类型，搜索 fan-out 与推理结构才是更可比较的需求属性。[17]
-- **ResearchRubrics（ICLR 2026）**：用 conceptual breadth、logical nesting 和 exploration 三个正交维度刻画任务复杂度；其结果显示逻辑嵌套加深时 rubric compliance 单调下降，支持把难度作为连续/有序属性而非“PhD vs. daily”二分标签。[18]
-- **AssistantBench / Researchy Questions**：前者从真实用户近期经历和专业人士工作中收集耗时 web 任务，后者从搜索日志抽取约 10 万条非事实型、多视角需求；它们共同说明日常任务不是“简单题”，真实信息需求也可能具有高 fan-out、动态约束与复杂验证链。[19][20]
-- **ResearcherBench**：65 个前沿 AI 科研问题分为 technical details、literature review 和 open consulting，说明即使在同一“PhD-level”层内也存在不同研究意图，不能只用用户学历或领域充当任务 taxonomy。[21]
+- **DeepResearch Bench**：100 个专家任务、22 个领域，采用自适应报告质量标准并分开评估引用有效性与准确性；说明深度调研需要“内容质量”和“检索证据”双轨评分。[[6]](https://arxiv.org/abs/2506.11763)
+- **Mind2Web 2**：130 个长程实时 web 任务、超过 1,000 小时人工构建，以树状 rubric 和 Agent-as-a-Judge 同时评估答案正确性与来源归因；说明复杂任务应拆成可追踪的证据树。[[7]](https://arxiv.org/abs/2506.21506)
+- **BrowseComp-Plus**：固定语料、人工核验支持文档与困难负例，以解决实时搜索 API 带来的不公平和不可复现；说明主榜应有 frozen corpus 轨，live web 只能作为生态有效性轨。[[8]](https://arxiv.org/abs/2508.06600)
+- **PaperBench**：20 个论文复现任务被拆为 8,316 个可单独评分要求，rubric 与论文作者共建，并另建 judge benchmark；说明复杂交付物需要层级原子 rubric 与“评委也要被考试”。[[9]](https://openai.com/index/paperbench/)
+- **LiveResearchBench / DeepEval**：100 个实时任务，明确覆盖日常生活、企业和学术使用者，并按领域与研究意图组织任务；其用户调查表明目标受众、内容、格式和呈现适配是现实需求。值得注意的是，正文称“10 类任务”，附录百分比分布实际枚举了 11 类（topic understanding、wide search、top ranking 等），说明直接复制自然语言类别会产生边界重叠与计数不一致；本项目因此合并为较稳定的上位意图，并公开映射表。[[10]](https://livedeepresearch.github.io/)
+- **DeepResearchGym**：用固定 ClueWeb22/FineWeb 索引替代动态商业搜索，并用人评验证自动协议；说明可复现主榜与真实世界 live track 应并存。[[11]](https://arxiv.org/abs/2505.19253)
+- **DRBench**：把公开 web 与企业私有文件、邮件、聊天和云盘结合，以 insight recall、distractor avoidance、事实性和报告质量评分；说明用户信息和任务证据在真实环境中经常来自私有空间。[[12]](https://arxiv.org/abs/2510.00172)
+- **LiveBench/LiveCodeBench 的更新机制**：周期性加入新题、强调客观评分与时间切分，提醒我们采用公开开发集、私有测试集和定期刷新，减轻污染与 benchmark 过拟合。[[13]](https://livebench.ai/)
+- **JudgeLM / Prometheus 2**：专用 SFT evaluator 可以显著降低成本、冻结版本，并支持自定义 rubric；但 position、knowledge、format bias 仍需交换增强、参考答案和对抗集处理。[[14]](https://arxiv.org/abs/2310.17631)[[15]](https://arxiv.org/abs/2405.01535)
+- **SFT judge 泛化研究**：微调评委在同分布集合上可能超过强通用模型，却容易退化为 task-specific classifier，在跨任务泛化、公平性和细粒度维度上下降；因此不能先验指定 SFT scorer 为金标准。[[16]](https://arxiv.org/abs/2403.02839)
+- **LiveDRBench**：把 Deep Research 定义为同时具有高搜索强度与非平凡推理强度，并覆盖科学事实、数据集发现、prior art、实体枚举和现实事件；说明“长报告”不是任务类型，搜索 fan-out 与推理结构才是更可比较的需求属性。[[17]](https://arxiv.org/abs/2508.04183)
+- **ResearchRubrics（ICLR 2026）**：用 conceptual breadth、logical nesting 和 exploration 三个正交维度刻画任务复杂度；其结果显示逻辑嵌套加深时 rubric compliance 单调下降，支持把难度作为连续/有序属性而非“PhD vs. daily”二分标签。[[18]](https://arxiv.org/abs/2511.07685)
+- **AssistantBench / Researchy Questions**：前者从真实用户近期经历和专业人士工作中收集耗时 web 任务，后者从搜索日志抽取约 10 万条非事实型、多视角需求；它们共同说明日常任务不是“简单题”，真实信息需求也可能具有高 fan-out、动态约束与复杂验证链。[[19]](https://arxiv.org/abs/2407.15711)[[20]](https://arxiv.org/abs/2402.17896)
+- **ResearcherBench**：65 个前沿 AI 科研问题分为 technical details、literature review 和 open consulting，说明即使在同一“PhD-level”层内也存在不同研究意图，不能只用用户学历或领域充当任务 taxonomy。[[21]](https://arxiv.org/abs/2507.16280)
 
 ### 2.7 2026 年 7 月相邻工作：缺口必须写成“交叉缺口”
 
@@ -117,15 +117,15 @@ Macaron 团队将 LivingBench 描述为从真实产品需求中蒸馏的动态�
 
 | 工作 | 实际评价对象与主要证据 | 对本项目的直接威胁 | 仍未覆盖的部分 |
 |---|---|---|---|
-| **Setoka** [26] | 从语义事实、情景记忆、行为模式到人格特质的四层用户理解；10 个合成用户、异构记录、3 个模型 × 5 个 memory system；抽象层级越高表现越差 | 不能再声称“没有 benchmark 测跨源用户理解” | 主要终点是问答/记忆准确性；没有检验推断是否让开放式 DR 交付物产生必要且正确的差异 |
-| **User-Conditioned Temporal Interventions** [27] | 提出 C1 显式时间事件、C2 跨事件持久状态、C3 跨适应维度影响、C4 用户条件化差异；审计中未发现同时满足四项的协议 | 是长程更新与恢复设计最直接的方法学前作；不能声称首先提出 temporal intervention | 属于 position/audit paper；没有构造广义 DR 任务、最终交付物真值、反事实用户对或实证榜单 |
-| **PersonaTrail** [28] | 用细粒度浏览轨迹测试 preference inference 与 episodic grounding；23 个领域、317 个网站、2,524 个 query；双记忆方法优于基线 | 证明用户信号可以来自真实行为轨迹，而不只是 persona 文本 | 局限于 web navigation 与两类查询；没有跨交付物 rubric、matched/swapped 用户效用和动态纠错 |
-| **TARS** [29] | 在 IDE 内按经验、角色和风格生成代码解释；18 人研究观察到更快完成、较低认知负担和主观适配 | 证明“个性化价值”可以体现在用户时间和认知负担，而不只是文本相似度 | 单域、小样本人机实验，若干客观差异未显著；不足以建立跨任务、跨 agent 的 benchmark |
-| **SARSI** [30] | 提出外部治理、task contract、planner/executor/verifier、版本化记忆与 owner control 的系统架构 | 为 agent plane、handoff、审计和 owner autonomy 提供更完整架构词汇 | 概念性系统设计，没有原创数据、实现或实证 benchmark；不能作为性能证据 |
-| **PASB** [31] | 1,600 个任务、12 个模型、2 个 agent framework；让真实 agent 自主写状态，再测新会话污染；commit 后平均失败由 45.0% 升至 71.9% | 是持久个性化安全和 longitudinal failure 最强的直接前作；我们必须测 must-not、来源/时效/作用域和写入治理 | 聚焦 persistent sycophancy 这一负向失败类，不评价广义 DR 的正向适配、交付物效用或跨任务结果真值 |
-| **APeB** [32] | 从原始欠指定商品查询、噪声行为历史和 hard candidates 测意图推断、偏好提取与候选选择；显式历史利用模块带来增益 | 证明“history 是否被实际利用”可通过 hard alternatives 与中间 rubric 诊断 | 单一电商平台、静态离线排序；没有广义 DR 交付物、多源信号、时间更新或 counterfactual user utility |
+| **Setoka** [[26]](https://arxiv.org/abs/2607.27056) | 从语义事实、情景记忆、行为模式到人格特质的四层用户理解；10 个合成用户、异构记录、3 个模型 × 5 个 memory system；抽象层级越高表现越差 | 不能再声称“没有 benchmark 测跨源用户理解” | 主要终点是问答/记忆准确性；没有检验推断是否让开放式 DR 交付物产生必要且正确的差异 |
+| **User-Conditioned Temporal Interventions** [[27]](https://arxiv.org/abs/2607.21635) | 提出 C1 显式时间事件、C2 跨事件持久状态、C3 跨适应维度影响、C4 用户条件化差异；审计中未发现同时满足四项的协议 | 是长程更新与恢复设计最直接的方法学前作；不能声称首先提出 temporal intervention | 属于 position/audit paper；没有构造广义 DR 任务、最终交付物真值、反事实用户对或实证榜单 |
+| **PersonaTrail** [[28]](https://arxiv.org/abs/2607.20482) | 用细粒度浏览轨迹测试 preference inference 与 episodic grounding；23 个领域、317 个网站、2,524 个 query；双记忆方法优于基线 | 证明用户信号可以来自真实行为轨迹，而不只是 persona 文本 | 局限于 web navigation 与两类查询；没有跨交付物 rubric、matched/swapped 用户效用和动态纠错 |
+| **TARS** [[29]](https://arxiv.org/abs/2607.15948) | 在 IDE 内按经验、角色和风格生成代码解释；18 人研究观察到更快完成、较低认知负担和主观适配 | 证明“个性化价值”可以体现在用户时间和认知负担，而不只是文本相似度 | 单域、小样本人机实验，若干客观差异未显著；不足以建立跨任务、跨 agent 的 benchmark |
+| **SARSI** [[30]](https://arxiv.org/abs/2607.12254) | 提出外部治理、task contract、planner/executor/verifier、版本化记忆与 owner control 的系统架构 | 为 agent plane、handoff、审计和 owner autonomy 提供更完整架构词汇 | 概念性系统设计，没有原创数据、实现或实证 benchmark；不能作为性能证据 |
+| **PASB** [[31]](https://arxiv.org/abs/2607.10526) | 1,600 个任务、12 个模型、2 个 agent framework；让真实 agent 自主写状态，再测新会话污染；commit 后平均失败由 45.0% 升至 71.9% | 是持久个性化安全和 longitudinal failure 最强的直接前作；我们必须测 must-not、来源/时效/作用域和写入治理 | 聚焦 persistent sycophancy 这一负向失败类，不评价广义 DR 的正向适配、交付物效用或跨任务结果真值 |
+| **APeB** [[32]](https://arxiv.org/abs/2607.03162) | 从原始欠指定商品查询、噪声行为历史和 hard candidates 测意图推断、偏好提取与候选选择；显式历史利用模块带来增益 | 证明“history 是否被实际利用”可通过 hard alternatives 与中间 rubric 诊断 | 单一电商平台、静态离线排序；没有广义 DR 交付物、多源信号、时间更新或 counterfactual user utility |
 
-这些工作共同形成一条能力链：**理解用户 → 从历史推断并行动 → 跨会话保持/更新 → 交付用户特异结果**。[26-32] 现有论文大多只验证其中一段。PDR-Bench 已进入最后一段，但对“为什么该差异属于这个用户”识别不足。[4] 因此 DeepAlign-Bench 不应声称首先研究 personalization、history、persistent state 或 temporal intervention；可辩护的主张是：
+这些工作共同形成一条能力链：**理解用户 → 从历史推断并行动 → 跨会话保持/更新 → 交付用户特异结果**。[[26]](https://arxiv.org/abs/2607.27056)[[27]](https://arxiv.org/abs/2607.21635)[[28]](https://arxiv.org/abs/2607.20482)[[29]](https://arxiv.org/abs/2607.15948)[[30]](https://arxiv.org/abs/2607.12254)[[31]](https://arxiv.org/abs/2607.10526)[[32]](https://arxiv.org/abs/2607.03162) 现有论文大多只验证其中一段。PDR-Bench 已进入最后一段，但对“为什么该差异属于这个用户”识别不足。[[4]](https://arxiv.org/abs/2509.25106) 因此 DeepAlign-Bench 不应声称首先研究 personalization、history、persistent state 或 temporal intervention；可辩护的主张是：
 
 > 首次在广义 Deep Research 的多类最终交付物上，将异构用户信号、反事实用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预与独立 judge 校准放进同一可审计协议，从而区分通用质量、正向用户适配、过度个性化和状态漂移。
 
@@ -169,7 +169,7 @@ Macaron 团队将 LivingBench 描述为从真实产品需求中蒸馏的动态�
 | **D. User-signal Channel** | brief、structured persona、澄清、历史、行为轨迹、私有工作区、组织上下文、动态反馈 | 相同用户事实如何被 agent 获得、表征和更新？ |
 | **E. Agent System** | 模型/产品版本、搜索、memory、工具、规划、多 agent 交接、预算和可见上下文 | 不同系统结构在何处形成或丢失个性化？ |
 
-Atlas 上再施加四类**行为测试算子**，借鉴 CheckList 的“能力 × 测试类型”思想，而不是为每种表面组合另造一个 benchmark 类别：[23]
+Atlas 上再施加四类**行为测试算子**，借鉴 CheckList 的“能力 × 测试类型”思想，而不是为每种表面组合另造一个 benchmark 类别：[[23]](https://aclanthology.org/2020.acl-main.442/)
 
 1. **Acquire**：必要信息缺失、隐含或需要澄清时，是否取得最小充分用户信息；
 2. **Preserve**：在噪声、长上下文、冲突、过期信息和子 agent 交接中是否忠实保持；
@@ -178,7 +178,7 @@ Atlas 上再施加四类**行为测试算子**，借鉴 CheckList 的“能力 �
 
 因此，一个可运行测试不再用模糊名称描述，而由 `Atlas coordinate + behavioral operator + expected contract` 唯一化。例如：“Professional / Compare-Decide / live web / natural history / retrieval-memory agent / stale-conflict / Update”与“Everyday / Plan / frozen corpus / structured persona / no-memory agent / context-dilution / Preserve”属于不同可比较条件。
 
-HELM 先系统枚举场景与指标空间，再基于覆盖和可行性选择子集并明确缺口；这正适合本项目的两个月约束。[22] 本项目不声称首版覆盖全集，而发布**机器可读 coverage manifest**：列出 ontology 中哪些值已定义、哪些组合已测试、哪些是结构性不适用、哪些因资源不足留待后续。相较“我们覆盖了很多任务”的宽泛表述，这是一项可审计、可扩展的 benchmark 资产。BetterBench 对 benchmark 生命周期质量和统计/复现缺口的系统检查，以及 BenchmarkCards 对目标、方法、来源与限制的标准化，也支持把元数据、覆盖声明和版本记录纳入主贡献而非附录。[24][25]
+HELM 先系统枚举场景与指标空间，再基于覆盖和可行性选择子集并明确缺口；这正适合本项目的两个月约束。[[22]](https://arxiv.org/abs/2211.09110) 本项目不声称首版覆盖全集，而发布**机器可读 coverage manifest**：列出 ontology 中哪些值已定义、哪些组合已测试、哪些是结构性不适用、哪些因资源不足留待后续。相较“我们覆盖了很多任务”的宽泛表述，这是一项可审计、可扩展的 benchmark 资产。BetterBench 对 benchmark 生命周期质量和统计/复现缺口的系统检查，以及 BenchmarkCards 对目标、方法、来源与限制的标准化，也支持把元数据、覆盖声明和版本记录纳入主贡献而非附录。[[24]](https://arxiv.org/abs/2411.12990)[[25]](https://papers.neurips.cc/paper_files/paper/2025/hash/76175f4355e2f67cf91be468c8860070-Abstract-Datasets_and_Benchmarks_Track.html)
 
 ### 4.1.1 任务立方体：Research Task 平面的抽样骨架
 
@@ -484,7 +484,7 @@ Judge 上线门槛预注册为：pairwise accuracy ≥ 0.75；加权 κ 或 Krip
 
 专用 scorer 的训练单元不应只有“人工 0/1 标签 + GPT 生成理由”。建议至少包含：冻结 rubric 叶节点与评分锚点、人工 gold label、交付物 evidence span、错误类型、置信度/弃权，以及经抽检的解释。GPT 在已知 gold label 后生成的 reason 只是**标签条件下的解释蒸馏**，不是新的 ground truth；它可能形成流畅但不可验证的事后合理化。关键隐私项、硬门槛项和争议项需保留人写或人审理由。
 
-JudgeBench 同时比较三类系统：（a）强通用 prompted judge；（b）使用 `label + evidence + reason` 监督的 SFT leaf scorer；（c）两者的级联。训练、验证、测试必须按 task family、目标用户、被测 agent 与时间分组，禁止同一 counterfactual family 跨 split。除 accuracy、macro-F1 和 κ/α 外，还报告 Brier/ECE 校准、位置翻转率、长度/格式偏差、群体差距、弃权选择性风险、跨 family 与跨 agent 泛化、成本和延迟。[14][15][16]
+JudgeBench 同时比较三类系统：（a）强通用 prompted judge；（b）使用 `label + evidence + reason` 监督的 SFT leaf scorer；（c）两者的级联。训练、验证、测试必须按 task family、目标用户、被测 agent 与时间分组，禁止同一 counterfactual family 跨 split。除 accuracy、macro-F1 和 κ/α 外，还报告 Brier/ECE 校准、位置翻转率、长度/格式偏差、群体差距、弃权选择性风险、跨 family 与跨 agent 泛化、成本和延迟。[[14]](https://arxiv.org/abs/2310.17631)[[15]](https://arxiv.org/abs/2405.01535)[[16]](https://arxiv.org/abs/2403.02839)
 
 两个月主线部署为：`Deterministic/Evidence verifier → 强通用 judge → 人类复核/仲裁`。只有在第 4 周前完成 240 个高质量判分单元且主实验流水线无阻塞时，才启动 SFT scorer；它默认只作为附录中的学习曲线和效率实验，不承担主榜。未来发布版可升级为 `verifier → SFT 高置信分流 → 强 judge 复核 → 人类仲裁`。这避免让一个尚未验证泛化的 scorer 吞掉核心数据构建和论文写作时间。
 
