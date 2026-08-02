@@ -20,7 +20,7 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.15 · 组内讨论稿"
+DOC_VERSION = "v0.16 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 2 日"
 RESEARCH_LINE = "Evaluation Atlas · 反事实适配 · Rubric Compiler · JudgeBench"
 CORE_CLAIM = "固定任务与证据，只改变用户；只有匹配用户的交付物在反事实交换中仍占优，才能称为真正个性化。"
@@ -152,7 +152,12 @@ def configure_section(section, landscape=False):
         section.orientation = WD_ORIENT.PORTRAIT
         section.page_width = Inches(8.5)
         section.page_height = Inches(11)
-        margin = Inches(0.9 if STYLE_PRESET == "formal_condensed" else 1)
+        if STYLE_PRESET == "formal_condensed":
+            margin = Inches(0.8)
+        elif STYLE_PRESET == "compact_reference_guide":
+            margin = Inches(0.9)
+        else:
+            margin = Inches(1)
     section.top_margin = margin
     section.bottom_margin = margin
     section.left_margin = margin
@@ -196,13 +201,14 @@ def configure_styles(doc):
         ("Heading 3", 12, DARK, 8, 4),
     )
     if STYLE_PRESET == "compact_reference_guide":
-        normal.paragraph_format.space_after = Pt(6)
-        normal.paragraph_format.line_spacing = 1.25
+        normal.font.size = Pt(10.5)
+        normal.paragraph_format.space_after = Pt(4)
+        normal.paragraph_format.line_spacing = 1.15
         normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
         heading_tokens = (
-            ("Heading 1", 16, BLUE, 18, 10),
-            ("Heading 2", 13, BLUE, 14, 7),
-            ("Heading 3", 12, DARK, 10, 5),
+            ("Heading 1", 15.5, BLUE, 14, 7),
+            ("Heading 2", 12.5, BLUE, 10, 5),
+            ("Heading 3", 11.5, DARK, 7, 4),
         )
     elif STYLE_PRESET == "formal_condensed":
         # Named override for the <=10-page academic proposal edition. The
@@ -585,10 +591,16 @@ def build(md_path=MD, out_path=OUT):
         if p.text.startswith("[") and re.match(r"^\[\d+\]", p.text):
             p.paragraph_format.left_indent = Inches(0.25)
             p.paragraph_format.first_line_indent = Inches(-0.25)
-            p.paragraph_format.space_after = Pt(4)
-            p.paragraph_format.line_spacing = 1.1
+            if STYLE_PRESET == "formal_condensed":
+                ref_size, ref_space, ref_line = 8.5, 1, 1.0
+            elif STYLE_PRESET == "compact_reference_guide":
+                ref_size, ref_space, ref_line = 9, 2, 1.0
+            else:
+                ref_size, ref_space, ref_line = 9.5, 4, 1.1
+            p.paragraph_format.space_after = Pt(ref_space)
+            p.paragraph_format.line_spacing = ref_line
             for r in p.runs:
-                set_font(r, size=9.5)
+                set_font(r, size=ref_size)
 
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)

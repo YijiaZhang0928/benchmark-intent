@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-02
-当前版本：v0.15
+当前版本：v0.16
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
@@ -13,6 +13,17 @@
 核心识别不是“给 persona 后分数是否提高”，而是：固定任务、证据、工具和预算，只改变目标用户；若 matched 交付物相对 swapped 交付物对两个用户均有稳定优势，且共同质量、事实性、安全和隐私不下降，才称为有效个性化。
 
 当前一句话主张：**DeepAlign-Bench 用反事实用户对、元数据驱动 rubric 和受控压力测试，把“报告更好”与“报告更适合这个用户”区分开。**
+
+### 1.1 v0.16 相关工作校准
+
+2026 年 7 月的七篇相邻工作使“现有评测主要只测事实和引用”不再是可辩护表述。当前 related-work 故事改为四层：
+
+1. 通用 Deep Research benchmark 建立事实、搜索、引用和报告质量底线；
+2. Setoka、PersonaTrail、APeB 已覆盖分层用户理解、浏览/行为历史与意图利用；
+3. TARS、PASB 和 user-conditioned temporal intervention 工作已覆盖单域人类效用、持久状态写入风险和时间变化；SARSI 提供治理架构而非实证 benchmark；
+4. PDR-Bench 最接近个性化 DR 最终交付物，但仍缺 matched/swapped 反事实识别、预冻结差异真值、长程干预和大规模 judge 校准的统一协议。
+
+因此论文不得声称首先研究 personalization、history、persistent state 或 temporal intervention。可验证的候选贡献是：**在广义 Deep Research 的多类最终交付物上，将异构用户信号、反事实用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预和独立 JudgeBench 放进同一可审计协议。** 该贡献至少需要三项证据：matched/swapped 人评稳定；效应不能由长度、风格、额外任务信息或共同质量解释；至少一个 signal/operator 效应可重复且统计可分辨。
 
 ## 2. 冻结的两个月范围
 
@@ -96,6 +107,8 @@
 3. 商业 Deep Research 产品和具体开源 agent 名单需按运行时版本、可访问性和预算冻结。
 4. Judge 门槛需由首轮人工 pilot 校准；现有数值是预注册候选，不是已经验证的结论。
 5. 是否有足够资源完成 longitudinal/handoff 子集，将决定论文能否保留机制性 RQ。
+6. 是否在少量 anchor 上加入完成时间、认知负担或决策信心等 downstream human utility，以校验文本 rubric 与真实用户效用的关系。
+7. 8 个 anchor 中哪些能严格满足 temporal-intervention C1–C4，需在第 1–2 周的 eligibility matrix 中显式标记；只在 schema 定义不算实测覆盖。
 
 ## 8. 文件与同步规则
 
@@ -106,6 +119,7 @@
 - `proposal/DeepAlign-Bench_正式Proposal精简版.md`：约 10 页标准 proposal。
 - `proposal/DeepAlign-Bench_人话版.md`：完整直白版。
 - `proposal/DeepAlign-Bench_汇报精简版.md`：导师汇报版。
+- `proposal/DeepAlign-Bench_七篇相关论文速览.md`：abstract、主图、conclusion 级的相邻工作地图与审稿威胁分析。
 - `benchmark_schema/case.schema.yaml`：机器可读 case 蓝图。
 - `html_report/app/page.tsx`：HTML 汇报正文。
 - `CHANGELOG.md`：版本级变更。
@@ -125,3 +139,4 @@
 - v0.13：增加完整人话版与导师汇报版。
 - v0.14：增加 10 页正式 Proposal 精简版。
 - v0.15：建立跨 Session 记忆；将 anchor 明确定义为“干净 family + 独立扰动算子”，补充分配、配对、re-anchor 防偏和机器可读字段。
+- v0.16：精读七篇 2026 年 7 月相邻工作；把 related-work gap 从“无人评测个性化”收紧为“广义 DR 最终交付物上的反事实、纵向交叉协议缺口”；新增论文速览 HTML/Markdown。

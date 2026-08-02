@@ -23,6 +23,13 @@ async function render() {
   );
 }
 
+async function renderPath(pathname) {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
+  const { default: worker } = await import(workerUrl.href);
+  return worker.fetch(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
+}
+
 test("server-renders the DeepAlign-Bench research report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
@@ -43,8 +50,21 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /href="\/DeepAlign-Bench_汇报精简版\.pdf"/i);
   assert.match(html, /同一套方法，按阅读场景分成四版/);
   assert.match(html, /先建立有效配对，再施加独立扰动/);
+  assert.match(html, /href="\/literature"/i);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
+});
+
+test("server-renders the seven-paper related-work brief", async () => {
+  const response = await renderPath("/literature");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /七篇新论文，迫使我们把 gap/);
+  assert.match(html, /Setoka/);
+  assert.match(html, /PersonaTrail/);
+  assert.match(html, /PASB/);
+  assert.match(html, /APeB/);
+  assert.match(html, /三项最低成立条件/);
 });
 
 test("keeps the machine-readable metadata and downloadable artifacts in sync", async () => {

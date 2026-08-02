@@ -2,14 +2,14 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.15 · 2026 年 8 月 2 日
+版本：v0.16 · 2026 年 8 月 2 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
 
 ## 研究概要
 
-Deep Research 智能体已经能检索、综合并交付长报告，但“报告正确”不等于“报告适合这个用户”。同一项研究任务，面对知识水平、决策目标、资源约束、风险偏好和交付场景不同的用户，理想交付物应在证据不变的前提下产生可解释、必要且有用的差异。当前评测大多只看事实性、覆盖度和引用质量；已有 Personalized Deep Research Bench（PDR-Bench）首次把真实 persona 引入深度调研，但其任务规模、用户信息来源、交付物类型和 agent 类型仍有限，而且由 LLM 同时动态生成 rubric、权重并评分，难以排除循环定义、风格偏好和“提供更多文字自然得更高分”等替代解释。
+Deep Research 智能体已经能检索、综合并交付长报告，但“报告正确”不等于“报告适合这个用户”。同一项研究任务，面对知识水平、决策目标、资源约束、风险偏好和交付场景不同的用户，理想交付物应在证据不变的前提下产生可解释、必要且有用的差异。相关工作已经不只是测事实与引用：Setoka 测分层用户理解，PersonaTrail 与 APeB 测历史中的偏好/意图利用，TARS 在代码理解中测个性化效用，PASB 测持久状态写入风险，另有工作形式化了用户条件化时间干预。更准确的缺口是：这些能力尚未在**广义 Deep Research 最终交付物**上被一个统一协议连接起来，同时识别正向用户效用、过度个性化、长程状态变化和通用质量之间的关系。已有 Personalized Deep Research Bench（PDR-Bench）最接近这一目标，但仍难排除循环定义、风格偏好和“提供更多文字自然得更高分”等替代解释。
 
 本项目拟构建 **DeepAlign-Bench**：一个面向广义长程 Deep Research 的、以最终交付物为核心、可扩展到执行轨迹的个性化评测基准。核心不是“有 persona 时分数是否更高”，而是建立**反事实任务族**：固定任务、证据环境与资源预算，只改变目标用户及用户信息的呈现渠道；再检验 agent 是否产生了与差异真值一致的交付物变化，同时保持通用任务质量、事实可靠性、安全与隐私。
 
@@ -110,6 +110,26 @@ Macaron 团队将 LivingBench 描述为从真实产品需求中蒸馏的动态�
 - **ResearchRubrics（ICLR 2026）**：用 conceptual breadth、logical nesting 和 exploration 三个正交维度刻画任务复杂度；其结果显示逻辑嵌套加深时 rubric compliance 单调下降，支持把难度作为连续/有序属性而非“PhD vs. daily”二分标签。[18]
 - **AssistantBench / Researchy Questions**：前者从真实用户近期经历和专业人士工作中收集耗时 web 任务，后者从搜索日志抽取约 10 万条非事实型、多视角需求；它们共同说明日常任务不是“简单题”，真实信息需求也可能具有高 fan-out、动态约束与复杂验证链。[19][20]
 - **ResearcherBench**：65 个前沿 AI 科研问题分为 technical details、literature review 和 open consulting，说明即使在同一“PhD-level”层内也存在不同研究意图，不能只用用户学历或领域充当任务 taxonomy。[21]
+
+### 2.7 2026 年 7 月相邻工作：缺口必须写成“交叉缺口”
+
+七篇同期工作使“现有工作只测通用质量”这一表述不再成立。它们分别推进了用户理解、历史利用、单域个性化效用、状态写入风险与时间干预，但没有覆盖同一个评价对象。为避免选择性引用和不当首创主张，本项目将相关工作按“它实际识别了什么”而不是按论文自称的应用名称组织。
+
+| 工作 | 实际评价对象与主要证据 | 对本项目的直接威胁 | 仍未覆盖的部分 |
+|---|---|---|---|
+| **Setoka** [26] | 从语义事实、情景记忆、行为模式到人格特质的四层用户理解；10 个合成用户、异构记录、3 个模型 × 5 个 memory system；抽象层级越高表现越差 | 不能再声称“没有 benchmark 测跨源用户理解” | 主要终点是问答/记忆准确性；没有检验推断是否让开放式 DR 交付物产生必要且正确的差异 |
+| **User-Conditioned Temporal Interventions** [27] | 提出 C1 显式时间事件、C2 跨事件持久状态、C3 跨适应维度影响、C4 用户条件化差异；审计中未发现同时满足四项的协议 | 是长程更新与恢复设计最直接的方法学前作；不能声称首先提出 temporal intervention | 属于 position/audit paper；没有构造广义 DR 任务、最终交付物真值、反事实用户对或实证榜单 |
+| **PersonaTrail** [28] | 用细粒度浏览轨迹测试 preference inference 与 episodic grounding；23 个领域、317 个网站、2,524 个 query；双记忆方法优于基线 | 证明用户信号可以来自真实行为轨迹，而不只是 persona 文本 | 局限于 web navigation 与两类查询；没有跨交付物 rubric、matched/swapped 用户效用和动态纠错 |
+| **TARS** [29] | 在 IDE 内按经验、角色和风格生成代码解释；18 人研究观察到更快完成、较低认知负担和主观适配 | 证明“个性化价值”可以体现在用户时间和认知负担，而不只是文本相似度 | 单域、小样本人机实验，若干客观差异未显著；不足以建立跨任务、跨 agent 的 benchmark |
+| **SARSI** [30] | 提出外部治理、task contract、planner/executor/verifier、版本化记忆与 owner control 的系统架构 | 为 agent plane、handoff、审计和 owner autonomy 提供更完整架构词汇 | 概念性系统设计，没有原创数据、实现或实证 benchmark；不能作为性能证据 |
+| **PASB** [31] | 1,600 个任务、12 个模型、2 个 agent framework；让真实 agent 自主写状态，再测新会话污染；commit 后平均失败由 45.0% 升至 71.9% | 是持久个性化安全和 longitudinal failure 最强的直接前作；我们必须测 must-not、来源/时效/作用域和写入治理 | 聚焦 persistent sycophancy 这一负向失败类，不评价广义 DR 的正向适配、交付物效用或跨任务结果真值 |
+| **APeB** [32] | 从原始欠指定商品查询、噪声行为历史和 hard candidates 测意图推断、偏好提取与候选选择；显式历史利用模块带来增益 | 证明“history 是否被实际利用”可通过 hard alternatives 与中间 rubric 诊断 | 单一电商平台、静态离线排序；没有广义 DR 交付物、多源信号、时间更新或 counterfactual user utility |
+
+这些工作共同形成一条能力链：**理解用户 → 从历史推断并行动 → 跨会话保持/更新 → 交付用户特异结果**。现有论文大多只验证其中一段。PDR-Bench 已进入最后一段，但对“为什么该差异属于这个用户”识别不足。因此 DeepAlign-Bench 不应声称首先研究 personalization、history、persistent state 或 temporal intervention；可辩护的主张是：
+
+> 首次在广义 Deep Research 的多类最终交付物上，将异构用户信号、反事实用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预与独立 judge 校准放进同一可审计协议，从而区分通用质量、正向用户适配、过度个性化和状态漂移。
+
+这仍是待实证验证的“协议级交叉贡献”，不能仅凭 ontology 的维度数量成立。论文必须至少证明三件事：（1）matched/swapped 人评能稳定识别用户特异效用；（2）该效应不能由长度、风格、任务信息增量或共同质量解释；（3）至少一种信号来源或长程扰动产生可重复、统计上可分辨的效应。若任一条件失败，主张应收缩为一个 outcome-centered evaluation study，而不是宣称统一了完整个人智能评测。
 
 ## 3. 构念定义与任务边界
 
@@ -704,6 +724,13 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 [23] Ribeiro et al. *Beyond Accuracy: Behavioral Testing of NLP Models with CheckList*. ACL, 2020. https://aclanthology.org/2020.acl-main.442/  
 [24] Reuel et al. *BetterBench: Assessing AI Benchmarks, Uncovering Issues, and Establishing Best Practices*. arXiv:2411.12990, 2024. https://arxiv.org/abs/2411.12990  
 [25] Sokol et al. *BenchmarkCards: Standardized Documentation for Large Language Model Benchmarks*. NeurIPS Datasets and Benchmarks, 2025. https://papers.neurips.cc/paper_files/paper/2025/hash/76175f4355e2f67cf91be468c8860070-Abstract-Datasets_and_Benchmarks_Track.html  
+[26] Zeng et al. *Setoka: A Benchmark for Hierarchical User Understanding in Personalized Agents over Heterogeneous Data*. arXiv:2607.27056, 2026. https://arxiv.org/abs/2607.27056
+[27] Qian et al. *Toward User-Conditioned Evaluation of Personal LLM Agents under Temporal Interventions*. arXiv:2607.21635, 2026. https://arxiv.org/abs/2607.21635
+[28] Yang et al. *PersonaTrail: Benchmarking Personalized Web Agents through Browsing Trails*. arXiv:2607.20482, 2026. https://arxiv.org/abs/2607.20482
+[29] Todisco et al. *TARS: A Theory-of-Mind Agent for Personalized In-IDE Code Comprehension*. arXiv:2607.15948, 2026. https://arxiv.org/abs/2607.15948
+[30] Yang. *Self-Aware Recursively Self-Improving Agents for Personal Singularity*. arXiv:2607.12254, 2026. https://arxiv.org/abs/2607.12254
+[31] Mao et al. *Agents Don't Just Agree, They Remember: Benchmarking Persistent Sycophancy in Stateful Personal Agents*. arXiv:2607.10526, 2026. https://arxiv.org/abs/2607.10526
+[32] Yang et al. *APeB: Benchmarking Personalization Ability of Large Language Model Agents*. arXiv:2607.03162, 2026. https://arxiv.org/abs/2607.03162
 
 ---
 

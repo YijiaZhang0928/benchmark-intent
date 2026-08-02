@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.15 · 2026 年 8 月 2 日
+版本：v0.16 · 2026 年 8 月 2 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -10,11 +10,11 @@
 
 ### 一句话问题
 
-现有 Deep Research benchmark 主要测“报告好不好”。我们要进一步测：**同一任务和证据下，agent 能不能为不同用户交付不同但都正确的结果。**
+已有工作分别测“报告好不好”、用户理解、历史利用、单域个性化效用和持久状态风险。我们要补的是交叉缺口：**同一任务和证据下，agent 能不能为不同用户交付不同但都正确的 Deep Research 结果。**
 
 ### 为什么需要新的 benchmark
 
-给模型 persona 后分数提高，不一定说明它真的理解用户。也可能只是 prompt 更长、报告更长、复述了 persona，或者 judge 偏爱更具体的文本。
+Setoka、PersonaTrail/APeB、TARS、PASB 和 temporal-intervention 工作已经分别覆盖“理解—利用—单域效用—持久风险—时间更新”的一段；PDR-Bench 已把 persona 引入 Deep Research。缺少的是把异构用户信号、广义 DR 交付物、matched/swapped 交换和长程干预放进同一协议。给模型 persona 后分数提高，仍可能只是 prompt/报告更长、复述了 persona，或 judge 偏爱更具体的文本。
 
 因此我们采用反事实对照：固定任务、证据、工具和预算，只改变用户；再把两个用户的交付物交换评分。只有 matched 持续优于 swapped，同时事实和共同质量不下降，才算真正个性化。
 
@@ -204,3 +204,17 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 [7] Ribeiro et al. *CheckList*. ACL, 2020.
 
 [8] Reuel et al. *BetterBench*. arXiv:2411.12990.
+
+[9] Zeng et al. *Setoka*. arXiv:2607.27056.
+
+[10] Qian et al. *User-Conditioned Evaluation under Temporal Interventions*. arXiv:2607.21635.
+
+[11] Yang et al. *PersonaTrail*. arXiv:2607.20482.
+
+[12] Todisco et al. *TARS*. arXiv:2607.15948.
+
+[13] Yang. *SARSI Agents for Personal Singularity*. arXiv:2607.12254.
+
+[14] Mao et al. *Agents Don't Just Agree, They Remember*. arXiv:2607.10526.
+
+[15] Yang et al. *APeB*. arXiv:2607.03162.

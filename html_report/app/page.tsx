@@ -19,6 +19,13 @@ const sources = [
   ["CheckList", "用能力 × 测试类型矩阵组织行为测试", "https://aclanthology.org/2020.acl-main.442/"],
   ["BetterBench", "从设计到维护的 benchmark 生命周期质量检查", "https://arxiv.org/abs/2411.12990"],
   ["BenchmarkCards", "标准化记录目标、方法、来源、限制与适用范围", "https://papers.neurips.cc/paper_files/paper/2025/hash/76175f4355e2f67cf91be468c8860070-Abstract-Datasets_and_Benchmarks_Track.html"],
+  ["Setoka", "异构数据上的四层用户理解：事实、情景、行为、特质", "https://arxiv.org/abs/2607.27056"],
+  ["Temporal Interventions", "用户条件化时间干预的 C1–C4 操作要求", "https://arxiv.org/abs/2607.21635"],
+  ["PersonaTrail", "以真实浏览轨迹测试偏好推断与情景记忆", "https://arxiv.org/abs/2607.20482"],
+  ["TARS", "代码理解中的个性化解释与人类效用", "https://arxiv.org/abs/2607.15948"],
+  ["SARSI", "受治理、可审计、可回滚的 personal-agent 架构", "https://arxiv.org/abs/2607.12254"],
+  ["PASB", "持久 sycophancy 与 durable-write 治理", "https://arxiv.org/abs/2607.10526"],
+  ["APeB", "欠指定意图、噪声历史与 hard candidates", "https://arxiv.org/abs/2607.03162"],
 ];
 
 const failures = [
@@ -36,7 +43,7 @@ export default function Home() {
         <nav className="nav shell" aria-label="主导航">
           <a className="brand" href="#top">DeepAlign<span>Bench</span></a>
           <div className="navlinks">
-            <a href="#design">设计</a><a href="#spec">四个对象</a><a href="#metrics">指标</a><a href="#scope">评测边界</a><a href="#review">审稿防守</a>
+            <a href="#design">设计</a><a href="/literature">文献地图</a><a href="#metrics">指标</a><a href="#scope">评测边界</a><a href="#review">审稿防守</a>
           </div>
           <a className="navCta" href="#editions">选择阅读版本</a>
         </nav>
@@ -68,6 +75,11 @@ export default function Home() {
           <article><span>02</span><h3>反事实识别</h3><p>同任务、同证据、不同用户；将报告交换评分，排除篇幅、文风与“信息更多”这些替代解释。</p></article>
           <article><span>03</span><h3>Rubric 由元数据编译</h3><p>统一的是叶节点 schema、适用条件和校准程序，而不是强迫所有任务共用一张总体评分表。</p></article>
         </div>
+      </section>
+
+      <section className="relatedUpdate shell" aria-labelledby="related-title">
+        <div><p className="sectionTag">RELATED-WORK UPDATE · JULY 2026</p><h2 id="related-title">现有工作已经各测一段，缺的是交叉协议</h2><p>Setoka 测分层用户理解，PersonaTrail/APeB 测历史利用，TARS 测单域人类效用，PASB 与 temporal-intervention 工作测持久风险和时间变化。DeepAlign-Bench 的可辩护 gap 是：把这些能力连接到广义 DR 最终交付物的反事实、纵向、可审计评价。</p></div>
+        <a className="button primary" href="/literature">打开七篇论文速览 →</a>
       </section>
 
       <section className="editionSection" id="editions">

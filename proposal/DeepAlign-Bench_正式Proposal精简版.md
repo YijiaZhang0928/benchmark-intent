@@ -2,7 +2,7 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.15 · 2026 年 8 月 2 日
+版本：v0.16 · 2026 年 8 月 2 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
@@ -12,7 +12,7 @@
 
 ## 摘要
 
-现有 Deep Research 基准主要评价事实性、任务覆盖、搜索与引用质量，尚不能充分判断最终交付物是否适合特定用户。本项目拟构建 DeepAlign-Bench，用于评估长程智能体能否从不同渠道获得与任务相关的用户信息，在执行过程中保持和使用这些信息，并交付对目标用户具有特异价值的结果。
+现有工作已经分别评价 Deep Research 通用质量、分层用户理解、行为历史利用、单域个性化效用、持久状态安全和时间干预，但尚未在广义 Deep Research 的多类最终交付物上统一检验“该结果是否对这个用户具有特异价值”。本项目拟构建 DeepAlign-Bench，用于评估长程智能体能否从不同渠道获得与任务相关的用户信息，在执行过程中保持、使用和更新这些信息，并交付必要且正确的用户特异结果。
 
 核心方法是反事实任务族：固定任务、证据、工具与资源预算，只改变目标用户；再将两个用户的交付物进行 matched/swapped 交换评分。只有匹配交付物稳定优于错配交付物，且共同任务质量、事实性、安全与隐私不下降时，才认定为有效个性化。评测框架包括五平面元数据、反事实任务族、元数据驱动的 rubric compiler、分层指标和独立 JudgeBench。
 
@@ -22,16 +22,22 @@
 
 ### 1.1 现有评测的不足
 
-OpenCompass 和 EvalScope 提供了模型适配、任务调度、评估与报告的工程框架，但不直接定义个性化测量构念。现有 Deep Research 基准多关注事实、搜索、引用和报告质量。PDR-Bench 引入了真实 persona，但主要比较 task-only、context 和 persona 条件的平均分，仍难排除以下替代解释：输入更长导致输出更长；评委偏好复述 persona 或特定文风；persona 提供了额外任务信息，而不是产生了真正的用户适配。
+OpenCompass 和 EvalScope 提供模型适配、任务调度、评估与报告框架，但不定义个性化构念。Deep Research Bench、LiveResearchBench、PaperBench 等主要回答任务是否完成、事实与引用是否可靠、报告是否完整。这一层建立了通用能力底线，但评价函数通常不随目标用户改变。
+
+2026 年 7 月的工作已经向个性化内部推进：Setoka 从语义事实到人格特质测四层用户理解；PersonaTrail 与 APeB 分别从浏览轨迹和商品行为历史测偏好、情景记忆与意图利用；TARS 在代码理解中报告个性化解释对时间、认知负担和主观适配的影响；PASB 让 agent 自主写入持久状态并发现 commit 后下游失败显著增加；Qian 等提出显式时间事件、跨事件持久状态、跨维度影响和用户条件化差异四项要求；SARSI 则给出受治理的 personal-agent 系统架构。这些工作说明“用户理解、历史利用、时间变化和持久风险无人评测”已经是错误表述。
+
+PDR-Bench 最接近本项目：它把真实 persona 引入 Deep Research，但主要比较 task-only、context 和 persona 条件平均分。现有文献仍缺少同一协议中的四个连接：**异构用户信号 → 广义 DR 执行 → 用户特异最终交付物 → 反事实且经校准的评分**。因此尚难排除输入更长、输出更长、persona 关键词、文风偏好或额外任务信息等替代解释。
 
 ### 1.2 研究空缺
 
-本项目解决四个问题：
+本项目不声称首先研究 personalization、history、persistent state 或 temporal intervention；它解决的是这些方向的交叉测量缺口：
 
 1. 如何证明交付物差异来自用户需求，而不是篇幅、格式或关键词；
 2. 如何为报告、代码、表格和决策备忘录使用可组合但不强行统一的 rubric；
 3. 如何区分最终交付物效用与获取、保持、利用、更新/恢复等过程机制；
 4. 如何验证自动 judge 没有被长度、位置、格式和 persona 关键词误导。
+
+可辩护的主张是：在广义 Deep Research 的多类最终交付物上，将异构用户信号、matched/swapped 用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预和独立 JudgeBench 放进同一可审计协议。若 matched/swapped 人评不稳定，或效应可由长度、风格和共同质量解释，论文将收缩为 outcome-centered evaluation study。
 
 ## 2. 研究问题与假设
 
@@ -222,3 +228,17 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 [14] Zhu et al. *JudgeLM: Fine-tuned Large Language Models are Scalable Judges*. arXiv:2310.17631, 2023.
 
 [15] Huang et al. *An Empirical Study of LLM-as-a-Judge for LLM Evaluation*. arXiv:2403.02839, 2024.
+
+[16] Zeng et al. *Setoka: A Benchmark for Hierarchical User Understanding in Personalized Agents over Heterogeneous Data*. arXiv:2607.27056, 2026.
+
+[17] Qian et al. *Toward User-Conditioned Evaluation of Personal LLM Agents under Temporal Interventions*. arXiv:2607.21635, 2026.
+
+[18] Yang et al. *PersonaTrail: Benchmarking Personalized Web Agents through Browsing Trails*. arXiv:2607.20482, 2026.
+
+[19] Todisco et al. *TARS: A Theory-of-Mind Agent for Personalized In-IDE Code Comprehension*. arXiv:2607.15948, 2026.
+
+[20] Yang. *Self-Aware Recursively Self-Improving Agents for Personal Singularity*. arXiv:2607.12254, 2026.
+
+[21] Mao et al. *Agents Don't Just Agree, They Remember: Benchmarking Persistent Sycophancy in Stateful Personal Agents*. arXiv:2607.10526, 2026.
+
+[22] Yang et al. *APeB: Benchmarking Personalization Ability of Large Language Model Agents*. arXiv:2607.03162, 2026.
