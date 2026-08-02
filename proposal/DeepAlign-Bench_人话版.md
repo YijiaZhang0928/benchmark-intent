@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **完整人话版：方法不变，只把话说清楚**  
-版本：v0.18 · 2026 年 8 月 3 日
+版本：v0.19 · 2026 年 8 月 3 日
 用途：组内讨论、导师沟通、正式稿写作前的共同理解  
 
 ---
@@ -24,24 +24,21 @@
 
 ### 两个月内要完成什么
 
-主实验固定为 24 个 task family、每题两个强对比用户、4 种用户信息条件和 3 类 agent，最多 576 个 episode；其中 8 个 family 负责压力测试。另建 240-unit JudgeBench，并对至少 20% 输出做人评。这个规模用于验证方法，不声称覆盖所有 Deep Research 模式；未测试、不适用和延期组合都会明确标出。
+主实验固定为 24 个 task family、每题两个强对比用户、4 种用户信息条件和 3 类 agent，最多 576 个 episode；其中 8 个 family 负责压力测试。另建 240-unit JudgeBench，并对至少 20% 输出做人评。领域专家负责事实和共同质量，目标用户负责判断 matched/swapped 哪份更适合自己；合成 persona 不能代替这一步。这个规模用于验证方法，不声称覆盖所有 Deep Research 模式；未测试、不适用和延期组合都会明确标出。
 
 ## 1. 为什么现有评测不够
 
-### 1.1 现有工作不是没测个性化，而是各测了一段
+### 1.1 研究问题是怎样一步步收敛的
 
-先把故事讲准确。现有 Deep Research benchmark 大多关注答案是否正确、搜索是否充分、引用是否可靠、报告是否完整。这些工作回答“报告好不好”。但最近的个性化 benchmark 已经开始回答更多问题：
+第一步，Deep Research benchmark 先回答“报告一般好不好”：任务有没有完成、事实和引用是否可靠、分析是否完整。这是所有个性化结果都必须先过的底线，但它没有说明同一份报告更适合哪一个用户。
 
-- Setoka 测 agent 能否从异构记录中由事实逐步推到情景、行为模式和人格特质；[[13]](https://arxiv.org/abs/2607.27056)
-- PersonaTrail 和 APeB 测 agent 能否从浏览或商品行为历史中恢复偏好、意图和过去事件；[[15]](https://arxiv.org/abs/2607.20482)[[19]](https://arxiv.org/abs/2607.03162)
-- TARS 测个性化代码解释是否降低用户时间与认知负担；[[16]](https://arxiv.org/abs/2607.15948)
-- PASB 测错误用户观点写入长期状态后，是否污染之后的新任务；[[18]](https://arxiv.org/abs/2607.10526)
-- temporal-intervention 工作提出：必须有明确时间事件、跨事件持久状态、跨能力影响和用户间差异；[[14]](https://arxiv.org/abs/2607.21635)
-- SARSI 提出 personal agent 的任务契约、外部验证、交接和治理架构。[[17]](https://arxiv.org/abs/2607.12254)
+第二步，个性化研究开始回答“agent 是否理解了用户”。LaMP 用用户历史评测个性化生成，PersonaLens 在任务型对话里同时看偏好、任务成功和回复质量，PersonaMem 要求模型跟踪会变化的用户画像。[[20]](https://aclanthology.org/2024.acl-long.399/)[[22]](https://aclanthology.org/2025.findings-acl.927/)[[23]](https://arxiv.org/abs/2504.14225) Setoka、PersonaTrail 和 APeB 又把信号扩展到异构记录、浏览轨迹和商品行为。[[13]](https://arxiv.org/abs/2607.27056)[[15]](https://arxiv.org/abs/2607.20482)[[19]](https://arxiv.org/abs/2607.03162) 所以“用户理解和历史利用没人测”已经说不通；这些工作大多停在响应选择、记忆问答或单域意图。
 
-所以我们不能说“没人测用户理解、历史或长程状态”。更准确的说法是：这些工作大多各测能力链的一段，还没有在广义 Deep Research 中，把**用户信息从哪里来、agent 如何长程执行、最终交付物该怎样因用户而变、这种变化如何被反事实验证**连成一个可审计协议。
+第三步，研究已经开始回答“理解之后有没有真的行动”。TravelPlanner+ 让用户模型改变旅行计划，ETAPP 和 ToolSpectrum 让画像与环境改变工具选择，Mem2ActBench 与 APOLLO 检查长期偏好能否落实到工具和参数。[[21]](https://aclanthology.org/2024.emnlp-industry.37/)[[24]](https://aclanthology.org/2025.acl-long.1064/)[[25]](https://arxiv.org/abs/2505.13176)[[35]](https://aclanthology.org/2026.acl-long.370/)[[36]](https://aclanthology.org/2026.findings-acl.1676/) TARS 还直接测了用户时间和认知负担。[[16]](https://arxiv.org/abs/2607.15948) 因此，“个性化行动无人评测”同样不是我们的 gap；这些任务多是单域计划或离散工具/GUI 动作，和开放式、多证据的 DR 最终交付物仍不同。
 
-PDR-Bench 已经最接近最后一步，[[4]](https://arxiv.org/abs/2509.25106) 但如果给 agent 一份 persona 后得分更高，仍然可能有三种替代解释：
+第四步，研究把时间和风险也纳入进来。RPEval 测无关记忆会不会导致不理性个性化，PAHF 用澄清、记忆和反馈适应偏好变化，PerMemBench 问“哪些信息值得为这个用户写入”，Memora 与 CloneMem 测过期事实和多年数字轨迹。[[30]](https://arxiv.org/abs/2601.16621)[[31]](https://arxiv.org/abs/2602.16173)[[32]](https://arxiv.org/abs/2605.25535)[[33]](https://aclanthology.org/2026.findings-acl.1337/)[[34]](https://aclanthology.org/2026.acl-long.1549/) PASB 和 PS-Bench 又说明，持久记忆不仅可能过期，还可能把迎合或危险意图长期合理化。[[18]](https://arxiv.org/abs/2607.10526)[[39]](https://aclanthology.org/2026.acl-long.1260/) 这要求我们的 irrelevant、stale、write、update 和 must-not 测试成为正式实验，而不是几个演示案例。
+
+最后，PDR-Bench 与另一项 PDR 工作已经直接研究 persona 驱动的 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) MyScholarQA 甚至发现，合成用户和 LLM judge 会漏掉真人指出的九类细微个性化错误。[[28]](https://aclanthology.org/2026.acl-long.723/) 这使我们的题目最终收敛到：**固定任务、证据、工具和预算，只交换两个都合理的用户，哪份最终交付物仍然更适合谁？** 这比“把用户信息给 agent 后有没有涨分”更窄，但也更容易被证伪。
 
 如果给 agent 一份 persona 后得分更高，仍然可能有三种替代解释：
 
@@ -72,7 +69,7 @@ PDR-Bench 已经最接近最后一步，[[4]](https://arxiv.org/abs/2509.25106) 
 4. 单独评估 judge 是否可靠；
 5. 用压力测试区分获取、保持、利用、更新和恢复问题。
 
-我们也要主动缩小首创表述：不声称首先研究 personalization、history、persistent state 或 temporal intervention。我们的候选贡献是把这些已有方向连接到**广义 Deep Research 最终交付物的反事实测量**。如果 matched/swapped 人评不稳定，或者差异可以被长度、风格和共同质量解释，这个贡献就没有成立。
+我们也要主动缩小首创表述：不声称首先研究 personalization、history、tool use、persistent state 或 temporal intervention。我们的候选贡献是把这些已有方向连接到**广义 Deep Research 最终交付物的反事实测量**。如果 matched/swapped 人评不稳定，或者差异可以被长度、风格和共同质量解释，这个贡献就没有成立。
 
 ## 2. 一个测试样本到底包含什么
 
@@ -174,6 +171,8 @@ Persona 只是用户状态的一种展示形式。我们真正保存的是一个
 - 两个用户的正确交付物应该在哪里不同、哪里相同。
 
 这些内容必须在模型运行前冻结。LLM 可以帮助检查遗漏，但不能单独决定 gold。
+
+人评也不能混成一个角色。领域专家或训练过的标注者检查事实、证据、共同质量和 must-hold；目标用户本人确认 must-change / must-not，并在不知道报告来自哪个条件时比较 matched 与 swapped。所有 real-user-gold family 和至少 8 个分层 family 都要有这种目标用户盲评；合成 persona 只用于可控压力测试和 judge 对抗题。MyScholarQA 已经说明，合成用户与 LLM judge 会漏掉真人真正介意的个性化错误。[[28]](https://aclanthology.org/2026.acl-long.723/)
 
 ## 5. 实验如何运行
 
@@ -439,3 +438,43 @@ Rubric 在输出前冻结；客观项优先用 verifier；judge 只做需要语�
 [18] Mao et al. *Agents Don't Just Agree, They Remember*. arXiv:2607.10526, 2026.
 
 [19] Yang et al. *APeB*. arXiv:2607.03162, 2026.
+
+[20] Salemi et al. *LaMP: When Large Language Models Meet Personalization*. ACL, 2024. https://aclanthology.org/2024.acl-long.399/
+
+[21] Singh et al. *Personal Large Language Model Agents: A Case Study on Tailored Travel Planning*. EMNLP Industry Track, 2024. https://aclanthology.org/2024.emnlp-industry.37/
+
+[22] Zhao et al. *PersonaLens*. Findings of ACL, 2025. https://aclanthology.org/2025.findings-acl.927/
+
+[23] Jiang et al. *Know Me, Respond to Me*. arXiv:2504.14225, 2025.
+
+[24] Hao et al. *Evaluating Personalized Tool-Augmented LLMs from the Perspectives of Personalization and Proactivity*. ACL, 2025. https://aclanthology.org/2025.acl-long.1064/
+
+[25] Cheng et al. *ToolSpectrum*. arXiv:2505.13176, 2025.
+
+[26] Zhang et al. *PRIME*. EMNLP, 2025. https://aclanthology.org/2025.emnlp-main.1711/
+
+[27] Li et al. *Personalized Deep Research: A User-Centric Framework, Dataset, and Hybrid Evaluation*. arXiv:2605.10530, 2026.
+
+[28] Balepur et al. *Language Models Don't Know What You Want*. ACL, 2026. https://aclanthology.org/2026.acl-long.723/
+
+[29] Garbacea et al. *Personalized Benchmarking: Evaluating LLMs by Individual Preferences*. Findings of ACL, 2026. https://aclanthology.org/2026.findings-acl.31/
+
+[30] Feng et al. *How Does Personalized Memory Shape LLM Behavior?* arXiv:2601.16621, 2026.
+
+[31] Liang et al. *Learning Personalized Agents from Human Feedback*. arXiv:2602.16173, 2026.
+
+[32] In et al. *Personalize-then-Store*. arXiv:2605.25535, 2026.
+
+[33] Uddin et al. *From Recall to Forgetting*. Findings of ACL, 2026. https://aclanthology.org/2026.findings-acl.1337/
+
+[34] Hu et al. *CloneMem*. ACL, 2026. https://aclanthology.org/2026.acl-long.1549/
+
+[35] Shen et al. *Mem2ActBench*. ACL, 2026. https://aclanthology.org/2026.acl-long.370/
+
+[36] Chen et al. *Towards Preference Following in Tool Calling Language Agents*. Findings of ACL, 2026. https://aclanthology.org/2026.findings-acl.1676/
+
+[37] Lyu et al. *PersonalAlign*. ACL, 2026. https://aclanthology.org/2026.acl-long.1669/
+
+[38] Wang et al. *OPeRA*. ACL, 2026. https://aclanthology.org/2026.acl-long.2033/
+
+[39] Guo et al. *When Personalization Legitimizes Risks*. ACL, 2026. https://aclanthology.org/2026.acl-long.1260/

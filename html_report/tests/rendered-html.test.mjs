@@ -57,15 +57,18 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
 });
 
-test("server-renders the seven-paper related-work brief", async () => {
+test("server-renders the 27-paper related-work map", async () => {
   const response = await renderPath("/literature");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /七篇新论文，迫使我们把 gap/);
+  assert.match(html, /27 篇工作，把我们的题目/);
   assert.match(html, /Setoka/);
   assert.match(html, /PersonaTrail/);
   assert.match(html, /PASB/);
   assert.match(html, /APeB/);
+  assert.match(html, /MyScholarQA/);
+  assert.match(html, /Mem2ActBench/);
+  assert.match(html, /20-PAPER RELEVANCE AUDIT/);
   assert.match(html, /三项最低成立条件/);
   assert.match(html, /class="inlineCite"[^>]+2607\.21635/i);
   assert.match(html, /class="inlineCite"[^>]+2607\.10526/i);

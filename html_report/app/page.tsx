@@ -26,6 +26,13 @@ const sources = [
   ["SARSI", "受治理、可审计、可回滚的 personal-agent 架构", "https://arxiv.org/abs/2607.12254"],
   ["PASB", "持久 sycophancy 与 durable-write 治理", "https://arxiv.org/abs/2607.10526"],
   ["APeB", "欠指定意图、噪声历史与 hard candidates", "https://arxiv.org/abs/2607.03162"],
+  ["ETAPP", "人工 key points 评价个性化与主动工具调用", "https://aclanthology.org/2025.acl-long.1064/"],
+  ["PersonaMem", "跨 session 的动态用户画像与响应适配", "https://arxiv.org/abs/2504.14225"],
+  ["PAHF", "澄清、记忆和反馈共同适应偏好漂移", "https://arxiv.org/abs/2602.16173"],
+  ["Mem2ActBench", "长期记忆是否落实到工具选择与参数", "https://aclanthology.org/2026.acl-long.370/"],
+  ["PDR 2026", "用户画像进入检索、推理与停止条件", "https://arxiv.org/abs/2605.10530"],
+  ["MyScholarQA", "真人揭示合成用户与 LLM judge 漏掉的个性化错误", "https://aclanthology.org/2026.acl-long.723/"],
+  ["PS-Bench", "良性个人记忆可能错误地合理化危险意图", "https://aclanthology.org/2026.acl-long.1260/"],
 ];
 
 const failures = [
@@ -78,8 +85,8 @@ export default function Home() {
       </section>
 
       <section className="relatedUpdate shell" aria-labelledby="related-title">
-        <div><p className="sectionTag">RELATED-WORK UPDATE · JULY 2026</p><h2 id="related-title">现有工作已经各测一段，缺的是交叉协议</h2><p>Setoka 测分层用户理解<a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a>，PersonaTrail/APeB 测历史利用<a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a>，TARS 测单域人类效用<a className="inlineCite" href="https://arxiv.org/abs/2607.15948" target="_blank" rel="noreferrer">[29]</a>，PASB 与 temporal-intervention 工作测持久风险和时间变化<a className="inlineCite" href="https://arxiv.org/abs/2607.10526" target="_blank" rel="noreferrer">[31]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.21635" target="_blank" rel="noreferrer">[27]</a>。DeepAlign-Bench 的可辩护 gap 是：把这些能力连接到广义 DR 最终交付物的反事实、纵向、可审计评价。</p></div>
-        <a className="button primary" href="/literature">打开七篇论文速览 →</a>
+        <div><p className="sectionTag">RELATED-WORK UPDATE · 27-PAPER MAP</p><h2 id="related-title">题目已经收敛到“最终交付物更适合谁”</h2><p>现有工作已经从用户理解与历史利用，推进到工具行动、动态记忆和个性化 Deep Research：Setoka、PersonaTrail 与 APeB 分别测异构用户理解、浏览轨迹和行为历史<a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a>；ETAPP 与 Mem2ActBench 测用户信息能否落实到工具<a className="inlineCite" href="https://aclanthology.org/2025.acl-long.1064/" target="_blank" rel="noreferrer">[37]</a><a className="inlineCite" href="https://aclanthology.org/2026.acl-long.370/" target="_blank" rel="noreferrer">[48]</a>；PersonaMem 与 PAHF 测画像变化和偏好漂移<a className="inlineCite" href="https://arxiv.org/abs/2504.14225" target="_blank" rel="noreferrer">[36]</a><a className="inlineCite" href="https://arxiv.org/abs/2602.16173" target="_blank" rel="noreferrer">[44]</a>；PDR-Bench、PDR 2026 与 MyScholarQA 已进入个性化调研报告<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a><a className="inlineCite" href="https://arxiv.org/abs/2605.10530" target="_blank" rel="noreferrer">[40]</a><a className="inlineCite" href="https://aclanthology.org/2026.acl-long.723/" target="_blank" rel="noreferrer">[41]</a>。可辩护的 gap 因而不是“缺少个性化 agent benchmark”，而是：固定任务与证据后，用用户交换、预冻结差异真值和真人校准 judge 识别一份最终交付物到底更适合谁。</p></div>
+        <a className="button primary" href="/literature">打开 27 篇工作地图 →</a>
       </section>
 
       <section className="editionSection" id="editions">
@@ -96,11 +103,11 @@ export default function Home() {
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div>
             </article>
             <article>
-              <span>PLAIN LANGUAGE · 18 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
+              <span>PLAIN LANGUAGE · 21 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div>
             </article>
             <article>
-              <span>ADVISOR BRIEF · 10 PAGES</span><h3>汇报精简版</h3><p>15–20 分钟讲清研究问题、反事实设计、数据规模、评分方法、八周范围与导师待决策项。</p>
+              <span>ADVISOR BRIEF · 9 PAGES</span><h3>汇报精简版</h3><p>15–20 分钟讲清研究问题、反事实设计、数据规模、评分方法、八周范围与导师待决策项。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_汇报精简版.docx" download>Word</a></div>
             </article>
           </div>
@@ -190,7 +197,7 @@ export default function Home() {
             <div><b>对抗测试</b><p>交换 A/B、控制长度、堆 persona 关键词、漂亮格式诱饵、事实更强但适配更弱、隐私泄露、正确弃权。</p></div>
             <div><b>上线规则</b><p>若 SFT 在跨 family 测试上超过 prompted judge 且校准达标，作为主 scorer；否则只做高置信样本分流，低置信交给强 judge/人类。</p></div>
           </div>
-          <div className="winnerBanner"><span>两个月主线</span><b>Deterministic / evidence verifier → 强 Judge → 20% 分层人评 + 分歧仲裁</b><p>SFT 的理想发布架构仍是高置信分流，但它现在是条件性支线。先证明 benchmark 测到了个性化，再优化评分成本。</p></div>
+          <div className="winnerBanner"><span>两个月主线</span><b>Verifier → 强 Judge → 20% 分层人评 + 分歧仲裁</b><p>人评分工不能互换：领域专家评事实与共同质量，目标用户盲评 matched/swapped 的适配；纯合成 persona 不单独支撑真实用户效用。SFT 仍是条件性支线。</p></div>
           <div className="judgeSources"><a href="https://arxiv.org/abs/2310.17631" target="_blank" rel="noreferrer">JudgeLM：SFT judge 与偏差处理 ↗</a><a href="https://arxiv.org/abs/2405.01535" target="_blank" rel="noreferrer">Prometheus 2：专用 evaluator ↗</a><a href="https://arxiv.org/abs/2403.02839" target="_blank" rel="noreferrer">实证研究：SFT judge 不是 GPT-4 的通用替代 ↗</a></div>
         </div>
       </section>
@@ -395,7 +402,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.18 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.19 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }

@@ -21,7 +21,7 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.18 · 组内讨论稿"
+DOC_VERSION = "v0.19 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 3 日"
 RESEARCH_LINE = "Evaluation Atlas · 反事实适配 · Rubric Compiler · JudgeBench"
 CORE_CLAIM = "固定任务与证据，只改变用户；只有匹配用户的交付物在反事实交换中仍占优，才能称为真正个性化。"
@@ -47,6 +47,7 @@ GOLD = "B68026"
 RED = "9B3A2A"
 FONT = "Calibri"
 CN_FONT = "PingFang SC"
+HEADING_CN_FONT = "Hiragino Sans GB"
 
 
 def set_cell_shading(cell, fill):
@@ -202,9 +203,9 @@ def configure_styles(doc):
         ("Heading 3", 12, DARK, 8, 4),
     )
     if STYLE_PRESET == "compact_reference_guide":
-        normal.font.size = Pt(10.5)
-        normal.paragraph_format.space_after = Pt(4)
-        normal.paragraph_format.line_spacing = 1.15
+        normal.font.size = Pt(10)
+        normal.paragraph_format.space_after = Pt(3)
+        normal.paragraph_format.line_spacing = 1.08
         normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
         heading_tokens = (
             ("Heading 1", 15.5, BLUE, 14, 7),
@@ -214,9 +215,9 @@ def configure_styles(doc):
     elif STYLE_PRESET == "formal_condensed":
         # Named override for the <=10-page academic proposal edition. The
         # hierarchy remains formal; only paragraph rhythm is tightened.
-        normal.font.size = Pt(10.5)
-        normal.paragraph_format.space_after = Pt(4)
-        normal.paragraph_format.line_spacing = 1.15
+        normal.font.size = Pt(10)
+        normal.paragraph_format.space_after = Pt(3)
+        normal.paragraph_format.line_spacing = 1.08
         normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
         heading_tokens = (
             ("Heading 1", 15, BLUE, 12, 6),
@@ -228,9 +229,14 @@ def configure_styles(doc):
         st.font.name = FONT
         st._element.rPr.rFonts.set(qn("w:ascii"), FONT)
         st._element.rPr.rFonts.set(qn("w:hAnsi"), FONT)
-        st._element.rPr.rFonts.set(qn("w:eastAsia"), CN_FONT)
+        # PingFang's synthetic bold is rendered as solid blocks for a few
+        # high-stroke CJK glyphs by LibreOffice. Hiragino supplies a native
+        # bold face and keeps headings legible in both DOCX and exported PDF.
+        st._element.rPr.rFonts.set(qn("w:eastAsia"), HEADING_CN_FONT)
         st.font.size = Pt(size)
-        st.font.bold = True
+        # Size and colour carry the hierarchy. Avoid synthetic CJK bold: in
+        # LibreOffice/PDF export dense glyphs such as 量 and 盖 can fill in.
+        st.font.bold = False
         st.font.color.rgb = RGBColor.from_string(color)
         st.paragraph_format.space_before = Pt(before)
         st.paragraph_format.space_after = Pt(after)
@@ -239,11 +245,12 @@ def configure_styles(doc):
         st = styles[name]
         st.font.name = FONT
         st._element.rPr.rFonts.set(qn("w:eastAsia"), CN_FONT)
-        st.font.size = Pt(10.5 if STYLE_PRESET == "formal_condensed" else 11)
+        compact_lists = STYLE_PRESET in {"formal_condensed", "compact_reference_guide"}
+        st.font.size = Pt(10 if compact_lists else 11)
         st.paragraph_format.left_indent = Inches(0.375)
         st.paragraph_format.first_line_indent = Inches(-0.194)
-        st.paragraph_format.space_after = Pt(4)
-        st.paragraph_format.line_spacing = 1.15 if STYLE_PRESET == "formal_condensed" else 1.208
+        st.paragraph_format.space_after = Pt(3 if compact_lists else 4)
+        st.paragraph_format.line_spacing = 1.08 if compact_lists else 1.208
 
 
 def add_hyperlink(paragraph, label, url, size=None, color=BLUE):
@@ -618,9 +625,9 @@ def build(md_path=MD, out_path=OUT):
             flush_paragraph()
             p = doc.add_paragraph()
             if STYLE_PRESET == "formal_condensed":
-                reference_size = 8.5
+                reference_size = 7.6
             elif STYLE_PRESET == "compact_reference_guide":
-                reference_size = 9
+                reference_size = 8.0
             else:
                 reference_size = 9.5
             add_inline(p, stripped, size=reference_size)
@@ -652,9 +659,9 @@ def build(md_path=MD, out_path=OUT):
             p.paragraph_format.left_indent = Inches(0.25)
             p.paragraph_format.first_line_indent = Inches(-0.25)
             if STYLE_PRESET == "formal_condensed":
-                ref_size, ref_space, ref_line = 8.5, 1, 1.0
+                ref_size, ref_space, ref_line = 7.6, 0, 0.95
             elif STYLE_PRESET == "compact_reference_guide":
-                ref_size, ref_space, ref_line = 9, 2, 1.0
+                ref_size, ref_space, ref_line = 8.0, 0.5, 0.95
             else:
                 ref_size, ref_space, ref_line = 9.5, 4, 1.1
             p.paragraph_format.space_after = Pt(ref_space)

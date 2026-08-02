@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.19 - 2026-08-03
+
+- 以 personalized agent、user profile/history、preference following、long-term memory、tool use、longitudinal adaptation 和 personalized deep research 为关键词，核对 20 篇新增论文的官方 title/abstract，并按直接相关/必要近邻记录其实际终点与未覆盖部分。
+- 重写四版 Proposal 的研究背景：不再把论文按年份或模块生硬罗列，而沿“用户历史与输出 → 规划/工具/GUI → 写入/更新/安全 → 个性化 DR → 反事实交付物识别”逐层说明已有覆盖与剩余测量问题。
+- 将论文题目进一步收敛为：固定任务、证据、工具和预算后，通过 matched/swapped 用户交换和预冻结差异真值识别最终交付物到底更适合谁；不以“更多 persona/信号/agent”或“首次个性化行动”作为新意。
+- 吸收 MyScholarQA 的真人效度威胁：领域专家负责事实与共同质量，目标用户负责 must-change/must-not 和 matched/swapped 盲评；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。
+- 相关论文速览扩展为 27 篇工作地图，HTML 新增 20 篇相关性审计卡片、连续叙事流程和可点击官方来源；正式 Proposal 收录全部 20 篇，短版按篇幅保留最近邻代表。
+
 ## v0.18 - 2026-08-03
 
 - 四版 Proposal 的全部正文编号引用改为可点击链接，直接跳转到对应论文或官方文档；范围引用展开为逐篇链接，避免多篇来源共用一个含混目标。

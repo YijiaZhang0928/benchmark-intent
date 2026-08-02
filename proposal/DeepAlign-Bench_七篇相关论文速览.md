@@ -1,14 +1,14 @@
-# 七篇 2026 年 7 月相关论文速览
+# 27 篇个性化 Agent 相关工作地图
 
-**阅读范围：abstract + 主图 + conclusion / limitations**
+**阅读范围：七篇 2026 年 7 月最近邻工作精读 + 20 篇扩展工作的 title / abstract 精筛**
 
 **用途：重写 DeepAlign-Bench 的 related-work 故事，不代替逐节复现性审查**
 
-**版本：v0.18 · 2026 年 8 月 3 日**
+**版本：v0.19 · 2026 年 8 月 3 日**
 
 ## 一页结论
 
-这七篇论文不是七个平行 benchmark。它们分别占据一条能力链上的不同位置：
+这 27 篇论文不是一组平行 benchmark。它们分别占据一条能力链上的不同位置：
 
 ```text
 理解用户                 利用历史并行动              跨会话保持/更新             交付用户特异结果
@@ -44,6 +44,52 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 | DeepAlign-Bench（计划） | ● | ● | ● | ● | ● | ● | ● |
 
 最后一行是研究设计目标，不是已有结果。论文中必须用 coverage manifest 区分 tested 与 defined-only。
+
+## 扩展检索：20 篇工作的精准相关性审计
+
+### 为什么不能把检索结果全部写成“直接前作”
+
+本轮用 `personalized agent`、`user profile`、`user history`、`preference following`、`long-term memory`、`tool use`、`longitudinal adaptation` 和 `personalized deep research` 检索，并逐篇核对官方 title 与 abstract。论文至少满足以下两项才纳入：用户条件是可观察输入；用户条件会改变生成、规划或行动；论文有可比较的个性化结果。纯 persona role-play、通用 agent memory、只有推荐精度而没有 agent 决策的工作没有纳入。
+
+“直接”表示论文已经评测用户条件化的 agent 决策、行动或 DR 交付物；“近邻”表示它只覆盖我们协议中的一个必要模块。近邻工作可以支撑设计选择，但不能被写成与 DeepAlign-Bench 同一研究问题。
+
+| # | 工作 | 相关性 | Abstract 级最重要信息 | 它没有覆盖什么 |
+|---:|---|---|---|---|
+| 1 | [LaMP](https://aclanthology.org/2024.acl-long.399/) | 近邻：输出个性化 | 用用户历史构造多个个性化语言任务，并比较检索增强方法；确立了“同一任务因用户历史而改变输出”的基础协议。 | 不是 agent 执行或 Deep Research；没有长程状态、工具轨迹和 matched/swapped 最终交付物。 |
+| 2 | [TravelPlanner+](https://aclanthology.org/2024.emnlp-industry.37/) | 直接：个性化规划 | 把 user model 接入旅行规划 agent，并用通用计划与个性化计划的偏好比较评价相关性和适用性。 | 单一旅行域；主要是 generic/personal 条件比较，未固定证据后交换两个目标用户。 |
+| 3 | [PersonaLens](https://aclanthology.org/2025.findings-acl.927/) | 直接：任务型助手 | 用丰富画像、交互历史、user agent 与 judge agent 同时评 personalization、response quality 和 task success。 | 用户与评委主要由模型模拟；终点是任务型对话，不是多证据 DR 交付物。 |
+| 4 | [PersonaMem](https://arxiv.org/abs/2504.14225) | 近邻：动态画像 | 180 多条模拟用户历史、最长 60 个 session、15 类任务；测试从历史识别当前画像并选择合适响应。 | 主要是响应选择；没有开放式 agent 行动和最终 artifact 的用户特异真值。 |
+| 5 | [ETAPP](https://aclanthology.org/2025.acl-long.1064/) | 直接：工具与主动性 | 800 个 case、16 类画像和 33 个 API 的 sandbox；用人工 key points 辅助 LLM judge 评价 personalization 与 proactivity。 | 关键点仍由单一 case 预设，任务是工具调用；没有跨交付物 rubric 或真人目标用户交换。 |
+| 6 | [ToolSpectrum](https://arxiv.org/abs/2505.13176) | 直接：情境化工具选择 | 同时操纵 user profile 与 environmental factors，发现模型难以联合权衡两类条件。 | 评价对象是工具选择，不是长程研究产物；不能回答用户适配是否只是一般决策质量。 |
+| 7 | [PRIME](https://aclanthology.org/2025.emnlp-main.1711/) | 近邻：双记忆 | 用情景记忆表示历史互动、语义记忆表示演化信念，并在长短上下文个性化任务上评测。 | 重点是 memory method；没有多 agent/工具执行、反事实用户交换或 DR 真值。 |
+| 8 | [Personalized Deep Research](https://arxiv.org/abs/2605.10530) | 直接：个性化 DR | 把动态用户上下文接入 query development、私有/公开检索和停止条件，并用混合指标评价四类任务。 | 范围只有四类任务；没有用户交换、预冻结差异契约和独立 JudgeBench。 |
+| 9 | [MyScholarQA](https://aclanthology.org/2026.acl-long.723/) | 最直接：DR + 真人 | 从研究者论文推断兴趣，先让用户批准个性化 action，再生成多节报告；真人研究发现九类 LLM judge 未捕捉错误。 | 聚焦学术文献调研；没有覆盖多类交付物与系统化 longitudinal operators。 |
+| 10 | [Personalized Benchmarking](https://aclanthology.org/2026.findings-acl.31/) | 近邻：个体榜单 | 用 115 名 Chatbot Arena 活跃用户构造个体模型排名，显示总体排名不能代表许多具体用户。 | 评价的是“用户偏爱哪个模型”，不是 agent 是否在受控任务上利用用户信息。 |
+| 11 | [RPEval](https://arxiv.org/abs/2601.16621) | 直接：无关记忆风险 | 通过 personalized intent reasoning 暴露 irrelevant memory 导致的 irrational personalization，并给出多粒度评价。 | 终点主要是意图推理；没有 DR 最终交付物和任务/证据不变的双用户交换。 |
+| 12 | [PAHF](https://arxiv.org/abs/2602.16173) | 直接：澄清与漂移 | 把行动前澄清、记忆取回和行动后反馈组成在线学习环，并在购物与具身任务中测试初始学习和 persona shift。 | 是训练/适应框架与两个窄域 benchmark；没有开放式报告的 must-change/must-hold 真值。 |
+| 13 | [PerMemBench](https://arxiv.org/abs/2605.25535) | 近邻：个性化写入 | 用多年、多域历史测试“对这个用户而言什么值得存”，把 memory storage policy 本身个性化。 | 评价记忆保留，不评价被保存内容是否最终改善 DR 交付物。 |
+| 14 | [Memora](https://aclanthology.org/2026.findings-acl.1337/) | 近邻：过期与遗忘 | 覆盖数周到数月对话，评 remembering、reasoning、recommending；FAMA 对继续使用失效记忆进行惩罚。 | 任务仍以记忆问答/推荐为主；没有多证据研究过程和用户交换。 |
+| 15 | [CloneMem](https://aclanthology.org/2026.acl-long.1549/) | 近邻：非对话数字轨迹 | 用日记、社交媒体和邮件构造 1–3 年连续生活轨迹，测试个人状态随时间演化。 | 目标是 AI clone 的记忆；没有 agent 完成外部任务时的适配效用与权限边界。 |
+| 16 | [Mem2ActBench](https://aclanthology.org/2026.acl-long.370/) | 直接：记忆到行动 | 用长期、间断的助手历史构造工具任务，检查偏好和 task state 是否落实到工具选择与参数。 | 400 个工具任务仍是离散行动；没有开放式 artifact 或目标用户对其效用的比较。 |
+| 17 | [APOLLO](https://aclanthology.org/2026.findings-acl.1676/) | 直接：偏好跟随 | 从历史中的显式陈述与隐式行为识别偏好，并在 reactive / proactive tool calling 中检查是否遵循。 | 偏好命中主要由工具动作正确性判定；不覆盖报告级权衡、事实与引用。 |
+| 18 | [AndroidIntent](https://aclanthology.org/2026.acl-long.1669/) | 直接：GUI 隐式意图 | 从长期用户记录中解析模糊指令、预测 routine，并评价 GUI agent 的执行与主动建议。 | 单一 Android GUI 域；不评价多文档证据综合或跨交付物 rubric。 |
+| 19 | [OPeRA](https://aclanthology.org/2026.acl-long.2033/) | 近邻：真实行为真值 | 从真实购物用户收集 persona、browser observation、细粒度 action 和即时 rationale，预测特定用户下一步。 | 评的是行为模拟而非助理服务质量；“像用户”不等于“为用户提供更好结果”。 |
+| 20 | [PS-Bench](https://aclanthology.org/2026.acl-long.1260/) | 直接：个性化安全 | 测 benign personal memory 是否让 agent 错误地把有害查询解释为合理意图，说明效用与安全必须联合评价。 | 聚焦单一安全机制；没有正向 DR 适配、共同质量或多类 failure taxonomy。 |
+
+### 20 篇检索后，故事应该怎么讲
+
+相关工作不是按年份排列，而是按评价终点逐步推进：
+
+```text
+用户历史/画像
+  → 个性化响应与任务对话
+  → 个性化规划、工具和 GUI 行动
+  → 跨会话写入、更新、遗忘与安全
+  → 个性化 Deep Research 最终交付物
+  → DeepAlign-Bench：固定任务与证据后，交换用户来识别“更适合谁”
+```
+
+每向右一步，都同时解决了前一步的一部分 gap，也暴露了新的测量问题。因此 1.1 不应先列 20 篇论文、再另起一段列 gap；应在每一层说明“这组工作把评价推进到哪里，因此我们不能再声称什么；但它的终点与我们的构念仍差在哪里”。故事最终收敛到的不是“更全面”，而是**用户条件化最终交付物的反事实可识别性**。
 
 ## 1. Setoka：分层用户理解已经被系统评测
 
@@ -145,14 +191,14 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 
 ## 对 Proposal 的具体改动
 
-1. 将 1.1 从“通用 DR benchmark 不测个性化”改为四层故事：通用 DR 质量 → 用户理解/历史利用 → 单域效用 → 持久状态与时间干预。
-2. 将 gap 锁定为上述层次在广义 DR 最终交付物上的**交叉识别缺口**，而不是任何单一维度的首创。
+1. 将 1.1 改成一条连续收敛链：通用 DR 质量 → 用户理解与输出 → 规划/工具/GUI 行动 → 长程写入、更新与安全 → 个性化 DR → 反事实交付物识别。
+2. 将 gap 锁定为广义 DR 最终交付物的**用户条件化反事实识别缺口**，而不是“已有模块尚未被拼在一起”或任何单一维度的首创。
 3. 增加 reviewer-safe 边界：不声称首先研究用户理解、行为历史、持久状态或时间更新。
 4. 将 Setoka 的 provenance/abstraction、PersonaTrail 的双记忆、APeB 的 hard alternatives、PASB 的 write governance、Temporal Interventions 的 C1–C4 和 TARS 的 human utility 分别映射到现有 Atlas、operator、rubric 和小规模用户研究。
 5. 新增三项最低成立条件：matched/swapped 人评稳定；个性化效应不能由长度/风格/共同质量解释；至少一个 signal/operator 效应可重复且统计可分辨。
 
 ## 建议导师快速判断的三个问题
 
-1. 我们是否同意把主要贡献写成“outcome-centered, counterfactual, longitudinal evaluation protocol”，而不是“更全面的 personalization benchmark”？
+1. 我们是否同意把主要贡献写成“user-conditioned artifact identification under controlled counterfactuals”，而不是“更全面的 personalization benchmark”？
 2. 两个月内是否有资源让至少 8 个 anchor family 真正满足 C1–C4，而不是只在 schema 中定义？
 3. 是否愿意在少量 case 上测用户完成时间或决策信心，以证明文本 rubric 与实际用户效用有关？

@@ -63,8 +63,8 @@ const literatureStandalone = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="七篇 2026 年 7 月个性化智能体论文与 DeepAlign-Bench 的关系">
-  <title>七篇相关论文速览｜DeepAlign-Bench</title>
+  <meta name="description" content="七篇最近邻工作精读与二十篇个性化 Agent 论文相关性审计">
+  <title>27 篇个性化 Agent 相关工作地图｜DeepAlign-Bench</title>
   <style>${css}</style>
 </head>
 <body>${literatureBody}</body>

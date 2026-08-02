@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.18 · 2026 年 8 月 3 日
+版本：v0.19 · 2026 年 8 月 3 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -10,11 +10,13 @@
 
 ### 一句话问题
 
-已有工作分别测“报告好不好”、用户理解、历史利用、单域个性化效用和持久状态风险。我们要补的是交叉缺口：**同一任务和证据下，agent 能不能为不同用户交付不同但都正确的 Deep Research 结果。**
+已有工作已经测到用户理解、历史利用、工具行动、动态记忆和个性化 Deep Research。我们要补的不是又一块能力，而是一个识别问题：**同一任务和证据下，agent 能不能为不同用户交付不同但都正确的 Deep Research 结果。**
 
 ### 为什么需要新的 benchmark
 
-Setoka、PersonaTrail/APeB、TARS、PASB 和 temporal-intervention 工作已经分别覆盖“理解—利用—单域效用—持久风险—时间更新”的一段；[[9]](https://arxiv.org/abs/2607.27056)[[10]](https://arxiv.org/abs/2607.21635)[[11]](https://arxiv.org/abs/2607.20482)[[12]](https://arxiv.org/abs/2607.15948)[[14]](https://arxiv.org/abs/2607.10526)[[15]](https://arxiv.org/abs/2607.03162) SARSI 提供受治理的 personal-agent 架构。[[13]](https://arxiv.org/abs/2607.12254) PDR-Bench 已把 persona 引入 Deep Research。[[3]](https://arxiv.org/abs/2509.25106) 缺少的是把异构用户信号、广义 DR 交付物、matched/swapped 交换和长程干预放进同一协议。给模型 persona 后分数提高，仍可能只是 prompt/报告更长、复述了 persona，或 judge 偏爱更具体的文本。
+个性化评价已经经历三步。第一，Setoka、PersonaTrail/APeB 证明 agent 的用户信号可以来自异构记录、浏览轨迹与行为历史；[[9]](https://arxiv.org/abs/2607.27056)[[11]](https://arxiv.org/abs/2607.20482)[[15]](https://arxiv.org/abs/2607.03162) 第二，ETAPP 与 Mem2ActBench 已把这些信号落实到工具选择和参数，PAHF 还加入澄清、反馈和偏好漂移。[[16]](https://aclanthology.org/2025.acl-long.1064/)[[19]](https://aclanthology.org/2026.acl-long.370/)[[18]](https://arxiv.org/abs/2602.16173) 第三，PDR-Bench 和另一项 PDR 工作已经进入个性化 Deep Research；MyScholarQA 则发现合成用户与 LLM judge 会漏掉真人指出的细微错误。[[3]](https://arxiv.org/abs/2509.25106)[[17]](https://arxiv.org/abs/2605.10530)[[20]](https://aclanthology.org/2026.acl-long.723/)
+
+因此，缺少的不是“更多 persona”或“agent 会不会用 memory”，而是把广义 DR 最终交付物放进反事实协议：固定任务、证据、工具和预算，只交换两个都合理的用户；再用预冻结 must-change / must-hold / must-not 真值与真人校准 judge 排除输入/输出更长、persona 复述、文风偏好和额外任务信息。
 
 因此我们采用反事实对照：固定任务、证据、工具和预算，只改变用户；再把两个用户的交付物交换评分。只有 matched 持续优于 swapped，同时事实和共同质量不下降，才算真正个性化。
 
@@ -29,7 +31,7 @@ Setoka、PersonaTrail/APeB、TARS、PASB 和 temporal-intervention 工作已经�
 | 核心运行 | 最多 576 episodes |
 | 压力测试 | 8 个 anchor family |
 | JudgeBench | 240 个判分单元 |
-| 人评 | 至少 20% 输出，加关键失败仲裁 |
+| 人评 | 至少 20% 输出；专家评事实，目标用户评 matched/swapped；加关键失败仲裁 |
 
 ## 1. 论文要测的对象
 
@@ -218,3 +220,13 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 [14] Mao et al. *Agents Don't Just Agree, They Remember*. arXiv:2607.10526.
 
 [15] Yang et al. *APeB*. arXiv:2607.03162.
+
+[16] Hao et al. *Evaluating Personalized Tool-Augmented LLMs from the Perspectives of Personalization and Proactivity*. ACL, 2025. https://aclanthology.org/2025.acl-long.1064/
+
+[17] Li et al. *Personalized Deep Research: A User-Centric Framework, Dataset, and Hybrid Evaluation*. arXiv:2605.10530.
+
+[18] Liang et al. *Learning Personalized Agents from Human Feedback*. arXiv:2602.16173.
+
+[19] Shen et al. *Mem2ActBench*. ACL, 2026. https://aclanthology.org/2026.acl-long.370/
+
+[20] Balepur et al. *Language Models Don't Know What You Want*. ACL, 2026. https://aclanthology.org/2026.acl-long.723/
