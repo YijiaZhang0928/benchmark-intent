@@ -21,10 +21,10 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.22 · 组内讨论稿"
+DOC_VERSION = "v0.23 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 3 日"
 RESEARCH_LINE = "Counterfactual Effect · 可审计构造 · 分级压力 · 跨环境运行"
-CORE_CLAIM = "固定任务与证据，只改变用户；用 matched/swapped 与三类契约识别个性化效应，再沿 S0–S4 比较不同 agent 模式的保持与恢复。"
+CORE_CLAIM = "固定任务与证据，只改变用户；用 matched/swapped 与三类契约识别个性化效应，再沿 S0–S3 比较不同 agent 模式在压力下的保持与更新。"
 CONTENTS_ITEMS = [
     "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
     "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",

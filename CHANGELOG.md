@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.23 - 2026-08-03
+
+- 删除 re-anchor、pre-delivery reminder、verifier 修复、S4 recovery pair、恢复型 RQ/H、recovery gain、recovery policy 和“恢复失败”类别；不再研究失败后的补救干预。
+- 将 Anchor 的职责收敛为 S0–S3 能力压力测试：clean、单一轻扰动、单一强扰动和复合风险均绑定同 anchor、同前缀、同预算 control。
+- 保留 dynamic update，但只测用户状态按预注册事件变化后能否采用当前真值、避免旧状态残留；行为算子改为 Acquire / Preserve / Use / Update。
+- 第四张 leaderboard profile 从 Recovery & Governance 改为 Boundary & Governance，集中报告 must-not、隐私、权限、正确弃权和压力副作用。
+- 四版 Proposal、HTML、主图、schema、项目记忆与导出文件同步更新为 v0.23。
+
 ## v0.22 - 2026-08-03
 
 - 将 task family 构造写成可审计流水线：真实 seed、共同任务/证据/资源冻结、Atlas 标注、证据世界、六维难度旋钮、最小用户反事实对、四类契约和 pilot 淘汰；将 persona 构造写成来源记录、原子 fact ledger、fact-to-contract map、多信号视图和负对照。

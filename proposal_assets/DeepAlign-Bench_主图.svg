@@ -37,7 +37,7 @@
   <circle cx="105" cy="175" r="25" fill="#1E7584"/>
   <text x="105" y="184" text-anchor="middle" class="cn white" font-size="26" font-weight="700">?</text>
   <text x="147" y="164" class="cn label">核心 estimand + 压力评测</text>
-  <text x="147" y="194" class="cn body">固定 T/E/resources，只改变用户识别 counterfactual effect；再沿 S0–S4 测不同 agent 模式何时退化、能否恢复。</text>
+  <text x="147" y="194" class="cn body">固定 T/E/resources，只改变用户识别 counterfactual effect；再沿 S0–S3 测不同 agent 模式在压力下何时退化。</text>
 
   <!-- Column 1 -->
   <rect x="54" y="250" width="400" height="558" class="card"/>
@@ -104,13 +104,12 @@
   <text x="1170" y="566" text-anchor="middle" class="cn small">M1–M6：商业 · 受控 · 开源 · Code · Multi · Memory</text>
   <text x="1170" y="596" text-anchor="middle" class="cn small">同 anchor / 环境 / budget 才直接比较；adapter 导出 artifact + trace</text>
   <line x1="1012" y1="640" x2="1325" y2="640" stroke="#477A68" stroke-width="4" marker-end="url(#arrow)"/>
-  <circle cx="1027" cy="640" r="9" fill="#477A68"/><circle cx="1094" cy="640" r="9" fill="#477A68"/>
-  <circle cx="1161" cy="640" r="9" fill="#477A68"/><circle cx="1228" cy="640" r="9" fill="#477A68"/><circle cx="1295" cy="640" r="9" fill="#477A68"/>
+  <circle cx="1027" cy="640" r="9" fill="#477A68"/><circle cx="1117" cy="640" r="9" fill="#477A68"/>
+  <circle cx="1207" cy="640" r="9" fill="#477A68"/><circle cx="1297" cy="640" r="9" fill="#477A68"/>
   <text x="1027" y="674" text-anchor="middle" class="cn small">S0 clean</text>
-  <text x="1094" y="674" text-anchor="middle" class="cn small">S1 轻</text>
-  <text x="1161" y="674" text-anchor="middle" class="cn small">S2 强</text>
-  <text x="1228" y="674" text-anchor="middle" class="cn small">S3 复合</text>
-  <text x="1295" y="674" text-anchor="middle" class="cn small">S4 恢复</text>
+  <text x="1117" y="674" text-anchor="middle" class="cn small">S1 轻</text>
+  <text x="1207" y="674" text-anchor="middle" class="cn small">S2 强</text>
+  <text x="1297" y="674" text-anchor="middle" class="cn small">S3 复合</text>
   <rect x="998" y="710" width="344" height="66" rx="12" fill="#F9FCFA" stroke="#A4C2B4"/>
   <text x="1170" y="738" text-anchor="middle" class="cn small">8 功能 anchor × balanced incomplete block</text>
   <text x="1170" y="761" text-anchor="middle" class="cn small">每个 failure mode 至少跨两个 anchor</text>
@@ -147,7 +146,7 @@
   <rect x="626" y="910" width="245" height="75" rx="12" fill="#EFEAF9" stroke="#9984BF"/>
   <text x="748" y="941" text-anchor="middle" class="cn label">C · Stress &amp; Failure</text><text x="748" y="968" text-anchor="middle" class="cn small">S0–S3 retention · risk slices</text>
   <rect x="894" y="910" width="245" height="75" rx="12" fill="#FFF4E4" stroke="#D6A150"/>
-  <text x="1016" y="941" text-anchor="middle" class="cn label">D · Recovery</text><text x="1016" y="968" text-anchor="middle" class="cn small">S4 gain · governance</text>
+  <text x="1016" y="941" text-anchor="middle" class="cn label">D · Boundary &amp; Gov.</text><text x="1016" y="968" text-anchor="middle" class="cn small">privacy · permissions · abstention</text>
   <rect x="1162" y="910" width="245" height="75" rx="12" fill="#FBEDEA" stroke="#CC8677"/>
   <text x="1284" y="941" text-anchor="middle" class="cn label">Hard Gates</text><text x="1284" y="968" text-anchor="middle" class="cn small">事实 · 隐私 · 权限 · must-not</text>
   <rect x="1430" y="910" width="397" height="75" rx="12" fill="#EDF2F5" stroke="#91A3B0"/>

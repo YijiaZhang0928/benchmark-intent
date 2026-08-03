@@ -66,6 +66,8 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /A1 日常决策/);
   assert.match(html, /PCA=\.43/);
   assert.match(html, /PROFILE D/);
+  assert.match(html, /Boundary &amp; Governance/i);
+  assert.doesNotMatch(html, /re-anchor|S4 恢复|Recovery &amp; Governance/i);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
 });
@@ -101,12 +103,13 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.22/m);
+  assert.match(schema, /^schema_version:\s*0\.23/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
   assert.match(schema, /estimand:\s*counterfactual_personalization_effect/);
   assert.match(schema, /execution_regime:/);
-  assert.match(schema, /S4_recovery_pair/);
+  assert.doesNotMatch(schema, /S4_recovery_pair|reanchor|recovery_prompt|recovery_policy/);
+  assert.match(schema, /stage: \[S0_clean, S1_single_light, S2_single_strong, S3_compound\]/);
   assert.match(schema, /minimal_counterfactual_edit:/);
   assert.match(manifest, /coverage_status/);
   assert.match(manifest, /tested/);

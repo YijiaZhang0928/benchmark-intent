@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.22
+schema_version: 0.23
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -45,7 +45,7 @@ task:
     reversibility: [reversible, partly_reversible, hard_to_reverse]
     interaction_need: [single_turn, optional_clarification, required_clarification, longitudinal]
   stress_design:
-    stage: [S0_clean, S1_single_light, S2_single_strong, S3_compound, S4_recovery_pair]
+    stage: [S0_clean, S1_single_light, S2_single_strong, S3_compound]
     vector:
       evidence_complexity_0_to_3: integer
       signal_complexity_0_to_3: integer
@@ -162,17 +162,16 @@ anchor_assignment:
   balanced_block_id: string_or_null
   cross_anchor_replication_ids: list
 
-behavioral_operator: [acquire, preserve, use, update_recover]
+behavioral_operator: [acquire, preserve, use, update]
 perturbation:
-  type: [none, missing_signal, shuffled_persona, irrelevant_persona, cue_paraphrase, stale_conflict, context_dilution, tool_noise, agent_handoff, dynamic_update, reanchor]
-  target: [signal_bundle, signal_relevance, signal_representation, temporal_priority, context_position, tool_stream, handoff_summary, dynamic_state, recovery_prompt, none]
+  type: [none, missing_signal, shuffled_persona, irrelevant_persona, cue_paraphrase, stale_conflict, context_dilution, tool_noise, agent_handoff, dynamic_update]
+  target: [signal_bundle, signal_relevance, signal_representation, temporal_priority, context_position, tool_stream, handoff_summary, dynamic_state, none]
   base_user_state_id: string
   signal_bundle_id: string
   insert_step: integer_or_null
   authorized_visibility: [prompt, retrieved, tool_accessible, handoff_only, hidden_control]
   expected_invariants: list
   paired_control_id: string_or_null
-  recovery_policy: [not_applicable, preregistered_paired, failure_triggered_exploratory]
   seed: integer
 expected_failure_modes: list
 

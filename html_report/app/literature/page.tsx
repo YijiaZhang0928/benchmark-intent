@@ -24,7 +24,7 @@ const papers = [
     short: "Temporal Interventions",
     title: "User-Conditioned Evaluation under Temporal Interventions",
     role: "时间干预",
-    verdict: "是我们 Update / Recover 设计最直接的方法学前作。",
+    verdict: "是我们 Dynamic Update 与长程压力设计最直接的方法学前作。",
     abstract: "focused audit / position paper：同一时间干预应在不同持久用户状态上重放，检查是否产生用户条件化差异。",
     figure: "C1 显式外生事件；C2 状态跨事件持久；C3 一个维度影响另一个维度；C4 结果随用户状态变化。",
     conclusion: "审计的 15 个公开协议中，没有一个同时满足 C1–C4；建议提供 profile states、event scripts、dependency annotations、oracle checks 和 per-user regression suites。",
@@ -231,7 +231,7 @@ export default function LiteratureBrief() {
         </div>
       </section>
 
-      <footer><div className="shell"><b>DeepAlign-Bench · v0.22</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
+      <footer><div className="shell"><b>DeepAlign-Bench · v0.23</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
     </main>
   );
 }

@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.22 · 2026 年 8 月 3 日
+版本：v0.23 · 2026 年 8 月 3 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -50,7 +50,7 @@
 - Acquire：缺信息时会不会正确澄清；
 - Preserve：长任务和交接后会不会忘记；
 - Use：是否把用户信息落实到结果；
-- Update/Recover：用户纠正后能否更新和恢复。
+- Update：用户状态按任务脚本变化后，能否采用当前真值并停止使用旧状态。
 
 ## 2. Task 和 Persona 怎么构建
 
@@ -89,11 +89,11 @@ Persona 不是人物小传，而是 task-conditioned user state 的一种展示�
 
 8 个 anchor 固定覆盖日常决策、学习职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿、政策传播。所有 anchor 都有 clean + persona swap + irrelevant-signal 配对；其他 failure mode 用平衡不完全区组分配，每类至少落到两个 anchor。
 
-每个 anchor 跑 `S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 复合扰动 → S4 同前缀恢复`。难度由 evidence、signal、horizon、handoff、permission、counterfactual subtlety 六维记录；risk、failure mode 和强度不合并成一个分数。
+每个 anchor 跑 `S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 复合扰动`。难度由 evidence、signal、horizon、handoff、permission、counterfactual subtlety 六维记录；risk、failure mode 和强度不合并成一个分数。
 
-指标：ΔPF / invariance、冲突解析率、PF retention/AUC、handoff loss、update correctness、recovery gain；同时报告 TQ、事实性、隐私和长度副作用。
+指标：ΔPF / invariance、冲突解析率、PF retention/AUC、handoff loss、update correctness 和旧状态残留率；同时报告 TQ、事实性、隐私和长度副作用。
 
-三类运行环境实操为：E1 Frozen Harness 使用只读快照和统一预算，形成因果主榜；E2 Live Product/Web 使用原生工具并记录版本、日期、地区和 URL 快照，形成产品榜；E3 Stateful Sandbox 在固定 checkpoint 注入冲突、handoff、更新和恢复，形成机制榜。它们与 agent 类型正交，需统一 reset/signal/checkpoint/event/artifact/trace adapter。
+三类运行环境实操为：E1 Frozen Harness 使用只读快照和统一预算，形成因果主榜；E2 Live Product/Web 使用原生工具并记录版本、日期、地区和 URL 快照，形成产品榜；E3 Stateful Sandbox 在固定 checkpoint 注入冲突、handoff 和动态更新，形成压力与机制榜。它们与 agent 类型正交，需统一 reset/signal/checkpoint/event/artifact/trace adapter。
 
 ## 4. Rubric 和 Metrics
 
@@ -122,11 +122,11 @@ Core + Personalization + Intent + Deliverable + Operator + Risk
 | CFA | matched 是否稳定优于 swapped |
 | Worst-view CFA / Cue Gap | 同一 user-state 换表达后是否仍稳定 |
 | Retention | 长任务中用户适配保留多少 |
-| Recovery | 纠正或重新锚定后恢复多少 |
+| Update | 状态改变后采用当前真值、避免旧状态残留的能力 |
 
 主榜先过 TQ、FR 和关键隐私门槛，再报告个性化指标。不能用“懂用户”补偿事实错误。
 
-Leaderboard 分四张 profile：clean task/deliverable、signal acquisition、S0–S3 stress/failure curve、S4 recovery/governance；只有同 anchor、同环境、同预算的 agent 才做显著性比较。
+Leaderboard 分四张 profile：clean task/deliverable、signal acquisition、S0–S3 stress/failure curve、boundary/governance；只有同 anchor、同环境、同预算的 agent 才做显著性比较。
 
 ## 5. Judge 方案
 
@@ -151,7 +151,7 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 
 ### 机制结论：不够
 
-只看最后报告无法区分“没读到、忘了、知道但没用”。因此全量保存轻量轨迹，20%–30% 子集做 memory、handoff 和 re-anchor 的受控重跑。
+只看最后报告无法区分“没读到、忘了、知道但没用”。因此全量保存轻量轨迹，20%–30% 子集做 memory、handoff 和 dynamic-update 的受控压力分叉。
 
 如果诊断子集没有完成，论文只主张“最终交付物个性化”，不主张已经定位内部偏移时刻。
 

@@ -3,12 +3,12 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-03
-当前版本：v0.22
+当前版本：v0.23
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
 
-项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文，评估广义 Deep Research agent 的**最终交付物是否真正适合目标用户**，并在可控子集上诊断用户信息的获取、保持、使用、更新与恢复。
+项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文，评估广义 Deep Research agent 的**最终交付物是否真正适合目标用户**，并在可控子集上诊断用户信息的获取、保持、使用与更新。
 
 核心识别不是“给 persona 后分数是否提高”，而是：固定任务、证据、工具和预算，只改变目标用户；若 matched 交付物相对 swapped 交付物对两个用户均有稳定优势，且共同质量、事实性、安全和隐私不下降，才称该交付物具有可观察的用户反事实特异性。这是结果层的用户条件效应，不证明模型内部形成了真正的用户理解。
 
@@ -75,6 +75,16 @@
 7. System mode 与 execution regime 分开：M1–M6 是商业 DR、受控 agent、开源 DR、code agent、multi-agent、memory-enhanced；E1–E3 是 controlled frozen harness、native live product/web、stateful interactive sandbox。统一 adapter 为 `reset / provide_signal / run_until / inject_event / export_artifact / export_trace`；E1 与 E2 不混排。
 8. Leaderboard 不压成单一总分，至少发布 Base Delivery、Signal Acquisition、Stress & Failure、Recovery & Governance 四个 profile，并按 task family、system mode、execution regime、stress stage、risk 和 failure mode 切片。
 
+### 1.6 v0.23：Anchor 只做压力测试，删除恢复实验
+
+v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.22 作为迭代历史：
+
+1. 行为算子冻结为 Acquire、Preserve、Use、Update。Update 测预注册用户状态变化后是否采用当前真值、停止沿用旧状态；它不是失败后的补救或额外提醒。
+2. Anchor 只运行 S0 clean、S1 单一轻扰动、S2 单一强扰动和 S3 复合压力。删除 S4 recovery pair、re-anchor、pre-delivery reminder、verifier 修复、recovery gain 和 recovery policy。
+3. E3 Stateful Sandbox 只注入澄清、冲突/过期、context dilution、handoff 和 dynamic update；共享前缀只分叉 clean/perturbed，不分叉 repair/recovery 条件。
+4. 失败 taxonomy 删除“恢复失败”，当前为 8 类 outcome risk、9 类 expected failure mode。状态变化相关失败统一由“动态状态与时间一致性失败”和“冲突、时效与更新失败”覆盖。
+5. 第四张 leaderboard profile 改为 Boundary & Governance，报告 must-not、隐私、权限、正确弃权和压力副作用；它不是干预榜。
+
 ## 2. 冻结的两个月范围
 
 - 24 个 counterfactual task family，覆盖 3 个使用情境 × 6 个 research intent，并以 6 个额外 family 复测关键单元。
@@ -92,11 +102,10 @@
 - **Persona / user-state view**：task-conditioned user-state ledger 的一种序列化，不是人物小传。
 - **Clean counterfactual pair**：同一 family 内两个与任务自然匹配、但会导致可验证结果差异的用户 Ua/Ub。
 - **Anchor family**：从 24 个 family 中预注册选出的、适合承载一个或多个受控扰动的实验宿主；“8”是 family 数量，不是扰动类型数量。
-- **Perturbation operator**：对可见用户信号、上下文位置、时间状态、agent 交接或干预时点所做的受控变换。
+- **Perturbation operator**：对可见用户信号、上下文位置、时间状态或 agent 交接所做的受控变换。
 - **Outcome risk**：最终交付物错在何处；**expected failure mode**：case 被设计来暴露什么机制；**observed failure**：运行后独立标注的实际证据。三者不能互相自动填充。
-- **Re-anchor**：恢复干预，不是攻击类型；必须在预注册配对子集上运行，不能只挑已经失败的样本。
 - **System mode**：被测 agent 的能力/架构类别 M1–M6；**execution regime**：运行和控制条件 E1–E3。两者不能互换。
-- **Stress stage**：S0–S4 的可复现升级阶段；**stress vector**：六个独立难度旋钮。阶段用于画曲线，向量用于解释“难在哪里”。
+- **Stress stage**：S0–S3 的可复现升级阶段；**stress vector**：六个独立难度旋钮。阶段用于画曲线，向量用于解释“难在哪里”。
 
 ## 4. 8 个 anchor family 如何实现
 
@@ -117,14 +126,12 @@
 | Context dilution | 语义事实与总预算可比 | 改变位置、间隔和 matched-length 噪声 | PF retention、位置/长度对照、AUC |
 | Agent handoff | 任务和目标用户不变 | 在固定交接点传完整、缺失或损坏的 user-state summary | handoff loss、must-hold 保持率 |
 | Dynamic update | episode 前半段相同 | 在预注册回合更新预算/目标/状态 | 新 must-change 是否生效，旧 invariant 是否保持 |
-| Re-anchor | 同一运行前缀与目标用户 | 在固定交付前时点重申最小必要约束 | recovery gain 与对 TQ/隐私的副作用 |
 
 ### 4.2 分配原则
 
 - 不运行完整笛卡尔积。所有 8 个 anchor 都运行 clean baseline、persona swap 和 irrelevant-signal 控制。
 - conflict/stale、dilution、handoff、dynamic update 只进入满足预注册 eligibility predicate 的 family，并在 coverage manifest 中公开缺格原因。
-- re-anchor 在固定的成对子集上运行，无论原始运行是否表现出明显失败；否则会产生 selection-on-failure bias，夸大恢复收益。
-- 每个扰动保存 `base_user_state_id`、`signal_bundle_id`、`perturbation.type/target/insert_step`、`authorized_visibility`、`expected_invariants`、`paired_control_id`、`recovery_policy` 和 `seed`。
+- 每个扰动保存 `base_user_state_id`、`signal_bundle_id`、`perturbation.type/target/insert_step`、`authorized_visibility`、`expected_invariants`、`paired_control_id` 和 `seed`。
 
 ### 4.3 对应指标
 
@@ -134,7 +141,6 @@
 - Context dilution：PF retention curve、user-specific AUC、与共同 TQ 衰减的差值。
 - Handoff：handoff loss、约束保持率、交接摘要完整度。
 - Dynamic update：update correctness、旧状态残留率、must-hold 保持率。
-- Re-anchor：paired recovery gain，以及事实性、共同质量、长度和泄漏副作用。
 
 ## 5. Rubric、metrics 与 judge 的当前决定
 
@@ -153,7 +159,7 @@
 - 不能否定 PDR-Bench 的 persona-aware rubric 或 absolute adaptation construct，也不能未经测试声称其 judge 已被长度/关键词/格式欺骗。可以据其公开结果指出：PCA=.43、15-query/2-agent 的窄校准、动态 criterion、复合事实链、非目标用户效度与 P/Q/R 补偿不足以支撑精细排名和 DeepAlign 的跨条件效应；DeepAlign 的方法增量仍是 counterfactual effect identification，JudgeBench 是测量增量。
 - 不能把 matched/swapped 的结果层效应写成模型内部“理解用户”的因果证据；若无语义等价表达与无关 cue 控制，只能主张条件化结果差异。
 - 预期 failure mode 对主 judge 隐藏；observed failure 必须由输出/轨迹证据独立标注。
-- 不能只在失败样本上测试 re-anchor；不能把一般能力下降误写成个性化漂移。
+- 不能把一般能力下降误写成个性化保持失效；必须有同长度共同约束对照和同前缀 clean control。
 - 不能用 overall score 掩盖 task stratum、intent、signal channel、agent class 和 operator 的结构性差异。
 - 若 matched–swapped 人类区分度不稳定、judge 不过门或 PF 增益以 TQ/事实/隐私为代价，应缩小主张而不是调整权重救结果。
 
@@ -203,3 +209,4 @@
 - v0.20：精确校准 PDR-Bench 边界：承认其 task/persona-conditioned P-Score 与同 user-query 的 pairwise judge 校准；把 DeepAlign 主增量收紧为跨用户 2×2 对角优势、预冻结变化/不变项和跨 cue 稳健性；明确该协议识别结果特异性，不证明内部用户理解。
 - v0.21：进一步取消对 PDR-Bench rubric/judge 细度的缺陷叙事；把唯一核心方法贡献冻结为从 absolute adaptation evaluation 到 counterfactual personalization effect identification，并明确 must-change/must-hold/must-not 是跨条件 oracle。
 - v0.22：把 task/persona 的真实构造链、A1–A8 功能 anchor、S0–S4 压力阶梯、M1–M6 system mode、E1–E3 execution regime 和四类 leaderboard profile 写成可直接实现的协议；恢复对 PDR-Bench judge 的证据化测量批评，同时不否定其 absolute adaptation construct。
+- v0.23：删除 re-anchor、S4 recovery pair、恢复型 RQ/H、recovery gain 与 schema 恢复字段；Anchor 只做 S0–S3 压力测试，保留 dynamic update 作为当前状态采用测试，并把第四榜改为 Boundary & Governance。

@@ -4,7 +4,7 @@
 
 **用途：重写 DeepAlign-Bench 的 related-work 故事，不代替逐节复现性审查**
 
-**版本：v0.22 · 2026 年 8 月 3 日**
+**版本：v0.23 · 2026 年 8 月 3 日**
 
 ## 一页结论
 
@@ -118,7 +118,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 
 **Conclusion 最重要的信息。** 在其审计的 15 个公开协议中，没有一个同时满足 C1–C4。作者建议未来 benchmark 提供 profile states、event scripts、dependency annotations、oracle checks 和 per-user regression suites。
 
-**与我们的关系。** 这是 Dynamic Update、Conflict/Stale、Handoff 和 Re-anchor 设计最直接的方法学前作。我们的区别不能写成“我们首先测试时间变化”，而应是：在广义 DR 的最终交付物上把 C1–C4 操作化，并增加反事实用户真值、正向效用、过度个性化和 judge 校准。
+**与我们的关系。** 这是 Dynamic Update、Conflict/Stale 和 Handoff 压力设计最直接的方法学前作。我们的区别不能写成“我们首先测试时间变化”，而应是：在广义 DR 的最终交付物上把 C1–C4 操作化，并增加反事实用户真值、正向效用、过度个性化和 judge 校准。
 
 **应吸收的设计。** 对每个 dynamic case 明确事件脚本、事件前状态、事件后 oracle、受影响维度、应保持维度和按用户分组的回归检查；避免把自然多轮对话误当成外生时间干预。
 

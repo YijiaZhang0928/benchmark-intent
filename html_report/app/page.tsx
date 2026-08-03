@@ -40,7 +40,7 @@ const failures = [
   ["检索/相关性失败", "漏取正确事实，或取回错误、无关信息"], ["已知约束忽略", "预算、权限或格式已知却未落实"],
   ["冲突/更新失败", "新旧信息冲突时仍选择过期事实"], ["利用失败", "能复述用户事实，却没有落实到交付物"],
   ["无关/过度个性化", "在不应变化处强行适配或迎合"], ["隐私/权限失败", "越权访问或不必要披露敏感信息"],
-  ["保持/交接失败", "长程执行或子 agent 交接后丢失约束"], ["恢复失败", "发现偏离或被纠正后仍未修复"],
+  ["保持/交接失败", "长程执行或子 agent 交接后丢失约束"],
 ];
 
 export default function Home() {
@@ -69,7 +69,7 @@ export default function Home() {
             <span className="cardKicker">一句话研究目标</span>
             <p>测量只改变目标用户后，最终交付物是否发生方向正确、共同核心稳定且不过度推断的变化。</p>
             <hr />
-            <div className="thesisFlow"><b>形成</b><i>→</i><b>保持</b><i>→</i><b>利用</b><i>→</i><b>恢复</b></div>
+            <div className="thesisFlow"><b>获取</b><i>→</i><b>保持</b><i>→</i><b>利用</b><i>→</i><b>更新</b></div>
           </aside>
         </div>
       </header>
@@ -136,7 +136,7 @@ export default function Home() {
           </div>
           <div className="operatorStrip">
             <span>行为测试算子</span>
-            {[["Acquire","取得最小充分信息"],["Preserve","在噪声/冲突/交接中保持"],["Use","落实到交付物并保持不变量"],["Update / Recover","纠正或状态变化后更新"]].map(([a,b])=><div key={a}><b>{a}</b><small>{b}</small></div>)}
+            {[["Acquire","取得最小充分信息"],["Preserve","在噪声/冲突/交接中保持"],["Use","落实到交付物并保持不变量"],["Update","状态变化后采用当前真值"]].map(([a,b])=><div key={a}><b>{a}</b><small>{b}</small></div>)}
           </div>
           <div className="coverageManifest"><b>Coverage manifest</b><span><i>TESTED</i> 已进入主实验</span><span><i>DEFINED</i> 已定义未运行</span><span><i>N/A</i> 结构性不适用</span><span><i>DEFERRED</i> 因资源延后</span></div>
           <div className="sectionHead compactHead"><h2>Research Task 平面再用任务立方体分层</h2><p>任务类型回答“在哪类需求上测”；结果风险与失败模式回答“错在哪里、为什么错”。</p></div>
@@ -158,11 +158,11 @@ export default function Home() {
           <div className="axisGrid">
             <article>
               <span>AXIS A · OUTCOME RISK</span><h3>最后错在什么地方？</h3>
-              <div className="riskList">{["目标与成功标准错配","内容选择与覆盖错配","深度与知识脚手架错配","决策与风险策略错配","行动步骤与工作流错配","格式、受众与可访问性错配","隐私、安全与权限越界","动态更新与恢复失败"].map((x,i)=><div key={x}><b>R{i+1}</b><p>{x}</p></div>)}</div>
+              <div className="riskList">{["目标与成功标准错配","内容选择与覆盖错配","深度与知识脚手架错配","决策与风险策略错配","行动步骤与工作流错配","格式、受众与可访问性错配","隐私、安全与权限越界","动态状态与时间一致性失败"].map((x,i)=><div key={x}><b>R{i+1}</b><p>{x}</p></div>)}</div>
             </article>
             <article>
               <span>AXIS B · EXPECTED FAILURE MODE</span><h3>任务被设计来暴露什么机制？</h3>
-              <div className="modeList">{["未获取必要用户信息，也未澄清","缺信息时编造用户属性","检索了错误或无关的用户事实","忽略已经明确给出的用户约束","未正确处理过期、冲突或动态更新","知道事实，但未落实到计划或交付物","在不应变化处过度个性化","越权使用或披露敏感信息","长上下文或子 agent 交接后丢失约束","收到纠正或重新锚定后仍未恢复"].map((x,i)=><div key={x}><b>M{i+1}</b><p>{x}</p></div>)}</div>
+              <div className="modeList">{["未获取必要用户信息，也未澄清","缺信息时编造用户属性","检索了错误或无关的用户事实","忽略已经明确给出的用户约束","未正确处理过期、冲突或动态更新","知道事实，但未落实到计划或交付物","在不应变化处过度个性化","越权使用或披露敏感信息","长上下文或子 agent 交接后丢失约束"].map((x,i)=><div key={x}><b>M{i+1}</b><p>{x}</p></div>)}</div>
             </article>
           </div>
           <div className="caseSchema">
@@ -297,15 +297,15 @@ export default function Home() {
           <article className="green"><span>PF − MP</span><h3>净个性化适配</h3><p>用户特异要求完成率，扣除刻板化、误用、隐私和过度迎合。</p></article>
           <article className="violet"><span>CFA</span><h3>跨用户对角优势</h3><p>匹配报告相对交换报告，在两个用户方向上取得的平均优势；不解释内部机制。</p></article>
           <article className="green"><span>WORST CFA / CUE GAP</span><h3>跨表达稳健性</h3><p>同一 user-state 换语义等价表达后，最差表现与最大波动。</p></article>
-          <article className="amber"><span>AUC / Δ</span><h3>保持与恢复</h3><p>长程干扰下的适配曲线、漂移半衰期、恢复收益与副作用。</p></article>
+          <article className="amber"><span>AUC / Δ</span><h3>保持与更新</h3><p>长程干扰下的适配曲线、动态状态采用正确率、旧状态残留与压力副作用。</p></article>
         </div>
         <div className="formula"><div><span>核心公式</span><strong>CFA(a,b) = ½[(PFₐ(Yₐ) − PFₐ(Yᵦ)) + (PFᵦ(Yᵦ) − PFᵦ(Yₐ))]</strong></div><p>CFA &gt; 0 才表示“对的人得到对的版本”，而不是所有版本都变得更长、更漂亮。</p></div>
         <div className="sectionHead compactHead"><h2>不发布一个掩盖差异的总分：榜单按四种能力画像报告</h2><p>同一模型可能写得好却不会主动澄清，也可能 clean 表现高但一遇冲突就崩；四个 profile 分开显示这种能力结构。</p></div>
         <div className="metricGrid">
           <article className="blue"><span>PROFILE A</span><h3>Base Delivery</h3><p>clean 条件下的 TQ、FR、PF、CFA：有没有把报告、代码或表格做对，并真正区分两位用户。</p></article>
           <article className="green"><span>PROFILE B</span><h3>Signal Acquisition</h3><p>task-only 到 clarification/history 的增益；缺关键事实时是否提问、分支回答或正确弃权。</p></article>
-          <article className="violet"><span>PROFILE C</span><h3>Stress & Failure</h3><p>S0→S4 的 retention curve，并按风险类别、失败模式、task family 和 agent mode 切片。</p></article>
-          <article className="amber"><span>PROFILE D</span><h3>Recovery & Governance</h3><p>动态更新、handoff 与 re-anchor 的恢复收益，同时报告隐私、权限和共同质量副作用。</p></article>
+          <article className="violet"><span>PROFILE C</span><h3>Stress & Failure</h3><p>S0→S3 的 retention curve，并按风险类别、失败模式、task family 和 agent mode 切片。</p></article>
+          <article className="amber"><span>PROFILE D</span><h3>Boundary & Governance</h3><p>压力下的 must-not、隐私、权限、正确弃权和共同质量副作用；不测额外干预后的修复收益。</p></article>
         </div>
       </section>
 
@@ -330,17 +330,17 @@ export default function Home() {
       <section className="scopeSection" id="scope">
         <div className="shell">
           <p className="sectionTag">MEASUREMENT BOUNDARY</p>
-          <div className="scopeHero"><div><h2>最终交付物可以做主榜，但不能支撑所有过程性主张</h2><p>如果论文只声称“输出是否真正适合这个用户”，最终交付物足够；如果声称测到了形成、保持、利用、漂移和恢复，只看最后报告无法识别原因。</p></div><strong>推荐：Outcome Core + 轻量 Trace Audit + 小规模 Diagnostic Track</strong></div>
+          <div className="scopeHero"><div><h2>最终交付物可以做主榜，但不能支撑所有过程性主张</h2><p>如果论文只声称“输出是否真正适合这个用户”，最终交付物足够；如果声称测到了获取、保持、利用、漂移和更新，只看最后报告无法识别原因。</p></div><strong>推荐：Outcome Core + 轻量 Trace Audit + 小规模 Diagnostic Track</strong></div>
           <div className="enoughGrid">
             <article className="yes"><span>FINAL-ONLY 可以回答</span><ul><li>报告、代码或网页是否适合目标用户</li><li>matched 是否优于 swapped</li><li>个性化是否牺牲事实与共同质量</li><li>是否出现刻板化、泄露或过度迎合</li></ul></article>
-            <article className="no"><span>FINAL-ONLY 不能回答</span><ul><li>根本没读取，还是执行中忘记</li><li>记得用户事实，但生成时没使用</li><li>旧信息、新反馈冲突时如何选择</li><li>子 agent 交接何时丢失约束</li><li>重新锚定后能否真正恢复</li></ul></article>
+            <article className="no"><span>FINAL-ONLY 不能回答</span><ul><li>根本没读取，还是执行中忘记</li><li>记得用户事实，但生成时没使用</li><li>旧信息、新反馈冲突时如何选择</li><li>子 agent 交接何时丢失约束</li><li>状态改变后在哪一步继续沿用了旧事实</li></ul></article>
           </div>
           <div className="trackStack">
             <article><b>A · Outcome Core</b><span>全部样本</span><p>只把最终交付物作为主榜对象：TQ、FR、PF、MP、NPF、CFA 和目标用户盲评。</p></article>
             <article><b>B · Passive Trace Audit</b><span>全部样本自动记录</span><p>保存工具调用、检索到的用户事实、权限访问和子 agent 交接；只对隐私、权限和不可逆行为设硬检查。</p></article>
-            <article><b>C · Diagnostic Track</b><span>20%–30% 子集</span><p>不逐句人工标注；用中点 probe、memory 有无、handoff 有无、re-anchor 前后等受控重跑识别保持与恢复。</p></article>
+            <article><b>C · Diagnostic Track</b><span>20%–30% 子集</span><p>不逐句人工标注；用中点 probe、memory ablation、handoff 和动态更新的同前缀压力分叉识别保持与更新。</p></article>
           </div>
-          <div className="claimRule"><b>论文写作红线</b><p>若采用严格 final-only 方案，应删除或降级 RQ3、RQ5、H2–H4；10 类预期失败模式只能称为“测试意图或假设性误差来源”，不能声称已经测量到具体偏移机制。</p></div>
+          <div className="claimRule"><b>论文写作红线</b><p>若采用严格 final-only 方案，应删除或降级过程性 RQ 与假设；9 类预期失败模式只能称为“测试意图或假设性误差来源”，不能声称已经测量到具体偏移机制。</p></div>
         </div>
       </section>
 
@@ -372,11 +372,11 @@ export default function Home() {
         <div className="taxonomyRules">
           <article><b>E1 · Controlled Frozen Harness</b><p>固定证据快照、搜索结果、工具版本和预算；通过统一 adapter 运行 M2/M3，适合因果对照和跨模型可复现比较。</p></article>
           <article><b>E2 · Native Live Product/Web</b><p>保留产品原生浏览、规划和界面；同一时间窗交错运行、记录网页快照与成本。只做端到端生态效度榜，不与 E1 混排。</p></article>
-          <article><b>E3 · Stateful Interactive Sandbox</b><p>可在固定回合插入 clarification、冲突、handoff、dynamic update 和 re-anchor；用于多轮、memory 与恢复实验。</p></article>
+          <article><b>E3 · Stateful Interactive Sandbox</b><p>可在固定回合插入 clarification、冲突、handoff 和 dynamic update；用于多轮状态、memory、保持与更新压力测试。</p></article>
           <article><b>统一 Adapter Contract</b><p><code>reset → provide_signal → run_until → inject_event → export_artifact → export_trace</code>；无轨迹产品标记 trace-level 0，不假装具有过程可比性。</p></article>
         </div>
         <div className="sectionHead compactHead"><h2>难度不是“问题更难”一个数字，而是可复现的压力阶梯</h2><p>每个 family 保存六维 stress vector：证据复杂度、信号复杂度、时间跨度、编排负荷、权限敏感度、反事实细微度。</p></div>
-        <div className="anchorFlow"><b>S0 clean</b><i>→</i><b>S1 单一轻扰动</b><i>→</i><b>S2 单一强扰动</b><i>→</i><b>S3 复合风险</b><i>→</i><b>S4 恢复配对</b></div>
+        <div className="anchorFlow"><b>S0 clean</b><i>→</i><b>S1 单一轻扰动</b><i>→</i><b>S2 单一强扰动</b><i>→</i><b>S3 复合风险</b></div>
         <div className="coverageManifest"><b>六维 stress vector</b><span>evidence 0–3</span><span>signal 0–3</span><span>horizon 0–3</span><span>orchestration 0–3</span><span>permission 0–3</span><span>CF subtlety 0–3</span></div>
         <div className="anchorExplainer">
           <div className="anchorLead"><span>ANCHOR ≠ PERSONA TYPE ≠ PERTURBATION</span><h3>8 个 anchor 是固定实验宿主；扰动才是处理变量</h3><p>Anchor 从 24 个 clean family 中按功能选出，先保证 Ua/Ub 配对有效，再承载压力测试。用 balanced incomplete block 分配：每个 failure mode 至少跨两个不同 anchor 验证，但不强行跑不自然的笛卡尔积。</p></div>
@@ -396,7 +396,7 @@ export default function Home() {
             <article><b>错配 / 无关</b><p>swap 可见 signal bundle；或添加长度匹配的任务无关事实。测错误用户采用率、invariance 与误用惩罚。</p></article>
             <article><b>冲突 / 过期 / 稀释</b><p>插入带时间戳的新旧冲突，或改变相关事实的位置、间隔和 matched-length 噪声。测当前事实采用率与 retention AUC。</p></article>
             <article><b>Handoff / Dynamic update</b><p>在固定步骤替换交接摘要，或更新预算、目标和权限。测 handoff loss、旧状态残留与 must-hold 保持。</p></article>
-            <article><b>Re-anchor</b><p>固定交付前时点重申最小必要约束；无论原 run 是否失败都成对重跑，测 recovery gain 和质量/隐私副作用。</p></article>
+            <article><b>Boundary stress</b><p>提高权限敏感度、受众隔离或 must-not 冲突强度；测越权、泄露、错误服从、正确弃权与共同质量损害。</p></article>
           </div>
           <p className="anchorRule"><b>关键防偏：</b>每个压力 case 都绑定 clean paired control、唯一操作变量、注入时点、预期 invariants 和 seed。S3 复合风险只有在单扰动效应可解释后才运行；否则“更难”无法归因。</p>
         </div>
@@ -417,7 +417,7 @@ export default function Home() {
               ["“元数据很多，实际覆盖却很稀疏。”","公开 tested / defined-only / structurally-inapplicable / deferred 四状态 manifest；只对 tested 组合做结论，不用 ontology 大小冒充样本覆盖。"],
               ["“Persona 真实不等于 gold 正确。”","persona 只是 task-conditioned ledger 的视图；必须通过六项 compatibility gate，并由用户确认 must-change / must-hold 差异。"],
               ["“不同模块 rubric 的百分比分数不可比。”","统一 leaf schema 和校准程序；以任务内 CFA 与模块 profile 为主，未通过共同 anchor 校准时不建立伪精确总榜。"],
-              ["“长程漂移只是整体能力下降。”","设置同长度共同约束对照；只有用户特异要求下降更快、且重锚定选择性恢复 PF，才支持漂移解释。"],
+              ["“长程漂移只是整体能力下降。”","设置同长度共同约束对照；只有用户特异要求下降更快、且相对同前缀 clean control 的压力效应稳定，才支持个性化保持失效。"],
               ["“个性化会制造回音室或隐私风险。”","事实性硬门槛、Misuse Penalty、敏感信息最小使用和受众权限共同构成不可补偿约束。"],
             ].map(([q,a],i)=><details key={q} open={i===0}><summary><span>{String(i+1).padStart(2,"0")}</span>{q}</summary><p>{a}</p></details>)}
           </div>
@@ -437,7 +437,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.22 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.23 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }

@@ -2,11 +2,11 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.22 · 2026 年 8 月 3 日
+版本：v0.23 · 2026 年 8 月 3 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.22
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.23
 
 ---
 
@@ -36,7 +36,7 @@
 
 1. 如何从 absolute adaptation evaluation 转向 counterfactual personalization effect identification，检验只改变目标用户后交付物是否发生方向正确的变化；
 2. 如何为报告、代码、表格和决策备忘录使用可组合但不强行统一的 rubric；
-3. 如何区分最终交付物效用与获取、保持、利用、更新/恢复等过程机制；
+3. 如何区分最终交付物效用与获取、保持、利用、更新等过程机制；
 4. 如何验证自动 judge 没有被长度、位置、格式和 persona 关键词误导。
 
 可辩护的核心主张是：在广义 Deep Research 的多类最终交付物上，用 matched/swapped 用户交换和预冻结 must-change/must-hold/must-not 真值识别可观察的 counterfactual personalization effect。异构用户信号、长程干预、模块化 rubric 和独立 JudgeBench 用于检验这一效应的稳健性、测量效度与外部效度，不与核心创新并列。该协议不证明模型内部“真正理解用户”；若 matched/swapped 人评不稳定，论文将收缩为 absolute adaptation 的扩展研究。
@@ -47,15 +47,15 @@
 
 - **RQ1：反事实适配。** 同一任务和证据下，匹配用户的交付物是否稳定优于错配用户的交付物？
 - **RQ2：信息渠道。** 结构化 persona、语义等价自然历史、主动澄清和 task-only 条件如何影响个性化效果与误用风险？
-- **RQ3：长程保持与恢复。** 上下文稀释、信息冲突、agent 交接和用户状态更新是否降低适配，重新锚定能否恢复？
+- **RQ3：长程保持与更新。** 上下文稀释、信息冲突、agent 交接和用户状态更新如何影响用户适配？
 - **RQ4：系统差异。** 商业 Deep Research、统一工具 harness 下的通用 agent 和开源 Deep Research agent 是否表现出稳定的失败模式差异？
 
 ### 2.2 可证伪假设
 
 - **H1：** matched 交付物的用户适配显著高于 swapped 交付物，且该差异在共同质量门槛和目标用户盲评下成立。
 - **H2：** 同一潜在 user-state 换成结构化 persona、语义等价自然历史或去显眼关键词改写时，核心 must-change 决策保持；渠道间利用率仍可能不同。
-- **H3：** 长上下文干扰使用户特异适配比共同任务质量下降更快；re-anchor 能选择性恢复适配。
-- **H4：** 不同 agent 类型在忽略约束、信息冲突、过度个性化和恢复失败上存在可重复差异。
+- **H3：** 长上下文干扰使用户特异适配比共同任务质量下降更快；动态状态变化后旧状态残留率随压力增加。
+- **H4：** 不同 agent 类型在忽略约束、信息冲突、过度个性化、保持和更新失败上存在可重复差异。
 
 如果用户间的合格结果差异无法获得稳定人类一致性，matched 不优于 swapped，或 judge 无法通过预设门槛，将缩小研究构念和论文主张，而不是通过调整权重保留结论。
 
@@ -101,17 +101,17 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 - **E1 Frozen Harness：** 只读证据快照、统一工具/预算、paired seed，形成因果主榜；
 - **E2 Live Product/Web：** 使用原生商业/开源能力，记录版本、日期、地区、工具和 URL 快照，单独形成产品榜；
-- **E3 Stateful Sandbox：** 事件脚本在固定 checkpoint 注入澄清、冲突、handoff、更新与恢复，共享前缀分叉形成机制榜。
+- **E3 Stateful Sandbox：** 事件脚本在固定 checkpoint 注入澄清、冲突、handoff 和动态更新，共享前缀分叉形成压力与机制榜。
 
 三者是运行环境，不是 agent 类型。核心模式 M1 商业产品、M2 controlled harness、M3 开源 DRA；code、multi-agent、memory-enhanced 只在适用 anchor 上做架构 probe。统一 adapter 至少实现 reset、provide_signal、run_until、inject_event、export_artifact 和 trace-level 声明。
 
-8 个 anchor 覆盖日常决策、学习职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿和政策传播。每个先建 clean family，再按 `S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 两个正交扰动 → S4 同前缀恢复` 运行。difficulty 用 evidence、signal、horizon、orchestration、permission、counterfactual subtlety 六维 stress vector 表示；risk、failure mode 与强度分开，不求和成伪精确难度分。
+8 个 anchor 覆盖日常决策、学习职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿和政策传播。每个先建 clean family，再按 `S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 两个正交扰动` 运行。difficulty 用 evidence、signal、horizon、orchestration、permission、counterfactual subtlety 六维 stress vector 表示；risk、failure mode 与强度分开，不求和成伪精确难度分。
 
-所有 anchor 运行 clean、persona swap 和 irrelevant-signal；其余 failure mode 用平衡不完全区组分配，每类至少落到两个不同 anchor 且有同前缀 control。Re-anchor 无论基线是否失败都成对运行。结果分四层报 base task profile、signal board、S0–S3 stress curve 和 S4 recovery/governance，不把不同轨道、预算或不适用任务混成一个 overall。
+所有 anchor 运行 clean、persona swap 和 irrelevant-signal；其余 failure mode 用平衡不完全区组分配，每类至少落到两个不同 anchor 且有同前缀 control。Anchor 只用于压力测试，不在失败后追加提醒或修复干预。结果分四层报 base task profile、signal board、S0–S3 stress curve 和 boundary/governance board，不把不同轨道、预算或不适用任务混成一个 overall。
 
 ### 4.3 最终结果与过程证据
 
-最终交付物是主榜对象，可支持用户适配、反事实优势、共同质量和误用边界的结论，但不能单独区分“未读取、遗忘、已知但未使用”。因此所有样本保存必要的工具调用、用户信息检索、权限访问和交付物；20%–30% 子集通过 memory、handoff 和 re-anchor 的受控重跑做机制诊断。如果该子集未完成，论文只报告最终交付物个性化，不声称已定位内部偏移机制。
+最终交付物是主榜对象，可支持用户适配、反事实优势、共同质量和误用边界的结论，但不能单独区分“未读取、遗忘、已知但未使用”。因此所有样本保存必要的工具调用、用户信息检索、权限访问和交付物；20%–30% 子集通过 memory、handoff 和 dynamic-update 的受控压力分叉做机制诊断。如果该子集未完成，论文只报告最终交付物个性化，不声称已定位内部偏移机制。
 
 ## 5. 评分方法
 
@@ -133,9 +133,9 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 3. **Counterfactual Fit Advantage (CFA)：**
    CFA(a,b) = 1/2 [(PF_a(Y_a)-PF_a(Y_b)) + (PF_b(Y_b)-PF_b(Y_a))]；
 4. **Cue robustness：** 对语义等价 signal views 报告 worst-view CFA、Cue Gap、must-change/must-hold 一致率和 irrelevant-cue effect；
-5. **Retention / Recovery：** 长程干扰下的适配保留率、重新锚定后的恢复收益及其副作用。
+5. **Retention / Update：** 长程干扰下的适配保留率、动态状态采用正确率与旧状态残留率。
 
-主榜先应用 TQ、FR 和关键隐私/安全门槛，再报告 PF-MP、CFA、cue robustness、Retention 和 Recovery。不将这些指标简单平均成允许相互补偿的总分。
+主榜先应用 TQ、FR 和关键隐私/安全门槛，再报告 PF-MP、CFA、cue robustness、Retention 和 Update。不将这些指标简单平均成允许相互补偿的总分。
 
 ### 5.3 Judge 与 JudgeBench
 
@@ -201,7 +201,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 ### 8.3 论文主张边界
 
-若只完成 Outcome Core，论文仅声称测量最终交付物的用户适配。只有当轨迹审计与受控重跑完成时，才报告保持、更新和恢复机制。本项目不声称首版覆盖所有 Deep Research 模式，只对 coverage manifest 中标记为 tested 的组合作结论。
+若只完成 Outcome Core，论文仅声称测量最终交付物的用户适配。只有当轨迹审计与受控压力分叉完成时，才报告保持与更新机制。本项目不声称首版覆盖所有 Deep Research 模式，只对 coverage manifest 中标记为 tested 的组合作结论。
 
 ## 参考文献
 
