@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.22 - 2026-08-03
+
+- 将 task family 构造写成可审计流水线：真实 seed、共同任务/证据/资源冻结、Atlas 标注、证据世界、六维难度旋钮、最小用户反事实对、四类契约和 pilot 淘汰；将 persona 构造写成来源记录、原子 fact ledger、fact-to-contract map、多信号视图和负对照。
+- 将 8 个 anchor 冻结为日常决策、学习/职业、金融信息、健康信息、企业决策、软件生产、学术前沿和政策/沟通八类功能宿主；perturbation 独立分配，并以 balanced incomplete block 保证每个 failure mode 至少跨两个 anchor 复现。
+- 新增 S0–S4 压力阶梯与六维 stress vector，区分单一轻/强扰动、复合风险和恢复配对；榜单改为 Base Delivery、Signal Acquisition、Stress & Failure、Recovery & Governance 四个能力 profile。
+- 明确 M1–M6 system mode 与 E1–E3 execution regime 的区别，定义统一 runner adapter、轨迹级别和 E1/E2 分榜规则，使商业产品、受控 harness、开源 DR、code、多 agent 与 memory 系统具有可解释的适用性矩阵。
+- 保留 PDR-Bench 的 task/persona-conditioned absolute adaptation 贡献，同时基于其公开 v3 结果指出 judge 的测量边界：最佳 PCA=.43、MARD=1.40，校准仅 15 query/两个 agent，动态 criterion 与复合事实链增加测量方差，目标用户效度和关键维度不可补偿性仍未建立。四版 Proposal、HTML、主图、schema、记忆与导出同步到 v0.22。
+
 ## v0.21 - 2026-08-03
 
 - 正面承认 PDR-Bench 已能评价 task–persona 条件下的适配质量；删除其 rubric/judge 不细、校准偏弱或容易被表面因素欺骗等相对缺口叙事。

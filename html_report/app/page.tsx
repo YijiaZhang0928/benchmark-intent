@@ -85,7 +85,7 @@ export default function Home() {
       </section>
 
       <section className="relatedUpdate shell" aria-labelledby="related-title">
-        <div><p className="sectionTag">RELATED-WORK UPDATE · 29-PAPER MAP</p><h2 id="related-title">题目已经收敛到“从 absolute adaptation 到 counterfactual effect”</h2><p>现有工作已经从用户理解与历史利用，推进到工具行动、动态记忆和个性化 Deep Research：Setoka、PersonaTrail 与 APeB 分别测异构用户理解、浏览轨迹和行为历史<a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a>；ETAPP 与 Mem2ActBench 测用户信息能否落实到工具<a className="inlineCite" href="https://aclanthology.org/2025.acl-long.1064/" target="_blank" rel="noreferrer">[37]</a><a className="inlineCite" href="https://aclanthology.org/2026.acl-long.370/" target="_blank" rel="noreferrer">[48]</a>；PDR-Bench 已用 task/persona-conditioned P-Score 评价给定用户条件下的适配质量<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>。DeepAlign 不重做这项 absolute adaptation evaluation，而是固定任务与证据，通过跨用户交叉评分和预冻结 must-change / must-hold / must-not 识别 personalization effect。不同 persona cue 会改变模型行为<a className="inlineCite" href="https://aclanthology.org/2026.acl-long.2079/" target="_blank" rel="noreferrer">[53]</a>，因此还需检查效应能否跨语义等价表达保持。</p></div>
+        <div><p className="sectionTag">RELATED-WORK UPDATE · 29-PAPER MAP</p><h2 id="related-title">题目已经收敛到“从 absolute adaptation 到 counterfactual effect”</h2><p>现有工作已经从用户理解与历史利用，推进到工具行动、动态记忆和个性化 Deep Research：Setoka、PersonaTrail 与 APeB 分别测异构用户理解、浏览轨迹和行为历史<a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a>；PDR-Bench 已用 task/persona-conditioned P-Score 评价 absolute adaptation<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>，但其最佳 judge PCA=0.43，校准仅含 15 个 query/两个 agent，动态 criterion 与复合事实核验链也留下测量边界。DeepAlign 的方法贡献是跨用户交叉评分和三类契约；JudgeBench 则为这个 estimand 提供可靠评分。</p></div>
         <a className="button primary" href="/literature">打开 29 篇工作地图 →</a>
       </section>
 
@@ -103,7 +103,7 @@ export default function Home() {
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div>
             </article>
             <article>
-              <span>PLAIN LANGUAGE · 21 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
+              <span>PLAIN LANGUAGE · 23 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div>
             </article>
             <article>
@@ -176,6 +176,17 @@ export default function Home() {
             <article><b>标签不泄露给主 Judge</b><p>最终交付物 judge 只看 rubric 和授权事实，不看“这个任务预计模型会失败在哪里”，防止 expectation bias。</p></article>
             <article><b>taxonomy 先由真实失败归纳</b><p>先对 pilot 轨迹做 open coding，再冻结 taxonomy；保留一组自然任务和“其他/新型失败”入口，防止只验证作者预设。</p></article>
           </div>
+          <div className="sectionHead compactHead"><h2>Task family 与 persona 不是靠写 prompt 拼出来的</h2><p>先从真实问题中冻结任务的不变量，再只改会影响交付物价值的用户状态；每一步都留下 provenance、版本和人工验收记录。</p></div>
+          <div className="taxonomyRules">
+            <article><b>Task 1 · 真实种子</b><p>从访谈、真实研究请求或公开任务中抽取 seed，记录提出者、用途、受众、时间和许可；删除不能核验或无法复现的任务。</p></article>
+            <article><b>Task 2 · 冻结共同核心</b><p>锁定问题、证据世界、截止时间、工具、预算和交付形式。Ua/Ub 的 run 只能改变用户条件，不能偷偷增加任务信息或搜索资源。</p></article>
+            <article><b>Task 3 · 形成反事实 family</b><p>选择两个都自然需要该研究、但预算、知识、风险容忍或工作流约束不同的用户；先写出哪些结论、建议或呈现必须随用户改变。</p></article>
+            <article><b>Task 4 · Pilot 后冻结</b><p>专家检查共同事实，目标用户确认适配差异；若 matched/swapped 无法稳定区分、must-hold 无法保持或任务过度依赖刻板印象，该 family 淘汰。</p></article>
+            <article><b>Persona 1 · 私有来源记录</b><p>保留真实用户/访谈/日志或 user-anchored 原型的来源记录；发布版只暴露经同意且完成去标识化的 task-relevant facts。</p></article>
+            <article><b>Persona 2 · Fact ledger</b><p>把目标、知识、约束、偏好、风险、受众、权限和动态状态拆成原子事实；每条事实带来源、时间、可靠性、敏感级别和可披露范围。</p></article>
+            <article><b>Persona 3 · 最小反事实编辑</b><p>Ua→Ub 只改变足以影响答案的少数轴，其余背景保持或匹配；每个 changed fact 必须链接到 must-change，不能从年龄、性别等人口属性猜偏好。</p></article>
+            <article><b>Persona 4 · 多视图与负对照</b><p>同一 ledger 序列化为 structured persona、自然 history、clarification 和 memory view；另造无关属性、低词汇重叠和 demographic-only controls。</p></article>
+          </div>
         </div>
       </section>
 
@@ -204,7 +215,7 @@ export default function Home() {
 
       <section className="shell gapSection">
         <p className="sectionTag">NOVELTY</p>
-        <div className="sectionHead"><h2>不是更细的 PDR-Bench，而是不同的 estimand</h2><p>PDR-Bench 已经用 task/persona-conditioned rubric 完成 absolute adaptation evaluation<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>。DeepAlign 的差异只落在 counterfactual personalization effect identification，不评价其 rubric/judge 是否足够细。</p></div>
+        <div className="sectionHead"><h2>方法增量是不同 estimand；测量增量是更强 judge validation</h2><p>PDR-Bench 已经用 task/persona-conditioned rubric 完成 absolute adaptation evaluation<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>。DeepAlign 的核心方法差异是 counterfactual effect；同时公平指出 PDR 的低 PCA、窄校准、动态量尺、非 target-user validity 与复合自动核验边界。</p></div>
         <div className="compare" role="table" aria-label="PDR-Bench 与 DeepAlign-Bench 比较">
           <div className="compareRow head" role="row"><span>评审会问什么</span><span>PDR-Bench</span><span>DeepAlign-Bench</span></div>
           {[
@@ -213,6 +224,8 @@ export default function Home() {
             ["pairwise 回答什么？", "同一 user-query 下，哪种 agent 报告更好", "A/B 用户的两份交付物各自更适合谁"],
             ["跨条件真值是什么？", "task/persona-conditioned 适配标准", "输出前冻结 must-change / must-hold / must-not"],
             ["什么才算有效变化？", "报告对给定用户的适配质量高", "该变的变、不该变的稳、不得推断或泄露的不出现"],
+            ["judge 校准到什么程度？", "15 query × 2 agent；最佳 PCA=.43、MARD=1.40", "240-unit JudgeBench；按模块/用户/agent 分层 + 目标用户盲评"],
+            ["评分链如何防关键失败被掩盖？", "动态 criterion + 自动事实链 + P/Q/R 平均", "criterion versioning + claim-chain audit + TQ/FR/隐私 hard gate"],
           ].map((r) => <div className="compareRow" role="row" key={r[0]}><b>{r[0]}</b><span>{r[1]}</span><span>{r[2]}</span></div>)}
         </div>
         <div className="winnerBanner"><span>识别契约</span><b>输出不同不等于有效 personalization</b><p>must-change 要求用户相关决策按预期变化；must-hold 要求共同事实与质量稳定；must-not 禁止无关推断、迎合与泄露。Matched/swapped 由此识别结果层效应，但不证明内部“理解用户”。Cue-equivalence 再检查该效应能否跨 persona、自然历史和澄清对话保持<a className="inlineCite" href="https://arxiv.org/abs/2605.31545" target="_blank" rel="noreferrer">[54]</a>。</p></div>
@@ -287,6 +300,13 @@ export default function Home() {
           <article className="amber"><span>AUC / Δ</span><h3>保持与恢复</h3><p>长程干扰下的适配曲线、漂移半衰期、恢复收益与副作用。</p></article>
         </div>
         <div className="formula"><div><span>核心公式</span><strong>CFA(a,b) = ½[(PFₐ(Yₐ) − PFₐ(Yᵦ)) + (PFᵦ(Yᵦ) − PFᵦ(Yₐ))]</strong></div><p>CFA &gt; 0 才表示“对的人得到对的版本”，而不是所有版本都变得更长、更漂亮。</p></div>
+        <div className="sectionHead compactHead"><h2>不发布一个掩盖差异的总分：榜单按四种能力画像报告</h2><p>同一模型可能写得好却不会主动澄清，也可能 clean 表现高但一遇冲突就崩；四个 profile 分开显示这种能力结构。</p></div>
+        <div className="metricGrid">
+          <article className="blue"><span>PROFILE A</span><h3>Base Delivery</h3><p>clean 条件下的 TQ、FR、PF、CFA：有没有把报告、代码或表格做对，并真正区分两位用户。</p></article>
+          <article className="green"><span>PROFILE B</span><h3>Signal Acquisition</h3><p>task-only 到 clarification/history 的增益；缺关键事实时是否提问、分支回答或正确弃权。</p></article>
+          <article className="violet"><span>PROFILE C</span><h3>Stress & Failure</h3><p>S0→S4 的 retention curve，并按风险类别、失败模式、task family 和 agent mode 切片。</p></article>
+          <article className="amber"><span>PROFILE D</span><h3>Recovery & Governance</h3><p>动态更新、handoff 与 re-anchor 的恢复收益，同时报告隐私、权限和共同质量副作用。</p></article>
+        </div>
       </section>
 
       <section className="judgeSection" id="judge">
@@ -342,28 +362,43 @@ export default function Home() {
 
       <section className="shell gapSection" id="experiments">
         <p className="sectionTag">EXPERIMENTS</p>
-        <div className="sectionHead"><h2>两个月分数因子矩阵：不跑全笛卡尔积</h2><p>所有 case 都完整标注 Atlas；只有能回答主假设的高信息量组合进入实验，受控 harness 与端到端产品结果分开。</p></div>
+        <div className="sectionHead"><h2>两个月分数因子矩阵：系统模式、运行环境和压力等级分开</h2><p>Agent 是“测谁”，execution regime 是“在哪里、按什么控制运行”。二者混写会把模型能力、工具质量、网页变化和记忆机制混在一起。</p></div>
         <div className="matrix">
           <article><b>核心信号条件</b><p>Task only · structured persona · 语义等价自然历史 · clarification-allowed</p></article>
-          <article><b>8 个 anchor 压测</b><p>clean 基线之上施加错配、无关、冲突/过期、稀释、handoff、更新和恢复干预</p></article>
-          <article><b>三类核心 Agent</b><p>商业 Deep Research · 统一搜索/工具 harness · 可复现开源 Deep Research</p></article>
-          <article><b>适用性探针</b><p>代码、多 agent、memory 系统只运行 eligibility predicate 为真的 anchor family</p></article>
+          <article><b>三种运行环境 E1–E3</b><p>E1 frozen harness · E2 原生 live product/web · E3 stateful interactive sandbox</p></article>
+          <article><b>六种系统模式 M1–M6</b><p>商业 DR · 受控 agent · 开源 DR · code agent · multi-agent · memory-enhanced</p></article>
+          <article><b>适用性矩阵</b><p>核心比较 M1–M3；M4–M6 只运行与交付物、工具和状态机制自然匹配的 anchor</p></article>
         </div>
+        <div className="taxonomyRules">
+          <article><b>E1 · Controlled Frozen Harness</b><p>固定证据快照、搜索结果、工具版本和预算；通过统一 adapter 运行 M2/M3，适合因果对照和跨模型可复现比较。</p></article>
+          <article><b>E2 · Native Live Product/Web</b><p>保留产品原生浏览、规划和界面；同一时间窗交错运行、记录网页快照与成本。只做端到端生态效度榜，不与 E1 混排。</p></article>
+          <article><b>E3 · Stateful Interactive Sandbox</b><p>可在固定回合插入 clarification、冲突、handoff、dynamic update 和 re-anchor；用于多轮、memory 与恢复实验。</p></article>
+          <article><b>统一 Adapter Contract</b><p><code>reset → provide_signal → run_until → inject_event → export_artifact → export_trace</code>；无轨迹产品标记 trace-level 0，不假装具有过程可比性。</p></article>
+        </div>
+        <div className="sectionHead compactHead"><h2>难度不是“问题更难”一个数字，而是可复现的压力阶梯</h2><p>每个 family 保存六维 stress vector：证据复杂度、信号复杂度、时间跨度、编排负荷、权限敏感度、反事实细微度。</p></div>
+        <div className="anchorFlow"><b>S0 clean</b><i>→</i><b>S1 单一轻扰动</b><i>→</i><b>S2 单一强扰动</b><i>→</i><b>S3 复合风险</b><i>→</i><b>S4 恢复配对</b></div>
+        <div className="coverageManifest"><b>六维 stress vector</b><span>evidence 0–3</span><span>signal 0–3</span><span>horizon 0–3</span><span>orchestration 0–3</span><span>permission 0–3</span><span>CF subtlety 0–3</span></div>
         <div className="anchorExplainer">
-          <div className="anchorLead"><span>ANCHOR ≠ PERSONA TYPE</span><h3>先建立有效配对，再施加独立扰动</h3><p>Persona–task compatibility 只负责构造 clean family：Ua/Ub 都应自然地提出同一任务，并产生可验证的 must-change 差异。压力测试固定目标用户、任务、证据和预算，只改变一个信号或过程变量。</p></div>
-          <div className="anchorFlow"><b>Clean matched baseline</b><i>→</i><b>单一 perturbation</b><i>→</i><b>paired Δ metric</b><i>→</i><b>共同质量/隐私副作用</b></div>
+          <div className="anchorLead"><span>ANCHOR ≠ PERSONA TYPE ≠ PERTURBATION</span><h3>8 个 anchor 是固定实验宿主；扰动才是处理变量</h3><p>Anchor 从 24 个 clean family 中按功能选出，先保证 Ua/Ub 配对有效，再承载压力测试。用 balanced incomplete block 分配：每个 failure mode 至少跨两个不同 anchor 验证，但不强行跑不自然的笛卡尔积。</p></div>
           <div className="anchorTable">
             {[
-              ["Persona swap","换可见 signal bundle","ΔPF · 错误用户采用率"],
-              ["Irrelevant","加任务无关事实","Invariance · MP"],
-              ["Conflict / stale","加入带时效的新旧冲突","冲突解析率"],
-              ["Context dilution","改变位置与长度匹配噪声","PF retention · AUC"],
-              ["Agent handoff","改变交接摘要完整性","Handoff loss"],
-              ["Dynamic update","固定回合更新用户状态","Update correctness"],
-              ["Re-anchor","交付前重申最小约束","Recovery gain + side effects"],
+              ["A1 日常决策","旅行/消费/家庭计划","低 stakes · 自然偏好"],
+              ["A2 学习与职业","学习路径/求职研究","知识脚手架 · 澄清"],
+              ["A3 金融信息","预算/产品/风险比较","数值约束 · 高风险"],
+              ["A4 健康信息","证据综述/就医准备","权限 · 不确定性"],
+              ["A5 企业决策","采购/市场/合规 memo","多受众 · 私有证据"],
+              ["A6 软件生产","代码/测试/迁移方案","工具 · handoff"],
+              ["A7 学术前沿","综述/prior art/研究设计","高 fan-out · 引用"],
+              ["A8 政策与沟通","政策分析/公共说明","价值冲突 · 多受众"],
             ].map(x=><article key={x[0]}><b>{x[0]}</b><span>{x[1]}</span><small>{x[2]}</small></article>)}
           </div>
-          <p className="anchorRule"><b>关键防偏：</b>Re-anchor 是恢复干预，不是攻击类型；预注册固定子集，无论 clean run 是否显式失败都成对重跑。其余复杂扰动按 eligibility predicate 分配，不补齐不自然的笛卡尔积。</p>
+          <div className="taxonomyRules">
+            <article><b>错配 / 无关</b><p>swap 可见 signal bundle；或添加长度匹配的任务无关事实。测错误用户采用率、invariance 与误用惩罚。</p></article>
+            <article><b>冲突 / 过期 / 稀释</b><p>插入带时间戳的新旧冲突，或改变相关事实的位置、间隔和 matched-length 噪声。测当前事实采用率与 retention AUC。</p></article>
+            <article><b>Handoff / Dynamic update</b><p>在固定步骤替换交接摘要，或更新预算、目标和权限。测 handoff loss、旧状态残留与 must-hold 保持。</p></article>
+            <article><b>Re-anchor</b><p>固定交付前时点重申最小必要约束；无论原 run 是否失败都成对重跑，测 recovery gain 和质量/隐私副作用。</p></article>
+          </div>
+          <p className="anchorRule"><b>关键防偏：</b>每个压力 case 都绑定 clean paired control、唯一操作变量、注入时点、预期 invariants 和 seed。S3 复合风险只有在单扰动效应可解释后才运行；否则“更难”无法归因。</p>
         </div>
         <div className="pilot"><span>PAPER SCOPE · 8 周</span><div><b>24</b><small>任务 family</small></div><div><b>48</b><small>核心 user-task</small></div><div><b>4</b><small>核心信号条件</small></div><div><b>3</b><small>核心 Agent</small></div><p>最多 576 个核心 episode；8 个 anchor family 加压力测试，约 20% 分层样本复跑第二 seed，并做人评。</p></div>
       </section>
@@ -374,7 +409,7 @@ export default function Home() {
           <div className="sectionHead"><h2>顶会审稿人最可能怎么攻击？</h2><p>每个防守都必须转化为可运行的实验，而不是只写在 limitations 里。</p></div>
           <div className="accordions">
             {[
-              ["“这只是 PDR-Bench 扩大版。”","承认其已解决 absolute adaptation；把唯一核心方法贡献锁定为 matched/swapped + 三类预冻结契约的 counterfactual effect identification。"],
+              ["“这只是 PDR-Bench 扩大版。”","承认其已解决 absolute adaptation；DeepAlign 改变 estimand。与此同时，PDR 的最佳 judge PCA=.43、15-query/2-agent 校准、动态 criterion 与复合事实链说明其精细排名和跨条件效应测量仍需更强效度验证。"],
               ["“Persona 是作者编的偏见。”","用户事实必须有来源、时效和本人确认；人口属性不自动推导偏好；加入 demographic-only 与无关 persona 负对照。"],
               ["“Matched/swapped 也可能只是关键词→模板。”","把主张限定为结果特异性；加入语义等价 cue、去关键词改写和无关属性不变性。长度/格式诱饵单独审计 judge。"],
               ["“LLM judge 循环定义答案。”","rubric 在输出前冻结；规则和证据核验优先；低一致性时降级到人评，不发布伪精确榜单。"],
@@ -402,7 +437,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.21 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.22 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }

@@ -21,10 +21,10 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.21 · 组内讨论稿"
+DOC_VERSION = "v0.22 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 3 日"
-RESEARCH_LINE = "Absolute Adaptation → Counterfactual Effect · 三类契约 · Cue Robustness"
-CORE_CLAIM = "固定任务与证据，只改变用户；用 matched/swapped 与 must-change/must-hold/must-not 识别方向正确、边界受控的个性化效应。"
+RESEARCH_LINE = "Counterfactual Effect · 可审计构造 · 分级压力 · 跨环境运行"
+CORE_CLAIM = "固定任务与证据，只改变用户；用 matched/swapped 与三类契约识别个性化效应，再沿 S0–S4 比较不同 agent 模式的保持与恢复。"
 CONTENTS_ITEMS = [
     "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
     "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",
@@ -157,7 +157,7 @@ def configure_section(section, landscape=False):
         if STYLE_PRESET == "formal_condensed":
             margin = Inches(0.75)
         elif STYLE_PRESET == "compact_reference_guide":
-            margin = Inches(0.9)
+            margin = Inches(0.75)
         else:
             margin = Inches(1)
     section.top_margin = margin
@@ -435,6 +435,9 @@ def add_table(doc, rows):
     table = doc.add_table(rows=len(rows), cols=ncols)
     table.style = "Table Grid"
     set_table_geometry(table, widths)
+    table_font_size = 8.2 if STYLE_PRESET == "compact_reference_guide" else 9.2
+    table_spacing = 0 if STYLE_PRESET == "compact_reference_guide" else 2
+    table_line_spacing = 1.0 if STYLE_PRESET == "compact_reference_guide" else 1.08
     for i, row in enumerate(rows):
         for j in range(ncols):
             text = row[j] if j < len(row) else ""
@@ -442,10 +445,10 @@ def add_table(doc, rows):
             cell.text = ""
             p = cell.paragraphs[0]
             p.paragraph_format.space_before = Pt(0)
-            p.paragraph_format.space_after = Pt(2)
-            p.paragraph_format.line_spacing = 1.08
+            p.paragraph_format.space_after = Pt(table_spacing)
+            p.paragraph_format.line_spacing = table_line_spacing
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if (i == 0 or j == 0) else WD_ALIGN_PARAGRAPH.LEFT
-            add_inline(p, text, size=9.2, color=DARK if i == 0 else None)
+            add_inline(p, text, size=table_font_size, color=DARK if i == 0 else None)
             if i == 0:
                 set_cell_shading(cell, LIGHT)
                 for run in p.runs:
@@ -630,7 +633,7 @@ def build(md_path=MD, out_path=OUT):
             if STYLE_PRESET == "formal_condensed":
                 reference_size = 7.6
             elif STYLE_PRESET == "compact_reference_guide":
-                reference_size = 8.0
+                reference_size = 7.4
             else:
                 reference_size = 9.5
             add_inline(p, stripped, size=reference_size)
@@ -664,7 +667,7 @@ def build(md_path=MD, out_path=OUT):
             if STYLE_PRESET == "formal_condensed":
                 ref_size, ref_space, ref_line = 7.6, 0, 0.95
             elif STYLE_PRESET == "compact_reference_guide":
-                ref_size, ref_space, ref_line = 8.0, 0.5, 0.95
+                ref_size, ref_space, ref_line = 7.4, 0, 0.9
             else:
                 ref_size, ref_space, ref_line = 9.5, 4, 1.1
             p.paragraph_format.space_after = Pt(ref_space)

@@ -1,8 +1,10 @@
 schema_name: deepalign_case
-schema_version: 0.21
+schema_version: 0.22
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
-  Expected labels describe test intent; observed labels are written only after a run.
+  It separates family construction, system mode, execution regime, stress stage,
+  expected test intent, and post-run observations so that capability differences
+  are not inferred from labels alone.
 
 required:
   - family_id
@@ -20,6 +22,14 @@ required:
 family_id: string
 
 task:
+  construction:
+    source_seed_id: string
+    source_type: [real_user_request, interview_derived, public_task_adapted, expert_authored_control]
+    source_consent_or_license: string
+    invariant_core_id: string
+    evidence_world_id: string
+    family_blueprint_version: string
+    authoring_stage: [seeded, expert_screened, user_validated, pilot_passed, frozen]
   task_stratum: [everyday_personal, professional_enterprise, academic_frontier]
   primary_intent: [understand_synthesize, discover_enumerate, compare_decide, assess_forecast, plan_design_troubleshoot, verify_audit]
   secondary_intents: list
@@ -34,8 +44,20 @@ task:
     stakes: [low, medium, high]
     reversibility: [reversible, partly_reversible, hard_to_reverse]
     interaction_need: [single_turn, optional_clarification, required_clarification, longitudinal]
+  stress_design:
+    stage: [S0_clean, S1_single_light, S2_single_strong, S3_compound, S4_recovery_pair]
+    vector:
+      evidence_complexity_0_to_3: integer
+      signal_complexity_0_to_3: integer
+      horizon_load_0_to_3: integer
+      orchestration_load_0_to_3: integer
+      permission_sensitivity_0_to_3: integer
+      counterfactual_subtlety_0_to_3: integer
+    escalation_parent_case_id: string_or_null
+    one_factor_identifiable: boolean
 
 environment:
+  execution_regime: [E1_controlled_frozen_harness, E2_native_live_product_web, E3_stateful_interactive_sandbox]
   evidence_regime: [frozen, live_web, private_workspace, hybrid]
   evidence_snapshot_id: string
   source_topology: [single_corpus, multi_source, web_plus_private, tool_generated]
@@ -47,6 +69,14 @@ environment:
     tool_call_budget: integer_or_null
   permissions: list
   interaction_horizon: integer
+  runner_adapter:
+    contract_version: string
+    supported_calls: list
+    # canonical calls: reset, provide_signal, run_until, inject_event,
+    # export_artifact, export_trace
+    trace_level: [L0_artifact_only, L1_events_and_tools, L2_state_checkpoints]
+    reset_verified: boolean
+    event_injection_supported: boolean
 
 user_states:
   type: list
@@ -54,6 +84,9 @@ user_states:
   item:
     user_id: string
     provenance_tier: [real_user_gold, user_anchored, synthetic_control]
+    private_source_record_id: string
+    consent_scope: string
+    semantic_view_ids: list
     facts:
       type: list
       item:
@@ -67,6 +100,10 @@ user_states:
         sensitivity: [public, internal, sensitive, highly_sensitive]
         allowed_for_reasoning: boolean
         allowed_to_disclose: boolean
+        contract_links:
+          must_change_ids: list
+          must_hold_ids: list
+          must_not_ids: list
     compatibility_gate:
       plausibility: boolean
       decision_relevance: boolean
@@ -84,6 +121,11 @@ counterfactual_design:
   invariant_task_fields: list
   invariant_evidence_snapshot: boolean
   discriminating_user_fact_ids: list
+  minimal_counterfactual_edit:
+    changed_fact_ids: list
+    held_constant_fact_ids: list
+    edit_rationale: string
+    non_demographic_causal_axis: boolean
   expected_decision_differences: list
   expected_diagonal_dominance: boolean
 
@@ -101,6 +143,7 @@ signal_condition:
 
 agent:
   system_id: string
+  system_mode: [M1_commercial_deep_research, M2_controlled_agent, M3_open_source_deep_research, M4_code_agent, M5_multi_agent, M6_memory_enhanced]
   system_class: [commercial_deep_research, controlled_harness, open_source_deep_research, code_agent, multi_agent, memory_augmented]
   model_or_product_version: string
   run_date: date
@@ -109,6 +152,15 @@ agent:
   orchestration: [single_agent, planner_executor, multi_agent]
   visible_tools: list
   eligibility_predicate: string
+
+anchor_assignment:
+  is_anchor: boolean
+  anchor_id: [A1_everyday_decision, A2_learning_career, A3_financial_information, A4_health_information, A5_enterprise_decision, A6_software_production, A7_academic_frontier, A8_policy_communication, not_anchor]
+  functional_role: string_or_null
+  eligibility_gates: list
+  assigned_failure_modes: list
+  balanced_block_id: string_or_null
+  cross_anchor_replication_ids: list
 
 behavioral_operator: [acquire, preserve, use, update_recover]
 perturbation:
@@ -145,6 +197,7 @@ provenance:
   last_modified_at: datetime
   evidence_hash: string
   rubric_version: string
+  criterion_compiler_version: string
   license_or_consent: string
 
 post_run_only:
@@ -154,5 +207,9 @@ post_run_only:
   observed_outcome_risks: list
   observed_failure_evidence: list
   judge_version: string
+  judge_protocol_id: string
+  judge_criterion_version: string
+  human_validity_role: [none, domain_expert, target_user, both]
+  position_order: [AB, BA, not_applicable]
   scores: object
   confidence: number

@@ -36,29 +36,29 @@
   <rect x="54" y="134" width="1812" height="82" rx="18" fill="#E6F1F5" stroke="#6FA5B5" stroke-width="1.5"/>
   <circle cx="105" cy="175" r="25" fill="#1E7584"/>
   <text x="105" y="184" text-anchor="middle" class="cn white" font-size="26" font-weight="700">?</text>
-  <text x="147" y="164" class="cn label">核心 estimand 转换</text>
-  <text x="147" y="194" class="cn body">PDR-Bench 已测“给定用户是否适配”；DeepAlign 测“固定 T/E/resources，只改变用户后，哪份交付物更适合谁”。</text>
+  <text x="147" y="164" class="cn label">核心 estimand + 压力评测</text>
+  <text x="147" y="194" class="cn body">固定 T/E/resources，只改变用户识别 counterfactual effect；再沿 S0–S4 测不同 agent 模式何时退化、能否恢复。</text>
 
   <!-- Column 1 -->
   <rect x="54" y="250" width="400" height="558" class="card"/>
   <rect x="54" y="250" width="400" height="58" rx="16" fill="#DCE9F8"/>
-  <text x="254" y="287" text-anchor="middle" class="cn section">① Evaluation Atlas 元数据</text>
-  <text x="82" y="342" class="cn label">A/B · Task + Environment</text>
-  <rect x="78" y="360" width="352" height="86" class="chip" fill="#F4F8FD" stroke="#96B4D4"/>
-  <text x="96" y="388" class="cn body">• stratum · intent · deliverable · demand</text>
-  <text x="96" y="417" class="cn body">• evidence · freshness · tools · budget</text>
+  <text x="254" y="287" text-anchor="middle" class="cn section">① Task + Persona 构造</text>
+  <text x="82" y="342" class="cn label">Task family：从真实问题冻结共同核心</text>
+  <rect x="78" y="360" width="352" height="122" class="chip" fill="#F4F8FD" stroke="#96B4D4"/>
+  <text x="96" y="389" class="cn body">真实 seed → 固定问题 / evidence / budget</text>
+  <text x="96" y="420" class="cn body">Atlas 标注 → 六维 stress knobs</text>
+  <text x="96" y="451" class="cn small">expert + target-user pilot；不稳定 family 淘汰</text>
 
-  <text x="82" y="485" class="cn label">C/D · User State + Signal</text>
-  <rect x="78" y="503" width="352" height="142" class="chip" fill="#F0FAF7" stroke="#73AF9B"/>
-  <text x="96" y="532" class="cn body">目标 · 知识 · 约束 · 风险 · 受众 · 权限</text>
-  <text x="96" y="563" class="cn body">brief · persona · clarification · history</text>
-  <text x="96" y="594" class="cn body">behavior · workspace · feedback · update</text>
-  <text x="96" y="624" class="cn small">每条事实带 provenance、时间、置信度与敏感级别</text>
+  <text x="82" y="521" class="cn label">Persona：有来源的 task-conditioned ledger</text>
+  <rect x="78" y="539" width="352" height="142" class="chip" fill="#F0FAF7" stroke="#73AF9B"/>
+  <text x="96" y="568" class="cn small">来源记录 → 原子 facts → 最小 Ua/Ub 编辑</text>
+  <text x="96" y="599" class="cn body">fact → must-change / hold / not 映射</text>
+  <text x="96" y="630" class="cn body">persona · history · clarification · memory views</text>
+  <text x="96" y="660" class="cn small">时间 · 可靠性 · 敏感度 · 推理/披露权限</text>
 
-  <text x="82" y="684" class="cn label">E · Agent System + Test Operator</text>
-  <rect x="78" y="702" width="352" height="80" class="chip" fill="#FFF7EA" stroke="#D6A657"/>
-  <text x="96" y="731" class="cn body">search · memory · planning · orchestration</text>
-  <text x="96" y="761" class="cn body">Acquire · Preserve · Use · Update/Recover</text>
+  <text x="82" y="714" class="cn label">Clean family eligibility</text>
+  <rect x="78" y="732" width="352" height="52" class="chip" fill="#FFF7EA" stroke="#D6A657"/>
+  <text x="254" y="764" text-anchor="middle" class="cn small">自然匹配 · 可区分 · 共同核心 · 最小化 · 非刻板化</text>
 
   <!-- Column 2 -->
   <rect x="496" y="250" width="430" height="558" class="card"/>
@@ -93,24 +93,27 @@
   <!-- Column 3 -->
   <rect x="968" y="250" width="404" height="558" class="card"/>
   <rect x="968" y="250" width="404" height="58" rx="16" fill="#E5F1EC"/>
-  <text x="1170" y="287" text-anchor="middle" class="cn section">③ 预注册可比运行</text>
-  <rect x="998" y="335" width="344" height="64" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
-  <text x="1170" y="375" text-anchor="middle" class="cn body">商业 Deep Research · 统一搜索 Harness</text>
-  <rect x="998" y="418" width="344" height="64" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
-  <text x="1170" y="458" text-anchor="middle" class="cn body">可复现开源 Deep Research Agent</text>
-  <rect x="998" y="501" width="344" height="64" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
-  <text x="1170" y="541" text-anchor="middle" class="cn body">Anchor probes：Code · Multi-agent · Memory</text>
+  <text x="1170" y="287" text-anchor="middle" class="cn section">③ Agent × Environment × Stress</text>
+  <rect x="998" y="329" width="344" height="58" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
+  <text x="1170" y="365" text-anchor="middle" class="cn body">E1 Controlled Frozen Harness</text>
+  <rect x="998" y="401" width="344" height="58" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
+  <text x="1170" y="437" text-anchor="middle" class="cn body">E2 Native Live Product / Web</text>
+  <rect x="998" y="473" width="344" height="58" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
+  <text x="1170" y="509" text-anchor="middle" class="cn body">E3 Stateful Interactive Sandbox</text>
 
-  <text x="1010" y="616" class="cn label">轨迹检查点</text>
-  <line x1="1025" y1="654" x2="1315" y2="654" stroke="#477A68" stroke-width="4" marker-end="url(#arrow)"/>
-  <circle cx="1040" cy="654" r="9" fill="#477A68"/><circle cx="1120" cy="654" r="9" fill="#477A68"/>
-  <circle cx="1200" cy="654" r="9" fill="#477A68"/><circle cx="1280" cy="654" r="9" fill="#477A68"/>
-  <text x="1040" y="687" text-anchor="middle" class="cn small">形成</text>
-  <text x="1120" y="687" text-anchor="middle" class="cn small">保持</text>
-  <text x="1200" y="687" text-anchor="middle" class="cn small">利用</text>
-  <text x="1280" y="687" text-anchor="middle" class="cn small">恢复</text>
-  <rect x="998" y="718" width="344" height="58" rx="12" fill="#F9FCFA" stroke="#A4C2B4"/>
-  <text x="1170" y="754" text-anchor="middle" class="cn body">保存轨迹、交付物、版本、成本与时间戳</text>
+  <text x="1170" y="566" text-anchor="middle" class="cn small">M1–M6：商业 · 受控 · 开源 · Code · Multi · Memory</text>
+  <text x="1170" y="596" text-anchor="middle" class="cn small">同 anchor / 环境 / budget 才直接比较；adapter 导出 artifact + trace</text>
+  <line x1="1012" y1="640" x2="1325" y2="640" stroke="#477A68" stroke-width="4" marker-end="url(#arrow)"/>
+  <circle cx="1027" cy="640" r="9" fill="#477A68"/><circle cx="1094" cy="640" r="9" fill="#477A68"/>
+  <circle cx="1161" cy="640" r="9" fill="#477A68"/><circle cx="1228" cy="640" r="9" fill="#477A68"/><circle cx="1295" cy="640" r="9" fill="#477A68"/>
+  <text x="1027" y="674" text-anchor="middle" class="cn small">S0 clean</text>
+  <text x="1094" y="674" text-anchor="middle" class="cn small">S1 轻</text>
+  <text x="1161" y="674" text-anchor="middle" class="cn small">S2 强</text>
+  <text x="1228" y="674" text-anchor="middle" class="cn small">S3 复合</text>
+  <text x="1295" y="674" text-anchor="middle" class="cn small">S4 恢复</text>
+  <rect x="998" y="710" width="344" height="66" rx="12" fill="#F9FCFA" stroke="#A4C2B4"/>
+  <text x="1170" y="738" text-anchor="middle" class="cn small">8 功能 anchor × balanced incomplete block</text>
+  <text x="1170" y="761" text-anchor="middle" class="cn small">每个 failure mode 至少跨两个 anchor</text>
 
   <!-- Column 4 -->
   <rect x="1414" y="250" width="452" height="558" class="card"/>
@@ -126,7 +129,8 @@
   <text x="1464" y="618" class="cn label">L3 强 Judge + 20% 人评</text><text x="1464" y="644" class="cn small">分层复核与分歧仲裁；SFT 仅可选附录</text>
   <rect x="1444" y="688" width="392" height="86" rx="12" fill="#FCEDEA" stroke="#BF7463" stroke-width="1.5"/>
   <text x="1640" y="719" text-anchor="middle" class="cn label">JudgeBench 竞争式选型</text>
-  <text x="1640" y="749" text-anchor="middle" class="cn small">240 units · 人类金标 · 偏差/诱饵 · 模块校准</text>
+  <text x="1640" y="744" text-anchor="middle" class="cn small">240 units · target-user + expert gold · 偏差/诱饵</text>
+  <text x="1640" y="765" text-anchor="middle" class="cn small">PDR: PCA=.43 / 15×2 → 独立效度校准</text>
 
   <!-- arrows between columns -->
   <path d="M454 530 L486 530" class="arrow"/>
@@ -135,19 +139,19 @@
 
   <!-- bottom scorecard -->
   <rect x="54" y="844" width="1812" height="178" rx="18" fill="#FFFFFF" stroke="#9CB1C6" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="92" y="885" class="cn section">主榜规则：先过共同质量门槛，再比较个性化；禁止“迎合换分”</text>
+  <text x="92" y="885" class="cn section">Leaderboard：先过共同质量门槛，再发布四张能力画像；禁止“迎合换分”</text>
   <rect x="90" y="910" width="245" height="75" rx="12" fill="#E7F0FA" stroke="#7FA4CB"/>
-  <text x="212" y="941" text-anchor="middle" class="cn label">TQ / FR</text><text x="212" y="968" text-anchor="middle" class="cn small">任务质量 · 事实与引用</text>
+  <text x="212" y="941" text-anchor="middle" class="cn label">A · Base Delivery</text><text x="212" y="968" text-anchor="middle" class="cn small">TQ / FR · PF · CFA</text>
   <rect x="358" y="910" width="245" height="75" rx="12" fill="#E9F6F1" stroke="#72AE95"/>
-  <text x="480" y="941" text-anchor="middle" class="cn label">PF − MP</text><text x="480" y="968" text-anchor="middle" class="cn small">用户适配 · 误用惩罚</text>
+  <text x="480" y="941" text-anchor="middle" class="cn label">B · Signal Acquisition</text><text x="480" y="968" text-anchor="middle" class="cn small">澄清 · 历史 · channel gain</text>
   <rect x="626" y="910" width="245" height="75" rx="12" fill="#EFEAF9" stroke="#9984BF"/>
-  <text x="748" y="941" text-anchor="middle" class="cn label">CFA / Cue Robustness</text><text x="748" y="968" text-anchor="middle" class="cn small">对角优势 · 语义等价稳定</text>
+  <text x="748" y="941" text-anchor="middle" class="cn label">C · Stress &amp; Failure</text><text x="748" y="968" text-anchor="middle" class="cn small">S0–S3 retention · risk slices</text>
   <rect x="894" y="910" width="245" height="75" rx="12" fill="#FFF4E4" stroke="#D6A150"/>
-  <text x="1016" y="941" text-anchor="middle" class="cn label">Retention / Recovery</text><text x="1016" y="968" text-anchor="middle" class="cn small">衰减曲线 · 恢复收益</text>
+  <text x="1016" y="941" text-anchor="middle" class="cn label">D · Recovery</text><text x="1016" y="968" text-anchor="middle" class="cn small">S4 gain · governance</text>
   <rect x="1162" y="910" width="245" height="75" rx="12" fill="#FBEDEA" stroke="#CC8677"/>
-  <text x="1284" y="941" text-anchor="middle" class="cn label">Privacy / Calibration</text><text x="1284" y="968" text-anchor="middle" class="cn small">隐私边界 · 推断校准</text>
+  <text x="1284" y="941" text-anchor="middle" class="cn label">Hard Gates</text><text x="1284" y="968" text-anchor="middle" class="cn small">事实 · 隐私 · 权限 · must-not</text>
   <rect x="1430" y="910" width="397" height="75" rx="12" fill="#EDF2F5" stroke="#91A3B0"/>
-  <text x="1628" y="941" text-anchor="middle" class="cn label">Coverage：Atlas × Operator × Agent</text>
-  <text x="1628" y="968" text-anchor="middle" class="cn small">tested / defined-only / N/A / deferred + 95% CI</text>
-  <text x="960" y="1054" text-anchor="middle" class="cn small">核心创新：Cross-user Effect Identification + must-change / must-hold / must-not；其余模块支撑稳健性与外部效度</text>
+  <text x="1628" y="941" text-anchor="middle" class="cn label">切片：Task × M × E × S × Risk</text>
+  <text x="1628" y="968" text-anchor="middle" class="cn small">coverage manifest · effect sizes · 95% CI</text>
+  <text x="960" y="1054" text-anchor="middle" class="cn small">方法核心：Cross-user Effect Identification；构造、压力、环境与 JudgeBench 提供可复现性、测量效度和外部效度</text>
 </svg>

@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **完整人话版：方法不变，只把话说清楚**  
-版本：v0.21 · 2026 年 8 月 3 日
+版本：v0.22 · 2026 年 8 月 3 日
 用途：组内讨论、导师沟通、正式稿写作前的共同理解  
 
 ---
@@ -38,13 +38,15 @@
 
 第四步，研究把时间和风险也纳入进来。RPEval 测无关记忆会不会导致不理性个性化，PAHF 用澄清、记忆和反馈适应偏好变化，PerMemBench 问“哪些信息值得为这个用户写入”，Memora 与 CloneMem 测过期事实和多年数字轨迹。[[30]](https://arxiv.org/abs/2601.16621)[[31]](https://arxiv.org/abs/2602.16173)[[32]](https://arxiv.org/abs/2605.25535)[[33]](https://aclanthology.org/2026.findings-acl.1337/)[[34]](https://aclanthology.org/2026.acl-long.1549/) PASB 和 PS-Bench 又说明，持久记忆不仅可能过期，还可能把迎合或危险意图长期合理化。[[18]](https://arxiv.org/abs/2607.10526)[[39]](https://aclanthology.org/2026.acl-long.1260/) 这要求我们的 irrelevant、stale、write、update 和 must-not 测试成为正式实验，而不是几个演示案例。
 
-最后，PDR-Bench 与另一项 PDR 工作已经直接研究 persona 驱动的 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) MyScholarQA 还发现，合成用户和 LLM judge 会漏掉真人指出的九类细微个性化错误。[[28]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 会根据 task 和 persona 生成 P-Score 的权重与子标准，再评价目标、内容、呈现和可行动性；它已经能可靠表达“给定这个 task 和 persona，这份报告有多适合该用户”这一 absolute adaptation 问题。
+最后，PDR-Bench 与另一项 PDR 工作已经直接研究 persona 驱动的 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) MyScholarQA 还发现，合成用户和 LLM judge 会漏掉真人指出的九类细微个性化错误。[[28]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 会根据 task 和 persona 生成 P-Score 的权重与子标准，再评价目标、内容、呈现和可行动性；它已经能表达“给定这个 task 和 persona，这份报告有多适合该用户”这一 absolute adaptation 问题。
 
 DeepAlign 不重复回答这个问题，而是换一个 estimand：**同一任务和证据换成另一个同样合理的用户后，两份报告是否各自更适合自己的用户？** PDR-Bench 的 pairwise 比较回答“同一用户下哪个 agent 报告更好”；DeepAlign 的跨用户 2×2 matched/swapped 矩阵回答“只改变用户条件后，输出是否发生方向正确的变化”。这就是从 absolute adaptation evaluation 到 counterfactual personalization effect identification。
 
 仅仅看到两份输出不同还不够。`must-change` 规定哪些决策必须随用户改变；`must-hold` 规定哪些事实、证据和共同质量不能改变；`must-not` 规定不能因为 persona 就额外推断、迎合或泄露什么。三者共同防止把随机差异、质量下降或过度个性化误认为有效 personalization。
 
-还要避免另一个过度主张：matched/swapped 通过，也不能证明模型内部“真的理解了用户”。模型可能只是看到“不懂 AI”就调用短报告模板。为此我们要再检查：同一用户需求改写成结构化 persona、自然历史、澄清对话或去掉显眼关键词后，关键决策是否保持；只换无关人口属性或措辞时，不该变的事实和结论是否稳定。ACL 2026 的研究已经发现，同一 persona 换一种提示线索就可能改变测量结论；[[40]](https://aclanthology.org/2026.acl-long.2079/) PARL 也强调个性化 rubric 必须同时有代表性、用户一致性和区分力。[[41]](https://arxiv.org/abs/2605.31545) 长度、格式和关键词诱饵是 DeepAlign 对自身 judge 的独立测量有效性审计，与 PDR-Bench 的能力判断无关。
+但是 PDR-Bench 的自动评价不能被写成已经完全解决。它在 15 个 query、两个 agent 上做人类校准，最好的 GPT-5 judge 与人类 pairwise 顺序一致率只有 0.43，平均评分偏差为 1.40。[[4]](https://arxiv.org/abs/2509.25106) 另外，权重/子标准由一次 LLM 生成、分数再由另一个 LLM 生成，量尺本身可能波动；human panel 也不等于 persona 本人；事实分还依赖 claim 抽取、去重、网页抓取和支持判断；P/Q/R 平均又可能让事实失败被其他分补回来。正确说法是：**PDR 的 rubric 已经能表示 absolute adaptation，但其 judge 校准和评分链条仍不足以直接支撑精细、跨系统的榜单。**
+
+还要避免另一个过度主张：matched/swapped 通过，也不能证明模型内部“真的理解了用户”。模型可能只是看到“不懂 AI”就调用短报告模板。为此我们要再检查：同一用户需求改写成结构化 persona、自然历史、澄清对话或去掉显眼关键词后，关键决策是否保持；只换无关人口属性或措辞时，不该变的事实和结论是否稳定。ACL 2026 的研究已经发现，同一 persona 换一种提示线索就可能改变测量结论；[[40]](https://aclanthology.org/2026.acl-long.2079/) PARL 也强调个性化 rubric 必须同时有代表性、用户一致性和区分力。[[41]](https://arxiv.org/abs/2605.31545) DeepAlign 的 JudgeBench 同时补 PDR 尚未报告的 wrong-user swap、位置、长度、关键词和隐私诱饵，但 judge 改进与 estimand 创新要分开写。
 
 ### 1.2 我们采用反事实对照
 
@@ -132,6 +134,25 @@ DeepAlign 不重复回答这个问题，而是换一个 estimand：**同一任�
 
 主数据用 18 个 family 覆盖“3 种使用情境 × 6 种研究意图”，再用 6 个 family 复测最重要或风险最高的单元，共 24 个 family。这个规模足以验证测量方法，但不足以声称每个细分类别都有稳定模型排名。
 
+### 3.5 一个 task family 到底怎么造
+
+Task family 不是“旅行类”“学术类”这样的标签，而是一套能生成受控条件的蓝图。实际按八步做：
+
+1. 从真实用户、专业工作流或已有 benchmark 收集一个确实需要多步研究的问题；
+2. 固定所有用户共同的目标、证据截止时间、工具、预算和交付物；
+3. 标注使用情境、研究意图、交付物和需求剖面；
+4. 建 frozen evidence pack、困难负例、时间戳和权限视图；
+5. 预先定义搜索 fan-out、冲突、上下文、handoff、更新等难度旋钮；
+6. 配两个都自然、但会改变至少两项交付决策的用户；
+7. 在模型运行前写 must-change / must-hold / must-not 和可接受替代；
+8. 用参考 matched/swapped 输出做人评 pilot，分不出来就删题。
+
+所以“同一个医疗 AI 采购研究 + 医院管理者/临床 AI 研究员”是一个 family：法规和产品事实不变，但 ROI/流程/合规与验证/漂移/复现的优先级必须变化。
+
+### 3.6 难度怎么逐级增加
+
+难度用六个独立旋钮表示：证据复杂度、用户信号复杂度、上下文长度、交接负载、权限敏感度、用户差异细微度。Anchor 内按同一前缀运行：`S0 clean → S1 单个轻扰动 → S2 单个强扰动 → S3 两个正交扰动 → S4 对 S3 做恢复`。S4 不是更难，而是恢复配对。Risk 说明失败伤害什么，failure mode 说明想暴露什么机制，stress level 说明触发有多强；三者不能混成一个总难度分。
+
 ## 4. Persona 和用户真值怎么做
 
 ### 4.1 Persona 不是人物小传
@@ -139,6 +160,8 @@ DeepAlign 不重复回答这个问题，而是换一个 estimand：**同一任�
 Persona 只是用户状态的一种展示形式。我们真正保存的是一个与任务相关的 user-state ledger。每条信息都记录：来源、时间、可靠度、敏感程度、与任务是否相关、是否允许用于推理、是否允许写进最终交付物。
 
 同一份 ledger 可以被转成 structured persona、自然对话历史、澄清回答或 memory 记录。不同形式必须保持语义等价，否则测到的就不是“渠道差异”，而是“信息内容不同”。
+
+具体不是让作者凭空写人物，而是：真实需求记录 → 提取目标/知识/硬约束/风险/受众/权限 → 先写 Ua/Ub 共享核心 → 只改 2–3 个有决策后果的字段 → 每条事实映射到一条评价契约 → 从同一 ledger 生成不同 signal view → 再生成 demographic-only、irrelevant、wrong-user、stale 和 redacted 负对照 → 原用户、相似用户与领域专家三方验证。没有 rubric 后果的 biography 细节从核心 persona 删除。
 
 ### 4.2 六道 persona-task 检查
 
@@ -186,17 +209,17 @@ Persona 只是用户状态的一种展示形式。我们真正保存的是一个
 
 四种核心条件是：task-only、structured persona、语义等价自然历史、允许主动澄清。
 
-三类核心 agent 是：一个商业 Deep Research 产品、一个在统一搜索和工具条件下运行的通用 agent、一个可复现的开源 Deep Research agent。
+三类核心 agent 是：M1 商业 Deep Research 产品、M2 在统一搜索和工具条件下运行的通用 harness、M3 可复现开源 DRA。M4 code agent、M5 multi-agent、M6 memory-enhanced 是架构 probe，只在适合的 anchor 上运行。
 
 代码 agent、多 agent、记忆增强系统和第二个商业产品只在适合它们的 8 个 anchor family 中测试。不能为了让表格整齐，要求每个系统运行它根本不适合的任务。
 
 ### 5.2 三条评测轨道
 
-- **Frozen Core**：证据和工具固定，用于主要科学结论；
-- **Live Web**：记录日期、搜索服务和网页快照，只用于生态观察；
-- **Longitudinal/Interactive**：用户状态中途变化，用于保持、更新和恢复测试。
+- **E1 Frozen Harness**：只读证据快照、统一工具和预算；每次 reset 后以同一 seed 成对运行，形成因果主榜；
+- **E2 Live Product/Web**：系统使用原生搜索和规划；记录日期、地区、订阅、版本、工具和 URL 快照，形成产品榜；
+- **E3 Stateful Sandbox**：事件脚本在固定 checkpoint 注入澄清、冲突、handoff、更新和 re-anchor，共享前缀后分叉，形成机制榜。
 
-三条轨道不能混成一个总榜。商业产品版本和 live web 条件变化太快，必须单独报告。
+三条轨道是运行环境，不是 agent 类型。统一 adapter 至少要能 reset、提供 signal、运行到 checkpoint、注入 event、导出 artifact，并声明能保存 artifact-only、tool events、message events 还是 full state。三条轨道不能混成一个总榜。
 
 ### 5.3 压力测试
 
@@ -212,7 +235,7 @@ Persona 只是用户状态的一种展示形式。我们真正保存的是一个
 - 用户中途更新目标；
 - 在交付前重新提醒约束，观察能否恢复。
 
-前三个共同对照（clean、persona swap、无关信息）在所有 anchor 上运行；冲突、稀释、handoff 和动态更新只放到确实适合的 family。Re-anchor 不是 attack，而是恢复干预；预先确定哪些样本重跑，不能看见失败后再挑样本。这样才能把“这个任务本来难”与“用户信息被错配、稀释、丢失或没有更新”分开。
+8 个 anchor 固定覆盖：日常决策、学习/职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿、政策传播。前三个共同对照（clean、persona swap、无关信息）在所有 anchor 上运行；冲突、稀释、handoff 和动态更新用平衡不完全区组分配，每类 failure mode 至少出现在两个不同 anchor。Re-anchor 不是 attack；预先确定哪些样本重跑，不能看见失败后再挑样本。
 
 每个扰动都要记录：什么保持不变、改了什么、何时插入、agent 当时能看见什么、配对 clean run 是哪一个、哪些结果应该变化/保持，以及恢复策略。对应指标分别是 ΔPF、无关信息 invariance、冲突解析率、PF retention/AUC、handoff loss、update correctness 和 recovery gain；同时检查事实、共同质量、长度和隐私是否受损。
 
@@ -305,7 +328,7 @@ CFA 大于 0 说明评分矩阵出现“对的人更适合自己的版本”的�
 
 ### 8.4 榜单不能只给一个总分
 
-主榜先检查 TQ、FR 和关键隐私门槛，再报告 PF−MP、CFA、cue robustness、Retention、Recovery、隐私违规率、成本和时间。不同 evidence track、工具预算和 agent 类型不应混排。
+主榜先检查 TQ、FR 和关键隐私门槛，再分四张 profile：clean 条件下的任务/交付物能力；不同 signal channel 的获取与利用；S0–S3 的风险/failure-mode 退化曲线；S4 的恢复、隐私与副作用。每张 agent card 标注运行环境、trace level、覆盖率和 N/A；不同 evidence track、工具预算和 agent 类型不混排。
 
 ## 9. Judge 怎么做
 
@@ -319,6 +342,8 @@ CFA 大于 0 说明评分矩阵出现“对的人更适合自己的版本”的�
 ### 9.2 JudgeBench
 
 用 240 个独立判分单元测试 judge，包括：正确答案、边界答案、位置交换、长度诱饵、漂亮格式诱饵、persona 关键词堆叠、隐私泄露和应当弃权的样本。
+
+它还要专门覆盖 PDR 暴露或尚未覆盖的五类问题：低人类一致性、动态 criterion 重生成、通用 evaluator 与目标用户判断不一致、claim extraction/retrieval/support 链式误差、以及 P/Q/R 补偿关键失败。对应做 criterion 多次重生成稳定性、target-user matched/swapped、claim-recall 审计、抓取失败单列和 hard-gate 对照。
 
 主 judge 至少要达到预注册的一致性、位置稳定性、群体差距和校准门槛。不达标的 rubric 改成人评或不进入主榜。
 
@@ -364,7 +389,7 @@ CFA 大于 0 说明评分矩阵出现“对的人更适合自己的版本”的�
 
 ### 12.1 这是不是 PDR-Bench 扩大版
 
-应先承认 PDR-Bench 已经测 task–persona 条件下的 absolute adaptation；再证明 DeepAlign 的跨用户 2×2 对角优势和预冻结 must-change/must-hold/must-not 能识别 counterfactual personalization effect。跨线索表达、Atlas、JudgeBench 和长程压力测试只用于稳健性、外部效度与失效诊断。
+应先承认 PDR-Bench 已经测 task–persona 条件下的 absolute adaptation；再证明 DeepAlign 的跨用户 2×2 对角优势和预冻结契约能识别 counterfactual personalization effect。同时可以公平指出 PDR 的最佳 PCA=0.43、15-query/2-agent 校准、动态 criterion variance、非 target-user validity 和复合事实核验链等可靠性边界。前者是方法创新，后者是测量改进，不能混成一个 claim。
 
 ### 12.2 Persona 是不是作者想象
 

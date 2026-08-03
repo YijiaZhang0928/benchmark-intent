@@ -4,7 +4,7 @@
 
 **用途：重写 DeepAlign-Bench 的 related-work 故事，不代替逐节复现性审查**
 
-**版本：v0.21 · 2026 年 8 月 3 日**
+**版本：v0.22 · 2026 年 8 月 3 日**
 
 ## 一页结论
 
@@ -18,7 +18,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 
 因此，DeepAlign-Bench 不能再说“已有工作只测事实、搜索和引用”，也不能声称首次研究 personalization、history、persistent state 或 temporal intervention。更稳健的 gap 是：
 
-> PDR-Bench 已用 task/persona-conditioned rubric 建立个性化 DR 的 absolute adaptation evaluation。DeepAlign 不批评其 rubric/judge 不细，而是改变 estimand：用 matched/swapped 跨用户交叉评分识别 counterfactual personalization effect，并以预冻结 must-change/must-hold/must-not 排除随机差异、共同质量破坏和过度个性化。跨 cue 稳健性与真人校准用于验证该效应，不是替代 PDR-Bench 的绝对适配评价。
+> PDR-Bench 已用 task/persona-conditioned rubric 建立个性化 DR 的 absolute adaptation evaluation。DeepAlign 的方法增量是用 matched/swapped 与 must-change/must-hold/must-not 识别 counterfactual personalization effect；同时，PDR 报告的最佳 PCA=0.43、15-query/2-agent 校准、两层动态 criterion 和复合事实核验链说明其自动评分仍需更强 validation。前者是 estimand 创新，后者是 JudgeBench 的测量动机。
 
 最直接的威胁不是一篇论文，而是三组工作拼起来后的覆盖面：
 
@@ -195,7 +195,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 ## 对 Proposal 的具体改动
 
 1. 将 1.1 改成一条连续收敛链：通用 DR 质量 → 用户理解与输出 → 规划/工具/GUI 行动 → 长程写入、更新与安全 → 个性化 DR → 反事实交付物识别。
-2. 将 gap 锁定为从 **absolute adaptation evaluation** 到 **counterfactual personalization effect identification** 的 estimand 转换，而不是对 PDR-Bench rubric/judge 的能力批评。
+2. 将 gap 锁定为从 **absolute adaptation evaluation** 到 **counterfactual personalization effect identification** 的 estimand 转换；对 PDR-Bench 则公平区分“rubric 已能表达适配”与“judge/aggregation 仍有实证可靠性边界”。
 3. 增加 reviewer-safe 边界：不声称首先研究用户理解、行为历史、持久状态或时间更新。
 4. 将 Setoka 的 provenance/abstraction、PersonaTrail 的双记忆、APeB 的 hard alternatives、PASB 的 write governance、Temporal Interventions 的 C1–C4 和 TARS 的 human utility 分别映射到现有 Atlas、operator、rubric 和小规模用户研究。
 5. 新增四项最低成立条件：matched/swapped 人评稳定；语义等价 cue 下结论稳定；共同质量与 must-hold 不下降；至少一个 signal/operator 效应可重复且统计可分辨。

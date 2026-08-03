@@ -148,7 +148,7 @@ export default function LiteratureBrief() {
           <section>
             <p className="eyebrow">RELATED-WORK RAPID REVIEW · ABSTRACT + FIGURE + CONCLUSION</p>
             <h1>29 篇工作，把我们的题目<em>压到一个可证伪的点</em></h1>
-            <p className="lede">七篇最近邻工作精读，加上二十二篇 agent personalization / evaluation 扩展审计。PDR-Bench 已经解决 task–persona 条件下的 absolute adaptation evaluation。DeepAlign 改变的是 estimand：固定任务与证据后，通过 matched/swapped 与三类预冻结契约识别 counterfactual personalization effect。</p>
+            <p className="lede">七篇最近邻工作精读，加上二十二篇 agent personalization / evaluation 扩展审计。PDR-Bench 已建立 task–persona 条件下的 absolute adaptation 评价，但其最佳 judge 的人类 pairwise agreement 仅 PCA=.43，且校准只有 15 个 query、两个 agent。DeepAlign 一方面改变 estimand，用 matched/swapped 与三类契约识别 counterfactual personalization effect；另一方面用独立 JudgeBench 验证这个新效应是否可被可靠测量。</p>
             <div className="heroActions"><a className="button primary" href="#map">先看结论</a><a className="button ghost" href="#audit">检查 22 篇筛选</a></div>
           </section>
           <aside className="litClaim">
@@ -183,7 +183,7 @@ export default function LiteratureBrief() {
           <p className="sectionTag invert">COVERAGE MAP</p>
           <div className="sectionHead light"><h2>谁已经测了什么</h2><p>● 主评价对象；◐ 部分涉及；— 未作为主要证据。DeepAlign 最后一行是计划，不是已有结果。</p></div>
           <div className="litTableWrap"><table className="litTable"><thead><tr><th>工作</th><th>真实/异构信号</th><th>用户理解</th><th>Agent 执行</th><th>交付物效用</th><th>用户交换</th><th>时间/持久状态</th><th>安全/误用</th></tr></thead><tbody>{matrix.map((row) => <tr key={row[0]}>{row.map((cell, i) => i === 0 ? <th key={cell}>{cell}</th> : <td key={`${row[0]}-${i}`} data-mark={cell}>{cell}</td>)}</tr>)}</tbody></table></div>
-          <p className="litMatrixNote">PDR-Bench 已覆盖 persona-conditioned absolute adaptation。DeepAlign 待验证的是新的 estimand：“● 跨用户交叉评分 + ● must-change / must-hold / must-not”，并以多类交付物、跨 cue、长程状态和安全条件检验其稳健性与外部效度。</p>
+          <p className="litMatrixNote">PDR-Bench 已覆盖 persona-conditioned absolute adaptation；这项 construct contribution 与其 judge 可靠性边界必须分开判断。DeepAlign 待验证的是新的 estimand：“● 跨用户交叉评分 + ● must-change / must-hold / must-not”，并以目标用户盲评、冻结量尺、事实链审计、多类交付物与跨 cue 条件检验测量效度和外部效度。</p>
         </div>
       </section>
 
@@ -226,12 +226,12 @@ export default function LiteratureBrief() {
         <div className="shell">
           <p className="sectionTag invert">WHAT CHANGED</p>
           <div className="sectionHead light"><h2>Proposal 1.1 现在应该怎么讲</h2><p>每推进一层，就同时说明已有覆盖和仍未识别的终点。</p></div>
-          <ol><li><b>第一层：</b>通用 DR benchmark 建立事实、搜索、引用和报告质量底线，但不回答结果更适合哪个用户。</li><li><b>第二层：</b>LaMP、PersonaLens、Setoka、PersonaTrail 与 APeB 已覆盖用户历史、任务对话、分层理解和行为轨迹；空白不再是“懂不懂用户”。</li><li><b>第三层：</b>ETAPP、ToolSpectrum、Mem2ActBench、APOLLO 和 AndroidIntent 已把用户信息落实到工具/GUI 行动；空白也不再是“有没有行动”。</li><li><b>第四层：</b>PersonaMem、PAHF、PerMemBench、Memora、CloneMem、PASB 与 PS-Bench 已进入动态画像、写入、过期和安全；这些成为稳健性与诊断 operator。</li><li><b>收敛层：</b>PDR-Bench 已用 task/persona-conditioned P-Score 测 absolute adaptation；DeepAlign 转向跨用户 matched/swapped 和 must-change/must-hold/must-not 所定义的 counterfactual personalization effect。</li><li><b>方法边界：</b>One Persona, Many Cues 和 PARL 用于检验 DeepAlign 效应的跨表达稳健性；不用于否定 PDR-Bench 的 rubric/judge，也不证明模型内部理解。</li></ol>
+          <ol><li><b>第一层：</b>通用 DR benchmark 建立事实、搜索、引用和报告质量底线，但不回答结果更适合哪个用户。</li><li><b>第二层：</b>LaMP、PersonaLens、Setoka、PersonaTrail 与 APeB 已覆盖用户历史、任务对话、分层理解和行为轨迹；空白不再是“懂不懂用户”。</li><li><b>第三层：</b>ETAPP、ToolSpectrum、Mem2ActBench、APOLLO 和 AndroidIntent 已把用户信息落实到工具/GUI 行动；空白也不再是“有没有行动”。</li><li><b>第四层：</b>PersonaMem、PAHF、PerMemBench、Memora、CloneMem、PASB 与 PS-Bench 已进入动态画像、写入、过期和安全；这些成为稳健性与诊断 operator。</li><li><b>收敛层：</b>PDR-Bench 已用 task/persona-conditioned P-Score 测 absolute adaptation；DeepAlign 转向跨用户 matched/swapped 和 must-change/must-hold/must-not 所定义的 counterfactual personalization effect。</li><li><b>测量层：</b>PDR 的动态 criterion、自动事实链、P/Q/R 等权平均，以及 15-query/2-agent、PCA=.43 的 judge 校准不否定其 construct，但不足以支撑细粒度跨条件效应；DeepAlign 必须冻结量尺并单独建立 JudgeBench。</li><li><b>方法边界：</b>One Persona, Many Cues 和 PARL 用于检验 DeepAlign 效应的跨表达稳健性；不证明模型内部理解，也不能把任何 judge 偏差先验归因给 PDR。</li></ol>
           <div className="litGo"><b>四项最低成立条件</b><span>matched/swapped 人评稳定</span><span>语义等价 cue 下结论稳定</span><span>共同质量与 must-hold 不下降</span><span>至少一个 signal/operator 效应可重复</span></div>
         </div>
       </section>
 
-      <footer><div className="shell"><b>DeepAlign-Bench · v0.21</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
+      <footer><div className="shell"><b>DeepAlign-Bench · v0.22</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
     </main>
   );
 }

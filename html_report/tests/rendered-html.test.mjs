@@ -49,7 +49,7 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /href="\/DeepAlign-Bench_完整人话版\.pdf"/i);
   assert.match(html, /href="\/DeepAlign-Bench_汇报精简版\.pdf"/i);
   assert.match(html, /同一套方法，按阅读场景分成四版/);
-  assert.match(html, /先建立有效配对，再施加独立扰动/);
+  assert.match(html, /8 个 anchor 是固定实验宿主；扰动才是处理变量/);
   assert.match(html, /href="\/literature"/i);
   assert.match(html, /class="inlineCite"[^>]+2607\.27056/i);
   assert.match(html, /class="inlineCite"[^>]+2509\.25106/i);
@@ -60,6 +60,12 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /must-change \/ must-hold \/ must-not/i);
   assert.match(html, /不证明内部“理解用户”/i);
   assert.match(html, /cue-equivalence robustness/i);
+  assert.match(html, /Task family 与 persona 不是靠写 prompt 拼出来的/);
+  assert.match(html, /S0 clean/);
+  assert.match(html, /E1 · Controlled Frozen Harness/);
+  assert.match(html, /A1 日常决策/);
+  assert.match(html, /PCA=\.43/);
+  assert.match(html, /PROFILE D/);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
 });
@@ -95,10 +101,13 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.21/m);
+  assert.match(schema, /^schema_version:\s*0\.22/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
   assert.match(schema, /estimand:\s*counterfactual_personalization_effect/);
+  assert.match(schema, /execution_regime:/);
+  assert.match(schema, /S4_recovery_pair/);
+  assert.match(schema, /minimal_counterfactual_edit:/);
   assert.match(manifest, /coverage_status/);
   assert.match(manifest, /tested/);
   assert.match(manifest, /defined_only/);

@@ -2,17 +2,17 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.21 · 2026 年 8 月 3 日
+版本：v0.22 · 2026 年 8 月 3 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.21
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.22
 
 ---
 
 ## 摘要
 
-个性化 agent 研究已经从用户历史建模扩展到任务对话、工具调用、长程记忆和 Deep Research；[[23]](https://aclanthology.org/2024.acl-long.399/)[[24]](https://aclanthology.org/2025.findings-acl.927/)[[25]](https://aclanthology.org/2025.acl-long.1064/)[[26]](https://arxiv.org/abs/2504.14225)[[27]](https://arxiv.org/abs/2605.10530)[[28]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 已能够评价 task–persona 条件下的适配质量。当前缺口不是其 rubric 或 judge 不够细，而是缺少一个在广义 Deep Research 最终交付物上从 **absolute adaptation evaluation** 转向 **counterfactual personalization effect identification** 的协议。本项目拟构建 DeepAlign-Bench：固定任务与证据，交换两个都合理的目标用户，检验交付物差异是否由目标用户条件驱动，并用预冻结契约约束有效变化。
+个性化 agent 研究已经从用户历史建模扩展到任务对话、工具调用、长程记忆和 Deep Research；[[23]](https://aclanthology.org/2024.acl-long.399/)[[24]](https://aclanthology.org/2025.findings-acl.927/)[[25]](https://aclanthology.org/2025.acl-long.1064/)[[26]](https://arxiv.org/abs/2504.14225)[[27]](https://arxiv.org/abs/2605.10530)[[28]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 已能够评价 task–persona 条件下的 absolute adaptation，但其最佳 judge 的人类 pairwise agreement 仅 0.43，校准只覆盖 15 个 query 与两个 agent。[[4]](https://arxiv.org/abs/2509.25106) DeepAlign 的方法增量不是 rubric 更懂 persona，而是转向 **counterfactual personalization effect identification**；JudgeBench 则解决新 estimand 的测量可靠性。本项目固定任务与证据，交换两个都合理的目标用户，并用预冻结契约约束有效变化。
 
 核心方法是反事实任务族：固定任务、证据、工具与资源预算，只改变目标用户；再将两个用户的交付物进行 matched/swapped 交换评分。只有匹配交付物稳定优于错配交付物，且共同任务质量、事实性、安全与隐私不下降时，才认定为有效个性化。评测框架包括五平面元数据、反事实任务族、元数据驱动的 rubric compiler、分层指标和独立 JudgeBench。
 
@@ -28,7 +28,7 @@
 
 个性化也已经从“说什么”进入“做什么”。ETAPP 用人工关键点评测个性化与主动工具调用，Mem2ActBench 检查长期记忆能否落实到工具参数；[[25]](https://aclanthology.org/2025.acl-long.1064/)[[30]](https://aclanthology.org/2026.acl-long.370/) TARS 测代码解释的人类效用，PAHF 用澄清、记忆和反馈适应偏好漂移，PASB 与 PS-Bench 分别暴露持久写入和良性个人记忆带来的安全风险。[[19]](https://arxiv.org/abs/2607.15948)[[29]](https://arxiv.org/abs/2602.16173)[[21]](https://arxiv.org/abs/2607.10526)[[31]](https://aclanthology.org/2026.acl-long.1260/) 这意味着 DeepAlign-Bench 不能把“行动、更新或风险”本身当作首创；现有终点多是离散工具/GUI 行动、分类、推荐或安全失败，还没有统一到多证据的开放式 DR 交付物。
 
-最后，PDR-Bench 和另一项 PDR 工作已经把 persona 或动态用户上下文接入 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) PDR-Bench 的 P-Score 按 task/persona 生成权重与子标准，已经能回答：**给定这个 task 和 persona，这份报告是否适合该用户？** 其同一 user-query 下的 agent-report pairwise 人评同样服务于这个 absolute adaptation 问题。DeepAlign 不否定这套评价，而是改变 estimand：**固定任务、证据、工具和预算，只交换两个都合理的目标用户，哪份最终交付物仍然更适合谁？** 为此构造跨用户 matched/swapped 评分矩阵，并在输出前冻结 must-change / must-hold / must-not：输出有差异但方向错误、共同事实被破坏或 persona 被过度推断，都不能被算作有效 personalization。进一步地，matched/swapped 只能识别结果层效应，不能证明内部理解；同一 persona 的不同表达线索可能显著改变模型行为，[[32]](https://aclanthology.org/2026.acl-long.2079/) 而可靠个性化评价还需同时满足代表性、用户一致性和区分力。[[33]](https://arxiv.org/abs/2605.31545)
+最后，PDR-Bench 和另一项 PDR 工作已经把 persona 或动态上下文接入 Deep Research。[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) PDR 的 P-Score 按 task/persona 生成权重与子标准，能回答“给定用户，这份报告是否适合”；DeepAlign 改问“固定 task/evidence/resources，只换用户后，两份交付物是否各自更适合对应用户”，并以 must-change / must-hold / must-not 排除方向错误、共同事实破坏和过度推断。PDR 的测量边界也需保留：15-query/2-agent 校准中最佳 PCA=0.43；两层动态 rubric 会引入 criterion variance；human panel 不等于目标用户效度；事实分依赖 claim 抽取—去重—抓取—支持判断链；P/Q/R 算术平均还可能补偿关键事实失败。[[4]](https://arxiv.org/abs/2509.25106) 这些支持独立 JudgeBench 和 hard gate，但不是 estimand 创新的替代。
 
 ### 1.2 研究空缺
 
@@ -79,13 +79,13 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 ### 3.3 任务抽样与失败分类
 
-任务按“使用情境 × 研究意图 × 需求剖面”组织。使用情境包括个人与日常、专业与企业、学术与前沿；研究意图包括理解与综合、发现与枚举、比较与决策、评估与预测、规划/设计/排障、验证与审计。需求剖面分别标注概念广度、逻辑嵌套、探索性、搜索 fan-out、时效、风险/可逆性和交互需求，不压缩成单一难度分。
+任务按“使用情境 × 研究意图 × 需求剖面”组织。每个 family 依次完成：真实需求 seed → 冻结 task/evidence/deliverable core → 标注 stratum/intent/demand → 构造可调难度旋钮 → 配对 user states → 冻结差异契约 → 目标用户/专家 pilot。24 个 family 中 18 个覆盖 3×6 主单元，6 个复测关键单元；若只能产生文风差异或 matched/swapped 不稳定则删除。
 
 参考 Agent-SafetyBench，本项目分开“结果风险”和“预期失败模式”：前者回答最终错在何处，后者说明 case 设计用于暴露什么问题。预期标签不进入主 judge prompt；运行后的实际错误独立标注，并保留 other/emergent 类。
 
 ### 3.4 反事实任务族与用户真值
 
-每个 family 固定任务、证据和资源，构造两个对结果有实质影响的强对比用户。Persona 是 task-conditioned user-state ledger 的一种展示。每条用户信息记录来源、时间、可信度、任务相关性、敏感度，以及是否允许写入最终交付物。
+每个 family 固定任务、证据和资源，构造两个都自然且对结果有实质影响的用户。Persona 不先写 biography，而按“真实 source record → task-relevant axes → 共享 invariant core → 只改 2–3 个决策相关字段 → fact-to-contract map → 多 signal views → 负对照 → 人类验证”生成。每条事实记录来源、时间、可信度、相关性、敏感度和披露权限；structured persona、自然历史与澄清回答都由同一 ledger 编译。
 
 每个 user-task 在运行前冻结真值包：共同要求、用户特异要求、禁止事项、可接受替代、关键证据、严重错误封顶、预期澄清点和 matched/swapped 差异预测。关键偏好必须有用户确认或可审计来源，不得由人口属性或研究者直接推断。
 
@@ -99,13 +99,15 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 ### 4.2 评测轨道与压力测试
 
-- **Frozen Core：** 证据和工具固定，用于主要科学结论；
-- **Live Web：** 记录日期、搜索服务和网页快照，仅用于生态有效性；
-- **Longitudinal/Interactive：** 用户状态中途变化，用于保持、更新和恢复测试。
+- **E1 Frozen Harness：** 只读证据快照、统一工具/预算、paired seed，形成因果主榜；
+- **E2 Live Product/Web：** 使用原生商业/开源能力，记录版本、日期、地区、工具和 URL 快照，单独形成产品榜；
+- **E3 Stateful Sandbox：** 事件脚本在固定 checkpoint 注入澄清、冲突、handoff、更新与恢复，共享前缀分叉形成机制榜。
 
-8 个 anchor family 是压力测试宿主，不是 persona 类别。先构造两个用户都与任务合理匹配的 clean family，冻结 must-change/must-hold 和 matched/swapped 真值；再固定目标用户、任务、证据和预算，只改变可见 signal bundle、上下文位置、交接摘要或更新时间。Persona–task 匹配只是基线的前置门。
+三者是运行环境，不是 agent 类型。核心模式 M1 商业产品、M2 controlled harness、M3 开源 DRA；code、multi-agent、memory-enhanced 只在适用 anchor 上做架构 probe。统一 adapter 至少实现 reset、provide_signal、run_until、inject_event、export_artifact 和 trace-level 声明。
 
-所有 anchor 运行 clean、persona swap 和 irrelevant-signal；冲突/过期、dilution、handoff 和动态更新按预注册适用性分配。Re-anchor 是恢复干预，在固定子集上无论基线是否失败都成对运行，避免选择偏差。报告 ΔPF/invariance、冲突解析、retention/AUC、handoff loss、update correctness、recovery gain 及 TQ/事实/隐私副作用；不同轨道和预算不混榜。
+8 个 anchor 覆盖日常决策、学习职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿和政策传播。每个先建 clean family，再按 `S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 两个正交扰动 → S4 同前缀恢复` 运行。difficulty 用 evidence、signal、horizon、orchestration、permission、counterfactual subtlety 六维 stress vector 表示；risk、failure mode 与强度分开，不求和成伪精确难度分。
+
+所有 anchor 运行 clean、persona swap 和 irrelevant-signal；其余 failure mode 用平衡不完全区组分配，每类至少落到两个不同 anchor 且有同前缀 control。Re-anchor 无论基线是否失败都成对运行。结果分四层报 base task profile、signal board、S0–S3 stress curve 和 S4 recovery/governance，不把不同轨道、预算或不适用任务混成一个 overall。
 
 ### 4.3 最终结果与过程证据
 
@@ -193,7 +195,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 - **用户真值不成立：** 关键偏好由用户确认；双人独立标注与仲裁；删除无稳定差异的 family。
 - **Rubric 循环定义：** rubric 在模型输出前冻结，并通过错配、无关信息和参考交付物校准。
 - **把结果效应误写成内部理解：** 主张限定为反事实特异性；加入语义等价表达、去关键词改写和无关属性不变性测试。
-- **Judge 偏好文风或长度：** 运行位置交换、长度匹配、关键词诱饵和弃权测试；这是 judge 审计，不是相对 PDR-Bench 的主 gap。
+- **Judge 可靠性不足：** 明确引用 PDR 的 PCA=0.43 与窄校准边界，并运行位置交换、长度匹配、wrong-user swap、关键词/隐私诱饵和弃权测试；这是测量增量，核心方法增量仍是 estimand 转换。
 - **跨 agent 比较不公平：** 记录工具、预算和版本；受控 harness 与端到端产品分开报告。
 - **范围过大：** 主矩阵只包含 24 family、4 条件和 3 类 agent；扩展系统不阻塞主论文。
 
