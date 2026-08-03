@@ -1,14 +1,14 @@
-# 27 篇个性化 Agent 相关工作地图
+# 29 篇个性化 Agent 相关工作地图
 
-**阅读范围：七篇 2026 年 7 月最近邻工作精读 + 20 篇扩展工作的 title / abstract 精筛**
+**阅读范围：七篇 2026 年 7 月最近邻工作精读 + 22 篇扩展工作的 title / abstract 精筛**
 
 **用途：重写 DeepAlign-Bench 的 related-work 故事，不代替逐节复现性审查**
 
-**版本：v0.19 · 2026 年 8 月 3 日**
+**版本：v0.20 · 2026 年 8 月 3 日**
 
 ## 一页结论
 
-这 27 篇论文不是一组平行 benchmark。它们分别占据一条能力链上的不同位置：
+这 29 篇论文不是一组平行 benchmark。它们分别占据一条能力链上的不同位置：
 
 ```text
 理解用户                 利用历史并行动              跨会话保持/更新             交付用户特异结果
@@ -18,13 +18,14 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 
 因此，DeepAlign-Bench 不能再说“已有工作只测事实、搜索和引用”，也不能声称首次研究 personalization、history、persistent state 或 temporal intervention。更稳健的 gap 是：
 
-> 现有工作已经分别测量用户理解、历史利用、单域个性化效用、持久状态风险和时间干预，但尚未在广义 Deep Research 的多类最终交付物上，用异构用户信号、matched/swapped 反事实用户对、预冻结差异真值、长程干预和独立 judge 校准共同识别“结果是否对这个用户具有特异价值”。
+> PDR-Bench 已用 task/persona-conditioned rubric 测量个性化 DR 的单用户绝对适配；其余工作已分别覆盖用户理解、历史利用、单域效用、持久状态风险和时间干预。尚待验证的是：在广义 Deep Research 的多类最终交付物上，用 matched/swapped 跨用户交叉评分、预冻结变化/不变项、跨 cue 稳健性和真人校准共同识别“结果是否对这个用户具有反事实特异性”。
 
 最直接的威胁不是一篇论文，而是三组工作拼起来后的覆盖面：
 
 1. **Setoka + PersonaTrail + APeB** 已经覆盖“从异构/行为历史理解用户并利用信息”；[Setoka](https://arxiv.org/abs/2607.27056) [PersonaTrail](https://arxiv.org/abs/2607.20482) [APeB](https://arxiv.org/abs/2607.03162)
 2. **PASB + Temporal Interventions** 已经覆盖“状态写入、时间变化和跨阶段影响”；[PASB](https://arxiv.org/abs/2607.10526) [Temporal Interventions](https://arxiv.org/abs/2607.21635)
 3. **TARS** 已经说明个性化效用可以落到用户时间、认知负担和主观适配，而不只是输出文字。[TARS](https://arxiv.org/abs/2607.15948)
+4. **One Persona, Many Cues + PARL** 直接威胁“给 persona 后分高就算个性化”的测量：前者显示同一 persona 换 cue 会改变结论，后者要求 rubric 同时满足代表性、用户一致性和区分力。[One Persona, Many Cues](https://aclanthology.org/2026.acl-long.2079/) [PARL](https://arxiv.org/abs/2605.31545)
 
 我们的贡献只有在反事实效用、人类真值、跨任务交付物和长程干预被同一协议实际验证时才成立；单纯增加 metadata 维度不构成贡献。
 
@@ -45,7 +46,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 
 最后一行是研究设计目标，不是已有结果。论文中必须用 coverage manifest 区分 tested 与 defined-only。
 
-## 扩展检索：20 篇工作的精准相关性审计
+## 扩展检索：22 篇工作的精准相关性审计
 
 ### 为什么不能把检索结果全部写成“直接前作”
 
@@ -75,8 +76,10 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 | 18 | [AndroidIntent](https://aclanthology.org/2026.acl-long.1669/) | 直接：GUI 隐式意图 | 从长期用户记录中解析模糊指令、预测 routine，并评价 GUI agent 的执行与主动建议。 | 单一 Android GUI 域；不评价多文档证据综合或跨交付物 rubric。 |
 | 19 | [OPeRA](https://aclanthology.org/2026.acl-long.2033/) | 近邻：真实行为真值 | 从真实购物用户收集 persona、browser observation、细粒度 action 和即时 rationale，预测特定用户下一步。 | 评的是行为模拟而非助理服务质量；“像用户”不等于“为用户提供更好结果”。 |
 | 20 | [PS-Bench](https://aclanthology.org/2026.acl-long.1260/) | 直接：个性化安全 | 测 benign personal memory 是否让 agent 错误地把有害查询解释为合理意图，说明效用与安全必须联合评价。 | 聚焦单一安全机制；没有正向 DR 适配、共同质量或多类 failure taxonomy。 |
+| 21 | [One Persona, Many Cues](https://aclanthology.org/2026.acl-long.2079/) | 直接：cue 稳健性 | 比较六类常用 sociodemographic persona cue，发现 cue 虽整体相关，却会造成足以改变 persona 差异与偏差结论的输出方差。 | 覆盖写作/建议任务而非 DR artifact；但直接说明单一显式 persona 形式不能支撑外部效度。 |
+| 22 | [PARL](https://arxiv.org/abs/2605.31545) | 直接：个性化评价 | 从原始用户历史学习 preference-aware rubric，并用对比目标提高区分力；提出 representativeness、user-consistency、discriminativeness 三原则。 | 终点是个性化文本生成；没有同 task/evidence 下的双用户 DR artifact 矩阵与 must-hold 门槛。 |
 
-### 20 篇检索后，故事应该怎么讲
+### 22 篇检索后，故事应该怎么讲
 
 相关工作不是按年份排列，而是按评价终点逐步推进：
 
@@ -89,7 +92,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
   → DeepAlign-Bench：固定任务与证据后，交换用户来识别“更适合谁”
 ```
 
-每向右一步，都同时解决了前一步的一部分 gap，也暴露了新的测量问题。因此 1.1 不应先列 20 篇论文、再另起一段列 gap；应在每一层说明“这组工作把评价推进到哪里，因此我们不能再声称什么；但它的终点与我们的构念仍差在哪里”。故事最终收敛到的不是“更全面”，而是**用户条件化最终交付物的反事实可识别性**。
+每向右一步，都同时解决了前一步的一部分 gap，也暴露了新的测量问题。因此 1.1 不应先列论文、再另起一段列 gap；应在每一层说明“这组工作把评价推进到哪里，因此我们不能再声称什么；但它的终点与我们的构念仍差在哪里”。故事最终收敛到的不是“更全面”，而是**在 persona-conditioned 绝对适配之上的跨用户反事实特异性与跨 cue 稳健性**。这是一项可观察结果的测量主张，不是对模型内部用户理解机制的因果证明。
 
 ## 1. Setoka：分层用户理解已经被系统评测
 
@@ -195,7 +198,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 2. 将 gap 锁定为广义 DR 最终交付物的**用户条件化反事实识别缺口**，而不是“已有模块尚未被拼在一起”或任何单一维度的首创。
 3. 增加 reviewer-safe 边界：不声称首先研究用户理解、行为历史、持久状态或时间更新。
 4. 将 Setoka 的 provenance/abstraction、PersonaTrail 的双记忆、APeB 的 hard alternatives、PASB 的 write governance、Temporal Interventions 的 C1–C4 和 TARS 的 human utility 分别映射到现有 Atlas、operator、rubric 和小规模用户研究。
-5. 新增三项最低成立条件：matched/swapped 人评稳定；个性化效应不能由长度/风格/共同质量解释；至少一个 signal/operator 效应可重复且统计可分辨。
+5. 新增四项最低成立条件：matched/swapped 人评稳定；语义等价 cue 下结论稳定；共同质量与 must-hold 不下降；至少一个 signal/operator 效应可重复且统计可分辨。
 
 ## 建议导师快速判断的三个问题
 

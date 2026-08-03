@@ -3,16 +3,16 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-03
-当前版本：v0.19
+当前版本：v0.20
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
 
 项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文，评估广义 Deep Research agent 的**最终交付物是否真正适合目标用户**，并在可控子集上诊断用户信息的获取、保持、使用、更新与恢复。
 
-核心识别不是“给 persona 后分数是否提高”，而是：固定任务、证据、工具和预算，只改变目标用户；若 matched 交付物相对 swapped 交付物对两个用户均有稳定优势，且共同质量、事实性、安全和隐私不下降，才称为有效个性化。
+核心识别不是“给 persona 后分数是否提高”，而是：固定任务、证据、工具和预算，只改变目标用户；若 matched 交付物相对 swapped 交付物对两个用户均有稳定优势，且共同质量、事实性、安全和隐私不下降，才称该交付物具有可观察的用户反事实特异性。这是结果层的用户条件效应，不证明模型内部形成了真正的用户理解。
 
-当前一句话主张：**DeepAlign-Bench 用反事实用户对、元数据驱动 rubric 和受控压力测试，把“报告更好”与“报告更适合这个用户”区分开。**
+当前一句话主张：**DeepAlign-Bench 在 task/persona-conditioned 绝对适配之上，用跨用户 2×2 交叉评分、预冻结变化/不变项和跨 cue 稳健性，把“报告一般更好”与“报告对目标用户具有特异价值”区分开。**
 
 ### 1.1 v0.16 相关工作校准
 
@@ -21,9 +21,9 @@
 1. 通用 Deep Research benchmark 建立事实、搜索、引用和报告质量底线；
 2. Setoka、PersonaTrail、APeB 已覆盖分层用户理解、浏览/行为历史与意图利用；
 3. TARS、PASB 和 user-conditioned temporal intervention 工作已覆盖单域人类效用、持久状态写入风险和时间变化；SARSI 提供治理架构而非实证 benchmark；
-4. PDR-Bench 最接近个性化 DR 最终交付物，但仍缺 matched/swapped 反事实识别、预冻结差异真值、长程干预和大规模 judge 校准的统一协议。
+4. PDR-Bench 最接近个性化 DR 最终交付物；其 P-Score 已按 task/persona 动态生成权重与子标准，人类校准也包含同一 user-query 下不同 agent 报告的 pairwise 比较。它仍未构造跨用户 matched/swapped 交叉评分、预冻结差异/不变项、长程干预和大规模 judge 校准的统一协议。
 
-因此论文不得声称首先研究 personalization、history、persistent state 或 temporal intervention。可验证的候选贡献是：**在广义 Deep Research 的多类最终交付物上，将异构用户信号、反事实用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预和独立 JudgeBench 放进同一可审计协议。** 该贡献至少需要三项证据：matched/swapped 人评稳定；效应不能由长度、风格、额外任务信息或共同质量解释；至少一个 signal/operator 效应可重复且统计可分辨。
+因此论文不得声称首先研究 personalization、history、persistent state 或 temporal intervention，也不得声称 PDR-Bench 没有 persona-aware rubric。可验证的候选贡献是：**在广义 Deep Research 的多类最终交付物上，将异构用户信号、跨用户反事实交换、预冻结 must-change/must-hold/must-not 真值、跨 cue 稳健性、长程干预和独立 JudgeBench 放进同一可审计协议。** 该贡献至少需要四项证据：matched/swapped 人评稳定；同一潜在 user-state 的语义等价表达保持核心结论；共同质量/事实性/must-hold 不下降；至少一个 signal/operator 效应可重复且统计可分辨。
 
 引用规则：每个版本使用自身参考文献表的编号，不跨版本复用编号。凡在正文中陈述某篇工作的任务、数据、方法、结果或限制，必须在该句或该段紧邻位置给出文中引用。所有正文编号引用默认必须可点击并直接跳转到论文或官方文档原文；Markdown、DOCX、PDF 与 HTML 同步保留链接。范围引用应在导出层展开为逐篇可点击编号，不能让一个链接含混地代表多篇来源。仅在参考文献表列出来源、或只在文献速览卡片底部给链接，都不能替代正文引用。
 
@@ -38,9 +38,21 @@
 3. PRIME、RPEval、PAHF、PerMemBench、Memora、CloneMem、PASB 与 PS-Bench 已覆盖双记忆、无关信息、澄清、写入、过期和安全；
 4. PDR-Bench、PDR 2026 与 MyScholarQA 已直接进入个性化 Deep Research，MyScholarQA 还表明合成用户/LLM judge 会漏掉真人指出的错误。
 
-因此论文不得再把“理解—行动—记忆—DR 这些模块尚未连接”写成笼统 gap，也不得声称首先评测个性化 agent 行动。题目收敛为：**固定任务、证据、工具和预算后，如何通过交换两个都合理的用户，识别一份广义 DR 最终交付物确实更适合谁，而不是一般更好、更长、更具体或更会复述 persona。** 候选方法贡献是 matched/swapped 用户交换、预冻结 must-change/must-hold/must-not 真值、纵向 operators 和真人校准 JudgeBench 的统一识别协议。
+因此论文不得再把“理解—行动—记忆—DR 这些模块尚未连接”写成笼统 gap，也不得声称首先评测个性化 agent 行动。题目收敛为：**在已有 task/persona-conditioned 绝对评分之上，固定任务、证据、工具和预算后，如何通过交换两个都合理的用户，识别一份广义 DR 最终交付物对目标用户具有反事实特异性？** 候选方法贡献是 matched/swapped 交叉评分、预冻结 must-change/must-hold/must-not 真值、跨 cue 稳健性、纵向 operators 和真人校准 JudgeBench 的统一识别协议。
 
 人类真值分工随之收紧：领域专家/训练标注者评事实、证据、must-hold 和共同质量；目标用户确认 must-change/must-not 与可接受替代，并盲评 matched/swapped。所有 real-user-gold family 与不少于 8 个分层 family 必须有目标用户判断。纯合成 persona 只能用于压力测试和 judge 对抗集，不能单独支撑真实用户效用主张。
+
+### 1.3 v0.20：PDR-Bench 与 DeepAlign 的精确边界
+
+本轮复核 PDR-Bench v3 的 evaluation methodology、实验和人类一致性附录后，冻结以下表述：
+
+1. PDR-Bench 已让 task/persona 共同条件化 P-Score 的维度权重与子标准；不得再写成“persona 只是输入”“rubric 不懂用户”或“现有 benchmark 都只奖励长度/文风”。
+2. PDR-Bench 的主榜评分单位仍是一份报告在一个 user-task 条件下的绝对适配；task-only/context/persona 比较也是条件平均分。其 pairwise human consistency 比较同一 query 下两种 agent 报告，不是 A/B 用户交付物的跨用户交换。
+3. DeepAlign 新增的是 \(M_{ij}=PF_i(Y_j)\) 的 2×2 交叉评分矩阵、对角优势 CFA，以及输出前冻结的 must-change/must-hold/must-not。它补充“必要性/区分性与不变性”，不是替换 PDR 的 persona-aware rubric。
+4. Matched/swapped 只能识别可观察结果的用户条件效应，不能证明内部“理解用户”；关键词到模板的策略也可能通过。为此增加 cue-equivalence / representation-robustness：同一 user-state 的 structured persona、语义等价 natural history、clarification conversation 与去显眼关键词改写应保持核心 must-change；只改无关人口属性或表面措辞时 must-hold 应稳定。
+5. 长度、位置、漂亮格式、persona 关键词堆砌仍进入 JudgeBench，但定位为自动评委稳健性和 nuisance control，不再作为相对 PDR-Bench 的主 gap。
+
+方法依据补充两篇：*One Persona, Many Cues* 表明同一 persona 的不同 cue 会改变模型输出与偏差结论；PARL 将 representativeness、user-consistency、discriminativeness 作为个性化评价三原则。它们支持跨表达一致性与区分力校准，但都不等价于 DeepAlign 的 DR 跨用户 artifact 矩阵。
 
 ## 2. 冻结的两个月范围
 
@@ -100,7 +112,7 @@
 
 ## 5. Rubric、metrics 与 judge 的当前决定
 
-- Rubric 由 `core + personalization + intent + deliverable + operator + risk` 编译；统一 leaf schema 和校准，不强迫所有交付物共享一张表。
+- Rubric 由 `core + personalization + intent + deliverable + operator + risk` 编译；统一 leaf schema 和校准，不强迫所有交付物共享一张表。进入主实验前检查 matched/swapped 区分力、cue-equivalence 稳健性、无关信号 invariance 和跨任务模块一致性。
 - 四类评价契约：must-change、must-hold、must-not、clarify-if-unknown。
 - 主榜先过任务完成、事实与隐私硬门，再报告 PF、MP、净个性化和 CFA；不同轨道、工具预算和不可复现产品不混为一个总榜。
 - 最终交付物足以支持“是否适合用户”的主结论；它不足以定位“没读到、忘了、知道但没用”。全量保留轻量轨迹，20%–30% 子集做受控机制诊断。若诊断轨未完成，论文必须删除或降级内部机制主张。
@@ -112,6 +124,8 @@
 
 - 不能用 ontology 的规模冒充实测覆盖；公开 tested / defined-only / structurally-inapplicable / deferred manifest。
 - 不能从人口属性推导偏好；关键 user fact 必须有用户确认或可审计来源。
+- 不能把 PDR-Bench 描述为通用 rubric 或简单长度/文风评分；它已按 task/persona 生成 P-Score。DeepAlign 的增量是跨用户交叉评分、预冻结差异/不变项和跨 cue 稳健性。
+- 不能把 matched/swapped 的结果层效应写成模型内部“理解用户”的因果证据；若无语义等价表达与无关 cue 控制，只能主张条件化结果差异。
 - 预期 failure mode 对主 judge 隐藏；observed failure 必须由输出/轨迹证据独立标注。
 - 不能只在失败样本上测试 re-anchor；不能把一般能力下降误写成个性化漂移。
 - 不能用 overall score 掩盖 task stratum、intent、signal channel、agent class 和 operator 的结构性差异。
@@ -160,3 +174,4 @@
 - v0.17：为 v0.16 新增的 related-work 论述逐句补充版本内文中引用；HTML 引用编号直接链接原论文，避免“参考文献表有条目、正文无法追溯”；在线报告增加与反事实评测流程一致的社交预览图。
 - v0.18：将四版 Proposal 的全部文中编号引用改为逐篇可点击链接；DOCX/PDF 导出链路原生保留外部超链接，并把该偏好写入跨 Session 协议。
 - v0.19：新增 20 篇 agent personalization title/abstract 精筛，把 related-work 叙事从“已有模块、缺少拼接”进一步收敛为“广义 DR 最终交付物的用户条件化反事实识别”；目标用户 matched/swapped 盲评升级为真实效度必要条件。
+- v0.20：精确校准 PDR-Bench 边界：承认其 task/persona-conditioned P-Score 与同 user-query 的 pairwise judge 校准；把 DeepAlign 主增量收紧为跨用户 2×2 对角优势、预冻结变化/不变项和跨 cue 稳健性；明确该协议识别结果特异性，不证明内部用户理解。

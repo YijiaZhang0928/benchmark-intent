@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.15
+schema_version: 0.20
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   Expected labels describe test intent; observed labels are written only after a run.
@@ -78,15 +78,22 @@ user_states:
 counterfactual_design:
   family_key: string
   counterfactual_partner_id: string
+  cross_scoring_matrix_id: string
+  user_conditioned_rubric_view_ids: list
   invariant_task_fields: list
   invariant_evidence_snapshot: boolean
   discriminating_user_fact_ids: list
   expected_decision_differences: list
+  expected_diagonal_dominance: boolean
 
 signal_condition:
   channel: [task_only, structured_persona, natural_history, clarification, behavior_trace, private_workspace, organizational_context, dynamic_feedback]
   view_id: string
+  latent_user_state_id: string_or_null
   semantic_equivalence_group: string_or_null
+  cue_form: [none, explicit_attributes, natural_narrative, interaction_trace, clarification_summary, paraphrased_low_overlap]
+  cue_equivalence_role: [not_applicable, canonical, semantic_equivalent, irrelevant_surface_control]
+  lexical_overlap_target: number_or_null
   visibility: [prompt, retrieved, tool_accessible, hidden_control]
   reliability: [reliable, noisy, conflicting]
   temporal_status: [current, stale, mixed]
@@ -104,8 +111,8 @@ agent:
 
 behavioral_operator: [acquire, preserve, use, update_recover]
 perturbation:
-  type: [none, missing_signal, shuffled_persona, irrelevant_persona, stale_conflict, context_dilution, tool_noise, agent_handoff, dynamic_update, reanchor]
-  target: [signal_bundle, signal_relevance, temporal_priority, context_position, tool_stream, handoff_summary, dynamic_state, recovery_prompt, none]
+  type: [none, missing_signal, shuffled_persona, irrelevant_persona, cue_paraphrase, stale_conflict, context_dilution, tool_noise, agent_handoff, dynamic_update, reanchor]
+  target: [signal_bundle, signal_relevance, signal_representation, temporal_priority, context_position, tool_stream, handoff_summary, dynamic_state, recovery_prompt, none]
   base_user_state_id: string
   signal_bundle_id: string
   insert_step: integer_or_null

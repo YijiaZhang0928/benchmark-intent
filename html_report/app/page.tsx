@@ -58,7 +58,7 @@ export default function Home() {
           <section>
             <p className="eyebrow">RESEARCH PROPOSAL · BENCHMARK / EVALUATION</p>
             <h1>评估 Deep Research 的下一步：<em>是否真的适合这个用户</em></h1>
-            <p className="lede">固定任务与证据，只改变目标用户。只有匹配用户的交付物在反事实交换中仍占优，同时不牺牲事实性、任务质量与隐私，才能称为真正个性化。</p>
+            <p className="lede">固定任务与证据，只改变目标用户。只有匹配用户的交付物在跨用户交换评分中仍占优，同时不牺牲事实性、任务质量与隐私，才支持“交付物对目标用户具有反事实特异性”。</p>
             <div className="heroActions">
               <a className="button primary" href="#overview">快速读懂方案</a>
               <a className="button ghost" href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word 完整版</a>
@@ -79,14 +79,14 @@ export default function Home() {
         <div className="sectionHead"><h2>导师先看这三件事</h2><p>这三项决定项目是否具备独立论文贡献，而不只是更大规模的数据集。</p></div>
         <div className="decisionGrid">
           <article><span>01</span><h3>元数据是实验骨架</h3><p>任务、环境、用户状态、信号渠道和 agent 系统共同定义一个 case；coverage manifest 明确测了什么、缺什么。</p></article>
-          <article><span>02</span><h3>反事实识别</h3><p>同任务、同证据、不同用户；将报告交换评分，排除篇幅、文风与“信息更多”这些替代解释。</p></article>
+          <article><span>02</span><h3>反事实特异性</h3><p>同任务、同证据、不同用户；两套用户 rubric 交叉评价两份交付物，检查评分矩阵是否呈现稳定对角优势。</p></article>
           <article><span>03</span><h3>Rubric 由元数据编译</h3><p>统一的是叶节点 schema、适用条件和校准程序，而不是强迫所有任务共用一张总体评分表。</p></article>
         </div>
       </section>
 
       <section className="relatedUpdate shell" aria-labelledby="related-title">
-        <div><p className="sectionTag">RELATED-WORK UPDATE · 27-PAPER MAP</p><h2 id="related-title">题目已经收敛到“最终交付物更适合谁”</h2><p>现有工作已经从用户理解与历史利用，推进到工具行动、动态记忆和个性化 Deep Research：Setoka、PersonaTrail 与 APeB 分别测异构用户理解、浏览轨迹和行为历史<a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a>；ETAPP 与 Mem2ActBench 测用户信息能否落实到工具<a className="inlineCite" href="https://aclanthology.org/2025.acl-long.1064/" target="_blank" rel="noreferrer">[37]</a><a className="inlineCite" href="https://aclanthology.org/2026.acl-long.370/" target="_blank" rel="noreferrer">[48]</a>；PersonaMem 与 PAHF 测画像变化和偏好漂移<a className="inlineCite" href="https://arxiv.org/abs/2504.14225" target="_blank" rel="noreferrer">[36]</a><a className="inlineCite" href="https://arxiv.org/abs/2602.16173" target="_blank" rel="noreferrer">[44]</a>；PDR-Bench、PDR 2026 与 MyScholarQA 已进入个性化调研报告<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a><a className="inlineCite" href="https://arxiv.org/abs/2605.10530" target="_blank" rel="noreferrer">[40]</a><a className="inlineCite" href="https://aclanthology.org/2026.acl-long.723/" target="_blank" rel="noreferrer">[41]</a>。可辩护的 gap 因而不是“缺少个性化 agent benchmark”，而是：固定任务与证据后，用用户交换、预冻结差异真值和真人校准 judge 识别一份最终交付物到底更适合谁。</p></div>
-        <a className="button primary" href="/literature">打开 27 篇工作地图 →</a>
+        <div><p className="sectionTag">RELATED-WORK UPDATE · 29-PAPER MAP</p><h2 id="related-title">题目已经收敛到“绝对适配之后，如何识别用户特异性”</h2><p>现有工作已经从用户理解与历史利用，推进到工具行动、动态记忆和个性化 Deep Research：Setoka、PersonaTrail 与 APeB 分别测异构用户理解、浏览轨迹和行为历史<a className="inlineCite" href="https://arxiv.org/abs/2607.27056" target="_blank" rel="noreferrer">[26]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.20482" target="_blank" rel="noreferrer">[28]</a><a className="inlineCite" href="https://arxiv.org/abs/2607.03162" target="_blank" rel="noreferrer">[32]</a>；ETAPP 与 Mem2ActBench 测用户信息能否落实到工具<a className="inlineCite" href="https://aclanthology.org/2025.acl-long.1064/" target="_blank" rel="noreferrer">[37]</a><a className="inlineCite" href="https://aclanthology.org/2026.acl-long.370/" target="_blank" rel="noreferrer">[48]</a>；PDR-Bench 已按 task/persona 生成 P-Score 的权重与子标准，不能被描述为通用文风评分<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>。可辩护的 gap 是：在这类单用户绝对适配之上，固定任务与证据，用跨用户交叉评分、预冻结变化/不变项和真人判断识别一份交付物到底更适合谁。不同 persona cue 会改变模型行为<a className="inlineCite" href="https://aclanthology.org/2026.acl-long.2079/" target="_blank" rel="noreferrer">[53]</a>，因此还需检查语义等价表达是否保持结论。</p></div>
+        <a className="button primary" href="/literature">打开 29 篇工作地图 →</a>
       </section>
 
       <section className="editionSection" id="editions">
@@ -167,7 +167,7 @@ export default function Home() {
           </div>
           <div className="caseSchema">
             <b>每个 case 的建议字段</b>
-            <code>task.* · environment.* · user_state.* · signal.* · agent.* · operator · perturbation · eligibility_predicate · evaluation_contract · rubric_modules[] · counterfactual_partner · run/judge versions</code>
+            <code>task.* · environment.* · user_state.* · signal.* · cue_equivalence.* · agent.* · operator · perturbation · evaluation_contract · counterfactual_matrix · run/judge versions</code>
             <a href="/case.schema.yaml" download>下载机器可读 schema ↓</a>
           </div>
           <div className="taxonomyRules">
@@ -204,12 +204,14 @@ export default function Home() {
 
       <section className="shell gapSection">
         <p className="sectionTag">NOVELTY</p>
-        <div className="sectionHead"><h2>不是 PDR-Bench 的扩大版</h2><p>PDR-Bench 是最重要的直接前作<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>；差异必须落在测量逻辑，而不是只落在规模。</p></div>
+        <div className="sectionHead"><h2>不是 PDR-Bench 的扩大版，也不能低估它</h2><p>PDR-Bench 是最重要的直接前作<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>；它已经用 task/persona-conditioned rubric 测绝对适配。DeepAlign 的差异必须落在跨用户测量逻辑，而不是“rubric 终于看见 persona”或任务规模。</p></div>
         <div className="compare" role="table" aria-label="PDR-Bench 与 DeepAlign-Bench 比较">
           <div className="compareRow head" role="row"><span>评审会问什么</span><span>PDR-Bench</span><span>DeepAlign-Bench</span></div>
           {[
-            ["测到的是个性化吗？", "Task-only / context / persona 分数比较", "Matched vs. swapped 反事实优势 CFA"],
-            ["rubric 从哪里来？", "LLM 动态生成权重与子标准", "输出前冻结的人类确认原子 rubric"],
+            ["核心问题是什么？", "给定 user-task，这份报告是否合适（绝对适配）", "同 task/evidence 下，哪份报告更适合哪位用户（反事实特异性）"],
+            ["评分单位是什么？", "每份报告在对应用户 rubric 下的 P-Score", "2×2 矩阵 Mij = PFi(Yj) 的对角优势 CFA"],
+            ["rubric 从哪里来？", "按 task/persona 动态生成权重与子标准", "输出前冻结 must-change / must-hold / must-not，再交叉评分"],
+            ["已有 pairwise 是什么？", "同一 user-query 下两种 agent 报告的人机一致性", "A/B 用户的两份交付物由两套用户 rubric 交叉评价"],
             ["judge 可靠吗？", "15 个 query、两种 agent；最佳 agreement 0.43", "独立 JudgeBench + 人类门槛 + 可弃权"],
             ["用户信息真实吗？", "真实 persona，动态历史由标注员模拟", "事实 ledger：来源、时效、置信度、权限、用户确认"],
             ["任务覆盖如何解释？", "50 tasks × 10 domains", "5-plane Atlas + behavioral operators + 四状态 coverage manifest"],
@@ -217,6 +219,7 @@ export default function Home() {
             ["能定位为什么失败吗？", "主要评价最终输出", "轨迹检查点 + 10 类失败机制 + 恢复实验"],
           ].map((r) => <div className="compareRow" role="row" key={r[0]}><b>{r[0]}</b><span>{r[1]}</span><span>{r[2]}</span></div>)}
         </div>
+        <div className="winnerBanner"><span>主张边界</span><b>Matched/swapped 识别结果特异性，不证明内部“理解用户”</b><p>关键词→模板也可能通过。主实验因此增加 cue-equivalence：同一 user-state 用 persona、自然历史、澄清对话和去显眼关键词改写表达，核心 must-change 应稳定；只改无关线索时 must-hold 应保持。PARL 的 representativeness、user-consistency、discriminativeness 三原则提供了相邻方法依据<a className="inlineCite" href="https://arxiv.org/abs/2605.31545" target="_blank" rel="noreferrer">[54]</a>。</p></div>
       </section>
 
       <section className="taxonomyBand">
@@ -250,7 +253,7 @@ export default function Home() {
           </article>
           <article>
             <span className="specNo">03 · RUBRIC</span><h3>冻结的三棵原子标准树</h3>
-            <p><b>Compiler</b>：core + personalization + intent + deliverable + operator + risk modules。</p><p><b>四类契约</b>：must-change · must-hold · must-not · clarify-if-unknown。</p><p><b>校准</b>：matched/swapped 区分力、无关信息 invariance、跨任务模块一致性。</p>
+            <p><b>Compiler</b>：core + personalization + intent + deliverable + operator + risk modules。</p><p><b>四类契约</b>：must-change · must-hold · must-not · clarify-if-unknown。</p><p><b>校准</b>：matched/swapped 区分力、cue-equivalence、无关信息 invariance、跨任务一致性。</p>
             <small>统一的是 leaf schema、applicability predicate 与校准程序，不是假设所有任务共享同一评分表。</small>
           </article>
           <article>
@@ -273,7 +276,7 @@ export default function Home() {
             <article><b>MUST NOT</b><p>不得假设、泄露、越权或为迎合偏好而扭曲的内容。</p></article>
             <article><b>CLARIFY IF UNKNOWN</b><p>缺少关键信息时必须提问、给条件分支或显式说明假设。</p></article>
           </div>
-          <div className="calibrationGates"><b>四个校准门</b><span>metadata schema coverage</span><span>matched &gt; swapped discrimination</span><span>irrelevant-persona invariance</span><span>cross-type judge calibration</span></div>
+          <div className="calibrationGates"><b>五个校准门</b><span>metadata schema coverage</span><span>matched &gt; swapped discrimination</span><span>cue-equivalence robustness</span><span>irrelevant-persona invariance</span><span>cross-type judge calibration</span></div>
         </div>
       </section>
 
@@ -283,7 +286,8 @@ export default function Home() {
         <div className="metricGrid">
           <article className="blue"><span>TQ / FR</span><h3>共同质量与事实性</h3><p>任务完成、关键覆盖、claim 支持、引用覆盖与来源质量。</p></article>
           <article className="green"><span>PF − MP</span><h3>净个性化适配</h3><p>用户特异要求完成率，扣除刻板化、误用、隐私和过度迎合。</p></article>
-          <article className="violet"><span>CFA</span><h3>反事实适配优势</h3><p>匹配报告相对交换报告，在两个用户方向上取得的平均优势。</p></article>
+          <article className="violet"><span>CFA</span><h3>跨用户对角优势</h3><p>匹配报告相对交换报告，在两个用户方向上取得的平均优势；不解释内部机制。</p></article>
+          <article className="green"><span>WORST CFA / CUE GAP</span><h3>跨表达稳健性</h3><p>同一 user-state 换语义等价表达后，最差表现与最大波动。</p></article>
           <article className="amber"><span>AUC / Δ</span><h3>保持与恢复</h3><p>长程干扰下的适配曲线、漂移半衰期、恢复收益与副作用。</p></article>
         </div>
         <div className="formula"><div><span>核心公式</span><strong>CFA(a,b) = ½[(PFₐ(Yₐ) − PFₐ(Yᵦ)) + (PFᵦ(Yᵦ) − PFᵦ(Yₐ))]</strong></div><p>CFA &gt; 0 才表示“对的人得到对的版本”，而不是所有版本都变得更长、更漂亮。</p></div>
@@ -376,7 +380,7 @@ export default function Home() {
             {[
               ["“这只是 PDR-Bench 扩大版。”","锁定三项独立贡献：反事实任务族与 CFA；长程漂移/恢复诊断；独立 JudgeBench。任务规模只服务外部效度。"],
               ["“Persona 是作者编的偏见。”","用户事实必须有来源、时效和本人确认；人口属性不自动推导偏好；加入 demographic-only 与无关 persona 负对照。"],
-              ["“个性化分只是长度和关键词。”","加入长度匹配、persona 关键词堆砌诱饵、matched/swapped 交换和 Neutral Invariance。"],
+              ["“Matched/swapped 也可能只是关键词→模板。”","把主张限定为结果特异性；加入语义等价 cue、去关键词改写和无关属性不变性。长度/格式诱饵单独审计 judge。"],
               ["“LLM judge 循环定义答案。”","rubric 在输出前冻结；规则和证据核验优先；低一致性时降级到人评，不发布伪精确榜单。"],
               ["“PhD / daily 标签主观且混淆难度。”","把二者只作为使用情境；另标研究意图、breadth、nesting、exploration、fan-out、freshness 与 stakes，并发布映射和盲标一致性。"],
               ["“元数据很多，实际覆盖却很稀疏。”","公开 tested / defined-only / structurally-inapplicable / deferred 四状态 manifest；只对 tested 组合做结论，不用 ontology 大小冒充样本覆盖。"],
@@ -402,7 +406,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.19 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.20 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }

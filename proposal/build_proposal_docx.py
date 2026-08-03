@@ -21,10 +21,10 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.19 · 组内讨论稿"
+DOC_VERSION = "v0.20 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 3 日"
-RESEARCH_LINE = "Evaluation Atlas · 反事实适配 · Rubric Compiler · JudgeBench"
-CORE_CLAIM = "固定任务与证据，只改变用户；只有匹配用户的交付物在反事实交换中仍占优，才能称为真正个性化。"
+RESEARCH_LINE = "Evaluation Atlas · 反事实特异性 · Cue Robustness · JudgeBench"
+CORE_CLAIM = "固定任务与证据，只改变用户；用跨用户交叉评分识别交付物的反事实特异性，并以跨 cue 稳健性限制主张。"
 CONTENTS_ITEMS = [
     "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
     "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",
@@ -33,7 +33,7 @@ CONTENTS_ITEMS = [
 READING_NOTE = "阅读提示：主图给出整体逻辑；第 7–8 节是本 proposal 的测量学核心；第 11 节按顶会审稿视角集中列出可预见攻击与防守。"
 FIGURE_TRIGGER = "2. 关键文献"
 FIGURE_TITLE = "总体框架：从受控用户信号到反事实评估"
-FIGURE_CAPTION = "图 1  DeepAlign-Bench 主流程。主榜先检查共同任务质量与事实性门槛，再比较用户适配；JudgeBench 独立验证自动评委。"
+FIGURE_CAPTION = "图 1  DeepAlign-Bench 主流程。主榜先过共同质量门槛，再检查跨用户对角优势与跨 cue 稳健性；JudgeBench 独立验证自动评委。"
 RUNNING_HEADER = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
 STYLE_PRESET = "narrative_proposal"
 INCLUDE_CONTENTS = True
@@ -155,7 +155,7 @@ def configure_section(section, landscape=False):
         section.page_width = Inches(8.5)
         section.page_height = Inches(11)
         if STYLE_PRESET == "formal_condensed":
-            margin = Inches(0.8)
+            margin = Inches(0.75)
         elif STYLE_PRESET == "compact_reference_guide":
             margin = Inches(0.9)
         else:
@@ -203,9 +203,9 @@ def configure_styles(doc):
         ("Heading 3", 12, DARK, 8, 4),
     )
     if STYLE_PRESET == "compact_reference_guide":
-        normal.font.size = Pt(10)
-        normal.paragraph_format.space_after = Pt(3)
-        normal.paragraph_format.line_spacing = 1.08
+        normal.font.size = Pt(9.7)
+        normal.paragraph_format.space_after = Pt(2.5)
+        normal.paragraph_format.line_spacing = 1.05
         normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
         heading_tokens = (
             ("Heading 1", 15.5, BLUE, 14, 7),
@@ -246,11 +246,14 @@ def configure_styles(doc):
         st.font.name = FONT
         st._element.rPr.rFonts.set(qn("w:eastAsia"), CN_FONT)
         compact_lists = STYLE_PRESET in {"formal_condensed", "compact_reference_guide"}
-        st.font.size = Pt(10 if compact_lists else 11)
+        if STYLE_PRESET == "formal_condensed":
+            st.font.size = Pt(9.7)
+        else:
+            st.font.size = Pt(10 if compact_lists else 11)
         st.paragraph_format.left_indent = Inches(0.375)
         st.paragraph_format.first_line_indent = Inches(-0.194)
-        st.paragraph_format.space_after = Pt(3 if compact_lists else 4)
-        st.paragraph_format.line_spacing = 1.08 if compact_lists else 1.208
+        st.paragraph_format.space_after = Pt(2.5 if STYLE_PRESET == "formal_condensed" else (3 if compact_lists else 4))
+        st.paragraph_format.line_spacing = 1.05 if STYLE_PRESET == "formal_condensed" else (1.08 if compact_lists else 1.208)
 
 
 def add_hyperlink(paragraph, label, url, size=None, color=BLUE):

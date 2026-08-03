@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "27 篇个性化 Agent 相关工作地图｜DeepAlign-Bench",
-  description: "七篇最近邻工作精读与二十篇 agent personalization 论文的精准相关性审计",
+  title: "29 篇个性化 Agent 相关工作地图｜DeepAlign-Bench",
+  description: "七篇最近邻工作精读与二十二篇 agent personalization / evaluation 论文的精准相关性审计",
 };
 
 const papers = [
@@ -131,6 +131,8 @@ const extendedPapers = [
   ["AndroidIntent", "直接 · GUI", "长期记录解析模糊指令与 routines", "单一 Android 域；非多证据综合", "https://aclanthology.org/2026.acl-long.1669/"],
   ["OPeRA", "近邻 · 真实行为", "真实 persona、观察、动作与即时 rationale", "模拟用户下一步，不评服务用户的质量", "https://aclanthology.org/2026.acl-long.2033/"],
   ["PS-Bench", "直接 · 安全", "个人记忆可能错误地合理化危险意图", "单一安全机制；不测正向 DR 适配", "https://aclanthology.org/2026.acl-long.1260/"],
+  ["One Persona, Many Cues", "直接 · cue 稳健性", "同一 persona 的六类提示线索可改变个性化与偏差结论", "写作/建议任务；不评 DR artifact，但直接威胁单一 persona 形式的效度", "https://aclanthology.org/2026.acl-long.2079/"],
+  ["PARL", "直接 · 个性化评价", "从用户历史学习 rubric，并强调代表性、一致性和区分力", "个性化文本生成；未做 DR 的跨用户 artifact 矩阵", "https://arxiv.org/abs/2605.31545"],
 ];
 
 export default function LiteratureBrief() {
@@ -139,15 +141,15 @@ export default function LiteratureBrief() {
       <header className="litHero" id="lit-top">
         <nav className="litNav shell">
           <a className="brand" href="/">DeepAlign<span>Bench</span></a>
-          <div><a href="#map">位置图</a><a href="#audit">20 篇审计</a><a href="#papers">七篇精读</a></div>
+          <div><a href="#map">位置图</a><a href="#audit">22 篇审计</a><a href="#papers">七篇精读</a></div>
           <a className="navCta" href="/">返回 Proposal</a>
         </nav>
         <div className="shell litHeroGrid">
           <section>
             <p className="eyebrow">RELATED-WORK RAPID REVIEW · ABSTRACT + FIGURE + CONCLUSION</p>
-            <h1>27 篇工作，把我们的题目<em>压到一个可证伪的点</em></h1>
-            <p className="lede">七篇最近邻工作精读，加上二十篇 agent personalization 扩展审计。结论不再是“已有模块缺少拼接”，而是：固定任务与证据后，仍缺少通过交换用户识别最终交付物到底更适合谁的统一协议。</p>
-            <div className="heroActions"><a className="button primary" href="#map">先看结论</a><a className="button ghost" href="#audit">检查 20 篇筛选</a></div>
+            <h1>29 篇工作，把我们的题目<em>压到一个可证伪的点</em></h1>
+            <p className="lede">七篇最近邻工作精读，加上二十二篇 agent personalization / evaluation 扩展审计。结论不是“已有 rubric 不懂 persona”：PDR-Bench 已经测单用户绝对适配。剩余问题是固定任务与证据后，通过跨用户交换识别最终交付物到底更适合谁，并验证结论不依赖单一 persona cue。</p>
+            <div className="heroActions"><a className="button primary" href="#map">先看结论</a><a className="button ghost" href="#audit">检查 22 篇筛选</a></div>
           </section>
           <aside className="litClaim">
             <span>REVIEWER-SAFE CLAIM</span>
@@ -181,12 +183,12 @@ export default function LiteratureBrief() {
           <p className="sectionTag invert">COVERAGE MAP</p>
           <div className="sectionHead light"><h2>谁已经测了什么</h2><p>● 主评价对象；◐ 部分涉及；— 未作为主要证据。DeepAlign 最后一行是计划，不是已有结果。</p></div>
           <div className="litTableWrap"><table className="litTable"><thead><tr><th>工作</th><th>真实/异构信号</th><th>用户理解</th><th>Agent 执行</th><th>交付物效用</th><th>用户交换</th><th>时间/持久状态</th><th>安全/误用</th></tr></thead><tbody>{matrix.map((row) => <tr key={row[0]}>{row.map((cell, i) => i === 0 ? <th key={cell}>{cell}</th> : <td key={`${row[0]}-${i}`} data-mark={cell}>{cell}</td>)}</tr>)}</tbody></table></div>
-          <p className="litMatrixNote">真正的空白不是某一列全空，而是“● 用户交换 + ● 多类最终交付物 + ● 长程状态 + ● 安全/误用”尚未在广义 DR 中共同成立。</p>
+          <p className="litMatrixNote">PDR-Bench 已覆盖 persona-conditioned 绝对适配。仍待验证的组合是“● 跨用户交叉评分 + ● 预冻结差异/不变项 + ● 多类最终交付物 + ● 跨 cue 稳健性”，并在长程状态与安全条件下成立。</p>
         </div>
       </section>
 
       <section className="shell litAudit" id="audit">
-        <p className="sectionTag">20-PAPER RELEVANCE AUDIT</p>
+        <p className="sectionTag">22-PAPER RELEVANCE AUDIT</p>
         <div className="sectionHead"><h2>不是搜到就算相关：每篇都要说明“覆盖了什么、还差什么”</h2><p>纳入门槛：用户条件是可观察输入、会改变生成/规划/行动、并有可比较结果，三项中至少满足两项。纯角色扮演、通用 memory 和非 agent 推荐工作没有纳入。</p></div>
         <div className="auditLegend"><span><b>直接</b> 已评价用户条件化的 agent 决策、行动或 DR</span><span><b>近邻</b> 只覆盖本协议的一个必要模块</span></div>
         <div className="auditGrid">
@@ -224,12 +226,12 @@ export default function LiteratureBrief() {
         <div className="shell">
           <p className="sectionTag invert">WHAT CHANGED</p>
           <div className="sectionHead light"><h2>Proposal 1.1 现在应该怎么讲</h2><p>每推进一层，就同时说明已有覆盖和仍未识别的终点。</p></div>
-          <ol><li><b>第一层：</b>通用 DR benchmark 建立事实、搜索、引用和报告质量底线，但不回答结果更适合哪个用户。</li><li><b>第二层：</b>LaMP、PersonaLens、Setoka、PersonaTrail 与 APeB 已覆盖用户历史、任务对话、分层理解和行为轨迹；空白不再是“懂不懂用户”。</li><li><b>第三层：</b>ETAPP、ToolSpectrum、Mem2ActBench、APOLLO 和 AndroidIntent 已把用户信息落实到工具/GUI 行动；空白也不再是“有没有行动”。</li><li><b>第四层：</b>PersonaMem、PAHF、PerMemBench、Memora、CloneMem、PASB 与 PS-Bench 已进入动态画像、写入、过期和安全；这些必须成为我们的正式 operator。</li><li><b>收敛层：</b>PDR-Bench、PDR 2026 与 MyScholarQA 已进入个性化 DR；剩余问题是用 matched/swapped、预冻结真值和真人校准识别最终交付物到底更适合谁。</li></ol>
-          <div className="litGo"><b>三项最低成立条件</b><span>matched/swapped 人评稳定</span><span>效应不由长度/风格/共同质量解释</span><span>至少一个 signal/operator 效应可重复</span></div>
+          <ol><li><b>第一层：</b>通用 DR benchmark 建立事实、搜索、引用和报告质量底线，但不回答结果更适合哪个用户。</li><li><b>第二层：</b>LaMP、PersonaLens、Setoka、PersonaTrail 与 APeB 已覆盖用户历史、任务对话、分层理解和行为轨迹；空白不再是“懂不懂用户”。</li><li><b>第三层：</b>ETAPP、ToolSpectrum、Mem2ActBench、APOLLO 和 AndroidIntent 已把用户信息落实到工具/GUI 行动；空白也不再是“有没有行动”。</li><li><b>第四层：</b>PersonaMem、PAHF、PerMemBench、Memora、CloneMem、PASB 与 PS-Bench 已进入动态画像、写入、过期和安全；这些必须成为我们的正式 operator。</li><li><b>收敛层：</b>PDR-Bench 已用 task/persona-conditioned P-Score 测绝对适配；剩余问题是在此之上构造跨用户 matched/swapped、预冻结差异/不变项与真人效度。</li><li><b>方法边界：</b>One Persona, Many Cues 说明单一 persona cue 不足；PARL 说明 rubric 还需代表性、一致性和区分力。DeepAlign 因此测结果特异性与跨 cue 稳健性，不宣称证明内部理解。</li></ol>
+          <div className="litGo"><b>四项最低成立条件</b><span>matched/swapped 人评稳定</span><span>语义等价 cue 下结论稳定</span><span>共同质量与 must-hold 不下降</span><span>至少一个 signal/operator 效应可重复</span></div>
         </div>
       </section>
 
-      <footer><div className="shell"><b>DeepAlign-Bench · v0.19</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
+      <footer><div className="shell"><b>DeepAlign-Bench · v0.20</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
     </main>
   );
 }

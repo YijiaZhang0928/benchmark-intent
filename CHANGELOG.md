@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.20 - 2026-08-03
+
+- 逐节复核 PDR-Bench v3 的 PQR 方法、信息条件实验和人类一致性附录，明确其 P-Score 已按 task/persona 动态生成权重与子标准，且 pairwise 校准比较同一 user-query 下的不同 agent 报告；删除“已有 rubric 主要被长度/文风骗”等过泛表述。
+- 将 DeepAlign 相对 PDR-Bench 的核心增量改写为：在单用户绝对适配之上，构造 `M_ij = PF_i(Y_j)` 的跨用户 2×2 matched/swapped 矩阵，以对角优势 CFA、预冻结 must-change/must-hold/must-not 和真人盲评识别结果的反事实特异性。
+- 收紧因果主张：matched/swapped 不能证明模型内部真正理解用户；新增 cue-equivalence / representation-robustness 检验，用语义等价 persona、自然历史、澄清对话、去关键词改写和无关属性控制区分用户语义利用与表面 cue 敏感性。
+- 新增 *One Persona, Many Cues* 与 PARL 两篇方法邻居；相关工作地图扩展为 29 篇、审计扩展为 22 篇。长度、位置、格式和关键词诱饵保留为 JudgeBench 稳健性测试，不再作为相对 PDR-Bench 的主 gap。
+- 四版 Proposal、快速文献地图、HTML 主报告、项目记忆与导出版本同步更新为 v0.20；全部文中引用继续保留可点击原文链接。
+
 ## v0.19 - 2026-08-03
 
 - 以 personalized agent、user profile/history、preference following、long-term memory、tool use、longitudinal adaptation 和 personalized deep research 为关键词，核对 20 篇新增论文的官方 title/abstract，并按直接相关/必要近邻记录其实际终点与未覆盖部分。

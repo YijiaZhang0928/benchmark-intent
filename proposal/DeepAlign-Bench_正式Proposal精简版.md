@@ -2,17 +2,17 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.19 · 2026 年 8 月 3 日
+版本：v0.20 · 2026 年 8 月 3 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.19
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.20
 
 ---
 
 ## 摘要
 
-个性化 agent 研究已经从用户历史建模扩展到任务对话、工具调用、长程记忆和 Deep Research；[[23]](https://aclanthology.org/2024.acl-long.399/)[[24]](https://aclanthology.org/2025.findings-acl.927/)[[25]](https://aclanthology.org/2025.acl-long.1064/)[[26]](https://arxiv.org/abs/2504.14225)[[27]](https://arxiv.org/abs/2605.10530)[[28]](https://aclanthology.org/2026.acl-long.723/) 当前缺口不是“无人评测个性化”，而是缺少一个能在广义 Deep Research 最终交付物上排除一般质量、篇幅、文风和 persona 复述的识别协议。本项目拟构建 DeepAlign-Bench，评估长程智能体能否从不同渠道获得与任务相关的用户信息，在执行过程中保持、使用和更新这些信息，并交付必要且正确的用户特异结果。
+个性化 agent 研究已经从用户历史建模扩展到任务对话、工具调用、长程记忆和 Deep Research；[[23]](https://aclanthology.org/2024.acl-long.399/)[[24]](https://aclanthology.org/2025.findings-acl.927/)[[25]](https://aclanthology.org/2025.acl-long.1064/)[[26]](https://arxiv.org/abs/2504.14225)[[27]](https://arxiv.org/abs/2605.10530)[[28]](https://aclanthology.org/2026.acl-long.723/) 当前缺口不是“无人评测个性化”，也不是 persona 从未进入 rubric，而是缺少一个在广义 Deep Research 最终交付物上检验**跨用户反事实特异性**的协议。本项目拟构建 DeepAlign-Bench，评估长程智能体能否从不同渠道获得与任务相关的用户信息，在执行过程中保持、使用和更新这些信息，并交付必要且正确的用户特异结果。
 
 核心方法是反事实任务族：固定任务、证据、工具与资源预算，只改变目标用户；再将两个用户的交付物进行 matched/swapped 交换评分。只有匹配交付物稳定优于错配交付物，且共同任务质量、事实性、安全与隐私不下降时，才认定为有效个性化。评测框架包括五平面元数据、反事实任务族、元数据驱动的 rubric compiler、分层指标和独立 JudgeBench。
 
@@ -28,18 +28,18 @@
 
 个性化也已经从“说什么”进入“做什么”。ETAPP 用人工关键点评测个性化与主动工具调用，Mem2ActBench 检查长期记忆能否落实到工具参数；[[25]](https://aclanthology.org/2025.acl-long.1064/)[[30]](https://aclanthology.org/2026.acl-long.370/) TARS 测代码解释的人类效用，PAHF 用澄清、记忆和反馈适应偏好漂移，PASB 与 PS-Bench 分别暴露持久写入和良性个人记忆带来的安全风险。[[19]](https://arxiv.org/abs/2607.15948)[[29]](https://arxiv.org/abs/2602.16173)[[21]](https://arxiv.org/abs/2607.10526)[[31]](https://aclanthology.org/2026.acl-long.1260/) 这意味着 DeepAlign-Bench 不能把“行动、更新或风险”本身当作首创；现有终点多是离散工具/GUI 行动、分类、推荐或安全失败，还没有统一到多证据的开放式 DR 交付物。
 
-最后，PDR-Bench 和另一项 PDR 工作已经把 persona 或动态用户上下文接入 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) MyScholarQA 更进一步：它生成个性化学术报告，并发现合成用户与 LLM judge 会漏掉真人指出的九类细微错误。[[28]](https://aclanthology.org/2026.acl-long.723/) 因而本项目最终收敛到一个更窄的问题：**固定任务、证据、工具和预算后，交换两个都合理的目标用户，哪份最终交付物仍然更适合谁？** 若没有 matched/swapped 交换、预冻结差异真值和真人校准，persona 条件得分更高仍可能只是输入/输出更长、关键词更明显或 judge 偏爱更具体的写法。
+最后，PDR-Bench 和另一项 PDR 工作已经把 persona 或动态用户上下文接入 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) 其中 PDR-Bench 的 P-Score 明确按 task/persona 生成权重与子标准，并非通用 rubric 或简单文风评分。MyScholarQA 更进一步发现，合成用户与 LLM judge 会漏掉真人指出的九类细微错误。[[28]](https://aclanthology.org/2026.acl-long.723/) 因而本项目最终收敛到一个更窄的问题：**在已有单用户绝对适配评分之上，固定任务、证据、工具和预算，交换两个都合理的目标用户，哪份最终交付物仍然更适合谁？** PDR-Bench 的人类校准虽包含同一 query 下两种 agent 报告的 pairwise 比较，但没有构造跨用户 matched/swapped 评分矩阵，也没有预冻结 must-change / must-hold / must-not 差异真值。进一步地，matched/swapped 只能识别结果特异性，不能证明内部理解；同一 persona 的不同表面线索可能显著改变模型行为，[[32]](https://aclanthology.org/2026.acl-long.2079/) 而可靠个性化评价还需同时满足代表性、用户一致性和区分力。[[33]](https://arxiv.org/abs/2605.31545)
 
 ### 1.2 研究空缺
 
 本项目不声称首先研究 personalization、history、tool use、persistent state 或 temporal intervention；它解决的是这些方向在广义 DR 最终交付物上的识别缺口：
 
-1. 如何证明交付物差异来自用户需求，而不是篇幅、格式或关键词；
+1. 如何检验交付物对目标用户具有反事实特异性，而不只是在单个 persona rubric 下取得高分；
 2. 如何为报告、代码、表格和决策备忘录使用可组合但不强行统一的 rubric；
 3. 如何区分最终交付物效用与获取、保持、利用、更新/恢复等过程机制；
 4. 如何验证自动 judge 没有被长度、位置、格式和 persona 关键词误导。
 
-可辩护的主张是：在广义 Deep Research 的多类最终交付物上，将异构用户信号、matched/swapped 用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预和独立 JudgeBench 放进同一可审计协议。若 matched/swapped 人评不稳定，或效应可由长度、风格和共同质量解释，论文将收缩为 outcome-centered evaluation study。
+可辩护的主张是：在广义 Deep Research 的多类最终交付物上，将异构用户信号、matched/swapped 用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预和独立 JudgeBench 放进同一可审计协议。该协议识别的是可观察的用户条件化结果价值，不证明模型内部“真正理解用户”。若 matched/swapped 人评不稳定，或语义等价信号换一种表达就改变结论，论文将收缩为 outcome-centered evaluation study。
 
 ## 2. 研究问题与假设
 
@@ -52,8 +52,8 @@
 
 ### 2.2 可证伪假设
 
-- **H1：** matched 交付物的用户适配显著高于 swapped 交付物，且该差异不能由输出长度或通用质量解释。
-- **H2：** 语义内容相同时，非结构化历史的适配优势低于结构化 persona。
+- **H1：** matched 交付物的用户适配显著高于 swapped 交付物，且该差异在共同质量门槛和目标用户盲评下成立。
+- **H2：** 同一潜在 user-state 换成结构化 persona、语义等价自然历史或去显眼关键词改写时，核心 must-change 决策保持；渠道间利用率仍可能不同。
 - **H3：** 长上下文干扰使用户特异适配比共同任务质量下降更快；re-anchor 能选择性恢复适配。
 - **H4：** 不同 agent 类型在忽略约束、信息冲突、过度个性化和恢复失败上存在可重复差异。
 
@@ -130,9 +130,10 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 2. **Personalization Fit (PF) / Misuse Penalty (MP)：** 用户特异要求完成率，以及刻板化、误用、隐私和过度迎合惩罚；
 3. **Counterfactual Fit Advantage (CFA)：**
    CFA(a,b) = 1/2 [(PF_a(Y_a)-PF_a(Y_b)) + (PF_b(Y_b)-PF_b(Y_a))]；
-4. **Retention / Recovery：** 长程干扰下的适配保留率、重新锚定后的恢复收益及其副作用。
+4. **Cue robustness：** 对语义等价 signal views 报告 worst-view CFA、Cue Gap、must-change/must-hold 一致率和 irrelevant-cue effect；
+5. **Retention / Recovery：** 长程干扰下的适配保留率、重新锚定后的恢复收益及其副作用。
 
-主榜先应用 TQ、FR 和关键隐私/安全门槛，再报告 PF-MP、CFA、Retention 和 Recovery。不将这些指标简单平均成允许相互补偿的总分。
+主榜先应用 TQ、FR 和关键隐私/安全门槛，再报告 PF-MP、CFA、cue robustness、Retention 和 Recovery。不将这些指标简单平均成允许相互补偿的总分。
 
 ### 5.3 Judge 与 JudgeBench
 
@@ -144,7 +145,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 ### 6.1 数据质量控制
 
-每个 task-persona 对必须通过六项门槛：场景真实、决策相关、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。标注者先独立编写 must-change 和 must-hold，再处理分歧。人类真值分工固定：领域专家评事实、证据和共同质量，目标用户确认 must-change / must-not 并盲评 matched/swapped；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。[[28]](https://aclanthology.org/2026.acl-long.723/) Rubric 必须通过 matched/swapped 区分力、无关 persona invariance 和跨任务模块校准后才进入主实验。
+每个 task-persona 对必须通过六项门槛：场景真实、决策相关、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。标注者先独立编写 must-change 和 must-hold，再处理分歧。人类真值分工固定：领域专家评事实、证据和共同质量，目标用户确认 must-change / must-not 并盲评 matched/swapped；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。[[28]](https://aclanthology.org/2026.acl-long.723/) Rubric 必须通过 matched/swapped 区分力、cue-equivalence 稳健性、无关 persona invariance 和跨任务模块校准后才进入主实验。
 
 ### 6.2 统计方案
 
@@ -159,7 +160,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 ### 7.1 预期贡献
 
 1. 可扩展的 Deep Research Evaluation Atlas 和 coverage manifest；
-2. 用 matched/swapped 任务族识别用户特异价值的反事实评估方法；
+2. 在单用户绝对适配之上，用 matched/swapped 交叉评分矩阵识别用户特异价值的方法；
 3. 由元数据选择适用模块的 rubric compiler 和不可补偿质量门槛；
 4. 分离结果风险与预期失败模式的诊断 taxonomy；
 5. 用于审计个性化评委的 JudgeBench 和可复现运行协议。
@@ -169,7 +170,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 - 至少 80% 的 task family 能得到稳定的人类用户差异判断；
 - 参考交付物在共同质量达标时显示 matched 优于 swapped；
 - Judge 达到预注册一致性与校准门槛，否则扩大人评并停止自动精细排名；
-- 个性化效应在控制输出长度、共同质量和评委偏差后仍存在；
+- 个性化效应在共同质量门槛、目标用户盲评与语义等价信号检验下仍存在；
 - 两个月内完成冻结主矩阵、覆盖审计、至少 20% 人评和可复现分析；所有 real-user-gold family 与不少于 8 个分层 family 收集目标用户 matched/swapped 盲评。
 
 ## 8. 时间表、风险与论文边界
@@ -191,7 +192,8 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 - **用户真值不成立：** 关键偏好由用户确认；双人独立标注与仲裁；删除无稳定差异的 family。
 - **Rubric 循环定义：** rubric 在模型输出前冻结，并通过错配、无关信息和参考交付物校准。
-- **Judge 偏好文风或长度：** 运行位置交换、长度匹配、关键词诱饵和弃权测试；低置信样本转人评。
+- **把结果效应误写成内部理解：** 主张限定为反事实特异性；加入语义等价表达、去关键词改写和无关属性不变性测试。
+- **Judge 偏好文风或长度：** 运行位置交换、长度匹配、关键词诱饵和弃权测试；这是 judge 审计，不是相对 PDR-Bench 的主 gap。
 - **跨 agent 比较不公平：** 记录工具、预算和版本；受控 harness 与端到端产品分开报告。
 - **范围过大：** 主矩阵只包含 24 family、4 条件和 3 类 agent；扩展系统不阻塞主论文。
 
@@ -262,3 +264,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 [30] Shen et al. *Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents*. ACL, 2026. https://aclanthology.org/2026.acl-long.370/
 
 [31] Guo et al. *When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents*. ACL, 2026. https://aclanthology.org/2026.acl-long.1260/
+
+[32] Weeber et al. *One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization*. ACL, 2026. https://aclanthology.org/2026.acl-long.2079/
+
+[33] Qiu et al. *Preference-Aware Rubric Learning for Personalized Evaluation*. arXiv:2605.31545, 2026. https://arxiv.org/abs/2605.31545

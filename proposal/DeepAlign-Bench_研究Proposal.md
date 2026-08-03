@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.19 · 2026 年 8 月 3 日
+版本：v0.20 · 2026 年 8 月 3 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -11,7 +11,7 @@
 
 Deep Research 智能体已经能检索、综合并交付长报告，但“报告正确”不等于“报告适合这个用户”。相关研究正在沿一条清楚的能力链推进：LaMP 和 PersonaLens 先把用户历史与任务型对话纳入输出评价；[[33]](https://aclanthology.org/2024.acl-long.399/)[[35]](https://aclanthology.org/2025.findings-acl.927/) TravelPlanner+、ETAPP、ToolSpectrum、APOLLO、Mem2ActBench 与 AndroidIntent 又把个性化从文本生成推进到规划、工具选择和 GUI 行动；[[34]](https://aclanthology.org/2024.emnlp-industry.37/)[[37]](https://aclanthology.org/2025.acl-long.1064/)[[38]](https://arxiv.org/abs/2505.13176)[[49]](https://aclanthology.org/2026.findings-acl.1676/)[[48]](https://aclanthology.org/2026.acl-long.370/)[[50]](https://aclanthology.org/2026.acl-long.1669/) PersonaMem、RPEval、PAHF、PerMemBench、Memora 与 CloneMem 则开始处理画像变化、无关记忆、主动澄清、个性化写入和过期事实。[[36]](https://arxiv.org/abs/2504.14225)[[43]](https://arxiv.org/abs/2601.16621)[[44]](https://arxiv.org/abs/2602.16173)[[45]](https://arxiv.org/abs/2605.25535)[[46]](https://aclanthology.org/2026.findings-acl.1337/)[[47]](https://aclanthology.org/2026.acl-long.1549/) 因此，本项目不能把“用户理解、记忆或个性化行动无人评测”当作研究空白。
 
-真正把问题推到 Deep Research 最终交付物的直接前作已有三条：PDR-Bench 将真实 persona 与动态上下文配到开放式研究任务；[[4]](https://arxiv.org/abs/2509.25106) 另一项 PDR 工作把用户画像放入检索—推理循环，但只覆盖四类任务；[[40]](https://arxiv.org/abs/2605.10530) MyScholarQA 则在个性化学术调研中发现，合成用户和 LLM judge 会漏掉真人指出的九类细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/) 这些工作把研究问题进一步收敛为一个测量学缺口：在固定任务、证据、工具和预算后，我们仍缺少一个能通过**交换目标用户**验证“哪份交付物更适合谁”的协议，也缺少预冻结的 must-change / must-hold / must-not 真值来排除篇幅、文风、persona 复述和额外任务信息。DeepAlign-Bench 因而不以“覆盖更多用户信号”为核心新意，而以**广义 DR 最终交付物的反事实用户识别、纵向压力测试和真人校准 judge**为候选贡献。
+真正把问题推到 Deep Research 最终交付物的直接前作已有三条：PDR-Bench 将真实 persona 与动态上下文配到开放式研究任务，并让 LLM 按 task/persona 动态生成个性化 rubric；[[4]](https://arxiv.org/abs/2509.25106) 另一项 PDR 工作把用户画像放入检索—推理循环，但只覆盖四类任务；[[40]](https://arxiv.org/abs/2605.10530) MyScholarQA 则在个性化学术调研中发现，合成用户和 LLM judge 会漏掉真人指出的九类细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/) 因此缺口不是“已有评价只看长度、文风或关键词”，也不是“persona 没有进入 rubric”。更窄的测量问题是：现有个性化 DR 主指标主要判断一份报告在单个 user-task 条件下是否合适，尚未在固定任务、证据、工具和预算后，把两个都合理的目标用户及其交付物放进同一 **matched/swapped 交叉评分矩阵**，检验结果对目标用户是否具有反事实特异性。DeepAlign-Bench 因而不以“覆盖更多用户信号”为核心新意，而以**广义 DR 最终交付物的用户条件效应识别、纵向压力测试和真人校准 judge**为候选贡献。
 
 本项目拟构建 **DeepAlign-Bench**：一个面向广义长程 Deep Research 的、以最终交付物为核心、可扩展到执行轨迹的个性化评测基准。核心不是“有 persona 时分数是否更高”，而是建立**反事实任务族**：固定任务、证据环境与资源预算，只改变目标用户及用户信息的呈现渠道；再检验 agent 是否产生了与差异真值一致的交付物变化，同时保持通用任务质量、事实可靠性、安全与隐私。
 
@@ -19,7 +19,7 @@ Deep Research 智能体已经能检索、综合并交付长报告，但“报告
 
 “尽可能覆盖所有 DR 模式”不等于运行所有元数据取值的笛卡尔积。两个月论文版冻结一个可扩展 ontology，但用预注册的分数因子设计选择高信息量组合：24 个 counterfactual family、每题两个强对比用户、四个核心信号条件、三类核心 agent；错配、无关信息、冲突/过期、长程稀释和动态更新只在 8 个 anchor family 上做压力测试。每个任务在运行前冻结元数据与预期失败机制，运行后再独立标注实际错误。工程上采用 OpenCompass 的配置—推理—评估—汇总解耦架构，并吸收 EvalScope 的 adapter、arena 和报告机制；评估上以规则、证据核验、强通用 judge 与真人评价为两个月主线，SFT scorer 降为通过主实验后才启动的可选效率研究。
 
-**一句话研究目标：**在不降低事实性和任务完成质量的前提下，测量长程智能体能否从多种用户信息来源形成正确用户模型，在执行干扰中持续使用它，并在偏离后恢复，从而交付“对这个用户有独特价值”的最终产物。
+**一句话研究目标：**在不降低事实性和任务完成质量的前提下，测量长程智能体能否从多种来源稳定利用任务相关用户状态，在执行干扰中保持并更新必要约束，从而交付对目标用户具有可验证特异价值的最终产物；只有受控轨迹实验完成后，才讨论内部形成、保持或恢复机制。
 
 ## 1. 研究问题与可证伪假设
 
@@ -76,19 +76,21 @@ Agent-SafetyBench 构造 349 个交互环境和 2,000 个案例，覆盖 8 类�
 
 ### 2.4 PDR-Bench（arXiv:2509.25106）：最直接的前作，也是必须超越的基线
 
-PDR-Bench 设计 50 个任务、10 个领域、25 个真实志愿者 persona，每个任务匹配 5 个用户，形成 250 个用户—任务对。用户信息包括结构化 persona 和由专业标注员模拟的长期记忆/对话上下文。其 PQR 框架分别衡量 Personalization、Quality 和 Reliability：个性化含 Goal Alignment、Content Alignment、Presentation Fit、Actionability；可靠性由事实准确率与引用覆盖率组成。[[4]](https://arxiv.org/abs/2509.25106)
+PDR-Bench 设计 50 个任务、10 个领域、25 个真实志愿者 persona，每个任务匹配 5 个用户，形成 250 个用户—任务对。用户信息包括结构化 persona 和由专业标注员模拟的长期记忆/对话上下文。其 PQR 框架分别衡量 Personalization、Quality 和 Reliability：个性化含 Goal Alignment、Content Alignment、Presentation Fit、Actionability；LLM 先依据 task 与 persona 分配维度权重并生成子标准，另一 LLM 再逐项评分；可靠性由事实准确率与引用覆盖率组成。[[4]](https://arxiv.org/abs/2509.25106)
 
-论文的贡献应被正面承认：它首先把真实用户画像和深度调研结合；包含 task-only、context 和 persona 条件；对若干 memory system 做实验；并用人类评分比较 judge。但从顶会评审角度看，仍存在以下可攻击点：
+论文的贡献应被正面承认：它首先把真实用户画像和深度调研结合；persona 不只是输入文本，还直接条件化 P-Score 的权重与子标准；包含 task-only、context 和 persona 条件；对若干 memory system 做实验；并用同一 user-query 下两种 agent 报告的 pairwise 人评比较 judge。因此 DeepAlign-Bench 不能把它描述成“通用 rubric”“简单 ROUGE”或“完全没有 pairwise”。仍可检验的差异如下：
 
-1. **反事实不足。** 论文主要比较“信息多/少”，没有把同一报告交换给不同用户来验证差异是否真的具有用户特异性，因此高分可能来自更长、更明确的输入。
-2. **rubric 内生。** LLM 根据 task/persona 动态生成维度权重和子标准，再由另一个 LLM 评分；如果 persona 本身含刻板或无关信息，rubric 可能把它合理化为评分目标。
+1. **评分对象仍是单用户条件下的绝对适配。** 其主榜计算每份报告在对应 user-task rubric 下的 P-Score，信息可用性实验比较 task-only、context 与 persona 条件平均分。人类一致性实验虽是 pairwise，但比较的是同一 query 下 MiroFlow 与 O3 的报告，不是 A/B 用户的 matched/swapped 交叉评分。因而它能说明“在该用户条件下这份报告是否合适”，尚不能直接检验“同一任务换成另一位同样合理的用户后，哪份报告应随之改变、且更适合谁”。
+2. **缺少预冻结的差异与不变项真值。** task/persona-conditioned rubric 已能表达“这个用户需要什么”，但由 LLM 动态生成标准本身不保证两个用户间哪些内容必须变化、哪些事实与共同质量必须保持、哪些属性不得使用。若 persona 含无关或刻板线索，rubric 仍可能把它合理化为评分目标。
 3. **人类校准偏弱。** judge 校准仅抽 15 个 query、两种 agent；最佳 GPT-5 的 pairwise agreement 仅 0.43，仍被选为主 judge。这不足以支撑精细榜单差异。
 4. **用户上下文并非自然产生。** 25 个 persona 虽来自志愿者，但动态内容由 6 名标注员模拟，且以“可逆推出 persona”为核心质量标准；这可能人为放大可识别性，低估真实历史中的噪声、冲突、过期信息与不可推断性。
 5. **任务与交付物覆盖有限。** 主要是中文/英文长报告，主实验只跑 150/250 个 query；无法说明对代码、表格、幻灯、网页、决策备忘录或私有企业材料的外推性。
 6. **简单平均可补偿。** P/Q/R 算术平均允许高文风分补偿事实性或关键用户约束失败；对高风险任务尤其不合理。
 7. **缺少轨迹诊断。** 只看输入与最终输出，无法区分“没形成、忘记了、知道但没用、发生冲突、恢复失败”。
 
-DeepAlign-Bench 的核心增量因此不是“再加几个 persona”，而是以反事实识别、预先冻结的差异真值、多源用户信号、长程干扰和 judge 审计建立更强的测量效度。
+DeepAlign-Bench 的核心增量因此不是“换一个更懂用户的 rubric”，而是在 PDR-Bench 的**绝对适配**之上增加一层**反事实特异性**测量。令 `M[i,j] = PF_i(Y_j)`：同一 task/evidence 下，由用户 `U_a` 与 `U_b` 分别生成 `Y_a`、`Y_b`，再让两套用户条件化 rubric 都评价两份交付物；只有对角项 `M[a,a]`、`M[b,b]` 稳定高于交换项 `M[a,b]`、`M[b,a]`，且 must-hold、事实性与共同质量不过度下降，才支持“结果价值随目标用户而变”的结论。这里的 matched/swapped 识别的是**可观察结果的用户条件效应**，不能证明模型内部形成了真正的用户理解；一个稳定的“关键词→模板”策略仍可能过关。
+
+因此还要加入独立的 **cue-equivalence / representation-robustness** 检验。对同一潜在 user-state，分别用结构化 persona、语义等价自然历史、澄清对话和去除显眼关键词的改写表达，要求 must-change 决策与 CFA 基本保持；只改变任务无关人口属性或表面措辞时，must-hold 应保持。ACL 2026 的 *One Persona, Many Cues* 已显示，同一 persona 的不同提示线索会显著改变结论，说明单一显式 persona 形式缺乏外部效度；[[53]](https://aclanthology.org/2026.acl-long.2079/) PARL 也把 representativeness、user-consistency 与 discriminativeness 列为个性化评价的三个必要原则，进一步支持把区分力和跨表达一致性分开校准。[[54]](https://arxiv.org/abs/2605.31545) 篇幅、位置、格式与关键词诱饵仍应保留在 JudgeBench 中，但它们是自动评委的稳健性风险和辅助混淆控制，不再作为相对 PDR-Bench 的主要研究缺口。
 
 ### 2.5 LivingBench：动态用户与环境值得吸收，但目前证据透明度不足
 
@@ -127,24 +129,24 @@ Macaron 团队将 LivingBench 描述为从真实产品需求中蒸馏的动态�
 | **PASB** [[31]](https://arxiv.org/abs/2607.10526) | 1,600 个任务、12 个模型、2 个 agent framework；让真实 agent 自主写状态，再测新会话污染；commit 后平均失败由 45.0% 升至 71.9% | 是持久个性化安全和 longitudinal failure 最强的直接前作；我们必须测 must-not、来源/时效/作用域和写入治理 | 聚焦 persistent sycophancy 这一负向失败类，不评价广义 DR 的正向适配、交付物效用或跨任务结果真值 |
 | **APeB** [[32]](https://arxiv.org/abs/2607.03162) | 从原始欠指定商品查询、噪声行为历史和 hard candidates 测意图推断、偏好提取与候选选择；显式历史利用模块带来增益 | 证明“history 是否被实际利用”可通过 hard alternatives 与中间 rubric 诊断 | 单一电商平台、静态离线排序；没有广义 DR 交付物、多源信号、时间更新或 counterfactual user utility |
 
-这些工作共同形成一条能力链：**理解用户 → 从历史推断并行动 → 跨会话保持/更新 → 交付用户特异结果**。[[26]](https://arxiv.org/abs/2607.27056)[[27]](https://arxiv.org/abs/2607.21635)[[28]](https://arxiv.org/abs/2607.20482)[[29]](https://arxiv.org/abs/2607.15948)[[30]](https://arxiv.org/abs/2607.12254)[[31]](https://arxiv.org/abs/2607.10526)[[32]](https://arxiv.org/abs/2607.03162) 现有论文大多只验证其中一段。PDR-Bench 已进入最后一段，但对“为什么该差异属于这个用户”识别不足。[[4]](https://arxiv.org/abs/2509.25106) 因此 DeepAlign-Bench 不应声称首先研究 personalization、history、persistent state 或 temporal intervention；可辩护的主张是：
+这些工作共同形成一条能力链：**理解用户 → 从历史推断并行动 → 跨会话保持/更新 → 交付用户特异结果**。[[26]](https://arxiv.org/abs/2607.27056)[[27]](https://arxiv.org/abs/2607.21635)[[28]](https://arxiv.org/abs/2607.20482)[[29]](https://arxiv.org/abs/2607.15948)[[30]](https://arxiv.org/abs/2607.12254)[[31]](https://arxiv.org/abs/2607.10526)[[32]](https://arxiv.org/abs/2607.03162) 现有论文大多只验证其中一段。PDR-Bench 已进入最后一段，并能用 task/persona-conditioned rubric 测绝对适配；尚未建立的是固定任务与证据后的跨用户交叉评分、差异真值和不变项约束。[[4]](https://arxiv.org/abs/2509.25106) 因此 DeepAlign-Bench 不应声称首先研究 personalization、history、persistent state 或 temporal intervention；可辩护的主张是：
 
 > 在广义 Deep Research 的多类最终交付物上，将异构用户信号、反事实用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预与独立 judge 校准放进同一可审计协议，从而区分通用质量、正向用户适配、过度个性化和状态漂移。
 
-这仍是待实证验证的“协议级交叉贡献”，不能仅凭 ontology 的维度数量成立。论文必须至少证明三件事：（1）matched/swapped 人评能稳定识别用户特异效用；（2）该效应不能由长度、风格、任务信息增量或共同质量解释；（3）至少一种信号来源或长程扰动产生可重复、统计上可分辨的效应。若任一条件失败，主张应收缩为一个 outcome-centered evaluation study，而不是宣称统一了完整个人智能评测。
+这仍是待实证验证的“协议级交叉贡献”，不能仅凭 ontology 的维度数量成立。论文必须至少证明四件事：（1）matched/swapped 人评能稳定识别用户特异效用；（2）同一潜在 user-state 换一种语义等价表达时结论稳定，而只改任务无关线索时 must-hold 不变；（3）该效应不能由共同任务质量、事实性或评委偏差解释；（4）至少一种信号来源或长程扰动产生可重复、统计上可分辨的效应。若任一条件失败，主张应收缩为一个 outcome-centered evaluation study，而不是宣称识别了模型内部“理解用户”的机制。
 
-### 2.8 扩展检索：20 篇工作把 gap 进一步压缩到“反事实交付物识别”
+### 2.8 扩展检索：22 篇工作把 gap 进一步压缩到“反事实特异性 + 跨 cue 稳健性”
 
-本轮以 `personalized agent / user profile / user history / preference / memory / tool use / longitudinal adaptation / personalized deep research` 为检索入口，额外核对 20 篇论文的 title、abstract 与官方页面。纳入主叙事的门槛不是标题出现 persona 或 memory，而是至少满足两项：用户条件是可观察输入；该条件会改变 agent 的生成、规划或行动；论文提供可比较的个性化结果。筛选后形成四条相互衔接、但评价终点不同的证据链。
+本轮以 `personalized agent / user profile / user history / preference / memory / tool use / longitudinal adaptation / personalized deep research` 为检索入口，额外核对 22 篇论文的 title、abstract 与官方页面，其中 20 篇覆盖 agent 能力链，另两篇直接校准 persona cue 与个性化 rubric 的测量边界。纳入主叙事的门槛不是标题出现 persona 或 memory，而是至少满足两项：用户条件是可观察输入；该条件会改变 agent 的生成、规划或行动；论文提供可比较的个性化结果。筛选后形成四条相互衔接、但评价终点不同的证据链。
 
 | 证据链 | 代表工作与已经覆盖的内容 | 为什么仍不能替代 DeepAlign-Bench |
 |---|---|---|
 | **个性化输出与任务对话** | LaMP 用用户历史评测多种个性化生成任务；PersonaLens 用带偏好和历史的模拟用户评测任务型对话；PersonaMem 进一步要求跟踪会变化的用户画像。[[33]](https://aclanthology.org/2024.acl-long.399/)[[35]](https://aclanthology.org/2025.findings-acl.927/)[[36]](https://arxiv.org/abs/2504.14225) | 主要终点仍是单次输出、候选响应或对话任务成功；通常没有固定同一证据后交换用户，也没有开放式 DR 交付物的差异真值。 |
 | **从记忆走向规划、工具与行动** | TravelPlanner+ 测个性化行程规划；ETAPP 与 ToolSpectrum 测个性化/主动工具调用和用户—环境联合选择；Mem2ActBench、APOLLO 与 AndroidIntent 测长期记忆如何落实为工具参数、偏好跟随和 GUI 行动；OPeRA 用真实网页行为及即时 rationale 预测特定用户下一步行动。[[34]](https://aclanthology.org/2024.emnlp-industry.37/)[[37]](https://aclanthology.org/2025.acl-long.1064/)[[38]](https://arxiv.org/abs/2505.13176)[[48]](https://aclanthology.org/2026.acl-long.370/)[[49]](https://aclanthology.org/2026.findings-acl.1676/)[[50]](https://aclanthology.org/2026.acl-long.1669/)[[51]](https://aclanthology.org/2026.acl-long.2033/) | 证明“个性化行动无人评测”同样是错误主张，但任务多为离散工具/GUI 沙箱或单域规划；行动正确不等于一份多证据、长篇幅交付物对目标用户具有独特价值。 |
 | **长程记忆、变化与风险** | PRIME 区分情景与语义记忆；RPEval 暴露无关记忆引发的不理性个性化；PAHF 联合主动澄清、记忆与反馈以适应偏好漂移；PerMemBench 测“什么值得为这个用户写入”；Memora 与 CloneMem 测过期事实、遗忘和多年非对话数字轨迹；PS-Bench 说明良性个人记忆也可能错误地为危险意图背书。[[39]](https://aclanthology.org/2025.emnlp-main.1711/)[[43]](https://arxiv.org/abs/2601.16621)[[44]](https://arxiv.org/abs/2602.16173)[[45]](https://arxiv.org/abs/2605.25535)[[46]](https://aclanthology.org/2026.findings-acl.1337/)[[47]](https://aclanthology.org/2026.acl-long.1549/)[[52]](https://aclanthology.org/2026.acl-long.1260/) | 它们要求我们把 irrelevant / stale / write / update / safety 变成正式 operator，而不是附录案例；但主要指标是检索、分类、推荐、行动或安全失败，并未统一到 DR 最终交付物。 |
-| **最接近的个性化 DR** | PDR-Bench 覆盖 persona 与动态上下文；另一项 PDR 工作把用户画像嵌入检索—推理循环；MyScholarQA 用研究者画像生成个性化行动与报告，并用真人研究揭示 LLM judge 漏掉的九类错误；个性化 leaderboard 工作还表明总体模型排名不能代表个体偏好。[[4]](https://arxiv.org/abs/2509.25106)[[40]](https://arxiv.org/abs/2605.10530)[[41]](https://aclanthology.org/2026.acl-long.723/)[[42]](https://aclanthology.org/2026.findings-acl.31/) | 这组工作直接否定“个性化 DR 无人研究”。仍可检验的空白是：同一任务与证据、两个都合理的用户、预冻结差异真值、matched/swapped 交付物、人类效用和 judge 压力测试能否在统一协议中稳定工作。 |
+| **最接近的个性化 DR** | PDR-Bench 已用 task/persona-conditioned P-Score 测绝对适配，并比较 task-only/context/persona；另一项 PDR 工作把用户画像嵌入检索—推理循环；MyScholarQA 用研究者画像生成个性化行动与报告，并用真人研究揭示 LLM judge 漏掉的九类错误；个性化 leaderboard 工作还表明总体模型排名不能代表个体偏好。[[4]](https://arxiv.org/abs/2509.25106)[[40]](https://arxiv.org/abs/2605.10530)[[41]](https://aclanthology.org/2026.acl-long.723/)[[42]](https://aclanthology.org/2026.findings-acl.31/) | 这组工作直接否定“个性化 DR 无人研究”以及“persona 没有进入 rubric”。仍可检验的是：同一任务与证据下，两个都合理的用户能否形成稳定的跨用户对角优势，并由预冻结差异/不变项真值、语义等价信号和真人效用共同校验。 |
 
-因此，论文的叙事终点不是“我们比现有工作更全面”，而是一个更窄、可证伪的问题：**在广义 Deep Research 中，如何识别一份最终交付物的增益确实来自它适合这个用户，而不是它一般更好、更长、更具体，或只是顺从了显眼的 persona 词语？** 20 篇扩展工作分别提供信号来源、行动终点、时间状态和安全失败的设计证据；DeepAlign-Bench 只在能够把这些维度转化为反事实识别、预冻结真值和经真人校准的测量协议时，才构成方法贡献。
+因此，论文的叙事终点不是“我们比现有工作更全面”，而是一个更窄、可证伪的问题：**在广义 Deep Research 中，如何在已有 task/persona-conditioned 绝对评分之上，进一步识别一份最终交付物是否对目标用户具有反事实特异性？** 22 篇扩展工作分别提供信号来源、行动终点、时间状态、安全失败、cue 稳健性和 rubric 区分力的设计证据；DeepAlign-Bench 只在跨用户对角优势、预冻结真值、跨线索表达稳健性与真人校准共同成立时，才构成方法贡献。
 
 ## 3. 构念定义与任务边界
 
@@ -452,17 +454,24 @@ Rubric compiler 必须接受四项覆盖校验：
 
 `CFA(a,b) = 1/2 × [(PF_a(Y_a) − PF_a(Y_b)) + (PF_b(Y_b) − PF_b(Y_a))]`。
 
-**CFA（Counterfactual Adaptation）**大于 0 才说明输出变化是“对的人得到对的版本”，而非所有报告都写得更长。另报告：
+**CFA（Counterfactual Fit Advantage）**大于 0 只说明用户—交付物评分矩阵呈现对角优势，即“两个用户各自更适合自己的版本”；它不解释模型为何做到，也不自动排除长度等 nuisance。另报告：
 
 - **Swap Failure Rate**：交换用户后仍被判同样合适的比例；
 - **Specificity Precision**：采用的个性化决策中，有金标支持的比例；
 - **Specificity Recall**：金标要求中被正确体现的比例；
 - **Neutral Invariance**：本不应随用户变化的共同事实/结论保持一致的程度。
 
+对同一潜在 user-state 的语义等价 signal views，不把稳定性压成一个可被平均掩盖的总分，而同时报告：
+
+- **Worst-view CFA**：所有 signal views 中 CFA 的最小值，防止只挑最容易的显式 persona 形式；
+- **Cue Gap**：最高 CFA 与最低 CFA 之差，衡量结论对表达渠道/措辞的敏感度；
+- **Contract Consistency**：不同 views 下 must-change / must-hold 叶节点判定的一致率；
+- **Irrelevant-Cue Effect**：只改变任务无关 cue 时 PF、TQ 和 must-hold 的配对变化。
+
 ### 7.3 信息渠道与长程指标
 
 - **IVG（Information Value Gain）**：某用户信息渠道相对 task-only 的 NPF 增益，并同时报告 TQ/MP 变化；
-- **Semantic Channel Gap**：语义等价的结构化 persona 与自然对话历史之间的表现差；
+- **Semantic Channel Gap**：语义等价的结构化 persona 与自然对话历史之间的表现差；与 Cue Gap 分开报告，以区分渠道可用性和表面改写敏感性；
 - **Retention Curve / AUC**：在 0、25%、50%、75%、100% 轨迹检查点插入受控交付 probe，绘制 PF 随有效干扰长度的曲线；
 - **Drift Half-life**：PF 相对起点下降一半所需的有效干扰量；若从未下降则截尾报告；
 - **Recovery Gain**：干预后 NPF 减干预前 NPF；
@@ -577,17 +586,17 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 ### 11.1 “这只是 PDR-Bench 扩大版”
 
 **攻击：**已有论文已做 task/persona/context 和 PQR，新增任务与 agent 不构成方法创新。  
-**防守：**把论文贡献锁定为三项可独立检验的方法创新：task cube 支撑的反事实任务族与 CFA；“结果风险—预期失败模式”双轴 taxonomy、预期/观察标签分离及长程衰减/恢复曲线；通过独立 JudgeBench 验证的冻结原子 rubric。任务、渠道和 agent 广度只是支撑外部效度，不作为唯一卖点。
+**防守：**先明确承认 PDR-Bench 的 P-Score 已按 task/persona 生成，且其人类校准包含同 query 的 agent-report pairwise 比较。DeepAlign 的独立增量不是“rubric 终于懂 persona”，而是：（1）同 task/evidence 下构造 `M[i,j] = PF_i(Y_j)` 的跨用户 2×2 评分矩阵，以 CFA 检查对角优势；（2）在输出前冻结 must-change/must-hold/must-not，分别检验必要变化、不变核心和禁止推断；（3）用语义等价 signal view 与无关 cue 干预区分用户语义利用和表面提示敏感性；（4）用双轴 taxonomy、长程算子和 JudgeBench 做失效诊断。任务、渠道和 agent 广度只支撑外部效度。
 
 ### 11.2 “persona 是作者编的，真值只是偏见”
 
 **攻击：**研究者把刻板印象写成 gold。  
 **防守：**用户事实须有来源与本人确认；差异 rubric 由目标用户提出或确认，领域专家只负责可行性；人口统计属性不自动推导偏好；用无关 persona 和 demographic-only 条件测刻板化；公布争议率和不一致案例。
 
-### 11.3 “个性化分只是长度、风格或关键词”
+### 11.3 “matched/swapped 也不能证明模型真正理解用户”
 
-**攻击：**长报告、复述 persona 的报告更容易得高分。  
-**防守：**使用 matched/swapped 反事实、长度匹配对抗集、关键词堆砌诱饵、Neutral Invariance 和 Specificity Precision；主指标必须同时提升两个方向的用户匹配优势。
+**攻击：**一个把显眼 persona 词语映射到固定模板的系统，也可能让 matched 优于 swapped；黑箱输出不能证明内部形成了用户模型。
+**防守：**把论文主张限定为“用户条件化结果价值/反事实特异性”，不声称识别内部认知机制。另做三类正交测试：同一 user-state 的 persona、自然历史、澄清对话和去关键词改写应保持 must-change 决策；仅改变无关人口属性或表面措辞时 must-hold 应稳定；改变任务相关约束且控制表述形式时才应触发定向变化。长度、位置、漂亮格式和关键词堆砌放入 JudgeBench，审计的是评委稳健性，而不是用来贬低 PDR-Bench 的 rubric。
 
 ### 11.4 “LLM judge 自己定义答案，循环论证”
 
@@ -667,7 +676,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 - JudgeBench 达到第 8.2 节门槛；
 - task cube 的 stratum/主 intent 与双轴 taxonomy 的主风险盲标一致性达到预注册门槛，且 `other/emergent` 未覆盖率可接受；
 - Atlas 必填字段完整率 ≥ 95%，双人元数据标注的一致性达到预注册门槛；coverage manifest 能区分 tested / defined-only / structurally-inapplicable / deferred 四种状态；
-- 每个进入主实验的 rubric module 至少通过 schema coverage、matched-swapped discrimination 和无关信息 invariance 三项中的适用检查；
+- 每个进入主实验的 rubric module 至少通过 schema coverage、matched-swapped discrimination、cue-equivalence robustness 和无关信息 invariance 四项中的适用检查；
 - SFT scorer 若进入主榜，必须在跨 task-family、跨 agent 的锁定测试上达到第 8.4 节门槛；
 - 至少两类 agent 在 PF 上出现与 TQ 不同的可诊断变化，证明 benchmark 不是普通质量榜的重命名。
 
@@ -690,7 +699,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 ## 14. 建议的论文结构（仿 Agent-SafetyBench 的信息组织，但突出差异）
 
-1. **Introduction**：现有 Deep Research 只测“好不好”，缺少“是否对这个用户好”；提出反事实识别与三项贡献。
+1. **Introduction**：通用 DR 测“好不好”，PDR-Bench 已测单用户绝对适配；本文提出跨用户反事实特异性、跨 cue 稳健性与诊断协议。
 2. **Related Work**：Deep Research eval、personalization benchmark、agent/user simulation、LLM judge 与长程记忆。
 3. **DeepAlign-Bench Construction**：Evaluation Atlas、coverage manifest、task-conditioned user state、persona compatibility、行为测试算子、反事实任务族与质量控制。
 4. **Evaluation Framework**：metadata-driven rubric compiler、四类 evaluation contract、CFA/NPF/Retention/Recovery、强 judge—人类校准与 JudgeBench。
@@ -768,6 +777,8 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 [50] Lyu et al. *PersonalAlign: Hierarchical Implicit Intent Alignment for Personalized GUI Agent with Long-Term User-Centric Records*. ACL, 2026. https://aclanthology.org/2026.acl-long.1669/
 [51] Wang et al. *OPeRA: A Dataset of Observation, Persona, Rationale, and Action for Evaluating LLMs on Human Online Shopping Behavior Simulation*. ACL, 2026. https://aclanthology.org/2026.acl-long.2033/
 [52] Guo et al. *When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents*. ACL, 2026. https://aclanthology.org/2026.acl-long.1260/
+[53] Weeber et al. *One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization*. ACL, 2026. https://aclanthology.org/2026.acl-long.2079/
+[54] Qiu et al. *Preference-Aware Rubric Learning for Personalized Evaluation*. arXiv:2605.31545, 2026. https://arxiv.org/abs/2605.31545
 
 ---
 

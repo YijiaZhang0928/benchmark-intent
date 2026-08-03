@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.19 · 2026 年 8 月 3 日
+版本：v0.20 · 2026 年 8 月 3 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -10,15 +10,15 @@
 
 ### 一句话问题
 
-已有工作已经测到用户理解、历史利用、工具行动、动态记忆和个性化 Deep Research。我们要补的不是又一块能力，而是一个识别问题：**同一任务和证据下，agent 能不能为不同用户交付不同但都正确的 Deep Research 结果。**
+已有工作已经测到用户理解、历史利用、工具行动、动态记忆和个性化 Deep Research。我们要补的不是又一块能力，而是一个结果识别问题：**同一任务和证据下，agent 能不能为不同用户交付不同但都正确、且各自更适合目标用户的 Deep Research 结果。**
 
 ### 为什么需要新的 benchmark
 
-个性化评价已经经历三步。第一，Setoka、PersonaTrail/APeB 证明 agent 的用户信号可以来自异构记录、浏览轨迹与行为历史；[[9]](https://arxiv.org/abs/2607.27056)[[11]](https://arxiv.org/abs/2607.20482)[[15]](https://arxiv.org/abs/2607.03162) 第二，ETAPP 与 Mem2ActBench 已把这些信号落实到工具选择和参数，PAHF 还加入澄清、反馈和偏好漂移。[[16]](https://aclanthology.org/2025.acl-long.1064/)[[19]](https://aclanthology.org/2026.acl-long.370/)[[18]](https://arxiv.org/abs/2602.16173) 第三，PDR-Bench 和另一项 PDR 工作已经进入个性化 Deep Research；MyScholarQA 则发现合成用户与 LLM judge 会漏掉真人指出的细微错误。[[3]](https://arxiv.org/abs/2509.25106)[[17]](https://arxiv.org/abs/2605.10530)[[20]](https://aclanthology.org/2026.acl-long.723/)
+个性化评价已经经历三步。第一，Setoka、PersonaTrail/APeB 证明 agent 的用户信号可以来自异构记录、浏览轨迹与行为历史；[[9]](https://arxiv.org/abs/2607.27056)[[11]](https://arxiv.org/abs/2607.20482)[[15]](https://arxiv.org/abs/2607.03162) 第二，ETAPP 与 Mem2ActBench 已把这些信号落实到工具选择和参数，PAHF 还加入澄清、反馈和偏好漂移。[[16]](https://aclanthology.org/2025.acl-long.1064/)[[19]](https://aclanthology.org/2026.acl-long.370/)[[18]](https://arxiv.org/abs/2602.16173) 第三，PDR-Bench 和另一项 PDR 工作已经进入个性化 Deep Research；MyScholarQA 则发现合成用户与 LLM judge 会漏掉真人指出的细微错误。[[3]](https://arxiv.org/abs/2509.25106)[[17]](https://arxiv.org/abs/2605.10530)[[20]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 的 P-Score 已按 task/persona 生成权重与子标准，因此不能把它描述成只看长度或文风。
 
-因此，缺少的不是“更多 persona”或“agent 会不会用 memory”，而是把广义 DR 最终交付物放进反事实协议：固定任务、证据、工具和预算，只交换两个都合理的用户；再用预冻结 must-change / must-hold / must-not 真值与真人校准 judge 排除输入/输出更长、persona 复述、文风偏好和额外任务信息。
+因此，缺少的不是“更多 persona”“agent 会不会用 memory”或“persona-aware rubric”，而是在单用户绝对适配之上加入跨用户检验：固定任务、证据、工具和预算，只交换两个都合理的用户；让两套用户 rubric 交叉评价两份交付物，并用预冻结 must-change / must-hold / must-not 真值检查该变与不该变的部分。
 
-因此我们采用反事实对照：固定任务、证据、工具和预算，只改变用户；再把两个用户的交付物交换评分。只有 matched 持续优于 swapped，同时事实和共同质量不下降，才算真正个性化。
+因此我们采用反事实对照：固定任务、证据、工具和预算，只改变用户；再把两个用户的交付物交换评分。只有 matched 持续优于 swapped，同时事实和共同质量不下降，才支持“交付物对目标用户具有反事实特异性”。这不证明模型内部真正理解了用户；还需让同一 user-state 以 persona、自然历史、澄清对话和去关键词改写表达，检查核心结论是否稳定。不同 persona cue 会改变测量结论，[[21]](https://aclanthology.org/2026.acl-long.2079/) 个性化 rubric 也应同时检查代表性、一致性和区分力。[[22]](https://arxiv.org/abs/2605.31545)
 
 ### 两个月交付范围
 
@@ -114,6 +114,7 @@ Core + Personalization + Intent + Deliverable + Operator + Risk
 | TQ / FR | 任务和事实是否先过基本质量门槛 |
 | PF − MP | 用户特异要求减去误用、泄露和过度迎合 |
 | CFA | matched 是否稳定优于 swapped |
+| Worst-view CFA / Cue Gap | 同一 user-state 换表达后是否仍稳定 |
 | Retention | 长任务中用户适配保留多少 |
 | Recovery | 纠正或重新锚定后恢复多少 |
 
@@ -149,7 +150,7 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 ## 7. 预期论文贡献
 
 1. **Evaluation Atlas**：机器可读地描述 task、environment、user state、signal 和 agent；
-2. **Counterfactual families**：用 matched/swapped 排除篇幅和 persona 复述等替代解释；
+2. **Counterfactual families**：用 matched/swapped 构造跨用户 2×2 对角优势，并用语义等价信号检查表面 cue 敏感性；
 3. **Failure taxonomy**：任务类型负责覆盖，结果风险和失败模式负责诊断；
 4. **Rubric compiler**：根据元数据选择可适用模块；
 5. **JudgeBench**：先证明评委可靠，再发布自动榜单；
@@ -157,7 +158,7 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 
 ### 与 PDR-Bench 的关键差异
 
-差异不能写成“更多任务和更多 agent”。真正差异是：反事实识别、用户信息来源多元、动态/长程测试、模块化 rubric、独立 judge benchmark，以及明确区分测试意图和观察到的真实失败。
+差异不能写成“更多任务和更多 agent”，也不能说 PDR-Bench 没有 persona-aware rubric。真正差异是：在其单用户绝对适配之上增加跨用户 matched/swapped 对角优势、预冻结变化/不变项和跨线索表达稳健性；再用动态/长程测试与独立 JudgeBench 诊断失败。
 
 ## 8. 两个月安排
 
@@ -174,7 +175,7 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 
 ## 9. 需要导师拍板
 
-1. 是否同意 Atlas、反事实识别和 rubric compiler 是核心贡献，而不是“测尽所有组合”？
+1. 是否同意 Atlas、跨用户反事实特异性和 rubric compiler 是核心贡献，而不是“测尽所有组合”？
 2. 是否锁定 24 family、48 user-task、4 条件、3 类 agent 的主矩阵？
 3. 是否同意 SFT scorer 不阻塞主论文？
 4. 是否同意代码、多 agent、memory 和动态用户只进入 8 个 anchor family？
@@ -230,3 +231,7 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 [19] Shen et al. *Mem2ActBench*. ACL, 2026. https://aclanthology.org/2026.acl-long.370/
 
 [20] Balepur et al. *Language Models Don't Know What You Want*. ACL, 2026. https://aclanthology.org/2026.acl-long.723/
+
+[21] Weeber et al. *One Persona, Many Cues, Different Results*. ACL, 2026. https://aclanthology.org/2026.acl-long.2079/
+
+[22] Qiu et al. *Preference-Aware Rubric Learning for Personalized Evaluation*. arXiv:2605.31545, 2026. https://arxiv.org/abs/2605.31545

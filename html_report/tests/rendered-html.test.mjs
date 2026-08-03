@@ -53,23 +53,29 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /href="\/literature"/i);
   assert.match(html, /class="inlineCite"[^>]+2607\.27056/i);
   assert.match(html, /class="inlineCite"[^>]+2509\.25106/i);
+  assert.match(html, /task\/persona-conditioned rubric/i);
+  assert.match(html, /2×2 矩阵 Mij = PFi\(Yj\)/i);
+  assert.match(html, /不证明内部“理解用户”/i);
+  assert.match(html, /cue-equivalence robustness/i);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
 });
 
-test("server-renders the 27-paper related-work map", async () => {
+test("server-renders the 29-paper related-work map", async () => {
   const response = await renderPath("/literature");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /27 篇工作，把我们的题目/);
+  assert.match(html, /29 篇工作，把我们的题目/);
   assert.match(html, /Setoka/);
   assert.match(html, /PersonaTrail/);
   assert.match(html, /PASB/);
   assert.match(html, /APeB/);
   assert.match(html, /MyScholarQA/);
   assert.match(html, /Mem2ActBench/);
-  assert.match(html, /20-PAPER RELEVANCE AUDIT/);
-  assert.match(html, /三项最低成立条件/);
+  assert.match(html, /22-PAPER RELEVANCE AUDIT/);
+  assert.match(html, /四项最低成立条件/);
+  assert.match(html, /One Persona, Many Cues/);
+  assert.match(html, /PARL/);
   assert.match(html, /class="inlineCite"[^>]+2607\.21635/i);
   assert.match(html, /class="inlineCite"[^>]+2607\.10526/i);
 });
@@ -86,7 +92,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.15/m);
+  assert.match(schema, /^schema_version:\s*0\.20/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
   assert.match(manifest, /coverage_status/);
