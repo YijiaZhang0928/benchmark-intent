@@ -2,9 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（v0.23）
+## 当前交付物（v0.24）
 
-- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿，用于精读、论文写作和细节核对。
+- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.24 保留完整论证，但将摘要、方法、评分和审稿防守改为更直接的语言。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：10 页标准论文 Proposal，保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
 - `deliverables/DeepAlign-Bench_完整人话版.pdf`：逻辑、内容和方法不变，改为直白语言，适合组内讨论。
 - `deliverables/DeepAlign-Bench_汇报精简版.pdf`：9 页导师汇报稿，适合 15–20 分钟讲解。

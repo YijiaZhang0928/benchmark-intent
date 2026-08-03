@@ -1,5 +1,14 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.24 - 2026-08-03
+
+- 保持研究逻辑、实验矩阵、公式、rubric、judge、anchor 和 leaderboard 不变，集中改写《正式研究 Proposal》的语言。
+- 摘要按“已有覆盖 → PDR-Bench 已解决什么 → DeepAlign 改变什么 → 怎样实现 → 两个月做多少”重排，减少长句和多层限定。
+- 将 Atlas 写清为 case schema 与实验索引，并逐项解释它如何参与抽样、条件生成、rubric 选择、结果切片和覆盖审计。
+- 明确 coverage manifest 只管理预注册候选单元，`tested` 才能支持结论；`defined-only`、`structurally-inapplicable` 和 `deferred` 不作为实测证据。
+- 将 task/persona 构造、anchor 压力测试、rubric compiler、JudgeBench、实验范围和审稿防守改成更直接的“对象—步骤—判定—边界”表达；引用与方法细节保留。
+- 重导出正式版 Word/PDF，并同步在线下载文件、项目记忆与版本记录。
+
 ## v0.23 - 2026-08-03
 
 - 删除 re-anchor、pre-delivery reminder、verifier 修复、S4 recovery pair、恢复型 RQ/H、recovery gain、recovery policy 和“恢复失败”类别；不再研究失败后的补救干预。
