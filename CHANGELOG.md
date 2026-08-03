@@ -1,5 +1,12 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.21 - 2026-08-03
+
+- 正面承认 PDR-Bench 已能评价 task–persona 条件下的适配质量；删除其 rubric/judge 不细、校准偏弱或容易被表面因素欺骗等相对缺口叙事。
+- 将 DeepAlign 的唯一核心方法贡献冻结为：从 absolute adaptation evaluation 转向 counterfactual personalization effect identification；PDR-Bench 回答“给定用户是否适配”，DeepAlign 回答“固定 task/evidence/resources，只改变用户后哪份交付物更适合谁”。
+- 将 matched/swapped 明确为跨用户效应对照，将 must-change/must-hold/must-not 明确为跨条件 oracle，分别防止把无效差异、共同质量下降和过度个性化误认为有效 personalization。
+- Atlas、模块化 rubric、cue-equivalence、纵向 operators 与 JudgeBench 降为核心效应的实现、稳健性、诊断和测量效度支撑；四版 Proposal、HTML、主图、schema、项目记忆与导出文件同步更新为 v0.21。
+
 ## v0.20 - 2026-08-03
 
 - 逐节复核 PDR-Bench v3 的 PQR 方法、信息条件实验和人类一致性附录，明确其 P-Score 已按 task/persona 动态生成权重与子标准，且 pairwise 校准比较同一 user-query 下的不同 agent 报告；删除“已有 rubric 主要被长度/文风骗”等过泛表述。

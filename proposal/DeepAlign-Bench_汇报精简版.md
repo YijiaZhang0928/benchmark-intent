@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.20 · 2026 年 8 月 3 日
+版本：v0.21 · 2026 年 8 月 3 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -14,9 +14,9 @@
 
 ### 为什么需要新的 benchmark
 
-个性化评价已经经历三步。第一，Setoka、PersonaTrail/APeB 证明 agent 的用户信号可以来自异构记录、浏览轨迹与行为历史；[[9]](https://arxiv.org/abs/2607.27056)[[11]](https://arxiv.org/abs/2607.20482)[[15]](https://arxiv.org/abs/2607.03162) 第二，ETAPP 与 Mem2ActBench 已把这些信号落实到工具选择和参数，PAHF 还加入澄清、反馈和偏好漂移。[[16]](https://aclanthology.org/2025.acl-long.1064/)[[19]](https://aclanthology.org/2026.acl-long.370/)[[18]](https://arxiv.org/abs/2602.16173) 第三，PDR-Bench 和另一项 PDR 工作已经进入个性化 Deep Research；MyScholarQA 则发现合成用户与 LLM judge 会漏掉真人指出的细微错误。[[3]](https://arxiv.org/abs/2509.25106)[[17]](https://arxiv.org/abs/2605.10530)[[20]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 的 P-Score 已按 task/persona 生成权重与子标准，因此不能把它描述成只看长度或文风。
+个性化评价已经经历三步。第一，Setoka、PersonaTrail/APeB 证明 agent 的用户信号可以来自异构记录、浏览轨迹与行为历史；[[9]](https://arxiv.org/abs/2607.27056)[[11]](https://arxiv.org/abs/2607.20482)[[15]](https://arxiv.org/abs/2607.03162) 第二，ETAPP 与 Mem2ActBench 已把这些信号落实到工具选择和参数，PAHF 还加入澄清、反馈和偏好漂移。[[16]](https://aclanthology.org/2025.acl-long.1064/)[[19]](https://aclanthology.org/2026.acl-long.370/)[[18]](https://arxiv.org/abs/2602.16173) 第三，PDR-Bench 和另一项 PDR 工作已经进入个性化 Deep Research；MyScholarQA 则发现合成用户与 LLM judge 会漏掉真人指出的细微错误。[[3]](https://arxiv.org/abs/2509.25106)[[17]](https://arxiv.org/abs/2605.10530)[[20]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 的 task/persona-conditioned P-Score 已经能够评价给定用户条件下的报告适配质量。
 
-因此，缺少的不是“更多 persona”“agent 会不会用 memory”或“persona-aware rubric”，而是在单用户绝对适配之上加入跨用户检验：固定任务、证据、工具和预算，只交换两个都合理的用户；让两套用户 rubric 交叉评价两份交付物，并用预冻结 must-change / must-hold / must-not 真值检查该变与不该变的部分。
+因此，DeepAlign 的创新不是把 PDR-Bench 的 rubric 做得更细，而是把估计对象从 **absolute adaptation evaluation** 改为 **counterfactual personalization effect identification**：固定任务、证据、工具和预算，只交换两个都合理的用户；让两套用户 rubric 交叉评价两份交付物，并用预冻结 must-change / must-hold / must-not 检查必要变化、共同不变项和禁止过度推断。
 
 因此我们采用反事实对照：固定任务、证据、工具和预算，只改变用户；再把两个用户的交付物交换评分。只有 matched 持续优于 swapped，同时事实和共同质量不下降，才支持“交付物对目标用户具有反事实特异性”。这不证明模型内部真正理解了用户；还需让同一 user-state 以 persona、自然历史、澄清对话和去关键词改写表达，检查核心结论是否稳定。不同 persona cue 会改变测量结论，[[21]](https://aclanthology.org/2026.acl-long.2079/) 个性化 rubric 也应同时检查代表性、一致性和区分力。[[22]](https://arxiv.org/abs/2605.31545)
 
@@ -158,7 +158,7 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 
 ### 与 PDR-Bench 的关键差异
 
-差异不能写成“更多任务和更多 agent”，也不能说 PDR-Bench 没有 persona-aware rubric。真正差异是：在其单用户绝对适配之上增加跨用户 matched/swapped 对角优势、预冻结变化/不变项和跨线索表达稳健性；再用动态/长程测试与独立 JudgeBench 诊断失败。
+PDR-Bench 已解决 task–persona 条件下的 absolute adaptation evaluation。DeepAlign 的核心差异只有一条：转向 counterfactual personalization effect identification，以跨用户 matched/swapped 对角优势和预冻结 must-change/must-hold/must-not 识别方向正确且边界受控的用户特异变化。跨线索、动态/长程测试与独立 JudgeBench 是稳健性和诊断支持，不是对 PDR-Bench rubric/judge 的否定。
 
 ## 8. 两个月安排
 
@@ -175,7 +175,7 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 
 ## 9. 需要导师拍板
 
-1. 是否同意 Atlas、跨用户反事实特异性和 rubric compiler 是核心贡献，而不是“测尽所有组合”？
+1. 是否同意将“跨用户 counterfactual personalization effect identification”锁定为唯一核心方法贡献，Atlas 与 rubric compiler 作为实现和外部效度支撑？
 2. 是否锁定 24 family、48 user-task、4 条件、3 类 agent 的主矩阵？
 3. 是否同意 SFT scorer 不阻塞主论文？
 4. 是否同意代码、多 agent、memory 和动态用户只进入 8 个 anchor family？

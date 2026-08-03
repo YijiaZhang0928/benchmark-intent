@@ -2,17 +2,17 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.20 · 2026 年 8 月 3 日
+版本：v0.21 · 2026 年 8 月 3 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.20
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.21
 
 ---
 
 ## 摘要
 
-个性化 agent 研究已经从用户历史建模扩展到任务对话、工具调用、长程记忆和 Deep Research；[[23]](https://aclanthology.org/2024.acl-long.399/)[[24]](https://aclanthology.org/2025.findings-acl.927/)[[25]](https://aclanthology.org/2025.acl-long.1064/)[[26]](https://arxiv.org/abs/2504.14225)[[27]](https://arxiv.org/abs/2605.10530)[[28]](https://aclanthology.org/2026.acl-long.723/) 当前缺口不是“无人评测个性化”，也不是 persona 从未进入 rubric，而是缺少一个在广义 Deep Research 最终交付物上检验**跨用户反事实特异性**的协议。本项目拟构建 DeepAlign-Bench，评估长程智能体能否从不同渠道获得与任务相关的用户信息，在执行过程中保持、使用和更新这些信息，并交付必要且正确的用户特异结果。
+个性化 agent 研究已经从用户历史建模扩展到任务对话、工具调用、长程记忆和 Deep Research；[[23]](https://aclanthology.org/2024.acl-long.399/)[[24]](https://aclanthology.org/2025.findings-acl.927/)[[25]](https://aclanthology.org/2025.acl-long.1064/)[[26]](https://arxiv.org/abs/2504.14225)[[27]](https://arxiv.org/abs/2605.10530)[[28]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 已能够评价 task–persona 条件下的适配质量。当前缺口不是其 rubric 或 judge 不够细，而是缺少一个在广义 Deep Research 最终交付物上从 **absolute adaptation evaluation** 转向 **counterfactual personalization effect identification** 的协议。本项目拟构建 DeepAlign-Bench：固定任务与证据，交换两个都合理的目标用户，检验交付物差异是否由目标用户条件驱动，并用预冻结契约约束有效变化。
 
 核心方法是反事实任务族：固定任务、证据、工具与资源预算，只改变目标用户；再将两个用户的交付物进行 matched/swapped 交换评分。只有匹配交付物稳定优于错配交付物，且共同任务质量、事实性、安全与隐私不下降时，才认定为有效个性化。评测框架包括五平面元数据、反事实任务族、元数据驱动的 rubric compiler、分层指标和独立 JudgeBench。
 
@@ -28,18 +28,18 @@
 
 个性化也已经从“说什么”进入“做什么”。ETAPP 用人工关键点评测个性化与主动工具调用，Mem2ActBench 检查长期记忆能否落实到工具参数；[[25]](https://aclanthology.org/2025.acl-long.1064/)[[30]](https://aclanthology.org/2026.acl-long.370/) TARS 测代码解释的人类效用，PAHF 用澄清、记忆和反馈适应偏好漂移，PASB 与 PS-Bench 分别暴露持久写入和良性个人记忆带来的安全风险。[[19]](https://arxiv.org/abs/2607.15948)[[29]](https://arxiv.org/abs/2602.16173)[[21]](https://arxiv.org/abs/2607.10526)[[31]](https://aclanthology.org/2026.acl-long.1260/) 这意味着 DeepAlign-Bench 不能把“行动、更新或风险”本身当作首创；现有终点多是离散工具/GUI 行动、分类、推荐或安全失败，还没有统一到多证据的开放式 DR 交付物。
 
-最后，PDR-Bench 和另一项 PDR 工作已经把 persona 或动态用户上下文接入 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) 其中 PDR-Bench 的 P-Score 明确按 task/persona 生成权重与子标准，并非通用 rubric 或简单文风评分。MyScholarQA 更进一步发现，合成用户与 LLM judge 会漏掉真人指出的九类细微错误。[[28]](https://aclanthology.org/2026.acl-long.723/) 因而本项目最终收敛到一个更窄的问题：**在已有单用户绝对适配评分之上，固定任务、证据、工具和预算，交换两个都合理的目标用户，哪份最终交付物仍然更适合谁？** PDR-Bench 的人类校准虽包含同一 query 下两种 agent 报告的 pairwise 比较，但没有构造跨用户 matched/swapped 评分矩阵，也没有预冻结 must-change / must-hold / must-not 差异真值。进一步地，matched/swapped 只能识别结果特异性，不能证明内部理解；同一 persona 的不同表面线索可能显著改变模型行为，[[32]](https://aclanthology.org/2026.acl-long.2079/) 而可靠个性化评价还需同时满足代表性、用户一致性和区分力。[[33]](https://arxiv.org/abs/2605.31545)
+最后，PDR-Bench 和另一项 PDR 工作已经把 persona 或动态用户上下文接入 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) PDR-Bench 的 P-Score 按 task/persona 生成权重与子标准，已经能回答：**给定这个 task 和 persona，这份报告是否适合该用户？** 其同一 user-query 下的 agent-report pairwise 人评同样服务于这个 absolute adaptation 问题。DeepAlign 不否定这套评价，而是改变 estimand：**固定任务、证据、工具和预算，只交换两个都合理的目标用户，哪份最终交付物仍然更适合谁？** 为此构造跨用户 matched/swapped 评分矩阵，并在输出前冻结 must-change / must-hold / must-not：输出有差异但方向错误、共同事实被破坏或 persona 被过度推断，都不能被算作有效 personalization。进一步地，matched/swapped 只能识别结果层效应，不能证明内部理解；同一 persona 的不同表达线索可能显著改变模型行为，[[32]](https://aclanthology.org/2026.acl-long.2079/) 而可靠个性化评价还需同时满足代表性、用户一致性和区分力。[[33]](https://arxiv.org/abs/2605.31545)
 
 ### 1.2 研究空缺
 
 本项目不声称首先研究 personalization、history、tool use、persistent state 或 temporal intervention；它解决的是这些方向在广义 DR 最终交付物上的识别缺口：
 
-1. 如何检验交付物对目标用户具有反事实特异性，而不只是在单个 persona rubric 下取得高分；
+1. 如何从 absolute adaptation evaluation 转向 counterfactual personalization effect identification，检验只改变目标用户后交付物是否发生方向正确的变化；
 2. 如何为报告、代码、表格和决策备忘录使用可组合但不强行统一的 rubric；
 3. 如何区分最终交付物效用与获取、保持、利用、更新/恢复等过程机制；
 4. 如何验证自动 judge 没有被长度、位置、格式和 persona 关键词误导。
 
-可辩护的主张是：在广义 Deep Research 的多类最终交付物上，将异构用户信号、matched/swapped 用户交换、预冻结 must-change/must-hold/must-not 真值、长程干预和独立 JudgeBench 放进同一可审计协议。该协议识别的是可观察的用户条件化结果价值，不证明模型内部“真正理解用户”。若 matched/swapped 人评不稳定，或语义等价信号换一种表达就改变结论，论文将收缩为 outcome-centered evaluation study。
+可辩护的核心主张是：在广义 Deep Research 的多类最终交付物上，用 matched/swapped 用户交换和预冻结 must-change/must-hold/must-not 真值识别可观察的 counterfactual personalization effect。异构用户信号、长程干预、模块化 rubric 和独立 JudgeBench 用于检验这一效应的稳健性、测量效度与外部效度，不与核心创新并列。该协议不证明模型内部“真正理解用户”；若 matched/swapped 人评不稳定，论文将收缩为 absolute adaptation 的扩展研究。
 
 ## 2. 研究问题与假设
 
@@ -160,7 +160,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 ### 7.1 预期贡献
 
 1. 可扩展的 Deep Research Evaluation Atlas 和 coverage manifest；
-2. 在单用户绝对适配之上，用 matched/swapped 交叉评分矩阵识别用户特异价值的方法；
+2. 从 absolute adaptation evaluation 转向 counterfactual personalization effect identification：用 matched/swapped 交叉评分矩阵和三类预冻结契约识别方向正确、边界受控的用户特异变化；
 3. 由元数据选择适用模块的 rubric compiler 和不可补偿质量门槛；
 4. 分离结果风险与预期失败模式的诊断 taxonomy；
 5. 用于审计个性化评委的 JudgeBench 和可复现运行协议。

@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **完整人话版：方法不变，只把话说清楚**  
-版本：v0.20 · 2026 年 8 月 3 日
+版本：v0.21 · 2026 年 8 月 3 日
 用途：组内讨论、导师沟通、正式稿写作前的共同理解  
 
 ---
@@ -38,11 +38,13 @@
 
 第四步，研究把时间和风险也纳入进来。RPEval 测无关记忆会不会导致不理性个性化，PAHF 用澄清、记忆和反馈适应偏好变化，PerMemBench 问“哪些信息值得为这个用户写入”，Memora 与 CloneMem 测过期事实和多年数字轨迹。[[30]](https://arxiv.org/abs/2601.16621)[[31]](https://arxiv.org/abs/2602.16173)[[32]](https://arxiv.org/abs/2605.25535)[[33]](https://aclanthology.org/2026.findings-acl.1337/)[[34]](https://aclanthology.org/2026.acl-long.1549/) PASB 和 PS-Bench 又说明，持久记忆不仅可能过期，还可能把迎合或危险意图长期合理化。[[18]](https://arxiv.org/abs/2607.10526)[[39]](https://aclanthology.org/2026.acl-long.1260/) 这要求我们的 irrelevant、stale、write、update 和 must-not 测试成为正式实验，而不是几个演示案例。
 
-最后，PDR-Bench 与另一项 PDR 工作已经直接研究 persona 驱动的 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) MyScholarQA 甚至发现，合成用户和 LLM judge 会漏掉真人指出的九类细微个性化错误。[[28]](https://aclanthology.org/2026.acl-long.723/) 这里必须公平描述 PDR-Bench：它不是把 persona 只当作一段附加文字，也不是用通用文风分来评个性化。它会根据 task 和 persona 生成 P-Score 的权重与子标准，再评价目标、内容、呈现和可行动性；人类校准还会比较同一个 user-query 下两种 agent 的报告。
+最后，PDR-Bench 与另一项 PDR 工作已经直接研究 persona 驱动的 Deep Research；[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) MyScholarQA 还发现，合成用户和 LLM judge 会漏掉真人指出的九类细微个性化错误。[[28]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 会根据 task 和 persona 生成 P-Score 的权重与子标准，再评价目标、内容、呈现和可行动性；它已经能可靠表达“给定这个 task 和 persona，这份报告有多适合该用户”这一 absolute adaptation 问题。
 
-它已经回答了一个重要问题：**给定这个用户，这份报告是否适合他/她？** DeepAlign 要补的是下一层：**同一任务和证据换成另一个同样合理的用户后，两份报告是否各自更适合自己的用户？** PDR-Bench 的 pairwise 比较是“同一用户下哪个 agent 报告更好”，不是“A/B 用户的报告交叉给两个人评分”。所以我们的差异不是 rubric 更会看 persona，而是增加跨用户 2×2 matched/swapped 矩阵和预冻结差异真值。
+DeepAlign 不重复回答这个问题，而是换一个 estimand：**同一任务和证据换成另一个同样合理的用户后，两份报告是否各自更适合自己的用户？** PDR-Bench 的 pairwise 比较回答“同一用户下哪个 agent 报告更好”；DeepAlign 的跨用户 2×2 matched/swapped 矩阵回答“只改变用户条件后，输出是否发生方向正确的变化”。这就是从 absolute adaptation evaluation 到 counterfactual personalization effect identification。
 
-还要避免另一个过度主张：matched/swapped 通过，也不能证明模型内部“真的理解了用户”。模型可能只是看到“不懂 AI”就调用短报告模板。为此我们要再检查：同一用户需求改写成结构化 persona、自然历史、澄清对话或去掉显眼关键词后，关键决策是否保持；只换无关人口属性或措辞时，不该变的事实和结论是否稳定。ACL 2026 的研究已经发现，同一 persona 换一种提示线索就可能改变测量结论；[[40]](https://aclanthology.org/2026.acl-long.2079/) PARL 也强调个性化 rubric 必须同时有代表性、用户一致性和区分力。[[41]](https://arxiv.org/abs/2605.31545) 长度、格式和关键词诱饵仍然要测，但主要用于审计 judge 是否稳健，不再用来概括 PDR-Bench 的不足。
+仅仅看到两份输出不同还不够。`must-change` 规定哪些决策必须随用户改变；`must-hold` 规定哪些事实、证据和共同质量不能改变；`must-not` 规定不能因为 persona 就额外推断、迎合或泄露什么。三者共同防止把随机差异、质量下降或过度个性化误认为有效 personalization。
+
+还要避免另一个过度主张：matched/swapped 通过，也不能证明模型内部“真的理解了用户”。模型可能只是看到“不懂 AI”就调用短报告模板。为此我们要再检查：同一用户需求改写成结构化 persona、自然历史、澄清对话或去掉显眼关键词后，关键决策是否保持；只换无关人口属性或措辞时，不该变的事实和结论是否稳定。ACL 2026 的研究已经发现，同一 persona 换一种提示线索就可能改变测量结论；[[40]](https://aclanthology.org/2026.acl-long.2079/) PARL 也强调个性化 rubric 必须同时有代表性、用户一致性和区分力。[[41]](https://arxiv.org/abs/2605.31545) 长度、格式和关键词诱饵是 DeepAlign 对自身 judge 的独立测量有效性审计，与 PDR-Bench 的能力判断无关。
 
 ### 1.2 我们采用反事实对照
 
@@ -362,7 +364,7 @@ CFA 大于 0 说明评分矩阵出现“对的人更适合自己的版本”的�
 
 ### 12.1 这是不是 PDR-Bench 扩大版
 
-回答不能是“我们任务更多”，也不能说 PDR-Bench 没有 persona-aware rubric。应先承认它已经测单用户条件下的绝对适配；再证明 DeepAlign 的跨用户 2×2 对角优势、预冻结变化/不变项和跨线索表达测试各自提供了新的、可验证的信息。Atlas、JudgeBench 和长程压力测试用于外部效度与失效诊断。
+应先承认 PDR-Bench 已经测 task–persona 条件下的 absolute adaptation；再证明 DeepAlign 的跨用户 2×2 对角优势和预冻结 must-change/must-hold/must-not 能识别 counterfactual personalization effect。跨线索表达、Atlas、JudgeBench 和长程压力测试只用于稳健性、外部效度与失效诊断。
 
 ### 12.2 Persona 是不是作者想象
 

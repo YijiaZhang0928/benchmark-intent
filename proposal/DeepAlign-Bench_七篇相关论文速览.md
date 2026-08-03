@@ -4,7 +4,7 @@
 
 **用途：重写 DeepAlign-Bench 的 related-work 故事，不代替逐节复现性审查**
 
-**版本：v0.20 · 2026 年 8 月 3 日**
+**版本：v0.21 · 2026 年 8 月 3 日**
 
 ## 一页结论
 
@@ -18,7 +18,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 
 因此，DeepAlign-Bench 不能再说“已有工作只测事实、搜索和引用”，也不能声称首次研究 personalization、history、persistent state 或 temporal intervention。更稳健的 gap 是：
 
-> PDR-Bench 已用 task/persona-conditioned rubric 测量个性化 DR 的单用户绝对适配；其余工作已分别覆盖用户理解、历史利用、单域效用、持久状态风险和时间干预。尚待验证的是：在广义 Deep Research 的多类最终交付物上，用 matched/swapped 跨用户交叉评分、预冻结变化/不变项、跨 cue 稳健性和真人校准共同识别“结果是否对这个用户具有反事实特异性”。
+> PDR-Bench 已用 task/persona-conditioned rubric 建立个性化 DR 的 absolute adaptation evaluation。DeepAlign 不批评其 rubric/judge 不细，而是改变 estimand：用 matched/swapped 跨用户交叉评分识别 counterfactual personalization effect，并以预冻结 must-change/must-hold/must-not 排除随机差异、共同质量破坏和过度个性化。跨 cue 稳健性与真人校准用于验证该效应，不是替代 PDR-Bench 的绝对适配评价。
 
 最直接的威胁不是一篇论文，而是三组工作拼起来后的覆盖面：
 
@@ -92,7 +92,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
   → DeepAlign-Bench：固定任务与证据后，交换用户来识别“更适合谁”
 ```
 
-每向右一步，都同时解决了前一步的一部分 gap，也暴露了新的测量问题。因此 1.1 不应先列论文、再另起一段列 gap；应在每一层说明“这组工作把评价推进到哪里，因此我们不能再声称什么；但它的终点与我们的构念仍差在哪里”。故事最终收敛到的不是“更全面”，而是**在 persona-conditioned 绝对适配之上的跨用户反事实特异性与跨 cue 稳健性**。这是一项可观察结果的测量主张，不是对模型内部用户理解机制的因果证明。
+每向右一步，都同时解决了前一步的一部分 gap，也暴露了新的测量问题。因此 1.1 不应先列论文、再另起一段列 gap；应在每一层说明“这组工作把评价推进到哪里，因此我们不能再声称什么；但它的 estimand 与我们的 estimand 有何不同”。故事最终收敛为**从 persona-conditioned absolute adaptation evaluation 到跨用户 counterfactual personalization effect identification**。这是一项可观察结果的测量主张，不是对模型内部用户理解机制的因果证明。
 
 ## 1. Setoka：分层用户理解已经被系统评测
 
@@ -195,7 +195,7 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 ## 对 Proposal 的具体改动
 
 1. 将 1.1 改成一条连续收敛链：通用 DR 质量 → 用户理解与输出 → 规划/工具/GUI 行动 → 长程写入、更新与安全 → 个性化 DR → 反事实交付物识别。
-2. 将 gap 锁定为广义 DR 最终交付物的**用户条件化反事实识别缺口**，而不是“已有模块尚未被拼在一起”或任何单一维度的首创。
+2. 将 gap 锁定为从 **absolute adaptation evaluation** 到 **counterfactual personalization effect identification** 的 estimand 转换，而不是对 PDR-Bench rubric/judge 的能力批评。
 3. 增加 reviewer-safe 边界：不声称首先研究用户理解、行为历史、持久状态或时间更新。
 4. 将 Setoka 的 provenance/abstraction、PersonaTrail 的双记忆、APeB 的 hard alternatives、PASB 的 write governance、Temporal Interventions 的 C1–C4 和 TARS 的 human utility 分别映射到现有 Atlas、operator、rubric 和小规模用户研究。
 5. 新增四项最低成立条件：matched/swapped 人评稳定；语义等价 cue 下结论稳定；共同质量与 must-hold 不下降；至少一个 signal/operator 效应可重复且统计可分辨。

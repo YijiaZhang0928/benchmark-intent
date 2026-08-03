@@ -55,6 +55,9 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /class="inlineCite"[^>]+2509\.25106/i);
   assert.match(html, /task\/persona-conditioned rubric/i);
   assert.match(html, /2×2 矩阵 Mij = PFi\(Yj\)/i);
+  assert.match(html, /absolute adaptation evaluation/i);
+  assert.match(html, /counterfactual personalization effect/i);
+  assert.match(html, /must-change \/ must-hold \/ must-not/i);
   assert.match(html, /不证明内部“理解用户”/i);
   assert.match(html, /cue-equivalence robustness/i);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
@@ -92,9 +95,10 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.20/m);
+  assert.match(schema, /^schema_version:\s*0\.21/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
+  assert.match(schema, /estimand:\s*counterfactual_personalization_effect/);
   assert.match(manifest, /coverage_status/);
   assert.match(manifest, /tested/);
   assert.match(manifest, /defined_only/);

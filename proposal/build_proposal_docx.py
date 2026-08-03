@@ -21,10 +21,10 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.20 · 组内讨论稿"
+DOC_VERSION = "v0.21 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 3 日"
-RESEARCH_LINE = "Evaluation Atlas · 反事实特异性 · Cue Robustness · JudgeBench"
-CORE_CLAIM = "固定任务与证据，只改变用户；用跨用户交叉评分识别交付物的反事实特异性，并以跨 cue 稳健性限制主张。"
+RESEARCH_LINE = "Absolute Adaptation → Counterfactual Effect · 三类契约 · Cue Robustness"
+CORE_CLAIM = "固定任务与证据，只改变用户；用 matched/swapped 与 must-change/must-hold/must-not 识别方向正确、边界受控的个性化效应。"
 CONTENTS_ITEMS = [
     "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
     "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",

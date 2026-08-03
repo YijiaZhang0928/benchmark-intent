@@ -30,14 +30,14 @@
   <rect width="1920" height="1080" fill="url(#bg)"/>
   <rect x="0" y="0" width="1920" height="112" fill="url(#head)"/>
   <text x="960" y="52" text-anchor="middle" class="cn title">DeepAlign-Bench：长程 Deep Research 个性化交付物评测</text>
-  <text x="960" y="84" text-anchor="middle" class="cn subtitle">五平面 Atlas × 跨用户 2×2 交叉评分 × 跨 cue 稳健性 × 行为测试算子</text>
+  <text x="960" y="84" text-anchor="middle" class="cn subtitle">Absolute Adaptation Evaluation → Counterfactual Personalization Effect Identification</text>
 
   <!-- Research question ribbon -->
   <rect x="54" y="134" width="1812" height="82" rx="18" fill="#E6F1F5" stroke="#6FA5B5" stroke-width="1.5"/>
   <circle cx="105" cy="175" r="25" fill="#1E7584"/>
   <text x="105" y="184" text-anchor="middle" class="cn white" font-size="26" font-weight="700">?</text>
-  <text x="147" y="164" class="cn label">核心结果识别问题</text>
-  <text x="147" y="194" class="cn body">同一任务 T、证据 E 下，哪份交付物更适合哪位用户？该结论能否跨语义等价 cue 保持，并不牺牲事实性、任务质量与隐私？</text>
+  <text x="147" y="164" class="cn label">核心 estimand 转换</text>
+  <text x="147" y="194" class="cn body">PDR-Bench 已测“给定用户是否适配”；DeepAlign 测“固定 T/E/resources，只改变用户后，哪份交付物更适合谁”。</text>
 
   <!-- Column 1 -->
   <rect x="54" y="250" width="400" height="558" class="card"/>
@@ -63,7 +63,7 @@
   <!-- Column 2 -->
   <rect x="496" y="250" width="430" height="558" class="card"/>
   <rect x="496" y="250" width="430" height="58" rx="16" fill="#E5E0F5"/>
-  <text x="711" y="287" text-anchor="middle" class="cn section">② 反事实 2×2 + Cue 对照</text>
+  <text x="711" y="287" text-anchor="middle" class="cn section">② Counterfactual Effect Identification</text>
   <text x="711" y="338" text-anchor="middle" class="cn label">24 families · 48 user-task · 4 signal modes</text>
   <line x1="711" y1="360" x2="711" y2="402" stroke="#6D6794" stroke-width="3"/>
   <line x1="575" y1="402" x2="847" y2="402" stroke="#6D6794" stroke-width="3"/>
@@ -86,9 +86,9 @@
   <text x="711" y="627" text-anchor="middle" class="cn small">再将 Ya/Yb 交换给 Ua/Ub 评分</text>
 
   <rect x="537" y="686" width="348" height="88" rx="14" fill="#FFF8EE" stroke="#D8A758"/>
-  <text x="711" y="712" text-anchor="middle" class="cn label">跨用户对角优势 + 表达稳健性</text>
-  <text x="711" y="738" text-anchor="middle" class="cn small">Maa + Mbb &gt; Mab + Mba；must-hold 不下降</text>
-  <text x="711" y="761" text-anchor="middle" class="cn small">同一 user-state 换 persona/history/clarification 仍稳定</text>
+  <text x="711" y="712" text-anchor="middle" class="cn label">跨用户对角优势 + 三类契约</text>
+  <text x="711" y="738" text-anchor="middle" class="cn small">Maa + Mbb &gt; Mab + Mba；must-change 方向正确</text>
+  <text x="711" y="761" text-anchor="middle" class="cn small">must-hold 稳定 · must-not 不越界</text>
 
   <!-- Column 3 -->
   <rect x="968" y="250" width="404" height="558" class="card"/>
@@ -149,5 +149,5 @@
   <rect x="1430" y="910" width="397" height="75" rx="12" fill="#EDF2F5" stroke="#91A3B0"/>
   <text x="1628" y="941" text-anchor="middle" class="cn label">Coverage：Atlas × Operator × Agent</text>
   <text x="1628" y="968" text-anchor="middle" class="cn small">tested / defined-only / N/A / deferred + 95% CI</text>
-  <text x="960" y="1054" text-anchor="middle" class="cn small">核心创新：Evaluation Atlas · Cross-user Matrix · Cue Equivalence · Rubric Compiler · JudgeBench</text>
+  <text x="960" y="1054" text-anchor="middle" class="cn small">核心创新：Cross-user Effect Identification + must-change / must-hold / must-not；其余模块支撑稳健性与外部效度</text>
 </svg>
