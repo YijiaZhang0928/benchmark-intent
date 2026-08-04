@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-04
-当前版本：v0.25
+当前版本：v0.26
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
@@ -104,6 +104,17 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 3. 四张主表分别承担相关工作定位、benchmark composition/empirical coverage、可比 execution regime 内的数值主榜，以及关键对照与替代解释。
 4. 主文不使用雷达图、3D 图、无置信区间柱状总榜或用 sunburst 冒充 empirical coverage；商业产品、受控 harness 和开源系统不混排。
 5. 完整 task cube、逐 family CFA、逐 anchor S0–S3 曲线、longitudinal 指标、rubric leaf、agent/version、成本和人工一致性进入附录。图表模板是预注册结构，不预设结果方向。
+
+### 1.9 v0.26：结果图收敛为效应、能力拓扑与失效画像
+
+本轮不再把 Figure 3 理解成普通模型排行榜，而把结果证据冻结为以下结构：
+
+1. Figure 3A 是论文的 signature plot：横轴 `PF_swapped`、纵轴 `PF_matched`，45° 线表示没有跨用户优势。它直接区分“两个用户都得到通用高质量输出”和“正确用户确实得到更适合自己的版本”。
+2. Figure 3B 用 CFA forest plot 报 effect size、95% CI、样本量和 TQ/FR eligibility；Figure 3C 用 `agent × (3 task strata × 6 research intents)` 嵌套热力图展示能力拓扑；Figure 3D 只在可比 execution regime 内画 cost–CFA Pareto。
+3. Figure 4A 以 `agent × signal view` 矩阵报告跨 persona/history/clarification/workspace 的稳健性，并显式给出 Worst-view CFA 与 Cue Gap；Figure 4B 用 S0–S3 CFA retention curve 报抗压能力。
+4. Figure 4C 的堆叠横条总长度必须是全部 episode 中的绝对 outcome failure rate，不能把已失败样本内部归一到 100%；Figure 4D 用 `anchor family × observed outcome failure` 热力图解释哪类压力触发哪类最终错误。
+5. 主文只根据最终交付物报告用户盲、错误用户绑定、过度个性化、共同核心破坏、冲突/过期误用、隐私/权限、澄清失败和 other/emergent。只有 trace 可比的系统，才能在附录报告 acquisition、preservation、use 或 update 的过程证据；不得从最终结果反推内部机制。
+6. Figure 5 是 measurement validity，不是第三张 agent leaderboard；它验证 Figures 3–4 的自动评分是否达到人类一致性、校准和 nuisance-robustness 门槛。
 
 ## 2. 冻结的两个月范围
 
@@ -232,3 +243,4 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.23：删除 re-anchor、S4 recovery pair、恢复型 RQ/H、recovery gain 与 schema 恢复字段；Anchor 只做 S0–S3 压力测试，保留 dynamic update 作为当前状态采用测试，并把第四榜改为 Boundary & Governance。
 - v0.24：不改方法与范围，重写正式研究 Proposal 的摘要、PDR-Bench 对比、Atlas、任务/persona 构造、rubric、judge、实验矩阵和审稿防守；将长句和抽象名词改为更直接的学术表达，并明确 Atlas 与 coverage manifest 的实际作用。
 - v0.25：将论文主文图表冻结为 5 张主图 + 4 张主表；新增图表蓝图 HTML，明确每张图回答的 RQ、panel 结构、表格字段、附录迁移规则与禁止的误导性可视化。
+- v0.26：将结果图具体化为 PF matched–swapped signature plot、CFA forest、任务能力拓扑、信号/压力稳健性和绝对 outcome-failure 画像；过程机制只在 trace 可比时进入附录。

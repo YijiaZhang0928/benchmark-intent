@@ -2,15 +2,15 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（v0.25）
+## 当前交付物（v0.26）
 
-- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.25 增加论文五图四表的证据链规划。
+- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.26 将主结果具体化为 matched–swapped signature plot、任务能力拓扑和 outcome-failure 画像。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：10 页标准论文 Proposal，保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
 - `deliverables/DeepAlign-Bench_完整人话版.pdf`：逻辑、内容和方法不变，改为直白语言，适合组内讨论。
 - `deliverables/DeepAlign-Bench_汇报精简版.pdf`：9 页导师汇报稿，适合 15–20 分钟讲解。
 - `deliverables/DeepAlign-Bench_HTML汇报版.html`：离线可打开的统一阅读入口，可下载四版 PDF/Word。
 - `deliverables/DeepAlign-Bench_七篇相关论文速览.html`：七篇最近邻工作精读 + 22 篇 agent personalization / evaluation 扩展相关性审计；保留旧文件名以兼容已有链接。
-- `deliverables/DeepAlign-Bench_论文图表蓝图.html`：主文五张图、四张表及附录图表的可读结构规划。
+- `deliverables/DeepAlign-Bench_论文图表蓝图.html`：主文五张图、四张表及附录图表规划；包含 Figure 3–5 的结果图可视原型。
 
 四版共用同一研究设计；差别只在结构、语言密度与细节层级，不构成方法变更。
 

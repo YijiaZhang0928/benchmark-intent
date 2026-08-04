@@ -21,7 +21,7 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.25 · 组内讨论稿"
+DOC_VERSION = "v0.26 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 4 日"
 RESEARCH_LINE = "Counterfactual Effect · 可审计构造 · 分级压力 · 跨环境运行"
 CORE_CLAIM = "固定任务与证据，只改变目标用户；用 matched/swapped 与三类契约判断输出是否按正确方向变化，再比较不同 agent 在 S0–S3 压力下的表现。"
@@ -636,7 +636,7 @@ def build(md_path=MD, out_path=OUT):
             elif STYLE_PRESET == "compact_reference_guide":
                 reference_size = 7.4
             else:
-                reference_size = 8.6
+                reference_size = 8.4
             add_inline(p, stripped, size=reference_size)
             current_num_id = None
             i += 1
@@ -670,7 +670,7 @@ def build(md_path=MD, out_path=OUT):
             elif STYLE_PRESET == "compact_reference_guide":
                 ref_size, ref_space, ref_line = 7.4, 0, 0.9
             else:
-                ref_size, ref_space, ref_line = 8.6, 0, 0.95
+                ref_size, ref_space, ref_line = 8.4, 0, 0.92
             p.paragraph_format.space_after = Pt(ref_space)
             p.paragraph_format.line_spacing = ref_line
             for r in p.runs:

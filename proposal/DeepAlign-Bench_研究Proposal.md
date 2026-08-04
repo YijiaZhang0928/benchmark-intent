@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.25 · 2026 年 8 月 4 日
+版本：v0.26 · 2026 年 8 月 4 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -868,9 +868,9 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **Figure 2 · 一个 counterfactual family 如何构造和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–3 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个语义等价 signal views；C 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA；D 用一个具体 case 列出 must-change、must-hold、must-not 和 clarify-if-unknown。它把 persona 真值、输出变化和 estimand 直接连接起来，是方法部分最重要的细节图。
 
-**Figure 3 · 主结果：不同 agent 在什么任务上产生真实个性化价值。** 四个共享尺度的 panel：A 用 forest/dot plot 报各 agent 的 CFA 与 95% CI，并标记是否通过 TQ/FR gate；B 用 `agent × research intent` heatmap 报 CFA；C 用 `agent × task stratum` heatmap 报 worst-slice CFA 或 PF；D 用 cost–CFA 散点图报告效率前沿。不能用雷达图，也不能把所有指标平均成一个冠军分数。
+**Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `PF_swapped`、纵轴为 `PF_matched`，45° 对角线表示没有跨用户优势；离对角线越远且位于上方，说明 matched 版本相对 swapped 版本的用户特异价值越强。点的实心/空心只表示是否通过 TQ/FR gate，不用颜色重复编码质量。B 用 forest/dot plot 报各 agent 的 CFA 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 用统一色标的 `agent × (3 task strata × 6 research intents)` 嵌套 heatmap 报 CFA，缺测单元使用斜线并在底部报告样本量；D 只在可比 regime 内画 cost–CFA Pareto frontier。A 解释 estimand，B 给出不确定性，C 显示能力拓扑，D 报告效率；不能用雷达图或单一冠军分数替代这四类信息。
 
-**Figure 4 · 信号渠道、压力和失败模式。** 四个 panel：A 比较 structured persona、natural history、clarification 和 workspace/history 的 Worst-view CFA 与 Cue Gap；B 按 S0–S3 绘制各 agent 的 CFA/retention dose-response 曲线；C 以“个性化结果风险 × observed failure mode”画归一化 heatmap，并单列 `other/emergent`；D 报压力相对 clean 条件造成的 TQ、FR、MP 和隐私/权限 collateral damage。该图对应 Agent-SafetyBench 式失败分析，但分类对象是个性化结果风险与机制，不是 attack 类型。
+**Figure 4 · 信号渠道、压力和最终失败。** 四个 panel：A 用 `agent × signal view` heatmap 报 structured persona、natural history、clarification、workspace/history 等条件下的 CFA，并在最右两列报告 Worst-view CFA 与 Cue Gap；B 按 S0–S3 绘制各 agent 的 CFA retention curve，主文只画跨 anchor 汇总及置信区间，逐 anchor 曲线进入附录；C 按 agent 画 outcome-level failure 的堆叠横条，横条总长度是全部 episode 中的绝对失败率，而不是“已失败样本内部占比”；D 用 `anchor family × observed outcome failure` heatmap 显示哪类压力更容易触发用户盲、错误用户绑定、过度个性化、共同核心破坏、冲突/过期误用、隐私/权限和澄清失败，并单列 `other/emergent`。主文不从最终交付物反推内部机制；只有具备可比 trace 的系统，才可在附录报告 acquisition、preservation、use 或 update 的过程证据。
 
 **Figure 5 · 自动评价是否可信：JudgeBench 与人类校准。** 四个 panel：A 按 rubric module 报 judge–human pairwise accuracy/α；B 画预测置信度与实际正确率的 calibration/reliability curve；C 报 A/B 顺序、长度、格式、persona 关键词和隐私诱饵造成的准确率变化；D 画“自动覆盖率—人工成本—错误率”级联曲线，并标出预注册主榜门槛。Judge 未过门槛时，本图应直接支持降级为人评，而不是隐藏失败。
 
@@ -880,7 +880,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **Table 2 · Benchmark composition 与 empirical coverage。** 按 task stratum、research intent、deliverable、signal channel、environment、agent mode、anchor 和 stakes 报 family/episode 数、用户对数和 `tested` 覆盖率；另列 defined-only、structurally-inapplicable 和 deferred 数量。它证明实际测了什么，不用 ontology 的理论分支数冒充样本量。
 
-**Table 3 · 主 leaderboard 数值表。** 每行是一个可比的 `agent × execution regime`，列为 TQ、FR、PF、MP、CFA、Worst-view CFA、Neutral Invariance、cost 和 eligibility。E1/E2/E3 分块，商业产品榜与受控 harness 榜不混排；报告置信区间或标准误，而不是只报点估计。
+**Table 3 · 主 leaderboard 数值表。** 每行是一个可比的 `agent × execution regime`，列为 TQ、FR、`PF_matched`、`PF_swapped`、MP、CFA、Worst-view CFA、Neutral Invariance、cost 和 eligibility。E1/E2/E3 分块，商业产品榜与受控 harness 榜不混排；报告置信区间或标准误，而不是只报点估计。
 
 **Table 4 · 关键对照、消融与替代解释。** 行包括 task-only、matched persona、semantic-equivalent history、clarification、irrelevant cue、wrong-user swap、去掉 must-hold/must-not、只按长度/风格匹配和去掉 TQ gate；列为 ΔCFA、Specificity Precision/Recall、Neutral Invariance、TQ/FR、judge coverage 与主要解释。它用于证明结果不是“多给了上下文”“写得更长”或“复述 persona 关键词”。
 

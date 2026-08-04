@@ -1,5 +1,14 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.26 - 2026-08-04
+
+- 将 Figure 3A 冻结为 `PF_swapped × PF_matched` signature plot，用 45° 线直接区分通用高适配与跨用户特异价值；CFA forest plot 单独承担 effect size 与不确定性。
+- 将两张分裂的 task heatmap 合并为 `agent × (3 task strata × 6 research intents)` 嵌套能力拓扑，并保留可比 execution regime 内的 cost–CFA Pareto。
+- 将 Figure 4 具体化为 signal-view CFA matrix、S0–S3 CFA retention、按 agent 的绝对 outcome-failure 堆叠条和 `anchor × observed outcome failure` 热力图。
+- 收紧机制结论：主文只报告最终交付物可观察的错误；acquisition/preservation/use/update 只在 trace 可比时进入附录，不从最终结果反推内部过程。
+- 图表蓝图 HTML 新增带坐标轴和面板布局的结果图原型；所有示意点明确标为结构示意而非预设结果。
+- 同步正式 Proposal、在线汇报版、项目记忆、离线 HTML 与版本记录。
+
 ## v0.25 - 2026-08-04
 
 - 按论文论证顺序冻结主文 5 张图：总体流程、counterfactual family 构造与评分、主能力 profile、渠道/压力/失败分析、JudgeBench—human validity。
