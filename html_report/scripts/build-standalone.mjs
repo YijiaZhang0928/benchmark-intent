@@ -5,6 +5,7 @@ const root = resolve(import.meta.dirname, "../..");
 const siteRoot = resolve(root, "html_report");
 const outPath = resolve(root, "deliverables/DeepAlign-Bench_HTML汇报版.html");
 const literatureOutPath = resolve(root, "deliverables/DeepAlign-Bench_七篇相关论文速览.html");
+const figuresOutPath = resolve(root, "deliverables/DeepAlign-Bench_论文图表蓝图.html");
 
 const css = (await readFile(resolve(siteRoot, "app/globals.css"), "utf8"))
   .replace(/^@import\s+["']tailwindcss["'];?\s*/m, "");
@@ -25,10 +26,15 @@ function localizeMainBody(body) {
   .replaceAll('href="/DeepAlign-Bench_汇报精简版.docx"', 'href="./DeepAlign-Bench_汇报精简版.docx"')
   .replaceAll('href="/case.schema.yaml"', 'href="./case.schema.yaml"')
   .replaceAll('href="/PROJECT_MEMORY.md"', 'href="../PROJECT_MEMORY.md"')
-  .replaceAll('href="/literature"', 'href="./DeepAlign-Bench_七篇相关论文速览.html"');
+  .replaceAll('href="/literature"', 'href="./DeepAlign-Bench_七篇相关论文速览.html"')
+  .replaceAll('href="/figures"', 'href="./DeepAlign-Bench_论文图表蓝图.html"');
 }
 
 function localizeLiteratureBody(body) {
+  return body.replaceAll('href="/"', 'href="./DeepAlign-Bench_HTML汇报版.html"');
+}
+
+function localizeFiguresBody(body) {
   return body.replaceAll('href="/"', 'href="./DeepAlign-Bench_HTML汇报版.html"');
 }
 
@@ -43,6 +49,7 @@ async function renderedBody(pathname) {
 
 const body = localizeMainBody(await renderedBody("/"));
 const literatureBody = localizeLiteratureBody(await renderedBody("/literature"));
+const figuresBody = localizeFiguresBody(await renderedBody("/figures"));
 
 const standalone = `<!doctype html>
 <html lang="zh-CN">
@@ -71,4 +78,17 @@ const literatureStandalone = `<!doctype html>
 </html>
 `;
 await writeFile(literatureOutPath, literatureStandalone, "utf8");
-console.log(`${outPath}\n${literatureOutPath}`);
+const figuresStandalone = `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DeepAlign-Bench 主文五张图、四张表与附录图表规划">
+  <title>论文图表蓝图｜DeepAlign-Bench</title>
+  <style>${css}</style>
+</head>
+<body>${figuresBody}</body>
+</html>
+`;
+await writeFile(figuresOutPath, figuresStandalone, "utf8");
+console.log(`${outPath}\n${literatureOutPath}\n${figuresOutPath}`);

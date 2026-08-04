@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.24 · 2026 年 8 月 3 日
+版本：v0.25 · 2026 年 8 月 4 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -857,6 +857,38 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 **Judge**：240-unit JudgeBench；确定性/证据 verifier、强通用 judge 和分层人评组成主线。SFT scorer 只有在第 4 周前不影响主实验且存在足够高质量标签时进入附录，否则明确列为 future work。
 
 **论文主张边界**：首版只先验证一件核心事情：跨用户对照和三类预冻结契约能否稳定识别 counterfactual personalization effect。Ontology、信号渠道、长程算子、rubric compiler 和 JudgeBench 用来说明这套评价是否可运行、是否稳健、能否推广。论文不声称覆盖所有 DR 模式，也不为 18 个 task-cube 单元分别建立稳定排行榜。
+
+## 16. 论文图表规划：五张主图、四张主表
+
+图表必须围绕论文主张组织，而不是把 Atlas 的所有字段都画出来。两个月锁定版建议主文使用 **5 张图 + 4 张表**；完整的 family、anchor、rubric、judge 和成本明细放入附录。每张主图只回答一个一级问题，结果图不预填理想趋势。
+
+### 16.1 主文五张图
+
+**Figure 1 · DeepAlign-Bench 总览：从用户信号到可审计的个性化效应。** 使用从左到右的五段流程：`Task/Evidence + paired user state` → `signal view + execution environment` → `agent system` → `matched/swapped artifacts` → `TQ/FR gate + CFA/contracts + four leaderboard profiles`。Atlas 五个平面放在顶部作为 case 条件带，S0–S3 anchor stress 与 JudgeBench 放在底部作为两条验证支线。这张图回答“benchmark 整体如何运行”，不塞入所有 taxonomy 叶节点。
+
+**Figure 2 · 一个 counterfactual family 如何构造和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–3 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个语义等价 signal views；C 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA；D 用一个具体 case 列出 must-change、must-hold、must-not 和 clarify-if-unknown。它把 persona 真值、输出变化和 estimand 直接连接起来，是方法部分最重要的细节图。
+
+**Figure 3 · 主结果：不同 agent 在什么任务上产生真实个性化价值。** 四个共享尺度的 panel：A 用 forest/dot plot 报各 agent 的 CFA 与 95% CI，并标记是否通过 TQ/FR gate；B 用 `agent × research intent` heatmap 报 CFA；C 用 `agent × task stratum` heatmap 报 worst-slice CFA 或 PF；D 用 cost–CFA 散点图报告效率前沿。不能用雷达图，也不能把所有指标平均成一个冠军分数。
+
+**Figure 4 · 信号渠道、压力和失败模式。** 四个 panel：A 比较 structured persona、natural history、clarification 和 workspace/history 的 Worst-view CFA 与 Cue Gap；B 按 S0–S3 绘制各 agent 的 CFA/retention dose-response 曲线；C 以“个性化结果风险 × observed failure mode”画归一化 heatmap，并单列 `other/emergent`；D 报压力相对 clean 条件造成的 TQ、FR、MP 和隐私/权限 collateral damage。该图对应 Agent-SafetyBench 式失败分析，但分类对象是个性化结果风险与机制，不是 attack 类型。
+
+**Figure 5 · 自动评价是否可信：JudgeBench 与人类校准。** 四个 panel：A 按 rubric module 报 judge–human pairwise accuracy/α；B 画预测置信度与实际正确率的 calibration/reliability curve；C 报 A/B 顺序、长度、格式、persona 关键词和隐私诱饵造成的准确率变化；D 画“自动覆盖率—人工成本—错误率”级联曲线，并标出预注册主榜门槛。Judge 未过门槛时，本图应直接支持降级为人评，而不是隐藏失败。
+
+### 16.2 主文四张表
+
+**Table 1 · 与最近邻 benchmark 的定位比较。** 行为 PDR-Bench、ResearchRubrics、DeepResearch Bench、PersonaTrail/APeB、PASB 和 DeepAlign；列只保留与主张有关的 task-persona absolute fit、cross-user counterfactual、must-change/hold/not、multi-cue、longitudinal stress、multi-deliverable、human validity 和 judge calibration。避免用“大而全”的勾选表代替文字论证。
+
+**Table 2 · Benchmark composition 与 empirical coverage。** 按 task stratum、research intent、deliverable、signal channel、environment、agent mode、anchor 和 stakes 报 family/episode 数、用户对数和 `tested` 覆盖率；另列 defined-only、structurally-inapplicable 和 deferred 数量。它证明实际测了什么，不用 ontology 的理论分支数冒充样本量。
+
+**Table 3 · 主 leaderboard 数值表。** 每行是一个可比的 `agent × execution regime`，列为 TQ、FR、PF、MP、CFA、Worst-view CFA、Neutral Invariance、cost 和 eligibility。E1/E2/E3 分块，商业产品榜与受控 harness 榜不混排；报告置信区间或标准误，而不是只报点估计。
+
+**Table 4 · 关键对照、消融与替代解释。** 行包括 task-only、matched persona、semantic-equivalent history、clarification、irrelevant cue、wrong-user swap、去掉 must-hold/must-not、只按长度/风格匹配和去掉 TQ gate；列为 ΔCFA、Specificity Precision/Recall、Neutral Invariance、TQ/FR、judge coverage 与主要解释。它用于证明结果不是“多给了上下文”“写得更长”或“复述 persona 关键词”。
+
+### 16.3 附录图表与版面规则
+
+附录建议保留：逐 family CFA forest plot、完整 `3 strata × 6 intents × deliverable` coverage heatmap、八个 anchor 的独立 S0–S3 曲线、clarification value/turn、retention/update 曲线、各语言/用户群切片，以及 judge confusion matrix。附录表应给出 24 个 family、48 个 user-task、persona compatibility gate、rubric leaf bank、agent/version/tool metadata、完整结果、成本、失败案例和人工标注一致性。
+
+主文结果图统一使用共享坐标、95% CI、样本数和 gate 标记；同一颜色始终代表同一 agent，线型或形状代表 signal/stress 条件。不要使用 3D 图、面积难比较的 sunburst、没有不确定性的柱状榜、把多指标压成一条折线的雷达图，或把 expected 与 observed failure 混在同一标签中。若版面不足，优先保留 Figures 1–3、5 和 Tables 2–4；Figure 4 的逐 anchor 细节移入附录，但不能删掉 JudgeBench 的测量效度证据。
 
 ## 参考文献
 

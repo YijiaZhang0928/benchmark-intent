@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.25 - 2026-08-04
+
+- 按论文论证顺序冻结主文 5 张图：总体流程、counterfactual family 构造与评分、主能力 profile、渠道/压力/失败分析、JudgeBench—human validity。
+- 冻结主文 4 张表：相关工作定位、数据与 empirical coverage、分 execution regime 数值主榜、关键对照与替代解释。
+- 明确 Figure 2 必须使用完整 case，Figure 3 不使用雷达图或单一冠军分，Figure 4 区分 expected/observed failure，Figure 5 直接展示 judge 未过门槛时的降级依据。
+- 新增独立《论文图表蓝图》HTML 页面，并把逐 family、逐 anchor、longitudinal、rubric、成本和完整结果安排到附录。
+- 同步正式 Proposal、在线汇报版、项目记忆、离线 HTML 与版本记录。
+
 ## v0.24 - 2026-08-03
 
 - 保持研究逻辑、实验矩阵、公式、rubric、judge、anchor 和 leaderboard 不变，集中改写《正式研究 Proposal》的语言。

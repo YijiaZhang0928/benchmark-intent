@@ -51,6 +51,7 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /同一套方法，按阅读场景分成四版/);
   assert.match(html, /8 个 anchor 是固定实验宿主；扰动才是处理变量/);
   assert.match(html, /href="\/literature"/i);
+  assert.match(html, /href="\/figures"/i);
   assert.match(html, /class="inlineCite"[^>]+2607\.27056/i);
   assert.match(html, /class="inlineCite"[^>]+2509\.25106/i);
   assert.match(html, /task\/persona-conditioned rubric/i);
@@ -89,6 +90,17 @@ test("server-renders the 29-paper related-work map", async () => {
   assert.match(html, /PARL/);
   assert.match(html, /class="inlineCite"[^>]+2607\.21635/i);
   assert.match(html, /class="inlineCite"[^>]+2607\.10526/i);
+});
+
+test("server-renders the paper figure and table blueprint", async () => {
+  const response = await renderPath("/figures");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /5 张图 \+ 4 张表/);
+  assert.match(html, /Counterfactual family 构造与评分/);
+  assert.match(html, /JudgeBench 与人类校准/);
+  assert.match(html, /主 Leaderboard 数值/);
+  assert.match(html, /明确不建议/);
 });
 
 test("keeps the machine-readable metadata and downloadable artifacts in sync", async () => {

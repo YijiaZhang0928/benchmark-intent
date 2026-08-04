@@ -2,8 +2,8 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-03
-当前版本：v0.24
+最后更新：2026-08-04
+当前版本：v0.25
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
@@ -94,6 +94,16 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 3. Atlas 明确为 case schema 和实验索引，不是自动生成 benchmark 的算法。它用于分层抽样、生成受控条件、选择 rubric、切分结果和覆盖审计。
 4. Coverage manifest 只记录预注册候选实验单元，不枚举五平面的完整笛卡尔积；只有达到运行和评分要求的 `tested` 单元可以支持论文结论。
 5. 保留必要英文术语，以便与论文和 schema 对齐；第一次出现时尽量用中文说明其具体含义，不用术语替代推理。
+
+### 1.8 v0.25：论文图表证据链冻结为五图四表
+
+主文图表不追求展示 Atlas 的全部分支，而按论文论证顺序组织：
+
+1. 五张主图依次回答 benchmark 如何运行、counterfactual family 如何构造和评分、agent 在何处产生个性化价值、能力在何种渠道/压力下失败，以及自动评价是否可信。
+2. Figure 1 是总体流程；Figure 2 用一个完整 case 讲清 Ua/Ub、signal views、2×2 交叉评分和四类 contract；Figure 3 是分层 leaderboard profile；Figure 4 是渠道/压力/失败分析；Figure 5 是 JudgeBench—human validity。
+3. 四张主表分别承担相关工作定位、benchmark composition/empirical coverage、可比 execution regime 内的数值主榜，以及关键对照与替代解释。
+4. 主文不使用雷达图、3D 图、无置信区间柱状总榜或用 sunburst 冒充 empirical coverage；商业产品、受控 harness 和开源系统不混排。
+5. 完整 task cube、逐 family CFA、逐 anchor S0–S3 曲线、longitudinal 指标、rubric leaf、agent/version、成本和人工一致性进入附录。图表模板是预注册结构，不预设结果方向。
 
 ## 2. 冻结的两个月范围
 
@@ -221,3 +231,4 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.22：把 task/persona 的真实构造链、A1–A8 功能 anchor、S0–S4 压力阶梯、M1–M6 system mode、E1–E3 execution regime 和四类 leaderboard profile 写成可直接实现的协议；恢复对 PDR-Bench judge 的证据化测量批评，同时不否定其 absolute adaptation construct。
 - v0.23：删除 re-anchor、S4 recovery pair、恢复型 RQ/H、recovery gain 与 schema 恢复字段；Anchor 只做 S0–S3 压力测试，保留 dynamic update 作为当前状态采用测试，并把第四榜改为 Boundary & Governance。
 - v0.24：不改方法与范围，重写正式研究 Proposal 的摘要、PDR-Bench 对比、Atlas、任务/persona 构造、rubric、judge、实验矩阵和审稿防守；将长句和抽象名词改为更直接的学术表达，并明确 Atlas 与 coverage manifest 的实际作用。
+- v0.25：将论文主文图表冻结为 5 张主图 + 4 张主表；新增图表蓝图 HTML，明确每张图回答的 RQ、panel 结构、表格字段、附录迁移规则与禁止的误导性可视化。

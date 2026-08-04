@@ -50,7 +50,7 @@ export default function Home() {
         <nav className="nav shell" aria-label="主导航">
           <a className="brand" href="#top">DeepAlign<span>Bench</span></a>
           <div className="navlinks">
-            <a href="#design">设计</a><a href="/literature">文献地图</a><a href="#metrics">指标</a><a href="#scope">评测边界</a><a href="#review">审稿防守</a>
+            <a href="#design">设计</a><a href="/literature">文献地图</a><a href="/figures">图表蓝图</a><a href="#metrics">指标</a><a href="#scope">评测边界</a><a href="#review">审稿防守</a>
           </div>
           <a className="navCta" href="#editions">选择阅读版本</a>
         </nav>
@@ -95,7 +95,7 @@ export default function Home() {
           <div className="sectionHead"><h2>同一套方法，按阅读场景分成四版</h2><p>没有删改研究逻辑、实验设计、rubric、metrics 或 judge；只调整结构、语言密度和细节层级。</p></div>
           <div className="editionGrid">
             <article>
-              <span>METHOD BASELINE · 56 PAGES</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.24 保留完整论证和实验设计，但把长句、抽象名词和隐含逻辑改成更直接的表达。</p>
+              <span>METHOD BASELINE · 58 PAGES</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.25 保留完整论证和实验设计，以更直接的语言说明方法，并新增论文五图四表的证据链蓝图。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
             </article>
             <article className="recommended">
@@ -437,7 +437,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.24 · 2026-08-03</p><div><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.25 · 2026-08-04</p><div><a href="/figures">图表蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }

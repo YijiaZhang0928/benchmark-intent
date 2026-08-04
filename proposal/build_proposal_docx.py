@@ -21,14 +21,15 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.24 · 组内讨论稿"
-DOC_DATE = "2026 年 8 月 3 日"
+DOC_VERSION = "v0.25 · 组内讨论稿"
+DOC_DATE = "2026 年 8 月 4 日"
 RESEARCH_LINE = "Counterfactual Effect · 可审计构造 · 分级压力 · 跨环境运行"
 CORE_CLAIM = "固定任务与证据，只改变目标用户；用 matched/swapped 与三类契约判断输出是否按正确方向变化，再比较不同 agent 在 S0–S3 压力下的表现。"
 CONTENTS_ITEMS = [
     "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
     "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",
-    "严格审稿风险与防守", "里程碑、论文结构与最小可行版本", "参考文献",
+    "严格审稿风险与防守", "里程碑、论文结构与最小可行版本", "论文图表蓝图",
+    "参考文献",
 ]
 READING_NOTE = "阅读提示：主图给出整体逻辑；第 7–8 节是本 proposal 的测量学核心；第 11 节按顶会审稿视角集中列出可预见攻击与防守。"
 FIGURE_TRIGGER = "2. 关键文献"
@@ -635,7 +636,7 @@ def build(md_path=MD, out_path=OUT):
             elif STYLE_PRESET == "compact_reference_guide":
                 reference_size = 7.4
             else:
-                reference_size = 9.2
+                reference_size = 8.6
             add_inline(p, stripped, size=reference_size)
             current_num_id = None
             i += 1
@@ -669,7 +670,7 @@ def build(md_path=MD, out_path=OUT):
             elif STYLE_PRESET == "compact_reference_guide":
                 ref_size, ref_space, ref_line = 7.4, 0, 0.9
             else:
-                ref_size, ref_space, ref_line = 9.2, 2, 1.05
+                ref_size, ref_space, ref_line = 8.6, 0, 0.95
             p.paragraph_format.space_after = Pt(ref_space)
             p.paragraph_format.line_spacing = ref_line
             for r in p.runs:
