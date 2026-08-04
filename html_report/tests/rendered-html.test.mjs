@@ -99,7 +99,8 @@ test("server-renders the paper figure and table blueprint", async () => {
   assert.match(html, /2 张方法图 \+ 2 张结果图 \+ 1 张测量效度图/);
   assert.match(html, /Counterfactual family 构造与评分/);
   assert.match(html, /PF swapped/);
-  assert.match(html, /Absolute outcome-failure profile/);
+  assert.match(html, /Multi-label failure incidence/);
+  assert.match(html, /完整 18 个交叉格/);
   assert.match(html, /JudgeBench 与人类校准/);
   assert.match(html, /主 Leaderboard 数值/);
   assert.match(html, /明确不建议/);

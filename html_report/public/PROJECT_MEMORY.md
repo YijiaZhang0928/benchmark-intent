@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-04
-当前版本：v0.26
+当前版本：v0.27
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
@@ -115,6 +115,13 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 4. Figure 4C 的堆叠横条总长度必须是全部 episode 中的绝对 outcome failure rate，不能把已失败样本内部归一到 100%；Figure 4D 用 `anchor family × observed outcome failure` 热力图解释哪类压力触发哪类最终错误。
 5. 主文只根据最终交付物报告用户盲、错误用户绑定、过度个性化、共同核心破坏、冲突/过期误用、隐私/权限、澄清失败和 other/emergent。只有 trace 可比的系统，才能在附录报告 acquisition、preservation、use 或 update 的过程证据；不得从最终结果反推内部机制。
 6. Figure 5 是 measurement validity，不是第三张 agent leaderboard；它验证 Figures 3–4 的自动评分是否达到人类一致性、校准和 nuisance-robustness 门槛。
+
+### 1.10 v0.27：结果图按样本支持度与多标签结构校正
+
+1. 两个月主矩阵中，18 个基础 family 基本是一格一个 `3 strata × 6 intents` 单元。因此主文不能把 18 格当成稳定 cell-level leaderboard。Figure 3C 改为分别汇总 `agent × 3 strata` 和 `agent × 6 intents` 的边际 CFA，并报告 family 数；18 个交叉格只进附录作描述性展示。
+2. Outcome failure 可以共现。Figure 4C 不再使用互斥堆叠条，改为每个 failure 独立报告全部 eligible episode 中的 incidence 与 95% CI；共现结构进入附录 UpSet 图。若未来定义 primary failure，必须预注册优先级并另行报告多标签原值。
+3. Structured persona 与 natural history 可以在 equivalence audit 后组成 `V_eq`；Cue Gap 与 Worst-view CFA 都只在 `V_eq` 上计算。clarification-allowed 是交互获取条件，workspace/history 是私有环境条件，不能统称为语义等价 cue，也不进入 cue-equivalence summary。
+4. 比例型 `CFA retention = CFA_Sk / CFA_S0` 仅在 `CFA_S0 ≥ ε` 时使用；基线接近零时改报 `ΔCFA` 和原始 CFA，避免分母噪声制造虚假的压力跌幅。
 
 ## 2. 冻结的两个月范围
 
@@ -244,3 +251,4 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.24：不改方法与范围，重写正式研究 Proposal 的摘要、PDR-Bench 对比、Atlas、任务/persona 构造、rubric、judge、实验矩阵和审稿防守；将长句和抽象名词改为更直接的学术表达，并明确 Atlas 与 coverage manifest 的实际作用。
 - v0.25：将论文主文图表冻结为 5 张主图 + 4 张主表；新增图表蓝图 HTML，明确每张图回答的 RQ、panel 结构、表格字段、附录迁移规则与禁止的误导性可视化。
 - v0.26：将结果图具体化为 PF matched–swapped signature plot、CFA forest、任务能力拓扑、信号/压力稳健性和绝对 outcome-failure 画像；过程机制只在 trace 可比时进入附录。
+- v0.27：按样本支持度把 18-cell task cube 降为附录描述，主文改报 strata/intent 边际；failure 改为多标签 incidence；Cue Gap 与 retention 增加适用性门。

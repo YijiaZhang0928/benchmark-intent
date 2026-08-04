@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.26 · 2026 年 8 月 4 日
+版本：v0.27 · 2026 年 8 月 4 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -569,17 +569,17 @@ Rubric compiler 必须接受四项覆盖校验：
 - **Specificity Recall**：金标要求中被正确体现的比例；
 - **Neutral Invariance**：本不应随用户变化的共同事实/结论保持一致的程度。
 
-对同一潜在 user-state 的语义等价 signal views，不把稳定性压成一个可被平均掩盖的总分，而同时报告：
+令 `V_eq` 表示通过 equivalence audit、表达同一 task-relevant user-state 的直接提供视图。首版只把 structured persona 与 natural history 放入 `V_eq`；clarification-allowed 和 workspace/history 是不同的信息获取条件，不进入 cue-equivalence 计算。对 `V_eq` 同时报告：
 
-- **Worst-view CFA**：所有 signal views 中 CFA 的最小值，防止只挑最容易的显式 persona 形式；
-- **Cue Gap**：最高 CFA 与最低 CFA 之差，衡量结论对表达渠道/措辞的敏感度；
+- **Worst-view CFA**：`V_eq` 中 CFA 的最小值，防止只挑最容易的显式 persona 形式；
+- **Cue Gap**：`V_eq` 中最高 CFA 与最低 CFA 之差，衡量同义表达渠道带来的敏感度；
 - **Contract Consistency**：不同 views 下 must-change / must-hold 叶节点判定的一致率；
 - **Irrelevant-Cue Effect**：只改变任务无关 cue 时 PF、TQ 和 must-hold 的配对变化。
 
 ### 7.3 信息渠道与长程指标
 
 - **IVG（Information Value Gain）**：某用户信息渠道相对 task-only 的 NPF 增益，并同时报告 TQ/MP 变化；
-- **Semantic Channel Gap**：语义等价的结构化 persona 与自然对话历史之间的表现差；与 Cue Gap 分开报告，以区分渠道可用性和表面改写敏感性；
+- **Semantic Channel Gap**：结构化 persona 与自然历史之间的有符号表现差；Cue Gap 报绝对范围，Semantic Channel Gap 保留变化方向；
 - **Retention Curve / AUC**：在 0、25%、50%、75%、100% 轨迹检查点插入受控交付 probe，绘制 PF 随有效干扰长度的曲线；
 - **Drift Half-life**：PF 相对起点下降一半所需的有效干扰量；若从未下降则截尾报告；
 - **Update Correctness / Stale-State Residue**：动态事件后采用当前状态的正确率，以及旧状态仍进入交付物的比例；
@@ -672,7 +672,7 @@ M1–M3 是主论文的三类核心系统；M4–M6 是**架构 probe**，用于
 不发布一个把所有东西平均掉的总冠军，而发布四层 profile：
 
 1. **Base capability board**：在 S0 clean、TQ/FR 过门条件下，按 `3 strata × 6 intents × deliverable` 报 PF、CFA 和成本；回答系统在哪类任务能做个性化。
-2. **Signal acquisition board**：按 structured persona、natural history、clarification、workspace/history 报 Worst-view CFA、Cue Gap 和 Clarification Value；回答系统需要多显式的用户信息。
+2. **Signal acquisition board**：分别报告 structured persona、natural history、clarification 和 workspace/history 的 CFA；Worst-view CFA 与 Cue Gap 只在 equivalence-audited provided views 上计算，并另报 Clarification Value。
 3. **Stress & failure board**：在 8 个 anchor 上按 failure mode 和 S0–S3 强度画 retention/dose-response 曲线，并报告最差 10% CVaR；回答能力在什么压力下断裂。
 4. **Boundary & governance board**：报告 must-not violation、权限/隐私失败、正确 abstention 和压力下的 collateral damage；回答系统在个性化压力下能否守住边界，而不是用个性化分数补偿越权或事实损害。
 
@@ -868,9 +868,9 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **Figure 2 · 一个 counterfactual family 如何构造和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–3 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个语义等价 signal views；C 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA；D 用一个具体 case 列出 must-change、must-hold、must-not 和 clarify-if-unknown。它把 persona 真值、输出变化和 estimand 直接连接起来，是方法部分最重要的细节图。
 
-**Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `PF_swapped`、纵轴为 `PF_matched`，45° 对角线表示没有跨用户优势；离对角线越远且位于上方，说明 matched 版本相对 swapped 版本的用户特异价值越强。点的实心/空心只表示是否通过 TQ/FR gate，不用颜色重复编码质量。B 用 forest/dot plot 报各 agent 的 CFA 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 用统一色标的 `agent × (3 task strata × 6 research intents)` 嵌套 heatmap 报 CFA，缺测单元使用斜线并在底部报告样本量；D 只在可比 regime 内画 cost–CFA Pareto frontier。A 解释 estimand，B 给出不确定性，C 显示能力拓扑，D 报告效率；不能用雷达图或单一冠军分数替代这四类信息。
+**Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `PF_swapped`、纵轴为 `PF_matched`，45° 对角线表示没有跨用户优势；离对角线越远且位于上方，说明 matched 版本相对 swapped 版本的用户特异价值越强。点的实心/空心只表示是否通过 TQ/FR gate，不用颜色重复编码质量。B 用 forest/dot plot 报各 agent 的 CFA 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 使用两个共享色标的边际 heatmap，分别报告 `agent × 3 task strata` 和 `agent × 6 research intents` 的 CFA，并给出 family 数。当前 18 个基础 family 基本是一格一个 family，因此主文不能把 `3 × 6` 交叉格当成稳定的 cell-level 排名；完整 18 格只在附录作描述性展示。D 只在可比 regime 内画 cost–CFA Pareto frontier。A–D 分别对应 estimand、不确定性、能力拓扑和效率，不合成单一总分。
 
-**Figure 4 · 信号渠道、压力和最终失败。** 四个 panel：A 用 `agent × signal view` heatmap 报 structured persona、natural history、clarification、workspace/history 等条件下的 CFA，并在最右两列报告 Worst-view CFA 与 Cue Gap；B 按 S0–S3 绘制各 agent 的 CFA retention curve，主文只画跨 anchor 汇总及置信区间，逐 anchor 曲线进入附录；C 按 agent 画 outcome-level failure 的堆叠横条，横条总长度是全部 episode 中的绝对失败率，而不是“已失败样本内部占比”；D 用 `anchor family × observed outcome failure` heatmap 显示哪类压力更容易触发用户盲、错误用户绑定、过度个性化、共同核心破坏、冲突/过期误用、隐私/权限和澄清失败，并单列 `other/emergent`。主文不从最终交付物反推内部机制；只有具备可比 trace 的系统，才可在附录报告 acquisition、preservation、use 或 update 的过程证据。
+**Figure 4 · 信号渠道、压力和最终失败。** 四个 panel：A 用 `agent × user-signal condition` heatmap 报 structured persona、natural history、clarification-allowed 和 workspace/history 条件下的 CFA。列标题要区分“直接提供的等价视图”“交互获取”和“环境私有状态”；Cue Gap 与 Worst-view CFA 都只在经过 equivalence audit 的 structured persona 与 natural history 上计算。B 按 S0–S3 绘制各 agent 的 CFA stress response；只有 `CFA_S0 ≥ ε` 时才报告比例型 retention，否则改报 `CFA_Sk − CFA_S0` 和原始 CFA，避免接近零的分母放大噪声。主文只画跨 anchor 汇总及置信区间，逐 anchor 曲线进入附录。C 对每个 outcome failure 独立报告 eligible episode 发生率和 95% CI；failure 是多标签，不能强行堆叠成互斥的 100% 横条。D 用 `anchor family × observed outcome failure` heatmap 显示哪类压力更容易触发用户盲、错误用户绑定、过度个性化、共同核心破坏、冲突/过期误用、隐私/权限和澄清失败，并单列 `other/emergent`。主文不从最终交付物反推内部机制；只有具备可比 trace 的系统，才可在附录报告 acquisition、preservation、use 或 update 的过程证据。
 
 **Figure 5 · 自动评价是否可信：JudgeBench 与人类校准。** 四个 panel：A 按 rubric module 报 judge–human pairwise accuracy/α；B 画预测置信度与实际正确率的 calibration/reliability curve；C 报 A/B 顺序、长度、格式、persona 关键词和隐私诱饵造成的准确率变化；D 画“自动覆盖率—人工成本—错误率”级联曲线，并标出预注册主榜门槛。Judge 未过门槛时，本图应直接支持降级为人评，而不是隐藏失败。
 
@@ -886,7 +886,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 ### 16.3 附录图表与版面规则
 
-附录建议保留：逐 family CFA forest plot、完整 `3 strata × 6 intents × deliverable` coverage heatmap、八个 anchor 的独立 S0–S3 曲线、clarification value/turn、retention/update 曲线、各语言/用户群切片，以及 judge confusion matrix。附录表应给出 24 个 family、48 个 user-task、persona compatibility gate、rubric leaf bank、agent/version/tool metadata、完整结果、成本、失败案例和人工标注一致性。
+附录建议保留：逐 family CFA forest plot、描述性的完整 `3 strata × 6 intents` 交叉格、deliverable coverage heatmap、八个 anchor 的独立 S0–S3 曲线、clarification value/turn、retention/update 曲线、多标签 failure co-occurrence UpSet plot、各语言/用户群切片，以及 judge confusion matrix。附录表应给出 24 个 family、48 个 user-task、persona compatibility gate、rubric leaf bank、agent/version/tool metadata、完整结果、成本、失败案例和人工标注一致性。
 
 主文结果图统一使用共享坐标、95% CI、样本数和 gate 标记；同一颜色始终代表同一 agent，线型或形状代表 signal/stress 条件。不要使用 3D 图、面积难比较的 sunburst、没有不确定性的柱状榜、把多指标压成一条折线的雷达图，或把 expected 与 observed failure 混在同一标签中。若版面不足，优先保留 Figures 1–3、5 和 Tables 2–4；Figure 4 的逐 anchor 细节移入附录，但不能删掉 JudgeBench 的测量效度证据。
 

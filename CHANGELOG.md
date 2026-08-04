@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.27 - 2026-08-04
+
+- 发现两个月规模下 18 个 `stratum × intent` 单元基本只有一个 family，取消主文 cell-level 能力排名；Figure 3C 改为 `agent × 3 strata` 和 `agent × 6 intents` 两个有更多 family 支撑的边际热力图。
+- 发现 outcome failure 为多标签，取消互斥堆叠条；Figure 4C 改为逐 failure incidence + 95% CI，共现关系放附录 UpSet 图。
+- 将 signal conditions 分成 equivalence-audited provided views、interactive clarification 和 private workspace；Cue Gap 与 Worst-view CFA 都只在 structured persona / natural history 组成的 `V_eq` 内计算。
+- 给比例型 CFA retention 增加 `CFA_S0 ≥ ε` 适用性门；基线接近零时改报 ΔCFA 与原始 CFA。
+- 同步正式 Proposal、结果图 HTML 原型、项目记忆、测试、离线 HTML 与版本记录。
+
 ## v0.26 - 2026-08-04
 
 - 将 Figure 3A 冻结为 `PF_swapped × PF_matched` signature plot，用 45° 线直接区分通用高适配与跨用户特异价值；CFA forest plot 单独承担 effect size 与不确定性。

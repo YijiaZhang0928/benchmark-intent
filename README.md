@@ -2,9 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（v0.26）
+## 当前交付物（v0.27）
 
-- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.26 将主结果具体化为 matched–swapped signature plot、任务能力拓扑和 outcome-failure 画像。
+- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.27 将主结果收紧为可支持的 strata/intent 边际估计、多标签 failure incidence 与受限 Cue Gap。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：10 页标准论文 Proposal，保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
 - `deliverables/DeepAlign-Bench_完整人话版.pdf`：逻辑、内容和方法不变，改为直白语言，适合组内讨论。
 - `deliverables/DeepAlign-Bench_汇报精简版.pdf`：9 页导师汇报稿，适合 15–20 分钟讲解。

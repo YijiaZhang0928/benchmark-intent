@@ -27,7 +27,7 @@ const figures = [
     title: "主能力与 Leaderboard profile",
     question: "哪些 agent 在哪些任务上产生了用户特异价值？",
     placement: "Results 开头 · 双栏通栏",
-    panels: ["A · PF swapped × PF matched signature plot", "B · CFA forest plot + 95% CI + gates", "C · Agent × (3 strata × 6 intents) heatmap", "D · Cost–CFA Pareto scatter"],
+    panels: ["A · PF swapped × PF matched signature plot", "B · CFA forest plot + 95% CI + gates", "C · Agent × strata / intents marginal heatmaps", "D · Cost–CFA Pareto scatter"],
     rule: "A 解释 estimand，B 给不确定性，C 显示能力拓扑，D 报告效率。不画雷达图，不给单一总冠军；不同 execution regime 分块。",
   },
   {
@@ -35,8 +35,8 @@ const figures = [
     title: "渠道稳健性、压力与失败模式",
     question: "能力在什么用户信息来源和压力下断裂，具体错在哪里？",
     placement: "Results / Failure Analysis · 双栏通栏",
-    panels: ["A · Agent × signal-view CFA matrix", "B · S0–S3 CFA retention curves", "C · Absolute outcome-failure bars by agent", "D · Anchor × observed outcome-failure heatmap"],
-    rule: "主文只报告最终交付物可观察的 outcome failure。过程机制只有在 trace 可比时进入附录，不能从最终结果倒推 agent 内部哪里出错。",
+    panels: ["A · Agent × eligible signal-condition CFA", "B · S0–S3 stress response curves", "C · Multi-label failure incidence + 95% CI", "D · Anchor × observed outcome-failure heatmap"],
+    rule: "Cue Gap 只比较 equivalence-audited views；failure 按多标签 incidence 独立报告。过程机制只有在 trace 可比时进入附录。",
   },
   {
     id: "F5",
@@ -61,7 +61,7 @@ export default function FigureBlueprintPage() {
       <header className="figurePlanHero">
         <nav className="litNav shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><div><a href="#result-mockups">结果图原型</a><a href="#main-figures">全部主图</a><a href="#main-tables">主表</a></div><a className="navCta" href="/">返回总报告</a></nav>
         <div className="shell figurePlanHeroGrid">
-          <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.26</p><h1>结果不是一张总榜，<br/>而是 <em>效应—分布—失效</em></h1><p className="lede">核心先展示 matched 相对 swapped 是否真的形成用户特异价值，再展开到任务能力拓扑、信号稳健性和压力失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
+          <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.27</p><h1>结果不是一张总榜，<br/>而是 <em>效应—分布—失效</em></h1><p className="lede">核心先展示 matched 相对 swapped 是否真的形成用户特异价值，再展开到可支持的任务边际、信号稳健性和多标签失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
           <aside className="figurePlanClaim"><span>主文证据顺序</span><b>How it works</b><i>→</i><b>What is measured</b><i>→</i><b>Where it fails</b><i>→</i><b>Can we trust the score</b></aside>
         </div>
       </header>
@@ -81,7 +81,7 @@ export default function FigureBlueprintPage() {
           <div className="resultPanelGrid mainResultGrid">
             <section className="plotPanel signaturePanel"><h4>A · Matched–swapped signature plot</h4><div className="signaturePlot" role="img" aria-label="PF swapped 横轴、PF matched 纵轴的结果结构示意图"><span className="sigY">PF matched ↑</span><span className="sigX">PF swapped →</span><i className="sigDiagonal"/><i className="sigDot sd1"><small>A</small></i><i className="sigDot sd2"><small>B</small></i><i className="sigDot sd3 hollow"><small>C</small></i><span className="sigGeneric">高 absolute fit<br/>低 user-specific effect</span><span className="sigStrong">强 counterfactual<br/>personalization</span></div><p>45° 线是 CFA≈0。位于线上方且距离更远才表示 matched 版本更适合正确用户；空心点表示未过 TQ/FR gate。</p></section>
             <section className="plotPanel forestPanel"><h4>B · CFA effect-size forest</h4><div className="zeroTag">0 · no effect</div><div className="forestAxis"/><div className="forestRows"><div><b>Commercial DR</b><span className="ci ci1"><i/></span></div><div><b>Controlled agent</b><span className="ci ci2"><i/></span></div><div><b>Open DRA</b><span className="ci ci3"><i/></span></div><div><b>Multi-agent probe</b><span className="ci ci4"><i/></span></div></div><p>每一行给 CFA 点估计、95% CI、样本量和 eligibility；E1/E2/E3 不混排。</p></section>
-            <section className="plotPanel taskTopology"><h4>C · Capability topology</h4><div className="taskHeatGroups">{["Daily", "Professional", "Frontier"].map((stratum, s) => <div className="taskHeatBlock" key={stratum}><b>{stratum}</b><div className="taskHeatHead">{["解释", "比较", "决策", "设计", "审计", "探索"].map(x => <span key={x}>{x}</span>)}</div>{["A", "B", "C", "D"].map((agent, r) => <div className="taskHeatRow" key={agent}><em>{agent}</em>{[0,1,2,3,4,5].map(c => <i className={`heat h${(s * 2 + r + c) % 5}`} key={c}/>)}</div>)}</div>)}</div><p>三块分别是 daily / professional / frontier；列是六类 research intent，行为 agent。同一 CFA 色标，缺测必须斜线显示。</p></section>
+            <section className="plotPanel taskTopology"><h4>C · Statistically supported capability margins</h4><div className="marginalHeatGroups"><div className="marginalHeatBlock"><b>Agent × task stratum</b><div className="marginalHead"><span/><em>Daily</em><em>Professional</em><em>Frontier</em></div>{["A", "B", "C", "D"].map((agent,r)=><div className="marginalRow strataRow" key={agent}><span>{agent}</span>{[0,1,2].map(c=><i className={`heat h${(r+c)%5}`} key={c}/>)}</div>)}</div><div className="marginalHeatBlock intentsBlock"><b>Agent × research intent</b><div className="marginalHead intentHead"><span/>{["解释", "比较", "决策", "设计", "审计", "探索"].map(x=><em key={x}>{x}</em>)}</div>{["A", "B", "C", "D"].map((agent,r)=><div className="marginalRow intentRow" key={agent}><span>{agent}</span>{[0,1,2,3,4,5].map(c=><i className={`heat h${(r*2+c)%5}`} key={c}/>)}</div>)}</div></div><p>主文分别汇总 3 个 strata 和 6 个 intents，并报告 family 数；完整 18 个交叉格因接近一格一个 family，只在附录作描述性展示。</p></section>
             <section className="plotPanel paretoPanel"><h4>D · Cost–CFA frontier</h4><div className="paretoPlot"><span>高 CFA ↑</span><i className="paretoDot pd1"/><i className="paretoDot pd2"/><i className="paretoDot pd3"/><i className="paretoDot pd4"/><b>cost →</b><svg viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true"><path d="M15 58 C35 52, 47 35, 84 14"/></svg></div><p>只在相同 execution regime、预算口径和 eligibility 下谈 Pareto 前沿。</p></section>
           </div>
         </article>
@@ -89,9 +89,9 @@ export default function FigureBlueprintPage() {
         <article className="resultMockCard stressCard">
           <header><span>RESULT FIGURE 4</span><div><h3>Signal robustness and outcome failures</h3><p>第二张结果图不再重复总体排名，而是定位能力在哪类输入和压力下断裂。</p></div><b>主文约 0.5 页</b></header>
           <div className="resultPanelGrid stressResultGrid">
-            <section className="plotPanel signalMatrix"><h4>A · Signal-view robustness</h4><div className="signalHead"><span/><b>Persona</b><b>History</b><b>Clarify</b><b>Workspace</b><b>Worst</b><b>Gap</b></div>{["Agent A", "Agent B", "Agent C", "Agent D"].map((agent,r)=><div className="signalRow" key={agent}><span>{agent}</span>{[0,1,2,3,4,5].map(c=><i className={`heat h${(r*2+c)%5}`} key={c}/>)}</div>)}<p>前四列用同一 user ledger 的语义等价视图；最右直接给 worst-view CFA 与 Cue Gap。</p></section>
-            <section className="plotPanel stressCurves"><h4>B · S0–S3 retention</h4><svg viewBox="0 0 300 145" role="img" aria-label="S0 到 S3 的 CFA retention 曲线结构示意"><path className="axis" d="M34 12V118H282"/><path className="curve c1" d="M40 25 C105 28,155 45,275 61"/><path className="curve c2" d="M40 28 C98 38,170 69,275 96"/><path className="curve c3" d="M40 31 C105 52,190 78,275 112"/><g>{[40,118,196,275].map((x,i)=><text x={x} y="137" key={x}>S{i}</text>)}</g><text x="4" y="18">1.0</text><text x="4" y="118">0</text></svg><p>纵轴用 `CFA_Sk / CFA_S0`，同时报告原始 CFA；主文汇总，八个 anchor 的独立曲线放附录。</p></section>
-            <section className="plotPanel failureBars"><h4>C · Absolute outcome-failure profile</h4>{["Agent A", "Agent B", "Agent C", "Agent D"].map((agent,r)=><div className="failureBarRow" key={agent}><b>{agent}</b><span><i className="fbBlind" style={{width:`${16+r*3}%`}}/><i className="fbWrong" style={{width:`${8+r*2}%`}}/><i className="fbOver" style={{width:`${12-r}%`}}/><i className="fbCore" style={{width:`${7+r}%`}}/><i className="fbOther" style={{width:"5%"}}/></span></div>)}<div className="failureLegend"><i className="fbBlind"/>用户盲<i className="fbWrong"/>错用户<i className="fbOver"/>过度个性化<i className="fbCore"/>核心破坏<i className="fbOther"/>其他</div><p>横条总长度是全部 episode 中的失败率；不能把已失败样本归一到 100%，否则会隐藏绝对可靠性。</p></section>
+            <section className="plotPanel signalMatrix"><h4>A · Eligible signal-condition robustness</h4><div className="signalGroupHead"><span/><b>equivalent provided views</b><b>interactive</b><b>private env.</b><b>equivalence summary</b></div><div className="signalHead"><span/><b>Persona</b><b>History</b><b>Clarify</b><b>Workspace</b><b>Eq.Worst</b><b>Eq.Gap</b></div>{["Agent A", "Agent B", "Agent C", "Agent D"].map((agent,r)=><div className="signalRow" key={agent}><span>{agent}</span>{[0,1,2,3,4,5].map(c=><i className={`heat h${(r*2+c)%5}`} key={c}/>)}</div>)}<p>Cue Gap 与 Worst-view CFA 都只比较通过 equivalence audit 的 persona ↔ history；clarification 与 workspace 分列报告，不冒充语义等价。</p></section>
+            <section className="plotPanel stressCurves"><h4>B · S0–S3 stress response</h4><svg viewBox="0 0 300 145" role="img" aria-label="S0 到 S3 的 CFA stress response 曲线结构示意"><path className="axis" d="M34 12V118H282"/><path className="curve c1" d="M40 25 C105 28,155 45,275 61"/><path className="curve c2" d="M40 28 C98 38,170 69,275 96"/><path className="curve c3" d="M40 31 C105 52,190 78,275 112"/><g>{[40,118,196,275].map((x,i)=><text x={x} y="137" key={x}>S{i}</text>)}</g><text x="4" y="18">1.0</text><text x="4" y="118">0</text></svg><p>仅当 CFA_S0≥ε 才画比例 retention；否则画 ΔCFA 和原始 CFA，避免接近零的分母制造夸张跌幅。</p></section>
+            <section className="plotPanel failureBars"><h4>C · Multi-label failure incidence</h4><div className="failureDotPlot">{["用户盲", "错误用户绑定", "过度个性化", "共同核心破坏", "冲突/过期误用", "隐私/权限", "澄清失败"].map((mode,m)=><div className="failureDotRow" key={mode}><b>{mode}</b><span>{[0,1,2,3].map(a=><i className={`agentFailureDot afd${a}`} style={{left:`${10+((m*13+a*19)%78)}%`}} key={a}/>)}</span></div>)}</div><div className="agentDotLegend"><i className="afd0"/>A<i className="afd1"/>B<i className="afd2"/>C<i className="afd3"/>D</div><p>每个点是全部 eligible episode 中该 failure 的发生率与 95% CI；类别可共现，因此不做互斥堆叠。共现结构放附录 UpSet 图。</p></section>
             <section className="plotPanel anchorFailure"><h4>D · Anchor × observed outcome failure</h4><div className="anchorFailGrid">{["A1 日常", "A2 学习", "A3 金融", "A4 健康", "A5 企业", "A6 软件", "A7 学术", "A8 政策"].map((a,r)=><div key={a}><b>{a}</b>{[0,1,2,3,4,5,6].map(c=><i className={`heat h${(r+c*2)%5}`} key={c}/>)}</div>)}</div><p>列是可观察的 outcome failure。过程级 acquisition/preservation/use/update 只在 trace 可比时进附录。</p></section>
           </div>
         </article>
@@ -120,7 +120,7 @@ export default function FigureBlueprintPage() {
         <div className="appendixGrid"><article><span>APPENDIX FIGURES</span><h3>建议 4–6 张</h3><ul><li>逐 family CFA forest plot</li><li>完整 task-cube coverage heatmap</li><li>八个 anchor 的独立 S0–S3 曲线</li><li>clarification value / turn</li><li>retention 与 update 曲线</li><li>语言、用户群和 seed 切片</li></ul></article><article><span>APPENDIX TABLES</span><h3>建议 8–10 张</h3><ul><li>24 family 与 48 user-task 清单</li><li>persona compatibility gate</li><li>完整 rubric leaf bank</li><li>agent / version / tool metadata</li><li>全量结果与置信区间</li><li>成本、失败案例与人工一致性</li></ul></article></div>
         <div className="figurePlanNo"><b>明确不建议</b><span>单一总体排名</span><span>雷达图</span><span>3D 图</span><span>无 CI 柱状榜</span><span>sunburst 冒充覆盖</span><span>expected/observed 混标</span></div>
       </section>
-      <footer><div className="shell"><a className="brand" href="#figure-top">DeepAlign<span>Bench</span></a><p>Result visual blueprint · v0.26 · 2026-08-04</p><a href="/">返回完整汇报版 ↑</a></div></footer>
+      <footer><div className="shell"><a className="brand" href="#figure-top">DeepAlign<span>Bench</span></a><p>Result visual blueprint · v0.27 · 2026-08-04</p><a href="/">返回完整汇报版 ↑</a></div></footer>
     </main>
   );
 }
