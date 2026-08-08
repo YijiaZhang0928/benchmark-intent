@@ -61,7 +61,7 @@ export default function FigureBlueprintPage() {
       <header className="figurePlanHero">
         <nav className="litNav shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><div><a href="#result-mockups">结果图原型</a><a href="#main-figures">全部主图</a><a href="#main-tables">主表</a></div><a className="navCta" href="/">返回总报告</a></nav>
         <div className="shell figurePlanHeroGrid">
-          <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.28</p><h1>结果不是一张总榜，<br/>而是 <em>效应—分布—失效</em></h1><p className="lede">核心先展示 matched 相对 swapped 是否真的形成用户特异价值，再展开到可支持的任务边际、信号稳健性和多标签失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
+          <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.29</p><h1>结果不是一张总榜，<br/>而是 <em>效应—分布—失效</em></h1><p className="lede">核心先展示 matched 相对 swapped 是否真的形成用户特异价值，再展开到可支持的任务边际、信号稳健性和多标签失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
           <aside className="figurePlanClaim"><span>主文证据顺序</span><b>How it works</b><i>→</i><b>What is measured</b><i>→</i><b>Where it fails</b><i>→</i><b>Can we trust the score</b></aside>
         </div>
       </header>

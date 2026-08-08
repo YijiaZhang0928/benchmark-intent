@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.28 · 2026 年 8 月 8 日
+版本：v0.29 · 2026 年 8 月 8 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -87,13 +87,15 @@ Persona 不是人物小传，而是 task-conditioned user state 的一种展示�
 
 8 个 anchor family 是压力测试宿主，不是 8 种 persona。流程是：先让两个用户都与 task 合理匹配，建立 clean matched/swapped 真值；再固定目标用户、task、证据和预算，只改变可见 persona、上下文位置、交接摘要或更新时间。
 
-8 个 anchor 固定覆盖日常决策、学习职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿、政策传播。所有 anchor 都有 clean + persona swap + irrelevant-signal 配对；其他 failure mode 用平衡不完全区组分配，每类至少落到两个 anchor。
+8 个 anchor 固定覆盖日常决策、学习职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿、政策传播。所有 anchor 都有 clean + persona swap + irrelevant-signal 配对；其他 failure mode 用平衡不完全区组分配。跨任务比较某种 perturbation 时至少覆盖 4 个适用 anchor；2 个只算探索性复现。
 
 每个 anchor 跑 `S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 复合扰动`。难度由 evidence、signal、horizon、handoff、permission、counterfactual subtlety 六维记录；risk、failure mode 和强度不合并成一个分数。
 
 指标：ΔPF / invariance、冲突解析率、PF retention/AUC、handoff loss、update correctness 和旧状态残留率；同时报告 TQ、事实性、隐私和长度副作用。
 
 三类运行环境实操为：E1 Frozen Harness 使用只读快照和统一预算，形成因果主榜；E2 Live Product/Web 使用原生工具并记录版本、日期、地区和 URL 快照，形成产品榜；E3 Stateful Sandbox 在固定 checkpoint 注入冲突、handoff 和动态更新，形成压力与机制榜。它们与 agent 类型正交，需统一 reset/signal/checkpoint/event/artifact/trace adapter。
+
+开工顺序：先用 2 family × 2 agent 跑通 E1；再用 1 个 anchor 跑通 E3 checkpoint/conflict/update；最后做 1 个 E2 产品 adapter smoke test。三条轨道不同时搭满。
 
 ## 4. Rubric 和 Metrics
 
@@ -105,9 +107,11 @@ case metadata + user ledger + contracts + evidence/permission
 → 填入 case 参数 → leaf expansion → 校验 → 冻结 rubric bundle
 ```
 
-有四个机器可读对象：case schema、固定模板 registry、固定 leaf schema、metric binding schema。模板路由随元数据变化：六类 research intent 各有模板；report / memo / workbook / code / slides / webpage / multi-file 各有交付物模板；stakes、permission、operator 再激活风险与压力模板。统一的是 leaf 格式、适用条件和聚合规则，不是让不同任务共用一张表。
+有六个相互衔接的机器可读对象：case schema、固定模板 registry、36-module library、固定 leaf schema、metric binding schema 和 data-factory protocol。模板路由随元数据变化：六类 research intent 各有模板；report / memo / workbook / code / slides / webpage / multi-file 各有交付物模板；stakes、permission、operator 再激活风险与压力模板。统一的是 leaf 格式、适用条件和聚合规则，不是让不同任务共用一张表。
 
-**当前成熟度：**v0.28 已冻结 compiler contract 和端到端示例；自动 validator、模板路由器和 bundle 导出器是第 1 周工程任务。今晚确认的是方法接口与标注可行性，不把 schema 文件说成已经完成的生产系统。
+现在另有一份 36-module library：6 Core + 9 Personalization + 6 Intent + 7 Deliverable + 4 Operator + 4 Risk。每个 case 只激活适用子集。强点不是“比 PDR-Bench 多几维”，而是每个 personalization leaf 有 user fact + must-change provenance、A/B 模块对称、同一 bundle 交叉评 matched/swapped，并用 must-hold/must-not 阻止无效差异和过度个性化。
+
+**当前成熟度：**v0.29 已冻结 compiler contract、36-module library、data-factory protocol 和端到端示例；自动 validator、模板路由器和 bundle 导出器是第 1 周工程任务。今晚确认的是方法接口与标注可行性，不把 schema 文件说成已经完成的生产系统。
 
 **Leaf expansion** 是运行前把复合要求拆成原子项。例如“Ua 的建议符合预算和风险”拆成“首阶段 ≤50 万”“三个月可逆试点”“继续/退出阈值”，每条都附 evidence target、0/1/2 锚点、weight、hard gate、judge route 和直接 metric binding。冻结后所有 agent 共用，不能看完输出再改。
 

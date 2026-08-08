@@ -1,11 +1,21 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.29 - 2026-08-08
+
+- 新增 `data_factory.protocol.yaml`：将多篇论文先映射为 task seed、user-signal construct、perturbation hypothesis、rubric/judge method 或 infrastructure 五类设计资产，再进入 0–7 阶段数据构建；禁止直接拼接论文 taxonomy。
+- 冻结首个 vertical slice 及停止门：先用一个 compare-decide family、两个最小反事实用户、一个 frozen evidence world、两个 signal view、clean/单扰动条件跑通 reference artifact、完整 bundle 和真人 matched/swapped，未通过即不扩量。
+- 新增 36 个预定义 rubric module：6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk；每个 case 只激活适用子集，并通过 provenance、A/B 对称和 must-hold/must-not 控制个性化差异。
+- 将 rubric 全面性从“模块数量”改为七类有效性证据：内容映射、跨用户区分、nuisance invariance、重复/ablation、权重敏感性、目标用户/专家效度和 residual-error saturation。
+- 收紧 anchor 结论：clean/perturbed 配对只能估计受控扰动敏感性，不能从最终交付物推断内部根因；跨任务主扰动需至少 4 个适用 anchor，2 个仅作探索性复现，过程机制只在 trace 可比时报告。
+- 冻结工程顺序为 E1 frozen `2 family × 2 agent` → E3 单 anchor 事件注入 → E2 单产品 smoke test，避免三个环境同时搭满阻塞两个月主线。
+- 同步正式版、10 页内精简版、人话版、导师 brief、Rubric 工作台、schema、DOCX/PDF 和离线 HTML；自动 compiler/validator 仍是下一步工程，不把 YAML 规范当成已经校准的生产系统。
+
 ## v0.28 - 2026-08-08
 
 - 将 rubric compiler 从概念说明改为可追溯协议：`validate → template routing → parameter instantiation → leaf expansion → validate/freeze`，并规定全部工作在 agent 输出前完成。
 - 冻结六层模板库与直接绑定：Core、Personalization、Intent、Deliverable、Operator、Risk；明确 TQ/FR/PF/MP 与各 leaf 的对应关系，CFA 只由 matched/swapped 四格 PF 派生。
 - 新增 rubric leaf schema、模板注册表、metric binding schema 和完整 bundle 示例；case schema 增加 compiler 版本、bundle hash 和 freeze/validation 状态。
-- 新增 Rubric Compiler HTML 工作台，用咖啡店决策 case 演示 contract 如何展开为预算、风险、受众 leaf，并回溯到 2×2 PF 矩阵和 CFA。
+- 新增 Rubric Compiler HTML 工作台，用咖啡店决策 case 演示同一 contract 如何严格展开为预算上限、可逆试点与继续/退出阈值 leaf，并回溯到 2×2 PF 矩阵和 CFA；不同 contract 的 leaf 不混写 provenance。
 - 同步 61 页正式版、10 页正式精简版、25 页人话版、10 页汇报版与离线 HTML；四份 DOCX/PDF 完整渲染检查通过，HTML 构建与 5 项测试通过。
 - 明确 v0.28 YAML 是 compiler contract 与示例，自动 validator/compiler 仍是第 1 周实现项；新增主矩阵是否先冻结 report/memo/table 的导师决策问题。
 

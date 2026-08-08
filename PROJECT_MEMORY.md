@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-08
-当前版本：v0.28
+当前版本：v0.29
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
@@ -127,11 +127,21 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 
 1. 编译输入固定为 case metadata、task-conditioned user ledger、must-change/must-hold/must-not/clarify contracts、evidence world 和 permission policy。编译必须发生在 agent 运行前；看过待测输出后新增或改写的 criterion 不进入主榜。
 2. 模板不是“一任务一张自由生成评分表”，而是六层固定模块：所有 case 使用 Core；存在 user-specific contract 时叠加 Personalization；再按 research intent、deliverable、operator 和 risk 选择适用模板。任务之间允许模板组合和参数不同，但 leaf schema、接口和聚合规则保持一致。
-3. `leaf expansion` 是把宽泛 contract 在运行前拆成可独立判定的最小 leaf。例如“给预算有限、风险厌恶的老板推荐咖啡店”拆为预算、风险和受众三个 leaf；每个 leaf 都要写明 owner、evidence target、0/1/2/NA anchors、hard gate、适用条件和直接 metric binding。它不是看到输出后再细化评分标准。
+3. `leaf expansion` 是把宽泛 contract 在运行前拆成可独立判定的最小 leaf。例如“给预算有限、风险厌恶的老板制定扩店方案”拆为预算上限、三个月可逆试点、继续/退出阈值三个 leaf；受众解释若来自另一条 knowledge/audience contract，必须保留自己的 provenance，不能跨 contract 混入。每个 leaf 都要写明 owner、evidence target、0/1/2/NA anchors、hard gate、适用条件和直接 metric binding。它不是看到输出后再细化评分标准。
 4. 直接绑定规则冻结为：common/intent/deliverable leaf → TQ，事实 leaf 同时进入 FR；must-change → 对应用户 PF；must-hold → TQ 与 neutral-invariance；must-not → MP 或 hard gate；clarify → clarification correctness，擅自假设则进入 MP；operator leaf → 配对诊断量。
 5. CFA 不直接绑定任何 leaf。相同的冻结 `PF_a` leaf bundle 同时评价 `Y_a` 与 `Y_b`，`PF_b` 同理，再由四个聚合值计算 `0.5[(PF_a(Y_a)-PF_a(Y_b))+(PF_b(Y_b)-PF_b(Y_a))]`。这样可从任一论文指标追溯到 aggregate、leaf、contract 和用户事实。
 6. 新增四个机器可读对象：`rubric_leaf.schema.yaml`、`rubric_template_registry.yaml`、`metric_binding.schema.yaml` 和 `rubric_bundle.example.yaml`；`case.schema.yaml` 增加编译版本、bundle hash、运行前冻结和校验状态字段。v0.28 定义的是 compiler contract 与完整示例，不等于自动 compiler 已完成；正式 validator/compiler 是第 1 周工程任务。
 7. ICLR 防守边界：rubric compiler 本身不是论文唯一创新，核心仍是 counterfactual personalization effect identification。模板覆盖度、leaf 人类可判别性、judge 一致性、跨交付物效度和权重敏感性必须通过 pilot 验证，不能靠 schema 完整性代替测量有效性。
+
+### 1.12 v0.29：数据工厂、预定义 module library 与 anchor 归因边界
+
+1. 多篇论文不能直接“杂糅”成一个 taxonomy。每个来源资产先进入 source-to-design ledger，并且只承担一个主角色：task seed/coverage、user-signal construct、perturbation hypothesis、rubric/judge method 或 infrastructure/reproducibility。每行记录采用、修改或拒绝了什么、证据层级、落到哪些 schema 字段，避免因为某篇论文有现成任务就同时照搬它的用户、rubric 和结论。
+2. 正式批量造数前先跑一个 vertical slice：1 个 compare-decide report/memo family、2 个自然且最小反事实用户、1 个 frozen evidence world、structured persona 与 natural history、1 个 clean 条件和 1 个单扰动条件、完整 bundle 和真人 matched/swapped。若 reference artifact 不能稳定 matched > swapped、目标用户不能确认 must-change，或 leaf 无法独立判断，则停止扩量并修改构造协议。
+3. 预定义 rubric library 冻结为 36 个 module：6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk。每个 case 只激活适用子集；report/memo/table 主目标先控制在 12–22 个 active leaf，code/slides/web/multi-file 在校准前只做 probe。贡献不表述为“模块比 PDR-Bench 多”，而是 user fact → contract → leaf → metric 可追溯、A/B 对称、同一 PF bundle 交叉评分，并用 must-hold/must-not 防止把额外差异或迎合当个性化。
+4. module library 的全面性不由数量证明，而由七类证据审计：task requirement/user fact 内容映射、matched>swapped 区分、nuisance invariance、重复与 module ablation、权重敏感性及 active/NA 分母、目标用户与领域专家内容效度、residual-error saturation。只有同一缺失 construct 在至少两个不同 family 重复出现、影响决策且无法用现有 module 参数化时，才能新增 module。
+5. Anchor 只能识别受控扰动敏感性：同 task、evidence、budget 和可比分叉前缀下，比较 clean 与 perturbed 的 ΔCFA、ΔPF、invariance、MP 等结果。它不能仅靠“8 个 family 的平均相关”宣称找到了 agent 内部用户建模根因。跨任务比较某一主扰动至少需要 4 个适用 anchor；2 个仅算探索性复现。Acquire/Preserve/Use/Update 的过程标签只有在 trace 接口和事件时点可比时才可报告；final-only 只能报告 outcome sensitivity。
+6. 三环境不同时搭满。第 1 周先做 E1 的 `2 family × 2 agent` frozen end-to-end harness；第二步用 1 个 anchor 跑通 E3 的 checkpoint、clarification/conflict/update 注入；最后用 1 个商业产品做 E2 adapter smoke test并记录版本、日期、地区、成本和 URL。E2 的工程不稳定不得阻塞主论文。
+7. 当前 36-module YAML 与 data-factory YAML 是可执行规范和人工工作台输入，还不是经过 pilot 证明完整的测量系统。自动 compiler/validator、标注 UI、agreement 和 JudgeBench 都仍需要数据验证。
 
 ## 2. 冻结的两个月范围
 
@@ -141,7 +151,7 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - 3 类核心 system mode：商业 Deep Research、受控统一 agent、可复现开源 Deep Research；代码、多 agent 和 memory-enhanced 作为适用性探针。
 - 3 类 execution regime：E1 controlled frozen harness、E2 native live product/web、E3 stateful interactive sandbox。它们不是三个 agent，也不运行完整 system × environment 笛卡尔积。
 - 最多 576 个核心 episode；约 20% 分层样本运行第二 seed；至少 20% 输出做人评并覆盖关键失败和 judge 分歧。
-- 8 个预注册功能 anchor family 承担压力测试；用 balanced incomplete block 保证每个 failure mode 至少跨两个 anchor，代码 agent、多 agent、memory-enhanced 系统只在 eligibility predicate 为真的 anchor 上运行。
+- 8 个预注册功能 anchor family 承担压力测试；某主扰动的跨任务比较至少覆盖 4 个适用 anchor，2 个只算探索性复现。代码 agent、多 agent、memory-enhanced 系统只在 eligibility predicate 为真的 anchor 上运行。
 - SFT scorer 不阻塞主论文；只有主流水线稳定且第 4 周前具备至少 240 个高质量 leaf-level 判分单元时才启动。
 
 ## 3. 关键术语：不要混用
@@ -241,6 +251,8 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - `benchmark_schema/rubric_template_registry.yaml`：六层固定模板、选择条件和输出 leaf 类型。
 - `benchmark_schema/metric_binding.schema.yaml`：leaf 到 TQ/FR/PF/MP/诊断量的合法直接绑定；CFA 标记为 derived-only。
 - `benchmark_schema/rubric_bundle.example.yaml`：完整 case 的 compiler 输入、展开 leaf、聚合值和 CFA trace 示例。
+- `benchmark_schema/rubric_module_library.yaml`：36 个预定义 module、选择条件、leaf blueprint、合法 binding、已知风险和新增门槛。
+- `benchmark_schema/data_factory.protocol.yaml`：论文来源映射、0–7 数据构建阶段、vertical slice 停止门、anchor 对照与环境 bootstrap 顺序。
 - `html_report/app/page.tsx`：HTML 汇报正文。
 - `html_report/app/rubrics/page.tsx`：导师会用 Rubric Compiler 工作台。
 - `CHANGELOG.md`：版本级变更。
@@ -273,3 +285,4 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.26：将结果图具体化为 PF matched–swapped signature plot、CFA forest、任务能力拓扑、信号/压力稳健性和绝对 outcome-failure 画像；过程机制只在 trace 可比时进入附录。
 - v0.27：按样本支持度把 18-cell task cube 降为附录描述，主文改报 strata/intent 边际；failure 改为多标签 incidence；Cue Gap 与 retention 增加适用性门。
 - v0.28：定义固定模板路由、运行前 leaf expansion、leaf—metric 直接绑定和 CFA 派生链；新增四个 YAML compiler contract/example、Rubric 工作台及四版同步说明，并明确自动 validator/compiler 尚属第 1 周实现项。
+- v0.29：增加 source-to-design ledger 和 vertical slice 数据工厂；冻结 36-module rubric library、七类全面性审计、anchor 受控扰动归因边界与 E1→E3→E2 环境开工顺序。

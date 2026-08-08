@@ -1,5 +1,6 @@
 registry_name: deepalign_rubric_template_registry
-registry_version: 0.28
+registry_version: 0.29
+module_library: rubric_module_library.yaml
 description: >-
   Declarative template registry used by the Rubric Compiler. Templates are
   selected by metadata predicates, then instantiated from contracts and

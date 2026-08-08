@@ -1,0 +1,136 @@
+protocol_name: deepalign_data_factory
+protocol_version: 0.29
+status: pre_pilot
+principle: >-
+  Do not splice tasks or taxonomies from many papers into one prompt. Convert each
+  source into a declared design role, then construct one auditable family from a
+  real research seed, a frozen shared world and a minimal counterfactual user pair.
+
+source_role_ledger:
+  required_fields:
+    - source_id
+    - source_claim_or_asset
+    - role
+    - adopted_element
+    - modified_element
+    - rejected_element
+    - evidence_level
+    - target_schema_fields
+  allowed_roles:
+    - task_seed_and_coverage
+    - user_signal_or_personalization_construct
+    - perturbation_or_failure_hypothesis
+    - rubric_or_judge_method
+    - infrastructure_or_reproducibility
+  rule: one source can have multiple rows, but every row has exactly one role
+
+construction_stages:
+  - stage: 0_vertical_slice
+    output: one end-to-end family before bulk authoring
+    required:
+      - one compare_decide report_or_memo task
+      - two natural users with minimal task-relevant differences
+      - one frozen evidence world
+      - structured persona and natural history views
+      - one clean and one controlled stress condition
+      - full rubric bundle and human matched/swapped check
+    stop_if:
+      - reference matched is not reliably preferred over swapped
+      - must-change cannot be grounded in user confirmation
+      - rubric leaves are not independently judgeable
+
+  - stage: 1_seed_and_normalize
+    input: real user request, public benchmark seed, professional workflow or interview
+    actions:
+      - remove benchmark-specific answer cues
+      - record provenance, license and contamination risk
+      - map to task stratum, primary intent, domain, deliverable, demand and stakes
+      - deduplicate semantically similar seeds before writing personas
+    output: normalized task seed
+
+  - stage: 2_freeze_shared_world
+    actions:
+      - freeze task wording, evidence, tools, permissions and budget
+      - write shared acceptance conditions and must-hold facts
+      - define deterministic checks where possible
+    output: common task and evidence world
+
+  - stage: 3_build_user_pair
+    actions:
+      - start from user-anchored or consented facts
+      - retain only facts with a plausible decision consequence
+      - create Ua and Ub by minimal edits on 2_to_4 task-relevant axes
+      - keep irrelevant demographic and style facts out of gold
+      - serialize the same ledger into eligible signal views
+    output: counterfactual user pair and provenance ledger
+
+  - stage: 4_write_contracts
+    actions:
+      - write must-change for each user before reference artifacts
+      - write must-hold shared quality and evidence requirements
+      - write must-not privacy, safety and unsupported-inference boundaries
+      - write clarify-if-unknown only for decision-changing unknowns
+    output: frozen contract bundle
+
+  - stage: 5_compile_rubric
+    actions:
+      - route predefined core, personalization, intent, deliverable, operator and risk modules
+      - instantiate task, user, evidence and permission parameters
+      - expand contracts to atomic leaves with explicit anchors
+      - reject duplicate, asymmetric, ungrounded or output-aware leaves
+    output: versioned rubric bundle and leaf-to-metric manifest
+
+  - stage: 6_reference_and_pilot
+    actions:
+      - create human reference matched, swapped, generic and misuse controls
+      - obtain target-user and domain-expert judgments
+      - test discrimination, invariance, nuisance robustness and module redundancy
+      - remove families or leaves that fail rather than repairing weights after model runs
+    output: pilot-qualified family
+
+  - stage: 7_scale_and_audit
+    actions:
+      - sample from Atlas strata; do not fill the full Cartesian product
+      - use balanced incomplete blocks for controlled anchor perturbations
+      - publish tested, defined-only, structurally-inapplicable and deferred cells
+      - maintain train_dev_test separation by task family, user and source lineage
+    output: benchmark release candidate
+
+anchor_identification:
+  estimand: paired sensitivity of personalization outcomes to a controlled perturbation
+  allowed_claim: >-
+    Under the same task, evidence, budget and prefix, perturbation k changes CFA,
+    PF, invariance or misuse by the observed paired delta.
+  forbidden_claim: >-
+    Heterogeneous anchor results reveal the universal internal cause of user-model failure.
+  primary_controls:
+    - irrelevant_signal
+    - context_dilution
+    - stale_or_conflicting_state
+    - handoff_loss
+    - dynamic_update
+  replication_rule: >-
+    A perturbation needs at least four eligible anchor families for a cross-task
+    comparative claim. Two families support only exploratory replication.
+  analysis:
+    - paired clean-versus-perturbed delta within family and seed
+    - uncertainty interval and eligible denominator for each perturbation
+    - mixed-effects model with perturbation fixed effect and family/agent random effects only when sample support is adequate
+    - outcome failure evidence in the main paper; trace-based mechanism labels only for comparable traces
+
+environment_bootstrap_order:
+  - environment: E1_controlled_frozen_harness
+    priority: first
+    minimum_prototype: two families, two agents, one evidence snapshot, deterministic reset and artifact export
+    role: causal main track
+  - environment: E3_stateful_interactive_sandbox
+    priority: second
+    minimum_prototype: one anchor with checkpoint, clarification, conflict and update injection
+    role: controlled process and stress diagnostics
+  - environment: E2_native_live_product_or_web
+    priority: third
+    minimum_prototype: one adapter smoke test with version, date, region, cost and URL snapshot logging
+    role: ecological product track, not pooled with E1
+environment_go_no_go: >-
+  Do not bulk-author cases until the E1 vertical slice and one E3 event pass
+  end-to-end scoring.

@@ -1,5 +1,5 @@
 bundle_id: RB-A1-COFFEE-EXPANSION-v1
-bundle_version: 0.28
+bundle_version: 0.29
 status: illustrative_not_empirical
 compiled_before_run: true
 
@@ -25,6 +25,18 @@ compiler_inputs:
     - personalization.knowledge_and_scaffolding
     - personalization.audience_and_disclosure
     - risk.privacy_and_permission
+  selected_module_ids:
+    - CORE-TASK-01
+    - CORE-FACT-02
+    - CORE-EVID-03
+    - CORE-USABLE-06
+    - PER-CONSTRAINT-04
+    - PER-KNOW-03
+    - PER-AUDIENCE-07
+    - PER-RISK-05
+    - INT-DECIDE-03
+    - DEL-MEMO-02
+    - RISK-PRIV-01
 
 contract_bundle:
   must_change:
@@ -69,11 +81,35 @@ expanded_leaves:
     tree: user_conditional_fit
     contract_type: must_change
     rubric_owner_user_id: Ua
-    observable: recommended first-stage plan stays within 500k and defines a reversible 3-month pilot threshold
-    scoring: ordinal_0_1_2; 0=violates, 1=partly operationalized, 2=both cap and threshold operationalized
+    observable: recommended first-stage plan stays within 500k
+    scoring: ordinal_0_1_2; 0=exceeds cap, 1=mentions cap without costed plan, 2=plan and line items stay within cap
     direct_metric_bindings: [PF]
     counterfactual_scoring: apply unchanged to both Y_a and Y_b
     judge_route: deterministic_budget_check_then_rubric_judge
+
+  - criterion_id: U-A-PILOT-02
+    from_template: personalization.risk_and_decision_policy
+    from_contract: MC-A-01
+    tree: user_conditional_fit
+    contract_type: must_change
+    rubric_owner_user_id: Ua
+    observable: recommendation specifies a reversible 3-month first-stage pilot
+    scoring: ordinal_0_1_2; 0=no pilot, 1=pilot is present but not reversible or not time-bounded, 2=three-month reversible pilot is operationalized
+    direct_metric_bindings: [PF]
+    counterfactual_scoring: apply unchanged to both Y_a and Y_b
+    judge_route: rubric_judge
+
+  - criterion_id: U-A-EXIT-03
+    from_template: personalization.risk_and_decision_policy
+    from_contract: MC-A-01
+    tree: user_conditional_fit
+    contract_type: must_change
+    rubric_owner_user_id: Ua
+    observable: pilot includes separately actionable continue and exit thresholds
+    scoring: ordinal_0_1_2; 0=no threshold, 1=only one direction or vague thresholds, 2=both continue and exit thresholds are operational
+    direct_metric_bindings: [PF]
+    counterfactual_scoring: apply unchanged to both Y_a and Y_b
+    judge_route: rubric_judge
 
   - criterion_id: U-A-AUDIENCE-02
     from_template: personalization.knowledge_and_scaffolding
@@ -126,7 +162,7 @@ score_trace:
   direct:
     TQ: weighted mean of C-TASK-01, C-CITE-03 and other eligible common/deliverable leaves
     FR: evidence-weighted score from C-CITE-03 and other claim leaves
-    PF_a_Y_a: Ua PF leaves score Y_a
+    PF_a_Y_a: Ua PF leaves including U-A-BUDGET-01, U-A-PILOT-02 and U-A-EXIT-03 score Y_a
     PF_a_Y_b: the identical Ua PF leaves score Y_b
     PF_b_Y_b: Ub PF leaves score Y_b
     PF_b_Y_a: the identical Ub PF leaves score Y_a

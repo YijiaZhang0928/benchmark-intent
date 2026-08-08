@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **完整人话版：方法不变，只把话说清楚**  
-版本：v0.28 · 2026 年 8 月 8 日
+版本：v0.29 · 2026 年 8 月 8 日
 用途：组内讨论、导师沟通、正式稿写作前的共同理解  
 
 ---
@@ -136,6 +136,8 @@ DeepAlign 不重复回答这个问题，而是换一个 estimand：**同一任�
 
 ### 3.5 一个 task family 到底怎么造
 
+先不要把很多论文里的 task/persona/rubric 直接拼在一起。建一张 source-to-design ledger：每篇论文的一条设计资产只能先标成 task seed、用户信息 construct、压力/失败假设、rubric/judge 方法或运行基础设施；同时写清采用什么、改了什么、为什么不采用其余部分。这样 PDR 的 persona-aware 评分、Agent-SafetyBench 的 failure 组织、PaperBench 的原子 rubric 和 EvalScope 的 adapter 不会被错误地当作同一层 taxonomy。
+
 Task family 不是“旅行类”“学术类”这样的标签，而是一套能生成受控条件的蓝图。实际按八步做：
 
 1. 从真实用户、专业工作流或已有 benchmark 收集一个确实需要多步研究的问题；
@@ -221,6 +223,8 @@ Persona 只是用户状态的一种展示形式。我们真正保存的是一个
 
 三条轨道是运行环境，不是 agent 类型。统一 adapter 至少要能 reset、提供 signal、运行到 checkpoint、注入 event、导出 artifact，并声明能保存 artifact-only、tool events、message events 还是 full state。三条轨道不能混成一个总榜。
 
+不建议现在同时把三条都搭完整。先用 2 个 family、2 个 agent 把 E1 从 reset 跑到 2×2 评分；然后用 1 个 anchor 搭 E3 的 checkpoint、冲突和更新；最后拿 1 个商业产品做 E2 记录 smoke test。E1 和一个 E3 事件跑不通前，不要批量写几十个 task。
+
 ### 5.3 压力测试
 
 这里要分清两件事：**persona 与 task 匹配**用于先做出一组有效的干净题；**压力测试**是在这组题上单独改一个输入或过程因素。Anchor family 只是从 24 个 family 中选出的 8 个合适实验宿主，不是 8 种 persona，也不等于 8 种失败。
@@ -234,7 +238,9 @@ Persona 只是用户状态的一种展示形式。我们真正保存的是一个
 - 在子 agent 交接时删除或保留用户模型；
 - 用户中途更新目标。
 
-8 个 anchor 固定覆盖：日常决策、学习/职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿、政策传播。前三个共同对照（clean、persona swap、无关信息）在所有 anchor 上运行；冲突、稀释、handoff 和动态更新用平衡不完全区组分配，每类 failure mode 至少出现在两个不同 anchor。Anchor 只做能力压力测试，不在失败后追加提醒、纠偏或修复实验。
+8 个 anchor 固定覆盖：日常决策、学习/职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿、政策传播。前三个共同对照（clean、persona swap、无关信息）在所有 anchor 上运行；冲突、稀释、handoff 和动态更新用平衡不完全区组分配。要说“哪种因素跨任务更伤个性化”，该主要 perturbation 至少要在 4 个适用 anchor 上做同前缀配对；只做 2 个只能叫探索性复现。
+
+所以 anchor 真正回答的是：“固定任务、证据、预算和前缀后，long-context dilution / stale conflict / handoff / update 让 CFA、PF、invariance 或 MP 改变多少？”它不能仅凭“某类任务平均低”回答内部根因。只有轨迹可比时，才进一步把结果和 acquire/preserve/use/update 的过程证据联系起来。
 
 每个扰动都要记录：什么保持不变、改了什么、何时插入、agent 当时能看见什么、配对 clean run 是哪一个，以及哪些结果应该变化/保持。对应指标分别是 ΔPF、无关信息 invariance、冲突解析率、PF retention/AUC、handoff loss、update correctness 和旧状态残留率；同时检查事实、共同质量、长度和隐私是否受损。
 
@@ -265,6 +271,8 @@ Persona 只是用户状态的一种展示形式。我们真正保存的是一个
 - `rubric_template_registry.yaml`：有哪些固定模板、什么元数据会激活它们；
 - `rubric_leaf.schema.yaml`：每条最小评分项必须有哪些字段；
 - `metric_binding.schema.yaml`：每条 leaf 进 TQ、FR、PF、MP 中的哪一个，派生指标再怎样计算。
+- `rubric_module_library.yaml`：36 个预定义 module 的激活条件、leaf blueprint、binding、judge route 与适用范围；
+- `data_factory.protocol.yaml`：从文献来源、task seed、user pair、contract 到 pilot 的造数顺序。
 
 要讲准确：这些文件现在把接口、规则和贯通例子定清了，但自动校验和自动生成 bundle 的程序还没写完。第 1 周要实现 schema validator、模板路由、参数填充、leaf ID/hash、非法绑定拒绝和冻结导出；通过测试后才能叫“可执行 compiler”。
 
@@ -294,6 +302,19 @@ Compiler 的实际流程是：
 
 所有 rubric 叶节点使用同一数据格式，但只有适用的模块才会被激活。例如 `compare_decide + decision_memo` 会选“比较方案、给出决策和 trade-off”的 intent 模板，以及“执行摘要、选择标准、风险边界、下一步”的 memo 模板；`code_and_docs` 则换成可运行测试、依赖和复现说明模板。领域事实只是填入模板的参数，医疗 claim 和市场 claim 仍使用同一种 evidence leaf schema，但由不同证据和专家阈值判定。
 
+### 7.1.1 预定义 module library 长什么样
+
+| Family | 数量 | 例子 | 什么时候用 |
+|---|---:|---|---|
+| Core | 6 | 任务、事实、证据、推理、不确定性、可用性 | 所有 case 必选/条件选 |
+| Personalization | 9 | 目标、内容、知识、约束、风险、工作流、受众、格式、动态状态 | 有授权 user fact + must-change 才激活 |
+| Intent | 6 | synthesis / discover / decide / assess / plan / audit | 每个 case 主选 1 个 |
+| Deliverable | 7 | report / memo / table / code / slides / web / multi-file | 每个 case 主选 1 个 |
+| Operator | 4 | acquire / preserve / use / update | 受控诊断，不从 final-only 猜 |
+| Risk | 4 | 隐私、安全、升级、冲突/过期 | 风险或 must-not 激活 |
+
+我们的强处不是 Personalization 从 9 个继续扩到 15 个。模块越多，越容易 double count、调权重、让不同 case 分数不可比。真正的强处是：每个 personalization leaf 都必须有用户事实来源和 must-change；A/B 使用对称的模块形状；同一套 leaves 同时评分 matched/swapped；must-hold 和 must-not 阻止“变化越多越个性化”；最后还有目标用户和 JudgeBench 校准。这比“动态生成一张更细 rubric”更接近可证伪的测量协议。
+
 ### 7.2 Leaf expansion 到底是什么意思
 
 它不是“compiler 先出一个分数，再把分数细化”，而是**运行 agent 之前**把一个大要求拆成多个能独立打分的小要求。
@@ -307,8 +328,8 @@ Compiler 的实际流程是：
 它至少拆成：
 
 1. `U-A-BUDGET-01`：第一阶段支出不超过 50 万；
-2. `U-A-RISK-02`：给出三个月可逆试点、继续/退出阈值；
-3. `U-A-AUD-03`：首次出现关键金融术语时用非技术语言解释。
+2. `U-A-PILOT-02`：给出三个月可逆试点；
+3. `U-A-EXIT-03`：给出可操作的继续与退出阈值。
 
 每条 leaf 都要写清楚：属于哪个模板和 contract、适用于哪个用户、看交付物的什么证据、0/1/2 分分别是什么意思、权重、是否 hard gate、交给 verifier / judge / 用户 / 专家中的谁，以及直接进入哪个 metric。比如第 1 条可用数字 verifier + judge；0 分是超预算，1 分是提到预算但没有落实到方案，2 分是方案和阶段成本都满足。冻结后，任何 agent 都用同一标准。
 
@@ -338,13 +359,15 @@ Compiler 的实际流程是：
 
 所以，**TQ、FR、PF、MP 直接由 leaves 聚合；CFA 不直接绑定 leaf。** Ua 的冻结 PF leaves 同时给 `Y_a` 和 `Y_b` 打分，得到 `PF_a(Y_a)`、`PF_a(Y_b)`；Ub 的 leaves 再得到另外两个值。CFA 是这四个 PF 的对角优势。要查某个分数来自哪里，只需沿 `criterion_id → direct_metric_bindings → aggregate → derived metric` 追踪。
 
-### 7.6 Rubric 进入主实验前必须过五关
+### 7.6 Rubric 进入主实验前必须过七关
 
 1. 每个关键元数据要么对应可判断的 rubric，要么明确只用于切片报告；
 2. 人写的 matched 参考结果应明显优于 swapped 或错误版本；
 3. 同一 user-state 换成语义等价 signal view 后，must-change / must-hold 判断应稳定；
 4. 加入无关 persona、改变篇幅或文风不能提高不相关分数；
 5. judge 在不同任务、交付物、用户信息渠道和风险等级上都要单独校准。
+6. 检查不同 module 的语义重叠、leaf 数和权重敏感性，避免重复计分和量尺漂移；
+7. 对 pilot 中现有 module 捕捉不到的错误做 open coding；只有同一残余 construct 在至少两个不同 family 重复出现，才新增 module。
 
 无法稳定判断、不能区分 matched/swapped 的 rubric 必须删除或降级，不能靠调权重保留。
 

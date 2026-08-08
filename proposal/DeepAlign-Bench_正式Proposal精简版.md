@@ -2,11 +2,11 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.28 · 2026 年 8 月 8 日
+版本：v0.29 · 2026 年 8 月 8 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.28
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.29
 
 ---
 
@@ -79,7 +79,7 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 ### 3.3 任务抽样与失败分类
 
-任务按“使用情境 × 研究意图 × 需求剖面”组织。每个 family 依次完成：真实需求 seed → 冻结 task/evidence/deliverable core → 标注 stratum/intent/demand → 构造可调难度旋钮 → 配对 user states → 冻结差异契约 → 目标用户/专家 pilot。24 个 family 中 18 个覆盖 3×6 主单元，6 个复测关键单元；若只能产生文风差异或 matched/swapped 不稳定则删除。
+任务按“使用情境 × 研究意图 × 需求剖面”组织。多篇论文不直接求 taxonomy 并集，而先进入 source-to-design ledger：每个来源分别标为 task seed、用户 construct、perturbation、rubric/judge 或 infrastructure，并记录采用、修改和拒绝项。每个 family 依次完成：一个端到端 vertical slice → 真实需求 seed → 冻结 task/evidence/deliverable core → 标注 stratum/intent/demand → 配对 user states → 冻结差异契约 → 编译 module/leaves → 目标用户/专家 pilot。24 个 family 中 18 个覆盖 3×6 主单元，6 个复测关键单元；若只能产生文风差异或 matched/swapped 不稳定则删除。
 
 参考 Agent-SafetyBench，本项目分开“结果风险”和“预期失败模式”：前者回答最终错在何处，后者说明 case 设计用于暴露什么问题。预期标签不进入主 judge prompt；运行后的实际错误独立标注，并保留 other/emergent 类。
 
@@ -105,9 +105,11 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 三者是运行环境，不是 agent 类型。核心模式 M1 商业产品、M2 controlled harness、M3 开源 DRA；code、multi-agent、memory-enhanced 只在适用 anchor 上做架构 probe。统一 adapter 至少实现 reset、provide_signal、run_until、inject_event、export_artifact 和 trace-level 声明。
 
+开工时不同时搭满三条轨道：先用 2 family × 2 agent 跑通 E1；再用 1 个 anchor 验证 E3 checkpoint/conflict/update；最后只做 1 个 E2 商业产品 adapter smoke test。E1 和一个 E3 event 未端到端通过前不批量造数；E2 不阻塞主矩阵。
+
 8 个 anchor 覆盖日常决策、学习职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿和政策传播。每个先建 clean family，再按 `S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 两个正交扰动` 运行。difficulty 用 evidence、signal、horizon、orchestration、permission、counterfactual subtlety 六维 stress vector 表示；risk、failure mode 与强度分开，不求和成伪精确难度分。
 
-所有 anchor 运行 clean、persona swap 和 irrelevant-signal；其余 failure mode 用平衡不完全区组分配，每类至少落到两个不同 anchor 且有同前缀 control。Anchor 只用于压力测试，不在失败后追加提醒或修复干预。结果分四层报 base task profile、signal board、S0–S3 stress curve 和 boundary/governance board，不把不同轨道、预算或不适用任务混成一个 overall。
+所有 anchor 运行 clean、persona swap 和 irrelevant-signal；其余 failure mode 用平衡不完全区组分配。若要跨任务比较“long context、conflict、handoff 哪种伤害更大”，主要 perturbation 至少落到 4 个适用 anchor；只落到 2 个时仅作探索性复现。Anchor 通过同任务、同前缀 control 估计受控扰动敏感度，不能仅凭异构任务相关性声称找到了内部根因。结果分四层报 base task profile、signal board、S0–S3 stress curve 和 boundary/governance board。
 
 ### 4.3 最终结果与过程证据
 
@@ -121,6 +123,8 @@ Compiler 已有机器可读 contract 和固定模板设计，不是让 LLM 对�
 
 固定模板分六层：core 所有 case 必选；personalization 由 task-relevant user facts 和 must-change 激活；intent 由六类研究意图选择；deliverable 由 report / memo / workbook / code / slides / webpage / multi-file 选择；operator 用于 acquire/preserve/use/update 诊断；risk 由 stakes、permission、敏感信息和 must-not 激活。统一的是 leaf schema、适用条件和聚合规则，而不是让所有任务共用一张表。每条 leaf 显式记录 `criterion_id`、rubric owner、observable、evidence、scoring anchors、weight、hard gate、judge route 和 `direct_metric_bindings`。
 
+预定义 library 有 36 个 module：6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk；每个 case 只激活适用子集。report/memo/table 先以 12–22 active leaves 做主矩阵，code/slides/web/multi-file 先作为 probe。相对 PDR-Bench 的重点不是“维度更多”，而是 module 版本预冻结、每个 personalization leaf 追溯到授权 user fact + must-change、同一 PF bundle 交叉评 matched/swapped，并用 must-hold/must-not 防止差异和过度个性化冒充分数。完整库见 `rubric_module_library.yaml`。
+
 四类评价契约为：
 
 - **must-change：** 用户差异必须改变的内容、决策、深度、行动或披露边界；
@@ -128,7 +132,7 @@ Compiler 已有机器可读 contract 和固定模板设计，不是让 LLM 对�
 - **must-not：** 不得假设、泄露、越权或为迎合偏好而扭曲的内容；
 - **clarify-if-unknown：** 缺少关键信息时应提问、给条件分支或明确说明假设。
 
-绑定规则固定为：common/intent/deliverable leaves → TQ（事实项同时 → FR）；must-change leaves → 指定用户的 PF；must-hold leaves → TQ + Neutral Invariance；must-not violations → MP / hard gate；clarify leaves → Clarification Correctness，无依据假设另入 MP；operator leaves → 与同前缀 clean control 的诊断差分。仓库提供 `rubric_leaf.schema.yaml`、`rubric_template_registry.yaml`、`metric_binding.schema.yaml` 和一个端到端 `rubric_bundle.example.yaml`。
+绑定规则固定为：common/intent/deliverable leaves → TQ（事实项同时 → FR）；must-change leaves → 指定用户的 PF；must-hold leaves → TQ + Neutral Invariance；must-not violations → MP / hard gate；clarify leaves → Clarification Correctness，无依据假设另入 MP；operator leaves → 与同前缀 clean control 的诊断差分。库的“全面性”由 content mapping、matched/swapped 区分力、无关 cue invariance、module 去重/消融、权重与 active/NA 分母敏感性、目标用户/专家效度和 residual-error saturation 共同验证，不由 module 数量证明。
 
 ### 5.2 Metrics
 
@@ -151,7 +155,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 ### 6.1 数据质量控制
 
-每个 task-persona 对必须通过六项门槛：场景真实、决策相关、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。标注者先独立编写 must-change 和 must-hold，再处理分歧。人类真值分工固定：领域专家评事实、证据和共同质量，目标用户确认 must-change / must-not 并盲评 matched/swapped；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。[[28]](https://aclanthology.org/2026.acl-long.723/) Rubric 必须通过 matched/swapped 区分力、cue-equivalence 稳健性、无关 persona invariance 和跨任务模块校准后才进入主实验。
+每个 task-persona 对必须通过六项门槛：场景真实、决策相关、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。标注者先独立编写 must-change 和 must-hold，再处理分歧。人类真值分工固定：领域专家评事实、证据和共同质量，目标用户确认 must-change / must-not 并盲评 matched/swapped；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。[[28]](https://aclanthology.org/2026.acl-long.723/) Rubric 还必须通过内容映射、matched/swapped 区分、nuisance invariance、去重/消融、权重敏感性、目标用户/专家效度和 residual-error saturation；未通过的 module 删除、合并或降为探索性分析。
 
 ### 6.2 统计方案
 
@@ -185,14 +189,10 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 | 周 | 主要产出 | 失败时的收缩方案 |
 |---|---|---|
-| 1 | 冻结 Atlas、schema、coverage 和 24 family 配额 | 缩小 ontology，不增加新分支 |
-| 2 | 24 family、48 user state 和 persona-task 检查 | 删除无稳定用户差异的任务 |
-| 3 | 真值包、四类契约和 rubric modules | 无区分力的 rubric 不进主榜 |
-| 4 | 240-unit JudgeBench、judge 基线和 6 family dry run | judge 不过门则增加人评 |
-| 5 | 三类核心 agent 完成主矩阵 | 冻结版本，停止新增 agent |
-| 6 | anchor 压测、20% 人评和错误 open coding | 只保留证据充分的机制结论 |
-| 7 | 统计、覆盖审计、消融和 Results 初稿 | 删除不受支持的支线 |
-| 8 | 结果冻结、复现、全文和匿名材料 | 不再增加 taxonomy 或系统 |
+| 1–2 | 冻结 Atlas/schema；完成 24 family、48 user state 和 persona-task 检查 | 缩小 ontology；删除无稳定用户差异的任务 |
+| 3–4 | 真值/契约/rubric；240-unit JudgeBench 与 6-family dry run | 无区分力 module 不进主榜；judge 不过门则增加人评 |
+| 5–6 | 三类核心 agent 主矩阵、anchor 压测、20% 人评和错误 open coding | 冻结 agent；只保留证据充分的过程结论 |
+| 7–8 | 统计、覆盖/消融、结果冻结、复现、全文和匿名材料 | 删除不受支持的支线；不再增加 taxonomy 或系统 |
 
 ### 8.2 主要风险及缓解
 
@@ -253,24 +253,24 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 [22] Yang et al. *APeB: Benchmarking Personalization Ability of Large Language Model Agents*. arXiv:2607.03162, 2026.
 
-[23] Salemi et al. *LaMP: When Large Language Models Meet Personalization*. ACL, 2024. https://aclanthology.org/2024.acl-long.399/
+[23] Salemi et al. [LaMP: When Large Language Models Meet Personalization](https://aclanthology.org/2024.acl-long.399/). ACL, 2024.
 
-[24] Zhao et al. *PersonaLens: A Benchmark for Personalization Evaluation in Conversational AI Assistants*. Findings of ACL, 2025. https://aclanthology.org/2025.findings-acl.927/
+[24] Zhao et al. [PersonaLens: A Benchmark for Personalization Evaluation in Conversational AI Assistants](https://aclanthology.org/2025.findings-acl.927/). Findings of ACL, 2025.
 
-[25] Hao et al. *Evaluating Personalized Tool-Augmented LLMs from the Perspectives of Personalization and Proactivity*. ACL, 2025. https://aclanthology.org/2025.acl-long.1064/
+[25] Hao et al. [Evaluating Personalized Tool-Augmented LLMs from the Perspectives of Personalization and Proactivity](https://aclanthology.org/2025.acl-long.1064/). ACL, 2025.
 
-[26] Jiang et al. *Know Me, Respond to Me: Benchmarking LLMs for Dynamic User Profiling and Personalized Responses at Scale*. arXiv:2504.14225, 2025.
+[26] Jiang et al. [Know Me, Respond to Me: Benchmarking LLMs for Dynamic User Profiling and Personalized Responses at Scale](https://arxiv.org/abs/2504.14225). arXiv:2504.14225, 2025.
 
-[27] Li et al. *Personalized Deep Research: A User-Centric Framework, Dataset, and Hybrid Evaluation for Knowledge Discovery*. arXiv:2605.10530, 2026.
+[27] Li et al. [Personalized Deep Research: A User-Centric Framework, Dataset, and Hybrid Evaluation for Knowledge Discovery](https://arxiv.org/abs/2605.10530). arXiv:2605.10530, 2026.
 
-[28] Balepur et al. *Language Models Don't Know What You Want: Evaluating Personalization in Deep Research Needs Real Users*. ACL, 2026. https://aclanthology.org/2026.acl-long.723/
+[28] Balepur et al. [Language Models Don't Know What You Want: Evaluating Personalization in Deep Research Needs Real Users](https://aclanthology.org/2026.acl-long.723/). ACL, 2026.
 
-[29] Liang et al. *Learning Personalized Agents from Human Feedback*. arXiv:2602.16173, 2026.
+[29] Liang et al. [Learning Personalized Agents from Human Feedback](https://arxiv.org/abs/2602.16173). arXiv:2602.16173, 2026.
 
-[30] Shen et al. *Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents*. ACL, 2026. https://aclanthology.org/2026.acl-long.370/
+[30] Shen et al. [Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents](https://aclanthology.org/2026.acl-long.370/). ACL, 2026.
 
-[31] Guo et al. *When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents*. ACL, 2026. https://aclanthology.org/2026.acl-long.1260/
+[31] Guo et al. [When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents](https://aclanthology.org/2026.acl-long.1260/). ACL, 2026.
 
-[32] Weeber et al. *One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization*. ACL, 2026. https://aclanthology.org/2026.acl-long.2079/
+[32] Weeber et al. [One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization](https://aclanthology.org/2026.acl-long.2079/). ACL, 2026.
 
-[33] Qiu et al. *Preference-Aware Rubric Learning for Personalized Evaluation*. arXiv:2605.31545, 2026. https://arxiv.org/abs/2605.31545
+[33] Qiu et al. [Preference-Aware Rubric Learning for Personalized Evaluation](https://arxiv.org/abs/2605.31545). arXiv:2605.31545, 2026.

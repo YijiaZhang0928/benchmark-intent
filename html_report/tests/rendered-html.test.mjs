@@ -82,6 +82,10 @@ test("server-renders the rubric compiler workbench", async () => {
   assert.match(html, /Leaf expansion/);
   assert.match(html, /CFA 不会出现在任何 leaf/);
   assert.match(html, /U-A-BUDGET-01/);
+  assert.match(html, /预定义 Rubric Module Library · 36 个可路由模块/);
+  assert.match(html, /Anchor family 能回答什么，不能回答什么/);
+  assert.match(html, /href="\/rubric_module_library\.yaml"/i);
+  assert.match(html, /href="\/data_factory\.protocol\.yaml"/i);
   assert.match(html, /href="\/rubric_leaf\.schema\.yaml"/i);
   assert.match(html, /href="\/metric_binding\.schema\.yaml"/i);
   assert.match(html, /href="\/rubric_bundle\.example\.yaml"/i);
@@ -121,11 +125,13 @@ test("server-renders the paper figure and table blueprint", async () => {
 });
 
 test("keeps the machine-readable metadata and downloadable artifacts in sync", async () => {
-  const [page, schema, leafSchema, templateRegistry, metricBinding, exampleBundle, manifest] = await Promise.all([
+  const [page, schema, leafSchema, templateRegistry, moduleLibrary, dataFactory, metricBinding, exampleBundle, manifest] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../public/case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/rubric_leaf.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/rubric_template_registry.yaml", import.meta.url), "utf8"),
+    readFile(new URL("../public/rubric_module_library.yaml", import.meta.url), "utf8"),
+    readFile(new URL("../public/data_factory.protocol.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/metric_binding.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/rubric_bundle.example.yaml", import.meta.url), "utf8"),
     readFile(
@@ -136,7 +142,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.28/m);
+  assert.match(schema, /^schema_version:\s*0\.29/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
   assert.match(schema, /estimand:\s*counterfactual_personalization_effect/);
@@ -148,6 +154,11 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
   assert.match(leafSchema, /direct_metric_bindings:/);
   assert.doesNotMatch(leafSchema, /^\s+- CFA\s*$/m);
   assert.match(templateRegistry, /expand_to_atomic_leaves/);
+  assert.match(templateRegistry, /module_library: rubric_module_library\.yaml/);
+  assert.match(moduleLibrary, /PER-CONSTRAINT-04/);
+  assert.match(moduleLibrary, /residual_error_saturation/);
+  assert.match(dataFactory, /0_vertical_slice/);
+  assert.match(dataFactory, /replication_rule/);
   assert.match(metricBinding, /CFA:/);
   assert.match(metricBinding, /CFA is not a leaf score/);
   assert.match(exampleBundle, /U-A-BUDGET-01/);

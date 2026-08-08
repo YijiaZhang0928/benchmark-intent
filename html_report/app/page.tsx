@@ -95,7 +95,7 @@ export default function Home() {
           <div className="sectionHead"><h2>同一套方法，按阅读场景分成四版</h2><p>没有删改研究逻辑、实验设计、rubric、metrics 或 judge；只调整结构、语言密度和细节层级。</p></div>
           <div className="editionGrid">
             <article>
-              <span>METHOD BASELINE · 61 PAGES</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.28 把 rubric compiler 写成可实现的协议：固定模板路由、leaf expansion、评分绑定和 2×2 CFA 推导均可追溯。</p>
+              <span>METHOD BASELINE · 65 PAGES</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.29 增加可执行的数据工厂、36-module library、anchor 归因边界和 E1→E3→E2 的搭建顺序。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
             </article>
             <article className="recommended">
@@ -103,7 +103,7 @@ export default function Home() {
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div>
             </article>
             <article>
-              <span>PLAIN LANGUAGE · 25 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
+              <span>PLAIN LANGUAGE · 26 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div>
             </article>
             <article>
@@ -285,8 +285,8 @@ export default function Home() {
             <article><b>MUST NOT</b><p>不得假设、泄露、越权或为迎合偏好而扭曲的内容。</p></article>
             <article><b>CLARIFY IF UNKNOWN</b><p>缺少关键信息时必须提问、给条件分支或显式说明假设。</p></article>
           </div>
-          <div className="calibrationGates"><b>五个校准门</b><span>metadata schema coverage</span><span>matched &gt; swapped discrimination</span><span>cue-equivalence robustness</span><span>irrelevant-persona invariance</span><span>cross-type judge calibration</span></div>
-          <div className="rubricWorkbenchCta"><p><b>TQ / FR / PF / MP</b> 直接聚合 leaves；<b>CFA</b> 由四个 cross-scored PF 单元派生，不直接绑定任何 leaf。</p><a href="/rubrics">打开 Rubric Compiler 工作台 →</a></div>
+          <div className="calibrationGates"><b>七个有效性检查</b><span>schema/content coverage</span><span>matched &gt; swapped discrimination</span><span>cue-equivalence robustness / nuisance invariance</span><span>redundancy audit</span><span>weight sensitivity</span><span>target-user/expert validity</span><span>residual-error saturation</span></div>
+          <div className="rubricWorkbenchCta"><p><b>TQ / FR / PF / MP</b> 直接聚合 leaves；<b>CFA</b> 由四个 cross-scored PF 单元派生。工作台同时展示 36-module library、数据构建流水线和 anchor 识别边界。</p><a href="/rubrics">打开 Rubric Compiler 工作台 →</a></div>
         </div>
       </section>
 
@@ -438,7 +438,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.28 · 2026-08-08</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.29 · 2026-08-08</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
     </main>
   );
 }

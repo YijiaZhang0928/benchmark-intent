@@ -21,7 +21,7 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.28 · 组内讨论稿"
+DOC_VERSION = "v0.29 · 组内讨论稿"
 DOC_DATE = "2026 年 8 月 8 日"
 RESEARCH_LINE = "Counterfactual Effect · 可审计构造 · 分级压力 · 跨环境运行"
 CORE_CLAIM = "固定任务与证据，只改变目标用户；用 matched/swapped 与三类契约判断输出是否按正确方向变化，再比较不同 agent 在 S0–S3 压力下的表现。"
@@ -436,9 +436,12 @@ def add_table(doc, rows):
     table = doc.add_table(rows=len(rows), cols=ncols)
     table.style = "Table Grid"
     set_table_geometry(table, widths)
-    table_font_size = 8.2 if STYLE_PRESET == "compact_reference_guide" else 9.2
-    table_spacing = 0 if STYLE_PRESET == "compact_reference_guide" else 2
-    table_line_spacing = 1.0 if STYLE_PRESET == "compact_reference_guide" else 1.08
+    if STYLE_PRESET == "formal_condensed":
+        table_font_size, table_spacing, table_line_spacing = 8.4, 0, 1.0
+    elif STYLE_PRESET == "compact_reference_guide":
+        table_font_size, table_spacing, table_line_spacing = 8.2, 0, 1.0
+    else:
+        table_font_size, table_spacing, table_line_spacing = 9.2, 2, 1.08
     for i, row in enumerate(rows):
         for j in range(ncols):
             text = row[j] if j < len(row) else ""
@@ -601,6 +604,17 @@ def build(md_path=MD, out_path=OUT):
                 # Figure follows the research questions and precedes literature review.
                 add_figure_section(doc)
                 figure_added = True
+            if STYLE_PRESET == "formal_condensed" and title == "参考文献":
+                # A two-column reference section is standard academic layout and
+                # keeps the condensed proposal within its hard ten-page limit
+                # without shrinking the body text.
+                ref_section = doc.add_section(WD_SECTION.CONTINUOUS)
+                cols = ref_section._sectPr.find(qn("w:cols"))
+                if cols is None:
+                    cols = OxmlElement("w:cols")
+                    ref_section._sectPr.append(cols)
+                cols.set(qn("w:num"), "2")
+                cols.set(qn("w:space"), "360")
             doc.add_paragraph(title, style="Heading 1")
             current_num_id = None
             i += 1

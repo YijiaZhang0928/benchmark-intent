@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.28 · 2026 年 8 月 8 日
+版本：v0.29 · 2026 年 8 月 8 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -339,6 +339,14 @@ Task cube 回答三个问题：样本覆盖了什么、任务在哪些方面更�
 
 ## 5. Benchmark 数据结构与构建流程
 
+### 5.0 多篇论文不能直接“杂糅”：先建立 source-to-design ledger
+
+数据构造不从“把几篇 benchmark 的任务、persona 和 rubric 拼在一起”开始。这样会同时引入重复题、定义冲突、不可追溯真值和选择性采用。DeepAlign 要把每个来源拆成一条 **source-to-design record**：原文提供了什么 claim 或 asset；在本项目中属于 task seed、用户信号/个性化 construct、failure/perturbation、rubric/judge，还是基础设施；采用什么、修改什么、拒绝什么；最终落到哪些 schema 字段。一个来源可以贡献多个 record，但每条 record 只能承担一个设计角色。
+
+例如，通用 DR benchmark 主要贡献任务 seed、研究意图和证据环境；PDR-Bench 贡献 task/persona-conditioned absolute adaptation 与个性化 DR 场景；Setoka、PersonaTrail、APeB 等贡献用户状态与历史信号的 construct；Agent-SafetyBench 和长期记忆工作贡献“结果风险 × 受控失败假设”的组织方式；PaperBench、ResearchRubrics、PDR 和 JudgeBench 邻居贡献原子 rubric 与评价校准；OpenCompass、EvalScope 贡献 adapter 和执行框架。吸收对象不同，不能把这些论文的 taxonomy 当作同一层标签求并集。
+
+正式造数按 0–7 八个阶段运行：先做一个端到端 vertical slice；再规范化真实 task seed；冻结共同任务、证据、工具和预算；构造最小反事实用户对；预写四类 contract；路由预定义 module 并做 leaf expansion；用 matched、swapped、generic 和 misuse reference 做人类 pilot；最后才按 Atlas 分层扩展并审计 split 与 coverage。只有 reference matched 能稳定胜过 swapped、目标用户能确认 must-change、leaf 能被独立判断时，才批量扩展。机器可读流程见 `data_factory.protocol.yaml`。
+
 ### 5.1 反事实任务族
 
 基本单位不是单个 query，而是一个 **counterfactual family**：
@@ -385,7 +393,9 @@ Task cube 回答三个问题：样本覆盖了什么、任务在哪些方面更�
 | Agent handoff | 任务、目标用户、运行前缀 | 固定交接点传完整/缺失/损坏摘要 | handoff loss、约束保持率 |
 | Dynamic update | episode 前半段 | 预注册回合更新目标、预算或状态 | update correctness、旧状态残留率 |
 
-为控制两个月预算，anchor 不运行完整笛卡尔积。8 个 anchor 都运行 clean baseline、persona swap 和 irrelevant-signal 控制；其余扰动采用**平衡不完全区组**。每个 failure mode 至少在两个不同任务或交付物的 anchor 上测试；每个 anchor 只承担 3–4 个最自然的 mode；每个强扰动都有同 anchor、同前缀、同预算的 clean 或 light control。Anchor 只做能力压力测试，不在失败后追加提醒、纠偏或 verifier 干预，也不计算修复收益。每次扰动都保存 `anchor_id`、`stress_vector`、`stage`、`base_user_state_id`、`signal_bundle_id`、`type/target/insert_step`、`authorized_visibility`、`expected_invariants`、`paired_control_id` 和 `seed`。
+为控制两个月预算，anchor 不运行完整笛卡尔积。8 个 anchor 都运行 clean baseline、persona swap 和 irrelevant-signal 控制；其余扰动采用**平衡不完全区组**。如果论文要比较“long context、conflict、handoff 等哪种因素对个性化伤害更大”，每个主要 perturbation 至少需要落到 4 个适用 anchor，并用同任务、同前缀、同预算的 clean/perturbed 配对差值估计；只落到 2 个 anchor 时只能称为探索性复现，不能排序成普遍原因。每个 anchor 只承担 3–4 个最自然的 mode。Anchor 只做能力压力测试，不在失败后追加提醒、纠偏或 verifier 干预，也不计算修复收益。每次扰动都保存 `anchor_id`、`stress_vector`、`stage`、`base_user_state_id`、`signal_bundle_id`、`type/target/insert_step`、`authorized_visibility`、`expected_invariants`、`paired_control_id` 和 `seed`。
+
+Anchor 的可识别量是**受控扰动敏感度**，不是“用户建模失败的普遍内部原因”。在固定 task/evidence/prefix 后，`ΔCFA_k`、`ΔPF_k`、invariance 和 MP 可以说明 perturbation k 对最终表现的影响；只有系统轨迹可比，并且预注册的 acquire/preserve/use/update 证据同时出现，才能在附录讨论过程机制。跨不同任务直接相关“上下文长的 case 分数低”不能作为因果证据。样本支持足够时，可用 perturbation 固定效应、family/agent 随机效应的模型做比较；否则只报逐 anchor 配对效应与置信区间。
 
 领域和交付物作为交叉切片。领域至少包括消费与旅行、教育与职业、金融决策、健康信息、企业与合规、软件工程与数据、科研与政策、内容与传播。交付物包括研究报告、决策备忘录、表格或工作簿、代码与技术说明、幻灯、网页和多文件项目。高风险任务只评价信息支持和是否知道何时升级给专业人士，不让 agent 无监督执行医疗、法律或金融交易。
 
@@ -417,6 +427,8 @@ Task cube 回答三个问题：样本覆盖了什么、任务在哪些方面更�
 - 产出 retention、update 和 handoff 曲线，不与静态主榜合成一个分数。
 
 三条轨道使用同一个最小 adapter contract：`reset(case, seed)`、`provide_signal(view)`、`run_until(checkpoint)`、`inject_event(event)`、`export_artifact(schema)`、`export_trace(level)`。系统声明可提供的轨迹等级：`artifact_only`、`tool_events`、`message_events` 或 `full_state`。只有至少提供 message events、并且完成共享前缀的受控分叉时，论文才讨论过程 failure mode；否则只报告最终结果。
+
+**不要同时把三条环境全部搭满。** 开工顺序应是：先用 2 个 family、2 个 agent 做 E1 frozen vertical slice，验证 reset、证据快照、artifact export 和 2×2 评分；再用 1 个 anchor 搭 E3 的 checkpoint、clarification、conflict 和 update 注入；最后只对 1 个商业产品做 E2 adapter smoke test，检查版本、地区、日期、成本与 URL 快照能否记录。E1 端到端和一个 E3 事件未跑通前，不批量造 task。E2 是生态有效性轨，不应阻塞主矩阵。
 
 ### 5.4 用户数据与真值创建
 
@@ -471,7 +483,7 @@ rubric 在系统输出产生前冻结。LLM 可帮助拆分原子项、找遗漏
 
 ### 6.1 元数据驱动的 Rubric Compiler
 
-“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。DeepAlign 固定的是**编译接口、叶节点 schema 和聚合规则**；具体评价项由 case 元数据和预先写好的评价契约选择。仓库中对应四个机器可读对象：`case.schema.yaml` 描述任务、用户、环境和 agent；`rubric_template_registry.yaml` 保存可复用模板及路由条件；`rubric_leaf.schema.yaml` 规定每条原子标准的固定字段；`metric_binding.schema.yaml` 规定 leaf 如何进入 TQ、FR、PF、MP，以及 CFA 等派生指标如何计算。v0.28 先冻结这些 compiler contract 与贯通示例；自动 validator、模板路由器和 bundle 导出器是第 1 周实现项，尚不能把当前设计文件表述为已经完成的生产级 compiler。
+“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。DeepAlign 固定的是**编译接口、叶节点 schema 和聚合规则**；具体评价项由 case 元数据和预先写好的评价契约选择。仓库中有六个相互衔接的机器可读对象：`case.schema.yaml` 描述任务、用户、环境和 agent；`rubric_template_registry.yaml` 保存路由规则；`rubric_module_library.yaml` 预注册 36 个可组合 module；`rubric_leaf.schema.yaml` 规定原子标准字段；`metric_binding.schema.yaml` 规定 leaf 如何进入 TQ、FR、PF、MP 及派生指标；`data_factory.protocol.yaml` 规定来源映射、构造阶段、anchor 对照和环境开工顺序。v0.29 冻结的是 compiler contract、module library 与贯通示例；自动 validator、模板路由器和 bundle 导出器仍是第 1 周实现项，不能把当前设计文件表述为已经完成的生产级 compiler。
 
 Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-state ledger；（3）`must-change / must-hold / must-not / clarify-if-unknown` 契约；（4）证据包与允许访问范围；（5）版本化模板库。它在任何被测输出产生前按五步运行：
 
@@ -511,7 +523,20 @@ Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-s
 
 每个 case 先写四类评价契约：`must_change` 规定不同用户之间必须改变什么；`must_hold` 规定共同事实和质量必须保持什么；`must_not` 规定不能假设、披露或迎合什么；`clarify_if_unknown` 规定缺少关键信息时何时应提问或给条件分支。模板负责提供标准结构，契约负责填入本 case 的可验证真值。
 
-以“为咖啡店扩店做市场调研并交付决策备忘录”为例，元数据 `compare_decide + decision_memo + medium stakes` 会激活 `core + decision intent + memo deliverable + user constraint + privacy` 模板。复合要求“建议应符合 Ua 的预算和风险”会扩展为至少两条 leaf：（1）第一阶段方案不超过 50 万；（2）给出三个月可逆试点及退出门槛。两条分别带 0/1/2 锚点；不能只给一个“总体很适合 Ua”的印象分。
+v0.29 的预定义 library 包含 36 个 module，而不是 36 个都塞进每个 case：
+
+| Module family | 数量 | 主要内容 | 默认范围 |
+|---|---:|---|---|
+| Core | 6 | 任务完成、事实、证据、推理、不确定性、可用性 | 主矩阵必选/条件选 |
+| Personalization | 9 | 目标、内容优先级、知识、约束、风险、工作流、受众、格式、动态状态 | 由 user fact + must-change 激活 |
+| Intent | 6 | synthesis、discovery、decision、assessment、plan、audit | 每个 case 主选 1 个 |
+| Deliverable | 7 | report、memo、table、code、slides、web、multi-file | 每个 case 主选 1 个；后四类先做 probe |
+| Operator | 4 | acquire、preserve、use、update | 受控诊断；不从 final-only 反推 |
+| Risk | 4 | 隐私权限、安全、升级、冲突/过期 | stakes/permission/must-not 条件激活 |
+
+完整定义在 `rubric_module_library.yaml`。主矩阵的 report/memo/table 以 12–22 个 active leaves 为 pilot 目标；code/slides/web/multi-file 先作为 anchor probe，待 verifier 和人评校准后再进入主榜。Module 数量不是论文贡献本身。相对 PDR-Bench 更重要的差异是：module 在输出前按固定版本路由；每个 personalization leaf 必须追溯到授权 user fact 和 must-change；同一用户的 PF leaves 原样交叉评分 matched/swapped；must-hold 与 must-not 提供不变性和不可补偿边界。若只是增加维度，反而会增加研究者自由度、judge 方差和 double counting。
+
+以“为咖啡店扩店做市场调研并交付决策备忘录”为例，元数据 `compare_decide + decision_memo + medium stakes` 会激活 `core + decision intent + memo deliverable + user constraint + privacy` 模板。复合要求“建议应符合 Ua 的预算和风险”会扩展为三条 leaf：（1）第一阶段方案不超过 50 万；（2）给出三个月可逆试点；（3）给出可操作的继续与退出门槛。三条分别带 0/1/2 锚点；不能只给一个“总体很适合 Ua”的印象分。
 
 ### 6.3 固定 leaf schema、计分与指标绑定
 
@@ -534,14 +559,17 @@ Leaf 到指标的关系必须在 bundle 中显式声明，而不是由分析者�
 
 ### 6.4 编译校准门与三棵 rubric tree
 
-Rubric compiler 必须接受四项覆盖校验：
+Rubric compiler 必须接受七项覆盖与效度校验：
 
 1. **Schema coverage**：每个进入实验的核心元数据值至少激活一个可判定叶节点或明确标为仅报告字段；
 2. **Counterfactual discrimination**：人类 matched 参考输出应显著优于 swapped、ablated 或错误利用版本；
 3. **Invariance**：加入无关 persona、改变文风或长度时，非适用叶节点不应获得额外分；
 4. **Cross-type judge calibration**：分别报告 intent、deliverable、signal channel 和 stakes 模块上的一致性、弃权率与误差，不以整体准确率掩盖模块失效。
+5. **Redundancy & scale audit**：检查跨 module 语义重叠、leaf 数量、NA 分母和权重敏感性；同一行为不能在多个 module 中无理由重复计分。
+6. **Target-user/domain content validity**：目标用户检查 must-change 与可接受替代，领域专家检查事实、证据和高风险边界；作者自洽不能替代两类外部判断。
+7. **Residual-error saturation**：对 pilot 中现有 module 捕捉不到的 `other/emergent` 错误做 open coding。只有同一残余 construct 在至少两个不同 family 重复出现、具有决策后果、且不能通过现有 module 参数化时，才新增 module。
 
-如果一个模块在人类之间无法稳定判断，或不能区分 matched 和 swapped 输出，就删除、合并或降为探索性分析，不能靠调整权重把它保留在主分中。Rubric 的通用性来自统一接口、明确的适用条件和跨类型校准，而不是让所有任务强行使用同一张表。
+如果一个模块在人类之间无法稳定判断，或不能区分 matched 和 swapped 输出，就删除、合并或降为探索性分析，不能靠调整权重把它保留在主分中。所谓“全面”不是 36 个 module 名称已经穷尽 personalization，而是核心 requirement/user fact 有映射、残余错误率可见、新 construct 达到饱和规则、且模块之间具备区分效度。Rubric 的通用性来自统一接口、明确的适用条件和跨类型校准，而不是让所有任务强行使用同一张表。
 
 **A. Common Task Quality（共同质量树）**
 
@@ -821,13 +849,19 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **攻击：**不同任务激活不同叶节点，最终百分比分数并非同一量尺；统一总榜没有测量学依据。
 
-**防守：**统一的是 leaf schema、契约类型和校准程序，不假设所有模块天然等距。主结果以任务内 CFA、模块完成率和分层效应为主；跨模块总分只在共同 anchor 通过人类判定、区分力、invariance 与 judge 校准后报告。否则只展示 profile，不建立伪精确总体名次。
+**防守：**统一的是 leaf schema、契约类型和校准程序，不假设所有模块天然等距。36-module library 在输出前按版本路由，发布 active leaf 数、权重、NA 分母、重叠审计和 weight sensitivity。主结果以任务内 CFA、模块完成率和分层效应为主；跨模块总分只在共同 anchor 通过人类判定、区分力、invariance 与 judge 校准后报告。否则只展示 profile，不建立伪精确总体名次。
 
 ### 11.15 “所谓 difficulty 只是把多种风险混在一起”
 
 **攻击：**作者把长上下文、高 stakes、多 agent 和冲突信息都叫“更难”，无法知道性能下降来自计算负荷、信息噪声还是风险策略。
 
 **防守：**任务 demand、后果 risk、预期 failure mode 与 stress intensity 四者分开标注；anchor 先做 S0，再做单因素 S1/S2，只有在已估计单因素效应后才做 S3 复合压力。主文报告每个 stress 维度的响应曲线与 agent 交互，不用一个 difficulty total 掩盖机制。
+
+### 11.16 “八个 anchor 不足以发现用户建模失败原因”
+
+**攻击：**八个任务跨领域、交付物和系统异质性很高。把低分与 long context、conflict 或 handoff 相关联，既没有统计功效，也不能定位内部根因。
+
+**防守：**不把 anchor 当作观察性相关分析。主要 estimand 是同一 family、同一运行前缀、同一预算的 clean/perturbed 配对差值；用于跨任务比较的主要 perturbation 至少覆盖 4 个适用 anchor，2 个只作为探索性复现。主文只称“对受控扰动的结果敏感度”；只有 message/full-state trace 可比、过程证据满足预注册 operator 条件时，才在附录讨论 acquisition/preservation/use/update 机制。
 
 ## 12. 预期贡献、成功标准与发表边界
 
@@ -848,7 +882,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 - JudgeBench 达到第 8.2 节门槛；
 - task cube 的 stratum/主 intent 与双轴 taxonomy 的主风险盲标一致性达到预注册门槛，且 `other/emergent` 未覆盖率可接受；
 - Atlas 必填字段完整率 ≥ 95%，双人元数据标注的一致性达到预注册门槛；coverage manifest 能区分 tested / defined-only / structurally-inapplicable / deferred 四种状态；
-- 每个进入主实验的 rubric module 至少通过 schema coverage、matched-swapped discrimination、cue-equivalence robustness 和无关信息 invariance 四项中的适用检查；
+- 每个进入主实验的 rubric module 至少通过 schema coverage、matched-swapped discrimination、cue-equivalence robustness、无关信息 invariance、冗余/权重敏感性和目标用户/专家 content-validity 中的全部适用检查；pilot 的 `other/emergent` 残余错误率必须公开；
 - SFT scorer 若进入主榜，必须在跨 task-family、跨 agent 的锁定测试上达到第 8.4 节门槛；
 - 至少两类 agent 在 PF 上出现与 TQ 不同的可诊断变化，证明 benchmark 不是普通质量榜的重命名。
 
