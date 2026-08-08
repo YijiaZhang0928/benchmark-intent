@@ -1,0 +1,37 @@
+```json
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A284978F",
+      "users": {
+        "A": {
+          "leaves": [
+            {"criterion": "A1", "score": 0, "evidence": ""},
+            {"criterion": "A2", "score": 0, "evidence": ""},
+            {"criterion": "A3", "score": 1, "evidence": "实测召回率≥90%、误判率≤5%、零质量事故"},
+            {"criterion": "A4", "score": 0, "evidence": ""}
+          ]
+        },
+        "B": {
+          "leaves": [
+            {"criterion": "B1", "score": 1, "evidence": "总成本18万元符合20万预算约束"},
+            {"criterion": "B2", "score": 1, "evidence": "2周上线满足快速启动要求"},
+            {"criterion": "B3", "score": 1, "evidence": "所有模型判废图像进入人工复核队列，不改变现有判废流程"},
+            {"criterion": "B4", "score": 1, "evidence": "推荐方案C，境外云存30天，人工复核队列"}
+          ]
+        }
+      },
+      "tq_leaves": [
+        {"criterion": "TQ1", "score": 1, "evidence": "12周...4000件/周抽检流程"},
+        {"criterion": "TQ2", "score": 1, "evidence": "实测召回率、误判率、质量事故"},
+        {"criterion": "TQ3", "score": 1, "evidence": "人工复核，数据出境备案要求，停止条件"}
+      ],
+      "must_not": [
+        {"criterion": "MN1", "violated": false, "evidence": ""},
+        {"criterion": "MN2", "violated": false, "evidence": ""},
+        {"criterion": "MN3", "violated": false, "evidence": ""}
+      ]
+    }
+  ]
+}
+```

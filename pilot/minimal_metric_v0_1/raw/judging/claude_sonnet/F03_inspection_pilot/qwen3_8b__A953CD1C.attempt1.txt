@@ -1,0 +1,91 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A953CD1C",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "原始图像不得出厂"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "可导出逐例解释"
+            },
+            {
+              "criterion": "A3",
+              "score": 1,
+              "evidence": "首要成功指标是降低漏检且不增加误判事故"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "优先E边缘设备"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B3",
+              "score": 1,
+              "evidence": "保留人工复核并设置误判/漏检停止线"
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "使用相同的12周与4000件/周口径"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "区分召回、误判与业务事故"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "包含人工复核、数据治理和停止条件"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": "不得向A推荐原始图像境外云存储"
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": "不得把预期召回率当成已实测"
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": "不得建议试点期无人工确认自动判废"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **完整人话版：从“报告像不像为你写”到“是否让你决定得更好”**
-版本：v0.32 · 2026 年 8 月 9 日
+版本：v0.33 · 2026 年 8 月 9 日
 用途：组内讨论、导师沟通、正式稿写作前的共同理解  
 
 ---
@@ -395,9 +395,13 @@ CFA_min = min(Δa, Δb)
 
 CFA 的平均值大于 0 仍不够：如果 Ua 明显受益、Ub 反而更适合错误版本，平均后也可能是正数。所以主结果必须同时给出 `Δa`、`Δb` 和 `CFA_min`，只有两边都大于 0 才算“双向成立”。
 
-还要回答另一件过去容易混掉的事：**可区分不等于有帮助。** 主矩阵本来就有 task-only 报告 `Y0`，因此再计算 `Ga = Ua 看 Ya 相对 Y0 的增益`、`Gb = Ub 看 Yb 相对 Y0 的增益`。最后用二维图同时画“跨用户 specificity”和“相对 task-only benefit”：右上角才是真正有益的个性化；只在右下说明版本不同但没有给用户带来净收益。
+还要补一个很直观的绝对基准：`A_min=min(Ua看Ya的适配分, Ub看Yb的适配分)`。假如 matched 只有0.40、swapped是0.00，差值看上去很大，但0.40本身仍不合格；`A_min` 就是专门拦这种情况。每条 leaf 已经先归一到0–1，因此差值可以直接解释成量尺百分点；再除以两份分数之和，反而会在两份都很差时把差异夸大。
 
-最终成功条件不是一个新总分，而是四个门同时通过：两位用户的 matched 都优于 swapped；两位用户相对 task-only 都不变差；TQ/FR 与 must-hold 不下降；must-not、隐私和权限不违规。目标用户盲评再用 family 内配对检验确认 match effect，不能把同一个 family 的四格分数当四个独立样本。之后仍要报告语义等价 views 中最差的 CFA、Cue Gap、must-change/must-hold 一致率，以及无关 cue 是否改变结果。
+“向量夹角”可以保留，但只做诊断。把 `[Δa,Δb]` 和理想方向 `[1,1]` 比夹角，能看两位用户是不是都朝正确方向；可是 `[0.01,0.01]` 的夹角也完美，所以还必须同时看向量长度、`CFA_min` 和 `A_min`。不把它们乘成一个总分，是因为乘积又会让一种失败补偿另一种失败。
+
+还要回答另一件过去容易混掉的事：**可区分不等于有帮助。** 主矩阵本来就有 task-only 报告 `Y0`，因此再计算 `Ga = Ua 看 Ya 相对 Y0 的差`、`Gb = Ub 看 Yb 相对 Y0 的差`。`Ga/Gb` 不低于一个小的 non-inferiority margin 只能说明“没有实质性变差”；只有两边都超过预注册的实际意义阈值，或真人明确更愿意采用 matched，才能叫“真实 added value”。
+
+最终成功条件不是一个新总分，而是五个门同时通过：两位用户的 matched 都以有实际意义的幅度优于 swapped；两份 matched 的 `A_min` 过绝对适配线；两位用户相对 task-only 都不出现实质损害；TQ/FR 与 must-hold 不下降；owner-aware must-not、隐私和权限不违规。目标用户盲评再用 family 内配对检验确认 match effect，不能把同一个 family 的四格分数当四个独立样本。之后仍要报告语义等价 views 中最差的 CFA、Cue Gap、must-change/must-hold 一致率，以及无关 cue 是否改变结果。
 
 ### 8.3 真正的主指标：下游决策效果
 
@@ -481,7 +485,7 @@ WrongUserHarm = swapped 的 Regret − task-only 的 Regret
 
 三个环境的现实难度是：E1 Frozen Harness 中等，MVP 约 1.5–2.5 个工程师周，是论文主轨；E3 Stateful Sandbox 最难，在 E1 后还需约 2–4 周，首版只做一个 anchor；E2 商业/live web 很容易 demo，但最难保证版本、reset 和公平比较，每个产品 adapter 约 3–7 天且要持续维护，所以只做单产品外部效度观察，不与 E1 合并显著性。
 
-ICLR 官方近年整体录用率约 27%–32%。[[42]](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf)[[43]](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) v0.32 的新颖性比 artifact-fit 方案更清楚，但真人招募、utility validity 和统计功效风险也更高。真正决定投稿强度的是 DDE/错配伤害是否稳定、报告是否配平、设计是否可复现，而不是 family 数量。
+ICLR 官方近年整体录用率约 27%–32%。[[42]](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf)[[43]](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) v0.33 已用合成 pilot 验证 Phase A 有信号并修正差值假阳性，但没有真人 DDE，因此不能上调论文成功判断。真正决定投稿强度的是 DDE/错配伤害是否稳定、报告是否配平、设计是否可复现，而不是合成 family 的漂亮通过率。
 
 ## 12. 顶会评审最可能问什么
 

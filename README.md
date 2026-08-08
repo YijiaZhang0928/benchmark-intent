@@ -2,10 +2,10 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（v0.32）
+## 当前交付物（v0.33）
 
-- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.32 将主终点从 artifact fit 收敛为真实用户的下游决策效用，旧 CFA/契约/JudgeBench 作为 Phase A qualification。
-- `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：6 页标准论文 Proposal（满足 ≤10 页约束），保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
+- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；DDE 是真实用户主终点，v0.33 为 Phase A 增加 `A_min`、角度/幅度诊断与 task-only non-inferiority/added-value 分层。
+- `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：7 页标准论文 Proposal（满足 ≤10 页约束），保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
 - `deliverables/DeepAlign-Bench_完整人话版.pdf`：28 页直白语言版，适合组内逐项讨论。
 - `deliverables/DeepAlign-Bench_汇报精简版.pdf`：10 页导师汇报稿，适合 15–20 分钟讲解。
 - `deliverables/DeepAlign-Bench_HTML汇报版.html`：离线可打开的统一阅读入口，可下载四版 PDF/Word。
@@ -15,6 +15,8 @@
 - `deliverables/DeepAlign-Bench_一页汇报图.pptx`：可直接汇报的一页 16:9 PowerPoint；同内容 PNG/SVG 位于 `proposal_assets/`。
 - `deliverables/DeepAlign-Bench_详细流程图.png`：Phase A 工程详细图；展示 task/persona 构造、三环境运行、2×2 评价和报告资格门，不能单独支持真人下游效用结论；同名 SVG 可编辑源位于 `proposal_assets/` 和 `deliverables/`。
 - `deliverables/DeepAlign-Bench_端到端流程图_v0.32.png`：保留的 Phase A 分区式学术信息图；完整 v0.32 两阶段因果链以一页主图和 `downstream_decision.protocol.yaml` 为准。
+- `deliverables/DeepAlign-Bench_整体框架与最小实验_v0.33.png`：本周导师汇报主图；一页包含 case/task/persona 元数据、rubric compiler、系统/环境、Phase A/Phase B、统计边界、可回答问题、合成 pilot 结果与下一步；同名 SVG 为可编辑源。
+- `pilot/minimal_metric_v0_1/`：预先提交的4-family合成 Phase A 协议、24份交付物、48个 artifact-judge 单元、六类指标压力测试、原始日志、applicability 审计与可行性报告。
 - `benchmark_schema/rubric_module_library.yaml`：36 个预定义 module（6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk），每个 case 只选择适用子集。
 - `benchmark_schema/data_factory.protocol.yaml`：把多篇文献映射为设计资产的 source-to-design ledger、数据构建阶段、vertical slice 停止门、anchor 对照和 E1→E3→E2 环境搭建顺序。
 - `benchmark_schema/construction_annotation.protocol.yaml`：自动 provenance、运行前双人人工构念标注、pilot 后 observed 字段，以及 seed funnel、真人招募和防泄漏规则。
@@ -23,7 +25,7 @@
 - `benchmark_schema/downstream_decision.protocol.yaml`：冻结 Phase A 报告资格审查、Phase B 真人三臂 trial、utility、随机化、盲化、DDE/错配伤害与 pilot 扩展门。
 - `benchmark_schema/rubric_leaf.schema.yaml`、`rubric_template_registry.yaml`、`metric_binding.schema.yaml` 与 `rubric_bundle.example.yaml`：compiler contract、模板注册表、leaf—metric 绑定和完整编译示例。当前版本定义接口与预注册对象；自动 validator/compiler 是第 1 周实现项。
 
-四版共用 v0.32 两阶段研究设计；差别只在结构、语言密度与细节层级。
+四版共用 v0.33 两阶段研究设计；差别只在结构、语言密度与细节层级。
 
 ## 研究协作约定
 

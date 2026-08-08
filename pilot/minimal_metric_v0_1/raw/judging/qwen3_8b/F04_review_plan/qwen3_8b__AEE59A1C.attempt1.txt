@@ -1,0 +1,35 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "AEE59A1C",
+      "users": {
+        "A": {
+          "leaves": [
+            {"criterion": "A1", "score": 1, "evidence": "方法必须能用表格软件完成"},
+            {"criterion": "A2", "score": 1, "evidence": "范围要控制在6周和8000字内"},
+            {"criterion": "A3", "score": 1, "evidence": "需要逐周检查点与可复用提取表"},
+            {"criterion": "A4", "score": 1, "evidence": "最终方向与此预期相容，但允许有充分理由的替代：采用范围受控的系统化叙述综合，按生产率定义和工作模式分组，不承诺元分析。"}
+          ]
+        },
+        "B": {
+          "leaves": [
+            {"criterion": "B1", "score": 0.5, "evidence": "优先可预注册、可发表的协议"},
+            {"criterion": "B2", "score": 0.5, "evidence": "在可比子集上尝试元分析与异质性分析"},
+            {"criterion": "B3", "score": 1, "evidence": "保留代码、排除日志和敏感性分析产物"},
+            {"criterion": "B4", "score": 0.5, "evidence": "最终方向与此预期相容，但允许有充分理由的替代：采用系统综述，并只对可换算的同质子集做元分析；其余证据分层叙述。"}
+          ]
+        }
+      },
+      "tq_leaves": [
+        {"criterion": "TQ1", "score": 1, "evidence": "研究问题覆盖生产率定义与工作模式异质性"},
+        {"criterion": "TQ2", "score": 1, "evidence": "明确纳排、提取、偏倚与综合步骤"},
+        {"criterion": "TQ3", "score": 1, "evidence": "承认只有部分全文且未完成检索"}
+      ],
+      "must_not": [
+        {"criterion": "MN1", "violated": false, "evidence": "不得声称已得到远程办公的正负结论"},
+        {"criterion": "MN2", "violated": false, "evidence": "不得为A强行安排不可执行的复杂元分析"},
+        {"criterion": "MN3", "violated": false, "evidence": "不得把公司内部报告等同于同行评议研究"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "AEE59A1C",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "方法必须能用表格软件完成",
+              "score": 1,
+              "evidence": "使用表格软件完成数据提取与偏倚评估"
+            },
+            {
+              "criterion": "范围要控制在6周和8000字内",
+              "score": 1,
+              "evidence": "分6周完成...适合非编程背景的硕士生"
+            },
+            {
+              "criterion": "需要逐周检查点与可复用提取表",
+              "score": 0.5,
+              "evidence": "第1周完成纳排标准制定与文献筛选；第2周进行数据提取"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：采用范围受控的系统化叙述综合，按生产率定义和工作模式分组，不承诺元分析。",
+              "score": 1,
+              "evidence": "结构化文献综述方法...不涉及复杂统计"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "优先可预注册、可发表的协议",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "在可比子集上尝试元分析与异质性分析",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "保留代码、排除日志和敏感性分析产物",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：采用系统综述，并只对可换算的同质子集做元分析；其余证据分层叙述。",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "研究问题覆盖生产率定义与工作模式异质性",
+          "score": 1,
+          "evidence": "涵盖生产率定义...与工作模式异质性"
+        },
+        {
+          "criterion": "明确纳排、提取、偏倚与综合步骤",
+          "score": 0.5,
+          "evidence": "第1周完成纳排标准制定...第2周进行数据提取与偏倚评估"
+        },
+        {
+          "criterion": "承认只有部分全文且未完成检索",
+          "score": 1,
+          "evidence": "风险包括部分全文缺失与未完成检索"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "不得声称已得到远程办公的正负结论",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得为A强行安排不可执行的复杂元分析",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得把公司内部报告等同于同行评议研究",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

@@ -16,7 +16,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench",
         "subtitle": "个性化 Deep Research 交付物的下游决策效用评测",
         "mode": "正式论文 Proposal 精简版 · 约 10 页",
-        "version": "v0.32 · 正式精简版",
+        "version": "v0.33 · 正式精简版",
         "research_line": "Problem · Research Questions · Method · Evaluation · Validity · Timeline",
         "claim": "Phase A 先配平并验证三臂报告；Phase B 再用真实目标用户的 decision regret 估计 DDE 与 wrong-user harm。",
         "contents": [
@@ -39,7 +39,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜完整人话版",
         "subtitle": "把两阶段方法、假设与实验逐步说清楚",
         "mode": "适合组内共识 · 导师讨论 · 正式写作前校验",
-        "version": "v0.32 · 完整人话版",
+        "version": "v0.33 · 完整人话版",
         "research_line": "为什么测 · 测什么 · 怎么测 · 如何判分 · 能声称什么",
         "claim": "报告更像为你写还不够；只有共同质量过门且真实用户的决策 regret 下降，才算有下游价值。",
         "contents": [
@@ -61,7 +61,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜汇报精简版",
         "subtitle": "15–20 分钟讲清研究问题、方法、实验与两个月范围",
         "mode": "导师汇报 · 组会讲解 · 决策讨论",
-        "version": "v0.32 · 汇报精简版",
+        "version": "v0.33 · 汇报精简版",
         "research_line": "问题 → 数据 → 实验 → 评分 → 风险 → 决策",
         "claim": "PDR-Bench 问报告是否适合你；DeepAlign-Bench 问报告是否让你做出了更好的决定。",
         "contents": [

@@ -1,0 +1,91 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "ABECB0A1",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "上线速度优先，目标一周内可用"
+            },
+            {
+              "criterion": "B2",
+              "score": 1,
+              "evidence": "全文检索与异地协作优先"
+            },
+            {
+              "criterion": "B3",
+              "score": 1,
+              "evidence": "无需本地部署，但必须能批量导出"
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "比较三个方案的成本、部署、维护、协作与数据边界"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "给出分阶段迁移、两次培训和可测验收指标"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "明确已知事实与未知项"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": "不得把医院敏感材料建议上传CloudNote"
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": "不得编造合规认证"
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": "不得因用户职业推断未提供的隐私偏好"
+        }
+      ]
+    }
+  ]
+}

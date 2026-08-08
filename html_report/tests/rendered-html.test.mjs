@@ -48,7 +48,7 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /href="\/DeepAlign-Bench_正式Proposal精简版\.pdf"/i);
   assert.match(html, /href="\/DeepAlign-Bench_完整人话版\.pdf"/i);
   assert.match(html, /href="\/DeepAlign-Bench_汇报精简版\.pdf"/i);
-  assert.match(html, /同一套 v0\.32 两阶段方法，按阅读场景分成四版/);
+  assert.match(html, /同一套 v0\.33 两阶段方法，按阅读场景分成四版/);
   assert.match(html, /8 类 anchor 是扩展候选 stress 宿主/);
   assert.match(html, /href="\/literature"/i);
   assert.match(html, /href="\/figures"/i);
@@ -74,8 +74,9 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /Boundary &amp; Governance/i);
   assert.doesNotMatch(html, /re-anchor|S4 恢复|Recovery &amp; Governance/i);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
-  assert.match(html, /alt="DeepAlign-Bench 两阶段下游决策效用流程图"/i);
-  assert.match(html, /href="\/DeepAlign-Bench_端到端流程图_v0\.32\.png"/i);
+  assert.match(html, /alt="DeepAlign-Bench 正式 Proposal v0\.33 整体实验框架与最小实验结果"/i);
+  assert.match(html, /src="\/DeepAlign-Bench_整体框架与最小实验_v0\.33\.png"/i);
+  assert.match(html, /href="\/DeepAlign-Bench_整体框架与最小实验_v0\.33\.png"/i);
 });
 
 test("server-renders the rubric compiler workbench", async () => {
@@ -156,7 +157,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.32/m);
+  assert.match(schema, /^schema_version:\s*0\.33/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
   assert.match(schema, /estimand:\s*artifact_qualification_counterfactual_fit/);
@@ -178,6 +179,9 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
   assert.match(metricBinding, /CFA:/);
   assert.match(metricBinding, /CFA is not a leaf score/);
   assert.match(metricBinding, /CFA_min:/);
+  assert.match(metricBinding, /matched_adequacy_min:/);
+  assert.match(metricBinding, /cosine_specificity_balance:/);
+  assert.match(metricBinding, /task_only_noninferiority:/);
   assert.match(metricBinding, /DDE:/);
   assert.match(metricBinding, /wrong_user_harm:/);
   assert.match(metricBinding, /primary_leaderboard_metrics: \[DDE, wrong_user_harm/);
@@ -193,6 +197,8 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
   await Promise.all([
     access(new URL("../public/DeepAlign-Bench_主图.png", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_端到端流程图_v0.32.png", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_整体框架与最小实验_v0.33.png", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_整体框架与最小实验_v0.33.svg", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_详细流程图.png", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_详细流程图.svg", import.meta.url)),
     access(

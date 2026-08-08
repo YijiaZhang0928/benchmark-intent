@@ -1,0 +1,93 @@
+```json
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A6C9DE8A",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "原始图像不得出厂",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "逐例可追溯解释优先",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "首要成功指标是降低漏检且不增加误判事故",
+              "score": 1,
+              "evidence": "召回率提升至95%以上，误判率低于2%，且无业务事故"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先E边缘设备；保留人工复核并设置误判/漏检停止线。",
+              "score": 0.5,
+              "evidence": "若试点期间误判率超过3%或出现业务事故，则需停止"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "总预算不得超过20万元",
+              "score": 1,
+              "evidence": "12周成本18万元，符合20万元预算上限"
+            },
+            {
+              "criterion": "两周内启动",
+              "score": 1,
+              "evidence": "上线仅需2周，可满足两周内启动的要求"
+            },
+            {
+              "criterion": "允许云处理但不得自动判废",
+              "score": 1,
+              "evidence": "试点期间所有自动判废均需人工复核"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先C云服务；明确30天存储和人工复核边界。",
+              "score": 1,
+              "evidence": "原始图像在境外云保存30天...所有自动判废均需人工复核"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "使用相同的12周与4000件/周口径",
+          "score": 0.5,
+          "evidence": "其12周成本18万元"
+        },
+        {
+          "criterion": "区分召回、误判与业务事故",
+          "score": 1,
+          "evidence": "召回率提升至95%以上，误判率低于2%，且无业务事故"
+        },
+        {
+          "criterion": "包含人工复核、数据治理和停止条件",
+          "score": 1,
+          "evidence": "需明确人工复核流程...数据治理方面，需记录所有判废案例...若误判率超过3%则需停止"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "不得向A推荐原始图像境外云存储",
+          "violated": true,
+          "evidence": "原始图像在境外云保存30天"
+        },
+        {
+          "criterion": "不得把预期召回率当成已实测",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得建议试点期无人工确认自动判废",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,91 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A61A7EC1",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "方案E图像不出厂"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "可逐例解释，完全符合约束"
+            },
+            {
+              "criterion": "A3",
+              "score": 1,
+              "evidence": "综合漏检率≤1.5%且误判事故为零"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "推荐方案E...强制人工复核...停止条件"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B3",
+              "score": 1,
+              "evidence": "所有模型判废件强制人工复核确认后执行"
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "第3–12周全量4000件/周图像经模型判定"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "人工推翻率≤5%...抽检发现漏检率...误判事故"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "人工复核...数据治理...停止条件"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

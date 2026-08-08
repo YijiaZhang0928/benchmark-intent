@@ -1,0 +1,93 @@
+```json
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "AB0CB884",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "敏感项目本地库...启用操作日志审计"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "每周4小时维护负担可由团队轮值分担"
+            },
+            {
+              "criterion": "A3",
+              "score": 1,
+              "evidence": "定义敏感/一般项目分类规则...分批迁移剩余7500篇PDF"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "选择HybridBase"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "成本维度...部署与维护...协作与功能...数据边界"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "分阶段迁移...第一次90分钟培训...第二次90分钟培训...验收指标"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "已知事实：三方案定价...未知项：团队实际敏感项目占比"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}
+```

@@ -16,11 +16,15 @@ const workflowFigure = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_
 const workflowFigureData = `data:image/png;base64,${workflowFigure.toString("base64")}`;
 const referenceWorkflowFigure = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_端到端流程图_v0.32.png"));
 const referenceWorkflowFigureData = `data:image/png;base64,${referenceWorkflowFigure.toString("base64")}`;
+const frameworkPilotFigure = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_整体框架与最小实验_v0.33.png"));
+const frameworkPilotFigureData = `data:image/png;base64,${frameworkPilotFigure.toString("base64")}`;
 
 function localizeMainBody(body) {
   return body
     .replaceAll('src="/DeepAlign-Bench_主图.png"', `src="${figureData}"`)
     .replaceAll('href="/DeepAlign-Bench_主图.png"', `href="${figureData}"`)
+    .replaceAll('src="/DeepAlign-Bench_整体框架与最小实验_v0.33.png"', `src="${frameworkPilotFigureData}"`)
+    .replaceAll('href="/DeepAlign-Bench_整体框架与最小实验_v0.33.png"', `href="${frameworkPilotFigureData}"`)
     .replaceAll('href="/DeepAlign-Bench_端到端流程图_v0.32.png"', 'href="./DeepAlign-Bench_端到端流程图_v0.32.png"')
     .replaceAll('href="/DeepAlign-Bench_正式研究Proposal.pdf"', 'href="./DeepAlign-Bench_正式研究Proposal.pdf"')
     .replaceAll('href="/DeepAlign-Bench_正式研究Proposal.docx"', 'href="./DeepAlign-Bench_正式研究Proposal.docx"')

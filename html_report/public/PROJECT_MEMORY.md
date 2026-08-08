@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-09
-当前版本：v0.32
+当前版本：v0.33
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -27,6 +27,19 @@
 7. Atlas、Rubric Compiler、JudgeBench、长程、动态、权限和证据污染保留为 qualification、诊断或少量 stress layer，不与 DDE 并列为创新。
 8. 开放问题：伦理审查/豁免能否按时启动；哪些 family 能同时提供真实决策、等价 task shell 和可验证 utility；pilot 后的方差是否允许 8–12 family 内获得足够功效；若 CFA 高而 DDE≈0，论文是否以“fit 代理失效”为主结果。
 9. 2026-08-09 交付 QA：正式/精简/人话/汇报 DOCX 与 PDF 均重新生成并逐页渲染检查，页数分别为 70/6/28/10，正式精简版满足 ≤10 页；一页 PPTX 通过模板保真和溢出检查；HTML 构建及 5 项渲染测试通过，四个 standalone 文件生成且无根路径资源依赖。本地浏览器运行时无可用实例，因此未增加浏览器截图，但服务器渲染和静态依赖检查均已完成。
+
+### 1.0a v0.33：Phase A 合成最小实验与差值测量校正
+
+1. 在结果前冻结并提交 `pilot/minimal_metric_v0_1/`：4 个合成 decision family、8 位最小反事实用户、Qwen3 8B 与 Claude Sonnet 两条生成管线、task-only/matched/swapped 三条件、两个盲评模型和六类分数原型。合成材料只验证 Phase A 机制；不能替代真实用户 DDE。
+2. 24/24 份 artifact 与 48/48 个 artifact-judge 单元跑通；8/8 个 system-family 的 matched 推荐方向符合预冻结预期，说明 task/persona/交叉评分链有初步信号。
+3. 两个 judge 在 72 个聚合分比较上的 MAE 为 0.226，29/72 至少相差0.25、11/72超过0.50。细粒度 PF/TQ 尚未校准；不能以简单平均替代真人 evidence-span gold。
+4. 最小 runner 暴露 owner/applicability 路由缺陷：User-A-specific must-not 被错误套到 User B artifact，产生4个假 critical violation。原始结果和事后审计同时保留；正式 compiler/runner 必须执行 `rubric_owner_user_id`，不得把 owner 当说明性元数据。
+5. 六类预冻结原型显示：`CFA_mean>0` 对5类失败原型全部误判；`cos_spec>0.95` 仍误判4/5；比例差值仍误判5/5并放大低分区。向量夹角只能诊断方向平衡，不能替代效应幅度或绝对适配。
+6. Phase A 新增 `A_min=min(PF_a(Y_a),PF_b(Y_b))`；并列报告 `cos_spec` 与 `mag_spec`，但禁止把它们乘成补偿式总分。PF leaves 先归一到 `[0,1]`，主效应用量尺百分点解释。
+7. task-only 比较改为两层：`G_i≥−δ_NI` 是 non-inferiority，不称“真实收益”；`Gain_min≥δ_B` 或目标用户 matched-vs-task-only 胜率超过 practical margin 才称 bilateral added value。所有阈值由真人重测噪声、SESOI 和功效模拟冻结，不能由4个合成 family 调参。
+8. task-only 在多数 family 默认靠近更保守/低成本/简单方法的 User A，造成 `G_a≈0,G_b>0`；case schema 增加 task-only default affinity audit，正式抽样需检查 A/B 标签交换与跨 family 默认偏向平衡。
+9. 新增 3200×1800 高密度导师汇报图，完整连接 case/task/persona metadata、rubric compiler、system/environment、Phase A、Phase B、纵向诊断、统计、可回答/不可回答问题、pilot 结果和下一步；每周可在第11–12 panel 更新进度。
+10. v0.33 交付 QA：正式版、精简版、人话版、导师 brief 分别为 72/7/28/10 页，全部逐页渲染检查；精简版满足 ≤10 页。HTML 构建与 5 项服务器渲染测试通过，standalone 已将新版 3200×1800 图内嵌并确认无根路径图片依赖；四份更新后的 PDF 已同步至交付目录和网页公共目录。
 
 ### 1.1 v0.16 相关工作校准
 
@@ -339,4 +352,5 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.29：增加 source-to-design ledger 和 vertical slice 数据工厂；冻结 36-module rubric library、七类全面性审计、anchor 受控扰动归因边界与 E1→E3→E2 环境开工顺序。
 - v0.30：将 personalization success 拆为双向 specificity、相对 task-only benefit、共同质量 no-harm 与边界 no-violation 四重非补偿门，并以 task family 为统计单位。
 - v0.31：冻结 task/persona 三层标注、真人锚定配对、direction-node registry、E1→E3→E2 工程主次和 3-family vertical slice 开工链。
-- v0.32：新增参考分区式学术信息图的端到端汇报流程图；校正环境—条件关系、保留交叉评分和结论边界，方法与 schema 不变。
+- v0.32：将主终点从 artifact fit 收敛为真实用户 downstream decision utility；冻结 Phase A/Phase B、DDE/WrongUserHarm、3-family vertical slice、utility verifier 和真人功效路线，并新增参考分区式端到端图。
+- v0.33：完成4-family合成 Phase A 最小实验；以原型压力测试否定单一差值/比例/角度主分，增加 A_min、角度/幅度诊断、task-only NI/added-value 分层和 owner-aware 路由要求；新增正式 Proposal 全链路+本周进度一页图。

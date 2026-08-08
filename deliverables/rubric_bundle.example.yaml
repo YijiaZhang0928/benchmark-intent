@@ -1,5 +1,5 @@
 bundle_id: RB-A1-COFFEE-EXPANSION-v1
-bundle_version: 0.31
+bundle_version: 0.33
 status: illustrative_not_empirical
 compiled_before_run: true
 
@@ -192,17 +192,27 @@ score_trace:
     delta_b: PF_b_Y_b - PF_b_Y_a
     CFA: 0.5 * (delta_a + delta_b)
     CFA_min: min(delta_a, delta_b)
+    matched_adequacy_min: min(PF_a_Y_a, PF_b_Y_b)
+    cosine_specificity_balance: >-
+      (delta_a + delta_b) / (sqrt(2) * sqrt(delta_a^2 + delta_b^2));
+      diagnostic only and 0 when the contrast vector has zero length
+    specificity_magnitude: sqrt(delta_a^2 + delta_b^2) / sqrt(2)
     gain_a_vs_task_only: PF_a_Y_a - PF_a_Y_0
     gain_b_vs_task_only: PF_b_Y_b - PF_b_Y_0
     gain_mean: 0.5 * (gain_a_vs_task_only + gain_b_vs_task_only)
     gain_min: min(gain_a_vs_task_only, gain_b_vs_task_only)
+    task_only_noninferiority: >-
+      gain_a_vs_task_only >= -delta_NI and gain_b_vs_task_only >= -delta_NI
+    bilateral_added_value: gain_min >= delta_B
     bilateral_personalization_success: >-
-      delta_a > 0 and delta_b > 0 and gain_a_vs_task_only >= 0 and
-      gain_b_vs_task_only >= 0 and both matched outputs pass eligibility
+      delta_a >= delta_specificity and delta_b >= delta_specificity and
+      matched_adequacy_min >= tau_abs and task_only_noninferiority and
+      both matched outputs pass eligibility
     NPF: max(0, PF - MP)
     eligibility: TQ and FR pass thresholds and V-PRIV-01 has no violation
 
 interpretation_note: >-
   Leaf expansion is the pre-run conversion of templates and contracts into
-  atomic checks with scoring anchors. CFA and task-only uplift are computed
-  later from cross-scored PF aggregates; no leaf is labeled CFA or uplift.
+  atomic checks with scoring anchors. CFA, matched adequacy, angle/magnitude
+  diagnostics and task-only uplift are computed later from cross-scored PF
+  aggregates; no leaf is labeled with a derived metric.

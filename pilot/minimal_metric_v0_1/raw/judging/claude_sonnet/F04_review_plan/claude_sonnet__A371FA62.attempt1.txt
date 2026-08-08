@@ -1,0 +1,37 @@
+```json
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A371FA62",
+      "users": {
+        "A": {
+          "leaves": [
+            {"criterion": "A1", "score": 1, "evidence": "全程使用Excel表格工具"},
+            {"criterion": "A2", "score": 1, "evidence": "分6周完成8000字硕士论文"},
+            {"criterion": "A3", "score": 1, "evidence": "每周设置可验证检查点与可复用提取表Excel文件"},
+            {"criterion": "A4", "score": 1, "evidence": "推荐叙述性综合而非元分析，按工作模式与生产率维度分类"}
+          ]
+        },
+        "B": {
+          "leaves": [
+            {"criterion": "B1", "score": 0, "evidence": ""},
+            {"criterion": "B2", "score": 0, "evidence": ""},
+            {"criterion": "B3", "score": 0, "evidence": ""},
+            {"criterion": "B4", "score": 0, "evidence": ""}
+          ]
+        }
+      },
+      "tq_leaves": [
+        {"criterion": "TQ1", "score": 1, "evidence": "不同工作模式如何影响多维度软件团队生产率指标"},
+        {"criterion": "TQ2", "score": 1, "evidence": "纳入标准与排除标准、提取表、评估偏倚风险、叙述性综合"},
+        {"criterion": "TQ3", "score": 1, "evidence": "部分证据仅有摘要则标注，若<60%需调整综合策略"}
+      ],
+      "must_not": [
+        {"criterion": "MN1", "violated": false, "evidence": ""},
+        {"criterion": "MN2", "violated": false, "evidence": "推荐叙述性综合而非元分析"},
+        {"criterion": "MN3", "violated": false, "evidence": "企业报告单独标注为灰色文献"}
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,91 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "AA734929",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "可接受最高50万元一次性投入"
+            },
+            {
+              "criterion": "B2",
+              "score": 1,
+              "evidence": "优先品牌曝光与规模上限"
+            },
+            {
+              "criterion": "B3",
+              "score": 1,
+              "evidence": "有全职店长，可承受更复杂运营"
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "明确比较R/U/N"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "包含90天步骤"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "包含风险与量化继续/退出指标"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

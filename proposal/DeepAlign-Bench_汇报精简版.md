@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.32 · 2026 年 8 月 9 日
+版本：v0.33 · 2026 年 8 月 9 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -99,7 +99,7 @@ case metadata + user ledger + contracts + evidence/permission
 
 现在另有一份 36-module library：6 Core + 9 Personalization + 6 Intent + 7 Deliverable + 4 Operator + 4 Risk。每个 case 只激活适用子集。强点不是“比 PDR-Bench 多几维”，而是每个 personalization leaf 有 user fact + must-change provenance、A/B 模块对称、同一 bundle 交叉评 matched/swapped，并用 must-hold/must-not 阻止无效差异和过度个性化。
 
-**当前成熟度：**v0.32 把 rubric compiler 降为 Phase A 的报告资格门；自动 validator、模板路由器和 bundle 导出器仍是第 1 周工程任务。Module 是父级能力域，node 是可复用评价方向，leaf 才是带用户、阈值、证据和锚点的 case-specific 标准。它们负责确认三臂报告可比和处理成立，不再承担论文唯一创新。
+**当前成熟度：**v0.33 把 rubric compiler 降为 Phase A 的报告资格门，并完成4个合成 family、24份报告、48个 artifact-judge 单元的最小流水线测试；它只证明流程有信号，不替代真人 DDE。自动 validator、owner-aware 路由器和 bundle 导出器仍是第 1 周工程任务。Module 是父级能力域，node 是可复用评价方向，leaf 才是带用户、阈值、证据和锚点的 case-specific 标准。
 
 **Leaf expansion** 是运行前把复合要求拆成原子项。例如“Ua 的建议符合预算和风险”拆成“首阶段 ≤50 万”“三个月可逆试点”“继续/退出阈值”，每条都附 evidence target、0/1/2 锚点、weight、hard gate、judge route 和直接 metric binding。冻结后所有 agent 共用，不能看完输出再改。
 
@@ -130,6 +130,9 @@ TQ/FR/PF/MP 直接聚合 leaves；**CFA 不绑定某一条 leaf**。Ua 的同一
 | TQ / FR | 任务和事实是否先过基本质量门槛 |
 | PF − MP | 用户特异要求减去误用、泄露和过度迎合 |
 | Δa / Δb；CFA mean/min | matched 是否在两个用户方向都优于 swapped，避免正负抵消 |
+| A_min | 两份 matched 中较差的一份是否仍达到绝对适配资格线 |
+| cos_spec / mag_spec | 双向是否平衡、差值是否足够大；只作诊断，不合成总分 |
+| Gain / NI | 相对 task-only 是不劣还是达到预注册的双向实际增益 |
 | **DDE** | task-only regret − matched regret；正值才是下游决策收益 |
 | **WrongUserHarm** | swapped regret − task-only regret；衡量错配个性化伤害 |
 | Constraint / Calibration | 硬约束是否满足、置信度是否校准 |
@@ -195,7 +198,7 @@ PDR-Bench 已建立 task–persona 条件下的 artifact fit。DeepAlign 不再�
 | 7 | DDE/错配伤害/代理效度分析 | 删除机制支线 |
 | 8 | 结果冻结、复现、全文和匿名材料 | 不再新增分类和系统 |
 
-**ICLR readiness：**官方近年总体录用率约 27%–32%。[[23]](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf)[[24]](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) v0.32 的 gap 比单纯 artifact-fit 更清楚，但招募、utility validity 和功效风险更高。是否有稳定 DDE/错配伤害、严格报告配平和可复现 decision environment，比 family 数量更决定论文强度。
+**ICLR readiness：**官方近年总体录用率约 27%–32%。[[23]](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf)[[24]](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) v0.33 的合成 pilot 只证明 Phase A 流程有信号，并发现 judge 分歧和 owner-routing 风险；它不包含真人 DDE，不能提高中稿判断。是否有稳定 DDE/错配伤害、严格报告配平和可复现 decision environment，比 family 数量更决定论文强度。
 
 ## 9. 需要导师拍板
 

@@ -1,0 +1,91 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A34C1A54",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 0,
+              "evidence": "用R escalc函数转换为标准化均差SMD"
+            },
+            {
+              "criterion": "A2",
+              "score": 0.5,
+              "evidence": "6周分三阶段交付：协议注册（W1-2）、证据提取"
+            },
+            {
+              "criterion": "A3",
+              "score": 0.5,
+              "evidence": "W1-2（协议）：完成PRISMA-P注册表、提取模板"
+            },
+            {
+              "criterion": "A4",
+              "score": 0,
+              "evidence": "配合R语言效应量提取与异质性探索性元分析"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "采用PRISMA 2020...在OSF预注册"
+            },
+            {
+              "criterion": "B2",
+              "score": 1,
+              "evidence": "用metafor构建随机效应模型...子组分析按工作模式分层"
+            },
+            {
+              "criterion": "B3",
+              "score": 1,
+              "evidence": "交付物：预印本手稿...、R脚本、提取数据表（匿名化）"
+            },
+            {
+              "criterion": "B4",
+              "score": 1,
+              "evidence": "若同质子组<3项研究则不做元分析仅叙述"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "分解为三个子问题：(1)不同生产率操作化定义...(2)工作模式异质性"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "纳入同行评议定量研究...排除无对照...用ROBINS-I"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "6篇研究仅有摘要，需在W3结束前确认全文获取失败"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": true,
+          "evidence": "叶明需要构建...配合R语言效应量提取与异质性探索性元分析"
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

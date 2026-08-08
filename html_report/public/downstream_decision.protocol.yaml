@@ -1,5 +1,5 @@
 protocol_name: deepalign_downstream_decision_trial
-protocol_version: 0.32
+protocol_version: 0.33
 status: design_draft_requires_pilot_and_ethics_review
 primary_question: >-
   After artifact quality is balanced, does a matched personalized deep-research
@@ -21,7 +21,11 @@ phase_A_artifact_qualification:
     - length_or_information_budget
     - critical_evidence_coverage
     - privacy_and_boundary
-  manipulation_checks: [delta_a, delta_b, CFA_min]
+  manipulation_checks:
+    confirmatory: [delta_a, delta_b, CFA_min, matched_adequacy_min]
+    diagnostic_only: [cosine_specificity_balance, specificity_magnitude]
+    task_only_comparison: [gain_a_vs_task_only, gain_b_vs_task_only, task_only_noninferiority, bilateral_added_value]
+  applicability_rule: user_specific_must_not_and_fit_leaves_are_routed_by_rubric_owner_user_id
   rule: only_qualified_artifacts_enter_phase_B
 
 phase_B_human_decision_trial:

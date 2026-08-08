@@ -1,0 +1,265 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A371FA62",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "全程使用Excel表格工具"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "分6周完成8000字硕士论文"
+            },
+            {
+              "criterion": "A3",
+              "score": 1,
+              "evidence": "每周设置可验证检查点与可复用提取表Excel文件"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "推荐叙述性综合而非元分析，按工作模式与生产率维度分类"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "不同工作模式如何影响多维度软件团队生产率指标"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "纳入标准与排除标准、提取表、评估偏倚风险、叙述性综合"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "部分证据仅有摘要则标注，若<60%需调整综合策略"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": "推荐叙述性综合而非元分析"
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": "企业报告单独标注为灰色文献"
+        }
+      ]
+    },
+    {
+      "artifact_id": "A0B75283",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "叙事综合+主题框架法，不进行定量元分析"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "6周分阶段计划：第1周...第6周"
+            },
+            {
+              "criterion": "A3",
+              "score": 1,
+              "evidence": "第1周：构建证据矩阵...提取23份文献的关键特征"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "采用叙事综合法而非定量元分析...异质性过高"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "研究问题...纳排标准...验收标准...停止指标"
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": "不进行定量元分析（原因：生产率定义不可比"
+            },
+            {
+              "criterion": "B3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B4",
+              "score": 0.5,
+              "evidence": "叙事综合...按情境分层报告...区分维度"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "远程办公模式...如何影响...生产率的不同维度"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "纳排标准...6周分阶段计划...偏倚评估...综合方法"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "需全文6篇+摘要17篇...部分全文缺失可能导致遗漏"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": "现有证据不足以得出...单一结论"
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": "不进行定量元分析...叙事综合"
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": "3份公司报告作为背景证据但不与同行评议研究等权"
+        }
+      ]
+    },
+    {
+      "artifact_id": "A34C1A54",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 0,
+              "evidence": "用R escalc函数转换为标准化均差SMD"
+            },
+            {
+              "criterion": "A2",
+              "score": 0.5,
+              "evidence": "6周分三阶段交付：协议注册（W1-2）、证据提取"
+            },
+            {
+              "criterion": "A3",
+              "score": 0.5,
+              "evidence": "W1-2（协议）：完成PRISMA-P注册表、提取模板"
+            },
+            {
+              "criterion": "A4",
+              "score": 0,
+              "evidence": "配合R语言效应量提取与异质性探索性元分析"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "采用PRISMA 2020...在OSF预注册"
+            },
+            {
+              "criterion": "B2",
+              "score": 1,
+              "evidence": "用metafor构建随机效应模型...子组分析按工作模式分层"
+            },
+            {
+              "criterion": "B3",
+              "score": 1,
+              "evidence": "交付物：预印本手稿...、R脚本、提取数据表（匿名化）"
+            },
+            {
+              "criterion": "B4",
+              "score": 1,
+              "evidence": "若同质子组<3项研究则不做元分析仅叙述"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "分解为三个子问题：(1)不同生产率操作化定义...(2)工作模式异质性"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "纳入同行评议定量研究...排除无对照...用ROBINS-I"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "6篇研究仅有摘要，需在W3结束前确认全文获取失败"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": true,
+          "evidence": "叶明需要构建...配合R语言效应量提取与异质性探索性元分析"
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

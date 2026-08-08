@@ -1,5 +1,15 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.33 - 2026-08-09
+
+- 在任何结果生成前提交并冻结4个合成 decision family、8位最小反事实用户、task-only/matched/swapped 三条件、双模型逐叶评分和六类指标原型协议。
+- 完成 Qwen3 8B 与 Claude Sonnet 的24份 artifact、48个 artifact-judge 单元；8/8 matched 决策方向命中，但两个 judge 的72个聚合分 MAE 为0.226，证明流水线有信号而细粒度自动评分尚未校准。
+- 通过预冻结原型发现 `CFA_mean>0`、向量余弦和比例差值分别对5/5、4/5、5/5失败原型产生假阳性；新增 `A_min`、`cos_spec/mag_spec` 诊断，并继续禁止补偿式总分。
+- 将 task-only 比较拆为 non-inferiority 与 bilateral added value：`G_i≥−δ_NI` 只表示无实质损害，超过预注册 `δ_B` 或真人 practical margin 才称真实增益。
+- 发现 pilot runner 丢失 user-specific must-not 的 owner/applicability 路由，制造4个假 critical violation；保留原始结果与事后审计，并将 owner-aware routing 提升为 Phase A 硬要求。
+- 新增 3200×1800 的正式 Proposal 全链路导师汇报图，覆盖 case/task/persona 元数据、rubric compiler、三环境/系统、Phase A/Phase B、系统差异、统计边界、可回答问题、最小实验和下一步；同步 PNG 与可编辑 SVG。
+- 同步正式版、精简版、人话版、导师 brief、metric/case/downstream schema、bundle 示例、HTML、README、项目记忆及 pilot 复现资产；合成 pilot 明确不作为 DDE 或论文中稿证据。
+
 ## v0.32 - 2026-08-09
 
 - 完成 103 条去重记录的相关工作全景：正式 Proposal 63 个已有来源 + 40 个新增直接/强近邻；逐项审计澄清、权限/授权、委派、证据可靠性与真人下游效用方向。

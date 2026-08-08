@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.32 · 2026 年 8 月 9 日
+版本：v0.33 · 2026 年 8 月 9 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -634,14 +634,19 @@ Rubric compiler 必须接受七项覆盖与效度校验：
 
 `CFA_mean > 0` 只说明平均对角优势为正；如果 `Δ_a > 0` 而 `Δ_b < 0`，平均值可能掩盖一位用户被错误适配。因此主文必须并列报告 `Δ_a`、`Δ_b`、`CFA_mean` 和 `CFA_min`，且只有两方向都为正时才记为 bilateral success。CFA 仍是可解释的 leaf-based effect size，但不单独承担“个性化有效”的结论。
 
-主矩阵已有 task-only 输出 `Y_0`，因此另报告实际受益而非仅仅可区分：`G_a = PF_a(Y_a) − PF_a(Y_0)`，`G_b = PF_b(Y_b) − PF_b(Y_0)`。`Gain_mean = (G_a + G_b)/2` 描述平均 personalized value added，`Gain_min = min(G_a,G_b)` 防止平均增益掩盖一位用户没有受益。最终把 personalization 画成二维 profile：横轴为跨用户 specificity（CFA），纵轴为相对 task-only benefit（Gain），而不是再压成一个总分。
+差值还不能回答 matched artifact 本身是否合格。新增绝对适配下界 `A_min = min(PF_a(Y_a), PF_b(Y_b))`；如果 `matched=0.40`、`swapped=0.00`，CFA 可以很大，但 `A_min` 会直接暴露两份 matched 中较差的一份仍不达标。PF leaves 在聚合前已经按评分锚点统一归一到 `[0,1]`，因此 `Δ` 本身是量尺范围归一化后的百分点差；再除以 `matched+swapped` 会在低分区放大噪声，不进入确认性主指标。
+
+导师提出的向量夹角作为诊断而非新总分：令 `d_spec=[Δ_a,Δ_b]`，报告 `cos_spec=(Δ_a+Δ_b)/(sqrt(2)·||d_spec||)` 与 `mag_spec=||d_spec||/sqrt(2)`。前者检查两个方向是否都朝向理想 `[1,1]`，后者保留效应幅度。`Δ_a=Δ_b=0.01` 时余弦仍为1，所以角度不能代替最小实际重要差异、`CFA_min` 或 `A_min`；把角度与长度相乘又等价于对 `[1,1]` 的投影，没有提供新的识别信息。
+
+主矩阵已有 task-only 输出 `Y_0`，因此另报告 `G_a = PF_a(Y_a) − PF_a(Y_0)`，`G_b = PF_b(Y_b) − PF_b(Y_0)`，以及 `Gain_mean/Gain_min`。这里必须区分两层：`G_a≥−δ_NI 且 G_b≥−δ_NI` 只是 task-only non-inferiority；只有 `Gain_min≥δ_B`，或目标用户对 matched 相对 task-only 的盲评胜率超过预注册 practical margin，才称为 bilateral added value。`δ_NI`、`δ_B` 和 `A_min` 的阈值由真人重测噪声、最小实际重要差异与功效模拟冻结，不能从合成 pilot 倒推。最终把 Phase A 画成 specificity、magnitude、absolute adequacy 和 task-only uplift 的多量 profile，不压成一个总分。
 
 一个 family 只有同时满足以下条件，才进入 confirmatory personalization success：
 
-1. `Δ_a > 0` 且 `Δ_b > 0`，目标用户与交付物的匹配在两个方向都成立；
-2. `G_a ≥ 0` 且 `G_b ≥ 0`，至少没有一位用户比 task-only baseline 更差；
-3. matched outputs 均通过 TQ、FR、must-hold 与 critical must-not gate；
-4. 目标用户盲评中的 match effect 通过预注册的不确定性门槛。
+1. `Δ_a` 与 `Δ_b` 均超过预注册 specificity SESOI，目标用户与交付物的匹配在两个方向都成立；
+2. `A_min ≥ τ_abs`，两份 matched artifact 的绝对适配均达到资格线；
+3. `G_a ≥ −δ_NI` 且 `G_b ≥ −δ_NI`，至少没有一位用户相对 task-only 出现实质性损害；bilateral added value 另以 `Gain_min ≥ δ_B` 报告；
+4. matched outputs 均通过 TQ、FR、must-hold 与 owner-aware critical must-not gate；
+5. 目标用户盲评中的 match effect 通过预注册的不确定性门槛。
 
 这套分解分别识别“是否具有用户特异性”和“这种特异性是否带来用户价值”。它不能解释模型为什么做到，也不能自动排除长度等干扰，因此还要报告：
 
@@ -991,7 +996,13 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 主文结果图统一使用共享坐标、95% CI、样本数和 gate 标记；同一颜色始终代表同一 agent，线型或形状代表 signal/stress 条件。不要使用 3D 图、面积难比较的 sunburst、没有不确定性的柱状榜、把多指标压成一条折线的雷达图，或把 expected 与 observed failure 混在同一标签中。若版面不足，优先保留 Figures 1–3、5 和 Tables 2–4；Figure 4 的逐 anchor 细节移入附录，但不能删掉 JudgeBench 的测量效度证据。
 
-## 17. v0.32 开工方案：先验证 artifact → decision 的完整因果链
+## 17. v0.33 开工方案：Phase A 已做合成机制测试，下一步验证 artifact → decision 完整因果链
+
+### 17.0 合成最小实验已经回答什么、还没回答什么
+
+2026-08-09 冻结并运行了 4 个合成 family、两条生成管线和 task-only/matched/swapped 三条件，共得到 24 份交付物；Qwen3 8B 与 Claude Sonnet alias 对全部 artifact 做双用户逐叶盲评，共 48 个 artifact-judge 单元。四组 A/B matched 推荐方向均符合预冻结的决策方向，说明 Phase A 的 task/persona/交叉评分链具有初步可运行性。六类预冻结分数原型同时表明：`CFA_mean>0` 会把通用高分、低绝对适配、单边效应、只胜过 swapped 和微小差值全部误判；向量余弦只能识别方向平衡，比例归一化还会放大低分区差异。因而 v0.33 增加 `A_min`、角度/幅度诊断与 non-inferiority/added-value 分层，但继续禁止补偿式总分。
+
+这轮也暴露两项阻塞：两个 LLM judge 在 72 个聚合分比较上的平均绝对差约为 0.226；最小 runner 又一度把 User-A-specific must-not 错路由到 User B artifact。原始错误与事后 applicability 审计均保留，正式 runner 必须执行 `rubric_owner_user_id/applicability`，并用人类 evidence-span gold 校准后才能相信细粒度 PF/TQ。更重要的是，合成 pilot 只验证 Phase A 操作，不包含真实用户决定，不能视为 DDE、WrongUserHarm 或论文核心可行性的证据。完整协议、原始输出、评分和分析保存在 `pilot/minimal_metric_v0_1/`。
 
 ### 17.1 Task 元数据谁来标：不是“全人工”或“全自动”二选一
 
@@ -1027,7 +1038,7 @@ ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投�
 
 据此给出主观情景区间：**以当前 proposal、没有 pilot 结果直接投稿约 5%–12%**；完成有效 3-family pilot、功效分析、真实用户主实验、可复现 utility verifier 和报告质量配平，但效应中等时约 **20%–35%**；若 DDE 与 wrong-user harm 在多个 family 上稳定、CFA→DDE 代理效度分析清楚，并公开完整复现资产，约 **35%–50%**。反之，若主要终点仍是主观 fit、persona 主要合成、没有 task-only/swapped 或真人样本不足，应低于 **10%–15%**。这些区间是审稿风险判断，不是校准概率。
 
-当前最现实的中心判断是：**v0.32 比 v0.31 更容易形成清楚的 agent-evaluation 贡献，但招募、功效和 utility validity 风险更高。** PDR-Bench 已在 ICLR 2026 录用，意味着“个性化 Deep Research benchmark”本身不再新；DeepAlign 必须把 artifact → decision 的因果终点、真实用户、wrong-user 负对照和可复现 verifier 做成实证结果。若功效不足，优先减少 agent、family 类型和 stress 支线，不用更多 LLM judge 替代真人样本。
+当前最现实的中心判断是：**v0.33 的 Phase A 指标比 v0.32 更不容易被大差值假象误导，但论文强度仍由 Phase B 决定；招募、功效和 utility validity 仍是最大风险。** PDR-Bench 已在 ICLR 2026 录用，意味着“个性化 Deep Research benchmark”本身不再新；DeepAlign 必须把 artifact → decision 的因果终点、真实用户、wrong-user 负对照和可复现 verifier 做成实证结果。若功效不足，优先减少 agent、family 类型和 stress 支线，不用更多 LLM judge 替代真人样本。
 
 ### 17.6 两周开工清单
 

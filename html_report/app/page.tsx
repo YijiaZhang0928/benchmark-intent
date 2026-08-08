@@ -78,7 +78,7 @@ export default function Home() {
         <p className="sectionTag">EXECUTIVE READOUT</p>
         <div className="sectionHead"><h2>导师先看这三件事</h2><p>这三项决定项目是否具备独立论文贡献，而不只是更大规模的数据集。</p></div>
         <div className="decisionGrid">
-          <article><span>01</span><h3>报告只是处理</h3><p>Phase A 用 TQ/FR/PF/CFA 与三类契约确保 task-only、matched、swapped 在共同质量上可比。</p></article>
+          <article><span>01</span><h3>报告只是处理</h3><p>Phase A 用 TQ/FR、双向 CFA、A_min、task-only non-inferiority 与 owner-aware 契约确保三臂可比。</p></article>
           <article><span>02</span><h3>决定才是终点</h3><p>Phase B 用真实用户、等价 task shell、区组随机和盲化估计 DDE 与 wrong-user harm。</p></article>
           <article><span>03</span><h3>Utility 必须预冻结</h3><p>硬约束和可验证环境结果优先；用户软权重只在可接受方案内区分，persona 不得泄漏答案。</p></article>
         </div>
@@ -92,10 +92,10 @@ export default function Home() {
       <section className="editionSection" id="editions">
         <div className="shell">
           <p className="sectionTag">FOUR READING EDITIONS</p>
-          <div className="sectionHead"><h2>同一套 v0.32 两阶段方法，按阅读场景分成四版</h2><p>四版都以 DDE 为主终点，PF/CFA 与 JudgeBench 统一作为 Phase A qualification。</p></div>
+          <div className="sectionHead"><h2>同一套 v0.33 两阶段方法，按阅读场景分成四版</h2><p>四版都以 DDE 为主终点；v0.33 用合成 pilot 压力测试 Phase A 指标，但不把它当真人证据。</p></div>
           <div className="editionGrid">
             <article>
-              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>v0.32 方法学底稿：两阶段协议、DDE/错配伤害、真实用户 trial、utility 与功效门。</p>
+              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>v0.33 方法学底稿：两阶段协议、DDE/错配伤害、Phase A 绝对适配门、真实用户 trial 与功效门。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
             </article>
             <article className="recommended">
@@ -116,8 +116,8 @@ export default function Home() {
 
       <section className="figureSection" id="design">
         <div className="shell">
-          <div className="sectionHead light"><h2>一张图看懂 DeepAlign-Bench</h2><p>Phase A 把报告变成合格、可比的处理；Phase B 以真实用户、等价任务和可验证决定估计下游效果。</p></div>
-          <figure><img src="/DeepAlign-Bench_主图.png" alt="DeepAlign-Bench 两阶段下游决策效用流程图" /><figcaption>Phase A 先确认三臂报告可比；Phase B 再用真实用户的可验证决定估计 DDE 与 wrong-user harm。</figcaption></figure>
+          <div className="sectionHead light"><h2>一张图看懂完整设计与本周最小实验</h2><p>从 case/task/persona 元数据、rubric 编译和三环境运行，一直连到 Phase B 真人 DDE；橙色进度区明确当前只跑完合成 Phase A。</p></div>
+          <figure><img src="/DeepAlign-Bench_整体框架与最小实验_v0.33.png" alt="DeepAlign-Bench 正式 Proposal v0.33 整体实验框架与最小实验结果" /><figcaption>高密度导师汇报图：Phase A 报告资格、Phase B 真人决策试验、系统差异、统计边界、最小 pilot 与下一步均在同一页。</figcaption></figure>
         </div>
       </section>
 
@@ -296,12 +296,12 @@ export default function Home() {
         <div className="metricGrid">
           <article className="blue"><span>TQ / FR</span><h3>共同质量与事实性</h3><p>任务完成、关键覆盖、claim 支持、引用覆盖与来源质量。</p></article>
           <article className="green"><span>PF − MP</span><h3>净个性化适配</h3><p>用户特异要求完成率，扣除刻板化、误用、隐私和过度迎合。</p></article>
-          <article className="violet"><span>ΔA / ΔB · CFA MEAN/MIN</span><h3>跨用户特异性</h3><p>两位用户分别比较 matched 与 swapped；min 防止一位用户的收益抵消另一位的损失。</p></article>
+          <article className="violet"><span>Δ / CFA · A_MIN · COS/MAG</span><h3>特异性 + 绝对适配</h3><p>CFA_min 防单边补偿，A_min 防“大差值低适配”；角度与幅度只作诊断，不合成总分。</p></article>
           <article className="green"><span>DDE</span><h3>下游决策效果</h3><p>task-only regret − matched regret；正值才表示个性化报告改善决定。</p></article>
           <article className="amber"><span>WRONG-USER HARM</span><h3>错配个性化伤害</h3><p>swapped regret − task-only regret；检查合理但错误的用户版本是否比无个性化更糟。</p></article>
           <article className="green"><span>CONSTRAINT / CALIBRATION</span><h3>决定是否可靠</h3><p>硬约束违规、置信度校准、决策时间与认知负担。</p></article>
         </div>
-        <div className="formula"><div><span>两阶段判定</span><strong>Phase A: quality + CFA gate　→　Phase B: DDE + wrong-user harm</strong></div><p>PF/CFA 不能与 DDE 平均。若 fit 上升而 regret 不下降，结论是代理终点失效。</p></div>
+        <div className="formula"><div><span>两阶段判定</span><strong>Phase A: specificity + A_min + task-only NI + quality/boundary　→　Phase B: DDE + wrong-user harm</strong></div><p>PF/CFA 不能与 DDE 平均。若 fit 上升而 regret 不下降，结论是代理终点失效。</p></div>
         <div className="sectionHead compactHead"><h2>不发布一个掩盖差异的总分：榜单按四种能力画像报告</h2><p>同一模型可能写得好却不会主动澄清，也可能 clean 表现高但一遇冲突就崩；四个 profile 分开显示这种能力结构。</p></div>
         <div className="metricGrid">
           <article className="blue"><span>PROFILE A · PRIMARY</span><h3>Decision Utility</h3><p>DDE、WrongUserHarm、硬约束、校准与决策成本。</p></article>
@@ -451,7 +451,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.32 · 2026-08-09</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_端到端流程图_v0.32.png" download>端到端流程图</a><a href="/DeepAlign-Bench_主图.png" download>一页主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.33 · 2026-08-09</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_整体框架与最小实验_v0.33.png" download>整体框架与本周进度</a><a href="/DeepAlign-Bench_主图.png" download>论文主图</a></div></div></footer>
     </main>
   );
 }

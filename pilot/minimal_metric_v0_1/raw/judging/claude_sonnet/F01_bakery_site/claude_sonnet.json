@@ -1,0 +1,265 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "AA734929",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A3",
+              "score": 0.5,
+              "evidence": "连续3个月毛利<8.5万元或回收期超18个月"
+            },
+            {
+              "criterion": "A4",
+              "score": 0.5,
+              "evidence": "退出触发——连续3个月毛利<8.5万元"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "一次性投入42万元接近上限"
+            },
+            {
+              "criterion": "B2",
+              "score": 1,
+              "evidence": "建立城市知名度窗口...商场客流天然带来品牌曝光"
+            },
+            {
+              "criterion": "B3",
+              "score": 1,
+              "evidence": "新店长统筹，总部每周20小时支持用于带教"
+            },
+            {
+              "criterion": "B4",
+              "score": 1,
+              "evidence": "周末日均客单≥工作日1.8倍验证客流假设"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 0.5,
+          "evidence": "周末日均客单≥工作日1.8倍验证客流假设"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "R河畔商场符合...U大学街寒暑假客流骤降...N品牌曝光低"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "第1-6周办理食品许可...月毛利≥9万元...退出触发"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "artifact_id": "A3FE2825",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "18万元投入符合预算约束"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "6个月快闪符合可逆试点要求"
+            },
+            {
+              "criterion": "A3",
+              "score": 1,
+              "evidence": "退出：任意单月毛利<5.0万元，或前3个月累计亏损>6万元"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "选择N成熟社区做6个月快闪试点"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 0.5,
+              "evidence": "一次性投入18万元"
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "18万元...月固定成本4.2万元...月毛利6.2–8.2万元"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "三点比较：R河畔商场...U大学街...N成熟社区"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "第1–6周...继续：第3个月末累计毛利≥18.6万元"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "artifact_id": "A65646AC",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "N社区投入最低(18万+4.2万/月)"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "采用6个月快闪测试，验证模型后再决定长期承诺"
+            },
+            {
+              "criterion": "A3",
+              "score": 0.5,
+              "evidence": "退出触发：连续2个月毛利<5.0万"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "选择选项N成熟社区，采用6个月快闪测试"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "N社区投入最低(18万+4.2万/月)"
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "未知项：社区人口密度、现店与N点距离"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "R投入最高42万，U客流降35%，N投入最低18万"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "继续条件：第3个月实际毛利≥6.2万且月增长率>8%"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

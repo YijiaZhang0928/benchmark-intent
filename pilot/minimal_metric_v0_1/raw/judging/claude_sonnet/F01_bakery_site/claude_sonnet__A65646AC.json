@@ -1,0 +1,91 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A65646AC",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "N社区投入最低(18万+4.2万/月)"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "采用6个月快闪测试，验证模型后再决定长期承诺"
+            },
+            {
+              "criterion": "A3",
+              "score": 0.5,
+              "evidence": "退出触发：连续2个月毛利<5.0万"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "选择选项N成熟社区，采用6个月快闪测试"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "N社区投入最低(18万+4.2万/月)"
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "未知项：社区人口密度、现店与N点距离"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "R投入最高42万，U客流降35%，N投入最低18万"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "继续条件：第3个月实际毛利≥6.2万且月增长率>8%"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

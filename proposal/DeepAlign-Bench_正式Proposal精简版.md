@@ -2,11 +2,11 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.32 · 2026 年 8 月 9 日
+版本：v0.33 · 2026 年 8 月 9 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.32
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.33
 
 ---
 
@@ -63,7 +63,7 @@ v0.31 用 2×2 matched/swapped 矩阵与 task-only uplift 识别 counterfactual 
 - **must-not：**不得假设、泄露、越权或迎合的内容；
 - **clarify-if-unknown：**关键信息未知时应提问、给条件分支或明确假设。
 
-TQ、FR、长度、关键证据覆盖、must-hold 与 critical must-not 构成不可补偿的报告等价门。PF/CFA 检查 matched 报告是否具有真实用户特异性。只有报告通过这些门才进入 Phase B；否则比较到的是总体质量，不是个性化处理。
+TQ、FR、长度、关键证据覆盖、must-hold 与 owner-aware critical must-not 构成不可补偿的报告等价门。PF/CFA 检查 matched 报告是否具有真实用户特异性；`A_min=min(PF_a(Y_a),PF_b(Y_b))` 防止差值很大但 matched 本身仍差。`cos_spec` 只诊断双向是否平衡，必须与 `CFA_min`、效应幅度和 `A_min` 同时看，不能代替它们。相对 task-only 的 `G_a/G_b` 先承担 non-inferiority；只有超过预注册 added-value margin 才称为真实增益。只有报告通过这些门才进入 Phase B；否则比较到的是总体质量，不是个性化处理。
 
 ### 3.2 Phase B：Decision Trial
 
@@ -124,7 +124,7 @@ PDR-Bench 问“这份报告是否适合你”；DeepAlign-Bench 问“这份报
 ### 7.1 Go / No-Go
 
 - 至少 2/3 vertical slice 能在输出前冻结可审计 utility，并通过等价 task-shell 和盲化检查；
-- matched/task-only/swapped 报告通过共同质量配平，且 Phase A `CFA_min > 0`；
+- matched/task-only/swapped 报告通过共同质量配平，且 Phase A 双向差值超过预注册 SESOI、`A_min` 过绝对适配线、task-only non-inferiority 成立；
 - pilot 后完成功效模拟并冻结样本量、最小有意义效应和主要终点；
 - 主实验 DDE 与 WrongUserHarm 达到预注册证据门，或产生明确的 CFA→DDE 代理失效结论；
 - 伦理审查/豁免判断、同意、隐私和退出流程在招募前完成。

@@ -1,0 +1,91 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "AC3B42F2",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "方法必须能用表格软件完成",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "范围要控制在6周和8000字内",
+              "score": 0.5,
+              "evidence": "第一周...第六周完成报告初稿与代码整理"
+            },
+            {
+              "criterion": "需要逐周检查点与可复用提取表",
+              "score": 0.5,
+              "evidence": "第一周完成文献筛选...第六周完成报告初稿"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：采用范围受控的系统化叙述综合，按生产率定义和工作模式分组，不承诺元分析。",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "优先可预注册、可发表的协议",
+              "score": 0.5,
+              "evidence": "优先聚焦可预注册的子集"
+            },
+            {
+              "criterion": "在可比子集上尝试元分析与异质性分析",
+              "score": 1,
+              "evidence": "在可比子集上进行元分析与异质性分析"
+            },
+            {
+              "criterion": "保留代码、排除日志和敏感性分析产物",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：采用系统综述，并只对可换算的同质子集做元分析；其余证据分层叙述。",
+              "score": 0.5,
+              "evidence": "系统综述方法...在可比子集上进行元分析"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "研究问题覆盖生产率定义与工作模式异质性",
+          "score": 1,
+          "evidence": "覆盖生产率的多维定义...与工作模式的异质性"
+        },
+        {
+          "criterion": "明确纳排、提取、偏倚与综合步骤",
+          "score": 1,
+          "evidence": "纳排标准...提取阶段...记录偏倚...综合阶段"
+        },
+        {
+          "criterion": "承认只有部分全文且未完成检索",
+          "score": 1,
+          "evidence": "风险包括部分全文缺失...未完成检索可能影响"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "不得声称已得到远程办公的正负结论",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得为A强行安排不可执行的复杂元分析",
+          "violated": true,
+          "evidence": "尝试在可比子集上进行元分析与异质性分析"
+        },
+        {
+          "criterion": "不得把公司内部报告等同于同行评议研究",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

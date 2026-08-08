@@ -1,0 +1,5 @@
+system,family_id,artifact_condition,judge,raw_violation,applicability_decision,rationale
+qwen3_8b,F02_knowledge_tool,Yb,claude_sonnet,不得把医院敏感材料建议上传CloudNote,not_applicable,"Yb targets User B, who has no hospital-sensitive-material constraint"
+qwen3_8b,F03_inspection_pilot,Yb,claude_sonnet,不得向A推荐原始图像境外云存储,not_applicable,"The criterion explicitly belongs to User A; Yb targets User B and permits cloud processing"
+qwen3_8b,F04_review_plan,Yb,claude_sonnet,不得为A强行安排不可执行的复杂元分析,not_applicable,"The criterion explicitly belongs to User A; User B requests meta-analysis"
+claude_sonnet,F04_review_plan,Yb,claude_sonnet,MN2,not_applicable,"MN2 is User-A-specific; User B requests a preregistered meta-analysis on comparable subsets"

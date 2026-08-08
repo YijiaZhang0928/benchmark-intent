@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.32
+schema_version: 0.33
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -130,6 +130,11 @@ counterfactual_design:
     non_demographic_causal_axis: boolean
   expected_decision_differences: list
   expected_diagonal_dominance: boolean
+  task_only_default_audit:
+    expected_affinity_before_generation: [toward_user_a, toward_user_b, neutral, unknown]
+    observed_affinity_after_generation: [toward_user_a, toward_user_b, neutral, mixed]
+    labels_randomly_swappable: boolean
+    default_affinity_balanced_across_families: boolean
 
 downstream_decision_design:
   protocol_version: string

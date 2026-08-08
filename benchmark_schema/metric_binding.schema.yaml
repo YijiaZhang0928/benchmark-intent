@@ -1,5 +1,5 @@
 schema_name: deepalign_metric_binding
-schema_version: 0.32
+schema_version: 0.33
 description: >-
   Auditable map from direct leaf scores to aggregate and derived metrics. A leaf
   may bind to more than one direct metric only when the meanings are explicit;
@@ -78,6 +78,20 @@ derived_metrics:
     formula: min(delta_a, delta_b)
     depends_on: [delta_a, delta_b]
     note: prevents a large positive effect for one user from compensating a negative effect for the other
+  matched_adequacy_min:
+    formula: min(PF_a(Y_a), PF_b(Y_b))
+    depends_on: [PF_a_Y_a, PF_b_Y_b]
+    interpretation: absolute lower bound across the two matched artifacts; a large contrast cannot rescue a poor matched artifact
+  cosine_specificity_balance:
+    formula: >-
+      (delta_a + delta_b) / (sqrt(2) * sqrt(delta_a^2 + delta_b^2))
+      when sqrt(delta_a^2 + delta_b^2) > epsilon else 0
+    depends_on: [delta_a, delta_b]
+    interpretation: diagnostic direction agreement with the bilateral ideal [1,1]; does not measure effect magnitude or adequacy
+  specificity_magnitude:
+    formula: sqrt(delta_a^2 + delta_b^2) / sqrt(2)
+    depends_on: [delta_a, delta_b]
+    interpretation: range-normalized magnitude of the bilateral contrast vector
   gain_a_vs_task_only:
     formula: PF_a(Y_a) - PF_a(Y_0)
     depends_on: [PF_a_Y_a, PF_a_Y_0]
@@ -90,13 +104,25 @@ derived_metrics:
   gain_min:
     formula: min(gain_a_vs_task_only, gain_b_vs_task_only)
     depends_on: [gain_a_vs_task_only, gain_b_vs_task_only]
+  task_only_noninferiority:
+    formula: >-
+      gain_a_vs_task_only >= -delta_NI AND gain_b_vs_task_only >= -delta_NI
+    depends_on: [gain_a_vs_task_only, gain_b_vs_task_only, preregistered_delta_NI]
+    interpretation: neither matched artifact is materially worse than task-only; this is not evidence of positive added value
+  bilateral_added_value:
+    formula: gain_min >= delta_B
+    depends_on: [gain_min, preregistered_added_value_SESOI_delta_B]
+    interpretation: both users obtain practically meaningful artifact-fit uplift over task-only
   bilateral_personalization_success:
     formula: >-
-      delta_a > 0 AND delta_b > 0
-      AND gain_a_vs_task_only >= 0 AND gain_b_vs_task_only >= 0
+      delta_a >= delta_specificity AND delta_b >= delta_specificity
+      AND matched_adequacy_min >= tau_abs
+      AND task_only_noninferiority
       AND eligibility(Y_a) AND eligibility(Y_b)
-    depends_on: [delta_a, delta_b, gain_a_vs_task_only, gain_b_vs_task_only, eligibility]
-    note: confirmatory success is a conjunction, never a compensatory aggregate
+    depends_on: [delta_a, delta_b, matched_adequacy_min, task_only_noninferiority, eligibility]
+    note: >-
+      Phase-A qualification is a conjunction, never a compensatory aggregate.
+      Bilateral added value is reported separately and requires delta_B.
   neutral_invariance:
     formula: weighted_consistency_of_must_hold_leaves_across_Y_a_and_Y_b
     depends_on: [neutral_invariance_base]
@@ -116,6 +142,10 @@ derived_metrics:
 reporting_policy:
   one_overall_compensatory_score: prohibited
   publish_both_user_directions: true
+  publish_absolute_matched_adequacy: true
+  vector_angle_is_diagnostic_only: true
+  ratio_normalization_by_matched_plus_swapped: prohibited
+  distinguish_task_only_noninferiority_from_added_value: true
   primary_leaderboard_metrics: [DDE, wrong_user_harm, constraint_violation_rate, confidence_calibration]
   artifact_fit_metrics_are_qualification_or_mediators: true
   publish_specificity_and_task_only_benefit_as_separate_axes: true

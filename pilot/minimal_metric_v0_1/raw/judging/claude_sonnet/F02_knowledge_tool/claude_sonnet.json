@@ -1,0 +1,265 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "AA303E78",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "敏感项目本地...敏感项目审计日志完整记录访问者与时间"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "每周4小时维护刚好在约束阈值内"
+            },
+            {
+              "criterion": "A3",
+              "score": 1,
+              "evidence": "制定敏感/一般项目分级标准...建立权限映射表...先导入已分级的敏感项目"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "recommendation: HybridBase"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B2",
+              "score": 0.5,
+              "evidence": "跨区搜索体验一般但可通过培训和标签规范缓解"
+            },
+            {
+              "criterion": "B3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "CloudNote虽协作与搜索最佳...VaultLab完全本地...HybridBase年费3.2万元居中"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "第一阶段...第二阶段...第三阶段...第一次90分钟培训...第二次90分钟培训...培训后测验12人平均得分≥80分"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "未知项：HybridBase的SAML集成能力、移动端审计粒度..."
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": "CloudNote...所有数据存云端，违反「敏感项目必须本地存储」的院方硬约束，直接排除"
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "artifact_id": "ABECB0A1",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "无需专人运维"
+            },
+            {
+              "criterion": "A3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "A4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 1,
+              "evidence": "部署2天满足一周内上线硬约束"
+            },
+            {
+              "criterion": "B2",
+              "score": 1,
+              "evidence": "异地协作最佳解决异地协作慢痛点"
+            },
+            {
+              "criterion": "B3",
+              "score": 1,
+              "evidence": "支持批量导出满足数据可携性要求"
+            },
+            {
+              "criterion": "B4",
+              "score": 0.5,
+              "evidence": "首选CloudNote"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "年费/部署周期/协作能力/数据位置"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "Week1-4迁移+两次90分钟培训+验收指标"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "风险与未知项列4项"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "artifact_id": "AB0CB884",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "A1",
+              "score": 1,
+              "evidence": "敏感项目本地库...启用操作日志审计"
+            },
+            {
+              "criterion": "A2",
+              "score": 1,
+              "evidence": "每周4小时维护负担可由团队轮值分担"
+            },
+            {
+              "criterion": "A3",
+              "score": 1,
+              "evidence": "定义敏感/一般项目分类规则...分批迁移剩余7500篇PDF"
+            },
+            {
+              "criterion": "A4",
+              "score": 1,
+              "evidence": "选择HybridBase"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "B1",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B2",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B3",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "B4",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "TQ1",
+          "score": 1,
+          "evidence": "成本维度...部署与维护...协作与功能...数据边界"
+        },
+        {
+          "criterion": "TQ2",
+          "score": 1,
+          "evidence": "分阶段迁移...第一次90分钟培训...第二次90分钟培训...验收指标"
+        },
+        {
+          "criterion": "TQ3",
+          "score": 1,
+          "evidence": "已知事实：三方案定价...未知项：团队实际敏感项目占比"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "MN1",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN2",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "MN3",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

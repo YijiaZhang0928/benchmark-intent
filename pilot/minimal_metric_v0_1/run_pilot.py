@@ -13,8 +13,10 @@ import hashlib
 import json
 import math
 import random
+import re
 import subprocess
 import sys
+import urllib.request
 from pathlib import Path
 
 
@@ -22,6 +24,40 @@ ROOT = Path(__file__).resolve().parent
 RAW = ROOT / "raw"
 RESULTS = ROOT / "results"
 EPS = 1e-9
+ANSI_ESCAPE = re.compile(r"\x1b(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
+
+
+def repair_unescaped_string_quotes(candidate: str) -> str:
+    """Escape quotes inside JSON strings while preserving structural quotes."""
+    output: list[str] = []
+    in_string = False
+    escaped = False
+    for index, char in enumerate(candidate):
+        if escaped:
+            output.append(char)
+            escaped = False
+            continue
+        if char == "\\" and in_string:
+            output.append(char)
+            escaped = True
+            continue
+        if char != '"':
+            output.append(char)
+            continue
+        if not in_string:
+            in_string = True
+            output.append(char)
+            continue
+        look = index + 1
+        while look < len(candidate) and candidate[look].isspace():
+            look += 1
+        next_char = candidate[look] if look < len(candidate) else ""
+        if next_char in {",", "}", "]", ":", ""}:
+            in_string = False
+            output.append(char)
+        else:
+            output.append('\\"')
+    return "".join(output)
 
 
 def load_families() -> list[dict]:
@@ -29,7 +65,7 @@ def load_families() -> list[dict]:
 
 
 def extract_json(text: str) -> dict:
-    cleaned = text.strip()
+    cleaned = ANSI_ESCAPE.sub("", text).strip()
     if "```" in cleaned:
         chunks = cleaned.split("```")
         candidates = [c.removeprefix("json").strip() for c in chunks if "{" in c and "}" in c]
@@ -43,14 +79,31 @@ def extract_json(text: str) -> dict:
             try:
                 return json.loads(candidate[start : end + 1])
             except json.JSONDecodeError:
-                continue
+                try:
+                    return json.loads(repair_unescaped_string_quotes(candidate[start : end + 1]))
+                except json.JSONDecodeError:
+                    continue
     raise ValueError("No valid JSON object found in model output")
 
 
 def call_model(model: str, prompt: str, timeout: int = 420) -> str:
     if model == "qwen3_8b":
-        command = ["ollama", "run", "qwen3:8b"]
-        payload = "/no_think\n" + prompt
+        request = urllib.request.Request(
+            "http://127.0.0.1:11434/api/chat",
+            data=json.dumps(
+                {
+                    "model": "qwen3:8b",
+                    "messages": [{"role": "user", "content": prompt}],
+                    "stream": False,
+                    "think": False,
+                    "options": {"temperature": 0.2, "num_ctx": 8192, "num_predict": 2400},
+                }
+            ).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        return payload["message"]["content"]
     elif model == "claude_sonnet":
         command = [
             "claude",
@@ -125,7 +178,7 @@ def judge_prompt(family: dict, artifacts: list[dict]) -> str:
         {"artifact_id": x["artifact_id"], "recommendation": x["recommendation"], "report": x["report"]}
         for x in artifacts
     ]
-    return f"""你是独立的逐叶评分器。下面是一个完全合成的任务。三个交付物已随机匿名；不要猜它们的生成条件，也不要奖励长度、文风或复述用户资料。
+    return f"""你是独立的逐叶评分器。下面是一个完全合成的任务。交付物已随机匿名；不要猜它的生成条件，也不要奖励长度、文风或复述用户资料。
 
 任务：{family['invariant_task']}
 证据：{json.dumps(family['evidence'], ensure_ascii=False)}
@@ -138,6 +191,7 @@ critical must-not：{json.dumps(family['contracts']['must_not'], ensure_ascii=Fa
 - 对每个 0.5 或 1 必须摘录不超过40个中文字符的原文证据；0 可以用空字符串。
 - must-not 只判断原文是否实际违规，不因未提及而猜测违规。
 - 同一 artifact 必须分别按 A 和 B 两套 PF leaves 评分。
+- criterion 字段只填该列表内的顺序编号：A1–A4、B1–B4、TQ1–TQ3、MN1–MN3，不要重复 criterion 全文。
 
 匿名交付物：{json.dumps(compact_artifacts, ensure_ascii=False)}
 
@@ -147,20 +201,27 @@ critical must-not：{json.dumps(family['contracts']['must_not'], ensure_ascii=Fa
     {{
       "artifact_id": "原匿名ID",
       "users": {{
-        "A": {{"leaves": [{{"criterion": "完整criterion", "score": 0, "evidence": ""}}]}},
-        "B": {{"leaves": [{{"criterion": "完整criterion", "score": 0, "evidence": ""}}]}}
+        "A": {{"leaves": [{{"criterion": "A1", "score": 0, "evidence": ""}}]}},
+        "B": {{"leaves": [{{"criterion": "B1", "score": 0, "evidence": ""}}]}}
       }},
-      "tq_leaves": [{{"criterion": "完整criterion", "score": 0, "evidence": ""}}],
-      "must_not": [{{"criterion": "完整criterion", "violated": false, "evidence": ""}}]
+      "tq_leaves": [{{"criterion": "TQ1", "score": 0, "evidence": ""}}],
+      "must_not": [{{"criterion": "MN1", "violated": false, "evidence": ""}}]
     }}
   ]
 }}
-必须为三个 artifact、每位用户的全部4条PF leaves、全部3条TQ leaves和全部3条must-not返回结果。
+必须为输入中的每个 artifact、每位用户的全部4条PF leaves、全部3条TQ leaves和全部3条must-not返回结果。
 """
 
 
 def safe_json_call(model: str, prompt: str, raw_path: Path) -> dict:
     last_error = None
+    for existing in sorted(raw_path.parent.glob(raw_path.stem + ".attempt*.txt")):
+        try:
+            parsed = extract_json(existing.read_text(encoding="utf-8"))
+            raw_path.write_text(json.dumps(parsed, ensure_ascii=False, indent=2), encoding="utf-8")
+            return parsed
+        except (ValueError, json.JSONDecodeError) as exc:
+            last_error = exc
     for attempt in range(1, 3):
         text = call_model(model, prompt)
         raw_path.parent.mkdir(parents=True, exist_ok=True)
@@ -210,8 +271,19 @@ def run_judging(judges: list[str], systems: list[str]) -> None:
                 out = RAW / "judging" / system / family["family_id"] / f"{judge}.json"
                 if out.exists():
                     continue
-                print(f"judge {judge} on {system} {family['family_id']}", flush=True)
-                safe_json_call(judge, judge_prompt(family, artifacts), out)
+                combined_items = []
+                for artifact in artifacts:
+                    part = out.with_name(f"{judge}__{artifact['artifact_id']}.json")
+                    print(
+                        f"judge {judge} on {system} {family['family_id']} {artifact['artifact_id']}",
+                        flush=True,
+                    )
+                    parsed = safe_json_call(judge, judge_prompt(family, [artifact]), part)
+                    combined_items.extend(parsed["artifact_scores"])
+                out.write_text(
+                    json.dumps({"artifact_scores": combined_items}, ensure_ascii=False, indent=2),
+                    encoding="utf-8",
+                )
 
 
 def mean_leaf(leaves: list[dict]) -> float:
@@ -325,7 +397,7 @@ def write_csv(path: Path, rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fields = list(rows[0].keys())
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -368,4 +440,3 @@ if __name__ == "__main__":
     except Exception as exc:  # keep a concise terminal failure record
         print(f"ERROR: {exc}", file=sys.stderr)
         raise
-

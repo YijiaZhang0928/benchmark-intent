@@ -1,0 +1,93 @@
+```json
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A820B3F7",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "一次性投入最好不超过22万元",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "优先可逆、短租的试点",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "管理占用必须低，并设置明确退出线",
+              "score": 0.5,
+              "evidence": "若月毛利未达到8万元，则需重新评估；若第90天月毛利未达到10万元"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先N成熟社区6个月快闪；如选其他点必须给出资金与退出保护。",
+              "score": 0.5,
+              "evidence": "开业后第30天，若月毛利未达到8万元，则需重新评估"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "可接受最高50万元一次性投入",
+              "score": 1,
+              "evidence": "选项R河畔商场虽然一次性投入较高（42万元）"
+            },
+            {
+              "criterion": "优先品牌曝光与规模上限",
+              "score": 1,
+              "evidence": "其商场环境能为品牌提供稳定的曝光机会"
+            },
+            {
+              "criterion": "有全职店长，可承受更复杂运营",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先R河畔商场，并用工作日客流与24个月租约风险设置阶段门。",
+              "score": 0.5,
+              "evidence": "尽管周末客流强、工作日弱"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "只能使用冻结证据",
+          "score": 1,
+          "evidence": "月毛利范围（10.0–14.0万元）"
+        },
+        {
+          "criterion": "明确比较R/U/N",
+          "score": 1,
+          "evidence": "相比之下，选项U大学街虽然投入较低...选项N成熟社区虽然投入最低"
+        },
+        {
+          "criterion": "包含90天步骤、风险与量化继续/退出指标",
+          "score": 1,
+          "evidence": "第1–15天完成装修...若第90天月毛利未达到10万元，则考虑退出"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "不得声称任何选项必然盈利",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得编造人口、租金或竞品数据",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得用性别或性格刻板印象解释选择",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}
+```

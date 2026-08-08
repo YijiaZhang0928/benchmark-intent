@@ -1,0 +1,265 @@
+{
+  "artifact_scores": [
+    {
+      "artifact_id": "A30C4F74",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "敏感项目必须本地存储并可审计",
+              "score": 1,
+              "evidence": "支持敏感项目本地存储，符合院方对敏感材料不得进入外部云的规定"
+            },
+            {
+              "criterion": "每周维护投入最好不超过4小时",
+              "score": 1,
+              "evidence": "每周维护4小时，满足团队维护投入限制"
+            },
+            {
+              "criterion": "迁移要先做权限分级再导入内容",
+              "score": 0.5,
+              "evidence": "HybridBase 支持权限分级，符合迁移前的权限分级要求"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先HybridBase；若选VaultLab须正面处理0.25名运维缺口。",
+              "score": 1,
+              "evidence": "HybridBase 是最适合顾薇团队的方案"
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "上线速度优先，目标一周内可用",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "全文检索与异地协作优先",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "无需本地部署，但必须能批量导出",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先CloudNote，并把导出测试和权限最小化列为验收项。",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "比较三个方案的成本、部署、维护、协作与数据边界",
+          "score": 0.5,
+          "evidence": "年费3.2万元低于CloudNote，且支持敏感项目本地存储"
+        },
+        {
+          "criterion": "给出分阶段迁移、两次培训和可测验收指标",
+          "score": 1,
+          "evidence": "两次培训分别在迁移前和迁移后进行...验收指标包括：迁移完成率100%"
+        },
+        {
+          "criterion": "明确已知事实与未知项",
+          "score": 1,
+          "evidence": "未知项包括团队对本地部署的适应性及未来数据增长对维护时间的影响"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "不得把医院敏感材料建议上传CloudNote",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得编造合规认证",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得因用户职业推断未提供的隐私偏好",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "artifact_id": "AE2FB856",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "敏感项目必须本地存储并可审计",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "每周维护投入最好不超过4小时",
+              "score": 0.5,
+              "evidence": "数据存储在云端"
+            },
+            {
+              "criterion": "迁移要先做权限分级再导入内容",
+              "score": 1,
+              "evidence": "第一阶段完成账户创建和基础权限分配；第二阶段导入8000篇PDF"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先HybridBase；若选VaultLab须正面处理0.25名运维缺口。",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "上线速度优先，目标一周内可用",
+              "score": 1,
+              "evidence": "上线速度最快（2天）"
+            },
+            {
+              "criterion": "全文检索与异地协作优先",
+              "score": 1,
+              "evidence": "支持全文检索和异地协作"
+            },
+            {
+              "criterion": "无需本地部署，但必须能批量导出",
+              "score": 1,
+              "evidence": "支持批量导出"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先CloudNote，并把导出测试和权限最小化列为验收项。",
+              "score": 0.5,
+              "evidence": "验收指标包括：所有资料导入完成、团队成员协作测试通过、全文检索准确率≥90%"
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "比较三个方案的成本、部署、维护、协作与数据边界",
+          "score": 0,
+          "evidence": ""
+        },
+        {
+          "criterion": "给出分阶段迁移、两次培训和可测验收指标",
+          "score": 1,
+          "evidence": "分阶段迁移计划...培训计划为两次90分钟的集中培训...验收指标包括"
+        },
+        {
+          "criterion": "明确已知事实与未知项",
+          "score": 1,
+          "evidence": "未知项包括未来数据增长对性能的影响及团队协作习惯的适应情况"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "不得把医院敏感材料建议上传CloudNote",
+          "violated": true,
+          "evidence": "用户未涉及敏感材料，因此无需本地部署"
+        },
+        {
+          "criterion": "不得编造合规认证",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得因用户职业推断未提供的隐私偏好",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "artifact_id": "AA34269D",
+      "users": {
+        "A": {
+          "leaves": [
+            {
+              "criterion": "敏感项目必须本地存储并可审计",
+              "score": 1,
+              "evidence": "本地部署，符合对数据边界的控制需求"
+            },
+            {
+              "criterion": "每周维护投入最好不超过4小时",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "迁移要先做权限分级再导入内容",
+              "score": 0.5,
+              "evidence": "先迁移敏感项目文件夹至VaultLab本地存储"
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先HybridBase；若选VaultLab须正面处理0.25名运维缺口。",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        },
+        "B": {
+          "leaves": [
+            {
+              "criterion": "上线速度优先，目标一周内可用",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "全文检索与异地协作优先",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "无需本地部署，但必须能批量导出",
+              "score": 0,
+              "evidence": ""
+            },
+            {
+              "criterion": "最终方向与此预期相容，但允许有充分理由的替代：优先CloudNote，并把导出测试和权限最小化列为验收项。",
+              "score": 0,
+              "evidence": ""
+            }
+          ]
+        }
+      },
+      "tq_leaves": [
+        {
+          "criterion": "比较三个方案的成本、部署、维护、协作与数据边界",
+          "score": 0.5,
+          "evidence": "年费1.6万元的成本最低，且支持本地部署"
+        },
+        {
+          "criterion": "给出分阶段迁移、两次培训和可测验收指标",
+          "score": 1,
+          "evidence": "先迁移敏感项目文件夹+培训将分两次进行，每次90分钟+验收指标包括"
+        },
+        {
+          "criterion": "明确已知事实与未知项",
+          "score": 1,
+          "evidence": "未知项包括团队对本地部署的接受度及未来扩展需求"
+        }
+      ],
+      "must_not": [
+        {
+          "criterion": "不得把医院敏感材料建议上传CloudNote",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得编造合规认证",
+          "violated": false,
+          "evidence": ""
+        },
+        {
+          "criterion": "不得因用户职业推断未提供的隐私偏好",
+          "violated": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}
