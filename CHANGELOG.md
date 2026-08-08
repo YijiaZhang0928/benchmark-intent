@@ -12,6 +12,7 @@
 - 澄清“数据都能出来”的中稿判断：仅完成实验不等于强稿；若预注册核心效应、四重门、真人效度与可复现 artifact 同时成立，审稿姿态约为 borderline positive 到 weak accept，主观区间约 40%–55%，主要剩余风险仍是相对 PDR-Bench 的增量与测量效度。
 - 记录研究讨论的表达偏好：首次出现项目术语时需解释定义、责任人、冻结时点、输入输出、设计理由和贯穿实例，避免用内部缩写替代可执行说明；本项只改变协作表达，不改变 v0.31 方法。
 - 将相对 PDR-Bench 的 novelty 防线收紧为一项主贡献：非补偿式跨用户反事实结果识别；明确 2×2 公式本身不是数学创新，正式实验必须直接报告 PDR-style absolute adaptation 与 DeepAlign 的判定分歧、模型重分类和四类 false positive，否则无法排除“新增 swapped 指标”的增量性批评。
+- 新增 2560×1440 端到端详细流程图 PNG/SVG，完整展示 task metadata 与 case metadata 的包含关系、A/B/C 三层记录、双用户 family、contracts/rubric 预冻结、三个环境、交叉评分、四重门和 PDR-Bench 对照；同步图表 HTML、离线构建、测试、README 和项目记忆。
 
 ## v0.30 - 2026-08-08
 

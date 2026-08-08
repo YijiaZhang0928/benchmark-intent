@@ -122,6 +122,9 @@ test("server-renders the paper figure and table blueprint", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /2 张方法图 \+ 2 张结果图 \+ 1 张测量效度图/);
+  assert.match(html, /从 task metadata 到可审计结论/);
+  assert.match(html, /src="\/DeepAlign-Bench_详细流程图\.png"/i);
+  assert.match(html, /href="\/DeepAlign-Bench_详细流程图\.svg"/i);
   assert.match(html, /Counterfactual family 构造与评分/);
   assert.match(html, /Specificity × benefit profile/);
   assert.match(html, /Benefit vs task-only/);
@@ -182,6 +185,8 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   await Promise.all([
     access(new URL("../public/DeepAlign-Bench_主图.png", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_详细流程图.png", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_详细流程图.svg", import.meta.url)),
     access(
       new URL("../public/DeepAlign-Bench_正式研究Proposal.docx", import.meta.url),
     ),

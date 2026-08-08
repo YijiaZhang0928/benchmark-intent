@@ -12,6 +12,8 @@ const css = (await readFile(resolve(siteRoot, "app/globals.css"), "utf8"))
   .replace(/^@import\s+["']tailwindcss["'];?\s*/m, "");
 const figure = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_主图.png"));
 const figureData = `data:image/png;base64,${figure.toString("base64")}`;
+const workflowFigure = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_详细流程图.png"));
+const workflowFigureData = `data:image/png;base64,${workflowFigure.toString("base64")}`;
 
 function localizeMainBody(body) {
   return body
@@ -37,7 +39,11 @@ function localizeLiteratureBody(body) {
 }
 
 function localizeFiguresBody(body) {
-  return body.replaceAll('href="/"', 'href="./DeepAlign-Bench_HTML汇报版.html"');
+  return body
+    .replaceAll('href="/"', 'href="./DeepAlign-Bench_HTML汇报版.html"')
+    .replaceAll('src="/DeepAlign-Bench_详细流程图.png"', `src="${workflowFigureData}"`)
+    .replaceAll('href="/DeepAlign-Bench_详细流程图.png"', 'href="./DeepAlign-Bench_详细流程图.png"')
+    .replaceAll('href="/DeepAlign-Bench_详细流程图.svg"', 'href="./DeepAlign-Bench_详细流程图.svg"');
 }
 
 function localizeRubricsBody(body) {

@@ -13,6 +13,7 @@
 - `deliverables/DeepAlign-Bench_七篇相关论文速览.html`：七篇最近邻工作精读 + 22 篇 agent personalization / evaluation 扩展相关性审计；保留旧文件名以兼容已有链接。
 - `deliverables/DeepAlign-Bench_论文图表蓝图.html`：主文五张图、四张表及附录图表规划；包含 Figure 3–5 的结果图可视原型。
 - `deliverables/DeepAlign-Bench_一页汇报图.pptx`：可直接汇报的一页 16:9 PowerPoint；同内容 PNG/SVG 位于 `proposal_assets/`。
+- `deliverables/DeepAlign-Bench_详细流程图.png`：从真实 task seed、task/case metadata、双用户 family 和 rubric 预冻结，一直到三环境运行、2×2 评价、四重成功门及 PDR-Bench 对照的 16:9 详细流程图；同名 SVG 可编辑源位于 `proposal_assets/` 和 `deliverables/`。
 - `benchmark_schema/rubric_module_library.yaml`：36 个预定义 module（6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk），每个 case 只选择适用子集。
 - `benchmark_schema/data_factory.protocol.yaml`：把多篇文献映射为设计资产的 source-to-design ledger、数据构建阶段、vertical slice 停止门、anchor 对照和 E1→E3→E2 环境搭建顺序。
 - `benchmark_schema/construction_annotation.protocol.yaml`：自动 provenance、运行前双人人工构念标注、pilot 后 observed 字段，以及 seed funnel、真人招募和防泄漏规则。

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "论文图表蓝图｜DeepAlign-Bench",
-  description: "DeepAlign-Bench 主文五张图、四张表与附录图表的结构规划",
+  description: "DeepAlign-Bench 详细端到端流程、主文五张图、四张表与附录图表的结构规划",
 };
 
 const figures = [
@@ -59,7 +59,7 @@ export default function FigureBlueprintPage() {
   return (
     <main className="figurePlanPage" id="figure-top">
       <header className="figurePlanHero">
-        <nav className="litNav shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><div><a href="#result-mockups">结果图原型</a><a href="#main-figures">全部主图</a><a href="#main-tables">主表</a></div><a className="navCta" href="/">返回总报告</a></nav>
+        <nav className="litNav shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><div><a href="#workflow-detail">详细流程</a><a href="#result-mockups">结果图原型</a><a href="#main-figures">全部主图</a><a href="#main-tables">主表</a></div><a className="navCta" href="/">返回总报告</a></nav>
         <div className="shell figurePlanHeroGrid">
           <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.31</p><h1>结果不是一张总榜，<br/>而是 <em>特异性—受益—失效</em></h1><p className="lede">核心同时展示 matched 相对 swapped 的跨用户 specificity 与 matched 相对 task-only 的用户 benefit，再展开到可支持的任务边际、信号稳健性和多标签失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
           <aside className="figurePlanClaim"><span>主文证据顺序</span><b>How it works</b><i>→</i><b>What is measured</b><i>→</i><b>Where it fails</b><i>→</i><b>Can we trust the score</b></aside>
@@ -72,6 +72,11 @@ export default function FigureBlueprintPage() {
         <article><b>4–6</b><span>附录图</span><p>逐 family、逐 anchor、longitudinal 与群体切片</p></article>
         <article><b>8–10</b><span>附录表</span><p>case、rubric、agent、成本与完整结果</p></article>
       </section>
+
+      <section className="workflowFigureSection" id="workflow-detail"><div className="shell">
+        <div className="sectionHead"><h2>端到端详细流程：从 task metadata 到可审计结论</h2><p>图中明确区分 task metadata 与完整 case metadata，并标出 A/B/C 三层记录、双用户 family、rubric 预冻结、E1/E3/E2 分工、交叉评价、四重成功门和相对 PDR-Bench 的实证检验。</p></div>
+        <figure className="workflowFigure"><a href="/DeepAlign-Bench_详细流程图.png"><img src="/DeepAlign-Bench_详细流程图.png" alt="DeepAlign-Bench 从真实任务、task metadata 和 case metadata 到反事实个性化结论的详细流程图"/></a><figcaption><span>2560 × 1440 · 16:9 · 汇报用 PNG</span><span><a href="/DeepAlign-Bench_详细流程图.png">下载 PNG</a><a href="/DeepAlign-Bench_详细流程图.svg">下载可编辑 SVG</a></span></figcaption></figure>
+      </div></section>
 
       <section className="resultMockSection" id="result-mockups"><div className="shell">
         <div className="sectionHead"><h2>真正跑完 benchmark 后，主结果建议长这样</h2><p>Figure 3 回答“有没有、在哪里”；Figure 4 回答“怎么坏、在哪坏”；Figure 5 只回答这些分数能不能信。</p></div>
@@ -120,7 +125,7 @@ export default function FigureBlueprintPage() {
         <div className="appendixGrid"><article><span>APPENDIX FIGURES</span><h3>建议 4–6 张</h3><ul><li>逐 family CFA forest plot</li><li>完整 task-cube coverage heatmap</li><li>八个 anchor 的独立 S0–S3 曲线</li><li>clarification value / turn</li><li>retention 与 update 曲线</li><li>语言、用户群和 seed 切片</li></ul></article><article><span>APPENDIX TABLES</span><h3>建议 8–10 张</h3><ul><li>24 family 与 48 user-task 清单</li><li>persona compatibility gate</li><li>完整 rubric leaf bank</li><li>agent / version / tool metadata</li><li>全量结果与置信区间</li><li>成本、失败案例与人工一致性</li></ul></article></div>
         <div className="figurePlanNo"><b>明确不建议</b><span>单一总体排名</span><span>雷达图</span><span>3D 图</span><span>无 CI 柱状榜</span><span>sunburst 冒充覆盖</span><span>expected/observed 混标</span></div>
       </section>
-      <footer><div className="shell"><a className="brand" href="#figure-top">DeepAlign<span>Bench</span></a><p>Result visual blueprint · v0.27 · 2026-08-04</p><a href="/">返回完整汇报版 ↑</a></div></footer>
+      <footer><div className="shell"><a className="brand" href="#figure-top">DeepAlign<span>Bench</span></a><p>Result visual blueprint · v0.31 · 2026-08-08</p><a href="/">返回完整汇报版 ↑</a></div></footer>
     </main>
   );
 }

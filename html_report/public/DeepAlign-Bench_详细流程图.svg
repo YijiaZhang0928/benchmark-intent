@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440" role="img" aria-labelledby="title desc">
+  <title id="title">DeepAlign-Bench 从真实任务到反事实个性化结论的详细流程图</title>
+  <desc id="desc">展示真实任务来源、三层元数据、双用户 task family、完整 case metadata、rubric 编译、E1 E3 E2 三环境、matched swapped task-only 交叉评价、四重成功门和相对 PDR-Bench 的经验增量。</desc>
+  <defs>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14365f"/>
+      <stop offset="0.55" stop-color="#185579"/>
+      <stop offset="1" stop-color="#167986"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#173552" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#347489"/>
+    </marker>
+    <marker id="arrowLight" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#d9eef1"/>
+    </marker>
+    <style>
+      text { font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill:#173552; }
+      .title { font-size:48px; font-weight:600; fill:#ffffff; }
+      .subtitle { font-size:22px; fill:#d3e8ef; }
+      .eyebrow { font-size:16px; letter-spacing:2.2px; font-weight:600; fill:#1b6e82; }
+      .stage { font-size:27px; font-weight:600; fill:#173552; }
+      .section { font-size:21px; font-weight:600; fill:#173552; }
+      .body { font-size:18px; fill:#36566c; }
+      .small { font-size:16px; fill:#60788a; }
+      .tiny { font-size:14px; fill:#6b8290; }
+      .white { fill:#ffffff; }
+      .whiteMuted { fill:#cde2e9; }
+      .teal { fill:#146f7e; }
+      .purple { fill:#6f5ba8; }
+      .orange { fill:#b9654d; }
+      .green { fill:#347f6c; }
+      .red { fill:#b95448; }
+      .card { fill:#ffffff; stroke:#b8ceda; stroke-width:1.6; }
+      .subcard { fill:#f6f9fb; stroke:#d3e0e7; stroke-width:1.2; }
+      .tealcard { fill:#eaf5f4; stroke:#8dc6bd; stroke-width:1.4; }
+      .purplecard { fill:#f2eef9; stroke:#b6a6da; stroke-width:1.4; }
+      .orangecard { fill:#fff2ed; stroke:#e2a28e; stroke-width:1.4; }
+      .bluecard { fill:#edf4fb; stroke:#a6c8e7; stroke-width:1.4; }
+      .greencard { fill:#edf7f2; stroke:#9bcbb8; stroke-width:1.4; }
+      .darkcard { fill:#173b63; stroke:#173b63; stroke-width:1.4; }
+      .divider { stroke:#d2dfe5; stroke-width:1.2; }
+      .arrow { stroke:#347489; stroke-width:3; fill:none; marker-end:url(#arrow); }
+      .thinArrow { stroke:#5f8c9a; stroke-width:2; fill:none; marker-end:url(#arrow); }
+      .dash { stroke-dasharray:8 7; }
+      .num { font-size:18px; font-weight:600; fill:#ffffff; }
+      .pill { font-size:14px; font-weight:600; }
+      .formula { font-family:"SFMono-Regular", Menlo, Consolas, monospace; font-size:14px; fill:#254d66; }
+    </style>
+  </defs>
+
+  <rect width="2560" height="1440" fill="#f3f7fa"/>
+  <rect width="2560" height="132" fill="url(#header)"/>
+  <text x="1280" y="58" text-anchor="middle" class="title">DeepAlign-Bench：从真实任务到可验证的用户反事实结论</text>
+  <text x="1280" y="98" text-anchor="middle" class="subtitle">task metadata 是 case metadata 的一部分；所有主观真值与 rubric 在模型输出前冻结</text>
+
+  <!-- Research question strip -->
+  <rect x="55" y="154" width="2450" height="86" rx="18" fill="#e8f3f5" stroke="#79b6c4" stroke-width="1.8"/>
+  <circle cx="102" cy="197" r="25" fill="#1b7586"/>
+  <text x="102" y="204" text-anchor="middle" class="num">?</text>
+  <text x="145" y="184" class="section">核心识别问题</text>
+  <text x="145" y="215" class="body">固定任务、证据、工具、预算与交付格式，只改变目标用户：报告是否按预先定义的正确方向变化，确实优于 task-only，并且不牺牲共同质量、事实性、隐私和权限？</text>
+
+  <!-- Stage 1 -->
+  <g filter="url(#shadow)">
+    <rect x="55" y="278" width="390" height="430" rx="19" class="card"/>
+    <rect x="55" y="278" width="390" height="72" rx="19" fill="#dcebf6"/>
+    <rect x="55" y="331" width="390" height="19" fill="#dcebf6"/>
+  </g>
+  <circle cx="92" cy="314" r="20" fill="#2c6f93"/><text x="92" y="321" text-anchor="middle" class="num">1</text>
+  <text x="124" y="307" class="eyebrow">真实需求入口</text>
+  <text x="124" y="335" class="stage">Task seed 与来源审计</text>
+  <text x="80" y="386" class="section">Task seed 是什么</text>
+  <text x="80" y="417" class="body"><tspan x="80">未经标准化的真实研究需求</tspan><tspan x="80" dy="27">来源：真人访谈、专业工作流、</tspan><tspan x="80" dy="27">公开案例、已有 benchmark</tspan></text>
+  <line x1="80" y1="484" x2="420" y2="484" class="divider"/>
+  <text x="80" y="519" class="section">A 层：自动记录 + 人工审计</text>
+  <text x="80" y="550" class="body"><tspan x="80">source / consent / license / date</tspan><tspan x="80" dy="27">file type / evidence hash</tspan><tspan x="80" dy="27">tool access / budget configuration</tspan></text>
+  <rect x="80" y="625" width="340" height="54" rx="10" class="bluecard"/>
+  <text x="250" y="647" text-anchor="middle" class="small">60–80 个 seed → 去重、许可与可评性筛选</text>
+  <text x="250" y="669" text-anchor="middle" class="tiny">机器负责留痕，人负责确认来源是否可信</text>
+
+  <!-- Stage 2 -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="278" width="500" height="430" rx="19" class="card"/>
+    <rect x="480" y="278" width="500" height="72" rx="19" fill="#e8e1f5"/>
+    <rect x="480" y="331" width="500" height="19" fill="#e8e1f5"/>
+  </g>
+  <circle cx="517" cy="314" r="20" fill="#705aa5"/><text x="517" y="321" text-anchor="middle" class="num">2</text>
+  <text x="549" y="307" class="eyebrow purple">任务级定义 · 用户无关</text>
+  <text x="549" y="335" class="stage">Task metadata + invariant task core</text>
+  <text x="508" y="383" class="section">Task metadata 描述“这是什么任务”</text>
+  <rect x="508" y="403" width="444" height="145" rx="12" class="purplecard"/>
+  <text x="530" y="432" class="body"><tspan x="530">• stratum / primary intent / domain</tspan><tspan x="530" dy="26">• deliverable / demand vector / stakes</tspan><tspan x="530" dy="26">• evidence cutoff / tools / resource budget</tspan><tspan x="530" dy="26">• required outputs / success criteria / reversibility</tspan></text>
+  <text x="508" y="583" class="section">B 层：两人独立标注，第三人仲裁</text>
+  <text x="508" y="613" class="small"><tspan x="508">先冻结所有用户共享的任务、证据、工具、预算和交付格式；</tspan><tspan x="508" dy="24">再确认这个任务能否自然容纳两位需求不同的真实用户。</tspan></text>
+  <rect x="508" y="659" width="205" height="34" rx="17" fill="#f0edf8" stroke="#b8a9d8"/>
+  <text x="611" y="682" text-anchor="middle" class="pill purple">约 30 个候选 task shell</text>
+  <rect x="725" y="659" width="227" height="34" rx="17" fill="#eaf5f4" stroke="#8dc6bd"/>
+  <text x="839" y="682" text-anchor="middle" class="pill teal">先做 3 个完整 pilot family</text>
+
+  <!-- Stage 3 -->
+  <g filter="url(#shadow)">
+    <rect x="1015" y="278" width="770" height="430" rx="19" class="card"/>
+    <rect x="1015" y="278" width="770" height="72" rx="19" fill="#dff1ee"/>
+    <rect x="1015" y="331" width="770" height="19" fill="#dff1ee"/>
+  </g>
+  <circle cx="1052" cy="314" r="20" fill="#34806e"/><text x="1052" y="321" text-anchor="middle" class="num">3</text>
+  <text x="1084" y="307" class="eyebrow green">完整可运行实验蓝图</text>
+  <text x="1084" y="335" class="stage">Case metadata：一次运行所需的完整配置</text>
+
+  <rect x="1045" y="377" width="220" height="130" rx="12" class="bluecard"/>
+  <text x="1064" y="406" class="section">task.*</text>
+  <text x="1064" y="433" class="small"><tspan x="1064">任务类型、意图、领域</tspan><tspan x="1064" dy="23">交付物、需求、风险</tspan><tspan x="1064" dy="23">共同成功标准</tspan></text>
+
+  <rect x="1282" y="377" width="225" height="130" rx="12" class="tealcard"/>
+  <text x="1301" y="406" class="section">environment.*</text>
+  <text x="1301" y="433" class="small"><tspan x="1301">证据类型与快照</tspan><tspan x="1301" dy="23">工具、预算、权限</tspan><tspan x="1301" dy="23">reset / 时间窗口</tspan></text>
+
+  <rect x="1524" y="377" width="231" height="130" rx="12" class="purplecard"/>
+  <text x="1543" y="406" class="section">user_state.*</text>
+  <text x="1543" y="433" class="small"><tspan x="1543">目标、知识、约束</tspan><tspan x="1543" dy="23">风险、受众、权限</tspan><tspan x="1543" dy="23">动态状态与来源</tspan></text>
+
+  <rect x="1045" y="526" width="220" height="125" rx="12" class="orangecard"/>
+  <text x="1064" y="555" class="section">signal.*</text>
+  <text x="1064" y="582" class="small"><tspan x="1064">persona / history</tspan><tspan x="1064" dy="23">clarification / workspace</tspan><tspan x="1064" dy="23">可见性、可靠度、时间戳</tspan></text>
+
+  <rect x="1282" y="526" width="225" height="125" rx="12" class="subcard"/>
+  <text x="1301" y="555" class="section">agent.* / run.*</text>
+  <text x="1301" y="582" class="small"><tspan x="1301">系统、模型与版本</tspan><tspan x="1301" dy="23">搜索、记忆、编排</tspan><tspan x="1301" dy="23">seed、成本与 trace level</tspan></text>
+
+  <rect x="1524" y="526" width="231" height="125" rx="12" class="greencard"/>
+  <text x="1543" y="555" class="section">Ua / Ub 用户对</text>
+  <text x="1543" y="582" class="small"><tspan x="1543">共享 invariant core</tspan><tspan x="1543" dy="23">只改变 2–4 个有决策</tspan><tspan x="1543" dy="23">后果的真实用户事实</tspan></text>
+  <text x="1400" y="684" text-anchor="middle" class="tiny">Task metadata 是 case metadata 的子集；case 还必须指定“谁、如何提供信息、在哪运行、测哪个系统”</text>
+
+  <!-- Stage 4 -->
+  <g filter="url(#shadow)">
+    <rect x="1820" y="278" width="685" height="430" rx="19" class="card"/>
+    <rect x="1820" y="278" width="685" height="72" rx="19" fill="#f8e5df"/>
+    <rect x="1820" y="331" width="685" height="19" fill="#f8e5df"/>
+  </g>
+  <circle cx="1857" cy="314" r="20" fill="#bd684f"/><text x="1857" y="321" text-anchor="middle" class="num">4</text>
+  <text x="1889" y="307" class="eyebrow orange">运行前定义“什么该变、什么不能变”</text>
+  <text x="1889" y="335" class="stage">Contracts → rubric compiler → frozen bundle</text>
+
+  <rect x="1848" y="377" width="146" height="104" rx="11" class="purplecard"/>
+  <text x="1921" y="406" text-anchor="middle" class="section">must-change</text>
+  <text x="1921" y="435" text-anchor="middle" class="small"><tspan x="1921">必须随用户</tspan><tspan x="1921" dy="22">改变的决策</tspan></text>
+  <rect x="2008" y="377" width="146" height="104" rx="11" class="bluecard"/>
+  <text x="2081" y="406" text-anchor="middle" class="section">must-hold</text>
+  <text x="2081" y="435" text-anchor="middle" class="small"><tspan x="2081">共同事实和</tspan><tspan x="2081" dy="22">质量必须保持</tspan></text>
+  <rect x="2168" y="377" width="146" height="104" rx="11" class="orangecard"/>
+  <text x="2241" y="406" text-anchor="middle" class="section">must-not</text>
+  <text x="2241" y="435" text-anchor="middle" class="small"><tspan x="2241">隐私、权限和</tspan><tspan x="2241" dy="22">严重行为红线</tspan></text>
+  <rect x="2328" y="377" width="149" height="104" rx="11" class="greencard"/>
+  <text x="2403" y="406" text-anchor="middle" class="section">clarify</text>
+  <text x="2403" y="435" text-anchor="middle" class="small"><tspan x="2403">关键信息未知</tspan><tspan x="2403" dy="22">时必须澄清</tspan></text>
+
+  <text x="1848" y="523" class="small">由冻结的 metadata 与 contracts 确定性路由：</text>
+  <rect x="1848" y="541" width="125" height="48" rx="9" class="subcard"/><text x="1911" y="571" text-anchor="middle" class="pill">Module</text>
+  <path d="M1977 565H2010" class="thinArrow"/>
+  <rect x="2018" y="541" width="156" height="48" rx="9" class="tealcard"/><text x="2096" y="571" text-anchor="middle" class="pill teal">Direction node</text>
+  <path d="M2178 565H2211" class="thinArrow"/>
+  <rect x="2219" y="541" width="127" height="48" rx="9" class="purplecard"/><text x="2283" y="571" text-anchor="middle" class="pill purple">Atomic leaf</text>
+  <path d="M2350 565H2383" class="thinArrow"/>
+  <rect x="2391" y="541" width="86" height="48" rx="9" class="orangecard"/><text x="2434" y="571" text-anchor="middle" class="pill orange">Metric</text>
+  <text x="1848" y="621" class="small"><tspan x="1848">人类定义构念与锚点；LLM 只建议参数和措辞；</tspan><tspan x="1848" dy="24">validator 检查适用性、证据、A/B 对称、版本与 hash。</tspan></text>
+  <rect x="1848" y="672" width="629" height="25" rx="12" fill="#173b63"/>
+  <text x="2163" y="690" text-anchor="middle" class="tiny white">输出：每个 case 约 12–22 条可审计 leaf，绑定 TQ / FR / PF / MP</text>
+
+  <!-- arrows top -->
+  <path d="M445 493H470" class="arrow"/>
+  <path d="M980 493H1005" class="arrow"/>
+  <path d="M1785 493H1810" class="arrow"/>
+
+  <!-- Freeze rail -->
+  <rect x="55" y="744" width="2450" height="72" rx="16" class="darkcard"/>
+  <text x="85" y="773" class="eyebrow whiteMuted">PRE-RUN FREEZE · 任何被测输出产生之前</text>
+  <text x="85" y="801" class="body white">冻结 case bundle：task shell + evidence snapshot + Ua/Ub ledger + signal views + 四类 contracts + rubric leaves + environment/agent configuration + version/hash</text>
+  <path d="M2163 708V733" class="arrow"/>
+
+  <!-- Stage 5 environments -->
+  <g filter="url(#shadow)">
+    <rect x="55" y="852" width="650" height="430" rx="19" class="card"/>
+    <rect x="55" y="852" width="650" height="68" rx="19" fill="#dcebf6"/>
+    <rect x="55" y="901" width="650" height="19" fill="#dcebf6"/>
+  </g>
+  <circle cx="92" cy="886" r="20" fill="#2c6f93"/><text x="92" y="893" text-anchor="middle" class="num">5</text>
+  <text x="124" y="879" class="eyebrow">受控运行与外部效度</text>
+  <text x="124" y="907" class="stage">三个环境分工运行，不混成一个榜</text>
+
+  <rect x="82" y="948" width="596" height="94" rx="12" class="bluecard"/>
+  <text x="103" y="978" class="section">E1 Controlled Frozen Harness · 主因果轨</text>
+  <text x="103" y="1007" class="small"><tspan x="103">同一 evidence snapshot、搜索接口、工具、预算与 reset；</tspan><tspan x="103" dy="23">先验 2 family × 2 agent，再做 3-family pilot，通过才扩至 24。</tspan></text>
+
+  <rect x="82" y="1055" width="596" height="89" rx="12" class="purplecard"/>
+  <text x="103" y="1085" class="section">E3 Stateful Sandbox · 受控动态诊断</text>
+  <text x="103" y="1114" class="small"><tspan x="103">checkpoint 后注入 clarification、conflict、update、permission；</tspan><tspan x="103" dy="23">只做一个事件丰富 anchor，验证分支等价和状态更新。</tspan></text>
+
+  <rect x="82" y="1157" width="596" height="89" rx="12" class="orangecard"/>
+  <text x="103" y="1187" class="section">E2 Native Product/Web · 观察性生态轨</text>
+  <text x="103" y="1216" class="small"><tspan x="103">记录产品版本、日期、地区、账号、URL 快照和成本；</tspan><tspan x="103" dy="23">无法可靠 reset，不与 E1/E3 合并做因果显著性。</tspan></text>
+
+  <!-- Stage 6 outputs and matrix -->
+  <g filter="url(#shadow)">
+    <rect x="740" y="852" width="610" height="430" rx="19" class="card"/>
+    <rect x="740" y="852" width="610" height="68" rx="19" fill="#e8e1f5"/>
+    <rect x="740" y="901" width="610" height="19" fill="#e8e1f5"/>
+  </g>
+  <circle cx="777" cy="886" r="20" fill="#705aa5"/><text x="777" y="893" text-anchor="middle" class="num">6</text>
+  <text x="809" y="879" class="eyebrow purple">同一 agent、同一 family 的三种产物</text>
+  <text x="809" y="907" class="stage">task-only + matched + swapped 交叉评价</text>
+
+  <rect x="770" y="948" width="164" height="62" rx="11" class="subcard"/>
+  <text x="852" y="973" text-anchor="middle" class="section">Y₀</text><text x="852" y="997" text-anchor="middle" class="small">task-only</text>
+  <rect x="956" y="948" width="164" height="62" rx="11" class="tealcard"/>
+  <text x="1038" y="973" text-anchor="middle" class="section">Yₐ</text><text x="1038" y="997" text-anchor="middle" class="small">为用户 A 生成</text>
+  <rect x="1142" y="948" width="164" height="62" rx="11" class="purplecard"/>
+  <text x="1224" y="973" text-anchor="middle" class="section">Yᵦ</text><text x="1224" y="997" text-anchor="middle" class="small">为用户 B 生成</text>
+
+  <text x="770" y="1052" class="section">2×2 用户条件化评分矩阵</text>
+  <rect x="880" y="1070" width="100" height="52" rx="8" class="tealcard"/><text x="930" y="1102" text-anchor="middle" class="formula">PFₐ(Yₐ)</text>
+  <rect x="990" y="1070" width="100" height="52" rx="8" class="subcard"/><text x="1040" y="1102" text-anchor="middle" class="formula">PFₐ(Yᵦ)</text>
+  <rect x="880" y="1132" width="100" height="52" rx="8" class="subcard"/><text x="930" y="1164" text-anchor="middle" class="formula">PFᵦ(Yₐ)</text>
+  <rect x="990" y="1132" width="100" height="52" rx="8" class="purplecard"/><text x="1040" y="1164" text-anchor="middle" class="formula">PFᵦ(Yᵦ)</text>
+  <text x="770" y="1100" class="small">用户 A 标准</text><text x="770" y="1162" class="small">用户 B 标准</text>
+  <text x="1110" y="1093" class="formula">Δₐ = PFₐ(Yₐ) − PFₐ(Yᵦ)</text>
+  <text x="1110" y="1124" class="formula">Δᵦ = PFᵦ(Yᵦ) − PFᵦ(Yₐ)</text>
+  <text x="1110" y="1164" class="formula">Gₐ = PFₐ(Yₐ) − PFₐ(Y₀)</text>
+  <text x="1110" y="1195" class="formula">Gᵦ = PFᵦ(Yᵦ) − PFᵦ(Y₀)</text>
+  <rect x="770" y="1218" width="536" height="42" rx="10" fill="#f7f4eb" stroke="#d7c79a"/>
+  <text x="1038" y="1244" text-anchor="middle" class="small">目标用户盲评 + domain expert + verifier/judge 三级证据</text>
+
+  <!-- Stage 7 gates -->
+  <g filter="url(#shadow)">
+    <rect x="1385" y="852" width="515" height="430" rx="19" class="card"/>
+    <rect x="1385" y="852" width="515" height="68" rx="19" fill="#dff1ee"/>
+    <rect x="1385" y="901" width="515" height="19" fill="#dff1ee"/>
+  </g>
+  <circle cx="1422" cy="886" r="20" fill="#34806e"/><text x="1422" y="893" text-anchor="middle" class="num">7</text>
+  <text x="1454" y="879" class="eyebrow green">非补偿式确认性判定</text>
+  <text x="1454" y="907" class="stage">四重门必须同时通过</text>
+
+  <rect x="1414" y="946" width="458" height="59" rx="11" class="purplecard"/>
+  <circle cx="1445" cy="976" r="17" fill="#705aa5"/><text x="1445" y="982" text-anchor="middle" class="num">1</text>
+  <text x="1474" y="971" class="section">双向 specificity</text><text x="1474" y="994" class="tiny">Δₐ、Δᵦ 与 CFA_min 通过；一边不能补偿另一边</text>
+  <rect x="1414" y="1017" width="458" height="59" rx="11" class="greencard"/>
+  <circle cx="1445" cy="1047" r="17" fill="#34806e"/><text x="1445" y="1053" text-anchor="middle" class="num">2</text>
+  <text x="1474" y="1042" class="section">真实 benefit</text><text x="1474" y="1065" class="tiny">Gₐ、Gᵦ 与 Gain_min 通过；matched 不劣于 task-only</text>
+  <rect x="1414" y="1088" width="458" height="59" rx="11" class="bluecard"/>
+  <circle cx="1445" cy="1118" r="17" fill="#2c6f93"/><text x="1445" y="1124" text-anchor="middle" class="num">3</text>
+  <text x="1474" y="1113" class="section">共同质量 no-harm</text><text x="1474" y="1136" class="tiny">TQ、FR、must-hold 通过；个性化不能破坏事实核心</text>
+  <rect x="1414" y="1159" width="458" height="59" rx="11" class="orangecard"/>
+  <circle cx="1445" cy="1189" r="17" fill="#bd684f"/><text x="1445" y="1195" text-anchor="middle" class="num">4</text>
+  <text x="1474" y="1184" class="section">边界 no-violation</text><text x="1474" y="1207" class="tiny">must-not、隐私、权限、安全无 critical failure</text>
+  <text x="1414" y="1246" class="tiny">统计单位：task family</text>
+  <text x="1414" y="1267" class="tiny">family-blocked permutation + cluster bootstrap</text>
+
+  <!-- Stage 8 contribution -->
+  <g filter="url(#shadow)">
+    <rect x="1935" y="852" width="570" height="430" rx="19" class="card"/>
+    <rect x="1935" y="852" width="570" height="68" rx="19" fill="#f8e5df"/>
+    <rect x="1935" y="901" width="570" height="19" fill="#f8e5df"/>
+  </g>
+  <circle cx="1972" cy="886" r="20" fill="#bd684f"/><text x="1972" y="893" text-anchor="middle" class="num">8</text>
+  <text x="2004" y="879" class="eyebrow orange">经验上证明新 estimand 有必要</text>
+  <text x="2004" y="907" class="stage">相对 PDR-Bench 的核心贡献检验</text>
+
+  <rect x="1964" y="948" width="512" height="72" rx="12" class="subcard"/>
+  <text x="1986" y="977" class="section">PDR-style absolute adaptation</text>
+  <text x="1986" y="1004" class="small">给定用户 U，报告 Y 是否看起来适合 U？</text>
+  <path d="M2220 1027V1055" class="arrow"/>
+  <rect x="1964" y="1062" width="512" height="135" rx="12" class="orangecard"/>
+  <text x="1986" y="1092" class="section">DeepAlign 重新识别四类 false positive</text>
+  <text x="1986" y="1122" class="small"><tspan x="1986">① absolute score 高，但跨用户无 specificity</tspan><tspan x="1986" dy="24">② 只胜过 swapped，却不胜过 task-only</tspan><tspan x="1986" dy="24">③ 平均为正，但一位用户实际受损</tspan><tspan x="1986" dy="24">④ 迎合用户时破坏共同事实、隐私或权限</tspan></text>
+  <rect x="1964" y="1211" width="512" height="50" rx="11" class="darkcard"/>
+  <text x="2220" y="1234" text-anchor="middle" class="small white"><tspan x="2220">报告 disagreement / agent reclassification / rank reversal；</tspan><tspan x="2220" dy="20">若不改变经验结论，就不能声称方法增量成立</tspan></text>
+
+  <!-- bottom arrows -->
+  <path d="M705 1067H730" class="arrow"/>
+  <path d="M1350 1067H1375" class="arrow"/>
+  <path d="M1900 1067H1925" class="arrow"/>
+
+  <!-- Post-run metadata and claim boundary -->
+  <rect x="55" y="1311" width="1660" height="83" rx="15" fill="#ffffff" stroke="#b8ceda" stroke-width="1.5"/>
+  <text x="82" y="1341" class="eyebrow">C 层：运行后只追加，不覆盖 B 层预期</text>
+  <text x="82" y="1372" class="body">observed difficulty / completion &amp; failure rate / matched-swapped discrimination / target-user preference / judge-human agreement / residual errors / time &amp; cost</text>
+  <rect x="1740" y="1311" width="765" height="83" rx="15" fill="#173b63"/>
+  <text x="2123" y="1341" text-anchor="middle" class="eyebrow whiteMuted">论文主张边界</text>
+  <text x="2123" y="1372" text-anchor="middle" class="body white">识别“最终交付物具有反事实用户特异性”；不越界声称模型内部真正理解用户</text>
+</svg>
