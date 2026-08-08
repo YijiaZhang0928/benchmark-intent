@@ -9,6 +9,7 @@
 - 横向阅读 SWE-bench、WebArena、AgentBench、PDR-Bench、ResearchRubrics、AstaBench、RedTeamCUA、WebDevJudge 与 FingerTip 20K，并基于 ICLR 官方 2024–2026 总体录用率给出条件性 readiness 区间；明确它不是校准概率。
 - 同步正式版、10 页内精简版、人话版、导师 brief、文献地图、Rubric 工作台、schema、DOCX/PDF 与离线 HTML；主图贡献结构未改变，仅同步版本号。
 - 安装用户指定的七组科研 skills/入口；仅登记中心 skill，未启用自动循环、hook、cron 或项目级配置，并记录非商业许可风险。
+- 澄清“数据都能出来”的中稿判断：仅完成实验不等于强稿；若预注册核心效应、四重门、真人效度与可复现 artifact 同时成立，审稿姿态约为 borderline positive 到 weak accept，主观区间约 40%–55%，主要剩余风险仍是相对 PDR-Bench 的增量与测量效度。
 
 ## v0.30 - 2026-08-08
 
