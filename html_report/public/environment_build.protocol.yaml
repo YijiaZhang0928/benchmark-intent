@@ -1,0 +1,55 @@
+protocol_name: deepalign_environment_build
+protocol_version: 0.31
+status: engineering_plan
+principle: >-
+  E1 is the causal main track, E3 a thin stateful diagnostic layer, and E2 an
+  observational ecological-validity track that is never pooled with E1.
+
+common_runner_contract:
+  calls: [reset, load_case, provide_signal, run_until, inject_event, export_artifact, export_trace, export_cost]
+  required_logs: [case_and_family_id, system_model_product_version, evidence_snapshot_and_index_hash, tool_configuration_and_budget, seed_and_timestamp, signal_view_and_event_schedule, artifact_trace_and_cost_hashes]
+  comparability_rule: significance_tests_require_same_anchor_environment_budget_and_tool_contract
+
+environments:
+  E1_controlled_frozen_harness:
+    scientific_role: primary_causal_and_reproducible_track
+    difficulty: medium
+    estimated_engineer_weeks: 1.5_to_2.5_for_mvp
+    mvp_components: [frozen_corpus_and_evidence_manifest, index_and_search_facade, system_adapter, deterministic_reset, budget_enforcement, artifact_and_trace_export, evaluator_replay]
+    hardest_problems: [evidence_licensing_and_snapshot_quality, equalizing_search_and_tool_access, deterministic_reset_and_failure_replay]
+    go_gate: two_families_by_two_agents_complete_2x2_and_task_only_pipeline
+  E3_stateful_interactive_sandbox:
+    scientific_role: controlled_process_and_longitudinal_stress_diagnostics
+    difficulty: hard
+    estimated_engineer_weeks: 2_to_4_after_E1
+    mvp_components: [state_service, checkpoint_fork_and_reset, event_scheduler, private_workspace_and_permissions, clarification_conflict_update_and_handoff_events]
+    hardest_problems: [branch_equivalence_before_event_injection, hidden_state_or_future_event_leakage, temporal_priority_and_permission_semantics]
+    go_gate: one_anchor_replays_checkpoint_conflict_clarification_and_update_deterministically
+  E2_native_live_product_or_web:
+    scientific_role: observational_ecological_validity_only
+    difficulty: low_to_demo_high_to_compare_and_maintain
+    estimated_engineer_time: 3_to_7_days_per_product_plus_maintenance
+    mvp_components: [one_manual_or_api_adapter, product_version_date_region_and_account_state_log, permitted_url_or_result_snapshot, wall_clock_and_cost_log, artifact_export]
+    hardest_problems: [hidden_versions, no_reliable_reset_and_web_drift, terms_and_regional_variation, noncomparable_budgets]
+    go_gate: one_product_smoke_test_supports_descriptive_reporting
+    pooling_policy: never_pool_with_E1_or_E3_for_causal_significance
+
+build_order:
+  - week_1: E1_two_family_two_agent_vertical_slice
+  - week_2: E1_hardening_and_three_family_pilot
+  - week_3_or_later: E3_one_anchor_thin_overlay
+  - after_main_pipeline_freeze: E2_one_product_smoke_test
+
+scope_cut_if_solo_or_eight_weeks:
+  keep: [E1_full_main_matrix, E3_one_eventful_anchor, E2_one_product_observational_probe]
+  cut_first: [multi_product_E2_comparison, general_purpose_stateful_world, simultaneous_code_web_and_multifile_sandboxes, live_leaderboard]
+
+risk_register:
+  - risk: three_environments_delay_construct_validation
+    mitigation: no_bulk_authoring_before_E1_and_one_E3_event_pass
+  - risk: system_tool_differences_confound_capability
+    mitigation: stratify_by_execution_regime_and_report_adapter_eligibility
+  - risk: live_product_drift_invalidates_reproduction
+    mitigation: report_as_dated_observation_with_versions_costs_and_snapshots
+  - risk: stateful_branches_are_not_counterfactually_equivalent
+    mitigation: checkpoint_hash_and_pre_event_trace_equivalence_gate

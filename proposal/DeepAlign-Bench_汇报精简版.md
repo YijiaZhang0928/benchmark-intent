@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.30 · 2026 年 8 月 8 日
+版本：v0.31 · 2026 年 8 月 8 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -64,13 +64,13 @@
 
 18 个 family 覆盖 3×6 主单元，6 个 family 复测关键单元，共 24 个。
 
-每个 family 的构造顺序固定为：真实需求 seed → 冻结共同 task/evidence/deliverable → 标注任务坐标 → 设置难度旋钮 → 配两个都自然的用户 → 冻结差异契约 → matched/swapped pilot。Family 是受控实验蓝图，不是“旅行类”这样的主题标签。
+每个 family 的构造顺序固定为：真实需求 seed → 冻结共同 task/evidence/deliverable → 标注任务坐标 → 设置难度旋钮 → 配两个都自然的用户 → 冻结差异契约 → matched/swapped pilot。元数据分为自动导入并审计的 provenance、运行前双人标注/仲裁的构念字段、pilot 后另存的 observed 难度与失败；不能看到输出后改预期标签。
 
 ### Persona 原则
 
 Persona 不是人物小传，而是 task-conditioned user state 的一种展示。每组 persona-task 必须通过六项检查：场景真实、会影响决策、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。
 
-实操采用：真实 source record → task-relevant axes → Ua/Ub 共享核心 → 只改 2–3 个决策相关字段 → fact-to-contract map → 从同一 ledger 编译 persona/history/clarification → wrong-user/irrelevant/stale 负对照 → 原用户、相似用户、专家验证。
+实操采用：约 32–40 位参与者各选 1–2 个真实相关 task shell → 30–45 分钟结构化 elicitation → task-relevant fact ledger → Ua/Ub 共享核心 → 只改 2–4 个决策相关字段 → fact-to-contract map → 从同一 ledger 编译 persona/history/clarification → wrong-user/irrelevant/stale 负对照 → 原用户、相似用户、专家验证。Gold 优先两位真实用户；次选一位真实用户加第二位相似参与者确认的最小编辑；纯合成只作对照。
 
 每个 user-task 都在运行前建立真值包：共同要求、用户特异要求、禁止事项、可接受替代、关键证据、严重错误封顶、预期澄清点、matched/swapped 的差异预测。
 
@@ -103,15 +103,15 @@ Persona 不是人物小传，而是 task-conditioned user state 的一种展示�
 
 ```text
 case metadata + user ledger + contracts + evidence/permission
-→ 选择 Core / Personalization / Intent / Deliverable / Operator / Risk 模板
-→ 填入 case 参数 → leaf expansion → 校验 → 冻结 rubric bundle
+→ 选择 Core / Personalization / Intent / Deliverable / Operator / Risk module
+→ 选择 direction node → 填入 case 参数 → leaf expansion → 校验 → 冻结 rubric bundle
 ```
 
 有六个相互衔接的机器可读对象：case schema、固定模板 registry、36-module library、固定 leaf schema、metric binding schema 和 data-factory protocol。模板路由随元数据变化：六类 research intent 各有模板；report / memo / workbook / code / slides / webpage / multi-file 各有交付物模板；stakes、permission、operator 再激活风险与压力模板。统一的是 leaf 格式、适用条件和聚合规则，不是让不同任务共用一张表。
 
 现在另有一份 36-module library：6 Core + 9 Personalization + 6 Intent + 7 Deliverable + 4 Operator + 4 Risk。每个 case 只激活适用子集。强点不是“比 PDR-Bench 多几维”，而是每个 personalization leaf 有 user fact + must-change provenance、A/B 模块对称、同一 bundle 交叉评 matched/swapped，并用 must-hold/must-not 阻止无效差异和过度个性化。
 
-**当前成熟度：**v0.30 已冻结 compiler contract、36-module library、data-factory protocol、端到端示例和 specificity × benefit 的双轴判定；自动 validator、模板路由器和 bundle 导出器是第 1 周工程任务。当前确认的是方法接口与标注可行性，不把 schema 文件说成已经完成的生产系统。
+**当前成熟度：**v0.31 已增加 direction-node registry、分层标注和环境开工协议；自动 validator、模板路由器和 bundle 导出器仍是第 1 周工程任务。Module 是父级能力域，node 是可复用评价方向，leaf 才是带用户、阈值、证据和锚点的 case-specific 标准。只有同一残余构念在至少两个 family 重复且无法参数化现有 node 时才扩库。
 
 **Leaf expansion** 是运行前把复合要求拆成原子项。例如“Ua 的建议符合预算和风险”拆成“首阶段 ≤50 万”“三个月可逆试点”“继续/退出阈值”，每条都附 evidence target、0/1/2 锚点、weight、hard gate、judge route 和直接 metric binding。冻结后所有 agent 共用，不能看完输出再改。
 
@@ -193,6 +193,8 @@ PDR-Bench 已建立 task–persona 条件下的 absolute adaptation evaluation�
 
 ## 8. 两个月安排
 
+先做 3 个完整 vertical-slice family，不直接批量写 24 个。至少 2 个通过 specificity、benefit、共同质量和边界四重门后再扩。环境顺序与粗工期：E1 Frozen 主轨约 1.5–2.5 engineer-weeks；E3 一个 stateful anchor 在 E1 后约 2–4 周；E2 单产品 adapter 约 3–7 天但持续维护，只作观察性外部效度。
+
 | 周 | 研究产出 | Go / No-Go |
 |---|---|---|
 | 1 | Atlas、schema、coverage、24 family 配额 | ontology 是否可运行 |
@@ -203,6 +205,8 @@ PDR-Bench 已建立 task–persona 条件下的 absolute adaptation evaluation�
 | 6 | anchor 压测、20% 人评、错误编码 | 是否有独立个性化信号 |
 | 7 | 统计、覆盖审计、Results 初稿 | 删除不受支持支线 |
 | 8 | 结果冻结、复现、全文和匿名材料 | 不再新增分类和系统 |
+
+**ICLR readiness：**官方近年总体录用率约 27%–32%。[[23]](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf)[[24]](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) 当前无 pilot 直接投稿主观约 5%–12%；完成真人验证、24 family、可靠 E1、judge 校准和公开 artifact 但效应中等约 20%–35%；若 specificity × benefit 跨 strata 稳定且四重门、强 baseline 和复现都通过，约 35%–50%。按本方案执行的中心判断约三成；这是风险情景，不是精确概率。
 
 ## 9. 需要导师拍板
 
@@ -266,3 +270,7 @@ PDR-Bench 已建立 task–persona 条件下的 absolute adaptation evaluation�
 [21] Weeber et al. *One Persona, Many Cues, Different Results*. ACL, 2026. https://aclanthology.org/2026.acl-long.2079/
 
 [22] Qiu et al. *Preference-Aware Rubric Learning for Personalized Evaluation*. arXiv:2605.31545, 2026. https://arxiv.org/abs/2605.31545
+
+[23] ICLR. *ICLR 2024 Fact Sheet*. https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf
+
+[24] ICLR. *ICLR 2026 Fact Sheet*. https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf

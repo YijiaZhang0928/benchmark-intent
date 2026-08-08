@@ -44,6 +44,9 @@ function localizeRubricsBody(body) {
   return body
     .replaceAll('href="/"', 'href="./DeepAlign-Bench_HTML汇报版.html"')
     .replaceAll('href="/data_factory.protocol.yaml"', 'href="./data_factory.protocol.yaml"')
+    .replaceAll('href="/construction_annotation.protocol.yaml"', 'href="./construction_annotation.protocol.yaml"')
+    .replaceAll('href="/rubric_node_registry.yaml"', 'href="./rubric_node_registry.yaml"')
+    .replaceAll('href="/environment_build.protocol.yaml"', 'href="./environment_build.protocol.yaml"')
     .replaceAll('href="/rubric_module_library.yaml"', 'href="./rubric_module_library.yaml"')
     .replaceAll('href="/case.schema.yaml"', 'href="./case.schema.yaml"')
     .replaceAll('href="/rubric_template_registry.yaml"', 'href="./rubric_template_registry.yaml"')

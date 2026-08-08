@@ -1,5 +1,5 @@
 schema_name: deepalign_metric_binding
-schema_version: 0.30
+schema_version: 0.31
 description: >-
   Auditable map from direct leaf scores to aggregate and derived metrics. A leaf
   may bind to more than one direct metric only when the meanings are explicit;

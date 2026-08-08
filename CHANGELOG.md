@@ -1,5 +1,15 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.31 - 2026-08-08
+
+- 将 task 元数据拆成自动 provenance、运行前双人人工构念标注与 pilot 后 observed 三层；冻结 60–80 seed → 30 候选 → 3 family vertical slice → 条件性扩到 24 的 funnel。
+- 将 persona 从“自然小传”改为真人 task-first elicitation：建议 32–40 位参与者、每人 1–2 个真实 task shell、30–45 分钟访谈；两真实用户优先，user-anchored 次选，纯合成只作对照。
+- 在 36 个父级 module 与 case-specific leaf 之间新增 `rubric_node_registry.yaml`，冻结 applicability、参数槽、证据、评分锚点、judge route、A/B 对称和 residual-construct 扩库门。
+- 新增 `construction_annotation.protocol.yaml` 与 `environment_build.protocol.yaml`；冻结 E1 主轨 1.5–2.5 周、E3 单 anchor 薄层追加 2–4 周、E2 单产品 3–7 天+维护的工程范围。
+- 横向阅读 SWE-bench、WebArena、AgentBench、PDR-Bench、ResearchRubrics、AstaBench、RedTeamCUA、WebDevJudge 与 FingerTip 20K，并基于 ICLR 官方 2024–2026 总体录用率给出条件性 readiness 区间；明确它不是校准概率。
+- 同步正式版、10 页内精简版、人话版、导师 brief、文献地图、Rubric 工作台、schema、DOCX/PDF 与离线 HTML；主图贡献结构未改变，仅同步版本号。
+- 安装用户指定的七组科研 skills/入口；仅登记中心 skill，未启用自动循环、hook、cron 或项目级配置，并记录非商业许可风险。
+
 ## v0.30 - 2026-08-08
 
 - 将 personalization 结论从单一平均 CFA 改为 specificity × benefit 二维识别：分别报告 `Δ_a/Δ_b`、`CFA_mean/CFA_min` 与 matched 相对 task-only 的 `G_a/G_b`、`Gain_mean/Gain_min`。

@@ -1,5 +1,5 @@
 bundle_id: RB-A1-COFFEE-EXPANSION-v1
-bundle_version: 0.30
+bundle_version: 0.31
 status: illustrative_not_empirical
 compiled_before_run: true
 
@@ -37,6 +37,15 @@ compiler_inputs:
     - INT-DECIDE-03
     - DEL-MEMO-02
     - RISK-PRIV-01
+  selected_node_ids:
+    - CORE-TASK-COVERAGE
+    - CORE-FACT-DECISION-CRITICAL
+    - CORE-EVID-TRACE
+    - PER-CONSTRAINT-HARD
+    - PER-KNOW-DEPTH
+    - PER-AUDIENCE-DISCLOSURE
+    - PER-RISK-POLICY
+    - RISK-PERMISSION-BOUNDARY
 
 contract_bundle:
   must_change:
@@ -54,6 +63,7 @@ contract_bundle:
 
 expanded_leaves:
   - criterion_id: C-TASK-01
+    node_id: CORE-TASK-COVERAGE
     from_template: intent.decision
     from_contract: MH-02
     tree: common_task_quality
@@ -65,6 +75,7 @@ expanded_leaves:
     judge_route: rubric_judge
 
   - criterion_id: C-CITE-03
+    node_id: CORE-EVID-TRACE
     from_template: core.factual_reliability
     from_contract: MH-01
     tree: common_task_quality
@@ -76,6 +87,7 @@ expanded_leaves:
     judge_route: evidence_verifier_then_domain_expert
 
   - criterion_id: U-A-BUDGET-01
+    node_id: PER-CONSTRAINT-HARD
     from_template: personalization.constraint_and_resource
     from_contract: MC-A-01
     tree: user_conditional_fit
@@ -88,6 +100,7 @@ expanded_leaves:
     judge_route: deterministic_budget_check_then_rubric_judge
 
   - criterion_id: U-A-PILOT-02
+    node_id: PER-RISK-POLICY
     from_template: personalization.risk_and_decision_policy
     from_contract: MC-A-01
     tree: user_conditional_fit
@@ -100,6 +113,7 @@ expanded_leaves:
     judge_route: rubric_judge
 
   - criterion_id: U-A-EXIT-03
+    node_id: PER-RISK-POLICY
     from_template: personalization.risk_and_decision_policy
     from_contract: MC-A-01
     tree: user_conditional_fit
@@ -112,6 +126,7 @@ expanded_leaves:
     judge_route: rubric_judge
 
   - criterion_id: U-A-AUDIENCE-02
+    node_id: PER-KNOW-DEPTH
     from_template: personalization.knowledge_and_scaffolding
     from_contract: MC-A-02
     tree: user_conditional_fit
@@ -124,6 +139,7 @@ expanded_leaves:
     judge_route: rubric_judge
 
   - criterion_id: U-B-SCALE-01
+    node_id: PER-CONSTRAINT-HARD
     from_template: personalization.constraint_and_resource
     from_contract: MC-B-01
     tree: user_conditional_fit
@@ -136,6 +152,7 @@ expanded_leaves:
     judge_route: deterministic_budget_check_then_rubric_judge
 
   - criterion_id: V-PRIV-01
+    node_id: RISK-PERMISSION-BOUNDARY
     from_template: risk.privacy_and_permission
     from_contract: MN-01
     tree: misuse_and_boundary
@@ -148,6 +165,7 @@ expanded_leaves:
     judge_route: sensitive_entity_verifier_then_human
 
   - criterion_id: Q-CLARIFY-01
+    node_id: PER-RISK-POLICY
     from_template: operator.acquire_or_clarify
     from_contract: CL-01
     tree: user_conditional_fit

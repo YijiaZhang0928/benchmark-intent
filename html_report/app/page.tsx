@@ -95,7 +95,7 @@ export default function Home() {
           <div className="sectionHead"><h2>同一套方法，按阅读场景分成四版</h2><p>没有删改研究逻辑、实验设计、rubric、metrics 或 judge；只调整结构、语言密度和细节层级。</p></div>
           <div className="editionGrid">
             <article>
-              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.30 将 personalization 拆成跨用户 specificity 与相对 task-only benefit，并加入双向非补偿和 no-harm 门。</p>
+              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.31 增加分层标注、真人锚定 persona、direction-node registry、环境工期与 ICLR readiness。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
             </article>
             <article className="recommended">
@@ -103,7 +103,7 @@ export default function Home() {
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div>
             </article>
             <article>
-              <span>PLAIN LANGUAGE · 26 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
+              <span>PLAIN LANGUAGE · 28 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div>
             </article>
             <article>
@@ -178,14 +178,14 @@ export default function Home() {
           </div>
           <div className="sectionHead compactHead"><h2>Task family 与 persona 不是靠写 prompt 拼出来的</h2><p>先从真实问题中冻结任务的不变量，再只改会影响交付物价值的用户状态；每一步都留下 provenance、版本和人工验收记录。</p></div>
           <div className="taxonomyRules">
-            <article><b>Task 1 · 真实种子</b><p>从访谈、真实研究请求或公开任务中抽取 seed，记录提出者、用途、受众、时间和许可；删除不能核验或无法复现的任务。</p></article>
+            <article><b>Task 1 · Seed funnel</b><p>先收集 60–80 个真实/专业/访谈 seed，去重筛成约 30 个候选；只把 3 个 family 做到端到端后再决定是否扩到 24 个。</p></article>
             <article><b>Task 2 · 冻结共同核心</b><p>锁定问题、证据世界、截止时间、工具、预算和交付形式。Ua/Ub 的 run 只能改变用户条件，不能偷偷增加任务信息或搜索资源。</p></article>
             <article><b>Task 3 · 形成反事实 family</b><p>选择两个都自然需要该研究、但预算、知识、风险容忍或工作流约束不同的用户；先写出哪些结论、建议或呈现必须随用户改变。</p></article>
-            <article><b>Task 4 · Pilot 后冻结</b><p>专家检查共同事实，目标用户确认适配差异；若 matched/swapped 无法稳定区分、must-hold 无法保持或任务过度依赖刻板印象，该 family 淘汰。</p></article>
-            <article><b>Persona 1 · 私有来源记录</b><p>保留真实用户/访谈/日志或 user-anchored 原型的来源记录；发布版只暴露经同意且完成去标识化的 task-relevant facts。</p></article>
+            <article><b>Task 4 · 三层标注</b><p>自动导入 provenance；运行前双人标注/仲裁 intent、risk 和 contracts；pilot 后另存实际难度与失败。预期和观察不能互相覆盖。</p></article>
+            <article><b>Persona 1 · 真人锚定</b><p>目标招募约 32–40 位参与者，每人匹配 1–2 个真实相关 task shell；gold 优先两位真实用户，纯合成只作压力与无关 cue 对照。</p></article>
             <article><b>Persona 2 · Fact ledger</b><p>把目标、知识、约束、偏好、风险、受众、权限和动态状态拆成原子事实；每条事实带来源、时间、可靠性、敏感级别和可披露范围。</p></article>
             <article><b>Persona 3 · 最小反事实编辑</b><p>Ua→Ub 只改变足以影响答案的少数轴，其余背景保持或匹配；每个 changed fact 必须链接到 must-change，不能从年龄、性别等人口属性猜偏好。</p></article>
-            <article><b>Persona 4 · 多视图与负对照</b><p>同一 ledger 序列化为 structured persona、自然 history、clarification 和 memory view；另造无关属性、低词汇重叠和 demographic-only controls。</p></article>
+            <article><b>Persona 4 · 自然史与多视图</b><p>自然 history 来自回忆、日记、授权轨迹或逐句确认的转述；同一 ledger 再生成 structured/clarification view 与无关、人口属性 controls。</p></article>
           </div>
         </div>
       </section>
@@ -277,8 +277,8 @@ export default function Home() {
       <section className="rubricCompilerSection">
         <div className="shell">
           <p className="sectionTag invert">METADATA-DRIVEN RUBRIC COMPILER</p>
-          <div className="sectionHead light"><h2>不是一张 rubric 服务所有任务，而是一条可执行编译链</h2><p>Case schema 选择固定模板；leaf expansion 把复合要求拆成原子项；metric binding 决定每条 leaf 进入哪个分数。全部在 agent 运行前冻结。</p></div>
-          <div className="compilerFormula"><span>METADATA + CONTRACTS</span><i>→</i><span>TEMPLATE ROUTING</span><i>→</i><span>PARAMETER FILL</span><i>→</i><span>LEAF EXPANSION</span><i>→</i><span>VALIDATE + FREEZE</span><b>→ RUBRIC BUNDLE</b></div>
+          <div className="sectionHead light"><h2>不是一张 rubric 服务所有任务，而是一条可执行编译链</h2><p>Module 定义父级能力域；direction node 定义可复用评价方向；leaf 才把用户、阈值、证据和锚点实体化。全部在 agent 运行前冻结。</p></div>
+          <div className="compilerFormula"><span>METADATA + CONTRACTS</span><i>→</i><span>MODULE ROUTING</span><i>→</i><span>NODE SELECTION</span><i>→</i><span>LEAF EXPANSION</span><i>→</i><span>VALIDATE + FREEZE</span><b>→ RUBRIC BUNDLE</b></div>
           <div className="contractGrid">
             <article><b>MUST CHANGE</b><p>用户差异必须改变的内容、决策、深度、行动或披露边界。</p></article>
             <article><b>MUST HOLD</b><p>共同事实、证据质量与不应因用户改变的核心结论。</p></article>
@@ -372,9 +372,9 @@ export default function Home() {
           <article><b>适用性矩阵</b><p>核心比较 M1–M3；M4–M6 只运行与交付物、工具和状态机制自然匹配的 anchor</p></article>
         </div>
         <div className="taxonomyRules">
-          <article><b>E1 · Controlled Frozen Harness</b><p>固定证据快照、搜索结果、工具版本和预算；通过统一 adapter 运行 M2/M3，适合因果对照和跨模型可复现比较。</p></article>
-          <article><b>E2 · Native Live Product/Web</b><p>保留产品原生浏览、规划和界面；同一时间窗交错运行、记录网页快照与成本。只做端到端生态效度榜，不与 E1 混排。</p></article>
-          <article><b>E3 · Stateful Interactive Sandbox</b><p>可在固定回合插入 clarification、冲突、handoff 和 dynamic update；用于多轮状态、memory、保持与更新压力测试。</p></article>
+          <article><b>E1 · 主轨 · 1.5–2.5 周</b><p>固定证据快照、工具版本和预算；难点是证据许可、索引质量、工具公平和 deterministic reset。先跑通 2 family × 2 agent。</p></article>
+          <article><b>E2 · 观察轨 · 每产品 3–7 天+</b><p>Demo 容易，科学比较最难：隐藏版本、无法 reset、网页漂移和 ToS。只做单产品外部效度，不与 E1 合并显著性。</p></article>
+          <article><b>E3 · 诊断轨 · E1 后 2–4 周</b><p>固定 checkpoint 注入 clarification/conflict/update/handoff；难点是事件前分支等价、未来状态泄漏与权限语义。首版只做一个 anchor。</p></article>
           <article><b>统一 Adapter Contract</b><p><code>reset → provide_signal → run_until → inject_event → export_artifact → export_trace</code>；无轨迹产品标记 trace-level 0，不假装具有过程可比性。</p></article>
         </div>
         <div className="sectionHead compactHead"><h2>难度不是“问题更难”一个数字，而是可复现的压力阶梯</h2><p>每个 family 保存六维 stress vector：证据复杂度、信号复杂度、时间跨度、编排负荷、权限敏感度、反事实细微度。</p></div>
@@ -403,6 +403,18 @@ export default function Home() {
           <p className="anchorRule"><b>关键防偏：</b>每个压力 case 都绑定 clean paired control、唯一操作变量、注入时点、预期 invariants 和 seed。S3 复合风险只有在单扰动效应可解释后才运行；否则“更难”无法归因。</p>
         </div>
         <div className="pilot"><span>PAPER SCOPE · 8 周</span><div><b>24</b><small>任务 family</small></div><div><b>48</b><small>核心 user-task</small></div><div><b>4</b><small>核心信号条件</small></div><div><b>3</b><small>核心 Agent</small></div><p>最多 576 个核心 episode；8 个 anchor family 加压力测试，约 20% 分层样本复跑第二 seed，并做人评。</p></div>
+      </section>
+
+      <section className="shell gapSection" id="readiness">
+        <p className="sectionTag">ICLR READINESS · CONDITIONAL ESTIMATE</p>
+        <div className="sectionHead"><h2>现在不是“概率多少”一个数字，而是三种可验证状态</h2><p>ICLR 官方总体录用率近年约 27%–32%：2024 年 31%，2025 年 32%，2026 年 27%。这只是基率；PDR-Bench 已被 ICLR 2026 接收，意味着“个性化 DR benchmark”本身不再足够新。</p></div>
+        <div className="taxonomyRules">
+          <article><b>5%–12% · 现在直接投</b><p>只有 proposal、没有 pilot、真人效度或可复现 E1，方法承诺还没有证据。</p></article>
+          <article><b>20%–35% · 合格执行</b><p>24 family、真人验证、可靠 E1、judge 校准、公开 artifact；效应存在但中等或分层不完全稳定。</p></article>
+          <article><b>35%–50% · 强结果</b><p>双向 specificity × benefit 跨 strata 稳定，并同时通过共同质量、隐私/权限、强 baseline 和复现门。</p></article>
+          <article><b>中心判断 · 约三成</b><p>这是审稿风险区间，不是校准概率。若 persona 主要合成、仅用 LLM judge、无 task-only 或 E1 不可复现，应低于 10%–15%。</p></article>
+        </div>
+        <div className="judgeSources"><a href="https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf" target="_blank" rel="noreferrer">ICLR 2024 Fact Sheet ↗</a><a href="https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf" target="_blank" rel="noreferrer">ICLR 2026 Fact Sheet ↗</a><a href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">PDR-Bench · ICLR 2026 ↗</a></div>
       </section>
 
       <section className="reviewBand" id="review">
@@ -439,7 +451,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.30 · 2026-08-08</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>一页主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.31 · 2026-08-08</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>一页主图</a></div></div></footer>
     </main>
   );
 }

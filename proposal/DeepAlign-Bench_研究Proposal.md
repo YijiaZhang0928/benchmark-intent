@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.30 · 2026 年 8 月 8 日
+版本：v0.31 · 2026 年 8 月 8 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -439,7 +439,7 @@ Persona 不是人物小传，而是 **task-conditioned user state 的一种呈�
 1. **从真实需求建立 source record。** 记录用户为何要做该研究、谁会使用结果、将采取什么决策；保存同意范围与隐私级别。
 2. **提取 task-relevant axes。** 只在 `goal / knowledge / hard constraint / risk-value / audience / permission / dynamic state` 中选择会改变交付物的字段；年龄、性别、职业等人口属性默认不进入差异真值。
 3. **先写 invariant user core。** Ua/Ub 共享提出该任务所需的背景、权限和事实；这保证两个用户都自然，而不是一个“正确 persona”和一个故意错配 persona。
-4. **做 minimal counterfactual edit。** 只改变 2–3 个有决策后果的 axes，并保持其他字段、信息量和表述长度尽量接近。例如同为医院项目负责人，只改变决策职责、技术知识和风险门槛，而不是把两人写成完全不同的故事。
+4. **做 minimal counterfactual edit。** 只改变 2–4 个有决策后果的 axes，并保持其他字段、信息量和表述长度尽量接近。例如同为医院项目负责人，只改变决策职责、技术知识和风险门槛，而不是把两人写成完全不同的故事。
 5. **建立 fact-to-contract map。** 每个差异事实必须至少映射到一个 `must-change`；每个共享事实映射到 `must-hold`；敏感、低置信度或禁止推断项映射到 `must-not / clarify-if-unknown`。没有映射的事实从核心 persona 删除，或只作为 irrelevant control。
 6. **生成多个 signal views。** 从同一 ledger 编译 structured persona、自然历史、澄清回答、行为轨迹或 workspace evidence；用双人 semantic audit 检查这些 view 是否携带相同的 task-relevant 含义，而不是让 persona 条件天然信息更多。
 7. **加入负对照。** 制作 demographic-only、irrelevant attribute、wrong-user swap、stale/low-confidence 和 redacted view；它们不进入真实用户画像，只用于测无依据推断、过度个性化和隐私边界。
@@ -483,15 +483,16 @@ rubric 在系统输出产生前冻结。LLM 可帮助拆分原子项、找遗漏
 
 ### 6.1 元数据驱动的 Rubric Compiler
 
-“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。DeepAlign 固定的是**编译接口、叶节点 schema 和聚合规则**；具体评价项由 case 元数据和预先写好的评价契约选择。仓库中有六个相互衔接的机器可读对象：`case.schema.yaml` 描述任务、用户、环境和 agent；`rubric_template_registry.yaml` 保存路由规则；`rubric_module_library.yaml` 预注册 36 个可组合 module；`rubric_leaf.schema.yaml` 规定原子标准字段；`metric_binding.schema.yaml` 规定 leaf 如何进入 TQ、FR、PF、MP 及派生指标；`data_factory.protocol.yaml` 规定来源映射、构造阶段、anchor 对照和环境开工顺序。v0.30 冻结的是 compiler contract、module library、贯通示例与 specificity × benefit 判定接口；自动 validator、模板路由器和 bundle 导出器仍是第 1 周实现项，不能把当前设计文件表述为已经完成的生产级 compiler。
+“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。DeepAlign 固定的是**编译接口、direction node 与叶节点 schema、聚合规则**；具体评价项由 case 元数据和预先写好的评价契约选择。仓库中除 case/template/module/leaf/metric/data-factory 外，v0.31 新增 `rubric_node_registry.yaml`、`construction_annotation.protocol.yaml` 与 `environment_build.protocol.yaml`，分别冻结 module 到 case-specific leaf 之间的可复用方向、分层标注和三环境开工顺序。自动 validator、路由器和 bundle 导出器仍是第 1 周实现项，不能把当前设计文件表述为已经完成的生产级 compiler。
 
-Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-state ledger；（3）`must-change / must-hold / must-not / clarify-if-unknown` 契约；（4）证据包与允许访问范围；（5）版本化模板库。它在任何被测输出产生前按五步运行：
+Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-state ledger；（3）`must-change / must-hold / must-not / clarify-if-unknown` 契约；（4）证据包与允许访问范围；（5）版本化模板库。它在任何被测输出产生前按六步运行：
 
 1. **Validate**：检查 task、user facts、evidence、permission 和 contract 是否齐全；
-2. **Route**：按 `primary_intent`、`deliverable_type`、`stakes`、`behavioral_operator` 等字段选择适用模板；
-3. **Instantiate**：把预算、截止时间、目标用户、证据 ID、允许披露范围等参数填入模板；
-4. **Leaf expansion**：把“适合该用户”“决策备忘录质量高”这类复合要求，拆成可独立观察、独立给分、带证据目标和文字锚点的原子 leaf；
-5. **Validate & freeze**：检查覆盖、重复、冲突、A/B 用户对称性、隐私权限和 matched/swapped 区分力，生成带版本与哈希的 `rubric_bundle`。
+2. **Route modules**：按 `primary_intent`、`deliverable_type`、`stakes`、`behavioral_operator` 等字段选择父级 module；
+3. **Select nodes**：根据冻结的 metadata/contracts 选择适用 direction node；
+4. **Instantiate**：把预算、截止时间、目标用户、证据 ID、允许披露范围等参数填入 node；
+5. **Leaf expansion**：把“适合该用户”“决策备忘录质量高”这类复合要求，拆成可独立观察、独立给分、带证据目标和文字锚点的原子 leaf；
+6. **Validate & freeze**：检查覆盖、重复、冲突、A/B 用户对称性、隐私权限和 matched/swapped 区分力，生成带版本与哈希的 `rubric_bundle`。
 
 因此，leaf expansion 不是看到模型答案后再细化评分标准，也不是让 LLM 临时发挥。它是**输出生成前的编译步骤**。LLM 可以在数据制作阶段建议拆分方式，但人类必须确认；冻结后同一 bundle 原样用于所有被测 agent。
 
@@ -523,7 +524,7 @@ Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-s
 
 每个 case 先写四类评价契约：`must_change` 规定不同用户之间必须改变什么；`must_hold` 规定共同事实和质量必须保持什么；`must_not` 规定不能假设、披露或迎合什么；`clarify_if_unknown` 规定缺少关键信息时何时应提问或给条件分支。模板负责提供标准结构，契约负责填入本 case 的可验证真值。
 
-v0.30 的预定义 library 包含 36 个 module，而不是 36 个都塞进每个 case：
+v0.31 继续保留 36 个父级 module，并用 direction node registry 约束实体化，而不是把 36 个都塞进每个 case：
 
 | Module family | 数量 | 主要内容 | 默认范围 |
 |---|---:|---|---|
@@ -954,7 +955,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **Figure 1 · DeepAlign-Bench 一页主张图：什么算有效 personalization。** 汇报版不再复刻完整工程流水线，而用三段讲清论文：左侧说明 absolute fit 的剩余识别问题；中间展示固定 task/evidence/budget 后的 Ua/Ub crossover、2×2 PF 矩阵和 must-change/hold/not；右侧展示四重成立门——双向 specificity、相对 task-only benefit、共同质量 no-harm、边界 no-violation。底部只保留 24 family / 48 user-task / 4 signal conditions、8 anchor、240-unit JudgeBench 和“结果层特异性 ≠ 内部理解”的主张边界。这张图服务口头汇报；完整 benchmark 流程移入 Figure 2 或附录。
 
-**Figure 2 · 一个 counterfactual family 如何构造、编译 rubric 和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–3 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个 signal views；C 展示 `metadata + contracts → template routing → leaf expansion → metric binding → frozen bundle`，并列出一个复合 contract 拆成三条带锚点 leaf 的实例；D 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA，同时把 must-hold 和 must-not 连接到 invariance 与 gate。它把用户真值、具体评分项和 estimand 直接连接起来，是方法部分最重要的细节图。
+**Figure 2 · 一个 counterfactual family 如何构造、编译 rubric 和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–4 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个 signal views；C 展示 `metadata + contracts → module routing → node selection → leaf expansion → metric binding → frozen bundle`，并列出一个复合 contract 拆成三条带锚点 leaf 的实例；D 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA，同时把 must-hold 和 must-not 连接到 invariance 与 gate。它把用户真值、具体评分项和 estimand 直接连接起来，是方法部分最重要的细节图。
 
 **Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `CFA_mean`（跨用户 specificity），纵轴为 `Gain_mean`（相对 task-only benefit）；横纵零线把“只是可区分”“只是普遍变好”“真正有益的个性化”和“有害适配”分开，点形同时标记 `CFA_min/Gain_min` 是否通过双向门槛。B 用 forest/dot plot 分别报 `Δ_a/Δ_b`、`CFA_mean/CFA_min` 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 使用两个共享色标的边际 heatmap，分别报告 `agent × 3 task strata` 和 `agent × 6 research intents` 的 CFA/Gain，并给出 family 数。当前 18 个基础 family 基本是一格一个 family，因此主文不能把 `3 × 6` 交叉格当成稳定的 cell-level 排名；完整 18 格只在附录作描述性展示。D 只在可比 regime 内画 cost–bilateral-success Pareto frontier。A–D 分别对应 specificity、benefit、不确定性、能力拓扑和效率，不合成单一总分。
 
@@ -977,6 +978,55 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 附录建议保留：逐 family CFA forest plot、描述性的完整 `3 strata × 6 intents` 交叉格、deliverable coverage heatmap、八个 anchor 的独立 S0–S3 曲线、clarification value/turn、retention/update 曲线、多标签 failure co-occurrence UpSet plot、各语言/用户群切片，以及 judge confusion matrix。附录表应给出 24 个 family、48 个 user-task、persona compatibility gate、rubric leaf bank、agent/version/tool metadata、完整结果、成本、失败案例和人工标注一致性。
 
 主文结果图统一使用共享坐标、95% CI、样本数和 gate 标记；同一颜色始终代表同一 agent，线型或形状代表 signal/stress 条件。不要使用 3D 图、面积难比较的 sunburst、没有不确定性的柱状榜、把多指标压成一条折线的雷达图，或把 expected 与 observed failure 混在同一标签中。若版面不足，优先保留 Figures 1–3、5 和 Tables 2–4；Figure 4 的逐 anchor 细节移入附录，但不能删掉 JudgeBench 的测量效度证据。
+
+## 17. v0.31 开工方案：先验证一条完整因果链
+
+### 17.1 Task 元数据谁来标：不是“全人工”或“全自动”二选一
+
+Task 元数据分三层。**A 层是导入或自动生成的客观 provenance**，包括来源、许可、抓取时间、证据哈希、工具与预算；程序可以填写，但作者要审计。**B 层是运行前人工冻结的构念标签**，包括 primary intent、stakes、interaction need、task-relevant user facts、counterfactual axes、must-change/hold/not、clarify-if-unknown 和 rubric node applicability；LLM 只能提供候选与理由，不能成为最终标注者。**C 层是 pilot 后才得到的经验字段**，包括实际难度、失败率、matched/swapped 区分力、judge–human 一致性和 residual error。B 层的 expected label 与 C 层的 observed result 分栏保存，禁止看到输出后把“预期失败”改成已发生的失败。
+
+建议先收集 60–80 个真实用户、专业工作流、公开任务或访谈 seed，去重后筛成约 30 个候选；先做 3 个完整 family 的 vertical slice，再根据 family-level 方差和 power simulation 冻结约 24 个。所有核心主观字段由两名训练过的标注者独立编码、第三人仲裁；硬字段报告 exact agreement，名义或多标签字段按预注册报告 Krippendorff's α 或 Gwet's AC1。统计单位是 task family，因此同一 family 的两位用户、四格 PF 和多条 rubric leaf 都不能冒充独立样本。
+
+### 17.2 Persona 如何真实自然：task-first、user-anchored、最小化
+
+主数据不从研究者写人物小传开始，而从“谁真的需要这个任务”开始。建议招募约 32–40 位参与者，每人选择 1–2 个与自己真实决策或工作相关的 task shell，并进行 30–45 分钟结构化 elicitation：目标/成功标准、知识、硬软约束、风险与可逆性、受众/工作流、权限/披露边界、当前状态与近期事件。每条 fact 都进入私有 ledger，带来源、时间、可靠性、敏感级别、可用于推理/可披露权限和它会改变哪项交付决策。
+
+Gold 优先使用两个真实用户共享同一 invariant task/evidence，但在 2–4 个任务相关轴上自然不同；配对困难时，才使用“一个真实用户 + 经第二位相似参与者验证的最小反事实编辑”。完全合成 persona 只进入压力测试和无关 cue 对照，不能支撑真人效用主张。Natural history 应来自参与者回忆、日记或获授权轨迹，或由参与者逐句确认的转述；annotator 编造的生活史不算 gold。PDR-Bench 采用真实 profile、但由专业标注者模拟日常应用交互，这一做法适合扩展覆盖，却也正是 DeepAlign 应避免作为 gold 主来源的真实性边界。[[4]](https://arxiv.org/abs/2509.25106) FingerTip 20K 让 95 位参与者在自有手机上贡献一个月意图、情境和操作轨迹，为“自然用户锚定 + 隐私过滤”提供了更强参照。[[57]](https://arxiv.org/abs/2507.21071)
+
+### 17.3 Rubric 要提前设计到什么程度：冻结 node 接口，不宣称穷尽世界
+
+36 个 module 应继续保留为父级 ontology，但 compiler 不能从 module 直接自由生成 leaf。v0.31 在二者之间增加 **direction node registry**：`metadata/contracts → module → direction node → parameterized leaf → validation/freeze`。一个 node 表示可复用的评价方向，如“满足硬预算”“匹配知识深度”“遵守披露边界”；leaf 才把用户、阈值、证据和评分锚点实体化。
+
+每个 node 至少记录 `node_id/module_id`、applicability predicate、参数槽、contract 来源、observable/evidence target、scoring anchor、direct metric binding、judge route、A/B 对称规则、冗余/互斥标签、provenance 与 validation status。Node 模板人工编写，LLM 只辅助填参数和措辞。全面性不是预先列很多 node，而是经过 content map、human reference discrimination、cue/nuisance invariance、去重/消融、weight sensitivity、目标用户/专家 content validity 与 residual-error saturation。只有某个决策相关残余构念在至少两个 family 重复出现且无法参数化现有 node 时才新增 node；否则容易因输出反推 rubric，增加 researcher degrees of freedom。ResearchRubrics 的 101 个 prompt 使用 2,593 条专家人工标准且投入 2,800 多小时，说明高质量原子 rubric 的主要成本在人工构念与校准，不在 LLM 批量生成。[[18]](https://arxiv.org/abs/2511.07685)
+
+### 17.4 三个环境的工程难度和顺序
+
+| 环境 | MVP 难度与工期估计 | 最小组件 | 真正难点 | 论文位置 |
+|---|---|---|---|---|
+| E1 Controlled Frozen Harness | 中；约 1.5–2.5 engineer-weeks | frozen corpus/manifest、index/search façade、agent adapter、reset、预算、artifact/trace export、evaluator replay | 证据许可与快照质量；工具公平；失败可复现 | 主因果与主榜轨 |
+| E3 Stateful Sandbox | 难；E1 后追加约 2–4 周 | state service、checkpoint/fork/reset、event scheduler、private workspace/permission、clarification/conflict/update/handoff | 事件前分支等价；未来状态泄漏；时序与权限语义 | 一个薄层 anchor 的机制诊断 |
+| E2 Native Live Product/Web | demo 易、科学比较和维护难；每产品约 3–7 天并持续维护 | 单产品 adapter、版本/日期/地区/账户状态、URL/结果快照、成本和 artifact export | 隐藏版本、不可 reset、web 漂移、ToS/导出、预算不可比 | 观察性外部效度，不与 E1 合并显著性 |
+
+这一路线与 ICLR 已接受 benchmark 的工程经验一致：SWE-bench 用真实 issue/PR 与可执行测试建立可验证终点；[[58]](https://openreview.net/pdf/c2a76eb44300a738cbd7cb95f5bc04df621f4d25.pdf) WebArena 用自托管站点、functional validator 和统一 API 保证重置与复现；[[59]](https://openreview.net/pdf?id=oKn9c6ytLx) AstaBench 强调统一工具、时间截断语料、agent-agnostic interface 与成本/工具混杂记录；[[60]](https://arxiv.org/abs/2510.21652) RedTeamCUA 则用 VM 操作系统与 Docker web 的混合环境、checkpoint 和受控 injection 构建状态型测试。[[61]](https://arxiv.org/abs/2505.21936) 因此两个月内应做 E1 全主线、E3 一个事件丰富 anchor、E2 一个产品的描述性 probe；三者同时搭满会显著降低论文完成概率。
+
+### 17.5 ICLR 中稿可能性：条件区间，不是假精确预测
+
+ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投稿、2,260 篇录用（31%）；[[62]](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf) 2026 年 19,525 篇投稿、5,357 篇录用（27%），其 fact sheet 同时列出 2025 年 11,603/3,704（32%）。[[63]](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) 这些只是基率，不能直接当本稿概率。结合已接受的 PDR-Bench、ResearchRubrics、AstaBench、WebDevJudge、SWE-bench 与 WebArena，ICLR benchmark 审稿更看重清楚的新 estimand、困难且可信的数据/环境、强基线、测量有效性、可复现 artifact 和能改变结论的实验，而不是 taxonomy 数量。WebDevJudge 进一步显示静态评分难以覆盖交互式网页的功能等价与可行性，也支持本项目将 verifier、结构化 rubric 与人评校准分层。[[64]](https://arxiv.org/abs/2510.18560)
+
+据此给出主观情景区间：**以当前 proposal、没有 pilot 结果直接投稿约 5%–12%**；完成 24 个 family、真实用户验证、可复现 E1、judge 校准和公开 artifact，但效应中等时约 **20%–35%**；若双向 specificity 与相对 task-only benefit 在多个 strata 上都稳定，通过共同质量/隐私门、强 baseline 与目标用户盲评，并公开完整构造和复现资产，约 **35%–50%**。反之，若 persona 主要合成、rubric 由 LLM 看输出后生成、仅用 LLM judge、没有 task-only 或 E1 不可复现，应低于 **10%–15%**。这些区间是基于邻近工作与审稿风险的判断，不是校准概率。
+
+当前最现实的中心判断是：**按 v0.31 严格执行，约三成上下；真正的加分项是识别证据，不是继续扩 module 或环境。** PDR-Bench 已在 ICLR 2026 录用，意味着“个性化 Deep Research benchmark”本身不再新；DeepAlign 必须把 counterfactual estimand、真人 task-persona truth、bilateral specificity × benefit 和 judge validity 做成实证结果。24 个 family 是否够，需在 3-family pilot 后按 family-level 方差做最小可检测效应模拟；若功效不足，优先增加 family 或减少被测系统，而不是继续给同一 family 加 leaf 或 agent 重复。
+
+### 17.6 两周开工清单
+
+1. 第 1–2 天：冻结 annotation codebook、consent/source record、fact ledger、node schema 和 E1 runner contract；不批量写 persona。
+2. 第 3–5 天：收集首批真实 seed 和参与者，选 3 个最容易共享 invariant task 的 family；独立标注 B 层元数据并仲裁。
+3. 第 6–8 天：完成两位真实用户或 user-anchored pairing，冻结 must-change/hold/not 和 acceptable alternatives；生成 structured/history 两个等价视图。
+4. 第 9–11 天：从 module 选择 direction nodes，实体化 12–22 条 leaf；制作 human matched/swapped/task-only reference，做目标用户与领域专家盲评。
+5. 第 12–14 天：E1 上用 2 agent 跑通 task-only + 2×2 matched/swapped；计算 family-level CFA/Gain，审查 cue invariance、judge disagreement 和 residual errors。
+6. 只有 3 个 family 中至少 2 个通过双向区分、真实收益、共同质量和边界四重门，才扩到 24；否则优先修改 construct、招募或 node，不扩任务数量。
+
+机器可读开工约束见 `construction_annotation.protocol.yaml`、`rubric_node_registry.yaml` 与 `environment_build.protocol.yaml`。
 
 ## 参考文献
 
@@ -1034,6 +1084,15 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 [52] Guo et al. *When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents*. ACL, 2026. https://aclanthology.org/2026.acl-long.1260/
 [53] Weeber et al. *One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization*. ACL, 2026. https://aclanthology.org/2026.acl-long.2079/
 [54] Qiu et al. *Preference-Aware Rubric Learning for Personalized Evaluation*. arXiv:2605.31545, 2026. https://arxiv.org/abs/2605.31545
+[55] Zhou et al. *AgentBench: Evaluating LLMs as Agents*. ICLR, 2024. https://openreview.net/pdf?id=zAdUB0aCTQ
+[57] *FingerTip 20K: A Dataset for Personalized Mobile Agents*. ICLR, 2026. https://arxiv.org/abs/2507.21071
+[58] Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR, 2024. https://openreview.net/pdf/c2a76eb44300a738cbd7cb95f5bc04df621f4d25.pdf
+[59] Zhou et al. *WebArena: A Realistic Web Environment for Building Autonomous Agents*. ICLR, 2024. https://openreview.net/pdf?id=oKn9c6ytLx
+[60] *AstaBench: Rigorous Benchmarking of AI Agents with a Scientific Research Suite*. ICLR 2026 Oral. https://arxiv.org/abs/2510.21652
+[61] *RedTeamCUA: Realistic Adversarial Testing of Computer-Use Agents*. ICLR 2026 Oral. https://arxiv.org/abs/2505.21936
+[62] ICLR. *ICLR 2024 Fact Sheet*. https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf
+[63] ICLR. *ICLR 2026 Fact Sheet*. https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf
+[64] *WebDevJudge: Evaluating Website-Generating Agents*. ICLR 2026 Oral. https://arxiv.org/abs/2510.18560
 
 ---
 

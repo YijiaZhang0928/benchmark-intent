@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.30
+schema_version: 0.31
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -194,11 +194,13 @@ rubric_compilation:
   # Compilation is frozen before any evaluated model output is generated.
   template_registry_version: string
   module_library_version: string
+  node_registry_version: string
   leaf_schema_version: string
   metric_binding_version: string
   contract_bundle_id: string
   selected_template_ids: list
   selected_module_ids: list
+  selected_node_ids: list
   compiled_bundle_id: string
   compiled_before_run: boolean
   compiler_input_hash: string
@@ -214,6 +216,8 @@ provenance:
   rubric_version: string
   criterion_compiler_version: string
   license_or_consent: string
+  construction_annotation_protocol_version: string
+  pre_run_annotation_record_ids: list
 
 post_run_only:
   artifact_hashes: list

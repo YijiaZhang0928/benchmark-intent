@@ -1,5 +1,7 @@
 protocol_name: deepalign_data_factory
-protocol_version: 0.30
+protocol_version: 0.31
+annotation_protocol: construction_annotation.protocol.yaml
+environment_build_protocol: environment_build.protocol.yaml
 status: pre_pilot
 principle: >-
   Do not splice tasks or taxonomies from many papers into one prompt. Convert each
@@ -75,6 +77,7 @@ construction_stages:
   - stage: 5_compile_rubric
     actions:
       - route predefined core, personalization, intent, deliverable, operator and risk modules
+      - select applicable semantic direction nodes from rubric_node_registry.yaml
       - instantiate task, user, evidence and permission parameters
       - expand contracts to atomic leaves with explicit anchors
       - reject duplicate, asymmetric, ungrounded or output-aware leaves

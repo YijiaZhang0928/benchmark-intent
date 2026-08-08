@@ -1,0 +1,102 @@
+protocol_name: deepalign_construction_annotation
+protocol_version: 0.31
+status: pre_pilot
+purpose: >-
+  Separate imported facts, pre-run human judgments, and post-pilot empirical
+  measurements so task/persona gold is not inferred from model outputs.
+
+annotation_layers:
+  A_imported_or_automatic:
+    timing: before_authoring
+    fields: [source_id, source_type, consent_or_license, evidence_snapshot_hash, capture_time, tool_and_budget_configuration]
+    policy: automatic extraction is allowed, but provenance must be human-audited
+  B_pre_run_human:
+    timing: before_reference_artifacts_and_model_runs
+    fields:
+      - primary_intent
+      - task_stratum
+      - stakes_and_reversibility
+      - interaction_need
+      - task_relevance_of_user_facts
+      - counterfactual_axes
+      - must_change
+      - must_hold
+      - must_not
+      - clarify_if_unknown
+      - rubric_node_applicability
+    policy: >-
+      LLMs may propose labels and rationales. Two trained humans independently
+      label every core subjective field; an adjudicator freezes disagreements.
+      Annotators are blind to evaluated model outputs.
+  C_post_pilot_empirical:
+    timing: after_pre_run_freeze
+    fields: [observed_difficulty, completion_and_failure_rate, matched_swapped_discrimination, target_user_preference, judge_human_agreement, residual_error_codes]
+    policy: never overwrite the pre-run expectation; store expected and observed separately
+
+task_seed_funnel:
+  collect: 60_to_80_real_professional_public_or_interview_seeds
+  normalize_and_deduplicate: true
+  expert_screen_target: 30_candidates
+  first_vertical_slice: 3_families
+  final_freeze_target: 24_families_subject_to_power_simulation
+  inclusion_gates:
+    - request has a real decision, workflow or knowledge-use context
+    - evidence world and resource budget can be frozen or logged
+    - two users naturally share the invariant task but require distinct delivery choices
+    - must-change can be written before seeing outputs
+    - shared quality and boundary requirements remain judgeable for both users
+
+persona_recruitment:
+  target_participants: 32_to_40
+  tasks_per_participant: 1_to_2
+  elicitation_minutes: 30_to_45
+  elicitation_fields: [goal_and_success_criterion, prior_knowledge_and_terminology, hard_and_soft_constraints, risk_tolerance_and_reversibility, audience_and_workflow, permissions_and_disclosure_boundary, current_state_and_recent_task_relevant_events]
+  provenance_tiers:
+    real_user_gold: two consented users independently fit the same invariant task shell
+    user_anchored: one real user plus a minimal counterfactual edit validated by a second comparable participant
+    synthetic_control: allowed only for stress tests, nuisance controls and privacy-preserving examples
+  naturalness_rule: >-
+    Natural history comes from a participant's recalled events, diary or consented
+    trace, or a line-by-line participant-confirmed paraphrase. Annotator-invented
+    biography is not gold.
+  anti_stereotype_rule: demographic attributes never imply preferences, constraints or risk policy
+
+fact_ledger_required_fields:
+  - fact_id
+  - category
+  - normalized_value
+  - source_record_id
+  - timestamp
+  - reliability
+  - sensitivity
+  - allowed_for_reasoning
+  - allowed_to_disclose
+  - task_relevance
+  - decision_consequence
+  - contract_links
+
+counterfactual_pairing:
+  changed_axes_target: 2_to_4
+  required:
+    - identical invariant task, evidence snapshot, tools and budget
+    - each changed fact has a user-confirmed decision consequence
+    - must-change and acceptable alternatives are frozen before outputs
+    - must-hold and must-not are symmetric unless justified in writing
+  validation:
+    - target users blind-review matched, swapped and task-only reference artifacts
+    - domain expert reviews shared factual and task quality
+    - structured persona and natural history pass cue-equivalence audit
+
+reliability_reporting:
+  unit: task_family
+  hard_fields: exact_agreement_and_adjudication_rate
+  nominal_or_multilabel_fields: krippendorff_alpha_or_gwet_ac1_as_preregistered
+  disagreement_use: revise_codebook_or_drop_unstable_field
+  repeated_user_sensitivity: cluster_or_multi_membership_analysis_by_user
+
+leakage_controls:
+  - freeze layer_B labels and contracts before evaluated outputs
+  - keep train_dev_test separate by family, user and source lineage
+  - never revise expected failure labels to match observed failures
+  - keep private source records separate from publishable persona views
+  - log all LLM suggestions and final human edits

@@ -8,10 +8,11 @@ export const metadata: Metadata = {
 const pipeline = [
   ["01", "Input", "case metadata · user ledger · contracts · evidence / permission"],
   ["02", "Validate", "字段齐全、事实有来源、contract 有决策后果"],
-  ["03", "Route", "按 intent / deliverable / operator / risk 选择固定模板"],
-  ["04", "Instantiate", "填入预算、截止时间、用户、证据 ID 与允许披露范围"],
-  ["05", "Leaf expansion", "拆成可独立观察、独立给分、带文字锚点的原子项"],
-  ["06", "Freeze", "检查覆盖、冲突、A/B 对称性和隐私，版本化后运行 agent"],
+  ["03", "Route modules", "按 intent / deliverable / operator / risk 选择父级 module"],
+  ["04", "Select nodes", "按 metadata/contracts 选择可复用 direction node"],
+  ["05", "Instantiate", "填入预算、截止时间、用户、证据 ID 与允许披露范围"],
+  ["06", "Leaf expansion", "拆成可独立观察、独立给分、带文字锚点的原子项"],
+  ["07", "Freeze", "检查覆盖、冲突、A/B 对称性和隐私，版本化后运行 agent"],
 ];
 
 const templateRows = [
@@ -38,7 +39,7 @@ const dataStages = [
   ["2", "Freeze world", "固定共同任务、证据、工具、权限、预算和 must-hold"],
   ["3", "Minimal user pair", "只改 2–4 个有决策后果且有来源的 user-state axes"],
   ["4", "Contracts", "输出前写 must-change / must-hold / must-not / clarify"],
-  ["5", "Compile", "路由预定义 module，再做 atomic leaf expansion 与 binding"],
+  ["5", "Compile", "路由预定义 module 与 direction node，再做 atomic leaf expansion 与 binding"],
   ["6", "Human pilot", "matched / swapped / generic / misuse controls 分不出来就删题"],
   ["7", "Scale & audit", "按 Atlas 分层扩展；公开 tested / deferred；按 source lineage 切分"],
 ];
@@ -88,14 +89,14 @@ export default function RubricsPage() {
       <header className="rubricHero">
         <nav className="nav shell" aria-label="Rubric 页面导航">
           <a className="brand" href="/">DeepAlign<span>Bench</span></a>
-          <div className="navlinks"><a href="#data-factory">如何造数</a><a href="#modules">模块库</a><a href="#example">完整例子</a><a href="#anchor">Anchor</a><a href="#binding">指标绑定</a></div>
+          <div className="navlinks"><a href="#data-factory">如何造数</a><a href="#modules">模块库</a><a href="#nodes">Node registry</a><a href="#example">完整例子</a><a href="#anchor">Anchor</a></div>
           <a className="navCta" href="/">返回总报告</a>
         </nav>
         <div className="rubricHeroGrid shell">
           <section>
             <p className="eyebrow">MEETING MODE · RUBRIC COMPILER WORKBENCH</p>
             <h1>从元数据到可审计分数，<em>每一步都能追踪</em></h1>
-            <p>Rubric Compiler 不是一个自由生成 rubric 的 LLM。它是一个输出前冻结的规则系统：根据 case 元数据选择固定模板，把 contract 展开成原子 leaf，再显式绑定到直接指标和派生指标。</p>
+            <p>Rubric Compiler 不是一个自由生成 rubric 的 LLM。它是一个输出前冻结的规则系统：根据 case 元数据路由 module、选择 direction node，把 contract 实体化为原子 leaf，再绑定指标。</p>
             <div className="rubricHeroActions"><a href="#example">先看完整例子</a><a href="/rubric_bundle.example.yaml" download>下载 example bundle</a></div>
           </section>
           <aside>
@@ -106,12 +107,12 @@ export default function RubricsPage() {
       </header>
 
       <section className="rubricQuick shell">
-        <article><b>有 schema</b><p>case、template、module、leaf、metric binding 和 data factory 六个机器可读对象。</p></article>
+        <article><b>有 schema</b><p>case、template、module、node、leaf、metric、annotation、environment 和 data factory 九个机器可读对象。</p></article>
         <article><b>有固定模板</b><p>按 intent、deliverable、operator 和 risk 选择，不按输出临时发明。</p></article>
         <article><b>有完整 trace</b><p>criterion → direct metric → aggregate → derived metric。</p></article>
       </section>
 
-      <section className="rubricStatus shell"><b>当前成熟度</b><p>v0.30 已产出 36-module 预定义 library、造数 protocol、compiler contract、端到端示例和 specificity × benefit 判定接口；自动 validator、模板路由器和 bundle 导出器仍是第 1 周实现项。先用一个 vertical slice 验证方法，不把 schema 规模当作实验效度。</p></section>
+      <section className="rubricStatus shell"><b>当前成熟度</b><p>v0.31 已增加 direction-node registry、分层标注和环境开工协议；自动 validator、路由器和 bundle 导出器仍是第 1 周实现项。先做 3 个完整 family，至少 2 个通过四重门后才扩到 24。</p></section>
 
       <section className="rubricSection shell" id="data-factory">
         <div className="sectionHead"><h2>很多篇论文怎么“杂糅”：按设计角色吸收，不按 taxonomy 求并集</h2><p>每篇来源先进入 source-to-design ledger；同一篇可以贡献多行，但每一行只能承担一个角色。这样 task、persona、failure、rubric 和 infra 不会混成一层。</p></div>
@@ -120,7 +121,7 @@ export default function RubricsPage() {
       </section>
 
       <section className="rubricSection shell" id="pipeline">
-        <div className="sectionHead"><h2>Rubric Compiler 的六步执行链</h2><p>前五步属于 benchmark 数据制作；第六步冻结后才允许被测 agent 运行。</p></div>
+        <div className="sectionHead"><h2>Rubric Compiler 的七步执行链</h2><p>前六步属于 benchmark 数据制作；第七步冻结后才允许被测 agent 运行。</p></div>
         <div className="compileRail">{pipeline.map(([n,t,d],i)=><article key={n}><span>{n}</span><b>{t}</b><p>{d}</p>{i<pipeline.length-1&&<i>→</i>}</article>)}</div>
         <div className="rubricBoundary"><b>禁止线</b><p>不能看完模型输出再加标准；不能让同一个 judge 同时“发明标准并给分”；探索性新标准可以记录，但不能进入已冻结主榜。</p></div>
       </section>
@@ -143,6 +144,12 @@ export default function RubricsPage() {
           {moduleFamilies.map(r=><div className="rubricTableRow" key={r[0]}>{r.map(x=><span key={x}>{x}</span>)}</div>)}
         </div>
         <div className="strengthCallout"><b>相对 PDR-Bench，真正的强点</b><p>不是 Personalization module 更多，而是每条个性化 leaf 都有 <code>authorized user fact → must-change → leaf → PF</code> 的 provenance；A/B 模块形状对称；同一 bundle 交叉评分 matched/swapped；must-hold 与 must-not 防止把“变化更多”或“更迎合”当成有效 personalization。</p></div>
+      </section>
+
+      <section className="rubricSection shell" id="nodes">
+        <div className="sectionHead"><h2>Module 下面增加 Direction Node Registry</h2><p>Module 是父级能力域，node 是可复用方向，leaf 是当前用户与任务的实体化标准。</p></div>
+        <div className="anchorLogic"><article><b>Module</b><p><code>PER-CONSTRAINT-04</code>：预算、时间、资源和可访问性约束。</p></article><article><b>Direction node</b><p><code>PER-CONSTRAINT-HARD</code>：满足一个有 operator、threshold、unit 的硬约束。</p></article><article><b>Leaf</b><p><code>U-A-BUDGET-01</code>：Ua 第一阶段支出不得超过 50 万，附 verifier 与 0/1/2 锚点。</p></article></div>
+        <div className="rubricBoundary"><b>扩库门</b><p>只有同一决策相关残余构念在至少两个 family 重复，且无法参数化现有 node 时才新增。Node 数量本身不证明全面。</p></div>
       </section>
 
       <section className="rubricSection shell" id="example">
@@ -186,7 +193,7 @@ export default function RubricsPage() {
       <section className="rubricSection shell" id="anchor">
         <div className="sectionHead"><h2>Anchor family 能回答什么，不能回答什么</h2><p>八个 anchor 是受控压力宿主，不是用八个异构任务做观察性相关分析。</p></div>
         <div className="anchorLogic"><article><b>能识别</b><p>固定 task / evidence / budget / prefix 后，某个 perturbation 让 CFA、PF、invariance、MP 改变多少。</p></article><article><b>不能直接识别</b><p>“长任务分数低”不能证明 long context 是内部用户建模失败根因；final-only 也不能区分没读到、忘了或没使用。</p></article><article><b>跨任务门槛</b><p>主要 perturbation 至少覆盖 4 个适用 anchor 才比较因素；2 个只算探索性复现。机制名只用于可比 trace。</p></article></div>
-        <div className="envOrder"><b>环境搭建顺序</b><span>1 · E1：2 family × 2 agent 跑通 frozen vertical slice</span><i>→</i><span>2 · E3：1 anchor 跑通 checkpoint/conflict/update</span><i>→</i><span>3 · E2：1 个商业产品 adapter smoke test</span></div>
+        <div className="envOrder"><b>环境搭建顺序</b><span>1 · E1：主轨，MVP 1.5–2.5 周</span><i>→</i><span>2 · E3：单 anchor，E1 后 2–4 周</span><i>→</i><span>3 · E2：单产品，3–7 天+维护</span></div>
       </section>
 
       <section className="rubricSection shell" id="validity">
@@ -204,10 +211,10 @@ export default function RubricsPage() {
       <section className="rubricSection shell">
         <div className="sectionHead"><h2>今晚请导师拍板的可行性问题</h2><p>这些问题决定第 1–3 周能否冻结数据和主 rubric。</p></div>
         <div className="advisorChecks"><article><b>1 · 模板粒度</b><p>六层路由是否足够覆盖主矩阵，又不会造成每个 case 都独立写 rubric？</p></article><article><b>2 · 真值成本</b><p>48 个 user-task 的 must-change 是否能由目标用户确认，must-hold/FR 是否能由专家稳定标注？</p></article><article><b>3 · 识别强度</b><p>人类 reference matched 是否能稳定胜过 swapped，同时 must-hold 和隐私不下降？</p></article><article><b>4 · 两月范围</b><p>先冻结 report/memo/table 三类主交付物，code/slides/web 只进 anchor，是否更稳妥？</p></article></div>
-        <div className="schemaDownloads"><b>机器可读材料</b><a href="/data_factory.protocol.yaml" download>data factory</a><a href="/rubric_module_library.yaml" download>36-module library</a><a href="/case.schema.yaml" download>case schema</a><a href="/rubric_template_registry.yaml" download>template registry</a><a href="/rubric_leaf.schema.yaml" download>leaf schema</a><a href="/metric_binding.schema.yaml" download>metric binding</a><a href="/rubric_bundle.example.yaml" download>端到端 example bundle</a></div>
+        <div className="schemaDownloads"><b>机器可读材料</b><a href="/construction_annotation.protocol.yaml" download>annotation protocol</a><a href="/rubric_node_registry.yaml" download>node registry</a><a href="/environment_build.protocol.yaml" download>environment plan</a><a href="/data_factory.protocol.yaml" download>data factory</a><a href="/rubric_module_library.yaml" download>36-module library</a><a href="/case.schema.yaml" download>case schema</a><a href="/rubric_template_registry.yaml" download>template registry</a><a href="/rubric_leaf.schema.yaml" download>leaf schema</a><a href="/metric_binding.schema.yaml" download>metric binding</a><a href="/rubric_bundle.example.yaml" download>example bundle</a></div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><p>Rubric Compiler 工作台 · v0.30</p></div></footer>
+      <footer><div className="shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><p>Rubric Compiler 工作台 · v0.31</p></div></footer>
     </main>
   );
 }

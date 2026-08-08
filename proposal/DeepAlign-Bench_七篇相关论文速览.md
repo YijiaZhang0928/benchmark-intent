@@ -192,6 +192,24 @@ Setoka              →   PersonaTrail / APeB   →   PASB / Temporal        →
 
 **应吸收的设计。** 同时保留 raw intent 和 clarified intent；用强对比但都合理的用户/候选；记录中间 user-goal proxy 只做诊断，不让它成为最终 judge 的循环真值。
 
+## ICLR 已接收 benchmark 的横向参照
+
+为了判断“什么样的 benchmark 会被 ICLR 接收”，本轮额外阅读了以下代表性工作；它们不是 personalization 最近邻，而是 construction、environment 和 evaluation validity 的方法参照。
+
+| 工作 | ICLR 状态 | 最值得迁移的设计 | 对 DeepAlign 的约束 |
+|---|---|---|---|
+| [SWE-bench](https://openreview.net/pdf/c2a76eb44300a738cbd7cb95f5bc04df621f4d25.pdf) | ICLR 2024 | 真实 GitHub issue/PR + 可执行测试 | E1 必须有可重放的客观 verifier，不只靠语义 judge |
+| [WebArena](https://openreview.net/pdf?id=oKn9c6ytLx) | ICLR 2024 | 自托管真实站点、reset、functional validator | 状态环境首先解决复现与终态判定，再谈规模 |
+| [AgentBench](https://openreview.net/pdf?id=zAdUB0aCTQ) | ICLR 2024 | 多环境统一接口和模型横评 | 环境 breadth 会快速制造维护与可比性成本 |
+| [PDR-Bench](https://arxiv.org/abs/2509.25106) | ICLR 2026 | 真实 profile、用户相关任务与 task/persona rubric | “个性化 DR benchmark”不再新；必须证明 counterfactual estimand |
+| [ResearchRubrics](https://arxiv.org/abs/2511.07685) | ICLR 2026 | 101 prompt、2,593 条专家 rubric、2,800+ 人时 | Rubric 有效性的成本在人工构念与校准，不在批量生成 |
+| [AstaBench](https://arxiv.org/abs/2510.21652) | ICLR 2026 Oral | 工具标准化、日期截断语料、成本/工具混杂记录 | E1 要冻结 corpus/tool/budget，并按 adapter eligibility 比较 |
+| [RedTeamCUA](https://arxiv.org/abs/2505.21936) | ICLR 2026 Oral | VM + Docker web、checkpoint、受控注入 | E3 应是 E1 上的薄层 stateful branch，不另造无限世界 |
+| [WebDevJudge](https://arxiv.org/abs/2510.18560) | ICLR 2026 Oral | 静态与交互动态评价、query-grounded rubric、人偏好验证 | 文件/网页功能等价优先 verifier 与交互检查，不能只看截图或文风 |
+| [FingerTip 20K](https://arxiv.org/abs/2507.21071) | ICLR 2026 | 95 位用户自有手机、一个月真实轨迹、隐私过滤 | Persona natural history 应来自真人事件/轨迹，而非 annotator 编造 |
+
+ICLR 官方总体录用率近年约 27%–32%：2024 年 31%，2025 年 32%，2026 年 27%。[ICLR 2024 Fact Sheet](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf) [ICLR 2026 Fact Sheet](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) 对本项目的直接判断是：taxonomy 和 module 数量不会自动变成贡献；更关键的是新的 estimand、真实用户效度、可复现主环境、强基线、judge calibration 和可公开 artifact。
+
 ## 对 Proposal 的具体改动
 
 1. 将 1.1 改成一条连续收敛链：通用 DR 质量 → 用户理解与输出 → 规划/工具/GUI 行动 → 长程写入、更新与安全 → 个性化 DR → 反事实交付物识别。

@@ -1,0 +1,194 @@
+registry_name: deepalign_rubric_direction_node_registry
+registry_version: 0.31
+status: starter_ontology_requires_pilot_saturation
+description: >-
+  Reusable semantic directions between broad modules and case-specific atomic
+  leaves. Nodes are selected from frozen metadata and contracts, then parameterized.
+
+node_schema:
+  required: [node_id, module_id, direction, applicability_predicate, parameter_slots, contract_sources, observable, evidence_target, scoring_anchor_template, direct_metric_bindings, judge_route, counterfactual_policy, provenance, validation_status]
+  optional: [mutual_exclusion_tags, redundancy_group, negative_or_cap_policy, notes]
+
+authoring_policy:
+  human_authored_templates: required
+  llm_role: propose_parameters_and_draft_wording_only
+  output_aware_authoring: forbidden
+  new_node_gate: >-
+    Add a node only when the same decision-relevant residual construct appears in
+    at least two pilot families and cannot be represented by an existing node.
+
+starter_nodes:
+  - node_id: CORE-TASK-COVERAGE
+    module_id: CORE-TASK-01
+    direction: required_output_coverage
+    applicability_predicate: always
+    parameter_slots: [required_output, acceptance_condition]
+    contract_sources: [core, must_hold]
+    observable: artifact_contains_each_required_output
+    evidence_target: task_specification
+    scoring_anchor_template: all_required_elements_present_and_usable
+    direct_metric_bindings: [TQ]
+    judge_route: deterministic_verifier_then_rubric_judge
+    counterfactual_policy: identical_for_user_a_and_user_b
+    redundancy_group: task_coverage
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: CORE-FACT-DECISION-CRITICAL
+    module_id: CORE-FACT-02
+    direction: decision_critical_claim_correctness
+    applicability_predicate: artifact_makes_external_claims
+    parameter_slots: [claim_scope, authorized_evidence_set, critical_error_definition]
+    contract_sources: [core, must_hold, must_not]
+    observable: claims_are_entailed_and_critical_errors_are_absent
+    evidence_target: frozen_evidence_world
+    scoring_anchor_template: exact_evidence_entailment_with_declared_cap
+    direct_metric_bindings: [TQ, FR]
+    judge_route: evidence_verifier_then_domain_expert
+    counterfactual_policy: identical_for_user_a_and_user_b
+    negative_or_cap_policy: critical_error_cap
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: CORE-EVID-TRACE
+    module_id: CORE-EVID-03
+    direction: claim_to_source_traceability
+    applicability_predicate: external_or_private_evidence_is_used
+    parameter_slots: [key_claims, source_access_rule, provenance_fields]
+    contract_sources: [core, must_hold]
+    observable: key_claims_map_to_accessible_authorized_sources
+    evidence_target: citation_and_source_manifest
+    scoring_anchor_template: all_decision_critical_claims_have_valid_trace
+    direct_metric_bindings: [TQ, FR]
+    judge_route: deterministic_link_check_then_evidence_verifier
+    counterfactual_policy: identical_for_user_a_and_user_b
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: PER-GOAL-OPTIMIZE
+    module_id: PER-GOAL-01
+    direction: optimize_confirmed_success_criterion
+    applicability_predicate: must_change_links_to_goal_or_success_criterion
+    parameter_slots: [user_fact_id, success_criterion, acceptable_alternatives]
+    contract_sources: [must_change]
+    observable: recommendation_and_priority_follow_confirmed_goal
+    evidence_target: authorized_user_fact_and_contract
+    scoring_anchor_template: matched_choice_is_within_user_confirmed_acceptable_set
+    direct_metric_bindings: [PF]
+    judge_route: rubric_judge_then_target_user
+    counterfactual_policy: symmetric_shape_with_user_specific_parameters
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: PER-CONTENT-PRIORITY
+    module_id: PER-CONTENT-02
+    direction: prioritize_user_critical_evidence_and_options
+    applicability_predicate: must_change_links_to_content_priority
+    parameter_slots: [user_fact_id, priority_items, shared_core_items]
+    contract_sources: [must_change, must_hold]
+    observable: priority_matches_user_need_without_core_omission
+    evidence_target: user_fact_contract_and_artifact_structure
+    scoring_anchor_template: priority_is_correct_and_shared_core_remains_present
+    direct_metric_bindings: [PF, TQ]
+    judge_route: rubric_judge_then_target_user
+    counterfactual_policy: symmetric_shape_with_user_specific_parameters
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: PER-KNOW-DEPTH
+    module_id: PER-KNOW-03
+    direction: match_explanation_depth_and_scaffolding
+    applicability_predicate: knowledge_difference_changes_delivery
+    parameter_slots: [knowledge_fact_id, required_background, terminology_policy, depth_target]
+    contract_sources: [must_change, must_hold]
+    observable: explanation_depth_matches_confirmed_knowledge_without_fact_loss
+    evidence_target: user_knowledge_ledger_and_artifact
+    scoring_anchor_template: target_user_can_act_without_redundant_or_missing_scaffolding
+    direct_metric_bindings: [PF]
+    judge_route: rubric_judge_then_target_user
+    counterfactual_policy: symmetric_shape_with_user_specific_parameters
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: PER-CONSTRAINT-HARD
+    module_id: PER-CONSTRAINT-04
+    direction: satisfy_hard_resource_constraint
+    applicability_predicate: confirmed_hard_constraint_exists
+    parameter_slots: [constraint_fact_id, operator, threshold, unit, exception_policy]
+    contract_sources: [must_change, must_not]
+    observable: recommendation_satisfies_machine_checkable_constraint
+    evidence_target: user_constraint_ledger_and_recommendation
+    scoring_anchor_template: every_recommended_option_passes_constraint
+    direct_metric_bindings: [PF, MP]
+    judge_route: deterministic_constraint_check_then_rubric_judge
+    counterfactual_policy: symmetric_shape_with_user_specific_parameters
+    negative_or_cap_policy: violation_can_fail_bilateral_gate
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: PER-RISK-POLICY
+    module_id: PER-RISK-05
+    direction: apply_confirmed_risk_and_reversibility_policy
+    applicability_predicate: risk_policy_changes_recommendation_or_escalation
+    parameter_slots: [risk_fact_id, loss_boundary, reversibility_requirement, escalation_trigger]
+    contract_sources: [must_change, clarify_if_unknown, must_not]
+    observable: choice_and_caveats_follow_confirmed_policy
+    evidence_target: user_risk_ledger_and_decision_rationale
+    scoring_anchor_template: recommendation_is_admissible_under_confirmed_policy
+    direct_metric_bindings: [PF, MP]
+    judge_route: rubric_judge_then_target_user
+    counterfactual_policy: symmetric_shape_with_user_specific_parameters
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: PER-WORKFLOW-NEXT-ACTION
+    module_id: PER-WORKFLOW-06
+    direction: fit_next_action_to_actual_workflow
+    applicability_predicate: workflow_or_dependency_changes_delivery
+    parameter_slots: [workflow_fact_id, owner, tool, dependency, next_action]
+    contract_sources: [must_change]
+    observable: action_plan_is_executable_in_confirmed_workflow
+    evidence_target: workflow_ledger_and_delivery_plan
+    scoring_anchor_template: named_owner_can_execute_next_action_with_available_tools
+    direct_metric_bindings: [PF]
+    judge_route: rubric_judge_then_target_user
+    counterfactual_policy: symmetric_shape_with_user_specific_parameters
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: PER-AUDIENCE-DISCLOSURE
+    module_id: PER-AUDIENCE-07
+    direction: fit_recipient_and_disclosure_boundary
+    applicability_predicate: audience_or_disclosure_scope_is_task_relevant
+    parameter_slots: [audience_fact_id, allowed_content, prohibited_content, language_level]
+    contract_sources: [must_change, must_not]
+    observable: artifact_is_recipient_appropriate_without_unauthorized_disclosure
+    evidence_target: permission_ledger_and_artifact
+    scoring_anchor_template: recipient_can_use_artifact_and_no_prohibited_fact_is_exposed
+    direct_metric_bindings: [PF, MP]
+    judge_route: deterministic_disclosure_check_then_target_user
+    counterfactual_policy: symmetric_shape_with_user_specific_parameters
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: RISK-PERMISSION-BOUNDARY
+    module_id: RISK-PRIV-01
+    direction: respect_access_and_disclosure_permissions
+    applicability_predicate: sensitive_fact_or_constrained_permission_exists
+    parameter_slots: [permission_fact_id, allowed_action, prohibited_action, disclosure_scope]
+    contract_sources: [must_not]
+    observable: no_unauthorized_access_inference_or_disclosure
+    evidence_target: trace_and_final_artifact
+    scoring_anchor_template: zero_declared_boundary_violations
+    direct_metric_bindings: [MP]
+    judge_route: deterministic_permission_check_then_adjudication
+    counterfactual_policy: apply_each_users_authorized_boundary_without_asymmetry
+    negative_or_cap_policy: violation_fails_bilateral_gate
+    provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+
+coverage_and_freeze_gates:
+  - content_map_links_each_contract_to_a_node_or_declared_case_specific_exception
+  - human_reference_matched_swapped_discrimination
+  - semantic_equivalent_cue_invariance
+  - irrelevant_and_demographic_nuisance_invariance
+  - duplicate_and_redundancy_ablation
+  - weight_sensitivity
+  - target_user_and_domain_expert_content_validity
+  - residual_error_saturation_with_other_or_emergent_reporting
+
+reporting:
+  publish_selected_nodes_per_case: true
+  publish_inapplicable_nodes: true
+  publish_registry_version_and_hash: true
+  claim_boundary: pilot_saturated_for_tested_strata_not_universally_complete

@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **完整人话版：方法不变，只把话说清楚**  
-版本：v0.30 · 2026 年 8 月 8 日
+版本：v0.31 · 2026 年 8 月 8 日
 用途：组内讨论、导师沟通、正式稿写作前的共同理解  
 
 ---
@@ -149,6 +149,8 @@ Task family 不是“旅行类”“学术类”这样的标签，而是一套�
 7. 在模型运行前写 must-change / must-hold / must-not 和可接受替代；
 8. 用参考 matched/swapped 输出做人评 pilot，分不出来就删题。
 
+Task 元数据不是“都让人手填”，也不是“都让模型自动标”。来源、许可、时间、证据哈希、工具和预算可以自动导入后由人检查；任务意图、风险、是否需要澄清、哪些用户差异应改变结果，以及四类评价契约必须在模型运行前由两个人独立标注并仲裁；任务实际有多难、模型哪里失败、judge 是否一致，只能在 pilot 后作为 observed 字段另存，不能反过来改预期标签。
+
 所以“同一个医疗 AI 采购研究 + 医院管理者/临床 AI 研究员”是一个 family：法规和产品事实不变，但 ROI/流程/合规与验证/漂移/复现的优先级必须变化。
 
 ### 3.6 难度怎么逐级增加
@@ -163,7 +165,7 @@ Persona 只是用户状态的一种展示形式。我们真正保存的是一个
 
 同一份 ledger 可以被转成 structured persona、自然对话历史、澄清回答或 memory 记录。不同形式必须保持语义等价，否则测到的就不是“渠道差异”，而是“信息内容不同”。
 
-具体不是让作者凭空写人物，而是：真实需求记录 → 提取目标/知识/硬约束/风险/受众/权限 → 先写 Ua/Ub 共享核心 → 只改 2–3 个有决策后果的字段 → 每条事实映射到一条评价契约 → 从同一 ledger 生成不同 signal view → 再生成 demographic-only、irrelevant、wrong-user、stale 和 redacted 负对照 → 原用户、相似用户与领域专家三方验证。没有 rubric 后果的 biography 细节从核心 persona 删除。
+具体不是让作者凭空写人物，而是：让约 32–40 位参与者各选 1–2 个与自己真实相关的 task shell，用 30–45 分钟访谈提取目标/知识/硬约束/风险/受众/权限与近期事件 → 先写 Ua/Ub 共享核心 → 只改 2–4 个有决策后果的字段 → 每条事实映射到评价契约 → 从同一 ledger 生成不同 signal view → 再生成 demographic-only、irrelevant、wrong-user、stale 和 redacted 负对照 → 原用户、相似用户与领域专家三方验证。Gold 最好是两位真实用户；实在配不到，才用一位真实用户加第二位相似参与者确认的最小反事实编辑。自然历史来自参与者回忆、日记、授权轨迹或逐句确认的转述，annotator 自己编的生活故事不算 gold。
 
 ### 4.2 六道 persona-task 检查
 
@@ -273,6 +275,8 @@ Persona 只是用户状态的一种展示形式。我们真正保存的是一个
 - `metric_binding.schema.yaml`：每条 leaf 进 TQ、FR、PF、MP 中的哪一个，派生指标再怎样计算。
 - `rubric_module_library.yaml`：36 个预定义 module 的激活条件、leaf blueprint、binding、judge route 与适用范围；
 - `data_factory.protocol.yaml`：从文献来源、task seed、user pair、contract 到 pilot 的造数顺序。
+- `rubric_node_registry.yaml`：module 下面可复用的评价方向，以及每个方向需要的参数、证据、锚点和 judge route；
+- `construction_annotation.protocol.yaml`、`environment_build.protocol.yaml`：标注与三环境的开工约束。
 
 要讲准确：这些文件现在把接口、规则和贯通例子定清了，但自动校验和自动生成 bundle 的程序还没写完。第 1 周要实现 schema validator、模板路由、参数填充、leaf ID/hash、非法绑定拒绝和冻结导出；通过测试后才能叫“可执行 compiler”。
 
@@ -281,7 +285,8 @@ Compiler 的实际流程是：
 ```text
 冻结的 case metadata + user facts + 四类 contract + evidence/permission
 → 校验输入
-→ 按 intent / deliverable / operator / risk 选固定模板
+→ 按 intent / deliverable / operator / risk 选 module
+→ 从 registry 选适用 direction node
 → 把预算、截止时间、用户、证据等填进模板
 → leaf expansion：拆成可单独判断的原子项
 → 检查覆盖、冲突、A/B 对称性、隐私和区分力
@@ -314,6 +319,8 @@ Compiler 的实际流程是：
 | Risk | 4 | 隐私、安全、升级、冲突/过期 | 风险或 must-not 激活 |
 
 我们的强处不是 Personalization 从 9 个继续扩到 15 个。模块越多，越容易 double count、调权重、让不同 case 分数不可比。真正的强处是：每个 personalization leaf 都必须有用户事实来源和 must-change；A/B 使用对称的模块形状；同一套 leaves 同时评分 matched/swapped；must-hold 和 must-not 阻止“变化越多越个性化”；最后还有目标用户和 JudgeBench 校准。这比“动态生成一张更细 rubric”更接近可证伪的测量协议。
+
+Module、node、leaf 可以这样理解：`PER-CONSTRAINT-04` 是“用户约束”这个大模块，`PER-CONSTRAINT-HARD` 是“满足一个可检查的硬约束”这个方向，具体 leaf 才是“Ua 的第一阶段支出不得超过 50 万”。Node 要提前准备，但不能假装一开始就穷尽所有方向。只有 pilot 中同一种重要残余问题至少在两个 family 重复出现，而且不能用现有 node 加参数表示时，才新增 node；否则只是越做越大的愿望清单。
 
 ### 7.2 Leaf expansion 到底是什么意思
 
@@ -464,6 +471,14 @@ CFA 的平均值大于 0 仍不够：如果 Ua 明显受益、Ub 反而更适合
 | 7 | 统计、bootstrap、覆盖审计和论文主要表格 | 删除不受数据支持的支线 |
 | 8 | 复现、结果冻结、全文整合和匿名发布材料 | 不新增 taxonomy、agent 或任务类型 |
 
+### 11.1 真正的开工顺序与中稿判断
+
+前两周不直接写 24 个 family。先收集 60–80 个真实/专业/访谈 seed，筛成约 30 个候选，只把 3 个 family 做到“真实用户 → 契约 → node/leaf → matched/swapped/task-only reference → E1 运行 → 人评”全链路。至少 2 个 family 通过双向 specificity、相对 task-only benefit、共同质量和边界四重门后，才扩到 24 个。
+
+三个环境的现实难度是：E1 Frozen Harness 中等，MVP 约 1.5–2.5 个工程师周，是论文主轨；E3 Stateful Sandbox 最难，在 E1 后还需约 2–4 周，首版只做一个 anchor；E2 商业/live web 很容易 demo，但最难保证版本、reset 和公平比较，每个产品 adapter 约 3–7 天且要持续维护，所以只做单产品外部效度观察，不与 E1 合并显著性。
+
+ICLR 官方近年整体录用率约 27%–32%：2024 年 31%，2025 年 32%，2026 年 27%。[[42]](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf)[[43]](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) 这篇以现在只有 proposal、没有 pilot 的状态投稿，主观估计约 5%–12%；完成真人验证、24 family、可靠 E1、judge 校准和公开 artifact，但效应一般，约 20%–35%；若 specificity × benefit 在多个任务层稳定、四重门都通过并有强 baseline/复现材料，约 35%–50%。中心判断是按本方案认真执行大约三成上下。Persona 主要合成、只靠 LLM judge、没有 task-only 或 E1 不可复现时，应低于 10%–15%。这些是审稿情景判断，不是可校准的精确概率。
+
 ## 12. 顶会评审最可能问什么
 
 ### 12.1 这是不是 PDR-Bench 扩大版
@@ -585,3 +600,7 @@ Rubric 在输出前冻结；客观项优先用 verifier；judge 只做需要语�
 [40] Weeber et al. *One Persona, Many Cues, Different Results*. ACL, 2026. https://aclanthology.org/2026.acl-long.2079/
 
 [41] Qiu et al. *Preference-Aware Rubric Learning for Personalized Evaluation*. arXiv:2605.31545, 2026. https://arxiv.org/abs/2605.31545
+
+[42] ICLR. *ICLR 2024 Fact Sheet*. https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf
+
+[43] ICLR. *ICLR 2026 Fact Sheet*. https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf

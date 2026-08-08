@@ -63,8 +63,11 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /不证明内部“理解用户”/i);
   assert.match(html, /cue-equivalence robustness/i);
   assert.match(html, /Task family 与 persona 不是靠写 prompt 拼出来的/);
+  assert.match(html, /Seed funnel/);
+  assert.match(html, /ICLR READINESS/);
+  assert.match(html, /中心判断 · 约三成/);
   assert.match(html, /S0 clean/);
-  assert.match(html, /E1 · Controlled Frozen Harness/);
+  assert.match(html, /E1 · 主轨 · 1\.5–2\.5 周/);
   assert.match(html, /A1 日常决策/);
   assert.match(html, /PCA=\.43/);
   assert.match(html, /PROFILE D/);
@@ -78,7 +81,8 @@ test("server-renders the rubric compiler workbench", async () => {
   const response = await renderPath("/rubrics");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Rubric Compiler 的六步执行链/);
+  assert.match(html, /Rubric Compiler 的七步执行链/);
+  assert.match(html, /Direction Node Registry/);
   assert.match(html, /Leaf expansion/);
   assert.match(html, /CFA 不会出现在任何 leaf/);
   assert.match(html, /U-A-BUDGET-01/);
@@ -86,6 +90,9 @@ test("server-renders the rubric compiler workbench", async () => {
   assert.match(html, /Anchor family 能回答什么，不能回答什么/);
   assert.match(html, /href="\/rubric_module_library\.yaml"/i);
   assert.match(html, /href="\/data_factory\.protocol\.yaml"/i);
+  assert.match(html, /href="\/rubric_node_registry\.yaml"/i);
+  assert.match(html, /href="\/construction_annotation\.protocol\.yaml"/i);
+  assert.match(html, /href="\/environment_build\.protocol\.yaml"/i);
   assert.match(html, /href="\/rubric_leaf\.schema\.yaml"/i);
   assert.match(html, /href="\/metric_binding\.schema\.yaml"/i);
   assert.match(html, /href="\/rubric_bundle\.example\.yaml"/i);
@@ -143,7 +150,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.30/m);
+  assert.match(schema, /^schema_version:\s*0\.31/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
   assert.match(schema, /estimand:\s*counterfactual_personalization_effect/);
@@ -156,6 +163,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
   assert.doesNotMatch(leafSchema, /^\s+- CFA\s*$/m);
   assert.match(templateRegistry, /expand_to_atomic_leaves/);
   assert.match(templateRegistry, /module_library: rubric_module_library\.yaml/);
+  assert.match(templateRegistry, /node_registry: rubric_node_registry\.yaml/);
   assert.match(moduleLibrary, /PER-CONSTRAINT-04/);
   assert.match(moduleLibrary, /residual_error_saturation/);
   assert.match(dataFactory, /0_vertical_slice/);
@@ -166,6 +174,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
   assert.match(metricBinding, /gain_a_vs_task_only:/);
   assert.match(metricBinding, /bilateral_personalization_success:/);
   assert.match(exampleBundle, /U-A-BUDGET-01/);
+  assert.match(exampleBundle, /PER-CONSTRAINT-HARD/);
   assert.match(exampleBundle, /apply unchanged to both Y_a and Y_b/);
   assert.match(manifest, /coverage_status/);
   assert.match(manifest, /tested/);
@@ -186,6 +195,9 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
     access(new URL("../public/DeepAlign-Bench_汇报精简版.docx", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_汇报精简版.pdf", import.meta.url)),
     access(new URL("../public/PROJECT_MEMORY.md", import.meta.url)),
+    access(new URL("../public/construction_annotation.protocol.yaml", import.meta.url)),
+    access(new URL("../public/rubric_node_registry.yaml", import.meta.url)),
+    access(new URL("../public/environment_build.protocol.yaml", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
 });

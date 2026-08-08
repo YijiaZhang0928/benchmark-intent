@@ -2,11 +2,11 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.30 · 2026 年 8 月 8 日
+版本：v0.31 · 2026 年 8 月 8 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.30
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.31
 
 ---
 
@@ -85,7 +85,7 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 ### 3.4 反事实任务族与用户真值
 
-每个 family 固定任务、证据和资源，构造两个都自然且对结果有实质影响的用户。Persona 不先写 biography，而按“真实 source record → task-relevant axes → 共享 invariant core → 只改 2–3 个决策相关字段 → fact-to-contract map → 多 signal views → 负对照 → 人类验证”生成。每条事实记录来源、时间、可信度、相关性、敏感度和披露权限；structured persona、自然历史与澄清回答都由同一 ledger 编译。
+每个 family 固定任务、证据和资源，构造两个都自然且对结果有实质影响的用户。Persona 不先写 biography，而按“真实 source record → task-relevant axes → 共享 invariant core → 只改 2–4 个决策相关字段 → fact-to-contract map → 多 signal views → 负对照 → 人类验证”生成。每条事实记录来源、时间、可信度、相关性、敏感度和披露权限；structured persona、自然历史与澄清回答都由同一 ledger 编译。
 
 每个 user-task 在运行前冻结真值包：共同要求、用户特异要求、禁止事项、可接受替代、关键证据、严重错误封顶、预期澄清点和 matched/swapped 差异预测。关键偏好必须有用户确认或可审计来源，不得由人口属性或研究者直接推断。
 
@@ -105,8 +105,6 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 三者是运行环境，不是 agent 类型。核心模式 M1 商业产品、M2 controlled harness、M3 开源 DRA；code、multi-agent、memory-enhanced 只在适用 anchor 上做架构 probe。统一 adapter 至少实现 reset、provide_signal、run_until、inject_event、export_artifact 和 trace-level 声明。
 
-开工时不同时搭满三条轨道：先用 2 family × 2 agent 跑通 E1；再用 1 个 anchor 验证 E3 checkpoint/conflict/update；最后只做 1 个 E2 商业产品 adapter smoke test。E1 和一个 E3 event 未端到端通过前不批量造数；E2 不阻塞主矩阵。
-
 8 个 anchor 覆盖日常决策、学习职业、金融信息、健康信息、企业采购/合规、软件生产、学术前沿和政策传播。每个先建 clean family，再按 `S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 两个正交扰动` 运行。difficulty 用 evidence、signal、horizon、orchestration、permission、counterfactual subtlety 六维 stress vector 表示；risk、failure mode 与强度分开，不求和成伪精确难度分。
 
 所有 anchor 运行 clean、persona swap 和 irrelevant-signal；其余 failure mode 用平衡不完全区组分配。若要跨任务比较“long context、conflict、handoff 哪种伤害更大”，主要 perturbation 至少落到 4 个适用 anchor；只落到 2 个时仅作探索性复现。Anchor 通过同任务、同前缀 control 估计受控扰动敏感度，不能仅凭异构任务相关性声称找到了内部根因。结果分四层报 base task profile、signal board、S0–S3 stress curve 和 boundary/governance board。
@@ -119,7 +117,7 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 ### 5.1 Metadata-driven Rubric Compiler
 
-Compiler 已有机器可读 contract 和固定模板设计，不是让 LLM 对每份输出临时写 rubric。输入是冻结的 case metadata、user-state ledger、证据/权限和四类 contract；流程为：`validate → 按 intent/deliverable/operator/risk 路由模板 → 填入预算/证据/用户参数 → leaf expansion → 校验并冻结 bundle`。Leaf expansion 是在运行前把“适合用户”“备忘录完整”等复合要求拆成可独立观察、带 0/1 或 0/1/2 文字锚点的原子项，不是评分后再细化。当前文件定义接口与端到端示例；自动 validator 和 compiler 是第 1 周实现项。
+Compiler 已有机器可读 contract 和固定模板设计，不是让 LLM 对每份输出临时写 rubric。输入是冻结的 case metadata、user-state ledger、证据/权限和四类 contract；流程为：`validate → 路由 module → 选择 direction node → 填入预算/证据/用户参数 → leaf expansion → 校验并冻结 bundle`。Module 是父级能力域，node 是“满足硬预算、匹配知识深度、遵守披露边界”这类可复用方向，leaf 才是 case-specific 原子标准。Leaf expansion 仍在运行前完成；自动 validator 和 compiler 是第 1 周实现项。
 
 固定模板分六层：core 所有 case 必选；personalization 由 task-relevant user facts 和 must-change 激活；intent 由六类研究意图选择；deliverable 由 report / memo / workbook / code / slides / webpage / multi-file 选择；operator 用于 acquire/preserve/use/update 诊断；risk 由 stakes、permission、敏感信息和 must-not 激活。统一的是 leaf schema、适用条件和聚合规则，而不是让所有任务共用一张表。每条 leaf 显式记录 `criterion_id`、rubric owner、observable、evidence、scoring anchors、weight、hard gate、judge route 和 `direct_metric_bindings`。
 
@@ -155,7 +153,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 ### 6.1 数据质量控制
 
-每个 task-persona 对必须通过六项门槛：场景真实、决策相关、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。标注者先独立编写 must-change 和 must-hold，再处理分歧。人类真值分工固定：领域专家评事实、证据和共同质量，目标用户确认 must-change / must-not 并盲评 matched/swapped；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。[[16]](https://aclanthology.org/2026.acl-long.723/) Rubric 还必须通过内容映射、matched/swapped 区分、nuisance invariance、去重/消融、权重敏感性、目标用户/专家效度和 residual-error saturation；未通过的 module 删除、合并或降为探索性分析。
+Task 元数据分层处理：来源、许可、时间、哈希、工具和预算可自动导入后人工审计；intent、stakes、interaction need、counterfactual axes 与四类 contract 必须在运行前由两人独立人工标注并仲裁；实际难度、失败率和 judge agreement 只能在 pilot 后另存为 observed 字段。每个 task-persona 对必须通过六项门槛：场景真实、决策相关、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。人类真值分工固定：领域专家评事实、证据和共同质量，目标用户确认 must-change / must-not 并盲评 matched/swapped；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。[[16]](https://aclanthology.org/2026.acl-long.723/)
 
 ### 6.2 统计方案
 
@@ -206,6 +204,10 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 ### 8.3 论文主张边界
 
 若只完成 Outcome Core，论文仅声称测量最终交付物的用户适配。只有当轨迹审计与受控压力分叉完成时，才报告保持与更新机制。本项目不声称首版覆盖所有 Deep Research 模式，只对 coverage manifest 中标记为 tested 的组合作结论。
+
+### 8.4 开工顺序与 ICLR readiness
+
+先从 60–80 个 seed 筛约 30 个候选，只做 3 个完整 family；优先两位真实用户，至少 2 个通过 specificity、benefit、共同质量与边界四重门后才扩到 24。工程顺序为 E1 主轨（1.5–2.5 周）→ E3 单 anchor（追加 2–4 周）→ E2 单产品观察性 probe（3–7 天+维护）。[ICLR 官方数据](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf)显示近年总体录用率约 27%–32%；本稿无 pilot 约 5%–12%，合格执行约 20%–35%，强结果约 35%–50%，中心判断约三成。它是审稿风险区间，不是校准概率。
 
 ## 参考文献
 

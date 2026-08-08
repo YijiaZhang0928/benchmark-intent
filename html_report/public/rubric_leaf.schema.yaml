@@ -1,5 +1,5 @@
 schema_name: deepalign_rubric_leaf
-schema_version: 0.30
+schema_version: 0.31
 description: >-
   Fixed schema for one independently judgeable rubric leaf. A compiler selects
   templates from case metadata and contracts, expands them into these leaves,
@@ -8,6 +8,7 @@ description: >-
 required:
   - criterion_id
   - module_id
+  - node_id
   - tree
   - contract_type
   - applicability_predicate
@@ -20,6 +21,7 @@ required:
 
 criterion_id: string
 module_id: string
+node_id: string
 template_id: string
 tree: [common_task_quality, user_conditional_fit, misuse_and_boundary]
 contract_type: [core, must_change, must_hold, must_not, clarify_if_unknown]

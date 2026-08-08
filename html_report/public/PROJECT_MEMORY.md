@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-08
-当前版本：v0.30
+当前版本：v0.31
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
@@ -153,6 +153,20 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 6. 一页汇报图改为 gap → controlled crossover → 四重成立门 → empirical scope，并明确“结果层反事实特异性不等于内部用户理解”。
 
 开放问题：Go/No-Go 中 task-only uplift 的严格阈值应使用 `≥0`、预注册最小实际重要差异（SESOI），还是 posterior/CI 下界；需在 vertical slice 后依据目标用户判断噪声和统计功效冻结。当前两个月版先用双向非劣门 + 报告区间，不承诺低功效的逐 family 显著性。
+
+### 1.14 v0.31：冻结 task/persona 开工链、direction node 与环境主次
+
+1. Task 元数据分三层：A 层 provenance/时间/哈希/工具预算可自动导入但要人工审计；B 层 intent、stakes、interaction need、counterfactual axes、四类 contract 和 node applicability 必须在运行前由两人独立标注并仲裁；C 层实际难度、失败率、区分力与 judge agreement 只能在 pilot 后作为 observed 字段另存。禁止看到输出后修改 expected 标签。
+2. Task seed funnel 冻结为先收集 60–80 个真实/专业/访谈/公开 seed，去重筛至约 30 个候选，只把 3 个 family 做成完整 vertical slice；至少 2 个通过 specificity、benefit、共同质量与边界四重门后才扩至约 24 个。3-family pilot 后用 family-level 方差做最小可检测效应模拟；功效不足优先增加 family 或减少系统，不继续堆 leaf/agent 重复。
+3. Persona 目标招募约 32–40 位参与者，每人匹配 1–2 个真实相关 task shell并做 30–45 分钟结构化 elicitation。Gold 优先为两位真实用户共享 invariant task/evidence；次选为一位真实用户加第二位相似参与者确认的最小反事实编辑；纯合成只作压力/无关 cue control。Natural history 必须来自参与者回忆、日记、授权轨迹或逐句确认转述，annotator 编造的 biography 不算 gold。
+4. 36 个 module 保留为父级 ontology；在 module 与 case-specific leaf 之间新增 direction node registry。编译链冻结为 `metadata/contracts → module → direction node → parameterized leaf → validation/freeze`。每个 node 保存 applicability、参数槽、contract 来源、observable/evidence、anchor、binding、judge route、A/B 对称、冗余与 provenance。只有同一决策相关残余 construct 在至少两个 family 重复且无法参数化现有 node 时才扩库。
+5. 三环境工程顺序与粗工期冻结：E1 Frozen 是主因果轨，MVP 约 1.5–2.5 engineer-weeks；E3 在 E1 后做一个薄层 stateful anchor，约 2–4 周；E2 单产品 adapter 约 3–7 天并持续维护，只作有日期/版本的观察性外部效度，不与 E1 合并显著性。两个月内不同时搭满三者。
+6. ICLR 官方近年总体录用率约 27%–32%。本项目情景判断：当前 proposal 无 pilot 直接投约 5%–12%；完成真人验证、24 family、可靠 E1、judge 校准与公开 artifact 但效应中等约 20%–35%；跨 strata 的双向 specificity × benefit、四重门、强 baseline 与复现都成立约 35%–50%；可靠执行的中心判断约三成。该区间是审稿风险判断，不是校准概率。PDR-Bench 已被 ICLR 2026 接收，因此 novelty 必须由 counterfactual estimand 的实证证据而非“个性化 DR benchmark”标签支撑。
+7. 横向方法参照新增 ICLR 已接收的 SWE-bench、WebArena、AgentBench、PDR-Bench、ResearchRubrics、AstaBench、RedTeamCUA、WebDevJudge 和 FingerTip 20K。共同经验是：真实/困难数据、可执行或结构化终点、可复现环境、成本/工具混杂记录、人类效度和公开 artifact 比 taxonomy 规模更影响可信度。
+8. 新增机器可读文件：`construction_annotation.protocol.yaml`、`rubric_node_registry.yaml`、`environment_build.protocol.yaml`；case/template/module/leaf/bundle 版本同步到 0.31。
+9. 用户要求的 research skills 已安装到个人 Codex 目录：nature-academic-search、literature-review、academic-research-suite（即 ARS-Codex）、nature-reviewer，以及 ARIS 的 research-pipeline、AI-Research-SKILLs 的 autoresearch。ARIS/AI-Research-SKILLs 保留完整 source，仅注册中心入口；未启用 hook、cron、MCP 或自动循环。academic-research-suite 使用 CC BY-NC 4.0，涉及商业用途前需另审许可；本轮未把 literature-review 中“必须有图/作者声望”等启发式当作科学标准。
+
+开放问题：真实用户招募预算与伦理/同意流程；两真实用户配对达成率；3-family pilot 的方差与 power；node registry 是否需要领域特定子节点；E1 evidence snapshot 的许可与索引实现；ICLR 投稿年份的截稿期是否允许完整真人研究。
 
 ## 2. 冻结的两个月范围
 

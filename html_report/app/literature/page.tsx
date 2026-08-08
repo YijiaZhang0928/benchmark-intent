@@ -187,6 +187,20 @@ export default function LiteratureBrief() {
         </div>
       </section>
 
+      <section className="shell litAudit" id="iclr-benchmarks">
+        <p className="sectionTag">ICLR ACCEPTED BENCHMARK COMPARATORS</p>
+        <div className="sectionHead"><h2>中稿 benchmark 的共同点不是“分类多”，而是 construct、环境和 verifier 经得起复现</h2><p>横向阅读 ICLR 2024–2026 的 SWE-bench、WebArena、AgentBench、PDR-Bench、ResearchRubrics、AstaBench、RedTeamCUA、WebDevJudge 与 FingerTip 20K。</p></div>
+        <div className="auditGrid">
+          <article><header><span>01</span><b>真实任务 + 可执行终点</b></header><h3><a href="https://openreview.net/pdf/c2a76eb44300a738cbd7cb95f5bc04df621f4d25.pdf" target="_blank" rel="noreferrer">SWE-bench ↗</a></h3><p>真实 issue/PR 与测试；提示 E1 优先做 verifier 和 replay。</p></article>
+          <article><header><span>02</span><b>可重置真实环境</b></header><h3><a href="https://openreview.net/pdf?id=oKn9c6ytLx" target="_blank" rel="noreferrer">WebArena ↗</a></h3><p>自托管站点、reset 与 functional validator；状态规模不能先于复现。</p></article>
+          <article><header><span>03</span><b>标准工具与混杂记录</b></header><h3><a href="https://arxiv.org/abs/2510.21652" target="_blank" rel="noreferrer">AstaBench ↗</a></h3><p>冻结工具/语料，明确成本与 tool confound；支持 E1 主轨。</p></article>
+          <article><header><span>04</span><b>真实用户锚定</b></header><h3><a href="https://arxiv.org/abs/2507.21071" target="_blank" rel="noreferrer">FingerTip 20K ↗</a></h3><p>95 位用户一个月自有手机轨迹；natural history 不应由标注者凭空编写。</p></article>
+          <article><header><span>05</span><b>专家 rubric 成本</b></header><h3><a href="https://arxiv.org/abs/2511.07685" target="_blank" rel="noreferrer">ResearchRubrics ↗</a></h3><p>2,593 条标准、2,800+ 人时；全面性来自人工验证而非生成数量。</p></article>
+          <article><header><span>06</span><b>受控状态注入</b></header><h3><a href="https://arxiv.org/abs/2505.21936" target="_blank" rel="noreferrer">RedTeamCUA ↗</a></h3><p>VM + Docker web 与 checkpoint；E3 应做 E1 上的薄层分支。</p></article>
+        </div>
+        <div className="auditStory"><b>对 DeepAlign 的判断</b><span>新 estimand</span><i>+</i><span>真人效度</span><i>+</i><span>可复现 E1</span><i>+</i><span>judge calibration</span><i>→</i><strong>比继续扩 taxonomy 更重要</strong></div>
+      </section>
+
       <section className="shell litAudit" id="audit">
         <p className="sectionTag">22-PAPER RELEVANCE AUDIT</p>
         <div className="sectionHead"><h2>不是搜到就算相关：每篇都要说明“覆盖了什么、还差什么”</h2><p>纳入门槛：用户条件是可观察输入、会改变生成/规划/行动、并有可比较结果，三项中至少满足两项。纯角色扮演、通用 memory 和非 agent 推荐工作没有纳入。</p></div>
@@ -231,7 +245,7 @@ export default function LiteratureBrief() {
         </div>
       </section>
 
-      <footer><div className="shell"><b>DeepAlign-Bench · v0.27</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
+      <footer><div className="shell"><b>DeepAlign-Bench · v0.31</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
     </main>
   );
 }
