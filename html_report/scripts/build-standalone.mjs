@@ -14,24 +14,27 @@ const figure = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_主图.p
 const figureData = `data:image/png;base64,${figure.toString("base64")}`;
 const workflowFigure = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_详细流程图.png"));
 const workflowFigureData = `data:image/png;base64,${workflowFigure.toString("base64")}`;
+const referenceWorkflowFigure = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_端到端流程图_v0.32.png"));
+const referenceWorkflowFigureData = `data:image/png;base64,${referenceWorkflowFigure.toString("base64")}`;
 
 function localizeMainBody(body) {
   return body
-  .replaceAll('src="/DeepAlign-Bench_主图.png"', `src="${figureData}"`)
-  .replaceAll('href="/DeepAlign-Bench_主图.png"', `href="${figureData}"`)
-  .replaceAll('href="/DeepAlign-Bench_正式研究Proposal.pdf"', 'href="./DeepAlign-Bench_正式研究Proposal.pdf"')
-  .replaceAll('href="/DeepAlign-Bench_正式研究Proposal.docx"', 'href="./DeepAlign-Bench_正式研究Proposal.docx"')
-  .replaceAll('href="/DeepAlign-Bench_正式Proposal精简版.pdf"', 'href="./DeepAlign-Bench_正式Proposal精简版.pdf"')
-  .replaceAll('href="/DeepAlign-Bench_正式Proposal精简版.docx"', 'href="./DeepAlign-Bench_正式Proposal精简版.docx"')
-  .replaceAll('href="/DeepAlign-Bench_完整人话版.pdf"', 'href="./DeepAlign-Bench_完整人话版.pdf"')
-  .replaceAll('href="/DeepAlign-Bench_完整人话版.docx"', 'href="./DeepAlign-Bench_完整人话版.docx"')
-  .replaceAll('href="/DeepAlign-Bench_汇报精简版.pdf"', 'href="./DeepAlign-Bench_汇报精简版.pdf"')
-  .replaceAll('href="/DeepAlign-Bench_汇报精简版.docx"', 'href="./DeepAlign-Bench_汇报精简版.docx"')
-  .replaceAll('href="/case.schema.yaml"', 'href="./case.schema.yaml"')
-  .replaceAll('href="/PROJECT_MEMORY.md"', 'href="../PROJECT_MEMORY.md"')
-  .replaceAll('href="/rubrics"', 'href="./DeepAlign-Bench_Rubric编译器工作台.html"')
-  .replaceAll('href="/literature"', 'href="./DeepAlign-Bench_七篇相关论文速览.html"')
-  .replaceAll('href="/figures"', 'href="./DeepAlign-Bench_论文图表蓝图.html"');
+    .replaceAll('src="/DeepAlign-Bench_主图.png"', `src="${figureData}"`)
+    .replaceAll('href="/DeepAlign-Bench_主图.png"', `href="${figureData}"`)
+    .replaceAll('href="/DeepAlign-Bench_端到端流程图_v0.32.png"', 'href="./DeepAlign-Bench_端到端流程图_v0.32.png"')
+    .replaceAll('href="/DeepAlign-Bench_正式研究Proposal.pdf"', 'href="./DeepAlign-Bench_正式研究Proposal.pdf"')
+    .replaceAll('href="/DeepAlign-Bench_正式研究Proposal.docx"', 'href="./DeepAlign-Bench_正式研究Proposal.docx"')
+    .replaceAll('href="/DeepAlign-Bench_正式Proposal精简版.pdf"', 'href="./DeepAlign-Bench_正式Proposal精简版.pdf"')
+    .replaceAll('href="/DeepAlign-Bench_正式Proposal精简版.docx"', 'href="./DeepAlign-Bench_正式Proposal精简版.docx"')
+    .replaceAll('href="/DeepAlign-Bench_完整人话版.pdf"', 'href="./DeepAlign-Bench_完整人话版.pdf"')
+    .replaceAll('href="/DeepAlign-Bench_完整人话版.docx"', 'href="./DeepAlign-Bench_完整人话版.docx"')
+    .replaceAll('href="/DeepAlign-Bench_汇报精简版.pdf"', 'href="./DeepAlign-Bench_汇报精简版.pdf"')
+    .replaceAll('href="/DeepAlign-Bench_汇报精简版.docx"', 'href="./DeepAlign-Bench_汇报精简版.docx"')
+    .replaceAll('href="/case.schema.yaml"', 'href="./case.schema.yaml"')
+    .replaceAll('href="/PROJECT_MEMORY.md"', 'href="../PROJECT_MEMORY.md"')
+    .replaceAll('href="/rubrics"', 'href="./DeepAlign-Bench_Rubric编译器工作台.html"')
+    .replaceAll('href="/literature"', 'href="./DeepAlign-Bench_七篇相关论文速览.html"')
+    .replaceAll('href="/figures"', 'href="./DeepAlign-Bench_论文图表蓝图.html"');
 }
 
 function localizeLiteratureBody(body) {
@@ -41,6 +44,8 @@ function localizeLiteratureBody(body) {
 function localizeFiguresBody(body) {
   return body
     .replaceAll('href="/"', 'href="./DeepAlign-Bench_HTML汇报版.html"')
+    .replaceAll('src="/DeepAlign-Bench_端到端流程图_v0.32.png"', `src="${referenceWorkflowFigureData}"`)
+    .replaceAll('href="/DeepAlign-Bench_端到端流程图_v0.32.png"', 'href="./DeepAlign-Bench_端到端流程图_v0.32.png"')
     .replaceAll('src="/DeepAlign-Bench_详细流程图.png"', `src="${workflowFigureData}"`)
     .replaceAll('href="/DeepAlign-Bench_详细流程图.png"', 'href="./DeepAlign-Bench_详细流程图.png"')
     .replaceAll('href="/DeepAlign-Bench_详细流程图.svg"', 'href="./DeepAlign-Bench_详细流程图.svg"');

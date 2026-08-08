@@ -2,9 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（v0.31）
+## 当前交付物（v0.32）
 
-- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.31 新增 task/persona 开工协议、direction-node registry、三环境工程顺序与 ICLR readiness 情景判断。
+- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.31 冻结 task/persona 开工协议、direction-node registry、三环境工程顺序与 ICLR readiness 情景判断；v0.32 不改方法正文。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：10 页标准论文 Proposal，保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
 - `deliverables/DeepAlign-Bench_完整人话版.pdf`：28 页直白语言版，适合组内逐项讨论。
 - `deliverables/DeepAlign-Bench_汇报精简版.pdf`：10 页导师汇报稿，适合 15–20 分钟讲解。
@@ -14,6 +14,7 @@
 - `deliverables/DeepAlign-Bench_论文图表蓝图.html`：主文五张图、四张表及附录图表规划；包含 Figure 3–5 的结果图可视原型。
 - `deliverables/DeepAlign-Bench_一页汇报图.pptx`：可直接汇报的一页 16:9 PowerPoint；同内容 PNG/SVG 位于 `proposal_assets/`。
 - `deliverables/DeepAlign-Bench_详细流程图.png`：从真实 task seed、task/case metadata、双用户 family 和 rubric 预冻结，一直到三环境运行、2×2 评价、四重成功门及 PDR-Bench 对照的 16:9 详细流程图；同名 SVG 可编辑源位于 `proposal_assets/` 和 `deliverables/`。
+- `deliverables/DeepAlign-Bench_端到端流程图_v0.32.png`：仿分区式学术信息图版式的 2560×1440 汇报版；保留 E1/E3/E2 分轨、环境内 Y0/Ya/Yb 条件、双向交叉评分、四重成功门、纵向压力诊断和结论边界。生成提示、原始 ImageGen 图与精确文字覆盖层位于 `proposal_assets/`。
 - `benchmark_schema/rubric_module_library.yaml`：36 个预定义 module（6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk），每个 case 只选择适用子集。
 - `benchmark_schema/data_factory.protocol.yaml`：把多篇文献映射为设计资产的 source-to-design ledger、数据构建阶段、vertical slice 停止门、anchor 对照和 E1→E3→E2 环境搭建顺序。
 - `benchmark_schema/construction_annotation.protocol.yaml`：自动 provenance、运行前双人人工构念标注、pilot 后 observed 字段，以及 seed funnel、真人招募和防泄漏规则。

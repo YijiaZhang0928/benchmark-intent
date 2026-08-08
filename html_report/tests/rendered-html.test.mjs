@@ -75,6 +75,7 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.doesNotMatch(html, /re-anchor|S4 恢复|Recovery &amp; Governance/i);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
   assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
+  assert.match(html, /href="\/DeepAlign-Bench_端到端流程图_v0\.32\.png"/i);
 });
 
 test("server-renders the rubric compiler workbench", async () => {
@@ -123,6 +124,8 @@ test("server-renders the paper figure and table blueprint", async () => {
   const html = await response.text();
   assert.match(html, /2 张方法图 \+ 2 张结果图 \+ 1 张测量效度图/);
   assert.match(html, /从 task metadata 到可审计结论/);
+  assert.match(html, /src="\/DeepAlign-Bench_端到端流程图_v0\.32\.png"/i);
+  assert.match(html, /参考式汇报版/);
   assert.match(html, /src="\/DeepAlign-Bench_详细流程图\.png"/i);
   assert.match(html, /href="\/DeepAlign-Bench_详细流程图\.svg"/i);
   assert.match(html, /Counterfactual family 构造与评分/);
@@ -185,6 +188,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   await Promise.all([
     access(new URL("../public/DeepAlign-Bench_主图.png", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_端到端流程图_v0.32.png", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_详细流程图.png", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_详细流程图.svg", import.meta.url)),
     access(

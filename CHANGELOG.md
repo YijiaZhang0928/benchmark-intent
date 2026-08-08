@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.32 - 2026-08-09
+
+- 依据正式 Proposal 新增 2560×1440 参考式端到端流程图，以分区卡片、图标、主流程和诊断带呈现双用户构造、运行前冻结、三环境分工、2×2 交叉评分、四重成功门、压力诊断和 PDR-Bench 对照。
+- 将参考图的实验语义视为待检验假设而非模板照搬：未采用“checkpoint 是所有运行必经步骤”的叙事，也不从最终交付物反推模型内部用户理解。
+- 修正初稿中环境与输出一一绑定的混淆；最终图明确每个 eligible 环境内部运行 Y0/Ya/Yb，E1/E3/E2 分轨报告，task family 仍是统计单位。
+- 使用内置 ImageGen 生成与定向修订视觉稿，并用确定性 SVG 覆盖层恢复生成模型未稳定绘出的 `task metadata ⊂ case metadata`；保留原 v0.31 工程详细图，不覆盖已有资产。
+- 同步图表 HTML、离线单文件版、测试、README、项目记忆和生成说明；研究问题、实验矩阵、schema、rubric、指标及 Proposal DOCX/PDF 均未改变。
+
 ## v0.31 - 2026-08-08
 
 - 将 task 元数据拆成自动 provenance、运行前双人人工构念标注与 pilot 后 observed 三层；冻结 60–80 seed → 30 候选 → 3 family vertical slice → 条件性扩到 24 的 funnel。

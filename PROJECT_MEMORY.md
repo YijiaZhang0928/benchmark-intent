@@ -2,8 +2,8 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-08
-当前版本：v0.31
+最后更新：2026-08-09
+当前版本：v0.32
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -173,6 +173,15 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 
 开放问题：真实用户招募预算与伦理/同意流程；两真实用户配对达成率；3-family pilot 的方差与 power；node registry 是否需要领域特定子节点；E1 evidence snapshot 的许可与索引实现；ICLR 投稿年份的截稿期是否允许完整真人研究。
 
+### 1.15 v0.32：新增参考式端到端流程图，不改变方法基线
+
+1. 用户提供的分区式研究流程图只作为**视觉假设**：借用编号分区、浅色卡片、图标、主流程与下方诊断带，不继承其中“自然执行—checkpoint 分叉”等实验语义。DeepAlign 的图仍以正式 Proposal 的 cross-user counterfactual estimand 为真源。
+2. 新图按七个区块展示：真实任务与双用户构造、运行前冻结 case bundle、E1/E3/E2 三环境分工、2×2 matched/swapped 交叉评分、四重成功门与真人效度、Acquire/Preserve/Use/Update 及 S0–S3 压力诊断、横向切片与结论边界；右侧另列 Case / 用户状态卡和 PDR-Bench 对照。
+3. 为避免图形制造混淆，明确每个 eligible 环境内部都可运行 `Y0 task-only / Ya matched-A / Yb matched-B`；E1、E3、E2 分轨报告，不把三种环境分别绑定三种输出，也不混为一个榜。统计单位仍为 task family。
+4. 图中结论只到“最终交付物具有可观察的用户反事实特异性”，不声称模型内部真正理解用户；过程归因只对 trace 可比的子集成立。图不预填结果、不画单一总榜，也不把 checkpoint 画成全部运行的必要步骤。
+5. 内置 ImageGen 负责参考式视觉草图和定向修订；由于密集中文和数学符号仍存在生成不稳定，最终 SVG 用确定性覆盖层恢复 `task metadata ⊂ case metadata`，并导出 2560×1440 PNG。原 v0.31 工程详细图继续保留，新图作为非覆盖式汇报版。
+6. 本轮没有改变研究问题、假设、实验矩阵、schema、rubric、指标或 Proposal 方法正文；因此不机械重导 DOCX/PDF。受影响范围仅为新增图源、图表 HTML、离线 HTML、README、项目记忆与版本记录。
+
 ## 2. 冻结的两个月范围
 
 - 24 个 counterfactual task family，覆盖 3 个使用情境 × 6 个 research intent，并以 6 个额外 family 复测关键单元。
@@ -316,3 +325,6 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.27：按样本支持度把 18-cell task cube 降为附录描述，主文改报 strata/intent 边际；failure 改为多标签 incidence；Cue Gap 与 retention 增加适用性门。
 - v0.28：定义固定模板路由、运行前 leaf expansion、leaf—metric 直接绑定和 CFA 派生链；新增四个 YAML compiler contract/example、Rubric 工作台及四版同步说明，并明确自动 validator/compiler 尚属第 1 周实现项。
 - v0.29：增加 source-to-design ledger 和 vertical slice 数据工厂；冻结 36-module rubric library、七类全面性审计、anchor 受控扰动归因边界与 E1→E3→E2 环境开工顺序。
+- v0.30：将 personalization success 拆为双向 specificity、相对 task-only benefit、共同质量 no-harm 与边界 no-violation 四重非补偿门，并以 task family 为统计单位。
+- v0.31：冻结 task/persona 三层标注、真人锚定配对、direction-node registry、E1→E3→E2 工程主次和 3-family vertical slice 开工链。
+- v0.32：新增参考分区式学术信息图的端到端汇报流程图；校正环境—条件关系、保留交叉评分和结论边界，方法与 schema 不变。

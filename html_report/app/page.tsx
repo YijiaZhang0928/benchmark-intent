@@ -95,7 +95,7 @@ export default function Home() {
           <div className="sectionHead"><h2>同一套方法，按阅读场景分成四版</h2><p>没有删改研究逻辑、实验设计、rubric、metrics 或 judge；只调整结构、语言密度和细节层级。</p></div>
           <div className="editionGrid">
             <article>
-              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.31 增加分层标注、真人锚定 persona、direction-node registry、环境工期与 ICLR readiness。</p>
+              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.31 冻结分层标注、真人锚定 persona、direction-node registry、环境工期与 ICLR readiness；v0.32 只新增配套流程图，不改方法。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
             </article>
             <article className="recommended">
@@ -451,7 +451,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.31 · 2026-08-08</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>一页主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.32 · 2026-08-09</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_端到端流程图_v0.32.png" download>端到端流程图</a><a href="/DeepAlign-Bench_主图.png" download>一页主图</a></div></div></footer>
     </main>
   );
 }
