@@ -168,6 +168,7 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 8. 新增机器可读文件：`construction_annotation.protocol.yaml`、`rubric_node_registry.yaml`、`environment_build.protocol.yaml`；case/template/module/leaf/bundle 版本同步到 0.31。
 9. 用户要求的 research skills 已安装到个人 Codex 目录：nature-academic-search、literature-review、academic-research-suite（即 ARS-Codex）、nature-reviewer，以及 ARIS 的 research-pipeline、AI-Research-SKILLs 的 autoresearch。ARIS/AI-Research-SKILLs 保留完整 source，仅注册中心入口；未启用 hook、cron、MCP 或自动循环。academic-research-suite 使用 CC BY-NC 4.0，涉及商业用途前需另审许可；本轮未把 literature-review 中“必须有图/作者声望”等启发式当作科学标准。
 10. 对“假设数据都能出来”的中稿判断需区分两种含义。若只是实验矩阵完整、但效应弱或只在少数 family 成立，仍属于约 20%–35% 的可投但不占优稿件；若双向 specificity、相对 task-only benefit、四重门、目标用户效度与 family-clustered 不确定性均稳定成立，且 E1/artifact 可复现，则从审稿视角属于 borderline positive 到 weak accept，主观区间约 40%–55%。这不是“数据出来即稳收”；最大剩余风险是相对 PDR-Bench 的 estimand 增量被认为过窄，以及真人 persona/rubric/judge 的测量效度不足。
+11. 相对 PDR-Bench 的最大且唯一应置于标题、摘要和 Introduction 首位的方法贡献，是一套非补偿式的用户反事实结果识别协议：固定 task/evidence/tools/budget，跨两位真实用户交叉评价 matched/swapped 产物，并同时要求双向 specificity、相对 task-only benefit、共同质量 no-harm 与权限/隐私 no-violation。2×2 公式本身不应声称数学创新；创新性必须由一个正面对照实验支撑，报告 PDR-style absolute adaptation 与 DeepAlign 判定的 disagreement、rank reversal/agent reclassification，以及高 absolute score 但无 specificity、只胜过 swapped 但不胜过 task-only、单边受益和共同核心受损四类 false positive。若新 estimand 不改变任何经验结论，reviewer 将有充分理由认为它只是增量指标。
 
 开放问题：真实用户招募预算与伦理/同意流程；两真实用户配对达成率；3-family pilot 的方差与 power；node registry 是否需要领域特定子节点；E1 evidence snapshot 的许可与索引实现；ICLR 投稿年份的截稿期是否允许完整真人研究。
 
