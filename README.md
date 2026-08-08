@@ -2,9 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（v0.29）
+## 当前交付物（v0.30）
 
-- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：65 页方法学底稿；v0.29 将文献来源映射、数据工厂、36-module rubric library、anchor 归因边界和三环境开工顺序写成可执行协议。
+- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.30 将 personalization 拆为跨用户 specificity 与相对 task-only benefit，并加入双向非补偿与共同质量/边界成立门。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：10 页标准论文 Proposal，保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
 - `deliverables/DeepAlign-Bench_完整人话版.pdf`：26 页直白语言版，适合组内逐项讨论。
 - `deliverables/DeepAlign-Bench_汇报精简版.pdf`：10 页导师汇报稿，适合 15–20 分钟讲解。
@@ -12,6 +12,7 @@
 - `deliverables/DeepAlign-Bench_Rubric编译器工作台.html`：离线可交互阅读的 compiler 专页，用一个完整 case 展示模板选择、leaf expansion、绑定和 CFA 计算。
 - `deliverables/DeepAlign-Bench_七篇相关论文速览.html`：七篇最近邻工作精读 + 22 篇 agent personalization / evaluation 扩展相关性审计；保留旧文件名以兼容已有链接。
 - `deliverables/DeepAlign-Bench_论文图表蓝图.html`：主文五张图、四张表及附录图表规划；包含 Figure 3–5 的结果图可视原型。
+- `deliverables/DeepAlign-Bench_一页汇报图.pptx`：可直接汇报的一页 16:9 PowerPoint；同内容 PNG/SVG 位于 `proposal_assets/`。
 - `benchmark_schema/rubric_module_library.yaml`：36 个预定义 module（6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk），每个 case 只选择适用子集。
 - `benchmark_schema/data_factory.protocol.yaml`：把多篇文献映射为设计资产的 source-to-design ledger、数据构建阶段、vertical slice 停止门、anchor 对照和 E1→E3→E2 环境搭建顺序。
 - `benchmark_schema/rubric_leaf.schema.yaml`、`rubric_template_registry.yaml`、`metric_binding.schema.yaml` 与 `rubric_bundle.example.yaml`：compiler contract、模板注册表、leaf—metric 绑定和完整编译示例。当前版本定义接口与预注册对象；自动 validator/compiler 是第 1 周实现项。

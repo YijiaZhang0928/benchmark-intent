@@ -1,5 +1,5 @@
 schema_name: deepalign_metric_binding
-schema_version: 0.29
+schema_version: 0.30
 description: >-
   Auditable map from direct leaf scores to aggregate and derived metrics. A leaf
   may bind to more than one direct metric only when the meanings are explicit;
@@ -48,6 +48,37 @@ derived_metrics:
     note: >-
       CFA is not a leaf score. The same frozen PF leaf bundle for user a judges
       both Y_a and Y_b; the user b bundle judges both Y_b and Y_a.
+  delta_a:
+    formula: PF_a(Y_a) - PF_a(Y_b)
+    depends_on: [PF_a_Y_a, PF_a_Y_b]
+    interpretation: user-a direction of the cross-user matched advantage
+  delta_b:
+    formula: PF_b(Y_b) - PF_b(Y_a)
+    depends_on: [PF_b_Y_b, PF_b_Y_a]
+    interpretation: user-b direction of the cross-user matched advantage
+  CFA_min:
+    formula: min(delta_a, delta_b)
+    depends_on: [delta_a, delta_b]
+    note: prevents a large positive effect for one user from compensating a negative effect for the other
+  gain_a_vs_task_only:
+    formula: PF_a(Y_a) - PF_a(Y_0)
+    depends_on: [PF_a_Y_a, PF_a_Y_0]
+  gain_b_vs_task_only:
+    formula: PF_b(Y_b) - PF_b(Y_0)
+    depends_on: [PF_b_Y_b, PF_b_Y_0]
+  gain_mean:
+    formula: 0.5 * (gain_a_vs_task_only + gain_b_vs_task_only)
+    depends_on: [gain_a_vs_task_only, gain_b_vs_task_only]
+  gain_min:
+    formula: min(gain_a_vs_task_only, gain_b_vs_task_only)
+    depends_on: [gain_a_vs_task_only, gain_b_vs_task_only]
+  bilateral_personalization_success:
+    formula: >-
+      delta_a > 0 AND delta_b > 0
+      AND gain_a_vs_task_only >= 0 AND gain_b_vs_task_only >= 0
+      AND eligibility(Y_a) AND eligibility(Y_b)
+    depends_on: [delta_a, delta_b, gain_a_vs_task_only, gain_b_vs_task_only, eligibility]
+    note: confirmatory success is a conjunction, never a compensatory aggregate
   neutral_invariance:
     formula: weighted_consistency_of_must_hold_leaves_across_Y_a_and_Y_b
     depends_on: [neutral_invariance_base]
@@ -66,6 +97,9 @@ derived_metrics:
 
 reporting_policy:
   one_overall_compensatory_score: prohibited
+  publish_both_user_directions: true
+  publish_specificity_and_task_only_benefit_as_separate_axes: true
+  inference_cluster_unit: task_family
   compare_only_within_eligible_execution_regime: true
   publish_leaf_to_metric_manifest: true
   publish_denominators_and_not_applicable_counts: true

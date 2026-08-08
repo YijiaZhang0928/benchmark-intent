@@ -111,7 +111,7 @@ export default function RubricsPage() {
         <article><b>有完整 trace</b><p>criterion → direct metric → aggregate → derived metric。</p></article>
       </section>
 
-      <section className="rubricStatus shell"><b>当前成熟度</b><p>v0.29 已产出 36-module 预定义 library、造数 protocol、compiler contract 与端到端示例；自动 validator、模板路由器和 bundle 导出器仍是第 1 周实现项。先用一个 vertical slice 验证方法，不把 schema 规模当作实验效度。</p></section>
+      <section className="rubricStatus shell"><b>当前成熟度</b><p>v0.30 已产出 36-module 预定义 library、造数 protocol、compiler contract、端到端示例和 specificity × benefit 判定接口；自动 validator、模板路由器和 bundle 导出器仍是第 1 周实现项。先用一个 vertical slice 验证方法，不把 schema 规模当作实验效度。</p></section>
 
       <section className="rubricSection shell" id="data-factory">
         <div className="sectionHead"><h2>很多篇论文怎么“杂糅”：按设计角色吸收，不按 taxonomy 求并集</h2><p>每篇来源先进入 source-to-design ledger；同一篇可以贡献多行，但每一行只能承担一个角色。这样 task、persona、failure、rubric 和 infra 不会混成一层。</p></div>
@@ -207,7 +207,7 @@ export default function RubricsPage() {
         <div className="schemaDownloads"><b>机器可读材料</b><a href="/data_factory.protocol.yaml" download>data factory</a><a href="/rubric_module_library.yaml" download>36-module library</a><a href="/case.schema.yaml" download>case schema</a><a href="/rubric_template_registry.yaml" download>template registry</a><a href="/rubric_leaf.schema.yaml" download>leaf schema</a><a href="/metric_binding.schema.yaml" download>metric binding</a><a href="/rubric_bundle.example.yaml" download>端到端 example bundle</a></div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><p>Rubric Compiler 工作台 · v0.29</p></div></footer>
+      <footer><div className="shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><p>Rubric Compiler 工作台 · v0.30</p></div></footer>
     </main>
   );
 }

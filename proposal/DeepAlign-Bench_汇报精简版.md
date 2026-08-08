@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.29 · 2026 年 8 月 8 日
+版本：v0.30 · 2026 年 8 月 8 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -111,7 +111,7 @@ case metadata + user ledger + contracts + evidence/permission
 
 现在另有一份 36-module library：6 Core + 9 Personalization + 6 Intent + 7 Deliverable + 4 Operator + 4 Risk。每个 case 只激活适用子集。强点不是“比 PDR-Bench 多几维”，而是每个 personalization leaf 有 user fact + must-change provenance、A/B 模块对称、同一 bundle 交叉评 matched/swapped，并用 must-hold/must-not 阻止无效差异和过度个性化。
 
-**当前成熟度：**v0.29 已冻结 compiler contract、36-module library、data-factory protocol 和端到端示例；自动 validator、模板路由器和 bundle 导出器是第 1 周工程任务。今晚确认的是方法接口与标注可行性，不把 schema 文件说成已经完成的生产系统。
+**当前成熟度：**v0.30 已冻结 compiler contract、36-module library、data-factory protocol、端到端示例和 specificity × benefit 的双轴判定；自动 validator、模板路由器和 bundle 导出器是第 1 周工程任务。当前确认的是方法接口与标注可行性，不把 schema 文件说成已经完成的生产系统。
 
 **Leaf expansion** 是运行前把复合要求拆成原子项。例如“Ua 的建议符合预算和风险”拆成“首阶段 ≤50 万”“三个月可逆试点”“继续/退出阈值”，每条都附 evidence target、0/1/2 锚点、weight、hard gate、judge route 和直接 metric binding。冻结后所有 agent 共用，不能看完输出再改。
 
@@ -141,12 +141,13 @@ TQ/FR/PF/MP 直接聚合 leaves；**CFA 不绑定某一条 leaf**。Ua 的同一
 |---|---|
 | TQ / FR | 任务和事实是否先过基本质量门槛 |
 | PF − MP | 用户特异要求减去误用、泄露和过度迎合 |
-| CFA | matched 是否稳定优于 swapped |
+| Δa / Δb；CFA mean/min | matched 是否在两个用户方向都优于 swapped，避免正负抵消 |
+| Gain mean/min vs task-only | 个性化是否真的让两位用户受益，而不只是把版本做得不同 |
 | Worst-view CFA / Cue Gap | 同一 user-state 换表达后是否仍稳定 |
 | Retention | 长任务中用户适配保留多少 |
 | Update | 状态改变后采用当前真值、避免旧状态残留的能力 |
 
-主榜先过 TQ、FR 和关键隐私门槛，再报告个性化指标。不能用“懂用户”补偿事实错误。
+主榜先过 TQ、FR 和关键隐私门槛，再把个性化画成 `specificity × benefit` 二维结果。只有双向 matched>swapped、双向不劣于 task-only、共同质量稳定且边界不违规，才记为 confirmatory success。
 
 Leaderboard 分四张 profile：clean task/deliverable、signal acquisition、S0–S3 stress/failure curve、boundary/governance；只有同 anchor、同环境、同预算的 agent 才做显著性比较。
 
@@ -180,7 +181,7 @@ SFT scorer 只在第 4 周前已有高质量 gold 且不阻塞主实验时进入
 ## 7. 预期论文贡献
 
 1. **Evaluation Atlas**：机器可读地描述 task、environment、user state、signal 和 agent；
-2. **Counterfactual families**：用 matched/swapped 构造跨用户 2×2 对角优势，并用语义等价信号检查表面 cue 敏感性；
+2. **Counterfactual families**：用 matched/swapped 构造跨用户 2×2 对角优势，用 task-only uplift 区分“版本可区分”和“用户真受益”，并以双向非补偿门防止一位用户的收益掩盖另一位用户的损失；
 3. **Failure taxonomy**：任务类型负责覆盖，结果风险和失败模式负责诊断；
 4. **Rubric compiler**：根据元数据选择可适用模块；
 5. **JudgeBench**：先证明评委可靠，再发布自动榜单；
@@ -214,7 +215,7 @@ PDR-Bench 已建立 task–persona 条件下的 absolute adaptation evaluation�
 ## 10. 最重要的风险
 
 - Persona 如果只是作者想象，个性化 gold 不成立；
-- Rubric 如果不能区分 matched/swapped，CFA 没有意义；
+- Rubric 如果不能区分 matched/swapped，或 matched 只是比 swapped 好却不优于 task-only，个性化结论没有意义；
 - Judge 如果偏爱长度和风格，自动榜单不可信；
 - 元数据很多但测试稀疏，必须公开 coverage 缺口；
 - 不同 agent 工具和预算不同，必须分轨道比较；

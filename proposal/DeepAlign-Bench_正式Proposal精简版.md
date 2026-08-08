@@ -2,17 +2,17 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.29 · 2026 年 8 月 8 日
+版本：v0.30 · 2026 年 8 月 8 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.29
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.30
 
 ---
 
 ## 摘要
 
-个性化 agent 研究已经从用户历史建模扩展到任务对话、工具调用、长程记忆和 Deep Research；[[23]](https://aclanthology.org/2024.acl-long.399/)[[24]](https://aclanthology.org/2025.findings-acl.927/)[[25]](https://aclanthology.org/2025.acl-long.1064/)[[26]](https://arxiv.org/abs/2504.14225)[[27]](https://arxiv.org/abs/2605.10530)[[28]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 已能够评价 task–persona 条件下的 absolute adaptation，但其最佳 judge 的人类 pairwise agreement 仅 0.43，校准只覆盖 15 个 query 与两个 agent。[[4]](https://arxiv.org/abs/2509.25106) DeepAlign 的方法增量不是 rubric 更懂 persona，而是转向 **counterfactual personalization effect identification**；JudgeBench 则解决新 estimand 的测量可靠性。本项目固定任务与证据，交换两个都合理的目标用户，并用预冻结契约约束有效变化。
+个性化 agent 研究已经从用户历史建模扩展到任务对话、工具调用、长程记忆和 Deep Research；[[11]](https://aclanthology.org/2024.acl-long.399/)[[12]](https://aclanthology.org/2025.findings-acl.927/)[[13]](https://aclanthology.org/2025.acl-long.1064/)[[14]](https://arxiv.org/abs/2504.14225)[[15]](https://arxiv.org/abs/2605.10530)[[16]](https://aclanthology.org/2026.acl-long.723/) PDR-Bench 已能够评价 task–persona 条件下的 absolute adaptation，但其最佳 judge 的人类 pairwise agreement 仅 0.43，校准只覆盖 15 个 query 与两个 agent。[[3]](https://arxiv.org/abs/2509.25106) DeepAlign 的方法增量不是 rubric 更懂 persona，而是转向 **counterfactual personalization effect identification**；JudgeBench 则解决新 estimand 的测量可靠性。本项目固定任务与证据，交换两个都合理的目标用户，并用预冻结契约约束有效变化。
 
 核心方法是反事实任务族：固定任务、证据、工具与资源预算，只改变目标用户；再将两个用户的交付物进行 matched/swapped 交换评分。只有匹配交付物稳定优于错配交付物，且共同任务质量、事实性、安全与隐私不下降时，才认定为有效个性化。评测框架包括五平面元数据、反事实任务族、元数据驱动的 rubric compiler、分层指标和独立 JudgeBench。
 
@@ -22,13 +22,13 @@
 
 ### 1.1 现有评测的不足
 
-现有文献先解决了“研究结果一般好不好”。LiveResearchBench、PaperBench 等评价任务完成、事实、引用和报告完整性，OpenCompass 与 EvalScope 提供运行基础设施。[[5]](https://arxiv.org/abs/2510.14240)[[7]](https://openai.com/index/paperbench/)[[1]](https://arxiv.org/abs/2605.19276)[[2]](https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html) 这些指标是个性化不能牺牲的共同质量底线，但它们通常不回答“同一份证据对哪个用户更有用”。
+现有文献先解决了“研究结果一般好不好”。LiveResearchBench、PaperBench 等评价任务完成、事实、引用和报告完整性，OpenCompass 与 EvalScope 提供运行基础设施。[[4]](https://arxiv.org/abs/2510.14240)[[5]](https://openai.com/index/paperbench/)[[1]](https://arxiv.org/abs/2605.19276)[[2]](https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html) 这些指标是个性化不能牺牲的共同质量底线，但它们通常不回答“同一份证据对哪个用户更有用”。
 
-随后，研究开始让评价函数随用户改变。LaMP 从用户历史评测个性化生成，PersonaLens 把丰富画像和历史放进任务型对话，PersonaMem 要求模型跟踪会变化的用户画像；[[23]](https://aclanthology.org/2024.acl-long.399/)[[24]](https://aclanthology.org/2025.findings-acl.927/)[[26]](https://arxiv.org/abs/2504.14225) Setoka、PersonaTrail 和 APeB 又把用户信号扩展到异构记录、浏览轨迹和行为日志。[[16]](https://arxiv.org/abs/2607.27056)[[18]](https://arxiv.org/abs/2607.20482)[[22]](https://arxiv.org/abs/2607.03162) 因此，“用户理解或历史利用无人评测”已经不是可辩护的起点；这些工作主要仍以响应选择、记忆问答或单域意图为终点。
+随后，研究开始让评价函数随用户改变。LaMP 从用户历史评测个性化生成，PersonaLens 把丰富画像和历史放进任务型对话，PersonaMem 要求模型跟踪会变化的用户画像；[[11]](https://aclanthology.org/2024.acl-long.399/)[[12]](https://aclanthology.org/2025.findings-acl.927/)[[14]](https://arxiv.org/abs/2504.14225) Setoka、PersonaTrail 和 APeB 又把用户信号扩展到异构记录、浏览轨迹和行为日志。[[6]](https://arxiv.org/abs/2607.27056)[[7]](https://arxiv.org/abs/2607.20482)[[10]](https://arxiv.org/abs/2607.03162) 因此，“用户理解或历史利用无人评测”已经不是可辩护的起点；这些工作主要仍以响应选择、记忆问答或单域意图为终点。
 
-个性化也已经从“说什么”进入“做什么”。ETAPP 用人工关键点评测个性化与主动工具调用，Mem2ActBench 检查长期记忆能否落实到工具参数；[[25]](https://aclanthology.org/2025.acl-long.1064/)[[30]](https://aclanthology.org/2026.acl-long.370/) TARS 测代码解释的人类效用，PAHF 用澄清、记忆和反馈适应偏好漂移，PASB 与 PS-Bench 分别暴露持久写入和良性个人记忆带来的安全风险。[[19]](https://arxiv.org/abs/2607.15948)[[29]](https://arxiv.org/abs/2602.16173)[[21]](https://arxiv.org/abs/2607.10526)[[31]](https://aclanthology.org/2026.acl-long.1260/) 这意味着 DeepAlign-Bench 不能把“行动、更新或风险”本身当作首创；现有终点多是离散工具/GUI 行动、分类、推荐或安全失败，还没有统一到多证据的开放式 DR 交付物。
+个性化也已经从“说什么”进入“做什么”。ETAPP 用人工关键点评测个性化与主动工具调用，Mem2ActBench 检查长期记忆能否落实到工具参数；[[13]](https://aclanthology.org/2025.acl-long.1064/)[[18]](https://aclanthology.org/2026.acl-long.370/) TARS 测代码解释的人类效用，PAHF 用澄清、记忆和反馈适应偏好漂移，PASB 与 PS-Bench 分别暴露持久写入和良性个人记忆带来的安全风险。[[8]](https://arxiv.org/abs/2607.15948)[[17]](https://arxiv.org/abs/2602.16173)[[9]](https://arxiv.org/abs/2607.10526)[[19]](https://aclanthology.org/2026.acl-long.1260/) 这意味着 DeepAlign-Bench 不能把“行动、更新或风险”本身当作首创；现有终点多是离散工具/GUI 行动、分类、推荐或安全失败，还没有统一到多证据的开放式 DR 交付物。
 
-最后，PDR-Bench 和另一项 PDR 工作已经把 persona 或动态上下文接入 Deep Research。[[4]](https://arxiv.org/abs/2509.25106)[[27]](https://arxiv.org/abs/2605.10530) PDR 的 P-Score 按 task/persona 生成权重与子标准，能回答“给定用户，这份报告是否适合”；DeepAlign 改问“固定 task/evidence/resources，只换用户后，两份交付物是否各自更适合对应用户”，并以 must-change / must-hold / must-not 排除方向错误、共同事实破坏和过度推断。PDR 的测量边界也需保留：15-query/2-agent 校准中最佳 PCA=0.43；两层动态 rubric 会引入 criterion variance；human panel 不等于目标用户效度；事实分依赖 claim 抽取—去重—抓取—支持判断链；P/Q/R 算术平均还可能补偿关键事实失败。[[4]](https://arxiv.org/abs/2509.25106) 这些支持独立 JudgeBench 和 hard gate，但不是 estimand 创新的替代。
+最后，PDR-Bench 和另一项 PDR 工作已经把 persona 或动态上下文接入 Deep Research。[[3]](https://arxiv.org/abs/2509.25106)[[15]](https://arxiv.org/abs/2605.10530) PDR 的 P-Score 按 task/persona 生成权重与子标准，能回答“给定用户，这份报告是否适合”；DeepAlign 改问“固定 task/evidence/resources，只换用户后，两份交付物是否各自更适合对应用户”，并以 must-change / must-hold / must-not 排除方向错误、共同事实破坏和过度推断。PDR 的测量边界也需保留：15-query/2-agent 校准中最佳 PCA=0.43；两层动态 rubric 会引入 criterion variance；human panel 不等于目标用户效度；事实分依赖 claim 抽取—去重—抓取—支持判断链；P/Q/R 算术平均还可能补偿关键事实失败。[[3]](https://arxiv.org/abs/2509.25106) 这些支持独立 JudgeBench 和 hard gate，但不是 estimand 创新的替代。
 
 ### 1.2 研究空缺
 
@@ -138,12 +138,12 @@ Compiler 已有机器可读 contract 和固定模板设计，不是让 LLM 对�
 
 1. **Task Quality (TQ) / Factual Reliability (FR)：** 任务完成、关键覆盖、claim 支持、引用覆盖和来源质量；
 2. **Personalization Fit (PF) / Misuse Penalty (MP)：** 用户特异要求完成率，以及刻板化、误用、隐私和过度迎合惩罚；
-3. **Counterfactual Fit Advantage (CFA)：** CFA 不直接绑定 leaf。用户 a 的同一组冻结 PF leaves 同时评分 (Y_a,Y_b)，用户 b 同理；四个 PF 聚合后计算
-   CFA(a,b) = 1/2 [(PF_a(Y_a)-PF_a(Y_b)) + (PF_b(Y_b)-PF_b(Y_a))]；
-4. **Cue robustness：** 对语义等价 signal views 报告 worst-view CFA、Cue Gap、must-change/must-hold 一致率和 irrelevant-cue effect；
-5. **Retention / Update：** 长程干扰下的适配保留率、动态状态采用正确率与旧状态残留率。
+3. **Counterfactual Fit Advantage (CFA)：** CFA 不直接绑定 leaf。先保留 `Δ_a=PF_a(Y_a)-PF_a(Y_b)` 与 `Δ_b=PF_b(Y_b)-PF_b(Y_a)`，再报告 `CFA_mean=(Δ_a+Δ_b)/2` 和不可方向补偿的 `CFA_min=min(Δ_a,Δ_b)`；只有两方向都为正才算 bilateral success；
+4. **Task-only uplift：** 利用主矩阵已有 `Y_0`，报告 `G_a=PF_a(Y_a)-PF_a(Y_0)`、`G_b=PF_b(Y_b)-PF_b(Y_0)` 及 mean/min；它把“能区分用户”和“确实让用户受益”分开；
+5. **Cue robustness：** 对语义等价 signal views 报告 worst-view CFA、Cue Gap、must-change/must-hold 一致率和 irrelevant-cue effect；
+6. **Retention / Update：** 长程干扰下的适配保留率、动态状态采用正确率与旧状态残留率。
 
-主榜先应用 TQ、FR 和关键隐私/安全门槛，再报告 PF-MP、CFA、cue robustness、Retention 和 Update。不将这些指标简单平均成允许相互补偿的总分。
+主榜先应用 TQ、FR 和关键隐私/安全门槛，再把 personalization 作为二维 profile 报告：跨用户 specificity（CFA）× 相对 task-only benefit（Gain）。只有 `Δ_a,Δ_b>0`、`G_a,G_b≥0` 且共同质量/边界过门，才进入确认性成功率；不把这些指标平均成可补偿总分。
 
 ### 5.3 Judge 与 JudgeBench
 
@@ -155,11 +155,11 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 ### 6.1 数据质量控制
 
-每个 task-persona 对必须通过六项门槛：场景真实、决策相关、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。标注者先独立编写 must-change 和 must-hold，再处理分歧。人类真值分工固定：领域专家评事实、证据和共同质量，目标用户确认 must-change / must-not 并盲评 matched/swapped；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。[[28]](https://aclanthology.org/2026.acl-long.723/) Rubric 还必须通过内容映射、matched/swapped 区分、nuisance invariance、去重/消融、权重敏感性、目标用户/专家效度和 residual-error saturation；未通过的 module 删除、合并或降为探索性分析。
+每个 task-persona 对必须通过六项门槛：场景真实、决策相关、用户间可区分、存在共同核心、信息最少且隐私可控、不依赖刻板印象。标注者先独立编写 must-change 和 must-hold，再处理分歧。人类真值分工固定：领域专家评事实、证据和共同质量，目标用户确认 must-change / must-not 并盲评 matched/swapped；纯合成 persona 只用于压力测试，不能单独支撑真实用户效用。[[16]](https://aclanthology.org/2026.acl-long.723/) Rubric 还必须通过内容映射、matched/swapped 区分、nuisance invariance、去重/消融、权重敏感性、目标用户/专家效度和 residual-error saturation；未通过的 module 删除、合并或降为探索性分析。
 
 ### 6.2 统计方案
 
-主效应采用 task family 内 matched/swapped 配对比较，报告 bootstrap 置信区间和 family-level 方差。渠道、agent 和压力条件通过分层模型或预注册配对检验分析。排名差异若小于人评与 judge 不确定性，不发布伪精确名次。
+确认性分析以 task family 为聚类单位，对双向 CFA 与 task-only uplift 做 family-blocked permutation test 和 cluster bootstrap；同一 family 的四格评分不当作独立样本。目标用户盲评报告 matched/swapped/task-only 的 pairwise match win probability（tie=0.5）；带 family/user/rater 随机效应的 Bradley–Terry 或 ordinal mixed model仅作数据量足够时的敏感性分析。排名差异若小于人评与 judge 不确定性，不发布伪精确名次。
 
 ### 6.3 可复现与污染控制
 
@@ -170,7 +170,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 ### 7.1 预期贡献
 
 1. 可扩展的 Deep Research Evaluation Atlas 和 coverage manifest；
-2. 从 absolute adaptation evaluation 转向 counterfactual personalization effect identification：用 matched/swapped 交叉评分矩阵和三类预冻结契约识别方向正确、边界受控的用户特异变化；
+2. 从 absolute adaptation evaluation 转向 counterfactual personalization effect identification：用 matched/swapped 交叉评分、双向非补偿门和 task-only uplift，分别识别用户特异性与真实受益；
 3. 由元数据选择适用模块的 rubric compiler 和不可补偿质量门槛；
 4. 分离结果风险与预期失败模式的诊断 taxonomy；
 5. 用于审计个性化评委的 JudgeBench 和可复现运行协议。
@@ -178,7 +178,7 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 ### 7.2 Go / No-Go 标准
 
 - 至少 80% 的 task family 能得到稳定的人类用户差异判断；
-- 参考交付物在共同质量达标时显示 matched 优于 swapped；
+- 参考交付物在共同质量达标时对两个用户都显示 matched 优于 swapped，且相对 task-only 的双向 uplift 不为负；
 - Judge 达到预注册一致性与校准门槛，否则扩大人评并停止自动精细排名；
 - 个性化效应在共同质量门槛、目标用户盲评与语义等价信号检验下仍存在；
 - 两个月内完成冻结主矩阵、覆盖审计、至少 20% 人评和可复现分析；所有 real-user-gold family 与不少于 8 个分层 family 收集目标用户 matched/swapped 盲评。
@@ -209,68 +209,40 @@ JudgeBench 计划构建 240 个单元，覆盖位置交换、长度控制、漂�
 
 ## 参考文献
 
-[1] OpenCompass Team. *OpenCompass: A Universal Evaluation Platform for Large Language Models*. 2026.
+[1] [OpenCompass](https://arxiv.org/abs/2605.19276). 2026.
 
-[2] EvalScope Documentation. *Getting Started and Evaluation Backends*. 2026.
+[2] [EvalScope documentation](https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html). 2026.
 
-[3] Zhang et al. *Agent-SafetyBench: Evaluating the Safety of LLM Agents*. arXiv:2412.14470, 2024.
+[3] [Towards Personalized Deep Research: Benchmarks and Evaluations](https://arxiv.org/abs/2509.25106). 2025.
 
-[4] *Towards Personalized Deep Research: Benchmarks and Evaluations*. arXiv:2509.25106, 2025.
+[4] [LiveResearchBench](https://arxiv.org/abs/2510.14240). 2025.
 
-[5] Wang et al. *LiveResearchBench: A Live Benchmark for User-Centric Deep Research in the Wild*. arXiv:2510.14240, 2025.
+[5] [PaperBench](https://openai.com/index/paperbench/). OpenAI, 2025.
 
-[6] Sharma et al. *ResearchRubrics: A Benchmark of Prompts and Rubrics for Evaluating Deep Research Agents*. arXiv:2511.07685, 2025.
+[6] [Setoka](https://arxiv.org/abs/2607.27056). 2026.
 
-[7] Starace et al. *PaperBench: Evaluating AI's Ability to Replicate AI Research*. OpenAI, 2025.
+[7] [PersonaTrail](https://arxiv.org/abs/2607.20482). 2026.
 
-[8] Yoran et al. *AssistantBench: Can Web Agents Solve Realistic and Time-Consuming Tasks?* arXiv:2407.15711, 2024.
+[8] [TARS](https://arxiv.org/abs/2607.15948). 2026.
 
-[9] Java et al. *Characterizing Deep Research: A Benchmark and Formal Definition*. arXiv:2508.04183, 2025.
+[9] [Agents Don't Just Agree, They Remember](https://arxiv.org/abs/2607.10526). 2026.
 
-[10] Abaskohi et al. *DRBench: A Realistic Benchmark for Enterprise Deep Research*. arXiv:2510.00172, 2025.
+[10] [APeB](https://arxiv.org/abs/2607.03162). 2026.
 
-[11] Liang et al. *Holistic Evaluation of Language Models*. TMLR, 2023.
+[11] [LaMP](https://aclanthology.org/2024.acl-long.399/). ACL, 2024.
 
-[12] Ribeiro et al. *Beyond Accuracy: Behavioral Testing of NLP Models with CheckList*. ACL, 2020.
+[12] [PersonaLens](https://aclanthology.org/2025.findings-acl.927/). Findings of ACL, 2025.
 
-[13] Reuel et al. *BetterBench: Assessing AI Benchmarks, Uncovering Issues, and Establishing Best Practices*. arXiv:2411.12990, 2024.
+[13] [ETAPP](https://aclanthology.org/2025.acl-long.1064/). ACL, 2025.
 
-[14] Zhu et al. *JudgeLM: Fine-tuned Large Language Models are Scalable Judges*. arXiv:2310.17631, 2023.
+[14] [PersonaMem](https://arxiv.org/abs/2504.14225). 2025.
 
-[15] Huang et al. *An Empirical Study of LLM-as-a-Judge for LLM Evaluation*. arXiv:2403.02839, 2024.
+[15] [Personalized Deep Research](https://arxiv.org/abs/2605.10530). 2026.
 
-[16] Zeng et al. *Setoka: A Benchmark for Hierarchical User Understanding in Personalized Agents over Heterogeneous Data*. arXiv:2607.27056, 2026.
+[16] [MyScholarQA](https://aclanthology.org/2026.acl-long.723/). ACL, 2026.
 
-[17] Qian et al. *Toward User-Conditioned Evaluation of Personal LLM Agents under Temporal Interventions*. arXiv:2607.21635, 2026.
+[17] [Learning Personalized Agents from Human Feedback](https://arxiv.org/abs/2602.16173). 2026.
 
-[18] Yang et al. *PersonaTrail: Benchmarking Personalized Web Agents through Browsing Trails*. arXiv:2607.20482, 2026.
+[18] [Mem2ActBench](https://aclanthology.org/2026.acl-long.370/). ACL, 2026.
 
-[19] Todisco et al. *TARS: A Theory-of-Mind Agent for Personalized In-IDE Code Comprehension*. arXiv:2607.15948, 2026.
-
-[20] Yang. *Self-Aware Recursively Self-Improving Agents for Personal Singularity*. arXiv:2607.12254, 2026.
-
-[21] Mao et al. *Agents Don't Just Agree, They Remember: Benchmarking Persistent Sycophancy in Stateful Personal Agents*. arXiv:2607.10526, 2026.
-
-[22] Yang et al. *APeB: Benchmarking Personalization Ability of Large Language Model Agents*. arXiv:2607.03162, 2026.
-
-[23] Salemi et al. [LaMP: When Large Language Models Meet Personalization](https://aclanthology.org/2024.acl-long.399/). ACL, 2024.
-
-[24] Zhao et al. [PersonaLens: A Benchmark for Personalization Evaluation in Conversational AI Assistants](https://aclanthology.org/2025.findings-acl.927/). Findings of ACL, 2025.
-
-[25] Hao et al. [Evaluating Personalized Tool-Augmented LLMs from the Perspectives of Personalization and Proactivity](https://aclanthology.org/2025.acl-long.1064/). ACL, 2025.
-
-[26] Jiang et al. [Know Me, Respond to Me: Benchmarking LLMs for Dynamic User Profiling and Personalized Responses at Scale](https://arxiv.org/abs/2504.14225). arXiv:2504.14225, 2025.
-
-[27] Li et al. [Personalized Deep Research: A User-Centric Framework, Dataset, and Hybrid Evaluation for Knowledge Discovery](https://arxiv.org/abs/2605.10530). arXiv:2605.10530, 2026.
-
-[28] Balepur et al. [Language Models Don't Know What You Want: Evaluating Personalization in Deep Research Needs Real Users](https://aclanthology.org/2026.acl-long.723/). ACL, 2026.
-
-[29] Liang et al. [Learning Personalized Agents from Human Feedback](https://arxiv.org/abs/2602.16173). arXiv:2602.16173, 2026.
-
-[30] Shen et al. [Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents](https://aclanthology.org/2026.acl-long.370/). ACL, 2026.
-
-[31] Guo et al. [When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents](https://aclanthology.org/2026.acl-long.1260/). ACL, 2026.
-
-[32] Weeber et al. [One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization](https://aclanthology.org/2026.acl-long.2079/). ACL, 2026.
-
-[33] Qiu et al. [Preference-Aware Rubric Learning for Personalized Evaluation](https://arxiv.org/abs/2605.31545). arXiv:2605.31545, 2026.
+[19] [When Personalization Legitimizes Risks](https://aclanthology.org/2026.acl-long.1260/). ACL, 2026.

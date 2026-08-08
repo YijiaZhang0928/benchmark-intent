@@ -116,7 +116,8 @@ test("server-renders the paper figure and table blueprint", async () => {
   const html = await response.text();
   assert.match(html, /2 张方法图 \+ 2 张结果图 \+ 1 张测量效度图/);
   assert.match(html, /Counterfactual family 构造与评分/);
-  assert.match(html, /PF swapped/);
+  assert.match(html, /Specificity × benefit profile/);
+  assert.match(html, /Benefit vs task-only/);
   assert.match(html, /Multi-label failure incidence/);
   assert.match(html, /完整 18 个交叉格/);
   assert.match(html, /JudgeBench 与人类校准/);
@@ -142,7 +143,7 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.29/m);
+  assert.match(schema, /^schema_version:\s*0\.30/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
   assert.match(schema, /estimand:\s*counterfactual_personalization_effect/);
@@ -161,6 +162,9 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
   assert.match(dataFactory, /replication_rule/);
   assert.match(metricBinding, /CFA:/);
   assert.match(metricBinding, /CFA is not a leaf score/);
+  assert.match(metricBinding, /CFA_min:/);
+  assert.match(metricBinding, /gain_a_vs_task_only:/);
+  assert.match(metricBinding, /bilateral_personalization_success:/);
   assert.match(exampleBundle, /U-A-BUDGET-01/);
   assert.match(exampleBundle, /apply unchanged to both Y_a and Y_b/);
   assert.match(manifest, /coverage_status/);

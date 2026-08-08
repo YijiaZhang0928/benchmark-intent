@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.30 - 2026-08-08
+
+- 将 personalization 结论从单一平均 CFA 改为 specificity × benefit 二维识别：分别报告 `Δ_a/Δ_b`、`CFA_mean/CFA_min` 与 matched 相对 task-only 的 `G_a/G_b`、`Gain_mean/Gain_min`。
+- 增加双向非补偿门：一位用户的强正效应不能抵消另一位用户的负效应；matched 只比 swapped 好但不优于 task-only 也不算确认性成功。
+- 冻结四重成功条件：bilateral specificity、bilateral non-inferior uplift、TQ/FR/must-hold no-harm、critical must-not/隐私/权限无违规，并由目标用户盲评 match effect 复核。
+- 将统计单位明确为 task family；主分析使用 family-blocked permutation 与 cluster bootstrap，Bradley–Terry/ordinal mixed model仅作样本量足够时的敏感性分析。
+- 重做一页汇报主图，并同步四版 Proposal、metric binding/bundle schema、DOCX/PDF、HTML 与可编辑单页 PPTX。
+
 ## v0.29 - 2026-08-08
 
 - 新增 `data_factory.protocol.yaml`：将多篇论文先映射为 task seed、user-signal construct、perturbation hypothesis、rubric/judge method 或 infrastructure 五类设计资产，再进入 0–7 阶段数据构建；禁止直接拼接论文 taxonomy。

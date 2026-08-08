@@ -95,7 +95,7 @@ export default function Home() {
           <div className="sectionHead"><h2>同一套方法，按阅读场景分成四版</h2><p>没有删改研究逻辑、实验设计、rubric、metrics 或 judge；只调整结构、语言密度和细节层级。</p></div>
           <div className="editionGrid">
             <article>
-              <span>METHOD BASELINE · 65 PAGES</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.29 增加可执行的数据工厂、36-module library、anchor 归因边界和 E1→E3→E2 的搭建顺序。</p>
+              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>方法学底稿。v0.30 将 personalization 拆成跨用户 specificity 与相对 task-only benefit，并加入双向非补偿和 no-harm 门。</p>
               <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
             </article>
             <article className="recommended">
@@ -296,11 +296,12 @@ export default function Home() {
         <div className="metricGrid">
           <article className="blue"><span>TQ / FR</span><h3>共同质量与事实性</h3><p>任务完成、关键覆盖、claim 支持、引用覆盖与来源质量。</p></article>
           <article className="green"><span>PF − MP</span><h3>净个性化适配</h3><p>用户特异要求完成率，扣除刻板化、误用、隐私和过度迎合。</p></article>
-          <article className="violet"><span>CFA</span><h3>跨用户对角优势</h3><p>匹配报告相对交换报告，在两个用户方向上取得的平均优势；不解释内部机制。</p></article>
+          <article className="violet"><span>ΔA / ΔB · CFA MEAN/MIN</span><h3>跨用户特异性</h3><p>两位用户分别比较 matched 与 swapped；min 防止一位用户的收益抵消另一位的损失。</p></article>
+          <article className="green"><span>GAIN VS TASK-ONLY</span><h3>真实用户受益</h3><p>matched 相对 task-only 的双向增益；区分“版本不同”和“对用户真的更有用”。</p></article>
           <article className="green"><span>WORST CFA / CUE GAP</span><h3>跨表达稳健性</h3><p>同一 user-state 换语义等价表达后，最差表现与最大波动。</p></article>
           <article className="amber"><span>AUC / Δ</span><h3>保持与更新</h3><p>长程干扰下的适配曲线、动态状态采用正确率、旧状态残留与压力副作用。</p></article>
         </div>
-        <div className="formula"><div><span>核心公式</span><strong>CFA(a,b) = ½[(PFₐ(Yₐ) − PFₐ(Yᵦ)) + (PFᵦ(Yᵦ) − PFᵦ(Yₐ))]</strong></div><p>CFA &gt; 0 才表示“对的人得到对的版本”，而不是所有版本都变得更长、更漂亮。</p></div>
+        <div className="formula"><div><span>双轴判定</span><strong>specificity: Δₐ, Δᵦ, CFA mean/min　×　benefit: Gₐ, Gᵦ, Gain mean/min</strong></div><p>只有双向 matched&gt;swapped、双向不劣于 task-only、共同质量稳定且边界不违规，才记为确认性 personalization success。</p></div>
         <div className="sectionHead compactHead"><h2>不发布一个掩盖差异的总分：榜单按四种能力画像报告</h2><p>同一模型可能写得好却不会主动澄清，也可能 clean 表现高但一遇冲突就崩；四个 profile 分开显示这种能力结构。</p></div>
         <div className="metricGrid">
           <article className="blue"><span>PROFILE A</span><h3>Base Delivery</h3><p>clean 条件下的 TQ、FR、PF、CFA：有没有把报告、代码或表格做对，并真正区分两位用户。</p></article>
@@ -438,7 +439,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.29 · 2026-08-08</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>主图</a></div></div></footer>
+      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.30 · 2026-08-08</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_主图.png" download>一页主图</a></div></div></footer>
     </main>
   );
 }

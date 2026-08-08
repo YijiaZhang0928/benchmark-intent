@@ -11,7 +11,7 @@ const figures = [
     title: "Benchmark 总览",
     question: "整套 benchmark 如何从用户信号走到可审计的结论？",
     placement: "Introduction 末尾 · 双栏通栏",
-    panels: ["Task + evidence + paired user state", "Signal view + environment", "Agent system", "Matched / swapped artifacts", "Gate + CFA + profiles"],
+    panels: ["Gap: absolute fit ≠ identified effect", "Controlled Ua/Ub crossover", "Specificity × task-only benefit", "Quality / boundary gates", "Scope + claim boundary"],
     rule: "顶部放 Atlas 条件带；底部只放 S0–S3 stress 与 JudgeBench 两条验证支线。不要把 taxonomy 全部塞进主图。",
   },
   {
@@ -27,7 +27,7 @@ const figures = [
     title: "主能力与 Leaderboard profile",
     question: "哪些 agent 在哪些任务上产生了用户特异价值？",
     placement: "Results 开头 · 双栏通栏",
-    panels: ["A · PF swapped × PF matched signature plot", "B · CFA forest plot + 95% CI + gates", "C · Agent × strata / intents marginal heatmaps", "D · Cost–CFA Pareto scatter"],
+    panels: ["A · CFA specificity × task-only benefit", "B · Δa/Δb + mean/min forest", "C · Agent × strata / intents marginal heatmaps", "D · Cost–bilateral-success Pareto"],
     rule: "A 解释 estimand，B 给不确定性，C 显示能力拓扑，D 报告效率。不画雷达图，不给单一总冠军；不同 execution regime 分块。",
   },
   {
@@ -51,7 +51,7 @@ const figures = [
 const tables = [
   ["T1", "相关工作定位", "PDR-Bench、ResearchRubrics、DR Bench、PersonaTrail/APeB、PASB、DeepAlign", "absolute fit、cross-user counterfactual、contracts、multi-cue、longitudinal、human/judge validity"],
   ["T2", "数据与实测覆盖", "task stratum、intent、deliverable、signal、environment、agent、anchor、stakes", "family/episode/user-pair 数与 tested / defined-only / inapplicable / deferred"],
-  ["T3", "主 Leaderboard 数值", "每行一个可比的 agent × execution regime", "TQ、FR、PF matched/swapped、MP、CFA、Worst-view CFA、Neutral Invariance、cost、eligibility、CI"],
+  ["T3", "主 Leaderboard 数值", "每行一个可比的 agent × execution regime", "TQ、FR、MP、Δa/Δb、CFA mean/min、Gain mean/min、match win probability、invariance、cost、eligibility、CI"],
   ["T4", "对照与替代解释", "task-only、matched、history、clarification、irrelevant cue、swap、无 contracts、长度/风格对照", "ΔCFA、specificity P/R、invariance、TQ/FR、judge coverage 与解释"],
 ];
 
@@ -61,7 +61,7 @@ export default function FigureBlueprintPage() {
       <header className="figurePlanHero">
         <nav className="litNav shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><div><a href="#result-mockups">结果图原型</a><a href="#main-figures">全部主图</a><a href="#main-tables">主表</a></div><a className="navCta" href="/">返回总报告</a></nav>
         <div className="shell figurePlanHeroGrid">
-          <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.29</p><h1>结果不是一张总榜，<br/>而是 <em>效应—分布—失效</em></h1><p className="lede">核心先展示 matched 相对 swapped 是否真的形成用户特异价值，再展开到可支持的任务边际、信号稳健性和多标签失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
+          <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.30</p><h1>结果不是一张总榜，<br/>而是 <em>特异性—受益—失效</em></h1><p className="lede">核心同时展示 matched 相对 swapped 的跨用户 specificity 与 matched 相对 task-only 的用户 benefit，再展开到可支持的任务边际、信号稳健性和多标签失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
           <aside className="figurePlanClaim"><span>主文证据顺序</span><b>How it works</b><i>→</i><b>What is measured</b><i>→</i><b>Where it fails</b><i>→</i><b>Can we trust the score</b></aside>
         </div>
       </header>
@@ -79,8 +79,8 @@ export default function FigureBlueprintPage() {
         <article className="resultMockCard signatureCard">
           <header><span>RESULT FIGURE 3</span><div><h3>Counterfactual personalization capability</h3><p>这是主结果页，不先排冠军，而先让读者看到 matched 与 swapped 的结构差异。</p></div><b>主文约 0.55 页</b></header>
           <div className="resultPanelGrid mainResultGrid">
-            <section className="plotPanel signaturePanel"><h4>A · Matched–swapped signature plot</h4><div className="signaturePlot" role="img" aria-label="PF swapped 横轴、PF matched 纵轴的结果结构示意图"><span className="sigY">PF matched ↑</span><span className="sigX">PF swapped →</span><i className="sigDiagonal"/><i className="sigDot sd1"><small>A</small></i><i className="sigDot sd2"><small>B</small></i><i className="sigDot sd3 hollow"><small>C</small></i><span className="sigGeneric">高 absolute fit<br/>低 user-specific effect</span><span className="sigStrong">强 counterfactual<br/>personalization</span></div><p>45° 线是 CFA≈0。位于线上方且距离更远才表示 matched 版本更适合正确用户；空心点表示未过 TQ/FR gate。</p></section>
-            <section className="plotPanel forestPanel"><h4>B · CFA effect-size forest</h4><div className="zeroTag">0 · no effect</div><div className="forestAxis"/><div className="forestRows"><div><b>Commercial DR</b><span className="ci ci1"><i/></span></div><div><b>Controlled agent</b><span className="ci ci2"><i/></span></div><div><b>Open DRA</b><span className="ci ci3"><i/></span></div><div><b>Multi-agent probe</b><span className="ci ci4"><i/></span></div></div><p>每一行给 CFA 点估计、95% CI、样本量和 eligibility；E1/E2/E3 不混排。</p></section>
+            <section className="plotPanel signaturePanel"><h4>A · Specificity × benefit profile</h4><div className="signaturePlot" role="img" aria-label="CFA specificity 横轴、task-only benefit 纵轴的结果结构示意图"><span className="sigY">Benefit vs task-only ↑</span><span className="sigX">Cross-user specificity →</span><i className="sigDiagonal"/><i className="sigDot sd1"><small>A</small></i><i className="sigDot sd2"><small>B</small></i><i className="sigDot sd3 hollow"><small>C</small></i><span className="sigGeneric">可区分<br/>但无净受益</span><span className="sigStrong">双向特异<br/>且真正受益</span></div><p>右上角才是有效 personalization；空心点表示 CFA_min、Gain_min 或 TQ/FR/边界门未通过。</p></section>
+            <section className="plotPanel forestPanel"><h4>B · Bilateral effect-size forest</h4><div className="zeroTag">0 · no effect</div><div className="forestAxis"/><div className="forestRows"><div><b>Commercial DR</b><span className="ci ci1"><i/></span></div><div><b>Controlled agent</b><span className="ci ci2"><i/></span></div><div><b>Open DRA</b><span className="ci ci3"><i/></span></div><div><b>Multi-agent probe</b><span className="ci ci4"><i/></span></div></div><p>每一行同时给 Δa/Δb、mean/min、family-clustered 95% CI 和 eligibility；E1/E2/E3 不混排。</p></section>
             <section className="plotPanel taskTopology"><h4>C · Statistically supported capability margins</h4><div className="marginalHeatGroups"><div className="marginalHeatBlock"><b>Agent × task stratum</b><div className="marginalHead"><span/><em>Daily</em><em>Professional</em><em>Frontier</em></div>{["A", "B", "C", "D"].map((agent,r)=><div className="marginalRow strataRow" key={agent}><span>{agent}</span>{[0,1,2].map(c=><i className={`heat h${(r+c)%5}`} key={c}/>)}</div>)}</div><div className="marginalHeatBlock intentsBlock"><b>Agent × research intent</b><div className="marginalHead intentHead"><span/>{["解释", "比较", "决策", "设计", "审计", "探索"].map(x=><em key={x}>{x}</em>)}</div>{["A", "B", "C", "D"].map((agent,r)=><div className="marginalRow intentRow" key={agent}><span>{agent}</span>{[0,1,2,3,4,5].map(c=><i className={`heat h${(r*2+c)%5}`} key={c}/>)}</div>)}</div></div><p>主文分别汇总 3 个 strata 和 6 个 intents，并报告 family 数；完整 18 个交叉格因接近一格一个 family，只在附录作描述性展示。</p></section>
             <section className="plotPanel paretoPanel"><h4>D · Cost–CFA frontier</h4><div className="paretoPlot"><span>高 CFA ↑</span><i className="paretoDot pd1"/><i className="paretoDot pd2"/><i className="paretoDot pd3"/><i className="paretoDot pd4"/><b>cost →</b><svg viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true"><path d="M15 58 C35 52, 47 35, 84 14"/></svg></div><p>只在相同 execution regime、预算口径和 eligibility 下谈 Pareto 前沿。</p></section>
           </div>

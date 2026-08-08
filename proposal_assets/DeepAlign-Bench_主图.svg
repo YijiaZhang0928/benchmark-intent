@@ -1,156 +1,102 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#F7F9FD"/><stop offset="1" stop-color="#EEF4F9"/>
-    </linearGradient>
-    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#102B57"/><stop offset="1" stop-color="#225B78"/>
-    </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#16324F" flood-opacity="0.12"/>
-    </filter>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#315B7D"/>
-    </marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7F9FD"/><stop offset="1" stop-color="#EDF4F7"/></linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#112D59"/><stop offset="1" stop-color="#155F73"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#173652" flood-opacity="0.12"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#315B7D"/></marker>
     <style>
       .cn{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}
-      .title{font-size:38px;font-weight:700;fill:white;letter-spacing:1px}
-      .subtitle{font-size:18px;fill:#D8E9F3}
-      .section{font-size:23px;font-weight:700;fill:#163A63}
-      .body{font-size:17px;fill:#20364D}
-      .small{font-size:14px;fill:#496177}
-      .label{font-size:16px;font-weight:700;fill:#173B61}
-      .white{fill:white}
-      .card{fill:white;stroke:#B8CBE0;stroke-width:1.5;rx:16;filter:url(#shadow)}
-      .chip{rx:10;stroke-width:1.2}
+      .title{font-size:42px;font-weight:700;fill:#fff}.subtitle{font-size:20px;fill:#D9EAF2}
+      .kicker{font-size:15px;font-weight:700;letter-spacing:1.4px;fill:#2B6678}.section{font-size:25px;font-weight:700;fill:#153B64}
+      .h3{font-size:19px;font-weight:700;fill:#173B61}.body{font-size:17px;fill:#243A50}.small{font-size:14px;fill:#536A7E}.tiny{font-size:12px;fill:#5B7184}
+      .white{fill:#fff}.card{fill:#fff;stroke:#B7CBDE;stroke-width:1.5;rx:20;filter:url(#shadow)}
+      .softBlue{fill:#EEF5FC;stroke:#8EB1D2}.softGreen{fill:#EEF8F4;stroke:#78AF99}.softViolet{fill:#F3EFFA;stroke:#A590C7}.softAmber{fill:#FFF7EA;stroke:#D6A557}.softRed{fill:#FFF1EE;stroke:#D68A78}
       .arrow{stroke:#315B7D;stroke-width:3;fill:none;marker-end:url(#arrow)}
-      .dash{stroke:#7892AB;stroke-width:2;stroke-dasharray:7 7;fill:none;marker-end:url(#arrow)}
     </style>
   </defs>
   <rect width="1920" height="1080" fill="url(#bg)"/>
-  <rect x="0" y="0" width="1920" height="112" fill="url(#head)"/>
-  <text x="960" y="52" text-anchor="middle" class="cn title">DeepAlign-Bench：长程 Deep Research 个性化交付物评测</text>
-  <text x="960" y="84" text-anchor="middle" class="cn subtitle">Absolute Adaptation Evaluation → Counterfactual Personalization Effect Identification</text>
+  <rect width="1920" height="126" fill="url(#head)"/>
+  <text x="960" y="55" text-anchor="middle" class="cn title">DeepAlign-Bench：什么才算“有效个性化”?</text>
+  <text x="960" y="91" text-anchor="middle" class="cn subtitle">从 absolute fit 转向可识别的 cross-user specificity × real-user benefit</text>
 
-  <!-- Research question ribbon -->
-  <rect x="54" y="134" width="1812" height="82" rx="18" fill="#E6F1F5" stroke="#6FA5B5" stroke-width="1.5"/>
-  <circle cx="105" cy="175" r="25" fill="#1E7584"/>
-  <text x="105" y="184" text-anchor="middle" class="cn white" font-size="26" font-weight="700">?</text>
-  <text x="147" y="164" class="cn label">核心 estimand + 压力评测</text>
-  <text x="147" y="194" class="cn body">固定 T/E/resources，只改变用户识别 counterfactual effect；再沿 S0–S3 测不同 agent 模式在压力下何时退化。</text>
+  <rect x="60" y="150" width="1800" height="82" rx="18" fill="#E4F1F4" stroke="#6CA4B2" stroke-width="1.5"/>
+  <circle cx="111" cy="191" r="26" fill="#1D7685"/><text x="111" y="200" text-anchor="middle" class="cn white" font-size="28" font-weight="700">?</text>
+  <text x="155" y="181" class="cn h3">核心问题</text>
+  <text x="155" y="211" class="cn body">固定 task、evidence、tools 与 budget，只改变目标用户：交付物是否既能“认对人”，又比 task-only 真正更有用，同时不牺牲共同质量与边界?</text>
 
-  <!-- Column 1 -->
-  <rect x="54" y="250" width="400" height="558" class="card"/>
-  <rect x="54" y="250" width="400" height="58" rx="16" fill="#DCE9F8"/>
-  <text x="254" y="287" text-anchor="middle" class="cn section">① Task + Persona 构造</text>
-  <text x="82" y="342" class="cn label">Task family：从真实问题冻结共同核心</text>
-  <rect x="78" y="360" width="352" height="122" class="chip" fill="#F4F8FD" stroke="#96B4D4"/>
-  <text x="96" y="389" class="cn body">真实 seed → 固定问题 / evidence / budget</text>
-  <text x="96" y="420" class="cn body">Atlas 标注 → 六维 stress knobs</text>
-  <text x="96" y="451" class="cn small">expert + target-user pilot；不稳定 family 淘汰</text>
+  <!-- left: gap -->
+  <rect x="60" y="262" width="380" height="566" class="card"/>
+  <rect x="60" y="262" width="380" height="66" rx="20" fill="#DCE9F8"/>
+  <text x="90" y="286" class="cn kicker">01 · GAP</text><text x="90" y="315" class="cn section">现有 absolute fit 还缺什么</text>
+  <text x="90" y="372" class="cn h3">给定用户 U，报告 Y 好不好?</text>
+  <rect x="90" y="394" width="320" height="88" rx="14" class="softBlue"/>
+  <text x="250" y="431" text-anchor="middle" class="cn h3">PF<tspan baseline-shift="sub" font-size="13">U</tspan>(Y) = 高</text>
+  <text x="250" y="460" text-anchor="middle" class="cn small">可能只是通用高质量，不等于用户特异</text>
+  <line x1="90" y1="516" x2="410" y2="516" stroke="#D5E0EA"/>
+  <circle cx="111" cy="557" r="17" fill="#E9A64C"/><text x="111" y="564" text-anchor="middle" class="cn white" font-size="17" font-weight="700">1</text>
+  <text x="142" y="550" class="cn h3">通用答案也能高分</text><text x="142" y="575" class="cn small">没有证明“换用户就必须换结果”</text>
+  <circle cx="111" cy="628" r="17" fill="#9B83C1"/><text x="111" y="635" text-anchor="middle" class="cn white" font-size="17" font-weight="700">2</text>
+  <text x="142" y="621" class="cn h3">平均 CFA 可能正负抵消</text><text x="142" y="646" class="cn small">一位用户受益，另一位可能被伤害</text>
+  <circle cx="111" cy="699" r="17" fill="#D37E69"/><text x="111" y="706" text-anchor="middle" class="cn white" font-size="17" font-weight="700">3</text>
+  <text x="142" y="692" class="cn h3">比 swapped 好 ≠ 真正有帮助</text><text x="142" y="717" class="cn small">swapped 很差，也会制造虚假的优势</text>
+  <rect x="90" y="755" width="320" height="48" rx="12" class="softRed"/>
+  <text x="250" y="785" text-anchor="middle" class="cn h3">需要“特异性”和“受益”两个 estimand</text>
 
-  <text x="82" y="521" class="cn label">Persona：有来源的 task-conditioned ledger</text>
-  <rect x="78" y="539" width="352" height="142" class="chip" fill="#F0FAF7" stroke="#73AF9B"/>
-  <text x="96" y="568" class="cn small">来源记录 → 原子 facts → 最小 Ua/Ub 编辑</text>
-  <text x="96" y="599" class="cn body">fact → must-change / hold / not 映射</text>
-  <text x="96" y="630" class="cn body">persona · history · clarification · memory views</text>
-  <text x="96" y="660" class="cn small">时间 · 可靠性 · 敏感度 · 推理/披露权限</text>
+  <!-- center: crossover -->
+  <rect x="468" y="262" width="830" height="566" class="card"/>
+  <rect x="468" y="262" width="830" height="66" rx="20" fill="#E8E1F5"/>
+  <text x="500" y="286" class="cn kicker">02 · IDENTIFICATION</text><text x="500" y="315" class="cn section">Controlled crossover：同一题，只交换用户</text>
+  <rect x="500" y="350" width="766" height="45" rx="11" fill="#EDF2F6" stroke="#A8B8C4"/>
+  <text x="883" y="379" text-anchor="middle" class="cn h3">固定 T / E / tools / budget / output format</text>
 
-  <text x="82" y="714" class="cn label">Clean family eligibility</text>
-  <rect x="78" y="732" width="352" height="52" class="chip" fill="#FFF7EA" stroke="#D6A657"/>
-  <text x="254" y="764" text-anchor="middle" class="cn small">自然匹配 · 可区分 · 共同核心 · 最小化 · 非刻板化</text>
+  <rect x="512" y="430" width="150" height="84" rx="15" class="softBlue"/><text x="587" y="463" text-anchor="middle" class="cn h3">用户 Ua</text><text x="587" y="490" text-anchor="middle" class="cn small">低预算 · 风险规避</text>
+  <rect x="512" y="548" width="150" height="84" rx="15" class="softViolet"/><text x="587" y="581" text-anchor="middle" class="cn h3">用户 Ub</text><text x="587" y="608" text-anchor="middle" class="cn small">增长导向 · 高预算</text>
+  <path d="M662 472H735" class="arrow"/><path d="M662 590H735" class="arrow"/>
+  <rect x="747" y="458" width="130" height="146" rx="20" fill="#E7F3EF" stroke="#75AA95" stroke-width="1.5"/>
+  <text x="812" y="508" text-anchor="middle" class="cn kicker">SAME AGENT</text><text x="812" y="544" text-anchor="middle" class="cn section">A</text><text x="812" y="576" text-anchor="middle" class="cn small">同 seed policy</text>
+  <path d="M877 490H946" class="arrow"/><path d="M877 573H946" class="arrow"/>
+  <rect x="958" y="430" width="138" height="84" rx="15" class="softBlue"/><text x="1027" y="464" text-anchor="middle" class="cn h3">交付物 Ya</text><text x="1027" y="491" text-anchor="middle" class="cn small">为 Ua 生成</text>
+  <rect x="958" y="548" width="138" height="84" rx="15" class="softViolet"/><text x="1027" y="582" text-anchor="middle" class="cn h3">交付物 Yb</text><text x="1027" y="609" text-anchor="middle" class="cn small">为 Ub 生成</text>
+  <rect x="1120" y="430" width="146" height="202" rx="15" fill="#FAFBFD" stroke="#9EB2C3"/>
+  <text x="1193" y="458" text-anchor="middle" class="cn h3">2×2 交叉评分</text>
+  <rect x="1140" y="478" width="48" height="48" rx="8" fill="#DCECF8" stroke="#7EA7CA"/><rect x="1198" y="478" width="48" height="48" rx="8" fill="#F3F5F7" stroke="#ADB9C3"/>
+  <rect x="1140" y="536" width="48" height="48" rx="8" fill="#F3F5F7" stroke="#ADB9C3"/><rect x="1198" y="536" width="48" height="48" rx="8" fill="#EAE2F5" stroke="#9B85BE"/>
+  <text x="1164" y="508" text-anchor="middle" class="cn small">PFa(Ya)</text><text x="1222" y="508" text-anchor="middle" class="cn tiny">PFa(Yb)</text>
+  <text x="1164" y="566" text-anchor="middle" class="cn tiny">PFb(Ya)</text><text x="1222" y="566" text-anchor="middle" class="cn small">PFb(Yb)</text>
+  <text x="1193" y="612" text-anchor="middle" class="cn small">+ task-only Y0</text>
 
-  <!-- Column 2 -->
-  <rect x="496" y="250" width="430" height="558" class="card"/>
-  <rect x="496" y="250" width="430" height="58" rx="16" fill="#E5E0F5"/>
-  <text x="711" y="287" text-anchor="middle" class="cn section">② Counterfactual Effect Identification</text>
-  <text x="711" y="338" text-anchor="middle" class="cn label">24 families · 48 user-task · 4 signal modes</text>
-  <line x1="711" y1="360" x2="711" y2="402" stroke="#6D6794" stroke-width="3"/>
-  <line x1="575" y1="402" x2="847" y2="402" stroke="#6D6794" stroke-width="3"/>
-  <line x1="575" y1="402" x2="575" y2="427" stroke="#6D6794" stroke-width="3"/>
-  <line x1="666" y1="402" x2="666" y2="427" stroke="#6D6794" stroke-width="3"/>
-  <line x1="756" y1="402" x2="756" y2="427" stroke="#6D6794" stroke-width="3"/>
-  <line x1="847" y1="402" x2="847" y2="427" stroke="#6D6794" stroke-width="3"/>
-  <rect x="532" y="427" width="86" height="70" rx="12" fill="#E8F2FB" stroke="#78A5CD"/>
-  <rect x="623" y="427" width="86" height="70" rx="12" fill="#F1EAF8" stroke="#9A80BC"/>
-  <rect x="713" y="427" width="86" height="70" rx="12" fill="#FFF0E6" stroke="#D79A6C"/>
-  <rect x="804" y="427" width="86" height="70" rx="12" fill="#EEF2F4" stroke="#91A0AB"/>
-  <text x="575" y="457" text-anchor="middle" class="cn label">Ua</text><text x="575" y="480" text-anchor="middle" class="cn small">强对比</text>
-  <text x="666" y="457" text-anchor="middle" class="cn label">Ub</text><text x="666" y="480" text-anchor="middle" class="cn small">强对比</text>
-  <text x="756" y="457" text-anchor="middle" class="cn label">Uc</text><text x="756" y="480" text-anchor="middle" class="cn small">冲突/重叠</text>
-  <text x="847" y="457" text-anchor="middle" class="cn label">U0</text><text x="847" y="480" text-anchor="middle" class="cn small">中性控制</text>
+  <line x1="500" y1="660" x2="1266" y2="660" stroke="#D6E0E8"/>
+  <text x="520" y="697" class="cn h3">Specificity</text><text x="650" y="697" class="cn body">Δa = PFa(Ya) − PFa(Yb)　·　Δb = PFb(Yb) − PFb(Ya)</text>
+  <text x="650" y="728" class="cn small">CFA mean 展示平均效应；CFA min 防止跨用户方向补偿</text>
+  <text x="520" y="766" class="cn h3">Benefit</text><text x="650" y="766" class="cn body">Ga = PFa(Ya) − PFa(Y0)　·　Gb = PFb(Yb) − PFb(Y0)</text>
+  <text x="650" y="797" class="cn small">Gain mean/min 回答 matched 是否真的优于 task-only</text>
 
-  <text x="711" y="542" text-anchor="middle" class="cn label">主矩阵 Ua/Ub；anchor 才加入 Uc/U0</text>
-  <rect x="537" y="564" width="348" height="94" rx="14" fill="#F8F7FC" stroke="#A69BC9"/>
-  <text x="711" y="595" text-anchor="middle" class="cn body">Ya = A(T,E,Sa)　Yb = A(T,E,Sb)</text>
-  <text x="711" y="627" text-anchor="middle" class="cn small">再将 Ya/Yb 交换给 Ua/Ub 评分</text>
+  <!-- right: gates -->
+  <rect x="1326" y="262" width="534" height="566" class="card"/>
+  <rect x="1326" y="262" width="534" height="66" rx="20" fill="#F6E6E2"/>
+  <text x="1358" y="286" class="cn kicker">03 · CLAIM GATES</text><text x="1358" y="315" class="cn section">四个门同时通过，才算有效</text>
+  <rect x="1358" y="356" width="470" height="82" rx="15" class="softViolet"/>
+  <circle cx="1392" cy="397" r="19" fill="#8065AD"/><text x="1392" y="404" text-anchor="middle" class="cn white" font-size="17" font-weight="700">1</text>
+  <text x="1426" y="389" class="cn h3">双向 specificity</text><text x="1426" y="416" class="cn small">Δa &gt; 0 且 Δb &gt; 0；不是平均后看起来为正</text>
+  <rect x="1358" y="454" width="470" height="82" rx="15" class="softGreen"/>
+  <circle cx="1392" cy="495" r="19" fill="#4B8C73"/><text x="1392" y="502" text-anchor="middle" class="cn white" font-size="17" font-weight="700">2</text>
+  <text x="1426" y="487" class="cn h3">双向 real benefit</text><text x="1426" y="514" class="cn small">Ga ≥ 0 且 Gb ≥ 0；matched 不劣于 task-only</text>
+  <rect x="1358" y="552" width="470" height="82" rx="15" class="softBlue"/>
+  <circle cx="1392" cy="593" r="19" fill="#4F83B2"/><text x="1392" y="600" text-anchor="middle" class="cn white" font-size="17" font-weight="700">3</text>
+  <text x="1426" y="585" class="cn h3">共同质量 no-harm</text><text x="1426" y="612" class="cn small">TQ / FR / must-hold 均过门；个性化不能换分</text>
+  <rect x="1358" y="650" width="470" height="82" rx="15" class="softRed"/>
+  <circle cx="1392" cy="691" r="19" fill="#C66F5C"/><text x="1392" y="698" text-anchor="middle" class="cn white" font-size="17" font-weight="700">4</text>
+  <text x="1426" y="683" class="cn h3">边界 no-violation</text><text x="1426" y="710" class="cn small">must-not / 隐私 / 权限 / 安全无 critical failure</text>
+  <rect x="1358" y="754" width="470" height="48" rx="12" fill="#173D64"/>
+  <text x="1593" y="785" text-anchor="middle" class="cn white" font-size="18" font-weight="700">Target-user blind match effect + family-level CI</text>
 
-  <rect x="537" y="686" width="348" height="88" rx="14" fill="#FFF8EE" stroke="#D8A758"/>
-  <text x="711" y="712" text-anchor="middle" class="cn label">跨用户对角优势 + 三类契约</text>
-  <text x="711" y="738" text-anchor="middle" class="cn small">Maa + Mbb &gt; Mab + Mba；must-change 方向正确</text>
-  <text x="711" y="761" text-anchor="middle" class="cn small">must-hold 稳定 · must-not 不越界</text>
-
-  <!-- Column 3 -->
-  <rect x="968" y="250" width="404" height="558" class="card"/>
-  <rect x="968" y="250" width="404" height="58" rx="16" fill="#E5F1EC"/>
-  <text x="1170" y="287" text-anchor="middle" class="cn section">③ Agent × Environment × Stress</text>
-  <rect x="998" y="329" width="344" height="58" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
-  <text x="1170" y="365" text-anchor="middle" class="cn body">E1 Controlled Frozen Harness</text>
-  <rect x="998" y="401" width="344" height="58" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
-  <text x="1170" y="437" text-anchor="middle" class="cn body">E2 Native Live Product / Web</text>
-  <rect x="998" y="473" width="344" height="58" rx="12" fill="#F0F7F4" stroke="#78A88E"/>
-  <text x="1170" y="509" text-anchor="middle" class="cn body">E3 Stateful Interactive Sandbox</text>
-
-  <text x="1170" y="566" text-anchor="middle" class="cn small">M1–M6：商业 · 受控 · 开源 · Code · Multi · Memory</text>
-  <text x="1170" y="596" text-anchor="middle" class="cn small">同 anchor / 环境 / budget 才直接比较；adapter 导出 artifact + trace</text>
-  <line x1="1012" y1="640" x2="1325" y2="640" stroke="#477A68" stroke-width="4" marker-end="url(#arrow)"/>
-  <circle cx="1027" cy="640" r="9" fill="#477A68"/><circle cx="1117" cy="640" r="9" fill="#477A68"/>
-  <circle cx="1207" cy="640" r="9" fill="#477A68"/><circle cx="1297" cy="640" r="9" fill="#477A68"/>
-  <text x="1027" y="674" text-anchor="middle" class="cn small">S0 clean</text>
-  <text x="1117" y="674" text-anchor="middle" class="cn small">S1 轻</text>
-  <text x="1207" y="674" text-anchor="middle" class="cn small">S2 强</text>
-  <text x="1297" y="674" text-anchor="middle" class="cn small">S3 复合</text>
-  <rect x="998" y="710" width="344" height="66" rx="12" fill="#F9FCFA" stroke="#A4C2B4"/>
-  <text x="1170" y="738" text-anchor="middle" class="cn small">8 功能 anchor × balanced incomplete block</text>
-  <text x="1170" y="761" text-anchor="middle" class="cn small">每个 failure mode 至少跨两个 anchor</text>
-
-  <!-- Column 4 -->
-  <rect x="1414" y="250" width="452" height="558" class="card"/>
-  <rect x="1414" y="250" width="452" height="58" rx="16" fill="#F7E6E2"/>
-  <text x="1640" y="287" text-anchor="middle" class="cn section">④ Rubric Compiler + JudgeBench</text>
-  <rect x="1444" y="332" width="392" height="70" rx="12" fill="#F6FAFC" stroke="#91ABC0"/>
-  <text x="1464" y="360" class="cn label">L0 确定性 verifier</text><text x="1464" y="386" class="cn small">文件、测试、格式、预算、权限与硬约束</text>
-  <rect x="1444" y="418" width="392" height="70" rx="12" fill="#F6FAFC" stroke="#91ABC0"/>
-  <text x="1464" y="446" class="cn label">L1 证据 verifier</text><text x="1464" y="472" class="cn small">claim 支持、引用覆盖、关联与来源质量</text>
-  <rect x="1444" y="504" width="392" height="70" rx="12" fill="#FFF8F5" stroke="#CE9382"/>
-  <text x="1464" y="532" class="cn label">L2 元数据驱动 rubric judge</text><text x="1464" y="558" class="cn small">core + intent + deliverable + operator + risk</text>
-  <rect x="1444" y="590" width="392" height="70" rx="12" fill="#FFF8F5" stroke="#CE9382"/>
-  <text x="1464" y="618" class="cn label">L3 强 Judge + 20% 人评</text><text x="1464" y="644" class="cn small">分层复核与分歧仲裁；SFT 仅可选附录</text>
-  <rect x="1444" y="688" width="392" height="86" rx="12" fill="#FCEDEA" stroke="#BF7463" stroke-width="1.5"/>
-  <text x="1640" y="719" text-anchor="middle" class="cn label">JudgeBench 竞争式选型</text>
-  <text x="1640" y="744" text-anchor="middle" class="cn small">240 units · target-user + expert gold · 偏差/诱饵</text>
-  <text x="1640" y="765" text-anchor="middle" class="cn small">PDR: PCA=.43 / 15×2 → 独立效度校准</text>
-
-  <!-- arrows between columns -->
-  <path d="M454 530 L486 530" class="arrow"/>
-  <path d="M926 530 L958 530" class="arrow"/>
-  <path d="M1372 530 L1404 530" class="arrow"/>
-
-  <!-- bottom scorecard -->
-  <rect x="54" y="844" width="1812" height="178" rx="18" fill="#FFFFFF" stroke="#9CB1C6" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="92" y="885" class="cn section">Leaderboard：先过共同质量门槛，再发布四张能力画像；禁止“迎合换分”</text>
-  <rect x="90" y="910" width="245" height="75" rx="12" fill="#E7F0FA" stroke="#7FA4CB"/>
-  <text x="212" y="941" text-anchor="middle" class="cn label">A · Base Delivery</text><text x="212" y="968" text-anchor="middle" class="cn small">TQ / FR · PF · CFA</text>
-  <rect x="358" y="910" width="245" height="75" rx="12" fill="#E9F6F1" stroke="#72AE95"/>
-  <text x="480" y="941" text-anchor="middle" class="cn label">B · Signal Acquisition</text><text x="480" y="968" text-anchor="middle" class="cn small">澄清 · 历史 · channel gain</text>
-  <rect x="626" y="910" width="245" height="75" rx="12" fill="#EFEAF9" stroke="#9984BF"/>
-  <text x="748" y="941" text-anchor="middle" class="cn label">C · Stress &amp; Failure</text><text x="748" y="968" text-anchor="middle" class="cn small">S0–S3 retention · risk slices</text>
-  <rect x="894" y="910" width="245" height="75" rx="12" fill="#FFF4E4" stroke="#D6A150"/>
-  <text x="1016" y="941" text-anchor="middle" class="cn label">D · Boundary &amp; Gov.</text><text x="1016" y="968" text-anchor="middle" class="cn small">privacy · permissions · abstention</text>
-  <rect x="1162" y="910" width="245" height="75" rx="12" fill="#FBEDEA" stroke="#CC8677"/>
-  <text x="1284" y="941" text-anchor="middle" class="cn label">Hard Gates</text><text x="1284" y="968" text-anchor="middle" class="cn small">事实 · 隐私 · 权限 · must-not</text>
-  <rect x="1430" y="910" width="397" height="75" rx="12" fill="#EDF2F5" stroke="#91A3B0"/>
-  <text x="1628" y="941" text-anchor="middle" class="cn label">切片：Task × M × E × S × Risk</text>
-  <text x="1628" y="968" text-anchor="middle" class="cn small">coverage manifest · effect sizes · 95% CI</text>
-  <text x="960" y="1054" text-anchor="middle" class="cn small">方法核心：Cross-user Effect Identification；构造、压力、环境与 JudgeBench 提供可复现性、测量效度和外部效度</text>
+  <!-- bottom -->
+  <rect x="60" y="860" width="1800" height="162" rx="20" fill="#FFFFFF" stroke="#9EB3C6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="92" y="901" class="cn section">论文贡献：一套可证伪的 personalization identification protocol，而不是另一个“更细”的总分</text>
+  <rect x="92" y="925" width="330" height="66" rx="13" class="softBlue"/><text x="257" y="952" text-anchor="middle" class="cn h3">24 families · 48 user-task</text><text x="257" y="977" text-anchor="middle" class="cn small">4 signal conditions · 3 core agent tracks</text>
+  <rect x="442" y="925" width="320" height="66" rx="13" class="softGreen"/><text x="602" y="952" text-anchor="middle" class="cn h3">8 anchors · S0–S3 stress</text><text x="602" y="977" text-anchor="middle" class="cn small">acquire · preserve · use · update</text>
+  <rect x="782" y="925" width="320" height="66" rx="13" class="softRed"/><text x="942" y="952" text-anchor="middle" class="cn h3">240-unit JudgeBench</text><text x="942" y="977" text-anchor="middle" class="cn small">target-user + expert gold · bias tests</text>
+  <rect x="1122" y="925" width="706" height="66" rx="13" fill="#EEF2F5" stroke="#9CADB9"/>
+  <text x="1475" y="951" text-anchor="middle" class="cn h3">主张边界</text><text x="1475" y="978" text-anchor="middle" class="cn body">识别的是最终交付物的反事实特异性；不等于证明模型内部“真正理解用户”</text>
+  <text x="960" y="1055" text-anchor="middle" class="cn small">v0.30 · confirmatory unit = task family · family-blocked permutation / cluster bootstrap · no single compensatory leaderboard score</text>
 </svg>

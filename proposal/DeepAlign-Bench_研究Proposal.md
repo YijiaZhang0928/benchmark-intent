@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.29 · 2026 年 8 月 8 日
+版本：v0.30 · 2026 年 8 月 8 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -483,7 +483,7 @@ rubric 在系统输出产生前冻结。LLM 可帮助拆分原子项、找遗漏
 
 ### 6.1 元数据驱动的 Rubric Compiler
 
-“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。DeepAlign 固定的是**编译接口、叶节点 schema 和聚合规则**；具体评价项由 case 元数据和预先写好的评价契约选择。仓库中有六个相互衔接的机器可读对象：`case.schema.yaml` 描述任务、用户、环境和 agent；`rubric_template_registry.yaml` 保存路由规则；`rubric_module_library.yaml` 预注册 36 个可组合 module；`rubric_leaf.schema.yaml` 规定原子标准字段；`metric_binding.schema.yaml` 规定 leaf 如何进入 TQ、FR、PF、MP 及派生指标；`data_factory.protocol.yaml` 规定来源映射、构造阶段、anchor 对照和环境开工顺序。v0.29 冻结的是 compiler contract、module library 与贯通示例；自动 validator、模板路由器和 bundle 导出器仍是第 1 周实现项，不能把当前设计文件表述为已经完成的生产级 compiler。
+“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。DeepAlign 固定的是**编译接口、叶节点 schema 和聚合规则**；具体评价项由 case 元数据和预先写好的评价契约选择。仓库中有六个相互衔接的机器可读对象：`case.schema.yaml` 描述任务、用户、环境和 agent；`rubric_template_registry.yaml` 保存路由规则；`rubric_module_library.yaml` 预注册 36 个可组合 module；`rubric_leaf.schema.yaml` 规定原子标准字段；`metric_binding.schema.yaml` 规定 leaf 如何进入 TQ、FR、PF、MP 及派生指标；`data_factory.protocol.yaml` 规定来源映射、构造阶段、anchor 对照和环境开工顺序。v0.30 冻结的是 compiler contract、module library、贯通示例与 specificity × benefit 判定接口；自动 validator、模板路由器和 bundle 导出器仍是第 1 周实现项，不能把当前设计文件表述为已经完成的生产级 compiler。
 
 Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-state ledger；（3）`must-change / must-hold / must-not / clarify-if-unknown` 契约；（4）证据包与允许访问范围；（5）版本化模板库。它在任何被测输出产生前按五步运行：
 
@@ -523,7 +523,7 @@ Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-s
 
 每个 case 先写四类评价契约：`must_change` 规定不同用户之间必须改变什么；`must_hold` 规定共同事实和质量必须保持什么；`must_not` 规定不能假设、披露或迎合什么；`clarify_if_unknown` 规定缺少关键信息时何时应提问或给条件分支。模板负责提供标准结构，契约负责填入本 case 的可验证真值。
 
-v0.29 的预定义 library 包含 36 个 module，而不是 36 个都塞进每个 case：
+v0.30 的预定义 library 包含 36 个 module，而不是 36 个都塞进每个 case：
 
 | Module family | 数量 | 主要内容 | 默认范围 |
 |---|---:|---|---|
@@ -625,9 +625,26 @@ Rubric compiler 必须接受七项覆盖与效度校验：
 
 对于同一任务的用户 (a,b)，报告分别为 (Y_a,Y_b)。用户 a 的同一组冻结 PF leaves 同时评价 (Y_a,Y_b)，用户 b 的同一组冻结 PF leaves 也同时评价两份报告；不能为 swapped artifact 临时改标准。四个直接 PF 聚合形成交叉矩阵后，才定义匹配优势：
 
-`CFA(a,b) = 1/2 × [(PF_a(Y_a) − PF_a(Y_b)) + (PF_b(Y_b) − PF_b(Y_a))]`。
+先保留两个方向的原始优势：
 
-**CFA（Counterfactual Fit Advantage）**大于 0，表示两个用户分别更适合自己的交付物版本。但它不能解释模型为什么做到，也不能自动排除长度等干扰，因此还要报告：
+`Δ_a = PF_a(Y_a) − PF_a(Y_b)`，`Δ_b = PF_b(Y_b) − PF_b(Y_a)`。
+
+再定义平均对角优势：
+
+`CFA_mean(a,b) = 1/2 × (Δ_a + Δ_b)`，并报告不允许方向补偿的 `CFA_min(a,b) = min(Δ_a, Δ_b)`。
+
+`CFA_mean > 0` 只说明平均对角优势为正；如果 `Δ_a > 0` 而 `Δ_b < 0`，平均值可能掩盖一位用户被错误适配。因此主文必须并列报告 `Δ_a`、`Δ_b`、`CFA_mean` 和 `CFA_min`，且只有两方向都为正时才记为 bilateral success。CFA 仍是可解释的 leaf-based effect size，但不单独承担“个性化有效”的结论。
+
+主矩阵已有 task-only 输出 `Y_0`，因此另报告实际受益而非仅仅可区分：`G_a = PF_a(Y_a) − PF_a(Y_0)`，`G_b = PF_b(Y_b) − PF_b(Y_0)`。`Gain_mean = (G_a + G_b)/2` 描述平均 personalized value added，`Gain_min = min(G_a,G_b)` 防止平均增益掩盖一位用户没有受益。最终把 personalization 画成二维 profile：横轴为跨用户 specificity（CFA），纵轴为相对 task-only benefit（Gain），而不是再压成一个总分。
+
+一个 family 只有同时满足以下条件，才进入 confirmatory personalization success：
+
+1. `Δ_a > 0` 且 `Δ_b > 0`，目标用户与交付物的匹配在两个方向都成立；
+2. `G_a ≥ 0` 且 `G_b ≥ 0`，至少没有一位用户比 task-only baseline 更差；
+3. matched outputs 均通过 TQ、FR、must-hold 与 critical must-not gate；
+4. 目标用户盲评中的 match effect 通过预注册的不确定性门槛。
+
+这套分解分别识别“是否具有用户特异性”和“这种特异性是否带来用户价值”。它不能解释模型为什么做到，也不能自动排除长度等干扰，因此还要报告：
 
 - **Swap Failure Rate**：交换用户后仍被判同样合适的比例；
 - **Specificity Precision**：采用的个性化决策中，有金标支持的比例；
@@ -653,7 +670,7 @@ Rubric compiler 必须接受七项覆盖与效度校验：
 
 ### 7.4 聚合与不确定性
 
-主结果使用按基础任务聚类的 bootstrap 95% 置信区间。模型比较使用交叉分类混合效应模型，至少包含 agent、用户信息渠道、压力强度及其交互，并为基础任务和用户设置随机截距。多重比较使用 Holm 校正。除平均数外，还报告中位数、最差 10% CVaR、任务族/用户群/语言切片和 seed 方差，不只给一个总榜分。
+确认性分析以 family 为随机化/聚类单位。先对 `Δ_a`、`Δ_b`、`CFA_mean`、`CFA_min`、`G_a` 和 `G_b` 做 family-blocked permutation test 与 cluster bootstrap 95% 置信区间；不得把同一 family 内的四个评分单元当成独立样本。目标用户的盲评使用 matched/swapped/task-only 三者的 pairwise preference，主报告 match win probability（tie 计 0.5）及 family-blocked 区间；带 family、用户和 rater 随机效应的 Bradley–Terry / ordinal mixed model只作为稀疏数据可支持时的敏感性分析，不以复杂模型替代设计层配对。Agent、渠道和压力比较再使用预注册的分层模型或配对检验，多重比较采用 Holm 校正。除平均数外，还报告中位数、最差 10% CVaR、任务族/用户群/语言切片和 seed 方差，不发布小于人评与 judge 不确定性的伪精确排名。
 
 ## 8. Judge 体系与独立 JudgeBench
 
@@ -878,7 +895,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 - 至少 80% pilot task family 的目标用户认为用户间存在实质性交付差异；
 - rubric 原子项人类一致性 α ≥ 0.67，关键硬门槛项 α ≥ 0.80；
-- matched 人类参考交付物相对 swapped 的 CFA 显著大于 0，且效应不是由长度解释；
+- matched 人类参考交付物在两个用户方向均优于 swapped，`CFA_min > 0`；相对 task-only 的 `Gain_min` 不为负，且效应不能由长度、格式或共同质量解释；
 - JudgeBench 达到第 8.2 节门槛；
 - task cube 的 stratum/主 intent 与双轴 taxonomy 的主风险盲标一致性达到预注册门槛，且 `other/emergent` 未覆盖率可接受；
 - Atlas 必填字段完整率 ≥ 95%，双人元数据标注的一致性达到预注册门槛；coverage manifest 能区分 tested / defined-only / structurally-inapplicable / deferred 四种状态；
@@ -923,7 +940,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **系统与环境**：M1 商业 Deep Research、M2 统一 harness、M3 开源 DRA 是核心系统；M4 code、M5 multi-agent、M6 memory-enhanced 只作 anchor probe。E1 Frozen、E2 Live Product/Web、E3 Stateful Sandbox 分榜运行，并通过 adapter contract、trace level 与 eligibility predicate 保证比较边界。
 
-**评价**：metadata-driven rubric compiler 组合 core、personalization、intent、deliverable、operator 和 risk 模块；每个 case 冻结 must-change、must-hold、must-not、clarify-if-unknown。主指标为 TQ/FR 门槛、PF/MP、CFA、人类 pairwise preference；failure taxonomy 用于解释，不进入总分。
+**评价**：metadata-driven rubric compiler 组合 core、personalization、intent、deliverable、operator 和 risk 模块；每个 case 冻结 must-change、must-hold、must-not、clarify-if-unknown。主指标为 TQ/FR 门槛、PF/MP、双向 `Δ_a/Δ_b`、`CFA_mean/CFA_min`、task-only uplift 和目标用户 pairwise match effect；failure taxonomy 用于解释，不进入总分。
 
 **Judge**：240-unit JudgeBench；确定性/证据 verifier、强通用 judge 和分层人评组成主线。SFT scorer 只有在第 4 周前不影响主实验且存在足够高质量标签时进入附录，否则明确列为 future work。
 
@@ -935,11 +952,11 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 ### 16.1 主文五张图
 
-**Figure 1 · DeepAlign-Bench 总览：从用户信号到可审计的个性化效应。** 使用从左到右的五段流程：`Task/Evidence + paired user state` → `signal view + execution environment` → `agent system` → `matched/swapped artifacts` → `TQ/FR gate + CFA/contracts + four leaderboard profiles`。Atlas 五个平面放在顶部作为 case 条件带，S0–S3 anchor stress 与 JudgeBench 放在底部作为两条验证支线。这张图回答“benchmark 整体如何运行”，不塞入所有 taxonomy 叶节点。
+**Figure 1 · DeepAlign-Bench 一页主张图：什么算有效 personalization。** 汇报版不再复刻完整工程流水线，而用三段讲清论文：左侧说明 absolute fit 的剩余识别问题；中间展示固定 task/evidence/budget 后的 Ua/Ub crossover、2×2 PF 矩阵和 must-change/hold/not；右侧展示四重成立门——双向 specificity、相对 task-only benefit、共同质量 no-harm、边界 no-violation。底部只保留 24 family / 48 user-task / 4 signal conditions、8 anchor、240-unit JudgeBench 和“结果层特异性 ≠ 内部理解”的主张边界。这张图服务口头汇报；完整 benchmark 流程移入 Figure 2 或附录。
 
 **Figure 2 · 一个 counterfactual family 如何构造、编译 rubric 和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–3 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个 signal views；C 展示 `metadata + contracts → template routing → leaf expansion → metric binding → frozen bundle`，并列出一个复合 contract 拆成三条带锚点 leaf 的实例；D 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA，同时把 must-hold 和 must-not 连接到 invariance 与 gate。它把用户真值、具体评分项和 estimand 直接连接起来，是方法部分最重要的细节图。
 
-**Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `PF_swapped`、纵轴为 `PF_matched`，45° 对角线表示没有跨用户优势；离对角线越远且位于上方，说明 matched 版本相对 swapped 版本的用户特异价值越强。点的实心/空心只表示是否通过 TQ/FR gate，不用颜色重复编码质量。B 用 forest/dot plot 报各 agent 的 CFA 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 使用两个共享色标的边际 heatmap，分别报告 `agent × 3 task strata` 和 `agent × 6 research intents` 的 CFA，并给出 family 数。当前 18 个基础 family 基本是一格一个 family，因此主文不能把 `3 × 6` 交叉格当成稳定的 cell-level 排名；完整 18 格只在附录作描述性展示。D 只在可比 regime 内画 cost–CFA Pareto frontier。A–D 分别对应 estimand、不确定性、能力拓扑和效率，不合成单一总分。
+**Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `CFA_mean`（跨用户 specificity），纵轴为 `Gain_mean`（相对 task-only benefit）；横纵零线把“只是可区分”“只是普遍变好”“真正有益的个性化”和“有害适配”分开，点形同时标记 `CFA_min/Gain_min` 是否通过双向门槛。B 用 forest/dot plot 分别报 `Δ_a/Δ_b`、`CFA_mean/CFA_min` 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 使用两个共享色标的边际 heatmap，分别报告 `agent × 3 task strata` 和 `agent × 6 research intents` 的 CFA/Gain，并给出 family 数。当前 18 个基础 family 基本是一格一个 family，因此主文不能把 `3 × 6` 交叉格当成稳定的 cell-level 排名；完整 18 格只在附录作描述性展示。D 只在可比 regime 内画 cost–bilateral-success Pareto frontier。A–D 分别对应 specificity、benefit、不确定性、能力拓扑和效率，不合成单一总分。
 
 **Figure 4 · 信号渠道、压力和最终失败。** 四个 panel：A 用 `agent × user-signal condition` heatmap 报 structured persona、natural history、clarification-allowed 和 workspace/history 条件下的 CFA。列标题要区分“直接提供的等价视图”“交互获取”和“环境私有状态”；Cue Gap 与 Worst-view CFA 都只在经过 equivalence audit 的 structured persona 与 natural history 上计算。B 按 S0–S3 绘制各 agent 的 CFA stress response；只有 `CFA_S0 ≥ ε` 时才报告比例型 retention，否则改报 `CFA_Sk − CFA_S0` 和原始 CFA，避免接近零的分母放大噪声。主文只画跨 anchor 汇总及置信区间，逐 anchor 曲线进入附录。C 对每个 outcome failure 独立报告 eligible episode 发生率和 95% CI；failure 是多标签，不能强行堆叠成互斥的 100% 横条。D 用 `anchor family × observed outcome failure` heatmap 显示哪类压力更容易触发用户盲、错误用户绑定、过度个性化、共同核心破坏、冲突/过期误用、隐私/权限和澄清失败，并单列 `other/emergent`。主文不从最终交付物反推内部机制；只有具备可比 trace 的系统，才可在附录报告 acquisition、preservation、use 或 update 的过程证据。
 
@@ -951,7 +968,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **Table 2 · Benchmark composition 与 empirical coverage。** 按 task stratum、research intent、deliverable、signal channel、environment、agent mode、anchor 和 stakes 报 family/episode 数、用户对数和 `tested` 覆盖率；另列 defined-only、structurally-inapplicable 和 deferred 数量。它证明实际测了什么，不用 ontology 的理论分支数冒充样本量。
 
-**Table 3 · 主 leaderboard 数值表。** 每行是一个可比的 `agent × execution regime`，列为 TQ、FR、`PF_matched`、`PF_swapped`、MP、CFA、Worst-view CFA、Neutral Invariance、cost 和 eligibility。E1/E2/E3 分块，商业产品榜与受控 harness 榜不混排；报告置信区间或标准误，而不是只报点估计。
+**Table 3 · 主 leaderboard 数值表。** 每行是一个可比的 `agent × execution regime`，列为 TQ、FR、MP、`Δ_a/Δ_b`、`CFA_mean/CFA_min`、`Gain_mean/Gain_min`、target-user match win probability、Worst-view CFA、Neutral Invariance、cost 和 eligibility。E1/E2/E3 分块，商业产品榜与受控 harness 榜不混排；报告 family-clustered 区间，而不是只报点估计。
 
 **Table 4 · 关键对照、消融与替代解释。** 行包括 task-only、matched persona、semantic-equivalent history、clarification、irrelevant cue、wrong-user swap、去掉 must-hold/must-not、只按长度/风格匹配和去掉 TQ gate；列为 ΔCFA、Specificity Precision/Recall、Neutral Invariance、TQ/FR、judge coverage 与主要解释。它用于证明结果不是“多给了上下文”“写得更长”或“复述 persona 关键词”。
 

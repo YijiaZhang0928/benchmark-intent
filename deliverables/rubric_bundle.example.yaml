@@ -1,5 +1,5 @@
 bundle_id: RB-A1-COFFEE-EXPANSION-v1
-bundle_version: 0.29
+bundle_version: 0.30
 status: illustrative_not_empirical
 compiled_before_run: true
 
@@ -166,13 +166,25 @@ score_trace:
     PF_a_Y_b: the identical Ua PF leaves score Y_b
     PF_b_Y_b: Ub PF leaves score Y_b
     PF_b_Y_a: the identical Ub PF leaves score Y_a
+    PF_a_Y_0: the identical Ua PF leaves score the task-only artifact Y_0
+    PF_b_Y_0: the identical Ub PF leaves score the task-only artifact Y_0
     MP: penalties from V-PRIV-01 and other eligible must-not leaves
   derived:
-    CFA: 0.5 * ((PF_a_Y_a - PF_a_Y_b) + (PF_b_Y_b - PF_b_Y_a))
+    delta_a: PF_a_Y_a - PF_a_Y_b
+    delta_b: PF_b_Y_b - PF_b_Y_a
+    CFA: 0.5 * (delta_a + delta_b)
+    CFA_min: min(delta_a, delta_b)
+    gain_a_vs_task_only: PF_a_Y_a - PF_a_Y_0
+    gain_b_vs_task_only: PF_b_Y_b - PF_b_Y_0
+    gain_mean: 0.5 * (gain_a_vs_task_only + gain_b_vs_task_only)
+    gain_min: min(gain_a_vs_task_only, gain_b_vs_task_only)
+    bilateral_personalization_success: >-
+      delta_a > 0 and delta_b > 0 and gain_a_vs_task_only >= 0 and
+      gain_b_vs_task_only >= 0 and both matched outputs pass eligibility
     NPF: max(0, PF - MP)
     eligibility: TQ and FR pass thresholds and V-PRIV-01 has no violation
 
 interpretation_note: >-
   Leaf expansion is the pre-run conversion of templates and contracts into
-  atomic checks with scoring anchors. CFA is computed later from four PF
-  aggregates; no leaf is labeled CFA.
+  atomic checks with scoring anchors. CFA and task-only uplift are computed
+  later from cross-scored PF aggregates; no leaf is labeled CFA or uplift.

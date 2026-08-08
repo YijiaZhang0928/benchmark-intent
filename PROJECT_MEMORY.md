@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-08
-当前版本：v0.29
+当前版本：v0.30
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
@@ -142,6 +142,17 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 5. Anchor 只能识别受控扰动敏感性：同 task、evidence、budget 和可比分叉前缀下，比较 clean 与 perturbed 的 ΔCFA、ΔPF、invariance、MP 等结果。它不能仅靠“8 个 family 的平均相关”宣称找到了 agent 内部用户建模根因。跨任务比较某一主扰动至少需要 4 个适用 anchor；2 个仅算探索性复现。Acquire/Preserve/Use/Update 的过程标签只有在 trace 接口和事件时点可比时才可报告；final-only 只能报告 outcome sensitivity。
 6. 三环境不同时搭满。第 1 周先做 E1 的 `2 family × 2 agent` frozen end-to-end harness；第二步用 1 个 anchor 跑通 E3 的 checkpoint、clarification/conflict/update 注入；最后用 1 个商业产品做 E2 adapter smoke test并记录版本、日期、地区、成本和 URL。E2 的工程不稳定不得阻塞主论文。
 7. 当前 36-module YAML 与 data-factory YAML 是可执行规范和人工工作台输入，还不是经过 pilot 证明完整的测量系统。自动 compiler/validator、标注 UI、agreement 和 JudgeBench 都仍需要数据验证。
+
+### 1.13 v0.30：把 specificity 与真实受益拆开，并禁止跨用户方向补偿
+
+1. CFA 保留为透明的 leaf-based effect size，但不再单独承担有效个性化结论。每个 user pair 必须分别报告 `Δ_a=PF_a(Y_a)-PF_a(Y_b)` 与 `Δ_b=PF_b(Y_b)-PF_b(Y_a)`，再给 `CFA_mean` 和 `CFA_min=min(Δ_a,Δ_b)`；只有两个方向都为正才算 bilateral specificity。
+2. 利用主矩阵已有 task-only artifact `Y_0`，新增 `G_a=PF_a(Y_a)-PF_a(Y_0)` 与 `G_b=PF_b(Y_b)-PF_b(Y_0)`，并报告 mean/min。它回答“个性化是否真正增加用户价值”，避免只因为 swapped 很差就把 matched 判成成功。
+3. Confirmatory personalization success 是合取门，而不是新总分：双向 matched>swapped、双向不劣于 task-only、matched outputs 通过 TQ/FR/must-hold、critical must-not/隐私/权限无违规，且目标用户盲评 match effect 通过预注册不确定性门槛。
+4. 统计单位冻结为 task family。先做 family-blocked permutation 与 cluster bootstrap；同一 family 的四格 PF 不得当成四个独立样本。目标用户盲评主报 match win probability（tie=0.5）；Bradley–Terry/ordinal mixed model只在样本支持时作为敏感性分析。
+5. 论文结果表达改为 specificity × benefit 二维 profile。该分解是对核心 estimand 的测量加强，不新增第二个松散主贡献；Atlas、compiler、stress 和 JudgeBench 继续作为构造、稳健性与效度支撑。
+6. 一页汇报图改为 gap → controlled crossover → 四重成立门 → empirical scope，并明确“结果层反事实特异性不等于内部用户理解”。
+
+开放问题：Go/No-Go 中 task-only uplift 的严格阈值应使用 `≥0`、预注册最小实际重要差异（SESOI），还是 posterior/CI 下界；需在 vertical slice 后依据目标用户判断噪声和统计功效冻结。当前两个月版先用双向非劣门 + 报告区间，不承诺低功效的逐 family 显著性。
 
 ## 2. 冻结的两个月范围
 

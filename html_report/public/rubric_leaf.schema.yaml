@@ -1,5 +1,5 @@
 schema_name: deepalign_rubric_leaf
-schema_version: 0.29
+schema_version: 0.30
 description: >-
   Fixed schema for one independently judgeable rubric leaf. A compiler selects
   templates from case metadata and contracts, expands them into these leaves,
@@ -58,7 +58,7 @@ scoring:
   cap_if_failed_0_to_100: number_or_null
 
 direct_metric_bindings:
-  # CFA, NPF, Worst-view CFA and stress deltas are derived metrics and therefore
+  # CFA/CFA_min, task-only gain, NPF, Worst-view CFA and stress deltas are derived metrics and therefore
   # never appear here as direct leaf bindings.
   type: list
   allowed_values:
