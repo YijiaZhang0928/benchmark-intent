@@ -1,7 +1,7 @@
 # DeepAlign-Bench
 
 **导师汇报精简版**  
-版本：v0.23 · 2026 年 8 月 3 日
+版本：v0.28 · 2026 年 8 月 8 日
 建议汇报时间：15–20 分钟  
 
 ---
@@ -100,11 +100,16 @@ Persona 不是人物小传，而是 task-conditioned user state 的一种展示�
 ### Metadata-driven Rubric Compiler
 
 ```text
-Core + Personalization + Intent + Deliverable + Operator + Risk
-→ 当前 case 的 rubric
+case metadata + user ledger + contracts + evidence/permission
+→ 选择 Core / Personalization / Intent / Deliverable / Operator / Risk 模板
+→ 填入 case 参数 → leaf expansion → 校验 → 冻结 rubric bundle
 ```
 
-统一的是 rubric 叶节点格式、适用条件和校准程序，不是让报告、代码、表格和幻灯共享同一张评分表。
+有四个机器可读对象：case schema、固定模板 registry、固定 leaf schema、metric binding schema。模板路由随元数据变化：六类 research intent 各有模板；report / memo / workbook / code / slides / webpage / multi-file 各有交付物模板；stakes、permission、operator 再激活风险与压力模板。统一的是 leaf 格式、适用条件和聚合规则，不是让不同任务共用一张表。
+
+**当前成熟度：**v0.28 已冻结 compiler contract 和端到端示例；自动 validator、模板路由器和 bundle 导出器是第 1 周工程任务。今晚确认的是方法接口与标注可行性，不把 schema 文件说成已经完成的生产系统。
+
+**Leaf expansion** 是运行前把复合要求拆成原子项。例如“Ua 的建议符合预算和风险”拆成“首阶段 ≤50 万”“三个月可逆试点”“继续/退出阈值”，每条都附 evidence target、0/1/2 锚点、weight、hard gate、judge route 和直接 metric binding。冻结后所有 agent 共用，不能看完输出再改。
 
 ### 四类评价契约
 
@@ -112,6 +117,19 @@ Core + Personalization + Intent + Deliverable + Operator + Risk
 - Must hold：共同事实和质量必须保持；
 - Must not：不得假设、泄露或越权；
 - Clarify if unknown：缺关键信息时应提问或给条件分支。
+
+### Leaf 到指标的显式绑定
+
+| Leaf | 直接指标 | 后续用途 |
+|---|---|---|
+| common / intent / deliverable | TQ；事实项同时 FR | 基础质量门槛 |
+| must-change | 指定用户 PF | matched/swapped 交叉评分 |
+| must-hold | TQ + Neutral Invariance | 检查不该变的是否稳定 |
+| must-not | MP / hard gate | 防泄露、越权与过度个性化 |
+| clarify | Clarification Correctness；错误假设进 MP | 获取信息边界 |
+| operator | paired diagnostic Δ | S0–S3 压力诊断 |
+
+TQ/FR/PF/MP 直接聚合 leaves；**CFA 不绑定某一条 leaf**。Ua 的同一组 PF leaves 同时评分 `Y_a/Y_b`，Ub 同理，四个 PF 单元再计算 CFA。完整例子和 score trace 已写入 `rubric_bundle.example.yaml`。
 
 ### 主指标
 

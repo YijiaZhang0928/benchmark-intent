@@ -19,8 +19,8 @@ const figures = [
     title: "Counterfactual family 构造与评分",
     question: "persona、真值、输出变化和 CFA 到底如何连接？",
     placement: "Method · 双栏通栏",
-    panels: ["A · Ua/Ub invariant core + minimal edits", "B · Persona / history / clarification views", "C · 2×2 M[i,j] 交叉评分矩阵", "D · must-change / hold / not / clarify"],
-    rule: "必须使用一个完整真实 case。它是论文方法最关键的细节图，不能只画抽象流程。",
+    panels: ["A · Ua/Ub invariant core + minimal edits", "B · Persona / history / clarification views", "C · Template routing → leaf expansion → metric binding", "D · 2×2 M[i,j] + CFA / invariance / gates"],
+    rule: "必须用一个完整 case 展示复合 contract 如何拆成带锚点 leaf，以及同一用户 leaves 如何同时评分 matched/swapped；不能只画抽象流程。",
   },
   {
     id: "F3",
@@ -61,7 +61,7 @@ export default function FigureBlueprintPage() {
       <header className="figurePlanHero">
         <nav className="litNav shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><div><a href="#result-mockups">结果图原型</a><a href="#main-figures">全部主图</a><a href="#main-tables">主表</a></div><a className="navCta" href="/">返回总报告</a></nav>
         <div className="shell figurePlanHeroGrid">
-          <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.27</p><h1>结果不是一张总榜，<br/>而是 <em>效应—分布—失效</em></h1><p className="lede">核心先展示 matched 相对 swapped 是否真的形成用户特异价值，再展开到可支持的任务边际、信号稳健性和多标签失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
+          <section><p className="eyebrow">RESULT VISUAL BLUEPRINT · v0.28</p><h1>结果不是一张总榜，<br/>而是 <em>效应—分布—失效</em></h1><p className="lede">核心先展示 matched 相对 swapped 是否真的形成用户特异价值，再展开到可支持的任务边际、信号稳健性和多标签失败。下方所有点和色块都是结构示意，不是假定实验结果。</p></section>
           <aside className="figurePlanClaim"><span>主文证据顺序</span><b>How it works</b><i>→</i><b>What is measured</b><i>→</i><b>Where it fails</b><i>→</i><b>Can we trust the score</b></aside>
         </div>
       </header>

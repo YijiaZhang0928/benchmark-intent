@@ -1,0 +1,91 @@
+schema_name: deepalign_rubric_leaf
+schema_version: 0.28
+description: >-
+  Fixed schema for one independently judgeable rubric leaf. A compiler selects
+  templates from case metadata and contracts, expands them into these leaves,
+  validates them, and freezes the resulting bundle before model runs.
+
+required:
+  - criterion_id
+  - module_id
+  - tree
+  - contract_type
+  - applicability_predicate
+  - observable
+  - evidence_spec
+  - scoring
+  - direct_metric_bindings
+  - judge_route
+  - provenance
+
+criterion_id: string
+module_id: string
+template_id: string
+tree: [common_task_quality, user_conditional_fit, misuse_and_boundary]
+contract_type: [core, must_change, must_hold, must_not, clarify_if_unknown]
+rubric_owner_user_id: string_or_all_users
+
+applicability_predicate:
+  expression: string
+  on_false: [exclude, report_not_applicable]
+
+observable:
+  question: string
+  expected_behavior: string
+  expected_direction: [satisfy, preserve, avoid, clarify_or_branch]
+  acceptable_alternatives: list
+  forbidden_shortcuts: list
+
+evidence_spec:
+  artifact_targets: list
+  authorized_user_fact_ids: list
+  reference_evidence_ids: list
+  required_evidence_span: boolean
+  insufficient_evidence_allowed: boolean
+
+scoring:
+  method: [deterministic, evidence_verifier, binary_judge, ordinal_judge, target_user_pairwise]
+  raw_scale: [binary_0_1, ordinal_0_1_2, ordinal_0_0.5_1, numeric_tolerance]
+  anchors:
+    type: list
+    item:
+      raw_score: number
+      definition: string
+  normalize_to_0_1: boolean
+  weight_within_metric: number
+  severity: [ordinary, major, critical]
+  hard_gate: boolean
+  cap_if_failed_0_to_100: number_or_null
+
+direct_metric_bindings:
+  # CFA, NPF, Worst-view CFA and stress deltas are derived metrics and therefore
+  # never appear here as direct leaf bindings.
+  type: list
+  allowed_values:
+    - TQ
+    - FR
+    - PF
+    - MP
+    - neutral_invariance_base
+    - clarification_correctness
+    - operator_diagnostic
+
+counterfactual_binding:
+  family_id: string
+  counterpart_criterion_id: string_or_null
+  score_artifacts: [matched_and_swapped, matched_only, all_artifacts, not_applicable]
+  held_constant_fields: list
+
+judge_route:
+  primary: [deterministic_verifier, evidence_verifier, rubric_judge, target_user, domain_expert]
+  fallback: [rubric_judge, target_user, domain_expert, adjudication, none]
+  judge_input_scope: [leaf_only, leaf_plus_authorized_facts, leaf_plus_evidence, pairwise_anonymized]
+  abstention_allowed: boolean
+
+provenance:
+  author_ids: list
+  validator_ids: list
+  created_from_contract_ids: list
+  template_registry_version: string
+  criterion_version: string
+  frozen_at: datetime_or_null

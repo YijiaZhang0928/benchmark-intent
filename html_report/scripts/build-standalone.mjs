@@ -6,6 +6,7 @@ const siteRoot = resolve(root, "html_report");
 const outPath = resolve(root, "deliverables/DeepAlign-Bench_HTML汇报版.html");
 const literatureOutPath = resolve(root, "deliverables/DeepAlign-Bench_七篇相关论文速览.html");
 const figuresOutPath = resolve(root, "deliverables/DeepAlign-Bench_论文图表蓝图.html");
+const rubricsOutPath = resolve(root, "deliverables/DeepAlign-Bench_Rubric编译器工作台.html");
 
 const css = (await readFile(resolve(siteRoot, "app/globals.css"), "utf8"))
   .replace(/^@import\s+["']tailwindcss["'];?\s*/m, "");
@@ -26,6 +27,7 @@ function localizeMainBody(body) {
   .replaceAll('href="/DeepAlign-Bench_汇报精简版.docx"', 'href="./DeepAlign-Bench_汇报精简版.docx"')
   .replaceAll('href="/case.schema.yaml"', 'href="./case.schema.yaml"')
   .replaceAll('href="/PROJECT_MEMORY.md"', 'href="../PROJECT_MEMORY.md"')
+  .replaceAll('href="/rubrics"', 'href="./DeepAlign-Bench_Rubric编译器工作台.html"')
   .replaceAll('href="/literature"', 'href="./DeepAlign-Bench_七篇相关论文速览.html"')
   .replaceAll('href="/figures"', 'href="./DeepAlign-Bench_论文图表蓝图.html"');
 }
@@ -36,6 +38,16 @@ function localizeLiteratureBody(body) {
 
 function localizeFiguresBody(body) {
   return body.replaceAll('href="/"', 'href="./DeepAlign-Bench_HTML汇报版.html"');
+}
+
+function localizeRubricsBody(body) {
+  return body
+    .replaceAll('href="/"', 'href="./DeepAlign-Bench_HTML汇报版.html"')
+    .replaceAll('href="/case.schema.yaml"', 'href="./case.schema.yaml"')
+    .replaceAll('href="/rubric_template_registry.yaml"', 'href="./rubric_template_registry.yaml"')
+    .replaceAll('href="/rubric_leaf.schema.yaml"', 'href="./rubric_leaf.schema.yaml"')
+    .replaceAll('href="/metric_binding.schema.yaml"', 'href="./metric_binding.schema.yaml"')
+    .replaceAll('href="/rubric_bundle.example.yaml"', 'href="./rubric_bundle.example.yaml"');
 }
 
 async function renderedBody(pathname) {
@@ -50,6 +62,7 @@ async function renderedBody(pathname) {
 const body = localizeMainBody(await renderedBody("/"));
 const literatureBody = localizeLiteratureBody(await renderedBody("/literature"));
 const figuresBody = localizeFiguresBody(await renderedBody("/figures"));
+const rubricsBody = localizeRubricsBody(await renderedBody("/rubrics"));
 
 const standalone = `<!doctype html>
 <html lang="zh-CN">
@@ -91,4 +104,17 @@ const figuresStandalone = `<!doctype html>
 </html>
 `;
 await writeFile(figuresOutPath, figuresStandalone, "utf8");
-console.log(`${outPath}\n${literatureOutPath}\n${figuresOutPath}`);
+const rubricsStandalone = `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DeepAlign-Bench Rubric Compiler、模板路由、leaf expansion 与计分绑定说明">
+  <title>Rubric Compiler 工作台｜DeepAlign-Bench</title>
+  <style>${css}</style>
+</head>
+<body>${rubricsBody}</body>
+</html>
+`;
+await writeFile(rubricsOutPath, rubricsStandalone, "utf8");
+console.log(`${outPath}\n${literatureOutPath}\n${figuresOutPath}\n${rubricsOutPath}`);

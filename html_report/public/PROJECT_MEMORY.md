@@ -2,8 +2,8 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-04
-当前版本：v0.27
+最后更新：2026-08-08
+当前版本：v0.28
 当前分支：`main`
 
 ## 1. 项目目标与核心识别
@@ -123,6 +123,16 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 3. Structured persona 与 natural history 可以在 equivalence audit 后组成 `V_eq`；Cue Gap 与 Worst-view CFA 都只在 `V_eq` 上计算。clarification-allowed 是交互获取条件，workspace/history 是私有环境条件，不能统称为语义等价 cue，也不进入 cue-equivalence summary。
 4. 比例型 `CFA retention = CFA_Sk / CFA_S0` 仅在 `CFA_S0 ≥ ε` 时使用；基线接近零时改报 `ΔCFA` 和原始 CFA，避免分母噪声制造虚假的压力跌幅。
 
+### 1.11 v0.28：Rubric compiler 从概念变成可审计接口
+
+1. 编译输入固定为 case metadata、task-conditioned user ledger、must-change/must-hold/must-not/clarify contracts、evidence world 和 permission policy。编译必须发生在 agent 运行前；看过待测输出后新增或改写的 criterion 不进入主榜。
+2. 模板不是“一任务一张自由生成评分表”，而是六层固定模块：所有 case 使用 Core；存在 user-specific contract 时叠加 Personalization；再按 research intent、deliverable、operator 和 risk 选择适用模板。任务之间允许模板组合和参数不同，但 leaf schema、接口和聚合规则保持一致。
+3. `leaf expansion` 是把宽泛 contract 在运行前拆成可独立判定的最小 leaf。例如“给预算有限、风险厌恶的老板推荐咖啡店”拆为预算、风险和受众三个 leaf；每个 leaf 都要写明 owner、evidence target、0/1/2/NA anchors、hard gate、适用条件和直接 metric binding。它不是看到输出后再细化评分标准。
+4. 直接绑定规则冻结为：common/intent/deliverable leaf → TQ，事实 leaf 同时进入 FR；must-change → 对应用户 PF；must-hold → TQ 与 neutral-invariance；must-not → MP 或 hard gate；clarify → clarification correctness，擅自假设则进入 MP；operator leaf → 配对诊断量。
+5. CFA 不直接绑定任何 leaf。相同的冻结 `PF_a` leaf bundle 同时评价 `Y_a` 与 `Y_b`，`PF_b` 同理，再由四个聚合值计算 `0.5[(PF_a(Y_a)-PF_a(Y_b))+(PF_b(Y_b)-PF_b(Y_a))]`。这样可从任一论文指标追溯到 aggregate、leaf、contract 和用户事实。
+6. 新增四个机器可读对象：`rubric_leaf.schema.yaml`、`rubric_template_registry.yaml`、`metric_binding.schema.yaml` 和 `rubric_bundle.example.yaml`；`case.schema.yaml` 增加编译版本、bundle hash、运行前冻结和校验状态字段。v0.28 定义的是 compiler contract 与完整示例，不等于自动 compiler 已完成；正式 validator/compiler 是第 1 周工程任务。
+7. ICLR 防守边界：rubric compiler 本身不是论文唯一创新，核心仍是 counterfactual personalization effect identification。模板覆盖度、leaf 人类可判别性、judge 一致性、跨交付物效度和权重敏感性必须通过 pilot 验证，不能靠 schema 完整性代替测量有效性。
+
 ## 2. 冻结的两个月范围
 
 - 24 个 counterfactual task family，覆盖 3 个使用情境 × 6 个 research intent，并以 6 个额外 family 复测关键单元。
@@ -182,9 +192,11 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 
 ## 5. Rubric、metrics 与 judge 的当前决定
 
-- Rubric 由 `core + personalization + intent + deliverable + operator + risk` 编译；统一 leaf schema 和校准，不强迫所有交付物共享一张表。进入主实验前检查 matched/swapped 区分力、cue-equivalence 稳健性、无关信号 invariance 和跨任务模块一致性。
+- Rubric 按 `validate inputs → select fixed templates → instantiate parameters → leaf expansion → validate/freeze bundle` 编译。六层模板为 `core + personalization + intent + deliverable + operator + risk`；统一 leaf schema、直接 binding 与校准，不强迫所有交付物共享一张总体表。
+- 当前 YAML 是可机读 compiler contract、模板注册表、metric binding 与完整 bundle 示例；第 1 周必须实现 schema validator、模板选择器、唯一 ID/hash 生成和覆盖/冲突检查，才可称为 executable compiler。
 - 四类评价契约：must-change、must-hold、must-not、clarify-if-unknown。
-- 主榜先过任务完成、事实与隐私硬门，再报告 PF、MP、净个性化和 CFA；不同轨道、工具预算和不可复现产品不混为一个总榜。
+- Leaf 是实际判分最小单位；每个 leaf 必含 criterion、scope/owner、evidence target、anchors、weight、applicability、hard-gate 和 direct binding。CFA 只由同一 PF bundle 的 matched/swapped 四格结果派生，不能在 leaf 上写 `metric: CFA`。
+- 主榜先过任务完成、事实与隐私硬门，再报告 PF、MP、`NPF=max(0,PF-MP)` 和 CFA；CFA 保持 PF-based，MP/关键违规单列并设门，避免改写主 estimand。不同轨道、工具预算和不可复现产品不混为一个总榜。
 - 最终交付物足以支持“是否适合用户”的主结论；它不足以定位“没读到、忘了、知道但没用”。全量保留轻量轨迹，20%–30% 子集做受控机制诊断。若诊断轨未完成，论文必须删除或降级内部机制主张。
 - 两个月主 judge：deterministic/evidence verifier → 强通用 prompted judge → 人类复核/仲裁。
 - SFT scorer 若实施，训练单元必须含人工 label、人工 evidence span、rubric anchor、置信度/弃权和经抽检的 reason。GPT 在已知标签后生成的 reason 只能作为解释蒸馏，不能当作新增 ground truth。
@@ -210,6 +222,9 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 5. 是否有足够资源完成 longitudinal/handoff 子集，将决定论文能否保留机制性 RQ。
 6. 是否在少量 anchor 上加入完成时间、认知负担或决策信心等 downstream human utility，以校验文本 rubric 与真实用户效用的关系。
 7. 8 个 anchor 中哪些能严格满足 temporal-intervention C1–C4，需在第 1–2 周的 eligibility matrix 中显式标记；只在 schema 定义不算实测覆盖。
+8. 今晚需确认主实验是否优先冻结 report/memo/table 三类交付物，把 code/slides/web/multi-file 只作为 anchor probe；若全部进入主矩阵，两个月内的模板校准和人工效度样本可能不足。
+9. 六类模板的 granularity、leaf 权重/门槛和不同 deliverable 的等值性不能仅由设计者决定；需用首轮专家与目标用户 pilot 检验可判别性、冗余度、覆盖缺口和权重敏感性。
+10. 自动 compiler/validator 的最小完成定义为：schema 校验、deterministic template routing、parameter instantiation、leaf ID/hash、非法 direct binding 拒绝、NA/denominator 审计和 frozen bundle 导出。
 
 ## 8. 文件与同步规则
 
@@ -222,7 +237,12 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - `proposal/DeepAlign-Bench_汇报精简版.md`：导师汇报版。
 - `proposal/DeepAlign-Bench_七篇相关论文速览.md`：abstract、主图、conclusion 级的相邻工作地图与审稿威胁分析。
 - `benchmark_schema/case.schema.yaml`：机器可读 case 蓝图。
+- `benchmark_schema/rubric_leaf.schema.yaml`：rubric leaf 的固定字段、anchor 和适用性接口。
+- `benchmark_schema/rubric_template_registry.yaml`：六层固定模板、选择条件和输出 leaf 类型。
+- `benchmark_schema/metric_binding.schema.yaml`：leaf 到 TQ/FR/PF/MP/诊断量的合法直接绑定；CFA 标记为 derived-only。
+- `benchmark_schema/rubric_bundle.example.yaml`：完整 case 的 compiler 输入、展开 leaf、聚合值和 CFA trace 示例。
 - `html_report/app/page.tsx`：HTML 汇报正文。
+- `html_report/app/rubrics/page.tsx`：导师会用 Rubric Compiler 工作台。
 - `CHANGELOG.md`：版本级变更。
 
 每次实质性对话/修改必须执行：
@@ -252,3 +272,4 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.25：将论文主文图表冻结为 5 张主图 + 4 张主表；新增图表蓝图 HTML，明确每张图回答的 RQ、panel 结构、表格字段、附录迁移规则与禁止的误导性可视化。
 - v0.26：将结果图具体化为 PF matched–swapped signature plot、CFA forest、任务能力拓扑、信号/压力稳健性和绝对 outcome-failure 画像；过程机制只在 trace 可比时进入附录。
 - v0.27：按样本支持度把 18-cell task cube 降为附录描述，主文改报 strata/intent 边际；failure 改为多标签 incidence；Cue Gap 与 retention 增加适用性门。
+- v0.28：定义固定模板路由、运行前 leaf expansion、leaf—metric 直接绑定和 CFA 派生链；新增四个 YAML compiler contract/example、Rubric 工作台及四版同步说明，并明确自动 validator/compiler 尚属第 1 周实现项。

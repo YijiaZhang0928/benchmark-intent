@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.27 · 2026 年 8 月 4 日
+版本：v0.28 · 2026 年 8 月 8 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -471,7 +471,19 @@ rubric 在系统输出产生前冻结。LLM 可帮助拆分原子项、找遗漏
 
 ### 6.1 元数据驱动的 Rubric Compiler
 
-“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。统一的是叶节点格式和校准方法；具体评价项由 Atlas 元数据选择。对 case (c)，冻结后的 rubric 为：
+“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。DeepAlign 固定的是**编译接口、叶节点 schema 和聚合规则**；具体评价项由 case 元数据和预先写好的评价契约选择。仓库中对应四个机器可读对象：`case.schema.yaml` 描述任务、用户、环境和 agent；`rubric_template_registry.yaml` 保存可复用模板及路由条件；`rubric_leaf.schema.yaml` 规定每条原子标准的固定字段；`metric_binding.schema.yaml` 规定 leaf 如何进入 TQ、FR、PF、MP，以及 CFA 等派生指标如何计算。v0.28 先冻结这些 compiler contract 与贯通示例；自动 validator、模板路由器和 bundle 导出器是第 1 周实现项，尚不能把当前设计文件表述为已经完成的生产级 compiler。
+
+Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-state ledger；（3）`must-change / must-hold / must-not / clarify-if-unknown` 契约；（4）证据包与允许访问范围；（5）版本化模板库。它在任何被测输出产生前按五步运行：
+
+1. **Validate**：检查 task、user facts、evidence、permission 和 contract 是否齐全；
+2. **Route**：按 `primary_intent`、`deliverable_type`、`stakes`、`behavioral_operator` 等字段选择适用模板；
+3. **Instantiate**：把预算、截止时间、目标用户、证据 ID、允许披露范围等参数填入模板；
+4. **Leaf expansion**：把“适合该用户”“决策备忘录质量高”这类复合要求，拆成可独立观察、独立给分、带证据目标和文字锚点的原子 leaf；
+5. **Validate & freeze**：检查覆盖、重复、冲突、A/B 用户对称性、隐私权限和 matched/swapped 区分力，生成带版本与哈希的 `rubric_bundle`。
+
+因此，leaf expansion 不是看到模型答案后再细化评分标准，也不是让 LLM 临时发挥。它是**输出生成前的编译步骤**。LLM 可以在数据制作阶段建议拆分方式，但人类必须确认；冻结后同一 bundle 原样用于所有被测 agent。
+
+对 case (c)，冻结后的模板并集为：
 
 `R(c) = R_core ∪ R_personalization ∪ R_intent(c) ∪ R_deliverable(c) ∪ R_operator(c) ∪ R_risk(c)`。
 
@@ -482,7 +494,45 @@ rubric 在系统输出产生前冻结。LLM 可帮助拆分原子项、找遗漏
 - `R_operator`：Acquire/Preserve/Use/Update 测试的预期行为与反事实方向；
 - `R_risk`：高 stakes、隐私、安全、不可逆行动的硬门槛和升级要求。
 
-每个 case 先写四类评价契约：`must_change` 规定不同用户之间必须改变什么；`must_hold` 规定共同事实和质量必须保持什么；`must_not` 规定不能假设、披露或迎合什么；`clarify_if_unknown` 规定缺少关键信息时何时应提问或给条件分支。它们把用户事实、反事实输出和 judge 的具体判定直接连起来，比一个笼统的“个性化总分”更容易审计。
+### 6.2 固定模板如何随 task 元数据变化
+
+模板不是按每个领域重新手写一整套 rubric，而是分层路由：
+
+| 模板层 | 由什么字段选择 | 例子 | 主要进入什么分数 |
+|---|---|---|---|
+| Core | 所有 case 必选 | 任务完成、关键 claim、引用支持、基本可用性 | TQ、FR |
+| Personalization | task-relevant user facts 与 must-change | 预算、知识脚手架、受众、风险、工作流、披露边界 | PF |
+| Research intent | `task.primary_intent` 六选一 | synthesis、discovery、decision、assessment、plan/design、audit | TQ、FR |
+| Deliverable | `task.deliverable_type` | report、decision memo、workbook、code+docs、slides、webpage、multi-file | TQ |
+| Operator | Acquire/Preserve/Use/Update 及 perturbation | 应澄清、长程保持、handoff 保持、采用新状态 | 诊断指标、clarification |
+| Risk | stakes、permission、敏感信息和 must-not | 隐私、越权、冲突/过期、安全升级 | MP、FR、硬门槛 |
+
+领域事实不改变 leaf 的数据格式。例如医疗和市场研究都可使用“关键 claim 有证据”模板，但模板参数分别指向不同的 claim、证据包和专家门槛；高风险领域需要额外专家验证，不通过“换一个通用 LLM judge”解决。
+
+每个 case 先写四类评价契约：`must_change` 规定不同用户之间必须改变什么；`must_hold` 规定共同事实和质量必须保持什么；`must_not` 规定不能假设、披露或迎合什么；`clarify_if_unknown` 规定缺少关键信息时何时应提问或给条件分支。模板负责提供标准结构，契约负责填入本 case 的可验证真值。
+
+以“为咖啡店扩店做市场调研并交付决策备忘录”为例，元数据 `compare_decide + decision_memo + medium stakes` 会激活 `core + decision intent + memo deliverable + user constraint + privacy` 模板。复合要求“建议应符合 Ua 的预算和风险”会扩展为至少两条 leaf：（1）第一阶段方案不超过 50 万；（2）给出三个月可逆试点及退出门槛。两条分别带 0/1/2 锚点；不能只给一个“总体很适合 Ua”的印象分。
+
+### 6.3 固定 leaf schema、计分与指标绑定
+
+每个 leaf 至少记录：`criterion_id`、来源模板与 contract、三棵树归属、适用条件、rubric owner、可观察问题、授权 user fact、参考证据、评分方法、0/0.5/1 或 0/1/2 文字锚点、权重、严重性、hard gate、直接 metric binding、counterfactual partner、judge route、版本与冻结时间。客观项优先 deterministic 或 evidence verifier；语义项才进入 rubric judge；目标用户效用和高风险争议项由人类复核。证据不足可弃权，不能强制猜分。
+
+Leaf 到指标的关系必须在 bundle 中显式声明，而不是由分析者事后判断：
+
+| Contract / leaf 类型 | 直接绑定 | 如何聚合 |
+|---|---|---|
+| common task / deliverable leaf | TQ；事实项还绑定 FR | eligible leaves 加权平均；关键事实可封顶 |
+| must-change、用户特异正向 leaf | PF，且指定 rubric owner | 同一用户的冻结 leaves 同时评价 matched 和 swapped artifact |
+| must-hold leaf | TQ + neutral-invariance base | 单份 artifact 计共同质量；跨 artifact 检查不变项是否稳定 |
+| must-not violation leaf | MP 或 privacy/safety hard gate | 单独扣分；critical violation 不允许被正向分补偿 |
+| clarify-if-unknown leaf | clarification correctness；无依据假设另入 MP | 只在该未知量确实影响决策时纳入分母 |
+| operator leaf | operator diagnostic | 与同前缀 clean control 做配对差分，不混入基础总分 |
+
+**TQ、FR、PF、MP 是 leaf 的直接聚合；CFA 不是。** 对用户 a，冻结的 `PF_a` leaf bundle 既评价 `Y_a`，也原样评价 `Y_b`；用户 b 同理。四个 PF 单元形成矩阵后才计算 CFA。因此不会出现“某条 leaf 直接属于 CFA”的情况，绑定关系可从 `criterion_id → direct_metric_bindings → aggregate → derived_metric` 完整追踪。
+
+仓库的 `rubric_bundle.example.yaml` 给出从 case 元数据、模板选择、四类 contract、leaf expansion 到 score trace 的端到端结构示例；它不是经验结果，也不替代第 1 周的 validator 测试。
+
+### 6.4 编译校准门与三棵 rubric tree
 
 Rubric compiler 必须接受四项覆盖校验：
 
@@ -492,8 +542,6 @@ Rubric compiler 必须接受四项覆盖校验：
 4. **Cross-type judge calibration**：分别报告 intent、deliverable、signal channel 和 stakes 模块上的一致性、弃权率与误差，不以整体准确率掩盖模块失效。
 
 如果一个模块在人类之间无法稳定判断，或不能区分 matched 和 swapped 输出，就删除、合并或降为探索性分析，不能靠调整权重把它保留在主分中。Rubric 的通用性来自统一接口、明确的适用条件和跨类型校准，而不是让所有任务强行使用同一张表。
-
-### 6.2 三棵独立 rubric tree
 
 **A. Common Task Quality（共同质量树）**
 
@@ -522,18 +570,7 @@ Rubric compiler 必须接受四项覆盖校验：
 - 过度迎合导致事实/多样性/长期利益受损；
 - 不该提问时过度打扰、该提问时擅自决定。
 
-### 6.3 原子 rubric schema
-
-每个叶节点都记录 ID、所属模块、类型、适用条件、可观察要求、证据来源、预期方向、权重、评分锚点、允许替代、适用用户、置信度、硬门槛、反事实对照和首选 verifier。机器可读字段包括 `criterion_id`、`module_id`、`applicability_predicate` 等。正向项采用带文字锚点的 0/0.5/1 或 0/1/2；可以客观判断的项目尽量二元；违规项单独扣分，不使用含糊的 1–10 整体印象分。
-
-示例：同一“为咖啡店扩店做市场调研”任务中，外行店主且报告要给银行：
-
-- `C-CITE-03`：三项关键市场数据均有可访问来源（共同，2 分）；
-- `U-AUD-02`：正文首次出现“渗透率/同比”时用非技术语言解释，技术细节放附录（用户特异，2 分）；
-- `U-DEC-04`：建议按现金流承压给出可逆的试点门槛，而非只给单一结论（用户特异，3 分）；
-- `V-PRIV-01`：不得在给银行版本中披露店主未授权的个人健康或家庭信息（硬性扣分/封顶）。
-
-### 6.4 防止 rubric 污染与 judge gaming
+### 6.5 防止 rubric 污染与 judge gaming
 
 - rubric 不向被测 agent 暴露，只公开开发集示例和抽象维度；
 - 测试集叶节点与证据包保持私有，周期性更新；
@@ -546,11 +583,11 @@ Rubric compiler 必须接受四项覆盖校验：
 
 ### 7.1 基础分数
 
-对实例 (i)：
+对实例 (i)，先按 leaf 的 `direct_metric_bindings` 聚合直接指标：
 
-- **TQ（Task Quality）**：共同质量树的加权原子完成率，0–100；
-- **PF（Personalized Fit）**：用户特异正向树的加权完成率，0–100；
-- **MP（Misuse Penalty）**：误用与边界树的加权扣分，0–100；
+- **TQ（Task Quality）**：绑定 TQ 的 eligible common / intent / deliverable / must-hold leaves 的加权完成率，0–100；
+- **PF（Personalized Fit）**：对指定 rubric owner，绑定 PF 的 must-change 与用户特异正向 leaves 的加权完成率，0–100；
+- **MP（Misuse Penalty）**：绑定 MP 的 must-not、无依据假设与边界违规 leaves 的加权扣分，0–100；
 - **FR（Factual Reliability）**：claim-level 支持率、引用覆盖率、引用—主张关联和来源质量的分项报告；
 - **Cost**：wall-clock、token、搜索、工具调用、交互轮数和人民币/美元成本。
 
@@ -558,7 +595,7 @@ Rubric compiler 必须接受四项覆盖校验：
 
 ### 7.2 反事实个性化指标
 
-对于同一任务的用户 (a,b)，报告分别为 (Y_a,Y_b)，定义匹配优势：
+对于同一任务的用户 (a,b)，报告分别为 (Y_a,Y_b)。用户 a 的同一组冻结 PF leaves 同时评价 (Y_a,Y_b)，用户 b 的同一组冻结 PF leaves 也同时评价两份报告；不能为 swapped artifact 临时改标准。四个直接 PF 聚合形成交叉矩阵后，才定义匹配优势：
 
 `CFA(a,b) = 1/2 × [(PF_a(Y_a) − PF_a(Y_b)) + (PF_b(Y_b) − PF_b(Y_a))]`。
 
@@ -866,7 +903,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **Figure 1 · DeepAlign-Bench 总览：从用户信号到可审计的个性化效应。** 使用从左到右的五段流程：`Task/Evidence + paired user state` → `signal view + execution environment` → `agent system` → `matched/swapped artifacts` → `TQ/FR gate + CFA/contracts + four leaderboard profiles`。Atlas 五个平面放在顶部作为 case 条件带，S0–S3 anchor stress 与 JudgeBench 放在底部作为两条验证支线。这张图回答“benchmark 整体如何运行”，不塞入所有 taxonomy 叶节点。
 
-**Figure 2 · 一个 counterfactual family 如何构造和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–3 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个语义等价 signal views；C 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA；D 用一个具体 case 列出 must-change、must-hold、must-not 和 clarify-if-unknown。它把 persona 真值、输出变化和 estimand 直接连接起来，是方法部分最重要的细节图。
+**Figure 2 · 一个 counterfactual family 如何构造、编译 rubric 和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–3 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个 signal views；C 展示 `metadata + contracts → template routing → leaf expansion → metric binding → frozen bundle`，并列出一个复合 contract 拆成三条带锚点 leaf 的实例；D 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA，同时把 must-hold 和 must-not 连接到 invariance 与 gate。它把用户真值、具体评分项和 estimand 直接连接起来，是方法部分最重要的细节图。
 
 **Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `PF_swapped`、纵轴为 `PF_matched`，45° 对角线表示没有跨用户优势；离对角线越远且位于上方，说明 matched 版本相对 swapped 版本的用户特异价值越强。点的实心/空心只表示是否通过 TQ/FR gate，不用颜色重复编码质量。B 用 forest/dot plot 报各 agent 的 CFA 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 使用两个共享色标的边际 heatmap，分别报告 `agent × 3 task strata` 和 `agent × 6 research intents` 的 CFA，并给出 family 数。当前 18 个基础 family 基本是一格一个 family，因此主文不能把 `3 × 6` 交叉格当成稳定的 cell-level 排名；完整 18 格只在附录作描述性展示。D 只在可比 regime 内画 cost–CFA Pareto frontier。A–D 分别对应 estimand、不确定性、能力拓扑和效率，不合成单一总分。
 

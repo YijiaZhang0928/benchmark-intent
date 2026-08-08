@@ -2,15 +2,17 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（v0.27）
+## 当前交付物（v0.28）
 
-- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；v0.27 将主结果收紧为可支持的 strata/intent 边际估计、多标签 failure incidence 与受限 Cue Gap。
+- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：61 页方法学底稿；v0.28 将 rubric compiler 明确为固定模板路由、参数实例化、leaf expansion、冻结评分绑定和派生 CFA 的可实现协议。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：10 页标准论文 Proposal，保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
-- `deliverables/DeepAlign-Bench_完整人话版.pdf`：逻辑、内容和方法不变，改为直白语言，适合组内讨论。
-- `deliverables/DeepAlign-Bench_汇报精简版.pdf`：9 页导师汇报稿，适合 15–20 分钟讲解。
+- `deliverables/DeepAlign-Bench_完整人话版.pdf`：25 页直白语言版，适合组内逐项讨论。
+- `deliverables/DeepAlign-Bench_汇报精简版.pdf`：10 页导师汇报稿，适合 15–20 分钟讲解。
 - `deliverables/DeepAlign-Bench_HTML汇报版.html`：离线可打开的统一阅读入口，可下载四版 PDF/Word。
+- `deliverables/DeepAlign-Bench_Rubric编译器工作台.html`：离线可交互阅读的 compiler 专页，用一个完整 case 展示模板选择、leaf expansion、绑定和 CFA 计算。
 - `deliverables/DeepAlign-Bench_七篇相关论文速览.html`：七篇最近邻工作精读 + 22 篇 agent personalization / evaluation 扩展相关性审计；保留旧文件名以兼容已有链接。
 - `deliverables/DeepAlign-Bench_论文图表蓝图.html`：主文五张图、四张表及附录图表规划；包含 Figure 3–5 的结果图可视原型。
+- `benchmark_schema/rubric_leaf.schema.yaml`、`rubric_template_registry.yaml`、`metric_binding.schema.yaml` 与 `rubric_bundle.example.yaml`：compiler contract、模板注册表、leaf—metric 绑定和完整编译示例。当前版本定义接口与预注册对象；自动 validator/compiler 是第 1 周实现项。
 
 四版共用同一研究设计；差别只在结构、语言密度与细节层级，不构成方法变更。
 

@@ -1,5 +1,14 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.28 - 2026-08-08
+
+- 将 rubric compiler 从概念说明改为可追溯协议：`validate → template routing → parameter instantiation → leaf expansion → validate/freeze`，并规定全部工作在 agent 输出前完成。
+- 冻结六层模板库与直接绑定：Core、Personalization、Intent、Deliverable、Operator、Risk；明确 TQ/FR/PF/MP 与各 leaf 的对应关系，CFA 只由 matched/swapped 四格 PF 派生。
+- 新增 rubric leaf schema、模板注册表、metric binding schema 和完整 bundle 示例；case schema 增加 compiler 版本、bundle hash 和 freeze/validation 状态。
+- 新增 Rubric Compiler HTML 工作台，用咖啡店决策 case 演示 contract 如何展开为预算、风险、受众 leaf，并回溯到 2×2 PF 矩阵和 CFA。
+- 同步 61 页正式版、10 页正式精简版、25 页人话版、10 页汇报版与离线 HTML；四份 DOCX/PDF 完整渲染检查通过，HTML 构建与 5 项测试通过。
+- 明确 v0.28 YAML 是 compiler contract 与示例，自动 validator/compiler 仍是第 1 周实现项；新增主矩阵是否先冻结 report/memo/table 的导师决策问题。
+
 ## v0.27 - 2026-08-04
 
 - 发现两个月规模下 18 个 `stratum × intent` 单元基本只有一个 family，取消主文 cell-level 能力排名；Figure 3C 改为 `agent × 3 strata` 和 `agent × 6 intents` 两个有更多 family 支撑的边际热力图。

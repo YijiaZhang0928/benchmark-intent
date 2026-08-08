@@ -2,11 +2,11 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.23 · 2026 年 8 月 3 日
+版本：v0.28 · 2026 年 8 月 8 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.23
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.28
 
 ---
 
@@ -117,7 +117,9 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 
 ### 5.1 Metadata-driven Rubric Compiler
 
-当前 case 的 rubric 由 core、personalization、research intent、deliverable、behavioral operator 和 risk 六类模块组成。统一的是叶节点 schema、适用条件和校准程序，而不是让所有任务共用一张评分表。每个叶节点包含评价类型、适用条件、预期方向、证据对象、评分锚点、严重性、权重和 verifier。
+Compiler 已有机器可读 contract 和固定模板设计，不是让 LLM 对每份输出临时写 rubric。输入是冻结的 case metadata、user-state ledger、证据/权限和四类 contract；流程为：`validate → 按 intent/deliverable/operator/risk 路由模板 → 填入预算/证据/用户参数 → leaf expansion → 校验并冻结 bundle`。Leaf expansion 是在运行前把“适合用户”“备忘录完整”等复合要求拆成可独立观察、带 0/1 或 0/1/2 文字锚点的原子项，不是评分后再细化。当前文件定义接口与端到端示例；自动 validator 和 compiler 是第 1 周实现项。
+
+固定模板分六层：core 所有 case 必选；personalization 由 task-relevant user facts 和 must-change 激活；intent 由六类研究意图选择；deliverable 由 report / memo / workbook / code / slides / webpage / multi-file 选择；operator 用于 acquire/preserve/use/update 诊断；risk 由 stakes、permission、敏感信息和 must-not 激活。统一的是 leaf schema、适用条件和聚合规则，而不是让所有任务共用一张表。每条 leaf 显式记录 `criterion_id`、rubric owner、observable、evidence、scoring anchors、weight、hard gate、judge route 和 `direct_metric_bindings`。
 
 四类评价契约为：
 
@@ -126,11 +128,13 @@ Atlas 驱动抽样、实验条件生成、rubric 选择、结果切片和覆盖�
 - **must-not：** 不得假设、泄露、越权或为迎合偏好而扭曲的内容；
 - **clarify-if-unknown：** 缺少关键信息时应提问、给条件分支或明确说明假设。
 
+绑定规则固定为：common/intent/deliverable leaves → TQ（事实项同时 → FR）；must-change leaves → 指定用户的 PF；must-hold leaves → TQ + Neutral Invariance；must-not violations → MP / hard gate；clarify leaves → Clarification Correctness，无依据假设另入 MP；operator leaves → 与同前缀 clean control 的诊断差分。仓库提供 `rubric_leaf.schema.yaml`、`rubric_template_registry.yaml`、`metric_binding.schema.yaml` 和一个端到端 `rubric_bundle.example.yaml`。
+
 ### 5.2 Metrics
 
 1. **Task Quality (TQ) / Factual Reliability (FR)：** 任务完成、关键覆盖、claim 支持、引用覆盖和来源质量；
 2. **Personalization Fit (PF) / Misuse Penalty (MP)：** 用户特异要求完成率，以及刻板化、误用、隐私和过度迎合惩罚；
-3. **Counterfactual Fit Advantage (CFA)：**
+3. **Counterfactual Fit Advantage (CFA)：** CFA 不直接绑定 leaf。用户 a 的同一组冻结 PF leaves 同时评分 (Y_a,Y_b)，用户 b 同理；四个 PF 聚合后计算
    CFA(a,b) = 1/2 [(PF_a(Y_a)-PF_a(Y_b)) + (PF_b(Y_b)-PF_b(Y_a))]；
 4. **Cue robustness：** 对语义等价 signal views 报告 worst-view CFA、Cue Gap、must-change/must-hold 一致率和 irrelevant-cue effect；
 5. **Retention / Update：** 长程干扰下的适配保留率、动态状态采用正确率与旧状态残留率。
