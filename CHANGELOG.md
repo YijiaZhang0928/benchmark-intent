@@ -2,11 +2,17 @@
 
 ## v0.32 - 2026-08-09
 
+- 完成 103 条去重记录的相关工作全景：正式 Proposal 63 个已有来源 + 40 个新增直接/强近邻；逐项审计澄清、权限/授权、委派、证据可靠性与真人下游效用方向。
+- 将唯一核心问题从 artifact-level counterfactual fit 收敛为下游决策效用：`DDE = Regret_task-only − Regret_matched`，并以 `WrongUserHarm = Regret_swapped − Regret_task-only` 作为错配负对照。
+- 冻结两阶段协议：Phase A 用 TQ/FR/PF/CFA、三类契约与质量配平验证报告处理；Phase B 用真实目标用户、等价 task shell、三臂随机化、顺序平衡和盲化估计 DDE。
+- 将两个月范围从 24 family/576 artifact episodes 收缩为 3 个 decision vertical slice，通过后扩到 8–12 family；36–48 名真人只是 planning range，最终样本量由 pilot 功效模拟冻结。
+- 新增 `downstream_decision.protocol.yaml`，升级 case/metric/coverage schema 到 v0.32，加入 utility、randomization、blinding、decision regret、硬约束与校准字段。
 - 依据正式 Proposal 新增 2560×1440 参考式端到端流程图，以分区卡片、图标、主流程和诊断带呈现双用户构造、运行前冻结、三环境分工、2×2 交叉评分、四重成功门、压力诊断和 PDR-Bench 对照。
 - 将参考图的实验语义视为待检验假设而非模板照搬：未采用“checkpoint 是所有运行必经步骤”的叙事，也不从最终交付物反推模型内部用户理解。
 - 修正初稿中环境与输出一一绑定的混淆；最终图明确每个 eligible 环境内部运行 Y0/Ya/Yb，E1/E3/E2 分轨报告，task family 仍是统计单位。
 - 使用内置 ImageGen 生成与定向修订视觉稿，并用确定性 SVG 覆盖层恢复生成模型未稳定绘出的 `task metadata ⊂ case metadata`；保留原 v0.31 工程详细图，不覆盖已有资产。
-- 同步图表 HTML、离线单文件版、测试、README、项目记忆和生成说明；研究问题、实验矩阵、schema、rubric、指标及 Proposal DOCX/PDF 均未改变。
+- 同步正式版、10 页精简版、人话版、导师 brief、文献地图、schema、图表、DOCX/PDF、PPTX、在线/离线 HTML、README 与项目记忆；旧的 CFA/四重门内容明确保留为 Phase A，而非删除。
+- 最终 QA：四版 PDF 为 70/6/28/10 页并完成逐页渲染抽查；PPTX 通过模板保真与溢出检测；HTML 构建、5/5 渲染测试和四个 standalone 无根路径依赖检查通过。
 
 ## v0.31 - 2026-08-08
 

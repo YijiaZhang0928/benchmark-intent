@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440" role="img" aria-labelledby="title desc">
-  <title id="title">DeepAlign-Bench 从真实任务到反事实个性化结论的详细流程图</title>
-  <desc id="desc">展示真实任务来源、三层元数据、双用户 task family、完整 case metadata、rubric 编译、E1 E3 E2 三环境、matched swapped task-only 交叉评价、四重成功门和相对 PDR-Bench 的经验增量。</desc>
+  <title id="title">DeepAlign-Bench Phase A 报告资格审查详细流程图</title>
+  <desc id="desc">展示 Phase A 的真实任务来源、三层元数据、双用户 task family、rubric 编译、E1 E3 E2 环境、matched swapped task-only 交叉评价与共同质量门；通过后才进入 Phase B 真人决策实验。</desc>
   <defs>
     <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#14365f"/>
@@ -53,7 +53,7 @@
 
   <rect width="2560" height="1440" fill="#f3f7fa"/>
   <rect width="2560" height="132" fill="url(#header)"/>
-  <text x="1280" y="58" text-anchor="middle" class="title">DeepAlign-Bench：从真实任务到可验证的用户反事实结论</text>
+  <text x="1280" y="58" text-anchor="middle" class="title">DeepAlign-Bench Phase A：从真实任务到合格的三臂研究报告</text>
   <text x="1280" y="98" text-anchor="middle" class="subtitle">task metadata 是 case metadata 的一部分；所有主观真值与 rubric 在模型输出前冻结</text>
 
   <!-- Research question strip -->
@@ -61,7 +61,7 @@
   <circle cx="102" cy="197" r="25" fill="#1b7586"/>
   <text x="102" y="204" text-anchor="middle" class="num">?</text>
   <text x="145" y="184" class="section">核心识别问题</text>
-  <text x="145" y="215" class="body">固定任务、证据、工具、预算与交付格式，只改变目标用户：报告是否按预先定义的正确方向变化，确实优于 task-only，并且不牺牲共同质量、事实性、隐私和权限？</text>
+  <text x="145" y="215" class="body">先证明 task-only、matched、swapped 报告在共同质量上可比且确实具有用户特异性；只有通过本图流程，才进入 Phase B 真人随机决策 trial。</text>
 
   <!-- Stage 1 -->
   <g filter="url(#shadow)">
@@ -289,5 +289,5 @@
   <text x="82" y="1372" class="body">observed difficulty / completion &amp; failure rate / matched-swapped discrimination / target-user preference / judge-human agreement / residual errors / time &amp; cost</text>
   <rect x="1740" y="1311" width="765" height="83" rx="15" fill="#173b63"/>
   <text x="2123" y="1341" text-anchor="middle" class="eyebrow whiteMuted">论文主张边界</text>
-  <text x="2123" y="1372" text-anchor="middle" class="body white">识别“最终交付物具有反事实用户特异性”；不越界声称模型内部真正理解用户</text>
+  <text x="2123" y="1372" text-anchor="middle" class="body white">本图只完成 artifact qualification；DDE 与 wrong-user harm 由独立 Phase B 真人实验估计</text>
 </svg>

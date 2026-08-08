@@ -1,0 +1,89 @@
+protocol_name: deepalign_downstream_decision_trial
+protocol_version: 0.32
+status: design_draft_requires_pilot_and_ethics_review
+primary_question: >-
+  After artifact quality is balanced, does a matched personalized deep-research
+  artifact reduce a real target user's verifiable decision regret relative to a
+  task-only artifact, and does a swapped artifact create measurable harm?
+
+phase_A_artifact_qualification:
+  required_arms: [task_only, matched_personalized, swapped_personalized]
+  frozen_before_generation:
+    - evidence_snapshot
+    - user_state_ledger
+    - must_change
+    - must_hold
+    - must_not
+    - artifact_quality_equivalence_thresholds
+  equivalence_gates:
+    - task_quality
+    - factual_reliability
+    - length_or_information_budget
+    - critical_evidence_coverage
+    - privacy_and_boundary
+  manipulation_checks: [delta_a, delta_b, CFA_min]
+  rule: only_qualified_artifacts_enter_phase_B
+
+phase_B_human_decision_trial:
+  participants: real_target_users_only_for_primary_endpoint
+  required_arms: [task_only, matched_personalized, swapped_personalized]
+  unit_of_randomization: participant_by_equivalent_task_shell
+  design:
+    equivalent_task_shells_required: true
+    latin_square_or_blocked_order: true
+    condition_labels_blinded: true
+    agent_identity_blinded: true
+    same_exact_answer_not_repeated_within_participant: true
+    baseline_decision_before_artifact: true
+    final_decision_and_confidence_required: true
+  utility_specification:
+    frozen_before_artifact_generation: true
+    priority_order:
+      - hard_constraints
+      - verifiable_environment_outcomes
+      - target_user_confirmed_soft_weights_within_acceptable_set
+    evidence_dependent_tradeoff_required: true
+    persona_must_not_reveal_optimal_decision: true
+    sensitivity_analysis_required: true
+  outcomes:
+    primary:
+      decision_regret: U_uf(d_star) - U_uf(d_observed)
+      DDE: regret_task_only - regret_matched_personalized
+    key_secondary:
+      wrong_user_harm: regret_swapped_personalized - regret_task_only
+      hard_constraint_violation_rate: violations / eligible_decisions
+      confidence_calibration: preregistered_brier_or_calibration_error
+    secondary:
+      - decision_time_seconds
+      - interaction_turns
+      - cognitive_burden
+  analysis:
+    cluster_units: [participant, task_family]
+    primary_contrast: matched_personalized_vs_task_only
+    negative_control_contrast: swapped_personalized_vs_task_only
+    uncertainty: [design_based_interval, participant_and_family_cluster_bootstrap]
+    mixed_model: preregistered_sensitivity_analysis
+    artifact_fit_mediation: exploratory_unless_powered_and_preregistered
+    no_compensatory_overall_score: true
+
+pilot_gate:
+  vertical_slice_families: 3
+  minimum_passing_families: 2
+  required_checks:
+    - utility_can_be_frozen_before_outputs
+    - equivalent_task_shells_are_exchangeable
+    - artifact_quality_can_be_balanced
+    - blinding_is_credible
+    - no_material_order_or_learning_effect
+    - recruitment_and_completion_are_feasible
+  expansion_target_families: 8_to_12
+  indicative_participants: 36_to_48_not_final
+  final_sample_size_rule: freeze_after_power_simulation_using_pilot_variance
+
+ethics_and_governance:
+  ethics_or_exemption_determination_before_recruitment: true
+  informed_consent: true
+  withdrawal_and_deletion_path: true
+  sensitive_user_facts_minimized: true
+  report_only_aggregate_results_for_small_slices: true
+  simulated_users_may_not_replace_primary_human_endpoint: true

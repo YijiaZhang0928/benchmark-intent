@@ -10,11 +10,23 @@
 
 ## 1. 项目目标与核心识别
 
-项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文，评估广义 Deep Research agent 的**最终交付物是否真正适合目标用户**，并在可控子集上诊断用户信息的获取、保持、使用与更新。
+项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文，评估个性化 Deep Research 交付物是否**因果性地改善真实目标用户的可验证决策**。
 
-核心识别不是“给 persona 后分数是否提高”，而是：固定任务、证据、工具和预算，只改变目标用户；若 matched 交付物相对 swapped 交付物对两个用户均有稳定优势，且共同质量、事实性、安全和隐私不下降，才称该交付物具有可观察的用户反事实特异性。这是结果层的用户条件效应，不证明模型内部形成了真正的用户理解。
+核心识别分两阶段。Phase A 固定任务、证据、工具和预算，用 task-only/matched/swapped、CFA 与三类契约确认报告处理在共同质量上可比、在用户条件上有区分力。Phase B 将三种报告在等价 task shell 上随机分配给真实目标用户，以 decision regret、wrong-user harm、硬约束和置信度校准为终点。PF/CFA 是 qualification 与中介，不再是主终点。
 
-当前一句话主张：**PDR-Bench 已建立 task/persona-conditioned absolute adaptation evaluation；DeepAlign-Bench 将 estimand 转向 counterfactual personalization effect identification，用跨用户 2×2 matched/swapped 与预冻结 must-change/must-hold/must-not 识别方向正确、共同核心稳定且不过度个性化的结果变化。**
+当前一句话主张：**PDR-Bench 问个性化报告是否适合用户；DeepAlign-Bench 问通过共同质量门的个性化报告是否让真实用户做出更好的决定。** 主估计量为 `DDE = Regret_task-only − Regret_matched`，负对照为 `WrongUserHarm = Regret_swapped − Regret_task-only`。
+
+### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
+
+1. 本轮对正式 proposal 的 63 个已有来源和 40 个新增直接/强近邻去重审计，共形成 103 条文献池；完整检索边界、候选方向与逐篇地图见《相关论文全景与方向收敛》。
+2. 不采用简单澄清、权限/授权、多 agent 委派或证据抗噪作为主 pivot：ClarifyBench/HiL-Bench/UserBench、SovereignPA/HAS-Bench/IGAC/SentinelAgent、MisKnow-Agent/DRNOISE/DeepFact/Mr Dre 已分别形成密集 benchmark 群。
+3. v0.31 的 matched/swapped + task-only 是有效的 artifact-fit 识别，但与 PDR-Bench 的差异仍可能被审稿人理解为更强对照。v0.32 将它降为 Phase A；唯一主贡献改为 artifact → real-user decision 的因果评价。
+4. Phase B 采用 task-only、matched、swapped 三臂；等价 task shell、区组随机、顺序平衡、条件/agent 盲化和基线/最终决定为硬要求。模拟用户不能替代主要真人终点。
+5. Utility 必须在报告生成前冻结：硬约束与可验证环境终态优先，用户确认的软权重只在可接受集合内起作用；任务必须仍需 evidence-dependent trade-off，persona 不得泄漏最优决定。
+6. 首轮范围从 24 family/576 artifact episodes 收缩为 3 个 decision vertical slice；至少 2 个通过 utility、任务等价、报告配平、盲化与实施可行性门后，扩到 8–12 family。预计 36–48 名真人仅是 planning range，最终样本由 pilot 方差和最小有意义 regret 改善做功效模拟后冻结。
+7. Atlas、Rubric Compiler、JudgeBench、长程、动态、权限和证据污染保留为 qualification、诊断或少量 stress layer，不与 DDE 并列为创新。
+8. 开放问题：伦理审查/豁免能否按时启动；哪些 family 能同时提供真实决策、等价 task shell 和可验证 utility；pilot 后的方差是否允许 8–12 family 内获得足够功效；若 CFA 高而 DDE≈0，论文是否以“fit 代理失效”为主结果。
+9. 2026-08-09 交付 QA：正式/精简/人话/汇报 DOCX 与 PDF 均重新生成并逐页渲染检查，页数分别为 70/6/28/10，正式精简版满足 ≤10 页；一页 PPTX 通过模板保真和溢出检查；HTML 构建及 5 项渲染测试通过，四个 standalone 文件生成且无根路径资源依赖。本地浏览器运行时无可用实例，因此未增加浏览器截图，但服务器渲染和静态依赖检查均已完成。
 
 ### 1.1 v0.16 相关工作校准
 

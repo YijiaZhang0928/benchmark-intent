@@ -16,36 +16,36 @@
   </defs>
   <rect width="1920" height="1080" fill="url(#bg)"/>
   <rect width="1920" height="126" fill="url(#head)"/>
-  <text x="960" y="55" text-anchor="middle" class="cn title">DeepAlign-Bench：什么才算“有效个性化”?</text>
-  <text x="960" y="91" text-anchor="middle" class="cn subtitle">从 absolute fit 转向可识别的 cross-user specificity × real-user benefit</text>
+  <text x="960" y="55" text-anchor="middle" class="cn title">DeepAlign-Bench：个性化报告是否让用户决定得更好?</text>
+  <text x="960" y="91" text-anchor="middle" class="cn subtitle">Phase A 证明报告处理成立 · Phase B 估计真实用户的 downstream decision effect</text>
 
   <rect x="60" y="150" width="1800" height="82" rx="18" fill="#E4F1F4" stroke="#6CA4B2" stroke-width="1.5"/>
   <circle cx="111" cy="191" r="26" fill="#1D7685"/><text x="111" y="200" text-anchor="middle" class="cn white" font-size="28" font-weight="700">?</text>
   <text x="155" y="181" class="cn h3">核心问题</text>
-  <text x="155" y="211" class="cn body">固定 task、evidence、tools 与 budget，只改变目标用户：交付物是否既能“认对人”，又比 task-only 真正更有用，同时不牺牲共同质量与边界?</text>
+  <text x="155" y="211" class="cn body">共同质量受控后，matched 个性化报告相对 task-only 是否降低真实用户的 decision regret；wrong-user 报告是否造成伤害?</text>
 
   <!-- left: gap -->
   <rect x="60" y="262" width="380" height="566" class="card"/>
   <rect x="60" y="262" width="380" height="66" rx="20" fill="#DCE9F8"/>
-  <text x="90" y="286" class="cn kicker">01 · GAP</text><text x="90" y="315" class="cn section">现有 absolute fit 还缺什么</text>
-  <text x="90" y="372" class="cn h3">给定用户 U，报告 Y 好不好?</text>
+  <text x="90" y="286" class="cn kicker">01 · GAP</text><text x="90" y="315" class="cn section">Artifact fit 不是最终效用</text>
+  <text x="90" y="372" class="cn h3">报告看起来适合 U，然后呢?</text>
   <rect x="90" y="394" width="320" height="88" rx="14" class="softBlue"/>
   <text x="250" y="431" text-anchor="middle" class="cn h3">PF<tspan baseline-shift="sub" font-size="13">U</tspan>(Y) = 高</text>
-  <text x="250" y="460" text-anchor="middle" class="cn small">可能只是通用高质量，不等于用户特异</text>
+  <text x="250" y="460" text-anchor="middle" class="cn small">PF/CFA 高，不等于用户的决定更好</text>
   <line x1="90" y1="516" x2="410" y2="516" stroke="#D5E0EA"/>
   <circle cx="111" cy="557" r="17" fill="#E9A64C"/><text x="111" y="564" text-anchor="middle" class="cn white" font-size="17" font-weight="700">1</text>
-  <text x="142" y="550" class="cn h3">通用答案也能高分</text><text x="142" y="575" class="cn small">没有证明“换用户就必须换结果”</text>
+  <text x="142" y="550" class="cn h3">适配感可能只是文风</text><text x="142" y="575" class="cn small">主观 fit 不能替代可验证结果</text>
   <circle cx="111" cy="628" r="17" fill="#9B83C1"/><text x="111" y="635" text-anchor="middle" class="cn white" font-size="17" font-weight="700">2</text>
-  <text x="142" y="621" class="cn h3">平均 CFA 可能正负抵消</text><text x="142" y="646" class="cn small">一位用户受益，另一位可能被伤害</text>
+  <text x="142" y="621" class="cn h3">总体质量会混淆收益</text><text x="142" y="646" class="cn small">matched 必须先与 task-only 配平</text>
   <circle cx="111" cy="699" r="17" fill="#D37E69"/><text x="111" y="706" text-anchor="middle" class="cn white" font-size="17" font-weight="700">3</text>
-  <text x="142" y="692" class="cn h3">比 swapped 好 ≠ 真正有帮助</text><text x="142" y="717" class="cn small">swapped 很差，也会制造虚假的优势</text>
+  <text x="142" y="692" class="cn h3">错配报告可能主动伤害</text><text x="142" y="717" class="cn small">只与 matched 比较会漏掉 harm</text>
   <rect x="90" y="755" width="320" height="48" rx="12" class="softRed"/>
-  <text x="250" y="785" text-anchor="middle" class="cn h3">需要“特异性”和“受益”两个 estimand</text>
+  <text x="250" y="785" text-anchor="middle" class="cn h3">需要观察用户最终做出的决定</text>
 
   <!-- center: crossover -->
   <rect x="468" y="262" width="830" height="566" class="card"/>
   <rect x="468" y="262" width="830" height="66" rx="20" fill="#E8E1F5"/>
-  <text x="500" y="286" class="cn kicker">02 · IDENTIFICATION</text><text x="500" y="315" class="cn section">Controlled crossover：同一题，只交换用户</text>
+  <text x="500" y="286" class="cn kicker">02 · PHASE A</text><text x="500" y="315" class="cn section">Artifact Qualification：三臂报告先过质量门</text>
   <rect x="500" y="350" width="766" height="45" rx="11" fill="#EDF2F6" stroke="#A8B8C4"/>
   <text x="883" y="379" text-anchor="middle" class="cn h3">固定 T / E / tools / budget / output format</text>
 
@@ -66,37 +66,37 @@
   <text x="1193" y="612" text-anchor="middle" class="cn small">+ task-only Y0</text>
 
   <line x1="500" y1="660" x2="1266" y2="660" stroke="#D6E0E8"/>
-  <text x="520" y="697" class="cn h3">Specificity</text><text x="650" y="697" class="cn body">Δa = PFa(Ya) − PFa(Yb)　·　Δb = PFb(Yb) − PFb(Ya)</text>
-  <text x="650" y="728" class="cn small">CFA mean 展示平均效应；CFA min 防止跨用户方向补偿</text>
-  <text x="520" y="766" class="cn h3">Benefit</text><text x="650" y="766" class="cn body">Ga = PFa(Ya) − PFa(Y0)　·　Gb = PFb(Yb) − PFb(Y0)</text>
-  <text x="650" y="797" class="cn small">Gain mean/min 回答 matched 是否真的优于 task-only</text>
+  <text x="520" y="697" class="cn h3">操纵检查</text><text x="650" y="697" class="cn body">Δa、Δb 与 CFA_min：报告是否确实具有用户特异性</text>
+  <text x="650" y="728" class="cn small">同一冻结 PF bundle 交叉评分；一位用户不能补偿另一位</text>
+  <text x="520" y="766" class="cn h3">等价门</text><text x="650" y="766" class="cn body">TQ · FR · length · evidence coverage · must-hold/not</text>
+  <text x="650" y="797" class="cn small">只有合格报告进入真实用户随机实验</text>
 
   <!-- right: gates -->
   <rect x="1326" y="262" width="534" height="566" class="card"/>
   <rect x="1326" y="262" width="534" height="66" rx="20" fill="#F6E6E2"/>
-  <text x="1358" y="286" class="cn kicker">03 · CLAIM GATES</text><text x="1358" y="315" class="cn section">四个门同时通过，才算有效</text>
+  <text x="1358" y="286" class="cn kicker">03 · PHASE B</text><text x="1358" y="315" class="cn section">Human Decision Trial：决定才是终点</text>
   <rect x="1358" y="356" width="470" height="82" rx="15" class="softViolet"/>
   <circle cx="1392" cy="397" r="19" fill="#8065AD"/><text x="1392" y="404" text-anchor="middle" class="cn white" font-size="17" font-weight="700">1</text>
-  <text x="1426" y="389" class="cn h3">双向 specificity</text><text x="1426" y="416" class="cn small">Δa &gt; 0 且 Δb &gt; 0；不是平均后看起来为正</text>
+  <text x="1426" y="389" class="cn h3">Downstream Decision Effect</text><text x="1426" y="416" class="cn small">DDE = regret(task-only) − regret(matched)</text>
   <rect x="1358" y="454" width="470" height="82" rx="15" class="softGreen"/>
   <circle cx="1392" cy="495" r="19" fill="#4B8C73"/><text x="1392" y="502" text-anchor="middle" class="cn white" font-size="17" font-weight="700">2</text>
-  <text x="1426" y="487" class="cn h3">双向 real benefit</text><text x="1426" y="514" class="cn small">Ga ≥ 0 且 Gb ≥ 0；matched 不劣于 task-only</text>
+  <text x="1426" y="487" class="cn h3">Wrong-user harm</text><text x="1426" y="514" class="cn small">regret(swapped) − regret(task-only)</text>
   <rect x="1358" y="552" width="470" height="82" rx="15" class="softBlue"/>
   <circle cx="1392" cy="593" r="19" fill="#4F83B2"/><text x="1392" y="600" text-anchor="middle" class="cn white" font-size="17" font-weight="700">3</text>
-  <text x="1426" y="585" class="cn h3">共同质量 no-harm</text><text x="1426" y="612" class="cn small">TQ / FR / must-hold 均过门；个性化不能换分</text>
+  <text x="1426" y="585" class="cn h3">硬约束与可验证终态</text><text x="1426" y="612" class="cn small">预算 / 合规 / deadline / environment outcome</text>
   <rect x="1358" y="650" width="470" height="82" rx="15" class="softRed"/>
   <circle cx="1392" cy="691" r="19" fill="#C66F5C"/><text x="1392" y="698" text-anchor="middle" class="cn white" font-size="17" font-weight="700">4</text>
-  <text x="1426" y="683" class="cn h3">边界 no-violation</text><text x="1426" y="710" class="cn small">must-not / 隐私 / 权限 / 安全无 critical failure</text>
+  <text x="1426" y="683" class="cn h3">Calibration 与 burden</text><text x="1426" y="710" class="cn small">置信度、决策时间、认知负担与顺序效应</text>
   <rect x="1358" y="754" width="470" height="48" rx="12" fill="#173D64"/>
-  <text x="1593" y="785" text-anchor="middle" class="cn white" font-size="18" font-weight="700">Target-user blind match effect + family-level CI</text>
+  <text x="1593" y="785" text-anchor="middle" class="cn white" font-size="15" font-weight="700">Real target users · blocked randomization · blinded arms</text>
 
   <!-- bottom -->
   <rect x="60" y="860" width="1800" height="162" rx="20" fill="#FFFFFF" stroke="#9EB3C6" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="92" y="901" class="cn section">论文贡献：一套可证伪的 personalization identification protocol，而不是另一个“更细”的总分</text>
-  <rect x="92" y="925" width="330" height="66" rx="13" class="softBlue"/><text x="257" y="952" text-anchor="middle" class="cn h3">24 families · 48 user-task</text><text x="257" y="977" text-anchor="middle" class="cn small">4 signal conditions · 3 core agent tracks</text>
-  <rect x="442" y="925" width="320" height="66" rx="13" class="softGreen"/><text x="602" y="952" text-anchor="middle" class="cn h3">8 anchors · S0–S3 stress</text><text x="602" y="977" text-anchor="middle" class="cn small">acquire · preserve · use · update</text>
-  <rect x="782" y="925" width="320" height="66" rx="13" class="softRed"/><text x="942" y="952" text-anchor="middle" class="cn h3">240-unit JudgeBench</text><text x="942" y="977" text-anchor="middle" class="cn small">target-user + expert gold · bias tests</text>
+  <text x="92" y="901" class="cn section">唯一核心贡献：个性化研究交付物是否因果性地改善真实用户的可验证决策</text>
+  <rect x="92" y="925" width="330" height="66" rx="13" class="softBlue"/><text x="257" y="952" text-anchor="middle" class="cn h3">3 → 8–12 decision families</text><text x="257" y="977" text-anchor="middle" class="cn small">pilot 通过 + 功效模拟后扩展</text>
+  <rect x="442" y="925" width="320" height="66" rx="13" class="softGreen"/><text x="602" y="952" text-anchor="middle" class="cn h3">约 36–48 real users</text><text x="602" y="977" text-anchor="middle" class="cn small">最终 n 由 pilot variance 冻结</text>
+  <rect x="782" y="925" width="320" height="66" rx="13" class="softRed"/><text x="942" y="952" text-anchor="middle" class="cn h3">2–3 report pipelines</text><text x="942" y="977" text-anchor="middle" class="cn small">更多系统先进入离线 Phase A</text>
   <rect x="1122" y="925" width="706" height="66" rx="13" fill="#EEF2F5" stroke="#9CADB9"/>
-  <text x="1475" y="951" text-anchor="middle" class="cn h3">主张边界</text><text x="1475" y="978" text-anchor="middle" class="cn body">识别的是最终交付物的反事实特异性；不等于证明模型内部“真正理解用户”</text>
-  <text x="960" y="1055" text-anchor="middle" class="cn small">v0.30 · confirmatory unit = task family · family-blocked permutation / cluster bootstrap · no single compensatory leaderboard score</text>
+  <text x="1475" y="951" text-anchor="middle" class="cn h3">主张边界</text><text x="1475" y="978" text-anchor="middle" class="cn body">若 CFA 高但 DDE≈0，结论是 artifact-fit 代理失效；不改回 fit 主榜</text>
+  <text x="960" y="1055" text-anchor="middle" class="cn small">v0.32 · cluster units = target user + task family · no compensatory score · ethics review before recruitment</text>
 </svg>

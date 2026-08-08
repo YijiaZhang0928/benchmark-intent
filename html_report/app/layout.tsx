@@ -3,17 +3,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deepalign-bench-report.sanfordzhang.chatgpt.site"),
-  title: "DeepAlign-Bench｜长程 Deep Research 个性化评测",
+  title: "DeepAlign-Bench｜个性化研究交付物的下游决策效用评测",
   description: "正式研究 Proposal 的可读 HTML 汇报版",
   openGraph: {
-    title: "DeepAlign-Bench｜长程 Deep Research 个性化评测",
-    description: "用反事实用户对评估最终交付物是否真正适合目标用户。",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "DeepAlign-Bench 反事实个性化评测流程" }],
+    title: "DeepAlign-Bench｜个性化研究交付物的下游决策效用评测",
+    description: "用真实目标用户、随机化报告处理与可验证决定评估个性化研究交付物的下游效用。",
+    images: [{ url: "/og.png", width: 1672, height: 941, alt: "DeepAlign-Bench 两阶段下游决策效用评测流程" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DeepAlign-Bench｜长程 Deep Research 个性化评测",
-    description: "用反事实用户对评估最终交付物是否真正适合目标用户。",
+    title: "DeepAlign-Bench｜个性化研究交付物的下游决策效用评测",
+    description: "用真实目标用户、随机化报告处理与可验证决定评估个性化研究交付物的下游效用。",
     images: ["/og.png"],
   },
 };

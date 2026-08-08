@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Rubric Compiler 工作台｜DeepAlign-Bench",
@@ -88,9 +89,9 @@ export default function RubricsPage() {
     <main className="rubricWorkbench">
       <header className="rubricHero">
         <nav className="nav shell" aria-label="Rubric 页面导航">
-          <a className="brand" href="/">DeepAlign<span>Bench</span></a>
+          <Link className="brand" href="/">DeepAlign<span>Bench</span></Link>
           <div className="navlinks"><a href="#data-factory">如何造数</a><a href="#modules">模块库</a><a href="#nodes">Node registry</a><a href="#example">完整例子</a><a href="#anchor">Anchor</a></div>
-          <a className="navCta" href="/">返回总报告</a>
+          <Link className="navCta" href="/">返回总报告</Link>
         </nav>
         <div className="rubricHeroGrid shell">
           <section>
@@ -112,7 +113,7 @@ export default function RubricsPage() {
         <article><b>有完整 trace</b><p>criterion → direct metric → aggregate → derived metric。</p></article>
       </section>
 
-      <section className="rubricStatus shell"><b>当前成熟度</b><p>v0.31 已增加 direction-node registry、分层标注和环境开工协议；自动 validator、路由器和 bundle 导出器仍是第 1 周实现项。先做 3 个完整 family，至少 2 个通过四重门后才扩到 24。</p></section>
+      <section className="rubricStatus shell"><b>当前成熟度</b><p>v0.32 将 rubric compiler 降为 Phase A 的报告资格门；自动 validator、路由器和 bundle 导出器仍是第 1 周实现项。先做 3 个 decision vertical slice，至少 2 个通过 utility、任务等价、报告配平、盲化与 outcome 门后才扩到 8–12 个 family。</p></section>
 
       <section className="rubricSection shell" id="data-factory">
         <div className="sectionHead"><h2>很多篇论文怎么“杂糅”：按设计角色吸收，不按 taxonomy 求并集</h2><p>每篇来源先进入 source-to-design ledger；同一篇可以贡献多行，但每一行只能承担一个角色。这样 task、persona、failure、rubric 和 infra 不会混成一层。</p></div>
@@ -210,11 +211,11 @@ export default function RubricsPage() {
 
       <section className="rubricSection shell">
         <div className="sectionHead"><h2>今晚请导师拍板的可行性问题</h2><p>这些问题决定第 1–3 周能否冻结数据和主 rubric。</p></div>
-        <div className="advisorChecks"><article><b>1 · 模板粒度</b><p>六层路由是否足够覆盖主矩阵，又不会造成每个 case 都独立写 rubric？</p></article><article><b>2 · 真值成本</b><p>48 个 user-task 的 must-change 是否能由目标用户确认，must-hold/FR 是否能由专家稳定标注？</p></article><article><b>3 · 识别强度</b><p>人类 reference matched 是否能稳定胜过 swapped，同时 must-hold 和隐私不下降？</p></article><article><b>4 · 两月范围</b><p>先冻结 report/memo/table 三类主交付物，code/slides/web 只进 anchor，是否更稳妥？</p></article></div>
+        <div className="advisorChecks"><article><b>1 · Utility validity</b><p>硬约束和可验证环境结果是否先于个性化软权重冻结，并能避免 persona 泄漏答案？</p></article><article><b>2 · 任务等价</b><p>同一 family 的 task shell 能否交换且不引入难度、熟悉度或顺序混淆？</p></article><article><b>3 · 处理成立</b><p>matched/swapped 报告能否通过共同质量门，同时在 PF/CFA 上形成预期分离？</p></article><article><b>4 · 两月范围</b><p>3 个 slice 中至少 2 个通过后再扩到 8–12 family，是否能在招募和功效上闭环？</p></article></div>
         <div className="schemaDownloads"><b>机器可读材料</b><a href="/construction_annotation.protocol.yaml" download>annotation protocol</a><a href="/rubric_node_registry.yaml" download>node registry</a><a href="/environment_build.protocol.yaml" download>environment plan</a><a href="/data_factory.protocol.yaml" download>data factory</a><a href="/rubric_module_library.yaml" download>36-module library</a><a href="/case.schema.yaml" download>case schema</a><a href="/rubric_template_registry.yaml" download>template registry</a><a href="/rubric_leaf.schema.yaml" download>leaf schema</a><a href="/metric_binding.schema.yaml" download>metric binding</a><a href="/rubric_bundle.example.yaml" download>example bundle</a></div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="/">DeepAlign<span>Bench</span></a><p>Rubric Compiler 工作台 · v0.31</p></div></footer>
+      <footer><div className="shell"><Link className="brand" href="/">DeepAlign<span>Bench</span></Link><p>Phase A Rubric Compiler 工作台 · v0.32</p></div></footer>
     </main>
   );
 }

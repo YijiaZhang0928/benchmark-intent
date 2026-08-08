@@ -40,27 +40,27 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /<title>DeepAlign-Bench｜研究汇报<\/title>/i);
   assert.match(html, /DEEP RESEARCH EVALUATION ATLAS/i);
   assert.match(html, /Coverage manifest/i);
-  assert.match(html, /24 个任务 family/);
-  assert.match(html, /48 个 user-task/);
+  assert.match(html, /Phase A 报告资格审查/);
+  assert.match(html, /3 → 8–12 family/);
   assert.match(html, /MUST CHANGE/i);
   assert.match(html, /href="\/case\.schema\.yaml"/i);
   assert.match(html, /href="\/DeepAlign-Bench_正式研究Proposal\.pdf"/i);
   assert.match(html, /href="\/DeepAlign-Bench_正式Proposal精简版\.pdf"/i);
   assert.match(html, /href="\/DeepAlign-Bench_完整人话版\.pdf"/i);
   assert.match(html, /href="\/DeepAlign-Bench_汇报精简版\.pdf"/i);
-  assert.match(html, /同一套方法，按阅读场景分成四版/);
-  assert.match(html, /8 个 anchor 是固定实验宿主；扰动才是处理变量/);
+  assert.match(html, /同一套 v0\.32 两阶段方法，按阅读场景分成四版/);
+  assert.match(html, /8 类 anchor 是扩展候选 stress 宿主/);
   assert.match(html, /href="\/literature"/i);
   assert.match(html, /href="\/figures"/i);
   assert.match(html, /href="\/rubrics"/i);
-  assert.match(html, /class="inlineCite"[^>]+2607\.27056/i);
+  assert.match(html, /class="inlineCite"[^>]+2607\.15948/i);
   assert.match(html, /class="inlineCite"[^>]+2509\.25106/i);
   assert.match(html, /task\/persona-conditioned rubric/i);
-  assert.match(html, /2×2 矩阵 Mij = PFi\(Yj\)/i);
-  assert.match(html, /absolute adaptation evaluation/i);
-  assert.match(html, /counterfactual personalization effect/i);
-  assert.match(html, /must-change \/ must-hold \/ must-not/i);
-  assert.match(html, /不证明内部“理解用户”/i);
+  assert.match(html, /task-only regret − matched regret/i);
+  assert.match(html, /报告对真实用户 decision regret 的处理效应 DDE/i);
+  assert.match(html, /<span>DDE<\/span><h3>下游决策效果/i);
+  assert.match(html, /must-change · must-hold · must-not/i);
+  assert.match(html, /fit 上升而 regret 不下降，结论是代理终点失效/i);
   assert.match(html, /cue-equivalence robustness/i);
   assert.match(html, /Task family 与 persona 不是靠写 prompt 拼出来的/);
   assert.match(html, /Seed funnel/);
@@ -74,7 +74,7 @@ test("server-renders the DeepAlign-Bench research report", async () => {
   assert.match(html, /Boundary &amp; Governance/i);
   assert.doesNotMatch(html, /re-anchor|S4 恢复|Recovery &amp; Governance/i);
   assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
-  assert.match(html, /alt="DeepAlign-Bench 总体流程图"/i);
+  assert.match(html, /alt="DeepAlign-Bench 两阶段下游决策效用流程图"/i);
   assert.match(html, /href="\/DeepAlign-Bench_端到端流程图_v0\.32\.png"/i);
 });
 
@@ -99,11 +99,11 @@ test("server-renders the rubric compiler workbench", async () => {
   assert.match(html, /href="\/rubric_bundle\.example\.yaml"/i);
 });
 
-test("server-renders the 29-paper related-work map", async () => {
+test("server-renders the 103-record related-work map", async () => {
   const response = await renderPath("/literature");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /29 篇工作，把我们的题目/);
+  assert.match(html, /103 条去重记录/);
   assert.match(html, /Setoka/);
   assert.match(html, /PersonaTrail/);
   assert.match(html, /PASB/);
@@ -123,18 +123,18 @@ test("server-renders the paper figure and table blueprint", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /2 张方法图 \+ 2 张结果图 \+ 1 张测量效度图/);
-  assert.match(html, /从 task metadata 到可审计结论/);
+  assert.match(html, /Phase A 工程流程：从 task metadata 到合格报告/);
   assert.match(html, /src="\/DeepAlign-Bench_端到端流程图_v0\.32\.png"/i);
   assert.match(html, /参考式汇报版/);
   assert.match(html, /src="\/DeepAlign-Bench_详细流程图\.png"/i);
   assert.match(html, /href="\/DeepAlign-Bench_详细流程图\.svg"/i);
-  assert.match(html, /Counterfactual family 构造与评分/);
-  assert.match(html, /Specificity × benefit profile/);
-  assert.match(html, /Benefit vs task-only/);
+  assert.match(html, /Decision family、报告处理与 utility 构造/);
+  assert.match(html, /DDE × wrong-user harm profile/);
+  assert.match(html, /Decision benefit/);
   assert.match(html, /Multi-label failure incidence/);
   assert.match(html, /完整 18 个交叉格/);
-  assert.match(html, /JudgeBench 与人类校准/);
-  assert.match(html, /主 Leaderboard 数值/);
+  assert.match(html, /Decision verifier、人类终点与测量审计/);
+  assert.match(html, /主结果/);
   assert.match(html, /明确不建议/);
 });
 
@@ -156,10 +156,11 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
 
   assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
   assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.31/m);
+  assert.match(schema, /^schema_version:\s*0\.32/m);
   assert.match(schema, /evaluation_contract:/);
   assert.match(schema, /counterfactual_partner_id:/);
-  assert.match(schema, /estimand:\s*counterfactual_personalization_effect/);
+  assert.match(schema, /estimand:\s*artifact_qualification_counterfactual_fit/);
+  assert.match(schema, /primary_estimand:\s*downstream_decision_effect/);
   assert.match(schema, /execution_regime:/);
   assert.doesNotMatch(schema, /S4_recovery_pair|reanchor|recovery_prompt|recovery_policy/);
   assert.match(schema, /stage: \[S0_clean, S1_single_light, S2_single_strong, S3_compound\]/);
@@ -177,6 +178,9 @@ test("keeps the machine-readable metadata and downloadable artifacts in sync", a
   assert.match(metricBinding, /CFA:/);
   assert.match(metricBinding, /CFA is not a leaf score/);
   assert.match(metricBinding, /CFA_min:/);
+  assert.match(metricBinding, /DDE:/);
+  assert.match(metricBinding, /wrong_user_harm:/);
+  assert.match(metricBinding, /primary_leaderboard_metrics: \[DDE, wrong_user_harm/);
   assert.match(metricBinding, /gain_a_vs_task_only:/);
   assert.match(metricBinding, /bilateral_personalization_success:/);
   assert.match(exampleBundle, /U-A-BUDGET-01/);

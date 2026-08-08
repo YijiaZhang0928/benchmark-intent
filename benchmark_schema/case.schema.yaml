@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.31
+schema_version: 0.32
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -18,6 +18,7 @@ required:
   - evaluation_contract
   - rubric_modules
   - rubric_compilation
+  - downstream_decision_design
   - provenance
 
 family_id: string
@@ -114,7 +115,7 @@ user_states:
       non_stereotyping: boolean
 
 counterfactual_design:
-  estimand: counterfactual_personalization_effect
+  estimand: artifact_qualification_counterfactual_fit
   family_key: string
   counterfactual_partner_id: string
   cross_scoring_matrix_id: string
@@ -129,6 +130,23 @@ counterfactual_design:
     non_demographic_causal_axis: boolean
   expected_decision_differences: list
   expected_diagonal_dominance: boolean
+
+downstream_decision_design:
+  protocol_version: string
+  phase: [A_artifact_qualification, B_human_decision_trial]
+  decision_family_id: string
+  equivalent_task_shell_group_id: string
+  treatment_arms: [task_only, matched_personalized, swapped_personalized]
+  primary_estimand: downstream_decision_effect
+  utility_spec_id: string
+  utility_frozen_before_artifact_generation: boolean
+  evidence_dependent_tradeoff_verified: boolean
+  artifact_quality_equivalence_gate_id: string
+  target_user_required: boolean
+  randomization_block_id: string
+  order_schedule_id: string
+  blinding: [condition_blind, condition_and_agent_blind]
+  consent_or_ethics_record_id: string
 
 signal_condition:
   channel: [task_only, structured_persona, natural_history, clarification, behavior_trace, private_workspace, organizational_context, dynamic_feedback]
@@ -232,3 +250,16 @@ post_run_only:
   position_order: [AB, BA, not_applicable]
   scores: object
   confidence: number
+  decision_trial_outcome:
+    participant_id: string_or_null
+    task_shell_id: string_or_null
+    assigned_arm: [task_only, matched_personalized, swapped_personalized, not_applicable]
+    baseline_decision_id: string_or_null
+    final_decision_id: string_or_null
+    baseline_confidence: number_or_null
+    final_confidence: number_or_null
+    utility_value: number_or_null
+    decision_regret: number_or_null
+    hard_constraint_violations: list
+    decision_time_seconds: number_or_null
+    burden_score: number_or_null

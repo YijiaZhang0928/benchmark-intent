@@ -19,12 +19,12 @@ OUT = ROOT / "deliverables" / "DeepAlign-Bench_正式研究Proposal.docx"
 # deterministic layout and Markdown parser.
 COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
-COVER_SUBTITLE = "长程 Deep Research 智能体个性化最终交付物评测"
+COVER_SUBTITLE = "个性化 Deep Research 交付物的下游决策效用评测"
 COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.31 · 组内讨论稿"
-DOC_DATE = "2026 年 8 月 8 日"
-RESEARCH_LINE = "Counterfactual Effect · 可审计构造 · 分级压力 · 跨环境运行"
-CORE_CLAIM = "固定任务与证据，只改变目标用户；同时检验跨用户 specificity 与相对 task-only benefit，并以共同质量和边界门槛排除有害的伪个性化。"
+DOC_VERSION = "v0.32 · 组内讨论稿"
+DOC_DATE = "2026 年 8 月 9 日"
+RESEARCH_LINE = "Artifact Qualification · Human Decision Trial · DDE · Wrong-User Harm"
+CORE_CLAIM = "先证明三臂报告在共同质量上可比且确实个性化，再用真实目标用户、等价任务和随机处理检验 decision regret 是否下降。"
 CONTENTS_ITEMS = [
     "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
     "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",
@@ -33,8 +33,8 @@ CONTENTS_ITEMS = [
 ]
 READING_NOTE = "阅读提示：主图给出整体逻辑；第 7–8 节是本 proposal 的测量学核心；第 11 节按顶会审稿视角集中列出可预见攻击与防守。"
 FIGURE_TRIGGER = "2. 关键文献"
-FIGURE_TITLE = "总体框架：从受控用户信号到反事实评估"
-FIGURE_CAPTION = "图 1  DeepAlign-Bench 一页主张图。有效个性化同时要求双向 matched 优势、相对 task-only 受益、共同质量稳定和边界不违规。"
+FIGURE_TITLE = "总体框架：从报告资格审查到真实用户决策效果"
+FIGURE_CAPTION = "图 1  DeepAlign-Bench 两阶段主张图。Phase A 证明 task-only、matched、swapped 报告可比；Phase B 估计 DDE 与 wrong-user harm。"
 RUNNING_HEADER = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
 STYLE_PRESET = "narrative_proposal"
 INCLUDE_CONTENTS = True

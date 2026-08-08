@@ -14,11 +14,11 @@ VARIANTS = [
         "out": ROOT / "deliverables" / "DeepAlign-Bench_正式Proposal精简版.docx",
         "kicker": "CONDENSED RESEARCH PROPOSAL",
         "title": "DeepAlign-Bench",
-        "subtitle": "长程 Deep Research 智能体个性化最终交付物评测",
+        "subtitle": "个性化 Deep Research 交付物的下游决策效用评测",
         "mode": "正式论文 Proposal 精简版 · 约 10 页",
-        "version": "v0.31 · 正式精简版",
+        "version": "v0.32 · 正式精简版",
         "research_line": "Problem · Research Questions · Method · Evaluation · Validity · Timeline",
-        "claim": "固定任务与证据，只改变用户；用 matched/swapped 检验 specificity，用 task-only uplift 检验真实受益，再用质量与边界门槛排除伪个性化。",
+        "claim": "Phase A 先配平并验证三臂报告；Phase B 再用真实目标用户的 decision regret 估计 DDE 与 wrong-user harm。",
         "contents": [
             "研究背景与问题", "研究问题与假设", "基准设计", "实验设计",
             "评分方法", "数据质量、统计与可复现性", "预期贡献与成功标准",
@@ -27,7 +27,7 @@ VARIANTS = [
         "note": "本版按标准论文 Proposal 结构压缩正式稿，保留研究问题、可证伪假设、方法、实验、评分、效度风险、时间表与参考文献。",
         "trigger": "3. 基准设计",
         "figure_title": "DeepAlign-Bench 研究设计",
-        "figure_caption": "图 1  元数据定义 case，反事实任务族提供识别，rubric compiler 选择适用评价契约，分层 judge 与人评完成评分和校准。",
+        "figure_caption": "图 1  Phase A 负责 artifact qualification；Phase B 用等价任务、随机处理和真实目标用户估计下游决策效果。",
         "header": "DEEPALIGN-BENCH  ·  正式 PROPOSAL 精简版",
         "style": "formal_condensed",
         "include_contents": False,
@@ -37,11 +37,11 @@ VARIANTS = [
         "out": ROOT / "deliverables" / "DeepAlign-Bench_完整人话版.docx",
         "kicker": "PLAIN-LANGUAGE RESEARCH PROPOSAL",
         "title": "DeepAlign-Bench｜完整人话版",
-        "subtitle": "方法、假设与实验不变，把每一步说清楚",
+        "subtitle": "把两阶段方法、假设与实验逐步说清楚",
         "mode": "适合组内共识 · 导师讨论 · 正式写作前校验",
-        "version": "v0.31 · 完整人话版",
+        "version": "v0.32 · 完整人话版",
         "research_line": "为什么测 · 测什么 · 怎么测 · 如何判分 · 能声称什么",
-        "claim": "同一任务和证据下，只改变用户；匹配结果要在两个用户方向都优于错配，并且相对 task-only 真的有帮助。",
+        "claim": "报告更像为你写还不够；只有共同质量过门且真实用户的决策 regret 下降，才算有下游价值。",
         "contents": [
             "为什么现有评测不够", "Case、Task 与 Persona 怎么构建", "实验如何运行",
             "最终交付物与过程怎么分工", "Rubric、Metrics 与 Judge", "失败分类",
@@ -50,7 +50,7 @@ VARIANTS = [
         "note": "阅读方式：先看主图和研究概要；需要执行细节时看第 4–11 节；需要审稿防守时看第 12–13 节。",
         "trigger": "1. 为什么现有评测不够",
         "figure_title": "研究流程：从用户信息到可信的个性化评测",
-        "figure_caption": "图 1  方法与正式 Proposal 完全一致。主榜评最终交付物；轻量轨迹和受控压力分叉只用于解释保持、偏离与更新。",
+        "figure_caption": "图 1  方法与正式 Proposal 一致：先检查报告，再随机呈现给真实用户，最后验证决定。",
         "header": "DEEPALIGN-BENCH  ·  完整人话版",
         "style": "narrative_proposal",
     },
@@ -61,9 +61,9 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜汇报精简版",
         "subtitle": "15–20 分钟讲清研究问题、方法、实验与两个月范围",
         "mode": "导师汇报 · 组会讲解 · 决策讨论",
-        "version": "v0.31 · 汇报精简版",
+        "version": "v0.32 · 汇报精简版",
         "research_line": "问题 → 数据 → 实验 → 评分 → 风险 → 决策",
-        "claim": "从 absolute fit 转向 counterfactual identification：同时测哪份结果更适合哪位用户，以及它是否比 task-only 真正更有用。",
+        "claim": "PDR-Bench 问报告是否适合你；DeepAlign-Bench 问报告是否让你做出了更好的决定。",
         "contents": [
             "评测对象与核心反事实", "Task 与 Persona 构建", "核心实验矩阵",
             "Rubric、Metrics 与 Judge", "结果/过程边界", "论文贡献",
@@ -72,7 +72,7 @@ VARIANTS = [
         "note": "建议讲法：2 分钟问题、4 分钟数据、4 分钟实验与指标、3 分钟 Judge、3 分钟风险和导师决策。",
         "trigger": "1. 论文要测的对象",
         "figure_title": "DeepAlign-Bench：一张图讲完评测流程",
-        "figure_caption": "图 1  固定任务与证据，只改变用户；先过共同质量门槛，再用 matched/swapped 识别结果特异性。",
+        "figure_caption": "图 1  Phase A 配平 task-only、matched、swapped；Phase B 估计 DDE 与错配伤害。",
         "header": "DEEPALIGN-BENCH  ·  汇报精简版",
         "style": "compact_reference_guide",
     },
@@ -85,7 +85,7 @@ def build_variant(spec):
     base.COVER_SUBTITLE = spec["subtitle"]
     base.COVER_MODE = spec["mode"]
     base.DOC_VERSION = spec["version"]
-    base.DOC_DATE = "2026 年 8 月 8 日"
+    base.DOC_DATE = "2026 年 8 月 9 日"
     base.RESEARCH_LINE = spec["research_line"]
     base.CORE_CLAIM = spec["claim"]
     base.CONTENTS_ITEMS = spec["contents"]

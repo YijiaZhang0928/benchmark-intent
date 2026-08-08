@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "29 篇个性化 Agent 相关工作地图｜DeepAlign-Bench",
-  description: "七篇最近邻工作精读与二十二篇 agent personalization / evaluation 论文的精准相关性审计",
+  title: "103 条相关工作全景与方向收敛｜DeepAlign-Bench",
+  description: "正式 proposal 全部引文与四十篇新增近邻的方向撞车审计",
 };
 
 const papers = [
@@ -100,14 +101,14 @@ const papers = [
 ];
 
 const matrix = [
-  ["Setoka", "●", "●", "◐", "—", "—", "◐", "—"],
-  ["Temporal", "◐", "◐", "◐", "—", "—", "●", "●"],
-  ["PersonaTrail", "●", "●", "●", "◐", "—", "◐", "—"],
-  ["TARS", "◐", "◐", "●", "●", "—", "—", "—"],
-  ["SARSI", "◐", "◐", "◐", "◐", "—", "●", "●"],
-  ["PASB", "◐", "◐", "●", "◐", "—", "●", "●"],
-  ["APeB", "●", "●", "●", "◐", "—", "—", "—"],
-  ["DeepAlign（计划）", "●", "●", "●", "●", "●", "●", "●"],
+  ["Setoka", "●", "●", "◐", "—", "—", "—", "◐", "—"],
+  ["Temporal", "◐", "◐", "◐", "—", "—", "—", "●", "●"],
+  ["PersonaTrail", "●", "●", "●", "◐", "—", "—", "◐", "—"],
+  ["TARS", "◐", "◐", "●", "●", "◐", "—", "—", "—"],
+  ["SARSI", "◐", "◐", "◐", "◐", "—", "—", "●", "●"],
+  ["PASB", "◐", "◐", "●", "◐", "—", "—", "●", "●"],
+  ["APeB", "●", "●", "●", "◐", "—", "—", "—", "—"],
+  ["DeepAlign（计划）", "●", "●", "●", "●", "●", "●", "◐", "●"],
 ];
 
 const extendedPapers = [
@@ -140,21 +141,21 @@ export default function LiteratureBrief() {
     <main className="litPage">
       <header className="litHero" id="lit-top">
         <nav className="litNav shell">
-          <a className="brand" href="/">DeepAlign<span>Bench</span></a>
-          <div><a href="#map">位置图</a><a href="#audit">22 篇审计</a><a href="#papers">七篇精读</a></div>
-          <a className="navCta" href="/">返回 Proposal</a>
+          <Link className="brand" href="/">DeepAlign<span>Bench</span></Link>
+          <div><a href="#map">位置图</a><a href="#audit">直接近邻</a><a href="#papers">七篇精读</a></div>
+          <Link className="navCta" href="/">返回 Proposal</Link>
         </nav>
         <div className="shell litHeroGrid">
           <section>
             <p className="eyebrow">RELATED-WORK RAPID REVIEW · ABSTRACT + FIGURE + CONCLUSION</p>
-            <h1>29 篇工作，把我们的题目<em>压到一个可证伪的点</em></h1>
-            <p className="lede">七篇最近邻工作精读，加上二十二篇 agent personalization / evaluation 扩展审计。PDR-Bench 已建立 task–persona 条件下的 absolute adaptation 评价，但其最佳 judge 的人类 pairwise agreement 仅 PCA=.43，且校准只有 15 个 query、两个 agent。DeepAlign 一方面改变 estimand，用 matched/swapped 与三类契约识别 counterfactual personalization effect；另一方面用独立 JudgeBench 验证这个新效应是否可被可靠测量。</p>
-            <div className="heroActions"><a className="button primary" href="#map">先看结论</a><a className="button ghost" href="#audit">检查 22 篇筛选</a></div>
+            <h1>103 条去重记录，把题目<em>压到真实决策效用</em></h1>
+            <p className="lede">正式 proposal 的 63 个来源，加上 40 个新增直接/强近邻。澄清、权限、委派和证据抗噪都已有密集 benchmark；继续做跨用户 fit 又与 PDR-Bench 感知过近。DeepAlign 因此把 CFA 降为报告资格审查，主终点改为真实用户的 DDE 与 wrong-user harm。</p>
+            <div className="heroActions"><a className="button primary" href="#map">先看结论</a><a className="button ghost" href="#audit">检查直接近邻</a></div>
           </section>
           <aside className="litClaim">
             <span>REVIEWER-SAFE CLAIM</span>
             <p>不声称首先研究 personalization、history、persistent state 或 temporal intervention。</p>
-            <b>候选核心贡献是：从 absolute adaptation 转向跨用户 counterfactual effect identification；其他模块只支撑稳健性与外部效度。</b>
+            <b>核心贡献是：通过质量门的个性化研究报告，是否因果性地改善真实目标用户的可验证决定。</b>
           </aside>
         </div>
       </header>
@@ -169,7 +170,7 @@ export default function LiteratureBrief() {
           <i>→</i>
           <article><span>03</span><h3>保持与更新</h3><b>PASB <a className="inlineCite" href="https://arxiv.org/abs/2607.10526" target="_blank" rel="noreferrer">[31]</a> · Temporal <a className="inlineCite" href="https://arxiv.org/abs/2607.21635" target="_blank" rel="noreferrer">[27]</a></b><p>写入边界、时间事件、跨维影响</p></article>
           <i>→</i>
-          <article className="target"><span>04</span><h3>用户特异交付物</h3><b>DeepAlign-Bench</b><p>反事实效用 + 通用质量 + 纵向干预</p></article>
+          <article className="target"><span>04</span><h3>下游真实决定</h3><b>DeepAlign-Bench</b><p>DDE + wrong-user harm + utility verifier</p></article>
         </div>
         <div className="litThreats">
           <article><b>最直接的方法威胁</b><h3>Temporal Interventions <a className="inlineCite" href="https://arxiv.org/abs/2607.21635" target="_blank" rel="noreferrer">[27]</a></h3><p>我们的动态更新必须实际满足 C1–C4，不能只在 schema 里出现。</p></article>
@@ -182,8 +183,8 @@ export default function LiteratureBrief() {
         <div className="shell">
           <p className="sectionTag invert">COVERAGE MAP</p>
           <div className="sectionHead light"><h2>谁已经测了什么</h2><p>● 主评价对象；◐ 部分涉及；— 未作为主要证据。DeepAlign 最后一行是计划，不是已有结果。</p></div>
-          <div className="litTableWrap"><table className="litTable"><thead><tr><th>工作</th><th>真实/异构信号</th><th>用户理解</th><th>Agent 执行</th><th>交付物效用</th><th>用户交换</th><th>时间/持久状态</th><th>安全/误用</th></tr></thead><tbody>{matrix.map((row) => <tr key={row[0]}>{row.map((cell, i) => i === 0 ? <th key={cell}>{cell}</th> : <td key={`${row[0]}-${i}`} data-mark={cell}>{cell}</td>)}</tr>)}</tbody></table></div>
-          <p className="litMatrixNote">PDR-Bench 已覆盖 persona-conditioned absolute adaptation；这项 construct contribution 与其 judge 可靠性边界必须分开判断。DeepAlign 待验证的是新的 estimand：“● 跨用户交叉评分 + ● must-change / must-hold / must-not”，并以目标用户盲评、冻结量尺、事实链审计、多类交付物与跨 cue 条件检验测量效度和外部效度。</p>
+          <div className="litTableWrap"><table className="litTable"><thead><tr><th>工作</th><th>真实/异构信号</th><th>用户理解</th><th>Agent 执行</th><th>交付物效用</th><th>真人决策终点</th><th>wrong-user</th><th>时间/持久状态</th><th>安全/误用</th></tr></thead><tbody>{matrix.map((row) => <tr key={row[0]}>{row.map((cell, i) => i === 0 ? <th key={cell}>{cell}</th> : <td key={`${row[0]}-${i}`} data-mark={cell}>{cell}</td>)}</tr>)}</tbody></table></div>
+          <p className="litMatrixNote">TARS 最接近 artifact → human outcome，但仅有单域 18 人研究。DeepAlign 待验证的是跨域两阶段 estimand：Phase A 保证报告可比且确实个性化；Phase B 才用真实用户、等价 task shell 与随机处理估计 DDE。</p>
         </div>
       </section>
 
@@ -217,7 +218,7 @@ export default function LiteratureBrief() {
         </div>
         <div className="auditStory">
           <b>叙事收敛</b>
-          <span>用户历史/画像</span><i>→</i><span>响应与任务对话</span><i>→</i><span>规划、工具与 GUI</span><i>→</i><span>写入、更新与安全</span><i>→</i><span>个性化 DR</span><i>→</i><strong>交换用户识别最终交付物</strong>
+          <span>用户历史/画像</span><i>→</i><span>规划、工具与 GUI</span><i>→</i><span>个性化 DR</span><i>→</i><span>跨用户 artifact fit</span><i>→</i><strong>真实用户决策效用</strong>
         </div>
       </section>
 
@@ -240,12 +241,12 @@ export default function LiteratureBrief() {
         <div className="shell">
           <p className="sectionTag invert">WHAT CHANGED</p>
           <div className="sectionHead light"><h2>Proposal 1.1 现在应该怎么讲</h2><p>每推进一层，就同时说明已有覆盖和仍未识别的终点。</p></div>
-          <ol><li><b>第一层：</b>通用 DR benchmark 建立事实、搜索、引用和报告质量底线，但不回答结果更适合哪个用户。</li><li><b>第二层：</b>LaMP、PersonaLens、Setoka、PersonaTrail 与 APeB 已覆盖用户历史、任务对话、分层理解和行为轨迹；空白不再是“懂不懂用户”。</li><li><b>第三层：</b>ETAPP、ToolSpectrum、Mem2ActBench、APOLLO 和 AndroidIntent 已把用户信息落实到工具/GUI 行动；空白也不再是“有没有行动”。</li><li><b>第四层：</b>PersonaMem、PAHF、PerMemBench、Memora、CloneMem、PASB 与 PS-Bench 已进入动态画像、写入、过期和安全；这些成为稳健性与诊断 operator。</li><li><b>收敛层：</b>PDR-Bench 已用 task/persona-conditioned P-Score 测 absolute adaptation；DeepAlign 转向跨用户 matched/swapped 和 must-change/must-hold/must-not 所定义的 counterfactual personalization effect。</li><li><b>测量层：</b>PDR 的动态 criterion、自动事实链、P/Q/R 等权平均，以及 15-query/2-agent、PCA=.43 的 judge 校准不否定其 construct，但不足以支撑细粒度跨条件效应；DeepAlign 必须冻结量尺并单独建立 JudgeBench。</li><li><b>方法边界：</b>One Persona, Many Cues 和 PARL 用于检验 DeepAlign 效应的跨表达稳健性；不证明模型内部理解，也不能把任何 judge 偏差先验归因给 PDR。</li></ol>
-          <div className="litGo"><b>四项最低成立条件</b><span>matched/swapped 人评稳定</span><span>语义等价 cue 下结论稳定</span><span>共同质量与 must-hold 不下降</span><span>至少一个 signal/operator 效应可重复</span></div>
+          <ol><li><b>已占据：</b>用户理解、历史、工具行动、长期记忆与个性化 DR 都已有 benchmark。</li><li><b>不建议 pivot：</b>澄清、权限/授权、委派和证据抗噪在 2026 年均已形成密集近邻群。</li><li><b>Phase A：</b>PDR-style fit、matched/swapped、三类契约和 JudgeBench 继续证明报告处理成立。</li><li><b>Phase B：</b>真实目标用户在等价 task shell 上接受随机化报告，主测 DDE、wrong-user harm、硬约束与校准。</li><li><b>关键否证：</b>如果 CFA 高而 DDE≈0，说明报告适配指标不能充分代理真实用户效用。</li></ol>
+          <div className="litGo"><b>四项最低成立条件</b><span>utility 可验证且不泄漏答案</span><span>matched/swapped 报告处理成立</span><span>共同质量与 must-hold 不下降</span><span>DDE 在至少两个 slice 可重复</span></div>
         </div>
       </section>
 
-      <footer><div className="shell"><b>DeepAlign-Bench · v0.31</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
+      <footer><div className="shell"><b>DeepAlign-Bench · v0.32</b><p>本页是快速文献地图；正式引用与方法边界以 Proposal 为准。</p><a href="#lit-top">回到顶部 ↑</a></div></footer>
     </main>
   );
 }

@@ -1,5 +1,5 @@
 schema_name: deepalign_metric_binding
-schema_version: 0.31
+schema_version: 0.32
 description: >-
   Auditable map from direct leaf scores to aggregate and derived metrics. A leaf
   may bind to more than one direct metric only when the meanings are explicit;
@@ -38,6 +38,24 @@ direct_metrics:
     interpretation: diagnostic response to acquire, preserve, use or update stress
 
 derived_metrics:
+  decision_regret:
+    formula: U_uf(d_star) - U_uf(d_observed)
+    depends_on: [frozen_utility_spec, verified_decision_outcome]
+    interpretation: loss relative to the best acceptable decision in the frozen evidence world
+  DDE:
+    formula: mean_regret_task_only - mean_regret_matched_personalized
+    depends_on: [decision_regret_by_randomized_arm]
+    interpretation: downstream decision effect; positive values favor matched personalization
+  wrong_user_harm:
+    formula: mean_regret_swapped_personalized - mean_regret_task_only
+    depends_on: [decision_regret_by_randomized_arm]
+    interpretation: additional harm from a plausible but wrong-user personalized artifact
+  constraint_violation_rate:
+    formula: hard_constraint_violations / eligible_decisions
+    depends_on: [verified_decision_outcome, frozen_utility_spec]
+  confidence_calibration:
+    formula: preregistered_brier_or_calibration_error
+    depends_on: [final_confidence, verified_decision_outcome]
   NPF:
     formula: max(0, PF - MP)
     depends_on: [PF, MP]
@@ -98,8 +116,10 @@ derived_metrics:
 reporting_policy:
   one_overall_compensatory_score: prohibited
   publish_both_user_directions: true
+  primary_leaderboard_metrics: [DDE, wrong_user_harm, constraint_violation_rate, confidence_calibration]
+  artifact_fit_metrics_are_qualification_or_mediators: true
   publish_specificity_and_task_only_benefit_as_separate_axes: true
-  inference_cluster_unit: task_family
+  inference_cluster_units: [target_user, task_family]
   compare_only_within_eligible_execution_regime: true
   publish_leaf_to_metric_manifest: true
   publish_denominators_and_not_applicable_counts: true
