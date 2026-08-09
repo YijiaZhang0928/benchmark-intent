@@ -37,6 +37,15 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 8. 以最新近邻位置重新校准，v0.33 即使预期数据全部成立，更可能处于 weak reject–borderline；主观 readiness 约20%–35%。若发现 PDR-style 适配与真人决策效用稳定、系统性背离，可形成较强 measurement paper，但仍有增量风险。该区间不是统计录用概率。
 9. 详细推理、公式和方向矩阵见 `proposal/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`。
 
+### 1.0d 2026-08-10：Agent benchmark 盲区扫描与问题形成候选
+
+1. 有界检索进一步否定了按宽泛能力名换题的策略。规划/调度、长期资源分配、多任务流、中断/修订、主动询问、弃权、记忆、备选项生成和可逆执行都已有直接或强近邻；不能仅凭“现实中很重要”建立 novelty。
+2. 当前较可能存在的空白位于能力接口，候选依次为：Wrong-Problem / Problem Formulation、跨渠道 Resolution Routing、Evidence-to-Action Coupling、延迟混杂反馈下的因果自我改进、决策理由连续性和可验证的选项集发现。Preference Formation 很新但缺少客观 oracle；跨任务 portfolio 与 reversibility 已被最新 benchmark 明显压缩。
+3. 当前首选反证对象暂时从单一 response-surface 候选扩展为 **Wrong-Problem Bench**：评价 agent 能否在规划/搜索/执行前识别错置目标、错误前提、遗漏约束/利益相关者/备选项，通过可用的信息动作重构问题，并由执行终态验证收益。它与 PDR-Bench 的任务原语差异明显大于“个性化适配 vs 个性化效用”。
+4. 最近邻包括面向优化建模的 LLMOPT/Solver-Informed RL、problem-space specification，以及研究问题形成愿景工作；本轮未找到跨领域、环境可执行、覆盖“识别错题—获取信息—重构目标—执行验证”的直接 benchmark。该结论只是截至 2026-08-10 的有界检索，不得写成绝对首创。
+5. 最大测量风险是把不可访问的作者意图藏作真值。通过门要求：关键变量可由预注册提问/搜索/环境检查发现；允许多个等价 formulation；主 oracle 来自程序规则或环境终态；paired case 只改变一个可发现的决策关键事实；普通 task success 与 formulation regret 至少出现系统重排。
+6. 下一步建议先各做一个 Wrong-Problem 与 Resolution-Routing 的最小可执行 family；若 formulation 真值仍依赖 LLM judge 或专家主观喜欢，则立即否决，退回可执行性更强的 Evidence-to-Action response surface。正式 Proposal、schema、HTML、DOCX/PDF 和图继续保持 v0.33 快照，直到用户确认且候选过 novelty/oracle/feasibility/power 四门。
+
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 
 1. 本轮对正式 proposal 的 63 个已有来源和 40 个新增直接/强近邻去重审计，共形成 103 条文献池；完整检索边界、候选方向与逐篇地图见《相关论文全景与方向收敛》。

@@ -183,3 +183,49 @@
 - 不采用比例差值、余弦乘积或其他事后“归一化总分”作为主创新。
 - 若保留个性化实验，主要结果必须来自真人/可执行效用，报告层分数只作操纵检查和中介诊断。
 - 下一步优先做 agent 决策边界/响应曲面候选的最近邻否决与 2-family 最小实验；通过前不冻结新题名。
+
+## 9. Agent benchmark 盲区脑暴：从“能力名词”转向“能力接口”
+
+### 9.1 检索边界与总判断
+
+截至 2026-08-10，本轮以 arXiv、ACL Anthology 和 OpenReview 的论文原文为主，对 problem formulation、clarification/abstention、resource allocation、proactivity、memory、delayed feedback、reversibility 和 alternative generation 做了有界检索。这里的“未找到直接 benchmark”不等于证明全世界没有；它只表示没有找到已经把相同任务原语、可执行 oracle 和主要指标组合起来的直接近邻。
+
+大多数宽泛能力名已经拥挤：规划与调度已有 [TPS-Bench](https://aclanthology.org/2026.acl-long.1614/)；长期资源分配已有 [EnterpriseArena](https://arxiv.org/abs/2603.23638)；中断与可修订执行已有 [InterruptBench](https://arxiv.org/abs/2604.00892) 和 [StreamBench](https://arxiv.org/abs/2604.23283)；主动获取未来偏好已有 [ATRBench](https://arxiv.org/abs/2605.28108)；行动/弃权已有 [AgentAbstain](https://arxiv.org/abs/2607.10059)；备选方案生成也已有 [Automating Alternative Generation in Decision-Making](https://aclanthology.org/2025.findings-emnlp.1/)。因此真正可能形成新 benchmark 的地方，更多位于这些能力之间的接口，而不是另造一个“规划、记忆或个性化”总榜。
+
+### 9.2 候选盲区排序
+
+下表中的新颖性和可做性是当前审稿判断，不是文献计量结论。
+
+| 候选任务原语 | 目前多在测什么 | 仍可能缺失的核心 | 两个月判断 | 最大审稿风险 |
+|---|---|---|---|---|
+| **1. Wrong-Problem / Problem Formulation** | 给定目标后的规划、搜索和执行；或把自然语言翻成特定领域的优化模型 | 在行动前识别目标错置、遗漏的利益相关者/约束/备选项和错误前提，并通过可用信息动作重构真正可解的问题 | **优先验证** | 被批评为“隐藏作者意图，让模型猜题” |
+| **2. Resolution Routing** | 分别测问用户、搜索、查环境、请求授权或弃权 | 面对同一表面症状，判断缺口究竟是事实、偏好、环境状态、权限还是不可判定，并选择正确解决渠道 | **优先验证** | 被批评为五类已有 benchmark 的简单并集 |
+| **3. Evidence-to-Action Coupling / Response Surface** | 搜到证据、证据是否充分、是否停止、固定输入点是否成功 | 哪类证据应使行动翻转、哪类无关证据不应翻转，以及 agent 的实际切换边界是否与 oracle 一致 | **优先验证** | 被批评为 ForeSci、Mind-ParaWorld、Contrast Sets 与 When2Tool 的组合 |
+| **4. Causal Self-Improvement under Delayed Feedback** | 从反馈更新 memory/policy；离线失败归因；长程经营结果 | 结果延迟且有混杂时，agent 是否把成败归因给真正的早期行动，避免写入错误经验和负迁移 | 高新颖、工程重 | 环境成本高，容易滑入一般 RL/continual learning |
+| **5. Decision-Ledger Continuity** | 记住事实、偏好、未来意图和程序步骤 | 跨 session/交接保留“为什么这样决定、拒绝过哪些方案、什么新证据应重开决定” | 中高潜力 | 容易被视为又一个 memory benchmark；理由真值难标 |
+| **6. Option-Set Discovery** | 在给定选项中选择，或开放式生成听起来多样的方案 | 主动发现初始选项集以外的可验证候选，并用搜索成本换取 best-found regret 的下降 | 中高潜力 | 开放世界无法证明选项全集；可能退化成检索 |
+| **7. Preference Formation vs Following** | 读取、记忆和遵从固定偏好 | 区分用户因新证据而合理改变偏好，与 agent 通过框架、默认值或迎合操纵偏好 | 理论强、暂不建议 | 无稳定客观 oracle，需真人与伦理审查 |
+| **8. Cross-Task Portfolio Regret** | 单任务调度、并行工具、企业预算或流式任务优先级 | 在多个异质任务间决定做、查、延后或取消，并显式承担机会成本与饥饿风险 | 邻近工作密集 | EnterpriseArena、TPS-Bench、TraineeBench 等会压缩 novelty |
+| **9. Reversibility / Option Preservation** | 出错后回滚、中断后修订、何时弃权 | 不确定时主动选择保留未来选项的可逆探针，证据充分后才不可逆承诺 | 可作子轴 | StreamBench、AgentAbstain 与安全 benchmark 已很接近 |
+
+### 9.3 当前最值得先做的题：Wrong-Problem Bench
+
+现有 agent benchmark 通常把目标 `g` 当作输入给定，然后评价 agent 是否计划并实现 `g`。更真实但少被直接测量的问题是：**`g` 本身可能只是用户提出的手段、带有错误前提，或漏掉会改变最优行动的约束；agent 是否应先决定“真正要解决什么”再开始求解。**
+
+相邻工作主要停留在特定领域： [LLMOPT](https://openreview.net/forum?id=9OMvtboTJg&noteId=wKlQN4dkW1) 和 [Solver-Informed RL](https://openreview.net/forum?id=80L235oVBe) 把自然语言需求转成优化模型；[Eliciting Problem Specifications](https://arxiv.org/abs/2405.12147) 生成认知系统的问题空间；[Towards AI Agents Supported Research Problem Formulation](https://arxiv.org/abs/2512.12719) 是研究问题形成的愿景与描述性场景，作者也明确指出仍需经验验证。本轮未找到一个跨领域、环境可执行的 agent benchmark，把“识别错题—获取必要信息—重构目标—执行验证”作为完整评测单元。
+
+一个可证伪的 family 可以包含：表面任务描述、可查询的用户/利益相关者模拟器、文档和环境工具，以及预先冻结的目标—约束—备选项图。Agent 可以直接照做、提问、查证、提出重构后的 problem specification，或在证据充分后执行。成对任务只改变一个可发现的关键事实，使“照字面执行”在一侧正确、另一侧产生可验证损失。主要指标不是评委觉得重构得漂亮，而是：
+
+- formulation regret：按字面任务或 agent 重构后的目标执行，最终可验证效用差多少；
+- critical-variable recall：是否发现会改变最优行动的目标、约束、利益相关者和备选项；
+- nuisance invariance：无关措辞和人物属性是否改变问题定义；
+- information-action efficiency：用多少提问、搜索和工具成本得到足够的问题定义；
+- premature-solution rate：在问题尚不可判定时是否已经开始不可逆执行。
+
+最强 ICLR 反对意见会是：“你只是把作者心里的真实目标藏起来，再奖励模型猜中。”因此真值不能是不可访问的秘密设定。关键变量必须能够通过预注册的提问、搜索或环境检查获得；允许多个等价 problem specification；主 oracle 必须来自执行终态或规则效用，而不是 LLM judge 对措辞的偏好。若做不到这三点，这个方向应立即否决。
+
+### 9.4 与当前项目的关系
+
+Wrong-Problem Bench 与 PDR-Bench 的距离明显大于“个性化适配分 vs 个性化决策效用”：评测对象从给定 user-task 后生成更合适的报告，变成 agent 在研究/行动前是否建立了正确的问题本体。现有 paired family、must-change/must-hold/must-not、冻结环境和可执行 regret 仍可复用，但用户画像不再是主处理变量；它最多是暴露目标、约束或利益相关者信息的一种渠道。
+
+当前不冻结换题。建议下一轮先并行做两个最小否决样例：一个 Wrong-Problem family 和一个 Resolution-Routing family。若前者能够给出不依赖 LLM judge 的执行终态、且 agent 排名不同于普通 task success，优先于继续扩展决策边界/个性化分支；若真值始终依赖主观专家评分，则退回更可执行的 Evidence-to-Action response surface。

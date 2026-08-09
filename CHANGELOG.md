@@ -8,6 +8,8 @@
 - 新增 SDR-Bench、GRASP、SEAL、FixedBench、When2Tool、Multi-User LLM Agents 与 ManyIH-Bench 等直接近邻。个性化→行动、停止/行动、自我修复回退、多用户权限等宽泛换题方向均已拥挤。
 - 将 agent 决策边界/响应曲面列为优先候选：通过有序相关变量扫描、无关扰动、不变性、单调性、边界误差和可执行 regret 评价局部策略几何；先做 2-family、约336次轻量运行的3天否决实验，通过最近邻、oracle、可扩展性和系统重排门后再重写正式 Proposal。
 - 新增《最小实验公式与换题决策备忘录》源文件和交付入口，并在 pilot 结果报告加入证据等级提示；v0.33 正式 Proposal、DOCX/PDF、HTML、schema 与图继续作为旧分支快照，不机械同步到未冻结候选方向。
+- 扩展 Agent benchmark 盲区扫描：排除规划/调度、资源分配、中断/修订、主动询问、弃权、通用记忆和备选项生成等已密集方向；把候选空白收敛为 problem formulation、跨渠道 resolution routing、evidence-to-action coupling、延迟反馈因果学习、决策理由连续性和可验证选项集发现。
+- 将 Wrong-Problem / Problem Formulation 列为新的优先否决对象：只有关键真值可通过信息动作获得、允许多种等价问题表述、执行终态可自动验证且能重排普通 task-success 排名时，才进入正式换题；本轮不改 v0.33 Proposal 交付物。
 
 ## v0.33 novelty gate - 2026-08-10
 
