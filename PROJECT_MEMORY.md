@@ -2,7 +2,7 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-09
+最后更新：2026-08-10
 当前版本：v0.33
 当前分支：`main`
 
@@ -10,11 +10,20 @@
 
 ## 1. 项目目标与核心识别
 
-项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文，评估个性化 Deep Research 交付物是否**因果性地改善真实目标用户的可验证决策**。
+项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文。v0.33 提案把目标具体化为评估个性化 Deep Research 交付物是否因果性地改善真实用户决策；2026-08-10 新颖性否决测试已判定该目标**适合作为测量/外部效度层，但不足以单独承担新 benchmark 的问题定义**。
 
-核心识别分两阶段。Phase A 固定任务、证据、工具和预算，用 task-only/matched/swapped、CFA 与三类契约确认报告处理在共同质量上可比、在用户条件上有区分力。Phase B 将三种报告在等价 task shell 上随机分配给真实目标用户，以 decision regret、wrong-user harm、硬约束和置信度校准为终点。PF/CFA 是 qualification 与中介，不再是主终点。
+v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工具和预算，用 task-only/matched/swapped、CFA 与三类契约确认报告处理在共同质量上可比、在用户条件上有区分力。Phase B 将三种报告在等价 task shell 上随机分配给真实目标用户，以 decision regret、wrong-user harm、硬约束和置信度校准为终点。PF/CFA 是 qualification 与中介，不再是主终点。
 
-当前一句话主张：**PDR-Bench 问个性化报告是否适合用户；DeepAlign-Bench 问通过共同质量门的个性化报告是否让真实用户做出更好的决定。** 主估计量为 `DDE = Regret_task-only − Regret_matched`，负对照为 `WrongUserHarm = Regret_swapped − Regret_task-only`。
+当前状态：v0.33 的一句话主张与 `DDE = Regret_task-only − Regret_matched` 保留为已实现的旧分支快照，但**不再视为足够的最终论文 thesis**。下一版必须先冻结一个与 PDR-Bench、MyScholarQA、DRFLOW、DECISIVE 和已有 decision-grade Deep Research benchmark 都有明确区分的新问题，再同步改写全部交付物。
+
+### 1.0b 2026-08-10：新颖性否决测试与方向重开
+
+1. 对 v0.33 的最强审稿人反对是：输入、任务域、产物和 matched/swapped/task-only 处理几乎都与个性化 Deep Research 设定不变，Phase B 只是把报告适配分换成真人决策后果。这是有价值的 construct-validity/外部效度升级，但审稿人可以合理地将其称为“PDR-Bench 加一项真人下游实验”，而不是新 benchmark problem。
+2. 近邻已越过该边界：[MyScholarQA](https://aclanthology.org/2026.acl-long.723/) 已用真实用户发现合成用户/LLM judge 漏掉的个性化 Deep Research 错误；[DRFLOW](https://arxiv.org/abs/2606.18191) 已从报告推进到个性化工作流预测；[DECISIVE](https://aclanthology.org/2026.acl-long.1465/) 已把非结构化文档证据、用户偏好引出和决策准确率连接起来；[专家咨询 Deep Research benchmark](https://arxiv.org/abs/2605.17554) 已直接评估可验证的 decision-grade 交付物。
+3. 因此不采纳“继续强化 DDE 表述就能拉开差距”的假设。v0.33 的 Phase A 实验、配对 family、非补偿门和评委校准可作为方法资产；个性化报告与 DDE 不再默认为标题/摘要的主张。
+4. 当前最值得进入下一轮反证的候选问题是 **evidence-to-action coupling**：Deep Research agent 能否识别“哪些新证据应当改变决策，哪些不应当，以及何时证据已足以行动”。基本单元将从 user-report pair 改为带有预注册行动边界的 counterfactual evidence-world family，分别测必要敏感性、无关扰动不变性、证据充分性和搜索成本。
+5. 这个候选仍未通过新颖性门：[ForeSci](https://arxiv.org/abs/2606.00644) 已将 research agent 作为 decision-making system，[Mind-ParaWorld](https://arxiv.org/abs/2603.04751) 已测证据充分性与 when-to-stop，[ClinDet-Bench](https://aclanthology.org/2026.acl-industry.47/) 已测不完全信息下的 determinability，[NoisyCausal](https://aclanthology.org/2026.acl-long.1833/) 与 [Contrast Sets](https://arxiv.org/abs/2004.02709) 已分别覆盖因果抗噪和局部决策边界。新主张必须证明“开放证据搜索→行动边界的成对敏感性/不变性”不是这些工作的简单并集。
+6. 在用户确认新研究问题前，不机械改写正式 Proposal、schema、HTML、DOCX/PDF 和图；这些交付物继续标记为 v0.33 旧分支快照。一旦新问题通过最近邻区分、可执行 oracle、数据构造可行性和两个月统计效力四项门，再一次性升级并同步全部交付物。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

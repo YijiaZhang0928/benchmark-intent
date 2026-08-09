@@ -1,5 +1,11 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.33 novelty gate - 2026-08-10
+
+- 对“报告适配 → 真人下游决策效用”执行最强近邻否决：判定 DDE 是有价值的测量与外部效度升级，但不足以单独定义一个与 PDR-Bench 显著不同的 benchmark problem。
+- 新增并核对 MyScholarQA、DRFLOW、DECISIVE、decision-grade consulting benchmark、ForeSci、Mind-ParaWorld、ClinDet-Bench、NoisyCausal 与 Contrast Sets 等直接近邻；其中 MyScholarQA 的真实用户结果与 DECISIVE 的文档证据→偏好→决策链条直接压缩 v0.33 的新颖性空间。
+- 重开研究问题，将 evidence-to-action coupling 作为下一轮候选：以 counterfactual evidence-world family 测量什么证据应当/不应当改变行动，以及何时应停止搜索。候选未过最近邻门前，v0.33 正式 Proposal 与派生交付物保留为旧分支快照，不机械换题。
+
 ## v0.33 - 2026-08-09
 
 - 在任何结果生成前提交并冻结4个合成 decision family、8位最小反事实用户、task-only/matched/swapped 三条件、双模型逐叶评分和六类指标原型协议。
