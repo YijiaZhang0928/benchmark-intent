@@ -1,18 +1,18 @@
 # DeepAlign-Bench 相关论文全景与方向收敛
 
-版本：v0.32 · 2026 年 8 月 9 日
+版本：v0.35 · 2026 年 8 月 10 日
 
 ## 0. 结论先行
 
-本轮检索不支持继续把“跨用户 matched/swapped 适配优势”作为论文的最终贡献。它在逻辑上比 PDR-Bench 的 absolute adaptation 更严格，但两者仍然共享同一个终点：**研究交付物看起来是否更适合某个用户**。ICLR 审稿人很可能把差异理解为更强的对照设计，而不是一个新的 benchmark 问题。
+第二轮否决检索不支持继续把“跨用户 matched/swapped 适配优势”作为论文最终贡献，也不支持把宽泛的 Wrong-Problem / Problem Formulation 当作无人评测的空白。错误前提识别、重定向回答、需求引出、隐含目标查询、弃权、目标错配理论和可执行终态评测都已有直接工作。
 
-建议将主方向收敛为：
+当前只保留一个更窄的候选：
 
-> **DeepAlign-Bench 评价个性化研究交付物是否因果性地改善目标用户的可验证决策，而不是只评价报告是否像是为该用户写的。**
+> **Outcome-Grounded Objective Repair：用户给出上位结果和建议手段后，agent 能否主动取得会否定该手段的环境事实，保留上位结果、改用替代手段，并以执行终态而非措辞评分。**
 
-主估计对象改为 **Downstream Decision Effect（DDE）**。对同一用户，在预冻结的等价决策任务上随机呈现 task-only、matched personalized、swapped personalized 三种研究交付物；主要比较决策 regret、硬约束违规、置信度校准和决策时间。原有 PF、CFA、must-change/must-hold/must-not 与 JudgeBench 保留，但降为 Phase A 的交付物质量门和机制诊断。
+旧的 DDE、PF、CFA、must-change/must-hold/must-not 与真人决策 trial 保留为 v0.33 方法资产和外部效度方案，不再默认为新 benchmark 的标题主张。新候选的主估计对象是执行终态的 `outcome regret`，并与“是否完成用户字面建议手段”的 literal task success 并列，直接检查系统排名是否反转。
 
-本轮没有发现一个跨领域 benchmark 同时具备：真实目标用户、个性化 Deep Research 交付物作为随机处理、可验证决策效用为主终点、wrong-user swap，以及报告质量门控。最接近的 TARS 仅在 IDE 代码理解中做 18 人实验；MyScholarQA、BESPOKE 与 Personalized Benchmarking 使用真人反馈或历史，但不测个性化研究产物对后续决策的因果效果。这个表述是截至检索日的检索结论，不应写成未经保留的“全球首个”。
+本轮未找到同时覆盖“错误代理手段、主动取证、修复后继续执行、程序化 outcome regret”的跨域 LLM-agent benchmark；但这个 search-bounded gap 很窄，最强反对意见是它只是 AgentAbstain、MedRedFlag 和 τ-bench 的组合。2-family pilot 已通过 oracle 与排序重排的小门，尚不足以冻结换题。本文第 7 节记录第二轮直接近邻与四条件验证；第 4–6 节保留 v0.32 DDE 分支的历史设计，不再代表当前冻结方向。
 
 ## 1. 检索范围与可复现边界
 
@@ -135,3 +135,45 @@
 保留 DeepAlign-Bench 名称，但将副标题改为 **“个性化研究交付物的下游决策效用评测”**。论文的唯一核心贡献是 `artifact → human decision` 的因果评价协议；PDR-style fit、跨用户 CFA、长期状态、权限、澄清和证据污染都是 qualification、机制或 stress 模块。
 
 这条线比继续强调“个性化 vs 适配”更容易对外解释：**PDR-Bench 问报告是否适合你；DeepAlign-Bench 问这份报告是否让你做出了更好的决定。**
+
+## 7. v0.35 第二轮直接近邻：从 Wrong-Problem 收敛到 Objective Repair
+
+### 7.1 直接威胁地图
+
+本节重新审计 30 余个直接或方法学近邻，其中一部分在前一轮已出现、但本轮按新任务原语重新判定。它不是对全部数据库的系统综述；学术检索 MCP 未挂载且公共 API 证书失败，因此采用 arXiv、ACL Anthology 和 OpenReview 原文页的有界网页检索。
+
+| 簇 | 代表论文 | 对宽泛 Wrong-Problem 的覆盖 | 未覆盖的窄环节 |
+|---|---|---|---|
+| 错误前提识别 | [KG-FPQ](https://aclanthology.org/2025.coling-main.698/)、[MultiHoax](https://aclanthology.org/2025.findings-acl.530/)、[Judge Before Answer](https://arxiv.org/abs/2510.10965)、[Premise Critique](https://aclanthology.org/2025.findings-emnlp.44/) | 判断问题前提是否错误，部分工作强调自主 critique | 没有工具环境中的目标修复与后续状态变化 |
+| 纠错与重定向回答 | [UPHILL](https://aclanthology.org/2024.findings-acl.850/)、[MedRedFlag](https://aclanthology.org/2026.findings-acl.1771/) | 真实健康问句中纠正假设并回应潜在语境 | 主要评分回答，未用跨域工具终态 regret |
+| 不完整/矛盾问题 | [VCSearch/PMC](https://aclanthology.org/2025.emnlp-main.642/)、[Evaluating Ill-Defined Tasks](https://arxiv.org/abs/2603.17067) | 检测不可解、拒答或暴露 ill-defined evaluation | 不是“存在可执行替代手段”的 repair-and-act |
+| 潜在意图/参数发现 | [UserBench](https://openreview.net/forum?id=iJS7nvlGPd)、[ClarifyBench](https://arxiv.org/abs/2511.08798)、[LHAW](https://arxiv.org/abs/2602.10525)、[CAR-bench](https://arxiv.org/abs/2601.22027) | 通过追问或内部查询发现欠指定偏好、参数、风险和工具限制 | 通常默认任务类别与上位目标正确；不是用户建议手段被反证 |
+| 需求与目标引出 | [From Chat to Interview](https://arxiv.org/abs/2605.05828)、[Goal Extraction in RE](https://arxiv.org/abs/2604.22207)、[Eliciting Problem Specifications](https://arxiv.org/abs/2405.12147)、[Research Problem Formulation](https://arxiv.org/abs/2512.12719) | 结构化需求、目标和问题空间，明确 problem formulation 的需要 | 多为领域方法、愿景或离线抽取，未构成 agent benchmark 的完整执行链 |
+| 目标错配与隐含目标 | [Expectation Alignment](https://openreview.net/forum?id=iO7viYaAt7)、[Inferring Implicit Goals](https://openreview.net/forum?id=7kINNd6vxQ)、[Goal Misgeneralization](https://arxiv.org/abs/2210.01790) | 在 MDP/安全框架中定义错配、查询和目标不确定性 | 缺少自然语言 tool-agent 的跨域 paired leaderboard 与 literal/outcome 双排名 |
+| 停止、弃权与安全取舍 | [AgentAbstain](https://arxiv.org/abs/2607.10059)、[Agentic Abstention](https://arxiv.org/abs/2606.28733)、[HumanAgencyBench](https://openreview.net/forum?id=nHp5FquS2R)、[ManagerBench](https://openreview.net/forum?id=KsmTaPygR9) | 何时不行动、何时停止、如何支持用户 agency、如何权衡安全与操作目标 | Objective Repair 要求在授权范围内找到替代手段并继续完成上位目标 |
+| 目标变化与行动纠正 | [AgentChangeBench](https://openreview.net/forum?id=ZCi58UP9uR)、[Language-Conditioned RL with Action Corrections](https://openreview.net/forum?id=lWd0qiv9E-) | 用户显式改变目标或提供行动纠正后的恢复 | 目标/纠正来自用户，agent 不需凭环境反证主动修复建议手段 |
+| 代理目标利用 | [Specification Gaming Suite](https://arxiv.org/abs/2605.02269)、[Demonstrating Specification Gaming](https://arxiv.org/abs/2502.13295) | 模型利用不完整规格或环境漏洞取得高分 | 研究故意 exploit，而非发现代理失效后恢复用户上位目标 |
+| 给定目标后的执行 | [WebArena](https://arxiv.org/abs/2307.13854)、[τ-bench](https://arxiv.org/abs/2406.12045)、[GOATBench](https://openreview.net/forum?id=iQwMr0tuJC) | 多轮工具使用、策略遵循、数据库/功能终态验证 | 目标被当作正确输入；没有 proxy-correct/proxy-wrong twin world |
+| 形式化与等价验证 | [MIPLIB-NL](https://arxiv.org/abs/2602.10450)、[PEARL](https://arxiv.org/abs/2607.18256)、[EquivaMap](https://openreview.net/forum?id=RvdjzNlksm) | 自然语言到 solver model、执行反馈修正、等价 formulation 检查 | 不质疑输入 objective 是否只是错误手段，但为条件 2/3 提供技术先例 |
+| 成对局部扰动 | [Contrast Sets](https://arxiv.org/abs/2004.02709)、[AgentAbstain](https://arxiv.org/abs/2607.10059) | 单因素改变标签/应否行动，暴露模型决策边界 | 可直接复用构造法，但要把标签扩展为保留目标后的替代行动 |
+
+### 7.2 当前可辩护的 gap 句子
+
+> 现有工作分别评价错误前提 critique、隐含需求引出、弃权/安全、给定目标后的工具执行和终态验证；本轮有界检索尚未发现一个跨域 benchmark，系统评价 tool-using agent 是否能在用户建议手段被可访问环境证据否定后，保留明确的上位结果、选择授权范围内的替代手段，并以执行终态 regret 而非回答措辞计分。
+
+不得写成“首次研究 problem formulation”，也不得把“未检索到”升级为“全球不存在”。如果更全面检索找到直接工作，或扩展任务只能退化为 AgentAbstain 加安全替代工具，应立即否决该 novelty 叙事。
+
+### 7.3 四个条件与实验状态
+
+| 条件 | 最强文献证据 | 当前实证状态 | 结论 |
+|---|---|---|---|
+| 可发现决定性真值 | UserBench、LHAW、ClarifyBench、AgentAbstain | 2 model × 2 family 的 4 个唯一 first turn 均先调用决定性查询 | 初步通过；需 decoy/间接证据去除工具名泄漏 |
+| 多个等价 formulation 可接受 | EquivaMap 的可行性/最优性等价；[HypoSpace](https://openreview.net/forum?id=lXP4t20mR4) 的有限枚举 validator | v0.1 不评分自由文本，只评分所诱导终态 | 部分通过；未证明开放语义等价 |
+| 非 LLM-judge 终态 oracle | WebArena、τ-bench、OSWorld | 两个 family 的正确动作、硬约束和 regret 可由离散状态枚举 | 最小可行性通过；缺完整 runner/replay |
+| 单变量 pair 重排普通 task success | Contrast Sets、AgentAbstain | 两种确定性策略和两个真实模型均出现 literal-vs-outcome 排序反转 | 初步通过；2 family/每格1次，无统计结论 |
+
+### 7.4 当前收敛
+
+候选暂名 **Outcome-Grounded Objective Repair** 或 **Proxy-Goal Repair**。它与 PDR-Bench 的任务原语已经明显不同：PDR-Bench 在给定 user-task 后评价个性化研究报告；本候选评价交互 agent 是否让反证改变实际动作。现有 DeepAlign 的 paired family、变化/不变契约和 regret 思想可复用，但 persona、报告和 matched/swapped 不再是主处理。
+
+2-family pilot 的确定性策略压力测试从 literal success `100% vs 50%` 翻转为 outcome success `50% vs 100%`；schema 修复后的 Qwen3 8B 与 Claude Sonnet alias 也从 literal `75% vs 50%` 翻转为 outcome `75% vs 100%`。该结果只证明构念有诊断信号，不证明 leaderboard 稳定。完整协议和轨迹见 [`pilot/objective_repair_v0_1/`](../pilot/objective_repair_v0_1/)。

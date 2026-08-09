@@ -2,9 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（方向审计 v0.34；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（Objective Repair 否决实验 v0.35；正式 Proposal 仍为 v0.33 快照）
 
-- `deliverables/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`：逐项解释合成最小实验能证明与不能证明的内容；将 CFA 重新定位为报告层交互对比，给出真人/可执行效用估计，并记录 agent 决策边界/响应曲面候选与 3 天否决实验。
+- `deliverables/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`：逐项解释合成最小实验能证明与不能证明的内容；将 CFA 重新定位为报告层交互对比，并记录 agent 决策边界、Wrong-Problem 最近邻否决、Objective Repair 四条件与 2-family pilot。
 
 - `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；DDE 是真实用户主终点，v0.33 为 Phase A 增加 `A_min`、角度/幅度诊断与 task-only non-inferiority/added-value 分层。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：7 页标准论文 Proposal（满足 ≤10 页约束），保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
@@ -19,6 +19,7 @@
 - `deliverables/DeepAlign-Bench_端到端流程图_v0.32.png`：保留的 Phase A 分区式学术信息图；完整 v0.32 两阶段因果链以一页主图和 `downstream_decision.protocol.yaml` 为准。
 - `deliverables/DeepAlign-Bench_整体框架与最小实验_v0.33.png`：本周导师汇报主图；一页包含 case/task/persona 元数据、rubric compiler、系统/环境、Phase A/Phase B、统计边界、可回答问题、合成 pilot 结果与下一步；同名 SVG 为可编辑源。
 - `pilot/minimal_metric_v0_1/`：预先提交的4-family合成 Phase A 协议、24份交付物、48个 artifact-judge 单元、六类指标压力测试、原始日志、applicability 审计与可行性报告。
+- `pilot/objective_repair_v0_1/`：2-family × twin-world 的 Outcome-Grounded Objective Repair 构念实验；含冻结协议、单变量 case、Qwen/Claude 逐步工具轨迹、schema debug 日志、确定性策略压力测试和 literal-vs-outcome 排序反转报告。
 - `benchmark_schema/rubric_module_library.yaml`：36 个预定义 module（6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk），每个 case 只选择适用子集。
 - `benchmark_schema/data_factory.protocol.yaml`：把多篇文献映射为设计资产的 source-to-design ledger、数据构建阶段、vertical slice 停止门、anchor 对照和 E1→E3→E2 环境搭建顺序。
 - `benchmark_schema/construction_annotation.protocol.yaml`：自动 provenance、运行前双人人工构念标注、pilot 后 observed 字段，以及 seed funnel、真人招募和防泄漏规则。

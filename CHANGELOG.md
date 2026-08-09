@@ -1,5 +1,14 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.35 objective-repair falsification - 2026-08-10
+
+- 第二轮核对错误前提识别/重定向、需求与隐含目标引出、弃权、安全取舍、目标错配、specification gaming、优化 formulation/equivalence 和可执行 agent benchmark；否决“广义 Wrong-Problem 尚无人测”的叙事。
+- 将候选收窄为 Outcome-Grounded Objective Repair / Proxy-Goal Repair：用户明确上位结果和建议手段，agent 取得环境反证后必须保留结果、修复手段并继续执行，主 oracle 为程序化终态 regret。
+- 冻结并运行 `pilot/objective_repair_v0_1/`：2 个 family × 2 个只差一个决定性事实的 world × Qwen3 8B/Claude Sonnet；四个唯一 first turn 均先查询决定性事实。
+- 确定性策略与真实模型都产生 literal task success → outcome success 排序反转；Qwen 出现“已经查到手段破坏发版却仍执行”的 evidence-to-action 断裂，Claude 在同一 world 查证替代项并完成目标。
+- 保留原 prompt 中抽象 `commit`/真实工具名冲突造成的接口失败，并将只修 schema 的 debug 轨迹单列为主结果；不把 harness bug 解释为模型能力。
+- 四条件当前为：真值可发现初步通过、等价 formulation 部分通过、终态 oracle 最小可行性通过、单变量 pair/排序重排初步通过。正式 Proposal 与全部 v0.33 DOCX/PDF/HTML/图/schema 继续保留旧分支快照。
+
 ## v0.34 direction audit - 2026-08-10
 
 - 将 4-family 合成 pilot 重新审计为工程链与指标反例测试：8/8 决策方向命中是任务操纵检查，六类原型是逻辑单元测试；两者都不是模型能力、真人效用或新指标的验证。

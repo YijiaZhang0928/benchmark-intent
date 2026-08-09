@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-10
-当前版本：v0.34（方向审计；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.35（Objective Repair 否决实验；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -45,6 +45,17 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 4. 最近邻包括面向优化建模的 LLMOPT/Solver-Informed RL、problem-space specification，以及研究问题形成愿景工作；本轮未找到跨领域、环境可执行、覆盖“识别错题—获取信息—重构目标—执行验证”的直接 benchmark。该结论只是截至 2026-08-10 的有界检索，不得写成绝对首创。
 5. 最大测量风险是把不可访问的作者意图藏作真值。通过门要求：关键变量可由预注册提问/搜索/环境检查发现；允许多个等价 formulation；主 oracle 来自程序规则或环境终态；paired case 只改变一个可发现的决策关键事实；普通 task success 与 formulation regret 至少出现系统重排。
 6. 下一步建议先各做一个 Wrong-Problem 与 Resolution-Routing 的最小可执行 family；若 formulation 真值仍依赖 LLM judge 或专家主观喜欢，则立即否决，退回可执行性更强的 Evidence-to-Action response surface。正式 Proposal、schema、HTML、DOCX/PDF 和图继续保持 v0.33 快照，直到用户确认且候选过 novelty/oracle/feasibility/power 四门。
+
+### 1.0e 2026-08-10：第二轮近邻否决与 Outcome-Grounded Objective Repair pilot
+
+1. 第二轮检索否决了宽泛 Wrong-Problem / Problem Formulation 的空白叙事。KG-FPQ、MultiHoax、Premise Critique、UPHILL、MedRedFlag 已覆盖错误前提识别和纠错重定向；UserBench、ClarifyBench、LHAW、CAR-bench、requirements elicitation、Expectation Alignment 与 implicit-goal inference 已覆盖潜在需求/目标发现；AgentAbstain、Agentic Abstention、ManagerBench 已覆盖停止与安全取舍；optimization formulation、EquivaMap、WebArena 与 τ-bench 已覆盖形式化/等价性和执行终态。
+2. 当前只保留窄候选 **Outcome-Grounded Objective Repair / Proxy-Goal Repair**：用户明确上位结果并建议一个手段；agent 必须通过可访问环境事实判断该手段是否仍服务于结果，必要时在授权范围内换用替代手段并继续执行；主分数是程序化终态 regret，而非问题表述文本。
+3. `pilot/objective_repair_v0_1/` 冻结 2 个 family × 2 个单变量 twin world，运行 Qwen3 8B 与 Claude Sonnet alias。四个唯一 model-family first turn 均先查询决定性事实，说明信息可达性成立；first-turn 在 pair 内复用，不是独立随机重复。
+4. 确定性策略出现预注册排序反转：LiteralExecutor 的 literal/outcome/paired 为 100%/50%/0%，InspectThenRepair 为 50%/100%/100%。schema 修复后的真实模型也反转：Qwen literal/outcome 为 75%/75%，Claude 为 50%/100%。最有诊断价值的失败是 Qwen 已获知 LogLite 是发版依赖后仍取消它，表明 evidence acquisition 与 evidence-conditioned action 可分离。
+5. 原始 prompt 把抽象 `commit` 与真实状态工具名混淆，造成无效 wrapper。原始失败保留在 run log；主结果只用明确要求直接调用真实工具的 schema-repaired debug 轨迹。不得把接口 bug 当作模型能力失败。
+6. 四条件判定：可发现真值初步通过；多等价 formulation 仅部分通过（当前通过不评分自由文本规避，未验证开放式语义等价）；环境终态 oracle 通过最小可行性；单变量 pair/系统重排初步通过。样本只有 2 family、每格 1 次，不支持显著性或稳定模型排名。
+7. 最大 ICLR 风险是“AgentAbstain 加安全替代工具”或“MedRedFlag 接 τ-bench”。下一步只做 6–8 family novelty-kill pilot，加入 decoy 查询、间接证据链、多个等价修复动作、无关扰动和 3–5 次重复；若仍退化为显眼二选一，停止该方向并回到 Evidence-to-Action response surface。
+8. 正式 Proposal、schema、HTML、DOCX/PDF 和图仍保持 v0.33 快照。v0.35 只更新方向备忘录、文献全景、pilot、README、项目记忆和 changelog；候选尚未通过 novelty/power 大门，不机械改写旧分支交付物。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

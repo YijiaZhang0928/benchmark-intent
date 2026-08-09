@@ -1,0 +1,41 @@
+{
+  "deterministic_policies": [
+    {
+      "policy": "LiteralExecutor",
+      "worlds": 4,
+      "literal_success_rate": 1.0,
+      "world_success_rate": 0.5,
+      "paired_success_rate": 0.0
+    },
+    {
+      "policy": "InspectThenRepair",
+      "worlds": 4,
+      "literal_success_rate": 0.5,
+      "world_success_rate": 1.0,
+      "paired_success_rate": 1.0
+    }
+  ],
+  "schema_repaired_models": [
+    {
+      "model": "qwen3_8b",
+      "episodes": 4,
+      "inspection_before_commit_rate": 1.0,
+      "literal_success_rate": 0.75,
+      "world_success_rate": 0.75,
+      "paired_success_rate": 0.5,
+      "objective_repair_rate_on_w_minus": 0.5,
+      "mean_information_calls": 1.0
+    },
+    {
+      "model": "claude_sonnet",
+      "episodes": 4,
+      "inspection_before_commit_rate": 1.0,
+      "literal_success_rate": 0.5,
+      "world_success_rate": 1.0,
+      "paired_success_rate": 1.0,
+      "objective_repair_rate_on_w_minus": 1.0,
+      "mean_information_calls": 1.5
+    }
+  ],
+  "statistical_scope": "Descriptive only: 2 task families, 4 worlds, one run per model-world cell, and paired worlds share a replayed first-turn action."
+}

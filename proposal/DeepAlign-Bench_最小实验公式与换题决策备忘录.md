@@ -9,7 +9,7 @@
 
 因此，不能把论文继续写成“我们提出一个更严谨的 personalization score”。差值本身并不是错误：随机试验的平均处理效应也是差值。真正的问题是，我们目前相减的是自动评委给报告打出的“适配分”，而不是有绝对含义、能够被外部验证的用户效用；任何事后除法、余弦或乘积都不能修复这个构念问题。
 
-对选题的建议是：**停止把个性化差值当作主方法，把现有 paired family、变化/不变契约和冻结环境升级为“agent 决策边界/响应曲面评测”的候选基础设施。** 个性化可以保留为一个应用切片，但不再是论文标题和唯一主张。这个新方向仍是候选，必须先与 When2Tool、FixedBench、Contrast Sets、Mind-ParaWorld 等做最近邻否决，再改写正式 Proposal。
+对选题的建议经过第二轮近邻检索和 2-family pilot 后进一步收窄：**停止把个性化差值当作主方法，也不采用宽泛的 Wrong-Problem Bench；当前只保留 Outcome-Grounded Objective Repair（结果可验证的代理目标修复）作为下一轮否决对象。** 它评价 agent 在用户同时给出上位结果和建议手段时，能否让可访问的反证真正改变手段、继续完成上位目标。个性化可以保留为应用切片，但不再是论文标题和唯一主张。正式 Proposal 仍不换题，直到该候选通过“不是 AgentAbstain、MedRedFlag 与 τ-bench 的简单拼接”这一新颖性门。
 
 ## 1. 最小实验究竟怎样做出来的
 
@@ -228,4 +228,54 @@
 
 Wrong-Problem Bench 与 PDR-Bench 的距离明显大于“个性化适配分 vs 个性化决策效用”：评测对象从给定 user-task 后生成更合适的报告，变成 agent 在研究/行动前是否建立了正确的问题本体。现有 paired family、must-change/must-hold/must-not、冻结环境和可执行 regret 仍可复用，但用户画像不再是主处理变量；它最多是暴露目标、约束或利益相关者信息的一种渠道。
 
-当前不冻结换题。建议下一轮先并行做两个最小否决样例：一个 Wrong-Problem family 和一个 Resolution-Routing family。若前者能够给出不依赖 LLM judge 的执行终态、且 agent 排名不同于普通 task success，优先于继续扩展决策边界/个性化分支；若真值始终依赖主观专家评分，则退回更可执行的 Evidence-to-Action response surface。
+当前不冻结换题。上述建议中的 Wrong-Problem 最小否决样例已在下一节执行：它能够给出不依赖 LLM judge 的终态，并产生相对 literal task success 的排序反转；但广义新颖性被更强近邻否决，所以只保留更窄的 Objective Repair 候选。Resolution Routing 暂不展开，以免同时追逐两个尚未过门的方向。
+
+## 10. 第二轮近邻否决：广义 Wrong-Problem 不成立，窄化为 Objective Repair
+
+### 10.1 搜索边界与否定性结论
+
+截至 2026-08-10，第二轮以 arXiv、ACL Anthology 和 OpenReview 原文页为主，围绕 `problem finding/framing`、false premise、premise critique/redirection、requirements elicitation、implicit goal inference、reward misspecification、specification gaming、agent abstention、goal shift、optimization formulation/equivalence 和 executable final-state evaluation 做有界检索。学术检索 MCP 在本会话未挂载，公共 API 又发生证书失败，因此检索改用网页搜索并逐篇核对原文页；这降低了穷尽性，以下只能称为 **search-bounded novelty**。
+
+广义 Wrong-Problem 不能再写成空白：
+
+- 错误前提的识别已有 [KG-FPQ](https://aclanthology.org/2025.coling-main.698/)、[MultiHoax](https://aclanthology.org/2025.findings-acl.530/)、[Judge Before Answer](https://arxiv.org/abs/2510.10965) 和 [Premise Critique](https://aclanthology.org/2025.findings-emnlp.44/)；
+- 在真实健康问句中纠正并重定向已有 [UPHILL](https://aclanthology.org/2024.findings-acl.850/) 和 [MedRedFlag](https://aclanthology.org/2026.findings-acl.1771/)；
+- 不完整/矛盾问题的检测或拒答已有 [VCSearch/PMC](https://aclanthology.org/2025.emnlp-main.642/) 与 [Evaluating Ill-Defined Tasks](https://arxiv.org/abs/2603.17067)；
+- 潜在用户意图、需求和子目标的交互发现已有 [UserBench](https://openreview.net/forum?id=iJS7nvlGPd)、[ClarifyBench](https://arxiv.org/abs/2511.08798)、[LHAW](https://arxiv.org/abs/2602.10525)、[CAR-bench](https://arxiv.org/abs/2601.22027)、[From Chat to Interview](https://arxiv.org/abs/2605.05828)、[Goal Extraction in Requirements Engineering](https://arxiv.org/abs/2604.22207)、[Expectation Alignment](https://openreview.net/forum?id=iO7viYaAt7) 和 [Inferring Implicit Goals Across Differing Task Models](https://openreview.net/forum?id=7kINNd6vxQ)；
+- 不该行动或何时停止已有 [AgentAbstain](https://arxiv.org/abs/2607.10059) 与 [Agentic Abstention](https://arxiv.org/abs/2606.28733)；安全与操作目标冲突已有 [ManagerBench](https://openreview.net/forum?id=KsmTaPygR9)；
+- 给定目标后的形式化、执行和等价性验证已有 [LLMOPT](https://openreview.net/forum?id=9OMvtboTJg)、[MIPLIB-NL](https://arxiv.org/abs/2602.10450)、[PEARL](https://arxiv.org/abs/2607.18256) 和 [EquivaMap](https://openreview.net/forum?id=RvdjzNlksm)；
+- 代理目标被利用的风险已有 [Goal Misgeneralization](https://arxiv.org/abs/2210.01790) 和 [Towards Understanding Specification Gaming in Reasoning Models](https://arxiv.org/abs/2605.02269)。
+
+本轮仍未找到一个直接 benchmark 同时把以下四步作为同一跨域、工具交互、终态可验证的单元：`用户给出上位结果与建议手段 → agent 主动取得会否定该手段的环境事实 → 保留上位结果但修复手段 → 由实际终态计算 regret`。因此保留的窄 gap 不是 problem formulation，而是 **Outcome-Grounded Objective Repair / Proxy-Goal Repair**。
+
+### 10.2 与六类最近邻的精确边界
+
+| 最近邻簇 | 已经测到什么 | Objective Repair 仍要求什么 |
+|---|---|---|
+| false-premise / MedRedFlag | 发现错误假设、在回答中纠正或重定向 | 取得环境证据后调用不同工具，完成同一上位结果，并由终态而非回答质量评分 |
+| UserBench / ClarifyBench / LHAW | 通过追问恢复欠指定偏好或工具参数 | 上位目标已给出；错误的是用户建议的代理手段，agent 不能只补槽位 |
+| AgentAbstain | 在冲突、风险或工具失败时停止、拒绝或询问 | 存在授权范围内的可验证替代动作，agent 必须 repair-and-act，而不是只 stop |
+| Expectation Alignment / implicit goals | 在 MDP 中形式化错配和查询策略 | 做成面向 LLM tool agent 的跨域 paired benchmark，并报告 literal-vs-outcome 排名分歧 |
+| τ-bench / WebArena / GOATBench | 给定正确目标后的交互执行与终态成功 | 同一表面手段在成对 world 中一侧正确、一侧错误；证据必须使动作翻转 |
+| optimization formulation / EquivaMap | 把已定义的问题翻成可执行模型并检查数学等价 | 先判断问题中“手段是否仍服务于目标”，不把给定 objective 默认当作正确 |
+
+最强 ICLR 反对意见仍是：“这只是 AgentAbstain 加一个安全替代工具，或 MedRedFlag 接上 τ-bench。”如果扩展后的 family 仍只有显眼的二选一安全动作，这条线不够强；必须出现跨 family 一致的 **evidence acquired but not action-changing** 失败、相对现有 task-success 的系统重排，以及对 decoy/无关事实的不变性。
+
+### 10.3 四个条件的文献证据与最小实验结果
+
+| 条件 | 文献先例 | 2-family pilot | 当前判定 |
+|---|---|---|---|
+| 关键真值可通过预注册信息动作发现 | UserBench、ClarifyBench、LHAW、CAR-bench、AgentAbstain | 两模型在两个 family 的 4 个唯一 first turn 全部先请求决定性查询 | **初步通过**；工具名可能泄漏 |
+| 接受多种等价 formulation | EquivaMap 用可行性与最优性验证等价模型；[HypoSpace](https://openreview.net/forum?id=lXP4t20mR4) 用有限可枚举空间的确定性 validator | 自由文本 formulation 不计分，只按诱导终态评分 | **部分通过**；尚未真正验证开放式语义等价 |
+| 主 oracle 来自规则/环境终态 | [WebArena](https://arxiv.org/abs/2307.13854)、[τ-bench](https://arxiv.org/abs/2406.12045) 与 OSWorld 已建立功能、数据库或设备状态评分 | 两个 family 的正确 commit、硬约束和 regret 均可枚举，不需 LLM judge | **通过最小可行性**；尚缺完整 runner/replay |
+| 单变量 pair 且能重排普通 task success | [Contrast Sets](https://arxiv.org/abs/2004.02709) 支持局部单变量扰动；AgentAbstain 使用 should-act/should-abstain 成对环境 | 确定性策略和两个真实模型都出现 literal success 与 outcome success 排名反转 | **初步通过**；只有 2 family、每格 1 次 |
+
+完整冻结协议、case、逐步轨迹和结果见 `pilot/objective_repair_v0_1/`。原 prompt 曾把抽象 `commit` 与真实工具名混淆；原始失败已保留，结果表只使用明确要求调用真实状态工具的 schema-repaired debug 轨迹，不能把接口 bug 当作能力失败。
+
+### 10.4 最小实验观察与 go/no-go
+
+确定性策略先验证了评价逻辑：始终照字面执行的策略 literal success 为 `4/4`，但 outcome success 只有 `2/4`、paired success 为 `0/2`；先检查再修复的策略 literal success 为 `2/4`，outcome success 和 paired success 均为 `4/4` 与 `2/2`。
+
+schema 修复后的真实模型结果也重排：Qwen3 8B 的 literal success 为 `3/4`、outcome success 为 `3/4`；Claude Sonnet alias 的 literal success 为 `2/4`、outcome success 为 `4/4`。最有价值的失败是 Qwen 在 SaaS `W-` 已经查询到 `LogLite` 是本周发版依赖后，仍取消 `LogLite`；Claude 则继续检查替代项并取消无依赖、无近期使用的 `StockPic Pro`。这初步表明“获取证据”和“让反证改变行动”是两个可分离阶段。
+
+当前结论是 **小门通过，大门未过**：oracle、成对构造和排序重排具有可行性；广义 Wrong-Problem 新颖性被否决，Objective Repair 仍只是有条件候选。下一轮只做 6–8 个 family 的 novelty-kill pilot：加入 decoy 查询、间接证据链、多个等价修复动作、无关扰动和 3–5 次重复。如果它退化为显眼的安全动作选择，或不能稳定重排系统，就停止换题，回到更一般但可执行的 Evidence-to-Action response surface。
