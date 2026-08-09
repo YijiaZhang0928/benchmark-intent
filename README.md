@@ -2,7 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（v0.33）
+## 当前交付物（方向审计 v0.34；正式 Proposal 仍为 v0.33 快照）
+
+- `deliverables/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`：逐项解释合成最小实验能证明与不能证明的内容；将 CFA 重新定位为报告层交互对比，给出真人/可执行效用估计，并记录 agent 决策边界/响应曲面候选与 3 天否决实验。
 
 - `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；DDE 是真实用户主终点，v0.33 为 Phase A 增加 `A_min`、角度/幅度诊断与 task-only non-inferiority/added-value 分层。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：7 页标准论文 Proposal（满足 ≤10 页约束），保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。

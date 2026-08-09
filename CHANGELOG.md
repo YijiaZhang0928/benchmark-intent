@@ -1,5 +1,14 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.34 direction audit - 2026-08-10
+
+- 将 4-family 合成 pilot 重新审计为工程链与指标反例测试：8/8 决策方向命中是任务操纵检查，六类原型是逻辑单元测试；两者都不是模型能力、真人效用或新指标的验证。
+- 明确 `CFA_mean` 是任务族内用户×生成条件的差分中的差分；差值本身并非问题，真正缺口是被减对象仍为未校准的报告适配分。比例、余弦和乘积归一化均不能补足绝对效用与构念效度。
+- 若保留个性化分支，主估计对象改为预冻结外部效用上的 matched benefit、wrong-user effect、absolute utility/regret 与独立 no-harm/no-violation；无真人或可执行终点时只能主张 artifact specificity。
+- 新增 SDR-Bench、GRASP、SEAL、FixedBench、When2Tool、Multi-User LLM Agents 与 ManyIH-Bench 等直接近邻。个性化→行动、停止/行动、自我修复回退、多用户权限等宽泛换题方向均已拥挤。
+- 将 agent 决策边界/响应曲面列为优先候选：通过有序相关变量扫描、无关扰动、不变性、单调性、边界误差和可执行 regret 评价局部策略几何；先做 2-family、约336次轻量运行的3天否决实验，通过最近邻、oracle、可扩展性和系统重排门后再重写正式 Proposal。
+- 新增《最小实验公式与换题决策备忘录》源文件和交付入口，并在 pilot 结果报告加入证据等级提示；v0.33 正式 Proposal、DOCX/PDF、HTML、schema 与图继续作为旧分支快照，不机械同步到未冻结候选方向。
+
 ## v0.33 novelty gate - 2026-08-10
 
 - 对“报告适配 → 真人下游决策效用”执行最强近邻否决：判定 DDE 是有价值的测量与外部效度升级，但不足以单独定义一个与 PDR-Bench 显著不同的 benchmark problem。

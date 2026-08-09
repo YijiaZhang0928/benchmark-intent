@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-10
-当前版本：v0.33
+当前版本：v0.34（方向审计；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -24,6 +24,18 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 4. 当前最值得进入下一轮反证的候选问题是 **evidence-to-action coupling**：Deep Research agent 能否识别“哪些新证据应当改变决策，哪些不应当，以及何时证据已足以行动”。基本单元将从 user-report pair 改为带有预注册行动边界的 counterfactual evidence-world family，分别测必要敏感性、无关扰动不变性、证据充分性和搜索成本。
 5. 这个候选仍未通过新颖性门：[ForeSci](https://arxiv.org/abs/2606.00644) 已将 research agent 作为 decision-making system，[Mind-ParaWorld](https://arxiv.org/abs/2603.04751) 已测证据充分性与 when-to-stop，[ClinDet-Bench](https://aclanthology.org/2026.acl-industry.47/) 已测不完全信息下的 determinability，[NoisyCausal](https://aclanthology.org/2026.acl-long.1833/) 与 [Contrast Sets](https://arxiv.org/abs/2004.02709) 已分别覆盖因果抗噪和局部决策边界。新主张必须证明“开放证据搜索→行动边界的成对敏感性/不变性”不是这些工作的简单并集。
 6. 在用户确认新研究问题前，不机械改写正式 Proposal、schema、HTML、DOCX/PDF 和图；这些交付物继续标记为 v0.33 旧分支快照。一旦新问题通过最近邻区分、可执行 oracle、数据构造可行性和两个月统计效力四项门，再一次性升级并同步全部交付物。
+
+### 1.0c 2026-08-10：公式重定位与 agent 决策边界候选
+
+1. 对最小实验的证据等级再次收紧：8/8 matched 决策方向命中只说明合成任务操纵足够明显；六类分数原型只是在预设真值上的公式单元测试；两者均不构成模型能力、真人效用、自动评委效度或数学创新证据。48 个 artifact-judge 单元和 672 个 leaf 判断不能替代 4 个独立 task family 的样本量。
+2. `CFA_mean = 1/2{[S_a(Y_a)-S_a(Y_b)]+[S_b(Y_b)-S_b(Y_a)]}` 重新定义为任务族内用户×生成条件的交互对比/差分中的差分。差值并非统计错误；核心构念缺口是 `S` 仍为未校准的报告适配分，而非外部可验证效用。比例分母、余弦方向或乘积总分都不能补出绝对效用。
+3. 若保留个性化实验，主估计对象应为预冻结效用 `U_fu` 上的 matched benefit、wrong-user effect、matched absolute utility/normalized regret，以及共同质量非劣与零严重违规。没有真人决策或可执行环境时，只能把 CFA 称为 artifact-level user-specificity manipulation check。
+4. 新文献显著压缩当前及初步换题空间：[SDR-Bench](https://arxiv.org/abs/2607.20471) 已直接以诱发特定接收者行动定义个性化；[GRASP](https://arxiv.org/abs/2605.29668) 已使用 held-out probe 与 hard regression budget 接纳 skill 修复；[SEAL](https://arxiv.org/abs/2607.24300) 已使用 agent 不可见的外部接纳审计；[FixedBench](https://arxiv.org/abs/2605.07769)、[When2Tool](https://arxiv.org/abs/2605.09252)、[Multi-User LLM Agents](https://arxiv.org/abs/2604.08567) 与 [ManyIH-Bench](https://arxiv.org/abs/2604.09443) 分别覆盖何时不行动、工具必要边界、多用户冲突和多级权限。因此这些宽泛能力名不能直接作为换题依据。
+5. 当前优先候选改为 **agent 决策边界/响应曲面**：在冻结环境中沿有序的决策相关变量扫描 agent 行动，同时加入语义不变的无关扰动，比较 oracle 与模型的切换边界、单调性、无关翻转率和可执行 regret。个性化仅作为可能的一个变量切片，不再默认是论文标题。
+6. 候选并未冻结。最近邻包括 When2Tool 的工具必要性边界、Contrast Sets、Mind-ParaWorld 和通用扰动/稳健性研究。通过条件是跨环境 family 规范、相关敏感性+无关不变性、非 LLM judge 的行动 oracle、结果重排现有系统，以及两个月可扩展性。
+7. 下一步建议为 3 天否决实验：2 个现有可执行 family × 1 个有序变量 × 7 个水平 ×（3 个等价表述+1 个无关对照）× 2 个系统 × 3 次重复，约336次轻量运行；预先冻结行动区域、边界容忍带、单调方向与停止门。未通过不重写正式 Proposal。
+8. 以最新近邻位置重新校准，v0.33 即使预期数据全部成立，更可能处于 weak reject–borderline；主观 readiness 约20%–35%。若发现 PDR-style 适配与真人决策效用稳定、系统性背离，可形成较强 measurement paper，但仍有增量风险。该区间不是统计录用概率。
+9. 详细推理、公式和方向矩阵见 `proposal/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 
@@ -363,3 +375,4 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.31：冻结 task/persona 三层标注、真人锚定配对、direction-node registry、E1→E3→E2 工程主次和 3-family vertical slice 开工链。
 - v0.32：将主终点从 artifact fit 收敛为真实用户 downstream decision utility；冻结 Phase A/Phase B、DDE/WrongUserHarm、3-family vertical slice、utility verifier 和真人功效路线，并新增参考分区式端到端图。
 - v0.33：完成4-family合成 Phase A 最小实验；以原型压力测试否定单一差值/比例/角度主分，增加 A_min、角度/幅度诊断、task-only NI/added-value 分层和 owner-aware 路由要求；新增正式 Proposal 全链路+本周进度一页图。
+- v0.34：把 CFA 重定位为报告层交互对比而非完整个性化指标；以外部效用/可执行 regret 作为保留分支的主估计对象；用最新近邻否决个性化→行动、自我修复回退、停止/工具与多用户权限等宽泛换题，并提出 agent 决策边界/响应曲面的 3 天候选否决实验。
