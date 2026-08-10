@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.44 selective epistemic revision audit - 2026-08-11
+
+- 拆解“assistant 被用户带着改口”的具体对话：用户从 capability novelty 扩展到 method/measurement novelty 是判据变化，不等于纯用户压力；正确更新应保留旧判据下的条件结论并只修改 overall viability。
+- 核对 FlipFlop、SYCON、SycoBench-600、MultiChallenge、Belief-R、BeliefShift、Med-Stress、MedPRESS、EoBench、ACL 2026 logical belief consistency、EvolIF、repair、SAVeR 与 speaker-free conformity；否决 broad “前后一致且该改口时改口” gap。
+- 将唯一有条件保留的问题收窄为 Premise-Conditioned Selective Revision：在公开 commitment dependency graph 上联合评价 affected closure 修订、unaffected preservation、revision attribution、conditional scope 与 over-persistence。
+- 明确该候选是 v0.37 DeltaBench 的 dialogue/epistemic 实例化，属于高风险组合型方法 gap，不因新 idea 静默推翻 v0.43 DeepAlign measurement-validity 的条件性结论。
+- 新增《Selective Epistemic Revision 最近邻审计》源文件与交付摘要，冻结 speaker-free/repetition 对照、非补偿指标和 3-family×432-trajectory novelty-kill pilot；正式 v0.33 Proposal、schema、DOCX/PDF、HTML 和图继续作为快照。
+
 ## v0.43 DeepAlign measurement-validity reconsideration - 2026-08-11
 
 - 接受继续 DeepAlign 的条件性路径，但否决“把 CFA 归一化成新 personalization 总分”的 framing；CFA 只保留为任务族内用户×生成条件交互对比。

@@ -494,3 +494,13 @@ v0.39 的 Initiative Gain 作为 outcome criterion 与 agent-first 过程归因�
 这组近邻也暴露了更干净的测量缺口：semantic movement 不等于 counterfactual value added。当前唯一有条件保留的问题是，在同 backbone、工具、token/time 与实质信息配平后，adaptive interaction 是否相对 strong standalone 和 content-matched/yoked non-interactive control 同时提高当前方案效用与 AI-removal transfer。`Learning Without Displacement` 降为 outcome/no-harm 维度；personalization 是 moderator；intervention policy 是 mechanism；beyond-answer contrast 才是 estimand。
 
 工作题名暂定 `Beyond the Answer: Isolating Cognitive Value Added by Interactive AI Assistance`。最小确认性设计为 No Assistance、Strong Standalone、Content-Matched Static/Yoked、Adaptive Interaction 四臂，并在 AI 移除后使用结构迁移任务。若 token/time/proposition exposure 配平后效应消失，只有当前 artifact gain 而无 transfer，或无法构造公平的 content-matched control，则停止该方向。完整审计见 [`BeyondAnswer_认知贡献Gap审计.md`](BeyondAnswer_认知贡献Gap审计.md)。正式 v0.33 Proposal 与其 DOCX/PDF/HTML/schema/图继续保持旧分支快照。
+
+## 18. 第九轮 novelty 审计：从“前后一致”收窄为选择性最小修订
+
+用户观察到 assistant 在 DeepAlign/PDR-Bench 讨论中随最新 framing 改变态度。该例不完全是无证据迎合：后续消息把 novelty 判据从“必须测新能力”扩展为“新的测量方法也可形成贡献”。正确更新应保留旧结论“DeepAlign 与 PDR-Bench 的能力原语仍接近”，只把 overall viability 更新为“若 measurement profile 产生稳定重分类和真人增量效度，则作为 measurement paper 条件性成立”。
+
+本轮最近邻否决了 broad “多轮保持前后一致、该改口时改口”的空白叙事。FlipFlop、SYCON、SycoBench-600、MultiChallenge Self-Coherence、Belief-R、BeliefShift、Med-Stress/MedPRESS、EoBench、ACL 2026 logical conversation belief consistency、EvolIF、对话 repair 和 SAVeR 已覆盖无证据翻转、update/maintain、长期 evidence-driven revision、动态 constraint 修改及 reasoning 最小修补。
+
+仅保留窄候选 **Premise-Conditioned Selective Revision**：为 assistant 已公开的事实、假设、评价标准和结论冻结 dependency graph；后续只注入一个有效证据、无效证据、目标、判据或纯压力 delta；评价 gold affected closure 是否全部且仅被修订，未受影响承诺是否保持，以及模型是否把变化归因到正确 premise/turn。它不能被称为内部 belief benchmark，只能测 observable commitment dynamics。
+
+该方向本质上是 v0.37 DeltaBench 的 dialogue/epistemic 实例化，创新性仍是组合型而非全新能力。下一步只建议跑 3 family × 6 delta × 2 paraphrase × 2 backbone × 2 scaffold × 3 repeat = 432 trajectory 的 novelty-kill pilot；若 ordinary recall、flip rate、Belief-R update/maintain 或 MultiChallenge self-coherence 已能完整解释结果，或 commitment ledger 泄漏 affected closure，则停止。完整审计见 [`SelectiveEpistemicRevision_最近邻审计.md`](SelectiveEpistemicRevision_最近邻审计.md)。v0.43 DeepAlign measurement-validity 的条件性结论和 v0.33 正式 Proposal 快照均保持。

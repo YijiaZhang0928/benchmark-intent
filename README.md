@@ -2,7 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（DeepAlign measurement-validity reconsideration v0.43；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（selective epistemic revision audit v0.44；正式 Proposal 仍为 v0.33 快照）
+
+- `deliverables/SelectiveEpistemicRevision_最近邻审计.md`：审计多轮对话中“被用户带着改口”的现象；否决 broad consistency/revision gap，只保留 claim–premise–criterion 依赖图上最小、有理由、可归因的选择性修订候选，并冻结 3-family、432-trajectory novelty-kill pilot。
 
 - `deliverables/DeepAlign-Bench_测量效度重构备忘录.md`：将 DeepAlign 从“新差值公式”重构为 personalization measurement-validity benchmark；冻结 absolute adequacy、bilateral specificity、task-only benefit、shared-quality non-inferiority、boundary 与真人 outcome validity 六层 profile，并设计 3-family vertical slice 否决门。
 

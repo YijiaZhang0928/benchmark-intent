@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-11
-当前版本：v0.43（DeepAlign measurement-validity reconsideration；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.44（selective epistemic revision 最近邻审计；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -147,6 +147,17 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 7. [PDR-Bench](https://arxiv.org/abs/2509.25106) 已建立绝对 P/Q/R，[MyScholarQA](https://aclanthology.org/2026.acl-long.723/) 已证明合成用户/LLM judge 会漏错，[Can LLM be a Personalized Judge?](https://arxiv.org/abs/2406.11657) 与 [SenseJudge](https://aclanthology.org/2026.findings-acl.1084/) 已直接研究 personalized judge。因此论文不能只说 judge 不可靠，必须提供可复用效度分解、系统重分类和 criterion validity。
 8. 下一步只做 3 个真人确认 family × 3 系统 × task-only/Ya/Yb = 27 artifact 的 vertical slice。若用户/专家无法稳定区分三类 construct、重分类来自 bug、或完整 profile 与简单 P-score/CFA 同义，则停止让 metrics/rubrics 承担主创新。
 9. 正式 v0.33 Proposal、schema、HTML、DOCX/PDF 和图暂不重写；详细设计见 `proposal/DeepAlign-Bench_测量效度重构备忘录.md`。
+
+### 1.0n 2026-08-11：多轮改口现象审计与 Selective Epistemic Revision 候选
+
+1. 用户观察到 assistant 先因 DeepAlign/PDR-Bench 能力重叠而建议换题，后来又因“方法创新也可以”条件性恢复 DeepAlign。该例不完全是无理由 sycophancy：用户新增了 novelty 判据。正确回答应保留“能力原语重叠仍大”，只更新“measurement paper 可行性”，而不把旧结论静默覆盖。
+2. 否决 broad “维护前后一致、该改口时改口” gap。FlipFlop、SYCON、SycoBench-600、MultiChallenge Self-Coherence、Belief-R、BeliefShift、Med-Stress/MedPRESS、EoBench、ACL 2026 logical belief consistency、EvolIF、repair 与 SAVeR 已分别覆盖无证据翻转、稳定/更新权衡、动态约束和最小 reasoning repair。
+3. 唯一有条件保留的窄候选为 **Premise-Conditioned Selective Revision**：对 assistant 公开的 `事实—假设—判据—结论` 依赖图注入单一 delta，只更新 gold affected closure，保持 unaffected commitments，并把修订归因到正确 premise/turn。不能声称测到模型私有 belief。
+4. 主指标为 Unsupported Revision Rate、Warranted Revision Recall、Preservation Precision、Revision Attribution Accuracy、Conditional Scope Preservation、Residual Contradiction、Over-Persistence 与 Path Invariance；不得聚合成补偿式总分。
+5. 构念红线包括：一致性不等于正确、criterion change 不等于 factual correction、模糊不表态作弊、长上下文 recall 混淆、自然语言 judge 循环、事后理由不等于内部因果，以及社会来源与重复答案暴露混淆。必须加入 speaker-free repetition/plain re-ask 对照。
+6. 该候选是 v0.37 DeltaBench 的 dialogue/epistemic 实例化，而不是全新独立原语：commitment graph 对应 workspace dependency graph，新证据/目标/判据对应 delta。它更贴近人机科研讨论，但比 workspace maintenance 更接近 BeliefShift/SYCON/MultiChallenge，oracle 也更软。
+7. 下一步仅做 3 个专业 family × 6 delta × 2 paraphrase × 2 backbone × Full-History/Commitment-Ledger × 3 repeat = 432 trajectory 的 novelty-kill pilot。若普通 recall、flip rate、Belief-R update/maintain 或 MultiChallenge self-coherence 已能解释结果，或 ledger 泄漏 affected set，则停止。
+8. v0.43 DeepAlign measurement-validity 的条件性判断保持，不因新 idea 静默推翻。正式 v0.33 Proposal、schema、DOCX/PDF、HTML 与图继续保持快照；完整审计见 `proposal/SelectiveEpistemicRevision_最近邻审计.md`。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 
