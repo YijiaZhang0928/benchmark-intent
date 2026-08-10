@@ -1,5 +1,7 @@
 # Cognitive Gain 方向收敛：从“会不会反驳”到“agent 是否真正推进了用户思考”
 
+> **v0.40 更新：**本备忘录中的 Agent-Initiated Epistemic Gain 现作为 Outcome-Grounded Intervention Boundary 的 utility 与过程归因层，不再单独承担主 benchmark thesis。主问题改为：同一用户方案随 evidence、stakes 和 intervention cost 变化时，agent 是否在正确位置从 preserve 切换到 inspect、suggest 或 challenge-repair。完整更新见 [`InterventionBoundary_方向收敛备忘录.md`](InterventionBoundary_方向收敛备忘录.md)。
+
 ## 结论先行
 
 在两个候选中，**选择方案 B，但否决宽泛的 `Cognitive Gain Benchmark` 表述**。方案 A 不应继续作为论文主问题，而应降为方案 B 的一个安全与校准约束：agent 主动推进方案时，既不能盲从，也不能为了显得主动而制造无效反驳。

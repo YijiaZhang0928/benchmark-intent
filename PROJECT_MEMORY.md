@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-10
-当前版本：v0.39（InitiativeGain 方向收敛；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.40（Outcome-Grounded Intervention Boundary；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -101,6 +101,17 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 6. 最强反对是“CollabLLM 换到科研场景”、主动臂获得更多算力、Reactive 被 simulator 人为绑住、隐藏 issue 清单泄漏答案，以及更强模型通用能力解释。必须用 budget matching、多 user policy/真人 crossover、decoy/组合证据、oracle-cued 能力臂和系统排序重排逐项否决。
 7. 下一轮优先做 2 family × 4 case × 2 backbone × 3 policy × 3 repeat = 144 episode 的 novelty-kill pilot。若增益由额外搜索解释、终态仍依赖主观 judge、simulator 改写即消失、固定 checklist 足够或现有 CollabLLM 指标完整解释结果，则停止方向。
 8. InitiativeGain 成为当前优先问题假设；DeltaBench 保留为结构清楚、工程风险较低的备选。正式 Proposal、schema、DOCX/PDF、HTML 与图仍保持 v0.33 快照，待新候选通过最近邻、oracle、同-backbone 归因、可执行终态和两个月可行性门后再整体换题。完整推理见 `proposal/CognitiveGain_方向收敛备忘录.md`。
+
+### 1.0j 2026-08-10：Intervention Boundary 构念接受与 broad gap 否决
+
+1. 接受用户的核心构念修正：不研究“持续批判性挑刺”，而研究 intervention policy 何时从 preserve 切换到 inspect、suggest 或 challenge-repair。Intervention boundary 比 critique/judgment 更可操作，也能把 false challenge 与 blind execution 放在同一 policy 上。
+2. 否决事实陈述“已有 benchmark 只分别评价 follow、critique、proactive assistance”。Int-Bench 已测 teacher LLM 是否、何时、如何介入以及即时成功/迁移；CoLabScience 已在 biomedical research discussion 中学习 when/how intervention 并报告 precision/utility；ProMediate 已测 mediator when/how；VoI 已按风险、歧义和用户成本决定 act/ask。
+3. broad intervention timing 不是 gap。新候选收窄为 **Outcome-Grounded Intervention Boundary**：对相同用户目标和方案沿 evidence strength、stakes 与 intervention cost 构造最小反事实 world；gold action 由 `E[U(outcome)] − intervention cost − goal-deviation cost` 决定，不用人工偏好标一个“正确介入时刻”。
+4. 动作强度冻结为 `PRESERVE → INSPECT → SUGGEST → CHALLENGE_REPAIR`。核心指标是 Boundary Location Error、Over/Under-Intervention Regret、Monotonicity Violation、Irrelevant Flip、Outcome Utility、Goal Preservation、信息成本和 Agent-First Contribution；禁止补偿式总分。
+5. v0.39 Initiative Gain 不删除，改为 boundary 的 outcome criterion；agent-first insight 是过程归因；Calibrated Disagreement 是 sound-plan no-harm slice。主理论链变为 `evidence/stakes → intervention intensity → agent-originated plan change → downstream utility`。
+6. 最大 ICLR 反对是“给 Int-Bench/CoLabScience 做 contrast set/response surface”、效用成本由作者任意设定、连续变量只是离散分类插值，以及 plan outcome 仍需 LLM judge。必须用可执行终态、预冻结成本、局部最小反事实、语义等价/无关扰动与最近邻基线增量诊断逐项否决。
+7. 下一步改为 2 family × 7 evidence level × 2 stakes × 2 paraphrase × 2 backbone × 3 repeat = 336 个 free-policy episode；边界附近另做 forced validity、forced route 与 utility-aware router 子集。若没有非平凡 region switch、boundary 排名等同普通 task success、oracle 依赖主观 judge或现有近邻指标完整解释结果，则停止方向。
+8. Outcome-Grounded Intervention Boundary 成为当前优先 novelty-kill 假设，DeltaBench 保留为工程风险较低的备选。正式 Proposal、schema、DOCX/PDF、HTML 与图保持 v0.33 快照；完整推理见 `proposal/InterventionBoundary_方向收敛备忘录.md`。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

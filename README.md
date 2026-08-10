@@ -2,7 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（InitiativeGain 方向收敛 v0.39；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（Outcome-Grounded Intervention Boundary v0.40；正式 Proposal 仍为 v0.33 快照）
+
+- `deliverables/InterventionBoundary_方向收敛备忘录.md`：接受“研究 intervention boundary 而非持续批判”的构念转向，同时用 Int-Bench、CoLabScience、ProMediate 与 VoI 否决 broad gap；将剩余问题收窄为 evidence/stakes 反事实网格上的 outcome-grounded boundary curve，并冻结 336-episode novelty-kill pilot。
 
 - `deliverables/CognitiveGain_方向收敛备忘录.md`：在 Calibrated Disagreement 与 Cognitive Gain 之间选择后者的收窄版本；否决 broad Cognitive Gain，把主估计对象改为同-backbone proactive-vs-reactive 的 agent-initiated epistemic gain，并冻结四段贡献归因、no-harm 门和 144-episode novelty-kill pilot。
 

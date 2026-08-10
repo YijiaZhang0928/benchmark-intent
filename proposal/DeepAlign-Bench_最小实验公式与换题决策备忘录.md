@@ -468,3 +468,11 @@ Calibrated Disagreement 作为主方向仍停留在 intervention route：什么�
 保留的窄候选是 **Agent-Initiated Epistemic Gain**：关键问题或证据需求必须由 agent 在用户 issue-specific 提示前首先提出；贡献必须有外部证据、实际改变方案，并改善程序化终态。核心对照固定同一 backbone、工具和预算，比较 Reactive、Proactive 与 Oracle-cued 三臂；主估计为 `U(P_proactive)-U(P_reactive)`，并用 oracle-cued 臂区分“模型不会做”与“模型会做但没有主动想到”。Calibrated Disagreement 降为 false intervention、plan regression 和 goal-preservation 门。
 
 本轮将 InitiativeGain 提升为优先问题假设，DeltaBench 保留为工程风险更低的备选。先做 144-episode novelty-kill pilot，不立即改写 v0.33 正式 Proposal。若主动增益只是更多 token/search、Reactive simulator 被人为削弱、最终效用仍靠主观 judge、固定 checklist 足够或 CollabLLM 指标已能完整解释结果，则停止该方向。完整近邻、估计量、贯穿例、审稿反对与实验门见 [`CognitiveGain_方向收敛备忘录.md`](CognitiveGain_方向收敛备忘录.md)。
+
+## 15. 第六轮方向收敛：Outcome-Grounded Intervention Boundary
+
+用户提出“不研究持续批判，而研究什么时候介入”抓到了更好的 policy object；但 broad gap 仍不能写成“已有 benchmark 只分别测 follow、critique 和 proactive assistance”。[Int-Bench](https://arxiv.org/abs/2607.21306) 已让 teacher LLM 决定 whether/when/how to intervene，并测即时成功和迁移；[CoLabScience](https://aclanthology.org/2026.acl-long.1671/) 已在 biomedical research discussion 中学习 when/how intervention，同时报告 precision 与 collaborative utility；[ProMediate](https://aclanthology.org/2026.findings-acl.1479/) 和 [Value of Information](https://aclanthology.org/2026.acl-long.1987/) 又分别覆盖 mediator timing/effectiveness 与 risk–ambiguity–user-cost 下的 ask/act 权衡。因此“intervention boundary”作为宽泛主题并不空白。
+
+保留的窄原语是 **Outcome-Grounded Intervention Boundary**：在同一用户目标和方案上，沿反证强度、downstream stakes 与干预成本构造最小反事实 worlds；动作按 `PRESERVE → INSPECT → SUGGEST → CHALLENGE_REPAIR` 排序；gold action 由 `E[U(outcome)] − intervention cost − goal-deviation cost` 决定。主测的不再是离散 route accuracy，而是 boundary location error、over/under-intervention regret、单调性、无关扰动不变性、终态效用与目标保持。
+
+v0.39 的 Initiative Gain 作为 outcome criterion 与 agent-first 过程归因保留；Calibrated Disagreement 降为 sound-plan no-harm slice。下一步改做 2 family × 7 evidence levels × 2 stakes × 2 paraphrases × 2 backbones × 3 repeats = 336 个 free-policy episode，并在边界附近补 forced validity、forced route 与 utility-aware router 诊断。正式 v0.33 Proposal 仍不换题。完整审计、gap 改写、效用公式、贯穿例和停止门见 [`InterventionBoundary_方向收敛备忘录.md`](InterventionBoundary_方向收敛备忘录.md)。

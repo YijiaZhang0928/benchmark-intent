@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.40 outcome-grounded intervention boundary - 2026-08-10
+
+- 接受“不研究批判本身，而研究 intervention boundary”的构念修正；同时否决“已有 benchmark 只分别测 follow/critique/proactivity”的 broad gap 事实前提。
+- 新增 Int-Bench、CoLabScience、ProMediate、Value of Information、ProAct-75、ProEvent 与 intervention-timing reliability 的直接审计；确认 whether/when/how intervention 和 collaborative utility 已有强近邻。
+- 将剩余问题收窄为 Outcome-Grounded Intervention Boundary：沿 evidence strength、stakes 与 intervention cost 扫描 `PRESERVE → INSPECT → SUGGEST → CHALLENGE_REPAIR` 的效用最优区域边界。
+- v0.39 Initiative Gain 改为 outcome criterion，agent-first insight 作为过程归因，Calibrated Disagreement 作为 no-harm slice；主指标改为 boundary error、over/under-intervention regret、单调性、无关扰动稳定性和可执行终态。
+- 新增《Intervention Boundary 方向收敛备忘录》和 336-episode novelty-kill pilot；正式 v0.33 Proposal、schema、DOCX/PDF、HTML 和图继续作为旧分支快照。
+
 ## v0.39 InitiativeGain direction convergence - 2026-08-10
 
 - 在 Calibrated Disagreement 与 Cognitive Gain 之间选择 B 的收窄版本；A 降为 false intervention、plan regression 和 goal-preservation 约束，不再作为独立主问题。

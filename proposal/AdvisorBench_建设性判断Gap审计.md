@@ -1,5 +1,7 @@
 # AdvisorBench / 建设性判断：截至 2026-08-10 的 gap 审计
 
+> **v0.40 补充：**新增 [Int-Bench](https://arxiv.org/abs/2607.21306)、[CoLabScience](https://aclanthology.org/2026.acl-long.1671/)、[ProMediate](https://aclanthology.org/2026.findings-acl.1479/) 与 [Value of Information](https://aclanthology.org/2026.acl-long.1987/) 后，broad “when/how to intervene” gap 也被直接否决。当前只保留由最小反事实 world、可执行终态效用和有序变量扫描识别的 **Outcome-Grounded Intervention Boundary**；完整更新见 [`InterventionBoundary_方向收敛备忘录.md`](InterventionBoundary_方向收敛备忘录.md)。
+
 ## 结论先行
 
 **按当前 pitch，不建议把它作为一个新的 benchmark problem 提交。** “AI 是否知道何时应该同意、澄清、挑战或 defer，而不是盲目执行”已经被多个 benchmark 从人类自主性、谄媚/选择性纠正、错误前提、弃权、澄清策略、过度拒绝和错误指令执行等角度直接研究。区别于 CriticBench 的说法是成立的，但不足以构成 novelty：真正强的最近邻不是 CriticBench，而是 HumanAgencyBench、SycoBench-600、Two Axes of LLM Abstention、AppWorld-UL、RegretBench 和 CarryOnBench。
