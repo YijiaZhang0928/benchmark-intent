@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.39 InitiativeGain direction convergence - 2026-08-10
+
+- 在 Calibrated Disagreement 与 Cognitive Gain 之间选择 B 的收窄版本；A 降为 false intervention、plan regression 和 goal-preservation 约束，不再作为独立主问题。
+- 核对 CollabLLM、Quantifying Human-AI Synergy、HAI-Eval、KITE、human-led/AI-led vibe coding、SCOPE、BoxingGym 与大规模科研反馈随机实验；否决“主动协作提升最终方案”或“with-AI uplift”本身的 novelty。
+- 将候选构念改为 Agent-Initiated Epistemic Gain：只有 agent-first、外部有效、实际改变方案、改善可执行终态四环同时成立才记主成功。
+- 冻结同-backbone Reactive、Proactive、Oracle-cued 三臂，以及 Total Assistance Gain、Initiative Gain、Elicitation Gap、agent-first insight、user steering burden 和 false intervention；禁止补偿式总分。
+- 新增《Cognitive Gain 方向收敛备忘录》和 144-episode novelty-kill pilot；InitiativeGain 成为优先问题假设，DeltaBench 保留为低工程风险备选。正式 v0.33 Proposal、schema、DOCX/PDF、HTML 和图继续作为旧分支快照。
+
 ## v0.38 AdvisorBench gap audit - 2026-08-10
 
 - 否决 “何时同意、挑战、澄清或 defer”作为 broad benchmark 空白：HumanAgencyBench、SycoBench-600、Two Axes of LLM Abstention、AppWorld-UL、RegretBench 和 CarryOnBench 已分别覆盖 human-agency support、选择性纠正、false challenge/calibrated policy、交互路由、澄清 regret 与 utility recovery。

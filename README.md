@@ -2,7 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（AdvisorBench gap 否决 v0.38；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（InitiativeGain 方向收敛 v0.39；正式 Proposal 仍为 v0.33 快照）
+
+- `deliverables/CognitiveGain_方向收敛备忘录.md`：在 Calibrated Disagreement 与 Cognitive Gain 之间选择后者的收窄版本；否决 broad Cognitive Gain，把主估计对象改为同-backbone proactive-vs-reactive 的 agent-initiated epistemic gain，并冻结四段贡献归因、no-harm 门和 144-episode novelty-kill pilot。
 
 - `deliverables/AdvisorBench_建设性判断Gap审计.md`：核对 HumanAgencyBench、SycoBench-600、Two Axes、AppWorld-UL、RegretBench、CarryOnBench、SoundnessBench 等直接近邻；否决 broad AdvisorBench，只保留 outcome-grounded plan-intervention policy 的窄候选与三天 novelty-kill pilot。
 

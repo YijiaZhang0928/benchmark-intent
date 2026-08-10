@@ -458,3 +458,13 @@ OGOR 当前最致命的问题不是名字，而是**构念没有从通用 agent 
 唯一仍可能保留的窄候选是 **outcome-grounded plan-intervention policy**：同一个 user-proposed plan 在 supported / refuted / underdetermined 三个最小反事实 world 中，gold route 分别为 `EXECUTE / CHALLENGE_REPAIR / INSPECT`；主评 false challenge、blind execution、premature commitment、goal deviation 和环境 outcome regret。它必须用 forced validity、forced correct-route 与同-backbone router scaffold 对照，证明模型“知道且会做，但在自由条件下选错干预”，否则仍是知识、推理和执行通用能力的混合切片。
 
 该候选与本项目已有 Resolution Routing / OGOR 高度接近，且最新近邻进一步压缩空间，故只保留为第二梯队否决对象，不替代 DeltaBench。完整逐篇地图、示例重构、指标、审稿风险与 432-episode 三天 pilot 见 [`AdvisorBench_建设性判断Gap审计.md`](AdvisorBench_建设性判断Gap审计.md)。
+
+## 14. 第五轮方向收敛：不测“会不会反驳”，测 agent-first outcome gain
+
+Calibrated Disagreement 作为主方向仍停留在 intervention route：什么时候执行、询问或挑战。它可以约束盲从与 contrarianism，却不能直接回答用户真正关心的“如果我不知道该问什么，agent 是否替我推进了方案”。因此本轮选择 Cognitive Gain 的价值目标，但否决其宽泛名称与定义。
+
+[CollabLLM](https://arxiv.org/abs/2502.00640) 已直接研究从 passive responder 到 active collaborator；[Quantifying Human-AI Synergy](https://openreview.net/forum?id=Yhqa8Ljzrj) 与 [HAI-Eval](https://openreview.net/pdf?id=pKqt8psClA) 已评价 human-AI uplift；[KITE](https://papers.nips.cc/paper_files/paper/2025/hash/975d11c51406cd10be48e47b36fb8698-Abstract-Conference.html) 还用移除 AI 后的人类独立实现隔离 knowledge transfer。因此“有 AI 后方案更好”不是新原语，没有迁移测试时也不能称为 human cognitive gain。
+
+保留的窄候选是 **Agent-Initiated Epistemic Gain**：关键问题或证据需求必须由 agent 在用户 issue-specific 提示前首先提出；贡献必须有外部证据、实际改变方案，并改善程序化终态。核心对照固定同一 backbone、工具和预算，比较 Reactive、Proactive 与 Oracle-cued 三臂；主估计为 `U(P_proactive)-U(P_reactive)`，并用 oracle-cued 臂区分“模型不会做”与“模型会做但没有主动想到”。Calibrated Disagreement 降为 false intervention、plan regression 和 goal-preservation 门。
+
+本轮将 InitiativeGain 提升为优先问题假设，DeltaBench 保留为工程风险更低的备选。先做 144-episode novelty-kill pilot，不立即改写 v0.33 正式 Proposal。若主动增益只是更多 token/search、Reactive simulator 被人为削弱、最终效用仍靠主观 judge、固定 checklist 足够或 CollabLLM 指标已能完整解释结果，则停止该方向。完整近邻、估计量、贯穿例、审稿反对与实验门见 [`CognitiveGain_方向收敛备忘录.md`](CognitiveGain_方向收敛备忘录.md)。

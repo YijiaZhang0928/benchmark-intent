@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-10
-当前版本：v0.38（Broad AdvisorBench gap 否决；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.39（InitiativeGain 方向收敛；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -90,6 +90,17 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 6. “扩大模型规模提升效果”的开放例缺少指标、预算、数据状态与 scaling evidence，不能客观标注 Agent B 更优。正式 item 必须冻结目标和 twin/triad worlds，让正确干预随一个可发现事实改变，并由程序化终态判分。
 7. 该窄候选与 Resolution Routing / OGOR 高度相关，且新近邻使其不再优先于 DeltaBench。只保留 6 family × 3 world × 2 backbone × 4 condition × 3 repeat = 432 episode 的三天 novelty-kill pilot 设计；本轮不运行、不改正式 Proposal。
 8. 完整审计见 `proposal/AdvisorBench_建设性判断Gap审计.md`。当前学术数据库 MCP 未挂载，OpenAlex fallback 因证书链失败；结论为截至 2026-08-10 的 search-bounded audit，但 direct-neighbor evidence 已足以否决 broad pitch。
+
+### 1.0i 2026-08-10：从 Cognitive Gain 收窄到 Agent-Initiated Epistemic Gain
+
+1. 在 Calibrated Disagreement 与 Cognitive Gain 之间，研究价值上选择 B 的收窄版本。A 不再作为主 benchmark，而作为主动干预的 no-harm 约束：supported plan 上的 false intervention、plan regression、goal deviation 与额外成本必须受到惩罚。
+2. 否决 broad `Cognitive Gain` 作为新估计对象。CollabLLM 已直接研究从 passive responder 到 active collaborator，并评价长期任务质量、交互性、用户满意度和时间；Human-AI Synergy 与 HAI-Eval 已测协作 uplift；KITE 已用 AI 移除后的独立实现隔离 human knowledge transfer。因此没有迁移测试时不能把 joint artifact improvement 称为人类认知增益。
+3. 新候选构念为 **Agent-Initiated Epistemic Gain**：agent 在用户给出 issue-specific 提示前首先提出关键问题/假设/证据需求；该贡献有外部证据支持、实际改变方案，并在程序测试、held-out 数据或环境 regret 上改善终态。四环任一缺失都不记主成功。
+4. 核心估计为同一 backbone、工具与总预算下 `Initiative Gain = U(P_proactive) − U(P_reactive)`；同时报告 `Total Assistance Gain = U(P_proactive) − U(P0)`、`Elicitation Gap = U(P_oracle-cued) − U(P_proactive)`、agent-first critical insight、user steering burden 与 false intervention。指标不聚合为补偿式总分。
+5. confirmatory 核心优先选择可执行的 ML 实验设计、软件/系统设计和受控证据综合，不以完全开放 proposal 的 LLM judge 喜好作为主 oracle。每条关键贡献记录 first raiser、证据、方案 uptake 和 outcome ablation。
+6. 最强反对是“CollabLLM 换到科研场景”、主动臂获得更多算力、Reactive 被 simulator 人为绑住、隐藏 issue 清单泄漏答案，以及更强模型通用能力解释。必须用 budget matching、多 user policy/真人 crossover、decoy/组合证据、oracle-cued 能力臂和系统排序重排逐项否决。
+7. 下一轮优先做 2 family × 4 case × 2 backbone × 3 policy × 3 repeat = 144 episode 的 novelty-kill pilot。若增益由额外搜索解释、终态仍依赖主观 judge、simulator 改写即消失、固定 checklist 足够或现有 CollabLLM 指标完整解释结果，则停止方向。
+8. InitiativeGain 成为当前优先问题假设；DeltaBench 保留为结构清楚、工程风险较低的备选。正式 Proposal、schema、DOCX/PDF、HTML 与图仍保持 v0.33 快照，待新候选通过最近邻、oracle、同-backbone 归因、可执行终态和两个月可行性门后再整体换题。完整推理见 `proposal/CognitiveGain_方向收敛备忘录.md`。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 
