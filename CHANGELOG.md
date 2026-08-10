@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.41 MentorBench cognitive augmentation novelty audit - 2026-08-10
+
+- 核对 MentorBench 同名、cognitive augmentation、research mentor、AI tutoring、knowledge transfer 与 human agency 文献；暂未发现精确同名学术 benchmark，但确认 broad mentor/cognitive-augmentation 语义已高度拥挤。
+- 用 CollabLLM、METIS、CoLabScience、KITE、Int-Bench、MathTutorBench/MRBench、HumanAgencyBench 与 Human–AI Synergy 否决“现有 benchmark 只测执行或纠错”的 gap 句。
+- 将构念拆成不可补偿的 Immediate Outcome Gain、AI-removal Independent Transfer Gain 与 Agency/Goal Preservation；明确 personalization 只是策略输入，没有真人迁移不能声称 cognitive gain。
+- 只保留 Learning Without Displacement / Dual-Horizon Mentoring 高风险候选，并冻结同-backbone Executor/Critic/Scaffolded Mentor/Free Policy、真人 transfer 与 appropriation probe 的 novelty-kill 设计。
+- 新增《MentorBench 认知增强 Novelty 审计》源文件与交付摘要；正式 v0.33 Proposal、schema、DOCX/PDF、HTML 和图继续作为旧分支快照。
+
 ## v0.40 outcome-grounded intervention boundary - 2026-08-10
 
 - 接受“不研究批判本身，而研究 intervention boundary”的构念修正；同时否决“已有 benchmark 只分别测 follow/critique/proactivity”的 broad gap 事实前提。

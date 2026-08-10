@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-10
-当前版本：v0.40（Outcome-Grounded Intervention Boundary；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.41（MentorBench cognitive-augmentation novelty audit；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -112,6 +112,17 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 6. 最大 ICLR 反对是“给 Int-Bench/CoLabScience 做 contrast set/response surface”、效用成本由作者任意设定、连续变量只是离散分类插值，以及 plan outcome 仍需 LLM judge。必须用可执行终态、预冻结成本、局部最小反事实、语义等价/无关扰动与最近邻基线增量诊断逐项否决。
 7. 下一步改为 2 family × 7 evidence level × 2 stakes × 2 paraphrase × 2 backbone × 3 repeat = 336 个 free-policy episode；边界附近另做 forced validity、forced route 与 utility-aware router 子集。若没有非平凡 region switch、boundary 排名等同普通 task success、oracle 依赖主观 judge或现有近邻指标完整解释结果，则停止方向。
 8. Outcome-Grounded Intervention Boundary 成为当前优先 novelty-kill 假设，DeltaBench 保留为工程风险较低的备选。正式 Proposal、schema、DOCX/PDF、HTML 与图保持 v0.33 快照；完整推理见 `proposal/InterventionBoundary_方向收敛备忘录.md`。
+
+### 1.0k 2026-08-10：MentorBench cognitive augmentation novelty audit
+
+1. 接受 `MentorBench` 比 AdvisorBench/纯 intervention 更准确地表达研究价值：AI 不只是完成用户任务，而应帮助用户成为更好的思考者。但 `mentor` 是角色比喻，不能直接作为 benchmark estimand。
+2. 否决 broad `MentorBench: Evaluating Cognitive Augmentation in AI Assistants` 作为已成立 novelty。CollabLLM 已测主动发现意图与建议，METIS 已做 idea-to-paper research mentor，CoLabScience 已测科研讨论中的 when/how intervention 与 collaborative utility，KITE 已用 AI 移除后的真人独立实现测 knowledge transfer，Int-Bench 已联合测介入时机、即时成功与新题泛化，HumanAgencyBench 已覆盖 learning 与 agency support。
+3. 构念必须拆成三个不可互相补偿的结果：`Immediate Outcome Gain`、`Independent Transfer Gain after AI removal` 与 `Agency / Goal Preservation`。只测共同产物变好属于 assistance/synergy；没有真人 transfer 不能称 cognitive gain；personalization 只是选择帮助策略的输入条件。
+4. 唯一有条件保留的窄候选是 **Learning Without Displacement / Dual-Horizon Mentoring**：assistant 选择最小替代性干预，同时改善当前研究方案和用户在 AI 移除后的结构迁移，并保留上位目标与决定权。
+5. 识别预测被冻结为同-backbone、同工具、同事实包与同帮助预算下的 `Executor / Critic / Scaffolded Mentor / Free Policy` 随机对照；若即时方案、独立迁移与普通 task success 排名不分离，或收益只是更多 token/信息量，则 mentor 构念被否决。
+6. 确认性 cognitive gain 必须使用真人 pretest、AI-assisted phase、AI-removal transfer case 与 appropriation/agency probe；user simulator 只能用于开发。样本量必须由 pilot 方差和功效模拟决定，不能把 turn 或 rubric leaf 当独立样本。
+7. `MentorBench` 精确名称暂未发现明确同名学术 benchmark，但只标记为暂时可用；`Cognitive Augmentation` 已有直接实验和 benchmark 表述，不建议作为宽泛 subtitle。
+8. 若愿意承担真人实验，高风险题名候选为 `MentorBench: Measuring Learning Without Displacement in AI-Assisted Research Planning`；若两个月可做性优先，Outcome-Grounded Intervention Boundary 保持技术核心，mentoring 仅作为叙事层并加小规模 transfer validation。正式 Proposal、schema、DOCX/PDF、HTML 与图仍保持 v0.33 快照；完整审计见 `proposal/MentorBench_认知增强Novelty审计.md`。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

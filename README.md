@@ -2,7 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（Outcome-Grounded Intervention Boundary v0.40；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（MentorBench novelty audit v0.41；正式 Proposal 仍为 v0.33 快照）
+
+- `deliverables/MentorBench_认知增强Novelty审计.md`：否决 broad “AI 像导师一样提升用户思考”作为新 benchmark 原语；核对 CollabLLM、METIS、CoLabScience、KITE、Int-Bench、tutor benchmarks 与 HumanAgencyBench，只保留同时要求当前方案增益、AI 移除后真人迁移和 agency preservation 的 Learning Without Displacement 高风险候选。
 
 - `deliverables/InterventionBoundary_方向收敛备忘录.md`：接受“研究 intervention boundary 而非持续批判”的构念转向，同时用 Int-Bench、CoLabScience、ProMediate 与 VoI 否决 broad gap；将剩余问题收窄为 evidence/stakes 反事实网格上的 outcome-grounded boundary curve，并冻结 336-episode novelty-kill pilot。
 

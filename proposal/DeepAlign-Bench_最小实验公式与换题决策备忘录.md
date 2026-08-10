@@ -476,3 +476,13 @@ Calibrated Disagreement 作为主方向仍停留在 intervention route：什么�
 保留的窄原语是 **Outcome-Grounded Intervention Boundary**：在同一用户目标和方案上，沿反证强度、downstream stakes 与干预成本构造最小反事实 worlds；动作按 `PRESERVE → INSPECT → SUGGEST → CHALLENGE_REPAIR` 排序；gold action 由 `E[U(outcome)] − intervention cost − goal-deviation cost` 决定。主测的不再是离散 route accuracy，而是 boundary location error、over/under-intervention regret、单调性、无关扰动不变性、终态效用与目标保持。
 
 v0.39 的 Initiative Gain 作为 outcome criterion 与 agent-first 过程归因保留；Calibrated Disagreement 降为 sound-plan no-harm slice。下一步改做 2 family × 7 evidence levels × 2 stakes × 2 paraphrases × 2 backbones × 3 repeats = 336 个 free-policy episode，并在边界附近补 forced validity、forced route 与 utility-aware router 诊断。正式 v0.33 Proposal 仍不换题。完整审计、gap 改写、效用公式、贯穿例和停止门见 [`InterventionBoundary_方向收敛备忘录.md`](InterventionBoundary_方向收敛备忘录.md)。
+
+## 16. 第七轮 novelty 审计：MentorBench 叙事正确，宽构念不新
+
+`MentorBench: Evaluating Cognitive Augmentation in AI Assistants` 比 AdvisorBench 更准确地表达了研究价值：目标不是让 AI 更爱反驳，而是让它帮助用户成为更好的思考者。但 `mentor` 是角色比喻，不是单一 estimand。它至少混合了主动协作、共同产物增益、intervention policy、知识迁移和 human agency。
+
+[CollabLLM](https://arxiv.org/abs/2502.00640) 已研究主动发现意图与提出建议；[METIS](https://arxiv.org/abs/2601.13075) 已把 AI 定义为从 idea 到 paper 的 research mentor；[KITE](https://papers.nips.cc/paper_files/paper/2025/hash/975d11c51406cd10be48e47b36fb8698-Abstract-Conference.html) 已通过 AI 移除后的真人独立实现隔离 knowledge transfer；[Int-Bench](https://arxiv.org/abs/2607.21306) 已联合评价 whether/when/how intervention、即时成功和新题泛化；[HumanAgencyBench](https://arxiv.org/abs/2509.08494) 又覆盖 encourage learning 与 decision agency。因此 broad “像导师一样提升用户思考”是重要议题，但不能作为未被研究的新 benchmark 原语。
+
+唯一有条件保留的窄问题是 **Learning Without Displacement / Dual-Horizon Mentoring**：同一帮助策略必须同时改善当前方案、提升用户在 AI 移除后的结构迁移，并保留用户的上位目标和决定权。三者采用非补偿门，不能让巨大 artifact gain 抵消 transfer harm。这个方向需要真人 pretest、随机 assistance condition、AI-removal transfer case 和 appropriation/agency probe；user simulator 只能做开发检查。
+
+当前不把 MentorBench 替换为正式方向。若愿意承担真人实验，可用 `MentorBench: Measuring Learning Without Displacement in AI-Assisted Research Planning` 做小规模高风险 pilot；两个月可做性优先时，Outcome-Grounded Intervention Boundary 继续作为技术核心，mentoring 仅作为叙事层。完整近邻矩阵、实验流程、混淆控制、审稿反对和停止门见 [`MentorBench_认知增强Novelty审计.md`](MentorBench_认知增强Novelty审计.md)。

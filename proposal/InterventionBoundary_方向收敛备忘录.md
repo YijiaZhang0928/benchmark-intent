@@ -1,5 +1,7 @@
 # Intervention Boundary 方向收敛：构念正确，但 broad gap 不成立
 
+> **v0.41 更新：**`MentorBench` 更适合作为解释“为什么这个问题重要”的叙事层，但 broad cognitive augmentation 已被 CollabLLM、METIS、KITE、Int-Bench 与 HumanAgencyBench 压缩。若把 mentoring 升为主构念，唯一保留的窄问题是同时要求即时方案增益、AI 移除后的真人迁移和 agency preservation 的 **Learning Without Displacement**；完整审计见 [`MentorBench_认知增强Novelty审计.md`](MentorBench_认知增强Novelty审计.md)。在真人 pilot 前，Outcome-Grounded Intervention Boundary 仍是较可执行的技术核心。
+
 ## 结论先行
 
 用户提出的关键转向是正确的：**不要把 benchmark 定义成“agent 会不会批判”，而要研究 intervention policy 在哪里切换。**但下面这句 broad gap 不能直接使用：
