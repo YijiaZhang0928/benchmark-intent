@@ -2,9 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（Objective Repair 解释与 PDR 边界 v0.36；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（OGOR 降级与 DeltaBench 候选 v0.37；正式 Proposal 仍为 v0.33 快照）
 
-- `deliverables/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`：逐项解释合成最小实验能证明与不能证明的内容；将 CFA 重新定位为报告层交互对比，并用流程图、SaaS 贯穿案例和 PDR-Bench 对照表解释 Objective Repair 的任务原语、四项边界与 2-family pilot。
+- `deliverables/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`：逐项解释合成最小实验能证明与不能证明的内容；记录 OGOR 被通用能力解释否决的理由，并将新首选收敛为多 artifact workspace 在单一 delta 后的 dependency-aware selective revalidation。
 
 - `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；DDE 是真实用户主终点，v0.33 为 Phase A 增加 `A_min`、角度/幅度诊断与 task-only non-inferiority/added-value 分层。
 - `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：7 页标准论文 Proposal（满足 ≤10 页约束），保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。

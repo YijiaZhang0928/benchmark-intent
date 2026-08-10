@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-10
-当前版本：v0.36（Objective Repair 任务解释与 PDR 边界；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.37（OGOR 降级与 DeltaBench 候选；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -66,6 +66,19 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 5. 原 DeepAlign 若只增加领域、加入 matched/swapped、三类契约和真人决策效用，能成为有价值的 measurement/construct-validity study，但 task primitive 仍接近 PDR-Bench，作为全新 ICLR benchmark 的 novelty 风险较高。OGOR 的潜在区别来自输入中的“结果—手段”分层、证据条件动作修复、真实执行终态和 literal-vs-outcome 排名反转。
 6. 最大反对仍是“AgentAbstain + safe alternative tool”或“MedRedFlag + τ-bench”。下一轮必须以 decoy、间接证据链、多个等价修复动作、无关扰动、重复运行和跨 family 稳定的 evidence-acquired-but-not-used 失败来否决这两个解释；否则停止该方向。
 7. 本轮仅更新方向备忘录、README、项目记忆和 changelog；正式 Proposal、schema、HTML、DOCX/PDF 和已有主图继续保留为 v0.33 旧分支快照，避免把未过 novelty/power 大门的候选机械同步成正式方案。
+
+### 1.0g 2026-08-10：OGOR 构念否决与 DeltaBench 首选候选
+
+1. 接受用户对 OGOR 的核心反驳：当前“发现用户建议手段错误并换路实现结果”可以由基础模型能力、记忆、批判性推理、工具使用、规划与安全边界共同解释；pilot 未隔离独立 objective-repair construct，也未证明固定 backbone 后存在 OGOR 专用模块的特异增益。“模型是否有主见”不是可操作的科研构念。
+2. 新近邻进一步压缩 OGOR：SycoBench-600 已测错误用户压力下的选择性纠正；Belief-R、BeliefShift 和 EVU 已测证据驱动信念修订与 belief inertia；AgentAbstain、MedRedFlag 和交互执行已覆盖停止、纠错与行动。因此取消 6–8 family OGOR 扩展，2-family pilot 仅保留为 evidence-acquired-but-not-used 诊断切片。
+3. 新 benchmark 候选必须满足：固定 backbone 的模块干预可改善；初始 task success 后仍能暴露新失败；可执行 oracle；相关变化敏感与无关变化不变；结果能指向 router、ledger、memory writer 或 validator 等具体系统对象。
+4. 新首选否决对象为 **DeltaBench / Dependency-Aware Selective Revalidation**：长期 agent 已完成正确的多 artifact workspace 后，注入一个上游事实、来源、约束或需求 delta；agent 需计算 gold dependency graph 上的 affected closure，选择性重验和修补全部下游，同时保持 unaffected nodes 稳定。
+5. 主指标冻结为 Impact Recall、Preservation Precision、Residual Inconsistency、Rework Cost 和非补偿式 Selective Maintenance Success。初始 workspace 对所有系统相同且已通过测试，delta 明确提供，并用独立小测确认理解，避免把初始生成、检索或事实理解混入构念。
+6. 关键同-backbone 对照为 full history、从头重做、普通摘要/向量记忆和显式 evidence–decision–artifact dependency ledger + incremental validator。只有 ledger scaffold 在不泄漏 affected set 的情况下同时提高完整修复与无关保持，才能说明 benchmark 指向 agent state/runtime architecture。
+7. 最近邻包括 STALE 后续、BeliefShift、TRACK、StreamBench、Ledger 和 Apeiron；因此只能检验“跨 workspace、gold dependency graph、单一 delta、affected-closure repair + unaffected preservation”的窄 gap。最大风险是被视为 change-impact analysis/regression testing 的跨域扩展。
+8. 其余顺位：Resolution Routing 第二；Counterfactual Experience Transfer、Open-Set Option Discovery 和 delayed-feedback causal update 暂不优先，分别受 ClarifyBench/When2Tool/AgentAbstain、EvoAgentBench/AFTER/SEAL、Alternative Generation/Mind-ParaWorld 与 ReBel/HiMPO/ERL 压缩。
+9. 下一步只做 3-workspace × 4 delta × 2 backbone × 2 scaffold × 3 repeat = 144 次三天否决实验。若 affected set 可由表面线索直接读出、依赖图无法客观冻结、ledger 泄漏答案、同-backbone 无特异增益或排名等价于普通 task success，则停止 DeltaBench。
+10. 正式 Proposal、schema、DOCX/PDF、HTML 和图继续保留为 v0.33 旧分支快照；v0.37 只更新方向备忘录、README、项目记忆和 changelog。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

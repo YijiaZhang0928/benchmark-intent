@@ -1,7 +1,7 @@
 # DeepAlign-Bench：最小实验、公式边界与换题决策备忘录
 
 日期：2026-08-10
-状态：v0.36 方向解释与决策材料；正式 Proposal 仍保留为 v0.33 旧分支快照。
+状态：v0.37 OGOR 否决与增量维护候选；正式 Proposal 仍保留为 v0.33 旧分支快照。
 
 ## 结论先行
 
@@ -9,7 +9,7 @@
 
 因此，不能把论文继续写成“我们提出一个更严谨的 personalization score”。差值本身并不是错误：随机试验的平均处理效应也是差值。真正的问题是，我们目前相减的是自动评委给报告打出的“适配分”，而不是有绝对含义、能够被外部验证的用户效用；任何事后除法、余弦或乘积都不能修复这个构念问题。
 
-对选题的建议经过第二轮近邻检索和 2-family pilot 后进一步收窄：**停止把个性化差值当作主方法，也不采用宽泛的 Wrong-Problem Bench；当前只保留 Outcome-Grounded Objective Repair（结果可验证的代理目标修复）作为下一轮否决对象。** 它评价 agent 在用户同时给出上位结果和建议手段时，能否让可访问的反证真正改变手段、继续完成上位目标。个性化可以保留为应用切片，但不再是论文标题和唯一主张。正式 Proposal 仍不换题，直到该候选通过“不是 AgentAbstain、MedRedFlag 与 τ-bench 的简单拼接”这一新颖性门。
+对选题的建议经过三轮否决后再次收窄：**停止把个性化差值当作主方法，不采用宽泛的 Wrong-Problem Bench，也不再把 Outcome-Grounded Objective Repair 作为首选正式换题。** OGOR 的 2-family pilot 证明了“取得证据但行动不更新”可以实验化，却没有把该失败从更强基础模型、记忆、批判性推理、工具使用与规划中分离。当前新首选否决对象改为 DeltaBench / Dependency-Aware Selective Revalidation：agent 已完成一个正确的多 artifact workspace 后，单一上游变化是否能触发完整但最小的下游重验与修补。个性化和 OGOR 都只保留为可选应用切片；正式 Proposal 仍不换题，直到 DeltaBench 通过最近邻、oracle、同-backbone 模块增益、统计效力与两个月可做性门。
 
 ## 1. 最小实验究竟怎样做出来的
 
@@ -278,7 +278,7 @@ Wrong-Problem Bench 与 PDR-Bench 的距离明显大于“个性化适配分 vs 
 
 schema 修复后的真实模型结果也重排：Qwen3 8B 的 literal success 为 `3/4`、outcome success 为 `3/4`；Claude Sonnet alias 的 literal success 为 `2/4`、outcome success 为 `4/4`。最有价值的失败是 Qwen 在 SaaS `W-` 已经查询到 `LogLite` 是本周发版依赖后，仍取消 `LogLite`；Claude 则继续检查替代项并取消无依赖、无近期使用的 `StockPic Pro`。这初步表明“获取证据”和“让反证改变行动”是两个可分离阶段。
 
-当前结论是 **小门通过，大门未过**：oracle、成对构造和排序重排具有可行性；广义 Wrong-Problem 新颖性被否决，Objective Repair 仍只是有条件候选。下一轮只做 6–8 个 family 的 novelty-kill pilot：加入 decoy 查询、间接证据链、多个等价修复动作、无关扰动和 3–5 次重复。如果它退化为显眼的安全动作选择，或不能稳定重排系统，就停止换题，回到更一般但可执行的 Evidence-to-Action response surface。
+v0.35 当时的结论是 **小门通过，大门未过**：oracle、成对构造和排序重排具有可行性；广义 Wrong-Problem 新颖性被否决，Objective Repair 只保留为有条件候选。v0.37 的第三轮构念否决进一步认为，扩大到 6–8 family 仍不能自动把 OGOR 从通用能力组合中分离，因此取消该扩展；本节结果只保留为历史 pilot 和 evidence-acquired-but-not-used 诊断证据。
 
 ## 11. 一张图看懂 Outcome-Grounded Objective Repair
 
@@ -350,4 +350,101 @@ Objective Repair 的潜在 novelty 来自换了**任务原语和估计对象**�
 5. 终态可由规则、数据库或模拟环境自动验证；若最终还靠 LLM 判断“这个目标改写是否更好”，构念效度没有改善。
 6. 多个 task family 中都出现“取得正确证据却没有改变行动”的稳定失败，并且 outcome score 能重排按 literal task success 得到的系统排名；否则它只是 [MedRedFlag](https://aclanthology.org/2026.findings-acl.1771/) 式纠错接上 [τ-bench](https://arxiv.org/abs/2406.12045) 式执行。
 
-当前最准确的结论是：**OGOR 比原个性化方向更容易讲出一个明显不同的问题，但还没有被证明足够新。** 它的 2-family pilot 已通过“能否构造、能否程序评分、能否出现排序反转”的小门；下一轮 6–8 family 实验要专门尝试把它否决，而不是直接扩大成正式 benchmark。
+v0.36 当时最准确的结论是：**OGOR 比原个性化方向更容易讲出一个明显不同的问题，但没有被证明足够新。** 它的 2-family pilot 通过了“能否构造、能否程序评分、能否出现排序反转”的小门；v0.37 已接受“仍可由通用能力组合解释”的反驳，不再执行 6–8 family 扩展，也不把它扩大成正式 benchmark。
+
+## 12. 第三轮方向否决：OGOR 仍可还原为通用能力，转向增量维护
+
+### 12.1 为什么用户对 OGOR 的反驳成立
+
+OGOR 当前最致命的问题不是名字，而是**构念没有从通用 agent competence 中分离**。一个更强的基础模型、更完整的记忆、更好的批判性推理、工具使用与规划，确实都可能同时提高“发现用户手段错误”和“换一种手段实现结果”的能力。当前 pilot 没有证明存在一个独立的 objective-repair failure，也没有证明某个 OGOR 专用系统模块在固定 backbone 后仍产生特异增益。
+
+“模型有没有自己的主见”不能作为研究构念：它混合了纠错意愿、证据判断、指令服从、安全边界、授权和规划。更直接的是，[SycoBench-600](https://aclanthology.org/2026.findings-acl.1759/) 已经评价模型面对错误用户压力时是否选择性纠正；[Belief-R](https://aclanthology.org/2024.emnlp-main.586/)、[BeliefShift](https://arxiv.org/abs/2603.23848) 和 [Seeing Isn't Believing](https://aclanthology.org/2026.findings-acl.1884/) 已分别覆盖新证据下的信念修订、长期 evidence-driven revision 和 belief inertia；再加上 AgentAbstain、MedRedFlag 与交互执行环境，OGOR 很容易被解释为这些通用能力的组合切片。
+
+因此更新决定为：**OGOR 不再作为首选正式换题，也不投入原计划的 6–8 family 扩展。** 现有 2-family pilot 保留为 evidence-acquired-but-not-used 的诊断样例，未来可以成为其他 benchmark 的一个 stress slice，但不再承担论文标题与唯一 thesis。
+
+### 12.2 选择新 benchmark 的更严格标准
+
+“更强模型也会更好”本身不能否决所有 benchmark；几乎任何能力都随模型规模改善。真正需要避免的是：除了换更强模型以外，benchmark 没有指出一个可干预的系统对象。新的候选至少要满足：
+
+1. **原子失败可干预**：固定同一 backbone，只增加一个明确模块，例如 router、dependency ledger 或 memory writer，应该产生方向明确的收益。
+2. **与一般 task success 可分离**：先让系统在初始任务上都成功，再通过受控干预暴露新失败；不能只是把任务做得更难。
+3. **可执行 oracle**：主要标签来自预冻结依赖、环境状态、隐藏测试或成本，不靠评委判断“更有主见”。
+4. **必要敏感与必要不变同时存在**：相关变化必须引起正确更新，无关变化不得造成重写或漂移。
+5. **结果能改变系统设计**：失败分析能告诉开发者应该加什么状态、控制器或验证器，而不是只告诉他们换一个更强模型。
+
+### 12.3 新首选：DeltaBench / Dependency-Aware Selective Revalidation
+
+候选问题改为：**一个长期 agent 已经完成了一组相互依赖的交付物后，当一个上游事实、来源、约束或需求发生小变化，它能否只重开真正受影响的决定与 artifact，修复全部下游依赖，同时保持无关部分稳定？**
+
+这把评测单位从“一次生成是否成功”改成“一个已成功项目能否被正确维护”。其核心不是记住新事实，而是执行三件可分离的事：
+
+`发现 delta → 计算 invalidation set → 选择性重查、重算、修补并重新验证`。
+
+例如，一个 research agent 已完成研究报告、证据表、预算表和导师 brief。随后收到一条预注册变更：“支撑核心效果量的论文被撤稿。”正确系统必须：
+
+- 重开所有依赖该论文的主张、数字、图表与建议；
+- 搜索是否存在独立替代证据，并据此重算结论；
+- 同步修改报告、表格和 brief 中受影响的位置；
+- 保持与该证据无关的方法描述、预算、格式和其他来源不变；
+- 通过最终一致性与引用验证。
+
+三个对照 delta 可以共享同一初始 workspace：
+
+| delta 类型 | 正确 invalidation 行为 | 主要失败 |
+|---|---|---|
+| 上游事实变化，影响多个 artifact | 更新完整下游闭包 | 漏改：残留 stale dependency |
+| 只影响一个 leaf | 只改该 leaf | 过度重写：无关内容漂移 |
+| 无关或重复消息 | 不重开任何决定 | false invalidation / 忙碌式修改 |
+| 变化已被另一独立证据覆盖 | 重新验证但可能保持结论 | 把“来源变化”机械等同于“结论必须翻转” |
+
+主要指标不需要 LLM judge：
+
+- `Impact Recall`：gold affected nodes 中被正确重验和修复的比例；
+- `Preservation Precision`：gold unaffected nodes 中保持不变的比例；
+- `Residual Inconsistency`：最终 workspace 仍违反依赖或终态测试的数量；
+- `Rework Cost`：额外工具调用、token、wall time 和不必要 patch；
+- `Selective Maintenance Success`：影响闭包全修复、无严重误改且最终测试通过的 family 比例。
+
+### 12.4 为什么它比 OGOR 更难被还原成“模型更聪明”
+
+实验可以直接隔离增量维护，而不把一般生成能力混进来：所有系统从**同一个已验证正确的初始 workspace**开始；delta 明确提供；另设小测确认模型理解了新事实；主要差异只发生在“哪些旧决定失效、怎样传播、哪些不应动”。同一 backbone 可比较四种 scaffold：
+
+1. 只给完整历史；
+2. 让模型从头重做；
+3. 给普通摘要/向量记忆；
+4. 给显式 evidence–decision–artifact dependency ledger 和增量 validator。
+
+如果第 4 种在相同模型下显著提高 Impact Recall 与 Preservation Precision，并降低 rework，而从头重做虽然终态正确却造成大量无关漂移，就证明 benchmark 指向的是 agent runtime/state architecture，不只是基础模型智力。
+
+这个方向同样只能主张 search-bounded novelty。直接近邻已经很多：
+
+- [STALE 后续工作](https://arxiv.org/abs/2608.01619) 已研究“记忆更新但行为仍使用旧依赖”，但终点主要是个性化回复；
+- [BeliefShift](https://arxiv.org/abs/2603.23848) 和 [TRACK](https://aclanthology.org/2026.eacl-long.273/) 测新证据下的信念修订与冲突知识传播，但不要求维护一个多 artifact workspace；
+- [StreamBench](https://arxiv.org/abs/2604.23283) 测执行中的用户修订、回滚与可逆性，而这里关注项目完成后的稀疏变更、下游影响闭包和无关内容保持；
+- [Ledger](https://arxiv.org/abs/2608.00808) 已证明显式执行状态能改善 coding agent，因此“加 ledger 有用”本身不能作为首次主张；
+- Apeiron 已在 app CI/CD 中测需求漂移后的局部修改，因此单纯“少改代码”也不是空白。
+
+真正需要验证的窄 gap 是：**跨 research / spreadsheet / procurement / software workspace，是否尚无 benchmark 同时冻结 gold dependency graph、注入单一 delta，并联合评价完整下游修复与无关节点保持。** 最大审稿风险是被称为“跨域 change-impact analysis + regression testing”；只有当结果揭示单次 task-success 和普通 memory benchmark 看不到的系统重排，并且 dependency-aware scaffold 在固定 backbone 下有特异增益时，方向才成立。
+
+### 12.5 其余候选的当前排序
+
+| 候选 | 可分离的原子对象 | 当前判断 | 最大风险 |
+|---|---|---|---|
+| **DeltaBench：选择性重验与最小修补** | dependency ledger / invalidation engine / incremental validator | **首选否决对象**；新颖性中等偏高、两个月可做 | 被视为 change-impact analysis 跨域化 |
+| Resolution Routing | 事实、偏好、环境状态、权限与不可判定之间的 route controller | 可做性最高，保留第二顺位 | ClarifyBench、When2Tool、AgentAbstain 等的并集 |
+| Counterfactual Experience Transfer | 经验写入与检索策略；正迁移和负迁移 | 暂不优先 | [EvoAgentBench](https://arxiv.org/abs/2607.05202)、[AFTER](https://arxiv.org/abs/2606.23127)、SEAL 已明显拥挤 |
+| Open-Set Option Discovery | option generator + search/stop policy | 保留探索 | [Alternative Generation](https://aclanthology.org/2025.findings-emnlp.1/) 与 Mind-ParaWorld 压缩 novelty；开放世界 oracle 难 |
+| 延迟反馈下的因果经验更新 | causal memory writer / credit assignment | 理论价值高、两个月不优先 | ReBel、HiMPO、ERL 等方法近邻密集，环境与统计成本高 |
+
+### 12.6 三天最小否决实验
+
+不先重写正式 Proposal。先构造 3 个 gold workspace，每个包含 8–15 个显式 dependency node 和 3–4 个 artifact；每个 workspace 注入 4 类 delta：单 leaf、多下游、无关、被替代证据覆盖。使用 2 个 backbone、`full-history` 与 `dependency-ledger` 两种 scaffold、每格 3 次，共 `3 × 4 × 2 × 2 × 3 = 144` 次运行。
+
+在运行前冻结依赖图、affected closure、允许改动区域、终态测试和成本口径。只回答四个问题：
+
+1. 初始任务都正确时，delta maintenance 是否仍出现大量系统性失败？
+2. `Impact Recall` 与 `Preservation Precision` 是否形成非平凡 trade-off？
+3. dependency ledger 是否在同一 backbone 下带来超过重复噪声的特异增益？
+4. 该排名是否不同于初始 task success、简单事实更新准确率和从头重做成功率？
+
+若模型只靠文件名或显式引用就能完美找出 affected set、gold graph 无法跨领域稳定冻结、ledger 只是向模型泄漏答案，或结果等价于普通回归测试，则立即否决这个方向。

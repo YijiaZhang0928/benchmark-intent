@@ -1,5 +1,14 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.37 OGOR falsification and DeltaBench candidate - 2026-08-10
+
+- 接受 OGOR 可被更强基础模型、记忆、批判性推理、工具使用与规划共同解释的构念反驳；“模型有没有主见”不可操作化，取消原计划 6–8 family 扩展，保留 2-family pilot 仅作 evidence-acquired-but-not-used 诊断。
+- 核对 SycoBench-600、Belief-R、BeliefShift、EVU、STALE 后续、TRACK、StreamBench、Ledger、EvoAgentBench、AFTER 与其他新近邻；进一步排除一般纠错、信念修订、长期记忆、程序经验迁移和可逆执行等宽泛主张。
+- 将新首选否决对象改为 DeltaBench / Dependency-Aware Selective Revalidation：在相同且已验证正确的多 artifact workspace 中注入单一上游 delta，评价 affected closure 的完整修复、unaffected nodes 的稳定保持、残余不一致和重做成本。
+- 冻结 Impact Recall、Preservation Precision、Residual Inconsistency、Rework Cost 与非补偿式 Selective Maintenance Success；同-backbone 比较 full history、从头重做、普通记忆和 dependency ledger + incremental validator，隔离 runtime/state architecture 贡献。
+- 设定 3 workspace × 4 delta × 2 backbone × 2 scaffold × 3 repeat = 144 次三天否决实验；若依赖图泄漏答案、无法客观冻结、同-backbone 无特异收益或仅等价于回归测试，则停止方向。
+- Resolution Routing 保留第二顺位；Counterfactual Experience Transfer、Open-Set Option Discovery 和 delayed-feedback causal update 因最新近邻拥挤暂不优先。正式 v0.33 Proposal、schema、DOCX/PDF、HTML 和图继续保持旧分支快照。
+
 ## v0.36 objective-repair explainer - 2026-08-10
 
 - 将 Outcome-Grounded Objective Repair 明确定义为“已知上位结果与硬约束 + 可能失效的建议手段 + 可发现环境事实 + 授权替代动作 + 程序化终态 oracle”，排除猜测隐含价值、一般问题改写和纯澄清任务。
