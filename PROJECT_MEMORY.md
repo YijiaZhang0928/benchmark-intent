@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-10
-当前版本：v0.35（Objective Repair 否决实验；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.36（Objective Repair 任务解释与 PDR 边界；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -56,6 +56,16 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 6. 四条件判定：可发现真值初步通过；多等价 formulation 仅部分通过（当前通过不评分自由文本规避，未验证开放式语义等价）；环境终态 oracle 通过最小可行性；单变量 pair/系统重排初步通过。样本只有 2 family、每格 1 次，不支持显著性或稳定模型排名。
 7. 最大 ICLR 风险是“AgentAbstain 加安全替代工具”或“MedRedFlag 接 τ-bench”。下一步只做 6–8 family novelty-kill pilot，加入 decoy 查询、间接证据链、多个等价修复动作、无关扰动和 3–5 次重复；若仍退化为显眼二选一，停止该方向并回到 Evidence-to-Action response surface。
 8. 正式 Proposal、schema、HTML、DOCX/PDF 和图仍保持 v0.33 快照。v0.35 只更新方向备忘录、文献全景、pilot、README、项目记忆和 changelog；候选尚未通过 novelty/power 大门，不机械改写旧分支交付物。
+
+### 1.0f 2026-08-10：Objective Repair 任务解释与 PDR-Bench 边界
+
+1. 暂用题名 **Outcome-Grounded Objective Repair (OGOR)**，但它仍是待否决候选。定义进一步限制为：上位结果与硬约束明确可得；用户另给一个可能失效的建议手段；agent 用预注册信息动作取得关键事实，必要时在授权范围内换手段并执行；主 oracle 是终态结果、硬约束、regret 与信息成本。
+2. 明确它不测“猜用户真正意图”、一般问题改写或开放式价值推断。上位结果不清、决定性事实不可发现、没有授权替代动作或终态不可程序验证的 case，不进入 confirmatory repair-and-act 核心。
+3. 用 SaaS 贯穿例固定区分：结果是“节省至少 80 元且不影响发版”，手段是“取消 LogLite”；twin world 只改变 LogLite 是否为发版依赖。支持证据下照原手段执行，反证下改为取消无依赖且未使用的 StockPic Pro；两个 world 的结果约束不变，动作随证据翻转。
+4. 校正对 PDR-Bench 的表述：它已有 10 个领域、50 个任务、25 个真实画像和 250 个查询，不能称为领域覆盖明显狭窄；其集中之处是任务形态均为 task/profile-conditioned personalized deep-research report generation，终点为 P/Q/R 报告评价。
+5. 原 DeepAlign 若只增加领域、加入 matched/swapped、三类契约和真人决策效用，能成为有价值的 measurement/construct-validity study，但 task primitive 仍接近 PDR-Bench，作为全新 ICLR benchmark 的 novelty 风险较高。OGOR 的潜在区别来自输入中的“结果—手段”分层、证据条件动作修复、真实执行终态和 literal-vs-outcome 排名反转。
+6. 最大反对仍是“AgentAbstain + safe alternative tool”或“MedRedFlag + τ-bench”。下一轮必须以 decoy、间接证据链、多个等价修复动作、无关扰动、重复运行和跨 family 稳定的 evidence-acquired-but-not-used 失败来否决这两个解释；否则停止该方向。
+7. 本轮仅更新方向备忘录、README、项目记忆和 changelog；正式 Proposal、schema、HTML、DOCX/PDF 和已有主图继续保留为 v0.33 旧分支快照，避免把未过 novelty/power 大门的候选机械同步成正式方案。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

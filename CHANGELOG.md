@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.36 objective-repair explainer - 2026-08-10
+
+- 将 Outcome-Grounded Objective Repair 明确定义为“已知上位结果与硬约束 + 可能失效的建议手段 + 可发现环境事实 + 授权替代动作 + 程序化终态 oracle”，排除猜测隐含价值、一般问题改写和纯澄清任务。
+- 新增端到端 Mermaid 流程图和 SaaS 贯穿案例：twin world 只改变 LogLite 是否为发版依赖，正确 agent 在反证下保留节省与发版目标、改用 StockPic Pro，而不是机械完成字面请求。
+- 校正 PDR-Bench 定位：其 10 领域、50 任务、25 画像和 250 查询并不构成狭窄领域覆盖；真正集中的地方是个性化 Deep Research 报告生成这一统一任务形态。
+- 判定“增加 task/domain + 更严谨 matched/swapped 个性化”有测量学价值，但 task primitive 仍接近 PDR-Bench，作为全新 ICLR benchmark 的 novelty 较弱；OGOR 的潜在差异来自证据条件动作修复与终态 regret。
+- 保持最大否决风险不变：若扩展后仍可还原为 AgentAbstain 加安全替代工具，或 MedRedFlag 接 τ-bench，则停止 OGOR。正式 Proposal 与全部 v0.33 DOCX/PDF/HTML/图/schema 继续作为旧分支快照。
+
 ## v0.35 objective-repair falsification - 2026-08-10
 
 - 第二轮核对错误前提识别/重定向、需求与隐含目标引出、弃权、安全取舍、目标错配、specification gaming、优化 formulation/equivalence 和可执行 agent benchmark；否决“广义 Wrong-Problem 尚无人测”的叙事。
