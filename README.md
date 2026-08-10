@@ -2,7 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（OGOR 降级与 DeltaBench 候选 v0.37；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（AdvisorBench gap 否决 v0.38；正式 Proposal 仍为 v0.33 快照）
+
+- `deliverables/AdvisorBench_建设性判断Gap审计.md`：核对 HumanAgencyBench、SycoBench-600、Two Axes、AppWorld-UL、RegretBench、CarryOnBench、SoundnessBench 等直接近邻；否决 broad AdvisorBench，只保留 outcome-grounded plan-intervention policy 的窄候选与三天 novelty-kill pilot。
 
 - `deliverables/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`：逐项解释合成最小实验能证明与不能证明的内容；记录 OGOR 被通用能力解释否决的理由，并将新首选收敛为多 artifact workspace 在单一 delta 后的 dependency-aware selective revalidation。
 

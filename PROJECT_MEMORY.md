@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-10
-当前版本：v0.37（OGOR 降级与 DeltaBench 候选；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.38（Broad AdvisorBench gap 否决；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -79,6 +79,17 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 8. 其余顺位：Resolution Routing 第二；Counterfactual Experience Transfer、Open-Set Option Discovery 和 delayed-feedback causal update 暂不优先，分别受 ClarifyBench/When2Tool/AgentAbstain、EvoAgentBench/AFTER/SEAL、Alternative Generation/Mind-ParaWorld 与 ReBel/HiMPO/ERL 压缩。
 9. 下一步只做 3-workspace × 4 delta × 2 backbone × 2 scaffold × 3 repeat = 144 次三天否决实验。若 affected set 可由表面线索直接读出、依赖图无法客观冻结、ledger 泄漏答案、同-backbone 无特异增益或排名等价于普通 task success，则停止 DeltaBench。
 10. 正式 Proposal、schema、DOCX/PDF、HTML 和图继续保留为 v0.33 旧分支快照；v0.37 只更新方向备忘录、README、项目记忆和 changelog。
+
+### 1.0h 2026-08-10：AdvisorBench / 建设性判断 gap 审计
+
+1. 否决 broad pitch “AI 是否知道何时同意、挑战、澄清或 defer”作为新 benchmark 空白。HumanAgencyBench 已把澄清、纠正错误信息、重要决定 defer 和避免价值操纵纳入 human-agency support；SycoBench-600 已测接受正确建议、抵抗错误建议；Two Axes of LLM Abstention 已直接测 false challenge 与 calibrated answer/challenge policy。
+2. AppWorld-UL、RegretBench 和 CarryOnBench 分别占据 clarify/confirm/infeasible 交互、带 regret 的澄清策略和从过度谨慎中恢复 utility；SoundnessBench 已测研究 proposal soundness；错误代码指令工作和 GeneBench-Pro 又覆盖 blind obedience 与 outcome-grounded higher-order judgment。因此“不是 critique，而是 judgment”只能作动机，不能作 novelty。
+3. `AdvisorBench` 名称已被 2026 年 Kaggle advisory-divide benchmark 使用；`InterveneBench` 也已有因果研究设计 benchmark，均不得作为候选名称。`Beyond Obedience` 过于泛化，且错误代码指令工作已直接使用 blind obedience framing。
+4. 唯一保留的窄候选是 outcome-grounded plan-intervention policy：固定目标、约束、方案与授权，在 supported/refuted/underdetermined 三个最小反事实环境中评价 `EXECUTE / CHALLENGE_REPAIR / INSPECT` 路由；主测 false challenge、blind execution、premature commitment、goal deviation、outcome regret 和信息成本。
+5. 构念隔离必须使用 free route、forced validity judgment、forced correct route 和同-backbone router scaffold。只有模型在 forced 条件中“知道且会做”但自由选择 route 失败、router 又产生特异改善，才能主张 intervention-policy gap；否则仍是知识、推理、规划和执行的通用能力组合。
+6. “扩大模型规模提升效果”的开放例缺少指标、预算、数据状态与 scaling evidence，不能客观标注 Agent B 更优。正式 item 必须冻结目标和 twin/triad worlds，让正确干预随一个可发现事实改变，并由程序化终态判分。
+7. 该窄候选与 Resolution Routing / OGOR 高度相关，且新近邻使其不再优先于 DeltaBench。只保留 6 family × 3 world × 2 backbone × 4 condition × 3 repeat = 432 episode 的三天 novelty-kill pilot 设计；本轮不运行、不改正式 Proposal。
+8. 完整审计见 `proposal/AdvisorBench_建设性判断Gap审计.md`。当前学术数据库 MCP 未挂载，OpenAlex fallback 因证书链失败；结论为截至 2026-08-10 的 search-bounded audit，但 direct-neighbor evidence 已足以否决 broad pitch。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

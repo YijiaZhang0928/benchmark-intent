@@ -448,3 +448,13 @@ OGOR 当前最致命的问题不是名字，而是**构念没有从通用 agent 
 4. 该排名是否不同于初始 task success、简单事实更新准确率和从头重做成功率？
 
 若模型只靠文件名或显式引用就能完美找出 affected set、gold graph 无法跨领域稳定冻结、ledger 只是向模型泄漏答案，或结果等价于普通回归测试，则立即否决这个方向。
+
+## 13. 第四轮方向否决：Broad AdvisorBench 已被占据
+
+用户提出的 “AI 是否知道什么时候执行、什么时候帮助用户重新思考” 是重要问题，但截至 2026-08-10，不能再按 broad pitch 声称 benchmark 空白。[HumanAgencyBench](https://arxiv.org/abs/2509.08494) 已把澄清、纠正误导用户的信息、重要决定时 defer 和避免价值操纵组合成 human-agency benchmark；[SycoBench-600](https://aclanthology.org/2026.findings-acl.1759/) 已测接受正确建议与抵抗错误建议；[Two Axes of LLM Abstention](https://arxiv.org/abs/2607.08456) 已直接报告检查前提会造成 57% false challenge，并构造 answer/challenge 的 calibrated policy；[AppWorld-UL](https://arxiv.org/abs/2607.20536)、[RegretBench](https://arxiv.org/abs/2607.21143) 和 [CarryOnBench](https://arxiv.org/abs/2604.27093) 又分别覆盖 clarify/confirm/infeasible routing、带 regret 的澄清策略与过度谨慎后的 utility recovery。
+
+因此，“不是 critique，而是 judgment”只能作为动机，不能作为 novelty。CriticBench 的确评价模型输出/推理的 critique-correct，但最强近邻已经越过 critique，直接研究模型何时应 push back、何时不应乱挑战。`AdvisorBench` 名称也已被一个 2026 年 Kaggle advisory-divide benchmark 使用，不宜复用。
+
+唯一仍可能保留的窄候选是 **outcome-grounded plan-intervention policy**：同一个 user-proposed plan 在 supported / refuted / underdetermined 三个最小反事实 world 中，gold route 分别为 `EXECUTE / CHALLENGE_REPAIR / INSPECT`；主评 false challenge、blind execution、premature commitment、goal deviation 和环境 outcome regret。它必须用 forced validity、forced correct-route 与同-backbone router scaffold 对照，证明模型“知道且会做，但在自由条件下选错干预”，否则仍是知识、推理和执行通用能力的混合切片。
+
+该候选与本项目已有 Resolution Routing / OGOR 高度接近，且最新近邻进一步压缩空间，故只保留为第二梯队否决对象，不替代 DeltaBench。完整逐篇地图、示例重构、指标、审稿风险与 432-episode 三天 pilot 见 [`AdvisorBench_建设性判断Gap审计.md`](AdvisorBench_建设性判断Gap审计.md)。

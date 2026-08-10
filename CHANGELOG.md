@@ -1,5 +1,14 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.38 AdvisorBench gap audit - 2026-08-10
+
+- 否决 “何时同意、挑战、澄清或 defer”作为 broad benchmark 空白：HumanAgencyBench、SycoBench-600、Two Axes of LLM Abstention、AppWorld-UL、RegretBench 和 CarryOnBench 已分别覆盖 human-agency support、选择性纠正、false challenge/calibrated policy、交互路由、澄清 regret 与 utility recovery。
+- 核对 CriticBench、SoundnessBench、AbstentionBench、错误代码指令下的 blind obedience 和 GeneBench-Pro；明确“不是 critique，而是 judgment”是有效动机区分，但不足以构成 novelty。
+- 记录 `AdvisorBench` 已被 2026 年 Kaggle advisory-divide benchmark 使用，`InterveneBench` 也已有因果研究设计 benchmark；不再采用这些候选名。
+- 仅保留窄候选 outcome-grounded plan-intervention policy：同一方案在 supported/refuted/underdetermined 三个 world 中路由到 execute/challenge-repair/inspect，并以 false challenge、blind execution、goal deviation 和环境 outcome regret 判分。
+- 冻结构念隔离对照：free route、forced validity、forced correct route、同-backbone router scaffold；若 forced 条件也失败或 router 无特异增益，则判为通用能力组合。
+- 新增《AdvisorBench / 建设性判断 Gap 审计》和 432-episode 三天 novelty-kill pilot 设计；DeltaBench 保持首选，正式 v0.33 Proposal、schema、DOCX/PDF、HTML 和图继续作为旧分支快照。
+
 ## v0.37 OGOR falsification and DeltaBench candidate - 2026-08-10
 
 - 接受 OGOR 可被更强基础模型、记忆、批判性推理、工具使用与规划共同解释的构念反驳；“模型有没有主见”不可操作化，取消原计划 6–8 family 扩展，保留 2-family pilot 仅作 evidence-acquired-but-not-used 诊断。
