@@ -1,5 +1,14 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.43 DeepAlign measurement-validity reconsideration - 2026-08-11
+
+- 接受继续 DeepAlign 的条件性路径，但否决“把 CFA 归一化成新 personalization 总分”的 framing；CFA 只保留为任务族内用户×生成条件交互对比。
+- 将核心故事改为 personalization measurement validity：联合检验 matched absolute adequacy、双向 counterfactual specificity、相对 task-only incremental benefit、shared-quality non-inferiority、critical boundary 和 target-user outcome validity。
+- specificity/benefit 优先用 pairwise judgment 与 Bradley–Terry/Thurstone mixed model，绝对合格性保留 anchored rubric；发布不可补偿 profile、连续估计和置信区间，不计算补偿式总分。
+- rubric 拆为 shared task validity、user-specific decision fit 与 boundary 三类；冻结 atomic leaf、evidence span、owner/applicability、对称版本、运行前权重和 judge 分模块校准/DIF 审计。
+- 论文生死线改为相对 PDR-style score/CFA 的稳定系统重分类及对真人结果的增量预测效度；若不存在 rank reversal、reclassification 或 criterion-validity gain，则 metrics/rubrics 不足以承担主创新。
+- 新增《DeepAlign-Bench 测量效度重构备忘录》源文件与交付摘要；正式 v0.33 Proposal、schema、DOCX/PDF、HTML 和图继续作为快照，先做 3-family×3-system 的 27-artifact vertical slice。
+
 ## v0.42 beyond-answer cognitive contribution audit - 2026-08-11
 
 - 接受研究问题从 Mentor/Advisor 角色叙事转为“交互式 AI 是否产生超过强独立回答的可归因认知价值”，同时否决 broad “既有评测不测认知增量”的 gap 句。

@@ -3,7 +3,7 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-11
-当前版本：v0.42（Beyond-the-Answer cognitive-contribution novelty audit；正式 Proposal 仍为 v0.33 快照）
+当前版本：v0.43（DeepAlign measurement-validity reconsideration；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -135,6 +135,18 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 7. 最小确认设计为 No Assistance、Strong Standalone、Content-Matched Static/Yoked、Adaptive Interaction 四臂；主任务优先选择有可执行/可演算终点的 ML 实验设计、系统架构和证据综合 micro-world。固定 insight inventory 为首轮可行设计，yoked-pair 作为更强 replication。
 8. `Learning Without Displacement` 降为 outcome/no-harm 维度；personalization 是 moderator；intervention 是 mechanism；beyond-answer causal contrast 才是 estimand。工作题名首选 `Beyond the Answer: Isolating Cognitive Value Added by Interactive AI Assistance`；`Does AI Make Humans Think Better?` 仅作传播型 hook。
 9. 若 token/time/proposition exposure 配平后效应消失、只有 immediate artifact gain 而无 transfer、系统排序不区别于 one-shot quality、或无法构造公平的 content-matched control，则停止该方向。正式 Proposal、schema、DOCX/PDF、HTML 与图继续作为 v0.33 旧分支快照；完整审计见 `proposal/BeyondAnswer_认知贡献Gap审计.md`。
+
+### 1.0m 2026-08-11：DeepAlign 作为测量效度 benchmark 的条件性恢复
+
+1. 接受用户“metrics/rubrics 也可以讲新故事”的假设，但否决继续发明差值归一化总分。DeepAlign 的候选主问题改为：个性化评分是否同时具备绝对合格性、双向反事实特异性、相对 task-only 增量价值、共同质量非劣、边界零违规和真人结果效度。
+2. `CFA_mean` 保留为任务族内用户×生成条件的 interaction contrast，不再承担完整 personalization score。Specificity 与 benefit 优先使用目标用户/校准评委 pairwise judgment 及 Bradley–Terry/Thurstone mixed model；matched absolute adequacy 单独用 anchored criterion-referenced rubric。
+3. 主榜发布不可补偿 Personalization Validity Profile、置信区间和 family-level heterogeneity，不将 adequacy、specificity、benefit、quality 与 boundary 相乘。Eligibility 先由 boundary 和 shared-quality 决定，再报告其余连续估计。
+4. Rubric 拆为 shared task validity、user-specific decision fit 和 boundary；每个 leaf 必须 atomic、可观察、带 evidence span、owner、applicability、对称 A/B 版本、评分锚点和运行前冻结时间。用户权重不得在看输出后生成。
+5. Judge 校准分模块进行：目标用户负责 user fit/benefit，领域专家负责 shared quality，规则/专门标注者负责边界；LLM judge 只有在对应 module 通过 human gold、inter-rater、test-retest、position/length/format/persona-keyword bias 和 DIF 审计后才可扩展。
+6. 新颖性生死线不是 profile 项数，而是四项预注册经验结果：高 absolute score 不必然 specificity；高 specificity 不必然 benefit；PDR-style score 与完整 profile 产生稳定重分类/rank reversal；完整 profile 对真人选择/decision utility 有增量预测和更好校准。
+7. [PDR-Bench](https://arxiv.org/abs/2509.25106) 已建立绝对 P/Q/R，[MyScholarQA](https://aclanthology.org/2026.acl-long.723/) 已证明合成用户/LLM judge 会漏错，[Can LLM be a Personalized Judge?](https://arxiv.org/abs/2406.11657) 与 [SenseJudge](https://aclanthology.org/2026.findings-acl.1084/) 已直接研究 personalized judge。因此论文不能只说 judge 不可靠，必须提供可复用效度分解、系统重分类和 criterion validity。
+8. 下一步只做 3 个真人确认 family × 3 系统 × task-only/Ya/Yb = 27 artifact 的 vertical slice。若用户/专家无法稳定区分三类 construct、重分类来自 bug、或完整 profile 与简单 P-score/CFA 同义，则停止让 metrics/rubrics 承担主创新。
+9. 正式 v0.33 Proposal、schema、HTML、DOCX/PDF 和图暂不重写；详细设计见 `proposal/DeepAlign-Bench_测量效度重构备忘录.md`。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

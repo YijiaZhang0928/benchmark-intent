@@ -2,7 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（Beyond-the-Answer novelty audit v0.42；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（DeepAlign measurement-validity reconsideration v0.43；正式 Proposal 仍为 v0.33 快照）
+
+- `deliverables/DeepAlign-Bench_测量效度重构备忘录.md`：将 DeepAlign 从“新差值公式”重构为 personalization measurement-validity benchmark；冻结 absolute adequacy、bilateral specificity、task-only benefit、shared-quality non-inferiority、boundary 与真人 outcome validity 六层 profile，并设计 3-family vertical slice 否决门。
 
 - `deliverables/BeyondAnswer_认知贡献Gap审计.md`：否决 broad “AI 是否产生认知增量”的 gap，加入 CoCoDial/TATA、matched-content dialogue 与真人 transfer 近邻；只保留 strong standalone + content-matched/yoked control + AI-removal transfer 下的 beyond-answer causal contrast。
 
