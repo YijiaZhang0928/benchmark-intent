@@ -1,5 +1,7 @@
 # MentorBench 认知增强 Novelty 审计：名字可用，宽构念不新
 
+> **v0.42 更新：**2026 年 CoCoDial 已直接提出 Cognitive Collaborative Dialogue，并用认知元素变化评价 cognitive collaboration；TATA 又明确采用 Cognition Gain Index。因此 `MentorBench` 与 broad `Learning Without Displacement` 不再作为优先题名/主 novelty。当前更窄的候选是：在 strong standalone 与 content-matched control 下，识别 adaptive interaction 的 beyond-answer outcome 与 AI-removal transfer；见 [`BeyondAnswer_认知贡献Gap审计.md`](BeyondAnswer_认知贡献Gap审计.md)。
+
 ## 结论先行
 
 `MentorBench: Evaluating Cognitive Augmentation in AI Assistants` 是一个比 `AdvisorBench` 更能解释研究价值的叙事名称，但当前一句话定义仍然**没有通过 benchmark novelty gate**。问题不在于想法不重要，而在于“像导师一样帮助用户变得更好”同时混合了四个已经分别或联合被直接测量的对象：

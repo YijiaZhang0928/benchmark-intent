@@ -1,5 +1,7 @@
 # Cognitive Gain 方向收敛：从“会不会反驳”到“agent 是否真正推进了用户思考”
 
+> **v0.42 更新：**`Cognitive Gain` 已被 CoCoDial/TATA 直接用作多轮 cognitive collaboration 的评价标签；同内容 dialogue-vs-static 的实验原理也已有经典和 LLM 时代先例。当前唯一继续保留的窄版，是在 strong standalone 与 content-matched/yoked control 下识别 adaptive interaction 的 beyond-answer contribution，并用 AI-removal transfer 区分产物增益与人类认知增益；见 [`BeyondAnswer_认知贡献Gap审计.md`](BeyondAnswer_认知贡献Gap审计.md)。
+
 > **v0.40 更新：**本备忘录中的 Agent-Initiated Epistemic Gain 现作为 Outcome-Grounded Intervention Boundary 的 utility 与过程归因层，不再单独承担主 benchmark thesis。主问题改为：同一用户方案随 evidence、stakes 和 intervention cost 变化时，agent 是否在正确位置从 preserve 切换到 inspect、suggest 或 challenge-repair。完整更新见 [`InterventionBoundary_方向收敛备忘录.md`](InterventionBoundary_方向收敛备忘录.md)。
 
 ## 结论先行

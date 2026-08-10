@@ -486,3 +486,11 @@ v0.39 的 Initiative Gain 作为 outcome criterion 与 agent-first 过程归因�
 唯一有条件保留的窄问题是 **Learning Without Displacement / Dual-Horizon Mentoring**：同一帮助策略必须同时改善当前方案、提升用户在 AI 移除后的结构迁移，并保留用户的上位目标和决定权。三者采用非补偿门，不能让巨大 artifact gain 抵消 transfer harm。这个方向需要真人 pretest、随机 assistance condition、AI-removal transfer case 和 appropriation/agency probe；user simulator 只能做开发检查。
 
 当前不把 MentorBench 替换为正式方向。若愿意承担真人实验，可用 `MentorBench: Measuring Learning Without Displacement in AI-Assisted Research Planning` 做小规模高风险 pilot；两个月可做性优先时，Outcome-Grounded Intervention Boundary 继续作为技术核心，mentoring 仅作为叙事层。完整近邻矩阵、实验流程、混淆控制、审稿反对和停止门见 [`MentorBench_认知增强Novelty审计.md`](MentorBench_认知增强Novelty审计.md)。
+
+## 17. 第八轮 novelty 审计：从“认知增益”转向 beyond-answer 因果归因
+
+用户将问题进一步收敛为“AI 是否产生超过执行和回答的独立认知增量”。这比 Mentor/Advisor 角色叙事更接近 estimand，但 broad gap 仍被 human–AI synergy、CollabLLM、KITE、Int-Bench 和真人学习 RCT 覆盖。更危险的是 2026 年 CoCoDial 已直接定义 Cognitive Collaborative Dialogue，并用 cognitive element 的新增与语义变化评价 cognition gain；TATA 又把同一 CGI 指标扩展到工业任务。因此，追踪想法变化、主动共同形成方案或扩大任务范围都不能承担 novelty。
+
+这组近邻也暴露了更干净的测量缺口：semantic movement 不等于 counterfactual value added。当前唯一有条件保留的问题是，在同 backbone、工具、token/time 与实质信息配平后，adaptive interaction 是否相对 strong standalone 和 content-matched/yoked non-interactive control 同时提高当前方案效用与 AI-removal transfer。`Learning Without Displacement` 降为 outcome/no-harm 维度；personalization 是 moderator；intervention policy 是 mechanism；beyond-answer contrast 才是 estimand。
+
+工作题名暂定 `Beyond the Answer: Isolating Cognitive Value Added by Interactive AI Assistance`。最小确认性设计为 No Assistance、Strong Standalone、Content-Matched Static/Yoked、Adaptive Interaction 四臂，并在 AI 移除后使用结构迁移任务。若 token/time/proposition exposure 配平后效应消失，只有当前 artifact gain 而无 transfer，或无法构造公平的 content-matched control，则停止该方向。完整审计见 [`BeyondAnswer_认知贡献Gap审计.md`](BeyondAnswer_认知贡献Gap审计.md)。正式 v0.33 Proposal 与其 DOCX/PDF/HTML/schema/图继续保持旧分支快照。

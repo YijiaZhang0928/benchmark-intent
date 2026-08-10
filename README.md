@@ -2,7 +2,9 @@
 
 > **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
 
-## 当前交付物（MentorBench novelty audit v0.41；正式 Proposal 仍为 v0.33 快照）
+## 当前交付物（Beyond-the-Answer novelty audit v0.42；正式 Proposal 仍为 v0.33 快照）
+
+- `deliverables/BeyondAnswer_认知贡献Gap审计.md`：否决 broad “AI 是否产生认知增量”的 gap，加入 CoCoDial/TATA、matched-content dialogue 与真人 transfer 近邻；只保留 strong standalone + content-matched/yoked control + AI-removal transfer 下的 beyond-answer causal contrast。
 
 - `deliverables/MentorBench_认知增强Novelty审计.md`：否决 broad “AI 像导师一样提升用户思考”作为新 benchmark 原语；核对 CollabLLM、METIS、CoLabScience、KITE、Int-Bench、tutor benchmarks 与 HumanAgencyBench，只保留同时要求当前方案增益、AI 移除后真人迁移和 agency preservation 的 Learning Without Displacement 高风险候选。
 

@@ -1,5 +1,13 @@
 # DeepAlign-Bench 设计迭代记录
 
+## v0.42 beyond-answer cognitive contribution audit - 2026-08-11
+
+- 接受研究问题从 Mentor/Advisor 角色叙事转为“交互式 AI 是否产生超过强独立回答的可归因认知价值”，同时否决 broad “既有评测不测认知增量”的 gap 句。
+- 新增 CoCoDial/TATA 直接近邻：Cognitive Collaborative Dialogue、Cognition Gain Index、8-domain personalized collaboration 已出现；明确 semantic movement 不能替代 counterfactual value added。
+- 核对 human–AI synergy meta-analysis、CollabLLM、KITE、Int-Bench、PNAS 学习 RCT、matched-content dialogue-vs-reading、identical-content chatbot/static study 与 LLM synthesis depth-of-learning 实验；确认 information-matched interaction 本身也不能 claim first。
+- 将候选收窄为 strong standalone + content-matched/yoked non-interactive control + AI-removal transfer 的四臂因果设计，并分离 Total Assistance Gain、Beyond-Answer Outcome Gain 与 Interaction-Attributed Transfer Gain。
+- 新增《Beyond the Answer：AI 认知贡献 Gap 审计》源文件与交付摘要；MentorBench/CognitiveGain/累计方向备忘录同步标注 v0.42 决策。正式 v0.33 Proposal、schema、DOCX/PDF、HTML 和图继续作为旧分支快照。
+
 ## v0.41 MentorBench cognitive augmentation novelty audit - 2026-08-10
 
 - 核对 MentorBench 同名、cognitive augmentation、research mentor、AI tutoring、knowledge transfer 与 human agency 文献；暂未发现精确同名学术 benchmark，但确认 broad mentor/cognitive-augmentation 语义已高度拥挤。

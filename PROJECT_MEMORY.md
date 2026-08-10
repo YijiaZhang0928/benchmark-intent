@@ -2,8 +2,8 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-10
-当前版本：v0.41（MentorBench cognitive-augmentation novelty audit；正式 Proposal 仍为 v0.33 快照）
+最后更新：2026-08-11
+当前版本：v0.42（Beyond-the-Answer cognitive-contribution novelty audit；正式 Proposal 仍为 v0.33 快照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -123,6 +123,18 @@ v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工
 6. 确认性 cognitive gain 必须使用真人 pretest、AI-assisted phase、AI-removal transfer case 与 appropriation/agency probe；user simulator 只能用于开发。样本量必须由 pilot 方差和功效模拟决定，不能把 turn 或 rubric leaf 当独立样本。
 7. `MentorBench` 精确名称暂未发现明确同名学术 benchmark，但只标记为暂时可用；`Cognitive Augmentation` 已有直接实验和 benchmark 表述，不建议作为宽泛 subtitle。
 8. 若愿意承担真人实验，高风险题名候选为 `MentorBench: Measuring Learning Without Displacement in AI-Assisted Research Planning`；若两个月可做性优先，Outcome-Grounded Intervention Boundary 保持技术核心，mentoring 仅作为叙事层并加小规模 transfer validation。正式 Proposal、schema、DOCX/PDF、HTML 与图仍保持 v0.33 快照；完整审计见 `proposal/MentorBench_认知增强Novelty审计.md`。
+
+### 1.0l 2026-08-11：认知贡献必须相对 strong answer 做反事实识别
+
+1. 接受问题重心从“AI 有没有主见/是否像导师”转为“交互式 AI 是否产生超过完整回答本身的可归因价值”。这比 Mentor/Advisor 角色叙事更接近单一 estimand。
+2. 否决 broad gap 句“现有评测只看 AI 输出或协作结果，不测独立认知增量”。Human–AI augmentation/synergy 已有 106 个真人实验的 meta-analysis；CollabLLM 与 Quantifying Human–AI Synergy 已测协作 uplift；KITE、Bastani 等真人 RCT 与 Int-Bench 已测 AI 移除后的迁移、学习伤害和 over-assistance。
+3. 新增最危险近邻 CoCoDial：其已定义 Cognitive Collaborative Dialogue，在 8 个领域、120 个 user profile 上自动生成 1,460 段对话并评价 cognitive collaboration；TATA 又明确使用 Cognition Gain Index，以新增 cognitive element 和 BERTScore 语义变化表示 cognition gain。扩大 domain、追踪认知元素变化或共同形成个性化方案均不再构成 novelty。
+4. 保留的测量缺口是 `semantic movement ≠ counterfactual value added`。用户状态变化必须链接到强非交互回答、信息配平对照、可验证 outcome 和 AI-removal transfer，不能把多轮 verbosity、说服或语义变化直接记成认知增益。
+5. 当前主 RQ：在同 backbone、工具、token/time 和 substantive information 配平后，adaptive interaction 是否在开放式专业长程 formulation task 中，相对 strong standalone 与 content-matched/yoked control 同时改善当前方案和之后独立迁移。
+6. 冻结三个分离 estimand：Total Assistance Gain 仅作 sanity check；Beyond-Answer Outcome Gain 比较 interactive 与 strong standalone；Interaction-Attributed Transfer Gain 比较 interactive 与 content-matched non-interactive control。只有 AI-removal transfer 可称 human cognitive gain。
+7. 最小确认设计为 No Assistance、Strong Standalone、Content-Matched Static/Yoked、Adaptive Interaction 四臂；主任务优先选择有可执行/可演算终点的 ML 实验设计、系统架构和证据综合 micro-world。固定 insight inventory 为首轮可行设计，yoked-pair 作为更强 replication。
+8. `Learning Without Displacement` 降为 outcome/no-harm 维度；personalization 是 moderator；intervention 是 mechanism；beyond-answer causal contrast 才是 estimand。工作题名首选 `Beyond the Answer: Isolating Cognitive Value Added by Interactive AI Assistance`；`Does AI Make Humans Think Better?` 仅作传播型 hook。
+9. 若 token/time/proposition exposure 配平后效应消失、只有 immediate artifact gain 而无 transfer、系统排序不区别于 one-shot quality、或无法构造公平的 content-matched control，则停止该方向。正式 Proposal、schema、DOCX/PDF、HTML 与图继续作为 v0.33 旧分支快照；完整审计见 `proposal/BeyondAnswer_认知贡献Gap审计.md`。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 

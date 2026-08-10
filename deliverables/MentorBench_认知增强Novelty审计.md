@@ -1,5 +1,7 @@
 # MentorBench 认知增强 Novelty 审计
 
+> **v0.42 更新：**CoCoDial/TATA 已直接覆盖 cognitive collaborative dialogue 与 Cognition Gain Index；当前优先候选已进一步收窄为 strong standalone + content-matched control + AI-removal transfer 下的 beyond-answer contribution。见 [`BeyondAnswer_认知贡献Gap审计.md`](BeyondAnswer_认知贡献Gap审计.md)。
+
 ## 一句话结论
 
 **`MentorBench` 作为叙事很准确，但 broad “AI 是否像导师一样提升用户思考”不够新。** CollabLLM 已测主动协作，METIS 已做 research mentor，KITE 已测 AI 移除后的真人知识迁移，Int-Bench 已联合测介入时机、即时成功与新题泛化，HumanAgencyBench 已测学习与 agency 支持。
