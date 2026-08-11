@@ -1,0 +1,58 @@
+{
+  "dimension_weights": {
+    "goal_alignment": 0.4,
+    "content_alignment": 0.3,
+    "presentation_fit": 0.1,
+    "actionability_practicality": 0.2
+  },
+  "criteria": {
+    "goal_alignment": [
+      {
+        "criterion": "敏感项目必须本地存储并可审计",
+        "explanation": "HybridBase支持敏感项目本地存储，且权限审计完整，符合院方对敏感数据的管控要求。",
+        "weight": 0.5
+      },
+      {
+        "criterion": "迁移要先做权限分级再导入内容",
+        "explanation": "HybridBase允许敏感项目本地存储，可实现权限分级后再导入内容，符合团队对数据迁移流程的明确要求。",
+        "weight": 0.5
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "支持SAML和导出功能",
+        "explanation": "CloudNote支持SAML和导出功能，便于团队在需要时将数据迁移至其他系统，符合团队对数据灵活性的需求。",
+        "weight": 0.5
+      },
+      {
+        "criterion": "跨区搜索体验一般",
+        "explanation": "HybridBase跨区搜索体验一般，但其本地存储敏感数据的能力更符合医院对数据安全的要求。",
+        "weight": 0.5
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "语言和结构符合医院科研团队的阅读习惯",
+        "explanation": "方案需以清晰的结构呈现，包括迁移顺序、权限策略、培训与验收指标，便于团队快速理解并执行。",
+        "weight": 0.5
+      },
+      {
+        "criterion": "避免使用复杂术语",
+        "explanation": "方案应避免使用复杂技术术语，以适应团队成员的非IT背景，提高可读性。",
+        "weight": 0.5
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "每周维护投入最好不超过4小时",
+        "explanation": "HybridBase每周维护投入为4小时，符合团队对运维资源的限制要求。",
+        "weight": 0.5
+      },
+      {
+        "criterion": "迁移顺序需先做权限分级再导入内容",
+        "explanation": "迁移顺序应先进行权限分级，再导入内容，以确保数据安全和权限控制的准确性。",
+        "weight": 0.5
+      }
+    ]
+  }
+}

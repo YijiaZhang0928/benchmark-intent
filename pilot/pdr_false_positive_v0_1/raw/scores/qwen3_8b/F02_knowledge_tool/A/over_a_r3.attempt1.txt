@@ -1,0 +1,50 @@
+{
+  "goal_alignment": [
+    {
+      "criterion": "敏感项目必须本地存储并可审计",
+      "analysis": "CloudNote未支持敏感项目本地存储，未满足院方对敏感数据的管控要求。",
+      "target_score": 2
+    },
+    {
+      "criterion": "迁移要先做权限分级再导入内容",
+      "analysis": "方案明确先做权限分级再导入内容，符合团队对数据迁移流程的要求。",
+      "target_score": 8
+    }
+  ],
+  "content_alignment": [
+    {
+      "criterion": "支持SAML和导出功能",
+      "analysis": "CloudNote支持SAML和导出功能，符合团队对数据灵活性的需求。",
+      "target_score": 8
+    },
+    {
+      "criterion": "跨区搜索体验一般",
+      "analysis": "HybridBase跨区搜索体验一般，但其本地存储敏感数据的能力更符合医院对数据安全的要求。",
+      "target_score": 6
+    }
+  ],
+  "presentation_fit": [
+    {
+      "criterion": "语言和结构符合医院科研团队的阅读习惯",
+      "analysis": "方案结构清晰，包含迁移顺序、权限策略、培训与验收指标，便于团队快速理解。",
+      "target_score": 8
+    },
+    {
+      "criterion": "避免使用复杂术语",
+      "analysis": "方案避免使用复杂技术术语，适应团队成员的非IT背景，提高可读性。",
+      "target_score": 8
+    }
+  ],
+  "actionability_practicality": [
+    {
+      "criterion": "每周维护投入最好不超过4小时",
+      "analysis": "CloudNote维护投入低于4小时，符合团队对运维资源的限制要求。",
+      "target_score": 8
+    },
+    {
+      "criterion": "迁移顺序需先做权限分级再导入内容",
+      "analysis": "方案明确先做权限分级再导入内容，确保数据安全和权限控制的准确性。",
+      "target_score": 8
+    }
+  ]
+}

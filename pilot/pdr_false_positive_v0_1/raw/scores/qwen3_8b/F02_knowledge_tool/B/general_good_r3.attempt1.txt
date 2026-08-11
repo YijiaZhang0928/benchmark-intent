@@ -1,0 +1,50 @@
+{
+  "goal_alignment": [
+    {
+      "criterion": "是否能在一周内完成部署并启用",
+      "analysis": "CloudNote 2 天部署，符合一周内启用目标。",
+      "target_score": 10
+    },
+    {
+      "criterion": "是否支持全文检索与异地协作",
+      "analysis": "CloudNote 协作与全文搜索最佳，满足核心需求。",
+      "target_score": 10
+    }
+  ],
+  "content_alignment": [
+    {
+      "criterion": "是否支持批量导出和无本地部署需求",
+      "analysis": "CloudNote 支持导出且无需本地部署，符合内容需求。",
+      "target_score": 10
+    },
+    {
+      "criterion": "是否适合处理 8000 篇 PDF 和 120 个项目文件夹",
+      "analysis": "CloudNote 支持全文搜索，适合处理大量 PDF 和项目文件夹。",
+      "target_score": 9
+    }
+  ],
+  "presentation_fit": [
+    {
+      "criterion": "是否提供简洁的权限策略配置",
+      "analysis": "权限策略配置需在验收时测试，未明确简洁性。",
+      "target_score": 7
+    },
+    {
+      "criterion": "是否提供清晰的迁移顺序说明",
+      "analysis": "迁移顺序需在验收时验证，未明确清晰性。",
+      "target_score": 7
+    }
+  ],
+  "actionability_practicality": [
+    {
+      "criterion": "是否支持快速培训和验收指标明确",
+      "analysis": "培训和验收指标明确，支持快速上手。",
+      "target_score": 10
+    },
+    {
+      "criterion": "是否具备可操作的权限策略和迁移计划",
+      "analysis": "权限策略和迁移计划需在验收时测试，未明确可操作性。",
+      "target_score": 8
+    }
+  ]
+}

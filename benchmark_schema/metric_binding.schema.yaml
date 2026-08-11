@@ -1,5 +1,5 @@
 schema_name: deepalign_metric_binding
-schema_version: 0.33
+schema_version: 0.47
 description: >-
   Auditable map from direct leaf scores to aggregate and derived metrics. A leaf
   may bind to more than one direct metric only when the meanings are explicit;
@@ -146,8 +146,10 @@ reporting_policy:
   vector_angle_is_diagnostic_only: true
   ratio_normalization_by_matched_plus_swapped: prohibited
   distinguish_task_only_noninferiority_from_added_value: true
-  primary_leaderboard_metrics: [DDE, wrong_user_harm, constraint_violation_rate, confidence_calibration]
-  artifact_fit_metrics_are_qualification_or_mediators: true
+  primary_leaderboard_metrics: [delta_a, delta_b, CFA_min, matched_adequacy_min, gain_min, eligibility]
+  downstream_validation_metrics: [DDE, wrong_user_harm, constraint_violation_rate, confidence_calibration]
+  artifact_specificity_profile_is_primary: true
+  downstream_decision_metrics_are_external_validation_subset: true
   publish_specificity_and_task_only_benefit_as_separate_axes: true
   inference_cluster_units: [target_user, task_family]
   compare_only_within_eligible_execution_regime: true

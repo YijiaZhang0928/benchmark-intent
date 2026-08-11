@@ -1,0 +1,58 @@
+{
+  "dimension_weights": {
+    "goal_alignment": 0.35,
+    "content_alignment": 0.3,
+    "presentation_fit": 0.25,
+    "actionability_practicality": 0.1
+  },
+  "criteria": {
+    "goal_alignment": [
+      {
+        "criterion": "确保综述计划与课程论文的格式和字数要求完全对齐",
+        "explanation": "陈若的导师更看重可复核流程而非复杂统计，因此综述计划必须明确结构、检查点和交付物，以确保论文符合课程要求。",
+        "weight": 0.6
+      },
+      {
+        "criterion": "明确研究问题与生产率定义的关联性，避免偏离课程论文的核心目标",
+        "explanation": "综述需聚焦于生产率的定义差异，而非扩展到其他相关概念，以确保内容与陈若的论文目标一致。",
+        "weight": 0.4
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "控制文献纳入范围，避免超出6周内可完成的阅读量",
+        "explanation": "陈若每周仅能投入12小时，因此需优先选择可获得题录和摘要的文献，避免纳入需要全文获取的资料。",
+        "weight": 0.5
+      },
+      {
+        "criterion": "按生产率定义和工作模式分组，确保内容结构清晰且易于管理",
+        "explanation": "按陈若的预期方向分组，有助于她逐步构建综述框架，并在每阶段完成可复用的提取表。",
+        "weight": 0.5
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "使用表格软件完成文献提取和分类，符合陈若的技术能力",
+        "explanation": "陈若不会编程，因此综述计划必须依赖表格软件进行数据整理，确保流程可复核且易于操作。",
+        "weight": 0.6
+      },
+      {
+        ""criterion": "采用颜色标记笔记的方式组织内容，符合陈若的阅读和写作习惯",
+        "explanation": "陈若习惯上午写作，且喜欢用颜色标记笔记，因此综述计划应包含结构化的笔记模板和颜色编码系统。",
+        "weight": 0.4
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "设置每周检查点，确保进度可控且可复用",
+        "explanation": "陈若需要在6周内完成综述，因此计划必须包含明确的每周任务和检查点，以确保按时完成。",
+        "weight": 0.7
+      },
+      {
+        "criterion": "避免承诺元分析，确保方法可行且不超出能力范围",
+        "explanation": "陈若不会编程，因此综述计划应避免复杂统计方法，确保方法可操作且符合其能力边界。",
+        "weight": 0.3
+      }
+    ]
+  }
+}

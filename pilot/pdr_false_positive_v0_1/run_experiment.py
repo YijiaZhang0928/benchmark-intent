@@ -38,6 +38,39 @@ def dump_json(path: Path, payload) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def repair_unescaped_string_quotes(candidate: str) -> str:
+    """Repair a quote inside a JSON string without changing structural quotes."""
+    output = []
+    in_string = False
+    escaped = False
+    for index, char in enumerate(candidate):
+        if escaped:
+            output.append(char)
+            escaped = False
+            continue
+        if char == "\\" and in_string:
+            output.append(char)
+            escaped = True
+            continue
+        if char != '"':
+            output.append(char)
+            continue
+        if not in_string:
+            in_string = True
+            output.append(char)
+            continue
+        look = index + 1
+        while look < len(candidate) and candidate[look].isspace():
+            look += 1
+        next_char = candidate[look] if look < len(candidate) else ""
+        if next_char in {",", "}", "]", ":", ""}:
+            in_string = False
+            output.append(char)
+        else:
+            output.append('\\"')
+    return "".join(output)
+
+
 def extract_json(text: str):
     cleaned = ANSI.sub("", text).strip()
     if "```" in cleaned:
@@ -50,7 +83,10 @@ def extract_json(text: str):
             try:
                 return json.loads(chunk[start : end + 1])
             except json.JSONDecodeError:
-                continue
+                try:
+                    return json.loads(repair_unescaped_string_quotes(chunk[start : end + 1]))
+                except json.JSONDecodeError:
+                    continue
     raise ValueError("No valid JSON object in model response")
 
 
@@ -76,7 +112,7 @@ def call_model(model: str, prompt: str, timeout: int = 480) -> str:
                 "messages": [{"role": "user", "content": prompt}],
                 "stream": False,
                 "think": False,
-                "options": {"temperature": 0.2, "num_ctx": 16384, "num_predict": 3000},
+                "options": {"temperature": 0.2, "num_ctx": 16384, "num_predict": 1400},
             }).encode("utf-8"),
             headers={"Content-Type": "application/json"},
         )
@@ -89,6 +125,13 @@ def safe_call(model: str, prompt: str, path: Path, retries: int = 2):
     if path.exists():
         return load_json(path)
     error = None
+    for existing in sorted(path.parent.glob(path.stem + ".attempt*.txt")):
+        try:
+            payload = extract_json(existing.read_text(encoding="utf-8"))
+            dump_json(path, payload)
+            return payload
+        except (ValueError, json.JSONDecodeError) as exc:
+            error = exc
     for attempt in range(1, retries + 1):
         text = call_model(model, prompt)
         raw_path = path.with_suffix(f".attempt{attempt}.txt")
@@ -224,6 +267,10 @@ def normalize_criteria(payload: dict) -> dict:
         if subtotal <= 0:
             raise ValueError(f"Invalid criterion weights for {dim}")
         for item in items:
+            if "criterion" not in item and '"criterion' in item:
+                item["criterion"] = item.pop('"criterion')
+            if not isinstance(item.get("criterion"), str) or not item["criterion"].strip():
+                raise ValueError(f"Missing criterion text for {dim}")
             item["weight"] = float(item["weight"]) / subtotal
     return payload
 
@@ -234,6 +281,7 @@ def generate_criteria() -> None:
         for uid in ("A", "B"):
             path = RAW / "criteria" / f"{family['family_id']}_{uid}.json"
             if path.exists():
+                dump_json(path, normalize_criteria(load_json(path)))
                 continue
             payload = safe_call("qwen3_8b", criteria_prompt(family, uid), path)
             dump_json(path, normalize_criteria(payload))
@@ -247,7 +295,7 @@ User Persona: {json.dumps(persona, ensure_ascii=False)}
 Article to be Evaluated: {article}
 Evaluation Criteria: {json.dumps(criteria['criteria'], ensure_ascii=False)}
 
-Strictly follow each criterion. For every criterion, analyze strengths and weaknesses using the task, persona and article, then assign an integer score from 0 to 10.
+Strictly follow each criterion. For every criterion, give one evidence-based analysis sentence of at most 35 Chinese characters, then assign an integer score from 0 to 10.
 Scoring rules: 0-2 very poor/almost completely fails; 2-4 poor/partial with major shortcomings; 4-6 average/basically meets; 6-8 good/mostly meets with notable strengths; 8-10 excellent/fully or exceptionally meets.
 Return strict JSON only with this shape:
 {{"goal_alignment":[{{"criterion":"...","analysis":"...","target_score":0}}],"content_alignment":[],"presentation_fit":[],"actionability_practicality":[]}}
@@ -270,7 +318,7 @@ def calculate_score(scored: dict, criteria: dict) -> tuple[float, dict]:
     return total, dim_scores
 
 
-def score(judges: list[str], primary_repeats: int, sensitivity_repeats: int) -> None:
+def score(judges: list[str], candidate_repeats: int, matrix_repeats: int) -> None:
     package = load_json(RAW / "artifacts.json")
     rows = []
     for family in package["families"]:
@@ -278,8 +326,12 @@ def score(judges: list[str], primary_repeats: int, sensitivity_repeats: int) -> 
             criteria = load_json(RAW / "criteria" / f"{family['family_id']}_{uid}.json")
             persona = family["users"][uid]
             for artifact_type, artifact in family["artifacts"].items():
+                candidate_types = {"general_good", f"over_{uid.lower()}"}
+                matrix_types = {"matched_a", "matched_b"}
+                if artifact_type not in candidate_types | matrix_types:
+                    continue
                 for judge in judges:
-                    repeats = primary_repeats if judge == "qwen3_8b" else sensitivity_repeats
+                    repeats = candidate_repeats if artifact_type in candidate_types else matrix_repeats
                     for repeat in range(1, repeats + 1):
                         path = RAW / "scores" / judge / family["family_id"] / uid / f"{artifact_type}_r{repeat}.json"
                         payload = safe_call(
@@ -297,7 +349,7 @@ def score(judges: list[str], primary_repeats: int, sensitivity_repeats: int) -> 
                         print(judge, family["family_id"], uid, artifact_type, repeat, round(total, 3), flush=True)
     RESULTS.mkdir(parents=True, exist_ok=True)
     with (RESULTS / "scores.csv").open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -340,25 +392,25 @@ def analyze() -> None:
         })
     dump_json(RESULTS / "summary.json", {"candidate_tests": summary_rows, "cross_user_matrix": matrix_rows})
     with (RESULTS / "candidate_tests.csv").open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(summary_rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(summary_rows[0]), lineterminator="\n")
         writer.writeheader(); writer.writerows(summary_rows)
     with (RESULTS / "cross_user_matrix.csv").open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(matrix_rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(matrix_rows[0]), lineterminator="\n")
         writer.writeheader(); writer.writerows(matrix_rows)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("stage", choices=["construct", "criteria", "score", "analyze", "all"])
-    parser.add_argument("--judges", default="qwen3_8b,deepseek_r1")
-    parser.add_argument("--primary-repeats", type=int, default=3)
-    parser.add_argument("--sensitivity-repeats", type=int, default=1)
+    parser.add_argument("--judges", default="qwen3_8b")
+    parser.add_argument("--candidate-repeats", type=int, default=3)
+    parser.add_argument("--matrix-repeats", type=int, default=1)
     args = parser.parse_args()
     stages = ["construct", "criteria", "score", "analyze"] if args.stage == "all" else [args.stage]
     for stage in stages:
         if stage == "construct": construct()
         elif stage == "criteria": generate_criteria()
-        elif stage == "score": score(args.judges.split(","), args.primary_repeats, args.sensitivity_repeats)
+        elif stage == "score": score(args.judges.split(","), args.candidate_repeats, args.matrix_repeats)
         else: analyze()
 
 

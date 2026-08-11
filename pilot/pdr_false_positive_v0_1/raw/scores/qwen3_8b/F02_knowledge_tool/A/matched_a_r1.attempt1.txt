@@ -1,0 +1,50 @@
+{
+  "goal_alignment": [
+    {
+      "criterion": "敏感项目必须本地存储并可审计",
+      "analysis": "HybridBase支持敏感项目本地存储并提供审计日志，完全符合院方要求。",
+      "target_score": 10
+    },
+    {
+      "criterion": "迁移要先做权限分级再导入内容",
+      "analysis": "HybridBase允许先进行权限分级再导入内容，符合团队迁移流程要求。",
+      "target_score": 10
+    }
+  ],
+  "content_alignment": [
+    {
+      "criterion": "支持SAML和导出功能",
+      "analysis": "文章未明确HybridBase是否支持SAML和导出功能，信息不足。",
+      "target_score": 4
+    },
+    {
+      "criterion": "跨区搜索体验一般",
+      "analysis": "HybridBase跨区搜索体验一般，但符合院方对敏感数据本地存储的优先要求。",
+      "target_score": 7
+    }
+  ],
+  "presentation_fit": [
+    {
+      "criterion": "语言和结构符合医院科研团队的阅读习惯",
+      "analysis": "方案结构清晰，分阶段迁移、权限策略、培训与验收指标明确，便于团队理解。",
+      "target_score": 9
+    },
+    {
+      "criterion": "避免使用复杂术语",
+      "analysis": "方案中使用了部分技术术语，但整体语言较为易懂，符合非IT背景团队阅读习惯。",
+      "target_score": 8
+    }
+  ],
+  "actionability_practicality": [
+    {
+      "criterion": "每周维护投入最好不超过4小时",
+      "analysis": "HybridBase每周维护投入为4小时，完全符合团队运维资源限制。",
+      "target_score": 10
+    },
+    {
+      "criterion": "迁移顺序需先做权限分级再导入内容",
+      "analysis": "迁移顺序明确先进行权限分级再导入内容，符合团队对数据安全的管理要求。",
+      "target_score": 10
+    }
+  ]
+}

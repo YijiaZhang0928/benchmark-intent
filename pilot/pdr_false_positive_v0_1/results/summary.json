@@ -1,0 +1,124 @@
+{
+  "candidate_tests": [
+    {
+      "family_id": "F02_knowledge_tool",
+      "target_user": "A",
+      "candidate": "general_good",
+      "matched_mean": 8.5,
+      "candidate_mean": 8.533,
+      "gap_from_matched": -0.033,
+      "absolute_high": true,
+      "near_matched": true,
+      "rank_reversal": true,
+      "oracle_failure": "no_counterfactual_specificity"
+    },
+    {
+      "family_id": "F02_knowledge_tool",
+      "target_user": "A",
+      "candidate": "over_a",
+      "matched_mean": 8.5,
+      "candidate_mean": 6.6,
+      "gap_from_matched": 1.9,
+      "absolute_high": true,
+      "near_matched": false,
+      "rank_reversal": false,
+      "oracle_failure": "critical_constraint_failure"
+    },
+    {
+      "family_id": "F02_knowledge_tool",
+      "target_user": "B",
+      "candidate": "general_good",
+      "matched_mean": 9.65,
+      "candidate_mean": 9.42,
+      "gap_from_matched": 0.23,
+      "absolute_high": true,
+      "near_matched": true,
+      "rank_reversal": false,
+      "oracle_failure": "no_counterfactual_specificity"
+    },
+    {
+      "family_id": "F02_knowledge_tool",
+      "target_user": "B",
+      "candidate": "over_b",
+      "matched_mean": 9.65,
+      "candidate_mean": 8.88,
+      "gap_from_matched": 0.77,
+      "absolute_high": true,
+      "near_matched": false,
+      "rank_reversal": false,
+      "oracle_failure": "critical_constraint_failure"
+    },
+    {
+      "family_id": "F04_review_plan",
+      "target_user": "A",
+      "candidate": "general_good",
+      "matched_mean": 10.0,
+      "candidate_mean": 10.0,
+      "gap_from_matched": 0.0,
+      "absolute_high": true,
+      "near_matched": true,
+      "rank_reversal": false,
+      "oracle_failure": "no_counterfactual_specificity"
+    },
+    {
+      "family_id": "F04_review_plan",
+      "target_user": "A",
+      "candidate": "over_a",
+      "matched_mean": 10.0,
+      "candidate_mean": 10.0,
+      "gap_from_matched": 0.0,
+      "absolute_high": true,
+      "near_matched": true,
+      "rank_reversal": false,
+      "oracle_failure": "critical_constraint_failure"
+    },
+    {
+      "family_id": "F04_review_plan",
+      "target_user": "B",
+      "candidate": "general_good",
+      "matched_mean": 10.0,
+      "candidate_mean": 9.877,
+      "gap_from_matched": 0.123,
+      "absolute_high": true,
+      "near_matched": true,
+      "rank_reversal": false,
+      "oracle_failure": "no_counterfactual_specificity"
+    },
+    {
+      "family_id": "F04_review_plan",
+      "target_user": "B",
+      "candidate": "over_b",
+      "matched_mean": 10.0,
+      "candidate_mean": 6.72,
+      "gap_from_matched": 3.28,
+      "absolute_high": true,
+      "near_matched": false,
+      "rank_reversal": false,
+      "oracle_failure": "critical_constraint_failure"
+    }
+  ],
+  "cross_user_matrix": [
+    {
+      "family_id": "F02_knowledge_tool",
+      "P_A_Ya": 8.5,
+      "P_A_Yb": 10.0,
+      "P_B_Yb": 9.65,
+      "P_B_Ya": 2.57,
+      "delta_a": -1.5,
+      "delta_b": 7.08,
+      "CFA_min": -1.5,
+      "A_min": 8.5
+    },
+    {
+      "family_id": "F04_review_plan",
+      "P_A_Ya": 10.0,
+      "P_A_Yb": 10.0,
+      "P_B_Yb": 10.0,
+      "P_B_Ya": 8.465,
+      "delta_a": 0.0,
+      "delta_b": 1.535,
+      "CFA_min": 0.0,
+      "A_min": 10.0
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+family_id,target_user,candidate,matched_mean,candidate_mean,gap_from_matched,absolute_high,near_matched,rank_reversal,oracle_failure
+F02_knowledge_tool,A,general_good,8.5,8.533,-0.033,True,True,True,no_counterfactual_specificity
+F02_knowledge_tool,A,over_a,8.5,6.6,1.9,True,False,False,critical_constraint_failure
+F02_knowledge_tool,B,general_good,9.65,9.42,0.23,True,True,False,no_counterfactual_specificity
+F02_knowledge_tool,B,over_b,9.65,8.88,0.77,True,False,False,critical_constraint_failure
+F04_review_plan,A,general_good,10.0,10.0,0.0,True,True,False,no_counterfactual_specificity
+F04_review_plan,A,over_a,10.0,10.0,0.0,True,True,False,critical_constraint_failure
+F04_review_plan,B,general_good,10.0,9.877,0.123,True,True,False,no_counterfactual_specificity
+F04_review_plan,B,over_b,10.0,6.72,3.28,True,False,False,critical_constraint_failure

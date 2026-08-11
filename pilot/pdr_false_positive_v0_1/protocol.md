@@ -89,3 +89,7 @@ DeepAlign 的正式判定不把这些量重新压成单一总分，而同时要�
 ### 8.3 运行前 controlled-edit 修订（仍未生成 criteria 或 score）
 
 本地构造 v0.2 再次失败：F02 仍显式指出冲突，且四份报告均明显短于预定长度。全部输出移入 `raw/rejected_construction/v0_2/`。为把“反例生成能力”与“评分器能否识别反例”分开，最终 over-personalized 报告改为研究者冻结的 controlled-edit artifacts：共同质量结构、证据边界和交付格式保持完整，只在 `cases.json` 已指定的一个决策节点上替换为错误方向，并加入至少三条 persona 信息。固定文本位于 `curated_over_artifacts.json`；在 criteria/score 产生前提交。论文若使用该实验，必须称为 adversarial construct-validity unit test，不得将其发生率解释为自然 agent 错误率。
+
+### 8.4 评分开始后的资源降级（保留前三个原始分数）
+
+Qwen 对第一个 `general_good` 的三次评分已完成（8.7、8.0、8.9）后，实测每次约90秒；原80调用会超过一小时。为优先得到方向性结果，本轮停止完整协议并降级为：`general_good` 与目标用户自己的 `over` 各三重复；matched-A/matched-B 各单次，用于交叉矩阵；跳过非目标用户的 over；不运行 DeepSeek 敏感性 judge。评分文本仍使用相同 criteria、锚点与阈值，只把 analysis 限为一条短证据句并下调生成 token 上限。该变化发生在看到一个候选的三次高分之后，因此完整报告必须标记为 post-start resource deviation；结果不得用于稳定效应估计，只用于决定是否值得做官方 GPT-5 + 真人复核。

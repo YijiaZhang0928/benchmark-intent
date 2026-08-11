@@ -1,219 +1,137 @@
-# DeepAlign-Bench：个性化 Deep Research 交付物的下游决策效用评测
+# DeepAlign-Bench：个性化 Deep Research 的反事实用户特异性评测
 
 **正式研究 Proposal 精简版**
 
-版本：v0.33 · 2026 年 8 月 9 日
-
-定位：Benchmark / Evaluation / Human-Centered Agents
-
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.33
+版本：v0.47 · 2026 年 8 月 12 日
+定位：Benchmark / Evaluation / Personalized Agents
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.47
 
 ---
 
 ## 摘要
 
-PDR-Bench 已能评价给定 task 与 persona 时，一份 Deep Research 报告是否适合目标用户；[[3]](https://arxiv.org/abs/2509.25106) MyScholarQA 又表明，合成用户与 LLM judge 会漏掉真人指出的细微错误。[[16]](https://aclanthology.org/2026.acl-long.723/) 因此，继续把核心贡献写成“更严格的个性化适配分”与现有工作的感知距离仍然偏小。DeepAlign-Bench v0.32 将研究终点从 **artifact fit** 收敛为 **downstream decision utility**：在任务、证据、预算与报告共同质量受控后，matched personalized report 相对 task-only report 是否降低真实目标用户的决策 regret；wrong-user report 是否造成可测伤害。
+[PDR-Bench](https://arxiv.org/abs/2509.25106) 已经回答了一个重要问题：给定 task 与 persona，一份 Deep Research 报告在目标、内容、呈现和可行动性上有多适合该用户。[[1]](https://arxiv.org/abs/2509.25106) 但单个 user–task pair 的绝对适配分不能识别另一件事：**固定任务、证据、工具和预算，只改变目标用户后，系统是否会做出方向正确且只对该用户必要的改变。** 高质量通用报告可能对两位用户都高分；大量复述 persona 的报告也可能在最终选择上用错关键约束。
 
-Benchmark 采用两阶段协议。Phase A 复用 matched/swapped、must-change/must-hold/must-not、事实可靠性和 JudgeBench，确保进入真人实验的报告在共同质量、长度、关键证据与边界上可比。Phase B 将 task-only、matched、swapped 报告作为三种处理，在反事实等价 task shell 上对真实用户做区组随机、顺序平衡和盲化；主指标为 Downstream Decision Effect（DDE）、WrongUserHarm、硬约束违规与置信度校准。PF/CFA 变为处理操纵检查和中介，不再承担论文主结论。
+DeepAlign-Bench 为同一 task family 构造两位都真实合理、但有 2–4 个决策相关差异的用户 A/B。系统分别生成 matched-A、matched-B 与 task-only 报告，两套用户标准再交叉评价两份 matched 报告。结果不压成总分，而同时报告：双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量/事实 no-harm，以及隐私与权限 no-violation。clarification 不再作为独立论文方向，而成为第三种 user-information channel：`模糊但可执行的 query → agent 可选择澄清 → ledger-bounded 回答 → final report`。
 
-两个月版本先完成 3 个 decision vertical slice；通过 utility validity、task-shell 等价、报告配平和盲化门后，扩到 8–12 个决策 family、约 36–48 名真实目标用户和 2–3 条 agent/报告生成管线。最终样本量由 pilot 方差和最小有意义 regret 改善做功效模拟后冻结。
+2026-08-12 的两-family、本地 Qwen3-8B PDR-compatible 压力测试给出明确 go 信号：general-good 报告 4/4 次与 matched 相差不超过 0.5 分；over-personalized 报告只有 1/4 次接近 matched，因此不支持“普遍误判”的强 claim；两个 family 的 `A_min` 均很高，但 `CFA_min` 分别为 −1.50 与 0.00，证明绝对合格与双向特异性可以脱钩。该结果不是官方 PDR 复现；下一步必须用经授权的 GPT-5 配置和两名盲化人评复现。
 
-## 1. 研究背景与缺口
+## 1. 核心缺口与主张边界
 
-### 1.1 为什么不能继续只做“个性化 vs 适配”
+PDR-Bench 的 P-Score 是 **absolute adaptation**：针对目标用户生成 task/persona-conditioned criteria，再评价这一份报告。DeepAlign 的 estimand 是 **counterfactual user specificity**：同一任务下，A 报告是否更适合 A、B 报告是否更适合 B，而且两个方向都成立。
 
-个性化 agent 已从用户历史扩展到任务对话、工具调用、长程记忆和 GUI 行动。LaMP、PersonaLens、ETAPP、PersonaMem、Mem2ActBench 与 AndroidIntent 分别覆盖个性化生成、任务对话、主动工具、动态画像、记忆到行动和长期 GUI 意图。[[11]](https://aclanthology.org/2024.acl-long.399/)[[12]](https://aclanthology.org/2025.findings-acl.927/)[[13]](https://aclanthology.org/2025.acl-long.1064/)[[14]](https://arxiv.org/abs/2504.14225)[[18]](https://aclanthology.org/2026.acl-long.370/)[[20]](https://aclanthology.org/2026.acl-long.1669/) PDR-Bench 与 PDR 2026 已直接进入个性化 Deep Research。[[3]](https://arxiv.org/abs/2509.25106)[[15]](https://arxiv.org/abs/2605.10530)
+两者不是谁取代谁：
 
-v0.31 用 2×2 matched/swapped 矩阵与 task-only uplift 识别 counterfactual fit，比 absolute adaptation 更严格；但它仍回答“报告更像是为谁写的”。PDR 的 P-Score 与 DeepAlign 的 CFA 在统计对象上不同，在研究终点上却都属于 artifact-level fit。对 agent 后续研究更有价值的 gap 是：**这种 fit 是否对真实用户的行为结果具有代理效度。**
+- absolute adaptation 回答“这份报告对用户 A 是否合适”；
+- counterfactual specificity 回答“如果目标用户从 A 变为 B，交付物是否按预先定义的决策差异改变”；
+- task-only gain 回答“这种改变是否比一份普通高质量报告多带来收益”；
+- no-harm / no-violation 回答“个性化是否破坏共同事实、基本质量或边界”。
 
-### 1.2 为什么不转向澄清、权限、委派或证据抗噪
-
-2026 年最近邻检索显示，这些方向都已形成 benchmark 群：ClarifyBench、HiL-Bench、UserBench 与 ATRBench 覆盖何时提问、选择性升级和未来偏好；[[21]](https://aclanthology.org/2026.findings-acl.2028/)[[22]](https://arxiv.org/abs/2604.09408)[[23]](https://openreview.net/forum?id=iJS7nvlGPd)[[24]](https://arxiv.org/abs/2605.28108) SovereignPA、HAS-Bench、IGAC 与 SentinelAgent 覆盖变化意图、权限图、意图证书和多 agent 委派链；[[25]](https://arxiv.org/abs/2607.05363)[[26]](https://arxiv.org/abs/2607.04329)[[27]](https://arxiv.org/abs/2606.22916)[[28]](https://arxiv.org/abs/2604.02767) MisKnow-Agent、DRNOISE、DeepFact 与 Mr Dre 覆盖误导知识、冲突文档、事实核验和多轮报告修订。[[29]](https://arxiv.org/abs/2607.20891)[[30]](https://arxiv.org/abs/2607.17291)[[31]](https://aclanthology.org/2026.acl-long.1586/)[[32]](https://aclanthology.org/2026.acl-long.609/)
-
-这些模块可成为 DeepAlign 的 stress layer，但不足以作为主方向。TARS 是 `personalized artifact → human task outcome` 的最近邻：18 人 IDE 研究同时测时间、正确性、认知负担和主观适配；[[8]](https://arxiv.org/abs/2607.15948) 但它是单域小样本。截止本轮检索，尚未找到跨领域 benchmark 同时具备真实目标用户、个性化 DR 报告作为随机处理、可验证决策效用主终点和 wrong-user 负对照。该结论应以检索范围限定，不写成无保留“全球首个”。
+论文只主张**最终交付物具有可观察的反事实用户特异性**，不声称模型内部真正理解、在意或关心用户。若真人 decision trial 通过，才附加主张真实决策收益。
 
 ## 2. 研究问题与可证伪假设
 
-### 2.1 研究问题
+- **RQ1 双向特异性：**matched-A 与 matched-B 是否在 A/B 两套冻结标准下同时形成对角优势？
+- **RQ2 绝对充分性：**matched 本身是否合格，并且相对 task-only 有超过噪声的新增收益？
+- **RQ3 渠道鲁棒性：**structured persona、natural history、模糊 query + clarification 是否产生一致的关键决策和不同的系统排序？
+- **RQ4 测量效度：**哪些 general-good、over-personalized、mention-only 和 wrong-user artifacts 会被绝对适配分漏掉，但被交叉矩阵与 hard gate 捕获？
 
-- **RQ1（主问题）：**共同质量受控后，matched report 相对 task-only report 是否降低目标用户的可验证决策 regret？
-- **RQ2（负对照）：**swapped report 是否相对 task-only 增加 regret、硬约束违规或错误置信？
-- **RQ3（代理效度）：**PF/CFA 能否预测 DDE；哪些 family 会出现“看起来更贴合，但决定没有更好”？
-- **RQ4（异质性）：**DDE 是否随任务、用户专业度、风险与 agent 管线发生稳定变化？
+核心假设可被以下结果否证：多数 family 无法构造自然的 paired users；真人无法稳定地区分 matched/swapped；强系统的 `CFA_min` 接近零；general-good 与 over-personalized 反例没有暴露绝对分之外的新错误；或所有差异都由长度、搜索预算和一般报告质量解释。
 
-### 2.2 假设与否证
+## 3. Task family、Case 与元数据
 
-- **H1：**`DDE = Regret_task-only − Regret_matched > 0`。
-- **H2：**`WrongUserHarm = Regret_swapped − Regret_task-only > 0`，或 swapped 提高关键硬约束违规率。
-- **H3：**CFA 与 DDE 正相关但不完全等价；至少存在 CFA 高、DDE 近零或为负的预注册切片。
-- **H4：**证据依赖强、偏好改变可接受行动集合的 family，DDE 高于只改变解释深度或呈现风格的 family。
+一个 task family 不是主题标签，而是一份受控实验蓝图：
 
-若 utility 无法在输出前稳定冻结、等价 task shell 不可交换、报告共同质量无法配平或 DDE 在预注册区间内为零/负，核心主张被削弱。CFA 高而 DDE≈0 时，论文应报告 artifact-fit 代理失效，不能事后把 CFA 改回主终点。
+`固定任务核心 + 固定证据世界 + 固定工具/预算/交付格式 + paired users + channel views + contracts + artifact conditions`
 
-## 3. 两阶段 Benchmark 设计
+每个 family 包含三层元数据：
 
-### 3.1 Phase A：Artifact Qualification
+- **自动 provenance：**来源、日期、文件与证据哈希、环境版本、工具权限、预算、模型和 judge 版本；程序填写、人工抽查。
+- **运行前人工构念：**task stratum、intent、stakes、决策节点、用户差异、must-change/must-hold/must-not、clarify-if-unknown；两人独立标注并仲裁，LLM 只能预填。
+- **运行后观察：**实际难度、失败类型、judge 分歧、运行成本；不得覆盖运行前真值。
 
-每个 family 固定 evidence snapshot、工具、预算和交付格式，构造 task-only、matched、swapped 报告。用户状态只保留 2–4 个有决策后果的差异轴；每条 fact 记录来源、时间、相关性、敏感度与披露权限。
+Persona 从真实任务出发，不从“丰满人物故事”出发。每条用户事实必须说明为什么会改变建议、matched 应采用什么、swapped 哪里不适合、什么共同事实不得改变。优先两位真实用户共享同一任务；次选一位真实用户加经相似参与者验证的最小反事实用户；纯 LLM persona 只用于 smoke test。
 
-运行前冻结四类契约：
+## 4. User-information channels
 
-- **must-change：**不同用户必须改变的建议、取舍、深度或行动；
-- **must-hold：**不应随用户改变的事实、证据与共同质量；
-- **must-not：**不得假设、泄露、越权或迎合的内容；
-- **clarify-if-unknown：**关键信息未知时应提问、给条件分支或明确假设。
+所有渠道共享同一个隐藏 user-state ledger、同一 task、同一 evidence 与同一 final rubric：
 
-TQ、FR、长度、关键证据覆盖、must-hold 与 owner-aware critical must-not 构成不可补偿的报告等价门。PF/CFA 检查 matched 报告是否具有真实用户特异性；`A_min=min(PF_a(Y_a),PF_b(Y_b))` 防止差值很大但 matched 本身仍差。`cos_spec` 只诊断双向是否平衡，必须与 `CFA_min`、效应幅度和 `A_min` 同时看，不能代替它们。相对 task-only 的 `G_a/G_b` 先承担 non-inferiority；只有超过预注册 added-value margin 才称为真实增益。只有报告通过这些门才进入 Phase B；否则比较到的是总体质量，不是个性化处理。
+1. **Structured persona：**直接给字段化约束、偏好、资源和边界。
+2. **Natural history/context：**将同一信息放入自然叙述、历史对话或授权工作区记录。
+3. **Fuzzy query + clarification：**初始 query 足以让 agent 写出通用报告，但隐藏 1–3 个会改变建议的条件；agent 可提问，用户模拟器只能按 ledger 回答，超出范围返回 unknown。
+4. **Task-only：**不给任务相关用户信息，作为一般高质量基线。
 
-### 3.2 Phase B：Decision Trial
+Structured persona 与 natural history 可以进入 cue-equivalence 检验。Clarification 是信息获取过程，额外包含是否发现缺口、问题 precision/recall、轮数、用户负担、隐私和最终利用，因此不与直接提供渠道机械视为等价 cue。
 
-每个参与者在反事实等价 task shell 上接受三种条件之一，跨任务用 Latin square/区组随机平衡：
+## 5. 运行条件与反例校准
 
-1. **task-only：**不使用目标用户状态生成的合格报告；
-2. **matched：**为该目标用户生成的合格报告；
-3. **swapped：**为另一位合理用户生成、但对当前用户错配的合格报告。
+主矩阵至少生成 `Y0`（task-only）、`Ya`（为 A 生成）、`Yb`（为 B 生成）。每套 A/B rubric 同时评价 `Ya`、`Yb` 和 `Y0`，不能为 swapped 临时改标准。
 
-报告的 agent、条件和来源标签盲化。用户在看报告前提交基线决定与置信度，阅读后提交最终决定、置信度与必要理由。不能让同一人重复看到同一具体任务的三个答案；每臂使用等价而非相同的 task shell，以减少学习和 demand characteristics。
+JudgeBench 另放四种预冻结反例：
 
-### 3.3 Utility 与决策环境
+- **general-good：**事实充分、结构清楚，但不实现用户间 must-change；
+- **over-personalized：**反复使用 persona 线索，却故意把一个关键 decision node 用错；
+- **mention-only：**提到了约束，但最终建议没有采用它；
+- **irrelevant/persona-keyword：**加入显眼但任务无关的用户信息，测试关键词奖励和刻板化。
 
-对用户 `u`、family `f`，在生成报告前冻结 `U_uf(d)`。硬约束、可执行环境终态和领域 verifier 优先；用户确认的软权重只在可接受集合内比较方案。任务必须含 evidence-dependent trade-off，不能把答案直接写进 persona。令 `d*` 为证据环境中的最优可接受决策：
+评估必须分开判断 `mentioned → reasoned/planned → adopted in final decision`，不能把“出现相关词”当成“按约束执行”。
 
-- `Regret_uf(d) = U_uf(d*) − U_uf(d)`；
-- `DDE = Regret_task-only − Regret_matched`；
-- `WrongUserHarm = Regret_swapped − Regret_task-only`；
-- 硬约束违规、confidence calibration/Brier 为关键次要终点；
-- 决策时间、交互轮数和认知负担为效率终点。
+## 6. Scoring：不是再算一个不透明差值
 
-PF、CFA、TQ、FR 与 DDE 分栏报告，绝不平均成一个总分。
+令 `PF_i(Y_j)` 表示用户 i 的冻结标准对报告 j 的适配分：
 
-## 4. 数据、系统与范围
+- `Δa = PF_a(Ya) − PF_a(Yb)`
+- `Δb = PF_b(Yb) − PF_b(Ya)`
+- `CFA_min = min(Δa, Δb)`：双向最差特异性；一边为负即失败。
+- `A_min = min(PF_a(Ya), PF_b(Yb))`：防止 matched 绝对很差但差值很大。
+- `Ga = PF_a(Ya) − PF_a(Y0)`，`Gb = PF_b(Yb) − PF_b(Y0)`，`Gain_min=min(Ga,Gb)`：防止只因 swapped 特别差而显得成功。
 
-### 4.1 Task family
+这些仍包含差值，但差值只负责估计**受控条件变化的效应**，不再被误用为完整成功分。PF leaf 先统一到 `[0,1]`，所以 `Δ` 已是量尺范围归一化百分点；再除以 matched+swapped 会在低分区放大噪声。向量夹角只诊断两个方向是否一致，不能保证幅度或绝对合格。
 
-主集只纳入真实决策：用户必须在多个可行方案中依据新证据作选择，且选择存在可验证后果。纯事实问答、只改变语气、没有行动取舍或 utility 只能事后解释的任务删除。
+一个 family 只有同时过五道门才算成功：
 
-先做 3 个 vertical slice，至少覆盖：个人/职业决策、组织采购/合规决策、技术/研究规划决策。每个 family 需要多个等价 task shell、真实用户锚定、冻结 utility、三臂参考报告和可执行/可审计 verifier。通过后扩到 8–12 个 family；不先承诺 24 个 taxonomy 单元。
+1. `Δa`、`Δb` 都超过预注册最小实际重要差异；
+2. `A_min` 过绝对合格线；
+3. `Gain_min` 达到 task-only non-inferiority；只有超过 added-value margin 才称新增收益；
+4. TQ、事实可靠性、must-hold 不下降；
+5. critical must-not、隐私与权限零严重违规。
 
-### 4.2 Agent 与环境
+最终 leaderboard 展示 profile 和 family-level 置信区间，不给一个可补偿总分。统计单位是 task family：permutation 在同一 family 内交换条件标签；bootstrap 每次重抽整个 family；不同用户、seed、judge repeat 和 rubric leaf 不冒充独立样本。
 
-首轮只比较 2–3 条报告生成管线：一个商业 Deep Research 产品、一个受控搜索/工具 harness、一个可复现开源 DRA。E1 frozen harness 是主要可比环境；live product 单独作外部效度。长程状态、动态更新、权限和证据污染只在少量适用 family 做单因素 stress，不与 DDE 竞争主贡献。
+## 7. 最小实验结果与当前证据等级
 
-### 4.3 真人样本与统计
+| 候选 | absolute-high | 与 matched ≤0.5 | 解释 |
+|---|---:|---:|---|
+| general-good | 4/4 | 4/4 | 强烈支持 absolute fit 不能单独证明 specificity |
+| over-personalized | 4/4 | 1/4 | 不支持“普遍近 matched”；提示 critical error 可能被平均补偿 |
 
-预计约 36–48 名目标用户，但最终样本量必须在 3-family pilot 后冻结。功效模拟输入包括 user/family cluster variance、within-user correlation、最小有意义 regret 改善、流失率和主要终点策略。确认性分析采用 design-based contrasts、user/family cluster bootstrap 与预注册混合效应模型；同一人的重复决策、同一 family 的多份报告和 rubric leaves 都不能当独立样本。
+交叉矩阵中，F02 的 `A_min=8.50, CFA_min=−1.50`；F04 的 `A_min=10.00, CFA_min=0.00`。F02-A 还出现 wrong-user 报告 10.0、matched 8.5：judge 把比较表中“提到本地存储”误当成最终推荐采用本地部署。F04-A 的多类报告全部 10.0，显示高分饱和。
 
-## 5. Rubric、Judge 与数据质量
+限制：只有两个合成 family、一个本地 Qwen3-8B judge；正式评分开始后因耗时减少了 judge 和重复。故本实验只支持“DeepAlign 设计值得扩展”，不能支持“官方 PDR-Bench 已被证明误判”。
 
-Metadata-driven Rubric Compiler 继续组合 core、personalization、intent、deliverable、operator 和 risk module；固定的是 node/leaf schema、适用条件、锚点和 metric binding，而不是所有任务共用同一表。相对 PDR 的作用变为：证明报告处理在共同质量上配平、在用户条件上有区分力，并诊断哪种 artifact 改变带来或没有带来 DDE。
+## 8. 预期贡献与最近邻边界
 
-Judge 采用确定性 verifier → 证据 verifier → 冻结 rubric judge → 目标用户/领域专家复核。JudgeBench 继续审计位置、长度、格式、persona 关键词、wrong-user、隐私和正确弃权。MyScholarQA 与 Lost in Simulation 都提示，模拟用户不能替代真人主终点。[[16]](https://aclanthology.org/2026.acl-long.723/)[[33]](https://arxiv.org/abs/2601.17087)
+1. 固定 task/evidence/resources 的 paired-user 2×2 交叉协议，识别最终交付物的反事实用户特异性；
+2. specificity × absolute adequacy × task-only benefit × no-harm × no-violation 的非补偿 profile；
+3. 反例驱动的 personalization JudgeBench，专门测 general-good、over-personalized 与 mention–adoption 绑定失败；
+4. 同一 ledger 下的直接 persona、自然历史和 clarification 渠道对照；
+5. 可选真人 decision validation，检查 artifact 指标何时能预测实际采用与 regret。
 
-## 6. 预期贡献
+Clarification 不是 novelty 主张。[IDRBench](https://arxiv.org/abs/2601.06676)、[IntentRL](https://arxiv.org/abs/2602.03468)、[DiscoBench](https://arxiv.org/abs/2606.27669) 与 [G-STEER](https://arxiv.org/abs/2608.05876) 已覆盖 interactive Deep Research、主动澄清、搜索歧义恢复和个性化 Retrieve/Ask/Stop。[[2]](https://arxiv.org/abs/2601.06676) [[3]](https://arxiv.org/abs/2602.03468) [[4]](https://arxiv.org/abs/2606.27669) [[5]](https://arxiv.org/abs/2608.05876) DeepAlign 的新意必须来自 paired-user estimand、非补偿测量和能改变系统结论的 judge stress test，而不是“我们也允许 agent 提问”。
 
-1. **Downstream Decision Effect protocol：**把个性化研究交付物作为随机处理，以真实用户的可验证 decision regret 为终点；
-2. **wrong-user negative control：**区分一般高质量帮助与用户特异性收益/伤害；
-3. **两阶段 benchmark：**Phase A 质量与个性化 qualification，Phase B 真人 decision trial；
-4. **decision environment + utility verifier：**让个性化效用不再等于主观满意度；
-5. **代理效度分析：**直接检验 PF/CFA 何时能、何时不能预测真实决策收益。
+## 9. 五天冻结与执行计划
 
-PDR-Bench 问“这份报告是否适合你”；DeepAlign-Bench 问“这份报告是否让你做出了更好的决定”。Atlas、Rubric Compiler、JudgeBench、长程和安全模块是支持这个问题的基础设施，不再与核心贡献并列。
+[ICLR 2027 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines) 给出的摘要截止为 2026-09-11 AOE、全文截止为 2026-09-16 AOE。[[6]](https://iclr.cc/Conferences/2027/AuthorGuidelines) 从 2026-08-12 起约剩 30/35 天。因此最迟应在 8 月 17 日冻结 thesis、最近邻边界、主指标 profile、family 原语和 go/no-go 证据。
 
-## 7. Go / No-Go 与八周计划
+五天内必须完成：现有 artifacts 的 GPT-5 + 两名盲化人评复现；补到至少 3 个 family；确认至少 2 个 family 的 paired-user 真值稳定；冻结主统计和反例定义。若失败，应停止“PDR false-positive”强 claim，改做更窄的 personalization judge validity，或在 8 月 17 日前换题。
 
-### 7.1 Go / No-Go
-
-- 至少 2/3 vertical slice 能在输出前冻结可审计 utility，并通过等价 task-shell 和盲化检查；
-- matched/task-only/swapped 报告通过共同质量配平，且 Phase A 双向差值超过预注册 SESOI、`A_min` 过绝对适配线、task-only non-inferiority 成立；
-- pilot 后完成功效模拟并冻结样本量、最小有意义效应和主要终点；
-- 主实验 DDE 与 WrongUserHarm 达到预注册证据门，或产生明确的 CFA→DDE 代理失效结论；
-- 伦理审查/豁免判断、同意、隐私和退出流程在招募前完成。
-
-### 7.2 八周计划
-
-| 周 | 主要产出 | 失败时收缩 |
-|---|---|---|
-| 1 | 3 个 decision vertical slice、utility schema、task-shell 规则 | 删除不可验证或答案被 persona 泄漏的任务 |
-| 2 | 三臂参考报告、Phase A 配平、盲化与 consent 流程 | 减少交付类型和 agent |
-| 3 | 小规模真人 pilot；方差、顺序效应、流失估计 | 修改设计，不扩 family |
-| 4 | 功效模拟；冻结 8–12 family、样本与预注册 | 若功效不足，减少系统/次要终点 |
-| 5–6 | Phase A agent 运行与 Phase B 真人主实验 | 暂停 stress layer，保护主终点 |
-| 7 | DDE、错配伤害、代理效度与鲁棒性分析 | 删除未支持的机制支线 |
-| 8 | 结果冻结、复现、全文与匿名材料 | 不再新增 taxonomy 或 agent |
-
-## 8. 主要评审风险
-
-- **“只是满意度用户研究。”** 主终点是预冻结 regret、硬约束和校准，不是主观 fit。
-- **“matched 报告总体更好。”** Phase A 强制 TQ/FR/长度/证据/边界配平；task-only 是质量基线，swapped 是用户特异性负对照。
-- **“答案被写进 persona。”** 用户只冻结偏好和约束，最优行动仍必须依赖新证据与 trade-off。
-- **“重复任务有学习效应。”** 使用等价 task shell、顺序平衡、盲标签和不同具体答案。
-- **“样本太小。”** pilot 后功效模拟；优先减少 agent 和支线，不用 LLM judge 冒充真人功效。
-- **“更像 CHI 而非 agent benchmark。”** 发布可复现的报告生成条件、decision environment、utility verifier、Phase A qualification 和 agent-level DDE 榜。
+之后六周：第 1 周冻结 3 个完整 family 与人评；第 2–3 周扩到 12–24 family 并跑 2–3 个系统；第 4 周完成 judge calibration 和 family-level 统计；第 5 周补少量 decision/channel validation；第 6 周冻结结果、论文、主图和匿名 artifact。
 
 ## 参考文献
 
-[1] [OpenCompass](https://arxiv.org/abs/2605.19276). 2026.
-
-[2] [EvalScope documentation](https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html). 2026.
-
-[3] [Towards Personalized Deep Research: Benchmarks and Evaluations](https://arxiv.org/abs/2509.25106). ICLR 2026.
-
-[4] [LiveResearchBench](https://arxiv.org/abs/2510.14240). 2025.
-
-[5] [PaperBench](https://openai.com/index/paperbench/). 2025.
-
-[6] [Setoka](https://arxiv.org/abs/2607.27056). 2026.
-
-[7] [PersonaTrail](https://arxiv.org/abs/2607.20482). 2026.
-
-[8] [TARS](https://arxiv.org/abs/2607.15948). 2026.
-
-[9] [Persistent Sycophancy in Stateful Personal Agents](https://arxiv.org/abs/2607.10526). 2026.
-
-[10] [APeB](https://arxiv.org/abs/2607.03162). 2026.
-
-[11] [LaMP](https://aclanthology.org/2024.acl-long.399/). 2024.
-
-[12] [PersonaLens](https://aclanthology.org/2025.findings-acl.927/). 2025.
-
-[13] [ETAPP](https://aclanthology.org/2025.acl-long.1064/). 2025.
-
-[14] [PersonaMem](https://arxiv.org/abs/2504.14225). 2025.
-
-[15] [Personalized Deep Research](https://arxiv.org/abs/2605.10530). 2026.
-
-[16] [Language Models Don't Know What You Want / MyScholarQA](https://aclanthology.org/2026.acl-long.723/). 2026.
-
-[17] [Learning Personalized Agents from Human Feedback](https://arxiv.org/abs/2602.16173). 2026.
-
-[18] [Mem2ActBench](https://aclanthology.org/2026.acl-long.370/). 2026.
-
-[19] [PS-Bench](https://aclanthology.org/2026.acl-long.1260/). 2026.
-
-[20] [AndroidIntent / PersonalAlign](https://aclanthology.org/2026.acl-long.1669/). 2026.
-
-[21] [ClarifyBench](https://aclanthology.org/2026.findings-acl.2028/). 2026.
-
-[22] [HiL-Bench](https://arxiv.org/abs/2604.09408). 2026.
-
-[23] [UserBench](https://openreview.net/forum?id=iJS7nvlGPd). 2026.
-
-[24] [ATRBench](https://arxiv.org/abs/2605.28108). 2026.
-
-[25] [SovereignPA-Bench](https://arxiv.org/abs/2607.05363). 2026.
-
-[26] [HAS-Bench](https://arxiv.org/abs/2607.04329). 2026.
-
-[27] [Intent-Governed Tool Authorization](https://arxiv.org/abs/2606.22916). 2026.
-
-[28] [SentinelAgent / DelegationBench](https://arxiv.org/abs/2604.02767). 2026.
-
-[29] [MisKnow-Agent](https://arxiv.org/abs/2607.20891). 2026.
-
-[30] [DRNOISE](https://arxiv.org/abs/2607.17291). 2026.
-
-[31] [DeepFact](https://aclanthology.org/2026.acl-long.1586/). 2026.
-
-[32] [Mr Dre](https://aclanthology.org/2026.acl-long.609/). 2026.
-
-[33] [Lost in Simulation](https://arxiv.org/abs/2601.17087). 2026.
+[1] [Towards Personalized Deep Research: Benchmarks and Evaluations](https://arxiv.org/abs/2509.25106). ICLR 2026.
+[2] [IDRBench](https://arxiv.org/abs/2601.06676). 2026.
+[3] [IntentRL](https://arxiv.org/abs/2602.03468). 2026.
+[4] [DiscoBench](https://arxiv.org/abs/2606.27669). 2026.
+[5] [G-STEER](https://arxiv.org/abs/2608.05876). 2026.
+[6] [ICLR 2027 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines). 2026.

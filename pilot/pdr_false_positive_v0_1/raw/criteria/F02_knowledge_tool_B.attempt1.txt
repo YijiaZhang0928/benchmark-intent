@@ -1,0 +1,58 @@
+{
+  "dimension_weights": {
+    "goal_alignment": 0.4,
+    "content_alignment": 0.3,
+    "presentation_fit": 0.1,
+    "actionability_practicality": 0.2
+  },
+  "criteria": {
+    "goal_alignment": [
+      {
+        "criterion": "是否能在一周内完成部署并启用",
+        "explanation": "何川团队希望在一周内开始使用知识管理方案，因此部署速度是首要考量。CloudNote 2 天可启用，符合时间要求，而 VaultLab 需要 4 周部署，HybridBase 部署 2 周，但需每周维护，因此 CloudNote 是最符合目标的选项。",
+        "weight": 0.5
+      },
+      {
+        "criterion": "是否支持全文检索与异地协作",
+        "explanation": "团队最痛点是新人找不到旧实验和异地协作慢，因此全文检索和协作能力是关键。CloudNote 在协作和全文搜索方面表现最佳，符合团队的核心需求。",
+        "weight": 0.5
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "是否支持批量导出和无本地部署需求",
+        "explanation": "团队无需本地部署，但必须能批量导出数据。CloudNote 支持导出，而 VaultLab 和 HybridBase 不支持，因此 CloudNote 更符合内容需求。",
+        "weight": 0.6
+      },
+      {
+        "criterion": "是否适合处理 8000 篇 PDF 和 120 个项目文件夹",
+        "explanation": "CloudNote 支持全文搜索和协作，适合处理大量 PDF 和项目文件夹，而 HybridBase 跨区搜索体验一般，VaultLab 移动端较弱，因此 CloudNote 更适合内容结构。",
+        "weight": 0.4
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "是否提供简洁的权限策略配置",
+        "explanation": "团队需要权限最小化策略，CloudNote 支持 SAML 和导出，但权限策略配置是否简洁未明确，需在验收时重点测试。",
+        "weight": 0.5
+      },
+      {
+        "criterion": "是否提供清晰的迁移顺序说明",
+        "explanation": "团队需要明确的迁移顺序，CloudNote 支持导出，但迁移顺序是否清晰需在验收时验证。",
+        "weight": 0.5
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "是否支持快速培训和验收指标明确",
+        "explanation": "团队只有两次各 90 分钟的集中培训时间，因此方案需提供清晰的培训流程和验收指标，CloudNote 支持导出和权限最小化，可作为验收项。",
+        "weight": 0.6
+      },
+      {
+        "criterion": "是否具备可操作的权限策略和迁移计划",
+        "explanation": "团队需要权限最小化和迁移顺序，CloudNote 支持导出和 SAML，但需在验收时测试权限策略和迁移计划的可行性。",
+        "weight": 0.4
+      }
+    ]
+  }
+}

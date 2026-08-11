@@ -1,0 +1,50 @@
+{
+  "goal_alignment": [
+    {
+      "criterion": "确保综述协议符合预注册和发表要求，明确研究问题和纳排标准",
+      "analysis": "方案明确研究问题和纳排标准，符合预注册和发表要求。",
+      "target_score": 10
+    },
+    {
+      "criterion": "在可比子集上尝试元分析与异质性分析，以符合其决策轴中的优先方向",
+      "analysis": "方案未尝试元分析，未符合优先方向。",
+      "target_score": 2
+    }
+  ],
+  "content_alignment": [
+    {
+      "criterion": "聚焦生产率的定义（提交量、交付周期、缺陷率、自评专注度）并明确纳排标准",
+      "analysis": "方案明确生产率定义和纳排标准，内容聚焦。",
+      "target_score": 10
+    },
+    {
+      "criterion": "保留代码、排除日志和敏感性分析产物，以符合其决策轴中的偏好",
+      "analysis": "方案未保留代码和敏感性分析产物，未符合偏好。",
+      "target_score": 2
+    }
+  ],
+  "presentation_fit": [
+    {
+      "criterion": "采用系统综述结构，分层叙述非可换算证据，以符合其偏好",
+      "analysis": "方案采用系统综述结构，分层叙述非可换算证据。",
+      "target_score": 10
+    },
+    {
+      "criterion": "使用R语言进行效应量换算和敏感性分析，以符合其技术背景",
+      "analysis": "方案未使用R语言进行效应量换算和敏感性分析。",
+      "target_score": 2
+    }
+  ],
+  "actionability_practicality": [
+    {
+      "criterion": "在6周内完成首轮结果，不依赖缺失数据获取，以符合时间约束",
+      "analysis": "方案在6周内完成首轮结果，不依赖缺失数据获取。",
+      "target_score": 10
+    },
+    {
+      "criterion": "明确偏倚处理策略，以提高综述的可信度和可重复性",
+      "analysis": "方案未明确偏倚处理策略，未提高可信度和可重复性。",
+      "target_score": 2
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.33
+schema_version: 0.47
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -115,7 +115,7 @@ user_states:
       non_stereotyping: boolean
 
 counterfactual_design:
-  estimand: artifact_qualification_counterfactual_fit
+  estimand: counterfactual_user_specificity_profile
   family_key: string
   counterfactual_partner_id: string
   cross_scoring_matrix_id: string
@@ -154,7 +154,7 @@ downstream_decision_design:
   consent_or_ethics_record_id: string
 
 signal_condition:
-  channel: [task_only, structured_persona, natural_history, clarification, behavior_trace, private_workspace, organizational_context, dynamic_feedback]
+  channel: [task_only, structured_persona, natural_history, fuzzy_query_clarification, behavior_trace, private_workspace, organizational_context, dynamic_feedback]
   view_id: string
   latent_user_state_id: string_or_null
   semantic_equivalence_group: string_or_null
@@ -164,6 +164,17 @@ signal_condition:
   visibility: [prompt, retrieved, tool_accessible, hidden_control]
   reliability: [reliable, noisy, conflicting]
   temporal_status: [current, stale, mixed]
+  fuzzy_query_clarification:
+    applicable: boolean
+    initial_query_id: string_or_null
+    query_is_generally_executable: boolean_or_null
+    hidden_decision_relevant_fact_ids: list
+    max_clarification_turns: integer_or_null
+    simulator_policy: [not_applicable, ledger_bounded_unknown_outside_ledger, live_target_user]
+    no_ask_control_case_id: string_or_null
+    structured_persona_oracle_case_id: string_or_null
+    required_node_ids: list
+    prohibited_sensitive_question_ids: list
 
 agent:
   system_id: string
@@ -255,6 +266,17 @@ post_run_only:
   position_order: [AB, BA, not_applicable]
   scores: object
   confidence: number
+  artifact_stress_type: [ordinary_system_output, matched_reference, swapped_reference, general_good, over_personalized, mention_only, irrelevant_persona_keyword]
+  clarification_trace:
+    asked: boolean_or_null
+    turns: integer_or_null
+    asked_node_ids: list
+    answered_node_ids: list
+    planned_node_ids: list
+    adopted_in_final_node_ids: list
+    unnecessary_question_ids: list
+    privacy_or_boundary_violation_ids: list
+    user_burden_score: number_or_null
   decision_trial_outcome:
     participant_id: string_or_null
     task_shell_id: string_or_null

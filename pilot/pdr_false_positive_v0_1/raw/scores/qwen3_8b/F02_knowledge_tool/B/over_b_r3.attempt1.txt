@@ -1,0 +1,50 @@
+{
+  "goal_alignment": [
+    {
+      "criterion": "是否能在一周内完成部署并启用",
+      "analysis": "HybridBase部署需2周，CloudNote 2天启用，最符合上线速度优先需求。",
+      "target_score": 8
+    },
+    {
+      "criterion": "是否支持全文检索与异地协作",
+      "analysis": "CloudNote在全文检索与异地协作方面表现最佳，完全满足团队核心痛点。",
+      "target_score": 10
+    }
+  ],
+  "content_alignment": [
+    {
+      "criterion": "是否支持批量导出和无本地部署需求",
+      "analysis": "CloudNote支持批量导出且无需本地部署，完全符合团队需求。",
+      "target_score": 10
+    },
+    {
+      "criterion": "是否适合处理 8000 篇 PDF 和 120 个项目文件夹",
+      "analysis": "CloudNote支持全文搜索和协作，适合处理大量PDF和项目文件夹。",
+      "target_score": 9
+    }
+  ],
+  "presentation_fit": [
+    {
+      "criterion": "是否提供简洁的权限策略配置",
+      "analysis": "CloudNote支持权限最小化，但配置是否简洁需在验收时测试。",
+      "target_score": 7
+    },
+    {
+      "criterion": "是否提供清晰的迁移顺序说明",
+      "analysis": "迁移顺序在文章中清晰说明，符合团队需求。",
+      "target_score": 9
+    }
+  ],
+  "actionability_practicality": [
+    {
+      "criterion": "是否支持快速培训和验收指标明确",
+      "analysis": "培训流程和验收指标明确，支持快速实施。",
+      "target_score": 9
+    },
+    {
+      "criterion": "是否具备可操作的权限策略和迁移计划",
+      "analysis": "权限策略和迁移计划在验收时可测试，具备可操作性。",
+      "target_score": 8
+    }
+  ]
+}

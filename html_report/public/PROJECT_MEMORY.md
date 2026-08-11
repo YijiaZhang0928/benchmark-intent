@@ -1,14 +1,41 @@
-# ElicitAlign-Bench / DeepAlign archive 跨 Session 项目记忆
+# DeepAlign-Bench / archived directions 跨 Session 项目记忆
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-12
-当前版本：v0.45（自然欠指定任务中的自主用户状态发现、澄清与最终利用）
+当前版本：v0.47（DeepAlign 主线恢复；PDR-compatible 反例实验已完成）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
 
-## 0. 2026-08-12：冻结 ElicitAlign-Bench v0.45 候选与 novelty-kill gate
+## 0. 2026-08-12：恢复 DeepAlign 主线并完成 PDR-compatible 反例实验
+
+### 0.0 当前决定
+
+用户决定不再把 clarification / self-initiated elicitation 作为独立论文主问题，而恢复 DeepAlign-Bench 的 measurement-validity 主线。v0.45 ElicitAlign 的研究资产已完整归档到 `archive/research-directions/ElicitAlign-Bench-v0.45/` 与 `deliverables/archive/ElicitAlign-Bench-v0.45/`；clarification 保留为 DeepAlign 的一种 user-information channel：`模糊 query → agent clarification → 用户回答 → final report`，与 structured persona、natural history、task-only 等条件并列。它不进入等价 cue 集，也不承担“首次研究 when-to-ask”的 novelty claim。
+
+新的可证伪核心问题是：PDR-Bench 式单用户绝对适配评分是否会对（1）高质量但没有反事实用户特异性的通用报告，以及（2）表面大量使用 persona、但关键决策约束错配的 over-personalized 报告给出高分或接近 matched 的分数。必须使用 PDR-Bench 的公开四维构念、task/persona 条件化 criteria、0–10 锚点和层级加权评分；不得用自造的简化“PDR 分数”替代。
+
+实验协议已经在 `pilot/pdr_false_positive_v0_1/` 运行前冻结。两个抽样单位为 F02 知识工具和 F04 证据综述 family；候选包括 matched-A、matched-B、task-only general-good、over-A、over-B。主要判断同时报告 `absolute_high ≥ 6.0`、与 matched 差距 `≤ 0.5` 和 rank reversal。因为 PDR-Bench 没有 6 分通过线，即使 general-good 得分高，也只能支持“absolute adaptation 不等于 counterfactual specificity”，不能写成 PDR 官方误判成功。只有预指定关键约束失败的 over-personalized 报告仍高分/近 matched，才构成初步 false-positive 反例；若它被明显降分，则撤回该强 claim。
+
+本 pilot 仍不是官方完整复现：PDR-Bench 官方 P/Q judge 为 GPT-5。外部 Claude 调用在返回任何新内容前失败，提升权限调用又因未发表材料外发风险被安全策略拒绝，因此运行前修订为完全本地执行。运行耗时进一步迫使已记录的 post-start 降级：最终由 Qwen3-8B 完成 candidate 三重复和 cross-user 单次评分，没有完成原计划的 DeepSeek 敏感性复核，也不跑 Q/R。因此结果只能称为本地 `PDR-compatible stress test`，必须在经授权的官方 GPT-5 与真人复核后才能形成论文级批评。
+
+### 0.0a v0.47 最小实验结论与允许主张
+
+两个合成 task family、四个 user-evaluation cell 的结果如下：
+
+1. `general-good` 的 absolute-high 为 4/4，near-matched 为 4/4，且出现 1/4 rank reversal。它方向性支持：单用户绝对适配高分不能识别报告是否具有跨用户反事实特异性。
+2. `over-personalized` 的 absolute-high 为 4/4，但 near-matched 只有 1/4，rank reversal 为 0/4。它不支持“PDR-style evaluator 普遍把过度个性化当作 matched”的强说法；只能提示某些 family 会出现补偿和 hard-node 漏判。
+3. 交叉矩阵中，F02 的 matched absolute floor `A_min=8.50`，但双向 specificity floor `CFA_min=-1.50`；F04 为 `A_min=10.00`、`CFA_min=0.00`。两个 family 都没有通过 `CFA_min>0`。这证明在这些受控反例里，“两边 matched 都很高”与“报告对两位用户双向可区分”不是同一件事。
+4. 具体失败包括 mention-vs-adoption：报告只在表格中提到正确约束、最终推荐却没有采用，仍可获高分；以及 F04-A 的 10 分饱和，matched、general、wrong-user 和 over 都无法被该 rubric 区分。
+
+允许写：本地小样本压力测试发现了 absolute adaptation 与 counterfactual specificity 的构念分离，并证明正式官方复现值得做。禁止写：PDR-Bench 已被证明无效、官方 GPT-5 必然误判、over-personalization 普遍获得 matched 高分，或 2 个合成 family 足以估计真实错误率。
+
+下一步论文生死门：在 6–8 个真实或真人确认 family、官方 GPT-5 judge、目标用户盲评和至少 3 个被测系统上，预注册检验 PDR absolute score 与 DeepAlign profile 是否产生稳定 disagreement、rank reversal/system reclassification，并验证 adoption-aware node 的增量效度。若没有稳定重分类或真人预测增量，DeepAlign 只能作为 PDR-style evaluation extension，而不是 ICLR 级核心 benchmark 贡献。
+
+ICLR 2027 官方时间已核对：摘要截止 2026-09-11 AOE，全文截止 2026-09-16 AOE。当前日期距离摘要仅约 30 天、全文约 35 天，因此应在 2026-08-17 前冻结 thesis、最近邻边界、主指标 profile、最小实验证据与 go/no-go；允许之后修 rubric leaf、阈值和工程实现，但不应继续做标题级换题，除非本次反例实验与最近邻审计共同否决 DeepAlign。
+
+## 0A. 历史候选：ElicitAlign-Bench v0.45
 
 ### 0.1 当前研究问题
 

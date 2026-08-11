@@ -1,5 +1,16 @@
 # benchmark-intent 设计迭代记录
 
+## v0.47 DeepAlign restoration and completed PDR-compatible stress test - 2026-08-12
+
+- 完成冻结的两 family 本地压力测试：general-good 4/4 绝对高分、4/4 接近 matched、1/4 rank reversal；方向性支持“绝对适配不能识别反事实特异性”。
+- over-personalized 虽 4/4 绝对高分，但仅 1/4 接近 matched、0/4 rank reversal；撤回“普遍误打为 matched”的强 claim，只保留补偿、关键节点漏判与分数饱和风险。
+- 交叉评分得到 F02 `A_min=8.50, CFA_min=-1.50`、F04 `A_min=10.00, CFA_min=0.00`；两个 family 均未通过双向 specificity，展示 absolute adequacy 与 counterfactual specificity 的构念分离。
+- 将 clarification 固定为 `fuzzy query → clarification → answer → plan/report/decision adoption` 的 user-information channel，不把 broad when-to-ask 作为 DeepAlign 主贡献。
+- 新增 adoption-aware rubric nodes、artifact stress types 与 PDR disagreement/profile binding；正式主张仍需官方 GPT-5、真实 family、真人判断和多系统重分类复核。
+- 将 ElicitAlign v0.45 源稿、schema、图和交付物完整归档到版本化目录；当前根入口只保留 DeepAlign v0.47，用户单独删除的旧主图不纳入整理。
+- 重写正式 Proposal、7 页精简版、人话版、导师 brief 与 HTML；新增 3200×1800 整体框架/PDR 压力测试 PNG/SVG，并完成 DOCX/PDF 逐页渲染检查。
+- 将 2026-08-17 设为内部 thesis freeze：摘要截止 2026-09-11 AOE、全文截止 2026-09-16 AOE；冻结主问题、最近邻边界、estimand/profile 和 go/no-go，后续只允许工程与证据增强。
+
 ## v0.46 DeepAlign return and PDR stress-test protocol - 2026-08-12
 
 - 决定恢复 DeepAlign-Bench measurement-validity 主线；ElicitAlign v0.45 将整体归档，clarification 降为 DeepAlign 的一种 user-information channel，不再单独承担 broad when-to-ask novelty。

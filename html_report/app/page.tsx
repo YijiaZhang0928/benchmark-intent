@@ -1,23 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ElicitAlign-Bench｜研究汇报",
-  description: "评测 agent 在自然欠指定任务中自主发现、澄清并利用用户信息的能力",
+  title: "DeepAlign-Bench｜研究汇报",
+  description: "个性化 Deep Research 的反事实用户特异性评测",
 };
 
 const papers = [
-  ["PDR-Bench", "给定 persona/context 后的个性化报告质量", "https://arxiv.org/abs/2509.25106"],
-  ["IDRBench", "欠指定 Deep Research 中交互带来的收益与成本", "https://arxiv.org/abs/2601.06676"],
-  ["IntentRL", "主动澄清潜在 intent 的训练方法", "https://arxiv.org/abs/2602.03468"],
-  ["DiscoBench", "搜索过程中的歧义发现、提问与恢复", "https://arxiv.org/abs/2606.27669"],
+  ["PDR-Bench", "task/persona-conditioned absolute adaptation", "https://arxiv.org/abs/2509.25106"],
+  ["MyScholarQA", "真人揭示合成用户与 LLM judge 漏掉的个性化错误", "https://aclanthology.org/2026.acl-long.723/"],
+  ["IDRBench", "欠指定 Deep Research 的交互收益与成本", "https://arxiv.org/abs/2601.06676"],
   ["G-STEER", "个性化 Deep Research 的 Retrieve / Ask / Stop", "https://arxiv.org/abs/2608.05876"],
-];
-
-const conditions = [
-  ["C0 Natural-Interactive", "不提供 persona，也不提醒个性化；允许 agent 自主提问", "自主发现与触发"],
-  ["C1 Nudge-Interactive", "只提醒‘若缺少会改变答案的用户信息，可以先澄清’", "被提醒后的执行能力"],
-  ["C2 No-Ask", "同一自然 instruction，但关闭用户通道", "不能澄清时的通用回答下限"],
-  ["C3 Full-Persona Oracle", "直接提供完整、经用户确认的相关 user-state ledger", "信息全知时的可达上限"],
 ];
 
 export default function Home() {
@@ -25,116 +17,81 @@ export default function Home() {
     <main>
       <header className="hero" id="top">
         <nav className="nav shell" aria-label="主导航">
-          <a className="brand" href="#top">ElicitAlign<span>Bench</span></a>
-          <div className="navlinks">
-            <a href="#question">问题</a><a href="#design">设计</a><a href="#metrics">评分</a><a href="#novelty">边界</a><a href="#pilot">最小实验</a>
-          </div>
+          <a className="brand" href="#top">DeepAlign<span>Bench</span></a>
+          <div className="navlinks"><a href="#question">问题</a><a href="#design">框架</a><a href="#metrics">评分</a><a href="#pilot">实验</a><a href="#deadline">决策</a></div>
           <a className="navCta" href="#editions">下载文档</a>
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.45 · 2026-08-12</p>
-            <h1>从缺失用户信息到<em>个性化最终交付</em></h1>
-            <p className="lede">用户给出的任务足够让 agent 直接开始研究，却漏掉 1–3 个会改变最终建议的用户条件。我们测试 agent 会不会在没有提醒时自己发现缺口、问对问题、知道何时停止，并把答案真正用进长程 Deep Research 交付物。</p>
-            <div className="heroActions">
-              <a className="button primary" href="#design">看端到端框架</a>
-              <a className="button ghost" href="/ElicitAlign-Bench_正式Proposal精简版.pdf" download>下载 6 页精简版</a>
-            </div>
-            <div className="heroMeta"><span>无显式 persona</span><span>主条件无澄清提醒</span><span>四条件能力分解</span><span>paired real-user family</span></div>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.47 · 2026-08-12</p>
+            <h1>绝对适配不等于<em>反事实用户特异性</em></h1>
+            <p className="lede">固定 task、evidence、tools 和 budget，只改变目标用户。我们检验最终报告是否双向正确改变，并同时通过绝对合格、相对通用回答收益、共同质量与边界门。</p>
+            <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
+            <div className="heroMeta"><span>paired-user task family</span><span>2×2 交叉评分</span><span>非补偿 profile</span><span>clarification 是 channel</span></div>
           </section>
-          <aside className="thesisCard">
-            <span className="cardKicker">一句话研究问题</span>
-            <p>一个 agent 会使用完整 persona，不代表它会在真实、自然但不完整的任务输入中主动找出关键用户信息并正确利用。</p>
-            <hr />
-            <div className="thesisFlow"><b>发现</b><i>→</i><b>提问</b><i>→</i><b>停止</b><i>→</i><b>利用</b></div>
-          </aside>
+          <aside className="thesisCard"><span className="cardKicker">一句话研究问题</span><p>一份报告对用户 A 看起来很好，不代表系统把用户换成 B 时会按正确方向改变最终选择。</p><hr/><div className="thesisFlow"><b>Absolute Fit</b><i>≠</i><b>Specificity</b><i>→</i><b>Benefit</b></div></aside>
         </div>
       </header>
 
       <section className="decision shell" id="question">
-        <p className="sectionTag">WHAT THE BENCHMARK CAN EXPLAIN</p>
-        <div className="sectionHead"><h2>它不是再做一个“问题问得好不好”的榜单</h2><p>四个条件和逐节点轨迹把看似相同的低分拆成不同能力缺口。</p></div>
+        <p className="sectionTag">WHAT THIS BENCHMARK SEPARATES</p>
+        <div className="sectionHead"><h2>把“写得好”与“真的因用户而变”分开</h2><p>PDR 的 absolute adaptation 构念有价值；DeepAlign 补充它不能单独识别的 paired-user counterfactual specificity。</p></div>
         <div className="decisionGrid">
-          <article><span>01</span><h3>知道信息时会不会用</h3><p>Oracle 高、Natural 低，说明系统会个性化，但不会自主获取用户状态。</p></article>
-          <article><span>02</span><h3>没提醒时会不会想到问</h3><p>Nudge 高、Natural 低，说明能力存在，但原生触发不足，依赖 prompt。</p></article>
-          <article><span>03</span><h3>问到了是否真正改变交付</h3><p>asked/answered 高但 report/decision 低，说明长程执行中发生利用失败。</p></article>
+          <article><span>01</span><h3>通用好报告</h3><p>对两位用户都高分，但没有完成 must-change，说明 adequacy 高、specificity 不成立。</p></article>
+          <article><span>02</span><h3>单边个性化</h3><p>只对 A 有优势、对 B 为负，平均差值可能为正；CFA_min 会直接判失败。</p></article>
+          <article><span>03</span><h3>表面个性化</h3><p>提到 persona 不等于采用约束；mention、planning 与 final adoption 必须分开评分。</p></article>
         </div>
       </section>
 
-      <section className="figureSection" id="design">
-        <div className="shell">
-          <div className="sectionHead light"><h2>一张图看懂 case、task、隐藏用户状态、四条件与评估</h2><p>主图同时给出数据构造、元数据、交互循环、Deep Research 执行、非补偿评分、系统诊断和论文生死门。</p></div>
-          <figure><img src="/ElicitAlign-Bench_端到端流程图_v0.45.png" alt="ElicitAlign-Bench 从隐藏用户状态与自然欠指定输入到四条件实验和最终交付评估的端到端流程图" /><figcaption>正式 v0.45 端到端框架：完整 persona 只作为 oracle ceiling；Natural 才是主实验。</figcaption></figure>
-        </div>
-      </section>
+      <section className="figureSection" id="design"><div className="shell"><div className="sectionHead light"><h2>一张图看懂元数据、渠道、交叉矩阵、实验结论和五天冻结门</h2><p>SVG 可编辑；PNG 适合直接拿去导师汇报。</p></div><figure><img src="/DeepAlign-Bench_整体框架与PDR压力测试_v0.47.png" alt="DeepAlign-Bench v0.47 整体研究框架与 PDR-compatible 压力测试"/><figcaption>v0.47：clarification 作为 user-information channel；主 benchmark 仍是 paired-user 反事实特异性。</figcaption></figure></div></section>
 
       <section className="shell gapSection">
-        <p className="sectionTag">FOUR-CONDITION DECOMPOSITION</p>
-        <div className="sectionHead"><h2>为什么必须有四个条件</h2><p>如果只比较“能问”与“不能问”，无法知道失败来自没想到问、问得不好、停得不好，还是问到后没有用。</p></div>
-        <div className="compare" role="table" aria-label="四个实验条件">
-          <div className="compareRow head" role="row"><span>条件</span><span>Agent 看到什么</span><span>解释的能力</span></div>
-          {conditions.map((r) => <div className="compareRow" role="row" key={r[0]}><b>{r[0]}</b><span>{r[1]}</span><span>{r[2]}</span></div>)}
-        </div>
-        <div className="winnerBanner"><span>主实验原则</span><b>Natural 不提醒；Nudge 只作诊断</b><p>若主条件直接要求“先考虑个性化并澄清”，测到的是提示遵从。任务也不能按“多数模型已经会问”筛选，否则主动提问强的模型会反过来定义数据分布。</p></div>
-      </section>
-
-      <section className="classificationSection" id="metrics">
-        <div className="shell">
-          <p className="sectionTag">NON-COMPENSATORY EVALUATION</p>
-          <div className="sectionHead"><h2>不再让一个差值讲完整故事</h2><p>所有原始条件绝对分都必须报告；差值只解释能力来源，不能掩盖 Natural 本身不合格、共同质量下降或越界提问。</p></div>
-          <div className="taxonomyRules">
-            <article><b>需要识别</b><p>critical-missing 上是否问；sufficient 和 irrelevant-missing control 上是否不问。报告 sensitivity、specificity 与 macro-F1。</p></article>
-            <article><b>精准获取与停止</b><p>Targeted Elicitation Recall、Question Precision、Information Gain per Turn、Stopping Sufficiency、用户负担与重复提问。</p></article>
-            <article><b>最终交付绝对合格</b><p>先过 Absolute Adequacy，再看 must-change / must-hold / must-not、共同质量、事实可靠性和目标用户效用。</p></article>
-            <article><b>逐节点利用链</b><p><code>unknown → asked → answered → represented_in_plan → evidenced_in_report → changed_decision</code>，单独识别“问到但没用”。</p></article>
-          </div>
-          <div className="formula">SelfInitiatedGain = U(Natural) − U(No-Ask)<br/>NudgeGap = U(Nudge) − U(Natural)<br/>OracleGap = U(Oracle) − U(Natural)</div>
-          <div className="classificationVerdict"><b>归一化只作次级描述</b><p><code>OracleRecovery = (U(Natural) − U(No-Ask)) / (U(Oracle) − U(No-Ask))</code> 仅在分母超过预注册阈值时计算。主统计仍使用四个原始 arm 和 family-level paired effects，防止小分母制造夸张比例。</p></div>
+        <p className="sectionTag">CASE / TASK / USER TRUTH</p>
+        <div className="sectionHead"><h2>同一个隐藏 ledger，生成多种输入渠道</h2><p>Case metadata 记录运行；task metadata 冻结研究构念；user-state ledger 记录每条事实的来源、权限和 decision-node 作用。</p></div>
+        <div className="compare" role="table" aria-label="用户信息渠道">
+          <div className="compareRow head" role="row"><span>渠道</span><span>Agent 看到什么</span><span>额外测量</span></div>
+          <div className="compareRow" role="row"><b>Structured persona</b><span>字段化目标、约束、资源与边界</span><span>信息给到后是否采用</span></div>
+          <div className="compareRow" role="row"><b>Natural history</b><span>同一信息放入自然叙述、历史或授权记录</span><span>语义等价渠道稳定性</span></div>
+          <div className="compareRow" role="row"><b>Fuzzy query + clarification</b><span>query 可写通用报告，但缺 1–3 个会改变建议的条件</span><span>asked→answered→planned→adopted、负担和隐私</span></div>
+          <div className="compareRow" role="row"><b>Task-only</b><span>没有任务相关用户信息</span><span>一般高质量基线与新增收益</span></div>
         </div>
       </section>
 
-      <section className="shell gapSection" id="novelty">
-        <p className="sectionTag">NEAREST-NEIGHBOR PRESSURE</p>
-        <div className="sectionHead"><h2>新意边界很窄，必须用结果而不是措辞证明</h2><p>IDRBench、IntentRL、DiscoBench 和 G-STEER 已覆盖交互、主动澄清、歧义恢复与个性化 Ask/Stop。最危险的审稿意见是：“这只是 G-STEER 的 benchmark 化。”</p></div>
-        <div className="sourceGrid">
-          {papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}
+      <section className="classificationSection" id="metrics"><div className="shell">
+        <p className="sectionTag">NON-COMPENSATORY PROFILE</p>
+        <div className="sectionHead"><h2>差值用于识别效应，不用来充当万能总分</h2><p>PF 先归一到 [0,1]；比例分母会放大低分区噪声，向量夹角又不能保证幅度和绝对合格。</p></div>
+        <div className="formula">Δa = PFₐ(Yₐ) − PFₐ(Yᵦ)<br/>Δb = PFᵦ(Yᵦ) − PFᵦ(Yₐ)<br/>CFA_min = min(Δa, Δb)<br/>A_min = min(PFₐ(Yₐ), PFᵦ(Yᵦ))<br/>Gain_min = min(PFₐ(Yₐ)−PFₐ(Y₀), PFᵦ(Yᵦ)−PFᵦ(Y₀))</div>
+        <div className="taxonomyRules">
+          <article><b>双向 specificity</b><p>Δa 与 Δb 都超过预注册最小实际重要差异。</p></article>
+          <article><b>绝对 adequacy</b><p>A_min 过线，防止“大差值、低适配”。</p></article>
+          <article><b>真实 benefit</b><p>先过 task-only non-inferiority；added value 另设 margin。</p></article>
+          <article><b>No-harm / no-violation</b><p>共同质量、事实、must-hold 不下降；critical boundary 零严重违规。</p></article>
         </div>
-        <div className="compare" role="table" aria-label="最近邻与本研究边界">
-          <div className="compareRow head" role="row"><span>维度</span><span>最近邻已经覆盖</span><span>ElicitAlign 必须额外证明</span></div>
-          <div className="compareRow" role="row"><b>输入</b><span>persona/context、欠指定任务或专用澄清模块</span><span>无 profile、无提醒、仍可直接执行的自然任务</span></div>
-          <div className="compareRow" role="row"><b>数据单位</b><span>query / session / target coverage</span><span>共享任务核心的 paired real-user family 与预冻结 decision contracts</span></div>
-          <div className="compareRow" role="row"><b>终点</b><span>问题、覆盖率、交互收益或报告 P/Q</span><span>用户信息从回答到计划、报告和最终决策改变的完整利用链</span></div>
-          <div className="compareRow" role="row"><b>负对照</b><span>常缺少“本来就不该问”的充分任务</span><span>sufficient 与 irrelevant-missing controls 同时约束过问和敏感越界</span></div>
-        </div>
-      </section>
+        <div className="classificationVerdict"><b>统计单位是 task family</b><p>Permutation 在 family 内交换标签；bootstrap 每次抽完整 family。用户、seed、judge repeat 和 rubric leaf 都不能冒充独立任务。</p></div>
+      </div></section>
 
-      <section className="reviewBand" id="pilot">
-        <div className="shell">
-          <p className="sectionTag invert">NOVELTY-KILL PILOT</p>
-          <div className="sectionHead light"><h2>先用三组任务杀死错误方向，再决定是否扩到 24 family</h2><p>最小实验不是证明论文成立，而是检查它能否产生已有指标解释不了的新排序、新失败和可接受成本。</p></div>
-          <div className="decisionGrid">
-            <article><span>01</span><h3>三类任务</h3><p>团队知识库采购、国际家庭旅行、研究工具选型；每个 family 两位用户、四类 case、四个条件、4–6 个系统。</p></article>
-            <article><span>02</span><h3>继续门</h3><p>至少两个 family 出现有意义条件分离；至少一个系统发生 Natural/Oracle 排名变化或稳定利用失败；充分任务不过问。</p></article>
-            <article><span>03</span><h3>停止或换题</h3><p>一句 Nudge 让所有系统接近 Oracle、G-STEER/IDRBench 指标完全预测排序、真人和模拟器结论相反，或差异只来自报告长度与预算。</p></article>
-          </div>
+      <section className="reviewBand" id="pilot"><div className="shell">
+        <p className="sectionTag invert">DIRECTIONAL PDR-COMPATIBLE STRESS TEST</p>
+        <div className="sectionHead light"><h2>最小实验：核心 claim 得到 go 信号，over-personalization 强 claim 被削弱</h2><p>2 families、4 users、32 次本地 Qwen3-8B 评分；不是官方 PDR-Bench 复现。</p></div>
+        <div className="decisionGrid">
+          <article><span>4/4</span><h3>General-good 近 matched</h3><p>四个单元全部差距 ≤0.5，一次反超；absolute high 不能证明 specificity。</p></article>
+          <article><span>1/4</span><h3>Over 近 matched</h3><p>不支持“普遍误判”；但四份都 ≥6，关键错误可能被平均补偿。</p></article>
+          <article><span>0/2</span><h3>Family 通过 CFA_min&gt;0</h3><p>A_min 为 8.50/10.00，CFA_min 却为 −1.50/0.00；绝对合格与特异性脱钩。</p></article>
         </div>
-      </section>
+      </div></section>
 
-      <section className="editionSection" id="editions">
-        <div className="shell">
-          <p className="sectionTag">READING EDITIONS</p>
-          <div className="sectionHead"><h2>同一套 v0.45 方法，按讨论场景分成四版</h2><p>旧 DeepAlign-Bench 交付物已归档；当前入口只指向 ElicitAlign-Bench。</p></div>
-          <div className="editionGrid">
-            <article><span>FORMAL · 17 PAGES</span><h3>正式研究 Proposal</h3><p>完整研究问题、数据构造、交互协议、评分、统计、最近邻边界和八周计划。</p><div className="editionLinks"><a href="/ElicitAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/ElicitAlign-Bench_正式研究Proposal.docx" download>Word</a></div></article>
-            <article className="recommended"><span>CONDENSED · 6 PAGES</span><h3>正式 Proposal 精简版</h3><p>适合导师快速判断研究缺口、实验逻辑、可行性与停止条件。</p><div className="editionLinks"><a href="/ElicitAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/ElicitAlign-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
-            <article><span>PLAIN LANGUAGE · 8 PAGES</span><h3>完整人话版</h3><p>用直接语言解释为什么不提醒、为什么不能按模型行为筛题，以及分数应该怎么看。</p><div className="editionLinks"><a href="/ElicitAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/ElicitAlign-Bench_完整人话版.docx" download>Word</a></div></article>
-            <article><span>ADVISOR BRIEF · 6 PAGES</span><h3>汇报精简版</h3><p>15–20 分钟汇报结构，包含主图、最近邻压力、最小实验和八周决策。</p><div className="editionLinks"><a href="/ElicitAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/ElicitAlign-Bench_汇报精简版.docx" download>Word</a></div></article>
-          </div>
-          <div className="schemaDownloads"><a href="/elicitalign_case.schema.yaml" download>Case schema ↓</a><a href="/elicitalign_evaluation.protocol.yaml" download>Evaluation protocol ↓</a><a href="/ElicitAlign-Bench_端到端流程图_v0.45.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div>
-        </div>
-      </section>
+      <section className="shell gapSection" id="novelty"><p className="sectionTag">NEAREST-NEIGHBOR BOUNDARY</p><div className="sectionHead"><h2>Clarification 不是 novelty；paired-user measurement 才必须用结果证明</h2><p>DeepAlign 不能声称首次研究个性化 Deep Research 或主动澄清。</p></div><div className="sourceGrid">{papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}</div></section>
 
-      <footer className="closing"><div className="shell closingGrid"><div><p className="eyebrow">CLAIM BOUNDARY</p><h2>只主张可观察行为，不声称模型“真正关心用户”</h2></div><p>若 pilot 通过，论文可以主张自然欠指定条件下的自主用户状态发现与利用；若不能产生超出 G-STEER / IDRBench 的新排序或新失败，就应收窄或换题。</p></div></footer>
+      <section className="decision shell" id="deadline"><p className="sectionTag">FIVE-DAY THESIS FREEZE</p><div className="sectionHead"><h2>最迟 2026-08-17 冻结方向</h2><p>ICLR 2027 摘要 9 月 11 日 AOE、全文 9 月 16 日 AOE；当前约剩 30/35 天。</p></div><div className="decisionGrid"><article><span>01</span><h3>官方 judge 复现</h3><p>冻结现有 artifacts，用经授权 GPT-5 配置重评分。</p></article><article><span>02</span><h3>双人盲评</h3><p>独立判断 absolute fit、decision adoption 与 matched/swapped。</p></article><article><span>03</span><h3>补到 3 family</h3><p>至少 2/3 的 paired-user 真值稳定；否则收窄 judge-validity 或换题。</p></article></div></section>
+
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">READING EDITIONS</p><div className="sectionHead"><h2>DeepAlign-Bench v0.47 四个同步版本</h2><p>ElicitAlign v0.45 已完整归档，不再占用顶层入口。</p></div><div className="editionGrid">
+        <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整方法、文献、rubric、环境、风险和实验记录。</p><div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div></article>
+        <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>适合快速判断 thesis、实验、证据等级和 go/no-go。</p><div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
+        <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 case、task、persona、channel、rubric、公式和统计。</p><div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div></article>
+        <article><span>ADVISOR BRIEF</span><h3>汇报精简版</h3><p>15–20 分钟导师汇报结构，含最小实验与五天决策。</p><div className="editionLinks"><a href="/DeepAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_汇报精简版.docx" download>Word</a></div></article>
+      </div><div className="schemaDownloads"><a href="/case.schema.yaml" download>Case schema ↓</a><a href="/metric_binding.schema.yaml" download>Metric binding ↓</a><a href="/DeepAlign-Bench_整体框架与PDR压力测试_v0.47.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
+
+      <footer className="closing"><div className="shell closingGrid"><div><p className="eyebrow">CLAIM BOUNDARY</p><h2>只主张最终交付物的反事实用户特异性</h2></div><p>不声称模型内部真正理解用户；不把本地 Qwen pilot 写成官方 PDR 失败；不把 clarification 包装成首次研究。</p></div></footer>
     </main>
   );
 }

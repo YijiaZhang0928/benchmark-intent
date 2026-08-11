@@ -10,31 +10,31 @@ from docx.oxml.ns import qn
 from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 ROOT = Path(__file__).resolve().parents[1]
-MD = ROOT / "proposal" / "ElicitAlign-Bench_研究Proposal.md"
-FIG = ROOT / "proposal_assets" / "ElicitAlign-Bench_端到端流程图_v0.45.png"
-OUT = ROOT / "deliverables" / "ElicitAlign-Bench_正式研究Proposal.docx"
+MD = ROOT / "proposal" / "DeepAlign-Bench_研究Proposal.md"
+FIG = ROOT / "proposal_assets" / "DeepAlign-Bench_整体框架与PDR压力测试_v0.47.png"
+OUT = ROOT / "deliverables" / "DeepAlign-Bench_正式研究Proposal.docx"
 
 # The formal proposal is the default. Communication variants override these
 # module-level values from build_readable_variants.py while reusing the same
 # deterministic layout and Markdown parser.
 COVER_KICKER = "RESEARCH PROPOSAL"
-COVER_TITLE = "ElicitAlign-Bench"
-COVER_SUBTITLE = "从缺失用户信息到个性化交付"
+COVER_TITLE = "DeepAlign-Bench"
+COVER_SUBTITLE = "从绝对适配到反事实用户特异性"
 COVER_MODE = "Interactive Agents · Personalization · Deep Research"
-DOC_VERSION = "v0.45 · 方向否决版"
+DOC_VERSION = "v0.47 · 主线恢复版"
 DOC_DATE = "2026 年 8 月 12 日"
-RESEARCH_LINE = "Detect · Elicit · Stop · Use · Deliver"
-CORE_CLAIM = "不给显式 persona 和澄清提醒，测 agent 是否自主恢复决策相关用户状态，并用完整 persona oracle 验证信息是否真正进入最终交付。"
+RESEARCH_LINE = "Adequacy · Specificity · Benefit · No-Harm · Boundary"
+CORE_CLAIM = "固定任务、证据、工具和预算，检验最终交付物是否随目标用户发生双向正确变化，并同时通过绝对合格、通用回答收益、共同质量与边界门。"
 CONTENTS_ITEMS = [
-    "研究问题与可证伪假设", "Case、Task 与隐藏用户真值", "四条件实验与交互协议",
-    "非补偿评分与统计", "最近邻边界与 Novelty-kill gate", "工程实现与最小实验",
-    "八周计划、贡献与主张边界", "参考文献",
+    "研究问题与可证伪假设", "Case、Task 与用户真值", "User-information channels",
+    "反事实矩阵与非补偿评分", "JudgeBench 与 PDR 压力测试", "统计与外部验证",
+    "五天冻结门、贡献与主张边界", "参考文献",
 ]
-READING_NOTE = "阅读提示：先看主图与第 1–4 节理解任务原语；第 6–8 节解释指标、统计和最近邻边界；第 10 节是本方向继续或停止的硬门。"
+READING_NOTE = "阅读提示：先看主图和研究概要理解 absolute adaptation 与 counterfactual specificity 的区别；指标、反例实验和五天冻结门是当前版本的决策重点。"
 FIGURE_TRIGGER = "1. 研究问题"
-FIGURE_TITLE = "ElicitAlign-Bench 端到端研究框架"
-FIGURE_CAPTION = "图 1  从 task/case metadata、隐藏 user ledger 与自然欠指定输入，到四条件交互、最终交付评分、系统能力分解和论文否决门。"
-RUNNING_HEADER = "ELICITALIGN-BENCH  ·  RESEARCH PROPOSAL"
+FIGURE_TITLE = "DeepAlign-Bench 整体框架与 PDR-compatible 压力测试"
+FIGURE_CAPTION = "图 1  从 case/task/user 元数据和多种信息渠道，到 2×2 交叉评分、五道非补偿门、系统能力地图、方向性最小实验与 ICLR 五天冻结门。"
+RUNNING_HEADER = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
 STYLE_PRESET = "narrative_proposal"
 INCLUDE_CONTENTS = True
 
@@ -516,9 +516,9 @@ def add_figure_section(doc):
     picture = run.add_picture(str(FIG), width=Inches(9.55))
     picture._inline.docPr.set(
         "descr",
-        "ElicitAlign-Bench 研究流程：从 case/task metadata、隐藏 user-state ledger 与自然欠指定输入，到四条件交互、最终交付评分和 novelty-kill gate。",
+        "DeepAlign-Bench 研究流程：从 case/task/user metadata 与多渠道输入，到反事实交叉评分、非补偿门、Judge 压力测试和方向冻结门。",
     )
-    picture._inline.docPr.set("title", "ElicitAlign-Bench 研究设计")
+    picture._inline.docPr.set("title", "DeepAlign-Bench 研究设计")
     p.paragraph_format.space_after = Pt(5)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER

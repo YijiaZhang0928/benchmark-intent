@@ -1,0 +1,58 @@
+{
+  "dimension_weights": {
+    "goal_alignment": 0.4,
+    "content_alignment": 0.3,
+    "presentation_fit": 0.1,
+    "actionability_practicality": 0.2
+  },
+  "criteria": {
+    "goal_alignment": [
+      {
+        "criterion": "必须选择支持敏感项目本地存储并可审计的方案",
+        "explanation": "顾薇负责的临床研究团队包含尚未公开的受试者衍生材料，院方规定敏感项目不得进入外部云，因此必须优先选择支持本地存储和权限审计的方案。",
+        "weight": 0.6
+      },
+      {
+        "criterion": "迁移顺序必须先做权限分级再导入内容",
+        "explanation": "团队要求迁移要先做权限分级再导入内容，这符合其对数据安全和权限管理的重视，是决策的关键约束。",
+        "weight": 0.4
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "方案需支持敏感项目本地存储与一般资料云端存储的混合模式",
+        "explanation": "HybridBase正好支持敏感项目本地存储、一般资料云端存储，符合顾薇团队对数据分类管理的需求。",
+        "weight": 0.5
+      },
+      {
+        "criterion": "方案需支持全文搜索和跨区搜索功能",
+        "explanation": "团队需要高效检索8000篇PDF和120个项目文件夹，HybridBase虽跨区搜索体验一般，但CloudNote支持全文搜索，可作为补充。",
+        "weight": 0.5
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "方案需提供清晰的权限分级策略和迁移步骤说明",
+        "explanation": "团队只有两次集中培训机会，因此方案需提供清晰的权限分级和迁移步骤，便于快速理解和实施。",
+        "weight": 0.5
+      },
+      {
+        ""criterion": "方案需提供可量化的培训与验收指标",
+        "explanation": "团队培训时间有限，方案需提供可量化的培训与验收指标，确保培训效果可评估。",
+        "weight": 0.5
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "方案需支持每周不超过4小时的维护投入",
+        "explanation": "团队无法长期占用专职运维，因此方案的维护投入必须控制在每周4小时以内，HybridBase正好满足这一要求。",
+        "weight": 0.6
+      },
+      {
+        "criterion": "方案需支持快速部署，且不依赖长期专职运维",
+        "explanation": "团队共享IT支持，无法长期占用专职运维，因此方案需支持快速部署且不依赖长期运维，VaultLab虽支持本地部署，但需要0.25名运维，需正面处理运维缺口。",
+        "weight": 0.4
+      }
+    ]
+  }
+}
