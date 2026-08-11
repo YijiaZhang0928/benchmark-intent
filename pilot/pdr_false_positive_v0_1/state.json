@@ -1,15 +1,17 @@
 {
   "project": "pdr_false_positive_v0_1",
-  "status": "protocol_relocked_after_failed_manipulation_not_scored",
+  "status": "protocol_relocked_with_curated_counterexamples_not_scored",
   "protocol_locked_at": "2026-08-12",
   "locked_sha256": {
-    "protocol.md": "37c9938e8aa2fa1e10397e3506b402cac4fdc0ebf213db41f7f18ec1b12aa4c3",
+    "protocol.md": "d9d3aab1c0b0e2965f336ba684f3eac451164abd7e2478d5df95f8ccc7e215e0",
     "cases.json": "83d2182dc4bd5e8f0e9745e3180699ce6fc96049e680ba6597aede72bbb95e29",
-    "run_experiment.py": "0b6b7a098170b9bbb918f249ce719acdcfe61749c8f668dbd061e090d4158df2"
+    "run_experiment.py": "3ec07b6ad79ae7300f7af463c04000b1f8b3703cfd17533ec1ed0ce204e5d92e",
+    "curated_over_artifacts.json": "292d699ee559cb403042c8d14b1b5816523e8713a052d7bae02af4a4ae0ed902"
   },
   "current_stage": "construct",
   "completed": [],
   "privacy_amendment": "External Claude execution was blocked before any new result; all new generation and scoring use local Ollama models only.",
   "manipulation_amendment": "Construction v0.1 failed the pre-score audit and is preserved under raw/rejected_construction/v0_1; prompt clarified before any criteria or score generation.",
+  "controlled_edit_amendment": "Construction v0.2 also failed; curated controlled-edit artifacts frozen before criteria/scoring, while both failed generations remain archived.",
   "next_action": "Generate frozen over-personalized artifacts locally and run manipulation audit."
 }

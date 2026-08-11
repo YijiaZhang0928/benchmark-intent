@@ -9,6 +9,7 @@
 - 记录复现边界：外部 Claude 调用因未发表材料外发风险在返回新内容前被阻断，故在结果产生前修订并重新冻结为本地 Qwen3-8B 三重复 + DeepSeek-R1-7B 单次敏感性检查；合并 criteria 生成、不跑 Q/R，不得表述为官方 GPT-5 PDR-Bench 的完整复现。
 - 核对 ICLR 2027 官方期限：摘要 2026-09-11 AOE、全文 2026-09-16 AOE；冻结 2026-08-17 为 thesis/metric/pilot 的内部方向截止线。
 - 本地反例构造 v0.1 在评分前的 manipulation audit 中失败：部分报告直接承认硬约束冲突或推荐自相矛盾；全部失败输出保留到 rejected 目录，生成说明在任何 criteria/score 产生前修订并重新冻结，oracle 与阈值未变。
+- 本地构造 v0.2 仍显式暴露冲突且长度不足；再次保留失败输出，并在评分前改用研究者冻结的 controlled-edit artifacts，将反例生成能力与 judge 构念效度分离。该实验只能解释为 adversarial unit test，不能估计自然错误率。
 
 ## v0.45 ElicitAlign-Bench natural elicitation pivot - 2026-08-12
 

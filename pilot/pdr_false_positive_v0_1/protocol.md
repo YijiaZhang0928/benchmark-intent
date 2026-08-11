@@ -85,3 +85,7 @@ DeepAlign 的正式判定不把这些量重新压成单一总分，而同时要�
 ### 8.2 运行前 manipulation 修订（尚未生成 criteria 或 score）
 
 本地构造 v0.1 未通过预定 manipulation audit：F02 反例直接承认方案违反硬约束，F04-A 的推荐句又与 forced direction 自相矛盾。全部 v0.1 输出原样移入 `raw/rejected_construction/v0_1/`。生成说明因此增加三个只影响操纵有效性的约束：不得承认错配；必须明确且一致地支持 forced direction；报告长度为 700–1100 个中文字符。family、oracle failure、评分阈值与评分协议均不变。此修订发生在任何 criteria 或 score 产生前。
+
+### 8.3 运行前 controlled-edit 修订（仍未生成 criteria 或 score）
+
+本地构造 v0.2 再次失败：F02 仍显式指出冲突，且四份报告均明显短于预定长度。全部输出移入 `raw/rejected_construction/v0_2/`。为把“反例生成能力”与“评分器能否识别反例”分开，最终 over-personalized 报告改为研究者冻结的 controlled-edit artifacts：共同质量结构、证据边界和交付格式保持完整，只在 `cases.json` 已指定的一个决策节点上替换为错误方向，并加入至少三条 persona 信息。固定文本位于 `curated_over_artifacts.json`；在 criteria/score 产生前提交。论文若使用该实验，必须称为 adversarial construct-validity unit test，不得将其发生率解释为自然 agent 错误率。

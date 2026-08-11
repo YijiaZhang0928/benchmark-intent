@@ -147,6 +147,7 @@ def over_prompt(family: dict, user_id: str) -> str:
 
 def construct() -> None:
     config, families = load_materials()
+    curated_over = load_json(ROOT / "curated_over_artifacts.json")
     source_root = (ROOT / config["source_artifacts"]).resolve()
     package = {"families": []}
     for family in families:
@@ -164,8 +165,7 @@ def construct() -> None:
             }
         for uid in ("A", "B"):
             key = f"over_{uid.lower()}"
-            path = RAW / "construction" / f"{fid}_{key}.json"
-            data = safe_call("qwen3_8b", over_prompt(family, uid), path)
+            data = curated_over[fid][uid]
             artifacts[key] = {
                 "artifact_type": key,
                 "recommendation": data["recommendation"],
