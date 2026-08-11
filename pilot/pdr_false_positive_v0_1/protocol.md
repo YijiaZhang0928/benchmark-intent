@@ -40,9 +40,9 @@
 - Presentation Fit；
 - Actionability & Practicality。
 
-先由 Claude Sonnet 根据 task/persona 一次性生成维度权重与每维两个 criterion，随后冻结 criteria。评分提示词保持 PDR-Bench 官方公开 prompt 的核心结构和原始 0–10 锚点。每份报告由 Claude Sonnet 重复评分三次；本地 Qwen3-8B 评分一次作为跨模型敏感性检查。
+先由本地 Qwen3-8B 根据 task/persona 一次性生成维度权重与每维两个 criterion，随后冻结 criteria。评分提示词保持 PDR-Bench 官方公开 prompt 的核心结构和原始 0–10 锚点。每份报告由本地 Qwen3-8B 重复评分三次；本地 DeepSeek-R1-7B 评分一次作为跨模型敏感性检查。
 
-偏离官方复现之处必须在结论中保留：官方 P/Q 主评委为 GPT-5，官方 criteria pipeline 分多个调用，本实验为降低成本将 criteria 生成合并为一次调用，且没有运行 Q/R。因此结果只能称为 **PDR-compatible stress test**，不能写成“官方 PDR-Bench 已被证明误判”。
+偏离官方复现之处必须在结论中保留：官方 P/Q 主评委为 GPT-5，官方 criteria pipeline 分多个调用，本实验使用两个本地 7B/8B 模型、为降低成本将 criteria 生成合并为一次调用，且没有运行 Q/R。因此结果只能称为 **PDR-compatible stress test**，不能写成“官方 PDR-Bench 已被证明误判”。
 
 ## 5. 运行前冻结的判断规则
 
@@ -76,4 +76,8 @@ DeepAlign 的正式判定不把这些量重新压成单一总分，而同时要�
 
 ## 8. 允许调试与停止规则
 
-允许修复 JSON 解析、CLI 超时、缺字段、权重归一化和匿名 ID 对齐；不得因分数不符合预期修改报告、oracle failure、6.0/0.5 阈值或删除不利 family。完成两个 family 的 Claude 三重复评分与 Qwen 单次敏感性评分后停止；若同一基础设施故障连续三次无法恢复，保留部分结果并标记不完整。
+允许修复 JSON 解析、CLI 超时、缺字段、权重归一化和匿名 ID 对齐；不得因分数不符合预期修改报告、oracle failure、6.0/0.5 阈值或删除不利 family。完成两个 family 的 Qwen 三重复评分与 DeepSeek 单次敏感性评分后停止；若同一基础设施故障连续三次无法恢复，保留部分结果并标记不完整。
+
+### 8.1 运行前隐私修订（仍未产生结果）
+
+第一次 `construct` 在外部 Claude CLI 返回任何内容前失败；随后提升权限的外部调用因会把未发表 task/persona 材料发送到外部服务而被安全策略拒绝。为避免外发研究材料，生成、criteria 和评分全部切换到本机已安装的 Ollama 模型。这个修订发生在任何新 artifact、criteria 或 score 生成之前；原阈值、family、oracle failure 和可证伪结论均未改变。

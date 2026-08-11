@@ -67,11 +67,12 @@ def call_model(model: str, prompt: str, timeout: int = 480) -> str:
         if completed.returncode != 0:
             raise RuntimeError(completed.stderr[-2000:])
         return completed.stdout
-    if model == "qwen3_8b":
+    if model in {"qwen3_8b", "deepseek_r1"}:
+        ollama_model = "qwen3:8b" if model == "qwen3_8b" else "deepseek-r1:7b"
         request = urllib.request.Request(
             "http://127.0.0.1:11434/api/chat",
             data=json.dumps({
-                "model": "qwen3:8b",
+                "model": ollama_model,
                 "messages": [{"role": "user", "content": prompt}],
                 "stream": False,
                 "think": False,
@@ -163,7 +164,7 @@ def construct() -> None:
         for uid in ("A", "B"):
             key = f"over_{uid.lower()}"
             path = RAW / "construction" / f"{fid}_{key}.json"
-            data = safe_call("claude_sonnet", over_prompt(family, uid), path)
+            data = safe_call("qwen3_8b", over_prompt(family, uid), path)
             artifacts[key] = {
                 "artifact_type": key,
                 "recommendation": data["recommendation"],
@@ -233,7 +234,7 @@ def generate_criteria() -> None:
             path = RAW / "criteria" / f"{family['family_id']}_{uid}.json"
             if path.exists():
                 continue
-            payload = safe_call("claude_sonnet", criteria_prompt(family, uid), path)
+            payload = safe_call("qwen3_8b", criteria_prompt(family, uid), path)
             dump_json(path, normalize_criteria(payload))
 
 
@@ -268,7 +269,7 @@ def calculate_score(scored: dict, criteria: dict) -> tuple[float, dict]:
     return total, dim_scores
 
 
-def score(judges: list[str], claude_repeats: int, qwen_repeats: int) -> None:
+def score(judges: list[str], primary_repeats: int, sensitivity_repeats: int) -> None:
     package = load_json(RAW / "artifacts.json")
     rows = []
     for family in package["families"]:
@@ -277,7 +278,7 @@ def score(judges: list[str], claude_repeats: int, qwen_repeats: int) -> None:
             persona = family["users"][uid]
             for artifact_type, artifact in family["artifacts"].items():
                 for judge in judges:
-                    repeats = claude_repeats if judge == "claude_sonnet" else qwen_repeats
+                    repeats = primary_repeats if judge == "qwen3_8b" else sensitivity_repeats
                     for repeat in range(1, repeats + 1):
                         path = RAW / "scores" / judge / family["family_id"] / uid / f"{artifact_type}_r{repeat}.json"
                         payload = safe_call(
@@ -348,15 +349,15 @@ def analyze() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("stage", choices=["construct", "criteria", "score", "analyze", "all"])
-    parser.add_argument("--judges", default="claude_sonnet,qwen3_8b")
-    parser.add_argument("--claude-repeats", type=int, default=3)
-    parser.add_argument("--qwen-repeats", type=int, default=1)
+    parser.add_argument("--judges", default="qwen3_8b,deepseek_r1")
+    parser.add_argument("--primary-repeats", type=int, default=3)
+    parser.add_argument("--sensitivity-repeats", type=int, default=1)
     args = parser.parse_args()
     stages = ["construct", "criteria", "score", "analyze"] if args.stage == "all" else [args.stage]
     for stage in stages:
         if stage == "construct": construct()
         elif stage == "criteria": generate_criteria()
-        elif stage == "score": score(args.judges.split(","), args.claude_repeats, args.qwen_repeats)
+        elif stage == "score": score(args.judges.split(","), args.primary_repeats, args.sensitivity_repeats)
         else: analyze()
 
 

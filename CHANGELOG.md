@@ -6,7 +6,7 @@
 - 复核 PDR-Bench v3 论文和官方代码：P-Score 使用 Goal/Content/Presentation/Actionability 四维、task/persona 动态 criteria、0–10 逐项评分与层级加权平均；官方 P/Q judge 为 GPT-5，PDR 没有定义 6 分即通过。
 - 在结果出现前冻结 `pilot/pdr_false_positive_v0_1/`：两个 task family、matched/general-good/over-personalized 五类 artifact、关键失败 oracle、`absolute_high≥6`、`near_matched≤0.5` 与 rank reversal 均不得事后修改。
 - 明确可证伪措辞：general-good 高分只证明 absolute adaptation 不能识别 counterfactual specificity；over-personalized 在关键约束失败后仍高分/近 matched 才是潜在 false positive；若被显著降分则撤回强 claim。
-- 记录复现边界：本轮为 Claude Sonnet 三重复 + Qwen3-8B 单次敏感性检查、合并 criteria 生成、不跑 Q/R 的 PDR-compatible stress test，不得表述为官方 GPT-5 PDR-Bench 的完整复现。
+- 记录复现边界：外部 Claude 调用因未发表材料外发风险在返回新内容前被阻断，故在结果产生前修订并重新冻结为本地 Qwen3-8B 三重复 + DeepSeek-R1-7B 单次敏感性检查；合并 criteria 生成、不跑 Q/R，不得表述为官方 GPT-5 PDR-Bench 的完整复现。
 - 核对 ICLR 2027 官方期限：摘要 2026-09-11 AOE、全文 2026-09-16 AOE；冻结 2026-08-17 为 thesis/metric/pilot 的内部方向截止线。
 
 ## v0.45 ElicitAlign-Bench natural elicitation pivot - 2026-08-12
