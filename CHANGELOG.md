@@ -8,6 +8,7 @@
 - 明确可证伪措辞：general-good 高分只证明 absolute adaptation 不能识别 counterfactual specificity；over-personalized 在关键约束失败后仍高分/近 matched 才是潜在 false positive；若被显著降分则撤回强 claim。
 - 记录复现边界：外部 Claude 调用因未发表材料外发风险在返回新内容前被阻断，故在结果产生前修订并重新冻结为本地 Qwen3-8B 三重复 + DeepSeek-R1-7B 单次敏感性检查；合并 criteria 生成、不跑 Q/R，不得表述为官方 GPT-5 PDR-Bench 的完整复现。
 - 核对 ICLR 2027 官方期限：摘要 2026-09-11 AOE、全文 2026-09-16 AOE；冻结 2026-08-17 为 thesis/metric/pilot 的内部方向截止线。
+- 本地反例构造 v0.1 在评分前的 manipulation audit 中失败：部分报告直接承认硬约束冲突或推荐自相矛盾；全部失败输出保留到 rejected 目录，生成说明在任何 criteria/score 产生前修订并重新冻结，oracle 与阈值未变。
 
 ## v0.45 ElicitAlign-Bench natural elicitation pivot - 2026-08-12
 

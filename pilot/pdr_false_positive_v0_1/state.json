@@ -1,14 +1,15 @@
 {
   "project": "pdr_false_positive_v0_1",
-  "status": "protocol_relocked_local_only_not_run",
+  "status": "protocol_relocked_after_failed_manipulation_not_scored",
   "protocol_locked_at": "2026-08-12",
   "locked_sha256": {
-    "protocol.md": "306ca3c77b9660d55a2020992b463f3525e1f366fb67bcc40c82ccaf04d778ca",
+    "protocol.md": "37c9938e8aa2fa1e10397e3506b402cac4fdc0ebf213db41f7f18ec1b12aa4c3",
     "cases.json": "83d2182dc4bd5e8f0e9745e3180699ce6fc96049e680ba6597aede72bbb95e29",
-    "run_experiment.py": "82cd2eed87d3c745a20495adaae35eb9cbeec6a434335eea6ce3b95bdd9b1cd6"
+    "run_experiment.py": "0b6b7a098170b9bbb918f249ce719acdcfe61749c8f668dbd061e090d4158df2"
   },
   "current_stage": "construct",
   "completed": [],
   "privacy_amendment": "External Claude execution was blocked before any new result; all new generation and scoring use local Ollama models only.",
+  "manipulation_amendment": "Construction v0.1 failed the pre-score audit and is preserved under raw/rejected_construction/v0_1; prompt clarified before any criteria or score generation.",
   "next_action": "Generate frozen over-personalized artifacts locally and run manipulation audit."
 }

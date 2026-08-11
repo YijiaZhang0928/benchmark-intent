@@ -81,3 +81,7 @@ DeepAlign 的正式判定不把这些量重新压成单一总分，而同时要�
 ### 8.1 运行前隐私修订（仍未产生结果）
 
 第一次 `construct` 在外部 Claude CLI 返回任何内容前失败；随后提升权限的外部调用因会把未发表 task/persona 材料发送到外部服务而被安全策略拒绝。为避免外发研究材料，生成、criteria 和评分全部切换到本机已安装的 Ollama 模型。这个修订发生在任何新 artifact、criteria 或 score 生成之前；原阈值、family、oracle failure 和可证伪结论均未改变。
+
+### 8.2 运行前 manipulation 修订（尚未生成 criteria 或 score）
+
+本地构造 v0.1 未通过预定 manipulation audit：F02 反例直接承认方案违反硬约束，F04-A 的推荐句又与 forced direction 自相矛盾。全部 v0.1 输出原样移入 `raw/rejected_construction/v0_1/`。生成说明因此增加三个只影响操纵有效性的约束：不得承认错配；必须明确且一致地支持 forced direction；报告长度为 700–1100 个中文字符。family、oracle failure、评分阈值与评分协议均不变。此修订发生在任何 criteria 或 score 产生前。
