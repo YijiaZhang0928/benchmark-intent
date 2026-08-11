@@ -1,0 +1,112 @@
+schema_version: "0.45"
+benchmark: ElicitAlign-Bench
+description: >-
+  Machine-readable case bundle for evaluating self-initiated recovery and use
+  of decision-relevant user state under natural underspecification.
+
+case:
+  case_id: "required:string"
+  family_id: "required:string"
+  user_id: "required:string"
+  case_type: "required:enum[critical_obvious,critical_subtle,sufficient,irrelevant_missing]"
+  language: "required:string"
+  domain: "required:string"
+  provenance: "required:object"
+  version: "required:string"
+  frozen_at: "required:datetime"
+
+task_metadata:
+  task_shell: "required:string"
+  research_intent: "required:string"
+  use_context: "required:string"
+  deliverable: "required:string"
+  stakes: "required:enum[low,medium,high]"
+  evidence_snapshot_id: "required:string"
+  tools: "required:list"
+  execution_budget: "required:object"
+  common_fact_core: "required:list[string]"
+  success_conditions: "required:list[string]"
+
+user_state_ledger:
+  visibility_to_agent: hidden
+  fields:
+    - field_id: "required:string"
+      value: "required:any"
+      evidence_source: "required:string"
+      participant_verified: "required:boolean"
+      decision_relevance: "required:enum[critical,relevant,irrelevant]"
+      affects_decision_nodes: "required:list[string]"
+      sensitivity: "required:enum[public,personal,sensitive]"
+      directly_askable: "required:boolean"
+      inferable_from_history: "required:boolean"
+      stability: "required:enum[session,episodic,durable]"
+
+underspecification:
+  natural_instruction: "required:string"
+  full_instruction: "required:string"
+  omitted_field_ids: "required:list[string]"
+  omission_rationale: "required:string"
+  generic_execution_remains_possible: "required:boolean"
+  expected_wrong_default: "optional:string"
+  acceptable_question_routes: "required:list[object]"
+  naturalness_review:
+    annotator_1: "required:enum[pass,revise,fail]"
+    annotator_2: "required:enum[pass,revise,fail]"
+    adjudication: "required:enum[pass,revise,fail]"
+
+contracts:
+  must_change:
+    - node_id: "required:string"
+      condition: "required:string"
+      expected_change: "required:string"
+      evidence: "required:string"
+  must_hold:
+    - node_id: "required:string"
+      invariant: "required:string"
+  must_not:
+    - node_id: "required:string"
+      forbidden_behavior: "required:string"
+
+conditions:
+  natural_interactive:
+    clarification_nudge: false
+    interaction_available: true
+    user_state_visible: false
+  nudge_interactive:
+    clarification_nudge: true
+    interaction_available: true
+    user_state_visible: false
+  no_ask:
+    clarification_nudge: false
+    interaction_available: false
+    user_state_visible: false
+  full_persona_oracle:
+    clarification_nudge: false
+    interaction_available: false
+    user_state_visible: relevant_fields_only
+
+trajectory_trace:
+  events: "required:list[object]"
+  node_state_values: "required:map[unknown,asked,answered,planned,reported,decision_changed]"
+  stop_reason: "required:string"
+  unresolved_critical_nodes: "required:list[string]"
+  burden: "required:object"
+  boundary_violations: "required:list[object]"
+
+evaluation:
+  absolute_adequacy: "required:number"
+  common_quality: "required:number"
+  factual_reliability: "required:number"
+  target_user_utility: "required:number"
+  need_detection: "required:object"
+  elicitation: "required:object"
+  stopping: "required:object"
+  utilization: "required:object"
+  contract_results: "required:object"
+  judge_versions: "required:list[string]"
+
+annotation_policy:
+  construct_labels_require_two_annotators: true
+  llm_labels_are_ground_truth: false
+  observed_results_may_overwrite_prefrozen_labels: false
+  analysis_cluster: family_id

@@ -1,20 +1,88 @@
-# DeepAlign-Bench 跨 Session 项目记忆
+# ElicitAlign-Bench / DeepAlign archive 跨 Session 项目记忆
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-11
-当前版本：v0.44（selective epistemic revision 最近邻审计；正式 Proposal 仍为 v0.33 快照）
+最后更新：2026-08-12
+当前版本：v0.45（自然欠指定任务中的自主用户状态发现、澄清与最终利用）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
 
-## 1. 项目目标与核心识别
+## 0. 2026-08-12：冻结 ElicitAlign-Bench v0.45 候选与 novelty-kill gate
 
-项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文。v0.33 提案把目标具体化为评估个性化 Deep Research 交付物是否因果性地改善真实用户决策；2026-08-10 新颖性否决测试已判定该目标**适合作为测量/外部效度层，但不足以单独承担新 benchmark 的问题定义**。
+### 0.1 当前研究问题
+
+当前候选不是“给定 persona 后模型会不会个性化”，而是：**用户给出的任务已经足够让 agent 直接开始，却缺少 1–3 个会改变最终建议的用户条件时，通用 Deep Research agent 会不会在没有提醒的情况下自己发现缺口、问对问题、知道何时停止，并把回答真正用于最终交付物。**
+
+只主张可观察的 `self-initiated user-state discovery and use`，不把行为结果解释为模型内部“真正关心”或“理解”用户。
+
+### 0.2 为什么 broad clarification 叙事被否决
+
+本轮核对的最直接近邻包括：[PDR-Bench](https://arxiv.org/abs/2509.25106)、[IDRBench](https://arxiv.org/abs/2601.06676)、[IntentRL](https://arxiv.org/abs/2602.03468)、[DiscoBench](https://arxiv.org/abs/2606.27669)、[G-STEER](https://arxiv.org/abs/2608.05876) 和 [Ask Early, Ask Late, Ask Right](https://arxiv.org/abs/2605.07937)。IDRBench 已测欠指定 Deep Research 的交互收益/成本，IntentRL 已研究主动澄清训练，DiscoBench 已测搜索歧义的发现—提问—恢复，G-STEER 已在个性化 Deep Research 中联合建模 Retrieve/Ask/Stop、target coverage 与最终报告 P/Q。
+
+因此不能声称“首次研究 clarification”“首次把提问质量和最终交付联系起来”或“现有工作只给显式 persona”。最危险的审稿意见已经冻结为：**“这是 G-STEER 的 benchmark 化，加了更多对照。”** 新方向只能靠实证出现已有指标解释不了的系统重排或利用失败来过门。
+
+### 0.3 四条件能力分解
+
+1. `C0 Natural-Interactive`：自然欠指定 instruction；无 persona、无澄清提醒；允许提问。主条件，测自主发现和触发。
+2. `C1 Nudge-Interactive`：同一 instruction，只增加“若缺少会改变答案的用户信息，可以先澄清”。诊断被提醒后的执行能力。
+3. `C2 No-Ask`：同一自然 instruction，但关闭用户通道。提供通用回答下限。
+4. `C3 Full-Persona Oracle`：直接提供完整、经用户确认且与任务有关的 user-state ledger。提供信息充分上限，但仍接受同一最终交付评分，不把 oracle 输出当参考答案。
+
+主实验绝不能提醒个性化；否则测到 prompt compliance。也不能先跑模型再只保留“多数模型会问”的任务；否则主动询问强的模型反向定义数据分布，产生行为选择偏差。任务先由人类决策逻辑和真实用户冻结，再让模型暴露差异。
+
+### 0.4 数据单位与 case 构造
+
+统计单位继续是 `task family`：共享同一任务核心、证据、工具、预算、交付格式和共同事实，只在 2–4 个会改变决策的用户变量上构成两位配对用户。正式数据优先真实用户 task shell；找不到第二位共享任务的用户时，可用“一位真实用户 + 最小反事实用户”，但必须由相似目标人群验证自然性。纯 LLM persona 只用于 smoke test。
+
+每个 case 包含：case metadata、task metadata、隐藏 user-state ledger、自然欠指定记录、`must-change / must-hold / must-not` contracts、四条件运行记录和逐节点轨迹。case type 必须覆盖 `critical-obvious`、`critical-subtle`、`sufficient` 和 `irrelevant-missing`；后两类用于测过问，而不是只挑明显缺信息的任务。
+
+### 0.5 评分与归一化决定
+
+不再使用单一差值或总分讲完整故事。必须同时报告四个 arm 的绝对分和两个 profile：
+
+- 轨迹层：Need Detection 的 sensitivity/specificity/macro-F1、Targeted Elicitation Recall、Question Precision、weighted information gain per turn、Stopping Sufficiency、用户 burden、隐私/权限 boundary。
+- 交付层：Absolute Adequacy、`must-change / must-hold / must-not` compliance、共同质量、事实可靠性和目标用户效用。
+
+对每个关键用户节点追踪 `unknown → asked → answered → planned → reported → decision_changed`，把“没发现”“问偏了”“问到了但停早”“计划用了但长程执行丢失”“报告提到了但没有改变建议”拆开。
+
+三个主要对比只解释能力来源：
+
+- `SelfInitiatedGain = U(Natural) − U(No-Ask)`；
+- `NudgeGap = U(Nudge) − U(Natural)`；
+- `OracleGap = U(Oracle) − U(Natural)`。
+
+`OracleRecovery = [U(Natural) − U(No-Ask)] / [U(Oracle) − U(No-Ask)]` 只作次级描述，并且只在分母超过预注册阈值时计算。它不能替代原始 arm、绝对合格门和 family-level paired effect；小分母、负分母与 Oracle 本身失败均需要单独处理。
+
+成功是非补偿式的：critical-missing 上能发现、sufficient 上不过问；Natural 相对 No-Ask 有真实收益；Natural 自身绝对合格；共同质量/事实可靠性 non-inferior；无隐私/权限违规；至少一个必要 must-change 节点真正达到 `decision_changed`。任一门失败都不能用其他高分抵消。
+
+### 0.6 统计和最小实验
+
+主分析使用 family-level paired effects。family-blocked permutation 在同一 family 内交换条件标签，cluster bootstrap 每次抽取整个 family；不同用户、条件、随机 seed 和 rubric leaf 不当作独立样本。
+
+先跑 `3 family × 2 users × 4 case types × 4 conditions × 4–6 systems` 的 novelty-kill pilot。三个 family 暂定团队知识库采购、国际家庭旅行、研究工具选型。第一轮可由 LLM 生成 shell/persona，但作者必须逐项确认自然性、决策相关性、可问性、无答案泄漏；合成 pilot 只能验证 harness 和诊断可行性，不能支撑论文效度结论。
+
+继续到 24 family 的必要条件：至少两个 family 有意义地分开四条件；至少一个系统出现 Natural/Oracle 排名变化或稳定的“问到但没用”；充分任务不过问；人工 contract 评分一致；成本可在八周内完成。若一句 Nudge 让所有系统接近 Oracle、G-STEER/IDRBench 指标完全解释排序和失败、真人与模拟器反转核心结论，或差异只来自长度/搜索预算/通用模型质量，则停止、收窄或换题。
+
+### 0.7 交付与开放问题
+
+当前工作名冻结为 `ElicitAlign-Bench`。v0.45 已同步正式版、6 页正式精简版、8 页人话版、6 页导师 brief、3200×1800 端到端 PNG/SVG、case/evaluation YAML、HTML 入口、README 与变更日志。旧 DeepAlign v0.33 交付物移入 `deliverables/archive/DeepAlign-Bench-v0.33/`，不删除历史方法资产。
+
+仍未解决的问题：
+
+1. 无 profile / 无提醒条件是否真的产生跨系统排序变化，而不是所有系统都不问；
+2. G-STEER、IDRBench 指标加入回归后，paired contracts 和逐节点利用链是否仍提供独立解释；
+3. 真人与 user simulator 的排序一致性是否足以允许主榜使用模拟器；
+4. 三类任务是否足以暴露不同 elicitation/utilization 机制，还是领域差异主要由风险和搜索预算驱动；
+5. 两个月内能否招募、验证并重放足够的 paired real-user family。
+
+## 1. 历史设计资产：DeepAlign-Bench v0.33
+
+项目目标仍是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文。v0.33 曾把目标具体化为评估个性化 Deep Research 交付物是否因果性地改善真实用户决策；2026-08-10 新颖性否决测试已判定该目标**适合作为测量/外部效度层，但不足以单独承担新 benchmark 的问题定义**。本节以下内容保留为历史判断和可复用方法资产；当前方向以第 0 节 ElicitAlign-Bench v0.45 为准。
 
 v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工具和预算，用 task-only/matched/swapped、CFA 与三类契约确认报告处理在共同质量上可比、在用户条件上有区分力。Phase B 将三种报告在等价 task shell 上随机分配给真实目标用户，以 decision regret、wrong-user harm、硬约束和置信度校准为终点。PF/CFA 是 qualification 与中介，不再是主终点。
 
-当前状态：v0.33 的一句话主张与 `DDE = Regret_task-only − Regret_matched` 保留为已实现的旧分支快照，但**不再视为足够的最终论文 thesis**。下一版必须先冻结一个与 PDR-Bench、MyScholarQA、DRFLOW、DECISIVE 和已有 decision-grade Deep Research benchmark 都有明确区分的新问题，再同步改写全部交付物。
+当前状态：v0.33 的一句话主张与 `DDE = Regret_task-only − Regret_matched` 保留为旧分支快照，但**不再视为足够的最终论文 thesis**。v0.45 已完成新候选的第一次正式冻结；是否继续扩展由 novelty-kill pilot 决定。
 
 ### 1.0b 2026-08-10：新颖性否决测试与方向重开
 

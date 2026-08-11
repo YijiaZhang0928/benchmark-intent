@@ -1,58 +1,45 @@
 # benchmark-intent
 
-> **跨 Session 继续项目前，请先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。** 它记录当前研究决定、术语、开放问题和每轮同步/提交协议。
+> 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前交付物（selective epistemic revision audit v0.44；正式 Proposal 仍为 v0.33 快照）
+## 当前方向：ElicitAlign-Bench v0.45
 
-- `deliverables/SelectiveEpistemicRevision_最近邻审计.md`：审计多轮对话中“被用户带着改口”的现象；否决 broad consistency/revision gap，只保留 claim–premise–criterion 依赖图上最小、有理由、可归因的选择性修订候选，并冻结 3-family、432-trajectory novelty-kill pilot。
+ElicitAlign-Bench 评测一个更接近真实使用的问题：用户给出的任务足够让 agent 直接开始研究，却漏掉 1–3 个会改变最终建议的用户条件。主实验不提供 persona，也不提醒“请先澄清”，观察通用 agent 是否会自主发现缺口、问对问题、知道何时停止，并把用户回答真正用于长程 Deep Research 交付物。
 
-- `deliverables/DeepAlign-Bench_测量效度重构备忘录.md`：将 DeepAlign 从“新差值公式”重构为 personalization measurement-validity benchmark；冻结 absolute adequacy、bilateral specificity、task-only benefit、shared-quality non-inferiority、boundary 与真人 outcome validity 六层 profile，并设计 3-family vertical slice 否决门。
+当前设计用四个条件分开四类能力：
 
-- `deliverables/BeyondAnswer_认知贡献Gap审计.md`：否决 broad “AI 是否产生认知增量”的 gap，加入 CoCoDial/TATA、matched-content dialogue 与真人 transfer 近邻；只保留 strong standalone + content-matched/yoked control + AI-removal transfer 下的 beyond-answer causal contrast。
+1. `Natural-Interactive`：无 persona、无澄清提醒，但允许提问；测自主发现与触发。
+2. `Nudge-Interactive`：只提醒可澄清；测被提醒后的执行能力。
+3. `No-Ask`：不允许提问；测通用回答下限。
+4. `Full-Persona Oracle`：提供完整相关用户状态；测信息充分时的可达上限。
 
-- `deliverables/MentorBench_认知增强Novelty审计.md`：否决 broad “AI 像导师一样提升用户思考”作为新 benchmark 原语；核对 CollabLLM、METIS、CoLabScience、KITE、Int-Bench、tutor benchmarks 与 HumanAgencyBench，只保留同时要求当前方案增益、AI 移除后真人迁移和 agency preservation 的 Learning Without Displacement 高风险候选。
+评分不压成一个总分。轨迹层报告需要识别、关键变量召回、问题精准度、每轮信息增益、停止充分性、用户负担与隐私/权限边界；交付层先检查绝对合格，再检查 `must-change / must-hold / must-not`、共同质量、事实可靠性和目标用户效用。三个差值只解释能力来源，四个原始条件的绝对分始终同时报告。
 
-- `deliverables/InterventionBoundary_方向收敛备忘录.md`：接受“研究 intervention boundary 而非持续批判”的构念转向，同时用 Int-Bench、CoLabScience、ProMediate 与 VoI 否决 broad gap；将剩余问题收窄为 evidence/stakes 反事实网格上的 outcome-grounded boundary curve，并冻结 336-episode novelty-kill pilot。
+## 当前交付物
 
-- `deliverables/CognitiveGain_方向收敛备忘录.md`：在 Calibrated Disagreement 与 Cognitive Gain 之间选择后者的收窄版本；否决 broad Cognitive Gain，把主估计对象改为同-backbone proactive-vs-reactive 的 agent-initiated epistemic gain，并冻结四段贡献归因、no-harm 门和 144-episode novelty-kill pilot。
+- [`deliverables/ElicitAlign-Bench_端到端流程图_v0.45.png`](deliverables/ElicitAlign-Bench_端到端流程图_v0.45.png)：3200×1800 导师汇报主图，覆盖 case/task 元数据、隐藏 user-state ledger、欠指定构造、四类 case、四个实验条件、交互循环、Deep Research 执行、非补偿评分、系统差异与 novelty-kill gate；同名 SVG 为可编辑源。
+- [`deliverables/ElicitAlign-Bench_正式研究Proposal.pdf`](deliverables/ElicitAlign-Bench_正式研究Proposal.pdf)：17 页完整方法底稿；同名 DOCX 可编辑。
+- [`deliverables/ElicitAlign-Bench_正式Proposal精简版.pdf`](deliverables/ElicitAlign-Bench_正式Proposal精简版.pdf)：6 页正式精简版，满足不超过 10 页约束；同名 DOCX 可编辑。
+- [`deliverables/ElicitAlign-Bench_完整人话版.pdf`](deliverables/ElicitAlign-Bench_完整人话版.pdf)：8 页直白解释版；同名 DOCX 可编辑。
+- [`deliverables/ElicitAlign-Bench_汇报精简版.pdf`](deliverables/ElicitAlign-Bench_汇报精简版.pdf)：6 页、15–20 分钟导师汇报版；同名 DOCX 可编辑。
+- [`deliverables/ElicitAlign-Bench_HTML汇报版.html`](deliverables/ElicitAlign-Bench_HTML汇报版.html)：单文件离线汇报入口。
+- [`benchmark_schema/elicitalign_case.schema.yaml`](benchmark_schema/elicitalign_case.schema.yaml)：case、task、隐藏用户状态、欠指定记录、三类 contracts、条件和轨迹的机器可读结构。
+- [`benchmark_schema/elicitalign_evaluation.protocol.yaml`](benchmark_schema/elicitalign_evaluation.protocol.yaml)：三个能力对比、oracle recovery 次级归一化、非补偿成功门、family-level 统计和论文生死门。
 
-- `deliverables/AdvisorBench_建设性判断Gap审计.md`：核对 HumanAgencyBench、SycoBench-600、Two Axes、AppWorld-UL、RegretBench、CarryOnBench、SoundnessBench 等直接近邻；否决 broad AdvisorBench，只保留 outcome-grounded plan-intervention policy 的窄候选与三天 novelty-kill pilot。
+旧 DeepAlign-Bench v0.33 的交付快照已移入 `deliverables/archive/DeepAlign-Bench-v0.33/`。它仍可作为 counterfactual personalization 与下游效用的历史设计资产，但不是当前论文入口。
 
-- `deliverables/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`：逐项解释合成最小实验能证明与不能证明的内容；记录 OGOR 被通用能力解释否决的理由，并将新首选收敛为多 artifact workspace 在单一 delta 后的 dependency-aware selective revalidation。
+## 当前最强风险
 
-- `deliverables/DeepAlign-Bench_正式研究Proposal.pdf`：方法学底稿；DDE 是真实用户主终点，v0.33 为 Phase A 增加 `A_min`、角度/幅度诊断与 task-only non-inferiority/added-value 分层。
-- `deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`：7 页标准论文 Proposal（满足 ≤10 页约束），保留 RQ/H、方法、实验、统计、风险、时间表和参考文献。
-- `deliverables/DeepAlign-Bench_完整人话版.pdf`：28 页直白语言版，适合组内逐项讨论。
-- `deliverables/DeepAlign-Bench_汇报精简版.pdf`：10 页导师汇报稿，适合 15–20 分钟讲解。
-- `deliverables/DeepAlign-Bench_HTML汇报版.html`：离线可打开的统一阅读入口，可下载四版 PDF/Word。
-- `deliverables/DeepAlign-Bench_Rubric编译器工作台.html`：离线可交互阅读的 compiler 专页，用一个完整 case 展示模板选择、leaf expansion、绑定和 CFA 计算。
-- `deliverables/DeepAlign-Bench_七篇相关论文速览.html`：保留兼容文件名，内容已扩展为 personalization、澄清、权限、委派、证据可靠性与下游效用地图。
-- `deliverables/DeepAlign-Bench_论文图表蓝图.html`：主文五张图、四张表及附录图表规划；包含 Figure 3–5 的结果图可视原型。
-- `deliverables/DeepAlign-Bench_一页汇报图.pptx`：可直接汇报的一页 16:9 PowerPoint；同内容 PNG/SVG 位于 `proposal_assets/`。
-- `deliverables/DeepAlign-Bench_详细流程图.png`：Phase A 工程详细图；展示 task/persona 构造、三环境运行、2×2 评价和报告资格门，不能单独支持真人下游效用结论；同名 SVG 可编辑源位于 `proposal_assets/` 和 `deliverables/`。
-- `deliverables/DeepAlign-Bench_端到端流程图_v0.32.png`：保留的 Phase A 分区式学术信息图；完整 v0.32 两阶段因果链以一页主图和 `downstream_decision.protocol.yaml` 为准。
-- `deliverables/DeepAlign-Bench_整体框架与最小实验_v0.33.png`：本周导师汇报主图；一页包含 case/task/persona 元数据、rubric compiler、系统/环境、Phase A/Phase B、统计边界、可回答问题、合成 pilot 结果与下一步；同名 SVG 为可编辑源。
-- `pilot/minimal_metric_v0_1/`：预先提交的4-family合成 Phase A 协议、24份交付物、48个 artifact-judge 单元、六类指标压力测试、原始日志、applicability 审计与可行性报告。
-- `pilot/objective_repair_v0_1/`：2-family × twin-world 的 Outcome-Grounded Objective Repair 构念实验；含冻结协议、单变量 case、Qwen/Claude 逐步工具轨迹、schema debug 日志、确定性策略压力测试和 literal-vs-outcome 排序反转报告。
-- `benchmark_schema/rubric_module_library.yaml`：36 个预定义 module（6 Core、9 Personalization、6 Intent、7 Deliverable、4 Operator、4 Risk），每个 case 只选择适用子集。
-- `benchmark_schema/data_factory.protocol.yaml`：把多篇文献映射为设计资产的 source-to-design ledger、数据构建阶段、vertical slice 停止门、anchor 对照和 E1→E3→E2 环境搭建顺序。
-- `benchmark_schema/construction_annotation.protocol.yaml`：自动 provenance、运行前双人人工构念标注、pilot 后 observed 字段，以及 seed funnel、真人招募和防泄漏规则。
-- `benchmark_schema/rubric_node_registry.yaml`：在 36 个父级 module 与 case-specific leaf 之间冻结 direction node、参数槽、证据、锚点、A/B 对称与扩库门。
-- `benchmark_schema/environment_build.protocol.yaml`：冻结 E1 主轨、E3 薄层诊断、E2 观察性外部效度的组件、工期、难点与 go/no-go。
-- `benchmark_schema/downstream_decision.protocol.yaml`：冻结 Phase A 报告资格审查、Phase B 真人三臂 trial、utility、随机化、盲化、DDE/错配伤害与 pilot 扩展门。
-- `benchmark_schema/rubric_leaf.schema.yaml`、`rubric_template_registry.yaml`、`metric_binding.schema.yaml` 与 `rubric_bundle.example.yaml`：compiler contract、模板注册表、leaf—metric 绑定和完整编译示例。当前版本定义接口与预注册对象；自动 validator/compiler 是第 1 周实现项。
+Broad clarification / when-to-ask 不是新 gap。IDRBench、IntentRL、DiscoBench 和 G-STEER 已分别覆盖欠指定 Deep Research 交互、主动澄清训练、搜索歧义恢复和个性化 Retrieve/Ask/Stop。ElicitAlign 只有在无 profile、无提醒、paired real-user contracts、充分信息负对照以及“问到—计划—报告—改变决定”的逐节点追踪产生现有指标解释不了的新排序或新失败时才成立。
 
-四版共用 v0.33 两阶段研究设计；差别只在结构、语言密度与细节层级。
+因此先跑 3-family novelty-kill pilot；若一句 Nudge 让所有系统接近 Oracle，或 G-STEER/IDRBench 指标完全预测系统排序，项目应收窄或换题，而不是继续扩数据。
 
 ## 研究协作约定
 
-- 将讨论中提出的想法视为待检验的研究假设，而不是默认正确的设计结论。
-- 每次实质性修改前，结合原论文、近期相关工作、可证伪性与 ICLR 审稿标准进行批判性压力测试。
-- 明确区分文献证据、合理推断、设计选择与尚待实验验证的主张，避免把动机写成结果。
-- 同步更新所有受影响的交付物：Proposal 源稿、DOCX、PDF、HTML 汇报版，以及相关主图与附件。
-- 对 taxonomy、rubric、ground truth、judge、数据划分和统计结论分别检查循环论证、信息泄漏、分布外泛化、测量效度与可复现性。
-- 每轮交付前进行内容一致性检查、文档渲染检查和网页离线可用性检查。
-- 每次实质性更新在上述检查通过后，将 Proposal 源稿、HTML 源码、主图和 DOCX/PDF/单文件 HTML 一并提交到 `main`，并推送至 `github.com/YijiaZhang0928/benchmark-intent`。
-- 每次实质性对话也要更新 `PROJECT_MEMORY.md`；新 Session 以该文件而不是模型会话记忆作为项目状态真源。
-- 所有文中编号引用默认提供可点击跳转，直接指向论文或官方文档原文；Markdown、DOCX、PDF 与 HTML 同步保留链接。
-- Git commit message 使用 `proposal vX.Y: <核心变化>`；`CHANGELOG.md` 记录设计判断和范围变化，QA 图片、构建缓存与临时文件不进入版本库。
+- 将讨论中的想法视为待检验假设；从可证伪性、测量效度、混杂、泄漏、统计功效、工程可行性和 ICLR 审稿风险压力测试。
+- 首次出现项目术语时说明它是什么、由谁创建、何时冻结、输入输出和为什么需要，避免用内部缩写替代推理。
+- 每次实质性修改同步受影响的 Proposal 源稿、正式/精简/人话/汇报版、schema、HTML、图、DOCX/PDF、README、项目记忆和变更日志。
+- DOCX/PDF 必须渲染逐页检查；正式精简版不超过 10 页；HTML 必须构建、测试并生成 standalone。
+- 编号引用在 Markdown、DOCX、PDF 和 HTML 中默认可点击并直达论文或官方文档。
+- 不覆盖或暂存用户的无关修改与未跟踪研究目录。
+- 校验后提交 `main`，commit 格式为 `proposal vX.Y: <核心变化>`，并推送到 `origin`。

@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="1800" viewBox="0 0 3200 1800" role="img" aria-labelledby="title desc">
+  <title id="title">ElicitAlign-Bench 端到端研究流程</title>
+  <desc id="desc">从真实任务与隐藏用户状态、自然欠指定输入、四条件实验、澄清循环、最终交付评分，到系统能力分解和论文否决门的完整框架。</desc>
+  <defs>
+    <style>
+      .cn{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;fill:#17324d}
+      .title{font-size:54px;font-weight:700}.subtitle{font-size:25px;fill:#587087}.stage{font-size:29px;font-weight:700}.h{font-size:24px;font-weight:700}.body{font-size:20px}.small{font-size:17px}.tiny{font-size:15px}.white{fill:#fff}.muted{fill:#657a8d}.num{font-size:25px;font-weight:700;fill:#fff}.mono{font-family:Menlo,Consolas,monospace;font-size:17px;fill:#21455f}
+      .card{fill:#fff;stroke:#cbd8e3;stroke-width:2}.soft{fill:#f7fafc;stroke:#d7e2eb;stroke-width:2}.arrow{stroke:#7890a4;stroke-width:4;fill:none;marker-end:url(#arrow)}
+      .thin{stroke:#9fb2c2;stroke-width:2;fill:none}.dash{stroke-dasharray:10 8}.pill{font-size:16px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7890a4"/></marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#14314a" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="3200" height="1800" fill="#f3f7fa"/>
+  <rect x="38" y="32" width="3124" height="126" rx="24" fill="#fff" stroke="#c8d6e1" stroke-width="2"/>
+  <text x="86" y="92" class="cn title">ElicitAlign-Bench：从缺失用户信息到个性化交付</text>
+  <text x="88" y="132" class="cn subtitle">无显式 persona、无澄清提醒的自然输入 → 自主发现 → 精准提问 → 充分停止 → 最终交付利用；完整 persona 仅作 oracle ceiling</text>
+  <rect x="2550" y="65" width="560" height="58" rx="17" fill="#173f5f"/><text x="2830" y="103" text-anchor="middle" class="cn white h">主张必须通过 G-STEER / IDRBench 否决门</text>
+
+  <!-- 1 data -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="190" width="680" height="955" rx="24" class="card"/>
+    <rect x="40" y="190" width="680" height="74" rx="24" fill="#dff2ec"/><circle cx="84" cy="227" r="24" fill="#16856b"/><text x="84" y="236" text-anchor="middle" class="cn num">1</text><text x="124" y="237" class="cn stage">真实任务与隐藏真值</text>
+  </g>
+  <rect x="72" y="292" width="616" height="142" rx="18" fill="#eef9f5" stroke="#94cdbd" stroke-width="2"/>
+  <text x="98" y="329" class="cn h">Task family：共同任务不变</text>
+  <text x="98" y="362" class="cn body">固定 task shell · evidence snapshot · tools · budget</text>
+  <text x="98" y="393" class="cn body">固定 deliverable · common fact core · success conditions</text>
+  <rect x="72" y="454" width="298" height="232" rx="18" fill="#f2f8ff" stroke="#9dc2e4" stroke-width="2"/>
+  <text x="98" y="491" class="cn h">Case metadata</text>
+  <text x="98" y="525" class="cn body">case / family / user ID</text><text x="98" y="556" class="cn body">来源 · 语言 · 领域 · stakes</text><text x="98" y="587" class="cn body">构建/审核/冻结时间</text><text x="98" y="618" class="cn body">环境与版本 provenance</text><text x="98" y="650" class="cn small muted">客观字段自动导入，人工抽查</text>
+  <rect x="390" y="454" width="298" height="232" rx="18" fill="#fff7e8" stroke="#e3bd72" stroke-width="2"/>
+  <text x="416" y="491" class="cn h">Task metadata</text>
+  <text x="416" y="525" class="cn body">research intent · context</text><text x="416" y="556" class="cn body">deliverable · evidence need</text><text x="416" y="587" class="cn body">freshness · fan-out · tools</text><text x="416" y="618" class="cn body">共同事实与可接受答案空间</text><text x="416" y="650" class="cn small muted">研究构念双人独立标注 + 仲裁</text>
+  <rect x="72" y="706" width="616" height="188" rx="18" fill="#f4effb" stroke="#b79bd6" stroke-width="2"/>
+  <text x="98" y="744" class="cn h">Hidden user-state ledger（主实验不可见）</text>
+  <text x="98" y="778" class="cn body">字段值 · 证据来源 · participant verified · 稳定性</text>
+  <text x="98" y="810" class="cn body">decision relevance · affects decision nodes · sensitivity</text>
+  <text x="98" y="842" class="cn body">directly askable? · history inferable? · permission</text>
+  <text x="98" y="874" class="cn small muted">只保留 2–4 个会改变决定的用户轴，不写冗长人格故事</text>
+  <rect x="72" y="914" width="616" height="197" rx="18" fill="#fff1f0" stroke="#df9d98" stroke-width="2"/>
+  <text x="98" y="951" class="cn h">欠指定记录 + 三类 contracts</text>
+  <text x="98" y="985" class="cn body">删除字段：critical obvious / subtle / irrelevant / none</text>
+  <text x="98" y="1017" class="cn body">must-change：知道差异后哪些建议必须变</text>
+  <text x="98" y="1049" class="cn body">must-hold：共同事实、证据和格式不应变</text>
+  <text x="98" y="1081" class="cn body">must-not：不得猜测、越权询问或披露</text>
+
+  <!-- 2 construction -->
+  <g filter="url(#shadow)"><rect x="750" y="190" width="640" height="955" rx="24" class="card"/><rect x="750" y="190" width="640" height="74" rx="24" fill="#e5effd"/><circle cx="794" cy="227" r="24" fill="#2e74b5"/><text x="794" y="236" text-anchor="middle" class="cn num">2</text><text x="834" y="237" class="cn stage">自然欠指定实例构造</text></g>
+  <rect x="782" y="292" width="576" height="146" rx="18" fill="#f2f7fe" stroke="#a8c4e5" stroke-width="2"/>
+  <text x="808" y="331" class="cn h">完整任务 q⁺ → 自然输入 q⁻</text><text x="808" y="366" class="cn body">只删除 1–3 个 decision-changing user fields</text><text x="808" y="398" class="cn body">保留共同任务、交付格式与通用可执行性</text>
+  <path d="M1070 438V477" class="arrow"/>
+  <rect x="782" y="476" width="576" height="222" rx="18" fill="#fff" stroke="#b9c9d8" stroke-width="2"/>
+  <text x="808" y="514" class="cn h">四类 case type（都要有）</text>
+  <rect x="808" y="537" width="246" height="57" rx="12" fill="#dfeefc"/><text x="931" y="572" text-anchor="middle" class="cn body">Critical · obvious</text>
+  <rect x="1070" y="537" width="260" height="57" rx="12" fill="#e9e1f4"/><text x="1200" y="572" text-anchor="middle" class="cn body">Critical · subtle</text>
+  <rect x="808" y="610" width="246" height="57" rx="12" fill="#e4f4ea"/><text x="931" y="645" text-anchor="middle" class="cn body">Sufficient · 不该问</text>
+  <rect x="1070" y="610" width="260" height="57" rx="12" fill="#fff1d8"/><text x="1200" y="645" text-anchor="middle" class="cn body">Irrelevant missing</text>
+  <rect x="782" y="722" width="576" height="177" rx="18" fill="#eef9f5" stroke="#9ccfbe" stroke-width="2"/>
+  <text x="808" y="760" class="cn h">自然性与可识别性 gate</text><text x="808" y="794" class="cn body">① 不问也能生成貌似合理的通用报告</text><text x="808" y="826" class="cn body">② 问到后确实改变至少一个 decision node</text><text x="808" y="858" class="cn body">③ 问题可由用户自然回答，且不泄漏答案</text>
+  <rect x="782" y="923" width="576" height="188" rx="18" fill="#fff6ed" stroke="#e4bd8a" stroke-width="2"/>
+  <text x="808" y="961" class="cn h">数据来源优先级</text><text x="808" y="995" class="cn body">真实用户共享 task shell（最佳）</text><text x="808" y="1027" class="cn body">真人 + 最小反事实用户（需第二人验证）</text><text x="808" y="1059" class="cn body">纯 LLM 用户：只做 smoke test，不进正式真值</text><text x="808" y="1091" class="cn small muted">禁止按“pilot 中模型是否会问”反向筛题</text>
+
+  <!-- 3 conditions -->
+  <g filter="url(#shadow)"><rect x="1420" y="190" width="700" height="955" rx="24" class="card"/><rect x="1420" y="190" width="700" height="74" rx="24" fill="#efe8f8"/><circle cx="1464" cy="227" r="24" fill="#7c54a3"/><text x="1464" y="236" text-anchor="middle" class="cn num">3</text><text x="1504" y="237" class="cn stage">四条件 × 交互澄清循环</text></g>
+  <rect x="1452" y="292" width="306" height="172" rx="18" fill="#eaf5ff" stroke="#83b6df" stroke-width="3"/>
+  <text x="1478" y="331" class="cn h">C0 Natural</text><text x="1478" y="365" class="cn body">q⁻；可问用户</text><text x="1478" y="397" class="cn body">不出现 persona / clarify 提醒</text><text x="1478" y="431" class="cn small muted">主条件：自主发现</text>
+  <rect x="1782" y="292" width="306" height="172" rx="18" fill="#f3edfb" stroke="#af8bd0" stroke-width="2"/>
+  <text x="1808" y="331" class="cn h">C1 Nudge</text><text x="1808" y="365" class="cn body">q⁻；可问用户</text><text x="1808" y="397" class="cn body">提醒“必要时可澄清”</text><text x="1808" y="431" class="cn small muted">诊断：被提示后的能力</text>
+  <rect x="1452" y="486" width="306" height="172" rx="18" fill="#fff1ee" stroke="#d9988e" stroke-width="2"/>
+  <text x="1478" y="525" class="cn h">C2 No-Ask</text><text x="1478" y="559" class="cn body">同一 q⁻；禁用用户通道</text><text x="1478" y="591" class="cn body">直接完成研究与报告</text><text x="1478" y="625" class="cn small muted">通用回答下限</text>
+  <rect x="1782" y="486" width="306" height="172" rx="18" fill="#eaf7ef" stroke="#78bd91" stroke-width="2"/>
+  <text x="1808" y="525" class="cn h">C3 Oracle</text><text x="1808" y="559" class="cn body">q⁺ + 完整相关 ledger</text><text x="1808" y="591" class="cn body">无需再问，但仍独立评分</text><text x="1808" y="625" class="cn small muted">完整 persona ceiling</text>
+  <path d="M1770 681V722" class="arrow"/>
+  <rect x="1452" y="722" width="636" height="271" rx="20" fill="#faf7fd" stroke="#b69bcf" stroke-width="2"/>
+  <text x="1482" y="763" class="cn h">Natural / Nudge 的可重放交互循环</text>
+  <circle cx="1519" cy="821" r="27" fill="#2e74b5"/><text x="1519" y="828" text-anchor="middle" class="cn white small">查</text>
+  <circle cx="1668" cy="821" r="27" fill="#7c54a3"/><text x="1668" y="828" text-anchor="middle" class="cn white small">问</text>
+  <circle cx="1817" cy="821" r="27" fill="#16856b"/><text x="1817" y="828" text-anchor="middle" class="cn white small">答</text>
+  <circle cx="1966" cy="821" r="27" fill="#ce7c27"/><text x="1966" y="828" text-anchor="middle" class="cn white small">停</text>
+  <path d="M1548 821H1639M1697 821H1788M1846 821H1937" class="arrow"/>
+  <path d="M1966 852C1966 930 1580 930 1580 852" class="thin dash" marker-end="url(#arrow)"/>
+  <text x="1482" y="891" class="cn body">每轮记录 node：unknown → asked → answered → planned</text>
+  <text x="1482" y="925" class="cn body">模拟器只答被问内容；不主动泄露、不提示下一问</text>
+  <text x="1482" y="959" class="cn small muted">停止成功 = 剩余不确定性不足以改变可接受建议，而非问满轮数</text>
+  <rect x="1452" y="1016" width="636" height="95" rx="18" fill="#edf4f8" stroke="#bfd0dc" stroke-width="2"/>
+  <text x="1482" y="1054" class="cn h">统一执行控制</text><text x="1482" y="1087" class="cn body">same backbone · tools · evidence · budget · output · seeds</text>
+
+  <!-- 4 execution -->
+  <g filter="url(#shadow)"><rect x="2150" y="190" width="500" height="955" rx="24" class="card"/><rect x="2150" y="190" width="500" height="74" rx="24" fill="#fff0dd"/><circle cx="2194" cy="227" r="24" fill="#ce7c27"/><text x="2194" y="236" text-anchor="middle" class="cn num">4</text><text x="2234" y="237" class="cn stage">Deep Research 执行</text></g>
+  <rect x="2182" y="292" width="436" height="120" rx="18" fill="#fff8ef" stroke="#e3bd80" stroke-width="2"/><text x="2210" y="333" class="cn h">计划 / 查询形成</text><text x="2210" y="369" class="cn body">用户事实是否改变 research scope？</text>
+  <path d="M2400 412V446" class="arrow"/>
+  <rect x="2182" y="447" width="436" height="120" rx="18" fill="#f2f7fe" stroke="#9bbde0" stroke-width="2"/><text x="2210" y="488" class="cn h">检索 / 浏览 / 证据整合</text><text x="2210" y="524" class="cn body">搜索与证据优先级是否真正改变？</text>
+  <path d="M2400 567V601" class="arrow"/>
+  <rect x="2182" y="602" width="436" height="120" rx="18" fill="#eef8f4" stroke="#95cbb9" stroke-width="2"/><text x="2210" y="643" class="cn h">比较 / 选择 / 风险处理</text><text x="2210" y="679" class="cn body">硬约束与用户标准是否进入决策？</text>
+  <path d="M2400 722V756" class="arrow"/>
+  <rect x="2182" y="757" width="436" height="132" rx="18" fill="#f5effb" stroke="#b79bd0" stroke-width="2"/><text x="2210" y="798" class="cn h">最终长报告 / 交付物</text><text x="2210" y="834" class="cn body">must-change 是否发生？</text><text x="2210" y="866" class="cn body">must-hold 与事实质量是否保持？</text>
+  <rect x="2182" y="916" width="436" height="195" rx="18" fill="#fff1f0" stroke="#df9d98" stroke-width="2"/><text x="2210" y="956" class="cn h">长程利用失败定位</text><text x="2210" y="991" class="cn body">问到但未进入计划</text><text x="2210" y="1023" class="cn body">计划中有，执行/子 agent 丢失</text><text x="2210" y="1055" class="cn body">报告复述用户，却未改变建议</text><text x="2210" y="1087" class="cn small muted">事实每经过一层都留 event trace</text>
+
+  <!-- 5 evaluation -->
+  <g filter="url(#shadow)"><rect x="2680" y="190" width="480" height="955" rx="24" class="card"/><rect x="2680" y="190" width="480" height="74" rx="24" fill="#fdebea"/><circle cx="2724" cy="227" r="24" fill="#ba4c47"/><text x="2724" y="236" text-anchor="middle" class="cn num">5</text><text x="2764" y="237" class="cn stage">非补偿评分</text></g>
+  <rect x="2712" y="292" width="416" height="250" rx="18" fill="#f6f1fb" stroke="#b89dd2" stroke-width="2"/>
+  <text x="2740" y="331" class="cn h">A｜Clarification trajectory</text><text x="2740" y="366" class="cn body">Need Detection：该问 / 不该问</text><text x="2740" y="398" class="cn body">Recall / Precision / Info Gain</text><text x="2740" y="430" class="cn body">Stopping sufficiency</text><text x="2740" y="462" class="cn body">Burden：turn / token / time / repeat</text><text x="2740" y="494" class="cn body">Privacy / permission boundary</text><text x="2740" y="524" class="cn small muted">不能靠“多问”刷 coverage</text>
+  <rect x="2712" y="566" width="416" height="250" rx="18" fill="#eef7fb" stroke="#9cc1d7" stroke-width="2"/>
+  <text x="2740" y="605" class="cn h">B｜Final delivery</text><text x="2740" y="640" class="cn body">Absolute Adequacy（先绝对合格）</text><text x="2740" y="672" class="cn body">must-change / hold / not</text><text x="2740" y="704" class="cn body">Common Quality non-inferiority</text><text x="2740" y="736" class="cn body">Factual Reliability</text><text x="2740" y="768" class="cn body">Target-user Utility</text><text x="2740" y="798" class="cn small muted">Oracle 也不是参考答案，同样评分</text>
+  <rect x="2712" y="840" width="416" height="271" rx="18" fill="#fff5ed" stroke="#e0b887" stroke-width="2"/>
+  <text x="2740" y="879" class="cn h">三个效应 + 原始四臂</text><text x="2740" y="916" class="mono">SelfInitiated = U0 - U2</text><text x="2740" y="949" class="mono">NudgeGap = U1 - U0</text><text x="2740" y="982" class="mono">OracleGap = U3 - U0</text><text x="2740" y="1021" class="cn body">差值大但 U0 不合格 ≠ 成功</text><text x="2740" y="1053" class="cn body">OracleRecovery 仅作次级描述</text><text x="2740" y="1085" class="cn small muted">family-blocked permutation + cluster bootstrap</text>
+
+  <!-- arrows main -->
+  <path d="M720 650H750" class="arrow"/><path d="M1390 650H1420" class="arrow"/><path d="M2120 650H2150" class="arrow"/><path d="M2650 650H2680" class="arrow"/>
+
+  <!-- bottom analyses -->
+  <g filter="url(#shadow)"><rect x="40" y="1180" width="2020" height="556" rx="24" class="card"/><rect x="40" y="1180" width="2020" height="68" rx="24" fill="#e7f0f7"/><circle cx="84" cy="1214" r="23" fill="#315b79"/><text x="84" y="1223" text-anchor="middle" class="cn num">6</text><text x="124" y="1224" class="cn stage">Benchmark 能回答哪些系统差异？</text></g>
+  <rect x="72" y="1274" width="460" height="204" rx="18" fill="#eef5fb" stroke="#a7c2d8" stroke-width="2"/><text x="98" y="1312" class="cn h">① 会用 persona ≠ 会自己找</text><text x="98" y="1348" class="cn body">Oracle 高、Natural 低</text><text x="98" y="1380" class="cn body">说明显式条件掩盖部署失败</text><text x="98" y="1418" class="cn body">Natural / Oracle 排名是否重排？</text><text x="98" y="1450" class="cn small muted">对 PDR-Bench 的核心增量检验</text>
+  <rect x="552" y="1274" width="460" height="204" rx="18" fill="#f4eef9" stroke="#b69bce" stroke-width="2"/><text x="578" y="1312" class="cn h">② 没意识到 vs 不会做</text><text x="578" y="1348" class="cn body">Nudge − Natural 大：</text><text x="578" y="1380" class="cn body">能力可被提示唤起，但不自主</text><text x="578" y="1418" class="cn body">Nudge 仍低：提问/停止本身弱</text><text x="578" y="1450" class="cn small muted">给 agent 设计提供直接诊断</text>
+  <rect x="1032" y="1274" width="460" height="204" rx="18" fill="#eef8f4" stroke="#96cbb9" stroke-width="2"/><text x="1058" y="1312" class="cn h">③ 会问 ≠ 会用</text><text x="1058" y="1348" class="cn body">关键事实已 answered</text><text x="1058" y="1380" class="cn body">但 plan/report/decision 未改变</text><text x="1058" y="1418" class="cn body">暴露长程传递与利用失败</text><text x="1058" y="1450" class="cn small muted">不能被 question quality 单独看到</text>
+  <rect x="1512" y="1274" width="516" height="204" rx="18" fill="#fff4e5" stroke="#dfb97a" stroke-width="2"/><text x="1538" y="1312" class="cn h">④ 少问不一定好，多问也不等于好</text><text x="1538" y="1348" class="cn body">Critical recall × Sufficient specificity</text><text x="1538" y="1380" class="cn body">结合 burden 与 sensitive boundary</text><text x="1538" y="1418" class="cn body">测“最小充分信息”，不是问题数量</text><text x="1538" y="1450" class="cn small muted">过问与隐私成本是独立失败</text>
+  <rect x="72" y="1504" width="1956" height="194" rx="18" fill="#f9fbfc" stroke="#cbd8e2" stroke-width="2"/>
+  <text x="100" y="1544" class="cn h">主榜不是单一总分：能力画像 + 非补偿五门</text>
+  <text x="100" y="1582" class="cn body">需要时问且充分时不问 · Natural 相比 No-Ask 有收益 · Natural 绝对合格 · 共同质量/事实无伤害 · 无权限/隐私违规且 must-change 真正发生</text>
+  <text x="100" y="1622" class="cn body">统计单位 = task family；同 family 的用户、条件和 seeds 不是独立样本。报告 family-level paired effect、CI、分布与失败案例。</text>
+  <text x="100" y="1662" class="cn small muted">结论边界：只主张“自主用户状态发现与利用行为”，不主张模型内部真正理解或关心用户。</text>
+
+  <!-- novelty gate -->
+  <g filter="url(#shadow)"><rect x="2090" y="1180" width="1070" height="556" rx="24" class="card"/><rect x="2090" y="1180" width="1070" height="68" rx="24" fill="#fde9e7"/><circle cx="2134" cy="1214" r="23" fill="#b84640"/><text x="2134" y="1223" text-anchor="middle" class="cn num">7</text><text x="2174" y="1224" class="cn stage">Novelty-kill pilot 与论文生死门</text></g>
+  <rect x="2122" y="1274" width="1006" height="112" rx="17" fill="#eef6fb" stroke="#a8c4d8" stroke-width="2"/>
+  <text x="2150" y="1313" class="cn h">最小矩阵</text><text x="2150" y="1347" class="cn body">3 family × 2 users × 4 case types × 4 conditions × 4–6 systems</text><text x="2150" y="1374" class="cn small muted">LLM 造 shell/persona 后必须由研究者逐条验真</text>
+  <rect x="2122" y="1408" width="488" height="278" rx="18" fill="#edf8f1" stroke="#8bc29f" stroke-width="2"/>
+  <text x="2150" y="1447" class="cn h">继续扩到 24 family，如果：</text><text x="2150" y="1483" class="cn body">✓ ≥2 family 四条件有意义分离</text><text x="2150" y="1517" class="cn body">✓ ≥1 稳定 Oracle/Natural 排名重排</text><text x="2150" y="1551" class="cn body">✓ 或出现“问到但未利用”独立失败</text><text x="2150" y="1585" class="cn body">✓ sufficient controls 不被普遍过问</text><text x="2150" y="1619" class="cn body">✓ 人工 contract 一致、成本可承受</text><text x="2150" y="1653" class="cn small muted">再做 ≥20% 真人重放与 simulator 校准</text>
+  <rect x="2640" y="1408" width="488" height="278" rx="18" fill="#fff0ef" stroke="#db918c" stroke-width="2"/>
+  <text x="2668" y="1447" class="cn h">停止 / 换题，如果：</text><text x="2668" y="1483" class="cn body">✕ 一句 Nudge 让所有系统接近 Oracle</text><text x="2668" y="1517" class="cn body">✕ G-STEER / IDRBench 已完全解释排名</text><text x="2668" y="1551" class="cn body">✕ 真人与 simulator 反转核心结论</text><text x="2668" y="1585" class="cn body">✕ 差异只由长度/预算/通用能力造成</text><text x="2668" y="1619" class="cn body">✕ 用户无法就 decision nodes 达成一致</text><text x="2668" y="1653" class="cn small muted">最危险评价：“G-STEER 的 benchmark 化”</text>
+</svg>

@@ -6,217 +6,66 @@ async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
-
   return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
   );
 }
 
-async function renderPath(pathname) {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
-}
-
-test("server-renders the DeepAlign-Bench research report", async () => {
+test("server-renders the ElicitAlign-Bench v0.45 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
   const html = await response.text();
   assert.match(html, /<html lang="zh-CN">/i);
-  assert.match(html, /<title>DeepAlign-Bench｜研究汇报<\/title>/i);
-  assert.match(html, /DEEP RESEARCH EVALUATION ATLAS/i);
-  assert.match(html, /Coverage manifest/i);
-  assert.match(html, /Phase A 报告资格审查/);
-  assert.match(html, /3 → 8–12 family/);
-  assert.match(html, /MUST CHANGE/i);
-  assert.match(html, /href="\/case\.schema\.yaml"/i);
-  assert.match(html, /href="\/DeepAlign-Bench_正式研究Proposal\.pdf"/i);
-  assert.match(html, /href="\/DeepAlign-Bench_正式Proposal精简版\.pdf"/i);
-  assert.match(html, /href="\/DeepAlign-Bench_完整人话版\.pdf"/i);
-  assert.match(html, /href="\/DeepAlign-Bench_汇报精简版\.pdf"/i);
-  assert.match(html, /同一套 v0\.33 两阶段方法，按阅读场景分成四版/);
-  assert.match(html, /8 类 anchor 是扩展候选 stress 宿主/);
-  assert.match(html, /href="\/literature"/i);
-  assert.match(html, /href="\/figures"/i);
-  assert.match(html, /href="\/rubrics"/i);
-  assert.match(html, /class="inlineCite"[^>]+2607\.15948/i);
-  assert.match(html, /class="inlineCite"[^>]+2509\.25106/i);
-  assert.match(html, /task\/persona-conditioned rubric/i);
-  assert.match(html, /task-only regret − matched regret/i);
-  assert.match(html, /报告对真实用户 decision regret 的处理效应 DDE/i);
-  assert.match(html, /<span>DDE<\/span><h3>下游决策效果/i);
-  assert.match(html, /must-change · must-hold · must-not/i);
-  assert.match(html, /fit 上升而 regret 不下降，结论是代理终点失效/i);
-  assert.match(html, /cue-equivalence robustness/i);
-  assert.match(html, /Task family 与 persona 不是靠写 prompt 拼出来的/);
-  assert.match(html, /Seed funnel/);
-  assert.match(html, /ICLR READINESS/);
-  assert.match(html, /中心判断 · 约三成/);
-  assert.match(html, /S0 clean/);
-  assert.match(html, /E1 · 主轨 · 1\.5–2\.5 周/);
-  assert.match(html, /A1 日常决策/);
-  assert.match(html, /PCA=\.43/);
-  assert.match(html, /PROFILE D/);
-  assert.match(html, /Boundary &amp; Governance/i);
-  assert.doesNotMatch(html, /re-anchor|S4 恢复|Recovery &amp; Governance/i);
-  assert.match(html, /href="\/PROJECT_MEMORY\.md"/i);
-  assert.match(html, /alt="DeepAlign-Bench 正式 Proposal v0\.33 整体实验框架与最小实验结果"/i);
-  assert.match(html, /src="\/DeepAlign-Bench_整体框架与最小实验_v0\.33\.png"/i);
-  assert.match(html, /href="\/DeepAlign-Bench_整体框架与最小实验_v0\.33\.png"/i);
+  assert.match(html, /<title>ElicitAlign-Bench｜研究汇报<\/title>/i);
+  assert.match(html, /从缺失用户信息到/);
+  assert.match(html, /C0 Natural-Interactive/);
+  assert.match(html, /C3 Full-Persona Oracle/);
+  assert.match(html, /Natural 不提醒；Nudge 只作诊断/);
+  assert.match(html, /unknown → asked → answered/);
+  assert.match(html, /OracleRecovery/);
+  assert.match(html, /G-STEER 的 benchmark 化/);
+  assert.match(html, /NOVELTY-KILL PILOT/i);
+  assert.match(html, /src="\/ElicitAlign-Bench_端到端流程图_v0\.45\.png"/i);
+  assert.match(html, /href="\/ElicitAlign-Bench_正式研究Proposal\.pdf"/i);
+  assert.match(html, /href="\/ElicitAlign-Bench_正式Proposal精简版\.pdf"/i);
+  assert.match(html, /href="\/ElicitAlign-Bench_完整人话版\.pdf"/i);
+  assert.match(html, /href="\/ElicitAlign-Bench_汇报精简版\.pdf"/i);
+  assert.match(html, /href="\/elicitalign_case\.schema\.yaml"/i);
+  assert.match(html, /href="\/elicitalign_evaluation\.protocol\.yaml"/i);
+  assert.doesNotMatch(html, /DeepAlign-Bench_正式研究Proposal/);
 });
 
-test("server-renders the rubric compiler workbench", async () => {
-  const response = await renderPath("/rubrics");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /Rubric Compiler 的七步执行链/);
-  assert.match(html, /Direction Node Registry/);
-  assert.match(html, /Leaf expansion/);
-  assert.match(html, /CFA 不会出现在任何 leaf/);
-  assert.match(html, /U-A-BUDGET-01/);
-  assert.match(html, /预定义 Rubric Module Library · 36 个可路由模块/);
-  assert.match(html, /Anchor family 能回答什么，不能回答什么/);
-  assert.match(html, /href="\/rubric_module_library\.yaml"/i);
-  assert.match(html, /href="\/data_factory\.protocol\.yaml"/i);
-  assert.match(html, /href="\/rubric_node_registry\.yaml"/i);
-  assert.match(html, /href="\/construction_annotation\.protocol\.yaml"/i);
-  assert.match(html, /href="\/environment_build\.protocol\.yaml"/i);
-  assert.match(html, /href="\/rubric_leaf\.schema\.yaml"/i);
-  assert.match(html, /href="\/metric_binding\.schema\.yaml"/i);
-  assert.match(html, /href="\/rubric_bundle\.example\.yaml"/i);
-});
-
-test("server-renders the 103-record related-work map", async () => {
-  const response = await renderPath("/literature");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /103 条去重记录/);
-  assert.match(html, /Setoka/);
-  assert.match(html, /PersonaTrail/);
-  assert.match(html, /PASB/);
-  assert.match(html, /APeB/);
-  assert.match(html, /MyScholarQA/);
-  assert.match(html, /Mem2ActBench/);
-  assert.match(html, /22-PAPER RELEVANCE AUDIT/);
-  assert.match(html, /四项最低成立条件/);
-  assert.match(html, /One Persona, Many Cues/);
-  assert.match(html, /PARL/);
-  assert.match(html, /class="inlineCite"[^>]+2607\.21635/i);
-  assert.match(html, /class="inlineCite"[^>]+2607\.10526/i);
-});
-
-test("server-renders the paper figure and table blueprint", async () => {
-  const response = await renderPath("/figures");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /2 张方法图 \+ 2 张结果图 \+ 1 张测量效度图/);
-  assert.match(html, /Phase A 工程流程：从 task metadata 到合格报告/);
-  assert.match(html, /src="\/DeepAlign-Bench_端到端流程图_v0\.32\.png"/i);
-  assert.match(html, /参考式汇报版/);
-  assert.match(html, /src="\/DeepAlign-Bench_详细流程图\.png"/i);
-  assert.match(html, /href="\/DeepAlign-Bench_详细流程图\.svg"/i);
-  assert.match(html, /Decision family、报告处理与 utility 构造/);
-  assert.match(html, /DDE × wrong-user harm profile/);
-  assert.match(html, /Decision benefit/);
-  assert.match(html, /Multi-label failure incidence/);
-  assert.match(html, /完整 18 个交叉格/);
-  assert.match(html, /Decision verifier、人类终点与测量审计/);
-  assert.match(html, /主结果/);
-  assert.match(html, /明确不建议/);
-});
-
-test("keeps the machine-readable metadata and downloadable artifacts in sync", async () => {
-  const [page, schema, leafSchema, templateRegistry, moduleLibrary, dataFactory, metricBinding, exampleBundle, manifest] = await Promise.all([
+test("keeps v0.45 schemas and downloadable artifacts in sync", async () => {
+  const [page, schema, protocol] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../public/case.schema.yaml", import.meta.url), "utf8"),
-    readFile(new URL("../public/rubric_leaf.schema.yaml", import.meta.url), "utf8"),
-    readFile(new URL("../public/rubric_template_registry.yaml", import.meta.url), "utf8"),
-    readFile(new URL("../public/rubric_module_library.yaml", import.meta.url), "utf8"),
-    readFile(new URL("../public/data_factory.protocol.yaml", import.meta.url), "utf8"),
-    readFile(new URL("../public/metric_binding.schema.yaml", import.meta.url), "utf8"),
-    readFile(new URL("../public/rubric_bundle.example.yaml", import.meta.url), "utf8"),
-    readFile(
-      new URL("../../benchmark_schema/coverage_manifest.template.csv", import.meta.url),
-      "utf8",
-    ),
+    readFile(new URL("../public/elicitalign_case.schema.yaml", import.meta.url), "utf8"),
+    readFile(new URL("../public/elicitalign_evaluation.protocol.yaml", import.meta.url), "utf8"),
   ]);
-
-  assert.match(page, /task\.\* · environment\.\* · user_state\.\*/);
-  assert.match(page, /must-change · must-hold · must-not · clarify-if-unknown/i);
-  assert.match(schema, /^schema_version:\s*0\.33/m);
-  assert.match(schema, /evaluation_contract:/);
-  assert.match(schema, /counterfactual_partner_id:/);
-  assert.match(schema, /estimand:\s*artifact_qualification_counterfactual_fit/);
-  assert.match(schema, /primary_estimand:\s*downstream_decision_effect/);
-  assert.match(schema, /execution_regime:/);
-  assert.doesNotMatch(schema, /S4_recovery_pair|reanchor|recovery_prompt|recovery_policy/);
-  assert.match(schema, /stage: \[S0_clean, S1_single_light, S2_single_strong, S3_compound\]/);
-  assert.match(schema, /minimal_counterfactual_edit:/);
-  assert.match(schema, /rubric_compilation:/);
-  assert.match(leafSchema, /direct_metric_bindings:/);
-  assert.doesNotMatch(leafSchema, /^\s+- CFA\s*$/m);
-  assert.match(templateRegistry, /expand_to_atomic_leaves/);
-  assert.match(templateRegistry, /module_library: rubric_module_library\.yaml/);
-  assert.match(templateRegistry, /node_registry: rubric_node_registry\.yaml/);
-  assert.match(moduleLibrary, /PER-CONSTRAINT-04/);
-  assert.match(moduleLibrary, /residual_error_saturation/);
-  assert.match(dataFactory, /0_vertical_slice/);
-  assert.match(dataFactory, /replication_rule/);
-  assert.match(metricBinding, /CFA:/);
-  assert.match(metricBinding, /CFA is not a leaf score/);
-  assert.match(metricBinding, /CFA_min:/);
-  assert.match(metricBinding, /matched_adequacy_min:/);
-  assert.match(metricBinding, /cosine_specificity_balance:/);
-  assert.match(metricBinding, /task_only_noninferiority:/);
-  assert.match(metricBinding, /DDE:/);
-  assert.match(metricBinding, /wrong_user_harm:/);
-  assert.match(metricBinding, /primary_leaderboard_metrics: \[DDE, wrong_user_harm/);
-  assert.match(metricBinding, /gain_a_vs_task_only:/);
-  assert.match(metricBinding, /bilateral_personalization_success:/);
-  assert.match(exampleBundle, /U-A-BUDGET-01/);
-  assert.match(exampleBundle, /PER-CONSTRAINT-HARD/);
-  assert.match(exampleBundle, /apply unchanged to both Y_a and Y_b/);
-  assert.match(manifest, /coverage_status/);
-  assert.match(manifest, /tested/);
-  assert.match(manifest, /defined_only/);
+  assert.match(page, /SelfInitiatedGain/);
+  assert.match(page, /NudgeGap/);
+  assert.match(page, /OracleGap/);
+  assert.match(schema, /schema_version:\s*["']0\.45["']/);
+  assert.match(schema, /user_state_ledger:/);
+  assert.match(schema, /underspecification:/);
+  assert.match(schema, /must_change:/);
+  assert.match(protocol, /natural_interactive/);
+  assert.match(protocol, /full_persona_oracle/);
+  assert.match(protocol, /family_blocked_permutation/);
+  assert.match(protocol, /family_cluster_bootstrap/);
 
   await Promise.all([
-    access(new URL("../public/DeepAlign-Bench_主图.png", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_端到端流程图_v0.32.png", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_整体框架与最小实验_v0.33.png", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_整体框架与最小实验_v0.33.svg", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_详细流程图.png", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_详细流程图.svg", import.meta.url)),
-    access(
-      new URL("../public/DeepAlign-Bench_正式研究Proposal.docx", import.meta.url),
-    ),
-    access(
-      new URL("../public/DeepAlign-Bench_正式研究Proposal.pdf", import.meta.url),
-    ),
-    access(new URL("../public/DeepAlign-Bench_正式Proposal精简版.docx", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_正式Proposal精简版.pdf", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_完整人话版.docx", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_完整人话版.pdf", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_汇报精简版.docx", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_汇报精简版.pdf", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_端到端流程图_v0.45.png", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_端到端流程图_v0.45.svg", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_正式研究Proposal.docx", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_正式研究Proposal.pdf", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_正式Proposal精简版.docx", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_正式Proposal精简版.pdf", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_完整人话版.docx", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_完整人话版.pdf", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_汇报精简版.docx", import.meta.url)),
+    access(new URL("../public/ElicitAlign-Bench_汇报精简版.pdf", import.meta.url)),
     access(new URL("../public/PROJECT_MEMORY.md", import.meta.url)),
-    access(new URL("../public/construction_annotation.protocol.yaml", import.meta.url)),
-    access(new URL("../public/rubric_node_registry.yaml", import.meta.url)),
-    access(new URL("../public/environment_build.protocol.yaml", import.meta.url)),
-    access(new URL("../public/og.png", import.meta.url)),
   ]);
 });

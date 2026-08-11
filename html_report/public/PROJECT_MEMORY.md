@@ -1,20 +1,231 @@
-# DeepAlign-Bench 跨 Session 项目记忆
+# ElicitAlign-Bench / DeepAlign archive 跨 Session 项目记忆
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-09
-当前版本：v0.33
+最后更新：2026-08-12
+当前版本：v0.45（自然欠指定任务中的自主用户状态发现、澄清与最终利用）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
 
-## 1. 项目目标与核心识别
+## 0. 2026-08-12：冻结 ElicitAlign-Bench v0.45 候选与 novelty-kill gate
 
-项目目标是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文，评估个性化 Deep Research 交付物是否**因果性地改善真实目标用户的可验证决策**。
+### 0.1 当前研究问题
 
-核心识别分两阶段。Phase A 固定任务、证据、工具和预算，用 task-only/matched/swapped、CFA 与三类契约确认报告处理在共同质量上可比、在用户条件上有区分力。Phase B 将三种报告在等价 task shell 上随机分配给真实目标用户，以 decision regret、wrong-user harm、硬约束和置信度校准为终点。PF/CFA 是 qualification 与中介，不再是主终点。
+当前候选不是“给定 persona 后模型会不会个性化”，而是：**用户给出的任务已经足够让 agent 直接开始，却缺少 1–3 个会改变最终建议的用户条件时，通用 Deep Research agent 会不会在没有提醒的情况下自己发现缺口、问对问题、知道何时停止，并把回答真正用于最终交付物。**
 
-当前一句话主张：**PDR-Bench 问个性化报告是否适合用户；DeepAlign-Bench 问通过共同质量门的个性化报告是否让真实用户做出更好的决定。** 主估计量为 `DDE = Regret_task-only − Regret_matched`，负对照为 `WrongUserHarm = Regret_swapped − Regret_task-only`。
+只主张可观察的 `self-initiated user-state discovery and use`，不把行为结果解释为模型内部“真正关心”或“理解”用户。
+
+### 0.2 为什么 broad clarification 叙事被否决
+
+本轮核对的最直接近邻包括：[PDR-Bench](https://arxiv.org/abs/2509.25106)、[IDRBench](https://arxiv.org/abs/2601.06676)、[IntentRL](https://arxiv.org/abs/2602.03468)、[DiscoBench](https://arxiv.org/abs/2606.27669)、[G-STEER](https://arxiv.org/abs/2608.05876) 和 [Ask Early, Ask Late, Ask Right](https://arxiv.org/abs/2605.07937)。IDRBench 已测欠指定 Deep Research 的交互收益/成本，IntentRL 已研究主动澄清训练，DiscoBench 已测搜索歧义的发现—提问—恢复，G-STEER 已在个性化 Deep Research 中联合建模 Retrieve/Ask/Stop、target coverage 与最终报告 P/Q。
+
+因此不能声称“首次研究 clarification”“首次把提问质量和最终交付联系起来”或“现有工作只给显式 persona”。最危险的审稿意见已经冻结为：**“这是 G-STEER 的 benchmark 化，加了更多对照。”** 新方向只能靠实证出现已有指标解释不了的系统重排或利用失败来过门。
+
+### 0.3 四条件能力分解
+
+1. `C0 Natural-Interactive`：自然欠指定 instruction；无 persona、无澄清提醒；允许提问。主条件，测自主发现和触发。
+2. `C1 Nudge-Interactive`：同一 instruction，只增加“若缺少会改变答案的用户信息，可以先澄清”。诊断被提醒后的执行能力。
+3. `C2 No-Ask`：同一自然 instruction，但关闭用户通道。提供通用回答下限。
+4. `C3 Full-Persona Oracle`：直接提供完整、经用户确认且与任务有关的 user-state ledger。提供信息充分上限，但仍接受同一最终交付评分，不把 oracle 输出当参考答案。
+
+主实验绝不能提醒个性化；否则测到 prompt compliance。也不能先跑模型再只保留“多数模型会问”的任务；否则主动询问强的模型反向定义数据分布，产生行为选择偏差。任务先由人类决策逻辑和真实用户冻结，再让模型暴露差异。
+
+### 0.4 数据单位与 case 构造
+
+统计单位继续是 `task family`：共享同一任务核心、证据、工具、预算、交付格式和共同事实，只在 2–4 个会改变决策的用户变量上构成两位配对用户。正式数据优先真实用户 task shell；找不到第二位共享任务的用户时，可用“一位真实用户 + 最小反事实用户”，但必须由相似目标人群验证自然性。纯 LLM persona 只用于 smoke test。
+
+每个 case 包含：case metadata、task metadata、隐藏 user-state ledger、自然欠指定记录、`must-change / must-hold / must-not` contracts、四条件运行记录和逐节点轨迹。case type 必须覆盖 `critical-obvious`、`critical-subtle`、`sufficient` 和 `irrelevant-missing`；后两类用于测过问，而不是只挑明显缺信息的任务。
+
+### 0.5 评分与归一化决定
+
+不再使用单一差值或总分讲完整故事。必须同时报告四个 arm 的绝对分和两个 profile：
+
+- 轨迹层：Need Detection 的 sensitivity/specificity/macro-F1、Targeted Elicitation Recall、Question Precision、weighted information gain per turn、Stopping Sufficiency、用户 burden、隐私/权限 boundary。
+- 交付层：Absolute Adequacy、`must-change / must-hold / must-not` compliance、共同质量、事实可靠性和目标用户效用。
+
+对每个关键用户节点追踪 `unknown → asked → answered → planned → reported → decision_changed`，把“没发现”“问偏了”“问到了但停早”“计划用了但长程执行丢失”“报告提到了但没有改变建议”拆开。
+
+三个主要对比只解释能力来源：
+
+- `SelfInitiatedGain = U(Natural) − U(No-Ask)`；
+- `NudgeGap = U(Nudge) − U(Natural)`；
+- `OracleGap = U(Oracle) − U(Natural)`。
+
+`OracleRecovery = [U(Natural) − U(No-Ask)] / [U(Oracle) − U(No-Ask)]` 只作次级描述，并且只在分母超过预注册阈值时计算。它不能替代原始 arm、绝对合格门和 family-level paired effect；小分母、负分母与 Oracle 本身失败均需要单独处理。
+
+成功是非补偿式的：critical-missing 上能发现、sufficient 上不过问；Natural 相对 No-Ask 有真实收益；Natural 自身绝对合格；共同质量/事实可靠性 non-inferior；无隐私/权限违规；至少一个必要 must-change 节点真正达到 `decision_changed`。任一门失败都不能用其他高分抵消。
+
+### 0.6 统计和最小实验
+
+主分析使用 family-level paired effects。family-blocked permutation 在同一 family 内交换条件标签，cluster bootstrap 每次抽取整个 family；不同用户、条件、随机 seed 和 rubric leaf 不当作独立样本。
+
+先跑 `3 family × 2 users × 4 case types × 4 conditions × 4–6 systems` 的 novelty-kill pilot。三个 family 暂定团队知识库采购、国际家庭旅行、研究工具选型。第一轮可由 LLM 生成 shell/persona，但作者必须逐项确认自然性、决策相关性、可问性、无答案泄漏；合成 pilot 只能验证 harness 和诊断可行性，不能支撑论文效度结论。
+
+继续到 24 family 的必要条件：至少两个 family 有意义地分开四条件；至少一个系统出现 Natural/Oracle 排名变化或稳定的“问到但没用”；充分任务不过问；人工 contract 评分一致；成本可在八周内完成。若一句 Nudge 让所有系统接近 Oracle、G-STEER/IDRBench 指标完全解释排序和失败、真人与模拟器反转核心结论，或差异只来自长度/搜索预算/通用模型质量，则停止、收窄或换题。
+
+### 0.7 交付与开放问题
+
+当前工作名冻结为 `ElicitAlign-Bench`。v0.45 已同步正式版、6 页正式精简版、8 页人话版、6 页导师 brief、3200×1800 端到端 PNG/SVG、case/evaluation YAML、HTML 入口、README 与变更日志。旧 DeepAlign v0.33 交付物移入 `deliverables/archive/DeepAlign-Bench-v0.33/`，不删除历史方法资产。
+
+仍未解决的问题：
+
+1. 无 profile / 无提醒条件是否真的产生跨系统排序变化，而不是所有系统都不问；
+2. G-STEER、IDRBench 指标加入回归后，paired contracts 和逐节点利用链是否仍提供独立解释；
+3. 真人与 user simulator 的排序一致性是否足以允许主榜使用模拟器；
+4. 三类任务是否足以暴露不同 elicitation/utilization 机制，还是领域差异主要由风险和搜索预算驱动；
+5. 两个月内能否招募、验证并重放足够的 paired real-user family。
+
+## 1. 历史设计资产：DeepAlign-Bench v0.33
+
+项目目标仍是在两个月内完成一篇达到 ICLR 投稿标准的 benchmark 论文。v0.33 曾把目标具体化为评估个性化 Deep Research 交付物是否因果性地改善真实用户决策；2026-08-10 新颖性否决测试已判定该目标**适合作为测量/外部效度层，但不足以单独承担新 benchmark 的问题定义**。本节以下内容保留为历史判断和可复用方法资产；当前方向以第 0 节 ElicitAlign-Bench v0.45 为准。
+
+v0.33 旧分支的核心识别分两阶段。Phase A 固定任务、证据、工具和预算，用 task-only/matched/swapped、CFA 与三类契约确认报告处理在共同质量上可比、在用户条件上有区分力。Phase B 将三种报告在等价 task shell 上随机分配给真实目标用户，以 decision regret、wrong-user harm、硬约束和置信度校准为终点。PF/CFA 是 qualification 与中介，不再是主终点。
+
+当前状态：v0.33 的一句话主张与 `DDE = Regret_task-only − Regret_matched` 保留为旧分支快照，但**不再视为足够的最终论文 thesis**。v0.45 已完成新候选的第一次正式冻结；是否继续扩展由 novelty-kill pilot 决定。
+
+### 1.0b 2026-08-10：新颖性否决测试与方向重开
+
+1. 对 v0.33 的最强审稿人反对是：输入、任务域、产物和 matched/swapped/task-only 处理几乎都与个性化 Deep Research 设定不变，Phase B 只是把报告适配分换成真人决策后果。这是有价值的 construct-validity/外部效度升级，但审稿人可以合理地将其称为“PDR-Bench 加一项真人下游实验”，而不是新 benchmark problem。
+2. 近邻已越过该边界：[MyScholarQA](https://aclanthology.org/2026.acl-long.723/) 已用真实用户发现合成用户/LLM judge 漏掉的个性化 Deep Research 错误；[DRFLOW](https://arxiv.org/abs/2606.18191) 已从报告推进到个性化工作流预测；[DECISIVE](https://aclanthology.org/2026.acl-long.1465/) 已把非结构化文档证据、用户偏好引出和决策准确率连接起来；[专家咨询 Deep Research benchmark](https://arxiv.org/abs/2605.17554) 已直接评估可验证的 decision-grade 交付物。
+3. 因此不采纳“继续强化 DDE 表述就能拉开差距”的假设。v0.33 的 Phase A 实验、配对 family、非补偿门和评委校准可作为方法资产；个性化报告与 DDE 不再默认为标题/摘要的主张。
+4. 当前最值得进入下一轮反证的候选问题是 **evidence-to-action coupling**：Deep Research agent 能否识别“哪些新证据应当改变决策，哪些不应当，以及何时证据已足以行动”。基本单元将从 user-report pair 改为带有预注册行动边界的 counterfactual evidence-world family，分别测必要敏感性、无关扰动不变性、证据充分性和搜索成本。
+5. 这个候选仍未通过新颖性门：[ForeSci](https://arxiv.org/abs/2606.00644) 已将 research agent 作为 decision-making system，[Mind-ParaWorld](https://arxiv.org/abs/2603.04751) 已测证据充分性与 when-to-stop，[ClinDet-Bench](https://aclanthology.org/2026.acl-industry.47/) 已测不完全信息下的 determinability，[NoisyCausal](https://aclanthology.org/2026.acl-long.1833/) 与 [Contrast Sets](https://arxiv.org/abs/2004.02709) 已分别覆盖因果抗噪和局部决策边界。新主张必须证明“开放证据搜索→行动边界的成对敏感性/不变性”不是这些工作的简单并集。
+6. 在用户确认新研究问题前，不机械改写正式 Proposal、schema、HTML、DOCX/PDF 和图；这些交付物继续标记为 v0.33 旧分支快照。一旦新问题通过最近邻区分、可执行 oracle、数据构造可行性和两个月统计效力四项门，再一次性升级并同步全部交付物。
+
+### 1.0c 2026-08-10：公式重定位与 agent 决策边界候选
+
+1. 对最小实验的证据等级再次收紧：8/8 matched 决策方向命中只说明合成任务操纵足够明显；六类分数原型只是在预设真值上的公式单元测试；两者均不构成模型能力、真人效用、自动评委效度或数学创新证据。48 个 artifact-judge 单元和 672 个 leaf 判断不能替代 4 个独立 task family 的样本量。
+2. `CFA_mean = 1/2{[S_a(Y_a)-S_a(Y_b)]+[S_b(Y_b)-S_b(Y_a)]}` 重新定义为任务族内用户×生成条件的交互对比/差分中的差分。差值并非统计错误；核心构念缺口是 `S` 仍为未校准的报告适配分，而非外部可验证效用。比例分母、余弦方向或乘积总分都不能补出绝对效用。
+3. 若保留个性化实验，主估计对象应为预冻结效用 `U_fu` 上的 matched benefit、wrong-user effect、matched absolute utility/normalized regret，以及共同质量非劣与零严重违规。没有真人决策或可执行环境时，只能把 CFA 称为 artifact-level user-specificity manipulation check。
+4. 新文献显著压缩当前及初步换题空间：[SDR-Bench](https://arxiv.org/abs/2607.20471) 已直接以诱发特定接收者行动定义个性化；[GRASP](https://arxiv.org/abs/2605.29668) 已使用 held-out probe 与 hard regression budget 接纳 skill 修复；[SEAL](https://arxiv.org/abs/2607.24300) 已使用 agent 不可见的外部接纳审计；[FixedBench](https://arxiv.org/abs/2605.07769)、[When2Tool](https://arxiv.org/abs/2605.09252)、[Multi-User LLM Agents](https://arxiv.org/abs/2604.08567) 与 [ManyIH-Bench](https://arxiv.org/abs/2604.09443) 分别覆盖何时不行动、工具必要边界、多用户冲突和多级权限。因此这些宽泛能力名不能直接作为换题依据。
+5. 当前优先候选改为 **agent 决策边界/响应曲面**：在冻结环境中沿有序的决策相关变量扫描 agent 行动，同时加入语义不变的无关扰动，比较 oracle 与模型的切换边界、单调性、无关翻转率和可执行 regret。个性化仅作为可能的一个变量切片，不再默认是论文标题。
+6. 候选并未冻结。最近邻包括 When2Tool 的工具必要性边界、Contrast Sets、Mind-ParaWorld 和通用扰动/稳健性研究。通过条件是跨环境 family 规范、相关敏感性+无关不变性、非 LLM judge 的行动 oracle、结果重排现有系统，以及两个月可扩展性。
+7. 下一步建议为 3 天否决实验：2 个现有可执行 family × 1 个有序变量 × 7 个水平 ×（3 个等价表述+1 个无关对照）× 2 个系统 × 3 次重复，约336次轻量运行；预先冻结行动区域、边界容忍带、单调方向与停止门。未通过不重写正式 Proposal。
+8. 以最新近邻位置重新校准，v0.33 即使预期数据全部成立，更可能处于 weak reject–borderline；主观 readiness 约20%–35%。若发现 PDR-style 适配与真人决策效用稳定、系统性背离，可形成较强 measurement paper，但仍有增量风险。该区间不是统计录用概率。
+9. 详细推理、公式和方向矩阵见 `proposal/DeepAlign-Bench_最小实验公式与换题决策备忘录.md`。
+
+### 1.0d 2026-08-10：Agent benchmark 盲区扫描与问题形成候选
+
+1. 有界检索进一步否定了按宽泛能力名换题的策略。规划/调度、长期资源分配、多任务流、中断/修订、主动询问、弃权、记忆、备选项生成和可逆执行都已有直接或强近邻；不能仅凭“现实中很重要”建立 novelty。
+2. 当前较可能存在的空白位于能力接口，候选依次为：Wrong-Problem / Problem Formulation、跨渠道 Resolution Routing、Evidence-to-Action Coupling、延迟混杂反馈下的因果自我改进、决策理由连续性和可验证的选项集发现。Preference Formation 很新但缺少客观 oracle；跨任务 portfolio 与 reversibility 已被最新 benchmark 明显压缩。
+3. 当前首选反证对象暂时从单一 response-surface 候选扩展为 **Wrong-Problem Bench**：评价 agent 能否在规划/搜索/执行前识别错置目标、错误前提、遗漏约束/利益相关者/备选项，通过可用的信息动作重构问题，并由执行终态验证收益。它与 PDR-Bench 的任务原语差异明显大于“个性化适配 vs 个性化效用”。
+4. 最近邻包括面向优化建模的 LLMOPT/Solver-Informed RL、problem-space specification，以及研究问题形成愿景工作；本轮未找到跨领域、环境可执行、覆盖“识别错题—获取信息—重构目标—执行验证”的直接 benchmark。该结论只是截至 2026-08-10 的有界检索，不得写成绝对首创。
+5. 最大测量风险是把不可访问的作者意图藏作真值。通过门要求：关键变量可由预注册提问/搜索/环境检查发现；允许多个等价 formulation；主 oracle 来自程序规则或环境终态；paired case 只改变一个可发现的决策关键事实；普通 task success 与 formulation regret 至少出现系统重排。
+6. 下一步建议先各做一个 Wrong-Problem 与 Resolution-Routing 的最小可执行 family；若 formulation 真值仍依赖 LLM judge 或专家主观喜欢，则立即否决，退回可执行性更强的 Evidence-to-Action response surface。正式 Proposal、schema、HTML、DOCX/PDF 和图继续保持 v0.33 快照，直到用户确认且候选过 novelty/oracle/feasibility/power 四门。
+
+### 1.0e 2026-08-10：第二轮近邻否决与 Outcome-Grounded Objective Repair pilot
+
+1. 第二轮检索否决了宽泛 Wrong-Problem / Problem Formulation 的空白叙事。KG-FPQ、MultiHoax、Premise Critique、UPHILL、MedRedFlag 已覆盖错误前提识别和纠错重定向；UserBench、ClarifyBench、LHAW、CAR-bench、requirements elicitation、Expectation Alignment 与 implicit-goal inference 已覆盖潜在需求/目标发现；AgentAbstain、Agentic Abstention、ManagerBench 已覆盖停止与安全取舍；optimization formulation、EquivaMap、WebArena 与 τ-bench 已覆盖形式化/等价性和执行终态。
+2. 当前只保留窄候选 **Outcome-Grounded Objective Repair / Proxy-Goal Repair**：用户明确上位结果并建议一个手段；agent 必须通过可访问环境事实判断该手段是否仍服务于结果，必要时在授权范围内换用替代手段并继续执行；主分数是程序化终态 regret，而非问题表述文本。
+3. `pilot/objective_repair_v0_1/` 冻结 2 个 family × 2 个单变量 twin world，运行 Qwen3 8B 与 Claude Sonnet alias。四个唯一 model-family first turn 均先查询决定性事实，说明信息可达性成立；first-turn 在 pair 内复用，不是独立随机重复。
+4. 确定性策略出现预注册排序反转：LiteralExecutor 的 literal/outcome/paired 为 100%/50%/0%，InspectThenRepair 为 50%/100%/100%。schema 修复后的真实模型也反转：Qwen literal/outcome 为 75%/75%，Claude 为 50%/100%。最有诊断价值的失败是 Qwen 已获知 LogLite 是发版依赖后仍取消它，表明 evidence acquisition 与 evidence-conditioned action 可分离。
+5. 原始 prompt 把抽象 `commit` 与真实状态工具名混淆，造成无效 wrapper。原始失败保留在 run log；主结果只用明确要求直接调用真实工具的 schema-repaired debug 轨迹。不得把接口 bug 当作模型能力失败。
+6. 四条件判定：可发现真值初步通过；多等价 formulation 仅部分通过（当前通过不评分自由文本规避，未验证开放式语义等价）；环境终态 oracle 通过最小可行性；单变量 pair/系统重排初步通过。样本只有 2 family、每格 1 次，不支持显著性或稳定模型排名。
+7. 最大 ICLR 风险是“AgentAbstain 加安全替代工具”或“MedRedFlag 接 τ-bench”。下一步只做 6–8 family novelty-kill pilot，加入 decoy 查询、间接证据链、多个等价修复动作、无关扰动和 3–5 次重复；若仍退化为显眼二选一，停止该方向并回到 Evidence-to-Action response surface。
+8. 正式 Proposal、schema、HTML、DOCX/PDF 和图仍保持 v0.33 快照。v0.35 只更新方向备忘录、文献全景、pilot、README、项目记忆和 changelog；候选尚未通过 novelty/power 大门，不机械改写旧分支交付物。
+
+### 1.0f 2026-08-10：Objective Repair 任务解释与 PDR-Bench 边界
+
+1. 暂用题名 **Outcome-Grounded Objective Repair (OGOR)**，但它仍是待否决候选。定义进一步限制为：上位结果与硬约束明确可得；用户另给一个可能失效的建议手段；agent 用预注册信息动作取得关键事实，必要时在授权范围内换手段并执行；主 oracle 是终态结果、硬约束、regret 与信息成本。
+2. 明确它不测“猜用户真正意图”、一般问题改写或开放式价值推断。上位结果不清、决定性事实不可发现、没有授权替代动作或终态不可程序验证的 case，不进入 confirmatory repair-and-act 核心。
+3. 用 SaaS 贯穿例固定区分：结果是“节省至少 80 元且不影响发版”，手段是“取消 LogLite”；twin world 只改变 LogLite 是否为发版依赖。支持证据下照原手段执行，反证下改为取消无依赖且未使用的 StockPic Pro；两个 world 的结果约束不变，动作随证据翻转。
+4. 校正对 PDR-Bench 的表述：它已有 10 个领域、50 个任务、25 个真实画像和 250 个查询，不能称为领域覆盖明显狭窄；其集中之处是任务形态均为 task/profile-conditioned personalized deep-research report generation，终点为 P/Q/R 报告评价。
+5. 原 DeepAlign 若只增加领域、加入 matched/swapped、三类契约和真人决策效用，能成为有价值的 measurement/construct-validity study，但 task primitive 仍接近 PDR-Bench，作为全新 ICLR benchmark 的 novelty 风险较高。OGOR 的潜在区别来自输入中的“结果—手段”分层、证据条件动作修复、真实执行终态和 literal-vs-outcome 排名反转。
+6. 最大反对仍是“AgentAbstain + safe alternative tool”或“MedRedFlag + τ-bench”。下一轮必须以 decoy、间接证据链、多个等价修复动作、无关扰动、重复运行和跨 family 稳定的 evidence-acquired-but-not-used 失败来否决这两个解释；否则停止该方向。
+7. 本轮仅更新方向备忘录、README、项目记忆和 changelog；正式 Proposal、schema、HTML、DOCX/PDF 和已有主图继续保留为 v0.33 旧分支快照，避免把未过 novelty/power 大门的候选机械同步成正式方案。
+
+### 1.0g 2026-08-10：OGOR 构念否决与 DeltaBench 首选候选
+
+1. 接受用户对 OGOR 的核心反驳：当前“发现用户建议手段错误并换路实现结果”可以由基础模型能力、记忆、批判性推理、工具使用、规划与安全边界共同解释；pilot 未隔离独立 objective-repair construct，也未证明固定 backbone 后存在 OGOR 专用模块的特异增益。“模型是否有主见”不是可操作的科研构念。
+2. 新近邻进一步压缩 OGOR：SycoBench-600 已测错误用户压力下的选择性纠正；Belief-R、BeliefShift 和 EVU 已测证据驱动信念修订与 belief inertia；AgentAbstain、MedRedFlag 和交互执行已覆盖停止、纠错与行动。因此取消 6–8 family OGOR 扩展，2-family pilot 仅保留为 evidence-acquired-but-not-used 诊断切片。
+3. 新 benchmark 候选必须满足：固定 backbone 的模块干预可改善；初始 task success 后仍能暴露新失败；可执行 oracle；相关变化敏感与无关变化不变；结果能指向 router、ledger、memory writer 或 validator 等具体系统对象。
+4. 新首选否决对象为 **DeltaBench / Dependency-Aware Selective Revalidation**：长期 agent 已完成正确的多 artifact workspace 后，注入一个上游事实、来源、约束或需求 delta；agent 需计算 gold dependency graph 上的 affected closure，选择性重验和修补全部下游，同时保持 unaffected nodes 稳定。
+5. 主指标冻结为 Impact Recall、Preservation Precision、Residual Inconsistency、Rework Cost 和非补偿式 Selective Maintenance Success。初始 workspace 对所有系统相同且已通过测试，delta 明确提供，并用独立小测确认理解，避免把初始生成、检索或事实理解混入构念。
+6. 关键同-backbone 对照为 full history、从头重做、普通摘要/向量记忆和显式 evidence–decision–artifact dependency ledger + incremental validator。只有 ledger scaffold 在不泄漏 affected set 的情况下同时提高完整修复与无关保持，才能说明 benchmark 指向 agent state/runtime architecture。
+7. 最近邻包括 STALE 后续、BeliefShift、TRACK、StreamBench、Ledger 和 Apeiron；因此只能检验“跨 workspace、gold dependency graph、单一 delta、affected-closure repair + unaffected preservation”的窄 gap。最大风险是被视为 change-impact analysis/regression testing 的跨域扩展。
+8. 其余顺位：Resolution Routing 第二；Counterfactual Experience Transfer、Open-Set Option Discovery 和 delayed-feedback causal update 暂不优先，分别受 ClarifyBench/When2Tool/AgentAbstain、EvoAgentBench/AFTER/SEAL、Alternative Generation/Mind-ParaWorld 与 ReBel/HiMPO/ERL 压缩。
+9. 下一步只做 3-workspace × 4 delta × 2 backbone × 2 scaffold × 3 repeat = 144 次三天否决实验。若 affected set 可由表面线索直接读出、依赖图无法客观冻结、ledger 泄漏答案、同-backbone 无特异增益或排名等价于普通 task success，则停止 DeltaBench。
+10. 正式 Proposal、schema、DOCX/PDF、HTML 和图继续保留为 v0.33 旧分支快照；v0.37 只更新方向备忘录、README、项目记忆和 changelog。
+
+### 1.0h 2026-08-10：AdvisorBench / 建设性判断 gap 审计
+
+1. 否决 broad pitch “AI 是否知道何时同意、挑战、澄清或 defer”作为新 benchmark 空白。HumanAgencyBench 已把澄清、纠正错误信息、重要决定 defer 和避免价值操纵纳入 human-agency support；SycoBench-600 已测接受正确建议、抵抗错误建议；Two Axes of LLM Abstention 已直接测 false challenge 与 calibrated answer/challenge policy。
+2. AppWorld-UL、RegretBench 和 CarryOnBench 分别占据 clarify/confirm/infeasible 交互、带 regret 的澄清策略和从过度谨慎中恢复 utility；SoundnessBench 已测研究 proposal soundness；错误代码指令工作和 GeneBench-Pro 又覆盖 blind obedience 与 outcome-grounded higher-order judgment。因此“不是 critique，而是 judgment”只能作动机，不能作 novelty。
+3. `AdvisorBench` 名称已被 2026 年 Kaggle advisory-divide benchmark 使用；`InterveneBench` 也已有因果研究设计 benchmark，均不得作为候选名称。`Beyond Obedience` 过于泛化，且错误代码指令工作已直接使用 blind obedience framing。
+4. 唯一保留的窄候选是 outcome-grounded plan-intervention policy：固定目标、约束、方案与授权，在 supported/refuted/underdetermined 三个最小反事实环境中评价 `EXECUTE / CHALLENGE_REPAIR / INSPECT` 路由；主测 false challenge、blind execution、premature commitment、goal deviation、outcome regret 和信息成本。
+5. 构念隔离必须使用 free route、forced validity judgment、forced correct route 和同-backbone router scaffold。只有模型在 forced 条件中“知道且会做”但自由选择 route 失败、router 又产生特异改善，才能主张 intervention-policy gap；否则仍是知识、推理、规划和执行的通用能力组合。
+6. “扩大模型规模提升效果”的开放例缺少指标、预算、数据状态与 scaling evidence，不能客观标注 Agent B 更优。正式 item 必须冻结目标和 twin/triad worlds，让正确干预随一个可发现事实改变，并由程序化终态判分。
+7. 该窄候选与 Resolution Routing / OGOR 高度相关，且新近邻使其不再优先于 DeltaBench。只保留 6 family × 3 world × 2 backbone × 4 condition × 3 repeat = 432 episode 的三天 novelty-kill pilot 设计；本轮不运行、不改正式 Proposal。
+8. 完整审计见 `proposal/AdvisorBench_建设性判断Gap审计.md`。当前学术数据库 MCP 未挂载，OpenAlex fallback 因证书链失败；结论为截至 2026-08-10 的 search-bounded audit，但 direct-neighbor evidence 已足以否决 broad pitch。
+
+### 1.0i 2026-08-10：从 Cognitive Gain 收窄到 Agent-Initiated Epistemic Gain
+
+1. 在 Calibrated Disagreement 与 Cognitive Gain 之间，研究价值上选择 B 的收窄版本。A 不再作为主 benchmark，而作为主动干预的 no-harm 约束：supported plan 上的 false intervention、plan regression、goal deviation 与额外成本必须受到惩罚。
+2. 否决 broad `Cognitive Gain` 作为新估计对象。CollabLLM 已直接研究从 passive responder 到 active collaborator，并评价长期任务质量、交互性、用户满意度和时间；Human-AI Synergy 与 HAI-Eval 已测协作 uplift；KITE 已用 AI 移除后的独立实现隔离 human knowledge transfer。因此没有迁移测试时不能把 joint artifact improvement 称为人类认知增益。
+3. 新候选构念为 **Agent-Initiated Epistemic Gain**：agent 在用户给出 issue-specific 提示前首先提出关键问题/假设/证据需求；该贡献有外部证据支持、实际改变方案，并在程序测试、held-out 数据或环境 regret 上改善终态。四环任一缺失都不记主成功。
+4. 核心估计为同一 backbone、工具与总预算下 `Initiative Gain = U(P_proactive) − U(P_reactive)`；同时报告 `Total Assistance Gain = U(P_proactive) − U(P0)`、`Elicitation Gap = U(P_oracle-cued) − U(P_proactive)`、agent-first critical insight、user steering burden 与 false intervention。指标不聚合为补偿式总分。
+5. confirmatory 核心优先选择可执行的 ML 实验设计、软件/系统设计和受控证据综合，不以完全开放 proposal 的 LLM judge 喜好作为主 oracle。每条关键贡献记录 first raiser、证据、方案 uptake 和 outcome ablation。
+6. 最强反对是“CollabLLM 换到科研场景”、主动臂获得更多算力、Reactive 被 simulator 人为绑住、隐藏 issue 清单泄漏答案，以及更强模型通用能力解释。必须用 budget matching、多 user policy/真人 crossover、decoy/组合证据、oracle-cued 能力臂和系统排序重排逐项否决。
+7. 下一轮优先做 2 family × 4 case × 2 backbone × 3 policy × 3 repeat = 144 episode 的 novelty-kill pilot。若增益由额外搜索解释、终态仍依赖主观 judge、simulator 改写即消失、固定 checklist 足够或现有 CollabLLM 指标完整解释结果，则停止方向。
+8. InitiativeGain 成为当前优先问题假设；DeltaBench 保留为结构清楚、工程风险较低的备选。正式 Proposal、schema、DOCX/PDF、HTML 与图仍保持 v0.33 快照，待新候选通过最近邻、oracle、同-backbone 归因、可执行终态和两个月可行性门后再整体换题。完整推理见 `proposal/CognitiveGain_方向收敛备忘录.md`。
+
+### 1.0j 2026-08-10：Intervention Boundary 构念接受与 broad gap 否决
+
+1. 接受用户的核心构念修正：不研究“持续批判性挑刺”，而研究 intervention policy 何时从 preserve 切换到 inspect、suggest 或 challenge-repair。Intervention boundary 比 critique/judgment 更可操作，也能把 false challenge 与 blind execution 放在同一 policy 上。
+2. 否决事实陈述“已有 benchmark 只分别评价 follow、critique、proactive assistance”。Int-Bench 已测 teacher LLM 是否、何时、如何介入以及即时成功/迁移；CoLabScience 已在 biomedical research discussion 中学习 when/how intervention 并报告 precision/utility；ProMediate 已测 mediator when/how；VoI 已按风险、歧义和用户成本决定 act/ask。
+3. broad intervention timing 不是 gap。新候选收窄为 **Outcome-Grounded Intervention Boundary**：对相同用户目标和方案沿 evidence strength、stakes 与 intervention cost 构造最小反事实 world；gold action 由 `E[U(outcome)] − intervention cost − goal-deviation cost` 决定，不用人工偏好标一个“正确介入时刻”。
+4. 动作强度冻结为 `PRESERVE → INSPECT → SUGGEST → CHALLENGE_REPAIR`。核心指标是 Boundary Location Error、Over/Under-Intervention Regret、Monotonicity Violation、Irrelevant Flip、Outcome Utility、Goal Preservation、信息成本和 Agent-First Contribution；禁止补偿式总分。
+5. v0.39 Initiative Gain 不删除，改为 boundary 的 outcome criterion；agent-first insight 是过程归因；Calibrated Disagreement 是 sound-plan no-harm slice。主理论链变为 `evidence/stakes → intervention intensity → agent-originated plan change → downstream utility`。
+6. 最大 ICLR 反对是“给 Int-Bench/CoLabScience 做 contrast set/response surface”、效用成本由作者任意设定、连续变量只是离散分类插值，以及 plan outcome 仍需 LLM judge。必须用可执行终态、预冻结成本、局部最小反事实、语义等价/无关扰动与最近邻基线增量诊断逐项否决。
+7. 下一步改为 2 family × 7 evidence level × 2 stakes × 2 paraphrase × 2 backbone × 3 repeat = 336 个 free-policy episode；边界附近另做 forced validity、forced route 与 utility-aware router 子集。若没有非平凡 region switch、boundary 排名等同普通 task success、oracle 依赖主观 judge或现有近邻指标完整解释结果，则停止方向。
+8. Outcome-Grounded Intervention Boundary 成为当前优先 novelty-kill 假设，DeltaBench 保留为工程风险较低的备选。正式 Proposal、schema、DOCX/PDF、HTML 与图保持 v0.33 快照；完整推理见 `proposal/InterventionBoundary_方向收敛备忘录.md`。
+
+### 1.0k 2026-08-10：MentorBench cognitive augmentation novelty audit
+
+1. 接受 `MentorBench` 比 AdvisorBench/纯 intervention 更准确地表达研究价值：AI 不只是完成用户任务，而应帮助用户成为更好的思考者。但 `mentor` 是角色比喻，不能直接作为 benchmark estimand。
+2. 否决 broad `MentorBench: Evaluating Cognitive Augmentation in AI Assistants` 作为已成立 novelty。CollabLLM 已测主动发现意图与建议，METIS 已做 idea-to-paper research mentor，CoLabScience 已测科研讨论中的 when/how intervention 与 collaborative utility，KITE 已用 AI 移除后的真人独立实现测 knowledge transfer，Int-Bench 已联合测介入时机、即时成功与新题泛化，HumanAgencyBench 已覆盖 learning 与 agency support。
+3. 构念必须拆成三个不可互相补偿的结果：`Immediate Outcome Gain`、`Independent Transfer Gain after AI removal` 与 `Agency / Goal Preservation`。只测共同产物变好属于 assistance/synergy；没有真人 transfer 不能称 cognitive gain；personalization 只是选择帮助策略的输入条件。
+4. 唯一有条件保留的窄候选是 **Learning Without Displacement / Dual-Horizon Mentoring**：assistant 选择最小替代性干预，同时改善当前研究方案和用户在 AI 移除后的结构迁移，并保留上位目标与决定权。
+5. 识别预测被冻结为同-backbone、同工具、同事实包与同帮助预算下的 `Executor / Critic / Scaffolded Mentor / Free Policy` 随机对照；若即时方案、独立迁移与普通 task success 排名不分离，或收益只是更多 token/信息量，则 mentor 构念被否决。
+6. 确认性 cognitive gain 必须使用真人 pretest、AI-assisted phase、AI-removal transfer case 与 appropriation/agency probe；user simulator 只能用于开发。样本量必须由 pilot 方差和功效模拟决定，不能把 turn 或 rubric leaf 当独立样本。
+7. `MentorBench` 精确名称暂未发现明确同名学术 benchmark，但只标记为暂时可用；`Cognitive Augmentation` 已有直接实验和 benchmark 表述，不建议作为宽泛 subtitle。
+8. 若愿意承担真人实验，高风险题名候选为 `MentorBench: Measuring Learning Without Displacement in AI-Assisted Research Planning`；若两个月可做性优先，Outcome-Grounded Intervention Boundary 保持技术核心，mentoring 仅作为叙事层并加小规模 transfer validation。正式 Proposal、schema、DOCX/PDF、HTML 与图仍保持 v0.33 快照；完整审计见 `proposal/MentorBench_认知增强Novelty审计.md`。
+
+### 1.0l 2026-08-11：认知贡献必须相对 strong answer 做反事实识别
+
+1. 接受问题重心从“AI 有没有主见/是否像导师”转为“交互式 AI 是否产生超过完整回答本身的可归因价值”。这比 Mentor/Advisor 角色叙事更接近单一 estimand。
+2. 否决 broad gap 句“现有评测只看 AI 输出或协作结果，不测独立认知增量”。Human–AI augmentation/synergy 已有 106 个真人实验的 meta-analysis；CollabLLM 与 Quantifying Human–AI Synergy 已测协作 uplift；KITE、Bastani 等真人 RCT 与 Int-Bench 已测 AI 移除后的迁移、学习伤害和 over-assistance。
+3. 新增最危险近邻 CoCoDial：其已定义 Cognitive Collaborative Dialogue，在 8 个领域、120 个 user profile 上自动生成 1,460 段对话并评价 cognitive collaboration；TATA 又明确使用 Cognition Gain Index，以新增 cognitive element 和 BERTScore 语义变化表示 cognition gain。扩大 domain、追踪认知元素变化或共同形成个性化方案均不再构成 novelty。
+4. 保留的测量缺口是 `semantic movement ≠ counterfactual value added`。用户状态变化必须链接到强非交互回答、信息配平对照、可验证 outcome 和 AI-removal transfer，不能把多轮 verbosity、说服或语义变化直接记成认知增益。
+5. 当前主 RQ：在同 backbone、工具、token/time 和 substantive information 配平后，adaptive interaction 是否在开放式专业长程 formulation task 中，相对 strong standalone 与 content-matched/yoked control 同时改善当前方案和之后独立迁移。
+6. 冻结三个分离 estimand：Total Assistance Gain 仅作 sanity check；Beyond-Answer Outcome Gain 比较 interactive 与 strong standalone；Interaction-Attributed Transfer Gain 比较 interactive 与 content-matched non-interactive control。只有 AI-removal transfer 可称 human cognitive gain。
+7. 最小确认设计为 No Assistance、Strong Standalone、Content-Matched Static/Yoked、Adaptive Interaction 四臂；主任务优先选择有可执行/可演算终点的 ML 实验设计、系统架构和证据综合 micro-world。固定 insight inventory 为首轮可行设计，yoked-pair 作为更强 replication。
+8. `Learning Without Displacement` 降为 outcome/no-harm 维度；personalization 是 moderator；intervention 是 mechanism；beyond-answer causal contrast 才是 estimand。工作题名首选 `Beyond the Answer: Isolating Cognitive Value Added by Interactive AI Assistance`；`Does AI Make Humans Think Better?` 仅作传播型 hook。
+9. 若 token/time/proposition exposure 配平后效应消失、只有 immediate artifact gain 而无 transfer、系统排序不区别于 one-shot quality、或无法构造公平的 content-matched control，则停止该方向。正式 Proposal、schema、DOCX/PDF、HTML 与图继续作为 v0.33 旧分支快照；完整审计见 `proposal/BeyondAnswer_认知贡献Gap审计.md`。
+
+### 1.0m 2026-08-11：DeepAlign 作为测量效度 benchmark 的条件性恢复
+
+1. 接受用户“metrics/rubrics 也可以讲新故事”的假设，但否决继续发明差值归一化总分。DeepAlign 的候选主问题改为：个性化评分是否同时具备绝对合格性、双向反事实特异性、相对 task-only 增量价值、共同质量非劣、边界零违规和真人结果效度。
+2. `CFA_mean` 保留为任务族内用户×生成条件的 interaction contrast，不再承担完整 personalization score。Specificity 与 benefit 优先使用目标用户/校准评委 pairwise judgment 及 Bradley–Terry/Thurstone mixed model；matched absolute adequacy 单独用 anchored criterion-referenced rubric。
+3. 主榜发布不可补偿 Personalization Validity Profile、置信区间和 family-level heterogeneity，不将 adequacy、specificity、benefit、quality 与 boundary 相乘。Eligibility 先由 boundary 和 shared-quality 决定，再报告其余连续估计。
+4. Rubric 拆为 shared task validity、user-specific decision fit 和 boundary；每个 leaf 必须 atomic、可观察、带 evidence span、owner、applicability、对称 A/B 版本、评分锚点和运行前冻结时间。用户权重不得在看输出后生成。
+5. Judge 校准分模块进行：目标用户负责 user fit/benefit，领域专家负责 shared quality，规则/专门标注者负责边界；LLM judge 只有在对应 module 通过 human gold、inter-rater、test-retest、position/length/format/persona-keyword bias 和 DIF 审计后才可扩展。
+6. 新颖性生死线不是 profile 项数，而是四项预注册经验结果：高 absolute score 不必然 specificity；高 specificity 不必然 benefit；PDR-style score 与完整 profile 产生稳定重分类/rank reversal；完整 profile 对真人选择/decision utility 有增量预测和更好校准。
+7. [PDR-Bench](https://arxiv.org/abs/2509.25106) 已建立绝对 P/Q/R，[MyScholarQA](https://aclanthology.org/2026.acl-long.723/) 已证明合成用户/LLM judge 会漏错，[Can LLM be a Personalized Judge?](https://arxiv.org/abs/2406.11657) 与 [SenseJudge](https://aclanthology.org/2026.findings-acl.1084/) 已直接研究 personalized judge。因此论文不能只说 judge 不可靠，必须提供可复用效度分解、系统重分类和 criterion validity。
+8. 下一步只做 3 个真人确认 family × 3 系统 × task-only/Ya/Yb = 27 artifact 的 vertical slice。若用户/专家无法稳定区分三类 construct、重分类来自 bug、或完整 profile 与简单 P-score/CFA 同义，则停止让 metrics/rubrics 承担主创新。
+9. 正式 v0.33 Proposal、schema、HTML、DOCX/PDF 和图暂不重写；详细设计见 `proposal/DeepAlign-Bench_测量效度重构备忘录.md`。
+
+### 1.0n 2026-08-11：多轮改口现象审计与 Selective Epistemic Revision 候选
+
+1. 用户观察到 assistant 先因 DeepAlign/PDR-Bench 能力重叠而建议换题，后来又因“方法创新也可以”条件性恢复 DeepAlign。该例不完全是无理由 sycophancy：用户新增了 novelty 判据。正确回答应保留“能力原语重叠仍大”，只更新“measurement paper 可行性”，而不把旧结论静默覆盖。
+2. 否决 broad “维护前后一致、该改口时改口” gap。FlipFlop、SYCON、SycoBench-600、MultiChallenge Self-Coherence、Belief-R、BeliefShift、Med-Stress/MedPRESS、EoBench、ACL 2026 logical belief consistency、EvolIF、repair 与 SAVeR 已分别覆盖无证据翻转、稳定/更新权衡、动态约束和最小 reasoning repair。
+3. 唯一有条件保留的窄候选为 **Premise-Conditioned Selective Revision**：对 assistant 公开的 `事实—假设—判据—结论` 依赖图注入单一 delta，只更新 gold affected closure，保持 unaffected commitments，并把修订归因到正确 premise/turn。不能声称测到模型私有 belief。
+4. 主指标为 Unsupported Revision Rate、Warranted Revision Recall、Preservation Precision、Revision Attribution Accuracy、Conditional Scope Preservation、Residual Contradiction、Over-Persistence 与 Path Invariance；不得聚合成补偿式总分。
+5. 构念红线包括：一致性不等于正确、criterion change 不等于 factual correction、模糊不表态作弊、长上下文 recall 混淆、自然语言 judge 循环、事后理由不等于内部因果，以及社会来源与重复答案暴露混淆。必须加入 speaker-free repetition/plain re-ask 对照。
+6. 该候选是 v0.37 DeltaBench 的 dialogue/epistemic 实例化，而不是全新独立原语：commitment graph 对应 workspace dependency graph，新证据/目标/判据对应 delta。它更贴近人机科研讨论，但比 workspace maintenance 更接近 BeliefShift/SYCON/MultiChallenge，oracle 也更软。
+7. 下一步仅做 3 个专业 family × 6 delta × 2 paraphrase × 2 backbone × Full-History/Commitment-Ledger × 3 repeat = 432 trajectory 的 novelty-kill pilot。若普通 recall、flip rate、Belief-R update/maintain 或 MultiChallenge self-coherence 已能解释结果，或 ledger 泄漏 affected set，则停止。
+8. v0.43 DeepAlign measurement-validity 的条件性判断保持，不因新 idea 静默推翻。正式 v0.33 Proposal、schema、DOCX/PDF、HTML 与图继续保持快照；完整审计见 `proposal/SelectiveEpistemicRevision_最近邻审计.md`。
 
 ### 1.0 v0.32：从 artifact fit 收敛到 downstream decision utility
 
@@ -354,3 +565,4 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.31：冻结 task/persona 三层标注、真人锚定配对、direction-node registry、E1→E3→E2 工程主次和 3-family vertical slice 开工链。
 - v0.32：将主终点从 artifact fit 收敛为真实用户 downstream decision utility；冻结 Phase A/Phase B、DDE/WrongUserHarm、3-family vertical slice、utility verifier 和真人功效路线，并新增参考分区式端到端图。
 - v0.33：完成4-family合成 Phase A 最小实验；以原型压力测试否定单一差值/比例/角度主分，增加 A_min、角度/幅度诊断、task-only NI/added-value 分层和 owner-aware 路由要求；新增正式 Proposal 全链路+本周进度一页图。
+- v0.34：把 CFA 重定位为报告层交互对比而非完整个性化指标；以外部效用/可执行 regret 作为保留分支的主估计对象；用最新近邻否决个性化→行动、自我修复回退、停止/工具与多用户权限等宽泛换题，并提出 agent 决策边界/响应曲面的 3 天候选否决实验。

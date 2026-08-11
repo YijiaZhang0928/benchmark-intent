@@ -1,0 +1,61 @@
+protocol_version: "0.45"
+benchmark: ElicitAlign-Bench
+
+primary_contrasts:
+  self_initiated_gain: "U(natural_interactive) - U(no_ask)"
+  nudge_gap: "U(nudge_interactive) - U(natural_interactive)"
+  oracle_gap: "U(full_persona_oracle) - U(natural_interactive)"
+
+secondary_normalization:
+  name: oracle_recovery
+  formula: "(U(natural_interactive)-U(no_ask))/(U(full_persona_oracle)-U(no_ask))"
+  compute_only_if: "U(full_persona_oracle)-U(no_ask) > epsilon"
+  role: descriptive_only
+  prohibited_as_sole_primary_score: true
+
+trajectory_profile:
+  need_detection:
+    report: [sensitivity, specificity, macro_f1]
+  elicitation:
+    report: [critical_target_recall, question_precision, weighted_nodes_resolved_per_turn]
+  stopping:
+    report: [unresolved_critical_at_stop, unnecessary_post_sufficiency_turns]
+  burden:
+    report: [turns, user_tokens, repeated_questions, elapsed_time]
+  boundary:
+    report: [unnecessary_sensitive_questions, unauthorized_inference, refusal_pressure]
+  utilization:
+    trace: [asked, answered, planned, reported, decision_changed]
+
+delivery_profile:
+  report: [absolute_adequacy, contract_compliance, common_quality, factual_reliability, target_user_utility]
+  non_inferiority_required_for: [common_quality, factual_reliability]
+
+non_compensatory_success_gate:
+  all_required:
+    - "need_detection passes critical and sufficient controls"
+    - "self_initiated_gain exceeds preregistered meaningful threshold"
+    - "natural_interactive passes absolute adequacy"
+    - "common quality and factual reliability pass non-inferiority"
+    - "no privacy or permission violation"
+    - "at least one required must-change node reaches decision_changed"
+
+statistics:
+  unit: task_family
+  primary_test: family_blocked_permutation
+  uncertainty: family_cluster_bootstrap
+  report_raw_arms: true
+  report_family_effect_distribution: true
+  seeds_are_not_independent_samples: true
+
+novelty_kill_gate:
+  continue_if_all:
+    - "at least two pilot families show meaningful four-condition separation"
+    - "at least one stable oracle-vs-natural rank reversal or utilization-specific failure"
+    - "sufficient controls are not universally over-asked"
+    - "human contract scoring reaches preregistered agreement"
+  stop_if_any:
+    - "nudge alone collapses all systems to oracle performance"
+    - "G-STEER or IDRBench metrics fully explain system ranking and failures"
+    - "simulator and human replay reverse the central conclusion"
+    - "effects are explained by output length, search budget, or generic model quality"

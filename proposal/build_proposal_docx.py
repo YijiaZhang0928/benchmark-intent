@@ -10,32 +10,31 @@ from docx.oxml.ns import qn
 from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 ROOT = Path(__file__).resolve().parents[1]
-MD = ROOT / "proposal" / "DeepAlign-Bench_研究Proposal.md"
-FIG = ROOT / "proposal_assets" / "DeepAlign-Bench_主图.png"
-OUT = ROOT / "deliverables" / "DeepAlign-Bench_正式研究Proposal.docx"
+MD = ROOT / "proposal" / "ElicitAlign-Bench_研究Proposal.md"
+FIG = ROOT / "proposal_assets" / "ElicitAlign-Bench_端到端流程图_v0.45.png"
+OUT = ROOT / "deliverables" / "ElicitAlign-Bench_正式研究Proposal.docx"
 
 # The formal proposal is the default. Communication variants override these
 # module-level values from build_readable_variants.py while reusing the same
 # deterministic layout and Markdown parser.
 COVER_KICKER = "RESEARCH PROPOSAL"
-COVER_TITLE = "DeepAlign-Bench"
-COVER_SUBTITLE = "个性化 Deep Research 交付物的下游决策效用评测"
-COVER_MODE = "Benchmark · Evaluation · Human-Centered Agents"
-DOC_VERSION = "v0.33 · 组内讨论稿"
-DOC_DATE = "2026 年 8 月 9 日"
-RESEARCH_LINE = "Artifact Qualification · Human Decision Trial · DDE · Wrong-User Harm"
-CORE_CLAIM = "先证明三臂报告在共同质量上可比且确实个性化，再用真实目标用户、等价任务和随机处理检验 decision regret 是否下降。"
+COVER_TITLE = "ElicitAlign-Bench"
+COVER_SUBTITLE = "从缺失用户信息到个性化交付"
+COVER_MODE = "Interactive Agents · Personalization · Deep Research"
+DOC_VERSION = "v0.45 · 方向否决版"
+DOC_DATE = "2026 年 8 月 12 日"
+RESEARCH_LINE = "Detect · Elicit · Stop · Use · Deliver"
+CORE_CLAIM = "不给显式 persona 和澄清提醒，测 agent 是否自主恢复决策相关用户状态，并用完整 persona oracle 验证信息是否真正进入最终交付。"
 CONTENTS_ITEMS = [
-    "研究概要与可证伪假设", "关键文献精读与设计启示", "Evaluation Atlas 与双轴 taxonomy",
-    "Benchmark 数据结构与构建流程", "Rubric、Metrics 与 Judge", "实验矩阵与平台实现",
-    "严格审稿风险与防守", "里程碑、论文结构与最小可行版本", "论文图表蓝图",
-    "参考文献",
+    "研究问题与可证伪假设", "Case、Task 与隐藏用户真值", "四条件实验与交互协议",
+    "非补偿评分与统计", "最近邻边界与 Novelty-kill gate", "工程实现与最小实验",
+    "八周计划、贡献与主张边界", "参考文献",
 ]
-READING_NOTE = "阅读提示：主图给出整体逻辑；第 7–8 节是本 proposal 的测量学核心；第 11 节按顶会审稿视角集中列出可预见攻击与防守。"
-FIGURE_TRIGGER = "2. 关键文献"
-FIGURE_TITLE = "总体框架：从报告资格审查到真实用户决策效果"
-FIGURE_CAPTION = "图 1  DeepAlign-Bench 两阶段主张图。Phase A 证明 task-only、matched、swapped 报告可比；Phase B 估计 DDE 与 wrong-user harm。"
-RUNNING_HEADER = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
+READING_NOTE = "阅读提示：先看主图与第 1–4 节理解任务原语；第 6–8 节解释指标、统计和最近邻边界；第 10 节是本方向继续或停止的硬门。"
+FIGURE_TRIGGER = "1. 研究问题"
+FIGURE_TITLE = "ElicitAlign-Bench 端到端研究框架"
+FIGURE_CAPTION = "图 1  从 task/case metadata、隐藏 user ledger 与自然欠指定输入，到四条件交互、最终交付评分、系统能力分解和论文否决门。"
+RUNNING_HEADER = "ELICITALIGN-BENCH  ·  RESEARCH PROPOSAL"
 STYLE_PRESET = "narrative_proposal"
 INCLUDE_CONTENTS = True
 
@@ -443,6 +442,11 @@ def add_table(doc, rows):
     else:
         table_font_size, table_spacing, table_line_spacing = 9.2, 2, 1.08
     for i, row in enumerate(rows):
+        # Keep each logical record on one page. Word/LibreOffice otherwise may
+        # split a row so that a single trailing word is orphaned on the next
+        # page, which makes comparison tables hard to read in advisor copies.
+        tr_pr = table.rows[i]._tr.get_or_add_trPr()
+        tr_pr.append(OxmlElement("w:cantSplit"))
         for j in range(ncols):
             text = row[j] if j < len(row) else ""
             cell = table.cell(i, j)
@@ -512,9 +516,9 @@ def add_figure_section(doc):
     picture = run.add_picture(str(FIG), width=Inches(9.55))
     picture._inline.docPr.set(
         "descr",
-        "DeepAlign-Bench 研究流程：从五平面元数据、反事实任务族和跨 agent 运行，到 rubric compiler、分层 judge 与人评校准。",
+        "ElicitAlign-Bench 研究流程：从 case/task metadata、隐藏 user-state ledger 与自然欠指定输入，到四条件交互、最终交付评分和 novelty-kill gate。",
     )
-    picture._inline.docPr.set("title", "DeepAlign-Bench 研究设计")
+    picture._inline.docPr.set("title", "ElicitAlign-Bench 研究设计")
     p.paragraph_format.space_after = Pt(5)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER

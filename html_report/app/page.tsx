@@ -1,46 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "DeepAlign-Bench｜研究汇报",
-  description: "个性化 Deep Research 交付物的下游决策效用评测方案",
+  title: "ElicitAlign-Bench｜研究汇报",
+  description: "评测 agent 在自然欠指定任务中自主发现、澄清并利用用户信息的能力",
 };
 
-const sources = [
-  ["OpenCompass", "评测工程解耦：配置、任务切分、运行、评估与汇总", "https://arxiv.org/abs/2605.19276"],
-  ["Agent-SafetyBench", "结果类别 × 失败机制的双层 taxonomy", "https://arxiv.org/abs/2412.14470"],
-  ["PDR-Bench", "最直接前作：真实 persona + PQR；也是本项目要超越的基线", "https://arxiv.org/abs/2509.25106"],
-  ["PaperBench", "层级原子 rubric；评委也需要独立 benchmark", "https://openai.com/index/paperbench/"],
-  ["Mind2Web 2", "树状 rubric 与 Agent-as-a-Judge", "https://arxiv.org/abs/2506.21506"],
-  ["LiveResearchBench", "日常、企业、学术任务与实时 DeepEval", "https://arxiv.org/abs/2510.14240"],
-  ["ResearchRubrics", "任务复杂度：概念广度 × 逻辑嵌套 × 探索性", "https://arxiv.org/abs/2511.07685"],
-  ["LiveDRBench", "以搜索 fan-out 与非平凡推理定义 Deep Research", "https://arxiv.org/abs/2508.04183"],
-  ["AssistantBench", "从真实用户与专业工作收集耗时 web 任务", "https://arxiv.org/abs/2407.15711"],
-  ["HELM", "先枚举场景与指标空间，再按覆盖与可行性选择子集", "https://arxiv.org/abs/2211.09110"],
-  ["CheckList", "用能力 × 测试类型矩阵组织行为测试", "https://aclanthology.org/2020.acl-main.442/"],
-  ["BetterBench", "从设计到维护的 benchmark 生命周期质量检查", "https://arxiv.org/abs/2411.12990"],
-  ["BenchmarkCards", "标准化记录目标、方法、来源、限制与适用范围", "https://papers.neurips.cc/paper_files/paper/2025/hash/76175f4355e2f67cf91be468c8860070-Abstract-Datasets_and_Benchmarks_Track.html"],
-  ["Setoka", "异构数据上的四层用户理解：事实、情景、行为、特质", "https://arxiv.org/abs/2607.27056"],
-  ["Temporal Interventions", "用户条件化时间干预的 C1–C4 操作要求", "https://arxiv.org/abs/2607.21635"],
-  ["PersonaTrail", "以真实浏览轨迹测试偏好推断与情景记忆", "https://arxiv.org/abs/2607.20482"],
-  ["TARS", "代码理解中的个性化解释与人类效用", "https://arxiv.org/abs/2607.15948"],
-  ["SARSI", "受治理、可审计、可回滚的 personal-agent 架构", "https://arxiv.org/abs/2607.12254"],
-  ["PASB", "持久 sycophancy 与 durable-write 治理", "https://arxiv.org/abs/2607.10526"],
-  ["APeB", "欠指定意图、噪声历史与 hard candidates", "https://arxiv.org/abs/2607.03162"],
-  ["ETAPP", "人工 key points 评价个性化与主动工具调用", "https://aclanthology.org/2025.acl-long.1064/"],
-  ["PersonaMem", "跨 session 的动态用户画像与响应适配", "https://arxiv.org/abs/2504.14225"],
-  ["PAHF", "澄清、记忆和反馈共同适应偏好漂移", "https://arxiv.org/abs/2602.16173"],
-  ["Mem2ActBench", "长期记忆是否落实到工具选择与参数", "https://aclanthology.org/2026.acl-long.370/"],
-  ["PDR 2026", "用户画像进入检索、推理与停止条件", "https://arxiv.org/abs/2605.10530"],
-  ["MyScholarQA", "真人揭示合成用户与 LLM judge 漏掉的个性化错误", "https://aclanthology.org/2026.acl-long.723/"],
-  ["PS-Bench", "良性个人记忆可能错误地合理化危险意图", "https://aclanthology.org/2026.acl-long.1260/"],
+const papers = [
+  ["PDR-Bench", "给定 persona/context 后的个性化报告质量", "https://arxiv.org/abs/2509.25106"],
+  ["IDRBench", "欠指定 Deep Research 中交互带来的收益与成本", "https://arxiv.org/abs/2601.06676"],
+  ["IntentRL", "主动澄清潜在 intent 的训练方法", "https://arxiv.org/abs/2602.03468"],
+  ["DiscoBench", "搜索过程中的歧义发现、提问与恢复", "https://arxiv.org/abs/2606.27669"],
+  ["G-STEER", "个性化 Deep Research 的 Retrieve / Ask / Stop", "https://arxiv.org/abs/2608.05876"],
 ];
 
-const failures = [
-  ["获取/澄清失败", "缺少必要信息时既未获取，也未澄清"], ["无依据推断", "编造用户属性或使用人口刻板印象"],
-  ["检索/相关性失败", "漏取正确事实，或取回错误、无关信息"], ["已知约束忽略", "预算、权限或格式已知却未落实"],
-  ["冲突/更新失败", "新旧信息冲突时仍选择过期事实"], ["利用失败", "能复述用户事实，却没有落实到交付物"],
-  ["无关/过度个性化", "在不应变化处强行适配或迎合"], ["隐私/权限失败", "越权访问或不必要披露敏感信息"],
-  ["保持/交接失败", "长程执行或子 agent 交接后丢失约束"],
+const conditions = [
+  ["C0 Natural-Interactive", "不提供 persona，也不提醒个性化；允许 agent 自主提问", "自主发现与触发"],
+  ["C1 Nudge-Interactive", "只提醒‘若缺少会改变答案的用户信息，可以先澄清’", "被提醒后的执行能力"],
+  ["C2 No-Ask", "同一自然 instruction，但关闭用户通道", "不能澄清时的通用回答下限"],
+  ["C3 Full-Persona Oracle", "直接提供完整、经用户确认的相关 user-state ledger", "信息全知时的可达上限"],
 ];
 
 export default function Home() {
@@ -48,410 +25,116 @@ export default function Home() {
     <main>
       <header className="hero" id="top">
         <nav className="nav shell" aria-label="主导航">
-          <a className="brand" href="#top">DeepAlign<span>Bench</span></a>
+          <a className="brand" href="#top">ElicitAlign<span>Bench</span></a>
           <div className="navlinks">
-            <a href="#design">设计</a><a href="/rubrics">Rubric 工作台</a><a href="/literature">文献地图</a><a href="/figures">图表蓝图</a><a href="#metrics">指标</a><a href="#review">审稿防守</a>
+            <a href="#question">问题</a><a href="#design">设计</a><a href="#metrics">评分</a><a href="#novelty">边界</a><a href="#pilot">最小实验</a>
           </div>
-          <a className="navCta" href="#editions">选择阅读版本</a>
+          <a className="navCta" href="#editions">下载文档</a>
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · BENCHMARK / EVALUATION</p>
-            <h1>从“报告适合谁”走向<em>是否让用户决定得更好</em></h1>
-            <p className="lede">PDR-Bench 已能评价 task–persona 条件下的报告适配。DeepAlign 把通过共同质量门的 task-only、matched、swapped 报告作为处理，检验真实目标用户的 decision regret 是否下降。</p>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.45 · 2026-08-12</p>
+            <h1>从缺失用户信息到<em>个性化最终交付</em></h1>
+            <p className="lede">用户给出的任务足够让 agent 直接开始研究，却漏掉 1–3 个会改变最终建议的用户条件。我们测试 agent 会不会在没有提醒时自己发现缺口、问对问题、知道何时停止，并把答案真正用进长程 Deep Research 交付物。</p>
             <div className="heroActions">
-              <a className="button primary" href="#overview">快速读懂方案</a>
-              <a className="button ghost" href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word 完整版</a>
+              <a className="button primary" href="#design">看端到端框架</a>
+              <a className="button ghost" href="/ElicitAlign-Bench_正式Proposal精简版.pdf" download>下载 6 页精简版</a>
             </div>
-            <div className="heroMeta"><span>Phase A 报告资格审查</span><span>Phase B 真人决策 trial</span><span>3 → 8–12 family</span><span>8 周论文锁定版</span></div>
+            <div className="heroMeta"><span>无显式 persona</span><span>主条件无澄清提醒</span><span>四条件能力分解</span><span>paired real-user family</span></div>
           </section>
           <aside className="thesisCard">
-            <span className="cardKicker">一句话研究目标</span>
-            <p>共同质量受控后，个性化报告是否降低真实用户的决策 regret；wrong-user 报告是否造成伤害。</p>
+            <span className="cardKicker">一句话研究问题</span>
+            <p>一个 agent 会使用完整 persona，不代表它会在真实、自然但不完整的任务输入中主动找出关键用户信息并正确利用。</p>
             <hr />
-            <div className="thesisFlow"><b>生成</b><i>→</i><b>配平</b><i>→</i><b>随机呈现</b><i>→</i><b>验证决定</b></div>
+            <div className="thesisFlow"><b>发现</b><i>→</i><b>提问</b><i>→</i><b>停止</b><i>→</i><b>利用</b></div>
           </aside>
         </div>
       </header>
 
-      <section className="decision shell" id="overview">
-        <p className="sectionTag">EXECUTIVE READOUT</p>
-        <div className="sectionHead"><h2>导师先看这三件事</h2><p>这三项决定项目是否具备独立论文贡献，而不只是更大规模的数据集。</p></div>
+      <section className="decision shell" id="question">
+        <p className="sectionTag">WHAT THE BENCHMARK CAN EXPLAIN</p>
+        <div className="sectionHead"><h2>它不是再做一个“问题问得好不好”的榜单</h2><p>四个条件和逐节点轨迹把看似相同的低分拆成不同能力缺口。</p></div>
         <div className="decisionGrid">
-          <article><span>01</span><h3>报告只是处理</h3><p>Phase A 用 TQ/FR、双向 CFA、A_min、task-only non-inferiority 与 owner-aware 契约确保三臂可比。</p></article>
-          <article><span>02</span><h3>决定才是终点</h3><p>Phase B 用真实用户、等价 task shell、区组随机和盲化估计 DDE 与 wrong-user harm。</p></article>
-          <article><span>03</span><h3>Utility 必须预冻结</h3><p>硬约束和可验证环境结果优先；用户软权重只在可接受方案内区分，persona 不得泄漏答案。</p></article>
-        </div>
-      </section>
-
-      <section className="relatedUpdate shell" aria-labelledby="related-title">
-        <div><p className="sectionTag">RELATED-WORK UPDATE · 103-RECORD POOL</p><h2 id="related-title">澄清、权限、委派和证据抗噪都已拥挤；下游决策效用仍有清楚缺口</h2><p>本轮把正式 proposal 的 63 个来源与 40 个新增近邻去重审计。ClarifyBench/HiL-Bench<a className="inlineCite" href="https://aclanthology.org/2026.findings-acl.2028/" target="_blank" rel="noreferrer">[65]</a>、SovereignPA/HAS-Bench<a className="inlineCite" href="https://arxiv.org/abs/2607.05363" target="_blank" rel="noreferrer">[68]</a>、MisKnow-Agent/DRNOISE<a className="inlineCite" href="https://arxiv.org/abs/2607.20891" target="_blank" rel="noreferrer">[72]</a> 已分别占据澄清、授权和证据可靠性。最近邻 TARS 只在 18 人 IDE 研究中连接个性化解释与真人任务结果<a className="inlineCite" href="https://arxiv.org/abs/2607.15948" target="_blank" rel="noreferrer">[29]</a>。DeepAlign 因此将 artifact fit 降为 Phase A，主问题改为跨域真实用户的 DDE。</p></div>
-        <a className="button primary" href="/literature">打开完整工作地图 →</a>
-      </section>
-
-      <section className="editionSection" id="editions">
-        <div className="shell">
-          <p className="sectionTag">FOUR READING EDITIONS</p>
-          <div className="sectionHead"><h2>同一套 v0.33 两阶段方法，按阅读场景分成四版</h2><p>四版都以 DDE 为主终点；v0.33 用合成 pilot 压力测试 Phase A 指标，但不把它当真人证据。</p></div>
-          <div className="editionGrid">
-            <article>
-              <span>METHOD BASELINE</span><h3>正式研究 Proposal</h3><p>v0.33 方法学底稿：两阶段协议、DDE/错配伤害、Phase A 绝对适配门、真实用户 trial 与功效门。</p>
-              <div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div>
-            </article>
-            <article className="recommended">
-              <span>CONDENSED PROPOSAL · 10 PAGES</span><h3>正式 Proposal 精简版</h3><p>按标准论文 Proposal 结构保留摘要、研究问题与假设、方法、实验、统计、效度风险、时间表和参考文献。</p>
-              <div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div>
-            </article>
-            <article>
-              <span>PLAIN LANGUAGE · 28 PAGES</span><h3>完整人话版</h3><p>逻辑、内容和方法与正式版一致，把抽象句改成“问题—做法—判定标准—风险”的直白表达。</p>
-              <div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div>
-            </article>
-            <article>
-              <span>ADVISOR BRIEF · 10 PAGES</span><h3>汇报精简版</h3><p>15–20 分钟讲清研究问题、反事实设计、数据规模、评分方法、八周范围与导师待决策项。</p>
-              <div className="editionLinks"><a href="/DeepAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_汇报精简版.docx" download>Word</a></div>
-            </article>
-          </div>
+          <article><span>01</span><h3>知道信息时会不会用</h3><p>Oracle 高、Natural 低，说明系统会个性化，但不会自主获取用户状态。</p></article>
+          <article><span>02</span><h3>没提醒时会不会想到问</h3><p>Nudge 高、Natural 低，说明能力存在，但原生触发不足，依赖 prompt。</p></article>
+          <article><span>03</span><h3>问到了是否真正改变交付</h3><p>asked/answered 高但 report/decision 低，说明长程执行中发生利用失败。</p></article>
         </div>
       </section>
 
       <section className="figureSection" id="design">
         <div className="shell">
-          <div className="sectionHead light"><h2>一张图看懂完整设计与本周最小实验</h2><p>从 case/task/persona 元数据、rubric 编译和三环境运行，一直连到 Phase B 真人 DDE；橙色进度区明确当前只跑完合成 Phase A。</p></div>
-          <figure><img src="/DeepAlign-Bench_整体框架与最小实验_v0.33.png" alt="DeepAlign-Bench 正式 Proposal v0.33 整体实验框架与最小实验结果" /><figcaption>高密度导师汇报图：Phase A 报告资格、Phase B 真人决策试验、系统差异、统计边界、最小 pilot 与下一步均在同一页。</figcaption></figure>
-        </div>
-      </section>
-
-      <section className="classificationSection" id="classification">
-        <div className="shell">
-          <p className="sectionTag">DEEP RESEARCH EVALUATION ATLAS</p>
-          <div className="sectionHead"><h2>先定义可组合的 DR 元数据宇宙，再选择两个月能回答的组合</h2><p>宏大性来自机器可读 ontology、coverage manifest 和可扩展测试算子，不来自不可完成的全笛卡尔积。</p></div>
-          <div className="atlasGrid">
-            {[
-              ["A","Research Task","使用情境 · 意图 · 领域 · 交付物 · demand · stakes"],
-              ["B","Research Environment","frozen/live/private evidence · freshness · tools · budget · permissions"],
-              ["C","Task-conditioned User State","目标 · 知识 · 约束 · 偏好 · 风险 · 受众 · 动态状态"],
-              ["D","User-signal Channel","brief · persona · clarification · history · behavior · workspace · feedback"],
-              ["E","Agent System","model/product · search · memory · planning · multi-agent · tool access"],
-            ].map(([id,title,body])=><article key={id}><b>{id}</b><h3>{title}</h3><p>{body}</p></article>)}
-          </div>
-          <div className="operatorStrip">
-            <span>行为测试算子</span>
-            {[["Acquire","取得最小充分信息"],["Preserve","在噪声/冲突/交接中保持"],["Use","落实到交付物并保持不变量"],["Update","状态变化后采用当前真值"]].map(([a,b])=><div key={a}><b>{a}</b><small>{b}</small></div>)}
-          </div>
-          <div className="coverageManifest"><b>Coverage manifest</b><span><i>TESTED</i> 已进入主实验</span><span><i>DEFINED</i> 已定义未运行</span><span><i>N/A</i> 结构性不适用</span><span><i>DEFERRED</i> 因资源延后</span></div>
-          <div className="sectionHead compactHead"><h2>Research Task 平面再用任务立方体分层</h2><p>任务类型回答“在哪类需求上测”；结果风险与失败模式回答“错在哪里、为什么错”。</p></div>
-          <div className="taskCube">
-            <article className="strataCard">
-              <span>1 · USE CONTEXT</span><h3>使用情境，不等于难度</h3>
-              <div className="strataList"><b>个人与日常</b><p>旅行、消费、学习、职业与家庭计划</p><b>专业与企业</b><p>市场、合规、采购、技术与运营决策</p><b>学术与前沿</b><p>综述、prior art、研究设计与开放咨询</p></div>
-            </article>
-            <article className="intentCard">
-              <span>2 · RESEARCH INTENT</span><h3>六类研究意图</h3>
-              <div className="intentList">{["理解与综合","发现与枚举","比较与决策","评估与预测","规划/设计/排障","验证与审计"].map((x,i)=><div key={x}><b>I{i+1}</b>{x}</div>)}</div>
-            </article>
-            <article className="demandCard">
-              <span>3 · DEMAND PROFILE</span><h3>需求强度不压成单一难度分</h3>
-              <div className="demandList">{["conceptual breadth","logical nesting","exploration","search fan-out","freshness","stakes / reversibility","interaction need"].map(x=><code key={x}>{x}</code>)}</div>
-            </article>
-          </div>
-          <div className="classificationVerdict"><b>为什么不能只分 PhD-level / daily？</b><p>它把用户群体、领域与难度混在一起：跨国家庭旅行可能具有很高 fan-out，而博士用户也可能只做低复杂度核验。建议把二者保留为 <code>task_stratum</code>，再与研究意图和需求剖面交叉。</p></div>
-          <div className="axisGrid">
-            <article>
-              <span>AXIS A · OUTCOME RISK</span><h3>最后错在什么地方？</h3>
-              <div className="riskList">{["目标与成功标准错配","内容选择与覆盖错配","深度与知识脚手架错配","决策与风险策略错配","行动步骤与工作流错配","格式、受众与可访问性错配","隐私、安全与权限越界","动态状态与时间一致性失败"].map((x,i)=><div key={x}><b>R{i+1}</b><p>{x}</p></div>)}</div>
-            </article>
-            <article>
-              <span>AXIS B · EXPECTED FAILURE MODE</span><h3>任务被设计来暴露什么机制？</h3>
-              <div className="modeList">{["未获取必要用户信息，也未澄清","缺信息时编造用户属性","检索了错误或无关的用户事实","忽略已经明确给出的用户约束","未正确处理过期、冲突或动态更新","知道事实，但未落实到计划或交付物","在不应变化处过度个性化","越权使用或披露敏感信息","长上下文或子 agent 交接后丢失约束"].map((x,i)=><div key={x}><b>M{i+1}</b><p>{x}</p></div>)}</div>
-            </article>
-          </div>
-          <div className="caseSchema">
-            <b>每个 case 的建议字段</b>
-            <code>task.* · environment.* · user_state.* · signal.* · cue_equivalence.* · agent.* · operator · perturbation · evaluation_contract · counterfactual_matrix · run/judge versions</code>
-            <a href="/case.schema.yaml" download>下载机器可读 schema ↓</a>
-          </div>
-          <div className="taxonomyRules">
-            <article><b>预期 ≠ 实际</b><p><code>expected_failure_mode</code> 是该 case 的测试意图；<code>observed_error</code> 必须由运行结果另行判断。不能因为任务标签是 M4，就默认模型一定“忽略约束”。</p></article>
-            <article><b>主风险单标签，模式可多标签</b><p>为榜单统计指定一个 primary risk；failure mode 允许多个。保留 secondary risks，避免强迫复杂任务落进一个格子。</p></article>
-            <article><b>标签不泄露给主 Judge</b><p>最终交付物 judge 只看 rubric 和授权事实，不看“这个任务预计模型会失败在哪里”，防止 expectation bias。</p></article>
-            <article><b>taxonomy 先由真实失败归纳</b><p>先对 pilot 轨迹做 open coding，再冻结 taxonomy；保留一组自然任务和“其他/新型失败”入口，防止只验证作者预设。</p></article>
-          </div>
-          <div className="sectionHead compactHead"><h2>Task family 与 persona 不是靠写 prompt 拼出来的</h2><p>先从真实问题中冻结任务的不变量，再只改会影响交付物价值的用户状态；每一步都留下 provenance、版本和人工验收记录。</p></div>
-          <div className="taxonomyRules">
-            <article><b>Task 1 · Seed funnel</b><p>先收集真实/专业/访谈 seed，筛出必须依赖证据权衡且可验证终态的候选；只把 3 个 family 做到端到端后，再按功效与实施门决定是否扩到 8–12 个。</p></article>
-            <article><b>Task 2 · 冻结共同核心</b><p>锁定问题、证据世界、截止时间、工具、预算和交付形式。Ua/Ub 的 run 只能改变用户条件，不能偷偷增加任务信息或搜索资源。</p></article>
-            <article><b>Task 3 · 形成反事实 family</b><p>选择两个都自然需要该研究、但预算、知识、风险容忍或工作流约束不同的用户；先写出哪些结论、建议或呈现必须随用户改变。</p></article>
-            <article><b>Task 4 · 三层标注</b><p>自动导入 provenance；运行前双人标注/仲裁 intent、risk 和 contracts；pilot 后另存实际难度与失败。预期和观察不能互相覆盖。</p></article>
-            <article><b>Persona 1 · 真人锚定</b><p>36–48 位参与者只是招募规划范围；每人匹配真实相关 task shell，最终 n 由 pilot 功效模拟冻结。gold 优先真人确认，纯合成只作压力与无关 cue 对照。</p></article>
-            <article><b>Persona 2 · Fact ledger</b><p>把目标、知识、约束、偏好、风险、受众、权限和动态状态拆成原子事实；每条事实带来源、时间、可靠性、敏感级别和可披露范围。</p></article>
-            <article><b>Persona 3 · 最小反事实编辑</b><p>Ua→Ub 只改变足以影响答案的少数轴，其余背景保持或匹配；每个 changed fact 必须链接到 must-change，不能从年龄、性别等人口属性猜偏好。</p></article>
-            <article><b>Persona 4 · 自然史与多视图</b><p>自然 history 来自回忆、日记、授权轨迹或逐句确认的转述；同一 ledger 再生成 structured/clarification view 与无关、人口属性 controls。</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section className="judgeChoiceSection">
-        <div className="shell">
-          <p className="sectionTag invert">PROMPTED JUDGE vs. SFT SCORER</p>
-          <div className="sectionHead light"><h2>哪个效果更好？不能先验决定，但两个月主线必须先保住测量效度</h2><p>首版采用 verifier → 强通用 judge → 分层人评；SFT scorer 只有在第 4 周前已有足够高质量 gold 且不阻塞主实验时，才进入附录效率实验。</p></div>
-          <div className="judgeCompare">
-            <article><span>STRONG PROMPTED JUDGE</span><h3>适合 benchmark 初期与疑难样本</h3><ul><li>无需训练，rubric 一改即可使用</li><li>面对新领域、新交付物更灵活</li><li>可直接做证据定位与复杂解释</li></ul><p>代价：昂贵、版本变化、位置/长度/风格偏差，复现实验困难。</p></article>
-            <article><span>SFT SPECIALIZED SCORER</span><h3>适合定义稳定后的规模化评分</h3><ul><li>成本低、速度快、版本可冻结</li><li>可针对每个原子 checklist 校准</li><li>可以训练拒判和边界案例</li></ul><p>代价：容易退化成 task-specific classifier；跨任务、跨 agent 和新错误分布可能明显下降。</p></article>
-          </div>
-          <div className="sftRecipe">
-            <h3>推荐的 SFT 数据格式</h3>
-            <div className="recipeFlow"><span>人工 gold label</span><i>+</i><span>人工 evidence span</span><i>+</i><span>rubric / anchor</span><i>+</i><span>GPT 草拟 reason</span><i>→</i><strong>人工抽检后 SFT</strong></div>
-            <p>不要只收 <code>0/1 + GPT reason</code>。GPT 在已知 gold label 后生成的理由是“标签条件下的解释蒸馏”，不是新的 ground truth，可能学会合理化。至少加入证据位置、错误类型、置信度/弃权；对关键隐私项和争议项保留一部分人工理由。</p>
-          </div>
-          <div className="judgeDecision">
-            <div><b>训练前</b><p>3 名人类建立叶节点 gold；强 judge 作为 baseline；按 task family、用户、agent 和时间切分，禁止同 family 泄漏。</p></div>
-            <div><b>对抗测试</b><p>交换 A/B、控制长度、堆 persona 关键词、漂亮格式诱饵、事实更强但适配更弱、隐私泄露、正确弃权。</p></div>
-            <div><b>上线规则</b><p>若 SFT 在跨 family 测试上超过 prompted judge 且校准达标，作为主 scorer；否则只做高置信样本分流，低置信交给强 judge/人类。</p></div>
-          </div>
-          <div className="winnerBanner"><span>两个月主线</span><b>Verifier → 强 Judge → 20% 分层人评 + 分歧仲裁</b><p>人评分工不能互换：领域专家评事实与共同质量，目标用户盲评 matched/swapped 的适配；纯合成 persona 不单独支撑真实用户效用。SFT 仍是条件性支线。</p></div>
-          <div className="judgeSources"><a href="https://arxiv.org/abs/2310.17631" target="_blank" rel="noreferrer">JudgeLM：SFT judge 与偏差处理 ↗</a><a href="https://arxiv.org/abs/2405.01535" target="_blank" rel="noreferrer">Prometheus 2：专用 evaluator ↗</a><a href="https://arxiv.org/abs/2403.02839" target="_blank" rel="noreferrer">实证研究：SFT judge 不是 GPT-4 的通用替代 ↗</a></div>
+          <div className="sectionHead light"><h2>一张图看懂 case、task、隐藏用户状态、四条件与评估</h2><p>主图同时给出数据构造、元数据、交互循环、Deep Research 执行、非补偿评分、系统诊断和论文生死门。</p></div>
+          <figure><img src="/ElicitAlign-Bench_端到端流程图_v0.45.png" alt="ElicitAlign-Bench 从隐藏用户状态与自然欠指定输入到四条件实验和最终交付评估的端到端流程图" /><figcaption>正式 v0.45 端到端框架：完整 persona 只作为 oracle ceiling；Natural 才是主实验。</figcaption></figure>
         </div>
       </section>
 
       <section className="shell gapSection">
-        <p className="sectionTag">NOVELTY</p>
-        <div className="sectionHead"><h2>差异不再是“适配怎么评分”，而是“最终测什么”</h2><p>PDR-Bench 用 task/persona-conditioned rubric 评价报告 fit<a className="inlineCite" href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[4]</a>。DeepAlign 保留这套构念作 Phase A，但主终点改为真实用户的可验证决策结果。</p></div>
-        <div className="compare" role="table" aria-label="PDR-Bench 与 DeepAlign-Bench 比较">
-          <div className="compareRow head" role="row"><span>评审会问什么</span><span>PDR-Bench</span><span>DeepAlign-Bench</span></div>
-          {[
-            ["最终估计对象是什么？", "给定 user-task 的 artifact adaptation", "报告对真实用户 decision regret 的处理效应 DDE"],
-            ["主评价单位是什么？", "报告在用户 rubric 下的 P-Score", "随机化 arm 中的 user × equivalent task-shell decision"],
-            ["wrong-user 回答什么？", "不作为主要负对照", "swapped 相对 task-only 是否造成可测伤害"],
-            ["报告 fit 的位置？", "主要终点", "Phase A qualification 与中介/诊断"],
-            ["什么才算有效个性化？", "报告对给定用户适配质量高", "共同质量过门且 matched 降低 regret；硬约束/校准不恶化"],
-            ["judge 校准到什么程度？", "15 query × 2 agent；最佳 PCA=.43、MARD=1.40", "240-unit JudgeBench；按模块/用户/agent 分层 + 目标用户盲评"],
-            ["评分链如何防关键失败被掩盖？", "动态 criterion + 自动事实链 + P/Q/R 平均", "criterion versioning + claim-chain audit + TQ/FR/隐私 hard gate"],
-          ].map((r) => <div className="compareRow" role="row" key={r[0]}><b>{r[0]}</b><span>{r[1]}</span><span>{r[2]}</span></div>)}
+        <p className="sectionTag">FOUR-CONDITION DECOMPOSITION</p>
+        <div className="sectionHead"><h2>为什么必须有四个条件</h2><p>如果只比较“能问”与“不能问”，无法知道失败来自没想到问、问得不好、停得不好，还是问到后没有用。</p></div>
+        <div className="compare" role="table" aria-label="四个实验条件">
+          <div className="compareRow head" role="row"><span>条件</span><span>Agent 看到什么</span><span>解释的能力</span></div>
+          {conditions.map((r) => <div className="compareRow" role="row" key={r[0]}><b>{r[0]}</b><span>{r[1]}</span><span>{r[2]}</span></div>)}
         </div>
-        <div className="winnerBanner"><span>唯一核心问题</span><b>报告更贴合，不等于用户决定得更好</b><p>must-change/must-hold/must-not 与 CFA 先确认报告处理成立；DDE、WrongUserHarm、硬约束和校准再判断真实用户效用。两层不能平均成总分。</p></div>
+        <div className="winnerBanner"><span>主实验原则</span><b>Natural 不提醒；Nudge 只作诊断</b><p>若主条件直接要求“先考虑个性化并澄清”，测到的是提示遵从。任务也不能按“多数模型已经会问”筛选，否则主动提问强的模型会反过来定义数据分布。</p></div>
       </section>
 
-      <section className="taxonomyBand">
-        <div className="shell taxonomyGrid">
-          <div>
-            <p className="sectionTag">TAXONOMY A</p><h2>交付物应该在哪里不同？</h2>
-            <div className="pillGrid">{["目标与成功定义","内容选择与覆盖","深度与知识脚手架","决策与推荐策略","行动性与工作流","呈现与交付格式","安全、隐私与边界","交互策略"].map((x,i)=><span key={x}><i>{String(i+1).padStart(2,"0")}</i>{x}</span>)}</div>
-          </div>
-          <div>
-            <p className="sectionTag coral">TAXONOMY B</p><h2>case 被设计来暴露什么机制？</h2>
-            <div className="failureGrid">{failures.map(([a,b])=><div key={a}><b>{a}</b><small>{b}</small></div>)}</div>
-          </div>
-        </div>
-      </section>
-
-      <section className="shell gapSection" id="spec">
-        <p className="sectionTag">CURRENT SPECIFICATION</p>
-        <div className="sectionHead"><h2>现在的 persona、task、rubric、judge 到底是什么？</h2><p>目前 proposal 已经定义了数据结构和评估协议，但还不是一批可直接运行的 benchmark cases；下面展示一个端到端实例应有的形态。</p></div>
-        <div className="specGrid">
-          <article>
-            <span className="specNo">01 · PERSONA</span><h3>有证据的 user fact ledger</h3>
-            <p>不是人物小传，而是 task-conditioned user state 的一种视图；“真实、不违和”只是最低门槛。</p>
-            <dl><div><dt>目标</dt><dd>扩店调研用于向银行申请贷款</dd></div><div><dt>能力</dt><dd>首次创业；金融知识有限</dd></div><div><dt>约束</dt><dd>首期投入 ≤ 50 万；3 个月内可退出</dd></div><div><dt>权限</dt><dd>健康与家庭信息可用于推理，不得对银行披露</dd></div></dl>
-            <small>六项门：plausibility · decision relevance · counterfactual separability · invariant core · minimality/privacy · non-stereotyping。</small>
-          </article>
-          <article>
-            <span className="specNo">02 · TASK</span><h3>反事实任务族，不是单个 query</h3>
-            <p>同一咖啡店扩张任务、同一市场证据、同一工具预算，只更换目标用户。</p>
-            <div className="familyMini"><b>Ua</b><span>外行 · 低预算 · 风险规避</span><b>Ub</b><span>连锁经营者 · 高预算 · 增长导向</span><b>Uc</b><span>约束部分重叠或冲突</span><b>U0</b><span>中性控制，只保留共同要求</span></div>
-            <small>同一用户事实再转换为 structured persona、自然历史、澄清对话、memory 等语义等价渠道。</small>
-          </article>
-          <article>
-            <span className="specNo">03 · RUBRIC</span><h3>冻结的三棵原子标准树</h3>
-            <p><b>Compiler</b>：core + personalization + intent + deliverable + operator + risk modules。</p><p><b>四类契约</b>：must-change · must-hold · must-not · clarify-if-unknown。</p><p><b>校准</b>：matched/swapped 区分力、cue-equivalence、无关信息 invariance、跨任务一致性。</p>
-            <small>统一的是 leaf schema、applicability predicate 与校准程序，不是假设所有任务共享同一评分表。</small>
-          </article>
-          <article>
-            <span className="specNo">04 · JUDGE</span><h3>逐层核验，不打整体印象分</h3>
-            <ol><li>确定性检查文件、测试、预算与权限</li><li>核验 claim、引用支持与来源质量</li><li>按冻结叶节点逐项给分并引用证据</li><li>匿名 A/B 比较，随机交换位置</li><li>目标用户判断适用性，专家判断专业正确性</li></ol>
-            <small>Judge 只获得与该叶节点相关且获授权的用户事实；证据不足必须允许弃权。</small>
-          </article>
-        </div>
-        <div className="statusNote"><b>两个月锁定范围</b><span>3 个 decision vertical slice 先过 utility、task-shell、报告配平与盲化门；再经功效模拟扩到 8–12 family、约 36–48 名真实目标用户和 2–3 条报告管线。长程/动态/权限/证据污染只作少量次级压力。</span></div>
-      </section>
-
-      <section className="rubricCompilerSection">
+      <section className="classificationSection" id="metrics">
         <div className="shell">
-          <p className="sectionTag invert">METADATA-DRIVEN RUBRIC COMPILER</p>
-          <div className="sectionHead light"><h2>不是一张 rubric 服务所有任务，而是一条可执行编译链</h2><p>Module 定义父级能力域；direction node 定义可复用评价方向；leaf 才把用户、阈值、证据和锚点实体化。全部在 agent 运行前冻结。</p></div>
-          <div className="compilerFormula"><span>METADATA + CONTRACTS</span><i>→</i><span>MODULE ROUTING</span><i>→</i><span>NODE SELECTION</span><i>→</i><span>LEAF EXPANSION</span><i>→</i><span>VALIDATE + FREEZE</span><b>→ RUBRIC BUNDLE</b></div>
-          <div className="contractGrid">
-            <article><b>MUST CHANGE</b><p>用户差异必须改变的内容、决策、深度、行动或披露边界。</p></article>
-            <article><b>MUST HOLD</b><p>共同事实、证据质量与不应因用户改变的核心结论。</p></article>
-            <article><b>MUST NOT</b><p>不得假设、泄露、越权或为迎合偏好而扭曲的内容。</p></article>
-            <article><b>CLARIFY IF UNKNOWN</b><p>缺少关键信息时必须提问、给条件分支或显式说明假设。</p></article>
-          </div>
-          <div className="calibrationGates"><b>七个有效性检查</b><span>schema/content coverage</span><span>matched &gt; swapped discrimination</span><span>cue-equivalence robustness / nuisance invariance</span><span>redundancy audit</span><span>weight sensitivity</span><span>target-user/expert validity</span><span>residual-error saturation</span></div>
-          <div className="rubricWorkbenchCta"><p><b>TQ / FR / PF / MP</b> 直接聚合 leaves；<b>CFA</b> 由四个 cross-scored PF 单元派生。工作台同时展示 36-module library、数据构建流水线和 anchor 识别边界。</p><a href="/rubrics">打开 Rubric Compiler 工作台 →</a></div>
-        </div>
-      </section>
-
-      <section className="shell gapSection" id="metrics">
-        <p className="sectionTag">METRICS</p>
-        <div className="sectionHead"><h2>先证明报告可比，再看用户决定是否更好</h2><p>Phase A 是资格门；Phase B 的 DDE 才是主榜终点。</p></div>
-        <div className="metricGrid">
-          <article className="blue"><span>TQ / FR</span><h3>共同质量与事实性</h3><p>任务完成、关键覆盖、claim 支持、引用覆盖与来源质量。</p></article>
-          <article className="green"><span>PF − MP</span><h3>净个性化适配</h3><p>用户特异要求完成率，扣除刻板化、误用、隐私和过度迎合。</p></article>
-          <article className="violet"><span>Δ / CFA · A_MIN · COS/MAG</span><h3>特异性 + 绝对适配</h3><p>CFA_min 防单边补偿，A_min 防“大差值低适配”；角度与幅度只作诊断，不合成总分。</p></article>
-          <article className="green"><span>DDE</span><h3>下游决策效果</h3><p>task-only regret − matched regret；正值才表示个性化报告改善决定。</p></article>
-          <article className="amber"><span>WRONG-USER HARM</span><h3>错配个性化伤害</h3><p>swapped regret − task-only regret；检查合理但错误的用户版本是否比无个性化更糟。</p></article>
-          <article className="green"><span>CONSTRAINT / CALIBRATION</span><h3>决定是否可靠</h3><p>硬约束违规、置信度校准、决策时间与认知负担。</p></article>
-        </div>
-        <div className="formula"><div><span>两阶段判定</span><strong>Phase A: specificity + A_min + task-only NI + quality/boundary　→　Phase B: DDE + wrong-user harm</strong></div><p>PF/CFA 不能与 DDE 平均。若 fit 上升而 regret 不下降，结论是代理终点失效。</p></div>
-        <div className="sectionHead compactHead"><h2>不发布一个掩盖差异的总分：榜单按四种能力画像报告</h2><p>同一模型可能写得好却不会主动澄清，也可能 clean 表现高但一遇冲突就崩；四个 profile 分开显示这种能力结构。</p></div>
-        <div className="metricGrid">
-          <article className="blue"><span>PROFILE A · PRIMARY</span><h3>Decision Utility</h3><p>DDE、WrongUserHarm、硬约束、校准与决策成本。</p></article>
-          <article className="green"><span>PROFILE B · QUALIFICATION</span><h3>Artifact Fit</h3><p>TQ、FR、PF/CFA、wrong-user swap 与报告质量配平。</p></article>
-          <article className="violet"><span>PROFILE C</span><h3>Stress & Failure</h3><p>S0→S3 的 retention curve，并按风险类别、失败模式、task family 和 agent mode 切片。</p></article>
-          <article className="amber"><span>PROFILE D</span><h3>Boundary & Governance</h3><p>压力下的 must-not、隐私、权限、正确弃权和共同质量副作用；不测额外干预后的修复收益。</p></article>
-        </div>
-      </section>
-
-      <section className="judgeSection" id="judge">
-        <div className="shell">
-          <p className="sectionTag invert">RUBRIC & JUDGE</p>
-          <div className="sectionHead light"><h2>三棵 rubric tree，四层评估</h2><p>将共同质量、用户条件适配和误用边界拆开，避免循环定义和维度补偿。</p></div>
-          <div className="judgeLayout">
-            <div className="rubricTrees">
-              <article><span>A</span><h3>Common Task Quality</h3><p>任务、事实、证据、推理、行动性、交付完整性。</p></article>
-              <article><span>B</span><h3>User-Conditional Fit</h3><p>目标、内容、深度、约束、工作流、动态状态。</p></article>
-              <article><span>C</span><h3>Misuse & Boundary</h3><p>刻板化、无关适配、过期信息、隐私与过度迎合。</p></article>
-            </div>
-            <div className="judgeSteps">
-              {[ ["L0","确定性 verifier","文件、测试、格式、预算、权限与硬约束"], ["L1","证据 verifier","claim、引用支持、关联与来源质量"], ["L2","冻结原子 rubric judge","逐项证据、匿名来源、位置轮换、允许弃权"], ["L3","目标用户 + 领域专家","用户效用与专业正确性分开判断"] ].map(x=><div key={x[0]}><span>{x[0]}</span><p><b>{x[1]}</b><small>{x[2]}</small></p></div>)}
-            </div>
-          </div>
-          <div className="judgeGate"><b>Judge 上线门槛</b><span>Pairwise accuracy ≥ .75</span><span>α / κ ≥ .60</span><span>位置翻转率 ≤ .05</span><span>群体差距 ≤ .10</span><span>不达标 → 人评或降级指标</span></div>
-        </div>
-      </section>
-
-      <section className="scopeSection" id="scope">
-        <div className="shell">
-          <p className="sectionTag">MEASUREMENT BOUNDARY</p>
-          <div className="scopeHero"><div><h2>最终交付物可以做主榜，但不能支撑所有过程性主张</h2><p>如果论文只声称“输出是否真正适合这个用户”，最终交付物足够；如果声称测到了获取、保持、利用、漂移和更新，只看最后报告无法识别原因。</p></div><strong>推荐：Outcome Core + 轻量 Trace Audit + 小规模 Diagnostic Track</strong></div>
-          <div className="enoughGrid">
-            <article className="yes"><span>FINAL-ONLY 可以回答</span><ul><li>报告、代码或网页是否适合目标用户</li><li>matched 是否优于 swapped</li><li>个性化是否牺牲事实与共同质量</li><li>是否出现刻板化、泄露或过度迎合</li></ul></article>
-            <article className="no"><span>FINAL-ONLY 不能回答</span><ul><li>根本没读取，还是执行中忘记</li><li>记得用户事实，但生成时没使用</li><li>旧信息、新反馈冲突时如何选择</li><li>子 agent 交接何时丢失约束</li><li>状态改变后在哪一步继续沿用了旧事实</li></ul></article>
-          </div>
-          <div className="trackStack">
-            <article><b>A · Outcome Core</b><span>全部样本</span><p>只把最终交付物作为主榜对象：TQ、FR、PF、MP、NPF、CFA 和目标用户盲评。</p></article>
-            <article><b>B · Passive Trace Audit</b><span>全部样本自动记录</span><p>保存工具调用、检索到的用户事实、权限访问和子 agent 交接；只对隐私、权限和不可逆行为设硬检查。</p></article>
-            <article><b>C · Diagnostic Track</b><span>20%–30% 子集</span><p>不逐句人工标注；用中点 probe、memory ablation、handoff 和动态更新的同前缀压力分叉识别保持与更新。</p></article>
-          </div>
-          <div className="claimRule"><b>论文写作红线</b><p>若采用严格 final-only 方案，应删除或降级过程性 RQ 与假设；9 类预期失败模式只能称为“测试意图或假设性误差来源”，不能声称已经测量到具体偏移机制。</p></div>
-        </div>
-      </section>
-
-      <section className="agentSafetyBand">
-        <div className="shell">
-          <p className="sectionTag invert">WHAT AGENT-SAFETYBENCH ACTUALLY DOES</p>
-          <div className="sectionHead light"><h2>它不是“attack 分类后只看最终回复”</h2><p>核心结构是风险结果类别 × 预期失败模式 × 动态工具环境；scorer 阅读完整交互记录，而不是只读最后一句。</p></div>
-          <div className="asbStats"><div><b>349</b><span>交互环境</span></div><div><b>2,000</b><span>测试案例</span></div><div><b>8</b><span>风险类别</span></div><div><b>10</b><span>失败模式</span></div><div><b>16</b><span>被测 agents</span></div></div>
-          <div className="asbGrid">
-            <article><h3>八类风险结果</h3><p>泄露敏感信息 · 财产损失 · 传播错误/危险信息 · 身体伤害 · 违法/伦理 · 破坏可用性 · 有害/脆弱代码 · 直接生成危险信息</p></article>
-            <article><h3>十类失败模式</h3><p>直接生成有害内容 · 信息不足就调用 · 未先补全信息 · 忽略已知约束 · 忽略潜在风险 · 参数错误 · 忽略工具风险 · 漏用必要工具 · 盲信工具结果 · 多候选中选错</p></article>
-            <article><h3>一个 case 的字段</h3><p>risk category · instruction/dialogue · environment/tools/init parameters · anticipated failure modes</p></article>
-            <article><h3>实际评分对象</h3><p>环境信息 + 全部对话 + 工具调用及参数 + 工具返回 + 最终回复 → safe / unsafe；总分是 safe case 比例。</p></article>
-          </div>
-          <div className="scorerFlow"><span>4,000 条人工标注交互</span><i>→</i><span>Qwen-2.5-7B scorer</span><i>→</i><span>200 条独立交互测试</span><b>91.5% accuracy</b></div>
-          <div className="asbLesson"><b>对我们的直接启示</b><p>可以像它一样给每个 case 标注“预期失败模式”，并按这些切片报告表现；但这不等于精确定位每个 agent 的认知偏移时刻。DeepAlign-Bench 的主榜仍应评最终效用，轨迹只承担行为审计和机制诊断。</p><a href="https://arxiv.org/abs/2412.14470" target="_blank" rel="noreferrer">阅读 Agent-SafetyBench 原文 ↗</a></div>
-        </div>
-      </section>
-
-      <section className="shell gapSection" id="experiments">
-        <p className="sectionTag">EXPERIMENTS</p>
-        <div className="sectionHead"><h2>两个月分数因子矩阵：系统模式、运行环境和压力等级分开</h2><p>Agent 是“测谁”，execution regime 是“在哪里、按什么控制运行”。二者混写会把模型能力、工具质量、网页变化和记忆机制混在一起。</p></div>
-        <div className="matrix">
-          <article><b>核心信号条件</b><p>Task only · structured persona · 语义等价自然历史 · clarification-allowed</p></article>
-          <article><b>三种运行环境 E1–E3</b><p>E1 frozen harness · E2 原生 live product/web · E3 stateful interactive sandbox</p></article>
-          <article><b>六种系统模式 M1–M6</b><p>商业 DR · 受控 agent · 开源 DR · code agent · multi-agent · memory-enhanced</p></article>
-          <article><b>适用性矩阵</b><p>核心比较 M1–M3；M4–M6 只运行与交付物、工具和状态机制自然匹配的 anchor</p></article>
-        </div>
-        <div className="taxonomyRules">
-          <article><b>E1 · 主轨 · 1.5–2.5 周</b><p>固定证据快照、工具版本和预算；难点是证据许可、索引质量、工具公平和 deterministic reset。先跑通 2 family × 2 agent。</p></article>
-          <article><b>E2 · 观察轨 · 每产品 3–7 天+</b><p>Demo 容易，科学比较最难：隐藏版本、无法 reset、网页漂移和 ToS。只做单产品外部效度，不与 E1 合并显著性。</p></article>
-          <article><b>E3 · 诊断轨 · E1 后 2–4 周</b><p>固定 checkpoint 注入 clarification/conflict/update/handoff；难点是事件前分支等价、未来状态泄漏与权限语义。首版只做一个 anchor。</p></article>
-          <article><b>统一 Adapter Contract</b><p><code>reset → provide_signal → run_until → inject_event → export_artifact → export_trace</code>；无轨迹产品标记 trace-level 0，不假装具有过程可比性。</p></article>
-        </div>
-        <div className="sectionHead compactHead"><h2>难度不是“问题更难”一个数字，而是可复现的压力阶梯</h2><p>每个 family 保存六维 stress vector：证据复杂度、信号复杂度、时间跨度、编排负荷、权限敏感度、反事实细微度。</p></div>
-        <div className="anchorFlow"><b>S0 clean</b><i>→</i><b>S1 单一轻扰动</b><i>→</i><b>S2 单一强扰动</b><i>→</i><b>S3 复合风险</b></div>
-        <div className="coverageManifest"><b>六维 stress vector</b><span>evidence 0–3</span><span>signal 0–3</span><span>horizon 0–3</span><span>orchestration 0–3</span><span>permission 0–3</span><span>CF subtlety 0–3</span></div>
-        <div className="anchorExplainer">
-          <div className="anchorLead"><span>ANCHOR ≠ PERSONA TYPE ≠ PERTURBATION</span><h3>8 类 anchor 是扩展候选 stress 宿主</h3><p>Pilot 先从中选择 3 个能形成可验证决策取舍的 slice；主 trial 通过后，压力测试才在少量 eligible family 上运行，不强行覆盖八类或不自然的笛卡尔积。</p></div>
-          <div className="anchorTable">
-            {[
-              ["A1 日常决策","旅行/消费/家庭计划","低 stakes · 自然偏好"],
-              ["A2 学习与职业","学习路径/求职研究","知识脚手架 · 澄清"],
-              ["A3 金融信息","预算/产品/风险比较","数值约束 · 高风险"],
-              ["A4 健康信息","证据综述/就医准备","权限 · 不确定性"],
-              ["A5 企业决策","采购/市场/合规 memo","多受众 · 私有证据"],
-              ["A6 软件生产","代码/测试/迁移方案","工具 · handoff"],
-              ["A7 学术前沿","综述/prior art/研究设计","高 fan-out · 引用"],
-              ["A8 政策与沟通","政策分析/公共说明","价值冲突 · 多受众"],
-            ].map(x=><article key={x[0]}><b>{x[0]}</b><span>{x[1]}</span><small>{x[2]}</small></article>)}
-          </div>
+          <p className="sectionTag">NON-COMPENSATORY EVALUATION</p>
+          <div className="sectionHead"><h2>不再让一个差值讲完整故事</h2><p>所有原始条件绝对分都必须报告；差值只解释能力来源，不能掩盖 Natural 本身不合格、共同质量下降或越界提问。</p></div>
           <div className="taxonomyRules">
-            <article><b>错配 / 无关</b><p>swap 可见 signal bundle；或添加长度匹配的任务无关事实。测错误用户采用率、invariance 与误用惩罚。</p></article>
-            <article><b>冲突 / 过期 / 稀释</b><p>插入带时间戳的新旧冲突，或改变相关事实的位置、间隔和 matched-length 噪声。测当前事实采用率与 retention AUC。</p></article>
-            <article><b>Handoff / Dynamic update</b><p>在固定步骤替换交接摘要，或更新预算、目标和权限。测 handoff loss、旧状态残留与 must-hold 保持。</p></article>
-            <article><b>Boundary stress</b><p>提高权限敏感度、受众隔离或 must-not 冲突强度；测越权、泄露、错误服从、正确弃权与共同质量损害。</p></article>
+            <article><b>需要识别</b><p>critical-missing 上是否问；sufficient 和 irrelevant-missing control 上是否不问。报告 sensitivity、specificity 与 macro-F1。</p></article>
+            <article><b>精准获取与停止</b><p>Targeted Elicitation Recall、Question Precision、Information Gain per Turn、Stopping Sufficiency、用户负担与重复提问。</p></article>
+            <article><b>最终交付绝对合格</b><p>先过 Absolute Adequacy，再看 must-change / must-hold / must-not、共同质量、事实可靠性和目标用户效用。</p></article>
+            <article><b>逐节点利用链</b><p><code>unknown → asked → answered → represented_in_plan → evidenced_in_report → changed_decision</code>，单独识别“问到但没用”。</p></article>
           </div>
-          <p className="anchorRule"><b>关键防偏：</b>每个压力 case 都绑定 clean paired control、唯一操作变量、注入时点、预期 invariants 和 seed。S3 复合风险只有在单扰动效应可解释后才运行；否则“更难”无法归因。</p>
+          <div className="formula">SelfInitiatedGain = U(Natural) − U(No-Ask)<br/>NudgeGap = U(Nudge) − U(Natural)<br/>OracleGap = U(Oracle) − U(Natural)</div>
+          <div className="classificationVerdict"><b>归一化只作次级描述</b><p><code>OracleRecovery = (U(Natural) − U(No-Ask)) / (U(Oracle) − U(No-Ask))</code> 仅在分母超过预注册阈值时计算。主统计仍使用四个原始 arm 和 family-level paired effects，防止小分母制造夸张比例。</p></div>
         </div>
-        <div className="pilot"><span>PAPER SCOPE · 8 周</span><div><b>3</b><small>decision pilot slices</small></div><div><b>8–12</b><small>通过门后扩展 family</small></div><div><b>3</b><small>报告处理条件</small></div><div><b>2–3</b><small>Agent / pipeline</small></div><p>36–48 名真人仅为 planning range；最终样本由 pilot 方差和最小有意义 regret 改善的功效模拟冻结。</p></div>
       </section>
 
-      <section className="shell gapSection" id="readiness">
-        <p className="sectionTag">ICLR READINESS · CONDITIONAL ESTIMATE</p>
-        <div className="sectionHead"><h2>现在不是“概率多少”一个数字，而是三种可验证状态</h2><p>ICLR 官方总体录用率近年约 27%–32%：2024 年 31%，2025 年 32%，2026 年 27%。这只是基率；PDR-Bench 已被 ICLR 2026 接收，意味着“个性化 DR benchmark”本身不再足够新。</p></div>
-        <div className="taxonomyRules">
-          <article><b>5%–12% · 现在直接投</b><p>只有 proposal、没有 pilot、真人效度或可复现 E1，方法承诺还没有证据。</p></article>
-          <article><b>20%–35% · 合格执行</b><p>8–12 个 family、充分功效的真人试验、可靠 verifier、公开 artifact；DDE 存在但异质性仍大。</p></article>
-          <article><b>35%–50% · 强结果</b><p>DDE 与 wrong-user harm 跨 strata 稳定，并同时通过共同质量、硬约束、强 baseline 和复现门。</p></article>
-          <article><b>中心判断 · 约三成</b><p>这是审稿风险区间，不是校准概率。若 persona 主要合成、仅用 LLM judge、无 task-only 或 E1 不可复现，应低于 10%–15%。</p></article>
+      <section className="shell gapSection" id="novelty">
+        <p className="sectionTag">NEAREST-NEIGHBOR PRESSURE</p>
+        <div className="sectionHead"><h2>新意边界很窄，必须用结果而不是措辞证明</h2><p>IDRBench、IntentRL、DiscoBench 和 G-STEER 已覆盖交互、主动澄清、歧义恢复与个性化 Ask/Stop。最危险的审稿意见是：“这只是 G-STEER 的 benchmark 化。”</p></div>
+        <div className="sourceGrid">
+          {papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}
         </div>
-        <div className="judgeSources"><a href="https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf" target="_blank" rel="noreferrer">ICLR 2024 Fact Sheet ↗</a><a href="https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf" target="_blank" rel="noreferrer">ICLR 2026 Fact Sheet ↗</a><a href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">PDR-Bench · ICLR 2026 ↗</a></div>
+        <div className="compare" role="table" aria-label="最近邻与本研究边界">
+          <div className="compareRow head" role="row"><span>维度</span><span>最近邻已经覆盖</span><span>ElicitAlign 必须额外证明</span></div>
+          <div className="compareRow" role="row"><b>输入</b><span>persona/context、欠指定任务或专用澄清模块</span><span>无 profile、无提醒、仍可直接执行的自然任务</span></div>
+          <div className="compareRow" role="row"><b>数据单位</b><span>query / session / target coverage</span><span>共享任务核心的 paired real-user family 与预冻结 decision contracts</span></div>
+          <div className="compareRow" role="row"><b>终点</b><span>问题、覆盖率、交互收益或报告 P/Q</span><span>用户信息从回答到计划、报告和最终决策改变的完整利用链</span></div>
+          <div className="compareRow" role="row"><b>负对照</b><span>常缺少“本来就不该问”的充分任务</span><span>sufficient 与 irrelevant-missing controls 同时约束过问和敏感越界</span></div>
+        </div>
       </section>
 
-      <section className="reviewBand" id="review">
+      <section className="reviewBand" id="pilot">
         <div className="shell">
-          <p className="sectionTag coral">REVIEWER RED TEAM</p>
-          <div className="sectionHead"><h2>顶会审稿人最可能怎么攻击？</h2><p>每个防守都必须转化为可运行的实验，而不是只写在 limitations 里。</p></div>
-          <div className="accordions">
-            {[
-              ["“这只是 PDR-Bench 扩大版。”","承认其已解决 absolute adaptation；DeepAlign 改变 estimand。与此同时，PDR 的最佳 judge PCA=.43、15-query/2-agent 校准、动态 criterion 与复合事实链说明其精细排名和跨条件效应测量仍需更强效度验证。"],
-              ["“Persona 是作者编的偏见。”","用户事实必须有来源、时效和本人确认；人口属性不自动推导偏好；加入 demographic-only 与无关 persona 负对照。"],
-              ["“Matched/swapped 也可能只是关键词→模板。”","把主张限定为结果特异性；加入语义等价 cue、去关键词改写和无关属性不变性。长度/格式诱饵单独审计 judge。"],
-              ["“LLM judge 循环定义答案。”","rubric 在输出前冻结；规则和证据核验优先；低一致性时降级到人评，不发布伪精确榜单。"],
-              ["“PhD / daily 标签主观且混淆难度。”","把二者只作为使用情境；另标研究意图、breadth、nesting、exploration、fan-out、freshness 与 stakes，并发布映射和盲标一致性。"],
-              ["“元数据很多，实际覆盖却很稀疏。”","公开 tested / defined-only / structurally-inapplicable / deferred 四状态 manifest；只对 tested 组合做结论，不用 ontology 大小冒充样本覆盖。"],
-              ["“Persona 真实不等于 gold 正确。”","persona 只是 task-conditioned ledger 的视图；必须通过六项 compatibility gate，并由用户确认 must-change / must-hold 差异。"],
-              ["“不同模块 rubric 的百分比分数不可比。”","统一 leaf schema 和校准程序；以任务内 CFA 与模块 profile 为主，未通过共同 anchor 校准时不建立伪精确总榜。"],
-              ["“长程漂移只是整体能力下降。”","设置同长度共同约束对照；只有用户特异要求下降更快、且相对同前缀 clean control 的压力效应稳定，才支持个性化保持失效。"],
-              ["“个性化会制造回音室或隐私风险。”","事实性硬门槛、Misuse Penalty、敏感信息最小使用和受众权限共同构成不可补偿约束。"],
-            ].map(([q,a],i)=><details key={q} open={i===0}><summary><span>{String(i+1).padStart(2,"0")}</span>{q}</summary><p>{a}</p></details>)}
+          <p className="sectionTag invert">NOVELTY-KILL PILOT</p>
+          <div className="sectionHead light"><h2>先用三组任务杀死错误方向，再决定是否扩到 24 family</h2><p>最小实验不是证明论文成立，而是检查它能否产生已有指标解释不了的新排序、新失败和可接受成本。</p></div>
+          <div className="decisionGrid">
+            <article><span>01</span><h3>三类任务</h3><p>团队知识库采购、国际家庭旅行、研究工具选型；每个 family 两位用户、四类 case、四个条件、4–6 个系统。</p></article>
+            <article><span>02</span><h3>继续门</h3><p>至少两个 family 出现有意义条件分离；至少一个系统发生 Natural/Oracle 排名变化或稳定利用失败；充分任务不过问。</p></article>
+            <article><span>03</span><h3>停止或换题</h3><p>一句 Nudge 让所有系统接近 Oracle、G-STEER/IDRBench 指标完全预测排序、真人和模拟器结论相反，或差异只来自报告长度与预算。</p></article>
           </div>
         </div>
       </section>
 
-      <section className="shell gapSection sources">
-        <p className="sectionTag">READING NOTES</p>
-        <div className="sectionHead"><h2>关键文献：分别借什么、不借什么</h2><p>LivingBench 的动态设计作为灵感；其公开证据目前主要来自产品技术文章，不作为未经审计的金标准。</p></div>
-        <div className="sourceGrid">{sources.map(([a,b,c])=><a href={c} target="_blank" rel="noreferrer" key={a}><b>{a}</b><p>{b}</p><span>查看原始来源 ↗</span></a>)}</div>
-      </section>
-
-      <section className="closing">
-        <div className="shell closingGrid">
-          <div><p className="sectionTag invert">DECISION NEEDED</p><h2>建议导师优先拍板</h2></div>
-          <ol><li>是否把 DDE 与 wrong-user harm 锁定为唯一核心贡献，PF/CFA 降为 Phase A 操作检验？</li><li>是否同意 3-family pilot 后由功效模拟冻结 8–12 family 与真人样本量？</li><li>是否接受减少 agent、taxonomy 和 stress 广度来保护真人统计功效？</li><li>伦理审查/豁免、招募和真实决策材料能否立即启动？</li></ol>
+      <section className="editionSection" id="editions">
+        <div className="shell">
+          <p className="sectionTag">READING EDITIONS</p>
+          <div className="sectionHead"><h2>同一套 v0.45 方法，按讨论场景分成四版</h2><p>旧 DeepAlign-Bench 交付物已归档；当前入口只指向 ElicitAlign-Bench。</p></div>
+          <div className="editionGrid">
+            <article><span>FORMAL · 17 PAGES</span><h3>正式研究 Proposal</h3><p>完整研究问题、数据构造、交互协议、评分、统计、最近邻边界和八周计划。</p><div className="editionLinks"><a href="/ElicitAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/ElicitAlign-Bench_正式研究Proposal.docx" download>Word</a></div></article>
+            <article className="recommended"><span>CONDENSED · 6 PAGES</span><h3>正式 Proposal 精简版</h3><p>适合导师快速判断研究缺口、实验逻辑、可行性与停止条件。</p><div className="editionLinks"><a href="/ElicitAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/ElicitAlign-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
+            <article><span>PLAIN LANGUAGE · 8 PAGES</span><h3>完整人话版</h3><p>用直接语言解释为什么不提醒、为什么不能按模型行为筛题，以及分数应该怎么看。</p><div className="editionLinks"><a href="/ElicitAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/ElicitAlign-Bench_完整人话版.docx" download>Word</a></div></article>
+            <article><span>ADVISOR BRIEF · 6 PAGES</span><h3>汇报精简版</h3><p>15–20 分钟汇报结构，包含主图、最近邻压力、最小实验和八周决策。</p><div className="editionLinks"><a href="/ElicitAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/ElicitAlign-Bench_汇报精简版.docx" download>Word</a></div></article>
+          </div>
+          <div className="schemaDownloads"><a href="/elicitalign_case.schema.yaml" download>Case schema ↓</a><a href="/elicitalign_evaluation.protocol.yaml" download>Evaluation protocol ↓</a><a href="/ElicitAlign-Bench_端到端流程图_v0.45.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div>
         </div>
       </section>
 
-      <footer><div className="shell"><a className="brand" href="#top">DeepAlign<span>Bench</span></a><p>Research proposal · v0.33 · 2026-08-09</p><div><a href="/rubrics">Rubric 工作台</a><a href="/figures">结果图蓝图</a><a href="#editions">四个版本</a><a href="/PROJECT_MEMORY.md" download>项目记忆</a><a href="/DeepAlign-Bench_整体框架与最小实验_v0.33.png" download>整体框架与本周进度</a><a href="/DeepAlign-Bench_主图.png" download>论文主图</a></div></div></footer>
+      <footer className="closing"><div className="shell closingGrid"><div><p className="eyebrow">CLAIM BOUNDARY</p><h2>只主张可观察行为，不声称模型“真正关心用户”</h2></div><p>若 pilot 通过，论文可以主张自然欠指定条件下的自主用户状态发现与利用；若不能产生超出 G-STEER / IDRBench 的新排序或新失败，就应收窄或换题。</p></div></footer>
     </main>
   );
 }

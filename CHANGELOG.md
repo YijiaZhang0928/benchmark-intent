@@ -1,4 +1,17 @@
-# DeepAlign-Bench 设计迭代记录
+# benchmark-intent 设计迭代记录
+
+## v0.45 ElicitAlign-Bench natural elicitation pivot - 2026-08-12
+
+- 将当前论文候选重新冻结为 ElicitAlign-Bench：评测通用 Deep Research agent 在无显式 persona、无澄清提醒的自然欠指定任务中，能否自主发现、精准获取、充分停止并最终利用会改变决策的用户信息。
+- 核对 PDR-Bench、IDRBench、IntentRL、DiscoBench、G-STEER 与 Ask Early/Ask Late；否决 broad clarification / when-to-ask 新颖性叙事，并把“G-STEER 的 benchmark 化”冻结为最强审稿反对。
+- 冻结 Natural-Interactive、Nudge-Interactive、No-Ask、Full-Persona Oracle 四条件；主条件不提醒个性化，Nudge 只作触发诊断，禁止按模型是否愿意提问筛选任务。
+- 将正式数据单位设为 paired real-user task family；每个 case 包含 case/task metadata、隐藏 user-state ledger、自然欠指定记录、must-change/must-hold/must-not contracts，以及 obvious/subtle critical、sufficient、irrelevant-missing 四类 case。
+- 评分拆为 clarification trajectory 与 final delivery 两个不可补偿 profile；逐节点记录 `unknown → asked → answered → planned → reported → decision_changed`，独立识别发现、提问、停止、长程保持和最终利用失败。
+- 三个能力对比冻结为 SelfInitiatedGain、NudgeGap、OracleGap；OracleRecovery 只作有分母阈值的次级描述，主分析始终报告四个原始 arm、绝对合格门和 family-level paired effects。
+- 冻结 family-blocked permutation、family-cluster bootstrap、充分信息/无关缺失负对照、隐私/权限边界和非补偿成功门；seed、用户、条件和 rubric leaf 不作为独立样本。
+- 冻结 3-family novelty-kill pilot 和继续/停止条件；若一句 Nudge 使所有系统接近 Oracle、G-STEER/IDRBench 指标完全预测排序、真人与模拟器反转，或差异仅来自长度/预算/通用能力，则停止、收窄或换题。
+- 新增四版 Proposal 源稿和 DOCX/PDF、case/evaluation YAML、3200×1800 端到端 PNG/SVG、ElicitAlign HTML 汇报入口；正式精简版为 6 页，人话版为 8 页，全部逐页渲染检查通过。
+- 将旧 DeepAlign-Bench v0.33 交付物移入 `deliverables/archive/DeepAlign-Bench-v0.33/`，保留历史方法资产；用户此前单独删除的 `deliverables/DeepAlign-Bench_主图.png` 不纳入本次归档或提交。
 
 ## v0.44 selective epistemic revision audit - 2026-08-11
 
