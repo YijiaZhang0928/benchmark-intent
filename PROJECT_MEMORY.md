@@ -1,14 +1,28 @@
-# ElicitAlign-Bench / DeepAlign archive 跨 Session 项目记忆
+# DeepAlign-Bench / archived directions 跨 Session 项目记忆
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-12
-当前版本：v0.45（自然欠指定任务中的自主用户状态发现、澄清与最终利用）
+当前版本：v0.46（DeepAlign 主线恢复；PDR-style 反例实验协议已冻结、尚未运行）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
 
-## 0. 2026-08-12：冻结 ElicitAlign-Bench v0.45 候选与 novelty-kill gate
+## 0. 2026-08-12：恢复 DeepAlign 主线并冻结 PDR-style 反例实验
+
+### 0.0 当前决定
+
+用户决定不再把 clarification / self-initiated elicitation 作为独立论文主问题，而恢复 DeepAlign-Bench 的 measurement-validity 主线。v0.45 ElicitAlign 的研究资产不删除，待本轮完整归档；clarification 保留为 DeepAlign 的一种 user-information channel：`模糊 query → agent clarification → 用户回答 → final report`，与 structured persona、natural history、task-only 等条件并列。它不进入等价 cue 集，也不承担“首次研究 when-to-ask”的 novelty claim。
+
+新的可证伪核心问题是：PDR-Bench 式单用户绝对适配评分是否会对（1）高质量但没有反事实用户特异性的通用报告，以及（2）表面大量使用 persona、但关键决策约束错配的 over-personalized 报告给出高分或接近 matched 的分数。必须使用 PDR-Bench 的公开四维构念、task/persona 条件化 criteria、0–10 锚点和层级加权评分；不得用自造的简化“PDR 分数”替代。
+
+实验协议已经在 `pilot/pdr_false_positive_v0_1/` 运行前冻结。两个抽样单位为 F02 知识工具和 F04 证据综述 family；候选包括 matched-A、matched-B、task-only general-good、over-A、over-B。主要判断同时报告 `absolute_high ≥ 6.0`、与 matched 差距 `≤ 0.5` 和 rank reversal。因为 PDR-Bench 没有 6 分通过线，即使 general-good 得分高，也只能支持“absolute adaptation 不等于 counterfactual specificity”，不能写成 PDR 官方误判成功。只有预指定关键约束失败的 over-personalized 报告仍高分/近 matched，才构成初步 false-positive 反例；若它被明显降分，则撤回该强 claim。
+
+本 pilot 仍不是官方完整复现：PDR-Bench 官方 P/Q judge 为 GPT-5，本地实验使用 Claude Sonnet 三重复和 Qwen3-8B 单次敏感性复核；criteria 生成合并为一次调用，且不跑 Q/R。因此结果只能称为 `PDR-compatible stress test`，必须在官方 GPT-5 与真人复核后才能形成论文级批评。
+
+ICLR 2027 官方时间已核对：摘要截止 2026-09-11 AOE，全文截止 2026-09-16 AOE。当前日期距离摘要仅约 30 天、全文约 35 天，因此应在 2026-08-17 前冻结 thesis、最近邻边界、主指标 profile、最小实验证据与 go/no-go；允许之后修 rubric leaf、阈值和工程实现，但不应继续做标题级换题，除非本次反例实验与最近邻审计共同否决 DeepAlign。
+
+## 0A. 历史候选：ElicitAlign-Bench v0.45
 
 ### 0.1 当前研究问题
 

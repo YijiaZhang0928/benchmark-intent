@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.46 DeepAlign return and PDR stress-test protocol - 2026-08-12
+
+- 决定恢复 DeepAlign-Bench measurement-validity 主线；ElicitAlign v0.45 将整体归档，clarification 降为 DeepAlign 的一种 user-information channel，不再单独承担 broad when-to-ask novelty。
+- 复核 PDR-Bench v3 论文和官方代码：P-Score 使用 Goal/Content/Presentation/Actionability 四维、task/persona 动态 criteria、0–10 逐项评分与层级加权平均；官方 P/Q judge 为 GPT-5，PDR 没有定义 6 分即通过。
+- 在结果出现前冻结 `pilot/pdr_false_positive_v0_1/`：两个 task family、matched/general-good/over-personalized 五类 artifact、关键失败 oracle、`absolute_high≥6`、`near_matched≤0.5` 与 rank reversal 均不得事后修改。
+- 明确可证伪措辞：general-good 高分只证明 absolute adaptation 不能识别 counterfactual specificity；over-personalized 在关键约束失败后仍高分/近 matched 才是潜在 false positive；若被显著降分则撤回强 claim。
+- 记录复现边界：本轮为 Claude Sonnet 三重复 + Qwen3-8B 单次敏感性检查、合并 criteria 生成、不跑 Q/R 的 PDR-compatible stress test，不得表述为官方 GPT-5 PDR-Bench 的完整复现。
+- 核对 ICLR 2027 官方期限：摘要 2026-09-11 AOE、全文 2026-09-16 AOE；冻结 2026-08-17 为 thesis/metric/pilot 的内部方向截止线。
+
 ## v0.45 ElicitAlign-Bench natural elicitation pivot - 2026-08-12
 
 - 将当前论文候选重新冻结为 ElicitAlign-Bench：评测通用 Deep Research agent 在无显式 persona、无澄清提醒的自然欠指定任务中，能否自主发现、精准获取、充分停止并最终利用会改变决策的用户信息。

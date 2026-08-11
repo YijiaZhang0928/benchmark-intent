@@ -1,0 +1,40 @@
+{
+  "source_families": "../minimal_metric_v0_1/families.json",
+  "source_artifacts": "../minimal_metric_v0_1/raw/generation/claude_sonnet",
+  "families": [
+    {
+      "family_id": "F02_knowledge_tool",
+      "irrelevant_persona_facts": {
+        "A": ["偏好把会议安排在上午", "习惯用纸质便签记录待办", "平时喝无糖茶"],
+        "B": ["偏好深色界面", "喜欢周末徒步", "汇报时喜欢先看一页摘要"]
+      },
+      "over_personalized_oracle": {
+        "A": {
+          "forced_direction": "CloudNote",
+          "critical_failure": "把含受试者衍生材料的敏感项目放入外部云，违反敏感项目必须本地存储的硬约束"
+        },
+        "B": {
+          "forced_direction": "HybridBase",
+          "critical_failure": "两周部署无法满足一周内可用的首要约束，且没有给出可在一周内使用的替代路径"
+        }
+      }
+    },
+    {
+      "family_id": "F04_review_plan",
+      "irrelevant_persona_facts": {
+        "A": ["住在学校宿舍", "喜欢用颜色标记笔记", "习惯上午完成写作"],
+        "B": ["周末骑行", "偏好技术附录", "习惯晚上写代码"]
+      },
+      "over_personalized_oracle": {
+        "A": {
+          "forced_direction": "完整效应量换算、R 语言随机效应元分析和多项敏感性分析",
+          "critical_failure": "把不会编程且每周仅12小时的用户安排到六周内不可执行的复杂元分析流程"
+        },
+        "B": {
+          "forced_direction": "只做简化叙述综述，不预注册、不保存代码、不尝试任何可比子集的元分析",
+          "critical_failure": "忽略用户的预注册发表目标、R能力和可比子集元分析要求"
+        }
+      }
+    }
+  ]
+}
