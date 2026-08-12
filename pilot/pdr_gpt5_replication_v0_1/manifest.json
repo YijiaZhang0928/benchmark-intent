@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "frozen_at": "2026-08-12",
+  "gateway": "openrouter",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "requested_model": "openai/gpt-5",
+  "provider_policy": {
+    "order": ["openai"],
+    "allow_fallbacks": false,
+    "require_parameters": true,
+    "data_collection": "deny"
+  },
+  "official_sources": {
+    "criteria_prompt_zh": {
+      "url": "https://raw.githubusercontent.com/OPPO-PersonalAI/PersonalizedDeepResearchBench/main/code/prompt/criteria_prompt_zh.py",
+      "sha256": "96fe7ab1047980ad9f9b7dc8f45937677656b115bf7a3a487f28f4e496db865c"
+    },
+    "score_prompt_zh": {
+      "url": "https://raw.githubusercontent.com/OPPO-PersonalAI/PersonalizedDeepResearchBench/main/code/prompt/score_prompt_zh.py",
+      "sha256": "072f31f69409b4fed95c945661f563d7739535c3d9c91968ef83aaa53a4d7462"
+    }
+  },
+  "source_hashes": {
+    "../minimal_metric_v0_1/families.json": "b30ad1eba3bca67db7f6c0b0da885603011a4c34b79511a361805f3eaa2541a2",
+    "../pdr_false_positive_v0_1/raw/artifacts.json": "0deb397f0706ac92d6942cbfb54e2c32f4c9e1fe59b36c3182440f7215761dc9",
+    "../minimal_metric_v0_1/raw/generation/claude_sonnet/F01_bakery_site/Y0.json": "3f3eb6a4af11bb8cf8e5686217db33510835428dc73d1a4f3abbf822327856b4",
+    "../minimal_metric_v0_1/raw/generation/claude_sonnet/F01_bakery_site/Ya.json": "deb39c793cdb1d47b899e21891dcf6285bc97fa48058fb981e0445b045ee4801",
+    "../minimal_metric_v0_1/raw/generation/claude_sonnet/F01_bakery_site/Yb.json": "e6af3fa7c8e276f49594c5e19a9641b0a2890772432770cfbf8c843f12bd4858",
+    "../minimal_metric_v0_1/raw/generation/claude_sonnet/F03_inspection_pilot/Y0.json": "abb32a21dd5588e897432fbb562e1406899aa42054ce5643bb814789ec0c3b5b",
+    "../minimal_metric_v0_1/raw/generation/claude_sonnet/F03_inspection_pilot/Ya.json": "c28765f532742d929ea371268a5231e6e1be48e4add5ad8ef4b69d0aa46b1a2d",
+    "../minimal_metric_v0_1/raw/generation/claude_sonnet/F03_inspection_pilot/Yb.json": "ee17b3bd97a6137bb38d40325705bef97904eb80b9f209bd14671efa63fc98fd",
+    "extension_over_artifacts.json": "55b2e1f50df48b1c58b647d646280c344f950721559abd4cdf5e0eabb1dad48b"
+  },
+  "frozen_artifact_package_sha256": "5384f83ffe4844da66716cba1cecbb7699ed4430af226dad987d13431e772795",
+  "families": [
+    "F01_bakery_site",
+    "F02_knowledge_tool",
+    "F03_inspection_pilot",
+    "F04_review_plan"
+  ],
+  "artifacts": ["general_good", "matched_a", "matched_b", "over_a", "over_b"],
+  "weight_samples": 5,
+  "score_repeats": 3,
+  "thresholds": {
+    "absolute_high": 6.0,
+    "near_matched_gap": 0.5,
+    "specificity_positive": 0.0,
+    "specificity_practical_margin": 0.5
+  },
+  "inference_unit": "task_family",
+  "claims_forbidden": [
+    "full P/Q/R replication",
+    "natural false-positive rate",
+    "real-user validity",
+    "PDR-Bench is invalid",
+    "direct OpenAI API endpoint"
+  ]
+}

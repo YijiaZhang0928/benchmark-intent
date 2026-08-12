@@ -10,3 +10,6 @@ html_report/.wrangler/
 html_report/outputs/
 html_report/work/
 
+# Local credentials: never stage or publish.
+api_keys.txt
+*.api_keys.txt

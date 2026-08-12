@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.48 GPT-5 P-Score replication preregistration - 2026-08-12
+
+- 用户授权使用本地 OpenRouter GPT-5 key；将 key 文件加入 `.gitignore` 并收紧为 `0600`，运行器只在内存读取且不记录密钥。
+- 核对 PDR-Bench 官方代码并冻结两份中文 prompt 的 SHA-256；复现 5 次权重采样、四维独立 criteria 生成、官方 0–10 评分和层级加权，只主张 P-Score，不冒充完整 P/Q/R 复现。
+- 固定 OpenRouter 网关下的 OpenAI provider、关闭 fallback、记录实际 model/provider；准确表述为 gateway-mediated GPT-5 replication，不写成 OpenAI 官方端点直连。
+- 在任何 GPT-5 实验响应前冻结 4 family、8 配对用户、20 reports、全交叉 A/B 评分、3 次 judge 重复与全部阈值；artifact package SHA-256 为 `5384f83ffe4844da66716cba1cecbb7699ed4430af226dad987d13431e772795`。
+- F01/F03 新增 controlled over-personalized stress artifacts；它们是预设关键节点错配的构念单元测试，不用于估计自然 agent 错误率。
+- 新增可断点续跑的 `run_replication.py`；预注册要求本版本先提交并推送，再执行 smoke、criteria 和评分调用。
+
 ## v0.47 DeepAlign restoration and completed PDR-compatible stress test - 2026-08-12
 
 - 完成冻结的两 family 本地压力测试：general-good 4/4 绝对高分、4/4 接近 matched、1/4 rank reversal；方向性支持“绝对适配不能识别反事实特异性”。

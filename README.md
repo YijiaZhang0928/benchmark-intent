@@ -2,13 +2,13 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.47
+## 当前方向：DeepAlign-Bench v0.48（GPT-5 复现已预注册）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据、工具和预算相同时，最终交付物是否真的因目标用户不同而作出正确且有益的改变。
 
 每个 task family 配对两位都真实合理、但决策约束不同的用户。系统分别生成 task-only、matched-A、matched-B 等报告，再把 A/B 报告交叉放到两位用户的 rubric 下评分。确认性结论必须同时通过四道不能互相抵消的门：双向 counterfactual specificity、matched 相对 task-only 的真实收益、共同质量不下降、隐私/权限不违规。clarification 只是一种 user-information channel：允许从模糊 query 出发询问用户，再检查答案是否从“问到”一路进入计划、报告和最终决定；它不再单独承担 when-to-ask 的论文主张。
 
-v0.47 的主贡献假设是测量效度：单用户绝对适配分与跨用户反事实特异性是不同构念。最小的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 获得绝对高分且 4/4 接近 matched；但 over-personalized 报告只有 1/4 接近 matched。因此目前只支持“绝对高分不能识别反事实特异性”，不支持“PDR-Bench 普遍把过度个性化当成正确个性化”的强说法。正式论文主张仍需官方 GPT-5 配置、更多真实 family 和真人校准复核。
+v0.47 的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 获得绝对高分且 4/4 接近 matched；但 over-personalized 报告只有 1/4 接近 matched。v0.48 已在任何新结果产生前冻结更严格的 GPT-5 复现：精确使用 PDR-Bench 官方中文 P-Score prompts、5 次权重采样、四维 criteria pipeline、4 个 task family、20 份固定报告、A/B 全交叉评分和 3 次 judge 重复。调用经 OpenRouter 网关且固定 OpenAI provider，不能写成 OpenAI 官方端点直连。当前状态仍是“协议已冻结、结果待运行”。
 
 ## 当前交付物
 
@@ -19,6 +19,7 @@ v0.47 的主贡献假设是测量效度：单用户绝对适配分与跨用户�
 - [`deliverables/DeepAlign-Bench_汇报精简版.pdf`](deliverables/DeepAlign-Bench_汇报精简版.pdf)：15–20 分钟导师汇报版；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_HTML汇报版.html`](deliverables/DeepAlign-Bench_HTML汇报版.html)：单文件离线汇报入口。
 - [`pilot/pdr_false_positive_v0_1/findings.md`](pilot/pdr_false_positive_v0_1/findings.md)：冻结协议、本地实验结果、可说/不可说结论和复现实验门。
+- [`pilot/pdr_gpt5_replication_v0_1/protocol.md`](pilot/pdr_gpt5_replication_v0_1/protocol.md)：结果前冻结的官方 prompt + GPT-5 P-Score 复现协议、完整样本清单和可证伪阈值。
 - [`benchmark_schema/case.schema.yaml`](benchmark_schema/case.schema.yaml) 与 [`benchmark_schema/metric_binding.schema.yaml`](benchmark_schema/metric_binding.schema.yaml)：case、信息渠道、artifact profile、四重门与外部效度子集的机器可读定义。
 
 ElicitAlign-Bench v0.45 已完整归档到 [`archive/research-directions/ElicitAlign-Bench-v0.45/`](archive/research-directions/ElicitAlign-Bench-v0.45/) 和 [`deliverables/archive/ElicitAlign-Bench-v0.45/`](deliverables/archive/ElicitAlign-Bench-v0.45/)，不再占用当前入口。用户此前单独删除的 `deliverables/DeepAlign-Bench_主图.png` 保持删除状态，不属于本轮整理。

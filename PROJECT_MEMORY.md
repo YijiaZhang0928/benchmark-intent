@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-12
-当前版本：v0.47（DeepAlign 主线恢复；PDR-compatible 反例实验已完成）
+当前版本：v0.48（官方 prompt + OpenAI-provider GPT-5 的 P-Score 复现已在结果前冻结）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0P. 2026-08-12：GPT-5 P-Score 正式复现协议已冻结（结果尚未产生）
+
+用户授权使用工作区根目录 `api_keys.txt` 中的 GPT-5 key 做正式复现。安全审计确认该 key 是 OpenRouter key，不是 OpenAI 官方直连 key；因此研究表述必须是“经 OpenRouter 网关、固定 OpenAI provider 调用 GPT-5”。请求强制 `provider.order=[openai]`、关闭 fallback、要求参数支持并拒绝 data-collection provider；每个响应将记录实际 model/provider。key 文件已加入 `.gitignore` 且权限收紧为 `0600`，不得读取到日志、结果或 Git。
+
+`pilot/pdr_gpt5_replication_v0_1/` 已在任何 GPT-5 实验响应前冻结。它精确复用 PDR-Bench 官方中文 personalization prompt、5 次维度权重采样、四维分别生成 criteria、0–10 逐 criterion 评分和层级加权；只复现 P-Score，不运行 Q/R。官方 prompt 文件哈希、4 个合成 task family、8 位配对用户、20 份报告、3 次 judge 重复与 `absolute_high≥6`、`near_matched≤0.5` 等阈值均写入 manifest。最终 artifact package 哈希为 `5384f83ffe4844da66716cba1cecbb7699ed4430af226dad987d13431e772795`。
+
+四个 family 全交叉评分：每份 general/matched/over 报告都交给 A、B 两套 criteria，而不是只评目标用户。F02/F04 原样继承 v0.47；F01/F03 继承 v0.33 的 task-only/matched，并在结果前新增研究者控制的 over-personalized stress artifacts。它们故意保留完整结构和多条 persona mention，但替换一个关键决策节点，只用于检验评委构念效度，不估计自然模型错误率。
+
+复现的可证伪边界不变：general-good 双侧高分只说明 absolute adaptation 不能证明 counterfactual generation specificity；over-personalized 只有在 critical audit 已失败仍 near-matched/rank-reversal 时才是强假阳性证据；若 GPT-5 稳定降分，撤回强 claim。DeepAlign 继续以非补偿 profile 表达，不把差值、比值或余弦压成一个新总分。本轮尚无 Q-Score、真实用户或系统重分类，不能宣称完整四重门或论文级效度成立。
 
 ## 0. 2026-08-12：恢复 DeepAlign 主线并完成 PDR-compatible 反例实验
 
