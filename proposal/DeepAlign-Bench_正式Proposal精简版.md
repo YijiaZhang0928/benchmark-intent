@@ -2,9 +2,9 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.47 · 2026 年 8 月 12 日
+版本：v0.48 · 2026 年 8 月 12 日
 定位：Benchmark / Evaluation / Personalized Agents
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.47
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.48
 
 ---
 
@@ -109,6 +109,8 @@ JudgeBench 另放四种预冻结反例：
 
 限制：只有两个合成 family、一个本地 Qwen3-8B judge；正式评分开始后因耗时减少了 judge 和重复。故本实验只支持“DeepAlign 设计值得扩展”，不能支持“官方 PDR-Bench 已被证明误判”。
 
+v0.48 已在任何 GPT-5 结果前冻结更严格的复现：4 family、20 reports、A/B 全交叉、3 次评分重复，并精确使用 PDR 官方中文 P-Score prompt 与 5 次权重采样。预注册提交 `310d9cf` 推送后，OpenRouter 只读诊断确认 key 有效、有正余额且 GPT-5 可见，但无害 smoke 在进入模型前被账户/地域层 Terms of Service 403 阻断；移除 data-policy filter 与默认路由对照仍失败。当前没有 GPT-5 分数，不能把“协议已就绪”写成“官方复现已完成”。获得合规可用 key 后可从 smoke 断点续跑。
+
 ## 8. 预期贡献与最近邻边界
 
 1. 固定 task/evidence/resources 的 paired-user 2×2 交叉协议，识别最终交付物的反事实用户特异性；
@@ -123,7 +125,7 @@ Clarification 不是 novelty 主张。[IDRBench](https://arxiv.org/abs/2601.0667
 
 [ICLR 2027 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines) 给出的摘要截止为 2026-09-11 AOE、全文截止为 2026-09-16 AOE。[[6]](https://iclr.cc/Conferences/2027/AuthorGuidelines) 从 2026-08-12 起约剩 30/35 天。因此最迟应在 8 月 17 日冻结 thesis、最近邻边界、主指标 profile、family 原语和 go/no-go 证据。
 
-五天内必须完成：现有 artifacts 的 GPT-5 + 两名盲化人评复现；补到至少 3 个 family；确认至少 2 个 family 的 paired-user 真值稳定；冻结主统计和反例定义。若失败，应停止“PDR false-positive”强 claim，改做更窄的 personalization judge validity，或在 8 月 17 日前换题。
+五天内必须完成：解除 GPT-5 合规访问阻塞并复现现有 artifacts；完成两名盲化人评；确认至少 2 个 family 的 paired-user 真值稳定；冻结主统计和反例定义。若 8 月 17 日前仍无 GPT-5/真人复现，应停止“PDR false-positive”强 claim，改做更窄的 personalization judge validity，或换题。
 
 之后六周：第 1 周冻结 3 个完整 family 与人评；第 2–3 周扩到 12–24 family 并跑 2–3 个系统；第 4 周完成 judge calibration 和 family-level 统计；第 5 周补少量 decision/channel validation；第 6 周冻结结果、论文、主图和匿名 artifact。
 

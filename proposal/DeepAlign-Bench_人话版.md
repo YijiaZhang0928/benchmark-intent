@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜完整人话版
 
-版本：v0.47 · 2026 年 8 月 12 日
+版本：v0.48 · 2026 年 8 月 12 日
 用途：组内讨论、导师沟通、正式 Proposal 的直白解释
 
 ---
@@ -203,6 +203,10 @@ PF leaf 先统一到 `[0,1]`，因此 `Δ` 已经是量尺范围归一化的百�
 
 人话结论是：**通用好报告很可能被绝对个性化分评得和 matched 一样好；过度个性化报告并没有普遍骗过 judge，但关键错误有时会被平均分补偿或完全漏掉。** 所以 DeepAlign 的方向值得继续，但现在还不能对外说官方 PDR-Bench 已经失效。
 
+我们随后把 GPT-5 复现做成了真正的“先锁题再看结果”：先把 4 个 family、20 份报告、官方 PDR 中文 prompt、5 次权重采样、A/B 全交叉和三次重复提交到 Git，再调用 API。结果不是 GPT-5 给了零分或高分，而是 **根本没有进入 GPT-5**。OpenRouter 确认 key 有效、有余额、GPT-5 也在可用模型列表里，但根据账户/请求地区的 provider terms，在选择 OpenAI/Azure endpoint 前就返回 403。去掉隐私筛选也一样。因此目前没有新的 GPT-5 实验结论，不能把这个工程阻塞写成支持或反对论文假设的证据。
+
+换句话说：本地最小实验结论没有被 GPT-5 复现，也没有被 GPT-5 推翻。现在需要的是一个在受支持账户/地区合法可用的 GPT-5 key，或者官方 OpenAI API key；不应该用代理或别的模型冒充复现。
+
 ## 9. 接下来五天必须完成什么
 
 ICLR 2027 摘要截止 2026-09-11 AOE、全文截止 2026-09-16 AOE。从 8 月 12 日起只有约 30/35 天。
@@ -215,7 +219,7 @@ ICLR 2027 摘要截止 2026-09-11 AOE、全文截止 2026-09-16 AOE。从 8 月 
 - 核心反例：general-good、over-personalized、mention-only；
 - 最近邻边界：承认 PDR、MyScholarQA、G-STEER 等已经覆盖的部分。
 
-五天内的 go/no-go：用经授权 GPT-5 + 两名盲化人评复现现有 artifacts；补到至少 3 个 family；至少 2 个 family 的 paired-user 真值稳定。如果失败，就在 8 月 17 日前收窄成 personalization judge validity paper，或换题，不再继续堆合成样本。
+五天内的 go/no-go：先解除 GPT-5 合规访问阻塞，再用 GPT-5 + 两名盲化人评复现冻结 artifacts；至少 2 个 family 的 paired-user 真值稳定。如果 8 月 17 日仍没有 GPT-5/真人证据，就收窄成 personalization judge validity paper，或换题，不再继续堆合成样本。
 
 ## 10. 论文最后可以声称什么
 

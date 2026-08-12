@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.47 · 2026 年 8 月 12 日
+版本：v0.48 · 2026 年 8 月 12 日
 建议时长：15–20 分钟
 
 ---
@@ -82,6 +82,7 @@ Clarification 只是新增 channel，不是论文 novelty 主线。它测“信�
 - 不支持：over-personalized 报告并没有普遍被当成 matched。
 - 新发现：judge 会把“提到约束”当成“采用约束”，且高分端出现饱和；关键错误可能被平均分补偿。
 - 证据限制：小 judge、两个合成 family、运行中因资源缩减减少重复；必须用 GPT-5 + 两名盲化人评复现。
+- v0.48 已先冻结 4 family / 20 reports / 官方 PDR prompt / 全交叉三重复，再调用 GPT-5；但 OpenRouter 在 inference 前因账户/地域 provider terms 返回 403。key、余额和模型可见性均正常，移除隐私筛选仍失败，因此当前没有 GPT-5 新分数。
 
 ## 6. Benchmark 最终能回答什么
 
@@ -106,7 +107,7 @@ Clarification 只是新增 channel，不是论文 novelty 主线。它测“信�
 
 五天内完成：
 
-- 现有 artifacts 用经授权 GPT-5 + 两名盲化人评复现；
+- 获得受支持账户/地区的合规 GPT-5 key，从已冻结 smoke 断点继续，并完成两名盲化人评；
 - 补到至少 3 个 family，至少 2 个 paired-user 真值稳定；
 - 冻结主 profile、统计单位和反例；
 - 完成与 PDR、MyScholarQA、G-STEER 的最近邻边界表。
@@ -116,7 +117,7 @@ Clarification 只是新增 channel，不是论文 novelty 主线。它测“信�
 ## 9. 需要导师拍板
 
 1. 是否同意把“absolute adaptation 不等于 counterfactual specificity”冻结为主 thesis；
-2. 是否能在五天内获得官方/近官方 GPT-5 judge 预算和两名盲化标注者；
+2. 是否能在五天内获得合规可用的 GPT-5 访问和两名盲化标注者；
 3. 主论文优先做 12–24 family 的测量有效性，decision trial 只做小而强的外部验证，还是反过来；
 4. 如果五天复现失败，是否接受立即收窄而不是继续标题级换题。
 

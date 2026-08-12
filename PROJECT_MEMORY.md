@@ -18,6 +18,8 @@
 
 复现的可证伪边界不变：general-good 双侧高分只说明 absolute adaptation 不能证明 counterfactual generation specificity；over-personalized 只有在 critical audit 已失败仍 near-matched/rank-reversal 时才是强假阳性证据；若 GPT-5 稳定降分，撤回强 claim。DeepAlign 继续以非补偿 profile 表达，不把差值、比值或余弦压成一个新总分。本轮尚无 Q-Score、真实用户或系统重分类，不能宣称完整四重门或论文级效度成立。
 
+实际 smoke 尚未进入 GPT-5 inference。key/余额/模型可见性诊断均通过，但 OpenRouter 在 provider endpoint 选择前返回 Terms of Service 403；移除 data-collection filter 和启用默认路由仍复现。路由元数据将请求 region 识别为 `TPE`，并显示 OpenAI/Azure endpoints available 但未 selected，因此当前归因是账户/地域层 provider terms restriction，而非 prompt、额度或模型名。禁止用代理、伪造账单地区或换 provider 冒充官方复现。解除条件是用户提供受支持账户/地区可合法使用的 OpenRouter GPT-5 key，或官方 OpenAI API key；冻结材料与阈值保持不变，从 smoke 断点继续。
+
 ## 0. 2026-08-12：恢复 DeepAlign 主线并完成 PDR-compatible 反例实验
 
 ### 0.0 当前决定
@@ -603,3 +605,5 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.32：将主终点从 artifact fit 收敛为真实用户 downstream decision utility；冻结 Phase A/Phase B、DDE/WrongUserHarm、3-family vertical slice、utility verifier 和真人功效路线，并新增参考分区式端到端图。
 - v0.33：完成4-family合成 Phase A 最小实验；以原型压力测试否定单一差值/比例/角度主分，增加 A_min、角度/幅度诊断、task-only NI/added-value 分层和 owner-aware 路由要求；新增正式 Proposal 全链路+本周进度一页图。
 - v0.34：把 CFA 重定位为报告层交互对比而非完整个性化指标；以外部效用/可执行 regret 作为保留分支的主估计对象；用最新近邻否决个性化→行动、自我修复回退、停止/工具与多用户权限等宽泛换题，并提出 agent 决策边界/响应曲面的 3 天候选否决实验。
+- v0.47：恢复 DeepAlign-Bench；完成两 family、32 次本地 Qwen PDR-compatible 压力测试，支持 general-good 与 matched 的绝对高分不可识别反事实特异性，但撤回 over-personalized 普遍近 matched 的强主张。
+- v0.48：在结果前冻结官方中文 prompt、4 family、20 reports、全交叉三重复 GPT-5 P-Score 复现；预注册提交后实测发现 OpenRouter provider terms 在 inference 前返回 403，故无 GPT-5 结果，只记录合规访问阻塞并保持 v0.47 结论不变。

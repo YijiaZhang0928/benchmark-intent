@@ -16,7 +16,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench",
         "subtitle": "从绝对适配到反事实用户特异性",
         "mode": "正式论文 Proposal 精简版 · 不超过 10 页",
-        "version": "v0.47 · 正式精简版",
+        "version": "v0.48 · 正式精简版",
         "research_line": "Specificity · Adequacy · Benefit · No-Harm · Boundary",
         "claim": "单用户绝对适配分不能证明反事实用户特异性；必须用 paired users、task-only 和非补偿门共同识别。",
         "contents": [
@@ -39,7 +39,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜完整人话版",
         "subtitle": "把绝对适配、反事实特异性和非补偿评分逐步说清楚",
         "mode": "适合组内共识 · 导师讨论 · 正式写作前校验",
-        "version": "v0.47 · 完整人话版",
+        "version": "v0.48 · 完整人话版",
         "research_line": "什么该变 · 两边是否变对 · 是否真增益 · 哪些不能补偿",
         "claim": "报告对一个人看起来不错，不等于系统会随着用户变化而双向正确改变。",
         "contents": [
@@ -61,7 +61,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜汇报精简版",
         "subtitle": "15–20 分钟讲清核心构念、最小实验和五天决策门",
         "mode": "导师汇报 · 组会讲解 · 决策讨论",
-        "version": "v0.47 · 汇报精简版",
+        "version": "v0.48 · 汇报精简版",
         "research_line": "Absolute Fit → Cross-User Specificity → Hard Gates → Replication",
         "claim": "PDR 问一份报告对这个人是否合适；DeepAlign 问换用户后报告是否双向正确改变。",
         "contents": [

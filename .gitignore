@@ -13,3 +13,6 @@ html_report/work/
 # Local credentials: never stage or publish.
 api_keys.txt
 *.api_keys.txt
+
+# Re-downloadable, hash-verified official prompt cache.
+pilot/pdr_gpt5_replication_v0_1/raw/official_source/

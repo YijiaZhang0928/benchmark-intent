@@ -15,6 +15,7 @@ import hashlib
 import json
 import math
 import re
+import ssl
 import statistics
 import time
 import urllib.error
@@ -22,6 +23,8 @@ import urllib.request
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
+
+import certifi
 
 
 ROOT = Path(__file__).resolve().parent
@@ -42,6 +45,7 @@ PROMPT_NAMES = {
     "actionability_practicality": "personalization_eval_criteria_prompt_actionability",
     "score": "personalization_generate_merged_score_prompt",
 }
+TLS_CONTEXT = ssl.create_default_context(cafile=certifi.where())
 
 
 def load_json(path: Path) -> Any:
@@ -113,7 +117,7 @@ def download_official_prompts(manifest: dict) -> dict[str, str]:
         path = source_dir / f"{name}.py"
         if not path.exists() or sha256_path(path) != spec["sha256"]:
             request = urllib.request.Request(spec["url"], headers={"User-Agent": "DeepAlign-PDR-replication/0.1"})
-            with urllib.request.urlopen(request, timeout=90) as response:
+            with urllib.request.urlopen(request, timeout=90, context=TLS_CONTEXT) as response:
                 content = response.read()
             if hashlib.sha256(content).hexdigest() != spec["sha256"]:
                 raise RuntimeError(f"Official prompt hash mismatch after download: {name}")
@@ -207,17 +211,28 @@ class OpenRouterClient:
         self.model = manifest["requested_model"]
         self.provider_policy = manifest["provider_policy"]
 
-    def request(self, prompt: str, cache_path: Path, retries: int = 4) -> dict:
+    def get(self, path: str) -> dict:
+        request = urllib.request.Request(
+            f"https://openrouter.ai{path}",
+            headers={"Authorization": f"Bearer {self.key}", "X-OpenRouter-Metadata": "enabled"},
+        )
+        with urllib.request.urlopen(request, timeout=90, context=TLS_CONTEXT) as response:
+            return json.loads(response.read().decode("utf-8"))
+
+    def request(self, prompt: str, cache_path: Path, retries: int = 4, provider_policy: dict | None = None) -> dict:
         if cache_path.exists():
             return load_json(cache_path)
-        request_hash = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+        active_policy = self.provider_policy if provider_policy is None else provider_policy
+        request_payload = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+        }
+        if active_policy:
+            request_payload["provider"] = active_policy
+        request_hash = hashlib.sha256(json.dumps(request_payload, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
         last_error = None
         for attempt in range(1, retries + 1):
-            body = {
-                "model": self.model,
-                "messages": [{"role": "user", "content": prompt}],
-                "provider": self.provider_policy,
-            }
+            body = request_payload
             request = urllib.request.Request(
                 self.endpoint,
                 data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
@@ -227,11 +242,12 @@ class OpenRouterClient:
                     "Content-Type": "application/json",
                     "HTTP-Referer": "https://github.com/DeepAlign-Bench",
                     "X-OpenRouter-Title": "DeepAlign PDR GPT-5 Replication",
+                    "X-OpenRouter-Metadata": "enabled",
                 },
             )
             started = time.monotonic()
             try:
-                with urllib.request.urlopen(request, timeout=600) as response:
+                with urllib.request.urlopen(request, timeout=600, context=TLS_CONTEXT) as response:
                     payload = json.loads(response.read().decode("utf-8"))
                 latency = time.monotonic() - started
                 if payload.get("error"):
@@ -240,6 +256,7 @@ class OpenRouterClient:
                 record = {
                     "request_hash": request_hash,
                     "requested_model": self.model,
+                    "provider_policy": active_policy,
                     "response_id": payload.get("id"),
                     "model": payload.get("model"),
                     "provider": payload.get("provider"),
@@ -304,6 +321,54 @@ def smoke(client: OpenRouterClient) -> None:
         "latency_seconds": record["latency_seconds"],
     })
     print(f"smoke ok: provider={record['provider']} model={record['model']}", flush=True)
+
+
+def diagnose(client: OpenRouterClient) -> None:
+    key_data = client.get("/api/v1/key").get("data", {})
+    models = client.get("/api/v1/models/user").get("data", [])
+    gpt5 = [item for item in models if item.get("id") in {"openai/gpt-5", "openai/gpt-5-2025-08-07"}]
+    summary = {
+        "key_valid": True,
+        "is_free_tier": key_data.get("is_free_tier"),
+        "has_positive_limit_remaining": (
+            float(key_data.get("limit_remaining")) > 0
+            if key_data.get("limit_remaining") is not None else None
+        ),
+        "gpt5_visible_in_user_filtered_models": bool(gpt5),
+        "gpt5_entries": [{
+            "id": item.get("id"),
+            "canonical_slug": item.get("canonical_slug"),
+            "supported_parameters": item.get("supported_parameters"),
+        } for item in gpt5],
+    }
+    dump_json(RESULTS / "gateway_diagnostic.json", summary)
+    print(json.dumps(summary, ensure_ascii=False, indent=2), flush=True)
+
+
+def route_diagnose(client: OpenRouterClient) -> None:
+    prompt = '只返回一个JSON对象：{"status":"ok","purpose":"route diagnostic"}'
+    variants = {
+        "openai_without_data_filter": {
+            "order": ["openai"], "allow_fallbacks": False, "require_parameters": True,
+        },
+        "default_route": {},
+    }
+    outcomes = {}
+    for name, policy in variants.items():
+        try:
+            record = client.request(
+                prompt, RAW / "route_diagnostic" / f"{name}.json",
+                retries=1, provider_policy=policy,
+            )
+            outcomes[name] = {
+                "success": True, "model": record.get("model"),
+                "provider": record.get("provider"), "usage": record.get("usage"),
+            }
+        except RuntimeError as exc:
+            error = re.sub(r'"user_id"\s*:\s*"[^"]+"', '"user_id":"[redacted]"', str(exc))
+            outcomes[name] = {"success": False, "error": error[:1000]}
+    dump_json(RESULTS / "route_diagnostic.json", outcomes)
+    print(json.dumps(outcomes, ensure_ascii=False, indent=2), flush=True)
 
 
 def generate_one_criteria(client: OpenRouterClient, prompts: dict[str, str], family: dict, user_id: str, samples: int) -> None:
@@ -547,7 +612,7 @@ def analyze() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("stage", choices=["prepare", "smoke", "criteria", "score", "analyze", "all"])
+    parser.add_argument("stage", choices=["prepare", "diagnose", "route-diagnose", "smoke", "criteria", "score", "analyze", "all"])
     parser.add_argument("--key-file", type=Path, default=Path("api_keys.txt"))
     parser.add_argument("--workers", type=int, default=6)
     args = parser.parse_args()
@@ -560,6 +625,10 @@ def main() -> None:
     if args.stage == "analyze":
         analyze(); return
     client = OpenRouterClient(args.key_file.resolve(), manifest)
+    if args.stage == "diagnose":
+        diagnose(client); return
+    if args.stage == "route-diagnose":
+        route_diagnose(client); return
     if args.stage in {"smoke", "all"}:
         smoke(client)
     if args.stage in {"criteria", "all"}:

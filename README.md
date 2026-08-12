@@ -8,11 +8,11 @@ DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，�
 
 每个 task family 配对两位都真实合理、但决策约束不同的用户。系统分别生成 task-only、matched-A、matched-B 等报告，再把 A/B 报告交叉放到两位用户的 rubric 下评分。确认性结论必须同时通过四道不能互相抵消的门：双向 counterfactual specificity、matched 相对 task-only 的真实收益、共同质量不下降、隐私/权限不违规。clarification 只是一种 user-information channel：允许从模糊 query 出发询问用户，再检查答案是否从“问到”一路进入计划、报告和最终决定；它不再单独承担 when-to-ask 的论文主张。
 
-v0.47 的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 获得绝对高分且 4/4 接近 matched；但 over-personalized 报告只有 1/4 接近 matched。v0.48 已在任何新结果产生前冻结更严格的 GPT-5 复现：精确使用 PDR-Bench 官方中文 P-Score prompts、5 次权重采样、四维 criteria pipeline、4 个 task family、20 份固定报告、A/B 全交叉评分和 3 次 judge 重复。调用经 OpenRouter 网关且固定 OpenAI provider，不能写成 OpenAI 官方端点直连。当前状态仍是“协议已冻结、结果待运行”。
+v0.47 的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 获得绝对高分且 4/4 接近 matched；但 over-personalized 报告只有 1/4 接近 matched。v0.48 已在任何新结果产生前冻结更严格的 GPT-5 复现：精确使用 PDR-Bench 官方中文 P-Score prompts、5 次权重采样、四维 criteria pipeline、4 个 task family、20 份固定报告、A/B 全交叉评分和 3 次 judge 重复。当前 OpenRouter key 有效且可见 GPT-5，但请求在进入模型前被账户/地域层 provider Terms of Service 403 阻断，尚无 GPT-5 criteria 或分数。冻结资产不变，获得受支持的 key 后可从 smoke 断点继续。
 
 ## 当前交付物
 
-- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.47.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.47.png)：3200×1800 导师汇报主图，覆盖 case/task/user 元数据、信息渠道、rubric compiler、2×2 交叉矩阵、四重门、可回答的系统差异、最小实验和五天冻结线；同名 SVG 可编辑。
+- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png)：3200×1800 导师汇报主图，覆盖 case/task/user 元数据、信息渠道、rubric compiler、2×2 交叉矩阵、四重门、可回答的系统差异、最小实验、GPT-5 访问阻塞和五天冻结线；同名 SVG 可编辑。
 - [`deliverables/DeepAlign-Bench_正式研究Proposal.pdf`](deliverables/DeepAlign-Bench_正式研究Proposal.pdf)：完整方法、文献、schema 与实验记录；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`](deliverables/DeepAlign-Bench_正式Proposal精简版.pdf)：7 页正式精简版；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_完整人话版.pdf`](deliverables/DeepAlign-Bench_完整人话版.pdf)：不省略术语含义的直白解释；同名 DOCX 可编辑。

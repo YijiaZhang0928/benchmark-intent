@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the DeepAlign-Bench v0.47 report", async () => {
+test("server-renders the DeepAlign-Bench v0.48 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -23,15 +23,16 @@ test("server-renders the DeepAlign-Bench v0.47 report", async () => {
   assert.match(html, /Fuzzy query \+ clarification/);
   assert.match(html, /CFA_min/);
   assert.match(html, /General-good 近 matched/);
+  assert.match(html, /当前没有 GPT-5 completion、criteria 或分数/);
   assert.match(html, /FIVE-DAY THESIS FREEZE/);
-  assert.match(html, /src="\/DeepAlign-Bench_整体框架与PDR压力测试_v0\.47\.png"/i);
+  assert.match(html, /src="\/DeepAlign-Bench_整体框架与PDR压力测试_v0\.48\.png"/i);
   assert.match(html, /href="\/DeepAlign-Bench_正式Proposal精简版\.pdf"/i);
   assert.match(html, /href="\/case\.schema\.yaml"/i);
   assert.match(html, /href="\/metric_binding\.schema\.yaml"/i);
   assert.doesNotMatch(html, /ElicitAlign-Bench/);
 });
 
-test("keeps v0.47 schemas and downloadable artifacts in sync", async () => {
+test("keeps v0.47 schemas and v0.48 downloadable artifacts in sync", async () => {
   const [schema, metrics] = await Promise.all([
     readFile(new URL("../public/case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/metric_binding.schema.yaml", import.meta.url), "utf8"),
@@ -43,8 +44,8 @@ test("keeps v0.47 schemas and downloadable artifacts in sync", async () => {
   assert.match(metrics, /artifact_specificity_profile_is_primary:\s*true/);
 
   await Promise.all([
-    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.47.png", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.47.svg", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.svg", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_正式研究Proposal.docx", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_正式研究Proposal.pdf", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_正式Proposal精简版.docx", import.meta.url)),

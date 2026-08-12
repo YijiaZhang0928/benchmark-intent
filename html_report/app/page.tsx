@@ -23,7 +23,7 @@ export default function Home() {
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.47 · 2026-08-12</p>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.48 · 2026-08-12</p>
             <h1>绝对适配不等于<em>反事实用户特异性</em></h1>
             <p className="lede">固定 task、evidence、tools 和 budget，只改变目标用户。我们检验最终报告是否双向正确改变，并同时通过绝对合格、相对通用回答收益、共同质量与边界门。</p>
             <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
@@ -43,7 +43,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="figureSection" id="design"><div className="shell"><div className="sectionHead light"><h2>一张图看懂元数据、渠道、交叉矩阵、实验结论和五天冻结门</h2><p>SVG 可编辑；PNG 适合直接拿去导师汇报。</p></div><figure><img src="/DeepAlign-Bench_整体框架与PDR压力测试_v0.47.png" alt="DeepAlign-Bench v0.47 整体研究框架与 PDR-compatible 压力测试"/><figcaption>v0.47：clarification 作为 user-information channel；主 benchmark 仍是 paired-user 反事实特异性。</figcaption></figure></div></section>
+      <section className="figureSection" id="design"><div className="shell"><div className="sectionHead light"><h2>一张图看懂元数据、渠道、交叉矩阵、实验结论和五天冻结门</h2><p>SVG 可编辑；PNG 适合直接拿去导师汇报。</p></div><figure><img src="/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png" alt="DeepAlign-Bench v0.48 整体研究框架与 PDR-compatible 压力测试"/><figcaption>v0.48：本地实验数字不变；GPT-5 复现已预注册，但被 provider terms 拦在 inference 前。</figcaption></figure></div></section>
 
       <section className="shell gapSection">
         <p className="sectionTag">CASE / TASK / USER TRUTH</p>
@@ -78,18 +78,19 @@ export default function Home() {
           <article><span>1/4</span><h3>Over 近 matched</h3><p>不支持“普遍误判”；但四份都 ≥6，关键错误可能被平均补偿。</p></article>
           <article><span>0/2</span><h3>Family 通过 CFA_min&gt;0</h3><p>A_min 为 8.50/10.00，CFA_min 却为 −1.50/0.00；绝对合格与特异性脱钩。</p></article>
         </div>
+        <p className="matrixNote">GPT-5 复现状态：4 family / 20 reports / 官方 PDR prompts 已在结果前冻结并推送；OpenRouter key 有效且 GPT-5 可见，但账户/地域层 Terms of Service 403 在 provider endpoint 选择前阻断请求。当前没有 GPT-5 completion、criteria 或分数。</p>
       </div></section>
 
       <section className="shell gapSection" id="novelty"><p className="sectionTag">NEAREST-NEIGHBOR BOUNDARY</p><div className="sectionHead"><h2>Clarification 不是 novelty；paired-user measurement 才必须用结果证明</h2><p>DeepAlign 不能声称首次研究个性化 Deep Research 或主动澄清。</p></div><div className="sourceGrid">{papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}</div></section>
 
-      <section className="decision shell" id="deadline"><p className="sectionTag">FIVE-DAY THESIS FREEZE</p><div className="sectionHead"><h2>最迟 2026-08-17 冻结方向</h2><p>ICLR 2027 摘要 9 月 11 日 AOE、全文 9 月 16 日 AOE；当前约剩 30/35 天。</p></div><div className="decisionGrid"><article><span>01</span><h3>官方 judge 复现</h3><p>冻结现有 artifacts，用经授权 GPT-5 配置重评分。</p></article><article><span>02</span><h3>双人盲评</h3><p>独立判断 absolute fit、decision adoption 与 matched/swapped。</p></article><article><span>03</span><h3>补到 3 family</h3><p>至少 2/3 的 paired-user 真值稳定；否则收窄 judge-validity 或换题。</p></article></div></section>
+      <section className="decision shell" id="deadline"><p className="sectionTag">FIVE-DAY THESIS FREEZE</p><div className="sectionHead"><h2>最迟 2026-08-17 冻结方向</h2><p>ICLR 2027 摘要 9 月 11 日 AOE、全文 9 月 16 日 AOE；当前约剩 30/35 天。</p></div><div className="decisionGrid"><article><span>01</span><h3>解除合规访问阻塞</h3><p>使用受支持账户/地区的 GPT-5 key，从已冻结 smoke 断点继续；不绕过 provider terms。</p></article><article><span>02</span><h3>双人盲评</h3><p>独立判断 absolute fit、decision adoption 与 matched/swapped。</p></article><article><span>03</span><h3>补到 3 family</h3><p>至少 2/3 的 paired-user 真值稳定；否则收窄 judge-validity 或换题。</p></article></div></section>
 
-      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">READING EDITIONS</p><div className="sectionHead"><h2>DeepAlign-Bench v0.47 四个同步版本</h2><p>ElicitAlign v0.45 已完整归档，不再占用顶层入口。</p></div><div className="editionGrid">
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">READING EDITIONS</p><div className="sectionHead"><h2>DeepAlign-Bench v0.48 四个同步版本</h2><p>ElicitAlign v0.45 已完整归档，不再占用顶层入口。</p></div><div className="editionGrid">
         <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整方法、文献、rubric、环境、风险和实验记录。</p><div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div></article>
         <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>适合快速判断 thesis、实验、证据等级和 go/no-go。</p><div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
         <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 case、task、persona、channel、rubric、公式和统计。</p><div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div></article>
         <article><span>ADVISOR BRIEF</span><h3>汇报精简版</h3><p>15–20 分钟导师汇报结构，含最小实验与五天决策。</p><div className="editionLinks"><a href="/DeepAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_汇报精简版.docx" download>Word</a></div></article>
-      </div><div className="schemaDownloads"><a href="/case.schema.yaml" download>Case schema ↓</a><a href="/metric_binding.schema.yaml" download>Metric binding ↓</a><a href="/DeepAlign-Bench_整体框架与PDR压力测试_v0.47.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
+      </div><div className="schemaDownloads"><a href="/case.schema.yaml" download>Case schema ↓</a><a href="/metric_binding.schema.yaml" download>Metric binding ↓</a><a href="/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
 
       <footer className="closing"><div className="shell closingGrid"><div><p className="eyebrow">CLAIM BOUNDARY</p><h2>只主张最终交付物的反事实用户特异性</h2></div><p>不声称模型内部真正理解用户；不把本地 Qwen pilot 写成官方 PDR 失败；不把 clarification 包装成首次研究。</p></div></footer>
     </main>

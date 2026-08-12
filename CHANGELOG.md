@@ -8,6 +8,7 @@
 - 在任何 GPT-5 实验响应前冻结 4 family、8 配对用户、20 reports、全交叉 A/B 评分、3 次 judge 重复与全部阈值；artifact package SHA-256 为 `5384f83ffe4844da66716cba1cecbb7699ed4430af226dad987d13431e772795`。
 - F01/F03 新增 controlled over-personalized stress artifacts；它们是预设关键节点错配的构念单元测试，不用于估计自然 agent 错误率。
 - 新增可断点续跑的 `run_replication.py`；预注册要求本版本先提交并推送，再执行 smoke、criteria 和评分调用。
+- 预注册提交 `310d9cf` 推送后执行 smoke：key 有效、非免费层、有正余额且 GPT-5 对该账户可见，但 OpenRouter 在 provider endpoint 选择前返回 Terms of Service 403；去掉 data-policy filter 与使用默认路由仍失败。没有产生 GPT-5 completion 或 P-Score，状态记为 `blocked_before_inference`，等待合规可用 key，不绕过账户/地域限制。
 
 ## v0.47 DeepAlign restoration and completed PDR-compatible stress test - 2026-08-12
 

@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.47 · 2026 年 8 月 12 日
+版本：v0.48 · 2026 年 8 月 12 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -13,7 +13,7 @@ Deep Research 智能体已经能检索、综合并生成长报告，PDR-Bench �
 
 本轮对正式 proposal 的全部文献和 2026 年新近工作重新检索后，简单转向澄清、权限/授权、多 agent 委派或证据抗噪都不够新：ClarifyBench、HiL-Bench 与 UserBench 已覆盖选择性澄清；[[65]](https://aclanthology.org/2026.findings-acl.2028/)[[66]](https://arxiv.org/abs/2604.09408)[[67]](https://openreview.net/forum?id=iJS7nvlGPd) SovereignPA、HAS-Bench、IGAC 与 SentinelAgent 已覆盖变化意图、权限图、意图证书和委派链；[[68]](https://arxiv.org/abs/2607.05363)[[69]](https://arxiv.org/abs/2607.04329)[[70]](https://arxiv.org/abs/2606.22916)[[71]](https://arxiv.org/abs/2604.02767) MisKnow-Agent、DRNOISE、DeepFact 与 Mr Dre 又占据误导证据、冲突文档、事实核验和报告修订。[[72]](https://arxiv.org/abs/2607.20891)[[73]](https://arxiv.org/abs/2607.17291)[[74]](https://aclanthology.org/2026.acl-long.1586/)[[75]](https://aclanthology.org/2026.acl-long.609/)
 
-因此，v0.47 把主估计对象恢复并收紧为 **双向反事实个性化 profile**。对同一 task family 中两位都合理、但决策约束不同的用户 A/B，分别生成 matched 报告，再用 A、B 两套运行前冻结的标准交叉评分。主结果同时给出双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量 no-harm 和隐私/权限 no-violation；任一门失败都不能被其他维度平均补偿。Downstream Decision Effect（DDE）保留为少量可验证 family 的外部效度层，用来检验 artifact specificity 是否真的改善决定，但不再要求它独自承担论文题目。
+因此，v0.48 把主估计对象恢复并收紧为 **双向反事实个性化 profile**。对同一 task family 中两位都合理、但决策约束不同的用户 A/B，分别生成 matched 报告，再用 A、B 两套运行前冻结的标准交叉评分。主结果同时给出双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量 no-harm 和隐私/权限 no-violation；任一门失败都不能被其他维度平均补偿。Downstream Decision Effect（DDE）保留为少量可验证 family 的外部效度层，用来检验 artifact specificity 是否真的改善决定，但不再要求它独自承担论文题目。
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
@@ -996,7 +996,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 主文结果图统一使用共享坐标、95% CI、样本数和 gate 标记；同一颜色始终代表同一 agent，线型或形状代表 signal/stress 条件。不要使用 3D 图、面积难比较的 sunburst、没有不确定性的柱状榜、把多指标压成一条折线的雷达图，或把 expected 与 observed failure 混在同一标签中。若版面不足，优先保留 Figures 1–3、5 和 Tables 2–4；Figure 4 的逐 anchor 细节移入附录，但不能删掉 JudgeBench 的测量效度证据。
 
-## 17. v0.47 开工方案：先验证 absolute score 与 specificity 是否真的分离
+## 17. v0.48 开工方案：先验证 absolute score 与 specificity 是否真的分离
 
 ### 17.0 合成最小实验已经回答什么、还没回答什么
 
@@ -1066,7 +1066,15 @@ ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投�
 
 下一步必须保持现有 artifacts 冻结，用经授权的官方 GPT-5 近似配置和两名不知道 artifact 类型的人类标注者复现；在此之前，不得写“PDR-Bench 已被证明误打高分”。准确的论文主张是：**PDR 的 absolute adaptation 构念有价值，但单独使用不能识别 counterfactual specificity；本 pilot 给出了扩大测量效度审计的直接证据。**
 
-### 17.8 ICLR 2027 的五天方向冻结门
+### 17.8 v0.48 GPT-5 复现预注册与当前阻塞
+
+2026-08-12 在任何 GPT-5 评分产生前，我们进一步冻结了 4 个合成 family、8 位配对用户和 20 份报告；每份 general-good、matched-A/B、over-A/B 报告都进入 A/B 两套 criteria，评分重复三次。复现精确使用 PDR-Bench 官方中文 P-Score prompts：每个 `task × user` 条件先进行 5 次维度权重采样，再分别生成四维 criteria，最后按官方 0–10 锚点逐 criterion 评分并层级加权。官方 prompt、源材料和最终 artifact package 均记录 SHA-256；完整协议和可断点续跑脚本位于 `pilot/pdr_gpt5_replication_v0_1/`。
+
+用户提供的 key 属于 OpenRouter，因此准确配置是“经 OpenRouter 网关、固定 OpenAI provider 调用 `openai/gpt-5`”，不是 OpenAI 官方端点直连。预注册提交 `310d9cf` 推送后才执行 smoke。只读诊断显示 key 有效、非免费层、有正余额，且账户模型列表包含 canonical snapshot `openai/gpt-5-2025-08-07`；但无害 smoke 在选择 provider endpoint 前被 Terms of Service 403 拦截。移除 data-collection filter 和启用默认路由仍得到同一错误；路由元数据显示 region=`TPE`，OpenAI/Azure endpoints available 但均未 selected。故当前状态是 **blocked before inference**：没有 GPT-5 completion、criteria 或 P-Score，v0.47 的本地 Qwen 结果仍是唯一观测实验结果。
+
+这不是模型否定结果，也不能作为 PDR 的证据。我们不会使用代理、伪造账单地区或改用其他 provider 冒充 GPT-5。解除条件是获得受支持账户/地区可合法使用的 OpenRouter GPT-5 key，或获得官方 OpenAI API key；冻结文本、prompt 和阈值不变，从 smoke 断点继续。如果 2026-08-17 前仍无法解除，则 thesis freeze 必须基于“本地构念分离 + 官方复现未完成”的较弱证据，把 PDR false-positive 从主 claim 降为待验证假设。
+
+### 17.9 ICLR 2027 的五天方向冻结门
 
 ICLR 2027 官方 Author Guidelines 给出的 abstract deadline 是 2026-09-11 AOE，paper deadline 是 2026-09-16 AOE。以 2026-08-12 计算，距离摘要约 30 天、全文约 35 天。并非五天后系统就不能再改，但**最迟应在 2026-08-17 冻结论文 thesis、最近邻边界、主 estimand、family 原语和 go/no-go 证据**；此后只能改 rubric leaf、样本、实现细节和写法。若五天后仍在 DeepAlign、ElicitAlign、Cognitive Gain 等标题级方向之间切换，就没有足够时间完成官方 judge、人评校准、family 扩展、统计、主图和匿名 artifact。
 

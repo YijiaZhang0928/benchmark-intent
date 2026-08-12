@@ -11,7 +11,7 @@ from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 ROOT = Path(__file__).resolve().parents[1]
 MD = ROOT / "proposal" / "DeepAlign-Bench_研究Proposal.md"
-FIG = ROOT / "proposal_assets" / "DeepAlign-Bench_整体框架与PDR压力测试_v0.47.png"
+FIG = ROOT / "proposal_assets" / "DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png"
 OUT = ROOT / "deliverables" / "DeepAlign-Bench_正式研究Proposal.docx"
 
 # The formal proposal is the default. Communication variants override these
@@ -21,7 +21,7 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "从绝对适配到反事实用户特异性"
 COVER_MODE = "Interactive Agents · Personalization · Deep Research"
-DOC_VERSION = "v0.47 · 主线恢复版"
+DOC_VERSION = "v0.48 · GPT-5 复现预注册版"
 DOC_DATE = "2026 年 8 月 12 日"
 RESEARCH_LINE = "Adequacy · Specificity · Benefit · No-Harm · Boundary"
 CORE_CLAIM = "固定任务、证据、工具和预算，检验最终交付物是否随目标用户发生双向正确变化，并同时通过绝对合格、通用回答收益、共同质量与边界门。"

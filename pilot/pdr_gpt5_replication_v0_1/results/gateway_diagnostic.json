@@ -1,0 +1,24 @@
+{
+  "key_valid": true,
+  "is_free_tier": false,
+  "has_positive_limit_remaining": true,
+  "gpt5_visible_in_user_filtered_models": true,
+  "gpt5_entries": [
+    {
+      "id": "openai/gpt-5",
+      "canonical_slug": "openai/gpt-5-2025-08-07",
+      "supported_parameters": [
+        "include_reasoning",
+        "max_completion_tokens",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "tool_choice",
+        "tools"
+      ]
+    }
+  ]
+}

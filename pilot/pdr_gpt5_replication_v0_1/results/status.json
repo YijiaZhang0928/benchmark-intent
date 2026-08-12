@@ -1,0 +1,20 @@
+{
+  "status": "blocked_before_inference",
+  "date": "2026-08-12",
+  "requested_model": "openai/gpt-5",
+  "canonical_model_visible": "openai/gpt-5-2025-08-07",
+  "completed_inference_calls": 0,
+  "completed_scoring_calls": 0,
+  "completed_criteria_calls": 0,
+  "cause": "OpenRouter returned HTTP 403 provider Terms of Service before selecting an available GPT-5 endpoint.",
+  "ruled_out_by_read_only_diagnostics": [
+    "invalid OpenRouter key",
+    "free-tier account",
+    "non-positive account limit remaining",
+    "GPT-5 absent from user-filtered model list",
+    "data_collection=deny routing restriction",
+    "fixed OpenAI-only provider routing"
+  ],
+  "required_unblock": "Use a GPT-5 credential/account/region combination permitted by the provider, or an official OpenAI API key; resume from the frozen protocol without changing artifacts, prompts, thresholds, or hypotheses.",
+  "interpretation": "This is an infrastructure/access result, not evidence for or against the scientific hypotheses."
+}
