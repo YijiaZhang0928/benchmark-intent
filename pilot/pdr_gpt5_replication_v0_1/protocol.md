@@ -3,6 +3,8 @@
 冻结日期：2026-08-12
 研究性质：四个合成 task family 的构念效度压力测试；不是 PDR-Bench 全榜复现，也不能估计自然错误率。
 
+结果解释修正案冻结日期：2026-08-13。修正案发生在任何 GPT-5 completion、criteria 或 P-Score 产生之前，不修改 artifact、prompt、重复次数或数值阈值。
+
 ## 1. 本轮到底复现什么
 
 本轮只复现 PDR-Bench 的 Personalization Alignment（P-Score）主链：
@@ -84,6 +86,13 @@ PDR-Bench 没有正式的“6 分通过线”。以下阈值只用于压力测�
 
 如果 GPT-5 将 over-personalized 报告稳定降到 matched 下方超过 0.5，则撤回“PDR 容易把 over-personalization 当成正确个性化”的强 claim。
 
+### Introduction 证据门
+
+- `general_good` 高分或 near-matched 只标记 **identification blind spot**，不得写成 evaluator error；
+- 只有两名盲化人评确认预冻结 critical decision node 失败，且 GPT-5 三次重复仍稳定 near-matched 或 rank reversal，才标记 **controlled evaluator false positive**；
+- 只有分歧至少跨两个 family 重复，并进一步在真实或真人确认 family、多个 agent 系统上导致成功判定/排名改变，且 DeepAlign 对真人判断或 decision outcome 有 PDR 分数之外的增量预测，才标记 **paper-level measurement-validity evidence**；
+- 四个合成 family 无论结果多明显，都不能推出 PDR-Bench 整体无效。
+
 ## 6. DeepAlign 对照不是再造一个差值总分
 
 对每个 family 仍报告完整 2×2 交叉矩阵：
@@ -102,3 +111,4 @@ PDR-Bench 没有正式的“6 分通过线”。以下阈值只用于压力测�
 - 连续三次相同基础设施错误仍无法恢复时，保留部分结果并明确标记 incomplete；
 - 若 general/over disagreement 只出现在一个 family，或三次 judge 波动大于 family 间差异，只能作为样例，不形成论文 claim；
 - 若官方 GPT-5 不产生稳定的判定分歧或系统重分类证据，DeepAlign 必须降级为 evaluation extension，不能继续把 PDR measurement failure 当主贡献。
+- 若 over-personalized 被 GPT-5 稳定降分，不能替换 artifact、删除 family 或改变阈值寻找更容易骗分的样本；必须把强缺陷叙事记为未获支持。

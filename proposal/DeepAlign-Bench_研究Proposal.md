@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.48 · 2026 年 8 月 12 日
+版本：v0.49 · 2026 年 8 月 13 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -11,9 +11,11 @@
 
 Deep Research 智能体已经能检索、综合并生成长报告，PDR-Bench 也已经建立 task–persona 条件下的 absolute adaptation：给定一个用户和一个任务，一份报告在目标、内容、呈现和可行动性上有多合适。[[4]](https://arxiv.org/abs/2509.25106) 但一个单用户绝对分仍不能回答另一个构念：**只改变目标用户、固定任务和证据后，系统是否会发生方向正确且只对该用户必要的变化。** 一份高质量通用报告可能对两位用户都拿高分；一份反复提及 persona 的报告也可能在最终决策上用错约束。DeepAlign-Bench 的主目标是识别这种 counterfactual user specificity，而不是再造一个更复杂的绝对适配总分。
 
+本稿不会把“通用好报告获得高 P-Score”直接称为 PDR-Bench 打分错误：如果报告确实对目标用户有帮助，absolute adaptation 给高分是合理的。它暴露的是**识别盲区**——这个高分本身不能证明系统使用了用户信息，也不能区分同样适合许多用户的通用质量与只因目标用户而产生的决策变化。只有当一份报告已经被盲化人评确认在关键用户约束上作出错误最终决定，PDR-style evaluator 仍稳定给出接近 matched 的分数，才构成受控假阳性。即便出现这一结果，论文也只能主张 absolute personalization evaluation 存在可重复的 blind spot，不能从四个合成 family 推导 PDR-Bench 整体无效。
+
 本轮对正式 proposal 的全部文献和 2026 年新近工作重新检索后，简单转向澄清、权限/授权、多 agent 委派或证据抗噪都不够新：ClarifyBench、HiL-Bench 与 UserBench 已覆盖选择性澄清；[[65]](https://aclanthology.org/2026.findings-acl.2028/)[[66]](https://arxiv.org/abs/2604.09408)[[67]](https://openreview.net/forum?id=iJS7nvlGPd) SovereignPA、HAS-Bench、IGAC 与 SentinelAgent 已覆盖变化意图、权限图、意图证书和委派链；[[68]](https://arxiv.org/abs/2607.05363)[[69]](https://arxiv.org/abs/2607.04329)[[70]](https://arxiv.org/abs/2606.22916)[[71]](https://arxiv.org/abs/2604.02767) MisKnow-Agent、DRNOISE、DeepFact 与 Mr Dre 又占据误导证据、冲突文档、事实核验和报告修订。[[72]](https://arxiv.org/abs/2607.20891)[[73]](https://arxiv.org/abs/2607.17291)[[74]](https://aclanthology.org/2026.acl-long.1586/)[[75]](https://aclanthology.org/2026.acl-long.609/)
 
-因此，v0.48 把主估计对象恢复并收紧为 **双向反事实个性化 profile**。对同一 task family 中两位都合理、但决策约束不同的用户 A/B，分别生成 matched 报告，再用 A、B 两套运行前冻结的标准交叉评分。主结果同时给出双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量 no-harm 和隐私/权限 no-violation；任一门失败都不能被其他维度平均补偿。Downstream Decision Effect（DDE）保留为少量可验证 family 的外部效度层，用来检验 artifact specificity 是否真的改善决定，但不再要求它独自承担论文题目。
+因此，v0.49 把主估计对象恢复并收紧为 **双向反事实个性化 profile**。对同一 task family 中两位都合理、但决策约束不同的用户 A/B，分别生成 matched 报告，再用 A、B 两套运行前冻结的标准交叉评分。主结果同时给出双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量 no-harm 和隐私/权限 no-violation；任一门失败都不能被其他维度平均补偿。Downstream Decision Effect（DDE）保留为少量可验证 family 的外部效度层，用来检验 artifact specificity 是否真的改善决定，但不再要求它独自承担论文题目。
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
@@ -1073,6 +1075,16 @@ ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投�
 用户提供的 key 属于 OpenRouter，因此准确配置是“经 OpenRouter 网关、固定 OpenAI provider 调用 `openai/gpt-5`”，不是 OpenAI 官方端点直连。预注册提交 `310d9cf` 推送后才执行 smoke。只读诊断显示 key 有效、非免费层、有正余额，且账户模型列表包含 canonical snapshot `openai/gpt-5-2025-08-07`；但无害 smoke 在选择 provider endpoint 前被 Terms of Service 403 拦截。移除 data-collection filter 和启用默认路由仍得到同一错误；路由元数据显示 region=`TPE`，OpenAI/Azure endpoints available 但均未 selected。故当前状态是 **blocked before inference**：没有 GPT-5 completion、criteria 或 P-Score，v0.47 的本地 Qwen 结果仍是唯一观测实验结果。
 
 这不是模型否定结果，也不能作为 PDR 的证据。我们不会使用代理、伪造账单地区或改用其他 provider 冒充 GPT-5。解除条件是获得受支持账户/地区可合法使用的 OpenRouter GPT-5 key，或获得官方 OpenAI API key；冻结文本、prompt 和阈值不变，从 smoke 断点继续。如果 2026-08-17 前仍无法解除，则 thesis freeze 必须基于“本地构念分离 + 官方复现未完成”的较弱证据，把 PDR false-positive 从主 claim 降为待验证假设。
+
+### 17.8a GPT-5 结果出来后，什么强度才足以进入 Introduction
+
+本轮 GPT-5 只生成 PDR-style rubric 并给冻结报告评分。它不会生成 task、persona 或报告，因此它是 evaluator stress test，不是端到端系统比较。预期结果分三层解释，不能跨层升级：
+
+1. **识别盲区信号：**general-good 对 A/B 都获得高分或接近 matched。这很可能出现，也适合用来直观解释“absolute fit 不等于 specificity”；但因为通用报告可能确实适合两位用户，它不是评分错误，不能单独支撑“PDR-Bench 有缺陷”。
+2. **受控 evaluator 假阳性：**两名不知道 artifact 类型的人类标注者一致确认 over-personalized 报告在预冻结 critical decision node 上失败，而 GPT-5 P-Score 在三次重复中仍稳定 `near_matched` 或发生 rank reversal。只有这一层可以在 Introduction 写成“PDR-style absolute evaluator can reward a decision-misaligned report”，并且必须同时报告完整分布、失败节点和反例未成立的方向。
+3. **论文级测量效度证据：**上述分歧至少跨两个不同 family 重复，并在真实或真人确认 family、多个被测系统上导致系统成功判定或排序发生变化；DeepAlign profile 对目标用户盲评/decision outcome 还有 PDR 分数之外的增量预测。只有这一层才足以支撑“现有 absolute evaluation 不足以评价 agent personalization”的主贡献。
+
+因此 Introduction 最稳妥的开启不是“我们证明 PDR-Bench 错了”，而是：**高 personalization score 不能告诉我们一个 agent 是否真的因用户而改变。** 若 GPT-5 + 人评产生受控假阳性，可紧接一个冻结案例作为 empirical hook；若只复现 general-good 高分，就把它作为构念反例，而不是 benchmark failure。若 over-personalized 被 GPT-5 稳定降分，应明确写成压力测试否决了强假阳性假设，并把论文贡献集中到 paired-user identification，而不是继续寻找更容易骗分的样本。
 
 ### 17.9 ICLR 2027 的五天方向冻结门
 

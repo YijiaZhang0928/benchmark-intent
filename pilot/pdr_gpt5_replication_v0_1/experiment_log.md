@@ -23,3 +23,11 @@
 - `X-OpenRouter-Metadata` 显示请求 region 为 `TPE`，OpenAI endpoint 在第一项诊断中 available 但未 selected；默认路由下 OpenAI 与 Azure endpoints 均 available 但未 selected。由此排除 prompt 内容、余额、模型不存在和 data-policy 组合为直接原因；最符合证据的是账户/地域层 provider terms restriction。
 - 没有产生任何 GPT-5 completion、criteria 或 P-Score，API 复现状态为 `blocked_before_inference`。不使用代理、伪造账单地区或替换 provider 绕过限制。
 - 解除方式：提供在受支持账户/地区可合法调用 GPT-5 的 OpenRouter key，或提供官方 OpenAI API key 并新增 direct-endpoint adapter。冻结 artifact、prompt 与 thresholds 不变，解除后从 smoke 断点继续。
+
+## 2026-08-13：GPT-5 结果解释门修正案（仍在 inference 前）
+
+- 截至修正案冻结时，GPT-5 completion、criteria 和 P-Score 仍均为 0；因此这是结果前主张边界，不是看分数后的解释调整。
+- 明确 GPT-5 只生成 PDR-style rubric 并为冻结报告评分，不生成 task、persona 或报告。
+- general-good 高分只作为 absolute adaptation 的识别盲区；它可能确实适合目标用户，不能称为 PDR 打分错误。
+- 只有盲化人评确认 critical decision 失败、GPT-5 三重复仍 near-matched/rank-reversal，才称受控 evaluator 假阳性；论文级主张另需跨真实 family、多系统重分类和真人增量效度。
+- 若 GPT-5 稳定识别并降分 over-personalized 报告，撤回强缺陷叙事，不更换样本、阈值或 family。

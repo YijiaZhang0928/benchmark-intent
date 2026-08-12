@@ -1,5 +1,12 @@
 # benchmark-intent 设计迭代记录
 
+## v0.49 Introduction evidence gate for PDR stress test - 2026-08-13
+
+- 明确 GPT-5 只生成 PDR-style rubrics 并给冻结报告评分，不生成 task、persona 或报告；本轮是 evaluator stress test，不是端到端 agent 实验。
+- 冻结三层结果解释：general-good 高分只证明 absolute adaptation 的识别盲区；盲化人评确认 critical decision 失败而 GPT-5 三重复仍 near-matched/rank-reversal，才是受控假阳性；跨真实 family、多系统重分类与真人增量效度才是论文级测量效度证据。
+- Introduction 主句收紧为“高 personalization score 不能告诉我们 agent 是否真的因用户而改变”，禁止从四个合成 family 推导 PDR-Bench 整体无效。
+- 若 GPT-5 稳定降分 over-personalized 报告，预先承诺撤回强 PDR 缺陷叙事，不替换样本或阈值追求显著结果。
+
 ## v0.48 GPT-5 P-Score replication preregistration - 2026-08-12
 
 - 用户授权使用本地 OpenRouter GPT-5 key；将 key 文件加入 `.gitignore` 并收紧为 `0600`，运行器只在内存读取且不记录密钥。

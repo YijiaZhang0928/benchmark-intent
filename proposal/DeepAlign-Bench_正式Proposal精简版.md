@@ -2,9 +2,9 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.48 · 2026 年 8 月 12 日
+版本：v0.49 · 2026 年 8 月 13 日
 定位：Benchmark / Evaluation / Personalized Agents
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.48
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.49
 
 ---
 
@@ -110,6 +110,8 @@ JudgeBench 另放四种预冻结反例：
 限制：只有两个合成 family、一个本地 Qwen3-8B judge；正式评分开始后因耗时减少了 judge 和重复。故本实验只支持“DeepAlign 设计值得扩展”，不能支持“官方 PDR-Bench 已被证明误判”。
 
 v0.48 已在任何 GPT-5 结果前冻结更严格的复现：4 family、20 reports、A/B 全交叉、3 次评分重复，并精确使用 PDR 官方中文 P-Score prompt 与 5 次权重采样。预注册提交 `310d9cf` 推送后，OpenRouter 只读诊断确认 key 有效、有正余额且 GPT-5 可见，但无害 smoke 在进入模型前被账户/地域层 Terms of Service 403 阻断；移除 data-policy filter 与默认路由对照仍失败。当前没有 GPT-5 分数，不能把“协议已就绪”写成“官方复现已完成”。获得合规可用 key 后可从 smoke 断点续跑。
+
+GPT-5 结果的 Introduction 证据门预先分三层。general-good 高分只证明 absolute score 不识别生成特异性，不是 PDR 打分错误；只有盲化人评确认 critical decision 失败、GPT-5 三重复仍 near-matched/rank-reversal，才是受控 evaluator 假阳性；只有该分歧跨 family、真实用户与多个系统重复，并导致系统重分类或提高真人结果预测，才是论文级 measurement-validity 证据。若 over-personalized 被稳定降分，必须撤回强缺陷叙事，不能换样本追求显著结果。
 
 ## 8. 预期贡献与最近邻边界
 

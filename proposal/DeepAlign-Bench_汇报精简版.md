@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.48 · 2026 年 8 月 12 日
+版本：v0.49 · 2026 年 8 月 13 日
 建议时长：15–20 分钟
 
 ---
@@ -83,6 +83,7 @@ Clarification 只是新增 channel，不是论文 novelty 主线。它测“信�
 - 新发现：judge 会把“提到约束”当成“采用约束”，且高分端出现饱和；关键错误可能被平均分补偿。
 - 证据限制：小 judge、两个合成 family、运行中因资源缩减减少重复；必须用 GPT-5 + 两名盲化人评复现。
 - v0.48 已先冻结 4 family / 20 reports / 官方 PDR prompt / 全交叉三重复，再调用 GPT-5；但 OpenRouter 在 inference 前因账户/地域 provider terms 返回 403。key、余额和模型可见性均正常，移除隐私筛选仍失败，因此当前没有 GPT-5 新分数。
+- 预期：general-good 接近 matched 很可能复现，但这只是 absolute score 的识别盲区，不是 PDR 打错分。只有“盲化人评确认关键决定错误 + GPT-5 三重复仍近 matched/反超 + 跨 family 重复”才是 Introduction 可用的受控假阳性；论文级主张还要真实 family、多系统重分类和真人增量效度。
 
 ## 6. Benchmark 最终能回答什么
 

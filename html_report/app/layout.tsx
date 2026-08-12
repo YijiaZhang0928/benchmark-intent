@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DeepAlign-Bench｜绝对适配不等于反事实用户特异性",
     description: "用 paired-user 交叉矩阵与非补偿 profile 评测个性化 Deep Research。",
-    images: [{ url: "/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png", width: 3200, height: 1800, alt: "DeepAlign-Bench 整体评测框架" }],
+    images: [{ url: "/DeepAlign-Bench_整体框架与PDR压力测试_v0.49.png", width: 3200, height: 1800, alt: "DeepAlign-Bench 整体评测框架" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "DeepAlign-Bench｜绝对适配不等于反事实用户特异性",
     description: "用 paired-user 交叉矩阵与非补偿 profile 评测个性化 Deep Research。",
-    images: ["/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png"],
+    images: ["/DeepAlign-Bench_整体框架与PDR压力测试_v0.49.png"],
   },
 };
 

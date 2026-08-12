@@ -47,12 +47,20 @@
     "specificity_positive": 0.0,
     "specificity_practical_margin": 0.5
   },
+  "interpretation_gates_frozen_at": "2026-08-13-before-any-gpt5-inference",
+  "interpretation_gates": {
+    "identification_blind_spot": "general_good is absolute_high or near_matched for both users; this is not a scoring error",
+    "controlled_evaluator_false_positive": "two blinded human raters confirm a frozen critical decision failure and GPT-5 remains near_matched or rank_reverses across repeats",
+    "paper_level_measurement_validity": "disagreement repeats across at least two families and causes multi-system reclassification or adds prediction of human judgment/outcomes beyond PDR score"
+  },
   "inference_unit": "task_family",
   "claims_forbidden": [
     "full P/Q/R replication",
     "natural false-positive rate",
     "real-user validity",
     "PDR-Bench is invalid",
+    "general-good high score is a PDR scoring error",
+    "four synthetic families establish paper-level measurement validity",
     "direct OpenAI API endpoint"
   ]
 }

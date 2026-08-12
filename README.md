@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.48（GPT-5 复现已预注册）
+## 当前方向：DeepAlign-Bench v0.49（GPT-5 复现与 Introduction 证据门已预注册）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据、工具和预算相同时，最终交付物是否真的因目标用户不同而作出正确且有益的改变。
 
@@ -10,9 +10,11 @@ DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，�
 
 v0.47 的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 获得绝对高分且 4/4 接近 matched；但 over-personalized 报告只有 1/4 接近 matched。v0.48 已在任何新结果产生前冻结更严格的 GPT-5 复现：精确使用 PDR-Bench 官方中文 P-Score prompts、5 次权重采样、四维 criteria pipeline、4 个 task family、20 份固定报告、A/B 全交叉评分和 3 次 judge 重复。当前 OpenRouter key 有效且可见 GPT-5，但请求在进入模型前被账户/地域层 provider Terms of Service 403 阻断，尚无 GPT-5 criteria 或分数。冻结资产不变，获得受支持的 key 后可从 smoke 断点继续。
 
+v0.49 冻结结果解释边界：general-good 高分只证明绝对适配不能识别生成特异性，不是评分错误；盲化人评确认 critical decision 失败而 GPT-5 仍稳定 near-matched/rank-reversal，才是受控 evaluator 假阳性；只有分歧跨真实 family 与多个系统重复、造成系统重分类并提高真人结果预测，才是 Introduction 可承担论文主贡献的测量效度证据。
+
 ## 当前交付物
 
-- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.48.png)：3200×1800 导师汇报主图，覆盖 case/task/user 元数据、信息渠道、rubric compiler、2×2 交叉矩阵、四重门、可回答的系统差异、最小实验、GPT-5 访问阻塞和五天冻结线；同名 SVG 可编辑。
+- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.49.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.49.png)：3200×1800 导师汇报主图，覆盖 case/task/user 元数据、信息渠道、rubric compiler、2×2 交叉矩阵、五道非补偿门、可回答的系统差异、最小实验与 Introduction 证据门；同名 SVG 可编辑。
 - [`deliverables/DeepAlign-Bench_正式研究Proposal.pdf`](deliverables/DeepAlign-Bench_正式研究Proposal.pdf)：完整方法、文献、schema 与实验记录；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`](deliverables/DeepAlign-Bench_正式Proposal精简版.pdf)：7 页正式精简版；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_完整人话版.pdf`](deliverables/DeepAlign-Bench_完整人话版.pdf)：不省略术语含义的直白解释；同名 DOCX 可编辑。

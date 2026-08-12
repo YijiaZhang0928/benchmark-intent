@@ -2,8 +2,8 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-12
-当前版本：v0.48（官方 prompt + OpenAI-provider GPT-5 的 P-Score 复现已在结果前冻结）
+最后更新：2026-08-13
+当前版本：v0.49（GPT-5 复现与 Introduction 主张证据门已在结果前冻结）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
@@ -19,6 +19,8 @@
 复现的可证伪边界不变：general-good 双侧高分只说明 absolute adaptation 不能证明 counterfactual generation specificity；over-personalized 只有在 critical audit 已失败仍 near-matched/rank-reversal 时才是强假阳性证据；若 GPT-5 稳定降分，撤回强 claim。DeepAlign 继续以非补偿 profile 表达，不把差值、比值或余弦压成一个新总分。本轮尚无 Q-Score、真实用户或系统重分类，不能宣称完整四重门或论文级效度成立。
 
 实际 smoke 尚未进入 GPT-5 inference。key/余额/模型可见性诊断均通过，但 OpenRouter 在 provider endpoint 选择前返回 Terms of Service 403；移除 data-collection filter 和启用默认路由仍复现。路由元数据将请求 region 识别为 `TPE`，并显示 OpenAI/Azure endpoints available 但未 selected，因此当前归因是账户/地域层 provider terms restriction，而非 prompt、额度或模型名。禁止用代理、伪造账单地区或换 provider 冒充官方复现。解除条件是用户提供受支持账户/地区可合法使用的 OpenRouter GPT-5 key，或官方 OpenAI API key；冻结材料与阈值保持不变，从 smoke 断点继续。
+
+2026-08-13 进一步冻结 Introduction 证据门。general-good 对 A/B 获得高分或接近 matched，只是 absolute adaptation 不能识别生成过程是否具有 counterfactual specificity 的识别盲区；由于通用报告可能确实适合用户，这不是 PDR 打分错误。受控假阳性必须同时有盲化人评确认预冻结 critical decision node 失败，以及 GPT-5 三重复仍稳定 near-matched/rank-reversal。论文级 measurement-validity 主张还必须跨至少两个 family 重复，并在真实/真人确认 family、多个系统上造成成功判定或排序变化，且 DeepAlign profile 对真人判断/decision outcome 有 PDR 分数之外的增量预测。若 over-personalized 被 GPT-5 稳定降分，撤回强 PDR 缺陷叙事，不得换样本追求显著。
 
 ## 0. 2026-08-12：恢复 DeepAlign 主线并完成 PDR-compatible 反例实验
 
@@ -607,3 +609,4 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 - v0.34：把 CFA 重定位为报告层交互对比而非完整个性化指标；以外部效用/可执行 regret 作为保留分支的主估计对象；用最新近邻否决个性化→行动、自我修复回退、停止/工具与多用户权限等宽泛换题，并提出 agent 决策边界/响应曲面的 3 天候选否决实验。
 - v0.47：恢复 DeepAlign-Bench；完成两 family、32 次本地 Qwen PDR-compatible 压力测试，支持 general-good 与 matched 的绝对高分不可识别反事实特异性，但撤回 over-personalized 普遍近 matched 的强主张。
 - v0.48：在结果前冻结官方中文 prompt、4 family、20 reports、全交叉三重复 GPT-5 P-Score 复现；预注册提交后实测发现 OpenRouter provider terms 在 inference 前返回 403，故无 GPT-5 结果，只记录合规访问阻塞并保持 v0.47 结论不变。
+- v0.49：冻结 GPT-5 结果的三层解释门：general-good 高分是识别盲区；人评 critical-fail + GPT-5 near-matched/rank-reversal 才是受控假阳性；跨真实 family、多系统重分类与真人增量效度才是 Introduction 可承担主贡献的论文级证据。
