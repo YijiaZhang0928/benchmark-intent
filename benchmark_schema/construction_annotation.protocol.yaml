@@ -1,5 +1,5 @@
 protocol_name: deepalign_construction_annotation
-protocol_version: 0.31
+protocol_version: 0.50
 status: pre_pilot
 purpose: >-
   Separate imported facts, pre-run human judgments, and post-pilot empirical
@@ -17,6 +17,10 @@ annotation_layers:
       - task_stratum
       - stakes_and_reversibility
       - interaction_need
+      - research_paradigm_id
+      - information_event_schedule
+      - source_origin_and_access_mode
+      - adapter_capability_eligibility
       - task_relevance_of_user_facts
       - counterfactual_axes
       - must_change

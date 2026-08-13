@@ -2,9 +2,9 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.49 · 2026 年 8 月 13 日
+版本：v0.50 · 2026 年 8 月 14 日
 定位：Benchmark / Evaluation / Personalized Agents
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.49
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.50
 
 ---
 
@@ -12,7 +12,7 @@
 
 [PDR-Bench](https://arxiv.org/abs/2509.25106) 已经回答了一个重要问题：给定 task 与 persona，一份 Deep Research 报告在目标、内容、呈现和可行动性上有多适合该用户。[[1]](https://arxiv.org/abs/2509.25106) 但单个 user–task pair 的绝对适配分不能识别另一件事：**固定任务、证据、工具和预算，只改变目标用户后，系统是否会做出方向正确且只对该用户必要的改变。** 高质量通用报告可能对两位用户都高分；大量复述 persona 的报告也可能在最终选择上用错关键约束。
 
-DeepAlign-Bench 为同一 task family 构造两位都真实合理、但有 2–4 个决策相关差异的用户 A/B。系统分别生成 matched-A、matched-B 与 task-only 报告，两套用户标准再交叉评价两份 matched 报告。结果不压成总分，而同时报告：双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量/事实 no-harm，以及隐私与权限 no-violation。clarification 不再作为独立论文方向，而成为第三种 user-information channel：`模糊但可执行的 query → agent 可选择澄清 → ledger-bounded 回答 → final report`。
+DeepAlign-Bench 为同一 task family 构造两位都真实合理、但有 2–4 个决策相关差异的用户 A/B。系统分别生成 matched-A、matched-B 与 task-only 报告，两套用户标准再交叉评价两份 matched 报告。结果不压成总分，而同时报告：双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量/事实 no-harm，以及隐私与权限 no-violation。v0.50 进一步把一次性报告、主动澄清、中途提问、memory 和动态更新统一成带信息事件时间线的 research episode，避免把交互时机、信息来源与访问方式混成一个 channel 标签。
 
 2026-08-12 的两-family、本地 Qwen3-8B PDR-compatible 压力测试给出明确 go 信号：general-good 报告 4/4 次与 matched 相差不超过 0.5 分；over-personalized 报告只有 1/4 次接近 matched，因此不支持“普遍误判”的强 claim；两个 family 的 `A_min` 均很高，但 `CFA_min` 分别为 −1.50 与 0.00，证明绝对合格与双向特异性可以脱钩。该结果不是官方 PDR 复现；下一步必须用经授权的 GPT-5 配置和两名盲化人评复现。
 
@@ -33,7 +33,7 @@ PDR-Bench 的 P-Score 是 **absolute adaptation**：针对目标用户生成 tas
 
 - **RQ1 双向特异性：**matched-A 与 matched-B 是否在 A/B 两套冻结标准下同时形成对角优势？
 - **RQ2 绝对充分性：**matched 本身是否合格，并且相对 task-only 有超过噪声的新增收益？
-- **RQ3 渠道鲁棒性：**structured persona、natural history、模糊 query + clarification 是否产生一致的关键决策和不同的系统排序？
+- **RQ3 范式鲁棒性：**一次性直接提供、主动澄清、执行中更新及 memory/workspace 获取是否产生一致的关键决策和可解释的系统排序？
 - **RQ4 测量效度：**哪些 general-good、over-personalized、mention-only 和 wrong-user artifacts 会被绝对适配分漏掉，但被交叉矩阵与 hard gate 捕获？
 
 核心假设可被以下结果否证：多数 family 无法构造自然的 paired users；真人无法稳定地区分 matched/swapped；强系统的 `CFA_min` 接近零；general-good 与 over-personalized 反例没有暴露绝对分之外的新错误；或所有差异都由长度、搜索预算和一般报告质量解释。
@@ -42,7 +42,7 @@ PDR-Bench 的 P-Score 是 **absolute adaptation**：针对目标用户生成 tas
 
 一个 task family 不是主题标签，而是一份受控实验蓝图：
 
-`固定任务核心 + 固定证据世界 + 固定工具/预算/交付格式 + paired users + channel views + contracts + artifact conditions`
+`固定任务核心 + 固定证据世界 + 固定工具/预算/交付格式 + paired users + research episodes + contracts + artifact conditions`
 
 每个 family 包含三层元数据：
 
@@ -52,16 +52,18 @@ PDR-Bench 的 P-Score 是 **absolute adaptation**：针对目标用户生成 tas
 
 Persona 从真实任务出发，不从“丰满人物故事”出发。每条用户事实必须说明为什么会改变建议、matched 应采用什么、swapped 哪里不适合、什么共同事实不得改变。优先两位真实用户共享同一任务；次选一位真实用户加经相似参与者验证的最小反事实用户；纯 LLM persona 只用于 smoke test。
 
-## 4. User-information channels
+## 4. 统一 Research Episode 与用户信息来源
 
-所有渠道共享同一个隐藏 user-state ledger、同一 task、同一 evidence 与同一 final rubric：
+“一次性、主动澄清、中途提问、memory”不是同一层类别。每个 episode 同时记录：初始任务充分性、交互时机、信息来源、载体与访问方式、可用时间和更新关系、系统能力资格。
 
-1. **Structured persona：**直接给字段化约束、偏好、资源和边界。
-2. **Natural history/context：**将同一信息放入自然叙述、历史对话或授权工作区记录。
-3. **Fuzzy query + clarification：**初始 query 足以让 agent 写出通用报告，但隐藏 1–3 个会改变建议的条件；agent 可提问，用户模拟器只能按 ledger 回答，超出范围返回 unknown。
-4. **Task-only：**不给任务相关用户信息，作为一般高质量基线。
+完整范式库定义八种配置：P0 task-only closed、P1 one-shot direct、P2 pre-research clarification、P3 in-research interactive、P4 checkpoint update、P5 memory retrieval、P6 workspace grounded、P7 draft-feedback revision。首版只跑 P0/P1/P2/P4：
 
-Structured persona 与 natural history 可以进入 cue-equivalence 检验。Clarification 是信息获取过程，额外包含是否发现缺口、问题 precision/recall、轮数、用户负担、隐私和最终利用，因此不与直接提供渠道机械视为等价 cue。
+1. **P0：**无任务相关用户信息且不可问，作为一般高质量基线。
+2. **P1：**开始前一次性给完整事实，测 information use；structured persona 与等义 history 可作为载体消融。
+3. **P2：**初始 query 足以做通用研究，但隐藏 1–2 个会改变建议的事实；agent 必须主动问，模拟器只按 ledger 回答。
+4. **P4：**研究中在控制 checkpoint 注入覆盖旧事实的更新，测 replanning、旧状态清除与未变事实保持。
+
+系统不支持 ask、memory retrieval 或 checkpoint 时标记 `structurally-inapplicable`，不能算零分。P1 的 persona/history 可进入 cue-equivalence；P2/P4 改变了获取或时序机制，不能机械视为等价 cue。v0.50 已生成 3 个纯合成工程 family、6 位用户和 24 个平衡 episode，并通过结构校验；它们只用于 schema/runner/rubric vertical slice，真实用户效度尚未建立。
 
 ## 5. 运行条件与反例校准
 

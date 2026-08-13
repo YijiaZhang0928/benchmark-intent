@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.50 unified research episodes and first seed data - 2026-08-14
+
+- 将“一次性、主动澄清、中途提问、memory/workspace、动态更新”从混合 channel 列表重构为统一 research episode：初始充分性、交互时机、来源、载体/访问方式、时间/更新关系与系统能力资格正交记录。
+- 新增八类范式库 P0–P7；首版主矩阵只跑 P0/P1/P2/P4，其他范式作为适用性扩展，禁止笛卡尔积爆炸和将不支持能力记为零分。
+- 新增 `research_episode.schema.yaml`、`research_paradigm.protocol.yaml`，并将 case/data factory/annotation schema 同步到 v0.50。
+- 将 coverage manifest 与 rubric direction node 路由升级到 v0.50：显式记录范式、交互时机、信息来源、访问方式与能力要求，并为 P4 新增“采用新状态、抑制旧状态”的独立方向节点。
+- 开始构造数据：完成 3 个 synthetic-control family、6 位用户、24 个平衡 episode，并新增无外部 Python 依赖的编译与结构校验脚本。
+- 同步正式、精简、人话、导师汇报、主图、HTML、DOCX/PDF 与项目记忆；合成 seed 明确仅用于工程 vertical slice。
+
 ## v0.49 Introduction evidence gate for PDR stress test - 2026-08-13
 
 - 明确 GPT-5 只生成 PDR-style rubrics 并给冻结报告评分，不生成 task、persona 或报告；本轮是 evaluator stress test，不是端到端 agent 实验。

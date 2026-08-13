@@ -1,0 +1,103 @@
+schema_name: deepalign_research_episode
+schema_version: 0.50
+status: pilot_schema
+description: >-
+  A unified representation of Deep Research interaction paradigms. A paradigm is
+  not a mutually exclusive product label. It is a configuration over when the
+  agent may exchange information, where user information originates, how it is
+  exposed, whether the agent must initiate access, and whether the state can change.
+
+required:
+  - paradigm_id
+  - task_interface
+  - interaction_policy
+  - information_events
+  - system_capabilities
+  - comparability_block
+
+task_interface:
+  initial_request_id: string
+  initial_request_sufficiency: [fully_specified, generally_executable_but_personally_underspecified, not_executable_without_answer]
+  deliverable_contract_id: string
+  completion_mode: [single_final_delivery, draft_then_revision, rolling_workspace]
+  approval_points: [none, pre_search_plan, mid_research_checkpoint, pre_delivery, post_draft]
+
+interaction_policy:
+  user_contact: [disabled, user_initiated_only, agent_initiated, bidirectional]
+  allowed_windows: list
+  # allowed values: before_plan, after_plan_before_search, during_search,
+  # after_evidence_synthesis, after_draft, anytime
+  maximum_user_turns: integer
+  stop_rule: string
+  answerer: [none, ledger_bounded_simulator, live_target_user, authorized_proxy]
+  unsolicited_update_allowed: boolean
+  clarification_nudge: [none, generic_permission, explicit_instruction]
+
+information_events:
+  type: list
+  item:
+    event_id: string
+    source_origin: [current_user, prior_conversation, persistent_memory, user_profile, private_workspace, organization, behavioral_trace, public_web, tool_output, system_inference]
+    carrier: [initial_query, attached_file, prompt_profile, conversation_message, clarification_answer, retrieved_memory_item, workspace_document, calendar_or_email, tool_result, inferred_state]
+    access_mode: [pushed, visible_in_context, agent_requested, agent_retrieved, system_injected, latent_gold_only]
+    availability_time: [before_run, before_plan, during_research, checkpoint, after_draft]
+    fact_ids: list
+    reliability: [confirmed, high, medium, low, conflicting]
+    freshness: [current, stale, mixed, not_applicable]
+    sensitivity: [public, internal, sensitive, highly_sensitive]
+    permission_scope: string
+    mutable: boolean
+    supersedes_event_ids: list
+    answer_cost: number_or_null
+
+system_capabilities:
+  can_ask_before_search: boolean
+  can_ask_during_research: boolean
+  can_receive_unsolicited_updates: boolean
+  can_retrieve_memory: boolean
+  can_search_private_workspace: boolean
+  can_checkpoint_and_resume: boolean
+  can_revise_after_feedback: boolean
+  can_write_memory: boolean
+  trace_observability: [artifact_only, messages, tools_and_messages, checkpoints]
+
+comparability_block:
+  block_id: string
+  invariant_fields: [task_core, evidence_world, user_state_ledger, tools, budget, deliverable_contract]
+  varied_fields: list
+  information_equivalence_role: [same_facts_same_time, same_facts_different_carrier, acquisition_required, delayed_update, additional_information, not_comparable]
+  eligible_contrasts: list
+
+canonical_paradigm_library:
+  P0_task_only_closed:
+    meaning: No task-relevant user state is available and no user contact is possible.
+    purpose: general-quality baseline
+  P1_one_shot_direct:
+    meaning: All authorized task-relevant user facts are pushed before planning; no further contact.
+    purpose: tests use when information is already available
+  P2_pre_research_clarification:
+    meaning: The initial request is executable but personally underspecified; the agent may ask before committing to research.
+    purpose: tests self-initiated acquisition and use
+  P3_in_research_interactive:
+    meaning: The agent may ask after planning or evidence discovery and then continue the same episode.
+    purpose: tests late uncertainty recognition, question value and replanning
+  P4_checkpoint_update:
+    meaning: New or corrected user state arrives at a controlled checkpoint and may supersede prior state.
+    purpose: tests update, stale-state suppression and preservation of unchanged facts
+  P5_memory_retrieval:
+    meaning: Relevant state exists outside the prompt and must be retrieved from persistent memory or authorized history.
+    purpose: tests retrieval, freshness and conflict resolution
+  P6_workspace_grounded:
+    meaning: Relevant state must be found in authorized private files, email, calendar or organizational context.
+    purpose: tests discovery, permission and disclosure boundaries
+  P7_draft_feedback_revision:
+    meaning: The user reacts to a draft and the agent must revise the deliverable without damaging shared quality.
+    purpose: tests feedback incorporation and repair
+
+core_release_policy:
+  main_conditions: [P0_task_only_closed, P1_one_shot_direct, P2_pre_research_clarification, P4_checkpoint_update]
+  extension_conditions: [P3_in_research_interactive, P5_memory_retrieval, P6_workspace_grounded, P7_draft_feedback_revision]
+  no_cartesian_product: true
+  rule: >-
+    A family instantiates only paradigms for which the hidden fact, interaction
+    timing and expected decision consequence are natural and auditable.

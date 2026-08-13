@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.47
+schema_version: 0.50
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -13,6 +13,7 @@ required:
   - user_states
   - counterfactual_design
   - signal_condition
+  - research_episode
   - agent
   - behavioral_operator
   - evaluation_contract
@@ -175,6 +176,13 @@ signal_condition:
     structured_persona_oracle_case_id: string_or_null
     required_node_ids: list
     prohibited_sensitive_question_ids: list
+
+research_episode:
+  schema_ref: research_episode.schema.yaml
+  paradigm_id: [P0_task_only_closed, P1_one_shot_direct, P2_pre_research_clarification, P3_in_research_interactive, P4_checkpoint_update, P5_memory_retrieval, P6_workspace_grounded, P7_draft_feedback_revision]
+  episode_spec_id: string
+  information_event_schedule_id: string
+  capability_eligibility: [eligible, structurally_inapplicable, deferred]
 
 agent:
   system_id: string

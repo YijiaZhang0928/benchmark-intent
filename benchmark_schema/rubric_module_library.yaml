@@ -1,5 +1,5 @@
 library_name: deepalign_predefined_rubric_module_library
-library_version: 0.47
+library_version: 0.50
 node_registry: rubric_node_registry.yaml
 status: design_contract_requires_pilot_validation
 description: >-
@@ -277,7 +277,7 @@ module_families:
     modules:
       - module_id: OP-ACQUIRE-01
         label: Acquire or clarify missing user state
-        scope: clarification_or_anchor_only
+        scope: P2_or_P3_episode_or_anchor_only
         leaf_blueprints:
           - criterion: The agent asks the minimum decision-relevant question or gives a valid conditional branch.
             binding: [clarification_correctness, operator_diagnostic]
@@ -298,7 +298,7 @@ module_families:
             judge_route: paired_artifact_judge_then_target_user
       - module_id: OP-UPDATE-04
         label: Adopt current state and suppress stale state
-        scope: stateful_anchor_only
+        scope: P4_episode_or_longitudinal_anchor_only
         leaf_blueprints:
           - criterion: The updated fact changes the intended decision while unrelated invariants remain stable.
             binding: [PF, operator_diagnostic]

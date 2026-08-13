@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.49（GPT-5 复现与 Introduction 证据门已预注册）
+## 当前方向：DeepAlign-Bench v0.50（统一 Research Episode + 首批 seed 数据）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据、工具和预算相同时，最终交付物是否真的因目标用户不同而作出正确且有益的改变。
 
@@ -12,9 +12,13 @@ v0.47 的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 �
 
 v0.49 冻结结果解释边界：general-good 高分只证明绝对适配不能识别生成特异性，不是评分错误；盲化人评确认 critical decision 失败而 GPT-5 仍稳定 near-matched/rank-reversal，才是受控 evaluator 假阳性；只有分歧跨真实 family 与多个系统重复、造成系统重分类并提高真人结果预测，才是 Introduction 可承担论文主贡献的测量效度证据。
 
+v0.50 将一次性运行、研究前主动澄清、研究中交互、checkpoint 更新、memory retrieval、private workspace 和草稿反馈统一表示为带时间的信息事件 episode。首版主矩阵只运行 P0 task-only closed、P1 one-shot direct、P2 pre-research clarification、P4 checkpoint update；其他范式作为扩展，不做完整笛卡尔积。`data/seed_v0_50/` 已生成 3 个纯合成工程 family、6 位用户和 24 个平衡 episode，并通过结构校验；这些数据只用于 vertical slice，不能作为真实用户效度证据。
+
 ## 当前交付物
 
-- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.49.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.49.png)：3200×1800 导师汇报主图，覆盖 case/task/user 元数据、信息渠道、rubric compiler、2×2 交叉矩阵、五道非补偿门、可回答的系统差异、最小实验与 Introduction 证据门；同名 SVG 可编辑。
+- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.png)：3200×1800 导师汇报主图，覆盖 case/task/user 元数据、统一 research episode、rubric compiler、2×2 交叉矩阵、五道非补偿门、首批 seed 与 Introduction 证据门；同名 SVG 可编辑。
+- [`benchmark_schema/research_episode.schema.yaml`](benchmark_schema/research_episode.schema.yaml)：统一 Deep Research 范式、信息事件和系统能力资格的机器可读 schema。
+- [`data/seed_v0_50/README.md`](data/seed_v0_50/README.md)：第一批 3-family / 24-episode 合成工程数据与校验入口。
 - [`deliverables/DeepAlign-Bench_正式研究Proposal.pdf`](deliverables/DeepAlign-Bench_正式研究Proposal.pdf)：完整方法、文献、schema 与实验记录；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`](deliverables/DeepAlign-Bench_正式Proposal精简版.pdf)：7 页正式精简版；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_完整人话版.pdf`](deliverables/DeepAlign-Bench_完整人话版.pdf)：不省略术语含义的直白解释；同名 DOCX 可编辑。

@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.49 · 2026 年 8 月 13 日
+版本：v0.50 · 2026 年 8 月 14 日
 建议时长：15–20 分钟
 
 ---
@@ -30,16 +30,22 @@
 
 元数据分三层：系统自动 provenance；两名标注员运行前冻结的研究构念；pilot 后观察到的难度、失败和成本。第三层不能反改第二层。
 
-## 2. User-information channels
+## 2. 统一 Research Episode，而不是零散列 channel
 
-同一个隐藏 user ledger 生成四种条件：
+“一次性、主动澄清、中途提问、memory”不是同一层类别。每次运行统一记录：初始信息充分性、交互时机、来源主体、载体/访问方式、可用时间与更新关系、系统能力资格。
 
-1. structured persona；
-2. natural history/context；
-3. 模糊 query + agent clarification + ledger-bounded answer；
-4. task-only。
+完整范式库：P0 task-only closed、P1 one-shot direct、P2 pre-research clarification、P3 in-research interactive、P4 checkpoint update、P5 memory retrieval、P6 workspace grounded、P7 draft-feedback revision。
 
-Clarification 只是新增 channel，不是论文 novelty 主线。它测“信息需要先问出来时还能不能正确进入 final report”，并单独报告问题准确性、轮数、负担和隐私。
+首版只跑四个核心条件：
+
+1. P0 无用户信息且不可问：通用质量 baseline；
+2. P1 完整信息一次性给出：information-use 上限；
+3. P2 模糊 query + agent 主动澄清：acquire-and-use；
+4. P4 checkpoint 更新：update 与 stale-state suppression。
+
+P3/P5/P6/P7 是扩展条件，不做全组合。产品不支持 ask/memory/checkpoint 时记 structurally-inapplicable，不记零分。Clarification 不是论文 novelty 主线。
+
+第一批数据已完成结构稿：3 个合成工程 family × 2 users × 4 paradigms = 24 episodes，已通过自动结构校验；尚未通过真实用户与证据包效度门。
 
 ## 3. 核心实验矩阵
 

@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.49 · 2026 年 8 月 13 日
+版本：v0.50 · 2026 年 8 月 14 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -19,7 +19,7 @@ Deep Research 智能体已经能检索、综合并生成长报告，PDR-Bench �
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
-两个月版本先完成 3 个完整 family 的官方 judge + 真人校准，再扩到约 12–24 个 family、2–3 条 agent 管线和至少三种 user-information channel。主渠道是 structured persona 与 natural history；新增的交互渠道是 **模糊但足以开始的 query → agent 可选择澄清 → ledger-bounded 用户回答 → final report**。它用同一隐藏 user-state ledger 和同一最终 rubric，但单独记录提问收益、轮数、打扰和隐私，不与直接提供 persona 的 cue-equivalence 集混为一谈。长程、动态状态和权限只作为少量 stress layer。
+两个月版本先完成 3 个完整 family 的官方 judge + 真人校准，再扩到约 12–24 个 family、2–3 条 agent 管线。v0.50 不再把 structured persona、clarification、memory 和中途更新混写成平级“渠道”，而是把每次 Deep Research 运行统一建模为一个 **research episode**：任务初始信息是否充分、用户何时可交互、信息由谁产生、通过什么载体进入上下文、何时可用、能否更新，以及系统是否具备相应的 ask/retrieve/checkpoint/revise 能力。不同产品范式只是这些轴的配置。首版只运行四个可解释的核心条件：`P0 task-only closed`、`P1 one-shot direct`、`P2 pre-research clarification`、`P4 checkpoint update`；中途提问、memory retrieval、private workspace 与 draft-feedback revision 先进入扩展库，不做完整笛卡尔积。
 
 **一句话研究目标：**在固定任务、证据、工具和预算时，检验 Deep Research agent 的最终交付物是否同时具有双向反事实用户特异性、绝对合格、相对通用回答的真实收益、共同质量 no-harm 和边界安全；只主张可观察的交付物特异性，不声称模型内部“真正理解用户”。
 
@@ -31,7 +31,7 @@ Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counter
 
 **RQ2（充分性）：**matched 报告本身是否绝对合格，并且相对同样高质量的 task-only/general-good 报告带来超过噪声的新增收益？
 
-**RQ3（渠道鲁棒性）：**同一隐藏 user state 经 structured persona、natural history 或模糊 query + clarification 获得时，系统排序和关键决策是否稳定；clarification 的收益是否足以抵消交互成本？
+**RQ3（范式鲁棒性）：**同一隐藏 user state 在一次性直接提供、主动澄清、执行中更新或外部 memory/workspace 检索等 research episode 中被获得时，系统排序和关键决策是否稳定；差异来自信息使用、主动获取还是状态更新？
 
 **RQ4（测量效度与后果）：**PDR-style absolute adaptation、DeepAlign specificity profile 与少量 family 的真人采用/decision regret 如何对应；哪些 general-good、over-personalized、mention-only 报告会暴露 judge 假阳性？
 
@@ -195,14 +195,14 @@ DeepAlign-Bench 不取代这套评价，而是增加跨用户对照。固定任�
 
 ### 4.1 Deep Research Evaluation Atlas：元数据就是实验设计
 
-本项目不把 benchmark 简化成“任务列表 + persona 列”。每个 case 都要说明：测什么任务、在什么环境中运行、目标用户是谁、用户信息怎样提供、被测 agent 有哪些能力。这五组元数据组成 **Deep Research Evaluation Atlas**。
+本项目不把 benchmark 简化成“任务列表 + persona 列”。每个 case 都要说明：测什么任务、在什么环境中运行、目标用户是谁、这一次研究 episode 允许怎样交互和获得信息、被测 agent 有哪些能力。这五组元数据组成 **Deep Research Evaluation Atlas**。
 
 | 元数据平面 | 核心分支 | 它控制的实验问题 |
 |---|---|---|
 | **A. Research Task** | 使用情境、研究意图、领域、交付物、需求剖面、stakes | agent 在哪类 DR 工作产品上被测试？ |
 | **B. Research Environment** | frozen/live/private evidence、freshness、source topology、工具、预算、权限、交互长度 | 研究发生在怎样的信息世界和资源约束中？ |
 | **C. Task-conditioned User State** | 目标、知识、硬约束、偏好、风险/价值、受众、权限、动态状态 | 对这个任务而言，哪些用户差异应改变交付物？ |
-| **D. User-signal Channel** | brief、structured persona、澄清、历史、行为轨迹、私有工作区、组织上下文、动态反馈 | 相同用户事实如何被 agent 获得、表征和更新？ |
+| **D. Research Episode / Information Events** | 初始充分性、交互时机、来源、载体、访问方式、可用时间、更新关系 | 相同用户事实何时、从哪里、由谁主动获得并怎样更新？ |
 | **E. Agent System** | 模型/产品版本、搜索、memory、工具、规划、多 agent 交接、预算和可见上下文 | 不同系统结构在何处形成或丢失个性化？ |
 
 Atlas 描述 case 的条件，下面四类**行为测试算子**说明要测什么行为。这个设计借鉴 CheckList 的“能力 × 测试类型”，避免为每种表面组合另造一个类别：[[23]](https://aclanthology.org/2020.acl-main.442/)
@@ -212,7 +212,30 @@ Atlas 描述 case 的条件，下面四类**行为测试算子**说明要测什�
 3. **Use**：是否把已知信息落实到选择、推理和交付物，同时保持无关事实不变；
 4. **Update**：用户状态按预注册事件变化后，是否采用当前真值、避免旧状态残留并保持未改变字段。
 
-因此，每个可运行测试都写成 `Atlas coordinate + behavioral operator + expected contract`，而不只使用“长程个性化”这类模糊名称。例如，“Professional / Compare-Decide / live web / natural history / retrieval-memory agent / stale-conflict / Update”和“Everyday / Plan / frozen corpus / structured persona / no-memory agent / context-dilution / Preserve”是两个条件清楚、可以复现的测试。
+因此，每个可运行测试都写成 `Atlas coordinate + research episode + behavioral operator + expected contract`，而不只使用“长程个性化”这类模糊名称。例如，“Professional / Compare-Decide / memory retrieval during research / stale-conflict / Update”和“Everyday / Plan / one-shot direct / context-dilution / Preserve”是两个条件清楚、可以复现的测试。
+
+### 4.1a 所有 Deep Research 范式如何统一建模
+
+“一次性走完”“主动澄清”“做到中间再问”“从 memory 读取”不能直接作为四个互斥类别。前两项主要描述交互时机，memory 描述信息位置和访问方式，中途用户改需求又涉及状态变化。若把这些混成一个 `channel` 标签，系统差异可能来自信息量、时序、主动性或产品能力，无法解释。
+
+v0.50 把一次运行表示为：
+
+`Episode = Task interface + Interaction policy + Information-event timeline + System capabilities + Comparability block`
+
+其中 **information event** 是一条带来源和时间的用户信息进入记录。例如：“用户在初始 query 中主动写明预算”是一条 `current_user × initial_query × pushed × before_run` 事件；“agent 发现缺口后询问，用户回答预算”是 `current_user × clarification_answer × agent_requested × before_plan`；“从长期 memory 检索到旧预算”是 `persistent_memory × retrieved_memory_item × agent_retrieved × during_research × stale`；“用户在 50% checkpoint 把预算改为新值”则是带 `supersedes` 关系的动态事件。这样同一套 ledger 可以被不同产品真实地暴露，而不把 product UI 当作科学构念。
+
+统一模型包含六个正交维度：
+
+1. **初始任务充分性**：信息完整；足以做通用研究但缺个性化关键条件；或者没有回答就根本无法执行。主 clarification 只使用第二类，否则测到的是基础任务完成，而不是主动个性化。
+2. **交互时机**：不可交互、研究前可问、研究中可问、checkpoint 接收更新、草稿后迭代。
+3. **信息来源**：当前用户、历史会话、持久 memory、结构化 user profile、私有工作区、组织上下文、行为轨迹、公共证据或系统推断。
+4. **访问方式**：系统直接推送、已在上下文可见、agent 主动询问、agent 主动检索、环境按脚本注入，或只作为隐藏真值。
+5. **时间与状态**：静态、延迟出现、更新、过期冲突或权限撤销；新事件必须明确是否覆盖旧事件。
+6. **系统能力资格**：是否能 ask、retrieve memory、搜索 workspace、checkpoint/resume、根据反馈 revise、写回 memory。系统不支持某操作时标记 `structurally-inapplicable`，不能记作零分。
+
+范式库定义八种常见配置：`P0 task-only closed`、`P1 one-shot direct`、`P2 pre-research clarification`、`P3 in-research interactive`、`P4 checkpoint update`、`P5 memory retrieval`、`P6 workspace grounded`、`P7 draft-feedback revision`。这是覆盖 ontology，不是首版运行矩阵。主因果矩阵只选择 P0/P1/P2/P4：分别回答没有用户信息时能写多好、信息给到后会不会用、信息缺失时会不会主动问并采用、状态变化后会不会更新且清除旧结论。P3/P5/P6/P7 等 E3 vertical slice 跑通后按 family 适用性加入。
+
+比较时必须写出 `comparability block`：任务、证据、工具、预算、用户真值和交付契约中哪些保持不变，本次只改变哪一项。P1 与 natural-history 可以在相同事实和相同时点下比较载体；P2 相对 P1 额外包含主动获取，因此不能叫纯 cue-equivalence；P5 若检索到的信息不完整或更晚可用，也不能与 prompt 条件直接解释为“memory 格式效应”。
 
 Atlas 不是一个自动生成 benchmark 的算法，而是统一的 case schema 和实验索引。它有五个实际用途：按预注册配额抽样；生成只改变指定变量的对照条件；根据元数据选择适用 rubric；按任务、渠道、环境和系统切分结果；最后检查论文真正覆盖了哪些区域。
 
@@ -305,7 +328,7 @@ Task cube 回答三个问题：样本覆盖了什么、任务在哪些方面更�
 
 每个任务必须至少有两类“应变化”标准，同时包含一组“不得变化”的共同质量标准。只考语气或排版的任务不得进入核心榜。
 
-### 4.3 用户信息来源 taxonomy
+### 4.3 用户信息来源与载体 taxonomy
 
 | 一级来源 | 具体形式 | 主要风险 | 对照条件 |
 |---|---|---|---|
@@ -318,7 +341,7 @@ Task cube 回答三个问题：样本覆盖了什么、任务在哪些方面更�
 | 社会/组织上下文 | 团队规范、收件人、文化与制度 | 把群体刻板印象当个人事实 | 个体事实优先对照 |
 | 动态状态与反馈 | 中途更改预算、目标、健康/时间状态 | 新旧冲突、更新滞后 | 时间戳与版本化记忆 |
 
-信息属性还需正交标注：显式/隐式、稳定/动态、相关/干扰、可靠/不可靠、当前/过期、公开/敏感、可查证/仅用户可知、单一/冲突。
+上表描述的是“来源或载体”，不能代替 episode 范式。信息属性还需正交标注：来源主体、载体、访问方式、可用时点、显式/隐式、稳定/动态、相关/干扰、可靠/不可靠、当前/过期、公开/敏感、可查证/仅用户可知、单一/冲突。完整字段见 `benchmark_schema/research_episode.schema.yaml`。
 
 ### 4.4 预期失败模式：case 被设计来暴露什么机制
 
@@ -338,6 +361,8 @@ Task cube 回答三个问题：样本覆盖了什么、任务在哪些方面更�
 为了避免“先定义失败，再让结果证明分类正确”的循环，采取四项控制。第一，先对真实 pilot 轨迹、用户访谈和文献做 open coding，再冻结 taxonomy。第二，保留自然任务和 `other/emergent`，允许出现未预设的错误。第三，主 rubric judge 看不到 expected failure-mode 标签。第四，公开每个切片的样本量、覆盖率和多标签共现，不把样本很少的切片写成稳定结论。
 
 ## 5. Benchmark 数据结构与构建流程
+
+v0.50 已开始第一批数据构造。`data/seed_v0_50/` 当前包含 3 个纯合成工程 family（团队知识平台、跨境家庭旅行、文献综述工作流）、6 位配对用户与 24 个 episode；每位用户各有 P0/P1/P2/P4 四个条件，并通过自动检查确认配额平衡、事实引用有效、P2 隐藏关键事实且允许主动询问、P4 含单一 superseding update。它们只用于 schema、runner 和 rubric compiler 的 vertical slice，不作为真实用户效度或论文结果。下一道人工门是逐 family 审核自然性、证据包、matched/swapped 区分力和 contract 对称性；通过后再将结构迁移到真实或 user-anchored seed。
 
 ### 5.0 多篇论文不能直接“杂糅”：先建立 source-to-design ledger
 

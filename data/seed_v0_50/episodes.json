@@ -1,0 +1,1126 @@
+{
+  "dataset_id": "deepalign_seed_v0_50",
+  "schema_version": "0.50",
+  "episodes": [
+    {
+      "family_id": "F0501_team_knowledge_platform",
+      "user_id": "U0501A",
+      "task_core": "Compare three team knowledge platforms using the frozen product pack and recommend a six-week pilot, including costs, migration risks, governance and success metrics.",
+      "evidence_world_id": "EW0501_frozen_product_pack",
+      "expected_decision": "choose the managed-tenant option that satisfies residency and requires no dedicated administrator",
+      "contract": {
+        "must_change": [
+          "decision must follow each user's hosting boundary and administration capacity",
+          "pilot risks and owner assignments must fit each user's operating model"
+        ],
+        "must_hold": [
+          "same product facts",
+          "same three candidates",
+          "same six-week horizon",
+          "evidence limitations remain visible"
+        ],
+        "must_not": [
+          "do not infer security policy from job title",
+          "do not claim an option satisfies a requirement absent evidence"
+        ],
+        "clarify_if_unknown": [
+          "hosting boundary",
+          "available administration capacity"
+        ]
+      },
+      "comparability_block": "F0501_team_knowledge_platform::U0501A::core-v0.50",
+      "episode_id": "F0501_team_knowledge_platform::U0501A::P0_task_only_closed",
+      "paradigm_id": "P0_task_only_closed",
+      "initial_query": "Please compare the three knowledge platforms in the attached pack and recommend which one our team should pilot, with a practical rollout plan.",
+      "initial_visible_fact_ids": [],
+      "hidden_gold_fact_ids": [
+        "F0501A_SECURITY",
+        "F0501A_ADMIN",
+        "F0501A_BUDGET"
+      ],
+      "user_contact": "disabled",
+      "estimand_role": "general_quality_baseline",
+      "information_events": []
+    },
+    {
+      "family_id": "F0501_team_knowledge_platform",
+      "user_id": "U0501A",
+      "task_core": "Compare three team knowledge platforms using the frozen product pack and recommend a six-week pilot, including costs, migration risks, governance and success metrics.",
+      "evidence_world_id": "EW0501_frozen_product_pack",
+      "expected_decision": "choose the managed-tenant option that satisfies residency and requires no dedicated administrator",
+      "contract": {
+        "must_change": [
+          "decision must follow each user's hosting boundary and administration capacity",
+          "pilot risks and owner assignments must fit each user's operating model"
+        ],
+        "must_hold": [
+          "same product facts",
+          "same three candidates",
+          "same six-week horizon",
+          "evidence limitations remain visible"
+        ],
+        "must_not": [
+          "do not infer security policy from job title",
+          "do not claim an option satisfies a requirement absent evidence"
+        ],
+        "clarify_if_unknown": [
+          "hosting boundary",
+          "available administration capacity"
+        ]
+      },
+      "comparability_block": "F0501_team_knowledge_platform::U0501A::core-v0.50",
+      "episode_id": "F0501_team_knowledge_platform::U0501A::P1_one_shot_direct",
+      "paradigm_id": "P1_one_shot_direct",
+      "initial_query": "Please compare the three knowledge platforms in the attached pack and recommend which one our team should pilot, with a practical rollout plan.",
+      "initial_visible_fact_ids": [
+        "F0501A_SECURITY",
+        "F0501A_ADMIN",
+        "F0501A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [],
+      "user_contact": "disabled",
+      "estimand_role": "direct_information_use",
+      "information_events": []
+    },
+    {
+      "family_id": "F0501_team_knowledge_platform",
+      "user_id": "U0501A",
+      "task_core": "Compare three team knowledge platforms using the frozen product pack and recommend a six-week pilot, including costs, migration risks, governance and success metrics.",
+      "evidence_world_id": "EW0501_frozen_product_pack",
+      "expected_decision": "choose the managed-tenant option that satisfies residency and requires no dedicated administrator",
+      "contract": {
+        "must_change": [
+          "decision must follow each user's hosting boundary and administration capacity",
+          "pilot risks and owner assignments must fit each user's operating model"
+        ],
+        "must_hold": [
+          "same product facts",
+          "same three candidates",
+          "same six-week horizon",
+          "evidence limitations remain visible"
+        ],
+        "must_not": [
+          "do not infer security policy from job title",
+          "do not claim an option satisfies a requirement absent evidence"
+        ],
+        "clarify_if_unknown": [
+          "hosting boundary",
+          "available administration capacity"
+        ]
+      },
+      "comparability_block": "F0501_team_knowledge_platform::U0501A::core-v0.50",
+      "episode_id": "F0501_team_knowledge_platform::U0501A::P2_pre_research_clarification",
+      "paradigm_id": "P2_pre_research_clarification",
+      "initial_query": "Please compare the three knowledge platforms in the attached pack and recommend which one our team should pilot, with a practical rollout plan.",
+      "initial_visible_fact_ids": [
+        "F0501A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0501A_SECURITY",
+        "F0501A_ADMIN"
+      ],
+      "user_contact": "agent_initiated",
+      "estimand_role": "self_initiated_acquire_and_use",
+      "information_events": [
+        {
+          "event_id": "F0501_team_knowledge_platform::U0501A::P2_pre_research_clarification::answer",
+          "availability_time": "before_plan",
+          "access_mode": "agent_requested",
+          "fact_ids": [
+            "F0501A_SECURITY",
+            "F0501A_ADMIN"
+          ],
+          "answer_policy": "ledger_bounded_unknown_outside_ledger"
+        }
+      ]
+    },
+    {
+      "family_id": "F0501_team_knowledge_platform",
+      "user_id": "U0501A",
+      "task_core": "Compare three team knowledge platforms using the frozen product pack and recommend a six-week pilot, including costs, migration risks, governance and success metrics.",
+      "evidence_world_id": "EW0501_frozen_product_pack",
+      "expected_decision": "choose the managed-tenant option that satisfies residency and requires no dedicated administrator",
+      "contract": {
+        "must_change": [
+          "decision must follow each user's hosting boundary and administration capacity",
+          "pilot risks and owner assignments must fit each user's operating model"
+        ],
+        "must_hold": [
+          "same product facts",
+          "same three candidates",
+          "same six-week horizon",
+          "evidence limitations remain visible"
+        ],
+        "must_not": [
+          "do not infer security policy from job title",
+          "do not claim an option satisfies a requirement absent evidence"
+        ],
+        "clarify_if_unknown": [
+          "hosting boundary",
+          "available administration capacity"
+        ]
+      },
+      "comparability_block": "F0501_team_knowledge_platform::U0501A::core-v0.50",
+      "episode_id": "F0501_team_knowledge_platform::U0501A::P4_checkpoint_update",
+      "paradigm_id": "P4_checkpoint_update",
+      "initial_query": "Please compare the three knowledge platforms in the attached pack and recommend which one our team should pilot, with a practical rollout plan.",
+      "initial_visible_fact_ids": [
+        "F0501A_SECURITY",
+        "F0501A_ADMIN",
+        "F0501A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0501A_BUDGET_UPDATE"
+      ],
+      "user_contact": "bidirectional",
+      "estimand_role": "update_and_stale_state_suppression",
+      "information_events": [
+        {
+          "event_id": "F0501_team_knowledge_platform::U0501A::P4_checkpoint_update::update",
+          "availability_time": "checkpoint",
+          "access_mode": "system_injected",
+          "supersedes_fact_id": "F0501A_BUDGET",
+          "new_fact_id": "F0501A_BUDGET_UPDATE",
+          "new_value": "procurement approves up to USD 800 per month if no new headcount is required",
+          "expected_effect": "widen price-feasible options but preserve managed-tenant and no-admin constraints"
+        }
+      ]
+    },
+    {
+      "family_id": "F0501_team_knowledge_platform",
+      "user_id": "U0501B",
+      "task_core": "Compare three team knowledge platforms using the frozen product pack and recommend a six-week pilot, including costs, migration risks, governance and success metrics.",
+      "evidence_world_id": "EW0501_frozen_product_pack",
+      "expected_decision": "choose the self-hostable option with verifiable audit and backup controls",
+      "contract": {
+        "must_change": [
+          "decision must follow each user's hosting boundary and administration capacity",
+          "pilot risks and owner assignments must fit each user's operating model"
+        ],
+        "must_hold": [
+          "same product facts",
+          "same three candidates",
+          "same six-week horizon",
+          "evidence limitations remain visible"
+        ],
+        "must_not": [
+          "do not infer security policy from job title",
+          "do not claim an option satisfies a requirement absent evidence"
+        ],
+        "clarify_if_unknown": [
+          "hosting boundary",
+          "available administration capacity"
+        ]
+      },
+      "comparability_block": "F0501_team_knowledge_platform::U0501B::core-v0.50",
+      "episode_id": "F0501_team_knowledge_platform::U0501B::P0_task_only_closed",
+      "paradigm_id": "P0_task_only_closed",
+      "initial_query": "Please compare the three knowledge platforms in the attached pack and recommend which one our team should pilot, with a practical rollout plan.",
+      "initial_visible_fact_ids": [],
+      "hidden_gold_fact_ids": [
+        "F0501B_SECURITY",
+        "F0501B_ADMIN",
+        "F0501B_AUDIT"
+      ],
+      "user_contact": "disabled",
+      "estimand_role": "general_quality_baseline",
+      "information_events": []
+    },
+    {
+      "family_id": "F0501_team_knowledge_platform",
+      "user_id": "U0501B",
+      "task_core": "Compare three team knowledge platforms using the frozen product pack and recommend a six-week pilot, including costs, migration risks, governance and success metrics.",
+      "evidence_world_id": "EW0501_frozen_product_pack",
+      "expected_decision": "choose the self-hostable option with verifiable audit and backup controls",
+      "contract": {
+        "must_change": [
+          "decision must follow each user's hosting boundary and administration capacity",
+          "pilot risks and owner assignments must fit each user's operating model"
+        ],
+        "must_hold": [
+          "same product facts",
+          "same three candidates",
+          "same six-week horizon",
+          "evidence limitations remain visible"
+        ],
+        "must_not": [
+          "do not infer security policy from job title",
+          "do not claim an option satisfies a requirement absent evidence"
+        ],
+        "clarify_if_unknown": [
+          "hosting boundary",
+          "available administration capacity"
+        ]
+      },
+      "comparability_block": "F0501_team_knowledge_platform::U0501B::core-v0.50",
+      "episode_id": "F0501_team_knowledge_platform::U0501B::P1_one_shot_direct",
+      "paradigm_id": "P1_one_shot_direct",
+      "initial_query": "Please compare the three knowledge platforms in the attached pack and recommend which one our team should pilot, with a practical rollout plan.",
+      "initial_visible_fact_ids": [
+        "F0501B_SECURITY",
+        "F0501B_ADMIN",
+        "F0501B_AUDIT"
+      ],
+      "hidden_gold_fact_ids": [],
+      "user_contact": "disabled",
+      "estimand_role": "direct_information_use",
+      "information_events": []
+    },
+    {
+      "family_id": "F0501_team_knowledge_platform",
+      "user_id": "U0501B",
+      "task_core": "Compare three team knowledge platforms using the frozen product pack and recommend a six-week pilot, including costs, migration risks, governance and success metrics.",
+      "evidence_world_id": "EW0501_frozen_product_pack",
+      "expected_decision": "choose the self-hostable option with verifiable audit and backup controls",
+      "contract": {
+        "must_change": [
+          "decision must follow each user's hosting boundary and administration capacity",
+          "pilot risks and owner assignments must fit each user's operating model"
+        ],
+        "must_hold": [
+          "same product facts",
+          "same three candidates",
+          "same six-week horizon",
+          "evidence limitations remain visible"
+        ],
+        "must_not": [
+          "do not infer security policy from job title",
+          "do not claim an option satisfies a requirement absent evidence"
+        ],
+        "clarify_if_unknown": [
+          "hosting boundary",
+          "available administration capacity"
+        ]
+      },
+      "comparability_block": "F0501_team_knowledge_platform::U0501B::core-v0.50",
+      "episode_id": "F0501_team_knowledge_platform::U0501B::P2_pre_research_clarification",
+      "paradigm_id": "P2_pre_research_clarification",
+      "initial_query": "Please compare the three knowledge platforms in the attached pack and recommend which one our team should pilot, with a practical rollout plan.",
+      "initial_visible_fact_ids": [
+        "F0501B_AUDIT"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0501B_SECURITY",
+        "F0501B_ADMIN"
+      ],
+      "user_contact": "agent_initiated",
+      "estimand_role": "self_initiated_acquire_and_use",
+      "information_events": [
+        {
+          "event_id": "F0501_team_knowledge_platform::U0501B::P2_pre_research_clarification::answer",
+          "availability_time": "before_plan",
+          "access_mode": "agent_requested",
+          "fact_ids": [
+            "F0501B_SECURITY",
+            "F0501B_ADMIN"
+          ],
+          "answer_policy": "ledger_bounded_unknown_outside_ledger"
+        }
+      ]
+    },
+    {
+      "family_id": "F0501_team_knowledge_platform",
+      "user_id": "U0501B",
+      "task_core": "Compare three team knowledge platforms using the frozen product pack and recommend a six-week pilot, including costs, migration risks, governance and success metrics.",
+      "evidence_world_id": "EW0501_frozen_product_pack",
+      "expected_decision": "choose the self-hostable option with verifiable audit and backup controls",
+      "contract": {
+        "must_change": [
+          "decision must follow each user's hosting boundary and administration capacity",
+          "pilot risks and owner assignments must fit each user's operating model"
+        ],
+        "must_hold": [
+          "same product facts",
+          "same three candidates",
+          "same six-week horizon",
+          "evidence limitations remain visible"
+        ],
+        "must_not": [
+          "do not infer security policy from job title",
+          "do not claim an option satisfies a requirement absent evidence"
+        ],
+        "clarify_if_unknown": [
+          "hosting boundary",
+          "available administration capacity"
+        ]
+      },
+      "comparability_block": "F0501_team_knowledge_platform::U0501B::core-v0.50",
+      "episode_id": "F0501_team_knowledge_platform::U0501B::P4_checkpoint_update",
+      "paradigm_id": "P4_checkpoint_update",
+      "initial_query": "Please compare the three knowledge platforms in the attached pack and recommend which one our team should pilot, with a practical rollout plan.",
+      "initial_visible_fact_ids": [
+        "F0501B_SECURITY",
+        "F0501B_ADMIN",
+        "F0501B_AUDIT"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0501B_ADMIN_UPDATE"
+      ],
+      "user_contact": "bidirectional",
+      "estimand_role": "update_and_stale_state_suppression",
+      "information_events": [
+        {
+          "event_id": "F0501_team_knowledge_platform::U0501B::P4_checkpoint_update::update",
+          "availability_time": "checkpoint",
+          "access_mode": "system_injected",
+          "supersedes_fact_id": "F0501B_ADMIN",
+          "new_fact_id": "F0501B_ADMIN_UPDATE",
+          "new_value": "the maintenance owner is reassigned and only one hour per week remains",
+          "expected_effect": "reconsider self-hosting and explicitly surface the control-versus-operability tradeoff"
+        }
+      ]
+    },
+    {
+      "family_id": "F0502_cross_border_family_trip",
+      "user_id": "U0502A",
+      "task_core": "Research two feasible seven-day itineraries from Shanghai to Japan using the frozen transport and attraction pack, then recommend an itinerary with daily pacing, reservation dependencies, fallback options and a budget table.",
+      "evidence_world_id": "EW0502_frozen_travel_pack",
+      "expected_decision": "choose the slower route with one base change and child-compatible fallback days",
+      "contract": {
+        "must_change": [
+          "route, hotel changes and daily pacing must reflect the target user's constraints",
+          "reservations and fallback days must be prioritized differently by family needs"
+        ],
+        "must_hold": [
+          "same transport facts",
+          "same seven-day duration",
+          "realistic travel times",
+          "budget arithmetic"
+        ],
+        "must_not": [
+          "do not infer mobility or medical conditions",
+          "do not exceed a hard budget without an explicit alternative"
+        ],
+        "clarify_if_unknown": [
+          "traveller composition and pacing",
+          "required city coverage",
+          "land budget"
+        ]
+      },
+      "comparability_block": "F0502_cross_border_family_trip::U0502A::core-v0.50",
+      "episode_id": "F0502_cross_border_family_trip::U0502A::P0_task_only_closed",
+      "paradigm_id": "P0_task_only_closed",
+      "initial_query": "Help us plan a seven-day Japan trip from Shanghai. Compare two sensible routes and give us a bookable itinerary with budget and backups.",
+      "initial_visible_fact_ids": [],
+      "hidden_gold_fact_ids": [
+        "F0502A_PACE",
+        "F0502A_HOTELS",
+        "F0502A_BUDGET"
+      ],
+      "user_contact": "disabled",
+      "estimand_role": "general_quality_baseline",
+      "information_events": []
+    },
+    {
+      "family_id": "F0502_cross_border_family_trip",
+      "user_id": "U0502A",
+      "task_core": "Research two feasible seven-day itineraries from Shanghai to Japan using the frozen transport and attraction pack, then recommend an itinerary with daily pacing, reservation dependencies, fallback options and a budget table.",
+      "evidence_world_id": "EW0502_frozen_travel_pack",
+      "expected_decision": "choose the slower route with one base change and child-compatible fallback days",
+      "contract": {
+        "must_change": [
+          "route, hotel changes and daily pacing must reflect the target user's constraints",
+          "reservations and fallback days must be prioritized differently by family needs"
+        ],
+        "must_hold": [
+          "same transport facts",
+          "same seven-day duration",
+          "realistic travel times",
+          "budget arithmetic"
+        ],
+        "must_not": [
+          "do not infer mobility or medical conditions",
+          "do not exceed a hard budget without an explicit alternative"
+        ],
+        "clarify_if_unknown": [
+          "traveller composition and pacing",
+          "required city coverage",
+          "land budget"
+        ]
+      },
+      "comparability_block": "F0502_cross_border_family_trip::U0502A::core-v0.50",
+      "episode_id": "F0502_cross_border_family_trip::U0502A::P1_one_shot_direct",
+      "paradigm_id": "P1_one_shot_direct",
+      "initial_query": "Help us plan a seven-day Japan trip from Shanghai. Compare two sensible routes and give us a bookable itinerary with budget and backups.",
+      "initial_visible_fact_ids": [
+        "F0502A_PACE",
+        "F0502A_HOTELS",
+        "F0502A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [],
+      "user_contact": "disabled",
+      "estimand_role": "direct_information_use",
+      "information_events": []
+    },
+    {
+      "family_id": "F0502_cross_border_family_trip",
+      "user_id": "U0502A",
+      "task_core": "Research two feasible seven-day itineraries from Shanghai to Japan using the frozen transport and attraction pack, then recommend an itinerary with daily pacing, reservation dependencies, fallback options and a budget table.",
+      "evidence_world_id": "EW0502_frozen_travel_pack",
+      "expected_decision": "choose the slower route with one base change and child-compatible fallback days",
+      "contract": {
+        "must_change": [
+          "route, hotel changes and daily pacing must reflect the target user's constraints",
+          "reservations and fallback days must be prioritized differently by family needs"
+        ],
+        "must_hold": [
+          "same transport facts",
+          "same seven-day duration",
+          "realistic travel times",
+          "budget arithmetic"
+        ],
+        "must_not": [
+          "do not infer mobility or medical conditions",
+          "do not exceed a hard budget without an explicit alternative"
+        ],
+        "clarify_if_unknown": [
+          "traveller composition and pacing",
+          "required city coverage",
+          "land budget"
+        ]
+      },
+      "comparability_block": "F0502_cross_border_family_trip::U0502A::core-v0.50",
+      "episode_id": "F0502_cross_border_family_trip::U0502A::P2_pre_research_clarification",
+      "paradigm_id": "P2_pre_research_clarification",
+      "initial_query": "Help us plan a seven-day Japan trip from Shanghai. Compare two sensible routes and give us a bookable itinerary with budget and backups.",
+      "initial_visible_fact_ids": [
+        "F0502A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0502A_PACE",
+        "F0502A_HOTELS"
+      ],
+      "user_contact": "agent_initiated",
+      "estimand_role": "self_initiated_acquire_and_use",
+      "information_events": [
+        {
+          "event_id": "F0502_cross_border_family_trip::U0502A::P2_pre_research_clarification::answer",
+          "availability_time": "before_plan",
+          "access_mode": "agent_requested",
+          "fact_ids": [
+            "F0502A_PACE",
+            "F0502A_HOTELS"
+          ],
+          "answer_policy": "ledger_bounded_unknown_outside_ledger"
+        }
+      ]
+    },
+    {
+      "family_id": "F0502_cross_border_family_trip",
+      "user_id": "U0502A",
+      "task_core": "Research two feasible seven-day itineraries from Shanghai to Japan using the frozen transport and attraction pack, then recommend an itinerary with daily pacing, reservation dependencies, fallback options and a budget table.",
+      "evidence_world_id": "EW0502_frozen_travel_pack",
+      "expected_decision": "choose the slower route with one base change and child-compatible fallback days",
+      "contract": {
+        "must_change": [
+          "route, hotel changes and daily pacing must reflect the target user's constraints",
+          "reservations and fallback days must be prioritized differently by family needs"
+        ],
+        "must_hold": [
+          "same transport facts",
+          "same seven-day duration",
+          "realistic travel times",
+          "budget arithmetic"
+        ],
+        "must_not": [
+          "do not infer mobility or medical conditions",
+          "do not exceed a hard budget without an explicit alternative"
+        ],
+        "clarify_if_unknown": [
+          "traveller composition and pacing",
+          "required city coverage",
+          "land budget"
+        ]
+      },
+      "comparability_block": "F0502_cross_border_family_trip::U0502A::core-v0.50",
+      "episode_id": "F0502_cross_border_family_trip::U0502A::P4_checkpoint_update",
+      "paradigm_id": "P4_checkpoint_update",
+      "initial_query": "Help us plan a seven-day Japan trip from Shanghai. Compare two sensible routes and give us a bookable itinerary with budget and backups.",
+      "initial_visible_fact_ids": [
+        "F0502A_PACE",
+        "F0502A_HOTELS",
+        "F0502A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0502A_HOTELS_UPDATE"
+      ],
+      "user_contact": "bidirectional",
+      "estimand_role": "update_and_stale_state_suppression",
+      "information_events": [
+        {
+          "event_id": "F0502_cross_border_family_trip::U0502A::P4_checkpoint_update::update",
+          "availability_time": "checkpoint",
+          "access_mode": "system_injected",
+          "supersedes_fact_id": "F0502A_HOTELS",
+          "new_fact_id": "F0502A_HOTELS_UPDATE",
+          "new_value": "the family can accept two hotel changes if both transfers are luggage-forwarded",
+          "expected_effect": "allow one additional city while preserving low daily pace"
+        }
+      ]
+    },
+    {
+      "family_id": "F0502_cross_border_family_trip",
+      "user_id": "U0502B",
+      "task_core": "Research two feasible seven-day itineraries from Shanghai to Japan using the frozen transport and attraction pack, then recommend an itinerary with daily pacing, reservation dependencies, fallback options and a budget table.",
+      "evidence_world_id": "EW0502_frozen_travel_pack",
+      "expected_decision": "choose the three-city route with explicit transfer and fatigue safeguards",
+      "contract": {
+        "must_change": [
+          "route, hotel changes and daily pacing must reflect the target user's constraints",
+          "reservations and fallback days must be prioritized differently by family needs"
+        ],
+        "must_hold": [
+          "same transport facts",
+          "same seven-day duration",
+          "realistic travel times",
+          "budget arithmetic"
+        ],
+        "must_not": [
+          "do not infer mobility or medical conditions",
+          "do not exceed a hard budget without an explicit alternative"
+        ],
+        "clarify_if_unknown": [
+          "traveller composition and pacing",
+          "required city coverage",
+          "land budget"
+        ]
+      },
+      "comparability_block": "F0502_cross_border_family_trip::U0502B::core-v0.50",
+      "episode_id": "F0502_cross_border_family_trip::U0502B::P0_task_only_closed",
+      "paradigm_id": "P0_task_only_closed",
+      "initial_query": "Help us plan a seven-day Japan trip from Shanghai. Compare two sensible routes and give us a bookable itinerary with budget and backups.",
+      "initial_visible_fact_ids": [],
+      "hidden_gold_fact_ids": [
+        "F0502B_COVERAGE",
+        "F0502B_PACE",
+        "F0502B_BUDGET"
+      ],
+      "user_contact": "disabled",
+      "estimand_role": "general_quality_baseline",
+      "information_events": []
+    },
+    {
+      "family_id": "F0502_cross_border_family_trip",
+      "user_id": "U0502B",
+      "task_core": "Research two feasible seven-day itineraries from Shanghai to Japan using the frozen transport and attraction pack, then recommend an itinerary with daily pacing, reservation dependencies, fallback options and a budget table.",
+      "evidence_world_id": "EW0502_frozen_travel_pack",
+      "expected_decision": "choose the three-city route with explicit transfer and fatigue safeguards",
+      "contract": {
+        "must_change": [
+          "route, hotel changes and daily pacing must reflect the target user's constraints",
+          "reservations and fallback days must be prioritized differently by family needs"
+        ],
+        "must_hold": [
+          "same transport facts",
+          "same seven-day duration",
+          "realistic travel times",
+          "budget arithmetic"
+        ],
+        "must_not": [
+          "do not infer mobility or medical conditions",
+          "do not exceed a hard budget without an explicit alternative"
+        ],
+        "clarify_if_unknown": [
+          "traveller composition and pacing",
+          "required city coverage",
+          "land budget"
+        ]
+      },
+      "comparability_block": "F0502_cross_border_family_trip::U0502B::core-v0.50",
+      "episode_id": "F0502_cross_border_family_trip::U0502B::P1_one_shot_direct",
+      "paradigm_id": "P1_one_shot_direct",
+      "initial_query": "Help us plan a seven-day Japan trip from Shanghai. Compare two sensible routes and give us a bookable itinerary with budget and backups.",
+      "initial_visible_fact_ids": [
+        "F0502B_COVERAGE",
+        "F0502B_PACE",
+        "F0502B_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [],
+      "user_contact": "disabled",
+      "estimand_role": "direct_information_use",
+      "information_events": []
+    },
+    {
+      "family_id": "F0502_cross_border_family_trip",
+      "user_id": "U0502B",
+      "task_core": "Research two feasible seven-day itineraries from Shanghai to Japan using the frozen transport and attraction pack, then recommend an itinerary with daily pacing, reservation dependencies, fallback options and a budget table.",
+      "evidence_world_id": "EW0502_frozen_travel_pack",
+      "expected_decision": "choose the three-city route with explicit transfer and fatigue safeguards",
+      "contract": {
+        "must_change": [
+          "route, hotel changes and daily pacing must reflect the target user's constraints",
+          "reservations and fallback days must be prioritized differently by family needs"
+        ],
+        "must_hold": [
+          "same transport facts",
+          "same seven-day duration",
+          "realistic travel times",
+          "budget arithmetic"
+        ],
+        "must_not": [
+          "do not infer mobility or medical conditions",
+          "do not exceed a hard budget without an explicit alternative"
+        ],
+        "clarify_if_unknown": [
+          "traveller composition and pacing",
+          "required city coverage",
+          "land budget"
+        ]
+      },
+      "comparability_block": "F0502_cross_border_family_trip::U0502B::core-v0.50",
+      "episode_id": "F0502_cross_border_family_trip::U0502B::P2_pre_research_clarification",
+      "paradigm_id": "P2_pre_research_clarification",
+      "initial_query": "Help us plan a seven-day Japan trip from Shanghai. Compare two sensible routes and give us a bookable itinerary with budget and backups.",
+      "initial_visible_fact_ids": [
+        "F0502B_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0502B_COVERAGE",
+        "F0502B_PACE"
+      ],
+      "user_contact": "agent_initiated",
+      "estimand_role": "self_initiated_acquire_and_use",
+      "information_events": [
+        {
+          "event_id": "F0502_cross_border_family_trip::U0502B::P2_pre_research_clarification::answer",
+          "availability_time": "before_plan",
+          "access_mode": "agent_requested",
+          "fact_ids": [
+            "F0502B_COVERAGE",
+            "F0502B_PACE"
+          ],
+          "answer_policy": "ledger_bounded_unknown_outside_ledger"
+        }
+      ]
+    },
+    {
+      "family_id": "F0502_cross_border_family_trip",
+      "user_id": "U0502B",
+      "task_core": "Research two feasible seven-day itineraries from Shanghai to Japan using the frozen transport and attraction pack, then recommend an itinerary with daily pacing, reservation dependencies, fallback options and a budget table.",
+      "evidence_world_id": "EW0502_frozen_travel_pack",
+      "expected_decision": "choose the three-city route with explicit transfer and fatigue safeguards",
+      "contract": {
+        "must_change": [
+          "route, hotel changes and daily pacing must reflect the target user's constraints",
+          "reservations and fallback days must be prioritized differently by family needs"
+        ],
+        "must_hold": [
+          "same transport facts",
+          "same seven-day duration",
+          "realistic travel times",
+          "budget arithmetic"
+        ],
+        "must_not": [
+          "do not infer mobility or medical conditions",
+          "do not exceed a hard budget without an explicit alternative"
+        ],
+        "clarify_if_unknown": [
+          "traveller composition and pacing",
+          "required city coverage",
+          "land budget"
+        ]
+      },
+      "comparability_block": "F0502_cross_border_family_trip::U0502B::core-v0.50",
+      "episode_id": "F0502_cross_border_family_trip::U0502B::P4_checkpoint_update",
+      "paradigm_id": "P4_checkpoint_update",
+      "initial_query": "Help us plan a seven-day Japan trip from Shanghai. Compare two sensible routes and give us a bookable itinerary with budget and backups.",
+      "initial_visible_fact_ids": [
+        "F0502B_COVERAGE",
+        "F0502B_PACE",
+        "F0502B_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0502B_COVERAGE_UPDATE"
+      ],
+      "user_contact": "bidirectional",
+      "estimand_role": "update_and_stale_state_suppression",
+      "information_events": [
+        {
+          "event_id": "F0502_cross_border_family_trip::U0502B::P4_checkpoint_update::update",
+          "availability_time": "checkpoint",
+          "access_mode": "system_injected",
+          "supersedes_fact_id": "F0502B_COVERAGE",
+          "new_fact_id": "F0502B_COVERAGE_UPDATE",
+          "new_value": "Kyoto becomes optional because one traveller must attend a Tokyo meeting on day four",
+          "expected_effect": "re-optimize around Tokyo and remove stale three-city language"
+        }
+      ]
+    },
+    {
+      "family_id": "F0503_research_literature_workflow",
+      "user_id": "U0503A",
+      "task_core": "Compare three literature-review workflows from a frozen capability and pricing pack and recommend a four-week pilot, including retrieval coverage, screening workflow, citation export, reproducibility and evaluation criteria.",
+      "evidence_world_id": "EW0503_frozen_research_tool_pack",
+      "expected_decision": "choose the low-code workflow with dual screening and complete export logs",
+      "contract": {
+        "must_change": [
+          "recommendation and pilot success metrics must reflect auditability versus automation needs",
+          "implementation ownership and training plan must match available skills"
+        ],
+        "must_hold": [
+          "same capability evidence",
+          "same three workflows",
+          "reproducibility limits",
+          "four-week pilot"
+        ],
+        "must_not": [
+          "do not equate an advertised feature with validated performance",
+          "do not expose unpublished query strings outside the authorized team"
+        ],
+        "clarify_if_unknown": [
+          "required audit trail or API",
+          "maintenance capacity",
+          "monthly record volume"
+        ]
+      },
+      "comparability_block": "F0503_research_literature_workflow::U0503A::core-v0.50",
+      "episode_id": "F0503_research_literature_workflow::U0503A::P0_task_only_closed",
+      "paradigm_id": "P0_task_only_closed",
+      "initial_query": "Compare the three literature-review workflows in the materials and recommend which one we should pilot for our next project, with an evaluation plan.",
+      "initial_visible_fact_ids": [],
+      "hidden_gold_fact_ids": [
+        "F0503A_AUDIT",
+        "F0503A_SKILL",
+        "F0503A_BUDGET"
+      ],
+      "user_contact": "disabled",
+      "estimand_role": "general_quality_baseline",
+      "information_events": []
+    },
+    {
+      "family_id": "F0503_research_literature_workflow",
+      "user_id": "U0503A",
+      "task_core": "Compare three literature-review workflows from a frozen capability and pricing pack and recommend a four-week pilot, including retrieval coverage, screening workflow, citation export, reproducibility and evaluation criteria.",
+      "evidence_world_id": "EW0503_frozen_research_tool_pack",
+      "expected_decision": "choose the low-code workflow with dual screening and complete export logs",
+      "contract": {
+        "must_change": [
+          "recommendation and pilot success metrics must reflect auditability versus automation needs",
+          "implementation ownership and training plan must match available skills"
+        ],
+        "must_hold": [
+          "same capability evidence",
+          "same three workflows",
+          "reproducibility limits",
+          "four-week pilot"
+        ],
+        "must_not": [
+          "do not equate an advertised feature with validated performance",
+          "do not expose unpublished query strings outside the authorized team"
+        ],
+        "clarify_if_unknown": [
+          "required audit trail or API",
+          "maintenance capacity",
+          "monthly record volume"
+        ]
+      },
+      "comparability_block": "F0503_research_literature_workflow::U0503A::core-v0.50",
+      "episode_id": "F0503_research_literature_workflow::U0503A::P1_one_shot_direct",
+      "paradigm_id": "P1_one_shot_direct",
+      "initial_query": "Compare the three literature-review workflows in the materials and recommend which one we should pilot for our next project, with an evaluation plan.",
+      "initial_visible_fact_ids": [
+        "F0503A_AUDIT",
+        "F0503A_SKILL",
+        "F0503A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [],
+      "user_contact": "disabled",
+      "estimand_role": "direct_information_use",
+      "information_events": []
+    },
+    {
+      "family_id": "F0503_research_literature_workflow",
+      "user_id": "U0503A",
+      "task_core": "Compare three literature-review workflows from a frozen capability and pricing pack and recommend a four-week pilot, including retrieval coverage, screening workflow, citation export, reproducibility and evaluation criteria.",
+      "evidence_world_id": "EW0503_frozen_research_tool_pack",
+      "expected_decision": "choose the low-code workflow with dual screening and complete export logs",
+      "contract": {
+        "must_change": [
+          "recommendation and pilot success metrics must reflect auditability versus automation needs",
+          "implementation ownership and training plan must match available skills"
+        ],
+        "must_hold": [
+          "same capability evidence",
+          "same three workflows",
+          "reproducibility limits",
+          "four-week pilot"
+        ],
+        "must_not": [
+          "do not equate an advertised feature with validated performance",
+          "do not expose unpublished query strings outside the authorized team"
+        ],
+        "clarify_if_unknown": [
+          "required audit trail or API",
+          "maintenance capacity",
+          "monthly record volume"
+        ]
+      },
+      "comparability_block": "F0503_research_literature_workflow::U0503A::core-v0.50",
+      "episode_id": "F0503_research_literature_workflow::U0503A::P2_pre_research_clarification",
+      "paradigm_id": "P2_pre_research_clarification",
+      "initial_query": "Compare the three literature-review workflows in the materials and recommend which one we should pilot for our next project, with an evaluation plan.",
+      "initial_visible_fact_ids": [
+        "F0503A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0503A_AUDIT",
+        "F0503A_SKILL"
+      ],
+      "user_contact": "agent_initiated",
+      "estimand_role": "self_initiated_acquire_and_use",
+      "information_events": [
+        {
+          "event_id": "F0503_research_literature_workflow::U0503A::P2_pre_research_clarification::answer",
+          "availability_time": "before_plan",
+          "access_mode": "agent_requested",
+          "fact_ids": [
+            "F0503A_AUDIT",
+            "F0503A_SKILL"
+          ],
+          "answer_policy": "ledger_bounded_unknown_outside_ledger"
+        }
+      ]
+    },
+    {
+      "family_id": "F0503_research_literature_workflow",
+      "user_id": "U0503A",
+      "task_core": "Compare three literature-review workflows from a frozen capability and pricing pack and recommend a four-week pilot, including retrieval coverage, screening workflow, citation export, reproducibility and evaluation criteria.",
+      "evidence_world_id": "EW0503_frozen_research_tool_pack",
+      "expected_decision": "choose the low-code workflow with dual screening and complete export logs",
+      "contract": {
+        "must_change": [
+          "recommendation and pilot success metrics must reflect auditability versus automation needs",
+          "implementation ownership and training plan must match available skills"
+        ],
+        "must_hold": [
+          "same capability evidence",
+          "same three workflows",
+          "reproducibility limits",
+          "four-week pilot"
+        ],
+        "must_not": [
+          "do not equate an advertised feature with validated performance",
+          "do not expose unpublished query strings outside the authorized team"
+        ],
+        "clarify_if_unknown": [
+          "required audit trail or API",
+          "maintenance capacity",
+          "monthly record volume"
+        ]
+      },
+      "comparability_block": "F0503_research_literature_workflow::U0503A::core-v0.50",
+      "episode_id": "F0503_research_literature_workflow::U0503A::P4_checkpoint_update",
+      "paradigm_id": "P4_checkpoint_update",
+      "initial_query": "Compare the three literature-review workflows in the materials and recommend which one we should pilot for our next project, with an evaluation plan.",
+      "initial_visible_fact_ids": [
+        "F0503A_AUDIT",
+        "F0503A_SKILL",
+        "F0503A_BUDGET"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0503A_SKILL_UPDATE"
+      ],
+      "user_contact": "bidirectional",
+      "estimand_role": "update_and_stale_state_suppression",
+      "information_events": [
+        {
+          "event_id": "F0503_research_literature_workflow::U0503A::P4_checkpoint_update::update",
+          "availability_time": "checkpoint",
+          "access_mode": "system_injected",
+          "supersedes_fact_id": "F0503A_SKILL",
+          "new_fact_id": "F0503A_SKILL_UPDATE",
+          "new_value": "a research engineer can support setup for the first four weeks but not ongoing maintenance",
+          "expected_effect": "permit a scripted setup only if the handoff remains low-code and auditable"
+        }
+      ]
+    },
+    {
+      "family_id": "F0503_research_literature_workflow",
+      "user_id": "U0503B",
+      "task_core": "Compare three literature-review workflows from a frozen capability and pricing pack and recommend a four-week pilot, including retrieval coverage, screening workflow, citation export, reproducibility and evaluation criteria.",
+      "evidence_world_id": "EW0503_frozen_research_tool_pack",
+      "expected_decision": "choose the programmable workflow with API, automation and versioned exports",
+      "contract": {
+        "must_change": [
+          "recommendation and pilot success metrics must reflect auditability versus automation needs",
+          "implementation ownership and training plan must match available skills"
+        ],
+        "must_hold": [
+          "same capability evidence",
+          "same three workflows",
+          "reproducibility limits",
+          "four-week pilot"
+        ],
+        "must_not": [
+          "do not equate an advertised feature with validated performance",
+          "do not expose unpublished query strings outside the authorized team"
+        ],
+        "clarify_if_unknown": [
+          "required audit trail or API",
+          "maintenance capacity",
+          "monthly record volume"
+        ]
+      },
+      "comparability_block": "F0503_research_literature_workflow::U0503B::core-v0.50",
+      "episode_id": "F0503_research_literature_workflow::U0503B::P0_task_only_closed",
+      "paradigm_id": "P0_task_only_closed",
+      "initial_query": "Compare the three literature-review workflows in the materials and recommend which one we should pilot for our next project, with an evaluation plan.",
+      "initial_visible_fact_ids": [],
+      "hidden_gold_fact_ids": [
+        "F0503B_API",
+        "F0503B_SKILL",
+        "F0503B_SCALE"
+      ],
+      "user_contact": "disabled",
+      "estimand_role": "general_quality_baseline",
+      "information_events": []
+    },
+    {
+      "family_id": "F0503_research_literature_workflow",
+      "user_id": "U0503B",
+      "task_core": "Compare three literature-review workflows from a frozen capability and pricing pack and recommend a four-week pilot, including retrieval coverage, screening workflow, citation export, reproducibility and evaluation criteria.",
+      "evidence_world_id": "EW0503_frozen_research_tool_pack",
+      "expected_decision": "choose the programmable workflow with API, automation and versioned exports",
+      "contract": {
+        "must_change": [
+          "recommendation and pilot success metrics must reflect auditability versus automation needs",
+          "implementation ownership and training plan must match available skills"
+        ],
+        "must_hold": [
+          "same capability evidence",
+          "same three workflows",
+          "reproducibility limits",
+          "four-week pilot"
+        ],
+        "must_not": [
+          "do not equate an advertised feature with validated performance",
+          "do not expose unpublished query strings outside the authorized team"
+        ],
+        "clarify_if_unknown": [
+          "required audit trail or API",
+          "maintenance capacity",
+          "monthly record volume"
+        ]
+      },
+      "comparability_block": "F0503_research_literature_workflow::U0503B::core-v0.50",
+      "episode_id": "F0503_research_literature_workflow::U0503B::P1_one_shot_direct",
+      "paradigm_id": "P1_one_shot_direct",
+      "initial_query": "Compare the three literature-review workflows in the materials and recommend which one we should pilot for our next project, with an evaluation plan.",
+      "initial_visible_fact_ids": [
+        "F0503B_API",
+        "F0503B_SKILL",
+        "F0503B_SCALE"
+      ],
+      "hidden_gold_fact_ids": [],
+      "user_contact": "disabled",
+      "estimand_role": "direct_information_use",
+      "information_events": []
+    },
+    {
+      "family_id": "F0503_research_literature_workflow",
+      "user_id": "U0503B",
+      "task_core": "Compare three literature-review workflows from a frozen capability and pricing pack and recommend a four-week pilot, including retrieval coverage, screening workflow, citation export, reproducibility and evaluation criteria.",
+      "evidence_world_id": "EW0503_frozen_research_tool_pack",
+      "expected_decision": "choose the programmable workflow with API, automation and versioned exports",
+      "contract": {
+        "must_change": [
+          "recommendation and pilot success metrics must reflect auditability versus automation needs",
+          "implementation ownership and training plan must match available skills"
+        ],
+        "must_hold": [
+          "same capability evidence",
+          "same three workflows",
+          "reproducibility limits",
+          "four-week pilot"
+        ],
+        "must_not": [
+          "do not equate an advertised feature with validated performance",
+          "do not expose unpublished query strings outside the authorized team"
+        ],
+        "clarify_if_unknown": [
+          "required audit trail or API",
+          "maintenance capacity",
+          "monthly record volume"
+        ]
+      },
+      "comparability_block": "F0503_research_literature_workflow::U0503B::core-v0.50",
+      "episode_id": "F0503_research_literature_workflow::U0503B::P2_pre_research_clarification",
+      "paradigm_id": "P2_pre_research_clarification",
+      "initial_query": "Compare the three literature-review workflows in the materials and recommend which one we should pilot for our next project, with an evaluation plan.",
+      "initial_visible_fact_ids": [
+        "F0503B_SCALE"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0503B_API",
+        "F0503B_SKILL"
+      ],
+      "user_contact": "agent_initiated",
+      "estimand_role": "self_initiated_acquire_and_use",
+      "information_events": [
+        {
+          "event_id": "F0503_research_literature_workflow::U0503B::P2_pre_research_clarification::answer",
+          "availability_time": "before_plan",
+          "access_mode": "agent_requested",
+          "fact_ids": [
+            "F0503B_API",
+            "F0503B_SKILL"
+          ],
+          "answer_policy": "ledger_bounded_unknown_outside_ledger"
+        }
+      ]
+    },
+    {
+      "family_id": "F0503_research_literature_workflow",
+      "user_id": "U0503B",
+      "task_core": "Compare three literature-review workflows from a frozen capability and pricing pack and recommend a four-week pilot, including retrieval coverage, screening workflow, citation export, reproducibility and evaluation criteria.",
+      "evidence_world_id": "EW0503_frozen_research_tool_pack",
+      "expected_decision": "choose the programmable workflow with API, automation and versioned exports",
+      "contract": {
+        "must_change": [
+          "recommendation and pilot success metrics must reflect auditability versus automation needs",
+          "implementation ownership and training plan must match available skills"
+        ],
+        "must_hold": [
+          "same capability evidence",
+          "same three workflows",
+          "reproducibility limits",
+          "four-week pilot"
+        ],
+        "must_not": [
+          "do not equate an advertised feature with validated performance",
+          "do not expose unpublished query strings outside the authorized team"
+        ],
+        "clarify_if_unknown": [
+          "required audit trail or API",
+          "maintenance capacity",
+          "monthly record volume"
+        ]
+      },
+      "comparability_block": "F0503_research_literature_workflow::U0503B::core-v0.50",
+      "episode_id": "F0503_research_literature_workflow::U0503B::P4_checkpoint_update",
+      "paradigm_id": "P4_checkpoint_update",
+      "initial_query": "Compare the three literature-review workflows in the materials and recommend which one we should pilot for our next project, with an evaluation plan.",
+      "initial_visible_fact_ids": [
+        "F0503B_API",
+        "F0503B_SKILL",
+        "F0503B_SCALE"
+      ],
+      "hidden_gold_fact_ids": [
+        "F0503B_SCALE_UPDATE"
+      ],
+      "user_contact": "bidirectional",
+      "estimand_role": "update_and_stale_state_suppression",
+      "information_events": [
+        {
+          "event_id": "F0503_research_literature_workflow::U0503B::P4_checkpoint_update::update",
+          "availability_time": "checkpoint",
+          "access_mode": "system_injected",
+          "supersedes_fact_id": "F0503B_SCALE",
+          "new_fact_id": "F0503B_SCALE_UPDATE",
+          "new_value": "the first pilot will contain only 600 records but must scale later",
+          "expected_effect": "change pilot thresholds without dropping long-term scalability from the decision"
+        }
+      ]
+    }
+  ]
+}

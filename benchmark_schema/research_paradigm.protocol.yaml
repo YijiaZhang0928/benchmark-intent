@@ -1,0 +1,68 @@
+protocol_name: deepalign_research_paradigm_construction
+protocol_version: 0.50
+episode_schema: research_episode.schema.yaml
+purpose: >-
+  Turn product-specific Deep Research workflows into comparable experimental
+  episodes without treating clarification, memory and iterative revision as the
+  same intervention.
+
+factorization:
+  axis_1_task_interface:
+    question: What can the initial request support before more user information is obtained?
+    levels: [fully_specified, generally_executable_but_personally_underspecified, not_executable_without_answer]
+  axis_2_interaction_timing:
+    question: When can the agent exchange information with the user?
+    levels: [none, before_research, during_research, checkpoint_update, after_draft]
+  axis_3_source_origin:
+    question: Who or what originated the information?
+    levels: [current_user, prior_user_history, persistent_memory, private_workspace, organization, behavior, public_evidence, system_inference]
+  axis_4_access_mode:
+    question: How does the information enter the agent context?
+    levels: [pushed, visible, agent_requested, agent_retrieved, system_injected, hidden_gold]
+  axis_5_state_dynamics:
+    question: Can the information change or conflict during the run?
+    levels: [static, delayed, updated, stale_conflict, revoked]
+  axis_6_system_capability:
+    question: Which interaction and retrieval operations can the tested system actually perform?
+    levels: [ask, retrieve_memory, search_workspace, checkpoint_resume, revise, write_memory]
+
+identification_rules:
+  - Do not compare a memory condition with a prompt condition as a pure carrier effect unless the same facts are available at the same time.
+  - Do not interpret clarification benefit when the initial request is impossible to execute without an answer; that tests basic task completion rather than proactive personalization.
+  - Do not score failure to ask when the system adapter cannot expose a user-contact operation; mark the episode structurally inapplicable.
+  - Hold tools, evidence, budget and deliverable contract constant within a causal contrast.
+  - Report unsupported product capabilities as ineligible, never as zero performance.
+
+minimum_core_matrix:
+  P0_task_only_closed:
+    information: no task-relevant user state
+    contact: disabled
+    estimand_role: general-quality baseline
+  P1_one_shot_direct:
+    information: complete structured persona or equivalent natural history before planning
+    contact: disabled after start
+    estimand_role: information-use upper condition
+  P2_pre_research_clarification:
+    information: fuzzy query hides one or two decision-changing facts
+    contact: agent may ask before search; ledger-bounded answer
+    estimand_role: acquire-and-use condition
+  P4_checkpoint_update:
+    information: initial state plus one controlled update that supersedes a prior fact
+    contact: system receives update at a matched checkpoint
+    estimand_role: update-and-preserve condition
+
+first_data_release:
+  families: 3
+  provenance_tier: synthetic_control
+  users_per_family: 2
+  core_paradigms_per_user: 4
+  notes: >-
+    These cases validate schema, harness and rubric compilation only. Authors must
+    replace or validate them with real/user-anchored families before paper claims.
+  acceptance_gates:
+    - initial fuzzy query remains naturally executable as a general research task
+    - each hidden or updated fact maps to a frozen must-change node
+    - P1, P2 and P4 expose the same authorized final user truth when the contrast requires it
+    - simulator answers only facts in the ledger and says unknown otherwise
+    - expected matched and swapped decisions are symmetric and independently judgeable
+    - no demographic stereotype is used to infer a preference or constraint

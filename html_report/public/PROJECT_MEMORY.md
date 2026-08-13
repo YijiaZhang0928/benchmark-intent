@@ -2,11 +2,21 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-13
-当前版本：v0.49（GPT-5 复现与 Introduction 主张证据门已在结果前冻结）
+最后更新：2026-08-14
+当前版本：v0.50（统一 Research Episode schema，并开始 3-family / 24-episode seed 数据）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0Q. 2026-08-14：统一所有 Deep Research 交互范式并开始造数据
+
+用户要求在继续扩 proposal 前，先统一建模一次性走完、主动澄清、执行中提问，以及用户/memory/其他来源的信息。关键修正是：这些不是同一层的互斥类别。交互时机、信息来源、载体/访问方式、可用时间、状态更新和系统能力必须正交记录。v0.50 因此定义 `research episode = task interface + interaction policy + information-event timeline + system capabilities + comparability block`。
+
+完整范式库包含 P0 task-only closed、P1 one-shot direct、P2 pre-research clarification、P3 in-research interactive、P4 checkpoint update、P5 memory retrieval、P6 workspace grounded、P7 draft-feedback revision。它是 ontology 而非首版全矩阵。首版只跑 P0/P1/P2/P4，分别测通用质量、已知信息使用、主动获取与利用、动态更新和旧状态清除；P3/P5/P6/P7 等 E3 vertical slice 后按适用性加入。系统不支持某操作时标记 structurally-inapplicable，不记零分。
+
+`benchmark_schema/research_episode.schema.yaml` 和 `research_paradigm.protocol.yaml` 是本轮新真值；case/data factory/annotation schema 已升至 v0.50。`data/seed_v0_50/` 已产生 3 个 synthetic-control family（团队知识平台、跨境家庭旅行、研究工作流）、6 位用户和 24 个 episode，P0/P1/P2/P4 各 6 个。校验器确认 ID、配额、事实引用、P2 隐藏关键事实与 P4 superseding update。它们只用于 schema/runner/rubric vertical slice，尚未通过目标用户自然性、证据包或 matched/swapped 人评，不得用于论文效度 claim。
+
+Coverage manifest 与 rubric 路由也必须使用 episode 字段，不能继续只看旧的 signal-channel 标签：P2/P3 的“问到并采用”与 P4 的“接受新事实并压制旧事实”是不同的可观测过程。若系统不具备 ask、retrieve 或 checkpoint 能力，该单元记为 structurally-inapplicable，而不是记零分。
 
 ## 0P. 2026-08-12：GPT-5 P-Score 正式复现协议已冻结（结果尚未产生）
 
