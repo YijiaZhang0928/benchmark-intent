@@ -1,0 +1,25 @@
+{
+  "dataset": "PDR-Bench",
+  "repository": "https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench",
+  "commit": "5b43f9f188c747d154fc7666812ab93b7ca6a3c2",
+  "commit_date": "2026-01-27T02:11:01Z",
+  "imported_at": "2026-08-14",
+  "license": "Apache-2.0",
+  "license_sha256": "de65c9ad01a843951799b6774d5a65f8b6de0c35e6aa1684904c2e574fddbfba",
+  "files": {
+    "tasks_en.jsonl.gz": {"records": 50, "uncompressed_sha256": "304175e7d92b552710e31e3ae9fcf86c645cb72b31a973b0e6eb835a1a1a8d9f"},
+    "tasks_zh.jsonl.gz": {"records": 50, "uncompressed_sha256": "6253e1e10974747907d7e26dff7bf69bd36f98761752da86ec927a44d2892d93"},
+    "personas_en.jsonl.gz": {"records": 25, "uncompressed_sha256": "4fbd651033892bdaa48dcc5eca0372a4c4aa113672fe014ca75286d4c49bfee5"},
+    "personas_zh.jsonl.gz": {"records": 25, "uncompressed_sha256": "7d1e3982d4ea3e22f87965db598bb7a32d107c07669a79d3031ea0554a472973"},
+    "contexts_en.jsonl.gz": {"records": 25, "uncompressed_sha256": "8c767e23d45c00fbd9c60f154552f9df1b58e9b02a7cf7e11769dc12a1a70909"},
+    "contexts_zh.jsonl.gz": {"records": 25, "uncompressed_sha256": "dfb283d41dda5a64843c2ff8cdb921bf4ff64e0025664d95ba67ec6a03e3d26d"},
+    "queries250_en.jsonl.gz": {"records": 250, "uncompressed_sha256": "e1b782361ec57ac3b21c34a143c74a34a57b42df222e42b7d6efb978ff998091"},
+    "queries250_zh.jsonl.gz": {"records": 250, "uncompressed_sha256": "1532a3258c46537667eb90a434f030e918d17965cdb67481dd3399b1ddbcacfd"}
+  },
+  "provenance_boundary": {
+    "structured_persona": "deidentified derivative of volunteer self-reported information",
+    "dynamic_context": "professional-annotator-simulated memory and chat",
+    "task": "expert-designed and committee-reviewed upstream",
+    "deepalign_pair_truth": "not supplied; requires independent pre-output audit"
+  }
+}

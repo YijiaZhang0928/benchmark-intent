@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.50 · 2026 年 8 月 14 日
+版本：v0.51 · 2026 年 8 月 14 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 配套阅读版本：《正式 Proposal 精简版》按论文 Proposal 规范压缩至约 10 页；《完整人话版》保留全部方法与论证；《汇报精简版》用于口头汇报。
@@ -19,7 +19,7 @@ Deep Research 智能体已经能检索、综合并生成长报告，PDR-Bench �
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
-两个月版本先完成 3 个完整 family 的官方 judge + 真人校准，再扩到约 12–24 个 family、2–3 条 agent 管线。v0.50 不再把 structured persona、clarification、memory 和中途更新混写成平级“渠道”，而是把每次 Deep Research 运行统一建模为一个 **research episode**：任务初始信息是否充分、用户何时可交互、信息由谁产生、通过什么载体进入上下文、何时可用、能否更新，以及系统是否具备相应的 ask/retrieve/checkpoint/revise 能力。不同产品范式只是这些轴的配置。首版只运行四个可解释的核心条件：`P0 task-only closed`、`P1 one-shot direct`、`P2 pre-research clarification`、`P4 checkpoint update`；中途提问、memory retrieval、private workspace 与 draft-feedback revision 先进入扩展库，不做完整笛卡尔积。
+投稿版本先完成 3 个完整 family 的官方 judge + 真人校准，再把主实验扩到约 12–20 个通过反事实筛选的 family、2–3 条 agent 管线。v0.50 不再把 structured persona、clarification、memory 和中途更新混写成平级“渠道”，而是把每次 Deep Research 运行统一建模为一个 **research episode**：任务初始信息是否充分、用户何时可交互、信息由谁产生、通过什么载体进入上下文、何时可用、能否更新，以及系统是否具备相应的 ask/retrieve/checkpoint/revise 能力。不同产品范式只是这些轴的配置。首版只运行四个可解释的核心条件：`P0 task-only closed`、`P1 one-shot direct`、`P2 pre-research clarification`、`P4 checkpoint update`；中途提问、memory retrieval、private workspace 与 draft-feedback revision 先进入扩展库，不做完整笛卡尔积。v0.51 又完整导入 PDR-Bench 的公开资源池，但不把原有 task-user 配对直接视作 DeepAlign 反事实真值。
 
 **一句话研究目标：**在固定任务、证据、工具和预算时，检验 Deep Research agent 的最终交付物是否同时具有双向反事实用户特异性、绝对合格、相对通用回答的真实收益、共同质量 no-harm 和边界安全；只主张可观察的交付物特异性，不声称模型内部“真正理解用户”。
 
@@ -363,6 +363,14 @@ Task cube 回答三个问题：样本覆盖了什么、任务在哪些方面更�
 ## 5. Benchmark 数据结构与构建流程
 
 v0.50 已开始第一批数据构造。`data/seed_v0_50/` 当前包含 3 个纯合成工程 family（团队知识平台、跨境家庭旅行、文献综述工作流）、6 位配对用户与 24 个 episode；每位用户各有 P0/P1/P2/P4 四个条件，并通过自动检查确认配额平衡、事实引用有效、P2 隐藏关键事实且允许主动询问、P4 含单一 superseding update。它们只用于 schema、runner 和 rubric compiler 的 vertical slice，不作为真实用户效度或论文结果。下一道人工门是逐 family 审核自然性、证据包、matched/swapped 区分力和 contract 对称性；通过后再将结构迁移到真实或 user-anchored seed。
+
+### 5.0a PDR-Bench 全量资源池如何进入 DeepAlign
+
+v0.51 已从 [PDR-Bench 官方仓库](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 固定 commit `5b43f9f188c747d154fc7666812ab93b7ca6a3c2` 导入 50 个中英双语任务、25 个 structured persona、25 份 context 和 250 个官方 task-user 配对，并保存上游文件哈希和 Apache-2.0 许可证。PDR-Bench 论文说明，structured persona 是 25 位志愿者在知情同意下自填并去标识化后的公开衍生数据；context 中的 memory/chat 则由专业标注者模拟，不是真实用户的自然行为轨迹。[[4]](https://arxiv.org/abs/2509.25106) 因此本项目将二者分别标为 `volunteer-grounded structured persona` 与 `annotator-simulated dynamic context`，不能统称为“全部真人轨迹”。
+
+完整导入只是**资源池**，不是主实验自动成立。PDR 的每个任务原本对应约 5 位相关用户，但 DeepAlign 需要的是其中两位在相同任务下形成可预注册的关键决策分歧。程序已把 250 个官方配对展开成 501 个同任务候选用户对；研究者必须逐对回答：两位用户是否都自然地关心该任务；哪些最小事实会改变最终选择、风险门槛或行动计划；什么必须保持；matched/swapped reference 是否可稳定区分。只有通过双人独立审查和仲裁，才能写入 `must-change / must-hold / must-not / clarify-if-unknown` 并成为一个 DeepAlign family。
+
+导入审计还发现一个上游发布异常：250 条 query 总数正确，但 task 8 公开了 4 位用户，task 10 公开了 6 位用户，而不是每题严格 5 位；中英文配对一致。DeepAlign 原样保留并报告，不补造或删除记录。Health、Finance、Law 三类共 15 个任务在领域专家审查完成前只进入候选/扩展集。主结果优先选择 12–20 个低至中等风险、决策差异清楚、证据可冻结的 family；其余 50-task 资源池继续公开作为覆盖与负结果。机器可读导入、501-pair 审计表和校验器位于 `data/pdr_import_v0_51/`。
 
 ### 5.0 多篇论文不能直接“杂糅”：先建立 source-to-design ledger
 
@@ -1113,7 +1121,7 @@ ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投�
 
 ### 17.9 ICLR 2027 的五天方向冻结门
 
-ICLR 2027 官方 Author Guidelines 给出的 abstract deadline 是 2026-09-11 AOE，paper deadline 是 2026-09-16 AOE。以 2026-08-12 计算，距离摘要约 30 天、全文约 35 天。并非五天后系统就不能再改，但**最迟应在 2026-08-17 冻结论文 thesis、最近邻边界、主 estimand、family 原语和 go/no-go 证据**；此后只能改 rubric leaf、样本、实现细节和写法。若五天后仍在 DeepAlign、ElicitAlign、Cognitive Gain 等标题级方向之间切换，就没有足够时间完成官方 judge、人评校准、family 扩展、统计、主图和匿名 artifact。
+[ICLR 2027 官方 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines) 当前给出的 abstract deadline 是 **2026-09-18 AOE**，paper deadline 是 **2026-09-25 AOE**；官网此前显示过更早日期，因此本项目以后以每次构建时抓取的官方页面为准。以 2026-08-14 计算，距离摘要约 35 天、全文约 42 天。并非五天后系统就不能再改，但**最迟应在 2026-08-17 冻结论文 thesis、最近邻边界、主 estimand、family 原语和 go/no-go 证据**；此后只能改 rubric leaf、样本、实现细节和写法。若此后仍在 DeepAlign、ElicitAlign、Cognitive Gain 等标题级方向之间切换，就没有足够时间完成官方 judge、人评校准、family 扩展、统计、主图和匿名 artifact。
 
 五天冻结不是凭直觉拍板，而是完成四个硬检查：
 
@@ -1123,6 +1131,20 @@ ICLR 2027 官方 Author Guidelines 给出的 abstract deadline 是 2026-09-11 AO
 4. 用最近邻表明确承认 PDR-Bench、MyScholarQA、G-STEER 等已解决什么，并写出只有 DeepAlign 数据能回答的系统排序/失败问题。
 
 若第 1–2 项失败，应在 8 月 17 日前停止以“PDR false positive”为核心 claim，转成更窄的 personalization judge validity paper，或彻底换题；不要继续用更多合成样本拖延结论。
+
+### 17.10 从 2026-08-14 到投稿的逐周执行表
+
+| 时间 | 本周唯一主目标 | 必须完成的可检查交付物 | 周末停止/收缩条件 |
+|---|---|---|---|
+| **W0：8/14–8/16** | 冻结论文问题和可运行资源 | PDR 50-task/25-persona/250-pair 导入；501 候选用户对；GPT-5 smoke；选定 3 个 vertical-slice family；两名人评排期 | 无官方 key 时不等待：保留 blocked 记录并先做人评/数据；若 paired-user 构念无法说明，8/17 换题 |
+| **W1：8/17–8/23** | 把 3 个 family 做完整 | 每个 family 的 evidence pack、A/B ledger、四类 contract、rubric leaves、matched/swapped/general/over reference；盲化人评表 | 至少 2/3 family 的人类 matched > swapped 且 critical node 可独立判断；否则重写或淘汰 family |
+| **W2：8/24–8/30** | 完成端到端最小系统实验 | 3 family × 2 users 的 P0/P1/P2；P4 只跑 1 个 stateful anchor；至少两条可比 agent 管线；GPT-5/PDR-style 与 DeepAlign 双评分 | 若 DeepAlign 不造成成功判定变化，也不更贴近人评，降级为 judge-validity 短文；不继续盲目扩数 |
+| **W3：8/31–9/6** | 扩到核心样本并冻结数据 | 从 PDR 501 对中审出 12–16 个核心 family（最多 20）；补 0–4 个志愿者任务只填覆盖缺口；生成全部 P0/P1/P2，P4 仅 2–4 anchors | family 数不足时减少系统和 P4，不用同一 family 的更多 seed 冒充样本量 |
+| **W4：9/7–9/13** | 完成评分、统计和论文骨架 | 两名盲化人评校准子集；family-blocked permutation、family bootstrap；主表、失败地图、PDR 重分类表；9 页论文初稿 | 9/13 后不增加新主指标、新范式或新领域；只允许补预注册缺口 |
+| **W5：9/14–9/18** | 冻结结果并提交真实摘要 | 结果锁、主图、Table 1/2、匿名代码与数据卡、伦理/AI-use/reproducibility statements、9 页主文；**9/18 AOE 提交摘要** | 摘要必须反映真实完成结果；禁止 placeholder，缺结果就收窄 claim |
+| **W6：9/19–9/25** | 终稿与复现包 | 独立复跑、引用审计、泄漏/匿名检查、appendix、supplement、最终 PDF；**9/25 AOE 投稿** | 不再启动新实验，除非修复会推翻主结论的错误 |
+
+资源控制上，不能把 50 tasks × 5 users × 4 paradigms × 多系统全部跑成笛卡尔积。主统计单位是 task family：资源池全量保留，主实验只选约 12–20 个 family、每个两位用户；P0/P1/P2 为核心，P4 只做少量 stateful anchors。若导师提供官方 OpenAI key，runner 已支持固定 `gpt-5-2025-08-07` 从 smoke 续跑；建议先设置不超过 100 美元的项目预算上限，smoke 成功后再放行 criteria 与三重复评分。
 
 ## 参考文献
 

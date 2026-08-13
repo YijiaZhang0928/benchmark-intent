@@ -23,11 +23,11 @@ export default function Home() {
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.50 · 2026-08-14</p>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.51 · 2026-08-14</p>
             <h1>绝对适配不等于<em>反事实用户特异性</em></h1>
             <p className="lede">固定 task、evidence、tools 和 budget，只改变目标用户。我们检验最终报告是否双向正确改变，并同时通过绝对合格、相对通用回答收益、共同质量与边界门。</p>
             <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
-            <div className="heroMeta"><span>paired-user task family</span><span>2×2 交叉评分</span><span>统一 research episode</span><span>3 families / 24 episodes</span></div>
+            <div className="heroMeta"><span>PDR 50 tasks / 501 pairs</span><span>paired-user task family</span><span>2×2 交叉评分</span><span>3 families / 24 episodes</span></div>
           </section>
           <aside className="thesisCard"><span className="cardKicker">一句话研究问题</span><p>一份报告对用户 A 看起来很好，不代表系统把用户换成 B 时会按正确方向改变最终选择。</p><hr/><div className="thesisFlow"><b>Absolute Fit</b><i>≠</i><b>Specificity</b><i>→</i><b>Benefit</b></div></aside>
         </div>
@@ -43,7 +43,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="figureSection" id="design"><div className="shell"><div className="sectionHead light"><h2>一张图看懂元数据、统一范式、交叉矩阵、数据进度和证据门</h2><p>SVG 可编辑；PNG 适合直接拿去导师汇报。</p></div><figure><img src="/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.png" alt="DeepAlign-Bench v0.50 整体研究框架与统一 Research Episode"/><figcaption>v0.50：所有 Deep Research 范式统一为信息事件 episode；首批 3-family / 24-episode seed 已通过结构校验。</figcaption></figure></div></section>
+      <section className="figureSection" id="design"><div className="shell"><div className="sectionHead light"><h2>一张图看懂资源池、元数据、统一范式、交叉矩阵和证据门</h2><p>SVG 可编辑；PNG 适合直接拿去导师汇报。</p></div><figure><img src="/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png" alt="DeepAlign-Bench v0.51 整体研究框架、PDR 资源池与统一 Research Episode"/><figcaption>v0.51：PDR 公开资源完整导入，501 个候选用户对需要反事实筛选；3-family / 24-episode seed 目前只通过结构校验。</figcaption></figure></div></section>
+
+      <section className="shell gapSection" id="resource-pool">
+        <p className="sectionTag">PDR RESOURCE POOL ≠ DEEPALIGN GOLD</p>
+        <div className="sectionHead"><h2>完整复用公开资源，但不把原配对直接当成实验真值</h2><p>Structured persona 是志愿者自填后去标识化的衍生数据；dynamic context 是标注者模拟。DeepAlign 还需证明同一任务下两位用户会产生可预注册的关键决策分歧。</p></div>
+        <div className="decisionGrid">
+          <article><span>50</span><h3>双语 tasks</h3><p>全部进入可复现资源池；Health、Finance、Law 未经专家审查不进入核心结果。</p></article>
+          <article><span>25</span><h3>Structured personas</h3><p>保留 volunteer-grounded 来源标签；不能把模拟 context 写成真人自然轨迹。</p></article>
+          <article><span>501</span><h3>候选用户对</h3><p>逐对审核 must-change / must-hold / must-not / clarify，最终选择约 12–20 个核心 family。</p></article>
+        </div>
+      </section>
 
       <section className="shell gapSection">
         <p className="sectionTag">CASE / TASK / USER TRUTH</p>
@@ -84,14 +94,14 @@ export default function Home() {
 
       <section className="shell gapSection" id="novelty"><p className="sectionTag">NEAREST-NEIGHBOR BOUNDARY</p><div className="sectionHead"><h2>Clarification 不是 novelty；paired-user measurement 才必须用结果证明</h2><p>DeepAlign 不能声称首次研究个性化 Deep Research 或主动澄清。</p></div><div className="sourceGrid">{papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}</div></section>
 
-      <section className="decision shell" id="deadline"><p className="sectionTag">FIVE-DAY THESIS FREEZE</p><div className="sectionHead"><h2>最迟 2026-08-17 冻结方向</h2><p>ICLR 2027 摘要 9 月 11 日 AOE、全文 9 月 16 日 AOE；当前约剩 30/35 天。</p></div><div className="decisionGrid"><article><span>01</span><h3>解除合规访问阻塞</h3><p>使用受支持账户/地区的 GPT-5 key，从已冻结 smoke 断点继续；不绕过 provider terms。</p></article><article><span>02</span><h3>双人盲评</h3><p>独立判断 absolute fit、decision adoption 与 matched/swapped。</p></article><article><span>03</span><h3>补到 3 family</h3><p>至少 2/3 的 paired-user 真值稳定；否则收窄 judge-validity 或换题。</p></article></div></section>
+      <section className="decision shell" id="deadline"><p className="sectionTag">ICLR 2027 WEEKLY EXECUTION</p><div className="sectionHead"><h2>9 月 13 日前完成结果与 9 页初稿</h2><p>官方节点：摘要 9 月 18 日 AOE、全文 9 月 25 日 AOE；9 月 13 日后不新增 metric、paradigm 或 domain。</p></div><div className="decisionGrid"><article><span>W1</span><h3>3 个完整 family</h3><p>冻结 evidence、ledger、contracts、rubric leaves、反例报告，并完成双人盲评。</p></article><article><span>W2–3</span><h3>小矩阵后扩样本</h3><p>先验证重分类与人评一致性，再从 501 对中筛到 12–20 个核心 family。</p></article><article><span>W4–6</span><h3>统计、复现、投稿</h3><p>family-level 统计与 9 页初稿；随后只做冻结、独立复现、匿名和结论威胁修复。</p></article></div></section>
 
-      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">READING EDITIONS</p><div className="sectionHead"><h2>DeepAlign-Bench v0.50 四个同步版本</h2><p>统一 episode schema 与第一批数据已经进入正式方法。</p></div><div className="editionGrid">
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">READING EDITIONS</p><div className="sectionHead"><h2>DeepAlign-Bench v0.51 四个同步版本</h2><p>PDR 资源池、反事实筛选和逐周执行已经进入正式方法。</p></div><div className="editionGrid">
         <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整方法、文献、rubric、环境、风险和实验记录。</p><div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div></article>
         <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>适合快速判断 thesis、实验、证据等级和 go/no-go。</p><div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
         <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 case、task、persona、channel、rubric、公式和统计。</p><div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div></article>
         <article><span>ADVISOR BRIEF</span><h3>汇报精简版</h3><p>15–20 分钟导师汇报结构，含最小实验与五天决策。</p><div className="editionLinks"><a href="/DeepAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_汇报精简版.docx" download>Word</a></div></article>
-      </div><div className="schemaDownloads"><a href="/case.schema.yaml" download>Case schema ↓</a><a href="/research_episode.schema.yaml" download>Episode schema ↓</a><a href="/seed_v0_50_families.yaml" download>Seed families ↓</a><a href="/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
+      </div><div className="schemaDownloads"><a href="/case.schema.yaml" download>Case schema ↓</a><a href="/research_episode.schema.yaml" download>Episode schema ↓</a><a href="/seed_v0_50_families.yaml" download>Seed families ↓</a><a href="/pdr_candidate_pair_audit.csv" download>PDR 501-pair audit ↓</a><a href="/ICLR2027_weekly_plan.md" download>每周计划 ↓</a><a href="/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
 
       <footer className="closing"><div className="shell closingGrid"><div><p className="eyebrow">CLAIM BOUNDARY</p><h2>只主张最终交付物的反事实用户特异性</h2></div><p>不声称模型内部真正理解用户；不把本地 Qwen pilot 写成官方 PDR 失败；不把 clarification 包装成首次研究。</p></div></footer>
     </main>

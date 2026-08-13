@@ -2,9 +2,9 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.50 · 2026 年 8 月 14 日
+版本：v0.51 · 2026 年 8 月 14 日
 定位：Benchmark / Evaluation / Personalized Agents
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.50
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.51
 
 ---
 
@@ -64,6 +64,8 @@ Persona 从真实任务出发，不从“丰满人物故事”出发。每条用
 4. **P4：**研究中在控制 checkpoint 注入覆盖旧事实的更新，测 replanning、旧状态清除与未变事实保持。
 
 系统不支持 ask、memory retrieval 或 checkpoint 时标记 `structurally-inapplicable`，不能算零分。P1 的 persona/history 可进入 cue-equivalence；P2/P4 改变了获取或时序机制，不能机械视为等价 cue。v0.50 已生成 3 个纯合成工程 family、6 位用户和 24 个平衡 episode，并通过结构校验；它们只用于 schema/runner/rubric vertical slice，真实用户效度尚未建立。
+
+v0.51 又完整导入 [PDR-Bench](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 公开的 50 tasks、25 structured personas、25 contexts 和 250 官方 task-user pairs，并展开为 501 个同任务候选用户对。Structured persona 来自志愿者自填后的去标识化衍生数据；dynamic context 是专业标注者模拟，不能统称真人轨迹。原配对只作为候选池：主实验仍需人工选择会导向不同关键决定的 A/B，冻结四类 contract。Health/Finance/Law 在专家审查前不进入核心结果。公开数据另有 task 8=4 users、task 10=6 users 的配额异常，原样保留并报告。
 
 ## 5. 运行条件与反例校准
 
@@ -127,11 +129,11 @@ Clarification 不是 novelty 主张。[IDRBench](https://arxiv.org/abs/2601.0667
 
 ## 9. 五天冻结与执行计划
 
-[ICLR 2027 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines) 给出的摘要截止为 2026-09-11 AOE、全文截止为 2026-09-16 AOE。[[6]](https://iclr.cc/Conferences/2027/AuthorGuidelines) 从 2026-08-12 起约剩 30/35 天。因此最迟应在 8 月 17 日冻结 thesis、最近邻边界、主指标 profile、family 原语和 go/no-go 证据。
+[ICLR 2027 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines) 当前给出的摘要截止为 2026-09-18 AOE、全文截止为 2026-09-25 AOE。[[6]](https://iclr.cc/Conferences/2027/AuthorGuidelines) 从 2026-08-14 起约剩 35/42 天。因此最迟仍应在 8 月 17 日冻结 thesis、最近邻边界、主指标 profile、family 原语和 go/no-go 证据。
 
 五天内必须完成：解除 GPT-5 合规访问阻塞并复现现有 artifacts；完成两名盲化人评；确认至少 2 个 family 的 paired-user 真值稳定；冻结主统计和反例定义。若 8 月 17 日前仍无 GPT-5/真人复现，应停止“PDR false-positive”强 claim，改做更窄的 personalization judge validity，或换题。
 
-之后六周：第 1 周冻结 3 个完整 family 与人评；第 2–3 周扩到 12–24 family 并跑 2–3 个系统；第 4 周完成 judge calibration 和 family-level 统计；第 5 周补少量 decision/channel validation；第 6 周冻结结果、论文、主图和匿名 artifact。
+逐周执行：8/17–23 完成 3 个完整 family 与人评；8/24–30 跑 P0/P1/P2 和一个 P4 anchor；8/31–9/6 从 501 个候选对中扩到 12–16 个核心 family（最多 20）；9/7–13 完成系统运行、judge calibration、family-level 统计和 9 页初稿；9/14–18 冻结结果并提交真实摘要；9/19–25 只做复现、匿名、引用和终稿。不能把 50×5×4×多系统做成笛卡尔积。
 
 ## 参考文献
 

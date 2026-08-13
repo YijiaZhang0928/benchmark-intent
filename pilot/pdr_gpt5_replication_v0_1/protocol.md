@@ -5,6 +5,8 @@
 
 结果解释修正案冻结日期：2026-08-13。修正案发生在任何 GPT-5 completion、criteria 或 P-Score 产生之前，不修改 artifact、prompt、重复次数或数值阈值。
 
+2026-08-14 再次执行 OpenRouter smoke，仍在 inference 前返回同一类 provider Terms of Service 403；没有生成 rubric 或分数。Runner 现增加官方 OpenAI API transport，固定 `gpt-5-2025-08-07`，只改变合法传输端点，不改变冻结材料、prompt、重复次数、阈值或解释门。获得官方 key 后运行：`python3 pilot/pdr_gpt5_replication_v0_1/run_replication.py smoke --transport openai --key-file api_keys.txt`。
+
 ## 1. 本轮到底复现什么
 
 本轮只复现 PDR-Bench 的 Personalization Alignment（P-Score）主链：

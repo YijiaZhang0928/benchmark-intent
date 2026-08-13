@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.50（统一 Research Episode + 首批 seed 数据）
+## 当前方向：DeepAlign-Bench v0.51（PDR 全量资源池 + 反事实筛选 + 投稿排期）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据、工具和预算相同时，最终交付物是否真的因目标用户不同而作出正确且有益的改变。
 
@@ -14,13 +14,17 @@ v0.49 冻结结果解释边界：general-good 高分只证明绝对适配不能�
 
 v0.50 将一次性运行、研究前主动澄清、研究中交互、checkpoint 更新、memory retrieval、private workspace 和草稿反馈统一表示为带时间的信息事件 episode。首版主矩阵只运行 P0 task-only closed、P1 one-shot direct、P2 pre-research clarification、P4 checkpoint update；其他范式作为扩展，不做完整笛卡尔积。`data/seed_v0_50/` 已生成 3 个纯合成工程 family、6 位用户和 24 个平衡 episode，并通过结构校验；这些数据只用于 vertical slice，不能作为真实用户效度证据。
 
+v0.51 完整导入 PDR-Bench 公开的 50 tasks、25 structured personas、25 annotator-simulated contexts 和 250 官方 task-user pairs，保存上游 commit、哈希与许可证，并展开成 501 个同任务用户对供人工反事实筛选。全量导入不等于全量主实验：目标主集约 12–20 个通过决策分歧、contract、证据和人评门的 family。GPT-5 OpenRouter smoke 在 2026-08-14 再次于 inference 前被 provider Terms of Service 403 阻断；runner 已增加官方 OpenAI API transport，等待合规 key。
+
 ## 当前交付物
 
-- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.png)：3200×1800 导师汇报主图，覆盖 case/task/user 元数据、统一 research episode、rubric compiler、2×2 交叉矩阵、五道非补偿门、首批 seed 与 Introduction 证据门；同名 SVG 可编辑。
+- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png)：3200×1800 导师汇报主图，覆盖 PDR 全量资源池、case/task/user 元数据、统一 research episode、rubric compiler、2×2 交叉矩阵、五道非补偿门、首批 seed 与逐周证据门；同名 SVG 可编辑。
 - [`benchmark_schema/research_episode.schema.yaml`](benchmark_schema/research_episode.schema.yaml)：统一 Deep Research 范式、信息事件和系统能力资格的机器可读 schema。
 - [`data/seed_v0_50/README.md`](data/seed_v0_50/README.md)：第一批 3-family / 24-episode 合成工程数据与校验入口。
+- [`data/pdr_import_v0_51/README.md`](data/pdr_import_v0_51/README.md)：PDR 全量公开资源池、501 对筛选表、来源哈希、许可证和验证入口。
+- [`proposal/DeepAlign-Bench_ICLR2027每周执行计划.md`](proposal/DeepAlign-Bench_ICLR2027每周执行计划.md)：从 8 月 14 日到 9 月 25 日的逐周交付与停止条件。
 - [`deliverables/DeepAlign-Bench_正式研究Proposal.pdf`](deliverables/DeepAlign-Bench_正式研究Proposal.pdf)：完整方法、文献、schema 与实验记录；同名 DOCX 可编辑。
-- [`deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`](deliverables/DeepAlign-Bench_正式Proposal精简版.pdf)：7 页正式精简版；同名 DOCX 可编辑。
+- [`deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`](deliverables/DeepAlign-Bench_正式Proposal精简版.pdf)：8 页正式精简版；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_完整人话版.pdf`](deliverables/DeepAlign-Bench_完整人话版.pdf)：不省略术语含义的直白解释；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_汇报精简版.pdf`](deliverables/DeepAlign-Bench_汇报精简版.pdf)：15–20 分钟导师汇报版；同名 DOCX 可编辑。
 - [`deliverables/DeepAlign-Bench_HTML汇报版.html`](deliverables/DeepAlign-Bench_HTML汇报版.html)：单文件离线汇报入口。

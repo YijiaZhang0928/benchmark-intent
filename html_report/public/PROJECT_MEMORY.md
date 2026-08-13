@@ -3,10 +3,24 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-08-14
-当前版本：v0.50（统一 Research Episode schema，并开始 3-family / 24-episode seed 数据）
+当前版本：v0.51（PDR 全量资源池、GPT-5 再次阻塞、ICLR 逐周计划）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0R. 2026-08-14：PDR 全量资源池、GPT-5 重试与 ICLR 排期
+
+用户希望先跑 24 个 episode，再全量使用 PDR tasks/personas，并要逐周投稿计划。审计结论是：24 个 seed 只有任务/用户/episode 骨架，没有冻结 evidence pack 或 agent report，所以不能直接运行 PDR P-Score；它们目前只可用于 schema/interaction runner。真正冻结且可供 PDR evaluator 压力测试的是旧的 4-family/20-report 包。
+
+2026-08-14 对冻结包再次执行 OpenRouter GPT-5 smoke。四次尝试仍全部在 inference 前返回 provider Terms of Service 403，completed inference/criteria/score 均为 0；没有科学结果。Runner 已增加官方 OpenAI `gpt-5-2025-08-07` direct transport，`api_keys.txt` 当前没有 `openai:` 条目，因此等待导师 key 后从 smoke 续跑，不改变 artifacts/prompts/thresholds。
+
+PDR-Bench 官方仓库 commit `5b43f9f188c747d154fc7666812ab93b7ca6a3c2` 的公开资源已全量导入 `data/pdr_import_v0_51/`：50 tasks、25 structured personas、25 contexts、250 中英文一致的 task-user pairs。Structured personas 是志愿者自填后去标识化的衍生数据；contexts 是专业标注者模拟，不能写成真实自然轨迹。250 pairs 展开成 501 个同任务用户对等待人工筛选。公开数据 task 8 有 4 users、task 10 有 6 users，其余 48 tasks 各 5 users；异常原样保留。
+
+数据策略冻结为“完整资源池、筛选后的主实验”：PDR 原配对只证明用户认为任务相关，不证明两用户会导向可预注册的关键决策分歧。每个核心 family 仍要冻结最小 A/B facts、must-change/hold/not/clarify、evidence 和 matched/swapped reference。主集目标 12–20 family、每个两用户；P0/P1/P2 核心，P4 只做 2–4 anchors。Health/Finance/Law 共 15 tasks 无领域专家时不进主结果。缺覆盖再补招 0–4 个志愿者 task，不默认大量自造 persona。
+
+ICLR 官网当前日期更新为 abstract 2026-09-18 AOE、paper 2026-09-25 AOE，主文 9 页。8/17 仍是内部 thesis freeze；8/23 完成 3 full families，8/30 完成端到端最小系统实验，9/6 锁核心数据，9/13 锁统计和初稿，9/18 提交真实摘要，9/25 投稿。详细停止条件见 `proposal/DeepAlign-Bench_ICLR2027每周执行计划.md`。
+
+v0.51 已同步到正式、8 页正式精简、人话、导师汇报、3200×1800 主图和 standalone HTML。四个 DOCX 已渲染为 PDF/逐页 PNG 并检查；正式精简版为 8 页，低于 10 页上限。PDR 导入校验与 3-family seed 校验均通过；HTML 的生产构建和 2 个渲染测试通过。新版图和报告把 `schema PASS` 与 `measurement validity` 明确分开。
 
 ## 0Q. 2026-08-14：统一所有 Deep Research 交互范式并开始造数据
 

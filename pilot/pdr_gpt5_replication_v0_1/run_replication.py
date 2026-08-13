@@ -18,6 +18,7 @@ import re
 import ssl
 import statistics
 import time
+import os
 import urllib.error
 import urllib.request
 from collections import defaultdict
@@ -75,17 +76,18 @@ def verify_sources() -> dict:
     return manifest
 
 
-def read_key(key_file: Path) -> str:
+def read_key(key_file: Path, labels: tuple[str, ...] = ("openrouter-gpt-5",)) -> str:
     if not key_file.exists():
         raise FileNotFoundError(key_file)
     for line in key_file.read_text(encoding="utf-8-sig").splitlines():
-        match = re.match(r"\s*openrouter-gpt-5\s*[:：]\s*(\S+)\s*$", line, re.I)
+        label_pattern = "|".join(re.escape(label) for label in labels)
+        match = re.match(rf"\s*(?:{label_pattern})\s*[:：]\s*(\S+)\s*$", line, re.I)
         if match:
             key = match.group(1).strip()
             if len(key) < 20:
                 raise ValueError("OpenRouter key is unexpectedly short")
             return key
-    raise ValueError("No 'openrouter-gpt-5:' entry found in key file")
+    raise ValueError(f"No supported key label found in key file: {', '.join(labels)}")
 
 
 def extract_json(text: str, expected_type: type | None = None) -> Any:
@@ -280,6 +282,71 @@ class OpenRouterClient:
                 if attempt < retries:
                     time.sleep([2, 5, 12][min(attempt - 1, 2)])
         raise RuntimeError(f"API request failed after {retries} attempts: {last_error}")
+
+
+class OfficialOpenAIClient:
+    """Minimal Chat Completions transport for the frozen official GPT-5 snapshot."""
+
+    def __init__(self, key_file: Path, manifest: dict):
+        spec = manifest["official_openai"]
+        self.endpoint = spec["endpoint"]
+        self.model = spec["requested_model"]
+        self.provider_policy = {}
+        env_key = os.environ.get("OPENAI_API_KEY", "").strip()
+        self.key = env_key or read_key(key_file, (spec["key_label"], "openai-api-key"))
+
+    def get(self, path: str) -> dict:
+        request = urllib.request.Request(
+            f"https://api.openai.com{path}",
+            headers={"Authorization": f"Bearer {self.key}"},
+        )
+        with urllib.request.urlopen(request, timeout=90, context=TLS_CONTEXT) as response:
+            return json.loads(response.read().decode("utf-8"))
+
+    def request(self, prompt: str, cache_path: Path, retries: int = 4, provider_policy: dict | None = None) -> dict:
+        # Keep direct-OpenAI responses physically separate from OpenRouter caches.
+        # The logical prompt path remains comparable, while provenance can never be
+        # confused by a prior response written through another transport.
+        cache_path = cache_path.with_name(f"{cache_path.stem}.openai_direct{cache_path.suffix}")
+        if cache_path.exists():
+            return load_json(cache_path)
+        request_payload = {"model": self.model, "messages": [{"role": "user", "content": prompt}]}
+        request_hash = hashlib.sha256(json.dumps({"transport": "openai_direct", **request_payload}, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+        last_error = None
+        for attempt in range(1, retries + 1):
+            request = urllib.request.Request(
+                self.endpoint,
+                data=json.dumps(request_payload, ensure_ascii=False).encode("utf-8"),
+                method="POST",
+                headers={"Authorization": f"Bearer {self.key}", "Content-Type": "application/json"},
+            )
+            started = time.monotonic()
+            try:
+                with urllib.request.urlopen(request, timeout=600, context=TLS_CONTEXT) as response:
+                    payload = json.loads(response.read().decode("utf-8"))
+                choice = payload["choices"][0]
+                record = {
+                    "request_hash": request_hash, "requested_model": self.model,
+                    "provider_policy": {}, "transport": "openai_direct",
+                    "response_id": payload.get("id"), "model": payload.get("model"),
+                    "provider": "openai", "system_fingerprint": payload.get("system_fingerprint"),
+                    "usage": payload.get("usage", {}),
+                    "latency_seconds": round(time.monotonic() - started, 3),
+                    "finish_reason": choice.get("finish_reason"),
+                    "content": choice["message"].get("content", ""),
+                }
+                if "gpt-5" not in str(record.get("model") or "").lower():
+                    raise RuntimeError(f"Unexpected direct model: {record.get('model')!r}")
+                dump_json(cache_path, record)
+                return record
+            except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, RuntimeError, KeyError, json.JSONDecodeError) as exc:
+                last_error = exc
+                if isinstance(exc, urllib.error.HTTPError):
+                    detail = exc.read().decode("utf-8", errors="replace")[:1500]
+                    last_error = RuntimeError(f"HTTP {exc.code}: {detail}")
+                if attempt < retries:
+                    time.sleep([2, 5, 12][min(attempt - 1, 2)])
+        raise RuntimeError(f"Official OpenAI API request failed after {retries} attempts: {last_error}")
 
 
 def parsed_call(client: OpenRouterClient, prompt: str, path: Path, expected_type: type, retries: int = 4) -> tuple[Any, dict]:
@@ -615,6 +682,7 @@ def main() -> None:
     parser.add_argument("stage", choices=["prepare", "diagnose", "route-diagnose", "smoke", "criteria", "score", "analyze", "all"])
     parser.add_argument("--key-file", type=Path, default=Path("api_keys.txt"))
     parser.add_argument("--workers", type=int, default=6)
+    parser.add_argument("--transport", choices=["openrouter", "openai"], default="openrouter")
     args = parser.parse_args()
     manifest = verify_sources()
     if args.stage in {"prepare", "all"}:
@@ -624,7 +692,7 @@ def main() -> None:
     prompts = download_official_prompts(manifest)
     if args.stage == "analyze":
         analyze(); return
-    client = OpenRouterClient(args.key_file.resolve(), manifest)
+    client = OfficialOpenAIClient(args.key_file.resolve(), manifest) if args.transport == "openai" else OpenRouterClient(args.key_file.resolve(), manifest)
     if args.stage == "diagnose":
         diagnose(client); return
     if args.stage == "route-diagnose":

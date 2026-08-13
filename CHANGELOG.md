@@ -1,5 +1,15 @@
 # benchmark-intent 设计迭代记录
 
+## v0.51 PDR resource pool and ICLR weekly execution - 2026-08-14
+
+- 完整导入 PDR-Bench 公开的 50 tasks、25 structured personas、25 annotator-simulated contexts 和 250 task-user pairs，冻结上游 commit、文件哈希与 Apache-2.0 许可证。
+- 生成 50-family intake、250-pair inventory 与 501 个同任务候选用户对的反事实审核表；明确原配对不是 DeepAlign gold，并记录 task 8=4 users、task 10=6 users 的上游配额异常。
+- 数据规模收敛为完整资源池 + 约 12–20 个核心 family；P0/P1/P2 为主，P4 只做 2–4 anchors；Health/Finance/Law 未经专家审查不进核心结果。
+- 2026-08-14 再次重试冻结 GPT-5 smoke，仍在 inference 前被 OpenRouter provider terms 403 阻断；新增官方 OpenAI `gpt-5-2025-08-07` transport，等待合规 key。
+- 核对 ICLR 官网当前期限为摘要 2026-09-18 AOE、全文 2026-09-25 AOE、主文 9 页；新增从 8/14 到 9/25 的逐周交付、资源上限与停止条件。
+- 同步 proposal、8 页精简版、人话版、导师 brief、3200×1800 主图、standalone HTML、DOCX/PDF 和项目记忆；四个 DOCX 已逐页渲染检查，HTML 生产构建与渲染测试通过。
+- 官方 OpenAI 与 OpenRouter 结果缓存使用不同文件名，防止未来把不同 transport 的响应误当成同一次复现。
+
 ## v0.50 unified research episodes and first seed data - 2026-08-14
 
 - 将“一次性、主动澄清、中途提问、memory/workspace、动态更新”从混合 channel 列表重构为统一 research episode：初始充分性、交互时机、来源、载体/访问方式、时间/更新关系与系统能力资格正交记录。

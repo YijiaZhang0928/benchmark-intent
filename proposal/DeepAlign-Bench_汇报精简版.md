@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.50 · 2026 年 8 月 14 日
+版本：v0.51 · 2026 年 8 月 14 日
 建议时长：15–20 分钟
 
 ---
@@ -46,6 +46,8 @@
 P3/P5/P6/P7 是扩展条件，不做全组合。产品不支持 ask/memory/checkpoint 时记 structurally-inapplicable，不记零分。Clarification 不是论文 novelty 主线。
 
 第一批数据已完成结构稿：3 个合成工程 family × 2 users × 4 paradigms = 24 episodes，已通过自动结构校验；尚未通过真实用户与证据包效度门。
+
+PDR 全量公开资源也已导入：50 tasks、25 structured personas、25 simulated contexts、250 官方 pairs，并展开为 501 个同任务候选用户对。原 paired query 不是 DeepAlign gold；要人工挑出会改变关键决定的 A/B 并冻结 contracts。目标是 12–20 个核心 family，而不是跑 50×5×4 的笛卡尔积。Health/Finance/Law 未经专家审查不进主结果。
 
 ## 3. 核心实验矩阵
 
@@ -110,7 +112,7 @@ P3/P5/P6/P7 是扩展条件，不做全组合。产品不支持 ask/memory/check
 
 ## 8. 五天是否必须定方向
 
-是，建议把 2026-08-17 设为 thesis freeze。ICLR 2027 摘要 9 月 11 日 AOE、全文 9 月 16 日 AOE；从 8 月 12 日约剩 30/35 天。
+是，建议把 2026-08-17 设为 thesis freeze。ICLR 2027 官网当前日期为摘要 9 月 18 日 AOE、全文 9 月 25 日 AOE；从 8 月 14 日约剩 35/42 天。
 
 五天内完成：
 
@@ -121,11 +123,13 @@ P3/P5/P6/P7 是扩展条件，不做全组合。产品不支持 ask/memory/check
 
 失败处理：若 general-good 分歧仅是 Qwen 幻觉，或人类不能稳定区分 matched/swapped，就停止“PDR false-positive”强 claim；收窄为 personalization judge validity，或在 8 月 17 日前换题。
 
+逐周交付：8/17–23 完成 3 个完整 family；8/24–30 完成两个系统的端到端最小实验；8/31–9/6 扩到 12–16 核心 family；9/7–13 锁评分、统计和论文初稿；9/14–18 锁结果、主图、匿名 artifact 并提交摘要；9/19–25 只做复现审计和终稿。
+
 ## 9. 需要导师拍板
 
 1. 是否同意把“absolute adaptation 不等于 counterfactual specificity”冻结为主 thesis；
 2. 是否能在五天内获得合规可用的 GPT-5 访问和两名盲化标注者；
-3. 主论文优先做 12–24 family 的测量有效性，decision trial 只做小而强的外部验证，还是反过来；
+3. 主论文优先做 12–20 family 的测量有效性，decision trial 只做小而强的外部验证，还是反过来；
 4. 如果五天复现失败，是否接受立即收窄而不是继续标题级换题。
 
 ## 参考文献

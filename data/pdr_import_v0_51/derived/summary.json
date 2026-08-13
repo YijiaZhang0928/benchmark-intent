@@ -1,0 +1,42 @@
+{
+  "tasks": 50,
+  "personas": 25,
+  "official_pairs": 250,
+  "domains": {
+    "Career": 5,
+    "Creative": 5,
+    "Education": 5,
+    "Finance": 5,
+    "Health": 5,
+    "Law": 5,
+    "Parenting": 5,
+    "Real Estate": 5,
+    "Shopping": 5,
+    "Travel": 5
+  },
+  "candidate_users_per_task_distribution": {
+    "4": 1,
+    "5": 48,
+    "6": 1
+  },
+  "pair_count_anomalies": {
+    "8": [
+      "User9",
+      "User11",
+      "User18",
+      "User20"
+    ],
+    "10": [
+      "User8",
+      "User9",
+      "User11",
+      "User18",
+      "User19",
+      "User20"
+    ]
+  },
+  "candidate_user_pairs_for_audit": 501,
+  "deepalign_pairs_selected": 0,
+  "core_families_ready": 0,
+  "interpretation": "complete upstream pool imported; no counterfactual pair is gold until human audit and contracts are frozen"
+}

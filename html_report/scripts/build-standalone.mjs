@@ -7,12 +7,12 @@ const outPath = resolve(root, "deliverables/DeepAlign-Bench_HTML汇报版.html")
 
 const css = (await readFile(resolve(siteRoot, "app/globals.css"), "utf8"))
   .replace(/^@import\s+["']tailwindcss["'];?\s*/m, "");
-const flowchart = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.png"));
+const flowchart = await readFile(resolve(siteRoot, "public/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png"));
 const flowchartData = `data:image/png;base64,${flowchart.toString("base64")}`;
 
 function localize(body) {
   return body
-    .replaceAll('src="/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.png"', `src="${flowchartData}"`)
+    .replaceAll('src="/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png"', `src="${flowchartData}"`)
     .replaceAll('href="/DeepAlign-Bench_正式研究Proposal.pdf"', 'href="./DeepAlign-Bench_正式研究Proposal.pdf"')
     .replaceAll('href="/DeepAlign-Bench_正式研究Proposal.docx"', 'href="./DeepAlign-Bench_正式研究Proposal.docx"')
     .replaceAll('href="/DeepAlign-Bench_正式Proposal精简版.pdf"', 'href="./DeepAlign-Bench_正式Proposal精简版.pdf"')
@@ -21,7 +21,9 @@ function localize(body) {
     .replaceAll('href="/DeepAlign-Bench_完整人话版.docx"', 'href="./DeepAlign-Bench_完整人话版.docx"')
     .replaceAll('href="/DeepAlign-Bench_汇报精简版.pdf"', 'href="./DeepAlign-Bench_汇报精简版.pdf"')
     .replaceAll('href="/DeepAlign-Bench_汇报精简版.docx"', 'href="./DeepAlign-Bench_汇报精简版.docx"')
-    .replaceAll('href="/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.svg"', 'href="./DeepAlign-Bench_整体框架与PDR压力测试_v0.50.svg"')
+    .replaceAll('href="/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.svg"', 'href="./DeepAlign-Bench_整体框架与PDR压力测试_v0.51.svg"')
+    .replaceAll('href="/pdr_candidate_pair_audit.csv"', 'href="../data/pdr_import_v0_51/derived/candidate_pair_audit.csv"')
+    .replaceAll('href="/ICLR2027_weekly_plan.md"', 'href="../proposal/DeepAlign-Bench_ICLR2027每周执行计划.md"')
     .replaceAll('href="/research_episode.schema.yaml"', 'href="../benchmark_schema/research_episode.schema.yaml"')
     .replaceAll('href="/seed_v0_50_families.yaml"', 'href="../data/seed_v0_50/families.yaml"')
     .replaceAll('href="/case.schema.yaml"', 'href="./case.schema.yaml"')

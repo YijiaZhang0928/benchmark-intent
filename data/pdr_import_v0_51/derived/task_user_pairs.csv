@@ -1,0 +1,251 @@
+query_id,task_id,domain,user_id,source_pair,deepalign_role
+1,1,Education,User1,pdr_official,candidate_only
+2,1,Education,User3,pdr_official,candidate_only
+3,1,Education,User5,pdr_official,candidate_only
+4,1,Education,User11,pdr_official,candidate_only
+5,1,Education,User18,pdr_official,candidate_only
+6,2,Education,User2,pdr_official,candidate_only
+7,2,Education,User4,pdr_official,candidate_only
+8,2,Education,User5,pdr_official,candidate_only
+9,2,Education,User6,pdr_official,candidate_only
+10,2,Education,User7,pdr_official,candidate_only
+11,3,Education,User5,pdr_official,candidate_only
+12,3,Education,User10,pdr_official,candidate_only
+13,3,Education,User11,pdr_official,candidate_only
+14,3,Education,User18,pdr_official,candidate_only
+15,3,Education,User20,pdr_official,candidate_only
+16,4,Education,User8,pdr_official,candidate_only
+17,4,Education,User9,pdr_official,candidate_only
+18,4,Education,User18,pdr_official,candidate_only
+19,4,Education,User19,pdr_official,candidate_only
+20,4,Education,User21,pdr_official,candidate_only
+21,5,Education,User1,pdr_official,candidate_only
+22,5,Education,User2,pdr_official,candidate_only
+23,5,Education,User5,pdr_official,candidate_only
+24,5,Education,User6,pdr_official,candidate_only
+25,5,Education,User7,pdr_official,candidate_only
+26,6,Career,User9,pdr_official,candidate_only
+27,6,Career,User11,pdr_official,candidate_only
+28,6,Career,User15,pdr_official,candidate_only
+29,6,Career,User18,pdr_official,candidate_only
+30,6,Career,User20,pdr_official,candidate_only
+31,7,Career,User10,pdr_official,candidate_only
+32,7,Career,User11,pdr_official,candidate_only
+33,7,Career,User12,pdr_official,candidate_only
+34,7,Career,User18,pdr_official,candidate_only
+35,7,Career,User19,pdr_official,candidate_only
+36,8,Career,User9,pdr_official,candidate_only
+37,8,Career,User11,pdr_official,candidate_only
+38,8,Career,User18,pdr_official,candidate_only
+39,8,Career,User20,pdr_official,candidate_only
+40,9,Career,User8,pdr_official,candidate_only
+41,9,Career,User9,pdr_official,candidate_only
+42,9,Career,User11,pdr_official,candidate_only
+43,9,Career,User18,pdr_official,candidate_only
+44,9,Career,User20,pdr_official,candidate_only
+45,10,Career,User8,pdr_official,candidate_only
+46,10,Career,User9,pdr_official,candidate_only
+47,10,Career,User11,pdr_official,candidate_only
+48,10,Career,User18,pdr_official,candidate_only
+49,10,Career,User19,pdr_official,candidate_only
+50,10,Career,User20,pdr_official,candidate_only
+51,11,Health,User1,pdr_official,candidate_only
+52,11,Health,User4,pdr_official,candidate_only
+53,11,Health,User11,pdr_official,candidate_only
+54,11,Health,User13,pdr_official,candidate_only
+55,11,Health,User18,pdr_official,candidate_only
+56,12,Health,User2,pdr_official,candidate_only
+57,12,Health,User5,pdr_official,candidate_only
+58,12,Health,User9,pdr_official,candidate_only
+59,12,Health,User15,pdr_official,candidate_only
+60,12,Health,User20,pdr_official,candidate_only
+61,13,Health,User10,pdr_official,candidate_only
+62,13,Health,User16,pdr_official,candidate_only
+63,13,Health,User19,pdr_official,candidate_only
+64,13,Health,User21,pdr_official,candidate_only
+65,13,Health,User24,pdr_official,candidate_only
+66,14,Health,User3,pdr_official,candidate_only
+67,14,Health,User4,pdr_official,candidate_only
+68,14,Health,User7,pdr_official,candidate_only
+69,14,Health,User14,pdr_official,candidate_only
+70,14,Health,User22,pdr_official,candidate_only
+71,15,Health,User2,pdr_official,candidate_only
+72,15,Health,User10,pdr_official,candidate_only
+73,15,Health,User15,pdr_official,candidate_only
+74,15,Health,User22,pdr_official,candidate_only
+75,15,Health,User23,pdr_official,candidate_only
+76,16,Travel,User1,pdr_official,candidate_only
+77,16,Travel,User5,pdr_official,candidate_only
+78,16,Travel,User7,pdr_official,candidate_only
+79,16,Travel,User9,pdr_official,candidate_only
+80,16,Travel,User14,pdr_official,candidate_only
+81,17,Travel,User10,pdr_official,candidate_only
+82,17,Travel,User16,pdr_official,candidate_only
+83,17,Travel,User17,pdr_official,candidate_only
+84,17,Travel,User19,pdr_official,candidate_only
+85,17,Travel,User21,pdr_official,candidate_only
+86,18,Travel,User8,pdr_official,candidate_only
+87,18,Travel,User10,pdr_official,candidate_only
+88,18,Travel,User12,pdr_official,candidate_only
+89,18,Travel,User19,pdr_official,candidate_only
+90,18,Travel,User22,pdr_official,candidate_only
+91,19,Travel,User1,pdr_official,candidate_only
+92,19,Travel,User7,pdr_official,candidate_only
+93,19,Travel,User15,pdr_official,candidate_only
+94,19,Travel,User18,pdr_official,candidate_only
+95,19,Travel,User25,pdr_official,candidate_only
+96,20,Travel,User1,pdr_official,candidate_only
+97,20,Travel,User5,pdr_official,candidate_only
+98,20,Travel,User8,pdr_official,candidate_only
+99,20,Travel,User11,pdr_official,candidate_only
+100,20,Travel,User14,pdr_official,candidate_only
+101,21,Finance,User10,pdr_official,candidate_only
+102,21,Finance,User11,pdr_official,candidate_only
+103,21,Finance,User12,pdr_official,candidate_only
+104,21,Finance,User16,pdr_official,candidate_only
+105,21,Finance,User19,pdr_official,candidate_only
+106,22,Finance,User13,pdr_official,candidate_only
+107,22,Finance,User14,pdr_official,candidate_only
+108,22,Finance,User15,pdr_official,candidate_only
+109,22,Finance,User18,pdr_official,candidate_only
+110,22,Finance,User19,pdr_official,candidate_only
+111,23,Finance,User8,pdr_official,candidate_only
+112,23,Finance,User9,pdr_official,candidate_only
+113,23,Finance,User11,pdr_official,candidate_only
+114,23,Finance,User14,pdr_official,candidate_only
+115,23,Finance,User20,pdr_official,candidate_only
+116,24,Finance,User10,pdr_official,candidate_only
+117,24,Finance,User12,pdr_official,candidate_only
+118,24,Finance,User13,pdr_official,candidate_only
+119,24,Finance,User17,pdr_official,candidate_only
+120,24,Finance,User24,pdr_official,candidate_only
+121,25,Finance,User5,pdr_official,candidate_only
+122,25,Finance,User11,pdr_official,candidate_only
+123,25,Finance,User12,pdr_official,candidate_only
+124,25,Finance,User14,pdr_official,candidate_only
+125,25,Finance,User18,pdr_official,candidate_only
+126,26,Creative,User2,pdr_official,candidate_only
+127,26,Creative,User4,pdr_official,candidate_only
+128,26,Creative,User7,pdr_official,candidate_only
+129,26,Creative,User9,pdr_official,candidate_only
+130,26,Creative,User13,pdr_official,candidate_only
+131,27,Creative,User2,pdr_official,candidate_only
+132,27,Creative,User7,pdr_official,candidate_only
+133,27,Creative,User13,pdr_official,candidate_only
+134,27,Creative,User14,pdr_official,candidate_only
+135,27,Creative,User15,pdr_official,candidate_only
+136,28,Creative,User1,pdr_official,candidate_only
+137,28,Creative,User2,pdr_official,candidate_only
+138,28,Creative,User7,pdr_official,candidate_only
+139,28,Creative,User10,pdr_official,candidate_only
+140,28,Creative,User12,pdr_official,candidate_only
+141,29,Creative,User10,pdr_official,candidate_only
+142,29,Creative,User13,pdr_official,candidate_only
+143,29,Creative,User15,pdr_official,candidate_only
+144,29,Creative,User18,pdr_official,candidate_only
+145,29,Creative,User19,pdr_official,candidate_only
+146,30,Creative,User7,pdr_official,candidate_only
+147,30,Creative,User9,pdr_official,candidate_only
+148,30,Creative,User12,pdr_official,candidate_only
+149,30,Creative,User14,pdr_official,candidate_only
+150,30,Creative,User15,pdr_official,candidate_only
+151,31,Shopping,User4,pdr_official,candidate_only
+152,31,Shopping,User9,pdr_official,candidate_only
+153,31,Shopping,User14,pdr_official,candidate_only
+154,31,Shopping,User17,pdr_official,candidate_only
+155,31,Shopping,User23,pdr_official,candidate_only
+156,32,Shopping,User8,pdr_official,candidate_only
+157,32,Shopping,User11,pdr_official,candidate_only
+158,32,Shopping,User13,pdr_official,candidate_only
+159,32,Shopping,User18,pdr_official,candidate_only
+160,32,Shopping,User19,pdr_official,candidate_only
+161,33,Shopping,User4,pdr_official,candidate_only
+162,33,Shopping,User7,pdr_official,candidate_only
+163,33,Shopping,User12,pdr_official,candidate_only
+164,33,Shopping,User13,pdr_official,candidate_only
+165,33,Shopping,User21,pdr_official,candidate_only
+166,34,Shopping,User2,pdr_official,candidate_only
+167,34,Shopping,User10,pdr_official,candidate_only
+168,34,Shopping,User18,pdr_official,candidate_only
+169,34,Shopping,User23,pdr_official,candidate_only
+170,34,Shopping,User25,pdr_official,candidate_only
+171,35,Shopping,User1,pdr_official,candidate_only
+172,35,Shopping,User6,pdr_official,candidate_only
+173,35,Shopping,User8,pdr_official,candidate_only
+174,35,Shopping,User11,pdr_official,candidate_only
+175,35,Shopping,User14,pdr_official,candidate_only
+176,36,Real Estate,User10,pdr_official,candidate_only
+177,36,Real Estate,User12,pdr_official,candidate_only
+178,36,Real Estate,User13,pdr_official,candidate_only
+179,36,Real Estate,User16,pdr_official,candidate_only
+180,36,Real Estate,User19,pdr_official,candidate_only
+181,37,Real Estate,User8,pdr_official,candidate_only
+182,37,Real Estate,User11,pdr_official,candidate_only
+183,37,Real Estate,User14,pdr_official,candidate_only
+184,37,Real Estate,User18,pdr_official,candidate_only
+185,37,Real Estate,User20,pdr_official,candidate_only
+186,38,Real Estate,User10,pdr_official,candidate_only
+187,38,Real Estate,User11,pdr_official,candidate_only
+188,38,Real Estate,User12,pdr_official,candidate_only
+189,38,Real Estate,User18,pdr_official,candidate_only
+190,38,Real Estate,User19,pdr_official,candidate_only
+191,39,Real Estate,User16,pdr_official,candidate_only
+192,39,Real Estate,User22,pdr_official,candidate_only
+193,39,Real Estate,User23,pdr_official,candidate_only
+194,39,Real Estate,User24,pdr_official,candidate_only
+195,39,Real Estate,User25,pdr_official,candidate_only
+196,40,Real Estate,User10,pdr_official,candidate_only
+197,40,Real Estate,User12,pdr_official,candidate_only
+198,40,Real Estate,User16,pdr_official,candidate_only
+199,40,Real Estate,User21,pdr_official,candidate_only
+200,40,Real Estate,User24,pdr_official,candidate_only
+201,41,Law,User10,pdr_official,candidate_only
+202,41,Law,User13,pdr_official,candidate_only
+203,41,Law,User19,pdr_official,candidate_only
+204,41,Law,User21,pdr_official,candidate_only
+205,41,Law,User22,pdr_official,candidate_only
+206,42,Law,User1,pdr_official,candidate_only
+207,42,Law,User11,pdr_official,candidate_only
+208,42,Law,User12,pdr_official,candidate_only
+209,42,Law,User18,pdr_official,candidate_only
+210,42,Law,User21,pdr_official,candidate_only
+211,43,Law,User10,pdr_official,candidate_only
+212,43,Law,User11,pdr_official,candidate_only
+213,43,Law,User18,pdr_official,candidate_only
+214,43,Law,User19,pdr_official,candidate_only
+215,43,Law,User20,pdr_official,candidate_only
+216,44,Law,User10,pdr_official,candidate_only
+217,44,Law,User13,pdr_official,candidate_only
+218,44,Law,User16,pdr_official,candidate_only
+219,44,Law,User19,pdr_official,candidate_only
+220,44,Law,User21,pdr_official,candidate_only
+221,45,Law,User4,pdr_official,candidate_only
+222,45,Law,User6,pdr_official,candidate_only
+223,45,Law,User13,pdr_official,candidate_only
+224,45,Law,User22,pdr_official,candidate_only
+225,45,Law,User24,pdr_official,candidate_only
+226,46,Parenting,User10,pdr_official,candidate_only
+227,46,Parenting,User12,pdr_official,candidate_only
+228,46,Parenting,User13,pdr_official,candidate_only
+229,46,Parenting,User16,pdr_official,candidate_only
+230,46,Parenting,User17,pdr_official,candidate_only
+231,47,Parenting,User10,pdr_official,candidate_only
+232,47,Parenting,User12,pdr_official,candidate_only
+233,47,Parenting,User13,pdr_official,candidate_only
+234,47,Parenting,User16,pdr_official,candidate_only
+235,47,Parenting,User17,pdr_official,candidate_only
+236,48,Parenting,User10,pdr_official,candidate_only
+237,48,Parenting,User12,pdr_official,candidate_only
+238,48,Parenting,User13,pdr_official,candidate_only
+239,48,Parenting,User16,pdr_official,candidate_only
+240,48,Parenting,User17,pdr_official,candidate_only
+241,49,Parenting,User10,pdr_official,candidate_only
+242,49,Parenting,User12,pdr_official,candidate_only
+243,49,Parenting,User13,pdr_official,candidate_only
+244,49,Parenting,User16,pdr_official,candidate_only
+245,49,Parenting,User17,pdr_official,candidate_only
+246,50,Parenting,User10,pdr_official,candidate_only
+247,50,Parenting,User12,pdr_official,candidate_only
+248,50,Parenting,User13,pdr_official,candidate_only
+249,50,Parenting,User16,pdr_official,candidate_only
+250,50,Parenting,User17,pdr_official,candidate_only

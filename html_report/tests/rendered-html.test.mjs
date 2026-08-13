@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the DeepAlign-Bench v0.50 report", async () => {
+test("server-renders the DeepAlign-Bench v0.51 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -23,20 +23,24 @@ test("server-renders the DeepAlign-Bench v0.50 report", async () => {
   assert.match(html, /P2 Pre-research clarification/);
   assert.match(html, /P4 Checkpoint update/);
   assert.match(html, /3-family \/ 24-episode/);
+  assert.match(html, /501/);
+  assert.match(html, /9 月 18 日 AOE/);
+  assert.match(html, /9 月 25 日 AOE/);
   assert.match(html, /CFA_min/);
   assert.match(html, /General-good 近 matched/);
   assert.match(html, /当前没有 GPT-5 completion、criteria 或分数/);
   assert.match(html, /Introduction 证据门/);
-  assert.match(html, /FIVE-DAY THESIS FREEZE/);
-  assert.match(html, /src="\/DeepAlign-Bench_整体框架与PDR压力测试_v0\.50\.png"/i);
+  assert.match(html, /ICLR 2027 WEEKLY EXECUTION/);
+  assert.match(html, /src="\/DeepAlign-Bench_整体框架与PDR压力测试_v0\.51\.png"/i);
   assert.match(html, /href="\/DeepAlign-Bench_正式Proposal精简版\.pdf"/i);
   assert.match(html, /href="\/case\.schema\.yaml"/i);
   assert.match(html, /href="\/research_episode\.schema\.yaml"/i);
   assert.match(html, /href="\/seed_v0_50_families\.yaml"/i);
+  assert.match(html, /href="\/pdr_candidate_pair_audit\.csv"/i);
   assert.doesNotMatch(html, /ElicitAlign-Bench/);
 });
 
-test("keeps v0.50 schemas, seed and downloadable artifacts in sync", async () => {
+test("keeps v0.51 resources, schemas, seed and downloadable artifacts in sync", async () => {
   const [schema, metrics, episodeSchema, seed] = await Promise.all([
     readFile(new URL("../public/case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/metric_binding.schema.yaml", import.meta.url), "utf8"),
@@ -52,8 +56,10 @@ test("keeps v0.50 schemas, seed and downloadable artifacts in sync", async () =>
   assert.match(seed, /F0503_research_literature_workflow/);
 
   await Promise.all([
-    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.png", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.50.svg", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.svg", import.meta.url)),
+    access(new URL("../public/pdr_candidate_pair_audit.csv", import.meta.url)),
+    access(new URL("../public/ICLR2027_weekly_plan.md", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_正式研究Proposal.docx", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_正式研究Proposal.pdf", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_正式Proposal精简版.docx", import.meta.url)),
