@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.52 · 2026 年 8 月 14 日
+版本：v0.53 · 2026 年 8 月 14 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
@@ -20,7 +20,9 @@ Deep Research 智能体已经能检索、综合并生成长报告，PDR-Bench �
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
-投稿版本先完成 3 个完整 family 的官方 judge + 真人校准，再把 Phase A artifact 主实验扩到约 16–20 个通过反事实筛选的 family；其中约 8–12 个可冻结真实决策效用的 family 进入 Phase B 真人验证，并比较 2–3 条 agent 管线。v0.50 不再把 structured persona、clarification、memory 和中途更新混写成平级“渠道”，而是把每次 Deep Research 运行统一建模为一个 **research episode**：任务初始信息是否充分、用户何时可交互、信息由谁产生、通过什么载体进入上下文、何时可用、能否更新，以及系统是否具备相应的 ask/retrieve/checkpoint/revise 能力。不同产品范式只是这些轴的配置。首版只运行四个可解释的核心条件：`P0 task-only closed`、`P1 one-shot direct`、`P2 pre-research clarification`、`P4 checkpoint update`；中途提问、memory retrieval、private workspace 与 draft-feedback revision 先进入扩展库，不做完整笛卡尔积。v0.51 又完整导入 PDR-Bench 的公开资源池，但不把原有 task-user 配对直接视作 DeepAlign 反事实真值。
+投稿版本先完成 3 个完整 family 的官方 judge + 真人校准，再把 Phase A artifact 主实验扩到约 16–20 个通过反事实筛选的 family；其中约 8–12 个可冻结真实决策效用的 family 进入 Phase B 真人验证，并比较 2–3 条 agent 管线。v0.50 不再把 structured persona、clarification、memory 和中途更新混写成平级“渠道”，而是把每次 Deep Research 运行统一建模为一个 **research episode**：任务初始信息是否充分、用户何时可交互、信息由谁产生、通过什么载体进入上下文、何时可用、能否更新，以及系统是否具备相应的 ask/retrieve/checkpoint/revise 能力。不同产品范式只是这些轴的配置。v0.53 进一步收缩首稿：主矩阵只要求 `P0 task-only closed`、`P1 one-shot direct` 和 `P2 pre-research clarification`，分别测通用上限、已知用户信息的使用，以及信息缺失时是否主动发现并获取决策相关差异。`P4 user-state checkpoint update` 只在 2–4 个公开证据 anchor 上作次要稳健性测试；memory、private workspace、企业私有材料和 draft-feedback revision 全部延期，不再阻塞首稿。
+
+这条主线不能声称 agent 内部“在意”或“关心”用户；黑箱 benchmark 无法识别动机。可证伪的行为表述是：**当一份通用报告已经可以完成表面任务、但仍缺少会改变最终决定的用户事实时，agent 是否主动询问高价值问题，并在获得答案后把它落实到交付物。** P2 因而比一般证据冲突更直接地测 user-specificity sensitivity；P4 只能测当前用户状态变化后的响应与旧状态清除，不能被写成“agent 更关心用户”的独立证据。
 
 **一句话研究目标：**在固定任务、证据、工具和预算时，检验 Deep Research agent 的最终交付物是否同时具有双向反事实用户特异性、绝对合格、相对通用回答的真实收益、共同质量 no-harm 和边界安全；只主张可观察的交付物特异性，不声称模型内部“真正理解用户”。
 
@@ -32,7 +34,7 @@ Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counter
 
 **RQ2（充分性）：**matched 报告本身是否绝对合格，并且相对同样高质量的 task-only/general-good 报告带来超过噪声的新增收益？
 
-**RQ3（范式鲁棒性）：**同一隐藏 user state 在一次性直接提供、主动澄清、执行中更新或外部 memory/workspace 检索等 research episode 中被获得时，系统排序和关键决策是否稳定；差异来自信息使用、主动获取还是状态更新？
+**RQ3（主动用户特异性）：**当初始 query 足以生成一份高质量通用报告、但隐藏了 1–3 个会改变最终决定的用户事实时，agent 是否会主动询问高信息价值、低打扰的问题，并在回答后达到接近 P1 oracle 的交付物特异性？在少量 P4 anchor 上，已明确更新的用户事实能否替代旧状态，而共同事实保持不变？
 
 **RQ4（测量效度与后果）：**PDR-style absolute adaptation、DeepAlign specificity profile 与少量 family 的真人采用/decision regret 如何对应；哪些 general-good、over-personalized、mention-only 报告会暴露 judge 假阳性？
 
@@ -234,7 +236,9 @@ v0.50 把一次运行表示为：
 5. **时间与状态**：静态、延迟出现、更新、过期冲突或权限撤销；新事件必须明确是否覆盖旧事件。
 6. **系统能力资格**：是否能 ask、retrieve memory、搜索 workspace、checkpoint/resume、根据反馈 revise、写回 memory。系统不支持某操作时标记 `structurally-inapplicable`，不能记作零分。
 
-范式库定义八种常见配置：`P0 task-only closed`、`P1 one-shot direct`、`P2 pre-research clarification`、`P3 in-research interactive`、`P4 checkpoint update`、`P5 memory retrieval`、`P6 workspace grounded`、`P7 draft-feedback revision`。这是覆盖 ontology，不是首版运行矩阵。主因果矩阵只选择 P0/P1/P2/P4：分别回答没有用户信息时能写多好、信息给到后会不会用、信息缺失时会不会主动问并采用、状态变化后会不会更新且清除旧结论。P3/P5/P6/P7 等 E3 vertical slice 跑通后按 family 适用性加入。
+范式库定义八种常见配置：`P0 task-only closed`、`P1 one-shot direct`、`P2 pre-research clarification`、`P3 in-research interactive`、`P4 user-state checkpoint update`、`P5 memory retrieval`、`P6 workspace grounded`、`P7 draft-feedback revision`。这是覆盖 ontology，不是首版运行矩阵。首稿主因果矩阵只选择 P0/P1/P2：分别回答没有用户信息时能写多好、信息给到后会不会用、信息缺失时会不会主动发现并采用。P4 只在 2–4 个适用 anchor 上测试**用户状态更新**；P3/P5/P6/P7 以及私有 workspace 全部标为 `deferred`。
+
+这里必须把两种“更新”分开。若供应链新闻、法规文本或网页事实发生变化，主要测的是一般 evidence freshness、冲突解析和研究修订能力；它不是 personalization 证据。P4 只有在公共证据、任务目标和工具保持不变，而预算、可用时间、知识水平、风险门槛、目标受众或披露权限等 **user-state fact** 发生带时间戳的明确变化时，才进入 DeepAlign 主张。即使这样，P4 也只支持“更新后的用户特异约束被使用”，不支持对内部动机的推断。
 
 比较时必须写出 `comparability block`：任务、证据、工具、预算、用户真值和交付契约中哪些保持不变，本次只改变哪一项。P1 与 natural-history 可以在相同事实和相同时点下比较载体；P2 相对 P1 额外包含主动获取，因此不能叫纯 cue-equivalence；P5 若检索到的信息不完整或更晚可用，也不能与 prompt 条件直接解释为“memory 格式效应”。
 
@@ -399,7 +403,7 @@ v0.51 已从 [PDR-Bench 官方仓库](https://github.com/OPPO-PersonalAI/Persona
 | ID | 固定的共同任务与交付物 | 两位自然用户之间真正会改变答案的轴 | 主要补齐的结构空白 / 首选 episode |
 |---|---|---|---|
 | N01 | 为一个研究组选择文献检索、筛选、笔记、引用与更新工作流；交付比较表、SOP 和迁移计划 | A：带 2–3 人小项目的博士生，预算低、希望快速上手；B：多人实验室负责人，要求权限、复现、审计和成员交接 | 学术工作流、可复现性；P1/P2 |
-| N02 | 审计一篇公开论文及其代码/数据是否值得复现；交付复现范围、资源估算、风险登记和 go/no-go memo | A：小实验室、单卡与八周窗口；B：工业研究团队、算力充足但有数据和安全限制 | 论文—代码—数据联合证据、可验证计划；P1/P6 |
+| N02 | 审计一篇公开论文及其代码/数据是否值得复现；交付复现范围、资源估算、风险登记和 go/no-go memo | A：小实验室、单卡与八周窗口；B：工业研究团队、算力充足但有数据和安全限制 | 公开论文—代码—数据联合证据、可验证计划；P1/P2 |
 | N03 | 为同一多语言应用选择数据集、模型和评价方案；交付 evidence map、benchmark plan 和部署建议 | A：低资源语言、端侧运行、标注预算小；B：英语为主、云端高吞吐、可购买数据 | 技术选择随资源/语言改变，不只是讲解深度；P1/P2 |
 | N04 | 设计一项 HCI/agent 用户研究；交付研究问题、样本与任务、测量、分析和伦理风险计划 | A：硕士生，只能远程招募少量参与者；B：产品研究员，有大规模日志但不能随机干预 | 研究设计、方法约束、可执行性；P2 |
 | N05 | 对同一技术想法做 prior-art 与竞争格局研究；交付时间线、相近工作矩阵和下一步验证清单 | A：学术作者，关心可发表新意与复现；B：创业产品负责人，关心差异化、上市窗口和需交专业人士处理的 FTO 风险 | 相同证据、不同决策用途；P1 |
@@ -408,14 +412,14 @@ v0.51 已从 [PDR-Bench 官方仓库](https://github.com/OPPO-PersonalAI/Persona
 | N08 | 结合公开市场资料与内部销售记录评估进入一个新地区；交付 market-entry memo、情景表和试点门槛 | A：现金流紧张的初创公司；B：已有渠道但品牌风险高的成熟业务单元 | 公私证据融合、组织风险；P2/P6 |
 | N09 | 从用户访谈、产品指标和流失表定位主要流失原因；交付证据链、分群、干预优先级和监测计划 | A：产品经理，优先可快速验证的体验改进；B：财务负责人，优先回收期和收入风险 | 表格 + 访谈、同分析不同行动效用；P1/P6 |
 | N10 | 为同一团队选择知识库迁移方案；交付架构、迁移批次、权限映射、成本和回滚计划 | A：小团队、无专职运维；B：跨国组织、严格数据驻留与离职权限回收 | 技术/组织共同个性化；P2/P6 |
-| N11 | 审计一个共享数据集是否可用于下游分析；交付数据质量报告、可执行检查脚本/工作簿和修复计划 | A：运营分析师，要做趋势看板；B：机器学习工程师，要训练预测模型并防止标签泄漏 | 数据与代码交付、确定性 verifier；P1 |
+| N11 | 审计一个共享数据集是否可用于下游分析；交付数据质量报告、可执行检查脚本/工作簿和修复计划 | A：运营分析师，要做趋势看板；B：机器学习工程师，要训练预测模型并防止标签泄漏 | 数据与代码交付、确定性 verifier；P1/P2 |
 | N12 | 为一个既定产品需求选择 API/开源组件并设计集成方案；交付 comparison、最小原型计划和维护风险 | A：独立开发者，重视开发速度与低运维；B：平台团队，重视 SLA、版本治理、可观测性和供应链安全 | 可执行技术工作产品；P2 |
 | N13 | 为同一 AI 功能设计发布前 benchmark；交付任务切片、指标、门槛、红队样本和发布决策规则 | A：增长团队，希望两周内得到可用信号；B：安全/质量团队，需要最坏切片、校准和人工升级门 | 评价设计本身的个性化、风险门槛；P1/P2 |
 | N14 | 研究并重做一份公共服务信息材料；交付内容审计、信息架构、可访问版本和验证清单 | A：依赖屏幕阅读器的熟练用户；B：低识字、非母语、主要用手机的用户 | accessibility 不是装饰偏好，而改变媒介、顺序和验证；P2 |
-| N15 | 为同一供应链事件形成影响评估和未来两周行动表；中途注入一条改变严重度的新证据 | A：运营负责人，关心交付连续性和替代采购；B：可持续发展负责人，关心供应商人权/环境承诺和披露 | live/conflicting evidence、状态更新；P4 |
-| N16 | 追踪一项新旧版本并存的监管/平台政策，更新产品落地方案；交付变更表、受影响组件和升级给专家的清单 | A：产品负责人，关心功能与时间线；B：合规负责人，关心证据、控制项和审计留痕 | stale conflict、规则更新；P4 |
-| N17 | 核验一个快速传播、来源冲突的商业/公共事件说法；交付 claim-evidence table、置信度和发布条件 | A：记者，要求可公开归因与更高证实门槛；B：企业风险分析员，允许内部预警但必须标注不确定性 | 时效—错误成本权衡、证据冲突；P2/P4 |
-| N18 | 在资助项目征集规则或截止时间发生更新后，重做申请可行性和工作计划；交付资格矩阵、材料缺口与新版时间线 | A：首次申请的青年研究者；B：管理多个申请的科研行政人员 | 动态规则、知识与工作流差异；P4 |
+| N15 | 为同一供应链事件形成影响评估和未来两周行动表；中途注入一条改变严重度的新证据 | A：运营负责人，关心交付连续性和替代采购；B：可持续发展负责人，关心供应商人权/环境承诺和披露 | 一般动态证据对照；不是 personalization P4，首稿延期 |
+| N16 | 追踪一项新旧版本并存的监管/平台政策，更新产品落地方案；交付变更表、受影响组件和升级给专家的清单 | A：产品负责人，关心功能与时间线；B：合规负责人，关心证据、控制项和审计留痕 | 一般 stale/conflict 对照；不是 personalization P4，首稿延期 |
+| N17 | 核验一个快速传播、来源冲突的商业/公共事件说法；交付 claim-evidence table、置信度和发布条件 | A：记者，要求可公开归因与更高证实门槛；B：企业风险分析员，允许内部预警但必须标注不确定性 | 可保留 P2 用户门槛；动态证据部分延期 |
+| N18 | 在资助项目征集规则或截止时间发生更新后，重做申请可行性和工作计划；交付资格矩阵、材料缺口与新版时间线 | A：首次申请的青年研究者；B：管理多个申请的科研行政人员 | 一般规则更新对照；不是 personalization P4，首稿延期 |
 | N19 | 评估一项公共交通线路调整；交付证据综述、影响矩阵、备选方案和公开说明框架 | A：有无障碍出行需求的通勤者代表；B：受预算和运营约束的交通规划人员 | 多方价值、可访问性、公共决策；P2 |
 | N20 | 评估学校是否采用某类生成式 AI 工具；交付试点方案、风险登记、家长/教师沟通和退出条件 | A：一线教师，关心教学负担与学习效果；B：家长数据隐私代表，关心同意、未成年人数据和申诉 | 同一政策的角色化效用与边界；P2 |
 | N21 | 根据同一组项目成效和成本材料制定非营利项目预算；交付分配方案、敏感性分析与监测指标 | A：一线项目负责人，优先服务连续性；B：资助方报告负责人，优先可证明成效和用途合规 | 多利益相关者资源分配、可计算终点；P1 |
@@ -430,10 +434,23 @@ v0.51 已从 [PDR-Bench 官方仓库](https://github.com/OPPO-PersonalAI/Persona
 ICLR 投稿版建议把资源分成三层：
 
 - **候选资源池：74 个 shell。** PDR 的 50 题全部保留可追溯映射，新增上表 24 题；“进入资源池”不等于具备反事实真值。
-- **正式构造池：约 30 个 family。** 经过准入测试后，优先保留 12 个 PDR-derived 个人/生活 family、12 个新增专业/科研/企业 family、6 个动态/私有/多方结构 anchor，开始真实用户 elicitation 和 evidence-pack 构造。
-- **ICLR 主实验：16–20 个 family。** 建议约 8 个 PDR-derived family、6–8 个新增专业或科研 family、2–4 个动态/私有/多方 anchor。最终数量由 pilot 的 family 方差、真人标注成本和 power simulation 冻结，不为了“看起来大”牺牲每个 family 的真值质量。
+- **当前可构造池：约 20–24 个公开证据 family。** 重点审查约 8–10 个 PDR-derived 个人/学习/职业 family、N01–N05 学术与知识工作 family、N11–N14 数据/代码/可访问交付物 family，再留少量同类型备选。N06–N10 的企业私有材料、N19–N22 的多方角色与尽调、N24 的内部资产/权限全部延期；它们保留在 ontology，但不计入首稿完成度。
+- **ICLR Phase A：16–20 个 family。** 建议约 8 个 PDR-derived family、5 个学术/知识工作 family、3–5 个数据/代码/可访问交付物 family。所有 family 运行 P0/P1/P2；P4 不是新的任务类别，只在其中 2–4 个 family 上增加 user-state update 变体。最终数量由 pilot 的 family 方差、真人标注成本和 power simulation 冻结。
 
-首轮开工不从 24 个里平均抽样。优先制作 N01（科研工作流）、N06（企业软件采购）、N15（动态供应链）和 N19（公共交通多方决策）四个 vertical slice，因为它们分别检验学术、私有/权限、动态更新和多方价值四种 PDR 当前较弱的结构，同时都能构造强通用报告、matched、swapped 和 deliberately-wrong 对照。如果 N19 的目标用户招募或政策效用真值过难，则用 N11（数据质量审计）替代，以获得更强的确定性 verifier。四个 slice 中至少三个通过自然性、matched/swapped 区分力、共同质量和 judge 校准门后，再批量扩展。
+首轮开工不从 24 个里平均抽样。优先制作 N01（科研工作流）、N03（数据集/模型选择）、N11（数据质量审计）和一个低风险 PDR-derived 学习或职业任务。这个组合只需要公开网页、公开论文/仓库和研究者自行制作的非敏感小型表格，就能同时覆盖报告、决策矩阵与可执行 verifier。四个 slice 中至少三个通过自然性、matched/swapped 区分力、P2 澄清价值、共同质量和 judge 校准门后，再批量扩展。
+
+#### 5.0b.4 “动态”不是第四类任务，而是用户状态更新算子
+
+当前主张可以压缩为一条更连贯的能力链：`P1 Use → P2 Acquire → P4 Update`。P1 检查已给出的 task-relevant user facts 是否真正改变交付物；P2 把其中 1–3 个关键事实从初始 query 隐去，检查 agent 是否发现“通用回答虽可写，但还不能为这个用户做决定”，并用尽量少的问题获取它们；P4 再把其中一项当前用户事实明确更新，检查新版交付物是否采用新状态并清除旧结论。P4 是可选的 longitudinal extension，不与 P1/P2 平分论文篇幅。
+
+| P4 变体 | 固定不变 | 唯一更新的 user-state fact | 应变化 / 不应变化 |
+|---|---|---|---|
+| N01-U | 文献工具候选、公开证据、研究目标 | 用户的年度预算或团队协作人数发生明确变化 | 工具排序、迁移批次和付费建议应变；产品事实与证据评价不变 |
+| N03-U | 数据集/模型候选与公开 benchmark | 部署约束从云端改为端侧，或新增目标低资源语言 | 模型/数据选择和评价切片应变；原始性能证据不变 |
+| N11-U | 同一数据集、质量检查结果和交付接口 | 数据用途从内部探索改为对外发布，因而披露权限收紧 | 输出字段、脱敏和发布门槛应变；数据缺失/异常事实不变 |
+| PDR-U | 同一公开搜索证据和基础生活/学习任务 | 用户明确更新预算、可用时间或 accessibility 约束之一 | 方案排序和行动计划应变；共同事实、引用与安全边界不变 |
+
+P4 的必要对照包括：旧状态 only、新状态 only、带 `supersedes` 的旧+新状态，以及同长度但任务无关的状态更新。若 agent 连公共证据更新也处理不好，可以作为一般 DR 能力解释，但不能把这类错误计算为“用户特异性失败”。相反，只有共同 TQ/must-hold 稳定、而当前 user-state adoption 失败时，才支持“用户状态更新未被落实”的行为结论。
 
 ### 5.0c 多篇论文不能直接“杂糅”：先建立 source-to-design ledger
 
@@ -516,7 +533,7 @@ Anchor 的可识别量是**受控扰动敏感度**，不是“用户建模失败
 
 **E3. Stateful Interactive Sandbox（长程压力与机制榜）**
 
-- 为 8 个 anchor 编写事件脚本：初始用户信号、可选澄清回答、工具噪声、固定 handoff checkpoint、时间戳冲突和动态状态更新；
+- 首稿只为 2–4 个公开证据 anchor 编写事件脚本：初始用户信号、可选澄清回答、固定 checkpoint 和一项带 `supersedes` 的 user-state update；私有 workspace、复杂权限图、工具噪声和 multi-agent handoff 延期；
 - user simulator 只按结构化 ledger 回答，不自由编造偏好；若问题超出 ledger，返回 unknown 或升级给真人；
 - runner 使用 `run_until(checkpoint)` 冻结相同前缀，再分叉 clean/perturbed 条件，保证压力比较共享前史；
 - 只接收支持多轮状态或事件注入的系统；商业黑箱若不能导出轨迹仍可做 outcome probe，但不得声称定位内部机制；
@@ -859,7 +876,7 @@ M1–M3 是主论文的三类核心系统；M4–M6 是**架构 probe**，用于
 
 ### 9.3 两个月论文矩阵与扩展路线
 
-**主论文（8 周）**：先完成 3 个端到端 decision vertical slice；通过 task shell 等价、报告质量配平、盲化和 judge 校准门后，Phase A 扩到 16–20 个 artifact family。能够进一步冻结真人效用、utility verifier 和可接受决策集合的约 8–12 个 family 进入 Phase B，暂按约 36–48 名真实目标用户和 2–3 条可比 agent/报告生成管线规划。Phase B 的真人功效优先于 taxonomy 或 agent 数量。长期状态、证据污染和权限只在 2–4 个适用 anchor 上做单因素压力层。
+**主论文（8 周）**：先完成 3 个端到端 decision vertical slice；通过 task shell 等价、报告质量配平、盲化和 judge 校准门后，Phase A 扩到 16–20 个 artifact family。能够进一步冻结真人效用、utility verifier 和可接受决策集合的约 8–12 个 family 进入 Phase B，暂按约 36–48 名真实目标用户和 2–3 条可比 agent/报告生成管线规划。Phase B 的真人功效优先于 taxonomy 或 agent 数量。P4 user-state update 只在 2–4 个公开证据 anchor 上做次要单因素压力层；私有材料、一般 evidence conflict 和复杂权限不进入首稿主矩阵。
 
 核心系统包括：一个商业 Deep Research 产品、一个在统一搜索和工具 harness 中运行的通用 agent、一个可复现的开源 Deep Research agent。代码 agent、多 agent、记忆增强系统和第二个商业产品只在适合的 anchor family 上测试，用来检查外部效度；不会强迫所有系统完成不适用的任务。每个 agent-task 组合提前写明 `eligibility_predicate`，受控 harness 榜和端到端产品榜分开报告。
 
@@ -1074,7 +1091,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `CFA_mean`（跨用户 specificity），纵轴为 `Gain_mean`（相对 task-only benefit）；横纵零线把“只是可区分”“只是普遍变好”“真正有益的个性化”和“有害适配”分开，点形同时标记 `CFA_min/Gain_min` 是否通过双向门槛。B 用 forest/dot plot 分别报 `Δ_a/Δ_b`、`CFA_mean/CFA_min` 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 使用两个共享色标的边际 heatmap，分别报告 `agent × 3 task strata` 和 `agent × 6 research intents` 的 CFA/Gain，并给出 family 数。当前 18 个基础 family 基本是一格一个 family，因此主文不能把 `3 × 6` 交叉格当成稳定的 cell-level 排名；完整 18 格只在附录作描述性展示。D 只在可比 regime 内画 cost–bilateral-success Pareto frontier。A–D 分别对应 specificity、benefit、不确定性、能力拓扑和效率，不合成单一总分。
 
-**Figure 4 · 信号渠道、压力和最终失败。** 四个 panel：A 用 `agent × user-signal condition` heatmap 报 structured persona、natural history、clarification-allowed 和 workspace/history 条件下的 CFA。列标题要区分“直接提供的等价视图”“交互获取”和“环境私有状态”；Cue Gap 与 Worst-view CFA 都只在经过 equivalence audit 的 structured persona 与 natural history 上计算。B 按 S0–S3 绘制各 agent 的 CFA stress response；只有 `CFA_S0 ≥ ε` 时才报告比例型 retention，否则改报 `CFA_Sk − CFA_S0` 和原始 CFA，避免接近零的分母放大噪声。主文只画跨 anchor 汇总及置信区间，逐 anchor 曲线进入附录。C 对每个 outcome failure 独立报告 eligible episode 发生率和 95% CI；failure 是多标签，不能强行堆叠成互斥的 100% 横条。D 用 `anchor family × observed outcome failure` heatmap 显示哪类压力更容易触发用户盲、错误用户绑定、过度个性化、共同核心破坏、冲突/过期误用、隐私/权限和澄清失败，并单列 `other/emergent`。主文不从最终交付物反推内部机制；只有具备可比 trace 的系统，才可在附录报告 acquisition、preservation、use 或 update 的过程证据。
+**Figure 4 · 从“给了会用”到“缺了会问、变了会改”。** 四个 panel：A 用 `agent × P0/P1/P2` heatmap 报 task-only、直接给出完整 user state 与 clarification-allowed 条件下的 CFA/Gain；B 报 P2 的必要问题召回、无关问题率、平均提问轮数和相对 P1 oracle 的交付物差距；C 在 2–4 个 P4 anchor 上画当前 user-state adoption、旧状态残留和 must-hold 稳定性；D 用 `family × observed outcome failure` heatmap 显示用户盲、错误用户绑定、过度个性化、共同核心破坏和澄清失败，并单列 `other/emergent`。workspace/history、私有状态、一般 evidence conflict 和复杂 handoff 不进入首稿 Figure 4。主文不从最终交付物反推内部动机；只有具备可比 trace 的系统，才可在附录报告 acquire/use/update 的过程证据。
 
 **Figure 5 · 自动评价是否可信：JudgeBench 与人类校准。** 四个 panel：A 按 rubric module 报 judge–human pairwise accuracy/α；B 画预测置信度与实际正确率的 calibration/reliability curve；C 报 A/B 顺序、长度、格式、persona 关键词和隐私诱饵造成的准确率变化；D 画“自动覆盖率—人工成本—错误率”级联曲线，并标出预注册主榜门槛。Judge 未过门槛时，本图应直接支持降级为人评，而不是隐藏失败。
 
@@ -1125,7 +1142,7 @@ Gold 优先使用两个真实用户共享同一 invariant task/evidence，但在
 | 环境 | MVP 难度与工期估计 | 最小组件 | 真正难点 | 论文位置 |
 |---|---|---|---|---|
 | E1 Controlled Frozen Harness | 中；约 1.5–2.5 engineer-weeks | frozen corpus/manifest、index/search façade、agent adapter、reset、预算、artifact/trace export、evaluator replay | 证据许可与快照质量；工具公平；失败可复现 | 主因果与主榜轨 |
-| E3 Stateful Sandbox | 难；E1 后追加约 2–4 周 | state service、checkpoint/fork/reset、event scheduler、private workspace/permission、clarification/conflict/update/handoff | 事件前分支等价；未来状态泄漏；时序与权限语义 | 一个薄层 anchor 的机制诊断 |
+| E3 Stateful Sandbox | 中高；E1 后追加约 1–2 周 | state service、checkpoint/fork/reset、clarification answer、单一 user-state update scheduler | 事件前分支等价；未来状态泄漏；旧/新用户事实的覆盖语义 | 2–4 个公开证据 anchor 的薄层机制诊断；private workspace 延期 |
 | E2 Native Live Product/Web | demo 易、科学比较和维护难；每产品约 3–7 天并持续维护 | 单产品 adapter、版本/日期/地区/账户状态、URL/结果快照、成本和 artifact export | 隐藏版本、不可 reset、web 漂移、ToS/导出、预算不可比 | 观察性外部效度，不与 E1 合并显著性 |
 
 这一路线与 ICLR 已接受 benchmark 的工程经验一致：SWE-bench 用真实 issue/PR 与可执行测试建立可验证终点；[[58]](https://openreview.net/pdf/c2a76eb44300a738cbd7cb95f5bc04df621f4d25.pdf) WebArena 用自托管站点、functional validator 和统一 API 保证重置与复现；[[59]](https://openreview.net/pdf?id=oKn9c6ytLx) AstaBench 强调统一工具、时间截断语料、agent-agnostic interface 与成本/工具混杂记录；[[60]](https://arxiv.org/abs/2510.21652) RedTeamCUA 则用 VM 操作系统与 Docker web 的混合环境、checkpoint 和受控 injection 构建状态型测试。[[61]](https://arxiv.org/abs/2505.21936) 因此两个月内应做 E1 全主线、E3 一个事件丰富 anchor、E2 一个产品的描述性 probe；三者同时搭满会显著降低论文完成概率。
@@ -1202,7 +1219,7 @@ ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投�
 | **W0：8/14–8/16** | 冻结论文问题和可运行资源 | PDR 50-task/25-persona/250-pair 导入；501 候选用户对；GPT-5 smoke；选定 3 个 vertical-slice family；两名人评排期 | 无官方 key 时不等待：保留 blocked 记录并先做人评/数据；若 paired-user 构念无法说明，8/17 换题 |
 | **W1：8/17–8/23** | 把 3 个 family 做完整 | 每个 family 的 evidence pack、A/B ledger、四类 contract、rubric leaves、matched/swapped/general/over reference；盲化人评表 | 至少 2/3 family 的人类 matched > swapped 且 critical node 可独立判断；否则重写或淘汰 family |
 | **W2：8/24–8/30** | 完成端到端最小系统实验 | 3 family × 2 users 的 P0/P1/P2；P4 只跑 1 个 stateful anchor；至少两条可比 agent 管线；GPT-5/PDR-style 与 DeepAlign 双评分 | 若 DeepAlign 不造成成功判定变化，也不更贴近人评，降级为 judge-validity 短文；不继续盲目扩数 |
-| **W3：8/31–9/6** | 扩到核心样本并冻结数据 | 冻结 16–20 个 Phase A family（约 8 个 PDR-derived、6–8 个新增专业/科研、2–4 个结构 anchor）；从中冻结 8–12 个 Phase B family；生成全部 P0/P1/P2，P4 仅 2–4 anchors | family 数不足时减少系统和 P4，不用同一 family 的更多 seed 冒充样本量 |
+| **W3：8/31–9/6** | 扩到核心样本并冻结数据 | 冻结 16–20 个 Phase A family（约 8 个 PDR-derived、5 个学术/知识工作、3–5 个数据/代码/可访问交付物）；从中冻结 8–12 个 Phase B family；生成全部 P0/P1/P2，P4 仅在其中 2–4 个 family 增加 user-state update | family 数不足时减少系统和 P4，不用同一 family 的更多 seed 冒充样本量 |
 | **W4：9/7–9/13** | 完成评分、统计和论文骨架 | 两名盲化人评校准子集；family-blocked permutation、family bootstrap；主表、失败地图、PDR 重分类表；9 页论文初稿 | 9/13 后不增加新主指标、新范式或新领域；只允许补预注册缺口 |
 | **W5：9/14–9/18** | 冻结结果并提交真实摘要 | 结果锁、主图、Table 1/2、匿名代码与数据卡、伦理/AI-use/reproducibility statements、9 页主文；**9/18 AOE 提交摘要** | 摘要必须反映真实完成结果；禁止 placeholder，缺结果就收窄 claim |
 | **W6：9/19–9/25** | 终稿与复现包 | 独立复跑、引用审计、泄漏/匿名检查、appendix、supplement、最终 PDF；**9/25 AOE 投稿** | 不再启动新实验，除非修复会推翻主结论的错误 |
