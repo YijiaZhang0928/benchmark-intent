@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.50
+schema_version: 0.54
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -25,6 +25,7 @@ required:
 family_id: string
 
 task:
+  knowledge_work_regime: [open_web_research, repository_software_engineering, data_centric_analysis]
   construction:
     source_seed_id: string
     source_type: [real_user_request, interview_derived, public_task_adapted, expert_authored_control]
@@ -63,6 +64,7 @@ environment:
   execution_regime: [E1_controlled_frozen_harness, E2_native_live_product_web, E3_stateful_interactive_sandbox]
   evidence_regime: [frozen, live_web, private_workspace, hybrid]
   evidence_snapshot_id: string
+  primary_asset_type: [web_corpus_snapshot, repository_snapshot, dataset_snapshot, workbook_snapshot, hybrid_asset_snapshot]
   source_topology: [single_corpus, multi_source, web_plus_private, tool_generated]
   tools: list
   budget:
@@ -186,8 +188,8 @@ research_episode:
 
 agent:
   system_id: string
-  system_mode: [M1_commercial_deep_research, M2_controlled_agent, M3_open_source_deep_research, M4_code_agent, M5_multi_agent, M6_memory_enhanced]
-  system_class: [commercial_deep_research, controlled_harness, open_source_deep_research, code_agent, multi_agent, memory_augmented]
+  system_mode: [M1_commercial_deep_research, M2_controlled_agent, M3_open_source_deep_research, M4_code_agent, M5_multi_agent, M6_memory_enhanced, M7_data_analysis_agent]
+  system_class: [commercial_deep_research, controlled_harness, open_source_deep_research, code_agent, multi_agent, memory_augmented, data_analysis_agent]
   model_or_product_version: string
   run_date: date
   search_backend: string_or_null

@@ -1,5 +1,5 @@
 protocol_name: deepalign_data_factory
-protocol_version: 0.50
+protocol_version: 0.54
 annotation_protocol: construction_annotation.protocol.yaml
 environment_build_protocol: environment_build.protocol.yaml
 status: pre_pilot
@@ -7,6 +7,35 @@ principle: >-
   Do not splice tasks or taxonomies from many papers into one prompt. Convert each
   source into a declared design role, then construct one auditable family from a
   real research seed, a frozen shared world and a minimal counterfactual user pair.
+
+plhkw_sampling_frame:
+  claim_boundary: three_representative_long_horizon_knowledge_work_regimes_not_comprehensive_coverage
+  candidate_pool:
+    total: 180
+    by_regime:
+      open_web_research: 72
+      repository_software_engineering: 54
+      data_centric_analysis: 54
+  provisional_selection:
+    total: 60
+    by_regime:
+      open_web_research: 24
+      repository_software_engineering: 18
+      data_centric_analysis: 18
+    by_source_class:
+      existing_benchmark_derived: 39
+      adapted_real_world: 12
+      newly_authored: 9
+  paper_priority_set:
+    total: 12
+    by_regime:
+      open_web_research: 5
+      repository_software_engineering: 3
+      data_centric_analysis: 4
+  status_rule: >-
+    A provisional shell is not runnable gold. Promotion requires asset-license
+    audit, environment binding, two-human counterfactual screening, frozen
+    contracts and pilot discrimination.
 
 source_role_ledger:
   required_fields:

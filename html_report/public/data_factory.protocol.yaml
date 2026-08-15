@@ -1,5 +1,5 @@
 protocol_name: deepalign_data_factory
-protocol_version: 0.31
+protocol_version: 0.54
 annotation_protocol: construction_annotation.protocol.yaml
 environment_build_protocol: environment_build.protocol.yaml
 status: pre_pilot
@@ -7,6 +7,35 @@ principle: >-
   Do not splice tasks or taxonomies from many papers into one prompt. Convert each
   source into a declared design role, then construct one auditable family from a
   real research seed, a frozen shared world and a minimal counterfactual user pair.
+
+plhkw_sampling_frame:
+  claim_boundary: three_representative_long_horizon_knowledge_work_regimes_not_comprehensive_coverage
+  candidate_pool:
+    total: 180
+    by_regime:
+      open_web_research: 72
+      repository_software_engineering: 54
+      data_centric_analysis: 54
+  provisional_selection:
+    total: 60
+    by_regime:
+      open_web_research: 24
+      repository_software_engineering: 18
+      data_centric_analysis: 18
+    by_source_class:
+      existing_benchmark_derived: 39
+      adapted_real_world: 12
+      newly_authored: 9
+  paper_priority_set:
+    total: 12
+    by_regime:
+      open_web_research: 5
+      repository_software_engineering: 3
+      data_centric_analysis: 4
+  status_rule: >-
+    A provisional shell is not runnable gold. Promotion requires asset-license
+    audit, environment binding, two-human counterfactual screening, frozen
+    contracts and pilot discrimination.
 
 source_role_ledger:
   required_fields:
@@ -56,6 +85,14 @@ construction_stages:
       - write shared acceptance conditions and must-hold facts
       - define deterministic checks where possible
     output: common task and evidence world
+
+  - stage: 2b_freeze_research_paradigm
+    actions:
+      - choose a paradigm from research_episode.schema.yaml before authoring prompts
+      - write the information-event schedule with source origin, carrier, access mode and availability time
+      - record adapter capabilities and mark unsupported paradigms structurally inapplicable
+      - freeze the within-block invariant fields and the single varied mechanism
+    output: research episode specification and comparability block
 
   - stage: 3_build_user_pair
     actions:
@@ -137,3 +174,8 @@ environment_bootstrap_order:
 environment_go_no_go: >-
   Do not bulk-author cases until the E1 vertical slice and one E3 event pass
   end-to-end scoring.
+
+paradigm_sampling_policy:
+  ontology_scope: [P0_task_only_closed, P1_one_shot_direct, P2_pre_research_clarification, P3_in_research_interactive, P4_checkpoint_update, P5_memory_retrieval, P6_workspace_grounded, P7_draft_feedback_revision]
+  first_release_core: [P0_task_only_closed, P1_one_shot_direct, P2_pre_research_clarification, P4_checkpoint_update]
+  rule: define_the_full_space_but_never_run_the_full_cartesian_product

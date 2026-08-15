@@ -1,0 +1,114 @@
+{
+  "pdr_bench": {
+    "title": "PDR-Bench",
+    "url": "https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench",
+    "paper": "https://arxiv.org/abs/2509.25106",
+    "license": "Apache-2.0",
+    "use_policy": "direct_task_reuse_with_attribution",
+    "snapshot": "5b43f9f188c747d154fc7666812ab93b7ca6a3c2"
+  },
+  "deepresearch_bench": {
+    "title": "DeepResearch Bench",
+    "url": "https://github.com/Ayanami0730/deep_research_bench",
+    "paper": "https://arxiv.org/abs/2506.11763",
+    "license": "Apache-2.0",
+    "use_policy": "adapt_prompt_with_attribution",
+    "snapshot": "accessed_2026-08-16"
+  },
+  "researcherbench": {
+    "title": "ResearcherBench",
+    "url": "https://github.com/GAIR-NLP/ResearcherBench",
+    "paper": "https://arxiv.org/abs/2507.16280",
+    "license": "no_repository_license_detected_on_2026-08-16",
+    "use_policy": "structure_only_no_verbatim_prompt_copy",
+    "snapshot": "accessed_2026-08-16"
+  },
+  "livedrbench": {
+    "title": "LiveDRBench",
+    "url": "https://github.com/microsoft/livedrbench",
+    "paper": "https://arxiv.org/abs/2508.04183",
+    "license": "dataset_CDLA-Permissive-2.0; code_MIT",
+    "use_policy": "problem_inversion_and_claim_discovery_structure",
+    "snapshot": "accessed_2026-08-16"
+  },
+  "swe_bench_verified": {
+    "title": "SWE-bench Verified",
+    "url": "https://www.swebench.com/SWE-bench/guides/quickstart/",
+    "paper": "https://arxiv.org/abs/2310.06770",
+    "license": "MIT_harness; repository_specific_code_licenses",
+    "use_policy": "real_repo_shell_and_invariant_test_pattern; personalized_overlay_is_new",
+    "snapshot": "repo_instance_binding_pending"
+  },
+  "paperbench": {
+    "title": "PaperBench",
+    "url": "https://github.com/openai/frontier-evals/tree/main/project/paperbench",
+    "paper": "https://arxiv.org/abs/2504.01848",
+    "license": "mixed; per-paper assets require separate audit",
+    "use_policy": "replication_workflow_structure_only_until_asset_audit",
+    "snapshot": "paper_binding_pending"
+  },
+  "scienceagentbench": {
+    "title": "ScienceAgentBench",
+    "url": "https://github.com/OSU-NLP-Group/ScienceAgentBench",
+    "paper": "https://arxiv.org/abs/2410.05080",
+    "license": "most_tasks_CC-BY-4.0; code_MIT; exceptions_require_audit",
+    "use_policy": "scientific_program_workflow_structure; avoid_exception_instances",
+    "snapshot": "verified_split_binding_pending"
+  },
+  "dabstep": {
+    "title": "DABstep",
+    "url": "https://huggingface.co/datasets/adyen/DABstep",
+    "paper": "https://arxiv.org/abs/2506.23719",
+    "license": "CC-BY-4.0",
+    "use_policy": "multi_source_financial_analysis_structure_with_attribution",
+    "snapshot": "task_binding_pending"
+  },
+  "dsbench": {
+    "title": "DSBench",
+    "url": "https://github.com/LiqiangJing/DSBench",
+    "paper": "https://arxiv.org/abs/2409.07703",
+    "license": "noncommercial_dataset_terms_and_upstream_rights",
+    "use_policy": "structure_only; do_not_redistribute_upstream_data",
+    "snapshot": "task_binding_pending"
+  },
+  "datascibench": {
+    "title": "DataSciBench",
+    "url": "https://github.com/THUDM/DataSciBench",
+    "paper": "https://arxiv.org/abs/2502.13897",
+    "license": "repository_and_dataset_license_audit_pending",
+    "use_policy": "Task-Function-Code_verifier_structure_only",
+    "snapshot": "task_binding_pending"
+  },
+  "spreadsheetbench2": {
+    "title": "SpreadsheetBench 2",
+    "url": "https://github.com/RUCKBReasoning/SpreadsheetBench-2",
+    "paper": "https://arxiv.org/abs/2606.29955",
+    "license": "repository_and_dataset_license_audit_pending",
+    "use_policy": "workflow_structure_only_until_license_and_workbook_audit",
+    "snapshot": "task_binding_pending"
+  },
+  "mle_bench": {
+    "title": "MLE-bench",
+    "url": "https://github.com/openai/mle-bench",
+    "paper": "https://arxiv.org/abs/2410.07095",
+    "license": "MIT_code; Kaggle_competition_terms_apply_to_data",
+    "use_policy": "environment_and_grading_pattern; competition_data_not_redistributed",
+    "snapshot": "competition_binding_pending"
+  },
+  "plhkw_authored": {
+    "title": "DeepAlign/PLHKW author-designed gap fillers",
+    "url": "local",
+    "paper": null,
+    "license": "project_owned",
+    "use_policy": "new_task_shell",
+    "snapshot": "v0.54"
+  },
+  "real_workflow_adaptation": {
+    "title": "Adapted real-world workflow shell",
+    "url": "binding_pending",
+    "paper": null,
+    "license": "source_binding_and_license_audit_required",
+    "use_policy": "no_third_party_text_or_assets_in_v0.54",
+    "snapshot": "binding_pending"
+  }
+}

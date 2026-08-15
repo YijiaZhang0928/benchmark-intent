@@ -1,5 +1,5 @@
 protocol_name: deepalign_construction_annotation
-protocol_version: 0.31
+protocol_version: 0.54
 status: pre_pilot
 purpose: >-
   Separate imported facts, pre-run human judgments, and post-pilot empirical
@@ -17,6 +17,10 @@ annotation_layers:
       - task_stratum
       - stakes_and_reversibility
       - interaction_need
+      - research_paradigm_id
+      - information_event_schedule
+      - source_origin_and_access_mode
+      - adapter_capability_eligibility
       - task_relevance_of_user_facts
       - counterfactual_axes
       - must_change
@@ -34,17 +38,24 @@ annotation_layers:
     policy: never overwrite the pre-run expectation; store expected and observed separately
 
 task_seed_funnel:
-  collect: 60_to_80_real_professional_public_or_interview_seeds
+  collect: 180_normalized_candidate_seeds
+  candidate_regime_quotas: {open_web_research: 72, repository_software_engineering: 54, data_centric_analysis: 54}
   normalize_and_deduplicate: true
-  expert_screen_target: 30_candidates
-  first_vertical_slice: 3_families
-  final_freeze_target: 24_families_subject_to_power_simulation
+  author_stage_provisional_target: 60_families_24_research_18_software_18_data
+  paper_priority_target: 12_families_5_research_3_software_4_data
+  final_freeze_target: only_families_passing_human_environment_and_pilot_gates
   inclusion_gates:
-    - request has a real decision, workflow or knowledge-use context
-    - evidence world and resource budget can be frozen or logged
-    - two users naturally share the invariant task but require distinct delivery choices
-    - must-change can be written before seeing outputs
-    - shared quality and boundary requirements remain judgeable for both users
+    - relevance to a real decision, workflow or knowledge-use context
+    - counterfactual separability between two natural users
+    - invariant task, evidence or asset, tools and resource budget
+    - objective verifier for shared correctness plus user-conditioned utility checks
+    - long-horizon eligibility with dependent steps, multiple valid paths and a complex artifact
+  post_selection_hard_gates:
+    - source_asset_license_audit
+    - evidence_repository_dataset_or_workbook_binding
+    - two_human_counterfactual_screen_and_adjudication
+    - must_change_hold_not_contract_freeze
+    - matched_swapped_and_no_harm_pilot_discrimination
 
 persona_recruitment:
   target_participants: 32_to_40

@@ -2,9 +2,9 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.51（PDR 全量资源池 + 反事实筛选 + 投稿排期）
+## 当前方向：DeepAlign-Bench v0.54（三个代表性长程知识工作场景）
 
-DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据、工具和预算相同时，最终交付物是否真的因目标用户不同而作出正确且有益的改变。
+DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据/仓库/数据、工具和预算相同时，最终研究报告、代码 patch 或分析交付物是否真的因目标用户不同而作出正确且有益的改变。当前只声称跨 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性场景实例化一个共同协议，不声称覆盖所有知识工作。
 
 每个 task family 配对两位都真实合理、但决策约束不同的用户。系统分别生成 task-only、matched-A、matched-B 等报告，再把 A/B 报告交叉放到两位用户的 rubric 下评分。确认性结论必须同时通过四道不能互相抵消的门：双向 counterfactual specificity、matched 相对 task-only 的真实收益、共同质量不下降、隐私/权限不违规。clarification 只是一种 user-information channel：允许从模糊 query 出发询问用户，再检查答案是否从“问到”一路进入计划、报告和最终决定；它不再单独承担 when-to-ask 的论文主张。
 
@@ -16,8 +16,11 @@ v0.50 将一次性运行、研究前主动澄清、研究中交互、checkpoint 
 
 v0.51 完整导入 PDR-Bench 公开的 50 tasks、25 structured personas、25 annotator-simulated contexts 和 250 官方 task-user pairs，保存上游 commit、哈希与许可证，并展开成 501 个同任务用户对供人工反事实筛选。全量导入不等于全量主实验：目标主集约 12–20 个通过决策分歧、contract、证据和人评门的 family。GPT-5 OpenRouter smoke 在 2026-08-14 再次于 inference 前被 provider Terms of Service 403 阻断；runner 已增加官方 OpenAI API transport，等待合规 key。
 
+v0.54 已建立 180 个 normalized candidate seeds（72 DR / 54 Software / 54 Data），并经五道作者阶段门预选 60 个 provisional families（24 / 18 / 18）。来源结构为 39 existing-benchmark-derived、12 adapted-real-world、9 newly-authored；五种个性化信号模式各 12 个。这 60 个是带 provenance、筛选记录与 verifier 计划的任务 shell，不是已可运行 gold；主论文优先完成 12 个（5 DR / 3 Software / 4 Data），然后才将通过许可、环境绑定、双人反事实审查、contract freeze 与 pilot discrimination 的 family 升级。
+
 ## 当前交付物
 
+- [`data/plhkw_task_pool_v0_54/README.md`](data/plhkw_task_pool_v0_54/README.md)：180 候选、60-family provisional selection、来源/许可登记、筛选审计、JSONL/CSV/schema、standalone catalog 和校验入口。
 - [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png)：3200×1800 导师汇报主图，覆盖 PDR 全量资源池、case/task/user 元数据、统一 research episode、rubric compiler、2×2 交叉矩阵、五道非补偿门、首批 seed 与逐周证据门；同名 SVG 可编辑。
 - [`benchmark_schema/research_episode.schema.yaml`](benchmark_schema/research_episode.schema.yaml)：统一 Deep Research 范式、信息事件和系统能力资格的机器可读 schema。
 - [`data/seed_v0_50/README.md`](data/seed_v0_50/README.md)：第一批 3-family / 24-episode 合成工程数据与校验入口。

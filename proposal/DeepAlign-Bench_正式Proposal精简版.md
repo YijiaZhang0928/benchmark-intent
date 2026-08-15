@@ -1,10 +1,10 @@
-# DeepAlign-Bench：个性化 Deep Research 的反事实用户特异性评测
+# DeepAlign-Bench：三个长程知识工作场景中的反事实用户特异性评测
 
 **正式研究 Proposal 精简版**
 
-版本：v0.51 · 2026 年 8 月 14 日
-定位：Benchmark / Evaluation / Personalized Agents
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.51
+版本：v0.54 · 2026 年 8 月 16 日
+定位：Benchmark / Evaluation / Personalized Long-Horizon Knowledge Work
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.54
 
 ---
 
@@ -12,7 +12,9 @@
 
 [PDR-Bench](https://arxiv.org/abs/2509.25106) 已经回答了一个重要问题：给定 task 与 persona，一份 Deep Research 报告在目标、内容、呈现和可行动性上有多适合该用户。[[1]](https://arxiv.org/abs/2509.25106) 但单个 user–task pair 的绝对适配分不能识别另一件事：**固定任务、证据、工具和预算，只改变目标用户后，系统是否会做出方向正确且只对该用户必要的改变。** 高质量通用报告可能对两位用户都高分；大量复述 persona 的报告也可能在最终选择上用错关键约束。
 
-DeepAlign-Bench 为同一 task family 构造两位都真实合理、但有 2–4 个决策相关差异的用户 A/B。系统分别生成 matched-A、matched-B 与 task-only 报告，两套用户标准再交叉评价两份 matched 报告。结果不压成总分，而同时报告：双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量/事实 no-harm，以及隐私与权限 no-violation。v0.50 进一步把一次性报告、主动澄清、中途提问、memory 和动态更新统一成带信息事件时间线的 research episode，避免把交互时机、信息来源与访问方式混成一个 channel 标签。
+DeepAlign-Bench 为同一 task family 构造两位都真实合理、但有 2–4 个决策相关差异的用户 A/B。系统生成 task-only 和两份 matched artifact，两套用户标准再交叉评价。结果不压成总分，而同时报告双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量/事实 no-harm 与边界 no-violation。v0.54 把这一协议谨慎地实例化在 open-web research、repository-level software engineering 和 data-centric analysis 三个场景，对应 `find & synthesize / modify & build / analyze & infer`；不声称穷尽所有知识工作。
+
+v0.54 任务资源池有 180 个候选 seed（72 DR / 54 Software / 54 Data）。五道作者阶段门预选 60 个 provisional family（24 / 18 / 18），来源为 39 benchmark-derived、12 adapted-real-world、9 newly-authored。这 60 个是等待许可审计、环境绑定、双人反事实审查、contract freeze 和 pilot discrimination 的 task shell，不是已可运行 gold。主论文优先完成 12 个端到端 family（5 DR / 3 Software / 4 Data）。
 
 2026-08-12 的两-family、本地 Qwen3-8B PDR-compatible 压力测试给出明确 go 信号：general-good 报告 4/4 次与 matched 相差不超过 0.5 分；over-personalized 报告只有 1/4 次接近 matched，因此不支持“普遍误判”的强 claim；两个 family 的 `A_min` 均很高，但 `CFA_min` 分别为 −1.50 与 0.00，证明绝对合格与双向特异性可以脱钩。该结果不是官方 PDR 复现；下一步必须用经授权的 GPT-5 配置和两名盲化人评复现。
 
@@ -65,7 +67,7 @@ Persona 从真实任务出发，不从“丰满人物故事”出发。每条用
 
 系统不支持 ask、memory retrieval 或 checkpoint 时标记 `structurally-inapplicable`，不能算零分。P1 的 persona/history 可进入 cue-equivalence；P2/P4 改变了获取或时序机制，不能机械视为等价 cue。v0.50 已生成 3 个纯合成工程 family、6 位用户和 24 个平衡 episode，并通过结构校验；它们只用于 schema/runner/rubric vertical slice，真实用户效度尚未建立。
 
-v0.51 又完整导入 [PDR-Bench](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 公开的 50 tasks、25 structured personas、25 contexts 和 250 官方 task-user pairs，并展开为 501 个同任务候选用户对。Structured persona 来自志愿者自填后的去标识化衍生数据；dynamic context 是专业标注者模拟，不能统称真人轨迹。原配对只作为候选池：主实验仍需人工选择会导向不同关键决定的 A/B，冻结四类 contract。Health/Finance/Law 在专家审查前不进入核心结果。公开数据另有 task 8=4 users、task 10=6 users 的配额异常，原样保留并报告。
+v0.51 已完整导入 [PDR-Bench](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 的 50 tasks、25 structured personas、25 contexts 和 250 官方 pairs，并展开为 501 个候选用户对。v0.54 不再默认跑完 50 题，而是选出 12 个 PDR-derived shell 进入 DR provisional set。原配对只说明 task relevance，不保证 counterfactual separability；因此仍需人工冻结用户契约和 evidence world。
 
 ## 5. 运行条件与反例校准
 
@@ -133,7 +135,7 @@ Clarification 不是 novelty 主张。[IDRBench](https://arxiv.org/abs/2601.0667
 
 五天内必须完成：解除 GPT-5 合规访问阻塞并复现现有 artifacts；完成两名盲化人评；确认至少 2 个 family 的 paired-user 真值稳定；冻结主统计和反例定义。若 8 月 17 日前仍无 GPT-5/真人复现，应停止“PDR false-positive”强 claim，改做更窄的 personalization judge validity，或换题。
 
-逐周执行：8/17–23 完成 3 个完整 family 与人评；8/24–30 跑 P0/P1/P2 和一个 P4 anchor；8/31–9/6 从 501 个候选对中扩到 12–16 个核心 family（最多 20）；9/7–13 完成系统运行、judge calibration、family-level 统计和 9 页初稿；9/14–18 冻结结果并提交真实摘要；9/19–25 只做复现、匿名、引用和终稿。不能把 50×5×4×多系统做成笛卡尔积。
+两个月的资源上限固定为优先完成 12 个端到端 family（5 DR / 3 Software / 4 Data），不运行 60×多用户×多条件×多系统的笛卡尔积。三个 vertical 各先完成环境 reset、invariant verifier 和 matched/swapped pilot；效用子集数量由功效模拟冻结。
 
 ## 参考文献
 

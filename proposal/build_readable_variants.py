@@ -16,7 +16,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench",
         "subtitle": "从绝对适配到反事实用户特异性",
         "mode": "正式论文 Proposal 精简版 · 不超过 10 页",
-        "version": "v0.51 · 正式精简版",
+        "version": "v0.54 · 正式精简版",
         "research_line": "Specificity · Adequacy · Benefit · No-Harm · Boundary",
         "claim": "单用户绝对适配分不能证明反事实用户特异性；必须用 paired users、task-only 和非补偿门共同识别。",
         "contents": [
@@ -27,7 +27,7 @@ VARIANTS = [
         "note": "本版保留研究问题、PDR 资源池与筛选、数据原语、多渠道、反例、非补偿评分、最近邻与逐周决策门。",
         "trigger": "1. 核心缺口与主张边界",
         "figure_title": "DeepAlign-Bench 整体研究设计",
-        "figure_caption": "图 1  从 PDR 全量资源池与 paired users，到统一 Research Episode、交叉矩阵、五道非补偿门和逐周证据升级。",
+        "figure_caption": "图 1  180 候选→60 provisional→12 主论文优先 family；DR/Software/Data = 40/30/30。",
         "header": "DEEPALIGN-BENCH  ·  正式 PROPOSAL 精简版",
         "style": "formal_condensed",
         "include_contents": False,
@@ -39,7 +39,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜完整人话版",
         "subtitle": "把绝对适配、反事实特异性和非补偿评分逐步说清楚",
         "mode": "适合组内共识 · 导师讨论 · 正式写作前校验",
-        "version": "v0.51 · 完整人话版",
+        "version": "v0.54 · 完整人话版",
         "research_line": "什么该变 · 两边是否变对 · 是否真增益 · 哪些不能补偿",
         "claim": "报告对一个人看起来不错，不等于系统会随着用户变化而双向正确改变。",
         "contents": [
@@ -50,7 +50,7 @@ VARIANTS = [
         "note": "阅读方式：先看主图和研究概要；第 1–7 节解释数据、渠道、rubric、指标和统计；第 8–10 节给出实验结论与投稿决策。",
         "trigger": "1. 一个 case 到底由什么组成",
         "figure_title": "DeepAlign-Bench：从 paired users 到反事实特异性",
-        "figure_caption": "图 1  同一任务、双用户交叉、统一 Research Episode、非补偿 profile、PDR 资源筛选和逐周执行。",
+        "figure_caption": "图 1  三个场景共享同一反事实协议；60 个 provisional shell 不等于 runnable gold。",
         "header": "DEEPALIGN-BENCH  ·  完整人话版",
         "style": "narrative_proposal",
     },
@@ -61,7 +61,7 @@ VARIANTS = [
         "title": "DeepAlign-Bench｜汇报精简版",
         "subtitle": "15–20 分钟讲清核心构念、最小实验和五天决策门",
         "mode": "导师汇报 · 组会讲解 · 决策讨论",
-        "version": "v0.51 · 汇报精简版",
+        "version": "v0.54 · 汇报精简版",
         "research_line": "Absolute Fit → Cross-User Specificity → Hard Gates → Replication",
         "claim": "PDR 问一份报告对这个人是否合适；DeepAlign 问换用户后报告是否双向正确改变。",
         "contents": [
@@ -71,7 +71,7 @@ VARIANTS = [
         "note": "建议讲法：2 分钟问题、4 分钟数据与渠道、4 分钟矩阵与指标、4 分钟 pilot、3 分钟五天决策。",
         "trigger": "1. Case、Task 与用户真值",
         "figure_title": "DeepAlign-Bench：一张图讲完评测流程",
-        "figure_caption": "图 1  从 PDR 资源池、paired-user family 与统一 Research Episode，到交叉评分、非补偿 profile 和 go/no-go。",
+        "figure_caption": "图 1  从 180 候选到 60 provisional，再到 12 个主论文 family 的可审计升级路径。",
         "header": "DEEPALIGN-BENCH  ·  汇报精简版",
         "style": "compact_reference_guide",
     },
@@ -84,7 +84,7 @@ def build_variant(spec):
     base.COVER_SUBTITLE = spec["subtitle"]
     base.COVER_MODE = spec["mode"]
     base.DOC_VERSION = spec["version"]
-    base.DOC_DATE = "2026 年 8 月 14 日"
+    base.DOC_DATE = "2026 年 8 月 16 日"
     base.RESEARCH_LINE = spec["research_line"]
     base.CORE_CLAIM = spec["claim"]
     base.CONTENTS_ITEMS = spec["contents"]

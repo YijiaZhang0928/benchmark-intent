@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.51 · 2026 年 8 月 14 日
+版本：v0.54 · 2026 年 8 月 16 日
 建议时长：15–20 分钟
 
 ---
@@ -9,7 +9,7 @@
 
 ### 一句话问题
 
-一份报告“对这个用户看起来很好”，并不能证明系统真的会随着目标用户变化而改变最终决策。DeepAlign 固定 task、evidence、tools 和 budget，用 paired users 的 2×2 交叉评分区分 absolute adaptation 与 counterfactual user specificity。
+一份报告、代码 patch 或数据分析“对这个用户看起来很好”，并不能证明系统真的会随着目标用户变化而改变最终交付。DeepAlign 固定 task、evidence/repo/data、tools 和 budget，用 paired users 的 2×2 交叉评分区分 absolute adaptation 与 counterfactual user specificity。
 
 ### 相对 PDR-Bench 的位置
 
@@ -47,7 +47,7 @@ P3/P5/P6/P7 是扩展条件，不做全组合。产品不支持 ask/memory/check
 
 第一批数据已完成结构稿：3 个合成工程 family × 2 users × 4 paradigms = 24 episodes，已通过自动结构校验；尚未通过真实用户与证据包效度门。
 
-PDR 全量公开资源也已导入：50 tasks、25 structured personas、25 simulated contexts、250 官方 pairs，并展开为 501 个同任务候选用户对。原 paired query 不是 DeepAlign gold；要人工挑出会改变关键决定的 A/B 并冻结 contracts。目标是 12–20 个核心 family，而不是跑 50×5×4 的笛卡尔积。Health/Finance/Law 未经专家审查不进主结果。
+v0.54 已建立 180 个候选 seed（72 DR / 54 Software / 54 Data），预选 60 个 provisional family（24 / 18 / 18，即 40/30/30）。来源为 39 benchmark-derived、12 adapted、9 new；其中 12 个 PDR-derived shell 保留直接 continuity。60 个只是等待许可、环境、双人审查、contract 和 pilot 硬门的 sampling frame，不是 runnable gold。主论文先做 12 个端到端 family（5 DR / 3 Software / 4 Data）。
 
 ## 3. 核心实验矩阵
 
@@ -123,13 +123,13 @@ PDR 全量公开资源也已导入：50 tasks、25 structured personas、25 simu
 
 失败处理：若 general-good 分歧仅是 Qwen 幻觉，或人类不能稳定区分 matched/swapped，就停止“PDR false-positive”强 claim；收窄为 personalization judge validity，或在 8 月 17 日前换题。
 
-逐周交付：8/17–23 完成 3 个完整 family；8/24–30 完成两个系统的端到端最小实验；8/31–9/6 扩到 12–16 核心 family；9/7–13 锁评分、统计和论文初稿；9/14–18 锁结果、主图、匿名 artifact 并提交摘要；9/19–25 只做复现审计和终稿。
+执行顺序：先在三个 vertical 各完成一个 environment slice，再将主论文扩到 12 个 family（5/3/4）；优先减少 agent 数、动态 anchor 和真人效用子集，不删掉整个 software 或 data vertical。60-family 全量环境绑定是 benchmark release 路线，不是两个月已完成承诺。
 
 ## 9. 需要导师拍板
 
 1. 是否同意把“absolute adaptation 不等于 counterfactual specificity”冻结为主 thesis；
 2. 是否能在五天内获得合规可用的 GPT-5 访问和两名盲化标注者；
-3. 主论文优先做 12–20 family 的测量有效性，decision trial 只做小而强的外部验证，还是反过来；
+3. 12-family 主论文中真人 decision trial 应放在哪几个反事实分离最强的 family；
 4. 如果五天复现失败，是否接受立即收窄而不是继续标题级换题。
 
 ## 参考文献

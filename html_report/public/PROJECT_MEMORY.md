@@ -2,11 +2,25 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-14
-当前版本：v0.51（PDR 全量资源池、GPT-5 再次阻塞、ICLR 逐周计划）
+最后更新：2026-08-16
+当前版本：v0.54（PLHKW 三场景实例化、180→60 任务资源池）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0S. 2026-08-16：PLHKW 三场景实例化与 180→60 任务资源池
+
+用户重新定位项目：不让 Deep Research 占一半以上，以免被评为“PDR++，外加少量 code/data demo”。当前稳健表述是：在 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性长程知识工作场景中实例化一个共同个性化评价协议，不声称穷尽所有 Personalized Long-Horizon Knowledge Work。
+
+`data/plhkw_task_pool_v0_54/` 已落盘 180 个 normalized candidate seed：DR 72、Software 54、Data 54。经 relevance、counterfactual separability、invariant core、objective verifier、long-horizon 五道作者阶段门，预选 60 个 provisional family：24/18/18，即 40/30/30。来源结构精确为 39 existing-benchmark-derived、12 adapted-real-world、9 newly-authored；explicit constraint、goal/trade-off、knowledge/audience、history-grounded latent preference 和 interactive information acquisition 五种 primary signal mode 各 12 个，防止任务集退化成显式 constraint following。
+
+DR 24 精确分为 6 recommendation/decision、4 literature synthesis、3 open consulting、3 dataset/resource discovery、2 prior-art、2 conflicting evidence、2 temporal update、2 entity/exhaustive search，其中保留 12 个 PDR-derived shell 以维持 continuity。Software 18 分为 5 feature、4 debugging、3 refactor、3 architecture/dependency、3 repo-investigation + modification。Data 18 分为 6 exploratory/business、4 spreadsheet、4 predictive modeling、2 experiment design、2 cleaning/integration。主论文不会立即跑 60 个，而是优先完成 12 个端到端 family（5 DR / 3 Software / 4 Data），后续才扩发 60。
+
+12 个 paper-first 环境绑定优先项已冻结为：DR001、DR008、DR014、DR020、DR022；SW001、SW007、SW013；DA003、DA007、DA011、DA015。选择目标是 reasoning-shape 覆盖、五种 user signal 近似均衡（2/2/3/2/3）和 PDR/其他现有 benchmark/自建 gap 的连续性。它们仍是 priority candidates；任何一题未过许可或环境门，应从相同 vertical/subtype 的 60-family pool 替换并留审计记录，不能降低升级门槛。
+
+重要主张边界：当前 60 个只是带 provenance、任务结构、预期 invariant/user-conditioned verifier 与筛选记录的 **provisional task shells**，尚未绑定可重现 evidence/repository/dataset/workbook，也没有通过双人自然性和 matched/swapped pilot，不得写成“60 个可运行 gold”。升级必须依次通过：源资产许可审计、环境绑定、双人反事实审查与仲裁、contract freeze、pilot discrimination/no-harm。ResearcherBench、DSBench、DataSciBench 和 SpreadsheetBench 2 当前只借鉴结构，未审许可前不复制原 prompt/data；SWE-bench、PaperBench、ScienceAgentBench、DABstep 和 MLE-bench 需逐资产核对上游权利。
+
+当前最大实证开放问题：（1）双人审查后各 vertical 有多少 shell 真的具备反事实可分性；（2）code 的 user-conditioned 评价能否超越显式 constraint tests，并在共同测试不降的前提下区分 multiple acceptable patches；（3）数据任务的分析选择能否在同一数据上形成稳定 matched > swapped；（4）跨 vertical 只比共同 profile 而不比 raw success，是否仍能形成足够清晰的系统级结论。
 
 ## 0R. 2026-08-14：PDR 全量资源池、GPT-5 重试与 ICLR 排期
 

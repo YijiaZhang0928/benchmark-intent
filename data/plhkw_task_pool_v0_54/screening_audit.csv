@@ -1,0 +1,181 @@
+candidate_id,vertical,title,source_id,selection_status,relevance,counterfactual_separability,invariant_core,objective_verifier,long_horizon,total,primary_hold_reason,human_validated
+CAND_DA001,data_analysis,支付欺诈与批准率的分群权衡分析,dabstep,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA002,data_analysis,订阅产品的 cohort 留存与价值诊断,dsbench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA003,data_analysis,零售品类增长与毛利冲突诊断,dsbench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA004,data_analysis,医院运营瓶颈与等待时间分析,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA005,data_analysis,城市能耗与减排项目组合分析,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA006,data_analysis,气候科研资助组合的证据与风险平衡,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA007,data_analysis,构建三表联动的财务预测模型,spreadsheetbench2,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA008,data_analysis,调试多工作表预算模型,spreadsheetbench2,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA009,data_analysis,为经营工作簿生成角色化 KPI 仪表板,spreadsheetbench2,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA010,data_analysis,完成滚动现金流与融资情景模板,spreadsheetbench2,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA011,data_analysis,资源约束下的客户流失预测,mle_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA012,data_analysis,可解释信用风险模型与阈值策略,mle_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA013,data_analysis,多层级需求预测与补货决策,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA014,data_analysis,工业缺陷图像模型的精度—延迟选择,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA015,data_analysis,产品功能分阶段上线实验设计,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA016,data_analysis,教育干预的准实验评估方案,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA017,data_analysis,跨 CRM、账单与客服系统的客户实体对齐,datascibench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA018,data_analysis,多源环境监测数据的时空整合,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_DA_RES_01,data_analysis,广告归因分解,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_02,data_analysis,供应链缺货诊断,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_03,data_analysis,招聘漏斗公平性,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_04,data_analysis,客户支持主题漂移,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_05,data_analysis,运输网络准点率,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_06,data_analysis, SaaS 定价敏感性,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_07,data_analysis,学校出勤与成绩分析,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_08,data_analysis,制造良率根因,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_09,data_analysis,内容推荐留存分析,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_10,data_analysis,保险理赔流程分析,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_11,data_analysis,现金转换周期诊断,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_12,data_analysis,门店选址分析,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_13,data_analysis,合并损坏财务模板,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_14,data_analysis,修复跨表引用,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_15,data_analysis,生成项目预算模板,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_16,data_analysis,生成销售仪表板,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_17,data_analysis,调试税务工作簿,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_18,data_analysis,调试排班工作簿,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_19,data_analysis,贷款违约建模,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_20,data_analysis,文本主题分类,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_21,data_analysis,音频事件分类,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_22,data_analysis,设备故障预测,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_23,data_analysis,房价区间预测,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_24,data_analysis,库存需求预测,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_25,data_analysis,营销增量实验,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_26,data_analysis,定价 A/B 设计,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_27,data_analysis,政策断点分析,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_28,data_analysis,差分隐私统计发布,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_29,data_analysis,供应商实体对齐,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_30,data_analysis,产品目录清洗,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_31,data_analysis,科研元数据整合,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_32,data_analysis,日志事件 schema 对齐,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_33,data_analysis,多币种账单统一,spreadsheetbench2,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_34,data_analysis,地理编码质量审计,mle_bench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_35,data_analysis,传感器漂移校正,datascibench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DA_RES_36,data_analysis,缺失数据敏感性分析,dsbench,reserve_not_rejected,2,2,2,1,2,9,dataset_license_or_objective_verifier_binding_pending,False
+CAND_DR001,deep_research,博士项目与申请路线选择,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR002,deep_research,AI 教育创业路线与商业模式,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR003,deep_research,国际职业市场与迁移路线,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR004,deep_research,长篇小说创作与发布计划,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR005,deep_research,北京自住房置业研究,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR006,deep_research,家庭教育干预组合设计,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR007,deep_research,2 型糖尿病综合管理证据综述,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR008,deep_research,复杂多引文 RAG 的高质量训练数据方案,researcherbench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR009,deep_research,材料配比优化中的机器学习路线与产业化距离,deepresearch_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR010,deep_research,单原子催化中的外加电场计算建模,deepresearch_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR011,deep_research,个人投资目标与策略可行性咨询,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR012,deep_research,全球 AI Agent 产品合规架构,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR013,deep_research,垂直领域模型：领域微调还是检索增强,researcherbench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR014,deep_research,遥感灾害识别数据集的约束式发现与谱系核验,livedrbench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR015,deep_research,电池材料发现数据集与测量条件对齐,livedrbench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR016,deep_research,多语种 AI 监管语料的版本化构建,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR017,deep_research,隐私保护个性化检索的先前技术检索,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR018,deep_research,电子表格公式修复智能体的先前技术与差异化定位,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR019,deep_research,护肤产品证据冲突与适配,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR020,deep_research,亲子沟通干预的证据与情境冲突,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR021,deep_research,柏林商务旅行的动态更新规划,pdr_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR022,deep_research,AI 监管更新后的产品决策重算,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR023,deep_research,量子网络研究团队与成果的可核验全景,deepresearch_bench,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR024,deep_research,水务技术产业化案例的全球枚举与可比性审计,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_DR_RES_01,deep_research,跨论文争议的气候敏感度证据审计,deepresearch_bench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_02,deep_research,罕见病临床试验资源发现,livedrbench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_03,deep_research,机器人触觉数据集谱系,researcherbench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_04,deep_research,开放权重模型许可证比较,deepresearch_bench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_05,deep_research,AI 芯片供应链实体枚举,livedrbench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_06,deep_research,教育技术随机试验文献综合,researcherbench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_07,deep_research,低资源语言评测 prior art,deepresearch_bench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_08,deep_research,公共卫生指南版本冲突,livedrbench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_09,deep_research,开源数据库商业化路线咨询,researcherbench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_DR_RES_10,deep_research,生物制造团队与设施地图,deepresearch_bench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_and_source_license_or_evidence_binding,False
+CAND_PDR_02,deep_research,我计划在未来一学期参加海外交换或短期访学项目，以拓展国际视野和提升学术能力，但对如何选择合适的项目和做好全面准备缺乏系统了解。请帮我梳理不同国家（如美国、欧洲、,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,redundancy_with_selected_planning_or_career_shell,False
+CAND_PDR_03,deep_research,我计划在未来 1-2 年内系统学习创业相关知识，为未来启动自己的创业项目做好准备，但目前对如何构建完整的创业知识体系缺乏清晰思路。我希望了解不同类型的创业教育路,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,redundancy_with_selected_planning_or_career_shell,False
+CAND_PDR_04,deep_research,我是一名在职人士，希望通过系统学习提升职业竞争力，考虑攻读 MBA、EMBA 或数据分析等职业相关学位/非学位项目，但目前对不同项目的差异、适合程度和长期价值缺,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,redundancy_with_selected_planning_or_career_shell,False
+CAND_PDR_05,deep_research,我计划在未来 6-12 个月内完成并投稿一篇高水平学术论文，目标期刊希望达到中高影响力（如 SCI Q1-Q2 或同等级别）。目前我在论文写作、期刊选择、结构组,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,redundancy_with_selected_planning_or_career_shell,False
+CAND_PDR_06,deep_research,我计划在未来一年内转行进入金融行业，方向考虑包括投资、风险管理或企业财务分析等，但目前缺乏系统的金融背景和实践经验。你能帮我制定一个详细的学习计划吗？包括我需要,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,redundancy_with_selected_planning_or_career_shell,False
+CAND_PDR_08,deep_research,我想在未来晋升到公司管理职位，我有过独立负责项目的经验，但在团队沟通和任务协调上感觉经验不足。想了解如何系统性地提升自己的领导力和管理能力，尤其是沟通协调、激励,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,redundancy_with_selected_planning_or_career_shell,False
+CAND_PDR_09,deep_research,我希望在未来6个月内成功转型为AI产品经理，因此需要你帮我设计一个详细的学习计划。这个计划应该从分析我的能力缺口开始，包括识别当前技能与目标角色之间的差距；然后,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,redundancy_with_selected_planning_or_career_shell,False
+CAND_PDR_11,deep_research,我计划在未来 6 个月内系统性地改善体型和增强体能，重点提升核心力量以及耐力水平，目标包括减少体脂、增加肌肉线条感，并在周期结束时能够完成 5 公里连续跑或类似,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_12,deep_research,我计划在接下来的六个月里集中提升自我意识和情绪管理能力，因为我在日常生活中经常遇到情绪波动，导致决策失误和人际关系紧张；请推荐一些适合自学的书籍、在线课程以及融,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_14,deep_research,我是一名刚开始接触马拉松的新手，计划在接下来的三个月内为即将到来的全程马拉松做准备，目标是安全跑完比赛而不受伤；我每周大约有五天可以抽出时间训练，每次训练时长约,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_15,deep_research,最近，我的睡眠质量明显下降，入睡困难、经常中途醒来，并且早晨醒来时感到疲倦，导致白天精力不足。请你调研和睡眠质量相关的研究。请帮我梳理改善睡眠质量的科学方法。此,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_16,deep_research,我计划在未来三个月内进行一次为期两周的背包旅行，目标是深入探索东南亚地区的多元文化和自然奇观，比如热带雨林、历史遗迹和当地社区。请为我量身定制一个行程，包括推荐,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_for_later_screening,False
+CAND_PDR_17,deep_research,我打算在七月份和家人一起度过一个为期一周的海滩假期，目的地要适合全家老少，包括活泼的孩子和需要休息的老年人。请帮我创建一个个性化的旅行计划，推荐舒适的海滩、便利,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_for_later_screening,False
+CAND_PDR_19,deep_research,我计划在明年春天进行为期一周的深度文化旅行，目的地是摩洛哥，预算在2万元以内。我特别想体验马拉喀什和非斯的传统市集，学习摩洛哥烹饪课程，参加当地工坊的手工艺体验,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_for_later_screening,False
+CAND_PDR_20,deep_research,我计划在明年9月进行为期12天的户外探险旅行，目标是目标是尼泊尔的安娜普尔纳大本营徒步。预算1.5万元，我的身体状况良好，有一定徒步经验但没有高原经历，希望全程,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,quota_hold_for_later_screening,False
+CAND_PDR_22,deep_research,请你根据未来30年的养老保障需求，为我设计一个全面的养老保障方案。方案需要整合年金保险、医疗补充保险和护理服务，并要明确各项服务的动态配置策略。此外，请对不同经,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_23,deep_research,下个月，我计划购买我的第一辆汽车，因此需要选择合适的汽车保险。我倾向于一款适合城市使用的小型SUV，预计月行驶里程在800到1000公里之间，年预算在3500元,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_24,deep_research,我计划在下个月购买家庭财产保险，以全面保障我位于福建厦门海边的房屋和财物。考虑到自然灾害的风险，我想知道是否需要选择包括地震和洪水在内的特殊保障。同时，我的家庭,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_25,deep_research,我希望在未来6个月内通过短期交易和高频投资获取收益。请为我提供一套详细的短期投资策略，包括如何选择股票或其他证券、如何利用技术分析进行市场预测、止损设置和风险控,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_27,deep_research,我是一个音乐爱好者，计划在接下来的六个月内创作并发行我的第一张独立音乐专辑。我主要创作独立流行和民谣风格的音乐，专辑计划包含大约8到10首歌曲。我目前的音乐制作,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_28,deep_research,我计划在未来三个月内系统性地建立个人品牌，重点是在职业社交媒体上提升行业影响力，以吸引更多合作机会并增强职场竞争力。请为我制定一套可执行的品牌建设方案，涵盖如何,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_29,deep_research,我计划在未来六个月内启动一家新的餐饮业务，特别关注健康快餐。可用的启动资金大约在50万元，这个预算也包含场地租金。我的目标市场主要定在健身人群和白领轻食群体，我,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_30,deep_research,我计划在未来 6 个月内打造一个个人自媒体账号，目标是在细分领域内树立独特的个人品牌并吸引稳定的粉丝群体，并在可能的条件下有营收。请为我制定一个系统化的创意方案,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_32,deep_research,我刚刚完成了房屋的硬装，准备进行软装的部分。我的房屋面积是89㎡，是一个三室一厅的户型，硬装的风格是白墙灰地板的现代风。现在我想为我的家制定一个购物计划，包括家,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_33,deep_research,我希望为家中的宠物选购一批日常用品，包括清洁系统、食物、喂食器、饮水机、智能摄像头和玩具等，希望在质量可靠的前提下，提升宠物的日常舒适度和我的养宠效率。请你调研,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_34,deep_research,我目前正在日本旅游，准备回国，希望能够采购一些具有当地特色的产品，比如美食、手工艺品和化妆品等。我计划在购物上大致预算在10000到20000日元之间，为自己和,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_35,deep_research,我计划在这个夏季开始进行一系列户外活动，包括远足、露营和登山。由于我刚刚入门，因此我希望购买一整套装备，并确保这些装备不仅能满足我的基本需求，还能应对各种天气变,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_36,deep_research,我打算在未来6个月内装修我的新房，希望能够呈现出现代简约的风格。我家房屋的面积大约是120㎡，是一个三室两厅的户型。我的计划装修总预算大约在30万到40万之间，,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_37,deep_research,我希望在接下来的几个月内重新装修我的公寓，目标是打造一个既舒适又时尚的居家环境。我的房屋面积大约是80㎡，是一个两室一厅的户型。我希望能够在装修中使用原木和布艺,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_39,deep_research,我打算在未来一年内购买一套宜居的海边城市养老房，要风景漂亮，气候也要好，最好是冬暖夏凉，没有极端天气。预算在200万以内，房屋面积在90-120㎡，最好是低密度,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_40,deep_research,我计划在未来半年内在杭州购置一套用于投资的房产，预算在400-500万之间，优先考虑地铁沿线的新房或优质二手房，要求小区品质较好、租赁需求旺盛，便于快速出租。我,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_41,deep_research,我计划在未来两年内成立一家跨境电商公司，主营业务是将中国制造的家居用品销售到欧洲市场。我希望注册一家在中国和德国均合法运营的公司，了解两地的公司注册流程、税务要,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_43,deep_research,我最近从原公司离职，但在签署的劳动合同中包含竞业限制条款，目前对方要求我遵守一年内不得入职同行业公司。请帮我详细分析竞业限制的法律效力、补偿义务及适用条件，并梳,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_44,deep_research,我与朋友共同经营一家小型企业，现在因为经营理念不合，准备解除合作关系。我想请你帮我梳理合伙企业解散或股权转让的法律流程，包括股权评估、债务清算、税务处理等环节，,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_45,deep_research,我家所在的城市最近启动了旧城改造项目，我们有一套被纳入拆迁范围的老房子。请帮我梳理现行的房屋征收与拆迁补偿政策，包括货币补偿和产权置换的计算标准、评估流程以及如,pdr_bench,reserve_not_rejected,2,2,2,2,2,10,expert_and_live_evidence_burden_before_core_selection,False
+CAND_PDR_47,deep_research,我计划为孩子培养一套健康的运动习惯，目标是增强体质和提高运动兴趣。请为我提供一个科学详细运动计划，包括适合孩子年龄段的运动项目（如跑步、游泳、足球、舞蹈等）、每,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_48,deep_research,我希望在未来半年内通过艺术活动促进孩子的创意发展和情感表达。请为我提供一个详细的艺术教育计划，涵盖绘画、手工艺、音乐、舞蹈等领域，包含具体的活动安排、所需材料清,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_PDR_50,deep_research,我希望在暑假期间带孩子参加一些亲子公益活动或社会服务项目，既能培养孩子的社会责任感，又能增进我们之间的互动。我希望能找到一些适合亲子参与的环保、助学、老人关怀等,pdr_bench,reserve_not_rejected,2,1,2,2,2,9,counterfactual_or_subtype_redundancy_requires_human_screen,False
+CAND_SW001,software_engineering,为 Web 服务加入可配置缓存层,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW002,software_engineering,为科学数组库增加流式导出,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW003,software_engineering,为模型评估 API 增加可插拔指标,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW004,software_engineering,为轻量 API 框架增加审计日志,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW005,software_engineering,为插件系统加入可替换的语义搜索后端,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW006,software_engineering,修复时区序列化回归,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW007,software_engineering,诊断符号化简的内存爆炸,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW008,software_engineering,修复日期坐标绘图回归,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW009,software_engineering,修复网络重试导致的分布式测试不稳定,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW010,software_engineering,重构大数组管线以降低峰值内存,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW011,software_engineering,重构文档构建缓存与依赖跟踪,swe_bench_verified,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW012,software_engineering,迁移模型持久化 API 并控制弃用风险,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW013,software_engineering,为知识产品选择向量检索架构,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW014,software_engineering,为后台任务选择队列与一致性方案,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW015,software_engineering,为服务建立可用性优先的可观测性方案,plhkw_authored,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW016,software_engineering,跨仓库安全配置审计与最小修复,real_workflow_adaptation,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW017,software_engineering,科学代码仓库的跨版本 API 迁移,scienceagentbench,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW018,software_engineering,在资源约束下复现论文算法并形成可维护代码,paperbench,provisional_selected,2,2,2,2,2,10,,False
+CAND_SW_RES_01,software_engineering,为 CLI 增加离线模式,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_02,software_engineering,为 ORM 增加软删除,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_03,software_engineering,为任务运行器增加断点恢复,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_04,software_engineering,为 API 客户端增加分页流,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_05,software_engineering,为配置系统增加分层覆盖,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_06,software_engineering,为日志库增加结构化字段,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_07,software_engineering,修复并发取消泄漏,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_08,software_engineering,修复循环依赖初始化,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_09,software_engineering,修复 Windows 路径回归,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_10,software_engineering,修复解析器 Unicode 边界,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_11,software_engineering,修复数据库连接池饥饿,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_12,software_engineering,修复缓存键碰撞,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_13,software_engineering,重构插件加载,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_14,software_engineering,重构数据校验管线,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_15,software_engineering,重构异步批处理,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_16,software_engineering,重构权限检查,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_17,software_engineering,优化图遍历热点,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_18,software_engineering,优化序列化内存,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_19,software_engineering,选择认证依赖,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_20,software_engineering,选择配置中心,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_21,software_engineering,选择文件存储后端,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_22,software_engineering,选择 RPC 方案,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_23,software_engineering,调查弃用 API,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_24,software_engineering,调查跨模块状态污染,swe_bench_verified,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_25,software_engineering,调查构建不可复现,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_26,software_engineering,调查测试覆盖缺口,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_27,software_engineering,迁移 Python 版本,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_28,software_engineering,迁移数据库 schema,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_29,software_engineering,增加多租户隔离,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_30,software_engineering,增加隐私删除流程,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_31,software_engineering,增加兼容性模式,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_32,software_engineering,增加插件沙盒,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_33,software_engineering,构建发布自动化,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_34,software_engineering,构建回滚验证,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_35,software_engineering,设计速率限制,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False
+CAND_SW_RES_36,software_engineering,设计特征开关,real_workflow_adaptation,reserve_not_rejected,2,1,2,1,2,8,environment_binding_or_counterfactual_screen_pending,False

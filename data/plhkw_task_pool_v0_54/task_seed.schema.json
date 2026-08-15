@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deepalign.local/schema/plhkw-task-seed-v0.54.json",
+  "title": "PLHKW provisional task seed",
+  "type": "object",
+  "required": [
+    "task_id",
+    "vertical",
+    "subtype",
+    "task_prompt_zh",
+    "task_prompt_en",
+    "selection_status",
+    "paper_first",
+    "source",
+    "long_horizon_eligibility",
+    "reasoning_structures",
+    "personalization_design",
+    "invariant_core",
+    "user_conditioned_verifier_plan",
+    "environment_binding_status"
+  ],
+  "properties": {
+    "task_id": {"type": "string", "pattern": "^(DR|SW|DA)[0-9]{3}$"},
+    "vertical": {"enum": ["deep_research", "software_engineering", "data_analysis"]},
+    "subtype": {"type": "string", "minLength": 3},
+    "task_prompt_zh": {"type": "string", "minLength": 120},
+    "task_prompt_en": {"type": "string", "minLength": 120},
+    "selection_status": {"const": "provisional_selected_requires_human_and_environment_validation"},
+    "paper_first": {
+      "type": "object",
+      "required": ["included", "priority_rank", "status", "selection_basis"],
+      "properties": {
+        "included": {"type": "boolean"},
+        "priority_rank": {"type": ["integer", "null"], "minimum": 1, "maximum": 12},
+        "status": {"enum": ["priority_for_environment_binding_not_runnable", "release_pool_after_paper_first"]},
+        "selection_basis": {"type": "string"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["source_id", "source_locator", "source_class", "license", "use_policy", "url", "snapshot"]
+    },
+    "long_horizon_eligibility": {
+      "type": "object",
+      "required": ["multi_step_autonomy", "multiple_reasonable_paths", "complex_artifact", "task_relevant_user_difference_can_change_artifact", "invariant_objective_quality_is_checkable", "not_one_prompt_trivial", "authoring_gate_status"]
+    },
+    "reasoning_structures": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+    "personalization_design": {
+      "type": "object",
+      "required": ["primary_signal_mode", "eligible_counterfactual_axes", "explicit_constraint_only", "persona_and_contract_status", "required_next_gate"]
+    },
+    "invariant_core": {"type": "object"},
+    "user_conditioned_verifier_plan": {"type": "array", "minItems": 2},
+    "environment_binding_status": {"const": "pending"}
+  },
+  "additionalProperties": true
+}

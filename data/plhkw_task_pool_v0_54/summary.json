@@ -1,0 +1,78 @@
+{
+  "version": "0.54",
+  "created_at": "2026-08-16",
+  "candidate_total": 180,
+  "candidate_by_vertical": {
+    "data_analysis": 54,
+    "deep_research": 72,
+    "software_engineering": 54
+  },
+  "selected_total": 60,
+  "selected_by_vertical": {
+    "data_analysis": 18,
+    "deep_research": 24,
+    "software_engineering": 18
+  },
+  "selected_by_subtype": {
+    "data_analysis::exploratory_business_analysis": 6,
+    "data_analysis::spreadsheet_workflow": 4,
+    "data_analysis::predictive_modeling": 4,
+    "data_analysis::experiment_design": 2,
+    "data_analysis::cleaning_integration": 2,
+    "deep_research::recommendation_decision": 6,
+    "deep_research::literature_synthesis": 4,
+    "deep_research::open_consulting": 3,
+    "deep_research::dataset_resource_discovery": 3,
+    "deep_research::prior_art": 2,
+    "deep_research::conflicting_evidence": 2,
+    "deep_research::temporal_update": 2,
+    "deep_research::entity_exhaustive": 2,
+    "software_engineering::feature_implementation": 5,
+    "software_engineering::debugging_remediation": 4,
+    "software_engineering::refactor_optimization": 3,
+    "software_engineering::architecture_dependency": 3,
+    "software_engineering::repo_investigation_modification": 3
+  },
+  "selected_by_source_class": {
+    "existing_benchmark_derived": 39,
+    "adapted_real_world": 12,
+    "newly_authored": 9
+  },
+  "primary_signal_modes": {
+    "explicit_constraints": 12,
+    "goal_tradeoff": 12,
+    "knowledge_and_audience": 12,
+    "history_grounded_latent_preference": 12,
+    "interactive_information_acquisition": 12
+  },
+  "paper_first_total": 12,
+  "paper_first_by_vertical": {
+    "deep_research": 5,
+    "software_engineering": 3,
+    "data_analysis": 4
+  },
+  "paper_first_task_ids": [
+    "DR001",
+    "DR008",
+    "DR014",
+    "DR020",
+    "DR022",
+    "SW001",
+    "SW007",
+    "SW013",
+    "DA003",
+    "DA007",
+    "DA011",
+    "DA015"
+  ],
+  "paper_first_status": "priority_for_environment_binding_not_runnable",
+  "status": "provisional_selected_requires_human_and_environment_validation",
+  "gold_claim_allowed": false,
+  "next_required_gates": [
+    "source_asset_license_audit",
+    "evidence_repo_dataset_binding",
+    "two_human_counterfactual_screen",
+    "contract_freeze",
+    "pilot_discrimination"
+  ]
+}

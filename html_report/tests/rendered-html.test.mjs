@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the DeepAlign-Bench v0.51 report", async () => {
+test("server-renders the DeepAlign-Bench v0.54 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -22,32 +22,34 @@ test("server-renders the DeepAlign-Bench v0.51 report", async () => {
   assert.match(html, /绝对适配不等于/);
   assert.match(html, /P2 Pre-research clarification/);
   assert.match(html, /P4 Checkpoint update/);
-  assert.match(html, /3-family \/ 24-episode/);
-  assert.match(html, /501/);
-  assert.match(html, /9 月 18 日 AOE/);
-  assert.match(html, /9 月 25 日 AOE/);
+  assert.match(html, /180 candidate seeds/);
+  assert.match(html, /60 provisional families/);
+  assert.match(html, /12 families：5 \/ 3 \/ 4/);
   assert.match(html, /CFA_min/);
   assert.match(html, /General-good 近 matched/);
   assert.match(html, /当前没有 GPT-5 completion、criteria 或分数/);
   assert.match(html, /Introduction 证据门/);
-  assert.match(html, /ICLR 2027 WEEKLY EXECUTION/);
-  assert.match(html, /src="\/DeepAlign-Bench_整体框架与PDR压力测试_v0\.51\.png"/i);
+  assert.match(html, /PAPER-FIRST EXECUTION/);
+  assert.match(html, /src="\/DeepAlign-Bench_PLHKW任务资源池_v0\.54\.png"/i);
   assert.match(html, /href="\/DeepAlign-Bench_正式Proposal精简版\.pdf"/i);
   assert.match(html, /href="\/case\.schema\.yaml"/i);
   assert.match(html, /href="\/research_episode\.schema\.yaml"/i);
-  assert.match(html, /href="\/seed_v0_50_families\.yaml"/i);
-  assert.match(html, /href="\/pdr_candidate_pair_audit\.csv"/i);
+  assert.match(html, /href="\/plhkw_task_catalog\.html"/i);
+  assert.match(html, /href="\/plhkw_selected_tasks\.csv"/i);
+  assert.match(html, /href="\/plhkw_paper_first_12\.csv"/i);
   assert.doesNotMatch(html, /ElicitAlign-Bench/);
 });
 
-test("keeps v0.51 resources, schemas, seed and downloadable artifacts in sync", async () => {
+test("keeps v0.54 resources, schemas and downloadable artifacts in sync", async () => {
   const [schema, metrics, episodeSchema, seed] = await Promise.all([
     readFile(new URL("../public/case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/metric_binding.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/research_episode.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/seed_v0_50_families.yaml", import.meta.url), "utf8"),
   ]);
-  assert.match(schema, /schema_version:\s*0\.50/);
+  assert.match(schema, /schema_version:\s*0\.54/);
+  assert.match(schema, /knowledge_work_regime/);
+  assert.match(schema, /M7_data_analysis_agent/);
   assert.match(schema, /fuzzy_query_clarification/);
   assert.match(schema, /adopted_in_final_node_ids/);
   assert.match(metrics, /CFA_min/);
@@ -56,8 +58,11 @@ test("keeps v0.51 resources, schemas, seed and downloadable artifacts in sync", 
   assert.match(seed, /F0503_research_literature_workflow/);
 
   await Promise.all([
-    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.svg", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_PLHKW任务资源池_v0.54.png", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_PLHKW任务资源池_v0.54.svg", import.meta.url)),
+    access(new URL("../public/plhkw_task_catalog.html", import.meta.url)),
+    access(new URL("../public/plhkw_selected_tasks.csv", import.meta.url)),
+    access(new URL("../public/plhkw_paper_first_12.csv", import.meta.url)),
     access(new URL("../public/pdr_candidate_pair_audit.csv", import.meta.url)),
     access(new URL("../public/ICLR2027_weekly_plan.md", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_正式研究Proposal.docx", import.meta.url)),

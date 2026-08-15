@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.54 PLHKW task pool and three-regime sampling frame - 2026-08-16
+
+- 将当前定位收窄为三个代表性长程知识工作场景，不声称穷尽所有 PLHKW；目标采样为 DR/Software/Data = 40/30/30。
+- 新建 `data/plhkw_task_pool_v0_54/`：180 个候选 seed（72/54/54）、60 个 provisional family（24/18/18）、源登记、筛选审计、JSONL/CSV/schema、standalone HTML catalog、哈希 manifest 与校验器。
+- 冻结 60-family 来源配额为 39 benchmark-derived / 12 adapted / 9 new，五种 primary user-signal mode 各 12 个；各 vertical 内部 subtype 配额全部通过机器校验。
+- 明确 60 个 shell 不是 runnable gold；主论文先做 12 个端到端 family（5 DR / 3 Software / 4 Data），源资产许可、环境绑定、双人反事实审查、contract freeze 与 pilot discrimination 为升级硬门。
+- 将 paper-first 12 具体冻结为 5 个 DR、3 个 Software、4 个 Data ID，新增独立 JSONL/CSV 执行队列与机器校验；它只是环境绑定优先级，失败任务仍须按同类替换而不能放宽门槛。
+- 将 case/data-factory/annotation schema 升至 v0.54，新增 knowledge-work regime、repository/dataset/workbook asset 和 M7 data-analysis agent；同步 proposal、README、项目记忆与正式交付物。
+
 ## v0.51 PDR resource pool and ICLR weekly execution - 2026-08-14
 
 - 完整导入 PDR-Bench 公开的 50 tasks、25 structured personas、25 annotator-simulated contexts 和 250 task-user pairs，冻结上游 commit、文件哈希与 Apache-2.0 许可证。
