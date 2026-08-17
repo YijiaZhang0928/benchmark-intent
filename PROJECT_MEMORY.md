@@ -2,11 +2,48 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-16
-当前版本：v0.54（PLHKW 三场景实例化、180→60 任务资源池）
+最后更新：2026-08-17
+当前版本：v0.55（真人真值、Counterfactual Difference Map 与 judge 资格协议）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0T. 2026-08-17：真人真值 → CDM → 受约束 rubric → D-JQS 的测量链
+
+本轮将 persona/rubric/judge 的方法核心正式收敛为四层：**真人用户真值获取 → Counterfactual Difference Map（CDM）构造 → 受约束 rubric 编译 → 经资格认证的 hybrid scoring**。基本真值对象不再是两份独立的 `R(T,U_a)`、`R(T,U_b)` rubric，而是成对关系 `C(T,E,U_a,U_b)`：在固定任务、证据/仓库/数据、工具与预算下，哪些可观察决策变量应方向性不同、保持相同、允许等价/无差异、不得发生，或需要澄清/条件分支。`must-change / must-hold / must-not / clarify-if-unknown` 保留为 CDM 的兼容视图；rubric 是 CDM 的编译产物，不承担 novelty。
+
+真人协议冻结为：每位参与者先看到随机化或分层 task slate，选择 3–5 个现实中可能需要的任务；每个已选 task 先开放 elicitation，后 family-specific 结构化追问。每条事实记录 `spontaneous / prompted / N/A / declined`、置信度、acceptable alternatives、invalidating conditions、时间戳、expiry/reconfirmation、敏感性与使用/披露权限。发布完整 `offered → eligible → selected → paired → map-qualified → environment-qualified → pilot-qualified → frozen` 漏斗。后台 ledger 是 ground truth，不默认作为 agent 输入；agent 只看 channel-specific minimal view。
+
+Pair 不能只选高对比用户。主数据分为 contrast、near-neighbor 和 neutral/invariance 三类；pair-selection 算法预注册，pairing team 对 target-agent 输出盲化，所有候选与拒绝原因留档。Target population 只声称“task-relevant、counterfactually eligible users”，不估计所有用户或所有任务中的 personalization prevalence。neutral pair 用于测试过度个性化与刻板化，避免 benchmark 奖励“总是改答案”。
+
+CDM node 至少记录 `decision_variable / expected_relation / user-A expectation / user-B expectation / acceptable alternatives / decision consequence / observable / provenance / authority / uncertainty / dependency / partner node`。expected relation 包含 `directional_difference / preserve_same / acceptable_equivalence / forbidden / clarify_or_branch`。LLM 只可高召回提出候选与遗漏，authority weight 为零；没有 user fact、task/evidence 或 permission provenance 的 node fail closed。Persona owner 对自身目标、偏好、trade-off、受众、工作流、不可用条件及其 task consequence 有最终权威；两名独立 annotator 审计 provenance、observability、atomicity、redundancy 与 stereotype risk；domain expert 只对技术事实、证据、可行性和安全有权威。用户不能把技术错误变成事实，专家不能替用户改偏好；未解决冲突写成条件分支或排除。
+
+冻结分两次：construction freeze 在 reference artifact 之前；evaluation freeze 在任何 target-agent 输出之前。Freeze 只解决 post-hoc researcher degrees of freedom，不证明真值正确。四个问题明确分开：真实性由真人 provenance/authority；候选完整性由 LLM high-recall + pre-output coverage audit；防 post-hoc 由版本/哈希；执行可靠性由 validated verifier、slice-qualified judge、D-JQS 与盲化人评。开发集 emergent error 可进入下一版本；锁定 test 不回改主 CDM/rubric，只允许 versioned secondary analysis/errata。不得声称 CDM 穷尽用户真值，只能声称在预注册协议下达到有限 saturation。
+
+Rubric compiler 被降权为机械/受约束编译器。每条 leaf 必须绑定 frozen CDM node、source facts/evidence、owner、expected relation、severity、evidence requirement、dependency/redundancy group、scorer route 与 qualification slice。一个 node 可拆多个 leaf，但先 node 内聚合再进入 TQ/PF/FR/MP；不把 leaves 当独立样本。所有 deterministic/evidence checker 也必须经 known-positive/negative、controlled edit、mutation testing（适用时）、false-accept/false-reject 与 coverage audit，不能因“程序化”自动视为正确。
+
+项目内 judge 校准正式改名 **DeepAlign Judge Qualification Suite（D-JQS）**。原因是已有 [JudgeBench](https://arxiv.org/abs/2410.12784) 与 [JUDGE-BENCH](https://arxiv.org/abs/2406.18403)，且 [RuVerBench](https://arxiv.org/abs/2606.29920) 已直接研究 agentic rubric verification；继续使用 JudgeBench 会造成名称冲突和首创误读。D-JQS 是局部资格工具，不是独立 novelty。Gold 混合 deterministic-known violations、controlled single edits、natural human artifacts；authoring/dev、judge-selection calibration 与 hidden qualification 按 task family、user、source lineage、target agent、edit lineage、time 隔离。Judge 按 leaf class/slice 资格，不以 global average 掩盖 critical failure。AB/BA 只控制位置；长度、verbosity、style、format、persona keyword、citation count、language 必须单因素测试。重复采样只减少随机噪声，不能解决系统偏差。failed/unstable slice 路由到 deterministic/human/coarse binary，禁止多个失败 judge 投票后宣称通过。模型 family overlap 必须披露并尽可能消融；panel 不等于独立性。
+
+Persona owner 后期 artifact validation 必须与前期 contract confirmation 分开：不看最终 rubric wording，matched/swapped/agent 身份盲化，随机顺序，并尽量时间分离。其选择是外部效度终点，不与本人前期 confirmation 循环作为同一 gold；可行时增加未参与 contract 的 comparable-user 复核。Private ledger 默认不发布，必须落实 consent、purpose limitation、minimization、access control、retention、revocation 与 publishable-view review；自然偏好漂移带时间戳/expiry，不能与脚本化 P4 update 混为同一现象。
+
+### 本轮冻结的最强审稿攻击与对应证据门
+
+1. **“用户自选任务，只代表感兴趣者。”** 报告 task slate 和完整漏斗，限定 target population，不做 prevalence claim。
+2. **“只挑对比最大的 pair。”** 预注册选择算法、盲化 pairing、拒绝记录、contrast/near/neutral 分层；neutral 上无理由改变算失败。
+3. **“自述偏好不稳定。”** 允许 uncertainty/indifference/acceptable sets；test–retest 与行为/选择验证；不稳定方向不进 gold。
+4. **“同一用户前后参与造成 demand characteristics。”** 后期不见 rubric、随机盲化、时间分离；artifact choice 是外部效度而非重复 gold。
+5. **“CDM 完整性不可证，LLM 仍决定 gold。”** no-provenance fail closed、authority separation、coverage audit、emergent-error rate；只声称 protocol-bounded saturation。
+6. **“atomic leaves double count。”** dependency/redundancy group、node-first aggregation、family/user cluster 统计、weight/module sensitivity。
+7. **“deterministic verifier 只是弱测试。”** mutation、受控正负例、false accept/reject、coverage 与关键 verifier failure audit。
+8. **“D-JQS 自己出题自己认证。”** 三类 gold、grouped calibration/hidden split、阈值仅在 calibration 调整、hidden 只报告一次、slice-specific qualification。
+9. **“AB/BA 仍受长度/风格/关键词影响。”** position 与 nuisance edits 分离；unstable item abstain/escalate。
+10. **“same-family agent/compiler/judge 共享偏差。”** 尽量跨模型族、披露 overlap、对应 ablation；panel 不替代真人/确定性 gold。
+11. **“code/data/DR 不可比。”** 不合并 raw success；各 vertical 单独报告 verifier/judge/human 覆盖与可靠性，只统一 estimand 和 noncompensatory profile。
+12. **“只是 constraint following。”** persona signal 必须混合硬约束、真实 goal/trade-off、knowledge/audience、history-grounded latent preference 与 clarification；做 cue-equivalence 和 neutral tests。
+13. **“成本、隐私、漂移使 60 family 不可行。”** 先做 12-family paper set，再按 gate 扩 60；报告人时/attrition；ledger 最小化、可撤回、时间化。
+14. **“只是 PDR++ / compiler 工程。”** 必做四组消融：PDR-style 单用户 dynamic absolute rubric、独立 A/B rubric、CDM 对称 rubric、single judge vs hybrid scoring。CDM 必须造成系统/family 成功判定或排序重分类，或在控制一般质量后增量预测盲化 target-user choice/decision outcome。若两者均无，贡献降级为 transparent measurement extension，不把 compiler/JQS 写成核心创新。GAMUT 已覆盖 two-level meta-rubric，因此 compiler pattern 不能首创。[[GAMUT]](https://arxiv.org/abs/2607.19322)
+
+当前开放问题：（1）3–5 task/participant 在 32–40 人下是否超出标注预算，需用 pilot 估计人时与 attrition；（2）contrast/near/neutral 的配额和最小实际差异阈值；（3）test–retest 间隔与 persona owner/comparable-user 样本量；（4）D-JQS 各 leaf slice 的预注册门槛与 CI；（5）CDM 消融是否会真正重分类系统；（6）伦理审查与 private-ledger 保留/撤回流程能否在招募前完成。
 
 ## 0S. 2026-08-16：PLHKW 三场景实例化与 180→60 任务资源池
 

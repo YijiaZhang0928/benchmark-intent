@@ -1,9 +1,10 @@
 registry_name: deepalign_rubric_direction_node_registry
-registry_version: 0.31
+registry_version: 0.55
 status: starter_ontology_requires_pilot_saturation
 description: >-
   Reusable semantic directions between broad modules and case-specific atomic
-  leaves. Nodes are selected from frozen metadata and contracts, then parameterized.
+  leaves. Nodes are selected from frozen metadata and Counterfactual Difference
+  Map relations, then parameterized. They do not define user truth themselves.
 
 node_schema:
   required: [node_id, module_id, direction, applicability_predicate, parameter_slots, contract_sources, observable, evidence_target, scoring_anchor_template, direct_metric_bindings, judge_route, counterfactual_policy, provenance, validation_status]
@@ -13,6 +14,8 @@ authoring_policy:
   human_authored_templates: required
   llm_role: propose_parameters_and_draft_wording_only
   output_aware_authoring: forbidden
+  difference_map_node_required_for_user_conditional_nodes: true
+  no_provenance_fails_closed: true
   new_node_gate: >-
     Add a node only when the same decision-relevant residual construct appears in
     at least two pilot families and cannot be represented by an existing node.
@@ -146,6 +149,52 @@ starter_nodes:
     judge_route: rubric_judge_then_target_user
     counterfactual_policy: symmetric_shape_with_user_specific_parameters
     provenance: expert_authored_v0_31
+    validation_status: pre_pilot
+  - node_id: PER-DECISION-ADOPTION
+    module_id: PER-GOAL-01
+    direction: bind_user_constraint_to_final_decision
+    applicability_predicate: must_change_requires_option_selection_priority_or_action_threshold
+    parameter_slots: [user_fact_id, decision_node_id, acceptable_final_choices, prohibited_final_choices]
+    contract_sources: [must_change, must_not]
+    observable: confirmed_user_constraint_changes_the_adopted_final_choice_or_action
+    evidence_target: final_recommendation_and_action_plan_not_keyword_mentions
+    scoring_anchor_template: >-
+      full_credit_only_when_the_final_adopted_choice_is_in_the_user_specific_acceptable_set;
+      mentioning_or_comparing_an_option_without_adopting_it_is_not_credit
+    direct_metric_bindings: [PF, MP]
+    judge_route: deterministic_decision_extractor_then_rubric_judge_then_target_user
+    counterfactual_policy: symmetric_shape_with_user_specific_acceptable_sets
+    negative_or_cap_policy: critical_wrong_adoption_can_fail_bilateral_gate
+    provenance: pdr_false_positive_pilot_v0_1
+    validation_status: pilot_observed_requires_human_replication
+  - node_id: PER-CLARIFY-TO-ADOPTION
+    module_id: OP-ACQUIRE-01
+    direction: use_clarified_fact_in_final_decision
+    applicability_predicate: research_episode.paradigm_id_in_[P2_pre_research_clarification,P3_in_research_interactive]
+    parameter_slots: [required_node_id, answered_fact_id, expected_plan_change, expected_final_change]
+    contract_sources: [clarify_if_unknown, must_change]
+    observable: answered_fact_is_traced_from_question_to_plan_to_final_adoption
+    evidence_target: clarification_trace_plan_and_final_artifact
+    scoring_anchor_template: asked_answered_planned_and_adopted_are_scored_as_separate_states
+    direct_metric_bindings: [PF, operator_diagnostic, clarification_correctness]
+    judge_route: deterministic_trace_binding_then_rubric_judge
+    counterfactual_policy: compare_to_same_ledger_structured_persona_and_no_ask_controls
+    provenance: deepalign_v0_50_episode_model
+    validation_status: pre_pilot
+  - node_id: PER-UPDATE-TO-ADOPTION
+    module_id: OP-UPDATE-04
+    direction: adopt_current_fact_and_suppress_superseded_fact
+    applicability_predicate: research_episode.paradigm_id_is_P4_checkpoint_update
+    parameter_slots: [event_id, new_fact_id, supersedes_fact_id, expected_decision_change, protected_invariants]
+    contract_sources: [must_change, must_hold, must_not]
+    observable: current_fact_changes_final_decision_and_superseded_fact_no_longer_drives_output
+    evidence_target: pre_checkpoint_state_event_payload_post_checkpoint_trace_and_final_artifact
+    scoring_anchor_template: new_fact_is_acknowledged_planned_and_adopted_while_unrelated_invariants_remain_stable
+    direct_metric_bindings: [PF, operator_diagnostic, MP]
+    judge_route: deterministic_state_diff_then_rubric_judge
+    counterfactual_policy: compare_same_pre_checkpoint_state_with_and_without_the_frozen_superseding_event
+    negative_or_cap_policy: stale_fact_adoption_is_reported_separately_from_generic_task_failure
+    provenance: deepalign_v0_50_episode_model
     validation_status: pre_pilot
   - node_id: PER-AUDIENCE-DISCLOSURE
     module_id: PER-AUDIENCE-07

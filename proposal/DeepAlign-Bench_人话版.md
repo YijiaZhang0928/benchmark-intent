@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜完整人话版
 
-版本：v0.54 · 2026 年 8 月 16 日
+版本：v0.55 · 2026 年 8 月 17 日
 用途：组内讨论、导师沟通、正式 Proposal 的直白解释
 
 ---
@@ -90,16 +90,19 @@ Persona 不是写一篇人物小传。真正的核心是一份隐藏的 user-sta
 
 ## 2. Persona 怎么做得自然
 
-最可靠的顺序是“先有真实任务，再找共享任务的用户”，而不是先写两个人设再硬塞任务。
+最可靠的顺序是“先给真人一组可能相关的真实任务，再让他选择”，而不是先写两个人设再硬塞任务。
 
-1. 找到真实用户提出的 research task shell。
-2. 冻结所有用户共同的目标、证据和交付格式。
-3. 找另一位也会自然提出同一任务、但在决策约束上不同的用户。
-4. 只保留 2–4 个能改变建议的差异。
-5. 让本人逐项确认：这个事实是否真实、是否相关、是否允许使用、会怎样改变方案。
-6. 在看到模型输出前冻结 contracts 和 acceptable alternatives。
+1. 每位参与者从随机化或分层 task slate 里选 3–5 个现实中可能真的要做的任务；保留他看过、认为相关、最后选择和跳过的完整记录。
+2. 对每道已选题先让用户自由说目标、限制、风险、取舍、受众、使用方式和“什么会让我不用这个结果”，避免问卷先把答案塞给他。
+3. 再用任务类型对应的追问表补漏。每条事实标清是用户主动说的、追问后说的、不适用，还是拒绝回答；也记录不确定性、多个可接受答案、时间戳和隐私许可。
+4. 把这些信息整理成用户本人确认的后台 ledger。Agent 默认看不到整个 ledger，只看到实验指定的 persona/history/clarification view。
+5. 同一题里不只挑“差异巨大”的两个人，还保留差异小的 near-neighbor pair，以及本来不该导致报告变化的 neutral pair。这样既测“该改时会不会改”，也测“不该改时会不会乱改”。
 
-优先级是：两位真实用户 > 一位真实用户加经相似参与者验证的最小反事实用户 > 完全合成用户。完全 LLM 生成只能用于最小工程实验，不能支撑论文中的真实世界效度。
+接着先造的不是两份 rubric，而是一张 **Counterfactual Difference Map（CDM）**。它逐个写清：哪个决策变量应该不同，哪个应该相同，哪些方案对用户来说都可以，什么绝对不能做，以及信息不足时应不应该问。每个节点必须能指回用户确认的事实、共同任务证据或权限规则。
+
+LLM 可以帮忙高召回找候选和拆项，但它没有决定真值的权力。用户本人决定自己的目标和取舍；两名标注员检查来源、是否有决策后果、是否可观察、是否重复、是否带刻板印象；领域专家只管事实、技术可行性和安全。用户不能把错误技术事实说成正确，专家也不能替用户决定“我更在意什么”。
+
+这里有两次 freeze。第一次在写参考答案前冻结 CDM，避免参考答案反过来定义标准；第二次在任何被测 agent 输出前冻结最终 rubric。Freeze 只解决“不能看完答案再改标准”，不证明标准一定对。真实性来自真人确认，遗漏控制来自覆盖审计，最后执行是否可靠要靠 checker、D-JQS 和盲化人评。
 
 ## 3. 先统一建模 Deep Research 怎么和用户、memory 与工作区交互
 
@@ -168,26 +171,43 @@ Persona 不是写一篇人物小传。真正的核心是一份隐藏的 user-sta
 
 两套用户标准都要评价 `Ya`、`Yb` 和 `Y0`。不能先看到 swapped 报告，再专门给它添加扣分项。
 
-JudgeBench 还要有四种反例：
+D-JQS 还要有四种反例：
 
 - general-good：整体质量很好，但没有做到 A/B 必须不同的地方；
 - over-personalized：大量提到用户信息，却在一个关键决定上采用了错误约束；
 - mention-only：报告写到了某个约束，但最后并没有真的按它选方案；
 - irrelevant-keyword：加入显眼的人口属性或 persona 词，实际不应改变建议。
 
-## 5. Rubric 为什么要提前设计
+## 5. Rubric 为什么要提前设计，judge 为什么要先考试
 
-Rubric Compiler 的输入不是“让 LLM 随便想评分点”，而是 task metadata + user ledger + contracts。
+Rubric Compiler 的输入不是“让 LLM 随便想评分点”，而是 task metadata + 授权 ledger 引用 + 已冻结 CDM。
 
 它依次做：
 
-`metadata/contracts → module → direction node → parameterized leaf → 人工校验并冻结`
+`metadata/CDM → module → direction node → parameterized leaf → 人工校验并冻结`
 
 - Module 是大方向，例如事实正确性、风险适配、行动可行性、隐私边界。
-- Direction node 是可复用问题，例如“是否满足目标用户的本地部署要求”。
+- CDM node 先决定“A/B 到底应该有什么关系”；direction node 只提供可复用的测量写法。
 - Leaf 是这个 case 里的具体可判定项，例如“最终推荐不得把只支持 SaaS 的方案作为敏感项目默认方案”。
 
-每个 leaf 要写清适用对象、证据位置、评分锚点、严重性、是否 hard gate，以及它评价的是 mention、planning 还是 final adoption。后一点很重要：提到“本地部署”不等于最后真的选择了本地部署方案。
+每个 leaf 要写清它来自哪个 CDM node、适用对象、证据位置、评分锚点、严重性、是否 hard gate、和其他 leaf 是否共享同一个 parent，以及它评价的是 mention、planning 还是 final adoption。多个 leaf 来自同一节点时先在节点内合并，不能把一个偏好拆成五条就获得五倍权重，也不能把五条当成五个独立样本。
+
+能用程序检查的先用程序：code 的 tests、data 的数字/公式、DR 的链接和部分 claim support。但程序 checker 也可能漏错，所以要用已知正例/反例、受控修改和 mutation test 估计 false accept、false reject 与覆盖率。“确定性”不等于“天然正确”。
+
+只有 trade-off、优先级、actionability 等语义项交给 LLM judge。judge 只应用已经冻结的 leaf，并必须指出 artifact 里的证据位置；不能再发明新标准。项目内校准工具改名 **D-JQS（DeepAlign Judge Qualification Suite）**，因为已有论文已经叫 JudgeBench/JUDGE-BENCH。[[6]](https://arxiv.org/abs/2410.12784)[[7]](https://arxiv.org/abs/2406.18403) D-JQS 同时用明确违规、只改一个关键点的受控 artifact、以及真实用户盲选三种 gold；调阈值集和隐藏资格集按任务、用户、agent、来源和时间隔离。RuVerBench 已直接表明长 agentic artifact 的 rubric verification 仍有明显噪声；GAMUT 又已覆盖 two-level meta-rubric 编译，因此这两项不能被我们误报为首创。[[8]](https://arxiv.org/abs/2606.29920)[[9]](https://arxiv.org/abs/2607.19322)
+
+AB/BA 只能测位置偏差，所以还要单独改长度、文风、格式、persona 关键词、引用数和语言。某个 judge 只在事实判断上合格，不代表它能判断用户取舍；资格按 leaf 类型给。关键类型没过门就交给人，不能让几个都不可靠的 judge 投票后假装可靠。
+
+### 5.1 这套方案最容易被怎么打
+
+- **“你只挑最好分的用户对。”** 公开 offered→selected→paired→rejected 漏斗，并同时报告 contrast、near-neighbor、neutral pair。
+- **“用户自述会变。”** 允许不确定和多种可接受答案，做 test–retest，给事实加时间戳/到期复核；不稳定方向不进 gold。
+- **“用户前面定标准，后面自然会选 matched。”** 后期不展示最终 rubric，随机顺序、隐藏条件，尽量分时进行；用户盲选是外部效度，不是同一 gold 的重复证明。
+- **“CDM 还是不完整。”** 只声称在预注册访谈和 coverage audit 下达到有限 saturation；测试输出后发现的新错误不回改主分。
+- **“D-JQS 自己给自己发证。”** gold 三来源、calibration/hidden split、按 slice 认证；失败 slice 必须人工接管。
+- **“这只是 PDR++ 或约束遵循。”** 比较 PDR-style 单用户 rubric、独立 A/B rubric 和 CDM 对称 rubric，并证明 CDM 会重分类系统，或在控制一般质量后更能预测真人选择；persona 同时覆盖硬约束、真实取舍、知识/受众和需要澄清的隐含需求。
+- **“三个领域根本不可比。”** 不比较跨领域 raw score；分别报告 code/data/DR 的 verifier 覆盖和 judge 负担，只统一 matched/swapped 与 no-harm 逻辑。
+- **“太贵、隐私风险高。”** 先做 12-family paper set；raw ledger 默认不发布，必须有 consent、最小化、撤回、保留期限和访问控制。
 
 ## 6. 分数到底怎么算，为什么不是又一个差值总分
 
@@ -253,13 +273,13 @@ ICLR 2027 官网当前给出的摘要截止是 2026-09-18 AOE、全文截止是 
 - 核心反例：general-good、over-personalized、mention-only；
 - 最近邻边界：承认 PDR、MyScholarQA、G-STEER 等已经覆盖的部分。
 
-五天内的 go/no-go：先解除 GPT-5 合规访问阻塞，再用 GPT-5 + 两名盲化人评复现冻结 artifacts；至少 2 个 family 的 paired-user 真值稳定。如果 8 月 17 日仍没有 GPT-5/真人证据，就收窄成 personalization judge validity paper，或换题，不再继续堆合成样本。
+当前 go/no-go：先把三个 vertical 各 1 个 family 做出真人 ledger、CDM、受约束 leaf、validated verifier 和 D-JQS/human 评分；至少 2/3 family 的 reference matched 必须稳定优于 swapped，neutral pair 不能被无故改坏。若 CDM 相对独立 A/B rubric 不产生任何系统重分类，也不增量预测真人选择，就把论文降级为透明 measurement extension，不把 compiler 包装成核心创新。
 
 之后先在三个 vertical 各完成一个端到端环境，再把主论文补到 12 个 family（5 研究 / 3 软件 / 4 数据）。两个月内不承诺把 60 个全部变成 runnable case；如果资源不足，先减 agent 数和动态压力层，不把 software/data 又降回几个展示 anchor。
 
 ## 10. 论文最后可以声称什么
 
-如果主实验通过，可以声称：DeepAlign-Bench 提供了固定 task/evidence/resources 下的 paired-user 反事实评测；它能把通用高质量、单边个性化、低绝对适配、只胜过差 swapped、关键约束误用和边界违规分开。
+如果主实验通过，可以声称：DeepAlign-Bench 提供了固定 task/evidence/resources 下的 paired-user 反事实评测；它用真人来源的 relational CDM 约束 rubric，用 D-JQS/hybrid scoring 执行标准，并能把通用高质量、单边个性化、低绝对适配、只胜过差 swapped、关键约束误用和边界违规分开。
 
 不能声称：模型真正理解用户；clarification 是首次提出；所有高分 PDR 报告都是假阳性；或 artifact specificity 自动等于真实用户收益。
 
@@ -270,3 +290,7 @@ ICLR 2027 官网当前给出的摘要截止是 2026-09-18 AOE、全文截止是 
 [3] [IDRBench](https://arxiv.org/abs/2601.06676). 2026.
 [4] [G-STEER](https://arxiv.org/abs/2608.05876). 2026.
 [5] [ICLR 2027 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines). 2026.
+[6] [JudgeBench](https://arxiv.org/abs/2410.12784). ICLR 2025.
+[7] [JUDGE-BENCH](https://arxiv.org/abs/2406.18403). ACL 2025.
+[8] [RuVerBench](https://arxiv.org/abs/2606.29920). 2026.
+[9] [GAMUT](https://arxiv.org/abs/2607.19322). 2026.

@@ -11,7 +11,7 @@ from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 ROOT = Path(__file__).resolve().parents[1]
 MD = ROOT / "proposal" / "DeepAlign-Bench_研究Proposal.md"
-FIG = ROOT / "proposal_assets" / "DeepAlign-Bench_PLHKW任务资源池_v0.54.png"
+FIG = ROOT / "proposal_assets" / "DeepAlign-Bench_真人真值到D-JQS_v0.55.png"
 OUT = ROOT / "deliverables" / "DeepAlign-Bench_正式研究Proposal.docx"
 
 # The formal proposal is the default. Communication variants override these
@@ -21,19 +21,19 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "三个长程知识工作场景中的反事实用户特异性"
 COVER_MODE = "Personalization · Long-Horizon Knowledge Work · Evaluation"
-DOC_VERSION = "v0.54 · 180→60 任务资源池与三场景抽样版"
-DOC_DATE = "2026 年 8 月 16 日"
+DOC_VERSION = "v0.55 · 真人真值、CDM 与 D-JQS 版"
+DOC_DATE = "2026 年 8 月 17 日"
 RESEARCH_LINE = "Adequacy · Specificity · Benefit · No-Harm · Boundary"
 CORE_CLAIM = "固定任务、证据、工具和预算，检验最终交付物是否随目标用户发生双向正确变化，并同时通过绝对合格、通用回答收益、共同质量与边界门。"
 CONTENTS_ITEMS = [
     "研究问题与可证伪假设", "Case、Task 与用户真值", "User-information channels",
-    "反事实矩阵与非补偿评分", "JudgeBench 与 PDR 压力测试", "统计与外部验证",
+    "反事实矩阵与非补偿评分", "CDM、D-JQS 与 PDR 压力测试", "统计与外部验证",
     "逐周执行门、贡献与主张边界", "参考文献",
 ]
-READING_NOTE = "阅读提示：先看主图和研究概要理解 180→60 资源池、40/30/30 三场景抽样，以及 provisional shell 与 runnable gold 的区别。"
+READING_NOTE = "阅读提示：先看主图理解真人 ledger、Counterfactual Difference Map、受约束 rubric 编译与 D-JQS 的权威分离；180→60 任务池仍是 provisional sampling frame。"
 FIGURE_TRIGGER = "1. 研究问题"
-FIGURE_TITLE = "DeepAlign-Bench PLHKW 任务资源池与升级门"
-FIGURE_CAPTION = "图 1  从 180 个候选 seed，到 24/18/18 provisional family 与 5/3/4 主论文优先集；统一的是反事实个性化协议，不是跨 vertical raw success。"
+FIGURE_TITLE = "DeepAlign-Bench 真人真值、关系契约与评分资格链"
+FIGURE_CAPTION = "图 1  真人 ledger → CDM → 双冻结 → 受约束 rubric → validated verifier / slice-qualified D-JQS / 盲化人评；freeze 只防 post-hoc。"
 RUNNING_HEADER = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
 STYLE_PRESET = "narrative_proposal"
 INCLUDE_CONTENTS = True

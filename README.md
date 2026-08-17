@@ -2,11 +2,15 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.54（三个代表性长程知识工作场景）
+## 当前方向：DeepAlign-Bench v0.55（真人真值、CDM 与 judge 资格协议）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据/仓库/数据、工具和预算相同时，最终研究报告、代码 patch 或分析交付物是否真的因目标用户不同而作出正确且有益的改变。当前只声称跨 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性场景实例化一个共同协议，不声称覆盖所有知识工作。
 
 每个 task family 配对两位都真实合理、但决策约束不同的用户。系统分别生成 task-only、matched-A、matched-B 等报告，再把 A/B 报告交叉放到两位用户的 rubric 下评分。确认性结论必须同时通过四道不能互相抵消的门：双向 counterfactual specificity、matched 相对 task-only 的真实收益、共同质量不下降、隐私/权限不违规。clarification 只是一种 user-information channel：允许从模糊 query 出发询问用户，再检查答案是否从“问到”一路进入计划、报告和最终决定；它不再单独承担 when-to-ask 的论文主张。
+
+v0.55 将评价真值链正式分为：**真人从 task slate 选择 3–5 个真实相关任务并确认 task-conditioned ledger → 构造带 provenance/authority/direction/equivalence/dependency 的 Counterfactual Difference Map（CDM）→ 从冻结 CDM 受约束编译 rubric leaves → 用 validated verifier、D-JQS slice-qualified judge 和盲化人评执行**。CDM 是 A/B 的关系真值；rubric 只是编译产物。Freeze 只防 post-hoc，不证明真值正确。Pair 同时包含 contrast、near-neighbor 和 neutral/invariance，完整报告 offered→eligible→selected→paired→qualified 漏斗。
+
+项目内 judge 校准改名 **DeepAlign Judge Qualification Suite（D-JQS）**，避免与既有 JudgeBench/JUDGE-BENCH 混淆。D-JQS 混合确定违规、单一受控编辑和自然真人 artifact，并把 calibration 与 hidden qualification 按 family/user/source/agent/edit lineage/time 隔离；AB/BA 之外单独测试长度、style、格式、关键词、引用数与语言。关键 leaf slice 未通过时必须转 deterministic/human/coarse binary，不能靠多个失败 judge 投票掩盖。
 
 v0.47 的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 获得绝对高分且 4/4 接近 matched；但 over-personalized 报告只有 1/4 接近 matched。v0.48 已在任何新结果产生前冻结更严格的 GPT-5 复现：精确使用 PDR-Bench 官方中文 P-Score prompts、5 次权重采样、四维 criteria pipeline、4 个 task family、20 份固定报告、A/B 全交叉评分和 3 次 judge 重复。当前 OpenRouter key 有效且可见 GPT-5，但请求在进入模型前被账户/地域层 provider Terms of Service 403 阻断，尚无 GPT-5 criteria 或分数。冻结资产不变，获得受支持的 key 后可从 smoke 断点继续。
 
@@ -21,6 +25,9 @@ v0.54 已建立 180 个 normalized candidate seeds（72 DR / 54 Software / 54 Da
 ## 当前交付物
 
 - [`data/plhkw_task_pool_v0_54/README.md`](data/plhkw_task_pool_v0_54/README.md)：180 候选、60-family provisional selection、来源/许可登记、筛选审计、JSONL/CSV/schema、standalone catalog 和校验入口。
+- [`benchmark_schema/human_ground_truth.protocol.yaml`](benchmark_schema/human_ground_truth.protocol.yaml)：真人 task 选择、开放 elicitation、ledger、authority、pairing、盲化 artifact validation 与隐私协议。
+- [`benchmark_schema/counterfactual_difference_map.schema.yaml`](benchmark_schema/counterfactual_difference_map.schema.yaml)：成对用户的 change/hold/equivalence/forbidden/clarify 关系真值与双冻结 schema。
+- [`benchmark_schema/judge_qualification.protocol.yaml`](benchmark_schema/judge_qualification.protocol.yaml)：D-JQS 三类 gold、grouped split、nuisance controls、slice qualification 与失败路由。
 - [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png)：3200×1800 导师汇报主图，覆盖 PDR 全量资源池、case/task/user 元数据、统一 research episode、rubric compiler、2×2 交叉矩阵、五道非补偿门、首批 seed 与逐周证据门；同名 SVG 可编辑。
 - [`benchmark_schema/research_episode.schema.yaml`](benchmark_schema/research_episode.schema.yaml)：统一 Deep Research 范式、信息事件和系统能力资格的机器可读 schema。
 - [`data/seed_v0_50/README.md`](data/seed_v0_50/README.md)：第一批 3-family / 24-episode 合成工程数据与校验入口。
@@ -40,6 +47,8 @@ ElicitAlign-Bench v0.45 已完整归档到 [`archive/research-directions/ElicitA
 ## 当前最强风险
 
 当前最大风险不是工程，而是贡献被审稿人理解为“给 PDR-Bench 多加一个 swapped 差值”。DeepAlign 必须证明绝对适配与反事实特异性会稳定产生判定分歧、系统重分类或对真人结果的增量预测；若官方配置和真实 family 上没有这些现象，measurement-validity 主张应降级。
+
+v0.55 新增的同级风险是把 CDM/受约束 compiler 包装成方法新颖性，但 GAMUT 已有 two-level meta-rubric，RuVerBench 已直接审计 agentic rubric verification，JudgeBench/JUDGE-BENCH 名称也已有前作。因此必须比较 PDR-style 单用户 rubric、独立 A/B rubric、CDM 对称 rubric 与 single-judge/hybrid scoring；若 CDM 既不重分类系统，也不增量预测盲化真人选择，论文只能称为 transparent measurement extension。
 
 第二个风险是把本地 Qwen 压力测试写成 PDR-Bench 的正式失败。它目前只是 adversarial unit test：通用报告假设获得方向性支持，over-personalized 的强假设未获得普遍支持。第三个风险是 broad clarification 已有 IDRBench、IntentRL、DiscoBench 和 G-STEER 等近邻，因此 clarification 只能作为输入渠道和诊断切片。
 

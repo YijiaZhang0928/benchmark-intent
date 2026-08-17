@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.54 · 2026 年 8 月 16 日
+版本：v0.55 · 2026 年 8 月 17 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
@@ -20,7 +20,7 @@ PDR-Bench 已经建立 Deep Research 中 task–persona 条件下的 absolute ad
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
-v0.54 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。这个结果冻结了 task shell、来源、reasoning structure 与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.50 的 **research episode** 统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
+v0.54 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。这个结果冻结了 task shell、来源、reasoning structure 与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.55 进一步把 persona 与评分链冻结为 **真人真值获取 → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → DeepAlign Judge Qualification Suite（D-JQS）→ hybrid scoring**：rubric 不再由两份独立 persona 标准临时拼成，judge 也不再负责发明评价目标。v0.50 的 **research episode** 统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
 
 这条主线不能声称 agent 内部“在意”或“关心”用户；黑箱 benchmark 无法识别动机。可证伪的行为表述是：**当一份通用报告已经可以完成表面任务、但仍缺少会改变最终决定的用户事实时，agent 是否主动询问高价值问题，并在获得答案后把它落实到交付物。** P2 因而比一般证据冲突更直接地测 user-specificity sensitivity；P4 只能测当前用户状态变化后的响应与旧状态清除，不能被写成“agent 更关心用户”的独立证据。
 
@@ -59,7 +59,7 @@ OpenCompass 把评测拆成配置、推理、评估和可视化四个阶段。�
 
 EvalScope 用 Model Adapter、Data Adapter、多个执行后端、Performance Evaluator 和统一报告界面连接不同模型与 benchmark，并支持 single、pairwise-baseline 和全量 pairwise arena。[[2]](https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html) 对本项目最有用的是三层可插拔结构：统一 agent adapter、统一 case schema、可组合 evaluator。Arena 可以承载目标用户盲评；性能模块可以统一记录时延、token、搜索和工具成本。
 
-但“EvalScope 能调用 expert model 自动评分”不等于“这个评委已经可靠”。DeepAlign-Bench 仍需单独建立 JudgeBench，验证评委能否识别用户特异价值，并排除长度、语气和显式复述 persona 等干扰。
+但“EvalScope 能调用 expert model 自动评分”不等于“这个评委已经可靠”。DeepAlign-Bench 仍需建立 D-JQS，验证评委能否识别用户特异价值，并排除长度、语气和显式复述 persona 等干扰。
 
 ### 2.3 Agent-SafetyBench：最值得仿照的是“结果类别 × 失败机制”
 
@@ -97,13 +97,13 @@ PDR-Bench 的评价构念成立，但它的 **judge 和评分协议仍有清楚�
 5. **算术平均可能掩盖关键失败。** P/Q/R 最终做算术平均，因此较高的个性化或写作质量可能补偿事实可靠性不足。对高风险、隐私或关键约束，更合适的是 hard gate 和 violation cap。这是评分协议的边界，不是否定 P-Score 对 absolute adaptation 的表达能力。
 6. **尚未报告针对性的稳健性审计。** 论文没有报告 wrong-user swap、位置交换、matched-length、persona 关键词堆叠、敏感信息误用和跨 judge-family 等对抗切片。准确的说法是“这些稳健性尚未被验证”，不能直接断言 PDR judge 已被这些因素欺骗。
 
-因此，论文需要同时说清两点：**PDR-Bench 已经建立了有效的 task/persona-conditioned absolute adaptation 评价；它现有的 judge 校准和评分链还不能直接承担 DeepAlign 所需的跨用户、跨交付物、带硬约束的 effect identification。** JudgeBench 负责保证测量可靠，但它本身不是 estimand 创新。
+因此，论文需要同时说清两点：**PDR-Bench 已经建立了有效的 task/persona-conditioned absolute adaptation 评价；它现有的 judge 校准和评分链还不能直接承担 DeepAlign 所需的跨用户、跨交付物、带硬约束的 effect identification。** D-JQS 负责保证测量可靠，但它本身不是 estimand 创新。
 
 形式上，令 `M[i,j] = PF_i(Y_j)`。只有同时满足以下条件，才能认为观察到了反事实个性化效应：对角项 `M[a,a]`、`M[b,b]` 稳定高于交换项 `M[a,b]`、`M[b,a]`；`must-change` 按预期变化；`must-hold`、事实性和共同质量不下降；`must-not` 没有被违反。这个 matched/swapped 设计识别的是“目标用户变化是否带来结果适配变化”，不能证明模型内部真的理解了用户。一个稳定的“关键词→模板”策略仍可能通过测试。
 
 独立的 **cue-equivalence / representation-robustness** 测试检查这种效应能否跨表达方式保持。对同一个潜在 user-state，分别使用结构化 persona、语义等价的自然历史、澄清对话和去掉显眼关键词的改写。核心 `must-change` 决策和 CFA 应基本一致；如果只改变任务无关的人口属性或表面措辞，`must-hold` 应保持不变。ACL 2026 的 *One Persona, Many Cues* 已表明，同一 persona 的不同提示线索会显著改变模型结论；[[53]](https://aclanthology.org/2026.acl-long.2079/) PARL 也把 representativeness、user-consistency 和 discriminativeness 列为个性化评价的三个必要原则。[[54]](https://arxiv.org/abs/2605.31545)
 
-长度、位置、格式、wrong-user swap、关键词诱饵和敏感信息误用则进入 JudgeBench。它们既用于审计 DeepAlign 自己的评委，也补充 PDR-Bench 尚未报告的稳健性证据。这是 judge 可靠性方面的增量，不取代 counterfactual estimand 这一核心创新。
+长度、位置、格式、wrong-user swap、关键词诱饵和敏感信息误用则进入 D-JQS。它们既用于审计 DeepAlign 自己的评委，也补充 PDR-Bench 尚未报告的稳健性证据。这是 judge 可靠性方面的增量，不取代 counterfactual estimand 这一核心创新。
 
 ### 2.5 LivingBench：动态用户与环境值得吸收，但目前证据透明度不足
 
@@ -168,7 +168,7 @@ DeepAlign-Bench 不取代这套评价，而是增加跨用户对照。固定任�
 | **长程记忆、变化与风险** | PRIME 区分情景与语义记忆；RPEval 暴露无关记忆引发的不理性个性化；PAHF 联合主动澄清、记忆与反馈以适应偏好漂移；PerMemBench 测“什么值得为这个用户写入”；Memora 与 CloneMem 测过期事实、遗忘和多年非对话数字轨迹；PS-Bench 说明良性个人记忆也可能错误地为危险意图背书。[[39]](https://aclanthology.org/2025.emnlp-main.1711/)[[43]](https://arxiv.org/abs/2601.16621)[[44]](https://arxiv.org/abs/2602.16173)[[45]](https://arxiv.org/abs/2605.25535)[[46]](https://aclanthology.org/2026.findings-acl.1337/)[[47]](https://aclanthology.org/2026.acl-long.1549/)[[52]](https://aclanthology.org/2026.acl-long.1260/) | 它们要求我们把 irrelevant / stale / write / update / safety 变成正式 operator，而不是附录案例；但主要指标是检索、分类、推荐、行动或安全失败，并未统一到 DR 最终交付物。 |
 | **最接近的个性化 DR** | PDR-Bench 已用 task/persona-conditioned P-Score 测绝对适配，并比较 task-only/context/persona；另一项 PDR 工作把用户画像嵌入检索—推理循环；MyScholarQA 用研究者画像生成个性化行动与报告，并用真人研究揭示 LLM judge 漏掉的九类错误；个性化 leaderboard 工作还表明总体模型排名不能代表个体偏好。[[4]](https://arxiv.org/abs/2509.25106)[[40]](https://arxiv.org/abs/2605.10530)[[41]](https://aclanthology.org/2026.acl-long.723/)[[42]](https://aclanthology.org/2026.findings-acl.31/) | 这组工作直接否定“个性化 DR 无人研究”以及“persona 没有进入 rubric”。仍可检验的是：同一任务与证据下，两个都合理的用户能否形成稳定的跨用户对角优势，并由预冻结差异/不变项真值、语义等价信号和真人效用共同校验。 |
 
-因此，论文不能把结论写成“我们比现有工作更全面”。v0.31 的交叉对照解决了 artifact-fit 的识别问题，却仍未验证这个代理终点是否改善用户行为。v0.32 的问题更窄也更实质：**通过共同质量门的个性化研究交付物，是否降低真实目标用户的可验证决策 regret？** 跨用户 CFA、三类契约、跨 cue 稳健性和 JudgeBench 负责确认处理；DDE 与 WrongUserHarm 才承担核心结论。
+因此，论文不能把结论写成“我们比现有工作更全面”。v0.31 的交叉对照解决了 artifact-fit 的识别问题，却仍未验证这个代理终点是否改善用户行为。v0.32 的问题更窄也更实质：**通过共同质量门的个性化研究交付物，是否降低真实目标用户的可验证决策 regret？** 跨用户 CFA、CDM、跨 cue 稳健性和 D-JQS 负责确认处理；DDE 与 WrongUserHarm 才承担核心结论。
 
 ## 3. 构念定义与任务边界
 
@@ -561,46 +561,25 @@ Anchor 的可识别量是**受控扰动敏感度**，不是“用户建模失败
 
 ### 5.4 用户数据与真值创建
 
-Persona 不是人物小传，而是 **task-conditioned user state 的一种呈现方式**。看起来真实、与任务不违和只是最低要求；如果某条 persona 信息不会改变可验证的任务要求，它就不能成为个性化真值。用户数据分三层：真实用户自述形成 gold 子集；真实需求经过隐私抽象后形成 user-anchored 主集；合成或扰动 persona 只用于负对照。研究者自行推断、但未经本人确认的事实不能进入 gold。
+Persona 不是人物小传，而是 **task-conditioned user state 的一种可见序列化**。v0.55 把真值创建分成四层，并明确每层解决不同问题：真人来源与权威解决真实性；LLM 高召回候选和人工 coverage audit 改善遗漏；版本与哈希冻结只防 post-hoc；verifier、D-JQS 和真人外部效度负责执行可靠性。冻结本身绝不被表述为 gold 正确性的证据。
 
-**构造时不先写完整人物，再寻找匹配任务。正确顺序是先看任务会产生什么决策后果，再保留最少但足够的用户状态：**
+**第一层：真实任务选择与开放式 elicitation。** 每位参与者先看到一个随机化或分层的候选 task slate，再从中选择 3–5 个现实中确实可能需要完成的任务。研究记录 `offered / self-reported eligible / selected / skipped` 全漏斗，不能只公布最终留下的高对比 pair。每个已选 task 先做无提示开放描述，用户自由说明目标、限制、关注点、风险、可接受 trade-off、受众、使用环境和“什么会让结果对我不可用”；随后才进入 family-specific structured follow-up。每条事实标记 `spontaneous / prompted / N/A / declined`，并保留置信度、可接受替代、时间戳、过期/复核日期和隐私许可。部分用户做 test–retest；在可行时，用实际选择或既有行为记录核对自述稳定性。由此形成经本人确认的隐藏 `task-conditioned user ledger`，而不是把整份后台 ledger 直接塞给 agent。
 
-1. **从真实需求建立 source record。** 记录用户为何要做该研究、谁会使用结果、将采取什么决策；保存同意范围与隐私级别。
-2. **提取 task-relevant axes。** 只在 `goal / knowledge / hard constraint / risk-value / audience / permission / dynamic state` 中选择会改变交付物的字段；年龄、性别、职业等人口属性默认不进入差异真值。
-3. **先写 invariant user core。** Ua/Ub 共享提出该任务所需的背景、权限和事实；这保证两个用户都自然，而不是一个“正确 persona”和一个故意错配 persona。
-4. **做 minimal counterfactual edit。** 只改变 2–4 个有决策后果的 axes，并保持其他字段、信息量和表述长度尽量接近。例如同为医院项目负责人，只改变决策职责、技术知识和风险门槛，而不是把两人写成完全不同的故事。
-5. **建立 fact-to-contract map。** 每个差异事实必须至少映射到一个 `must-change`；每个共享事实映射到 `must-hold`；敏感、低置信度或禁止推断项映射到 `must-not / clarify-if-unknown`。没有映射的事实从核心 persona 删除，或只作为 irrelevant control。
-6. **生成多个 signal views。** 从同一 ledger 编译 structured persona、自然历史、澄清回答、行为轨迹或 workspace evidence；用双人 semantic audit 检查这些 view 是否携带相同的 task-relevant 含义，而不是让 persona 条件天然信息更多。
-7. **加入负对照。** 制作 demographic-only、irrelevant attribute、wrong-user swap、stale/low-confidence 和 redacted view；它们不进入真实用户画像，只用于测无依据推断、过度个性化和隐私边界。
-8. **让人验证而不是让 LLM 自证。** 原用户确认事实和使用价值；另一名相似用户做 plausibility check；领域专家确认差异不会破坏专业正确性；盲评者用 reference matched/swapped 输出验证两套用户标准确实可区分。
+**第二层：成对用户与 Counterfactual Difference Map。** 对同一 task，按预注册算法从都真实相关的用户中形成三类 pair：有清楚决策差异的 contrast pair、差异较小的 near-neighbor pair，以及本不应出现显著输出变化的 neutral/invariance pair。pairing team 在看不到 target-agent 输出的条件下完成选择，并公开候选、入选、拒绝原因和对比强度分布。这样 benchmark 的 target population 被明确限制为“task-relevant、counterfactually eligible users”，不声称估计所有用户中的个性化需求普遍率。
 
-最终发布的不是一段未经控制的 biography，而是三个相互关联的对象：保存来源、但不公开或去标识的 `private provenance record`；作为真值的 `versioned user-state ledger`；以及 agent 实际看到的 `channel-specific signal view`。这样既能保留真实性，也能追踪每条用户事实为什么应该影响某条 rubric。
+每个 pair 不再先各自写一份 rubric，而是先构造关系对象：
 
-人类真值由两类人分别负责。领域专家或受训标注者判断共同事实、证据是否充分、`must-hold` 和客观任务完成情况；目标用户本人确认 `must-change`、`must-not` 和可接受替代，并盲选 matched/swapped 交付物。真实用户 gold family 必须保留目标用户判断。User-anchored family 可以由原需求来源用户，或通过资格筛选的相似用户验证。纯合成 persona 只能进入压力测试和 judge 对抗集，不能单独支持“对真实用户有用”的结论。这一分工直接回应 MyScholarQA 发现的 synthetic-user 和 LLM-judge 漏检风险。[[41]](https://aclanthology.org/2026.acl-long.723/)
+`C(T,E,U_a,U_b) = Counterfactual Difference Map (CDM)`。
 
-每个 persona-task pairing 必须通过六项兼容性门：
+CDM 的 node 记录 `decision variable / expected relation / user-A expectation / user-B expectation / acceptable alternatives / decision consequence / observable / provenance / authority / uncertainty / dependency / counterfactual partner`。`expected relation` 不只允许“必须不同”，还包括 `directional difference`、`preserve same`、`acceptable equivalence/indifference`、`forbidden` 和 `clarify-or-branch`。因此，`must-change / must-hold / must-not / clarify-if-unknown` 是 CDM 的兼容视图，不是四个由 LLM 临时生成的列表。neutral pair 与 equivalence set 专门检测 agent 是否“逢 persona 必改”。
 
-1. **Plausibility**：该用户确实可能提出该任务，场景和权限自然；
-2. **Decision relevance**：至少两条用户事实会改变内容、决策、深度、行动或披露边界；
-3. **Counterfactual separability**：与配对用户相比，存在可由盲评者复核的 must-change 差异；
-4. **Invariant core**：仍有一组事实、证据和共同质量要求不应随用户变化；
-5. **Minimality & privacy**：只保留完成任务必要的信息，并标注是否允许使用和披露；
-6. **Non-stereotyping**：关键偏好和约束来自用户事实，不由人口统计代理属性推断。
+强 LLM 可以在看不到 target 输出时高召回提出候选 node 和可能遗漏，但它的 authority weight 为零。每条 node 必须指向本人确认的 user fact、共同 task/evidence 或 permission/safety policy；没有 provenance 的候选直接 fail closed。Persona owner 只确认“这个因素是否真实影响我的决定、方向是什么、哪些替代方案我也能接受”；两名独立 annotator 审计 provenance、决策后果、可观察性、原子性、冗余和刻板化；领域专家只判断事实、证据、技术可行性与安全边界。用户不能把技术错误变成事实，专家也不能替用户重写偏好。未解决的权威冲突要么写成条件分支，要么排除。
 
-每条用户事实进入版本化 ledger，记录内容、类型（目标/知识/约束/偏好/风险/受众/权限/动态状态）、来源、时间戳、可靠度、敏感级别、任务相关性、可见渠道、是否允许用于推理与是否允许对外呈现。structured persona、自然历史和澄清回答只是同一 ledger 的不同视图；任何视图引入或遗漏的语义必须经过 equivalence audit。
+**第三层：双冻结而非神化 freeze。** Construction freeze 发生在 reference artifact 之前，用于防止作者根据参考答案反写 CDM；evaluation freeze 发生在任何 target-agent 输出之前，固定实际 rubric bundle。两次冻结都保存版本、时间与哈希。开发集可以把输出后发现的 emergent error 记录到下一版本 compiler；正式 test set 不能把它追加进主分，只能做带版本的 secondary analysis/errata。对“完整性”的主张限定为“在预注册 elicitation 与 coverage audit 下达到 saturation”，不声称穷尽用户所有潜在需求。
 
-对每个 user-task 实例，目标用户、领域专家和 benchmark 作者共同建立 **差异真值包**：
+**第四层：盲化人类外部效度。** Persona owner 前期只看自己的 ledger 和 CDM 语义，不看最终 rubric wording。后期 matched/swapped artifact 随机顺序、隐藏 agent 与条件身份，并与前期确认尽量时间分离，只问“哪份你实际更愿意采用、为什么、最重要的问题是什么、必须改什么”。这个选择是外部效度终点，不与前期 contract confirmation 循环当作同一份 gold；条件允许时增加未参与 contract 构造的 comparable-user 复核。MyScholarQA 发现真实用户会指出合成 persona 与 LLM judge 漏掉的细微错误，支持保留这一真人层，但也意味着我们不能用 synthetic-user gold 支撑真实效用主张。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
-- 共同任务要求（所有用户都必须满足）；
-- 用户特异正向要求（应该出现）；
-- 禁止/负向要求（不应出现、不得泄漏或不得假设）；
-- 可接受替代方案集合；
-- 关键证据与引用包；
-- 任务失败 cap（如关键事实错误后最高不得超过 40 分）；
-- 预期澄清点与“不提问也可解决”的替代路径；
-- 反事实预测：Ua 与 Ub 的交付物必须在哪些方面不同、哪些方面不应不同。
-
-rubric 在系统输出产生前冻结。LLM 可帮助拆分原子项、找遗漏和检查逻辑，但不得单独决定金标；任何动态附加标准只进入探索性分析，不进入主榜。
+最终形成四个相互隔离的对象：私有且可撤回的 provenance/consent record；本人确认的后台 ledger；冻结的成对 CDM；以及 agent 实际看到的最小 channel-specific signal view。所有发布视图遵守目的限制、数据最小化、访问控制、保留期限、撤回和去标识化；raw ledger 默认不公开。
 
 ### 5.5 数据质量控制
 
@@ -612,18 +591,18 @@ rubric 在系统输出产生前冻结。LLM 可帮助拆分原子项、找遗漏
 
 ### 6.1 元数据驱动的 Rubric Compiler
 
-“一套 rubric 支持多种 DR 任务”不表示所有任务共用同一张评分表。DeepAlign 固定的是**编译接口、direction node 与叶节点 schema、聚合规则**；具体评价项由 case 元数据和预先写好的评价契约选择。仓库中除 case/template/module/leaf/metric/data-factory 外，v0.31 新增 `rubric_node_registry.yaml`、`construction_annotation.protocol.yaml` 与 `environment_build.protocol.yaml`，分别冻结 module 到 case-specific leaf 之间的可复用方向、分层标注和三环境开工顺序。自动 validator、路由器和 bundle 导出器仍是第 1 周实现项，不能把当前设计文件表述为已经完成的生产级 compiler。
+“一套 rubric 支持多种长程知识工作”不表示所有任务共用同一张评分表，也不表示 LLM 可以从 task + persona 自由发明标准。DeepAlign 固定的是**关系真值接口、direction node、叶节点 schema 与聚合规则**；具体 personalization 目标只能来自冻结的 CDM。rubric 是 `C(T,E,U_a,U_b)` 的可执行编译产物，而不是方法贡献本体。这个边界也避免把已有 structured/meta-rubric compiler 的通用思想误报为首创：GAMUT 已研究把自然语言 meta-rubric 转成机械 rubric，RuVerBench 直接审计 agentic rubric verification。[[84]](https://arxiv.org/abs/2606.29920)[[85]](https://arxiv.org/abs/2607.19322) DeepAlign 的特定增量必须由**成对真人来源的关系真值、对称编译和对最终用户结果的增量效度**证明。
 
-Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-state ledger；（3）`must-change / must-hold / must-not / clarify-if-unknown` 契约；（4）证据包与允许访问范围；（5）版本化模板库。它在任何被测输出产生前按六步运行：
+Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-state ledger 的授权后台引用；（3）带 provenance、authority、direction、acceptable alternatives 和 dependency 的冻结 CDM；（4）证据包与允许访问范围；（5）版本化模板库。它在任何被测输出产生前按六步运行：
 
 1. **Validate**：检查 task、user facts、evidence、permission 和 contract 是否齐全；
-2. **Route modules**：按 `primary_intent`、`deliverable_type`、`stakes`、`behavioral_operator` 等字段选择父级 module；
-3. **Select nodes**：根据冻结的 metadata/contracts 选择适用 direction node；
+2. **Route modules**：按 `primary_intent`、`deliverable_type`、`stakes`、`behavioral_operator` 和 CDM relation 选择父级 module；
+3. **Select nodes**：验证每个 user-conditional node 的 CDM provenance/authority/freeze，再选择适用 direction node；
 4. **Instantiate**：把预算、截止时间、目标用户、证据 ID、允许披露范围等参数填入 node；
-5. **Leaf expansion**：把“适合该用户”“决策备忘录质量高”这类复合要求，拆成可独立观察、独立给分、带证据目标和文字锚点的原子 leaf；
-6. **Validate & freeze**：检查覆盖、重复、冲突、A/B 用户对称性、隐私权限和 matched/swapped 区分力，生成带版本与哈希的 `rubric_bundle`。
+5. **Leaf expansion**：把一个 CDM node 拆成可独立观察、带 evidence target 与文字锚点的原子 leaf；一对多拆分必须记录 dependency/redundancy group；
+6. **Validate & freeze**：检查覆盖、重复、冲突、A/B 对称性、隐私权限和 reference discrimination，先在 node 内聚合，再进入指标，生成带版本与哈希的 `rubric_bundle`。
 
-因此，leaf expansion 不是看到模型答案后再细化评分标准，也不是让 LLM 临时发挥。它是**输出生成前的编译步骤**。LLM 可以在数据制作阶段建议拆分方式，但人类必须确认；冻结后同一 bundle 原样用于所有被测 agent。
+因此，leaf expansion 不是看到模型答案后再细化评分标准，也不是让 LLM 临时发挥。LLM 在这里被降权为 **compiler**：只能改写/拆分已有 node，不能新增没有 source fact 的评价目标。每条 leaf 必须记录 `difference_map_id / source node / owner / expected relation / evidence requirement / scorer route / severity / dependency group / qualification slice`；冻结后同一 bundle 原样用于所有被测 agent。叶节点共享同一 node、任务和用户时不视为独立样本，避免原子化后 double counting 与虚增统计功效。
 
 对 case (c)，冻结后的模板并集为：
 
@@ -689,17 +668,20 @@ Leaf 到指标的关系必须在 bundle 中显式声明，而不是由分析者�
 
 ### 6.4 编译校准门与三棵 rubric tree
 
-Rubric compiler 必须接受七项覆盖与效度校验：
+Rubric compiler 必须接受十项覆盖与效度校验：
 
 1. **Schema coverage**：每个进入实验的核心元数据值至少激活一个可判定叶节点或明确标为仅报告字段；
 2. **Counterfactual discrimination**：人类 matched 参考输出应显著优于 swapped、ablated 或错误利用版本；
 3. **Invariance**：加入无关 persona、改变文风或长度时，非适用叶节点不应获得额外分；
-4. **Cross-type judge calibration**：分别报告 intent、deliverable、signal channel 和 stakes 模块上的一致性、弃权率与误差，不以整体准确率掩盖模块失效。
-5. **Redundancy & scale audit**：检查跨 module 语义重叠、leaf 数量、NA 分母和权重敏感性；同一行为不能在多个 module 中无理由重复计分。
+4. **Cross-type judge calibration**：分别报告 intent、deliverable、signal channel、leaf class 和 stakes 模块上的一致性、弃权率与误差，不以整体准确率掩盖模块失效；
+5. **Redundancy, dependency & scale audit**：检查跨 module 语义重叠、共享 parent node、leaf 数量、NA 分母和权重敏感性；同一行为不能在多个 module 中无理由重复计分；
 6. **Target-user/domain content validity**：目标用户检查 must-change 与可接受替代，领域专家检查事实、证据和高风险边界；作者自洽不能替代两类外部判断。
-7. **Residual-error saturation**：对 pilot 中现有 module 捕捉不到的 `other/emergent` 错误做 open coding。只有同一残余 construct 在至少两个不同 family 重复出现、具有决策后果、且不能通过现有 module 参数化时，才新增 module。
+7. **Verifier validity**：unit/regression test、公式 checker、citation/support verifier 都要用 known-positive/negative、mutation 或受控编辑估计 false accept、false reject 与 coverage；“程序化”不自动等于“真值”；
+8. **Pair-selection audit**：对 contrast、near-neighbor 和 neutral pair 分开报告筛选漏斗、拒绝原因与对比强度，避免只保留最容易个性化的用户；
+9. **Weight/module sensitivity**：在合理权重、node-first aggregation 与去除高冗余模块下重算主结论；若系统排序依赖单一任意权重，就只报告 profile；
+10. **Residual-error saturation**：对 pilot 中现有 module 捕捉不到的 `other/emergent` 错误做 open coding。只有同一残余 construct 在至少两个不同 family 重复出现、具有决策后果、且不能通过现有 module 参数化时，才进入下一版本；locked test 不回改。
 
-如果一个模块在人类之间无法稳定判断，或不能区分 matched 和 swapped 输出，就删除、合并或降为探索性分析，不能靠调整权重把它保留在主分中。所谓“全面”不是 36 个 module 名称已经穷尽 personalization，而是核心 requirement/user fact 有映射、残余错误率可见、新 construct 达到饱和规则、且模块之间具备区分效度。Rubric 的通用性来自统一接口、明确的适用条件和跨类型校准，而不是让所有任务强行使用同一张表。
+如果一个模块在人类之间无法稳定判断，或不能区分 matched 和 swapped 输出，就删除、合并或降为探索性分析，不能靠调整权重把它保留在主分中。多个 leaf 共享同一 CDM node 时先在 node 内聚合，再进入 PF/TQ/FR；统计单位仍是 task family/user cluster，不把 20 个 leaf 当成 20 个独立样本。所谓“全面”不是 36 个 module 名称已经穷尽 personalization，而是核心 requirement/user fact 有映射、残余错误率可见、新 construct 达到饱和规则、且模块之间具备区分效度。
 
 **A. Common Task Quality（共同质量树）**
 
@@ -821,37 +803,41 @@ Phase B 使用 task-only、matched、swapped 三臂，在反事实等价 task sh
 
 确认性分析以用户和 family 为随机化/聚类层级。DDE 与 WrongUserHarm 使用 design-based contrast、user/family cluster bootstrap 和预注册的混合效应模型；同一用户的多次决策和同一 family 的多份报告不能当作独立样本。正式样本量只在 3-family pilot 后，根据 cluster/within-user variance、最小有意义 regret 改善、流失率和多重终点策略做功效模拟并冻结。CFA/Gain 只作为 Phase A 操纵检查和中介分析，使用 family-blocked permutation 与 cluster bootstrap。Agent、渠道和压力比较采用预注册分层模型，多重比较用 Holm 校正；除平均数外还报告中位数、最差 10% CVaR、硬约束失败和用户/family 切片，不发布小于不确定性的伪精确名次。
 
-## 8. Judge 体系与独立 JudgeBench
+## 8. Hybrid Scoring 与 DeepAlign Judge Qualification Suite（D-JQS）
 
 ### 8.1 级联评估
 
-1. **确定性 verifier**：文件存在/可打开、格式、单元测试、公式、预算、时间、禁用字段、引用链接和权限规则。
-2. **证据 verifier**：原子 claim 提取、引用抓取、蕴含/矛盾判定；对关键 claim 采用双模型或人工复核。
-3. **rubric judge**：只看冻结叶节点、必要证据和匿名交付物；逐项给分、引用交付物证据、允许 `insufficient evidence` 弃权。
-4. **pairwise judge**：随机交换 A/B 顺序，判断哪份更适合目标用户；隐藏模型来源、价格和生成时间。
-5. **目标用户与领域专家**：目标用户判断“是否适合我、是否愿意采用”，专家判断事实与专业可行性；二者不相互替代。
+1. **确定性 verifier**：文件可打开、unit/regression test、公式、预算、时间、禁用字段、权限规则；必须先用受控正负例和 mutation test 估计 checker coverage 与误判率。
+2. **证据 verifier**：原子 claim 提取、引用抓取、蕴含/矛盾判定；关键 claim 对抓取失败、`unsupported` 与 `unknown` 分开报告，并保留人工复核。
+3. **rubric judge**：只看冻结 leaf、授权上下文和匿名交付物；逐 leaf 输出 verdict、置信度、artifact evidence span 与 abstention reason，不能提出新标准。
+4. **pairwise judge**：同时做 AB/BA，并在校准子集做 balanced permutation；顺序不一致时标为 unstable，不硬平均。
+5. **目标用户与领域专家**：目标用户提供盲化采用偏好，专家判断事实与可行性；二者不相互替代。
 
-### 8.2 JudgeBench 的构造
+### 8.2 为什么不用“JudgeBench”作为项目内名称
 
-两个月版单独建立 **240 个判分单元**，并按 rubric module、任务意图、信号渠道和 agent 分层。至少一半来自真实模型输出；其余是专门设计的对抗改写，包括只改变长度、语气或位置，堆砌 persona 关键词，修正事实但降低文风，泄露隐私，正确弃权，以及引用不支持。关键或争议单元由 3 人评分；其余先由两人独立标注，有分歧再仲裁。涉及目标用户特异价值的项目，必须包含目标用户本人或其明确授权代理的判断。600 个以上的单元留给后续 scorer 训练和发布版校准。
+已有至少两项工作直接使用 JudgeBench/JUDGE-BENCH 名称：一项以困难 response pairs 测 judge 能否分辨细微质量差异，另一项显示 judge 在不同任务上的表现波动很大。[[81]](https://arxiv.org/abs/2410.12784)[[82]](https://arxiv.org/abs/2406.18403) 因此，本项目局部校准集命名为 **DeepAlign Judge Qualification Suite（D-JQS）**，明确它只是对声明 leaf slice 和版本的资格认证工具，不声称提出首个 judge benchmark。个性化 judge 研究也已经显示 personalized judging 需要显式建模用户差异。[[80]](https://aclanthology.org/2024.findings-emnlp.592/)
 
-Judge 只有通过预注册门槛才能进入主榜：pairwise accuracy ≥ 0.75；加权 κ 或 Krippendorff’s α ≥ 0.60；交换 A/B 位置后的结论翻转率 ≤ 0.05；不同用户群的准确率差不超过 0.10；标量分的校准误差和平均绝对误差优于简单基线。如果关键切片未达标，就改用人评或只发布粗粒度二元指标，不能用多个 judge 投票掩盖它们的共同偏差。
+### 8.3 D-JQS 的 gold、split 与对抗控制
 
-### 8.3 避免 judge 与被测模型耦合
+D-JQS 混合三种互补 gold，避免自己出合成题、再证明自己选的 judge 会做这些题：
 
-- 至少使用两家不同模型族的 judge，并保留人评仲裁；
-- judge 不得知道被测系统名称；
-- rubric 生成器、judge 和被测 agent 尽量避免同一底座；
-- 公布每层覆盖率与分歧矩阵，而非只公布融合分；
-- 定期以新模型输出刷新 JudgeBench，防止评委只适应旧错误。
+1. **deterministic-known violation**：明确违反 dependency、测试、公式、隐私、引用或权限；
+2. **controlled single edit**：从 matched artifact 只改一个关键决定形成 wrong-user、mention-only、critical reversal，以及 length/style/format/keyword/citation-count/language nuisance；
+3. **natural human artifact**：真实 agent 输出、目标用户盲选与领域专家事实核验。
 
-### 8.4 强通用 judge 与专用 SFT scorer：主线与可选支线
+数据严格分成 authoring/dev、judge-selection calibration 和 hidden qualification；按 task family、用户、来源谱系、target agent、编辑谱系和时间隔离。阈值只能在 calibration 上选择，hidden qualification 只报告一次。候选 judge 按 `objective correctness / claim support / user trade-off / prioritization / actionability / boundary` 分 slice 认证，不能用全局平均掩盖 critical slice 失败。指标包括 critical-error recall、macro accuracy/F1、人类一致性、evidence localization、abstention coverage/selective risk、AB/BA order consistency、nuisance flip rate、Brier/ECE、群体/vertical gap、成本和延迟；门槛及置信区间预注册，而不是只写孤立点估计。
 
-专用 scorer 的训练数据不能只有“人工 0/1 标签 + GPT 生成理由”。每个单元至少应包含冻结的 rubric 叶节点和评分锚点、人工 gold label、交付物中的 evidence span、错误类型、置信度或弃权标记，以及经过抽检的解释。GPT 在知道 gold label 后生成的 reason 只是**标签条件下的解释蒸馏**，不是新的 ground truth；它可能只是流畅的事后解释。隐私、硬门槛和争议项仍需人写或人审理由。
+AB/BA 只控制 position bias，不能控制 verbosity、style、关键词、引用数或语言。已有系统研究表明 pairwise LLM judge 存在显著位置偏差，MT-Bench/Chatbot Arena 也观察到 position、verbosity 与 self-enhancement bias。[[83]](https://arxiv.org/abs/2406.07791)[[86]](https://arxiv.org/abs/2306.05685) 重复采样只能减少 sampling noise，不能消除系统偏差；因此 nuisance edit 和顺序交换必须分别做。unstable item 路由给第二条独立测量路径或人工。
 
-JudgeBench 比较三种方案：强通用 prompted judge；用 `label + evidence + reason` 监督的 SFT leaf scorer；以及两者的级联。训练、验证和测试按 task family、目标用户、被测 agent 和时间分组，同一 counterfactual family 不能跨 split。除了 accuracy、macro-F1 和 κ/α，还要报告 Brier/ECE 校准、位置翻转率、长度与格式偏差、用户群差距、弃权的选择性风险、跨 family/agent 泛化、成本和延迟。[[14]](https://arxiv.org/abs/2310.17631)[[15]](https://arxiv.org/abs/2405.01535)[[16]](https://arxiv.org/abs/2403.02839)
+### 8.4 避免 judge、compiler 与被测模型形成自证闭环
 
-两个月主线固定为：`Deterministic/Evidence verifier → 强通用 judge → 人类复核/仲裁`。只有第 4 周前完成 240 个高质量判分单元，而且主实验流水线没有阻塞，才启动 SFT scorer。它默认只进入附录中的学习曲线和效率实验，不负责主榜。未来发布版可以改为 `verifier → SFT 高置信分流 → 强 judge 复核 → 人类仲裁`。这样不会让一个尚未证明泛化能力的 scorer 占用核心数据构建和论文写作时间。
+- judge 不知道被测系统名称、artifact class 与 matched/swapped 身份；
+- compiler、judge、target agent 尽量使用不同模型族，并披露无法避免的家族重叠与对应 ablation；
+- 多 judge panel 只是稳健性手段，不是独立性证明；不同模型也可能共享训练偏差。Panel 方案已有研究基础，但不能替代真人和确定性 gold。[[87]](https://arxiv.org/abs/2404.18796)
+- judge 未通过某个 leaf slice 时，该 slice 只能走 deterministic/human 或粗二元路线；禁止把多个失败 judge 平均成“通过”；
+- 公布 verifier、judge、abstention、human escalation 的覆盖率和分歧矩阵，不只公布融合分。
+
+两个月主线固定为：`validated deterministic/evidence verifier → slice-qualified strong judge → blinded human review/adjudication`。专用 SFT scorer 只有在主实验不受阻且完成严格 grouped split 后才做附录效率实验；RuVerBench 已表明长 agentic artifact 的 rubric verification 本身有显著噪声，因此一个高同分布准确率的小 scorer 不能直接接管主榜。[[84]](https://arxiv.org/abs/2606.29920)
 
 ## 9. 实验矩阵与被测 Agent
 
@@ -898,7 +884,7 @@ JudgeBench 比较三种方案：强通用 prompted judge；用 `label + evidence
 
 系统按 vertical 绑定：DR 比较商业产品、统一搜索 harness 和可复现开源 DRA；software 比较同一 repo/container 下的 controlled harness 与专用 code agent；data 比较同一 dataset/workbook 下的 controlled harness 与 data-analysis agent。每个 agent-task 组合提前写明 `eligibility_predicate`，受控 harness 榜和端到端产品榜分开报告。
 
-**Benchmark release 路线（不属于两个月已完成承诺）**：将 60 个 provisional shell 逐个升级为已绑定环境、已冻结用户契约的 runnable family，然后再扩展更密集的交叉条件、600+ JudgeBench 单元、SFT scorer 和持续更新 live leaderboard。扩展优先由 coverage manifest 中的空白与主实验不确定性驱动，而不是机械补齐笛卡尔积。
+**Benchmark release 路线（不属于两个月已完成承诺）**：将 60 个 provisional shell 逐个升级为已绑定环境、已冻结 CDM 的 runnable family，然后再扩展更密集的交叉条件、600+ D-JQS 单元、SFT scorer 和持续更新 live leaderboard。扩展优先由 coverage manifest 中的空白与主实验不确定性驱动，而不是机械补齐笛卡尔积。
 
 ### 9.4 Leaderboard 如何显示“模式 × 任务 × 难度 × 风险”的能力差异
 
@@ -932,7 +918,7 @@ Config Builder
   → Statistical Aggregator + Slice Dashboard
 ```
 
-EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompass 后端承担大规模模型—数据组合、并行与失败重试；本项目新增 user-signal adapter、动态 episode 环境、artifact schema、counterfactual evaluator 和 JudgeBench。所有原始运行只追加、不覆盖；评分版本与原始输出分离，允许新 judge 重放旧输出。
+EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompass 后端承担大规模模型—数据组合、并行与失败重试；本项目新增 user-signal adapter、动态 episode 环境、artifact schema、counterfactual evaluator 和 D-JQS。所有原始运行只追加、不覆盖；评分版本与原始输出分离，允许新 judge 重放旧输出。
 
 ### 10.3 可复现与污染防护
 
@@ -958,12 +944,12 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 ### 11.3 “matched/swapped 也不能证明模型真正理解用户”
 
 **攻击：**一个把显眼 persona 词语映射到固定模板的系统，也可能让 matched 优于 swapped；黑箱输出不能证明内部形成了用户模型。
-**防守：**论文只主张“用户条件变化带来了可观察的结果价值”，不声称识别模型内部认知。三组测试限制替代解释：同一 user-state 换成 persona、自然历史、澄清对话或去关键词改写时，核心 `must-change` 决策应保持；只改变无关人口属性或表面措辞时，`must-hold` 应稳定；只有改变任务相关约束时，输出才应按预期方向变化。长度、位置、漂亮格式和关键词堆砌进入 JudgeBench。对 PDR-Bench，论文只能说这些稳健性“尚未验证”，不能写成“已经被欺骗”。
+**防守：**论文只主张“用户条件变化带来了可观察的结果价值”，不声称识别模型内部认知。三组测试限制替代解释：同一 user-state 换成 persona、自然历史、澄清对话或去关键词改写时，核心 `must-change` 决策应保持；只改变无关人口属性或表面措辞时，`must-hold` 应稳定；只有改变任务相关约束时，输出才应按预期方向变化。长度、位置、漂亮格式和关键词堆砌进入 D-JQS。对 PDR-Bench，论文只能说这些稳健性“尚未验证”，不能写成“已经被欺骗”。
 
 ### 11.4 “LLM judge 自己定义答案，循环论证”
 
 **攻击：**rubric 和分数都由模型生成。  
-**防守：**输出生成前冻结、人类确认的 rubric；确定性与证据 verifier 优先；JudgeBench 独立验证；低一致性时降级到人工或粗粒度评分；公开 judge 分歧与弃权。
+**防守：**人类来源 CDM 与 rubric 在输出前冻结；确定性与证据 verifier 优先；D-JQS 用独立 hidden qualification 验证声明 slice；低一致性时降级到人工或粗粒度评分；公开 judge 分歧与弃权。
 
 ### 11.5 “个性化伤害事实性或助长回音室”
 
@@ -1031,29 +1017,97 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **防守：**不把 anchor 当作观察性相关分析。主要 estimand 是同一 family、同一运行前缀、同一预算的 clean/perturbed 配对差值；用于跨任务比较的主要 perturbation 至少覆盖 4 个适用 anchor，2 个只作为探索性复现。主文只称“对受控扰动的结果敏感度”；只有 message/full-state trace 可比、过程证据满足预注册 operator 条件时，才在附录讨论 acquisition/preservation/use/update 机制。
 
+### 11.17 “用户自己选任务，样本只代表愿意参加且对题感兴趣的人”
+
+**攻击：**每人选 3–5 个任务会把 task relevance 与用户自选择混在一起，不能估计一般人群中的 personalization 需求。
+
+**防守：**把 target population 明确限制为 task-relevant、counterfactually eligible users；随机化/分层展示 slate，记录 offered/eligible/selected/skipped 全漏斗，并按用户聚类。论文不报告“所有用户中有多少任务需要个性化”，只报告准入人群内的系统表现。
+
+### 11.18 “作者故意挑对比最大的 A/B，matched > swapped 是设计出来的”
+
+**攻击：**只保留最容易分离的用户对，会夸大效应并掩盖普通近邻用户。
+
+**防守：**预注册 pair-selection 算法，pairing team 对 target 输出盲化，公布全部候选与拒绝原因；按 contrast、near-neighbor、neutral/invariance 三层报告。neutral pair 上无理由改变反而算错，从而同时检验 under- 与 over-personalization。
+
+### 11.19 “真人自述不是稳定 ground truth”
+
+**攻击：**偏好会随措辞、时间和事后合理化变化，同一用户也可能接受多个方案。
+
+**防守：**ledger 允许 uncertainty、acceptable alternatives 与 indifference set；记录时间戳、过期/复核日期，在子集做 test–retest，并在可行时用实际选择或行为交叉验证。用户只对自己的目标/取舍有权威，不对技术事实有权威；不稳定方向不进入 gold。
+
+### 11.20 “同一用户既参与 contract，又在后面选 matched，存在需求特征”
+
+**攻击：**persona owner 可能为了与自己前面的陈述一致而机械选择 matched。
+
+**防守：**后期不展示最终 rubric wording，artifact 身份和顺序双盲/随机，与前期 confirmation 时间分离；其选择作为外部效度终点而非同一 gold 的重复证明。条件允许时加入未参与 contract 构造的 comparable-user 复核。
+
+### 11.21 “CDM 仍不能证明完整，LLM 只是把主观列表画成图”
+
+**攻击：**冻结的 map 可能漏掉用户真正在意的标准；LLM candidate generation 仍可能主导 gold。
+
+**防守：**无 provenance node fail closed；LLM 的 authority 为零；报告 candidate/captured/excluded/neutral/emergent 比例和 pre-output coverage audit。只能声称 protocol-bounded saturation，不能声称 CDM 完整。开发集 emergent errors 进入下一版，锁定 test 不回改。
+
+### 11.22 “原子 leaf 相关、重复计分，程序 verifier 也可能很弱”
+
+**攻击：**把一个偏好拆成五条会虚增权重和样本量；unit test/checker 可能只检查作者预期实现。
+
+**防守：**记录 dependency/redundancy group，先在 CDM node 内聚合，再进入指标；统计以 family/user cluster 为单位，并做模块/权重敏感性。verifier 用 known-positive/negative、controlled edit、mutation testing、false-accept/false-reject 和 coverage 审计，不能因“deterministic”自动获得 gold 地位。
+
+### 11.23 “D-JQS 是自己出题、自己定门槛、自己认证自己的 judge”
+
+**攻击：**合成受控样本很容易，作者可以调阈值直到选定 judge 通过；已有 JudgeBench/JUDGE-BENCH 和 RuVerBench 还削弱名称与首创性。
+
+**防守：**D-JQS 明确是局部资格工具，不声称首个 judge benchmark；gold 混合 deterministic violation、controlled single edit 和自然真人 artifact。authoring/calibration/hidden qualification 按 family、用户、source、agent、edit lineage、time 隔离，阈值只在 calibration 定，hidden 只报告一次；按 leaf slice 认证，critical slice 失败就走人工而不是投票平均。
+
+### 11.24 “AB/BA 只做了位置控制，verbosity、style 和关键词仍会决定判断”
+
+**攻击：**顺序交换无法排除更长、更漂亮、引用更多或 persona 词更多的 artifact 获胜。
+
+**防守：**AB/BA 与 length/style/format/keyword/citation-count/language 的单因素 nuisance edits 分开做；重复 sampling 仅用于估计随机噪声。翻转或证据定位不稳定的单元必须 abstain/escalate，不能被均值掩盖。[[83]](https://arxiv.org/abs/2406.07791)
+
+### 11.25 “三个 vertical 的 judge 负担和可验证率不同，统一 profile 仍不可比”
+
+**攻击：**code 可能 80% 程序检查，DR 主要靠语义 judge；相同 PF/TQ 数值不是同一测量强度。
+
+**防守：**不合并跨 vertical raw success 或总冠军；每个 vertical 分别报告 deterministic/evidence/judge/human 覆盖、可靠性和 no-harm，统一的只是 matched/swapped estimand、CDM schema 与非补偿判定逻辑。跨场景结论只说协议可实例化，不说分数等距。
+
+### 11.26 “整个方案太贵、太慢，并带来隐私和偏好漂移风险”
+
+**攻击：**3–5 task × 双人审计 × 专家 × judge qualification 难以扩到 60 family；私有 ledger 还可能泄露，用户偏好在长周期内变化。
+
+**防守：**先做 12-family paper set，再按 gate 扩展；报告人员时长、attrition 与每个 family 的边际成本。raw ledger 默认不发布，落实 consent、purpose limitation、minimization、revocation、retention 和 access control；每条动态事实有时间戳、expiry 与 re-confirmation。自然 preference drift 与脚本化 P4 update 分开报告。
+
+### 11.27 “相对 PDR-style 独立 rubric，CDM 只是更复杂的工程”
+
+**攻击：**如果 CDM 与两份独立 A/B rubric 给出相同系统结论，就没有方法增量；GAMUT 已覆盖 meta-rubric 编译，RuVerBench 已覆盖 rubric verification。
+
+**防守：**主消融必须比较：（a）PDR-style 单用户动态 absolute rubric；（b）独立 A/B rubric；（c）CDM 对称编译；（d）single judge 与 hybrid scoring。报告哪些 family/system success 判定或排序被 CDM 重分类，以及 CDM 是否在控制一般质量后增量预测盲化 target-user choice/decision outcome。若没有重分类或增量效度，论文只能称为透明的 measurement extension，不能把 compiler 包装成主要创新。[[84]](https://arxiv.org/abs/2606.29920)[[85]](https://arxiv.org/abs/2607.19322)
+
 ## 12. 预期贡献、成功标准与发表边界
 
 ### 12.1 预期贡献
 
 1. **核心贡献：从 absolute adaptation 到 counterfactual user specificity。** 固定 task/evidence/resources，构造自然的 paired users 和 2×2 matched/swapped 交叉矩阵，直接检验最终交付物是否因目标用户变化而发生方向正确的改变；
-2. **非补偿 personalization profile。** 双向 `Δa/Δb/CFA_min`、matched `A_min`、task-only `Gain_min`、共同质量/事实 no-harm 与 critical boundary gate 分栏报告，不用一个归一化总分掩盖失败；
-3. **反例驱动的 JudgeBench。** 用 general-good、over-personalized、mention-only、wrong-user 和 persona-keyword artifacts 审计动态 rubric 是否真的绑定到最终决策，而非只奖励关键词和一般质量；
-4. **同一用户真值下的多渠道评测。** structured persona、natural history 与模糊 query + clarification 共享 ledger/contracts/final rubric；区分“信息给到后会用”与“需要交互获取时仍能用”；
-5. **三个代表性长程知识工作场景的共同协议。** 将 open-web research 的 `find & synthesize`、repository software engineering 的 `modify & build` 与 data-centric analysis 的 `analyze & infer` 纳入同一反事实个性化接口，但不声称覆盖全部知识工作；
-6. **可选的 decision validation。** 在可执行子集检验 artifact specificity 与真人采用、regret 和 wrong-user harm 的关系，严格限制超出交付物层面的主张。
+2. **Human-grounded relational gold。** 以本人确认的 task-conditioned ledger 构造带 provenance、authority、direction、equivalence 与 dependency 的 CDM `C(T,E,U_a,U_b)`；rubric 是其受约束编译产物，而不是两份独立 persona rubric 的事后拼接；
+3. **非补偿 personalization profile。** 双向 `Δa/Δb/CFA_min`、matched `A_min`、task-only `Gain_min`、共同质量/事实 no-harm 与 critical boundary gate 分栏报告，不用一个归一化总分掩盖失败；
+4. **经资格认证的 hybrid measurement。** 用 validated verifier、D-JQS 的 deterministic/controlled/natural gold、slice-specific judge qualification 与真人 escalation 执行冻结 criteria；D-JQS 是测量保障，不单列为首创贡献；
+5. **同一用户真值下的多渠道评测。** structured persona、natural history 与模糊 query + clarification 共享 ledger/CDM/final rubric；区分“信息给到后会用”与“需要交互获取时仍能用”；
+6. **三个代表性长程知识工作场景的共同协议。** 将 open-web research 的 `find & synthesize`、repository software engineering 的 `modify & build` 与 data-centric analysis 的 `analyze & infer` 纳入同一反事实个性化接口，但不声称覆盖全部知识工作；
+7. **可选的 decision validation。** 在可执行子集检验 artifact specificity 与真人采用、regret 和 wrong-user harm 的关系，严格限制超出交付物层面的主张。
 
 ### 12.2 Go / No-Go 门槛
 
-- 至少 2/3 pilot family 能构造自然的 paired users，并在输出前冻结 must-change/must-hold/must-not、task-only 和反例 artifacts；
+- 至少 2/3 pilot family 能从真实任务选择和 ledger 构造自然 paired users，并在输出前冻结带 provenance/authority 的 CDM、task-only 和反例 artifacts；
 - matched 参考交付物通过 TQ/FR/长度/证据/边界门，且 `CFA_min > 0`，证明处理确实具有用户特异性；
 - 官方 judge 与两名盲化人评对 general-good / over-personalized / matched / swapped 的关键 decision-node 判断达到预注册一致性门；
 - 主实验按 family 聚类后，至少部分强系统产生稳定的双向 specificity 与 channel-dependent 排名差异，而不是全部由 TQ/长度解释；
-- JudgeBench 达到第 8.2 节门槛；
+- D-JQS 的 hidden qualification 在所有正式启用 leaf slice 达到预注册门槛；未过门的 slice 已路由到 verifier/human/粗二元而非隐藏；
 - task cube 的 stratum/主 intent 与双轴 taxonomy 的主风险盲标一致性达到预注册门槛，且 `other/emergent` 未覆盖率可接受；
 - Atlas 必填字段完整率 ≥ 95%，双人元数据标注的一致性达到预注册门槛；coverage manifest 能区分 tested / defined-only / structurally-inapplicable / deferred 四种状态；
 - 每个进入主实验的 rubric module 至少通过 schema coverage、matched-swapped discrimination、cue-equivalence robustness、无关信息 invariance、冗余/权重敏感性和目标用户/专家 content-validity 中的全部适用检查；pilot 的 `other/emergent` 残余错误率必须公开；
 - SFT scorer 若进入主榜，必须在跨 task-family、跨 agent 的锁定测试上达到第 8.4 节门槛；
 - 若运行 Phase B，至少出现可解释的 `absolute fit → specificity → decision utility` 对应或断裂；否则只报告 Phase A，不越界声称用户决策收益。
+- CDM 对称编译相对独立 A/B rubric 至少重分类部分系统/family，或对盲化真人选择提供控制一般质量后的增量预测；两者都没有时，主张降级为 transparent measurement extension。
 
 若前两项失败，应停止构建通用榜，转为特定领域或特定用户差异的测量研究；若 judge 失败，应保留小规模人评 benchmark，不发布伪精确自动榜。
 
@@ -1094,7 +1148,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **评价**：Phase A 用 TQ/FR、PF/MP、`CFA_min` 和边界门验证报告处理；Phase B 的主指标是 DDE、WrongUserHarm、硬约束违规与置信度校准。PF/CFA 是中介和操纵检查，不与 DDE 合成总分。
 
-**Judge**：240-unit JudgeBench；确定性/证据 verifier、强通用 judge 和分层人评组成主线。SFT scorer 只有在第 4 周前不影响主实验且存在足够高质量标签时进入附录，否则明确列为 future work。
+**Judge**：240-unit D-JQS；确定性/证据 verifier、slice-qualified 强通用 judge 和分层人评组成主线。SFT scorer 只有在第 4 周前不影响主实验且存在足够高质量标签时进入附录，否则明确列为 future work。
 
 **论文主张边界**：我们只声称在 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性长程知识工作场景中实例化了共同个性化评价协议。不声称穷尽 legal、email/calendar、slides、CAD 或科学实验等其他知识工作，也不从 final-only 数据推断内部理解机制。若 CFA 高而真人决策效用不提高，论文将报告 artifact-fit 代理失效。
 
@@ -1112,7 +1166,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 **Figure 4 · 从“给了会用”到“缺了会问、变了会改”。** 四个 panel：A 用 `agent × P0/P1/P2` heatmap 报 task-only、直接给出完整 user state 与 clarification-allowed 条件下的 CFA/Gain；B 报 P2 的必要问题召回、无关问题率、平均提问轮数和相对 P1 oracle 的交付物差距；C 在 2–4 个 P4 anchor 上画当前 user-state adoption、旧状态残留和 must-hold 稳定性；D 用 `family × observed outcome failure` heatmap 显示用户盲、错误用户绑定、过度个性化、共同核心破坏和澄清失败，并单列 `other/emergent`。workspace/history、私有状态、一般 evidence conflict 和复杂 handoff 不进入首稿 Figure 4。主文不从最终交付物反推内部动机；只有具备可比 trace 的系统，才可在附录报告 acquire/use/update 的过程证据。
 
-**Figure 5 · 自动评价是否可信：JudgeBench 与人类校准。** 四个 panel：A 按 rubric module 报 judge–human pairwise accuracy/α；B 画预测置信度与实际正确率的 calibration/reliability curve；C 报 A/B 顺序、长度、格式、persona 关键词和隐私诱饵造成的准确率变化；D 画“自动覆盖率—人工成本—错误率”级联曲线，并标出预注册主榜门槛。Judge 未过门槛时，本图应直接支持降级为人评，而不是隐藏失败。
+**Figure 5 · 自动评价是否可信：D-JQS 与人类校准。** 四个 panel：A 按 leaf class 报 judge–human agreement 和 critical recall；B 画预测置信度与实际正确率的 calibration/reliability curve；C 报 A/B 顺序、长度、格式、persona 关键词、引用数和语言诱饵造成的翻转；D 画“自动覆盖率—人工成本—selective risk”级联曲线，并标出预注册 slice 门槛。Judge 未过门槛时，本图应直接支持降级为人评，而不是隐藏失败。
 
 ### 16.2 主文四张表
 
@@ -1128,7 +1182,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 
 附录建议保留：逐 family DDE/CFA forest plot、utility sensitivity、顺序/学习效应、deliverable coverage、少量 anchor stress 曲线、多标签 failure co-occurrence、各用户群切片和 judge confusion matrix。附录表应给出全部 decision shell、utility/provenance、报告配平、persona compatibility、rubric leaf、agent/version/tool metadata、完整结果、成本、失败案例和人工标注一致性。
 
-主文结果图统一使用共享坐标、95% CI、样本数和 gate 标记；同一颜色始终代表同一 agent，线型或形状代表 signal/stress 条件。不要使用 3D 图、面积难比较的 sunburst、没有不确定性的柱状榜、把多指标压成一条折线的雷达图，或把 expected 与 observed failure 混在同一标签中。若版面不足，优先保留 Figures 1–3、5 和 Tables 2–4；Figure 4 的逐 anchor 细节移入附录，但不能删掉 JudgeBench 的测量效度证据。
+主文结果图统一使用共享坐标、95% CI、样本数和 gate 标记；同一颜色始终代表同一 agent，线型或形状代表 signal/stress 条件。不要使用 3D 图、面积难比较的 sunburst、没有不确定性的柱状榜、把多指标压成一条折线的雷达图，或把 expected 与 observed failure 混在同一标签中。若版面不足，优先保留 Figures 1–3、5 和 Tables 2–4；Figure 4 的逐 anchor 细节移入附录，但不能删掉 D-JQS 的测量效度证据。
 
 ## 17. v0.48 开工方案：先验证 absolute score 与 specificity 是否真的分离
 
@@ -1325,6 +1379,14 @@ ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投�
 [77] Bosse et al. *Deep Research Bench: Evaluating AI Web Research Agents*. arXiv:2506.06287, 2025. https://arxiv.org/abs/2506.06287
 [78] Asthana et al. *Evaluating Deep Research Agents on Expert Consulting Work: A Benchmark with Verifiers, Rubrics, and Cognitive Traps*. arXiv:2605.17554, 2026. https://arxiv.org/abs/2605.17554
 [79] Li et al. *DeepResearch Bench II: Diagnosing Deep Research Agents via Rubrics from Expert Report*. arXiv:2601.08536, 2026. https://arxiv.org/abs/2601.08536
+[80] Dong et al. *Can LLM be a Personalized Judge?* Findings of EMNLP, 2024. https://aclanthology.org/2024.findings-emnlp.592/
+[81] Tan et al. *JudgeBench: A Benchmark for Evaluating LLM-based Judges*. arXiv:2410.12784; ICLR 2025. https://arxiv.org/abs/2410.12784
+[82] Bavaresco et al. *LLMs instead of Human Judges? A Large Scale Empirical Study across 20 NLP Evaluation Tasks*. arXiv:2406.18403, 2024. https://arxiv.org/abs/2406.18403
+[83] Shi et al. *Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge*. arXiv:2406.07791, 2024. https://arxiv.org/abs/2406.07791
+[84] Peng et al. *Can LLM-as-a-Judge Reliably Verify Rubrics in Agentic Scenarios?* arXiv:2606.29920, 2026. https://arxiv.org/abs/2606.29920
+[85] Chen et al. *Two-Level Meta-Rubrics for Evaluating Open-Ended Generation: GAMUT, a Benchmark for Factual Completeness*. arXiv:2607.19322, 2026. https://arxiv.org/abs/2607.19322
+[86] Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS, 2023. https://arxiv.org/abs/2306.05685
+[87] Verga et al. *Replacing Judges with Juries: Evaluating LLM Generations with a Panel of Diverse Models*. arXiv:2404.18796, 2024. https://arxiv.org/abs/2404.18796
 
 ---
 

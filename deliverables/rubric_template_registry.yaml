@@ -1,15 +1,17 @@
 registry_name: deepalign_rubric_template_registry
-registry_version: 0.31
+registry_version: 0.55
 module_library: rubric_module_library.yaml
 node_registry: rubric_node_registry.yaml
 description: >-
   Declarative template registry used by the Rubric Compiler. Templates are
   selected by metadata predicates, then instantiated from contracts and
-  evidence. Domain facts are parameters, not reasons to invent a new scoring
+  evidence and a frozen Counterfactual Difference Map. Domain facts are
+  parameters, not reasons to invent a new scoring
   format for every domain.
 
 compilation_order:
   - validate_case_and_contracts
+  - validate_difference_map_provenance_and_freeze
   - select_eligible_templates
   - select_applicable_direction_nodes
   - instantiate_template_parameters
@@ -28,8 +30,8 @@ template_families:
     typical_direct_metrics: [TQ, FR]
 
   personalization:
-    routing: evaluation_contract.must_change is not empty
-    expansion: one_or_more_leaves_per_task_relevant_user_fact_and_must_change
+    routing: counterfactual_difference_map contains must_change or clarify_if_unknown nodes
+    expansion: one_or_more_leaves_per_frozen_difference_map_node
     templates:
       - personalization.goal_and_success
       - personalization.knowledge_and_scaffolding
@@ -89,27 +91,28 @@ expansion_rules:
     default_tree: common_task_quality
     default_contract_type: core
   - rule_id: expand.must_change
-    source: evaluation_contract.must_change
+    source: counterfactual_difference_map.must_change_nodes
     emit: one_leaf_per_user_per_distinct_expected_delivery_change
     default_tree: user_conditional_fit
     default_metric: PF
   - rule_id: expand.must_hold
-    source: evaluation_contract.must_hold
+    source: counterfactual_difference_map.must_hold_nodes
     emit: one_shared_quality_leaf_plus_one_cross_artifact_invariance_binding_when_applicable
     default_tree: common_task_quality
     default_metrics: [TQ, neutral_invariance_base]
   - rule_id: expand.must_not
-    source: evaluation_contract.must_not
+    source: counterfactual_difference_map.must_not_nodes
     emit: one_violation_leaf_per_distinct_boundary
     default_tree: misuse_and_boundary
     default_metric: MP
   - rule_id: expand.clarify
-    source: evaluation_contract.clarify_if_unknown
+    source: counterfactual_difference_map.clarify_if_unknown_nodes
     emit: one_leaf_for_question_or_valid_conditional_branch_and_one_penalty_path_for_unsupported_assumption
     default_tree: user_conditional_fit
     default_metrics: [clarification_correctness, MP]
 
 validation_gates:
+  - every_user_conditional_leaf_has_a_frozen_difference_map_node_and_authority_record
   - all_required_case_fields_resolve
   - every_task_relevant_user_fact_maps_to_a_contract_or_is_removed
   - every_contract_expands_to_at_least_one_leaf
@@ -118,6 +121,7 @@ validation_gates:
   - user_a_and_user_b_leaves_are_counterfactually_symmetric_or_difference_is_justified
   - no_duplicate_or_logically_conflicting_leaves
   - no_sensitive_fact_is_exposed_outside_authorized_scope
+  - dependent_or_redundant_leaves_are_grouped_and_aggregated_at_node_before_metric
   - reference_matched_beats_swapped_on_pf_without_breaking_tq_fr_or_must_not
 
 authoring_policy:

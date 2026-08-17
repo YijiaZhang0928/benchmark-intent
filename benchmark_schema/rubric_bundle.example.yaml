@@ -1,5 +1,5 @@
 bundle_id: RB-A1-COFFEE-EXPANSION-v1
-bundle_version: 0.33
+bundle_version: 0.55
 status: illustrative_not_empirical
 compiled_before_run: true
 
@@ -11,6 +11,14 @@ compiler_inputs:
     deliverable_type: decision_memo
     stakes: medium
   evidence_world_id: coffee-city-snapshot-2026q2
+  human_ground_truth_protocol: deepalign_human_ground_truth_v0.55
+  counterfactual_difference_map:
+    map_id: CDM-A1-COFFEE-EXPANSION-v1
+    map_version: 0.55
+    pair_type: contrast
+    frozen_before_reference_artifacts: true
+    node_ids: [MH-01, MH-02, MC-A-01, MC-A-02, MC-B-01, MN-01, MN-02, CL-01]
+    no_provenance_nodes: 0
   user_pair:
     - user_id: Ua
       changed_facts: [budget_500k, first_time_owner, bank_audience, reversible_3_month]
@@ -48,6 +56,7 @@ compiler_inputs:
     - RISK-PERMISSION-BOUNDARY
 
 contract_bundle:
+  status: compatibility_view_compiled_from_CDM-A1-COFFEE-EXPANSION-v1
   must_change:
     - MC-A-01: Ua recommendation respects 500k cap and includes a reversible 3-month pilot threshold.
     - MC-A-02: Ua memo explains financial terms for a first-time owner and is usable in a bank conversation.

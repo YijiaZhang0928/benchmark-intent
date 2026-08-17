@@ -1,0 +1,92 @@
+protocol_name: deepalign_human_ground_truth
+protocol_version: 0.55
+status: pre_pilot
+purpose: >-
+  Obtain task-conditioned user truth without exposing the private ledger as the
+  default agent input, and separate user authority, expert feasibility, pairing,
+  privacy, and later blinded artifact preference.
+
+target_population:
+  primary_claim: users_for_whom_the_task_is_realistically_relevant_and_counterfactually_eligible
+  non_claim: prevalence_over_all_users_or_all_knowledge_work
+
+task_slate_and_selection:
+  candidate_slate: randomized_or_stratified_for_each_participant
+  tasks_selected_per_participant: 3_to_5
+  required_logs: [offered_tasks, self_reported_eligible_tasks, selected_tasks, rejection_or_skip_reason]
+  report_full_funnel: true
+
+elicitation:
+  order:
+    - open_unprompted_description
+    - family_specific_structured_follow_up
+    - normalized_ledger_draft
+    - user_confirmation
+  open_prompt_fields: [goal, constraints, concerns, risk, acceptable_tradeoffs, audience, use_environment, invalidating_conditions]
+  fact_origin_labels: [spontaneous, prompted, not_applicable, declined]
+  do_not_infer_from_demographics: true
+  allow_uncertainty_and_multiple_acceptable_answers: true
+
+task_conditioned_ledger:
+  required_fact_fields:
+    - fact_id
+    - category
+    - normalized_value
+    - source_record_id
+    - origin_label
+    - user_confirmation_status
+    - confidence
+    - acceptable_alternatives
+    - invalidating_conditions
+    - decision_consequence
+    - timestamp
+    - expiry_or_reconfirmation_date
+    - sensitivity
+    - allowed_for_reasoning
+    - allowed_to_disclose
+  private_ground_truth_view: not_public_and_not_default_agent_input
+  agent_signal_views: minimal_channel_specific_serializations
+  test_retest_subset_required: true
+  behavioral_or_choice_validation: when_feasible
+
+authority_and_conflict_resolution:
+  user_owner_has_final_authority_over: [own_goal, preference, tradeoff, audience, workflow, invalidating_condition]
+  domain_expert_has_final_authority_over: [technical_fact, feasibility, safety_boundary, evidence_validity]
+  annotator_has_authority_over: [schema_compliance, provenance_presence, observability, atomicity, redundancy, stereotype_risk]
+  conflict_rules:
+    - expert_may_mark_a_preference_infeasible_or_unsafe_but_may_not_replace_it
+    - user_may_reject_a_technically_valid_artifact_for_user_specific_reasons
+    - unresolved_fact_preference_or_feasibility_conflicts_are_excluded_or_conditionalized
+
+pairing:
+  pair_types: [contrast, near_neighbor, neutral_invariance]
+  preregister_pair_selection_algorithm: true
+  pairing_team_blind_to_target_agent_outputs: true
+  log_all_candidate_and_rejected_pairs: true
+  minimum_requirements:
+    - both_users_independently_relate_to_same_invariant_task
+    - task_evidence_environment_tools_and_budget_are_held_constant
+    - changed_dimensions_have_user_confirmed_decision_consequences
+    - shared_core_remains_nonempty
+  neutral_pair_role: detect_always_personalize_and_stereotype_failures
+
+artifact_validation:
+  persona_owner_sees_final_rubric_wording: false
+  artifact_identity_blinded: true
+  presentation_order_randomized: true
+  separate_from_initial_elicitation_in_time: true
+  primary_questions: [which_artifact_would_you_use, why, most_important_problem, what_must_change]
+  role: external_validity_endpoint_not_the_only_contract_gold
+  comparable_user_replication: recommended_when_feasible
+
+privacy_and_ethics:
+  required: [informed_consent, purpose_limitation, data_minimization, access_control, retention_schedule, withdrawal_or_revocation, publishable_view_review]
+  raw_ledger_release: prohibited_by_default
+  publishable_release: deidentified_minimal_views_and_provenance_categories
+  ethics_or_irb_review: required_as_applicable
+
+reporting:
+  required_funnel_counts: [recruited, offered, eligible, selected, paired, map_qualified, environment_qualified, pilot_qualified, frozen]
+  required_attrition_reasons: true
+  user_is_the_statistical_cluster: true
+  task_family_is_the_primary_benchmark_unit: true

@@ -3,18 +3,18 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deepalign-bench-report.sanfordzhang.chatgpt.site"),
-  title: "DeepAlign-Bench｜三个长程知识工作场景",
-  description: "PLHKW 任务资源池与反事实用户特异性评测",
+  title: "DeepAlign-Bench｜真人真值、CDM 与 D-JQS",
+  description: "三个长程知识工作场景中的反事实用户特异性评测与人类来源测量协议",
   openGraph: {
     title: "DeepAlign-Bench｜绝对适配不等于反事实用户特异性",
-    description: "180 候选、60 provisional 与三个代表性长程知识工作场景。",
-    images: [{ url: "/DeepAlign-Bench_PLHKW任务资源池_v0.54.png", width: 3200, height: 1800, alt: "DeepAlign-Bench PLHKW 任务资源池与升级门" }],
+    description: "真人 task-conditioned ledger、Counterfactual Difference Map、受约束 rubric 与 D-JQS。",
+    images: [{ url: "/DeepAlign-Bench_真人真值到D-JQS_v0.55.png", width: 3200, height: 1800, alt: "DeepAlign-Bench 真人真值到 D-JQS 流程" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "DeepAlign-Bench｜绝对适配不等于反事实用户特异性",
-    description: "180 候选、60 provisional 与三个代表性长程知识工作场景。",
-    images: ["/DeepAlign-Bench_PLHKW任务资源池_v0.54.png"],
+    description: "真人 task-conditioned ledger、Counterfactual Difference Map、受约束 rubric 与 D-JQS。",
+    images: ["/DeepAlign-Bench_真人真值到D-JQS_v0.55.png"],
   },
 };
 

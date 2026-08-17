@@ -1,5 +1,5 @@
 protocol_name: deepalign_construction_annotation
-protocol_version: 0.54
+protocol_version: 0.55
 status: pre_pilot
 purpose: >-
   Separate imported facts, pre-run human judgments, and post-pilot empirical
@@ -21,17 +21,23 @@ annotation_layers:
       - information_event_schedule
       - source_origin_and_access_mode
       - adapter_capability_eligibility
+      - offered_eligible_selected_task_funnel
+      - fact_origin_spontaneous_prompted_na_declined
       - task_relevance_of_user_facts
       - counterfactual_axes
+      - counterfactual_difference_map_nodes
       - must_change
       - must_hold
       - must_not
       - clarify_if_unknown
       - rubric_node_applicability
     policy: >-
-      LLMs may propose labels and rationales. Two trained humans independently
-      label every core subjective field; an adjudicator freezes disagreements.
-      Annotators are blind to evaluated model outputs.
+      LLMs may propose high-recall candidate labels and rationales but have zero
+      authority. Persona owners confirm their own goals, tradeoffs, invalidating
+      conditions and decision consequences. Two trained humans independently
+      audit provenance, observability, atomicity, redundancy and stereotype risk;
+      a domain expert assesses technical fact, feasibility and safety only. An
+      adjudicator freezes disagreements. All reviewers are blind to target outputs.
   C_post_pilot_empirical:
     timing: after_pre_run_freeze
     fields: [observed_difficulty, completion_and_failure_rate, matched_swapped_discrimination, target_user_preference, judge_human_agreement, residual_error_codes]
@@ -59,9 +65,13 @@ task_seed_funnel:
 
 persona_recruitment:
   target_participants: 32_to_40
-  tasks_per_participant: 1_to_2
-  elicitation_minutes: 30_to_45
+  tasks_per_participant: 3_to_5_selected_from_randomized_or_stratified_slate
+  elicitation_minutes: 45_to_75_total_with_family_specific_follow_up
+  selection_funnel_logs: [offered, eligible, selected, skipped_with_reason]
+  elicitation_order: open_unprompted_then_structured_then_user_confirmation
   elicitation_fields: [goal_and_success_criterion, prior_knowledge_and_terminology, hard_and_soft_constraints, risk_tolerance_and_reversibility, audience_and_workflow, permissions_and_disclosure_boundary, current_state_and_recent_task_relevant_events]
+  fact_origin_labels: [spontaneous, prompted, not_applicable, declined]
+  uncertainty_fields: [confidence, acceptable_alternatives, invalidating_conditions, timestamp, expiry_or_reconfirmation]
   provenance_tiers:
     real_user_gold: two consented users independently fit the same invariant task shell
     user_anchored: one real user plus a minimal counterfactual edit validated by a second comparable participant
@@ -77,6 +87,11 @@ fact_ledger_required_fields:
   - category
   - normalized_value
   - source_record_id
+  - origin_label
+  - user_confirmation_status
+  - confidence
+  - acceptable_alternatives
+  - invalidating_conditions
   - timestamp
   - reliability
   - sensitivity
@@ -87,7 +102,11 @@ fact_ledger_required_fields:
   - contract_links
 
 counterfactual_pairing:
-  changed_axes_target: 2_to_4
+  pair_types: [contrast, near_neighbor, neutral_invariance]
+  changed_axes_target: 0_to_4_depending_on_pair_type
+  preregistered_selection_algorithm: required
+  pairing_team_blind_to_target_outputs: true
+  report_all_candidate_and_rejected_pairs: true
   required:
     - identical invariant task, evidence snapshot, tools and budget
     - each changed fact has a user-confirmed decision consequence
@@ -97,6 +116,20 @@ counterfactual_pairing:
     - target users blind-review matched, swapped and task-only reference artifacts
     - domain expert reviews shared factual and task quality
     - structured persona and natural history pass cue-equivalence audit
+    - neutral pairs do not reward gratuitous changes
+
+authority_matrix:
+  persona_owner: own_goal_preference_tradeoff_audience_workflow_invalidating_condition_and_decision_consequence
+  trained_annotator: provenance_observability_atomicity_redundancy_and_stereotype_audit
+  domain_expert: technical_fact_evidence_feasibility_and_safety_only
+  conflict_policy: unresolved_conflicts_are_excluded_or_written_as_conditional_branches
+
+persona_owner_artifact_validation:
+  final_rubric_wording_hidden: true
+  matched_swapped_identity_blinded: true
+  order_randomized: true
+  time_separated_from_ledger_confirmation: true
+  role: external_validity_not_the_only_contract_gold
 
 reliability_reporting:
   unit: task_family

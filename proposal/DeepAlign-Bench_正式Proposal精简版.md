@@ -2,9 +2,9 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.54 · 2026 年 8 月 16 日
+版本：v0.55 · 2026 年 8 月 17 日
 定位：Benchmark / Evaluation / Personalized Long-Horizon Knowledge Work
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.54
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.55
 
 ---
 
@@ -12,7 +12,7 @@
 
 [PDR-Bench](https://arxiv.org/abs/2509.25106) 已经回答了一个重要问题：给定 task 与 persona，一份 Deep Research 报告在目标、内容、呈现和可行动性上有多适合该用户。[[1]](https://arxiv.org/abs/2509.25106) 但单个 user–task pair 的绝对适配分不能识别另一件事：**固定任务、证据、工具和预算，只改变目标用户后，系统是否会做出方向正确且只对该用户必要的改变。** 高质量通用报告可能对两位用户都高分；大量复述 persona 的报告也可能在最终选择上用错关键约束。
 
-DeepAlign-Bench 为同一 task family 构造两位都真实合理、但有 2–4 个决策相关差异的用户 A/B。系统生成 task-only 和两份 matched artifact，两套用户标准再交叉评价。结果不压成总分，而同时报告双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量/事实 no-harm 与边界 no-violation。v0.54 把这一协议谨慎地实例化在 open-web research、repository-level software engineering 和 data-centric analysis 三个场景，对应 `find & synthesize / modify & build / analyze & infer`；不声称穷尽所有知识工作。
+DeepAlign-Bench 为同一 task family 构造两位都真实合理的用户 A/B。v0.55 不再让 LLM 为 A/B 各自临时生成 rubric，而先从真人 task-conditioned ledger 构造带 provenance、authority、direction 与 acceptable alternatives 的 **Counterfactual Difference Map（CDM）**，再编译成可执行 leaf。系统生成 task-only 和两份 matched artifact，冻结标准交叉评价。结果不压成总分，而同时报告双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量/事实 no-harm 与边界 no-violation。协议实例化在 open-web research、repository software engineering 和 data-centric analysis 三个场景；不声称穷尽所有知识工作。
 
 v0.54 任务资源池有 180 个候选 seed（72 DR / 54 Software / 54 Data）。五道作者阶段门预选 60 个 provisional family（24 / 18 / 18），来源为 39 benchmark-derived、12 adapted-real-world、9 newly-authored。这 60 个是等待许可审计、环境绑定、双人反事实审查、contract freeze 和 pilot discrimination 的 task shell，不是已可运行 gold。主论文优先完成 12 个端到端 family（5 DR / 3 Software / 4 Data）。
 
@@ -44,15 +44,17 @@ PDR-Bench 的 P-Score 是 **absolute adaptation**：针对目标用户生成 tas
 
 一个 task family 不是主题标签，而是一份受控实验蓝图：
 
-`固定任务核心 + 固定证据世界 + 固定工具/预算/交付格式 + paired users + research episodes + contracts + artifact conditions`
+`固定任务核心 + 固定证据世界 + 固定工具/预算/交付格式 + paired users + CDM + research episodes + artifact conditions`
 
 每个 family 包含三层元数据：
 
 - **自动 provenance：**来源、日期、文件与证据哈希、环境版本、工具权限、预算、模型和 judge 版本；程序填写、人工抽查。
-- **运行前人工构念：**task stratum、intent、stakes、决策节点、用户差异、must-change/must-hold/must-not、clarify-if-unknown；两人独立标注并仲裁，LLM 只能预填。
+- **运行前人工构念：**task stratum、intent、stakes、CDM 的差异/不变/等价/禁止/澄清节点；用户本人确认任务后果与方向，两名标注员审计 provenance、可观察性、原子性、冗余和刻板化，领域专家只判事实/可行性/安全。LLM 只能高召回预填，没有 authority。
 - **运行后观察：**实际难度、失败类型、judge 分歧、运行成本；不得覆盖运行前真值。
 
-Persona 从真实任务出发，不从“丰满人物故事”出发。每条用户事实必须说明为什么会改变建议、matched 应采用什么、swapped 哪里不适合、什么共同事实不得改变。优先两位真实用户共享同一任务；次选一位真实用户加经相似参与者验证的最小反事实用户；纯 LLM persona 只用于 smoke test。
+Persona 从真实任务出发，不从“丰满人物故事”出发。每位用户从随机化/分层 task slate 选 3–5 个真实相关任务；先开放描述，再结构化追问，每条事实记录 spontaneous/prompted/N/A/declined、置信度、替代方案、时间戳、权限与过期日期。公开 offered→eligible→selected→paired→qualified 漏斗。pair 除高对比用户外，还包含 near-neighbor 和本不应变化的 neutral pair，防止只奖励“逢用户必改”。
+
+CDM 是关系对象 `C(T,E,U_a,U_b)`，不是两份独立 rubric：每个 node 写清决策变量、两位用户的期望关系、可接受等价集合、可观察证据、来源与权威。无 provenance 候选直接排除。Construction freeze 在 reference artifact 前；evaluation freeze 在任何 target-agent 输出前。freeze 只防 post-hoc，真实性来自本人确认，执行可靠性来自 verifier、judge qualification 与盲化人评。
 
 ## 4. 统一 Research Episode 与用户信息来源
 
@@ -69,11 +71,11 @@ Persona 从真实任务出发，不从“丰满人物故事”出发。每条用
 
 v0.51 已完整导入 [PDR-Bench](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 的 50 tasks、25 structured personas、25 contexts 和 250 官方 pairs，并展开为 501 个候选用户对。v0.54 不再默认跑完 50 题，而是选出 12 个 PDR-derived shell 进入 DR provisional set。原配对只说明 task relevance，不保证 counterfactual separability；因此仍需人工冻结用户契约和 evidence world。
 
-## 5. 运行条件与反例校准
+## 5. 运行条件、受约束 rubric 与 judge 资格
 
-主矩阵至少生成 `Y0`（task-only）、`Ya`（为 A 生成）、`Yb`（为 B 生成）。每套 A/B rubric 同时评价 `Ya`、`Yb` 和 `Y0`，不能为 swapped 临时改标准。
+主矩阵至少生成 `Y0`（task-only）、`Ya`（为 A 生成）、`Yb`（为 B 生成）。A/B rubric 都从同一冻结 CDM 对称编译，并同时评价 `Ya`、`Yb` 和 `Y0`，不能为 swapped 临时改标准。每条 leaf 必须绑定 source node、evidence target、severity、dependency group 与 scorer route；共享 parent node 的 leaves 先 node 内聚合，不把 leaf 当独立样本。
 
-JudgeBench 另放四种预冻结反例：
+D-JQS（DeepAlign Judge Qualification Suite）另放四种预冻结反例：
 
 - **general-good：**事实充分、结构清楚，但不实现用户间 must-change；
 - **over-personalized：**反复使用 persona 线索，却故意把一个关键 decision node 用错；
@@ -81,6 +83,8 @@ JudgeBench 另放四种预冻结反例：
 - **irrelevant/persona-keyword：**加入显眼但任务无关的用户信息，测试关键词奖励和刻板化。
 
 评估必须分开判断 `mentioned → reasoned/planned → adopted in final decision`，不能把“出现相关词”当成“按约束执行”。
+
+评分按 deterministic verifier → evidence verifier → slice-qualified LLM judge → blinded human escalation 路由。程序 checker 也须用 known-positive/negative、controlled edit 或 mutation test 报 false accept/reject 与 coverage。D-JQS 的 gold 混合确定违规、单一受控编辑和自然真人 artifact；authoring/calibration/hidden qualification 按 family、用户、来源、agent、编辑谱系和时间隔离。AB/BA 之外还测试长度、style、格式、关键词、引用数和语言；关键 slice 不过门就走人工，不能把多个失败 judge 投票平均成合格。
 
 ## 6. Scoring：不是再算一个不透明差值
 
@@ -123,11 +127,14 @@ GPT-5 结果的 Introduction 证据门预先分三层。general-good 高分只�
 
 1. 固定 task/evidence/resources 的 paired-user 2×2 交叉协议，识别最终交付物的反事实用户特异性；
 2. specificity × absolute adequacy × task-only benefit × no-harm × no-violation 的非补偿 profile；
-3. 反例驱动的 personalization JudgeBench，专门测 general-good、over-personalized 与 mention–adoption 绑定失败；
-4. 同一 ledger 下的直接 persona、自然历史和 clarification 渠道对照；
-5. 可选真人 decision validation，检查 artifact 指标何时能预测实际采用与 regret。
+3. 真人来源、带 provenance/authority 的 relational CDM，以及从 CDM 到原子 leaf 的受约束编译；
+4. D-JQS 认证的 hybrid scoring，专门测 general-good、over-personalized、mention–adoption 和 nuisance bias；
+5. 同一 ledger 下的直接 persona、自然历史和 clarification 渠道对照；
+6. 可选真人 decision validation，检查 artifact 指标何时能预测实际采用与 regret。
 
-Clarification 不是 novelty 主张。[IDRBench](https://arxiv.org/abs/2601.06676)、[IntentRL](https://arxiv.org/abs/2602.03468)、[DiscoBench](https://arxiv.org/abs/2606.27669) 与 [G-STEER](https://arxiv.org/abs/2608.05876) 已覆盖 interactive Deep Research、主动澄清、搜索歧义恢复和个性化 Retrieve/Ask/Stop。[[2]](https://arxiv.org/abs/2601.06676) [[3]](https://arxiv.org/abs/2602.03468) [[4]](https://arxiv.org/abs/2606.27669) [[5]](https://arxiv.org/abs/2608.05876) DeepAlign 的新意必须来自 paired-user estimand、非补偿测量和能改变系统结论的 judge stress test，而不是“我们也允许 agent 提问”。
+Clarification、rubric compilation 和 judge benchmark 都不能单独作 novelty 主张。[IDRBench](https://arxiv.org/abs/2601.06676)、[IntentRL](https://arxiv.org/abs/2602.03468)、[DiscoBench](https://arxiv.org/abs/2606.27669) 与 [G-STEER](https://arxiv.org/abs/2608.05876) 已覆盖 interactive DR 与主动澄清；GAMUT 已有 two-level meta-rubric compiler，RuVerBench 已审计 agentic rubric verification，且 JudgeBench/JUDGE-BENCH 名称已有前作。[[2]](https://arxiv.org/abs/2601.06676) [[3]](https://arxiv.org/abs/2602.03468) [[4]](https://arxiv.org/abs/2606.27669) [[5]](https://arxiv.org/abs/2608.05876) [[7]](https://arxiv.org/abs/2607.19322) [[8]](https://arxiv.org/abs/2606.29920) DeepAlign 必须证明 CDM 相对独立 A/B rubric 会重分类系统/family，或增量预测盲化真人选择；否则只能称透明 measurement extension。
+
+最强 reviewer attacks 已预注册为：用户自选任务导致条件 target population；pair cherry-picking；自述不稳定和 demand characteristics；CDM 不完整；atomic leaf double counting；deterministic checker 假可靠；D-JQS 自认证；AB/BA 不控制 verbosity/style；跨 vertical 分数不等距；成本、隐私与偏好漂移。对应控制分别是完整筛选漏斗、contrast/near/neutral 分层、test–retest/可接受替代、protocol-bounded saturation、node-first aggregation、mutation audit、hidden qualification、nuisance edits、vertical-specific reporting 和 12-family 分阶段路线。
 
 ## 9. 五天冻结与执行计划
 
@@ -145,3 +152,5 @@ Clarification 不是 novelty 主张。[IDRBench](https://arxiv.org/abs/2601.0667
 [4] [DiscoBench](https://arxiv.org/abs/2606.27669). 2026.
 [5] [G-STEER](https://arxiv.org/abs/2608.05876). 2026.
 [6] [ICLR 2027 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines). 2026.
+[7] [GAMUT: Two-Level Meta-Rubrics](https://arxiv.org/abs/2607.19322). 2026.
+[8] [RuVerBench](https://arxiv.org/abs/2606.29920). 2026.

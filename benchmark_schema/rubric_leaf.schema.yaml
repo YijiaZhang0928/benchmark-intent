@@ -1,5 +1,5 @@
 schema_name: deepalign_rubric_leaf
-schema_version: 0.31
+schema_version: 0.55
 description: >-
   Fixed schema for one independently judgeable rubric leaf. A compiler selects
   templates from case metadata and contracts, expands them into these leaves,
@@ -11,12 +11,15 @@ required:
   - node_id
   - tree
   - contract_type
+  - difference_map_binding
   - applicability_predicate
   - observable
   - evidence_spec
   - scoring
   - direct_metric_bindings
+  - dependency
   - judge_route
+  - qualification_slice
   - provenance
 
 criterion_id: string
@@ -78,6 +81,27 @@ counterfactual_binding:
   score_artifacts: [matched_and_swapped, matched_only, all_artifacts, not_applicable]
   held_constant_fields: list
 
+difference_map_binding:
+  map_id: string
+  map_version: string
+  node_id: string
+  expected_relation: [directional_difference, preserve_same, acceptable_equivalence, forbidden, clarify_or_branch]
+  source_user_fact_ids: list
+  source_task_evidence_ids: list
+  authority_confirmation_record_ids: list
+  map_hash: string
+
+dependency:
+  dependency_group_id: string_or_null
+  redundancy_group_id: string_or_null
+  aggregate_first_at_node: true
+  leaf_independence_assumed: false
+
+qualification_slice:
+  leaf_class: [objective_correctness, claim_support, user_tradeoff, prioritization, actionability, boundary_or_permission, clarification]
+  required_judge_or_verifier_qualification_id: string
+  qualification_status: [passed, human_only, deterministic_only, coarse_binary_only, not_applicable]
+
 judge_route:
   primary: [deterministic_verifier, evidence_verifier, rubric_judge, target_user, domain_expert]
   fallback: [rubric_judge, target_user, domain_expert, adjudication, none]
@@ -88,6 +112,7 @@ provenance:
   author_ids: list
   validator_ids: list
   created_from_contract_ids: list
+  created_from_difference_map_node_ids: list
   template_registry_version: string
   criterion_version: string
   frozen_at: datetime_or_null

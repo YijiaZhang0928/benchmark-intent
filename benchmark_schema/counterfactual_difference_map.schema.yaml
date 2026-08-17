@@ -1,0 +1,156 @@
+schema_name: deepalign_counterfactual_difference_map
+schema_version: 0.55
+status: pre_pilot
+description: >-
+  A relational, human-grounded specification C(T,E,Ua,Ub). It is constructed
+  before target-agent outputs and records which observable decision variables
+  should differ, remain invariant, be treated as equivalent, or be forbidden.
+  Rubric leaves are compiled from this map; two independent per-user rubrics are
+  not allowed to define the counterfactual relation after the fact.
+
+required:
+  - map_id
+  - task_and_world
+  - user_pair
+  - pair_selection_audit
+  - nodes
+  - review_and_authority
+  - freeze
+
+map_id: string
+map_version: string
+
+task_and_world:
+  family_id: string
+  task_id: string
+  invariant_core_id: string
+  evidence_snapshot_id: string
+  environment_snapshot_id: string
+  permission_policy_id: string
+
+user_pair:
+  pair_id: string
+  user_a_ledger_id: string
+  user_b_ledger_id: string
+  pair_type: [contrast, near_neighbor, neutral_invariance]
+  eligibility_target: task_relevant_counterfactually_eligible_users
+
+pair_selection_audit:
+  algorithm_version: string
+  candidate_pair_ids: list
+  selection_variables_visible_to_pairing_team: list
+  target_agent_outputs_visible_to_pairing_team: false
+  selected_before_target_outputs: true
+  offered_task_slate_records: list
+  rejected_pair_records:
+    type: list
+    item:
+      pair_id: string
+      reason: [low_relevance, insufficient_contrast, no_invariant_core, unverifiable, privacy, technical_infeasibility, duplicate, other]
+  contrast_distribution_reported: true
+
+nodes:
+  type: list
+  min_items: 1
+  item:
+    node_id: string
+    decision_variable: string
+    relation_type: [must_change, must_hold, must_not, clarify_if_unknown]
+    expected_relation: [directional_difference, preserve_same, acceptable_equivalence, forbidden, clarify_or_branch]
+    user_a_expectation: any_or_null
+    user_b_expectation: any_or_null
+    expected_direction: string_or_null
+    acceptable_alternatives:
+      user_a: list
+      user_b: list
+      shared_equivalence_set: list
+    decision_consequence: string
+    observable:
+      artifact_or_behavior_target: string
+      executable_question: string
+      evidence_requirement: string
+    provenance:
+      user_a_fact_ids: list
+      user_b_fact_ids: list
+      task_evidence_ids: list
+      permission_or_boundary_ids: list
+      rule: no_provenance_node_fails_closed
+    authority_confirmation:
+      user_a_status: [confirmed, uncertain, not_applicable, declined]
+      user_b_status: [confirmed, uncertain, not_applicable, declined]
+      task_or_expert_feasibility_status: [not_required, feasible, conditionally_feasible, infeasible, disputed]
+    uncertainty:
+      confidence_0_to_1: number
+      stable_direction: boolean
+      test_retest_record_id: string_or_null
+      expiry_or_reconfirmation_date: date_or_null
+    dependency:
+      dependency_group_id: string_or_null
+      redundancy_group_id: string_or_null
+      parent_node_id: string_or_null
+    counterfactual_partner_node_id: string_or_null
+    status: [candidate, user_confirmed, annotator_verified, adjudicated, frozen, excluded]
+    exclusion_reason: string_or_null
+
+llm_candidate_generation:
+  allowed: true
+  role: high_recall_candidate_and_omission_proposal_only
+  model_and_prompt_version: string_or_null
+  proposal_log_id: string_or_null
+  authority_weight: zero
+  restrictions:
+    - may_not_create_authoritative_user_facts
+    - may_not_add_unprovenanced_nodes_to_the_frozen_map
+    - may_not_view_target_agent_outputs
+
+review_and_authority:
+  authority_matrix:
+    user_owner: own_goals_preferences_tradeoffs_invalidating_conditions_and_task_consequence
+    trained_annotators: provenance_observability_atomicity_redundancy_and_stereotype_audit
+    domain_expert: technical_factual_safety_and_feasibility_only
+    benchmark_author: protocol_compliance_and_adjudication_record_not_user_preference
+  persona_owner_reviews:
+    type: list
+    item: {user_id: string, reviewed_node_ids: list, review_record_id: string}
+  independent_annotator_reviews:
+    min_items: 2
+    type: list
+    item:
+      annotator_id: string
+      blinded_to_target_outputs: true
+      review_record_id: string
+      checks: [provenance, decision_consequence, observability, atomicity, redundancy, non_stereotyping]
+  domain_expert_review_id: string_or_null
+  adjudication_record_id: string
+  disagreement_and_exclusion_log_id: string
+
+coverage_and_open_world_policy:
+  pre_output_coverage_audit_id: string
+  saturation_status: [not_run, provisional, saturated_under_protocol]
+  captured_node_count: integer
+  excluded_candidate_count: integer
+  neutral_or_indifferent_node_count: integer
+  emergent_post_output_errors:
+    storage: dev_only_or_secondary_analysis
+    may_modify_locked_test_map: false
+  claim_boundary: protocol_bounded_coverage_not_complete_user_truth
+
+rubric_compilation_binding:
+  compiled_bundle_ids: list
+  one_node_may_compile_to_multiple_leaves: true
+  leaf_ids_by_node: object
+  aggregate_first_at_node_then_metric: true
+  leaf_independence_assumed: false
+
+freeze:
+  construction_freeze:
+    occurs_before_reference_artifacts: true
+    map_hash: string
+    frozen_at: datetime
+  evaluation_freeze:
+    occurs_before_target_agent_outputs: true
+    compiled_bundle_hash: string
+    frozen_at: datetime
+  post_freeze_policy:
+    corrections_allowed_in_primary_test: false
+    versioned_errata_and_secondary_analysis_allowed: true

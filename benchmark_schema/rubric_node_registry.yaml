@@ -1,9 +1,10 @@
 registry_name: deepalign_rubric_direction_node_registry
-registry_version: 0.50
+registry_version: 0.55
 status: starter_ontology_requires_pilot_saturation
 description: >-
   Reusable semantic directions between broad modules and case-specific atomic
-  leaves. Nodes are selected from frozen metadata and contracts, then parameterized.
+  leaves. Nodes are selected from frozen metadata and Counterfactual Difference
+  Map relations, then parameterized. They do not define user truth themselves.
 
 node_schema:
   required: [node_id, module_id, direction, applicability_predicate, parameter_slots, contract_sources, observable, evidence_target, scoring_anchor_template, direct_metric_bindings, judge_route, counterfactual_policy, provenance, validation_status]
@@ -13,6 +14,8 @@ authoring_policy:
   human_authored_templates: required
   llm_role: propose_parameters_and_draft_wording_only
   output_aware_authoring: forbidden
+  difference_map_node_required_for_user_conditional_nodes: true
+  no_provenance_fails_closed: true
   new_node_gate: >-
     Add a node only when the same decision-relevant residual construct appears in
     at least two pilot families and cannot be represented by an existing node.

@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.54
+schema_version: 0.55
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -16,9 +16,12 @@ required:
   - research_episode
   - agent
   - behavioral_operator
+  - human_ground_truth
+  - counterfactual_difference_map
   - evaluation_contract
   - rubric_modules
   - rubric_compilation
+  - judge_qualification
   - downstream_decision_design
   - provenance
 
@@ -221,10 +224,29 @@ perturbation:
 expected_failure_modes: list
 
 evaluation_contract:
+  status: compatibility_view_compiled_from_counterfactual_difference_map
   must_change: list
   must_hold: list
   must_not: list
   clarify_if_unknown: list
+
+human_ground_truth:
+  protocol_ref: human_ground_truth.protocol.yaml
+  offered_task_slate_record_ids: list
+  user_ledger_ids: list
+  user_confirmation_record_ids: list
+  authority_conflict_record_ids: list
+  privacy_and_consent_record_ids: list
+
+counterfactual_difference_map:
+  schema_ref: counterfactual_difference_map.schema.yaml
+  map_id: string
+  map_version: string
+  pair_type: [contrast, near_neighbor, neutral_invariance]
+  node_ids: list
+  pair_selection_audit_id: string
+  construction_freeze_hash: string
+  evaluation_freeze_hash: string
 
 rubric_modules:
   core: list
@@ -242,6 +264,8 @@ rubric_compilation:
   leaf_schema_version: string
   metric_binding_version: string
   contract_bundle_id: string
+  difference_map_id: string
+  difference_map_hash: string
   selected_template_ids: list
   selected_module_ids: list
   selected_node_ids: list
@@ -250,6 +274,16 @@ rubric_compilation:
   compiler_input_hash: string
   compiled_bundle_hash: string
   validation_status: [draft, author_checked, human_validated, pilot_passed, frozen]
+
+judge_qualification:
+  protocol_ref: judge_qualification.protocol.yaml
+  suite_name: D-JQS
+  judge_version: string
+  qualification_split_id: string
+  eligible_leaf_class_ids: list
+  ineligible_leaf_class_ids: list
+  qualification_status: [not_run, partial, passed_declared_slices, failed]
+  report_id: string
 
 provenance:
   author_ids: list

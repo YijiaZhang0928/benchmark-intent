@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.54 · 2026 年 8 月 16 日
+版本：v0.55 · 2026 年 8 月 17 日
 建议时长：15–20 分钟
 
 ---
@@ -21,14 +21,14 @@
 
 每个 task family 固定：任务核心、证据快照、工具、预算、交付格式和共同事实。
 
-每个 family 配对两位都合理的用户，只改变 2–4 个会影响选择、取舍、深度或行动门槛的变量。运行前冻结：
+每位真人先从随机化/分层 slate 选择 3–5 个真实相关任务；开放 elicitation 先于结构化追问，fact 记录 spontaneous/prompted/N/A/declined、置信度、可接受替代、时间戳与权限。每个 family 配对两位都合理的用户，并公开 offered→eligible→selected→paired→qualified 漏斗；pair 同时含 contrast、near-neighbor 和 neutral/invariance。运行前先冻结关系真值 **Counterfactual Difference Map（CDM）**：
 
-- `must-change`：换用户必须改变什么；
-- `must-hold`：共同事实和质量不得改变什么；
-- `must-not`：不得推断、披露、迎合或越权什么；
-- `clarify-if-unknown`：不知道哪些条件时应该提问或给条件分支。
+- `must-change / directional difference`：换用户必须改变什么；
+- `must-hold / acceptable equivalence`：共同事实不变，或多个方案都可接受；
+- `must-not / forbidden`：不得推断、披露、迎合或越权什么；
+- `clarify-if-unknown / branch`：不知道哪些条件时应该提问或给条件分支。
 
-元数据分三层：系统自动 provenance；两名标注员运行前冻结的研究构念；pilot 后观察到的难度、失败和成本。第三层不能反改第二层。
+每个 node 必须带 user/task/permission provenance、authority、direction、observable、alternatives 与 dependency。用户确认自身目标和取舍；两名标注员审计来源/可观察性/冗余/刻板化；专家只判事实、可行性和安全；LLM 仅高召回提候选，无 authority。construction freeze 在 reference artifact 前，evaluation freeze 在 target output 前；freeze 只防 post-hoc，不证明真值正确。
 
 ## 2. 统一 Research Episode，而不是零散列 channel
 
@@ -58,7 +58,9 @@ v0.54 已建立 180 个候选 seed（72 DR / 54 Software / 54 Data），预选 6
 | 用户 A 标准 | matched | swapped | task-only |
 | 用户 B 标准 | swapped | matched | task-only |
 
-另做四类 JudgeBench 反例：general-good、over-personalized、mention-only、irrelevant persona keyword。必须区分报告是否只是提到约束，还是它真的改变了最终选择和行动方案。
+另做四类 D-JQS 反例：general-good、over-personalized、mention-only、irrelevant persona keyword。必须区分报告是否只是提到约束，还是它真的改变了最终选择和行动方案。
+
+Rubric 只能从冻结 CDM 编译；leaf 绑定 source node、evidence、severity、dependency group 与 scorer route，先 node 内聚合。评分走 validated deterministic/evidence verifier → slice-qualified judge → 盲化人评。D-JQS 混合明确违规、单一受控编辑和自然真人 artifact；calibration/hidden qualification 按 family、user、agent、source、edit lineage、time 隔离。AB/BA 之外单独测试长度、style、格式、关键词、引用数和语言；关键 slice 不过门就人工接管。
 
 ## 4. Scoring 不合成总分
 
@@ -106,9 +108,21 @@ v0.54 已建立 180 个候选 seed（72 DR / 54 Software / 54 Data），预选 6
 
 1. paired-user 2×2 反事实 specificity estimand；
 2. specificity × adequacy × benefit × no-harm × no-violation 非补偿 profile；
-3. general-good / over-personalized / mention-only JudgeBench；
-4. 同一 ledger 下 persona、history、clarification channel 对照；
-5. 少量可验证 family 的真人 decision validation。
+3. 真人来源、带 provenance/authority 的 relational CDM 与受约束 rubric 编译；
+4. D-JQS 认证的 hybrid scoring 与 nuisance controls；
+5. 同一 ledger 下 persona、history、clarification channel 对照；
+6. 少量可验证 family 的真人 decision validation。
+
+## 7.1 最强审稿攻击与必须实验
+
+1. **Pair cherry-pick / self-selection：**公开完整 task/pair funnel，并分 contrast、near-neighbor、neutral 报告。
+2. **自述不稳定 / demand characteristics：**允许 indifference/alternatives，做 test–retest；后期不展示 rubric、随机盲化并与前期分时。
+3. **CDM 不完整 / LLM 仍定 gold：**no-provenance fail closed；只声称 protocol-bounded saturation；locked test 不回改。
+4. **leaf double count / checker 假可靠：**node-first aggregation；mutation 与 false accept/reject 审计；统计单位是 family/user cluster。
+5. **D-JQS 自认证 / shared model bias：**三类 gold、hidden qualification、slice-specific pass；披露 compiler/judge/agent 家族重叠，panel 不作为独立性证明。
+6. **PDR++ / compiler 非新：**消融 PDR-style absolute rubric、独立 A/B rubric、CDM 对称 rubric、single judge/hybrid。必须看到系统/family 重分类，或 CDM 对盲化真人选择的增量预测；否则降级为 measurement extension。
+7. **跨 vertical 不可比：**不混合 raw score；分别报告 verifier/judge/human 覆盖与 vertical profile。
+8. **成本与隐私：**先做 12 family；raw ledger 不公开，执行 consent/minimization/revocation/retention/access control。
 
 ## 8. 五天是否必须定方向
 

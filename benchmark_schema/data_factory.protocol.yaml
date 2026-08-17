@@ -1,6 +1,9 @@
 protocol_name: deepalign_data_factory
-protocol_version: 0.54
+protocol_version: 0.55
 annotation_protocol: construction_annotation.protocol.yaml
+human_ground_truth_protocol: human_ground_truth.protocol.yaml
+difference_map_schema: counterfactual_difference_map.schema.yaml
+judge_qualification_protocol: judge_qualification.protocol.yaml
 environment_build_protocol: environment_build.protocol.yaml
 status: pre_pilot
 principle: >-
@@ -94,47 +97,69 @@ construction_stages:
       - freeze the within-block invariant fields and the single varied mechanism
     output: research episode specification and comparability block
 
-  - stage: 3_build_user_pair
+  - stage: 3_elicit_human_ground_truth_and_build_user_pair
     actions:
-      - start from user-anchored or consented facts
-      - retain only facts with a plausible decision consequence
-      - create Ua and Ub by minimal edits on 2_to_4 task-relevant axes
-      - keep irrelevant demographic and style facts out of gold
-      - serialize the same ledger into eligible signal views
-    output: counterfactual user pair and provenance ledger
+      - offer each participant a randomized or stratified task slate and log offered eligible selected and skipped tasks
+      - let each participant select 3_to_5 tasks they could realistically need
+      - elicit open unprompted goals constraints tradeoffs risks audience workflow and invalidating conditions before structured follow_up
+      - tag each fact spontaneous prompted not_applicable or declined and obtain user confirmation
+      - retain uncertainty acceptable alternatives timestamps expiry and privacy permissions
+      - pair contrast near_neighbor and neutral_invariance users with a preregistered algorithm blind to target outputs
+      - serialize only the minimum authorized ledger fields into eligible signal views
+    output: confirmed task_conditioned ledgers pairing funnel and audited user pair
 
-  - stage: 4_write_contracts
+  - stage: 4_construct_counterfactual_difference_map
     actions:
-      - write must-change for each user before reference artifacts
-      - write must-hold shared quality and evidence requirements
-      - write must-not privacy, safety and unsupported-inference boundaries
-      - write clarify-if-unknown only for decision-changing unknowns
-    output: frozen contract bundle
+      - let an LLM propose high_recall candidate change invariant boundary and clarification nodes without authority
+      - require every node to cite user_fact task_evidence or permission provenance
+      - let persona owners confirm their own task consequences directions uncertainty and acceptable alternatives
+      - let two independent annotators audit provenance observability atomicity redundancy and stereotyping
+      - let a domain expert assess only facts feasibility and safety where needed
+      - adjudicate and freeze relation types including directional_difference preserve_same acceptable_equivalence forbidden and clarify_or_branch
+      - exclude unstable or unprovenanced nodes and retain a dev_only emergent_error channel
+    output: versioned counterfactual_difference_map plus compatibility contract view
 
   - stage: 5_compile_rubric
     actions:
       - route predefined core, personalization, intent, deliverable, operator and risk modules
       - select applicable semantic direction nodes from rubric_node_registry.yaml
       - instantiate task, user, evidence and permission parameters
-      - expand contracts to atomic leaves with explicit anchors
+      - expand frozen difference_map nodes to atomic leaves with explicit anchors and provenance
+      - group dependent or redundant leaves and aggregate at node before metric
       - reject duplicate, asymmetric, ungrounded or output-aware leaves
     output: versioned rubric bundle and leaf-to-metric manifest
 
-  - stage: 6_reference_and_pilot
+  - stage: 6_qualify_measurement_routes
+    actions:
+      - validate deterministic verifiers on known positives negatives and mutations where applicable
+      - build D_JQS from deterministic violations controlled single edits and natural human artifacts
+      - split by task family user source target agent edit lineage and time
+      - test AB_BA order plus length style formatting keyword citation_count and language nuisances
+      - qualify judges only for declared leaf classes and route failed or unstable slices to humans or coarse binary scoring
+    output: verifier validation report and hidden judge qualification report
+
+  - stage: 7_reference_and_pilot
     actions:
       - create human reference matched, swapped, generic and misuse controls
       - obtain target-user and domain-expert judgments
       - test discrimination, invariance, nuisance robustness and module redundancy
       - remove families or leaves that fail rather than repairing weights after model runs
-    output: pilot-qualified family
+      - time_separate and blind persona_owner artifact preference from earlier contract confirmation
+    output: pilot-qualified family and external_validity record
 
-  - stage: 7_scale_and_audit
+  - stage: 8_scale_and_audit
     actions:
       - sample from Atlas strata; do not fill the full Cartesian product
       - use balanced incomplete blocks for controlled anchor perturbations
       - publish tested, defined-only, structurally-inapplicable and deferred cells
       - maintain train_dev_test separation by task family, user and source lineage
     output: benchmark release candidate
+
+freeze_policy:
+  construction_freeze: before_reference_artifacts
+  evaluation_freeze: before_any_target_agent_output
+  dev_set: may_update_future_compiler_versions_with_versioned_emergent_errors
+  locked_test_set: may_not_change_primary_difference_map_or_rubric_after_outputs
 
 anchor_identification:
   estimand: paired sensitivity of personalization outcomes to a controlled perturbation

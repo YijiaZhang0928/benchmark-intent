@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="1800" viewBox="0 0 3200 1800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071525"/><stop offset="1" stop-color="#102a46"/></linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#70e1d2"/><stop offset="1" stop-color="#79a7ff"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-opacity=".22"/></filter>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto"><path d="M0,0 L14,7 L0,14 z" fill="#77b7d8"/></marker>
+    <style>
+      .cn{font-family:"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.en{font-family:Inter,Arial,sans-serif}
+      .title{font-size:72px;font-weight:800;fill:#f7fbff}.subtitle{font-size:30px;fill:#b7d0e4}.eyebrow{font-size:24px;font-weight:700;letter-spacing:4px;fill:#74ddcf}
+      .step{font-size:24px;font-weight:800;fill:#0e263b}.boxTitle{font-size:35px;font-weight:800;fill:#f8fbff}.body{font-size:25px;fill:#d6e7f5}.small{font-size:21px;fill:#a9c5da}
+      .pill{font-size:20px;font-weight:700;fill:#092135}.attack{font-size:24px;font-weight:750;fill:#f4f8fc}.def{font-size:20px;fill:#b8d0e3}
+    </style>
+  </defs>
+  <rect width="3200" height="1800" fill="url(#bg)"/>
+  <circle cx="2840" cy="190" r="430" fill="#24608e" opacity=".16"/><circle cx="250" cy="1580" r="420" fill="#1b8d84" opacity=".12"/>
+
+  <text x="150" y="105" class="en eyebrow">DEEPALIGN-BENCH · EVALUATION GROUND-TRUTH PIPELINE · v0.55</text>
+  <text x="150" y="205" class="cn title">真人真值 → 反事实关系 → 可执行评分</text>
+  <text x="150" y="260" class="cn subtitle">核心对象是 C(T,E,Uₐ,Uᵦ)；rubric 是编译产物，judge 只执行冻结标准</text>
+  <rect x="150" y="300" width="2900" height="4" fill="url(#hero)" opacity=".8"/>
+
+  <!-- pipeline -->
+  <g filter="url(#shadow)">
+    <rect x="150" y="385" width="505" height="600" rx="34" fill="#133551" stroke="#3a718f" stroke-width="3"/>
+    <rect x="715" y="385" width="505" height="600" rx="34" fill="#163b54" stroke="#4d8c9b" stroke-width="3"/>
+    <rect x="1280" y="385" width="505" height="600" rx="34" fill="#163854" stroke="#507fc2" stroke-width="3"/>
+    <rect x="1845" y="385" width="505" height="600" rx="34" fill="#17334f" stroke="#6b76b5" stroke-width="3"/>
+    <rect x="2410" y="385" width="640" height="600" rx="34" fill="#18324a" stroke="#6a98b3" stroke-width="3"/>
+  </g>
+
+  <g class="cn">
+    <rect x="185" y="420" width="88" height="40" rx="20" fill="#74ddcf"/><text x="212" y="448" class="step">01</text>
+    <text x="185" y="525" class="boxTitle">真人任务与 ledger</text>
+    <text x="185" y="580" class="body"><tspan x="185">随机/分层 task slate</tspan><tspan x="185" dy="44">每人选择 3–5 个真实任务</tspan><tspan x="185" dy="44">先开放描述，再结构追问</tspan><tspan x="185" dy="44">spontaneous / prompted</tspan><tspan x="185" dy="44">N/A / declined / uncertainty</tspan></text>
+    <rect x="185" y="820" width="410" height="56" rx="18" fill="#80decf"/><text x="216" y="856" class="pill">权威：用户自己的目标与取舍</text>
+    <text x="185" y="920" class="small">输出：经本人确认的 private ledger</text>
+
+    <rect x="750" y="420" width="88" height="40" rx="20" fill="#75d2d1"/><text x="777" y="448" class="step">02</text>
+    <text x="750" y="525" class="boxTitle">Pair 与 CDM</text>
+    <text x="750" y="580" class="body"><tspan x="750">contrast / near-neighbor</tspan><tspan x="750" dy="44">neutral / invariance pair</tspan><tspan x="750" dy="44">directional difference</tspan><tspan x="750" dy="44">same / equivalence / forbidden</tspan><tspan x="750" dy="44">clarify-or-branch</tspan></text>
+    <rect x="750" y="820" width="410" height="56" rx="18" fill="#85d6d6"/><text x="775" y="856" class="pill">硬门：node 必须有 provenance</text>
+    <text x="750" y="920" class="small">输出：C(T,E,Uₐ,Uᵦ) 关系真值</text>
+
+    <rect x="1315" y="420" width="88" height="40" rx="20" fill="#7ebdec"/><text x="1342" y="448" class="step">03</text>
+    <text x="1315" y="525" class="boxTitle">独立审计与双冻结</text>
+    <text x="1315" y="580" class="body"><tspan x="1315">用户确认 consequence/direction</tspan><tspan x="1315" dy="44">2 annotators：来源/可观察性</tspan><tspan x="1315" dy="44">原子性/冗余/刻板化</tspan><tspan x="1315" dy="44">expert：事实/可行性/安全</tspan><tspan x="1315" dy="44">construction + evaluation freeze</tspan></text>
+    <rect x="1315" y="820" width="410" height="56" rx="18" fill="#83baf0"/><text x="1341" y="856" class="pill">Freeze 只防 post-hoc</text>
+    <text x="1315" y="920" class="small">输出：authority + hash + version</text>
+
+    <rect x="1880" y="420" width="88" height="40" rx="20" fill="#a4a5ed"/><text x="1907" y="448" class="step">04</text>
+    <text x="1880" y="525" class="boxTitle">受约束 rubric 编译</text>
+    <text x="1880" y="580" class="body"><tspan x="1880">CDM node → atomic leaves</tspan><tspan x="1880" dy="44">source / owner / observable</tspan><tspan x="1880" dy="44">evidence / severity / scorer</tspan><tspan x="1880" dy="44">dependency / qualification slice</tspan><tspan x="1880" dy="44">先 node 内聚合，再进指标</tspan></text>
+    <rect x="1880" y="820" width="410" height="56" rx="18" fill="#a9a8eb"/><text x="1905" y="856" class="pill">LLM 只编译，不新增目标</text>
+    <text x="1880" y="920" class="small">输出：frozen executable bundle</text>
+
+    <rect x="2445" y="420" width="88" height="40" rx="20" fill="#9ac4dc"/><text x="2472" y="448" class="step">05</text>
+    <text x="2445" y="525" class="boxTitle">Hybrid scoring + D-JQS</text>
+    <text x="2445" y="580" class="body"><tspan x="2445">validated deterministic verifier</tspan><tspan x="2445" dy="44">evidence verifier</tspan><tspan x="2445" dy="44">slice-qualified rubric judge</tspan><tspan x="2445" dy="44">artifact evidence span + abstain</tspan><tspan x="2445" dy="44">blinded target-user / expert</tspan></text>
+    <rect x="2445" y="820" width="540" height="56" rx="18" fill="#9bc7dc"/><text x="2470" y="856" class="pill">失败 slice → 人评 / 粗二元 / N/A</text>
+    <text x="2445" y="920" class="small">输出：profile + uncertainty + audit trail</text>
+  </g>
+
+  <g stroke="#77b7d8" stroke-width="6" fill="none" marker-end="url(#arrow)" opacity=".9">
+    <path d="M655 680 H700"/><path d="M1220 680 H1265"/><path d="M1785 680 H1830"/><path d="M2350 680 H2395"/>
+  </g>
+
+  <!-- attack/control matrix -->
+  <text x="150" y="1080" class="cn boxTitle">最强攻击不是“能不能跑”，而是“这个 gold 和 judge 凭什么可信”</text>
+  <g filter="url(#shadow)" class="cn">
+    <rect x="150" y="1130" width="700" height="220" rx="26" fill="#102b42" stroke="#356a88" stroke-width="2"/>
+    <text x="185" y="1185" class="attack">自选择 / pair cherry-pick</text>
+    <text x="185" y="1230" class="def"><tspan x="185">完整 offered→selected→rejected funnel</tspan><tspan x="185" dy="35">预注册 pairing；contrast / near / neutral 分层</tspan></text>
+
+    <rect x="885" y="1130" width="700" height="220" rx="26" fill="#102b42" stroke="#356a88" stroke-width="2"/>
+    <text x="920" y="1185" class="attack">自述漂移 / demand characteristics</text>
+    <text x="920" y="1230" class="def"><tspan x="920">uncertainty + alternatives + test–retest</tspan><tspan x="920" dy="35">后期不见 rubric；随机盲化、分时验证</tspan></text>
+
+    <rect x="1620" y="1130" width="700" height="220" rx="26" fill="#102b42" stroke="#356a88" stroke-width="2"/>
+    <text x="1655" y="1185" class="attack">CDM 遗漏 / leaf double counting</text>
+    <text x="1655" y="1230" class="def"><tspan x="1655">protocol-bounded saturation；locked test 不回改</tspan><tspan x="1655" dy="35">dependency group + node-first aggregation</tspan></text>
+
+    <rect x="2355" y="1130" width="695" height="220" rx="26" fill="#102b42" stroke="#356a88" stroke-width="2"/>
+    <text x="2390" y="1185" class="attack">D-JQS 自认证 / nuisance bias</text>
+    <text x="2390" y="1230" class="def"><tspan x="2390">3 类 gold + grouped hidden qualification</tspan><tspan x="2390" dy="35">AB/BA + length/style/keyword/citation/language</tspan></text>
+
+    <rect x="150" y="1390" width="930" height="220" rx="26" fill="#102b42" stroke="#356a88" stroke-width="2"/>
+    <text x="185" y="1445" class="attack">“只是 PDR++ / constraint following”</text>
+    <text x="185" y="1490" class="def"><tspan x="185">硬约束 + trade-off + knowledge/audience + latent history + clarification</tspan><tspan x="185" dy="35">PDR-style / independent A-B / CDM / hybrid 四组消融</tspan></text>
+
+    <rect x="1115" y="1390" width="930" height="220" rx="26" fill="#102b42" stroke="#356a88" stroke-width="2"/>
+    <text x="1150" y="1445" class="attack">跨 vertical 不等距 / verifier 假可靠</text>
+    <text x="1150" y="1490" class="def"><tspan x="1150">DR / Code / Data 分开报告，不合并 raw score</tspan><tspan x="1150" dy="35">known +/-、mutation、false accept/reject、coverage</tspan></text>
+
+    <rect x="2080" y="1390" width="970" height="220" rx="26" fill="#102b42" stroke="#356a88" stroke-width="2"/>
+    <text x="2115" y="1445" class="attack">真正的论文生死门</text>
+    <text x="2115" y="1490" class="def"><tspan x="2115">CDM 是否重分类 system/family？</tspan><tspan x="2115" dy="35">是否在一般质量之外增量预测盲化真人选择？</tspan></text>
+  </g>
+
+  <text x="150" y="1700" class="cn subtitle">Claim boundary：若无重分类或真人增量效度，只能称 transparent measurement extension</text>
+  <text x="3050" y="1700" text-anchor="end" class="en small">DeepAlign-Bench · 2026-08-17</text>
+</svg>

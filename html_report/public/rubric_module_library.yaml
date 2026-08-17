@@ -1,10 +1,12 @@
 library_name: deepalign_predefined_rubric_module_library
-library_version: 0.31
+library_version: 0.55
 node_registry: rubric_node_registry.yaml
 status: design_contract_requires_pilot_validation
 description: >-
   Predefined module library for compiling task- and user-conditioned rubrics.
-  Modules are selected from frozen metadata and contracts before agent runs.
+  Modules are selected from frozen metadata and a human-grounded Counterfactual
+  Difference Map before agent runs. The map decides the relation; modules only
+  provide reusable measurement structure.
   The library is not claimed to be complete until the coverage, discrimination,
   invariance, redundancy and human-validity audits below pass.
 
@@ -14,7 +16,7 @@ selection_policy:
     - select CORE-FACT-02 and CORE-EVID-03 whenever the artifact makes external claims
     - select exactly one primary intent module
     - select exactly one primary deliverable module
-    - select one or more personalization modules for every must-change contract
+    - select one or more personalization modules for every must-change Difference Map node
   conditional:
     - select CORE-REASON-04 when conclusions require a visible inference chain
     - select CORE-UNCERT-05 when evidence is incomplete, conflicting or forecast-like
@@ -22,7 +24,8 @@ selection_policy:
     - select risk modules only when stakes, permission, sensitivity or must-not contracts activate them
   forbidden:
     - selecting modules after viewing evaluated outputs
-    - adding a personalization leaf without an authorized user fact and contract
+    - adding a personalization leaf without an authorized Difference Map node and provenance
+    - treating independently generated user_a and user_b rubrics as the relational gold
     - binding a leaf directly to CFA, NPF, cue_gap or stress_delta
     - changing A/B module shape without a written counterfactual justification
   leaf_budget:
@@ -277,7 +280,7 @@ module_families:
     modules:
       - module_id: OP-ACQUIRE-01
         label: Acquire or clarify missing user state
-        scope: clarification_or_anchor_only
+        scope: P2_or_P3_episode_or_anchor_only
         leaf_blueprints:
           - criterion: The agent asks the minimum decision-relevant question or gives a valid conditional branch.
             binding: [clarification_correctness, operator_diagnostic]
@@ -298,7 +301,7 @@ module_families:
             judge_route: paired_artifact_judge_then_target_user
       - module_id: OP-UPDATE-04
         label: Adopt current state and suppress stale state
-        scope: stateful_anchor_only
+        scope: P4_episode_or_longitudinal_anchor_only
         leaf_blueprints:
           - criterion: The updated fact changes the intended decision while unrelated invariants remain stable.
             binding: [PF, operator_diagnostic]

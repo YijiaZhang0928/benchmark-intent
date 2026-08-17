@@ -1,5 +1,16 @@
 # benchmark-intent 设计迭代记录
 
+## v0.55 Human-grounded Difference Map and judge qualification - 2026-08-17
+
+- 将评价真值链重构为“真人 task 选择与 task-conditioned ledger → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → D-JQS 资格认证 → hybrid scoring”；明确 freeze 只防 post-hoc，真实性、完整性与执行可靠性分别由不同机制承担。
+- 新增 `human_ground_truth.protocol.yaml`：每位参与者从随机化/分层 slate 选择 3–5 个真实任务，开放 elicitation 先于结构化追问，fact 记录 spontaneous/prompted/N/A/declined、uncertainty、alternatives、timestamp/expiry、consent；发布完整 offered→eligible→selected→paired→qualified 漏斗。
+- 新增 `counterfactual_difference_map.schema.yaml`：以 `C(T,E,Ua,Ub)` 记录 directional difference、preserve same、acceptable equivalence、forbidden 和 clarify/branch；每个 node 强制 provenance、authority、observable、dependency、partner 与双 freeze，no-provenance fail closed。
+- 新增 `judge_qualification.protocol.yaml`，将项目内 JudgeBench 改名 D-JQS，避免与 JudgeBench/JUDGE-BENCH 前作混淆；gold 混合 deterministic violation、controlled single edit 和 natural human artifact，按 family/user/source/agent/edit lineage/time 隔离 calibration 与 hidden qualification，并做 slice-specific pass/fail。
+- 将 case/data-factory/construction/rubric leaf/template/module/node/bundle schema 升至 v0.55；rubric 只能从冻结 CDM 编译，dependent leaves 先 node 内聚合；deterministic verifier 也须经 mutation/known-positive-negative/false-accept-reject/coverage 验证。
+- 预注册 14 类最强 reviewer attack：task self-selection、pair cherry-pick、自述不稳定、demand characteristics、CDM completeness、LLM authority、leaf double count、weak verifier、D-JQS self-certification、nuisance bias、shared model family、cross-vertical incomparability、constraint-following、cost/privacy/drift；逐项写入项目记忆与 proposal 防守。
+- 将 novelty 边界收紧为 paired relational CDM 与反事实 effect identification；GAMUT、RuVerBench、JudgeBench/JUDGE-BENCH 已覆盖 compiler/judge 邻近部分。主消融必须比较 PDR-style absolute rubric、独立 A/B rubric、CDM 对称 rubric 与 single judge/hybrid；若没有系统重分类或真人增量效度，主张降级为 transparent measurement extension。
+- 同步正式 proposal、正式精简版、人话版、导师 brief、README、项目记忆、HTML、主图、DOCX/PDF 与 deliverable schemas；正式精简版继续受 10 页上限约束。
+
 ## v0.54 PLHKW task pool and three-regime sampling frame - 2026-08-16
 
 - 将当前定位收窄为三个代表性长程知识工作场景，不声称穷尽所有 PLHKW；目标采样为 DR/Software/Data = 40/30/30。
