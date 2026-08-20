@@ -8,6 +8,22 @@
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
 
+## 0V. 2026-08-20：Credamo 三轮真人 Persona 问卷与 60-task 路由包
+
+本轮将 `preview.html` 的概念说明落实为可搭建问卷，但仍明确它不是伦理批准或已上线系统。最终采用三个相互链接的 Credamo 问卷：Wave A（10–15 分钟）完成 consent、screening、背景路由和候选任务选择；Wave B（15–22 分钟/任务）从候选中分配 1 个主任务、最多 1 个次任务，先保存五个开放问题的首次回答，再显示通用和 vertical-specific schema；Wave C（5–8 分钟/任务）把带用户原话 source span 的 LLM 候选事实逐条交给本人 approve/edit/delete/uncertain。选择 3–5 个只表示候选覆盖，不再等于每人深填 3–5 份 persona。
+
+路由不使用年龄、性别等人口学，只使用教育/职业领域、实际职能、coding/data/research 经验、近一年或未来真实任务经历和安全可回答性。每人展示 10–15 张 cards，优先约 8 张强匹配、2 张可迁移、2 张覆盖不足但仍真实合格的任务，tier 内随机；coverage bonus 只能打破同等资格的并列。逐卡记录 offered、order、opened、relevance、experience、safe-answerability、AI delegation、eligible、selected、assigned、confirmed；真实相关任务不足 3 个时允许只选 1–2 个或正常结束，不强迫用户夸大相关性。
+
+开放式 elicitation 的首次提交必须形成不可覆盖快照。结构化 schema 出现后新增的事实标为 prompted；若用户修改开放回答，另记 `prompted_contaminated`，不能回写成 spontaneous。LLM 没有真值 authority，只能从原话抽取候选 fact；任何无 source span 的事实 fail closed。用户对每条 fact 分别确认含义、重要性、灵活性、acceptable alternatives、invalidating conditions，以及后台评分、agent 可见、去标识化公开三种权限。最终未确认、被删除或仅模型推断的事实不进入 pairing/CDM。
+
+最低发布线是每个 task 2 个 confirmed ledger，但这不是稳健招募目标。12-family paper-first pilot 以每题 3–4 个 confirmed ledger 为目标，为流失、不可配对和 contrast/near/neutral 分层留缓冲；完整 60-family release 对应 180–240 个 confirmed user–task records，并应根据 20–30 人 soft launch 的 route precision、Wave B/C attrition、同一参与者聚类和专业长尾重新估算。规划报酬为 Wave A ¥8–12、Wave B ¥15–22/task、Wave C ¥6–10/task；普通参与者目标有效时薪 ¥40–60，稀缺专业用户 ¥80–150。报酬不能依赖形成 pair、差异明显、同意 LLM 总结或事后被研究者判为“有用”。¥3,000 只足以支持受限 pilot 或无缓冲最低覆盖，不能承诺高质量完成 60 题。
+
+质控只把成年/同意失败、无任何 eligible task、经多信号确认的重复/欺诈、人工复核后仍无意义的核心回答，以及拒绝 final confirmation 作为硬排除候选。过快、开放文本过短、前后矛盾、矩阵同选、理解题失败属于 soft flags，必须组合判断并允许人工复核；禁止 AI-text detector 自动排除，也不能排除 genuinely neutral users。所有排除与漏斗理由都要报告，不能在看到 A/B 差异后后验清洗。
+
+最强 reviewer attacks 与防守同步冻结：（1）自选任务导致选择偏差——公开 offered→qualified 漏斗并限制 target population；（2）路由算法制造覆盖——tier 内随机、人口学禁用、记录展示机制；（3）open-first 只是口号——页面级提交锁与 provenance 污染标记；（4）LLM normalization 重新发明 persona——source-span fail closed + user fact-level confirmation；（5）最低两人功效不足——2 是 release floor，3–4 是 pilot target；（6）专业人群被低价激励失真——按 P50/P75 时长和稀缺性重定；（7）多轮失访与同一人多题破坏独立性——报告 attrition、以 user 聚类、family 为 benchmark unit；（8）隐私同意过宽——三层权限、最小化、撤回、原始 ledger 默认不公开；（9）排除规则可被作者操纵——预注册 hard/soft flags、人工复核、全量审计日志；（10）问卷本身诱发 constraint-following persona——开放先行、允许 uncertainty/indifference/N/A/declined，并保留 neutral/near pairs。
+
+机器与人工交付物：`benchmark_schema/credamo_persona_collection.protocol.yaml`；`data/credamo_persona_survey_v0_56/` 下 21-page/92-question/60-task 路由与质控包；`proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md`。正式招募前仍有三道阻塞门：机构伦理/IRB 批准或豁免确认、Credamo 稳定匿名 ID/预填/配额/时间与事件日志实机核验、经批准的 LLM 数据处理路径。未通过时不得开始收集正式 gold。
+
 ## 0U. 2026-08-20：`preview.html` 真人 Persona 收集页上线前审计
 
 本轮审计对象是 `/Users/lora/Downloads/preview.html`；Downloads 中三个 `preview` 副本 SHA-256 完全相同。当前文件是 168 行的**导师讨论说明页**，没有 `form/input/textarea/button`、知情同意、状态保存、提交接口或数据导出，不能直接作为真人 persona 采集工具。它对“open-first → family-specific follow-up → user-confirmed ledger”的概念表达是清楚的，但必须与正式参与者界面、研究后台和 pairing/CDM 后处理分开。

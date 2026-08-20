@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.55 · 2026 年 8 月 17 日
+版本：v0.56 · 2026 年 8 月 20 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
@@ -20,7 +20,7 @@ PDR-Bench 已经建立 Deep Research 中 task–persona 条件下的 absolute ad
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
-v0.54 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。这个结果冻结了 task shell、来源、reasoning structure 与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.55 进一步把 persona 与评分链冻结为 **真人真值获取 → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → DeepAlign Judge Qualification Suite（D-JQS）→ hybrid scoring**：rubric 不再由两份独立 persona 标准临时拼成，judge 也不再负责发明评价目标。v0.50 的 **research episode** 统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
+v0.54 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。这个结果冻结了 task shell、来源、reasoning structure 与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.55 进一步把 persona 与评分链冻结为 **真人真值获取 → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → DeepAlign Judge Qualification Suite（D-JQS）→ hybrid scoring**。v0.56 将真人采集落实为 Credamo 三轮协议：Wave A 只做筛选、路由和 3–5 个候选任务选择；Wave B 从中分配 1 个主任务、最多 1 个次任务做 open-first elicitation；Wave C 在离线 LLM 规范化后逐条由本人确认。这样既保存选择漏斗，又不把每人 3–5 题变成 55–100 分钟的低质长问卷。v0.50 的 **research episode** 统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
 
 这条主线不能声称 agent 内部“在意”或“关心”用户；黑箱 benchmark 无法识别动机。可证伪的行为表述是：**当一份通用报告已经可以完成表面任务、但仍缺少会改变最终决定的用户事实时，agent 是否主动询问高价值问题，并在获得答案后把它落实到交付物。** P2 因而比一般证据冲突更直接地测 user-specificity sensitivity；P4 只能测当前用户状态变化后的响应与旧状态清除，不能被写成“agent 更关心用户”的独立证据。
 
@@ -563,7 +563,11 @@ Anchor 的可识别量是**受控扰动敏感度**，不是“用户建模失败
 
 Persona 不是人物小传，而是 **task-conditioned user state 的一种可见序列化**。v0.55 把真值创建分成四层，并明确每层解决不同问题：真人来源与权威解决真实性；LLM 高召回候选和人工 coverage audit 改善遗漏；版本与哈希冻结只防 post-hoc；verifier、D-JQS 和真人外部效度负责执行可靠性。冻结本身绝不被表述为 gold 正确性的证据。
 
-**第一层：真实任务选择与开放式 elicitation。** 每位参与者先看到一个随机化或分层的候选 task slate，再从中选择 3–5 个现实中确实可能需要完成的任务。研究记录 `offered / self-reported eligible / selected / skipped` 全漏斗，不能只公布最终留下的高对比 pair。每个已选 task 先做无提示开放描述，用户自由说明目标、限制、关注点、风险、可接受 trade-off、受众、使用环境和“什么会让结果对我不可用”；随后才进入 family-specific structured follow-up。每条事实标记 `spontaneous / prompted / N/A / declined`，并保留置信度、可接受替代、时间戳、过期/复核日期和隐私许可。部分用户做 test–retest；在可行时，用实际选择或既有行为记录核对自述稳定性。由此形成经本人确认的隐藏 `task-conditioned user ledger`，而不是把整份后台 ledger 直接塞给 agent。
+**第一层：真实任务选择与开放式 elicitation。** v0.56 使用三个相互链接的 Credamo 问卷。Wave A 先收最小人口学、教育/职业领域和 coding/data/research 经验；人口学只用于样本描述和公平性审计，task routing 只使用任务相关训练、职能、真实经历与安全可回答性。系统先按 vertical/domain 生成 10–15 张卡，其中约 8 张强匹配、2 张可迁移匹配、2 张仍合格但覆盖不足的任务，并在 tier 内随机。参与者逐卡回答现实相关性、类似经历、是否能在不泄密的情况下描述，以及是否可能委托 AI，再从 eligible cards 选 3–5 个候选任务；若只有 1–2 个真实任务，不强迫凑数。研究保存 `offered / order / opened / eligible / selected / skipped` 全漏斗，coverage bonus 只能打破同等资格任务，不能把无关任务塞给用户。
+
+Wave B 不要求参与者对全部 3–5 个候选任务深填，而按真实相关度、经验、安全可回答性和 coverage deficit 分配 1 个主任务、最多 1 个次任务。每个 assigned task 先保存五个开放问题的首次提交快照：具体情境、期望交付与下一行动、会改变好答案的现实条件、不可接受结果、AI 最应追问什么；随后才显示全局 schema 和 DR/Software/Data module。schema 出现后对开放文本的修改另记 `prompted_contaminated`，不能覆盖 spontaneous provenance。Wave C 在离线 LLM 只做带 verbatim source span 的候选事实抽取后，逐条让本人 `approve / edit / delete / uncertain`，并分别确认重要性、灵活性、可接受替代、失效条件以及后台/agent/公开三种权限。无 source span 的候选 fail closed；最终未确认的 ledger 不进入 pairing/CDM。
+
+Credamo 官网公开宣传随机实验、多期追踪与配对调查，支持这一保守的多轮路线；实时外部 LLM/API、跨轮预填、版本快照和动态配额仍须在平台实机逐项核验。[[88]](https://www.credamo.com/) 中国《科技伦理审查办法（试行）》将以人为调查对象和个人信息数据纳入伦理审查，并要求招募公平、补偿、隐私、知情同意和数据治理；因此正式招募必须等本单位伦理批准或豁免确认、处理者/存储/撤回流程与 LLM 数据路径全部冻结。[[89]](https://www.gov.cn/zhengce/zhengceku/202310/content_6908045.htm) 每条事实继续标记 `spontaneous / prompted / N/A / declined`、置信度、可接受替代、时间戳、过期/复核日期和隐私许可；部分用户做 test–retest，在可行时以实际选择或既有行为核对自述稳定性。由此形成经本人确认的隐藏 `task-conditioned user ledger`，而不是把整份后台 ledger 直接塞给 agent。
 
 **第二层：成对用户与 Counterfactual Difference Map。** 对同一 task，按预注册算法从都真实相关的用户中形成三类 pair：有清楚决策差异的 contrast pair、差异较小的 near-neighbor pair，以及本不应出现显著输出变化的 neutral/invariance pair。pairing team 在看不到 target-agent 输出的条件下完成选择，并公开候选、入选、拒绝原因和对比强度分布。这样 benchmark 的 target population 被明确限制为“task-relevant、counterfactually eligible users”，不声称估计所有用户中的个性化需求普遍率。
 
@@ -881,6 +885,8 @@ AB/BA 只控制 position bias，不能控制 verbosity、style、关键词、引
 ### 9.3 两个月论文矩阵与扩展路线
 
 **主论文（8 周）**：从 60-family provisional set 中优先完成 12 个端到端 family：5 DR、3 Software、4 Data。每个 vertical 先至少有一个 vertical slice 通过许可、环境 reset、task/evidence 不变性、双人反事实自然性、matched/swapped discrimination 和共同质量 no-harm 门。Phase B 真人 decision trial 只在功效和成本允许的子集运行，不用“12 题”冒充“12 个已验证效用的 family”。P4 user-state update 只在 2–4 个适用 anchor 上做次要单因素压力层。
+
+真人招募也按两级目标运行。最低发布条件虽是每个 task 至少 2 个 confirmed ledger，但主论文的 12-family pilot 以每题 3–4 个 confirmed ledger 为招募目标，为 attrition、无法配对和 neutral/near-neighbor 留缓冲；完整 60-family release 再根据 Wave A route precision、Wave B/C attrition、每题 coverage 和参与者聚类重新估算。规划报酬为 Wave A ¥8–12、Wave B ¥15–22/task、Wave C ¥6–10/task，普通参与者目标有效时薪 ¥40–60，稀缺专业用户另行加价；形成 pair、产生明显差异或同意 LLM 总结不得成为付费条件。¥3,000 只能支持受限 pilot 或无质量缓冲的最低覆盖，不能作为 180–240 个 confirmed ledger 加平台费的完整 60-task 承诺。
 
 系统按 vertical 绑定：DR 比较商业产品、统一搜索 harness 和可复现开源 DRA；software 比较同一 repo/container 下的 controlled harness 与专用 code agent；data 比较同一 dataset/workbook 下的 controlled harness 与 data-analysis agent。每个 agent-task 组合提前写明 `eligibility_predicate`，受控 harness 榜和端到端产品榜分开报告。
 
@@ -1200,7 +1206,7 @@ Task 元数据分三层。**A 层是导入或自动生成的客观 provenance**�
 
 ### 17.2 Persona 如何真实自然：task-first、user-anchored、最小化
 
-主数据不从研究者写人物小传开始，而从“谁真的需要这个任务”开始。建议招募约 32–40 位参与者，每人选择 1–2 个与自己真实决策或工作相关的 task shell，并进行 30–45 分钟结构化 elicitation：目标/成功标准、知识、硬软约束、风险与可逆性、受众/工作流、权限/披露边界、当前状态与近期事件。每条 fact 都进入私有 ledger，带来源、时间、可靠性、敏感级别、可用于推理/可披露权限和它会改变哪项交付决策。
+主数据不从研究者写人物小传开始，而从“谁真的需要这个任务”开始。v0.56 的招募单位是三轮、一个主任务为主的 user–task record：Wave A 让参与者从 10–15 张 task-relevant cards 中选择 3–5 个真实候选；Wave B 后台只分配 1 个主任务、最多 1 个次任务，每题先完成开放 elicitation 再显示结构化 schema；Wave C 对带原话 source span 的候选 fact 逐条确认。完整一次主任务流程预计 30–45 分钟但分轮完成。12-family pilot 不先冻结参与者人数，而以每题 3–4 个 confirmed ledger 为覆盖目标，在 20–30 人 soft launch 后依据 route precision、跨轮流失、同一参与者聚类和长尾专业招募重新估算。每条 fact 都进入私有 ledger，带来源、时间、可靠性、敏感级别、可用于推理/可披露权限和它会改变哪项交付决策。
 
 Gold 优先使用两个真实用户共享同一 invariant task/evidence，但在 2–4 个任务相关轴上自然不同；配对困难时，才使用“一个真实用户 + 经第二位相似参与者验证的最小反事实编辑”。完全合成 persona 只进入压力测试和无关 cue 对照，不能支撑真人效用主张。Natural history 应来自参与者回忆、日记或获授权轨迹，或由参与者逐句确认的转述；annotator 编造的生活史不算 gold。PDR-Bench 采用真实 profile、但由专业标注者模拟日常应用交互，这一做法适合扩展覆盖，却也正是 DeepAlign 应避免作为 gold 主来源的真实性边界。[[4]](https://arxiv.org/abs/2509.25106) FingerTip 20K 让 95 位参与者在自有手机上贡献一个月意图、情境和操作轨迹，为“自然用户锚定 + 隐私过滤”提供了更强参照。[[57]](https://arxiv.org/abs/2507.21071)
 
@@ -1387,7 +1393,9 @@ ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投�
 [85] Chen et al. *Two-Level Meta-Rubrics for Evaluating Open-Ended Generation: GAMUT, a Benchmark for Factual Completeness*. arXiv:2607.19322, 2026. https://arxiv.org/abs/2607.19322
 [86] Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS, 2023. https://arxiv.org/abs/2306.05685
 [87] Verga et al. *Replacing Judges with Juries: Evaluating LLM Generations with a Panel of Diverse Models*. arXiv:2404.18796, 2024. https://arxiv.org/abs/2404.18796
+[88] Credamo. *Credamo 见数官网：智能调研、随机实验、多期追踪与配对调查*. https://www.credamo.com/
+[89] 科技部等十部门. *科技伦理审查办法（试行）*. 国科发监〔2023〕167号，2023. https://www.gov.cn/zhengce/zhengceku/202310/content_6908045.htm
 
 ---
 
-**需要导师优先拍板的四个问题：**（1）是否把 DDE 与 wrong-user harm 锁定为唯一核心贡献，PF/CFA 降为 Phase A；（2）是否同意用 3-family pilot 后的功效模拟决定 8–12 family 与真人样本量；（3）是否接受减少 agent/taxonomy 广度以换取真人统计功效；（4）伦理审查、招募和真实决策材料能否在时间窗内启动。
+**需要导师优先拍板的五个问题：**（1）是否把 DDE 与 wrong-user harm 锁定为唯一核心贡献，PF/CFA 降为 Phase A；（2）是否同意用 3-family pilot 后的功效模拟决定 8–12 family 与真人样本量；（3）是否接受减少 agent/taxonomy 广度以换取真人统计功效；（4）是否采用 Credamo Wave A 选 3–5 个候选、Wave B 只深采 1–2 个、Wave C 本人确认的三轮方案；（5）伦理审查、平台数据处理、招募和真实决策材料能否在时间窗内启动。

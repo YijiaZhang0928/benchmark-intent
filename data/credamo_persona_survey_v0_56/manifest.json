@@ -1,0 +1,22 @@
+{
+  "package": "credamo_persona_survey_v0_56",
+  "version": "0.56",
+  "status": "implementation_ready_pending_ethics_and_platform_pilot",
+  "counts": {
+    "pages": 21,
+    "question_templates": 92,
+    "task_cards": 60,
+    "routes": 60,
+    "quality_rules": 13
+  },
+  "source_task_pool": "data/plhkw_task_pool_v0_54/selected_tasks.jsonl",
+  "files": {
+    "data/credamo_persona_survey_v0_56/pages.json": "f3b1a9aca04538e704aae7dce20d625eb6e28d1ac18f0961d924250f95597bba",
+    "data/credamo_persona_survey_v0_56/question_bank.json": "67b3aa841d2581fb9e723eb49c4513d23bcd29ca5ef9178350a108c8dcee500a",
+    "data/credamo_persona_survey_v0_56/task_cards.jsonl": "2b0d55f2ce8fb17dd6fdbdc027a48f0ebfb5a57e247cd4522d566a6d65f36fca",
+    "data/credamo_persona_survey_v0_56/routing_matrix.jsonl": "e3211a68c4a8df41f59f8ce1b7f1eaedc04c2031b98b739e46f4679a3385c3cb",
+    "data/credamo_persona_survey_v0_56/quality_rules.json": "ac1e28fd98353f4250b5332bfa60bc683d81bc20607602a0b4b4a7cf43b7a61b",
+    "proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md": "a86950e192e412f2192874d4981c71f5a285ac30e6da475979b0f73f7370d7a3",
+    "benchmark_schema/credamo_persona_collection.protocol.yaml": "c51fd84bdd5b136b9e631dc12d496f7cd1172579d6fd90174ed50f997fc03a92"
+  }
+}

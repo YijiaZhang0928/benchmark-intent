@@ -1,5 +1,15 @@
 # benchmark-intent 设计迭代记录
 
+## v0.56 Credamo three-wave persona collection package - 2026-08-20
+
+- 将 60-task 真人 persona 招募落实为三轮 Credamo 流程：Wave A 完成 consent/screening/routing 并选择 3–5 个真实候选；Wave B 后台分配 1 个主任务、最多 1 个次任务，严格先开放题后 schema；Wave C 对带原话 source span 的 LLM 候选事实逐条确认。
+- 新增完整中文问卷方案，覆盖 21 个页面、92 个问题、精确题目文本、题型、skip logic、时长、报酬、后台字段和 reviewer attacks；明确人口学不参与路由、真实相关任务不足 3 个不强迫凑数。
+- 新增覆盖全部 60 个 provisional task family 的机器搭建包：`pages.json`、`question_bank.json`、`task_cards.jsonl`、`routing_matrix.jsonl`、`quality_rules.json`、manifest、builder 和 validator；校验通过 24 DR / 18 Software / 18 Data。
+- 冻结最低发布线与招募缓冲的区别：最低每题 2 个 confirmed ledger；12-family pilot 以每题 3–4 个为目标，完整 60-task release 依据 soft launch 的 route precision、跨轮流失、聚类和专业长尾重新估算。
+- 规划 Wave A/B/C 报酬为 ¥8–12、¥15–22/task、¥6–10/task；普通参与者目标有效时薪 ¥40–60，稀缺专业用户 ¥80–150。报酬不得取决于 pairability、差异强度、同意 LLM 或事后研究用途。
+- 质控采用多信号软标记与人工复核；禁止只因速度短、表达简短、neutral user 或 AI-text detector 自动排除。正式上线前必须先完成伦理/IRB、Credamo 跨轮功能和 LLM 数据路径核验。
+- 同步正式 proposal、精简版、人话版、导师 brief、human-ground-truth protocol、README、项目记忆、HTML、DOCX/PDF 与 standalone 交付物；正式精简版继续受 10 页上限约束。
+
 ## v0.55 Persona collection preview audit - 2026-08-20
 
 - 审计 `/Users/lora/Downloads/preview.html`：确认三个 Downloads 副本内容完全一致，但当前是导师讨论说明页，没有表单、同意、提交、保存或数据导出能力，不能直接采集 persona。

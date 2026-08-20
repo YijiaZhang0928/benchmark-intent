@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.55 · 2026 年 8 月 17 日
+版本：v0.56 · 2026 年 8 月 20 日
 建议时长：15–20 分钟
 
 ---
@@ -21,7 +21,9 @@
 
 每个 task family 固定：任务核心、证据快照、工具、预算、交付格式和共同事实。
 
-每位真人先从随机化/分层 slate 选择 3–5 个真实相关任务；开放 elicitation 先于结构化追问，fact 记录 spontaneous/prompted/N/A/declined、置信度、可接受替代、时间戳与权限。每个 family 配对两位都合理的用户，并公开 offered→eligible→selected→paired→qualified 漏斗；pair 同时含 contrast、near-neighbor 和 neutral/invariance。运行前先冻结关系真值 **Counterfactual Difference Map（CDM）**：
+Credamo 分三轮：Wave A 按 task-relevant 背景路由 10–15 张 cards，逐卡检查现实相关、类似经验和安全可回答性，再让用户选 3–5 个候选；Wave B 从中深采 1 个主任务、最多 1 个次任务，先保存开放回答，再显示结构化 schema；Wave C 把 LLM 候选事实和原话 source span 一起交给本人逐条批准、修改、删除或标不确定。人口学不参与路由；若真实相关任务少于 3 个，不强迫凑数。fact 记录 spontaneous/prompted/N/A/declined、置信度、可接受替代、时间戳与三层权限。每个 family 配对两位都合理的用户，并公开 offered→eligible→selected→assigned→confirmed→paired→qualified 漏斗；pair 同时含 contrast、near-neighbor 和 neutral/invariance。运行前先冻结关系真值 **Counterfactual Difference Map（CDM）**：
+
+12-family pilot 先以每题 3–4 个 confirmed ledger 为招募目标，而不是最低 2 人；Wave A/B/C 规划报酬分别为 ¥8–12、¥15–22/task、¥6–10/task，20–30 人 soft launch 后按实际时长与流失重定。¥3,000 只能支持受限 pilot，不能承诺高质量覆盖全部 60 题。正式招募须先完成伦理/IRB 与 Credamo 跨轮、预填、配额和 LLM 数据路径核验。
 
 - `must-change / directional difference`：换用户必须改变什么；
 - `must-hold / acceptable equivalence`：共同事实不变，或多个方案都可接受；

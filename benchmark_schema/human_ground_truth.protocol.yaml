@@ -1,6 +1,7 @@
 protocol_name: deepalign_human_ground_truth
-protocol_version: 0.55
+protocol_version: 0.56
 status: pre_pilot
+credamo_implementation_protocol: credamo_persona_collection.protocol.yaml
 purpose: >-
   Obtain task-conditioned user truth without exposing the private ledger as the
   default agent input, and separate user authority, expert feasibility, pairing,
@@ -12,11 +13,14 @@ target_population:
 
 task_slate_and_selection:
   candidate_slate: randomized_or_stratified_for_each_participant
-  tasks_selected_per_participant: 3_to_5
-  required_logs: [offered_tasks, self_reported_eligible_tasks, selected_tasks, rejection_or_skip_reason]
+  tasks_offered_per_participant: 10_to_15
+  candidate_tasks_selected_per_participant: 3_to_5_unless_fewer_are_truly_relevant
+  deep_elicitation_tasks_per_participant: 1_primary_and_at_most_1_secondary
+  required_logs: [offered_tasks, display_order, opened_tasks, self_reported_eligible_tasks, selected_tasks, assigned_tasks, rejection_or_skip_reason]
   report_full_funnel: true
 
 elicitation:
+  collection_waves: [A_screen_route_select, B_open_then_schema, C_normalization_confirmation]
   order:
     - open_unprompted_description
     - family_specific_structured_follow_up
@@ -26,6 +30,8 @@ elicitation:
   fact_origin_labels: [spontaneous, prompted, not_applicable, declined]
   do_not_infer_from_demographics: true
   allow_uncertainty_and_multiple_acceptable_answers: true
+  first_open_response_snapshot_is_immutable: true
+  edits_after_schema_are_labeled_prompted_contaminated: true
 
 task_conditioned_ledger:
   required_fact_fields:
@@ -85,8 +91,21 @@ privacy_and_ethics:
   publishable_release: deidentified_minimal_views_and_provenance_categories
   ethics_or_irb_review: required_as_applicable
 
+coverage_and_compensation:
+  minimum_release_floor_confirmed_ledgers_per_task: 2
+  recommended_pilot_target_confirmed_ledgers_per_task: 3_to_4
+  soft_launch_participants: 20_to_30
+  planned_compensation_cny:
+    wave_A: 8_to_12
+    wave_B_per_task: 15_to_22
+    wave_C_per_task: 6_to_10
+  target_effective_hourly_rate_cny:
+    regular: 40_to_60
+    scarce_professional: 80_to_150
+  payment_must_not_depend_on: [pairability, contrast_strength, llm_agreement, posthoc_research_usefulness]
+
 reporting:
-  required_funnel_counts: [recruited, offered, eligible, selected, paired, map_qualified, environment_qualified, pilot_qualified, frozen]
+  required_funnel_counts: [recruited, consented, screened, offered, eligible, selected, assigned, elicitation_complete, normalized, ledger_confirmed, paired, map_qualified, environment_qualified, pilot_qualified, frozen]
   required_attrition_reasons: true
   user_is_the_statistical_cluster: true
   task_family_is_the_primary_benchmark_unit: true

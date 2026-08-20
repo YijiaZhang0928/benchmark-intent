@@ -2,9 +2,9 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.55 · 2026 年 8 月 17 日
+版本：v0.56 · 2026 年 8 月 20 日
 定位：Benchmark / Evaluation / Personalized Long-Horizon Knowledge Work
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.55
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.56
 
 ---
 
@@ -52,7 +52,9 @@ PDR-Bench 的 P-Score 是 **absolute adaptation**：针对目标用户生成 tas
 - **运行前人工构念：**task stratum、intent、stakes、CDM 的差异/不变/等价/禁止/澄清节点；用户本人确认任务后果与方向，两名标注员审计 provenance、可观察性、原子性、冗余和刻板化，领域专家只判事实/可行性/安全。LLM 只能高召回预填，没有 authority。
 - **运行后观察：**实际难度、失败类型、judge 分歧、运行成本；不得覆盖运行前真值。
 
-Persona 从真实任务出发，不从“丰满人物故事”出发。每位用户从随机化/分层 task slate 选 3–5 个真实相关任务；先开放描述，再结构化追问，每条事实记录 spontaneous/prompted/N/A/declined、置信度、替代方案、时间戳、权限与过期日期。公开 offered→eligible→selected→paired→qualified 漏斗。pair 除高对比用户外，还包含 near-neighbor 和本不应变化的 neutral pair，防止只奖励“逢用户必改”。
+Persona 从真实任务出发，不从“丰满人物故事”出发。v0.56 将 Credamo 分成三轮：Wave A 用 task-relevant education/occupation/experience 路由 10–15 张 cards，逐卡做 relevance/experience/safe-answerability，再由用户选 3–5 个真实候选；Wave B 从中分配 1 个主任务、最多 1 个次任务，先冻结五个开放答案，再显示通用和 DR/Software/Data schema；Wave C 对带原话 source span 的 LLM 候选事实逐条 approve/edit/delete/uncertain。每条事实记录 spontaneous/prompted/N/A/declined、置信度、替代方案、时间戳、权限与过期日期。公开 offered→eligible→selected→assigned→confirmed→paired→qualified 漏斗。pair 除高对比用户外，还包含 near-neighbor 和本不应变化的 neutral pair，防止只奖励“逢用户必改”。
+
+人口学只用于样本描述，不进入 task routing；coverage bonus 只在多个任务同样真实相关时打破并列。最低目标虽是每 task 2 个 ledger，但 12-family pilot 建议招 3–4 个 confirmed ledger/task，为流失和 neutral/near pair 留余量。Wave A/B/C 规划报酬分别为 ¥8–12、¥15–22/task、¥6–10/task，并在 20–30 人 pilot 后按实际 P50/P75 时长重定；形成 contrast pair 或同意 LLM 总结不得决定报酬。正式招募须先通过本单位伦理/IRB 门并冻结 LLM 数据路径。[Credamo](https://www.credamo.com/) [科技伦理审查办法（试行）](https://www.gov.cn/zhengce/zhengceku/202310/content_6908045.htm)
 
 CDM 是关系对象 `C(T,E,U_a,U_b)`，不是两份独立 rubric：每个 node 写清决策变量、两位用户的期望关系、可接受等价集合、可观察证据、来源与权威。无 provenance 候选直接排除。Construction freeze 在 reference artifact 前；evaluation freeze 在任何 target-agent 输出前。freeze 只防 post-hoc，真实性来自本人确认，执行可靠性来自 verifier、judge qualification 与盲化人评。
 

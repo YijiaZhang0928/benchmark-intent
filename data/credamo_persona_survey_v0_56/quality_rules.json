@@ -1,0 +1,80 @@
+[
+  {
+    "rule_id": "QC-H01",
+    "kind": "hard",
+    "condition": "no_consent_or_under_18",
+    "action": "terminate_and_do_not_collect_more"
+  },
+  {
+    "rule_id": "QC-H02",
+    "kind": "hard",
+    "condition": "no_task_passes_relevance_experience_safe_answerability",
+    "action": "record_nonmatch_and_end_without_forcing_selection"
+  },
+  {
+    "rule_id": "QC-H03",
+    "kind": "hard_after_manual_review",
+    "condition": "empty_gibberish_or_fully_off_topic_open_text",
+    "action": "exclude_task_record_not_other_valid_records"
+  },
+  {
+    "rule_id": "QC-H04",
+    "kind": "hard_after_multiple_signals",
+    "condition": "confirmed_duplicate_or_fraud",
+    "action": "exclude_with_audit_reason"
+  },
+  {
+    "rule_id": "QC-H05",
+    "kind": "hard_for_gold",
+    "condition": "ledger_not_finally_confirmed_or_no_backend_permission",
+    "action": "do_not_enter_pair_or_CDM_gold"
+  },
+  {
+    "rule_id": "QC-S01",
+    "kind": "soft",
+    "condition": "time_below_one_third_of_pilot_median",
+    "action": "manual_review_not_auto_exclude"
+  },
+  {
+    "rule_id": "QC-S02",
+    "kind": "soft",
+    "condition": "background_task_contradiction",
+    "action": "neutral_followup_allow_correction_or_explanation"
+  },
+  {
+    "rule_id": "QC-S03",
+    "kind": "soft",
+    "condition": "repeated_text_across_tasks",
+    "action": "manual_specificity_review"
+  },
+  {
+    "rule_id": "QC-S04",
+    "kind": "soft",
+    "condition": "comprehension_check_failed_twice",
+    "action": "manual_review"
+  },
+  {
+    "rule_id": "QC-S05",
+    "kind": "instrument",
+    "condition": "many_user_edits_or_deletions_in_wave_C",
+    "action": "audit_normalizer_before_blaming_participant"
+  },
+  {
+    "rule_id": "QC-P01",
+    "kind": "prohibited",
+    "condition": "AI_text_detector_only",
+    "action": "never_auto_exclude"
+  },
+  {
+    "rule_id": "QC-P02",
+    "kind": "prohibited",
+    "condition": "neutral_or_noncontrastive_user",
+    "action": "retain_if_real_and_confirmed"
+  },
+  {
+    "rule_id": "QC-P03",
+    "kind": "prohibited",
+    "condition": "disagrees_with_llm_summary",
+    "action": "never_penalize_or_withhold_payment"
+  }
+]

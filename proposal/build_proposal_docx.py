@@ -21,8 +21,8 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "三个长程知识工作场景中的反事实用户特异性"
 COVER_MODE = "Personalization · Long-Horizon Knowledge Work · Evaluation"
-DOC_VERSION = "v0.55 · 真人真值、CDM 与 D-JQS 版"
-DOC_DATE = "2026 年 8 月 17 日"
+DOC_VERSION = "v0.56 · Credamo 三轮真人真值版"
+DOC_DATE = "2026 年 8 月 20 日"
 RESEARCH_LINE = "Adequacy · Specificity · Benefit · No-Harm · Boundary"
 CORE_CLAIM = "固定任务、证据、工具和预算，检验最终交付物是否随目标用户发生双向正确变化，并同时通过绝对合格、通用回答收益、共同质量与边界门。"
 CONTENTS_ITEMS = [
@@ -543,7 +543,7 @@ def build(md_path=MD, out_path=OUT):
     start = next(
         i
         for i, line in enumerate(lines)
-        if line.strip() in {"## 研究概要", "## 摘要"}
+        if line.strip() in {"## 研究概要", "## 摘要", "## 1. 设计结论"}
     )
     lines = lines[start:]
     paragraph_buf = []

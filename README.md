@@ -2,13 +2,15 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.55（真人真值、CDM 与 judge 资格协议）
+## 当前方向：DeepAlign-Bench v0.56（Credamo 三轮真人真值协议）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据/仓库/数据、工具和预算相同时，最终研究报告、代码 patch 或分析交付物是否真的因目标用户不同而作出正确且有益的改变。当前只声称跨 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性场景实例化一个共同协议，不声称覆盖所有知识工作。
 
 每个 task family 配对两位都真实合理、但决策约束不同的用户。系统分别生成 task-only、matched-A、matched-B 等报告，再把 A/B 报告交叉放到两位用户的 rubric 下评分。确认性结论必须同时通过四道不能互相抵消的门：双向 counterfactual specificity、matched 相对 task-only 的真实收益、共同质量不下降、隐私/权限不违规。clarification 只是一种 user-information channel：允许从模糊 query 出发询问用户，再检查答案是否从“问到”一路进入计划、报告和最终决定；它不再单独承担 when-to-ask 的论文主张。
 
 v0.55 将评价真值链正式分为：**真人从 task slate 选择 3–5 个真实相关任务并确认 task-conditioned ledger → 构造带 provenance/authority/direction/equivalence/dependency 的 Counterfactual Difference Map（CDM）→ 从冻结 CDM 受约束编译 rubric leaves → 用 validated verifier、D-JQS slice-qualified judge 和盲化人评执行**。CDM 是 A/B 的关系真值；rubric 只是编译产物。Freeze 只防 post-hoc，不证明真值正确。Pair 同时包含 contrast、near-neighbor 和 neutral/invariance，完整报告 offered→eligible→selected→paired→qualified 漏斗。
+
+v0.56 将这条真值链落实为 Credamo 三轮问卷：Wave A 完成 consent、背景筛选、10–15 张 task card 路由和 3–5 个候选任务选择；Wave B 每人只深采 1 个主任务、最多 1 个次任务，且先保存开放回答再显示 DR/Software/Data schema；Wave C 将带原话 source span 的 LLM 候选事实交给本人逐条 approve/edit/delete/uncertain。人口学不参与任务路由，低于 3 个真实相关任务时不强迫凑数。最低发布线仍是每题 2 个 confirmed ledger，但 12-family pilot 以每题 3–4 个为招募目标。
 
 项目内 judge 校准改名 **DeepAlign Judge Qualification Suite（D-JQS）**，避免与既有 JudgeBench/JUDGE-BENCH 混淆。D-JQS 混合确定违规、单一受控编辑和自然真人 artifact，并把 calibration 与 hidden qualification 按 family/user/source/agent/edit lineage/time 隔离；AB/BA 之外单独测试长度、style、格式、关键词、引用数与语言。关键 leaf slice 未通过时必须转 deterministic/human/coarse binary，不能靠多个失败 judge 投票掩盖。
 
@@ -25,6 +27,10 @@ v0.54 已建立 180 个 normalized candidate seeds（72 DR / 54 Software / 54 Da
 ## 当前交付物
 
 - [`data/plhkw_task_pool_v0_54/README.md`](data/plhkw_task_pool_v0_54/README.md)：180 候选、60-family provisional selection、来源/许可登记、筛选审计、JSONL/CSV/schema、standalone catalog 和校验入口。
+- [`proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md`](proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md)：三轮 21 页流程、全部题目文本、题型、跳转、质控、时长、报酬和平台搭建说明。
+- [`deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf`](deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf)：逐页检查后的 26 页送审/搭建版；同名 DOCX 可编辑。
+- [`data/credamo_persona_survey_v0_56/README.md`](data/credamo_persona_survey_v0_56/README.md)：覆盖 60 个任务的页面、题库、task cards、路由矩阵、质控规则、manifest 与校验器。
+- [`benchmark_schema/credamo_persona_collection.protocol.yaml`](benchmark_schema/credamo_persona_collection.protocol.yaml)：Credamo 三轮采集、open-first、事实确认、隐私、覆盖和报酬的机器协议。
 - [`benchmark_schema/human_ground_truth.protocol.yaml`](benchmark_schema/human_ground_truth.protocol.yaml)：真人 task 选择、开放 elicitation、ledger、authority、pairing、盲化 artifact validation 与隐私协议。
 - [`benchmark_schema/counterfactual_difference_map.schema.yaml`](benchmark_schema/counterfactual_difference_map.schema.yaml)：成对用户的 change/hold/equivalence/forbidden/clarify 关系真值与双冻结 schema。
 - [`benchmark_schema/judge_qualification.protocol.yaml`](benchmark_schema/judge_qualification.protocol.yaml)：D-JQS 三类 gold、grouped split、nuisance controls、slice qualification 与失败路由。

@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the DeepAlign-Bench v0.55 report", async () => {
+test("server-renders the DeepAlign-Bench v0.56 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -21,6 +21,8 @@ test("server-renders the DeepAlign-Bench v0.55 report", async () => {
   assert.match(html, /<title>DeepAlign-Bench｜研究汇报<\/title>/i);
   assert.match(html, /绝对适配不等于/);
   assert.match(html, /HUMAN TRUTH → RELATIONAL GOLD/);
+  assert.match(html, /CREDAMO · OPEN FIRST · HUMAN CONFIRMED/);
+  assert.match(html, /3–5 个是候选任务/);
   assert.match(html, /Counterfactual Difference Map/);
   assert.match(html, /D-JQS/);
   assert.match(html, /180 candidate seeds/);
@@ -36,6 +38,9 @@ test("server-renders the DeepAlign-Bench v0.55 report", async () => {
   assert.match(html, /href="\/case\.schema\.yaml"/i);
   assert.match(html, /href="\/counterfactual_difference_map\.schema\.yaml"/i);
   assert.match(html, /href="\/human_ground_truth\.protocol\.yaml"/i);
+  assert.match(html, /href="\/credamo_persona_collection\.protocol\.yaml"/i);
+  assert.match(html, /href="\/credamo_question_bank\.json"/i);
+  assert.match(html, /href="\/DeepAlign-Bench_Credamo真人Persona问卷方案_v0\.56\.pdf"/i);
   assert.match(html, /href="\/judge_qualification\.protocol\.yaml"/i);
   assert.match(html, /href="\/plhkw_task_catalog\.html"/i);
   assert.match(html, /href="\/plhkw_selected_tasks\.csv"/i);
@@ -43,8 +48,8 @@ test("server-renders the DeepAlign-Bench v0.55 report", async () => {
   assert.doesNotMatch(html, /ElicitAlign-Bench/);
 });
 
-test("keeps v0.55 resources, schemas and downloadable artifacts in sync", async () => {
-  const [schema, metrics, episodeSchema, seed, cdm, humanTruth, judgeQualification] = await Promise.all([
+test("keeps v0.56 resources, schemas and downloadable artifacts in sync", async () => {
+  const [schema, metrics, episodeSchema, seed, cdm, humanTruth, judgeQualification, credamoProtocol, questionBank] = await Promise.all([
     readFile(new URL("../public/case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/metric_binding.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/research_episode.schema.yaml", import.meta.url), "utf8"),
@@ -52,6 +57,8 @@ test("keeps v0.55 resources, schemas and downloadable artifacts in sync", async 
     readFile(new URL("../public/counterfactual_difference_map.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/human_ground_truth.protocol.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/judge_qualification.protocol.yaml", import.meta.url), "utf8"),
+    readFile(new URL("../public/credamo_persona_collection.protocol.yaml", import.meta.url), "utf8"),
+    readFile(new URL("../public/credamo_question_bank.json", import.meta.url), "utf8"),
   ]);
   assert.match(schema, /schema_version:\s*0\.55/);
   assert.match(schema, /knowledge_work_regime/);
@@ -64,9 +71,13 @@ test("keeps v0.55 resources, schemas and downloadable artifacts in sync", async 
   assert.match(seed, /F0503_research_literature_workflow/);
   assert.match(cdm, /acceptable_equivalence/);
   assert.match(cdm, /no_provenance_node_fails_closed/);
-  assert.match(humanTruth, /tasks_selected_per_participant:\s*3_to_5/);
+  assert.match(humanTruth, /candidate_tasks_selected_per_participant:\s*3_to_5_unless_fewer_are_truly_relevant/);
+  assert.match(humanTruth, /deep_elicitation_tasks_per_participant:\s*1_primary_and_at_most_1_secondary/);
   assert.match(judgeQualification, /short_name:\s*D-JQS/);
   assert.match(judgeQualification, /hidden_qualification/);
+  assert.match(credamoProtocol, /protocol_version:\s*0\.56/);
+  assert.match(credamoProtocol, /open_first/);
+  assert.match(questionBank, /"question_id":\s*"O01"/);
 
   await Promise.all([
     access(new URL("../public/DeepAlign-Bench_真人真值到D-JQS_v0.55.png", import.meta.url)),
@@ -84,6 +95,11 @@ test("keeps v0.55 resources, schemas and downloadable artifacts in sync", async 
     access(new URL("../public/DeepAlign-Bench_完整人话版.pdf", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_汇报精简版.docx", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_汇报精简版.pdf", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.docx", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf", import.meta.url)),
+    access(new URL("../public/credamo_task_cards.jsonl", import.meta.url)),
+    access(new URL("../public/credamo_routing_matrix.jsonl", import.meta.url)),
+    access(new URL("../public/credamo_quality_rules.json", import.meta.url)),
     access(new URL("../public/PROJECT_MEMORY.md", import.meta.url)),
   ]);
 });

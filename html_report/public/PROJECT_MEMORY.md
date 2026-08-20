@@ -2,11 +2,45 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-17
+最后更新：2026-08-20
 当前版本：v0.55（真人真值、Counterfactual Difference Map 与 judge 资格协议）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0V. 2026-08-20：Credamo 三轮真人 Persona 问卷与 60-task 路由包
+
+本轮将 `preview.html` 的概念说明落实为可搭建问卷，但仍明确它不是伦理批准或已上线系统。最终采用三个相互链接的 Credamo 问卷：Wave A（10–15 分钟）完成 consent、screening、背景路由和候选任务选择；Wave B（15–22 分钟/任务）从候选中分配 1 个主任务、最多 1 个次任务，先保存五个开放问题的首次回答，再显示通用和 vertical-specific schema；Wave C（5–8 分钟/任务）把带用户原话 source span 的 LLM 候选事实逐条交给本人 approve/edit/delete/uncertain。选择 3–5 个只表示候选覆盖，不再等于每人深填 3–5 份 persona。
+
+路由不使用年龄、性别等人口学，只使用教育/职业领域、实际职能、coding/data/research 经验、近一年或未来真实任务经历和安全可回答性。每人展示 10–15 张 cards，优先约 8 张强匹配、2 张可迁移、2 张覆盖不足但仍真实合格的任务，tier 内随机；coverage bonus 只能打破同等资格的并列。逐卡记录 offered、order、opened、relevance、experience、safe-answerability、AI delegation、eligible、selected、assigned、confirmed；真实相关任务不足 3 个时允许只选 1–2 个或正常结束，不强迫用户夸大相关性。
+
+开放式 elicitation 的首次提交必须形成不可覆盖快照。结构化 schema 出现后新增的事实标为 prompted；若用户修改开放回答，另记 `prompted_contaminated`，不能回写成 spontaneous。LLM 没有真值 authority，只能从原话抽取候选 fact；任何无 source span 的事实 fail closed。用户对每条 fact 分别确认含义、重要性、灵活性、acceptable alternatives、invalidating conditions，以及后台评分、agent 可见、去标识化公开三种权限。最终未确认、被删除或仅模型推断的事实不进入 pairing/CDM。
+
+最低发布线是每个 task 2 个 confirmed ledger，但这不是稳健招募目标。12-family paper-first pilot 以每题 3–4 个 confirmed ledger 为目标，为流失、不可配对和 contrast/near/neutral 分层留缓冲；完整 60-family release 对应 180–240 个 confirmed user–task records，并应根据 20–30 人 soft launch 的 route precision、Wave B/C attrition、同一参与者聚类和专业长尾重新估算。规划报酬为 Wave A ¥8–12、Wave B ¥15–22/task、Wave C ¥6–10/task；普通参与者目标有效时薪 ¥40–60，稀缺专业用户 ¥80–150。报酬不能依赖形成 pair、差异明显、同意 LLM 总结或事后被研究者判为“有用”。¥3,000 只足以支持受限 pilot 或无缓冲最低覆盖，不能承诺高质量完成 60 题。
+
+质控只把成年/同意失败、无任何 eligible task、经多信号确认的重复/欺诈、人工复核后仍无意义的核心回答，以及拒绝 final confirmation 作为硬排除候选。过快、开放文本过短、前后矛盾、矩阵同选、理解题失败属于 soft flags，必须组合判断并允许人工复核；禁止 AI-text detector 自动排除，也不能排除 genuinely neutral users。所有排除与漏斗理由都要报告，不能在看到 A/B 差异后后验清洗。
+
+最强 reviewer attacks 与防守同步冻结：（1）自选任务导致选择偏差——公开 offered→qualified 漏斗并限制 target population；（2）路由算法制造覆盖——tier 内随机、人口学禁用、记录展示机制；（3）open-first 只是口号——页面级提交锁与 provenance 污染标记；（4）LLM normalization 重新发明 persona——source-span fail closed + user fact-level confirmation；（5）最低两人功效不足——2 是 release floor，3–4 是 pilot target；（6）专业人群被低价激励失真——按 P50/P75 时长和稀缺性重定；（7）多轮失访与同一人多题破坏独立性——报告 attrition、以 user 聚类、family 为 benchmark unit；（8）隐私同意过宽——三层权限、最小化、撤回、原始 ledger 默认不公开；（9）排除规则可被作者操纵——预注册 hard/soft flags、人工复核、全量审计日志；（10）问卷本身诱发 constraint-following persona——开放先行、允许 uncertainty/indifference/N/A/declined，并保留 neutral/near pairs。
+
+机器与人工交付物：`benchmark_schema/credamo_persona_collection.protocol.yaml`；`data/credamo_persona_survey_v0_56/` 下 21-page/92-question/60-task 路由与质控包；`proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md`。正式招募前仍有三道阻塞门：机构伦理/IRB 批准或豁免确认、Credamo 稳定匿名 ID/预填/配额/时间与事件日志实机核验、经批准的 LLM 数据处理路径。未通过时不得开始收集正式 gold。
+
+## 0U. 2026-08-20：`preview.html` 真人 Persona 收集页上线前审计
+
+本轮审计对象是 `/Users/lora/Downloads/preview.html`；Downloads 中三个 `preview` 副本 SHA-256 完全相同。当前文件是 168 行的**导师讨论说明页**，没有 `form/input/textarea/button`、知情同意、状态保存、提交接口或数据导出，不能直接作为真人 persona 采集工具。它对“open-first → family-specific follow-up → user-confirmed ledger”的概念表达是清楚的，但必须与正式参与者界面、研究后台和 pairing/CDM 后处理分开。
+
+上线前必须解决的设计问题如下：
+
+1. **规模口径冲突。** 页面承诺 200–300 位轻量用户覆盖全部 60 个 task、每人 3–5 题、10–20 分钟、总预算不超过 ¥3,000；正式 proposal 同时存在“先做 12 个 paper-first family”和旧版“32–40 人、每人 1–2 题、30–45 分钟”。这些假设不能同时成立。当前更可信的两阶段方案是：先为 12 个 paper-first family 做有质量门的 persona construction pilot，再依据实际完成时间、合格率、长尾覆盖与 attrition 决定是否扩到 60；不得把 60 个 provisional task shell 写成已经承诺全量真人覆盖。
+2. **计数单位错误风险。** 120 个 user-task states 只是 60 题 × 2 人，不是“120 个 pair slots”；同一参与者贡献 3–5 题会产生聚类相关，不能按独立 persona 计样本量。每题“2 个原始用户”也不足以保证流失后仍有 map-qualified pair、test–retest 或 neutral/near-neighbor 对照。Coverage dashboard 应区分 raw response、eligible、user-confirmed ledger、pairable、CDM-qualified，而不是只显示 0/1/2+ 用户。
+3. **任务展示会造成选择偏差。** “系统优先展示可能相关任务”必须定义为随机化/分层 slate，并记录 offered task、展示顺序、推荐理由、是否展开/跳过、eligible 与 selected；否则算法曝光与用户相关性不可分。不要要求参与者浏览全部 60 个 task，可先展示平衡的小 slate，并保留主动搜索/查看全部的入口。
+4. **不要以‘可区分’作为用户有效性门。** 用户是否真实相关应在 pairing 前独立判断；contrast、near-neighbor 和 neutral/invariance 都是有效数据。若只保留差异明显者，会构成 post-hoc pair cherry-picking，并让 benchmark 奖励“逢用户必改”。
+5. **开放问题需要锚定具体情境。** 除目标、影响因素和不可接受项外，应先让用户描述一个当前或近期真实使用情境：要做什么决定/交付什么、给谁使用、完成后下一步行动是什么。人口背景只采 task-relevant minimum；专业资格不要用可被刷题的知识测验，而优先用角色、近期经历、实际工作流和可验证但非敏感的情境问题。
+6. **LLM 抽取必须可核对。** 每个 ledger fact 给出用户原话 source span、标准化解释、`spontaneous/prompted`、置信度、acceptable alternatives、时间戳/过期日期，以及 `可用于后台推理 / 可展示给 agent / 可公开` 三种独立权限；允许“不确定、无偏好、不适用、拒绝回答”，不得把缺失补成默认偏好。
+7. **伦理与补偿不能放在页脚。** 真正采集页必须在任何输入前呈现知情同意、研究目的、数据用途、敏感信息提醒、保存期限、撤回方式、联系人、是否允许回访和去标识化发布范围。联系方式与研究数据分库存放；回访同意单独选择。报酬应按真实完成时间/参与支付，不能因研究者事后判定 persona “无效”而拒付，否则会诱导用户夸大相关性或偏好。
+8. **参与者体验与测量日志。** 需要进度、预计剩余时间、自动保存/恢复、手机键盘与无障碍标签、退出而不丢失已同意数据的选项。现说明页大量 12px 正文字号偏小，11px 页脚颜色对比约 3.77:1，且表格未设计窄屏滚动；正式表单需修正。后台还须记录页面/题目版本、随机化 seed、开始/结束时间、修改历史、LLM 抽取版本、最终确认与撤回状态。
+9. **真人 artifact validation 不能含糊地降成‘少量 calibration’。** 若论文只主张 artifact-level specificity，可以预注册校准子集；若声称 personalization 改善真实采用或决策效用，目标用户盲评/decision trial 的样本量必须由 pilot 方差和功效分析决定，不能由 ¥3,000 的固定预算反推。
+
+本轮只是上线前审计，尚未冻结新的招募数、每人 task 数、时长或预算，也没有修改 Downloads 中的原文件。下一步应先决定：（1）此页究竟是导师决策页还是参与者采集页；（2）首轮只覆盖 12 个 paper-first family，还是承担 60-task release；（3）预算上限是硬约束还是待 pilot 估计；（4）persona construction cohort 与后续 blinded artifact-validation cohort 是否分开。决定后再统一正式 proposal、human protocol、实际表单和后台 schema，避免多套互相矛盾的数字继续传播。
 
 ## 0T. 2026-08-17：真人真值 → CDM → 受约束 rubric → D-JQS 的测量链
 
