@@ -1,5 +1,12 @@
 # benchmark-intent 设计迭代记录
 
+## v0.55 Persona collection preview audit - 2026-08-20
+
+- 审计 `/Users/lora/Downloads/preview.html`：确认三个 Downloads 副本内容完全一致，但当前是导师讨论说明页，没有表单、同意、提交、保存或数据导出能力，不能直接采集 persona。
+- 发现招募口径冲突：页面的 200–300 人 × 3–5 题 × 10–20 分钟 × ≤¥3,000 与 proposal 中 12-family paper-first 路线及旧版 32–40 人深访计划不能同时成立；本轮仅记录风险，未擅自冻结新数字。
+- 将上线前问题写入项目记忆：offered-slate 随机化与曝光日志、raw→qualified coverage 漏斗、neutral/near pair、防止“可区分”后验筛选、具体情境 elicitation、source-span/permission 审核、知情同意与报酬、移动端无障碍、版本化事件日志，以及 persona construction 与 artifact-validation 样本的区分。
+- 暂不修改 Downloads 原文件或正式 proposal；待确认页面用途、首轮覆盖 12 还是 60 family、预算是否为硬约束、两个人类 cohort 是否分开后，再统一实际表单和受影响交付物。
+
 ## v0.55 Human-grounded Difference Map and judge qualification - 2026-08-17
 
 - 将评价真值链重构为“真人 task 选择与 task-conditioned ledger → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → D-JQS 资格认证 → hybrid scoring”；明确 freeze 只防 post-hoc，真实性、完整性与执行可靠性分别由不同机制承担。

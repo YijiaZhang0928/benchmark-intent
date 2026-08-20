@@ -2,11 +2,29 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-17
+最后更新：2026-08-20
 当前版本：v0.55（真人真值、Counterfactual Difference Map 与 judge 资格协议）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0U. 2026-08-20：`preview.html` 真人 Persona 收集页上线前审计
+
+本轮审计对象是 `/Users/lora/Downloads/preview.html`；Downloads 中三个 `preview` 副本 SHA-256 完全相同。当前文件是 168 行的**导师讨论说明页**，没有 `form/input/textarea/button`、知情同意、状态保存、提交接口或数据导出，不能直接作为真人 persona 采集工具。它对“open-first → family-specific follow-up → user-confirmed ledger”的概念表达是清楚的，但必须与正式参与者界面、研究后台和 pairing/CDM 后处理分开。
+
+上线前必须解决的设计问题如下：
+
+1. **规模口径冲突。** 页面承诺 200–300 位轻量用户覆盖全部 60 个 task、每人 3–5 题、10–20 分钟、总预算不超过 ¥3,000；正式 proposal 同时存在“先做 12 个 paper-first family”和旧版“32–40 人、每人 1–2 题、30–45 分钟”。这些假设不能同时成立。当前更可信的两阶段方案是：先为 12 个 paper-first family 做有质量门的 persona construction pilot，再依据实际完成时间、合格率、长尾覆盖与 attrition 决定是否扩到 60；不得把 60 个 provisional task shell 写成已经承诺全量真人覆盖。
+2. **计数单位错误风险。** 120 个 user-task states 只是 60 题 × 2 人，不是“120 个 pair slots”；同一参与者贡献 3–5 题会产生聚类相关，不能按独立 persona 计样本量。每题“2 个原始用户”也不足以保证流失后仍有 map-qualified pair、test–retest 或 neutral/near-neighbor 对照。Coverage dashboard 应区分 raw response、eligible、user-confirmed ledger、pairable、CDM-qualified，而不是只显示 0/1/2+ 用户。
+3. **任务展示会造成选择偏差。** “系统优先展示可能相关任务”必须定义为随机化/分层 slate，并记录 offered task、展示顺序、推荐理由、是否展开/跳过、eligible 与 selected；否则算法曝光与用户相关性不可分。不要要求参与者浏览全部 60 个 task，可先展示平衡的小 slate，并保留主动搜索/查看全部的入口。
+4. **不要以‘可区分’作为用户有效性门。** 用户是否真实相关应在 pairing 前独立判断；contrast、near-neighbor 和 neutral/invariance 都是有效数据。若只保留差异明显者，会构成 post-hoc pair cherry-picking，并让 benchmark 奖励“逢用户必改”。
+5. **开放问题需要锚定具体情境。** 除目标、影响因素和不可接受项外，应先让用户描述一个当前或近期真实使用情境：要做什么决定/交付什么、给谁使用、完成后下一步行动是什么。人口背景只采 task-relevant minimum；专业资格不要用可被刷题的知识测验，而优先用角色、近期经历、实际工作流和可验证但非敏感的情境问题。
+6. **LLM 抽取必须可核对。** 每个 ledger fact 给出用户原话 source span、标准化解释、`spontaneous/prompted`、置信度、acceptable alternatives、时间戳/过期日期，以及 `可用于后台推理 / 可展示给 agent / 可公开` 三种独立权限；允许“不确定、无偏好、不适用、拒绝回答”，不得把缺失补成默认偏好。
+7. **伦理与补偿不能放在页脚。** 真正采集页必须在任何输入前呈现知情同意、研究目的、数据用途、敏感信息提醒、保存期限、撤回方式、联系人、是否允许回访和去标识化发布范围。联系方式与研究数据分库存放；回访同意单独选择。报酬应按真实完成时间/参与支付，不能因研究者事后判定 persona “无效”而拒付，否则会诱导用户夸大相关性或偏好。
+8. **参与者体验与测量日志。** 需要进度、预计剩余时间、自动保存/恢复、手机键盘与无障碍标签、退出而不丢失已同意数据的选项。现说明页大量 12px 正文字号偏小，11px 页脚颜色对比约 3.77:1，且表格未设计窄屏滚动；正式表单需修正。后台还须记录页面/题目版本、随机化 seed、开始/结束时间、修改历史、LLM 抽取版本、最终确认与撤回状态。
+9. **真人 artifact validation 不能含糊地降成‘少量 calibration’。** 若论文只主张 artifact-level specificity，可以预注册校准子集；若声称 personalization 改善真实采用或决策效用，目标用户盲评/decision trial 的样本量必须由 pilot 方差和功效分析决定，不能由 ¥3,000 的固定预算反推。
+
+本轮只是上线前审计，尚未冻结新的招募数、每人 task 数、时长或预算，也没有修改 Downloads 中的原文件。下一步应先决定：（1）此页究竟是导师决策页还是参与者采集页；（2）首轮只覆盖 12 个 paper-first family，还是承担 60-task release；（3）预算上限是硬约束还是待 pilot 估计；（4）persona construction cohort 与后续 blinded artifact-validation cohort 是否分开。决定后再统一正式 proposal、human protocol、实际表单和后台 schema，避免多套互相矛盾的数字继续传播。
 
 ## 0T. 2026-08-17：真人真值 → CDM → 受约束 rubric → D-JQS 的测量链
 
