@@ -2,11 +2,25 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-20
-当前版本：v0.55（真人真值、Counterfactual Difference Map 与 judge 资格协议）
+最后更新：2026-08-21
+当前版本：v0.57（人民币 3,000 元约束下的 Credamo 构念验证 pilot）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0W. 2026-08-21：人民币 3,000 元预算下的首轮招募边界
+
+用户报告 Credamo 真人收集总预算大约只有人民币 3,000 元。当前把它视为包含参与者报酬、专业样本加价、跨轮流失替补和平台/交易费用的 **all-in working ceiling**；若平台费另有经费，未使用预留款只能增加 confirmed ledgers 或认知访谈，不能据此降低单人报酬。该预算不能支持 60 个 task family × 每题 2–4 个确认用户的正式 release，也不能支持跨 agent 的有功效效果比较；首轮必须明确定位为问卷、路由、ledger confirmation、pairability 和 Counterfactual Difference Map 构造的 instrument-development / feasibility pilot。
+
+推荐保留 paper-first 的 12 个 family（5 Deep Research / 3 Software / 4 Data），而不是把每个 vertical 缩成 showcase。覆盖结构改为：12 题各保底 2 个 confirmed user–task ledgers，共 24 个；再在 2 个 DR、2 个 Software、2 个 Data anchor 上各补第 3 个用户，共 30 个目标 records。第 3 人用于估计自然差异、neutral/near 情形和替补可行性，不被伪装成独立统计功效。预计约 22–30 位独立参与者，每人 Wave B/C 默认只完成 1 个主任务、最多 1 个次任务；Wave A 约招 60 人用于真实相关性路由。若某题只有 1 个合格用户，不允许用低相关用户硬补第二人，而应从冻结的同 vertical 替补池换题或把该题标为 coverage failure。
+
+人民币 3,000 元的工作预算分为：Wave A `60 × ¥8 = ¥480`；30 个主 user–task records 的 Wave B `30 × ¥18 = ¥540`；Wave C `30 × ¥8 = ¥240`；稀缺专业样本加价 `12 × ¥20 = ¥240`；6 次约 10–15 分钟认知访谈 `6 × ¥40 = ¥240`；最多 12 个跨轮替补 record `12 × ¥26 = ¥312`；Credamo 平台/交易费用暂留 `¥600`；剩余 `¥348` 作为不可预见费用或合格第三用户的自适应扩展。总计正好 `¥3,000`。[Credamo 官网](https://www.credamo.com/home.html)公开提供价格计算器、多期追踪和配对/分组能力，但精确报价、跨波匿名 ID、预填和 quota 行为必须在账号内取得书面报价/实机验证；若实际平台费超过 `¥600`，优先删除额外第三用户和认知访谈，不能削减 consent、open-first、本人确认或已承诺报酬。
+
+预算释放采用阶段门：（1）先做 6–8 人认知访谈/soft launch，检查完成时长、开放回答是否被理解、Wave C 编辑率和移动端问题；（2）只有 Wave A 的 eligible precision、Wave B→C 完成率和每题真实相关性达到预注册门槛，才放行剩余 12-family 招募；（3）先买齐每题第 2 个确认用户，再给 6 个 anchor 买第 3 个；（4）保留至少 `¥600` 直到平台报价和第一轮失访率已知。停止/降级条件包括：中位总时长显著高于 45 分钟、Wave B→C 流失超过 25%、某 vertical 的真实相关命中率低于 30%、或超过 4 个 family 无法在合理加价内获得第二位真实用户。
+
+论文主张必须随预算同步收窄。该 pilot 可以回答：任务路由能否找到真实用户、open-first 是否产生未被 schema 提示的事实、LLM normalization 的批准/编辑/删除率、ledger 是否能形成自然 contrast/near/neutral pair、CDM 标注是否可执行，以及成本/流失/长尾覆盖参数。它不能回答：系统在 60 个 task 上的总体效果、三 vertical 的稳定排名、persona 机制的群体效应量，或真实决策效用的确认性因果结论。正式样本量仍须根据 pilot 的 family/user 聚类方差、失访率和最小实际重要差异做功效模拟；不能把“每题两人”当作统计样本量。
+
+当前最需要用户确认的仍是 `¥3,000` 是否包含平台服务费。未确认前，`¥600` 平台预留和 30-record 目标都属于可证伪的工作假设，而不是对外承诺；因此本轮只更新项目记忆与入口说明，不机械重写 v0.56 问卷正文、DOCX/PDF 或正式 proposal。
 
 ## 0V. 2026-08-20：Credamo 三轮真人 Persona 问卷与 60-task 路由包
 

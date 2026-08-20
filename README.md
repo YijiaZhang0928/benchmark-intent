@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.56（Credamo 三轮真人真值协议）
+## 当前方向：DeepAlign-Bench v0.57（人民币 3,000 元约束下的 Credamo pilot）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据/仓库/数据、工具和预算相同时，最终研究报告、代码 patch 或分析交付物是否真的因目标用户不同而作出正确且有益的改变。当前只声称跨 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性场景实例化一个共同协议，不声称覆盖所有知识工作。
 
@@ -11,6 +11,8 @@ DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，�
 v0.55 将评价真值链正式分为：**真人从 task slate 选择 3–5 个真实相关任务并确认 task-conditioned ledger → 构造带 provenance/authority/direction/equivalence/dependency 的 Counterfactual Difference Map（CDM）→ 从冻结 CDM 受约束编译 rubric leaves → 用 validated verifier、D-JQS slice-qualified judge 和盲化人评执行**。CDM 是 A/B 的关系真值；rubric 只是编译产物。Freeze 只防 post-hoc，不证明真值正确。Pair 同时包含 contrast、near-neighbor 和 neutral/invariance，完整报告 offered→eligible→selected→paired→qualified 漏斗。
 
 v0.56 将这条真值链落实为 Credamo 三轮问卷：Wave A 完成 consent、背景筛选、10–15 张 task card 路由和 3–5 个候选任务选择；Wave B 每人只深采 1 个主任务、最多 1 个次任务，且先保存开放回答再显示 DR/Software/Data schema；Wave C 将带原话 source span 的 LLM 候选事实交给本人逐条 approve/edit/delete/uncertain。人口学不参与任务路由，低于 3 个真实相关任务时不强迫凑数。最低发布线仍是每题 2 个 confirmed ledger，但 12-family pilot 以每题 3–4 个为招募目标。
+
+v0.57 将约人民币 3,000 元视为包含平台费用的暂定 all-in ceiling，并据此把第一轮降为构念验证 pilot：保留 12 个 paper-first family（5 DR / 3 Software / 4 Data），每题先获得 2 个 confirmed ledgers，再只为 6 个跨 vertical anchor 补第 3 人，目标共 30 个 user–task records。该轮只估计路由命中、开放 elicitation、跨轮流失、ledger 确认、自然配对、CDM 可构造性和真实成本，不用于 60-task 总体结论、agent 排名或确认性效果检验。平台费超过暂留额度时优先缩减第三用户和访谈，不削减 consent、open-first、本人确认或报酬。
 
 项目内 judge 校准改名 **DeepAlign Judge Qualification Suite（D-JQS）**，避免与既有 JudgeBench/JUDGE-BENCH 混淆。D-JQS 混合确定违规、单一受控编辑和自然真人 artifact，并把 calibration 与 hidden qualification 按 family/user/source/agent/edit lineage/time 隔离；AB/BA 之外单独测试长度、style、格式、关键词、引用数与语言。关键 leaf slice 未通过时必须转 deterministic/human/coarse binary，不能靠多个失败 judge 投票掩盖。
 

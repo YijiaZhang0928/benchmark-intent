@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.57 — CNY 3,000-constrained Credamo construct-validation pilot — 2026-08-21
+
+- 将人民币 3,000 元视为暂定 all-in ceiling；拒绝在该预算下承诺 60-family × 每题至少 2 人的正式 release，也不把最低两人覆盖表述为统计功效。
+- 首轮保留 12 个 paper-first family（5 DR / 3 Software / 4 Data）：12 题各 2 个 confirmed ledgers，并为每个 vertical 的 2 个 anchor 补第 3 人，目标 30 个 user–task records。
+- 冻结工作预算：Wave A ¥480、Wave B ¥540、Wave C ¥240、专业样本加价 ¥240、6 次认知访谈 ¥240、替补 ¥312、平台/交易预留 ¥600、机动 ¥348；若平台费超支，先减额外第三用户与访谈，不减核心流程或已承诺报酬。
+- 将首轮主张限制为 route precision、open-first 产出、跨轮失访、ledger confirmation、pairability、CDM 可构造性与成本参数；不做 60-task 总体推断、agent 排名或真实决策效用的确认性结论。
+- 由于 `¥3,000` 是否包含平台费仍待确认，本轮只同步项目记忆和入口说明，不机械修改已冻结的 v0.56 问卷正文及其 DOCX/PDF。
+
 ## v0.56 Credamo three-wave persona collection package - 2026-08-20
 
 - 将 60-task 真人 persona 招募落实为三轮 Credamo 流程：Wave A 完成 consent/screening/routing 并选择 3–5 个真实候选；Wave B 后台分配 1 个主任务、最多 1 个次任务，严格先开放题后 schema；Wave C 对带原话 source span 的 LLM 候选事实逐条确认。
