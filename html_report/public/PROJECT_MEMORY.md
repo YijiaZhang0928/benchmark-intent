@@ -2,11 +2,41 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-20
-当前版本：v0.55（真人真值、Counterfactual Difference Map 与 judge 资格协议）
+最后更新：2026-08-21
+当前版本：v0.58（可运行的隐藏 Persona 交互环境）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0X. 2026-08-21：隐藏 Persona 的三模式可运行交互环境
+
+本轮把此前只存在于 proposal/schema 的 `ledger-bounded simulator` 落实为可安装 Python package `deepalign_bench`。一个 interaction case 固定五个对象：公开 Task、隐藏的 task-conditioned persona、属性重要性图、属性披露策略和 episode 最大轮数。统一接口为 `reset(seed)` 与 `step(agent_message, final=False)`；最终 artifact 使用 `final=True` 提交。`run_episode` 可包装接收 `AgentContext` 的普通 callable，或实现 `act(context)` 的任意 agent。包只依赖 Python 标准库；默认 rule-based backend 用于离线 smoke、确定性基线和测试，`JSONLLMSimulatorBackend` 接受任意返回结构化 JSON 的 chat completion callable。
+
+三种模式冻结为同一 case 的信息处理条件，而不是三种不同任务。A Oracle 在 reset 直接向被测 agent 提供完整 persona，且全部属性从第 0 步记为已披露；它是信息充分上限，不保证 agent 能正确使用 persona。B Naive 在 reset 只给 agent task，但完整 persona 可被 LLM user simulator 使用，且不执行 reveal policy；它复现常见“把 persona 全塞给用户模拟器”的基线，允许过度或无关披露。C Interactive 在 agent 侧隐藏 persona，先判断消息是否在询问任务相关用户信息、匹配属性 ID 与置信度，再通过 per-attribute rule、敏感度、前置披露、脚本 trust、概率、重要性图排序和每轮披露预算决定是否回答。
+
+防泄漏边界通过接口本身实施。分类器只接收不含属性值的 `name / description / aliases / keywords`；Interactive 的 response backend 只接收本轮通过策略的属性值，未知 ID 会被过滤。属性重要性图只给已经被问题直接命中的候选排序，不允许把未命中节点传播成可披露属性。配置的 literal marker 若在未授权 response 中出现，环境 fail closed 并记录 `backend_blocked_attribute_ids`。这只能降低 prompt 级直接泄漏，不能发现所有同义改写、模型缓存、provider memory 或外部工具泄漏；正式运行仍需 stateless/backend isolation 与独立 semantic leakage audit。
+
+每个非 final step 的审计事件保存 `is_question`、匹配证据/置信度、逐属性 reveal/withhold 理由、effective graph importance、trust 前后、概率 draw、`matched_unrevealed / newly_revealed / cumulative_revealed / still_hidden / backend_blocked` ID 和自然 user response。默认 trace 不嵌入完整 hidden ledger；只有显式 `include_persona_values=True` 才附加后台 persona。但 user response 和 final artifact 仍可能含本轮已披露事实，所以任何 raw trace 都是 restricted data，公开前必须另做 permissioned message minimization。Oracle、Naive、Interactive 应固定 task、persona、LLM backend、模型版本、采样参数、seed schedule、turn budget 和 agent 工具/证据预算。
+
+测量主张随工程实现同步收紧。Naive→Interactive 同时改变 backend 的信息访问和用户披露行为，不能解释为纯 agent 能力因果效应；Oracle 失败也可能是 persona 利用失败而非信息不足。LLM classifier 会 false match/miss，policy 会 under/over-disclose，LLM response 还可能语义泄漏。因此确认性运行前必须在独立真人问题/轨迹上报告 attribute-level match precision/recall/abstention、reveal decision agreement、response naturalness/fact faithfulness、Naive/Interactive leakage、policy sensitivity 与 simulator-to-live-user 系统排序稳定性。脚本 trust 只是一项透明可重复的实验控制，不是真人心理模型；turn、attribute、seed 和 repeat 均不作为独立统计样本，主推断仍以 task family 聚类。
+
+可证伪工程门如下：（1）Oracle reset 必须只在 A 暴露完整 persona；（2）B 必须绕过 `never` rule，C 必须执行；（3）C 的 classifier request 不含值，response request 不含未批准值；（4）importance graph 不扩展未命中属性；（5）probabilistic rule 同 seed 重放一致；（6）未授权 literal leak fail closed；（7）默认 trace 不嵌入完整 hidden ledger，value-inclusive export 必须显式 opt in；（8）callable/`act()` agent 都可完成 episode；（9）Interactive 的 `initially_revealed` 在 reset 时只交付配置的初始属性值，其他值仍隐藏，Naive 仍保持 task-only reset；（10）case 构造会拒绝含已配置 hidden literal marker 的 descriptor。当前 15 个 unit tests 全部覆盖这些切片；它们证明接口与 literal-level 安全不变量按设计工作，不证明语义零泄漏或 LLM 用户模拟器具有真人效度。
+
+机器与人工交付物：`pyproject.toml`；`src/deepalign_bench/` 下 models/policy/backends/environment/runner/IO/CLI；`src/deepalign_bench/data/demo_case.json` 与 JSON Schema；`tests/test_interaction_environment.py`；`interaction_env/README.md` 与 package manifest；`benchmark_schema/interaction_environment.schema.yaml`。正式 proposal、精简版、人话版、导师 brief 与 HTML 已加入三模式、最小化和主张边界。开放问题是：（1）正式 simulator 选哪一固定 LLM/model/version；（2）真人轨迹如何独立标注 indirect question match 与 disclosure；（3）importance graph 的边/权重由用户、标注员还是 CDM compiler 何时冻结；（4）semantic leak auditor 的 gold 与阈值；（5）Naive/Interactive policy sensitivity 是否改变 agent 排名；（6）如何把现有 P2/P4 seed 自动转换为 interaction case，而不由字段名泄漏正确问题。
+
+## 0W. 2026-08-21：人民币 3,000 元预算下的首轮招募边界
+
+用户报告 Credamo 真人收集总预算大约只有人民币 3,000 元。当前把它视为包含参与者报酬、专业样本加价、跨轮流失替补和平台/交易费用的 **all-in working ceiling**；若平台费另有经费，未使用预留款只能增加 confirmed ledgers 或认知访谈，不能据此降低单人报酬。该预算不能支持 60 个 task family × 每题 2–4 个确认用户的正式 release，也不能支持跨 agent 的有功效效果比较；首轮必须明确定位为问卷、路由、ledger confirmation、pairability 和 Counterfactual Difference Map 构造的 instrument-development / feasibility pilot。
+
+推荐保留 paper-first 的 12 个 family（5 Deep Research / 3 Software / 4 Data），而不是把每个 vertical 缩成 showcase。覆盖结构改为：12 题各保底 2 个 confirmed user–task ledgers，共 24 个；再在 2 个 DR、2 个 Software、2 个 Data anchor 上各补第 3 个用户，共 30 个目标 records。第 3 人用于估计自然差异、neutral/near 情形和替补可行性，不被伪装成独立统计功效。预计约 22–30 位独立参与者，每人 Wave B/C 默认只完成 1 个主任务、最多 1 个次任务；Wave A 约招 60 人用于真实相关性路由。若某题只有 1 个合格用户，不允许用低相关用户硬补第二人，而应从冻结的同 vertical 替补池换题或把该题标为 coverage failure。
+
+人民币 3,000 元的工作预算分为：Wave A `60 × ¥8 = ¥480`；30 个主 user–task records 的 Wave B `30 × ¥18 = ¥540`；Wave C `30 × ¥8 = ¥240`；稀缺专业样本加价 `12 × ¥20 = ¥240`；6 次约 10–15 分钟认知访谈 `6 × ¥40 = ¥240`；最多 12 个跨轮替补 record `12 × ¥26 = ¥312`；Credamo 平台/交易费用暂留 `¥600`；剩余 `¥348` 作为不可预见费用或合格第三用户的自适应扩展。总计正好 `¥3,000`。[Credamo 官网](https://www.credamo.com/home.html)公开提供价格计算器、多期追踪和配对/分组能力，但精确报价、跨波匿名 ID、预填和 quota 行为必须在账号内取得书面报价/实机验证；若实际平台费超过 `¥600`，优先删除额外第三用户和认知访谈，不能削减 consent、open-first、本人确认或已承诺报酬。
+
+预算释放采用阶段门：（1）先做 6–8 人认知访谈/soft launch，检查完成时长、开放回答是否被理解、Wave C 编辑率和移动端问题；（2）只有 Wave A 的 eligible precision、Wave B→C 完成率和每题真实相关性达到预注册门槛，才放行剩余 12-family 招募；（3）先买齐每题第 2 个确认用户，再给 6 个 anchor 买第 3 个；（4）保留至少 `¥600` 直到平台报价和第一轮失访率已知。停止/降级条件包括：中位总时长显著高于 45 分钟、Wave B→C 流失超过 25%、某 vertical 的真实相关命中率低于 30%、或超过 4 个 family 无法在合理加价内获得第二位真实用户。
+
+论文主张必须随预算同步收窄。该 pilot 可以回答：任务路由能否找到真实用户、open-first 是否产生未被 schema 提示的事实、LLM normalization 的批准/编辑/删除率、ledger 是否能形成自然 contrast/near/neutral pair、CDM 标注是否可执行，以及成本/流失/长尾覆盖参数。它不能回答：系统在 60 个 task 上的总体效果、三 vertical 的稳定排名、persona 机制的群体效应量，或真实决策效用的确认性因果结论。正式样本量仍须根据 pilot 的 family/user 聚类方差、失访率和最小实际重要差异做功效模拟；不能把“每题两人”当作统计样本量。
+
+当前最需要用户确认的仍是 `¥3,000` 是否包含平台服务费。未确认前，`¥600` 平台预留和 30-record 目标都属于可证伪的工作假设，而不是对外承诺；因此本轮只更新项目记忆与入口说明，不机械重写 v0.56 问卷正文、DOCX/PDF 或正式 proposal。
 
 ## 0V. 2026-08-20：Credamo 三轮真人 Persona 问卷与 60-task 路由包
 

@@ -1,5 +1,15 @@
 # benchmark-intent 设计迭代记录
 
+## v0.58 Runnable hidden-persona interaction environment - 2026-08-21
+
+- 新增零运行依赖的 `deepalign_bench` Python package：Task、hidden persona、attribute importance graph、attribute reveal policy、统一 `reset/step` 环境、JSON loader、trace export、CLI 与 arbitrary-agent `run_episode` wrapper。
+- 实现 A Oracle、B Naive、C Interactive 三模式：Oracle reset 暴露完整 persona；Naive 只向 agent 给 task、但 full-persona simulator 绕过 policy；Interactive 隐藏 persona 并逐属性选择性披露。
+- 新增 value-free question classifier contract 与 provider-neutral `JSONLLMSimulatorBackend`；Interactive response prompt 只接收本轮批准的属性值，未知 ID 过滤，未授权 literal marker 命中时 fail closed。
+- 将 importance graph 限制为直接 matched 候选的优先级工具，禁止图传播创造未提问披露；policy 支持 match confidence、sensitivity、prerequisite、scripted trust、seeded probability 与 per-turn disclosure budget。
+- 每步记录 classification、matched/denied、newly/cumulative revealed、matched-but-unrevealed、still-hidden、trust、random draw 和 blocked leakage；默认 trace 不嵌入完整 hidden ledger，但含已披露对话，仍按 restricted data 管理。
+- 新增完整 demo case、JSON Schema、机器 protocol、使用文档与 15 个 unit tests，覆盖三模式、显式初始事实、descriptor 值隔离、值最小化、图边界、概率重放、literal leak、trace 隐私和 callable/`act()` agent wrapper。
+- 同步正式 proposal、精简版、人话版、导师 brief、README、项目记忆和 HTML；明确 Naive→Interactive 同时改变 simulator access 与 disclosure behavior，Oracle 不是性能真值，正式结果必须做人类轨迹校准和 policy sensitivity。
+
 ## v0.57 — CNY 3,000-constrained Credamo construct-validation pilot — 2026-08-21
 
 - 将人民币 3,000 元视为暂定 all-in ceiling；拒绝在该预算下承诺 60-family × 每题至少 2 人的正式 release，也不把最低两人覆盖表述为统计功效。

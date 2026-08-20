@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deepalign-bench.local/schemas/interaction-case-v1.json",
+  "title": "DeepAlign interaction case",
+  "type": "object",
+  "required": [
+    "case_id",
+    "task",
+    "hidden_persona_state",
+    "attribute_importance_graph",
+    "attribute_reveal_policy"
+  ],
+  "properties": {
+    "case_id": { "type": "string", "minLength": 1 },
+    "version": { "type": "string" },
+    "task": {
+      "type": "object",
+      "required": ["task_id", "prompt"],
+      "properties": {
+        "task_id": { "type": "string", "minLength": 1 },
+        "prompt": { "type": "string", "minLength": 1 },
+        "deliverable": { "type": "string", "minLength": 1 },
+        "context": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "hidden_persona_state": {
+      "type": "object",
+      "required": ["persona_id", "attributes"],
+      "properties": {
+        "persona_id": { "type": "string", "minLength": 1 },
+        "metadata": { "type": "object" },
+        "attributes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["attribute_id", "name", "value"],
+            "properties": {
+              "attribute_id": { "type": "string", "minLength": 1 },
+              "name": { "type": "string", "minLength": 1 },
+              "value": {},
+              "description": { "type": "string" },
+              "aliases": { "type": "array", "items": { "type": "string" } },
+              "keywords": { "type": "array", "items": { "type": "string" } },
+              "importance": { "type": "number", "minimum": 0, "maximum": 1 },
+              "sensitivity": { "type": "number", "minimum": 0, "maximum": 1 },
+              "disclosure_level": {
+                "enum": ["public", "conditional", "sensitive", "never"]
+              },
+              "response_template": { "type": "string", "pattern": "\\{value\\}" },
+              "leak_markers": { "type": "array", "items": { "type": "string" } },
+              "metadata": { "type": "object" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "attribute_importance_graph": {
+      "type": "object",
+      "properties": {
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source", "target", "weight"],
+            "properties": {
+              "source": { "type": "string" },
+              "target": { "type": "string" },
+              "weight": { "type": "number", "minimum": -1, "maximum": 1 },
+              "relation": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "attribute_reveal_policy": {
+      "type": "object",
+      "properties": {
+        "max_attributes_per_turn": { "type": "integer", "minimum": 1 },
+        "min_effective_importance": { "type": "number", "minimum": 0, "maximum": 2 },
+        "initial_trust": { "type": "number", "minimum": 0, "maximum": 1 },
+        "trust_gain_for_targeted_question": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "repeat_revealed_attributes": { "type": "boolean" },
+        "rules": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "strategy": {
+                "enum": ["when_asked", "after_trust", "probabilistic", "never"]
+              },
+              "min_match_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+              "min_trust": { "type": "number", "minimum": 0, "maximum": 1 },
+              "probability": { "type": "number", "minimum": 0, "maximum": 1 },
+              "requires_revealed": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "initially_revealed": { "type": "array", "items": { "type": "string" } },
+    "max_turns": { "type": "integer", "minimum": 1 }
+  },
+  "additionalProperties": false
+}

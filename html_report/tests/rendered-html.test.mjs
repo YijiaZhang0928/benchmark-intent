@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the DeepAlign-Bench v0.56 report", async () => {
+test("server-renders the DeepAlign-Bench v0.58 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -22,6 +22,9 @@ test("server-renders the DeepAlign-Bench v0.56 report", async () => {
   assert.match(html, /绝对适配不等于/);
   assert.match(html, /HUMAN TRUTH → RELATIONAL GOLD/);
   assert.match(html, /CREDAMO · OPEN FIRST · HUMAN CONFIRMED/);
+  assert.match(html, /RUNNABLE PYTHON · RESET \/ STEP · VALUE MINIMIZATION/);
+  assert.match(html, /同一 hidden persona，三种可控交互模式/);
+  assert.match(html, /Interactive 的 classifier 只看 value-free descriptor/);
   assert.match(html, /3–5 个是候选任务/);
   assert.match(html, /Counterfactual Difference Map/);
   assert.match(html, /D-JQS/);
@@ -42,14 +45,17 @@ test("server-renders the DeepAlign-Bench v0.56 report", async () => {
   assert.match(html, /href="\/credamo_question_bank\.json"/i);
   assert.match(html, /href="\/DeepAlign-Bench_Credamo真人Persona问卷方案_v0\.56\.pdf"/i);
   assert.match(html, /href="\/judge_qualification\.protocol\.yaml"/i);
+  assert.match(html, /href="\/interaction_environment\.schema\.yaml"/i);
+  assert.match(html, /href="\/interaction_demo_case\.json"/i);
+  assert.match(html, /href="\/interaction_env_manifest\.json"/i);
   assert.match(html, /href="\/plhkw_task_catalog\.html"/i);
   assert.match(html, /href="\/plhkw_selected_tasks\.csv"/i);
   assert.match(html, /href="\/plhkw_paper_first_12\.csv"/i);
   assert.doesNotMatch(html, /ElicitAlign-Bench/);
 });
 
-test("keeps v0.56 resources, schemas and downloadable artifacts in sync", async () => {
-  const [schema, metrics, episodeSchema, seed, cdm, humanTruth, judgeQualification, credamoProtocol, questionBank] = await Promise.all([
+test("keeps v0.58 resources, schemas and downloadable artifacts in sync", async () => {
+  const [schema, metrics, episodeSchema, seed, cdm, humanTruth, judgeQualification, credamoProtocol, questionBank, interactionProtocol, interactionCase] = await Promise.all([
     readFile(new URL("../public/case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/metric_binding.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/research_episode.schema.yaml", import.meta.url), "utf8"),
@@ -59,6 +65,8 @@ test("keeps v0.56 resources, schemas and downloadable artifacts in sync", async 
     readFile(new URL("../public/judge_qualification.protocol.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/credamo_persona_collection.protocol.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/credamo_question_bank.json", import.meta.url), "utf8"),
+    readFile(new URL("../public/interaction_environment.schema.yaml", import.meta.url), "utf8"),
+    readFile(new URL("../public/interaction_demo_case.json", import.meta.url), "utf8"),
   ]);
   assert.match(schema, /schema_version:\s*0\.55/);
   assert.match(schema, /knowledge_work_regime/);
@@ -78,6 +86,10 @@ test("keeps v0.56 resources, schemas and downloadable artifacts in sync", async 
   assert.match(credamoProtocol, /protocol_version:\s*0\.56/);
   assert.match(credamoProtocol, /open_first/);
   assert.match(questionBank, /"question_id":\s*"O01"/);
+  assert.match(interactionProtocol, /schema_version:\s*0\.58/);
+  assert.match(interactionProtocol, /interactive_prompt_minimization:\s*mandatory/);
+  assert.match(interactionCase, /"attribute_importance_graph"/);
+  assert.match(interactionCase, /"attribute_reveal_policy"/);
 
   await Promise.all([
     access(new URL("../public/DeepAlign-Bench_真人真值到D-JQS_v0.55.png", import.meta.url)),
@@ -101,5 +113,7 @@ test("keeps v0.56 resources, schemas and downloadable artifacts in sync", async 
     access(new URL("../public/credamo_routing_matrix.jsonl", import.meta.url)),
     access(new URL("../public/credamo_quality_rules.json", import.meta.url)),
     access(new URL("../public/PROJECT_MEMORY.md", import.meta.url)),
+    access(new URL("../public/interaction_env_README.md", import.meta.url)),
+    access(new URL("../public/interaction_env_manifest.json", import.meta.url)),
   ]);
 });

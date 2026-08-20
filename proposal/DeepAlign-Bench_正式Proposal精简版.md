@@ -2,9 +2,9 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.56 · 2026 年 8 月 20 日
+版本：v0.58 · 2026 年 8 月 21 日
 定位：Benchmark / Evaluation / Personalized Long-Horizon Knowledge Work
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.56
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.58
 
 ---
 
@@ -54,7 +54,7 @@ PDR-Bench 的 P-Score 是 **absolute adaptation**：针对目标用户生成 tas
 
 Persona 从真实任务出发，不从“丰满人物故事”出发。v0.56 将 Credamo 分成三轮：Wave A 用 task-relevant education/occupation/experience 路由 10–15 张 cards，逐卡做 relevance/experience/safe-answerability，再由用户选 3–5 个真实候选；Wave B 从中分配 1 个主任务、最多 1 个次任务，先冻结五个开放答案，再显示通用和 DR/Software/Data schema；Wave C 对带原话 source span 的 LLM 候选事实逐条 approve/edit/delete/uncertain。每条事实记录 spontaneous/prompted/N/A/declined、置信度、替代方案、时间戳、权限与过期日期。公开 offered→eligible→selected→assigned→confirmed→paired→qualified 漏斗。pair 除高对比用户外，还包含 near-neighbor 和本不应变化的 neutral pair，防止只奖励“逢用户必改”。
 
-人口学只用于样本描述，不进入 task routing；coverage bonus 只在多个任务同样真实相关时打破并列。最低目标虽是每 task 2 个 ledger，但 12-family pilot 建议招 3–4 个 confirmed ledger/task，为流失和 neutral/near pair 留余量。Wave A/B/C 规划报酬分别为 ¥8–12、¥15–22/task、¥6–10/task，并在 20–30 人 pilot 后按实际 P50/P75 时长重定；形成 contrast pair 或同意 LLM 总结不得决定报酬。正式招募须先通过本单位伦理/IRB 门并冻结 LLM 数据路径。[Credamo](https://www.credamo.com/) [科技伦理审查办法（试行）](https://www.gov.cn/zhengce/zhengceku/202310/content_6908045.htm)
+人口学只用于样本描述，不进入 task routing；coverage bonus 只在多个任务同样真实相关时打破并列。人民币 3,000 元 all-in working ceiling 下，首轮保留 12 个 paper-first family：每题先取 2 个 confirmed ledger，再只为每个 vertical 的 2 个 anchor 补第 3 人，目标 30 个 user–task records；这只是 instrument/feasibility pilot，不是统计功效或 agent 排名。Wave A/B/C 报酬继续按真实时长与专业稀缺性设置，形成 contrast pair 或同意 LLM 总结不得决定报酬。正式招募须先通过本单位伦理/IRB 门并冻结 LLM 数据路径。[Credamo](https://www.credamo.com/) [科技伦理审查办法（试行）](https://www.gov.cn/zhengce/zhengceku/202310/content_6908045.htm)
 
 CDM 是关系对象 `C(T,E,U_a,U_b)`，不是两份独立 rubric：每个 node 写清决策变量、两位用户的期望关系、可接受等价集合、可观察证据、来源与权威。无 provenance 候选直接排除。Construction freeze 在 reference artifact 前；evaluation freeze 在任何 target-agent 输出前。freeze 只防 post-hoc，真实性来自本人确认，执行可靠性来自 verifier、judge qualification 与盲化人评。
 
@@ -70,6 +70,8 @@ CDM 是关系对象 `C(T,E,U_a,U_b)`，不是两份独立 rubric：每个 node �
 4. **P4：**研究中在控制 checkpoint 注入覆盖旧事实的更新，测 replanning、旧状态清除与未变事实保持。
 
 系统不支持 ask、memory retrieval 或 checkpoint 时标记 `structurally-inapplicable`，不能算零分。P1 的 persona/history 可进入 cue-equivalence；P2/P4 改变了获取或时序机制，不能机械视为等价 cue。v0.50 已生成 3 个纯合成工程 family、6 位用户和 24 个平衡 episode，并通过结构校验；它们只用于 schema/runner/rubric vertical slice，真实用户效度尚未建立。
+
+v0.58 已实现统一 Python `reset()` / `step()` 环境。A Oracle 在 reset 向 agent 提供完整 persona；B Naive 只向 agent 提供 task，但 LLM simulator 可见完整 persona 且没有 reveal policy；C Interactive 隐藏 persona，先用不含值的 attribute descriptor 分类问题，再由 importance graph 与 reveal policy 选择披露，response backend 只收到本轮获准值。每步记录 matched、policy-denied、newly/cumulatively revealed 与 still-hidden ID；`run_episode` 可包装 callable 或带 `act()` 的任意 agent。默认 rule backend 用于离线 smoke，正式结果需固定 LLM backend 并以真人轨迹校准。B/C 同时改变 simulator 信息访问与披露行为，不可解释为纯 agent effect。
 
 v0.51 已完整导入 [PDR-Bench](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 的 50 tasks、25 structured personas、25 contexts 和 250 官方 pairs，并展开为 501 个候选用户对。v0.54 不再默认跑完 50 题，而是选出 12 个 PDR-derived shell 进入 DR provisional set。原配对只说明 task relevance，不保证 counterfactual separability；因此仍需人工冻结用户契约和 evidence world。
 

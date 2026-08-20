@@ -19,12 +19,12 @@ export default function Home() {
       <header className="hero" id="top">
         <nav className="nav shell" aria-label="主导航">
           <a className="brand" href="#top">DeepAlign<span>Bench</span></a>
-          <div className="navlinks"><a href="#question">问题</a><a href="#design">框架</a><a href="#credamo">真人问卷</a><a href="#metrics">评分</a><a href="#pilot">实验</a><a href="#deadline">决策</a></div>
+          <div className="navlinks"><a href="#question">问题</a><a href="#design">框架</a><a href="#credamo">真人问卷</a><a href="#interaction">交互环境</a><a href="#metrics">评分</a><a href="#deadline">决策</a></div>
           <a className="navCta" href="#editions">下载文档</a>
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.56 · 2026-08-20</p>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.58 · 2026-08-21</p>
             <h1>绝对适配不等于<em>反事实用户特异性</em></h1>
             <p className="lede">固定 task、evidence/repository/data、tools 和 budget，只改变目标用户。我们在 open-web research、repository software engineering 和 data-centric analysis 三个代表性场景中，检验最终 artifact 是否双向正确改变。</p>
             <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
@@ -76,7 +76,25 @@ export default function Home() {
           <article><span>B</span><h3>Open-first 深度采集</h3><p>15–22 分钟/任务；后台分配 1 个主任务、最多 1 个次任务。五个开放回答提交锁定后，才显示 DR / Software / Data schema。</p></article>
           <article><span>C</span><h3>LLM 规范化确认</h3><p>5–8 分钟/任务；每张 fact card 必须带原话 source span，用户逐条 approve、edit、delete 或 uncertain，并分别设置三层使用权限。</p></article>
         </div>
-        <div className="classificationVerdict"><b>最低 2 人不等于稳健招募目标</b><p>12-family pilot 先争取每题 3–4 个 confirmed ledger；20–30 人 soft launch 后按真实时长、route precision、跨轮流失和专业长尾重估。人口学不参与路由，真实相关任务不足 3 个时不强迫凑数。</p></div>
+        <div className="classificationVerdict"><b>人民币 3,000 元只支持构念验证 pilot</b><p>保留 12 个 paper-first family：每题先取 2 个 confirmed ledger，再只为 6 个跨 vertical anchor 补第 3 人，目标 30 个 user–task records。它不承担 agent 排名或 60-task 总体结论；人口学不参与路由，真实相关任务不足 3 个时不强迫凑数。</p></div>
+      </section>
+
+      <section className="shell gapSection" id="interaction">
+        <p className="sectionTag">RUNNABLE PYTHON · RESET / STEP · VALUE MINIMIZATION</p>
+        <div className="sectionHead"><h2>同一 hidden persona，三种可控交互模式</h2><p>每个 case 固定 Task、hidden persona、attribute importance graph 与 reveal policy。默认 rule backend 完全离线可跑；structured-LLM adapter 可接任意 provider。</p></div>
+        <div className="decisionGrid">
+          <article><span>A</span><h3>Oracle</h3><p>Agent 在 reset 直接获得完整 persona；全部属性从第 0 步记为已披露。它是信息上限，不保证 agent 会用对。</p></article>
+          <article><span>B</span><h3>Naive</h3><p>Agent 起初只见 task；LLM user simulator 能看到完整 persona，且不执行 reveal policy，因而允许无关或过度披露。</p></article>
+<article><span>C</span><h3>Interactive</h3><p>Persona 隐藏；Interactive 的 classifier 只看 value-free descriptor，response backend 只拿本轮通过 policy 的属性值。</p></article>
+        </div>
+        <div className="compare" role="table" aria-label="交互环境每步执行与日志">
+          <div className="compareRow head" role="row"><span>Step</span><span>执行</span><span>审计输出</span></div>
+          <div className="compareRow" role="row"><b>1 · classify</b><span>判断是不是用户信息问题；匹配 attribute ID + confidence</span><span>is_question / evidence / matched</span></div>
+          <div className="compareRow" role="row"><b>2 · reveal</b><span>按 sensitivity、prerequisite、scripted trust、graph rank、probability 与 turn budget 决定</span><span>reveal/withhold reason + random draw</span></div>
+          <div className="compareRow" role="row"><b>3 · respond</b><span>只把获准值交给 Interactive response backend；未授权 literal marker 命中则 fail closed</span><span>newly/cumulative revealed + blocked</span></div>
+          <div className="compareRow" role="row"><b>4 · persist</b><span>保存 user response；final artifact 用 step(message, final=True) 提交</span><span>matched-unrevealed + still-hidden</span></div>
+        </div>
+        <div className="classificationVerdict"><b>可运行不等于真人有效</b><p>Naive→Interactive 同时改变 simulator 的信息访问与披露行为，不能解释为纯 agent effect；scripted trust 也不是真人心理模型。正式结果须固定 backend/version/seed/turn budget，并用独立真人轨迹校准 attribute-level match、reveal decision、自然度、事实忠实、语义泄漏与 system-ranking stability。</p></div>
       </section>
 
       <section className="classificationSection" id="metrics"><div className="shell">
@@ -108,13 +126,13 @@ export default function Home() {
 
       <section className="decision shell" id="deadline"><p className="sectionTag">PAPER-FIRST EXECUTION</p><div className="sectionHead"><h2>先完成 12 个端到端 family，再扩展 60-family release</h2><p>资源不足时先减 agent 数、P4 anchor 和真人效用子集，不把 software/data 又降成几个展示题。</p></div><div className="decisionGrid"><article><span>W1</span><h3>3 个 vertical slices</h3><p>DR、Software、Data 各完成一个许可、reset、verifier 和 matched/swapped pilot。</p></article><article><span>PAPER</span><h3>12 families：5 / 3 / 4</h3><p>每个 vertical 内至少两条可比系统；跨 vertical 只比共同 specificity/no-harm profile。</p></article><article><span>RELEASE</span><h3>60 逐个升级</h3><p>完成 source-license、asset binding、two-human screen、contract freeze 与 pilot discrimination。</p></article></div></section>
 
-      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">READING EDITIONS</p><div className="sectionHead"><h2>DeepAlign-Bench v0.56 同步版本与问卷</h2><p>真人真值、Credamo 三轮采集、CDM、受约束 rubric、D-JQS 与 reviewer attacks 已进入正式方法。</p></div><div className="editionGrid">
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">READING EDITIONS</p><div className="sectionHead"><h2>DeepAlign-Bench v0.58 同步版本与交互环境</h2><p>真人真值、Credamo 三轮采集、CDM、受约束 rubric、D-JQS 与 runnable hidden-persona environment 已进入正式方法。</p></div><div className="editionGrid">
         <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整方法、文献、rubric、环境、风险和实验记录。</p><div className="editionLinks"><a href="/DeepAlign-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式研究Proposal.docx" download>Word</a></div></article>
         <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>适合快速判断 thesis、实验、证据等级和 go/no-go。</p><div className="editionLinks"><a href="/DeepAlign-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
         <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 case、task、persona、channel、rubric、公式和统计。</p><div className="editionLinks"><a href="/DeepAlign-Bench_完整人话版.pdf" download>PDF</a><a href="/DeepAlign-Bench_完整人话版.docx" download>Word</a></div></article>
         <article><span>ADVISOR BRIEF</span><h3>汇报精简版</h3><p>15–20 分钟导师汇报结构，含最小实验与五天决策。</p><div className="editionLinks"><a href="/DeepAlign-Bench_汇报精简版.pdf" download>PDF</a><a href="/DeepAlign-Bench_汇报精简版.docx" download>Word</a></div></article>
         <article className="recommended"><span>HUMAN STUDY INSTRUMENT</span><h3>Credamo 真人 Persona 问卷</h3><p>21 页、92 题、60-task 路由、精确跳转、质控、时长、报酬和上线门。</p><div className="editionLinks"><a href="/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf" download>PDF</a><a href="/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.docx" download>Word</a></div></article>
-      </div><div className="schemaDownloads"><a href="/plhkw_task_catalog.html">60-family catalog →</a><a href="/plhkw_paper_first_12.csv" download>Paper-first 12 CSV ↓</a><a href="/plhkw_selected_tasks.csv" download>Selected 60 CSV ↓</a><a href="/credamo_persona_collection.protocol.yaml" download>Credamo protocol ↓</a><a href="/credamo_question_bank.json" download>92-question bank ↓</a><a href="/credamo_task_cards.jsonl" download>60 task cards ↓</a><a href="/credamo_routing_matrix.jsonl" download>Routing matrix ↓</a><a href="/credamo_quality_rules.json" download>QC rules ↓</a><a href="/human_ground_truth.protocol.yaml" download>Human truth protocol ↓</a><a href="/counterfactual_difference_map.schema.yaml" download>CDM schema ↓</a><a href="/judge_qualification.protocol.yaml" download>D-JQS protocol ↓</a><a href="/case.schema.yaml" download>Case schema ↓</a><a href="/DeepAlign-Bench_真人真值到D-JQS_v0.55.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
+      </div><div className="schemaDownloads"><a href="/interaction_environment.schema.yaml" download>Interaction protocol ↓</a><a href="/interaction_demo_case.json" download>Runnable demo case ↓</a><a href="/interaction_env_manifest.json" download>Package manifest ↓</a><a href="/interaction_env_README.md" download>Python guide ↓</a><a href="/plhkw_task_catalog.html">60-family catalog →</a><a href="/plhkw_paper_first_12.csv" download>Paper-first 12 CSV ↓</a><a href="/plhkw_selected_tasks.csv" download>Selected 60 CSV ↓</a><a href="/credamo_persona_collection.protocol.yaml" download>Credamo protocol ↓</a><a href="/credamo_question_bank.json" download>92-question bank ↓</a><a href="/credamo_task_cards.jsonl" download>60 task cards ↓</a><a href="/credamo_routing_matrix.jsonl" download>Routing matrix ↓</a><a href="/credamo_quality_rules.json" download>QC rules ↓</a><a href="/human_ground_truth.protocol.yaml" download>Human truth protocol ↓</a><a href="/counterfactual_difference_map.schema.yaml" download>CDM schema ↓</a><a href="/judge_qualification.protocol.yaml" download>D-JQS protocol ↓</a><a href="/case.schema.yaml" download>Case schema ↓</a><a href="/DeepAlign-Bench_真人真值到D-JQS_v0.55.svg" download>可编辑 SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
 
       <footer className="closing"><div className="shell closingGrid"><div><p className="eyebrow">CLAIM BOUNDARY</p><h2>三个代表性场景，不是所有知识工作</h2></div><p>不声称模型内部真正理解用户；不把 60 个 provisional shells 写成 60 个 runnable gold；不把显式约束跟随冒充完整个性化。</p></div></footer>
     </main>

@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.57（人民币 3,000 元约束下的 Credamo pilot）
+## 当前方向：DeepAlign-Bench v0.58（可运行个性化交互环境）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据/仓库/数据、工具和预算相同时，最终研究报告、代码 patch 或分析交付物是否真的因目标用户不同而作出正确且有益的改变。当前只声称跨 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性场景实例化一个共同协议，不声称覆盖所有知识工作。
 
@@ -10,9 +10,11 @@ DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，�
 
 v0.55 将评价真值链正式分为：**真人从 task slate 选择 3–5 个真实相关任务并确认 task-conditioned ledger → 构造带 provenance/authority/direction/equivalence/dependency 的 Counterfactual Difference Map（CDM）→ 从冻结 CDM 受约束编译 rubric leaves → 用 validated verifier、D-JQS slice-qualified judge 和盲化人评执行**。CDM 是 A/B 的关系真值；rubric 只是编译产物。Freeze 只防 post-hoc，不证明真值正确。Pair 同时包含 contrast、near-neighbor 和 neutral/invariance，完整报告 offered→eligible→selected→paired→qualified 漏斗。
 
-v0.56 将这条真值链落实为 Credamo 三轮问卷：Wave A 完成 consent、背景筛选、10–15 张 task card 路由和 3–5 个候选任务选择；Wave B 每人只深采 1 个主任务、最多 1 个次任务，且先保存开放回答再显示 DR/Software/Data schema；Wave C 将带原话 source span 的 LLM 候选事实交给本人逐条 approve/edit/delete/uncertain。人口学不参与任务路由，低于 3 个真实相关任务时不强迫凑数。最低发布线仍是每题 2 个 confirmed ledger，但 12-family pilot 以每题 3–4 个为招募目标。
+v0.56 将这条真值链落实为 Credamo 三轮问卷：Wave A 完成 consent、背景筛选、10–15 张 task card 路由和 3–5 个候选任务选择；Wave B 每人只深采 1 个主任务、最多 1 个次任务，且先保存开放回答再显示 DR/Software/Data schema；Wave C 将带原话 source span 的 LLM 候选事实交给本人逐条 approve/edit/delete/uncertain。人口学不参与任务路由，低于 3 个真实相关任务时不强迫凑数。v0.56 原本建议的 3–4 ledger/task 招募缓冲已由 v0.57 的预算约束 pilot 取代。
 
 v0.57 将约人民币 3,000 元视为包含平台费用的暂定 all-in ceiling，并据此把第一轮降为构念验证 pilot：保留 12 个 paper-first family（5 DR / 3 Software / 4 Data），每题先获得 2 个 confirmed ledgers，再只为 6 个跨 vertical anchor 补第 3 人，目标共 30 个 user–task records。该轮只估计路由命中、开放 elicitation、跨轮流失、ledger 确认、自然配对、CDM 可构造性和真实成本，不用于 60-task 总体结论、agent 排名或确认性效果检验。平台费超过暂留额度时优先缩减第三用户和访谈，不削减 consent、open-first、本人确认或报酬。
+
+v0.58 新增零运行依赖的 `deepalign_bench` Python 包，把 P2 的隐藏用户交互落实为统一 `reset()` / `step()` 环境。每个 case 固定 task、hidden persona、attribute importance graph 和 reveal policy；A Oracle 在 reset 直接提供完整 persona，B Naive 让完整 persona 对用户模拟器可见但不执行披露策略，C Interactive 只把本轮获准属性值交给响应 backend。每步记录问题分类、matched/denied 属性、newly/cumulative revealed、still-hidden 和泄漏拦截；`run_episode` 可包装 callable 或带 `act()` 的任意 agent。默认 rule backend 用于完全离线 smoke，`JSONLLMSimulatorBackend` 可接任意 structured-LLM provider。
 
 项目内 judge 校准改名 **DeepAlign Judge Qualification Suite（D-JQS）**，避免与既有 JudgeBench/JUDGE-BENCH 混淆。D-JQS 混合确定违规、单一受控编辑和自然真人 artifact，并把 calibration 与 hidden qualification 按 family/user/source/agent/edit lineage/time 隔离；AB/BA 之外单独测试长度、style、格式、关键词、引用数与语言。关键 leaf slice 未通过时必须转 deterministic/human/coarse binary，不能靠多个失败 judge 投票掩盖。
 
@@ -28,6 +30,10 @@ v0.54 已建立 180 个 normalized candidate seeds（72 DR / 54 Software / 54 Da
 
 ## 当前交付物
 
+- [`interaction_env/README.md`](interaction_env/README.md)：Python 安装、三模式语义、任意 agent wrapper、structured-LLM 接口、case JSON、审计日志和测量边界。
+- [`interaction_env/manifest.json`](interaction_env/manifest.json)：package 版本、公开 API、运行入口、schema/example/test 路径和验证命令。
+- [`src/deepalign_bench/data/demo_case.json`](src/deepalign_bench/data/demo_case.json)：包含 task、hidden persona、importance graph 和 reveal policy 的完整可运行 case。
+- [`benchmark_schema/interaction_environment.schema.yaml`](benchmark_schema/interaction_environment.schema.yaml)：三模式、`reset/step`、最小化、逐步日志、校准要求与主张边界的机器协议。
 - [`data/plhkw_task_pool_v0_54/README.md`](data/plhkw_task_pool_v0_54/README.md)：180 候选、60-family provisional selection、来源/许可登记、筛选审计、JSONL/CSV/schema、standalone catalog 和校验入口。
 - [`proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md`](proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md)：三轮 21 页流程、全部题目文本、题型、跳转、质控、时长、报酬和平台搭建说明。
 - [`deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf`](deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf)：逐页检查后的 26 页送审/搭建版；同名 DOCX 可编辑。
@@ -69,3 +75,12 @@ v0.55 新增的同级风险是把 CDM/受约束 compiler 包装成方法新颖�
 - 编号引用在 Markdown、DOCX、PDF 和 HTML 中默认可点击并直达论文或官方文档。
 - 不覆盖或暂存用户的无关修改与未跟踪研究目录。
 - 校验后提交 `main`，commit 格式为 `proposal vX.Y: <核心变化>`，并推送到 `origin`。
+
+## 交互环境快速运行
+
+```bash
+PYTHONPATH=src python3 -m deepalign_bench --mode interactive --seed 7
+PYTHONPATH=src python3 -m unittest discover -s tests -v
+```
+
+安装为本地包后可直接运行 `deepalign-bench --mode oracle|naive|interactive`。正式 benchmark 应固定同一 case、LLM backend、模型版本、采样参数、turn budget 和 seed schedule，并在真人轨迹上校准 attribute-level question matching、披露决定与语义泄漏；Naive/Interactive 的差同时改变 simulator 信息访问和披露行为，不解释为纯 agent 能力效应。

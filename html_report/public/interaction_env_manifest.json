@@ -1,0 +1,31 @@
+{
+  "artifact": "deepalign_bench_interaction_environment",
+  "version": "0.58.0",
+  "status": "runnable_reference_implementation",
+  "python": ">=3.10",
+  "runtime_dependencies": [],
+  "package_root": "src/deepalign_bench",
+  "public_api": [
+    "InteractionEnvironment.reset",
+    "InteractionEnvironment.step",
+    "InteractionEnvironment.export_trace",
+    "run_episode",
+    "load_case",
+    "JSONLLMSimulatorBackend"
+  ],
+  "modes": ["oracle", "naive", "interactive"],
+  "entrypoints": {
+    "cli": "deepalign-bench",
+    "module": "python -m deepalign_bench"
+  },
+  "example_case": "src/deepalign_bench/data/demo_case.json",
+  "json_schema": "src/deepalign_bench/data/interaction_case.schema.json",
+  "protocol": "benchmark_schema/interaction_environment.schema.yaml",
+  "tests": "tests/test_interaction_environment.py",
+  "verification": [
+    "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+    "PYTHONPATH=src python3 -m deepalign_bench --mode interactive --seed 7",
+    "pip install -e ."
+  ],
+  "claim_boundary": "Reference harness behavior is tested; human simulator validity requires separate calibration."
+}

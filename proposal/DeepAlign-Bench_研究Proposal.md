@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.56 · 2026 年 8 月 20 日
+版本：v0.58 · 2026 年 8 月 21 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
@@ -20,7 +20,7 @@ PDR-Bench 已经建立 Deep Research 中 task–persona 条件下的 absolute ad
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
-v0.54 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。这个结果冻结了 task shell、来源、reasoning structure 与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.55 进一步把 persona 与评分链冻结为 **真人真值获取 → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → DeepAlign Judge Qualification Suite（D-JQS）→ hybrid scoring**。v0.56 将真人采集落实为 Credamo 三轮协议：Wave A 只做筛选、路由和 3–5 个候选任务选择；Wave B 从中分配 1 个主任务、最多 1 个次任务做 open-first elicitation；Wave C 在离线 LLM 规范化后逐条由本人确认。这样既保存选择漏斗，又不把每人 3–5 题变成 55–100 分钟的低质长问卷。v0.50 的 **research episode** 统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
+v0.54 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。这个结果冻结了 task shell、来源、reasoning structure 与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.55 进一步把 persona 与评分链冻结为 **真人真值获取 → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → DeepAlign Judge Qualification Suite（D-JQS）→ hybrid scoring**。v0.56 将真人采集落实为 Credamo 三轮协议：Wave A 只做筛选、路由和 3–5 个候选任务选择；Wave B 从中分配 1 个主任务、最多 1 个次任务做 open-first elicitation；Wave C 在离线 LLM 规范化后逐条由本人确认。v0.57 再按人民币 3,000 元 all-in working ceiling 把首轮收窄为 12-family 构念验证 pilot：每题先取 2 个 confirmed ledger，只为 6 个跨场景 anchor 补第 3 人，目标 30 个 user–task records；该轮不承担 agent 排名或确认性效果结论。v0.58 则把 P2 交互概念落实为零运行依赖的 Python 包：同一 case 可在 Oracle、Naive 和 Interactive 三种模式下通过 `reset()` / `step()` 运行，并完整记录问题匹配、策略拒绝、披露和仍隐藏的属性。v0.50 的 **research episode** 继续统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
 
 这条主线不能声称 agent 内部“在意”或“关心”用户；黑箱 benchmark 无法识别动机。可证伪的行为表述是：**当一份通用报告已经可以完成表面任务、但仍缺少会改变最终决定的用户事实时，agent 是否主动询问高价值问题，并在获得答案后把它落实到交付物。** P2 因而比一般证据冲突更直接地测 user-specificity sensitivity；P4 只能测当前用户状态变化后的响应与旧状态清除，不能被写成“agent 更关心用户”的独立证据。
 
@@ -550,12 +550,24 @@ Anchor 的可识别量是**受控扰动敏感度**，不是“用户建模失败
 **E3. Stateful Interactive Sandbox（长程压力与机制榜）**
 
 - 首稿只为 2–4 个公开证据 anchor 编写事件脚本：初始用户信号、可选澄清回答、固定 checkpoint 和一项带 `supersedes` 的 user-state update；私有 workspace、复杂权限图、工具噪声和 multi-agent handoff 延期；
-- user simulator 只按结构化 ledger 回答，不自由编造偏好；若问题超出 ledger，返回 unknown 或升级给真人；
+- v0.58 的 runnable interaction case 固定五个对象：公开 task、隐藏 task-conditioned persona、属性重要性图、属性披露策略和最大轮数。属性重要性图只在多个属性已被问题直接命中时排序，不能把未命中的隐藏属性扩展成可披露候选；
+- 每个 `step(agent_message)` 依次判断这是否是用户信息问题、匹配哪些属性、逐属性决定披露或拒绝、生成自然回复，再记录 matched、matched-but-unrevealed、newly/cumulatively revealed 和 still-hidden ID；最终 artifact 用 `step(message, final=True)` 提交；
+- Interactive 模式的 classifier 只接收不含值的 name/description/alias/keyword；response backend 只接收本轮获准属性值。未知属性 ID 被过滤，配置了 literal marker 的未授权值若出现在回复中则 fail closed；这降低 prompt 级泄漏，但不能替代语义改写和外部缓存的独立审计；
 - runner 使用 `run_until(checkpoint)` 冻结相同前缀，再分叉 clean/perturbed 条件，保证压力比较共享前史；
 - 只接收支持多轮状态或事件注入的系统；商业黑箱若不能导出轨迹仍可做 outcome probe，但不得声称定位内部机制；
 - 产出 retention、update 和 handoff 曲线，不与静态主榜合成一个分数。
 
-三条轨道使用同一个最小 adapter contract：`reset(case, seed)`、`provide_signal(view)`、`run_until(checkpoint)`、`inject_event(event)`、`export_artifact(schema)`、`export_trace(level)`。系统声明可提供的轨迹等级：`artifact_only`、`tool_events`、`message_events` 或 `full_state`。只有至少提供 message events、并且完成共享前缀的受控分叉时，论文才讨论过程 failure mode；否则只报告最终结果。
+三条轨道使用同一个最小 adapter contract：`reset(case, seed)`、`provide_signal(view)`、`run_until(checkpoint)`、`inject_event(event)`、`export_artifact(schema)`、`export_trace(level)`。其中 P2 的可运行子接口为 `InteractionEnvironment.reset(seed)` 与 `step(agent_message, final=False)`；`run_episode` 可包装接收 `AgentContext` 的任意 callable 或带 `act()` 的 agent。系统声明可提供的轨迹等级：`artifact_only`、`tool_events`、`message_events` 或 `full_state`。只有至少提供 message events、并且完成共享前缀的受控分叉时，论文才讨论过程 failure mode；否则只报告最终结果。
+
+#### 5.3.1 三种用户模拟模式
+
+| 模式 | Agent 初始可见 | Simulator backend 可见 | 披露策略 | 科学角色 |
+|---|---|---|---|---|
+| A · Oracle | task + 完整 persona | 完整 persona | 全部绕过；reset 时记为全披露 | 信息充分上限；不是保证性能上限 |
+| B · Naive | task only | 完整 persona | 绕过；LLM 可自由披露 | 复现“full-persona LLM user simulator”基线 |
+| C · Interactive | task + 显式初始事实 | 仅本轮获准属性值 | 置信度、敏感度、前置属性、脚本 trust、概率和每轮预算 | 隐藏 persona + selective disclosure 主条件 |
+
+生产实验的 Naive 与 Interactive 应固定同一 LLM response backend、模型版本、采样参数、case、turn budget 和 seed schedule；本地 rule-based backend 只作确定性 smoke 与诊断。即便如此，B→C 同时改变 backend 能看到的信息和用户披露行为，不能被解释为纯 agent 能力效应。分类器还会产生 false match/miss，披露策略也可能过严或过松；因此需在独立真人轨迹上报告 attribute-level precision/recall、披露一致性、事实忠实、语义泄漏、policy sensitivity 和 simulator-to-live-user 系统排序稳定性。脚本 trust 是可重复实验控制，不是真人心理模型。
 
 **不要同时把三条环境全部搭满。** 开工顺序应是：先用 2 个 family、2 个 agent 做 E1 frozen vertical slice，验证 reset、证据快照、artifact export 和 2×2 评分；再用 1 个 anchor 搭 E3 的 checkpoint、clarification、conflict 和 update 注入；最后只对 1 个商业产品做 E2 adapter smoke test，检查版本、地区、日期、成本与 URL 快照能否记录。E1 端到端和一个 E3 事件未跑通前，不批量造 task。E2 是生态有效性轨，不应阻塞主矩阵。
 
@@ -886,7 +898,7 @@ AB/BA 只控制 position bias，不能控制 verbosity、style、关键词、引
 
 **主论文（8 周）**：从 60-family provisional set 中优先完成 12 个端到端 family：5 DR、3 Software、4 Data。每个 vertical 先至少有一个 vertical slice 通过许可、环境 reset、task/evidence 不变性、双人反事实自然性、matched/swapped discrimination 和共同质量 no-harm 门。Phase B 真人 decision trial 只在功效和成本允许的子集运行，不用“12 题”冒充“12 个已验证效用的 family”。P4 user-state update 只在 2–4 个适用 anchor 上做次要单因素压力层。
 
-真人招募也按两级目标运行。最低发布条件虽是每个 task 至少 2 个 confirmed ledger，但主论文的 12-family pilot 以每题 3–4 个 confirmed ledger 为招募目标，为 attrition、无法配对和 neutral/near-neighbor 留缓冲；完整 60-family release 再根据 Wave A route precision、Wave B/C attrition、每题 coverage 和参与者聚类重新估算。规划报酬为 Wave A ¥8–12、Wave B ¥15–22/task、Wave C ¥6–10/task，普通参与者目标有效时薪 ¥40–60，稀缺专业用户另行加价；形成 pair、产生明显差异或同意 LLM 总结不得成为付费条件。¥3,000 只能支持受限 pilot 或无质量缓冲的最低覆盖，不能作为 180–240 个 confirmed ledger 加平台费的完整 60-task 承诺。
+真人招募也按两级目标运行。人民币 3,000 元 all-in working ceiling 下，首轮保留 12 个 paper-first family，每题先取 2 个 confirmed ledger，再只为每个 vertical 的 2 个 anchor 补第 3 人，目标 30 个 user–task records；第 3 人只帮助观察 neutral/near 与替补可行性，不冒充统计功效。完整 60-family release 再根据 Wave A route precision、Wave B/C attrition、每题 coverage 和参与者聚类重新估算。规划报酬继续按 Wave A/B/C 的真实 P50/P75 时长与专业稀缺性设置；形成 pair、产生明显差异或同意 LLM 总结不得成为付费条件。平台费超出暂留额度时优先减少第三用户和认知访谈，不削减 consent、open-first、本人确认或已承诺报酬。
 
 系统按 vertical 绑定：DR 比较商业产品、统一搜索 harness 和可复现开源 DRA；software 比较同一 repo/container 下的 controlled harness 与专用 code agent；data 比较同一 dataset/workbook 下的 controlled harness 与 data-analysis agent。每个 agent-task 组合提前写明 `eligibility_predicate`，受控 harness 榜和端到端产品榜分开报告。
 
@@ -970,7 +982,7 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 ### 11.7 “用户模拟器不代表真人”
 
 **攻击：**动态用户和满意度都是 LLM 幻觉。  
-**防守：**主榜不以模拟满意度作为金标；模拟器只用于可控大规模交互，并以真人轨迹做 sim-to-real 校准；最终效度由目标用户盲评和真实接受/采用意愿提供。
+**防守：**主榜不以模拟满意度作为金标；三种模式只构造信息可用性与披露行为的受控条件。v0.58 默认 rule backend 只验证 harness，正式 Naive/Interactive 使用固定 structured-LLM backend，并在独立真人轨迹上校准 attribute-level question match、reveal decision、自然度、事实忠实、语义泄漏和系统排序。Oracle 不是性能真值，Naive 与 Interactive 的差也不是纯 agent effect；最终效度仍由目标用户盲评和真实接受/采用意愿提供。
 
 ### 11.8 “跨 agent 比较不公平”
 
@@ -1206,7 +1218,7 @@ Task 元数据分三层。**A 层是导入或自动生成的客观 provenance**�
 
 ### 17.2 Persona 如何真实自然：task-first、user-anchored、最小化
 
-主数据不从研究者写人物小传开始，而从“谁真的需要这个任务”开始。v0.56 的招募单位是三轮、一个主任务为主的 user–task record：Wave A 让参与者从 10–15 张 task-relevant cards 中选择 3–5 个真实候选；Wave B 后台只分配 1 个主任务、最多 1 个次任务，每题先完成开放 elicitation 再显示结构化 schema；Wave C 对带原话 source span 的候选 fact 逐条确认。完整一次主任务流程预计 30–45 分钟但分轮完成。12-family pilot 不先冻结参与者人数，而以每题 3–4 个 confirmed ledger 为覆盖目标，在 20–30 人 soft launch 后依据 route precision、跨轮流失、同一参与者聚类和长尾专业招募重新估算。每条 fact 都进入私有 ledger，带来源、时间、可靠性、敏感级别、可用于推理/可披露权限和它会改变哪项交付决策。
+主数据不从研究者写人物小传开始，而从“谁真的需要这个任务”开始。v0.56 的招募单位是三轮、一个主任务为主的 user–task record：Wave A 让参与者从 10–15 张 task-relevant cards 中选择 3–5 个真实候选；Wave B 后台只分配 1 个主任务、最多 1 个次任务，每题先完成开放 elicitation 再显示结构化 schema；Wave C 对带原话 source span 的候选 fact 逐条确认。完整一次主任务流程预计 30–45 分钟但分轮完成。v0.57 在人民币 3,000 元工作上限下将 12-family pilot 冻结为每题 2 个 confirmed ledger + 6 个 anchor 各 1 个第三用户，目标 30 records；先用 6–8 人 soft launch 检查 route precision、跨轮流失、真实时长和 Wave C 编辑率，再决定是否释放剩余预算。每条 fact 都进入私有 ledger，带来源、时间、可靠性、敏感级别、可用于推理/可披露权限和它会改变哪项交付决策。
 
 Gold 优先使用两个真实用户共享同一 invariant task/evidence，但在 2–4 个任务相关轴上自然不同；配对困难时，才使用“一个真实用户 + 经第二位相似参与者验证的最小反事实编辑”。完全合成 persona 只进入压力测试和无关 cue 对照，不能支撑真人效用主张。Natural history 应来自参与者回忆、日记或获授权轨迹，或由参与者逐句确认的转述；annotator 编造的生活史不算 gold。PDR-Bench 采用真实 profile、但由专业标注者模拟日常应用交互，这一做法适合扩展覆盖，却也正是 DeepAlign 应避免作为 gold 主来源的真实性边界。[[4]](https://arxiv.org/abs/2509.25106) FingerTip 20K 让 95 位参与者在自有手机上贡献一个月意图、情境和操作轨迹，为“自然用户锚定 + 隐私过滤”提供了更强参照。[[57]](https://arxiv.org/abs/2507.21071)
 

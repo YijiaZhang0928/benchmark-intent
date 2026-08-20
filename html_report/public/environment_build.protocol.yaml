@@ -1,14 +1,32 @@
 protocol_name: deepalign_environment_build
-protocol_version: 0.31
+protocol_version: 0.58
 status: engineering_plan
 principle: >-
   E1 is the causal main track, E3 a thin stateful diagnostic layer, and E2 an
   observational ecological-validity track that is never pooled with E1.
 
 common_runner_contract:
-  calls: [reset, load_case, provide_signal, run_until, inject_event, export_artifact, export_trace, export_cost]
+  calls: [reset, step, load_case, provide_signal, run_until, inject_event, export_artifact, export_trace, export_cost]
   required_logs: [case_and_family_id, system_model_product_version, evidence_snapshot_and_index_hash, tool_configuration_and_budget, seed_and_timestamp, signal_view_and_event_schedule, artifact_trace_and_cost_hashes]
   comparability_rule: significance_tests_require_same_anchor_environment_budget_and_tool_contract
+
+interaction_environment_implementation:
+  package: deepalign_bench
+  source: src/deepalign_bench
+  protocol: interaction_environment.schema.yaml
+  minimal_calls: [reset_seed, step_agent_message, step_final_artifact]
+  modes:
+    oracle: complete_persona_visible_to_agent_at_reset
+    naive: complete_persona_visible_only_to_unrestricted_simulator_backend
+    interactive: hidden_persona_with_selective_disclosure
+  interactive_minimization:
+    classifier: value_free_attribute_descriptors_only
+    responder: approved_attribute_values_for_current_turn_only
+    graph_rule: rank_direct_matches_without_expanding_unmatched_attributes
+  required_logs: [classification_and_matches, policy_decisions, newly_and_cumulative_revealed, matched_unrevealed, still_hidden, backend_blocked]
+  offline_backend_role: deterministic_smoke_and_baseline_only
+  confirmatory_backend_role: fixed_structured_LLM_plus_human_trajectory_calibration
+  interpretation_boundary: naive_vs_interactive_changes_simulator_access_and_disclosure_behavior_not_only_agent_capability
 
 environments:
   E1_controlled_frozen_harness:
@@ -22,7 +40,7 @@ environments:
     scientific_role: controlled_process_and_longitudinal_stress_diagnostics
     difficulty: hard
     estimated_engineer_weeks: 2_to_4_after_E1
-    mvp_components: [state_service, checkpoint_fork_and_reset, event_scheduler, private_workspace_and_permissions, clarification_conflict_update_and_handoff_events]
+    mvp_components: [runnable_hidden_persona_reset_step_layer, state_service, checkpoint_fork_and_reset, event_scheduler, private_workspace_and_permissions, clarification_conflict_update_and_handoff_events]
     hardest_problems: [branch_equivalence_before_event_injection, hidden_state_or_future_event_leakage, temporal_priority_and_permission_semantics]
     go_gate: one_anchor_replays_checkpoint_conflict_clarification_and_update_deterministically
   E2_native_live_product_or_web:

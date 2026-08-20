@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.56 · 2026 年 8 月 20 日
+版本：v0.58 · 2026 年 8 月 21 日
 建议时长：15–20 分钟
 
 ---
@@ -23,7 +23,7 @@
 
 Credamo 分三轮：Wave A 按 task-relevant 背景路由 10–15 张 cards，逐卡检查现实相关、类似经验和安全可回答性，再让用户选 3–5 个候选；Wave B 从中深采 1 个主任务、最多 1 个次任务，先保存开放回答，再显示结构化 schema；Wave C 把 LLM 候选事实和原话 source span 一起交给本人逐条批准、修改、删除或标不确定。人口学不参与路由；若真实相关任务少于 3 个，不强迫凑数。fact 记录 spontaneous/prompted/N/A/declined、置信度、可接受替代、时间戳与三层权限。每个 family 配对两位都合理的用户，并公开 offered→eligible→selected→assigned→confirmed→paired→qualified 漏斗；pair 同时含 contrast、near-neighbor 和 neutral/invariance。运行前先冻结关系真值 **Counterfactual Difference Map（CDM）**：
 
-12-family pilot 先以每题 3–4 个 confirmed ledger 为招募目标，而不是最低 2 人；Wave A/B/C 规划报酬分别为 ¥8–12、¥15–22/task、¥6–10/task，20–30 人 soft launch 后按实际时长与流失重定。¥3,000 只能支持受限 pilot，不能承诺高质量覆盖全部 60 题。正式招募须先完成伦理/IRB 与 Credamo 跨轮、预填、配额和 LLM 数据路径核验。
+人民币 3,000 元 all-in working ceiling 下，12-family pilot 每题先取 2 个 confirmed ledger，再为每个 vertical 的 2 个 anchor 补第 3 人，目标 30 个 user–task records；它只验证 instrument、pairability、CDM 和成本，不做 agent 排名。正式招募须先完成伦理/IRB 与 Credamo 跨轮、预填、配额和 LLM 数据路径核验。
 
 - `must-change / directional difference`：换用户必须改变什么；
 - `must-hold / acceptable equivalence`：共同事实不变，或多个方案都可接受；
@@ -46,6 +46,16 @@ Credamo 分三轮：Wave A 按 task-relevant 背景路由 10–15 张 cards，�
 4. P4 checkpoint 更新：update 与 stale-state suppression。
 
 P3/P5/P6/P7 是扩展条件，不做全组合。产品不支持 ask/memory/checkpoint 时记 structurally-inapplicable，不记零分。Clarification 不是论文 novelty 主线。
+
+v0.58 的交互环境已可运行：统一 `reset()` / `step()`，并可用 `run_episode` 包装任意 callable/`act()` agent。
+
+| 模式 | Agent 初始看到 | Simulator 看到 | Reveal policy |
+|---|---|---|---|
+| A Oracle | task + 完整 persona | 完整 persona | 绕过；reset 记全披露 |
+| B Naive | task | 完整 persona | 绕过 |
+| C Interactive | task | 本轮获准属性值 | 强制执行 |
+
+Interactive 的 classifier 只看 value-free descriptor；日志逐步保存 matched、denied、newly/cumulative revealed 和 still-hidden。默认 rule backend 只做 smoke；正式 B/C 固定同一 LLM backend 并做人类轨迹校准。B/C 差异同时包含信息访问与披露行为，不能解释为纯 agent 能力；Oracle 也只是信息上限，不保证 agent 会用对。
 
 第一批数据已完成结构稿：3 个合成工程 family × 2 users × 4 paradigms = 24 episodes，已通过自动结构校验；尚未通过真实用户与证据包效度门。
 

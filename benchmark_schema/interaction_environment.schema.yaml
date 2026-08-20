@@ -1,0 +1,151 @@
+schema_name: deepalign_interaction_environment
+schema_version: 0.58
+status: runnable_reference_implementation
+package:
+  python_import: deepalign_bench
+  source_root: src/deepalign_bench
+  minimum_python: "3.10"
+  runtime_dependencies: []
+  entrypoints:
+    library: [InteractionEnvironment.reset, InteractionEnvironment.step]
+    cli: "python -m deepalign_bench"
+    arbitrary_agent_wrapper: run_episode
+
+case:
+  required_components:
+    - task
+    - hidden_persona_state
+    - attribute_importance_graph
+    - attribute_reveal_policy
+  task:
+    fields: [task_id, prompt, deliverable, context]
+  hidden_persona_state:
+    attribute_fields:
+      - attribute_id
+      - name_and_value_free_descriptor
+      - hidden_value
+      - aliases_and_keywords
+      - importance
+      - sensitivity
+      - disclosure_level
+      - response_template
+      - optional_literal_leak_markers
+    provenance_gate: user_confirmed_task_conditioned_ledger_before_confirmatory_use
+  attribute_importance_graph:
+    edge_fields: [source, target, signed_weight, relation]
+    operational_role: rank_directly_matched_attributes_under_per_turn_disclosure_budget
+    leakage_rule: graph_never_expands_an_unmatched_attribute_into_disclosure_eligibility
+  attribute_reveal_policy:
+    global_controls:
+      - max_attributes_per_turn
+      - minimum_effective_importance
+      - initial_trust
+      - scripted_trust_gain
+      - repeat_policy
+    per_attribute_controls:
+      - strategy_when_asked_after_trust_probabilistic_or_never
+      - minimum_match_confidence
+      - minimum_trust
+      - prerequisite_revealed_attributes
+      - reveal_probability
+
+modes:
+  A_oracle:
+    reset_agent_view: task_plus_complete_persona
+    simulator_value_access: complete_persona
+    reveal_policy: bypassed
+    initial_revealed_log: all_attributes
+    interpretation: information_upper_bound_not_guaranteed_performance_ceiling
+  B_naive:
+    reset_agent_view: task_only
+    simulator_value_access: complete_persona
+    reveal_policy: bypassed
+    intended_backend: fixed_structured_LLM_user_simulator
+    interpretation: full_persona_simulator_baseline_with_uncontrolled_disclosure
+  C_interactive:
+    reset_agent_view: task_only_plus_explicit_initial_view
+    classifier_access: value_free_descriptors_only
+    simulator_value_access: approved_attributes_for_current_turn_only
+    reveal_policy: enforced
+    leak_guard: unknown_ID_filter_plus_configured_literal_marker_fail_closed
+
+step_contract:
+  input:
+    agent_message: nonempty_string
+    final: optional_boolean
+  ordered_operations:
+    - classify_question_or_information_request
+    - identify_and_confidence_score_matched_attribute_IDs
+    - validate_matches_against_case_registry
+    - apply_mode_and_reveal_policy
+    - minimize_values_passed_to_response_backend
+    - generate_natural_user_response
+    - audit_claimed_and_literal_disclosures
+    - update_reveal_and_trust_state
+    - append_immutable_turn_event
+  output:
+    - natural_user_response_or_null_for_final_submission
+    - terminated_and_truncated_flags
+    - full_turn_audit_event
+
+required_turn_logs:
+  - agent_message_and_user_response
+  - is_question_and_classifier_rationale
+  - matched_attribute_ID_confidence_and_evidence
+  - reveal_or_withhold_decision_reason
+  - effective_graph_importance
+  - trust_before_and_after
+  - reproducible_probability_draw_if_used
+  - matched_but_unrevealed_attribute_IDs
+  - newly_revealed_attribute_IDs
+  - cumulative_revealed_attribute_IDs
+  - still_hidden_attribute_IDs
+  - backend_blocked_attribute_IDs
+
+privacy_and_leakage:
+  default_trace_export: full_hidden_persona_not_embedded_but_messages_may_contain_disclosed_values
+  value_inclusive_trace: explicit_opt_in_restricted_research_data
+  raw_message_trace: always_restricted_until_separately_minimized_for_release
+  interactive_prompt_minimization: mandatory
+  limitations:
+    - literal_guard_does_not_detect_all_semantic_paraphrase_leakage
+    - stateful_or_cached_external_backends_require_separate_isolation_audit
+
+measurement_validity:
+  freeze_before_target_outputs:
+    - persona_attributes_and_permissions
+    - graph_edges_and_weights
+    - reveal_rules
+    - classifier_and_response_backend_versions
+    - seeds_and_turn_budget
+  required_calibration:
+    - attribute_level_question_match_precision_recall_and_abstention
+    - reveal_decision_agreement_with_human_trajectories
+    - response_naturalness_and_fact_faithfulness
+    - naive_and_interactive_semantic_leakage_rate
+    - policy_sensitivity_analysis
+    - simulator_to_live_user_system_ranking_stability
+  confounds_to_report:
+    - naive_vs_interactive_changes_backend_information_access_and_disclosure_behavior
+    - oracle_can_fail_because_agent_misuses_complete_persona
+    - interaction_turns_attributes_and_repeats_are_not_independent_samples
+    - scripted_trust_is_an_experimental_control_not_a_human_psychology_claim
+  claim_boundary: simulator_results_support_controlled_interaction_diagnostics_until_human_calibration_and_target_user_validation_pass
+
+verification:
+  commands:
+    - "PYTHONPATH=src python3 -m unittest discover -s tests -v"
+    - "PYTHONPATH=src python3 -m deepalign_bench --mode interactive --seed 7"
+  test_slices:
+    - oracle_complete_reset_view
+    - interactive_initial_view_without_hidden_value_leakage
+    - naive_policy_bypass
+    - interactive_never_disclose
+    - classifier_value_minimization
+    - descriptor_hidden_literal_rejection
+    - response_value_minimization
+    - graph_ranking_without_match_expansion
+    - seeded_probability_reproducibility
+    - literal_leak_fail_closed
+    - arbitrary_agent_wrapper
+    - value_minimized_trace_export
