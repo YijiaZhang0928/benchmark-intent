@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜导师汇报精简版
 
-版本：v0.58 · 2026 年 8 月 21 日
+版本：v0.59 · 2026 年 8 月 22 日
 建议时长：15–20 分钟
 
 ---
@@ -59,7 +59,7 @@ Interactive 的 classifier 只看 value-free descriptor；日志逐步保存 mat
 
 第一批数据已完成结构稿：3 个合成工程 family × 2 users × 4 paradigms = 24 episodes，已通过自动结构校验；尚未通过真实用户与证据包效度门。
 
-v0.54 已建立 180 个候选 seed（72 DR / 54 Software / 54 Data），预选 60 个 provisional family（24 / 18 / 18，即 40/30/30）。来源为 39 benchmark-derived、12 adapted、9 new；其中 12 个 PDR-derived shell 保留直接 continuity。60 个只是等待许可、环境、双人审查、contract 和 pilot 硬门的 sampling frame，不是 runnable gold。主论文先做 12 个端到端 family（5 DR / 3 Software / 4 Data）。
+v0.59 已建立 180 个候选 seed（72 DR / 54 Software / 54 Data），预选 60 个 provisional family（24 / 18 / 18，即 40/30/30）。来源为 39 benchmark-derived、12 adapted、9 new；10 个 PDR-derived shell 仅保留来源/主题 continuity。每题只有一个主要交付物容器；24 个 DR 全部是 program/resource discovery、evidence landscape/map、literature synthesis、dataset/语料发现、prior art、conflict audit、temporal diff 或 entity enumeration，不再要求 recommendation/planning。60 个只是等待许可、环境、双人审查、contract 和 pilot 硬门的 sampling frame，不是 runnable gold。主论文先做 12 个端到端 family（5 DR / 3 Software / 4 Data）。
 
 ## 3. 核心实验矩阵
 

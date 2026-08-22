@@ -21,8 +21,8 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "DeepAlign-Bench"
 COVER_SUBTITLE = "三个长程知识工作场景中的反事实用户特异性"
 COVER_MODE = "Personalization · Long-Horizon Knowledge Work · Evaluation"
-DOC_VERSION = "v0.58 · 可运行交互环境版"
-DOC_DATE = "2026 年 8 月 21 日"
+DOC_VERSION = "v0.59 · 单交付物任务契约版"
+DOC_DATE = "2026 年 8 月 22 日"
 RESEARCH_LINE = "Adequacy · Specificity · Benefit · No-Harm · Boundary"
 CORE_CLAIM = "固定任务、证据、工具和预算，检验最终交付物是否随目标用户发生双向正确变化，并同时通过绝对合格、通用回答收益、共同质量与边界门。"
 CONTENTS_ITEMS = [
@@ -30,7 +30,7 @@ CONTENTS_ITEMS = [
     "反事实矩阵与非补偿评分", "CDM、D-JQS 与 PDR 压力测试", "统计与外部验证",
     "逐周执行门、贡献与主张边界", "参考文献",
 ]
-READING_NOTE = "阅读提示：先看主图理解真人 ledger、Counterfactual Difference Map、受约束 rubric 编译与 D-JQS；v0.58 再用 Oracle / Naive / Interactive 三模式把 P2 交互落实为可运行环境。"
+READING_NOTE = "阅读提示：先看主图理解真人 ledger、Counterfactual Difference Map、受约束 rubric 编译与 D-JQS；v0.59 将 60 题统一为一个主要交付物，并把 DR 限定为非处方性检索与综合。"
 FIGURE_TRIGGER = "1. 研究问题"
 FIGURE_TITLE = "DeepAlign-Bench 真人真值、关系契约与评分资格链"
 FIGURE_CAPTION = "图 1  真人 ledger → CDM → 双冻结 → 受约束 rubric → validated verifier / slice-qualified D-JQS / 盲化人评；freeze 只防 post-hoc。"

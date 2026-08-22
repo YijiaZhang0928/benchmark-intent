@@ -1,6 +1,6 @@
 # DeepAlign-Bench｜完整人话版
 
-版本：v0.58 · 2026 年 8 月 21 日
+版本：v0.59 · 2026 年 8 月 22 日
 用途：组内讨论、导师沟通、正式 Proposal 的直白解释
 
 ---
@@ -63,9 +63,9 @@ Case metadata 记录这一次具体运行是谁、何时、在哪个环境下完
 
 Task metadata 记录这道任务在研究上是什么：
 
-- 主要 research intent：比较、规划、选择、诊断、综合还是验证；
+- 主要 research intent：发现、枚举、核验、综合、修改、诊断、建模还是验证；
 - stakes：错误会造成多大损失；
-- 交付物：报告、路线图、采购建议、证据表还是行动方案；
+- 唯一主要交付物：evidence catalog/map/dossier、repository commit、notebook、workbook 或 versioned pipeline package；表、图、日志、测试和说明只能作为内部组成；
 - 关键 decision nodes：哪些选择会因用户而改变；
 - 共同事实和证据要求；
 - 允许工具、时限、信息新鲜度和权限；
@@ -173,7 +173,7 @@ v0.58 已把这件事做成可运行 Python 包。每个 case 固定 task、隐�
 
 我们也已经把 PDR-Bench 公开的全部资源导入：50 个任务、25 个志愿者自填后去标识化的 structured persona、25 份由专业标注者模拟的 dynamic context，以及 250 个官方 task-user 配对。这里必须说准确：persona 的结构化底稿有真人来源，但 context 不是志愿者自然聊天轨迹。
 
-这 250 对不能直接当成 DeepAlign 的 250 个独立实验。v0.54 把 PDR 放进更大的候选池：总共先收 180 个 seed（72 研究、54 软件、54 数据），再预选 60 个 family（24/18/18）。其中 12 个直接来自 PDR task shell，其他补文献景观、prior art、仓库修改、spreadsheet 和 ML 等结构。60 个只是 provisional sampling frame，没有通过许可、环境、双人审查、contract 和 pilot 门就不能说是可运行 gold。
+这 250 对不能直接当成 DeepAlign 的 250 个独立实验。v0.59 把 PDR 放进更大的候选池：总共先收 180 个 seed（72 研究、54 软件、54 数据），再预选 60 个 family（24/18/18）。其中 10 个保留 PDR 的来源和主题，但不复用原来的推荐/规划题面；其余补文献景观、prior art、仓库修改、spreadsheet 和 ML 等结构。每题只有一个主要交付物。24 个研究题只要求找项目/资源、做证据图谱、文献综合、数据集发现、先前技术、冲突审计、时点差分或实体枚举，不替用户推荐或制定计划。60 个只是 provisional sampling frame，没有通过许可、环境、双人审查、contract 和 pilot 门就不能说是可运行 gold。
 
 ## 4. 输出条件怎么构造
 

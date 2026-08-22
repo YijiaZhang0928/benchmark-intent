@@ -2,11 +2,32 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-21
-当前版本：v0.58（可运行的隐藏 Persona 交互环境）
+最后更新：2026-08-22
+当前版本：v0.59（单交付物任务契约与非处方 Deep Research）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0Y. 2026-08-22：60 题统一为一个主要交付物，DR 排除推荐与规划
+
+本轮按用户要求修改完整 60-family provisional task pool，而不是只改 paper-first 12。冻结的全局输出规则是：**一个 task 只有一个 submission boundary 和一个 `primary_deliverable`**。Deep Research 交付一份 evidence catalog/map/dossier/manifest，Software Engineering 交付一个 repository commit，Data Analysis 交付一个 notebook、workbook 或 versioned pipeline package。表、图、日志、测试、说明和生成文件可以是该主 artifact 的内部组成，但不能成为第二个独立提交物或与主 artifact 平行计分。每题的机器记录写入 `primary_deliverable.unit_count=1`、artifact type、双语 label、允许内嵌组件和禁止独立次交付物；题面只出现一次 `最终交付/Final deliverable`。这统一的是提交与比较单位，不声称三种 artifact 难度或评分量尺等距。
+
+24 个 Deep Research family 的输出模式统一为 `retrieval_synthesis_not_prescriptive`。内部配额冻结为：3 program/resource discovery、3 evidence landscape、6 literature synthesis、3 dataset/resource discovery、2 prior art、2 conflicting-evidence audit、2 temporal update、3 entity/exhaustive research；recommendation/decision 和 open consulting 都为 0。用户可以影响搜索范围、纳入排除、字段优先级、证据阈值、粒度和解释深度，但不能把 task 转回产品选择、治疗选择、投资组合、学校/团队排名、行程或行动计划。仍明显接近个人投资建议的原 DR011 和商务旅行规划的原 DR021 被直接替换，不靠一句“不要推荐”改名：新 DR011 是气候敏感度估计的跨方法证据与争议审计，新 DR021 是罕见病临床试验状态与结果披露的两时点差分。PDR-derived continuity 因此从 12 个降为 10 个；保留的是来源和主题 provenance，不逐字复用上游 recommendation/planning prompt。
+
+当前 24 个 DR 仍必须通过 long-horizon admission gate：多轮 discovery、实体/版本消歧、来源层级、遗漏/覆盖审计，以及 claim–source、lineage、conflict 或 temporal linkage 中至少一项。仅靠普通搜索列几个链接、写长摘要或增加搜索步数不合格。对于 DR persona/CDM，真正的 `must-change` 必须改变 evidence set 或研究设计变量，例如纳入对象、检索空间、证据门槛、必填字段、冲突处理或细化程度；只改变语气、篇幅、排序外观、语言或解释风格的 pair 不进入 gold。这样避免去掉 recommendation 后，personalization 退化为 presentation preference。
+
+审稿攻击与防守必须持续记住：
+
+1. **“去掉推荐后只是 information retrieval。”** 防守不能诉诸字数或搜索次数；需要检索饱和、实体消歧、负检索、版本/谱系/冲突审计和可验证 coverage，并在人类 pilot 中证明用户差异改变 evidence artifact 的内容或证据门槛。若做不到，该 family 淘汰。
+2. **“个性化只剩约束过滤或格式。”** 每个 DR pair 至少一个非表面 difference node 具有用户本人确认的可用性后果；explicit constraint、goal/trade-off、knowledge/audience、history-grounded latent preference、interactive acquisition 五种 signal mode 仍各 12 个，但 signal 配额本身不证明有效，必须看最终 CDM 与 matched/swapped discrimination。
+3. **“一个交付物只是把多个文件塞进 zip。”** 一个交付物定义为唯一可寻址、可 hash 的 submission boundary，不是一个评分项；内部 critical components 仍用 atomic leaves 和 non-compensatory gate 分别验证，manifest 记录内部路径与 verifier coverage。可独立采用、面向不同受众或可单独失败的产物必须拆题。
+4. **“PDR continuity 被人为削弱，无法直接比较。”** 准确表述为 10 个 PDR-source-derived thematic shells，而非 PDR 原题复现；发布 upstream ID、改写规则和 replacement log。直接 PDR 复现由 `data/pdr_import_v0_51/` 与既有压力实验承担，v0.59 pool 只承担更广的任务采样。
+5. **“你们故意回避 decision utility，论文主张变弱。”** 这个方向确实把 DR 终点从最终推荐转为 personalized evidence work。主文 Phase A 可以主张 artifact specificity；Phase B 对 DR 应测可采用性、下游工作节省或 evidence utility，而不是假装每题都有最终选择。若论文仍以 decision utility 为标题级结论，必须在 Software/Data 或少量独立 decision family 中另行验证，不能由非处方 DR 自动推出。
+6. **“内部组件很多，仍会让 judge 自由加权。”** 每题冻结一个容器，但 rubric 不压成一个总体印象分。coverage、正确性、provenance、user-conditioned fit 与 boundary 分别走 verifier/qualified judge；critical leaf 失败不能被写作质量补偿。
+
+机器入口是 `data/plhkw_task_pool_v0_59/tasks_60.md`（60 道具体题面）、`selected_tasks.jsonl`（机器真值）、`catalog.html`（浏览目录）、builder、validator、schema 和 manifest。构建校验已确认 180→60→12 的数量、40/30/30、65/20/15、五种 signal mode、每题一个主交付物和 24 个非处方 DR。Credamo 路由包同步到 `data/credamo_persona_survey_v0_59/`：task cards 直接显示冻结的唯一交付物，DR schema 不再询问推荐/行动计划，而询问发现目标、纳入核验标准、来源、时效、覆盖—深度与冲突综合。仍然没有完成 evidence/repo/dataset binding、真人 ledger、A/B CDM 或 runnable gold；60 题状态保持 provisional。
+
+开放问题：（1）住房、职业/签证、出版渠道、护肤和家庭干预虽为证据型 task，真人是否仍会把它们理解成隐含 recommendation；认知访谈若显示是，应继续替换而不是只改措辞；（2）每个 DR family 能否定义程序可检查的 coverage、lineage、date、entity 或 claim-support minimum；（3）“一个 repository commit/notebook/workbook”在实际环境中如何记录 container manifest 与 internal component failure；（4）paper-first 5 个 DR 是否都能找到两位真实相关且 evidence-set change 非表面的用户；（5）去掉 recommendation 后，Phase B 的统一外部效度终点应是 adoption、time saved、evidence recall 还是 task-specific downstream correctness。
 
 ## 0X. 2026-08-21：隐藏 Persona 的三模式可运行交互环境
 

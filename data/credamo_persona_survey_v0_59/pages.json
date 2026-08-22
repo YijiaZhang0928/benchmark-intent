@@ -1,0 +1,233 @@
+[
+  {
+    "page_id": "A0",
+    "wave": "A",
+    "part": 0,
+    "title": "研究说明",
+    "minutes": [
+      1,
+      1
+    ],
+    "entry": "open_wave_A"
+  },
+  {
+    "page_id": "A1",
+    "wave": "A",
+    "part": 0,
+    "title": "年龄与知情同意",
+    "minutes": [
+      1,
+      2
+    ],
+    "entry": "A0_complete"
+  },
+  {
+    "page_id": "A2",
+    "wave": "A",
+    "part": 1,
+    "title": "基础人口学与当前身份",
+    "minutes": [
+      2,
+      2
+    ],
+    "entry": "adult_and_all_required_consents"
+  },
+  {
+    "page_id": "A3",
+    "wave": "A",
+    "part": 1,
+    "title": "教育、职业和领域",
+    "minutes": [
+      2,
+      3
+    ],
+    "entry": "A2_complete"
+  },
+  {
+    "page_id": "A4",
+    "wave": "A",
+    "part": 1,
+    "title": "Coding、Data 与 Research 经验",
+    "minutes": [
+      2,
+      3
+    ],
+    "entry": "A3_complete"
+  },
+  {
+    "page_id": "A5",
+    "wave": "A",
+    "part": 2,
+    "title": "最近与预期任务经历",
+    "minutes": [
+      1,
+      2
+    ],
+    "entry": "A4_complete"
+  },
+  {
+    "page_id": "A6",
+    "wave": "A",
+    "part": 2,
+    "title": "适配任务卡",
+    "minutes": [
+      3,
+      5
+    ],
+    "entry": "at_least_one_eligible_route"
+  },
+  {
+    "page_id": "A7",
+    "wave": "A",
+    "part": 3,
+    "title": "选择候选任务",
+    "minutes": [
+      1,
+      2
+    ],
+    "entry": "one_or_more_task_cards_eligible"
+  },
+  {
+    "page_id": "A8",
+    "wave": "A",
+    "part": 3,
+    "title": "候选任务真实性核验",
+    "minutes": [
+      3,
+      6
+    ],
+    "entry": "repeat_for_each_selected_candidate_task"
+  },
+  {
+    "page_id": "A9",
+    "wave": "A",
+    "part": 3,
+    "title": "回访授权与结束",
+    "minutes": [
+      1,
+      1
+    ],
+    "entry": "A8_complete"
+  },
+  {
+    "page_id": "B0",
+    "wave": "B",
+    "part": 4,
+    "title": "回访说明与任务状态",
+    "minutes": [
+      1,
+      1
+    ],
+    "entry": "invited_and_assigned_task"
+  },
+  {
+    "page_id": "B1",
+    "wave": "B",
+    "part": 4,
+    "title": "Open-first elicitation",
+    "minutes": [
+      5,
+      8
+    ],
+    "entry": "task_still_relevant"
+  },
+  {
+    "page_id": "B2",
+    "wave": "B",
+    "part": 4,
+    "title": "全任务通用补充",
+    "minutes": [
+      3,
+      5
+    ],
+    "entry": "B1_initial_snapshot_saved"
+  },
+  {
+    "page_id": "B3-DR",
+    "wave": "B",
+    "part": 4,
+    "title": "Deep Research 补充",
+    "minutes": [
+      4,
+      7
+    ],
+    "entry": "vertical=deep_research"
+  },
+  {
+    "page_id": "B3-SW",
+    "wave": "B",
+    "part": 4,
+    "title": "Code 补充",
+    "minutes": [
+      4,
+      7
+    ],
+    "entry": "vertical=software_engineering"
+  },
+  {
+    "page_id": "B3-DA",
+    "wave": "B",
+    "part": 4,
+    "title": "Data 补充",
+    "minutes": [
+      4,
+      7
+    ],
+    "entry": "vertical=data_analysis"
+  },
+  {
+    "page_id": "B4",
+    "wave": "B",
+    "part": 4,
+    "title": "原始回答回看",
+    "minutes": [
+      1,
+      2
+    ],
+    "entry": "vertical_module_complete"
+  },
+  {
+    "page_id": "C0",
+    "wave": "C",
+    "part": 5,
+    "title": "LLM 规范化说明",
+    "minutes": [
+      1,
+      1
+    ],
+    "entry": "offline_normalization_complete"
+  },
+  {
+    "page_id": "C1",
+    "wave": "C",
+    "part": 5,
+    "title": "逐条 fact card 审核",
+    "minutes": [
+      4,
+      7
+    ],
+    "entry": "repeat_for_candidate_facts"
+  },
+  {
+    "page_id": "C2",
+    "wave": "C",
+    "part": 5,
+    "title": "Ledger 总览",
+    "minutes": [
+      1,
+      2
+    ],
+    "entry": "all_fact_cards_reviewed"
+  },
+  {
+    "page_id": "C3",
+    "wave": "C",
+    "part": 5,
+    "title": "结束与撤回说明",
+    "minutes": [
+      1,
+      1
+    ],
+    "entry": "C2_complete"
+  }
+]

@@ -2,7 +2,7 @@
 
 **正式研究 Proposal（组内讨论稿）**
 
-版本：v0.58 · 2026 年 8 月 21 日
+版本：v0.59 · 2026 年 8 月 22 日
 
 定位：Benchmark / Evaluation / Human-Centered Agents
 
@@ -20,7 +20,7 @@ PDR-Bench 已经建立 Deep Research 中 task–persona 条件下的 absolute ad
 
 Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
 
-v0.54 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。这个结果冻结了 task shell、来源、reasoning structure 与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.55 进一步把 persona 与评分链冻结为 **真人真值获取 → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → DeepAlign Judge Qualification Suite（D-JQS）→ hybrid scoring**。v0.56 将真人采集落实为 Credamo 三轮协议：Wave A 只做筛选、路由和 3–5 个候选任务选择；Wave B 从中分配 1 个主任务、最多 1 个次任务做 open-first elicitation；Wave C 在离线 LLM 规范化后逐条由本人确认。v0.57 再按人民币 3,000 元 all-in working ceiling 把首轮收窄为 12-family 构念验证 pilot：每题先取 2 个 confirmed ledger，只为 6 个跨场景 anchor 补第 3 人，目标 30 个 user–task records；该轮不承担 agent 排名或确认性效果结论。v0.58 则把 P2 交互概念落实为零运行依赖的 Python 包：同一 case 可在 Oracle、Naive 和 Interactive 三种模式下通过 `reset()` / `step()` 运行，并完整记录问题匹配、策略拒绝、披露和仍隐藏的属性。v0.50 的 **research episode** 继续统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
+v0.59 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。每题现在只有一个主要交付物容器：DR 为一份 evidence catalog/map/dossier/manifest，Software 为一个 repository commit，Data 为一个 notebook/workbook/versioned pipeline package；步骤中的表、图、日志、测试或说明只能作为内部组成。24 个 DR family 全部改为非处方性的检索、枚举、核验、文献综合、数据集发现、先前技术、证据冲突或时点更新，不要求 recommendation、planning 或替用户做最终选择。这个结果冻结 task shell、来源、reasoning structure、交付边界与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.55 进一步把 persona 与评分链冻结为 **真人真值获取 → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → DeepAlign Judge Qualification Suite（D-JQS）→ hybrid scoring**。v0.56 将真人采集落实为 Credamo 三轮协议：Wave A 只做筛选、路由和 3–5 个候选任务选择；Wave B 从中分配 1 个主任务、最多 1 个次任务做 open-first elicitation；Wave C 在离线 LLM 规范化后逐条由本人确认。v0.57 再按人民币 3,000 元 all-in working ceiling 把首轮收窄为 12-family 构念验证 pilot：每题先取 2 个 confirmed ledger，只为 6 个跨场景 anchor 补第 3 人，目标 30 个 user–task records；该轮不承担 agent 排名或确认性效果结论。v0.58 则把 P2 交互概念落实为零运行依赖的 Python 包：同一 case 可在 Oracle、Naive 和 Interactive 三种模式下通过 `reset()` / `step()` 运行，并完整记录问题匹配、策略拒绝、披露和仍隐藏的属性。v0.50 的 **research episode** 继续统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
 
 这条主线不能声称 agent 内部“在意”或“关心”用户；黑箱 benchmark 无法识别动机。可证伪的行为表述是：**当一份通用报告已经可以完成表面任务、但仍缺少会改变最终决定的用户事实时，agent 是否主动询问高价值问题，并在获得答案后把它落实到交付物。** P2 因而比一般证据冲突更直接地测 user-specificity sensitivity；P4 只能测当前用户状态变化后的响应与旧状态清除，不能被写成“agent 更关心用户”的独立证据。
 
@@ -375,7 +375,7 @@ v0.51 已从 [PDR-Bench 官方仓库](https://github.com/OPPO-PersonalAI/Persona
 
 完整导入只是**资源池**，不是主实验自动成立。PDR 的每个任务原本对应约 5 位相关用户，但 DeepAlign 需要的是其中两位在相同任务下形成可预注册的关键决策分歧。程序已把 250 个官方配对展开成 501 个同任务候选用户对；研究者必须逐对回答：两位用户是否都自然地关心该任务；哪些最小事实会改变最终选择、风险门槛或行动计划；什么必须保持；matched/swapped reference 是否可稳定区分。只有通过双人独立审查和仲裁，才能写入 `must-change / must-hold / must-not / clarify-if-unknown` 并成为一个 DeepAlign family。
 
-导入审计还发现一个上游发布异常：250 条 query 总数正确，但 task 8 公开了 4 位用户，task 10 公开了 6 位用户，而不是每题严格 5 位；中英文配对一致。DeepAlign 原样保留并报告，不补造或删除记录。Health、Finance、Law 三类共 15 个任务在领域专家审查完成前只进入候选/扩展集。v0.54 不再默认把 50 题全部进入主集，而是把它们作为 Deep Research 候选来源，依次经过 relevance、counterfactual separability、invariant core、objective verifier 和 long-horizon 五道门；当前 60-family provisional set 中保留 12 个 PDR-derived shell，具体环境和用户契约尚需人工冻结。机器可读导入、501-pair 审计表和校验器位于 `data/pdr_import_v0_51/`。
+导入审计还发现一个上游发布异常：250 条 query 总数正确，但 task 8 公开了 4 位用户，task 10 公开了 6 位用户，而不是每题严格 5 位；中英文配对一致。DeepAlign 原样保留并报告，不补造或删除记录。Health、Finance、Law 三类共 15 个任务在领域专家审查完成前只进入候选/扩展集。v0.59 不再默认把 50 题全部进入主集，而是把它们作为 Deep Research 候选来源，依次经过 relevance、counterfactual separability、invariant core、objective verifier 和 long-horizon 五道门；当前 60-family provisional set 中保留 10 个 PDR-derived shell，并把 Deep Research 限定为非处方性的检索、核验与证据综合，具体环境和用户契约尚需人工冻结。机器可读导入、501-pair 审计表和校验器位于 `data/pdr_import_v0_51/`。
 
 ### 5.0b PDR 之外补什么：从“再加领域”转向“补研究工作形态”
 
@@ -452,19 +452,21 @@ ICLR 投稿版建议把资源分成三层：
 
 P4 的必要对照包括：旧状态 only、新状态 only、带 `supersedes` 的旧+新状态，以及同长度但任务无关的状态更新。若 agent 连公共证据更新也处理不好，可以作为一般 DR 能力解释，但不能把这类错误计算为“用户特异性失败”。相反，只有共同 TQ/must-hold 稳定、而当前 user-state adoption 失败时，才支持“用户状态更新未被落实”的行为结论。
 
-#### 5.0b.5 v0.54 当前 sampling frame：180 候选→60 provisional→12 主论文优先 family
+#### 5.0b.5 v0.59 当前 sampling frame：180 候选→60 provisional→12 主论文优先 family
 
-v0.54 将“候选资源池”与“正式 benchmark”分开。机器可读候选池共 180 个 normalized seed：Deep Research 72、Software Engineering 54、Data/ML/Spreadsheet 54。按五道作者阶段门——任务相关性、反事实可分性、共同不变核、客观可验证部分、长程准入——预选 60 个 family：DR 24（40%）、Software 18（30%）、Data 18（30%）。这 60 个均是 **provisional task shell**，不是已绑定证据/仓库/数据、已获真人反事实真值或已可直接运行的 benchmark case。
+v0.59 将“候选资源池”与“正式 benchmark”分开。机器可读候选池共 180 个 normalized seed：Deep Research 72、Software Engineering 54、Data/ML/Spreadsheet 54。按五道作者阶段门——任务相关性、反事实可分性、共同不变核、客观可验证部分、长程准入——预选 60 个 family：DR 24（40%）、Software 18（30%）、Data 18（30%）。这 60 个均是 **provisional task shell**，不是已绑定证据/仓库/数据、已获真人反事实真值或已可直接运行的 benchmark case。
+
+所有题冻结一个 submission boundary 和一个 `primary_deliverable`。一个 repository commit 可以内含代码、测试和文档，一个 notebook 可以内含表、图和解释，一份 evidence dossier 可以内含搜索日志和证据表；但这些内部组件不作为平行的第二交付物单独提交或单独补偿计分。这样减少 judge 在多个松散产物之间任意加权的自由度，也使 matched/swapped 的比较单位明确。该规则不是把多个任务语义上打包：若内部组件彼此独立、可单独失败而不影响主 artifact，或需要不同提交边界，该 task 必须拆分或淘汰。
 
 | 代表性场景 | provisional families | 内部结构配额 | 主论文优先 |
 |---|---:|---|---:|
-| Open-web Deep Research | 24 | 6 recommendation/decision；4 literature synthesis；3 open consulting；3 dataset/resource discovery；2 prior-art；2 conflicting evidence；2 temporal update；2 entity/exhaustive search | 5 |
+| Open-web Deep Research | 24 | 3 program/resource discovery；3 evidence landscape；6 literature synthesis；3 dataset/resource discovery；2 prior-art；2 conflicting evidence；2 temporal update；3 entity/exhaustive search | 5 |
 | Repository-level Software Engineering | 18 | 5 feature implementation；4 debugging/remediation；3 refactor/optimization；3 architecture/dependency；3 repo investigation + modification | 3 |
 | Data-centric Analysis | 18 | 6 exploratory/business analysis；4 spreadsheet workflow；4 predictive modeling；2 experiment design；2 cleaning/integration | 4 |
 
-来源结构预选为 39 个 existing-benchmark-derived（65%）、12 个 adapted-real-world（20%）与 9 个 newly-authored（15%）。在 DR 中保留 12 个 PDR-derived family 以建立与最直接前作的 continuity，再用 DeepResearch Bench、ResearcherBench、LiveDRBench 所代表的 reasoning shape 补足 literature landscape、prior art、dataset discovery、conflicting evidence 和 exhaustive search。软件任务只选有 multiple acceptable implementations 的 shell，不把唯一正确 bug fix 强行 persona 化；数据任务将 notebook/business analysis、spreadsheet 和 ML/modeling 分开。
+来源结构预选为 39 个 existing-benchmark-derived（65%）、12 个 adapted-real-world（20%）与 9 个 newly-authored（15%）。在 DR 中保留 10 个 PDR-derived family 的来源和主题 continuity，但不逐字复用其 recommendation/planning prompt；两道仍明显接近个人投资建议和旅行规划的题被气候敏感度证据审计与罕见病临床试验时点差分替换。其余 DR 用 DeepResearch Bench、ResearcherBench、LiveDRBench 所代表的 reasoning shape 补足 literature landscape、prior art、dataset discovery、conflicting evidence 和 exhaustive search。软件任务只选有 multiple acceptable implementations 的 shell，不把唯一正确 bug fix 强行 persona 化；数据任务将 notebook/business analysis、spreadsheet 和 ML/modeling 分开。
 
-来源资产不因“候选”而自动获得可重发布权。PDR-Bench 和 DeepResearch Bench 可依其 Apache-2.0 记录进一步绑定；ResearcherBench、DSBench、DataSciBench 和 SpreadsheetBench 2 当前只借鉴任务结构，在许可审计前不复制原 prompt 或数据；SWE-bench、PaperBench、ScienceAgentBench、DABstep 和 MLE-bench 需逐 repo / task / dataset 核对上游权利。主论文首先完成 12 个端到端 family（5 DR / 3 Software / 4 Data），只有通过资产许可、环境绑定、双人反事实审查、contract freeze 和 pilot discrimination 的 family 才能从 `provisional` 升级。完整资源池、来源登记、筛选审计、schema、校验器与 standalone catalog 位于 `data/plhkw_task_pool_v0_54/`。
+来源资产不因“候选”而自动获得可重发布权。PDR-Bench 和 DeepResearch Bench 可依其 Apache-2.0 记录进一步绑定；ResearcherBench、DSBench、DataSciBench 和 SpreadsheetBench 2 当前只借鉴任务结构，在许可审计前不复制原 prompt 或数据；SWE-bench、PaperBench、ScienceAgentBench、DABstep 和 MLE-bench 需逐 repo / task / dataset 核对上游权利。主论文首先完成 12 个端到端 family（5 DR / 3 Software / 4 Data），只有通过资产许可、环境绑定、双人反事实审查、contract freeze 和 pilot discrimination 的 family 才能从 `provisional` 升级。完整资源池、60 道双语题面、唯一交付物、来源登记、筛选审计、schema、校验器与 standalone catalog 位于 `data/plhkw_task_pool_v0_59/`。
 
 为防止个性化退化为显式约束跟随，60 个 family 的 primary signal mode 对称覆盖 explicit constraint、goal/trade-off、knowledge/audience、history-grounded latent preference 和 interactive information acquisition，各 12 个。任务数量的 40/30/30 不意味三类 episode 计算量或难度相等；跨场景不比 raw success，只比较共同的 specificity、matched/swapped、must-change/hold/not 和 no-harm profile，并在每个 vertical 内单独报告任务正确性。
 
@@ -1100,6 +1102,18 @@ EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompas
 **攻击：**如果 CDM 与两份独立 A/B rubric 给出相同系统结论，就没有方法增量；GAMUT 已覆盖 meta-rubric 编译，RuVerBench 已覆盖 rubric verification。
 
 **防守：**主消融必须比较：（a）PDR-style 单用户动态 absolute rubric；（b）独立 A/B rubric；（c）CDM 对称编译；（d）single judge 与 hybrid scoring。报告哪些 family/system success 判定或排序被 CDM 重分类，以及 CDM 是否在控制一般质量后增量预测盲化 target-user choice/decision outcome。若没有重分类或增量效度，论文只能称为透明的 measurement extension，不能把 compiler 包装成主要创新。[[84]](https://arxiv.org/abs/2606.29920)[[85]](https://arxiv.org/abs/2607.19322)
+
+### 11.28 “去掉推荐与规划后，DR 退化成信息检索，个性化只剩格式差异”
+
+**攻击：**program discovery、entity enumeration 和 evidence catalog 可能只是在做更长的搜索；若两位用户只改变列名、篇幅或语言，benchmark 不再测有后果的 personalization。
+
+**防守：**DR 的 long-horizon gate 不以字数或搜索次数充数：每题必须同时要求多轮 discovery、实体/版本消歧、来源层级、遗漏或覆盖审计，以及 claim–source/lineage/conflict/temporal linkage 中至少一项。更关键的是，DR 的 `must-change` 必须改变可观察的 evidence set 或研究设计变量，例如纳入排除、搜索空间、证据阈值、必填字段、冲突处理或粒度；仅改变语气、长度、排序展示或解释风格的 user pair 不进入 gold。若真人不能确认这些差异会改变该证据 artifact 的可用性，该 family 淘汰而不是靠 persona 文案补救。
+
+### 11.29 “一个交付物只是把多个产物改名塞进 zip，降低了可解释性”
+
+**攻击：**把报告、表格、日志和测试称为“一个 package”可能只是语义重命名；复杂任务仍有多个独立成功标准，作者反而用容器隐藏失败。
+
+**防守：**一个交付物指唯一 submission boundary 和唯一可寻址 artifact，不指一个评分维度。内部组件仍由 atomic leaves 分别验证，critical component 失败不能被其他部分补偿；manifest 记录容器 hash、内部路径和 verifier coverage。只有支持主 artifact 可审计、可运行或可复现的组件才可内嵌，独立面向不同受众或可单独采用的产物必须拆成另一 task。跨 vertical 统一的是提交单位，不声称 repository commit、notebook 与 evidence dossier 难度等距。
 
 ## 12. 预期贡献、成功标准与发表边界
 

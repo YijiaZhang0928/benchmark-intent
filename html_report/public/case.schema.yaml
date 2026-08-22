@@ -1,5 +1,5 @@
 schema_name: deepalign_case
-schema_version: 0.55
+schema_version: 0.59
 description: >-
   Machine-readable blueprint for a DeepAlign-Bench counterfactual family.
   It separates family construction, system mode, execution regime, stress stage,
@@ -41,7 +41,18 @@ task:
   primary_intent: [understand_synthesize, discover_enumerate, compare_decide, assess_forecast, plan_design_troubleshoot, verify_audit]
   secondary_intents: list
   domain: string
-  deliverable_type: [report, decision_memo, table_or_workbook, code_and_docs, slides, webpage, multi_file]
+  output_mode: [retrieval_synthesis_not_prescriptive, repository_modification, data_analysis_artifact]
+  primary_deliverable:
+    unit_count: 1
+    artifact_type: string
+    label: string
+    embedded_components_allowed: true
+    separately_scored_secondary_deliverables: false
+    container_rule: supporting_tables_figures_logs_tests_and_explanations_are_internal_to_the_primary_artifact
+  deep_research_boundary:
+    required_when: knowledge_work_regime_equals_open_web_research
+    prescriptive_recommendation_forbidden: true
+    allowed_user_conditioned_effects: [scope, inclusion_or_exclusion, field_priority, evidence_threshold, granularity, explanation_depth]
   demand_profile:
     conceptual_breadth: [low, medium, high]
     logical_nesting: [shallow, intermediate, deep]

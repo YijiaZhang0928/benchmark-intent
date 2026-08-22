@@ -1,5 +1,5 @@
 protocol_name: deepalign_construction_annotation
-protocol_version: 0.55
+protocol_version: 0.59
 status: pre_pilot
 purpose: >-
   Separate imported facts, pre-run human judgments, and post-pilot empirical
@@ -56,6 +56,8 @@ task_seed_funnel:
     - invariant task, evidence or asset, tools and resource budget
     - objective verifier for shared correctness plus user-conditioned utility checks
     - long-horizon eligibility with dependent steps, multiple valid paths and a complex artifact
+    - exactly one primary deliverable and one submission boundary; supporting components remain internal
+    - open-web research is retrieval/synthesis, not recommendation or planning
   post_selection_hard_gates:
     - source_asset_license_audit
     - evidence_repository_dataset_or_workbook_binding

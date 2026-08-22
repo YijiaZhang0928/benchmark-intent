@@ -2,9 +2,9 @@
 
 **正式研究 Proposal 精简版**
 
-版本：v0.58 · 2026 年 8 月 21 日
+版本：v0.59 · 2026 年 8 月 22 日
 定位：Benchmark / Evaluation / Personalized Long-Horizon Knowledge Work
-方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.58
+方法基线：《DeepAlign-Bench 正式研究 Proposal》v0.59
 
 ---
 
@@ -14,7 +14,7 @@
 
 DeepAlign-Bench 为同一 task family 构造两位都真实合理的用户 A/B。v0.55 不再让 LLM 为 A/B 各自临时生成 rubric，而先从真人 task-conditioned ledger 构造带 provenance、authority、direction 与 acceptable alternatives 的 **Counterfactual Difference Map（CDM）**，再编译成可执行 leaf。系统生成 task-only 和两份 matched artifact，冻结标准交叉评价。结果不压成总分，而同时报告双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量/事实 no-harm 与边界 no-violation。协议实例化在 open-web research、repository software engineering 和 data-centric analysis 三个场景；不声称穷尽所有知识工作。
 
-v0.54 任务资源池有 180 个候选 seed（72 DR / 54 Software / 54 Data）。五道作者阶段门预选 60 个 provisional family（24 / 18 / 18），来源为 39 benchmark-derived、12 adapted-real-world、9 newly-authored。这 60 个是等待许可审计、环境绑定、双人反事实审查、contract freeze 和 pilot discrimination 的 task shell，不是已可运行 gold。主论文优先完成 12 个端到端 family（5 DR / 3 Software / 4 Data）。
+v0.59 任务资源池有 180 个候选 seed（72 DR / 54 Software / 54 Data）。五道作者阶段门预选 60 个 provisional family（24 / 18 / 18），来源为 39 benchmark-derived、12 adapted-real-world、9 newly-authored。每题只允许一个主要交付物容器；24 个 DR 只产出 program/resource catalog、evidence landscape/map、literature synthesis、dataset manifest、prior-art dossier、conflict audit、temporal diff 或 entity catalog，不再要求 recommendation/planning。10 个 PDR-derived family 仅保留来源和主题 continuity，不逐字复用原推荐题面。这 60 个是等待许可审计、环境绑定、双人反事实审查、contract freeze 和 pilot discrimination 的 task shell，不是已可运行 gold。主论文优先完成 12 个端到端 family（5 DR / 3 Software / 4 Data）。
 
 2026-08-12 的两-family、本地 Qwen3-8B PDR-compatible 压力测试给出明确 go 信号：general-good 报告 4/4 次与 matched 相差不超过 0.5 分；over-personalized 报告只有 1/4 次接近 matched，因此不支持“普遍误判”的强 claim；两个 family 的 `A_min` 均很高，但 `CFA_min` 分别为 −1.50 与 0.00，证明绝对合格与双向特异性可以脱钩。该结果不是官方 PDR 复现；下一步必须用经授权的 GPT-5 配置和两名盲化人评复现。
 
@@ -66,14 +66,14 @@ CDM 是关系对象 `C(T,E,U_a,U_b)`，不是两份独立 rubric：每个 node �
 
 1. **P0：**无任务相关用户信息且不可问，作为一般高质量基线。
 2. **P1：**开始前一次性给完整事实，测 information use；structured persona 与等义 history 可作为载体消融。
-3. **P2：**初始 query 足以做通用研究，但隐藏 1–2 个会改变建议的事实；agent 必须主动问，模拟器只按 ledger 回答。
+3. **P2：**初始 query 足以开始工作，但隐藏 1–2 个会改变纳入范围、证据阈值、实现或分析重点的事实；agent 必须主动问，模拟器只按 ledger 回答。
 4. **P4：**研究中在控制 checkpoint 注入覆盖旧事实的更新，测 replanning、旧状态清除与未变事实保持。
 
 系统不支持 ask、memory retrieval 或 checkpoint 时标记 `structurally-inapplicable`，不能算零分。P1 的 persona/history 可进入 cue-equivalence；P2/P4 改变了获取或时序机制，不能机械视为等价 cue。v0.50 已生成 3 个纯合成工程 family、6 位用户和 24 个平衡 episode，并通过结构校验；它们只用于 schema/runner/rubric vertical slice，真实用户效度尚未建立。
 
 v0.58 已实现统一 Python `reset()` / `step()` 环境。A Oracle 在 reset 向 agent 提供完整 persona；B Naive 只向 agent 提供 task，但 LLM simulator 可见完整 persona 且没有 reveal policy；C Interactive 隐藏 persona，先用不含值的 attribute descriptor 分类问题，再由 importance graph 与 reveal policy 选择披露，response backend 只收到本轮获准值。每步记录 matched、policy-denied、newly/cumulatively revealed 与 still-hidden ID；`run_episode` 可包装 callable 或带 `act()` 的任意 agent。默认 rule backend 用于离线 smoke，正式结果需固定 LLM backend 并以真人轨迹校准。B/C 同时改变 simulator 信息访问与披露行为，不可解释为纯 agent effect。
 
-v0.51 已完整导入 [PDR-Bench](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 的 50 tasks、25 structured personas、25 contexts 和 250 官方 pairs，并展开为 501 个候选用户对。v0.54 不再默认跑完 50 题，而是选出 12 个 PDR-derived shell 进入 DR provisional set。原配对只说明 task relevance，不保证 counterfactual separability；因此仍需人工冻结用户契约和 evidence world。
+v0.51 已完整导入 [PDR-Bench](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 的 50 tasks、25 structured personas、25 contexts 和 250 官方 pairs，并展开为 501 个候选用户对。v0.59 不再默认跑完 50 题，而是保留 10 个 PDR-derived shell 的来源/主题 continuity，并把仍明显接近个人投资建议和旅行规划的两题替换成研究型 shell。原配对只说明 task relevance，不保证 counterfactual separability；因此仍需人工冻结用户契约和 evidence world。
 
 ## 5. 运行条件、受约束 rubric 与 judge 资格
 

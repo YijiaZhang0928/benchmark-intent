@@ -1,5 +1,5 @@
 protocol_name: deepalign_credamo_persona_collection
-protocol_version: 0.56
+protocol_version: 0.59
 status: implementation_ready_pending_ethics_and_platform_pilot
 purpose: >-
   Recruit task-relevant adult participants and construct human-confirmed,
@@ -9,7 +9,9 @@ purpose: >-
 claim_boundary:
   target_population: adults_for_whom_at_least_one_offered_task_is_realistically_relevant
   does_not_estimate: prevalence_of_personalization_need_in_the_general_population
-  task_pool_status: 60_provisional_task_families_not_60_validated_gold_cases
+  task_pool_status: 60_v0_59_provisional_task_families_not_60_validated_gold_cases
+  task_output_contract: one_primary_deliverable_container_per_task
+  deep_research_output_contract: non_prescriptive_retrieval_and_synthesis
 
 deployment:
   platform: Credamo
@@ -113,7 +115,7 @@ task_relevance_gate:
       ineligible: [no]
   selected_task_authenticity:
     minimum_open_text_characters: 30
-    asks_for: [specific_recent_or_current_situation, intended_user_or_audience, next_action]
+    asks_for: [specific_recent_or_current_situation, intended_user_or_audience, next_use]
     reviewer_rule: relevance_is_decided_before_pair_contrast_is_known
 
 elicitation_order:
@@ -130,7 +132,7 @@ elicitation_order:
     changed_after_schema_label: prompted_contaminated
   open_questions:
     - concrete_real_situation
-    - desired_artifact_and_next_action
+    - desired_primary_artifact_contents_and_next_use
     - personal_or_organizational_conditions_that_change_a_good_result
     - unacceptable_result_and_consequence
     - information_the_ai_should_ask_for

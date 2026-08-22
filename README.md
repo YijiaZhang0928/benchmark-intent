@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.58（可运行个性化交互环境）
+## 当前方向：DeepAlign-Bench v0.59（单交付物任务契约）
 
 DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据/仓库/数据、工具和预算相同时，最终研究报告、代码 patch 或分析交付物是否真的因目标用户不同而作出正确且有益的改变。当前只声称跨 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性场景实例化一个共同协议，不声称覆盖所有知识工作。
 
@@ -16,6 +16,8 @@ v0.57 将约人民币 3,000 元视为包含平台费用的暂定 all-in ceiling�
 
 v0.58 新增零运行依赖的 `deepalign_bench` Python 包，把 P2 的隐藏用户交互落实为统一 `reset()` / `step()` 环境。每个 case 固定 task、hidden persona、attribute importance graph 和 reveal policy；A Oracle 在 reset 直接提供完整 persona，B Naive 让完整 persona 对用户模拟器可见但不执行披露策略，C Interactive 只把本轮获准属性值交给响应 backend。每步记录问题分类、matched/denied 属性、newly/cumulative revealed、still-hidden 和泄漏拦截；`run_episode` 可包装 callable 或带 `act()` 的任意 agent。默认 rule backend 用于完全离线 smoke，`JSONLLMSimulatorBackend` 可接任意 structured-LLM provider。
 
+v0.59 把 60 个 provisional task family 统一为“一个提交边界、一个主要交付物”。DR 交付一份 evidence catalog/map/dossier/manifest，Software 交付一个 repository commit，Data 交付一个 notebook/workbook/versioned pipeline package；表、图、日志、测试和说明只能作为内部组成。24 个 Deep Research 题全部改成 program/resource discovery、evidence landscape、literature synthesis、dataset discovery、prior art、conflicting-evidence audit、temporal diff 或 exhaustive entity research，不再要求 recommendation/planning。保留 10 个 PDR-derived family 的来源/主题 continuity；仍明显靠近个人投资建议和旅行规划的两题已替换为气候敏感度证据审计与罕见病临床试验时点差分。
+
 项目内 judge 校准改名 **DeepAlign Judge Qualification Suite（D-JQS）**，避免与既有 JudgeBench/JUDGE-BENCH 混淆。D-JQS 混合确定违规、单一受控编辑和自然真人 artifact，并把 calibration 与 hidden qualification 按 family/user/source/agent/edit lineage/time 隔离；AB/BA 之外单独测试长度、style、格式、关键词、引用数与语言。关键 leaf slice 未通过时必须转 deterministic/human/coarse binary，不能靠多个失败 judge 投票掩盖。
 
 v0.47 的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 获得绝对高分且 4/4 接近 matched；但 over-personalized 报告只有 1/4 接近 matched。v0.48 已在任何新结果产生前冻结更严格的 GPT-5 复现：精确使用 PDR-Bench 官方中文 P-Score prompts、5 次权重采样、四维 criteria pipeline、4 个 task family、20 份固定报告、A/B 全交叉评分和 3 次 judge 重复。当前 OpenRouter key 有效且可见 GPT-5，但请求在进入模型前被账户/地域层 provider Terms of Service 403 阻断，尚无 GPT-5 criteria 或分数。冻结资产不变，获得受支持的 key 后可从 smoke 断点继续。
@@ -26,7 +28,7 @@ v0.50 将一次性运行、研究前主动澄清、研究中交互、checkpoint 
 
 v0.51 完整导入 PDR-Bench 公开的 50 tasks、25 structured personas、25 annotator-simulated contexts 和 250 官方 task-user pairs，保存上游 commit、哈希与许可证，并展开成 501 个同任务用户对供人工反事实筛选。全量导入不等于全量主实验：目标主集约 12–20 个通过决策分歧、contract、证据和人评门的 family。GPT-5 OpenRouter smoke 在 2026-08-14 再次于 inference 前被 provider Terms of Service 403 阻断；runner 已增加官方 OpenAI API transport，等待合规 key。
 
-v0.54 已建立 180 个 normalized candidate seeds（72 DR / 54 Software / 54 Data），并经五道作者阶段门预选 60 个 provisional families（24 / 18 / 18）。来源结构为 39 existing-benchmark-derived、12 adapted-real-world、9 newly-authored；五种个性化信号模式各 12 个。这 60 个是带 provenance、筛选记录与 verifier 计划的任务 shell，不是已可运行 gold；主论文优先完成 12 个（5 DR / 3 Software / 4 Data），然后才将通过许可、环境绑定、双人反事实审查、contract freeze 与 pilot discrimination 的 family 升级。
+v0.59 的机器构建仍包含 180 个 normalized candidate seeds（72 DR / 54 Software / 54 Data），并经五道作者阶段门预选 60 个 provisional families（24 / 18 / 18）。来源结构为 39 existing-benchmark-derived、12 adapted-real-world、9 newly-authored；五种个性化信号模式各 12 个。这 60 个是带 provenance、筛选记录与 verifier 计划的任务 shell，不是已可运行 gold；主论文优先完成 12 个（5 DR / 3 Software / 4 Data），然后才将通过许可、环境绑定、双人反事实审查、contract freeze 与 pilot discrimination 的 family 升级。
 
 ## 当前交付物
 
@@ -34,10 +36,10 @@ v0.54 已建立 180 个 normalized candidate seeds（72 DR / 54 Software / 54 Da
 - [`interaction_env/manifest.json`](interaction_env/manifest.json)：package 版本、公开 API、运行入口、schema/example/test 路径和验证命令。
 - [`src/deepalign_bench/data/demo_case.json`](src/deepalign_bench/data/demo_case.json)：包含 task、hidden persona、importance graph 和 reveal policy 的完整可运行 case。
 - [`benchmark_schema/interaction_environment.schema.yaml`](benchmark_schema/interaction_environment.schema.yaml)：三模式、`reset/step`、最小化、逐步日志、校准要求与主张边界的机器协议。
-- [`data/plhkw_task_pool_v0_54/README.md`](data/plhkw_task_pool_v0_54/README.md)：180 候选、60-family provisional selection、来源/许可登记、筛选审计、JSONL/CSV/schema、standalone catalog 和校验入口。
+- [`data/plhkw_task_pool_v0_59/tasks_60.md`](data/plhkw_task_pool_v0_59/tasks_60.md)：按 vertical 展开的 60 道完整题面与唯一主要交付物；同目录含 JSONL/CSV、180 候选池、来源/许可登记、筛选审计、standalone catalog、schema 和校验器。
 - [`proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md`](proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md)：三轮 21 页流程、全部题目文本、题型、跳转、质控、时长、报酬和平台搭建说明。
-- [`deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf`](deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf)：逐页检查后的 26 页送审/搭建版；同名 DOCX 可编辑。
-- [`data/credamo_persona_survey_v0_56/README.md`](data/credamo_persona_survey_v0_56/README.md)：覆盖 60 个任务的页面、题库、task cards、路由矩阵、质控规则、manifest 与校验器。
+- [`deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.59.pdf`](deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.59.pdf)：与单交付物、非处方 DR task cards 同步的送审/搭建版；同名 DOCX 可编辑。
+- [`data/credamo_persona_survey_v0_59/README.md`](data/credamo_persona_survey_v0_59/README.md)：覆盖 v0.59 任务池的页面、题库、task cards、路由矩阵、质控规则、manifest 与校验器。
 - [`benchmark_schema/credamo_persona_collection.protocol.yaml`](benchmark_schema/credamo_persona_collection.protocol.yaml)：Credamo 三轮采集、open-first、事实确认、隐私、覆盖和报酬的机器协议。
 - [`benchmark_schema/human_ground_truth.protocol.yaml`](benchmark_schema/human_ground_truth.protocol.yaml)：真人 task 选择、开放 elicitation、ledger、authority、pairing、盲化 artifact validation 与隐私协议。
 - [`benchmark_schema/counterfactual_difference_map.schema.yaml`](benchmark_schema/counterfactual_difference_map.schema.yaml)：成对用户的 change/hold/equivalence/forbidden/clarify 关系真值与双冻结 schema。

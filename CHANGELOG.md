@@ -1,12 +1,22 @@
 # benchmark-intent 设计迭代记录
 
-## v0.59 PDR persona-projection rubric audit - 2026-08-22
+## Unreleased PDR persona-projection rubric audit - 2026-08-22
 
 - 对齐 PDR-Bench 的 50 tasks、25 structured personas、250 task–user pairs、agent episode 输入、P/Q/R 粗指标与公开动态细则；确认细则生成 prompt 明确要求从 persona 推断潜在兴趣、深层需求、理解水平和表达偏好。
 - 审计公开 `criteria150_en.jsonl` 的 150 个 episode、9,005 条细则：P-Score 细则中 52.7% 含字面 `whether`，70.6% 呈清单式判断表面，34.9% 含“是否提及/包含/提供”存在性词；这些是保守词面风险信号，不作为语义无效比例。
 - 记录宠物/家庭安排、女性科技社群、带狗恢复跑、把居住经历和猫意象写入小说、由人口属性推断自媒体受众等高猜测性例子；区分明确约束、合理因果桥接和未经用户确认的 persona 投射。
 - 发现公开细则只覆盖 30 个 task，而非论文附录所述 50 task × 3 persona 的结构；将其限定为公开资源可复现性问题，不据此推断论文主实验样本错误。
 - 提出 DeepAlign 防线候选：leaf provenance、compiler-only inference 零确认性权重、决策后果测试、无关个性化负约束、matched/swapped 与 token-stuffing 对照，以及 judge evidence span。正式 proposal/schema 尚未据此改动，待用户确认和人工 leaf 标注 pilot。
+
+## v0.59 Single-deliverable task contracts and non-prescriptive DR - 2026-08-22
+
+- 新建 `data/plhkw_task_pool_v0_59/`，保留 180 候选、60 provisional family、12 paper-first 与 40/30/30、65/20/15、五种 signal mode 配额，同时为全部 60 题冻结唯一 `primary_deliverable`、双语题面和 submission-boundary 规则。
+- 将 24 个 Deep Research 题全部改为 program/resource discovery、evidence landscape、literature synthesis、dataset discovery、prior art、conflicting-evidence audit、temporal diff 或 exhaustive entity research；recommendation/decision 与 open consulting 配额归零。
+- 直接替换仍明显靠近个人投资建议和商务旅行规划的两题：DR011 改为气候敏感度跨方法证据审计，DR021 改为罕见病临床试验两时点差分；PDR-derived thematic continuity 从 12 个收紧为 10 个。
+- 新增 `tasks_60.md` 人类可读主入口，并扩展 JSONL/CSV/schema/catalog/manifest/validator；机器校验每题只出现一个 final deliverable，辅助表、图、日志、测试和说明只能作为主 artifact 内部组成。
+- 将 Credamo 包同步到 `data/credamo_persona_survey_v0_59/`：task cards 显示唯一交付物，DR 补充 schema 删除推荐、行动计划与“最佳方案”诱导，改问发现目标、纳入/核验标准、来源、时效、覆盖—深度和冲突综合。
+- 同步正式 proposal、正式精简版、人话版、导师 brief、Credamo 实施手册、机器 protocol、README、项目记忆、HTML 下载资源和 standalone 路径；新增“DR 退化为检索”“一个 artifact 只是打包改名”“PDR continuity 弱化”“外部效度终点改变”等 reviewer attacks 与防守。
+- 保持 claim boundary：60 题仍是 provisional task shell，不是 evidence/repo/data 已绑定、真人 CDM 已冻结或可运行的 benchmark gold；主论文仍优先 12 个端到端 family。
 
 ## v0.58 Runnable hidden-persona interaction environment - 2026-08-21
 

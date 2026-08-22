@@ -1,5 +1,5 @@
 protocol_name: deepalign_data_factory
-protocol_version: 0.55
+protocol_version: 0.59
 annotation_protocol: construction_annotation.protocol.yaml
 human_ground_truth_protocol: human_ground_truth.protocol.yaml
 difference_map_schema: counterfactual_difference_map.schema.yaml
@@ -29,6 +29,14 @@ plhkw_sampling_frame:
       existing_benchmark_derived: 39
       adapted_real_world: 12
       newly_authored: 9
+    output_contract:
+      primary_deliverables_per_task: 1
+      supporting_components_must_be_internal: true
+      separately_scored_secondary_deliverables: false
+    deep_research_contract:
+      output_mode: retrieval_synthesis_not_prescriptive
+      recommendation_decision_tasks: 0
+      open_consulting_tasks: 0
   paper_priority_set:
     total: 12
     by_regime:
@@ -79,6 +87,8 @@ construction_stages:
       - remove benchmark-specific answer cues
       - record provenance, license and contamination risk
       - map to task stratum, primary intent, domain, deliverable, demand and stakes
+      - freeze exactly one primary deliverable and one submission boundary
+      - for open-web research, reject recommendation/planning outputs and require evidence-set or research-design personalization
       - deduplicate semantically similar seeds before writing personas
     output: normalized task seed
 

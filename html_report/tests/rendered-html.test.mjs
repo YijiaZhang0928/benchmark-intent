@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the DeepAlign-Bench v0.58 report", async () => {
+test("server-renders the DeepAlign-Bench v0.59 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -30,6 +30,8 @@ test("server-renders the DeepAlign-Bench v0.58 report", async () => {
   assert.match(html, /D-JQS/);
   assert.match(html, /180 candidate seeds/);
   assert.match(html, /60 provisional families/);
+  assert.match(html, /One primary artifact each/);
+  assert.match(html, /24 个 DR 只产出检索、核验或综合型 evidence artifact/);
   assert.match(html, /12 families：5 \/ 3 \/ 4/);
   assert.match(html, /CFA_min/);
   assert.match(html, /General-good 近 matched/);
@@ -43,18 +45,21 @@ test("server-renders the DeepAlign-Bench v0.58 report", async () => {
   assert.match(html, /href="\/human_ground_truth\.protocol\.yaml"/i);
   assert.match(html, /href="\/credamo_persona_collection\.protocol\.yaml"/i);
   assert.match(html, /href="\/credamo_question_bank\.json"/i);
-  assert.match(html, /href="\/DeepAlign-Bench_Credamo真人Persona问卷方案_v0\.56\.pdf"/i);
+  assert.match(html, /href="\/DeepAlign-Bench_Credamo真人Persona问卷方案_v0\.59\.pdf"/i);
   assert.match(html, /href="\/judge_qualification\.protocol\.yaml"/i);
   assert.match(html, /href="\/interaction_environment\.schema\.yaml"/i);
   assert.match(html, /href="\/interaction_demo_case\.json"/i);
   assert.match(html, /href="\/interaction_env_manifest\.json"/i);
   assert.match(html, /href="\/plhkw_task_catalog\.html"/i);
+  assert.match(html, /href="\/plhkw_tasks_60\.md"/i);
+  assert.match(html, /href="\/plhkw_selected_tasks\.jsonl"/i);
+  assert.match(html, /href="\/DeepAlign-Bench_PLHKW任务资源池_v0\.59\.svg"/i);
   assert.match(html, /href="\/plhkw_selected_tasks\.csv"/i);
   assert.match(html, /href="\/plhkw_paper_first_12\.csv"/i);
   assert.doesNotMatch(html, /ElicitAlign-Bench/);
 });
 
-test("keeps v0.58 resources, schemas and downloadable artifacts in sync", async () => {
+test("keeps v0.59 resources, schemas and downloadable artifacts in sync", async () => {
   const [schema, metrics, episodeSchema, seed, cdm, humanTruth, judgeQualification, credamoProtocol, questionBank, interactionProtocol, interactionCase] = await Promise.all([
     readFile(new URL("../public/case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/metric_binding.schema.yaml", import.meta.url), "utf8"),
@@ -68,7 +73,7 @@ test("keeps v0.58 resources, schemas and downloadable artifacts in sync", async 
     readFile(new URL("../public/interaction_environment.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/interaction_demo_case.json", import.meta.url), "utf8"),
   ]);
-  assert.match(schema, /schema_version:\s*0\.55/);
+  assert.match(schema, /schema_version:\s*0\.59/);
   assert.match(schema, /knowledge_work_regime/);
   assert.match(schema, /M7_data_analysis_agent/);
   assert.match(schema, /fuzzy_query_clarification/);
@@ -83,7 +88,7 @@ test("keeps v0.58 resources, schemas and downloadable artifacts in sync", async 
   assert.match(humanTruth, /deep_elicitation_tasks_per_participant:\s*1_primary_and_at_most_1_secondary/);
   assert.match(judgeQualification, /short_name:\s*D-JQS/);
   assert.match(judgeQualification, /hidden_qualification/);
-  assert.match(credamoProtocol, /protocol_version:\s*0\.56/);
+  assert.match(credamoProtocol, /protocol_version:\s*0\.59/);
   assert.match(credamoProtocol, /open_first/);
   assert.match(questionBank, /"question_id":\s*"O01"/);
   assert.match(interactionProtocol, /schema_version:\s*0\.58/);
@@ -95,6 +100,9 @@ test("keeps v0.58 resources, schemas and downloadable artifacts in sync", async 
     access(new URL("../public/DeepAlign-Bench_真人真值到D-JQS_v0.55.png", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_真人真值到D-JQS_v0.55.svg", import.meta.url)),
     access(new URL("../public/plhkw_task_catalog.html", import.meta.url)),
+    access(new URL("../public/plhkw_tasks_60.md", import.meta.url)),
+    access(new URL("../public/plhkw_selected_tasks.jsonl", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_PLHKW任务资源池_v0.59.svg", import.meta.url)),
     access(new URL("../public/plhkw_selected_tasks.csv", import.meta.url)),
     access(new URL("../public/plhkw_paper_first_12.csv", import.meta.url)),
     access(new URL("../public/pdr_candidate_pair_audit.csv", import.meta.url)),
@@ -107,8 +115,8 @@ test("keeps v0.58 resources, schemas and downloadable artifacts in sync", async 
     access(new URL("../public/DeepAlign-Bench_完整人话版.pdf", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_汇报精简版.docx", import.meta.url)),
     access(new URL("../public/DeepAlign-Bench_汇报精简版.pdf", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.docx", import.meta.url)),
-    access(new URL("../public/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.pdf", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.59.docx", import.meta.url)),
+    access(new URL("../public/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.59.pdf", import.meta.url)),
     access(new URL("../public/credamo_task_cards.jsonl", import.meta.url)),
     access(new URL("../public/credamo_routing_matrix.jsonl", import.meta.url)),
     access(new URL("../public/credamo_quality_rules.json", import.meta.url)),

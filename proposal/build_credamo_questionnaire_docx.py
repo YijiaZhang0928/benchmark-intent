@@ -7,7 +7,7 @@ import build_proposal_docx as base
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "proposal" / "DeepAlign-Bench_Credamo真人Persona问卷方案.md"
-OUTPUT = ROOT / "deliverables" / "DeepAlign-Bench_Credamo真人Persona问卷方案_v0.56.docx"
+OUTPUT = ROOT / "deliverables" / "DeepAlign-Bench_Credamo真人Persona问卷方案_v0.59.docx"
 
 
 def build() -> None:
@@ -19,8 +19,8 @@ def build() -> None:
     base.COVER_TITLE = "DeepAlign-Bench"
     base.COVER_SUBTITLE = "真人 Task-conditioned Persona 三轮问卷方案"
     base.COVER_MODE = "Consent · Screening · Routing · Open-first Elicitation · Human Confirmation"
-    base.DOC_VERSION = "v0.56 · 可搭建草案"
-    base.DOC_DATE = "2026 年 8 月 20 日"
+    base.DOC_VERSION = "v0.59 · 单交付物任务契约版"
+    base.DOC_DATE = "2026 年 8 月 22 日"
     base.RESEARCH_LINE = "Wave A：筛选与候选任务 · Wave B：开放先行深采 · Wave C：逐条确认"
     base.CORE_CLAIM = "不让参与者直接编 persona；只从真实相关任务出发，把开放原话经来源约束的规范化和本人确认转化为后台 ledger。"
     base.CONTENTS_ITEMS = [
@@ -36,7 +36,7 @@ def build() -> None:
     base.FIGURE_TRIGGER = "__NO_FIGURE_IN_SURVEY_GUIDE__"
     base.FIGURE_TITLE = ""
     base.FIGURE_CAPTION = ""
-    base.RUNNING_HEADER = "DEEPALIGN-BENCH  ·  CREDAMO PERSONA SURVEY  ·  v0.56"
+    base.RUNNING_HEADER = "DEEPALIGN-BENCH  ·  CREDAMO PERSONA SURVEY  ·  v0.59"
     base.STYLE_PRESET = "compact_reference_guide"
     base.INCLUDE_CONTENTS = True
     base.build(SOURCE, OUTPUT)
