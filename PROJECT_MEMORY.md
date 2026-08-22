@@ -2,11 +2,25 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-21
-当前版本：v0.58（可运行的隐藏 Persona 交互环境）
+最后更新：2026-08-22
+当前版本：v0.59（PDR-Bench Persona 投射与细 rubric 构念审计）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0Z. 2026-08-22：PDR-Bench Persona 投射与细 rubric 可骗性审计
+
+本轮把 PDR-Bench 的 50 个公开 task、25 个结构化 persona、250 个 task–user pair、agent episode 输入、粗粒度 P/Q/R 指标和公开 `criteria150_en.jsonl` 逐层对齐。主设置给 agent 的 episode 输入只是完整 task 加完整 persona JSON；细 rubric 生成器也同时看到二者，并被明确要求从背景、认知习惯、潜在兴趣、理解水平和沟通风格中推断“深层隐含需求”。因此，PDR 的个性化分数不是只核验 persona 中明确陈述且与任务有因果关系的约束；它还把 rubric 生成模型的 persona→偏好投射当成了条件性评分真值。
+
+公开细则文件含 150 个 episode、9,005 条动态细则，其中 P-Score 5,535 条、Q-Score 3,470 条；每个 episode 总计 53–72 条，均值约 60.0。保守英文正则审计显示，P 细则中 52.7% 含字面 `whether`，70.6% 含 `whether/check if/assess if/evaluate if/determine whether/looks for/verifies` 一类清单式表面，34.9% 含 `include/provide/mention/list/coverage/presence` 一类“有没有写到”的存在性词，28.4% 同时没有检测到决策后果词或显式失败/禁止词。该统计只是词面风险信号，不等于 70.6% 都无效；真正的高风险组合是：推断未经用户确认、leaf 只奖励提及 persona token、同一猜测跨 Goal/Content/Actionability 重复计权、且没有“无关个性化不得加入”的负向约束。
+
+样例审计确认两类情况并存。合理细则包括预算、时间线、签证/安全、疾病风险、明确的知识水平和可执行阈值；高猜测性细则则包括：由养猫和家庭信息推出交换期间必须安排宠物照护及父母沟通，由女性身份推出女性科技社群，由马拉松题中的养狗信息推出带狗恢复跑，由北京/长沙生活经历推出言情小说必须采用相应校园、咖啡馆、美食和猫意象，以及由职业、性别和兴趣拼出自媒体的目标人群。这些不是 persona 原文明确偏好，而是 rubric compiler 生成的可疑桥接假设；报告只要把这些 token 明显写进去，就可能在不改善任务决策或交付物效用的情况下获得多个 leaf 的加分。
+
+另发现论文叙述与公开资源的覆盖不一致：论文附录描述为从 250 query 中为每个 50 task 选 3 个 persona 得 150，再进一步选 50；公开 `criteria150_en.jsonl` 实际只覆盖 30 个 task，基本保留各 task 的全部 5 个 persona，并保留 task 8=4、task 10=6 的上游异常。缺少公开细 rubric 的 task 是 3、4、6、9、11、15、16、20、23、24、27、28、33、34、36、39、43、46、47、50。这个差异不能直接证明论文主实验用错样本，但意味着公开细则不能被表述成“50 个 task 各 3 persona 的完整细 rubric”。
+
+测量结论：PDR 的人类校准让人类和 LLM 使用同一套生成细则，主要验证的是“给定细则后如何打分”的一致性，不能验证 persona→细则的构念效度。现阶段应把 PDR 动态细则视为有用的 comparative diagnostic，而不是 DeepAlign 的 gold。DeepAlign 的候选防线仍需在真人 pilot 后冻结：（1）每个 persona-derived leaf 标记 `task_explicit/persona_explicit/user_confirmed_inference/compiler_inference` provenance；（2）`compiler_inference` 只作诊断，确认性分数权重为 0；（3）每条正向 leaf 要能回答“满足它会改变哪个选择、证据集合、阈值或用户后果”，否则降为非计分 presentation note；（4）增加 irrelevant-personalization 负向约束、matched/swapped 和 persona-token stuffing 对照；（5）judge 必须给出 artifact evidence span 与反事实理由，不能只判断“是否考虑到 X”。
+
+开放问题：（1）上述英文词面审计需要在公开中文细则上复核，检查翻译是否改变表面比例；（2）需要双人盲标一部分 leaf，估计“明确约束／合理桥接／未确认猜测／刻板或无关投射”的比例和一致性；（3）应做删除 persona token、替换错误 persona token、保留决策结构三种最小编辑实验，量化 judge 的关键词可骗性；（4）若把这组证据写进正式 proposal，应把批评限定为 rubric construction validity 与 public-resource reproducibility，不应否定 PDR 对 absolute adaptation 的整体贡献。
 
 ## 0X. 2026-08-21：隐藏 Persona 的三模式可运行交互环境
 

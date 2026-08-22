@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.59 PDR persona-projection rubric audit - 2026-08-22
+
+- 对齐 PDR-Bench 的 50 tasks、25 structured personas、250 task–user pairs、agent episode 输入、P/Q/R 粗指标与公开动态细则；确认细则生成 prompt 明确要求从 persona 推断潜在兴趣、深层需求、理解水平和表达偏好。
+- 审计公开 `criteria150_en.jsonl` 的 150 个 episode、9,005 条细则：P-Score 细则中 52.7% 含字面 `whether`，70.6% 呈清单式判断表面，34.9% 含“是否提及/包含/提供”存在性词；这些是保守词面风险信号，不作为语义无效比例。
+- 记录宠物/家庭安排、女性科技社群、带狗恢复跑、把居住经历和猫意象写入小说、由人口属性推断自媒体受众等高猜测性例子；区分明确约束、合理因果桥接和未经用户确认的 persona 投射。
+- 发现公开细则只覆盖 30 个 task，而非论文附录所述 50 task × 3 persona 的结构；将其限定为公开资源可复现性问题，不据此推断论文主实验样本错误。
+- 提出 DeepAlign 防线候选：leaf provenance、compiler-only inference 零确认性权重、决策后果测试、无关个性化负约束、matched/swapped 与 token-stuffing 对照，以及 judge evidence span。正式 proposal/schema 尚未据此改动，待用户确认和人工 leaf 标注 pilot。
+
 ## v0.58 Runnable hidden-persona interaction environment - 2026-08-21
 
 - 新增零运行依赖的 `deepalign_bench` Python package：Task、hidden persona、attribute importance graph、attribute reveal policy、统一 `reset/step` 环境、JSON loader、trace export、CLI 与 arbitrary-agent `run_episode` wrapper。
