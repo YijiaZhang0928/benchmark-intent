@@ -1,0 +1,293 @@
+protocol_name: deepalign_credamo_persona_collection
+protocol_version: 0.56
+status: implementation_ready_pending_ethics_and_platform_pilot
+purpose: >-
+  Recruit task-relevant adult participants and construct human-confirmed,
+  task-conditioned user ledgers for Personalized Long-Horizon Knowledge Work
+  without asking participants to author personas or letting an LLM invent user facts.
+
+claim_boundary:
+  target_population: adults_for_whom_at_least_one_offered_task_is_realistically_relevant
+  does_not_estimate: prevalence_of_personalization_need_in_the_general_population
+  task_pool_status: 60_provisional_task_families_not_60_validated_gold_cases
+
+deployment:
+  platform: Credamo
+  recommended_structure: three_linked_questionnaires
+  waves:
+    - id: A
+      name: screening_routing_and_candidate_selection
+      output: 3_to_5_participant_selected_candidate_tasks
+      estimated_minutes: [10, 15]
+    - id: B
+      name: task_conditioned_open_first_elicitation
+      output: one_primary_and_at_most_one_secondary_raw_task_record
+      estimated_minutes_per_task: [15, 22]
+    - id: C
+      name: llm_normalization_human_confirmation
+      output: human_confirmed_task_conditioned_ledger
+      estimated_minutes_per_task: [5, 8]
+  reason_for_multiple_waves: >-
+    Credamo public materials advertise multi-wave and paired surveys, while
+    real-time external LLM/API piping was not verified in public documentation.
+    Offline normalization plus recontact prevents unreviewed model output from
+    entering the ground truth and avoids sending open text to an unapproved API.
+  platform_features_to_verify_before_launch:
+    - stable_anonymous_participant_id_across_waves
+    - branch_and_display_logic
+    - block_or_item_randomization
+    - quota_by_task_and_route
+    - prefill_or_import_of_normalized_fact_cards
+    - response_version_and_page_timestamps
+    - disabling_back_navigation_or_preserving_initial_open_response_snapshot
+
+ethics_gate:
+  recruitment_may_start_only_after:
+    - institutional_ethics_or_irb_status_is_approved_or_exempt_as_applicable
+    - final_consent_text_is_approved
+    - data_controller_processor_and_storage_locations_are_documented
+    - retention_withdrawal_and_recontact_procedures_are_tested
+    - the_llm_normalization_processor_and_data_transfer_path_are_approved
+  minimum_age: 18
+  sensitive_data_instruction: do_not_enter_names_employers_clients_credentials_or_confidential_material
+  compensation_not_conditioned_on:
+    - being_selected_for_a_pair
+    - having_a_contrastive_persona
+    - agreeing_with_the_llm_normalization
+    - researcher_post_hoc_judgment_of_usefulness
+
+task_routing:
+  prohibited_inputs: [gender, age_band_beyond_adult_gate, ethnicity, unrelated_demographics]
+  allowed_inputs:
+    - education_field
+    - occupation_function
+    - industry_or_research_domain
+    - coding_data_research_experience
+    - recent_or_expected_real_task_experience
+    - ability_to_answer_without_confidential_information
+  candidate_generation:
+    hard_filter: vertical_capability_or_domain_match
+    high_risk_rule: require_real_context_or_relevant_professional_or_personal_decision_role
+    slate_size_target: [10, 15]
+    composition:
+      strong_match: 8
+      transferable_or_adjacent: 2
+      undercovered_among_eligible: 2
+      optional_explore_all_entry: true
+    order: randomized_within_match_tier
+  required_exposure_logs:
+    - offered_task_ids
+    - route_rule_version
+    - match_tier
+    - display_order
+    - card_opened
+    - relevance_response
+    - experience_response
+    - confidentiality_feasibility
+    - selected_candidate_tasks
+    - assigned_deep_elicitation_tasks
+  coverage_aware_assignment:
+    participant_selects_candidates: [3, 5]
+    deep_elicitation_tasks_per_participant: [1, 2]
+    assignment_priority:
+      - participant_realism_and_relevance
+      - participant_experience
+      - safe_nonconfidential_answerability
+      - undercoverage_bonus
+      - burden_limit
+    never_assign_if: [hypothetical_only, no_relevant_experience, unsafe_to_answer]
+
+task_relevance_gate:
+  required_per_displayed_task:
+    relevance_status:
+      type: single_choice
+      eligible: [current_real_need, past_12_months, likely_next_12_months]
+      ineligible: [interesting_but_hypothetical, not_relevant]
+    experience_status:
+      type: single_choice
+      eligible: [understand_context, contributed_to_similar_task, responsible_for_similar_task]
+      ineligible: [cannot_judge]
+    safe_answerability:
+      type: single_choice
+      eligible: [yes_without_sensitive_details, yes_after_generalization]
+      ineligible: [no]
+  selected_task_authenticity:
+    minimum_open_text_characters: 30
+    asks_for: [specific_recent_or_current_situation, intended_user_or_audience, next_action]
+    reviewer_rule: relevance_is_decided_before_pair_contrast_is_known
+
+elicitation_order:
+  strict_order:
+    - open_questions_snapshot
+    - global_structured_completion
+    - vertical_specific_schema
+    - raw_response_review
+    - offline_llm_normalization
+    - human_fact_level_confirmation
+  open_first_integrity:
+    schema_hidden_until_open_page_submitted: true
+    initial_open_response_snapshot_required: true
+    changed_after_schema_label: prompted_contaminated
+  open_questions:
+    - concrete_real_situation
+    - desired_artifact_and_next_action
+    - personal_or_organizational_conditions_that_change_a_good_result
+    - unacceptable_result_and_consequence
+    - information_the_ai_should_ask_for
+  response_options_required_everywhere_applicable:
+    - uncertain
+    - no_preference
+    - not_applicable
+    - prefer_not_to_answer
+
+vertical_modules:
+  deep_research:
+    constructs:
+      - goal_and_decision_use
+      - background_and_prior_search
+      - scope_language_time_and_access_constraints
+      - source_and_evidence_threshold
+      - breadth_depth_and_freshness
+      - decision_criteria
+      - false_inclusion_false_exclusion_tradeoff
+      - uncertainty_and_action_threshold
+  software_engineering:
+    constructs:
+      - language_framework_and_version
+      - runtime_deployment_and_tooling_environment
+      - compatibility_and_api_constraints
+      - dependency_policy
+      - maintainer_team_and_documentation
+      - testing_and_regression_expectation
+      - performance_budget
+      - security_privacy_and_permissions
+      - rollout_reversibility
+  data_analysis:
+    constructs:
+      - business_or_scientific_decision_objective
+      - decision_owner_and_audience
+      - primary_secondary_and_guardrail_metrics
+      - asymmetric_error_costs
+      - interpretability_requirement
+      - descriptive_predictive_or_causal_claim_boundary
+      - compute_time_and_reproducibility
+      - deployment_or_handoff_context
+      - data_privacy_and_access_constraints
+
+normalization:
+  timing: after_wave_B_submission
+  llm_role: extraction_and_normalization_only
+  llm_authority_weight: zero
+  raw_text_treatment: untrusted_participant_data_not_model_instructions
+  candidate_fact_required_fields:
+    - fact_id
+    - task_id
+    - category
+    - normalized_value
+    - verbatim_source_span
+    - source_question_id
+    - origin_label
+    - model_and_prompt_version
+    - confidence
+  prohibited:
+    - inferring_demographics_or_sensitive_traits
+    - resolving_ambiguity_without_marking_uncertain
+    - adding_facts_without_a_source_span
+    - merging_distinct_tasks_without_user_confirmation
+  no_source_span_action: reject_candidate_fact
+
+human_confirmation:
+  repeated_fact_actions: [approve, edit, delete, uncertain]
+  additional_fields:
+    - importance
+    - flexibility
+    - acceptable_alternatives
+    - invalidating_condition
+    - valid_until_or_reconfirm_event
+    - allowed_for_backend_reasoning
+    - allowed_to_show_test_agent
+    - allowed_in_deidentified_release
+  final_confirmation:
+    - summary_is_accurate_enough_for_this_task
+    - missing_or_overstated_fact_check
+    - separate_optional_recontact_consent
+
+quality_control:
+  hard_exclusions:
+    - no_consent
+    - under_18
+    - duplicate_or_fraud_confirmed_by_multiple_signals
+    - nonsensical_or_empty_open_responses_after_manual_review
+    - no_task_passes_relevance_experience_and_safe_answerability
+    - participant_declines_backend_use_for_all_confirmed_facts
+  soft_flags_not_automatic_exclusions:
+    - completion_time_below_one_third_of_pilot_median
+    - internal_contradiction
+    - repeated_text_across_tasks
+    - unusually_uniform_grid_answers
+    - comprehension_check_failure
+    - llm_candidate_low_source_span_coverage
+  consistency_resolution: show_neutral_follow_up_and_allow_correction_or_explanation
+  compensation_rule: pay_completed_wave_unless_predeclared_fraud_or_noncompletion_rule_applies
+  prohibited_quality_practices:
+    - automatic_exclusion_by_ai_text_detector
+    - excluding_neutral_or_noncontrastive_users
+    - using_speed_alone_as_fraud_proof
+    - rejecting_for_disagreeing_with_llm_summary
+    - retroactively_inventing_quality_thresholds_after_pairing
+
+coverage_targets:
+  raw_minimum_per_task: 2
+  recommended_recruitment_target_per_task: 3_to_4_confirmed_ledgers
+  reason: allow_attrition_pairing_and_noncontrastive_cases
+  dashboard_stages:
+    - offered
+    - relevance_eligible
+    - selected_candidate
+    - assigned
+    - elicitation_complete
+    - ledger_confirmed
+    - pairable
+    - cdm_qualified
+  pair_types_to_preserve: [contrast, near_neighbor, neutral_invariance]
+
+time_and_compensation:
+  planning_estimates_minutes:
+    wave_A: [10, 15]
+    wave_B_per_task: [15, 22]
+    wave_C_per_task: [5, 8]
+  recommended_effective_hourly_rate_cny:
+    general_participant: [40, 60]
+    scarce_professional_or_domain_expert: [80, 150]
+  example_rewards_cny:
+    wave_A_completed: [8, 12]
+    wave_B_per_task: [15, 22]
+    wave_C_per_task: [6, 10]
+  lock_after_pilot: use_p50_and_p75_completion_time_and_attrition_not_theoretical_minimum
+  full_60_warning: >-
+    A direct-incentive budget of CNY 3000 is appropriate only for a limited
+    pilot or the minimum two-ledger target without quality buffer. It is not a
+    credible commitment for 180-240 confirmed ledgers plus screening,
+    recontact, professional top-ups, and platform fees.
+
+reporting:
+  statistical_cluster: participant
+  primary_benchmark_unit: task_family
+  publish:
+    - complete_recruitment_funnel
+    - route_and_quota_versions
+    - completion_time_distribution
+    - compensation_by_wave
+    - exclusion_and_soft_flag_counts
+    - attrition_between_waves
+    - task_coverage_by_qualification_stage
+    - participant_overlap_across_tasks
+  do_not_publish_by_default: [raw_open_text, direct_identifiers, private_ledgers]
+
+sources:
+  - title: Credamo official site
+    url: https://www.credamo.com/
+    supports: public_claims_about_sample_pool_random_experiment_multi_wave_and_paired_surveys
+  - title: 科技伦理审查办法（试行）
+    url: https://www.gov.cn/zhengce/zhengceku/202310/content_6908045.htm
+    supports: human_participant_ethics_review_consent_privacy_compensation_and_data_governance_gate

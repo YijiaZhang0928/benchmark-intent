@@ -1,0 +1,78 @@
+protocol_name: deepalign_judge_qualification_suite
+short_name: D-JQS
+protocol_version: 0.55
+status: pre_pilot
+description: >-
+  A project-local qualification instrument for rubric judges. The name avoids
+  presenting DeepAlign's calibration set as the first or only JudgeBench. A judge
+  applies frozen criteria; it does not decide which criteria should exist.
+
+gold_sources:
+  - source: deterministic_known_violation
+    examples: [forbidden_dependency, failed_test, invalid_formula, privacy_disclosure, unsupported_citation]
+  - source: controlled_single_edit
+    examples: [matched_to_wrong_user_decision, mention_only, critical_constraint_reversal, style_only, length_only]
+  - source: natural_human_artifact
+    examples: [blinded_target_user_preference, domain_expert_fact_check, adjudicated_real_agent_output]
+
+artifact_classes:
+  - matched
+  - wrong_user
+  - mention_only
+  - over_personalized
+  - general_good
+  - critical_constraint_violation
+  - neutral_pair
+  - insufficient_evidence
+
+split_policy:
+  splits: [authoring_dev, judge_selection_calibration, hidden_qualification]
+  grouped_disjointness: [task_family, user, source_lineage, target_agent, artifact_edit_lineage, time]
+  threshold_tuning_on_hidden_qualification: prohibited
+  hidden_qualification_reported_once: true
+
+nuisance_and_order_controls:
+  pair_order: [AB, BA]
+  balanced_permutation_subset: true
+  controlled_nuisance_edits: [length, verbosity, style, formatting, position, persona_keywords, citation_count, language_or_translation]
+  repeated_sampling_role: sampling_noise_only_not_systematic_bias_removal
+  inconsistent_pair_policy: abstain_or_escalate
+
+judge_task:
+  input: frozen_atomic_leaf_plus_authorized_context
+  output_required: [verdict, confidence, artifact_evidence_span, insufficiency_or_abstention_reason]
+  may_invent_new_criteria: false
+  may_view_artifact_class_label: false
+
+metrics:
+  - critical_error_recall
+  - macro_accuracy_or_f1_by_leaf_class
+  - human_agreement
+  - evidence_localization_precision_and_recall
+  - abstention_coverage_and_selective_risk
+  - order_consistency
+  - nuisance_flip_rate
+  - calibration_brier_or_ece
+  - subgroup_and_vertical_gap
+
+qualification:
+  preregister_thresholds_and_confidence_intervals: true
+  qualify_by_slice_not_only_global_average: true
+  eligible_slices: [objective_claim_support, user_specific_tradeoff, prioritization, actionability, boundary_or_permission]
+  deterministic_verifier_validation_required: true
+  verifier_validation: [known_positive_negative_cases, mutation_testing_when_applicable, false_accept_estimate, false_reject_estimate, coverage_report]
+  failure_policy:
+    critical_slice_failure: human_or_deterministic_route_only
+    unstable_pairwise: second_independent_route_or_human_adjudication
+    low_coverage: report_not_applicable_or_coarse_binary
+    prohibited: average_multiple_failed_judges_to_claim_qualification
+
+independence_and_disclosure:
+  avoid_same_model_family_for_agent_compiler_and_judge_when_feasible: true
+  disclose_model_family_overlap: true
+  panel_is_not_proof_of_independence: true
+  family_overlap_ablation: required_when_feasible
+
+reporting:
+  publish: [split_manifest, gold_source_mix, slice_denominators, thresholds, confidence_intervals, disagreement_matrix, abstention, cost, latency]
+  claim_boundary: calibrated_for_declared_slices_and_version_not_universal_judge_reliability

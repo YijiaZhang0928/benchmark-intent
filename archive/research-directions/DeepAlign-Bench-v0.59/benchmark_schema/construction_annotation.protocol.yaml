@@ -1,0 +1,148 @@
+protocol_name: deepalign_construction_annotation
+protocol_version: 0.59
+status: pre_pilot
+purpose: >-
+  Separate imported facts, pre-run human judgments, and post-pilot empirical
+  measurements so task/persona gold is not inferred from model outputs.
+
+annotation_layers:
+  A_imported_or_automatic:
+    timing: before_authoring
+    fields: [source_id, source_type, consent_or_license, evidence_snapshot_hash, capture_time, tool_and_budget_configuration]
+    policy: automatic extraction is allowed, but provenance must be human-audited
+  B_pre_run_human:
+    timing: before_reference_artifacts_and_model_runs
+    fields:
+      - primary_intent
+      - task_stratum
+      - stakes_and_reversibility
+      - interaction_need
+      - research_paradigm_id
+      - information_event_schedule
+      - source_origin_and_access_mode
+      - adapter_capability_eligibility
+      - offered_eligible_selected_task_funnel
+      - fact_origin_spontaneous_prompted_na_declined
+      - task_relevance_of_user_facts
+      - counterfactual_axes
+      - counterfactual_difference_map_nodes
+      - must_change
+      - must_hold
+      - must_not
+      - clarify_if_unknown
+      - rubric_node_applicability
+    policy: >-
+      LLMs may propose high-recall candidate labels and rationales but have zero
+      authority. Persona owners confirm their own goals, tradeoffs, invalidating
+      conditions and decision consequences. Two trained humans independently
+      audit provenance, observability, atomicity, redundancy and stereotype risk;
+      a domain expert assesses technical fact, feasibility and safety only. An
+      adjudicator freezes disagreements. All reviewers are blind to target outputs.
+  C_post_pilot_empirical:
+    timing: after_pre_run_freeze
+    fields: [observed_difficulty, completion_and_failure_rate, matched_swapped_discrimination, target_user_preference, judge_human_agreement, residual_error_codes]
+    policy: never overwrite the pre-run expectation; store expected and observed separately
+
+task_seed_funnel:
+  collect: 180_normalized_candidate_seeds
+  candidate_regime_quotas: {open_web_research: 72, repository_software_engineering: 54, data_centric_analysis: 54}
+  normalize_and_deduplicate: true
+  author_stage_provisional_target: 60_families_24_research_18_software_18_data
+  paper_priority_target: 12_families_5_research_3_software_4_data
+  final_freeze_target: only_families_passing_human_environment_and_pilot_gates
+  inclusion_gates:
+    - relevance to a real decision, workflow or knowledge-use context
+    - counterfactual separability between two natural users
+    - invariant task, evidence or asset, tools and resource budget
+    - objective verifier for shared correctness plus user-conditioned utility checks
+    - long-horizon eligibility with dependent steps, multiple valid paths and a complex artifact
+    - exactly one primary deliverable and one submission boundary; supporting components remain internal
+    - open-web research is retrieval/synthesis, not recommendation or planning
+  post_selection_hard_gates:
+    - source_asset_license_audit
+    - evidence_repository_dataset_or_workbook_binding
+    - two_human_counterfactual_screen_and_adjudication
+    - must_change_hold_not_contract_freeze
+    - matched_swapped_and_no_harm_pilot_discrimination
+
+persona_recruitment:
+  target_participants: 32_to_40
+  tasks_per_participant: 3_to_5_selected_from_randomized_or_stratified_slate
+  elicitation_minutes: 45_to_75_total_with_family_specific_follow_up
+  selection_funnel_logs: [offered, eligible, selected, skipped_with_reason]
+  elicitation_order: open_unprompted_then_structured_then_user_confirmation
+  elicitation_fields: [goal_and_success_criterion, prior_knowledge_and_terminology, hard_and_soft_constraints, risk_tolerance_and_reversibility, audience_and_workflow, permissions_and_disclosure_boundary, current_state_and_recent_task_relevant_events]
+  fact_origin_labels: [spontaneous, prompted, not_applicable, declined]
+  uncertainty_fields: [confidence, acceptable_alternatives, invalidating_conditions, timestamp, expiry_or_reconfirmation]
+  provenance_tiers:
+    real_user_gold: two consented users independently fit the same invariant task shell
+    user_anchored: one real user plus a minimal counterfactual edit validated by a second comparable participant
+    synthetic_control: allowed only for stress tests, nuisance controls and privacy-preserving examples
+  naturalness_rule: >-
+    Natural history comes from a participant's recalled events, diary or consented
+    trace, or a line-by-line participant-confirmed paraphrase. Annotator-invented
+    biography is not gold.
+  anti_stereotype_rule: demographic attributes never imply preferences, constraints or risk policy
+
+fact_ledger_required_fields:
+  - fact_id
+  - category
+  - normalized_value
+  - source_record_id
+  - origin_label
+  - user_confirmation_status
+  - confidence
+  - acceptable_alternatives
+  - invalidating_conditions
+  - timestamp
+  - reliability
+  - sensitivity
+  - allowed_for_reasoning
+  - allowed_to_disclose
+  - task_relevance
+  - decision_consequence
+  - contract_links
+
+counterfactual_pairing:
+  pair_types: [contrast, near_neighbor, neutral_invariance]
+  changed_axes_target: 0_to_4_depending_on_pair_type
+  preregistered_selection_algorithm: required
+  pairing_team_blind_to_target_outputs: true
+  report_all_candidate_and_rejected_pairs: true
+  required:
+    - identical invariant task, evidence snapshot, tools and budget
+    - each changed fact has a user-confirmed decision consequence
+    - must-change and acceptable alternatives are frozen before outputs
+    - must-hold and must-not are symmetric unless justified in writing
+  validation:
+    - target users blind-review matched, swapped and task-only reference artifacts
+    - domain expert reviews shared factual and task quality
+    - structured persona and natural history pass cue-equivalence audit
+    - neutral pairs do not reward gratuitous changes
+
+authority_matrix:
+  persona_owner: own_goal_preference_tradeoff_audience_workflow_invalidating_condition_and_decision_consequence
+  trained_annotator: provenance_observability_atomicity_redundancy_and_stereotype_audit
+  domain_expert: technical_fact_evidence_feasibility_and_safety_only
+  conflict_policy: unresolved_conflicts_are_excluded_or_written_as_conditional_branches
+
+persona_owner_artifact_validation:
+  final_rubric_wording_hidden: true
+  matched_swapped_identity_blinded: true
+  order_randomized: true
+  time_separated_from_ledger_confirmation: true
+  role: external_validity_not_the_only_contract_gold
+
+reliability_reporting:
+  unit: task_family
+  hard_fields: exact_agreement_and_adjudication_rate
+  nominal_or_multilabel_fields: krippendorff_alpha_or_gwet_ac1_as_preregistered
+  disagreement_use: revise_codebook_or_drop_unstable_field
+  repeated_user_sensitivity: cluster_or_multi_membership_analysis_by_user
+
+leakage_controls:
+  - freeze layer_B labels and contracts before evaluated outputs
+  - keep train_dev_test separate by family, user and source lineage
+  - never revise expected failure labels to match observed failures
+  - keep private source records separate from publishable persona views
+  - log all LLM suggestions and final human edits

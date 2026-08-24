@@ -1,0 +1,139 @@
+dataset_id: deepalign_seed_v0_50
+dataset_role: synthetic_control_for_schema_and_harness_only
+created_at: 2026-08-14
+schema_version: "0.50"
+families:
+  - family_id: F0501_team_knowledge_platform
+    task:
+      stratum: professional_enterprise
+      primary_intent: compare_decide
+      domain: enterprise_software
+      deliverable: decision_memo
+      invariant_core: >-
+        Compare three team knowledge platforms using the frozen product pack and
+        recommend a six-week pilot, including costs, migration risks, governance
+        and success metrics.
+      fuzzy_query: >-
+        Please compare the three knowledge platforms in the attached pack and
+        recommend which one our team should pilot, with a practical rollout plan.
+      evidence_world_id: EW0501_frozen_product_pack
+      shared_requirements: [compare_all_three, cite_pack_evidence, include_costs, include_migration_risks, propose_six_week_pilot]
+    user_pair:
+      - user_id: U0501A
+        natural_summary: >-
+          Operations lead for an 18-person research consultancy choosing its first
+          shared knowledge platform after client material has been scattered across drives.
+        facts:
+          - {fact_id: F0501A_SECURITY, category: constraint, value: client documents may not leave the company-managed cloud tenant, relevance: critical}
+          - {fact_id: F0501A_ADMIN, category: workflow, value: no dedicated administrator is available, relevance: critical}
+          - {fact_id: F0501A_BUDGET, category: constraint, value: recurring software budget is at most USD 450 per month, relevance: useful}
+        expected_decision: choose the managed-tenant option that satisfies residency and requires no dedicated administrator
+      - user_id: U0501B
+        natural_summary: >-
+          Platform engineer for a 20-person security lab that already operates containers
+          and accepts maintenance overhead in exchange for control and auditability.
+        facts:
+          - {fact_id: F0501B_SECURITY, category: constraint, value: source notes must remain on lab-controlled infrastructure, relevance: critical}
+          - {fact_id: F0501B_ADMIN, category: workflow, value: one engineer can spend four hours per week maintaining the platform, relevance: critical}
+          - {fact_id: F0501B_AUDIT, category: goal, value: full audit logs and exportable backups outrank editing convenience, relevance: critical}
+        expected_decision: choose the self-hostable option with verifiable audit and backup controls
+    contracts:
+      must_change:
+        - decision must follow each user's hosting boundary and administration capacity
+        - pilot risks and owner assignments must fit each user's operating model
+      must_hold: [same product facts, same three candidates, same six-week horizon, evidence limitations remain visible]
+      must_not: [do not infer security policy from job title, do not claim an option satisfies a requirement absent evidence]
+      clarify_if_unknown: [hosting boundary, available administration capacity]
+    p4_updates:
+      U0501A: {old_fact_id: F0501A_BUDGET, new_fact_id: F0501A_BUDGET_UPDATE, new_value: procurement approves up to USD 800 per month if no new headcount is required, expected_effect: widen price-feasible options but preserve managed-tenant and no-admin constraints}
+      U0501B: {old_fact_id: F0501B_ADMIN, new_fact_id: F0501B_ADMIN_UPDATE, new_value: the maintenance owner is reassigned and only one hour per week remains, expected_effect: reconsider self-hosting and explicitly surface the control-versus-operability tradeoff}
+
+  - family_id: F0502_cross_border_family_trip
+    task:
+      stratum: everyday_personal
+      primary_intent: plan_design_troubleshoot
+      domain: travel_planning
+      deliverable: report
+      invariant_core: >-
+        Research two feasible seven-day itineraries from Shanghai to Japan using
+        the frozen transport and attraction pack, then recommend an itinerary with
+        daily pacing, reservation dependencies, fallback options and a budget table.
+      fuzzy_query: >-
+        Help us plan a seven-day Japan trip from Shanghai. Compare two sensible
+        routes and give us a bookable itinerary with budget and backups.
+      evidence_world_id: EW0502_frozen_travel_pack
+      shared_requirements: [two_routes, seven_days, transport_dependencies, daily_budget, cancellation_fallbacks]
+    user_pair:
+      - user_id: U0502A
+        natural_summary: >-
+          Two adults travelling with a six-year-old child; they value predictable
+          days and want to avoid changing hotels repeatedly.
+        facts:
+          - {fact_id: F0502A_PACE, category: constraint, value: at most two scheduled attractions per day, relevance: critical}
+          - {fact_id: F0502A_HOTELS, category: preference, value: no more than one hotel change, relevance: critical}
+          - {fact_id: F0502A_BUDGET, category: constraint, value: land budget is CNY 18000 excluding international flights, relevance: critical}
+        expected_decision: choose the slower route with one base change and child-compatible fallback days
+      - user_id: U0502B
+        natural_summary: >-
+          Two adults making a first Japan trip who prefer broad city coverage and
+          accept early departures and frequent transfers.
+        facts:
+          - {fact_id: F0502B_COVERAGE, category: goal, value: cover Tokyo Kyoto and Osaka in the same trip, relevance: critical}
+          - {fact_id: F0502B_PACE, category: preference, value: up to four scheduled stops per day is acceptable, relevance: critical}
+          - {fact_id: F0502B_BUDGET, category: constraint, value: land budget is CNY 24000 excluding international flights, relevance: critical}
+        expected_decision: choose the three-city route with explicit transfer and fatigue safeguards
+    contracts:
+      must_change:
+        - route, hotel changes and daily pacing must reflect the target user's constraints
+        - reservations and fallback days must be prioritized differently by family needs
+      must_hold: [same transport facts, same seven-day duration, realistic travel times, budget arithmetic]
+      must_not: [do not infer mobility or medical conditions, do not exceed a hard budget without an explicit alternative]
+      clarify_if_unknown: [traveller composition and pacing, required city coverage, land budget]
+    p4_updates:
+      U0502A: {old_fact_id: F0502A_HOTELS, new_fact_id: F0502A_HOTELS_UPDATE, new_value: the family can accept two hotel changes if both transfers are luggage-forwarded, expected_effect: allow one additional city while preserving low daily pace}
+      U0502B: {old_fact_id: F0502B_COVERAGE, new_fact_id: F0502B_COVERAGE_UPDATE, new_value: Kyoto becomes optional because one traveller must attend a Tokyo meeting on day four, expected_effect: re-optimize around Tokyo and remove stale three-city language}
+
+  - family_id: F0503_research_literature_workflow
+    task:
+      stratum: academic_frontier
+      primary_intent: compare_decide
+      domain: research_tooling
+      deliverable: decision_memo
+      invariant_core: >-
+        Compare three literature-review workflows from a frozen capability and
+        pricing pack and recommend a four-week pilot, including retrieval coverage,
+        screening workflow, citation export, reproducibility and evaluation criteria.
+      fuzzy_query: >-
+        Compare the three literature-review workflows in the materials and recommend
+        which one we should pilot for our next project, with an evaluation plan.
+      evidence_world_id: EW0503_frozen_research_tool_pack
+      shared_requirements: [compare_three_workflows, retrieval_coverage, screening, citation_export, reproducibility, four_week_pilot]
+    user_pair:
+      - user_id: U0503A
+        natural_summary: >-
+          A small HCI lab preparing a systematic review where two junior researchers
+          will screen papers and every inclusion decision must be auditable.
+        facts:
+          - {fact_id: F0503A_AUDIT, category: goal, value: dual screening and exportable decision logs are mandatory, relevance: critical}
+          - {fact_id: F0503A_SKILL, category: knowledge, value: screeners can use spreadsheets but cannot maintain custom code, relevance: critical}
+          - {fact_id: F0503A_BUDGET, category: constraint, value: pilot budget is USD 300, relevance: useful}
+        expected_decision: choose the low-code workflow with dual screening and complete export logs
+      - user_id: U0503B
+        natural_summary: >-
+          An ML methods group running monthly living reviews with engineering support
+          and prioritizing reproducible APIs and automated deduplication.
+        facts:
+          - {fact_id: F0503B_API, category: goal, value: API access and versioned reproducibility are mandatory, relevance: critical}
+          - {fact_id: F0503B_SKILL, category: workflow, value: one engineer can maintain a scripted pipeline, relevance: critical}
+          - {fact_id: F0503B_SCALE, category: constraint, value: approximately 5000 records arrive each month, relevance: critical}
+        expected_decision: choose the programmable workflow with API, automation and versioned exports
+    contracts:
+      must_change:
+        - recommendation and pilot success metrics must reflect auditability versus automation needs
+        - implementation ownership and training plan must match available skills
+      must_hold: [same capability evidence, same three workflows, reproducibility limits, four-week pilot]
+      must_not: [do not equate an advertised feature with validated performance, do not expose unpublished query strings outside the authorized team]
+      clarify_if_unknown: [required audit trail or API, maintenance capacity, monthly record volume]
+    p4_updates:
+      U0503A: {old_fact_id: F0503A_SKILL, new_fact_id: F0503A_SKILL_UPDATE, new_value: a research engineer can support setup for the first four weeks but not ongoing maintenance, expected_effect: permit a scripted setup only if the handoff remains low-code and auditable}
+      U0503B: {old_fact_id: F0503B_SCALE, new_fact_id: F0503B_SCALE_UPDATE, new_value: the first pilot will contain only 600 records but must scale later, expected_effect: change pilot thresholds without dropping long-term scalability from the decision}

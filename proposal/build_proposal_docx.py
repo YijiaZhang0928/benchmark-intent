@@ -10,31 +10,31 @@ from docx.oxml.ns import qn
 from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 ROOT = Path(__file__).resolve().parents[1]
-MD = ROOT / "proposal" / "DeepAlign-Bench_研究Proposal.md"
-FIG = ROOT / "proposal_assets" / "DeepAlign-Bench_真人真值到D-JQS_v0.55.png"
-OUT = ROOT / "deliverables" / "DeepAlign-Bench_正式研究Proposal.docx"
+MD = ROOT / "proposal" / "AskInfer-Bench_研究Proposal.md"
+FIG = ROOT / "proposal_assets" / "AskInfer-Bench_评测框架_v0.60.png"
+OUT = ROOT / "deliverables" / "AskInfer-Bench_正式研究Proposal.docx"
 
 # The formal proposal is the default. Communication variants override these
 # module-level values from build_readable_variants.py while reusing the same
 # deterministic layout and Markdown parser.
 COVER_KICKER = "RESEARCH PROPOSAL"
-COVER_TITLE = "DeepAlign-Bench"
-COVER_SUBTITLE = "三个长程知识工作场景中的反事实用户特异性"
-COVER_MODE = "Personalization · Long-Horizon Knowledge Work · Evaluation"
-DOC_VERSION = "v0.59 · 单交付物任务契约版"
-DOC_DATE = "2026 年 8 月 22 日"
-RESEARCH_LINE = "Adequacy · Specificity · Benefit · No-Harm · Boundary"
-CORE_CLAIM = "固定任务、证据、工具和预算，检验最终交付物是否随目标用户发生双向正确变化，并同时通过绝对合格、通用回答收益、共同质量与边界门。"
+COVER_TITLE = "Ask or Infer?"
+COVER_SUBTITLE = "Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents"
+COVER_MODE = "Preference Acquisition · History Inference · Final Utilization"
+DOC_VERSION = "v0.60 · Ask / Infer 主线冻结版"
+DOC_DATE = "2026 年 8 月 24 日"
+RESEARCH_LINE = "Ask Calibration · Evidence-Bounded Inference · Counterfactual Delivery"
+CORE_CLAIM = "评价 agent 是否把有限问题预算投向真正改变交付物的偏好，并在用户离线时只从有证据的 history 推断；排名反转是待检验结果。"
 CONTENTS_ITEMS = [
-    "研究问题与可证伪假设", "Case、Task 与用户真值", "User-information channels",
-    "反事实矩阵与非补偿评分", "CDM、D-JQS 与 PDR 压力测试", "统计与外部验证",
-    "逐周执行门、贡献与主张边界", "参考文献",
+    "Ask / Infer 情境与可证伪假设", "同任务 δ 操纵与真人真值", "Ask / Infer 条件",
+    "提问校准与 inference boundary", "CFA 与非补偿交付物评分", "PDR 排名稳定性",
+    "Pilot、Go / No-Go 与主张边界", "参考文献",
 ]
-READING_NOTE = "阅读提示：先看主图理解真人 ledger、Counterfactual Difference Map、受约束 rubric 编译与 D-JQS；v0.59 将 60 题统一为一个主要交付物，并把 DR 限定为非处方性检索与综合。"
-FIGURE_TRIGGER = "1. 研究问题"
-FIGURE_TITLE = "DeepAlign-Bench 真人真值、关系契约与评分资格链"
-FIGURE_CAPTION = "图 1  真人 ledger → CDM → 双冻结 → 受约束 rubric → validated verifier / slice-qualified D-JQS / 盲化人评；freeze 只防 post-hoc。"
-RUNNING_HEADER = "DEEPALIGN-BENCH  ·  RESEARCH PROPOSAL"
+READING_NOTE = "阅读提示：主图先区分 Ask 与 Infer；δ 是运行前冻结的 deliverable impact，不是输出后分差；CFA 只评价最终交付物特异性。"
+FIGURE_TRIGGER = "摘要"
+FIGURE_TITLE = "AskInfer-Bench：同任务 δ 操纵、Ask / Infer 双轨与排名稳定性"
+FIGURE_CAPTION = "图 1  真人 task-specific truth 与 δ 冻结后，Ask 测 preference acquisition，Infer 测 evidence-bounded history inference；最终用跨用户矩阵和非补偿门评价。"
+RUNNING_HEADER = "ASK OR INFER?  ·  RESEARCH PROPOSAL"
 STYLE_PRESET = "narrative_proposal"
 INCLUDE_CONTENTS = True
 
@@ -516,9 +516,9 @@ def add_figure_section(doc):
     picture = run.add_picture(str(FIG), width=Inches(9.55))
     picture._inline.docPr.set(
         "descr",
-        "DeepAlign-Bench 研究流程：从 case/task/user metadata 与多渠道输入，到反事实交叉评分、非补偿门、Judge 压力测试和方向冻结门。",
+        "AskInfer-Bench 研究流程：从同任务 delta 操纵和真人真值，到 Ask / Infer 双轨、提问校准、跨用户交付物评分与 PDR 排名稳定性。",
     )
-    picture._inline.docPr.set("title", "DeepAlign-Bench 研究设计")
+    picture._inline.docPr.set("title", "AskInfer-Bench 研究设计")
     p.paragraph_format.space_after = Pt(5)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -543,7 +543,13 @@ def build(md_path=MD, out_path=OUT):
     start = next(
         i
         for i, line in enumerate(lines)
-        if line.strip() in {"## 研究概要", "## 摘要", "## 1. 设计结论"}
+        if line.strip() in {
+            "## 研究概要",
+            "## 摘要",
+            "## 1. 设计结论",
+            "## 先用一句话讲清楚",
+            "## 0. 一句话",
+        }
     )
     lines = lines[start:]
     paragraph_buf = []

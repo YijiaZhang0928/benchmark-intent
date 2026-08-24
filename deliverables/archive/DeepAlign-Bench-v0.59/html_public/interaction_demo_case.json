@@ -1,0 +1,88 @@
+{
+  "case_id": "demo_research_tool_selection_u01",
+  "version": "1.0",
+  "task": {
+    "task_id": "demo_research_tool_selection",
+    "prompt": "Research and recommend a literature-review tool for my team.",
+    "deliverable": "decision memo with shortlist, trade-offs, and next steps",
+    "context": {
+      "evidence_snapshot": "demo-only"
+    }
+  },
+  "hidden_persona_state": {
+    "persona_id": "demo_u01",
+    "attributes": [
+      {
+        "attribute_id": "budget",
+        "name": "budget",
+        "value": "USD 1,200 per year",
+        "description": "maximum annual software budget",
+        "aliases": ["price limit", "spending limit"],
+        "keywords": ["spend", "cost", "afford"],
+        "importance": 0.95,
+        "sensitivity": 0.1,
+        "disclosure_level": "public",
+        "response_template": "We can spend up to {value}."
+      },
+      {
+        "attribute_id": "technical_depth",
+        "name": "technical depth",
+        "value": "executive summary plus a reproducible technical appendix",
+        "description": "desired explanation depth and report structure",
+        "aliases": ["detail level", "report depth"],
+        "keywords": ["technical", "explain", "audience"],
+        "importance": 0.8,
+        "sensitivity": 0.2,
+        "disclosure_level": "conditional",
+        "response_template": "Please provide an {value}."
+      },
+      {
+        "attribute_id": "employer_name",
+        "name": "employer name",
+        "value": "Northstar Biologics",
+        "description": "private organization identity, irrelevant to the tool decision",
+        "aliases": ["company name", "organization name"],
+        "keywords": ["employer", "company", "organization"],
+        "importance": 0.05,
+        "sensitivity": 1.0,
+        "disclosure_level": "never",
+        "response_template": "My employer is {value}.",
+        "leak_markers": ["Northstar Biologics"]
+      }
+    ]
+  },
+  "attribute_importance_graph": {
+    "edges": [
+      {
+        "source": "budget",
+        "target": "technical_depth",
+        "weight": 0.2,
+        "relation": "budget affects feasible reporting workflow"
+      }
+    ]
+  },
+  "attribute_reveal_policy": {
+    "max_attributes_per_turn": 2,
+    "min_effective_importance": 0.1,
+    "initial_trust": 0.0,
+    "trust_gain_for_targeted_question": 0.2,
+    "repeat_revealed_attributes": true,
+    "rules": {
+      "budget": {
+        "strategy": "when_asked",
+        "min_match_confidence": 0.45
+      },
+      "technical_depth": {
+        "strategy": "after_trust",
+        "min_match_confidence": 0.5,
+        "min_trust": 0.2,
+        "requires_revealed": ["budget"]
+      },
+      "employer_name": {
+        "strategy": "never"
+      }
+    }
+  },
+  "initially_revealed": [],
+  "max_turns": 5
+}

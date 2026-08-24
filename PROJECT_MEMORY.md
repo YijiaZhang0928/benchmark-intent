@@ -1,12 +1,46 @@
-# DeepAlign-Bench / archived directions 跨 Session 项目记忆
+# AskInfer-Bench / DeepAlign archived directions 跨 Session 项目记忆
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-22
-当前版本：v0.59（单交付物任务契约与非处方 Deep Research）
+最后更新：2026-08-24
+当前版本：v0.60（Ask / Infer 主线与 preference-divergence calibration）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AA. 2026-08-24：Ask or Infer? 主线冻结
+
+当前工作题名改为 **Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。这不是简单把 v0.59 的 clarification 切片升成标题，而是把估计对象收窄为两种真实 information policy：用户在线但不主动补全时，agent 是否以低负担主动获取会改变交付物的 task-specific preferences；用户离线时，agent 是否只从授权 history 中有证据地推断，并抑制无依据投射。Ask 覆盖 Deep Research、repository coding 和 data analysis；Infer 首版只做 Deep Research，以控制自然 history、PDR 对照和人工效度的规模。
+
+术语边界同时修正：PDR-Bench 的主要 episode 给 agent task + full structured persona，属于 full-context personalization / preference projection，不是 implicit elicitation。PDR tasks 可作 Deep Research source shell，structured persona 可作同窗 bridge 条件；完整 persona 不能进入 Ask 主条件，PDR annotator-simulated context 也不能被称为真实 natural history。进入本项目确认性主集的 PDR-derived case 仍须重新冻结 task-conditioned preference nodes、history evidence、`δ`、matched/swapped 和真人 rubric。
+
+四个研究问题冻结为：（1）Ask-Enabled 相对 No-Ask 能否以低 burden 获取 missing preferences 并改善最终交付物；（2）agent 的提问概率、优先级与停止是否随 preference divergence `δ` 增加；（3）Infer 能否利用 history-evidenced preferences，同时在 unidentifiable/irrelevant nodes 上保持克制；（4）同一组 agent 在 PDR-style full persona、Ask 和 Infer 三种 surface 上的排序是否稳定。排名反转只是预注册假设；若 Kendall/Spearman 相关高、pairwise inversion 在 family-cluster bootstrap 中不稳定，或差异由版本、预算、长度、provider/judge 解释，必须撤回反转主张。
+
+每个基础任务固定公开 instruction、evidence/repository/dataset、工具、预算、环境版本和一个主要交付物。对同一任务构造 `δ=0 / low / high` 的用户差异。`δ` 是运行前冻结的 deliverable-impact 序数等级，不是看过 agent 输出后计算的评分差：`0` 表示内容决策不应改变；`low` 表示非关键但有用户确认效用的实现、排序或解释变化；`high` 表示至少一个 critical decision 必须改变，例如 evidence set、依赖/接口策略、活跃用户定义、主要分析切片、结论或风险边界。次级连续量只在跨人量尺稳定后报告，不把异质 leaf 权重强行揉成单一 `δ`。
+
+每条 preference node 还冻结 history observability：`recoverable`、`missing_askable`、`unidentifiable`、`irrelevant`。Ask 主测 high-`δ missing_askable`；Infer 主测 recoverable 正确利用和 unidentifiable/irrelevant 上的保守行为。要求 Infer 猜中 history 中不存在的偏好会奖励 stereotype 和 post-hoc persona projection，因此被否决。合理 Infer 输出可以采用保守默认、显式分支或说明不确定性。
+
+真人真值链改为 human-authored critical core + LLM-assisted expansion。用户提供 task-specific facts、preferences、acceptable alternatives、must-change/must-hold/must-not、history evidence span 和 criticality；LLM 只生成 code/data case 候选、查漏和 atomic rubric leaves。两名独立验证者分别判断自然性、任务相关性、deliverable impact、history 可观察性、答案泄漏、刻板投射与可接受替代；无法解决的分歧由第三人仲裁或剔除。纯 `compiler_inference` 确认性权重为 0，不能把 LLM 猜测升级为 ground truth。
+
+Ask 条件冻结为 A0 No-Ask（裁减 history、关闭用户通道）、A1 Ask-Enabled（同一 history、固定 question/turn/token budget）、A2 Task-Specific Oracle（直接提供全部 task-relevant confirmed nodes）。少量 Nudge 只诊断自主触发，不进主榜。Infer/DR 条件为 I0 Task-Only、I1 Natural-History Infer、I2 Task-Specific Oracle、I3 PDR-Style Full Persona bridge。Ask 主 prompt 不提醒个性化或 high-`δ`；用户模拟器只根据实际命中的 node 与固定 disclosure policy 回答，正式结论必须有真人对话子集验证 simulator-to-human 排名稳定性。
+
+Ask Calibration profile 不再只数问题：High-δ Recall@B、Question Precision@B、Low/Zero-δ Question Rate、First-Critical Rank、Stopping Error、User Burden 和 `unknown → asked → answered → planned → artifact-evidenced → decision_changed`。主校准 estimand 是 agent-specific `δ` slope：`logit P(asked)=α_agent+β_agent·δ+controls+u_family`。Node、question、turn、user、condition 和 seed 都不作为独立样本；基础任务是聚类/重采样单位。
+
+CFA 保留，但只评价 final artifact 的跨用户反事实特异性：同一用户 rubric 交叉评价 `Y_A/Y_B`，报告 `Δ_A`、`Δ_B`、`CFA_mean` 和 `CFA_min`。CFA 不作为提问校准分，也不与 acquisition、inference、adequacy、gain、no-harm 和 boundary 合成总分。确认性成功还必须通过 matched absolute adequacy、Ask vs No-Ask 或 Infer vs Task-Only gain、shared quality/functionality non-inferiority、事实/测试、隐私/权限/unsupported-projection boundary，以及目标用户盲评或可执行 outcome。
+
+共享 Deep Research slice 上的排名比较只允许同一 agent 版本、采样、工具、证据/执行预算与时间窗。报告 Kendall `τ`、Spearman `ρ`、pairwise inversion matrix 与 family-cluster bootstrap；公开旧 PDR leaderboard 不能与新 agent 直接做因果比较。若无稳定 inversion，仍可保留 Ask Calibration 与 acquisition-to-use failure 论文，但不能说 PDR 排名误导。
+
+Novelty-kill pilot 冻结为 6 个独立基础任务（每个 vertical 2 个）× 3 个 `δ` strata × 4 个 agent × A0/A1/A2，约 216 个 Ask episode；其中 2 个 Deep Research 任务追加 I0–I3。该 pilot 只验证 `δ` 操纵、question-to-node alignment、rubric、Ask/Infer/final chain 和最近邻增量，不支撑排行榜。条件性主实验目标 24 个独立基础任务（8/8/8），Infer/PDR bridge 只保留 8–12 个 DR；最终样本由 pilot family-level 方差、SESOI、成本和多重终点策略做功效模拟后冻结。增加 seed 不能替代增加独立 task family。
+
+最强审稿攻击是“G-STEER/IDRBench 的跨域 benchmark 化”。继续扩量必须证明 `δ` calibration、human-authored decision nodes 和 matched/swapped final outcome 暴露已有 target coverage、question count 和通用交付质量解释不了的系统差异。其他红线：完整 persona 泄漏 Ask；输出后反推 `δ`；LLM 造 persona/rubric/judge 循环；Ask 获得更多 token；模拟器偏爱特定问法；Infer 奖励 stereotype；Coding/Data 退化为显式 constraint following；跨域 raw score 伪等距；排名反转来自不同版本或 judge。
+
+Go / No-Go：盲化人类能稳定区分 `δ=0/low/high`；至少两个 vertical 有非平凡 agent×`δ` 差异；Ask 收益不能由额外 token/通用质量完全解释；至少一个系统出现重复的“问到但没用”或“给到会用但不会问”；Infer 把 recoverable 与 unidentifiable 分开；human+LLM rubric 相对 LLM-only 改变错误判定或提高真人预测；近邻指标不能完全预测新 profile。若 `δ` 不可靠、history observability 无法冻结、simulator-to-human 排名不稳或新 profile 不改变任何经验结论，则停止或降级为透明诊断扩展。
+
+v0.59 已在本轮前完整归档：源稿与协议位于 `archive/research-directions/DeepAlign-Bench-v0.59/`，DOCX/PDF/HTML/图与网页下载包位于 `deliverables/archive/DeepAlign-Bench-v0.59/`，快照钉住 commit `159d8ce`。v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、D-JQS、rubric provenance 和 matched/swapped 仍作为基础设施复用，但不再定义论文主估计对象。
+
+v0.60 的四版源稿、case/evaluation schema、manifest、主图、DOCX/PDF 和 HTML 已同步生成。最终渲染页数为正式稿 17 页、正式精简版 7 页、人话版 12 页、导师版 7 页；四套文件逐页视觉检查通过，PDF 均保留可点击原始来源链接。网页生产构建与 2 个渲染/资源同步测试通过；standalone 为单文件、主图内嵌且无站点根路径依赖。正式精简版满足不超过 10 页的约束。
+
+当前开放问题：（1）Ask 三域、Infer 只做 DR 的不对称范围是否获得导师认可；（2）`δ` 是否只保留序数主分析；（3）真实 history 的授权来源与招募可行性；（4）question-to-node 标注能否达到稳定 precision/recall；（5）216-episode pilot 的模型与预算；（6）若无排名反转，是否接受 Ask Calibration failure characterization 作为论文主线；（7）距离 ICLR 截止不足五周，真人 `δ` 与 history gold 是否现实，还是应把 v0.60 明确为后续投稿线。
 
 ## 0Z. 2026-08-22：PDR-Bench Persona 投射与细 rubric 可骗性审计
 

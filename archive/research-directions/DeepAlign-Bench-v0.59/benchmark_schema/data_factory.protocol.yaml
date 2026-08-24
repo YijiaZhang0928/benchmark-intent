@@ -1,0 +1,216 @@
+protocol_name: deepalign_data_factory
+protocol_version: 0.59
+annotation_protocol: construction_annotation.protocol.yaml
+human_ground_truth_protocol: human_ground_truth.protocol.yaml
+difference_map_schema: counterfactual_difference_map.schema.yaml
+judge_qualification_protocol: judge_qualification.protocol.yaml
+environment_build_protocol: environment_build.protocol.yaml
+status: pre_pilot
+principle: >-
+  Do not splice tasks or taxonomies from many papers into one prompt. Convert each
+  source into a declared design role, then construct one auditable family from a
+  real research seed, a frozen shared world and a minimal counterfactual user pair.
+
+plhkw_sampling_frame:
+  claim_boundary: three_representative_long_horizon_knowledge_work_regimes_not_comprehensive_coverage
+  candidate_pool:
+    total: 180
+    by_regime:
+      open_web_research: 72
+      repository_software_engineering: 54
+      data_centric_analysis: 54
+  provisional_selection:
+    total: 60
+    by_regime:
+      open_web_research: 24
+      repository_software_engineering: 18
+      data_centric_analysis: 18
+    by_source_class:
+      existing_benchmark_derived: 39
+      adapted_real_world: 12
+      newly_authored: 9
+    output_contract:
+      primary_deliverables_per_task: 1
+      supporting_components_must_be_internal: true
+      separately_scored_secondary_deliverables: false
+    deep_research_contract:
+      output_mode: retrieval_synthesis_not_prescriptive
+      recommendation_decision_tasks: 0
+      open_consulting_tasks: 0
+  paper_priority_set:
+    total: 12
+    by_regime:
+      open_web_research: 5
+      repository_software_engineering: 3
+      data_centric_analysis: 4
+  status_rule: >-
+    A provisional shell is not runnable gold. Promotion requires asset-license
+    audit, environment binding, two-human counterfactual screening, frozen
+    contracts and pilot discrimination.
+
+source_role_ledger:
+  required_fields:
+    - source_id
+    - source_claim_or_asset
+    - role
+    - adopted_element
+    - modified_element
+    - rejected_element
+    - evidence_level
+    - target_schema_fields
+  allowed_roles:
+    - task_seed_and_coverage
+    - user_signal_or_personalization_construct
+    - perturbation_or_failure_hypothesis
+    - rubric_or_judge_method
+    - infrastructure_or_reproducibility
+  rule: one source can have multiple rows, but every row has exactly one role
+
+construction_stages:
+  - stage: 0_vertical_slice
+    output: one end-to-end family before bulk authoring
+    required:
+      - one compare_decide report_or_memo task
+      - two natural users with minimal task-relevant differences
+      - one frozen evidence world
+      - structured persona and natural history views
+      - one clean and one controlled stress condition
+      - full rubric bundle and human matched/swapped check
+    stop_if:
+      - reference matched is not reliably preferred over swapped
+      - must-change cannot be grounded in user confirmation
+      - rubric leaves are not independently judgeable
+
+  - stage: 1_seed_and_normalize
+    input: real user request, public benchmark seed, professional workflow or interview
+    actions:
+      - remove benchmark-specific answer cues
+      - record provenance, license and contamination risk
+      - map to task stratum, primary intent, domain, deliverable, demand and stakes
+      - freeze exactly one primary deliverable and one submission boundary
+      - for open-web research, reject recommendation/planning outputs and require evidence-set or research-design personalization
+      - deduplicate semantically similar seeds before writing personas
+    output: normalized task seed
+
+  - stage: 2_freeze_shared_world
+    actions:
+      - freeze task wording, evidence, tools, permissions and budget
+      - write shared acceptance conditions and must-hold facts
+      - define deterministic checks where possible
+    output: common task and evidence world
+
+  - stage: 2b_freeze_research_paradigm
+    actions:
+      - choose a paradigm from research_episode.schema.yaml before authoring prompts
+      - write the information-event schedule with source origin, carrier, access mode and availability time
+      - record adapter capabilities and mark unsupported paradigms structurally inapplicable
+      - freeze the within-block invariant fields and the single varied mechanism
+    output: research episode specification and comparability block
+
+  - stage: 3_elicit_human_ground_truth_and_build_user_pair
+    actions:
+      - offer each participant a randomized or stratified task slate and log offered eligible selected and skipped tasks
+      - let each participant select 3_to_5 tasks they could realistically need
+      - elicit open unprompted goals constraints tradeoffs risks audience workflow and invalidating conditions before structured follow_up
+      - tag each fact spontaneous prompted not_applicable or declined and obtain user confirmation
+      - retain uncertainty acceptable alternatives timestamps expiry and privacy permissions
+      - pair contrast near_neighbor and neutral_invariance users with a preregistered algorithm blind to target outputs
+      - serialize only the minimum authorized ledger fields into eligible signal views
+    output: confirmed task_conditioned ledgers pairing funnel and audited user pair
+
+  - stage: 4_construct_counterfactual_difference_map
+    actions:
+      - let an LLM propose high_recall candidate change invariant boundary and clarification nodes without authority
+      - require every node to cite user_fact task_evidence or permission provenance
+      - let persona owners confirm their own task consequences directions uncertainty and acceptable alternatives
+      - let two independent annotators audit provenance observability atomicity redundancy and stereotyping
+      - let a domain expert assess only facts feasibility and safety where needed
+      - adjudicate and freeze relation types including directional_difference preserve_same acceptable_equivalence forbidden and clarify_or_branch
+      - exclude unstable or unprovenanced nodes and retain a dev_only emergent_error channel
+    output: versioned counterfactual_difference_map plus compatibility contract view
+
+  - stage: 5_compile_rubric
+    actions:
+      - route predefined core, personalization, intent, deliverable, operator and risk modules
+      - select applicable semantic direction nodes from rubric_node_registry.yaml
+      - instantiate task, user, evidence and permission parameters
+      - expand frozen difference_map nodes to atomic leaves with explicit anchors and provenance
+      - group dependent or redundant leaves and aggregate at node before metric
+      - reject duplicate, asymmetric, ungrounded or output-aware leaves
+    output: versioned rubric bundle and leaf-to-metric manifest
+
+  - stage: 6_qualify_measurement_routes
+    actions:
+      - validate deterministic verifiers on known positives negatives and mutations where applicable
+      - build D_JQS from deterministic violations controlled single edits and natural human artifacts
+      - split by task family user source target agent edit lineage and time
+      - test AB_BA order plus length style formatting keyword citation_count and language nuisances
+      - qualify judges only for declared leaf classes and route failed or unstable slices to humans or coarse binary scoring
+    output: verifier validation report and hidden judge qualification report
+
+  - stage: 7_reference_and_pilot
+    actions:
+      - create human reference matched, swapped, generic and misuse controls
+      - obtain target-user and domain-expert judgments
+      - test discrimination, invariance, nuisance robustness and module redundancy
+      - remove families or leaves that fail rather than repairing weights after model runs
+      - time_separate and blind persona_owner artifact preference from earlier contract confirmation
+    output: pilot-qualified family and external_validity record
+
+  - stage: 8_scale_and_audit
+    actions:
+      - sample from Atlas strata; do not fill the full Cartesian product
+      - use balanced incomplete blocks for controlled anchor perturbations
+      - publish tested, defined-only, structurally-inapplicable and deferred cells
+      - maintain train_dev_test separation by task family, user and source lineage
+    output: benchmark release candidate
+
+freeze_policy:
+  construction_freeze: before_reference_artifacts
+  evaluation_freeze: before_any_target_agent_output
+  dev_set: may_update_future_compiler_versions_with_versioned_emergent_errors
+  locked_test_set: may_not_change_primary_difference_map_or_rubric_after_outputs
+
+anchor_identification:
+  estimand: paired sensitivity of personalization outcomes to a controlled perturbation
+  allowed_claim: >-
+    Under the same task, evidence, budget and prefix, perturbation k changes CFA,
+    PF, invariance or misuse by the observed paired delta.
+  forbidden_claim: >-
+    Heterogeneous anchor results reveal the universal internal cause of user-model failure.
+  primary_controls:
+    - irrelevant_signal
+    - context_dilution
+    - stale_or_conflicting_state
+    - handoff_loss
+    - dynamic_update
+  replication_rule: >-
+    A perturbation needs at least four eligible anchor families for a cross-task
+    comparative claim. Two families support only exploratory replication.
+  analysis:
+    - paired clean-versus-perturbed delta within family and seed
+    - uncertainty interval and eligible denominator for each perturbation
+    - mixed-effects model with perturbation fixed effect and family/agent random effects only when sample support is adequate
+    - outcome failure evidence in the main paper; trace-based mechanism labels only for comparable traces
+
+environment_bootstrap_order:
+  - environment: E1_controlled_frozen_harness
+    priority: first
+    minimum_prototype: two families, two agents, one evidence snapshot, deterministic reset and artifact export
+    role: causal main track
+  - environment: E3_stateful_interactive_sandbox
+    priority: second
+    minimum_prototype: one anchor with checkpoint, clarification, conflict and update injection
+    role: controlled process and stress diagnostics
+  - environment: E2_native_live_product_or_web
+    priority: third
+    minimum_prototype: one adapter smoke test with version, date, region, cost and URL snapshot logging
+    role: ecological product track, not pooled with E1
+environment_go_no_go: >-
+  Do not bulk-author cases until the E1 vertical slice and one E3 event pass
+  end-to-end scoring.
+
+paradigm_sampling_policy:
+  ontology_scope: [P0_task_only_closed, P1_one_shot_direct, P2_pre_research_clarification, P3_in_research_interactive, P4_checkpoint_update, P5_memory_retrieval, P6_workspace_grounded, P7_draft_feedback_revision]
+  first_release_core: [P0_task_only_closed, P1_one_shot_direct, P2_pre_research_clarification, P4_checkpoint_update]
+  rule: define_the_full_space_but_never_run_the_full_cartesian_product

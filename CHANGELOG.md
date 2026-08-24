@@ -1,5 +1,18 @@
 # benchmark-intent 设计迭代记录
 
+## v0.60 Ask or Infer mainline and v0.59 archive - 2026-08-24
+
+- 将当前工作题名冻结为 *Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents*；Ask 覆盖 Research/Coding/Data，Infer 首版只做 Deep Research。
+- 修正 PDR 定位：task + full structured persona 属于 full-context inference/projection，不是 implicit elicitation；PDR task/persona 只作 source shell 与共享 DR bridge，完整 persona 不进入 Ask 主条件，simulated context 不冒充 natural history。
+- 在同一基础任务内冻结 `δ=0/low/high` preference-divergence strata；`δ` 由运行前 deliverable impact 决定，不由 agent 输出后分差反推。每条 node 同时标记 recoverable/missing_askable/unidentifiable/irrelevant。
+- 冻结 Ask 的 No-Ask / Ask-Enabled / Task-Specific Oracle 三条件，以及 Infer 的 Task-Only / Natural-History / Oracle / PDR-Style Full-Persona bridge；少量 Nudge 仅作自主触发诊断。
+- 新增 Ask Calibration profile、agent-specific `δ` slope 和 acquisition-to-use chain；CFA 继续评价 final artifact counterfactual specificity，但不充当提问分或补偿式总分。
+- Ground truth 改为 human-authored critical nodes + LLM-assisted rubric expansion；两名独立验证者确认自然性、任务相关性、deliverable impact、history evidence、泄漏与刻板投射，纯 compiler inference 确认性权重为 0。
+- 将“PDR 排名与 Ask/Infer 反转”冻结为待检验假设；确认性比较要求同一 DR slice、agent version、工具、预算和时间窗，并报告 rank correlation、pairwise inversion 与 family-cluster bootstrap。
+- 冻结 6 base task × 3 δ strata × 4 agent × 3 Ask condition ≈216 episode 的 novelty-kill pilot；2 个 DR task 追加 Infer/PDR bridge。Pilot 不支撑正式 leaderboard。
+- 新增四版 AskInfer Proposal 源稿、case/evaluation YAML、benchmark manifest 和 3200×1800 PNG/SVG；v0.59 源稿/协议与 DOCX/PDF/HTML/图完整归档并钉住 commit `159d8ce`。
+- 生成并逐页检查四套 DOCX/PDF（17/7/12/7 页），确认精简版低于 10 页且 PDF 文献链接可点击；重写 HTML 汇报页，生产构建、2 个渲染/资源同步测试与单文件 standalone 校验通过。
+
 ## Unreleased PDR persona-projection rubric audit - 2026-08-22
 
 - 对齐 PDR-Bench 的 50 tasks、25 structured personas、250 task–user pairs、agent episode 输入、P/Q/R 粗指标与公开动态细则；确认细则生成 prompt 明确要求从 persona 推断潜在兴趣、深层需求、理解水平和表达偏好。

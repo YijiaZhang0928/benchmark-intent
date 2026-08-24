@@ -1,4 +1,4 @@
-"""Build the plain-language and presentation-ready DeepAlign-Bench variants."""
+"""Build the condensed, plain-language, and advisor AskInfer-Bench variants."""
 
 from pathlib import Path
 
@@ -10,69 +10,69 @@ ROOT = Path(__file__).resolve().parents[1]
 
 VARIANTS = [
     {
-        "md": ROOT / "proposal" / "DeepAlign-Bench_正式Proposal精简版.md",
-        "out": ROOT / "deliverables" / "DeepAlign-Bench_正式Proposal精简版.docx",
+        "md": ROOT / "proposal" / "AskInfer-Bench_正式Proposal精简版.md",
+        "out": ROOT / "deliverables" / "AskInfer-Bench_正式Proposal精简版.docx",
         "kicker": "CONDENSED RESEARCH PROPOSAL",
-        "title": "DeepAlign-Bench",
-        "subtitle": "从绝对适配到反事实用户特异性",
+        "title": "Ask or Infer?",
+        "subtitle": "Task-Specific Personalization under User Availability and History Evidence",
         "mode": "正式论文 Proposal 精简版 · 不超过 10 页",
-        "version": "v0.59 · 正式精简版",
-        "research_line": "Specificity · Adequacy · Benefit · No-Harm · Boundary",
-        "claim": "单用户绝对适配分不能证明反事实用户特异性；需要真人来源 CDM、paired users、task-only 和非补偿门共同识别。",
+        "version": "v0.60 · 正式精简版",
+        "research_line": "Ask Calibration · Evidence-Bounded Inference · Final Utilization",
+        "claim": "用户在线时问 high-δ preference；用户离线时只从 history evidence 推断；PDR 排名能否外推是待检验问题。",
         "contents": [
-            "核心缺口与主张边界", "Task family、Case 与元数据", "User-information channels",
-            "运行条件与反例校准", "非补偿 Scoring 与统计", "最小实验结果",
-            "最近邻、逐周执行与贡献", "参考文献",
+            "Ask / Infer 核心问题", "同任务 δ 与真人真值", "实验条件",
+            "提问校准", "CFA 与非补偿评分", "排名稳定性",
+            "Pilot、风险与贡献", "参考文献",
         ],
-        "note": "本版保留研究问题、PDR 资源池与筛选、数据原语、多渠道、反例、非补偿评分、最近邻与逐周决策门。",
-        "trigger": "1. 核心缺口与主张边界",
-        "figure_title": "DeepAlign-Bench 整体研究设计",
-        "figure_caption": "图 1  真人 ledger→CDM→受约束 rubric→D-JQS/human；方法核心是成对关系真值，而非动态 rubric taxonomy。",
-        "header": "DEEPALIGN-BENCH  ·  正式 PROPOSAL 精简版",
+        "note": "本版保留 Ask / Infer 双情境、δ 操纵、真人 rubric、过程与最终评价、PDR bridge、最小实验和停止门。",
+        "trigger": "1. 核心问题",
+        "figure_title": "AskInfer-Bench 整体研究设计",
+        "figure_caption": "图 1  同任务 δ 操纵进入 Ask / Infer 双轨；过程指标与跨用户 final-deliverable 评价不可互相补偿。",
+        "header": "ASK OR INFER?  ·  正式 PROPOSAL 精简版",
         "style": "formal_condensed",
         "include_contents": False,
     },
     {
-        "md": ROOT / "proposal" / "DeepAlign-Bench_人话版.md",
-        "out": ROOT / "deliverables" / "DeepAlign-Bench_完整人话版.docx",
+        "md": ROOT / "proposal" / "AskInfer-Bench_人话版.md",
+        "out": ROOT / "deliverables" / "AskInfer-Bench_完整人话版.docx",
         "kicker": "PLAIN-LANGUAGE RESEARCH PROPOSAL",
-        "title": "DeepAlign-Bench｜完整人话版",
-        "subtitle": "把绝对适配、反事实特异性和非补偿评分逐步说清楚",
+        "title": "Ask or Infer?｜完整人话版",
+        "subtitle": "把何时该问、何时可推断、怎样落实到交付物逐步说清楚",
         "mode": "适合组内共识 · 导师讨论 · 正式写作前校验",
-        "version": "v0.59 · 完整人话版",
-        "research_line": "什么该变 · 两边是否变对 · 是否真增益 · 哪些不能补偿",
-        "claim": "报告对一个人看起来不错，不等于系统会随着用户变化而双向正确改变。",
+        "version": "v0.60 · 完整人话版",
+        "research_line": "问 high-δ · 有证据才推断 · 答案必须进入最终决定",
+        "claim": "完整 persona 给到后会用，不等于信息缺失时会问，也不等于用户离线时能克制投射。",
         "contents": [
-            "PDR 与 DeepAlign 的区别", "Case / Task / User 元数据", "Persona 与渠道构造",
-            "输出条件与 Rubric", "非补偿评分", "family-level 统计",
-            "最小实验", "逐周执行与论文主张", "参考文献",
+            "为什么是 Ask / Infer", "δ 与同任务用户差异", "Ask / Infer 条件",
+            "提问校准", "真人 rubric", "CFA 与最终交付物",
+            "排名稳定性", "Pilot、风险与停止条件", "参考文献",
         ],
-        "note": "阅读方式：先看主图和研究概要；第 1–7 节解释数据、渠道、rubric、指标和统计；第 8–10 节给出实验结论与投稿决策。",
-        "trigger": "1. 一个 case 到底由什么组成",
-        "figure_title": "DeepAlign-Bench：从 paired users 到反事实特异性",
-        "figure_caption": "图 1  谁提供真值、谁审计、谁编译、谁评分相互分离；freeze 只负责防止事后改标准。",
-        "header": "DEEPALIGN-BENCH  ·  完整人话版",
+        "note": "阅读方式：先看主图；前半解释 Ask / Infer 和 δ，后半解释 rubric、CFA、排名反转与停止门。",
+        "trigger": "先用一句话讲清楚",
+        "figure_title": "AskInfer-Bench：从偏好缺口到最终交付物",
+        "figure_caption": "图 1  Ask 测用户在线时的信息获取；Infer 测用户离线时有证据的推断；最终交付物另过非补偿门。",
+        "header": "ASK OR INFER?  ·  完整人话版",
         "style": "narrative_proposal",
     },
     {
-        "md": ROOT / "proposal" / "DeepAlign-Bench_汇报精简版.md",
-        "out": ROOT / "deliverables" / "DeepAlign-Bench_汇报精简版.docx",
+        "md": ROOT / "proposal" / "AskInfer-Bench_汇报精简版.md",
+        "out": ROOT / "deliverables" / "AskInfer-Bench_汇报精简版.docx",
         "kicker": "ADVISOR BRIEF",
-        "title": "DeepAlign-Bench｜汇报精简版",
-        "subtitle": "15–20 分钟讲清核心构念、最小实验和五天决策门",
+        "title": "Ask or Infer?｜汇报精简版",
+        "subtitle": "15–20 分钟讲清 δ、Ask / Infer、CFA 与 novelty-kill pilot",
         "mode": "导师汇报 · 组会讲解 · 决策讨论",
-        "version": "v0.59 · 汇报精简版",
-        "research_line": "Absolute Fit → Cross-User Specificity → Hard Gates → Replication",
-        "claim": "PDR 问一份报告对这个人是否合适；DeepAlign 问换用户后报告是否双向正确改变。",
+        "version": "v0.60 · 汇报精简版",
+        "research_line": "Full Persona → Ask High-δ → Infer with Evidence → Final Delivery",
+        "claim": "PDR 测完整 persona 给到后会不会用；本项目测缺信息时会不会问、用户离线时会不会有边界地推断。",
         "contents": [
-            "核心 gap", "Case / Task / User 真值", "User-info channels", "交叉矩阵",
-            "非补偿 Scoring", "最小实验", "Benchmark 能回答什么", "逐周决策",
+            "PDR 边界", "四个 RQ", "δ 与真人真值", "Ask / Infer 条件",
+            "Ask Calibration", "CFA 与非补偿评分", "排名稳定性", "Pilot 与 Go / No-Go",
         ],
-        "note": "建议讲法：2 分钟问题、4 分钟数据与渠道、4 分钟矩阵与指标、4 分钟 pilot、3 分钟五天决策。",
-        "trigger": "1. Case、Task 与用户真值",
-        "figure_title": "DeepAlign-Bench：一张图讲完评测流程",
-        "figure_caption": "图 1  真人真值、CDM、受约束 rubric 与 D-JQS 形成可审计的分层测量链。",
-        "header": "DEEPALIGN-BENCH  ·  汇报精简版",
+        "note": "建议讲法：3 分钟 PDR 边界，4 分钟 δ 与双轨，4 分钟过程/最终指标，4 分钟 pilot 与停止门。",
+        "trigger": "0. 一句话",
+        "figure_title": "AskInfer-Bench：一张图讲完评测流程",
+        "figure_caption": "图 1  同任务 δ 操纵、Ask / Infer 条件、过程校准、最终交付物和 PDR 排名稳定性。",
+        "header": "ASK OR INFER?  ·  汇报精简版",
         "style": "compact_reference_guide",
     },
 ]
@@ -84,7 +84,7 @@ def build_variant(spec):
     base.COVER_SUBTITLE = spec["subtitle"]
     base.COVER_MODE = spec["mode"]
     base.DOC_VERSION = spec["version"]
-    base.DOC_DATE = "2026 年 8 月 22 日"
+    base.DOC_DATE = "2026 年 8 月 24 日"
     base.RESEARCH_LINE = spec["research_line"]
     base.CORE_CLAIM = spec["claim"]
     base.CONTENTS_ITEMS = spec["contents"]

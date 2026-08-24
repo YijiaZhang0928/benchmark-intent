@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="1800" viewBox="0 0 3200 1800" role="img" aria-labelledby="title desc">
+  <title id="title">DeepAlign-Bench 反事实用户特异性整体框架与 PDR-compatible 压力测试</title>
+  <desc id="desc">从 case 与 task 元数据、双用户 task family、多种 user-information channel、rubric compiler，到反事实交叉矩阵、非补偿指标、可选真人验证、统计和最小实验结果的高密度一页图。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F8FBFF"/><stop offset="1" stop-color="#F6F3FF"/></linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#123E52"/><stop offset=".55" stop-color="#225B72"/><stop offset="1" stop-color="#503C78"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#183647" flood-opacity=".12"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#45697A"/></marker>
+    <marker id="arrow2" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8A4A8B"/></marker>
+    <style>
+      .cn{font-family:"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;fill:#173342}
+      .title{font-size:48px;font-weight:800;letter-spacing:.5px;fill:#fff}
+      .subtitle{font-size:22px;font-weight:500;fill:#DDECF3}
+      .pill{font-size:18px;font-weight:700;fill:#fff}
+      .panel{fill:#fff;stroke:#B8CBD5;stroke-width:2;rx:20;filter:url(#shadow)}
+      .pblue{fill:#F3FAFD;stroke:#80B2C7}.ppurple{fill:#F8F5FC;stroke:#A995C9}.pgreen{fill:#F3FAF7;stroke:#82BFA7}.porange{fill:#FFF8F2;stroke:#D9A16F}.pred{fill:#FFF5F5;stroke:#D98686}.pgray{fill:#F7F9FA;stroke:#AAB8BF}
+      .head{font-size:25px;font-weight:800}.section{font-size:20px;font-weight:800}.body{font-size:17px;font-weight:500}.small{font-size:15px;font-weight:500}.tiny{font-size:13px;font-weight:500}
+      .muted{fill:#5C7380}.blue{fill:#176B88}.green{fill:#19805E}.purple{fill:#684C91}.orange{fill:#A45A1F}.red{fill:#A33A3A}.white{fill:#fff}
+      .num{font-size:20px;font-weight:900;fill:#fff}.mono{font-family:"SFMono-Regular",Menlo,monospace;font-size:15px;font-weight:600;fill:#273F4B}
+      .box{fill:#fff;stroke:#BFCFD6;stroke-width:1.5;rx:12}.boxBlue{fill:#E9F6FB;stroke:#82BBD0}.boxGreen{fill:#EAF7F1;stroke:#83C3A8}.boxPurple{fill:#F1ECF8;stroke:#AD9ACB}.boxOrange{fill:#FFF0E3;stroke:#DDA36E}.boxRed{fill:#FCE9E9;stroke:#DC9191}.boxGray{fill:#F0F4F6;stroke:#AAB8BF}
+      .line{stroke:#45697A;stroke-width:3;fill:none;marker-end:url(#arrow)}.line2{stroke:#8A4A8B;stroke-width:3;fill:none;marker-end:url(#arrow2)}
+      .dash{stroke:#78909B;stroke-width:2;stroke-dasharray:7 6;fill:none}.gate{font-size:15px;font-weight:800;fill:#fff}
+    </style>
+  </defs>
+
+  <rect width="3200" height="1800" fill="url(#bg)"/>
+  <rect x="26" y="24" width="3148" height="126" rx="24" fill="url(#hero)" filter="url(#shadow)"/>
+  <text x="70" y="79" class="cn title">DeepAlign-Bench：绝对适配 ≠ 反事实用户特异性</text>
+  <text x="72" y="116" class="cn subtitle">正式 Proposal v0.48 · Case/Task/User 元数据 → 多渠道输入 → 2×2 交叉评分 → 五道非补偿门 → Judge 压力测试</text>
+  <rect x="2502" y="50" width="630" height="72" rx="18" fill="#FFFFFF" fill-opacity=".14" stroke="#CDE3EC"/>
+  <text x="2530" y="80" class="cn pill">核心贡献：Counterfactual Specificity</text>
+  <text x="2530" y="108" class="cn small white">adequacy · benefit · no-harm · no-violation 分栏</text>
+
+  <!-- Top flow -->
+  <g>
+    <rect x="36" y="178" width="594" height="472" class="panel pblue"/>
+    <circle cx="70" cy="211" r="20" fill="#18708D"/><text x="70" y="218" text-anchor="middle" class="cn num">1</text>
+    <text x="102" y="219" class="cn head blue">Case Factory：先冻结“测什么”</text>
+    <text x="58" y="250" class="cn small muted">真实/专业/公开 seed → 3个 judge+人评 family → 通过后扩 12–24 family</text>
+    <rect x="56" y="269" width="552" height="56" class="box boxBlue"/>
+    <text x="74" y="293" class="cn section blue">Case metadata（完整实验记录）</text>
+    <text x="74" y="316" class="cn tiny">task metadata 只是其中一个子集；case 还要说明谁、在哪、看见什么、测哪个系统</text>
+    <rect x="58" y="339" width="256" height="82" class="box"/>
+    <text x="72" y="364" class="cn section">Task metadata ⊂ Case</text>
+    <text x="72" y="388" class="cn tiny">stratum · intent · stakes · deliverable</text><text x="72" y="410" class="cn tiny">evidence · difficulty/risk · task shell</text>
+    <rect x="328" y="339" width="278" height="82" class="box"/>
+    <text x="344" y="364" class="cn section">Environment metadata</text>
+    <text x="344" y="388" class="cn tiny">E1 frozen · E3 stateful · E2 live</text><text x="344" y="410" class="cn tiny">reset · tools · budget · version · region</text>
+    <rect x="58" y="434" width="256" height="82" class="box"/>
+    <text x="72" y="459" class="cn section">User-state ledger</text>
+    <text x="72" y="483" class="cn tiny">goal · knowledge · constraint · risk</text><text x="72" y="505" class="cn tiny">time · reliability · privacy · permission</text>
+    <rect x="328" y="434" width="278" height="82" class="box"/>
+    <text x="344" y="459" class="cn section">Signal + Agent/Run</text>
+    <text x="344" y="483" class="cn tiny">task-only · persona · history · fuzzy query+clarify</text><text x="344" y="505" class="cn tiny">model · planner · memory · tool · seed · cost</text>
+    <rect x="58" y="530" width="548" height="96" class="box boxGray"/>
+    <text x="74" y="555" class="cn section">A/B/C 三层记录，防止“看结果改任务”</text>
+    <text x="74" y="580" class="cn small"><tspan font-weight="800">A 客观导入：</tspan>来源/时间/文件/哈希/环境；程序填、人审计</text>
+    <text x="74" y="603" class="cn small"><tspan font-weight="800">B 运行前人工：</tspan>intent/风险/用户差异/contracts；双标+仲裁</text>
+    <text x="74" y="622" class="cn tiny"><tspan font-weight="800">C pilot后观察：</tspan>实际难度/分歧/失败/成本；不得覆盖B层</text>
+  </g>
+
+  <g>
+    <rect x="650" y="178" width="536" height="472" class="panel pgreen"/>
+    <circle cx="684" cy="211" r="20" fill="#258467"/><text x="684" y="218" text-anchor="middle" class="cn num">2</text>
+    <text x="716" y="219" class="cn head green">Counterfactual Task Family</text>
+    <rect x="670" y="247" width="496" height="62" class="box boxGreen"/>
+    <text x="688" y="273" class="cn section">Invariant core（A/B 完全相同）</text>
+    <text x="688" y="297" class="cn small">任务 · 证据 · 候选项 · 工具 · 预算 · 交付格式</text>
+    <rect x="670" y="326" width="235" height="142" class="box"/>
+    <text x="687" y="353" class="cn section green">User A ledger</text>
+    <text x="687" y="379" class="cn small">预算/时间/权限/知识</text><text x="687" y="403" class="cn small">2–4 个 decision-relevant axes</text><text x="687" y="427" class="cn small">预期选择 + 可接受替代</text><text x="687" y="451" class="cn tiny muted">本人逐条确认；无关故事不进入</text>
+    <rect x="923" y="326" width="243" height="142" class="box"/>
+    <text x="940" y="353" class="cn section purple">User B ledger</text>
+    <text x="940" y="379" class="cn small">同一任务、不同真实约束</text><text x="940" y="403" class="cn small">差异必须改变选择/风险/深度</text><text x="940" y="427" class="cn small">A/B 标签应可交换</text><text x="940" y="451" class="cn tiny muted">优先两真人；次选真人锚定反事实</text>
+    <path d="M905 396 L923 396" class="line"/>
+    <rect x="670" y="485" width="496" height="70" class="box boxPurple"/>
+    <text x="688" y="511" class="cn section purple">同一 ledger 的信号视图</text>
+    <text x="688" y="537" class="cn small">persona ↔ history（等价） · 模糊 query→澄清→回答→交付（交互获取）</text>
+    <rect x="670" y="570" width="496" height="57" class="box boxOrange"/>
+    <text x="688" y="594" class="cn section orange">四类 contract 在输出前冻结</text>
+    <text x="688" y="617" class="cn small">must-change · must-hold · must-not · clarify-if-unknown</text>
+  </g>
+
+  <g>
+    <rect x="1206" y="178" width="566" height="472" class="panel ppurple"/>
+    <circle cx="1240" cy="211" r="20" fill="#755A9E"/><text x="1240" y="218" text-anchor="middle" class="cn num">3</text>
+    <text x="1272" y="219" class="cn head purple">Metadata-driven Rubric Compiler</text>
+    <text x="1230" y="254" class="cn small muted">LLM 可辅助填参数与措辞；构念、适用性、阈值和锚点由人冻结</text>
+    <rect x="1230" y="272" width="150" height="68" class="box boxBlue"/><text x="1305" y="299" text-anchor="middle" class="cn section blue">metadata</text><text x="1305" y="324" text-anchor="middle" class="cn small">+ contracts</text>
+    <path d="M1380 306 L1407 306" class="line"/>
+    <rect x="1410" y="272" width="138" height="68" class="box boxGreen"/><text x="1479" y="299" text-anchor="middle" class="cn section green">36 modules</text><text x="1479" y="324" text-anchor="middle" class="cn small">选择适用子集</text>
+    <path d="M1548 306 L1575 306" class="line"/>
+    <rect x="1578" y="272" width="170" height="68" class="box boxPurple"/><text x="1663" y="299" text-anchor="middle" class="cn section purple">direction nodes</text><text x="1663" y="324" text-anchor="middle" class="cn small">参数槽/证据/路由</text>
+    <path d="M1490 340 L1490 368" class="line"/>
+    <rect x="1260" y="371" width="462" height="87" class="box"/>
+    <text x="1278" y="397" class="cn section">parameterized atomic leaves</text>
+    <text x="1278" y="422" class="cn small">criterion · owner · applicability · evidence target · 0/.5/1 anchor</text>
+    <text x="1278" y="446" class="cn small">weight · hard gate · direct binding · counterfactual partner · version</text>
+    <path d="M1490 458 L1490 485" class="line"/>
+    <rect x="1260" y="488" width="462" height="61" class="box boxPurple"/>
+    <text x="1491" y="515" text-anchor="middle" class="cn section purple">validate → freeze hash → agent 运行</text>
+    <text x="1491" y="538" text-anchor="middle" class="cn tiny">看过待测输出后新增的 leaf 不进入主榜</text>
+    <rect x="1230" y="566" width="518" height="62" class="box boxRed"/>
+    <text x="1248" y="591" class="cn section red">本周 debug：mention ≠ planning ≠ final adoption</text>
+    <text x="1248" y="615" class="cn small">只在表格提到约束，不能算最终建议真正采用；critical node 设 hard gate</text>
+  </g>
+
+  <g>
+    <rect x="1792" y="178" width="574" height="472" class="panel porange"/>
+    <circle cx="1826" cy="211" r="20" fill="#B46B30"/><text x="1826" y="218" text-anchor="middle" class="cn num">4</text>
+    <text x="1858" y="219" class="cn head orange">System × Environment × Signal</text>
+    <text x="1818" y="253" class="cn section">被测系统差异</text>
+    <rect x="1818" y="270" width="252" height="92" class="box"/><text x="1834" y="296" class="cn section blue">主比较 M1–M3</text><text x="1834" y="321" class="cn small">商业产品 · 受控通用 agent</text><text x="1834" y="345" class="cn small">可复现开源 DRA</text>
+    <rect x="2086" y="270" width="256" height="92" class="box"/><text x="2102" y="296" class="cn section purple">架构 probe M4–M6</text><text x="2102" y="321" class="cn small">Code · Multi-agent</text><text x="2102" y="345" class="cn small">Memory/user-model augmented</text>
+    <text x="1818" y="394" class="cn section">三个运行环境（分轨，不混榜）</text>
+    <rect x="1818" y="411" width="164" height="81" class="box boxBlue"/><text x="1900" y="438" text-anchor="middle" class="cn section blue">E1 Frozen</text><text x="1900" y="462" text-anchor="middle" class="cn small">主因果/可复现</text><text x="1900" y="483" text-anchor="middle" class="cn tiny">1.5–2.5工程周</text>
+    <rect x="1994" y="411" width="164" height="81" class="box boxPurple"/><text x="2076" y="438" text-anchor="middle" class="cn section purple">E3 Stateful</text><text x="2076" y="462" text-anchor="middle" class="cn small">checkpoint压力</text><text x="2076" y="483" text-anchor="middle" class="cn tiny">E1后2–4周</text>
+    <rect x="2170" y="411" width="172" height="81" class="box boxOrange"/><text x="2256" y="438" text-anchor="middle" class="cn section orange">E2 Live</text><text x="2256" y="462" text-anchor="middle" class="cn small">外部效度/漂移</text><text x="2256" y="483" text-anchor="middle" class="cn tiny">3–7天/产品+维护</text>
+    <rect x="1818" y="511" width="524" height="116" class="box boxOrange"/>
+    <text x="1836" y="537" class="cn section orange">每个 eligible 环境内部生成同一主矩阵</text>
+    <text x="1836" y="567" class="cn body"><tspan font-weight="800">Y₀ task-only</tspan>　无用户状态</text>
+    <text x="1836" y="592" class="cn body"><tspan font-weight="800">Yₐ / Yᵦ matched</tspan>　为目标用户生成</text>
+    <text x="1836" y="617" class="cn body"><tspan font-weight="800">swapped</tspan>　把另一位合理用户的报告交叉评价</text>
+  </g>
+
+  <g>
+    <rect x="2386" y="178" width="778" height="472" class="panel pred"/>
+    <circle cx="2420" cy="211" r="20" fill="#B54848"/><text x="2420" y="218" text-anchor="middle" class="cn num">5</text>
+    <text x="2452" y="219" class="cn head red">主 Benchmark：反事实 Artifact Evaluation</text>
+    <text x="2410" y="250" class="cn small muted">分开 absolute fit、双向 specificity、通用回答收益、共同质量与边界</text>
+    <rect x="2412" y="268" width="285" height="130" class="box"/>
+    <text x="2555" y="294" text-anchor="middle" class="cn section">2×2 PF 交叉矩阵</text>
+    <line x1="2500" y1="315" x2="2500" y2="382" stroke="#90A4AE"/><line x1="2440" y1="337" x2="2675" y2="337" stroke="#90A4AE"/>
+    <text x="2449" y="330" class="cn tiny">scorer</text><text x="2545" y="330" class="cn small">Yₐ</text><text x="2633" y="330" class="cn small">Yᵦ</text>
+    <text x="2452" y="360" class="cn small">PFₐ</text><text x="2524" y="360" class="cn mono">PFₐ(Yₐ)</text><text x="2612" y="360" class="cn mono">PFₐ(Yᵦ)</text>
+    <text x="2452" y="385" class="cn small">PFᵦ</text><text x="2524" y="385" class="cn mono">PFᵦ(Yₐ)</text><text x="2612" y="385" class="cn mono">PFᵦ(Yᵦ)</text>
+    <rect x="2714" y="268" width="426" height="130" class="box boxRed"/>
+    <text x="2732" y="294" class="cn section red">差值不是完整分数</text>
+    <text x="2732" y="321" class="cn mono">Δa=PFa(Ya)−PFa(Yb)</text><text x="2732" y="346" class="cn mono">Δb=PFb(Yb)−PFb(Ya)</text>
+    <text x="2732" y="374" class="cn small">CFA_min 防单边补偿；A_min 防“大差值低适配”</text><text x="2732" y="392" class="cn tiny">cos_spec 看方向；mag_spec 看幅度；二者只诊断</text>
+    <rect x="2412" y="415" width="728" height="142" class="box boxOrange"/>
+    <text x="2430" y="442" class="cn section orange">五道非补偿资格门（全部通过）</text>
+    <text x="2430" y="470" class="cn body">① 双向 specificity：Δa、Δb ≥ δspec　　② 绝对适配：Amin ≥ τabs</text>
+    <text x="2430" y="498" class="cn body">③ task-only no-harm：Ga、Gb ≥ −δNI；added value 另看 Gainmin ≥ δB</text>
+    <text x="2430" y="526" class="cn body">④ TQ / FR / length / evidence / must-hold 配平</text>
+    <text x="2430" y="550" class="cn body">⑤ owner-aware must-not / privacy / permission 无 critical violation</text>
+    <rect x="2412" y="574" width="728" height="53" rx="12" fill="#B54848"/>
+    <text x="2776" y="607" text-anchor="middle" class="cn gate">PASS → 双向个性化成功；FAIL → 标出失败门，不允许其他高分补偿</text>
+  </g>
+
+  <!-- connectors top -->
+  <path d="M630 414 L650 414" class="line"/><path d="M1186 414 L1206 414" class="line"/><path d="M1772 414 L1792 414" class="line"/><path d="M2366 414 L2386 414" class="line"/>
+
+  <!-- Middle row -->
+  <g>
+    <rect x="36" y="678" width="1000" height="486" class="panel pgreen"/>
+    <circle cx="70" cy="711" r="20" fill="#258467"/><text x="70" y="718" text-anchor="middle" class="cn num">6</text>
+    <text x="102" y="719" class="cn head green">可选外部验证：真实目标用户随机化 Decision Trial（不是全榜必做）</text>
+    <rect x="60" y="746" width="952" height="64" class="box boxGreen"/>
+    <text x="78" y="773" class="cn section green">先冻结 utility 与 decision environment</text>
+    <text x="78" y="798" class="cn small">硬约束 → 可验证环境终态 → 用户确认软权重；最优决定仍依赖新证据，persona 不能泄漏答案</text>
+    <rect x="60" y="830" width="194" height="139" class="box"/>
+    <text x="157" y="857" text-anchor="middle" class="cn section">真实参与者</text><text x="157" y="883" text-anchor="middle" class="cn small">User A / User B</text><text x="157" y="909" text-anchor="middle" class="cn small">同意/退出/隐私</text><text x="157" y="935" text-anchor="middle" class="cn small">先做 baseline 决策</text><text x="157" y="958" text-anchor="middle" class="cn tiny muted">合成用户不能替代</text>
+    <path d="M254 900 L290 900" class="line"/>
+    <rect x="292" y="830" width="213" height="139" class="box boxPurple"/>
+    <text x="398" y="857" text-anchor="middle" class="cn section purple">等价 task shells</text><text x="398" y="883" text-anchor="middle" class="cn small">S1 / S2 / S3 难度交换</text><text x="398" y="909" text-anchor="middle" class="cn small">区组随机 + Latin square</text><text x="398" y="935" text-anchor="middle" class="cn small">条件与 agent 盲化</text><text x="398" y="958" text-anchor="middle" class="cn tiny muted">同人不重复看同一答案</text>
+    <path d="M505 900 L540 900" class="line"/>
+    <rect x="542" y="830" width="213" height="139" class="box boxOrange"/>
+    <text x="648" y="857" text-anchor="middle" class="cn section orange">三臂报告处理</text><text x="648" y="885" text-anchor="middle" class="cn body">task-only</text><text x="648" y="913" text-anchor="middle" class="cn body">matched</text><text x="648" y="941" text-anchor="middle" class="cn body">swapped / wrong-user</text>
+    <path d="M755 900 L790 900" class="line"/>
+    <rect x="792" y="830" width="220" height="139" class="box boxGreen"/>
+    <text x="902" y="857" text-anchor="middle" class="cn section green">观察真实决定</text><text x="902" y="883" text-anchor="middle" class="cn small">最终选择 + 理由</text><text x="902" y="909" text-anchor="middle" class="cn small">硬约束 + confidence</text><text x="902" y="935" text-anchor="middle" class="cn small">时间/认知负担</text><text x="902" y="958" text-anchor="middle" class="cn tiny muted">verifier 计算 regret</text>
+    <rect x="60" y="992" width="952" height="145" class="box boxGreen"/>
+    <text x="78" y="1020" class="cn section green">三个核心结果，不和 PF/CFA 平均</text>
+    <text x="78" y="1051" class="cn mono">DDE = Regret(task-only) − Regret(matched)　&gt;0 表示决定改善</text>
+    <text x="78" y="1081" class="cn mono">WrongUserHarm = Regret(swapped) − Regret(task-only)　&gt;0 表示错配伤害</text>
+    <text x="78" y="1111" class="cn body">External validity：specificity 能否预测采用/DDE？不通过时只主张 artifact specificity</text>
+  </g>
+
+  <path d="M2776 650 C2776 666 1050 662 1006 706" class="line2"/>
+
+  <g>
+    <rect x="1056" y="678" width="746" height="486" class="panel pblue"/>
+    <circle cx="1090" cy="711" r="20" fill="#18708D"/><text x="1090" y="718" text-anchor="middle" class="cn num">7</text>
+    <text x="1122" y="719" class="cn head blue">Benchmark 能测出的“系统差异”</text>
+    <rect x="1080" y="746" width="698" height="55" class="box boxBlue"/>
+    <text x="1097" y="771" class="cn section blue">不是一个总冠军，而是 system capability profile</text><text x="1097" y="793" class="cn tiny">每项差异都绑定可比环境、同一 family 和不确定性</text>
+    <rect x="1080" y="818" width="332" height="83" class="box"/><text x="1097" y="844" class="cn section">A. 交付物差异</text><text x="1097" y="869" class="cn small">谁能产生双向 specificity？</text><text x="1097" y="891" class="cn small">高 fit 是否只是关键词/风格？</text>
+    <rect x="1428" y="818" width="350" height="83" class="box"/><text x="1445" y="844" class="cn section">B. absolute fit vs specificity</text><text x="1445" y="869" class="cn small">谁只是普遍写得好？</text><text x="1445" y="891" class="cn small">谁会随用户双向改变？</text>
+    <rect x="1080" y="914" width="332" height="83" class="box"/><text x="1097" y="940" class="cn section">C. Task heterogeneity</text><text x="1097" y="965" class="cn small">日常/专业/前沿 × 六种 intent</text><text x="1097" y="987" class="cn small">高风险/证据依赖/交付类型</text>
+    <rect x="1428" y="914" width="350" height="83" class="box"/><text x="1445" y="940" class="cn section">D. User-info channel</text><text x="1445" y="965" class="cn small">persona/history/clarify 谁会用？</text><text x="1445" y="987" class="cn small">谁会问到但没采用？</text>
+    <rect x="1080" y="1010" width="332" height="83" class="box"/><text x="1097" y="1036" class="cn section">E. Architecture</text><text x="1097" y="1061" class="cn small">commercial / controlled / open</text><text x="1097" y="1083" class="cn small">memory / multi-agent / code probes</text>
+    <rect x="1428" y="1010" width="350" height="83" class="box"/><text x="1445" y="1036" class="cn section">F. Boundary &amp; efficiency</text><text x="1445" y="1061" class="cn small">隐私/权限/过度迎合/事实损害</text><text x="1445" y="1083" class="cn small">cost–success Pareto（同轨内）</text>
+    <rect x="1080" y="1105" width="698" height="34" rx="10" fill="#176B88"/><text x="1429" y="1128" text-anchor="middle" class="cn gate">能力地图 + Judge失败边界 + 渠道鲁棒性；不做不可解释总分</text>
+  </g>
+
+  <g>
+    <rect x="1822" y="678" width="648" height="486" class="panel ppurple"/>
+    <circle cx="1856" cy="711" r="20" fill="#755A9E"/><text x="1856" y="718" text-anchor="middle" class="cn num">8</text>
+    <text x="1888" y="719" class="cn head purple">纵向 / 压力诊断（次级）</text>
+    <text x="1846" y="754" class="cn section">E3 checkpoint + fork</text>
+    <line x1="1870" y1="792" x2="2425" y2="792" stroke="#8D80A8" stroke-width="5"/>
+    <g fill="#fff" stroke="#755A9E" stroke-width="4"><circle cx="1885" cy="792" r="12"/><circle cx="2015" cy="792" r="12"/><circle cx="2145" cy="792" r="12"/><circle cx="2275" cy="792" r="12"/><circle cx="2410" cy="792" r="12"/></g>
+    <text x="1885" y="823" text-anchor="middle" class="cn tiny">CP0</text><text x="2015" y="823" text-anchor="middle" class="cn tiny">25%</text><text x="2145" y="823" text-anchor="middle" class="cn tiny">50%</text><text x="2275" y="823" text-anchor="middle" class="cn tiny">75%</text><text x="2410" y="823" text-anchor="middle" class="cn tiny">100%</text>
+    <rect x="1846" y="845" width="600" height="98" class="box boxPurple"/>
+    <text x="1864" y="872" class="cn section purple">受控 operator：acquire → preserve → use → update</text>
+    <text x="1864" y="899" class="cn small">irrelevant persona · wrong-user swap · stale conflict</text>
+    <text x="1864" y="925" class="cn small">context dilution · dynamic update · handoff / permission</text>
+    <rect x="1846" y="959" width="287" height="150" class="box"/>
+    <text x="1864" y="986" class="cn section">测量</text><text x="1864" y="1012" class="cn small">CFA / A_min retention</text><text x="1864" y="1038" class="cn small">Cue Gap / Neutral Invariance</text><text x="1864" y="1064" class="cn small">Update correctness / stale residue</text><text x="1864" y="1090" class="cn small">TQ/FR/privacy collateral damage</text>
+    <rect x="2147" y="959" width="299" height="150" class="box boxRed"/>
+    <text x="2165" y="986" class="cn section red">因果边界</text><text x="2165" y="1012" class="cn small">同 prefix / 同 evidence / 单一扰动</text><text x="2165" y="1038" class="cn small">只有 trace 可比才谈过程机制</text><text x="2165" y="1064" class="cn small">final-only 只能说“交付物表现”</text><text x="2165" y="1090" class="cn small">不能反推“模型真正理解用户”</text>
+    <text x="1848" y="1138" class="cn tiny muted">主论文只做 2–4 个适用 anchor；不让压力矩阵挤掉真人功效</text>
+  </g>
+
+  <g>
+    <rect x="2490" y="678" width="674" height="486" class="panel pgray"/>
+    <circle cx="2524" cy="711" r="20" fill="#596D78"/><text x="2524" y="718" text-anchor="middle" class="cn num">9</text>
+    <text x="2556" y="719" class="cn head">统计与审计：不制造伪精确</text>
+    <rect x="2514" y="746" width="626" height="87" class="box"/>
+    <text x="2532" y="773" class="cn section">Phase A：family 是聚类/置换单位</text><text x="2532" y="799" class="cn small">family-blocked permutation · family cluster bootstrap</text><text x="2532" y="821" class="cn tiny muted">四格 PF、多个 leaf、多个 seed 不能冒充独立样本</text>
+    <rect x="2514" y="848" width="626" height="87" class="box boxGreen"/>
+    <text x="2532" y="875" class="cn section green">Channel / 外部验证：保持 family 分组</text><text x="2532" y="901" class="cn small">persona/history/clarify 配对；真人 trial 再加 participant cluster</text><text x="2532" y="923" class="cn tiny">用户/seed/judge/leaf 不能冒充独立 task 样本</text>
+    <rect x="2514" y="950" width="303" height="150" class="box"/>
+    <text x="2532" y="977" class="cn section">JudgeBench</text><text x="2532" y="1003" class="cn small">general-good / over-personalized</text><text x="2532" y="1029" class="cn small">mention-only / persona keyword</text><text x="2532" y="1055" class="cn small">official judge + 双人盲评</text><text x="2532" y="1081" class="cn small">不过门 → 人评/降级</text>
+    <rect x="2833" y="950" width="307" height="150" class="box"/>
+    <text x="2851" y="977" class="cn section">版本/覆盖审计</text><text x="2851" y="1003" class="cn small">artifact/trace/rubric hash</text><text x="2851" y="1029" class="cn small">expected ≠ observed failure</text><text x="2851" y="1055" class="cn small">E1/E2/E3 分轨</text><text x="2851" y="1081" class="cn small">小切片不做稳定排名</text>
+    <rect x="2514" y="1114" width="626" height="27" rx="9" fill="#596D78"/><text x="2827" y="1133" text-anchor="middle" class="cn tiny white">不确定性大于模型差异时，发布“不可区分”，不发布伪冠军</text>
+  </g>
+
+  <!-- Bottom row -->
+  <g>
+    <rect x="36" y="1186" width="970" height="488" class="panel pblue"/>
+    <circle cx="70" cy="1219" r="20" fill="#18708D"/><text x="70" y="1226" text-anchor="middle" class="cn num">10</text>
+    <text x="102" y="1227" class="cn head blue">这套 Benchmark 最终能回答什么？</text>
+    <rect x="60" y="1252" width="450" height="350" class="box boxGreen"/>
+    <text x="82" y="1281" class="cn section green">可以用数据回答</text>
+    <text x="82" y="1312" class="cn body">✓ 谁只是 general-good，谁有双向 specificity</text>
+    <text x="82" y="1343" class="cn body">✓ matched 绝对合格，交叉后为何仍分不出用户</text>
+    <text x="82" y="1374" class="cn body">✓ 只胜差 swapped，还是相对 task-only 真增益</text>
+    <text x="82" y="1405" class="cn body">✓ persona 会用，clarification 时会不会问并采用</text>
+    <text x="82" y="1436" class="cn body">✓ Judge 是否奖 mention/关键词却漏最终错误</text>
+    <text x="82" y="1467" class="cn body">✓ 个性化是否破坏共同事实、隐私和权限</text>
+    <text x="82" y="1498" class="cn body">✓ specificity 何时转化为真人采用/较低 regret</text>
+    <text x="82" y="1540" class="cn tiny muted">结果形式：非补偿 profile + failure map + family-level uncertainty</text>
+    <rect x="528" y="1252" width="454" height="350" class="box boxRed"/>
+    <text x="550" y="1281" class="cn section red">不能越界声称</text>
+    <text x="550" y="1312" class="cn body">✕ final artifact 证明模型内部“理解了用户”</text>
+    <text x="550" y="1343" class="cn body">✕ 合成 persona 证明真实用户效用</text>
+    <text x="550" y="1374" class="cn body">✕ 一个总体分覆盖所有任务、风险和环境</text>
+    <text x="550" y="1405" class="cn body">✕ live 商业产品与 frozen harness 因果同榜</text>
+    <text x="550" y="1436" class="cn body">✕ 低样本 cell 的稳定排名或内部根因</text>
+    <text x="550" y="1467" class="cn body">✕ “推荐方向对了”就等于报告事实可靠</text>
+    <text x="550" y="1498" class="cn body">✕ artifact specificity 自动等于真人决策收益</text>
+    <text x="550" y="1540" class="cn tiny muted">主张边界：最终交付物特异性，而非模型内部心智归因</text>
+    <rect x="60" y="1615" width="922" height="36" rx="10" fill="#176B88"/><text x="521" y="1640" text-anchor="middle" class="cn gate">相对 PDR：absolute adaptation 与 specificity 是不同构念</text>
+  </g>
+
+  <g>
+    <rect x="1026" y="1186" width="1034" height="488" class="panel porange"/>
+    <circle cx="1060" cy="1219" r="20" fill="#B46B30"/><text x="1060" y="1226" text-anchor="middle" class="cn num">11</text>
+    <text x="1092" y="1227" class="cn head orange">本周最小实验：PDR-compatible 反例压力测试（方向性）</text>
+    <rect x="1050" y="1252" width="986" height="75" class="box boxOrange"/>
+    <text x="1068" y="1278" class="cn section orange">实验规模（协议、偏离与原始分全部留档）</text>
+    <text x="1068" y="1307" class="cn body">2 families · 4 users · matched/general/over · Qwen3-8B · 32 calls · PDR-style 4 dimensions</text>
+    <rect x="1050" y="1343" width="476" height="134" class="box boxGreen"/>
+    <text x="1068" y="1370" class="cn section green">支持的 claim</text>
+    <text x="1068" y="1398" class="cn body">✓ general-good 4/4 接近 matched；1/4 反超</text>
+    <text x="1068" y="1426" class="cn body">✓ A_min 高，但 CFA_min = −1.50 / 0.00</text>
+    <text x="1068" y="1454" class="cn body">✓ absolute fit 与 specificity 可给出不同结论</text>
+    <rect x="1542" y="1343" width="494" height="134" class="box boxRed"/>
+    <text x="1560" y="1370" class="cn section red">不支持 / 限制</text>
+    <text x="1560" y="1398" class="cn body">! over 仅 1/4 接近 matched，不是普遍误判</text>
+    <text x="1560" y="1426" class="cn body">! mention→adoption 错绑；高分端出现饱和</text>
+    <text x="1560" y="1454" class="cn body">! 单一本地 judge + 2 合成 family ≠ 官方复现</text>
+    <rect x="1050" y="1493" width="986" height="135" class="box boxBlue"/>
+    <text x="1068" y="1520" class="cn section blue">当前结论</text>
+    <text x="1068" y="1548" class="cn body">general 强支持 absolute 高分不证明 specificity；over 只提示关键错误可能被补偿</text>
+    <text x="1068" y="1578" class="cn body">0/2 family 通过 CFA_min&gt;0；并列 Δa/Δb/A_min/Gain_min + hard gates</text>
+    <text x="1068" y="1607" class="cn small"><tspan font-weight="800">Go：</tspan>冻结 artifact，官方 judge + 双人盲评　<tspan font-weight="800">No-Go：</tspan>现在宣称 PDR 已失效</text>
+    <text x="1052" y="1651" class="cn tiny muted">完整协议、32次评分、偏离与结果：pilot/pdr_false_positive_v0_1/</text>
+  </g>
+
+  <g>
+    <rect x="2080" y="1186" width="1084" height="488" class="panel ppurple"/>
+    <circle cx="2114" cy="1219" r="20" fill="#755A9E"/><text x="2114" y="1226" text-anchor="middle" class="cn num">12</text>
+    <text x="2146" y="1227" class="cn head purple">距离 ICLR 2027：五天 thesis freeze（8月17日）</text>
+    <line x1="2140" y1="1304" x2="3107" y2="1304" stroke="#8D80A8" stroke-width="6"/>
+    <g fill="#fff" stroke="#755A9E" stroke-width="4"><circle cx="2160" cy="1304" r="14" fill="#755A9E"/><circle cx="2385" cy="1304" r="14"/><circle cx="2610" cy="1304" r="14"/><circle cx="2835" cy="1304" r="14"/><circle cx="3085" cy="1304" r="14"/></g>
+    <text x="2160" y="1274" text-anchor="middle" class="cn small purple">DONE</text><text x="2160" y="1340" text-anchor="middle" class="cn small">Qwen压力测试</text>
+    <text x="2385" y="1274" text-anchor="middle" class="cn small red">BLOCKED</text><text x="2385" y="1340" text-anchor="middle" class="cn small">GPT-5：inference前403</text>
+    <text x="2610" y="1274" text-anchor="middle" class="cn small">DAY 2–3</text><text x="2610" y="1340" text-anchor="middle" class="cn small">双人盲评</text>
+    <text x="2835" y="1274" text-anchor="middle" class="cn small">DAY 3–4</text><text x="2835" y="1340" text-anchor="middle" class="cn small">补到3 family</text>
+    <text x="3085" y="1274" text-anchor="middle" class="cn small">DAY 5</text><text x="3085" y="1340" text-anchor="middle" class="cn small">冻结/收窄/换题</text>
+    <rect x="2110" y="1370" width="500" height="192" class="box"/>
+    <text x="2128" y="1398" class="cn section">五天内冻结的东西</text>
+    <text x="2128" y="1427" class="cn body">1. thesis：absolute adaptation ≠ specificity</text>
+    <text x="2128" y="1456" class="cn body">2. family 原语、非补偿 profile、统计单位</text>
+    <text x="2128" y="1485" class="cn body">3. general / over / mention-only 反例定义</text>
+    <text x="2128" y="1514" class="cn body">4. PDR / MyScholarQA / G-STEER 最近邻边界</text>
+    <text x="2128" y="1543" class="cn tiny muted">之后可改 leaf/样本/工程；不能继续标题级换题</text>
+    <rect x="2628" y="1370" width="508" height="192" class="box boxPurple"/>
+    <text x="2646" y="1398" class="cn section purple">Go / No-Go 硬门</text>
+    <text x="2646" y="1427" class="cn body">先解除合规访问阻塞，再做 GPT-5 + 人评</text>
+    <text x="2646" y="1456" class="cn body">至少2/3 family 的 paired-user 真值稳定</text>
+    <text x="2646" y="1485" class="cn body">Judge 能区分 mention 与 final adoption</text>
+    <text x="2646" y="1514" class="cn body">系统排序不被 TQ/长度/预算完全解释</text>
+    <text x="2646" y="1543" class="cn tiny muted">当前：key/余额/模型可见正常；无 GPT-5 completion 或分数</text>
+    <rect x="2110" y="1582" width="1026" height="63" rx="12" fill="#684C91"/>
+    <text x="2623" y="1609" text-anchor="middle" class="cn gate">投稿倒计时：abstract 9/11 AOE · paper 9/16 AOE；当前约剩 30 / 35 天</text>
+    <text x="2623" y="1633" text-anchor="middle" class="cn tiny white">最危险的不是结果为零，而是五天后还没冻结论文到底测什么</text>
+  </g>
+
+  <rect x="36" y="1694" width="3128" height="73" rx="18" fill="#E9EFF2" stroke="#AABBC3"/>
+  <text x="62" y="1724" class="cn section">图例：</text>
+  <rect x="130" y="1708" width="22" height="22" rx="5" fill="#E9F6FB" stroke="#82BBD0"/><text x="164" y="1725" class="cn small">数据/工程</text>
+  <rect x="276" y="1708" width="22" height="22" rx="5" fill="#EAF7F1" stroke="#83C3A8"/><text x="310" y="1725" class="cn small">主因果链</text>
+  <rect x="422" y="1708" width="22" height="22" rx="5" fill="#F1ECF8" stroke="#AD9ACB"/><text x="456" y="1725" class="cn small">诊断/下一步</text>
+  <rect x="598" y="1708" width="22" height="22" rx="5" fill="#FFF0E3" stroke="#DDA36E"/><text x="632" y="1725" class="cn small">运行/进度</text>
+  <rect x="766" y="1708" width="22" height="22" rx="5" fill="#FCE9E9" stroke="#DC9191"/><text x="800" y="1725" class="cn small">资格门/风险</text>
+  <text x="62" y="1751" class="cn tiny muted">统计单位：task family；clarification、seed、judge repeat 与 rubric leaf 均不冒充独立任务。contracts 与反例在评分前冻结。</text>
+  <text x="3134" y="1727" text-anchor="end" class="cn section purple">周报节点 · 2026-08-12</text>
+  <text x="3134" y="1752" text-anchor="end" class="cn tiny muted">Directional pilot ≠ official PDR replication</text>
+</svg>

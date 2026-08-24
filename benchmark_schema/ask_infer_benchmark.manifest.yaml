@@ -1,0 +1,65 @@
+manifest_name: ask_infer_benchmark
+manifest_version: "0.60"
+updated: "2026-08-24"
+status: working_hypothesis_frozen
+
+paper:
+  title: "Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents"
+  active_handle: AskInfer-Bench
+  prior_line: DeepAlign-Bench-v0.59
+  prior_line_archive:
+    source: archive/research-directions/DeepAlign-Bench-v0.59
+    deliverables: deliverables/archive/DeepAlign-Bench-v0.59
+    pinned_git_commit: 159d8ce
+
+active_sources:
+  formal: proposal/AskInfer-Bench_研究Proposal.md
+  condensed: proposal/AskInfer-Bench_正式Proposal精简版.md
+  plain_language: proposal/AskInfer-Bench_人话版.md
+  advisor_brief: proposal/AskInfer-Bench_汇报精简版.md
+  case_schema: benchmark_schema/ask_infer_case.schema.yaml
+  evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
+  figure_svg: proposal_assets/AskInfer-Bench_评测框架_v0.60.svg
+  figure_png: proposal_assets/AskInfer-Bench_评测框架_v0.60.png
+
+active_deliverables:
+  formal_docx: deliverables/AskInfer-Bench_正式研究Proposal.docx
+  formal_pdf: deliverables/AskInfer-Bench_正式研究Proposal.pdf
+  condensed_docx: deliverables/AskInfer-Bench_正式Proposal精简版.docx
+  condensed_pdf: deliverables/AskInfer-Bench_正式Proposal精简版.pdf
+  plain_docx: deliverables/AskInfer-Bench_完整人话版.docx
+  plain_pdf: deliverables/AskInfer-Bench_完整人话版.pdf
+  advisor_docx: deliverables/AskInfer-Bench_汇报精简版.docx
+  advisor_pdf: deliverables/AskInfer-Bench_汇报精简版.pdf
+  standalone_html: deliverables/AskInfer-Bench_HTML汇报版.html
+  figure_svg: deliverables/AskInfer-Bench_评测框架_v0.60.svg
+  figure_png: deliverables/AskInfer-Bench_评测框架_v0.60.png
+
+scope:
+  ask_domains:
+    - deep_research
+    - repository_coding
+    - data_analysis
+  infer_domains:
+    - deep_research
+  delta_strata:
+    - zero
+    - low
+    - high
+  independent_unit: base_task
+
+reused_infrastructure:
+  - interaction_env
+  - task_pool_v0_59_as_candidate_source_only
+  - human_ground_truth_protocol
+  - counterfactual_difference_map
+  - judge_qualification_suite
+  - rubric_provenance_and_matched_swapped_assets
+
+claim_boundaries:
+  - no_rank_reversal_result_exists
+  - no_agent_leaderboard_exists
+  - pdr_is_full_context_projection_not_implicit_elicitation
+  - pdr_simulated_context_is_not_natural_history
+  - cfa_is_final_artifact_specificity_not_ask_calibration
+  - pilot_is_not_confirmatory_main_experiment

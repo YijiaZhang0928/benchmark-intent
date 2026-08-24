@@ -1,0 +1,155 @@
+protocol_name: ask_infer_evaluation
+protocol_version: "0.60"
+status: working_hypothesis_frozen
+frozen_on: "2026-08-24"
+
+tracks:
+  ask:
+    domains:
+      - deep_research
+      - repository_coding
+      - data_analysis
+    contrast:
+      - no_ask
+      - ask_enabled
+      - task_specific_oracle
+  infer:
+    domains:
+      - deep_research
+    contrast:
+      - task_only
+      - natural_history_infer
+      - task_specific_oracle
+      - pdr_style_full_persona_on_overlap_slice
+
+question_to_node_alignment:
+  multi_target_questions_allowed: true
+  broad_question_default: non_targeted_until_supported
+  classifier_qualification:
+    human_annotators: 2
+    required_reports:
+      - precision
+      - recall
+      - abstention
+      - inter_annotator_agreement
+    leakage_prohibition: classifier_must_not_receive_hidden_preference_values
+
+ask_profile:
+  primary:
+    - high_delta_recall_at_budget
+    - question_precision_at_budget
+    - low_delta_question_rate
+    - zero_delta_question_rate
+    - first_critical_rank
+    - stopping_error
+    - user_burden
+  trajectory_states:
+    - unknown
+    - asked
+    - answered
+    - planned
+    - artifact_evidenced
+    - decision_changed
+  calibration_model:
+    family: mixed_effects_logistic
+    formula: asked ~ delta_stratum * agent + askability + lexical_salience + history_position + question_cost + (1|base_task)
+    estimand: agent_specific_delta_slope
+    inference_cluster: base_task
+  cost_reporting:
+    - questions
+    - turns
+    - user_tokens
+    - estimated_user_time
+    - execution_tokens
+
+infer_profile:
+  primary:
+    - recoverable_node_use
+    - recoverable_node_accuracy
+    - unsupported_projection_rate
+    - irrelevant_cue_flip_rate
+    - uncertainty_or_branching_appropriateness
+  negative_controls:
+    - demographic_swap
+    - irrelevant_history_addition
+    - supporting_cue_deletion
+    - wrong_history_swap
+
+final_deliverable_profile:
+  score_matrix: "M_c[i,j] = PF_i(Y_j^c)"
+  derived:
+    delta_a: "PF_A(Y_A) - PF_A(Y_B)"
+    delta_b: "PF_B(Y_B) - PF_B(Y_A)"
+    cfa_mean: "(delta_a + delta_b) / 2"
+    cfa_min: "min(delta_a, delta_b)"
+  non_compensatory_gates:
+    - matched_absolute_adequacy
+    - bilateral_counterfactual_specificity
+    - ask_over_no_ask_or_infer_over_task_only_gain
+    - shared_quality_or_functionality_non_inferiority
+    - factual_reliability_when_applicable
+    - privacy_permission_and_unsupported_projection_boundary
+    - target_user_or_executable_outcome_validation
+  prohibited_aggregation:
+    - single_personalization_total_score
+    - cfa_as_question_calibration
+    - cross_vertical_raw_score_average
+
+rank_stability:
+  scope: shared_deep_research_overlap_slice
+  required_comparability:
+    - same_agent_version
+    - same_sampling_configuration
+    - same_tools
+    - same_evidence_and_execution_budget
+    - same_time_window
+  reports:
+    - kendall_tau
+    - spearman_rho
+    - pairwise_inversion_matrix
+    - family_cluster_bootstrap_intervals
+  interpretation:
+    stable_inversion_required_for_rank_reversal_claim: true
+    public_legacy_leaderboard_direct_causal_comparison_forbidden: true
+
+statistical_unit:
+  independent_unit: base_task
+  nested_not_independent:
+    - user
+    - user_pair
+    - delta_stratum
+    - condition
+    - agent
+    - seed
+    - turn
+    - question
+    - rubric_leaf
+
+pilot:
+  base_tasks: 6
+  domains_per_task_count:
+    deep_research: 2
+    repository_coding: 2
+    data_analysis: 2
+  delta_strata_per_task: 3
+  agents: 4
+  ask_conditions: 3
+  expected_ask_episodes: 216
+  infer_bridge_deep_research_tasks: 2
+  claim_limit: novelty_kill_and_measurement_validation_only
+
+go_no_go:
+  continue_if:
+    - blinded_humans_distinguish_zero_low_high_delta
+    - at_least_two_domains_show_nontrivial_agent_by_delta_difference
+    - ask_gain_not_fully_explained_by_extra_tokens_or_general_quality
+    - at_least_one_repeatable_acquisition_to_use_break
+    - infer_separates_recoverable_from_unidentifiable
+    - human_plus_llm_rubric_adds_validity_over_llm_only
+    - existing_neighbor_metrics_do_not_fully_predict_new_profile
+  stop_or_narrow_if:
+    - delta_labels_are_not_reliable
+    - history_observability_cannot_be_frozen
+    - simulator_to_human_rank_stability_fails
+    - new_profile_does_not_change_any_empirical_conclusion
+    - ranking_difference_is_explained_by_budget_version_or_judge_confounds

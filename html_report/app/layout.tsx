@@ -3,18 +3,18 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deepalign-bench-report.sanfordzhang.chatgpt.site"),
-  title: "DeepAlign-Bench｜真人真值、CDM 与 D-JQS",
-  description: "三个长程知识工作场景中的反事实用户特异性评测与人类来源测量协议",
+  title: "Ask or Infer?｜任务特异的个性化评测",
+  description: "研究、编码与数据分析 agent 的主动偏好获取、history 推断与交付物个性化评测",
   openGraph: {
-    title: "DeepAlign-Bench｜绝对适配不等于反事实用户特异性",
-    description: "真人 task-conditioned ledger、Counterfactual Difference Map、受约束 rubric 与 D-JQS。",
-    images: [{ url: "/DeepAlign-Bench_真人真值到D-JQS_v0.55.png", width: 3200, height: 1800, alt: "DeepAlign-Bench 真人真值到 D-JQS 流程" }],
+    title: "Ask or Infer?｜任务特异的个性化评测",
+    description: "区分 Ask、natural-history Infer 与 PDR full-persona bridge；测量 δ 校准和最终交付物特异性。",
+    images: [{ url: "/AskInfer-Bench_评测框架_v0.60.png", width: 3200, height: 1800, alt: "AskInfer-Bench v0.60 评测框架" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DeepAlign-Bench｜绝对适配不等于反事实用户特异性",
-    description: "真人 task-conditioned ledger、Counterfactual Difference Map、受约束 rubric 与 D-JQS。",
-    images: ["/DeepAlign-Bench_真人真值到D-JQS_v0.55.png"],
+    title: "Ask or Infer?｜任务特异的个性化评测",
+    description: "主动获取偏好、history 推断与交付物个性化。",
+    images: ["/AskInfer-Bench_评测框架_v0.60.png"],
   },
 };
 

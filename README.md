@@ -2,87 +2,69 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：DeepAlign-Bench v0.59（单交付物任务契约）
+## 当前方向：AskInfer-Bench v0.60
 
-DeepAlign-Bench 研究的不是“报告看起来有没有提到 persona”，而是：在任务、证据/仓库/数据、工具和预算相同时，最终研究报告、代码 patch 或分析交付物是否真的因目标用户不同而作出正确且有益的改变。当前只声称跨 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性场景实例化一个共同协议，不声称覆盖所有知识工作。
+工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
-每个 task family 配对两位都真实合理、但决策约束不同的用户。系统分别生成 task-only、matched-A、matched-B 等报告，再把 A/B 报告交叉放到两位用户的 rubric 下评分。确认性结论必须同时通过四道不能互相抵消的门：双向 counterfactual specificity、matched 相对 task-only 的真实收益、共同质量不下降、隐私/权限不违规。clarification 只是一种 user-information channel：允许从模糊 query 出发询问用户，再检查答案是否从“问到”一路进入计划、报告和最终决定；它不再单独承担 when-to-ask 的论文主张。
+项目评价两种现实情境：用户在线但不主动补全 specification 时，agent 能否用少量问题获取真正改变交付物的 task-specific preferences；用户离线时，agent 能否只从授权 history 的证据做推断，并避免无依据投射。Ask 覆盖 Deep Research、repository coding 和 data analysis；Infer 首版只做 Deep Research。
 
-v0.55 将评价真值链正式分为：**真人从 task slate 选择 3–5 个真实相关任务并确认 task-conditioned ledger → 构造带 provenance/authority/direction/equivalence/dependency 的 Counterfactual Difference Map（CDM）→ 从冻结 CDM 受约束编译 rubric leaves → 用 validated verifier、D-JQS slice-qualified judge 和盲化人评执行**。CDM 是 A/B 的关系真值；rubric 只是编译产物。Freeze 只防 post-hoc，不证明真值正确。Pair 同时包含 contrast、near-neighbor 和 neutral/invariance，完整报告 offered→eligible→selected→paired→qualified 漏斗。
+同一基础任务构造 `δ=0 / low / high` 的用户差异。`δ` 在 agent 运行前按 deliverable impact 冻结：是否应该改变 evidence set、算法/接口、指标定义、分析切片、结论或风险边界。Ask 过程层报告 high-`δ` recall、question precision、low/zero-`δ` 问题率、停止错误、用户 burden 和 acquisition-to-use chain；Infer 区分 recoverable、unidentifiable 与 irrelevant history nodes。
 
-v0.56 将这条真值链落实为 Credamo 三轮问卷：Wave A 完成 consent、背景筛选、10–15 张 task card 路由和 3–5 个候选任务选择；Wave B 每人只深采 1 个主任务、最多 1 个次任务，且先保存开放回答再显示 DR/Software/Data schema；Wave C 将带原话 source span 的 LLM 候选事实交给本人逐条 approve/edit/delete/uncertain。人口学不参与任务路由，低于 3 个真实相关任务时不强迫凑数。v0.56 原本建议的 3–4 ledger/task 招募缓冲已由 v0.57 的预算约束 pilot 取代。
+最终交付物继续使用 matched/swapped 2×2 交叉评价、`CFA_mean/CFA_min`、绝对合格、相对 No-Ask/Task-Only 增益、共同质量 no-harm 和 boundary no-violation。CFA 只评价 final artifact specificity，不是提问校准分，也不与其他维度合成总分。
 
-v0.57 将约人民币 3,000 元视为包含平台费用的暂定 all-in ceiling，并据此把第一轮降为构念验证 pilot：保留 12 个 paper-first family（5 DR / 3 Software / 4 Data），每题先获得 2 个 confirmed ledgers，再只为 6 个跨 vertical anchor 补第 3 人，目标共 30 个 user–task records。该轮只估计路由命中、开放 elicitation、跨轮流失、ledger 确认、自然配对、CDM 可构造性和真实成本，不用于 60-task 总体结论、agent 排名或确认性效果检验。平台费超过暂留额度时优先缩减第三用户和访谈，不削减 consent、open-first、本人确认或报酬。
-
-v0.58 新增零运行依赖的 `deepalign_bench` Python 包，把 P2 的隐藏用户交互落实为统一 `reset()` / `step()` 环境。每个 case 固定 task、hidden persona、attribute importance graph 和 reveal policy；A Oracle 在 reset 直接提供完整 persona，B Naive 让完整 persona 对用户模拟器可见但不执行披露策略，C Interactive 只把本轮获准属性值交给响应 backend。每步记录问题分类、matched/denied 属性、newly/cumulative revealed、still-hidden 和泄漏拦截；`run_episode` 可包装 callable 或带 `act()` 的任意 agent。默认 rule backend 用于完全离线 smoke，`JSONLLMSimulatorBackend` 可接任意 structured-LLM provider。
-
-v0.59 把 60 个 provisional task family 统一为“一个提交边界、一个主要交付物”。DR 交付一份 evidence catalog/map/dossier/manifest，Software 交付一个 repository commit，Data 交付一个 notebook/workbook/versioned pipeline package；表、图、日志、测试和说明只能作为内部组成。24 个 Deep Research 题全部改成 program/resource discovery、evidence landscape、literature synthesis、dataset discovery、prior art、conflicting-evidence audit、temporal diff 或 exhaustive entity research，不再要求 recommendation/planning。保留 10 个 PDR-derived family 的来源/主题 continuity；仍明显靠近个人投资建议和旅行规划的两题已替换为气候敏感度证据审计与罕见病临床试验时点差分。
-
-项目内 judge 校准改名 **DeepAlign Judge Qualification Suite（D-JQS）**，避免与既有 JudgeBench/JUDGE-BENCH 混淆。D-JQS 混合确定违规、单一受控编辑和自然真人 artifact，并把 calibration 与 hidden qualification 按 family/user/source/agent/edit lineage/time 隔离；AB/BA 之外单独测试长度、style、格式、关键词、引用数与语言。关键 leaf slice 未通过时必须转 deterministic/human/coarse binary，不能靠多个失败 judge 投票掩盖。
-
-v0.47 的本地 PDR-compatible 压力测试发现，高质量通用报告 4/4 获得绝对高分且 4/4 接近 matched；但 over-personalized 报告只有 1/4 接近 matched。v0.48 已在任何新结果产生前冻结更严格的 GPT-5 复现：精确使用 PDR-Bench 官方中文 P-Score prompts、5 次权重采样、四维 criteria pipeline、4 个 task family、20 份固定报告、A/B 全交叉评分和 3 次 judge 重复。当前 OpenRouter key 有效且可见 GPT-5，但请求在进入模型前被账户/地域层 provider Terms of Service 403 阻断，尚无 GPT-5 criteria 或分数。冻结资产不变，获得受支持的 key 后可从 smoke 断点继续。
-
-v0.49 冻结结果解释边界：general-good 高分只证明绝对适配不能识别生成特异性，不是评分错误；盲化人评确认 critical decision 失败而 GPT-5 仍稳定 near-matched/rank-reversal，才是受控 evaluator 假阳性；只有分歧跨真实 family 与多个系统重复、造成系统重分类并提高真人结果预测，才是 Introduction 可承担论文主贡献的测量效度证据。
-
-v0.50 将一次性运行、研究前主动澄清、研究中交互、checkpoint 更新、memory retrieval、private workspace 和草稿反馈统一表示为带时间的信息事件 episode。首版主矩阵只运行 P0 task-only closed、P1 one-shot direct、P2 pre-research clarification、P4 checkpoint update；其他范式作为扩展，不做完整笛卡尔积。`data/seed_v0_50/` 已生成 3 个纯合成工程 family、6 位用户和 24 个平衡 episode，并通过结构校验；这些数据只用于 vertical slice，不能作为真实用户效度证据。
-
-v0.51 完整导入 PDR-Bench 公开的 50 tasks、25 structured personas、25 annotator-simulated contexts 和 250 官方 task-user pairs，保存上游 commit、哈希与许可证，并展开成 501 个同任务用户对供人工反事实筛选。全量导入不等于全量主实验：目标主集约 12–20 个通过决策分歧、contract、证据和人评门的 family。GPT-5 OpenRouter smoke 在 2026-08-14 再次于 inference 前被 provider Terms of Service 403 阻断；runner 已增加官方 OpenAI API transport，等待合规 key。
-
-v0.59 的机器构建仍包含 180 个 normalized candidate seeds（72 DR / 54 Software / 54 Data），并经五道作者阶段门预选 60 个 provisional families（24 / 18 / 18）。来源结构为 39 existing-benchmark-derived、12 adapted-real-world、9 newly-authored；五种个性化信号模式各 12 个。这 60 个是带 provenance、筛选记录与 verifier 计划的任务 shell，不是已可运行 gold；主论文优先完成 12 个（5 DR / 3 Software / 4 Data），然后才将通过许可、环境绑定、双人反事实审查、contract freeze 与 pilot discrimination 的 family 升级。
+PDR-Bench 在主要设定中向 agent 提供 task + full structured persona，因此属于 full-context personalization / preference projection，而不是 implicit elicitation。PDR tasks/personas 可作为共享 Deep Research bridge；完整 persona 不进入 Ask 主条件，simulated context 不作为真实 natural history。PDR-style、Ask 与 Infer 的 agent 排名是否反转是待检验假设，不是已有结果。
 
 ## 当前交付物
 
-- [`interaction_env/README.md`](interaction_env/README.md)：Python 安装、三模式语义、任意 agent wrapper、structured-LLM 接口、case JSON、审计日志和测量边界。
-- [`interaction_env/manifest.json`](interaction_env/manifest.json)：package 版本、公开 API、运行入口、schema/example/test 路径和验证命令。
-- [`src/deepalign_bench/data/demo_case.json`](src/deepalign_bench/data/demo_case.json)：包含 task、hidden persona、importance graph 和 reveal policy 的完整可运行 case。
-- [`benchmark_schema/interaction_environment.schema.yaml`](benchmark_schema/interaction_environment.schema.yaml)：三模式、`reset/step`、最小化、逐步日志、校准要求与主张边界的机器协议。
-- [`data/plhkw_task_pool_v0_59/tasks_60.md`](data/plhkw_task_pool_v0_59/tasks_60.md)：按 vertical 展开的 60 道完整题面与唯一主要交付物；同目录含 JSONL/CSV、180 候选池、来源/许可登记、筛选审计、standalone catalog、schema 和校验器。
-- [`proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md`](proposal/DeepAlign-Bench_Credamo真人Persona问卷方案.md)：三轮 21 页流程、全部题目文本、题型、跳转、质控、时长、报酬和平台搭建说明。
-- [`deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.59.pdf`](deliverables/DeepAlign-Bench_Credamo真人Persona问卷方案_v0.59.pdf)：与单交付物、非处方 DR task cards 同步的送审/搭建版；同名 DOCX 可编辑。
-- [`data/credamo_persona_survey_v0_59/README.md`](data/credamo_persona_survey_v0_59/README.md)：覆盖 v0.59 任务池的页面、题库、task cards、路由矩阵、质控规则、manifest 与校验器。
-- [`benchmark_schema/credamo_persona_collection.protocol.yaml`](benchmark_schema/credamo_persona_collection.protocol.yaml)：Credamo 三轮采集、open-first、事实确认、隐私、覆盖和报酬的机器协议。
-- [`benchmark_schema/human_ground_truth.protocol.yaml`](benchmark_schema/human_ground_truth.protocol.yaml)：真人 task 选择、开放 elicitation、ledger、authority、pairing、盲化 artifact validation 与隐私协议。
-- [`benchmark_schema/counterfactual_difference_map.schema.yaml`](benchmark_schema/counterfactual_difference_map.schema.yaml)：成对用户的 change/hold/equivalence/forbidden/clarify 关系真值与双冻结 schema。
-- [`benchmark_schema/judge_qualification.protocol.yaml`](benchmark_schema/judge_qualification.protocol.yaml)：D-JQS 三类 gold、grouped split、nuisance controls、slice qualification 与失败路由。
-- [`deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png`](deliverables/DeepAlign-Bench_整体框架与PDR压力测试_v0.51.png)：3200×1800 导师汇报主图，覆盖 PDR 全量资源池、case/task/user 元数据、统一 research episode、rubric compiler、2×2 交叉矩阵、五道非补偿门、首批 seed 与逐周证据门；同名 SVG 可编辑。
-- [`benchmark_schema/research_episode.schema.yaml`](benchmark_schema/research_episode.schema.yaml)：统一 Deep Research 范式、信息事件和系统能力资格的机器可读 schema。
-- [`data/seed_v0_50/README.md`](data/seed_v0_50/README.md)：第一批 3-family / 24-episode 合成工程数据与校验入口。
-- [`data/pdr_import_v0_51/README.md`](data/pdr_import_v0_51/README.md)：PDR 全量公开资源池、501 对筛选表、来源哈希、许可证和验证入口。
-- [`proposal/DeepAlign-Bench_ICLR2027每周执行计划.md`](proposal/DeepAlign-Bench_ICLR2027每周执行计划.md)：从 8 月 14 日到 9 月 25 日的逐周交付与停止条件。
-- [`deliverables/DeepAlign-Bench_正式研究Proposal.pdf`](deliverables/DeepAlign-Bench_正式研究Proposal.pdf)：完整方法、文献、schema 与实验记录；同名 DOCX 可编辑。
-- [`deliverables/DeepAlign-Bench_正式Proposal精简版.pdf`](deliverables/DeepAlign-Bench_正式Proposal精简版.pdf)：8 页正式精简版；同名 DOCX 可编辑。
-- [`deliverables/DeepAlign-Bench_完整人话版.pdf`](deliverables/DeepAlign-Bench_完整人话版.pdf)：不省略术语含义的直白解释；同名 DOCX 可编辑。
-- [`deliverables/DeepAlign-Bench_汇报精简版.pdf`](deliverables/DeepAlign-Bench_汇报精简版.pdf)：15–20 分钟导师汇报版；同名 DOCX 可编辑。
-- [`deliverables/DeepAlign-Bench_HTML汇报版.html`](deliverables/DeepAlign-Bench_HTML汇报版.html)：单文件离线汇报入口。
-- [`pilot/pdr_false_positive_v0_1/findings.md`](pilot/pdr_false_positive_v0_1/findings.md)：冻结协议、本地实验结果、可说/不可说结论和复现实验门。
-- [`pilot/pdr_gpt5_replication_v0_1/protocol.md`](pilot/pdr_gpt5_replication_v0_1/protocol.md)：结果前冻结的官方 prompt + GPT-5 P-Score 复现协议、完整样本清单和可证伪阈值。
-- [`benchmark_schema/case.schema.yaml`](benchmark_schema/case.schema.yaml) 与 [`benchmark_schema/metric_binding.schema.yaml`](benchmark_schema/metric_binding.schema.yaml)：case、信息渠道、artifact profile、四重门与外部效度子集的机器可读定义。
+- [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
+- [`proposal/AskInfer-Bench_正式Proposal精简版.md`](proposal/AskInfer-Bench_正式Proposal精简版.md)：10 页内正式精简版源稿。
+- [`proposal/AskInfer-Bench_人话版.md`](proposal/AskInfer-Bench_人话版.md)：逐步解释 PDR 边界、`δ`、history 可识别性和 CFA 的完整人话版。
+- [`proposal/AskInfer-Bench_汇报精简版.md`](proposal/AskInfer-Bench_汇报精简版.md)：15–20 分钟导师汇报版。
+- [`benchmark_schema/ask_infer_case.schema.yaml`](benchmark_schema/ask_infer_case.schema.yaml)：同任务用户差异、history observability、human validation 和实验条件 schema。
+- [`benchmark_schema/ask_infer_evaluation.protocol.yaml`](benchmark_schema/ask_infer_evaluation.protocol.yaml)：Ask/Infer 过程与最终评分、排名稳定性、统计和 Go/No-Go 协议。
+- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.60 源稿、交付物、归档和复用基础设施索引。
+- [`proposal_assets/AskInfer-Bench_评测框架_v0.60.png`](proposal_assets/AskInfer-Bench_评测框架_v0.60.png)：3200×1800 主图；同名 SVG 可编辑。
+- [`deliverables/AskInfer-Bench_正式研究Proposal.pdf`](deliverables/AskInfer-Bench_正式研究Proposal.pdf)：正式研究 Proposal；同名 DOCX 可编辑。
+- [`deliverables/AskInfer-Bench_正式Proposal精简版.pdf`](deliverables/AskInfer-Bench_正式Proposal精简版.pdf)：正式精简版；同名 DOCX 可编辑。
+- [`deliverables/AskInfer-Bench_完整人话版.pdf`](deliverables/AskInfer-Bench_完整人话版.pdf)：完整人话版；同名 DOCX 可编辑。
+- [`deliverables/AskInfer-Bench_汇报精简版.pdf`](deliverables/AskInfer-Bench_汇报精简版.pdf)：导师汇报版；同名 DOCX 可编辑。
+- [`deliverables/AskInfer-Bench_HTML汇报版.html`](deliverables/AskInfer-Bench_HTML汇报版.html)：单文件离线汇报入口。
 
-ElicitAlign-Bench v0.45 已完整归档到 [`archive/research-directions/ElicitAlign-Bench-v0.45/`](archive/research-directions/ElicitAlign-Bench-v0.45/) 和 [`deliverables/archive/ElicitAlign-Bench-v0.45/`](deliverables/archive/ElicitAlign-Bench-v0.45/)，不再占用当前入口。用户此前单独删除的 `deliverables/DeepAlign-Bench_主图.png` 保持删除状态，不属于本轮整理。
+## v0.59 归档
+
+DeepAlign-Bench v0.59 在主线切换前已完整保存：
+
+- 源稿、协议与图：[`archive/research-directions/DeepAlign-Bench-v0.59/`](archive/research-directions/DeepAlign-Bench-v0.59/)
+- DOCX/PDF/HTML/网页资源：[`deliverables/archive/DeepAlign-Bench-v0.59/`](deliverables/archive/DeepAlign-Bench-v0.59/)
+- 快照 commit：`159d8ce`
+
+v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、D-JQS 和 matched/swapped 资产继续作为 v0.60 的可复用基础设施；它们不是 Ask/Infer 已完成的实证结果。
 
 ## 当前最强风险
 
-当前最大风险不是工程，而是贡献被审稿人理解为“给 PDR-Bench 多加一个 swapped 差值”。DeepAlign 必须证明绝对适配与反事实特异性会稳定产生判定分歧、系统重分类或对真人结果的增量预测；若官方配置和真实 family 上没有这些现象，measurement-validity 主张应降级。
+- 被审稿人视为 G-STEER/IDRBench 的跨域 benchmark 化；
+- `δ` 不能被盲化人类稳定复现；
+- LLM 造 persona、rubric 和 judge 形成循环真值；
+- Ask 收益只来自额外 token，Infer 奖励 stereotype；
+- 用户模拟器与真人排序不一致；
+- PDR/Ask/Infer 排名差来自版本、预算、provider 或 judge，而不是能力表面。
 
-v0.55 新增的同级风险是把 CDM/受约束 compiler 包装成方法新颖性，但 GAMUT 已有 two-level meta-rubric，RuVerBench 已直接审计 agentic rubric verification，JudgeBench/JUDGE-BENCH 名称也已有前作。因此必须比较 PDR-style 单用户 rubric、独立 A/B rubric、CDM 对称 rubric 与 single-judge/hybrid scoring；若 CDM 既不重分类系统，也不增量预测盲化真人选择，论文只能称为 transparent measurement extension。
-
-第二个风险是把本地 Qwen 压力测试写成 PDR-Bench 的正式失败。它目前只是 adversarial unit test：通用报告假设获得方向性支持，over-personalized 的强假设未获得普遍支持。第三个风险是 broad clarification 已有 IDRBench、IntentRL、DiscoBench 和 G-STEER 等近邻，因此 clarification 只能作为输入渠道和诊断切片。
+Novelty-kill pilot 为 6 个独立基础任务 × 3 个 `δ` strata × 4 个 agent × 3 个 Ask 条件，约 216 episode；其中 2 个 DR task 追加 Infer/PDR bridge。该规模只验证操纵与测量，不发布正式 leaderboard。
 
 ## 研究协作约定
 
-- 将讨论中的想法视为待检验假设；从可证伪性、测量效度、混杂、泄漏、统计功效、工程可行性和 ICLR 审稿风险压力测试。
-- 首次出现项目术语时说明它是什么、由谁创建、何时冻结、输入输出和为什么需要，避免用内部缩写替代推理。
-- 每次实质性修改同步受影响的 Proposal 源稿、正式/精简/人话/汇报版、schema、HTML、图、DOCX/PDF、README、项目记忆和变更日志。
-- DOCX/PDF 必须渲染逐页检查；正式精简版不超过 10 页；HTML 必须构建、测试并生成 standalone。
-- 编号引用在 Markdown、DOCX、PDF 和 HTML 中默认可点击并直达论文或官方文档。
+- 把想法视为待检验假设，从可证伪性、测量效度、混杂、泄漏、统计功效、工程可行性和 ICLR 审稿风险压力测试。
+- 每次实质性修改同步受影响的 Proposal、schema/manifest、HTML、图、DOCX/PDF、README、项目记忆和变更日志。
+- DOCX/PDF 必须逐页渲染检查；正式精简版不超过 10 页；HTML 必须构建、测试并生成 standalone。
+- 编号文中引用在 Markdown、DOCX、PDF 和 HTML 中默认可点击并直达原始论文或官方文档。
 - 不覆盖或暂存用户的无关修改与未跟踪研究目录。
-- 校验后提交 `main`，commit 格式为 `proposal vX.Y: <核心变化>`，并推送到 `origin`。
+- 校验后提交 `main`，commit 格式为 `proposal vX.Y: <核心变化>`，并 push 到 `origin`。
 
-## 交互环境快速运行
+## 复用交互环境
 
 ```bash
 PYTHONPATH=src python3 -m deepalign_bench --mode interactive --seed 7
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
 
-安装为本地包后可直接运行 `deepalign-bench --mode oracle|naive|interactive`。正式 benchmark 应固定同一 case、LLM backend、模型版本、采样参数、turn budget 和 seed schedule，并在真人轨迹上校准 attribute-level question matching、披露决定与语义泄漏；Naive/Interactive 的差同时改变 simulator 信息访问和披露行为，不解释为纯 agent 能力效应。
+现有环境可用于 Ask simulator 的工程 smoke，但正式 Ask/Infer 还需实现 `δ` node、history observability、question-to-node qualification 和同窗 PDR bridge。

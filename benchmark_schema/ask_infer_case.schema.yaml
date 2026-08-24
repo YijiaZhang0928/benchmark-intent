@@ -1,0 +1,179 @@
+schema_name: ask_infer_case
+schema_version: "0.60"
+status: working_hypothesis_frozen
+frozen_on: "2026-08-24"
+
+purpose: >-
+  Describe one base task and its task-specific user-state contrasts for
+  Ask-enabled preference acquisition, history-only inference, and the
+  shared Deep Research PDR-style bridge.
+
+identifiers:
+  required:
+    - case_id
+    - base_task_id
+    - vertical
+    - environment_id
+    - deliverable_id
+    - user_state_id
+    - delta_stratum
+
+vertical:
+  enum:
+    - deep_research
+    - repository_coding
+    - data_analysis
+
+base_task:
+  required:
+    - public_instruction
+    - invariant_goal
+    - environment_snapshot
+    - tool_budget
+    - execution_budget
+    - primary_deliverable
+  primary_deliverable:
+    unit_count: 1
+    allowed_by_vertical:
+      deep_research:
+        - evidence_catalog
+        - evidence_landscape
+        - evidence_dossier
+        - dataset_manifest
+        - literature_synthesis
+      repository_coding:
+        - repository_commit
+      data_analysis:
+        - notebook
+        - workbook
+        - versioned_pipeline_package
+    embedded_components_allowed: true
+    independent_secondary_deliverables_forbidden: true
+
+user_state:
+  backstage_only_by_default: true
+  required:
+    - source_type
+    - consent_scope
+    - task_conditioned_facts
+    - preference_nodes
+    - privacy_and_permission
+  source_type:
+    enum:
+      - real_user
+      - user_confirmed_history_summary
+      - llm_candidate_human_validated
+      - pdr_structured_persona_bridge_only
+  visible_full_persona_allowed_only_in:
+    - task_specific_oracle
+    - pdr_style_full_persona
+
+history_view:
+  required:
+    - history_id
+    - authorization
+    - source_spans
+    - truncation_policy
+    - hidden_literal_audit
+  prohibition:
+    - simulated_context_must_not_be_labeled_natural_history
+    - full_persona_must_not_enter_ask_main_condition
+
+preference_node:
+  required:
+    - node_id
+    - criterion
+    - deliverable_decision
+    - delta_stratum
+    - observability
+    - provenance
+    - criticality
+    - acceptable_alternatives
+    - must_change
+    - must_hold
+    - must_not
+    - human_validation
+  delta_stratum:
+    enum:
+      - zero
+      - low
+      - high
+    definitions:
+      zero: no_content_decision_should_change
+      low: noncritical_but_user_confirmed_deliverable_change
+      high: at_least_one_critical_deliverable_decision_must_change
+  observability:
+    enum:
+      - recoverable
+      - missing_askable
+      - unidentifiable
+      - irrelevant
+  provenance:
+    enum:
+      - task_explicit
+      - user_explicit
+      - user_confirmed_inference
+      - compiler_inference
+    confirmatory_weight:
+      compiler_inference: 0
+
+human_validation:
+  minimum_independent_validators: 2
+  checks:
+    - plausibility
+    - task_relevance
+    - deliverable_impact
+    - history_observability
+    - answer_leakage
+    - stereotype_or_demographic_projection
+    - acceptable_alternatives
+  unresolved_disagreement:
+    preferred: third_person_adjudication
+    fallback: exclude_node_or_case
+    forbidden: average_labels_without_resolution
+
+experimental_conditions:
+  ask_track:
+    eligible_verticals:
+      - deep_research
+      - repository_coding
+      - data_analysis
+    required:
+      - no_ask
+      - ask_enabled
+      - task_specific_oracle
+    optional_diagnostic:
+      - nudge_ask_enabled
+  infer_track:
+    eligible_verticals:
+      - deep_research
+    required:
+      - task_only
+      - natural_history_infer
+      - task_specific_oracle
+    bridge_optional:
+      - pdr_style_full_persona
+
+freeze_requirements:
+  before_agent_run:
+    - invariant_task
+    - environment_snapshot
+    - preference_nodes
+    - delta_strata
+    - history_observability
+    - question_budget
+    - execution_budget
+    - rubric_bundle_hash
+    - acceptable_alternatives
+  after_agent_run_observed_only:
+    - observed_question_targets
+    - observed_failure_labels
+    - artifact_evidence_spans
+    - costs
+
+claim_boundaries:
+  - evaluates_observable_acquisition_inference_and_utilization
+  - does_not_identify_private_model_understanding
+  - pdr_bridge_is_not_ask_ground_truth
+  - family_is_the_independent_inference_unit
+  - cross_vertical_raw_scores_are_not_assumed_commensurate

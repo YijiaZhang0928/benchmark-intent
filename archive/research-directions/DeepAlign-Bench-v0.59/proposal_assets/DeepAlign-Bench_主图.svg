@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7F9FD"/><stop offset="1" stop-color="#EDF4F7"/></linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#112D59"/><stop offset="1" stop-color="#155F73"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#173652" flood-opacity="0.12"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#315B7D"/></marker>
+    <style>
+      .cn{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif}
+      .title{font-size:42px;font-weight:700;fill:#fff}.subtitle{font-size:20px;fill:#D9EAF2}
+      .kicker{font-size:15px;font-weight:700;letter-spacing:1.4px;fill:#2B6678}.section{font-size:25px;font-weight:700;fill:#153B64}
+      .h3{font-size:19px;font-weight:700;fill:#173B61}.body{font-size:17px;fill:#243A50}.small{font-size:14px;fill:#536A7E}.tiny{font-size:12px;fill:#5B7184}
+      .white{fill:#fff}.card{fill:#fff;stroke:#B7CBDE;stroke-width:1.5;rx:20;filter:url(#shadow)}
+      .softBlue{fill:#EEF5FC;stroke:#8EB1D2}.softGreen{fill:#EEF8F4;stroke:#78AF99}.softViolet{fill:#F3EFFA;stroke:#A590C7}.softAmber{fill:#FFF7EA;stroke:#D6A557}.softRed{fill:#FFF1EE;stroke:#D68A78}
+      .arrow{stroke:#315B7D;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="126" fill="url(#head)"/>
+  <text x="960" y="55" text-anchor="middle" class="cn title">DeepAlign-Bench：个性化报告是否让用户决定得更好?</text>
+  <text x="960" y="91" text-anchor="middle" class="cn subtitle">Phase A 证明报告处理成立 · Phase B 估计真实用户的 downstream decision effect</text>
+
+  <rect x="60" y="150" width="1800" height="82" rx="18" fill="#E4F1F4" stroke="#6CA4B2" stroke-width="1.5"/>
+  <circle cx="111" cy="191" r="26" fill="#1D7685"/><text x="111" y="200" text-anchor="middle" class="cn white" font-size="28" font-weight="700">?</text>
+  <text x="155" y="181" class="cn h3">核心问题</text>
+  <text x="155" y="211" class="cn body">共同质量受控后，matched 个性化报告相对 task-only 是否降低真实用户的 decision regret；wrong-user 报告是否造成伤害?</text>
+
+  <!-- left: gap -->
+  <rect x="60" y="262" width="380" height="566" class="card"/>
+  <rect x="60" y="262" width="380" height="66" rx="20" fill="#DCE9F8"/>
+  <text x="90" y="286" class="cn kicker">01 · GAP</text><text x="90" y="315" class="cn section">Artifact fit 不是最终效用</text>
+  <text x="90" y="372" class="cn h3">报告看起来适合 U，然后呢?</text>
+  <rect x="90" y="394" width="320" height="88" rx="14" class="softBlue"/>
+  <text x="250" y="431" text-anchor="middle" class="cn h3">PF<tspan baseline-shift="sub" font-size="13">U</tspan>(Y) = 高</text>
+  <text x="250" y="460" text-anchor="middle" class="cn small">PF/CFA 高，不等于用户的决定更好</text>
+  <line x1="90" y1="516" x2="410" y2="516" stroke="#D5E0EA"/>
+  <circle cx="111" cy="557" r="17" fill="#E9A64C"/><text x="111" y="564" text-anchor="middle" class="cn white" font-size="17" font-weight="700">1</text>
+  <text x="142" y="550" class="cn h3">适配感可能只是文风</text><text x="142" y="575" class="cn small">主观 fit 不能替代可验证结果</text>
+  <circle cx="111" cy="628" r="17" fill="#9B83C1"/><text x="111" y="635" text-anchor="middle" class="cn white" font-size="17" font-weight="700">2</text>
+  <text x="142" y="621" class="cn h3">总体质量会混淆收益</text><text x="142" y="646" class="cn small">matched 必须先与 task-only 配平</text>
+  <circle cx="111" cy="699" r="17" fill="#D37E69"/><text x="111" y="706" text-anchor="middle" class="cn white" font-size="17" font-weight="700">3</text>
+  <text x="142" y="692" class="cn h3">错配报告可能主动伤害</text><text x="142" y="717" class="cn small">只与 matched 比较会漏掉 harm</text>
+  <rect x="90" y="755" width="320" height="48" rx="12" class="softRed"/>
+  <text x="250" y="785" text-anchor="middle" class="cn h3">需要观察用户最终做出的决定</text>
+
+  <!-- center: crossover -->
+  <rect x="468" y="262" width="830" height="566" class="card"/>
+  <rect x="468" y="262" width="830" height="66" rx="20" fill="#E8E1F5"/>
+  <text x="500" y="286" class="cn kicker">02 · PHASE A</text><text x="500" y="315" class="cn section">Artifact Qualification：三臂报告先过质量门</text>
+  <rect x="500" y="350" width="766" height="45" rx="11" fill="#EDF2F6" stroke="#A8B8C4"/>
+  <text x="883" y="379" text-anchor="middle" class="cn h3">固定 T / E / tools / budget / output format</text>
+
+  <rect x="512" y="430" width="150" height="84" rx="15" class="softBlue"/><text x="587" y="463" text-anchor="middle" class="cn h3">用户 Ua</text><text x="587" y="490" text-anchor="middle" class="cn small">低预算 · 风险规避</text>
+  <rect x="512" y="548" width="150" height="84" rx="15" class="softViolet"/><text x="587" y="581" text-anchor="middle" class="cn h3">用户 Ub</text><text x="587" y="608" text-anchor="middle" class="cn small">增长导向 · 高预算</text>
+  <path d="M662 472H735" class="arrow"/><path d="M662 590H735" class="arrow"/>
+  <rect x="747" y="458" width="130" height="146" rx="20" fill="#E7F3EF" stroke="#75AA95" stroke-width="1.5"/>
+  <text x="812" y="508" text-anchor="middle" class="cn kicker">SAME AGENT</text><text x="812" y="544" text-anchor="middle" class="cn section">A</text><text x="812" y="576" text-anchor="middle" class="cn small">同 seed policy</text>
+  <path d="M877 490H946" class="arrow"/><path d="M877 573H946" class="arrow"/>
+  <rect x="958" y="430" width="138" height="84" rx="15" class="softBlue"/><text x="1027" y="464" text-anchor="middle" class="cn h3">交付物 Ya</text><text x="1027" y="491" text-anchor="middle" class="cn small">为 Ua 生成</text>
+  <rect x="958" y="548" width="138" height="84" rx="15" class="softViolet"/><text x="1027" y="582" text-anchor="middle" class="cn h3">交付物 Yb</text><text x="1027" y="609" text-anchor="middle" class="cn small">为 Ub 生成</text>
+  <rect x="1120" y="430" width="146" height="202" rx="15" fill="#FAFBFD" stroke="#9EB2C3"/>
+  <text x="1193" y="458" text-anchor="middle" class="cn h3">2×2 交叉评分</text>
+  <rect x="1140" y="478" width="48" height="48" rx="8" fill="#DCECF8" stroke="#7EA7CA"/><rect x="1198" y="478" width="48" height="48" rx="8" fill="#F3F5F7" stroke="#ADB9C3"/>
+  <rect x="1140" y="536" width="48" height="48" rx="8" fill="#F3F5F7" stroke="#ADB9C3"/><rect x="1198" y="536" width="48" height="48" rx="8" fill="#EAE2F5" stroke="#9B85BE"/>
+  <text x="1164" y="508" text-anchor="middle" class="cn small">PFa(Ya)</text><text x="1222" y="508" text-anchor="middle" class="cn tiny">PFa(Yb)</text>
+  <text x="1164" y="566" text-anchor="middle" class="cn tiny">PFb(Ya)</text><text x="1222" y="566" text-anchor="middle" class="cn small">PFb(Yb)</text>
+  <text x="1193" y="612" text-anchor="middle" class="cn small">+ task-only Y0</text>
+
+  <line x1="500" y1="660" x2="1266" y2="660" stroke="#D6E0E8"/>
+  <text x="520" y="697" class="cn h3">操纵检查</text><text x="650" y="697" class="cn body">Δa、Δb 与 CFA_min：报告是否确实具有用户特异性</text>
+  <text x="650" y="728" class="cn small">同一冻结 PF bundle 交叉评分；一位用户不能补偿另一位</text>
+  <text x="520" y="766" class="cn h3">等价门</text><text x="650" y="766" class="cn body">TQ · FR · length · evidence coverage · must-hold/not</text>
+  <text x="650" y="797" class="cn small">只有合格报告进入真实用户随机实验</text>
+
+  <!-- right: gates -->
+  <rect x="1326" y="262" width="534" height="566" class="card"/>
+  <rect x="1326" y="262" width="534" height="66" rx="20" fill="#F6E6E2"/>
+  <text x="1358" y="286" class="cn kicker">03 · PHASE B</text><text x="1358" y="315" class="cn section">Human Decision Trial：决定才是终点</text>
+  <rect x="1358" y="356" width="470" height="82" rx="15" class="softViolet"/>
+  <circle cx="1392" cy="397" r="19" fill="#8065AD"/><text x="1392" y="404" text-anchor="middle" class="cn white" font-size="17" font-weight="700">1</text>
+  <text x="1426" y="389" class="cn h3">Downstream Decision Effect</text><text x="1426" y="416" class="cn small">DDE = regret(task-only) − regret(matched)</text>
+  <rect x="1358" y="454" width="470" height="82" rx="15" class="softGreen"/>
+  <circle cx="1392" cy="495" r="19" fill="#4B8C73"/><text x="1392" y="502" text-anchor="middle" class="cn white" font-size="17" font-weight="700">2</text>
+  <text x="1426" y="487" class="cn h3">Wrong-user harm</text><text x="1426" y="514" class="cn small">regret(swapped) − regret(task-only)</text>
+  <rect x="1358" y="552" width="470" height="82" rx="15" class="softBlue"/>
+  <circle cx="1392" cy="593" r="19" fill="#4F83B2"/><text x="1392" y="600" text-anchor="middle" class="cn white" font-size="17" font-weight="700">3</text>
+  <text x="1426" y="585" class="cn h3">硬约束与可验证终态</text><text x="1426" y="612" class="cn small">预算 / 合规 / deadline / environment outcome</text>
+  <rect x="1358" y="650" width="470" height="82" rx="15" class="softRed"/>
+  <circle cx="1392" cy="691" r="19" fill="#C66F5C"/><text x="1392" y="698" text-anchor="middle" class="cn white" font-size="17" font-weight="700">4</text>
+  <text x="1426" y="683" class="cn h3">Calibration 与 burden</text><text x="1426" y="710" class="cn small">置信度、决策时间、认知负担与顺序效应</text>
+  <rect x="1358" y="754" width="470" height="48" rx="12" fill="#173D64"/>
+  <text x="1593" y="785" text-anchor="middle" class="cn white" font-size="15" font-weight="700">Real target users · blocked randomization · blinded arms</text>
+
+  <!-- bottom -->
+  <rect x="60" y="860" width="1800" height="162" rx="20" fill="#FFFFFF" stroke="#9EB3C6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="92" y="901" class="cn section">唯一核心贡献：个性化研究交付物是否因果性地改善真实用户的可验证决策</text>
+  <rect x="92" y="925" width="330" height="66" rx="13" class="softBlue"/><text x="257" y="952" text-anchor="middle" class="cn h3">3 → 8–12 decision families</text><text x="257" y="977" text-anchor="middle" class="cn small">pilot 通过 + 功效模拟后扩展</text>
+  <rect x="442" y="925" width="320" height="66" rx="13" class="softGreen"/><text x="602" y="952" text-anchor="middle" class="cn h3">约 36–48 real users</text><text x="602" y="977" text-anchor="middle" class="cn small">最终 n 由 pilot variance 冻结</text>
+  <rect x="782" y="925" width="320" height="66" rx="13" class="softRed"/><text x="942" y="952" text-anchor="middle" class="cn h3">2–3 report pipelines</text><text x="942" y="977" text-anchor="middle" class="cn small">更多系统先进入离线 Phase A</text>
+  <rect x="1122" y="925" width="706" height="66" rx="13" fill="#EEF2F5" stroke="#9CADB9"/>
+  <text x="1475" y="951" text-anchor="middle" class="cn h3">主张边界</text><text x="1475" y="978" text-anchor="middle" class="cn body">若 CFA 高但 DDE≈0，结论是 artifact-fit 代理失效；不改回 fit 主榜</text>
+  <text x="960" y="1055" text-anchor="middle" class="cn small">v0.32 · cluster units = target user + task family · no compensatory score · ethics review before recruitment</text>
+</svg>

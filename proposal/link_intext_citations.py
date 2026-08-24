@@ -6,10 +6,10 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = [
-    ROOT / "proposal" / "DeepAlign-Bench_研究Proposal.md",
-    ROOT / "proposal" / "DeepAlign-Bench_正式Proposal精简版.md",
-    ROOT / "proposal" / "DeepAlign-Bench_人话版.md",
-    ROOT / "proposal" / "DeepAlign-Bench_汇报精简版.md",
+    ROOT / "proposal" / "AskInfer-Bench_研究Proposal.md",
+    ROOT / "proposal" / "AskInfer-Bench_正式Proposal精简版.md",
+    ROOT / "proposal" / "AskInfer-Bench_人话版.md",
+    ROOT / "proposal" / "AskInfer-Bench_汇报精简版.md",
 ]
 
 FALLBACKS = {

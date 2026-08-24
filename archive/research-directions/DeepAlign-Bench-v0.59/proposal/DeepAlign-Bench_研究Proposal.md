@@ -1,0 +1,1427 @@
+# DeepAlign-Bench：三个长程知识工作场景中的反事实用户特异性评测
+
+**正式研究 Proposal（组内讨论稿）**
+
+版本：v0.59 · 2026 年 8 月 22 日
+
+定位：Benchmark / Evaluation / Human-Centered Agents
+
+当前定位是 Personalized Long-Horizon Knowledge Work（PLHKW）的受控实例化：不是声称覆盖全部知识工作，而是在 open-web research、repository-level software engineering 与 data-centric analysis 三个互补场景中使用同一套反事实个性化评价协议。
+
+## 研究概要
+
+PDR-Bench 已经建立 Deep Research 中 task–persona 条件下的 absolute adaptation：给定一个用户和一个任务，一份报告在目标、内容、呈现和可行动性上有多合适。[[4]](https://arxiv.org/abs/2509.25106) 但相同的测量问题也存在于代码和数据工作：一份 patch 或 workbook 可以通过共同正确性检查，却仍可能没有按目标用户的维护能力、风险门槛、受众或工作流作出必要改变。单用户绝对分不能回答：**只改变目标用户、固定任务、证据/仓库/数据、工具和预算后，复杂交付物是否发生方向正确且只对该用户必要的变化。** DeepAlign-Bench 的主目标是跨三个代表性长程场景识别这种 counterfactual user specificity，而不是再造一个可补偿总分。
+
+本稿不会把“通用好报告获得高 P-Score”直接称为 PDR-Bench 打分错误：如果报告确实对目标用户有帮助，absolute adaptation 给高分是合理的。它暴露的是**识别盲区**——这个高分本身不能证明系统使用了用户信息，也不能区分同样适合许多用户的通用质量与只因目标用户而产生的决策变化。只有当一份报告已经被盲化人评确认在关键用户约束上作出错误最终决定，PDR-style evaluator 仍稳定给出接近 matched 的分数，才构成受控假阳性。即便出现这一结果，论文也只能主张 absolute personalization evaluation 存在可重复的 blind spot，不能从四个合成 family 推导 PDR-Bench 整体无效。
+
+本轮对正式 proposal 的全部文献和 2026 年新近工作重新检索后，简单转向澄清、权限/授权、多 agent 委派或证据抗噪都不够新：ClarifyBench、HiL-Bench 与 UserBench 已覆盖选择性澄清；[[65]](https://aclanthology.org/2026.findings-acl.2028/)[[66]](https://arxiv.org/abs/2604.09408)[[67]](https://openreview.net/forum?id=iJS7nvlGPd) SovereignPA、HAS-Bench、IGAC 与 SentinelAgent 已覆盖变化意图、权限图、意图证书和委派链；[[68]](https://arxiv.org/abs/2607.05363)[[69]](https://arxiv.org/abs/2607.04329)[[70]](https://arxiv.org/abs/2606.22916)[[71]](https://arxiv.org/abs/2604.02767) MisKnow-Agent、DRNOISE、DeepFact 与 Mr Dre 又占据误导证据、冲突文档、事实核验和报告修订。[[72]](https://arxiv.org/abs/2607.20891)[[73]](https://arxiv.org/abs/2607.17291)[[74]](https://aclanthology.org/2026.acl-long.1586/)[[75]](https://aclanthology.org/2026.acl-long.609/)
+
+因此，v0.49 把主估计对象恢复并收紧为 **双向反事实个性化 profile**。对同一 task family 中两位都合理、但决策约束不同的用户 A/B，分别生成 matched 报告，再用 A、B 两套运行前冻结的标准交叉评分。主结果同时给出双向 specificity、matched 绝对合格、相对 task-only 的新增收益、共同质量 no-harm 和隐私/权限 no-violation；任一门失败都不能被其他维度平均补偿。Downstream Decision Effect（DDE）保留为少量可验证 family 的外部效度层，用来检验 artifact specificity 是否真的改善决定，但不再要求它独自承担论文题目。
+
+Benchmark 采用“主测量 + 外部验证”两层协议。**Phase A：Counterfactual Artifact Evaluation** 是主 benchmark：运行 task-only、matched-A、matched-B，交叉构成 2×2 用户—报告矩阵，并用 deliberately wrong、general-good 和 over-personalized 反例校准 judge。**Phase B：Decision Validation** 只在有可审计效用的 family 上，把 task-only、matched、swapped 作为处理，检验 specificity 与真实 decision regret、硬约束违规和置信度校准的关系。TARS 的 18 人 IDE 研究说明输出适配可以连接真人任务结果，但仍是单域小样本；[[29]](https://arxiv.org/abs/2607.15948) MyScholarQA 又说明合成用户与 LLM judge 会漏掉真人发现的细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
+
+v0.59 已建立 180 条候选 task seed，并按五道作者阶段门压到 60 个 provisional family：Deep Research 24、Software 18、Data/ML/Spreadsheet 18，即 40/30/30；来源为 39 个 existing benchmark-derived、12 个 adapted real-world 和 9 个 newly authored gap fillers。每题现在只有一个主要交付物容器：DR 为一份 evidence catalog/map/dossier/manifest，Software 为一个 repository commit，Data 为一个 notebook/workbook/versioned pipeline package；步骤中的表、图、日志、测试或说明只能作为内部组成。24 个 DR family 全部改为非处方性的检索、枚举、核验、文献综合、数据集发现、先前技术、证据冲突或时点更新，不要求 recommendation、planning 或替用户做最终选择。这个结果冻结 task shell、来源、reasoning structure、交付边界与 verifier 计划，但没有伪称 persona、环境或 matched/swapped gold 已完成。投稿主实验仍先做 12 个完整 family（5 DR、4 Data、3 Code），只有跨三个 vertical 均出现稳定 matched > swapped、共同质量 no-harm 和真人可解释差异，才扩展到 60-task release。v0.55 进一步把 persona 与评分链冻结为 **真人真值获取 → Counterfactual Difference Map（CDM）→ 受约束 rubric 编译 → DeepAlign Judge Qualification Suite（D-JQS）→ hybrid scoring**。v0.56 将真人采集落实为 Credamo 三轮协议：Wave A 只做筛选、路由和 3–5 个候选任务选择；Wave B 从中分配 1 个主任务、最多 1 个次任务做 open-first elicitation；Wave C 在离线 LLM 规范化后逐条由本人确认。v0.57 再按人民币 3,000 元 all-in working ceiling 把首轮收窄为 12-family 构念验证 pilot：每题先取 2 个 confirmed ledger，只为 6 个跨场景 anchor 补第 3 人，目标 30 个 user–task records；该轮不承担 agent 排名或确认性效果结论。v0.58 则把 P2 交互概念落实为零运行依赖的 Python 包：同一 case 可在 Oracle、Naive 和 Interactive 三种模式下通过 `reset()` / `step()` 运行，并完整记录问题匹配、策略拒绝、披露和仍隐藏的属性。v0.50 的 **research episode** 继续统一记录任务充分性、交互时机、信息来源、载体、状态更新和系统能力；首稿主矩阵仍只要求 P0/P1/P2，P4 只作少量次要稳健性测试。
+
+这条主线不能声称 agent 内部“在意”或“关心”用户；黑箱 benchmark 无法识别动机。可证伪的行为表述是：**当一份通用报告已经可以完成表面任务、但仍缺少会改变最终决定的用户事实时，agent 是否主动询问高价值问题，并在获得答案后把它落实到交付物。** P2 因而比一般证据冲突更直接地测 user-specificity sensitivity；P4 只能测当前用户状态变化后的响应与旧状态清除，不能被写成“agent 更关心用户”的独立证据。
+
+**一句话研究目标：**在固定任务、证据/仓库/数据、工具和预算时，检验 open-web research、software engineering 与 data-centric analysis 的复杂交付物是否同时具有双向反事实用户特异性、绝对合格、相对通用输出的真实收益、共同质量 no-harm 和边界安全；只主张可观察的交付物特异性，不声称模型内部“真正理解用户”。
+
+## 1. 研究问题与可证伪假设
+
+### 1.1 核心研究问题
+
+**RQ1（主问题）：**在共同任务和证据固定后，matched-A/ matched-B 是否在两位用户的冻结标准下同时优于 swapped，而不是只有一个方向成立？
+
+**RQ2（充分性）：**matched 报告本身是否绝对合格，并且相对同样高质量的 task-only/general-good 报告带来超过噪声的新增收益？
+
+**RQ3（主动用户特异性）：**当初始 query 足以生成一份高质量通用报告、但隐藏了 1–3 个会改变最终决定的用户事实时，agent 是否会主动询问高信息价值、低打扰的问题，并在回答后达到接近 P1 oracle 的交付物特异性？在少量 P4 anchor 上，已明确更新的用户事实能否替代旧状态，而共同事实保持不变？
+
+**RQ4（测量效度与后果）：**PDR-style absolute adaptation、DeepAlign specificity profile 与少量 family 的真人采用/decision regret 如何对应；哪些 general-good、over-personalized、mention-only 报告会暴露 judge 假阳性？
+
+### 1.2 预注册式假设
+
+- **H1（双向 specificity）**：`Δa`、`Δb` 均超过运行前冻结的最小实际重要差异，因而 `CFA_min > 0`，不是一位用户的正效应掩盖另一位用户的负效应。
+- **H2（绝对充分性与新增收益）**：matched 的 `A_min` 过线，且相对 task-only 的 `Gain_min` 超过噪声/最小实际重要差异；“swapped 很差”不能制造虚假成功。
+- **H3（非补偿安全）**：matched 同时通过共同质量、事实可靠性、must-hold 和 critical must-not；关键错误不能被呈现或一般内容质量补偿。
+- **H4（渠道与代理边界）**：不同 user-information channel 会暴露稳定的 acquire/use 差异；PDR-style absolute score 与 counterfactual specificity 不完全等价，且至少一个预注册反例切片产生可复核的分歧。
+
+以下任一结果都会削弱或否定核心主张：多数 family 无法构造自然的双用户决策差异；真人无法稳定区分 matched 与 swapped；`CFA_min` 在强系统上接近零；general-good 与 over-personalized 反例不能揭示 absolute score 之外的新错误；或所有排序都被一般报告质量、长度和搜索预算解释。若 Phase A 成立但 DDE≈0，应把结论限定为 artifact-level specificity，不把它包装成真实用户效用。
+
+## 2. 关键文献精读与设计启示
+
+### 2.1 OpenCompass：它解决的是评测工程，不替代构念设计
+
+OpenCompass 把评测拆成配置、推理、评估和可视化四个阶段。系统内部再区分配置、任务切分、执行调度、任务单元和结果汇总。它既支持规则评分，也支持 LLM-as-a-Judge 和级联评估：先用规则处理可确定样本，再把边界样本交给模型评委。OpenCompass 的主要价值是让大量“模型 × 数据”组合可以并行运行、失败重试并统一汇总，而不是提出新的个性化评价构念。[[1]](https://arxiv.org/abs/2605.19276)
+
+本项目可以直接借用这套工程思路。我们把 `user_source × task_family × perturbation × agent × seed` 写成显式配置，让模型运行与评分分开，并保存模型版本、搜索后端、时间戳、工具轨迹、交付物哈希和 judge 版本。但 OpenCompass 目前仍以静态 benchmark 和单轮文本为主，多轮和多模态仍是未来方向。因此，DeepAlign 还需要自己实现 episode runner、artifact collector 和 trajectory checkpoint，不能被简化成普通 QA 数据集。
+
+### 2.2 EvalScope：适合作为入口与报告层，但核心评分需自建
+
+EvalScope 用 Model Adapter、Data Adapter、多个执行后端、Performance Evaluator 和统一报告界面连接不同模型与 benchmark，并支持 single、pairwise-baseline 和全量 pairwise arena。[[2]](https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html) 对本项目最有用的是三层可插拔结构：统一 agent adapter、统一 case schema、可组合 evaluator。Arena 可以承载目标用户盲评；性能模块可以统一记录时延、token、搜索和工具成本。
+
+但“EvalScope 能调用 expert model 自动评分”不等于“这个评委已经可靠”。DeepAlign-Bench 仍需建立 D-JQS，验证评委能否识别用户特异价值，并排除长度、语气和显式复述 persona 等干扰。
+
+### 2.3 Agent-SafetyBench：最值得仿照的是“结果类别 × 失败机制”
+
+Agent-SafetyBench 构造了 349 个交互环境和 2,000 个案例，覆盖 8 类风险与 10 种失败模式。每个案例都记录风险类别、对话或指令、环境和预期失败模式。数据经过人工预检、自动环境验证和模型运行后的人工后检。论文还发现，直接让 GPT-4o 判断行为安全时准确率只有 75.5%；使用 4,000 条人工标签训练本地 scorer 后，在独立的 200 条交互上达到 91.5%。[[3]](https://arxiv.org/abs/2412.14470)
+
+本项目将采用同样的正交结构：
+
+- **个性化结果风险**回答“最终交付物错在何处”；
+- **预期失败模式**回答“这个 case 被设计来暴露什么机制”；
+- 每个 case 指定一个主风险类别，失败模式允许多标签，并保留次级风险；
+- 先由真实输出反向开放编码失败模式，再冻结 taxonomy，避免纯粹由作者想象分类；
+- 运行后的实际错误必须独立标注，且预期 failure-mode 标签不进入主 judge prompt；
+- judge 必须在独立的人类金标集上通过门槛，不能因为“使用了强模型”就默认可靠。
+
+但个性化不能像安全问题那样只判断“通过或失败”。同一任务可能有多个合格答案，而且好坏取决于用户。因此，DeepAlign 需要反事实交付物对、同时包含正向要求与禁止项的层级 rubric，并分别检查用户价值和通用质量。
+
+### 2.4 PDR-Bench（arXiv:2509.25106）：从绝对适配评价到反事实个性化效应识别
+
+PDR-Bench 包含 50 个任务、10 个领域和 25 个真实志愿者 persona。每个任务匹配 5 个用户，共形成 250 个用户—任务对。用户信息包括结构化 persona，以及由专业标注员模拟的长期记忆和对话上下文。它用 PQR 框架分别评价 Personalization、Quality 和 Reliability。个性化又分为 Goal Alignment、Content Alignment、Presentation Fit 和 Actionability。一个 LLM 根据 task 与 persona 生成维度权重和子标准，另一个 LLM 逐项评分；可靠性则由事实准确率和引用覆盖率构成。[[4]](https://arxiv.org/abs/2509.25106)
+
+PDR-Bench 的贡献需要明确承认。它把真实用户画像带入深度调研；persona 不只是输入，还直接决定 P-Score 的权重和子标准。论文比较 task-only、context 和 persona 条件，测试了多种 memory system，并在同一 user-query 下用两份 agent 报告校准 pairwise judge。它已经回答了一个重要问题：**给定 task 与 persona，这份报告在目标、内容、呈现和可行动性上是否适合该用户？** DeepAlign-Bench 沿用这个 absolute adaptation 构念，不把“rubric 能理解 persona”写成自己的创新。
+
+两者真正的区别是**要估计什么，以及怎样构造对照**，而不是 rubric 是否考虑 persona：
+
+1. **PDR-Bench 估计 absolute adaptation。** 每份报告在其对应 user-task 条件下获得 P-Score；task-only、context 与 persona 条件比较的是单用户条件下的平均适配变化。其 pairwise 人类实验比较同一 user-query 下不同 agent 的报告，仍然回答“对这个用户，哪份报告更好”。
+2. **DeepAlign 估计 counterfactual personalization effect。** 对同一 task/evidence/resources 构造两个都合理但需求不同的用户 `U_a`、`U_b`，分别生成 `Y_a`、`Y_b`，再让两套用户条件化评价同时评分两份交付物。核心问题变为：“只改变目标用户后，交付物是否发生了方向正确的变化，并且各自更适合对应用户？”
+3. **跨用户比较需要提前写清“什么该变、什么不该变”。** 仅看到 `Y_a ≠ Y_b` 不能证明有效个性化，因为差异可能与用户无关；两份输出相同也不一定失败，因为共同事实本来就不该变化。因此，标注者必须在看到模型输出前冻结三类契约：`must-change` 规定哪些决策必须随用户变化，`must-hold` 规定哪些共同事实与质量必须保持，`must-not` 规定哪些内容不能由 persona 推断、披露或迎合。这不是修补 PDR 的 rubric，而是跨用户反事实比较所需的真值。
+
+PDR-Bench 的评价构念成立，但它的 **judge 和评分协议仍有清楚的可靠性边界**。承认前者，不代表其自动分数已经足以支撑精细排名：
+
+1. **人类一致性不高，校准范围也较窄。** v3 只在 15 个 query、MiroFlow 与 O3 两种报告上做人类校准；最佳 GPT-5 的 PCA 为 0.43、MARD 为 1.40。[[4]](https://arxiv.org/abs/2509.25106) 这些结果可以用于初步选择 judge，但不能证明它在 10 个领域、25 个 persona、不同语言、不同报告长度和新 agent 上都稳定。
+2. **动态生成 rubric 可能带来额外方差。** Meta-evaluator 先生成维度权重和子标准，scorer 再给 0–10 分。如果不重复生成、冻结 criterion 版本并报告稳定性，同一 user-task 可能仅因 rubric 的一次生成结果不同而改变分数。问题不是 rubric 不懂 persona，而是量尺能否复现。
+3. **通用人评不能完全替代目标用户。** 论文让 human evaluator panel 按统一标准评分，但没有把原 persona 所有者的 matched/swapped 选择作为主要校准终点。通用标注者可以判断“看起来是否适合该 persona”，却不能完全回答“这个用户是否愿意采用”。MyScholarQA 的真人研究也发现，合成用户和 LLM judge 会漏掉细微错误。[[41]](https://aclanthology.org/2026.acl-long.723/)
+4. **事实可靠性由多步自动流程共同决定。** Claim 抽取、去重、Jina 抓取和 LLM 支持判断中的任何漏检都会影响 FA/CC；`unsupported` 与 `unknown` 又被合并为 0。[[4]](https://arxiv.org/abs/2509.25106) 因此，claim recall、抓取失败、证据蕴含和 source quality 都要分别审计，最终 R 分不能直接当成无噪声真值。
+5. **算术平均可能掩盖关键失败。** P/Q/R 最终做算术平均，因此较高的个性化或写作质量可能补偿事实可靠性不足。对高风险、隐私或关键约束，更合适的是 hard gate 和 violation cap。这是评分协议的边界，不是否定 P-Score 对 absolute adaptation 的表达能力。
+6. **尚未报告针对性的稳健性审计。** 论文没有报告 wrong-user swap、位置交换、matched-length、persona 关键词堆叠、敏感信息误用和跨 judge-family 等对抗切片。准确的说法是“这些稳健性尚未被验证”，不能直接断言 PDR judge 已被这些因素欺骗。
+
+因此，论文需要同时说清两点：**PDR-Bench 已经建立了有效的 task/persona-conditioned absolute adaptation 评价；它现有的 judge 校准和评分链还不能直接承担 DeepAlign 所需的跨用户、跨交付物、带硬约束的 effect identification。** D-JQS 负责保证测量可靠，但它本身不是 estimand 创新。
+
+形式上，令 `M[i,j] = PF_i(Y_j)`。只有同时满足以下条件，才能认为观察到了反事实个性化效应：对角项 `M[a,a]`、`M[b,b]` 稳定高于交换项 `M[a,b]`、`M[b,a]`；`must-change` 按预期变化；`must-hold`、事实性和共同质量不下降；`must-not` 没有被违反。这个 matched/swapped 设计识别的是“目标用户变化是否带来结果适配变化”，不能证明模型内部真的理解了用户。一个稳定的“关键词→模板”策略仍可能通过测试。
+
+独立的 **cue-equivalence / representation-robustness** 测试检查这种效应能否跨表达方式保持。对同一个潜在 user-state，分别使用结构化 persona、语义等价的自然历史、澄清对话和去掉显眼关键词的改写。核心 `must-change` 决策和 CFA 应基本一致；如果只改变任务无关的人口属性或表面措辞，`must-hold` 应保持不变。ACL 2026 的 *One Persona, Many Cues* 已表明，同一 persona 的不同提示线索会显著改变模型结论；[[53]](https://aclanthology.org/2026.acl-long.2079/) PARL 也把 representativeness、user-consistency 和 discriminativeness 列为个性化评价的三个必要原则。[[54]](https://arxiv.org/abs/2605.31545)
+
+长度、位置、格式、wrong-user swap、关键词诱饵和敏感信息误用则进入 D-JQS。它们既用于审计 DeepAlign 自己的评委，也补充 PDR-Bench 尚未报告的稳健性证据。这是 judge 可靠性方面的增量，不取代 counterfactual estimand 这一核心创新。
+
+### 2.5 LivingBench：动态用户与环境值得吸收，但目前证据透明度不足
+
+Macaron 团队将 LivingBench 描述为从真实产品需求中蒸馏的动态个人生活 benchmark：同时模拟动态噪声、动态生活环境与动态用户；用户信息逐步披露，任务中途变化，最终以 world end-state、case rubric 和时延、侵扰、错误处置等过程指标评分。公开技术文章还给出 preview 协议：30 个多轮 case、10 轮预算、每个用户轮次至多 3 次工具决策，综合分为 `0.7 × need score + 0.3 × process score`。[[5]](https://macaron.im/mindlab/research/macaron-v1-preview)
+
+这对本项目有三点启示：用户状态应允许变化；环境事实应有冲突和陈旧；最终评价不仅看文字，还看用户所处世界是否改善。但截至本 proposal 所核材料，LivingBench 主要依据产品方技术文章，完整数据、rubric、模拟器验证和人类一致性证据尚不如论文 benchmark 透明。因此它应作为设计灵感和对照案例，而不能作为未经审计的方法学金标准。小红书链接无法直接读取的部分不作为事实依据，核心论点均由作者公开技术文章交叉核验。
+
+### 2.6 近两年代表性 benchmark 的可迁移经验
+
+- **DeepResearch Bench**：100 个专家任务、22 个领域，采用自适应报告质量标准并分开评估引用有效性与准确性；说明深度调研需要“内容质量”和“检索证据”双轨评分。[[6]](https://arxiv.org/abs/2506.11763)
+- **Mind2Web 2**：130 个长程实时 web 任务、超过 1,000 小时人工构建，以树状 rubric 和 Agent-as-a-Judge 同时评估答案正确性与来源归因；说明复杂任务应拆成可追踪的证据树。[[7]](https://arxiv.org/abs/2506.21506)
+- **BrowseComp-Plus**：固定语料、人工核验支持文档与困难负例，以解决实时搜索 API 带来的不公平和不可复现；说明主榜应有 frozen corpus 轨，live web 只能作为生态有效性轨。[[8]](https://arxiv.org/abs/2508.06600)
+- **PaperBench**：20 个论文复现任务被拆为 8,316 个可单独评分要求，rubric 与论文作者共建，并另建 judge benchmark；说明复杂交付物需要层级原子 rubric 与“评委也要被考试”。[[9]](https://openai.com/index/paperbench/)
+- **LiveResearchBench / DeepEval**：100 个实时任务，明确覆盖日常生活、企业和学术使用者，并按领域与研究意图组织任务；其用户调查表明目标受众、内容、格式和呈现适配是现实需求。值得注意的是，正文称“10 类任务”，附录百分比分布实际枚举了 11 类（topic understanding、wide search、top ranking 等），说明直接复制自然语言类别会产生边界重叠与计数不一致；本项目因此合并为较稳定的上位意图，并公开映射表。[[10]](https://livedeepresearch.github.io/)
+- **DeepResearchGym**：用固定 ClueWeb22/FineWeb 索引替代动态商业搜索，并用人评验证自动协议；说明可复现主榜与真实世界 live track 应并存。[[11]](https://arxiv.org/abs/2505.19253)
+- **DRBench**：把公开 web 与企业私有文件、邮件、聊天和云盘结合，以 insight recall、distractor avoidance、事实性和报告质量评分；说明用户信息和任务证据在真实环境中经常来自私有空间。[[12]](https://arxiv.org/abs/2510.00172)
+- **LiveBench/LiveCodeBench 的更新机制**：周期性加入新题、强调客观评分与时间切分，提醒我们采用公开开发集、私有测试集和定期刷新，减轻污染与 benchmark 过拟合。[[13]](https://livebench.ai/)
+- **JudgeLM / Prometheus 2**：专用 SFT evaluator 可以显著降低成本、冻结版本，并支持自定义 rubric；但 position、knowledge、format bias 仍需交换增强、参考答案和对抗集处理。[[14]](https://arxiv.org/abs/2310.17631)[[15]](https://arxiv.org/abs/2405.01535)
+- **SFT judge 泛化研究**：微调评委在同分布集合上可能超过强通用模型，却容易退化为 task-specific classifier，在跨任务泛化、公平性和细粒度维度上下降；因此不能先验指定 SFT scorer 为金标准。[[16]](https://arxiv.org/abs/2403.02839)
+- **LiveDRBench**：把 Deep Research 定义为同时具有高搜索强度与非平凡推理强度，并覆盖科学事实、数据集发现、prior art、实体枚举和现实事件；说明“长报告”不是任务类型，搜索 fan-out 与推理结构才是更可比较的需求属性。[[17]](https://arxiv.org/abs/2508.04183)
+- **ResearchRubrics（ICLR 2026）**：用 conceptual breadth、logical nesting 和 exploration 三个正交维度刻画任务复杂度；其结果显示逻辑嵌套加深时 rubric compliance 单调下降，支持把难度作为连续/有序属性而非“PhD vs. daily”二分标签。[[18]](https://arxiv.org/abs/2511.07685)
+- **AssistantBench / Researchy Questions**：前者从真实用户近期经历和专业人士工作中收集耗时 web 任务，后者从搜索日志抽取约 10 万条非事实型、多视角需求；它们共同说明日常任务不是“简单题”，真实信息需求也可能具有高 fan-out、动态约束与复杂验证链。[[19]](https://arxiv.org/abs/2407.15711)[[20]](https://arxiv.org/abs/2402.17896)
+- **ResearcherBench**：65 个前沿 AI 科研问题分为 technical details、literature review 和 open consulting，说明即使在同一“PhD-level”层内也存在不同研究意图，不能只用用户学历或领域充当任务 taxonomy。[[21]](https://arxiv.org/abs/2507.16280)
+
+### 2.7 2026 年 7 月相邻工作：缺口必须写成“交叉缺口”
+
+七篇同期工作使“现有工作只测通用质量”这一表述不再成立。它们分别推进了用户理解、历史利用、单域个性化效用、状态写入风险与时间干预，但没有覆盖同一个评价对象。为避免选择性引用和不当首创主张，本项目将相关工作按“它实际识别了什么”而不是按论文自称的应用名称组织。
+
+| 工作 | 实际评价对象与主要证据 | 对本项目的直接威胁 | 仍未覆盖的部分 |
+|---|---|---|---|
+| **Setoka** [[26]](https://arxiv.org/abs/2607.27056) | 从语义事实、情景记忆、行为模式到人格特质的四层用户理解；10 个合成用户、异构记录、3 个模型 × 5 个 memory system；抽象层级越高表现越差 | 不能再声称“没有 benchmark 测跨源用户理解” | 主要终点是问答/记忆准确性；没有检验推断是否让开放式 DR 交付物产生必要且正确的差异 |
+| **User-Conditioned Temporal Interventions** [[27]](https://arxiv.org/abs/2607.21635) | 提出 C1 显式时间事件、C2 跨事件持久状态、C3 跨适应维度影响、C4 用户条件化差异；审计中未发现同时满足四项的协议 | 是长程保持与动态更新压力设计最直接的方法学前作；不能声称首先提出 temporal intervention | 属于 position/audit paper；没有构造广义 DR 任务、最终交付物真值、反事实用户对或实证榜单 |
+| **PersonaTrail** [[28]](https://arxiv.org/abs/2607.20482) | 用细粒度浏览轨迹测试 preference inference 与 episodic grounding；23 个领域、317 个网站、2,524 个 query；双记忆方法优于基线 | 证明用户信号可以来自真实行为轨迹，而不只是 persona 文本 | 局限于 web navigation 与两类查询；没有跨交付物 rubric、matched/swapped 用户效用和动态纠错 |
+| **TARS** [[29]](https://arxiv.org/abs/2607.15948) | 在 IDE 内按经验、角色和风格生成代码解释；18 人研究观察到更快完成、较低认知负担和主观适配 | 证明“个性化价值”可以体现在用户时间和认知负担，而不只是文本相似度 | 单域、小样本人机实验，若干客观差异未显著；不足以建立跨任务、跨 agent 的 benchmark |
+| **SARSI** [[30]](https://arxiv.org/abs/2607.12254) | 提出外部治理、task contract、planner/executor/verifier、版本化记忆与 owner control 的系统架构 | 为 agent plane、handoff、审计和 owner autonomy 提供更完整架构词汇 | 概念性系统设计，没有原创数据、实现或实证 benchmark；不能作为性能证据 |
+| **PASB** [[31]](https://arxiv.org/abs/2607.10526) | 1,600 个任务、12 个模型、2 个 agent framework；让真实 agent 自主写状态，再测新会话污染；commit 后平均失败由 45.0% 升至 71.9% | 是持久个性化安全和 longitudinal failure 最强的直接前作；我们必须测 must-not、来源/时效/作用域和写入治理 | 聚焦 persistent sycophancy 这一负向失败类，不评价广义 DR 的正向适配、交付物效用或跨任务结果真值 |
+| **APeB** [[32]](https://arxiv.org/abs/2607.03162) | 从原始欠指定商品查询、噪声行为历史和 hard candidates 测意图推断、偏好提取与候选选择；显式历史利用模块带来增益 | 证明“history 是否被实际利用”可通过 hard alternatives 与中间 rubric 诊断 | 单一电商平台、静态离线排序；没有广义 DR 交付物、多源信号、时间更新或 counterfactual user utility |
+
+这些工作连成了一条能力链：**理解用户 → 从历史推断并行动 → 跨会话保持或更新 → 交付用户特异结果**。[[26]](https://arxiv.org/abs/2607.27056)[[27]](https://arxiv.org/abs/2607.21635)[[28]](https://arxiv.org/abs/2607.20482)[[29]](https://arxiv.org/abs/2607.15948)[[30]](https://arxiv.org/abs/2607.12254)[[31]](https://arxiv.org/abs/2607.10526)[[32]](https://arxiv.org/abs/2607.03162) PDR-Bench 已经进入最后一个环节：它用 task/persona-conditioned rubric 评价一份 DR 报告是否适合给定用户。[[4]](https://arxiv.org/abs/2509.25106)
+
+DeepAlign-Bench 不取代这套评价，而是增加跨用户对照。固定任务和证据后，交叉评价两个用户各自的输出，并用提前冻结的差异契约判断变化是否正确。因此，本项目不能声称首先研究 personalization、history、persistent state 或 temporal intervention。更准确的主张是：
+
+> 在多类 Deep Research 最终交付物上，用同一套可审计协议连接不同来源的用户信号、跨用户 matched/swapped 对照、预冻结的 must-change/must-hold/must-not、长程压力和独立 judge 校准，从而分开评价通用质量、有效用户适配、过度个性化和状态失效。
+
+这项贡献必须由实验支持，不能靠 ontology 的维度数量成立。论文至少要证明四点：
+
+1. 目标用户能够稳定判断 matched 输出优于 swapped 输出；
+2. 同一 user-state 换成语义等价表达时结论基本稳定，只改任务无关线索时 `must-hold` 不变；
+3. 观察到的效应不能由共同任务质量下降、事实错误或 judge 偏差解释；
+4. 至少一种信号来源或长程压力产生可重复、统计上可区分的影响。
+
+如果任何一项失败，论文应收缩为“以最终结果为中心的个性化评价研究”，不能声称识别了模型内部的用户理解机制。
+
+### 2.8 扩展检索：22 篇工作把 gap 进一步压缩到“反事实特异性 + 跨 cue 稳健性”
+
+扩展检索使用 `personalized agent / user profile / user history / preference / memory / tool use / longitudinal adaptation / personalized deep research` 等关键词，并逐篇核对 22 篇论文的 title、abstract 和官方页面。其中 20 篇覆盖 agent 个性化能力链，另外两篇直接研究 persona cue 和个性化 rubric 的测量边界。论文只有满足以下三项中的至少两项才进入主叙事：用户条件是可观察输入；该条件会改变 agent 的生成、规划或行动；论文提供可比较的个性化结果。筛选后得到四条评价终点不同、但可以衔接的证据链。
+
+| 证据链 | 代表工作与已经覆盖的内容 | 为什么仍不能替代 DeepAlign-Bench |
+|---|---|---|
+| **个性化输出与任务对话** | LaMP 用用户历史评测多种个性化生成任务；PersonaLens 用带偏好和历史的模拟用户评测任务型对话；PersonaMem 进一步要求跟踪会变化的用户画像。[[33]](https://aclanthology.org/2024.acl-long.399/)[[35]](https://aclanthology.org/2025.findings-acl.927/)[[36]](https://arxiv.org/abs/2504.14225) | 主要终点仍是单次输出、候选响应或对话任务成功；通常没有固定同一证据后交换用户，也没有开放式 DR 交付物的差异真值。 |
+| **从记忆走向规划、工具与行动** | TravelPlanner+ 测个性化行程规划；ETAPP 与 ToolSpectrum 测个性化/主动工具调用和用户—环境联合选择；Mem2ActBench、APOLLO 与 AndroidIntent 测长期记忆如何落实为工具参数、偏好跟随和 GUI 行动；OPeRA 用真实网页行为及即时 rationale 预测特定用户下一步行动。[[34]](https://aclanthology.org/2024.emnlp-industry.37/)[[37]](https://aclanthology.org/2025.acl-long.1064/)[[38]](https://arxiv.org/abs/2505.13176)[[48]](https://aclanthology.org/2026.acl-long.370/)[[49]](https://aclanthology.org/2026.findings-acl.1676/)[[50]](https://aclanthology.org/2026.acl-long.1669/)[[51]](https://aclanthology.org/2026.acl-long.2033/) | 证明“个性化行动无人评测”同样是错误主张，但任务多为离散工具/GUI 沙箱或单域规划；行动正确不等于一份多证据、长篇幅交付物对目标用户具有独特价值。 |
+| **长程记忆、变化与风险** | PRIME 区分情景与语义记忆；RPEval 暴露无关记忆引发的不理性个性化；PAHF 联合主动澄清、记忆与反馈以适应偏好漂移；PerMemBench 测“什么值得为这个用户写入”；Memora 与 CloneMem 测过期事实、遗忘和多年非对话数字轨迹；PS-Bench 说明良性个人记忆也可能错误地为危险意图背书。[[39]](https://aclanthology.org/2025.emnlp-main.1711/)[[43]](https://arxiv.org/abs/2601.16621)[[44]](https://arxiv.org/abs/2602.16173)[[45]](https://arxiv.org/abs/2605.25535)[[46]](https://aclanthology.org/2026.findings-acl.1337/)[[47]](https://aclanthology.org/2026.acl-long.1549/)[[52]](https://aclanthology.org/2026.acl-long.1260/) | 它们要求我们把 irrelevant / stale / write / update / safety 变成正式 operator，而不是附录案例；但主要指标是检索、分类、推荐、行动或安全失败，并未统一到 DR 最终交付物。 |
+| **最接近的个性化 DR** | PDR-Bench 已用 task/persona-conditioned P-Score 测绝对适配，并比较 task-only/context/persona；另一项 PDR 工作把用户画像嵌入检索—推理循环；MyScholarQA 用研究者画像生成个性化行动与报告，并用真人研究揭示 LLM judge 漏掉的九类错误；个性化 leaderboard 工作还表明总体模型排名不能代表个体偏好。[[4]](https://arxiv.org/abs/2509.25106)[[40]](https://arxiv.org/abs/2605.10530)[[41]](https://aclanthology.org/2026.acl-long.723/)[[42]](https://aclanthology.org/2026.findings-acl.31/) | 这组工作直接否定“个性化 DR 无人研究”以及“persona 没有进入 rubric”。仍可检验的是：同一任务与证据下，两个都合理的用户能否形成稳定的跨用户对角优势，并由预冻结差异/不变项真值、语义等价信号和真人效用共同校验。 |
+
+因此，论文不能把结论写成“我们比现有工作更全面”。v0.31 的交叉对照解决了 artifact-fit 的识别问题，却仍未验证这个代理终点是否改善用户行为。v0.32 的问题更窄也更实质：**通过共同质量门的个性化研究交付物，是否降低真实目标用户的可验证决策 regret？** 跨用户 CFA、CDM、跨 cue 稳健性和 D-JQS 负责确认处理；DDE 与 WrongUserHarm 才承担核心结论。
+
+## 3. 构念定义与任务边界
+
+### 3.1 Long-Horizon Knowledge Work 的准入定义
+
+本 benchmark 不把长程知识工作偷换成“联网写长报告”，也不声称全面覆盖 legal、email/calendar、CAD、实验室自动化等全部工作。首版只实例化三个代表性 regime：Research 对应 `find & synthesize`，Software 对应 `modify & build`，Data 对应 `analyze & infer`。一个 episode 必须同时满足：
+
+1. 需要多步信息获取、验证、综合或实验；
+2. 存在不止一种合理过程路径；
+3. 最终产物供真实用户决策、行动、理解或后续生产使用；
+4. 用户特征会改变至少一项合格交付标准；
+5. 执行具有足够长度，使用户信息可能被中间材料稀释。
+
+可交付物包括研究报告、决策备忘录、对比/采购建议、行动计划、课程/教程、数据分析工作簿、代码修改与技术说明、幻灯片、网页或多文件项目。纯事实问答、只需一次搜索的问题、只有表面语气差异的改写，以及无法为用户差异建立合理真值的任务不纳入主集。
+
+### 3.2 个性化的操作性定义
+
+设任务为 (T)，证据环境为 (E)，用户真实状态为 (U^*)，agent 可见的用户信号为 (S=g(U^*,c))，其中 (c) 表示信息渠道；最终交付物为 (Y=A(T,E,S))。若在固定 (T,E) 时，两个用户 (U_a,U_b) 的合格交付标准集合不同，并且 (Y_a) 相较 (Y_b) 更满足 (U_a) 的差异标准，同时不降低共同任务标准，则称 agent 实现了有效个性化。
+
+这里有三个必要约束：
+
+- **差异必须有任务后果。** “喜欢蓝色”只有在交付格式确实允许且对使用有价值时才进入 rubric。
+- **共同质量不可牺牲。** 事实错误、关键遗漏、不可执行或违规不能被“很懂用户”抵消。
+- **不确定性必须被校准。** 低置信度用户推断不应被当成事实；必要时应澄清、给条件分支或显式说明假设。
+
+## 4. 任务立方体 + 双轴失败 taxonomy
+
+### 4.1 PLHKW Evaluation Atlas：元数据就是实验设计
+
+本项目不把 benchmark 简化成“任务列表 + persona 列”。每个 case 都要说明：测什么任务、在什么环境中运行、目标用户是谁、这一次长程 episode 允许怎样交互和获得信息、被测 agent 有哪些能力。这五组元数据组成 **PLHKW Evaluation Atlas**。
+
+| 元数据平面 | 核心分支 | 它控制的实验问题 |
+|---|---|---|
+| **A. Research Task** | 使用情境、研究意图、领域、交付物、需求剖面、stakes | agent 在哪类 DR 工作产品上被测试？ |
+| **B. Research Environment** | frozen/live/private evidence、freshness、source topology、工具、预算、权限、交互长度 | 研究发生在怎样的信息世界和资源约束中？ |
+| **C. Task-conditioned User State** | 目标、知识、硬约束、偏好、风险/价值、受众、权限、动态状态 | 对这个任务而言，哪些用户差异应改变交付物？ |
+| **D. Research Episode / Information Events** | 初始充分性、交互时机、来源、载体、访问方式、可用时间、更新关系 | 相同用户事实何时、从哪里、由谁主动获得并怎样更新？ |
+| **E. Agent System** | 模型/产品版本、搜索、memory、工具、规划、多 agent 交接、预算和可见上下文 | 不同系统结构在何处形成或丢失个性化？ |
+
+Atlas 描述 case 的条件，下面四类**行为测试算子**说明要测什么行为。这个设计借鉴 CheckList 的“能力 × 测试类型”，避免为每种表面组合另造一个类别：[[23]](https://aclanthology.org/2020.acl-main.442/)
+
+1. **Acquire**：必要信息缺失、隐含或需要澄清时，是否取得最小充分用户信息；
+2. **Preserve**：在噪声、长上下文、冲突、过期信息和子 agent 交接中是否忠实保持；
+3. **Use**：是否把已知信息落实到选择、推理和交付物，同时保持无关事实不变；
+4. **Update**：用户状态按预注册事件变化后，是否采用当前真值、避免旧状态残留并保持未改变字段。
+
+因此，每个可运行测试都写成 `Atlas coordinate + research episode + behavioral operator + expected contract`，而不只使用“长程个性化”这类模糊名称。例如，“Professional / Compare-Decide / memory retrieval during research / stale-conflict / Update”和“Everyday / Plan / one-shot direct / context-dilution / Preserve”是两个条件清楚、可以复现的测试。
+
+### 4.1a 三类长程知识工作如何统一建模
+
+“一次性走完”“主动澄清”“做到中间再问”“从 memory 读取”不能直接作为四个互斥类别。前两项主要描述交互时机，memory 描述信息位置和访问方式，中途用户改需求又涉及状态变化。若把这些混成一个 `channel` 标签，系统差异可能来自信息量、时序、主动性或产品能力，无法解释。
+
+v0.50 把一次运行表示为：
+
+`Episode = Task interface + Interaction policy + Information-event timeline + System capabilities + Comparability block`
+
+其中 **information event** 是一条带来源和时间的用户信息进入记录。例如：“用户在初始 query 中主动写明预算”是一条 `current_user × initial_query × pushed × before_run` 事件；“agent 发现缺口后询问，用户回答预算”是 `current_user × clarification_answer × agent_requested × before_plan`；“从长期 memory 检索到旧预算”是 `persistent_memory × retrieved_memory_item × agent_retrieved × during_research × stale`；“用户在 50% checkpoint 把预算改为新值”则是带 `supersedes` 关系的动态事件。这样同一套 ledger 可以被不同产品真实地暴露，而不把 product UI 当作科学构念。
+
+统一模型包含六个正交维度：
+
+1. **初始任务充分性**：信息完整；足以做通用研究但缺个性化关键条件；或者没有回答就根本无法执行。主 clarification 只使用第二类，否则测到的是基础任务完成，而不是主动个性化。
+2. **交互时机**：不可交互、研究前可问、研究中可问、checkpoint 接收更新、草稿后迭代。
+3. **信息来源**：当前用户、历史会话、持久 memory、结构化 user profile、私有工作区、组织上下文、行为轨迹、公共证据或系统推断。
+4. **访问方式**：系统直接推送、已在上下文可见、agent 主动询问、agent 主动检索、环境按脚本注入，或只作为隐藏真值。
+5. **时间与状态**：静态、延迟出现、更新、过期冲突或权限撤销；新事件必须明确是否覆盖旧事件。
+6. **系统能力资格**：是否能 ask、retrieve memory、搜索 workspace、checkpoint/resume、根据反馈 revise、写回 memory。系统不支持某操作时标记 `structurally-inapplicable`，不能记作零分。
+
+范式库定义八种常见配置：`P0 task-only closed`、`P1 one-shot direct`、`P2 pre-research clarification`、`P3 in-research interactive`、`P4 user-state checkpoint update`、`P5 memory retrieval`、`P6 workspace grounded`、`P7 draft-feedback revision`。这是覆盖 ontology，不是首版运行矩阵。首稿主因果矩阵只选择 P0/P1/P2：分别回答没有用户信息时能写多好、信息给到后会不会用、信息缺失时会不会主动发现并采用。P4 只在 2–4 个适用 anchor 上测试**用户状态更新**；P3/P5/P6/P7 以及私有 workspace 全部标为 `deferred`。
+
+这里必须把两种“更新”分开。若供应链新闻、法规文本或网页事实发生变化，主要测的是一般 evidence freshness、冲突解析和研究修订能力；它不是 personalization 证据。P4 只有在公共证据、任务目标和工具保持不变，而预算、可用时间、知识水平、风险门槛、目标受众或披露权限等 **user-state fact** 发生带时间戳的明确变化时，才进入 DeepAlign 主张。即使这样，P4 也只支持“更新后的用户特异约束被使用”，不支持对内部动机的推断。
+
+比较时必须写出 `comparability block`：任务、证据、工具、预算、用户真值和交付契约中哪些保持不变，本次只改变哪一项。P1 与 natural-history 可以在相同事实和相同时点下比较载体；P2 相对 P1 额外包含主动获取，因此不能叫纯 cue-equivalence；P5 若检索到的信息不完整或更晚可用，也不能与 prompt 条件直接解释为“memory 格式效应”。
+
+Atlas 不是一个自动生成 benchmark 的算法，而是统一的 case schema 和实验索引。它有五个实际用途：按预注册配额抽样；生成只改变指定变量的对照条件；根据元数据选择适用 rubric；按任务、渠道、环境和系统切分结果；最后检查论文真正覆盖了哪些区域。
+
+HELM 先列出场景与指标空间，再根据覆盖价值和可行性选择子集并公开缺口；这很适合本项目的两个月约束。[[22]](https://arxiv.org/abs/2211.09110) DeepAlign 不声称首版覆盖整个 Atlas，而是发布**机器可读 coverage manifest**。Manifest 只记录预注册的候选实验单元，不枚举五个平面的完整笛卡尔积。每个单元标为：已经完成并可支持结论的 `tested`、已经定义但未充分运行的 `defined-only`、语义上不成立的 `structurally-inapplicable`，或合理但因时间、成本、隐私或工程条件延期的 `deferred`。只有 `tested` 单元用于支持论文结论。
+
+BetterBench 强调 benchmark 生命周期、统计设计和复现质量；BenchmarkCards 要求公开目标、方法、来源和限制。它们都支持把元数据、覆盖声明和版本记录放进 benchmark 主体，而不是只放在附录。[[24]](https://arxiv.org/abs/2411.12990)[[25]](https://papers.neurips.cc/paper_files/paper/2025/hash/76175f4355e2f67cf91be468c8860070-Abstract-Datasets_and_Benchmarks_Track.html)
+
+### 4.1.1 任务立方体：Knowledge-work Task 平面的抽样骨架
+
+“PhD-level”和“daily”可以作为任务描述，但不适合直接作为唯一、互斥的分类。PhD-level 同时混入了用户身份、专业程度和难度；daily 又混入了使用场景和内容主题。日常的跨国旅行决策可能需要大量搜索，而博士用户也可能只做简单事实核验。因此，Research Task 平面把使用情境、研究意图和需求强度分开记录。
+
+**第一层：使用情境 / 预期使用者（task stratum；不是难度等级）**
+
+| Stratum | 代表性任务 | 个性化主要改变什么 |
+|---|---|---|
+| 个人与日常（Everyday / Personal） | 旅行、消费比较、学习、职业选择、家庭计划、公共服务信息 | 预算、时间、地点、能力、偏好、可执行步骤与风险提醒 |
+| 专业与企业（Professional / Enterprise） | 市场分析、合规、采购、技术选型、客户/运营分析、决策备忘录 | 组织目标、权限、受众、行业规范、ROI、流程与披露边界 |
+| 学术与前沿（Academic / Frontier） | 文献综述、prior art、数据集/方法发现、研究设计、技术细节与开放咨询 | 专业深度、证据标准、方法严谨性、创新边界、复现与引用规范 |
+
+**第二层：研究意图 / 工作产品（research intent；每题一个主意图，可带次级意图）**
+
+1. **理解与综合（Understand / Synthesize）**：主题解释、证据综述、literature review；
+2. **发现与枚举（Discover / Enumerate）**：wide search、top ranking、实体/材料/数据集发现；
+3. **比较与决策（Compare / Decide）**：竞品分析、利弊比较、选择与推荐；
+4. **评估与预测（Assess / Forecast）**：市场、政策、趋势、风险和情景分析；
+5. **规划、设计与排障（Plan / Design / Troubleshoot）**：行动路线、资源配置、技术支持和实施方案；
+6. **验证与审计（Verify / Audit）**：事实核验、合规检查、prior-art/novelty 检查、证据与引用审计。
+
+**第三层：研究需求剖面（demand profile；不压成一个“难度分”）**
+
+- `conceptual_breadth ∈ {low, medium, high}`：涉及主题、领域和证据类型的广度；
+- `logical_nesting ∈ {shallow, intermediate, deep}`：依赖性子问题、条件和决策链深度；
+- `exploration ∈ {low, medium, high}`：目标开放程度与可接受解空间大小；
+- `search_fanout`：理想完成所需的独立信息单元、搜索分支和来源数量；
+- `freshness ∈ {static, time-bounded, live}`：是否依赖当前信息与动态更新；
+- `stakes/reversibility`：错误后果、可逆性以及是否必须升级给专业人士；
+- `interaction_need`：单轮可解、可选澄清、必须澄清或长程状态更新。
+
+领域（健康、金融、软件、教育等）和交付物（报告、表格、代码、幻灯、网页等）作为额外切片，不替代研究意图。主榜分别报告三个 stratum、六个 intent 和不同需求剖面的结果，不能只用一个 overall average 掩盖某类任务的系统性失败。
+
+Task cube 回答三个问题：样本覆盖了什么、任务在哪些方面更难、榜单应该怎样切分。下面的双轴 taxonomy 则回答结果错在哪里、case 原本想暴露什么失败。同一个“比较与决策”任务可能出现内容错配、已知信息未使用或隐私越界；仅知道任务类型，并不能解释失败原因。
+
+### 4.1.2 Task family 如何从真实问题构造出来
+
+**Task family 不是主题标签，也不是把一道题改写几次。** 它是一份可以生成多组受控条件的实验蓝图：`固定任务核心 + 固定证据世界 + 交付物接口 + counterfactual user pair + signal views + stress operators`。每个 family 按以下八步构造：
+
+1. **收集真实 seed。** 从真实用户访谈、公开专业工作流、企业/实验室需求和已有 DR benchmark 中收集需要多步检索、比较、验证或生产交付物的问题；删除一次搜索即可回答的题。
+2. **冻结 invariant task core。** 写清所有用户共同的研究目标、证据截止时间、可用工具、资源预算、交付物格式和不可牺牲的事实要求。换用户时这些字段不得变化。
+3. **标注任务坐标。** 给出一个主 `stratum`、一个主 `intent`、可选次意图、领域、交付物和 demand vector；两名标注者看不到作者标签，独立复核类别。
+4. **构造证据世界。** Frozen 轨建立带哈希的 source pack、困难负例、缺失项和时间戳；Live 轨定义搜索日期与允许来源；Private 轨定义文件、邮件、代码仓和权限视图。
+5. **设计可调难度旋钮。** 不重写成功目标，只改变搜索 fan-out、证据冲突、用户信号隐含度、上下文负载、交接次数、动态更新和权限敏感度；每个旋钮都必须有 clean control。
+6. **配对 task-conditioned user states。** 从同一真实使用场景中选择两个都可能提出该任务、但至少在两项决策后果上不同的用户；人口属性不能自行生成偏好。
+7. **冻结跨用户契约。** 在看到模型输出前写出 `must-change / must-hold / must-not / clarify-if-unknown`、可接受替代集合和用户间方向预测，再制作 matched 与 deliberately-wrong 参考交付物验证区分力。
+8. **pilot 后准入。** 目标用户确认任务自然、差异真实；领域专家确认共同事实与可行性；若 matched/swapped 人评不稳定、只能产生文风差异或 evidence pack 无法复现，该 family 不进入主集。
+
+例如，任务是“团队是否应采用医疗 AI 辅助编码工具”。无论用户是谁，都要比较候选产品、证据质量、实施成本和风险，这是固定任务核心。医院管理者更关心 ROI、工作流、合规和试点门槛；临床 AI 研究员更关心数据漂移、验证设计、模型限制和复现材料，这些差异写入 `must-change`。法规事实、产品功能和证据来源对两人都应一致，写入 `must-hold`。职业不能被用来推断具体疾病、预算或政治偏好，这些内容写入 `must-not`。这样得到的是同一个 task family 下的两个用户条件，而不是两道无法比较的题。
+
+### 4.1.3 难度、风险和 failure mode 不压成一个标签
+
+为了测出 agent 随难度增加的退化曲线，每个 anchor 使用一个六维 `stress vector`：
+
+- `evidence_complexity`：来源数量、困难负例、跨源矛盾与 freshness；
+- `user_signal_complexity`：显式程度、噪声、冲突、过期和需澄清程度；
+- `horizon_load`：上下文长度、工具返回量与中间步骤；
+- `orchestration_load`：单 agent、一次交接、多 agent 多次交接；
+- `permission_sensitivity`：公开、内部、敏感与跨受众隔离；
+- `counterfactual_subtlety`：用户差异从硬约束到细微价值权衡的强度。
+
+每一维分别记录压力等级。主论文不把六维简单相加成一个“难度分”，因为高风险后果不能和长上下文等认知负荷互相抵消。实验在同一 anchor 内逐级增加压力，并报告性能随压力变化的曲线：
+
+| Stage | 构造 | 用途 |
+|---|---|---|
+| S0 Clean | 显式、当前、相关信号；固定证据；无交接 | 建立该 agent 的可达上限 |
+| S1 Single-light | 一个轻度扰动，如位置后移或少量无关事实 | 测早期敏感性 |
+| S2 Single-strong | 一个强触发，如新旧冲突、必须澄清或一次损坏交接 | 将失败与一个 failure mode 对齐 |
+| S3 Compound | 两个正交扰动，如长上下文 × stale conflict | 测真实长程组合风险，但不用于定位单一机制 |
+
+三类标签回答不同问题：`risk category` 说明失败会伤害什么；`expected failure mode` 说明这个 case 想暴露什么问题；`stress vector` 说明压力有多强。分开记录后，结果才能回答“某模型是否在高 stakes 下更容易失败”“某 memory agent 是否更能处理 stale conflict”“某 multi-agent 是否在交接后明显下降”，而不是只得到一个无法解释的总分。
+
+### 4.2 个性化结果风险：最终交付物错在何处
+
+1. **目标与成功标准错配**：交付物服务于错误目标，例如用户要做选择，报告却只做知识综述。
+2. **内容选择与覆盖错配**：没有优先覆盖对该用户关键的地区、产品、方法、证据或反例。
+3. **深度与知识脚手架错配**：术语解释、理论深度、推导粒度或技术附录不适合用户能力。
+4. **决策与风险策略错配**：忽略预算、时间、风险偏好、机会成本、可逆性或容错边界。
+5. **行动步骤与工作流错配**：下一步、负责人、工具、依赖、时间表或可执行程度不适配。
+6. **格式、受众与可访问性错配**：交付类型、摘要层级、语言、篇幅或受众隔离不合要求。
+7. **隐私、安全与权限越界**：不必要使用敏感信息、跨受众泄漏、越权访问或缺少高风险提醒。
+8. **动态状态与时间一致性失败**：预算、目标或状态按事件脚本发生变化后，交付物仍基于旧用户模型。
+
+每个任务必须至少有两类“应变化”标准，同时包含一组“不得变化”的共同质量标准。只考语气或排版的任务不得进入核心榜。
+
+### 4.3 用户信息来源与载体 taxonomy
+
+| 一级来源 | 具体形式 | 主要风险 | 对照条件 |
+|---|---|---|---|
+| 显式任务内信息 | brief、约束清单、附件说明 | 被后续内容淹没 | task-only / 重申 |
+| 结构化 persona | 字段化背景、能力、偏好、资源 | 过度概括、刻板化 | 同语义自然语言 |
+| 模糊 query + 澄清 | 初始 query 足够产出通用报告，但缺 1–3 个会改变建议的用户条件；agent 可提问，模拟器只按隐藏 ledger 回答 | 没发现关键缺口、问偏、停早、过度打扰或越界询问 | 同一 ledger 的 no-ask / structured-persona oracle |
+| 长期会话历史 | 多轮对话、历史偏好与纠正 | 稀疏、过期、冲突 | oracle 摘要 / 检索记忆 |
+| 行为与选择轨迹 | 点击、购买、编辑、接受/拒绝记录 | 相关性错判、隐私 | 去标识聚合 / 无轨迹 |
+| 私有工作区证据 | 邮件、文档、日历、代码仓、CRM | 越权、跨受众泄漏 | 权限受控视图 |
+| 社会/组织上下文 | 团队规范、收件人、文化与制度 | 把群体刻板印象当个人事实 | 个体事实优先对照 |
+| 动态状态与反馈 | 中途更改预算、目标、健康/时间状态 | 新旧冲突、更新滞后 | 时间戳与版本化记忆 |
+
+上表描述的是“来源或载体”，不能代替 episode 范式。信息属性还需正交标注：来源主体、载体、访问方式、可用时点、显式/隐式、稳定/动态、相关/干扰、可靠/不可靠、当前/过期、公开/敏感、可查证/仅用户可知、单一/冲突。完整字段见 `benchmark_schema/research_episode.schema.yaml`。
+
+### 4.4 预期失败模式：case 被设计来暴露什么机制
+
+1. **获取/澄清失败**：缺少必要用户信息时既未获取，也未进行有价值的澄清。
+2. **无依据推断失败**：在信息缺失处编造用户属性，或由人口/代理属性进行刻板推断。
+3. **检索与相关性失败**：正确事实存在但未取回，或取回了错误、无关的用户信息。
+4. **已知约束忽略**：预算、权限、受众或格式等明确约束已经可见，却在规划或工具调用中被忽略。
+5. **冲突、时效与更新失败**：新旧信息冲突或状态更新后仍选择过期、低置信度事实。
+6. **利用失败**：agent 能复述正确用户事实，但未将其落实到决策、计划或最终交付物。
+7. **无关/过度个性化**：在本不应变化之处强行改变内容，或为迎合偏好牺牲事实、多样性和长期利益。
+8. **隐私与权限失败**：越权访问、无必要使用敏感信息或跨受众披露。
+9. **保持与交接失败**：长上下文、工具噪声、阶段切换或子 agent 交接后丢失用户约束。
+### 4.5 从 taxonomy 到可运行任务矩阵
+
+模型运行前，每个 case 先记录 `task_stratum`、`primary_intent`、`secondary_intents[]`、`demand_profile`、`primary_risk`、`secondary_risks[]`、`expected_failure_modes[]`、触发条件和预期行为。主意图和主风险只选一个，便于统计；次级意图和失败模式可以多选。运行后再根据真实输出标注 `observed_outcome_risks[]`、`observed_failure_evidence[]` 和置信度。预期标签不能自动变成实际错误标签。
+
+为了避免“先定义失败，再让结果证明分类正确”的循环，采取四项控制。第一，先对真实 pilot 轨迹、用户访谈和文献做 open coding，再冻结 taxonomy。第二，保留自然任务和 `other/emergent`，允许出现未预设的错误。第三，主 rubric judge 看不到 expected failure-mode 标签。第四，公开每个切片的样本量、覆盖率和多标签共现，不把样本很少的切片写成稳定结论。
+
+## 5. Benchmark 数据结构与构建流程
+
+v0.50 已开始第一批数据构造。`data/seed_v0_50/` 当前包含 3 个纯合成工程 family（团队知识平台、跨境家庭旅行、文献综述工作流）、6 位配对用户与 24 个 episode；每位用户各有 P0/P1/P2/P4 四个条件，并通过自动检查确认配额平衡、事实引用有效、P2 隐藏关键事实且允许主动询问、P4 含单一 superseding update。它们只用于 schema、runner 和 rubric compiler 的 vertical slice，不作为真实用户效度或论文结果。下一道人工门是逐 family 审核自然性、证据包、matched/swapped 区分力和 contract 对称性；通过后再将结构迁移到真实或 user-anchored seed。
+
+### 5.0a PDR-Bench 全量资源池如何进入 DeepAlign
+
+v0.51 已从 [PDR-Bench 官方仓库](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 固定 commit `5b43f9f188c747d154fc7666812ab93b7ca6a3c2` 导入 50 个中英双语任务、25 个 structured persona、25 份 context 和 250 个官方 task-user 配对，并保存上游文件哈希和 Apache-2.0 许可证。PDR-Bench 论文说明，structured persona 是 25 位志愿者在知情同意下自填并去标识化后的公开衍生数据；context 中的 memory/chat 则由专业标注者模拟，不是真实用户的自然行为轨迹。[[4]](https://arxiv.org/abs/2509.25106) 因此本项目将二者分别标为 `volunteer-grounded structured persona` 与 `annotator-simulated dynamic context`，不能统称为“全部真人轨迹”。
+
+完整导入只是**资源池**，不是主实验自动成立。PDR 的每个任务原本对应约 5 位相关用户，但 DeepAlign 需要的是其中两位在相同任务下形成可预注册的关键决策分歧。程序已把 250 个官方配对展开成 501 个同任务候选用户对；研究者必须逐对回答：两位用户是否都自然地关心该任务；哪些最小事实会改变最终选择、风险门槛或行动计划；什么必须保持；matched/swapped reference 是否可稳定区分。只有通过双人独立审查和仲裁，才能写入 `must-change / must-hold / must-not / clarify-if-unknown` 并成为一个 DeepAlign family。
+
+导入审计还发现一个上游发布异常：250 条 query 总数正确，但 task 8 公开了 4 位用户，task 10 公开了 6 位用户，而不是每题严格 5 位；中英文配对一致。DeepAlign 原样保留并报告，不补造或删除记录。Health、Finance、Law 三类共 15 个任务在领域专家审查完成前只进入候选/扩展集。v0.59 不再默认把 50 题全部进入主集，而是把它们作为 Deep Research 候选来源，依次经过 relevance、counterfactual separability、invariant core、objective verifier 和 long-horizon 五道门；当前 60-family provisional set 中保留 10 个 PDR-derived shell，并把 Deep Research 限定为非处方性的检索、核验与证据综合，具体环境和用户契约尚需人工冻结。机器可读导入、501-pair 审计表和校验器位于 `data/pdr_import_v0_51/`。
+
+### 5.0b PDR 之外补什么：从“再加领域”转向“补研究工作形态”
+
+对 PDR 公开的 50 条任务逐条审计后，本项目不把问题概括为“领域数量不够”。PDR 已覆盖 Education、Career、Health、Travel、Finance、Creative、Shopping、Real Estate、Law 和 Parenting 十个生活领域，而且其中不少题需要广泛检索。它当前更明显的覆盖边界是：任务大多是静态、一次性、面向个人的方案制定或推荐型长报告；专业工作产品、私有材料与权限、结构化数据/代码、多方受众、证据冲突、执行中更新和可机器验证终点很少或没有。这个判断只描述公开任务池的结构，不代表 PDR 的 absolute adaptation 构念无效。[[4]](https://arxiv.org/abs/2509.25106)
+
+相邻 benchmark 提供了补齐方向，但没有直接解决个性化：FutureSearch 的 Deep Research Bench 说明 frozen web 与长轨迹错误可以稳定复现；[[77]](https://arxiv.org/abs/2506.06287) DRBench 把公开 web 与本地文档、表格、PDF、wiki、邮件等企业材料结合；[[12]](https://arxiv.org/abs/2510.00172) 专家咨询 benchmark 用 SME 编写的工作任务、确定性 verifier、交付 rubric 和 cognitive trap 测“决策级工作产品”；[[78]](https://arxiv.org/abs/2605.17554) Deep Research Bench II 则用 132 个任务和 9,430 条细粒度二元 rubric 分开诊断信息召回、分析和呈现。[[79]](https://arxiv.org/abs/2601.08536) DeepAlign 要做的不是复制这些题，而是把它们代表的**研究工作形态**与 counterfactual user pair 结合：同一证据世界对两位自然用户保持共同真相，但合法的最终决策、风险门槛、执行路径或披露范围不同。
+
+#### 5.0b.1 一个候选任务能否进入 DeepAlign 的八项准入测试
+
+新增任务不能只因为“听起来像 Deep Research”就进入候选库。每个 task shell 先过以下八项测试；任一核心项失败，任务要么重写，要么只作演示，不进入主榜。
+
+1. **研究强度成立**：至少需要三个相互独立的信息单元或两种证据类型，并包含至少两个有依赖关系的子问题；一次搜索或常识写作不能完成。
+2. **共同任务可固定**：更换用户时，研究问题、证据截止时间、可用工具、预算和交付接口不变；不能把两道不同的题伪装成 user pair。
+3. **两位用户都自然**：Ua、Ub 都有现实理由提出这道题，且都不是为了实验故意制造的“错误用户”。
+4. **至少两项决策会变**：用户差异必须改变候选排序、风险门槛、实施顺序、资源分配、解释深度、受众披露或其他可观察节点中的至少两项，不能只改变语气和称呼。
+5. **共同真相保持**：至少三项核心事实、证据结论或安全边界对两位用户相同，使 benchmark 能同时测 personalization 与 no-harm。
+6. **不存在答案泄漏**：persona 只给目标、约束、知识、权限或偏好，不能直接写“最终应选 X”；正确交付物仍必须由证据推导。
+7. **能制造有意义的对照**：可以在输出前冻结 matched、swapped、task-only/general-good 和 deliberately-wrong 的方向预测；强通用报告应当“不错但不充分”，而不是被故意写差。
+8. **终点可审计且风险可控**：至少一部分结果能由 source span、规则、计算、文件测试、专家或目标用户稳定判断；高风险场景只做信息支持与升级建议，不执行真实医疗、法律、金融或安全操作。
+
+#### 5.0b.2 v0.53 历史候选：新增 24 个 task-family shell
+
+下表保留为设计演化与 provenance 记录，**已被 v0.54 的 180 候选→60 provisional family 资源池取代，不再是当前 sampling frame**。它们从未被当作冻结真值；任何再利用仍需由目标用户确认自然性，并补齐 `must-change / must-hold / must-not / clarify-if-unknown`。
+
+| ID | 固定的共同任务与交付物 | 两位自然用户之间真正会改变答案的轴 | 主要补齐的结构空白 / 首选 episode |
+|---|---|---|---|
+| N01 | 为一个研究组选择文献检索、筛选、笔记、引用与更新工作流；交付比较表、SOP 和迁移计划 | A：带 2–3 人小项目的博士生，预算低、希望快速上手；B：多人实验室负责人，要求权限、复现、审计和成员交接 | 学术工作流、可复现性；P1/P2 |
+| N02 | 审计一篇公开论文及其代码/数据是否值得复现；交付复现范围、资源估算、风险登记和 go/no-go memo | A：小实验室、单卡与八周窗口；B：工业研究团队、算力充足但有数据和安全限制 | 公开论文—代码—数据联合证据、可验证计划；P1/P2 |
+| N03 | 为同一多语言应用选择数据集、模型和评价方案；交付 evidence map、benchmark plan 和部署建议 | A：低资源语言、端侧运行、标注预算小；B：英语为主、云端高吞吐、可购买数据 | 技术选择随资源/语言改变，不只是讲解深度；P1/P2 |
+| N04 | 设计一项 HCI/agent 用户研究；交付研究问题、样本与任务、测量、分析和伦理风险计划 | A：硕士生，只能远程招募少量参与者；B：产品研究员，有大规模日志但不能随机干预 | 研究设计、方法约束、可执行性；P2 |
+| N05 | 对同一技术想法做 prior-art 与竞争格局研究；交付时间线、相近工作矩阵和下一步验证清单 | A：学术作者，关心可发表新意与复现；B：创业产品负责人，关心差异化、上市窗口和需交专业人士处理的 FTO 风险 | 相同证据、不同决策用途；P1 |
+| N06 | 根据公开资料、内部需求表和供应商问卷选择团队软件/AI 服务；交付决策矩阵、风险项和试点计划 | A：20 人创业团队，现金和迁移时间优先；B：受监管企业团队，SSO、数据驻留、审计和退出机制是硬门 | web + private documents、硬约束；P2/P6 |
+| N07 | 从日志、工单、runbook 和时间线完成一次事故复盘；交付因果链、修复项、负责人和受众版本 | A：SRE 负责人，目标是内部修复；B：合规负责人，目标是可审计记录与受限披露 | 私有材料、角色权限、同事实不同披露；P6 |
+| N08 | 结合公开市场资料与内部销售记录评估进入一个新地区；交付 market-entry memo、情景表和试点门槛 | A：现金流紧张的初创公司；B：已有渠道但品牌风险高的成熟业务单元 | 公私证据融合、组织风险；P2/P6 |
+| N09 | 从用户访谈、产品指标和流失表定位主要流失原因；交付证据链、分群、干预优先级和监测计划 | A：产品经理，优先可快速验证的体验改进；B：财务负责人，优先回收期和收入风险 | 表格 + 访谈、同分析不同行动效用；P1/P6 |
+| N10 | 为同一团队选择知识库迁移方案；交付架构、迁移批次、权限映射、成本和回滚计划 | A：小团队、无专职运维；B：跨国组织、严格数据驻留与离职权限回收 | 技术/组织共同个性化；P2/P6 |
+| N11 | 审计一个共享数据集是否可用于下游分析；交付数据质量报告、可执行检查脚本/工作簿和修复计划 | A：运营分析师，要做趋势看板；B：机器学习工程师，要训练预测模型并防止标签泄漏 | 数据与代码交付、确定性 verifier；P1/P2 |
+| N12 | 为一个既定产品需求选择 API/开源组件并设计集成方案；交付 comparison、最小原型计划和维护风险 | A：独立开发者，重视开发速度与低运维；B：平台团队，重视 SLA、版本治理、可观测性和供应链安全 | 可执行技术工作产品；P2 |
+| N13 | 为同一 AI 功能设计发布前 benchmark；交付任务切片、指标、门槛、红队样本和发布决策规则 | A：增长团队，希望两周内得到可用信号；B：安全/质量团队，需要最坏切片、校准和人工升级门 | 评价设计本身的个性化、风险门槛；P1/P2 |
+| N14 | 研究并重做一份公共服务信息材料；交付内容审计、信息架构、可访问版本和验证清单 | A：依赖屏幕阅读器的熟练用户；B：低识字、非母语、主要用手机的用户 | accessibility 不是装饰偏好，而改变媒介、顺序和验证；P2 |
+| N15 | 为同一供应链事件形成影响评估和未来两周行动表；中途注入一条改变严重度的新证据 | A：运营负责人，关心交付连续性和替代采购；B：可持续发展负责人，关心供应商人权/环境承诺和披露 | 一般动态证据对照；不是 personalization P4，首稿延期 |
+| N16 | 追踪一项新旧版本并存的监管/平台政策，更新产品落地方案；交付变更表、受影响组件和升级给专家的清单 | A：产品负责人，关心功能与时间线；B：合规负责人，关心证据、控制项和审计留痕 | 一般 stale/conflict 对照；不是 personalization P4，首稿延期 |
+| N17 | 核验一个快速传播、来源冲突的商业/公共事件说法；交付 claim-evidence table、置信度和发布条件 | A：记者，要求可公开归因与更高证实门槛；B：企业风险分析员，允许内部预警但必须标注不确定性 | 可保留 P2 用户门槛；动态证据部分延期 |
+| N18 | 在资助项目征集规则或截止时间发生更新后，重做申请可行性和工作计划；交付资格矩阵、材料缺口与新版时间线 | A：首次申请的青年研究者；B：管理多个申请的科研行政人员 | 一般规则更新对照；不是 personalization P4，首稿延期 |
+| N19 | 评估一项公共交通线路调整；交付证据综述、影响矩阵、备选方案和公开说明框架 | A：有无障碍出行需求的通勤者代表；B：受预算和运营约束的交通规划人员 | 多方价值、可访问性、公共决策；P2 |
+| N20 | 评估学校是否采用某类生成式 AI 工具；交付试点方案、风险登记、家长/教师沟通和退出条件 | A：一线教师，关心教学负担与学习效果；B：家长数据隐私代表，关心同意、未成年人数据和申诉 | 同一政策的角色化效用与边界；P2 |
+| N21 | 根据同一组项目成效和成本材料制定非营利项目预算；交付分配方案、敏感性分析与监测指标 | A：一线项目负责人，优先服务连续性；B：资助方报告负责人，优先可证明成效和用途合规 | 多利益相关者资源分配、可计算终点；P1 |
+| N22 | 对同一供应商/合作方做公开来源尽调；交付证据图、未决问题、风险分级和下一步核验 | A：采购负责人，关心履约、制裁和供应连续性；B：人权/ESG 调查人员，关心所有权、劳工与环境证据 | OSINT、不同接受门槛、来源可靠性；P1/P2 |
+| N23 | 对一份长研究报告做引用和证据审计；交付 unsupported/contradicted/overclaimed 清单及修订优先级 | A：领域作者，目标是方法与论证可发表；B：高层决策者，目标是避免关键决定依赖脆弱证据 | 验证/审计意图、共同事实与不同后果；P1 |
+| N24 | 根据漏洞公告、资产清单和内部依赖图确定修复优先级；交付受影响范围、批次、临时缓解和受众隔离版本 | A：小型机构 IT 管理员，停机窗口有限；B：大型组织 CISO，需跨业务协调、审计和受限披露 | 结构化数据、权限、风险与多受众；P2/P6 |
+
+#### 5.0b.3 v0.53 历史采样方案（已被 v0.54 取代）
+
+本节以下的 74-shell / 16–20-family 数字只解释 v0.53 为何收缩任务规模；当前设计以第 5.0b.5 节为准。其中仍有效的原则是：“大一统”应指**同一 episode 表示、同一反事实 family 结构和同一评价接口能够容纳不同知识工作形态**，不应指首篇论文穷尽所有领域和所有组合。
+
+ICLR 投稿版建议把资源分成三层：
+
+- **候选资源池：74 个 shell。** PDR 的 50 题全部保留可追溯映射，新增上表 24 题；“进入资源池”不等于具备反事实真值。
+- **当前可构造池：约 20–24 个公开证据 family。** 重点审查约 8–10 个 PDR-derived 个人/学习/职业 family、N01–N05 学术与知识工作 family、N11–N14 数据/代码/可访问交付物 family，再留少量同类型备选。N06–N10 的企业私有材料、N19–N22 的多方角色与尽调、N24 的内部资产/权限全部延期；它们保留在 ontology，但不计入首稿完成度。
+- **ICLR Phase A：16–20 个 family。** 建议约 8 个 PDR-derived family、5 个学术/知识工作 family、3–5 个数据/代码/可访问交付物 family。所有 family 运行 P0/P1/P2；P4 不是新的任务类别，只在其中 2–4 个 family 上增加 user-state update 变体。最终数量由 pilot 的 family 方差、真人标注成本和 power simulation 冻结。
+
+首轮开工不从 24 个里平均抽样。优先制作 N01（科研工作流）、N03（数据集/模型选择）、N11（数据质量审计）和一个低风险 PDR-derived 学习或职业任务。这个组合只需要公开网页、公开论文/仓库和研究者自行制作的非敏感小型表格，就能同时覆盖报告、决策矩阵与可执行 verifier。四个 slice 中至少三个通过自然性、matched/swapped 区分力、P2 澄清价值、共同质量和 judge 校准门后，再批量扩展。
+
+#### 5.0b.4 “动态”不是第四类任务，而是用户状态更新算子
+
+当前主张可以压缩为一条更连贯的能力链：`P1 Use → P2 Acquire → P4 Update`。P1 检查已给出的 task-relevant user facts 是否真正改变交付物；P2 把其中 1–3 个关键事实从初始 query 隐去，检查 agent 是否发现“通用回答虽可写，但还不能为这个用户做决定”，并用尽量少的问题获取它们；P4 再把其中一项当前用户事实明确更新，检查新版交付物是否采用新状态并清除旧结论。P4 是可选的 longitudinal extension，不与 P1/P2 平分论文篇幅。
+
+| P4 变体 | 固定不变 | 唯一更新的 user-state fact | 应变化 / 不应变化 |
+|---|---|---|---|
+| N01-U | 文献工具候选、公开证据、研究目标 | 用户的年度预算或团队协作人数发生明确变化 | 工具排序、迁移批次和付费建议应变；产品事实与证据评价不变 |
+| N03-U | 数据集/模型候选与公开 benchmark | 部署约束从云端改为端侧，或新增目标低资源语言 | 模型/数据选择和评价切片应变；原始性能证据不变 |
+| N11-U | 同一数据集、质量检查结果和交付接口 | 数据用途从内部探索改为对外发布，因而披露权限收紧 | 输出字段、脱敏和发布门槛应变；数据缺失/异常事实不变 |
+| PDR-U | 同一公开搜索证据和基础生活/学习任务 | 用户明确更新预算、可用时间或 accessibility 约束之一 | 方案排序和行动计划应变；共同事实、引用与安全边界不变 |
+
+P4 的必要对照包括：旧状态 only、新状态 only、带 `supersedes` 的旧+新状态，以及同长度但任务无关的状态更新。若 agent 连公共证据更新也处理不好，可以作为一般 DR 能力解释，但不能把这类错误计算为“用户特异性失败”。相反，只有共同 TQ/must-hold 稳定、而当前 user-state adoption 失败时，才支持“用户状态更新未被落实”的行为结论。
+
+#### 5.0b.5 v0.59 当前 sampling frame：180 候选→60 provisional→12 主论文优先 family
+
+v0.59 将“候选资源池”与“正式 benchmark”分开。机器可读候选池共 180 个 normalized seed：Deep Research 72、Software Engineering 54、Data/ML/Spreadsheet 54。按五道作者阶段门——任务相关性、反事实可分性、共同不变核、客观可验证部分、长程准入——预选 60 个 family：DR 24（40%）、Software 18（30%）、Data 18（30%）。这 60 个均是 **provisional task shell**，不是已绑定证据/仓库/数据、已获真人反事实真值或已可直接运行的 benchmark case。
+
+所有题冻结一个 submission boundary 和一个 `primary_deliverable`。一个 repository commit 可以内含代码、测试和文档，一个 notebook 可以内含表、图和解释，一份 evidence dossier 可以内含搜索日志和证据表；但这些内部组件不作为平行的第二交付物单独提交或单独补偿计分。这样减少 judge 在多个松散产物之间任意加权的自由度，也使 matched/swapped 的比较单位明确。该规则不是把多个任务语义上打包：若内部组件彼此独立、可单独失败而不影响主 artifact，或需要不同提交边界，该 task 必须拆分或淘汰。
+
+| 代表性场景 | provisional families | 内部结构配额 | 主论文优先 |
+|---|---:|---|---:|
+| Open-web Deep Research | 24 | 3 program/resource discovery；3 evidence landscape；6 literature synthesis；3 dataset/resource discovery；2 prior-art；2 conflicting evidence；2 temporal update；3 entity/exhaustive search | 5 |
+| Repository-level Software Engineering | 18 | 5 feature implementation；4 debugging/remediation；3 refactor/optimization；3 architecture/dependency；3 repo investigation + modification | 3 |
+| Data-centric Analysis | 18 | 6 exploratory/business analysis；4 spreadsheet workflow；4 predictive modeling；2 experiment design；2 cleaning/integration | 4 |
+
+来源结构预选为 39 个 existing-benchmark-derived（65%）、12 个 adapted-real-world（20%）与 9 个 newly-authored（15%）。在 DR 中保留 10 个 PDR-derived family 的来源和主题 continuity，但不逐字复用其 recommendation/planning prompt；两道仍明显接近个人投资建议和旅行规划的题被气候敏感度证据审计与罕见病临床试验时点差分替换。其余 DR 用 DeepResearch Bench、ResearcherBench、LiveDRBench 所代表的 reasoning shape 补足 literature landscape、prior art、dataset discovery、conflicting evidence 和 exhaustive search。软件任务只选有 multiple acceptable implementations 的 shell，不把唯一正确 bug fix 强行 persona 化；数据任务将 notebook/business analysis、spreadsheet 和 ML/modeling 分开。
+
+来源资产不因“候选”而自动获得可重发布权。PDR-Bench 和 DeepResearch Bench 可依其 Apache-2.0 记录进一步绑定；ResearcherBench、DSBench、DataSciBench 和 SpreadsheetBench 2 当前只借鉴任务结构，在许可审计前不复制原 prompt 或数据；SWE-bench、PaperBench、ScienceAgentBench、DABstep 和 MLE-bench 需逐 repo / task / dataset 核对上游权利。主论文首先完成 12 个端到端 family（5 DR / 3 Software / 4 Data），只有通过资产许可、环境绑定、双人反事实审查、contract freeze 和 pilot discrimination 的 family 才能从 `provisional` 升级。完整资源池、60 道双语题面、唯一交付物、来源登记、筛选审计、schema、校验器与 standalone catalog 位于 `data/plhkw_task_pool_v0_59/`。
+
+为防止个性化退化为显式约束跟随，60 个 family 的 primary signal mode 对称覆盖 explicit constraint、goal/trade-off、knowledge/audience、history-grounded latent preference 和 interactive information acquisition，各 12 个。任务数量的 40/30/30 不意味三类 episode 计算量或难度相等；跨场景不比 raw success，只比较共同的 specificity、matched/swapped、must-change/hold/not 和 no-harm profile，并在每个 vertical 内单独报告任务正确性。
+
+### 5.0c 多篇论文不能直接“杂糅”：先建立 source-to-design ledger
+
+数据构造不从“把几篇 benchmark 的任务、persona 和 rubric 拼在一起”开始。这样会同时引入重复题、定义冲突、不可追溯真值和选择性采用。DeepAlign 要把每个来源拆成一条 **source-to-design record**：原文提供了什么 claim 或 asset；在本项目中属于 task seed、用户信号/个性化 construct、failure/perturbation、rubric/judge，还是基础设施；采用什么、修改什么、拒绝什么；最终落到哪些 schema 字段。一个来源可以贡献多个 record，但每条 record 只能承担一个设计角色。
+
+例如，通用 DR benchmark 主要贡献任务 seed、研究意图和证据环境；PDR-Bench 贡献 task/persona-conditioned absolute adaptation 与个性化 DR 场景；Setoka、PersonaTrail、APeB 等贡献用户状态与历史信号的 construct；Agent-SafetyBench 和长期记忆工作贡献“结果风险 × 受控失败假设”的组织方式；PaperBench、ResearchRubrics、PDR 和 JudgeBench 邻居贡献原子 rubric 与评价校准；OpenCompass、EvalScope 贡献 adapter 和执行框架。吸收对象不同，不能把这些论文的 taxonomy 当作同一层标签求并集。
+
+正式造数按 0–7 八个阶段运行：先做一个端到端 vertical slice；再规范化真实 task seed；冻结共同任务、证据、工具和预算；构造最小反事实用户对；预写四类 contract；路由预定义 module 并做 leaf expansion；用 matched、swapped、generic 和 misuse reference 做人类 pilot；最后才按 Atlas 分层扩展并审计 split 与 coverage。只有 reference matched 能稳定胜过 swapped、目标用户能确认 must-change、leaf 能被独立判断时，才批量扩展。机器可读流程见 `data_factory.protocol.yaml`。
+
+### 5.1 反事实任务族
+
+基本单位不是单个 query，而是一个 **counterfactual family**：
+
+```text
+同一基础任务 T + 同一证据环境 E + 同一工具/预算
+  ├─ 用户 Ua：需求差异集合 Δa
+  ├─ 用户 Ub：需求差异集合 Δb
+  ├─ 用户 Uc：需求差异集合 Δc
+  └─ 中性用户 U0：只保留共同要求
+```
+
+完整协议允许每个 family 包含 4 个用户：2 个强对比用户、1 个部分重叠或冲突用户、1 个中性控制。两个月主实验只保留 **2 个强对比用户**；冲突用户和中性控制只放入 8 个 anchor family。不同信号渠道应表达同一组用户事实，这样测到的是渠道差异，而不是信息量差异。同一 agent 的对照条件使用配对运行，以减少搜索和采样带来的随机波动。
+
+### 5.2 任务与交付物覆盖
+
+两个月版本先完成 **3 个 decision vertical slice**，每个 slice 都必须贯通 utility 冻结、等价 task shell、task-only/matched/swapped 报告配平、目标用户随机试验和可复现 verifier。至少 2 个 slice 通过 feasibility、manipulation、blinding 和 outcome 四重门后，Phase A 才扩到 **16–20 个 artifact family**；其中只有约 **8–12 个**能够冻结真实效用、完成报告配平并承担真人功效的 family 进入 Phase B。真人招募暂按 36–48 人规划，但最终样本量由 pilot 方差、最小有意义 regret 改善和参与者/family 聚类结构的功效模拟冻结，不能把 planning range 当作统计承诺。
+
+每个 family 都保留 Atlas 元数据，但 Phase A 的信号条件与压力测试不再主导论文范围。核心处理只有 `task-only / matched / swapped`；structured persona、natural history 和 clarification 只是生成 matched 报告的输入变体，`irrelevant / stale-conflict / context dilution / dynamic update` 只在通过主试验门的少量 family 上作为机制或稳健性检查。下表八类 anchor 是扩展候选库，不是首版必须全部运行的笛卡尔积。
+
+**Anchor family 是扩展阶段承载压力测试的基础任务，不是 persona 类别，也不是扰动名称。** 实验分两步。第一步先构造干净的反事实 family：Ua 和 Ub 都自然适合该任务，并通过六项 compatibility gate；此时冻结 matched/swapped 预测、`must-change`、`must-hold` 和决策 utility。第二步再固定目标用户、任务、证据和预算，只对可见信号、上下文、agent 结构或 episode 时点施加一个预注册扰动。扰动效应只由“压力条件减去同一 clean baseline”的配对差值计算。
+
+**Anchor 的准入条件比普通 family 更严格。** 它必须满足六点：clean matched/swapped 的目标用户判断稳定；证据快照可以复现；至少两条 agent/报告管线能完成同一交付接口；至少一种 stress operator 自然适用；共同质量和决策结果可以由规则或证据 verifier 检查；任务不要求 benchmark 执行真实医疗、法律或金融交易。以下 8 种功能角色是扩展候选；pilot 只选择其中 3 个能形成可验证取舍且不会由 persona 泄漏正确答案的 slice：
+
+| Anchor | 基础任务与交付物 | 主要 user contrast | 可运行的压力 |
+|---|---|---|---|
+| A1 Everyday decision | 旅行/耐用品比较，决策备忘录 + 对比表 | 预算、时间、可访问性、风险 | irrelevant、dilution、update |
+| A2 Learning/career | 学习或转岗研究，路线图 + 资源表 | 基础、目标岗位、每周时间 | clarification、stale goal、dilution |
+| A3 Financial information | 方案情景分析，信息支持 memo | 流动性、期限、风险容忍、权限 | must-not、conflict、high-stakes gate |
+| A4 Health information | 证据综述 + 就医讨论清单 | 知识水平、既往约束、照护受众 | privacy、uncertainty、dynamic update |
+| A5 Enterprise decision | 采购/合规评估，决策 memo + workbook | ROI、辖区、受众、披露边界 | private evidence、handoff、permission |
+| A6 Software production | 仓库调研、代码修改 + 技术说明 | 技术栈、维护约束、受众水平 | tool noise、code agent、handoff |
+| A7 Academic frontier | 文献综述/研究设计，evidence map | 研究阶段、方法偏好、复现目标 | source conflict、fan-out、citation audit |
+| A8 Policy/communication | 政策研究，brief + slides/web | 决策受众、地区、公开边界 | live freshness、audience leakage、update |
+
+每个 anchor 都有一张 **run sheet**：`S0 clean → S1 单轻扰动 → S2 单强扰动 → S3 复合扰动`。Runner 在固定 checkpoint 注入事件，不能把所谓“攻击文字”随意拼进 prompt。比如，stale conflict 必须同时提供带时间戳的新旧 ledger fact；handoff 必须在相同步骤冻结共同前缀，再分别传入完整、缺少关键约束和含冲突的 handoff packet；dynamic update 必须在预注册步骤改变一个 task-relevant state，同时保持其他字段不变。每组配对实验只回答一个预先写明的问题。
+
+| 处理条件 | 保持不变 | 受控改变 | 主要判定 |
+|---|---|---|---|
+| Persona swap | 目标用户 U_target、任务、证据、预算 | 暴露另一用户的 signal bundle | ΔPF、错误用户采用率、CFA 变化 |
+| Irrelevant attributes | 相关用户事实与总长度对照 | 注入任务无关 persona 事实 | invariance、MP、非必要披露 |
+| Conflict / stale | 当前真值与证据 | 同时提供带来源/时间戳的新旧事实 | 冲突解析准确率、当前事实采用率 |
+| Context dilution | 用户事实语义与资源预算 | 位置、间隔、matched-length 噪声 | PF retention/AUC，并与 TQ 衰减比较 |
+| Agent handoff | 任务、目标用户、运行前缀 | 固定交接点传完整/缺失/损坏摘要 | handoff loss、约束保持率 |
+| Dynamic update | episode 前半段 | 预注册回合更新目标、预算或状态 | update correctness、旧状态残留率 |
+
+为控制两个月预算，anchor 不运行完整笛卡尔积。8 个 anchor 都运行 clean baseline、persona swap 和 irrelevant-signal 控制；其余扰动采用**平衡不完全区组**。如果论文要比较“long context、conflict、handoff 等哪种因素对个性化伤害更大”，每个主要 perturbation 至少需要落到 4 个适用 anchor，并用同任务、同前缀、同预算的 clean/perturbed 配对差值估计；只落到 2 个 anchor 时只能称为探索性复现，不能排序成普遍原因。每个 anchor 只承担 3–4 个最自然的 mode。Anchor 只做能力压力测试，不在失败后追加提醒、纠偏或 verifier 干预，也不计算修复收益。每次扰动都保存 `anchor_id`、`stress_vector`、`stage`、`base_user_state_id`、`signal_bundle_id`、`type/target/insert_step`、`authorized_visibility`、`expected_invariants`、`paired_control_id` 和 `seed`。
+
+Anchor 的可识别量是**受控扰动敏感度**，不是“用户建模失败的普遍内部原因”。在固定 task/evidence/prefix 后，`ΔCFA_k`、`ΔPF_k`、invariance 和 MP 可以说明 perturbation k 对最终表现的影响；只有系统轨迹可比，并且预注册的 acquire/preserve/use/update 证据同时出现，才能在附录讨论过程机制。跨不同任务直接相关“上下文长的 case 分数低”不能作为因果证据。样本支持足够时，可用 perturbation 固定效应、family/agent 随机效应的模型做比较；否则只报逐 anchor 配对效应与置信区间。
+
+领域和交付物作为交叉切片。领域至少包括消费与旅行、教育与职业、金融决策、健康信息、企业与合规、软件工程与数据、科研与政策、内容与传播。交付物包括研究报告、决策备忘录、表格或工作簿、代码与技术说明、幻灯、网页和多文件项目。高风险任务只评价信息支持和是否知道何时升级给专业人士，不让 agent 无监督执行医疗、法律或金融交易。
+
+### 5.3 三条评测轨道
+
+下面三条轨道描述 **agent 在什么环境中运行（execution regime）**，不是 agent 类型。商业产品、统一 harness、开源 DRA、code agent 和 multi-agent 属于系统模式。一个系统只有满足相应 adapter 要求，才能进入某条运行轨道。论文必须把“系统是什么”和“系统在哪里运行”分开报告。
+
+**E1. Controlled Frozen Harness（因果主榜）**
+
+- 把证据包挂载为只读文档库/本地 web，搜索返回由固定索引和 seed 决定；私有文件、代码仓、权限表均有快照哈希；
+- 统一搜索次数、工具调用、token、wall-clock 和交付接口，关闭产品自带但其他系统不可用的额外数据源；
+- runner 在开始前 `reset` agent，并用同一 `case_id + seed` 成对运行 Ua/Ub 与 signal controls；
+- 适合统一 harness 与可复现开源 agent；商业系统只有能锁定工具和证据时才进入，否则标记 N/A；
+- 产出 frozen leaderboard，可对 agent × signal × stress 做配对因果比较。
+
+**E2. Native Live Product/Web（生态榜）**
+
+- 允许商业 Deep Research 和开源系统使用其原生搜索、浏览器、规划器和并行机制，评价真实产品体验；
+- 每次记录日期、地区、订阅层级、产品/模型版本、搜索供应商、可用工具、运行视频/日志以及可保存的 URL 快照；
+- 同一 counterfactual pair 在尽可能短的时间窗口内交错运行，减小新闻与索引漂移；至少一个公共 anchor 做重复 seed；
+- 不强行统一隐藏工具，也不与 E1 混排；主结果是产品级 CFA、TQ/FR、成本和最差切片，而不是模型本体因果结论。
+
+**E3. Stateful Interactive Sandbox（长程压力与机制榜）**
+
+- 首稿只为 2–4 个公开证据 anchor 编写事件脚本：初始用户信号、可选澄清回答、固定 checkpoint 和一项带 `supersedes` 的 user-state update；私有 workspace、复杂权限图、工具噪声和 multi-agent handoff 延期；
+- v0.58 的 runnable interaction case 固定五个对象：公开 task、隐藏 task-conditioned persona、属性重要性图、属性披露策略和最大轮数。属性重要性图只在多个属性已被问题直接命中时排序，不能把未命中的隐藏属性扩展成可披露候选；
+- 每个 `step(agent_message)` 依次判断这是否是用户信息问题、匹配哪些属性、逐属性决定披露或拒绝、生成自然回复，再记录 matched、matched-but-unrevealed、newly/cumulatively revealed 和 still-hidden ID；最终 artifact 用 `step(message, final=True)` 提交；
+- Interactive 模式的 classifier 只接收不含值的 name/description/alias/keyword；response backend 只接收本轮获准属性值。未知属性 ID 被过滤，配置了 literal marker 的未授权值若出现在回复中则 fail closed；这降低 prompt 级泄漏，但不能替代语义改写和外部缓存的独立审计；
+- runner 使用 `run_until(checkpoint)` 冻结相同前缀，再分叉 clean/perturbed 条件，保证压力比较共享前史；
+- 只接收支持多轮状态或事件注入的系统；商业黑箱若不能导出轨迹仍可做 outcome probe，但不得声称定位内部机制；
+- 产出 retention、update 和 handoff 曲线，不与静态主榜合成一个分数。
+
+三条轨道使用同一个最小 adapter contract：`reset(case, seed)`、`provide_signal(view)`、`run_until(checkpoint)`、`inject_event(event)`、`export_artifact(schema)`、`export_trace(level)`。其中 P2 的可运行子接口为 `InteractionEnvironment.reset(seed)` 与 `step(agent_message, final=False)`；`run_episode` 可包装接收 `AgentContext` 的任意 callable 或带 `act()` 的 agent。系统声明可提供的轨迹等级：`artifact_only`、`tool_events`、`message_events` 或 `full_state`。只有至少提供 message events、并且完成共享前缀的受控分叉时，论文才讨论过程 failure mode；否则只报告最终结果。
+
+#### 5.3.1 三种用户模拟模式
+
+| 模式 | Agent 初始可见 | Simulator backend 可见 | 披露策略 | 科学角色 |
+|---|---|---|---|---|
+| A · Oracle | task + 完整 persona | 完整 persona | 全部绕过；reset 时记为全披露 | 信息充分上限；不是保证性能上限 |
+| B · Naive | task only | 完整 persona | 绕过；LLM 可自由披露 | 复现“full-persona LLM user simulator”基线 |
+| C · Interactive | task + 显式初始事实 | 仅本轮获准属性值 | 置信度、敏感度、前置属性、脚本 trust、概率和每轮预算 | 隐藏 persona + selective disclosure 主条件 |
+
+生产实验的 Naive 与 Interactive 应固定同一 LLM response backend、模型版本、采样参数、case、turn budget 和 seed schedule；本地 rule-based backend 只作确定性 smoke 与诊断。即便如此，B→C 同时改变 backend 能看到的信息和用户披露行为，不能被解释为纯 agent 能力效应。分类器还会产生 false match/miss，披露策略也可能过严或过松；因此需在独立真人轨迹上报告 attribute-level precision/recall、披露一致性、事实忠实、语义泄漏、policy sensitivity 和 simulator-to-live-user 系统排序稳定性。脚本 trust 是可重复实验控制，不是真人心理模型。
+
+**不要同时把三条环境全部搭满。** 开工顺序应是：先用 2 个 family、2 个 agent 做 E1 frozen vertical slice，验证 reset、证据快照、artifact export 和 2×2 评分；再用 1 个 anchor 搭 E3 的 checkpoint、clarification、conflict 和 update 注入；最后只对 1 个商业产品做 E2 adapter smoke test，检查版本、地区、日期、成本与 URL 快照能否记录。E1 端到端和一个 E3 事件未跑通前，不批量造 task。E2 是生态有效性轨，不应阻塞主矩阵。
+
+### 5.4 用户数据与真值创建
+
+Persona 不是人物小传，而是 **task-conditioned user state 的一种可见序列化**。v0.55 把真值创建分成四层，并明确每层解决不同问题：真人来源与权威解决真实性；LLM 高召回候选和人工 coverage audit 改善遗漏；版本与哈希冻结只防 post-hoc；verifier、D-JQS 和真人外部效度负责执行可靠性。冻结本身绝不被表述为 gold 正确性的证据。
+
+**第一层：真实任务选择与开放式 elicitation。** v0.56 使用三个相互链接的 Credamo 问卷。Wave A 先收最小人口学、教育/职业领域和 coding/data/research 经验；人口学只用于样本描述和公平性审计，task routing 只使用任务相关训练、职能、真实经历与安全可回答性。系统先按 vertical/domain 生成 10–15 张卡，其中约 8 张强匹配、2 张可迁移匹配、2 张仍合格但覆盖不足的任务，并在 tier 内随机。参与者逐卡回答现实相关性、类似经历、是否能在不泄密的情况下描述，以及是否可能委托 AI，再从 eligible cards 选 3–5 个候选任务；若只有 1–2 个真实任务，不强迫凑数。研究保存 `offered / order / opened / eligible / selected / skipped` 全漏斗，coverage bonus 只能打破同等资格任务，不能把无关任务塞给用户。
+
+Wave B 不要求参与者对全部 3–5 个候选任务深填，而按真实相关度、经验、安全可回答性和 coverage deficit 分配 1 个主任务、最多 1 个次任务。每个 assigned task 先保存五个开放问题的首次提交快照：具体情境、期望交付与下一行动、会改变好答案的现实条件、不可接受结果、AI 最应追问什么；随后才显示全局 schema 和 DR/Software/Data module。schema 出现后对开放文本的修改另记 `prompted_contaminated`，不能覆盖 spontaneous provenance。Wave C 在离线 LLM 只做带 verbatim source span 的候选事实抽取后，逐条让本人 `approve / edit / delete / uncertain`，并分别确认重要性、灵活性、可接受替代、失效条件以及后台/agent/公开三种权限。无 source span 的候选 fail closed；最终未确认的 ledger 不进入 pairing/CDM。
+
+Credamo 官网公开宣传随机实验、多期追踪与配对调查，支持这一保守的多轮路线；实时外部 LLM/API、跨轮预填、版本快照和动态配额仍须在平台实机逐项核验。[[88]](https://www.credamo.com/) 中国《科技伦理审查办法（试行）》将以人为调查对象和个人信息数据纳入伦理审查，并要求招募公平、补偿、隐私、知情同意和数据治理；因此正式招募必须等本单位伦理批准或豁免确认、处理者/存储/撤回流程与 LLM 数据路径全部冻结。[[89]](https://www.gov.cn/zhengce/zhengceku/202310/content_6908045.htm) 每条事实继续标记 `spontaneous / prompted / N/A / declined`、置信度、可接受替代、时间戳、过期/复核日期和隐私许可；部分用户做 test–retest，在可行时以实际选择或既有行为核对自述稳定性。由此形成经本人确认的隐藏 `task-conditioned user ledger`，而不是把整份后台 ledger 直接塞给 agent。
+
+**第二层：成对用户与 Counterfactual Difference Map。** 对同一 task，按预注册算法从都真实相关的用户中形成三类 pair：有清楚决策差异的 contrast pair、差异较小的 near-neighbor pair，以及本不应出现显著输出变化的 neutral/invariance pair。pairing team 在看不到 target-agent 输出的条件下完成选择，并公开候选、入选、拒绝原因和对比强度分布。这样 benchmark 的 target population 被明确限制为“task-relevant、counterfactually eligible users”，不声称估计所有用户中的个性化需求普遍率。
+
+每个 pair 不再先各自写一份 rubric，而是先构造关系对象：
+
+`C(T,E,U_a,U_b) = Counterfactual Difference Map (CDM)`。
+
+CDM 的 node 记录 `decision variable / expected relation / user-A expectation / user-B expectation / acceptable alternatives / decision consequence / observable / provenance / authority / uncertainty / dependency / counterfactual partner`。`expected relation` 不只允许“必须不同”，还包括 `directional difference`、`preserve same`、`acceptable equivalence/indifference`、`forbidden` 和 `clarify-or-branch`。因此，`must-change / must-hold / must-not / clarify-if-unknown` 是 CDM 的兼容视图，不是四个由 LLM 临时生成的列表。neutral pair 与 equivalence set 专门检测 agent 是否“逢 persona 必改”。
+
+强 LLM 可以在看不到 target 输出时高召回提出候选 node 和可能遗漏，但它的 authority weight 为零。每条 node 必须指向本人确认的 user fact、共同 task/evidence 或 permission/safety policy；没有 provenance 的候选直接 fail closed。Persona owner 只确认“这个因素是否真实影响我的决定、方向是什么、哪些替代方案我也能接受”；两名独立 annotator 审计 provenance、决策后果、可观察性、原子性、冗余和刻板化；领域专家只判断事实、证据、技术可行性与安全边界。用户不能把技术错误变成事实，专家也不能替用户重写偏好。未解决的权威冲突要么写成条件分支，要么排除。
+
+**第三层：双冻结而非神化 freeze。** Construction freeze 发生在 reference artifact 之前，用于防止作者根据参考答案反写 CDM；evaluation freeze 发生在任何 target-agent 输出之前，固定实际 rubric bundle。两次冻结都保存版本、时间与哈希。开发集可以把输出后发现的 emergent error 记录到下一版本 compiler；正式 test set 不能把它追加进主分，只能做带版本的 secondary analysis/errata。对“完整性”的主张限定为“在预注册 elicitation 与 coverage audit 下达到 saturation”，不声称穷尽用户所有潜在需求。
+
+**第四层：盲化人类外部效度。** Persona owner 前期只看自己的 ledger 和 CDM 语义，不看最终 rubric wording。后期 matched/swapped artifact 随机顺序、隐藏 agent 与条件身份，并与前期确认尽量时间分离，只问“哪份你实际更愿意采用、为什么、最重要的问题是什么、必须改什么”。这个选择是外部效度终点，不与前期 contract confirmation 循环当作同一份 gold；条件允许时增加未参与 contract 构造的 comparable-user 复核。MyScholarQA 发现真实用户会指出合成 persona 与 LLM judge 漏掉的细微错误，支持保留这一真人层，但也意味着我们不能用 synthetic-user gold 支撑真实效用主张。[[41]](https://aclanthology.org/2026.acl-long.723/)
+
+最终形成四个相互隔离的对象：私有且可撤回的 provenance/consent record；本人确认的后台 ledger；冻结的成对 CDM；以及 agent 实际看到的最小 channel-specific signal view。所有发布视图遵守目的限制、数据最小化、访问控制、保留期限、撤回和去标识化；raw ledger 默认不公开。
+
+### 5.5 数据质量控制
+
+数据依次经过四道检查：作者预检、自动 schema 与环境验证、独立专家复核、pilot 输出后的人类复查。无法稳定区分用户、只有表面差异、证据不完整、工具不可复现或 rubric 循环定义的任务直接删除。至少 20% 的 case 由两人独立构建，用于计算 rubric 原子项一致性；所有争议经过仲裁并保留记录。
+
+任务标签也要盲审。独立标注员只看 case 材料，不看作者给出的类别，然后分别判断 task stratum、主研究意图、需求剖面、主风险和预期 failure mode。Intent 使用一个主标签和可选次标签；failure mode 可以多选。如果主标签一致性低于预注册门槛，就合并或重定义类别。类别多只能说明 ontology 更细，不能直接证明 benchmark 更全面。
+
+## 6. Rubric 设计
+
+### 6.1 元数据驱动的 Rubric Compiler
+
+“一套 rubric 支持多种长程知识工作”不表示所有任务共用同一张评分表，也不表示 LLM 可以从 task + persona 自由发明标准。DeepAlign 固定的是**关系真值接口、direction node、叶节点 schema 与聚合规则**；具体 personalization 目标只能来自冻结的 CDM。rubric 是 `C(T,E,U_a,U_b)` 的可执行编译产物，而不是方法贡献本体。这个边界也避免把已有 structured/meta-rubric compiler 的通用思想误报为首创：GAMUT 已研究把自然语言 meta-rubric 转成机械 rubric，RuVerBench 直接审计 agentic rubric verification。[[84]](https://arxiv.org/abs/2606.29920)[[85]](https://arxiv.org/abs/2607.19322) DeepAlign 的特定增量必须由**成对真人来源的关系真值、对称编译和对最终用户结果的增量效度**证明。
+
+Compiler 的输入只有：（1）冻结的 Atlas case 元数据；（2）user-state ledger 的授权后台引用；（3）带 provenance、authority、direction、acceptable alternatives 和 dependency 的冻结 CDM；（4）证据包与允许访问范围；（5）版本化模板库。它在任何被测输出产生前按六步运行：
+
+1. **Validate**：检查 task、user facts、evidence、permission 和 contract 是否齐全；
+2. **Route modules**：按 `primary_intent`、`deliverable_type`、`stakes`、`behavioral_operator` 和 CDM relation 选择父级 module；
+3. **Select nodes**：验证每个 user-conditional node 的 CDM provenance/authority/freeze，再选择适用 direction node；
+4. **Instantiate**：把预算、截止时间、目标用户、证据 ID、允许披露范围等参数填入 node；
+5. **Leaf expansion**：把一个 CDM node 拆成可独立观察、带 evidence target 与文字锚点的原子 leaf；一对多拆分必须记录 dependency/redundancy group；
+6. **Validate & freeze**：检查覆盖、重复、冲突、A/B 对称性、隐私权限和 reference discrimination，先在 node 内聚合，再进入指标，生成带版本与哈希的 `rubric_bundle`。
+
+因此，leaf expansion 不是看到模型答案后再细化评分标准，也不是让 LLM 临时发挥。LLM 在这里被降权为 **compiler**：只能改写/拆分已有 node，不能新增没有 source fact 的评价目标。每条 leaf 必须记录 `difference_map_id / source node / owner / expected relation / evidence requirement / scorer route / severity / dependency group / qualification slice`；冻结后同一 bundle 原样用于所有被测 agent。叶节点共享同一 node、任务和用户时不视为独立样本，避免原子化后 double counting 与虚增统计功效。
+
+对 case (c)，冻结后的模板并集为：
+
+`R(c) = R_core ∪ R_personalization ∪ R_intent(c) ∪ R_deliverable(c) ∪ R_operator(c) ∪ R_risk(c)`。
+
+- `R_core`：事实、证据、任务完成、可追溯性和基本可用性，所有 case 必选；
+- `R_personalization`：目标、约束、知识脚手架、风险、受众和权限的条件适配；
+- `R_intent`：综述、发现、决策、预测、规划或审计对应的工作产品标准；
+- `R_deliverable`：报告、表格、代码、幻灯、网页或多文件项目的可验证要求；
+- `R_operator`：Acquire/Preserve/Use/Update 测试的预期行为与反事实方向；
+- `R_risk`：高 stakes、隐私、安全、不可逆行动的硬门槛和升级要求。
+
+### 6.2 固定模板如何随 task 元数据变化
+
+模板不是按每个领域重新手写一整套 rubric，而是分层路由：
+
+| 模板层 | 由什么字段选择 | 例子 | 主要进入什么分数 |
+|---|---|---|---|
+| Core | 所有 case 必选 | 任务完成、关键 claim、引用支持、基本可用性 | TQ、FR |
+| Personalization | task-relevant user facts 与 must-change | 预算、知识脚手架、受众、风险、工作流、披露边界 | PF |
+| Research intent | `task.primary_intent` 六选一 | synthesis、discovery、decision、assessment、plan/design、audit | TQ、FR |
+| Deliverable | `task.deliverable_type` | report、decision memo、workbook、code+docs、slides、webpage、multi-file | TQ |
+| Operator | Acquire/Preserve/Use/Update 及 perturbation | 应澄清、长程保持、handoff 保持、采用新状态 | 诊断指标、clarification |
+| Risk | stakes、permission、敏感信息和 must-not | 隐私、越权、冲突/过期、安全升级 | MP、FR、硬门槛 |
+
+领域事实不改变 leaf 的数据格式。例如医疗和市场研究都可使用“关键 claim 有证据”模板，但模板参数分别指向不同的 claim、证据包和专家门槛；高风险领域需要额外专家验证，不通过“换一个通用 LLM judge”解决。
+
+每个 case 先写四类评价契约：`must_change` 规定不同用户之间必须改变什么；`must_hold` 规定共同事实和质量必须保持什么；`must_not` 规定不能假设、披露或迎合什么；`clarify_if_unknown` 规定缺少关键信息时何时应提问或给条件分支。模板负责提供标准结构，契约负责填入本 case 的可验证真值。
+
+v0.31 继续保留 36 个父级 module，并用 direction node registry 约束实体化，而不是把 36 个都塞进每个 case：
+
+| Module family | 数量 | 主要内容 | 默认范围 |
+|---|---:|---|---|
+| Core | 6 | 任务完成、事实、证据、推理、不确定性、可用性 | 主矩阵必选/条件选 |
+| Personalization | 9 | 目标、内容优先级、知识、约束、风险、工作流、受众、格式、动态状态 | 由 user fact + must-change 激活 |
+| Intent | 6 | synthesis、discovery、decision、assessment、plan、audit | 每个 case 主选 1 个 |
+| Deliverable | 7 | report、memo、table、code、slides、web、multi-file | 每个 case 主选 1 个；后四类先做 probe |
+| Operator | 4 | acquire、preserve、use、update | 受控诊断；不从 final-only 反推 |
+| Risk | 4 | 隐私权限、安全、升级、冲突/过期 | stakes/permission/must-not 条件激活 |
+
+完整定义在 `rubric_module_library.yaml`。主矩阵的 report/memo/table 以 12–22 个 active leaves 为 pilot 目标；code/slides/web/multi-file 先作为 anchor probe，待 verifier 和人评校准后再进入主榜。Module 数量不是论文贡献本身。相对 PDR-Bench 更重要的差异是：module 在输出前按固定版本路由；每个 personalization leaf 必须追溯到授权 user fact 和 must-change；同一用户的 PF leaves 原样交叉评分 matched/swapped；must-hold 与 must-not 提供不变性和不可补偿边界。若只是增加维度，反而会增加研究者自由度、judge 方差和 double counting。
+
+以“为咖啡店扩店做市场调研并交付决策备忘录”为例，元数据 `compare_decide + decision_memo + medium stakes` 会激活 `core + decision intent + memo deliverable + user constraint + privacy` 模板。复合要求“建议应符合 Ua 的预算和风险”会扩展为三条 leaf：（1）第一阶段方案不超过 50 万；（2）给出三个月可逆试点；（3）给出可操作的继续与退出门槛。三条分别带 0/1/2 锚点；不能只给一个“总体很适合 Ua”的印象分。
+
+### 6.3 固定 leaf schema、计分与指标绑定
+
+每个 leaf 至少记录：`criterion_id`、来源模板与 contract、三棵树归属、适用条件、rubric owner、可观察问题、授权 user fact、参考证据、评分方法、0/0.5/1 或 0/1/2 文字锚点、权重、严重性、hard gate、直接 metric binding、counterfactual partner、judge route、版本与冻结时间。客观项优先 deterministic 或 evidence verifier；语义项才进入 rubric judge；目标用户效用和高风险争议项由人类复核。证据不足可弃权，不能强制猜分。
+
+Leaf 到指标的关系必须在 bundle 中显式声明，而不是由分析者事后判断：
+
+| Contract / leaf 类型 | 直接绑定 | 如何聚合 |
+|---|---|---|
+| common task / deliverable leaf | TQ；事实项还绑定 FR | eligible leaves 加权平均；关键事实可封顶 |
+| must-change、用户特异正向 leaf | PF，且指定 rubric owner | 同一用户的冻结 leaves 同时评价 matched 和 swapped artifact |
+| must-hold leaf | TQ + neutral-invariance base | 单份 artifact 计共同质量；跨 artifact 检查不变项是否稳定 |
+| must-not violation leaf | MP 或 privacy/safety hard gate | 单独扣分；critical violation 不允许被正向分补偿 |
+| clarify-if-unknown leaf | clarification correctness；无依据假设另入 MP | 只在该未知量确实影响决策时纳入分母 |
+| operator leaf | operator diagnostic | 与同前缀 clean control 做配对差分，不混入基础总分 |
+
+**TQ、FR、PF、MP 是 leaf 的直接聚合；CFA 不是。** 对用户 a，冻结的 `PF_a` leaf bundle 既评价 `Y_a`，也原样评价 `Y_b`；用户 b 同理。四个 PF 单元形成矩阵后才计算 CFA。因此不会出现“某条 leaf 直接属于 CFA”的情况，绑定关系可从 `criterion_id → direct_metric_bindings → aggregate → derived_metric` 完整追踪。
+
+仓库的 `rubric_bundle.example.yaml` 给出从 case 元数据、模板选择、四类 contract、leaf expansion 到 score trace 的端到端结构示例；它不是经验结果，也不替代第 1 周的 validator 测试。
+
+### 6.4 编译校准门与三棵 rubric tree
+
+Rubric compiler 必须接受十项覆盖与效度校验：
+
+1. **Schema coverage**：每个进入实验的核心元数据值至少激活一个可判定叶节点或明确标为仅报告字段；
+2. **Counterfactual discrimination**：人类 matched 参考输出应显著优于 swapped、ablated 或错误利用版本；
+3. **Invariance**：加入无关 persona、改变文风或长度时，非适用叶节点不应获得额外分；
+4. **Cross-type judge calibration**：分别报告 intent、deliverable、signal channel、leaf class 和 stakes 模块上的一致性、弃权率与误差，不以整体准确率掩盖模块失效；
+5. **Redundancy, dependency & scale audit**：检查跨 module 语义重叠、共享 parent node、leaf 数量、NA 分母和权重敏感性；同一行为不能在多个 module 中无理由重复计分；
+6. **Target-user/domain content validity**：目标用户检查 must-change 与可接受替代，领域专家检查事实、证据和高风险边界；作者自洽不能替代两类外部判断。
+7. **Verifier validity**：unit/regression test、公式 checker、citation/support verifier 都要用 known-positive/negative、mutation 或受控编辑估计 false accept、false reject 与 coverage；“程序化”不自动等于“真值”；
+8. **Pair-selection audit**：对 contrast、near-neighbor 和 neutral pair 分开报告筛选漏斗、拒绝原因与对比强度，避免只保留最容易个性化的用户；
+9. **Weight/module sensitivity**：在合理权重、node-first aggregation 与去除高冗余模块下重算主结论；若系统排序依赖单一任意权重，就只报告 profile；
+10. **Residual-error saturation**：对 pilot 中现有 module 捕捉不到的 `other/emergent` 错误做 open coding。只有同一残余 construct 在至少两个不同 family 重复出现、具有决策后果、且不能通过现有 module 参数化时，才进入下一版本；locked test 不回改。
+
+如果一个模块在人类之间无法稳定判断，或不能区分 matched 和 swapped 输出，就删除、合并或降为探索性分析，不能靠调整权重把它保留在主分中。多个 leaf 共享同一 CDM node 时先在 node 内聚合，再进入 PF/TQ/FR；统计单位仍是 task family/user cluster，不把 20 个 leaf 当成 20 个独立样本。所谓“全面”不是 36 个 module 名称已经穷尽 personalization，而是核心 requirement/user fact 有映射、残余错误率可见、新 construct 达到饱和规则、且模块之间具备区分效度。
+
+**A. Common Task Quality（共同质量树）**
+
+- 任务完成与关键覆盖；
+- 事实正确与证据充分；
+- 引用支持、来源质量与可追溯性；
+- 分析/推理质量与不确定性；
+- 行动性、可用性与交付物完整性；
+- 格式、文件可打开、代码/公式/表格可运行。
+
+**B. User-Conditional Fit（用户条件适配树）**
+
+- 目标和成功定义；
+- 内容选择、深度与解释脚手架；
+- 约束、风险和决策策略；
+- 工作流、工具与行动步骤；
+- 呈现与受众适配；
+- 动态状态采用与过期状态抑制。
+
+**C. Misuse & Boundary（误用与边界树）**
+
+- 无依据推断、刻板化；
+- 无关 persona 复述或装饰性个性化；
+- 过期/冲突事实误用；
+- 敏感信息不必要使用或泄漏；
+- 过度迎合导致事实/多样性/长期利益受损；
+- 不该提问时过度打扰、该提问时擅自决定。
+
+### 6.5 防止 rubric 污染与 judge gaming
+
+- rubric 不向被测 agent 暴露，只公开开发集示例和抽象维度；
+- 测试集叶节点与证据包保持私有，周期性更新；
+- 设置“persona 关键词复述但不改变决策”的诱饵输出；
+- 设置冗长、高修辞、漂亮排版但关键要求失败的对抗样本；
+- 设置错误使用敏感信息却显得“很懂用户”的样本；
+- 记录 rubric 覆盖率、可判定率与 judge 弃权率，避免强行给分。
+
+## 7. Metrics：不让个性化掩盖基本质量
+
+### 7.1 基础分数
+
+对实例 (i)，先按 leaf 的 `direct_metric_bindings` 聚合直接指标：
+
+- **TQ（Task Quality）**：绑定 TQ 的 eligible common / intent / deliverable / must-hold leaves 的加权完成率，0–100；
+- **PF（Personalized Fit）**：对指定 rubric owner，绑定 PF 的 must-change 与用户特异正向 leaves 的加权完成率，0–100；
+- **MP（Misuse Penalty）**：绑定 MP 的 must-not、无依据假设与边界违规 leaves 的加权扣分，0–100；
+- **FR（Factual Reliability）**：claim-level 支持率、引用覆盖率、引用—主张关联和来源质量的分项报告；
+- **Cost**：wall-clock、token、搜索、工具调用、交互轮数和人民币/美元成本。
+
+净个性化分定义为 `NPF = max(0, PF − MP)`。主榜先检查基础质量：只有 `TQ ≥ τq`、`FR ≥ τf`，并且没有关键隐私或安全违规，才比较 NPF。未过门槛的系统标记为“基础质量未达标”，不能靠高个性化分补偿。论文仍公布完整的多维结果，避免门槛隐藏重要信息。
+
+### 7.2 反事实个性化指标
+
+对于同一任务的用户 (a,b)，报告分别为 (Y_a,Y_b)。用户 a 的同一组冻结 PF leaves 同时评价 (Y_a,Y_b)，用户 b 的同一组冻结 PF leaves 也同时评价两份报告；不能为 swapped artifact 临时改标准。四个直接 PF 聚合形成交叉矩阵后，才定义匹配优势：
+
+先保留两个方向的原始优势：
+
+`Δ_a = PF_a(Y_a) − PF_a(Y_b)`，`Δ_b = PF_b(Y_b) − PF_b(Y_a)`。
+
+再定义平均对角优势：
+
+`CFA_mean(a,b) = 1/2 × (Δ_a + Δ_b)`，并报告不允许方向补偿的 `CFA_min(a,b) = min(Δ_a, Δ_b)`。
+
+`CFA_mean > 0` 只说明平均对角优势为正；如果 `Δ_a > 0` 而 `Δ_b < 0`，平均值可能掩盖一位用户被错误适配。因此主文必须并列报告 `Δ_a`、`Δ_b`、`CFA_mean` 和 `CFA_min`，且只有两方向都为正时才记为 bilateral success。CFA 仍是可解释的 leaf-based effect size，但不单独承担“个性化有效”的结论。
+
+差值还不能回答 matched artifact 本身是否合格。新增绝对适配下界 `A_min = min(PF_a(Y_a), PF_b(Y_b))`；如果 `matched=0.40`、`swapped=0.00`，CFA 可以很大，但 `A_min` 会直接暴露两份 matched 中较差的一份仍不达标。PF leaves 在聚合前已经按评分锚点统一归一到 `[0,1]`，因此 `Δ` 本身是量尺范围归一化后的百分点差；再除以 `matched+swapped` 会在低分区放大噪声，不进入确认性主指标。
+
+导师提出的向量夹角作为诊断而非新总分：令 `d_spec=[Δ_a,Δ_b]`，报告 `cos_spec=(Δ_a+Δ_b)/(sqrt(2)·||d_spec||)` 与 `mag_spec=||d_spec||/sqrt(2)`。前者检查两个方向是否都朝向理想 `[1,1]`，后者保留效应幅度。`Δ_a=Δ_b=0.01` 时余弦仍为1，所以角度不能代替最小实际重要差异、`CFA_min` 或 `A_min`；把角度与长度相乘又等价于对 `[1,1]` 的投影，没有提供新的识别信息。
+
+主矩阵已有 task-only 输出 `Y_0`，因此另报告 `G_a = PF_a(Y_a) − PF_a(Y_0)`，`G_b = PF_b(Y_b) − PF_b(Y_0)`，以及 `Gain_mean/Gain_min`。这里必须区分两层：`G_a≥−δ_NI 且 G_b≥−δ_NI` 只是 task-only non-inferiority；只有 `Gain_min≥δ_B`，或目标用户对 matched 相对 task-only 的盲评胜率超过预注册 practical margin，才称为 bilateral added value。`δ_NI`、`δ_B` 和 `A_min` 的阈值由真人重测噪声、最小实际重要差异与功效模拟冻结，不能从合成 pilot 倒推。最终把 Phase A 画成 specificity、magnitude、absolute adequacy 和 task-only uplift 的多量 profile，不压成一个总分。
+
+一个 family 只有同时满足以下条件，才进入 confirmatory personalization success：
+
+1. `Δ_a` 与 `Δ_b` 均超过预注册 specificity SESOI，目标用户与交付物的匹配在两个方向都成立；
+2. `A_min ≥ τ_abs`，两份 matched artifact 的绝对适配均达到资格线；
+3. `G_a ≥ −δ_NI` 且 `G_b ≥ −δ_NI`，至少没有一位用户相对 task-only 出现实质性损害；bilateral added value 另以 `Gain_min ≥ δ_B` 报告；
+4. matched outputs 均通过 TQ、FR、must-hold 与 owner-aware critical must-not gate；
+5. 目标用户盲评中的 match effect 通过预注册的不确定性门槛。
+
+这套分解分别识别“是否具有用户特异性”和“这种特异性是否带来用户价值”。它不能解释模型为什么做到，也不能自动排除长度等干扰，因此还要报告：
+
+- **Swap Failure Rate**：交换用户后仍被判同样合适的比例；
+- **Specificity Precision**：采用的个性化决策中，有金标支持的比例；
+- **Specificity Recall**：金标要求中被正确体现的比例；
+- **Neutral Invariance**：本不应随用户变化的共同事实/结论保持一致的程度。
+
+令 `V_eq` 表示通过 equivalence audit、表达同一 task-relevant user-state 的直接提供视图。首版只把 structured persona 与 natural history 放入 `V_eq`；clarification-allowed 和 workspace/history 是不同的信息获取条件，不进入 cue-equivalence 计算。对 `V_eq` 同时报告：
+
+- **Worst-view CFA**：`V_eq` 中 CFA 的最小值，防止只挑最容易的显式 persona 形式；
+- **Cue Gap**：`V_eq` 中最高 CFA 与最低 CFA 之差，衡量同义表达渠道带来的敏感度；
+- **Contract Consistency**：不同 views 下 must-change / must-hold 叶节点判定的一致率；
+- **Irrelevant-Cue Effect**：只改变任务无关 cue 时 PF、TQ 和 must-hold 的配对变化。
+
+### 7.3 下游决策外部效度指标
+
+对用户 `u` 与任务 family `f`，在报告生成前冻结混合效用函数 `U_uf(d)`。硬约束、可执行环境终态和领域 verifier 优先；用户确认的软偏好权重只在可接受决策集合内区分方案。任务必须包含 evidence-dependent trade-off，不能把最优答案直接写进 persona。令 `d*` 为证据环境中最优的可接受决策：
+
+- `Regret_uf(d) = U_uf(d*) − U_uf(d)`，越低越好；
+- `DDE = Regret_task-only − Regret_matched`，正值表示个性化报告改善决策；
+- `WrongUserHarm = Regret_swapped − Regret_task-only`，正值表示错配个性化造成伤害；
+- `Constraint Violation Rate`、置信度 calibration error/Brier score 为共同主要或关键次要终点；
+- 决策时间、交互轮数、NASA-TLX 或简化认知负担为次要效率终点。
+
+PF、CFA、Gain、TQ 与 FR 不与 DDE 平均成总分。Phase A 的 specificity profile 是全体 family 的主 benchmark；DDE 是有可审计 utility 的子集上的外部效度检验。只有通过 TQ/FR/长度/证据覆盖/边界等价门的报告才进入 Phase B；若 CFA 高但 DDE≈0，结论只能是“交付物具有用户特异性但尚未证明改善决定”。
+
+Phase B 使用 task-only、matched、swapped 三臂，在反事实等价 task shell 上对目标用户区组随机。报告来源、agent 和条件标签盲化；顺序用 Latin square 平衡。用户先做无报告基线决策，再阅读处理报告并提交最终决策与置信度。不同臂不能让同一人重复看到同一个具体答案，避免学习与需求特征泄漏。
+
+### 7.4 信息渠道与长程指标
+
+- **IVG（Information Value Gain）**：某用户信息渠道相对 task-only 的 NPF 增益，并同时报告 TQ/MP 变化；
+- **Semantic Channel Gap**：结构化 persona 与自然历史之间的有符号表现差；Cue Gap 报绝对范围，Semantic Channel Gap 保留变化方向；
+- **Retention Curve / AUC**：在 0、25%、50%、75%、100% 轨迹检查点插入受控交付 probe，绘制 PF 随有效干扰长度的曲线；
+- **Drift Half-life**：PF 相对起点下降一半所需的有效干扰量；若从未下降则截尾报告；
+- **Update Correctness / Stale-State Residue**：动态事件后采用当前状态的正确率，以及旧状态仍进入交付物的比例；
+- **Pressure Collateral Damage**：压力条件相对 clean 条件导致的 TQ、FR、成本或隐私变化；
+- **Clarification Value per Turn**：每增加一次必要澄清带来的反事实适配增益；同时计算可自行查证却打扰用户的过问率。
+
+### 7.5 聚合与不确定性
+
+确认性分析以用户和 family 为随机化/聚类层级。DDE 与 WrongUserHarm 使用 design-based contrast、user/family cluster bootstrap 和预注册的混合效应模型；同一用户的多次决策和同一 family 的多份报告不能当作独立样本。正式样本量只在 3-family pilot 后，根据 cluster/within-user variance、最小有意义 regret 改善、流失率和多重终点策略做功效模拟并冻结。CFA/Gain 只作为 Phase A 操纵检查和中介分析，使用 family-blocked permutation 与 cluster bootstrap。Agent、渠道和压力比较采用预注册分层模型，多重比较用 Holm 校正；除平均数外还报告中位数、最差 10% CVaR、硬约束失败和用户/family 切片，不发布小于不确定性的伪精确名次。
+
+## 8. Hybrid Scoring 与 DeepAlign Judge Qualification Suite（D-JQS）
+
+### 8.1 级联评估
+
+1. **确定性 verifier**：文件可打开、unit/regression test、公式、预算、时间、禁用字段、权限规则；必须先用受控正负例和 mutation test 估计 checker coverage 与误判率。
+2. **证据 verifier**：原子 claim 提取、引用抓取、蕴含/矛盾判定；关键 claim 对抓取失败、`unsupported` 与 `unknown` 分开报告，并保留人工复核。
+3. **rubric judge**：只看冻结 leaf、授权上下文和匿名交付物；逐 leaf 输出 verdict、置信度、artifact evidence span 与 abstention reason，不能提出新标准。
+4. **pairwise judge**：同时做 AB/BA，并在校准子集做 balanced permutation；顺序不一致时标为 unstable，不硬平均。
+5. **目标用户与领域专家**：目标用户提供盲化采用偏好，专家判断事实与可行性；二者不相互替代。
+
+### 8.2 为什么不用“JudgeBench”作为项目内名称
+
+已有至少两项工作直接使用 JudgeBench/JUDGE-BENCH 名称：一项以困难 response pairs 测 judge 能否分辨细微质量差异，另一项显示 judge 在不同任务上的表现波动很大。[[81]](https://arxiv.org/abs/2410.12784)[[82]](https://arxiv.org/abs/2406.18403) 因此，本项目局部校准集命名为 **DeepAlign Judge Qualification Suite（D-JQS）**，明确它只是对声明 leaf slice 和版本的资格认证工具，不声称提出首个 judge benchmark。个性化 judge 研究也已经显示 personalized judging 需要显式建模用户差异。[[80]](https://aclanthology.org/2024.findings-emnlp.592/)
+
+### 8.3 D-JQS 的 gold、split 与对抗控制
+
+D-JQS 混合三种互补 gold，避免自己出合成题、再证明自己选的 judge 会做这些题：
+
+1. **deterministic-known violation**：明确违反 dependency、测试、公式、隐私、引用或权限；
+2. **controlled single edit**：从 matched artifact 只改一个关键决定形成 wrong-user、mention-only、critical reversal，以及 length/style/format/keyword/citation-count/language nuisance；
+3. **natural human artifact**：真实 agent 输出、目标用户盲选与领域专家事实核验。
+
+数据严格分成 authoring/dev、judge-selection calibration 和 hidden qualification；按 task family、用户、来源谱系、target agent、编辑谱系和时间隔离。阈值只能在 calibration 上选择，hidden qualification 只报告一次。候选 judge 按 `objective correctness / claim support / user trade-off / prioritization / actionability / boundary` 分 slice 认证，不能用全局平均掩盖 critical slice 失败。指标包括 critical-error recall、macro accuracy/F1、人类一致性、evidence localization、abstention coverage/selective risk、AB/BA order consistency、nuisance flip rate、Brier/ECE、群体/vertical gap、成本和延迟；门槛及置信区间预注册，而不是只写孤立点估计。
+
+AB/BA 只控制 position bias，不能控制 verbosity、style、关键词、引用数或语言。已有系统研究表明 pairwise LLM judge 存在显著位置偏差，MT-Bench/Chatbot Arena 也观察到 position、verbosity 与 self-enhancement bias。[[83]](https://arxiv.org/abs/2406.07791)[[86]](https://arxiv.org/abs/2306.05685) 重复采样只能减少 sampling noise，不能消除系统偏差；因此 nuisance edit 和顺序交换必须分别做。unstable item 路由给第二条独立测量路径或人工。
+
+### 8.4 避免 judge、compiler 与被测模型形成自证闭环
+
+- judge 不知道被测系统名称、artifact class 与 matched/swapped 身份；
+- compiler、judge、target agent 尽量使用不同模型族，并披露无法避免的家族重叠与对应 ablation；
+- 多 judge panel 只是稳健性手段，不是独立性证明；不同模型也可能共享训练偏差。Panel 方案已有研究基础，但不能替代真人和确定性 gold。[[87]](https://arxiv.org/abs/2404.18796)
+- judge 未通过某个 leaf slice 时，该 slice 只能走 deterministic/human 或粗二元路线；禁止把多个失败 judge 平均成“通过”；
+- 公布 verifier、judge、abstention、human escalation 的覆盖率和分歧矩阵，不只公布融合分。
+
+两个月主线固定为：`validated deterministic/evidence verifier → slice-qualified strong judge → blinded human review/adjudication`。专用 SFT scorer 只有在主实验不受阻且完成严格 grouped split 后才做附录效率实验；RuVerBench 已表明长 agentic artifact 的 rubric verification 本身有显著噪声，因此一个高同分布准确率的小 scorer 不能直接接管主榜。[[84]](https://arxiv.org/abs/2606.29920)
+
+## 9. 实验矩阵与被测 Agent
+
+### 9.1 Agent 分层
+
+- **M1 Native commercial product**：ChatGPT Deep Research、Gemini Deep Research、Perplexity Deep Research 等，评价完整产品；
+- **M2 Controlled general agent**：同一基础模型接口、搜索 API、工具和预算的 harness baseline，负责可解释消融；
+- **M3 Reproducible open-source DRA**：Open Deep Research、DeerFlow 等可固定代码、prompt、planner 和依赖的实装；
+- **M4 Repository-level code agent**：Codex、Claude Code（CC）、CodeBuddy 等，在 software vertical 的真实仓库、测试和用户条件契约上比较；
+- **M5 Multi-agent orchestration**：researcher、retriever、verifier、writer 等分工，重点测试 handoff；
+- **M6 Memory/user-model augmented**：在同一 agent 上切换 context-only、retrieval memory、structured user model 和 writable memory，重点测试 preserve/update。
+- **M7 Data-analysis agent**：能操作 notebook、Python/R、spreadsheet 和数据文件的 agent，在 data vertical 上同时接受 invariant result checks 与 user-conditioned utility rubric。
+
+主论文不假设一个 agent 必须跨三个 vertical 通吃。DR 用 M1–M3 中的可比系统，software 以 M2/M4，data 以 M2/M7 为核心；M5–M6 是跨场景的**架构 probe**。统一的是反事实协议和 profile，不是强迫不适用的系统完成所有任务，更不是把跨 vertical raw success 合成 overall ranking。运行轨道的 eligibility 如下：
+
+| Agent mode | E1 Frozen | E2 Live product/web | E3 Stateful sandbox |
+|---|---|---|---|
+| M1 商业产品 | 仅当可锁定 evidence/tools；否则 N/A | 原生全功能，进入产品榜 | 支持多轮事件时做 artifact-only probe |
+| M2 Controlled harness | 主对照；完整日志与预算控制 | 统一 live search 对照 | 完整事件注入与分叉 |
+| M3 开源 DRA | 主对照；容器/commit 固定 | 可选 live 外部效度 | 能接入 runner 时完整运行 |
+| M4 Code agent | 仅 A6 及适用多文件任务 | 原生仓库/网络条件单列 | 在 repo checkpoint 测约束保持与更新 |
+| M5 Multi-agent | 适用 anchor，固定拓扑 | 只作生态结果 | 完整 handoff packet 消融 |
+| M6 Memory-enhanced | 同底座 memory ablation | 不与产品内置 memory 混推因果 | writable state / update 主测试 |
+| M7 Data agent | 冻结 dataset/workbook 和可重放环境 | 仅作时效性/产品外部效度 | 在 notebook/workbook checkpoint 测目标与用户状态更新 |
+
+商业产品随版本变化，必须记录产品版本、模型标识、日期、地区、订阅层级和可用工具；无法固定版本的系统只进入 live leaderboard，不与 frozen API 主榜做强因果比较。
+
+### 9.2 关键对照与消融
+
+1. Task only；
+2. Oracle structured persona；
+3. 语义等价的自然对话历史；
+4. 历史 + 检索式 memory；
+5. 主动澄清；
+6. Persona shuffled（目标用户不变、只交换可见 signal bundle 的负对照）；
+7. Irrelevant persona（无关属性，过度个性化探针）；
+8. Contradictory/dated history（冲突与时效）；
+9. Context dilution（不同长度和位置）；
+10. Multi-agent handoff（含/不含用户模型交接）。
+
+### 9.3 两个月论文矩阵与扩展路线
+
+**主论文（8 周）**：从 60-family provisional set 中优先完成 12 个端到端 family：5 DR、3 Software、4 Data。每个 vertical 先至少有一个 vertical slice 通过许可、环境 reset、task/evidence 不变性、双人反事实自然性、matched/swapped discrimination 和共同质量 no-harm 门。Phase B 真人 decision trial 只在功效和成本允许的子集运行，不用“12 题”冒充“12 个已验证效用的 family”。P4 user-state update 只在 2–4 个适用 anchor 上做次要单因素压力层。
+
+真人招募也按两级目标运行。人民币 3,000 元 all-in working ceiling 下，首轮保留 12 个 paper-first family，每题先取 2 个 confirmed ledger，再只为每个 vertical 的 2 个 anchor 补第 3 人，目标 30 个 user–task records；第 3 人只帮助观察 neutral/near 与替补可行性，不冒充统计功效。完整 60-family release 再根据 Wave A route precision、Wave B/C attrition、每题 coverage 和参与者聚类重新估算。规划报酬继续按 Wave A/B/C 的真实 P50/P75 时长与专业稀缺性设置；形成 pair、产生明显差异或同意 LLM 总结不得成为付费条件。平台费超出暂留额度时优先减少第三用户和认知访谈，不削减 consent、open-first、本人确认或已承诺报酬。
+
+系统按 vertical 绑定：DR 比较商业产品、统一搜索 harness 和可复现开源 DRA；software 比较同一 repo/container 下的 controlled harness 与专用 code agent；data 比较同一 dataset/workbook 下的 controlled harness 与 data-analysis agent。每个 agent-task 组合提前写明 `eligibility_predicate`，受控 harness 榜和端到端产品榜分开报告。
+
+**Benchmark release 路线（不属于两个月已完成承诺）**：将 60 个 provisional shell 逐个升级为已绑定环境、已冻结 CDM 的 runnable family，然后再扩展更密集的交叉条件、600+ D-JQS 单元、SFT scorer 和持续更新 live leaderboard。扩展优先由 coverage manifest 中的空白与主实验不确定性驱动，而不是机械补齐笛卡尔积。
+
+### 9.4 Leaderboard 如何显示“模式 × 任务 × 难度 × 风险”的能力差异
+
+不发布一个把所有东西平均掉的总冠军，而发布四层 profile：
+
+1. **Decision utility board（主榜）**：在 Phase A 质量门通过后，按 agent 与 family 报 DDE、WrongUserHarm、硬约束违规、校准和决策成本。
+2. **Artifact qualification board**：报告 TQ、FR、PF/CFA、wrong-user swap 与边界，解释报告是否制造了有效且可比的个性化处理。
+3. **Stress & failure board**：在 8 个 anchor 上按 failure mode 和 S0–S3 强度画 retention/dose-response 曲线，并报告最差 10% CVaR；回答能力在什么压力下断裂。
+4. **Boundary & governance board**：报告 must-not violation、权限/隐私失败、正确 abstention 和压力下的 collateral damage；回答系统在个性化压力下能否守住边界，而不是用个性化分数补偿越权或事实损害。
+
+每个 agent 卡片同时显示运行环境、可提供的轨迹等级、适用任务覆盖和未运行原因。只有在同一 anchor、同一环境、同一预算下完成测试的系统才做显著性比较；商业产品之间只在 E2 产品榜比较。主文重点报告交互效应，例如 `agent mode × signal channel`、`agent mode × stress intensity`、`memory mode × stale conflict` 和 `orchestration × handoff count`。这些结果比一个总排名更能说明不同 agent 模式的能力差异。
+
+## 10. 平台实现方案
+
+### 10.1 Case schema
+
+每个 case 保存五组 Atlas 元数据。`task.*` 记录 stratum、intent、domain、deliverable、demand 和 stakes；`environment.*` 记录证据类型、时效、工具、预算、权限和交互长度；`user_state.*` 记录目标、知识、约束、偏好、风险、受众、权限、动态状态和来源；`signal.*` 记录渠道、可见性、可靠度、敏感度、时间戳和冲突；`agent.*` 记录系统版本、搜索、记忆、编排、工具权限和预算。实验层再保存 `operator`、perturbation、`eligibility_predicate`、`expected_failure_modes`、四类 evaluation contract、rubric module IDs、counterfactual partner 和版本。
+
+模型运行后只追加记录：artifact 和 trajectory 哈希、成本、时间戳、`observed_outcome_risks`、实际错误 evidence span、judge 版本、分数和置信度。任务标签、预期失败和实际观察标签始终分开保存。论文表格和 leaderboard 必须同时关联 benchmark、model 和 run metadata，防止把不同版本、工具或预算下的分数当成可直接比较的结果。
+
+### 10.2 执行架构
+
+沿用 OpenCompass 的解耦思想：
+
+```text
+Config Builder
+  → Family/Condition Partitioner
+  → Agent Adapter + Episode Runner
+  → Artifact & Trajectory Store
+  → Deterministic / Evidence / Rubric / Human Evaluators
+  → Statistical Aggregator + Slice Dashboard
+```
+
+EvalScope 可承担统一模型入口、arena 配对和基础报告；OpenCompass 后端承担大规模模型—数据组合、并行与失败重试；本项目新增 user-signal adapter、动态 episode 环境、artifact schema、counterfactual evaluator 和 D-JQS。所有原始运行只追加、不覆盖；评分版本与原始输出分离，允许新 judge 重放旧输出。
+
+### 10.3 可复现与污染防护
+
+- 公开 dev 集和构建协议，核心 test rubric/证据保持私有；
+- frozen corpus 使用内容哈希、许可记录与时间快照；
+- live track 保存搜索结果 URL、抓取时间和可公开快照；
+- 每季度或模型大版本后增量刷新任务；
+- 检测任务文本和关键短语在公开网页/训练语料代理中的泄漏；
+- 榜单同时报告环境版本，不跨不可比版本简单排名。
+
+## 11. 严格审稿视角下的主要威胁与防守
+
+### 11.1 “这只是 PDR-Bench 扩大版”
+
+**攻击：**已有论文已做 task/persona/context 和 PQR，新增任务与 agent 不构成方法创新。  
+**防守：**先承认 PDR-Bench 已能用 task/persona-conditioned P-Score 评价 absolute adaptation。DeepAlign 的方法增量是固定 task/evidence/environment 的跨用户 2×2 识别、非补偿 `must-change / must-hold / must-not` 契约和 no-harm gate；数据集增量是把这一协议实例化于三个互补场景，而不是继续把 DR 扩成绝对多数。Provisional set 中 DR 为 40%，software 与 data 各 30%，且每个 vertical 都有可单独报告的结构配额。这些数量不单独构成创新；关键反证仍是：若跨三个 vertical 都不出现 matched > swapped、用户条件的方向性改变，或个性化不能在通用正确性门内成立，则“跨知识工作的共同协议”主张失败。
+
+### 11.2 “persona 是作者编的，真值只是偏见”
+
+**攻击：**研究者把刻板印象写成 gold。  
+**防守：**用户事实须有来源与本人确认；差异 rubric 由目标用户提出或确认，领域专家只负责可行性；人口统计属性不自动推导偏好；用无关 persona 和 demographic-only 条件测刻板化；公布争议率和不一致案例。
+
+### 11.3 “matched/swapped 也不能证明模型真正理解用户”
+
+**攻击：**一个把显眼 persona 词语映射到固定模板的系统，也可能让 matched 优于 swapped；黑箱输出不能证明内部形成了用户模型。
+**防守：**论文只主张“用户条件变化带来了可观察的结果价值”，不声称识别模型内部认知。三组测试限制替代解释：同一 user-state 换成 persona、自然历史、澄清对话或去关键词改写时，核心 `must-change` 决策应保持；只改变无关人口属性或表面措辞时，`must-hold` 应稳定；只有改变任务相关约束时，输出才应按预期方向变化。长度、位置、漂亮格式和关键词堆砌进入 D-JQS。对 PDR-Bench，论文只能说这些稳健性“尚未验证”，不能写成“已经被欺骗”。
+
+### 11.4 “LLM judge 自己定义答案，循环论证”
+
+**攻击：**rubric 和分数都由模型生成。  
+**防守：**人类来源 CDM 与 rubric 在输出前冻结；确定性与证据 verifier 优先；D-JQS 用独立 hidden qualification 验证声明 slice；低一致性时降级到人工或粗粒度评分；公开 judge 分歧与弃权。
+
+### 11.5 “个性化伤害事实性或助长回音室”
+
+**攻击：**迎合用户可能牺牲真相、推荐多样性或长期利益。  
+**防守：**TQ/FR 硬门槛，Misuse & Boundary 独立扣分；Neutral Invariance 检测本不应变化的事实；高风险与价值冲突任务要求呈现不确定性、替代方案和升级给专家，而非一味迎合。
+
+### 11.6 “长程漂移只是模型整体变差”
+
+**攻击：**上下文越长所有能力都下降，不能称为用户建模漂移。  
+**防守：**同长度、同任务的非用户约束保持探针作对照；混合模型中控制 TQ 与上下文长度；只有用户特异要求下降显著快于共同要求、且单因素压力与同前缀 clean control 的差异稳定时，才支持“个性化保持失效”而非一般能力下降。
+
+### 11.7 “用户模拟器不代表真人”
+
+**攻击：**动态用户和满意度都是 LLM 幻觉。  
+**防守：**主榜不以模拟满意度作为金标；三种模式只构造信息可用性与披露行为的受控条件。v0.58 默认 rule backend 只验证 harness，正式 Naive/Interactive 使用固定 structured-LLM backend，并在独立真人轨迹上校准 attribute-level question match、reveal decision、自然度、事实忠实、语义泄漏和系统排序。Oracle 不是性能真值，Naive 与 Interactive 的差也不是纯 agent effect；最终效度仍由目标用户盲评和真实接受/采用意愿提供。
+
+### 11.8 “跨 agent 比较不公平”
+
+**攻击：**商业产品拥有不同搜索、并行度和隐藏工具。  
+**防守：**分为受控 harness 榜与端到端产品榜；前者固定模型可见工具、语料和预算，后者明确评估完整产品体验；不把两者混成一个名次。报告准确率—成本 Pareto 前沿，而非只比总分。
+
+### 11.9 “failure taxonomy 只是作者预设，结果必然验证分类”
+
+**攻击：**作者先指定 failure mode，再用同一标签解释模型失败，形成循环论证；真实系统可能出现分类外错误。  
+**防守：**通过 pilot 真实轨迹 open coding、独立盲标和 `other/emergent` 类建立 taxonomy；严格区分 expected 与 observed 标签；主 judge 不接收预期模式；发布多标签共现、未覆盖错误率与 taxonomy 修订日志。
+
+### 11.10 “SFT scorer 只学会 teacher 风格，分布外不可靠”
+
+**攻击：**用人工 label 和 GPT reason 微调，只会制造廉价的 task-specific classifier；高同分布准确率不能支持新 agent 榜单。  
+**防守：**理由必须锚定 evidence span，关键项人审；按 task family、agent 和时间做严格隔离；在长度、位置、格式、persona 关键词、隐私诱饵和新模型输出上比较 SFT、强 judge 与级联；不达跨 family 门槛时，SFT 只做高置信分流。
+
+### 11.11 “PhD-level / daily 分类只是换名，类别边界任意”
+
+**攻击：**“博士题”和“日常题”把人群、领域和难度混为一谈；日常任务未必简单，企业任务也可能兼具学术研究意图。若作者再按自然语言枚举十几个类别，标签会重叠、样本稀疏且难以复现。
+
+**防守：**不采用单轴二分，而以 `task stratum × research intent × demand profile` 表示任务；公开标注手册、类别映射、结构性缺格和双人盲标一致性。主张限定为“在预注册 task cube 中的条件效应”，并报告分层区间与最差切片，不以 overall average 宣称普适性。
+
+### 11.12 “元数据维度很多，但真正测试的组合很少”
+
+**攻击：**作者用宏大 ontology 包装一个稀疏小数据集；大量分支没有样本，所谓全面性不可证伪。
+
+**防守：**明确区分 ontology scope 与 empirical coverage；发布四状态 coverage manifest（tested / defined-only / structurally-inapplicable / deferred）、组合选择准则和缺口。两个月主实验采用分数因子设计与 anchor stress tests，不对空白格做结论；方法贡献是可组合、可审计和可扩展，不是虚构全覆盖。
+
+### 11.13 “persona 看起来真实，但 gold 仍是作者想象”
+
+**攻击：**一个自然的人设并不自动意味着某种报告是正确的；作者可能把合理故事写成偏好真值。
+
+**防守：**persona 只是 user-state ledger 的视图；每个 pairing 必须通过六项 compatibility gate，并由真实用户或 user-anchored 来源确认 must-change/must-hold。关键差异需要决策后果、反事实可分性和可接受替代集合；人口属性不能生成未经确认的偏好。
+
+### 11.14 “模块化 rubric 对不同任务并不可比”
+
+**攻击：**不同任务激活不同叶节点，最终百分比分数并非同一量尺；统一总榜没有测量学依据。
+
+**防守：**统一的是 leaf schema、契约类型和校准程序，不假设所有模块天然等距。36-module library 在输出前按版本路由，发布 active leaf 数、权重、NA 分母、重叠审计和 weight sensitivity。主结果以任务内 CFA、模块完成率和分层效应为主；跨模块总分只在共同 anchor 通过人类判定、区分力、invariance 与 judge 校准后报告。否则只展示 profile，不建立伪精确总体名次。
+
+### 11.15 “所谓 difficulty 只是把多种风险混在一起”
+
+**攻击：**作者把长上下文、高 stakes、多 agent 和冲突信息都叫“更难”，无法知道性能下降来自计算负荷、信息噪声还是风险策略。
+
+**防守：**任务 demand、后果 risk、预期 failure mode 与 stress intensity 四者分开标注；anchor 先做 S0，再做单因素 S1/S2，只有在已估计单因素效应后才做 S3 复合压力。主文报告每个 stress 维度的响应曲线与 agent 交互，不用一个 difficulty total 掩盖机制。
+
+### 11.16 “八个 anchor 不足以发现用户建模失败原因”
+
+**攻击：**八个任务跨领域、交付物和系统异质性很高。把低分与 long context、conflict 或 handoff 相关联，既没有统计功效，也不能定位内部根因。
+
+**防守：**不把 anchor 当作观察性相关分析。主要 estimand 是同一 family、同一运行前缀、同一预算的 clean/perturbed 配对差值；用于跨任务比较的主要 perturbation 至少覆盖 4 个适用 anchor，2 个只作为探索性复现。主文只称“对受控扰动的结果敏感度”；只有 message/full-state trace 可比、过程证据满足预注册 operator 条件时，才在附录讨论 acquisition/preservation/use/update 机制。
+
+### 11.17 “用户自己选任务，样本只代表愿意参加且对题感兴趣的人”
+
+**攻击：**每人选 3–5 个任务会把 task relevance 与用户自选择混在一起，不能估计一般人群中的 personalization 需求。
+
+**防守：**把 target population 明确限制为 task-relevant、counterfactually eligible users；随机化/分层展示 slate，记录 offered/eligible/selected/skipped 全漏斗，并按用户聚类。论文不报告“所有用户中有多少任务需要个性化”，只报告准入人群内的系统表现。
+
+### 11.18 “作者故意挑对比最大的 A/B，matched > swapped 是设计出来的”
+
+**攻击：**只保留最容易分离的用户对，会夸大效应并掩盖普通近邻用户。
+
+**防守：**预注册 pair-selection 算法，pairing team 对 target 输出盲化，公布全部候选与拒绝原因；按 contrast、near-neighbor、neutral/invariance 三层报告。neutral pair 上无理由改变反而算错，从而同时检验 under- 与 over-personalization。
+
+### 11.19 “真人自述不是稳定 ground truth”
+
+**攻击：**偏好会随措辞、时间和事后合理化变化，同一用户也可能接受多个方案。
+
+**防守：**ledger 允许 uncertainty、acceptable alternatives 与 indifference set；记录时间戳、过期/复核日期，在子集做 test–retest，并在可行时用实际选择或行为交叉验证。用户只对自己的目标/取舍有权威，不对技术事实有权威；不稳定方向不进入 gold。
+
+### 11.20 “同一用户既参与 contract，又在后面选 matched，存在需求特征”
+
+**攻击：**persona owner 可能为了与自己前面的陈述一致而机械选择 matched。
+
+**防守：**后期不展示最终 rubric wording，artifact 身份和顺序双盲/随机，与前期 confirmation 时间分离；其选择作为外部效度终点而非同一 gold 的重复证明。条件允许时加入未参与 contract 构造的 comparable-user 复核。
+
+### 11.21 “CDM 仍不能证明完整，LLM 只是把主观列表画成图”
+
+**攻击：**冻结的 map 可能漏掉用户真正在意的标准；LLM candidate generation 仍可能主导 gold。
+
+**防守：**无 provenance node fail closed；LLM 的 authority 为零；报告 candidate/captured/excluded/neutral/emergent 比例和 pre-output coverage audit。只能声称 protocol-bounded saturation，不能声称 CDM 完整。开发集 emergent errors 进入下一版，锁定 test 不回改。
+
+### 11.22 “原子 leaf 相关、重复计分，程序 verifier 也可能很弱”
+
+**攻击：**把一个偏好拆成五条会虚增权重和样本量；unit test/checker 可能只检查作者预期实现。
+
+**防守：**记录 dependency/redundancy group，先在 CDM node 内聚合，再进入指标；统计以 family/user cluster 为单位，并做模块/权重敏感性。verifier 用 known-positive/negative、controlled edit、mutation testing、false-accept/false-reject 和 coverage 审计，不能因“deterministic”自动获得 gold 地位。
+
+### 11.23 “D-JQS 是自己出题、自己定门槛、自己认证自己的 judge”
+
+**攻击：**合成受控样本很容易，作者可以调阈值直到选定 judge 通过；已有 JudgeBench/JUDGE-BENCH 和 RuVerBench 还削弱名称与首创性。
+
+**防守：**D-JQS 明确是局部资格工具，不声称首个 judge benchmark；gold 混合 deterministic violation、controlled single edit 和自然真人 artifact。authoring/calibration/hidden qualification 按 family、用户、source、agent、edit lineage、time 隔离，阈值只在 calibration 定，hidden 只报告一次；按 leaf slice 认证，critical slice 失败就走人工而不是投票平均。
+
+### 11.24 “AB/BA 只做了位置控制，verbosity、style 和关键词仍会决定判断”
+
+**攻击：**顺序交换无法排除更长、更漂亮、引用更多或 persona 词更多的 artifact 获胜。
+
+**防守：**AB/BA 与 length/style/format/keyword/citation-count/language 的单因素 nuisance edits 分开做；重复 sampling 仅用于估计随机噪声。翻转或证据定位不稳定的单元必须 abstain/escalate，不能被均值掩盖。[[83]](https://arxiv.org/abs/2406.07791)
+
+### 11.25 “三个 vertical 的 judge 负担和可验证率不同，统一 profile 仍不可比”
+
+**攻击：**code 可能 80% 程序检查，DR 主要靠语义 judge；相同 PF/TQ 数值不是同一测量强度。
+
+**防守：**不合并跨 vertical raw success 或总冠军；每个 vertical 分别报告 deterministic/evidence/judge/human 覆盖、可靠性和 no-harm，统一的只是 matched/swapped estimand、CDM schema 与非补偿判定逻辑。跨场景结论只说协议可实例化，不说分数等距。
+
+### 11.26 “整个方案太贵、太慢，并带来隐私和偏好漂移风险”
+
+**攻击：**3–5 task × 双人审计 × 专家 × judge qualification 难以扩到 60 family；私有 ledger 还可能泄露，用户偏好在长周期内变化。
+
+**防守：**先做 12-family paper set，再按 gate 扩展；报告人员时长、attrition 与每个 family 的边际成本。raw ledger 默认不发布，落实 consent、purpose limitation、minimization、revocation、retention 和 access control；每条动态事实有时间戳、expiry 与 re-confirmation。自然 preference drift 与脚本化 P4 update 分开报告。
+
+### 11.27 “相对 PDR-style 独立 rubric，CDM 只是更复杂的工程”
+
+**攻击：**如果 CDM 与两份独立 A/B rubric 给出相同系统结论，就没有方法增量；GAMUT 已覆盖 meta-rubric 编译，RuVerBench 已覆盖 rubric verification。
+
+**防守：**主消融必须比较：（a）PDR-style 单用户动态 absolute rubric；（b）独立 A/B rubric；（c）CDM 对称编译；（d）single judge 与 hybrid scoring。报告哪些 family/system success 判定或排序被 CDM 重分类，以及 CDM 是否在控制一般质量后增量预测盲化 target-user choice/decision outcome。若没有重分类或增量效度，论文只能称为透明的 measurement extension，不能把 compiler 包装成主要创新。[[84]](https://arxiv.org/abs/2606.29920)[[85]](https://arxiv.org/abs/2607.19322)
+
+### 11.28 “去掉推荐与规划后，DR 退化成信息检索，个性化只剩格式差异”
+
+**攻击：**program discovery、entity enumeration 和 evidence catalog 可能只是在做更长的搜索；若两位用户只改变列名、篇幅或语言，benchmark 不再测有后果的 personalization。
+
+**防守：**DR 的 long-horizon gate 不以字数或搜索次数充数：每题必须同时要求多轮 discovery、实体/版本消歧、来源层级、遗漏或覆盖审计，以及 claim–source/lineage/conflict/temporal linkage 中至少一项。更关键的是，DR 的 `must-change` 必须改变可观察的 evidence set 或研究设计变量，例如纳入排除、搜索空间、证据阈值、必填字段、冲突处理或粒度；仅改变语气、长度、排序展示或解释风格的 user pair 不进入 gold。若真人不能确认这些差异会改变该证据 artifact 的可用性，该 family 淘汰而不是靠 persona 文案补救。
+
+### 11.29 “一个交付物只是把多个产物改名塞进 zip，降低了可解释性”
+
+**攻击：**把报告、表格、日志和测试称为“一个 package”可能只是语义重命名；复杂任务仍有多个独立成功标准，作者反而用容器隐藏失败。
+
+**防守：**一个交付物指唯一 submission boundary 和唯一可寻址 artifact，不指一个评分维度。内部组件仍由 atomic leaves 分别验证，critical component 失败不能被其他部分补偿；manifest 记录容器 hash、内部路径和 verifier coverage。只有支持主 artifact 可审计、可运行或可复现的组件才可内嵌，独立面向不同受众或可单独采用的产物必须拆成另一 task。跨 vertical 统一的是提交单位，不声称 repository commit、notebook 与 evidence dossier 难度等距。
+
+## 12. 预期贡献、成功标准与发表边界
+
+### 12.1 预期贡献
+
+1. **核心贡献：从 absolute adaptation 到 counterfactual user specificity。** 固定 task/evidence/resources，构造自然的 paired users 和 2×2 matched/swapped 交叉矩阵，直接检验最终交付物是否因目标用户变化而发生方向正确的改变；
+2. **Human-grounded relational gold。** 以本人确认的 task-conditioned ledger 构造带 provenance、authority、direction、equivalence 与 dependency 的 CDM `C(T,E,U_a,U_b)`；rubric 是其受约束编译产物，而不是两份独立 persona rubric 的事后拼接；
+3. **非补偿 personalization profile。** 双向 `Δa/Δb/CFA_min`、matched `A_min`、task-only `Gain_min`、共同质量/事实 no-harm 与 critical boundary gate 分栏报告，不用一个归一化总分掩盖失败；
+4. **经资格认证的 hybrid measurement。** 用 validated verifier、D-JQS 的 deterministic/controlled/natural gold、slice-specific judge qualification 与真人 escalation 执行冻结 criteria；D-JQS 是测量保障，不单列为首创贡献；
+5. **同一用户真值下的多渠道评测。** structured persona、natural history 与模糊 query + clarification 共享 ledger/CDM/final rubric；区分“信息给到后会用”与“需要交互获取时仍能用”；
+6. **三个代表性长程知识工作场景的共同协议。** 将 open-web research 的 `find & synthesize`、repository software engineering 的 `modify & build` 与 data-centric analysis 的 `analyze & infer` 纳入同一反事实个性化接口，但不声称覆盖全部知识工作；
+7. **可选的 decision validation。** 在可执行子集检验 artifact specificity 与真人采用、regret 和 wrong-user harm 的关系，严格限制超出交付物层面的主张。
+
+### 12.2 Go / No-Go 门槛
+
+- 至少 2/3 pilot family 能从真实任务选择和 ledger 构造自然 paired users，并在输出前冻结带 provenance/authority 的 CDM、task-only 和反例 artifacts；
+- matched 参考交付物通过 TQ/FR/长度/证据/边界门，且 `CFA_min > 0`，证明处理确实具有用户特异性；
+- 官方 judge 与两名盲化人评对 general-good / over-personalized / matched / swapped 的关键 decision-node 判断达到预注册一致性门；
+- 主实验按 family 聚类后，至少部分强系统产生稳定的双向 specificity 与 channel-dependent 排名差异，而不是全部由 TQ/长度解释；
+- D-JQS 的 hidden qualification 在所有正式启用 leaf slice 达到预注册门槛；未过门的 slice 已路由到 verifier/human/粗二元而非隐藏；
+- task cube 的 stratum/主 intent 与双轴 taxonomy 的主风险盲标一致性达到预注册门槛，且 `other/emergent` 未覆盖率可接受；
+- Atlas 必填字段完整率 ≥ 95%，双人元数据标注的一致性达到预注册门槛；coverage manifest 能区分 tested / defined-only / structurally-inapplicable / deferred 四种状态；
+- 每个进入主实验的 rubric module 至少通过 schema coverage、matched-swapped discrimination、cue-equivalence robustness、无关信息 invariance、冗余/权重敏感性和目标用户/专家 content-validity 中的全部适用检查；pilot 的 `other/emergent` 残余错误率必须公开；
+- SFT scorer 若进入主榜，必须在跨 task-family、跨 agent 的锁定测试上达到第 8.4 节门槛；
+- 若运行 Phase B，至少出现可解释的 `absolute fit → specificity → decision utility` 对应或断裂；否则只报告 Phase A，不越界声称用户决策收益。
+- CDM 对称编译相对独立 A/B rubric 至少重分类部分系统/family，或对盲化真人选择提供控制一般质量后的增量预测；两者都没有时，主张降级为 transparent measurement extension。
+
+若前两项失败，应停止构建通用榜，转为特定领域或特定用户差异的测量研究；若 judge 失败，应保留小规模人评 benchmark，不发布伪精确自动榜。
+
+## 13. 里程碑与资源预算
+
+| 周 | 必须完成的研究产出 | 写作并行产出 | Go / No-Go |
+|---:|---|---|---|
+| 1 | 冻结 12-family 优先列表（5 DR / 3 Software / 4 Data），并完成每个 vertical 至少 1 个 environment slice | Introduction 与 Related Work 改写 | 许可、reset、invariant core 与 verifier 是否成立 |
+| 2 | 完成三臂参考报告、Phase A 质量配平与盲化 pilot | Construction、伦理与标注手册 | matched/task-only 是否可比 |
+| 3 | 小规模真人 decision trial；估计方差、顺序效应与流失 | Evaluation Framework 初稿 | 能否做有效随机处理 |
+| 4 | 功效模拟并冻结 12 family 中的真人效用子集、参与者与主要终点 | Methods 与预注册定稿 | DDE 是否具有可测量范围 |
+| 5 | 完成 Phase A agent 运行与 Phase B 首批真人实验 | Experiments 设置、分析脚本 | 运行与招募是否可控 |
+| 6 | 完成真人主实验、关键仲裁与少量 stress layer | Results 表图和失败案例 | 是否存在真实决策效应 |
+| 7 | DDE/错配伤害/代理效度分析与鲁棒性审计 | Results、Limitations、Ethics 完稿 | 主张是否被数据支持 |
+| 8 | 结果冻结、复现实验、artifact 与匿名仓库整理 | 全文整合、附录和投稿格式 | 不再新增 taxonomy、agent 或任务类型 |
+
+项目必须按时收口：第 2 周末冻结 ontology v1，第 3 周末冻结主 rubric，第 4 周末冻结主实验。SFT scorer、完整 live leaderboard、60-family 全量环境绑定都不能阻塞论文；代码与数据不再是可删 anchor，但可以减少每个 vertical 的 agent 数而不删掉整个 vertical。成本分别记录目标用户与专家、人评、商业 agent、搜索抓取、repo/container、dataset/workbook、存储和隐私审计，并在第 1 周确定 episode 上限。
+
+## 14. 建议的论文结构（仿 Agent-SafetyBench 的信息组织，但突出差异）
+
+1. **Introduction**：PDR-Bench 已建立 personalized artifact fit；本文把终点从“报告适合谁”推进到“报告是否改善真实用户的可验证决定”。
+2. **Related Work**：Deep Research eval、personalization benchmark、agent/user simulation、LLM judge 与长程记忆。
+3. **DeepAlign-Bench Construction**：Evaluation Atlas、coverage manifest、task-conditioned user state、persona compatibility、行为测试算子、反事实任务族与质量控制。
+4. **Evaluation Framework**：Phase A artifact qualification、Phase B decision trial、utility verifier、DDE/WrongUserHarm 与代理效度。
+5. **Experiments**：三臂随机处理、真实用户、agent 分层、功效、成本和统计协议。
+6. **Results & Failure Analysis**：主榜不是重点；重点是哪些信息源、阶段和架构导致什么失效。
+7. **Human Validity & Robustness**：目标用户盲评、judge 偏差、替代解释、跨语言/群体切片。
+8. **Limitations, Ethics and Governance**：隐私、刻板化、模拟器、动态 web、商业系统不可复现。
+9. **Conclusion**。
+
+## 15. 两个月锁定版：论文真正承诺什么
+
+**数据**：已建 180 候选池和 60-family provisional set（24 DR / 18 Software / 18 Data）；它们是 sampling frame，不是已运行 gold。主论文先完成 12 个端到端 family（5 DR / 3 Software / 4 Data），其中只有功效、成本和用户真值允许的子集进入 Phase B。真实目标用户数由 pilot 方差和最小有意义 regret 改善做功效模拟后冻结，不为配合任务数量预先承诺。
+
+**条件**：主矩阵只做 task-only、structured persona、semantic-equivalent natural history、clarification-allowed。persona 是 task-conditioned user ledger 的视图；每个 pairing 通过 plausibility、decision relevance、counterfactual separability、invariant core、minimality/privacy 和 non-stereotyping 六项门。
+
+**系统与环境**：DR 用 M1–M3 的可比子集，software 用 M2/M4，data 用 M2/M7；M5 multi-agent 与 M6 memory-enhanced 作架构 probe。E1 Frozen、E2 Live Product/Web、E3 Stateful Sandbox 分榜运行，并通过 adapter contract、trace level 与 eligibility predicate 保证比较边界。
+
+**评价**：Phase A 用 TQ/FR、PF/MP、`CFA_min` 和边界门验证报告处理；Phase B 的主指标是 DDE、WrongUserHarm、硬约束违规与置信度校准。PF/CFA 是中介和操纵检查，不与 DDE 合成总分。
+
+**Judge**：240-unit D-JQS；确定性/证据 verifier、slice-qualified 强通用 judge 和分层人评组成主线。SFT scorer 只有在第 4 周前不影响主实验且存在足够高质量标签时进入附录，否则明确列为 future work。
+
+**论文主张边界**：我们只声称在 open-web research、repository-level software engineering 和 data-centric analysis 三个代表性长程知识工作场景中实例化了共同个性化评价协议。不声称穷尽 legal、email/calendar、slides、CAD 或科学实验等其他知识工作，也不从 final-only 数据推断内部理解机制。若 CFA 高而真人决策效用不提高，论文将报告 artifact-fit 代理失效。
+
+## 16. 论文图表规划：五张主图、四张主表
+
+图表必须围绕论文主张组织，而不是把 Atlas 的所有字段都画出来。两个月锁定版建议主文使用 **5 张图 + 4 张表**；完整的 family、anchor、rubric、judge 和成本明细放入附录。每张主图只回答一个一级问题，结果图不预填理想趋势。
+
+### 16.1 主文五张图
+
+**Figure 1 · DeepAlign-Bench 一页主张图：从报告适配到决策效用。** 左侧给出 PDR-style artifact fit；中间展示 Phase A 的 task-only/matched/swapped 与质量等价门；右侧展示 Phase B 中报告作为随机处理进入真人决策，并输出 DDE、WrongUserHarm、硬约束和校准。底部只保留 3-family pilot → 8–12 family、约 36–48 名真实用户（功效后冻结）、2–3 条报告管线和“fit 是中介，不是终点”的边界。
+
+**Figure 2 · 一个 counterfactual family 如何构造、编译 rubric 和评分。** 四个 panel：A 展示 Ua/Ub 的 invariant core 与 2–4 个 minimal user edits；B 展示同一 ledger 的 structured persona、natural history 和 clarification 三个 signal views；C 展示 `metadata + contracts → module routing → node selection → leaf expansion → metric binding → frozen bundle`，并列出一个复合 contract 拆成三条带锚点 leaf 的实例；D 展示 `M[i,j] = PF_i(Y_j)` 的 2×2 交叉评分矩阵与 CFA，同时把 must-hold 和 must-not 连接到 invariance 与 gate。它把用户真值、具体评分项和 estimand 直接连接起来，是方法部分最重要的细节图。
+
+**Figure 3 · 主结果：不同 agent 是否产生了用户特异价值，以及这种价值出现在哪里。** 四个 panel：A 是本论文的 signature plot，横轴为 `CFA_mean`（跨用户 specificity），纵轴为 `Gain_mean`（相对 task-only benefit）；横纵零线把“只是可区分”“只是普遍变好”“真正有益的个性化”和“有害适配”分开，点形同时标记 `CFA_min/Gain_min` 是否通过双向门槛。B 用 forest/dot plot 分别报 `Δ_a/Δ_b`、`CFA_mean/CFA_min` 与 95% CI，并按 E1/E2/E3 execution regime 分块；C 使用两个共享色标的边际 heatmap，分别报告 `agent × 3 task strata` 和 `agent × 6 research intents` 的 CFA/Gain，并给出 family 数。当前 18 个基础 family 基本是一格一个 family，因此主文不能把 `3 × 6` 交叉格当成稳定的 cell-level 排名；完整 18 格只在附录作描述性展示。D 只在可比 regime 内画 cost–bilateral-success Pareto frontier。A–D 分别对应 specificity、benefit、不确定性、能力拓扑和效率，不合成单一总分。
+
+**Figure 4 · 从“给了会用”到“缺了会问、变了会改”。** 四个 panel：A 用 `agent × P0/P1/P2` heatmap 报 task-only、直接给出完整 user state 与 clarification-allowed 条件下的 CFA/Gain；B 报 P2 的必要问题召回、无关问题率、平均提问轮数和相对 P1 oracle 的交付物差距；C 在 2–4 个 P4 anchor 上画当前 user-state adoption、旧状态残留和 must-hold 稳定性；D 用 `family × observed outcome failure` heatmap 显示用户盲、错误用户绑定、过度个性化、共同核心破坏和澄清失败，并单列 `other/emergent`。workspace/history、私有状态、一般 evidence conflict 和复杂 handoff 不进入首稿 Figure 4。主文不从最终交付物反推内部动机；只有具备可比 trace 的系统，才可在附录报告 acquire/use/update 的过程证据。
+
+**Figure 5 · 自动评价是否可信：D-JQS 与人类校准。** 四个 panel：A 按 leaf class 报 judge–human agreement 和 critical recall；B 画预测置信度与实际正确率的 calibration/reliability curve；C 报 A/B 顺序、长度、格式、persona 关键词、引用数和语言诱饵造成的翻转；D 画“自动覆盖率—人工成本—selective risk”级联曲线，并标出预注册 slice 门槛。Judge 未过门槛时，本图应直接支持降级为人评，而不是隐藏失败。
+
+### 16.2 主文四张表
+
+**Table 1 · 与最近邻 benchmark 的定位比较。** 行为 PDR-Bench、ResearchRubrics、DeepResearch Bench、PersonaTrail/APeB、PASB 和 DeepAlign；列只保留与主张有关的 task-persona absolute fit、cross-user counterfactual、must-change/hold/not、multi-cue、longitudinal stress、multi-deliverable、human validity 和 judge calibration。避免用“大而全”的勾选表代替文字论证。
+
+**Table 2 · Benchmark composition 与 empirical coverage。** 按 task stratum、research intent、deliverable、signal channel、environment、agent mode、anchor 和 stakes 报 family/episode 数、用户对数和 `tested` 覆盖率；另列 defined-only、structurally-inapplicable 和 deferred 数量。它证明实际测了什么，不用 ontology 的理论分支数冒充样本量。
+
+**Table 3 · 主 leaderboard 数值表。** 每行是一个可比的 `agent × execution regime`，列为 TQ、FR、MP、`Δ_a/Δ_b`、`CFA_mean/CFA_min`、`Gain_mean/Gain_min`、target-user match win probability、Worst-view CFA、Neutral Invariance、cost 和 eligibility。E1/E2/E3 分块，商业产品榜与受控 harness 榜不混排；报告 family-clustered 区间，而不是只报点估计。
+
+**Table 4 · 关键对照、消融与替代解释。** 行包括 task-only、matched persona、semantic-equivalent history、clarification、irrelevant cue、wrong-user swap、去掉 must-hold/must-not、只按长度/风格匹配和去掉 TQ gate；列为 ΔCFA、Specificity Precision/Recall、Neutral Invariance、TQ/FR、judge coverage 与主要解释。它用于证明结果不是“多给了上下文”“写得更长”或“复述 persona 关键词”。
+
+### 16.3 附录图表与版面规则
+
+附录建议保留：逐 family DDE/CFA forest plot、utility sensitivity、顺序/学习效应、deliverable coverage、少量 anchor stress 曲线、多标签 failure co-occurrence、各用户群切片和 judge confusion matrix。附录表应给出全部 decision shell、utility/provenance、报告配平、persona compatibility、rubric leaf、agent/version/tool metadata、完整结果、成本、失败案例和人工标注一致性。
+
+主文结果图统一使用共享坐标、95% CI、样本数和 gate 标记；同一颜色始终代表同一 agent，线型或形状代表 signal/stress 条件。不要使用 3D 图、面积难比较的 sunburst、没有不确定性的柱状榜、把多指标压成一条折线的雷达图，或把 expected 与 observed failure 混在同一标签中。若版面不足，优先保留 Figures 1–3、5 和 Tables 2–4；Figure 4 的逐 anchor 细节移入附录，但不能删掉 D-JQS 的测量效度证据。
+
+## 17. v0.48 开工方案：先验证 absolute score 与 specificity 是否真的分离
+
+### 17.0 合成最小实验已经回答什么、还没回答什么
+
+2026-08-09 冻结并运行了 4 个合成 family、两条生成管线和 task-only/matched/swapped 三条件，共得到 24 份交付物；Qwen3 8B 与 Claude Sonnet alias 对全部 artifact 做双用户逐叶盲评，共 48 个 artifact-judge 单元。四组 A/B matched 推荐方向均符合预冻结的决策方向，说明 Phase A 的 task/persona/交叉评分链具有初步可运行性。六类预冻结分数原型同时表明：`CFA_mean>0` 会把通用高分、低绝对适配、单边效应、只胜过 swapped 和微小差值全部误判；向量余弦只能识别方向平衡，比例归一化还会放大低分区差异。因而 v0.33 增加 `A_min`、角度/幅度诊断与 non-inferiority/added-value 分层，但继续禁止补偿式总分。
+
+这轮也暴露两项阻塞：两个 LLM judge 在 72 个聚合分比较上的平均绝对差约为 0.226；最小 runner 又一度把 User-A-specific must-not 错路由到 User B artifact。原始错误与事后 applicability 审计均保留，正式 runner 必须执行 `rubric_owner_user_id/applicability`，并用人类 evidence-span gold 校准后才能相信细粒度 PF/TQ。更重要的是，合成 pilot 只验证 Phase A 操作，不包含真实用户决定，不能视为 DDE、WrongUserHarm 或论文核心可行性的证据。完整协议、原始输出、评分和分析保存在 `pilot/minimal_metric_v0_1/`。
+
+### 17.1 Task 元数据谁来标：不是“全人工”或“全自动”二选一
+
+Task 元数据分三层。**A 层是导入或自动生成的客观 provenance**，包括来源、许可、抓取时间、证据哈希、工具与预算；程序可以填写，但作者要审计。**B 层是运行前人工冻结的构念标签**，包括 primary intent、stakes、interaction need、task-relevant user facts、counterfactual axes、must-change/hold/not、clarify-if-unknown 和 rubric node applicability；LLM 只能提供候选与理由，不能成为最终标注者。**C 层是 pilot 后才得到的经验字段**，包括实际难度、失败率、matched/swapped 区分力、judge–human 一致性和 residual error。B 层的 expected label 与 C 层的 observed result 分栏保存，禁止看到输出后把“预期失败”改成已发生的失败。
+
+建议先收集 30–40 个真实用户、专业工作流、公开任务或访谈 seed，筛出 3 个完整 decision vertical slice；再根据 family 方差和 judge 成本冻结 16–20 个 Phase A family，并根据 user/family 方差和 power simulation 冻结其中 8–12 个 Phase B family。所有核心主观字段由两名训练过的标注者独立编码、第三人仲裁；同一用户的重复决策、同一 family 的多份报告和多条 rubric leaf 都不能冒充独立样本。
+
+### 17.2 Persona 如何真实自然：task-first、user-anchored、最小化
+
+主数据不从研究者写人物小传开始，而从“谁真的需要这个任务”开始。v0.56 的招募单位是三轮、一个主任务为主的 user–task record：Wave A 让参与者从 10–15 张 task-relevant cards 中选择 3–5 个真实候选；Wave B 后台只分配 1 个主任务、最多 1 个次任务，每题先完成开放 elicitation 再显示结构化 schema；Wave C 对带原话 source span 的候选 fact 逐条确认。完整一次主任务流程预计 30–45 分钟但分轮完成。v0.57 在人民币 3,000 元工作上限下将 12-family pilot 冻结为每题 2 个 confirmed ledger + 6 个 anchor 各 1 个第三用户，目标 30 records；先用 6–8 人 soft launch 检查 route precision、跨轮流失、真实时长和 Wave C 编辑率，再决定是否释放剩余预算。每条 fact 都进入私有 ledger，带来源、时间、可靠性、敏感级别、可用于推理/可披露权限和它会改变哪项交付决策。
+
+Gold 优先使用两个真实用户共享同一 invariant task/evidence，但在 2–4 个任务相关轴上自然不同；配对困难时，才使用“一个真实用户 + 经第二位相似参与者验证的最小反事实编辑”。完全合成 persona 只进入压力测试和无关 cue 对照，不能支撑真人效用主张。Natural history 应来自参与者回忆、日记或获授权轨迹，或由参与者逐句确认的转述；annotator 编造的生活史不算 gold。PDR-Bench 采用真实 profile、但由专业标注者模拟日常应用交互，这一做法适合扩展覆盖，却也正是 DeepAlign 应避免作为 gold 主来源的真实性边界。[[4]](https://arxiv.org/abs/2509.25106) FingerTip 20K 让 95 位参与者在自有手机上贡献一个月意图、情境和操作轨迹，为“自然用户锚定 + 隐私过滤”提供了更强参照。[[57]](https://arxiv.org/abs/2507.21071)
+
+### 17.3 Rubric 要提前设计到什么程度：冻结 node 接口，不宣称穷尽世界
+
+36 个 module 应继续保留为父级 ontology，但 compiler 不能从 module 直接自由生成 leaf。v0.31 在二者之间增加 **direction node registry**：`metadata/contracts → module → direction node → parameterized leaf → validation/freeze`。一个 node 表示可复用的评价方向，如“满足硬预算”“匹配知识深度”“遵守披露边界”；leaf 才把用户、阈值、证据和评分锚点实体化。
+
+每个 node 至少记录 `node_id/module_id`、applicability predicate、参数槽、contract 来源、observable/evidence target、scoring anchor、direct metric binding、judge route、A/B 对称规则、冗余/互斥标签、provenance 与 validation status。Node 模板人工编写，LLM 只辅助填参数和措辞。全面性不是预先列很多 node，而是经过 content map、human reference discrimination、cue/nuisance invariance、去重/消融、weight sensitivity、目标用户/专家 content validity 与 residual-error saturation。只有某个决策相关残余构念在至少两个 family 重复出现且无法参数化现有 node 时才新增 node；否则容易因输出反推 rubric，增加 researcher degrees of freedom。ResearchRubrics 的 101 个 prompt 使用 2,593 条专家人工标准且投入 2,800 多小时，说明高质量原子 rubric 的主要成本在人工构念与校准，不在 LLM 批量生成。[[18]](https://arxiv.org/abs/2511.07685)
+
+### 17.4 三个环境的工程难度和顺序
+
+| 环境 | MVP 难度与工期估计 | 最小组件 | 真正难点 | 论文位置 |
+|---|---|---|---|---|
+| E1 Controlled Frozen Harness | 中；约 1.5–2.5 engineer-weeks | frozen corpus/manifest、index/search façade、agent adapter、reset、预算、artifact/trace export、evaluator replay | 证据许可与快照质量；工具公平；失败可复现 | 主因果与主榜轨 |
+| E3 Stateful Sandbox | 中高；E1 后追加约 1–2 周 | state service、checkpoint/fork/reset、clarification answer、单一 user-state update scheduler | 事件前分支等价；未来状态泄漏；旧/新用户事实的覆盖语义 | 2–4 个公开证据 anchor 的薄层机制诊断；private workspace 延期 |
+| E2 Native Live Product/Web | demo 易、科学比较和维护难；每产品约 3–7 天并持续维护 | 单产品 adapter、版本/日期/地区/账户状态、URL/结果快照、成本和 artifact export | 隐藏版本、不可 reset、web 漂移、ToS/导出、预算不可比 | 观察性外部效度，不与 E1 合并显著性 |
+
+这一路线与 ICLR 已接受 benchmark 的工程经验一致：SWE-bench 用真实 issue/PR 与可执行测试建立可验证终点；[[58]](https://openreview.net/pdf/c2a76eb44300a738cbd7cb95f5bc04df621f4d25.pdf) WebArena 用自托管站点、functional validator 和统一 API 保证重置与复现；[[59]](https://openreview.net/pdf?id=oKn9c6ytLx) AstaBench 强调统一工具、时间截断语料、agent-agnostic interface 与成本/工具混杂记录；[[60]](https://arxiv.org/abs/2510.21652) RedTeamCUA 则用 VM 操作系统与 Docker web 的混合环境、checkpoint 和受控 injection 构建状态型测试。[[61]](https://arxiv.org/abs/2505.21936) 因此两个月内应做 E1 全主线、E3 一个事件丰富 anchor、E2 一个产品的描述性 probe；三者同时搭满会显著降低论文完成概率。
+
+### 17.5 ICLR 中稿可能性：条件区间，不是假精确预测
+
+ICLR 官方数据的总体录用基率约为 27%–32%：2024 年 7,262 篇投稿、2,260 篇录用（31%）；[[62]](https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf) 2026 年 19,525 篇投稿、5,357 篇录用（27%），其 fact sheet 同时列出 2025 年 11,603/3,704（32%）。[[63]](https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf) 这些只是基率，不能直接当本稿概率。结合已接受的 PDR-Bench、ResearchRubrics、AstaBench、WebDevJudge、SWE-bench 与 WebArena，ICLR benchmark 审稿更看重清楚的新 estimand、困难且可信的数据/环境、强基线、测量有效性、可复现 artifact 和能改变结论的实验，而不是 taxonomy 数量。WebDevJudge 进一步显示静态评分难以覆盖交互式网页的功能等价与可行性，也支持本项目将 verifier、结构化 rubric 与人评校准分层。[[64]](https://arxiv.org/abs/2510.18560)
+
+据此给出主观情景区间：**以当前 proposal、没有 pilot 结果直接投稿约 5%–12%**；完成有效 3-family pilot、功效分析、真实用户主实验、可复现 utility verifier 和报告质量配平，但效应中等时约 **20%–35%**；若 DDE 与 wrong-user harm 在多个 family 上稳定、CFA→DDE 代理效度分析清楚，并公开完整复现资产，约 **35%–50%**。反之，若主要终点仍是主观 fit、persona 主要合成、没有 task-only/swapped 或真人样本不足，应低于 **10%–15%**。这些区间是审稿风险判断，不是校准概率。
+
+当前最现实的中心判断是：**v0.33 的 Phase A 指标比 v0.32 更不容易被大差值假象误导，但论文强度仍由 Phase B 决定；招募、功效和 utility validity 仍是最大风险。** PDR-Bench 已在 ICLR 2026 录用，意味着“个性化 Deep Research benchmark”本身不再新；DeepAlign 必须把 artifact → decision 的因果终点、真实用户、wrong-user 负对照和可复现 verifier 做成实证结果。若功效不足，优先减少 agent、family 类型和 stress 支线，不用更多 LLM judge 替代真人样本。
+
+### 17.6 两周开工清单
+
+1. 第 1–2 天：冻结 annotation codebook、consent/source record、fact ledger、node schema 和 E1 runner contract；不批量写 persona。
+2. 第 3–5 天：收集首批真实 seed 和参与者，选 3 个最容易共享 invariant task 的 family；独立标注 B 层元数据并仲裁。
+3. 第 6–8 天：完成两位真实用户或 user-anchored pairing，冻结 must-change/hold/not 和 acceptable alternatives；生成 structured/history 两个等价视图。
+4. 第 9–11 天：从 module 选择 direction nodes，实体化 12–22 条 leaf；制作 human matched/swapped/task-only reference，做目标用户与领域专家盲评。
+5. 第 12–14 天：E1 上用 2 条报告管线跑通 task-only/matched/swapped，并对真实用户做小规模盲化 decision trial；计算 DDE、WrongUserHarm、CFA 和顺序效应。
+6. 只有 3 个 family 中至少 2 个通过 task-shell 等价、报告质量配平和实施可行性门，才把 Phase A 扩到 16–20 个；只有通过 utility gate 的约 8–12 个进入 Phase B，否则优先修改构念和实验设计。
+
+机器可读开工约束见 `construction_annotation.protocol.yaml`、`rubric_node_registry.yaml` 与 `environment_build.protocol.yaml`。
+
+### 17.7 2026-08-12 PDR-compatible 反例最小实验
+
+本轮在正式扩表前冻结并运行了两个合成 task family：团队知识工具选型与系统综述方案。每个 family 有两位决策约束不同的用户，候选 artifact 包括 matched-A、matched-B、同一份 general-good，以及在保持总体质量的同时故意违反一个关键 decision node 的 over-personalized-A/B。评分沿用 PDR-Bench Personalization 的四维构念、task/persona 条件化 criterion、0–10 锚点和层级加权，但使用本地 Qwen3-8B，不是官方 GPT-5 judge 复现。
+
+方向性结果如下：
+
+- general-good 在 4/4 user–family 单元中均高于 6 分，4/4 与 matched 相差不超过 0.5 分，1/4 甚至高于 matched；
+- over-personalized 在 4/4 单元中仍高于 6 分，但只有 1/4 与 matched 相差不超过 0.5，因而**不支持**“over-personalized 普遍被当成 matched”的强说法；
+- 两个 family 的 matched 绝对下界 `A_min` 分别为 8.50 和 10.00，但 `CFA_min` 分别为 −1.50 和 0.00；0/2 family 通过双向 specificity；
+- F02-A 暴露 `mention ≠ adoption`：wrong-user 报告在比较表中提到“本地”，judge 就把它当成最终建议已经采用本地部署约束；F04-A 则出现 matched、general、wrong-user 与 over-personalized 全部 10 分的高分饱和。
+
+这次最小实验通过的是**设计可行性门**：同一组 artifact 确实可以让 absolute adaptation 与 counterfactual specificity 给出不同结论，并产生可检查的 judge failure mode。它没有通过论文证据门：单一小 judge、两个合成 family、正式评分开始后因资源缩减重复次数，都使结果只能作为筛查信号。完整协议、原始 32 次评分调用、偏离记录和结果位于 `pilot/pdr_false_positive_v0_1/`。
+
+下一步必须保持现有 artifacts 冻结，用经授权的官方 GPT-5 近似配置和两名不知道 artifact 类型的人类标注者复现；在此之前，不得写“PDR-Bench 已被证明误打高分”。准确的论文主张是：**PDR 的 absolute adaptation 构念有价值，但单独使用不能识别 counterfactual specificity；本 pilot 给出了扩大测量效度审计的直接证据。**
+
+### 17.8 v0.48 GPT-5 复现预注册与当前阻塞
+
+2026-08-12 在任何 GPT-5 评分产生前，我们进一步冻结了 4 个合成 family、8 位配对用户和 20 份报告；每份 general-good、matched-A/B、over-A/B 报告都进入 A/B 两套 criteria，评分重复三次。复现精确使用 PDR-Bench 官方中文 P-Score prompts：每个 `task × user` 条件先进行 5 次维度权重采样，再分别生成四维 criteria，最后按官方 0–10 锚点逐 criterion 评分并层级加权。官方 prompt、源材料和最终 artifact package 均记录 SHA-256；完整协议和可断点续跑脚本位于 `pilot/pdr_gpt5_replication_v0_1/`。
+
+用户提供的 key 属于 OpenRouter，因此准确配置是“经 OpenRouter 网关、固定 OpenAI provider 调用 `openai/gpt-5`”，不是 OpenAI 官方端点直连。预注册提交 `310d9cf` 推送后才执行 smoke。只读诊断显示 key 有效、非免费层、有正余额，且账户模型列表包含 canonical snapshot `openai/gpt-5-2025-08-07`；但无害 smoke 在选择 provider endpoint 前被 Terms of Service 403 拦截。移除 data-collection filter 和启用默认路由仍得到同一错误；路由元数据显示 region=`TPE`，OpenAI/Azure endpoints available 但均未 selected。故当前状态是 **blocked before inference**：没有 GPT-5 completion、criteria 或 P-Score，v0.47 的本地 Qwen 结果仍是唯一观测实验结果。
+
+这不是模型否定结果，也不能作为 PDR 的证据。我们不会使用代理、伪造账单地区或改用其他 provider 冒充 GPT-5。解除条件是获得受支持账户/地区可合法使用的 OpenRouter GPT-5 key，或获得官方 OpenAI API key；冻结文本、prompt 和阈值不变，从 smoke 断点继续。如果 2026-08-17 前仍无法解除，则 thesis freeze 必须基于“本地构念分离 + 官方复现未完成”的较弱证据，把 PDR false-positive 从主 claim 降为待验证假设。
+
+### 17.8a GPT-5 结果出来后，什么强度才足以进入 Introduction
+
+本轮 GPT-5 只生成 PDR-style rubric 并给冻结报告评分。它不会生成 task、persona 或报告，因此它是 evaluator stress test，不是端到端系统比较。预期结果分三层解释，不能跨层升级：
+
+1. **识别盲区信号：**general-good 对 A/B 都获得高分或接近 matched。这很可能出现，也适合用来直观解释“absolute fit 不等于 specificity”；但因为通用报告可能确实适合两位用户，它不是评分错误，不能单独支撑“PDR-Bench 有缺陷”。
+2. **受控 evaluator 假阳性：**两名不知道 artifact 类型的人类标注者一致确认 over-personalized 报告在预冻结 critical decision node 上失败，而 GPT-5 P-Score 在三次重复中仍稳定 `near_matched` 或发生 rank reversal。只有这一层可以在 Introduction 写成“PDR-style absolute evaluator can reward a decision-misaligned report”，并且必须同时报告完整分布、失败节点和反例未成立的方向。
+3. **论文级测量效度证据：**上述分歧至少跨两个不同 family 重复，并在真实或真人确认 family、多个被测系统上导致系统成功判定或排序发生变化；DeepAlign profile 对目标用户盲评/decision outcome 还有 PDR 分数之外的增量预测。只有这一层才足以支撑“现有 absolute evaluation 不足以评价 agent personalization”的主贡献。
+
+因此 Introduction 最稳妥的开启不是“我们证明 PDR-Bench 错了”，而是：**高 personalization score 不能告诉我们一个 agent 是否真的因用户而改变。** 若 GPT-5 + 人评产生受控假阳性，可紧接一个冻结案例作为 empirical hook；若只复现 general-good 高分，就把它作为构念反例，而不是 benchmark failure。若 over-personalized 被 GPT-5 稳定降分，应明确写成压力测试否决了强假阳性假设，并把论文贡献集中到 paired-user identification，而不是继续寻找更容易骗分的样本。
+
+### 17.9 ICLR 2027 的五天方向冻结门
+
+[ICLR 2027 官方 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines) 当前给出的 abstract deadline 是 **2026-09-18 AOE**，paper deadline 是 **2026-09-25 AOE**；官网此前显示过更早日期，因此本项目以后以每次构建时抓取的官方页面为准。以 2026-08-14 计算，距离摘要约 35 天、全文约 42 天。并非五天后系统就不能再改，但**最迟应在 2026-08-17 冻结论文 thesis、最近邻边界、主 estimand、family 原语和 go/no-go 证据**；此后只能改 rubric leaf、样本、实现细节和写法。若此后仍在 DeepAlign、ElicitAlign、Cognitive Gain 等标题级方向之间切换，就没有足够时间完成官方 judge、人评校准、family 扩展、统计、主图和匿名 artifact。
+
+五天冻结不是凭直觉拍板，而是完成四个硬检查：
+
+1. 用官方 judge + 两名人评复现现有反例，确认 general-good 的绝对高分与 specificity 失败不是小模型幻觉；
+2. 补到至少 3 个 family，且至少 2 个 family 的 matched 人工真值稳定、反例操纵成立；
+3. 冻结主结果为非补偿 profile，不再发明总分或用归一化掩盖绝对不合格；
+4. 用最近邻表明确承认 PDR-Bench、MyScholarQA、G-STEER 等已解决什么，并写出只有 DeepAlign 数据能回答的系统排序/失败问题。
+
+若第 1–2 项失败，应在 8 月 17 日前停止以“PDR false positive”为核心 claim，转成更窄的 personalization judge validity paper，或彻底换题；不要继续用更多合成样本拖延结论。
+
+### 17.10 从 2026-08-14 到投稿的逐周执行表
+
+| 时间 | 本周唯一主目标 | 必须完成的可检查交付物 | 周末停止/收缩条件 |
+|---|---|---|---|
+| **W0：8/14–8/16** | 冻结论文问题和可运行资源 | PDR 50-task/25-persona/250-pair 导入；501 候选用户对；GPT-5 smoke；选定 3 个 vertical-slice family；两名人评排期 | 无官方 key 时不等待：保留 blocked 记录并先做人评/数据；若 paired-user 构念无法说明，8/17 换题 |
+| **W1：8/17–8/23** | 把 3 个 family 做完整 | 每个 family 的 evidence pack、A/B ledger、四类 contract、rubric leaves、matched/swapped/general/over reference；盲化人评表 | 至少 2/3 family 的人类 matched > swapped 且 critical node 可独立判断；否则重写或淘汰 family |
+| **W2：8/24–8/30** | 完成端到端最小系统实验 | 3 family × 2 users 的 P0/P1/P2；P4 只跑 1 个 stateful anchor；至少两条可比 agent 管线；GPT-5/PDR-style 与 DeepAlign 双评分 | 若 DeepAlign 不造成成功判定变化，也不更贴近人评，降级为 judge-validity 短文；不继续盲目扩数 |
+| **W3：8/31–9/6** | 扩到核心样本并冻结数据 | 冻结 16–20 个 Phase A family（约 8 个 PDR-derived、5 个学术/知识工作、3–5 个数据/代码/可访问交付物）；从中冻结 8–12 个 Phase B family；生成全部 P0/P1/P2，P4 仅在其中 2–4 个 family 增加 user-state update | family 数不足时减少系统和 P4，不用同一 family 的更多 seed 冒充样本量 |
+| **W4：9/7–9/13** | 完成评分、统计和论文骨架 | 两名盲化人评校准子集；family-blocked permutation、family bootstrap；主表、失败地图、PDR 重分类表；9 页论文初稿 | 9/13 后不增加新主指标、新范式或新领域；只允许补预注册缺口 |
+| **W5：9/14–9/18** | 冻结结果并提交真实摘要 | 结果锁、主图、Table 1/2、匿名代码与数据卡、伦理/AI-use/reproducibility statements、9 页主文；**9/18 AOE 提交摘要** | 摘要必须反映真实完成结果；禁止 placeholder，缺结果就收窄 claim |
+| **W6：9/19–9/25** | 终稿与复现包 | 独立复跑、引用审计、泄漏/匿名检查、appendix、supplement、最终 PDF；**9/25 AOE 投稿** | 不再启动新实验，除非修复会推翻主结论的错误 |
+
+资源控制上，不能把 50 tasks × 5 users × 4 paradigms × 多系统全部跑成笛卡尔积。主统计单位是 task family：资源池全量保留，Phase A 只选 16–20 个 family、每个两位用户，Phase B 再收缩到约 8–12 个；P0/P1/P2 为核心，P4 只做少量 stateful anchors。若导师提供官方 OpenAI key，runner 已支持固定 `gpt-5-2025-08-07` 从 smoke 续跑；建议先设置不超过 100 美元的项目预算上限，smoke 成功后再放行 criteria 与三重复评分。
+
+## 参考文献
+
+[1] OpenCompass Team. *OpenCompass: A Universal Evaluation Platform for Large Language Models*. arXiv:2605.19276, 2026. https://arxiv.org/abs/2605.19276  
+[2] ModelScope. *EvalScope Introduction*. https://evalscope.readthedocs.io/en/refact_readme/get_started/introduction.html  
+[3] Zhang et al. *Agent-SafetyBench: Evaluating the Safety of LLM Agents*. arXiv:2412.14470, 2024/2025. https://arxiv.org/abs/2412.14470  
+[4] *Towards Personalized Deep Research: Benchmarks and Evaluations*. arXiv:2509.25106; ICLR 2026. https://arxiv.org/abs/2509.25106  
+[5] Mind Lab. *Macaron-V1-Preview: LivingBench*. https://macaron.im/mindlab/research/macaron-v1-preview  
+[6] Du et al. *DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents*. arXiv:2506.11763. https://arxiv.org/abs/2506.11763  
+[7] Gou et al. *Mind2Web 2: Evaluating Agentic Search with Agent-as-a-Judge*. arXiv:2506.21506. https://arxiv.org/abs/2506.21506  
+[8] Chen et al. *BrowseComp-Plus: A More Fair and Transparent Evaluation Benchmark of Deep-Research Agent*. arXiv:2508.06600. https://arxiv.org/abs/2508.06600  
+[9] Starace et al. *PaperBench: Evaluating AI’s Ability to Replicate AI Research*. OpenAI, 2025. https://openai.com/index/paperbench/  
+[10] Wang et al. *LiveResearchBench: A Live Benchmark for User-Centric Deep Research in the Wild*. https://livedeepresearch.github.io/  
+[11] Coelho et al. *DeepResearchGym: A Free, Transparent, and Reproducible Evaluation Sandbox for Deep Research*. arXiv:2505.19253. https://arxiv.org/abs/2505.19253  
+[12] Abaskohi et al. *DRBench: A Realistic Benchmark for Enterprise Deep Research*. arXiv:2510.00172; ICLR 2026. https://arxiv.org/abs/2510.00172  
+[13] White et al. *LiveBench: A Challenging, Contamination-Free LLM Benchmark*. ICLR 2025. https://livebench.ai/  
+[14] Zhu et al. *JudgeLM: Fine-tuned Large Language Models are Scalable Judges*. arXiv:2310.17631, 2023. https://arxiv.org/abs/2310.17631  
+[15] Kim et al. *Prometheus 2: An Open Source Language Model Specialized in Evaluating Other Language Models*. arXiv:2405.01535, 2024. https://arxiv.org/abs/2405.01535  
+[16] Huang et al. *An Empirical Study of LLM-as-a-Judge for LLM Evaluation: Fine-tuned Judge Model is not a General Substitute for GPT-4*. arXiv:2403.02839, 2024. https://arxiv.org/abs/2403.02839  
+[17] Java et al. *Characterizing Deep Research: A Benchmark and Formal Definition*. arXiv:2508.04183; ICLR 2026. https://arxiv.org/abs/2508.04183  
+[18] Sharma et al. *ResearchRubrics: A Benchmark of Prompts and Rubrics for Evaluating Deep Research Agents*. arXiv:2511.07685; ICLR 2026. https://arxiv.org/abs/2511.07685  
+[19] Yoran et al. *AssistantBench: Can Web Agents Solve Realistic and Time-Consuming Tasks?* arXiv:2407.15711, 2024. https://arxiv.org/abs/2407.15711  
+[20] Rosset et al. *Researchy Questions: A Dataset of Multi-Perspective, Decompositional Questions for LLM Web Agents*. arXiv:2402.17896, 2024. https://arxiv.org/abs/2402.17896  
+[21] Xu et al. *ResearcherBench: Evaluating Deep AI Research Systems on the Frontiers of Scientific Inquiry*. arXiv:2507.16280, 2025. https://arxiv.org/abs/2507.16280  
+[22] Liang et al. *Holistic Evaluation of Language Models*. TMLR, 2023. https://arxiv.org/abs/2211.09110  
+[23] Ribeiro et al. *Beyond Accuracy: Behavioral Testing of NLP Models with CheckList*. ACL, 2020. https://aclanthology.org/2020.acl-main.442/  
+[24] Reuel et al. *BetterBench: Assessing AI Benchmarks, Uncovering Issues, and Establishing Best Practices*. arXiv:2411.12990, 2024. https://arxiv.org/abs/2411.12990  
+[25] Sokol et al. *BenchmarkCards: Standardized Documentation for Large Language Model Benchmarks*. NeurIPS Datasets and Benchmarks, 2025. https://papers.neurips.cc/paper_files/paper/2025/hash/76175f4355e2f67cf91be468c8860070-Abstract-Datasets_and_Benchmarks_Track.html  
+[26] Zeng et al. *Setoka: A Benchmark for Hierarchical User Understanding in Personalized Agents over Heterogeneous Data*. arXiv:2607.27056, 2026. https://arxiv.org/abs/2607.27056
+[27] Qian et al. *Toward User-Conditioned Evaluation of Personal LLM Agents under Temporal Interventions*. arXiv:2607.21635, 2026. https://arxiv.org/abs/2607.21635
+[28] Yang et al. *PersonaTrail: Benchmarking Personalized Web Agents through Browsing Trails*. arXiv:2607.20482, 2026. https://arxiv.org/abs/2607.20482
+[29] Todisco et al. *TARS: A Theory-of-Mind Agent for Personalized In-IDE Code Comprehension*. arXiv:2607.15948, 2026. https://arxiv.org/abs/2607.15948
+[30] Yang. *Self-Aware Recursively Self-Improving Agents for Personal Singularity*. arXiv:2607.12254, 2026. https://arxiv.org/abs/2607.12254
+[31] Mao et al. *Agents Don't Just Agree, They Remember: Benchmarking Persistent Sycophancy in Stateful Personal Agents*. arXiv:2607.10526, 2026. https://arxiv.org/abs/2607.10526
+[32] Yang et al. *APeB: Benchmarking Personalization Ability of Large Language Model Agents*. arXiv:2607.03162, 2026. https://arxiv.org/abs/2607.03162
+[33] Salemi et al. *LaMP: When Large Language Models Meet Personalization*. ACL, 2024. https://aclanthology.org/2024.acl-long.399/
+[34] Singh et al. *Personal Large Language Model Agents: A Case Study on Tailored Travel Planning*. EMNLP Industry Track, 2024. https://aclanthology.org/2024.emnlp-industry.37/
+[35] Zhao et al. *PersonaLens: A Benchmark for Personalization Evaluation in Conversational AI Assistants*. Findings of ACL, 2025. https://aclanthology.org/2025.findings-acl.927/
+[36] Jiang et al. *Know Me, Respond to Me: Benchmarking LLMs for Dynamic User Profiling and Personalized Responses at Scale*. arXiv:2504.14225, 2025. https://arxiv.org/abs/2504.14225
+[37] Hao et al. *Evaluating Personalized Tool-Augmented LLMs from the Perspectives of Personalization and Proactivity*. ACL, 2025. https://aclanthology.org/2025.acl-long.1064/
+[38] Cheng et al. *ToolSpectrum: Towards Personalized Tool Utilization for Large Language Models*. arXiv:2505.13176, 2025. https://arxiv.org/abs/2505.13176
+[39] Zhang et al. *PRIME: Large Language Model Personalization with Cognitive Dual-Memory and Personalized Thought Process*. EMNLP, 2025. https://aclanthology.org/2025.emnlp-main.1711/
+[40] Li et al. *Personalized Deep Research: A User-Centric Framework, Dataset, and Hybrid Evaluation for Knowledge Discovery*. arXiv:2605.10530, 2026. https://arxiv.org/abs/2605.10530
+[41] Balepur et al. *Language Models Don't Know What You Want: Evaluating Personalization in Deep Research Needs Real Users*. ACL, 2026. https://aclanthology.org/2026.acl-long.723/
+[42] Garbacea et al. *Personalized Benchmarking: Evaluating LLMs by Individual Preferences*. Findings of ACL, 2026. https://aclanthology.org/2026.findings-acl.31/
+[43] Feng et al. *How Does Personalized Memory Shape LLM Behavior? Benchmarking Rational Preference Utilization in Personalized Assistants*. arXiv:2601.16621, 2026. https://arxiv.org/abs/2601.16621
+[44] Liang et al. *Learning Personalized Agents from Human Feedback*. arXiv:2602.16173, 2026. https://arxiv.org/abs/2602.16173
+[45] In et al. *Personalize-then-Store: Benchmarking and Learning Personalized Memory for Long-horizon Agents*. arXiv:2605.25535, 2026. https://arxiv.org/abs/2605.25535
+[46] Uddin et al. *From Recall to Forgetting: Benchmarking Long-Term Memory for Personalized Agents*. Findings of ACL, 2026. https://aclanthology.org/2026.findings-acl.1337/
+[47] Hu et al. *CloneMem: Benchmarking Long-Term Memory for AI Clones*. ACL, 2026. https://aclanthology.org/2026.acl-long.1549/
+[48] Shen et al. *Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents*. ACL, 2026. https://aclanthology.org/2026.acl-long.370/
+[49] Chen et al. *Towards Preference Following in Tool Calling Language Agents*. Findings of ACL, 2026. https://aclanthology.org/2026.findings-acl.1676/
+[50] Lyu et al. *PersonalAlign: Hierarchical Implicit Intent Alignment for Personalized GUI Agent with Long-Term User-Centric Records*. ACL, 2026. https://aclanthology.org/2026.acl-long.1669/
+[51] Wang et al. *OPeRA: A Dataset of Observation, Persona, Rationale, and Action for Evaluating LLMs on Human Online Shopping Behavior Simulation*. ACL, 2026. https://aclanthology.org/2026.acl-long.2033/
+[52] Guo et al. *When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents*. ACL, 2026. https://aclanthology.org/2026.acl-long.1260/
+[53] Weeber et al. *One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization*. ACL, 2026. https://aclanthology.org/2026.acl-long.2079/
+[54] Qiu et al. *Preference-Aware Rubric Learning for Personalized Evaluation*. arXiv:2605.31545, 2026. https://arxiv.org/abs/2605.31545
+[55] Zhou et al. *AgentBench: Evaluating LLMs as Agents*. ICLR, 2024. https://openreview.net/pdf?id=zAdUB0aCTQ
+[57] *FingerTip 20K: A Dataset for Personalized Mobile Agents*. ICLR, 2026. https://arxiv.org/abs/2507.21071
+[58] Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR, 2024. https://openreview.net/pdf/c2a76eb44300a738cbd7cb95f5bc04df621f4d25.pdf
+[59] Zhou et al. *WebArena: A Realistic Web Environment for Building Autonomous Agents*. ICLR, 2024. https://openreview.net/pdf?id=oKn9c6ytLx
+[60] *AstaBench: Rigorous Benchmarking of AI Agents with a Scientific Research Suite*. ICLR 2026 Oral. https://arxiv.org/abs/2510.21652
+[61] *RedTeamCUA: Realistic Adversarial Testing of Computer-Use Agents*. ICLR 2026 Oral. https://arxiv.org/abs/2505.21936
+[62] ICLR. *ICLR 2024 Fact Sheet*. https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf
+[63] ICLR. *ICLR 2026 Fact Sheet*. https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf
+[64] *WebDevJudge: Evaluating Website-Generating Agents*. ICLR 2026 Oral. https://arxiv.org/abs/2510.18560
+[65] Suri et al. *Structured Uncertainty guided Clarification for LLM Agents*. Findings of ACL, 2026. https://aclanthology.org/2026.findings-acl.2028/
+[66] *HiL-Bench: Benchmarking Human-in-the-Loop Decision Making for LLM Agents*. arXiv:2604.09408, 2026. https://arxiv.org/abs/2604.09408
+[67] *UserBench: An Interactive Gym Environment for User-Centric Agents*. OpenReview, 2026. https://openreview.net/forum?id=iJS7nvlGPd
+[68] *SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent*. arXiv:2607.05363, 2026. https://arxiv.org/abs/2607.05363
+[69] *HAS-Bench: Benchmarking Human-Agent Systems*. arXiv:2607.04329, 2026. https://arxiv.org/abs/2607.04329
+[70] *Intent-Governed Tool Authorization for LLM Agents*. arXiv:2606.22916, 2026. https://arxiv.org/abs/2606.22916
+[71] *SentinelAgent: Benchmarking Safe Delegation in Multi-Agent Systems*. arXiv:2604.02767, 2026. https://arxiv.org/abs/2604.02767
+[72] *MisKnow-Agent: Benchmarking Deep Research Agents under Misleading Knowledge*. arXiv:2607.20891, 2026. https://arxiv.org/abs/2607.20891
+[73] *DRNOISE: Benchmarking Deep Research under Conflicting Evidence*. arXiv:2607.17291, 2026. https://arxiv.org/abs/2607.17291
+[74] Huang et al. *DeepFact: Co-Evolving Benchmarks and Agents for Deep Research Factuality*. ACL, 2026. https://aclanthology.org/2026.acl-long.1586/
+[75] Chen et al. *Beyond Single-shot Writing: Deep Research Agents are Unreliable at Multi-turn Report Revision*. ACL, 2026. https://aclanthology.org/2026.acl-long.609/
+[76] Seshadri et al. *Lost in Simulation: LLM-Simulated Users are Unreliable Proxies for Human Users in Agentic Evaluations*. arXiv:2601.17087, 2026. https://arxiv.org/abs/2601.17087
+[77] Bosse et al. *Deep Research Bench: Evaluating AI Web Research Agents*. arXiv:2506.06287, 2025. https://arxiv.org/abs/2506.06287
+[78] Asthana et al. *Evaluating Deep Research Agents on Expert Consulting Work: A Benchmark with Verifiers, Rubrics, and Cognitive Traps*. arXiv:2605.17554, 2026. https://arxiv.org/abs/2605.17554
+[79] Li et al. *DeepResearch Bench II: Diagnosing Deep Research Agents via Rubrics from Expert Report*. arXiv:2601.08536, 2026. https://arxiv.org/abs/2601.08536
+[80] Dong et al. *Can LLM be a Personalized Judge?* Findings of EMNLP, 2024. https://aclanthology.org/2024.findings-emnlp.592/
+[81] Tan et al. *JudgeBench: A Benchmark for Evaluating LLM-based Judges*. arXiv:2410.12784; ICLR 2025. https://arxiv.org/abs/2410.12784
+[82] Bavaresco et al. *LLMs instead of Human Judges? A Large Scale Empirical Study across 20 NLP Evaluation Tasks*. arXiv:2406.18403, 2024. https://arxiv.org/abs/2406.18403
+[83] Shi et al. *Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge*. arXiv:2406.07791, 2024. https://arxiv.org/abs/2406.07791
+[84] Peng et al. *Can LLM-as-a-Judge Reliably Verify Rubrics in Agentic Scenarios?* arXiv:2606.29920, 2026. https://arxiv.org/abs/2606.29920
+[85] Chen et al. *Two-Level Meta-Rubrics for Evaluating Open-Ended Generation: GAMUT, a Benchmark for Factual Completeness*. arXiv:2607.19322, 2026. https://arxiv.org/abs/2607.19322
+[86] Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS, 2023. https://arxiv.org/abs/2306.05685
+[87] Verga et al. *Replacing Judges with Juries: Evaluating LLM Generations with a Panel of Diverse Models*. arXiv:2404.18796, 2024. https://arxiv.org/abs/2404.18796
+[88] Credamo. *Credamo 见数官网：智能调研、随机实验、多期追踪与配对调查*. https://www.credamo.com/
+[89] 科技部等十部门. *科技伦理审查办法（试行）*. 国科发监〔2023〕167号，2023. https://www.gov.cn/zhengce/zhengceku/202310/content_6908045.htm
+
+---
+
+**需要导师优先拍板的五个问题：**（1）是否把 DDE 与 wrong-user harm 锁定为唯一核心贡献，PF/CFA 降为 Phase A；（2）是否同意用 3-family pilot 后的功效模拟决定 8–12 family 与真人样本量；（3）是否接受减少 agent/taxonomy 广度以换取真人统计功效；（4）是否采用 Credamo Wave A 选 3–5 个候选、Wave B 只深采 1–2 个、Wave C 本人确认的三轮方案；（5）伦理审查、平台数据处理、招募和真实决策材料能否在时间窗内启动。
