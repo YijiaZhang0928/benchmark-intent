@@ -2,11 +2,29 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-08-24
-当前版本：v0.60（Ask / Infer 主线与 preference-divergence calibration）
+最后更新：2026-09-03
+当前版本：v0.61（PDR 50→15 personalization-diagnostic task slice）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAA. 2026-09-03：PDR 50 题筛到 15 题的诊断性切片
+
+接受用户提出的 sampling principle：研究问题已经不是“Deep Research 整体能力如何”，因此不能随机抽 15/20 题，也不能为了 domain balance 塞入弱个性化任务。PDR 上游对 50 题的 complexity、clarity 和 personalization alignment 审核是必要基础，但不等价于本项目关心的 personalization diagnostic value。v0.61 在任何 AskInfer agent 输出前对官方 50 题逐题增加 `Personalization leverage=0/1/2`：0 表示用户变化不应改变实质决定，1 表示主要改变强调/排序/深浅/呈现，2 表示改变内容或证据选择、推荐集合、约束、阈值或结论。
+
+Primary task 还必须同时通过：非表面改变；授权 history 可以合理留下 task-relevant evidence；存在 2–4 个可验证 preference dimensions；任务确需多步检索、比较与综合；主要差异不是性别、年龄、家乡等人口 token；官方候选 profile 与题面没有高风险矛盾。年龄、性别、职业标签本身都不能计作 preference node；儿童发展状态必须由行为或照护证据支持，而不能仅从年龄推出。Finance、Health 和 Real Estate 项还需领域专家安全/可行性复核；固定的“10% 收益”等题面目标是需要质疑的约束，不是必须顺从的用户偏好。37/50 被初筛为 leverage=2，说明单一 leverage 标签仍不足以排序；tie-break 进一步使用官方 5-profile 的非表面 contrast、history 可取证性、profile 冲突/刻板风险、decision-node 可验证性、专家成本和与已选题的构念冗余。Selection 明确不使用 PDR 旧分数、当前 agent 输出或预期 rank reversal，也没有 domain quota。
+
+当前 `provisional_author_screen` 的 15 个 PDR task ID 为：`1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49`。分布为 Education 3、Career 3、Health 1、Travel 1、Finance 2、Creative 1、Shopping 2、Real Estate 1、Parenting 1；这是筛选结果，不是配额。入选题分别提供研究方向/准备度/资金/地域，职业目标/时间/ROI/网络，学科/方法/期刊/修订经验，技能/岗位/证书/实践，产品/作品集/公司，职业/国家/家庭/语言，体能/伤病/器械/作息，目的地/预算/节奏/风险，风险/损失能力/经验/流动性，人生阶段/资产/家庭/照护，赛道/受众/平台/变现，宠物种类/数量/行为/照护，活动/地形/经验/负重，健康/亲属距离/资产/气候照护，以及儿童阶段/沟通问题/陪伴/活动偏好等候选节点。
+
+公开 PDR 数据不是严格每题 5 人：task 8 有 4 人，task 10 有 6 人。15 个入选题包含 task 10，因此完整官方 full-persona bridge pool 是 76 个 task–user pairs，不是 75。这个数量只用于 exact official bridge；Ask/Infer matched/swapped 不默认五人都是 gold。每题需两名不知道 agent 输出的人类复标 task gates，A/B 用户对另做 profile-pair audit，再冻结 2–4 个 task-conditioned nodes、自然 history evidence、`δ` 与 rubric。PDR annotator-simulated memory/chat 仍只作 bridge/stress，不称 natural history。任何替换必须发生在 agent 运行前，以公开 qualification failure 和 replacement log 为依据。
+
+对 task-level 构念的反例审计也被冻结：marathon task 14 虽高 leverage，但题面写“无跑步经验”，部分官方 profile 已有跑步/长距离运动经历；diabetes task 13 的疾病前提也没有在候选 profile 中稳定成立；renovation 36/37 需要先取得 floor plan，容易把 preference acquisition 与 artifact acquisition 混在一起；AI compliance 42 的法律要求基本不应随 persona 变化，适合作为 zero-`δ` 对照。这些题不因 domain 配额被强行收入。
+
+规模决定相应更新：novelty-kill pilot 仍是 6 个基础任务，其中 2 个 DR 从 15-task slice 进入 I0–I3；条件性主实验的 Deep Research overlap pool 是通过双人 qualification 的 15 题，Coding/Data 暂各 8 题，上限为 31 个独立基础任务。最终是否保留全部 15 题、agent/repeat 和 Coding/Data 数量由 family-level pilot 方差、人工资格通过率、SESOI、成本与多重终点方案决定；禁止按 agent 输出删题。
+
+机器真值位于 `data/pdr_diagnostic_slice_v0_61/`：`screening_50.csv` 保存逐题标注与理由，`selection_protocol.yaml` 保存硬门和边界，`selected_15.jsonl` 保存官方 task 原文与候选用户，`selected_15.md` 为人类入口，`build_and_validate.rb` 重建并校验 50→15、ID、hard gates、76 pair 和非 domain quota。
+
+当前开放问题：（1）两名独立人类复标后 15 题保留率；（2）每题官方 5/6 profiles 中能否找到自然、双向、最小差异的 A/B pair；（3）Finance/Health/Real Estate 的领域专家成本；（4）15 个 DR family 加 16 个 Coding/Data family 是否在截止期内可运行；（5）若 qualification 淘汰题目，reserve replacement 的预输出审计与记录流程。
 
 ## 0AA. 2026-08-24：Ask or Infer? 主线冻结
 

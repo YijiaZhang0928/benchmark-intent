@@ -1,6 +1,6 @@
 # Ask or Infer?｜导师汇报精简版
 
-版本：v0.60 · 2026 年 8 月 24 日
+版本：v0.61 · 2026 年 9 月 3 日
 
 ## 0. 一句话
 
@@ -98,6 +98,12 @@ CFA 只测 final artifact specificity。确认性成功还要同时过：absolut
 
 不可以：把完整 persona 暴露给 Ask 主条件；把 simulated context 当真实 history；不经 task-conditioned human freeze 直接当新 gold。
 
+50 题不随机抽、不按 domain 配额。先标 `Personalization leverage=0/1/2`，再用非表面改变、history 可取证、2–4 dimensions、DR 深度、人口投射与 profile 冲突做硬门。Provisional 15 个官方 ID：
+
+`1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49`。
+
+对应 9 个 domain、76 个官方 bridge pairs；不均匀分布是 screening output。两名人类须盲化复标，A/B pair 另审，禁止依据 agent 结果换题。年龄/性别/职业标签不计 preference node；Finance/Health/Real Estate 需专家安全与可行性复核。
+
 ## 10. 排名反转怎样证明
 
 同一 DR tasks、agent version、工具、预算和时间窗下，报告：
@@ -115,7 +121,7 @@ Novelty-kill pilot：6 个基础任务（每域 2）× 3 个 `δ` strata × 4 ag
 
 Pilot 只验证：`δ` 是否可复现、问题能否映射 nodes、Ask/Infer/final chain 是否跑通、已有 G-STEER/IDRBench 指标是否已解释全部现象。[[3]](https://arxiv.org/abs/2608.05876)[[4]](https://arxiv.org/abs/2601.06676)
 
-通过后才扩到 24 个独立基础任务。样本量由 family-level pilot 方差决定；seed 不能替代 family。
+通过后，DR overlap 使用通过人工 qualification 的 15 个 PDR tasks；Coding/Data 暂各 8 个，上限 31 个基础任务。最终样本量由 family-level pilot 方差、资格通过率与成本决定；seed 不能替代 family，也不能看 agent 输出删题。
 
 ## 12. 五个 Go / No-Go
 

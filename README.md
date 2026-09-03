@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.60
+## 当前方向：AskInfer-Bench v0.61
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -14,6 +14,8 @@
 
 PDR-Bench 在主要设定中向 agent 提供 task + full structured persona，因此属于 full-context personalization / preference projection，而不是 implicit elicitation。PDR tasks/personas 可作为共享 Deep Research bridge；完整 persona 不进入 Ask 主条件，simulated context 不作为真实 natural history。PDR-style、Ask 与 Infer 的 agent 排名是否反转是待检验假设，不是已有结果。
 
+PDR 的 50 个官方 task 不随机抽样，也不按 domain 均匀配额。v0.61 已逐题冻结 `Personalization leverage=0/1/2`、非表面内容改变、history 可取证性、2–4 个 preference dimensions、DR 深度、人口投射和 task–profile 冲突风险，得到 provisional 15-task slice：`1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49`。它跨 9 个 domain、对应 76 个公开 bridge pairs；15 题和 A/B 用户对仍分别需要双人盲化 qualification，不能根据 agent 输出换题。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -22,8 +24,9 @@ PDR-Bench 在主要设定中向 agent 提供 task + full structured persona，�
 - [`proposal/AskInfer-Bench_汇报精简版.md`](proposal/AskInfer-Bench_汇报精简版.md)：15–20 分钟导师汇报版。
 - [`benchmark_schema/ask_infer_case.schema.yaml`](benchmark_schema/ask_infer_case.schema.yaml)：同任务用户差异、history observability、human validation 和实验条件 schema。
 - [`benchmark_schema/ask_infer_evaluation.protocol.yaml`](benchmark_schema/ask_infer_evaluation.protocol.yaml)：Ask/Infer 过程与最终评分、排名稳定性、统计和 Go/No-Go 协议。
-- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.60 源稿、交付物、归档和复用基础设施索引。
-- [`proposal_assets/AskInfer-Bench_评测框架_v0.60.png`](proposal_assets/AskInfer-Bench_评测框架_v0.60.png)：3200×1800 主图；同名 SVG 可编辑。
+- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.61 源稿、PDR task slice、交付物、归档和复用基础设施索引。
+- [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
+- [`proposal_assets/AskInfer-Bench_评测框架_v0.61.png`](proposal_assets/AskInfer-Bench_评测框架_v0.61.png)：3200×1800 主图；同名 SVG 可编辑。
 - [`deliverables/AskInfer-Bench_正式研究Proposal.pdf`](deliverables/AskInfer-Bench_正式研究Proposal.pdf)：正式研究 Proposal；同名 DOCX 可编辑。
 - [`deliverables/AskInfer-Bench_正式Proposal精简版.pdf`](deliverables/AskInfer-Bench_正式Proposal精简版.pdf)：正式精简版；同名 DOCX 可编辑。
 - [`deliverables/AskInfer-Bench_完整人话版.pdf`](deliverables/AskInfer-Bench_完整人话版.pdf)：完整人话版；同名 DOCX 可编辑。
@@ -38,7 +41,7 @@ DeepAlign-Bench v0.59 在主线切换前已完整保存：
 - DOCX/PDF/HTML/网页资源：[`deliverables/archive/DeepAlign-Bench-v0.59/`](deliverables/archive/DeepAlign-Bench-v0.59/)
 - 快照 commit：`159d8ce`
 
-v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、D-JQS 和 matched/swapped 资产继续作为 v0.60 的可复用基础设施；它们不是 Ask/Infer 已完成的实证结果。
+v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、D-JQS 和 matched/swapped 资产继续作为 v0.61 的可复用基础设施；它们不是 Ask/Infer 已完成的实证结果。
 
 ## 当前最强风险
 
@@ -49,7 +52,7 @@ v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual D
 - 用户模拟器与真人排序不一致；
 - PDR/Ask/Infer 排名差来自版本、预算、provider 或 judge，而不是能力表面。
 
-Novelty-kill pilot 为 6 个独立基础任务 × 3 个 `δ` strata × 4 个 agent × 3 个 Ask 条件，约 216 episode；其中 2 个 DR task 追加 Infer/PDR bridge。该规模只验证操纵与测量，不发布正式 leaderboard。
+Novelty-kill pilot 为 6 个独立基础任务 × 3 个 `δ` strata × 4 个 agent × 3 个 Ask 条件，约 216 episode；其中 2 个 DR task 从 15-task PDR slice 中进入 Infer/PDR bridge。该规模只验证操纵与测量，不发布正式 leaderboard。条件性主实验以上述 15 个 surviving DR tasks 为 overlap pool，Coding/Data 暂各按 8 个任务规划；最终规模由 pilot 方差、人工资格通过率、成本和功效冻结。
 
 ## 研究协作约定
 

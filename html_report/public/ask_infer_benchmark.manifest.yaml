@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.60"
-updated: "2026-08-24"
+manifest_version: "0.61"
+updated: "2026-09-03"
 status: working_hypothesis_frozen
 
 paper:
@@ -19,8 +19,12 @@ active_sources:
   advisor_brief: proposal/AskInfer-Bench_汇报精简版.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
-  figure_svg: proposal_assets/AskInfer-Bench_评测框架_v0.60.svg
-  figure_png: proposal_assets/AskInfer-Bench_评测框架_v0.60.png
+  pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
+  pdr_selection_protocol: data/pdr_diagnostic_slice_v0_61/selection_protocol.yaml
+  pdr_selected_tasks: data/pdr_diagnostic_slice_v0_61/selected_15.jsonl
+  pdr_selected_tasks_readable: data/pdr_diagnostic_slice_v0_61/selected_15.md
+  figure_svg: proposal_assets/AskInfer-Bench_评测框架_v0.61.svg
+  figure_png: proposal_assets/AskInfer-Bench_评测框架_v0.61.png
 
 active_deliverables:
   formal_docx: deliverables/AskInfer-Bench_正式研究Proposal.docx
@@ -32,8 +36,8 @@ active_deliverables:
   advisor_docx: deliverables/AskInfer-Bench_汇报精简版.docx
   advisor_pdf: deliverables/AskInfer-Bench_汇报精简版.pdf
   standalone_html: deliverables/AskInfer-Bench_HTML汇报版.html
-  figure_svg: deliverables/AskInfer-Bench_评测框架_v0.60.svg
-  figure_png: deliverables/AskInfer-Bench_评测框架_v0.60.png
+  figure_svg: deliverables/AskInfer-Bench_评测框架_v0.61.svg
+  figure_png: deliverables/AskInfer-Bench_评测框架_v0.61.png
 
 scope:
   ask_domains:
@@ -47,6 +51,13 @@ scope:
     - low
     - high
   independent_unit: base_task
+  pdr_overlap:
+    source_tasks: 50
+    selected_tasks: 15
+    selected_task_ids: [1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49]
+    published_bridge_pairs: 76
+    selection_status: provisional_author_screen
+    domain_quota_used: false
 
 reused_infrastructure:
   - interaction_env
@@ -63,3 +74,5 @@ claim_boundaries:
   - pdr_simulated_context_is_not_natural_history
   - cfa_is_final_artifact_specificity_not_ask_calibration
   - pilot_is_not_confirmatory_main_experiment
+  - pdr_task_selection_is_pre_output_and_not_leaderboard_conditioned
+  - selected_15_requires_two_human_reviewers_and_separate_pair_audit

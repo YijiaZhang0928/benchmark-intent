@@ -1,0 +1,89 @@
+schema_version: "0.61"
+artifact: pdr_personalization_diagnostic_task_screen
+date_frozen: "2026-09-03"
+upstream:
+  dataset: PDR-Bench
+  repository: https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench
+  commit: 5b43f9f188c747d154fc7666812ab93b7ca6a3c2
+  official_paper: https://openreview.net/pdf?id=729472b994acb64d98b0a07e51cd0af20227f36e
+  task_count: 50
+  profile_count: 25
+  published_pair_count: 250
+  task_profile_pairing_note: >-
+    The public release contains 250 pairs, with task 8 linked to four users and
+    task 10 linked to six users rather than exactly five each. The anomaly is
+    preserved and does not change task-level screening.
+
+estimand:
+  question: >-
+    Which PDR tasks have high diagnostic value for whether an agent should
+    acquire, ground, and calibrate task-specific user information?
+  excludes:
+    - overall Deep Research capability coverage
+    - domain-balanced sampling for its own sake
+    - post-output selection based on agent performance
+    - persona-token reproduction
+
+personalization_leverage:
+  type: ordinal
+  scale:
+    0: user differences should not change substantive deliverable decisions
+    1: user differences mainly change emphasis, ordering, depth, or presentation
+    2: user differences change content selection, recommendation set, constraints, evidence scope, or conclusion
+  freeze_timing: before any AskInfer agent output is generated
+
+hard_gates_for_primary:
+  personalization_leverage: 2
+  non_surface_change: pass
+  history_groundability: pass
+  preference_dimension_count: "2..4"
+  dr_requirement: pass
+  demographic_token_risk: "not high"
+  profile_contradiction_risk: "not high"
+
+high_stakes_and_demographic_guards:
+  - chronological_age_sex_hometown_and_occupation_labels_do_not_count_as_preference_nodes
+  - a_childs_developmental_state_requires_behavioral_or_caregiver_evidence_and_cannot_be_inferred_from_age_alone
+  - finance_health_and_real_estate_recommendations_must_pass_domain_expert_safety_and_feasibility_review
+  - fixed_task_goals_such_as_ten_percent_return_are_constraints_to_challenge_not_user_preferences_to_obey
+  - each_final_A_B_pair_must_change_at_least_one_non_demographic_research_decision_in_both_directions
+
+tie_breakers_if_more_than_15_pass:
+  - stronger substantive contrast among the official candidate profiles
+  - more natural evidence availability in authorized history
+  - lower task-profile contradiction and stereotype risk
+  - clearer pre-output decision nodes and external verification
+  - lower construct redundancy with already selected tasks
+  - feasible human or domain-expert validation
+
+explicitly_not_used:
+  - random sampling
+  - equal quota per domain
+  - agent output quality
+  - existing PDR leaderboard scores
+  - downstream judge preference
+
+selected_task_ids: [1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49]
+selected_count: 15
+published_pair_count_if_all_official_pairs_retained: 76
+pair_count_explanation: >-
+  The public task-user mapping is not exactly 5 per task: among the selected
+  tasks, task 10 has six pairs while every other selected task has five.
+  Therefore the exact bridge pool contains 76 published pairs, not 75.
+
+validation_boundary:
+  status: provisional_author_screen
+  primary_release_requires:
+    - two independent human reviewers repeat task-level gate labels without seeing model outputs
+    - disagreements are adjudicated or the task is excluded
+    - candidate A/B users are selected in a separate profile-pair audit
+    - each selected family freezes 2 to 4 task-specific preference nodes
+    - natural history is newly authorized or participant-confirmed
+  pdr_context_rule: >-
+    PDR annotator-simulated memory/chat may support a bridge or stress test but
+    is not labeled as natural history or human-grounded preference truth.
+
+recommended_use:
+  full_persona_bridge: run the exact official task-profile pairs for ranking comparability
+  ask_infer_main: use the same task shell only after history and decision-node qualification
+  matched_swapped: choose a separately validated A/B pair; do not assume all five official profiles form counterfactual gold

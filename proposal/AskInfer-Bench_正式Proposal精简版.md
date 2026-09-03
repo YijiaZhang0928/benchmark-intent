@@ -2,7 +2,7 @@
 
 ## 正式 Proposal 精简版
 
-版本：v0.60 · 2026 年 8 月 24 日
+版本：v0.61 · 2026 年 9 月 3 日
 
 状态：工作主线与最小实验冻结；无模型排名结果
 
@@ -57,7 +57,11 @@ Infer 不要求猜中 history 中不存在的偏好。正确策略可以保守�
 
 ### 3.3 PDR 资源复用
 
-PDR tasks 可作 DR source shell，structured persona 可作 bridge 条件；但每个确认性 case 仍须重新冻结 task-conditioned nodes、`δ`、history evidence、matched/swapped 和 human rubric。官方 persona 不能直接进入 Ask 主条件，simulated context 不能称为自然 history。
+PDR 的 50 题先全部按 `Personalization leverage=0/1/2` 标注，不随机抽样，也不按 domain 配额。leverage=2 只表示用户差异应改变内容、约束、证据或结论；进入主 slice 还必须通过非表面改变、history 可取证、2–4 个可验证 dimensions、真实 DR 需求、人口/关键词投射和 task–profile 冲突门。
+
+当前 provisional 15 题为 `1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49`，覆盖 Education 3、Career 3、Health 1、Travel 1、Finance 2、Creative 1、Shopping 2、Real Estate 1、Parenting 1；分布是结果，不是配额。官方映射在这 15 题上共有 76 个 bridge pair，因为公开 task 10 有 6 位用户。完整 50 题表与规则位于 `data/pdr_diagnostic_slice_v0_61/`。
+
+PDR tasks 可作 DR source shell，structured persona 可作 bridge 条件；但这 15 题仍须双人盲化复标，A/B pair 另行选择，并重新冻结 task-conditioned nodes、`δ`、自然 history evidence、matched/swapped 和 human rubric。年龄/性别/职业标签不计作 preference node，儿童状态须有行为或照护证据；Finance/Health/Real Estate 须经专家安全与可行性复核。官方 persona 不能直接进入 Ask 主条件，simulated context 不能称为自然 history；禁止根据 agent 输出替换任务。
 
 ## 4. 过程与最终指标
 
@@ -93,7 +97,7 @@ CFA 只表示 final artifact 的跨用户特异性。确认性成功还必须通
 
 Novelty-kill pilot：6 个基础任务（每个 vertical 2 个）× 3 个 `δ` strata × 4 个 agent × A0/A1/A2，约 216 个 Ask episode；2 个 DR 任务追加 I0–I3。该规模只验证操纵、日志、rubric 和近邻增量。
 
-条件性主实验目标 24 个独立基础任务（8/8/8），Infer/PDR bridge 保留 8–12 个 DR 任务。最终 agent、repeat 和 family 数由 pilot family-level 方差与最小实际重要差异做功效模拟后冻结。统计单位是基础任务，不是 user、pair、seed、turn 或 leaf。
+条件性主实验把通过人工 qualification 的 15 个 PDR task 作为共享 DR overlap pool；Coding/Data 各暂按 8 个独立任务规划，上限为 31 个基础任务。最终规模由 pilot family-level 方差、资格通过率、成本与最小实际重要差异做功效模拟后冻结，不得看 agent 输出删题。统计单位是基础任务，不是 user、pair、seed、turn 或 leaf。
 
 ## 7. 最强风险与停止条件
 

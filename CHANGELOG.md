@@ -1,5 +1,17 @@
 # benchmark-intent 设计迭代记录
 
+## v0.61 PDR 50→15 personalization-diagnostic task slice - 2026-09-03
+
+- 不再随机或按 10-domain 配额抽 PDR task；对官方 50 题逐题冻结 `Personalization leverage=0/1/2`、非表面内容改变、history 可取证、2–4 preference dimensions、DR 深度、人口/关键词投射和 task–profile 冲突风险。
+- 冻结 provisional 15 个官方 task ID：`1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49`；分布跨 9 个 domain，是 screening output 而非配额。
+- 新增 `data/pdr_diagnostic_slice_v0_61/`：50 题全表、selection protocol、官方原文 `selected_15.jsonl`、人类可读清单、summary 与 Ruby 重建/校验脚本。
+- 纠正“15×5=75”的机械计数：公开 task 10 有 6 位用户，因此入选 slice 的 exact official full-persona bridge 是 76 pairs；A/B matched/swapped 用户对仍须另做人工 audit。
+- 将 selection 状态限定为 `provisional_author_screen`；两名盲化人类必须复标 task gates，任何 replacement 必须在 agent 运行前记录，禁止依据 PDR 分数、新 agent 输出或预期 rank reversal 选题。
+- 记录高 leverage 但不入选的关键反例：task 13/14 的 task–profile 健康事实冲突，36/37 的 floor-plan artifact acquisition 混杂，以及 42 适合作为 zero-`δ` 对照。
+- 补上高风险防线：年龄/性别/职业标签不计 preference node，task 49 必须有行为或照护证据；task 21 的 10% 目标可被可行性结论否定，Finance/Health/Real Estate 均需领域专家复核。
+- 条件性主实验改为 surviving 15-task DR overlap pool + 暂定 8 Coding + 8 Data 的 31-task 上限；6-task novelty-kill pilot 不变，其中 2 个 DR 从该 slice 进入 I0–I3。
+- 同步四版 Proposal、case/evaluation schema、manifest、README、项目记忆、主图、HTML、DOCX/PDF 与 standalone；正式精简版继续保持不超过 10 页。
+
 ## v0.60 Ask or Infer mainline and v0.59 archive - 2026-08-24
 
 - 将当前工作题名冻结为 *Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents*；Ask 覆盖 Research/Coding/Data，Infer 首版只做 Deep Research。

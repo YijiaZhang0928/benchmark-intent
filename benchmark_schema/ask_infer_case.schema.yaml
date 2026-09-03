@@ -1,7 +1,7 @@
 schema_name: ask_infer_case
-schema_version: "0.60"
+schema_version: "0.61"
 status: working_hypothesis_frozen
-frozen_on: "2026-08-24"
+frozen_on: "2026-09-03"
 
 purpose: >-
   Describe one base task and its task-specific user-state contrasts for
@@ -49,6 +49,25 @@ base_task:
         - versioned_pipeline_package
     embedded_components_allowed: true
     independent_secondary_deliverables_forbidden: true
+  pdr_provenance_when_applicable:
+    required:
+      - source_task_id
+      - source_commit
+      - personalization_leverage
+      - task_screen_status
+      - task_screen_reviewers
+      - task_screen_frozen_before_agent_output
+    personalization_leverage:
+      enum: [0, 1, 2]
+    task_screen_status:
+      enum:
+        - provisional_author_screen
+        - double_human_qualified
+        - rejected
+    prohibition:
+      - domain_quota_as_selection_rule
+      - selection_or_replacement_based_on_agent_output
+      - treating_task_selection_as_profile_pair_gold
 
 user_state:
   backstage_only_by_default: true
@@ -157,6 +176,7 @@ experimental_conditions:
 freeze_requirements:
   before_agent_run:
     - invariant_task
+    - task_selection_and_replacement_log
     - environment_snapshot
     - preference_nodes
     - delta_strata

@@ -1,6 +1,6 @@
 # Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents
 
-版本：v0.60 · 2026 年 8 月 24 日
+版本：v0.61 · 2026 年 9 月 3 日
 
 状态：主线工作假设冻结；尚未产生模型比较结果
 
@@ -135,9 +135,26 @@ Infer 轨与 Ask 轨共享 Deep Research 基础任务和 history：
 
 I1 的成功不是“猜中所有隐藏偏好”，而是 recoverable node 正确利用、unidentifiable node 不武断投射、irrelevant cue 不改变关键决定。I3 只用于共同任务上的 ranking bridge，不与 Coding/Data 的结果混排。
 
-### 5.3 PDR-Bench 任务能否直接使用
+### 5.3 PDR-Bench 50 → 15 personalization-diagnostic slice
 
-可以使用 PDR 的 task 作为 Deep Research source shell，也可以在桥接实验中复用官方 structured persona；但不能把完整 persona 暴露给 Ask 主条件，也不能把 PDR simulated context 当自然 history。进入确认性主集前，每个 PDR-derived case 仍须重新完成 task-conditioned node、`δ`、history evidence、matched/swapped 和 human-rubric freeze。官方任务/画像只提供 provenance，不自动提供本项目的 ground truth。
+PDR-Bench 的 50 题已经由上游按 complexity、clarity 和 personalization alignment 审核；但这三个标准不能自动保证 task 对“何时应 acquire / ground / calibrate 用户信息”具有区分力。[[1]](https://arxiv.org/abs/2509.25106)[[6]](https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench) 因此本项目不随机抽取，也不按 10 个 domain 机械配额，而是在任何 AskInfer 输出生成前对全部 50 题增加一层 task-level qualification：
+
+- `Personalization leverage=0`：不同用户不应改变实质内容决定；
+- `Personalization leverage=1`：主要改变强调、排序、深浅或呈现；
+- `Personalization leverage=2`：改变内容/证据选择、推荐集合、约束、阈值或结论。
+
+进入 15 题主 slice 的必要门为：leverage=2；差异不是语气/格式；授权 history 能合理提供证据；存在 2–4 个可验证 preference dimensions；任务确实需要多步检索、比较与综合；不能主要依赖年龄、性别、家乡等人口 token；官方候选 profile 与题面不能有高风险冲突。年龄、性别和职业标签本身不计作 preference node；儿童发展状态必须有行为或照护证据；Finance、Health 和 Real Estate 还需专家复核安全与可行性。题面的固定目标（如 10% 收益）是需要检验甚至否定的约束，不是 agent 必须顺从的偏好。37/50 题被初筛为 leverage=2，说明 leverage 本身仍不足以选出 15 题；随后再按官方候选 profile 的非表面对比、history 可取证性、冲突/刻板风险、decision-node 可验证性和与已选题的构念冗余排序。
+
+当前 provisional author screen 入选官方 task ID：
+
+- **Education**：1（AI PhD 申请）、4（MBA/EMBA/data analytics 项目决策）、5（论文与期刊投稿）；
+- **Career**：6（转入金融）、9（转 AI 产品经理）、10（国际职业路径）；
+- **Health / Travel / Finance**：11（健身）、16（东南亚背包旅行）、21（个人投资）、22（退休保障）；
+- **Creative / Shopping / Real Estate / Parenting**：30（个人媒体）、33（宠物用品系统）、35（户外装备）、39（养老房）、49（亲子沟通）。
+
+结果分布为 Education 3、Career 3、Health 1、Travel 1、Finance 2、Creative 1、Shopping 2、Real Estate 1、Parenting 1；这是筛选输出，不是预设配额。若保留官方全部 task–user 映射，15 题对应 76 个 bridge pair，而不是机械的 75：公开数据中 task 10 有 6 位候选用户。逐题表、规则和官方原文机器入口分别冻结在 `data/pdr_diagnostic_slice_v0_61/screening_50.csv`、`selection_protocol.yaml` 与 `selected_15.jsonl`。
+
+这 15 题仍不是确认性 gold。两名独立人类须在看不到 agent 输出的情况下复标 task gates；每题的 A/B 用户对另做 profile-pair audit，再冻结 2–4 个 task-conditioned nodes、自然 history evidence 和 matched/swapped rubric。PDR structured persona 只用于 full-persona bridge；PDR simulated context 仍不能称为自然 history。任何替换都必须在模型运行前基于记录的 qualification failure 完成，禁止根据系统分数挑题。
 
 ## 6. 过程指标：问了什么、何时停
 
@@ -216,7 +233,7 @@ CFA 保留为 final-artifact counterfactual specificity effect。它不告诉我
 
 **Novelty-kill pilot：**6 个基础任务（每个 vertical 2 个）× 3 个 `δ` strata × 4 个 agent × A0/A1/A2，约 216 个 Ask episode；其中 2 个 Deep Research 任务追加 I0/I1/I2/I3。该 pilot 只验证操纵、日志、提问对齐、final scoring 和近邻增量，不估计稳定排行榜。
 
-**条件性主实验：**目标 24 个独立基础任务（每个 vertical 8 个）；Infer/PDR bridge 优先保留其中 8–12 个 Deep Research 任务。最终 agent 数、repeat 和 family 数由 pilot 的 family-level 方差、最小实际重要差异、成本和多重终点方案做功效模拟后冻结。若时间只允许增加 seed 而不能增加 task family，不应假装统计功效已提高。
+**条件性主实验：**共享 Deep Research overlap pool 先固定为上述 15 个 PDR task；通过双人 task/profile qualification 的 surviving families 同时进入 PDR-style、Ask 与 Infer 比较。Coding 与 Data Analysis 各以 8 个独立基础任务作为暂定规划量，因此上限是 15 DR + 8 Coding + 8 Data = 31 个基础任务，而不是等域配额。最终 agent 数、repeat、Coding/Data family 数和是否保留全部 15 个 DR family 由 pilot 的 family-level 方差、最小实际重要差异、人工资格通过率、成本和多重终点方案做功效模拟后冻结；不得基于 agent 输出淘汰题目。若时间只允许增加 seed 而不能增加 task family，不应假装统计功效已提高。
 
 Ask 条件的主要模型为 agent × `δ` 的混合效应/设计型对比；final score 使用 family-blocked permutation 与 family-cluster bootstrap。跨 domain 只报告交互与异质性，不用一个 domain 的高分补偿另一个 domain 的失败。
 
@@ -232,6 +249,7 @@ Ask 条件的主要模型为 agent × `δ` 的混合效应/设计型对比；fin
 8. **跨域 raw score 不可比。** 发布 domain-specific outcomes 和共同 profile，不建立伪精确总榜。
 9. **PDR 排名不是同版本重跑。** 不把公开旧 leaderboard 与新 agent 直接做因果比较；确认性反转只来自同批系统的同窗运行。
 10. **同任务三种 persona 不自然。** 优先真实差异；LLM-generated pair 必须双人独立验证，未解决分歧直接排除。
+11. **作者从 50 题里挑了最容易出现反转的 15 题。** 50 题的 leverage、硬门、风险与候选 nodes 在任何 agent 输出前完整发布；selection 不使用 PDR 分数或新模型结果。两名盲化人类复标，若 task qualification 失败，只能按预冻结理由从 reserve 重审并公开 replacement log，不能看榜单换题。
 
 ## 11. Go / No-Go 门
 
@@ -260,7 +278,7 @@ Ask 条件的主要模型为 agent × `δ` 的混合效应/设计型对比；fin
 
 ## 13. 与 v0.59 资产的关系
 
-DeepAlign-Bench v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、rubric provenance、D-JQS 和 matched/swapped 资产继续作为可复用基础设施；旧正式成果已归档为版本快照。v0.60 改变的是论文 estimand 和主实验矩阵：从“给定用户条件后最终交付物是否具有反事实特异性”进一步收窄为“agent 何时应主动问、何时可从 history 推断，以及两种能力是否被 full-persona 排名代表”。
+DeepAlign-Bench v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、rubric provenance、D-JQS 和 matched/swapped 资产继续作为可复用基础设施；旧正式成果已归档为版本快照。v0.60 改变论文 estimand 和主实验矩阵；v0.61 又把 PDR overlap 从 50 个上游候选冻结为 15 个 pre-output personalization-diagnostic tasks，并将 task qualification 与 A/B pair qualification 分离。
 
 ## 参考文献
 

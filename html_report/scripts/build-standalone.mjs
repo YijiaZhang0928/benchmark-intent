@@ -7,16 +7,20 @@ const outPath = resolve(root, "deliverables/AskInfer-Bench_HTML汇报版.html");
 
 const css = (await readFile(resolve(siteRoot, "app/globals.css"), "utf8"))
   .replace(/^@import\s+["']tailwindcss["'];?\s*/m, "");
-const flowchart = await readFile(resolve(siteRoot, "public/AskInfer-Bench_评测框架_v0.60.png"));
+const flowchart = await readFile(resolve(siteRoot, "public/AskInfer-Bench_评测框架_v0.61.png"));
 const flowchartData = `data:image/png;base64,${flowchart.toString("base64")}`;
 
 function localize(body) {
   return body
-    .replaceAll('src="/AskInfer-Bench_评测框架_v0.60.png"', `src="${flowchartData}"`)
+    .replaceAll('src="/AskInfer-Bench_评测框架_v0.61.png"', `src="${flowchartData}"`)
     .replaceAll('href="/AskInfer-Bench_', 'href="./AskInfer-Bench_')
     .replaceAll('href="/ask_infer_case.schema.yaml"', 'href="../benchmark_schema/ask_infer_case.schema.yaml"')
     .replaceAll('href="/ask_infer_evaluation.protocol.yaml"', 'href="../benchmark_schema/ask_infer_evaluation.protocol.yaml"')
     .replaceAll('href="/ask_infer_benchmark.manifest.yaml"', 'href="../benchmark_schema/ask_infer_benchmark.manifest.yaml"')
+    .replaceAll('href="/pdr_screening_50.csv"', 'href="../data/pdr_diagnostic_slice_v0_61/screening_50.csv"')
+    .replaceAll('href="/pdr_selection_protocol.yaml"', 'href="../data/pdr_diagnostic_slice_v0_61/selection_protocol.yaml"')
+    .replaceAll('href="/pdr_selected_15.jsonl"', 'href="../data/pdr_diagnostic_slice_v0_61/selected_15.jsonl"')
+    .replaceAll('href="/pdr_selected_15.md"', 'href="../data/pdr_diagnostic_slice_v0_61/selected_15.md"')
     .replaceAll('href="/PROJECT_MEMORY.md"', 'href="../PROJECT_MEMORY.md"');
 }
 

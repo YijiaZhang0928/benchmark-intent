@@ -1,6 +1,6 @@
 # Ask or Infer?｜完整人话版
 
-版本：v0.60 · 2026 年 8 月 24 日
+版本：v0.61 · 2026 年 9 月 3 日
 
 ## 先用一句话讲清楚
 
@@ -117,9 +117,25 @@ Deep Research overlap slice 跑：
 
 ## 7. PDR-Bench 的任务和 persona 能不能直接用
 
-答案是：**可以复用，但只能做 source shell 和 bridge，不能直接当新 gold。**
+答案是：**可以复用，但不能随机抽 15 题，也不能直接当新 gold。**
 
-可以复用 PDR 的 task 主题和 structured persona，在同一批 Deep Research agent 上跑 full-persona 对照。不能把完整 persona 塞进 Ask 主条件，因为答案已经泄漏。也不能把 PDR 的 simulated context 叫真实 history。每个 PDR-derived case 仍要重新确认 task-specific preference、`δ`、history evidence、matched/swapped 和真人 rubric。
+PDR 原论文已经保证任务本身具有 complexity、clarity 和 personalization alignment。[[1]](https://arxiv.org/abs/2509.25106) 但我们问的问题更窄：用户差异是否会改变研究决定，而不只是让报告变长、变浅或换一种语气。因此先把官方 50 题逐题标为：
+
+- `0`：不同用户不该改变实质答案；
+- `1`：主要改变重点、顺序或呈现；
+- `2`：改变搜索内容、候选集合、约束、阈值、方案或结论。
+
+`2` 只是入场券。还要检查 history 是否自然可能留下相关证据、能否写出 2–4 个可验证 preference dimensions、是否真需要搜索分析、是否主要靠性别年龄等人口信息、以及 task 与官方 profile 有没有矛盾。年龄、性别和职业标签本身不算“偏好”；儿童题必须有真实的行为或照护证据，金融、健康和房产题还要专家检查安全性与可行性。例如官方马拉松题说用户“完全没有跑步经验”，但部分配对 profile 已经有跑步或长距离运动经历；这种题表面上很个性化，却会把信息冲突混进 Ask/Infer 能力，所以没有进入首选 15 题。
+
+现在选出的官方 task ID 是：
+
+`1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49`。
+
+它们分别覆盖 PhD/MBA/论文投稿、金融与 AI 产品职业转型、国际求职、健身、背包旅行、投资与退休、个人媒体、宠物用品、户外装备、养老房和亲子沟通。Education 3、Career 3、Health 1、Travel 1、Finance 2、Creative 1、Shopping 2、Real Estate 1、Parenting 1；这个不均匀分布是筛选结果，不是人为配额。
+
+这 15 题按官方公开映射共有 76 个 task–user bridge pair，不是 75，因为 task 10 在公开数据里配了 6 位用户。Ask/Infer 真正做 matched/swapped 时，不会默认五个人都能组成 gold；每题仍要由两名人类在看不到模型输出时复核，再另选 A/B 用户、冻结 2–4 个 task-specific nodes 和自然 history evidence。
+
+可以复用 PDR 的 task 原文和 structured persona，在同一批 Deep Research agent 上跑 full-persona 对照。不能把完整 persona 塞进 Ask 主条件，因为答案已经泄漏。也不能把 PDR 的 simulated context 叫真实 history。完整 50 题表、逐题理由和机器入口保存在 `data/pdr_diagnostic_slice_v0_61/`，以后即使换题也必须公开原因，不能看模型分数后挑“最好看”的题。
 
 ## 8. Rubric 怎么做得更全面
 
@@ -179,7 +195,7 @@ LLM 可以把这些内容拆成更细的 atomic rubric leaf、检查遗漏、写
 
 这个 pilot 只验证 `δ` 是否可操纵、问题能否映射到 nodes、rubric 能否稳定、已有近邻指标是否已经解释全部现象。它不够支撑正式排行榜。
 
-通过后才考虑 24 个独立基础任务（每个 vertical 8 个）；Infer/PDR bridge 保留 8–12 个 DR。样本量由 pilot 的 family-level 方差和最小实际重要差异决定。多跑 seed 不能替代多做独立 task family。
+通过后，共享 Deep Research overlap pool 使用通过双人 qualification 的 15 个 PDR tasks；Coding 与 Data 暂各按 8 个独立任务规划，所以上限是 31 个基础任务，不追求三域数量相等。最终规模仍由 pilot 的 family-level 方差、人工通过率、预算和最小实际重要差异决定。不能看 agent 输出删题，多跑 seed 也不能替代多做独立 task family。
 
 ## 12. 最可能被 reviewer 攻击的地方
 
@@ -210,7 +226,7 @@ LLM 可以把这些内容拆成更细的 atomic rubric leaf、检查遗漏、写
 
 我们要评价的是**任务特定个性化中的信息策略**：用户在线时，agent 是否问真正改变交付物的偏好；用户离线时，agent 是否只推断 history 有证据的偏好；最终，它是否真的把这些信息变成正确的 research、code 或 data deliverable。
 
-我们暂时不能说模型会理解用户、排名一定反转，或这个方向已经超过现有 benchmark。v0.60 的正确状态是：一个可证伪、可做 novelty-kill pilot 的主线。
+我们暂时不能说模型会理解用户、排名一定反转，或这个方向已经超过现有 benchmark。v0.61 的正确状态是：一个完成 50→15 pre-output task screen、但仍等待双人 qualification 与 novelty-kill pilot 的可证伪主线。
 
 ## 参考文献
 

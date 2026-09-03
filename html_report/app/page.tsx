@@ -6,18 +6,27 @@ const papers = [
   ["[5] DiscoBench", "需求发现与 specification benchmark 邻居", "https://arxiv.org/abs/2606.27669"],
 ];
 
+const selectedTaskGroups = [
+  ["Education · 3", "1 AI PhD · 4 MBA/EMBA/Data Analytics · 5 论文投稿"],
+  ["Career · 3", "6 转入金融 · 9 AI 产品经理 · 10 国际职业路径"],
+  ["Health / Travel · 2", "11 健身 · 16 东南亚背包旅行"],
+  ["Finance · 2", "21 个人投资 · 22 退休保障"],
+  ["Creative / Shopping · 3", "30 个人媒体 · 33 宠物用品 · 35 户外装备"],
+  ["Real Estate / Parenting · 2", "39 养老房 · 49 亲子沟通"],
+];
+
 export default function Home() {
   return (
     <main>
       <header className="hero" id="top">
         <nav className="nav shell" aria-label="主导航">
           <a className="brand" href="#top">Ask<span>Infer</span>Bench</a>
-          <div className="navlinks"><a href="#question">问题</a><a href="#design">双轨</a><a href="#delta">δ</a><a href="#metrics">评分</a><a href="#pilot">Pilot</a></div>
+          <div className="navlinks"><a href="#question">问题</a><a href="#task-slice">50→15</a><a href="#design">双轨</a><a href="#delta">δ</a><a href="#metrics">评分</a><a href="#pilot">Pilot</a></div>
           <a className="navCta" href="#editions">下载文档</a>
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.60 · 2026-08-24</p>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.61 · 2026-09-03</p>
             <h1>Ask or Infer?<br/><em>任务特异的个性化</em></h1>
             <p className="lede">用户在线时，agent 能否用少量问题获取真正改变交付物的偏好？用户离线时，它能否从授权 history 恢复可识别偏好，并对未知部分保持克制？</p>
             <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/AskInfer-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
@@ -37,7 +46,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="figureSection" id="design"><div className="shell"><div className="sectionHead light"><h2>同一任务、不同用户；过程与结果分开测</h2><p>先冻结人类可审计的决策节点，再运行 Ask / Infer；CFA 只评价最终交付物，不替代提问校准。</p></div><figure><img src="/AskInfer-Bench_评测框架_v0.60.png" alt="AskInfer-Bench v0.60：同任务用户差异、Ask 与 Infer 双轨、过程指标和最终交付物评分"/><figcaption>v0.60：LLM 可辅助扩充候选，但 critical nodes 由真人写定、双人独立核验；未解决分歧须第三人裁决或剔除。</figcaption></figure></div></section>
+      <section className="classificationSection" id="task-slice"><div className="shell">
+        <p className="sectionTag">PDR TASK QUALIFICATION · 50 → 15</p>
+        <div className="sectionHead"><h2>按个性化诊断价值筛，不按 domain 配额抽</h2><p>上游 complexity、clarity、alignment 之外，再问：用户差异是否会改变研究内容、约束、证据或结论，而不只是措辞。<a href="https://arxiv.org/abs/2509.25106" target="_blank" rel="noreferrer">[1]</a></p></div>
+        <div className="decisionGrid">
+          <article><span>LEVERAGE = 2</span><h3>实质研究决定会改变</h3><p>候选集合、evidence scope、约束、阈值、推荐或结论必须发生可验证变化；0/1 题不进 primary slice。</p></article>
+          <article><span>HARD GATES</span><h3>history、nodes 与冲突都过门</h3><p>history 可取证、2–4 个 preference dimensions、真正 DR；年龄/性别/职业标签不算偏好，排除人口 token 投射和高风险 task–profile 矛盾。</p></article>
+          <article><span>ANTI-CHERRY-PICK</span><h3>先筛题，再跑 agent</h3><p>两名人类盲化复标；A/B pair 另审。禁止使用 PDR 分数、新模型输出或预期 rank reversal 换题。</p></article>
+        </div>
+        <div className="compare" role="table" aria-label="PDR 15 个入选任务" style={{marginTop: "22px"}}>
+          <div className="compareRow head" role="row"><span>入选分组</span><span>官方 task IDs 与主题</span><span>解释</span></div>
+          {selectedTaskGroups.map(([group, tasks]) => <div className="compareRow" role="row" key={group}><b>{group}</b><span>{tasks}</span><span>分布是 screening output，不是 quota。</span></div>)}
+        </div>
+        <div className="classificationVerdict"><b>15 tasks · 9 domains · 76 official bridge pairs</b><p>公开 task 10 有 6 位用户，所以不是机械的 75 pairs。当前仍是 provisional author screen；每题 task gate、A/B pair、2–4 nodes 和 natural-history evidence 还要分别完成人工 qualification。Finance/Health/Real Estate 另过专家安全与可行性门，儿童状态不能从年龄单独推断。</p></div>
+        <div className="schemaDownloads"><b>筛选资产</b><a href="/pdr_screening_50.csv" download>50 题全表 ↓</a><a href="/pdr_selection_protocol.yaml" download>筛选协议 ↓</a><a href="/pdr_selected_15.jsonl" download>15 题 JSONL ↓</a><a href="/pdr_selected_15.md" download>人类清单 ↓</a></div>
+      </div></section>
+
+      <section className="figureSection" id="design"><div className="shell"><div className="sectionHead light"><h2>任务先 qualification；过程与结果再分开测</h2><p>PDR 50→15 后冻结人类可审计的决策节点，再运行 Ask / Infer；CFA 只评价最终交付物，不替代提问校准。</p></div><figure><img src="/AskInfer-Bench_评测框架_v0.61.png" alt="AskInfer-Bench v0.61：PDR 50→15、Ask 与 Infer 双轨、过程指标和最终交付物评分"/><figcaption>v0.61：task screen 与 A/B pair 是两层独立 qualification；LLM 只辅助扩充候选，critical nodes 由真人确认。</figcaption></figure></div></section>
 
       <section className="shell gapSection" id="delta">
         <p className="sectionTag">PRE-RUN DELIVERABLE IMPACT</p>
@@ -74,7 +99,7 @@ export default function Home() {
 
       <section className="reviewBand" id="pilot"><div className="shell">
         <p className="sectionTag">NOVELTY-KILL PILOT</p>
-        <div className="sectionHead"><h2>先验证操纵与测量，不急着发榜</h2><p>6 个独立基础任务（每域 2）× 3 个 δ strata × 4 个 agent × A0/A1/A2，约 216 episodes；其中 2 个 DR task 再加 I0–I3。</p></div>
+        <div className="sectionHead"><h2>先验证操纵与测量，不急着发榜</h2><p>6 个独立基础任务（每域 2）× 3 个 δ strata × 4 个 agent × A0/A1/A2，约 216 episodes；其中 2 个 DR task 从 15-task slice 进入 I0–I3。</p></div>
         <div className="decisionGrid">
           <article><span>GO 1</span><h3>δ 可复现</h3><p>盲化标注员能稳定区分 high、low、zero，并把问题一致映射到 decision nodes。</p></article>
           <article><span>GO 2</span><h3>过程解释结果</h3><p>获取并采用 high-δ 信息能预测 final matched advantage，且不只是额外 token 效应。</p></article>
@@ -85,12 +110,12 @@ export default function Home() {
 
       <section className="shell gapSection" id="novelty"><p className="sectionTag">NEAREST NEIGHBORS</p><div className="sectionHead"><h2>最强审稿问题：这是否只是已有交互 benchmark 的跨域版？</h2><p>回答不能靠命名；必须用 pilot 证明 task-specific δ、真人决策节点、可识别性边界和 final artifact specificity 带来增量解释力。</p></div><div className="sourceGrid">{papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}</div></section>
 
-      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.60</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、schema、协议、manifest 与项目记忆使用同一版本边界。</p></div><div className="editionGrid">
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.61</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、task screen、schema、协议、manifest 与项目记忆使用同一版本边界。</p></div><div className="editionGrid">
         <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整构念、条件、数据、测量、统计、风险与 Go/No-Go。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/AskInfer-Bench_正式研究Proposal.docx" download>Word</a></div></article>
         <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>快速判断主张、实验与最强 reviewer objections。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/AskInfer-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
         <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 Ask、Infer、PDR 边界、δ 与 CFA。</p><div className="editionLinks"><a href="/AskInfer-Bench_完整人话版.pdf" download>PDF</a><a href="/AskInfer-Bench_完整人话版.docx" download>Word</a></div></article>
         <article><span>ADVISOR BRIEF</span><h3>汇报精简版</h3><p>15–20 分钟讨论结构与 pilot 决策门。</p><div className="editionLinks"><a href="/AskInfer-Bench_汇报精简版.pdf" download>PDF</a><a href="/AskInfer-Bench_汇报精简版.docx" download>Word</a></div></article>
-      </div><div className="schemaDownloads"><b>可执行协议</b><a href="/ask_infer_case.schema.yaml" download>Case schema ↓</a><a href="/ask_infer_evaluation.protocol.yaml" download>Evaluation protocol ↓</a><a href="/ask_infer_benchmark.manifest.yaml" download>Manifest ↓</a><a href="/AskInfer-Bench_评测框架_v0.60.svg" download>Figure SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
+      </div><div className="schemaDownloads"><b>可执行协议</b><a href="/ask_infer_case.schema.yaml" download>Case schema ↓</a><a href="/ask_infer_evaluation.protocol.yaml" download>Evaluation protocol ↓</a><a href="/ask_infer_benchmark.manifest.yaml" download>Manifest ↓</a><a href="/AskInfer-Bench_评测框架_v0.61.svg" download>Figure SVG ↓</a><a href="/PROJECT_MEMORY.md" download>项目记忆 ↓</a></div></div></section>
 
       <footer className="closing"><div className="shell closingGrid"><div><p className="eyebrow">CLAIM BOUNDARY</p><h2>先证明会问、会推断、也会克制</h2></div><p>不把多问等同于好问，不把 persona 猜测等同于 inference，不把 LLM 生成 rubric 当 ground truth，也不把预期排名反转写成既成事实。</p></div></footer>
     </main>

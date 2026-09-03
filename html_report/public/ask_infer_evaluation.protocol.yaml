@@ -1,7 +1,37 @@
 protocol_name: ask_infer_evaluation
-protocol_version: "0.60"
+protocol_version: "0.61"
 status: working_hypothesis_frozen
-frozen_on: "2026-08-24"
+frozen_on: "2026-09-03"
+
+pdr_task_sampling:
+  source_task_count: 50
+  selection_target: 15
+  random_sampling: false
+  domain_quota: false
+  personalization_leverage_scale:
+    0: substantive_deliverable_should_not_change
+    1: mainly_emphasis_depth_order_or_presentation_changes
+    2: content_evidence_constraints_recommendations_or_conclusion_changes
+  primary_hard_gates:
+    - leverage_equals_2
+    - non_surface_content_change
+    - authorized_history_can_ground_task_relevant_evidence
+    - two_to_four_verifiable_preference_dimensions
+    - genuine_multi_step_research_and_synthesis
+    - not_demographic_or_persona_token_projection
+    - no_high_risk_task_profile_contradiction
+  selected_task_ids: [1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49]
+  published_bridge_pairs: 76
+  current_status: provisional_author_screen
+  confirmatory_requirements:
+    - two_blinded_independent_human_task_reviews
+    - disagreement_adjudication_or_exclusion
+    - separate_profile_pair_audit
+    - pre_output_replacement_log
+  forbidden:
+    - selecting_tasks_from_agent_scores
+    - selecting_tasks_from_pdr_leaderboard_rank
+    - assuming_all_official_profiles_form_matched_swapped_gold
 
 tracks:
   ask:
@@ -137,6 +167,19 @@ pilot:
   expected_ask_episodes: 216
   infer_bridge_deep_research_tasks: 2
   claim_limit: novelty_kill_and_measurement_validation_only
+
+conditional_main_experiment:
+  deep_research_overlap_pool: 15
+  repository_coding_planning_count: 8
+  data_analysis_planning_count: 8
+  planning_upper_bound_base_tasks: 31
+  final_freeze_depends_on:
+    - family_level_pilot_variance
+    - human_task_and_pair_qualification_rate
+    - smallest_effect_size_of_interest
+    - cost
+    - multiplicity_plan
+  output_conditioned_task_removal_forbidden: true
 
 go_no_go:
   continue_if:
