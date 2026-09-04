@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "20260904_cli6_smoke_v0_63",
+  "scientific_status": "development_only_not_counted",
+  "verification_status": "runner_scored_not_independently_reviewed",
+  "start_utc": "2026-09-04T15:43:52Z",
+  "end_utc": "2026-09-04T17:11:15Z",
+  "git_commit": "87ac4aa6fb4de6a1d18b945bef7e3d182584ed25",
+  "prompt_hashes_sha256": {
+    "agent_protocol": "f704b090a26288ce15b50ba66367c13a8a0d6c861ccab98019de54aeb39c452f",
+    "research": "c7debef8adf88c60023ffacb41e69236a6b90d34fd3a646b893c5246789facaa",
+    "code": "05af3647a3cf4cfee1fa04c93e11872718833ca925810cf8c2dc20a3ba0afcb0",
+    "data": "a1b75badd6205a17b1e40ab944f71f7c4e143ec2c3ce3d5a5ac7fae9801c5b3f",
+    "hidden_cases": "883ed8539a5d3f7ffd06b49f9cd57090b94b6c2193fe7104bd0f74d0606f6c1c"
+  },
+  "execution_policy": {
+    "initial_input": "agent protocol plus public task prompt only",
+    "user_response": "ledger-bounded answer to actually targeted nodes only",
+    "isolation": "new work directory and new conversation ID per case",
+    "tools": "Codex read-only sandbox; Claude tools disabled",
+    "network_or_artifacts": "no browsing, repository, dataset, test or notebook execution",
+    "question_budget": {"questions": 3, "question_messages": 2}
+  },
+  "systems": {
+    "codex": {
+      "cli_version": "0.145.0",
+      "declared_model": "gpt-5.6-sol",
+      "model_source": "local Codex config; serving snapshot not exposed",
+      "auth": "ChatGPT login",
+      "completed_cases": 3,
+      "case_results": [
+        {
+          "case_id": "DR-PDR-T01-A",
+          "thread_id": "01a06d17-7041-75e1-893c-c2a81ab1a609",
+          "status": "pass",
+          "distinct_high_delta_nodes_targeted": 4,
+          "zero_delta_questions": 0,
+          "all_required_final_consequences": true,
+          "fabricated_execution": false
+        },
+        {
+          "case_id": "SW001-A",
+          "thread_id": "01a06d17-ec42-7131-a783-0aaddef83267",
+          "status": "pass_with_diagnostic_warning",
+          "distinct_high_delta_nodes_targeted": 2,
+          "zero_delta_questions": 0,
+          "all_required_final_consequences": true,
+          "fabricated_execution": false,
+          "warning": "one question asked for a compatibility matrix rather than a frozen preference node; load/latency preference was not acquired"
+        },
+        {
+          "case_id": "DA003-B",
+          "thread_id": "01a06d17-efa6-7ef0-ba9b-8cea6baf8fcf",
+          "status": "fail_case_specific_gate",
+          "distinct_high_delta_nodes_targeted": 2,
+          "zero_delta_questions": 0,
+          "all_required_final_consequences": false,
+          "fabricated_execution": false,
+          "failure": "decision-horizon node was not queried, so the final omitted the required two-quarter weekly scale/stop schedule"
+        }
+      ],
+      "summary": {"pass": 2, "fail": 1, "infrastructure_failure": 0}
+    },
+    "claude_code": {
+      "cli_version": "2.1.221",
+      "declared_model": null,
+      "model_source": "request rejected before model allocation; modelUsage empty",
+      "configured_auth_route": "user settings inject ANTHROPIC_BASE_URL and ANTHROPIC_AUTH_TOKEN",
+      "completed_cases": 0,
+      "canonical_launches": 3,
+      "status": "infrastructure_auth_failure",
+      "http_status": 401,
+      "provider_message": "Enterprise account balance insufficient",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "diagnostic_repeat": "Research was repeated once with process environment variables unset; Claude reloaded the same values from user settings and returned the same 401",
+      "summary": {"pass": 0, "fail": 0, "infrastructure_failure": 3}
+    }
+  },
+  "overall": {
+    "requested_case_launches": 6,
+    "completed_agent_episodes": 3,
+    "task_level_passes": 2,
+    "task_level_failures": 1,
+    "infrastructure_failures": 3,
+    "leaderboard_eligible": false
+  }
+}

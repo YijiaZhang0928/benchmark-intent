@@ -1,5 +1,15 @@
 # benchmark-intent 设计迭代记录
 
+## v0.64 First live Codex/Claude S0 runs - 2026-09-04
+
+- 在冻结 commit `87ac4aa` 上发起 Codex/Claude × Research/Code/Data 六个 S0 case；每题独立目录和 session，首轮不暴露 persona/rubric/hidden ledger，回答严格限制为实际命中的 node。
+- Codex CLI `0.145.0` / 配置模型 `gpt-5.6-sol` 完成三题：Research PASS、Code PASS with warning、Data FAIL；Data 漏问 decision horizon，未形成两季度 weekly scale/stop 日程。
+- 记录 Code/Data 各一条 task-factual clarification 假阳性，确认正式 question precision 必须区分 preference、task fact 与 environment discovery，且 required consequences 不能由“问到两个 high-δ”补偿。
+- Claude Code `2.1.221` 三题均在模型分配前返回 HTTP 401 企业账户余额不足，input/output token 为 0；统一记 infrastructure/auth failure，不计模型能力 0 分。
+- 新增 `runs/s0/20260904_cli6_smoke_v0_63/`：运行 manifest、逐题问题—node—答案—决策审计、原始 Codex ASK/FINAL 和 Claude 401 JSONL。
+- 同步 Proposal、精简版、人话版、导师 brief、两周手册、README、smoke runbook/manifest、benchmark manifest、HTML 和项目记忆；Gemini 仍待 OAuth 后补三题。
+- 重新生成并逐页目检 19/7/14/7/24 页 DOCX/PDF，正式精简版保持 7 页；S0/task-pool/schema 校验、HTML 生产构建、渲染/资源测试和 standalone 本地路径检查全部通过。
+
 ## v0.63 Synthetic persona and S0 smoke execution pack - 2026-09-04
 
 - 新增 `pilot/askinfer_smoke_v0_63/`，为 SW001、SW013、DA003、DA015 生成 8 个 task-conditioned A/B synthetic user states；每人覆盖 high/low/zero `δ`、隐藏回答、deliverable consequence、acceptable alternatives 与 must-change/hold/not。

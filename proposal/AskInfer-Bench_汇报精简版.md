@@ -1,6 +1,6 @@
 # Ask or Infer?｜导师汇报精简版
 
-版本：v0.63 · 2026 年 9 月 4 日
+版本：v0.64 · 2026 年 9 月 4 日
 
 ## 0. 一句话
 
@@ -121,7 +121,7 @@ Novelty-kill pilot：冻结 PDR-T01、PDR-T30、SW001、SW013、DA003、DA015；
 
 Pilot 只验证：`δ` 是否可复现、问题能否映射 nodes、Ask/Infer/final chain 是否跑通、已有 G-STEER/IDRBench 指标是否已解释全部现象。[[3]](https://arxiv.org/abs/2608.05876)[[4]](https://arxiv.org/abs/2601.06676)
 
-v0.63 已生成可执行 S0 包：SW001/SW013/DA003/DA015 共 8 个 synthetic A/B user states、4 套 artifact-evidence rubrics、Research/Code/Data 三个 smoke prompts 和打分表。它只用于 question/parser/answer-use/reset 排障；两人验证和真实 repo/data fixture 通过前不计入主表。Gemini CLI `0.46.0` 已安装，OAuth 登录待本人完成。
+v0.63 已生成可执行 S0 包：SW001/SW013/DA003/DA015 共 8 个 synthetic A/B user states、4 套 artifact-evidence rubrics、Research/Code/Data 三个 smoke prompts 和打分表。v0.64 首轮实跑中，Codex 为 Research PASS、Code PASS with warning、Data FAIL；Data 漏问 decision horizon。Claude 三题均在模型接收输入前因企业余额不足返回 401，只算基础设施失败。该包仍只用于 question/parser/answer-use/reset 排障；两人验证和真实 repo/data fixture 通过前不计入主表。Gemini CLI `0.46.0` 已安装，OAuth 登录待本人完成。
 
 9 月 14 日过门后，第一轮只扩到 12 个独立基础任务（每域 4 个），作为截稿前 scoped agent-system leaderboard 的候选规模。通过人工 qualification 的 15 个 PDR tasks 加 Coding/Data 各 8 个只构成后续 31 题规划上限。最终样本量由 family-level pilot 方差、资格通过率与成本决定；seed 不能替代 family，也不能看 agent 输出删题。
 

@@ -31,6 +31,13 @@ SW001、SW013、DA003、DA015 在 v0.59 task pool 里的 `environment_binding_st
 5. Claude Code 同样跑三题。Gemini CLI 已安装；完成一次 Google OAuth 后再跑同样三题。
 6. 三个系统都过 S0 后，立刻搭 SW001 与 DA003 的最小真实 fixture，进入 S1；不要先批量跑 114 episodes。
 
+## 2026-09-04 首轮实跑状态
+
+- Codex CLI 三题已形成完整 episode：Research PASS、Code PASS with warning、Data FAIL。Data 漏问 decision horizon，最终没有恢复“两季度、每周 readout、预注册 scale/stop”。
+- Claude Code 三题都在模型接收 prompt 前因企业账户余额不足返回 HTTP 401，input/output token 均为 0；这是基础设施失败，不是 Claude 得 0 分。
+- 完整命令、问题、最小回答、node 映射、判分与 raw output：[`../../runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md`](../../runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md)。
+- 下一步：修复 Claude 鉴权后用三个全新 session 补跑；Gemini 完成 OAuth 后再补三题。
+
 ## Persona 和 rubric 的科学边界
 
 这里的 Code/Data persona 是 LLM-authored candidates，适合开发 harness，因为开发阶段要验证的是“管道能不能接住差异”。它们还不是人类 ground truth。任何 episode 要计入正式结果，必须在 agent 输出之前完成两名独立验证者的自然性、任务相关性、交付物后果、可询问性、无泄漏和无刻板投射审查。

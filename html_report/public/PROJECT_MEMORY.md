@@ -3,10 +3,22 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-04
-当前版本：v0.63（Code/Data synthetic persona 与 S0 smoke 执行包）
+当前版本：v0.64（第一批 Codex/Claude live S0 运行）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAA. 2026-09-04：第一批 live S0——Codex 完成，Claude 鉴权失败
+
+用户要求直接运行 Codex 与 Claude 各三题。运行冻结在 commit `87ac4aa`，结果目录为 `runs/s0/20260904_cli6_smoke_v0_63/`。每题使用独立 `/tmp` 工作目录和 conversation/session ID；首轮只给 agent protocol 与公开 task prompt，不给 `smoke_cases.json`、persona 或 rubric；看到 `<ASK>` 后仅根据实际命中的 ledger node 最小回答。Codex 使用 read-only sandbox，Claude 使用 safe mode 且 tools 为空。该操作路径保证 S0 测 question/answer-use，而不让模型搜索、读取仓库或假装执行 notebook。
+
+Codex CLI `0.145.0`、配置模型 `gpt-5.6-sol` 的三个 episode 全部形成可解析 ASK/FINAL。PDR-T01 Research 为 PASS：三问覆盖 preparation、direction、career/location、funding，最终改变 program/group filter、funding eligibility 与 preparation timeline。SW001 Code 为 PASS with warning：问到 dependency policy 与 bounded staleness，最终采用 self-contained backend、post-commit invalidation 与 single-flight；但第三问询问环境绑定后才能知道的 compatibility matrix，遗漏 load/latency preference，应记 preference-question precision 假阳性。DA003 Data 为 FAIL：虽然问到 audience、objective 与 action boundary，第三问转向比较 baseline，遗漏 decision horizon，故最终没有恢复“两季度、每周 readout、预注册 scale/stop”这一 required consequence。这个失败支持 acquisition-to-use 全链诊断，但单个 development case 不能支撑总体能力结论。
+
+Claude Code `2.1.221` 的三个 canonical launch 均约 200 秒后返回 HTTP 401“企业账户余额不足”，`input_tokens=0`、`output_tokens=0`、`modelUsage={}`。用户级 `~/.claude/settings.json` 注入 `ANTHROPIC_BASE_URL` 与 `ANTHROPIC_AUTH_TOKEN`；仅在进程环境 unset 不能绕过，因为 CLI 会重新加载 user settings。禁用 setting sources 后 `claude auth status` 为 `loggedIn=false`，说明没有可直接替代的官方 OAuth 会话。该状态只能记三次 infrastructure/auth failure，禁止给 Claude 计 0 分。补跑需要用户充值当前企业账户，或移除两项 user-setting 覆盖并完成 `claude auth login`；之后必须开三个全新 session，不得 resume 401 会话。
+
+方法学决定：正式 harness 必须把 preference-relevant clarification、task-factual clarification 和 environment discovery 分开标注；只满足“命中两个 high-δ”仍可能漏掉关键 specification，因此 case-specific required consequences 保持硬门。S0 仍不是真实 Code/Data artifact smoke，也不进入 leaderboard。Gemini 继续等用户 OAuth 后补三题。
+
+v0.64 交付 QA 已完成：正式稿、精简稿、人话版、导师版和两周手册分别为 19/7/14/7/24 页；所有相对 v0.63 发生像素变化的页面均逐页目检，无截断、重叠或溢出，正式精简版保持 7 页。S0 pack、v0.59 task pool、JSON/YAML、HTML 生产构建和资源测试均通过；standalone 的 live result 链接已本地化到冻结运行目录，不依赖站点根路径。
 
 ## 0AAAAA. 2026-09-04：直接进入执行、生成 synthetic personas 与三域 S0 smoke
 

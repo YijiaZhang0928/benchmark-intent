@@ -21,6 +21,7 @@ function localize(body) {
     .replaceAll('href="/pdr_selection_protocol.yaml"', 'href="../data/pdr_diagnostic_slice_v0_61/selection_protocol.yaml"')
     .replaceAll('href="/pdr_selected_15.jsonl"', 'href="../data/pdr_diagnostic_slice_v0_61/selected_15.jsonl"')
     .replaceAll('href="/pdr_selected_15.md"', 'href="../data/pdr_diagnostic_slice_v0_61/selected_15.md"')
+    .replaceAll('href="/s0_run_20260904/', 'href="../runs/s0/20260904_cli6_smoke_v0_63/')
     .replaceAll('href="/PROJECT_MEMORY.md"', 'href="../PROJECT_MEMORY.md"');
 }
 

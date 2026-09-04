@@ -26,7 +26,7 @@ export default function Home() {
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.63 · 2026-09-04</p>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.64 · 2026-09-04</p>
             <h1>Ask or Infer?<br/><em>任务特异的个性化</em></h1>
             <p className="lede">用户在线时，agent 能否用少量问题获取真正改变交付物的偏好？用户离线时，它能否从授权 history 恢复可识别偏好，并对未知部分保持克制？</p>
             <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/AskInfer-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
@@ -110,18 +110,18 @@ export default function Home() {
 
       <section className="shell gapSection" id="smoke">
         <p className="sectionTag">S0 SMOKE PACK · READY</p>
-        <div className="sectionHead"><h2>今天先跑 agent，但只把它叫交互排障</h2><p>v0.63 已生成 4 个 Code/Data task 的 8 个 synthetic A/B user states、4 套 artifact-evidence rubrics 和 Research/Code/Data 三个可复制 prompts。Codex 与 Claude 可立即跑；Gemini CLI 0.46.0 已安装，仍需本人完成 Google OAuth。</p></div>
+        <div className="sectionHead"><h2>第一批真实 S0 已经暴露了失败链</h2><p>Codex 三题为 Research PASS、Code PASS with warning、Data FAIL：Data 没问 decision horizon，因此没有恢复两季度 weekly scale/stop。Claude 三题均在模型接收输入前因企业账户余额不足返回 HTTP 401、token 为 0，只记基础设施失败。Gemini CLI 0.46.0 已安装，仍需本人完成 Google OAuth。</p></div>
         <div className="decisionGrid">
           <article><span>S0 · NOW</span><h3>Prompt 与交互</h3><p>验证 ASK/FINAL 解析、high-δ question targeting、ledger-bounded answer、具体 decision use、trace 与 reset。</p></article>
           <article><span>S1 · NEXT</span><h3>真实环境与交付物</h3><p>绑定固定 repository/dataset，实际读写、执行测试或 notebook，并运行 objective verifier。当前四题仍是 pending。</p></article>
           <article><span>S2 · COUNTED</span><h3>双人确认后正式跑</h3><p>两名独立验证者逐 node 审核、rubric hash 与环境冻结后，episode 才能进入主表。</p></article>
         </div>
-        <div className="schemaDownloads"><b>立即执行</b><a href="/AskInfer-Bench_S0-Smoke-README.md" download>先读这里 ↓</a><a href="/AskInfer-Bench_S0-Smoke-RUNBOOK.md" download>三系统 Runbook ↓</a><a href="/AskInfer-Bench_S0-Smoke-Manifest.json" download>运行清单 ↓</a><a href="/AskInfer-Bench_S0-Smoke-Personas.json" download>8 Personas ↓</a><a href="/AskInfer-Bench_S0-Smoke-Rubrics.json" download>Rubrics ↓</a><a href="/AskInfer-Bench_S0-Smoke-Cases.json" download>Hidden cases ↓</a><a href="/AskInfer-Bench_S0-Smoke-Scorecard.md" download>Scorecard ↓</a></div>
+        <div className="schemaDownloads"><b>立即执行</b><a href="/s0_run_20260904/RESULTS.md" download>首轮实跑结果 ↓</a><a href="/AskInfer-Bench_S0-Smoke-README.md" download>先读这里 ↓</a><a href="/AskInfer-Bench_S0-Smoke-RUNBOOK.md" download>三系统 Runbook ↓</a><a href="/AskInfer-Bench_S0-Smoke-Manifest.json" download>运行清单 ↓</a><a href="/AskInfer-Bench_S0-Smoke-Personas.json" download>8 Personas ↓</a><a href="/AskInfer-Bench_S0-Smoke-Rubrics.json" download>Rubrics ↓</a><a href="/AskInfer-Bench_S0-Smoke-Cases.json" download>Hidden cases ↓</a><a href="/AskInfer-Bench_S0-Smoke-Scorecard.md" download>Scorecard ↓</a></div>
       </section>
 
       <section className="shell gapSection" id="novelty"><p className="sectionTag">NEAREST NEIGHBORS</p><div className="sectionHead"><h2>最强审稿问题：这是否只是已有交互 benchmark 的跨域版？</h2><p>回答不能靠命名；必须用 pilot 证明 task-specific δ、真人决策节点、可识别性边界和 final artifact specificity 带来增量解释力。</p></div><div className="sourceGrid">{papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}</div></section>
 
-      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.63</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、两周执行手册、task screen、smoke pack、schema、协议、manifest 与项目记忆使用同一版本边界。</p></div><div className="editionGrid">
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.64</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、两周执行手册、task screen、smoke pack、首轮实跑、schema、协议、manifest 与项目记忆使用同一版本边界。</p></div><div className="editionGrid">
         <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整构念、条件、数据、测量、统计、风险与 Go/No-Go。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/AskInfer-Bench_正式研究Proposal.docx" download>Word</a></div></article>
         <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>快速判断主张、实验与最强 reviewer objections。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/AskInfer-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
         <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 Ask、Infer、PDR 边界、δ 与 CFA。</p><div className="editionLinks"><a href="/AskInfer-Bench_完整人话版.pdf" download>PDF</a><a href="/AskInfer-Bench_完整人话版.docx" download>Word</a></div></article>

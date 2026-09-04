@@ -5,7 +5,7 @@
 2026-09-04 本机检查与安装结果：
 
 - Codex CLI：`0.145.0`，已安装；
-- Claude Code：`2.1.221`，已安装；
+- Claude Code：`2.1.221`，已安装；当前用户设置指向的企业账户余额不足，三题均在模型接收 prompt 前返回 HTTP 401；
 - Gemini CLI：`0.46.0`，已通过 Homebrew 安装；尚未完成 Google 账号 OAuth。
 
 版本必须在每一批开始时重新记录；不要把今天的版本号硬编码成正式实验版本。
@@ -120,3 +120,5 @@ gemini
 ## 8. 今天的停止线
 
 今天先得到 `2 authenticated systems × 3 domains = 6` 个 S0 结果。Gemini OAuth 成功后补到 9 个。S0 失败就修 adapter/prompt parser；S0 通过才搭 S1 fixture。不要把 S0 的计划文本打成 leaderboard 分数，也不要直接启动 114 个 counted episodes。
+
+2026-09-04 实际状态：Codex 三题已完成，其中 2 PASS、1 FAIL；Claude 三题因企业账户余额不足全部是 infrastructure/auth failure，未产生模型输出。修复 Claude 后必须使用三个新 session，不能 resume 401 会话。运行证据见 `../../runs/s0/20260904_cli6_smoke_v0_63/`。

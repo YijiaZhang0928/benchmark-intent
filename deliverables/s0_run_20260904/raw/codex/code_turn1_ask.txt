@@ -1,0 +1,3 @@
+<ASK>
+{"questions":["Must the cache reuse the framework’s existing cache abstraction, or may it add a new backend/dependency?","On cache read or refresh failure, should requests bypass to the source, serve stale data when available, or fail closed?","What framework/runtime versions must remain compatible?"]}
+</ASK>

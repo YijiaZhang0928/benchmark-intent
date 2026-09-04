@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.63
+## 当前方向：AskInfer-Bench v0.64
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -20,6 +20,8 @@ v0.62 把两周执行范围冻结为六题 pilot：PDR-T01、PDR-T30、SW001、S
 
 v0.63 新增 [`pilot/askinfer_smoke_v0_63/`](pilot/askinfer_smoke_v0_63/)：4 个 Code/Data task 的 8 个 synthetic A/B user states、4 套 100 分粗/细 rubric、Research/Code/Data 三个 S0 prompts、隐藏 simulator ledger、runbook 与 scorecard。该包只用于 prompt/interaction/parser/answer-use/reset smoke；真实 repository/dataset 未绑定前不是 artifact smoke，两名独立人类未确认前不是 gold。Gemini CLI `0.46.0` 已安装，Google OAuth 仍须用户本人完成。
 
+v0.64 已完成第一批 live S0。Codex 三题为 Research PASS、Code PASS with warning、Data FAIL；Data 的失败来自遗漏 decision horizon，验证了 specification recovery 不能只看“问到几个 high-δ”。Claude 三题都在模型接收 prompt 前因企业账户余额不足返回 HTTP 401、token 为 0，因此只记基础设施失败。完整逐题问题、ledger-bounded 回答、node 映射、评分理由与原始输出见 [`runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md`](runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -29,7 +31,7 @@ v0.63 新增 [`pilot/askinfer_smoke_v0_63/`](pilot/askinfer_smoke_v0_63/)：4 �
 - [`proposal/AskInfer-Bench_两周执行Todo与任务手册.md`](proposal/AskInfer-Bench_两周执行Todo与任务手册.md)：详细、人话、可操作的任务卡、agent、运行规模、rubric、逐日门槛与摘要路线。
 - [`benchmark_schema/ask_infer_case.schema.yaml`](benchmark_schema/ask_infer_case.schema.yaml)：同任务用户差异、history observability、human validation 和实验条件 schema。
 - [`benchmark_schema/ask_infer_evaluation.protocol.yaml`](benchmark_schema/ask_infer_evaluation.protocol.yaml)：Ask/Infer 过程与最终评分、排名稳定性、统计和 Go/No-Go 协议。
-- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.63 源稿、执行冻结、PDR task slice、smoke 包、交付物、归档和复用基础设施索引。
+- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.64 源稿、执行冻结、PDR task slice、smoke 包、首轮实跑、交付物、归档和复用基础设施索引。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
 - [`proposal_assets/AskInfer-Bench_评测框架_v0.62.png`](proposal_assets/AskInfer-Bench_评测框架_v0.62.png)：3200×1800 主图；同名 SVG 可编辑。
 - [`deliverables/AskInfer-Bench_正式研究Proposal.pdf`](deliverables/AskInfer-Bench_正式研究Proposal.pdf)：正式研究 Proposal；同名 DOCX 可编辑。
@@ -48,7 +50,7 @@ DeepAlign-Bench v0.59 在主线切换前已完整保存：
 - DOCX/PDF/HTML/网页资源：[`deliverables/archive/DeepAlign-Bench-v0.59/`](deliverables/archive/DeepAlign-Bench-v0.59/)
 - 快照 commit：`159d8ce`
 
-v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、D-JQS 和 matched/swapped 资产继续作为 v0.63 的可复用基础设施；它们不是 Ask/Infer 已完成的实证结果。
+v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、D-JQS 和 matched/swapped 资产继续作为 v0.64 的可复用基础设施；它们不是 Ask/Infer 已完成的实证结果。
 
 ## 当前最强风险
 

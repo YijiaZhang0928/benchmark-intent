@@ -27,8 +27,16 @@
   },
   "local_cli_status": {
     "codex": "0.145.0 installed",
-    "claude": "2.1.221 installed",
+    "claude": "2.1.221 installed; configured enterprise auth returns HTTP 401 insufficient balance",
     "gemini": "0.46.0 installed; Google OAuth pending"
+  },
+  "latest_live_run": {
+    "run_id": "20260904_cli6_smoke_v0_63",
+    "results": "../../runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md",
+    "codex": "3 completed: 2 pass, 1 fail",
+    "claude": "3 infrastructure/auth failures before model allocation",
+    "gemini": "not run; OAuth pending",
+    "counted_episode_eligible": false
   },
   "files": {
     "personas": "personas_code_data.json",

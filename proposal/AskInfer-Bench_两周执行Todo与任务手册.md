@@ -1,6 +1,6 @@
 # AskInfer-Bench 两周执行 Todo 与任务作战手册
 
-> v0.63 · 2026-09-04 · S0 smoke 包已生成
+> v0.64 · 2026-09-04 · 首轮 Codex 实跑完成，Claude 鉴权受阻
 > 目标：在 2026-09-17 前完成可信的最小主实验与结果锁，在 2026-09-18 前提交真实摘要，在 2026-09-25 前完成 ICLR 2027 全文。  
 > 使用方式：每天先看“今日必须交付”，再看对应工作流；每个任务只有通过门槛后才能打勾。没有证据的完成状态一律记为“未完成”。
 
@@ -97,7 +97,7 @@ PDR-Bench 主要给 agent 完整 task 与完整 structured persona，评价完�
 | 系统 | 当前环境 | 本轮角色 | 加入主结果的硬门 |
 |---|---|---|---|
 | Codex CLI | 已安装 `0.145.0` | 通用 Research/Code/Data agent | 三域 smoke 全过；保存精确 model、CLI、配置和 tool trace |
-| Claude Code | 已安装 `2.1.221` | 通用 Research/Code/Data agent | 三域 smoke 全过；关闭跨 episode memory；冻结 alias 对应的实际 model |
+| Claude Code | 已安装 `2.1.221`；当前企业账户余额不足 | 通用 Research/Code/Data agent | 修复鉴权后用全新 session 跑三域 smoke；关闭跨 episode memory；冻结实际 model |
 | Gemini CLI | 已安装 `0.46.0`；OAuth 待本人登录 | 第三个通用 agent | 完成鉴权和三域 smoke；记录 Homebrew 渠道弃用警告、实际模型与账户类型 |
 
 ### 3.2 条件性第四系统
@@ -121,7 +121,7 @@ OpenHands 只在 9 月 5 日结束前同时通过以下条件时加入：固定 
 
 ### 3.5 今天立刻执行的 S0 smoke
 
-入口是 `pilot/askinfer_smoke_v0_63/README.md` 和 `RUNBOOK.md`。包内已有 SW001、SW013、DA003、DA015 的 8 个 synthetic A/B user states、4 套 100 分粗/细 rubric、隐藏 simulator ledger、三个可复制 prompt 和人工 scorecard。先运行 `python3 pilot/askinfer_smoke_v0_63/validate_pack.py`，再让 Codex 与 Claude 各跑 Research/Code/Data 三题；Gemini 完成本人 OAuth 后补跑。
+入口是 `pilot/askinfer_smoke_v0_63/README.md` 和 `RUNBOOK.md`。包内已有 SW001、SW013、DA003、DA015 的 8 个 synthetic A/B user states、4 套 100 分粗/细 rubric、隐藏 simulator ledger、三个可复制 prompt 和人工 scorecard。第一批结果位于 `runs/s0/20260904_cli6_smoke_v0_63/`：Codex Research PASS、Code PASS with warning、Data FAIL；Claude 三题因 401 企业余额不足未进入模型，不能计能力分。下一步先修复 Claude 鉴权并用全新 session 补三题；Gemini 完成本人 OAuth 后再补三题。
 
 S0 只验 `<ASK>/<FINAL>`、high-`δ` question targeting、ledger-bounded answer、具体 decision use、trace 和 reset。SW001/SW013/DA003/DA015 的真实 repo/dataset binding 仍是 `pending`，所以 S0 通过后必须搭 S1 fixture；不能把计划文本或关键词写入当成代码/notebook 完成。任何正式计分前，还要让两名独立验证者逐 node 确认并冻结。
 

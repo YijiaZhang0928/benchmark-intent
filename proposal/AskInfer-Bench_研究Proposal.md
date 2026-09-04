@@ -1,6 +1,6 @@
 # Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents
 
-版本：v0.63 · 2026 年 9 月 4 日
+版本：v0.64 · 2026 年 9 月 4 日
 
 状态：主线工作假设冻结；尚未产生模型比较结果
 
@@ -283,6 +283,8 @@ Ask 条件的主要模型为 agent × `δ` 的混合效应/设计型对比；fin
 DeepAlign-Bench v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、rubric provenance、D-JQS 和 matched/swapped 资产继续作为可复用基础设施；旧正式成果已归档为版本快照。v0.60 改变论文 estimand 和主实验矩阵；v0.61 又把 PDR overlap 从 50 个上游候选冻结为 15 个 pre-output personalization-diagnostic tasks，并将 task qualification 与 A/B pair qualification 分离；v0.62 冻结两周六题 pilot、三个必跑 agent 系统、114 个唯一 episode、公平运行窗口与 rubric 防关键词规则。
 
 v0.63 新增 `pilot/askinfer_smoke_v0_63/` 执行包：为 SW001、SW013、DA003、DA015 生成 8 个带 high/low/zero `δ` 的 LLM candidate user states、4 套带 artifact-evidence 和 mention-only cap 的 rubric，以及 Research/Code/Data 三个可复制 S0 prompts。S0 只验证 question channel、ledger-bounded answer、answer use、trace 与 reset；在真实 repository/dataset 尚未绑定时不能冒充 S1 artifact smoke。所有 synthetic nodes 在两名独立人类确认前不得进入 counted episodes。Gemini CLI `0.46.0` 已安装但 OAuth 尚待用户本人完成；安装渠道与鉴权类型都必须作为实验元数据冻结。
+
+v0.64 完成第一批 live S0：Codex CLI `0.145.0`（配置模型 `gpt-5.6-sol`）形成三个完整 episode，Research 通过、Code 带“把 task-factual compatibility 当偏好问题”的诊断警告通过、Data 因未询问 decision horizon 而缺少两季度 weekly scale/stop 日程并失败。Claude Code 三题均在模型接收 prompt 前因企业账户余额不足返回 HTTP 401，输入/输出 token 为 0，故只记 infrastructure/auth failure，不计模型 0 分。该结果验证了区分 preference clarification 与 task-factual clarification、并检查 acquisition-to-use 全链条的必要性；它仍不构成 agent 排名或 artifact 完成证据。
 
 ## 参考文献
 

@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.63"
+manifest_version: "0.64"
 updated: "2026-09-04"
 status: working_hypothesis_frozen
 
@@ -23,6 +23,8 @@ active_sources:
   smoke_personas: pilot/askinfer_smoke_v0_63/personas_code_data.json
   smoke_rubrics: pilot/askinfer_smoke_v0_63/rubrics_code_data.json
   smoke_cases: pilot/askinfer_smoke_v0_63/smoke_cases.json
+  first_live_smoke_results: runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md
+  first_live_smoke_manifest: runs/s0/20260904_cli6_smoke_v0_63/run_manifest.json
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -74,6 +76,12 @@ scope:
     later_planning_upper_bound_base_tasks: 31
   development_smoke:
     package_version: "0.63"
+    first_live_run:
+      run_id: 20260904_cli6_smoke_v0_63
+      codex: "3 completed: Research pass, Code pass with warning, Data fail"
+      claude: "3 HTTP 401 infrastructure/auth failures before model allocation"
+      gemini: "not run; OAuth pending"
+      counted_episode_eligible: false
     status: s0_ready_development_only
     code_data_persona_records: 8
     code_data_rubric_bundles: 4
