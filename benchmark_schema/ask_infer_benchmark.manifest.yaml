@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.62"
-updated: "2026-09-03"
+manifest_version: "0.63"
+updated: "2026-09-04"
 status: working_hypothesis_frozen
 
 paper:
@@ -18,6 +18,11 @@ active_sources:
   plain_language: proposal/AskInfer-Bench_人话版.md
   advisor_brief: proposal/AskInfer-Bench_汇报精简版.md
   execution_todo: proposal/AskInfer-Bench_两周执行Todo与任务手册.md
+  smoke_manifest: pilot/askinfer_smoke_v0_63/manifest.json
+  smoke_runbook: pilot/askinfer_smoke_v0_63/RUNBOOK.md
+  smoke_personas: pilot/askinfer_smoke_v0_63/personas_code_data.json
+  smoke_rubrics: pilot/askinfer_smoke_v0_63/rubrics_code_data.json
+  smoke_cases: pilot/askinfer_smoke_v0_63/smoke_cases.json
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -67,6 +72,24 @@ scope:
     conditional_first_expansion_base_tasks: 12
     conditional_first_expansion_per_vertical: 4
     later_planning_upper_bound_base_tasks: 31
+  development_smoke:
+    package_version: "0.63"
+    status: s0_ready_development_only
+    code_data_persona_records: 8
+    code_data_rubric_bundles: 4
+    s0_cases: [DR-PDR-T01-A, SW001-A, DA003-B]
+    installed_cli_versions:
+      codex_cli: "0.145.0"
+      claude_code: "2.1.221"
+      gemini_cli: "0.46.0"
+    gemini_authentication: pending_user_oauth
+    s1_environment_binding: pending
+    counted_episode_eligible: false
+    upgrade_gates:
+      - two_independent_human_validators_approve_nonzero_nodes
+      - real_repository_and_dataset_bindings_frozen
+      - objective_verifiers_pass
+      - prompt_trace_and_reset_smokes_pass
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -92,3 +115,5 @@ claim_boundaries:
   - pilot_is_not_confirmatory_main_experiment
   - pdr_task_selection_is_pre_output_and_not_leaderboard_conditioned
   - selected_15_requires_two_human_reviewers_and_separate_pair_audit
+  - s0_prompt_smoke_is_not_artifact_completion_or_leaderboard_evidence
+  - llm_synthetic_code_data_personas_are_not_gold_before_two_human_validators

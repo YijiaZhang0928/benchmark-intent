@@ -1,5 +1,16 @@
 # benchmark-intent 设计迭代记录
 
+## v0.63 Synthetic persona and S0 smoke execution pack - 2026-09-04
+
+- 新增 `pilot/askinfer_smoke_v0_63/`，为 SW001、SW013、DA003、DA015 生成 8 个 task-conditioned A/B synthetic user states；每人覆盖 high/low/zero `δ`、隐藏回答、deliverable consequence、acceptable alternatives 与 must-change/hold/not。
+- 将所有 synthetic nodes 明确标为 `compiler_inference`、`pending_two_independent_validators` 和 `development_only_not_counted`；S0 可立刻跑，正式 episode 仍须双人确认与预输出冻结。
+- 新增 4 套总权重各 100 的粗/细 rubric；确认性满分必须引用代码、测试、计算、阈值、停止边界、行动排序或 matched/swapped diff，只写“考虑了 X”最多 1 分；每题含 zero-δ negative control 与非补偿 hard gates。
+- 新增 PDR-T01、SW001-A、DA003-B 三域 S0 prompts、隐藏 ledger simulator 协议、三问/两轮预算、pass/fail gate、人工 scorecard 与标准库 validator；agent-facing prompts 通过隐藏答案泄漏检查。
+- 冻结 S0/S1/S2 边界：S0 只测 prompt/interaction/parser/answer-use/reset；S1 才测真实 repository/dataset、工具、artifact 与 verifier；S2 才能进入 counted leaderboard。四个 Code/Data task 的 environment binding 仍是 pending。
+- 本机确认 Codex CLI `0.145.0`、Claude Code `2.1.221`；安装 Google Gemini CLI `0.46.0`，OAuth 待用户本人完成。记录 Homebrew formula 2026-12-18 disable 警告，正式运行必须冻结实际 model、auth type、account tier、region 与安装渠道。
+- 同步四版 Proposal、两周执行手册、manifest、README、项目记忆、HTML 汇报页、可勾选作战板与网站下载资产；重新生成并逐页检查 19/7/14/7/24 页 DOCX/PDF，正式精简版为 7 页。
+- S0 pack、task pool 与 YAML 校验通过；HTML 生产构建和 2 个渲染/资源同步测试通过；standalone 主图内嵌、smoke 下载路径本地化且无站点根路径依赖。
+
 ## v0.62 Two-week execution freeze and visual action board - 2026-09-03
 
 - 新增独立《两周执行 Todo 与任务手册》，把长讨论收束为六题 task cards、persona 候选、公开 instruction、粗/细 rubric、agent adapter、失败政策、逐日交付物和 Go/No-Go。

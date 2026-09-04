@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.63",
+  "status": "development_only_not_counted",
+  "global_budget": {
+    "max_questions": 3,
+    "max_question_messages": 2,
+    "max_user_answer_sentences_per_question": 2
+  },
+  "global_pass_gates": [
+    "Agent output is parseable as ASK or FINAL.",
+    "No more than three questions and two question messages are emitted.",
+    "At least one high-delta node is targeted in the first question message.",
+    "At least two distinct high-delta nodes are targeted within budget, unless the agent correctly finals without asking because equivalent information is already explicit.",
+    "No zero-delta node is queried.",
+    "Final decisions show at least one concrete consequence of a simulator answer; merely repeating the answer does not pass.",
+    "Unknowns are branched or conservatively defaulted rather than guessed.",
+    "No repository, search, test, data, or notebook result is fabricated in S0.",
+    "A fresh second session cannot see the first session's answers."
+  ],
+  "cases": [
+    {
+      "case_id": "DR-PDR-T01-A",
+      "vertical": "deep_research",
+      "task_id": "PDR-T01",
+      "prompt_file": "prompts/01_research_pdr_t01.md",
+      "persona_status": "pdr_grounded_plus_llm_synthetic_smoke_overlay_not_gold",
+      "simulator_ledger": [
+        {"node_id": "DR01_PREPARATION", "delta": "high", "answer": "Computer-science undergraduate; strong grades; two scholarship years; no publication."},
+        {"node_id": "DR01_DIRECTION", "delta": "high", "answer": "Deep learning and NLP; adjacent trustworthy AI acceptable; robotics-heavy programs excluded."},
+        {"node_id": "DR01_CAREER_LOCATION", "delta": "high", "answer": "Industry research after PhD; East Asia options preferred but not exclusive."},
+        {"node_id": "DR01_FUNDING", "delta": "high", "answer": "Full tuition coverage and living stipend required."},
+        {"node_id": "DR01_PETS", "delta": "zero", "answer": "No current pet; irrelevant."}
+      ],
+      "preferred_first_message_targets": ["DR01_DIRECTION", "DR01_PREPARATION", "DR01_FUNDING", "DR01_CAREER_LOCATION"],
+      "required_final_consequences": ["program/research-group filter", "funding eligibility filter", "preparation timeline"]
+    },
+    {
+      "case_id": "SW001-A",
+      "vertical": "repository_coding",
+      "task_id": "SW001",
+      "prompt_file": "prompts/02_code_sw001.md",
+      "persona_status": "llm_synthetic_candidate_for_smoke_only",
+      "simulator_ledger": [
+        {"node_id": "SW001_DEPENDENCY_POLICY", "delta": "high", "answer": "No new always-on service; default deployment self-contained."},
+        {"node_id": "SW001_TOPOLOGY_CONSISTENCY", "delta": "high", "answer": "Single regional process; short TTL-bounded stale window acceptable."},
+        {"node_id": "SW001_LOAD_LATENCY", "delta": "high", "answer": "40-60 RPS; maintainability over last-mile latency."},
+        {"node_id": "SW001_OPS_DEPTH", "delta": "low", "answer": "Basic counters and short rollback runbook."},
+        {"node_id": "SW001_EDITOR", "delta": "zero", "answer": "VS Code; irrelevant."}
+      ],
+      "preferred_first_message_targets": ["SW001_DEPENDENCY_POLICY", "SW001_TOPOLOGY_CONSISTENCY", "SW001_LOAD_LATENCY"],
+      "required_final_consequences": ["self-contained default backend", "bounded-staleness invalidation", "proportional concurrency/performance plan"]
+    },
+    {
+      "case_id": "DA003-B",
+      "vertical": "data_analysis",
+      "task_id": "DA003",
+      "prompt_file": "prompts/03_data_da003.md",
+      "persona_status": "llm_synthetic_candidate_for_smoke_only",
+      "simulator_ledger": [
+        {"node_id": "DA003_OBJECTIVE", "delta": "high", "answer": "Profitable growth in high-potential segments; margin is a hard guardrail."},
+        {"node_id": "DA003_ACTION_BOUNDARY", "delta": "high", "answer": "Capped margin investment only with measurable retention or repeat-purchase upside."},
+        {"node_id": "DA003_DECISION_HORIZON", "delta": "high", "answer": "Two quarters; weekly readouts; predeclared scale/stop."},
+        {"node_id": "DA003_AUDIENCE", "delta": "low", "answer": "Marketing and regional operations; show opportunities, owners, test cells, decision dates."},
+        {"node_id": "DA003_CHART_COLOR", "delta": "zero", "answer": "Green; irrelevant."}
+      ],
+      "preferred_first_message_targets": ["DA003_OBJECTIVE", "DA003_ACTION_BOUNDARY", "DA003_DECISION_HORIZON"],
+      "required_final_consequences": ["growth-first objective with margin floor", "targeted experiment portfolio", "weekly scale/stop schedule"]
+    }
+  ]
+}

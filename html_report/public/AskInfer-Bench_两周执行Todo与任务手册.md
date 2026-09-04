@@ -1,6 +1,6 @@
 # AskInfer-Bench 两周执行 Todo 与任务作战手册
 
-> v0.62 · 2026-09-03 · 内部执行冻结候选  
+> v0.63 · 2026-09-04 · S0 smoke 包已生成
 > 目标：在 2026-09-17 前完成可信的最小主实验与结果锁，在 2026-09-18 前提交真实摘要，在 2026-09-25 前完成 ICLR 2027 全文。  
 > 使用方式：每天先看“今日必须交付”，再看对应工作流；每个任务只有通过门槛后才能打勾。没有证据的完成状态一律记为“未完成”。
 
@@ -85,8 +85,8 @@ PDR-Bench 主要给 agent 完整 task 与完整 structured persona，评价完�
 | PDR simulated context | 已导入 | 只作 controlled/simulated history | 未经原用户确认，不称 natural history |
 | Code task shells | 三个 paper-first task shell | 否 | 绑定具体仓库 commit、许可证、容器与测试 |
 | Data task shells | 四个 paper-first task shell | 否 | 绑定数据/工作簿、数据字典、split 与 verifier |
-| Code/Data personas | 尚未创建 | 否 | LLM 生成 task-conditioned candidate；两人逐项确认后才能冻结 |
-| Rubric module/node schema | 已完成通用模板 | 否 | 每个 case 编译 12–20 条任务特异 leaf，运行前哈希冻结 |
+| Code/Data personas | 4 题 8 个 LLM candidate 已生成 | 只可 S0 smoke | 两人逐项确认后才能进入 counted episode |
+| Rubric module/node schema | 4 套候选粗/细 rubric 已生成 | 只可 S0 结构测试 | 补真实 verifier evidence；两人复核后哈希冻结 |
 | Interaction environment | reset/step、隐藏 persona、trace 骨架可用 | 只可 smoke | 增加 Codex/Claude/Gemini CLI adapters 与批量队列 |
 | 正式 agent leaderboard | 不存在 | 否 | 先跑六题 pilot，通过后才扩十二题 |
 
@@ -98,7 +98,7 @@ PDR-Bench 主要给 agent 完整 task 与完整 structured persona，评价完�
 |---|---|---|---|
 | Codex CLI | 已安装 `0.145.0` | 通用 Research/Code/Data agent | 三域 smoke 全过；保存精确 model、CLI、配置和 tool trace |
 | Claude Code | 已安装 `2.1.221` | 通用 Research/Code/Data agent | 三域 smoke 全过；关闭跨 episode memory；冻结 alias 对应的实际 model |
-| Gemini CLI | 未安装 | 第三个通用 agent | 9 月 6 日前完成安装、鉴权和三域 smoke，否则主榜改为两产品+一个受控 baseline |
+| Gemini CLI | 已安装 `0.46.0`；OAuth 待本人登录 | 第三个通用 agent | 完成鉴权和三域 smoke；记录 Homebrew 渠道弃用警告、实际模型与账户类型 |
 
 ### 3.2 条件性第四系统
 
@@ -118,6 +118,12 @@ OpenHands 只在 9 月 5 日结束前同时通过以下条件时加入：固定 
 - timeout、可重试错误、不可重试错误、最大重试次数和结果选择规则必须在第一次正式运行前冻结。
 - 保存开始/结束 UTC、CLI/model/version、账户层级、地区、工具调用、token、延迟、成本、退出码、stderr、artifact hash。
 - 不要求全实验一天跑完；目标是 48–72 小时完成同一批次，并用 5%–10% anchor 重跑检测时间漂移。
+
+### 3.5 今天立刻执行的 S0 smoke
+
+入口是 `pilot/askinfer_smoke_v0_63/README.md` 和 `RUNBOOK.md`。包内已有 SW001、SW013、DA003、DA015 的 8 个 synthetic A/B user states、4 套 100 分粗/细 rubric、隐藏 simulator ledger、三个可复制 prompt 和人工 scorecard。先运行 `python3 pilot/askinfer_smoke_v0_63/validate_pack.py`，再让 Codex 与 Claude 各跑 Research/Code/Data 三题；Gemini 完成本人 OAuth 后补跑。
+
+S0 只验 `<ASK>/<FINAL>`、high-`δ` question targeting、ledger-bounded answer、具体 decision use、trace 和 reset。SW001/SW013/DA003/DA015 的真实 repo/dataset binding 仍是 `pending`，所以 S0 通过后必须搭 S1 fixture；不能把计划文本或关键词写入当成代码/notebook 完成。任何正式计分前，还要让两名独立验证者逐 node 确认并冻结。
 
 ## 4. 六题 pilot：可运行任务卡
 

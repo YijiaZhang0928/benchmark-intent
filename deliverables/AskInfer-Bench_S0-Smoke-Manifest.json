@@ -1,0 +1,42 @@
+{
+  "package": "askinfer_smoke_v0_63",
+  "version": "0.63",
+  "created": "2026-09-04",
+  "purpose": "Immediate prompt-and-interaction smoke testing for AskInfer-Bench",
+  "scientific_status": "development_only_not_counted",
+  "persona_generation": {
+    "generator": "Codex",
+    "model_label": "GPT-5 family; exact serving snapshot not exposed to this workspace",
+    "method": "task-conditioned A/B counterfactual authoring with explicit high/low/zero delta nodes",
+    "human_validation": "not_started",
+    "counted_episode_eligible": false
+  },
+  "tasks": ["PDR-T01", "SW001", "SW013", "DA003", "DA015"],
+  "persona_records": 8,
+  "code_data_task_pairs": 4,
+  "manual_smoke_cases": ["DR-PDR-T01-A", "SW001-A", "DA003-B"],
+  "smoke_levels": {
+    "S0": "prompt, interaction, question parsing, answer use, trace and reset",
+    "S1": "real repository or dataset, tool use, artifact creation and objective verifier",
+    "S2": "frozen human-validated personas, rubrics, environments and counted episodes"
+  },
+  "current_readiness": {
+    "S0": "ready_after_local_validation",
+    "S1": "blocked_for_SW001_SW013_DA003_DA015_by_pending_environment_binding",
+    "S2": "blocked_by_two_human_validation_and_freeze"
+  },
+  "local_cli_status": {
+    "codex": "0.145.0 installed",
+    "claude": "2.1.221 installed",
+    "gemini": "0.46.0 installed; Google OAuth pending"
+  },
+  "files": {
+    "personas": "personas_code_data.json",
+    "rubrics": "rubrics_code_data.json",
+    "smoke_cases": "smoke_cases.json",
+    "runbook": "RUNBOOK.md",
+    "agent_protocol": "prompts/00_agent_protocol.md",
+    "simulator_protocol": "prompts/00_user_simulator_protocol.md",
+    "validator": "validate_pack.py"
+  }
+}

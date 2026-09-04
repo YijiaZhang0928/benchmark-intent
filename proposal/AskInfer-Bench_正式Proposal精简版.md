@@ -2,7 +2,7 @@
 
 ## 正式 Proposal 精简版
 
-版本：v0.62 · 2026 年 9 月 3 日
+版本：v0.63 · 2026 年 9 月 4 日
 
 状态：工作主线与最小实验冻结；无模型排名结果
 
@@ -33,6 +33,8 @@ PDR-Bench 不是“implicit elicitation”：它给 agent structured persona，�
 - `high`：改变 evidence set、算法/接口、分析定义、主要切片、结论或关键风险边界。
 
 `δ` 是运行前的序数 impact label，不是 agent 输出后的分差。每条 preference node 必须绑定具体 deliverable decision、history evidence span、criticality、acceptable alternatives 和 must-change/must-hold/must-not。LLM 可以按 schema 生成 code/data 候选与 atomic rubric leaves；人类用户提供 ground truth，两名验证者独立确认。分歧无法仲裁时剔除，不以平均掩盖。
+
+v0.63 已把候选实例化为 `pilot/askinfer_smoke_v0_63/`：4 个 Code/Data task、8 个 A/B user states、4 套 100 分 rubric 与三域 S0 prompts。该包只用于 interaction/parser/reset 排障；真实 repo/data 未绑定前不是 artifact smoke，双人确认前不是 gold。细 rubric 的 2 分要求代码、测试、计算、阈值、停止规则、行动排序或 matched/swapped diff；只写“考虑了 X”最多 1 分。
 
 History 中的 nodes 另标记为：`recoverable`、`missing_askable`、`unidentifiable`、`irrelevant`。Ask 主测 high-`δ missing_askable`；Infer 主测 recoverable 利用与 unidentifiable/irrelevant 克制。
 

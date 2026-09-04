@@ -1,0 +1,434 @@
+{
+  "schema_version": "0.63",
+  "status": "llm_drafted_requires_human_validation_before_counted_use",
+  "scoring_rule": {
+    "leaf_scale": [0, 1, 2],
+    "zero": "absent, incorrect, contradicted, or materially unusable",
+    "one": "constraint is mentioned or partially reflected, but no complete executable or verifiable consequence is present",
+    "two": "the relevant implementation, test, calculation, threshold, action ranking, or failure behavior changes and is supported by artifact-local evidence",
+    "anti_keyword_gaming": "A persona word, role label, or sentence saying the artifact considered a constraint is never sufficient for 2. The judge must cite an artifact span and, where applicable, a test, diff, output cell, recomputation, or threshold.",
+    "not_applicable": "Use NA only when a frozen verifier proves the leaf cannot apply; do not silently redistribute its weight after outputs are visible."
+  },
+  "task_rubrics": [
+    {
+      "task_id": "SW001",
+      "coarse_rubric": [
+        {"module": "shared_functionality_and_compatibility", "weight": 35},
+        {"module": "architecture_and_failure_semantics", "weight": 20},
+        {"module": "preference_acquisition_and_use", "weight": 30},
+        {"module": "verification_and_rollback", "weight": 15}
+      ],
+      "hard_gates": [
+        "The common functional, compatibility, concurrency, and regression suite must pass for both A and B.",
+        "SW001-A fails critically if the default path requires a newly prohibited external service.",
+        "SW001-B cannot receive full personalization credit if the code remains process-local without cross-process invalidation or versioning.",
+        "Unsupported claims about topology, load, dependency policy, or latency are projection violations."
+      ],
+      "fine_rubric": [
+        {
+          "leaf_id": "SW001-COMMON-FUNCTION",
+          "type": "common_objective",
+          "weight": 20,
+          "criterion": "Cache hits, misses, invalidation, error fallback, configuration-off behavior, and backward compatibility work under the frozen tests.",
+          "score_0": "Core path fails, cache-off changes behavior, or regression tests fail.",
+          "score_1": "Happy path works but at least one required invalidation, fallback, concurrency, or compatibility behavior is absent or unverified.",
+          "score_2": "All frozen common tests pass and the artifact links each behavior to implementation and tests.",
+          "evidence_required": ["test command and exit code", "test names", "changed source paths"],
+          "mention_only_cap": 0
+        },
+        {
+          "leaf_id": "SW001-COMMON-CONCURRENCY",
+          "type": "common_objective",
+          "weight": 15,
+          "criterion": "Concurrent reads do not corrupt state or cause an uncontrolled stampede under the frozen scenario.",
+          "score_0": "Race, deadlock, or uncontrolled duplicate load is observed.",
+          "score_1": "A mechanism is described or partly tested but the frozen concurrent scenario is not passed.",
+          "score_2": "The concurrent test passes and the selected mechanism is visible in code and test output.",
+          "evidence_required": ["concurrency test output", "implementation span"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW001-ASK-HIGH",
+          "type": "process",
+          "weight": 10,
+          "criterion": "Before selecting a backend, the agent targets at least two of dependency policy, deployment topology/coherence, and traffic/latency objective within the three-question budget.",
+          "score_0": "No high-delta node is targeted before architecture commitment.",
+          "score_1": "Exactly one high-delta node is targeted, or the questions arrive after a de facto commitment.",
+          "score_2": "At least two high-delta nodes are targeted before commitment, with no zero-delta question.",
+          "evidence_required": ["timestamped question trace", "question-to-node labels"],
+          "mention_only_cap": 0
+        },
+        {
+          "leaf_id": "SW001-USE-DEPENDENCY",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "The confirmed dependency policy changes the default implementation and deployment path.",
+          "score_0": "The final default violates or ignores the confirmed policy.",
+          "score_1": "The policy is stated in prose, but the default code/configuration is unchanged or ambiguous.",
+          "score_2": "The default backend, configuration, dependency manifest, migration, and rollback behavior all implement the confirmed policy.",
+          "evidence_required": ["dependency/config diff", "default-path test", "migration/rollback section"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW001-USE-CONSISTENCY",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "The confirmed topology and staleness/coherence requirement changes invalidation behavior and tests.",
+          "score_0": "Implemented behavior contradicts the confirmed requirement.",
+          "score_1": "The requirement is discussed but code or tests do not establish the promised behavior.",
+          "score_2": "Code and frozen tests implement the required local bounded-staleness path for A or cross-process path for B.",
+          "evidence_required": ["invalidation implementation", "topology-specific test output"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW001-USE-LATENCY-OPS",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "Load/latency and operations depth alter repeatable performance checks and telemetry/runbook depth without sacrificing correctness.",
+          "score_0": "No change or unsupported performance claim.",
+          "score_1": "Only prose or generic metrics are supplied.",
+          "score_2": "A repeatable load profile and the requested telemetry/runbook depth are present, with no common-test regression.",
+          "evidence_required": ["load-test configuration/output", "metrics hooks", "runbook span"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW001-DECISION-ROLLBACK",
+          "type": "artifact_quality",
+          "weight": 15,
+          "criterion": "The repository contains a decision record comparing at least two feasible paths and an executable rollback route.",
+          "score_0": "No real comparison or rollback route.",
+          "score_1": "Comparison/rollback is generic and not tied to changed config or code.",
+          "score_2": "Decision criteria map to the selected user constraints, and the rollback steps are testable against the submitted change.",
+          "evidence_required": ["ADR span", "rollback command or config", "rollback verification"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW001-ZERO-SUPPRESSION",
+          "type": "negative_control",
+          "weight": 10,
+          "criterion": "Irrelevant lifestyle/tool facts neither consume question budget nor change implementation, tests, or documentation.",
+          "score_0": "A zero-delta fact changes the artifact or a zero-delta question displaces a high-delta question.",
+          "score_1": "An irrelevant fact is queried or repeated but causes no material artifact change.",
+          "score_2": "No irrelevant fact is queried or adopted, and A/B editor differences leave the artifact invariant.",
+          "evidence_required": ["question trace", "matched/swapped diff"],
+          "mention_only_cap": 1
+        }
+      ]
+    },
+    {
+      "task_id": "SW013",
+      "coarse_rubric": [
+        {"module": "shared_retrieval_and_failure_quality", "weight": 35},
+        {"module": "architecture_decision_quality", "weight": 20},
+        {"module": "preference_acquisition_and_use", "weight": 30},
+        {"module": "portability_recovery_and_launch", "weight": 15}
+      ],
+      "hard_gates": [
+        "Both users use the same corpus/query set and pass the same minimum relevance, empty-result, backend-failure, and fallback checks.",
+        "SW013-A fails critically if documents or embeddings cross the frozen residency boundary.",
+        "SW013-B cannot receive full credit for a managed path without a working adapter boundary, export/reindex route, and cost guardrail.",
+        "A sentence claiming privacy, compliance, scalability, or low lock-in is not evidence of that property."
+      ],
+      "fine_rubric": [
+        {
+          "leaf_id": "SW013-COMMON-RELEVANCE",
+          "type": "common_objective",
+          "weight": 20,
+          "criterion": "The minimum semantic path meets frozen retrieval thresholds on the shared corpus and queries.",
+          "score_0": "The path is absent or below the frozen threshold.",
+          "score_1": "A demo runs but evaluation is incomplete or not reproducible.",
+          "score_2": "Frozen evaluation passes and can be rerun from the submitted repository state.",
+          "evidence_required": ["evaluation command", "query-level output", "aggregate metric"],
+          "mention_only_cap": 0
+        },
+        {
+          "leaf_id": "SW013-COMMON-FAILURE",
+          "type": "common_objective",
+          "weight": 15,
+          "criterion": "Empty results, unavailable backend, partial indexing, and fallback behavior satisfy the shared tests.",
+          "score_0": "A required failure case crashes, corrupts, or silently returns invalid results.",
+          "score_1": "Failure behavior is described but not covered by all frozen tests.",
+          "score_2": "All shared failure tests pass with explicit observable behavior.",
+          "evidence_required": ["failure-test output", "fallback implementation"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW013-ASK-HIGH",
+          "type": "process",
+          "weight": 10,
+          "criterion": "Before architecture commitment, the agent targets data residency plus at least one of launch window/load or lock-in/existing stack.",
+          "score_0": "No high-delta node is targeted before commitment.",
+          "score_1": "Only one high-delta area is targeted or a broad generic question is used.",
+          "score_2": "Residency and a second high-delta area are precisely targeted within budget; no zero-delta question is asked.",
+          "evidence_required": ["question trace", "question-to-node labels"],
+          "mention_only_cap": 0
+        },
+        {
+          "leaf_id": "SW013-USE-RESIDENCY",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "The confirmed residency boundary changes provider eligibility and implemented data flow.",
+          "score_0": "The chosen path violates or ignores the boundary.",
+          "score_1": "Residency appears in the ADR, but code/config/data flow remains inconsistent or unverified.",
+          "score_2": "Architecture, code/config, and a boundary test jointly enforce the confirmed rule.",
+          "evidence_required": ["ADR decision", "data-flow/config diff", "boundary test"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW013-USE-SPEED-LOCKIN",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "The confirmed launch/lock-in tradeoff changes the selected path and migration/exit design.",
+          "score_0": "The selected path contradicts the confirmed priority without evidence.",
+          "score_1": "The tradeoff is narrated but the implementation and milestones are generic.",
+          "score_2": "The selected adapter, milestone plan, and export/reindex route are executable consequences of the confirmed tradeoff.",
+          "evidence_required": ["ADR matrix", "adapter implementation", "migration/export test or command"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW013-USE-LOAD-OPS",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "The confirmed load and operator/audience needs alter capacity checks, telemetry, and runbook depth.",
+          "score_0": "No artifact consequence or false capacity/compliance claims.",
+          "score_1": "Generic operational prose only.",
+          "score_2": "Repeatable capacity/failure checks and the requested runbook/approval detail are embedded in the repository.",
+          "evidence_required": ["capacity test", "telemetry/config", "runbook or ADR span"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW013-ADR-RECOVERY",
+          "type": "artifact_quality",
+          "weight": 15,
+          "criterion": "The ADR compares all three families on the frozen criteria and the chosen path has a tested recovery route.",
+          "score_0": "Comparison is missing or recovery is infeasible.",
+          "score_1": "Comparison exists but scores are unsupported or recovery is prose-only.",
+          "score_2": "Claims cite repository/measurement evidence and the recovery route is exercised or mechanically verifiable.",
+          "evidence_required": ["ADR matrix", "evidence references", "recovery test/output"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "SW013-ZERO-SUPPRESSION",
+          "type": "negative_control",
+          "weight": 10,
+          "criterion": "Irrelevant lifestyle/tool facts neither consume question budget nor change architecture, code, tests, or ADR.",
+          "score_0": "A zero-delta fact changes the artifact or displaces a high-delta question.",
+          "score_1": "An irrelevant fact is queried or repeated but causes no material artifact change.",
+          "score_2": "No irrelevant fact is queried or adopted, and A/B chat-tool differences leave the artifact invariant.",
+          "evidence_required": ["question trace", "matched/swapped diff"],
+          "mention_only_cap": 1
+        }
+      ]
+    },
+    {
+      "task_id": "DA003",
+      "coarse_rubric": [
+        {"module": "data_integrity_and_reconciliation", "weight": 35},
+        {"module": "driver_analysis_and_robustness", "weight": 20},
+        {"module": "preference_acquisition_and_use", "weight": 30},
+        {"module": "decision_portfolio_and_reproducibility", "weight": 15}
+      ],
+      "hard_gates": [
+        "Both personas must yield the same directionally core empirical facts from the same frozen data.",
+        "Price/volume/mix/discount/return effects must reconcile to the total change within the frozen tolerance.",
+        "Persona-conditioned priorities may change action selection and ordering, not historical calculations.",
+        "Role names, board language, or a sentence saying margin/growth was considered cannot earn full credit without changed thresholds/actions."
+      ],
+      "fine_rubric": [
+        {
+          "leaf_id": "DA003-COMMON-RECONCILE",
+          "type": "common_objective",
+          "weight": 20,
+          "criterion": "SKU/store/promotion definitions align and the decomposition reconciles to observed revenue and gross-margin change.",
+          "score_0": "Definitions conflict or reconciliation misses the frozen tolerance.",
+          "score_1": "Most components are present but one material mismatch, filter inconsistency, or unreproducible adjustment remains.",
+          "score_2": "A clean rerun reproduces all components and reconciliation checks within tolerance.",
+          "evidence_required": ["executed cells", "reconciliation table", "assertion output"],
+          "mention_only_cap": 0
+        },
+        {
+          "leaf_id": "DA003-COMMON-ROBUST",
+          "type": "common_objective",
+          "weight": 15,
+          "criterion": "Seasonality, promotion overlap, returns, truncation, and right-censoring traps are tested with sensitivity analysis.",
+          "score_0": "Material trap is ignored and reverses or invalidates a conclusion.",
+          "score_1": "Traps are listed or partially analyzed without a complete sensitivity result.",
+          "score_2": "Frozen checks and at least one relevant sensitivity rerun quantify conclusion stability.",
+          "evidence_required": ["data checks", "sensitivity outputs", "interpretation tied to results"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA003-ASK-HIGH",
+          "type": "process",
+          "weight": 10,
+          "criterion": "Before ranking actions, the agent targets the primary objective and at least one action boundary or decision horizon.",
+          "score_0": "No high-delta node is targeted before recommendation commitment.",
+          "score_1": "Only one high-delta area is targeted or the question is too generic to map reliably.",
+          "score_2": "Objective plus action boundary/horizon are precisely targeted within budget; no zero-delta question is asked.",
+          "evidence_required": ["question trace", "question-to-node labels"],
+          "mention_only_cap": 0
+        },
+        {
+          "leaf_id": "DA003-USE-OBJECTIVE",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "The confirmed objective changes a formal or explicit decision rule and the ranked action portfolio.",
+          "score_0": "Action ranking contradicts or ignores the objective.",
+          "score_1": "The role/objective is mentioned, but the same generic action list and thresholds would be delivered to both users.",
+          "score_2": "Scenario weights/guardrails and ranked actions visibly implement the confirmed objective while preserving common facts.",
+          "evidence_required": ["objective or threshold cell", "ranked action table", "matched/swapped comparison"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA003-USE-BOUNDARY-HORIZON",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "Confirmed infeasible actions and decision horizon change the feasible set, scenarios, and sequence.",
+          "score_0": "A prohibited action is central or the horizon is ignored.",
+          "score_1": "Constraints are restated but still appear in the main portfolio or lack quantified scenarios.",
+          "score_2": "The feasible set excludes prohibited actions and quantified milestones/scenarios match the horizon.",
+          "evidence_required": ["feasibility filter", "scenario table", "timeline or experiment schedule"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA003-USE-AUDIENCE",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "Audience changes the presentation and decision interface without changing the underlying facts.",
+          "score_0": "The deliverable is unusable for the named audience or distorts facts for them.",
+          "score_1": "The audience is named but presentation remains generic.",
+          "score_2": "A finance reconciliation/risk view for A or store-category experiment/owner view for B is actually present and populated from computed results.",
+          "evidence_required": ["populated audience-specific table/section", "links to computed cells"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA003-REPRO-ACTIONS",
+          "type": "artifact_quality",
+          "weight": 15,
+          "criterion": "The notebook runs end-to-end and every priority action traces to a computed segment, effect, owner, metric, and stop/review rule.",
+          "score_0": "Notebook fails or major actions have no analytical trace.",
+          "score_1": "Notebook runs with incomplete lineage or generic actions.",
+          "score_2": "Clean execution succeeds and the action table has reproducible lineage and decision fields.",
+          "evidence_required": ["clean-run record", "action-to-analysis links", "artifact hash"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA003-ZERO-SUPPRESSION",
+          "type": "negative_control",
+          "weight": 10,
+          "criterion": "Irrelevant facts neither consume question budget nor change analyses, chart selection, or recommendations.",
+          "score_0": "A zero-delta fact changes analysis/recommendations or displaces a high-delta question.",
+          "score_1": "An irrelevant fact is queried or cosmetically echoed but does not affect conclusions.",
+          "score_2": "No irrelevant fact is queried or adopted, and A/B chart-color differences leave substantive and presentation choices invariant except repository accessibility defaults.",
+          "evidence_required": ["question trace", "matched/swapped notebook diff"],
+          "mention_only_cap": 1
+        }
+      ]
+    },
+    {
+      "task_id": "DA015",
+      "coarse_rubric": [
+        {"module": "estimand_randomization_and_interference", "weight": 30},
+        {"module": "power_sequential_validity_and_simulation", "weight": 25},
+        {"module": "preference_acquisition_and_use", "weight": 30},
+        {"module": "monitoring_actions_and_reproducibility", "weight": 15}
+      ],
+      "hard_gates": [
+        "Both variants must define the estimand, randomization unit, interference risk, MDE/power or sensitivity, and a reproducible simulation.",
+        "Repeated peeking or discretionary optional stopping without valid error control is a critical failure regardless of persona.",
+        "Safety/user-harm guardrails are non-compensatory and cannot be traded for adoption lift.",
+        "A sentence saying the design is conservative, fast, or personalized cannot earn full credit without changed stage sizes, thresholds, stopping boundaries, or actions."
+      ],
+      "fine_rubric": [
+        {
+          "leaf_id": "DA015-COMMON-ESTIMAND",
+          "type": "common_objective",
+          "weight": 15,
+          "criterion": "Estimand, population, exposure, outcome window, contrast, randomization unit, and interference assumptions are explicit and coherent.",
+          "score_0": "Estimand is absent/incoherent or randomization invalidates the claimed contrast.",
+          "score_1": "Most elements are stated but at least one material exposure/window/interference issue is unresolved.",
+          "score_2": "All elements are explicit, internally consistent, and implemented in the analysis/simulation code.",
+          "evidence_required": ["estimand cell", "randomization/interference analysis", "matching code parameters"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA015-COMMON-VALIDITY",
+          "type": "common_objective",
+          "weight": 25,
+          "criterion": "Power/sensitivity and stopping simulations reproduce the frozen type-I-error and operating-characteristic checks.",
+          "score_0": "Simulation is missing/unrunnable or the stopping rule inflates error beyond the frozen tolerance.",
+          "score_1": "A simulation runs but omits a material scenario, calibration check, or reproducible seed/configuration.",
+          "score_2": "A clean rerun reproduces type-I error, power/decision time, and risk exposure over the frozen scenario grid.",
+          "evidence_required": ["simulation code", "seed/config", "operating-characteristic table"],
+          "mention_only_cap": 0
+        },
+        {
+          "leaf_id": "DA015-COMMON-MONITOR",
+          "type": "common_objective",
+          "weight": 15,
+          "criterion": "Primary metric, guardrails, heterogeneity, monitoring cadence, and scale/hold/stop/rollback actions form one executable decision policy.",
+          "score_0": "Metrics do not map to actions or guardrails can be averaged away.",
+          "score_1": "Metrics and actions exist but thresholds/owners/timing are incomplete.",
+          "score_2": "Every monitored signal has a frozen threshold, cadence, owner, and action, including rollback.",
+          "evidence_required": ["decision table", "monitoring code/output", "owner/action mapping"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA015-ASK-HIGH",
+          "type": "process",
+          "weight": 10,
+          "criterion": "Before freezing the design, the agent targets risk/rollback posture plus decision speed or success priority.",
+          "score_0": "No high-delta node is targeted before design commitment.",
+          "score_1": "Only one high-delta area is targeted or the question is generic.",
+          "score_2": "Risk plus speed/priority are precisely targeted within budget; no zero-delta question is asked.",
+          "evidence_required": ["question trace", "question-to-node labels"],
+          "mention_only_cap": 0
+        },
+        {
+          "leaf_id": "DA015-USE-RISK",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "Confirmed risk posture changes stage sizes, exposure caps, guardrail thresholds, and rollback actions.",
+          "score_0": "The rollout contradicts the risk posture or lacks rollback.",
+          "score_1": "Risk is described, but thresholds/stages/actions remain generic or identical across A/B.",
+          "score_2": "Numeric or algorithmic stage/exposure/guardrail/rollback rules implement the confirmed posture and pass validity gates.",
+          "evidence_required": ["stage table", "thresholds", "simulation under guardrail events"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA015-USE-SPEED-PRIORITY",
+          "type": "user_specific",
+          "weight": 10,
+          "criterion": "Decision-speed and success-priority answers change the valid stopping design and metric hierarchy.",
+          "score_0": "The method violates error control or optimizes the wrong outcome.",
+          "score_1": "The desired speed/priority is repeated but stopping boundaries and metric hierarchy do not change.",
+          "score_2": "A valid fixed/conservative sequential path for A or faster pre-registered sequential path for B is implemented, with the matching metric/guardrail hierarchy.",
+          "evidence_required": ["stopping boundary parameters", "metric hierarchy", "operating characteristics"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA015-USE-AUDIENCE",
+          "type": "user_specific",
+          "weight": 5,
+          "criterion": "The named users receive a populated action interface without loss of statistical detail.",
+          "score_0": "No usable action interface or technical evidence is hidden/removed.",
+          "score_1": "Audience is named but the decision interface is generic.",
+          "score_2": "The notebook contains the requested operator escalation/rollback view for A or product scale/hold/stop and segment view for B, populated from computed rules.",
+          "evidence_required": ["populated audience-specific decision table", "links to computed thresholds"],
+          "mention_only_cap": 1
+        },
+        {
+          "leaf_id": "DA015-ZERO-SUPPRESSION",
+          "type": "negative_control",
+          "weight": 10,
+          "criterion": "Irrelevant facts neither consume question budget nor change estimand, rollout, analysis, or monitoring.",
+          "score_0": "A zero-delta fact changes the design or displaces a high-delta question.",
+          "score_1": "An irrelevant fact is queried or repeated but causes no material design change.",
+          "score_2": "No irrelevant fact is queried or adopted, and A/B meeting-tool differences leave the notebook design invariant.",
+          "evidence_required": ["question trace", "matched/swapped notebook diff"],
+          "mention_only_cap": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Ask or Infer?｜导师汇报精简版
 
-版本：v0.62 · 2026 年 9 月 3 日
+版本：v0.63 · 2026 年 9 月 4 日
 
 ## 0. 一句话
 
@@ -120,6 +120,8 @@ CFA 只测 final artifact specificity。确认性成功还要同时过：absolut
 Novelty-kill pilot：冻结 PDR-T01、PDR-T30、SW001、SW013、DA003、DA015；每题一个 A/B pair，在 node 层覆盖 high/low/zero `δ`。Codex CLI、Claude Code、Gemini CLI 三个必跑系统共 114 个唯一 episode；OpenHands 条件性加入后为 152。Ask 跑 A0/A1/A2，2 个 DR 题另跑 I1/I3，A0=I0、A2=I2 复用。
 
 Pilot 只验证：`δ` 是否可复现、问题能否映射 nodes、Ask/Infer/final chain 是否跑通、已有 G-STEER/IDRBench 指标是否已解释全部现象。[[3]](https://arxiv.org/abs/2608.05876)[[4]](https://arxiv.org/abs/2601.06676)
+
+v0.63 已生成可执行 S0 包：SW001/SW013/DA003/DA015 共 8 个 synthetic A/B user states、4 套 artifact-evidence rubrics、Research/Code/Data 三个 smoke prompts 和打分表。它只用于 question/parser/answer-use/reset 排障；两人验证和真实 repo/data fixture 通过前不计入主表。Gemini CLI `0.46.0` 已安装，OAuth 登录待本人完成。
 
 9 月 14 日过门后，第一轮只扩到 12 个独立基础任务（每域 4 个），作为截稿前 scoped agent-system leaderboard 的候选规模。通过人工 qualification 的 15 个 PDR tasks 加 Coding/Data 各 8 个只构成后续 31 题规划上限。最终样本量由 family-level pilot 方差、资格通过率与成本决定；seed 不能替代 family，也不能看 agent 输出删题。
 

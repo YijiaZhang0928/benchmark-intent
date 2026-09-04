@@ -2,11 +2,25 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-03
-当前版本：v0.62（两周执行冻结与六题 pilot）
+最后更新：2026-09-04
+当前版本：v0.63（Code/Data synthetic persona 与 S0 smoke 执行包）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAA. 2026-09-04：直接进入执行、生成 synthetic personas 与三域 S0 smoke
+
+用户明确要求停止只讲计划，直接生成 Code/Data persona 并给出可运行 smoke prompts。v0.63 新建 `pilot/askinfer_smoke_v0_63/`，包含 SW001、SW013、DA003、DA015 各一对 A/B user states，共 8 条记录。每位 user 都有同一 node registry 中的 high、low、zero `δ`，并明确 criterion、隐藏 value、`answer_if_asked`、应改变的 deliverable decision、acceptable alternatives、must-change/must-hold/must-not、provenance 与人工验证状态。生成者记录为 Codex / GPT-5 family；工作区无法获得精确 serving snapshot，因此不伪造具体 model ID。所有节点均标为 `compiler_inference` 和 `pending_two_independent_validators`。
+
+4 套 Code/Data rubric 同步实例化为 100 分 coarse/fine bundles。确认性 2 分必须有 artifact-local evidence，例如代码/config diff、冻结测试输出、可重算 cell、阈值、停止边界、行动排序、recovery command 或 matched/swapped diff；只说“考虑了用户的风险、隐私、预算、受众”等最多 1 分。每题另有 zero-δ suppression negative control 和非补偿 hard gates。这个设计直接针对用户担心的 judge keyword gaming，但当前 rubric 仍是 LLM draft；真人与 verifier 未完成前不能称 gold。
+
+三域 S0 case 冻结为 PDR-T01 synthetic smoke overlay、SW001-A 与 DA003-B；每题最多 3 个 questions、最多 2 个 question messages。S0 只验证 `<ASK>/<FINAL>` 解析、high-`δ` targeting、ledger-bounded user reply、answer-to-decision use、unsupported projection、trace 和 reset。它刻意禁止假装已有 repository/data/search/test/notebook 结果。原因是 task pool 明确记录 SW001、SW013、DA003、DA015 的 `environment_binding_status=pending`；此时直接声称 Code/Data artifact smoke 通过会把 prompt planning 与 agent execution 混为一谈。升级顺序固定为：S0 交互排障 → S1 真实 repo/dataset 和 objective verifier → S2 双人确认、哈希冻结后的 counted episodes。
+
+本机状态已从只读检查更新为：Codex CLI `0.145.0`、Claude Code `2.1.221`、Gemini CLI `0.46.0`。Gemini 通过 Homebrew 安装的实际包是 Google `@google/gemini-cli`，但 Homebrew 给出“upstream 不再支持该 formula、2026-12-18 disable”的分发警告；本轮可冻结当前版本做 smoke，正式扩展需记录安装渠道并优先核对官方 npm release。Gemini 鉴权尚未完成，因为 Google OAuth 必须由用户本人在浏览器确认；鉴权是确定请求所用身份、项目、配额和计费，不是 persona 访问授权。
+
+立即执行顺序：先跑 validator；Codex 与 Claude 各跑 Research/Code/Data 共 6 个 S0；用户完成 Gemini OAuth 后补 3 个；逐 case 填 scorecard。S0 通过后先绑定 SW001 与 DA003 两个最小真实 environment slice，不批量启动 114 个 counted episodes。开放问题更新为：（1）三系统 S0 是否都能稳定发出可解析 question action；（2）Gemini OAuth、实际 model 和 account tier；（3）SW001 base repo/commit 与 DA003 frozen dataset/seed；（4）两名独立验证者对 8 个 synthetic user states 的 node-level 保留率；（5）真实 verifier 是否能把“mention-only 1 分”与“artifact consequence 2 分”可靠区分。
+
+v0.63 交付 QA 已完成：S0 pack validator 与 v0.59 task-pool validator 均通过，manifest 可解析，HTML 生产构建与 2 个渲染/资源同步测试通过，standalone 已内嵌主图并确认不存在站点根路径的 smoke/figure 依赖。正式稿、精简稿、人话版、导师版与两周手册分别为 19/7/14/7/24 页，已逐页目检且无截断、重叠或溢出；正式精简版维持 7 页。PDF、DOCX、smoke 下载件、网站 public 资源与 standalone 已同步。
 
 ## 0AAAA. 2026-09-03：两周执行冻结、六题 pilot 与 agent-system 运行预算
 

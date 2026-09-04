@@ -1,6 +1,6 @@
 # Ask or Infer?｜完整人话版
 
-版本：v0.62 · 2026 年 9 月 3 日
+版本：v0.63 · 2026 年 9 月 4 日
 
 ## 先用一句话讲清楚
 
@@ -226,7 +226,7 @@ LLM 可以把这些内容拆成更细的 atomic rubric leaf、检查遗漏、写
 
 我们要评价的是**任务特定个性化中的信息策略**：用户在线时，agent 是否问真正改变交付物的偏好；用户离线时，agent 是否只推断 history 有证据的偏好；最终，它是否真的把这些信息变成正确的 research、code 或 data deliverable。
 
-我们暂时不能说模型会理解用户、排名一定反转，或这个方向已经超过现有 benchmark。v0.62 的正确状态是：一个完成 50→15 pre-output task screen、冻结六题执行候选与运行预算、但仍等待双人 qualification 和 novelty-kill pilot 的可证伪主线。
+我们暂时不能说模型会理解用户、排名一定反转，或这个方向已经超过现有 benchmark。v0.63 的正确状态是：50→15 pre-output task screen 和六题 pilot 已冻结；4 个 Code/Data task 的 8 个 synthetic A/B persona、rubric 与三域 S0 prompts 已生成并通过结构校验；Codex、Claude 可立即跑 S0，Gemini CLI 已安装但还要本人登录。S0 只能证明交互管道能跑，真实 repo/data 没绑定就不能说 Code/Data artifact smoke 已通过；synthetic persona 没经过两人确认就不能进正式结果。
 
 ## 参考文献
 
