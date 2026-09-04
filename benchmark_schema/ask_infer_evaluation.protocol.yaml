@@ -1,5 +1,5 @@
 protocol_name: ask_infer_evaluation
-protocol_version: "0.61"
+protocol_version: "0.62"
 status: working_hypothesis_frozen
 frozen_on: "2026-09-03"
 
@@ -157,22 +157,57 @@ statistical_unit:
 
 pilot:
   base_tasks: 6
+  frozen_task_ids:
+    deep_research: [PDR-T01, PDR-T30]
+    repository_coding: [SW001, SW013]
+    data_analysis: [DA003, DA015]
   domains_per_task_count:
     deep_research: 2
     repository_coding: 2
     data_analysis: 2
-  delta_strata_per_task: 3
-  agents: 4
-  ask_conditions: 3
-  expected_ask_episodes: 216
+  paired_users_per_task: 2
+  delta_design:
+    level: preference_node
+    required_per_task: [high, low, zero]
+    separate_task_level_delta_replication: false
+  mandatory_agent_systems:
+    - codex_cli
+    - claude_code
+    - gemini_cli
+  conditional_agent_system: openhands
+  ask_conditions:
+    - A0_no_ask
+    - A1_ask_with_user_simulator
+    - A2_task_specific_oracle
+  infer_conditions_deep_research_only:
+    - I0_task_only
+    - I1_authorized_history
+    - I2_task_specific_oracle
+    - I3_pdr_full_persona_bridge
+  exact_output_reuse:
+    A0_equals_I0: true
+    A2_equals_I2: true
+  unique_episode_count:
+    mandatory_three_agents: 114
+    with_conditional_fourth_agent: 152
+    mandatory_three_agents_with_two_repeats: 228
+    with_conditional_fourth_agent_and_two_repeats: 304
+  fairness_window:
+    matched_block_hours: "2-6"
+    target_batch_completion_hours: "48-72"
+    anchor_rerun_fraction: "0.05-0.10"
   infer_bridge_deep_research_tasks: 2
   claim_limit: novelty_kill_and_measurement_validation_only
 
 conditional_main_experiment:
+  first_expansion_base_tasks: 12
+  first_expansion_per_vertical: 4
+  first_expansion_role: scoped_agent_system_leaderboard_candidate
   deep_research_overlap_pool: 15
   repository_coding_planning_count: 8
   data_analysis_planning_count: 8
   planning_upper_bound_base_tasks: 31
+  upper_bound_is_current_deadline_commitment: false
   final_freeze_depends_on:
     - family_level_pilot_variance
     - human_task_and_pair_qualification_rate

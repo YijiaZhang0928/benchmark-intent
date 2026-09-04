@@ -1,6 +1,6 @@
 # Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents
 
-版本：v0.61 · 2026 年 9 月 3 日
+版本：v0.62 · 2026 年 9 月 3 日
 
 状态：主线工作假设冻结；尚未产生模型比较结果
 
@@ -231,9 +231,11 @@ CFA 保留为 final-artifact counterfactual specificity effect。它不告诉我
 
 基础任务是独立推断单位。用户 pair、`δ` level、agent、seed、turn、question 和 rubric leaf 都嵌套在基础任务内，不作为独立样本。
 
-**Novelty-kill pilot：**6 个基础任务（每个 vertical 2 个）× 3 个 `δ` strata × 4 个 agent × A0/A1/A2，约 216 个 Ask episode；其中 2 个 Deep Research 任务追加 I0/I1/I2/I3。该 pilot 只验证操纵、日志、提问对齐、final scoring 和近邻增量，不估计稳定排行榜。
+**Novelty-kill pilot：**冻结 6 个基础任务：PDR-T01、PDR-T30、SW001、SW013、DA003、DA015。每题使用一个 A/B 用户对，并在 preference-node 层同时覆盖至少一个 high、low 和 zero `δ`，不再把同一题机械复制为三个 task-level strata。Ask 跑 A0/A1/A2；两个 Deep Research 任务追加 I1 history 与 I3 PDR Full-Persona bridge，A0=I0、A2=I2 精确复用。Codex CLI、Claude Code、Gemini CLI 三个必跑 agent system 共 114 个唯一 episode；OpenHands 只在 9 月 5 日前通过全部 smoke test 时加入，届时为 152 个。该 pilot 只验证操纵、日志、提问对齐、final scoring 和近邻增量，不估计稳定排行榜。
 
-**条件性主实验：**共享 Deep Research overlap pool 先固定为上述 15 个 PDR task；通过双人 task/profile qualification 的 surviving families 同时进入 PDR-style、Ask 与 Infer 比较。Coding 与 Data Analysis 各以 8 个独立基础任务作为暂定规划量，因此上限是 15 DR + 8 Coding + 8 Data = 31 个基础任务，而不是等域配额。最终 agent 数、repeat、Coding/Data family 数和是否保留全部 15 个 DR family 由 pilot 的 family-level 方差、最小实际重要差异、人工资格通过率、成本和多重终点方案做功效模拟后冻结；不得基于 agent 输出淘汰题目。若时间只允许增加 seed 而不能增加 task family，不应假装统计功效已提高。
+公平性不要求一天跑完整批：同一 `task × target user` matched block 的所有系统在 2–6 小时内按随机顺序运行，整批目标 48–72 小时，并对 5%–10% anchor 重跑以检测时间漂移。主结果解释为 agent product/system-level comparison，而非纯 base-model 排名。
+
+**条件性扩展：**9 月 14 日过 Go/No-Go 后，第一轮只扩到 12 个独立基础任务，即 Deep Research、Coding、Data Analysis 各 4 个；这是论文在当前截止期内的 scoped agent-system leaderboard 候选规模。15 个 PDR task 的 Deep Research overlap pool、Coding 8 题与 Data 8 题只构成后续 31 题规划上限，不是当前两周承诺。最终 agent 数、repeat、family 数和是否继续向上限扩展，由 pilot 的 family-level 方差、最小实际重要差异、人工资格通过率、成本和多重终点方案做功效模拟后冻结；不得基于 agent 输出淘汰题目。若时间只允许增加 seed 而不能增加 task family，不应假装统计功效已提高。
 
 Ask 条件的主要模型为 agent × `δ` 的混合效应/设计型对比；final score 使用 family-blocked permutation 与 family-cluster bootstrap。跨 domain 只报告交互与异质性，不用一个 domain 的高分补偿另一个 domain 的失败。
 
@@ -278,7 +280,7 @@ Ask 条件的主要模型为 agent × `δ` 的混合效应/设计型对比；fin
 
 ## 13. 与 v0.59 资产的关系
 
-DeepAlign-Bench v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、rubric provenance、D-JQS 和 matched/swapped 资产继续作为可复用基础设施；旧正式成果已归档为版本快照。v0.60 改变论文 estimand 和主实验矩阵；v0.61 又把 PDR overlap 从 50 个上游候选冻结为 15 个 pre-output personalization-diagnostic tasks，并将 task qualification 与 A/B pair qualification 分离。
+DeepAlign-Bench v0.59 的 task pool、interaction environment、真人 ledger、Counterfactual Difference Map、rubric provenance、D-JQS 和 matched/swapped 资产继续作为可复用基础设施；旧正式成果已归档为版本快照。v0.60 改变论文 estimand 和主实验矩阵；v0.61 又把 PDR overlap 从 50 个上游候选冻结为 15 个 pre-output personalization-diagnostic tasks，并将 task qualification 与 A/B pair qualification 分离；v0.62 冻结两周六题 pilot、三个必跑 agent 系统、114 个唯一 episode、公平运行窗口与 rubric 防关键词规则。
 
 ## 参考文献
 

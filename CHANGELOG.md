@@ -1,5 +1,17 @@
 # benchmark-intent 设计迭代记录
 
+## v0.62 Two-week execution freeze and visual action board - 2026-09-03
+
+- 新增独立《两周执行 Todo 与任务手册》，把长讨论收束为六题 task cards、persona 候选、公开 instruction、粗/细 rubric、agent adapter、失败政策、逐日交付物和 Go/No-Go。
+- 冻结六题 pilot：PDR-T01、PDR-T30、SW001、SW013、DA003、DA015；每题一个 A/B 用户对，在 preference-node 层同时覆盖 high/low/zero `δ`，不再机械复制三个 task-level strata。
+- 冻结三套必跑 agent product/system：Codex CLI、Claude Code、Gemini CLI；OpenHands 仅在 9 月 5 日前通过全部 smoke 时加入。主结果明确不是纯 base-model 排名。
+- 纠正旧 216 episode 计数：Ask A0/A1/A2 加两个 DR 的 I1/I3，且 A0=I0、A2=I2 精确复用；三系统为 114 个唯一 episode，四系统为 152，二次重复为 228/304。
+- 公平性改为 matched block 内 2–6 小时随机顺序、整批 48–72 小时和 5%–10% anchor 重跑；不要求一天跑完全量。
+- Rubric 满分绑定最终 choice、implementation、analysis slice、metric、threshold 或 action；“是否考虑到 X”或 persona 关键词提及最多 1/2，并以共同事实、测试、安全与隐私作为非补偿门。
+- Code/Data persona 明确只能由 LLM 产生候选，须经两名独立人类验证才进入 gold；任务选择依据人类预输出 deliverable-decision divergence，LLM rubric 差异只作 manipulation check。
+- 新增 3200×1800 两周作战图、可勾选并本地保存状态的 standalone HTML；同步四版 Proposal、case/evaluation schema、manifest、README、DOCX/PDF 与网站资源。
+- 统一规模口径为“6-task pilot → 过门后每域 4 题、共 12-task 首轮扩展 → 31-task 仅为后续规划上限”，避免把远期容量误读为两周执行承诺。
+
 ## v0.61 PDR 50→15 personalization-diagnostic task slice - 2026-09-03
 
 - 不再随机或按 10-domain 配额抽 PDR task；对官方 50 题逐题冻结 `Personalization leverage=0/1/2`、非表面内容改变、history 可取证、2–4 preference dimensions、DR 深度、人口/关键词投射和 task–profile 冲突风险。

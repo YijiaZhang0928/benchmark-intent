@@ -11,7 +11,7 @@ from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 ROOT = Path(__file__).resolve().parents[1]
 MD = ROOT / "proposal" / "AskInfer-Bench_研究Proposal.md"
-FIG = ROOT / "proposal_assets" / "AskInfer-Bench_评测框架_v0.61.png"
+FIG = ROOT / "proposal_assets" / "AskInfer-Bench_评测框架_v0.62.png"
 OUT = ROOT / "deliverables" / "AskInfer-Bench_正式研究Proposal.docx"
 
 # The formal proposal is the default. Communication variants override these
@@ -21,7 +21,7 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "Ask or Infer?"
 COVER_SUBTITLE = "Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents"
 COVER_MODE = "Preference Acquisition · History Inference · Final Utilization"
-DOC_VERSION = "v0.61 · PDR 50→15 诊断任务切片"
+DOC_VERSION = "v0.62 · 两周执行冻结"
 DOC_DATE = "2026 年 9 月 3 日"
 RESEARCH_LINE = "Ask Calibration · Evidence-Bounded Inference · Counterfactual Delivery"
 CORE_CLAIM = "评价 agent 是否把有限问题预算投向真正改变交付物的偏好，并在用户离线时只从有证据的 history 推断；排名反转是待检验结果。"
@@ -549,6 +549,7 @@ def build(md_path=MD, out_path=OUT):
             "## 1. 设计结论",
             "## 先用一句话讲清楚",
             "## 0. 一句话",
+            "## 0. 先做决定：两周内做什么、不做什么",
         }
     )
     lines = lines[start:]

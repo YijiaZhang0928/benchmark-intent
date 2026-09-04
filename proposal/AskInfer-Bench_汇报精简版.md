@@ -1,6 +1,6 @@
 # Ask or Infer?｜导师汇报精简版
 
-版本：v0.61 · 2026 年 9 月 3 日
+版本：v0.62 · 2026 年 9 月 3 日
 
 ## 0. 一句话
 
@@ -117,11 +117,11 @@ CFA 只测 final artifact specificity。确认性成功还要同时过：absolut
 
 ## 11. 最小实验
 
-Novelty-kill pilot：6 个基础任务（每域 2）× 3 个 `δ` strata × 4 agent × A0/A1/A2 ≈ 216 Ask episodes；2 个 DR task 加 I0–I3。
+Novelty-kill pilot：冻结 PDR-T01、PDR-T30、SW001、SW013、DA003、DA015；每题一个 A/B pair，在 node 层覆盖 high/low/zero `δ`。Codex CLI、Claude Code、Gemini CLI 三个必跑系统共 114 个唯一 episode；OpenHands 条件性加入后为 152。Ask 跑 A0/A1/A2，2 个 DR 题另跑 I1/I3，A0=I0、A2=I2 复用。
 
 Pilot 只验证：`δ` 是否可复现、问题能否映射 nodes、Ask/Infer/final chain 是否跑通、已有 G-STEER/IDRBench 指标是否已解释全部现象。[[3]](https://arxiv.org/abs/2608.05876)[[4]](https://arxiv.org/abs/2601.06676)
 
-通过后，DR overlap 使用通过人工 qualification 的 15 个 PDR tasks；Coding/Data 暂各 8 个，上限 31 个基础任务。最终样本量由 family-level pilot 方差、资格通过率与成本决定；seed 不能替代 family，也不能看 agent 输出删题。
+9 月 14 日过门后，第一轮只扩到 12 个独立基础任务（每域 4 个），作为截稿前 scoped agent-system leaderboard 的候选规模。通过人工 qualification 的 15 个 PDR tasks 加 Coding/Data 各 8 个只构成后续 31 题规划上限。最终样本量由 family-level pilot 方差、资格通过率与成本决定；seed 不能替代 family，也不能看 agent 输出删题。
 
 ## 12. 五个 Go / No-Go
 
@@ -138,7 +138,7 @@ Pilot 只验证：`δ` 是否可复现、问题能否映射 nodes、Ask/Infer/fi
 1. 是否接受 Ask 三域、Infer 只做 DR 的不对称范围？
 2. `δ` 主分析是否只用 0/low/high 序数等级，连续量只作次级？
 3. 是否接受 PDR task/persona 只作 bridge，而不直接当 Ask gold？
-4. 先做 216-episode novelty-kill pilot，还是继续优先真人问卷建设？
+4. 先执行 114-episode 三系统 novelty-kill pilot，还是在三域 smoke 不过时立即收窄系统或任务范围？
 5. 排名反转若不成立，是否接受论文改为 Ask Calibration 主线？
 
 ## 参考文献

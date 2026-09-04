@@ -3,10 +3,26 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-03
-当前版本：v0.61（PDR 50→15 personalization-diagnostic task slice）
+当前版本：v0.62（两周执行冻结与六题 pilot）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAA. 2026-09-03：两周执行冻结、六题 pilot 与 agent-system 运行预算
+
+用户要求停止继续发散，进入 ICLR 2027 执行阶段，并把长回答沉淀为详细人话 Todo 与可视化作战板。v0.62 因此将当前工作限定为“先完成可杀死设计的最小闭环，再条件性扩量”，而不是复现 PDR 十系统全榜或直接承诺 31 个基础任务。
+
+六题 pilot 冻结为：Deep Research 的 PDR-T01（AI PhD）与 PDR-T30（个人媒体）；repository coding 的 SW001（可配置缓存）与 SW013（向量检索架构）；data analysis 的 DA003（增长—利润诊断）与 DA015（分阶段发布决策）。每题只使用一个 A/B 用户对，但在 preference-node 层同时覆盖至少一个 high、low 和 zero/irrelevant `δ`。这是对旧 `6×3 δ×4 agent×3 condition=216` 的修正：旧式计数没有明确 A/B 用户方向，也与 matched/swapped CFA 不闭合。新版 Ask 为 `6 tasks×2 users×3 conditions=36/agent`；两个 DR 题额外运行 I1 history 与 I3 Full Persona 为 `8/agent`，A0=I0、A2=I2 使用同一输出，因此每个 agent 共 38 个唯一 episode，三个系统 114 个，四个系统 152 个；两次重复时为 228/304。
+
+必跑系统冻结为 Codex CLI、Claude Code 和 Gemini CLI；OpenHands 只在 9 月 5 日前通过固定 commit/容器、三域工具、repository/workbook 输出和 Ask 协议 smoke 时加入。这里比较的是 agent product/system-level ability：模型、system prompt、planner、工具和产品集成共同变化，不解释为纯 base-model 排名。公平性也不等于一天跑完：同一 `task×target user` matched block 的 agent 顺序预随机，并在 2–6 小时内完成；整批目标 48–72 小时；5%–10% anchor 跨时段重跑，所有 session/worktree 隔离并记录版本、token、成本、延迟、工具、退出码和 artifact hash。
+
+任务与 persona 的真值边界进一步冻结。PDR Full Persona 只用于 I3 bridge，不进入 Ask 主条件；PDR simulated context 只能称 controlled/simulated history。Code/Data persona 可由 LLM 生成 high-recall 候选，但必须由两名独立人类确认自然性、任务相关性、deliverable impact、可询问性、无答案泄漏和无刻板投射后才可进入 gold。选题与冻结 node 的依据是人类在看不到 agent 输出时判断 A/B 是否应产生不同的 deliverable decisions；“LLM 为两人生成的 rubric 是否明显不同”只作 manipulation check，不能成为 selection criterion，否则形成循环定义。
+
+Rubric 的防骗规则是：确认性满分必须绑定最终采用的方案、代码路径、分析切片、指标、阈值、结论或行动，并要求 artifact evidence；只写“考虑到用户预算/风险/平台”或复制 persona token 最多得 1/2。共同事实、测试、兼容性、安全、隐私和 unsupported projection 是非补偿门，不能由 personalization 分抵消。Pilot 只允许称 novelty-kill pilot 或 pilot comparison；只有扩到至少十二个独立基础任务并分 vertical 报告区间后，才可称 scoped agent-system leaderboard。
+
+排期冻结为：9/3–9/6 完成 gold/env/adapter/budget 与三域 smoke；9/7–9/10 完成主运行和预注册重试；9/11–9/13 完成盲评、failure-chain、anchor 和 pilot 主表；9/14 Go/No-Go，过门才扩每域四题、共 12 个独立基础任务；9/17 锁结果；9/18 11:59 PM AOE 提交真实、信息充分的摘要；9/25 提交全文。15 DR + 8 Coding + 8 Data = 31 题只是后续规划上限，不是当前两周承诺。摘要现在可以写问题、gap、方法、评价与诚实结果槽位，但不能是 placeholder，也不能声称未完成的稳定排名。
+
+新增真值源为 `proposal/AskInfer-Bench_两周执行Todo与任务手册.md`、其 DOCX/PDF、`proposal_assets/AskInfer-Bench_两周执行作战图_v0.62.*` 和可勾选 standalone HTML。当前开放问题：（1）PDR-T01/T30 A/B 对能否通过两人复核；（2）Code/Data 目标 repo、dataset 和 verifier 是否能在 9 月 5 日前冻结；（3）Gemini CLI 是否能在 9 月 6 日前完成鉴权与三域 smoke；（4）114 个 episode 的时间/费用实测；（5）六题构念与 judge 门是否足以支持扩十二题。
 
 ## 0AAA. 2026-09-03：PDR 50 题筛到 15 题的诊断性切片
 

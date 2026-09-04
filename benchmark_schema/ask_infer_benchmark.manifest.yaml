@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.61"
+manifest_version: "0.62"
 updated: "2026-09-03"
 status: working_hypothesis_frozen
 
@@ -17,14 +17,17 @@ active_sources:
   condensed: proposal/AskInfer-Bench_正式Proposal精简版.md
   plain_language: proposal/AskInfer-Bench_人话版.md
   advisor_brief: proposal/AskInfer-Bench_汇报精简版.md
+  execution_todo: proposal/AskInfer-Bench_两周执行Todo与任务手册.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
   pdr_selection_protocol: data/pdr_diagnostic_slice_v0_61/selection_protocol.yaml
   pdr_selected_tasks: data/pdr_diagnostic_slice_v0_61/selected_15.jsonl
   pdr_selected_tasks_readable: data/pdr_diagnostic_slice_v0_61/selected_15.md
-  figure_svg: proposal_assets/AskInfer-Bench_评测框架_v0.61.svg
-  figure_png: proposal_assets/AskInfer-Bench_评测框架_v0.61.png
+  figure_svg: proposal_assets/AskInfer-Bench_评测框架_v0.62.svg
+  figure_png: proposal_assets/AskInfer-Bench_评测框架_v0.62.png
+  execution_figure_svg: proposal_assets/AskInfer-Bench_两周执行作战图_v0.62.svg
+  execution_figure_png: proposal_assets/AskInfer-Bench_两周执行作战图_v0.62.png
 
 active_deliverables:
   formal_docx: deliverables/AskInfer-Bench_正式研究Proposal.docx
@@ -35,9 +38,12 @@ active_deliverables:
   plain_pdf: deliverables/AskInfer-Bench_完整人话版.pdf
   advisor_docx: deliverables/AskInfer-Bench_汇报精简版.docx
   advisor_pdf: deliverables/AskInfer-Bench_汇报精简版.pdf
+  execution_todo_docx: deliverables/AskInfer-Bench_两周执行Todo与任务手册.docx
+  execution_todo_pdf: deliverables/AskInfer-Bench_两周执行Todo与任务手册.pdf
+  execution_board_html: deliverables/AskInfer-Bench_两周执行作战板.html
   standalone_html: deliverables/AskInfer-Bench_HTML汇报版.html
-  figure_svg: deliverables/AskInfer-Bench_评测框架_v0.61.svg
-  figure_png: deliverables/AskInfer-Bench_评测框架_v0.61.png
+  figure_svg: deliverables/AskInfer-Bench_评测框架_v0.62.svg
+  figure_png: deliverables/AskInfer-Bench_评测框架_v0.62.png
 
 scope:
   ask_domains:
@@ -51,6 +57,16 @@ scope:
     - low
     - high
   independent_unit: base_task
+  execution_freeze:
+    pilot_task_ids: [PDR-T01, PDR-T30, SW001, SW013, DA003, DA015]
+    mandatory_agent_systems: [codex_cli, claude_code, gemini_cli]
+    conditional_agent_system: openhands
+    unique_episodes_three_agents: 114
+    unique_episodes_four_agents: 152
+    exact_reuse: [A0_equals_I0, A2_equals_I2]
+    conditional_first_expansion_base_tasks: 12
+    conditional_first_expansion_per_vertical: 4
+    later_planning_upper_bound_base_tasks: 31
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15

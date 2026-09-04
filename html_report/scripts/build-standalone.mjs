@@ -7,12 +7,12 @@ const outPath = resolve(root, "deliverables/AskInfer-Bench_HTML汇报版.html");
 
 const css = (await readFile(resolve(siteRoot, "app/globals.css"), "utf8"))
   .replace(/^@import\s+["']tailwindcss["'];?\s*/m, "");
-const flowchart = await readFile(resolve(siteRoot, "public/AskInfer-Bench_评测框架_v0.61.png"));
+const flowchart = await readFile(resolve(siteRoot, "public/AskInfer-Bench_评测框架_v0.62.png"));
 const flowchartData = `data:image/png;base64,${flowchart.toString("base64")}`;
 
 function localize(body) {
   return body
-    .replaceAll('src="/AskInfer-Bench_评测框架_v0.61.png"', `src="${flowchartData}"`)
+    .replaceAll('src="/AskInfer-Bench_评测框架_v0.62.png"', `src="${flowchartData}"`)
     .replaceAll('href="/AskInfer-Bench_', 'href="./AskInfer-Bench_')
     .replaceAll('href="/ask_infer_case.schema.yaml"', 'href="../benchmark_schema/ask_infer_case.schema.yaml"')
     .replaceAll('href="/ask_infer_evaluation.protocol.yaml"', 'href="../benchmark_schema/ask_infer_evaluation.protocol.yaml"')

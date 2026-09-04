@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="1800" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">AskInfer-Bench v0.62 two-week execution map</title>
+  <desc id="desc">A two-week execution map showing the six-task pilot, three mandatory agent systems, 114 unique episodes, gates, and the conditional twelve-task expansion.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F8FC"/><stop offset="1" stop-color="#EAF2F8"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#17324D" flood-opacity=".12"/></filter>
+    <style>
+      .s{font-family:Inter,"PingFang SC","Microsoft YaHei",Arial,sans-serif}.k{font-size:13px;font-weight:750;letter-spacing:2px;fill:#357596}.t{font-size:40px;font-weight:760;fill:#102D47}.sub{font-size:17px;fill:#536A7D}.h{font-size:22px;font-weight:740;fill:#173B58}.sh{font-size:15px;font-weight:700;fill:#214F6D}.b{font-size:14px;fill:#34536A}.sm{font-size:12px;fill:#587083}.w{fill:#fff}.num{font-size:30px;font-weight:780;fill:#173B58}.chip{font-size:12px;font-weight:720;fill:#fff}.date{font-size:16px;font-weight:720;fill:#173B58}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="50" y="38" width="1500" height="112" rx="24" class="w" filter="url(#shadow)"/>
+  <text x="82" y="73" class="s k">EXECUTION PLAYBOOK · v0.62 · 2026-09-03</text>
+  <text x="82" y="116" class="s t">AskInfer-Bench 两周执行作战图</text>
+  <text x="770" y="114" class="s sub">先用六题闭环 pilot 杀死错误设计，再决定是否扩到十二题。</text>
+
+  <rect x="50" y="174" width="360" height="556" rx="24" class="w" filter="url(#shadow)"/>
+  <text x="78" y="210" class="s k">01 · FROZEN PILOT</text>
+  <text x="78" y="246" class="s h">6 个基础任务</text>
+  <rect x="78" y="270" width="304" height="80" rx="15" fill="#EAF5FB"/>
+  <rect x="94" y="286" width="74" height="24" rx="12" fill="#2782A8"/><text x="112" y="303" class="s chip">RESEARCH</text>
+  <text x="94" y="330" class="s b">PDR-T01 AI PhD · PDR-T30 个人媒体</text>
+  <rect x="78" y="364" width="304" height="80" rx="15" fill="#EEF5EC"/>
+  <rect x="94" y="380" width="54" height="24" rx="12" fill="#4D8651"/><text x="108" y="397" class="s chip">CODE</text>
+  <text x="94" y="424" class="s b">SW001 缓存 · SW013 向量检索</text>
+  <rect x="78" y="458" width="304" height="80" rx="15" fill="#FFF4DD"/>
+  <rect x="94" y="474" width="54" height="24" rx="12" fill="#B78422"/><text x="108" y="491" class="s chip">DATA</text>
+  <text x="94" y="518" class="s b">DA003 增长利润 · DA015 分阶段发布</text>
+  <line x1="78" y1="564" x2="382" y2="564" stroke="#D8E4EB"/>
+  <text x="78" y="594" class="s sh">每题一个 A/B 用户对</text>
+  <text x="78" y="621" class="s b">节点级同时覆盖 high / low / zero δ</text>
+  <text x="78" y="648" class="s b">两人盲审 persona、node 与 rubric</text>
+  <text x="78" y="675" class="s b">运行前 hash 冻结，禁止看输出换题</text>
+  <rect x="78" y="693" width="304" height="20" rx="10" fill="#FFE8E2"/><text x="106" y="708" class="s sm">PILOT ≠ 稳定 leaderboard</text>
+
+  <rect x="434" y="174" width="700" height="556" rx="24" class="w" filter="url(#shadow)"/>
+  <text x="462" y="210" class="s k">02 · 14-DAY CRITICAL PATH</text>
+  <line x1="512" y1="272" x2="1056" y2="272" stroke="#83A0B4" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="512" cy="272" r="15" fill="#2782A8"/><circle cx="694" cy="272" r="15" fill="#4D8651"/><circle cx="876" cy="272" r="15" fill="#B78422"/><circle cx="1056" cy="272" r="15" fill="#B34D3D"/>
+  <text x="470" y="240" class="s date">9/3–9/6</text><text x="651" y="240" class="s date">9/7–9/10</text><text x="832" y="240" class="s date">9/11–9/13</text><text x="1010" y="240" class="s date">9/14–9/17</text>
+  <text x="512" y="318" class="s sh" text-anchor="middle">冻结</text><text x="512" y="343" class="s b" text-anchor="middle">gold · env · adapter</text><text x="512" y="365" class="s sm" text-anchor="middle">三域 smoke</text>
+  <text x="694" y="318" class="s sh" text-anchor="middle">跑主 pilot</text><text x="694" y="343" class="s b" text-anchor="middle">matched blocks</text><text x="694" y="365" class="s sm" text-anchor="middle">48–72h · trace + hash</text>
+  <text x="876" y="318" class="s sh" text-anchor="middle">盲评与审计</text><text x="876" y="343" class="s b" text-anchor="middle">rubric · failure chain</text><text x="876" y="365" class="s sm" text-anchor="middle">5%–10% anchor 重跑</text>
+  <text x="1056" y="318" class="s sh" text-anchor="middle">Go / No-Go</text><text x="1056" y="343" class="s b" text-anchor="middle">扩 12 题或收窄 claim</text><text x="1056" y="365" class="s sm" text-anchor="middle">9/17 结果锁</text>
+
+  <rect x="462" y="404" width="200" height="112" rx="18" fill="#EAF5FB"/>
+  <text x="482" y="432" class="s sh">必跑系统</text><text x="482" y="461" class="s b">Codex CLI</text><text x="482" y="485" class="s b">Claude Code</text><text x="482" y="509" class="s b">Gemini CLI</text>
+  <rect x="676" y="404" width="200" height="112" rx="18" fill="#EEF5EC"/>
+  <text x="696" y="432" class="s sh">Ask：三条件</text><text x="696" y="461" class="s b">A0 No-Ask</text><text x="696" y="485" class="s b">A1 Ask-enabled</text><text x="696" y="509" class="s b">A2 Oracle</text>
+  <rect x="890" y="404" width="216" height="112" rx="18" fill="#FFF4DD"/>
+  <text x="910" y="432" class="s sh">Infer：仅 2 个 DR</text><text x="910" y="461" class="s b">I0 Task-only · I1 History</text><text x="910" y="485" class="s b">I2 Oracle · I3 Full Persona</text><text x="910" y="509" class="s sm">A0=I0，A2=I2 精确复用</text>
+  <rect x="462" y="542" width="644" height="154" rx="18" fill="#F3F6F9"/>
+  <text x="484" y="571" class="s sh">唯一 episode 预算</text>
+  <text x="484" y="617" class="s num">114</text><text x="570" y="609" class="s b">3 个必跑系统</text><text x="570" y="632" class="s sm">Ask 72 + Infer bridge 24 + shared A0/I0 &amp; A2/I2</text>
+  <line x1="782" y1="572" x2="782" y2="672" stroke="#CFDCE5"/>
+  <text x="808" y="617" class="s num">152</text><text x="900" y="609" class="s b">若加入 OpenHands</text><text x="900" y="632" class="s sm">只在 9/5 前通过全部 smoke 时加入</text>
+
+  <rect x="1158" y="174" width="392" height="556" rx="24" class="w" filter="url(#shadow)"/>
+  <text x="1186" y="210" class="s k">03 · PAPER-QUALITY GATES</text>
+  <text x="1186" y="246" class="s h">五道门，缺一不可</text>
+  <rect x="1186" y="270" width="336" height="58" rx="13" fill="#EAF5FB"/><text x="1204" y="294" class="s sh">① 操纵有效</text><text x="1204" y="316" class="s sm">人类能稳定区分 high / low / zero</text>
+  <rect x="1186" y="340" width="336" height="58" rx="13" fill="#EEF5EC"/><text x="1204" y="364" class="s sh">② 信息策略有效</text><text x="1204" y="386" class="s sm">问对缺口；有证据才推断；会停止</text>
+  <rect x="1186" y="410" width="336" height="58" rx="13" fill="#FFF4DD"/><text x="1204" y="434" class="s sh">③ 真正改变交付物</text><text x="1204" y="456" class="s sm">choice / code / slice / threshold 被采用</text>
+  <rect x="1186" y="480" width="336" height="58" rx="13" fill="#F4EEF8"/><text x="1204" y="504" class="s sh">④ 共同质量不退化</text><text x="1204" y="526" class="s sm">事实、测试、安全、隐私为 hard gate</text>
+  <rect x="1186" y="550" width="336" height="58" rx="13" fill="#FFE8E2"/><text x="1204" y="574" class="s sh">⑤ Judge 不可被关键词骗</text><text x="1204" y="596" class="s sm">“提到 X”最多 1/2；采用证据才得满分</text>
+  <text x="1186" y="644" class="s sh">通过后：条件性 12 题主集</text>
+  <text x="1186" y="670" class="s b">每域 4 题 · 分域报告区间 · 不做假总榜</text>
+  <text x="1186" y="697" class="s sm">失败时收窄 claim，不堆更多 task 掩盖问题。</text>
+
+  <rect x="50" y="758" width="1500" height="94" rx="22" fill="#173B58"/>
+  <text x="78" y="792" class="s chip">DAILY RULE</text>
+  <text x="78" y="824" class="s" font-size="20" font-weight="700" fill="#fff">只有 artifact + hash + 通过门，Todo 才能勾选。</text>
+  <text x="640" y="796" class="s" font-size="14" fill="#D5E6F2">公平性不是“一天跑完”：同一 matched block 在 2–6 小时内，整批 48–72 小时完成并做 anchor rerun。</text>
+  <text x="640" y="824" class="s" font-size="14" fill="#D5E6F2">摘要必须真实、信息充分；可以不写最终数字，但不能写 placeholder 或承诺尚未完成的结果。</text>
+</svg>

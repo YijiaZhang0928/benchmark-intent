@@ -2,7 +2,7 @@
 
 ## 正式 Proposal 精简版
 
-版本：v0.61 · 2026 年 9 月 3 日
+版本：v0.62 · 2026 年 9 月 3 日
 
 状态：工作主线与最小实验冻结；无模型排名结果
 
@@ -95,9 +95,9 @@ CFA 只表示 final artifact 的跨用户特异性。确认性成功还必须通
 
 ## 6. 最小实验与统计
 
-Novelty-kill pilot：6 个基础任务（每个 vertical 2 个）× 3 个 `δ` strata × 4 个 agent × A0/A1/A2，约 216 个 Ask episode；2 个 DR 任务追加 I0–I3。该规模只验证操纵、日志、rubric 和近邻增量。
+Novelty-kill pilot 冻结 PDR-T01、PDR-T30、SW001、SW013、DA003、DA015。每题一个 A/B 用户对，在 node 层覆盖 high/low/zero `δ`；Ask 跑 A0/A1/A2，两个 DR 题另跑 I1 history 与 I3 Full-Persona bridge，A0=I0、A2=I2 精确复用。Codex CLI、Claude Code、Gemini CLI 三个必跑系统共 114 个唯一 episode；条件性加入 OpenHands 后为 152。matched block 在 2–6 小时内随机顺序完成，整批目标 48–72 小时并重跑 5%–10% anchors。该规模只验证操纵、日志、rubric 和近邻增量。
 
-条件性主实验把通过人工 qualification 的 15 个 PDR task 作为共享 DR overlap pool；Coding/Data 各暂按 8 个独立任务规划，上限为 31 个基础任务。最终规模由 pilot family-level 方差、资格通过率、成本与最小实际重要差异做功效模拟后冻结，不得看 agent 输出删题。统计单位是基础任务，不是 user、pair、seed、turn 或 leaf。
+9 月 14 日过门后，第一轮只扩到 12 个独立基础任务（Deep Research、Coding、Data 各 4 个），作为截止期内 scoped agent-system leaderboard 的候选规模。通过人工 qualification 的 15 个 PDR task 加 Coding/Data 各 8 个只构成后续 31 题规划上限，不是两周承诺。最终规模由 pilot family-level 方差、资格通过率、成本与最小实际重要差异做功效模拟后冻结，不得看 agent 输出删题。统计单位是基础任务，不是 user、pair、seed、turn 或 leaf。
 
 ## 7. 最强风险与停止条件
 

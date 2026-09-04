@@ -1,5 +1,5 @@
 schema_name: ask_infer_case
-schema_version: "0.61"
+schema_version: "0.62"
 status: working_hypothesis_frozen
 frozen_on: "2026-09-03"
 
@@ -16,7 +16,20 @@ identifiers:
     - environment_id
     - deliverable_id
     - user_state_id
-    - delta_stratum
+    - delta_profile
+
+delta_profile:
+  enum:
+    - single_zero
+    - single_low
+    - single_high
+    - mixed_node_levels
+  pilot_requirement: mixed_node_levels
+  note: >-
+    Delta is assigned to preference nodes. The two-week pilot uses one A/B
+    user pair per base task containing at least one high-, one low-, and one
+    zero-impact node; it does not multiply each task into three separate
+    task-level delta strata.
 
 vertical:
   enum:

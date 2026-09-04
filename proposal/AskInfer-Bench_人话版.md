@@ -1,6 +1,6 @@
 # Ask or Infer?｜完整人话版
 
-版本：v0.61 · 2026 年 9 月 3 日
+版本：v0.62 · 2026 年 9 月 3 日
 
 ## 先用一句话讲清楚
 
@@ -187,15 +187,15 @@ LLM 可以把这些内容拆成更细的 atomic rubric leaf、检查遗漏、写
 先做 novelty-kill pilot：
 
 - 6 个独立基础任务：Research、Coding、Data 各 2 个；
-- 每题 3 个 `δ` strata；
-- 4 个 agent；
-- Ask 的 No-Ask / Ask-Enabled / Oracle 三条件；
-- 约 216 个 episode；
-- 其中 2 个 Deep Research 任务追加 Infer/PDR bridge。
+- 每题一个 A/B 用户对，在偏好节点层同时放入 high、low、zero `δ`，不把同一题复制成三种 task-level 版本；
+- 必跑 Codex CLI、Claude Code、Gemini CLI 三个 agent system；OpenHands 只在 9 月 5 日前通过全部 smoke 时加入；
+- Ask 跑 No-Ask / Ask-Enabled / Oracle；其中 2 个 Deep Research task 另跑 I1 history 和 I3 Full Persona，A0=I0、A2=I2 直接复用；
+- 三个必跑系统共 114 个唯一 episode；加第四系统为 152；
+- 同一 matched block 在 2–6 小时内随机顺序运行，整批目标 48–72 小时，并重跑 5%–10% anchors。
 
 这个 pilot 只验证 `δ` 是否可操纵、问题能否映射到 nodes、rubric 能否稳定、已有近邻指标是否已经解释全部现象。它不够支撑正式排行榜。
 
-通过后，共享 Deep Research overlap pool 使用通过双人 qualification 的 15 个 PDR tasks；Coding 与 Data 暂各按 8 个独立任务规划，所以上限是 31 个基础任务，不追求三域数量相等。最终规模仍由 pilot 的 family-level 方差、人工通过率、预算和最小实际重要差异决定。不能看 agent 输出删题，多跑 seed 也不能替代多做独立 task family。
+9 月 14 日过门后，第一轮只扩到 12 个独立基础任务，也就是 Research、Coding、Data 各 4 个；这是截稿前真正要争取完成的 scoped agent-system leaderboard。通过双人 qualification 的 15 个 PDR tasks 加 Coding/Data 各 8 个，只是后续 31 题的规划上限，不是两周内必须跑完的承诺。最终规模仍由 pilot 的 family-level 方差、人工通过率、预算和最小实际重要差异决定。不能看 agent 输出删题，多跑 seed 也不能替代多做独立 task family。
 
 ## 12. 最可能被 reviewer 攻击的地方
 
@@ -226,7 +226,7 @@ LLM 可以把这些内容拆成更细的 atomic rubric leaf、检查遗漏、写
 
 我们要评价的是**任务特定个性化中的信息策略**：用户在线时，agent 是否问真正改变交付物的偏好；用户离线时，agent 是否只推断 history 有证据的偏好；最终，它是否真的把这些信息变成正确的 research、code 或 data deliverable。
 
-我们暂时不能说模型会理解用户、排名一定反转，或这个方向已经超过现有 benchmark。v0.61 的正确状态是：一个完成 50→15 pre-output task screen、但仍等待双人 qualification 与 novelty-kill pilot 的可证伪主线。
+我们暂时不能说模型会理解用户、排名一定反转，或这个方向已经超过现有 benchmark。v0.62 的正确状态是：一个完成 50→15 pre-output task screen、冻结六题执行候选与运行预算、但仍等待双人 qualification 和 novelty-kill pilot 的可证伪主线。
 
 ## 参考文献
 
