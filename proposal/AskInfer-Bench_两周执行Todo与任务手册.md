@@ -1,6 +1,6 @@
 # AskInfer-Bench 两周执行 Todo 与任务作战手册
 
-> v0.64 · 2026-09-04 · 首轮 Codex 实跑完成，Claude 鉴权受阻
+> v0.65 · 2026-09-05 · PDR-T30 最小产品闭环完成
 > 目标：在 2026-09-17 前完成可信的最小主实验与结果锁，在 2026-09-18 前提交真实摘要，在 2026-09-25 前完成 ICLR 2027 全文。  
 > 使用方式：每天先看“今日必须交付”，再看对应工作流；每个任务只有通过门槛后才能打勾。没有证据的完成状态一律记为“未完成”。
 
@@ -194,6 +194,8 @@ I plan to develop a personal media account within the next six months, aiming to
 - hard gate：从性别、籍贯、宠物或爱好推断“目标用户”“品牌风格”不得计入确认性个性化分。
 
 **运行前门槛**：两名人工复核 task-persona compatibility；对任何无法由 persona 原文支持的目标标为 missing_askable，而不是 compiler inference。
+
+**v0.65 最小运行结果**：已先用 User12 × ChatGPT Deep Research 跑通 Full Persona、No-Ask 和 Free Clarification。P-score 分别为 6.703、5.596、6.033；InteractiveGain=+0.438，RecoveryRatio=39.53%。Interactive 的六问全部 task-relevant，但只恢复了内容方向、目标优先级、晨间/周末时间和 ROI；没有询问 founder/company role、技术资历、LinkedIn/GitHub/Slack/Notion、跨境与合规边界。该运行用于验证 end-to-end plumbing 和 acquisition-to-use 诊断，不替代 A/B pair、high/low/zero node、双人 qualification 或 matched/swapped 主评。
 
 ### 4.3 SW001：为 Web 服务加入可配置缓存层
 

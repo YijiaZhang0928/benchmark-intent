@@ -21,8 +21,8 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "Ask or Infer?"
 COVER_SUBTITLE = "Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents"
 COVER_MODE = "Preference Acquisition · History Inference · Final Utilization"
-DOC_VERSION = "v0.64 · 首轮 live S0"
-DOC_DATE = "2026 年 9 月 4 日"
+DOC_VERSION = "v0.65 · PDR-T30 最小产品闭环"
+DOC_DATE = "2026 年 9 月 5 日"
 RESEARCH_LINE = "Ask Calibration · Evidence-Bounded Inference · Counterfactual Delivery"
 CORE_CLAIM = "评价 agent 是否把有限问题预算投向真正改变交付物的偏好，并在用户离线时只从有证据的 history 推断；排名反转是待检验结果。"
 CONTENTS_ITEMS = [
@@ -661,7 +661,7 @@ def build(md_path=MD, out_path=OUT):
             elif STYLE_PRESET == "compact_reference_guide":
                 reference_size = 7.4
             else:
-                reference_size = 8.2
+                reference_size = 7.8
             add_inline(p, stripped, size=reference_size)
             current_num_id = None
             i += 1
@@ -695,7 +695,7 @@ def build(md_path=MD, out_path=OUT):
             elif STYLE_PRESET == "compact_reference_guide":
                 ref_size, ref_space, ref_line = 7.4, 0, 0.9
             else:
-                ref_size, ref_space, ref_line = 8.2, 0, 0.9
+                ref_size, ref_space, ref_line = 7.8, 0, 0.9
             p.paragraph_format.space_after = Pt(ref_space)
             p.paragraph_format.line_spacing = ref_line
             for r in p.runs:

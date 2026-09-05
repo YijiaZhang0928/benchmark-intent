@@ -1,0 +1,13 @@
+{
+  "created_before_product_runs": true,
+  "labels": {
+    "RPT-K7": "interactive",
+    "RPT-M2": "full_persona",
+    "RPT-Q9": "noask"
+  },
+  "scoring_order": ["RPT-Q9", "RPT-K7", "RPT-M2"],
+  "repeats_per_report": 3,
+  "unblinded_after_all_valid_scores_saved": true,
+  "unblinded_at_utc": "2026-09-05T21:06:00Z",
+  "note": "Only the task, persona, original criteria, and article text were provided to the evaluator. Condition identity and blind label were not included in the scoring prompt."
+}

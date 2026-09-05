@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.64
+## 当前方向：AskInfer-Bench v0.65
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -21,6 +21,8 @@ v0.62 把两周执行范围冻结为六题 pilot：PDR-T01、PDR-T30、SW001、S
 v0.63 新增 [`pilot/askinfer_smoke_v0_63/`](pilot/askinfer_smoke_v0_63/)：4 个 Code/Data task 的 8 个 synthetic A/B user states、4 套 100 分粗/细 rubric、Research/Code/Data 三个 S0 prompts、隐藏 simulator ledger、runbook 与 scorecard。该包只用于 prompt/interaction/parser/answer-use/reset smoke；真实 repository/dataset 未绑定前不是 artifact smoke，两名独立人类未确认前不是 gold。Gemini CLI `0.46.0` 已安装，Google OAuth 仍须用户本人完成。
 
 v0.64 已完成第一批 live S0。Codex 三题为 Research PASS、Code PASS with warning、Data FAIL；Data 的失败来自遗漏 decision horizon，验证了 specification recovery 不能只看“问到几个 high-δ”。Claude 三题都在模型接收 prompt 前因企业账户余额不足返回 HTTP 401、token 为 0，因此只记基础设施失败。完整逐题问题、ledger-bounded 回答、node 映射、评分理由与原始输出见 [`runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md`](runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md)。
+
+v0.65 跑通了一个独立的 PDR-T30 × User12 × ChatGPT Deep Research 最小闭环：full persona（按用户追加可自由追问）、instruction-only no-ask、instruction-only free clarification 三条件，以及 44 条原始 PDR personalization criteria 的盲化三重复评分。P-score 为 full 6.703、no-ask 5.596、interactive 6.033；InteractiveGain=+0.438，OracleGap=0.669，RecoveryRatio=39.53%。该 n=1 结果只证明 end-to-end signal 和失败诊断可见，不进入主榜，也不替代双人 node qualification；完整输入、transcript、报告、原始/解析评分与 transport deviation 见 [`pilot/pdr_interactive_personalization_pilot_01/`](pilot/pdr_interactive_personalization_pilot_01/)。
 
 ## 当前交付物
 

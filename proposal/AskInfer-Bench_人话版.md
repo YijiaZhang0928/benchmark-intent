@@ -226,7 +226,9 @@ LLM 可以把这些内容拆成更细的 atomic rubric leaf、检查遗漏、写
 
 我们要评价的是**任务特定个性化中的信息策略**：用户在线时，agent 是否问真正改变交付物的偏好；用户离线时，agent 是否只推断 history 有证据的偏好；最终，它是否真的把这些信息变成正确的 research、code 或 data deliverable。
 
-我们暂时不能说模型会理解用户、排名一定反转，或这个方向已经超过现有 benchmark。v0.64 的正确状态是：50→15 pre-output task screen 和六题 pilot 已冻结；4 个 Code/Data task 的 8 个 synthetic A/B persona、rubric 与三域 S0 prompts 已生成并通过结构校验。第一批真实运行里，Codex 的 Research、Code 过了 S0，Data 因没有问“两季度、每周 scale/stop”而失败；Claude 三题根本没到模型，均因企业账户余额不足返回 401，所以不能算 Claude 做错。Gemini CLI 已安装但还要本人登录。真实 repo/data 没绑定就不能说 Code/Data artifact smoke 已通过；synthetic persona 没经过两人确认就不能进正式结果。
+我们暂时不能说模型会理解用户、排名一定反转，或这个方向已经超过现有 benchmark。v0.65 的正确状态是：50→15 pre-output task screen 和六题 pilot 已冻结；4 个 Code/Data task 的 8 个 synthetic A/B persona、rubric 与三域 S0 prompts 已生成并通过结构校验。第一批真实运行里，Codex 的 Research、Code 过了 S0，Data 因没有问“两季度、每周 scale/stop”而失败；Claude 三题根本没到模型，均因企业账户余额不足返回 401，所以不能算 Claude 做错。
+
+同时，一个 PDR-T30 个人媒体任务的最小产品实验已经闭环。只给 task 且允许自由问时，ChatGPT Deep Research 确实主动问了六个有用问题；最终个性化分从 no-ask 的 5.596 提到 6.033，但离 full-persona 的 6.703 仍有 0.669，只恢复了 39.53% 的可恢复差距。它问到并落实了 AI/创业内容、长期品牌目标、工作日清晨/周末家庭优先和 ROI 偏好；最大的损失来自根本没问身份资历、既有平台与工具、跨境背景和合规边界。这个结果只有一个任务、一个 persona、一个产品 agent；full 条件也可以追问，评分通过产品临时会话而不是官方 API，所以只能说明最小机制有信号，不能当排行榜或总体结论。Gemini CLI 仍需本人登录；真实 repo/data 没绑定就不能说 Code/Data artifact smoke 已通过，synthetic persona 没经过两人确认也不能进正式结果。
 
 ## 参考文献
 

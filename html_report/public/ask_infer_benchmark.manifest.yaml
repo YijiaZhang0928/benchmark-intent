@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.64"
-updated: "2026-09-04"
+manifest_version: "0.65"
+updated: "2026-09-05"
 status: working_hypothesis_frozen
 
 paper:
@@ -25,6 +25,9 @@ active_sources:
   smoke_cases: pilot/askinfer_smoke_v0_63/smoke_cases.json
   first_live_smoke_results: runs/s0/20260904_cli6_smoke_v0_63/RESULTS.md
   first_live_smoke_manifest: runs/s0/20260904_cli6_smoke_v0_63/run_manifest.json
+  pdr_minimum_product_pilot: pilot/pdr_interactive_personalization_pilot_01/metadata.json
+  pdr_minimum_product_pilot_results: pilot/pdr_interactive_personalization_pilot_01/evaluation/summary.md
+  pdr_minimum_product_pilot_diagnostics: pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_diagnostics.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -98,6 +101,25 @@ scope:
       - real_repository_and_dataset_bindings_frozen
       - objective_verifiers_pass
       - prompt_trace_and_reset_smokes_pass
+  pdr_minimum_product_pilot:
+    pilot_id: pdr_interactive_personalization_pilot_01
+    task_id: PDR-T30
+    upstream_query_id: 148
+    persona_id: User12
+    product_agent: ChatGPT Deep Research
+    exact_model_identifier: unavailable_in_product_ui
+    conditions: [full_persona_optional_clarification, instruction_only_noask, instruction_only_free_clarification]
+    p_full: 6.702966666666666
+    p_noask: 5.595866666666667
+    p_interactive: 6.033499999999999
+    interactive_gain: 0.43763333333333243
+    oracle_gap: 0.6694666666666667
+    recovery_ratio: 0.3952970222503232
+    valid_evaluator_repeats_per_condition: 3
+    original_personalization_criteria_per_repeat: 44
+    evaluator_transport: chatgpt_temporary_chat_due_missing_api_key
+    counted_episode_eligible: false
+    claim_boundary: one_task_one_persona_one_product_plumbing_and_signal_only
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -125,3 +147,6 @@ claim_boundaries:
   - selected_15_requires_two_human_reviewers_and_separate_pair_audit
   - s0_prompt_smoke_is_not_artifact_completion_or_leaderboard_evidence
   - llm_synthetic_code_data_personas_are_not_gold_before_two_human_validators
+  - pdr_minimum_product_pilot_is_n1_and_not_leaderboard_evidence
+  - pdr_minimum_product_full_condition_includes_optional_clarification
+  - pdr_minimum_product_evaluator_used_product_ui_transport_not_official_api

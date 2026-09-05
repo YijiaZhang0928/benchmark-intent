@@ -2,11 +2,23 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-04
-当前版本：v0.64（第一批 Codex/Claude live S0 运行）
+最后更新：2026-09-05
+当前版本：v0.65（PDR-T30 interactive-personalization 最小产品闭环）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAA. 2026-09-05：PDR-T30 interactive-personalization 最小产品闭环
+
+用户要求只跑 1 个 PDR-Bench Deep Research task × 1 个 user/persona × 1 个产品级 Deep Research agent，不扩 task、context coverage 或自定义 rubric。上游冻结为 OPPO-PersonalAI/PersonalizedDeepResearchBench commit `5b43f9f188c747d154fc7666812ab93b7ca6a3c2`；选择 query 148、task 30、User12。该 pair 对 niche、受众、技术深度、平台、时间、工具、指标、变现和合规都有明显 persona-sensitive 后果，原始 PDR criteria 共 44 条，维度权重为 Goal .33、Content .18、Presentation .09、Actionability .40。
+
+三条件均使用 ChatGPT Deep Research、Pro 账户、界面可见 Medium reasoning；精确模型 ID 不可见。由于普通产品会话会读取账户记忆而污染 no-ask，首个污染尝试被拒绝并保留。Temporary Chat 又禁用 Deep Research，因此三条件统一增加不含任何偏好的 isolation wrapper，只要求忽略 memory、prior chats、custom instructions、account profile 和 inferred background。用户在 full 运行前追加“full-persona could ask”；该 amendment 在运行前写入 input 并重新冻结。Full 提出一轮五个 bundled questions，Interactive 提出一轮六个 bundled questions；simulator 只按隐藏 persona 回答本轮问题，未知 preference 明确答 no strong preference。
+
+三份报告先固定盲标签 RPT-Q9、RPT-K7、RPT-M2，再分别使用 PDR 原始英文 personalization prompt 独立评分三次。环境无 OPENAI_API_KEY，因此 exact prompt 通过 Temporary Chat 传输，权重仍由未修改的官方 score_calculator.py 计算；为保留 UI 渲染中的 JSON 转义，只增加 serialization-only fenced-JSON transport note。9 个有效输出每个都含 44 条 criteria；另保留一次 K7 JSON 解析失败和一次 M2 网络中断重试。Quality/Reliability 不追加，因为 personalization evaluator 本身不同时输出。
+
+解盲结果：P_full=6.70297、P_noask=5.59587、P_interactive=6.03350；InteractiveGain=+0.43763，OracleGap=0.66947，RecoveryRatio=39.53%。Instruction-only agent 的六问覆盖内容方向、目标受众、生产形式、时间、预算和目标排序，全部 task-relevant。AI/创业方向、长期品牌、晨间创作/周末家庭优先和 ROI 偏好被回答并基本落实；最大的未恢复来源是未问 AI-company founder role、技术资历、LinkedIn/GitHub/Slack/Notion、数据化决策、China/international context 和风险合规。Audience、出镜方式和 exact weekly hours 虽被问，但 persona 无法决定。Interactive 在两个时间 criteria 上超过 full，但六个月 roadmap 比 no-ask 更弱，说明剩余差距还含生成执行/压缩效应，不能全部归因于提问。
+
+主张边界：该结果只验证 one-pair end-to-end signal 与 failure-chain observability，不进入 AskInfer 正式主表，不支持总体 agent 结论、排行榜或显著性；full 条件并非静态 oracle，而是 full persona + optional clarification；UI transport 与未知模型 snapshot 限制复现。下一步不是扩大量，而是先决定是否把此 product harness 复用到冻结六题 pilot，并补 A/B pair、high/low/zero node、双人 qualification、matched/swapped 与 API transport。
 
 ## 0AAAAAA. 2026-09-04：第一批 live S0——Codex 完成，Claude 鉴权失败
 

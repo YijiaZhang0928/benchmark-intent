@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "evaluated_at_utc": "2026-09-05",
+  "blind_labels_visible_to_evaluator": false,
+  "condition_identity_visible_to_evaluator": false,
+  "scoring_order": ["RPT-Q9", "RPT-K7", "RPT-M2"],
+  "valid_repeats_per_report": 3,
+  "criteria_count_per_repeat": 44,
+  "evaluator": {
+    "prompt_source": "evaluator_official/code/prompt/score_prompt_en.py",
+    "weighting_source": "evaluator_official/code/utils/score_calculator.py",
+    "official_repository_model_name": "gpt-5",
+    "transport": "ChatGPT product UI temporary chats",
+    "account_tier_visible": "Pro",
+    "reasoning_setting_visible": "Medium",
+    "exact_model_identifier_visible": null
+  },
+  "transport_deviations": [
+    "No OPENAI_API_KEY was available, so the exact official prompt was submitted through isolated Temporary Chat sessions instead of the repository API client.",
+    "A serialization-only transport note requested fenced JSON so rendered UI text retained quotation-mark escape characters. It did not change criteria, analysis instructions, ordering, or scoring rules.",
+    "One valid K7 evaluation was reserialized in the same temporary chat after scoring; all 44 target_score values were verified identical to the original rendered response."
+  ],
+  "invalid_attempts_excluded": [
+    {
+      "label": "RPT-K7",
+      "round": 1,
+      "reason": "rendered JSON not parseable; official retry behavior applied",
+      "artifact": "raw/RPT-K7_round1.txt"
+    },
+    {
+      "label": "RPT-M2",
+      "round": 3,
+      "reason": "explicit product network error after 611 characters; official retry behavior applied",
+      "artifact": "raw/RPT-M2_round3_attempt1_network_error.txt"
+    }
+  ],
+  "quality_evaluation_run": false,
+  "reliability_evaluation_run": false,
+  "quality_reliability_note": "The official personalization evaluator does not emit Quality or Reliability scores in the same run; these were therefore not added to this minimum pilot."
+}
+

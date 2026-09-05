@@ -38,6 +38,8 @@ v0.63 已把候选实例化为 `pilot/askinfer_smoke_v0_63/`：4 个 Code/Data t
 
 v0.64 首轮 live S0 中，Codex 三题得到 Research PASS、Code PASS with warning、Data FAIL：失败来自遗漏 decision horizon，说明“问到部分 high-δ”不能替代完整 specification recovery。Claude 三题均在模型接收输入前因企业账户余额不足返回 HTTP 401、token 为 0，只记鉴权基础设施失败，不计 agent 能力分。该结果只用于修 harness 与指标，不形成排行榜结论。
 
+v0.65 的单任务 PDR-T30 × User12 × ChatGPT Deep Research pilot 已跑通三条件和原始 PDR 44 条 criteria 的盲化三重复评分：Full=6.703、No-Ask=5.596、Interactive=6.033，InteractiveGain=+0.438，RecoveryRatio=39.53%。Interactive 问了六个 task-relevant 问题，恢复了时间安排、AI/创业方向、长期品牌目标和 ROI 偏好，但未问 founder/company role、技术资历、既有平台/工具、跨境和合规信息。该 n=1 product-UI 结果只验证 signal 与失败链；full 也获准追问，评分 transport 不是官方 API，因此不进入确认性主表。
+
 History 中的 nodes 另标记为：`recoverable`、`missing_askable`、`unidentifiable`、`irrelevant`。Ask 主测 high-`δ missing_askable`；Infer 主测 recoverable 利用与 unidentifiable/irrelevant 克制。
 
 ## 3. 实验条件

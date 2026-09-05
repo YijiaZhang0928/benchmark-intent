@@ -1,0 +1,503 @@
+{
+  "blind_label": "RPT-Q9",
+  "condition": "noask",
+  "repeats": 3,
+  "official_calculator": "evaluator_official/code/utils/score_calculator.py",
+  "dimension_weights": {
+    "content_alignment": 0.18,
+    "goal_alignment": 0.33,
+    "presentation_fit": 0.09,
+    "actionability_practicality": 0.4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "p_overall_score": 5.7418000000000005,
+      "dimension_scores": {
+        "goal_alignment_weighted_avg": 5.489999999999999,
+        "content_alignment_weighted_avg": 4.6899999999999995,
+        "presentation_fit_weighted_avg": 6.91,
+        "actionability_practicality_weighted_avg": 6.16
+      }
+    },
+    {
+      "round": 2,
+      "p_overall_score": 5.486,
+      "dimension_scores": {
+        "goal_alignment_weighted_avg": 5.409999999999999,
+        "content_alignment_weighted_avg": 4.129999999999999,
+        "presentation_fit_weighted_avg": 6.37,
+        "actionability_practicality_weighted_avg": 5.96
+      }
+    },
+    {
+      "round": 3,
+      "p_overall_score": 5.5598,
+      "dimension_scores": {
+        "goal_alignment_weighted_avg": 5.43,
+        "content_alignment_weighted_avg": 4.609999999999999,
+        "presentation_fit_weighted_avg": 6.69,
+        "actionability_practicality_weighted_avg": 5.840000000000001
+      }
+    }
+  ],
+  "averaged": {
+    "p_overall_score": 5.595866666666667,
+    "dimension_scores": {
+      "goal_alignment": 5.4433333333333325,
+      "content_alignment": 4.476666666666666,
+      "presentation_fit": 6.656666666666666,
+      "actionability_practicality": 5.986666666666667
+    },
+    "criteria": {
+      "goal_alignment": [
+        {
+          "criterion": "Persona-specific niche and audience definition anchored in AI founder perspective and company goals",
+          "weight": 0.12,
+          "scores": [
+            4,
+            4,
+            4
+          ],
+          "mean_score": 4
+        },
+        {
+          "criterion": "Content value proposition and differentiation clarity for an expert, B2B-leaning audience",
+          "weight": 0.1,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Platform selection and cross-platform orchestration tailored to his digital habitat and bilingual reach",
+          "weight": 0.11,
+          "scores": [
+            5,
+            5,
+            5
+          ],
+          "mean_score": 5
+        },
+        {
+          "criterion": "Cadence and production schedule aligned with morning creativity and family-first evenings/weekends",
+          "weight": 0.08,
+          "scores": [
+            4,
+            4,
+            4
+          ],
+          "mean_score": 4
+        },
+        {
+          "criterion": "Differentiated themes, storytelling arcs, serialized content, and interactive formats leveraging founder journey and technical depth",
+          "weight": 0.1,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Three-month topic calendar specificity, prioritization, and feasibility",
+          "weight": 0.06,
+          "scores": [
+            6,
+            6,
+            5
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "Engagement and community design suitable for professional audiences",
+          "weight": 0.08,
+          "scores": [
+            6,
+            5,
+            6
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "KPI framework and experimentation/iteration loop aligned to data-driven decision style and business funnel",
+          "weight": 0.09,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Monetization pathways aligned with founder ethics and startup synergy",
+          "weight": 0.06,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Resource allocation and workflow leveraging his tools, time, and budget",
+          "weight": 0.05,
+          "scores": [
+            5,
+            5,
+            5
+          ],
+          "mean_score": 5
+        },
+        {
+          "criterion": "Competitive analysis and case study relevance with actionable differentiation",
+          "weight": 0.05,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Risk, compliance, and reputation safeguards tailored to China AI and founder responsibilities",
+          "weight": 0.06,
+          "scores": [
+            3,
+            3,
+            3
+          ],
+          "mean_score": 3
+        },
+        {
+          "criterion": "Brand tone and communication style alignment with persona",
+          "weight": 0.04,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        }
+      ],
+      "content_alignment": [
+        {
+          "criterion": "Niche–User Fit and Authority Anchor",
+          "weight": 0.19,
+          "scores": [
+            4,
+            4,
+            4
+          ],
+          "mean_score": 4
+        },
+        {
+          "criterion": "Appropriate Technical Depth and Rigor",
+          "weight": 0.16,
+          "scores": [
+            4,
+            3,
+            4
+          ],
+          "mean_score": 3.6666666666666665
+        },
+        {
+          "criterion": "China Ecosystem and Policy Grounding",
+          "weight": 0.12,
+          "scores": [
+            3,
+            2,
+            3
+          ],
+          "mean_score": 2.6666666666666665
+        },
+        {
+          "criterion": "Workflow- and Tool-Aligned Content Formats",
+          "weight": 0.1,
+          "scores": [
+            4,
+            3,
+            4
+          ],
+          "mean_score": 3.6666666666666665
+        },
+        {
+          "criterion": "Platform–Audience Content Fit",
+          "weight": 0.08,
+          "scores": [
+            6,
+            5,
+            6
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "Evidence- and Metric-Oriented Framing",
+          "weight": 0.08,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Founder Narrative Integration with Professional Focus",
+          "weight": 0.07,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Tech-Community-Oriented Interactivity Fit",
+          "weight": 0.06,
+          "scores": [
+            6,
+            6,
+            5
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "Case Study Relevance and Transferability",
+          "weight": 0.05,
+          "scores": [
+            6,
+            5,
+            6
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "Monetization Content–Brand Congruence",
+          "weight": 0.04,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Cross-Border and Bilingual Insight Integration",
+          "weight": 0.03,
+          "scores": [
+            3,
+            2,
+            3
+          ],
+          "mean_score": 2.6666666666666665
+        },
+        {
+          "criterion": "Risk-Aware Topic Selection",
+          "weight": 0.02,
+          "scores": [
+            4,
+            3,
+            3
+          ],
+          "mean_score": 3.3333333333333335
+        }
+      ],
+      "presentation_fit": [
+        {
+          "criterion": "Scannability and layered structure (executive summary, TOC, section headings, TL;DR per section)",
+          "weight": 0.18,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Professional, concise, data-oriented tone (avoid hype and slang; crisp sentences)",
+          "weight": 0.12,
+          "scores": [
+            8,
+            8,
+            8
+          ],
+          "mean_score": 8
+        },
+        {
+          "criterion": "Terminology precision and brief definitions for creator-growth jargon (consistent acronyms, optional bilingual notes)",
+          "weight": 0.12,
+          "scores": [
+            6,
+            5,
+            6
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "Visual organization using tables, matrices, decision trees, and calendars (Notion/Slack-friendly)",
+          "weight": 0.16,
+          "scores": [
+            8,
+            8,
+            8
+          ],
+          "mean_score": 8
+        },
+        {
+          "criterion": "Platform-specific modularity with consistent section templates",
+          "weight": 0.1,
+          "scores": [
+            5,
+            4,
+            4
+          ],
+          "mean_score": 4.333333333333333
+        },
+        {
+          "criterion": "KPI dashboard presentation clarity (metric name, definition/formula, tool, cadence, target/benchmark)",
+          "weight": 0.12,
+          "scores": [
+            6,
+            5,
+            6
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "Timeline and resource plan visualization (phase roadmap, weekly cadence grid, budget table)",
+          "weight": 0.08,
+          "scores": [
+            7,
+            6,
+            7
+          ],
+          "mean_score": 6.666666666666667
+        },
+        {
+          "criterion": "Mobile-first readability and shareability",
+          "weight": 0.07,
+          "scores": [
+            8,
+            7,
+            7
+          ],
+          "mean_score": 7.333333333333333
+        },
+        {
+          "criterion": "Action checklists and decision gates at the end of sections",
+          "weight": 0.05,
+          "scores": [
+            7,
+            6,
+            6
+          ],
+          "mean_score": 6.333333333333333
+        }
+      ],
+      "actionability_practicality": [
+        {
+          "criterion": "Executable 6-month roadmap with phased milestones and decision gates",
+          "weight": 0.14,
+          "scores": [
+            8,
+            7,
+            7
+          ],
+          "mean_score": 7.333333333333333
+        },
+        {
+          "criterion": "Time-feasible workload and schedule aligned to mornings and weekends",
+          "weight": 0.12,
+          "scores": [
+            5,
+            5,
+            5
+          ],
+          "mean_score": 5
+        },
+        {
+          "criterion": "Platform-specific playbooks and realistic posting frequency",
+          "weight": 0.1,
+          "scores": [
+            5,
+            5,
+            5
+          ],
+          "mean_score": 5
+        },
+        {
+          "criterion": "Detailed 3-month content calendar with topics, hooks, and CTAs",
+          "weight": 0.12,
+          "scores": [
+            6,
+            6,
+            5
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "KPI definition, instrumentation, and review cadence",
+          "weight": 0.12,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Iteration and experimentation framework",
+          "weight": 0.08,
+          "scores": [
+            8,
+            8,
+            8
+          ],
+          "mean_score": 8
+        },
+        {
+          "criterion": "Resource and budget plan with tool stack and outsourcing options",
+          "weight": 0.1,
+          "scores": [
+            5,
+            5,
+            5
+          ],
+          "mean_score": 5
+        },
+        {
+          "criterion": "Feasible monetization pathway with stage-gated triggers",
+          "weight": 0.1,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Community building mechanisms and operational load",
+          "weight": 0.06,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Risk, compliance, and contingency measures",
+          "weight": 0.06,
+          "scores": [
+            5,
+            4,
+            4
+          ],
+          "mean_score": 4.333333333333333
+        }
+      ]
+    }
+  }
+}

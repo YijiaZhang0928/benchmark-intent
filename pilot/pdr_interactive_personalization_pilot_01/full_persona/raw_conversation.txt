@@ -1,0 +1,979 @@
+Experimental isolation instruction: Ignore all saved memory, prior chats, custom instructions, account profile, and inferred background. For this run, use only the information contained in this message. Do not state or assume any user-specific fact that is not explicitly provided below.
+
+User Task:
+I plan to develop a personal media account within the next six months, aiming to build a distinctive personal brand in a niche area, attract a stable audience base, and, if possible, monetize. Please create a systematic creative plan to help me identify my target audience, choose a niche, and define my content value proposition; provide brand tone guidelines; design differentiated content themes and creative expression styles; and prepare a 3-month content topic calendar.Propose creative directions for storytelling, serialized content, and interactive formats to ensure sustained audience interest. Develop a detailed account growth strategy, including posting frequency, platform selection, and multi-platform coordination; suggest specific methods for increasing audience engagement, building a fan community, and iterating content. Provide recommendations for tracking and optimizing key performance metrics, and develop a feasible monetization pathway.Taking into account my time, budget, and skill level, create a reasonable resource allocation plan; provide competitive analysis and differentiation strategies, assess potential risks, and propose mitigation measures. Please recommend excellent domestic and international personal media case studies for reference.
+
+If user-specific goals, preferences, constraints, trade-offs, or intended use would materially affect the deliverable, you may freely ask clarification questions. Ask only when useful. You decide how many questions to ask and when you have enough information to proceed.
+
+User Persona:
+{"userid": "User12", "Basic Attributes": {"Identity Characteristics": {"Name": "Zhang Yu", "Age": "30-35", "Gender": "Male", "Occupation": "AI Company Entrepreneur", "Educational Background": "Master's degree in Computer Science from Tsinghua University, published multiple papers in the AI field, participated in top international academic conferences", "Career Development": "Previously served as a technical lead at a renowned domestic internet company, later resigned to start his own business due to a passion for AI and founded his own company"}, "Family Status": {"Family Members and Relationships": "Married, has a 5-year-old daughter, lives with his parents, wife is a university classmate and currently a freelancer mainly responsible for family affairs", "Pets": "Owns a blue British Shorthair cat named Doudou, chosen together as a family on his daughter's 5th birthday, and cared for by the entire family", "Family Atmosphere": "Harmonious family relationships, parents help take care of the child, wife is his emotional support and career partner, often providing advice in life"}, "Long-term Spatial Characteristics": {"Permanent Residence": "Haidian District, Beijing, living in a comfortable three-bedroom apartment close to his company with well-equipped surrounding facilities", "Hometown": "Jinan, Shandong, grew up in a middle-class family, both parents are retired teachers, received a good education and family influence from an early age", "Environmental Influence": "The fast-paced life in Beijing has cultivated a habit of high efficiency, while his upbringing in Jinan has instilled a practical and approachable personality"}}, "Behavioral Characteristics": {"Online Usage Habits": {"High-frequency Apps and Usage Duration": "Uses GitHub, Slack, and Notion for over 8 hours daily to manage team tasks and technical development", "Online Social Behavior": "Active on LinkedIn and professional tech forums, spends 1 hour daily building industry connections and staying updated on technological trends", "Content Consumption": "Frequently browses AI-related news and papers, stays highly sensitive to new technologies, occasionally shares insights on forums"}, "Offline Long-term Behavior": {"Daily Routine": "Wakes up at 5:30 AM, goes to bed at 11:30 PM, spends 20 minutes in the morning doing yoga or deep breathing exercises, and consistently reads bedtime stories to his daughter for half an hour in the evening", "Consumption Cycle": "Makes large purchases monthly, mainly for family travel and high-end fitness equipment, occasionally buys specialized care products for the pet", "Consumption Characteristics": "Prefers high-end tech products, values cost-effectiveness, recently developed an interest in eco-friendly smart home devices", "Periodic Mobility": "Travels quarterly, mainly to Shenzhen and Hangzhou to visit partners or attend industry summits, while also exploring local culture during the trips"}, "Environment": {"Time": {"Time Preference": "Prefers doing creative work in the morning, typically capturing ideas or designing technical solutions early in the day", "Time Allocation": "Focuses on work from Monday to Friday, dedicates weekends to family, balancing work and life"}, "Geographical Location": {"Frequent Places": "Company office, gym, startup incubator; recently enjoys visiting bookstores for inspiration, occasionally meets friends or partners at cafes", "Travel Radius": "Mostly active in urban Beijing, goes hiking or participates in outdoor barbecues in the suburbs on weekends"}}, "Personality Traits": {"Personality": "Extroverted, optimistic, passionate, skilled at motivating the team, enjoys sharing experiences and insights", "Decision-making Style": "Makes independent decisions but values team input, focuses on data analysis and logical reasoning", "Shopping Preference": "Rational consumer, prioritizes product quality and brand, willing to spend on improving life quality for himself and his family"}, "Preferences and Interests": {"Lifestyle Preferences": {"Diet": "Enjoys Chinese cuisine, especially Cantonese dishes, recently started a low-sugar diet, orders takeout on workdays, and cooks new recipes on weekends", "Accommodation Preferences": "Prefers star-rated hotels with high-quality services, particularly values quiet environments and reading spaces", "Shopping": "Primarily shops online, especially for tech products, and follows emerging eco-friendly brands", "Services": "Frequently uses food delivery and housekeeping services, recently started trying grocery delivery services for local organic produce"}, "Travel Preferences": {"Frequency": "Travels 3-4 times a year, usually during holidays or work breaks", "Destinations": "Prefers natural attractions like lakes and forests, also enjoys modern metropolitan cities", "Travel Style": "Self-guided trips, likes planning his itinerary, recently started exploring light travel with minimal luggage"}, "Content Preferences": {"Article Collection": "Often saves articles about technology and entrepreneurship, particularly focused on AI application cases and industry trends", "Short Videos": "Enjoys watching tech-related short videos, mainly on Bilibili, and also follows content on mental health", "Screenshots": "Frequently takes screenshots of technical articles and business insights, organizes and shares them with the team", "Books, Movies, Singers, Actors": "Admires Liu Cixin's novels and Hans Zimmer's music, also enjoys science fiction movies and documentaries"}, "Exercise Preferences": {"Exercise Habits": "Runs twice a week, works out at the gym three times a week, recently became interested in rock climbing", "Exercise Goals": "Enhance endurance and reduce stress while maintaining physical fitness", "Exercise Types": "Rock climbing, strength training, occasionally Pilates for relaxation", "Other Investments": "Buys professional rock climbing shoes and equipment, subscribes to fitness app courses", "Exercise Locations": "Outdoor climbing venues and gyms, occasionally participates in urban charity running events"}}, "Health Status": {"Physical Condition": {"Medical History": "No major illnesses, had minor sports injuries that were well-recovered through therapy", "Mental Condition": "Occasionally feels anxious due to work pressure but manages it effectively through exercise and family time", "Physical Fitness": "Good physical fitness, strong endurance, able to handle a high-intensity work-life routine"}, "Health Needs": {"Health Needs": "Aims to maintain health through exercise, boost immunity, and focus on mental well-being to avoid excessive stress"}}, "Financial Information": {"Financial Status": {"Income Structure": "Primary income comes from company dividends and technical consulting, occasionally earns extra through investments", "Asset Status": "Owns a property in Beijing, a Tesla car, and some smart home devices", "Consumption Characteristics": "High spending focused on quality of life, plans expenses reasonably based on family needs", "Debt Situation": "Has a mortgage but no credit card debt, repays loans regularly, maintains a good credit record"}, "Investment Experience": {"Investment Background": "Experienced in stocks and mutual funds, occasionally engages in angel investment, prefers investing in tech startups", "Knowledge Level": "Highly knowledgeable in finance, understands financial planning and investment strategies, regularly follows financial news", "Risk Management": "Risk appetite is moderate, prioritizes risk control, prefers stable long-term returns"}}}}
+Show more
+
+可以。这个任务里有几项信息会直接改变赛道选择、内容形态、更新频率和变现路径；而你给出的 Persona 虽然很完整，但没有明确覆盖这些执行约束。为了避免做出一个“看起来完整、实际不适合执行”的方案，我只需要确认 5 个问题：
+
+你最想通过个人媒体获得什么？请排序。
+A. 建立 AI 行业个人影响力
+B. 为自己的 AI 公司获客/建立创始人品牌
+C. 获得咨询、演讲、课程等个人收入
+D. 做成独立媒体/IP，广告、知识付费等直接变现
+E. 为未来融资、招聘、行业资源积累背书
+
+你实际愿意投入多少时间？
+比如：
+
+3–5 小时/周
+
+5–10 小时/周
+
+10–20 小时/周
+以及是否愿意让团队成员协助剪辑、运营、资料整理。
+
+前三个月愿意投入的预算大约是多少？
+可以直接给范围，例如：
+
+¥0–3,000/月
+
+¥3,000–10,000/月
+
+¥10,000–30,000/月
+
+不特别限制，但要求 ROI 合理
+
+你对出镜的接受程度是什么？
+A. 可以频繁真人出镜、口播、直播
+B. 可以出镜，但希望以深度内容为主
+C. 偶尔出镜，主要做文章/PPT/屏幕录制
+D. 尽量不出镜
+
+你更希望主要影响哪类人？最多选 2 个。
+A. AI/软件工程师
+B. AI 创业者、创业团队
+C. 企业老板/管理层，希望应用 AI
+D. 投资人、产业人士
+E. 大学生/年轻技术从业者
+F. 泛科技大众
+G. 还没想清楚，希望我根据 Persona 帮你判断
+
+你可以极简回复，比如：
+
+B > A > E > C
+
+5–10h/周，可让团队帮剪辑
+
+5000/月
+
+B
+
+B+C
+
+有了这 5 项，我就可以直接给你一套完整的 6 个月个人媒体战略 + 前 3 个月逐周选题日历，并把“清华 AI 技术背景 + 大厂技术负责人经历 + AI 创业者身份”究竟应该包装成 AI 技术专家、AI 创业者、AI 商业化实践者，还是三者的组合作为核心定位问题一起解决。
+
+1. I don't have a strong preference on the ranking beyond the goals already stated.
+2. I prefer creative work in the morning and keep weekends for family; the persona does not specify weekly hours or team assistance.
+3. I don't have a fixed budget preference; I value cost-effectiveness and reasonable ROI.
+4. I don't have a strong preference on that.
+5. G — I don't have a strong preference; please infer it from the persona.
+Worked for 24s
+
+基于你给出的 Persona，我会把这个账号定位成：
+
+“AI 创业者的前沿技术 × 商业落地 × 创业判断”个人品牌
+
+而不是做一个普通的“AI 新闻号”、纯教程号或创业鸡汤号。你的优势不在于比别人更快转发模型新闻，而在于同时具备 技术深度、创业者视角、行业判断和表达能力。这几个维度叠加后，更适合吸引“高价值的小众人群”，而不是一开始追求泛流量。
+
+1. 目标受众与核心定位
+
+我建议把受众分三层。
+
+层级	人群	他们最关心什么	你的价值
+核心受众	AI 创业者、技术负责人、产品负责人	新技术到底值不值得跟、怎么落地、怎么选型	“帮你少走弯路”
+高价值受众	企业老板、创新负责人、投资/产业人士	AI 能不能赚钱、什么是真需求	“把技术翻译成商业判断”
+扩散受众	工程师、AI 从业者、研究生	如何理解前沿技术、职业与创业机会	“从论文到真实世界”
+
+所以，不建议你的定位是：
+
+“每天讲 AI 最新资讯。”
+
+而应该是：
+
+“一个真正做 AI 创业的人，告诉你哪些 AI 技术值得关注、为什么，以及怎么真正变成产品和生意。”
+
+可以进一步压缩成一句简介：
+
+研究 AI，也创业做 AI。分享前沿技术、真实落地和创业判断，不追热点，只讨论真正重要的变化。
+
+这会比“清华硕士 + AI 创业者”单纯堆履历更有记忆点。
+
+2. 建议的内容护城河：3 条主线 + 1 条人格线
+
+整个账号不要什么都讲。我建议 70% 专业内容 + 20% 创业过程 + 10% 人格内容。
+
+主线 A：AI 前沿 → “这东西到底意味着什么？”
+
+这是你的技术权威入口。
+
+例如：
+
+为什么 Agent 真正难的不是大模型
+
+新模型发布后，我只看这 5 个指标
+
+为什么 benchmark 高，不代表企业里能用
+
+一篇 AI 论文真正值得看的只有这三个地方
+
+从技术负责人角度看，某项 AI 新技术离商业化还有多远
+
+关键是不要做“论文摘要”。
+
+你的固定结构应该是：
+
+发生了什么 → 技术本质 → 大多数人误解什么 → 对创业/企业有什么影响 → 我的判断
+
+这最后一段“我的判断”，才是真正的 IP。
+
+主线 B：AI 创业现场
+
+这是最难被复制的内容。
+
+可以形成连续剧：
+
+《一个 AI 创业公司的真实实验》
+
+内容包括：
+
+我们为什么砍掉一个 AI 功能
+
+一个功能开发了两周，最后为什么没上线
+
+客户说“我要 AI”，他真正需要的是什么
+
+AI 创业公司最容易烧钱的三个地方
+
+我如何判断一个 AI idea 值不值得投入
+
+技术团队与销售对一个需求完全不同的理解
+
+本周我们做错了什么
+
+创业内容最有价值的不是成功故事，而是决策过程。
+
+主线 C：AI × 商业判断
+
+这是未来最容易带来高价值客户的一条线。
+
+例如：
+
+现在企业最不值得做的 5 类 AI 项目
+
+为什么很多 AI SaaS 最终会变成功能，而不是公司
+
+如果我是传统企业 CEO，今年只会投这三类 AI
+
+AI Agent 的真正商业机会在哪里？
+
+什么时候应该自己训练模型，什么时候应该调 API？
+
+企业做 AI，到底该招人还是买服务？
+
+这种内容非常容易被 CEO、创业者、投资人转发。
+
+LinkedIn 自己的研究也强调，B2B thought leadership 正越来越依赖可信赖的行业专家，而不只是品牌官方内容。
+LinkedIn
+
+人格线 D：理性技术创业者的生活
+
+只占 10%。
+
+你不需要变成生活博主，但适量人格化会让人“关注你”，而不只是“收藏知识”。
+
+可以出现：
+
+早晨如何阅读一篇 AI 论文
+
+创业者如何保持高强度工作的同时不失去生活
+
+出差深圳/杭州观察到的 AI 创业现象
+
+在书店读到一本书，对 AI 创业的启发
+
+“给女儿解释 AI”式内容
+
+科幻作品如何影响我看 AI
+
+甚至“用 5 岁孩子能听懂的话解释 Transformer”都可以成为非常好的系列。
+
+关键是：生活内容仍然服务于你的核心人格，而不是突然变成晒娃/健身账号。
+
+3. 品牌调性
+
+你的账号不应该是“AI 大师”，而应该让人形成这四个感觉：
+
+懂技术、做过事、有判断、说人话。
+
+语言建议：
+
+“我不认为这个东西短期会改变行业，原因有三个。”
+
+比：
+
+“AI 行业即将迎来重大革命！！！”
+
+更符合你的定位。
+
+建议形成三条品牌规则：
+
+第一，不制造技术焦虑。
+
+不说：
+
+“不学 Agent 马上就被淘汰。”
+
+而说：
+
+“Agent 值得学，但对大多数公司来说，现在更重要的是把 workflow 做好。”
+
+第二，每个观点必须有 reasoning。
+
+观点 → Evidence → Trade-off → Conclusion。
+
+这恰好利用你的技术和研究背景。
+
+第三，允许说‘不知道’。
+
+专业人格最大的资产不是永远正确，而是：
+
+哪些事情我确定，哪些事情我只是推测。
+
+长期信任会明显高于“预测型科技博主”。
+
+4. 内容表达：不要“每天重新创作”
+
+由于你希望周末留给家人，而高创造力集中在上午，我建议采用：
+
+One Idea → Many Assets
+
+每周只真正创造 一个核心观点。
+
+比如：
+
+“为什么 Agent 产品真正的 moat 不在模型。”
+
+然后变成：
+
+8–12 分钟 Bilibili / YouTube 视频
+
+1 篇微信公众号/LinkedIn 长文
+
+2–3 个 45–90 秒短视频
+
+1 张观点图
+
+3 条短文字观点
+
+1 个投票问题
+
+这样你不是每周生产 7 个内容，而是：
+
+研究一次，表达 7 次。
+
+非常适合你的时间结构。
+
+5. 推荐平台组合
+
+不要六个平台同时原生创作。
+
+第一梯队
+
+Bilibili：专业品牌主阵地
+
+特别适合：
+
+AI 技术拆解
+
+创业故事
+
+长视频
+
+系列化内容
+
+技术内容可以做到既专业又娱乐化。稚晖君就是一个很明显的案例：把复杂工程项目变成具有故事性的作品，而不是简单教学。他目前在 Bilibili 仍有约 280 万粉丝；近期机器人项目依然可以获得几十万乃至数百万播放。
+Bilibili Search
++1
+
+微信公众号：知识资产库
+
+这里放：
+
+深度文章
+
+方法论
+
+创业复盘
+
+AI 判断
+
+它不是主要拉新平台，而是你的“知识总部”。
+
+第二梯队
+
+小红书 / 视频号
+
+负责：
+
+把一个复杂思想变成一个容易传播的切面。
+
+例如长视频：
+
+《企业为什么做不好 AI Agent》
+
+短内容变成：
+
+“90% 的企业其实根本不该先做 Agent。”
+
+海外
+
+如果希望未来建立国际技术品牌，建议：
+
+LinkedIn + YouTube
+
+LinkedIn 很适合创始人型 thought leadership，而且 Newsletter 可以形成可订阅的长期内容资产。官方说明目前个人成员可以创建 Newsletter，订阅者可以收到新内容通知。
+LinkedIn
++1
+
+但前三个月不要同时运营中英两套原创体系。
+
+先：
+
+中文原生 → 优质内容翻译/重构成英文。
+
+6. 最适合你的发布频率
+
+在没有明确每周可投入小时数的情况下，我会采取“最低可持续版本”。
+
+每周
+
+1 条旗舰内容
+
+8–15 分钟视频或 1500–3000 字文章。
+
+3 条轻内容
+
+短视频 / 图文 / 独立观点。
+
+1 次互动
+
+投票、QA、评论区问题。
+
+也就是：
+
+1 + 3 + 1
+
+而不是“日更”。
+
+你的竞争优势是 insight，不是产量。
+
+7. 三个月选题日历
+
+我不建议提前锁死 90 个题，因为 AI 变化太快。
+
+更合理的是 12 个主题周。
+
+周	Flagship 内容	衍生内容
+1	我为什么认为大部分人理解错了 AI Agent	“Agent 最常见3个误区”
+2	一个 AI 创业者如何判断新模型是否重要	我的5项模型评估表
+3	从论文到产品，中间到底差了什么	一篇论文如何判断商业价值
+4	企业为什么总把 AI 项目做成 Demo	AI 落地失败清单
+5	一个真实 AI 产品 idea 应该怎样验证	72小时 idea 验证法
+6	API、开源模型、自己训练，究竟怎么选	一张技术决策树
+7	AI 创业公司最应该自己做什么	哪些事情千万不要自研
+8	为什么我越来越少关注 AI benchmark	benchmark 的三个陷阱
+9	AI Agent 真正的护城河是什么	模型为什么不是 moat
+10	如果今天重新创办一家 AI 公司	我会选的3个方向
+11	AI 创业过程中，我最后悔的一个判断	Decision Postmortem
+12	做 AI 创业三个月后的10个反常识结论	评论区AMA
+
+每周再加一个动态主题：
+
+“本周 AI，我只关注三件事。”
+
+这样可以兼顾时效性。
+
+8. 三个非常值得做的连续系列
+
+系列化是建立稳定受众的关键。YouTube 官方也明确建议，围绕已经被证明受欢迎的主题制作系列内容，有助于培养 casual / regular viewers。
+Google Help
+
+Series 01
+
+《AI 创业者看新技术》
+
+格式固定：
+
+新东西 → 技术本质 → Hype → Reality → 商业意义
+
+Series 02
+
+《这周我们做错了什么》
+
+每两周一次。
+
+比如：
+
+我们花了一周优化模型，后来发现用户根本不在乎。
+
+这种内容会非常有人格。
+
+Series 03
+
+《如果我是 CEO》
+
+例如：
+
+如果我是制造企业 CEO，我会怎么部署 AI？
+
+如果我是教育公司 CEO，我今年不会训练自己的大模型。
+
+天然吸引企业客户。
+
+9. Storytelling 模板
+
+技术内容最容易犯一个错误：
+
+背景 → 原理 → 架构 → 总结。
+
+太像课堂。
+
+改成：
+
+Conflict → Investigation → Insight
+
+比如：
+
+“我们原本以为模型准确率不够。”
+
+↓
+
+“团队优化了两个星期。”
+
+↓
+
+“但用户还是不用。”
+
+↓
+
+“后来发现问题完全不是模型。”
+
+↓
+
+“这让我重新理解了 AI 产品的一个规律……”
+
+这就变成故事。
+
+甚至技术视频也应该有：
+
+Question → Surprise → Explanation → Implication。
+
+10. 互动设计
+
+尽量不要用：
+
+大家怎么看？
+
+太泛。
+
+改成选择题。
+
+例如：
+
+如果你有100万AI预算，你会：
+
+A 自研模型
+B Agent
+C 企业知识库
+D 自动化 workflow
+
+下一周再做：
+
+“上周 63% 的人选择 Agent，但我认为大部分公司其实应该选 D。”
+
+于是互动本身又成为下一条内容。
+
+形成：
+
+Content → Comments → New Content → Community
+
+11. 社群建设
+
+不要一开始建一个“AI交流群”。
+
+这种群很快会变成广告群。
+
+更好的做法是，到大约 30–50 个高质量核心用户出现以后，建立：
+
+AI Builder Circle
+
+入群条件可以是：
+
+AI 创业者
+
+产品负责人
+
+技术负责人
+
+正在真实落地 AI
+
+每周只固定一个话题：
+
+本周你正在解决的 AI 问题是什么？
+
+后期这个社区本身就是：
+
+用户研究
+
+选题数据库
+
+客户来源
+
+嘉宾来源
+
+产品 idea 来源
+
+12. 不要把“粉丝数”当核心指标
+
+前三个月真正应该看的，是：
+
+Awareness
+
+Impressions / Views
+主页访问率
+
+Content quality
+
+平均观看时长
+完播率
+收藏率
+分享率
+
+YouTube 的 retention 数据尤其值得看：它会显示观众在哪些段落退出、重看或跳过，从而让你知道到底哪个观点最吸引人。
+Google Help
+
+Audience quality
+
+最关键的是：
+
+谁在看？
+
+1000 个 AI 创业者可能比 10 万泛娱乐粉丝更有价值。
+
+所以记录：
+
+创业者评论数
+
+技术负责人评论数
+
+私信数
+
+高质量新增联系人
+
+Business
+
+咨询 inquiry
+合作邀请
+潜在客户
+演讲邀请
+Newsletter 订阅
+
+真正的 North Star Metric 我建议设为：
+
+每月新增“主动回来消费内容的目标受众”。
+
+而不是 Followers。
+
+13. 内容迭代机制
+
+每四周复盘一次。
+
+建立一个简单表：
+
+Topic	Views	Retention	Saves	Shares	Target Comments	Leads
+
+然后给内容打标签：
+
+AI Technology
+
+AI Product
+
+AI Business
+
+Founder Story
+
+Career
+
+12 周后你会非常清楚：
+
+市场究竟因为你的哪一种能力关注你。
+
+不要一开始靠猜完成永久定位。
+
+你的定位应该是：
+
+Persona hypothesis → Publish → Audience evidence → Refine.
+
+14. 预算和资源配置
+
+你没有固定预算，而且强调 cost-effectiveness，所以最开始不要组“自媒体团队”。
+
+Month 1
+
+基本自己完成。
+
+工具只需要：
+
+手机/已有相机
+
+麦克风
+
+简单补光
+
+剪映/CapCut
+
+Notion
+
+AI 辅助整理
+
+目标不是“像专业工作室”。
+
+目标是验证：
+
+你的观点有没有市场。
+
+Month 2
+
+如果内容开始出现明确 traction：
+
+优先外包：
+
+剪辑 > 封面 > 字幕 > 分发
+
+千万不要最先外包：
+
+选题和核心观点。
+
+因为那正是你的个人品牌。
+
+Month 3+
+
+如果单篇内容稳定产生商业价值，再考虑：
+
+兼职内容助理
+
+剪辑
+
+研究 assistant
+
+你的时间应该逐渐变成：
+
+Research 30%
+Thinking 30%
+Recording 20%
+Interaction 20%
+
+而不是80%剪视频。
+
+15. 变现路径
+
+基于这个 Persona，我不建议第一年主要依赖平台广告。
+
+最自然的是：
+
+Stage 1：0–5k 高质量受众
+
+不强变现。
+
+目标：
+
+Trust。
+
+Stage 2：5k–20k
+
+最自然：
+
+AI 咨询 / 企业 Workshop
+
+例如：
+
+企业 AI 落地诊断
+
+CEO AI Strategy Workshop
+
+AI 技术选型咨询
+
+这与账号内容高度一致。
+
+Stage 3
+
+形成产品：
+
+AI 企业落地 Playbook
+
+行业报告
+
+付费 Newsletter
+
+小规模创始人社区
+
+Stage 4
+
+再考虑：
+
+课程
+
+品牌 sponsorship
+
+顾问
+
+演讲
+
+天使投资 Deal Flow
+
+内容品牌最终甚至可以反哺你原有的创业活动。
+
+16. 你的最大竞争对手其实不是“大 V”
+
+AI 内容目前主要有四种：
+
+资讯型
+
+快，但没有长期护城河。
+
+教学型
+
+实用，但容易商品化。
+
+专家型
+
+专业，但常常表达太学术。
+
+商业型
+
+懂传播，但技术深度不足。
+
+你最有机会的位置恰好在中间：
+
+Technical depth × Founder experience × Business judgment × Accessible storytelling
+
+我会把它作为整个品牌 differentiation。
+
+17. 可以重点学习的案例
+
+国内不建议“模仿账号”，而是分别学习一种能力。
+
+李沐
+
+学习：
+
+如何把真正复杂的 AI 技术讲清楚。
+
+重点不是照搬教学风格，而是他的可信度来自：
+
+技术本身就是内容。
+
+稚晖君
+
+学习：
+
+技术 + Project + Storytelling。
+
+他不是坐在镜头前解释机器人技术，而是：
+
+“我要造一个东西。”
+
+观众跟着项目一路进入技术。
+
+这类 Build in Public 很值得你借鉴。现在他的机器人相关内容仍持续获得大量播放。
+Bilibili
++1
+
+Ethan Mollick
+
+这是与你最值得对照的海外案例之一。
+
+他的 One Useful Thing 明确定位为：
+
+用研究视角理解 AI 对工作、教育和生活的影响，
+
+而他的内容并不是新闻搬运，而是持续输出“AI 变化意味着什么”。
+One Useful Thing
++1
+
+你可以借鉴：
+
+Research → Experiment → Opinion。
+
+Andrej Karpathy
+
+学习：
+
+极强专业背景的人怎样直接成为教育型 creator。
+
+他的个人主页目前明确把 AI 教育视频分成 technical track 和 general-audience track。
+Karpathy
+
+这个思路尤其适合你：
+
+同一主题可以做：
+
+Expert Version
+Founder Version
+General Version
+
+而不必三个完全不同的选题。
+
+Ali Abdaal
+
+不建议学他的内容主题，而是学：
+
+Creator Operating System。
+
+他的价值是把个人知识和专业经历逐渐产品化，形成视频、书、课程和商业体系。
+
+这说明一个非常重要的问题：
+
+Personal media ≠ 做视频。
+
+最终是建立一套：
+
+Content → Audience → Trust → Product
+
+体系。
+
+Lenny Rachitsky
+
+尤其值得研究商业模型。
+
+他把高质量专业内容逐渐延伸为：
+
+newsletter → podcast → paid archive → community → tools。
+
+目前其官网/Newsletter 对外显示已经达到百万级订阅受众，并形成付费内容与社区体系。
+Lenny's Newsletter
++2
+Lenny Rachitsky
++2
+
+你的长期路线实际上也可以类似：
+
+AI Founder Content
+↓
+AI Founder Newsletter
+↓
+Builder Community
+↓
+Consulting / Research / Product
+
+18. 六个月路线图
+
+最后把整个计划压缩成一张路线：
+
+Month 1：Finding Voice
+
+目标：
+
+不是涨粉，而是找到“什么内容只有你能讲”。
+
+发布：
+
+4 flagship + 12 short posts。
+
+测试三条主线。
+
+Month 2：Finding Format
+
+保留数据表现最好的 2 个主题。
+
+建立 2–3 个固定 series。
+
+目标：
+
+用户看到标题就知道“这是你的内容”。
+
+Month 3：Finding Audience
+
+开始明确：
+
+谁是最忠实的 100 个人？
+
+主动跟他们交流。
+
+用他们的问题反向驱动选题。
+
+Month 4：Authority
+
+增加：
+
+深度案例
+
+行业观点
+
+嘉宾对谈
+
+自己的数据/实验
+
+从：
+
+“讲 AI”
+
+升级成：
+
+“提供 AI 判断框架”。
+
+Month 5：Community
+
+开始小规模：
+
+Founder / AI Builder 圈子。
+
+不求规模。
+
+先 30–100 个核心人。
+
+Month 6：Monetization Test
+
+只测试一个最自然的产品：
+
+AI Strategy / AI Product Workshop
+
+或者：
+
+AI Founder Deep Dive Newsletter。
+
+看是否有人真的付费。
+
+如果有，继续。
+
+如果没人付费，不代表账号失败，而是重新检查：
+
+Audience × Pain × Offer。
+
+最重要的一条
+
+你现在最大的风险不是“选错平台”，而是把你的优势做成一个普通 AI 科普账号。
+
+你的学历、论文和技术背景只能产生初始 credibility；真正形成品牌的会是：
+
+“这个人每次都能把复杂 AI 变化解释成一个我可以采取行动的判断。”
+
+所以如果六个月后用户提到你的账号，理想反应不是：
+
+“哦，就是那个讲 AI 的。”
+
+而应该是：
+
+“AI 有什么新东西，我会去看看 Zhang Yu 怎么判断。”
+
+一旦形成这个认知，个人品牌基本就建立起来了。
+
+ChatGPT can make mistakes. Check important info.
+
+Medium

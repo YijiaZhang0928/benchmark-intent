@@ -11,18 +11,19 @@
 <body>
 <main class="shell">
   <section class="hero">
-    <div class="kicker">Execution Playbook · v0.64 · 2026-09-04</div>
+    <div class="kicker">Execution Playbook · v0.65 · 2026-09-05</div>
     <h1>AskInfer-Bench<br>两周执行作战板</h1>
     <p>把长讨论压成一个可执行界面：六题 pilot、三个必跑 agent 系统、114 个唯一 episode、逐日门槛、rubric 防骗规则与 ICLR 截稿路线。</p>
     <div class="chips"><span class="chip">Pilot 结果锁：9/17</span><span class="chip">摘要：9/18 AOE</span><span class="chip">全文：9/25 AOE</span><span class="chip">Pilot 不称稳定排行榜</span></div>
   </section>
-  <nav class="nav"><a href="#decision">先做决定</a><a href="#smoke">现在就跑</a><a href="#tasks">六题任务</a><a href="#systems">Agent 系统</a><a href="#runs">运行规模</a><a href="#rubrics">Rubric</a><a href="#daily">逐日 Todo</a><a href="#gates">Go / No-Go</a><a href="#abstract">摘要</a></nav>
+  <nav class="nav"><a href="#decision">先做决定</a><a href="#smoke">S0</a><a href="#pdrpilot">PDR Pilot</a><a href="#tasks">六题任务</a><a href="#systems">Agent 系统</a><a href="#runs">运行规模</a><a href="#rubrics">Rubric</a><a href="#daily">逐日 Todo</a><a href="#gates">Go / No-Go</a><a href="#abstract">摘要</a></nav>
 
   <div class="grid">
     <section id="decision" class="card span8"><div class="band blue"></div><h2>先做决定：两周只证明一个闭环</h2><p>目标不是复现 PDR-Bench 十系统全榜，也不是立刻跑 31 个任务。目标是验证 agent 能否识别会改变交付物的用户变量，并在“用户在线可问”与“用户离线只能看 history”两种信息政策下采取正确动作。</p><div class="timeline"><div class="phase"><time>9/3–9/6</time><h3>冻结</h3><ul><li>任务与用户对</li><li>环境与 verifier</li><li>adapter 与预算</li></ul></div><div class="phase"><time>9/7–9/10</time><h3>主运行</h3><ul><li>matched blocks</li><li>随机 agent 顺序</li><li>保存全 trace</li></ul></div><div class="phase"><time>9/11–9/13</time><h3>盲评审计</h3><ul><li>rubric 评分</li><li>失败链编码</li><li>anchor 重跑</li></ul></div><div class="phase"><time>9/14–9/17</time><h3>决策与结果锁</h3><ul><li>过门才扩 12 题</li><li>否则收窄 claim</li><li>冻结摘要事实</li></ul></div></div></section>
     <aside class="card span4"><div class="band red"></div><h2>明确不做</h2><ul><li>不新加研究问题、memory 或多 agent 分支。</li><li>不按 agent 输出删题、换 persona、改 rubric。</li><li>不把 LLM 生成候选称为真人 ground truth。</li><li>不把多问、长回答或关键词提及当个性化。</li><li>不要求全实验一天跑完；使用近时 matched block 控制时间漂移。</li></ul></aside>
 
     <section id="smoke" class="card span12"><div class="band gold"></div><h2>首轮 S0：Codex 完成，Claude 鉴权受阻</h2><div class="timeline"><div class="phase"><time>DONE</time><h3>Codex 3 题</h3><ul><li>Research PASS</li><li>Code PASS + warning</li><li>Data FAIL：漏问时间窗</li></ul></div><div class="phase"><time>BLOCKED</time><h3>Claude 3 题</h3><ul><li>HTTP 401 企业余额不足</li><li>input/output token = 0</li><li>不计模型能力 0 分</li></ul></div><div class="phase"><time>AUTH</time><h3>Gemini</h3><ul><li>CLI 0.46.0 已安装</li><li>本人完成 Google OAuth</li><li>随后补跑三题</li></ul></div><div class="phase"><time>NEXT</time><h3>修复与 S1</h3><ul><li>修 Claude 鉴权后新开三题</li><li>绑定 SW001 repo</li><li>绑定 DA003 dataset</li></ul></div></div><p class="note">S0 只验 question/parser/answer-use/reset，不是 artifact smoke，更不是 leaderboard。<a href="s0_run_20260904/RESULTS.md">查看首轮实跑</a> · <a href="AskInfer-Bench_S0-Smoke-RUNBOOK.md">打开 Runbook</a> · <a href="AskInfer-Bench_S0-Smoke-Scorecard.md">复制 Scorecard</a></p></section>
+    <section id="pdrpilot" class="card span12"><div class="band blue"></div><h2>PDR-T30 最小产品闭环：有增益，但只恢复 39.53%</h2><div class="timeline"><div class="phase"><time>FULL</time><h3>6.703</h3><ul><li>完整 User12 persona</li><li>允许自由追问</li><li>一轮五问</li></ul></div><div class="phase"><time>NO-ASK</time><h3>5.596</h3><ul><li>只有 task</li><li>无 simulator</li><li>通用方案</li></ul></div><div class="phase"><time>INTERACTIVE</time><h3>6.033</h3><ul><li>一轮六问</li><li>InteractiveGain +0.438</li><li>OracleGap 0.669</li></ul></div><div class="phase"><time>MISS</time><h3>主要漏问</h3><ul><li>身份与技术资历</li><li>既有平台和工具</li><li>跨境与合规边界</li></ul></div></div><p class="note">n=1 product-UI pilot 只验证端到端 signal 和失败链；full 也允许追问，评分 transport 不是官方 API，不进入主榜。</p></section>
 
     <section id="tasks" class="card span12"><div class="band green"></div><h2>六题 pilot：每题一个 A/B 用户对，节点级覆盖 high / low / zero δ</h2><div class="tasks">
       <article class="task"><div class="id">PDR-T01 · RESEARCH</div><strong>AI PhD 项目与申请</strong><p>A：NLP 本科生；B：机器人方向研究生。</p><p><b>会变：</b>项目/导师集合、准备路线。<br><b>必须问：</b>资金底线、地区与职业目标。</p></article>
@@ -56,7 +57,7 @@
 
     <section id="abstract" class="card span12"><div class="band gold"></div><h2>摘要现在能不能写？能写，但不能假装结果已经存在</h2><p>现在立即写 150–200 词真实摘要骨架：问题、与 full-persona benchmark 的边界、Ask/Infer 两种信息政策、同任务 persona 对与节点级 δ、过程指标和最终交付物验证。结果句保留为可替换的诚实槽位；若到 9/18 只有 pilot，就写 pilot 观察与限制，不写“state-of-the-art”“稳定 leaderboard”或未运行的系统数。</p><div class="note ok"><b>ICLR 2027：</b>摘要截止 2026-09-18 11:59 PM AOE，全文截止 2026-09-25。标题与摘要之后可编辑到全文截止，但必须仍是同一篇论文；摘要应当真实且信息充分。</div></section>
   </div>
-  <footer class="footer">AskInfer-Bench v0.64 · 详细 task prompt、persona 候选、rubric、首轮 S0 结果、runbook 与 harness 规范见配套文件。</footer>
+  <footer class="footer">AskInfer-Bench v0.65 · 详细 task prompt、persona 候选、rubric、首轮 S0、PDR-T30 最小 pilot、runbook 与 harness 规范见配套文件。</footer>
 </main>
 <script>
 const KEY='askinfer-v062-todos';const boxes=[...document.querySelectorAll('#todo input')];function save(){localStorage.setItem(KEY,JSON.stringify(boxes.map(x=>x.checked)));update()}function update(){const done=boxes.filter(x=>x.checked).length;document.getElementById('progress').textContent=`进度 ${done}/${boxes.length}`}function resetTodos(){if(confirm('清空本机保存的所有勾选？')){boxes.forEach(x=>x.checked=false);save()}}try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach((x,i)=>x.checked=!!s[i])}catch{}boxes.forEach(x=>x.addEventListener('change',save));update();

@@ -1,0 +1,600 @@
+
+<system_role>You are a strict, meticulous, and objective expert in evaluating personalized research articles. You excel at deeply evaluating research articles based on specific personalization assessment criteria, providing precise scores and clear justifications.</system_role>
+
+<user_prompt>
+**Task Background**
+You are given an in-depth research task. Your job is to evaluate a research article written for this task in terms of its performance in **"Personalization Alignment"**. We will evaluate it across the following four dimensions:
+1. Goal Alignment
+2. Content Alignment
+3. Presentation Fit
+4. Actionability & Practicality
+
+<task>
+"I plan to develop a personal media account within the next six months, aiming to build a distinctive personal brand in a niche area, attract a stable audience base, and, if possible, monetize. Please create a systematic creative plan to help me identify my target audience, choose a niche, and define my content value proposition; provide brand tone guidelines; design differentiated content themes and creative expression styles; and prepare a 3-month content topic calendar.Propose creative directions for storytelling, serialized content, and interactive formats to ensure sustained audience interest. Develop a detailed account growth strategy, including posting frequency, platform selection, and multi-platform coordination; suggest specific methods for increasing audience engagement, building a fan community, and iterating content. Provide recommendations for tracking and optimizing key performance metrics, and develop a feasible monetization pathway.Taking into account my time, budget, and skill level, create a reasonable resource allocation plan; provide competitive analysis and differentiation strategies, assess potential risks, and propose mitigation measures. Please recommend excellent domestic and international personal media case studies for reference."
+</task>
+
+**User Persona**
+<persona>
+"{'userid': 'User12', 'Basic Attributes': {'Identity Characteristics': {'Name': 'Zhang Yu', 'Age': '30-35', 'Gender': 'Male', 'Occupation': 'AI Company Entrepreneur', 'Educational Background': "Master's degree in Computer Science from Tsinghua University, published multiple papers in the AI field, participated in top international academic conferences", 'Career Development': 'Previously served as a technical lead at a renowned domestic internet company, later resigned to start his own business due to a passion for AI and founded his own company'}, 'Family Status': {'Family Members and Relationships': 'Married, has a 5-year-old daughter, lives with his parents, wife is a university classmate and currently a freelancer mainly responsible for family affairs', 'Pets': "Owns a blue British Shorthair cat named Doudou, chosen together as a family on his daughter's 5th birthday, and cared for by the entire family", 'Family Atmosphere': 'Harmonious family relationships, parents help take care of the child, wife is his emotional support and career partner, often providing advice in life'}, 'Long-term Spatial Characteristics': {'Permanent Residence': 'Haidian District, Beijing, living in a comfortable three-bedroom apartment close to his company with well-equipped surrounding facilities', 'Hometown': 'Jinan, Shandong, grew up in a middle-class family, both parents are retired teachers, received a good education and family influence from an early age', 'Environmental Influence': 'The fast-paced life in Beijing has cultivated a habit of high efficiency, while his upbringing in Jinan has instilled a practical and approachable personality'}}, 'Behavioral Characteristics': {'Online Usage Habits': {'High-frequency Apps and Usage Duration': 'Uses GitHub, Slack, and Notion for over 8 hours daily to manage team tasks and technical development', 'Online Social Behavior': 'Active on LinkedIn and professional tech forums, spends 1 hour daily building industry connections and staying updated on technological trends', 'Content Consumption': 'Frequently browses AI-related news and papers, stays highly sensitive to new technologies, occasionally shares insights on forums'}, 'Offline Long-term Behavior': {'Daily Routine': 'Wakes up at 5:30 AM, goes to bed at 11:30 PM, spends 20 minutes in the morning doing yoga or deep breathing exercises, and consistently reads bedtime stories to his daughter for half an hour in the evening', 'Consumption Cycle': 'Makes large purchases monthly, mainly for family travel and high-end fitness equipment, occasionally buys specialized care products for the pet', 'Consumption Characteristics': 'Prefers high-end tech products, values cost-effectiveness, recently developed an interest in eco-friendly smart home devices', 'Periodic Mobility': 'Travels quarterly, mainly to Shenzhen and Hangzhou to visit partners or attend industry summits, while also exploring local culture during the trips'}, 'Environment': {'Time': {'Time Preference': 'Prefers doing creative work in the morning, typically capturing ideas or designing technical solutions early in the day', 'Time Allocation': 'Focuses on work from Monday to Friday, dedicates weekends to family, balancing work and life'}, 'Geographical Location': {'Frequent Places': 'Company office, gym, startup incubator; recently enjoys visiting bookstores for inspiration, occasionally meets friends or partners at cafes', 'Travel Radius': 'Mostly active in urban Beijing, goes hiking or participates in outdoor barbecues in the suburbs on weekends'}}, 'Personality Traits': {'Personality': 'Extroverted, optimistic, passionate, skilled at motivating the team, enjoys sharing experiences and insights', 'Decision-making Style': 'Makes independent decisions but values team input, focuses on data analysis and logical reasoning', 'Shopping Preference': 'Rational consumer, prioritizes product quality and brand, willing to spend on improving life quality for himself and his family'}, 'Preferences and Interests': {'Lifestyle Preferences': {'Diet': 'Enjoys Chinese cuisine, especially Cantonese dishes, recently started a low-sugar diet, orders takeout on workdays, and cooks new recipes on weekends', 'Accommodation Preferences': 'Prefers star-rated hotels with high-quality services, particularly values quiet environments and reading spaces', 'Shopping': 'Primarily shops online, especially for tech products, and follows emerging eco-friendly brands', 'Services': 'Frequently uses food delivery and housekeeping services, recently started trying grocery delivery services for local organic produce'}, 'Travel Preferences': {'Frequency': 'Travels 3-4 times a year, usually during holidays or work breaks', 'Destinations': 'Prefers natural attractions like lakes and forests, also enjoys modern metropolitan cities', 'Travel Style': 'Self-guided trips, likes planning his itinerary, recently started exploring light travel with minimal luggage'}, 'Content Preferences': {'Article Collection': 'Often saves articles about technology and entrepreneurship, particularly focused on AI application cases and industry trends', 'Short Videos': 'Enjoys watching tech-related short videos, mainly on Bilibili, and also follows content on mental health', 'Screenshots': 'Frequently takes screenshots of technical articles and business insights, organizes and shares them with the team', 'Books, Movies, Singers, Actors': "Admires Liu Cixin's novels and Hans Zimmer's music, also enjoys science fiction movies and documentaries"}, 'Exercise Preferences': {'Exercise Habits': 'Runs twice a week, works out at the gym three times a week, recently became interested in rock climbing', 'Exercise Goals': 'Enhance endurance and reduce stress while maintaining physical fitness', 'Exercise Types': 'Rock climbing, strength training, occasionally Pilates for relaxation', 'Other Investments': 'Buys professional rock climbing shoes and equipment, subscribes to fitness app courses', 'Exercise Locations': 'Outdoor climbing venues and gyms, occasionally participates in urban charity running events'}}, 'Health Status': {'Physical Condition': {'Medical History': 'No major illnesses, had minor sports injuries that were well-recovered through therapy', 'Mental Condition': 'Occasionally feels anxious due to work pressure but manages it effectively through exercise and family time', 'Physical Fitness': 'Good physical fitness, strong endurance, able to handle a high-intensity work-life routine'}, 'Health Needs': {'Health Needs': 'Aims to maintain health through exercise, boost immunity, and focus on mental well-being to avoid excessive stress'}}, 'Financial Information': {'Financial Status': {'Income Structure': 'Primary income comes from company dividends and technical consulting, occasionally earns extra through investments', 'Asset Status': 'Owns a property in Beijing, a Tesla car, and some smart home devices', 'Consumption Characteristics': 'High spending focused on quality of life, plans expenses reasonably based on family needs', 'Debt Situation': 'Has a mortgage but no credit card debt, repays loans regularly, maintains a good credit record'}, 'Investment Experience': {'Investment Background': 'Experienced in stocks and mutual funds, occasionally engages in angel investment, prefers investing in tech startups', 'Knowledge Level': 'Highly knowledgeable in finance, understands financial planning and investment strategies, regularly follows financial news', 'Risk Management': 'Risk appetite is moderate, prioritizes risk control, prefers stable long-term returns'}}}}"
+</persona>
+
+**Article to be Evaluated**
+<target_article>
+"基于你给出的信息，我不建议做成泛泛的“AI 新闻号”，而是把它设计成一个 有判断、有实测、有创业视角的 AI 个人品牌。原因是：纯资讯越来越容易被 AI 自动生成，长期品牌真正稀缺的是“你替读者筛选什么、验证什么、如何解释、最后敢给什么判断”。Allie K. Miller 自己做过一个月 AI 自动新闻实验后也总结，自动资讯虽然能获得浏览，但更难体现个人性，真正产生强传播的往往是观点、个人故事和经验；她认为受众更重视 contextualization 和 actionable advice。
+LinkedIn
+
+一、先把账号定位成什么
+
+我建议采用这个定位：
+
+“AI 落地观察者 / 实验者”：用真实案例和小实验，解释 AI 到底能解决什么问题、产业正在发生什么变化，以及其中有哪些创业机会。
+
+它比“AI 博主”窄，但又不会把未来锁死在某个工具上。
+
+你的内容价值公式可以定义成：
+
+信息 → 验证 → 判断 → 行动
+
+也就是说，一条内容最好至少完成其中两个环节，而不是简单告诉读者“今天 OpenAI 又发布了什么”。
+
+例如：
+
+“某公司发布新 Agent”是新闻；
+“我用它完成了一个真实任务，发现三个地方比宣传差很多”是内容；
+“因此我认为未来半年 XX 类 SaaS 最危险，而 XX 类创业机会反而增大”则开始形成个人品牌。
+
+推荐目标受众
+
+因为你对目标人群没有强偏好，我不建议一开始把 audience 定义成“所有对 AI 感兴趣的人”。
+
+更适合的是一个 核心层 + 外围层：
+
+层级	人群	他们真正想知道什么
+核心受众	产品经理、创业者、管理者、知识工作者、AI 应用从业者	AI 到底怎么落地、值不值得用、有什么机会
+外围受众	对 AI 感兴趣的普通职场人	哪些工具真正有用、AI 会如何改变工作
+暂时不重点争夺	纯模型研究人员、纯算法论文受众	他们需要的技术深度容易把账号带到另一条赛道
+
+这让内容既有专业度，又不会变成只有极少数工程师能看懂的技术号。
+
+二、最重要的差异化：不要争“谁最快”，争“谁最值得信”
+
+AI 内容目前最容易出现四种模式：
+
+常见 AI 账号	优点	问题
+AI 快讯	容易高频	极易同质化
+工具推荐	搜索流量不错	工具生命周期短
+Prompt 教程	入门门槛低	很快商品化
+宏观趋势判断	容易建立影响力	如果没有证据容易空泛
+
+你的最佳组合应该是：
+
+40% AI 实测案例 + 30% AI/产业判断 + 20% 创业案例 + 10% 个人探索。
+
+其中“案例”是护城河。
+
+比如不要做：
+
+Claude 新功能介绍。
+
+而做：
+
+“我让 3 个 AI Agent 同时完成一家公司竞争分析，结果差异比模型 benchmark 大得多。”
+
+不要做：
+
+AI 会取代 SaaS 吗？
+
+而做：
+
+“我拆了 20 个最近出现的 AI SaaS 后，发现真正危险的并不是 SaaS，而是这一层。”
+
+久而久之，读者关注的不是“AI 新闻”，而是：
+
+这件事情你怎么看。
+
+这才是个人品牌。
+
+三、品牌 Tone
+
+推荐四个关键词：
+
+专业，但不学院派；有判断，但不制造焦虑；有实验，而不是只谈概念；有个人味，而不是 AI 生成报告。
+
+你的典型表达模板可以形成：
+
+发生了什么 → 大部分人怎么看 → 我真正关注的是什么 → 我做了什么实验/案例 → 得到什么结果 → 这对你意味着什么。
+
+标题则避免大量：
+
+“震惊”“颠覆”“彻底失业”“普通人最后机会”。
+
+可以建立一种比较稳定的标题语言：
+
+《我实际用了 X 天后，对 XX 的判断变了》
+
+《别急着学 XX，先理解这三个变化》
+
+《一个 AI 创业项目为什么看起来很好、实际上很难做》
+
+《我会不会为这个 AI 产品付钱？》
+
+《如果今天重新做这个 AI 项目，我会这样做》
+
+这种标题本身就在形成品牌。
+
+四、设计 5 个可长期连载的栏目
+IP 栏目	内容	品牌作用
+AI 真能干吗？	一个真实任务 + AI 实测	建立可信度
+AI 生意拆解	拆一个产品/创业公司	建立商业判断
+AI 一周一判断	不总结全部新闻，只讲一个最重要变化	建立观点
+我让 AI 做了……	个人实验	提升传播性
+AI 之后怎么办？	AI 对某职业/行业影响	扩大受众
+
+最值得长期坚持的是 “AI 真能干吗？”。
+
+例如：
+
+“AI 能不能独立做市场调研？”
+
+“AI 能不能真的替代初级产品经理？”
+
+“Agent 能不能管理邮箱一天？”
+
+“AI 能不能做一份值得付钱的行业报告？”
+
+最好每一期都有：
+
+任务 → 实验条件 → 结果 → 翻车 → 最终结论。
+
+这样天然就具有故事性。
+
+五、你的故事化内容，不要从“知识点”开始
+
+个人品牌很容易犯一个错误：
+
+一直在“教”。
+
+长期来看，用户更容易记住的是 故事 + 判断。
+
+可以使用一个固定叙事结构：
+
+我原来认为 X
+↓
+最近发生了一件事
+↓
+我决定自己验证
+↓
+过程中发现 Y
+↓
+结果和预期完全不同
+↓
+所以现在我的判断是 Z
+
+例如：
+
+“我以前认为 AI PPT 已经没有什么值得研究的了。直到我把同一份 30 页行业资料给了 4 个 Agent……”
+
+这比：
+
+“今天介绍四款 AI PPT 工具。”
+
+更容易形成个人辨识度。
+
+六、平台策略：不要同时经营六个平台
+
+你的目标是长期个人品牌，而不是最大化短期曝光，所以建议采用：
+
+1 个内容母体 + 2 个主要分发平台 + 若干低成本同步平台。
+
+如果主要面向中文受众，可以采用：
+
+平台	定位	内容
+微信公众号	内容资产库	深度文章、案例、长期沉淀
+小红书 / 视频号（二选一重点）	用户增长	案例、观点、短内容
+知乎	搜索与专业影响力	深度回答
+B站	后期增加	深度实验、长视频
+抖音	可同步测试	强 hook 短视频
+
+不要最开始同时重运营所有平台。
+
+第一阶段：
+
+微信公众号 + 小红书/视频号
+
+即可。
+
+一个深度内容可以被拆成：
+
+1 篇公众号文章 → 1 个 3–6 分钟视频 → 2–3 个短视频 → 3 张图文卡片 → 3–5 条短观点。
+
+这就是你的内容生产杠杆。
+
+七、适合你时间偏好的生产机制
+
+你明确偏好 工作日清晨进行创意工作、周末留给家庭，因此最好不要采用“每天追热点”的生产方式。
+
+建议建立一个 weekday-only workflow：
+
+时间	工作
+周一清晨	收集选题 + 判断
+周二清晨	深度研究/实验
+周三清晨	写核心长内容
+周四清晨	视频/图文改编
+周五清晨	发布、数据复盘、准备下周
+周末	默认不安排固定内容生产
+
+每周总时长没有明确，因此设计成弹性版本：
+
+约 4 小时/周：2 个核心内容。
+
+约 6–8 小时/周：2 个核心内容 + 2–3 个拆条。
+
+约 10 小时以上：3 个核心内容 + 视频。
+
+我更推荐先按 6–8 小时的体系设计，但实际从最低版本执行。
+
+原因是长期品牌最怕前三周产量极高，第四周开始停更。
+
+八、完整 3 个月内容 Calendar
+
+不应该提前写死 90 天每天的标题，因为 AI 变化太快。更合理的是：
+
+固定栏目 + 可替换热点位。
+
+下面是一套 12 周内容骨架。
+
+周	核心案例内容	观点内容	创业/互动内容
+W1	我真正用 AI 完成一个工作任务	现在最值得普通人理解的 AI 变化	“你最希望 AI 替你做什么？”
+W2	3 个主流 AI 完成同一任务对比	为什么模型排行榜越来越不能代表体验	AI 创业机会 #1
+W3	Agent 完成一整套工作流程实验	Agent 和 Chatbot 真正区别	读者提交任务挑战
+W4	我连续一周用 AI 做 X	哪些 AI 工具其实没有必要付费	月度实验复盘
+W5	AI 做行业研究到底靠谱吗	AI 搜索会改变什么行业	拆解一个 AI 产品
+W6	AI 自动化一个真实工作流程	为什么“会 Prompt”越来越不重要	AI 创业失败案例
+W7	AI vs 人完成同一项任务	哪些工作正在首先被重构	评论区职业诊断
+W8	用 AI 从零做一个小产品	AI Coding 真正改变的是什么	产品成本/收益公开
+W9	让 Agent 工作 24 小时的实验	SaaS 会不会被 Agent 吃掉	AI 生意拆解 #3
+W10	5 个热门 AI 产品实测	我最近改变的一个 AI 判断	投票预测
+W11	用 AI 创建一个小型商业项目	AI 创业最容易掉进去的三个坑	创业案例拆解
+W12	90 天 AI 实验总结	我对未来 12 个月 AI 的 5 个判断	邀请用户决定下一季栏目
+
+其中大约 20% 的位置预留给当周真正重要的新模型、新产品和产业事件。
+
+这比提前写 90 个标题更适合 AI 赛道。
+
+九、增长策略不是“多发”，而是设计传播单元
+
+建议每条内容至少努力包含一个传播元素：
+
+强结论、反直觉数据、可复制模板、真实失败、成本数字、前后对比、排行榜、实验结果。
+
+例如：
+
+普通：
+
+“如何使用 AI 做市场研究”
+
+更有传播性：
+
+“我分别花 ¥0、¥100 和 ¥1000 用 AI 做市场研究，结果最大的差异居然不是质量。”
+
+又比如：
+
+“我让 AI 同时分析 100 条用户评论，这五个结论人类团队之前完全漏掉了。”
+
+这会形成一个重要增长循环：
+
+实验 → 内容 → 评论提出问题 → 下一次实验 → 新内容。
+
+粉丝实际上变成你的选题来源。
+
+十、社区运营：前 1000 个核心粉丝比 10 万泛粉更重要
+
+长期品牌应该重点观察：
+
+哪些人反复出现。
+
+尤其关注：
+
+经常评论的人、提出高质量问题的人、主动分享你内容的人、愿意参与实验的人。
+
+可以逐渐设计：
+
+“每周 AI 实验室”
+
+让用户投稿一个任务，你选择一个真实测试。
+
+进一步发展成：
+
+“100 人 AI 实验群”
+
+但不要刚起号就急着建群。
+
+先证明内容价值，再建立社区。
+
+十一、KPI：前 3 个月不要把粉丝数作为第一指标
+
+建议用一个非常简单的 dashboard：
+
+指标	为什么重要
+完读率 / 完播率	内容本身是否成立
+收藏率	实用价值
+分享率	内容传播价值
+评论率	观点强度
+关注转化率	IP 吸引力
+Returning audience	是否形成稳定受众
+私信质量	商业价值
+Email/公众号订阅	私域资产
+
+特别关注一个指标：
+
+关注转化率
+
+例如：
+
+一条内容 10 万播放但增加 200 粉：
+
+0.2%
+
+另一条只有 1 万播放，却增加 500 粉：
+
+5%
+
+对长期个人品牌来说，第二条往往更重要。
+
+每四周只做一次大复盘：
+
+哪种主题涨粉？
+哪种内容收藏？
+哪种内容引发高质量评论？
+哪种内容虽然流量高却不带来关注？
+
+然后增加 Top 20% 类型，淘汰 Bottom 20%。
+
+十二、变现不要一开始做广告
+
+如果目标排序是：
+
+长期个人品牌 > 专业影响力
+
+最合理的商业化顺序是：
+
+0–3 月：先建立可信度
+
+基本不主动商业化。
+
+可以建立免费产品：
+
+AI 工具表 / Prompt 模板 / AI 落地案例库 / newsletter。
+
+3–6 月：轻变现
+
+开始测试：
+
+咨询、企业培训、精选工具 affiliate、付费报告、小型 workshop。
+
+6–12 月：产品化
+
+逐步发展：
+
+课程、会员社区、行业研究、企业 AI 咨询、AI 产品、品牌合作。
+
+真正好的路径是：
+
+内容 → 信任 → 社区 → 服务 → 产品。
+
+而不是：
+
+流量 → 广告。
+
+十三、预算：采用“ROI 解锁”机制
+
+由于你没有固定预算，而且更看重性价比，我建议不要提前规定：
+
+每月必须花 ¥5000。
+
+而采用：
+
+只有某个环节被证明是瓶颈以后才付费。
+
+例如：
+
+初期：
+
+手机 + 简单剪辑工具 + AI 工具即可。
+
+当：
+
+剪辑每周占 3 小时以上
+
+才考虑外包。
+
+当：
+
+内容稳定但封面 CTR 明显偏低
+
+再购买设计/模板。
+
+当：
+
+已经出现付费客户
+
+再投入网站、Newsletter、自动化 CRM 等。
+
+也就是说：
+
+先买时间，而不是买设备。
+十四、最大的竞争风险
+
+真正危险的不是“AI 博主太多”。
+
+而是：
+
+你的内容变成 AI 本身也能生成的内容。
+
+例如：
+
+“2026 十大 AI 趋势”
+
+“十大 AI 工具”
+
+“ChatGPT 五个技巧”
+
+几分钟就能生成。
+
+你的护城河应该逐渐变成：
+
+第一手实验 + 累积判断 + 真实经验 + 独特选择标准 + 受众信任。
+
+Ethan Mollick 的 One Useful Thing 就是一个非常好的参考。他长期围绕 AI 对工作、教育和生活的影响进行研究型写作，并明确强调文章由自己写，AI 只在完整草稿之后用于反馈。
+One Useful Thing
++1
+
+十五、最值得研究的 4 个案例
+🇨🇳 宝玉
+
+非常值得重点研究。
+
+他的内容并不是单纯追 AI 新闻，而是同时存在：
+
+工具与事件 → 工程实践 → 实际项目 → 更高层的方法论。
+
+例如近期内容从真实 AI 开发流程、Agent 判断一直扩展到“AI 原生思维”，已经形成了明显的个人判断框架。
+宝玉的分享
++1
+
+尤其值得学习：
+
+“自己实践 → 总结 → 输出框架”
+
+而不是简单模仿他的选题。
+
+🇨🇳 「碳基生物退役指南」
+
+这是另一个值得观察的方向：强调本地模型实测、硬件投入和实际踩坑。例如其一项公开内容通过 30 天、具体硬件预算和多模型横评来回答“本地部署到底怎么选”，这种 高成本实验 → 一个明确答案 的结构，非常适合作为你的案例型内容模板。
+Bilibili
+
+🇺🇸 Ethan Mollick — One Useful Thing
+
+这是“专业可信度型个人品牌”的典型。
+
+不是抢每一个 AI 新闻，而是解释：
+
+这个技术到底意味着什么。
+
+截至 2026 年，他仍然围绕 Agent、AI 工作方式、人与 AI 共存等主题持续写长文。
+One Useful Thing
++1
+
+如果你的目标第一位是长期个人品牌，他可能比纯短视频 AI influencer 更值得研究。
+
+🇺🇸 Allie K. Miller
+
+她更值得研究的是：
+
+如何把专业身份转成大众化个人品牌。
+
+其体系包括社交媒体内容、Newsletter、免费邮件课程、课程、演讲与企业咨询等，实际上已经构成了完整的：
+
+内容 → audience → free product → paid expertise
+
+商业闭环。
+LinkedIn
++1
+
+她自己对 AI 自动内容实验的反思尤其值得注意：规模化资讯并不等于个人品牌，真正重要的是个人经验、context 和观点。
+LinkedIn
+
+十六、如果压缩成一个 90 天执行方案
+
+我会把你的前三个月目标定为：
+
+不是成为“大 AI 博主”，而是让第一批受众形成一句明确认知：
+“如果我想知道某个 AI 到底有没有用、这件事意味着什么，我会去看这个账号怎么说。”
+
+第一个月验证 题材。
+
+第二个月验证 栏目。
+
+第三个月验证 个人观点/IP 是否形成。
+
+前三个月甚至不用追求非常大的粉丝量。
+
+更应该争取产生：
+
+3 个别人开始记住的栏目；5–10 篇半年以后仍值得看的内容；1 个明显高于账号平均水平的爆款模板；几十到几百个重复出现的高质量受众；以及一个可以长期坚持的内容生产系统。
+
+如果这五件事成立，之后再扩大频率、视频化、团队化和商业化，比一开始追求“日更 + 全平台铺量”更符合你所强调的 长期个人品牌和专业影响力。
+"
+</target_article>
+
+**Evaluation Criteria**
+You must evaluate the specific performance of this article in terms of personalization alignment, **following the criteria list below**, outputting your analysis and then assigning a score from 0–10. Each criterion includes its explanation, which you should read carefully.
+
+<criteria_list>
+{'goal_alignment': [{'criterion': 'Persona-specific niche and audience definition anchored in AI founder perspective and company goals', 'explanation': 'Assess whether the plan picks a niche that leverages Zhang Yu’s credibility (e.g., applied AI productization in China, MLOps/LLMOps for startups, enterprise AI adoption) and segments target audiences (CTOs/heads of product in traditional industries, founders, senior engineers/students). It should articulate ICPs, pain points, and jobs-to-be-done and align them to the company’s lead-gen and brand goals.', 'weight': 0.12}, {'criterion': 'Content value proposition and differentiation clarity for an expert, B2B-leaning audience', 'explanation': 'Evaluate whether the plan communicates a unique promise (turning cutting-edge AI into deployable products with China-specific constraints, pragmatic engineering practices, founder lessons) backed by credibility signals (papers, conferences) and a clear positioning versus competing creators.', 'weight': 0.1}, {'criterion': 'Platform selection and cross-platform orchestration tailored to his digital habitat and bilingual reach', 'explanation': 'Check that the plan designates platform roles and mappings (LinkedIn global networking, WeChat/知乎 longform in Chinese, Bilibili for tech videos, GitHub for code artifacts, newsletter as owned channel), sets a Notion/site as canonical hub, defines localization/bilingual rules, and specifies cross-post workflows and UTM tracking.', 'weight': 0.11}, {'criterion': 'Cadence and production schedule aligned with morning creativity and family-first evenings/weekends', 'explanation': 'Verify a sustainable timetable: morning drafting/ideation blocks, weekly batching for video recording, minimal evening work, and weekend protection. It should include realistic per-platform frequencies, editing lead times, travel buffers, and scheduler/automation use.', 'weight': 0.08}, {'criterion': 'Differentiated themes, storytelling arcs, serialized content, and interactive formats leveraging founder journey and technical depth', 'explanation': 'Assess whether the plan proposes recurring series (e.g., build-in-public feature logs, conference debriefs, MLOps pitfalls), narrative structures, and interactive formats (AMA, live coding, polls) that fit a professional tech audience and Zhang Yu’s strengths.', 'weight': 0.1}, {'criterion': 'Three-month topic calendar specificity, prioritization, and feasibility', 'explanation': 'Evaluate whether the calendar lists concrete weekly topics with sequencing and theme rotation, matches expected events (industry summits/travel), balances depth vs. accessibility, includes contingencies, and is feasible within his time constraints.', 'weight': 0.06}, {'criterion': 'Engagement and community design suitable for professional audiences', 'explanation': 'Check for a value-centric community plan (e.g., curated WeChat groups/Discord, GitHub Discussions), membership criteria, moderation guidelines, office hours, feedback loops, and co-creation mechanisms that encourage high-signal interactions.', 'weight': 0.08}, {'criterion': 'KPI framework and experimentation/iteration loop aligned to data-driven decision style and business funnel', 'explanation': 'Verify clearly defined OKRs, leading/lagging metrics (e.g., saves/shares, newsletter growth, MQLs/demos), dashboards (Notion/BI), A/B tests for titles/thumbnails/CTAs, review cadence, and decision thresholds for iterating content and channel strategy.', 'weight': 0.09}, {'criterion': 'Monetization pathways aligned with founder ethics and startup synergy', 'explanation': 'Assess whether monetization emphasizes company lead-gen, enterprise workshops/training, paid cohort courses, sponsorship policies that protect credibility, and digital products (templates/code). It should include readiness milestones and pricing logic.', 'weight': 0.06}, {'criterion': 'Resource allocation and workflow leveraging his tools, time, and budget', 'explanation': 'Check for a pragmatic content OS in Notion, GitHub integration for code content, use of transcription/automation tools, and selective outsourcing (editing, thumbnails, translation). Include budget ranges, SOPs, RACI, and a burnout risk check.', 'weight': 0.05}, {'criterion': 'Competitive analysis and case study relevance with actionable differentiation', 'explanation': 'Evaluate whether the plan analyzes both domestic and international personal creators analogous to an AI founder, extracts format/cadence/monetization insights, and translates them into concrete differentiation moves for Zhang Yu.', 'weight': 0.05}, {'criterion': 'Risk, compliance, and reputation safeguards tailored to China AI and founder responsibilities', 'explanation': 'Check for NDA/IP-safe content boundaries, regulatory/platform compliance checklists, claims verification, pre-publication review flow, crisis response plan, and ethical sponsorship/affiliate policies to protect brand and business.', 'weight': 0.06}, {'criterion': 'Brand tone and communication style alignment with persona', 'explanation': 'Assess whether tone guidelines reflect authoritative yet approachable, optimistic, rational communication; specify platform-specific registers, bilingual style choices, jargon management for mixed audiences, and tasteful humanization (family/fitness/pet) without diluting technical authority.', 'weight': 0.04}], 'content_alignment': [{'criterion': 'Niche–User Fit and Authority Anchor', 'explanation': 'Assess whether the chosen niche and value proposition explicitly leverage Zhang Yu’s AI founder credibility (e.g., applied AI, MLOps/productization, engineering leadership, China-specific AI deployment) so the content naturally signals authority to the intended tech audience.', 'weight': 0.19}, {'criterion': 'Appropriate Technical Depth and Rigor', 'explanation': 'Evaluate whether topics go beyond surface tips to include code-level insights, architecture trade-offs, evaluation frameworks, and concrete AI/ML operational details that match his Tsinghua/industry background without drifting into purely academic abstraction.', 'weight': 0.16}, {'criterion': 'China Ecosystem and Policy Grounding', 'explanation': 'Check that content reflects China’s market realities and regulations (e.g., PIPL, CAC algorithm guidance), domestic cloud/compute landscape, Shenzhen/Hangzhou ecosystems, and local enterprise needs—ensuring high local relevance rather than generic global advice.', 'weight': 0.12}, {'criterion': 'Workflow- and Tool-Aligned Content Formats', 'explanation': 'Judge whether content formats align with his daily GitHub/Slack/Notion use (e.g., repo-driven tutorials, Notion playbooks, reproducible experiments), reducing friction and ensuring authentic, substantive outputs that fit his habits.', 'weight': 0.1}, {'criterion': 'Platform–Audience Content Fit', 'explanation': 'Assess whether the plan maps content types to each platform’s audience and culture he engages with (e.g., LinkedIn industry analyses, WeChat long-form case studies, Bilibili technical demos, Zhihu Q&A), maximizing relevance of topics per channel.', 'weight': 0.08}, {'criterion': 'Evidence- and Metric-Oriented Framing', 'explanation': 'Evaluate if content consistently uses data (benchmarks, A/B results, cohort metrics, deployment KPIs) to support claims, fitting his data-driven decision style and the expectations of a technical/professional audience.', 'weight': 0.08}, {'criterion': 'Founder Narrative Integration with Professional Focus', 'explanation': 'Check that humanizing elements (founder diary, stress management, family–work balance) are included at a proportion that enhances trust and relatability while staying anchored to AI entrepreneurship and product content.', 'weight': 0.07}, {'criterion': 'Tech-Community-Oriented Interactivity Fit', 'explanation': 'Assess whether interactive content (AMAs, code reviews, office hours, repo challenges) is designed for a technically savvy audience and leverages his extroversion to facilitate meaningful, problem-solving exchanges.', 'weight': 0.06}, {'criterion': 'Case Study Relevance and Transferability', 'explanation': 'Evaluate whether domestic and international case studies mirror his context (AI startups, enterprise AI, open-source maintainers) and extract insights that can reasonably transfer to a Beijing-based founder’s situation.', 'weight': 0.05}, {'criterion': 'Monetization Content–Brand Congruence', 'explanation': 'Check whether monetization-linked content (e.g., paid technical playbooks, enterprise workshops, consulting, beta access to tools) aligns with his expertise and audience expectations, avoiding mismatched ads or generic sponsorships.', 'weight': 0.04}, {'criterion': 'Cross-Border and Bilingual Insight Integration', 'explanation': 'Assess whether content bridges domestic and global AI conversations (e.g., bilingual summaries, conference takeaways, comparisons of domestic vs. overseas practices) reflecting his international academic exposure.', 'weight': 0.03}, {'criterion': 'Risk-Aware Topic Selection', 'explanation': 'Evaluate whether sensitive topics (AI ethics, regulatory compliance, IP/data usage) are selected and framed to minimize reputational risk and align with his moderate risk appetite and compliance needs.', 'weight': 0.02}], 'presentation_fit': [{'criterion': 'Scannability and layered structure (executive summary, TOC, section headings, TL;DR per section)', 'explanation': 'As a busy, data-driven founder who does morning deep work, Zhang Yu needs a top-level summary and clear hierarchy to grasp the whole plan fast and drill down selectively. Presence and quality of TL;DRs, headings, numbered sections, and a table of contents determine reading speed and comprehension.', 'weight': 0.18}, {'criterion': 'Professional, concise, data-oriented tone (avoid hype and slang; crisp sentences)', 'explanation': 'He values logical reasoning and evidence-based communication. A neutral, analytical tone with concise phrasing improves trust and reduces cognitive load compared with influencer-style hype or vague guidance.', 'weight': 0.12}, {'criterion': 'Terminology precision and brief definitions for creator-growth jargon (consistent acronyms, optional bilingual notes)', 'explanation': 'While fluent in tech, he may be less familiar with marketing/social metrics. Consistent use of acronyms (e.g., CTR, ER, LTV) with one-line definitions and occasional bilingual labels prevents misinterpretation and ensures shared understanding with team members.', 'weight': 0.12}, {'criterion': 'Visual organization using tables, matrices, decision trees, and calendars (Notion/Slack-friendly)', 'explanation': 'He organizes knowledge in Notion and shares via Slack. Clear tables (platform comparisons), matrices (positioning), decision trees (niche selection), and 3‑month calendars increase readability and are easy to copy/paste into tools he already uses.', 'weight': 0.16}, {'criterion': 'Platform-specific modularity with consistent section templates', 'explanation': 'Present each platform in a repeatable template (audience, formats, hooks, cadence, CTA, cross-posting rules). Consistent modular blocks reduce context switching and enable quick reference during execution.', 'weight': 0.1}, {'criterion': 'KPI dashboard presentation clarity (metric name, definition/formula, tool, cadence, target/benchmark)', 'explanation': 'He prioritizes measurement. A well-formatted KPI table with formulas and update cadence supports data-driven iteration and aligns the team on exactly how metrics are computed and reviewed.', 'weight': 0.12}, {'criterion': 'Timeline and resource plan visualization (phase roadmap, weekly cadence grid, budget table)', 'explanation': 'Time and budget constraints require clear visual timelines (e.g., phase/milestone roadmap), weekly posting grids, and budget breakdown tables to quickly assess feasibility without parsing dense prose.', 'weight': 0.08}, {'criterion': 'Mobile-first readability and shareability', 'explanation': 'Short paragraphs, bullet lists, highlighted key numbers, and clean link formatting ensure the plan is easy to read on a phone and remains legible when pasted into Slack/WeChat or exported to Notion.', 'weight': 0.07}, {'criterion': 'Action checklists and decision gates at the end of sections', 'explanation': 'Checklists for next 7/30/90-day actions and explicit decision criteria/gates translate each section into immediate steps, improving usability without changing content—this is a presentation feature that fits his execution-focused workflow.', 'weight': 0.05}], 'actionability_practicality': [{'criterion': 'Executable 6-month roadmap with phased milestones and decision gates', 'explanation': 'Assesses whether the report provides a week-by-week or phase-based plan (discovery → prototype content → launch → growth → monetize) with clear deliverables, dates, and go/no-go or pivot criteria. Without a sequenced roadmap and checkpoints, the plan is hard to execute or adjust in time.', 'weight': 0.14}, {'criterion': 'Time-feasible workload and schedule aligned to mornings and weekends', 'explanation': 'Checks if the plan specifies estimated weekly hours by task (ideation, scripting, recording, editing, distribution, community), fits morning creative blocks, batches production, and protects weekends for family. Practicality depends on matching output ambitions to his true time capacity.', 'weight': 0.12}, {'criterion': 'Platform-specific playbooks and realistic posting frequency', 'explanation': 'Evaluates whether the report gives concrete tactics for chosen platforms (e.g., WeChat Official Account, Bilibili, Zhihu, LinkedIn, Xiaohongshu), including format specs, SEO/algorithm levers, caption/thumbnail guidelines, and feasible posting frequencies per platform. Actionability requires precise ‘how-to’ beyond generic advice.', 'weight': 0.1}, {'criterion': 'Detailed 3-month content calendar with topics, hooks, and CTAs', 'explanation': 'Looks for a filled calendar that lists weekly themes, specific post ideas/titles, required assets, target audience intent, and clear calls-to-action, incorporating serialized and interactive pieces and integrating travel windows. Concrete calendars remove ambiguity and accelerate execution.', 'weight': 0.12}, {'criterion': 'KPI definition, instrumentation, and review cadence', 'explanation': 'Checks whether the report specifies platform-level north star and leading indicators (e.g., watch time, saves, shares, click-through to lead magnet), sets weekly/monthly targets, and defines tooling (UTM, platform analytics, Notion dashboards) and ritualized reviews. Data-driven execution needs proper measurement set-up.', 'weight': 0.12}, {'criterion': 'Iteration and experimentation framework', 'explanation': 'Assesses whether there is a concrete A/B testing plan for hooks/thumbnails/format lengths, a hypothesis log, sample sizes, test cadence, and explicit rules for keeping/killing ideas and pivot conditions. Practical plans must show how learning cycles will improve outputs quickly.', 'weight': 0.08}, {'criterion': 'Resource and budget plan with tool stack and outsourcing options', 'explanation': 'Evaluates if the plan specifies exact tools (e.g., mic/lighting, editing/transcription/scheduling software), automation, costs, and when to hire freelancers (editor, thumbnail designer, community moderator) with rate estimates and a simple RACI/ownership model. Clarity on resources enables immediate setup.', 'weight': 0.1}, {'criterion': 'Feasible monetization pathway with stage-gated triggers', 'explanation': 'Checks for near-term monetization steps suited to an AI founder (lead magnets → consulting/workshops → paid newsletter/community → sponsorships), with activation thresholds (e.g., follower count, newsletter subs), pricing ranges, and lightweight funnels (booking links, intake forms). Actionability requires ‘when and how’ to turn on revenue.', 'weight': 0.1}, {'criterion': 'Community building mechanisms and operational load', 'explanation': 'Assesses whether the report details private-domain setups (WeChat groups, newsletter, Slack/Discord if relevant), onboarding prompts, engagement rituals (AMAs, office hours), moderation rules, and time estimates. Sustainable engagement depends on manageable, repeatable community operations.', 'weight': 0.06}, {'criterion': 'Risk, compliance, and contingency measures', 'explanation': 'Evaluates if the plan identifies key risks (content accuracy in AI, platform policy shifts, burnout, reputational issues), includes pre-publication review checklists, sponsor disclosure practices, backup content buffers, and escalation playbooks. Practical plans prepare for disruptions that can derail execution.', 'weight': 0.06}]}
+</criteria_list>
+
+<Instruction>
+**Your Task**
+Strictly follow **each criterion** in `<criteria_list>` to evaluate how `<target_article>` meets that criterion. You must:
+1. **Analyze Each Criterion**: For each item in the list, think about how the article meets the requirements of that criterion.
+2. **Analytical Evaluation**: Combine the article content, the task, and the user persona to analyze the article’s performance for that criterion, pointing out both strengths and weaknesses.
+3. **Scoring**: Based on your analysis, give a score between 0 and 10 (integer) for the article's performance on that criterion.
+
+**Scoring Rules**
+For each criterion, give a score between 0 and 10 (integer). The score should reflect the quality of the article’s performance:
+* 0–2 points: Very poor. Almost completely fails to meet the requirement.
+* 2–4 points: Poor. Meets the requirement only partially, with significant shortcomings.
+* 4–6 points: Average. Basically meets the requirement; neither particularly good nor bad.
+* 6–8 points: Good. Mostly meets the requirement, with notable strengths.
+* 8–10 points: Excellent/Outstanding. Fully or exceptionally meets the requirement.
+
+**Output Format Requirements**
+Strictly follow the `<output_format>` below to output the evaluation results for **each criterion**. **Do not include any irrelevant content, introductions, or conclusions**. Start from the first dimension and output all dimensions and their criteria in sequence:
+</Instruction>
+
+<output_format>
+{
+    "goal_alignment": [
+        {
+            "criterion": [The text of the first Goal Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        {
+            "criterion": [The text of the second Goal Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "content_alignment": [
+        {
+            "criterion": [The text of the first Content Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "presentation_fit": [
+        {
+            "criterion": [The text of the first Presentation Fit criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "actionability_practicality": [
+        {
+            "criterion": [The text of the first Actionability & Practicality criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ]
+}
+</output_format>
+
+Now, evaluate the article’s performance in personalization alignment based on the research task, the user persona, and the criteria. Provide detailed analysis and scoring as required above. Ensure that the output strictly follows `<output_format>`, that the JSON is valid and parseable, and that any special characters that may cause parsing errors are properly escaped.
+</user_prompt>
+

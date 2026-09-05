@@ -1,0 +1,55 @@
+{
+  "pilot_id": "pdr_interactive_personalization_pilot_01",
+  "created_at_utc": "2026-09-05T18:37:16Z",
+  "status": "complete",
+  "protocol_amendments": [
+    {
+      "recorded_at_utc": "2026-09-05T19:10:00Z",
+      "timing": "before full_persona run",
+      "change": "Allow the full_persona condition to ask clarification questions using the same free-clarification permission sentence as the interactive condition.",
+      "authorized_by": "user"
+    }
+  ],
+  "scope": {
+    "tasks": 1,
+    "personas": 1,
+    "product_agents": 1,
+    "conditions": ["full_persona", "noask", "interactive"]
+  },
+  "sample": {
+    "query_id": 148,
+    "task_id": 30,
+    "persona_id": "User12",
+    "language": "en",
+    "domain": "Creative"
+  },
+  "target_agent": {
+    "product": "ChatGPT Deep Research",
+    "model": null,
+    "selection_reason": "product-level Deep Research agent available through the user session"
+  },
+  "upstream": {
+    "repository": "https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench",
+    "commit": "5b43f9f188c747d154fc7666812ab93b7ca6a3c2",
+    "license": "Apache-2.0"
+  },
+  "evaluation": {
+    "criteria_source": "official criteria150_en.jsonl record 148",
+    "evaluator_source": "official code/eval_personalization.py",
+    "official_model_name": "gpt-5",
+    "official_repeats_per_report": 3,
+    "transport": "ChatGPT product UI temporary chats",
+    "transport_reason": "OPENAI_API_KEY and official API base URL were unavailable in the environment.",
+    "transport_serialization_note": "Fenced JSON requested only to preserve escaping in rendered UI; original criteria and scoring instructions unchanged.",
+    "valid_repeats_per_report": 3,
+    "criteria_per_repeat": 44
+  },
+  "results": {
+    "p_full": 6.702966666666666,
+    "p_noask": 5.595866666666667,
+    "p_interactive": 6.033499999999999,
+    "interactive_gain": 0.43763333333333243,
+    "oracle_gap": 0.6694666666666667,
+    "recovery_ratio": 0.3952970222503232
+  }
+}

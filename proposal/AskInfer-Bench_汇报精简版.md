@@ -123,6 +123,8 @@ Pilot 只验证：`δ` 是否可复现、问题能否映射 nodes、Ask/Infer/fi
 
 v0.63 已生成可执行 S0 包：SW001/SW013/DA003/DA015 共 8 个 synthetic A/B user states、4 套 artifact-evidence rubrics、Research/Code/Data 三个 smoke prompts 和打分表。v0.64 首轮实跑中，Codex 为 Research PASS、Code PASS with warning、Data FAIL；Data 漏问 decision horizon。Claude 三题均在模型接收输入前因企业余额不足返回 401，只算基础设施失败。该包仍只用于 question/parser/answer-use/reset 排障；两人验证和真实 repo/data fixture 通过前不计入主表。Gemini CLI `0.46.0` 已安装，OAuth 登录待本人完成。
 
+v0.65 单任务 PDR-T30 产品 pilot 已闭环：Full=6.703、No-Ask=5.596、Interactive=6.033，InteractiveGain=+0.438，RecoveryRatio=39.53%。Interactive 主动问了六个 task-relevant 问题，时间、内容方向、长期品牌和 ROI 信号被采用；未恢复部分主要来自未询问 founder/company role、技术资历、既有平台/工具、跨境和合规背景。n=1、full 也可追问且评分走 product-UI transport，因此只作为 Go/No-Go 机制证据，不进入系统榜。
+
 9 月 14 日过门后，第一轮只扩到 12 个独立基础任务（每域 4 个），作为截稿前 scoped agent-system leaderboard 的候选规模。通过人工 qualification 的 15 个 PDR tasks 加 Coding/Data 各 8 个只构成后续 31 题规划上限。最终样本量由 family-level pilot 方差、资格通过率与成本决定；seed 不能替代 family，也不能看 agent 输出删题。
 
 ## 12. 五个 Go / No-Go

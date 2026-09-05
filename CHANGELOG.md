@@ -1,5 +1,15 @@
 # benchmark-intent 设计迭代记录
 
+## v0.65 PDR-T30 interactive-personalization minimum product pilot - 2026-09-05
+
+- 冻结 PDR-Bench query 148 / task 30 / User12 和上游 commit `5b43f9f188c747d154fc7666812ab93b7ca6a3c2`；保存原 task、persona、44 条 personalization criteria、未修改 evaluator snapshot 与哈希。
+- 用同一 ChatGPT Deep Research 产品跑 Full Persona、No-Ask、Free Clarification 三条件；因普通会话 memory 污染而加入三条件共同的 no-preference isolation wrapper，并保留被拒绝污染尝试。
+- 按用户 pre-run amendment 允许 Full Persona 追问；Full 提出一轮五问，Interactive 提出一轮六问；simulator 严格只回答当前问题，persona 未定义项返回 no strong preference。
+- 在预冻结盲标签下，以原始 PDR personalization prompt 对每份报告独立评分三次；9 个有效 JSON 均含 44 条 criteria，官方 score_calculator.py 计算权重。记录产品 UI、未知精确模型 ID、fenced-JSON serialization note、一次无效 JSON 与一次网络中断重试。
+- 得到 P_full=6.703、P_noask=5.596、P_interactive=6.033，InteractiveGain=+0.438、OracleGap=0.669、RecoveryRatio=39.53%。主要恢复来自晨间/周末安排、AI/创业方向、长期品牌和 ROI；主要缺口来自未问 founder/company role、技术资历、平台/工具、跨境与合规背景。
+- 新增 `pilot/pdr_interactive_personalization_pilot_01/` 的完整输入、run metadata、research logs、transcripts、报告、盲评 prompts、raw/parsed scores、逐 criterion 分数、诊断和 summary；同步 Proposal、精简版、人话版、导师 brief、两周手册、README、manifest、HTML 与项目记忆。
+- 维持 claim boundary：这是 n=1 product-UI plumbing/signal pilot，不进入确认性主表，不形成系统榜或总体效应结论；full 是 full persona + optional clarification，评分 transport 不是官方 API。
+
 ## v0.64 First live Codex/Claude S0 runs - 2026-09-04
 
 - 在冻结 commit `87ac4aa` 上发起 Codex/Claude × Research/Code/Data 六个 S0 case；每题独立目录和 session，首轮不暴露 persona/rubric/hidden ledger，回答严格限制为实际命中的 node。

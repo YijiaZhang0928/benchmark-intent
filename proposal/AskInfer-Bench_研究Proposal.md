@@ -286,6 +286,8 @@ v0.63 新增 `pilot/askinfer_smoke_v0_63/` 执行包：为 SW001、SW013、DA003
 
 v0.64 完成第一批 live S0：Codex CLI `0.145.0`（配置模型 `gpt-5.6-sol`）形成三个完整 episode，Research 通过、Code 带“把 task-factual compatibility 当偏好问题”的诊断警告通过、Data 因未询问 decision horizon 而缺少两季度 weekly scale/stop 日程并失败。Claude Code 三题均在模型接收 prompt 前因企业账户余额不足返回 HTTP 401，输入/输出 token 为 0，故只记 infrastructure/auth failure，不计模型 0 分。该结果验证了区分 preference clarification 与 task-factual clarification、并检查 acquisition-to-use 全链条的必要性；它仍不构成 agent 排名或 artifact 完成证据。
 
+v0.65 另以 PDR-T30、User12 和一个产品级 ChatGPT Deep Research agent 完成单任务最小闭环。三条件的盲评 P-score 为 Full Persona 6.703、No-Ask 5.596、Free Clarification 6.033，InteractiveGain 为 +0.438，OracleGap 为 0.669，RecoveryRatio 为 39.53%。Interactive 主动提出六个与 task 相关的问题；晨间创作、周末家庭优先、AI/创业内容和 ROI 偏好被获取并进入报告，但 founder/company role、技术资历、LinkedIn/GitHub/Slack/Notion 习惯、跨境背景和合规边界未被询问。该结果只说明端到端信号存在并暴露主要失败链；它是 n=1 探索性 product-UI pilot，full 条件也获准追问，且评分因缺少 API key 通过临时产品会话承载原始 PDR prompt，不能作为确认性系统比较或排行榜证据。
+
 ## 参考文献
 
 [1] Liang et al. *Towards Personalized Deep Research: Benchmarks and Evaluations*. arXiv:2509.25106. https://arxiv.org/abs/2509.25106
