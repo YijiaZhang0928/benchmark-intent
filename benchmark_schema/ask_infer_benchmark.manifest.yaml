@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.66"
+manifest_version: "0.67"
 updated: "2026-09-06"
 status: working_hypothesis_frozen
 
@@ -28,6 +28,10 @@ active_sources:
   pdr_minimum_product_pilot: pilot/pdr_interactive_personalization_pilot_01/metadata.json
   pdr_minimum_product_pilot_results: pilot/pdr_interactive_personalization_pilot_01/evaluation/summary.md
   pdr_minimum_product_pilot_diagnostics: pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_diagnostics.md
+  pdr_minimum_product_criterion_unit_map: pilot/pdr_interactive_personalization_pilot_01/evaluation/criterion_preference_unit_map.json
+  pdr_minimum_product_preference_units: pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_units.json
+  pdr_minimum_product_preference_chain: pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_chain_matrix.md
+  pdr_minimum_product_question_audit: pilot/pdr_interactive_personalization_pilot_01/evaluation/clarification_question_audit.json
   pdr_two_agent_clarification_pilot: pilot/pdr_agent_clarification_pilot_02/metadata.json
   pdr_two_agent_clarification_results: pilot/pdr_agent_clarification_pilot_02/evaluation/summary.md
   pdr_two_agent_clarification_diagnostics: pilot/pdr_agent_clarification_pilot_02/evaluation/clarification_diagnostics.json
@@ -120,6 +124,14 @@ scope:
     recovery_ratio: 0.3952970222503232
     valid_evaluator_repeats_per_condition: 3
     original_personalization_criteria_per_repeat: 44
+    task_specific_preference_units: 22
+    interactive_asked_units: 11
+    interactive_resolved_units: 5
+    interactive_strictly_reflected_units: 5
+    full_persona_known_before_questions_units: 14
+    full_persona_redundant_questions: 0
+    full_persona_reasonable_residual_verification_questions: 5
+    full_persona_newly_resolved_units_from_questions: 0
     evaluator_transport: chatgpt_temporary_chat_due_missing_api_key
     counted_episode_eligible: false
     claim_boundary: one_task_one_persona_one_product_plumbing_and_signal_only
@@ -173,5 +185,7 @@ claim_boundaries:
   - pdr_minimum_product_pilot_is_n1_and_not_leaderboard_evidence
   - pdr_minimum_product_full_condition_includes_optional_clarification
   - pdr_minimum_product_evaluator_used_product_ui_transport_not_official_api
+  - preference_unit_delta_is_overlapping_rubric_coverage_not_a_causal_effect
+  - full_persona_questions_were_reasonable_but_persona_under_specification_limited_answer_yield
   - pdr_two_agent_pilot_shows_clarification_policy_heterogeneity_only
   - pdr_two_agent_score_difference_is_not_an_isolated_clarification_effect

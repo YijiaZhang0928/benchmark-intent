@@ -1,0 +1,464 @@
+{
+  "schema_version": "1.0",
+  "pilot_id": "pdr_interactive_personalization_pilot_01",
+  "source": {
+    "criteria_file": "../task/original_criteria.json",
+    "criteria_count": 44,
+    "source_record": "PDR-Bench criteria150_en.jsonl record 148",
+    "upstream_commit": "5b43f9f188c747d154fc7666812ab93b7ca6a3c2"
+  },
+  "dimension_weights": {
+    "goal_alignment": 0.33,
+    "content_alignment": 0.18,
+    "presentation_fit": 0.09,
+    "actionability_practicality": 0.4
+  },
+  "mapping_policy": {
+    "primary_unit": "Exactly one unit owns each criterion for non-overlapping rubric-mass accounting.",
+    "secondary_units": "Additional preference units that can materially change how the same criterion is satisfied. These overlaps are diagnostic and are not summed as a normalized score.",
+    "effective_weight": "dimension_weight multiplied by the criterion's within-dimension weight",
+    "freeze_rule": "The mapping is based only on the original criterion text, hidden persona, task instruction, and saved transcripts/reports; the original PDR criteria are unchanged."
+  },
+  "criteria": [
+    {
+      "criterion_id": "GA01",
+      "dimension": "goal_alignment",
+      "dimension_index": 1,
+      "criterion_weight": 0.12,
+      "effective_weight": 0.0396,
+      "criterion": "Persona-specific niche and audience definition anchored in AI founder perspective and company goals",
+      "primary_unit": "PU09",
+      "secondary_units": ["PU01", "PU02", "PU10"]
+    },
+    {
+      "criterion_id": "GA02",
+      "dimension": "goal_alignment",
+      "dimension_index": 2,
+      "criterion_weight": 0.1,
+      "effective_weight": 0.033,
+      "criterion": "Content value proposition and differentiation clarity for an expert, B2B-leaning audience",
+      "primary_unit": "PU02",
+      "secondary_units": ["PU11"]
+    },
+    {
+      "criterion_id": "GA03",
+      "dimension": "goal_alignment",
+      "dimension_index": 3,
+      "criterion_weight": 0.11,
+      "effective_weight": 0.0363,
+      "criterion": "Platform selection and cross-platform orchestration tailored to his digital habitat and bilingual reach",
+      "primary_unit": "PU12",
+      "secondary_units": ["PU19"]
+    },
+    {
+      "criterion_id": "GA04",
+      "dimension": "goal_alignment",
+      "dimension_index": 4,
+      "criterion_weight": 0.08,
+      "effective_weight": 0.0264,
+      "criterion": "Cadence and production schedule aligned with morning creativity and family-first evenings/weekends",
+      "primary_unit": "PU05",
+      "secondary_units": ["PU04"]
+    },
+    {
+      "criterion_id": "GA05",
+      "dimension": "goal_alignment",
+      "dimension_index": 5,
+      "criterion_weight": 0.1,
+      "effective_weight": 0.033,
+      "criterion": "Differentiated themes, storytelling arcs, serialized content, and interactive formats leveraging founder journey and technical depth",
+      "primary_unit": "PU09",
+      "secondary_units": ["PU01", "PU03", "PU11", "PU15"]
+    },
+    {
+      "criterion_id": "GA06",
+      "dimension": "goal_alignment",
+      "dimension_index": 6,
+      "criterion_weight": 0.06,
+      "effective_weight": 0.0198,
+      "criterion": "Three-month topic calendar specificity, prioritization, and feasibility",
+      "primary_unit": "PU04",
+      "secondary_units": ["PU03", "PU05"]
+    },
+    {
+      "criterion_id": "GA07",
+      "dimension": "goal_alignment",
+      "dimension_index": 7,
+      "criterion_weight": 0.08,
+      "effective_weight": 0.0264,
+      "criterion": "Engagement and community design suitable for professional audiences",
+      "primary_unit": "PU15",
+      "secondary_units": ["PU02"]
+    },
+    {
+      "criterion_id": "GA08",
+      "dimension": "goal_alignment",
+      "dimension_index": 8,
+      "criterion_weight": 0.09,
+      "effective_weight": 0.0297,
+      "criterion": "KPI framework and experimentation/iteration loop aligned to data-driven decision style and business funnel",
+      "primary_unit": "PU14",
+      "secondary_units": ["PU10"]
+    },
+    {
+      "criterion_id": "GA09",
+      "dimension": "goal_alignment",
+      "dimension_index": 9,
+      "criterion_weight": 0.06,
+      "effective_weight": 0.0198,
+      "criterion": "Monetization pathways aligned with founder ethics and startup synergy",
+      "primary_unit": "PU17",
+      "secondary_units": ["PU09", "PU10", "PU16", "PU20"]
+    },
+    {
+      "criterion_id": "GA10",
+      "dimension": "goal_alignment",
+      "dimension_index": 10,
+      "criterion_weight": 0.05,
+      "effective_weight": 0.0165,
+      "criterion": "Resource allocation and workflow leveraging his tools, time, and budget",
+      "primary_unit": "PU07",
+      "secondary_units": ["PU04", "PU06", "PU13"]
+    },
+    {
+      "criterion_id": "GA11",
+      "dimension": "goal_alignment",
+      "dimension_index": 11,
+      "criterion_weight": 0.05,
+      "effective_weight": 0.0165,
+      "criterion": "Competitive analysis and case study relevance with actionable differentiation",
+      "primary_unit": "PU01",
+      "secondary_units": ["PU02", "PU09", "PU11"]
+    },
+    {
+      "criterion_id": "GA12",
+      "dimension": "goal_alignment",
+      "dimension_index": 12,
+      "criterion_weight": 0.06,
+      "effective_weight": 0.0198,
+      "criterion": "Risk, compliance, and reputation safeguards tailored to China AI and founder responsibilities",
+      "primary_unit": "PU21",
+      "secondary_units": ["PU09", "PU18", "PU20"]
+    },
+    {
+      "criterion_id": "GA13",
+      "dimension": "goal_alignment",
+      "dimension_index": 13,
+      "criterion_weight": 0.04,
+      "effective_weight": 0.0132,
+      "criterion": "Brand tone and communication style alignment with persona",
+      "primary_unit": "PU22",
+      "secondary_units": []
+    },
+    {
+      "criterion_id": "CA01",
+      "dimension": "content_alignment",
+      "dimension_index": 1,
+      "criterion_weight": 0.19,
+      "effective_weight": 0.0342,
+      "criterion": "Niche–User Fit and Authority Anchor",
+      "primary_unit": "PU01",
+      "secondary_units": ["PU02", "PU09", "PU11"]
+    },
+    {
+      "criterion_id": "CA02",
+      "dimension": "content_alignment",
+      "dimension_index": 2,
+      "criterion_weight": 0.16,
+      "effective_weight": 0.0288,
+      "criterion": "Appropriate Technical Depth and Rigor",
+      "primary_unit": "PU11",
+      "secondary_units": []
+    },
+    {
+      "criterion_id": "CA03",
+      "dimension": "content_alignment",
+      "dimension_index": 3,
+      "criterion_weight": 0.12,
+      "effective_weight": 0.0216,
+      "criterion": "China Ecosystem and Policy Grounding",
+      "primary_unit": "PU18",
+      "secondary_units": ["PU20", "PU21"]
+    },
+    {
+      "criterion_id": "CA04",
+      "dimension": "content_alignment",
+      "dimension_index": 4,
+      "criterion_weight": 0.1,
+      "effective_weight": 0.018,
+      "criterion": "Workflow- and Tool-Aligned Content Formats",
+      "primary_unit": "PU13",
+      "secondary_units": ["PU03"]
+    },
+    {
+      "criterion_id": "CA05",
+      "dimension": "content_alignment",
+      "dimension_index": 5,
+      "criterion_weight": 0.08,
+      "effective_weight": 0.0144,
+      "criterion": "Platform–Audience Content Fit",
+      "primary_unit": "PU12",
+      "secondary_units": ["PU02"]
+    },
+    {
+      "criterion_id": "CA06",
+      "dimension": "content_alignment",
+      "dimension_index": 6,
+      "criterion_weight": 0.08,
+      "effective_weight": 0.0144,
+      "criterion": "Evidence- and Metric-Oriented Framing",
+      "primary_unit": "PU14",
+      "secondary_units": ["PU11"]
+    },
+    {
+      "criterion_id": "CA07",
+      "dimension": "content_alignment",
+      "dimension_index": 7,
+      "criterion_weight": 0.07,
+      "effective_weight": 0.0126,
+      "criterion": "Founder Narrative Integration with Professional Focus",
+      "primary_unit": "PU09",
+      "secondary_units": []
+    },
+    {
+      "criterion_id": "CA08",
+      "dimension": "content_alignment",
+      "dimension_index": 8,
+      "criterion_weight": 0.06,
+      "effective_weight": 0.0108,
+      "criterion": "Tech-Community-Oriented Interactivity Fit",
+      "primary_unit": "PU15",
+      "secondary_units": ["PU11"]
+    },
+    {
+      "criterion_id": "CA09",
+      "dimension": "content_alignment",
+      "dimension_index": 9,
+      "criterion_weight": 0.05,
+      "effective_weight": 0.009,
+      "criterion": "Case Study Relevance and Transferability",
+      "primary_unit": "PU01",
+      "secondary_units": ["PU02"]
+    },
+    {
+      "criterion_id": "CA10",
+      "dimension": "content_alignment",
+      "dimension_index": 10,
+      "criterion_weight": 0.04,
+      "effective_weight": 0.0072,
+      "criterion": "Monetization Content–Brand Congruence",
+      "primary_unit": "PU17",
+      "secondary_units": ["PU08", "PU16"]
+    },
+    {
+      "criterion_id": "CA11",
+      "dimension": "content_alignment",
+      "dimension_index": 11,
+      "criterion_weight": 0.03,
+      "effective_weight": 0.0054,
+      "criterion": "Cross-Border and Bilingual Insight Integration",
+      "primary_unit": "PU19",
+      "secondary_units": []
+    },
+    {
+      "criterion_id": "CA12",
+      "dimension": "content_alignment",
+      "dimension_index": 12,
+      "criterion_weight": 0.02,
+      "effective_weight": 0.0036,
+      "criterion": "Risk-Aware Topic Selection",
+      "primary_unit": "PU20",
+      "secondary_units": ["PU21"]
+    },
+    {
+      "criterion_id": "PF01",
+      "dimension": "presentation_fit",
+      "dimension_index": 1,
+      "criterion_weight": 0.18,
+      "effective_weight": 0.0162,
+      "criterion": "Scannability and layered structure (executive summary, TOC, section headings, TL;DR per section)",
+      "primary_unit": "PU22",
+      "secondary_units": []
+    },
+    {
+      "criterion_id": "PF02",
+      "dimension": "presentation_fit",
+      "dimension_index": 2,
+      "criterion_weight": 0.12,
+      "effective_weight": 0.0108,
+      "criterion": "Professional, concise, data-oriented tone (avoid hype and slang; crisp sentences)",
+      "primary_unit": "PU22",
+      "secondary_units": ["PU14"]
+    },
+    {
+      "criterion_id": "PF03",
+      "dimension": "presentation_fit",
+      "dimension_index": 3,
+      "criterion_weight": 0.12,
+      "effective_weight": 0.0108,
+      "criterion": "Terminology precision and brief definitions for creator-growth jargon (consistent acronyms, optional bilingual notes)",
+      "primary_unit": "PU11",
+      "secondary_units": ["PU19", "PU22"]
+    },
+    {
+      "criterion_id": "PF04",
+      "dimension": "presentation_fit",
+      "dimension_index": 4,
+      "criterion_weight": 0.16,
+      "effective_weight": 0.0144,
+      "criterion": "Visual organization using tables, matrices, decision trees, and calendars (Notion/Slack-friendly)",
+      "primary_unit": "PU13",
+      "secondary_units": ["PU14", "PU22"]
+    },
+    {
+      "criterion_id": "PF05",
+      "dimension": "presentation_fit",
+      "dimension_index": 5,
+      "criterion_weight": 0.1,
+      "effective_weight": 0.009,
+      "criterion": "Platform-specific modularity with consistent section templates",
+      "primary_unit": "PU12",
+      "secondary_units": ["PU03"]
+    },
+    {
+      "criterion_id": "PF06",
+      "dimension": "presentation_fit",
+      "dimension_index": 6,
+      "criterion_weight": 0.12,
+      "effective_weight": 0.0108,
+      "criterion": "KPI dashboard presentation clarity (metric name, definition/formula, tool, cadence, target/benchmark)",
+      "primary_unit": "PU14",
+      "secondary_units": ["PU13"]
+    },
+    {
+      "criterion_id": "PF07",
+      "dimension": "presentation_fit",
+      "dimension_index": 7,
+      "criterion_weight": 0.08,
+      "effective_weight": 0.0072,
+      "criterion": "Timeline and resource plan visualization (phase roadmap, weekly cadence grid, budget table)",
+      "primary_unit": "PU04",
+      "secondary_units": ["PU05", "PU06", "PU07", "PU22"]
+    },
+    {
+      "criterion_id": "PF08",
+      "dimension": "presentation_fit",
+      "dimension_index": 8,
+      "criterion_weight": 0.07,
+      "effective_weight": 0.0063,
+      "criterion": "Mobile-first readability and shareability",
+      "primary_unit": "PU12",
+      "secondary_units": ["PU22"]
+    },
+    {
+      "criterion_id": "PF09",
+      "dimension": "presentation_fit",
+      "dimension_index": 9,
+      "criterion_weight": 0.05,
+      "effective_weight": 0.0045,
+      "criterion": "Action checklists and decision gates at the end of sections",
+      "primary_unit": "PU14",
+      "secondary_units": ["PU22"]
+    },
+    {
+      "criterion_id": "AP01",
+      "dimension": "actionability_practicality",
+      "dimension_index": 1,
+      "criterion_weight": 0.14,
+      "effective_weight": 0.056,
+      "criterion": "Executable 6-month roadmap with phased milestones and decision gates",
+      "primary_unit": "PU08",
+      "secondary_units": ["PU04", "PU05", "PU14"]
+    },
+    {
+      "criterion_id": "AP02",
+      "dimension": "actionability_practicality",
+      "dimension_index": 2,
+      "criterion_weight": 0.12,
+      "effective_weight": 0.048,
+      "criterion": "Time-feasible workload and schedule aligned to mornings and weekends",
+      "primary_unit": "PU05",
+      "secondary_units": ["PU04"]
+    },
+    {
+      "criterion_id": "AP03",
+      "dimension": "actionability_practicality",
+      "dimension_index": 3,
+      "criterion_weight": 0.1,
+      "effective_weight": 0.04,
+      "criterion": "Platform-specific playbooks and realistic posting frequency",
+      "primary_unit": "PU12",
+      "secondary_units": ["PU04", "PU05"]
+    },
+    {
+      "criterion_id": "AP04",
+      "dimension": "actionability_practicality",
+      "dimension_index": 4,
+      "criterion_weight": 0.12,
+      "effective_weight": 0.048,
+      "criterion": "Detailed 3-month content calendar with topics, hooks, and CTAs",
+      "primary_unit": "PU03",
+      "secondary_units": ["PU04", "PU05", "PU15"]
+    },
+    {
+      "criterion_id": "AP05",
+      "dimension": "actionability_practicality",
+      "dimension_index": 5,
+      "criterion_weight": 0.12,
+      "effective_weight": 0.048,
+      "criterion": "KPI definition, instrumentation, and review cadence",
+      "primary_unit": "PU14",
+      "secondary_units": ["PU13"]
+    },
+    {
+      "criterion_id": "AP06",
+      "dimension": "actionability_practicality",
+      "dimension_index": 6,
+      "criterion_weight": 0.08,
+      "effective_weight": 0.032,
+      "criterion": "Iteration and experimentation framework",
+      "primary_unit": "PU14",
+      "secondary_units": []
+    },
+    {
+      "criterion_id": "AP07",
+      "dimension": "actionability_practicality",
+      "dimension_index": 7,
+      "criterion_weight": 0.1,
+      "effective_weight": 0.04,
+      "criterion": "Resource and budget plan with tool stack and outsourcing options",
+      "primary_unit": "PU06",
+      "secondary_units": ["PU04", "PU07", "PU13"]
+    },
+    {
+      "criterion_id": "AP08",
+      "dimension": "actionability_practicality",
+      "dimension_index": 8,
+      "criterion_weight": 0.1,
+      "effective_weight": 0.04,
+      "criterion": "Feasible monetization pathway with stage-gated triggers",
+      "primary_unit": "PU17",
+      "secondary_units": ["PU08", "PU10", "PU14", "PU16"]
+    },
+    {
+      "criterion_id": "AP09",
+      "dimension": "actionability_practicality",
+      "dimension_index": 9,
+      "criterion_weight": 0.06,
+      "effective_weight": 0.024,
+      "criterion": "Community building mechanisms and operational load",
+      "primary_unit": "PU15",
+      "secondary_units": ["PU04", "PU05"]
+    },
+    {
+      "criterion_id": "AP10",
+      "dimension": "actionability_practicality",
+      "dimension_index": 10,
+      "criterion_weight": 0.06,
+      "effective_weight": 0.024,
+      "criterion": "Risk, compliance, and contingency measures",
+      "primary_unit": "PU21",
+      "secondary_units": ["PU09", "PU18", "PU20"]
+    }
+  ]
+}

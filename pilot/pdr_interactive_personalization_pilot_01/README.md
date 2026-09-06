@@ -48,4 +48,14 @@ The unmodified PDR criteria explicitly score these choices across Goal Alignment
 
 The minimum pilot is complete. Before the full_persona run began, the user amended that condition to permit useful clarification; the exact common clarification-permission sentence was added and the input was re-frozen.
 
-Final P-scores are full=6.703, noask=5.596, and interactive=6.033. Interactive clarification produced a +0.438 gain and recovered 39.53% of the observed full-persona advantage. See evaluation/summary.md and evaluation/preference_diagnostics.md.
+Final P-scores are full=6.703, noask=5.596, and interactive=6.033. Interactive clarification produced a +0.438 gain and recovered 39.53% of the observed full-persona advantage.
+
+The follow-up atomic coding maps all 44 original criteria to 22 task-specific preference units. Interactive asked about 11/22 units and completed the strict `Asked → Resolved → Reflected` chain for 5/22; Full Persona began with 14/22 units known. Its five questions were all reasonable verification under residual uncertainty rather than redundant clarification, but the bounded simulator added no newly resolved unit because the missing target values were not specified in the persona. See:
+
+- `evaluation/criterion_preference_unit_map.json`
+- `evaluation/preference_units.json`
+- `evaluation/preference_chain_matrix.md`
+- `evaluation/clarification_question_audit.json`
+- `evaluation/clarification_question_audit.md`
+- `evaluation/summary.md`
+- `evaluation/preference_diagnostics.md`

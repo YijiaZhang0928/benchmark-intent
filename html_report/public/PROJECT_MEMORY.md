@@ -3,10 +3,24 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-06
-当前版本：v0.66（PDR-T01 双 agent clarification-policy pilot）
+当前版本：v0.67（PDR-T30 criteria→preference chain）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAA. 2026-09-06：PDR-T30 的 44 criteria 映射为 22 个 preference units
+
+用户要求把 v0.65 PDR-T30 pilot 的 44 条原始 personalization criteria 转成可追踪的 task-specific preference units，并对 Interactive 6 问和 Full Persona 5 问画出 `Preference → Asked → Resolved → Reflected` 全链。为避免复合概念产生含混布尔值，编码拆成 22 个原子 unit：方向、audience、生产形式、weekly capacity、清晨/家庭边界、预算上限、ROI、长期品牌层级、founder role、company use、技术背景、平台、工具、数据决策、社区风格、变现优先级、变现形态、China/local、cross-border/bilingual、风险/声誉、具体合规约束和品牌语气。
+
+每条原始 criterion 保留精确文本、维度内权重和 `dimension weight × criterion weight`；恰有一个 primary unit 用于无重叠质量记账，可附多个 secondary units 表示同一 criterion 的联合依赖。22 个 primary rubric mass 合计 1.0。另报允许重叠的 influence mass 作为 `δ` proxy：只表示一个 unit 能影响多少原始 rubric 质量，不是问题的观测因果效应，不能跨 unit 相加。机器校验已确认 44/44 criterion 文本和权重与 `task/original_criteria.json` exact match、所有 unit/question 引用有效、11 问数量为 Interactive 6 + Full 5。
+
+五字段定义冻结：`known` 只指 agent 第一次提问前已可见的 task-specific value；`resolved` 指 clarification 结束后足以约束一个交付决策；`reflected` 只认最终报告中可追溯到已知/已解决 value 的实质决策。报告中因 task instruction 自动出现的通用 KPI/社区段落，或 agent 在 no-preference 回答后自行推断的 audience/format/monetization，不记 strict reflected，只在 `reflected_degree` 标为 generic/inferred partial。
+
+结果：Interactive 的 22 个 unit 全部 rubric-relevant，首次提问前只知道 task 明示的“变现为次级/可选目标”1 个 unit；六个 bundled questions 覆盖 11/22，最终解决并严格落实 5/22：AI/创业方向、清晨/家庭时间边界、ROI、长期品牌优先和变现优先级。Audience、production modality、weekly hours、budget ceiling、company use 与 monetization form 被问但 persona 无法给确定值；founder role、技术背景、installed platforms/tools、数据决策、networking、local/cross-border 和 risk/compliance 完全没问。
+
+Full Persona 首轮前 known 14/22，最终 resolved 14/22、strict reflected 13/22。它的五问拆成 10 个 unit targets；判定为 redundant clarification 0/5、reasonable verification under residual uncertainty 5/5。理由是 persona 没有目标排序/公司用途、weekly hours/team assistance、creator budget、on-camera preference 或 audience 选择。F02/F03 的回答确实重述了已知清晨/周末与 ROI，但问题的目标是缺失的 hours/delegation 和 budget ceiling，所以不构成 over-asking。低 answer yield 来自 persona under-specification；五问没有新增 resolved unit，只重确认了三个已知 unit。Full 真正值得批评的 residual miss 是：founder context 已提示高声誉风险，但 agent 没追问 NDA、客户保密、IP、PIPL/CAC、披露或跨境数据约束，最终也没有 founder-grade safeguards。
+
+真值文件为 `pilot/pdr_interactive_personalization_pilot_01/evaluation/criterion_preference_unit_map.json`、`preference_units.json`、`preference_chain_matrix.md`、`clarification_question_audit.json` 和 `clarification_question_audit.md`；`validate_preference_mapping.mjs` 是可重复校验入口。该分析仍是单 pair 的事后诊断，unit ontology 和 strict reflection coding 尚未经过第二位独立标注者，不能升级为 confirmatory preference-recall 结果。下一步优先做 blinded second-coder agreement，而不是继续细分 unit 或扩 30 题。
 
 ## 0AAAAAAAA. 2026-09-06：PDR-T01 双 agent clarification-policy existence proof
 

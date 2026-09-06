@@ -1,5 +1,15 @@
 # benchmark-intent 设计迭代记录
 
+## v0.67 PDR-T30 criterion-to-preference chain - 2026-09-06
+
+- 将 PDR-T30 × User12 的 44 条原始 personalization criteria 完整映射为 22 个 task-specific preference units；每条 criterion 恰有一个 primary unit，可附 secondary units，原始文本、顺序和权重不修改。
+- 冻结五字段语义：`relevant`、首次提问前 `known`、`asked`、clarification 后 `resolved`、最终报告中严格可追溯的 `reflected`；通用 task-compliance 和未确认 inference 只记 partial，不冒充 answer use。
+- Interactive 六个 bundled questions 覆盖 11/22 units，严格完成 `Asked→Resolved→Reflected` 的为 5/22：AI/创业方向、清晨/家庭边界、ROI、长期品牌优先和变现优先级。
+- 把未恢复拆为：问了但 persona 无法解决的 audience/format/hours/budget ceiling/company use/monetization form；完全没问的 founder role、技术背景、平台/工具、决策风格、社区优势、local/cross-border 和 risk/compliance；以及 Full 已知但落实不足的风险声誉与部分工具/地域 unit。
+- 对 Full Persona 五问逐项审计：redundant clarification 0/5，reasonable verification under residual uncertainty 5/5；低信息增益来自 persona 未定义 task-specific values，而不是重复询问。F02/F03 虽触及已知时间模式和 ROI，实际目标仍是缺失的 hours/delegation 和 budget ceiling。
+- 新增 `criterion_preference_unit_map.json`、`preference_units.json`、`preference_chain_matrix.md`、`clarification_question_audit.json/.md` 与可重复 validator；校验 44 条 source text/weight exact match、22-unit primary mass=1、11 问和所有引用有效。
+- 保留主张边界：这是单 pair 的事后 diagnostic coding，尚无第二位独立标注者 agreement；`δ` 是允许重叠的 rubric-influence proxy，不是提问的因果效应。
+
 ## v0.66 PDR-T01 two-agent clarification-policy pilot - 2026-09-06
 
 - 冻结 PDR-Bench query 1 / task 1 / User1、同一 instruction-only + free-clarification 输入、persona-bounded simulator、7 个 critical-preference clusters 和盲评映射；不增加新条件或自定义 rubric。

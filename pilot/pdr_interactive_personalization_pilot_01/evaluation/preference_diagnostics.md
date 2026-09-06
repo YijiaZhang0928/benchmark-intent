@@ -2,6 +2,8 @@
 
 This diagnosis is explanatory only. Final report performance is determined by the unchanged PDR-Bench personalization criteria and official weighting.
 
+> **Atomic-unit extension (v0.67):** the original 44 criteria are now mapped to 22 task-specific preference units in [`criterion_preference_unit_map.json`](criterion_preference_unit_map.json). The complete `Preference → Asked → Resolved → Reflected` coding is in [`preference_units.json`](preference_units.json) and [`preference_chain_matrix.md`](preference_chain_matrix.md); the 11 atomic questions from Interactive 6 + Full 5 are audited in [`clarification_question_audit.md`](clarification_question_audit.md). The table below is retained as the earlier coarse diagnosis.
+
 | Task-relevant preference or user fact | Relevant to original rubric? | Agent asked? | Resolution status | Reflected in interactive report? | Diagnostic note |
 |---|---:|---:|---|---:|---|
 | Primary objective: durable personal brand and professional influence | Yes | Yes | asked_and_resolved | Yes | The report explicitly prioritized long-term brand and professional influence over short-term reach. |
@@ -28,4 +30,3 @@ No clarification question was irrelevant. The six bundled questions were all mat
 The dominant cause was **not asking for background and operating-context facts that the original criteria heavily reward**: founder/company role, technical credentials, platform habitat, workflow tools, China/international context, and risk constraints. A second cause was **asking direct preference questions that the persona could not resolve** (audience, format, and exact weekly hours) instead of asking factual questions whose answers would have supported better inference. The preferences that were both asked and resolved—topic direction, goal priority, morning/weekend schedule, and ROI stance—were generally implemented well.
 
 There was also an execution/compression effect independent of elicitation. The interactive report scored lower than no-ask on the six-month roadmap criterion, and all reports were weak on founder-grade compliance. Thus the remaining gap is not solely a questioning failure.
-

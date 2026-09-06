@@ -1,6 +1,6 @@
 # AskInfer-Bench 两周执行 Todo 与任务作战手册
 
-> v0.66 · 2026-09-06 · PDR-T01 双 agent clarification pilot 完成
+> v0.67 · 2026-09-06 · PDR-T30 criteria→preference chain 完成
 > 目标：在 2026-09-17 前完成可信的最小主实验与结果锁，在 2026-09-18 前提交真实摘要，在 2026-09-25 前完成 ICLR 2027 全文。  
 > 使用方式：每天先看“今日必须交付”，再看对应工作流；每个任务只有通过门槛后才能打勾。没有证据的完成状态一律记为“未完成”。
 
@@ -198,6 +198,8 @@ I plan to develop a personal media account within the next six months, aiming to
 **v0.65 最小运行结果**：已先用 User12 × ChatGPT Deep Research 跑通 Full Persona、No-Ask 和 Free Clarification。P-score 分别为 6.703、5.596、6.033；InteractiveGain=+0.438，RecoveryRatio=39.53%。Interactive 的六问全部 task-relevant，但只恢复了内容方向、目标优先级、晨间/周末时间和 ROI；没有询问 founder/company role、技术资历、LinkedIn/GitHub/Slack/Notion、跨境与合规边界。该运行用于验证 end-to-end plumbing 和 acquisition-to-use 诊断，不替代 A/B pair、high/low/zero node、双人 qualification 或 matched/swapped 主评。
 
 **v0.66 双 agent 运行结果**：PDR-T01 × User1 上，ChatGPT Deep Research 与 Gemini Deep Research 接收相同的 instruction-only + free-clarification 输入。ChatGPT 一轮 15 个 atomic slots 覆盖 7/7 个预冻结 critical preference clusters；Gemini 没有提问，asked-cluster Jaccard=0。原始 34 条 PDR criteria 的盲化三重复 P-score 为 7.057 对 6.065，差 +0.992。最大差距出现在方向验证、fit-based shortlist 和可衡量背景提升；Gemini 在通用地区比较与就业信息上更强。该结果只证明 agent-system clarification policy 可以不同；模型、planner、搜索和生成策略同时变化，不能把分差单独归因于提问。
+
+**v0.67 preference-chain 结果**：PDR-T30 的 44 条 criteria 已全部映射到 22 个 atomic preference units，并给 Interactive/Full 分别编码 `relevant、known、asked、resolved、reflected`。Interactive 六问覆盖 11/22，严格完成全链 5/22；Full 首轮前 known 14/22。Full 五问均针对 persona 未定义的 residual value，判为 redundant 0/5、reasonable verification 5/5；simulator 没有新增可解决答案。运行 `node pilot/pdr_interactive_personalization_pilot_01/evaluation/validate_preference_mapping.mjs` 必须得到 44 criteria、22 units、11 questions、primary mass=1 的 PASS。下一门是第二位 coder 在不看当前标签时独立映射，再报告 unit/mapping/status agreement；未完成前不能把 22-unit recall 当确认性结果。
 
 ### 4.3 SW001：为 Web 服务加入可配置缓存层
 

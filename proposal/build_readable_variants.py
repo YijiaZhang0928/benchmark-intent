@@ -16,7 +16,7 @@ VARIANTS = [
         "title": "Ask or Infer?",
         "subtitle": "Task-Specific Personalization under User Availability and History Evidence",
         "mode": "正式论文 Proposal 精简版 · 不超过 10 页",
-        "version": "v0.66 · 正式精简版",
+        "version": "v0.67 · 正式精简版",
         "research_line": "Ask Calibration · Evidence-Bounded Inference · Final Utilization",
         "claim": "用户在线时问 high-δ preference；用户离线时只从 history evidence 推断；PDR 排名能否外推是待检验问题。",
         "contents": [
@@ -39,7 +39,7 @@ VARIANTS = [
         "title": "Ask or Infer?｜完整人话版",
         "subtitle": "把何时该问、何时可推断、怎样落实到交付物逐步说清楚",
         "mode": "适合组内共识 · 导师讨论 · 正式写作前校验",
-        "version": "v0.66 · 完整人话版",
+        "version": "v0.67 · 完整人话版",
         "research_line": "问 high-δ · 有证据才推断 · 答案必须进入最终决定",
         "claim": "完整 persona 给到后会用，不等于信息缺失时会问，也不等于用户离线时能克制投射。",
         "contents": [
@@ -50,7 +50,7 @@ VARIANTS = [
         "note": "阅读方式：先看 PDR 50→15 的筛选边界，再看 Ask / Infer 和 δ，最后看 rubric、CFA、排名反转与停止条件。",
         "trigger": "先用一句话讲清楚",
         "figure_title": "AskInfer-Bench：从偏好缺口到最终交付物",
-        "figure_caption": "图 1  Ask 测用户在线时的信息获取；Infer 测用户离线时有证据的推断；最终交付物另过非补偿门。",
+        "figure_caption": "图 1  Ask 测用户在线时的信息获取；Infer 测用户离线时有证据的推断；最终交付物另过非补偿条件。",
         "header": "ASK OR INFER?  ·  完整人话版",
         "style": "narrative_proposal",
     },
@@ -61,7 +61,7 @@ VARIANTS = [
         "title": "Ask or Infer?｜汇报精简版",
         "subtitle": "15–20 分钟讲清 δ、Ask / Infer、CFA 与 novelty-kill pilot",
         "mode": "导师汇报 · 组会讲解 · 决策讨论",
-        "version": "v0.66 · 汇报精简版",
+        "version": "v0.67 · 汇报精简版",
         "research_line": "Full Persona → Ask High-δ → Infer with Evidence → Final Delivery",
         "claim": "PDR 测完整 persona 给到后会不会用；本项目测缺信息时会不会问、用户离线时会不会有边界地推断。",
         "contents": [

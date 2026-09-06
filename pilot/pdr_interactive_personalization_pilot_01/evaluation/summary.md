@@ -14,6 +14,19 @@
 
 Scores are the mean of three independent blind repeats using all 44 original personalization criteria and the official criterion/dimension weights.
 
+## Atomic preference-chain extension
+
+All 44 criteria have now been assigned exactly one primary preference unit and zero or more secondary units. The resulting 22-unit coding applies the same strict fields to Interactive and Full Persona: `relevant`, `known before the first question`, `asked`, `resolved after clarification`, and `reflected in the final report`.
+
+| Condition | Relevant | Known before questions | Asked units | Resolved | Strictly reflected | Complete Asked→Resolved→Reflected |
+|---|---:|---:|---:|---:|---:|---:|
+| Interactive | 22/22 | 1/22 | 11/22 | 5/22 | 5/22 | 5/22 |
+| Full Persona | 22/22 | 14/22 | 10/22 | 14/22 | 13/22 | 3/22 among asked units |
+
+Interactive completed the full chain for niche direction, morning/family schedule, ROI orientation, long-term-brand hierarchy, and monetization priority. It asked but did not resolve audience, production modality, weekly hours, budget ceiling, company use, or monetization form. It did not ask about founder/company identity, technical credentials, installed platforms/tools, decision style, professional networking, local/cross-border context, risk/compliance, or persona-grounded tone.
+
+The Full Persona agent's five questions are classified as **0/5 redundant clarification** and **5/5 reasonable verification under residual uncertainty**. The persona did not specify goal ranking/company use, weekly hours/team assistance, creator budget, on-camera preference, or target audience. The answers therefore had low information yield, but that is persona under-specification rather than over-asking. See `criterion_preference_unit_map.json`, `preference_units.json`, `preference_chain_matrix.md`, and `clarification_question_audit.md` for the complete evidence chain.
+
 ## Research questions
 
 1. **Did the instruction-only agent ask the user?** Yes. It asked one bundled clarification turn containing six questions.
@@ -28,4 +41,3 @@ Scores are the mean of three independent blind repeats using all 44 original per
 - The product Deep Research runs used a common no-preference isolation wrapper because Temporary Chat disables Deep Research. The wrapper only instructed the product to ignore account memory and prior chats.
 - The official evaluator prompt and official weighting code were preserved, but the repository’s API client could not run because no API key was available. Scoring used isolated Temporary Chat transport with the visible Medium setting; the exact product model identifier was not exposed.
 - Quality and Reliability were not added because the official personalization evaluator does not emit them in the same run.
-

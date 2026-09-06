@@ -1,0 +1,942 @@
+{
+  "schema_version": "1.0",
+  "pilot_id": "pdr_interactive_personalization_pilot_01",
+  "unit_count": 22,
+  "condition_scope": ["interactive", "full_persona"],
+  "coding_semantics": {
+    "relevant": "At least one original PDR personalization criterion can materially change when this unit changes.",
+    "known": "A task-specific value was visible to the product agent before its first clarification question. For full_persona this includes the supplied persona; for interactive it includes only the task instruction.",
+    "asked": "At least one saved clarification question directly targeted the unit. A bundled question may target multiple units.",
+    "resolved": "By the end of clarification, the condition contained a sufficiently specific value to constrain a deliverable decision. A no-strong-preference answer does not resolve a positive choice, but can resolve priority when it explicitly establishes that the option is secondary.",
+    "reflected": "The final report made a material decision traceable to the resolved value. Generic task-compliance or an unconfirmed agent inference is recorded in reflected_degree but does not set reflected=true.",
+    "reflected_degree": "One of substantial, partial, inferred_partial, generic_partial, or none.",
+    "primary_rubric_mass": "Non-overlapping accounting mass from criteria for which the unit is primary. It sums to 1.0 across units.",
+    "influence_rubric_mass": "Overlapping diagnostic mass from all criteria listing the unit as primary or secondary. It must not be summed across units.",
+    "delta_tier": "High when influence_rubric_mass is at least 0.10; medium when it is 0.05–0.0999; low otherwise. This is a pre-output rubric-coverage proxy, not an estimated causal effect."
+  },
+  "units": [
+    {
+      "unit_id": "PU01",
+      "name": "AI / entrepreneurship niche direction",
+      "canonical_value": "AI application cases, industry trends, and entrepreneurship experience rather than generic creator topics or an AI-news feed.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Preferences and Interests/Content Preferences/Article Collection",
+          "evidence": "Often saves technology and entrepreneurship content, especially AI application cases and industry trends."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Identity Characteristics/Occupation",
+          "evidence": "AI Company Entrepreneur"
+        }
+      ],
+      "primary_rubric_mass": 0.0597,
+      "influence_rubric_mass": 0.1323,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": ["I01"],
+          "report_evidence": ["interactive/report.md:1", "interactive/report.md:8", "interactive/report.md:49"],
+          "note": "The answer supplied the niche and the report centered AI implementation experiments, industry judgment, and entrepreneurship."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:3", "full_persona/report.md:32", "full_persona/report.md:64"],
+          "note": "The supplied persona already established the AI/entrepreneurship anchor."
+        }
+      }
+    },
+    {
+      "unit_id": "PU02",
+      "name": "Intended audience",
+      "canonical_value": "No explicit user-endorsed audience; the rubric expects an expert, professional, B2B-leaning audience inferred from the founder profile.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "not specified",
+          "evidence": "The persona describes professional networks and founder identity but contains no explicit target-audience preference."
+        }
+      ],
+      "primary_rubric_mass": 0.033,
+      "influence_rubric_mass": 0.1731,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": ["I02"],
+          "report_evidence": ["interactive/report.md:31", "interactive/report.md:32", "interactive/report.md:33"],
+          "note": "The simulator reported no strong preference; the agent supplied a plausible core/periphery audience without user confirmation."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": ["F05"],
+          "report_evidence": ["full_persona/report.md:12", "full_persona/report.md:13", "full_persona/report.md:14"],
+          "note": "The answer authorized inference from the persona but did not choose an audience; the report inferred founders, technical leaders, enterprise decision-makers, and investors."
+        }
+      }
+    },
+    {
+      "unit_id": "PU03",
+      "name": "Production modality and on-camera preference",
+      "canonical_value": "No specified preference among on-camera video, voice-over, text, screen recording, podcast, vlog, or AI-assisted production.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "not specified",
+          "evidence": "The persona contains content-consumption habits but no creator production-modality or on-camera preference."
+        }
+      ],
+      "primary_rubric_mass": 0.048,
+      "influence_rubric_mass": 0.1278,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "generic_partial",
+          "question_ids": ["I03"],
+          "report_evidence": ["interactive/report.md:163", "interactive/report.md:180"],
+          "note": "The answer supplied no preference; the report selected a generic article/video repurposing system."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "generic_partial",
+          "question_ids": ["F04"],
+          "report_evidence": ["full_persona/report.md:187", "full_persona/report.md:189"],
+          "note": "The answer supplied no on-camera preference; the report assumed both long video and long-form writing."
+        }
+      }
+    },
+    {
+      "unit_id": "PU04",
+      "name": "Weekly time capacity and team assistance",
+      "canonical_value": "Exact weekly hours and willingness or ability to delegate editing, operations, and research are unspecified.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "not specified",
+          "evidence": "The persona provides a daily routine and family boundaries but no weekly creator-hours or team-assistance capacity."
+        }
+      ],
+      "primary_rubric_mass": 0.027,
+      "influence_rubric_mass": 0.3259,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": ["I04"],
+          "report_evidence": ["interactive/report.md:204"],
+          "note": "The report explicitly acknowledged the missing total and offered 4h/6–8h/10h variants instead of a confirmed capacity."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": ["F02"],
+          "report_evidence": ["full_persona/report.md:274"],
+          "note": "The report used a minimum-sustainable version because weekly hours and team assistance remained unresolved."
+        }
+      }
+    },
+    {
+      "unit_id": "PU05",
+      "name": "Creative-time pattern and family boundaries",
+      "canonical_value": "Creative work is preferred on weekday mornings; evenings and weekends should protect family time.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Environment/Time/Time Preference",
+          "evidence": "Prefers doing creative work in the morning."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Environment/Time/Time Allocation",
+          "evidence": "Focuses on work Monday–Friday and dedicates weekends to family."
+        }
+      ],
+      "primary_rubric_mass": 0.0744,
+      "influence_rubric_mass": 0.2694,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": ["I04"],
+          "report_evidence": ["interactive/report.md:192", "interactive/report.md:202"],
+          "note": "The report implemented a weekday-morning workflow and protected weekends."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": true,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": ["F02"],
+          "report_evidence": ["full_persona/report.md:175"],
+          "note": "The broad capacity question touched time availability, but its residual target was hours/delegation; the already-known schedule pattern was implemented rather than redundantly verified."
+        }
+      }
+    },
+    {
+      "unit_id": "PU06",
+      "name": "Fixed creator-budget ceiling",
+      "canonical_value": "No fixed monthly or three-month creator budget is specified.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "not specified",
+          "evidence": "Personal finances and purchasing power are described, but no budget is allocated to this media project."
+        }
+      ],
+      "primary_rubric_mass": 0.04,
+      "influence_rubric_mass": 0.0637,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": ["I05"],
+          "report_evidence": [],
+          "note": "No amount or ceiling was provided."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": ["F03"],
+          "report_evidence": [],
+          "note": "No amount or ceiling was provided."
+        }
+      }
+    },
+    {
+      "unit_id": "PU07",
+      "name": "ROI and cost-effectiveness orientation",
+      "canonical_value": "Spend rationally, prioritize quality and cost-effectiveness, and unlock additional resources only after evidence of ROI.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Offline Long-term Behavior/Consumption Characteristics",
+          "evidence": "Prefers high-end technology products and values cost-effectiveness."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Personality Traits/Shopping Preference",
+          "evidence": "Rational consumer who prioritizes quality and brand."
+        }
+      ],
+      "primary_rubric_mass": 0.0165,
+      "influence_rubric_mass": 0.0637,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": ["I05"],
+          "report_evidence": ["interactive/report.md:367"],
+          "note": "The report implemented an explicit ROI-unlock mechanism."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": true,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": ["F03"],
+          "report_evidence": ["full_persona/report.md:548"],
+          "note": "The broad budget question sought a missing ceiling; the known ROI orientation was reconfirmed and implemented."
+        }
+      }
+    },
+    {
+      "unit_id": "PU08",
+      "name": "Strategic goal hierarchy and long-term brand priority",
+      "canonical_value": "Long-term personal brand first, professional influence second, with growth and monetization subordinate.",
+      "context_evidence": [
+        {
+          "source": "interactive/transcript.jsonl",
+          "locator": "turn 1 answer item 6",
+          "evidence": "Long-term personal brand > professional influence; no clear ranking for the rest."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "not specified",
+          "evidence": "The hidden persona does not itself state a creator-goal ranking; the task instruction states brand building and optional monetization."
+        }
+      ],
+      "primary_rubric_mass": 0.056,
+      "influence_rubric_mass": 0.1032,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": ["I06"],
+          "report_evidence": ["interactive/report.md:163", "interactive/report.md:335", "interactive/report.md:466"],
+          "note": "The final strategy explicitly optimized for durable brand and professional influence rather than short-term exposure."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": ["F01"],
+          "report_evidence": ["full_persona/report.md:3", "full_persona/report.md:884"],
+          "note": "The answer did not rank the offered goals beyond the task statement; the report nevertheless inferred a founder-brand priority."
+        }
+      }
+    },
+    {
+      "unit_id": "PU09",
+      "name": "Founder/company role and authority anchor",
+      "canonical_value": "AI company founder with prior technical-lead experience; founder decisions and operating experience are a core credibility moat.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Identity Characteristics/Occupation",
+          "evidence": "AI Company Entrepreneur"
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Identity Characteristics/Career Development",
+          "evidence": "Former technical lead who resigned to found an AI company."
+        }
+      ],
+      "primary_rubric_mass": 0.0852,
+      "influence_rubric_mass": 0.1995,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": [],
+          "report_evidence": ["interactive/report.md:1", "interactive/report.md:8"],
+          "note": "Entrepreneurship was elicited as a topic, but the agent never learned that the user is an AI-company founder or former technical lead."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:3", "full_persona/report.md:28", "full_persona/report.md:48", "full_persona/report.md:64"],
+          "note": "The report repeatedly used founder and technical-lead experience as the differentiation anchor."
+        }
+      }
+    },
+    {
+      "unit_id": "PU10",
+      "name": "Company-side intended use",
+      "canonical_value": "No explicit choice among company lead generation, founder branding, recruiting, fundraising, or industry-resource accumulation.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "not specified",
+          "evidence": "The persona establishes company ownership but does not state how the media account should serve the company."
+        }
+      ],
+      "primary_rubric_mass": 0,
+      "influence_rubric_mass": 0.1291,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": ["I06"],
+          "report_evidence": [],
+          "note": "The goal-ranking menu mentioned business traffic, but the answer did not select it and the agent did not know there was an AI company."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": ["F01"],
+          "report_evidence": ["full_persona/report.md:625", "full_persona/report.md:663"],
+          "note": "The report inferred enterprise consulting and startup synergy without a user-endorsed company objective."
+        }
+      }
+    },
+    {
+      "unit_id": "PU11",
+      "name": "Technical and research background",
+      "canonical_value": "Tsinghua CS master's degree, AI publications, top-conference exposure, and former technical-lead experience support expert technical depth.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Identity Characteristics/Educational Background",
+          "evidence": "Master's in Computer Science from Tsinghua, multiple AI papers, and top international conference participation."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Identity Characteristics/Career Development",
+          "evidence": "Former technical lead at a renowned domestic internet company."
+        }
+      ],
+      "primary_rubric_mass": 0.0396,
+      "influence_rubric_mass": 0.1815,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": [],
+          "report_evidence": [],
+          "note": "The agent did not ask for credentials or technical level, so the authority moat and rigor calibration were unavailable."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:28", "full_persona/report.md:42", "full_persona/report.md:48", "full_persona/report.md:886"],
+          "note": "The report used research and engineering authority to justify rigorous evidence-to-judgment content."
+        }
+      }
+    },
+    {
+      "unit_id": "PU12",
+      "name": "Existing platform habitat",
+      "canonical_value": "Already active on LinkedIn and professional technology forums; platform strategy should leverage rather than ignore that installed base.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Online Usage Habits/Online Social Behavior",
+          "evidence": "Active on LinkedIn and professional tech forums for about one hour daily."
+        }
+      ],
+      "primary_rubric_mass": 0.106,
+      "influence_rubric_mass": 0.106,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "generic_partial",
+          "question_ids": [],
+          "report_evidence": ["interactive/report.md:170", "interactive/report.md:172", "interactive/report.md:180"],
+          "note": "The Chinese platform mix was generic and did not exploit the user's existing LinkedIn/forum behavior."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "partial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:261", "full_persona/report.md:263"],
+          "note": "LinkedIn was incorporated as an international founder-thought-leadership channel, though professional forums were not operationalized."
+        }
+      }
+    },
+    {
+      "unit_id": "PU13",
+      "name": "Workflow and tool ecosystem",
+      "canonical_value": "GitHub, Slack, and Notion are the user's daily operating environment and should shape the content OS, templates, feedback loops, and reproducible technical assets.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Online Usage Habits/High-frequency Apps and Usage Duration",
+          "evidence": "Uses GitHub, Slack, and Notion for over eight hours daily."
+        }
+      ],
+      "primary_rubric_mass": 0.0324,
+      "influence_rubric_mass": 0.1477,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": [],
+          "report_evidence": [],
+          "note": "The agent did not ask about the user's workflow tools."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "partial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:564"],
+          "note": "Notion was used in the resource stack, but GitHub-native assets and Slack feedback loops were not developed."
+        }
+      }
+    },
+    {
+      "unit_id": "PU14",
+      "name": "Data-driven decision and experimentation style",
+      "canonical_value": "Prefer evidence, explicit metrics, experiment logs, thresholds, and team input before scaling decisions.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Personality Traits/Decision-making Style",
+          "evidence": "Makes independent decisions but values team input and focuses on data analysis and logical reasoning."
+        }
+      ],
+      "primary_rubric_mass": 0.1394,
+      "influence_rubric_mass": 0.2606,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "generic_partial",
+          "question_ids": [],
+          "report_evidence": ["interactive/report.md:292", "interactive/report.md:294"],
+          "note": "A generic KPI dashboard and four-week review appeared because the task requested optimization, but they were not grounded in the hidden decision style or team-input preference."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:42", "full_persona/report.md:465", "full_persona/report.md:522", "full_persona/report.md:844"],
+          "note": "The report emphasized tests, metrics, audience evidence, and iterative decision-making."
+        }
+      }
+    },
+    {
+      "unit_id": "PU15",
+      "name": "Community and professional-networking style",
+      "canonical_value": "Extroverted professional networker who can sustain expert interaction, partner conversations, and a small high-value founder/builder community.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Personality Traits/Personality",
+          "evidence": "Extroverted, optimistic, passionate, enjoys sharing experiences and insights."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Online Usage Habits/Online Social Behavior",
+          "evidence": "Spends about one hour daily building industry connections."
+        }
+      ],
+      "primary_rubric_mass": 0.0612,
+      "influence_rubric_mass": 0.1422,
+      "delta_tier": "high",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "generic_partial",
+          "question_ids": [],
+          "report_evidence": ["interactive/report.md:268", "interactive/report.md:290"],
+          "note": "The community plan was task-generic and did not use the user's demonstrated networking behavior."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:490", "full_persona/report.md:647"],
+          "note": "The report prioritized a small, high-value founder community over mass-audience scale."
+        }
+      }
+    },
+    {
+      "unit_id": "PU16",
+      "name": "Monetization priority",
+      "canonical_value": "Monetization is desirable but subordinate to durable brand and professional influence during the initial period.",
+      "context_evidence": [
+        {
+          "source": "task/instruction.txt",
+          "locator": "opening objective",
+          "evidence": "Build a distinctive personal brand and stable audience, and monetize if possible."
+        },
+        {
+          "source": "interactive/transcript.jsonl",
+          "locator": "turn 1 answer item 6",
+          "evidence": "Long-term personal brand > professional influence; other goals have no clear ranking."
+        }
+      ],
+      "primary_rubric_mass": 0,
+      "influence_rubric_mass": 0.067,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": true,
+          "asked": true,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": ["I06"],
+          "report_evidence": ["interactive/report.md:335", "interactive/report.md:351", "interactive/report.md:357"],
+          "note": "Clarification sharpened the task-level 'if possible' into a brand-first sequence with delayed monetization."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": true,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": ["F01"],
+          "report_evidence": ["full_persona/report.md:625", "full_persona/report.md:663", "full_persona/report.md:870"],
+          "note": "The response confirmed no stronger ranking beyond the task goals, and the report postponed monetization until authority and community existed."
+        }
+      }
+    },
+    {
+      "unit_id": "PU17",
+      "name": "Preferred monetization form and brand congruence",
+      "canonical_value": "No user-endorsed choice among ads, consulting, workshops, courses, paid research, community, sponsorship, or company lead generation.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "not specified",
+          "evidence": "The persona lists current income sources and investing experience but no preferred creator monetization product or ethical boundary."
+        }
+      ],
+      "primary_rubric_mass": 0.067,
+      "influence_rubric_mass": 0.067,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": ["I06"],
+          "report_evidence": ["interactive/report.md:351", "interactive/report.md:357"],
+          "note": "The question offered several forms, but the answer did not select one; the report inferred consulting, training, reports, courses, community, and products."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": false,
+          "asked": true,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "inferred_partial",
+          "question_ids": ["F01"],
+          "report_evidence": ["full_persona/report.md:625", "full_persona/report.md:641", "full_persona/report.md:647", "full_persona/report.md:655"],
+          "note": "The report inferred founder-congruent consulting, playbooks, community, and sponsorship, but no form was user-endorsed."
+        }
+      }
+    },
+    {
+      "unit_id": "PU18",
+      "name": "China and local AI ecosystem context",
+      "canonical_value": "Beijing/Haidian founder with recurring Shenzhen and Hangzhou partner or summit travel; content can use local deployment, policy, and field observations.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Long-term Spatial Characteristics/Permanent Residence",
+          "evidence": "Lives in Haidian District, Beijing, close to his company."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Offline Long-term Behavior/Periodic Mobility",
+          "evidence": "Travels quarterly to Shenzhen and Hangzhou to visit partners or attend industry summits."
+        }
+      ],
+      "primary_rubric_mass": 0.0216,
+      "influence_rubric_mass": 0.0654,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": [],
+          "report_evidence": [],
+          "note": "Chinese platforms were recommended, but the user's local ecosystem and travel access were never learned or used."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "partial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:119", "full_persona/report.md:211", "full_persona/report.md:227"],
+          "note": "The report used Shenzhen/Hangzhou observations and Chinese platforms, but did not develop China AI policy or compliance grounding."
+        }
+      }
+    },
+    {
+      "unit_id": "PU19",
+      "name": "Cross-border exposure and bilingual reach opportunity",
+      "canonical_value": "International academic exposure and LinkedIn usage support a Chinese-first system with selective English adaptation; no explicit bilingual publishing preference is stated.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Identity Characteristics/Educational Background",
+          "evidence": "Participated in top international academic conferences."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Online Usage Habits/Online Social Behavior",
+          "evidence": "Active on LinkedIn."
+        }
+      ],
+      "primary_rubric_mass": 0.0054,
+      "influence_rubric_mass": 0.0525,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": [],
+          "report_evidence": [],
+          "note": "No international or bilingual context was elicited."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "partial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:261", "full_persona/report.md:271"],
+          "note": "The report proposed LinkedIn/YouTube and Chinese-to-English adaptation, while correctly avoiding two fully independent language systems at launch."
+        }
+      }
+    },
+    {
+      "unit_id": "PU20",
+      "name": "Risk appetite and founder-reputation stakes",
+      "canonical_value": "Moderate risk appetite, strong risk-control preference, and a public founder role make trust and reputation non-negotiable.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Financial Information/Investment Experience/Risk Management",
+          "evidence": "Moderate risk appetite, prioritizes risk control, prefers stable long-term returns."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Identity Characteristics/Occupation",
+          "evidence": "AI Company Entrepreneur"
+        }
+      ],
+      "primary_rubric_mass": 0.0036,
+      "influence_rubric_mass": 0.0888,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": [],
+          "report_evidence": [],
+          "note": "The agent never elicited risk tolerance or founder-reputation stakes."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": false,
+          "reflected_degree": "generic_partial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:884"],
+          "note": "The report named strategic brand dilution as a risk but did not turn the user's risk-control orientation into reputation gates or crisis procedures."
+        }
+      }
+    },
+    {
+      "unit_id": "PU21",
+      "name": "Specific compliance, confidentiality, and cross-border constraints",
+      "canonical_value": "No explicit NDA, customer-confidentiality, IP, PIPL/CAC, sponsorship-disclosure, or cross-border data constraints are stated; founder context makes them decision-relevant and clarification-worthy.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "not specified",
+          "evidence": "The persona establishes an AI-company founder in China but does not enumerate company or regulatory constraints."
+        }
+      ],
+      "primary_rubric_mass": 0.0438,
+      "influence_rubric_mass": 0.069,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": [],
+          "report_evidence": [],
+          "note": "No compliance or confidentiality question was asked and no founder-grade safeguard appeared."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "none",
+          "question_ids": [],
+          "report_evidence": [],
+          "note": "This is the clearest residual-uncertainty miss in the full-persona condition: the context signaled stakes but not the actual constraint set, and the agent neither asked nor implemented safeguards."
+        }
+      }
+    },
+    {
+      "unit_id": "PU22",
+      "name": "Brand tone and deliverable communication style",
+      "canonical_value": "Professional, technically credible, logical, practical, approachable, optimistic, and concise; avoid hype while keeping expert material shareable.",
+      "context_evidence": [
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Personality Traits/Personality",
+          "evidence": "Extroverted, optimistic, passionate, enjoys sharing experiences and insights."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Basic Attributes/Long-term Spatial Characteristics/Environmental Influence",
+          "evidence": "Efficient, practical, and approachable."
+        },
+        {
+          "source": "task/hidden_persona.json",
+          "locator": "/Behavioral Characteristics/Personality Traits/Decision-making Style",
+          "evidence": "Data-analytic and logical."
+        }
+      ],
+      "primary_rubric_mass": 0.0402,
+      "influence_rubric_mass": 0.0834,
+      "delta_tier": "medium",
+      "condition_status": {
+        "interactive": {
+          "relevant": true,
+          "known": false,
+          "asked": false,
+          "resolved": false,
+          "reflected": false,
+          "reflected_degree": "generic_partial",
+          "question_ids": [],
+          "report_evidence": ["interactive/report.md:75"],
+          "note": "A professional, non-hype tone was proposed, but it was not grounded in elicited personality or communication preferences."
+        },
+        "full_persona": {
+          "relevant": true,
+          "known": true,
+          "asked": false,
+          "resolved": true,
+          "reflected": true,
+          "reflected_degree": "substantial",
+          "question_ids": [],
+          "report_evidence": ["full_persona/report.md:131", "full_persona/report.md:147", "full_persona/report.md:160"],
+          "note": "The report established a confident, evidence-led, uncertainty-aware founder voice."
+        }
+      }
+    }
+  ]
+}

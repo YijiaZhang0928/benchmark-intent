@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the AskInfer-Bench v0.66 report", async () => {
+test("server-renders the AskInfer-Bench v0.67 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -36,6 +36,9 @@ test("server-renders the AskInfer-Bench v0.66 report", async () => {
   assert.match(html, /企业账户余额不足/i);
   assert.match(html, /PDR-T30 MINIMUM PRODUCT PILOT/i);
   assert.match(html, /只恢复 39\.53%/i);
+  assert.match(html, /44 CRITERIA → 22 UNITS/i);
+  assert.match(html, /问到 11\/22，完整落实 5\/22/i);
+  assert.match(html, /0\/5 redundant、5\/5 reasonable residual verification/i);
   assert.match(html, /PDR-T01 TWO-AGENT CLARIFICATION PILOT/i);
   assert.match(html, /7\/7 个预冻结 critical preference clusters/i);
   assert.match(html, /7\.057 对 6\.065/i);
@@ -46,7 +49,7 @@ test("server-renders the AskInfer-Bench v0.66 report", async () => {
   assert.match(html, /href="\/ask_infer_benchmark\.manifest\.yaml"/i);
 });
 
-test("keeps v0.66 manifest, v0.62 stable schemas, task screen, and downloadable artifacts in sync", async () => {
+test("keeps v0.67 manifest, v0.62 stable schemas, task screen, and downloadable artifacts in sync", async () => {
   const [caseSchema, protocol, manifest] = await Promise.all([
     readFile(new URL("../public/ask_infer_case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/ask_infer_evaluation.protocol.yaml", import.meta.url), "utf8"),
@@ -60,7 +63,10 @@ test("keeps v0.66 manifest, v0.62 stable schemas, task screen, and downloadable 
   assert.match(protocol, /question_precision/);
   assert.match(protocol, /cfa_min/);
   assert.match(manifest, /AskInfer-Bench/);
-  assert.match(manifest, /manifest_version:\s*["']?0\.66/);
+  assert.match(manifest, /manifest_version:\s*["']?0\.67/);
+  assert.match(manifest, /task_specific_preference_units:\s*22/);
+  assert.match(manifest, /interactive_asked_units:\s*11/);
+  assert.match(manifest, /full_persona_redundant_questions:\s*0/);
   assert.match(manifest, /pdr_minimum_product_pilot_is_n1_and_not_leaderboard_evidence/);
   assert.match(manifest, /pdr_two_agent_pilot_shows_clarification_policy_heterogeneity_only/);
   assert.match(manifest, /pdr_is_full_context_projection_not_implicit_elicitation/);

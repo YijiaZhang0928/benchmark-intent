@@ -42,6 +42,8 @@ v0.65 的单任务 PDR-T30 × User12 × ChatGPT Deep Research pilot 已跑通三
 
 v0.66 的 PDR-T01 × User1 双 agent pilot 固定同一 instruction-only + free-clarification 输入。ChatGPT 用一轮 15 个 atomic slots 覆盖 7/7 个预冻结 critical preference clusters，Gemini 没有提问，asked-cluster Jaccard=0；原始 34 条 PDR criteria 的盲化三重复 P-score 为 7.057 与 6.065，差值 +0.992。最大优势集中在个性化方向验证、fit-based shortlist 和可衡量背景提升，而 Gemini 在通用地区比较表和就业信息上更强。该结果证明 agent system 可以采用不同 clarification policy，但产品组件同时变化，不能把分差单独归因于提问或写成排行榜。
 
+v0.67 将 PDR-T30 的 44 条 criteria 映射为 22 个 atomic preference units，并编码 `known/asked/resolved/reflected`。Interactive 六问覆盖 11/22，严格完成全链 5/22；Full 首轮前已知 14/22。Full 五问全部针对 persona 未说明的 residual values，故 0/5 redundant、5/5 reasonable verification；没有新增 resolved unit 是 persona under-specification，不是 over-asking。该单-coder 诊断尚需独立复标，rubric-influence `δ` 不作因果解释。
+
 History 中的 nodes 另标记为：`recoverable`、`missing_askable`、`unidentifiable`、`irrelevant`。Ask 主测 high-`δ missing_askable`；Infer 主测 recoverable 利用与 unidentifiable/irrelevant 克制。
 
 ## 3. 实验条件

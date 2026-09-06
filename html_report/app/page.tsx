@@ -26,7 +26,7 @@ export default function Home() {
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.66 · 2026-09-06</p>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.67 · 2026-09-06</p>
             <h1>Ask or Infer?<br/><em>任务特异的个性化</em></h1>
             <p className="lede">用户在线时，agent 能否用少量问题获取真正改变交付物的偏好？用户离线时，它能否从授权 history 恢复可识别偏好，并对未知部分保持克制？</p>
             <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/AskInfer-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
@@ -127,6 +127,11 @@ export default function Home() {
           <article><span>MISSED</span><h3>高价值背景没有问</h3><p>未询问 founder/company role、技术资历、LinkedIn/GitHub/Slack/Notion、跨境背景和合规边界。</p></article>
           <article><span>BOUNDARY</span><h3>只算机制信号</h3><p>只有一个 task、一个 persona、一个产品 agent；full 也可追问，评分经 product-UI transport，不进入确认性主表或排行榜。</p></article>
         </div>
+        <div className="decisionGrid">
+          <article><span>44 CRITERIA → 22 UNITS</span><h3>第一次得到完整 preference chain</h3><p>每条原始 criterion 恰有一个 primary unit，并可记录 secondary dependencies；逐 condition 标记 known、asked、resolved、reflected。</p></article>
+          <article><span>INTERACTIVE</span><h3>问到 11/22，完整落实 5/22</h3><p>全链落在 AI/创业方向、清晨/家庭边界、ROI、长期品牌和变现优先级；其余分为问而未解与完全未问。</p></article>
+          <article><span>FULL PERSONA</span><h3>五问不是 over-asking</h3><p>0/5 redundant、5/5 reasonable residual verification；低 answer yield 来自 persona 未定义目标值，下一步需要独立 coder 复标。</p></article>
+        </div>
       </div></section>
 
       <section className="shell gapSection" id="pdr-two-agent-pilot">
@@ -141,7 +146,7 @@ export default function Home() {
 
       <section className="shell gapSection" id="novelty"><p className="sectionTag">NEAREST NEIGHBORS</p><div className="sectionHead"><h2>最强审稿问题：这是否只是已有交互 benchmark 的跨域版？</h2><p>回答不能靠命名；必须用 pilot 证明 task-specific δ、真人决策节点、可识别性边界和 final artifact specificity 带来增量解释力。</p></div><div className="sourceGrid">{papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}</div></section>
 
-      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.66</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、两周执行手册、task screen、smoke pack、首轮 S0、PDR-T30 最小闭环与 PDR-T01 双 agent pilot 使用同一版本边界。</p></div><div className="editionGrid">
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.67</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、两周执行手册、task screen、smoke pack、首轮 S0、两轮产品 pilot 与 PDR-T30 的 44→22 preference chain 使用同一版本边界。</p></div><div className="editionGrid">
         <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整构念、条件、数据、测量、统计、风险与 Go/No-Go。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/AskInfer-Bench_正式研究Proposal.docx" download>Word</a></div></article>
         <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>快速判断主张、实验与最强 reviewer objections。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/AskInfer-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
         <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 Ask、Infer、PDR 边界、δ 与 CFA。</p><div className="editionLinks"><a href="/AskInfer-Bench_完整人话版.pdf" download>PDF</a><a href="/AskInfer-Bench_完整人话版.docx" download>Word</a></div></article>

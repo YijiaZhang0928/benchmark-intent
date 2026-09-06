@@ -290,6 +290,8 @@ v0.65 另以 PDR-T30、User12 和一个产品级 ChatGPT Deep Research agent 完
 
 v0.66 随后以 PDR-T01、User1 和两个产品级 Deep Research agent 检验 agent 是否会选择不同的澄清目标。ChatGPT 与 Gemini 接收完全相同的 instruction-only + free-clarification 输入；ChatGPT 用一轮 15 个 atomic slots 覆盖运行前冻结的 7/7 个 critical preference clusters，Gemini 未提问，asked-cluster Jaccard 为 0。34 条原始 PDR criteria 的盲化三重复评分分别为 7.057 与 6.065，差值 +0.992；ChatGPT 的优势集中在研究方向验证、fit-based shortlist、可衡量背景提升和个人情境可执行性，Gemini 则在通用地区比较表和就业信息上更强。这支持 agent-system clarification-policy heterogeneity 的 existence proof，但不隔离提问的因果效应：模型、system prompt、planner、搜索和报告生成策略也随产品一起变化。
 
+v0.67 对 v0.65 的 44 条 criteria 做 atomic preference-chain 编码：22 个 task-specific units，每条 criterion 恰有一个 primary unit 并可附 secondary dependencies；`known` 固定为首次提问前可见，`resolved` 固定为足以约束交付决策，`reflected` 只认与已知/已解决 value 可追溯的报告决策。Interactive 六问覆盖 11/22 units，严格完成 `Asked→Resolved→Reflected` 的为 5/22；Full Persona 起始已知 14/22。Full 的五问均瞄准 persona 未给出的 goal/company use、hours/team assistance、creator budget、on-camera preference 或 audience，因此是 5/5 reasonable residual verification、0/5 redundant clarification；但 simulator 没有这些答案，故没有新增 resolved unit。该 coding 仍是单 pair、单 coder 的事后诊断；重叠的 rubric-influence mass 只是 `δ` proxy，不是因果效应，进入确认性指标前必须做独立二次标注和 agreement。
+
 ## 参考文献
 
 [1] Liang et al. *Towards Personalized Deep Research: Benchmarks and Evaluations*. arXiv:2509.25106. https://arxiv.org/abs/2509.25106
