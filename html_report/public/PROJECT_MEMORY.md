@@ -2,11 +2,23 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-05
-当前版本：v0.65（PDR-T30 interactive-personalization 最小产品闭环）
+最后更新：2026-09-06
+当前版本：v0.66（PDR-T01 双 agent clarification-policy pilot）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAA. 2026-09-06：PDR-T01 双 agent clarification-policy existence proof
+
+用户要求第二个 pilot 不扩 30 题，而是用一个同样 high-δ 的 task 和两个产品级 Deep Research agent，检验 agents 是否在相同 instruction-only + free-clarification 输入下选择不同问题、得到不同 critical-preference recall 和最终 P-score。选定公开 PDR query 1 / task 1 / User1（海外 AI PhD 决策），沿用冻结上游 commit `5b43f9f188c747d154fc7666812ab93b7ca6a3c2`。运行前冻结 byte-identical prompt、persona-bounded simulator、7 个 diagnostic critical-preference clusters 和盲码；不增加 no-ask/full-persona 条件，不改原始 34 条 criteria、evaluator prompt 或权重。
+
+Agent A 为 ChatGPT Deep Research，Agent B 为 Google Gemini Deep Research。ChatGPT 一轮 bundled clarification 可拆为 15 个 atomic slots，覆盖 academic readiness、subfield、funding、career/stability、destination/China、time/planning 和 learning/workflow 共 7/7 clusters；Gemini 在用户指定的 Sanfordzhang Chrome 账户中直接给出研究计划并开始搜索，没有提出 clarification。两者 asked-cluster intersection 为空、symmetric difference 为 7、Jaccard=0。ChatGPT 只得到 3.5/7 resolved credit，因为 persona 没有定义 exact GPA、formal research record、framework proficiency、hard funding threshold、exact career track 或 target intake；simulator 正确拒绝编造。所有 resolved credit 都在最终报告中得到 material implementation。Gemini 的两次早期不同账户技术尝试均未产生 report，已作为 excluded technical attempts 保留，不进入比较。
+
+两份报告按运行前盲序 RPT-C0→RPT-D8，经原始英文 personalization prompt 独立评分三次；6 个 JSON 均含原始 34 条 criteria 且文本和顺序 exact match，官方 `score_calculator.py` 计算权重。由于未使用 OPENAI_API_KEY，prompt 通过 ChatGPT Temporary Chat / Pro / Medium 产品 UI 传输；精确 evaluator model ID 不可见，serialization-only fenced-JSON note 与 v0.65 保持一致。Agent A 三轮为 6.8706/7.1536/7.1469，均值 7.0570；Agent B 为 6.2013/5.8793/6.1145，均值 6.0650；ΔP=+0.9920。维度差为 Goal +0.94、Content +0.62、Presentation −0.06、Actionability +1.50。
+
+criterion-level pattern 支持 clarification-mediated personalization 的机制一致性：Agent A 的最大优势是 research-direction validation +4.00、fit-based shortlist +3.67、DL/NLP direction discovery +3.00、measurable background building +3.00 和 Li Chen context feasibility +2.33。反例也保留：Gemini 在 country/university comparison table、employment/immigration 和部分通用 application mechanics 上更强。因此当前最强可辩护结论是 agent-system clarification-policy heterogeneity 的 existence proof，以及该差异与 personalization outcome 有关联；不能把 0.992 全部因果归因于提问，因为产品切换同时改变 model、system prompt、planner、search 和 report policy，也不能形成 agent ranking 或总体推断。
+
+完整资产在 `pilot/pdr_agent_clarification_pilot_02/`：共同输入、hidden persona、frozen critical preferences、两产品 metadata、transcripts、reports、research logs、blind map、6 份 raw/parsed evaluator outputs、逐 criterion scores、comparison 与 summary。下一步不应把这个结果写成总体“ChatGPT 胜 Gemini”；若进入正式设计，需要同一 agent 内 ask/no-ask 控制或跨多个冻结 task 的 matched blocks 才能分离 acquisition mechanism 与 product-quality confound。
 
 ## 0AAAAAAA. 2026-09-05：PDR-T30 interactive-personalization 最小产品闭环
 

@@ -1,0 +1,442 @@
+
+<system_role>You are a strict, meticulous, and objective expert in evaluating personalized research articles. You excel at deeply evaluating research articles based on specific personalization assessment criteria, providing precise scores and clear justifications.</system_role>
+
+<user_prompt>
+**Task Background**
+You are given an in-depth research task. Your job is to evaluate a research article written for this task in terms of its performance in **"Personalization Alignment"**. We will evaluate it across the following four dimensions:
+1. Goal Alignment
+2. Content Alignment
+3. Presentation Fit
+4. Actionability & Practicality
+
+<task>
+"I want to advance my academic qualifications. I plan to apply for PhD programs in artificial intelligence abroad within the next 1–2 years, but I have not yet decided on a specific research direction. I would like to understand the research strengths, curriculum structure, academic resources, and employment prospects of universities in different countries and regions (for example, North America, Europe, and Asia). At the same time, I care about the application requirements (language requirements, ways to strengthen my background, research or internship experience), tuition and scholarship policies, and how to create a competitive application plan based on my own circumstances. Please help me outline the characteristics of institutions and programs in the major countries/regions, list typical representative universities, and provide recommendations on choosing a direction and improving my background."
+</task>
+
+**User Persona**
+<persona>
+"{'userid': 'User1', 'Basic Attributes': {'Identity Characteristics': {'Name': 'Li Chen', 'Age': '19-21', 'Gender': 'Male', 'Occupation': 'Undergraduate student majoring in computer science', 'Educational Background': 'Currently studying at a prestigious university in Jiangsu, majoring in Computer Science and Technology, with excellent academic performance and having received school scholarships for two consecutive years.', 'Academic Interests': 'Focused on artificial intelligence and algorithm research, particularly interested in deep learning and natural language processing.'}, 'Family Status': {'Family Members and Relationships': 'Parents are civil servants. The family atmosphere is warm, and his parents provide full support for his academic and future development.', 'Pets': 'No pets currently, but he used to keep goldfish as a child and has a fondness for small animals.', 'Parental Expectations': 'Parents hope Li Chen can have a stable and promising job in the future while supporting his pursuit of interests and career aspirations.'}, 'Long-term Spatial Characteristics': {'Permanent Residence': 'Suzhou, Jiangsu', 'Hometown': 'Suzhou, Jiangsu', 'Environmental Influence': "Suzhou's rich historical and cultural heritage, combined with its modernization, has deeply influenced his growth, fostering his interest in technology and culture, and shaping his meticulous and detail-oriented personality."}}, 'Behavioral Characteristics': {'Online Usage Habits': {'High-frequency Apps and Usage Duration': 'Spends over 5 hours daily using programming development tools (e.g., PyCharm, VSCode) and online learning platforms (e.g., Coursera, Bilibili learning section), frequently browses technical blogs and GitHub.', 'Online Social Behavior': 'Has started using WeChat more frequently to discuss topics beyond study with friends and classmates and has joined an online group focused on AI development.'}, 'Offline Long-term Behavior': {'Daily Routine': 'Adjusted his daily schedule to sleep at 11 PM and wake up at 7 AM, paying more attention to sleep quality, occasionally sleeping in on weekends.', 'Consumption Cycle': 'Purchases necessary learning materials and electronic products, such as programming-related books and hardware accessories, at the beginning of each month.', 'Consumption Characteristics': 'Has started trying out high-end electronic products and smart home devices, like smart speakers as learning aids.', 'Periodic Mobility': 'Returns home to visit family during winter and summer vacations and has recently started planning solo trips to explore new cities and cultures.'}}, 'Environment': {'Time': {'Time Preference': 'Evenings are productive times for studying and working on projects, while he enjoys exercising or reading in the early morning.', 'Time Management': 'Good at planning time, creates study plans and task lists in advance, and strictly adheres to them.'}, 'Geographical Location': {'Frequent Places': 'University library, laboratory, basketball court; recently, he has been studying more often at off-campus coffee shops to experience different learning atmospheres.', 'Travel Radius': 'Daily activities are mainly on campus, but he has recently been traveling more frequently to the city center to participate in tech exchange events.'}}, 'Personality Traits': {'Personality': 'Introverted but passionate about technology, focused, patient, and enjoys independent thinking. Actively seeks solutions when encountering problems.', 'Decision-making Style': 'Makes decisions independently after careful research, especially when purchasing electronic products or selecting learning resources.', 'Shopping Preference': 'Rational consumer, values practicality and cost-effectiveness of products, and has recently begun exploring trendy tech products.'}, 'Preferences and Interests': {'Lifestyle Preferences': {'Diet': 'Enjoys Chinese cuisine, especially hometown dishes like Suzhou noodle soup and sweet and sour pork ribs. Recently developed a taste for Japanese cuisine like sushi and ramen.', 'Accommodation Preferences': 'Prefers budget hotels or youth hostels, prioritizing cost-effectiveness and cleanliness of the accommodation.', 'Shopping': 'Prefers online shopping, especially on JD and Taobao, for purchasing electronics and daily necessities.', 'Services': 'Frequently uses food delivery services, especially during busy study periods; recently started subscribing to gym memberships to maintain a healthy lifestyle.'}, 'Travel Preferences': {'Frequency': '2-3 times a year, mainly during holidays, often traveling with family or friends.', 'Destinations': 'Interested in historical and cultural sites and technology exhibitions, such as museums, tech parks, and AI-related expos.', 'Travel Style': 'Prefers self-guided tours, enjoys planning his own itinerary, and has recently started incorporating more natural attractions into his trips for relaxation.'}, 'Content Preferences': {'Article Collection': 'Frequently saves articles related to AI technology, programming techniques, and technological trends, enjoying detailed research on technical specifics and practical application cases.', 'Short Videos': 'Enjoys watching short videos on technical sharing and programming tutorials, occasionally following basketball game highlights.', 'Screenshots': 'Often takes and organizes screenshots of technical articles and code snippets for review and reference.', 'Books, Movies, Singers, Actors': "Prefers tech-related books like 'Artificial Intelligence: A Modern Approach,' and has recently started reading introductory psychology books like 'Cognition and Behavior.' Enjoys Hans Zimmer's music and occasionally watches inspirational movies like 'The Pursuit of Happyness.'"}, 'Exercise Preferences': {'Exercise Habits': 'Plays basketball three times a week and has recently started practicing yoga to relieve physical tension from prolonged study.', 'Exercise Goals': 'To enhance physical fitness and teamwork skills while relieving study-related stress.', 'Exercise Types': 'Basketball, jogging, occasionally badminton, and yoga.', 'Other Investments': 'Buys basketball shoes, fitness trackers, and sportswear, prioritizing comfort and functionality in sports equipment.', 'Exercise Locations': 'On-campus basketball courts and tracks; recently started attending yoga classes at off-campus yoga studios.'}}, 'Health Status': {'Physical Condition': {'Medical History': 'Healthy with no major medical history, occasionally experiences neck and eye strain from prolonged computer use.', 'Mental Condition': 'Occasionally feels study pressure but generally maintains a good psychological state, using exercise and music to relieve stress.', 'Physical Fitness': 'Good endurance and strength, with physical test results ranking well among peers.'}, 'Health Needs': {'Health Needs': 'Wants to maintain health and vitality through exercise and learn proper posture and eye habits to protect his body.'}}, 'Financial Information': {'Financial Status': {'Income Structure': 'Mainly supported by his parents and scholarships, occasionally earns bonuses from participating in programming competitions.', 'Asset Status': 'No property or vehicles, has some savings primarily deposited in fixed-term bank accounts.', 'Consumption Characteristics': 'Frugal, focuses on saving and essential spending, and has recently started planning to purchase a high-performance laptop to improve study efficiency.', 'Debt Situation': 'No loans or credit card debt, practices rational consumption.'}, 'Investment Experience': {'Investment Background': 'No practical investment experience yet, currently learning financial management through books and online courses.', 'Knowledge Level': 'Basic understanding of financial concepts, interested in funds and low-risk financial products.', 'Risk Management': {'Risk Appetite': 'Risk-averse, cautious with investments, and not very interested in high-risk products.'}}}}"
+</persona>
+
+**Article to be Evaluated**
+<target_article>
+"全球人工智能哲学博士（PhD）培养体系、前沿方向与竞争性申请战略研究报告
+
+全球人工智能（AI）领域的学术深造正处于历史性的变革节点。随着大语言模型、基础模型（Foundation Models）以及计算密集型范式的兴起，AI领域的博士（PhD）培养已从传统的纯学术探索，演变为高度依赖算力资本、产业联合以及跨学科融合的复杂系统工程。对于计划在未来1–2年内赴海外攻读AI博士的申请者而言，系统性地评估全球各主流国家与地区的学术资源、培养模式、资助政策以及长远职业回报，是制定高胜率申请策略的关键基础。
+
+全球人工智能PhD研究方向前沿与选方向战略
+
+选择AI博士的研究方向并非孤立的学术兴趣决策，而是研究者个人特长、导师实验室资源以及行业技术演进趋势三者交集的战略匹配。当前全球人工智能研究方向主要呈现出以下核心集群与发展脉络：
+
+核心研究方向集群
+
+机器学习基础理论与算法（Machine Learning Theory & Foundations）：侧重于泛化界限、非凸优化、深度学习可解释性、AI安全性与对齐（Alignment）、以及高维统计推断。该方向对算力依赖度相对较低，但对数学推导与理论建模能力要求极高。
+
+生成式AI与基础模型（Generative AI & Foundation Models）：涵盖大规模语言模型（LLM）、多模态理解与生成、高效训练与推理（如量化、剪枝、长文本注意力机制）、检索增强生成（RAG）等。该方向极度依赖超大规模计算集群，研究资源高度集中于顶级院校及产业联合实验室。   
+
+计算机视觉（CV）与自然语言处理（NLP）：已从传统的特定任务模型全面转向基于Transformer和扩散模型（Diffusion Models）的统一架构，重点包括三维视觉、具身感知、视频生成以及跨语言泛化。   
+
+具身智能与机器人学（Embodied AI & Robotics）：结合强化学习（Reinforcement Learning）、控制论与物理仿真，致力于实现从虚拟环境到真实世界（Sim-to-Real）的泛化迁移与复杂操作。   
+
+科学人工智能（AI for Science, AI4S）：利用机器学习方法解决生物医药（蛋白质结构预测、药物分子设计）、材料科学、气象预测及量子化学中的高维计算瓶颈，是交叉学科研究的重点倾斜领域。
+
+在确定研究方向时，申请者需考虑算力壁垒与学术生态的平衡。若倾向于从事大模型预训练或大规模具身智能研究，申请目标应高度锁定在拥有顶级工业界赞助或超算集群的北美及欧洲顶级实验室；若倾向于算法创新、AI安全性、机器学习理论或AI4S，则可在更广泛的全球中枢实验室中寻求突破。
+
+全球主要国家与地区PhD体系深层剖析
+
+不同国家与地区的AI博士项目在培养逻辑、财务资助、制度设计以及工作签证政策上存在显著差异。
+
+北美地区（美国与加拿大）
+
+北美地区（特别是美国）长期处于全球AI学术研究与产业转化的核心地位，其博士培养体系以系统性的课程训练、丰富的产业资源和高额的资助保障著称。   
+
+在代表性院校与学术资源方面，美国在计算机科学与人工智能领域拥有极其深厚的学术积淀。代表性机构包括麻省理工学院（MIT）、斯坦福大学（Stanford University）、卡内基梅隆大学（CMU）、加州大学伯克利分校（UC Berkeley）、哈佛大学（Harvard University）、伊利诺伊大学厄巴纳-香槟分校（UIUC）、华盛顿大学（UW）、密歇根大学安娜堡分校（UMich）、普林斯顿大学（Princeton University）及康奈尔大学（Cornell University）等。这些院校通常设有独立的人工智能实验室或跨学科研究中心（如CMU机器人研究所、Stanford HAI等），并与谷歌（Google）、英伟达（NVIDIA）、Meta及微软（Microsoft）等科技巨头建立了深度的学术合作与联合资助机制。   
+
+在学制与培养结构方面，北美AI博士学制通常为5至6年。培养流程可分为两个阶段：前1–2年为博士候选人资格前阶段，学生需完成高强度的专业课程（涵盖算法、系统、机器学习理论等），并在导师指导下开展早期研究，通过博士资格考试（Qualifying Exams）；第3至5/6年为博士候选人阶段，学生全精力投入课题研究，完成开题报告（Dissertation Proposal）、学术论文发表以及最终的博士论文答辩（Dissertation Defense）。在招生模式上，北美高校多采用“委员会制”（Committee-based）与“实验室直接招募”（PI-driven）相结合的形式，一轮筛选通常由系所招生委员会统筹评估，通过后再由具体导师决定是否录取。   
+
+在学费与津贴政策方面，美国顶尖计算机系与AI博士项目普遍提供全额财务资助（Full Funding Guarantee），申请者无需单独申请学费减免，录取即自动附带全额资助包。资助包通常包含全额学费豁免（Tuition Waiver，覆盖如斯坦福大学每年63,540美元的学费）、每月生活津贴（Stipend，通过助研RA、助教TA或奖学金Fellowship发放） 以及医疗保险。根据院校所在的地理位置与消费水平，北美AI博士的年津贴通常在30,000美元至54,000美元之间。其中，MIT年津贴约为45,000–50,000+美元，斯坦福大学月津贴约为3,500–4,500美元（年津贴折合42,000–54,000美元），CMU年津贴约为45,000–50,000美元，UC Berkeley年津贴约为34,000–48,000美元，UIUC年津贴约为30,000–46,000美元。获得外部知名奖学金（如NSF GRFP、NDSEG或科技公司博士 Fellowship）的学生通常可获得更高的津贴额度及免除TA教学义务的特权。   
+
+在职业前景与经济回报方面，攻读博士学位存在显著的机会成本。进入工业界前沿实验室（Frontier AI Labs）的硕士毕业生起始总薪酬通常在17万至30万美元之间，而4至6年的博士期间所放弃的累计薪酬净机会成本约为85万至120万美元（扣除博士津贴后）。然而，博士学位是进入顶级研究型岗位及学术界的必要门槛。第一梯队前沿AI实验室（如 OpenAI, Anthropic, Google DeepMind）的研究科学家（Research Scientist）岗位通常强制要求博士学位，其起始基本薪酬比硕士高出3万至8万美元，达到260,000–380,000美元/年，并附带大幅度的高额股权（Equity Grant）。超大规模科技公司（Hyperscalers）研究轨道ML岗位的博士基薪约在190,000–260,000美元，学术界终身轨助理教授（Tenure-Track Assistant Professor）起薪通常在85,000–120,000+美元/年。   
+
+针对国际学生，美国提供了STEM OPT（工作许可）政策。作为STEM领域学位，AI博士毕业生享有共计36个月的STEM OPT授权，包括12个月的初始post-completion OPT以及24个月的STEM延长期。在此期间，学生可在无H-1B工作签证的情况下合法在E-Verify认证的企业工作。申请STEM OPT需联合雇主制定Form I-983培训计划，并在指定窗口期向USCIS递交I-765申请。Cap-Gap政策还能自动将符合条件的学生的F-1身份及工作许可顺延至H-1B生效日。   
+
+欧洲地区（英国与欧洲大陆）
+
+欧洲的AI研究在深度学习理论、计算机视觉及强化学习方面拥有举足轻重的地位。欧洲的培养体系在英国与欧洲大陆之间呈现出截然不同的结构特征。   
+
+在英国体系（UK）方面，代表性机构包括剑桥大学（University of Cambridge）、牛津大学（University of Oxford）、帝国理工学院（Imperial College London）、伦敦大学学院（UCL）及爱丁堡大学（University of Edinburgh）。学制通常为3.5至4年，几乎不包含 mandatory 课程阶段，学生从入选第一天起即直接在导师指导下开展具体研究课题。英国博士的资助主要来源于英国研究与创新署（UKRI）下的工程和物理科学研究委员会（EPSRC）以及各大大学的专项奖学金。2026/27学年，UKRI全额免税博士最低生活津贴为每年21,805英镑（伦敦以外地区）以及每年23,805英镑（伦敦地区，含2,000英镑伦敦补贴）。最低学费覆盖标准为每年5,238英镑，并提供每年1,500–2,500英镑的研究训练与支持津贴（RTSG）。国际学生竞争焦点集中于顶尖全额奖学金，如剑桥大学的“盖茨剑桥奖学金”（Gates Cambridge，覆盖全额学费及22,050英镑/年的生活费）、牛津大学的“罗德奖学金”（Rhodes Scholarship，约20,400英镑/年津贴） 及“克拉伦登奖学金”（Clarendon Fund）、以及帝国理工学院的“校长博士奖学金”（President's PhD Scholarships，覆盖学费及26,500英镑/年津贴，另有2,000英镑/年研究经费）。需要注意的是，UKRI的官方资助通常将国际学生比例限制在约30%以内。   
+
+在欧洲大陆体系与ELLIS网络方面，欧洲大陆（如德国、瑞士、荷兰、法国、瑞典等）的博士体系将博士生视为“科研雇主/雇员”而非单纯的在校学生。在瑞士ETH Zurich、EPFL，德国马克斯·普朗克研究所（Max Planck Institutes）、慕尼黑工业大学（TUM），荷兰阿姆斯特丹大学（UVA）等机构，博士生与大学签订正式劳动合同，享有全额社会保险、养老金及医疗保障。以德国为例，AI博士生通常获得100% TV-L E13等级的工作合同，税前年薪约45,000至55,000欧元（税后津贴约每年28,000欧元左右）；荷兰及瑞士的薪酬水平更高（瑞士年薪通常在55,000至70,000瑞郎以上）。   
+
+欧洲在AI领域的极具代表性的创新是建立了 pan-European 的 ELLIS 卓越网络（European Laboratory for Learning and Intelligent Systems）。ELLIS 汇聚了欧洲42个研究单元（ELLIS Units），旨在留住和吸引顶尖AI人才。ELLIS 博士项目采取联合培养机制（Dual Supervision），每位博士生由来自不同欧洲国家（或一所学术机构与一家工业界实验室）的两名 ELLIS Fellow/Scholar 共同指导。博士生必须在另一国度的合作实验室或工业界实验室完成至少6个月的强制性学术交流访问。ELLIS 统一开放年度集中申请 Portal（通常于每年10月开放，10月31日截止），申请者可通过一个门户向200多位顶尖导师表达意向。评估流程在11月至次年2月间展开，晚于5月1日确认条件录取，并在9月15日前签署意向书（Letter of Intent）完成最终录取。ELLIS 项目录取极其严格，合规申请者的通过率仅为5%–10%。   
+
+亚洲地区（中国香港与新加坡）
+
+亚洲在AI领域的快速崛起使其顶尖高校在学术出版物数量和质量上已处于全球领先地位。
+
+香港拥有包括香港科技大学（HKUST）、香港中文大学（CUHK）、香港大学（HKU）在内的顶级计算机系，在计算机视觉、模式识别及NLP领域具备世界级实力。香港研究资助局（RGC）于每年9月1日至12月1日开放“港府博士研究生奖学金计划”（HKPFS）申请。该奖学金提供高额每月津贴（约HK27,000+）、每年额外的会议及研究交通津贴（约HK13,000+），并免除学费。香港的博士申请采用“院校 Portal + RGC Portal”双投递流程，申请者需在12月1日截止日期前同时完成两个系统的注册与提交。   
+
+新加坡的新加坡国立大学（NUS）与南洋理工大学（NTU）在AI领域全球排名居前。博士资助主要来自新加坡技术研究局（A*STAR）奖学金或大学自身的校长奖学金（President's Graduate Fellowship），月津贴约为3,000至3,700新币，培养周期通常为4年。
+
+多维度地区比较分析与决策数据
+
+为了直观展现全球主要国家与地区AI博士项目的异同，以下表格从培养模式、资助水平、代表院校及薪酬回报等维度进行了定量与定性整理。
+
+全球主要国家/地区 AI PhD 培养模式与政策对比
+对比维度	北美地区（美国、加拿大）	英国	欧洲大陆（含ELLIS网络）	亚洲地区（中国香港、新加坡）
+标准学制	
+
+5 – 6 年
+
+	
+
+3.5 – 4 年
+
+	
+
+3.5 – 5 年
+
+	4 年
+课程要求	
+
+强强制性高强度课程（前1-2年）+ 资格考试
+
+	无或极少课程，直接进入研究阶段	少量选修课程，以科研为主	适度课程要求 + 资格考试
+招生模式	
+
+委员会制与导师制混合
+
+	
+
+导师决定制 / 学院奖学金委员会
+
+	
+
+导师决定制（直接雇佣）/ ELLIS集中招募
+
+	
+
+导师决定制 + 学院/政府统一遴选
+
+
+财务身份	
+
+学生身份（含税/免税津贴）
+
+	
+
+学生身份（全额免税津贴）
+
+	
+
+科研雇员身份（含全额社保/养老金）
+
+	
+
+学生身份（免税津贴）
+
+
+资助水平	
+
+$30,000 – $54,000 / 年
+
+	
+
+£21,805 – £23,805 / 年（UKRI基准）
+
+	
+
+€28,000 – €38,000 / 年（税后折合）
+
+	
+
+HK$320,000 / 年（HKPFS基准）
+
+
+毕业后工作签证	
+
+36 个月 STEM OPT
+
+	2 – 3 年 Graduate Visa	1 – 2 年 找工作签证（视国家而定）	2 年 IANG 签证（香港）/ LTVP
+核心优势	
+
+顶尖算力资源、高学术声誉、工业界薪酬极高
+
+	
+
+毕业周期短、奖学金体制纯粹
+
+	
+
+工作保障完善、跨国联合培养网络
+
+	
+
+离本土近、文化适应快、资助稳定
+
+  
+典型代表院校、核心资助与财务指标清单
+国家/地区	典型代表院校	旗舰资助/项目名称	典型资助额度及特征
+美国	
+
+MIT, Stanford, CMU, UC Berkeley, UIUC, UW, UMich, Princeton, Cornell
+
+	
+
+院校全额RA/TA资助，NSF/NDSEG Fellowship
+
+	
+
+全额学费豁免（如Stanford $63,540/年）+ $30,000–$54,000/年津贴
+
+
+英国	
+
+Cambridge, Oxford, Imperial, UCL, Edinburgh
+
+	
+
+Gates Cambridge, Rhodes, Clarendon, Imperial President's
+
+	
+
+免学费 + £20,400–£26,500/年免税津贴
+
+
+欧洲大陆	
+
+ETH Zurich, EPFL, Max Planck Institutes, TUM, UVA, Freiburg
+
+	
+
+ELLIS PhD Program, 德国TV-L E13 100% 合同
+
+	
+
+正式雇员，税后折合约 €28,000–€38,000/年
+
+
+中国香港	
+
+HKUST, CUHK, HKU
+
+	
+
+Hong Kong PhD Fellowship Scheme (HKPFS)
+
+	
+
+月津贴约 HK$27,000+，另含会议交通津贴
+
+
+新加坡	NUS, NTU	President's Graduate Fellowship, A*STAR Scholarship	月津贴约 SG$3,000–$3,700，覆盖全额学费
+  
+PhD vs MS 在不同工业界轨道与学术界的薪酬与回报对比
+职业轨道类型	学历要求与门槛	硕士（MS）典型基薪	博士（PhD）典型基薪	
+
+PhD溢价与特权
+
+
+T1 前沿AI实验室（如 OpenAI, Anthropic, DeepMind）	
+
+强制/极度偏好 PhD
+
+	
+
+$220k – $300k
+
+	
+
+$260k – $380k
+
+	
+
++$30k–$80k 基薪，获得超大规模初始股权 Grant
+
+
+T2 超大规模科技公司（研究轨道 ML 岗位）	
+
+偏好 PhD
+
+	
+
+$170k – $220k
+
+	
+
+$190k – $260k
+
+	
+
++$20k–$40k 基薪，更高的初始级别与签约金
+
+
+T2 超大规模科技公司（应用 ML 岗位）	
+
+MS / PhD 均可
+
+	
+
+$155k – $200k
+
+	
+
+$160k – $210k
+
+	
+
++$5k–$10k 基薪，溢价较小，优势在于升职速度
+
+
+T4 量化交易机构（研究员岗位）	
+
+PhD 为硬性门槛
+
+	极少开放研究岗	高基薪 + 极高绩效奖金	
+
+博士学位是获得该岗位的绝对门槛
+
+
+学术界终身轨助理教授	
+
+强制 PhD
+
+	N/A	
+
+$85k – $120k+
+
+	
+
+获得独立建组、指导博士生与申请基金的资格
+
+  
+背景提升与竞争性申请规划路线图
+
+由于全球顶尖AI博士项目的实际录取率已降至5%–10%以下，申请者必须抛弃传统的“刷高GPA与语言成绩”的应试思维，将核心精力集中于科研独立性与学术产出的建立。   
+
+24个月申请准备战略路线图
+阶段一：基础夯实与方向探索（第 1 – 6 个月）
+
+在这个阶段，申请者需要建立坚实的数学与编程基础，重点巩固线性代数、概率论、最优化理论以及主流深度学习框架（PyTorch/JAX）的底层实现能力。同时，应当密集阅读近2–3年顶级会议（NeurIPS, ICML, ICLR, CVPR, ACL）的 Oral 与 Spotlight 论文，从中识别出当前技术路线的瓶颈所在。更重要的是，申请者应争取加入本地高水平实验室或前沿企业的研究机构（如微软亚洲研究院、腾讯AI Lab等），担任研究实习生，熟悉完整的科研选题与实验流程。
+
+阶段二：科研攻坚与论文产出（第 7 – 12 个月）
+
+这是整个背景提升中最核心的环节。申请者需在导师或资深研究员的指导下，独立或作为核心贡献者主导一个完整的科研课题。从提出了明确的问题定义、复现基线算法（Baseline），到设计创新性的架构或理论推导，再到完成严谨的消融实验（Ablation Studies）。目标是撰写出一篇符合 Tier-1 顶会标准的学术论文。即使在投递申请时论文处于在投（Under Review）或预印本（arXiv）状态，附带高质量的代码库（GitHub Repo）亦能向招生委员会展现极强的科研完成度。
+
+阶段三：战略套磁、推荐信锁定与文书撰写（第 13 – 18 个月）
+
+在此阶段，申请者需筛选出20–30位研究方向高度匹配的目标导师（包含资深教授与刚建组、急需招人的新进助理教授）。学术推荐信是博士申请中权重最高、最具决定性的材料，申请者需提前锁定3位能够对其科研独立性、代码能力及学术潜力做出具体、强有力评价的推荐人。个人陈述（Statement of Purpose, SoP）与研究计划（Research Statement）应摒弃泛泛而谈的个人情怀，直接聚焦于过去的科研逻辑、解决的核心技术难题，以及为何目标实验室的研究方向与个人的长期学术规划产生强烈的共振。
+
+阶段四：系统投递与学术面试攻坚（第 19 – 24 个月）
+
+在此阶段，申请者需严格按照不同区域的时间节点进行投递：
+
+10月下旬：提交 ELLIS 集中申请 Portal 及英国早鸟奖学金申请。   
+
+12月1日：提交美国各大计算机系（如 Stanford, CMU, MIT） 以及香港 HKPFS 申请。   
+
+12月至次年2月：准备学术面试。AI博士面试通常包含15–30分钟的过去科研 Slides 汇报，以及针对论文细节、数学推导和现场 Coding 的深度考核。
+
+申请材料权重与要素拆解
+
+在招生委员会与导师的评估体系中，各项申请材料的权重存在明确的阶梯分布：
+
+顶会论文与高质量预印本（权重：最高）：直接证明了申请者具备独立开展科研、撰写学术文章以及回答同行评审问题的能力，是区分普通申请者与顶尖申请者的最硬核指标。
+
+强力学术推荐信（权重：极高）：特别是来自目标领域内活跃学术圈（Peer Network）推荐人的背书。同行教授的认可往往能直接打消招生委员会对申请者科研真实性的顾虑。
+
+研究计划与导师匹配度（SoP Match）（权重：高）：导师招收博士生本质上是寻找科研合伙人。SoP 中对导师近期论文的深刻理解以及提出的建设性后续研究设想，能大幅提升套磁与面试的转化率。
+
+GPA与学术背景（权重：中等/门槛项）：通常 GPA > 3.6/4.0（顶尖院校 3.8+）即可满足门槛。近年来，绝大多数美国顶尖计算机系已取消对 GRE 成绩的硬性要求，甚至明确不接受 GRE 提交。   
+
+语言成绩（TOEFL/IELTS）（权重：门槛项）：达到学校官方硬性要求即可（如托福 100+，单项 25+；雅思 7.5+），对最终录取决定的边际贡献极低，无需花费过多精力刷分。
+
+综合研判与行动建议
+
+对于计划在未来1–2年内投身全球AI博士申请的科研者，最终的战略决策应当建立在对个人职业规划、风险偏好以及学术资源的综合审视之上：
+
+如果申请者追求学术影响力的巅峰与工业界最高级别的薪酬溢价，应将北美顶尖院校（美加）作为首选目标。北美项目虽然培养周期长（5–6年）、前期需面对高强度的课程与资格考试压力，但其提供的算力资源、工业界前沿实验室的对接深度以及毕业后的薪酬溢价（前沿实验室研究科学家起薪可达 26万–38万+ 美元）是其他区域难以比拟的。毕业后凭借 36 个月的 STEM OPT 政策，亦可获得充足的缓冲期过渡至工业界或学术界。   
+
+如果申请者追求研究的纯粹性、完善的社会保障体系以及良好的工作生活平衡，应重点布局欧洲大陆（特别是通过 ELLIS 网络）及英国。欧洲大陆将博士视为科研雇员，提供全额社保与稳定薪酬；ELLIS 的跨国/产学双导师制则极大地拓展了欧洲内部的合作网络与资源共享。英国项目则适合希望在 3.5–4 年内快速取得博士学位并专注于纯粹科研的申请者。   
+
+如果申请者追求地理便利、高额无忧的资助体系以及平滑的文化适应，中国香港（HKPFS）与新加坡（NUS/NTU）提供了极其丰厚的奖学金和顶尖的亚裔学术圈层，是兼顾家庭地理距离与国际化科研平台的最优选择。   
+
+申请者应立即启动科研背景的强化，放弃盲目刷高标准化考试成绩的传统策略，将80%的精力聚焦于加入高水平课题组、产出高质量的代码与论文预印本，并建立与目标导师的学术交集。唯有依靠扎实的科研硬实力与精准的战略定位，方能在全球人工智能博士申请的竞争激流中脱颖而出。
+"
+</target_article>
+
+**Evaluation Criteria**
+You must evaluate the specific performance of this article in terms of personalization alignment, **following the criteria list below**, outputting your analysis and then assigning a score from 0–10. Each criterion includes its explanation, which you should read carefully.
+
+<criteria_list>
+{'goal_alignment': [{'criterion': 'Direction discovery tailored to DL/NLP/algorithms with actionable validation steps', 'explanation': 'Evaluate whether the article recognizes Li Chen’s undecided direction within DL/NLP/algorithms and provides a structured method to refine it (e.g., subfield map across foundation models, NLP, multimodal, ML theory/optimization, efficient/robust/trustworthy AI) plus concrete validation tasks suitable for his habits (paper replication, small evening micro-projects, curated reading lists, targeted open-source issues). This leverages his GitHub usage, evening productivity, and love for technical detail to reach a confident direction choice.', 'weight': 0.16}, {'criterion': 'Advisor/lab and program matching with representative universities aligned to interests', 'explanation': 'Assess whether the report maps his DL/NLP/algorithm interests to specific labs/advisors and programs across regions (e.g., LTI-like NLP groups, vision–language labs, ML theory labs), explaining fit (research themes, publication venues, advising style, funding norms) and listing representative universities as exemplars. This turns prestige into fit-centric targeting, critical for his evidence-based decision-making and competitiveness.', 'weight': 0.13}, {'criterion': 'Region-specific ecosystem comparison through a Chinese applicant lens', 'explanation': 'Check if differences among North America, Europe, and Asia are explained with specifics that matter to him: curriculum structures (coursework vs research-first), admissions models (cohort vs position-based), application process (portal vs supervisor-first), living costs, academic resources (institutes, compute), and typical funding patterns. It should highlight nuances relevant to Chinese applicants (e.g., contacting supervisors in EU/UK, funded positions in EU doctoral schools).', 'weight': 0.14}, {'criterion': 'Personalized 1–2-year milestone roadmap aligned with his time management', 'explanation': 'Determine whether the article provides a quarter-by-quarter/monthly plan for tests (TOEFL/IELTS, GRE as needed), research outputs (submission targets like ACL/NeurIPS/ICLR/ICML), internships/RAships, open-source/Kaggle, advisor outreach, and document preparation. It should explicitly leverage his evening productivity and strict planning style to sequence tasks and de-risk deadlines across regions.', 'weight': 0.14}, {'criterion': 'Background strengthening strategy leveraging current assets and channels', 'explanation': 'Evaluate whether it builds on his strong GPA, scholarships, and GitHub habits to propose high-ROI steps: joining/initiating lab projects, aiming for workshop/short papers, competition strategy (Kaggle/CCF events), targeted open-source contributions that signal fit to labs, and China-based AI internships (e.g., major tech labs). It should define measurable goals (e.g., commits, issues, preprint timeline) matching his analytical mindset.', 'weight': 0.12}, {'criterion': 'Clear, actionable application requirements and process guidance by region', 'explanation': 'Assess whether language targets (TOEFL/IELTS section scores), GRE policies (optional/required), timeline of taking tests, recommendation letter strategy, SoP/portfolio tailoring for DL/NLP, and supervisor contact strategies (where applicable) are provided with concrete thresholds and steps. This reduces ambiguity and fits his preference for clear checklists.', 'weight': 0.08}, {'criterion': 'Funding, tuition, and scholarship planning optimized for cost-effectiveness', 'explanation': 'Check if the article quantifies funding odds and stipend ranges versus cost-of-living across regions, and enumerates scholarships suited to him (e.g., HKPFS, SINGA, CSC, Clarendon/EPSRC, Marie Skłodowska-Curie, Canadian/departmental funding). It should propose fallback financing routes (e.g., funded PhD first; if MS route, identify realistic scholarships) aligned with his frugal, risk-averse profile.', 'weight': 0.09}, {'criterion': 'Employment outlook and immigration stability framing', 'explanation': 'Evaluate whether it presents realistic placement outcomes by region (industry vs academia in AI hubs), visa pathways and durations (e.g., OPT/H-1B dynamics, UK Graduate Route/Skilled Worker, EU Blue Card, Singapore EP), and ties these to his and his parents’ preference for stability. It should recommend risk-mitigating country/program mixes reflecting his constraints.', 'weight': 0.07}, {'criterion': 'Evidence-based, structured, and resource-linked presentation matching his analytical style', 'explanation': 'Assess whether comparisons use appropriate data sources (e.g., CSRankings for subfield output, lab publication records, placement pages), avoid hype, and present information via matrices/checklists and curated resource links (reading lists, course sequences, compute/resource access). This aligns with his data-driven, detail-oriented decision process.', 'weight': 0.05}, {'criterion': 'Integration of China-specific practicalities and timelines', 'explanation': 'Check inclusion of Chinese applicant specifics: GPA conversion, transcript/translation tips, CSC timing, local test center scheduling, recommendation etiquette, domestic academic calendar alignment, and use of domestic summer research/RA opportunities. This ensures the plan is operational in his real context.', 'weight': 0.02}], 'content_alignment': [{'criterion': 'DL/NLP-centric Coverage of Research Strengths, Labs, and Courses', 'explanation': 'Checks whether the report foregrounds deep learning and NLP when outlining research strengths, naming specific labs, faculty, and course clusters most relevant to these subfields, so the content aligns with Li’s declared interests and supports informed direction exploration.', 'weight': 0.2}, {'criterion': 'Region-Specific AI Ecosystem Comparison for Chinese Applicants', 'explanation': 'Evaluates whether the cross-region comparison (US/Canada, Europe, Asia) highlights differences that matter to a Chinese CS undergraduate—admissions model (advisor-first vs centralized), PhD structure, compute/lab resources, and field leadership—rather than generic country facts.', 'weight': 0.18}, {'criterion': 'Funding, Tuition, and Scholarship Alignment with Cost-Conscious, Risk-Averse Profile', 'explanation': 'Assesses whether content prioritizes fully funded models, tuition waivers, RA/TA packages, and region-specific scholarships (e.g., CSC, HKPFS, A*STAR, EU employment contracts, JSPS), and notes cost-of-living differences—reflecting Li’s frugality and need for financial stability.', 'weight': 0.2}, {'criterion': 'Application Requirements and Background-Building Paths Tailored to a Chinese CS Junior’s Habits', 'explanation': 'Checks that language test norms (TOEFL/IELTS, GRE optionality by region) and background-strengthening routes are selected for Li’s context—e.g., China-based RA options (Suzhou/Shanghai), open-source/NLP competitions, reading groups—matching his GitHub/online-learning behavior.', 'weight': 0.15}, {'criterion': 'Technical Depth Appropriate to a High-Performing CS Student', 'explanation': 'Ensures the coverage includes concrete technical markers (key venues like NeurIPS/ICML/ICLR/ACL, typical PhD coursework/prereqs in optimization/probability/ML systems, named labs/datasets/compute resources) rather than superficial descriptions.', 'weight': 0.1}, {'criterion': 'Representative Universities Curated by Subfield and Tier Across Regions', 'explanation': 'Evaluates whether the selected schools per region are curated for DL/NLP strength and spread across tiers (reach/target/conservative) to reflect Li’s rational, risk-managed approach, instead of an undifferentiated or prestige-only list.', 'weight': 0.07}, {'criterion': 'Employment Prospects Contextualized to Stability and China-Linked Pathways', 'explanation': 'Checks whether employment sections emphasize outcomes relevant to Li’s stability goals and background, including postdoc/industry pathways, visa durations, and links to China/Shanghai ecosystem roles and alumni pipelines.', 'weight': 0.07}, {'criterion': 'Two-Year Runway Alignment of Resources and Milestones', 'explanation': 'Assesses whether the content selection acknowledges a 1–2-year timeline by naming time-suitable resources (e.g., summer research programs, visiting student options, European/North American deadlines, Asia cycle) without prescribing step-by-step plans.', 'weight': 0.03}], 'presentation_fit': [{'criterion': 'Professional, technical tone and concise logical flow appropriate for a CS undergraduate', 'explanation': "Assess whether the report adopts a precise, evidence-based style with clear reasoning and minimal fluff, matching the user's exposure to technical blogs and academic materials and reducing cognitive load.", 'weight': 0.18}, {'criterion': 'Terminology handling and bilingual clarity (AI and admissions jargon)', 'explanation': 'Check that AI terms (e.g., DL, NLP), admissions acronyms (TOEFL/IELTS/GRE), and program types are accurate, expanded on first use, and presented with brief Chinese explanations while preserving English originals to avoid ambiguity and aid further research.', 'weight': 0.16}, {'criterion': 'Region-first macro-structure with a consistent subsection template and navigability', 'explanation': 'Evaluate whether each region follows the same ordered subsections (research strengths → curriculum → resources → employment → requirements → tuition/scholarships), with numbered headings and a table of contents to support quick navigation and cross-region comparability.', 'weight': 0.2}, {'criterion': 'Use of comparative tables/matrices for countries and representative universities', 'explanation': 'Assess whether key dimensions are presented in compact tables (e.g., tuition ranges, funding prevalence, language requirements, employment outlook), enabling side-by-side comparison and easy screenshotting for later reference.', 'weight': 0.14}, {'criterion': 'Scannability and micro-structure (executive summary, bullets, short paragraphs)', 'explanation': 'Check for an upfront executive summary with key takeaways and whether sections use bullet points, short paragraphs, and highlight boxes to fit the user’s time management habits and improve on-screen readability.', 'weight': 0.1}, {'criterion': 'Process visualization formatting (timeline/checklist for 1–2 year application plan)', 'explanation': 'Evaluate whether the application process is presented with a clear visual timeline or checklist format (e.g., month markers, milestones, checkboxes) that makes sequencing and dependencies easy to grasp without judging the plan’s substantive content.', 'weight': 0.1}, {'criterion': 'Source and link presentation (traceability and update timestamps)', 'explanation': 'Assess whether official links are clearly labeled, placed near claims, and include access dates or version timestamps to support the user’s verification-oriented decision style.', 'weight': 0.06}, {'criterion': 'Localization of units and formats (currency, scores, time zones)', 'explanation': 'Check whether monetary values are shown in local currency plus RMB, exam scores are mapped to familiar scales/bands, and time frames are unambiguous, improving immediate comprehension for a Chinese student.', 'weight': 0.06}], 'actionability_practicality': [{'criterion': 'Executable 1–2 year application timeline with dated milestones and buffers', 'explanation': 'Assesses whether the report provides a quarter-by-quarter (or month-by-month) schedule covering test prep/retakes, research outputs, internships, advisor outreach, document drafting, and submission deadlines by region, with contingency buffers. A dated sequence enables Li Chen to act immediately and track progress.', 'weight': 0.18}, {'criterion': 'Background-building plan with measurable outputs and feasibility', 'explanation': "Evaluates whether the report translates 'strengthen background' into concrete deliverables (e.g., reproducibility projects, workshop/student-track submission, open-source contributions, targeted internships, advanced coursework) with specific metrics, tools, and timelines realistic for a Chinese CS undergrad.", 'weight': 0.18}, {'criterion': 'Financial budgeting and scholarship acquisition plan', 'explanation': 'Checks if the report itemizes tuition, living costs, and fees across regions; explains funding models (RA/TA, stipends) and lists scholarships (eligibility, competitiveness, deadlines, steps) like CSC, SINGA, DAAD, HKPFS, Clarendon, Gates. This enables cost-feasible decisions and concrete funding actions.', 'weight': 0.16}, {'criterion': 'Research direction decision and validation framework', 'explanation': 'Looks for a practical process to choose/validate a subfield (e.g., DL for vision vs NLP), including reading sprints, small reproduction projects, mentor consultations, seminar attendance, and a short trial proposal—plus a rubric and a target timeline to finalize direction. Direction choice drives all subsequent actions.', 'weight': 0.14}, {'criterion': 'Region-specific application mechanics and requirements', 'explanation': 'Assesses whether the report provides actionable, region-tailored checklists: required exams and thresholds, GRE policies, centralized vs PI-first applications, position-based hiring in Europe, typical funding structures, visa lead times, and where to find openings (e.g., FindAPhD, EURAXESS, lab pages).', 'weight': 0.12}, {'criterion': 'Shortlisting framework with fit rubric and matched examples', 'explanation': 'Evaluates whether the report offers a step-by-step method and rubric to build a school/advisor list (reach/target/safety), using factors like advisor fit, recent publications, funding likelihood, and placements—plus concrete, tailored examples of labs/advisors in DL/NLP to jump-start his shortlist.', 'weight': 0.1}, {'criterion': 'Application materials and advisor outreach toolkit', 'explanation': 'Checks for SOP/research statement structures, CV checklist, writing timeline, sample cold-email templates to PIs, and a plan for securing strong recommendation letters (who to ask, when, what evidence to compile). These tools directly enable execution of critical application tasks.', 'weight': 0.08}, {'criterion': 'Operational feasibility in Li Chen’s context (workload, access, buffers)', 'explanation': 'Assesses whether recommendations are realistically executable given his semester load, evening study preference, and China-specific constraints (test center availability, resource accessibility, payment methods), with contingency plans for delays and exam retakes.', 'weight': 0.04}]}
+</criteria_list>
+
+<Instruction>
+**Your Task**
+Strictly follow **each criterion** in `<criteria_list>` to evaluate how `<target_article>` meets that criterion. You must:
+1. **Analyze Each Criterion**: For each item in the list, think about how the article meets the requirements of that criterion.
+2. **Analytical Evaluation**: Combine the article content, the task, and the user persona to analyze the article’s performance for that criterion, pointing out both strengths and weaknesses.
+3. **Scoring**: Based on your analysis, give a score between 0 and 10 (integer) for the article's performance on that criterion.
+
+**Scoring Rules**
+For each criterion, give a score between 0 and 10 (integer). The score should reflect the quality of the article’s performance:
+* 0–2 points: Very poor. Almost completely fails to meet the requirement.
+* 2–4 points: Poor. Meets the requirement only partially, with significant shortcomings.
+* 4–6 points: Average. Basically meets the requirement; neither particularly good nor bad.
+* 6–8 points: Good. Mostly meets the requirement, with notable strengths.
+* 8–10 points: Excellent/Outstanding. Fully or exceptionally meets the requirement.
+
+**Output Format Requirements**
+Strictly follow the `<output_format>` below to output the evaluation results for **each criterion**. **Do not include any irrelevant content, introductions, or conclusions**. Start from the first dimension and output all dimensions and their criteria in sequence:
+</Instruction>
+
+<output_format>
+{
+    "goal_alignment": [
+        {
+            "criterion": [The text of the first Goal Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        {
+            "criterion": [The text of the second Goal Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "content_alignment": [
+        {
+            "criterion": [The text of the first Content Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "presentation_fit": [
+        {
+            "criterion": [The text of the first Presentation Fit criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "actionability_practicality": [
+        {
+            "criterion": [The text of the first Actionability & Practicality criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ]
+}
+</output_format>
+
+Now, evaluate the article’s performance in personalization alignment based on the research task, the user persona, and the criteria. Provide detailed analysis and scoring as required above. Ensure that the output strictly follows `<output_format>`, that the JSON is valid and parseable, and that any special characters that may cause parsing errors are properly escaped.
+</user_prompt>
+
+<transport_note>
+This evaluator call is being carried through a rendered product UI rather than the repository API client. Wrap the required JSON object in a fenced json code block so quotation-mark escape characters remain recoverable from the rendered page. This instruction affects serialization only; do not change the evaluation criteria, analysis, order, or scores.
+</transport_note>
+

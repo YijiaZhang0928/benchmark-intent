@@ -1,0 +1,119 @@
+{
+  "status": "complete",
+  "protocol": "diagnostic_protocol.md",
+  "denominator_critical_preference_clusters": 7,
+  "agent_a": {
+    "clarification_turns": 1,
+    "atomic_question_slots": 15,
+    "question_slot_primary_codes": {
+      "critical_preference": 14,
+      "task_relevant_residual": 0,
+      "task_factual": 1,
+      "irrelevant_or_low_value": 0,
+      "redundant": 0
+    },
+    "slot_notes": [
+      "The single surface turn bundled independently answerable fields: degree; school/major; GPA/rank; existence of research; research field; authorship/submission status; AI technical background; math foundation; programming/framework proficiency; application-priority ordering; region preference/exclusions; funding tolerance; language scores; target entry cycle; and career target.",
+      "Language-test scores were coded task_factual because they are an application-readiness fact rather than a frozen preference cluster."
+    ],
+    "asked_clusters": [
+      "CP01_ACADEMIC_READINESS",
+      "CP02_SUBFIELD_INTEREST",
+      "CP03_FUNDING_AND_COST",
+      "CP04_CAREER_AND_STABILITY",
+      "CP05_DESTINATION_AND_CHINA_CONTEXT",
+      "CP06_TIME_AND_PLANNING_STYLE",
+      "CP07_LEARNING_AND_TECHNICAL_WORKFLOW"
+    ],
+    "cluster_coding": [
+      {
+        "id": "CP01_ACADEMIC_READINESS",
+        "resolution": "asked_partially_resolved",
+        "reason": "Degree, field, institution type, strong grades, and scholarships were resolved; exact GPA/rank and formal research record were unspecified.",
+        "report_use": "implemented_materially"
+      },
+      {
+        "id": "CP02_SUBFIELD_INTEREST",
+        "resolution": "asked_partially_resolved",
+        "reason": "DL/NLP interest was resolved, but the requested technical-background level was not specified.",
+        "report_use": "implemented_materially"
+      },
+      {
+        "id": "CP03_FUNDING_AND_COST",
+        "resolution": "asked_partially_resolved",
+        "reason": "Cost-consciousness and parent/scholarship support were resolved, while a hard full-funding threshold was not stated.",
+        "report_use": "implemented_materially"
+      },
+      {
+        "id": "CP04_CAREER_AND_STABILITY",
+        "resolution": "asked_partially_resolved",
+        "reason": "The family's stability preference was resolved, while academia versus industry remained undetermined.",
+        "report_use": "implemented_materially"
+      },
+      {
+        "id": "CP05_DESTINATION_AND_CHINA_CONTEXT",
+        "resolution": "asked_and_resolved",
+        "reason": "The simulator could answer that no destination preference or exclusion was stated; Jiangsu context was also disclosed through the academic-background answer.",
+        "report_use": "implemented_materially"
+      },
+      {
+        "id": "CP06_TIME_AND_PLANNING_STYLE",
+        "resolution": "asked_not_resolved",
+        "reason": "The agent asked for a target entry cycle, but the hidden persona did not determine 2027 versus 2028 and it did not ask about evening productivity or planning style.",
+        "report_use": "not_applicable_no_resolved_credit"
+      },
+      {
+        "id": "CP07_LEARNING_AND_TECHNICAL_WORKFLOW",
+        "resolution": "asked_partially_resolved",
+        "reason": "Tools and learning channels were resolved, while math and framework proficiency were unspecified.",
+        "report_use": "implemented_materially"
+      }
+    ],
+    "critical_preference_recall": 1.0,
+    "resolved_critical_preference_credit": 3.5,
+    "resolved_critical_preference_recall": 0.5,
+    "implemented_resolved_credit": 3.5,
+    "implementation_rate": 1.0
+  },
+  "agent_b": {
+    "status": "complete_no_clarification_asked",
+    "clarification_turns": 0,
+    "atomic_question_slots": 0,
+    "question_slot_primary_codes": {
+      "critical_preference": 0,
+      "task_relevant_residual": 0,
+      "task_factual": 0,
+      "irrelevant_or_low_value": 0,
+      "redundant": 0
+    },
+    "asked_clusters": [],
+    "cluster_coding": [
+      {"id":"CP01_ACADEMIC_READINESS","resolution":"not_asked","report_use":"not_applicable_no_resolved_credit"},
+      {"id":"CP02_SUBFIELD_INTEREST","resolution":"not_asked","report_use":"not_applicable_no_resolved_credit"},
+      {"id":"CP03_FUNDING_AND_COST","resolution":"not_asked","report_use":"not_applicable_no_resolved_credit"},
+      {"id":"CP04_CAREER_AND_STABILITY","resolution":"not_asked","report_use":"not_applicable_no_resolved_credit"},
+      {"id":"CP05_DESTINATION_AND_CHINA_CONTEXT","resolution":"not_asked","report_use":"not_applicable_no_resolved_credit"},
+      {"id":"CP06_TIME_AND_PLANNING_STYLE","resolution":"not_asked","report_use":"not_applicable_no_resolved_credit"},
+      {"id":"CP07_LEARNING_AND_TECHNICAL_WORKFLOW","resolution":"not_asked","report_use":"not_applicable_no_resolved_credit"}
+    ],
+    "critical_preference_recall": 0.0,
+    "resolved_critical_preference_credit": 0.0,
+    "resolved_critical_preference_recall": 0.0,
+    "implemented_resolved_credit": 0.0,
+    "implementation_rate": null
+  },
+  "between_agents": {
+    "asked_cluster_intersection": [],
+    "asked_cluster_symmetric_difference": [
+      "CP01_ACADEMIC_READINESS",
+      "CP02_SUBFIELD_INTEREST",
+      "CP03_FUNDING_AND_COST",
+      "CP04_CAREER_AND_STABILITY",
+      "CP05_DESTINATION_AND_CHINA_CONTEXT",
+      "CP06_TIME_AND_PLANNING_STYLE",
+      "CP07_LEARNING_AND_TECHNICAL_WORKFLOW"
+    ],
+    "asked_cluster_jaccard": 0.0,
+    "delta_personalization_score_agent_a_minus_agent_b": 0.992
+  }
+}

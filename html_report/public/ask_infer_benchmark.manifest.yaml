@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.65"
-updated: "2026-09-05"
+manifest_version: "0.66"
+updated: "2026-09-06"
 status: working_hypothesis_frozen
 
 paper:
@@ -28,6 +28,9 @@ active_sources:
   pdr_minimum_product_pilot: pilot/pdr_interactive_personalization_pilot_01/metadata.json
   pdr_minimum_product_pilot_results: pilot/pdr_interactive_personalization_pilot_01/evaluation/summary.md
   pdr_minimum_product_pilot_diagnostics: pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_diagnostics.md
+  pdr_two_agent_clarification_pilot: pilot/pdr_agent_clarification_pilot_02/metadata.json
+  pdr_two_agent_clarification_results: pilot/pdr_agent_clarification_pilot_02/evaluation/summary.md
+  pdr_two_agent_clarification_diagnostics: pilot/pdr_agent_clarification_pilot_02/evaluation/clarification_diagnostics.json
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -120,6 +123,26 @@ scope:
     evaluator_transport: chatgpt_temporary_chat_due_missing_api_key
     counted_episode_eligible: false
     claim_boundary: one_task_one_persona_one_product_plumbing_and_signal_only
+  pdr_two_agent_clarification_pilot:
+    pilot_id: pdr_agent_clarification_pilot_02
+    task_id: PDR-T01
+    upstream_query_id: 1
+    persona_id: User1
+    condition: instruction_only_plus_free_clarification
+    agent_a: ChatGPT_Deep_Research
+    agent_b: Google_Gemini_Deep_Research
+    critical_preference_clusters: 7
+    critical_preference_recall_agent_a: 1.0
+    critical_preference_recall_agent_b: 0.0
+    asked_cluster_jaccard: 0.0
+    p_agent_a: 7.057033333333333
+    p_agent_b: 6.065033333333333
+    delta_p_agent_a_minus_agent_b: 0.992
+    valid_evaluator_repeats_per_agent: 3
+    original_personalization_criteria_per_repeat: 34
+    evaluator_transport: chatgpt_temporary_chat_due_missing_api_key
+    counted_episode_eligible: false
+    claim_boundary: one_task_one_persona_two_agent_existence_proof_not_causal_ranking
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -150,3 +173,5 @@ claim_boundaries:
   - pdr_minimum_product_pilot_is_n1_and_not_leaderboard_evidence
   - pdr_minimum_product_full_condition_includes_optional_clarification
   - pdr_minimum_product_evaluator_used_product_ui_transport_not_official_api
+  - pdr_two_agent_pilot_shows_clarification_policy_heterogeneity_only
+  - pdr_two_agent_score_difference_is_not_an_isolated_clarification_effect

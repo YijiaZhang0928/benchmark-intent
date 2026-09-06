@@ -1,0 +1,19 @@
+{
+  "condition": "instruction_only_free_clarification",
+  "product": "ChatGPT Deep Research",
+  "visible_account_label": "zhang jack",
+  "visible_plan": "Pro",
+  "visible_model_setting": "Medium",
+  "submitted_at": "2026-09-06T18:41:49.933Z",
+  "conversation_url": "https://chatgpt.com/c/6a9db3dd-9c1c-83ec-aff7-60b603316461",
+  "clarification_rounds": 1,
+  "simulated_user_answer_rounds": 1,
+  "report_observed_complete_at": "2026-09-06T18:57:20Z",
+  "report_characters": 13738,
+  "run_status": "complete",
+  "notes": [
+    "The product asked clarification before starting the substantive report.",
+    "The simulated user answered only from the frozen hidden persona and explicitly marked persona-unspecified fields.",
+    "The product answered in Chinese although the frozen task and clarification-permission prompt were in English; this visible product behavior is retained rather than normalized."
+  ]
+}

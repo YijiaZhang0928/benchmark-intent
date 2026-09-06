@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "evaluated_at_utc": "2026-09-06",
+  "blind_labels_visible_to_evaluator": false,
+  "condition_identity_visible_to_evaluator": false,
+  "product_identity_visible_to_evaluator": false,
+  "scoring_order": ["RPT-C0", "RPT-D8"],
+  "valid_repeats_per_report": 3,
+  "criteria_count_per_repeat": 34,
+  "evaluator": {
+    "prompt_source": "evaluator_official/code/prompt/score_prompt_en.py",
+    "weighting_source": "evaluator_official/code/utils/score_calculator.py",
+    "official_repository_model_name": "gpt-5",
+    "transport": "ChatGPT product UI temporary chats",
+    "visible_account_tier": "Pro",
+    "visible_reasoning_setting": "Medium",
+    "exact_model_identifier_visible": null
+  },
+  "evaluation_sessions": {
+    "RPT-C0": [
+      "https://chatgpt.com/c/6a9dc01a-eb58-83ec-abc1-2d0c30b5f87a",
+      "https://chatgpt.com/c/6a9dc0dd-4a18-83ec-ab61-946e0d4e9402",
+      "https://chatgpt.com/c/6a9dc0eb-e384-83ec-ae8f-33d4facb20ff"
+    ],
+    "RPT-D8": [
+      "https://chatgpt.com/c/6a9dc19d-9b14-83ec-87e0-f45130b0fa8c",
+      "https://chatgpt.com/c/6a9dc1ac-8308-83ec-aab2-093413c794f4",
+      "https://chatgpt.com/c/6a9dc1bb-89d4-83ec-b299-43f1a65c1cb0"
+    ]
+  },
+  "transport_deviations": [
+    "No OPENAI_API_KEY was used, so the exact official prompt was submitted through isolated Temporary Chat sessions instead of the repository API client.",
+    "The product UI did not expose the exact evaluator model identifier; Medium was the visible reasoning setting.",
+    "A serialization-only transport note requested fenced JSON so rendered UI text retained quotation-mark escape characters. It did not change criteria, analysis instructions, ordering, scoring rules, or weights."
+  ],
+  "validation": {
+    "valid_json_outputs": 6,
+    "all_outputs_have_exact_criterion_text_and_order": true,
+    "all_outputs_have_34_criteria": true,
+    "all_scores_are_integers_0_to_10": true,
+    "invalid_attempts_excluded": 0
+  },
+  "quality_evaluation_run": false,
+  "reliability_evaluation_run": false,
+  "quality_reliability_note": "The official personalization evaluator does not emit Quality or Reliability scores in the same run; these were not added to this minimum pilot."
+}

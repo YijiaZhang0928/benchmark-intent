@@ -125,6 +125,8 @@ v0.63 已生成可执行 S0 包：SW001/SW013/DA003/DA015 共 8 个 synthetic A/
 
 v0.65 单任务 PDR-T30 产品 pilot 已闭环：Full=6.703、No-Ask=5.596、Interactive=6.033，InteractiveGain=+0.438，RecoveryRatio=39.53%。Interactive 主动问了六个 task-relevant 问题，时间、内容方向、长期品牌和 ROI 信号被采用；未恢复部分主要来自未询问 founder/company role、技术资历、既有平台/工具、跨境和合规背景。n=1、full 也可追问且评分走 product-UI transport，因此只作为 Go/No-Go 机制证据，不进入系统榜。
 
+v0.66 紧接着跑 PDR-T01 × User1 × 两个产品 agent：相同 instruction-only + free-clarification 输入下，ChatGPT 一轮 15 个 atomic slots 覆盖 7/7 critical clusters，Gemini 0 问，Jaccard=0；盲化三重复 P-score 为 7.057 对 6.065，差 +0.992。优势集中在个性化方向验证、fit-based shortlist 和背景提升，支持 clarification-policy heterogeneity 的 existence proof；产品组件同时变化，因此不作纯提问因果解释或 agent 排名。
+
 9 月 14 日过门后，第一轮只扩到 12 个独立基础任务（每域 4 个），作为截稿前 scoped agent-system leaderboard 的候选规模。通过人工 qualification 的 15 个 PDR tasks 加 Coding/Data 各 8 个只构成后续 31 题规划上限。最终样本量由 family-level pilot 方差、资格通过率与成本决定；seed 不能替代 family，也不能看 agent 输出删题。
 
 ## 12. 五个 Go / No-Go

@@ -26,7 +26,7 @@ export default function Home() {
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.65 · 2026-09-05</p>
+            <p className="eyebrow">RESEARCH PROPOSAL · v0.66 · 2026-09-06</p>
             <h1>Ask or Infer?<br/><em>任务特异的个性化</em></h1>
             <p className="lede">用户在线时，agent 能否用少量问题获取真正改变交付物的偏好？用户离线时，它能否从授权 history 恢复可识别偏好，并对未知部分保持克制？</p>
             <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/AskInfer-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
@@ -129,9 +129,19 @@ export default function Home() {
         </div>
       </div></section>
 
+      <section className="shell gapSection" id="pdr-two-agent-pilot">
+        <p className="sectionTag">PDR-T01 TWO-AGENT CLARIFICATION PILOT · COMPLETE</p>
+        <div className="sectionHead"><h2>相同任务下，两个 Agent 选择了完全不同的澄清策略</h2><p>ChatGPT 与 Gemini 都只看到同一条 AI PhD task 和自由追问许可。ChatGPT 覆盖 7/7 个预冻结 critical preference clusters；Gemini 没有提问。三次盲评 P-score 为 7.057 对 6.065，差 +0.992。</p></div>
+        <div className="decisionGrid">
+          <article><span>QUESTION POLICY</span><h3>7 类关键偏好对 0</h3><p>ChatGPT 一轮包含 15 个 atomic slots；Gemini 直接生成计划并研究。asked-cluster intersection 为空，Jaccard=0。</p></article>
+          <article><span>OUTCOME PATTERN</span><h3>差距集中在个性化决策</h3><p>最大优势来自方向验证、fit-based shortlist 和可衡量背景提升；Gemini 在通用地区比较与就业信息上更强。</p></article>
+          <article><span>BOUNDARY</span><h3>存在性证据，不作因果排名</h3><p>一个 task、一个 persona；产品切换也改变模型、planner、搜索和写作策略，因此 0.992 不能只归因于提问。</p></article>
+        </div>
+      </section>
+
       <section className="shell gapSection" id="novelty"><p className="sectionTag">NEAREST NEIGHBORS</p><div className="sectionHead"><h2>最强审稿问题：这是否只是已有交互 benchmark 的跨域版？</h2><p>回答不能靠命名；必须用 pilot 证明 task-specific δ、真人决策节点、可识别性边界和 final artifact specificity 带来增量解释力。</p></div><div className="sourceGrid">{papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}</div></section>
 
-      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.65</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、两周执行手册、task screen、smoke pack、首轮 S0 与 PDR-T30 最小产品 pilot、schema、协议、manifest 与项目记忆使用同一版本边界。</p></div><div className="editionGrid">
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.66</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、两周执行手册、task screen、smoke pack、首轮 S0、PDR-T30 最小闭环与 PDR-T01 双 agent pilot 使用同一版本边界。</p></div><div className="editionGrid">
         <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整构念、条件、数据、测量、统计、风险与 Go/No-Go。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/AskInfer-Bench_正式研究Proposal.docx" download>Word</a></div></article>
         <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>快速判断主张、实验与最强 reviewer objections。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/AskInfer-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
         <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 Ask、Infer、PDR 边界、δ 与 CFA。</p><div className="editionLinks"><a href="/AskInfer-Bench_完整人话版.pdf" download>PDF</a><a href="/AskInfer-Bench_完整人话版.docx" download>Word</a></div></article>

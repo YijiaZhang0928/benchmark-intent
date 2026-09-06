@@ -1,0 +1,43 @@
+{
+  "pilot_id": "pdr_agent_clarification_pilot_02",
+  "created_at_utc": "2026-09-06T06:03:37Z",
+  "status": "complete",
+  "scope": {
+    "tasks": 1,
+    "personas": 1,
+    "product_agents": 2,
+    "condition_per_agent": "instruction_only_plus_free_clarification"
+  },
+  "sample": {
+    "query_id": 1,
+    "task_id": 1,
+    "persona_id": "User1",
+    "language": "en",
+    "domain": "Education"
+  },
+  "agents": {
+    "agent_a": {
+      "planned_product": "ChatGPT Deep Research",
+      "exact_model_identifier": null,
+      "run_status": "complete"
+    },
+    "agent_b": {
+      "planned_product": "Google Gemini Deep Research",
+      "exact_model_identifier": null,
+      "run_status": "complete"
+    }
+  },
+  "upstream": {
+    "repository": "https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench",
+    "commit": "5b43f9f188c747d154fc7666812ab93b7ca6a3c2",
+    "license": "Apache-2.0"
+  },
+  "evaluation": {
+    "criteria_source": "official criteria150_en.jsonl record 1",
+    "evaluator_source": "official code/eval_personalization.py",
+    "official_model_name": "gpt-5",
+    "official_repeats_per_report": 3,
+    "critical_preference_registry_frozen_before_agent_outputs": true,
+    "critical_preference_registry_is_diagnostic_only": true
+  }
+}

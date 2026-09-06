@@ -230,6 +230,8 @@ LLM 可以把这些内容拆成更细的 atomic rubric leaf、检查遗漏、写
 
 同时，一个 PDR-T30 个人媒体任务的最小产品实验已经闭环。只给 task 且允许自由问时，ChatGPT Deep Research 确实主动问了六个有用问题；最终个性化分从 no-ask 的 5.596 提到 6.033，但离 full-persona 的 6.703 仍有 0.669，只恢复了 39.53% 的可恢复差距。它问到并落实了 AI/创业内容、长期品牌目标、工作日清晨/周末家庭优先和 ROI 偏好；最大的损失来自根本没问身份资历、既有平台与工具、跨境背景和合规边界。这个结果只有一个任务、一个 persona、一个产品 agent；full 条件也可以追问，评分通过产品临时会话而不是官方 API，所以只能说明最小机制有信号，不能当排行榜或总体结论。Gemini CLI 仍需本人登录；真实 repo/data 没绑定就不能说 Code/Data artifact smoke 已通过，synthetic persona 没经过两人确认也不能进正式结果。
 
+第二个 pilot 没有扩到 30 题，而是马上换到 PDR-T01 的 AI PhD 任务，用同一个 User1 persona 比较两个产品 agent。两边都只看到同一条 task 和“有必要时可自由追问”的许可。ChatGPT 问了一轮，拆开后有 15 个可独立回答的槽位，覆盖事先冻结的 7 类关键偏好；Gemini 直接生成研究计划并开始搜索，一个问题也没问。因此两者的 critical-preference recall 是 1.00 对 0，提问集合的 Jaccard 相似度也是 0。三次盲评分数为 7.057 对 6.065，差 0.992；分差主要来自方向验证、学校与导师 fit、以及能落地的背景提升计划，而不是所有通用事实都更好。这个结果说明不同 agent system 真的会在“要不要问、问什么”上作出不同选择；但产品切换也同时改变模型、planner、搜索和写作策略，所以还不能说 0.992 全是提问造成的，更不能据此排产品名次。
+
 ## 参考文献
 
 [1] Liang et al. *Towards Personalized Deep Research: Benchmarks and Evaluations*. https://arxiv.org/abs/2509.25106

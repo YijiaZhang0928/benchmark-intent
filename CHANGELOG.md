@@ -1,5 +1,15 @@
 # benchmark-intent 设计迭代记录
 
+## v0.66 PDR-T01 two-agent clarification-policy pilot - 2026-09-06
+
+- 冻结 PDR-Bench query 1 / task 1 / User1、同一 instruction-only + free-clarification 输入、persona-bounded simulator、7 个 critical-preference clusters 和盲评映射；不增加新条件或自定义 rubric。
+- ChatGPT Deep Research 一轮 15 个 atomic slots 覆盖 7/7 critical clusters；Gemini Deep Research 在用户指定的 Sanfordzhang Chrome 账户中直接研究、0 问。asked-cluster intersection 为空、Jaccard=0；resolved recall 为 0.50 对 0。
+- 保存两产品完整输入、metadata、transcripts、reports、research traces；Gemini 的 29 个可见来源与两个无可评 report 的早期技术尝试单独归档。
+- 以原始 PDR 英文 prompt 对两个盲化报告各独立评分三次；6 个 JSON 均含原始 34 条 criteria 且文本/顺序 exact match，官方 calculator 加权。P-score 为 7.057 对 6.065，ΔP=+0.992；Goal/Content/Presentation/Actionability 差值为 +0.94/+0.62/−0.06/+1.50。
+- 最大正差集中在方向验证、fit-based shortlist 和可衡量背景提升；Gemini 在通用地区比较表、就业/移民与部分 application mechanics 上更强。结果支持 agent-system clarification-policy heterogeneity 的 existence proof，但产品组件同时变化，不能解释为纯提问因果效应或 agent 排名。
+- 新增 `pilot/pdr_agent_clarification_pilot_02/` 全量可审计资产，并同步 proposal 五版、README、manifest、项目记忆、HTML 汇报页与 DOCX/PDF 交付物。
+- 维持 evaluator transport 限制：原始 prompt 经 ChatGPT Temporary Chat / Pro / Medium UI 传输，精确 evaluator model ID 不可见；Quality/Reliability 未追加。
+
 ## v0.65 PDR-T30 interactive-personalization minimum product pilot - 2026-09-05
 
 - 冻结 PDR-Bench query 148 / task 30 / User12 和上游 commit `5b43f9f188c747d154fc7666812ab93b7ca6a3c2`；保存原 task、persona、44 条 personalization criteria、未修改 evaluator snapshot 与哈希。

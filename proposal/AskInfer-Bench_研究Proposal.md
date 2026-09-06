@@ -288,6 +288,8 @@ v0.64 完成第一批 live S0：Codex CLI `0.145.0`（配置模型 `gpt-5.6-sol`
 
 v0.65 另以 PDR-T30、User12 和一个产品级 ChatGPT Deep Research agent 完成单任务最小闭环。三条件的盲评 P-score 为 Full Persona 6.703、No-Ask 5.596、Free Clarification 6.033，InteractiveGain 为 +0.438，OracleGap 为 0.669，RecoveryRatio 为 39.53%。Interactive 主动提出六个与 task 相关的问题；晨间创作、周末家庭优先、AI/创业内容和 ROI 偏好被获取并进入报告，但 founder/company role、技术资历、LinkedIn/GitHub/Slack/Notion 习惯、跨境背景和合规边界未被询问。该结果只说明端到端信号存在并暴露主要失败链；它是 n=1 探索性 product-UI pilot，full 条件也获准追问，且评分因缺少 API key 通过临时产品会话承载原始 PDR prompt，不能作为确认性系统比较或排行榜证据。
 
+v0.66 随后以 PDR-T01、User1 和两个产品级 Deep Research agent 检验 agent 是否会选择不同的澄清目标。ChatGPT 与 Gemini 接收完全相同的 instruction-only + free-clarification 输入；ChatGPT 用一轮 15 个 atomic slots 覆盖运行前冻结的 7/7 个 critical preference clusters，Gemini 未提问，asked-cluster Jaccard 为 0。34 条原始 PDR criteria 的盲化三重复评分分别为 7.057 与 6.065，差值 +0.992；ChatGPT 的优势集中在研究方向验证、fit-based shortlist、可衡量背景提升和个人情境可执行性，Gemini 则在通用地区比较表和就业信息上更强。这支持 agent-system clarification-policy heterogeneity 的 existence proof，但不隔离提问的因果效应：模型、system prompt、planner、搜索和报告生成策略也随产品一起变化。
+
 ## 参考文献
 
 [1] Liang et al. *Towards Personalized Deep Research: Benchmarks and Evaluations*. arXiv:2509.25106. https://arxiv.org/abs/2509.25106

@@ -1,0 +1,51 @@
+{
+  "status": "frozen_before_agent_outputs",
+  "purpose": "diagnostic_only_not_an_evaluator_or_custom_rubric",
+  "unit": "task-relevant user-state cluster",
+  "recall_definition": "number of frozen clusters directly targeted by at least one agent question divided by seven",
+  "resolved_recall_definition": "number of frozen clusters both targeted and resolved with persona-grounded information divided by seven",
+  "clusters": [
+    {
+      "id": "CP01_ACADEMIC_READINESS",
+      "persona_evidence": "Computer-science undergraduate at a prestigious university in Jiangsu, excellent academic performance, two consecutive years of scholarships.",
+      "material_decisions": ["reach/target/conservative program tiers", "background-gap plan", "application timeline"],
+      "linked_original_criteria": ["Background strengthening strategy leveraging current assets and channels", "Application Requirements and Background-Building Paths Tailored to a Chinese CS Junior's Habits", "Background-building plan with measurable outputs and feasibility"]
+    },
+    {
+      "id": "CP02_SUBFIELD_INTEREST",
+      "persona_evidence": "Interested in artificial intelligence and algorithm research, especially deep learning and natural language processing.",
+      "material_decisions": ["research-direction shortlist", "lab/advisor set", "course and project recommendations"],
+      "linked_original_criteria": ["Direction discovery tailored to DL/NLP/algorithms with actionable validation steps", "DL/NLP-centric Coverage of Research Strengths, Labs, and Courses", "Research direction decision and validation framework"]
+    },
+    {
+      "id": "CP03_FUNDING_AND_COST",
+      "persona_evidence": "Mainly supported by parents and scholarships; frugal, savings-oriented, practical, and cost-conscious. The persona does not state that full funding is a hard requirement.",
+      "material_decisions": ["funded-program filter", "scholarship priority", "regional financial risk and fallback routes"],
+      "linked_original_criteria": ["Funding, tuition, and scholarship planning optimized for cost-effectiveness", "Funding, Tuition, and Scholarship Alignment with Cost-Conscious, Risk-Averse Profile", "Financial budgeting and scholarship acquisition plan"]
+    },
+    {
+      "id": "CP04_CAREER_AND_STABILITY",
+      "persona_evidence": "Parents hope for a stable and promising job while supporting his interests; the persona does not determine academia versus industry as the user's own final preference.",
+      "material_decisions": ["employment-outcome framing", "immigration-risk weighting", "program and region mix"],
+      "linked_original_criteria": ["Employment outlook and immigration stability framing", "Employment Prospects Contextualized to Stability and China-Linked Pathways"]
+    },
+    {
+      "id": "CP05_DESTINATION_AND_CHINA_CONTEXT",
+      "persona_evidence": "Chinese applicant studying in Jiangsu and based in Suzhou; the persona does not state a preferred destination region or relocation constraint.",
+      "material_decisions": ["regional shortlist", "China-specific application mechanics", "geographic diversification"],
+      "linked_original_criteria": ["Region-specific ecosystem comparison through a Chinese applicant lens", "Integration of China-specific practicalities and timelines", "Region-Specific AI Ecosystem Comparison for Chinese Applicants"]
+    },
+    {
+      "id": "CP06_TIME_AND_PLANNING_STYLE",
+      "persona_evidence": "Evenings are the productive period for study and projects; he plans tasks in advance and follows schedules strictly. Exact weekly capacity is absent.",
+      "material_decisions": ["weekly workload", "milestone cadence", "buffer and retake plan"],
+      "linked_original_criteria": ["Personalized 1–2-year milestone roadmap aligned with his time management", "Executable 1–2 year application timeline with dated milestones and buffers", "Operational feasibility in Li Chen's context"]
+    },
+    {
+      "id": "CP07_LEARNING_AND_TECHNICAL_WORKFLOW",
+      "persona_evidence": "Heavy use of programming tools, GitHub, technical blogs, Coursera, and Bilibili learning resources; prefers detailed technical and practical content.",
+      "material_decisions": ["background-building channels", "open-source and replication tasks", "resource and presentation format"],
+      "linked_original_criteria": ["Direction discovery tailored to DL/NLP/algorithms with actionable validation steps", "Background strengthening strategy leveraging current assets and channels", "Evidence-based, structured, and resource-linked presentation matching his analytical style"]
+    }
+  ]
+}

@@ -1,0 +1,414 @@
+{
+  "blind_label": "RPT-C0",
+  "agent": "agent_b",
+  "repeats": 3,
+  "official_calculator": "evaluator_official/code/utils/score_calculator.py",
+  "dimension_weights": {
+    "content_alignment": 0.19,
+    "goal_alignment": 0.33,
+    "presentation_fit": 0.1,
+    "actionability_practicality": 0.38
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "p_overall_score": 6.2013,
+      "dimension_scores": {
+        "goal_alignment_weighted_avg": 6.16,
+        "content_alignment_weighted_avg": 6.949999999999998,
+        "presentation_fit_weighted_avg": 6.440000000000001,
+        "actionability_practicality_weighted_avg": 5.800000000000001
+      }
+    },
+    {
+      "round": 2,
+      "p_overall_score": 5.879300000000001,
+      "dimension_scores": {
+        "goal_alignment_weighted_avg": 5.9,
+        "content_alignment_weighted_avg": 6.329999999999998,
+        "presentation_fit_weighted_avg": 6.32,
+        "actionability_practicality_weighted_avg": 5.5200000000000005
+      }
+    },
+    {
+      "round": 3,
+      "p_overall_score": 6.1145,
+      "dimension_scores": {
+        "goal_alignment_weighted_avg": 6.08,
+        "content_alignment_weighted_avg": 6.429999999999998,
+        "presentation_fit_weighted_avg": 6.52,
+        "actionability_practicality_weighted_avg": 5.880000000000001
+      }
+    }
+  ],
+  "averaged": {
+    "p_overall_score": 6.065033333333333,
+    "dimension_scores": {
+      "goal_alignment": 6.046666666666667,
+      "content_alignment": 6.569999999999998,
+      "presentation_fit": 6.426666666666667,
+      "actionability_practicality": 5.733333333333334
+    },
+    "criteria": {
+      "goal_alignment": [
+        {
+          "criterion": "Direction discovery tailored to DL/NLP/algorithms with actionable validation steps",
+          "weight": 0.16,
+          "scores": [
+            5,
+            5,
+            6
+          ],
+          "mean_score": 5.333333333333333
+        },
+        {
+          "criterion": "Advisor/lab and program matching with representative universities aligned to interests",
+          "weight": 0.13,
+          "scores": [
+            5,
+            4,
+            4
+          ],
+          "mean_score": 4.333333333333333
+        },
+        {
+          "criterion": "Region-specific ecosystem comparison through a Chinese applicant lens",
+          "weight": 0.14,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Personalized 1–2-year milestone roadmap aligned with his time management",
+          "weight": 0.14,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Background strengthening strategy leveraging current assets and channels",
+          "weight": 0.12,
+          "scores": [
+            7,
+            6,
+            6
+          ],
+          "mean_score": 6.333333333333333
+        },
+        {
+          "criterion": "Clear, actionable application requirements and process guidance by region",
+          "weight": 0.08,
+          "scores": [
+            6,
+            7,
+            7
+          ],
+          "mean_score": 6.666666666666667
+        },
+        {
+          "criterion": "Funding, tuition, and scholarship planning optimized for cost-effectiveness",
+          "weight": 0.09,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Employment outlook and immigration stability framing",
+          "weight": 0.07,
+          "scores": [
+            7,
+            6,
+            6
+          ],
+          "mean_score": 6.333333333333333
+        },
+        {
+          "criterion": "Evidence-based, structured, and resource-linked presentation matching his analytical style",
+          "weight": 0.05,
+          "scores": [
+            5,
+            5,
+            5
+          ],
+          "mean_score": 5
+        },
+        {
+          "criterion": "Integration of China-specific practicalities and timelines",
+          "weight": 0.02,
+          "scores": [
+            3,
+            2,
+            3
+          ],
+          "mean_score": 2.6666666666666665
+        }
+      ],
+      "content_alignment": [
+        {
+          "criterion": "DL/NLP-centric Coverage of Research Strengths, Labs, and Courses",
+          "weight": 0.2,
+          "scores": [
+            6,
+            5,
+            6
+          ],
+          "mean_score": 5.666666666666667
+        },
+        {
+          "criterion": "Region-Specific AI Ecosystem Comparison for Chinese Applicants",
+          "weight": 0.18,
+          "scores": [
+            8,
+            7,
+            7
+          ],
+          "mean_score": 7.333333333333333
+        },
+        {
+          "criterion": "Funding, Tuition, and Scholarship Alignment with Cost-Conscious, Risk-Averse Profile",
+          "weight": 0.2,
+          "scores": [
+            8,
+            8,
+            7
+          ],
+          "mean_score": 7.666666666666667
+        },
+        {
+          "criterion": "Application Requirements and Background-Building Paths Tailored to a Chinese CS Junior’s Habits",
+          "weight": 0.15,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Technical Depth Appropriate to a High-Performing CS Student",
+          "weight": 0.1,
+          "scores": [
+            8,
+            7,
+            8
+          ],
+          "mean_score": 7.666666666666667
+        },
+        {
+          "criterion": "Representative Universities Curated by Subfield and Tier Across Regions",
+          "weight": 0.07,
+          "scores": [
+            5,
+            4,
+            4
+          ],
+          "mean_score": 4.333333333333333
+        },
+        {
+          "criterion": "Employment Prospects Contextualized to Stability and China-Linked Pathways",
+          "weight": 0.07,
+          "scores": [
+            6,
+            5,
+            5
+          ],
+          "mean_score": 5.333333333333333
+        },
+        {
+          "criterion": "Two-Year Runway Alignment of Resources and Milestones",
+          "weight": 0.03,
+          "scores": [
+            8,
+            8,
+            8
+          ],
+          "mean_score": 8
+        }
+      ],
+      "presentation_fit": [
+        {
+          "criterion": "Professional, technical tone and concise logical flow appropriate for a CS undergraduate",
+          "weight": 0.18,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Terminology handling and bilingual clarity (AI and admissions jargon)",
+          "weight": 0.16,
+          "scores": [
+            8,
+            8,
+            8
+          ],
+          "mean_score": 8
+        },
+        {
+          "criterion": "Region-first macro-structure with a consistent subsection template and navigability",
+          "weight": 0.2,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Use of comparative tables/matrices for countries and representative universities",
+          "weight": 0.14,
+          "scores": [
+            8,
+            8,
+            9
+          ],
+          "mean_score": 8.333333333333334
+        },
+        {
+          "criterion": "Scannability and micro-structure (executive summary, bullets, short paragraphs)",
+          "weight": 0.1,
+          "scores": [
+            5,
+            5,
+            5
+          ],
+          "mean_score": 5
+        },
+        {
+          "criterion": "Process visualization formatting (timeline/checklist for 1–2 year application plan)",
+          "weight": 0.1,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Source and link presentation (traceability and update timestamps)",
+          "weight": 0.06,
+          "scores": [
+            2,
+            1,
+            2
+          ],
+          "mean_score": 1.6666666666666667
+        },
+        {
+          "criterion": "Localization of units and formats (currency, scores, time zones)",
+          "weight": 0.06,
+          "scores": [
+            6,
+            5,
+            5
+          ],
+          "mean_score": 5.333333333333333
+        }
+      ],
+      "actionability_practicality": [
+        {
+          "criterion": "Executable 1–2 year application timeline with dated milestones and buffers",
+          "weight": 0.18,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Background-building plan with measurable outputs and feasibility",
+          "weight": 0.18,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Financial budgeting and scholarship acquisition plan",
+          "weight": 0.16,
+          "scores": [
+            6,
+            6,
+            6
+          ],
+          "mean_score": 6
+        },
+        {
+          "criterion": "Research direction decision and validation framework",
+          "weight": 0.14,
+          "scores": [
+            5,
+            4,
+            5
+          ],
+          "mean_score": 4.666666666666667
+        },
+        {
+          "criterion": "Region-specific application mechanics and requirements",
+          "weight": 0.12,
+          "scores": [
+            7,
+            7,
+            7
+          ],
+          "mean_score": 7
+        },
+        {
+          "criterion": "Shortlisting framework with fit rubric and matched examples",
+          "weight": 0.1,
+          "scores": [
+            4,
+            3,
+            4
+          ],
+          "mean_score": 3.6666666666666665
+        },
+        {
+          "criterion": "Application materials and advisor outreach toolkit",
+          "weight": 0.08,
+          "scores": [
+            5,
+            5,
+            6
+          ],
+          "mean_score": 5.333333333333333
+        },
+        {
+          "criterion": "Operational feasibility in Li Chen’s context (workload, access, buffers)",
+          "weight": 0.04,
+          "scores": [
+            4,
+            3,
+            4
+          ],
+          "mean_score": 3.6666666666666665
+        }
+      ]
+    }
+  },
+  "validation": {
+    "criterion_count_per_repeat": 34,
+    "criterion_text_and_order_exact_match": {
+      "goal_alignment": true,
+      "content_alignment": true,
+      "presentation_fit": true,
+      "actionability_practicality": true
+    },
+    "scores_are_integers_0_to_10": true
+  }
+}
+

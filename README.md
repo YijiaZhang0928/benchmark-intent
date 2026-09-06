@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.65
+## 当前方向：AskInfer-Bench v0.66
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -24,6 +24,8 @@ v0.64 已完成第一批 live S0。Codex 三题为 Research PASS、Code PASS wit
 
 v0.65 跑通了一个独立的 PDR-T30 × User12 × ChatGPT Deep Research 最小闭环：full persona（按用户追加可自由追问）、instruction-only no-ask、instruction-only free clarification 三条件，以及 44 条原始 PDR personalization criteria 的盲化三重复评分。P-score 为 full 6.703、no-ask 5.596、interactive 6.033；InteractiveGain=+0.438，OracleGap=0.669，RecoveryRatio=39.53%。该 n=1 结果只证明 end-to-end signal 和失败诊断可见，不进入主榜，也不替代双人 node qualification；完整输入、transcript、报告、原始/解析评分与 transport deviation 见 [`pilot/pdr_interactive_personalization_pilot_01/`](pilot/pdr_interactive_personalization_pilot_01/)。
 
+v0.66 紧接着完成 PDR-T01 × User1 的双 agent clarification pilot。ChatGPT Deep Research 与 Gemini Deep Research 接收 byte-identical 的 `instruction-only + free clarification` 输入；前者用一轮 15 个 atomic slots 覆盖预冻结的 7/7 个 critical preference clusters，后者直接研究、没有提问，asked-cluster Jaccard 为 0。原始 34 条 PDR criteria 盲化三重复评分为 7.057 与 6.065，差值 +0.992；差距主要落在个性化方向验证、fit-based shortlist 和可衡量背景提升。该 one-task/one-persona 结果证明 agent-system clarification policy 可以明显不同，但产品、planner、搜索和生成策略同时变化，不能把 P-score 差异单独归因于提问，也不能形成 agent 排名。完整资产见 [`pilot/pdr_agent_clarification_pilot_02/`](pilot/pdr_agent_clarification_pilot_02/)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -33,7 +35,7 @@ v0.65 跑通了一个独立的 PDR-T30 × User12 × ChatGPT Deep Research 最小
 - [`proposal/AskInfer-Bench_两周执行Todo与任务手册.md`](proposal/AskInfer-Bench_两周执行Todo与任务手册.md)：详细、人话、可操作的任务卡、agent、运行规模、rubric、逐日门槛与摘要路线。
 - [`benchmark_schema/ask_infer_case.schema.yaml`](benchmark_schema/ask_infer_case.schema.yaml)：同任务用户差异、history observability、human validation 和实验条件 schema。
 - [`benchmark_schema/ask_infer_evaluation.protocol.yaml`](benchmark_schema/ask_infer_evaluation.protocol.yaml)：Ask/Infer 过程与最终评分、排名稳定性、统计和 Go/No-Go 协议。
-- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.64 源稿、执行冻结、PDR task slice、smoke 包、首轮实跑、交付物、归档和复用基础设施索引。
+- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.66 源稿、执行冻结、PDR task slice、smoke 包、两轮产品级 pilot、交付物、归档和复用基础设施索引。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
 - [`proposal_assets/AskInfer-Bench_评测框架_v0.62.png`](proposal_assets/AskInfer-Bench_评测框架_v0.62.png)：3200×1800 主图；同名 SVG 可编辑。
 - [`deliverables/AskInfer-Bench_正式研究Proposal.pdf`](deliverables/AskInfer-Bench_正式研究Proposal.pdf)：正式研究 Proposal；同名 DOCX 可编辑。

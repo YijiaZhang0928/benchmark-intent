@@ -1,0 +1,308 @@
+{
+  "primary_question": "Do two product-level Deep Research agents choose different clarification targets on the same instruction-only + free-clarification input?",
+  "sample": {
+    "tasks": 1,
+    "personas": 1,
+    "agents": 2,
+    "condition": "instruction_only_plus_free_clarification"
+  },
+  "clarification": {
+    "agent_a": {
+      "turns": 1,
+      "atomic_question_slots": 15,
+      "critical_clusters_asked": 7,
+      "critical_cluster_recall": 1.0,
+      "resolved_credit": 3.5,
+      "resolved_recall": 0.5,
+      "implementation_rate_of_resolved_credit": 1.0
+    },
+    "agent_b": {
+      "turns": 0,
+      "atomic_question_slots": 0,
+      "critical_clusters_asked": 0,
+      "critical_cluster_recall": 0.0,
+      "resolved_credit": 0.0,
+      "resolved_recall": 0.0,
+      "implementation_rate_of_resolved_credit": null
+    },
+    "asked_cluster_intersection": [],
+    "asked_cluster_symmetric_difference_count": 7,
+    "asked_cluster_jaccard": 0.0
+  },
+  "pdr_personalization": {
+    "agent_a": {
+      "blind_label": "RPT-D8",
+      "p_overall_score": 7.057033333333333,
+      "dimension_scores": {
+        "goal_alignment": 6.9866666666666655,
+        "content_alignment": 7.189999999999998,
+        "presentation_fit": 6.366666666666667,
+        "actionability_practicality": 7.233333333333333
+      }
+    },
+    "agent_b": {
+      "blind_label": "RPT-C0",
+      "p_overall_score": 6.065033333333333,
+      "dimension_scores": {
+        "goal_alignment": 6.046666666666667,
+        "content_alignment": 6.569999999999998,
+        "presentation_fit": 6.426666666666667,
+        "actionability_practicality": 5.733333333333334
+      }
+    },
+    "delta_agent_a_minus_agent_b": 0.992,
+    "dimension_deltas_agent_a_minus_agent_b": {
+      "goal_alignment": 0.9399999999999986,
+      "content_alignment": 0.6200000000000001,
+      "presentation_fit": -0.05999999999999961,
+      "actionability_practicality": 1.4999999999999991
+    }
+  },
+  "criterion_deltas": [
+    {
+      "dimension": "actionability_practicality",
+      "criterion": "Research direction decision and validation framework",
+      "agent_a_mean": 8.666666666666666,
+      "agent_b_mean": 4.666666666666667,
+      "delta_a_minus_b": 3.999999999999999
+    },
+    {
+      "dimension": "actionability_practicality",
+      "criterion": "Shortlisting framework with fit rubric and matched examples",
+      "agent_a_mean": 7.333333333333333,
+      "agent_b_mean": 3.6666666666666665,
+      "delta_a_minus_b": 3.6666666666666665
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Direction discovery tailored to DL/NLP/algorithms with actionable validation steps",
+      "agent_a_mean": 8.333333333333334,
+      "agent_b_mean": 5.333333333333333,
+      "delta_a_minus_b": 3.000000000000001
+    },
+    {
+      "dimension": "actionability_practicality",
+      "criterion": "Background-building plan with measurable outputs and feasibility",
+      "agent_a_mean": 9,
+      "agent_b_mean": 6,
+      "delta_a_minus_b": 3
+    },
+    {
+      "dimension": "actionability_practicality",
+      "criterion": "Operational feasibility in Li Chen’s context (workload, access, buffers)",
+      "agent_a_mean": 6,
+      "agent_b_mean": 3.6666666666666665,
+      "delta_a_minus_b": 2.3333333333333335
+    },
+    {
+      "dimension": "presentation_fit",
+      "criterion": "Source and link presentation (traceability and update timestamps)",
+      "agent_a_mean": 4,
+      "agent_b_mean": 1.6666666666666667,
+      "delta_a_minus_b": 2.333333333333333
+    },
+    {
+      "dimension": "presentation_fit",
+      "criterion": "Scannability and micro-structure (executive summary, bullets, short paragraphs)",
+      "agent_a_mean": 7,
+      "agent_b_mean": 5,
+      "delta_a_minus_b": 2
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Background strengthening strategy leveraging current assets and channels",
+      "agent_a_mean": 8,
+      "agent_b_mean": 6.333333333333333,
+      "delta_a_minus_b": 1.666666666666667
+    },
+    {
+      "dimension": "content_alignment",
+      "criterion": "Representative Universities Curated by Subfield and Tier Across Regions",
+      "agent_a_mean": 6,
+      "agent_b_mean": 4.333333333333333,
+      "delta_a_minus_b": 1.666666666666667
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Advisor/lab and program matching with representative universities aligned to interests",
+      "agent_a_mean": 5.666666666666667,
+      "agent_b_mean": 4.333333333333333,
+      "delta_a_minus_b": 1.333333333333334
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Integration of China-specific practicalities and timelines",
+      "agent_a_mean": 4,
+      "agent_b_mean": 2.6666666666666665,
+      "delta_a_minus_b": 1.3333333333333335
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Evidence-based, structured, and resource-linked presentation matching his analytical style",
+      "agent_a_mean": 6.333333333333333,
+      "agent_b_mean": 5,
+      "delta_a_minus_b": 1.333333333333333
+    },
+    {
+      "dimension": "content_alignment",
+      "criterion": "DL/NLP-centric Coverage of Research Strengths, Labs, and Courses",
+      "agent_a_mean": 7,
+      "agent_b_mean": 5.666666666666667,
+      "delta_a_minus_b": 1.333333333333333
+    },
+    {
+      "dimension": "content_alignment",
+      "criterion": "Application Requirements and Background-Building Paths Tailored to a Chinese CS Junior’s Habits",
+      "agent_a_mean": 7.333333333333333,
+      "agent_b_mean": 6,
+      "delta_a_minus_b": 1.333333333333333
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Personalized 1–2-year milestone roadmap aligned with his time management",
+      "agent_a_mean": 8,
+      "agent_b_mean": 7,
+      "delta_a_minus_b": 1
+    },
+    {
+      "dimension": "content_alignment",
+      "criterion": "Two-Year Runway Alignment of Resources and Milestones",
+      "agent_a_mean": 9,
+      "agent_b_mean": 8,
+      "delta_a_minus_b": 1
+    },
+    {
+      "dimension": "presentation_fit",
+      "criterion": "Professional, technical tone and concise logical flow appropriate for a CS undergraduate",
+      "agent_a_mean": 8,
+      "agent_b_mean": 7,
+      "delta_a_minus_b": 1
+    },
+    {
+      "dimension": "presentation_fit",
+      "criterion": "Process visualization formatting (timeline/checklist for 1–2 year application plan)",
+      "agent_a_mean": 7,
+      "agent_b_mean": 6,
+      "delta_a_minus_b": 1
+    },
+    {
+      "dimension": "actionability_practicality",
+      "criterion": "Executable 1–2 year application timeline with dated milestones and buffers",
+      "agent_a_mean": 8,
+      "agent_b_mean": 7,
+      "delta_a_minus_b": 1
+    },
+    {
+      "dimension": "content_alignment",
+      "criterion": "Technical Depth Appropriate to a High-Performing CS Student",
+      "agent_a_mean": 8.666666666666666,
+      "agent_b_mean": 7.666666666666667,
+      "delta_a_minus_b": 0.9999999999999991
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Region-specific ecosystem comparison through a Chinese applicant lens",
+      "agent_a_mean": 7.333333333333333,
+      "agent_b_mean": 7,
+      "delta_a_minus_b": 0.33333333333333304
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Clear, actionable application requirements and process guidance by region",
+      "agent_a_mean": 6.666666666666667,
+      "agent_b_mean": 6.666666666666667,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "dimension": "content_alignment",
+      "criterion": "Region-Specific AI Ecosystem Comparison for Chinese Applicants",
+      "agent_a_mean": 7.333333333333333,
+      "agent_b_mean": 7.333333333333333,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "dimension": "content_alignment",
+      "criterion": "Funding, Tuition, and Scholarship Alignment with Cost-Conscious, Risk-Averse Profile",
+      "agent_a_mean": 7.666666666666667,
+      "agent_b_mean": 7.666666666666667,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Funding, tuition, and scholarship planning optimized for cost-effectiveness",
+      "agent_a_mean": 6.666666666666667,
+      "agent_b_mean": 7,
+      "delta_a_minus_b": -0.33333333333333304
+    },
+    {
+      "dimension": "presentation_fit",
+      "criterion": "Region-first macro-structure with a consistent subsection template and navigability",
+      "agent_a_mean": 5.666666666666667,
+      "agent_b_mean": 6,
+      "delta_a_minus_b": -0.33333333333333304
+    },
+    {
+      "dimension": "actionability_practicality",
+      "criterion": "Application materials and advisor outreach toolkit",
+      "agent_a_mean": 4.666666666666667,
+      "agent_b_mean": 5.333333333333333,
+      "delta_a_minus_b": -0.6666666666666661
+    },
+    {
+      "dimension": "actionability_practicality",
+      "criterion": "Financial budgeting and scholarship acquisition plan",
+      "agent_a_mean": 5.333333333333333,
+      "agent_b_mean": 6,
+      "delta_a_minus_b": -0.666666666666667
+    },
+    {
+      "dimension": "actionability_practicality",
+      "criterion": "Region-specific application mechanics and requirements",
+      "agent_a_mean": 6.333333333333333,
+      "agent_b_mean": 7,
+      "delta_a_minus_b": -0.666666666666667
+    },
+    {
+      "dimension": "presentation_fit",
+      "criterion": "Terminology handling and bilingual clarity (AI and admissions jargon)",
+      "agent_a_mean": 7,
+      "agent_b_mean": 8,
+      "delta_a_minus_b": -1
+    },
+    {
+      "dimension": "content_alignment",
+      "criterion": "Employment Prospects Contextualized to Stability and China-Linked Pathways",
+      "agent_a_mean": 4,
+      "agent_b_mean": 5.333333333333333,
+      "delta_a_minus_b": -1.333333333333333
+    },
+    {
+      "dimension": "presentation_fit",
+      "criterion": "Localization of units and formats (currency, scores, time zones)",
+      "agent_a_mean": 4,
+      "agent_b_mean": 5.333333333333333,
+      "delta_a_minus_b": -1.333333333333333
+    },
+    {
+      "dimension": "goal_alignment",
+      "criterion": "Employment outlook and immigration stability framing",
+      "agent_a_mean": 4,
+      "agent_b_mean": 6.333333333333333,
+      "delta_a_minus_b": -2.333333333333333
+    },
+    {
+      "dimension": "presentation_fit",
+      "criterion": "Use of comparative tables/matrices for countries and representative universities",
+      "agent_a_mean": 5.666666666666667,
+      "agent_b_mean": 8.333333333333334,
+      "delta_a_minus_b": -2.666666666666667
+    }
+  ],
+  "interpretation": {
+    "existence_proof": true,
+    "result": "On this frozen pair, the agents made maximally different clarification decisions: agent_a targeted all seven critical preference clusters and agent_b asked none. Agent_a also received the higher blind PDR personalization score.",
+    "mediation_evidence": "The largest positive criterion deltas favoring agent_a were personalized direction validation, fit-based shortlisting, and measurable background-building; agent_b was stronger on generic regional comparison tables and employment/immigration coverage.",
+    "causal_limit": "Because agent identity changes the model, system prompt, planner, search process, and report-generation policy together, the P-score difference cannot be attributed solely to clarification behavior. This is an existence proof of agent-system clarification-policy heterogeneity, not a population ranking or isolated causal effect."
+  }
+}
+

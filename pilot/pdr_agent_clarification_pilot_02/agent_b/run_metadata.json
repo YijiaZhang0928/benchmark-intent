@@ -1,0 +1,38 @@
+{
+  "condition": "instruction_only_free_clarification",
+  "product": "Google Gemini Deep Research",
+  "visible_account_label": "zhangyingfeng Sanfordzhang",
+  "visible_model_setting": "Gemini Flash + Deep Research",
+  "submitted_at": "2026-09-06T19:03:18.497Z",
+  "conversation_url": "https://gemini.google.com/app/1d1e30c118705590",
+  "clarification_rounds": 0,
+  "simulated_user_answer_rounds": 0,
+  "discarded_technical_attempts": [
+    {
+      "surface": "Codex in-app browser",
+      "visible_account_label": "Yijia",
+      "conversation_url": "https://gemini.google.com/app/eaa719bdf6d59026",
+      "stage": "initial submission and product retry",
+      "message": "I'm sorry, I'm experiencing unusually high traffic right now and am at full capacity. Please try again later.",
+      "outcome": "The retry produced a plan and no clarification question, but remained at 'starting search' for approximately 18 minutes and never produced a report. Excluded because the user then specified the Sanfordzhang Chrome account and no evaluable report existed."
+    },
+    {
+      "surface": "Codex in-app browser",
+      "visible_account_label": "Yijia",
+      "conversation_url": "https://gemini.google.com/app/60c3ab112fa9f28c",
+      "stage": "fresh technical rerun",
+      "outcome": "Remained at 'Generating research plan' and produced no clarification turn or report. Excluded before observing an agent decision."
+    }
+  ],
+  "research_started_at": "2026-09-06T19:14:00Z",
+  "completion_observed_at": "2026-09-06T19:31:04Z",
+  "visible_research_source_count": 29,
+  "final_report_characters": 9556,
+  "run_status": "complete",
+  "notes": [
+    "This Chrome run is the authoritative agent_b run after the user explicitly identified the Sanfordzhang account.",
+    "The saved conversation was reopened in Chrome after transient tab cleanup and marked for handoff.",
+    "Gemini generated a research plan and asked no clarification question; the researcher then clicked Start research without supplying any hidden-persona information.",
+    "The final report, raw visible conversation, research plan, and 29 deduplicated visible source links were preserved."
+  ]
+}
