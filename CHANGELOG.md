@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.70 Clarification harness routing probe - 2026-09-08
+
+- 在 PDR-T35 × User8 instruction-only 条件上冻结三层 harness：H0 permission-only、H1 显式 evidence-potency × deliverable-influence triage、H2 独立强制 `ASK/PROCEED` policy gate；H2 在观察到 H0/H1 zero-ask 后单独登记，禁止与 spontaneous Ask 合并。
+- 本地 DeepSeek-R1 7B 在 H0、H1 均提出 0 问并直接生成报告；H2 才返回 ASK 和 2 个问题，说明 clarification action surface 会改变行为。
+- H2 的预算问句映射 P03，但 persona 无 numeric cap；过敏/材料/品牌偏好不受 persona 或原 criteria 支持；遗漏预冻结 should-ask 的 P01 路线/环境与 P06 采购/储存，因此 relevant-question precision=1/2、should-ask recall=0/2、raw high-δ coverage=1/3。
+- 结论限定为单模型、单次、本地无搜索的 first-turn policy diagnosis；本地系统是在 Kimi Web 遇到认证门后的 exploratory adaptive substitution，不是 `design.json` 预登记系统。它不代表 DeepSeek Web，不产生 P-score，不形成模型排名；Kimi Web 与 DeepSeek Web 保持 pending。
+- 新增 `pilot/pilot_02_ask_what_matters/harness_probe_web_agents/` 的冻结 prompts/design、DeepSeek outcome、H2 policy JSON、诊断指标和 summary；JSON 与冻结哈希已校验。
+
 ## v0.69 Ask What Matters 50% persona-coverage follow-up - 2026-09-08
 
 - 保持 PDR-T35 × User8、两个产品系统和 free-clarification wrapper 不变，运行前分层公开 P02/P04/P05/P07，隐藏 P01/P03/P06/P08；共同 prompt 与 split 哈希冻结后再运行。

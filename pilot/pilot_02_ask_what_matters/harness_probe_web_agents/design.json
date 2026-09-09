@@ -1,0 +1,28 @@
+{
+  "status": "frozen_before_runs",
+  "frozen_at_utc": "2026-09-09T00:24:16Z",
+  "task_id": 35,
+  "persona_id": "User8",
+  "purpose": "Probe whether the zero-question result is specific to browser Deep Research product harnesses by testing two different web-agent/chat harnesses.",
+  "systems": [
+    "Kimi web product",
+    "DeepSeek web product"
+  ],
+  "h0_primary_condition": "instruction-only + permission-only free clarification",
+  "h1_escalation_condition": "instruction-only + explicit preference-triage nudge",
+  "h1_trigger": "Run H1 for a system only if its H0 run asks zero task-specific clarification questions.",
+  "generation_repeats_per_system_condition": 1,
+  "simulator_protocol": "../simulator_protocol.md",
+  "clarification_turn_cap": 10,
+  "outcomes": [
+    "whether_any_task_specific_question_is_asked",
+    "asked_preference_units",
+    "high_delta_recall",
+    "should_ask_recall",
+    "question_burden",
+    "resolved_units",
+    "reflected_units"
+  ],
+  "attribution_limit": "Kimi and DeepSeek web products differ in base model, system prompt, tools, UI workflow, and harness. Cross-product differences are system-level evidence, not pure model effects. H0-to-H1 within a product diagnoses sensitivity to the elicitation nudge, not spontaneous clarification intelligence.",
+  "frozen_preference_units_file": "../annotation/preference_variables.json"
+}

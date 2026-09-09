@@ -3,10 +3,18 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-08
-当前版本：v0.69（Ask What Matters 50% persona-coverage follow-up）
+当前版本：v0.70（Clarification harness routing probe）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAA. 2026-09-08：DeepSeek clarification harness routing probe
+
+用户怀疑 ChatGPT/Gemini 网页 Deep Research 的共同 zero-ask 可能是产品 workflow 倾向，而不是模型看不出信息缺口，并要求换 Kimi/DeepSeek 或不同 harness 检验。为避免把新的显式提示混入原 permission-only estimand，本轮冻结三层条件：H0 保持原始 instruction-only + free clarification；H1 只增加“先判断 missing evidence 的 potency 与对 deliverable 的 influence”的显式 triage；H2 在 H0/H1 均为零后另行冻结，把研究和报告生成禁掉，只允许输出 `ASK/PROCEED` 与最多三问。H2 是 scaffolded policy capability，不是 spontaneous clarification。
+
+当前可完成的是本地 Ollama 的 DeepSeek-R1 7B 单次 first-turn probe；这是 Kimi Web 遇到登录认证门之后做的 exploratory adaptive substitution，H0/H1 prompt 已提前冻结，但本地 system choice 不在原 `design.json` 的两个预登记 web systems 中。该 harness 没有搜索工具，不能产出可比较的 Deep Research 报告或 P-score，也不代表 DeepSeek 网页产品。结果为 H0 0 问、H1 0 问，两次都直接写报告；H2 返回 ASK 并提出预算、过敏/材料/品牌偏好两问。按运行前已冻结的八个 preference units，预算只映射 P03，而且 hidden persona 没有 numeric cap，只能部分解决；过敏/材料问题不受 persona 与原 PDR criteria 支持。H2 漏掉 50% follow-up 中预冻结为 should-ask 的 P01 路线/海拔/环境和 P06 采购节奏/小户型储存，所以 relevant-question precision=1/2、should-ask recall=0/2、raw high-δ coverage=1/3。
+
+当前最强结论是：clarification 的 action routing/harness 结构确实能改变是否出问，因此网页 DR 的 zero-ask 不能直接解释为 base model 完全不识别不确定性；但单纯强制一个提问闸门并不能保证问题选择聪明。正式 benchmark 应并列报告 Native Ask、Deliberative Ask、Routed Ask，不用 H2 替换 H0，也不把三者分数合并。Kimi Web 与 DeepSeek Web 因 Chrome 中尚未完成对应账户认证而保持 pending；用户登录后只补 H0/H1，不追溯性改 prompt。完整资产位于 `pilot/pilot_02_ask_what_matters/harness_probe_web_agents/`。
 
 ## 0AAAAAAAAAAA. 2026-09-08：50% persona coverage 仍然触发共同 zero-ask
 

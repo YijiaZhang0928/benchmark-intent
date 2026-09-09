@@ -1,0 +1,18 @@
+{
+  "run_date_local": "2026-09-08",
+  "system": "Ollama local chat harness",
+  "model": "deepseek-r1:7b",
+  "model_family_note": "Local 7.6B Q4_K_M build; not the DeepSeek web product",
+  "design_status": "exploratory_adaptive_substitution",
+  "design_deviation": "design.json preregistered Kimi Web and DeepSeek Web. After the Kimi Web run reached an authentication gate, the already-frozen H0/H1 prompts were run on the available local DeepSeek model as a neutral-harness diagnostic. This system substitution was not preregistered.",
+  "context_length_reported": 131072,
+  "search_or_research_tools": false,
+  "persona_visible_to_model": false,
+  "task_instruction": "PDR-T35 instruction only",
+  "conditions_run_once": [
+    "H0_PERMISSION_ONLY",
+    "H1_EXPLICIT_PREFERENCE_TRIAGE",
+    "H2_FORCED_POLICY_GATE"
+  ],
+  "comparability_limit": "First-turn clarification-policy probe only. The harness cannot produce a comparable web Deep Research report or official PDR P-score."
+}

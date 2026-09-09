@@ -1,0 +1,55 @@
+{
+  "unit_reference": "../../annotation/preference_variables.json",
+  "pre_designated_should_ask_units": [
+    "P01_ACTIVITY_ENVIRONMENT",
+    "P06_PHASED_BUY_STORAGE"
+  ],
+  "conditions": {
+    "H0_PERMISSION_ONLY": {
+      "question_count": 0,
+      "decision_observed": "PROCEEDED_DIRECTLY_TO_REPORT"
+    },
+    "H1_EXPLICIT_PREFERENCE_TRIAGE": {
+      "question_count": 0,
+      "decision_observed": "PROCEEDED_DIRECTLY_TO_REPORT"
+    },
+    "H2_FORCED_POLICY_GATE": {
+      "decision": "ASK",
+      "question_count": 2,
+      "mapped_units": [
+        "P03_BUDGET_QUALITY"
+      ],
+      "unmapped_or_weakly_relevant_questions": [
+        "allergies/material or brand preferences"
+      ],
+      "relevant_question_precision": {
+        "numerator": 1,
+        "denominator": 2,
+        "value": 0.5
+      },
+      "should_ask_recall": {
+        "numerator": 0,
+        "denominator": 2,
+        "value": 0.0
+      },
+      "high_delta_raw_coverage": {
+        "covered": [
+          "P03_BUDGET_QUALITY"
+        ],
+        "missed": [
+          "P01_ACTIVITY_ENVIRONMENT",
+          "P02_SAFETY_RISK"
+        ],
+        "numerator": 1,
+        "denominator": 3,
+        "value": 0.3333333333
+      },
+      "resolution_if_simulated": {
+        "P03_BUDGET_QUALITY": "The persona supports a value-focused direction but contains no numeric budget cap; the question as written would remain only partially resolved.",
+        "allergies_materials_brands": "The hidden persona contains no allergy value; the simulator must say it cannot determine this or has no grounded strong preference."
+      },
+      "raw_format_note": "The terminal stream contained one extra closing brace after the JSON object. h2_policy_output.json stores the mechanically repaired object; strict raw JSON parsing would fail."
+    }
+  },
+  "bottom_line": "The model emitted questions only when the harness structurally separated and forced an ASK/PROCEED routing stage. This supports a harness-action explanation for some zero-ask behavior, but the selected questions had weak evidence-potency × preference-influence calibration."
+}

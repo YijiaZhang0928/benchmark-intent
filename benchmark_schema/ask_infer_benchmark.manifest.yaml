@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.68"
+manifest_version: "0.70"
 updated: "2026-09-08"
 status: working_hypothesis_frozen
 
@@ -39,6 +39,10 @@ active_sources:
   ask_what_matters_summary: pilot/pilot_02_ask_what_matters/evaluation/pilot_summary.md
   ask_what_matters_calibration: pilot/pilot_02_ask_what_matters/evaluation/calibration_metrics.json
   ask_what_matters_preference_chain: pilot/pilot_02_ask_what_matters/evaluation/preference_chain.csv
+  ask_what_matters_50pct_followup: pilot/pilot_02_ask_what_matters/followup_50pct/summary.md
+  clarification_harness_probe: pilot/pilot_02_ask_what_matters/harness_probe_web_agents/summary.md
+  clarification_harness_probe_design: pilot/pilot_02_ask_what_matters/harness_probe_web_agents/design.json
+  clarification_harness_probe_deepseek: pilot/pilot_02_ask_what_matters/harness_probe_web_agents/deepseek_local/diagnostic.json
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -183,6 +187,21 @@ scope:
     counted_episode_eligible: false
     expansion_decision: repair_and_replication_before_15_dr_plus_15_data
     claim_boundary: zero_ask_floor_not_calibration_slope_or_product_ranking
+  clarification_harness_probe:
+    task_id: PDR-T35
+    persona_id: User8
+    completed_system: Ollama_local_DeepSeek_R1_7B
+    persona_visible: false
+    web_or_research_tools: false
+    h0_permission_only_questions: 0
+    h1_preference_triage_questions: 0
+    h2_forced_policy_gate_decision: ASK
+    h2_questions: 2
+    h2_relevant_question_precision: 0.5
+    h2_should_ask_recall: 0.0
+    pending_systems: [Kimi_Web, DeepSeek_Web]
+    counted_episode_eligible: false
+    claim_boundary: first_turn_harness_diagnosis_not_deep_research_score_or_model_ranking
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -220,3 +239,5 @@ claim_boundaries:
   - ask_what_matters_pilot_has_zero_between_agent_calibration_variance
   - ask_what_matters_score_difference_is_not_a_clarification_effect
   - permission_only_zero_ask_floor_requires_generation_repeats_before_expansion
+  - routed_ask_is_scaffolded_capability_and_must_not_replace_native_ask
+  - local_deepseek_probe_is_not_deepseek_web_or_a_pdr_score

@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.69
+## 当前方向：AskInfer-Bench v0.70
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -31,6 +31,8 @@ v0.67 将 PDR-T30 pilot 的 44 条原始 criteria 完整映射为 22 个 task-sp
 v0.68 完成 PDR-T35 × User8 的 “Ask What Matters” calibration pilot。运行前冻结 8 个 task-specific preference units（high/medium/low `δ` 为 3/3/2，权重 17），再让 ChatGPT research-capable 产品配置与 Gemini Deep Research 接收完全相同的 instruction-only + free-clarification 输入。两个产品都提出 0 个 task-specific 问题，high/medium/low recall 与 weighted coverage 全为 0；这不是低价值 over-asking，而是共同的 clarification non-initiation。37 条原始 criteria 的三重复盲评均值为 5.5383 与 5.7033，后者小幅领先 0.1649，但两边 acquisition 都为零，因此分差不能归因于提问。完整冻结资产、报告、盲评输出与 16 行 preference chain 见 [`pilot/pilot_02_ask_what_matters/`](pilot/pilot_02_ask_what_matters/)；当前决定是不直接扩到 15 DR + 15 Data，而先做小规模 generation repeat 与产品表面可暂停提问的复验。
 
 v0.69 对同一 PDR-T35 × User8 做了一个 50% persona-coverage follow-up：运行前分层公开 P02/P04/P05/P07，隐藏 P01/P03/P06/P08，再让同一 ChatGPT 与 Gemini Deep Research 自由决定是否追问。两者仍为 0 问；隐藏 unit 的 question coverage 为 0/4、预判 should-ask recall 为 0/2。两份报告都严格命中全部 4 个明示 unit，并只强命中 1/4 个隐藏 unit（P03 budget/quality，且该方向已可由 task 的 “balance budget and quality” 强推断）；GPT 对 P01/P06 只有部分默认对齐，Gemini 对 P01 只有部分默认对齐。完整结果见 [`followup_50pct/summary.md`](pilot/pilot_02_ask_what_matters/followup_50pct/summary.md)。这说明 partial evidence 没有触发更选择性的 clarification，反而留下了高影响路线/环境和中影响采购/储存缺口；单次 follow-up 不形成稳定产品排名。
+
+v0.70 增加同一题的 clarification-harness probe。DeepSeek-R1 7B 在本地中性聊天 harness 中，原始 permission-only H0 与显式 preference-triage H1 都是 0 问并直接写报告；只有 H2 把研究输出禁掉、强制先返回 `ASK/PROCEED` 时才提出 2 问。两问中只有预算映射到冻结 unit，过敏/材料/品牌偏好不受 persona 或原 PDR criteria 支持；它仍遗漏预冻结应问的路线/环境 P01 与采购/储存 P06，所以 H2 relevant-question precision=1/2、should-ask recall=0/2。结果支持 zero-ask 部分来自 action routing/harness，但也显示强制出问不等于问得聪明。H2 只作 scaffolded capability diagnosis，不与 H0/H1 合并；本地无搜索，不能算 Deep Research P-score。完整结果见 [`harness_probe_web_agents/summary.md`](pilot/pilot_02_ask_what_matters/harness_probe_web_agents/summary.md)，Kimi Web 与 DeepSeek Web 尚待浏览器账户登录后运行。
 
 ## 当前交付物
 

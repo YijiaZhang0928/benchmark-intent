@@ -1,0 +1,15 @@
+{
+  "decision": "ASK",
+  "questions": [
+    {
+      "question": "What is your budget for outdoor gear this summer?",
+      "missing_preference": "Budget",
+      "deliverable_effect": "Helps in recommending brands and gear that balance cost and quality"
+    },
+    {
+      "question": "Are there any specific allergies or preferences you have regarding materials or brands?",
+      "missing_preference": "Allergies/Preferences",
+      "deliverable_effect": "Affects gear choices and recommendations"
+    }
+  ]
+}

@@ -53,7 +53,7 @@ test("server-renders the AskInfer-Bench v0.68 report", async () => {
   assert.match(html, /href="\/ask_infer_benchmark\.manifest\.yaml"/i);
 });
 
-test("keeps v0.68 manifest, v0.62 stable schemas, task screen, and downloadable artifacts in sync", async () => {
+test("keeps v0.70 manifest, v0.62 stable schemas, task screen, and downloadable artifacts in sync", async () => {
   const [caseSchema, protocol, manifest] = await Promise.all([
     readFile(new URL("../public/ask_infer_case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/ask_infer_evaluation.protocol.yaml", import.meta.url), "utf8"),
@@ -67,13 +67,15 @@ test("keeps v0.68 manifest, v0.62 stable schemas, task screen, and downloadable 
   assert.match(protocol, /question_precision/);
   assert.match(protocol, /cfa_min/);
   assert.match(manifest, /AskInfer-Bench/);
-  assert.match(manifest, /manifest_version:\s*["']?0\.68/);
+  assert.match(manifest, /manifest_version:\s*["']?0\.70/);
   assert.match(manifest, /task_specific_preference_units:\s*22/);
   assert.match(manifest, /interactive_asked_units:\s*11/);
   assert.match(manifest, /full_persona_redundant_questions:\s*0/);
   assert.match(manifest, /pdr_minimum_product_pilot_is_n1_and_not_leaderboard_evidence/);
   assert.match(manifest, /pdr_two_agent_pilot_shows_clarification_policy_heterogeneity_only/);
   assert.match(manifest, /ask_what_matters_pilot_has_zero_between_agent_calibration_variance/);
+  assert.match(manifest, /h2_forced_policy_gate_decision:\s*ASK/);
+  assert.match(manifest, /routed_ask_is_scaffolded_capability_and_must_not_replace_native_ask/);
   assert.match(manifest, /original_personalization_criteria_per_repeat:\s*37/);
   assert.match(manifest, /task_specific_questions_agent_a:\s*0/);
   assert.match(manifest, /task_specific_questions_agent_b:\s*0/);

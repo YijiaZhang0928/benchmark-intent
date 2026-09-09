@@ -1,0 +1,8 @@
+{
+  "status": "frozen_after_H1_zero_and_before_H2_run",
+  "frozen_at_utc": "2026-09-09T00:32:00Z",
+  "trigger_observed": "DeepSeek-R1 7B asked zero questions in both H0 permission-only and H1 explicit preference-triage conditions.",
+  "condition": "separate forced clarification-policy gate",
+  "purpose": "Test whether the model can identify high-impact missing preferences when the harness forbids report generation and requires an ASK/PROCEED routing decision.",
+  "interpretation_boundary": "A successful H2 shows scaffolded elicitation capability, not spontaneous clarification behavior. H2 must be reported separately from H0/H1."
+}
