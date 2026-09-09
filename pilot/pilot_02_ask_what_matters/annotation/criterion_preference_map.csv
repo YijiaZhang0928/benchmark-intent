@@ -1,0 +1,38 @@
+criterion_id,dimension,criterion,preference_unit_ids
+GO01,goal_alignment,"Safety and risk management tailored to a beginner and high-altitude scenarios","P02_SAFETY_RISK;P01_ACTIVITY_ENVIRONMENT"
+GO02,goal_alignment,"Budget–quality optimization with data-backed purchasing strategy for China market","P03_BUDGET_QUALITY;P06_PHASED_BUY_STORAGE"
+GO03,goal_alignment,"Region- and season-specific adaptation for Shanghai summers and Sichuan–Tibet conditions",P01_ACTIVITY_ENVIRONMENT
+GO04,goal_alignment,"Modular, scalable kit design with phased upgrades and testing plan","P06_PHASED_BUY_STORAGE;P01_ACTIVITY_ENVIRONMENT"
+GO05,goal_alignment,"Spec-driven decision logic and verification (metrics, thresholds, authenticity checks)","P07_DECISION_PRESENTATION;P03_BUDGET_QUALITY;P05_TECH_NAVIGATION"
+GO06,goal_alignment,"Fit and comfort personalization (pack sizing, footwear fit, load targets, break-in)",P04_FITNESS_COMFORT_LOAD
+GO07,goal_alignment,"China-specific procurement, logistics, and legal compliance details","P01_ACTIVITY_ENVIRONMENT;P05_TECH_NAVIGATION;P03_BUDGET_QUALITY"
+GO08,goal_alignment,"Urban storage, maintenance, and humidity management for a small apartment",P06_PHASED_BUY_STORAGE
+GO09,goal_alignment,"Analytical, structured communication style with checklists and trade-off reasoning",P07_DECISION_PRESENTATION
+CO01,content_alignment,"China-specific Environmental and Route Localization","P01_ACTIVITY_ENVIRONMENT;P03_BUDGET_QUALITY"
+CO02,content_alignment,"Value-Tiered Brand Recommendations for China Market",P03_BUDGET_QUALITY
+CO03,content_alignment,"Risk Management and Safety Redundancy for a Beginner at Altitude","P02_SAFETY_RISK;P01_ACTIVITY_ENVIRONMENT"
+CO04,content_alignment,"Modular Kit Design and Upgrade Path","P06_PHASED_BUY_STORAGE;P01_ACTIVITY_ENVIRONMENT"
+CO05,content_alignment,"Data-Backed Specifications and Comparative Depth","P07_DECISION_PRESENTATION;P03_BUDGET_QUALITY"
+CO06,content_alignment,"Tech Ecosystem Fit (China Maps/BeiDou, Power Strategy)",P05_TECH_NAVIGATION
+CO07,content_alignment,"Comfort and Fit Guidance Tailored to User Profile",P04_FITNESS_COMFORT_LOAD
+CO08,content_alignment,"Storage and Maintenance for Humid Urban Living",P06_PHASED_BUY_STORAGE
+CO09,content_alignment,"Acquisition Strategy Alignment (Sales Timing, Second-hand Verification, Warranty)","P03_BUDGET_QUALITY;P06_PHASED_BUY_STORAGE"
+CO10,content_alignment,"Sustainability and Eco-Packaging When Cost-Effective",P08_SUSTAINABILITY
+PR01,presentation_fit,"Professional, concise, and objective tone (non-marketing, evidence-oriented)",P07_DECISION_PRESENTATION
+PR02,presentation_fit,"Jargon and acronym handling with brief in-line definitions",P07_DECISION_PRESENTATION
+PR03,presentation_fit,"Layered structure and navigation (TL;DR, clear headings, logical grouping)",P07_DECISION_PRESENTATION
+PR04,presentation_fit,"Standardized, comparison-friendly spec formatting",P07_DECISION_PRESENTATION
+PR05,presentation_fit,"Numeric and unit clarity (metric, RMB, explicit scales/standards)","P07_DECISION_PRESENTATION;P03_BUDGET_QUALITY"
+PR06,presentation_fit,"Scannability and mobile-friendly formatting",P07_DECISION_PRESENTATION
+PR07,presentation_fit,"Priority and tagging system for quick triage","P07_DECISION_PRESENTATION;P06_PHASED_BUY_STORAGE"
+PR08,presentation_fit,"Safety and risk callout formatting","P02_SAFETY_RISK;P07_DECISION_PRESENTATION"
+PR09,presentation_fit,"Localization for China-based reader (naming and sizing presentation)","P01_ACTIVITY_ENVIRONMENT;P03_BUDGET_QUALITY;P04_FITNESS_COMFORT_LOAD"
+AC01,actionability_practicality,"Prioritized, complete checklist with quantitative spec thresholds","P07_DECISION_PRESENTATION;P01_ACTIVITY_ENVIRONMENT"
+AC02,actionability_practicality,"Budgeted plan with tiers, total cost, and trade-offs (new/used/rent)","P03_BUDGET_QUALITY;P06_PHASED_BUY_STORAGE"
+AC03,actionability_practicality,"Scenario-based loadouts and decision rules for weather/terrain","P01_ACTIVITY_ENVIRONMENT;P02_SAFETY_RISK"
+AC04,actionability_practicality,"Fit and sizing protocols for comfort-critical items",P04_FITNESS_COMFORT_LOAD
+AC05,actionability_practicality,"Safety and redundancy plan integrated into the kit","P02_SAFETY_RISK;P05_TECH_NAVIGATION"
+AC06,actionability_practicality,"Purchase feasibility in China (channels, availability, after-sales)","P03_BUDGET_QUALITY;P01_ACTIVITY_ENVIRONMENT"
+AC07,actionability_practicality,"Weight/portability and packing guidance","P04_FITNESS_COMFORT_LOAD;P06_PHASED_BUY_STORAGE"
+AC08,actionability_practicality,"Maintenance and lifecycle cost guidance","P06_PHASED_BUY_STORAGE;P08_SUSTAINABILITY"
+AC09,actionability_practicality,"Procurement timeline and shakedown/testing plan","P06_PHASED_BUY_STORAGE;P01_ACTIVITY_ENVIRONMENT"

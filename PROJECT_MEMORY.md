@@ -2,11 +2,29 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-06
-当前版本：v0.67（PDR-T30 criteria→preference chain）
+最后更新：2026-09-08
+当前版本：v0.69（Ask What Matters 50% persona-coverage follow-up）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAA. 2026-09-08：50% persona coverage 仍然触发共同 zero-ask
+
+用户在弱模型复验和 50% persona coverage 复验之间给出选择；本轮选择后者，因为它保持两个产品系统不变，只改变可见 preference evidence，更直接检验 clarification policy，而不会把模型总体能力、搜索质量和产品实现同时引入比较。对 PDR-T35 × User8 的 8 个冻结 unit 做分层拆分：明示 P02 safety、P04 fitness/comfort、P05 tech/navigation、P07 presentation；隐藏 P01 activity/environment、P03 budget/quality、P06 phased buying/storage、P08 sustainability。拆分与共同 prompt 在产品运行前冻结并留存哈希。
+
+ChatGPT GPT-5.6 Sol / Medium / Temporary Chat / Unpersonalized 与 Gemini 3.6 Flash / Deep Research 各跑一次。两者都在没有任何 clarification 的情况下直接研究，simulator 从未被调用：hidden-unit question coverage=0/4，hidden high-`δ` coverage=0/2。按 evidence potency 与 deliverable influence 的预判，P01 和 P06 应问，P03 可从 task 中的 “balance budget and quality” 合理推断方向但仍缺预算上限/新旧租策略，P08 为低影响 tie-breaker、不问是合理的，因此 should-ask recall=0/2。
+
+严格 reflection audit 中，两份报告均反映四个明示 unit，并只强反映一个隐藏 unit P03，所以 all-unit=5/8、hidden-only=1/4、hidden-weight=3/9；这一个命中属于 task/default alignment，不是 preference acquisition。GPT 对 P01 和 P06 有部分泛化对齐，Gemini 对 P01 有部分泛化对齐，但都没有落实 Sichuan–Tibet/Shanghai 场景，且都缺失 persona-specific 的采购节奏、单间公寓储存/干燥/湿度管理与 sustainability tie-breaker。核心结论是 partial evidence 没有诱发选择性追问，反而让产品生成足够可信的通用报告并掩盖剩余信息缺口。完整资产位于 `pilot/pilot_02_ask_what_matters/followup_50pct/`；本轮未重跑官方 PDR evaluator，因此 5/8 等数字只能称 preference-unit diagnostic，不能称 P-score。
+
+## 0AAAAAAAAAA. 2026-09-08：Ask What Matters 的共同 zero-ask floor
+
+用户要求完成一个不扩到 30 题的 clarification-calibration pilot：选一个同样 high-`δ` 的 PDR task，两个不同产品 agent 都只看 instruction 与自由追问许可，检验它们是否选择不同问题、critical preference recall 是否不同，以及最终原 PDR personalization score 是否随之不同。选定公开 PDR query 173 / task 35 / User8（为初学者设计徒步、露营、登山装备方案），上游 commit 保持 `5b43f9f188c747d154fc7666812ab93b7ca6a3c2`。在任一运行前冻结相同 wrapper、最大十轮 clarification、persona-bounded simulator、盲码和 8 个 task-specific preference units：high 3、medium 3、low 2，权重分别 3/2/1，总 diagnostic weight 17。
+
+Agent A 使用 ChatGPT 当前可见的最强 research-capable 配置（GPT-5.6 Sol、High、Web search；界面未单独显示 Deep Research 开关），Agent B 使用 Google Gemini Deep Research（可见 Gemini Flash、Google Search）。两者各运行一次，均提出 0 个 task-specific preference question，clarification turns 与 user-answer tokens 都为 0，high/medium/low recall 与 weighted coverage 全为 0。Gemini 的“这是我的计划，如需修改请告知”不索取任何 preference 或 factual value，按冻结定义不计问题。RelevantAskPrecision 与 CriticalAskPrecision 因 0/0 未定义。观察到的是 permission-only 条件下共同的 clarification non-initiation，不是 agent 间提问集合差异，也不是 low-value over-asking。
+
+两份报告以运行前盲码 RPT-N8 与 RPT-H3、原始英文 personalization prompt、原始 37 条 criteria 和权重、未修改 `score_calculator.py` 各独立评分三次。Agent A 为 5.5840/5.1342/5.8968，均值 5.5383；Agent B 为 5.7024/5.7274/5.6800，均值 5.7033；A−B=−0.1649。两边 calibration 完全相同，因此该分差只能作为产品/模型、搜索、报告执行和默认推断的混合差异，不能归因于 clarification。两份报告都在未提问情况下严格反映 4/8 个隐藏 unit：安全冗余、价值导向、分阶段采购和分析式呈现；这类 task-derived/default alignment 按原 PDR evaluator 得分，但不计 acquisition。
+
+完整资产位于 `pilot/pilot_02_ask_what_matters/`，包括冻结哈希、原 persona/criteria、37 条 criterion→preference mapping、两份产品 trace/report、六次 raw/parsed judge output、16 行 `Preference→Asked→Resolved→Reflected` chain 与只回答 RQ1–RQ6 的 summary。自动 validator 已确认共同输入、8-unit 设计、37 条 criterion 顺序、6 个 evaluator output 和 16 行 chain。当前决策是不直接扩到 15 DeepResearch + 15 DataAnalysis：先做小规模 generation repeats，并确认产品表面确实支持在研究启动前自然暂停提问；若仍稳定为零，再把 permission-only non-initiation 作为正式 benchmark 现象。该 pilot 是 one task × one persona × two product systems × one generation run，不形成产品排名或 `δ` slope。
 
 ## 0AAAAAAAAA. 2026-09-06：PDR-T30 的 44 criteria 映射为 22 个 preference units
 

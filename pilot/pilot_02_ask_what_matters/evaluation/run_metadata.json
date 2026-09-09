@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "evaluated_at_utc": "2026-09-08T15:54:17Z",
+  "blind_labels_visible_to_evaluator": true,
+  "condition_identity_visible_to_evaluator": false,
+  "product_identity_visible_to_evaluator": false,
+  "scoring_order": ["RPT-N8", "RPT-H3"],
+  "valid_repeats_per_report": 3,
+  "criteria_count_per_repeat": 37,
+  "evaluator": {
+    "prompt_source": "evaluator_official/code/prompt/score_prompt_en.py",
+    "weighting_source": "evaluator_official/code/utils/score_calculator.py",
+    "official_repository_model_name": "gpt-5",
+    "transport": "ChatGPT product UI temporary chats",
+    "visible_reasoning_setting": "High",
+    "exact_model_identifier_visible": null
+  },
+  "transport_deviations": [
+    "No evaluator API credential was available, so the exact official prompt was submitted through six independent Temporary Chat sessions instead of the repository API client.",
+    "The product UI did not expose the exact backend model identifier.",
+    "The prompt, criteria text/order, integer scoring scale, dimension weights, and official calculator were unchanged."
+  ],
+  "validation": {
+    "valid_json_outputs": 6,
+    "all_outputs_have_exact_criterion_text_and_order": true,
+    "all_outputs_have_37_criteria": true,
+    "all_scores_are_integers_0_to_10": true,
+    "invalid_attempts_excluded": 0
+  },
+  "quality_evaluation_run": false,
+  "reliability_evaluation_run": false,
+  "quality_reliability_note": "The experiment requested the original PDR personalization evaluator. Quality and reliability were not added."
+}

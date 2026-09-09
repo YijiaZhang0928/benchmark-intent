@@ -21,8 +21,8 @@ COVER_KICKER = "RESEARCH PROPOSAL"
 COVER_TITLE = "Ask or Infer?"
 COVER_SUBTITLE = "Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents"
 COVER_MODE = "Preference Acquisition · History Inference · Final Utilization"
-DOC_VERSION = "v0.67 · PDR-T30 Preference Chain"
-DOC_DATE = "2026 年 9 月 6 日"
+DOC_VERSION = "v0.68 · Ask What Matters Pilot"
+DOC_DATE = "2026 年 9 月 8 日"
 RESEARCH_LINE = "Ask Calibration · Evidence-Bounded Inference · Counterfactual Delivery"
 CORE_CLAIM = "评价 agent 是否把有限问题预算投向真正改变交付物的偏好，并在用户离线时只从有证据的 history 推断；排名反转是待检验结果。"
 CONTENTS_ITEMS = [
@@ -168,21 +168,25 @@ def configure_section(section, landscape=False):
     section.footer_distance = Inches(0.492)
     section.header.is_linked_to_previous = False
     section.footer.is_linked_to_previous = False
-    header = section.header
-    p = header.paragraphs[0]
-    p.text = RUNNING_HEADER
-    p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    p.paragraph_format.space_after = Pt(0)
-    for r in p.runs:
-        set_font(r, size=8.5, bold=True, color=MUTED)
-    footer = section.footer
-    p = footer.paragraphs[0]
-    p.text = ""
-    p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    p.paragraph_format.space_before = Pt(0)
-    label = p.add_run(f"{DOC_DATE.replace(' 年 ', '-').replace(' 月 ', '-').replace(' 日', '')}   ·   ")
-    set_font(label, size=9, color=MUTED)
-    add_field(p, "PAGE")
+    section.even_page_header.is_linked_to_previous = False
+    section.even_page_footer.is_linked_to_previous = False
+
+    # Keep the header area intentionally blank. Word's macOS read-only print
+    # path can intermittently omit one of the running-header variants; a clean
+    # top margin is more stable than inconsistent decorative running matter.
+    for header in (section.header, section.even_page_header):
+        p = header.paragraphs[0]
+        p.text = ""
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        p.paragraph_format.space_after = Pt(0)
+    for footer in (section.footer, section.even_page_footer):
+        p = footer.paragraphs[0]
+        p.text = ""
+        p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        p.paragraph_format.space_before = Pt(0)
+        label = p.add_run(f"{DOC_DATE.replace(' 年 ', '-').replace(' 月 ', '-').replace(' 日', '')}   ·   ")
+        set_font(label, size=9, color=MUTED)
+        add_field(p, "PAGE")
 
 
 def configure_styles(doc):
@@ -229,9 +233,8 @@ def configure_styles(doc):
         st.font.name = FONT
         st._element.rPr.rFonts.set(qn("w:ascii"), FONT)
         st._element.rPr.rFonts.set(qn("w:hAnsi"), FONT)
-        # PingFang's synthetic bold is rendered as solid blocks for a few
-        # high-stroke CJK glyphs by LibreOffice. Hiragino supplies a native
-        # bold face and keeps headings legible in both DOCX and exported PDF.
+        # PingFang's synthetic bold can render as solid blocks for dense CJK
+        # glyphs. Hiragino supplies a native heavier face for headings.
         st._element.rPr.rFonts.set(qn("w:eastAsia"), HEADING_CN_FONT)
         st.font.size = Pt(size)
         # Size and colour carry the hierarchy. Avoid synthetic CJK bold: in
@@ -531,6 +534,15 @@ def add_figure_section(doc):
 
 def build(md_path=MD, out_path=OUT):
     doc = Document()
+    # Word for macOS can inherit "different odd/even" from the host profile
+    # when the setting is merely absent. Write an explicit false value so the
+    # default header/footer is used on every page in native PDF export.
+    doc.settings.odd_and_even_pages_header_footer = False
+    even_odd = doc.settings._element.find(qn("w:evenAndOddHeaders"))
+    if even_odd is None:
+        even_odd = OxmlElement("w:evenAndOddHeaders")
+        doc.settings._element.append(even_odd)
+    even_odd.set(qn("w:val"), "0")
     configure_styles(doc)
     configure_section(doc.sections[0], landscape=False)
     add_cover(doc)

@@ -1,6 +1,6 @@
 # AskInfer-Bench 两周执行 Todo 与任务作战手册
 
-> v0.67 · 2026-09-06 · PDR-T30 criteria→preference chain 完成
+> v0.68 · 2026-09-08 · Ask What Matters zero-ask calibration pilot 完成
 > 目标：在 2026-09-17 前完成可信的最小主实验与结果锁，在 2026-09-18 前提交真实摘要，在 2026-09-25 前完成 ICLR 2027 全文。  
 > 使用方式：每天先看“今日必须交付”，再看对应工作流；每个任务只有通过门槛后才能打勾。没有证据的完成状态一律记为“未完成”。
 
@@ -200,6 +200,8 @@ I plan to develop a personal media account within the next six months, aiming to
 **v0.66 双 agent 运行结果**：PDR-T01 × User1 上，ChatGPT Deep Research 与 Gemini Deep Research 接收相同的 instruction-only + free-clarification 输入。ChatGPT 一轮 15 个 atomic slots 覆盖 7/7 个预冻结 critical preference clusters；Gemini 没有提问，asked-cluster Jaccard=0。原始 34 条 PDR criteria 的盲化三重复 P-score 为 7.057 对 6.065，差 +0.992。最大差距出现在方向验证、fit-based shortlist 和可衡量背景提升；Gemini 在通用地区比较与就业信息上更强。该结果只证明 agent-system clarification policy 可以不同；模型、planner、搜索和生成策略同时变化，不能把分差单独归因于提问。
 
 **v0.67 preference-chain 结果**：PDR-T30 的 44 条 criteria 已全部映射到 22 个 atomic preference units，并给 Interactive/Full 分别编码 `relevant、known、asked、resolved、reflected`。Interactive 六问覆盖 11/22，严格完成全链 5/22；Full 首轮前 known 14/22。Full 五问均针对 persona 未定义的 residual value，判为 redundant 0/5、reasonable verification 5/5；simulator 没有新增可解决答案。运行 `node pilot/pdr_interactive_personalization_pilot_01/evaluation/validate_preference_mapping.mjs` 必须得到 44 criteria、22 units、11 questions、primary mass=1 的 PASS。下一门是第二位 coder 在不看当前标签时独立映射，再报告 unit/mapping/status agreement；未完成前不能把 22-unit recall 当确认性结果。
+
+**v0.68 Ask What Matters 结果**：PDR-T35 × User8 先冻结 8 个 task-specific preference units（3 high、3 medium、2 low，权重 17），再让 ChatGPT research-capable 配置与 Gemini Deep Research 接收 byte-identical 的 instruction-only + free-clarification 输入。两边都是 0 个 task-specific question，三个 recall、weighted coverage、turns 和 answer tokens 全为 0；原始 37 条 criteria 的盲化三重复均值为 5.5383 与 5.7033。当前失败点是没有启动 elicitation，不是问而未解、答而未用或低价值 over-asking。运行 `python3 pilot/pilot_02_ask_what_matters/validate_pilot.py` 必须验证 8-unit 冻结、6 个 evaluator outputs、37 条 criteria 顺序与 16 行 preference chain。不要据此扩到 15 DR + 15 Data；先增加少量 generation repeats，并验证产品能在研究前自然暂停提问。
 
 ### 4.3 SW001：为 Web 服务加入可配置缓存层
 

@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.67"
-updated: "2026-09-06"
+manifest_version: "0.68"
+updated: "2026-09-08"
 status: working_hypothesis_frozen
 
 paper:
@@ -35,6 +35,10 @@ active_sources:
   pdr_two_agent_clarification_pilot: pilot/pdr_agent_clarification_pilot_02/metadata.json
   pdr_two_agent_clarification_results: pilot/pdr_agent_clarification_pilot_02/evaluation/summary.md
   pdr_two_agent_clarification_diagnostics: pilot/pdr_agent_clarification_pilot_02/evaluation/clarification_diagnostics.json
+  ask_what_matters_pilot: pilot/pilot_02_ask_what_matters/metadata.json
+  ask_what_matters_summary: pilot/pilot_02_ask_what_matters/evaluation/pilot_summary.md
+  ask_what_matters_calibration: pilot/pilot_02_ask_what_matters/evaluation/calibration_metrics.json
+  ask_what_matters_preference_chain: pilot/pilot_02_ask_what_matters/evaluation/preference_chain.csv
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -155,6 +159,30 @@ scope:
     evaluator_transport: chatgpt_temporary_chat_due_missing_api_key
     counted_episode_eligible: false
     claim_boundary: one_task_one_persona_two_agent_existence_proof_not_causal_ranking
+  pdr_ask_what_matters_pilot:
+    pilot_id: pilot_02_ask_what_matters
+    task_id: PDR-T35
+    upstream_query_id: 173
+    persona_id: User8
+    condition: instruction_only_plus_free_clarification
+    preference_units: 8
+    high_medium_low_units: [3, 3, 2]
+    diagnostic_weight_total: 17
+    agent_a: ChatGPT_research_capable_product_configuration
+    agent_b: Google_Gemini_Deep_Research
+    task_specific_questions_agent_a: 0
+    task_specific_questions_agent_b: 0
+    weighted_coverage_agent_a: 0.0
+    weighted_coverage_agent_b: 0.0
+    p_agent_a: 5.538333333333333
+    p_agent_b: 5.703266666666667
+    delta_p_agent_a_minus_agent_b: -0.16493333333333382
+    valid_evaluator_repeats_per_agent: 3
+    original_personalization_criteria_per_repeat: 37
+    generation_runs_per_agent: 1
+    counted_episode_eligible: false
+    expansion_decision: repair_and_replication_before_15_dr_plus_15_data
+    claim_boundary: zero_ask_floor_not_calibration_slope_or_product_ranking
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -189,3 +217,6 @@ claim_boundaries:
   - full_persona_questions_were_reasonable_but_persona_under_specification_limited_answer_yield
   - pdr_two_agent_pilot_shows_clarification_policy_heterogeneity_only
   - pdr_two_agent_score_difference_is_not_an_isolated_clarification_effect
+  - ask_what_matters_pilot_has_zero_between_agent_calibration_variance
+  - ask_what_matters_score_difference_is_not_a_clarification_effect
+  - permission_only_zero_ask_floor_requires_generation_repeats_before_expansion

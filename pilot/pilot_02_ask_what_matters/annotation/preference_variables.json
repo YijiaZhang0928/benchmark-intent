@@ -1,0 +1,212 @@
+{
+  "status": "frozen_before_agent_runs",
+  "frozen_at_utc": "2026-09-07T21:29:38Z",
+  "purpose": "Ask-calibration diagnosis only; these units do not replace or modify the original PDR evaluator.",
+  "unit_definition": "A task-specific user goal, preference, constraint, or decision style whose value can materially change the deliverable.",
+  "question_mapping_rule": "A variable is asked only when a product-agent question directly solicits its value. Inferences made without asking never count as asked. Pure factual/product-research questions are logged separately.",
+  "resolution_rule": "Resolved requires a persona-grounded simulator answer that materially narrows the variable. Persona-unknown details remain unresolved even if asked.",
+  "delta_scale": {
+    "high": 3,
+    "medium": 2,
+    "low": 1
+  },
+  "variables": [
+    {
+      "id": "P01_ACTIVITY_ENVIRONMENT",
+      "label": "Primary activity, terrain, altitude, and weather context",
+      "type": "goal_and_constraint",
+      "possible_values": [
+        "low-altitude day hiking",
+        "low-altitude overnight camping",
+        "non-technical high-altitude trekking",
+        "technical mountaineering"
+      ],
+      "oracle_value": "Near-term priority is non-technical high-altitude trekking on the Sichuan–Tibet route; hot, rainy, humid Shanghai outings are suitable shakedown conditions. No technical alpine objective is stated.",
+      "oracle_known": true,
+      "delta": "high",
+      "delta_weight": 3,
+      "deliverable_consequence": "Changes the shelter/sleep temperature bands, layering, UV/storm protection, altitude guidance, navigation redundancy, and whether technical gear should be bought, rented, or excluded.",
+      "persona_evidence": [
+        "Travel Preferences.Destinations: planning a Sichuan-Tibet route for high-altitude trekking",
+        "Long-term Spatial Characteristics.Permanent Residence: Shanghai",
+        "Task: beginner planning hiking, camping, and mountaineering in summer"
+      ],
+      "affected_original_pdr_criteria": [
+        "Region- and season-specific adaptation for Shanghai summers and Sichuan–Tibet conditions",
+        "China-specific Environmental and Route Localization",
+        "Scenario-based loadouts and decision rules for weather/terrain"
+      ]
+    },
+    {
+      "id": "P02_SAFETY_RISK",
+      "label": "Risk tolerance and safety redundancy preference",
+      "type": "preference_and_constraint",
+      "possible_values": [
+        "risk-tolerant/minimal redundancy",
+        "balanced",
+        "conservative/redundant"
+      ],
+      "oracle_value": "Conservative and risk-averse; prefers expert-backed choices and wants to avoid unnecessary risk.",
+      "oracle_known": true,
+      "delta": "high",
+      "delta_weight": 3,
+      "deliverable_consequence": "Changes emergency communication, navigation/light/water redundancy, acclimatization and turnaround rules, first-aid scope, and the guide/rental boundary for altitude or technical terrain.",
+      "persona_evidence": [
+        "Financial Information.Risk Management.Risk Appetite: risk-averse",
+        "Personality Traits.Decision-making Style: considers expert opinions to avoid unnecessary risks"
+      ],
+      "affected_original_pdr_criteria": [
+        "Safety and risk management tailored to a beginner and high-altitude scenarios",
+        "Risk Management and Safety Redundancy for a Beginner at Altitude",
+        "Safety and redundancy plan integrated into the kit"
+      ]
+    },
+    {
+      "id": "P03_BUDGET_QUALITY",
+      "label": "Budget–quality trade-off and buying strategy",
+      "type": "preference",
+      "possible_values": [
+        "lowest upfront cost",
+        "price-performance/value focused",
+        "premium/minimal compromise"
+      ],
+      "oracle_value": "Price-performance/value focused with no persona-grounded numeric cap; compares prices and reviews, watches sales, and is open to second-hand high-quality goods, but reliability should dominate for safety-critical items.",
+      "oracle_known": true,
+      "delta": "high",
+      "delta_weight": 3,
+      "deliverable_consequence": "Changes model tiers, total basket, where to invest vs save, local/global brand mix, new/used/rent decisions, warranty/authenticity checks, and sale timing.",
+      "persona_evidence": [
+        "Consumption Characteristics: frugal, cost-effective, sale-aware, exploring second-hand platforms",
+        "Shopping Preference: rational spending, price/review research",
+        "Financial Status: stable savings but a mortgage; no explicit gear budget"
+      ],
+      "affected_original_pdr_criteria": [
+        "Budget–quality optimization with data-backed purchasing strategy for China market",
+        "Value-Tiered Brand Recommendations for China Market",
+        "Budgeted plan with tiers, total cost, and trade-offs (new/used/rent)"
+      ]
+    },
+    {
+      "id": "P04_FITNESS_COMFORT_LOAD",
+      "label": "Fitness baseline and comfort-versus-carry-weight trade-off",
+      "type": "constraint_and_preference",
+      "possible_values": [
+        "limited fitness/comfort first",
+        "moderate fitness/balanced load",
+        "strong endurance/lighter functional kit"
+      ],
+      "oracle_value": "Good stamina and endurance from running, swimming, and strength training, but novice in the requested outdoor activities; values function and comfort. Body measurements and a personally tested carry-weight limit are unknown.",
+      "oracle_known": true,
+      "delta": "medium",
+      "delta_weight": 2,
+      "deliverable_consequence": "Changes safe base-weight target, backpack and footwear fitting protocol, comfort margins, training/shakedown plan, and injury-prevention advice; exact model sizing still requires measurements.",
+      "persona_evidence": [
+        "Physical Fitness: good stamina and endurance, capable of long runs",
+        "Exercise Types: running, swimming, strength training, yoga",
+        "Task: beginner"
+      ],
+      "affected_original_pdr_criteria": [
+        "Fit and comfort personalization (pack sizing, footwear fit, load targets, break-in)",
+        "Comfort and Fit Guidance Tailored to User Profile",
+        "Fit and sizing protocols for comfort-critical items"
+      ]
+    },
+    {
+      "id": "P05_TECH_NAVIGATION",
+      "label": "Technology, navigation, and power-system preference",
+      "type": "preference",
+      "possible_values": [
+        "minimal/analog-first",
+        "smartphone and offline-map centered",
+        "dedicated GNSS/satellite-device centered"
+      ],
+      "oracle_value": "Technology-positive and comfortable comparing devices and metrics; prefers a China-compatible, data-backed setup. Existing phone/watch ecosystem and willingness to pay for a satellite communicator are not stated.",
+      "oracle_known": true,
+      "delta": "medium",
+      "delta_weight": 2,
+      "deliverable_consequence": "Changes offline-map, BeiDou/GNSS, power bank, cold-battery, device redundancy, and emergency-communications recommendations.",
+      "persona_evidence": [
+        "Consumption Characteristics: strong preference for high-tech products",
+        "Exercise investments: fitness tracker",
+        "Decision-making: relies on data support"
+      ],
+      "affected_original_pdr_criteria": [
+        "Tech Ecosystem Fit (China Maps/BeiDou, Power Strategy)",
+        "Spec-driven decision logic and verification (metrics, thresholds, authenticity checks)"
+      ]
+    },
+    {
+      "id": "P06_PHASED_BUY_STORAGE",
+      "label": "Procurement cadence, testing style, and home-storage constraint",
+      "type": "constraint_and_preference",
+      "possible_values": [
+        "one-shot purchase/unconstrained storage",
+        "phased purchase/compact storage",
+        "rent-first/minimal ownership"
+      ],
+      "oracle_value": "Prefers planned, phased purchasing around one significant mid-/end-month purchase; lives in a one-bedroom Shanghai apartment, so compact multipurpose gear, drying, humidity control, and lifecycle value matter.",
+      "oracle_known": true,
+      "delta": "medium",
+      "delta_weight": 2,
+      "deliverable_consequence": "Changes the buy sequence, return-window and shakedown schedule, modular upgrade path, apartment storage, drying/maintenance, and total-cost-of-ownership advice.",
+      "persona_evidence": [
+        "Consumption Cycle: one significant purchase or investment mid-/end-month",
+        "Living Environment: one-bedroom apartment in downtown Shanghai",
+        "Permanent Residence: Shanghai"
+      ],
+      "affected_original_pdr_criteria": [
+        "Modular, scalable kit design with phased upgrades and testing plan",
+        "Urban storage, maintenance, and humidity management for a small apartment",
+        "Procurement timeline and shakedown/testing plan"
+      ]
+    },
+    {
+      "id": "P07_DECISION_PRESENTATION",
+      "label": "Evidence and presentation style",
+      "type": "presentation_preference",
+      "possible_values": [
+        "minimal narrative list",
+        "balanced explanation",
+        "spec-driven tables/checklists and explicit trade-offs"
+      ],
+      "oracle_value": "Prefers neutral, evidence-backed, spec-driven comparisons, concise pros/cons, and structured tables/checklists suitable for evening review.",
+      "oracle_known": true,
+      "delta": "low",
+      "delta_weight": 1,
+      "deliverable_consequence": "Changes report organization and comparison format but should not substantially change which safety-critical gear or scenarios are recommended.",
+      "persona_evidence": [
+        "Occupation: investment manager; CFA Level 1",
+        "Personality: meticulous and analytical",
+        "Decision-making: relies on data and expert opinions",
+        "Time Preference: evenings"
+      ],
+      "affected_original_pdr_criteria": [
+        "Analytical, structured communication style with checklists and trade-off reasoning",
+        "Professional, concise, and objective tone (non-marketing, evidence-oriented)",
+        "Standardized, comparison-friendly spec formatting"
+      ]
+    },
+    {
+      "id": "P08_SUSTAINABILITY",
+      "label": "Sustainability preference when performance and cost are comparable",
+      "type": "preference",
+      "possible_values": [
+        "not a consideration",
+        "prefer when cost/performance neutral",
+        "willing to pay a premium"
+      ],
+      "oracle_value": "Prefer eco-friendly packaging or materials when cost-effectiveness and safety are not compromised; no evidence of willingness to pay a meaningful premium for outdoor gear sustainability.",
+      "oracle_known": true,
+      "delta": "low",
+      "delta_weight": 1,
+      "deliverable_consequence": "May change tie-breaks, packaging/material notes, repairability, and lifecycle framing but should not override altitude safety or budget priorities.",
+      "persona_evidence": [
+        "Lifestyle Preferences.Services: prioritizes providers with eco-friendly packaging"
+      ],
+      "affected_original_pdr_criteria": [
+        "Sustainability and Eco-Packaging When Cost-Effective"
+      ]
+    }
+  ]
+}
+

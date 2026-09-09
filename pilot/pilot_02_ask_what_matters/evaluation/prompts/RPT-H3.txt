@@ -1,0 +1,320 @@
+
+<system_role>You are a strict, meticulous, and objective expert in evaluating personalized research articles. You excel at deeply evaluating research articles based on specific personalization assessment criteria, providing precise scores and clear justifications.</system_role>
+
+<user_prompt>
+**Task Background**
+You are given an in-depth research task. Your job is to evaluate a research article written for this task in terms of its performance in **"Personalization Alignment"**. We will evaluate it across the following four dimensions:
+1. Goal Alignment
+2. Content Alignment
+3. Presentation Fit
+4. Actionability & Practicality
+
+<task>
+"I plan to start a series of outdoor activities this summer, including hiking, camping, and mountaineering. As a beginner, I want to purchase a complete set of gear that will not only meet my basic needs but also handle different weather conditions, complex terrain, and unexpected situations.Please provide me with a detailed gear checklist, including but not limited to: backpack, waterproof clothing, hiking shoes, tent, sleeping bag, outdoor cooking equipment, navigation tools, first-aid kit, headlamp, portable water filter, and other essentials. Please consider durability, functionality, and comfort, ensuring the gear can adapt to changing outdoor environments. Also recommend suitable brands that will help me balance budget and quality."
+</task>
+
+**User Persona**
+<persona>
+"{'userid': 'User8', 'Basic Attributes': {'Identity Characteristics': {'Name': 'Chen Hao', 'Age': '26-30', 'Gender': 'Male', 'Occupation': 'Investment Manager at a Securities Company', 'Educational Background': 'Graduated from a 211 university in Shanghai, majored in Finance, achieved excellent academic performance during university, won multiple scholarships, and participated in several research projects related to financial analysis.'}, 'Family Status': {'Family Members and Relationships': "Single, has a good relationship with his parents, both of whom are ordinary working-class individuals. His father is a factory technician, and his mother is a primary school teacher. The family places a strong emphasis on education. His parents support Chen Hao's career development but hope he can also balance his family life.", 'Pets': 'None currently, but he is considering getting a cat. He has been researching cat care online and plans to adopt a stray cat early next year.'}, 'Long-term Spatial Characteristics': {'Permanent Residence': 'Shanghai', 'Hometown': 'Nanjing, Jiangsu', 'Living Environment': 'Currently rents a one-bedroom apartment in downtown Shanghai. The location is convenient with access to public transportation, close to a metro station, and surrounded by gyms and bookstores. His hometown is in an ordinary residential area in Nanjing. He grew up in a modest environment with a harmonious community atmosphere, which makes him appreciate his current lifestyle even more.'}}, 'Behavioral Characteristics': {'Online Usage Habits': {'High-frequency Apps and Usage Duration': 'Frequently uses financial apps like Xueqiu and Tonghuashun for about 2 hours daily. Recently started using Keep and health management apps for approximately 3 hours weekly to track workouts and dietary habits.', 'Online Social Behavior': 'Primarily communicates with colleagues through WeChat, occasionally updates his professional status on LinkedIn, and browses financial forums to stay informed about industry trends and market dynamics.'}, 'Offline Long-term Behavior': {'Daily Routine': 'On weekdays, wakes up at 7 AM and goes to bed after 10 PM. Lunch breaks are usually short, and he often eats a simple meal at the office. Recently, to improve his sleep quality, he has started avoiding electronic screens 30 minutes before bedtime and instead reads physical books. Weekends are more flexible and usually include exercise or learning activities.', 'Consumption Cycle': 'Plans his finances at the beginning of the month, with major spending occurring mid-month and at the end of the month. Typically makes one significant purchase or investment based on need.', 'Consumption Characteristics': 'Has a strong preference for high-tech products and financial investments. Lives frugally and prefers cost-effective items, such as taking advantage of e-commerce sales for necessary purchases. Recently started exploring second-hand platforms to buy high-quality goods at lower prices.', 'Periodic Mobility': 'Occasionally travels for work, mainly between major financial hubs in China. When traveling, he prefers to plan his itinerary in advance and opts for efficient transportation and comfortable accommodations.'}}, 'Environment': {'Time': {'Time Preference': 'Evenings, as he can focus better and enjoys reading financial books or analyzing data during quiet late hours.'}, 'Geographical Location': {'Frequent Places': 'Company, gym, library, occasionally visits coffee shops for independent thinking or work. Recently started attending weekly community center events like book clubs or volunteering activities.', 'Travel Radius': 'Mostly stays within Shanghai city limits, occasionally travels to nearby cities for work. Enjoys walking or using shared bikes to explore parks near his home.'}}, 'Personality Traits': {'Personality': 'Calm and meticulous, thinks rationally, excels at analyzing and summarizing problems, and maintains a humble and eager-to-learn attitude towards unfamiliar fields.', 'Decision-making Style': 'Makes decisions independently, relies on data support, and considers expert opinions to avoid taking unnecessary risks.', 'Shopping Preference': 'Prefers rational spending, focuses on cost-effectiveness, and has a strong inclination to purchase electronic products and professional books. Likes to research product reviews and user experiences before buying.'}, 'Preferences and Interests': {'Lifestyle Preferences': {'Diet': 'Prefers light meals, enjoys Japanese cuisine and simple meals, and has recently started cooking, particularly healthy and vegetarian recipes.', 'Accommodation Preferences': 'Prefers mid-to-high-end hotels that emphasize comfort and service, especially those with gyms and breakfast buffets.', 'Shopping': 'Enjoys online shopping, particularly for electronics, finance-related books, and sports gear. Carefully compares prices and reviews before purchasing.', 'Services': 'Frequently uses food delivery and courier services but prioritizes providers with eco-friendly packaging.'}, 'Travel Preferences': {'Frequency': '1-2 trips per year, mainly within China, usually during holidays or work breaks.', 'Destinations': 'Prefers city tours and cultural-historical sites. Recently developed an interest in natural landscapes and outdoor hiking, planning a trip to the Sichuan-Tibet route for high-altitude trekking.', 'Travel Style': 'Prefers independent travel, enjoys immersing himself in local culture, and meticulously plans trips in advance.'}, 'Content Preferences': {'Article Collection': 'Finance, economics, and management articles, occasionally psychology and self-improvement content.', 'Short Videos': "Prefers finance-related short video platforms, such as Douyin's finance channel, and videos offering investment tips and career development advice.", 'Screenshots': 'Often saves screenshots of financial data and market analysis, organizing them into personal notes for future reference.', 'Books, Movies, Singers, Actors': "Favorite books include 'Poor Charlie's Almanack' and 'Principles.' Recently started appreciating light music and piano compositions. In movies, admires Tony Leung's acting style, especially in artistic films."}, 'Exercise Preferences': {'Exercise Habits': 'Runs 3-4 times a week, usually in the morning or evening. Recently started yoga and meditation to relax and improve flexibility.', 'Exercise Goals': 'Improve endurance, maintain health, and use exercise to relieve stress and enhance focus.', 'Exercise Types': 'Running, swimming, strength training, yoga.', 'Other Investments': 'Has purchased professional running shoes, a fitness tracker, and a gym membership, and regularly updates his workout gear.', 'Exercise Locations': 'Gym and nearby parks, occasionally participates in community-organized running events.'}}, 'Health Status': {'Physical Condition': {'Medical History': 'Good health with no significant medical history. Regular check-ups show normal physical indicators.', 'Mental Condition': 'Occasionally experiences work-related stress but alleviates it through exercise and reading financial books. Recently improved his mental state further through meditation and deep-breathing exercises. Prefers solving problems through rational analysis.', 'Physical Fitness': 'Good stamina and endurance, capable of long runs and moderate-intensity workouts.'}, 'Health Needs': {'Health Needs': 'Maintain overall health and fitness, prevent occupational diseases, and enhance quality of life through regular exercise and a healthy diet.'}}, 'Financial Information': {'Financial Status': {'Income Structure': 'Primary income is from salary, with a smaller portion from investment returns. Salary accounts for about 80%, and investment income accounts for about 20%.', 'Asset Status': 'Owns a mortgaged property and a car, has stable savings, and an investment portfolio primarily consisting of stocks and funds with balanced asset allocation.', 'Consumption Characteristics': 'Rational spender focused on investment returns. Keeps living expenses within 50% of income, with the remainder allocated to savings and investments.', 'Debt Situation': 'Has a mortgage but no other debts. The mortgage takes up a moderate proportion of his monthly income, allowing for good cash flow management.'}, 'Investment Experience': {'Investment Background': 'Experienced in stock and fund investments, currently learning about real estate investment. Has faced short-term losses but achieved stable profits through reflection and learning.', 'Knowledge Level': 'Possesses extensive financial knowledge, has passed the CFA Level 1 exam, is currently preparing for Level 2, and regularly attends industry investment forums.', 'Risk Management': {'Risk Appetite': 'Risk-averse, focuses on long-term returns, prefers low-risk asset allocation, and adjusts investment strategies based on market trends.'}}}}"
+</persona>
+
+**Article to be Evaluated**
+<target_article>
+"For a beginner doing hiking + overnight backpacking/camping + eventual mountaineering, the most cost-effective approach is a modular system: buy one dependable 3-season hiking/backpacking kit, then add or rent technical alpine equipment only when a route requires it. The National Park Service and current REI guidance both treat the Ten Essentials as the minimum baseline even for day hikes, with additional gear determined by weather, terrain and remoteness. 
+National Park Service
++1
+
+1. Complete hiking and backpacking checklist
+Category	What I would buy as a beginner	Good-value brands	Higher-end / specialized
+Backpack	55–65 L internal-frame pack for a versatile first pack; adjustable torso, supportive hip belt, ventilated back, accessible pockets, rain cover or waterproof liner	REI Co-op, Kelty	Osprey, Gregory, Deuter
+Daypack	20–30 L for short hikes/summit days; hydration-compatible	REI, Decathlon/Forclaz	Osprey, Gregory, Black Diamond
+Rain jacket	Waterproof/breathable shell with hood and ventilation. A 3-layer shell is worth considering if you expect rough terrain and frequent rain	REI, Marmot	Patagonia, Outdoor Research, Arc'teryx
+Rain pants	Lightweight waterproof pants; ankle/full-length zippers are useful over boots	REI, Columbia	Outdoor Research, Patagonia
+Base layers	Synthetic or merino shirt; lightweight thermal top/bottom for mountains	Decathlon, REI	Smartwool, Icebreaker
+Midlayer	Lightweight grid fleece or similar breathable fleece	Columbia, REI	Patagonia, Outdoor Research
+Insulation	Packable synthetic jacket for wet climates; down jacket for colder/drier environments	REI, Decathlon	Patagonia, Mountain Hardwear
+Hiking pants	Quick-drying, stretch woven; ideally abrasion resistant	Columbia, REI	Outdoor Research, Fjällräven
+Hiking footwear	Hiking shoe or mid boot with grippy outsole; choose by fit rather than brand. Waterproof version for persistently wet/cold conditions	Merrell, Keen	Salomon, La Sportiva, Scarpa
+Socks	2–3 pairs wool/synthetic hiking socks; no cotton	REI	Darn Tough, Smartwool
+Gaiters	Optional for mud/scree; more important for snow	REI	Outdoor Research, Black Diamond
+Tent	2-person, 3-season, full rainfly, two doors/vestibules if possible; freestanding designs are easiest for beginners	REI, Kelty, ALPS Mountaineering	Big Agnes, Nemo, MSR
+Sleeping bag	Around 20°F / –7°C ISO/EN-rated is a versatile mountain-oriented 3-season choice. Down saves weight; synthetic handles prolonged dampness better	Kelty, REI	Nemo, Therm-a-Rest, Feathered Friends
+Sleeping pad	Insulated inflatable pad; I would target roughly R 4 or higher for a versatile one-pad system	REI	Nemo, Therm-a-Rest
+Stove	Small isobutane canister stove, stable pot supports, good wind performance	MSR PocketRocket	Soto WindMaster
+Cookware	750–1,200 mL pot, lid, long spoon, mug; larger if cooking for two	GSI, Stanley	Sea to Summit, TOAKS
+Ignition	Lighter plus backup lighter/matches	Any reliable brand	—
+Water capacity	2–3 L total carrying capacity, combining bottles and/or reservoir	Nalgene, CNOC	Hydrapak
+Water treatment	Squeeze/gravity microfilter plus backup chemical treatment	Sawyer	Katadyn, Platypus
+Navigation	Offline phone map + paper/topographic map + baseplate compass	Suunto	Garmin
+Emergency communication	Satellite messenger for genuinely remote trips without cell coverage	ZOLEO	Garmin inReach
+Headlamp	About 300–600+ lumens, weather resistant; rechargeable battery with replaceable-battery option is particularly useful	Black Diamond	Petzl
+Power	10,000 mAh power bank + short charging cable	Anker	Nitecore
+First aid	Hiking/backpacking kit customized with blister care and your personal medicines	Adventure Medical Kits	Build your own
+Trekking poles	Aluminum adjustable poles are tougher and cheaper than carbon for a beginner	Cascade Mountain Tech	Black Diamond, LEKI
+Emergency shelter	Ultralight emergency bivy/blanket even on day hikes in remote mountains	SOL	—
+Repair	Duct tape wrapped around bottle/pole, tent patches, sleeping-pad patches, cable ties, needle/thread	Gear Aid	—
+Tools	Small multitool/knife; don't bring a large heavy survival knife	Victorinox	Leatherman
+Fire/emergency	Waterproof matches/fire starter where legal and environmentally appropriate	UCO	—
+Signaling	Whistle; satellite device for remote objectives	Any reputable brand	Garmin/ZOLEO
+Sun	Sunglasses, brimmed cap, sunscreen, lip protection	Any reputable brand	Julbo for alpine/glacier glasses
+Hands/head	Light gloves + warm gloves, beanie, neck gaiter	REI, Decathlon	Outdoor Research
+Hygiene	Trowel where permitted, toilet paper, waste bag, sanitizer, toothbrush	Coghlan's	TheTentLab
+Food storage	Odor-resistant bags plus bear canister/approved storage where required	Ursack where legal	BearVault/Garcia canister
+Misc.	Insect repellent/head net, notebook, identification, permits, emergency contacts	—	—
+
+For packs, capacity and fit matter more than the logo. REI currently recommends roughly 50–80 L for typical 3–5-night backpacking trips, and pack sizing is based primarily on torso length rather than overall height. 
+REI
++1
+
+For footwear, your toes need some expansion room while the heel remains secure. Current fitting guidance recommends a snug-but-not-tight fit and roughly a thumb's width ahead of the longest toe. 
+REI
+
+Clothing: use a system, not one heavy jacket
+
+The most adaptable setup is:
+
+wicking base layer → fleece/light insulation → puffy insulation → waterproof/windproof shell.
+
+That lets you regulate temperature during climbs, stops, rain and sudden temperature drops. It's particularly important in mountains, where the clothing you need at a windy summit may be very different from what you need while climbing uphill. 
+REI
+
+For your rain jacket, I'd spend a little extra on durability. Modern 3-layer shells generally provide the best combination of waterproof performance, breathability and abrasion resistance; 2.5-layer jackets are cheaper and lighter but typically sacrifice durability. 
+REI
++1
+
+2. Sleep system: one of the most important places to spend money
+
+Don't evaluate a sleeping bag alone. Your warmth comes from the bag + sleeping pad + clothing.
+
+For a first mountain-oriented setup, I'd choose:
+
+20°F / –7°C sleeping bag + insulated pad around R 4–5.
+
+REI's current guidance places pads below R2 in warm-weather territory, roughly R2–3.9 for cool weather, R4–5.4 for colder conditions and R5.5+ for very cold conditions. A higher-R pad also gives your sleeping bag a better chance of performing near its advertised rating. 
+REI
+
+Prefer a sleeping bag carrying an ISO or EN rating, so you can compare it meaningfully across manufacturers. If you're normally cold at night, pay more attention to the bag's comfort rating; warm sleepers can use the limit rating more heavily. 
+REI
+
+3. Water: don't depend on a filter alone everywhere
+
+A Sawyer Squeeze, Katadyn BeFree or Platypus QuickDraw is an excellent backpacking filter, but it's important to understand what portable filters can and can't do.
+
+The CDC recommends boiling as the most reliable treatment. Where boiling isn't practical, its next-preferred approach is filtering followed by disinfection when contamination is uncertain. Many portable microfilters remove parasites and bacteria but do not reliably remove viruses. 
+CDC
+
+So I'd carry:
+
+primary: Sawyer/Katadyn/Platypus filter
+backup: chlorine-dioxide tablets
+capacity: enough bottles/reservoirs to bridge long dry stretches.
+
+4. Cooking equipment
+
+For one or two people backpacking, a simple remote-free canister stove setup is hard to beat:
+
+Soto WindMaster or MSR PocketRocket + 900–1,200 mL pot + spoon + lighter + backup lighter.
+
+The WindMaster is particularly attractive where summer mountain winds are common; the PocketRocket is less expensive and very simple.
+
+Never use a backpacking stove inside your tent or vestibule unless the equipment manufacturer has explicitly engineered a system for such use—which ordinary backpacking setups generally have not. Standard stove instructions warn that fuel-burning appliances can generate lethal carbon monoxide in enclosed spaces. 
+Cascade Designs
++1
+
+5. Navigation and unexpected situations
+
+A phone is an excellent navigation tool but shouldn't be the entire system.
+
+I would carry:
+
+phone with downloaded offline maps + paper/topographic map + Suunto/Silva baseplate compass + power bank.
+
+Then add a satellite communicator such as Garmin inReach or ZOLEO whenever you're traveling far enough from roads or populated trails that reliable cellular service can't be assumed. The NPS explicitly recommends considering a satellite/locator device because cell phones can lack reception or lose power. 
+National Park Service
+
+And learn the compass before you need it. NPS guidance specifically emphasizes knowing how to use your topo map, compass or GPS rather than merely carrying them. 
+National Park Service
+
+6. First-aid and emergency kit
+
+For a solo or two-person weekend, a premade Adventure Medical Kits "Hiker" or "Backpacker" kit is a good starting point. Customize it so it contains:
+
+Blisters: leukotape/moleskin, hydrocolloid dressing
+Wounds: gauze, adhesive bandages, wound-cleaning material
+Bleeding: pressure dressing/gauze
+Sprains: elastic wrap
+Tools: tweezers, small scissors, nitrile gloves
+Medication: your personal prescriptions plus any OTC medicines you normally use safely
+Emergency: whistle and emergency bivy/blanket.
+
+A first-aid kit is only as useful as your ability to use it. A basic first-aid course is useful; before serious mountaineering, a Wilderness First Aid course is an especially worthwhile investment.
+
+7. A balanced set of products to use as reference points
+
+These aren't the only good products, and footwear in particular should be chosen by fit, but this group represents the price/performance level I'd target for a durable beginner setup.
+
+Osprey Rook 65 Pack
+$205.00•Ideal for backpacking with a 65L capacity and ergonomic design.
+REI Co-op Half Dome 2 Plus Tent
+$369.00•Lightweight tent with ample space and weather protection.
+Kelty Cosmic Down 20 Sleeping Bag
+$189.95•Warm, compact down sleeping bag for cold nights.
+REI Co-op Helix Insulated Air Sleeping Pad
+$149.19•Insulated air pad offers comfort and warmth for camping.
+Patagonia Torrentshell 3L Rain Jacket
+$189.00•Waterproof, breathable jacket for unpredictable weather.
+Soto WindMaster Stove
+$69.95•Portable stove with wind resistance for outdoor cooking.
+Sawyer Squeeze Water Filter System
+$41.95•Compact water filter system for safe drinking water.
+Petzl Actik Core Headlamp
+$69.95•Bright, rechargeable headlamp for night adventures.
+Garmin inReach Mini 2
+$349.99•Satellite communicator for safety in remote areas.
+Give feedback
+
+The philosophy behind that combination is more important than the individual models: moderately priced pack and sleeping bag, durable shell, good sleeping pad, simple stove/filter, trustworthy lighting and optional satellite communication.
+
+8. Mountaineering is a separate equipment category
+
+Once snow, glaciers, exposed scrambling or roped climbing enter the picture, ordinary backpacking equipment isn't enough.
+
+For glacier or snow mountaineering, the additional kit can include:
+
+Technical item	What to look for	Good brands
+Mountaineering boots	Stiff, waterproof and explicitly compatible with your intended crampons	La Sportiva, Scarpa
+Crampons	Steel general-mountaineering crampons; binding must match the boot	Petzl, Black Diamond, Grivel
+Ice axe	General mountaineering axe sized for the route/use	Petzl, Black Diamond, Grivel
+Helmet	Certified climbing/mountaineering helmet	Petzl, Black Diamond
+Harness	Adjustable enough to fit over your mountain clothing	Petzl, Black Diamond
+Glacier glasses	High protection plus side coverage	Julbo, Smith
+Gaiters	Durable, crampon-resistant lower-leg protection	Outdoor Research, Rab
+Technical gloves	Dexterity plus waterproof/wind protection	Outdoor Research, Black Diamond
+Carabiners / slings / prusiks	UIAA/CE-certified and selected as part of a complete rescue system	Petzl, Black Diamond
+Rope	Route/team-specific; don't select one until you understand the system	Petzl, Mammut, Edelrid
+Belay/rescue equipment	Course/route-specific	Petzl, Black Diamond
+
+The reason I would not buy all of that immediately is safety and compatibility. Olympic National Park's mountaineering guidance specifically states that glacier travel requires specialized skills involving ice axe, rope, helmet, harness, hardware and crampons; hidden crevasses are a major hazard, solo glacier travel should not be attempted, and formal training should come first. 
+National Park Service
+
+American Alpine Institute's current introductory course list similarly specifies stiff crampon-compatible boots, steel crampons, certified climbing equipment and roughly 65–75 L packs for mountaineering—and makes many of the specialized items available for rental. 
+American Alpine Equipment Shop
+
+Examples of the current cost level:
+
+Scarpa Ribelle HD Mountaineering Boots
+$419.00•Durable mountaineering boots for rugged terrain.
+Black Diamond Contact Strap Crampons
+$189.95•Lightweight crampons for ice and snow.
+Black Diamond Raven Ice Axe
+$140.00•Versatile ice axe for climbing and self-arrest.
+Petzl Boreo Helmet
+$74.95•Comfortable helmet for climbing safety.
+Black Diamond Momentum 4S Harness
+$90.00•Secure harness for climbing and rappelling.
+Give feedback
+Especially important: don't buy questionable used climbing PPE
+
+Buying a used tent, backpack, trekking poles or cooking equipment can be a great way to save money.
+
+I would not do the same with unknown-history ropes, harnesses or helmets. The UIAA's February 2026 buying guidance explicitly does not endorse second-hand climbing equipment whose integrity cannot be verified, particularly ropes, harnesses and helmets. It also recommends certified UIAA/CE equipment, correct sizing and checking system compatibility. 
+UIAA
+
+9. Where to spend versus where to save
+
+Spend more on: footwear fit, backpack fit/suspension, sleeping pad, sleeping bag, waterproof shell, certified climbing hardware and mountaineering boots. A bad pair of shoes or a poorly fitting pack can ruin every day of a trip, while inadequate sleep/rain protection can become a safety issue.
+
+Save on: cooking pot, spoon, fleece, hiking shirts, stuff sacks, simple gloves, basic trekking poles and some camp accessories. You don't need $100 titanium cookware to safely boil water.
+
+Rent initially: technical mountaineering boots, crampons, ice axe, helmet, harness and group rope/rescue equipment. After taking a course and learning what type of mountaineering you actually enjoy, you'll know whether your future is mostly snow climbs, glacier travel, alpine rock or technical ice—and those require substantially different equipment.
+
+10. Realistic budget
+
+For new equipment at current U.S. retail levels, I'd plan approximately:
+
+Setup	Reasonable budget
+Good day-hiking setup	$300–700
+Complete budget/value 3-season backpacking setup	$1,000–1,500
+Comfortable mid-range setup	$1,500–2,200
+Mid-range setup + satellite communicator/electronics	$1,800–2,600
+Technical mountaineering additions	Often another $1,000+ if purchased rather than rented
+
+You can reduce those numbers significantly by buying packs, tents and clothing during end-of-season sales or used, while keeping technical life-safety equipment new.
+
+The configuration I would choose for your goals
+
+For a beginner wanting one durable foundation rather than chasing ultralight numbers, my target would be a 55–65 L Osprey/Gregory/Deuter pack; Merrell/Salomon hiking footwear fitted in person; 3-layer Patagonia/Outdoor Research/REI shell; REI/Big Agnes/Nemo 2-person tent; Kelty/Nemo 20°F bag; R≈4–5 insulated pad; Soto/MSR stove; Sawyer/Platypus filter; Petzl/Black Diamond headlamp; Suunto compass; Adventure Medical Kits first aid; aluminum trekking poles; emergency bivy; and a Garmin/ZOLEO communicator for remote trips.
+
+That system is durable enough to learn on without being unnecessarily expensive, and nearly everything remains useful after you progress into mountaineering. The technical snow/glacier hardware should then be added route by route after instruction, rather than trying to build a universal alpine rack on day one.\n"
+</target_article>
+
+**Evaluation Criteria**
+You must evaluate the specific performance of this article in terms of personalization alignment, **following the criteria list below**, outputting your analysis and then assigning a score from 0–10. Each criterion includes its explanation, which you should read carefully.
+
+<criteria_list>
+{'goal_alignment': [{'criterion': 'Safety and risk management tailored to a beginner and high-altitude scenarios', 'explanation': 'Assesses whether the report prioritizes safety for a novice: redundancy for navigation and lighting, weather decision rules, first-aid and emergency protocols, altitude acclimatization guidance, and clear boundaries between trekking vs technical mountaineering (e.g., when to hire guides or rent technical gear). This aligns with Chen Hao’s risk-averse style and planned Sichuan–Tibet trekking.', 'weight': 0.18}, {'criterion': 'Budget–quality optimization with data-backed purchasing strategy for China market', 'explanation': 'Checks if recommendations balance cost and performance with concrete prices in China, warranty/after-sales info, repairability, resale value, and local brand options (e.g., Decathlon, Naturehike, Kailas, Fire-Maple) alongside global brands. Includes guidance on buying used vs new (safety-critical items new), rentals for rarely used technical gear, and timing purchases around sales and his mid-/end-month spending cadence.', 'weight': 0.17}, {'criterion': 'Region- and season-specific adaptation for Shanghai summers and Sichuan–Tibet conditions', 'explanation': 'Evaluates whether the plan explicitly covers hot-humid Shanghai training (heat/humidity management) and high-altitude summer trekking (UV, sudden storms, cold nights, diurnal swings) with appropriate layering, waterproofing, sun protection, and shelter/sleep system specs. Addresses his actual destinations and the multi-environment reality.', 'weight': 0.16}, {'criterion': 'Modular, scalable kit design with phased upgrades and testing plan', 'explanation': 'Assesses whether the gear list is organized into a core kit for day hikes and camping with add-ons for (non-technical) mountaineering, plus clear upgrade paths and a phased purchasing/testing approach (e.g., weekend shakedowns near Shanghai). This fits his beginner status, conservative risk appetite, and planned monthly purchase cycles.', 'weight': 0.13}, {'criterion': 'Spec-driven decision logic and verification (metrics, thresholds, authenticity checks)', 'explanation': 'Looks for quantifiable selection criteria (e.g., hydrostatic head, down fill power, R-value, headlamp lumens/battery type, filter pore size/flow rate, pack volume/weight targets) and guidance on verifying authenticity on JD/Tmall and avoiding counterfeits. Matches his analytical, data-reliant decision-making style.', 'weight': 0.12}, {'criterion': 'Fit and comfort personalization (pack sizing, footwear fit, load targets, break-in)', 'explanation': 'Checks whether the plan provides actionable fit guidance: torso/hip measurements for packs, footwear sizing for swelling and last width, sock/liner choices, blister prevention, and safe load targets. Aligns with his good but novice outdoor fitness and desire to avoid injury.', 'weight': 0.09}, {'criterion': 'China-specific procurement, logistics, and legal compliance details', 'explanation': 'Evaluates whether the content covers fuel canister transport constraints, sourcing fuel at destination, potential restrictions on satellite communicators, local permits/park rules, and availability at domestic retailers. Ensures recommendations are usable and compliant in his operating environment.', 'weight': 0.07}, {'criterion': 'Urban storage, maintenance, and humidity management for a small apartment', 'explanation': 'Assesses guidance on compact, multi-use gear; maintenance schedules (DWR renewal, down storage, tent care); drying/dehumidifying strategies in Shanghai humidity. Reflects his space constraints and desire to preserve gear value (TCO).', 'weight': 0.04}, {'criterion': 'Analytical, structured communication style with checklists and trade-off reasoning', 'explanation': 'Checks for clear checklists, tiered brand recommendations, concise pros/cons, and decision trees he can review in evening research sessions. Resonates with his professional analytical habits and preference for expert-backed, rational advice.', 'weight': 0.04}], 'content_alignment': [{'criterion': 'China-specific Environmental and Route Localization', 'explanation': 'Assess whether the content tailors gear choices to Shanghai’s hot, rainy, humid summers and the Sichuan–Tibet route’s high-altitude cold, intense UV, and storm potential (e.g., sun protection, alpine-capable layering, storm-worthy shelters), and references brands/models available in the China market.', 'weight': 0.22}, {'criterion': 'Value-Tiered Brand Recommendations for China Market', 'explanation': 'Check if the report proposes clear price–performance tiers (entry/mid/premium) with China-available brands/models, helping a cost-conscious, research-oriented buyer balance budget and quality for each gear category.', 'weight': 0.18}, {'criterion': 'Risk Management and Safety Redundancy for a Beginner at Altitude', 'explanation': 'Evaluate inclusion and emphasis on safety-critical selections tailored to a risk-averse novice planning high-altitude trips (e.g., reliable water treatment redundancy, headlamp reliability and spare batteries, emergency communication options suitable in China, first-aid essentials for altitude/cold).', 'weight': 0.18}, {'criterion': 'Modular Kit Design and Upgrade Path', 'explanation': 'Determine whether the gear list is structured into a core kit plus optional modules for day hikes, overnight camping, and entry mountaineering, with clear upgrade paths to avoid overbuying expedition gear prematurely—aligned to his single significant purchase behavior and gradual skill growth.', 'weight': 0.12}, {'criterion': 'Data-Backed Specifications and Comparative Depth', 'explanation': 'Assess whether recommendations reference quantifiable specs (e.g., pack weight and frame type, waterproof rating/hydrostatic head, breathability, fill power/R-value, outsole rubber types, warranty terms) enabling an analytical, CFA-level user to compare and justify choices.', 'weight': 0.1}, {'criterion': 'Tech Ecosystem Fit (China Maps/BeiDou, Power Strategy)', 'explanation': 'Check alignment with his tech preference and Chinese context: offline map/app compatibility (e.g., Gaode/Amap), BeiDou/GNSS support, battery strategy for altitude/cold, and power bank/charging solutions suitable for China travel infrastructure.', 'weight': 0.07}, {'criterion': 'Comfort and Fit Guidance Tailored to User Profile', 'explanation': 'Evaluate whether the content includes fit-centric advice relevant to a male user in China—pack torso and hip-belt sizing, footwear last/width guidance, sock and insole pairing—to support long-term comfort and reduce injury risk.', 'weight': 0.05}, {'criterion': 'Storage and Maintenance for Humid Urban Living', 'explanation': 'Assess if the report addresses care/storage practices suited to a small, humid Shanghai apartment (e.g., drying protocols, dehumidification, down storage, tent/sleeping bag mold prevention) to preserve durability and value.', 'weight': 0.03}, {'criterion': 'Acquisition Strategy Alignment (Sales Timing, Second-hand Verification, Warranty)', 'explanation': 'Determine whether content aligns with his consumption cycle and platform habits: suggests China e-commerce sales windows (e.g., 618/11.11), store try-on then online purchase tactics, second-hand inspection/red flags, and ensuring valid China warranty/invoices.', 'weight': 0.04}, {'criterion': 'Sustainability and Eco-Packaging When Cost-Effective', 'explanation': 'Check if the content acknowledges eco-friendly packaging/material options that do not compromise cost-effectiveness, reflecting his service preference without diluting budget priorities.', 'weight': 0.01}], 'presentation_fit': [{'criterion': 'Professional, concise, and objective tone (non-marketing, evidence-oriented)', 'explanation': 'Assesses whether the report uses neutral, data-driven language with clear claims (e.g., cites standards rather than hype). This matches a finance professional’s preference for analytical, trustworthy presentation.', 'weight': 0.16}, {'criterion': 'Jargon and acronym handling with brief in-line definitions', 'explanation': 'Checks if outdoor terms (e.g., EN/ISO temperature rating, R-value, denier, hydrostatic head, RET/MVTR) are introduced with short explanations on first use, reducing beginner friction while preserving precision.', 'weight': 0.14}, {'criterion': 'Layered structure and navigation (TL;DR, clear headings, logical grouping)', 'explanation': 'Evaluates the presence of an executive summary/quick-start checklist, clear section headers, and grouping by function/use-case. This supports efficient evening/mobile reading and staged deep-dives.', 'weight': 0.16}, {'criterion': 'Standardized, comparison-friendly spec formatting', 'explanation': 'Looks for consistent spec fields across items (e.g., weight, capacity/volume, temperature/waterproof ratings, sole type, price band) in aligned lists or matrices, enabling side-by-side evaluation.', 'weight': 0.15}, {'criterion': 'Numeric and unit clarity (metric, RMB, explicit scales/standards)', 'explanation': 'Assesses the use of SI units (L, g, °C, mm), RMB price ranges, and explicit standards/ratings rather than vague adjectives, aiding precise understanding and minimizing conversion effort.', 'weight': 0.1}, {'criterion': 'Scannability and mobile-friendly formatting', 'explanation': 'Checks for short paragraphs, bullet lists, one-idea-per-bullet, consistent list markers, and minimal dense blocks to fit mobile reading habits and reduce cognitive load.', 'weight': 0.1}, {'criterion': 'Priority and tagging system for quick triage', 'explanation': 'Evaluates whether items are labeled with Must-have/Nice-to-have, season/terrain tags (e.g., 3-season/4-season), and budget tiers as visual/textual tags to speed up screening without adding content.', 'weight': 0.07}, {'criterion': 'Safety and risk callout formatting', 'explanation': "Checks for visually distinct callouts (e.g., 'Safety:' prefixes) for critical items and precautions (redundant light/power, first-aid), aligning with the user’s risk-averse style without changing content.", 'weight': 0.06}, {'criterion': 'Localization for China-based reader (naming and sizing presentation)', 'explanation': 'Assesses clear brand naming (English with Chinese where helpful), RMB pricing notation, and size conventions or conversions (US/EU to CN) as presentation elements to reduce friction in local purchasing.', 'weight': 0.06}], 'actionability_practicality': [{'criterion': 'Prioritized, complete checklist with quantitative spec thresholds', 'explanation': 'Checks whether the report provides a must-have vs. optional gear list and key specs to buy against (e.g., pack volume and load range; jacket waterproof/breathability ratings; boot category and outsole; tent season rating and minimum weight; sleeping bag EN/ISO comfort rating for high-altitude nights; pad R-value; headlamp lumens and battery type; filter pore size/flow rate). This lets a beginner confidently pick specific models without guesswork.', 'weight': 0.18}, {'criterion': 'Budgeted plan with tiers, total cost, and trade-offs (new/used/rent)', 'explanation': 'Evaluates whether the report offers budget tiers (e.g., value/mid/premium), shows total basket costs, and clarifies performance trade-offs, including when to buy used or rent (e.g., mountaineering-specific items) to balance quality and price. This matches the user’s cost-effectiveness and purchasing cycle needs and enables immediate purchasing decisions.', 'weight': 0.18}, {'criterion': 'Scenario-based loadouts and decision rules for weather/terrain', 'explanation': 'Assesses whether the report maps gear selections to specific use cases (day hike, car-camp, backpacking, non-technical high-altitude trekking) and conditions (Shanghai summer rain, Sichuan–Tibet cold/UV), with clear rules (e.g., when to move from trail shoes to boots, 3-season vs. more robust shelter, layering choices). This prevents over/under-buying and ensures adaptability.', 'weight': 0.15}, {'criterion': 'Fit and sizing protocols for comfort-critical items', 'explanation': 'Looks for step-by-step fit guidance and try-on procedures (e.g., boot sizing, sock thickness, heel lock, break-in steps; backpack torso/hip-belt fitting and load testing; clothing size for layering). Clear fit protocols reduce injury risk and return friction, turning recommendations into usable purchases.', 'weight': 0.12}, {'criterion': 'Safety and redundancy plan integrated into the kit', 'explanation': 'Checks whether first-aid contents are tailored to hiking/camping; navigation redundancy (offline maps + compass), lighting backups, whistle, emergency blanket, sun/UV protection for high altitude, and guidance on emergency communication options common in China. This makes the gear plan operationally safe for a beginner.', 'weight': 0.12}, {'criterion': 'Purchase feasibility in China (channels, availability, after-sales)', 'explanation': 'Verifies that recommended brands/models are readily obtainable via mainstream channels (JD/Tmall/Decathlon/official stores), include indicative price ranges and seasonal sale tips, and note warranty/repair and fuel compatibility for stoves. This ensures the user can actually acquire and support the gear locally.', 'weight': 0.1}, {'criterion': 'Weight/portability and packing guidance', 'explanation': 'Evaluates whether the report sets base-weight targets and packing lists per scenario, suggests multipurpose items to minimize total gear, and provides storage tips for a small apartment in humid Shanghai. Practical weight and packing guidance make the kit comfortable to carry and easy to live with.', 'weight': 0.08}, {'criterion': 'Maintenance and lifecycle cost guidance', 'explanation': 'Checks for actionable care steps (e.g., DWR renewal, boot leather/synthetic care, tent seam care/drying, filter backflushing, battery management) and replacement intervals. This reduces failure risk, extends service life, and supports a rational total-cost-of-ownership approach.', 'weight': 0.04}, {'criterion': 'Procurement timeline and shakedown/testing plan', 'explanation': 'Assesses whether there is a staged buy-and-try plan aligned to the user’s monthly purchase cycle and evening time window, with local shakedown hikes/camps, return-window checks, and a final pre-trip kit validation before high-altitude travel. This turns the plan into concrete actions with minimal risk.', 'weight': 0.03}]}
+</criteria_list>
+
+<Instruction>
+**Your Task**
+Strictly follow **each criterion** in `<criteria_list>` to evaluate how `<target_article>` meets that criterion. You must:
+1. **Analyze Each Criterion**: For each item in the list, think about how the article meets the requirements of that criterion.
+2. **Analytical Evaluation**: Combine the article content, the task, and the user persona to analyze the article’s performance for that criterion, pointing out both strengths and weaknesses.
+3. **Scoring**: Based on your analysis, give a score between 0 and 10 (integer) for the article's performance on that criterion.
+
+**Scoring Rules**
+For each criterion, give a score between 0 and 10 (integer). The score should reflect the quality of the article’s performance:
+* 0–2 points: Very poor. Almost completely fails to meet the requirement.
+* 2–4 points: Poor. Meets the requirement only partially, with significant shortcomings.
+* 4–6 points: Average. Basically meets the requirement; neither particularly good nor bad.
+* 6–8 points: Good. Mostly meets the requirement, with notable strengths.
+* 8–10 points: Excellent/Outstanding. Fully or exceptionally meets the requirement.
+
+**Output Format Requirements**
+Strictly follow the `<output_format>` below to output the evaluation results for **each criterion**. **Do not include any irrelevant content, introductions, or conclusions**. Start from the first dimension and output all dimensions and their criteria in sequence:
+</Instruction>
+
+<output_format>
+{
+    "goal_alignment": [
+        {
+            "criterion": [The text of the first Goal Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        {
+            "criterion": [The text of the second Goal Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "content_alignment": [
+        {
+            "criterion": [The text of the first Content Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "presentation_fit": [
+        {
+            "criterion": [The text of the first Presentation Fit criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "actionability_practicality": [
+        {
+            "criterion": [The text of the first Actionability & Practicality criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ]
+}
+</output_format>
+
+Now, evaluate the article’s performance in personalization alignment based on the research task, the user persona, and the criteria. Provide detailed analysis and scoring as required above. Ensure that the output strictly follows `<output_format>`, that the JSON is valid and parseable, and that any special characters that may cause parsing errors are properly escaped.
+</user_prompt>

@@ -1,0 +1,25 @@
+{
+  "agent_id": "agent_B",
+  "product": "Google Gemini Deep Research",
+  "product_surface": "Fresh standard Gemini conversation, Deep Research enabled, Google Search source",
+  "visible_model": "Gemini Flash",
+  "exact_backend_model_identifier": null,
+  "condition": "instruction-only + free clarification",
+  "prompt_sha256": "b297cb14ffadf2efe1ac016b38b98eb16fbcc7d2ad8cbf98fdd62ab10c33a704",
+  "run_date_local": "2026-09-07",
+  "timezone": "America/Detroit",
+  "completed_at_utc": "2026-09-07T21:55:59Z",
+  "conversation_url": "https://gemini.google.com/app/ada38aa7775956fb",
+  "account_memory_isolation": "A fresh standard conversation was used. Gemini removed Deep Research when Temporary Chat was enabled, so account-level personalization could not be explicitly disabled; this is recorded as a residual-context risk.",
+  "stored_prompt_note": "prompt.txt is a text-normalized snapshot with one terminal newline; prompt_sha256 identifies the frozen common_prompt.txt supplied to the product.",
+  "clarification_questions": 0,
+  "clarification_turns": 0,
+  "user_answer_tokens": 0,
+  "run_status": "complete",
+  "transport_notes": [
+    "Deep Research was explicitly selected with Google Search as its source.",
+    "The product generated a generic research plan and invited plan edits; this workflow confirmation was not counted as a task-specific preference clarification.",
+    "The agent began research without asking a preference question and therefore received no simulated-user information.",
+    "The final report was rendered in Chinese despite the English source prompt, consistent with the product interface locale."
+  ]
+}

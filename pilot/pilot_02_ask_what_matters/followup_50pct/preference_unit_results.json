@@ -1,0 +1,209 @@
+{
+  "status": "manual_diagnostic_complete",
+  "scoring_note": "This is a frozen preference-unit chain audit, not an official PDR personalization score. 'Strictly reflected' requires the report to realize the oracle-specific value, not merely mention a generic neighboring topic.",
+  "should_ask_policy": {
+    "P01_ACTIVITY_ENVIRONMENT": "yes: high influence and the actual route/environment remain absent",
+    "P03_BUDGET_QUALITY": "optional: high influence, but value orientation is strongly inferable from the task phrase 'balance budget and quality'; budget cap and used/sale preferences remain unknown",
+    "P06_PHASED_BUY_STORAGE": "yes: medium influence and the purchase cadence/apartment storage constraints remain absent",
+    "P08_SUSTAINABILITY": "no: low-influence tie-breaker, so not spending interaction budget on it is reasonable"
+  },
+  "aggregate": {
+    "chatgpt": {
+      "questions": 0,
+      "hidden_unit_question_coverage": "0/4",
+      "hidden_high_delta_question_coverage": "0/2",
+      "should_ask_recall": "0/2",
+      "hidden_units_strictly_reflected": "1/4",
+      "hidden_weight_strictly_reflected": "3/9",
+      "all_units_strictly_reflected": "5/8"
+    },
+    "gemini": {
+      "questions": 0,
+      "hidden_unit_question_coverage": "0/4",
+      "hidden_high_delta_question_coverage": "0/2",
+      "should_ask_recall": "0/2",
+      "hidden_units_strictly_reflected": "1/4",
+      "hidden_weight_strictly_reflected": "3/9",
+      "all_units_strictly_reflected": "5/8"
+    }
+  },
+  "units": [
+    {
+      "id": "P01_ACTIVITY_ENVIRONMENT",
+      "delta": "high",
+      "relevant": true,
+      "visible_to_agent": false,
+      "evidence_potency_without_persona": "weakly inferable at a broad category level; actual Sichuan-Tibet and Shanghai contexts absent",
+      "should_ask": true,
+      "chatgpt": {
+        "asked": false,
+        "resolved": false,
+        "reflection": "partial",
+        "strictly_reflected": false,
+        "evidence": "Uses a generic three-season core with modular alpine add-ons and recommends renting route-specific technical gear, but never adapts to the Sichuan-Tibet objective or Shanghai shakedown climate."
+      },
+      "gemini": {
+        "asked": false,
+        "resolved": false,
+        "reflection": "partial",
+        "strictly_reflected": false,
+        "evidence": "Discusses non-technical mountaineering, high altitude, and wet/humid conditions generically, but does not identify or tailor for Sichuan-Tibet or Shanghai."
+      }
+    },
+    {
+      "id": "P02_SAFETY_RISK",
+      "delta": "high",
+      "relevant": true,
+      "visible_to_agent": true,
+      "evidence_potency_without_persona": "explicit in supplied 50-percent context",
+      "should_ask": false,
+      "chatgpt": {
+        "asked": false,
+        "resolved": true,
+        "reflection": "yes",
+        "strictly_reflected": true,
+        "evidence": "Builds in navigation, water, lighting, and communication redundancy and a conservative rent/course boundary for technical gear."
+      },
+      "gemini": {
+        "asked": false,
+        "resolved": true,
+        "reflection": "yes",
+        "strictly_reflected": true,
+        "evidence": "Frames the kit around conservative risk management, redundancy, thermal protection, and fail-safe systems."
+      }
+    },
+    {
+      "id": "P03_BUDGET_QUALITY",
+      "delta": "high",
+      "relevant": true,
+      "visible_to_agent": false,
+      "evidence_potency_without_persona": "strongly inferable in direction from the task; numeric cap, sale timing, and second-hand openness absent",
+      "should_ask": false,
+      "should_ask_note": "A targeted budget-cap or new/used/rent question could improve specificity, but proceeding with a value-oriented default is defensible from the instruction.",
+      "chatgpt": {
+        "asked": false,
+        "resolved": false,
+        "reflection": "yes_by_default_alignment",
+        "strictly_reflected": true,
+        "evidence": "Explicitly avoids both bargain-basement safety gear and premium ultralight gear, provides value/premium tiers and budgets, and recommends sale/rent strategies."
+      },
+      "gemini": {
+        "asked": false,
+        "resolved": false,
+        "reflection": "yes_by_default_alignment",
+        "strictly_reflected": true,
+        "evidence": "Explicitly invests heavily in safety-critical categories while using mid-tier options elsewhere to avoid overspending."
+      }
+    },
+    {
+      "id": "P04_FITNESS_COMFORT_LOAD",
+      "delta": "medium",
+      "relevant": true,
+      "visible_to_agent": true,
+      "evidence_potency_without_persona": "explicit in supplied 50-percent context",
+      "should_ask": false,
+      "chatgpt": {
+        "asked": false,
+        "resolved": true,
+        "reflection": "yes",
+        "strictly_reflected": true,
+        "evidence": "Provides beginner-specific pack fitting/load tests, footwear fitting, and comfort-oriented choices."
+      },
+      "gemini": {
+        "asked": false,
+        "resolved": true,
+        "reflection": "yes",
+        "strictly_reflected": true,
+        "evidence": "Explicitly analyzes the risk profile of a high-stamina novice and links it to load, footwear, and conservative equipment choices."
+      }
+    },
+    {
+      "id": "P05_TECH_NAVIGATION",
+      "delta": "medium",
+      "relevant": true,
+      "visible_to_agent": true,
+      "evidence_potency_without_persona": "explicit in supplied 50-percent context, with device ecosystem intentionally left unspecified",
+      "should_ask": false,
+      "chatgpt": {
+        "asked": false,
+        "resolved": true,
+        "reflection": "yes",
+        "strictly_reflected": true,
+        "evidence": "Compares smartphone/offline map, paper compass, Garmin-style communicator, and PLB architectures with subscription trade-offs."
+      },
+      "gemini": {
+        "asked": false,
+        "resolved": true,
+        "reflection": "yes",
+        "strictly_reflected": true,
+        "evidence": "Gives a detailed GNSS/navigation architecture and Garmin inReach versus ZOLEO comparison."
+      }
+    },
+    {
+      "id": "P06_PHASED_BUY_STORAGE",
+      "delta": "medium",
+      "relevant": true,
+      "visible_to_agent": false,
+      "evidence_potency_without_persona": "absent",
+      "should_ask": true,
+      "chatgpt": {
+        "asked": false,
+        "resolved": false,
+        "reflection": "partial",
+        "strictly_reflected": false,
+        "evidence": "Provides a first-season purchase order and rent-first modular progression, but misses the user's monthly cadence, one-bedroom storage limit, drying, and humidity management."
+      },
+      "gemini": {
+        "asked": false,
+        "resolved": false,
+        "reflection": "no",
+        "strictly_reflected": false,
+        "evidence": "Provides spend tiers but no phased acquisition/testing calendar and no apartment storage or humidity-management plan."
+      }
+    },
+    {
+      "id": "P07_DECISION_PRESENTATION",
+      "delta": "low",
+      "relevant": true,
+      "visible_to_agent": true,
+      "evidence_potency_without_persona": "explicit in supplied 50-percent context",
+      "should_ask": false,
+      "chatgpt": {
+        "asked": false,
+        "resolved": true,
+        "reflection": "yes",
+        "strictly_reflected": true,
+        "evidence": "Uses checklists, comparison tables, specifications, decision rules, and explicit spend tiers."
+      },
+      "gemini": {
+        "asked": false,
+        "resolved": true,
+        "reflection": "yes",
+        "strictly_reflected": true,
+        "evidence": "Uses a specification-driven technical report with tables and explicit functional comparisons."
+      }
+    },
+    {
+      "id": "P08_SUSTAINABILITY",
+      "delta": "low",
+      "relevant": true,
+      "visible_to_agent": false,
+      "evidence_potency_without_persona": "absent",
+      "should_ask": false,
+      "chatgpt": {
+        "asked": false,
+        "resolved": false,
+        "reflection": "no",
+        "strictly_reflected": false,
+        "evidence": "Repairability is mentioned, but sustainability is not used as the user's cost/performance-neutral tie-breaker."
+      },
+      "gemini": {
+        "asked": false,
+        "resolved": false,
+        "reflection": "no",
+        "strictly_reflected": false,
+        "evidence": "A fluorocarbon-free material appears incidentally, but the report does not implement the user's sustainability tie-breaker."
+      }
+    }
+  ]
+}

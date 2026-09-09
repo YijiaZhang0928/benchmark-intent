@@ -1,0 +1,36 @@
+{
+  "status": "frozen_before_agent_runs",
+  "frozen_at_utc": "2026-09-08T23:57:10Z",
+  "condition": "50-percent task-specific persona coverage + free clarification",
+  "parent_pilot": "pilot_02_ask_what_matters",
+  "task_id": 35,
+  "persona_id": "User8",
+  "agents": ["ChatGPT", "Google Gemini Deep Research"],
+  "generation_repeats_per_agent": 1,
+  "visible_preference_units": [
+    "P02_SAFETY_RISK",
+    "P04_FITNESS_COMFORT_LOAD",
+    "P05_TECH_NAVIGATION",
+    "P07_DECISION_PRESENTATION"
+  ],
+  "hidden_preference_units": [
+    "P01_ACTIVITY_ENVIRONMENT",
+    "P03_BUDGET_QUALITY",
+    "P06_PHASED_BUY_STORAGE",
+    "P08_SUSTAINABILITY"
+  ],
+  "hidden_delta_distribution": {
+    "high": 2,
+    "medium": 1,
+    "low": 1,
+    "total_weight": 9
+  },
+  "primary_diagnostic": "Whether each agent asks for the four still-hidden preference units, especially the two high-delta units.",
+  "question_rule": "Count a unit as asked only when the agent directly solicits its value. Generic plan confirmation and inferences do not count.",
+  "simulator_rule": "Answer only the current question from the frozen PDR persona/oracle; do not volunteer unasked units or invent unknown values.",
+  "clarification_turn_cap": 10,
+  "notes": "The visible split is stratified rather than token-based: one high-delta, two medium-delta, and one low-delta unit are visible. Two high-delta, one medium-delta, and one low-delta units remain hidden. The split was fixed before either product run.",
+  "freeze_corrections": [
+    "Corrected the hidden diagnostic weight total from 8 to 9 before either product run; no preference assignment or prompt content changed."
+  ]
+}

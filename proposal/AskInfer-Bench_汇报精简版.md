@@ -1,6 +1,6 @@
 # Ask or Infer?｜导师汇报精简版
 
-版本：v0.64 · 2026 年 9 月 4 日
+版本：v0.68 · 2026 年 9 月 8 日
 
 ## 0. 一句话
 
@@ -128,6 +128,8 @@ v0.65 单任务 PDR-T30 产品 pilot 已闭环：Full=6.703、No-Ask=5.596、Int
 v0.66 紧接着跑 PDR-T01 × User1 × 两个产品 agent：相同 instruction-only + free-clarification 输入下，ChatGPT 一轮 15 个 atomic slots 覆盖 7/7 critical clusters，Gemini 0 问，Jaccard=0；盲化三重复 P-score 为 7.057 对 6.065，差 +0.992。优势集中在个性化方向验证、fit-based shortlist 和背景提升，支持 clarification-policy heterogeneity 的 existence proof；产品组件同时变化，因此不作纯提问因果解释或 agent 排名。
 
 v0.67 把 PDR-T30 的 44 条 criteria 映射为 22 个 preference units。Interactive 六问覆盖 11/22，严格 `Asked→Resolved→Reflected` 为 5/22；Full 起始 known 14/22。Full 五问是 0/5 redundant、5/5 reasonable residual verification，但 persona 未定义目标值，故没有新增 resolved unit。该链条首次区分“问题值得问”“simulator 能回答”“答案真正改变报告”，但目前仍需第二位独立 coder 复标。
+
+v0.68 的 PDR-T35 × User8 calibration pilot 预冻结 8 个 preference units（high/medium/low 为 3/3/2）后，让两个产品 agent 接收同一 instruction-only + free-clarification 输入。ChatGPT 与 Gemini 都是 0 问，三个 recall 与 weighted coverage 全为 0；37 条原 criteria 的盲化三重复 P-score 为 5.5383 与 5.7033。该差异不是 clarification effect，因为两边都没有 acquisition。结论是共同的 permission-only zero-ask floor，不足以估计 `δ` slope；先做小规模 repeat 和产品表面检查，不直接扩 30 题。
 
 9 月 14 日过门后，第一轮只扩到 12 个独立基础任务（每域 4 个），作为截稿前 scoped agent-system leaderboard 的候选规模。通过人工 qualification 的 15 个 PDR tasks 加 Coding/Data 各 8 个只构成后续 31 题规划上限。最终样本量由 family-level pilot 方差、资格通过率与成本决定；seed 不能替代 family，也不能看 agent 输出删题。
 

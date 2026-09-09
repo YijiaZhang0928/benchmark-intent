@@ -292,6 +292,8 @@ v0.66 随后以 PDR-T01、User1 和两个产品级 Deep Research agent 检验 ag
 
 v0.67 对 v0.65 的 44 条 criteria 做 atomic preference-chain 编码：22 个 task-specific units，每条 criterion 恰有一个 primary unit 并可附 secondary dependencies；`known` 固定为首次提问前可见，`resolved` 固定为足以约束交付决策，`reflected` 只认与已知/已解决 value 可追溯的报告决策。Interactive 六问覆盖 11/22 units，严格完成 `Asked→Resolved→Reflected` 的为 5/22；Full Persona 起始已知 14/22。Full 的五问均瞄准 persona 未给出的 goal/company use、hours/team assistance、creator budget、on-camera preference 或 audience，因此是 5/5 reasonable residual verification、0/5 redundant clarification；但 simulator 没有这些答案，故没有新增 resolved unit。该 coding 仍是单 pair、单 coder 的事后诊断；重叠的 rubric-influence mass 只是 `δ` proxy，不是因果效应，进入确认性指标前必须做独立二次标注和 agreement。
 
+v0.68 用 PDR-T35、User8 和两个产品 agent 做 “Ask What Matters” calibration pilot。运行前冻结 8 个 preference units（high/medium/low `δ` 为 3/3/2，权重 17）、相同 instruction-only + free-clarification wrapper 与 persona-bounded simulator。ChatGPT research-capable 配置和 Gemini Deep Research 均提出 0 个 task-specific preference question，所以各档 recall、weighted coverage、turns 和 answer tokens 全为 0；Gemini 的通用研究计划确认不索取偏好值，按规则排除。原始 37 条 criteria 的盲化三重复均值为 5.5383 与 5.7033，A−B=−0.1649。因两边 acquisition 完全相同且为零，分差不能归因于 clarification；这轮只识别了共同的 permission-only zero-ask floor。两份报告各有 4/8 个隐藏 unit 因任务默认推断而被严格反映，但不计 preference acquisition。当前不足以估计 agent-specific `δ` slope，也不直接扩到 15 DR + 15 Data；下一步先做 generation repeat 与产品表面可暂停提问的修复性复验。
+
 ## 参考文献
 
 [1] Liang et al. *Towards Personalized Deep Research: Benchmarks and Evaluations*. arXiv:2509.25106. https://arxiv.org/abs/2509.25106

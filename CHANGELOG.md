@@ -1,5 +1,22 @@
 # benchmark-intent 设计迭代记录
 
+## v0.69 Ask What Matters 50% persona-coverage follow-up - 2026-09-08
+
+- 保持 PDR-T35 × User8、两个产品系统和 free-clarification wrapper 不变，运行前分层公开 P02/P04/P05/P07，隐藏 P01/P03/P06/P08；共同 prompt 与 split 哈希冻结后再运行。
+- ChatGPT GPT-5.6 Sol / Medium 与 Gemini 3.6 Flash Deep Research 仍均为 0 问；hidden question coverage=0/4、high-`δ` hidden coverage=0/2、预判 should-ask recall=0/2，simulator 从未被调用。
+- 两份报告都严格反映 4 个明示 unit，并只严格反映 1/4 个隐藏 unit P03；由于 task 本身已要求 “balance budget and quality”，该命中记 task/default alignment，不记 preference acquisition。GPT 对 P01/P06、Gemini 对 P01 仅部分泛化对齐。
+- 新增 `followup_50pct/` 的冻结设计、共同输入、两份完整产品报告、run metadata、空问答 transcripts、8-unit chain audit 与 summary；JSON/JSONL 校验和冻结哈希复验通过。
+- 结论限定为单次 policy probe：partial evidence 未触发选择性 clarification，并遗漏高影响路线/环境和中影响采购/储存信息；未重跑官方 PDR evaluator，5/8、1/4、3/9 仅为 preference-unit diagnostics，不作为 P-score 或产品排名。
+
+## v0.68 Ask What Matters zero-ask calibration pilot - 2026-09-08
+
+- 冻结 PDR query 173 / task 35 / User8、同一 instruction-only + free-clarification 输入、persona-bounded simulator 与 8 个 task-specific preference units；high/medium/low `δ` 为 3/3/2，诊断权重合计 17。
+- ChatGPT research-capable 产品配置与 Gemini Deep Research 各运行一次；两者均提出 0 个 task-specific preference question，clarification turns、user-answer tokens、各档 recall 与 weighted coverage 全为 0。Gemini 的通用研究计划确认不索取偏好值，按预冻结规则排除。
+- 保存两产品完整 prompt、metadata、research log、report 与空 transcript；逐 unit 编码 `relevant/known/asked/resolved/reflected`。两份报告都在未提问时严格反映 4/8 个隐藏 unit，来自任务默认推断，不冒充 acquisition。
+- 用原始 PDR 英文 personalization prompt、37 条原 criteria、原权重与未修改 calculator 对两份盲化报告各独立评分三次；Agent A 为 5.5383，Agent B 为 5.7033，A−B=−0.1649。因两边 calibration 同为零，分差不能归因于 clarification。
+- 新增 `pilot/pilot_02_ask_what_matters/` 全量可审计资产，包括 frozen hashes、37 条 criterion→preference mapping、16 行 preference chain、6 份 raw/parsed judge 输出、比较与只回答 RQ1–RQ6 的 summary；validator 全部通过。
+- Go/No-Go 结论：这是 permission-only wrapper 下 clarification non-initiation 的零点信号，不足以直接扩到 15 DeepResearch + 15 DataAnalysis。下一步先做少量 generation repeats，并确认产品表面允许研究前自然暂停提问；若仍为零，再把 zero-ask floor 作为正式现象。
+
 ## v0.67 PDR-T30 criterion-to-preference chain - 2026-09-06
 
 - 将 PDR-T30 × User12 的 44 条原始 personalization criteria 完整映射为 22 个 task-specific preference units；每条 criterion 恰有一个 primary unit，可附 secondary units，原始文本、顺序和权重不修改。

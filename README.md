@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.67
+## 当前方向：AskInfer-Bench v0.69
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -27,6 +27,10 @@ v0.65 跑通了一个独立的 PDR-T30 × User12 × ChatGPT Deep Research 最小
 v0.66 紧接着完成 PDR-T01 × User1 的双 agent clarification pilot。ChatGPT Deep Research 与 Gemini Deep Research 接收 byte-identical 的 `instruction-only + free clarification` 输入；前者用一轮 15 个 atomic slots 覆盖预冻结的 7/7 个 critical preference clusters，后者直接研究、没有提问，asked-cluster Jaccard 为 0。原始 34 条 PDR criteria 盲化三重复评分为 7.057 与 6.065，差值 +0.992；差距主要落在个性化方向验证、fit-based shortlist 和可衡量背景提升。该 one-task/one-persona 结果证明 agent-system clarification policy 可以明显不同，但产品、planner、搜索和生成策略同时变化，不能把 P-score 差异单独归因于提问，也不能形成 agent 排名。完整资产见 [`pilot/pdr_agent_clarification_pilot_02/`](pilot/pdr_agent_clarification_pilot_02/)。
 
 v0.67 将 PDR-T30 pilot 的 44 条原始 criteria 完整映射为 22 个 task-specific preference units，并对 Interactive 6 问与 Full Persona 5 问逐项编码 `relevant / known / asked / resolved / reflected`。Interactive 问到 11/22 个 unit，严格完成 `Asked→Resolved→Reflected` 的是 5/22；Full Persona 首轮前已知 14/22。Full 的五问中 redundant clarification 为 0/5，reasonable verification under residual uncertainty 为 5/5；其未增加 resolved unit，是因为 persona 没有 target audience、出镜偏好、weekly hours、creator budget、company use 或 monetization form 的确定答案，而不是因为问题重复。完整链见 [`preference_chain_matrix.md`](pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_chain_matrix.md) 和 [`clarification_question_audit.md`](pilot/pdr_interactive_personalization_pilot_01/evaluation/clarification_question_audit.md)。
+
+v0.68 完成 PDR-T35 × User8 的 “Ask What Matters” calibration pilot。运行前冻结 8 个 task-specific preference units（high/medium/low `δ` 为 3/3/2，权重 17），再让 ChatGPT research-capable 产品配置与 Gemini Deep Research 接收完全相同的 instruction-only + free-clarification 输入。两个产品都提出 0 个 task-specific 问题，high/medium/low recall 与 weighted coverage 全为 0；这不是低价值 over-asking，而是共同的 clarification non-initiation。37 条原始 criteria 的三重复盲评均值为 5.5383 与 5.7033，后者小幅领先 0.1649，但两边 acquisition 都为零，因此分差不能归因于提问。完整冻结资产、报告、盲评输出与 16 行 preference chain 见 [`pilot/pilot_02_ask_what_matters/`](pilot/pilot_02_ask_what_matters/)；当前决定是不直接扩到 15 DR + 15 Data，而先做小规模 generation repeat 与产品表面可暂停提问的复验。
+
+v0.69 对同一 PDR-T35 × User8 做了一个 50% persona-coverage follow-up：运行前分层公开 P02/P04/P05/P07，隐藏 P01/P03/P06/P08，再让同一 ChatGPT 与 Gemini Deep Research 自由决定是否追问。两者仍为 0 问；隐藏 unit 的 question coverage 为 0/4、预判 should-ask recall 为 0/2。两份报告都严格命中全部 4 个明示 unit，并只强命中 1/4 个隐藏 unit（P03 budget/quality，且该方向已可由 task 的 “balance budget and quality” 强推断）；GPT 对 P01/P06 只有部分默认对齐，Gemini 对 P01 只有部分默认对齐。完整结果见 [`followup_50pct/summary.md`](pilot/pilot_02_ask_what_matters/followup_50pct/summary.md)。这说明 partial evidence 没有触发更选择性的 clarification，反而留下了高影响路线/环境和中影响采购/储存缺口；单次 follow-up 不形成稳定产品排名。
 
 ## 当前交付物
 

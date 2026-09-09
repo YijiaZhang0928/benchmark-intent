@@ -1,0 +1,23 @@
+{
+  "agent_id": "agent_A",
+  "product": "ChatGPT",
+  "product_surface": "Temporary Chat, Unpersonalized, Web search enabled",
+  "visible_model": "GPT-5.6 Sol",
+  "visible_reasoning_setting": "High",
+  "exact_backend_model_identifier": null,
+  "condition": "instruction-only + free clarification",
+  "prompt_sha256": "b297cb14ffadf2efe1ac016b38b98eb16fbcc7d2ad8cbf98fdd62ab10c33a704",
+  "run_date_local": "2026-09-07",
+  "timezone": "America/Detroit",
+  "completed_at_utc": "2026-09-07T21:42:26Z",
+  "account_memory_isolation": "Temporary Chat explicitly set to Unpersonalized; UI stated that memory, plugins, and custom instructions were ignored.",
+  "clarification_questions": 0,
+  "clarification_turns": 0,
+  "user_answer_tokens": 0,
+  "run_status": "complete",
+  "transport_notes": [
+    "The current ChatGPT product UI did not expose a separately named Deep Research toggle.",
+    "The strongest visible research-capable configuration was GPT-5.6 Sol at High thinking effort with Web search enabled; product identity is recorded exactly rather than relabeled.",
+    "The agent searched before asking and therefore received no simulated-user information."
+  ]
+}

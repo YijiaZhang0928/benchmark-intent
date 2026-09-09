@@ -1,0 +1,332 @@
+{
+  "id": 173,
+  "domain": "Shopping",
+  "language": "en",
+  "taskid": 35,
+  "userid": "User8",
+  "task": "I plan to start a series of outdoor activities this summer, including hiking, camping, and mountaineering. As a beginner, I want to purchase a complete set of gear that will not only meet my basic needs but also handle different weather conditions, complex terrain, and unexpected situations.Please provide me with a detailed gear checklist, including but not limited to: backpack, waterproof clothing, hiking shoes, tent, sleeping bag, outdoor cooking equipment, navigation tools, first-aid kit, headlamp, portable water filter, and other essentials. Please consider durability, functionality, and comfort, ensuring the gear can adapt to changing outdoor environments. Also recommend suitable brands that will help me balance budget and quality.",
+  "personalization_weights": {
+    "content_alignment": 0.18,
+    "goal_alignment": 0.32,
+    "presentation_fit": 0.08,
+    "actionability_practicality": 0.42
+  },
+  "quality_weights": {
+    "logical_coherence": 0.25,
+    "depth_insight": 0.4,
+    "clarity_readability": 0.35
+  },
+  "personalization_criterions": {
+    "goal_alignment": [
+      {
+        "criterion": "Safety and risk management tailored to a beginner and high-altitude scenarios",
+        "explanation": "Assesses whether the report prioritizes safety for a novice: redundancy for navigation and lighting, weather decision rules, first-aid and emergency protocols, altitude acclimatization guidance, and clear boundaries between trekking vs technical mountaineering (e.g., when to hire guides or rent technical gear). This aligns with Chen Hao’s risk-averse style and planned Sichuan–Tibet trekking.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Budget–quality optimization with data-backed purchasing strategy for China market",
+        "explanation": "Checks if recommendations balance cost and performance with concrete prices in China, warranty/after-sales info, repairability, resale value, and local brand options (e.g., Decathlon, Naturehike, Kailas, Fire-Maple) alongside global brands. Includes guidance on buying used vs new (safety-critical items new), rentals for rarely used technical gear, and timing purchases around sales and his mid-/end-month spending cadence.",
+        "weight": 0.17
+      },
+      {
+        "criterion": "Region- and season-specific adaptation for Shanghai summers and Sichuan–Tibet conditions",
+        "explanation": "Evaluates whether the plan explicitly covers hot-humid Shanghai training (heat/humidity management) and high-altitude summer trekking (UV, sudden storms, cold nights, diurnal swings) with appropriate layering, waterproofing, sun protection, and shelter/sleep system specs. Addresses his actual destinations and the multi-environment reality.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Modular, scalable kit design with phased upgrades and testing plan",
+        "explanation": "Assesses whether the gear list is organized into a core kit for day hikes and camping with add-ons for (non-technical) mountaineering, plus clear upgrade paths and a phased purchasing/testing approach (e.g., weekend shakedowns near Shanghai). This fits his beginner status, conservative risk appetite, and planned monthly purchase cycles.",
+        "weight": 0.13
+      },
+      {
+        "criterion": "Spec-driven decision logic and verification (metrics, thresholds, authenticity checks)",
+        "explanation": "Looks for quantifiable selection criteria (e.g., hydrostatic head, down fill power, R-value, headlamp lumens/battery type, filter pore size/flow rate, pack volume/weight targets) and guidance on verifying authenticity on JD/Tmall and avoiding counterfeits. Matches his analytical, data-reliant decision-making style.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Fit and comfort personalization (pack sizing, footwear fit, load targets, break-in)",
+        "explanation": "Checks whether the plan provides actionable fit guidance: torso/hip measurements for packs, footwear sizing for swelling and last width, sock/liner choices, blister prevention, and safe load targets. Aligns with his good but novice outdoor fitness and desire to avoid injury.",
+        "weight": 0.09
+      },
+      {
+        "criterion": "China-specific procurement, logistics, and legal compliance details",
+        "explanation": "Evaluates whether the content covers fuel canister transport constraints, sourcing fuel at destination, potential restrictions on satellite communicators, local permits/park rules, and availability at domestic retailers. Ensures recommendations are usable and compliant in his operating environment.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Urban storage, maintenance, and humidity management for a small apartment",
+        "explanation": "Assesses guidance on compact, multi-use gear; maintenance schedules (DWR renewal, down storage, tent care); drying/dehumidifying strategies in Shanghai humidity. Reflects his space constraints and desire to preserve gear value (TCO).",
+        "weight": 0.04
+      },
+      {
+        "criterion": "Analytical, structured communication style with checklists and trade-off reasoning",
+        "explanation": "Checks for clear checklists, tiered brand recommendations, concise pros/cons, and decision trees he can review in evening research sessions. Resonates with his professional analytical habits and preference for expert-backed, rational advice.",
+        "weight": 0.04
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "China-specific Environmental and Route Localization",
+        "explanation": "Assess whether the content tailors gear choices to Shanghai’s hot, rainy, humid summers and the Sichuan–Tibet route’s high-altitude cold, intense UV, and storm potential (e.g., sun protection, alpine-capable layering, storm-worthy shelters), and references brands/models available in the China market.",
+        "weight": 0.22
+      },
+      {
+        "criterion": "Value-Tiered Brand Recommendations for China Market",
+        "explanation": "Check if the report proposes clear price–performance tiers (entry/mid/premium) with China-available brands/models, helping a cost-conscious, research-oriented buyer balance budget and quality for each gear category.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Risk Management and Safety Redundancy for a Beginner at Altitude",
+        "explanation": "Evaluate inclusion and emphasis on safety-critical selections tailored to a risk-averse novice planning high-altitude trips (e.g., reliable water treatment redundancy, headlamp reliability and spare batteries, emergency communication options suitable in China, first-aid essentials for altitude/cold).",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Modular Kit Design and Upgrade Path",
+        "explanation": "Determine whether the gear list is structured into a core kit plus optional modules for day hikes, overnight camping, and entry mountaineering, with clear upgrade paths to avoid overbuying expedition gear prematurely—aligned to his single significant purchase behavior and gradual skill growth.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Data-Backed Specifications and Comparative Depth",
+        "explanation": "Assess whether recommendations reference quantifiable specs (e.g., pack weight and frame type, waterproof rating/hydrostatic head, breathability, fill power/R-value, outsole rubber types, warranty terms) enabling an analytical, CFA-level user to compare and justify choices.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Tech Ecosystem Fit (China Maps/BeiDou, Power Strategy)",
+        "explanation": "Check alignment with his tech preference and Chinese context: offline map/app compatibility (e.g., Gaode/Amap), BeiDou/GNSS support, battery strategy for altitude/cold, and power bank/charging solutions suitable for China travel infrastructure.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Comfort and Fit Guidance Tailored to User Profile",
+        "explanation": "Evaluate whether the content includes fit-centric advice relevant to a male user in China—pack torso and hip-belt sizing, footwear last/width guidance, sock and insole pairing—to support long-term comfort and reduce injury risk.",
+        "weight": 0.05
+      },
+      {
+        "criterion": "Storage and Maintenance for Humid Urban Living",
+        "explanation": "Assess if the report addresses care/storage practices suited to a small, humid Shanghai apartment (e.g., drying protocols, dehumidification, down storage, tent/sleeping bag mold prevention) to preserve durability and value.",
+        "weight": 0.03
+      },
+      {
+        "criterion": "Acquisition Strategy Alignment (Sales Timing, Second-hand Verification, Warranty)",
+        "explanation": "Determine whether content aligns with his consumption cycle and platform habits: suggests China e-commerce sales windows (e.g., 618/11.11), store try-on then online purchase tactics, second-hand inspection/red flags, and ensuring valid China warranty/invoices.",
+        "weight": 0.04
+      },
+      {
+        "criterion": "Sustainability and Eco-Packaging When Cost-Effective",
+        "explanation": "Check if the content acknowledges eco-friendly packaging/material options that do not compromise cost-effectiveness, reflecting his service preference without diluting budget priorities.",
+        "weight": 0.01
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "Professional, concise, and objective tone (non-marketing, evidence-oriented)",
+        "explanation": "Assesses whether the report uses neutral, data-driven language with clear claims (e.g., cites standards rather than hype). This matches a finance professional’s preference for analytical, trustworthy presentation.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Jargon and acronym handling with brief in-line definitions",
+        "explanation": "Checks if outdoor terms (e.g., EN/ISO temperature rating, R-value, denier, hydrostatic head, RET/MVTR) are introduced with short explanations on first use, reducing beginner friction while preserving precision.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Layered structure and navigation (TL;DR, clear headings, logical grouping)",
+        "explanation": "Evaluates the presence of an executive summary/quick-start checklist, clear section headers, and grouping by function/use-case. This supports efficient evening/mobile reading and staged deep-dives.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Standardized, comparison-friendly spec formatting",
+        "explanation": "Looks for consistent spec fields across items (e.g., weight, capacity/volume, temperature/waterproof ratings, sole type, price band) in aligned lists or matrices, enabling side-by-side evaluation.",
+        "weight": 0.15
+      },
+      {
+        "criterion": "Numeric and unit clarity (metric, RMB, explicit scales/standards)",
+        "explanation": "Assesses the use of SI units (L, g, °C, mm), RMB price ranges, and explicit standards/ratings rather than vague adjectives, aiding precise understanding and minimizing conversion effort.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Scannability and mobile-friendly formatting",
+        "explanation": "Checks for short paragraphs, bullet lists, one-idea-per-bullet, consistent list markers, and minimal dense blocks to fit mobile reading habits and reduce cognitive load.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Priority and tagging system for quick triage",
+        "explanation": "Evaluates whether items are labeled with Must-have/Nice-to-have, season/terrain tags (e.g., 3-season/4-season), and budget tiers as visual/textual tags to speed up screening without adding content.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Safety and risk callout formatting",
+        "explanation": "Checks for visually distinct callouts (e.g., 'Safety:' prefixes) for critical items and precautions (redundant light/power, first-aid), aligning with the user’s risk-averse style without changing content.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Localization for China-based reader (naming and sizing presentation)",
+        "explanation": "Assesses clear brand naming (English with Chinese where helpful), RMB pricing notation, and size conventions or conversions (US/EU to CN) as presentation elements to reduce friction in local purchasing.",
+        "weight": 0.06
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "Prioritized, complete checklist with quantitative spec thresholds",
+        "explanation": "Checks whether the report provides a must-have vs. optional gear list and key specs to buy against (e.g., pack volume and load range; jacket waterproof/breathability ratings; boot category and outsole; tent season rating and minimum weight; sleeping bag EN/ISO comfort rating for high-altitude nights; pad R-value; headlamp lumens and battery type; filter pore size/flow rate). This lets a beginner confidently pick specific models without guesswork.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Budgeted plan with tiers, total cost, and trade-offs (new/used/rent)",
+        "explanation": "Evaluates whether the report offers budget tiers (e.g., value/mid/premium), shows total basket costs, and clarifies performance trade-offs, including when to buy used or rent (e.g., mountaineering-specific items) to balance quality and price. This matches the user’s cost-effectiveness and purchasing cycle needs and enables immediate purchasing decisions.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Scenario-based loadouts and decision rules for weather/terrain",
+        "explanation": "Assesses whether the report maps gear selections to specific use cases (day hike, car-camp, backpacking, non-technical high-altitude trekking) and conditions (Shanghai summer rain, Sichuan–Tibet cold/UV), with clear rules (e.g., when to move from trail shoes to boots, 3-season vs. more robust shelter, layering choices). This prevents over/under-buying and ensures adaptability.",
+        "weight": 0.15
+      },
+      {
+        "criterion": "Fit and sizing protocols for comfort-critical items",
+        "explanation": "Looks for step-by-step fit guidance and try-on procedures (e.g., boot sizing, sock thickness, heel lock, break-in steps; backpack torso/hip-belt fitting and load testing; clothing size for layering). Clear fit protocols reduce injury risk and return friction, turning recommendations into usable purchases.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Safety and redundancy plan integrated into the kit",
+        "explanation": "Checks whether first-aid contents are tailored to hiking/camping; navigation redundancy (offline maps + compass), lighting backups, whistle, emergency blanket, sun/UV protection for high altitude, and guidance on emergency communication options common in China. This makes the gear plan operationally safe for a beginner.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Purchase feasibility in China (channels, availability, after-sales)",
+        "explanation": "Verifies that recommended brands/models are readily obtainable via mainstream channels (JD/Tmall/Decathlon/official stores), include indicative price ranges and seasonal sale tips, and note warranty/repair and fuel compatibility for stoves. This ensures the user can actually acquire and support the gear locally.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Weight/portability and packing guidance",
+        "explanation": "Evaluates whether the report sets base-weight targets and packing lists per scenario, suggests multipurpose items to minimize total gear, and provides storage tips for a small apartment in humid Shanghai. Practical weight and packing guidance make the kit comfortable to carry and easy to live with.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Maintenance and lifecycle cost guidance",
+        "explanation": "Checks for actionable care steps (e.g., DWR renewal, boot leather/synthetic care, tent seam care/drying, filter backflushing, battery management) and replacement intervals. This reduces failure risk, extends service life, and supports a rational total-cost-of-ownership approach.",
+        "weight": 0.04
+      },
+      {
+        "criterion": "Procurement timeline and shakedown/testing plan",
+        "explanation": "Assesses whether there is a staged buy-and-try plan aligned to the user’s monthly purchase cycle and evening time window, with local shakedown hikes/camps, return-window checks, and a final pre-trip kit validation before high-altitude travel. This turns the plan into concrete actions with minimal risk.",
+        "weight": 0.03
+      }
+    ]
+  },
+  "quality_criterions": {
+    "depth_insight": [
+      {
+        "criterion": "Activity- and Condition-tailored Requirement Analysis",
+        "explanation": "Assesses whether the report translates hiking/camping/mountaineering in summer (including alpine volatility) into concrete requirements and ranges (e.g., temperature bands, precipitation/wind exposure, terrain demands) that drive gear specs, rather than offering generic lists.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Category-specific Specification Tradeoff Analysis",
+        "explanation": "Evaluates depth of reasoning within each gear category (e.g., pack volume/frame, shell 3L vs 2.5L and 20k/20k, footwear stiffness and crampon compatibility, tent 3-season vs 4-season, sleeping bag EN/ISO ratings, stove fuel vs altitude/cold, filter vs purifier), with clear justifications tied to use cases.",
+        "weight": 0.22
+      },
+      {
+        "criterion": "System Integration, Modularity, and Redundancy",
+        "explanation": "Examines whether the report designs an integrated kit (layering system, sleep system synergy bag+pad, pack volume vs kit bulk, multi-use items) and includes thoughtful redundancy for critical functions (navigation, light, fire, water) to ensure adaptability and resilience.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Risk and Emergency Preparedness Insight",
+        "explanation": "Assesses how well the report anticipates unexpected situations (storms, injury, lost route, heat/cold stress) and proposes tailored contingency gear and protocols (first-aid contents, repair kit, emergency shelter, signaling/PLB, weather/hazard mitigation) with rationale.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Budget–Quality Optimization and Brand/Model Rationale",
+        "explanation": "Evaluates whether brand and model suggestions are justified by durability, warranty/repairability, field reliability, and price-to-performance; and whether the report identifies where to invest vs economize to balance budget and quality.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Fit, Ergonomics, and Comfort Personalization",
+        "explanation": "Looks for expert guidance on fit and comfort that materially affects outcomes (pack torso/hip sizing, boot last/volume and break-in, sock systems, pad thickness/R-value comfort, women’s-specific or wide options), acknowledging personal variability.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Use of Standards and Quantitative Performance Metrics",
+        "explanation": "Checks whether the report grounds recommendations in relevant specs and standards (e.g., ISO 23537/EN sleeping bag ratings, ASTM pad R-values, hydrostatic head mm, breathability g/m²/24h, fabric denier, helmet standards), demonstrating evidence-based insight.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Beginner-friendly Acquisition and Upgrade Path",
+        "explanation": "Assesses whether the report offers a staged purchase plan (rent/borrow for technical items, used/refurb options), compatibility planning for future upgrades, and guidance to avoid costly mis-buys—valuable insight for beginners building a complete kit.",
+        "weight": 0.04
+      }
+    ],
+    "logical_coherence": [
+      {
+        "criterion": "Problem Scoping and Constraints Mapping",
+        "explanation": "Checks whether the report explicitly translates the user’s context (beginner status, activities: hiking/camping/mountaineering, summer with variable weather, complex terrain, budget/quality balance) into concrete requirements (e.g., expected temperatures, precipitation, elevation, trip duration, load range). Clear scoping ensures all subsequent recommendations rest on defined premises.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Structured Framework and Gear Systemization",
+        "explanation": "Assesses whether the report organizes reasoning from scenarios to gear systems (carry, shelter/sleep, apparel, footwear, cooking, water, navigation, lighting, first-aid/repair, emergency) and then to items, enabling a coherent top-down logic instead of a disjointed checklist.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Requirement-to-Spec Justification",
+        "explanation": "Evaluates whether each item’s key specifications are logically tied to the mapped requirements (e.g., tent season rating and hydrostatic head for expected storms; sleeping bag temperature rating and pad R-value for nights; boot type and outsole for terrain; waterproof rating and breathability for weather). This avoids arbitrary or ungrounded recommendations.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Decision Rules from Premises to Selections",
+        "explanation": "Checks for explicit selection logic (e.g., 'if overnight lows > 5°C, choose a 5–10°C comfort bag; otherwise add liner'; 'for loads > 12 kg, use a framed pack with x features'). Clear rules demonstrate how conclusions are derived from premises.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Trade-off and Prioritization Logic",
+        "explanation": "Assesses whether the report logically prioritizes safety-critical gear and explains trade-offs among durability, functionality, comfort, and cost (e.g., when to invest in boots vs. save on accessories, brand tier rationales), ensuring recommendations reflect reasoned compromises rather than ad hoc choices.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Consistency and Cross-Dependency Integrity",
+        "explanation": "Verifies that related recommendations are mutually consistent and compatible (e.g., stove fuel type with cookware and local restrictions; pack volume with total kit; insulation layers with expected temperatures; crampon compatibility with boots), preventing internal contradictions.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Risk-to-Mitigation Coherence",
+        "explanation": "Evaluates whether identified risks (sudden storms, navigation errors, injuries, water contamination, cold snaps) are systematically linked to mitigation gear (e.g., redundancy in lighting, emergency bivy, map/compass plus GPS, comprehensive first-aid kit) with rationale for inclusion.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Section Transitions and Logical Flow",
+        "explanation": "Checks that the report transitions smoothly from context to framework to item specs to brand/budget recommendations, with each section building on the previous one without logical gaps or abrupt topic shifts.",
+        "weight": 0.05
+      }
+    ],
+    "clarity_readability": [
+      {
+        "criterion": "Information Architecture, Category Structuring, and Checklist Formatting",
+        "explanation": "Evaluates whether the report uses clear category headings (e.g., backpack, clothing, footwear, shelter, sleep, cooking, navigation, safety, lighting, water, extras), a consistent heading hierarchy, bullet/checkbox lists, and a visible 'must-have vs nice-to-have' quick-reference. Also checks spacing, ordering from essentials to optional items, and navigational aids (table of contents/anchors) to support fast scanning and packing.",
+        "weight": 0.26
+      },
+      {
+        "criterion": "Language Fluency, Plainness, and Instructional Clarity",
+        "explanation": "Evaluates whether sentences are concise, unambiguous, and free of grammatical errors; whether wording avoids marketing fluff; and whether instructions (e.g., sizing/fit steps) are expressed in simple, beginner-friendly language without unnecessary verbosity.",
+        "weight": 0.22
+      },
+      {
+        "criterion": "Technical Term Introduction and Consistent Use",
+        "explanation": "Evaluates whether domain terms and metrics (e.g., denier, DWR, hydrostatic head, seam-taped, fill power, EN/ISO temperature ratings, R-value, last width, drop, IPX rating, lumens, micron, map scale) are introduced at first use with brief, accurate explanations or a glossary, and then used consistently to prevent confusion.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Specification and Unit Presentation Consistency",
+        "explanation": "Evaluates whether specifications use consistent units and formats (L, g/oz, °C/°F, mm), with conversions provided clearly; whether comparable attributes are aligned across items (e.g., pack volume, tent weight, shoe fit, bag temperature rating); and whether labels/footnotes clarify standards (e.g., EN/ISO ratings), sizing ranges, and currency for prices.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Effectiveness and Clarity of Tables, Comparison Charts, and Visual Cues",
+        "explanation": "Evaluates whether comparison tables (e.g., brand tiers, budget vs midrange vs premium) are legible, use clear column headers, consistent attribute order, readable sorting, and legends; whether icons/tags (weather, terrain, seasonality, budget) are used consistently and explained; and whether any images/diagrams include informative captions.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Visibility of Safety Notices, Care/Maintenance Callouts, and Caveats",
+        "explanation": "Evaluates whether critical cautions (e.g., stove fuel handling, carbon monoxide risk, water treatment limitations, headlamp battery safety) and maintenance tips are visually highlighted with callouts or distinctive formatting and placed near relevant content to reduce misuse risk and aid quick recognition.",
+        "weight": 0.08
+      }
+    ]
+  }
+}

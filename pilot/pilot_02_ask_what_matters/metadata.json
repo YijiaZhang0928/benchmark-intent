@@ -1,0 +1,16 @@
+{
+  "experiment": "Pilot 2 — Ask What Matters",
+  "status": "complete",
+  "task_query_id": 173,
+  "task_id": 35,
+  "persona_id": "User8",
+  "generation_runs_per_agent": 1,
+  "evaluator_repeats_per_report": 3,
+  "frozen_at_utc": "2026-09-07T21:29:38Z",
+  "evaluation_completed_at_utc": "2026-09-08T15:54:17Z",
+  "primary_result": "Both product agents asked zero task-specific preference questions; the design therefore observed a zero-ask floor and no between-agent clarification-calibration variance.",
+  "agent_A_pdr_score": 5.538333333333333,
+  "agent_B_pdr_score": 5.703266666666667,
+  "agent_A_minus_agent_B": -0.16493333333333382,
+  "expansion_decision": "Do not expand directly to 15 DeepResearch + 15 DataAnalysis; first run a small repair/replication check for clarification non-initiation and product-surface capability."
+}

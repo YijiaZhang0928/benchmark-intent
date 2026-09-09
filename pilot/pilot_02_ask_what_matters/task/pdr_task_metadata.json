@@ -1,0 +1,13 @@
+{
+  "query_id": 173,
+  "task_id": 35,
+  "persona_id": "User8",
+  "domain": "Shopping",
+  "language": "en",
+  "upstream_repository": "https://github.com/OPPO-PersonalAI/PersonalizedDeepResearchBench",
+  "upstream_commit": "5b43f9f188c747d154fc7666812ab93b7ca6a3c2",
+  "criteria_source": "data/criteria_data/criteria150_en.jsonl record id=173",
+  "criteria_source_sha256": "704a093409f794fbdedc6802665613471714a6a808c6387fcae16299140dae13",
+  "selection_status": "frozen_before_agent_runs",
+  "selection_reason": "The requested purchase plan changes materially with activity class, altitude/weather, risk tolerance, budget strategy, fitness/load trade-offs, navigation ecosystem, procurement cadence, and storage constraints. The official persona supplies values for all eight units and the 37 original personalization criteria directly score their effects."
+}

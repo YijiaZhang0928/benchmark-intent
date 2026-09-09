@@ -1,0 +1,28 @@
+{
+  "delta_weights": {"high": 3, "medium": 2, "low": 1},
+  "total_preference_units": 8,
+  "total_possible_weight": 17,
+  "agents": {
+    "agent_A": {
+      "ask_recall": {"high": 0.0, "medium": 0.0, "low": 0.0},
+      "relevant_ask_precision": null,
+      "critical_ask_precision": null,
+      "weighted_coverage": 0.0,
+      "question_count": 0,
+      "clarification_turns": 0,
+      "user_answer_tokens": 0,
+      "strict_reflected_preferences": 4
+    },
+    "agent_B": {
+      "ask_recall": {"high": 0.0, "medium": 0.0, "low": 0.0},
+      "relevant_ask_precision": null,
+      "critical_ask_precision": null,
+      "weighted_coverage": 0.0,
+      "question_count": 0,
+      "clarification_turns": 0,
+      "user_answer_tokens": 0,
+      "strict_reflected_preferences": 4
+    }
+  },
+  "interpretation": "Both systems exhibited a zero-ask floor. Precision is undefined because there were no clarification questions."
+}

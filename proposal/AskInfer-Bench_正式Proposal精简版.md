@@ -44,6 +44,8 @@ v0.66 的 PDR-T01 × User1 双 agent pilot 固定同一 instruction-only + free-
 
 v0.67 将 PDR-T30 的 44 条 criteria 映射为 22 个 atomic preference units，并编码 `known/asked/resolved/reflected`。Interactive 六问覆盖 11/22，严格完成全链 5/22；Full 首轮前已知 14/22。Full 五问全部针对 persona 未说明的 residual values，故 0/5 redundant、5/5 reasonable verification；没有新增 resolved unit 是 persona under-specification，不是 over-asking。该单-coder 诊断尚需独立复标，rubric-influence `δ` 不作因果解释。
 
+v0.68 的 PDR-T35 × User8 “Ask What Matters” pilot 在运行前冻结 8 个 preference units（3 high、3 medium、2 low，权重 17），让 ChatGPT research-capable 配置和 Gemini Deep Research 接收完全相同的 instruction-only + free-clarification 输入。两边均为 0 个 task-specific question，各档 recall 与 weighted coverage 全为 0；37 条原 criteria 的盲化三重复均值为 5.5383 与 5.7033。分差不能归因于 clarification，因为两边都没有 acquisition。该结果只识别 permission-only zero-ask floor，下一步先做小规模 repeats 与产品提问表面复验，不直接扩 30 题。
+
 History 中的 nodes 另标记为：`recoverable`、`missing_askable`、`unidentifiable`、`irrelevant`。Ask 主测 high-`δ missing_askable`；Infer 主测 recoverable 利用与 unidentifiable/irrelevant 克制。
 
 ## 3. 实验条件

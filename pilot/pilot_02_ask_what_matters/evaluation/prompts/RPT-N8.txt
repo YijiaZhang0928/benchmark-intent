@@ -1,0 +1,619 @@
+
+<system_role>You are a strict, meticulous, and objective expert in evaluating personalized research articles. You excel at deeply evaluating research articles based on specific personalization assessment criteria, providing precise scores and clear justifications.</system_role>
+
+<user_prompt>
+**Task Background**
+You are given an in-depth research task. Your job is to evaluate a research article written for this task in terms of its performance in **"Personalization Alignment"**. We will evaluate it across the following four dimensions:
+1. Goal Alignment
+2. Content Alignment
+3. Presentation Fit
+4. Actionability & Practicality
+
+<task>
+"I plan to start a series of outdoor activities this summer, including hiking, camping, and mountaineering. As a beginner, I want to purchase a complete set of gear that will not only meet my basic needs but also handle different weather conditions, complex terrain, and unexpected situations.Please provide me with a detailed gear checklist, including but not limited to: backpack, waterproof clothing, hiking shoes, tent, sleeping bag, outdoor cooking equipment, navigation tools, first-aid kit, headlamp, portable water filter, and other essentials. Please consider durability, functionality, and comfort, ensuring the gear can adapt to changing outdoor environments. Also recommend suitable brands that will help me balance budget and quality."
+</task>
+
+**User Persona**
+<persona>
+"{'userid': 'User8', 'Basic Attributes': {'Identity Characteristics': {'Name': 'Chen Hao', 'Age': '26-30', 'Gender': 'Male', 'Occupation': 'Investment Manager at a Securities Company', 'Educational Background': 'Graduated from a 211 university in Shanghai, majored in Finance, achieved excellent academic performance during university, won multiple scholarships, and participated in several research projects related to financial analysis.'}, 'Family Status': {'Family Members and Relationships': "Single, has a good relationship with his parents, both of whom are ordinary working-class individuals. His father is a factory technician, and his mother is a primary school teacher. The family places a strong emphasis on education. His parents support Chen Hao's career development but hope he can also balance his family life.", 'Pets': 'None currently, but he is considering getting a cat. He has been researching cat care online and plans to adopt a stray cat early next year.'}, 'Long-term Spatial Characteristics': {'Permanent Residence': 'Shanghai', 'Hometown': 'Nanjing, Jiangsu', 'Living Environment': 'Currently rents a one-bedroom apartment in downtown Shanghai. The location is convenient with access to public transportation, close to a metro station, and surrounded by gyms and bookstores. His hometown is in an ordinary residential area in Nanjing. He grew up in a modest environment with a harmonious community atmosphere, which makes him appreciate his current lifestyle even more.'}}, 'Behavioral Characteristics': {'Online Usage Habits': {'High-frequency Apps and Usage Duration': 'Frequently uses financial apps like Xueqiu and Tonghuashun for about 2 hours daily. Recently started using Keep and health management apps for approximately 3 hours weekly to track workouts and dietary habits.', 'Online Social Behavior': 'Primarily communicates with colleagues through WeChat, occasionally updates his professional status on LinkedIn, and browses financial forums to stay informed about industry trends and market dynamics.'}, 'Offline Long-term Behavior': {'Daily Routine': 'On weekdays, wakes up at 7 AM and goes to bed after 10 PM. Lunch breaks are usually short, and he often eats a simple meal at the office. Recently, to improve his sleep quality, he has started avoiding electronic screens 30 minutes before bedtime and instead reads physical books. Weekends are more flexible and usually include exercise or learning activities.', 'Consumption Cycle': 'Plans his finances at the beginning of the month, with major spending occurring mid-month and at the end of the month. Typically makes one significant purchase or investment based on need.', 'Consumption Characteristics': 'Has a strong preference for high-tech products and financial investments. Lives frugally and prefers cost-effective items, such as taking advantage of e-commerce sales for necessary purchases. Recently started exploring second-hand platforms to buy high-quality goods at lower prices.', 'Periodic Mobility': 'Occasionally travels for work, mainly between major financial hubs in China. When traveling, he prefers to plan his itinerary in advance and opts for efficient transportation and comfortable accommodations.'}}, 'Environment': {'Time': {'Time Preference': 'Evenings, as he can focus better and enjoys reading financial books or analyzing data during quiet late hours.'}, 'Geographical Location': {'Frequent Places': 'Company, gym, library, occasionally visits coffee shops for independent thinking or work. Recently started attending weekly community center events like book clubs or volunteering activities.', 'Travel Radius': 'Mostly stays within Shanghai city limits, occasionally travels to nearby cities for work. Enjoys walking or using shared bikes to explore parks near his home.'}}, 'Personality Traits': {'Personality': 'Calm and meticulous, thinks rationally, excels at analyzing and summarizing problems, and maintains a humble and eager-to-learn attitude towards unfamiliar fields.', 'Decision-making Style': 'Makes decisions independently, relies on data support, and considers expert opinions to avoid taking unnecessary risks.', 'Shopping Preference': 'Prefers rational spending, focuses on cost-effectiveness, and has a strong inclination to purchase electronic products and professional books. Likes to research product reviews and user experiences before buying.'}, 'Preferences and Interests': {'Lifestyle Preferences': {'Diet': 'Prefers light meals, enjoys Japanese cuisine and simple meals, and has recently started cooking, particularly healthy and vegetarian recipes.', 'Accommodation Preferences': 'Prefers mid-to-high-end hotels that emphasize comfort and service, especially those with gyms and breakfast buffets.', 'Shopping': 'Enjoys online shopping, particularly for electronics, finance-related books, and sports gear. Carefully compares prices and reviews before purchasing.', 'Services': 'Frequently uses food delivery and courier services but prioritizes providers with eco-friendly packaging.'}, 'Travel Preferences': {'Frequency': '1-2 trips per year, mainly within China, usually during holidays or work breaks.', 'Destinations': 'Prefers city tours and cultural-historical sites. Recently developed an interest in natural landscapes and outdoor hiking, planning a trip to the Sichuan-Tibet route for high-altitude trekking.', 'Travel Style': 'Prefers independent travel, enjoys immersing himself in local culture, and meticulously plans trips in advance.'}, 'Content Preferences': {'Article Collection': 'Finance, economics, and management articles, occasionally psychology and self-improvement content.', 'Short Videos': "Prefers finance-related short video platforms, such as Douyin's finance channel, and videos offering investment tips and career development advice.", 'Screenshots': 'Often saves screenshots of financial data and market analysis, organizing them into personal notes for future reference.', 'Books, Movies, Singers, Actors': "Favorite books include 'Poor Charlie's Almanack' and 'Principles.' Recently started appreciating light music and piano compositions. In movies, admires Tony Leung's acting style, especially in artistic films."}, 'Exercise Preferences': {'Exercise Habits': 'Runs 3-4 times a week, usually in the morning or evening. Recently started yoga and meditation to relax and improve flexibility.', 'Exercise Goals': 'Improve endurance, maintain health, and use exercise to relieve stress and enhance focus.', 'Exercise Types': 'Running, swimming, strength training, yoga.', 'Other Investments': 'Has purchased professional running shoes, a fitness tracker, and a gym membership, and regularly updates his workout gear.', 'Exercise Locations': 'Gym and nearby parks, occasionally participates in community-organized running events.'}}, 'Health Status': {'Physical Condition': {'Medical History': 'Good health with no significant medical history. Regular check-ups show normal physical indicators.', 'Mental Condition': 'Occasionally experiences work-related stress but alleviates it through exercise and reading financial books. Recently improved his mental state further through meditation and deep-breathing exercises. Prefers solving problems through rational analysis.', 'Physical Fitness': 'Good stamina and endurance, capable of long runs and moderate-intensity workouts.'}, 'Health Needs': {'Health Needs': 'Maintain overall health and fitness, prevent occupational diseases, and enhance quality of life through regular exercise and a healthy diet.'}}, 'Financial Information': {'Financial Status': {'Income Structure': 'Primary income is from salary, with a smaller portion from investment returns. Salary accounts for about 80%, and investment income accounts for about 20%.', 'Asset Status': 'Owns a mortgaged property and a car, has stable savings, and an investment portfolio primarily consisting of stocks and funds with balanced asset allocation.', 'Consumption Characteristics': 'Rational spender focused on investment returns. Keeps living expenses within 50% of income, with the remainder allocated to savings and investments.', 'Debt Situation': 'Has a mortgage but no other debts. The mortgage takes up a moderate proportion of his monthly income, allowing for good cash flow management.'}, 'Investment Experience': {'Investment Background': 'Experienced in stock and fund investments, currently learning about real estate investment. Has faced short-term losses but achieved stable profits through reflection and learning.', 'Knowledge Level': 'Possesses extensive financial knowledge, has passed the CFA Level 1 exam, is currently preparing for Level 2, and regularly attends industry investment forums.', 'Risk Management': {'Risk Appetite': 'Risk-averse, focuses on long-term returns, prefers low-risk asset allocation, and adjusts investment strategies based on market trends.'}}}}"
+</persona>
+
+**Article to be Evaluated**
+<target_article>
+"户外徒步、露营与高山登山装备系统全景解析与选型指南
+
+户外运动的开展依赖于系统化的装备支持。随着活动场景从低海拔一日徒步（Day Hiking）拓展至多日野外露营（Wilderness Backpacking），乃至高海拔技术性登山（Technical Alpine Mountaineering），环境要素如气压、气温、风速、紫外线强度及地形复杂性呈现出剧烈的非线性变化。一套优秀的户外装备配置，不仅需要保障使用者的生命安全与基本舒适度，更需在重量、耐用性与功能性三者之间达成精准平衡。针对初学者由浅入深的发展需求，基于“十项必备要素”（The Ten Essentials）安全框架，深入拆解避难睡眠、服装穿搭、炊事净水、导航照明及高山技术装备五大核心子系统，并结合当前主流品牌生态，可以提供科学的预算分配与选型方案。   
+
+1. 户外装备选型核心逻辑与十项必备要素体系
+
+构建户外装备库的核心在于确立“系统化与冗余度”的设计思想，任何单件装备都不是孤立存在的，而是相互协同以应对环境突变。国际通用户外救援与登山体系总结的“十项必备要素”是应对野外突发状况与极端天气的底线防御机制，构成了全套装备规划的底层架构。   
+
+在导航与通信方面，地形图、磁指南针以及具备离线地图功能的 GPS 设备或卫星通信仪形成了多重冗余，确保在复杂地形或电子设备失灵时依然能够精确定位。照明系统则以头灯或手电筒为主，配合备用电池或充电宝，为夜间行进与营地操作提供Hands-free的照明保障。针对高海拔与露天环境的强紫外线，防晒防护系统包含了具有侧挡板的冰川护目镜、高倍数防晒霜以及防晒衣物，可有效预防电光性眼炎与皮肤晒伤。   
+
+安全与生存子系统由急救用品、多功能工具、火源与紧急避难装备共同组成。模块化急救包涵盖创伤包扎、药品及水泡护理；多功能折叠刀与装备修复胶带用于应对机械故障；防风打火机或打火棒能在恶劣天气下建立火源；而救生毯或紧急避难囊（Emergency Bivy）则为突发失温或被困提供了最基础的体温保持手段。在营养与维持方面，必须准备超出预定行程一至两天的未加工高能量干粮，以及便携式水滤器或净水药片，以确保水源的安全补充。最终，符合环境极限温度的防风防水外壳与保暖中间层构成了人体微气候的最后一道屏障。   
+
+2. 营地避难与睡眠系统构造
+
+睡眠系统直接决定了野外体能恢复的效率，完整的营地避难系统由帐篷、睡袋和防潮垫三部分协同构成。   
+
+对于三季野外露营，双层自立式帐篷是兼顾抗风性与居住性的稳妥选择。外帐用于阻挡风雨，内帐负责防虫并保持透气，双层结构能显著减少内部凝露。以 Big Agnes Copper Spur UL2 为代表的轻量化帐篷，在约 1.42 kg 的重量下提供了出色的内部空间与双门厅设计，但其 15D-20D 的薄型底布需要在复杂地形上配合营地布（Footprint）使用以防刺穿。若涉足高海拔冰雪环境，则需要升格为采用交叉多杆结构与无大面积网布的高山帐篷，以承受强风与积雪荷载。   
+
+睡袋的保暖效率取决于填充材质的蓬松度与结构设计。羽绒睡袋在克重比与压缩性上显著优于化纤睡袋。例如，采用 850FP 顶级鹅绒填充的 Feathered Friends Swallow UL 20，在提供 -6°C 极限保暖的同时将重量压缩至 0.79 kg 左右。在潮湿环境或预算受限时，化纤睡袋则凭借湿态下依然保持结构坍塌抵抗力的特性而具备独特优势。   
+
+防潮垫的主要功能是阻断人体与地面之间的传导性热量流失，其保暖性能由 ASTM F3340 标准测定的 R 值（R-value）进行量化。夏季平原露营仅需 R 值 1.0–2.0 的基础防护；春秋及常规三季徒步适用 R 值 2.0–4.0 的垫子，如 NEMO Switchback 闭孔泡沫垫或 Sea to Summit Ultralight XR；高海拔或初冬环境要求 R 值达到 4.0–5.5，如 Therm-a-Rest NeoAir XLite NXT 和 Nemo Tensor All-Season UL，此类充气垫通过反射膜技术在维持轻量化的同时实现了优异的隔热效果；而在雪地露营与高山探险中，则必须使用 R 值大于 7.0 的极端寒冷防护垫，例如 Therm-a-Rest XTherm NXT。   
+
+装备类别	代表型号	重量/规格	关键技术/R值	适用环境与特点	预算定位
+三季轻量帐篷	Big Agnes Copper Spur UL2	~1.42 kg	双门双门厅，DAC铝合金帐杆	
+
+三季徒步露营，居住空间大但底布偏薄
+
+	中高端
+羽绒睡袋	Feathered Friends Swallow UL 20	~0.79 kg	850+ FP 鹅绒，Pertex 面料	
+
+-6°C环境，极高保暖重量比
+
+	高端
+三季充气防潮垫	Therm-a-Rest NeoAir XLite NXT	~0.37 kg	R值 4.5, 3英寸厚度，30D尼龙	
+
+三季至初冬，重量极轻且收纳体积小
+
+	中高端
+全季充气防潮垫	Nemo Tensor All-Season UL	~0.40 kg	R值 5.4, 3.5英寸厚度，Spaceframe格栅	
+
+四季通用，静音性好，舒适度极佳
+
+	中高端
+折叠泡沫防潮垫	NEMO Switchback	~0.41 kg	R值 2.0, 0.9英寸厚度，闭孔泡沫	
+
+夏季或作为充气垫底垫，极致耐用
+
+	入门/平价
+  
+3. 三层穿衣法则与足部保护系统
+
+户外环境的多变性要求服装具备快速调节微气候的能力，“三层穿衣法则”通过功能分工实现了湿气管理、温度调节与风雨防护的平衡。   
+
+基础层贴身穿著，核心功能为导湿干爽。纯棉材质因吸水后导热率骤增且不易干燥而必须禁止使用，取而代之的是聚酯纤维或美利奴羊毛。合成纤维干燥速度极快，适合高强度发汗运动；美利奴羊毛则具备天然抑菌抗臭能力，且在微湿状态下仍能维持一定的保暖体感。   
+
+中间层分为动态保暖与静态保暖。在行进过程中，采用网格结构或针织抓绒的动态中间层（如 The North Face Futurefleece 或 Eddie Bauer High Route）能够快速排出多余热气与汗蒸气；而在休息或营地停留时，高蓬松度的羽绒服（如 Mountain Hardwear Stretchdown）或化纤棉服则用于快速锁定体温。   
+
+外壳层承担抵御外部恶劣气候的职责。常规徒步可选用三层压胶的防水透气冲锋衣，如 Patagonia Torrentshell 3L，其凭借 H2No 膜技术提供了硬朗的防护力与高性价比；高山攀登与极端恶劣天候则需要高强度面料（如 Arc'teryx Alpha SV，配备 Gore-Tex Pro 膜与兼容头盔的兜帽），以抵御岩石刮擦与侧吹暴雪。在无强降水但高风速的环境下，柔韧透气的软壳外套（如 Rab Kinetic Plus）能够提供更佳的运动伸展性。   
+
+足部保护系统需根据地形承载力进行针对性配置。非技术性路径可选择 Salomon X Ultra 5 Mid GTX 等中帮徒步鞋，兼顾灵活性与适度踝部支撑。进入高海拔或冰雪混混合地形时，普通徒步鞋因鞋底弯曲度过大易导致足部疲劳且无法安装冰爪，必须升级为中底嵌有复合碳板或钢板的高山登山靴（如 La Sportiva Trango Cube GTX 或 Nepal Cube GTX），以提供极高的抗扭转刚性与冰爪卡槽。配合高比例美利奴羊毛袜（如 Darn Tough Micro Crew Cushion）及全长防水雪套，可有效防止水泡形成与异物灌入。   
+
+服装/鞋履类别	代表型号	核心材质/技术	主要功能与适用场景
+硬壳防水外套	Patagonia Torrentshell 3L	3层 H2No 结构，可回收尼龙	
+
+基础雨雪防护，性价比高，日常与徒步通用
+
+
+高山极限硬壳	Arc'teryx Alpha SV	100D Gore-Tex Pro Most Rugged	
+
+冰雪攀登、极端暴风雪，极致耐磨防刮
+
+
+软壳外套	Rab Kinetic Plus	Proflex 弹力透气防水面料	
+
+动态高强度攀登，高透气与舒适伸展
+
+
+徒步长裤	Outdoor Research Ferrosi	86% 尼龙, 14% 氨纶，DWR处理	
+
+弹力透气，防风耐磨，适合常规徒步
+
+
+中帮徒步鞋	Salomon X Ultra 5 Mid GTX	Gore-Tex 膜，Contagrip 橡胶大底	
+
+三季中低海拔徒步，兼顾灵活与支撑
+
+
+高山登山靴	La Sportiva Trango Cube GTX	耐磨合成织物，3D Flex踝部系统	
+
+混合地形与夏季高山攀登，兼容半自动冰爪
+
+
+羊毛徒步袜	Darn Tough Micro Crew Cushion	美利奴羊毛混纺，高密度编织	
+
+防水泡与缓冲减震，提供终身质保
+
+  
+4. 炊事、水处理与能量补充系统
+
+野外膳食与饮水不仅关乎体能补充，也是极端气候下的生命维持线。炉具与净水设备的选型必须紧扣环境温度与水源状况。   
+
+常规三季徒步首选分体式或一体式卡式气炉（如 MSR PocketRocket 2），其具有重量轻、火力调节细腻及即开即用的优点。但在强风环境或零度以下低温区，异丁烷气罐气压会骤降，且敞开式炉头热量散失严重。风暴炉系统（如 Jetboil Flash）通过将炉头、集热环与煮水锅进行一体化整合，实现了极高的防风热效率与极速烧水能力，极其适合融雪及快速复水食品。在极端严寒的高山探险中，白汽油或多燃料液体炉由于可通过手动预热加压喷射，不受低温低压影响，成为高寒地带的必备炊事装备。   
+
+水处理系统必须阻断寄生虫、细菌与悬浮颗粒物。以 Sawyer Squeeze 为代表的中空纤维膜过滤器，过滤精度达 0.1 微米，重量轻且支持反冲洗重复使用；多人在营地活动时则可采用重力式净水器（如 Platypus GravityWorks 4L）实现大容量自动过滤。需要特别注意，在零度以下的严寒环境内，中空纤维膜结冰膨胀会导致滤芯内部微孔破裂失效，此时必须将水滤器贴身保暖，或改用煮沸及二氧化氯净水片进行消毒。   
+
+炊事/净水设备	代表产品	重量/容量	性能特点与适用场景
+超轻分体气炉	MSR PocketRocket 2	~73 g	
+
+极小体积，火力强劲，适合常规三季单人徒步
+
+
+集热风暴炉系统	Jetboil Flash	~371 g (含锅)	
+
+极高热效率，极速煮沸，适合高风速环境
+
+
+便携水过滤器	Sawyer Squeeze	~85 g	
+
+0.1微米过滤精度，可直接拧在水瓶或水袋上
+
+
+重力净水系统	Platypus GravityWorks	4L 储水袋	
+
+大流量重力过滤，适合多人在营地构建水站
+
+
+脱水复水食品	Backpacker's Pantry 营地餐	~150-200 g/包	
+
+补充高卡路里，热水浸泡即食，方便垃圾回收
+
+  
+5. 导航、照明与应急安全系统
+
+高山与野外地形复杂，迷路与突发伤病引发的失温是户外安全事故的主要诱因。建立多重冗余的导航、照明与应急体系是规避风险的关键。   
+
+在导航体系中，智能手机离线地图（如 Gaia GPS）虽便利，但受制于低温下锂电池衰减及电子设备损坏风险，纸质等高线地形图与磁指南针依然是不可替代的底线保障。高海拔冰川或无地标雪原行进时，可配置双频手持 GPS 接收器。对于偏远山区探险，搭载 Iridium 卫星网络的 Garmin inReach 或个人定位信标（PLB）能够在无蜂窝信号区实现双向短信沟通与 SOS 救援信号发射。   
+
+照明系统应选择具备双燃料（Dual-Fuel）电源设计的头灯，如 Petzl Actik Core。此类头灯既可使用高能量密度的可充电锂电池，又能直接兼容常规 AAA 干电池，有效避免了高寒环境下单一电池耗尽导致的失明风险，其红光模式更能保护夜视力并减少昆虫趋光干扰。   
+
+急救与维修工具包需采用防水密封袋分隔收纳。急救部分应包含创伤包扎纱布、自粘弹性绷带、水泡水凝胶贴以及广谱抗生素、非甾体抗炎药和抗高原反应药物。维修部分则配备多功能工具钳、大力胶带（Duct Tape）、修补胶水及针线，以便在野外实时修补撕裂的帐篷、防潮垫或挂绊损坏的服饰。   
+
+6. 技术高山登山专项装备系统
+
+当活动范畴从常规徒步跨越至高海拔冰雪地形或冰川穿越时，装备必须升级至具备 UIAA（国际登山联合会）及 CE 安全认证的技术登山级别。   
+
+高山环境中落石与冰块坠落风险高发，攀登头盔必须具备轻量化与多重冲击吸收能力。如 Black Diamond Vision 或 Petzl Boreo，采用发泡聚丙烯（EPP）与聚碳酸酯外壳复合结构，能在极低重量下提供顶部与侧向防护。   
+
+直柄登山冰斧用于冰雪坡面行进时的第三支点平衡以及滑坠发生时的自制动（Self-Arrest）。冰斧长度的选型标准为：攀登者直立且手臂自然下垂手持斧头时，斧尖（Spike）应刚好悬挂在脚踝骨附近。   
+
+冰爪提供雪面与坚冰上的抓地力，分为钢制与铝合金材质。12 针钢制冰爪耐磨性高，适用于岩冰混合地形；铝合金冰爪重量轻，但仅适用于纯雪坡。冰爪按绑定接口分为绑定式（C1，适用无卡槽鞋）、半自动（C2，要求靴跟有卡槽）和全自动（C3，要求靴头靴跟均有卡槽），且底部必须配置防雪块粘连的阻雪板（Anti-Balling Plates）。   
+
+冰川穿越要求团队系绳行走，高山安全带（如 Petzl Altitude）采用轻薄无垫片设计，且腿圈可完全打开，方便攀登者穿著庞大的高山靴和冰爪直接穿脱。配合主锁、扁带圈、Prusik 抓绳细绳、捕绳滑轮及冰螺栓构成冰裂缝救援组合。此外，高海拔地区雪地紫外线反射率高达 80% 以上，必须佩戴防护等级达到 Category 4 且具备侧挡板的冰川护目镜以防雪盲症。   
+
+技术装备类别	代表型号	核心规格/认证	技术特点与选型要点
+攀登头盔	Black Diamond Vision	UIAA / CE 认证, EPP+EPS+ABS	
+
+超轻多重冲击防护，兼容头灯固定扣
+
+
+常规登山冰斧	Black Diamond Raven / Petzl Glacier	钢制斧头/尾尖，直柄铝合金	
+
+高山雪坡平衡支撑与滑坠自制动，长度选至踝骨
+
+
+登山冰爪	Petzl Vasak / BD Sabretooth	12针高强度钢，含抗粘连阻雪板	
+
+适用高山冰雪地形，提供半自动/全自动接口
+
+
+超轻高山安全带	Petzl Altitude	高模量聚乙烯, 可拆卸腿圈	
+
+可穿著冰爪直接穿脱，极其轻薄且体积小巧
+
+
+冰川护目镜	Julbo Shield / Vermont Classic	Cat.4 防护等级，带皮革侧挡板	
+
+极致防紫外线与防眩光，防止高海拔雪盲症
+
+  
+7. 背负系统选型与重力分布规划
+
+背包作为承载全套装备的骨骼，其容量与背负结构的适配性直接决定了长途行进中的体力消耗速度。   
+
+背包容量按行程梯度划分：20L–30L 适用于一日徒步，只需装载雨具、饮水、路餐及急救包（如 Osprey Talon 22）；45L–65L 适用于多日露营，需具备完善的内骨架与支撑腰带（如 Osprey Atmos AG 65 或 Granite Gear Blaze 60），能将 70% 以上的重量有效传导至骨盆区域；50L–70L+ 的技术高山包（如 Mountain Hardwear AMG）则采用狭长流线型设计以减少岩石挂绊，并配备冰斧外挂环与侧向雪板绑带。   
+
+打包时必须遵循“重心贴背、下轻中重上常用”的物理原则。背包底层放置睡袋、睡眠衣物等体积大且营地才用的轻量物品；中层贴近脊椎位置放置套锅、燃料、水袋及食物等最重物品，使背包重心紧贴人体的重力线，防止行进中身体后仰；上层与外侧放置防风雨外套和保暖中间层以便随时增减；顶包与随身口袋则收纳地图、头灯、防晒霜及急救包等高频取用物资。   
+
+8. 品牌生态与预算配置策略
+
+户外品牌生态呈现出明显的专业分工与阶梯梯队，合理的预算分配应遵循“生命安全与舒适核心高投入，辅助件与消耗品讲求实用”的原则。
+
+品牌梯队大致可分为三大阵营。第一梯队为顶级高山与专项技术品牌，如 Arc'teryx（高阶硬壳与攀登服饰）、Feathered Friends（顶级羽绒）、La Sportiva（专业高山鞋履）及 Hilleberg（高山防风帐篷），此类品牌在极端环境下可靠性极高，但单品售价较为昂贵。第二梯队为中高端主流品牌，如 Patagonia、Osprey、Black Diamond、MSR、Therm-a-Rest、Salomon 及 Outdoor Research，该梯队产品技术成熟、性价比均衡，是绝大多数资深玩家的主力选择。第三梯队为入门与极高性价比品牌，如 Decathlon/Simond（迪卡侬及其高山线）、Naturehike（挪客）及 Klymit，适合初学者体验或作为非极端环境下的替代选购。   
+
+在全套装备的资金分配上，建议将 40% 的预算投入到“安全与脚下系统”（高山靴/徒步鞋、硬壳冲锋衣以及冰斧/冰爪/头盔等技术件），此类装备直接决定了抵御极端天气与地形风险的底线；35% 的预算分配给“睡眠与避难系统”（高质量睡袋、高 R 值防潮垫与防风帐篷），以保障恢复体能的休息质量；15% 的预算分配至“背负与炊水系统”（舒适背包与高效炉头）；剩余 10% 用于购买登山杖、基础抓绒、营地餐及杂物袋等辅助件。   
+
+方案梯队	适用人群/目标	避难/睡眠系统配置	服装与鞋履配置	炊事与技术装备配置	整体预算策略
+经济实用方案 (Budget)	初学者尝试，低海拔三季徒步及常规露营	
+
+挪客三季自立帐 + Klymit/迪卡侬充气垫 + 入门羽绒睡袋
+
+	
+
+迪卡侬MH500冲锋衣 + Salomon中帮鞋 + 聚酯纤维基础层
+
+	
+
+MSR PocketRocket 2 + Sawyer Mini 净水器
+
+	
+
+优先保证基本防护，选择大厂平价线，避免盲目追高
+
+
+进阶均衡方案 (Performance)	高频户外玩家，涉及高海拔徒步与三季露营	
+
+Big Agnes Copper Spur 帐篷 + NeoAir XLite 垫 + 800FP羽绒睡袋
+
+	
+
+Patagonia Torrentshell 冲锋衣 + Salomon/OR长裤 + 羊毛内衣
+
+	
+
+Jetboil 风暴炉 + Sawyer Squeeze + BD 头灯
+
+	
+
+核心装备采用行业标杆品牌，实现重量与耐用性最佳平衡
+
+
+远征高山方案 (Alpine Elite)	技术高山攀登、冰川穿越及极端天气探险	
+
+高山四季帐 + XTherm NXT 高R值垫 + -15°C顶级羽绒睡袋
+
+	
+
+Arc'teryx Alpha SV 冲锋衣 + La Sportiva 高山靴 + 顶级羽绒服
+
+	
+
+液体多燃料炉 + 冰斧/12针钢爪/BD头盔/Julbo冰川镜
+
+	
+
+追求极致性能与高可靠性，全线配置顶级技术品牌产品
+
+  
+9. 初学者户外全套装备汇总清单
+
+构建一套完善的户外装备库是一个随技术积累与路线难度递增而动态演进的过程。初学者应坚持“分阶段采购、模块化扩展”的原则，初期重点配置通用性强的徒步与睡眠装备，随后根据高海拔或冰雪线路的实际需求逐步扩充技术登山件。
+
+下表整理汇总了涵盖徒步、露营与高山登山全场景的详细装备清单，包含核心规格指标、功能定位及推荐品牌型号，供初学者进行系统化选购参考。
+
+装备子系统	细分品类	核心技术规格/选型标准	推荐品牌与代表型号	优先等级与配置建议
+避难睡眠	露营帐篷	
+
+双层自立式，双门厅，铝合金帐杆，配合底布
+
+	
+
+Big Agnes Copper Spur UL2 / MSR Hubba Hubba
+
+	
+
+核心必备 / 三季通用
+
+
+避难睡眠	羽绒睡袋	
+
+800+ FP 鹅绒，温标 -5°C 至 -10°C
+
+	
+
+Feathered Friends Swallow UL 20 / Therm-a-Rest Boost
+
+	
+
+核心必备 / 高保暖重量比
+
+
+避难睡眠	充气防潮垫	
+
+ASTM R值 ≥ 4.0，厚度 ≥ 3英寸，轻量可压缩
+
+	
+
+Therm-a-Rest NeoAir XLite NXT / Nemo Tensor All-Season
+
+	
+
+核心必备 / 防传导失温
+
+
+服装鞋履	冲锋衣(硬壳)	
+
+3层压胶防水透气膜，Gore-Tex 或 H2No
+
+	
+
+Patagonia Torrentshell 3L / Arc'teryx Alpha SV
+
+	
+
+核心必备 / 防风雨雪外壳
+
+
+服装鞋履	保暖中间层	
+
+高蓬松度羽绒服（静态）或网格抓绒（动态）
+
+	
+
+Mountain Hardwear Stretchdown / TNF Futurefleece
+
+	
+
+核心必备 / 体温调节
+
+
+服装鞋履	排汗基础层	
+
+美利奴羊毛或高导湿聚酯纤维，严禁纯棉
+
+	
+
+Icebreaker / Smartwool / 迪卡侬美利奴系列
+
+	
+
+核心必备 / 贴身湿气管理
+
+
+服装鞋履	徒步裤	
+
+耐磨弹力织物，防风，具备 DWR 防泼水
+
+	
+
+Outdoor Research Ferrosi / Prana Stretch Zion
+
+	
+
+核心必备 / 下装防护
+
+
+服装鞋履	徒步鞋/高山靴	
+
+中帮防水徒步鞋（常规）或刚性中底高山靴（高山）
+
+	
+
+Salomon X Ultra 5 Mid / La Sportiva Trango Cube GTX
+
+	
+
+核心必备 / 根据地形二选一
+
+
+服装鞋履	徒步袜/雪套	
+
+高比例美利奴羊毛缓冲袜 + 全长防水雪套
+
+	
+
+Darn Tough Micro Crew / Outdoor Research Crocodile
+
+	
+
+核心必备 / 足部防护
+
+
+炊事净水	户外炉头	
+
+分体卡式气炉（常规）或风暴集热炉（高风速）
+
+	
+
+MSR PocketRocket 2 / Jetboil Flash
+
+	
+
+核心必备 / 营地饮食热源
+
+
+炊事净水	便携净水器	
+
+0.1微米中空纤维膜，支持挤压与反冲洗
+
+	
+
+Sawyer Squeeze / Platypus GravityWorks
+
+	
+
+核心必备 / 野外饮水安全
+
+
+炊事净水	户外套锅	
+
+氧化铝或钛合金，轻量且耐磨
+
+	
+
+Sea to Summit Alpha Pot / MSR Trail Lite
+
+	
+
+核心必备 / 炊事搭配
+
+
+背负系统	登山背包	
+
+45L–65L，具备内骨架与支撑重力传输腰带
+
+	
+
+Osprey Atmos AG 65 / Granite Gear Blaze 60
+
+	
+
+核心必备 / 按行程容量选型
+
+
+导航照明	导航设备	
+
+纸质等高线图 + 指南针 + 卫星通信仪(inReach)
+
+	
+
+Garmin inReach Mini 2 / Brunton 指南针
+
+	
+
+核心必备 / 多重导航冗余
+
+
+导航照明	户外头灯	
+
+双燃料供电（锂电池+AAA），红光模式，IPX8防水
+
+	
+
+Petzl Actik Core / Black Diamond Storm
+
+	
+
+核心必备 / 夜间 Hands-free 照明
+
+
+安全应急	医用急救包	
+
+创伤包扎 + 常用药品 + 水泡贴，防水密封
+
+	
+
+Adventure Medical Kits Ultralight / 自组包
+
+	
+
+核心必备 / 伤病应急
+
+
+安全应急	工具与火源	
+
+多功能钳 + 大力胶带 + 防风打火机/打火棒
+
+	
+
+Leatherman Wave+ / UCO 防水火柴
+
+	
+
+核心必备 / 装备修复与求生
+
+
+高山技术	攀登头盔	
+
+UIAA/CE 认证，EPP/EPS/ABS 复合结构轻量头盔
+
+	
+
+Black Diamond Vision / Petzl Boreo
+
+	
+
+高山专项 / 防落石冲击
+
+
+高山技术	登山冰斧	
+
+铝合金直柄，钢制斧头与尾尖，长度按踝骨选型
+
+	
+
+Black Diamond Raven / Petzl Glacier
+
+	
+
+高山专项 / 支撑与自制动
+
+
+高山技术	登山冰爪	
+
+12针高强度钢爪，含防粘连阻雪板，匹配靴型
+
+	
+
+Petzl Vasak / Black Diamond Sabretooth
+
+	
+
+高山专项 / 冰雪坡面抓地
+
+
+高山技术	安全带/冰川镜	
+
+超轻可拆腿圈安全带 + Cat.4 等级带侧板冰川镜
+
+	
+
+Petzl Altitude / Julbo Shield
+
+	
+
+高山专项 / 冰川穿越防护"
+</target_article>
+
+**Evaluation Criteria**
+You must evaluate the specific performance of this article in terms of personalization alignment, **following the criteria list below**, outputting your analysis and then assigning a score from 0–10. Each criterion includes its explanation, which you should read carefully.
+
+<criteria_list>
+{'goal_alignment': [{'criterion': 'Safety and risk management tailored to a beginner and high-altitude scenarios', 'explanation': 'Assesses whether the report prioritizes safety for a novice: redundancy for navigation and lighting, weather decision rules, first-aid and emergency protocols, altitude acclimatization guidance, and clear boundaries between trekking vs technical mountaineering (e.g., when to hire guides or rent technical gear). This aligns with Chen Hao’s risk-averse style and planned Sichuan–Tibet trekking.', 'weight': 0.18}, {'criterion': 'Budget–quality optimization with data-backed purchasing strategy for China market', 'explanation': 'Checks if recommendations balance cost and performance with concrete prices in China, warranty/after-sales info, repairability, resale value, and local brand options (e.g., Decathlon, Naturehike, Kailas, Fire-Maple) alongside global brands. Includes guidance on buying used vs new (safety-critical items new), rentals for rarely used technical gear, and timing purchases around sales and his mid-/end-month spending cadence.', 'weight': 0.17}, {'criterion': 'Region- and season-specific adaptation for Shanghai summers and Sichuan–Tibet conditions', 'explanation': 'Evaluates whether the plan explicitly covers hot-humid Shanghai training (heat/humidity management) and high-altitude summer trekking (UV, sudden storms, cold nights, diurnal swings) with appropriate layering, waterproofing, sun protection, and shelter/sleep system specs. Addresses his actual destinations and the multi-environment reality.', 'weight': 0.16}, {'criterion': 'Modular, scalable kit design with phased upgrades and testing plan', 'explanation': 'Assesses whether the gear list is organized into a core kit for day hikes and camping with add-ons for (non-technical) mountaineering, plus clear upgrade paths and a phased purchasing/testing approach (e.g., weekend shakedowns near Shanghai). This fits his beginner status, conservative risk appetite, and planned monthly purchase cycles.', 'weight': 0.13}, {'criterion': 'Spec-driven decision logic and verification (metrics, thresholds, authenticity checks)', 'explanation': 'Looks for quantifiable selection criteria (e.g., hydrostatic head, down fill power, R-value, headlamp lumens/battery type, filter pore size/flow rate, pack volume/weight targets) and guidance on verifying authenticity on JD/Tmall and avoiding counterfeits. Matches his analytical, data-reliant decision-making style.', 'weight': 0.12}, {'criterion': 'Fit and comfort personalization (pack sizing, footwear fit, load targets, break-in)', 'explanation': 'Checks whether the plan provides actionable fit guidance: torso/hip measurements for packs, footwear sizing for swelling and last width, sock/liner choices, blister prevention, and safe load targets. Aligns with his good but novice outdoor fitness and desire to avoid injury.', 'weight': 0.09}, {'criterion': 'China-specific procurement, logistics, and legal compliance details', 'explanation': 'Evaluates whether the content covers fuel canister transport constraints, sourcing fuel at destination, potential restrictions on satellite communicators, local permits/park rules, and availability at domestic retailers. Ensures recommendations are usable and compliant in his operating environment.', 'weight': 0.07}, {'criterion': 'Urban storage, maintenance, and humidity management for a small apartment', 'explanation': 'Assesses guidance on compact, multi-use gear; maintenance schedules (DWR renewal, down storage, tent care); drying/dehumidifying strategies in Shanghai humidity. Reflects his space constraints and desire to preserve gear value (TCO).', 'weight': 0.04}, {'criterion': 'Analytical, structured communication style with checklists and trade-off reasoning', 'explanation': 'Checks for clear checklists, tiered brand recommendations, concise pros/cons, and decision trees he can review in evening research sessions. Resonates with his professional analytical habits and preference for expert-backed, rational advice.', 'weight': 0.04}], 'content_alignment': [{'criterion': 'China-specific Environmental and Route Localization', 'explanation': 'Assess whether the content tailors gear choices to Shanghai’s hot, rainy, humid summers and the Sichuan–Tibet route’s high-altitude cold, intense UV, and storm potential (e.g., sun protection, alpine-capable layering, storm-worthy shelters), and references brands/models available in the China market.', 'weight': 0.22}, {'criterion': 'Value-Tiered Brand Recommendations for China Market', 'explanation': 'Check if the report proposes clear price–performance tiers (entry/mid/premium) with China-available brands/models, helping a cost-conscious, research-oriented buyer balance budget and quality for each gear category.', 'weight': 0.18}, {'criterion': 'Risk Management and Safety Redundancy for a Beginner at Altitude', 'explanation': 'Evaluate inclusion and emphasis on safety-critical selections tailored to a risk-averse novice planning high-altitude trips (e.g., reliable water treatment redundancy, headlamp reliability and spare batteries, emergency communication options suitable in China, first-aid essentials for altitude/cold).', 'weight': 0.18}, {'criterion': 'Modular Kit Design and Upgrade Path', 'explanation': 'Determine whether the gear list is structured into a core kit plus optional modules for day hikes, overnight camping, and entry mountaineering, with clear upgrade paths to avoid overbuying expedition gear prematurely—aligned to his single significant purchase behavior and gradual skill growth.', 'weight': 0.12}, {'criterion': 'Data-Backed Specifications and Comparative Depth', 'explanation': 'Assess whether recommendations reference quantifiable specs (e.g., pack weight and frame type, waterproof rating/hydrostatic head, breathability, fill power/R-value, outsole rubber types, warranty terms) enabling an analytical, CFA-level user to compare and justify choices.', 'weight': 0.1}, {'criterion': 'Tech Ecosystem Fit (China Maps/BeiDou, Power Strategy)', 'explanation': 'Check alignment with his tech preference and Chinese context: offline map/app compatibility (e.g., Gaode/Amap), BeiDou/GNSS support, battery strategy for altitude/cold, and power bank/charging solutions suitable for China travel infrastructure.', 'weight': 0.07}, {'criterion': 'Comfort and Fit Guidance Tailored to User Profile', 'explanation': 'Evaluate whether the content includes fit-centric advice relevant to a male user in China—pack torso and hip-belt sizing, footwear last/width guidance, sock and insole pairing—to support long-term comfort and reduce injury risk.', 'weight': 0.05}, {'criterion': 'Storage and Maintenance for Humid Urban Living', 'explanation': 'Assess if the report addresses care/storage practices suited to a small, humid Shanghai apartment (e.g., drying protocols, dehumidification, down storage, tent/sleeping bag mold prevention) to preserve durability and value.', 'weight': 0.03}, {'criterion': 'Acquisition Strategy Alignment (Sales Timing, Second-hand Verification, Warranty)', 'explanation': 'Determine whether content aligns with his consumption cycle and platform habits: suggests China e-commerce sales windows (e.g., 618/11.11), store try-on then online purchase tactics, second-hand inspection/red flags, and ensuring valid China warranty/invoices.', 'weight': 0.04}, {'criterion': 'Sustainability and Eco-Packaging When Cost-Effective', 'explanation': 'Check if the content acknowledges eco-friendly packaging/material options that do not compromise cost-effectiveness, reflecting his service preference without diluting budget priorities.', 'weight': 0.01}], 'presentation_fit': [{'criterion': 'Professional, concise, and objective tone (non-marketing, evidence-oriented)', 'explanation': 'Assesses whether the report uses neutral, data-driven language with clear claims (e.g., cites standards rather than hype). This matches a finance professional’s preference for analytical, trustworthy presentation.', 'weight': 0.16}, {'criterion': 'Jargon and acronym handling with brief in-line definitions', 'explanation': 'Checks if outdoor terms (e.g., EN/ISO temperature rating, R-value, denier, hydrostatic head, RET/MVTR) are introduced with short explanations on first use, reducing beginner friction while preserving precision.', 'weight': 0.14}, {'criterion': 'Layered structure and navigation (TL;DR, clear headings, logical grouping)', 'explanation': 'Evaluates the presence of an executive summary/quick-start checklist, clear section headers, and grouping by function/use-case. This supports efficient evening/mobile reading and staged deep-dives.', 'weight': 0.16}, {'criterion': 'Standardized, comparison-friendly spec formatting', 'explanation': 'Looks for consistent spec fields across items (e.g., weight, capacity/volume, temperature/waterproof ratings, sole type, price band) in aligned lists or matrices, enabling side-by-side evaluation.', 'weight': 0.15}, {'criterion': 'Numeric and unit clarity (metric, RMB, explicit scales/standards)', 'explanation': 'Assesses the use of SI units (L, g, °C, mm), RMB price ranges, and explicit standards/ratings rather than vague adjectives, aiding precise understanding and minimizing conversion effort.', 'weight': 0.1}, {'criterion': 'Scannability and mobile-friendly formatting', 'explanation': 'Checks for short paragraphs, bullet lists, one-idea-per-bullet, consistent list markers, and minimal dense blocks to fit mobile reading habits and reduce cognitive load.', 'weight': 0.1}, {'criterion': 'Priority and tagging system for quick triage', 'explanation': 'Evaluates whether items are labeled with Must-have/Nice-to-have, season/terrain tags (e.g., 3-season/4-season), and budget tiers as visual/textual tags to speed up screening without adding content.', 'weight': 0.07}, {'criterion': 'Safety and risk callout formatting', 'explanation': "Checks for visually distinct callouts (e.g., 'Safety:' prefixes) for critical items and precautions (redundant light/power, first-aid), aligning with the user’s risk-averse style without changing content.", 'weight': 0.06}, {'criterion': 'Localization for China-based reader (naming and sizing presentation)', 'explanation': 'Assesses clear brand naming (English with Chinese where helpful), RMB pricing notation, and size conventions or conversions (US/EU to CN) as presentation elements to reduce friction in local purchasing.', 'weight': 0.06}], 'actionability_practicality': [{'criterion': 'Prioritized, complete checklist with quantitative spec thresholds', 'explanation': 'Checks whether the report provides a must-have vs. optional gear list and key specs to buy against (e.g., pack volume and load range; jacket waterproof/breathability ratings; boot category and outsole; tent season rating and minimum weight; sleeping bag EN/ISO comfort rating for high-altitude nights; pad R-value; headlamp lumens and battery type; filter pore size/flow rate). This lets a beginner confidently pick specific models without guesswork.', 'weight': 0.18}, {'criterion': 'Budgeted plan with tiers, total cost, and trade-offs (new/used/rent)', 'explanation': 'Evaluates whether the report offers budget tiers (e.g., value/mid/premium), shows total basket costs, and clarifies performance trade-offs, including when to buy used or rent (e.g., mountaineering-specific items) to balance quality and price. This matches the user’s cost-effectiveness and purchasing cycle needs and enables immediate purchasing decisions.', 'weight': 0.18}, {'criterion': 'Scenario-based loadouts and decision rules for weather/terrain', 'explanation': 'Assesses whether the report maps gear selections to specific use cases (day hike, car-camp, backpacking, non-technical high-altitude trekking) and conditions (Shanghai summer rain, Sichuan–Tibet cold/UV), with clear rules (e.g., when to move from trail shoes to boots, 3-season vs. more robust shelter, layering choices). This prevents over/under-buying and ensures adaptability.', 'weight': 0.15}, {'criterion': 'Fit and sizing protocols for comfort-critical items', 'explanation': 'Looks for step-by-step fit guidance and try-on procedures (e.g., boot sizing, sock thickness, heel lock, break-in steps; backpack torso/hip-belt fitting and load testing; clothing size for layering). Clear fit protocols reduce injury risk and return friction, turning recommendations into usable purchases.', 'weight': 0.12}, {'criterion': 'Safety and redundancy plan integrated into the kit', 'explanation': 'Checks whether first-aid contents are tailored to hiking/camping; navigation redundancy (offline maps + compass), lighting backups, whistle, emergency blanket, sun/UV protection for high altitude, and guidance on emergency communication options common in China. This makes the gear plan operationally safe for a beginner.', 'weight': 0.12}, {'criterion': 'Purchase feasibility in China (channels, availability, after-sales)', 'explanation': 'Verifies that recommended brands/models are readily obtainable via mainstream channels (JD/Tmall/Decathlon/official stores), include indicative price ranges and seasonal sale tips, and note warranty/repair and fuel compatibility for stoves. This ensures the user can actually acquire and support the gear locally.', 'weight': 0.1}, {'criterion': 'Weight/portability and packing guidance', 'explanation': 'Evaluates whether the report sets base-weight targets and packing lists per scenario, suggests multipurpose items to minimize total gear, and provides storage tips for a small apartment in humid Shanghai. Practical weight and packing guidance make the kit comfortable to carry and easy to live with.', 'weight': 0.08}, {'criterion': 'Maintenance and lifecycle cost guidance', 'explanation': 'Checks for actionable care steps (e.g., DWR renewal, boot leather/synthetic care, tent seam care/drying, filter backflushing, battery management) and replacement intervals. This reduces failure risk, extends service life, and supports a rational total-cost-of-ownership approach.', 'weight': 0.04}, {'criterion': 'Procurement timeline and shakedown/testing plan', 'explanation': 'Assesses whether there is a staged buy-and-try plan aligned to the user’s monthly purchase cycle and evening time window, with local shakedown hikes/camps, return-window checks, and a final pre-trip kit validation before high-altitude travel. This turns the plan into concrete actions with minimal risk.', 'weight': 0.03}]}
+</criteria_list>
+
+<Instruction>
+**Your Task**
+Strictly follow **each criterion** in `<criteria_list>` to evaluate how `<target_article>` meets that criterion. You must:
+1. **Analyze Each Criterion**: For each item in the list, think about how the article meets the requirements of that criterion.
+2. **Analytical Evaluation**: Combine the article content, the task, and the user persona to analyze the article’s performance for that criterion, pointing out both strengths and weaknesses.
+3. **Scoring**: Based on your analysis, give a score between 0 and 10 (integer) for the article's performance on that criterion.
+
+**Scoring Rules**
+For each criterion, give a score between 0 and 10 (integer). The score should reflect the quality of the article’s performance:
+* 0–2 points: Very poor. Almost completely fails to meet the requirement.
+* 2–4 points: Poor. Meets the requirement only partially, with significant shortcomings.
+* 4–6 points: Average. Basically meets the requirement; neither particularly good nor bad.
+* 6–8 points: Good. Mostly meets the requirement, with notable strengths.
+* 8–10 points: Excellent/Outstanding. Fully or exceptionally meets the requirement.
+
+**Output Format Requirements**
+Strictly follow the `<output_format>` below to output the evaluation results for **each criterion**. **Do not include any irrelevant content, introductions, or conclusions**. Start from the first dimension and output all dimensions and their criteria in sequence:
+</Instruction>
+
+<output_format>
+{
+    "goal_alignment": [
+        {
+            "criterion": [The text of the first Goal Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        {
+            "criterion": [The text of the second Goal Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "content_alignment": [
+        {
+            "criterion": [The text of the first Content Alignment criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "presentation_fit": [
+        {
+            "criterion": [The text of the first Presentation Fit criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ],
+    "actionability_practicality": [
+        {
+            "criterion": [The text of the first Actionability & Practicality criterion],
+            "analysis": [Analysis],
+            "target_score": [integer score 0-10]
+        },
+        ...
+    ]
+}
+</output_format>
+
+Now, evaluate the article’s performance in personalization alignment based on the research task, the user persona, and the criteria. Provide detailed analysis and scoring as required above. Ensure that the output strictly follows `<output_format>`, that the JSON is valid and parseable, and that any special characters that may cause parsing errors are properly escaped.
+</user_prompt>
