@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the AskInfer-Bench v0.68 report", async () => {
+test("server-renders the AskInfer-Bench v0.71 report", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -46,6 +46,9 @@ test("server-renders the AskInfer-Bench v0.68 report", async () => {
   assert.match(html, /共同 zero-ask floor/i);
   assert.match(html, /5\.5383 对 5\.7033/i);
   assert.match(html, /不直接扩 30 题/i);
+  assert.match(html, /FIVE-TASK NATIVE CLARIFICATION MATRIX/i);
+  assert.match(html, /PDR-T42 · 全球 AI Agent 数据合规/i);
+  assert.match(html, /四个产品系统各跑 native\/oracle-top-2 三次/i);
   assert.match(html, /href="\/s0_run_20260904\/RESULTS\.md"/i);
   assert.match(html, /href="\/AskInfer-Bench_正式Proposal精简版\.pdf"/i);
   assert.match(html, /href="\/ask_infer_case\.schema\.yaml"/i);
@@ -53,7 +56,7 @@ test("server-renders the AskInfer-Bench v0.68 report", async () => {
   assert.match(html, /href="\/ask_infer_benchmark\.manifest\.yaml"/i);
 });
 
-test("keeps v0.70 manifest, v0.62 stable schemas, task screen, and downloadable artifacts in sync", async () => {
+test("keeps v0.71 manifest, v0.62 stable schemas, task screen, and downloadable artifacts in sync", async () => {
   const [caseSchema, protocol, manifest] = await Promise.all([
     readFile(new URL("../public/ask_infer_case.schema.yaml", import.meta.url), "utf8"),
     readFile(new URL("../public/ask_infer_evaluation.protocol.yaml", import.meta.url), "utf8"),
@@ -67,7 +70,7 @@ test("keeps v0.70 manifest, v0.62 stable schemas, task screen, and downloadable 
   assert.match(protocol, /question_precision/);
   assert.match(protocol, /cfa_min/);
   assert.match(manifest, /AskInfer-Bench/);
-  assert.match(manifest, /manifest_version:\s*["']?0\.70/);
+  assert.match(manifest, /manifest_version:\s*["']?0\.71/);
   assert.match(manifest, /task_specific_preference_units:\s*22/);
   assert.match(manifest, /interactive_asked_units:\s*11/);
   assert.match(manifest, /full_persona_redundant_questions:\s*0/);
@@ -76,6 +79,8 @@ test("keeps v0.70 manifest, v0.62 stable schemas, task screen, and downloadable 
   assert.match(manifest, /ask_what_matters_pilot_has_zero_between_agent_calibration_variance/);
   assert.match(manifest, /h2_forced_policy_gate_decision:\s*ASK/);
   assert.match(manifest, /routed_ask_is_scaffolded_capability_and_must_not_replace_native_ask/);
+  assert.match(manifest, /planned_reports:\s*120/);
+  assert.match(manifest, /native_prompt_contains_no_clarification_instruction/);
   assert.match(manifest, /original_personalization_criteria_per_repeat:\s*37/);
   assert.match(manifest, /task_specific_questions_agent_a:\s*0/);
   assert.match(manifest, /task_specific_questions_agent_b:\s*0/);

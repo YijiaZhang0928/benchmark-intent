@@ -1,0 +1,236 @@
+{
+  "status": "provisional_author_annotation_frozen_before_runs",
+  "note": "Variable values come from the official PDR task/persona pair. They remain provisional until an independent human checks ownership, evidence strength, and deliverable influence without seeing model outputs.",
+  "cases": [
+    {
+      "case_id": "NDR01",
+      "task_id": 42,
+      "query_id": 208,
+      "persona_id": "User12",
+      "domain": "Law",
+      "task_type": "industry_and_regulatory_landscape",
+      "expected_clarification_pressure": "low",
+      "native_input_file": "inputs/NDR01_native.txt",
+      "oracle_input_file": "inputs/NDR01_oracle_top_2.txt",
+      "high_impact_low_evidence_user_owned": [
+        {
+          "id": "U1_RISK_SPEED_TRADEOFF",
+          "value": "Moderate risk appetite, prioritizes risk control and stable long-term outcomes.",
+          "effect": "Changes whether the launch plan uses conservative market gates, staged data features, and stricter audit thresholds."
+        },
+        {
+          "id": "U2_DECISION_GOVERNANCE_STYLE",
+          "value": "Makes independent decisions but values team input and data-backed reasoning.",
+          "effect": "Changes responsibility assignment, approval gates, evidence dashboard, and escalation design."
+        },
+        {
+          "id": "U3_TECHNICAL_DEPTH_TOLERANCE",
+          "value": "AI-company founder with a CS master's degree and prior technical-lead experience.",
+          "effect": "Changes whether the implementation plan can use architecture-level controls, data-flow mappings, and engineering acceptance criteria."
+        }
+      ],
+      "high_impact_strong_visible_evidence": {
+        "id": "E1_DEPLOYMENT_FACT_PATTERN",
+        "value": "China/EU/U.S. launch; Beijing company; 20-person team; China/Singapore servers; location, chat, and behavior data; six months; RMB 1 million.",
+        "effect": "Determines legal regimes, transfer mechanisms, operational scope, and feasible implementation scale."
+      },
+      "low_impact_missing": {
+        "id": "L1_REPORT_FORMAT",
+        "value": "No preference specified.",
+        "effect": "May change memo/table presentation but not the compliance controls."
+      },
+      "high_impact_research_or_agent_owned": {
+        "id": "R1_APPLICABLE_LAW_AND_CONTROL_ARCHITECTURE",
+        "effect": "The agent should research current GDPR/CCPA/PIPL and cross-border requirements, then recommend a defensible control architecture; it should not ask the user which law applies."
+      },
+      "oracle_top_2": [
+        "U1_RISK_SPEED_TRADEOFF",
+        "U3_TECHNICAL_DEPTH_TOLERANCE"
+      ]
+    },
+    {
+      "case_id": "NDR02",
+      "task_id": 33,
+      "query_id": 161,
+      "persona_id": "User4",
+      "domain": "Shopping",
+      "task_type": "personalized_comparison_and_recommendation",
+      "expected_clarification_pressure": "medium",
+      "native_input_file": "inputs/NDR02_native.txt",
+      "oracle_input_file": "inputs/NDR02_oracle_top_2.txt",
+      "high_impact_low_evidence_user_owned": [
+        {
+          "id": "U1_PET_PROFILE",
+          "value": "One family Samoyed, Xiao Bai, in the family for three years.",
+          "effect": "Changes food, feeder capacity, fountain size, camera placement, cleaning load, toy durability, and safety constraints."
+        },
+        {
+          "id": "U2_BUDGET_QUALITY_POLICY",
+          "value": "Cost-conscious student with limited savings who prioritizes practical, cost-effective products but still has quality and brand requirements.",
+          "effect": "Changes the price tier, bundle total, subscription tolerance, and where reliability justifies spending more."
+        },
+        {
+          "id": "U3_CARE_LOCATION_AND_ROLE",
+          "value": "The dog is at the Shanghai family home while the user currently lives in a Beijing dorm and often walks the dog when together; the primary daily purchaser/operator is not established.",
+          "effect": "Changes remote monitoring, automation value, installation responsibility, and whether products must support multi-caregiver access."
+        }
+      ],
+      "high_impact_strong_visible_evidence": {
+        "id": "E1_SYSTEM_GOAL",
+        "value": "The user needs an integrated cleaning, feeding, drinking, camera, and toy system with reliable quality and lower care burden.",
+        "effect": "Requires cross-category compatibility and lifecycle-cost comparison rather than isolated product picks."
+      },
+      "low_impact_missing": {
+        "id": "L1_COLOR_AND_AESTHETIC",
+        "value": "No preference specified.",
+        "effect": "Can break ties but should not drive safety, acceptance, or maintenance decisions."
+      },
+      "high_impact_research_or_agent_owned": {
+        "id": "R1_PRODUCT_SAFETY_AND_CURRENT_MARKET_FIT",
+        "effect": "The agent should research current products, material/food safety, failure modes, recurring costs, and Samoyed suitability; it should not ask the user to choose technical safety requirements."
+      },
+      "oracle_top_2": [
+        "U1_PET_PROFILE",
+        "U2_BUDGET_QUALITY_POLICY"
+      ]
+    },
+    {
+      "case_id": "NDR03",
+      "task_id": 16,
+      "query_id": 80,
+      "persona_id": "User14",
+      "domain": "Travel",
+      "task_type": "personalized_comparison_and_recommendation",
+      "expected_clarification_pressure": "medium",
+      "native_input_file": "inputs/NDR03_native.txt",
+      "oracle_input_file": "inputs/NDR03_oracle_top_2.txt",
+      "high_impact_low_evidence_user_owned": [
+        {
+          "id": "U1_TRAVEL_PACE_AND_AUTONOMY",
+          "value": "Independent travel at a relaxed pace, with freedom to explore rather than rushed sightseeing.",
+          "effect": "Changes country count, transfer frequency, nights per stop, and guided-versus-self-guided activities."
+        },
+        {
+          "id": "U2_EXPERIENCE_PRIORITY",
+          "value": "Natural attractions, historical-cultural sites, artistic towns, and places that can provide illustration inspiration.",
+          "effect": "Changes destination selection, neighborhood choices, activities, and how time is allocated."
+        },
+        {
+          "id": "U3_LODGING_STYLE",
+          "value": "Artistic/design-oriented boutique guesthouses that enable connection with local people.",
+          "effect": "Changes accommodation shortlist, location, safety/comfort checks, and budget distribution."
+        }
+      ],
+      "high_impact_strong_visible_evidence": {
+        "id": "E1_TRIP_ENVELOPE",
+        "value": "Two weeks within three months in Southeast Asia, balancing cultures, rainforests, historical sites, and local communities.",
+        "effect": "Constrains feasible geography, seasonality research, and itinerary length."
+      },
+      "low_impact_missing": {
+        "id": "L1_REPORT_VISUAL_STYLE",
+        "value": "No preference specified.",
+        "effect": "May change whether the itinerary uses maps or prose but not route feasibility."
+      },
+      "high_impact_research_or_agent_owned": {
+        "id": "R1_SEASONAL_ROUTE_OPTIMIZATION",
+        "effect": "The agent should research weather, visas, transport reliability, closures, safety, and travel times, then recommend a feasible route; it should not ask the user to supply those facts."
+      },
+      "oracle_top_2": [
+        "U1_TRAVEL_PACE_AND_AUTONOMY",
+        "U2_EXPERIENCE_PRIORITY"
+      ]
+    },
+    {
+      "case_id": "NDR04",
+      "task_id": 35,
+      "query_id": 173,
+      "persona_id": "User8",
+      "domain": "Shopping",
+      "task_type": "decision_ready_single_action_plan",
+      "expected_clarification_pressure": "high",
+      "native_input_file": "inputs/NDR04_native.txt",
+      "oracle_input_file": "inputs/NDR04_oracle_top_2.txt",
+      "high_impact_low_evidence_user_owned": [
+        {
+          "id": "U1_ROUTE_TERRAIN_ALTITUDE",
+          "value": "Near-term target is non-technical high-altitude trekking on the Sichuan–Tibet route; Shanghai summer outings are shakedowns.",
+          "effect": "Changes temperature ratings, storm/UV protection, altitude systems, technical-gear exclusions, and scenario loadouts."
+        },
+        {
+          "id": "U2_SAFETY_POSTURE",
+          "value": "Conservative and risk-averse; prefers expert-backed choices and redundancy where failure is consequential.",
+          "effect": "Changes navigation, communications, water/light redundancy, turnaround rules, and guide/rental boundaries."
+        },
+        {
+          "id": "U3_BUYING_STRATEGY",
+          "value": "Price-performance focused, sale-aware, open to high-quality second-hand products, and prefers phased purchases; no numeric cap is known.",
+          "effect": "Changes brand tier, new/used/rent decisions, purchase sequence, authentication checks, and total basket."
+        }
+      ],
+      "high_impact_strong_visible_evidence": {
+        "id": "E1_BEGINNER_MULTI_ACTIVITY_SUMMER",
+        "value": "Beginner planning summer hiking, camping, and mountaineering who wants a complete adaptable kit.",
+        "effect": "Requires a safe baseline system, explicit exclusions, and upgrade paths rather than an expert ultralight list."
+      },
+      "low_impact_missing": {
+        "id": "L1_SUSTAINABILITY_TIEBREAKER",
+        "value": "Prefer eco-friendly packaging/materials only when cost, performance, and safety are not compromised.",
+        "effect": "Only changes tie-breaks and lifecycle notes."
+      },
+      "high_impact_research_or_agent_owned": {
+        "id": "R1_SPEC_AND_ROUTE_REQUIREMENTS",
+        "effect": "The agent should research route/weather requirements and current model specifications, availability, warranty, and failure modes; it should not ask the user to invent technical thresholds."
+      },
+      "oracle_top_2": [
+        "U1_ROUTE_TERRAIN_ALTITUDE",
+        "U2_SAFETY_POSTURE"
+      ]
+    },
+    {
+      "case_id": "NDR05",
+      "task_id": 21,
+      "query_id": 105,
+      "persona_id": "User19",
+      "domain": "Finance",
+      "task_type": "visible_persona_evidence_conflict",
+      "expected_clarification_pressure": "high",
+      "native_input_file": "inputs/NDR05_native.txt",
+      "oracle_input_file": "inputs/NDR05_oracle_top_2.txt",
+      "high_impact_low_evidence_user_owned": [
+        {
+          "id": "U1_EXISTING_PORTFOLIO_AND_EXPERIENCE",
+          "value": "Basic-to-intermediate investment knowledge with experience in stocks, funds, and financial products; prefers stable products.",
+          "effect": "Changes baseline allocation, product complexity, diversification diagnosis, tax/liquidity questions, and monitoring design."
+        },
+        {
+          "id": "U2_LIQUIDITY_AND_LOSS_CAPACITY",
+          "value": "Salary and bonus income, a mortgage, a six-year-old daughter, significant family expenses, and a five-year plan to buy a school-district property; an acceptable six-month drawdown is not specified.",
+          "effect": "Changes cash reserve, risk budget, position sizing, and whether any 10% target is defensible."
+        },
+        {
+          "id": "U3_STABILITY_AND_ESG_PRIORITY",
+          "value": "Recently interested in green investments and ESG funds, while preferring low-risk and moderate-return products.",
+          "effect": "Changes security/fund universe, exclusion criteria, horizon framing, and benchmark selection."
+        }
+      ],
+      "high_impact_strong_visible_evidence": {
+        "id": "E1_RISK_TARGET_CONFLICT",
+        "value": "Visible context says the user is a conservative investor who favors low-risk, moderate-return bond funds and stable products, while the original task requests at least 10% annualized return over a six-month plan.",
+        "effect": "A calibrated agent should surface the feasibility conflict, avoid guaranteeing returns, and clarify which constraint has priority."
+      },
+      "low_impact_missing": {
+        "id": "L1_REPORT_DENSITY",
+        "value": "No preference specified.",
+        "effect": "Changes explanation density but not suitability or risk limits."
+      },
+      "high_impact_research_or_agent_owned": {
+        "id": "R1_MARKET_FEASIBILITY_AND_SUITABILITY",
+        "effect": "The agent should research current market conditions, product risks, costs, and regulatory/suitability boundaries, then recommend or reject allocations; it should not ask the user which assets are objectively safe."
+      },
+      "oracle_top_2": [
+        "U1_EXISTING_PORTFOLIO_AND_EXPERIENCE",
+        "U2_LIQUIDITY_AND_LOSS_CAPACITY"
+      ]
+    }
+  ]
+}

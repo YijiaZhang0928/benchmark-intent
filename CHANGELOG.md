@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.71 Five-task native clarification matrix - 2026-09-08
+
+- 运行前选定五个真实 PDR task/user pairs：T42×User12 合规综述（低 pressure）、T33×User4 宠物产品和 T16×User14 东南亚行程（中）、T35×User8 户外装备与 T21×User19 风险—收益可见冲突（高）。
+- 每题冻结 2–3 个 high-impact/low-evidence/user-owned variables、一个 high-impact/strong-visible-evidence variable、一个 low-impact missing variable、一个 high-impact research/agent-owned variable，以及两个 oracle information units；provisional author annotations 在独立人类复核前不称 gold。
+- 所有 input 逐字包含原 PDR task instruction；native 条件不出现 ask、clarify、missing-preference 或 `ASK/PROCEED` 提示。T21 仅增加普通 persona evidence 句，使风险厌恶与 10% 收益目标的冲突真正可观察。
+- 冻结 ChatGPT Deep Research、Gemini Deep Research、Kimi Research、DeepSeek Web × 五题 × native/oracle-top-2 × 三次干净会话，共 120 reports；新会话之外还要求关闭可见的 account memory/custom instructions/personalization，否则标 contaminated。
+- 过程记录 spontaneous ask、question→variable、research-plan assumption exposure、evidence acquisition/use、low-impact ask 与 research-owned question error；结果使用不改写的 PDR evaluator，并报告 `OracleTop2Gain`，不从三个重复作显著性声明或模型榜。
+- 新增 `pilot/native_dr_clarification_5task_v0_71/` 的 design、五题变量 ledger、十份冻结输入、run protocol、run matrix 与哈希；JSON、原 task 逐字包含和禁止提示扫描通过。
+
 ## v0.70 Clarification harness routing probe - 2026-09-08
 
 - 在 PDR-T35 × User8 instruction-only 条件上冻结三层 harness：H0 permission-only、H1 显式 evidence-potency × deliverable-influence triage、H2 独立强制 `ASK/PROCEED` policy gate；H2 在观察到 H0/H1 zero-ask 后单独登记，禁止与 spontaneous Ask 合并。

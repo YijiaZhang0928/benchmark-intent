@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.70
+## 当前方向：AskInfer-Bench v0.71
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -33,6 +33,8 @@ v0.68 完成 PDR-T35 × User8 的 “Ask What Matters” calibration pilot。运
 v0.69 对同一 PDR-T35 × User8 做了一个 50% persona-coverage follow-up：运行前分层公开 P02/P04/P05/P07，隐藏 P01/P03/P06/P08，再让同一 ChatGPT 与 Gemini Deep Research 自由决定是否追问。两者仍为 0 问；隐藏 unit 的 question coverage 为 0/4、预判 should-ask recall 为 0/2。两份报告都严格命中全部 4 个明示 unit，并只强命中 1/4 个隐藏 unit（P03 budget/quality，且该方向已可由 task 的 “balance budget and quality” 强推断）；GPT 对 P01/P06 只有部分默认对齐，Gemini 对 P01 只有部分默认对齐。完整结果见 [`followup_50pct/summary.md`](pilot/pilot_02_ask_what_matters/followup_50pct/summary.md)。这说明 partial evidence 没有触发更选择性的 clarification，反而留下了高影响路线/环境和中影响采购/储存缺口；单次 follow-up 不形成稳定产品排名。
 
 v0.70 增加同一题的 clarification-harness probe。DeepSeek-R1 7B 在本地中性聊天 harness 中，原始 permission-only H0 与显式 preference-triage H1 都是 0 问并直接写报告；只有 H2 把研究输出禁掉、强制先返回 `ASK/PROCEED` 时才提出 2 问。两问中只有预算映射到冻结 unit，过敏/材料/品牌偏好不受 persona 或原 PDR criteria 支持；它仍遗漏预冻结应问的路线/环境 P01 与采购/储存 P06，所以 H2 relevant-question precision=1/2、should-ask recall=0/2。结果支持 zero-ask 部分来自 action routing/harness，但也显示强制出问不等于问得聪明。H2 只作 scaffolded capability diagnosis，不与 H0/H1 合并；本地无搜索，不能算 Deep Research P-score。完整结果见 [`harness_probe_web_agents/summary.md`](pilot/pilot_02_ask_what_matters/harness_probe_web_agents/summary.md)，Kimi Web 与 DeepSeek Web 尚待浏览器账户登录后运行。
+
+v0.71 在任何新模型运行前冻结五题 native clarification matrix：PDR-T42 全球 AI compliance（低 pressure）、T33 宠物产品比较与 T16 东南亚行程（中）、T35 户外装备单一行动方案与 T21×User19 “低风险 evidence vs 10% 收益目标”可见冲突（高）。每题均分开 2–3 个 high-impact/low-evidence/user-owned variables、一个 high-impact/strong-evidence variable、一个 low-impact missing variable 和一个必须 research/recommend 而不该问用户的 high-impact variable；原始 PDR task 文本逐字保留，native 输入不出现 ask/clarify 提示。四个产品系统各做 native 与 oracle-top-2 三次干净新会话，共计划 120 份报告；记录 spontaneous ask、问题对象、可见 plan assumptions、evidence use 与 `OracleTop2Gain`。冻结设计见 [`pilot/native_dr_clarification_5task_v0_71/`](pilot/native_dr_clarification_5task_v0_71/)。
 
 ## 当前交付物
 

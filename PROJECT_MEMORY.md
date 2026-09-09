@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-08
-当前版本：v0.70（Clarification harness routing probe）
+当前版本：v0.71（Five-task native clarification matrix）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAA. 2026-09-08：五题 native clarification matrix 运行前冻结
+
+用户要求不再依赖单一户外装备题，而先选五个不同 clarification pressure 的真实 Deep Research tasks；每题都必须同时具有 2–3 个高影响、低证据、真正由用户决定的变量，一个高影响且已有强证据的变量，一个低影响缺失变量，以及一个高影响但应由 agent research/recommend 而非询问用户的变量。所有 agent 输入保持自然，不加入“请提问”、free-clarification permission、preference triage 或 `ASK/PROCEED` gate。每模型至少三次干净新会话，并记录 spontaneous ask、问题内容、可见研究计划中的假设、最终 evidence use 与 oracle-top-k 增益。
+
+运行前选定五个官方 PDR task/user pairs：NDR01=T42×User12 全球 AI Agent 数据合规，预期 pressure 低；NDR02=T33×User4 宠物产品系统与 NDR03=T16×User14 东南亚背包行程，预期中；NDR04=T35×User8 初学者户外装备，预期高；NDR05=T21×User19 六个月投资方案，预期高且有可见冲突。NDR05 在逐字保留原 task 前增加一条普通自然 evidence：“用户是保守投资者，偏好低风险、中等收益的债券基金和稳健产品”，让它与题面至少 10% 年化目标的冲突真正可观察；若冲突只藏在 simulator persona 中，就不能产生可测的 clarification pressure。其余 task 的高影响强证据均已在原 instruction 中。
+
+每题的变量 ownership 与 evidence strength 已在 `pilot/native_dr_clarification_5task_v0_71/cases.json` 冻结。例如 T35 的路线/海拔、安全姿态、购买策略是 user-owned missing；当前规格、可用性与路线技术要求是 research-owned。模型问前者可计 recall，问后者则记 research-owned question error。每题另冻结两个最高影响 persona facts 形成 oracle-top-2 input，原 task 文本仍逐字保留。四个计划产品系统为 ChatGPT Deep Research、Gemini Deep Research、Kimi Research、DeepSeek Web；每个系统跑 5 tasks×2 conditions×3 repeats=30 reports，合计 120。每 episode 必须新会话，并在产品可控时关闭 memory、custom instructions 与 personalization；只开 new chat 但仍读账户记忆的 episode 标 contaminated。
+
+主过程量为 native `SpontaneousAskRate`、high-impact low-evidence user-owned recall、question precision、low-impact ask rate 和 research-owned question error；可见 research plan 另区分 assumption explicit、assumption absent 与 product not exposed，禁止从 final report 猜 private reasoning。最终报告用原 user-task pair 的未修改 PDR evaluator 盲评，`OracleTop2Gain=mean(P_oracle)-mean(P_native)`；三次重复只诊断产品内随机性，不作为独立样本或显著性证据。当前 annotation 是 pre-run provisional author freeze，仍需第二位人类在看不到 agent 输出时复核 ownership、evidence 和 influence 后才称 gold。Kimi/DeepSeek 网页账户未认证前不启动 120-run matrix。
 
 ## 0AAAAAAAAAAAA. 2026-09-08：DeepSeek clarification harness routing probe
 

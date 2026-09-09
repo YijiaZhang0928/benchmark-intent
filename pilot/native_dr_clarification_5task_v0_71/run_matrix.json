@@ -1,0 +1,27 @@
+{
+  "systems": [
+    "ChatGPT Deep Research",
+    "Gemini Deep Research",
+    "Kimi Research",
+    "DeepSeek Web"
+  ],
+  "cases": [
+    "NDR01",
+    "NDR02",
+    "NDR03",
+    "NDR04",
+    "NDR05"
+  ],
+  "conditions": [
+    "native",
+    "oracle_top_2"
+  ],
+  "repeat_ids": [
+    1,
+    2,
+    3
+  ],
+  "episode_id_template": "{system}_{case}_{condition}_r{repeat}",
+  "planned_episode_count": 120,
+  "status": "not_started"
+}

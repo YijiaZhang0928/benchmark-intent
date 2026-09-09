@@ -1,0 +1,55 @@
+{
+  "status": "frozen_before_runs",
+  "version": "0.71",
+  "frozen_at_utc": "2026-09-09T00:48:02Z",
+  "source": {
+    "benchmark": "PDR-Bench",
+    "local_import": "../../data/pdr_import_v0_51/",
+    "source_commit": "5b43f9f188c747d154fc7666812ab93b7ca6a3c2"
+  },
+  "research_question": "Do deployed Deep Research agent systems differ in whether and what they spontaneously clarify under native prompts, and does adding the two highest-influence user-owned facts improve the final report?",
+  "prompt_policy": "Original PDR task text is preserved verbatim. No instruction mentions asking, clarification, missing preferences, or ASK/PROCEED. NDR05 includes one ordinary visible persona-evidence sentence so the planned conflict is observable.",
+  "systems": [
+    "ChatGPT Deep Research",
+    "Gemini Deep Research",
+    "Kimi Research",
+    "DeepSeek Web"
+  ],
+  "conditions": [
+    "native",
+    "oracle_top_2"
+  ],
+  "repeats_per_system_task_condition": 3,
+  "task_count": 5,
+  "planned_report_count": 120,
+  "clean_session_rule": "Every episode starts in a new conversation with memory, custom instructions, personalization, and prior-chat carryover disabled where the product exposes those controls. If a product cannot disable account-level carryover, record that episode as contaminated rather than treating new-chat alone as clean.",
+  "interaction_rule": "If the agent spontaneously asks, the simulator answers only the question asked using the hidden task-specific ledger and remains concise. Unknown values are not invented. No unasked preference is volunteered.",
+  "clarification_turn_cap": 10,
+  "plan_visibility_values": [
+    "visible_and_assumption_explicit",
+    "visible_but_assumption_absent",
+    "not_exposed_by_product"
+  ],
+  "primary_process_outcomes": [
+    "whether_any_task_specific_question_is_asked",
+    "question_to_variable_mapping",
+    "high_impact_low_evidence_user_owned_recall",
+    "question_precision",
+    "low_impact_question_rate",
+    "research_owned_question_error_rate"
+  ],
+  "secondary_process_outcomes": [
+    "research_plan_assumption_exposure",
+    "visible_evidence_reflection",
+    "resolved_answer_reflection",
+    "unsupported_projection"
+  ],
+  "report_outcome": "Official PDR personalization evaluator score using the original user-task pair and unchanged evaluator.",
+  "oracle_gain": "mean(P_oracle_top_2) - mean(P_native), reported by task and system with all three raw repeats",
+  "claim_boundaries": [
+    "Expected pressure is a pre-run task label, not an observed outcome.",
+    "Product-system differences are not isolated base-model effects.",
+    "Oracle top-2 changes available information and input length; it is an information upper-bound probe, not spontaneous clarification.",
+    "Five tasks and three repeats estimate a diagnostic surface, not a stable leaderboard."
+  ]
+}

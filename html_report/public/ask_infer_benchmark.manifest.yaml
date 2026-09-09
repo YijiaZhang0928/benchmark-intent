@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.70"
+manifest_version: "0.71"
 updated: "2026-09-08"
 status: working_hypothesis_frozen
 
@@ -43,6 +43,9 @@ active_sources:
   clarification_harness_probe: pilot/pilot_02_ask_what_matters/harness_probe_web_agents/summary.md
   clarification_harness_probe_design: pilot/pilot_02_ask_what_matters/harness_probe_web_agents/design.json
   clarification_harness_probe_deepseek: pilot/pilot_02_ask_what_matters/harness_probe_web_agents/deepseek_local/diagnostic.json
+  native_clarification_5task_design: pilot/native_dr_clarification_5task_v0_71/design.json
+  native_clarification_5task_cases: pilot/native_dr_clarification_5task_v0_71/cases.json
+  native_clarification_5task_protocol: pilot/native_dr_clarification_5task_v0_71/run_protocol.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -202,6 +205,19 @@ scope:
     pending_systems: [Kimi_Web, DeepSeek_Web]
     counted_episode_eligible: false
     claim_boundary: first_turn_harness_diagnosis_not_deep_research_score_or_model_ranking
+  native_clarification_5task_matrix:
+    status: frozen_before_runs
+    task_ids: [PDR-T42, PDR-T33, PDR-T16, PDR-T35, PDR-T21]
+    query_ids: [208, 161, 80, 173, 105]
+    persona_ids: [User12, User4, User14, User8, User19]
+    expected_pressure: [low, medium, medium, high, high_conflict]
+    systems: [ChatGPT_Deep_Research, Gemini_Deep_Research, Kimi_Research, DeepSeek_Web]
+    conditions: [native, oracle_top_2]
+    repeats_per_system_task_condition: 3
+    planned_reports: 120
+    run_status: not_started_pending_authentication
+    counted_episode_eligible: false
+    claim_boundary: pre_run_design_only_annotations_provisional_until_independent_human_review
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -241,3 +257,6 @@ claim_boundaries:
   - permission_only_zero_ask_floor_requires_generation_repeats_before_expansion
   - routed_ask_is_scaffolded_capability_and_must_not_replace_native_ask
   - local_deepseek_probe_is_not_deepseek_web_or_a_pdr_score
+  - native_prompt_contains_no_clarification_instruction
+  - research_owned_variables_are_not_valid_clarification_targets
+  - three_repeats_measure_within_product_variation_not_independent_task_evidence

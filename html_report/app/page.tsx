@@ -26,7 +26,7 @@ export default function Home() {
         </nav>
         <div className="heroGrid shell">
           <section>
-            <p className="eyebrow">RESEARCH PROPOSAL · v0.68 · 2026-09-08</p>
+            <p className="eyebrow">RESEARCH PROPOSAL + PILOT INDEX · v0.71 · 2026-09-08</p>
             <h1>Ask or Infer?<br/><em>任务特异的个性化</em></h1>
             <p className="lede">用户在线时，agent 能否用少量问题获取真正改变交付物的偏好？用户离线时，它能否从授权 history 恢复可识别偏好，并对未知部分保持克制？</p>
             <div className="heroActions"><a className="button primary" href="#design">看整体框架</a><a className="button ghost" href="/AskInfer-Bench_正式Proposal精简版.pdf" download>下载正式精简版</a></div>
@@ -154,9 +154,26 @@ export default function Home() {
         </div>
       </div></section>
 
+      <section className="shell gapSection" id="native-five-task-matrix">
+        <p className="sectionTag">FIVE-TASK NATIVE CLARIFICATION MATRIX · FROZEN BEFORE RUNS</p>
+        <div className="sectionHead"><h2>从一个 zero-ask 题扩成分层压力测试，但不加入“请提问”</h2><p>五个真实 PDR task 逐字保留原 instruction；每题预先分开 user-owned missing、strong visible evidence、low-impact missing 与 research-owned variables。四个产品系统各跑 native/oracle-top-2 三次，共计划 120 份报告。</p></div>
+        <div className="compare" role="table" aria-label="五题原生澄清矩阵">
+          <div className="compareRow head" role="row"><span>Pressure</span><span>真实任务</span><span>关键诊断</span></div>
+          <div className="compareRow" role="row"><b>LOW</b><span>PDR-T42 · 全球 AI Agent 数据合规</span><span>题面证据已强；是否仍只问真正的实施 trade-off。</span></div>
+          <div className="compareRow" role="row"><b>MEDIUM</b><span>PDR-T33 宠物产品 · PDR-T16 东南亚行程</span><span>物种/预算、节奏/兴趣是否触发选择性询问。</span></div>
+          <div className="compareRow" role="row"><b>HIGH</b><span>PDR-T35 户外装备</span><span>路线/海拔与安全姿态是否先于直接列清单。</span></div>
+          <div className="compareRow" role="row"><b>HIGH · CONFLICT</b><span>PDR-T21 · 低风险 evidence vs 10% 收益目标</span><span>是否暴露冲突、确认优先级并拒绝保证收益。</span></div>
+        </div>
+        <div className="decisionGrid">
+          <article><span>NATIVE ASK</span><h3>不提醒它应该提问</h3><p>新会话只给自然任务信息；记录是否主动问、问到哪个变量，以及是否误问本应 research 的事实。</p></article>
+          <article><span>PLAN + USE</span><h3>问题之外继续追完整链</h3><p>区分可见 plan 是否暴露假设，并检查 visible/answered evidence 是否真正改变 shortlist、路线、配置或风险边界。</p></article>
+          <article><span>ORACLE TOP-2</span><h3>先验证信息确实能改变报告</h3><p>每题加入两条预冻结的最高影响 persona facts，报告 P-score 增益；这是 information sensitivity，不是 spontaneous Ask。</p></article>
+        </div>
+      </section>
+
       <section className="shell gapSection" id="novelty"><p className="sectionTag">NEAREST NEIGHBORS</p><div className="sectionHead"><h2>最强审稿问题：这是否只是已有交互 benchmark 的跨域版？</h2><p>回答不能靠命名；必须用 pilot 证明 task-specific δ、真人决策节点、可识别性边界和 final artifact specificity 带来增量解释力。</p></div><div className="sourceGrid">{papers.map(([name, role, url]) => <a key={name} href={url} target="_blank" rel="noreferrer"><b>{name}</b><span>{role}</span></a>)}</div></section>
 
-      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.68</h2><p>正式稿、10 页内精简稿、人话版、导师汇报、两周执行手册、task screen、smoke pack、既有产品 pilots、PDR-T30 preference chain 与 PDR-T35 zero-ask calibration pilot 使用同一版本边界。</p></div><div className="editionGrid">
+      <section className="editionSection" id="editions"><div className="shell"><p className="sectionTag">SYNCHRONIZED EDITIONS</p><div className="sectionHead"><h2>AskInfer-Bench v0.71</h2><p>正式研究设计、task screen、smoke pack、既有产品 pilots、preference-chain 诊断与五题 native clarification matrix 使用同一 claim boundary；新矩阵仍是 pre-run freeze，不冒充结果。</p></div><div className="editionGrid">
         <article><span>FORMAL</span><h3>正式研究 Proposal</h3><p>完整构念、条件、数据、测量、统计、风险与 Go/No-Go。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式研究Proposal.pdf" download>PDF</a><a href="/AskInfer-Bench_正式研究Proposal.docx" download>Word</a></div></article>
         <article className="recommended"><span>CONDENSED · ≤10 PAGES</span><h3>正式 Proposal 精简版</h3><p>快速判断主张、实验与最强 reviewer objections。</p><div className="editionLinks"><a href="/AskInfer-Bench_正式Proposal精简版.pdf" download>PDF</a><a href="/AskInfer-Bench_正式Proposal精简版.docx" download>Word</a></div></article>
         <article><span>PLAIN LANGUAGE</span><h3>完整人话版</h3><p>逐步解释 Ask、Infer、PDR 边界、δ 与 CFA。</p><div className="editionLinks"><a href="/AskInfer-Bench_完整人话版.pdf" download>PDF</a><a href="/AskInfer-Bench_完整人话版.docx" download>Word</a></div></article>
