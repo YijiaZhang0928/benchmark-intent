@@ -1,10 +1,12 @@
-# Native clarification 15-task adapted instruction set (v0.72)
+# Native clarification 15-task adapted instruction set (v0.72; reviewed in v0.73)
 
 ## Status and source boundary
 
 This directory contains **adapted** prompts for the provisional PDR 15-task diagnostic slice: `1, 4, 5, 6, 9, 10, 11, 16, 21, 22, 30, 33, 35, 39, 49`.
 
 The official PDR source instructions remain unchanged under `data/pdr_import_v0_51/`. These adapted prompts must not be described as an exact reproduction of the official PDR task distribution. PDR task 42, used as the low-pressure compliance task in the earlier five-task matrix, is not part of this 15-task slice.
+
+The exact original-versus-adapted text and a task-by-task semantic diff are in [`comparison_original_vs_adapted.md`](comparison_original_vs_adapted.md). The v0.73 review changes the recommended primary design: use the exact original PDR instructions first, because the selected originals already leave multiple high-impact user-owned variables unresolved. Keep these adapted prompts only as a separately labeled partial-intent stress test.
 
 ## Prompt construction rule
 

@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.72"
+manifest_version: "0.73"
 updated: "2026-09-09"
 status: working_hypothesis_frozen
 
@@ -49,6 +49,7 @@ active_sources:
   native_clarification_15task_adapted_instructions: pilot/native_dr_clarification_15task_v0_72/instruction_set.json
   native_clarification_15task_readable_instructions: pilot/native_dr_clarification_15task_v0_72/instructions.md
   native_clarification_15task_adaptation_protocol: pilot/native_dr_clarification_15task_v0_72/README.md
+  native_clarification_15task_original_adapted_comparison: pilot/native_dr_clarification_15task_v0_72/comparison_original_vs_adapted.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv

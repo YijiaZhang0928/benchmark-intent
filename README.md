@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.72
+## 当前方向：AskInfer-Bench v0.73
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -37,6 +37,8 @@ v0.70 增加同一题的 clarification-harness probe。DeepSeek-R1 7B 在本地�
 v0.71 在任何新模型运行前冻结五题 native clarification matrix：PDR-T42 全球 AI compliance（低 pressure）、T33 宠物产品比较与 T16 东南亚行程（中）、T35 户外装备单一行动方案与 T21×User19 “低风险 evidence vs 10% 收益目标”可见冲突（高）。每题均分开 2–3 个 high-impact/low-evidence/user-owned variables、一个 high-impact/strong-evidence variable、一个 low-impact missing variable 和一个必须 research/recommend 而不该问用户的 high-impact variable；原始 PDR task 文本逐字保留，native 输入不出现 ask/clarify 提示。四个产品系统各做 native 与 oracle-top-2 三次干净新会话，共计划 120 份报告；记录 spontaneous ask、问题对象、可见 plan assumptions、evidence use 与 `OracleTop2Gain`。冻结设计见 [`pilot/native_dr_clarification_5task_v0_71/`](pilot/native_dr_clarification_5task_v0_71/)。
 
 v0.72 为 provisional 15-task PDR slice 新增一套 `partial-intent underspecification` 改写版 instruction。每题保留一个高影响可见 anchor，隐藏至少两个真正 user-owned 的高影响变量，并显式区分 low-impact missing 与必须由 agent research/recommend 的变量；题面不出现 ask/clarify 提示。官方 PDR 原文不覆盖，改写版分数只能称 `PDR-criteria score on adapted instruction`。同时冻结 Deep Research 资格门：无原生 DR 产品的模型必须进入可审计 harness/skill，并保存 plan、至少三条搜索分支、至少五个实际 fetch、来源综合与工具 trace；只有普通 Web Search 开关的回答不能算 DR-qualified。见 [`pilot/native_dr_clarification_15task_v0_72/`](pilot/native_dr_clarification_15task_v0_72/)。
+
+v0.73 完成 15 题官方原文与 v0.72 改写题的逐题对照。结论改为 **original-first**：15 题之所以入选，本来就是因为官方 instruction 已经具有高 personalization leverage、同时自然缺少会改变决策的 user-owned values；主实验应逐字保留官方 instruction，并把 full structured persona 视为 PDR full-context upper reference。v0.72 改写题只保留为独立 stress-test arm，尤其 T05/T06/T16/T21/T39 的改写删除或新增了强证据，不能替代官方 bridge。完整增删对照见 [`comparison_original_vs_adapted.md`](pilot/native_dr_clarification_15task_v0_72/comparison_original_vs_adapted.md)。
 
 ## 当前交付物
 

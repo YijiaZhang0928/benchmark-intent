@@ -3,10 +3,16 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-09
-当前版本：v0.72（15-task partial-intent instruction adaptation）
+当前版本：v0.73（PDR original-first 与 15-task instruction 对照）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAA. 2026-09-09：PDR original-first 与 15 题逐题对照
+
+用户进一步指出，研究重点不应是机械的 50%/100% persona coverage，而应是是否缺少少量 high-influence、user-owned、会改变最终建议的 preference values。逐题核对官方 task 与 v0.72 adapted instruction 后，主设计改为 `original-first`：15 题本来就是因官方 instruction 已具有 personalization leverage=2 且自然留下 2–4 个候选 preference nodes 才入选，没有必要为了诱发提问统一改写。T05 删除了 Q1–Q2 目标与经验有限，T06 删除了候选金融方向与背景缺口，T16 删除 backpacking/兴趣示例，T21 新增 conservative investor 且弱化 10% 硬目标，T39 删除面积、低密/花园、楼层和气候等多条强证据；这些都会改变 clarification pressure 或 task contract。因此 exact PDR bridge 和主 native-clarification 运行逐字使用官方 instruction，v0.72 adapted prompts 仅作为单独标记的 partial-intent stress test，不能与官方结果混合。
+
+PDR 官方 generation query 明确拼接 `User Task` 与完整 structured `User Persona`；persona 是含相关与无关事实的广义画像，不是干净的 task-specific preference ledger。官方 evaluator 又读取 task、persona、article 与 task–persona-specific criteria。因此 exact task + full persona 可称 `PDR full-context upper reference`，但不能称真正的信息 oracle：persona 可能仍未定义 target audience、weekly hours、预算上限等 task-specific values，前一 pilot 中 Full Persona 五问均属于 residual uncertainty verification 即为实证。更干净的 oracle 是 `OracleTopK`：只注入运行前冻结、确实被 persona 或用户确认支持的 high-influence user-owned values；research-owned/agent-recommended 变量不得伪装成用户答案。完整原文/改写文、增删与逐题建议位于 `pilot/native_dr_clarification_15task_v0_72/comparison_original_vs_adapted.md`。
 
 ## 0AAAAAAAAAAAAAA. 2026-09-09：15 题 partial-intent instruction 与 DR 资格门
 

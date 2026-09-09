@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.73 PDR original-first and 15-task instruction diff - 2026-09-09
+
+- 对 provisional 15-task slice 的官方 instruction 与 v0.72 adapted instruction 完成逐题 exact-text 对照，并记录每题保留、删除/弱化、新增的语义与主实验建议。
+- 主设计从“统一使用 partial-intent 改写”收紧为 `original-first`：这 15 题本来就因官方题面具有高 personalization leverage 且自然缺少关键 user-owned values 而入选；改写题只作为独立 stress-test arm。
+- 标记五个关键偏离：T05/T06/T16/T39 删除强可见证据，T21 同时新增 conservative-investor 证据并弱化 10% 目标；这些改写不能替代官方 PDR bridge。
+- 明确 PDR 的 query 是原 task + full structured persona，官方 evaluator 读取 task、persona、article 和 pair-specific criteria；因此 full persona 是 full-context upper reference 而非真正信息 oracle，`OracleTopK` 只注入有来源的 high-influence user-owned values。
+- 新增 `comparison_original_vs_adapted.md`，同步 README、项目记忆与 manifest；官方 PDR 源数据保持不变。
+
 ## v0.72 Partial-intent 15-task instruction set and Deep Research gate - 2026-09-09
 
 - 为 provisional PDR 15-task slice 新增 adapted instruction set；每题保留一个高影响可见 anchor，隐藏至少两个高影响 user-owned variables，并分别登记 low-impact missing 与 research/agent-owned variables。
