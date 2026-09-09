@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.71"
-updated: "2026-09-08"
+manifest_version: "0.72"
+updated: "2026-09-09"
 status: working_hypothesis_frozen
 
 paper:
@@ -46,6 +46,9 @@ active_sources:
   native_clarification_5task_design: pilot/native_dr_clarification_5task_v0_71/design.json
   native_clarification_5task_cases: pilot/native_dr_clarification_5task_v0_71/cases.json
   native_clarification_5task_protocol: pilot/native_dr_clarification_5task_v0_71/run_protocol.md
+  native_clarification_15task_adapted_instructions: pilot/native_dr_clarification_15task_v0_72/instruction_set.json
+  native_clarification_15task_readable_instructions: pilot/native_dr_clarification_15task_v0_72/instructions.md
+  native_clarification_15task_adaptation_protocol: pilot/native_dr_clarification_15task_v0_72/README.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -218,6 +221,17 @@ scope:
     run_status: not_started_pending_authentication
     counted_episode_eligible: false
     claim_boundary: pre_run_design_only_annotations_provisional_until_independent_human_review
+  native_clarification_15task_adaptation:
+    status: adapted_prompts_frozen_pending_criterion_relevance_audit
+    task_ids: [PDR-T01, PDR-T04, PDR-T05, PDR-T06, PDR-T09, PDR-T10, PDR-T11, PDR-T16, PDR-T21, PDR-T22, PDR-T30, PDR-T33, PDR-T35, PDR-T39, PDR-T49]
+    prompt_style: partial_intent_underspecification
+    explicit_clarification_cue: false
+    minimum_high_impact_missing_user_owned_variables: 2
+    deep_research_qualification_minimum_distinct_search_branches: 3
+    deep_research_qualification_minimum_fetched_sources: 5
+    official_source_tasks_modified: false
+    counted_episode_eligible: false
+    claim_boundary: adapted_pdr_criteria_score_only_after_blind_relevance_audit
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15

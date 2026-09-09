@@ -2,11 +2,19 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-08
-当前版本：v0.71（Five-task native clarification matrix）
+最后更新：2026-09-09
+当前版本：v0.72（15-task partial-intent instruction adaptation）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAA. 2026-09-09：15 题 partial-intent instruction 与 DR 资格门
+
+用户希望把 provisional 15 个 PDR tasks 改成更粗粒度、但仍像真实用户已有部分想法的任务，从而给 clarification harness 留出恢复 task-specific preferences 的空间。本轮不覆盖官方 PDR 原文，而新增 `pilot/native_dr_clarification_15task_v0_72/`：覆盖 task `1,4,5,6,9,10,11,16,21,22,30,33,35,39,49`，每题保留一个 high-impact visible anchor，故意隐藏至少两个 high-impact/low-evidence/user-owned variables，另标一个 low-impact missing variable 和至少一个必须由 agent research/recommend 而不是询问用户决定的 high-impact variable。题面不出现 ask、clarify、question 或 preference checklist，代表用户目标真实、已有部分想法但没有完整 specification 的情形。五题 v0.71 中的 PDR-T42 合规综述是额外低-pressure 对照，不属于该 15-task slice。
+
+因改写 task 会改变 evaluator 的适用范围，原 PDR criteria 只有在盲化 criterion-relevance audit 逐条确认仍由 adapted task 蕴含后才能复用；evaluator 文本和权重不改，结果必须称 `PDR-criteria score on adapted instruction`，不能称官方 PDR score。DeerFlow 2.0 或其他 harness 若要形成 clarification 的因果主张，主比较必须固定同一 backbone/model version、搜索供应商、工具权限、时间/token/query budget 和输出 contract，只切换 clarification action/pause state；跨 ChatGPT/Gemini/DeerFlow 产品比较只能作 ecological system comparison。
+
+同时冻结 Deep Research 资格门：每个 counted episode 必须有可见/可审计 plan，至少三条 distinct query/branch、至少五个实际打开或 fetch 的来源（任务允许时至少两项 primary/authoritative）、跨来源综合、final claim-to-source trace，以及完整 tool/query/fetch/failure/timestamp log。无原生 DR 产品的 DeepSeek/Kimi/base LLM 必须进入版本化 research harness 或 Deep Research skill。只开启普通 Web Search、只看 snippets、或仅在成文中出现引用而没有工具 trace 的输出标为 `web-assisted answer`，不进入 DR-qualified 主结果。此前 DeepSeek Web 运行确实打开了 Web Search 并显示网页阅读量，但按新门槛仍需完整 query/fetch trace 才能升级为 DR-qualified。
 
 ## 0AAAAAAAAAAAAA. 2026-09-08：五题 native clarification matrix 运行前冻结
 

@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.72 Partial-intent 15-task instruction set and Deep Research gate - 2026-09-09
+
+- 为 provisional PDR 15-task slice 新增 adapted instruction set；每题保留一个高影响可见 anchor，隐藏至少两个高影响 user-owned variables，并分别登记 low-impact missing 与 research/agent-owned variables。
+- 所有 adapted prompts 均保持自然、粗粒度且不出现 ask/clarify 提示；代表用户有真实目标和部分想法、但 specification 不完整的场景。官方 PDR task 原文不修改。
+- 冻结分数命名与 evaluator 边界：盲化逐 criterion relevance audit 通过后才可复用原 evaluator；分数称 `PDR-criteria score on adapted instruction`，不称官方 PDR score。
+- 冻结 harness 因果识别：同一 backbone、search/tools、预算和输出 contract 内做 clarification on/off ablation；跨产品比较只作为 ecological comparison，不把系统整体分差归因于提问。
+- 新增 Deep Research 资格门：可审计 plan、至少 3 个搜索分支、至少 5 个 fetch、跨来源综合、claim-source trace 和完整工具日志；普通 Web Search 回答不自动算 DR-qualified。
+- 新增 `pilot/native_dr_clarification_15task_v0_72/` 的 JSON instruction set、设计边界与自动 validator；15 题和禁止 clarification cue 扫描通过。
+
 ## v0.71 Five-task native clarification matrix - 2026-09-08
 
 - 运行前选定五个真实 PDR task/user pairs：T42×User12 合规综述（低 pressure）、T33×User4 宠物产品和 T16×User14 东南亚行程（中）、T35×User8 户外装备与 T21×User19 风险—收益可见冲突（高）。
