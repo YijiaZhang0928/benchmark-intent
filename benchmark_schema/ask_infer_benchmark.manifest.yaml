@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.73"
+manifest_version: "0.74"
 updated: "2026-09-09"
 status: working_hypothesis_frozen
 
@@ -50,6 +50,11 @@ active_sources:
   native_clarification_15task_readable_instructions: pilot/native_dr_clarification_15task_v0_72/instructions.md
   native_clarification_15task_adaptation_protocol: pilot/native_dr_clarification_15task_v0_72/README.md
   native_clarification_15task_original_adapted_comparison: pilot/native_dr_clarification_15task_v0_72/comparison_original_vs_adapted.md
+  dr_harness_backbone_integration_manifest: pilot/dr_harness_backbone_integration_v0_74/manifest.json
+  dr_harness_backbone_integration_summary: pilot/dr_harness_backbone_integration_v0_74/README.md
+  dr_harness_backbone_integration_runner: pilot/dr_harness_backbone_integration_v0_74/run_deerflow_episode.py
+  dr_harness_backbone_integration_auditor: pilot/dr_harness_backbone_integration_v0_74/audit_deerflow_run.py
+  dr_harness_simulator_protocol: pilot/dr_harness_backbone_integration_v0_74/simulator_protocol.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -233,6 +238,28 @@ scope:
     official_source_tasks_modified: false
     counted_episode_eligible: false
     claim_boundary: adapted_pdr_criteria_score_only_after_blind_relevance_audit
+  dr_harness_backbone_integration_smoke:
+    package_version: "0.74"
+    status: one_deerflow_end_to_end_pass_and_one_open_deep_research_clarification_probe
+    task_id: PDR-T33
+    persona_id: User4
+    official_instruction_modified: false
+    visible_clarification_cue: false
+    persona_visible_on_turn_1: false
+    deerflow_commit: 0d4925305a6330a3442dcd336ed25750aea87cbd
+    open_deep_research_commit: 1b7d2e80db9faa586165c60e09096dbbfd483a64
+    live_backbone: gpt-5.6-sol
+    deerflow_clarification_rounds: 2
+    deerflow_distinct_search_queries: 38
+    deerflow_fetch_attempts: 10
+    deerflow_substantive_successful_fetches: 6
+    deerflow_primary_or_authoritative_domains: 3
+    deerflow_cited_urls: 6
+    deep_research_qualified: true
+    open_deep_research_full_research_run: false
+    blocked_backbones: [claude_account_insufficient, gemini_missing_api_key, deepseek_missing_api_key, kimi_missing_api_key]
+    counted_episode_eligible: false
+    claim_boundary: plumbing_and_one_dr_qualified_execution_only_no_pdr_score_or_cross_backbone_result
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -275,3 +302,6 @@ claim_boundaries:
   - native_prompt_contains_no_clarification_instruction
   - research_owned_variables_are_not_valid_clarification_targets
   - three_repeats_measure_within_product_variation_not_independent_task_evidence
+  - harness_guided_clarification_is_not_native_product_spontaneous_ask
+  - engineering_retries_are_not_model_repetitions
+  - browser_login_is_not_a_reproducible_harness_api_credential

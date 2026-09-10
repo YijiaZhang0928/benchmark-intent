@@ -1,0 +1,88 @@
+# Merge selected entries into the official DeerFlow config.yaml `models:` list.
+# Freeze exact model identifiers and provider URLs in each run's metadata.
+
+models:
+  - name: gpt-5.6-sol-codex
+    display_name: GPT-5.6 Sol (Codex CLI OAuth)
+    use: deerflow.models.openai_codex_provider:CodexChatModel
+    model: gpt-5.6-sol
+    reasoning_effort: high
+    supports_thinking: true
+    supports_reasoning_effort: true
+
+  - name: openai-responses-api
+    display_name: OpenAI Responses API
+    use: langchain_openai:ChatOpenAI
+    model: REPLACE_WITH_FROZEN_OPENAI_MODEL_ID
+    api_key: $OPENAI_API_KEY
+    use_responses_api: true
+    output_version: responses/v1
+    supports_thinking: true
+
+  - name: claude-sonnet-4.6-cli
+    display_name: Claude Sonnet 4.6 (Claude Code OAuth)
+    use: deerflow.models.claude_provider:ClaudeChatModel
+    model: claude-sonnet-4-6
+    max_tokens: 4096
+    supports_thinking: true
+
+  - name: gemini-native
+    display_name: Gemini (native API)
+    use: langchain_google_genai:ChatGoogleGenerativeAI
+    model: REPLACE_WITH_FROZEN_GEMINI_MODEL_ID
+    gemini_api_key: $GEMINI_API_KEY
+    timeout: 600.0
+    max_retries: 2
+    max_tokens: 16384
+    supports_vision: true
+
+  - name: deepseek-api
+    display_name: DeepSeek (native API)
+    use: deerflow.models.patched_deepseek:PatchedChatDeepSeek
+    model: REPLACE_WITH_FROZEN_DEEPSEEK_MODEL_ID
+    api_key: $DEEPSEEK_API_KEY
+    timeout: 600.0
+    max_retries: 2
+    max_tokens: 16384
+    supports_thinking: true
+    when_thinking_enabled:
+      extra_body:
+        thinking:
+          type: enabled
+    when_thinking_disabled:
+      extra_body:
+        thinking:
+          type: disabled
+
+  - name: kimi-api
+    display_name: Kimi (Moonshot API)
+    use: deerflow.models.patched_deepseek:PatchedChatDeepSeek
+    model: REPLACE_WITH_FROZEN_KIMI_MODEL_ID
+    api_base: https://api.moonshot.cn/v1
+    api_key: $MOONSHOT_API_KEY
+    timeout: 600.0
+    max_retries: 2
+    max_tokens: 32768
+    supports_thinking: true
+    supports_vision: true
+    when_thinking_enabled:
+      extra_body:
+        thinking:
+          type: enabled
+    when_thinking_disabled:
+      extra_body:
+        thinking:
+          type: disabled
+
+# Replace DeerFlow's default `web_search` and `web_fetch` entries with these
+# two entries when the anonymous DDGS/Jina routes are unavailable. Copy the
+# bundled `simple_http` package to
+# `backend/packages/harness/deerflow/community/simple_http/` first.
+tools:
+  - name: web_search
+    group: web
+    use: deerflow.community.simple_http.tools:web_search_tool
+    max_results: 5
+  - name: web_fetch
+    group: web
+    use: deerflow.community.simple_http.tools:web_fetch_tool

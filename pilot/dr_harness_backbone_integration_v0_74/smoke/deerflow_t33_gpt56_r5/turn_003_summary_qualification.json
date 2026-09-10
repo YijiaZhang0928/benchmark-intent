@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/dr_harness_backbone_integration_v0_74/smoke/deerflow_t33_gpt56_r5/turn_003_summary.json",
+  "distinct_search_queries": 38,
+  "fetch_attempts": 10,
+  "substantive_fetch_successes": 6,
+  "report_cited_url_count": 6,
+  "successful_fetched_domains": [
+    "dreametechcn.com",
+    "oneisall.com",
+    "wsava.org",
+    "www.ithome.com",
+    "zhongce.sina.com.cn"
+  ],
+  "declared_primary_domains": [
+    "dreametechcn.com",
+    "oneisall.com",
+    "wsava.org"
+  ],
+  "matched_primary_domains": [
+    "dreametechcn.com",
+    "oneisall.com",
+    "wsava.org"
+  ],
+  "structural_gate_pass": true,
+  "primary_source_gate": "pass",
+  "deep_research_qualified": true,
+  "fetches": [
+    {
+      "url": "https://wsava.org/Global-Guidelines/Global-Nutrition-Guidelines/",
+      "domain": "wsava.org",
+      "readable_characters": 3809,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.kongcompany.com/kong-classic/",
+      "domain": "www.kongcompany.com",
+      "readable_characters": 244,
+      "substantive_success": false,
+      "error": "Error fetching https://www.kongcompany.com/kong-classic/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.kongcompany.com/kong-classic/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://oneisall.com/pages/pet-grooming-vacuum",
+      "domain": "oneisall.com",
+      "readable_characters": 7230,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.homerunsmart.com/",
+      "domain": "www.homerunsmart.com",
+      "readable_characters": 87,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.homerunsmart.com/"
+    },
+    {
+      "url": "https://dreametechcn.com/",
+      "domain": "dreametechcn.com",
+      "readable_characters": 1814,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ithome.com/0/889/634.htm",
+      "domain": "www.ithome.com",
+      "readable_characters": 3211,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ithome.com/0/993/766.htm",
+      "domain": "www.ithome.com",
+      "readable_characters": 1899,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://zhongce.sina.com.cn/article/view/178784",
+      "domain": "zhongce.sina.com.cn",
+      "readable_characters": 3845,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://item.jd.com/10195066062723.html",
+      "domain": "item.jd.com",
+      "readable_characters": 97,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (36 characters) from https://item.jd.com/10195066062723.html"
+    },
+    {
+      "url": "https://item.jd.com/10083041856282.html",
+      "domain": "item.jd.com",
+      "readable_characters": 97,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (36 characters) from https://item.jd.com/10083041856282.html"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

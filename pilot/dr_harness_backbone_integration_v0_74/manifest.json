@@ -1,0 +1,25 @@
+{
+  "package_version": "0.74",
+  "created_at": "2026-09-09",
+  "purpose": "Exact-instruction clarification and Deep Research harness/backbone integration smoke",
+  "pdr_task_id": 33,
+  "pdr_persona_id": "User4",
+  "official_instruction_modified": false,
+  "visible_clarification_cue": false,
+  "hidden_persona_on_turn_1": true,
+  "harnesses": {
+    "deerflow": {
+      "commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+      "status": "end_to_end_live_pass",
+      "model": "gpt-5.6-sol",
+      "qualified_run": "smoke/deerflow_t33_gpt56_r5/turn_003_summary_qualification.json"
+    },
+    "open_deep_research": {
+      "commit": "1b7d2e80db9faa586165c60e09096dbbfd483a64",
+      "status": "clarification_node_live_pass_full_research_not_run",
+      "model": "gpt-5.6-sol",
+      "probe": "smoke/open_deep_research_t33_gpt56_probe.json"
+    }
+  },
+  "claim_boundary": "Plumbing and one DR-qualified execution only; no PDR evaluator score and no cross-backbone comparison yet."
+}

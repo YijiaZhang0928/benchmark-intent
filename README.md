@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.73
+## 当前方向：AskInfer-Bench v0.74
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -40,6 +40,8 @@ v0.72 为 provisional 15-task PDR slice 新增一套 `partial-intent underspecif
 
 v0.73 完成 15 题官方原文与 v0.72 改写题的逐题对照。结论改为 **original-first**：15 题之所以入选，本来就是因为官方 instruction 已经具有高 personalization leverage、同时自然缺少会改变决策的 user-owned values；主实验应逐字保留官方 instruction，并把 full structured persona 视为 PDR full-context upper reference。v0.72 改写题只保留为独立 stress-test arm，尤其 T05/T06/T16/T21/T39 的改写删除或新增了强证据，不能替代官方 bridge。完整增删对照见 [`comparison_original_vs_adapted.md`](pilot/native_dr_clarification_15task_v0_72/comparison_original_vs_adapted.md)。
 
+v0.74 跑通了 exact-instruction 的开源 Deep Research harness 集成。官方 PDR-T33 原 instruction 在首轮不带 persona、rubric、history 或显式提问提示：Open Deep Research 的 stock clarification node 经 Codex adapter 能先询问 task-relevant variables；DeerFlow calibrated path 则在两轮 persona-bounded clarification 后完成 38 个 distinct queries、10 次 fetch 尝试、6 个有效正文来源和 6 个引用 URL 的完整报告，满足冻结的 DR gate。匿名 Jina/DuckDuckGo 失败路径被保留为工程诊断，不能算模型重复。当前只有 `gpt-5.6-sol` 经 Codex OAuth live；Claude 账户余额、Gemini/DeepSeek/Kimi API 凭证仍是 provider blocker。因此本轮只证明 harness plumbing 和一个 DR-qualified episode，不报告 P-score 或跨模型优劣。完整配置、runner、simulator protocol 与 trace 见 [`pilot/dr_harness_backbone_integration_v0_74/`](pilot/dr_harness_backbone_integration_v0_74/)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -49,7 +51,8 @@ v0.73 完成 15 题官方原文与 v0.72 改写题的逐题对照。结论改为
 - [`proposal/AskInfer-Bench_两周执行Todo与任务手册.md`](proposal/AskInfer-Bench_两周执行Todo与任务手册.md)：详细、人话、可操作的任务卡、agent、运行规模、rubric、逐日门槛与摘要路线。
 - [`benchmark_schema/ask_infer_case.schema.yaml`](benchmark_schema/ask_infer_case.schema.yaml)：同任务用户差异、history observability、human validation 和实验条件 schema。
 - [`benchmark_schema/ask_infer_evaluation.protocol.yaml`](benchmark_schema/ask_infer_evaluation.protocol.yaml)：Ask/Infer 过程与最终评分、排名稳定性、统计和 Go/No-Go 协议。
-- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.67 源稿、执行冻结、PDR task slice、smoke 包、两轮产品级 pilot、preference-chain 数据、交付物、归档和复用基础设施索引。
+- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.74 源稿、执行冻结、PDR task slice、产品级 pilot、clarification harness、preference-chain 数据、交付物、归档和复用基础设施索引。
+- [`pilot/dr_harness_backbone_integration_v0_74/`](pilot/dr_harness_backbone_integration_v0_74/)：DeerFlow/Open Deep Research exact-instruction 配置、provider 状态、simulator protocol、runner、审计器和完整 smoke trace。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
 - [`proposal_assets/AskInfer-Bench_评测框架_v0.62.png`](proposal_assets/AskInfer-Bench_评测框架_v0.62.png)：3200×1800 主图；同名 SVG 可编辑。
 - [`deliverables/AskInfer-Bench_正式研究Proposal.pdf`](deliverables/AskInfer-Bench_正式研究Proposal.pdf)：正式研究 Proposal；同名 DOCX 可编辑。

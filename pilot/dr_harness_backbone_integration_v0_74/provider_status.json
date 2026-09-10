@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.74",
+  "checked_at": "2026-09-09T20:46:00-04:00",
+  "machine_scope": "local_workspace_no_secrets_recorded",
+  "providers": [
+    {
+      "backbone": "gpt-5.6-sol",
+      "route": "DeerFlow CodexChatModel via existing Codex CLI OAuth",
+      "status": "live_pass",
+      "evidence": "READY connectivity probe, DeerFlow clarification interrupt, and DR-qualified PDR-T33 completion all succeeded",
+      "credential_material_saved": false
+    },
+    {
+      "backbone": "claude-sonnet-4-6",
+      "route": "DeerFlow ClaudeChatModel via Claude Code OAuth",
+      "status": "blocked_provider_account",
+      "evidence": "Connector reached provider but returned HTTP 401 account_insufficient before model output",
+      "count_as_model_result": false,
+      "credential_material_saved": false
+    },
+    {
+      "backbone": "Gemini",
+      "route": "DeerFlow native Google Generative AI provider",
+      "status": "blocked_missing_api_credential",
+      "evidence": "Gemini CLI 0.46.0 requested an auth method; browser login is not a GEMINI_API_KEY",
+      "required": "GEMINI_API_KEY or one frozen supported gateway",
+      "credential_material_saved": false
+    },
+    {
+      "backbone": "DeepSeek",
+      "route": "DeerFlow PatchedChatDeepSeek",
+      "status": "blocked_missing_api_credential",
+      "evidence": "Website login exists but no DEEPSEEK_API_KEY is available to the harness",
+      "required": "DEEPSEEK_API_KEY or one frozen supported gateway",
+      "credential_material_saved": false
+    },
+    {
+      "backbone": "Kimi",
+      "route": "DeerFlow PatchedChatDeepSeek to Moonshot OpenAI-compatible endpoint",
+      "status": "blocked_missing_api_credential",
+      "evidence": "Website login exists but no MOONSHOT_API_KEY is available to the harness",
+      "required": "MOONSHOT_API_KEY or one frozen supported gateway",
+      "credential_material_saved": false
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/dr_harness_backbone_integration_v0_74/smoke/deerflow_t33_gpt56_r4/turn_002_summary.json",
+  "distinct_search_queries": 30,
+  "fetch_attempts": 8,
+  "substantive_fetch_successes": 4,
+  "report_cited_url_count": 3,
+  "successful_fetched_domains": [
+    "furbo.com",
+    "www.jd.com",
+    "www.petkit.com",
+    "www.royalcanin.com.cn"
+  ],
+  "declared_primary_domains": [
+    "furbo.com",
+    "petkit.com",
+    "royalcanin.com"
+  ],
+  "matched_primary_domains": [
+    "furbo.com",
+    "www.petkit.com"
+  ],
+  "structural_gate_pass": false,
+  "primary_source_gate": "pass",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://www.royalcanin.com.cn/",
+      "domain": "www.royalcanin.com.cn",
+      "readable_characters": 3928,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://item.jd.com/100334032502.html",
+      "domain": "item.jd.com",
+      "readable_characters": 36,
+      "substantive_success": false,
+      "error": "# 京东(JD.COM)-正品低价、品质保障、配送及时、轻松购物！\n\n."
+    },
+    {
+      "url": "https://www.petkit.com/",
+      "domain": "www.petkit.com",
+      "readable_characters": 5930,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.homerunsmart.com/",
+      "domain": "www.homerunsmart.com",
+      "readable_characters": 56,
+      "substantive_success": false,
+      "error": "# Untitled\n\nNo content could be extracted from this page"
+    },
+    {
+      "url": "https://furbo.com/cn/products/furbo-mini-360",
+      "domain": "furbo.com",
+      "readable_characters": 4616,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://help.furbo.com/hc/zh-cn/articles/17462739016089-方案与价格",
+      "domain": "help.furbo.com",
+      "readable_characters": 324,
+      "substantive_success": false,
+      "error": "Error fetching https://help.furbo.com/hc/zh-cn/articles/17462739016089-方案与价格: HTTPStatusError: Client error '403 Forbidden' for url 'https://help.furbo.com/hc/zh-cn/articles/17462739016089-%E6%96%B9%E6%A1%88%E4%B8%8E%E4%BB%B7%E6%A0%BC'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.dreametech.com/blogs/blog/best-robot-vacuum-pet-hair",
+      "domain": "www.dreametech.com",
+      "readable_characters": 123,
+      "substantive_success": false,
+      "error": "Error fetching https://www.dreametech.com/blogs/blog/best-robot-vacuum-pet-hair: ValueError: Response exceeds 2000000 bytes"
+    },
+    {
+      "url": "https://www.jd.com/chanpin/2980501.html",
+      "domain": "www.jd.com",
+      "readable_characters": 585,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

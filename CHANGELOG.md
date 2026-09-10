@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.74 DeerFlow/Open Deep Research backbone integration smoke - 2026-09-09
+
+- 冻结 DeerFlow commit `0d4925305a6330a3442dcd336ed25750aea87cbd` 与 Open Deep Research commit `1b7d2e80db9faa586165c60e09096dbbfd483a64`，首轮只传官方 PDR-T33 原 instruction；persona、rubric、history 与 clarification cue 均不进入可见用户提示。
+- 通过 Codex structured-output adapter 跑通 Open Deep Research stock clarification node；它主动询问宠物、市场、预算与 cleaning-system 含义，但尚未完成 ODR full research，因此仅记 gate probe。
+- 通过 DeerFlow `ask_clarification` + calibrated policy + 冻结 `simple_http` 工具跑通一条端到端 episode：两轮 clarification 后完成 38 个 distinct queries、10 次 fetch 尝试、6 个有效正文来源、3 个 primary/authoritative domains 与 6 个 cited URLs，满足 DR qualification gate。
+- 保留 r1–r4 的匿名 Jina 401、DuckDuckGo 空结果、抓取批次失败与来源不足诊断；这些均为工程重试，不是独立模型重复。
+- 记录 provider 边界：`gpt-5.6-sol` 经 Codex OAuth live；Claude 为 401 `account_insufficient`；Gemini、DeepSeek、Kimi 仍需 harness API key 或统一冻结 gateway，网页登录不作为可复现凭证且不提取 cookie。
+- 新增可复用 runner、qualification auditor、DeerFlow model/agent/skill/tool 配置、ODR adapter、persona-bounded simulator protocol、机器可读 manifest/provider status 与完整 trace；当前无 PDR score、无跨 backbone 比较。
+
 ## v0.73 PDR original-first and 15-task instruction diff - 2026-09-09
 
 - 对 provisional 15-task slice 的官方 instruction 与 v0.72 adapted instruction 完成逐题 exact-text 对照，并记录每题保留、删除/弱化、新增的语义与主实验建议。

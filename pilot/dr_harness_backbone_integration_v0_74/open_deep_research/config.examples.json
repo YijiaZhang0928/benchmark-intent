@@ -1,0 +1,35 @@
+{
+  "note": "Replace every placeholder with one frozen provider model ID before running. Do not mix configurations within a matched block.",
+  "openai_native_search": {
+    "allow_clarification": true,
+    "research_model": "openai:REPLACE_WITH_FROZEN_OPENAI_MODEL_ID",
+    "summarization_model": "openai:REPLACE_WITH_FROZEN_OPENAI_MODEL_ID",
+    "compression_model": "openai:REPLACE_WITH_FROZEN_OPENAI_MODEL_ID",
+    "final_report_model": "openai:REPLACE_WITH_FROZEN_OPENAI_MODEL_ID",
+    "search_api": "openai"
+  },
+  "anthropic_native_search": {
+    "allow_clarification": true,
+    "research_model": "anthropic:REPLACE_WITH_FROZEN_ANTHROPIC_MODEL_ID",
+    "summarization_model": "anthropic:REPLACE_WITH_FROZEN_ANTHROPIC_MODEL_ID",
+    "compression_model": "anthropic:REPLACE_WITH_FROZEN_ANTHROPIC_MODEL_ID",
+    "final_report_model": "anthropic:REPLACE_WITH_FROZEN_ANTHROPIC_MODEL_ID",
+    "search_api": "anthropic"
+  },
+  "gemini_plus_tavily": {
+    "allow_clarification": true,
+    "research_model": "google_genai:REPLACE_WITH_FROZEN_GEMINI_MODEL_ID",
+    "summarization_model": "google_genai:REPLACE_WITH_FROZEN_GEMINI_MODEL_ID",
+    "compression_model": "google_genai:REPLACE_WITH_FROZEN_GEMINI_MODEL_ID",
+    "final_report_model": "google_genai:REPLACE_WITH_FROZEN_GEMINI_MODEL_ID",
+    "search_api": "tavily"
+  },
+  "deepseek_plus_tavily": {
+    "allow_clarification": true,
+    "research_model": "deepseek:REPLACE_WITH_FROZEN_DEEPSEEK_MODEL_ID",
+    "summarization_model": "deepseek:REPLACE_WITH_FROZEN_DEEPSEEK_MODEL_ID",
+    "compression_model": "deepseek:REPLACE_WITH_FROZEN_DEEPSEEK_MODEL_ID",
+    "final_report_model": "deepseek:REPLACE_WITH_FROZEN_DEEPSEEK_MODEL_ID",
+    "search_api": "tavily"
+  }
+}

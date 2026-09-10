@@ -1,0 +1,9 @@
+name: clarification-dr
+description: Decision-ready Deep Research agent with calibrated optional clarification.
+model: gpt-5.6-sol-codex
+skills:
+  - clarification-calibration
+  - deep-research
+allowed_subagents: []
+thinking_enabled: true
+reasoning_effort: high

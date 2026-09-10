@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-09
-当前版本：v0.73（PDR original-first 与 15-task instruction 对照）
+当前版本：v0.74（DeerFlow/Open Deep Research exact-instruction 集成 smoke）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAA. 2026-09-09：DeerFlow / Open Deep Research exact-instruction 集成
+
+用户要求在正式跑 only-instruction 比较前，先把前沿 backbone 接入会暂停并澄清的 Deep Research harness。本轮冻结两个官方上游：DeerFlow commit `0d4925305a6330a3442dcd336ed25750aea87cbd` 与 Open Deep Research commit `1b7d2e80db9faa586165c60e09096dbbfd483a64`。两条路径均保持首轮可见输入为官方 PDR-T33 原 instruction；不向模型提供 persona、rubric、preference ledger、history 或显式“请提问”提示。clarification policy 位于 harness/agent system 层，因此它测量的是 backbone 在固定 scaffold 下的策略执行，而不是 native product spontaneous ask。
+
+Open Deep Research 当前 main graph 自带首节点 `clarify_with_user` 且 `allow_clarification=true`。通过 Codex structured-output adapter 接入 `gpt-5.6-sol` 后，它在原 instruction 上询问宠物种类/年龄/体型/健康、采购市场、预算档和 cleaning-system 含义；这里只完成 clarification-node probe，尚未运行其完整 research graph。DeerFlow 则完成一条真正的端到端 live pass：同一原 instruction 先问一个六字段表单，persona-bounded simulator 只回答有证据字段并把未知预算/市场标为未指定；模型随后对 cleaning-system 含义做一次 residual clarification，在获得“无强偏好，请比较并推荐”后继续研究。最终 trace 含 38 个 distinct search queries、10 次 fetch 尝试、6 个正文长度至少 300 字符的成功 fetch、3 个 primary/authoritative domains 与 6 个 cited URLs，满足 v0.72 冻结的 DR qualification gate。
+
+工程重试 r1–r4 不计模型 repetitions：它们分别暴露匿名 Jina 401、DuckDuckGo 空结果、单站抓取错误导致批次失败以及 fetch/source 数不足。最终冻结的 `simple_http` 工具返回 URL 而不是可直接成文的长 snippets，逐跳校验 public URL、防 SSRF、限制 2MB、隔离单 URL 错误，并把正文不足 300 字符视为失败，以迫使相同 backbone 真正 fetch 来源。所有跨 backbone 条件必须使用同一 harness variant、工具栈、预算、simulator 与报告 contract；优先用 stock Open Deep Research gate 比较较轻 scaffold，DeerFlow calibrated 作为更强 policy-support 条件，另配 harness-off 与 OracleTopK。
+
+当前只有 `gpt-5.6-sol` 通过本机 Codex OAuth 完成 live run。Claude connector 到达 provider 后返回 HTTP 401 `account_insufficient`；Gemini、DeepSeek、Kimi 的网页登录不能替代 harness API 凭证，分别仍需 `GEMINI_API_KEY`、`DEEPSEEK_API_KEY`、`MOONSHOT_API_KEY` 或统一冻结 gateway。本轮没有提取浏览器 cookie。澄清回答使用冻结的 PDR persona-bounded selective-disclosure protocol：逐字段只回答 agent 当下所问、短答、无证据则明确未指定/无强偏好、全程一致；它与 benchmark 常见 selective disclosure 思路一致，但不是复刻某个已发表 benchmark 的 simulator，也没有另用 simulator model。完整运行器、配置、trace、失败诊断和 qualification 结果位于 `pilot/dr_harness_backbone_integration_v0_74/`。当前只证明 plumbing 与一个 DR-qualified execution；没有 PDR evaluator score，也没有跨 backbone clarification 差异结果。
 
 ## 0AAAAAAAAAAAAAAA. 2026-09-09：PDR original-first 与 15 题逐题对照
 

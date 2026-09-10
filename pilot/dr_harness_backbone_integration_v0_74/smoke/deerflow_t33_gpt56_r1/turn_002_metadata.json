@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.74",
+  "started_at_utc": "2026-09-10T00:18:24.866973+00:00",
+  "harness": "deerflow-2.0",
+  "harness_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model_config_name": "gpt-5.6-sol-codex",
+  "agent_name": "clarification-dr",
+  "thread_id": "pdr-t33-gpt56-v074-r1",
+  "turn_index": 2,
+  "input_kind": "simulator_reply",
+  "source_path": "/Users/lora/Documents/benchmark-intent/pilot/dr_harness_backbone_integration_v0_74/smoke/deerflow_t33_gpt56_r1/simulator_answer_01.txt",
+  "input_sha256": "da1eb320e004dc8d21521b1c0bacd28df585f7ba71dc5738c4c0198157a7183e",
+  "visible_prompt_wrapper": null,
+  "persona_visible_on_first_turn": null,
+  "rubric_visible": false,
+  "account_memory_allowed": false,
+  "subagents_enabled": false,
+  "plan_mode": false,
+  "recursion_limit": 100
+}
