@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.75",
+  "coding_note": "Reflected is strict when the persona-specific value changes the report; partial means generic or incomplete alignment. This diagnostic does not replace PDR scoring.",
+  "interactive": {
+    "unique_frozen_units_asked": ["P01_ACTIVITY_ENVIRONMENT", "P03_BUDGET_QUALITY", "P04_FITNESS_COMFORT_LOAD"],
+    "high_impact_recall": {"numerator": 2, "denominator": 3, "value": 0.6666666666666666},
+    "all_unit_recall": {"numerator": 3, "denominator": 8, "value": 0.375},
+    "delta_weighted_coverage": {"numerator": 8, "denominator": 17, "value": 0.47058823529411764},
+    "units": [
+      {"id": "P01_ACTIVITY_ENVIRONMENT", "relevant": true, "known_before_ask": false, "asked": true, "resolved": true, "reflected": "partial"},
+      {"id": "P02_SAFETY_RISK", "relevant": true, "known_before_ask": false, "asked": false, "resolved": false, "reflected": "generic_default_not_acquired"},
+      {"id": "P03_BUDGET_QUALITY", "relevant": true, "known_before_ask": false, "asked": true, "resolved": true, "reflected": true},
+      {"id": "P04_FITNESS_COMFORT_LOAD", "relevant": true, "known_before_ask": false, "asked": true, "resolved": "partial", "reflected": true},
+      {"id": "P05_TECH_NAVIGATION", "relevant": true, "known_before_ask": false, "asked": false, "resolved": false, "reflected": false},
+      {"id": "P06_PHASED_BUY_STORAGE", "relevant": true, "known_before_ask": false, "asked": false, "resolved": false, "reflected": "partial_generic_purchase_sequence"},
+      {"id": "P07_DECISION_PRESENTATION", "relevant": true, "known_before_ask": false, "asked": false, "resolved": false, "reflected": "generic_default_not_acquired"},
+      {"id": "P08_SUSTAINABILITY", "relevant": true, "known_before_ask": false, "asked": false, "resolved": false, "reflected": false}
+    ]
+  },
+  "full_persona": {
+    "known_before_questions": 8,
+    "clearly_redundant_fields": 2,
+    "mixed_redundant_and_residual_fields": 1,
+    "reasonable_residual_fields": 2,
+    "newly_resolved_preference_values": 0,
+    "units": [
+      {"id": "P01_ACTIVITY_ENVIRONMENT", "relevant": true, "known_before_ask": true, "asked": true, "resolved": true, "reflected": true},
+      {"id": "P02_SAFETY_RISK", "relevant": true, "known_before_ask": true, "asked": false, "resolved": true, "reflected": true},
+      {"id": "P03_BUDGET_QUALITY", "relevant": true, "known_before_ask": true, "asked": true, "resolved": true, "reflected": "partial"},
+      {"id": "P04_FITNESS_COMFORT_LOAD", "relevant": true, "known_before_ask": true, "asked": true, "resolved": "partial", "reflected": true},
+      {"id": "P05_TECH_NAVIGATION", "relevant": true, "known_before_ask": true, "asked": false, "resolved": true, "reflected": false},
+      {"id": "P06_PHASED_BUY_STORAGE", "relevant": true, "known_before_ask": true, "asked": false, "resolved": true, "reflected": "partial"},
+      {"id": "P07_DECISION_PRESENTATION", "relevant": true, "known_before_ask": true, "asked": false, "resolved": true, "reflected": true},
+      {"id": "P08_SUSTAINABILITY", "relevant": true, "known_before_ask": true, "asked": false, "resolved": true, "reflected": false}
+    ]
+  },
+  "recognition_probe": {
+    "frozen_high_impact_units_recognized": ["P01_ACTIVITY_ENVIRONMENT", "P03_BUDGET_QUALITY"],
+    "frozen_high_impact_unit_missed": ["P02_SAFETY_RISK"],
+    "all_frozen_units_recognized": ["P01_ACTIVITY_ENVIRONMENT", "P03_BUDGET_QUALITY", "P04_FITNESS_COMFORT_LOAD"],
+    "recognized_minus_asked_frozen_units": 0,
+    "interpretation": "No recognition-action gap on the frozen eight-unit ontology; recognition and asking share the same blind spots in this task."
+  }
+}

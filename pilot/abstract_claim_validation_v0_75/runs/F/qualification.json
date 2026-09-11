@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.75",
+  "episode_dir": "/Users/lora/Documents/benchmark-intent/pilot/abstract_claim_validation_v0_75/runs/F",
+  "summaries_aggregated": 3,
+  "final_summary": "/Users/lora/Documents/benchmark-intent/pilot/abstract_claim_validation_v0_75/runs/F/turn_003_summary.json",
+  "distinct_search_queries": 6,
+  "fetch_attempts": 7,
+  "substantive_fetch_successes": 6,
+  "report_cited_url_count": 8,
+  "successful_fetched_domains": [
+    "www.cdc.gov",
+    "www.decathlon.com",
+    "www.katadyngroup.com",
+    "www.rei.com"
+  ],
+  "authoritative_domains": [
+    "www.cdc.gov",
+    "www.rei.com"
+  ],
+  "structural_gate_pass": true,
+  "authoritative_gate_pass": true,
+  "deep_research_qualified": true,
+  "engineering_finalizer_used": true,
+  "fetches": [
+    {
+      "url": "https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html",
+      "domain": "www.cdc.gov",
+      "readable_characters": 11999,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.rei.com/learn/expert-advice/backpacking-checklist.html",
+      "domain": "www.rei.com",
+      "readable_characters": 12000,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.rei.com/learn/expert-advice/backpacking-in-the-rain.html",
+      "domain": "www.rei.com",
+      "readable_characters": 10814,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.decathlon.com/products/men-s-50-10-l-trekking-backpack-mt500-air",
+      "domain": "www.decathlon.com",
+      "readable_characters": 2999,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.decathlon.com/products/simond-backpacking-sleeping-bag-mt500-41-f-synthetic-346446",
+      "domain": "www.decathlon.com",
+      "readable_characters": 2425,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.katadyngroup.com/us/en/item~p6730",
+      "domain": "www.katadyngroup.com",
+      "readable_characters": 862,
+      "substantive_success": true
+    },
+    {
+      "url": "https://lnt.org/why/7-principles/dispose-of-waste-properly/",
+      "domain": "lnt.org",
+      "readable_characters": 280,
+      "substantive_success": false
+    }
+  ]
+}

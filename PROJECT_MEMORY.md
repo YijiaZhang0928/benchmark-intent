@@ -2,11 +2,23 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-09
-当前版本：v0.74（DeerFlow/Open Deep Research exact-instruction 集成 smoke）
+最后更新：2026-09-10
+当前版本：v0.75（ICLR 摘要主张小样本证伪验证）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAA. 2026-09-10：ICLR 摘要主张小样本证伪验证
+
+用户提出更强叙事：clarification-enabled Deep Research harness 可能在冷启动时显著提升 PDR personalization，甚至超过冗余 full persona；模型可能“会识别偏好但在 DR 中不问”，而模型排名也可能在 history projection 与 collaborative acquisition 间反转。为避免摘要先于证据，本轮只用运行前已有 annotation 的 PDR-T35 × User8、同一个 `gpt-5.6-sol` backbone、同一个 DeerFlow checkout 和原始 37 条 PDR criteria，跑 instruction-only no-ask (`N`)、instruction-only calibrated interactive (`I`)、full-persona optional clarification (`F`)；另做不生成报告的 recognition-only probe (`R`)。
+
+互动 agent 一次提出六字段表单，覆盖冻结八单元中的 P01 activity/environment、P03 budget/quality、P04 fitness/comfort/load；high-impact recall 为 2/3，delta-weighted coverage 为 8/17=47.1%，漏掉同为 high-impact 的 P02 risk tolerance/safety redundancy。recognition probe 列出七个变量，但映射回冻结 ontology 后仍只识别同样三个单元，也漏 P02，因此本 task 的 `recognized − asked` 为 0；强版本 recognition–action gap 被这条样本拒绝，更准确的诊断是 recognition 与 action 共享 preference-ontology blind spot。
+
+Full persona 仍问五字段：budget orientation 与 activity scope 两项明显 redundant；conditions 混合已知信息和 route/temperature residual；trip support 与 rental/weight 属合理 residual，但 persona 无法给出确定值。新获得的 task-specific preference value 为 0。这个结果证明 full context 既不能消除 over-asking，也不等于真正 information oracle。
+
+一次盲化 judge pass 的 P-score 为 N=6.2182、I=7.4184、F=6.1602，`InteractiveGain=+1.2002`、`I−F=+1.2582`；因 `F−N=-0.0580`，RecoveryRatio 分母为负且近零，不作恢复率解释。按运行前冻结的 criterion→unit map，I−N 的 +1.0868（90.6%）落在与已问 P01/P03/P04 相交的 criteria，但 criterion 可多重映射，所以只是机制对齐，不是 causal mediation。F 在上海/四川西藏定位上更强，却因推迟核心购买、缺完整价格层级和品牌篮子被高权重 actionability 重罚；`I>F` 可能是真实 selective-acquisition 优势，也可能是单次生成、工具循环和 finalization variance。
+
+这组数字不能直接进确认性摘要：每条件只有一次生成和一次同家族 judge；I/F 原生工具循环均撞 recursion limit，使用无新增检索的 bounded finalizer；冻结 DR gate 只有 F 通过，N 为 34 queries/4 substantive fetches/4 cited URLs，I 为 15/10/4，均因 cited URLs<5（N 还因 fetch<5）失败。因此当前只称 rapid directional diagnostic。摘要安全主张应收缩为：clarification 是 DR 中未充分测量的 specification-acquisition action；初步 case evidence 显示 calibrated harness 可获得会改变报告的 user-owned values，但仍漏关键偏好、full context 下会 over-ask、且执行终止不稳。不能写“现有 DR 都轻视澄清”“history 一般有害”“已颠覆 PDR leaderboard”或“已证明 recognition–action gap”。完整结果见 `pilot/abstract_claim_validation_v0_75/`。
 
 ## 0AAAAAAAAAAAAAAAA. 2026-09-09：DeerFlow / Open Deep Research exact-instruction 集成
 

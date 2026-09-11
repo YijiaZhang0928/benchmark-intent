@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.75",
+  "created_at": "2026-09-10",
+  "purpose": "Minimal falsification-oriented validation of abstract claims before ICLR 2027 abstract submission",
+  "case": {
+    "query_id": 173,
+    "task_id": 35,
+    "persona_id": "User8",
+    "task_source": "pilot/pilot_02_ask_what_matters/task/instruction.txt",
+    "persona_source": "pilot/pilot_02_ask_what_matters/task/original_persona.txt",
+    "criteria_source": "pilot/pilot_02_ask_what_matters/task/original_criteria.json",
+    "preference_units_source": "pilot/pilot_02_ask_what_matters/annotation/preference_variables.json",
+    "criteria_count": 37,
+    "preference_unit_count": 8,
+    "annotations_frozen_before_this_run": true
+  },
+  "harness": {
+    "name": "DeerFlow",
+    "commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+    "backbone": "gpt-5.6-sol",
+    "model_route": "Codex CLI OAuth",
+    "search_tool": "frozen simple_http web_search",
+    "fetch_tool": "frozen simple_http web_fetch",
+    "deep_research_gate": {
+      "minimum_distinct_queries": 3,
+      "minimum_substantive_fetches": 5,
+      "minimum_cited_urls": 5,
+      "minimum_primary_or_authoritative_sources_when_applicable": 2
+    }
+  },
+  "conditions": [
+    {
+      "id": "N",
+      "name": "instruction_only_noask",
+      "persona_visible_on_turn_1": false,
+      "clarification_available": false,
+      "generation_repeats": 1
+    },
+    {
+      "id": "I",
+      "name": "instruction_only_calibrated_interactive",
+      "persona_visible_on_turn_1": false,
+      "clarification_available": true,
+      "simulator": "persona_bounded_selective_disclosure",
+      "generation_repeats": 1
+    },
+    {
+      "id": "F",
+      "name": "full_persona_optional_clarification",
+      "persona_visible_on_turn_1": true,
+      "clarification_available": true,
+      "simulator": "persona_bounded_selective_disclosure_for_residual_questions",
+      "generation_repeats": 1
+    }
+  ],
+  "diagnostic_probe": {
+    "id": "R",
+    "name": "preference_recognition_only",
+    "report_generation": false,
+    "p_score_eligible": false
+  },
+  "primary_hypotheses": [
+    "P_I > P_N",
+    "P_I may exceed P_F if selective clarification is more task-relevant than the noisy full persona",
+    "recognized high-impact user-owned variables exceed asked-and-resolved variables"
+  ],
+  "claim_boundaries": [
+    "one task and one generation per report condition",
+    "no population-level clarification effect",
+    "no cross-model ranking or leaderboard reversal",
+    "recognition probe is a mechanism diagnostic not a report condition",
+    "engineering retries are not generation repeats"
+  ]
+}

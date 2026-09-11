@@ -1,0 +1,10 @@
+{
+  "mapping": {
+    "RPT-A4": "N_instruction_only_noask",
+    "RPT-J9": "I_instruction_only_calibrated_interactive",
+    "RPT-C2": "F_full_persona_optional_clarification"
+  },
+  "scoring_order": ["RPT-J9", "RPT-A4", "RPT-C2"],
+  "judge_repeats": 1,
+  "note": "Labels were frozen before scoring. One repeat is a rapid abstract-deadline diagnostic, not a confirmatory estimate."
+}

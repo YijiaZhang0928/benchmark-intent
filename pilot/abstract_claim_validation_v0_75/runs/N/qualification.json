@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.75",
+  "episode_dir": "/Users/lora/Documents/benchmark-intent/pilot/abstract_claim_validation_v0_75/runs/N",
+  "summaries_aggregated": 1,
+  "final_summary": "/Users/lora/Documents/benchmark-intent/pilot/abstract_claim_validation_v0_75/runs/N/turn_001_summary.json",
+  "distinct_search_queries": 34,
+  "fetch_attempts": 4,
+  "substantive_fetch_successes": 4,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "www.cdc.gov",
+    "www.nps.gov",
+    "www.rei.com"
+  ],
+  "authoritative_domains": [
+    "www.cdc.gov",
+    "www.nps.gov",
+    "www.rei.com"
+  ],
+  "structural_gate_pass": false,
+  "authoritative_gate_pass": true,
+  "deep_research_qualified": false,
+  "engineering_finalizer_used": false,
+  "fetches": [
+    {
+      "url": "https://www.nps.gov/articles/10essentials.htm",
+      "domain": "www.nps.gov",
+      "readable_characters": 8178,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.rei.com/learn/expert-advice/backpacking-checklist.html",
+      "domain": "www.rei.com",
+      "readable_characters": 12000,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.rei.com/learn/expert-advice/understanding-sleeping-bag-temperature-ratings.html",
+      "domain": "www.rei.com",
+      "readable_characters": 6350,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html",
+      "domain": "www.cdc.gov",
+      "readable_characters": 7222,
+      "substantive_success": true
+    }
+  ]
+}

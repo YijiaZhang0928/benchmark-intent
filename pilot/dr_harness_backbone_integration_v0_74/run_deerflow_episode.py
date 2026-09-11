@@ -28,6 +28,16 @@ def parse_args() -> argparse.Namespace:
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--task-file", type=Path)
     source.add_argument("--reply-file", type=Path)
+    parser.add_argument(
+        "--input-kind",
+        choices=["task_instruction", "full_persona", "simulator_reply", "engineering_control"],
+        help="Explicit provenance label; defaults from --task-file/--reply-file.",
+    )
+    parser.add_argument(
+        "--non-interactive",
+        action="store_true",
+        help="Set DeerFlow's non_interactive runtime flag and remove ask_clarification.",
+    )
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--recursion-limit", type=int, default=100)
     return parser.parse_args()
@@ -97,9 +107,19 @@ def main() -> int:
         sys.path.insert(0, str(harness_package))
     from deerflow.client import DeerFlowClient
 
+    class ExperimentalDeerFlowClient(DeerFlowClient):
+        """Expose DeerFlow's existing non_interactive runtime switch to the runner."""
+
+        def _get_runnable_config(self, thread_id: str, **overrides):
+            config = super()._get_runnable_config(thread_id, **overrides)
+            if args.non_interactive:
+                config.setdefault("configurable", {})["non_interactive"] = True
+            return config
+
     started = datetime.now(timezone.utc)
+    input_kind = args.input_kind or ("task_instruction" if args.task_file else "simulator_reply")
     metadata = {
-        "schema_version": "0.74",
+        "schema_version": "0.75",
         "started_at_utc": started.isoformat(),
         "harness": "deerflow-2.0",
         "harness_commit": git_commit(root),
@@ -107,20 +127,23 @@ def main() -> int:
         "agent_name": args.agent,
         "thread_id": args.thread_id,
         "turn_index": turn_index,
-        "input_kind": "task_instruction" if args.task_file else "simulator_reply",
+        "input_kind": input_kind,
         "source_path": str(source_path),
         "input_sha256": hashlib.sha256(message.encode("utf-8")).hexdigest(),
         "visible_prompt_wrapper": None,
-        "persona_visible_on_first_turn": False if args.task_file else None,
+        "persona_visible_on_first_turn": (
+            input_kind == "full_persona" if args.task_file else None
+        ),
         "rubric_visible": False,
         "account_memory_allowed": False,
         "subagents_enabled": False,
         "plan_mode": False,
         "recursion_limit": args.recursion_limit,
+        "non_interactive": args.non_interactive,
     }
     metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    client = DeerFlowClient(
+    client = ExperimentalDeerFlowClient(
         config_path=str(root / "config.yaml"),
         model_name=args.model,
         agent_name=args.agent,
@@ -234,7 +257,7 @@ def main() -> int:
         status = "ended_without_text"
 
     summary = {
-        "schema_version": "0.74",
+        "schema_version": "0.75",
         "status": status,
         "asked_clarification": asked,
         "clarification_calls": clarification_calls,

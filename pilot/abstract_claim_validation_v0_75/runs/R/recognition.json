@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.75",
+  "started_at_utc": "2026-09-11T01:12:04.841022+00:00",
+  "completed_at_utc": "2026-09-11T01:13:57.020171+00:00",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "high",
+  "input_sha256": "6e9d0652f55879d1402e693601adc6e7904de7498300e4328743bb0ca935b648",
+  "persona_visible": false,
+  "rubric_visible": false,
+  "scope": "recognition_only_no_research_no_report",
+  "raw": "{\"variables\":[{\"name\":\"Destinations, trip dates, elevations, terrain, and expected environmental extremes\",\"ownership\":\"user-owned\",\"impact\":\"high\",\"evidence_strength\":\"not_strong\",\"clarify_before_research\":true},{\"name\":\"Mountaineering scope and competence, including whether objectives involve exposed scrambling, snow, ice, glaciers, ropes, or guided instruction\",\"ownership\":\"user-owned\",\"impact\":\"high\",\"evidence_strength\":\"not_strong\",\"clarify_before_research\":true},{\"name\":\"Trip format: duration, solo versus group travel, gear sharing, resupply access, and distance from emergency assistance\",\"ownership\":\"user-owned\",\"impact\":\"high\",\"evidence_strength\":\"not_strong\",\"clarify_before_research\":true},{\"name\":\"Total and category-level budget, purchasing country, and willingness to rent or buy used equipment\",\"ownership\":\"user-owned\",\"impact\":\"high\",\"evidence_strength\":\"not_strong\",\"clarify_before_research\":true},{\"name\":\"Personal fit and physiological constraints, including clothing and footwear sizing, foot shape, pack fit, sleep-temperature tendency, and relevant accessibility or health needs\",\"ownership\":\"user-owned\",\"impact\":\"high\",\"evidence_strength\":\"not_strong\",\"clarify_before_research\":true},{\"name\":\"Priority among low carried weight, durability, comfort, versatility, and initial cost\",\"ownership\":\"user-owned\",\"impact\":\"high\",\"evidence_strength\":\"not_strong\",\"clarify_before_research\":true},{\"name\":\"Beginner safety model: non-technical limits unless appropriate training, experience, or professional guidance is added\",\"ownership\":\"agent-recommended\",\"impact\":\"high\",\"evidence_strength\":\"strong\",\"clarify_before_research\":false}]}",
+  "parsed": {
+    "variables": [
+      {
+        "name": "Destinations, trip dates, elevations, terrain, and expected environmental extremes",
+        "ownership": "user-owned",
+        "impact": "high",
+        "evidence_strength": "not_strong",
+        "clarify_before_research": true
+      },
+      {
+        "name": "Mountaineering scope and competence, including whether objectives involve exposed scrambling, snow, ice, glaciers, ropes, or guided instruction",
+        "ownership": "user-owned",
+        "impact": "high",
+        "evidence_strength": "not_strong",
+        "clarify_before_research": true
+      },
+      {
+        "name": "Trip format: duration, solo versus group travel, gear sharing, resupply access, and distance from emergency assistance",
+        "ownership": "user-owned",
+        "impact": "high",
+        "evidence_strength": "not_strong",
+        "clarify_before_research": true
+      },
+      {
+        "name": "Total and category-level budget, purchasing country, and willingness to rent or buy used equipment",
+        "ownership": "user-owned",
+        "impact": "high",
+        "evidence_strength": "not_strong",
+        "clarify_before_research": true
+      },
+      {
+        "name": "Personal fit and physiological constraints, including clothing and footwear sizing, foot shape, pack fit, sleep-temperature tendency, and relevant accessibility or health needs",
+        "ownership": "user-owned",
+        "impact": "high",
+        "evidence_strength": "not_strong",
+        "clarify_before_research": true
+      },
+      {
+        "name": "Priority among low carried weight, durability, comfort, versatility, and initial cost",
+        "ownership": "user-owned",
+        "impact": "high",
+        "evidence_strength": "not_strong",
+        "clarify_before_research": true
+      },
+      {
+        "name": "Beginner safety model: non-technical limits unless appropriate training, experience, or professional guidance is added",
+        "ownership": "agent-recommended",
+        "impact": "high",
+        "evidence_strength": "strong",
+        "clarify_before_research": false
+      }
+    ]
+  },
+  "usage_metadata": {
+    "input_tokens": 294,
+    "output_tokens": 3453,
+    "total_tokens": 3747,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 3106
+    }
+  }
+}

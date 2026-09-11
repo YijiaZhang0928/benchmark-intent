@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.74"
-updated: "2026-09-09"
+manifest_version: "0.75"
+updated: "2026-09-10"
 status: working_hypothesis_frozen
 
 paper:
@@ -55,6 +55,12 @@ active_sources:
   dr_harness_backbone_integration_runner: pilot/dr_harness_backbone_integration_v0_74/run_deerflow_episode.py
   dr_harness_backbone_integration_auditor: pilot/dr_harness_backbone_integration_v0_74/audit_deerflow_run.py
   dr_harness_simulator_protocol: pilot/dr_harness_backbone_integration_v0_74/simulator_protocol.md
+  abstract_claim_validation_results: pilot/abstract_claim_validation_v0_75/RESULTS.md
+  abstract_claim_validation_design: pilot/abstract_claim_validation_v0_75/design.json
+  abstract_claim_validation_scores: pilot/abstract_claim_validation_v0_75/evaluation/results.json
+  abstract_claim_validation_question_audit: pilot/abstract_claim_validation_v0_75/evaluation/question_audit.csv
+  abstract_claim_validation_preference_chain: pilot/abstract_claim_validation_v0_75/evaluation/preference_chain.json
+  iclr_2027_abstract_claim_card: proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -260,6 +266,34 @@ scope:
     blocked_backbones: [claude_account_insufficient, gemini_missing_api_key, deepseek_missing_api_key, kimi_missing_api_key]
     counted_episode_eligible: false
     claim_boundary: plumbing_and_one_dr_qualified_execution_only_no_pdr_score_or_cross_backbone_result
+  abstract_claim_validation_mini_pilot:
+    package_version: "0.75"
+    status: rapid_directional_diagnostic_not_confirmatory
+    task_id: PDR-T35
+    upstream_query_id: 173
+    persona_id: User8
+    backbone: gpt-5.6-sol
+    harness: DeerFlow
+    conditions: [instruction_only_noask, instruction_only_calibrated_interactive, full_persona_optional_clarification]
+    recognition_probe: true
+    report_generation_repeats_per_condition: 1
+    judge_repeats_per_report: 1
+    p_noask: 6.2182
+    p_interactive: 7.4184
+    p_full_persona: 6.1602
+    interactive_gain: 1.2002
+    interactive_minus_full_persona: 1.2582
+    recovery_ratio: not_interpretable_full_minus_noask_negative
+    interactive_high_impact_recall: 0.6666666666666666
+    interactive_delta_weighted_coverage: 0.47058823529411764
+    recognition_minus_asked_frozen_units: 0
+    full_persona_redundant_fields: 2
+    full_persona_mixed_fields: 1
+    full_persona_reasonable_residual_fields: 2
+    deep_research_gate_pass: {noask: false, interactive: false, full_persona: true}
+    engineering_bounded_finalizer_used: [interactive, full_persona]
+    counted_episode_eligible: false
+    claim_boundary: one_task_directional_signal_only_no_recognition_action_gap_no_rank_reversal
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -278,6 +312,8 @@ reused_infrastructure:
 
 claim_boundaries:
   - no_rank_reversal_result_exists
+  - abstract_v0_75_scores_are_not_confirmatory_because_two_conditions_failed_the_frozen_dr_gate
+  - no_recognition_action_gap_was_observed_on_the_frozen_t35_units
   - no_agent_leaderboard_exists
   - pdr_is_full_context_projection_not_implicit_elicitation
   - pdr_simulated_context_is_not_natural_history

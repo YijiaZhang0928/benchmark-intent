@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.75",
+  "case": {"query_id": 173, "task_id": 35, "persona_id": "User8"},
+  "upstream": {
+    "pdr_bench_commit": "5b43f9f188c747d154fc7666812ab93b7ca6a3c2",
+    "deerflow_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd"
+  },
+  "backbone": "gpt-5.6-sol",
+  "model_route": "Codex CLI OAuth",
+  "conditions": {
+    "N": {"thread_id": "pdr-t35-gpt56-v075-n-r1", "final_report": "runs/N/turn_001_report.md", "qualification": "runs/N/qualification.json"},
+    "I": {"thread_id": "pdr-t35-gpt56-v075-i-r1", "final_report": "runs/I/turn_004_report.md", "qualification": "runs/I/qualification.json"},
+    "F": {"thread_id": "pdr-t35-gpt56-v075-f-r1", "final_report": "runs/F/turn_003_report.md", "qualification": "runs/F/qualification.json"},
+    "R": {"output": "runs/R/recognition.json", "report_generation": false}
+  },
+  "simulator": "human-executed persona-bounded selective disclosure; no separate simulator model",
+  "evaluation": {
+    "blind_map": "evaluation/blind_map.json",
+    "original_personalization_criteria": 37,
+    "judge_repeats": 1,
+    "judge_model": "gpt-5.6-sol",
+    "prompt_and_calculator": "unmodified snapshot from pilot/pilot_02_ask_what_matters/evaluator_official"
+  },
+  "engineering_deviations": [
+    "I research turn reached recursion limit 100; an engineering continuation without new preferences was attempted and interrupted after a repetitive-tool loop.",
+    "F research turn reached recursion limit 150.",
+    "I and F used a finalizer agent that was prohibited from asking, searching, or fetching and could only synthesize evidence already in the thread.",
+    "The engineering continuation and finalization messages are labeled engineering_control in turn metadata and are not simulator answers.",
+    "Only one blind judge repeat was run for the abstract-deadline diagnostic.",
+    "N and I failed the frozen Deep Research qualification gate."
+  ]
+}

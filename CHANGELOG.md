@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.75 ICLR abstract claim falsification mini-pilot - 2026-09-10
+
+- 在任何新 annotation 前复用已冻结的 PDR-T35 × User8 八个 preference units 与 37 条原始 criteria，用同一 `gpt-5.6-sol`/DeerFlow 运行 N no-ask、I calibrated interactive、F full-persona optional clarification 和 R recognition-only probe。
+- I 用一轮六字段表单覆盖 P01/P03/P04，high-impact recall=2/3、delta-weighted coverage=47.1%；recognition probe 映射后覆盖相同三单元、同样漏 P02，因此本 task 不支持强 recognition–action gap，支持 shared ontology blind spot。
+- Full Persona 五字段中 2 个明显 redundant、1 个 mixed、2 个合理 residual；persona 无法新增确定值，证明 full context 仍可能 over-ask 且并非信息 oracle。
+- 原始 PDR prompt/calculator 的单次盲评分数为 N=6.2182、I=7.4184、F=6.1602；InteractiveGain=+1.2002，I−F=+1.2582，RecoveryRatio 因 F−N<0 不解释。90.6% 的 I−N 增益落在与已问单元相交的 criteria，但仅作 alignment diagnostic。
+- 保留负面运行事实：I/F 撞工具循环上限并使用 bounded finalizer；冻结 DR gate 仅 F 通过，N/I 因 fetch/citation 数不足失败；每条件仅一次生成和一次同家族 judge。因此数字不进入确认性主表，也不支撑 history-harm、rank reversal 或“推翻现有 DR 产品”。
+- 新增 `pilot/abstract_claim_validation_v0_75/` 的 exact inputs、runner 扩展、完整 traces、recognition probe、blind evaluator、question audit、preference chain、qualification 和 validator；摘要主张收缩为 cold-start specification acquisition 与 persona projection 是不同能力表面。
+
 ## v0.74 DeerFlow/Open Deep Research backbone integration smoke - 2026-09-09
 
 - 冻结 DeerFlow commit `0d4925305a6330a3442dcd336ed25750aea87cbd` 与 Open Deep Research commit `1b7d2e80db9faa586165c60e09096dbbfd483a64`，首轮只传官方 PDR-T33 原 instruction；persona、rubric、history 与 clarification cue 均不进入可见用户提示。

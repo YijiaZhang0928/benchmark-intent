@@ -1,0 +1,12 @@
+question_id,condition,field,preference_unit,delta,evidence_before,should_ask,answer_usable,reflected_in_report,classification
+I01,I,Main destination(s) and approximate month(s),P01_ACTIVITY_ENVIRONMENT,high,low,yes,partial,partial,reasonable_missing_information
+I02,I,Planned activity level,P01_ACTIVITY_ENVIRONMENT,high,mixed,yes,yes,yes,reasonable_scope_disambiguation
+I03,I,Trip length group size and shared gear,OUTSIDE_FROZEN_8_TRIP_FORMAT,high,low,yes,no,unknown_branched,reasonable_but_persona_unresolved
+I04,I,Elevation nighttime temperature weather and terrain,P01_ACTIVITY_ENVIRONMENT,high,low,yes,partial,yes,reasonable_but_overlaps_I01_I02
+I05,I,Total budget and shopping country/currency,P03_BUDGET_QUALITY,high,low,yes,yes,yes,reasonable_missing_information
+I06,I,Sizing comfort medical dietary or carry constraints,P04_FITNESS_COMFORT_LOAD,medium,low,yes,partial,yes,reasonable_missing_information
+F01,F,Total gear budget excluding travel,P03_BUDGET_QUALITY,high,strong,no,yes,partial,redundant_clarification
+F02,F,Activities planned this summer,P01_ACTIVITY_ENVIRONMENT,high,strong,no,yes,yes,redundant_clarification
+F03,F,Expected conditions and destinations,P01_ACTIVITY_ENVIRONMENT,high,mixed,partial,partial,yes,mixed_redundant_and_residual
+F04,F,Trip support style,OUTSIDE_FROZEN_8_TRIP_SUPPORT,high,low,yes,no,unknown_branched,reasonable_but_persona_unresolved
+F05,F,Rental and weight preference,P03_BUDGET_QUALITY;P04_FITNESS_COMFORT_LOAD,high;medium,mixed,yes,partial,yes,reasonable_residual_verification

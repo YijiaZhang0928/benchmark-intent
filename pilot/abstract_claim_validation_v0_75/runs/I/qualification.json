@@ -1,0 +1,125 @@
+{
+  "schema_version": "0.75",
+  "episode_dir": "/Users/lora/Documents/benchmark-intent/pilot/abstract_claim_validation_v0_75/runs/I",
+  "summaries_aggregated": 3,
+  "final_summary": "/Users/lora/Documents/benchmark-intent/pilot/abstract_claim_validation_v0_75/runs/I/turn_004_summary.json",
+  "distinct_search_queries": 15,
+  "fetch_attempts": 15,
+  "substantive_fetch_successes": 10,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "home.nps.gov",
+    "post.smzdm.com",
+    "www.cdc.gov",
+    "www.naturehike.com",
+    "www.nps.gov",
+    "www.rei.com",
+    "www.theuiaa.org",
+    "wwwnc.cdc.gov"
+  ],
+  "authoritative_domains": [
+    "home.nps.gov",
+    "www.cdc.gov",
+    "www.naturehike.com",
+    "www.nps.gov",
+    "www.rei.com",
+    "www.theuiaa.org",
+    "wwwnc.cdc.gov"
+  ],
+  "structural_gate_pass": false,
+  "authoritative_gate_pass": true,
+  "deep_research_qualified": false,
+  "engineering_finalizer_used": true,
+  "fetches": [
+    {
+      "url": "https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html",
+      "domain": "www.cdc.gov",
+      "readable_characters": 11999,
+      "substantive_success": true
+    },
+    {
+      "url": "https://wwwnc.cdc.gov/travel/page/travel-to-high-altitudes",
+      "domain": "wwwnc.cdc.gov",
+      "readable_characters": 4003,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.nps.gov/articles/10essentials.htm",
+      "domain": "www.nps.gov",
+      "readable_characters": 8178,
+      "substantive_success": true
+    },
+    {
+      "url": "https://home.nps.gov/articles/hiking-safety.htm",
+      "domain": "home.nps.gov",
+      "readable_characters": 12000,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.rei.com/learn/expert-advice/backpacking-checklist.html",
+      "domain": "www.rei.com",
+      "readable_characters": 12000,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.rei.com/learn/expert-advice/sleeping-bag-backpacking.html",
+      "domain": "www.rei.com",
+      "readable_characters": 12000,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.theuiaa.org/mountain-medicine/medical-advice/",
+      "domain": "www.theuiaa.org",
+      "readable_characters": 12000,
+      "substantive_success": true
+    },
+    {
+      "url": "https://post.smzdm.com/p/amokl9pv/",
+      "domain": "post.smzdm.com",
+      "readable_characters": 1827,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html",
+      "domain": "www.cdc.gov",
+      "readable_characters": 7222,
+      "substantive_success": true
+    },
+    {
+      "url": "https://www.iso.org/standard/82789.html",
+      "domain": "www.iso.org",
+      "readable_characters": 240,
+      "substantive_success": false
+    },
+    {
+      "url": "https://support.garmin.com/en-US/?FAQ=Dq3CEPZjfRAhtToGD4Yrz9",
+      "domain": "support.garmin.com",
+      "readable_characters": 282,
+      "substantive_success": false
+    },
+    {
+      "url": "https://www.kailas.com.cn/",
+      "domain": "www.kailas.com.cn",
+      "readable_characters": 216,
+      "substantive_success": false
+    },
+    {
+      "url": "https://www.naturehike.com/",
+      "domain": "www.naturehike.com",
+      "readable_characters": 7710,
+      "substantive_success": true
+    },
+    {
+      "url": "https://item.jd.com/4462047.html",
+      "domain": "item.jd.com",
+      "readable_characters": 90,
+      "substantive_success": false
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/22007422",
+      "domain": "zhuanlan.zhihu.com",
+      "readable_characters": 236,
+      "substantive_success": false
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.75",
+  "status": "rapid_directional_diagnostic_not_confirmatory",
+  "case": "PDR-T35 x User8",
+  "report_generation_repeats_per_condition": 1,
+  "judge_repeats_per_report": 1,
+  "judge_model": "gpt-5.6-sol",
+  "scores": {
+    "N_instruction_only_noask": 6.2182,
+    "I_instruction_only_calibrated_interactive": 7.4184,
+    "F_full_persona_optional_clarification": 6.1602
+  },
+  "estimands": {
+    "InteractiveGain_I_minus_N": 1.2002,
+    "FullGap_F_minus_I": -1.2582,
+    "Interactive_minus_F": 1.2582,
+    "Full_minus_N": -0.058,
+    "RecoveryRatio": null,
+    "RecoveryRatio_reason": "Undefined for interpretation because the full-persona reference did not exceed no-ask; the denominator is negative and near zero."
+  },
+  "dimension_scores": {
+    "N": {"goal_alignment": 6.01, "content_alignment": 5.73, "presentation_fit": 6.67, "actionability_practicality": 6.5},
+    "I": {"goal_alignment": 7.01, "content_alignment": 6.99, "presentation_fit": 7.54, "actionability_practicality": 7.89},
+    "F": {"goal_alignment": 6.88, "content_alignment": 5.86, "presentation_fit": 6.74, "actionability_practicality": 5.63}
+  },
+  "interactive_gain_attribution_diagnostic": {
+    "total": 1.2002,
+    "criteria_intersecting_asked_units": 1.0868,
+    "criteria_not_intersecting_asked_units": 0.1134,
+    "share_intersecting_asked_units": 0.9055157473754374,
+    "warning": "Criteria can map to multiple units; this is an alignment decomposition, not causal mediation."
+  },
+  "clarification": {
+    "I_form_fields": 6,
+    "I_unique_frozen_units_asked": 3,
+    "I_high_impact_unit_recall": 0.6666666666666666,
+    "I_delta_weighted_coverage": 0.47058823529411764,
+    "F_form_fields": 5,
+    "F_clearly_redundant_fields": 2,
+    "F_mixed_fields": 1,
+    "F_reasonable_residual_fields": 2,
+    "F_newly_resolved_values": 0
+  },
+  "deep_research_qualification": {
+    "N": {"passed": false, "distinct_queries": 34, "substantive_fetches": 4, "cited_urls": 4},
+    "I": {"passed": false, "distinct_queries": 15, "substantive_fetches": 10, "cited_urls": 4, "engineering_finalizer_used": true},
+    "F": {"passed": true, "distinct_queries": 6, "substantive_fetches": 6, "cited_urls": 8, "engineering_finalizer_used": true}
+  },
+  "claim_decisions": {
+    "clarification_can_improve_pdr_personalization_on_one_pair": "directionally_supported_but_not_DR_gate_qualified",
+    "interactive_can_outscore_full_persona": "observed_once_but_highly_fragile_and_confounded_by_generation_and_finalization",
+    "recognition_action_gap": "not_supported_on_frozen_units",
+    "frontier_models_have_low_critical_preference_recall": "partially_supported_here_2_of_3_high_impact_units",
+    "cross_model_rank_reversal": "not_tested"
+  }
+}

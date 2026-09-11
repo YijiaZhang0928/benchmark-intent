@@ -1,0 +1,559 @@
+{
+  "schema_version": "0.75",
+  "status": "completed_without_clarification",
+  "asked_clarification": false,
+  "clarification_calls": [],
+  "clarification_artifacts": [],
+  "all_observed_tools": [
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/public/deep-research/SKILL.md",
+        "description": "Load the required deep-research workflow.",
+        "start_line": 1,
+        "end_line": 260
+      },
+      "id": "call_50H2x35yxrM3OVdgRCh4EEmi"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_50H2x35yxrM3OVdgRCh4EEmi",
+      "content": "---\nname: deep-research\ndescription: Use this skill instead of WebSearch for ANY question requiring web research. Trigger on queries like \"what is X\", \"explain X\", \"compare X and Y\", \"research X\", or before content generation tasks. Provides systematic multi-angle research methodology instead of single superficial searches. Use this proactively when the user's question needs online information.\n---\n\n# Deep Research Skill\n\n## Overview\n\nThis skill provides a systematic methodology for conducting thorough web research. **Load this skill BEFORE starting any content generation task** to ensure you gather sufficient information from multiple angles, depths, and sources.\n\n## When to Use This Skill\n\n**Always load this skill when:**\n\n### Research Questions\n- User asks \"what is X\", \"explain X\", \"research X\", \"investigate X\"\n- User wants to understand a concept, technology, or topic in depth\n- The question requires current, comprehensive information from multiple sources\n- A single web search would be insufficient to answer properly\n\n### Content Generation (Pre-research)\n- Creating presentations (PPT/slides)\n- Creating frontend designs or UI mockups\n- Writing articles, reports, or documentation\n- Producing videos or multimedia content\n- Any content that requires real-world information, examples, or current data\n\n## Core Principle\n\n**Never generate content based solely on general knowledge.** The quality of your output directly depends on the quality and quantity of research conducted beforehand. A single search query is NEVER enough.\n\n## Research Methodology\n\n### Phase 1: Broad Exploration\n\nStart with broad searches to understand the landscape:\n\n1. **Initial Survey**: Search for the main topic to understand the overall context\n2. **Identify Dimensions**: From initial results, identify key subtopics, themes, angles, or aspects that need deeper exploration\n3. **Map the Territory**: Note different perspectives, stakeholders, or viewpoints that exist\n\nExample:\n```\nTopic: \"AI in healthcare\"\nInitial searches:\n- \"AI healthcare applications 2024\"\n- \"artificial intelligence medical diagnosis\"\n- \"healthcare AI market trends\"\n\nIdentified dimensions:\n- Diagnostic AI (radiology, pathology)\n- Treatment recommendation systems\n- Administrative automation\n- Patient monitoring\n- Regulatory landscape\n- Ethical considerations\n```\n\n### Phase 2: Deep Dive\n\nFor each important dimension identified, conduct targeted research:\n\n1. **Specific Queries**: Search with precise keywords for each subtopic\n2. **Multiple Phrasings**: Try different keyword combinations and phrasings\n3. **Fetch Full Content**: Use `web_fetch` to read important sources in full, not just snippets\n4. **Follow References**: When sources mention other important resources, search for those too\n\nExample:\n```\nDimension: \"Diagnostic AI in radiology\"\nTargeted searches:\n- \"AI radiology FDA approved systems\"\n- \"chest X-ray AI detection accuracy\"\n- \"radiology AI clinical trials results\"\n\nThen fetch and read:\n- Key research papers or summaries\n- Industry reports\n- Real-world case studies\n```\n\n### Phase 3: Diversity & Validation\n\nEnsure comprehensive coverage by seeking diverse information types:\n\n| Information Type | Purpose | Example Searches |\n|-----------------|---------|------------------|\n| **Facts & Data** | Concrete evidence | \"statistics\", \"data\", \"numbers\", \"market size\" |\n| **Examples & Cases** | Real-world applications | \"case study\", \"example\", \"implementation\" |\n| **Expert Opinions** | Authority perspectives | \"expert analysis\", \"interview\", \"commentary\" |\n| **Trends & Predictions** | Future direction | \"trends 2024\", \"forecast\", \"future of\" |\n| **Comparisons** | Context and alternatives | \"vs\", \"comparison\", \"alternatives\" |\n| **Challenges & Criticisms** | Balanced view | \"challenges\", \"limitations\", \"criticism\" |\n\n### Phase 4: Synthesis Check\n\nBefore proceeding to content generation, verify:\n\n- [ ] Have I searched from at least 3-5 different angles?\n- [ ] Have I fetched and read the most important sources in full?\n- [ ] Do I have concrete data, examples, and expert perspectives?\n- [ ] Have I explored both positive aspects and challenges/limitations?\n- [ ] Is my information current and from authoritative sources?\n\n**If any answer is NO, continue researching before generating content.**\n\n## Search Strategy Tips\n\n### Effective Query Patterns\n\n```\n# Be specific with context\n❌ \"AI trends\"\n✅ \"enterprise AI adoption trends 2024\"\n\n# Include authoritative source hints\n\"[topic] research paper\"\n\"[topic] McKinsey report\"\n\"[topic] industry analysis\"\n\n# Search for specific content types\n\"[topic] case study\"\n\"[topic] statistics\"\n\"[topic] expert interview\"\n\n# Use temporal qualifiers — always use the ACTUAL current year from <current_date>\n\"[topic] 2026\"   # ← replace with real current year, never hardcode a past year\n\"[topic] latest\"\n\"[topic] recent developments\"\n```\n\n### Temporal Awareness\n\n**Always check `<current_date>` in your context before forming ANY search query.**\n\n`<current_date>` gives you the full date: year, month, day, and weekday (e.g. `2026-02-28, Saturday`). Use the right level of precision depending on what the user is asking:\n\n| User intent | Temporal precision needed | Example query |\n|---|---|---|\n| \"today / this morning / just released\" | **Month + Day** | `\"tech news February 28 2026\"` |\n| \"this week\" | **Week range** | `\"technology releases week of Feb 24 2026\"` |\n| \"recently / latest / new\" | **Month** | `\"AI breakthroughs February 2026\"` |\n| \"this year / trends\" | **Year** | `\"software trends 2026\"` |\n\n**Rules:**\n- When the user asks about \"today\" or \"just released\", use **month + day + year** in your search queries to get same-day results\n- Never drop to year-only when day-level precision is needed — `\"tech news 2026\"` will NOT surface today's news\n- Try multiple phrasings: numeric form (`2026-02-28`), written form (`February 28 2026`), and relative terms (`today`, `this week`) across different queries\n\n❌ User asks \"what's new in tech today\" → searching `\"new technology 2026\"` → misses today's news\n✅ User asks \"what's new in tech today\" → searching `\"new technology February 28 2026\"` + `\"tech news today Feb 28\"` → gets today's results\n\n### When to Use web_fetch\n\nUse `web_fetch` to read full content when:\n- A search result looks highly relevant and authoritative\n- You need detailed information beyond the snippet\n- The source contains data, case studies, or expert analysis\n- You want to understand the full context of a finding\n\n### Iterative Refinement\n\nResearch is iterative. After initial searches:\n1. Review what you've learned\n2. Identify gaps in your understanding\n3. Formulate new, more targeted queries\n4. Repeat until you have comprehensive coverage\n\n## Quality Bar\n\nYour research is sufficient when you can confidently answer:\n- What are the key facts and data points?\n- What are 2-3 concrete real-world examples?\n- What do experts say about this topic?\n- What are the current trends and future directions?\n- What are the challenges or limitations?\n- What makes this topic relevant or important now?\n\n## Common Mistakes to Avoid\n\n- ❌ Stopping after 1-2 searches\n- ❌ Relying on search snippets without reading full sources\n- ❌ Searching only one aspect of a multi-faceted topic\n- ❌ Ignoring contradicting viewpoints or challenges\n- ❌ Using outdated information when current data exists\n- ❌ Starting content generation before research is complete\n\n## Output\n\nAfter completing research, you should have:\n1. A comprehensive understanding of the topic from multiple angles\n2. Specific facts, data points, and statistics\n3. Real-world examples and case studies\n4. Expert perspectives and authoritative sources\n5. Current trends and relevant context\n\n**Only then proceed to content generation**, using the gathered information to create high-quality, well-informed content.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NPS Ten Essentials hiking official",
+        "max_results": 5
+      },
+      "id": "call_HqnDenwGsGytO6BSTmF5SvJb"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "REI backpacking checklist backpack capacity beginner 3 season official",
+        "max_results": 5
+      },
+      "id": "call_DIbrTWY4ROLWNCSTJzHQJE41"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "REI sleeping bag temperature rating ISO comfort limit official guide",
+        "max_results": 5
+      },
+      "id": "call_Bo5qORyyLm1FrRkHfP2gv5ip"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "CDC backcountry water treatment filter boil disinfect official",
+        "max_results": 5
+      },
+      "id": "call_nohDPUb0ysvqajvoo4JEIIvn"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "American Alpine Club beginner mountaineering gear checklist helmet ice axe crampons official",
+        "max_results": 5
+      },
+      "id": "call_oRbb3iQjZI8VTqWZB5GZwvCq"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Leave No Trace seven principles food storage official 2026",
+        "max_results": 5
+      },
+      "id": "call_kIekDfFNFS2RI0vnS7sCZAoh"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NOAA lightning safety mountains hiking official",
+        "max_results": 5
+      },
+      "id": "call_TLwcYFmfHRd2aVnoBQ1J5HgK"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "ASTM headlamp emergency hiking lumens IPX rating guidance official",
+        "max_results": 5
+      },
+      "id": "call_AVVspKiPBUxDdF7flRI6SNVX"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_HqnDenwGsGytO6BSTmF5SvJb",
+      "content": "{\n  \"query\": \"NPS Ten Essentials hiking official\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Ten Essentials (U.S. National Park Service)\",\n      \"url\": \"https://www.nps.gov/articles/10essentials.htm\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Ten Essentials - U.S. National Park Service\",\n      \"url\": \"https://www.nps.gov/articles/10essentials.htm?pubDate=20250518\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"PDF The 10 Essentials of Hiking\",\n      \"url\": \"https://americanhiking.org/wp-content/uploads/10-essentials.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"The Ten Essentials for Hiking & Camping | REI Expert Advice\",\n      \"url\": \"https://www.rei.com/learn/expert-advice/ten-essentials.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"PDF Trip Planning Guide Package - NPS\",\n      \"url\": \"https://home.nps.gov/subjects/healthandsafety/upload/Trip-Planning-Guide-Package-508c.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_DIbrTWY4ROLWNCSTJzHQJE41",
+      "content": "{\n  \"query\": \"REI backpacking checklist backpack capacity beginner 3 season official\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Backpacking Gear Checklist - REI Co-op\",\n      \"url\": \"https://www.rei.com/learn/expert-advice/backpacking-checklist.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"PDF BACKPACKING CHECKLIST - REI Co-op\",\n      \"url\": \"https://www.rei.com/dam/backpacking_checklist_printable.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"PDF Backpacking Checklist\",\n      \"url\": \"https://www.traildames.com/Documents/REI_Backpacking_Checklist_PDF opt 1.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"PDF Backpacking Checklist\",\n      \"url\": \"https://s3.amazonaws.com/trooptrack-prod/troop_documents/documents/000/010/306/original/REI_Backpack_Check_List.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Backpacking Checklist || REI - Get All Camping\",\n      \"url\": \"https://getallcamping.com/backpacking-checklist-rei/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_Bo5qORyyLm1FrRkHfP2gv5ip",
+      "content": "{\n  \"query\": \"REI sleeping bag temperature rating ISO comfort limit official guide\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Sleeping Bag Temperature Ratings Guide | REI Expert Advice\",\n      \"url\": \"https://www.rei.com/learn/expert-advice/understanding-sleeping-bag-temperature-ratings.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Sleeping Bags for Camping: How to Choose | REI Expert Advice\",\n      \"url\": \"https://www.rei.com/learn/expert-advice/sleeping-bag.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Free Sleeping Bag Temperature Rating Guide - EN & ISO Ratings - MiniWebtool\",\n      \"url\": \"https://miniwebtool.com/sleeping-bag-temperature-rating-guide/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"How to Choose the Best Backpacking Sleeping Bag | REI Co-op\",\n      \"url\": \"https://www.rei.com/learn/expert-advice/sleeping-bag-backpacking.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Sleeping Bag Temperature Rating Guide (2026)\",\n      \"url\": \"https://www.paddleroundthepier.com/how-to-choose-a-sleeping-bag-temperature-rating/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_nohDPUb0ysvqajvoo4JEIIvn",
+      "content": "{\n  \"query\": \"CDC backcountry water treatment filter boil disinfect official\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"About Water Treatment Options When Hiking, Camping, or Traveling\",\n      \"url\": \"https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Water Treatment While Hiking, Camping, and Traveling\",\n      \"url\": \"https://www.cdc.gov/drinking-water/communication-resources/water-treatment-traveling.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"PDF Water treatment while hiking, camping, and traveling - CDC Stacks\",\n      \"url\": \"https://stacks.cdc.gov/view/cdc/115891/cdc_115891_DS1.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Water treatment while hiking, camping, and traveling - CDC Stacks\",\n      \"url\": \"https://stacks.cdc.gov/view/cdc/115891\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"A Guide to Drinking Water Treatment and Sanitation for Backcountry and ...\",\n      \"url\": \"http://medbox.iiab.me/modules/en-cdc/www.cdc.gov/healthywater/drinking/travel/backcountry_water_treatment.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_oRbb3iQjZI8VTqWZB5GZwvCq",
+      "content": "{\n  \"query\": \"American Alpine Club beginner mountaineering gear checklist helmet ice axe crampons official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_kIekDfFNFS2RI0vnS7sCZAoh",
+      "content": "{\n  \"query\": \"Leave No Trace seven principles food storage official 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_TLwcYFmfHRd2aVnoBQ1J5HgK",
+      "content": "{\n  \"query\": \"NOAA lightning safety mountains hiking official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_AVVspKiPBUxDdF7flRI6SNVX",
+      "content": "{\n  \"query\": \"ASTM headlamp emergency hiking lumens IPX rating guidance official\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"ASTM International | ASTM\",\n      \"url\": \"https://www.astm.org/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Find ASTM Standards & Publications | ASTM\",\n      \"url\": \"https://www.astm.org/standards-and-solutions/standards-publications\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"How to choose a headlamp for hiking | Kit Authority\",\n      \"url\": \"https://kitauthority.com/hike/how-to-choose-a-headlamp\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Backpackers' Headlamp Guide | Lumens, Batteries, IP Ratings\",\n      \"url\": \"https://backpackers.com/gear/guides/backpackers-headlamps/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    },\n    {\n      \"title\": \"Explosion-Proof Flashlight & Headlight Lumens Guide\",\n      \"url\": \"https://seamanmarinesupplies.com/explosion-proof-flashlight-headlight-lumens/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.nps.gov/articles/10essentials.htm"
+      },
+      "id": "call_8Jf968JKffzJS0Bk4mZZmlKD"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.rei.com/learn/expert-advice/backpacking-checklist.html"
+      },
+      "id": "call_jJhuesrUJRYVb1QC0V9bLLLP"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.rei.com/learn/expert-advice/understanding-sleeping-bag-temperature-ratings.html"
+      },
+      "id": "call_4pzA8exDuconGaHaeEUqCGX8"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html"
+      },
+      "id": "call_XTPB26IwKIsBKJwaAhu3rZ9B"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:theuiaa.org equipment standards helmet ice axe crampons UIAA official mountaineering",
+        "max_results": 8
+      },
+      "id": "call_JnAUCAgrWtY921WE1nJG3f08"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:rei.com learn expert advice backpack capacity weekend 30 50 liters multiday 50 80",
+        "max_results": 5
+      },
+      "id": "call_jhmNKjgExs3d1z16E5asilez"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:rei.com sleeping pad R value ASTM guide official",
+        "max_results": 5
+      },
+      "id": "call_Z9ArzUswRcjZB0CKFolWaI7H"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:nps.gov bear canister food storage camping official",
+        "max_results": 5
+      },
+      "id": "call_eFXMTgw5EvlMGqaAliR7ypkn"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:weather.gov hiking lightning mountain safety official",
+        "max_results": 5
+      },
+      "id": "call_L2suf0XHVlkV3TePr6ZbMUPv"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:leavenotrace.org 7 principles official food waste camping",
+        "max_results": 5
+      },
+      "id": "call_f8sQqNUkDvISfoBpgJP4WRv9"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_8Jf968JKffzJS0Bk4mZZmlKD",
+      "content": "# Ten Essentials (U.S. National Park Service)\n\nArticle\n\n![NPS 10 Essentials Infographic](/articles/images/NPS-10-Essentials-Infographic.png?maxwidth=1300&maxheight=1300&autorotate=false&format=webp \"NPS 10 Essentials Infographic\")\n\nHeading out to a national park? Make sure you pack the 10 Essentials!\n\nThe 10 Essentials are a collection of important items that can help you or others in the event of minor injuries, sudden weather changes, or unexpected emergencies. The 10 Essentials include basic items you should have with you. You may need additional items depending on the activity in which you participate (i.e., life jacket, bug spray, 2-way satellite messaging device). Visit the specific [park's website](https://www.nps.gov/findapark/index.htm) to learn more about the park and make a plan for your activity before you head out. Be sure to tell someone [where you’re going](https://www.nps.gov/articles/gtgtripplan.htm) and when to expect you back.\n\n**THE TEN ESSENTIALS**\n\nThe 10 Essentials are organized into ten categories, or systems1 :\n\n![Photo of a compass and map](/articles/images/Navigation-125x125.jpg?maxwidth=650&autorotate=false \"Navigation\")\n\n**NAVIGATION** **– Map, compass, and GPS system**  \nNavigation items are used when planning your route before your trip, and when orienting yourself in the park during your activity. Know how to use a topographical map, compass or GPS unit before going out. Bring a physical map as a back up. You can also use the NPS app or download a map onto your phone or GPS. Pack an extra battery for your phone.\n\n![Illustration of a hat and sunglasses](/articles/images/Sun-Protection-125x125.jpg?maxwidth=650&autorotate=false \"Sun Protection- Illustration of a hat and sunglasses\")\n\n**SUN PROTECTION** **– Sunglasses, sunscreen, and hat**  \nSun protection is necessary to protect your skin and eyes against harsh UV rays that are responsible for sunburns and skin cancer. Consider using sunglasses, sunscreen, and hats. Sun-protection clothing such as pants and long sleeve shirts can also help minimize your exposure to the sun.\n\n![Illustration of gloves and a jacket](/articles/images/Clothing-125x125.jpg?maxwidth=650&autorotate=false \"Insulation- Illustration of gloves and a jacket\")\n\n**EXTRA CLOTHING – Jacket, hat, gloves, rain shell, and other layers**  \nPrepare for sudden changes in weather conditions. Pack an extra layer of clothing that reflects the most extreme conditions you could encounter. This may include a raincoat, jacket, hat, or gloves. Use bright clothing to make yourself easier to see in case Search and Rescue needs to look for you.\n\n![Illustration of a flashlight and lantern](/articles/images/Illumination-125x125.jpg?maxwidth=650&autorotate=false \"Illumination- Illustration of a flashlight and lantern\")\n\n**ILLUMINATION** **– Flashlight and headlamp**  \nLighting is important in the outdoors at night, and can help you find your way out or signal for help. Items include flashlights, and headlamps. Headlamps are the recommended light source because they are hands-free. Be sure to pack extra batteries.\n\n![Illustration of First-Aid Kit](/articles/images/First-Aid-125x125.jpg?maxwidth=650&autorotate=false \"First-Aid Supplies- Illustration of First-Aid Kit\")\n\n**FIRST-AID SUPPLIES** **– First Aid Kit**  \nPrepare for emergencies by packing first-aid supplies. Start with a pre-made kit and modify it to fit your trip and your medical needs. Check the expiration date on all items and replace them as needed. Include any personal medications you regularly take. Consider including an emergency guide in case you are faced with an unfamiliar medical emergency.\n\n![Illustration of a lighter and pair of matches](/articles/images/Fire-125x125.jpg?maxwidth=650&autorotate=false \"Fire- Illustration of a lighter and pair of matches\")\n\n**FIRE** **– Matches or lighter and fire starters**  \nFire can be an emergency signal and a heat source for cooking and staying warm. Pack matches (preferably waterproof) or a lighter and fire starters - items that catch fire quickly and sustain a flame. Familiarize yourself with the local fire use regulations of your park before heading out. [Learn more about campfires](https://www.nps.gov/articles/campfires.htm).\n\n![Illustration of multi-purpose pocketknife and duct tape](/articles/images/Tools-125x125.jpg?maxwidth=650&autorotate=false \"Repair Kit and Tools- Illustration of multi-purpose pocketknife and duct tape\")\n\n**REPAIR KIT AND TOOLS** **– Duct tape, knife, multi-tool, and scissors**  \nCarry a basic repair kit with you to help repair equipment. Include items like duct tape, knife, and scissors. Pack a multi-tool, a small tool that includes a knife, screwdriver, can opener, etc. A trowel and toilet paper may also be important. Bring any tools specific to your trip and your activity.\n\n![Illustration of an apple and variety of nuts](/articles/images/Food-125x125.jpg?maxwidth=650&autorotate=false \"Nutrition- Illustration of an apple and variety of nuts\")\n\n**NUTRITION** **- Extra Food**  \nBe prepared for the possibility of changes to your trip plans. Pack an extra day's supply of food, preferably no-cook items that have good nutritional value to keep your energy high like salty and easy to digest snacks (e.g. trail mix, nuts, and granola bars). Having extra food can make a big difference for yourself or others if an unexpected situation occurs.\n\n![Water bottle and filter](/articles/images/Water-125x320.jpg?maxwidth=650&autorotate=false \"Hydration3\")\n\n**HYDRATION** **– Water and water treatment supplies**  \nStaying hydrated on your trip is of utmost importance! Physical activity increases your risk of dehydration (loss of water and salts from the body), which can lead to negative health consequences. **If you’re active outdoors (hiking, biking, running, swimming, etc.), especially in hot weather, you should drink water often and before you feel thirsty.** Prepare your water before you need it and do not allow yourself to become dehydrated. Before heading out on your trip, be sure to identify if there are any bodies of water at your destination that you could collect water from and treat using your water treatment supplies. [Learn more about purifying water.](https://www.nps.gov/articles/2wayspurifywater.htm)\n\n![Illustration of a tent](/articles/images/Shelter-125x125.jpg?maxwidth=650&autorotate=false \"Emergency Shelter: Illustration of a tent\")\n\n**EMERGENCY SHELTER** **– Tent, space blanket, tarp, or bivy**  \nShelter is one of the most important elements during an emergency survival situation. It can protect you from severe weather conditions and exposure to the elements. A tent, tarp, bivy sack, or emergency space blanket are all lightweight options for emergency shelter.\n\n1. This system was developed by The Mountaineers, and additional details can be found in the book Mountaineering: The Freedom of the HiIls, 8th Edition, 2010.\n\n**Tags:**\n[safety](https://www.nps.gov/media/article-search.htm#q=safety),\n[planning](https://www.nps.gov/media/article-search.htm#q=Planning),\n[trip planning](https://www.nps.gov/media/article-search.htm#q=trip+planning),\n[10 essentials](https://www.nps.gov/media/article-search.htm#q=10+essentials),\n[ten essentials](https://www.nps.gov/media/article-search.htm#q=Ten+Essentials),\n[know before you go](https://www.nps.gov/media/article-search.htm#q=know+before+you+go),\n[water](https://www.nps.gov/media/article-search.htm#q=water),\n[campfire](https://www.nps.gov/media/article-search.htm#q=campfire),\n[health](https://www.nps.gov/media/article-search.htm#q=health),\n[health and safety](https://www.nps.gov/media/article-search.htm#q=health+and+safety),\n[camping](https://www.nps.gov/media/article-search.htm#q=camping),\n[hike](https://www.nps.gov/media/article-search.htm#q=hike),\n[run](https://www.nps.gov/media/article-search.htm#q=run),\n[wilderness](https://www.nps.gov/media/article-search.htm#q=wilderness),\n[emergency](https://www.nps.gov/media/article-search.htm#q=emergency),\n[leave no trace](https://www.nps.gov/media/article-search.htm#q=Leave+No+Trace),\n[backcountry](https://www.nps.gov/media/article-search.htm#q=backcountry)\n\nLast updated: May 28, 2026",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_jJhuesrUJRYVb1QC0V9bLLLP",
+      "content": "# Backpacking Gear Checklist\n\n*This article is part of our series: [How to Go Backpacking](/learn/series/intro-to-backpacking)*\n\n![Illustration of items in a backpacking checklist](https://www.rei.com/dam/backpacking_checklist_final_lg.jpg)\n\nHitting the trail with nothing more than life's necessities on your back is the quintessential outdoor adventure. It’s also a self-reliant pursuit: You’ll be carrying everything you need—from food and water to shelter and a sleep system—in a backpack. Forgetting an essential item, like toilet paper or cooking fuel, isn’t an option. \n\nTo help streamline your packing, we put together this gear checklist for your next backpacking adventure, complete with guidance on selecting the right items for your outing. The list is comprehensive, so we don’t expect you to pack every item (unless it's one of the [\"Ten Essentials\"](/learn/expert-advice/ten-essentials.html)). Instead, think of it as a gear menu you can tailor to your specific trek.   \n\nFor quick recommendations, click below, or keep scrolling for more information.\n\n* [Backpacking Gear](#backpacking-gear)\n\n  + [Essential Items](#essential-items)\n  + [Optional Items](#optional-items)\n* [Cookware and Drinking Water](#cookware-water)\n\n  + [Cooking System](#cooking-system)\n  + [Food Storage and Disposal](#food-storage-disposal)\n  + [Water System](#water-system)\n* [Clothing and Footwear](#clothing-footwear)\n\n  + [For the Trail](#trail-clothing-footwear)\n  + [For the Backcountry Campsite](#campsite-clothing-footwear)\n  + [For Rain or Cold Weather](#rain-cold-clothing-footwear)\n* [Navigation System](#navigation-system)\n* [Hygiene and Toiletries](#hygiene-toiletries)\n\n  + [Essential Items](#essential-hygiene-toiletries)\n  + [Sun and Bug Protection](#sun-bug-protection)\n  + [Optional Items](#optional-hygiene-toiletries)\n\n* [First Aid and Emergency](#first-aid)\n* [Miscellaneous](#miscellaneous)\n\n[Backpacking Checklist — Printer-Friendly Version (PDF)](/dam/backpacking_checklist_printable.pdf)\n\nBackpacking Gear\n----------------\n\n![](https://www.rei.com/dam/1443776_harnois_102617_1311_web_xs.jpeg)\n\nYour pack, sleep system and shelter are the most important items in your kit. They’re also the biggest investments and can make or break how comfortable and efficient your backpacking trip feels. Below, we offer tips for choosing the right option for your adventure. Scroll to the end of the section for in-depth articles with additional guidance.  \n\n### Essential Items\n\n* **Backpack:** Most [backpacking packs](/c/backpacking-packs) are between 45 and 80 liters. The capacity you choose will depend on the amount and the type of gear you pack as well as trip duration.\n* **Shelter:** There are five main options, and choosing the right one for you depends on budget, weather conditions, comfort level and personal preferences, like how much weight you want to carry.  \n\n  + [**Tent**](/c/backpacking-tents)**:** This is the most common choice among backpackers. Tents offer the most coverage and privacy of all shelter options. If you choose a tent, don’t forget to bring [tent stakes](/c/tent-stakes).\n  + [**Tarp**](/c/tarps)**:** These minimalist shelters have no floor but provide some coverage from rain.\n  + [**Bivouac (bivy) sack**](/c/bivy-sacks)**:** These lightweight bags offer a breathable barrier for your sleeping bag.\n  + [**Bug shelter**](/c/bug-shelters)**:** Most consist of netting and poles but no floor.\n  + [**Ultralight hammock**](/c/hammocks)**:** Pair with a [bug net or rainfly](/c/hammock-accessories) for extra protection.\n* [**Sleeping bag**](/c/backpacking-sleeping-bags)**:** Down-filled bags are lighter and more compressible than synthetic options.\n\n  + **Sleeping quilt:** This is a lighter alternative to a sleeping bag that provides only a top layer.\n* **Sleeping pad:** [Closed-cell foam pads](/c/closed-cell-foam-pads) are typically the lightest option, followed by [air pads](/c/air-pads).\n* [**Headlamp**](/c/headlamps) **(and** [**batteries**](/c/batteries)**, if needed):** Choose one with a red light to preserve night vision for stargazing.\n\n### Optional Items\n\n* [**Trekking poles**](/c/trekking-poles)**:** Fixed poles (those without adjustment points) are lighter, but adjustable options provide versatility on long trails with uphill and downhill sections.\n* [**Tent footprint**](/c/tent-footprints)**:** A footprint adds weight and takes up space in your pack, but it can extend the life of your tent by protecting it from twigs, rocks and other debris.\n* [**Pillow**](/c/camp-pillows)**:** Comfortable sleep may be worth the extra couple ounces.\n* [**Hammock**](/c/hammocks)**:** Pair with a [bug net or rainfly](/c/hammock-accessories) for extra protection.\n* [**Sleeping bag liners**](/c/sleeping-bag-liners)**:** These can boost a bag’s temperature rating and protect it from dirt and skin oils.\n* [**Clothesline with clips**](/c/clotheslines)**:** Perfect for drying damp clothes or swimwear.\n* [**Backpacking chair**](/c/camp-chairs)**:** This adds extra weight and heft, but it provides comfort after long miles. A stool version is the lightest and simplest option.\n* [**Bear spray**](/c/bear-spray)**:** Some national parks require bear spray. Check local regulations. (See also: [Bear canister](#food-storage-disposal))\n\nCookware and Drinking Water\n---------------------------\n\n![](https://www.rei.com/dam/harnois_041918_6905_extra_food.jpg)\n\nYou’ll need these items on the trail to make a hot meal and filter/purify your water, but you may decide to bring more or fewer items depending on your approach to cooking and cleaning up in the backcountry. For instance, some backpackers bring [dehydrated meals](/c/backpacking-food) and [instant coffee](/c/hot-drinks) to simplify mealtimes and minimize pack weight. Others may choose to prep their own meals and brew morning coffee in a [portable French press](/c/coffee-presses).  \n\nDepending on where you're backpacking, you may also need to bring a mesh strainer to dispose of water used for washing up. Read up on [Leave No Trace principles](/learn/expert-advice/leave-no-trace.html) and any site-specific rules before heading out.  \n\n### Cooking System\n\n* [**Backpacking stove**](/c/backpacking-stoves) **and** [**fuel**](/c/stove-fuel)**:** Tablet and alcohol stoves are often the lightest options. If you’re not counting grams, lightweight canister stoves are easier to use and require less maintenance. Learn more: [How to Choose a Backpacking Stove](/learn/expert-advice/backpacking-stove.html)\n* [**Matches/lighter/firestarter**](/c/fire-starting-gear)**:** Bring at least two methods for starting a fire in case one fails.\n* [**Mug**](/c/mugs) **and/or** [**pot**](/c/pots)**:** Save weight and space in your pack by choosing a pot that can double as a mug.\n* [**Eating utensils**](/c/eating-utensils)**:** A simple, lightweight spork is typically all you need.\n* **Dish scrubber:** You can buy a full-size sponge at the store and cut it in half to save space (and give the other half to a backcountry friend).\n* [**Biodegradable soap**](/c/camping-soap)**:** You can use this to clean your dishes and wash your hands.\n* [**Portable coffee maker**](/c/coffee-and-tea)**:** [Coffee presses](/c/coffee-presses) and [pour-over setups](/c/drip-coffee-makers) are typically the lightest and most compact options for backpacking.\n\n* [**Coffee or tea**](/c/hot-drinks)**:** Don’t forget your coffee grounds or tea bags.\n* **Food for** [**meals**](/c/backpacking-food) **and** [**snacks**](/c/snacks)**:** Dehydrated dinners, packaged meats (like tuna or chicken), dry-cured protein (like jerky or hard salami) and snacks that are fine being smooshed in a pack (like tortillas with soft cheese) are all great options. Learn more: [Backpacking Food Ideas and Meal Planning](/learn/expert-advice/planning-menu.html)\n\n### Food Storage and Disposal\n\n* [**Food bag**](/c/storage-sacks)**:** Odor-proof options can help protect your food from bears and other animals. You can [tie them to a tree limb](https://lnt.org/hanging-a-bear-bag/) to keep them out of reach.\n* [**Bear bag/bear canister**](/c/bear-resistant-food-containers) **(if required):** Food bags don't always cut it. [Modular bear canisters](/product/246158/rei-co-op-traverse-modular-bear-canister) are compact and can double as storage in your pack. Some parks require them, so check local regulations.\n* **Trash bag:** Bring a trash bag from home to pack out waste.\n* **Mesh strainer:** Use this to strain food particles from your gray water.\n\n### Water System\n\n* [**Water filtration system**](/c/portable-water-treatment)**:** Choose among [pump](/c/pump-water-filters), [gravity](/c/gravity-water-filters), [squeeze or](/c/straw-water-filters) [straw-style](/c/straw-water-filters) filters. Squeeze and straw-style options will be the lightest. Pump and gravity versions are convenient but are heavier and more expensive.\n* [**Purification drops or tablets**](/c/chemical-water-treatment)**:** Alternatively, you can bring drops or tablets to purify water. Keep the tablets in a bag instead of their container to save weight and space (unless their directions say otherwise).\n* [**Water reservoir**](/c/hydration-reservoirs) **or** [**bottles**](/c/water-bottles)**:** A water reservoir allows hands-free hydration while on the trail, but lightweight or collapsible bottles are also solid options.\n* [**Electrolytes**](/c/sport-drinks)**:** Consider bringing electrolyte packets or gels for long, sweaty miles.\n\nClothing and Footwear\n---------------------\n\n![](https://www.rei.com/dam/26142508_kingman_20260528_1333_web_xs.jpeg)\n\nThe clothing you bring will depend on the weather, trip duration, location and personal preferences. Read [What to Wear Backpacking](/learn/expert-advice/backpacking-clothes.html) for tips on what to consider.\n\n### For the Trail\n\n* [**Boots**](/c/hiking-boots) **or** [**hiking/trail-running shoes**](/c/hiking-shoes)**:** Hiking and trail-running shoes are typically the lightest options. Boots offer ankle support but are heavier.\n* [**T-shirt**](/c/t-shirts) **or** [**base layer**](/c/base-layers)**:** Wool is resistant to odor-causing bacteria, making it a solid option for multiday trips.\n* [**Hiking or running shorts**](/c/shorts)**:** Look for options made with breathable, durable, quick-drying fabrics. Options with a flat waistband will feel most comfortable under your hip belt.\n\n* [**Hiking pants**](/c/hiking-pants)**:** [Convertible versions](https://www.rei.com/c/convertible-pants) provide versatility for stream crossings, chilly mornings, warm afternoons and more.\n* [**Underwear**](/c/underwear)**:** Avoid cotton. Instead, choose moisture-wicking materials, like wool or polyester.\n* [**Sports bra**](/c/sports-bras)**:** Select a breathable option with a soft band that will feel comfortable beneath a pack.\n* [**Socks**](/c/socks)**:** Socks with padding can make long miles feel a little easier on your feet.\n* [**Sun-protective hat**](/c/hats-and-headwear)**:** Consider a cap made with UPF-rated fabric and a wide brim.\n* [**Sun sleeves**](/c/sun-protective-accessories) **(opt.):** These provide extra sun protection and are easy to take on and off throughout your hike.\n* [**Bandana**](/c/bandanas)**:** Wear it around your neck for sun protection, tie it on your pack to add trail flair or dip it in a stream for a quick cool-down.\n* [**Water sandals**](/c/water-shoes)**:** Wear these through river crossings to keep your hiking boots or runners dry. Wet shoes can cause chafing.\n\n### For the Backcountry Campsite\n\n* [**Long-underwear top**](/c/base-layer-tops) **for sleep:** These come in multiple weights (lightweight, midweight and heavyweight) as well as different materials (silk, synthetic and wool).\n* [**Long-underwear bottoms**](/c/base-layer-bottoms) **for sleep:** For multiday treks, consider a wool layer. Wool naturally resists odor-causing bacteria.\n* [**Warm hat**](/c/beanies)**:** Temps often drop once the sun sets. Consider a beanie to",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_4pzA8exDuconGaHaeEUqCGX8",
+      "content": "# Understanding Sleeping Bag Temperature Ratings\n\n![A woman peeking out of a bright-orange sleeping bag](https://www.rei.com/dam/up_2018-12-vagnini_181015_0485_iso_en.jpg)\n\nBecause waking up in your tent shivering in the middle of the night is a miserable experience, the key factor when you choose a sleeping bag is its temperature rating. If you have a reasonable idea of the coldest conditions you anticipate on your adventure, you can pick a bag that will keep you warm at or below that temperature.\n\nSleeping bag temperature ratings, however, are a somewhat complicated subject. To understand them better, it helps to understand how the bags are tested for warmth in the lab (including some of the limitations in the process), and the meaning of some not-so-intuitive terms you'll see in bag temperature ratings.\n\nHere are important things to understand when using temperature ratings to shop for a sleeping bag:\n\n* Lab-tested temperature ratings (as indicated by \"EN\" or \"ISO\" ratings) are useful for making an apples-to-apples comparison between sleeping bags from different brands.\n* Real-world comfort probably won't match lab-tested temperature ratings because of all the variables that a lab can't simulate.\n\n**How Sleeping Bags are Tested**\n--------------------------------\n\nIn the old days, brands tested sleeping bags in their own labs using a variety of methods, so there was no way to know if one company's 30-degree bag was truly just as warm as another's 30-degree bag.\n\nThe bag industry solved this problem by agreeing to test bags the same way for all brands. Today most brands send their sleeping bags to an independent test lab that assigns bag temperature ratings.\n\nEN (European Norm), was the original standard adopted by the sleeping bag industry. Today, a new entity, the ISO (International Standards Organization), oversees bag testing, but the method is almost identical to the EN bag test. (Because ISO testing is so similar to EN testing, you can compare your old EN-rated bag to a newer bag that sports an ISO temperature rating when you shop.)\n\nStandardized laboratory tests produce a rating range for each sleeping bag, with two temperature ratings within that range specifically called out:\n\n* **Comfort rating** indicates the temperature at which a cold sleeper might feel comfortable. This is the temperature rating brands use on women's bags.\n* **Lower limit rating** (which is always lower than the comfort rating) indicates the temperature at which a warm sleeper might still feel comfortable. This is the temperature rating brands use on men's bags.\n\n![A sleeping bag label with details about the comfort and lower-limit ratings](https://www.rei.com/dam/up_2018-12-van_dragt_120418_0004_iso_en.jpg)\n\n**Fun Facts About Sleeping Bag Temperature Ratings**\n----------------------------------------------------\n\n**Temperature ratings are estimates, not gospel:** Lab testing simulates how a sleeping bag should be used: A sleeping pad is placed under the bag, and a test dummy inside the bag is dressed in base layers. While this protocol ensures that all bag tests are done the same way, it can't account for variations like differences in people's clothing and gear (i.e. sleeping pads), differences in body types (warm and cold sleepers), changing weather conditions, differences in food people eat and more. So, when you use your sleeping bag in the outdoors, its comfort level will probably differ from its tested temperature rating.\n\n**Numbers on bag names don't match exact temperature ratings:** The Men's \"Snugglebuggle\" 15 Bag, for example, might actually have an ISO lower limit rating of 18 degrees Fahrenheit. For simplicity, in the bag's name, a brand will round up or down to a number that ends in a 0 or a 5, and there are no rules about whether they round up or round down. So always look at the actual test rating on a bag, not merely the number in its name.\n\n**Why women's sleeping bags use the comfort rating**: Data on physiological differences between traditional genders has always shown that the \"average woman\" will feel colder in the same bag than the \"average man\" will feel. So, the comfort rating, which is the temperature for colder sleepers, was the logical spec target for women's bags, and brands continue to use the comfort rating on women's bags today.\n\n**At a given temperature, most women's bags weigh more than men's bags.** This is the result of using the comfort rating test result for women's bags. It takes more insulation to ensure one bag's comfort rating matches another bag's lower limit rating. If you tend to be warm when you sleep, you can avoid unwanted ounces by looking at the lower limit ratings when selecting a bag.\n\n**Not every sleeping bag has an ISO (or EN) rating:** The test standard isn't valid for bags designed for extreme cold, nor does it apply to kids' bags. And brands might not choose to get ISO testing on bags intended for mild conditions or casual use. Whenever you see a \"temperature rating\" spec that's not stated as either \"comfort\" or \"lower limit,\" that bag spec probably reflects the brand's estimate, not an ISO or EN test. Use that spec as a rough guideline, not a rating you can absolutely compare to similar bags from other brands.\n\n**Going Beyond Temperature Ratings When You Shop**\n--------------------------------------------------\n\nThere's more to a sleeping bag than simply its temperature rating. To learn the rest of the story, read [How to Choose Sleeping Bags for Backpacking](/learn/expert-advice/sleeping-bag-backpacking.html) or [How to Choose Sleeping Bags for Camping](/learn/expert-advice/sleeping-bag.html). When you're ready to shop, REI.com offers a big selection of both [backpacking sleeping bags](/c/backpacking-sleeping-bags) and [camping sleeping bags](/c/camping-sleeping-bags).\n\n[Read More: The Best Sleeping Bags for Camping](/blog/camp/the-best-sleeping-bags-for-camping)\n\n---\n\nAuthors\n-------\n\n![Photo of Ken Knapp](https://www.rei.com/dam/21775045_ea_kenknapp_web_lg.jpeg)\n\n[Ken Knapp](/learn/expert-advice/bio/ken-knapp.html)\n\n*REI Editor Emeritus Ken Knapp became a member in 1977 and went on to work for more than 36 years at the co-op. A father of daughters (thriving) and monitor of marmots (threatened), Ken is also a big fan of sustainability and sharing the ball.*\n\n---\n\n [Back to top](#container)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_XTPB26IwKIsBKJwaAhu3rZ9B",
+      "content": "# About Water Treatment Options When Hiking, Camping, or Traveling\n\n* If you are not sure whether the water you are using is safe to drink, treat it to remove germs.\n* Boiling is the best way to kill germs in water.\n* The next best option is to filter water and then disinfect the filtered water.\n\n![Sitting hiker looking out over mountains and water. Next to the hiker are a mug, small kettle boiling over a gas burner, and a backpack.](/drinking-water/media/images/2024/03/GettyImages-1635513061-16x9-1.jpg)\n\nOverview\n--------\n\nYou may not always know if the water you are using is safe to drink, especially when hiking, camping, or traveling.\n\nIn these cases, boil your water or use other treatment methods to remove germs before using the water.\n\n[![thumbnail-water-treatment-traveling](/drinking-water/media/images/2025/06/Thumbnail-Water_Treatment.jpg)](/drinking-water/media/pdfs/Backcountry_Water_Treatment-508.pdf \"Water treatment while hiking, camping, and traveling\")\n\nIf you are not sure if water is safe to drink, boil it or use another method to remove germs.\n\nExposure\n--------\n\nGerms from human or animal poop can get into water, such as lakes, rivers, or streams. You can get sick from swallowing water that has not been treated to remove germs. For example, you can get sick by using it to:\n\n* Drink\n* Cook\n* Wash fruits and vegetables\n* Make ice or drinks\n* Brush your teeth\n\nIn places without sanitation and water treatment infrastructure, water is more likely to have germs that can make you sick. These places can include:\n\n* Campgrounds\n* Hiking areas\n* Remote areas\n* Locations within and outside the United States where water is not treated\n\n### Clear water can be unsafe\n\nWater containing germs that can make you sick—including bacteria, viruses, and parasites—sometimes looks clean. Drinking water straight from a clear mountain stream is generally **not** safe, for example.\n\nWho is at risk\n--------------\n\n**Anyone can get sick** from drinking unsafe water.\n\nThose at higher risk of getting sick include:\n\n* Children\n* Pregnant women\n* People 65 years or older\n* People with a weakened immune system\n\nSymptoms\n--------\n\nCommon symptoms caused by drinking unsafe water when hiking, camping, or traveling include:\n\n* Diarrhea\n* Vomitting\n* Stomach pain\n\nPrevention steps and strategies\n-------------------------------\n\nTreating your water, burying your poop if toilets are not available, and washing your hands can help you avoid getting and spreading germs.\n\n### Treat your water\n\nBoiling water is the best way to kill germs that could make you sick. The next best option is to filter water and then disinfect the filtered water.\n\n**Follow the instructions** on any products you use to make sure they work properly to remove germs.\n\n### Do not drink water contaminated with harmful chemicals\n\nYou cannot make water containing harmful chemicals, toxins, or radioactive materials safe by boiling or disinfecting it. Use bottled water or a different source of water instead.\n\n#### Boil\n\n![Illustration of a pot of water boiling over a gas stove](/drinking-water/media/images/2024/03/Boil-water-icon-16x9-1.jpg)\n\nBoiling kills all types of germs, including viruses, bacteria, and parasites (like *Cryptosporidium* and *Giardia*).\n\nTo kill germs, bring clear water to a rolling boil for 1 minute. At elevations above 6,500 feet, boil for 3 minutes. To avoid burns, allow the water to cool before using it.\n\nWhen traveling to places with electricity, consider bringing a small heating coil or beverage warmer to boil water.\n\n#### Filter\n\n![Illustration of water with germs in it moving from a glass, through a portable water filter that removes the germs, and being deposited into another glass filled with clear, clean water](/drinking-water/media/images/2024/03/Portable-filter-icon-16x9-1.jpg)\n\nMost portable water filters will remove parasites, but not viruses or bacteria.\n\nA filter labeled with either of the following will remove parasites, but not viruses or all bacteria:\n\n* Absolute pore (hole) size of 1 micron or smaller\n* Certified for NSF standards 53 or 58 for cyst reduction or removal\n\nA filter with an absolute pore (hole) size of 0.3 micron or smaller will remove bacteria and parasites, but not viruses.\n\nReverse osmosis filters remove parasites, bacteria, and viruses. They also remove salt from water.\n\n#### Disinfect\n\n![Illustration of a dropper bottle containing chlorine dioxide and chemical disinfection tablets for water](/drinking-water/media/images/2024/03/Chlorine-dioxide-icon-16x9-1.jpg)\n\nChemical disinfectants kill viruses and bacteria, but may not kill parasites.\n\nYou can kill bacteria and viruses in water using disinfectants such as [unscented household chlorine bleach](/water-emergency/about/index.html#cdc_health_safety_special_topic_types-disinfect), iodine, or chlorine dioxide tablets.\n\n**Filter water before disinfecting it**. Chlorine bleach and iodine kill bacteria and viruses but do not work well to kill parasites. Chlorine dioxide tablets can kill the parasite *[Giardia](/giardia/about/index.html)* and are somewhat effective at killing *[Cryptosporidium](/cryptosporidium/about/index.html)*. However, it is still safest to filter the water first to remove these parasites.\n\n### Who should avoid water disinfected with iodine‎\n\nIf you are pregnant, have thyroid problems, or have a hypersensitivity to iodine, avoid drinking water disinfected with iodine. No one should drink water disinfected with iodine for more than a few weeks at a time.\n\n#### Using UV light\n\n![Illustration of the wand of a portable UV light unit in a glass of clear water](/drinking-water/media/images/2024/03/UV-light-icon-16x9-1.jpg)\n\nFilter water before using UV light to disinfect it.\n\nPortable units that deliver ultraviolet (UV) light can kill parasites, bacteria, and viruses in small amounts of clear water.\n\nFilter water before using UV light. UV light does not work well in cloudy water because small particles can block germs from the light.\n\n#### Using MIOX® systems\n\nMIOX® systems use a salt solution to create a mix of chemicals, primarily chlorine. Chlorine kills viruses and bacteria but does not work well to kill parasites.\n\n### Bury your poop\n\nIf you are in a remote area without toilets, bury your poop to keep it from getting into water. Aim to bury your poop deep in the soil, at least 8 inches, and at least 200 feet away from lakes, rivers, and other natural waters. Make sure to bury poop downstream from where you or others collect water.\n\n### Wash your hands\n\n[Wash your hands](/clean-hands/about/index.html) before handling food, eating, and after using the toilet. If soap and water are not available, [use a hand sanitizer that contains at least 60% alcohol](/clean-hands/about/hand-sanitizer.html).\n\nResources\n---------\n\n* [How to Make Water Safe in an Emergency](/water-emergency/about/index.html)\n* [Food and Drink Considerations When Traveling](https://wwwnc.cdc.gov/travel/page/food-water-safety)\n* [Avoid Contaminated Water During Travel](https://wwwnc.cdc.gov/travel/page/water-disinfection)\n* [Water Disinfection | CDC Yellow Book](/yellow-book/hcp/preparing-international-travelers/water-disinfection-for-travelers.html)\n\nJan. 30, 2025",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_JnAUCAgrWtY921WE1nJG3f08",
+      "content": "{\n  \"query\": \"site:theuiaa.org equipment standards helmet ice axe crampons UIAA official mountaineering\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_jhmNKjgExs3d1z16E5asilez",
+      "content": "{\n  \"query\": \"site:rei.com learn expert advice backpack capacity weekend 30 50 liters multiday 50 80\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_Z9ArzUswRcjZB0CKFolWaI7H",
+      "content": "{\n  \"query\": \"site:rei.com sleeping pad R value ASTM guide official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_eFXMTgw5EvlMGqaAliR7ypkn",
+      "content": "{\n  \"query\": \"site:nps.gov bear canister food storage camping official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_L2suf0XHVlkV3TePr6ZbMUPv",
+      "content": "{\n  \"query\": \"site:weather.gov hiking lightning mountain safety official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_f8sQqNUkDvISfoBpgJP4WRv9",
+      "content": "{\n  \"query\": \"site:leavenotrace.org 7 principles official food waste camping\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "REI how to choose backpack fit torso hipbelt capacity official 2026",
+        "max_results": 5
+      },
+      "id": "call_GQKMD8Vx7bk9hGTJCqPUdNto"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "REI how to choose backpacking tent 3 season 4 season official",
+        "max_results": 5
+      },
+      "id": "call_V15xavleva7Tr17aGDpaSytp"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "REI how to choose hiking boots fit trail runners boots official",
+        "max_results": 5
+      },
+      "id": "call_zNw14Pf6UP4s5NO1sOhME0yj"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "REI sleeping pad R value ASTM official guide",
+        "max_results": 5
+      },
+      "id": "call_yGpXEcaWuZ3nLU7e0kbhWDjd"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Wilderness Medical Society first aid kit hiking recommendations official",
+        "max_results": 5
+      },
+      "id": "call_7wi7qewk46AU2HLyFPrp3Yqj"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Garmin inReach emergency satellite messenger subscription SOS official",
+        "max_results": 5
+      },
+      "id": "call_dfTi0WFiDpFptYYgfe3pTnXz"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NOAA lightning hiking mountains turn around official thunder 30 minutes",
+        "max_results": 5
+      },
+      "id": "call_eY9JqTN4TOsvozHXT38yPSN8"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "CDC high altitude illness acclimatization hiking official",
+        "max_results": 5
+      },
+      "id": "call_8pPwAixemMNeKf2ZlHg08Lue"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "UIAA safety standards climbing equipment helmets harness ice axes crampons official",
+        "max_results": 8
+      },
+      "id": "call_m1rYUhcADLQt0luAwJYJdEqy"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "American Alpine Institute mountaineering equipment list beginner glacier official",
+        "max_results": 5
+      },
+      "id": "call_G2kxdVvcOGdhbq1pDgdyuza9"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_GQKMD8Vx7bk9hGTJCqPUdNto",
+      "content": "{\n  \"query\": \"REI how to choose backpack fit torso hipbelt capacity official 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_V15xavleva7Tr17aGDpaSytp",
+      "content": "{\n  \"query\": \"REI how to choose backpacking tent 3 season 4 season official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_zNw14Pf6UP4s5NO1sOhME0yj",
+      "content": "{\n  \"query\": \"REI how to choose hiking boots fit trail runners boots official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_yGpXEcaWuZ3nLU7e0kbhWDjd",
+      "content": "{\n  \"query\": \"REI sleeping pad R value ASTM official guide\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_7wi7qewk46AU2HLyFPrp3Yqj",
+      "content": "{\n  \"query\": \"Wilderness Medical Society first aid kit hiking recommendations official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_dfTi0WFiDpFptYYgfe3pTnXz",
+      "content": "{\n  \"query\": \"Garmin inReach emergency satellite messenger subscription SOS official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_eY9JqTN4TOsvozHXT38yPSN8",
+      "content": "{\n  \"query\": \"NOAA lightning hiking mountains turn around official thunder 30 minutes\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_8pPwAixemMNeKf2ZlHg08Lue",
+      "content": "{\n  \"query\": \"CDC high altitude illness acclimatization hiking official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_m1rYUhcADLQt0luAwJYJdEqy",
+      "content": "{\n  \"query\": \"UIAA safety standards climbing equipment helmets harness ice axes crampons official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_G2kxdVvcOGdhbq1pDgdyuza9",
+      "content": "{\n  \"query\": \"American Alpine Institute mountaineering equipment list beginner glacier official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Osprey Rook 65 official specifications price",
+        "max_results": 5
+      },
+      "id": "call_FRvk8CPpIWzS1JI7VWqF29Wo"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "REI Co-op Trailmade 60 pack official price specifications",
+        "max_results": 5
+      },
+      "id": "call_Q5sCWh6XecvYhUtf6o4vxp8H"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Decathlon Forclaz MT500 Air 50+10 backpack price specifications",
+        "max_results": 5
+      },
+      "id": "call_yaTOrzV3V9uB1AmAbt24OhiA"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "MSR Elixir 2 tent official price weight",
+        "max_results": 5
+      },
+      "id": "call_1AoRCOSKkvgQA5ztvyWkXsyJ"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "REI Half Dome 2 Plus tent official weight price 2026",
+        "max_results": 5
+      },
+      "id": "call_fLCwMCclj6boCBhDYK8ey1J2"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Naturehike Cloud Up 2 official price weight waterproof",
+        "max_results": 5
+      },
+      "id": "call_wrlThc4uxV3bZdeUqjFL5kna"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Sawyer Squeeze official filter removes bacteria protozoa specifications",
+        "max_results": 5
+      },
+      "id": "call_FuObHqlca60dNknLp4QfZJ3s"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Katadyn BeFree official filter specifications price",
+        "max_results": 5
+      },
+      "id": "call_tmLwstRtkKcF5TpT3SgKI84v"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Black Diamond Spot 400 headlamp official waterproof price",
+        "max_results": 5
+      },
+      "id": "call_5WdQlUnqvWuXF4FbTXMw9JPj"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Petzl Actik Core official lumens IPX price",
+        "max_results": 5
+      },
+      "id": "call_WpflF72uAUPI4moPDycR71Al"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_FRvk8CPpIWzS1JI7VWqF29Wo",
+      "content": "{\n  \"query\": \"Osprey Rook 65 official specifications price\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_Q5sCWh6XecvYhUtf6o4vxp8H",
+      "content": "{\n  \"query\": \"REI Co-op Trailmade 60 pack official price specifications\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_yaTOrzV3V9uB1AmAbt24OhiA",
+      "content": "{\n  \"query\": \"Decathlon Forclaz MT500 Air 50+10 backpack price specifications\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_1AoRCOSKkvgQA5ztvyWkXsyJ",
+      "content": "{\n  \"query\": \"MSR Elixir 2 tent official price weight\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_fLCwMCclj6boCBhDYK8ey1J2",
+      "content": "{\n  \"query\": \"REI Half Dome 2 Plus tent official weight price 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_wrlThc4uxV3bZdeUqjFL5kna",
+      "content": "{\n  \"query\": \"Naturehike Cloud Up 2 official price weight waterproof\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_FuObHqlca60dNknLp4QfZJ3s",
+      "content": "{\n  \"query\": \"Sawyer Squeeze official filter removes bacteria protozoa specifications\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_tmLwstRtkKcF5TpT3SgKI84v",
+      "content": "{\n  \"query\": \"Katadyn BeFree official filter specifications price\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_5WdQlUnqvWuXF4FbTXMw9JPj",
+      "content": "{\n  \"query\": \"Black Diamond Spot 400 headlamp official waterproof price\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_WpflF72uAUPI4moPDycR71Al",
+      "content": "{\n  \"query\": \"Petzl Actik Core official lumens IPX price\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    }
+  ],
+  "final_text": "## Recommended approach\n\nI’m assuming **summer, three-season use**, including day hikes and 1–3-night backpacking trips, with possible rain, wind, nighttime temperatures near freezing, and occasional introductory mountaineering on snow. Technical mountaineering—glaciers, exposed scrambling, rope work, avalanche terrain, or sustained snow/ice—is a separate risk category: take a course or travel with a qualified guide, and rent specialized equipment before buying it.\n\nThe National Park Service’s Ten Essentials provide the baseline: navigation, sun protection, extra clothing, illumination, first aid, fire, repair tools, extra food, water treatment, and emergency shelter. These should accompany you even on day hikes, adjusted for the route and conditions. [citation:NPS Ten Essentials](https://www.nps.gov/articles/10essentials.htm)\n\n---\n\n# 1. Core carrying system\n\n## Backpack\n\n### Overnight and backpacking pack\n- [ ] **55–65 L internal-frame backpack**\n- [ ] Adjustable torso length\n- [ ] Supportive, well-padded hip belt\n- [ ] Load lifters and sternum strap\n- [ ] Side compression straps\n- [ ] Large external stretch pocket\n- [ ] Accessible water-bottle pockets\n- [ ] Rain cover or waterproof pack liner\n- [ ] Hip-belt pockets for snacks, phone, and sunscreen\n\nA pack in this range accommodates a normal three-season shelter, sleeping system, food, water, and extra clothing without encouraging excessive packing. Backpacking packs commonly span approximately 45–80 L; capacity should reflect trip duration and how compact the rest of your equipment is. [citation:REI Backpacking Gear Checklist](https://www.rei.com/learn/expert-advice/backpacking-checklist.html)\n\n**Fit matters more than brand.** Have the pack fitted to your torso—not your overall height—and try it with approximately the weight you expect to carry. Walk around for at least 15–20 minutes and check for pressure on your shoulders, hips, and lower back.\n\n### Daypack\n- [ ] **20–30 L daypack** for ordinary hikes\n- [ ] **30–40 L pack** for long mountain days, winter-like conditions, or carrying technical equipment\n\nYou do not need to buy the daypack immediately. A well-compressible overnight pack can serve initially, although it will be heavier.\n\n### Brand shortlist\n\n| Budget level | Suitable brands |\n|---|---|\n| Value | Decathlon/Forclaz, Kelty, REI Co-op |\n| Balanced | Osprey, Gregory, Deuter |\n| Premium/lightweight | Mystery Ranch, Granite Gear, Hyperlite Mountain Gear |\n\n**Best beginner strategy:** try comparable 55–65 L models from Osprey, Gregory, Deuter, REI, and Forclaz, then choose by fit rather than minor weight differences.\n\n---\n\n# 2. Clothing and weather protection\n\nUse a modular layering system rather than one heavy jacket.\n\n## Base layers\n- [ ] 1–2 synthetic or merino short-sleeve shirts\n- [ ] Lightweight long-sleeve sun shirt\n- [ ] Synthetic or merino underwear\n- [ ] Lightweight long-underwear top and bottom for cold evenings and sleeping\n- [ ] 2–3 pairs of wool/synthetic hiking socks\n- [ ] One dry pair of socks reserved for camp and sleeping\n\nAvoid cotton for cold, wet, or remote trips because it dries slowly. Quick-drying polyester or merino is more versatile.\n\n## Midlayer and insulation\n- [ ] Lightweight grid fleece or fleece jacket\n- [ ] Hooded synthetic or down insulated jacket\n- [ ] Warm hat\n- [ ] Light gloves\n- [ ] Optional waterproof over-mitts for exposed mountain conditions\n\n**Down versus synthetic:**\n- Down is lighter and more compressible but must be protected from moisture.\n- Synthetic insulation is bulkier but is generally more forgiving in persistently wet conditions.\n\n## Waterproof shell\n- [ ] Waterproof, hooded rain jacket\n- [ ] Full or partial-zip waterproof rain pants\n- [ ] Brimmed rain or sun hat\n- [ ] Waterproof pack liner or heavy-duty trash-compactor bag\n- [ ] Dry bags for sleeping bag, spare clothing, and electronics\n\nLook for:\n- Adjustable hood that moves with your head\n- Pit zips or other ventilation\n- Durable face fabric\n- Sealed seams\n- Cuffs and hem that can be closed in wind\n- Enough space to fit over your fleece and insulated jacket\n\nA “water-resistant” windbreaker is not a substitute for a waterproof shell in sustained rain.\n\n### Brand shortlist\n\n| Category | Value | Balanced | Premium |\n|---|---|---|---|\n| Rain shells | Decathlon, Marmot, Columbia | Outdoor Research, Patagonia, Rab | Arc’teryx, Norrona |\n| Fleece/base layers | Decathlon, Uniqlo synthetic, Columbia | Smartwool, Icebreaker, Patagonia | Arc’teryx, Norrona |\n| Insulated jackets | Decathlon, REI Co-op | Rab, Patagonia, Outdoor Research | Arc’teryx, Feathered Friends |\n\n---\n\n# 3. Footwear and foot care\n\n## General hiking\n\nChoose based on terrain and load:\n\n### Trail shoes\nBest for maintained trails, warm conditions, light loads, and hikers who prefer low weight.\n\n### Hiking shoes or mid-height boots\nBetter for rocky trails, mud, off-trail travel, heavier loads, and beginners who want more protection.\n\n### Stiffer mountaineering boots\nRequired when using certain crampons or spending substantial time on snow and ice. These are usually uncomfortable and unnecessarily heavy for ordinary summer hiking.\n\n- [ ] Hiking shoes or boots with a secure heel\n- [ ] Approximately a thumb’s width of toe room\n- [ ] Outsole with substantial lugs\n- [ ] Wool/synthetic socks\n- [ ] Optional thin liner socks\n- [ ] Lightweight gaiters for debris and mud\n- [ ] Waterproof gaiters for snow\n- [ ] Blister supplies\n- [ ] Camp sandals or light camp shoes, optional\n\nTry footwear late in the day when your feet are slightly swollen, wearing the socks you plan to use. Walk downhill on an incline: your toes should not hit the front, and your heel should not lift excessively. Waterproof footwear helps in snow, wet grass, and shallow mud but can feel hot and dries slowly after becoming saturated.\n\n### Brand shortlist\n\n| Use | Recommended brands |\n|---|---|\n| Value hiking footwear | Decathlon, Merrell, Columbia |\n| General hiking/backpacking | Salomon, Keen, Lowa, La Sportiva, Scarpa |\n| Wide-foot options | Altra, Topo Athletic, Keen, selected Lowa models |\n| Mountaineering boots | La Sportiva, Scarpa, Lowa, Mammut |\n\nDo not buy technical boots online without checking fit and crampon compatibility.\n\n---\n\n# 4. Shelter system\n\n## Tent\n\nFor a beginner, choose a **freestanding or semi-freestanding two-person, three-season tent**. A two-person model provides useful space for one person and equipment while remaining manageable in a backpack.\n\n- [ ] Double-wall construction\n- [ ] Full-coverage rainfly\n- [ ] Bathtub-style waterproof floor\n- [ ] Two doors and two vestibules if sharing\n- [ ] Aluminum poles rather than fiberglass\n- [ ] Adequate ventilation\n- [ ] Multiple guy-out points\n- [ ] Repair sleeve for a broken pole\n- [ ] Stakes suitable for expected ground\n- [ ] Extra guylines\n- [ ] Groundsheet or footprint, optional\n\nA footprint can reduce abrasion and extend floor life, although it adds some weight. REI similarly notes that a footprint is optional but may protect a tent from rocks, sticks, and debris. [citation:REI Backpacking Gear Checklist](https://www.rei.com/learn/expert-advice/backpacking-checklist.html)\n\n### Suitable target\n- **Capacity:** two-person\n- **Trail weight:** roughly 1.5–2.5 kg\n- **Weather class:** three-season\n- **Design:** double-wall, full rainfly\n- **Priority:** stable pitch and ventilation over minimum possible weight\n\n### Brand shortlist\n\n| Budget level | Suitable brands |\n|---|---|\n| Value | Naturehike, Kelty, Decathlon/Forclaz, Alps Mountaineering |\n| Balanced | REI Co-op, MSR, Big Agnes, Nemo |\n| Premium/strong weather performance | Hilleberg, SlingFin, selected MSR models |\n\nA normal three-season backpacking tent is **not** a stormproof mountaineering tent. For exposed alpine camps, strong winds, or significant snowfall, rent or purchase a four-season tent after gaining experience.\n\n---\n\n# 5. Sleeping system\n\n## Sleeping bag\n\nSelect a bag by the **coldest realistic nighttime temperature**, including elevation—not by daytime weather.\n\n- [ ] Mummy-shaped three-season sleeping bag\n- [ ] Draft collar and hood\n- [ ] ISO/EN-tested temperature rating where available\n- [ ] Waterproof stuff sack or pack liner\n- [ ] Optional storage sack for uncompressed storage at home\n\nFor mixed summer mountain use, a practical starting point is usually:\n- **Mild, low-elevation camping:** comfort rating around 5°C/40°F\n- **General three-season mountain use:** comfort rating around 0°C/32°F\n- **Cold sleepers or near-freezing forecasts:** comfort rating around –5°C/23°F\n\nUse the **comfort rating** if you sleep cold. The “lower limit” is intended for a warmer sleeper and is not the same as guaranteed comfort. ISO/EN ratings are useful for comparing brands, but real-world warmth also depends on the sleeping pad, clothing, humidity, fatigue, nutrition, and individual metabolism. [citation:Understanding Sleeping Bag Temperature Ratings](https://www.rei.com/learn/expert-advice/understanding-sleeping-bag-temperature-ratings.html)\n\n### Insulation choice\n- **Down:** lighter, smaller packed size, longer service life when cared for properly.\n- **Synthetic:** lower initial cost and more forgiving in very wet environments.\n\n### Brand shortlist\n- **Value:** Decathlon/Forclaz, Kelty, Marmot\n- **Balanced:** Nemo, Sea to Summit, Rab, Mountain Equipment\n- **Premium:** Western Mountaineering, Feathered Friends\n\n## Sleeping pad\n- [ ] Insulated inflatable pad\n- [ ] ASTM-rated R-value around **3–4 for ordinary summer use**\n- [ ] R-value around **4–5+ for cold ground, high elevations, or shoulder seasons**\n- [ ] Repair patches\n- [ ] Inflation sack if supplied\n- [ ] Optional thin closed-cell foam pad as backup and camp seat\n\nThe sleeping bag cannot perform properly if the ground is drawing heat through an inadequately insulated pad.\n\nRecommended brands:\n- **Value:** Klymit, Decathlon, Naturehike\n- **Balanced:** Nemo, Sea to Summit, Big Agnes\n- **Premium/light:** Therm-a-Rest, Exped\n\n---\n\n# 6. Cooking and food system\n\n## Stove kit\n- [ ] Screw-on canister stove\n- [ ] Compatible fuel canister\n- [ ] Windscreen used only if permitted by the stove manufacturer\n- [ ] 750–1,000 ml pot with lid\n- [ ] Long-handled spoon or spork\n- [ ] Mug, optional if the pot can serve as one\n- [ ] Two ignition methods: lighter plus backup matches/fire starter\n- [ ] Small cleaning cloth or partial sponge\n- [ ] Small amount of biodegradable soap\n- [ ] Pack towel\n- [ ] Food bag\n- [ ] Odor-resistant bags\n- [ ] Trash bag\n- [ ] Bear-resistant canister where required\n- [ ] One extra day of no-cook food\n\nFor beginners, a canister stove is generally simpler and less maintenance-intensive than liquid-fuel, alcohol, or solid-fuel systems. REI also identifies lightweight canister stoves as convenient and easy to use, while recommending two methods of ignition. [citation:REI Backpacking Gear Checklist](https://www.rei.com/learn/expert-advice/backpacking-checklist.html)\n\nGood brands:\n- **Stoves:** Soto, MSR, Primus, Optimus\n- **Value stoves:** Fire-Maple, Decathlon\n- **Cookware:** Toaks, GSI Outdoors, Sea to Summit, MSR\n\nCheck fire restrictions before every trip. Never cook inside a closed tent because of fire and carbon-monoxide danger.\n\n---\n\n# 7. Water storage and treatment\n\n- [ ] Capacity to carry at least **2–3 L**\n- [ ] Durable water bottle or hydration reservoir\n- [ ] Lightweight squeeze or gravity filter\n- [ ] Dedicated dirty-water container\n- [ ] Chemical purification tablets as backup\n- [ ] Electrolyte packets for hot, strenuous days\n- [ ] Filter backflushing or cleaning accessory\n- [ ] Insulating bottle sleeve for freezing conditions, if relevant\n\n### Recommended filter types\n\nFor solo or two-person trips:\n- Squeeze filter: light, simple, inexpensive\n- Soft-flask filter: fast access but less durable container\n- Gravity filter: excellent for groups and camp use\n\nGood brands include **Sawyer, Katadyn, Platypus, MSR, and LifeStraw**.\n\nDo not assume clear mountain water is safe. The CDC advises that boiling is the most reliable method for killing waterborne germs; the next-best approach is filtration followed by disinfection. Many portable filters remove parasites and bacteria but not viruses, so treatment must match local contamination risks. [citation:CDC Water Treatment for Hiking and Camping](https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html)\n\nCDC boiling guidance is:\n- Rolling boil for **one minute**\n- Rolling boil for **three minutes above 6,500 ft/1,980 m**  \n[citation:CDC Water Treatment for Hiking and Camping](https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html)\n\nA practical combination is a Sawyer Squeeze or Katadyn BeFree plus individually packaged chlorine-dioxide tablets. Protect hollow-fiber filters from freezing; once frozen while wet, internal damage may be impossible to verify.\n\n---\n\n# 8. Navigation and communication\n\n## Navigation\n- [ ] Printed topographic map in a waterproof sleeve\n- [ ] Baseplate compass\n- [ ] Smartphone with offline maps downloaded\n- [ ] Dedicated GPS device, optional\n- [ ] Power bank and short charging cable\n- [ ] Pencil and waterproof notes\n- [ ] Route plan containing mileage, elevation, water, bailout routes, and turnaround time\n\nRecommended navigation apps vary by country, but commonly useful options include Gaia GPS, CalTopo, AllTrails, Organic Maps, and official land-management applications. Download the map before leaving coverage and test airplane-mode operation.\n\nThe NPS recommends map, compass, and GPS capability, while emphasizing that users should know how to use them and carry a physical map as backup. [citation:NPS Ten Essentials](https://www.nps.gov/articles/10essentials.htm)\n\n## Emergency communication\n- [ ] Whistle\n- [ ] Emergency contact card\n- [ ] Satellite messenger for remote or solo routes\n- [ ] Personal locator beacon as an alternative\n- [ ] Trip plan left with a reliable person\n- [ ] Defined overdue time and instructions for contacting rescuers\n\nSuitable satellite-device brands include **Garmin inReach, Zoleo, Motorola/Defy where service is supported, and ACR/Bivy**. Verify geographic coverage and subscription requirements. A satellite messenger supplements planning and judgment; it does not guarantee immediate rescue.\n\n---\n\n# 9. Headlamp and electronics\n\n- [ ] Headlamp producing approximately **300–500 lumens**\n- [ ] Low mode for camp\n- [ ] Red-light mode, desirable\n- [ ] Lockout to prevent activation inside the pack\n- [ ] Water resistance of at least IPX4; preferably IPX7/8 for severe rain\n- [ ] Spare battery or backup lamp\n- [ ] 10,000–20,000 mAh power bank for multiday electronics\n- [ ] Charging cables in a waterproof bag\n\nRecommended brands:\n- **Value:** Nitecore, Fenix, Decathlon\n- **Balanced:** Black Diamond, Petzl\n- **Specialized:** Ledlenser, Zebralight\n\nNPS favors headlamps because they permit hands-free use and recommends carrying spare batteries. [citation:NPS Ten Essentials](https://www.nps.gov/articles/10essentials.htm)\n\n---\n\n# 10. First-aid kit\n\nStart with a compact commercial kit, then replace low-quality contents and add personal medication. The NPS recommends tailoring a premade kit to the trip and individual medical needs and periodically checking expiration dates. [citation:NPS Ten Essentials](https://www.nps.gov/articles/10essentials.htm)\n\n## Recommended contents\n\n### Wounds and bleeding\n- [ ] Assorted adhesive bandages\n- [ ] Sterile gauze pads\n- [ ] Rolled gauze\n- [ ] Medical tape\n- [ ] Elastic compression wrap\n- [ ] Hemostatic gauze for remote/high-risk trips\n- [ ] Nitrile gloves\n- [ ] Antiseptic wipes\n- [ ] Irrigation syringe\n- [ ] Small trauma shears\n\n### Blisters and feet\n- [ ] Hydrocolloid blister dressings\n- [ ] Moleskin or adhesive felt\n- [ ] Leukotape or similar strong tape\n- [ ] Alcohol wipes for preparing skin\n\n### Medication\n- [ ] Personal prescription medication plus reserve\n- [ ] Pain reliever appropriate for you\n- [ ] Antihistamine\n- [ ] Anti-diarrheal medication\n- [ ] Oral rehydration salts\n- [ ] Any doctor-prescribed emergency medication\n\n### Other\n- [ ] Tweezers\n- [ ] Tick-removal tool\n- [ ] CPR face shield\n- [ ] Emergency blanket\n- [ ] Written first-aid instructions\n- [ ] Pencil and casualty notes\n- [ ] Personal medical/allergy information\n\nA kit is not a substitute for training. A wilderness first-aid course is one of the highest-value safety purchases you can make.\n\n---\n\n# 11. Other Ten Essentials and small equipment\n\n## Sun and insect protection\n- [ ] Broad-spectrum sunscreen\n- [ ] SPF lip balm\n- [ ] UV-protective sunglasses\n- [ ] Brimmed hat\n- [ ] Insect repellent\n- [ ] Head net in severe insect areas\n\nFor snowfields and glaciers, use high-quality wraparound sunglasses or glacier glasses with appropriate visible-light transmission and side protection.\n\n## Repair kit\n- [ ] Multitool or small knife\n- [ ] Duct tape wrapped around bottle or trekking pole\n- [ ] Cable ties\n- [ ] Strong cord\n- [ ] Safety pins\n- [ ] Needle and thread\n- [ ] Tent-pole repair sleeve\n- [ ] Sleeping-pad patches\n- [ ] Spare stove O-ring if applicable\n- [ ] Small amount of seam-sealing or repair tape\n\n## Fire and emergency shelter\n- [ ] Two ignition methods\n- [ ] Fire starter, where fires are legal\n- [ ] Emergency bivy or reflective blanket\n- [ ] Lightweight tarp, optional\n- [ ] Whistle\n- [ ] Signal mirror, optional\n\n## Hygiene and sanitation\n- [ ] Toilet paper\n- [ ] Sealable waste bags\n- [ ] Trowel where burial is permitted\n- [ ] Hand sanitizer\n- [ ] Biodegradable soap\n- [ ] Toothbrush and toothpaste\n- [ ] Menstrual supplies if applicable\n- [ ] Pack towel\n- [ ] Required human-waste bags for sensitive or alpine areas\n\nAlways follow local regulations. Requirements for bear canisters, fire, food storage, and human-waste disposal differ substantially among parks and wilderness areas.\n\n---\n\n# 12. Trekking poles\n\n- [ ] Pair of adjustable trekking poles\n- [ ] Replaceable carbide tips\n- [ ] Rubber protectors for hard surfaces\n- [ ] Snow baskets if traveling on snow\n\nTrekking poles improve stability during stream crossings and steep descents and can reduce fatigue under a pack. Aluminum shafts are generally more economical and tolerate dents better; carbon fiber is lighter but usually more expensive.\n\nRecommended brands:\n- **Value:** Cascade Mountain Tech, Decathlon\n- **Balanced:** Black Diamond, Leki\n- **Premium:** Leki, Komperdell, premium Black Diamond models\n\n---\n\n# 13. Mountaineering-specific equipment\n\nDo **not** assume normal hiking gear is sufficient for mountaineering. Exact equipment depends on whether the route involves snow, glaciers, rock climbing, avalanche terrain, or merely nontechnical alpine hiking.\n\n## Personal technical equipment\n- [ ] Certified climbing helmet\n- [ ] Mountaineering harness\n- [ ] Locking carabiners\n- [ ] Appropriate mountaineering boots\n- [ ] Crampons compatible with those boots\n- [ ] Ice axe of appropriate type and length\n- [ ] Waterproof gaiters\n- [ ] Climbing gloves plus dry spare pair\n- [ ] Glacier glasses and backup eye protection\n- [ ] Technical shell clothing\n- [ ] Emergency bivy\n- [ ] Satellite communicator\n\n## Glacier travel equipment\n- [ ] Climbing rope\n- [ ] Prusik loops or mechanical ascenders\n- [ ] Pulleys\n- [ ] Additional carabiners\n- [ ] Snow anchors or ice screws as the route requires\n- [ ] Crevasse-rescue equipment\n\n## Avalanche terrain\n- [ ] Avalanche transceiver\n- [ ] Metal-bladed shovel\n- [ ] Probe\n- [ ] Formal avalanche education\n- [ ] Daily avalanche forecast and terrain plan\n\nBuying these items without learning their use creates false confidence. For your first trips, rent the helmet, harness, boots, crampons, axe, rope, and avalanche equipment through a guide service or mountaineering school. Brands worth considering after training include **Petzl, Black Diamond, Grivel, CAMP, Mammut, Blue Ice, Edelrid, and DMM**.\n\nCrampons must match both the route and boot interface. Flexible hiking footwear may not safely accept semi-automatic or automatic crampons. Have the complete boot-and-crampon combination inspected and fitted by a specialist.\n\n---\n\n# 14. Weather-specific adaptations\n\n| Conditions | Add or change |\n|---|---|\n| Hot and dry | Extra water capacity, electrolytes, sun shirt, wide-brim hat, early start |\n| Persistent rain | Three-layer shell, rain pants, pack liner, synthetic insulation, extra dry socks |\n| Cold and windy | Warmer insulated jacket, gloves, hat, wind-resistant shelter, warmer sleeping pad |\n| Near-freezing nights | Sleeping bag comfort rating near or below forecast low; pad R-value 4–5+ |\n| Snow travel | Mountaineering boots, gaiters, axe, compatible crampons, eye protection and training |\n| Glacier | Rope team, harness, rescue equipment, guide/instruction |\n| Avalanche terrain | Beacon, shovel, probe, education and forecast |\n| Heavy insects | Head net, repellent, fully enclosed tent |\n| Bear country | Approved storage system and locally appropriate deterrent |\n| No cellular coverage | Satellite communicator or personal locator beacon |\n| Wildfire season | Check closures and smoke forecasts; avoid relying on an open fire |\n\n---\n\n# 15. Brand strategy that balances budget and quality\n\nYou do not need every item from one manufacturer.\n\n## Spend more on\n1. **Footwear fit**\n2. **Backpack fit and suspension**\n3. **Sleeping bag and pad**\n4. **Waterproof shell**\n5. **Reliable shelter**\n6. **Navigation, communication, and safety equipment**\n\n## Save money on\n- Basic synthetic clothing\n- Cook pot and utensils\n- Stuff sacks\n- Camp towel\n- Basic fleece\n- Trowel\n- Water bottles\n- Nontechnical accessories\n\n## Buy used cautiously\nGenerally reasonable:\n- Backpacks\n- Cookware\n- Trekking poles\n- Fleece and insulated clothing\n- Tents after checking fabric, seams, poles, and zippers\n\nPrefer new or professionally inspected:\n- Helmets\n- Harnesses\n- Ropes\n- Slings\n- Carabiners with unknown history\n- Avalanche transceivers\n- Water filters with unknown freeze history\n- Delaminating waterproof shells\n\n---\n\n# 16. Approximate budget\n\nPrices vary by country and sales, but these are useful planning ranges in USD.\n\n| Package | Approximate cost |\n|---|---:|\n| Day-hiking essentials, excluding footwear | $250–500 |\n| Day-hiking system with quality footwear and shell | $500–900 |\n| Value three-season backpacking system | $900–1,500 |\n| Balanced, durable backpacking system | $1,500–2,700 |\n| Lightweight/premium backpacking system | $2,700–4,500+ |\n| Mountaineering personal equipment addition | $700–1,800+ |\n| Glacier/avalanche group equipment | Best rented initially |\n\nA sensible beginner budget is usually the **value-to-balanced range**, supplemented with rentals. Do not pursue ultralight equipment immediately: it is more expensive, often requires refined skills, and may sacrifice durability or comfort.\n\n---\n\n# 17. Recommended purchasing sequence\n\n### Phase 1: Day hiking\nBuy:\n1. Footwear and socks\n2. 20–30 L pack or your future backpacking pack\n3. Rain shell\n4. Clothing layers\n5. Navigation\n6. Headlamp\n7. First aid\n8. Water treatment\n9. Ten Essentials\n10. Trekking poles\n\n### Phase 2: Overnight camping\nAdd:\n1. 55–65 L backpack\n2. Three-season tent\n3. Sleeping bag\n4. Insulated sleeping pad\n5. Stove and cookware\n6. Food-storage system\n7. Larger water capacity\n\n### Phase 3: Mountaineering\nTake instruction first, then rent:\n1. Boots\n2. Crampons\n3. Ice axe\n4. Helmet\n5. Harness\n6. Glacier or avalanche equipment\n\nBuy only after you know which terrain and disciplines you intend to pursue.\n\n---\n\n# 18. Final pre-trip checklist\n\nBefore every departure:\n\n- [ ] Check hourly weather at trailhead and summit elevation\n- [ ] Check fire, wildlife, permit, food-storage, and waste rules\n- [ ] Download offline maps\n- [ ] Carry a physical map and compass\n- [ ] Leave route, vehicle, return time, and emergency instructions with someone\n- [ ] Inspect tent, pad, stove, filter, headlamp, and batteries\n- [ ] Confirm sleeping system is adequate for the forecast low\n- [ ] Carry one extra day of food\n- [ ] Carry water treatment plus a backup\n- [ ] Pack insulation for the worst credible conditions, not the parking-lot weather\n- [ ] Set a turnaround time\n- [ ] Be prepared to cancel or retreat\n\nTest the complete system on a local overnight trip close to an easy exit before taking it into remote terrain. Pack and unpack it at home, pitch the tent in rain or wind if possible, use the stove, treat water, navigate in airplane mode, and walk several hours with the expected load.\n\n## Sources\n\n- [NPS Ten Essentials](https://www.nps.gov/articles/10essentials.htm) - Official emergency and outdoor preparedness categories, updated May 2026.\n- [REI Backpacking Gear Checklist](https://www.rei.com/learn/expert-advice/backpacking-checklist.html) - Comprehensive shelter, pack, clothing, cooking, water, and emergency checklist.\n- [Understanding Sleeping Bag Temperature Ratings](https://www.rei.com/learn/expert-advice/understanding-sleeping-bag-temperature-ratings.html) - Explanation of ISO/EN comfort and lower-limit ratings.\n- [CDC Water Treatment for Hiking and Camping](https://www.cdc.gov/drinking-water/prevention/water-treatment-hiking-camping-traveling.html) - Official guidance on boiling, filtration, disinfection, and backcountry water risks.",
+  "run_error": null,
+  "started_at_utc": "2026-09-11T00:50:35.437152+00:00",
+  "completed_at_utc": "2026-09-11T00:54:20.470132+00:00",
+  "elapsed_seconds": 225.03298,
+  "trace_file": "turn_001_events.jsonl"
+}

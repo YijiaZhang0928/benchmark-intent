@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.75",
+  "started_at_utc": "2026-09-11T00:57:36.627128+00:00",
+  "harness": "deerflow-2.0",
+  "harness_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model_config_name": "gpt-5.6-sol-codex",
+  "agent_name": "clarification-dr",
+  "thread_id": "pdr-t35-gpt56-v075-i-r1",
+  "turn_index": 3,
+  "input_kind": "engineering_control",
+  "source_path": "/Users/lora/Documents/benchmark-intent/pilot/abstract_claim_validation_v0_75/inputs/engineering_continue.txt",
+  "input_sha256": "0ce30c4ad8bfc8f10481360b405533e83acbdf982d42fb5f937ebab02a577ebb",
+  "visible_prompt_wrapper": null,
+  "persona_visible_on_first_turn": null,
+  "rubric_visible": false,
+  "account_memory_allowed": false,
+  "subagents_enabled": false,
+  "plan_mode": false,
+  "recursion_limit": 300,
+  "non_interactive": false
+}

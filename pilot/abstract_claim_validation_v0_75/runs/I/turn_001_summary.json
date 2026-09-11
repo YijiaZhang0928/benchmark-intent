@@ -1,0 +1,322 @@
+{
+  "schema_version": "0.75",
+  "status": "awaiting_clarification",
+  "asked_clarification": true,
+  "clarification_calls": [
+    {
+      "name": "ask_clarification",
+      "args": {
+        "question": "To tailor the gear list safely and avoid recommending either inadequate or unnecessarily expensive equipment, please provide the trip profile below.",
+        "clarification_type": "missing_info",
+        "context": "A summer day hike, a multi-day backpacking trip, and technical mountaineering require very different shelters, sleep systems, footwear, navigation tools, and safety equipment. Weather and altitude also determine temperature and waterproofing ratings.",
+        "options": null,
+        "fields": [
+          {
+            "name": "region_and_dates",
+            "label": "Main destination(s) and approximate month(s)",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., Colorado Rockies in July–August"
+          },
+          {
+            "name": "activities",
+            "label": "Planned activity level",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Day hiking",
+              "Multi-day backpacking",
+              "Campground/car camping",
+              "Non-technical mountaineering (hiking/scrambling)",
+              "Technical mountaineering (ropes, glacier, ice/snow)"
+            ],
+            "placeholder": "Select all that apply"
+          },
+          {
+            "name": "trip_profile",
+            "label": "Typical trip length, group size, and whether shared gear is possible",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., 2–4 nights, usually two people, can share tent/stove"
+          },
+          {
+            "name": "conditions",
+            "label": "Expected elevation, lowest nighttime temperature, and likely weather/terrain",
+            "type": "text",
+            "required": false,
+            "options": [],
+            "placeholder": "e.g., up to 3,500 m; 0°C/32°F; rain, wind, rocky trails"
+          },
+          {
+            "name": "budget",
+            "label": "Total gear budget and shopping country/currency",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., US$1,500, buying in the United States"
+          },
+          {
+            "name": "personal_needs",
+            "label": "Any sizing, comfort, medical, dietary, or weight-carrying constraints?",
+            "type": "textarea",
+            "required": false,
+            "options": [],
+            "placeholder": "e.g., wide feet, cold sleeper, bad knees, prefer total pack under 12 kg"
+          }
+        ]
+      },
+      "id": "call_N5L1I9C9cnoTAjX6tRuPS768"
+    }
+  ],
+  "clarification_artifacts": [
+    {
+      "human_input": {
+        "version": 2,
+        "kind": "human_input_request",
+        "source": "ask_clarification",
+        "request_id": "clarification:call_N5L1I9C9cnoTAjX6tRuPS768",
+        "clarification_type": "missing_info",
+        "question": "To tailor the gear list safely and avoid recommending either inadequate or unnecessarily expensive equipment, please provide the trip profile below.",
+        "input_mode": "form",
+        "tool_call_id": "call_N5L1I9C9cnoTAjX6tRuPS768",
+        "context": "A summer day hike, a multi-day backpacking trip, and technical mountaineering require very different shelters, sleep systems, footwear, navigation tools, and safety equipment. Weather and altitude also determine temperature and waterproofing ratings.",
+        "fields": [
+          {
+            "name": "region_and_dates",
+            "label": "Main destination(s) and approximate month(s)",
+            "type": "text",
+            "required": true,
+            "placeholder": "e.g., Colorado Rockies in July–August"
+          },
+          {
+            "name": "activities",
+            "label": "Planned activity level",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              {
+                "id": "activities-option-1",
+                "label": "Day hiking",
+                "value": "Day hiking"
+              },
+              {
+                "id": "activities-option-2",
+                "label": "Multi-day backpacking",
+                "value": "Multi-day backpacking"
+              },
+              {
+                "id": "activities-option-3",
+                "label": "Campground/car camping",
+                "value": "Campground/car camping"
+              },
+              {
+                "id": "activities-option-4",
+                "label": "Non-technical mountaineering (hiking/scrambling)",
+                "value": "Non-technical mountaineering (hiking/scrambling)"
+              },
+              {
+                "id": "activities-option-5",
+                "label": "Technical mountaineering (ropes, glacier, ice/snow)",
+                "value": "Technical mountaineering (ropes, glacier, ice/snow)"
+              }
+            ],
+            "placeholder": "Select all that apply"
+          },
+          {
+            "name": "trip_profile",
+            "label": "Typical trip length, group size, and whether shared gear is possible",
+            "type": "text",
+            "required": true,
+            "placeholder": "e.g., 2–4 nights, usually two people, can share tent/stove"
+          },
+          {
+            "name": "conditions",
+            "label": "Expected elevation, lowest nighttime temperature, and likely weather/terrain",
+            "type": "text",
+            "required": false,
+            "placeholder": "e.g., up to 3,500 m; 0°C/32°F; rain, wind, rocky trails"
+          },
+          {
+            "name": "budget",
+            "label": "Total gear budget and shopping country/currency",
+            "type": "text",
+            "required": true,
+            "placeholder": "e.g., US$1,500, buying in the United States"
+          },
+          {
+            "name": "personal_needs",
+            "label": "Any sizing, comfort, medical, dietary, or weight-carrying constraints?",
+            "type": "textarea",
+            "required": false,
+            "placeholder": "e.g., wide feet, cold sleeper, bad knees, prefer total pack under 12 kg"
+          }
+        ]
+      }
+    }
+  ],
+  "all_observed_tools": [
+    {
+      "name": "ask_clarification",
+      "args": {
+        "question": "To tailor the gear list safely and avoid recommending either inadequate or unnecessarily expensive equipment, please provide the trip profile below.",
+        "clarification_type": "missing_info",
+        "context": "A summer day hike, a multi-day backpacking trip, and technical mountaineering require very different shelters, sleep systems, footwear, navigation tools, and safety equipment. Weather and altitude also determine temperature and waterproofing ratings.",
+        "options": null,
+        "fields": [
+          {
+            "name": "region_and_dates",
+            "label": "Main destination(s) and approximate month(s)",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., Colorado Rockies in July–August"
+          },
+          {
+            "name": "activities",
+            "label": "Planned activity level",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Day hiking",
+              "Multi-day backpacking",
+              "Campground/car camping",
+              "Non-technical mountaineering (hiking/scrambling)",
+              "Technical mountaineering (ropes, glacier, ice/snow)"
+            ],
+            "placeholder": "Select all that apply"
+          },
+          {
+            "name": "trip_profile",
+            "label": "Typical trip length, group size, and whether shared gear is possible",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., 2–4 nights, usually two people, can share tent/stove"
+          },
+          {
+            "name": "conditions",
+            "label": "Expected elevation, lowest nighttime temperature, and likely weather/terrain",
+            "type": "text",
+            "required": false,
+            "options": [],
+            "placeholder": "e.g., up to 3,500 m; 0°C/32°F; rain, wind, rocky trails"
+          },
+          {
+            "name": "budget",
+            "label": "Total gear budget and shopping country/currency",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., US$1,500, buying in the United States"
+          },
+          {
+            "name": "personal_needs",
+            "label": "Any sizing, comfort, medical, dietary, or weight-carrying constraints?",
+            "type": "textarea",
+            "required": false,
+            "options": [],
+            "placeholder": "e.g., wide feet, cold sleeper, bad knees, prefer total pack under 12 kg"
+          }
+        ]
+      },
+      "id": "call_N5L1I9C9cnoTAjX6tRuPS768"
+    },
+    {
+      "name": "ask_clarification",
+      "tool_call_id": "call_N5L1I9C9cnoTAjX6tRuPS768",
+      "content": "❓ A summer day hike, a multi-day backpacking trip, and technical mountaineering require very different shelters, sleep systems, footwear, navigation tools, and safety equipment. Weather and altitude also determine temperature and waterproofing ratings.\n\nTo tailor the gear list safely and avoid recommending either inadequate or unnecessarily expensive equipment, please provide the trip profile below.\n\n  1. Main destination(s) and approximate month(s) (required)\n  2. Planned activity level (required) — options: Day hiking / Multi-day backpacking / Campground/car camping / Non-technical mountaineering (hiking/scrambling) / Technical mountaineering (ropes, glacier, ice/snow) (multiple allowed)\n  3. Typical trip length, group size, and whether shared gear is possible (required)\n  4. Expected elevation, lowest nighttime temperature, and likely weather/terrain\n  5. Total gear budget and shopping country/currency (required)\n  6. Any sizing, comfort, medical, dietary, or weight-carrying constraints?\n\nPlease reply with a value for each field.",
+      "artifact": {
+        "human_input": {
+          "version": 2,
+          "kind": "human_input_request",
+          "source": "ask_clarification",
+          "request_id": "clarification:call_N5L1I9C9cnoTAjX6tRuPS768",
+          "clarification_type": "missing_info",
+          "question": "To tailor the gear list safely and avoid recommending either inadequate or unnecessarily expensive equipment, please provide the trip profile below.",
+          "input_mode": "form",
+          "tool_call_id": "call_N5L1I9C9cnoTAjX6tRuPS768",
+          "context": "A summer day hike, a multi-day backpacking trip, and technical mountaineering require very different shelters, sleep systems, footwear, navigation tools, and safety equipment. Weather and altitude also determine temperature and waterproofing ratings.",
+          "fields": [
+            {
+              "name": "region_and_dates",
+              "label": "Main destination(s) and approximate month(s)",
+              "type": "text",
+              "required": true,
+              "placeholder": "e.g., Colorado Rockies in July–August"
+            },
+            {
+              "name": "activities",
+              "label": "Planned activity level",
+              "type": "multi_select",
+              "required": true,
+              "options": [
+                {
+                  "id": "activities-option-1",
+                  "label": "Day hiking",
+                  "value": "Day hiking"
+                },
+                {
+                  "id": "activities-option-2",
+                  "label": "Multi-day backpacking",
+                  "value": "Multi-day backpacking"
+                },
+                {
+                  "id": "activities-option-3",
+                  "label": "Campground/car camping",
+                  "value": "Campground/car camping"
+                },
+                {
+                  "id": "activities-option-4",
+                  "label": "Non-technical mountaineering (hiking/scrambling)",
+                  "value": "Non-technical mountaineering (hiking/scrambling)"
+                },
+                {
+                  "id": "activities-option-5",
+                  "label": "Technical mountaineering (ropes, glacier, ice/snow)",
+                  "value": "Technical mountaineering (ropes, glacier, ice/snow)"
+                }
+              ],
+              "placeholder": "Select all that apply"
+            },
+            {
+              "name": "trip_profile",
+              "label": "Typical trip length, group size, and whether shared gear is possible",
+              "type": "text",
+              "required": true,
+              "placeholder": "e.g., 2–4 nights, usually two people, can share tent/stove"
+            },
+            {
+              "name": "conditions",
+              "label": "Expected elevation, lowest nighttime temperature, and likely weather/terrain",
+              "type": "text",
+              "required": false,
+              "placeholder": "e.g., up to 3,500 m; 0°C/32°F; rain, wind, rocky trails"
+            },
+            {
+              "name": "budget",
+              "label": "Total gear budget and shopping country/currency",
+              "type": "text",
+              "required": true,
+              "placeholder": "e.g., US$1,500, buying in the United States"
+            },
+            {
+              "name": "personal_needs",
+              "label": "Any sizing, comfort, medical, dietary, or weight-carrying constraints?",
+              "type": "textarea",
+              "required": false,
+              "placeholder": "e.g., wide feet, cold sleeper, bad knees, prefer total pack under 12 kg"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "final_text": "",
+  "run_error": null,
+  "started_at_utc": "2026-09-11T00:54:29.614990+00:00",
+  "completed_at_utc": "2026-09-11T00:54:43.112647+00:00",
+  "elapsed_seconds": 13.497657,
+  "trace_file": "turn_001_events.jsonl"
+}

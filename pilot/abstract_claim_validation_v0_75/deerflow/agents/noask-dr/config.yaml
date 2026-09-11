@@ -1,0 +1,8 @@
+name: noask-dr
+description: Non-interactive Deep Research control for clarification ablation.
+model: gpt-5.6-sol-codex
+skills:
+  - deep-research
+allowed_subagents: []
+thinking_enabled: true
+reasoning_effort: high

@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.75",
+  "started_at_utc": "2026-09-11T00:50:35.437152+00:00",
+  "harness": "deerflow-2.0",
+  "harness_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model_config_name": "gpt-5.6-sol-codex",
+  "agent_name": "noask-dr",
+  "thread_id": "pdr-t35-gpt56-v075-n-r1",
+  "turn_index": 1,
+  "input_kind": "task_instruction",
+  "source_path": "/Users/lora/Documents/benchmark-intent/pilot/abstract_claim_validation_v0_75/inputs/instruction_only.txt",
+  "input_sha256": "669a164498201fe1d4ba902bc61e7562da6de3ac15d8fd0726b84f7de8c1663e",
+  "visible_prompt_wrapper": null,
+  "persona_visible_on_first_turn": false,
+  "rubric_visible": false,
+  "account_memory_allowed": false,
+  "subagents_enabled": false,
+  "plan_mode": false,
+  "recursion_limit": 100,
+  "non_interactive": true
+}
