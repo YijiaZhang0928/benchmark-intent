@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.79"
+manifest_version: "0.80"
 updated: "2026-09-12"
 status: working_hypothesis_frozen
 
@@ -68,6 +68,7 @@ active_sources:
   h3_factorial_redesign: pilot/h3_factorial_redesign_v0_78/design.json
   h3_factorial_scoring: pilot/h3_factorial_redesign_v0_78/SCORING.md
   h3_factorial_api_requirements: pilot/h3_factorial_redesign_v0_78/API_REQUIREMENTS.md
+  h3_rubric_expansion: pilot/h3_rubric_expansion_v0_80/README.md
   odr_ieo_ab_results: pilot/odr_ieo_ab_v0_76/RESULTS.md
   odr_ieo_ab_protocol: pilot/odr_ieo_ab_v0_76/protocol.md
   odr_ieo_ab_scores: pilot/odr_ieo_ab_v0_76/evaluation/results.json
@@ -359,6 +360,19 @@ scope:
     acquired_unit_intersection_gain_share: 0.44276812069531
     counted_episode_eligible: false
     claim_boundary: one_run_system_gain_with_research_depth_confound_no_clarification_selection_improvement
+  h3_rubric_expansion:
+    package_version: "0.80"
+    status: frozen_draft_pending_human_approval_before_counted_runs
+    workbook_tasks: 15
+    strict_leaves_per_task: 26
+    strict_leaves_total: 390
+    released_official_exact_pairs: 8
+    released_official_leaves_total: 301
+    exact_pair_official_available: [T01, T02, T05, T08, T09, T11, T12, T14]
+    exact_pair_official_unavailable: [T03, T04, T06, T07, T10, T13, T15]
+    score_sets: [P_official, P_strict, P_HI, Coverage_at_HighImpact]
+    confirmatory_reports_planned: 96
+    claim_boundary: strict_rubric_increases_sensitivity_but_does_not_preordain_score_separation_or_validate_h3
 
 reused_infrastructure:
   - interaction_env
@@ -369,6 +383,8 @@ reused_infrastructure:
   - rubric_provenance_and_matched_swapped_assets
 
 claim_boundaries:
+  - project_strict_score_is_not_official_pdr_p_score
+  - rubric_expansion_does_not_preordain_model_ranking_or_validate_h3
   - odr_ieo_ab_does_not_validate_better_question_selection
   - odr_ieo_p_gain_is_confounded_by_research_depth_and_stock_dr_gate_failure
   - three_task_clarification_feasibility_does_not_show_general_asking_superiority

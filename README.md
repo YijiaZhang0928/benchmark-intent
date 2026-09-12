@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.79
+## 当前方向：AskInfer-Bench v0.80
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -52,6 +52,8 @@ v0.78 将上述 `10/10` 重新定性为评分天花板，而不是“全部 high
 
 v0.79 完成 v0.76 预注册的 Open Deep Research IEO A/B。一次盲评 P-score 为 stock 8.5462、IEO 9.1560，差 `+0.6098`；但两边都问 5 个 atomic questions、都只获取 P01 activity/environment 与 P03 budget/quality，high-impact recall 同为 2/3，且都漏 P02 safety/risk。IEO 正确把规格/价格路由为 research-owned、把重量/耐久和技术装备选择路由为 agent-recommended，却没有把 routing 转化为更好的 question selection。IEO 又做了 27 searches/5 substantive fetches并通过 DR gate，stock 只有 7/2 且失败；仅 44.3% 的 P-gain 与共同获取单元相交。因此当前结论是 system-level gain observed once，clarification mechanism not validated。完整结果见 [`pilot/odr_ieo_ab_v0_76/RESULTS.md`](pilot/odr_ieo_ab_v0_76/RESULTS.md)。
 
+v0.80 将 0912 workbook 的 15 个 task 全部扩展为 task-specific 严格 rubric：每题 26 个原子评分叶、共 390 条，按 GOAL/CONT/PRES/ACTI 两层加权，加入 `0/2/4/6/8/10` 锚点、通用答案 6–7 分上限和 high-impact 反事实后果要求。另按 source task–persona exact pair 导入公开 PDR criteria：15 对中 8 对可用、共 301 条；其余 7 对只能报告 `P_strict`，不得冒充 `P_official`。`P_HI` 与 Coverage@HighImpact 分开记录，10 分只表示命名 score set 的满分，不表示所有高影响偏好均被提问。执行与预算说明见 [`pilot/h3_rubric_expansion_v0_80/`](pilot/h3_rubric_expansion_v0_80/)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -67,6 +69,7 @@ v0.79 完成 v0.76 预注册的 Open Deep Research IEO A/B。一次盲评 P-scor
 - [`pilot/clarification_harness_3task_v0_76/`](pilot/clarification_harness_3task_v0_76/)：前三题同骨干 ask/no-ask、T3 full-persona/no-ask、ODR clarification probe 与 21 次盲评结果。
 - [`pilot/odr_ieo_ab_v0_76/`](pilot/odr_ieo_ab_v0_76/)：stock ODR vs IEO ODR 的运行前协议、完整报告/trace、question/preference chain、37-criterion 分解与一次同骨干盲评。
 - [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)：H3 四条件设计、官方/严格/反事实评分边界、天花板 gate、跨模型成功规则与 API 清单。
+- [`pilot/h3_rubric_expansion_v0_80/`](pilot/h3_rubric_expansion_v0_80/)：15 题严格 rubric 扩展、PDR exact-pair provenance、评分锚点、运行前冻结边界与首批 API 预算假设。
 - [`proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md`](proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md)：当前可写、禁止写、保守英文摘要与升级结果句。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
 - [`proposal_assets/AskInfer-Bench_评测框架_v0.62.png`](proposal_assets/AskInfer-Bench_评测框架_v0.62.png)：3200×1800 主图；同名 SVG 可编辑。

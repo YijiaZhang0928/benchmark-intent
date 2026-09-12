@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-12
-当前版本：v0.79（Open Deep Research IEO clarification A/B 结果）
+当前版本：v0.80（15 题 task-specific rubric 扩展与 API 预算）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAA. 2026-09-12：15 题 task-specific rubric 扩展与 API 预算
+
+用户要求确认 rubrics 是否已经逐 task 增加区分度，并把完整更新写回 Excel，同时提供 GPT、Claude、Gemini、Kimi 及搜索/抓取服务的 API 申请入口和首轮预算。v0.80 已对 0912 workbook 的 15 题逐题生成 26 个 `P_strict` 原子评分叶，共 390 条：GOAL 5、CONT 8、PRES 5、ACTI 8。每个 high-impact preference 生成四条会改变来源、分析、建议或风险边界的 criterion，每个 average-impact preference 生成两条；维度内权重归一，维度权重沿用 0.25/0.30/0.15/0.30。评分采用 `0/2/4/6/8/10` 锚点，通用最佳实践封顶 6–7，高影响叶取得 8–10 必须有匹配偏好及可审计的反事实后果。
+
+同时改正 exact-pair 统计口径：必须读取 workbook 的 `PDR source Task` 和 persona，而不能把 workbook 自身的 Benchmark Task 编号当作 PDR task。15 对中共有 8 个 exact pairs 在公开 criteria 中可用，共 301 条：T01 34、T02 38、T05 39、T08 40、T09 33、T11 44、T12 35、T14 38；T03、T04、T06、T07、T10、T13、T15 的 exact-pair official criteria 未公开。只有前八对可以在保持官方 evaluator/prompt/weights/calculator 不变时报告 `P_official`；后七对只能报告项目 sensitivity score `P_strict`，除非在看见模型输出前用未修改的官方 pipeline 生成并冻结 criteria。
+
+评分表继续将 `P_official`、`P_strict`、high-impact subset `P_HI` 与 conversation-derived Coverage@HighImpact 分开。`10/10` 只表示命名 score set 的 criteria 全部得到 10 分，不表示所有 high-impact preferences 都被问到或恢复。390 条项目 strict leaves 当前均为 frozen draft，正式 counted runs 前仍需人类逐题批准；更严格 rubric 提升可辨识性，但不能预保证模型分数不同，仍须用 generic、swapped 和 matched calibration reports 通过 ceiling/sensitivity gate。
+
+首批四模型家族 H3 2×2 预算沿用 96 reports 设计，并假设每份 50k input/8k output、每份三次 judge、每次 30k input/2k output、25% buffer。建议先充 OpenAI USD 75（含统一 judge）、Anthropic USD 15–20、Gemini USD 10–15、Kimi CNY 80–100、Tavily USD 30；Jina 从免费 10M token 开始。Perplexity 产品/API 臂与 OAgents/SerpAPI 属可选生态比较，分别先预留约 USD 25。完整评分与预算记录位于 `pilot/h3_rubric_expansion_v0_80/`；API key 不进入仓库或聊天。
 
 ## 0AAAAAAAAAAAAAAAAAAAAA. 2026-09-12：Open Deep Research IEO A/B 结果
 

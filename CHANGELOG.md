@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.80 Task-specific rubric expansion and API budget - 2026-09-12
+
+- Expanded all 15 workbook tasks to 26 task-specific `P_strict` leaves each, 390 total, with GOAL/CONT/PRES/ACTI two-level weights, `0/2/4/6/8/10` anchors, generic-answer caps, and high-impact counterfactual requirements.
+- Corrected exact-pair provenance using the workbook's PDR source task rather than its local task index. Eight pairs have 301 released official criteria; seven pairs remain strict-score-only until an unmodified official pipeline generates and freezes criteria before outputs.
+- Kept `P_official`, project `P_strict`, high-impact subset `P_HI`, and conversation-derived Coverage@HighImpact as separate quantities. A 10 only means full credit for the named score set, never complete clarification coverage.
+- Added workbook sheets for rubric index, 691 detailed leaves, scoring guide, and formula-based provider budget. The 691 rows comprise 390 project strict leaves plus 301 released official leaves.
+- Recorded the 96-report budget assumptions and recommended initial funding for OpenAI, Anthropic, Gemini, Kimi, Tavily, Jina, plus optional Perplexity and SerpAPI arms. Secrets remain local and are never committed.
+- Added `pilot/h3_rubric_expansion_v0_80/` as the reproducibility note; no new model run or H3 result is claimed in this version.
+
 ## v0.79 Open Deep Research IEO clarification A/B result - 2026-09-12
 
 - 在独立 protocol commit 后完成 PDR-T35 × User8 的 stock ODR vs IEO ODR 同-backbone A/B；一次盲评 P-score 为 8.5462 vs 9.1560，差 `+0.6098`。
