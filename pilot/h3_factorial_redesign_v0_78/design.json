@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.78",
+  "status": "draft_awaiting_holdout_and_provider_freeze",
+  "research_question": "Can targeted clarification from a cold start match or exceed no-ask generation from a broad PDR-style persona?",
+  "factors": {
+    "clarification": ["disabled", "enabled"],
+    "initial_user_information": ["task_only", "task_plus_pdr_full_persona"]
+  },
+  "conditions": {
+    "CN": "cold_start_no_ask",
+    "CA": "cold_start_ask",
+    "FN": "full_persona_no_ask",
+    "FA": "full_persona_ask"
+  },
+  "primary_contrast": "CA_minus_FN",
+  "secondary_contrasts": [
+    "CA_minus_CN",
+    "FA_minus_FN",
+    "FN_minus_CN",
+    "FA_minus_CA",
+    "ask_by_persona_interaction"
+  ],
+  "expected_descriptive_order": "FA >= CA > FN >= CN",
+  "question_budget": {
+    "maximum_turns": 1,
+    "maximum_atomic_questions": 3,
+    "eligible_questions": "high-impact, low-evidence, user-owned variables whose alternatives change sources, shortlist, recommendation, or risk boundary"
+  },
+  "outcomes": {
+    "primary": "P_official: unmodified exact-pair PDR criteria, weights, 0-10 criterion scores, and two-level weighted aggregation",
+    "co_primary_mechanism": "P_HI: human-approved counterfactual high-impact decision-leaf pass rate",
+    "secondary": [
+      "P_strict: anchor-calibrated rescore of the same PDR criteria, explicitly not the official P-score",
+      "blind within-task pairwise preference",
+      "Coverage@HighImpact",
+      "question precision",
+      "resolved-to-reflected rate",
+      "atomic question count",
+      "Q score",
+      "R score",
+      "token, search, fetch, latency, and cost"
+    ]
+  },
+  "task_policy": {
+    "v0_76_task3": "ceiling_negative_control_only",
+    "development_case": "PDR-T35 x User8; prior score observed, excluded from clean confirmation",
+    "confirmatory_holdouts": "minimum two exact PDR task-persona pairs selected before generation by the pressure gate",
+    "replacement_after_output": "forbidden"
+  },
+  "models": ["GPT family", "Claude family", "Gemini family", "Kimi family"],
+  "repeats": {
+    "generation_per_cell": 3,
+    "judge_per_report": 3
+  },
+  "report_count_for_two_holdouts": 96,
+  "success_rule": {
+    "cross_model_direction": "CA > FN in at least 3 of 4 model families",
+    "quality_guard": "shared Q and R are non-inferior under a frozen margin",
+    "budget_guard": "all cells receive the same research budget; clarification answer tokens are logged separately",
+    "task_level_uncertainty": "cluster or bootstrap at task level; judge repeats are not independent samples"
+  },
+  "anti_gaming": [
+    "freeze task, persona, current-state ledger, criteria, weights, scorer, and exclusions before outputs",
+    "retain symmetric current-state alternatives and matched/swapped scoring",
+    "do not select tasks because an observed run produced CA > FN",
+    "do not call P_strict or P_HI the official PDR P-score",
+    "do not force a stable ranking; report violations"
+  ]
+}

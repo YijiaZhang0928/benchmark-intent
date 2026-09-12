@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-12
-当前版本：v0.77（三题 clarification-harness feasibility 结果）
+当前版本：v0.78（H3 2×2 测量修复与跨模型设计）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAA. 2026-09-12：H3 2×2 测量修复与跨模型设计
+
+用户质疑前三题 pilot 的 T3 `10/10` 是否表示全部 high-impact preferences 均满足，并指出六份合格报告五份满分明显不可信。复核后确认：v0.76 的 10 分只是五条自建 `0/1/2` 正向 rubric 之和，不是官方 PDR P-score，也不等于覆盖或满足 persona 的全部高影响偏好。T3 题面已经公开 MBA 背景、现有工作/家庭责任、时间/成本/实践价值要求；五条 preference direction 又与创业规划通用最佳实践高度重合。一个强通用报告即可全部获 2 分，因此 T3 只保留为 ceiling negative control，不再承担 H3 主识别。
+
+官方 PDR-Bench 对 exact task–persona pair 在 GOAL、CONT、PRES、ACTI 四维动态分权，每维生成多条带权 criterion，各 criterion 用 0–10 评分，再做两层加权平均。公开 criteria 中 Task1/User1 有 34 条、Task2/User7 有 38 条、Task35/User8 有 37 条；Task3/User10 是官方 query 12 的 exact pair，但不在公开 `criteria150_en.jsonl` 中，若要 official-P confirmation 必须用未修改的官方 pipeline 在新输出前生成并冻结。项目既有 T35×User8 一次方向诊断采用原 37 条 criteria，得到 N=6.2182、I=7.4184、F=6.1602，说明细 rubric 能拉开差异；但 T35 已见结果、N/I 未过 DR gate、只有单 generation/同家族单 judge，故只能作开发和功效估计，不算确认性 H3。
+
+新包 `pilot/h3_factorial_redesign_v0_78/` 把实验定义为 `CN` task-only/no-ask、`CA` task-only/ask、`FN` PDR persona/no-ask、`FA` PDR persona/ask。主对照为 `CA−FN`，预期描述顺序 `FA≥CA>FN≥CN`，但禁止为得到排序更换 task、current-state、rubric 或排除规则。每条件最多一轮、三个 high-impact/low-evidence/user-owned atomic questions。`P_official` 保留官方 PDR prompt/criteria/weights/calculator；`P_strict` 只是同 criteria 的严格锚定 sensitivity，不能称官方 P；`P_HI` 检查 `asked→resolved→source routing→report decision` 反事实链。确认性批次至少两个输出前选定的 holdout、四模型、四条件、每 cell 三 generation，共 96 reports；同一模型内固定 harness、搜索、token/query/fetch budget 与报告 contract。
+
+H3 要可识别，full persona 必须解释为广义历史画像，而不是含全部当前 task value 的 oracle。确认性 current-state ledger 只能包含 persona 未明示、用户当下可回答、且对称替代会改变来源/短名单/建议/风险边界的值；这些值须在生成前获人类批准并冻结。若全部 gold preference 都从 full persona 直接推导，cold-start ask 理论上最多接近而不应稳定超过 full-persona no-ask，强行追求正差会成为设计性结论。跨模型最低凭证为 OpenAI、Anthropic、Gemini、Moonshot/Kimi、Tavily 与 Jina；OAgents 生态比较另需 SerpAPI。不得把 API harness 与消费级 ChatGPT/Perplexity Deep Research 产品条件混入同一因果表。
 
 ## 0AAAAAAAAAAAAAAAAAAA. 2026-09-12：前三题 clarification-harness feasibility 结果
 

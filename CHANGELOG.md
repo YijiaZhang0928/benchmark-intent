@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.78 H3 2×2 measurement repair and cross-model design - 2026-09-12
+
+- Reclassified the v0.76 `10/10` values as a five-leaf ceiling failure rather than complete satisfaction of all high-impact preferences; the five-leaf sum is explicitly not the official PDR P-score.
+- Audited the exact first-three PDR pairs. Released official criteria contain 34 leaves for Task1/User1 and 38 for Task2/User7; Task3/User10 is an exact public query pair but lacks released criteria in `criteria150_en.jsonl`.
+- Identified Task 3 prompt leakage and generic-best-practice overlap: MBA, work/family compatibility, time, cost, and practical value are already visible, so the task is retained only as a ceiling negative control.
+- Added `pilot/h3_factorial_redesign_v0_78/` with the four `CN/CA/FN/FA` cells, `CA−FN` primary contrast, maximum-three-question policy, two-holdout/96-report first confirmatory batch, and a no-post-output-replacement rule.
+- Separated the unmodified official `P_official` from anchor-calibrated `P_strict`, counterfactual decision-chain `P_HI`, and pairwise sensitivity; added a pre-run ceiling gate using generic, swapped, and matched calibration reports.
+- Recorded the exact API set for GPT, Claude, Gemini, Kimi, common search, and retrieval. Commercial product sessions remain ecological comparisons and are not mixed into the controlled API/harness factorial.
+
 ## v0.77 Three-task clarification-harness feasibility results - 2026-09-12
 
 - 从用户提供的 0912 workbook 冻结前 3 题、每题 5 条高影响偏好与 5 条 0/1/2 rubric；cold-start 首轮只传原 instruction，persona/rubric 不进入 agent 输入。

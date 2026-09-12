@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.77"
+manifest_version: "0.78"
 updated: "2026-09-12"
 status: working_hypothesis_frozen
 
@@ -65,6 +65,9 @@ active_sources:
   clarification_harness_3task_design: pilot/clarification_harness_3task_v0_76/design.json
   clarification_harness_3task_scores: pilot/clarification_harness_3task_v0_76/evaluation/aggregate_results.json
   clarification_harness_3task_execution_status: pilot/clarification_harness_3task_v0_76/execution_status.json
+  h3_factorial_redesign: pilot/h3_factorial_redesign_v0_78/design.json
+  h3_factorial_scoring: pilot/h3_factorial_redesign_v0_78/SCORING.md
+  h3_factorial_api_requirements: pilot/h3_factorial_redesign_v0_78/API_REQUIREMENTS.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv

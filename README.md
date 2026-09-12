@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.77
+## 当前方向：AskInfer-Bench v0.78
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -48,6 +48,8 @@ v0.76 在任何新报告生成前冻结 Open Deep Research 的同-backbone clari
 
 v0.77 完成 0912 workbook 前三题的 DeerFlow 2.0 × `gpt-5.6-sol` feasibility batch。两项方向证据为：T2/T3 两个合格 ask/no-ask 配对的平均 P 差 +2.17，以及五个合格 cold-start cell 中 Coverage@HI 与 P 的描述性相关 `r=0.535`；但 T3 ask 与 no-ask 打平，cold-start+ask 与 full-persona+no-ask 也打平 10:10，H3 未成立。六份合格报告中五份满分，三个 ask 条件还分别问了 8/8/7 个字段，均超出 ≤5 预算。因此该结果只支持继续优化 clarification routing，不支持“一般来说提问总是更好”。完整表、trace、盲评和限制见 [`pilot/clarification_harness_3task_v0_76/RESULTS.md`](pilot/clarification_harness_3task_v0_76/RESULTS.md)。
 
+v0.78 将上述 `10/10` 重新定性为评分天花板，而不是“全部 high-impact preferences 均满足”。五条 `0/1/2` 自建 rubric 不是官方 PDR P-score；T3 题面还直接暴露 MBA、工作与家庭约束，五条方向又大多是通用创业最佳实践，所以不适合作为 H3 主识别题。新设计冻结为 `ask/no-ask × cold-start/PDR-full-persona` 四条件，官方 PDR 动态细 criteria 与权重产生 `P_official`，另报严格锚定 `P_strict`、反事实高影响链 `P_HI` 和 pairwise sensitivity，禁止把三者混称。T35×User8 仅作已观察过的开发/功效 case；确认性结论至少使用两个未看分数的 holdout，并在生成前冻结 current-state ledger、对称替代、模型/工具/预算和排除规则。见 [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -57,10 +59,11 @@ v0.77 完成 0912 workbook 前三题的 DeerFlow 2.0 × `gpt-5.6-sol` feasibilit
 - [`proposal/AskInfer-Bench_两周执行Todo与任务手册.md`](proposal/AskInfer-Bench_两周执行Todo与任务手册.md)：详细、人话、可操作的任务卡、agent、运行规模、rubric、逐日门槛与摘要路线。
 - [`benchmark_schema/ask_infer_case.schema.yaml`](benchmark_schema/ask_infer_case.schema.yaml)：同任务用户差异、history observability、human validation 和实验条件 schema。
 - [`benchmark_schema/ask_infer_evaluation.protocol.yaml`](benchmark_schema/ask_infer_evaluation.protocol.yaml)：Ask/Infer 过程与最终评分、排名稳定性、统计和 Go/No-Go 协议。
-- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.77 源稿、执行冻结、PDR task slice、产品级 pilot、clarification harness、preference-chain 数据、交付物、归档和复用基础设施索引。
+- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.78 源稿、执行冻结、PDR task slice、产品级 pilot、clarification harness、H3 2×2 redesign、preference-chain 数据、交付物、归档和复用基础设施索引。
 - [`pilot/dr_harness_backbone_integration_v0_74/`](pilot/dr_harness_backbone_integration_v0_74/)：DeerFlow/Open Deep Research exact-instruction 配置、provider 状态、simulator protocol、runner、审计器和完整 smoke trace。
 - [`pilot/abstract_claim_validation_v0_75/`](pilot/abstract_claim_validation_v0_75/)：PDR-T35 同-backbone N/I/F/R 摘要主张验证、11 字段审计、盲评分数、DR 资格审计和 claim boundary。
 - [`pilot/clarification_harness_3task_v0_76/`](pilot/clarification_harness_3task_v0_76/)：前三题同骨干 ask/no-ask、T3 full-persona/no-ask、ODR clarification probe 与 21 次盲评结果。
+- [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)：H3 四条件设计、官方/严格/反事实评分边界、天花板 gate、跨模型成功规则与 API 清单。
 - [`proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md`](proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md)：当前可写、禁止写、保守英文摘要与升级结果句。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
 - [`proposal_assets/AskInfer-Bench_评测框架_v0.62.png`](proposal_assets/AskInfer-Bench_评测框架_v0.62.png)：3200×1800 主图；同名 SVG 可编辑。
