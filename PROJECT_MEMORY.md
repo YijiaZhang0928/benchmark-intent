@@ -3,10 +3,22 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-12
-当前版本：v0.81（IEO-v2 holdout A/B 运行前冻结）
+当前版本：v0.82（task-only cold start 与 67-leaf 微 rubric）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-12：task-only cold start 与 67-leaf 微 rubric
+
+用户指出 v0.80 的 instruction 仍然不是严格 cold start：它保留了本科/研究兴趣、MBA/工作家庭、供应链背景、金融背景和 AI/创业经历等个人信息。v0.82 将原 A 列明确重命名为 `source_enriched_task_instruction (not cold-start input)`，只作来源和对照；每题新增唯一的 `input/task_instruction for cold start`。新输入只保留任务目标、要求的交付物和会决定答案正确性的时间、预算、空间、法律/学术等硬约束，删除身份、教育职业史、家庭信息、学习/工作/消费风格、价值排序、隐藏 preference direction 以及显式 “do not assume / unless clarified” cue。cold-start ask 与 no-ask 必须逐字使用同一 task-only 输入，唯一操纵是 harness clarification policy。
+
+15 题均增加 Cold Start Audit，逐题列出 retained task constraints 与 removed personal/preference information，并登记 explicit ask cue removed、hidden preference ID exposed=0、person-swap invariant=Yes。自动扫描确认 K 列 15 条输入不含 User/persona ID、Txx-P/A preference ID、第一人称 persona 代词或 ask cue；但正式 counted run 前仍需人类逐题确认硬约束/个人信息边界。
+
+用户同时要求检查为何不同 report 经常同分。复核 v0.80 后确认，26 条 rubric 虽比最初五条细，但一条 criterion 仍常把 evidence、comparison、recommendation、action 和 counterfactual 捆在一起，judge 只能给一个整体分，继续存在 halo 与 compression。v0.82 将每个预定义 high-impact preference 拆为 11 个 micro leaves，每个 average-impact preference 拆为 4 个；每题 5 high + 3 average，共 67 条，15 题共 1,005 条。另保留 301 条未修改 released `P_official`，Detailed Rubrics 共 1,306 条记录。
+
+项目 strict score 采用 INTENT、SOURCE、EVIDENCE、TRADEOFF、DECISION、ACTION、TRACE 七维。普通 leaf 只检查一个 named fact、direct comparison、matched choice、mismatch penalty、implementation step、decision rule 或 consistency condition；TRACE 是唯一有意串联 preference→evidence→decision 的 mechanism leaf。每条必须保存最短 report span 或 `ABSENT`，不得从整体写作质量推断。generic report 对 high leaf 封顶 5、average leaf 封顶 6；这些 project caps 不用于官方 PDR evaluator。
+
+Rubric Audit 新增运行前区分度 gate：matched−swapped `P_strict >=0.75`，且至少 30% high-impact leaves 改变至少 2 分；不通过的 task–rubric bundle 不进入 counted cross-model comparison。该 gate 是在模型输出前冻结的项目测量门，不是已有结果，也不能为追求 H3 排序而调参。保存文件验证为 15 cold inputs、1,005 strict rows、每题 67、七维权重和为 1、必填 atomic fields 完整、公式错误 0。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAA. 2026-09-12：IEO-v2 holdout A/B 运行前冻结
 

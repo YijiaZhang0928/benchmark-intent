@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.80"
+manifest_version: "0.82"
 updated: "2026-09-12"
 status: working_hypothesis_frozen
 
@@ -69,6 +69,7 @@ active_sources:
   h3_factorial_scoring: pilot/h3_factorial_redesign_v0_78/SCORING.md
   h3_factorial_api_requirements: pilot/h3_factorial_redesign_v0_78/API_REQUIREMENTS.md
   h3_rubric_expansion: pilot/h3_rubric_expansion_v0_80/README.md
+  h3_cold_start_micro_rubrics: pilot/h3_cold_start_micro_rubrics_v0_82/README.md
   odr_ieo_ab_results: pilot/odr_ieo_ab_v0_76/RESULTS.md
   odr_ieo_ab_protocol: pilot/odr_ieo_ab_v0_76/protocol.md
   odr_ieo_ab_scores: pilot/odr_ieo_ab_v0_76/evaluation/results.json
@@ -373,6 +374,24 @@ scope:
     score_sets: [P_official, P_strict, P_HI, Coverage_at_HighImpact]
     confirmatory_reports_planned: 96
     claim_boundary: strict_rubric_increases_sensitivity_but_does_not_preordain_score_separation_or_validate_h3
+  h3_cold_start_micro_rubrics:
+    package_version: "0.82"
+    status: frozen_draft_pending_human_approval_and_calibration_gate
+    cold_start_inputs: 15
+    cold_start_input_column: input/task_instruction for cold start
+    enriched_source_is_cold_start_eligible: false
+    explicit_clarification_cues_in_cold_inputs: 0
+    hidden_preference_ids_in_cold_inputs: 0
+    person_swap_invariant_rows: 15
+    strict_leaves_per_task: 67
+    strict_leaves_total: 1005
+    high_impact_leaves_per_preference: 11
+    average_impact_leaves_per_preference: 4
+    project_dimensions: [INTENT, SOURCE, EVIDENCE, TRADEOFF, DECISION, ACTION, TRACE]
+    discrimination_gate:
+      matched_minus_swapped_minimum: 0.75
+      minimum_high_impact_leaf_share_changing_by_two_points: 0.30
+    claim_boundary: construction_is_more_granular_but_empirical_score_separation_requires_pre_run_calibration
 
 reused_infrastructure:
   - interaction_env
@@ -383,6 +402,8 @@ reused_infrastructure:
   - rubric_provenance_and_matched_swapped_assets
 
 claim_boundaries:
+  - enriched_source_instruction_is_not_a_valid_cold_start_input
+  - micro_rubric_count_does_not_itself_demonstrate_score_separation
   - project_strict_score_is_not_official_pdr_p_score
   - rubric_expansion_does_not_preordain_model_ranking_or_validate_h3
   - odr_ieo_ab_does_not_validate_better_question_selection

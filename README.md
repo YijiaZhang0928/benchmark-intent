@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.81
+## 当前方向：AskInfer-Bench v0.82
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -56,6 +56,8 @@ v0.80 将 0912 workbook 的 15 个 task 全部扩展为 task-specific 严格 rub
 
 v0.81 在新输出前冻结第二条 stock ODR vs IEO 对照。T35 的 safety/risk 漏问被重新拆解为“不可协商的安全底线”与“底线之上的用户风险/冗余偏好”，说明原 high-impact unit 粒度与 ownership 过粗。IEO-v2 新增 user answerability、research 后 residuality、具体 counterfactual change 与 normative-floor veto；holdout 预先选为 adapted Task9 / PDR-T21 × User12 投资题，包含 5 个 high 与 3 个 average user-owned units。`Recall@High` 保持主机制指标，`Recall@High+Average` 和 2:1 impact-weighted recall 只作预注册次指标并强制同报，禁止按结果换题或换口径。协议见 [`pilot/odr_ieo_v2_ab_v0_81/protocol.md`](pilot/odr_ieo_v2_ab_v0_81/protocol.md)。
 
+v0.82 修正 cold-start 输入泄露：原 enriched instruction 仍含教育、职业、家庭或 preference-adjacent 信息，只保留作来源对照，不得送入 cold-start。15 题各新增一份 person-swap invariant 的 task-only input，只保留目标、交付物与时间/预算/物理等解题硬约束，并删除 persona、价值排序和显式 ask cue；ask/no-ask 两臂使用相同文本。`P_strict` 同时从每题 26 条扩展为 67 条、全表 1,005 条；每个 high-impact preference 拆成 11 个、average 拆成 4 个可独立判分的微 criterion，并新增 INTENT/SOURCE/EVIDENCE/TRADEOFF/DECISION/ACTION/TRACE 七维、span-level judge evidence 和 matched/swapped 区分度 gate。详见 [`pilot/h3_cold_start_micro_rubrics_v0_82/`](pilot/h3_cold_start_micro_rubrics_v0_82/)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -65,7 +67,7 @@ v0.81 在新输出前冻结第二条 stock ODR vs IEO 对照。T35 的 safety/ri
 - [`proposal/AskInfer-Bench_两周执行Todo与任务手册.md`](proposal/AskInfer-Bench_两周执行Todo与任务手册.md)：详细、人话、可操作的任务卡、agent、运行规模、rubric、逐日门槛与摘要路线。
 - [`benchmark_schema/ask_infer_case.schema.yaml`](benchmark_schema/ask_infer_case.schema.yaml)：同任务用户差异、history observability、human validation 和实验条件 schema。
 - [`benchmark_schema/ask_infer_evaluation.protocol.yaml`](benchmark_schema/ask_infer_evaluation.protocol.yaml)：Ask/Infer 过程与最终评分、排名稳定性、统计和 Go/No-Go 协议。
-- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.78 源稿、执行冻结、PDR task slice、产品级 pilot、clarification harness、H3 2×2 redesign、preference-chain 数据、交付物、归档和复用基础设施索引。
+- [`benchmark_schema/ask_infer_benchmark.manifest.yaml`](benchmark_schema/ask_infer_benchmark.manifest.yaml)：v0.82 源稿、执行冻结、PDR task slice、产品级 pilot、clarification harness、H3 2×2 redesign、cold-start/rubric measurement、preference-chain 数据、交付物、归档和复用基础设施索引。
 - [`pilot/dr_harness_backbone_integration_v0_74/`](pilot/dr_harness_backbone_integration_v0_74/)：DeerFlow/Open Deep Research exact-instruction 配置、provider 状态、simulator protocol、runner、审计器和完整 smoke trace。
 - [`pilot/abstract_claim_validation_v0_75/`](pilot/abstract_claim_validation_v0_75/)：PDR-T35 同-backbone N/I/F/R 摘要主张验证、11 字段审计、盲评分数、DR 资格审计和 claim boundary。
 - [`pilot/clarification_harness_3task_v0_76/`](pilot/clarification_harness_3task_v0_76/)：前三题同骨干 ask/no-ask、T3 full-persona/no-ask、ODR clarification probe 与 21 次盲评结果。
@@ -73,6 +75,7 @@ v0.81 在新输出前冻结第二条 stock ODR vs IEO 对照。T35 的 safety/ri
 - [`pilot/odr_ieo_v2_ab_v0_81/`](pilot/odr_ieo_v2_ab_v0_81/)：T35 ownership/granularity 诊断、Task21/User12 holdout、IEO-v2 与 high/high+average recall 的运行前冻结。
 - [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)：H3 四条件设计、官方/严格/反事实评分边界、天花板 gate、跨模型成功规则与 API 清单。
 - [`pilot/h3_rubric_expansion_v0_80/`](pilot/h3_rubric_expansion_v0_80/)：15 题严格 rubric 扩展、PDR exact-pair provenance、评分锚点、运行前冻结边界与首批 API 预算假设。
+- [`pilot/h3_cold_start_micro_rubrics_v0_82/`](pilot/h3_cold_start_micro_rubrics_v0_82/)：15 题真正 task-only cold-start 输入、person-swap audit、七维 67-leaf 微 rubric 和 pre-run discrimination gate。
 - [`proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md`](proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md)：当前可写、禁止写、保守英文摘要与升级结果句。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
 - [`proposal_assets/AskInfer-Bench_评测框架_v0.62.png`](proposal_assets/AskInfer-Bench_评测框架_v0.62.png)：3200×1800 主图；同名 SVG 可编辑。

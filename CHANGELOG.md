@@ -1,5 +1,16 @@
 # benchmark-intent 设计迭代记录
 
+## v0.82 Task-only cold starts and atomic micro-rubrics - 2026-09-12
+
+- Corrected the v0.80 cold-start leakage. The enriched source instructions are now explicitly non-cold-start provenance; a separate task-only input is supplied for all 15 tasks.
+- Retained only goals, deliverables and correctness-critical time, budget, spatial, legal or academic constraints. Removed persona background, preference values, first-person persona framing and explicit clarification cues.
+- Added a 15-row Cold Start Audit covering retained constraints, removed information, ask-cue removal, hidden-ID exposure and person-swap invariance.
+- Expanded `P_strict` from 26 to 67 leaves per task: 11 leaves for each of five high-impact preferences and four leaves for each of three average-impact preferences. The workbook now contains 1,005 project leaves plus 301 unchanged released official leaves.
+- Replaced four broad project dimensions with seven mechanism-sensitive dimensions: INTENT, SOURCE, EVIDENCE, TRADEOFF, DECISION, ACTION and TRACE.
+- Required span-level evidence or `ABSENT` for every project leaf, tightened generic caps to 5/6 and added a dedicated counterfactual-boundary leaf for every high-impact preference.
+- Added a pre-run discrimination gate using generic, matched and swapped calibration reports. The gate is a frozen measurement check and does not assert that H3 or score separation has already been observed.
+- Validated 15 cold inputs, 1,005 strict rows, 67 rows per task, complete atomic fields, normalized dimension/criterion weights and zero formula-error matches in the saved workbook.
+
 ## v0.81 IEO-v2 holdout protocol - 2026-09-12
 
 - 将 T35 漏问的 safety/risk 单元拆解为不可协商的安全底线与底线之上的用户风险/冗余偏好，记录原 high-impact ontology 粒度与 ownership 混合问题。
