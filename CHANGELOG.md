@@ -1,5 +1,12 @@
 # benchmark-intent 设计迭代记录
 
+## v0.76 Open Deep Research IEO clarification A/B protocol - 2026-09-12
+
+- 在报告生成前锁定 PDR-T35 × User8 的 stock Open Deep Research vs IEO/ownership-aware clarification 对照；同一 `gpt-5.6-sol`、搜索/抓取工具、research budget、simulator、报告图和官方 PDR evaluator。
+- IEO gate 显式按 deliverable influence、现有 preference evidence 与 ownership 路由：只向用户询问 consequential、unresolved、user-owned 变量；research-owned facts 搜索，agent-recommended trade-offs 研究后建议。
+- 冻结一轮最多五个 atomic questions、P-score 差、high-impact recall、research-owned question error、resolved-to-reflected chain 与 DR qualification；八个 preference units 和 criteria 只用于事后诊断/评分，不进入 agent 输入。
+- 该版本先提交 protocol，结果必须在后续独立 commit 中记录，防止看到输出后改成功标准。
+
 ## v0.75 ICLR abstract claim falsification mini-pilot - 2026-09-10
 
 - 在任何新 annotation 前复用已冻结的 PDR-T35 × User8 八个 preference units 与 37 条原始 criteria，用同一 `gpt-5.6-sol`/DeerFlow 运行 N no-ask、I calibrated interactive、F full-persona optional clarification 和 R recognition-only probe。

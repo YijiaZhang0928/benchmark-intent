@@ -2,11 +2,17 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-10
-当前版本：v0.75（ICLR 摘要主张小样本证伪验证）
+最后更新：2026-09-12
+当前版本：v0.76（Open Deep Research IEO clarification A/B，运行前冻结）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAA. 2026-09-12：Open Deep Research IEO A/B 运行前冻结
+
+用户要求直接改造 Open Deep Research，并与同一 backbone 的原版做 P-score 对照。为避免把换模型、换搜索、换 task 或换 judge 误当成 clarification 架构提升，本轮固定 PDR-T35 × User8、`gpt-5.6-sol`、Open Deep Research commit `1b7d2e80db9faa586165c60e09096dbbfd483a64`、同一 `simple_http` search/fetch、同一 research budget、同一 persona-bounded selective-disclosure simulator、同一报告图与官方 37 条 PDR personalization evaluator；唯一操纵是 stock generic clarification node 对比 influence–evidence–ownership（IEO）node。
+
+IEO node 从当前可见对话生成候选 preference ledger，对每项判断 deliverable influence、现有 preference evidence 与 ownership。只问 high-value、low-evidence、user-owned 的变量；research-owned factual uncertainty 交给搜索，agent-recommended trade-off 交给研究后建议。两条件都最多一轮、五个 atomic questions，且 persona、八个冻结 preference units 与 PDR criteria 都不进入 agent 输入。主要量是 `P_IEO − P_stock`；同时审计 high-impact recall、research-owned question error、resolved-to-reflected chain 与 DR qualification。运行前预测是 IEO 应覆盖 P01 activity/environment、P02 safety/risk、P03 budget/quality 中更多关键项，并把取得的值落实到报告；如果只是多问但 recall/P-score/answer-use 不提升，则判定失败。完整预注册见 `pilot/odr_ieo_ab_v0_76/protocol.md`。该轮只有每条件一次生成与一次同家族 judge，不作显著性或总体优越性主张。
 
 ## 0AAAAAAAAAAAAAAAAA. 2026-09-10：ICLR 摘要主张小样本证伪验证
 

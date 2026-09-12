@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.75
+## 当前方向：AskInfer-Bench v0.76
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -43,6 +43,8 @@ v0.73 完成 15 题官方原文与 v0.72 改写题的逐题对照。结论改为
 v0.74 跑通了 exact-instruction 的开源 Deep Research harness 集成。官方 PDR-T33 原 instruction 在首轮不带 persona、rubric、history 或显式提问提示：Open Deep Research 的 stock clarification node 经 Codex adapter 能先询问 task-relevant variables；DeerFlow calibrated path 则在两轮 persona-bounded clarification 后完成 38 个 distinct queries、10 次 fetch 尝试、6 个有效正文来源和 6 个引用 URL 的完整报告，满足冻结的 DR gate。匿名 Jina/DuckDuckGo 失败路径被保留为工程诊断，不能算模型重复。当前只有 `gpt-5.6-sol` 经 Codex OAuth live；Claude 账户余额、Gemini/DeepSeek/Kimi API 凭证仍是 provider blocker。因此本轮只证明 harness plumbing 和一个 DR-qualified episode，不报告 P-score 或跨模型优劣。完整配置、runner、simulator protocol 与 trace 见 [`pilot/dr_harness_backbone_integration_v0_74/`](pilot/dr_harness_backbone_integration_v0_74/)。
 
 v0.75 用 PDR-T35 × User8 对 ICLR 摘要中的强主张做了一个同 backbone、同 harness 的证伪导向 mini-pilot。互动条件问到 3/8 个冻结 preference units、high-impact recall 2/3、delta-weighted coverage 47.1%；Full Persona 五字段中 2 个明显 redundant、1 个 mixed、2 个合理 residual，且新增 resolved value 为 0。一次盲评 P-score 为 no-ask 6.2182、interactive 7.4184、full-persona 6.1602，但 N/I 未通过冻结的 5-source/5-citation DR gate，I/F 还需 bounded finalizer，因此该排序只作方向性诊断。recognition-only probe 没有比实际提问多覆盖冻结 unit，强版本 recognition–action gap 在本 task 不成立；cross-model ranking reversal 未测试。摘要安全结论、11 字段审计、preference chain、盲评与完整 trace 见 [`pilot/abstract_claim_validation_v0_75/RESULTS.md`](pilot/abstract_claim_validation_v0_75/RESULTS.md)。
+
+v0.76 在任何新报告生成前冻结 Open Deep Research 的同-backbone clarification-policy A/B：PDR-T35 × User8、`gpt-5.6-sol`、相同搜索/研究预算/模拟器/报告图与官方 PDR evaluator，只切换 stock generic clarification 与 influence–evidence–ownership（IEO）clarification node。IEO 只优先询问会改变 deliverable、当前证据不足且真正由用户决定的变量；research-owned facts 交给搜索，agent-recommended trade-offs 交给研究后建议。预注册协议见 [`pilot/odr_ieo_ab_v0_76/protocol.md`](pilot/odr_ieo_ab_v0_76/protocol.md)。
 
 ## 当前交付物
 
