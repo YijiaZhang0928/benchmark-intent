@@ -1,0 +1,247 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/clarification_harness_3task_v0_76/runs/T2/I/r1/turn_002_summary.json",
+  "distinct_search_queries": 19,
+  "fetch_attempts": 30,
+  "substantive_fetch_successes": 17,
+  "report_cited_url_count": 14,
+  "successful_fetched_domains": [
+    "education.ec.europa.eu",
+    "www.ica.gov.sg",
+    "www.jasso.go.jp",
+    "www.moj.go.jp",
+    "www.ntu.edu.sg",
+    "www.sophia.ac.jp",
+    "www.studyinjapan.go.jp",
+    "www.uva.nl",
+    "www.waseda.jp"
+  ],
+  "declared_primary_domains": [
+    "education.ec.europa.eu",
+    "www.ica.gov.sg",
+    "www.jasso.go.jp",
+    "www.moj.go.jp"
+  ],
+  "matched_primary_domains": [
+    "education.ec.europa.eu",
+    "www.ica.gov.sg",
+    "www.jasso.go.jp",
+    "www.moj.go.jp"
+  ],
+  "structural_gate_pass": true,
+  "primary_source_gate": "pass",
+  "deep_research_qualified": true,
+  "fetches": [
+    {
+      "url": "https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 139,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 7132,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/exchange",
+      "domain": "www.waseda.jp",
+      "readable_characters": 1675,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
+      "domain": "www.jasso.go.jp",
+      "readable_characters": 3204,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://travel.state.gov/content/travel/en/us-visas/study/exchange.html",
+      "domain": "travel.state.gov",
+      "readable_characters": 304,
+      "substantive_success": false,
+      "error": "Error fetching https://travel.state.gov/content/travel/en/us-visas/study/exchange.html: HTTPStatusError: Client error '403 Forbidden' for url 'https://travel.state.gov/content/travel/en/us-visas/study/exchange.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://education.ec.europa.eu/education-levels/higher-education/inclusive-and-connected-higher-education/european-credit-transfer-and-accumulation-system",
+      "domain": "education.ec.europa.eu",
+      "readable_characters": 3125,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/exchange.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 4446,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.usc.edu/admission/international-students/",
+      "domain": "www.usc.edu",
+      "readable_characters": 268,
+      "substantive_success": false,
+      "error": "Error fetching https://www.usc.edu/admission/international-students/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.usc.edu/admission/international-students/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.ica.gov.sg/reside/STP/apply/ihl",
+      "domain": "www.ica.gov.sg",
+      "readable_characters": 3966,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.studyinjapan.go.jp/en/planning/expenses/",
+      "domain": "www.studyinjapan.go.jp",
+      "readable_characters": 266,
+      "substantive_success": false,
+      "error": "Error fetching https://www.studyinjapan.go.jp/en/planning/expenses/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.studyinjapan.go.jp/en/planning/expenses/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/global-exchange-programme/global-exchange-programme.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 2285,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/academic-climate-and-teaching-at-the-uva/academic-climate-and-teaching-at-the-uva.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 720,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/fees-and-funding/living-expenses/living-expenses.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 323,
+      "substantive_success": false,
+      "error": "Error fetching https://www.uva.nl/en/education/fees-and-funding/living-expenses/living-expenses.html: HTTPStatusError: Client error '404 ' for url 'https://www.uva.nl/en/education/fees-and-funding/living-expenses/living-expenses.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.uva.nl/en/education/practical-information/visas-and-permits/visas-and-permits.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 3327,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes/coursework-programmes/master-of-media-and-communication",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 416,
+      "substantive_success": false,
+      "error": "Error fetching https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes/coursework-programmes/master-of-media-and-communication: HTTPStatusError: Client error '404 Not Found' for url 'https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes/coursework-programmes/master-of-media-and-communication'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/life-at-ntu/accommodation/graduate-housing",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 1927,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.nus.edu.sg/osa/student-services/hostel-admission/non-graduating/hostel-application",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 152,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/osa/student-services/hostel-admission/non-graduating/hostel-application"
+    },
+    {
+      "url": "https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers/exchange-information",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 160,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers/exchange-information"
+    },
+    {
+      "url": "https://www.waseda.jp/fire/gsiccs/en/applicants/admission/",
+      "domain": "www.waseda.jp",
+      "readable_characters": 278,
+      "substantive_success": false,
+      "error": "Error fetching https://www.waseda.jp/fire/gsiccs/en/applicants/admission/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/fire/gsiccs/en/applicants/admission/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.waseda.jp/fire/gsiccs/en/about/curriculum",
+      "domain": "www.waseda.jp",
+      "readable_characters": 1786,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/from-waseda/qualification",
+      "domain": "www.waseda.jp",
+      "readable_characters": 280,
+      "substantive_success": false,
+      "error": "Error fetching https://www.waseda.jp/inst/cie/en/from-waseda/qualification: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/inst/cie/en/from-waseda/qualification'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.waseda.jp/inst/rlc/en/student_dormitory/exchange/",
+      "domain": "www.waseda.jp",
+      "readable_characters": 4183,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/life/prepare",
+      "domain": "www.waseda.jp",
+      "readable_characters": 254,
+      "substantive_success": false,
+      "error": "Error fetching https://www.waseda.jp/inst/cie/en/life/prepare: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/inst/cie/en/life/prepare'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/life/cost",
+      "domain": "www.waseda.jp",
+      "readable_characters": 248,
+      "substantive_success": false,
+      "error": "Error fetching https://www.waseda.jp/inst/cie/en/life/cost: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/inst/cie/en/life/cost'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.waseda.jp/fire/gsiccs/en/about/overview",
+      "domain": "www.waseda.jp",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/fire/gsiccs/en/about/faculty",
+      "domain": "www.waseda.jp",
+      "readable_characters": 871,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.sophia.ac.jp/eng/admissions-and-aid/exchangeprograms/",
+      "domain": "www.sophia.ac.jp",
+      "readable_characters": 1693,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.sophia.ac.jp/eng/academics/g/g_gs/g_gs_globalstudies/",
+      "domain": "www.sophia.ac.jp",
+      "readable_characters": 292,
+      "substantive_success": false,
+      "error": "Error fetching https://www.sophia.ac.jp/eng/academics/g/g_gs/g_gs_globalstudies/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.sophia.ac.jp/eng/academics/g/g_gs/g_gs_globalstudies/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.studyinjapan.go.jp/en/life/cost-of-living/",
+      "domain": "www.studyinjapan.go.jp",
+      "readable_characters": 1463,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.moj.go.jp/isa/applications/status/student.html",
+      "domain": "www.moj.go.jp",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

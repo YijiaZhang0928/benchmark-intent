@@ -1,0 +1,710 @@
+{
+  "schema_version": "0.75",
+  "status": "awaiting_clarification",
+  "asked_clarification": true,
+  "clarification_calls": [
+    {
+      "name": "ask_clarification",
+      "args": {
+        "question": "To make the comparison and 1–2 year plan decision-ready, please provide the constraints below. These materially affect which programs are accessible and how the plan should balance structured study with venture experiments.",
+        "clarification_type": "missing_info",
+        "context": "Location determines degree, executive-education, and accelerator access; budget and available time drive feasibility; venture stage and format preferences change the recommended sequence. If you are genuinely undecided on a field, select “No preference / recommend options,” and I will preserve alternative pathways rather than assume.",
+        "options": null,
+        "fields": [
+          {
+            "name": "location",
+            "label": "Home city/country and acceptable travel radius",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., Toronto; local plus up to four international trips/year"
+          },
+          {
+            "name": "weekly_time",
+            "label": "Sustainable weekly time alongside work and family",
+            "type": "select",
+            "required": true,
+            "options": [
+              "3–5 hours",
+              "6–8 hours",
+              "9–12 hours",
+              "13–15 hours",
+              "Varies significantly"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "annual_budget",
+            "label": "Approximate annual out-of-pocket budget",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Under US$2,000",
+              "US$2,000–10,000",
+              "US$10,000–30,000",
+              "US$30,000–75,000",
+              "Over US$75,000",
+              "Flexible if ROI is compelling"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "venture_stage",
+            "label": "Current venture stage",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Exploring broadly; no idea yet",
+              "Several problem areas or ideas",
+              "One idea, not yet validated",
+              "Actively validating or prototyping",
+              "Operating an early venture"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "industry_focus",
+            "label": "Industry or venture focus, if any",
+            "type": "text",
+            "required": false,
+            "options": [],
+            "placeholder": "e.g., B2B SaaS, climate, healthcare—or “sector-agnostic”"
+          },
+          {
+            "name": "format_openness",
+            "label": "Formats you are genuinely open to",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Part-time degree",
+              "In-person executive education",
+              "Live online cohort",
+              "Self-paced online courses",
+              "Accelerator/incubator",
+              "Mentoring or peer network",
+              "Independent venture-building"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "primary_outcomes",
+            "label": "Choose up to three outcomes that matter most",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Find/validate a strong problem",
+              "Develop product and customer-discovery skills",
+              "Build a cofounder/team network",
+              "Gain access to mentors and operators",
+              "Learn fundraising and meet investors",
+              "Strengthen business-model and go-to-market skills",
+              "Earn a recognized credential",
+              "Launch a venture while retaining my job"
+            ],
+            "placeholder": ""
+          }
+        ]
+      },
+      "id": "call_txjE5a2jpQmuFGnmXugjJYzU"
+    }
+  ],
+  "clarification_artifacts": [
+    {
+      "human_input": {
+        "version": 2,
+        "kind": "human_input_request",
+        "source": "ask_clarification",
+        "request_id": "clarification:call_txjE5a2jpQmuFGnmXugjJYzU",
+        "clarification_type": "missing_info",
+        "question": "To make the comparison and 1–2 year plan decision-ready, please provide the constraints below. These materially affect which programs are accessible and how the plan should balance structured study with venture experiments.",
+        "input_mode": "form",
+        "tool_call_id": "call_txjE5a2jpQmuFGnmXugjJYzU",
+        "context": "Location determines degree, executive-education, and accelerator access; budget and available time drive feasibility; venture stage and format preferences change the recommended sequence. If you are genuinely undecided on a field, select “No preference / recommend options,” and I will preserve alternative pathways rather than assume.",
+        "fields": [
+          {
+            "name": "location",
+            "label": "Home city/country and acceptable travel radius",
+            "type": "text",
+            "required": true,
+            "placeholder": "e.g., Toronto; local plus up to four international trips/year"
+          },
+          {
+            "name": "weekly_time",
+            "label": "Sustainable weekly time alongside work and family",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "weekly_time-option-1",
+                "label": "3–5 hours",
+                "value": "3–5 hours"
+              },
+              {
+                "id": "weekly_time-option-2",
+                "label": "6–8 hours",
+                "value": "6–8 hours"
+              },
+              {
+                "id": "weekly_time-option-3",
+                "label": "9–12 hours",
+                "value": "9–12 hours"
+              },
+              {
+                "id": "weekly_time-option-4",
+                "label": "13–15 hours",
+                "value": "13–15 hours"
+              },
+              {
+                "id": "weekly_time-option-5",
+                "label": "Varies significantly",
+                "value": "Varies significantly"
+              }
+            ]
+          },
+          {
+            "name": "annual_budget",
+            "label": "Approximate annual out-of-pocket budget",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "annual_budget-option-1",
+                "label": "Under US$2,000",
+                "value": "Under US$2,000"
+              },
+              {
+                "id": "annual_budget-option-2",
+                "label": "US$2,000–10,000",
+                "value": "US$2,000–10,000"
+              },
+              {
+                "id": "annual_budget-option-3",
+                "label": "US$10,000–30,000",
+                "value": "US$10,000–30,000"
+              },
+              {
+                "id": "annual_budget-option-4",
+                "label": "US$30,000–75,000",
+                "value": "US$30,000–75,000"
+              },
+              {
+                "id": "annual_budget-option-5",
+                "label": "Over US$75,000",
+                "value": "Over US$75,000"
+              },
+              {
+                "id": "annual_budget-option-6",
+                "label": "Flexible if ROI is compelling",
+                "value": "Flexible if ROI is compelling"
+              }
+            ]
+          },
+          {
+            "name": "venture_stage",
+            "label": "Current venture stage",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "venture_stage-option-1",
+                "label": "Exploring broadly; no idea yet",
+                "value": "Exploring broadly; no idea yet"
+              },
+              {
+                "id": "venture_stage-option-2",
+                "label": "Several problem areas or ideas",
+                "value": "Several problem areas or ideas"
+              },
+              {
+                "id": "venture_stage-option-3",
+                "label": "One idea, not yet validated",
+                "value": "One idea, not yet validated"
+              },
+              {
+                "id": "venture_stage-option-4",
+                "label": "Actively validating or prototyping",
+                "value": "Actively validating or prototyping"
+              },
+              {
+                "id": "venture_stage-option-5",
+                "label": "Operating an early venture",
+                "value": "Operating an early venture"
+              }
+            ]
+          },
+          {
+            "name": "industry_focus",
+            "label": "Industry or venture focus, if any",
+            "type": "text",
+            "required": false,
+            "placeholder": "e.g., B2B SaaS, climate, healthcare—or “sector-agnostic”"
+          },
+          {
+            "name": "format_openness",
+            "label": "Formats you are genuinely open to",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              {
+                "id": "format_openness-option-1",
+                "label": "Part-time degree",
+                "value": "Part-time degree"
+              },
+              {
+                "id": "format_openness-option-2",
+                "label": "In-person executive education",
+                "value": "In-person executive education"
+              },
+              {
+                "id": "format_openness-option-3",
+                "label": "Live online cohort",
+                "value": "Live online cohort"
+              },
+              {
+                "id": "format_openness-option-4",
+                "label": "Self-paced online courses",
+                "value": "Self-paced online courses"
+              },
+              {
+                "id": "format_openness-option-5",
+                "label": "Accelerator/incubator",
+                "value": "Accelerator/incubator"
+              },
+              {
+                "id": "format_openness-option-6",
+                "label": "Mentoring or peer network",
+                "value": "Mentoring or peer network"
+              },
+              {
+                "id": "format_openness-option-7",
+                "label": "Independent venture-building",
+                "value": "Independent venture-building"
+              }
+            ]
+          },
+          {
+            "name": "primary_outcomes",
+            "label": "Choose up to three outcomes that matter most",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              {
+                "id": "primary_outcomes-option-1",
+                "label": "Find/validate a strong problem",
+                "value": "Find/validate a strong problem"
+              },
+              {
+                "id": "primary_outcomes-option-2",
+                "label": "Develop product and customer-discovery skills",
+                "value": "Develop product and customer-discovery skills"
+              },
+              {
+                "id": "primary_outcomes-option-3",
+                "label": "Build a cofounder/team network",
+                "value": "Build a cofounder/team network"
+              },
+              {
+                "id": "primary_outcomes-option-4",
+                "label": "Gain access to mentors and operators",
+                "value": "Gain access to mentors and operators"
+              },
+              {
+                "id": "primary_outcomes-option-5",
+                "label": "Learn fundraising and meet investors",
+                "value": "Learn fundraising and meet investors"
+              },
+              {
+                "id": "primary_outcomes-option-6",
+                "label": "Strengthen business-model and go-to-market skills",
+                "value": "Strengthen business-model and go-to-market skills"
+              },
+              {
+                "id": "primary_outcomes-option-7",
+                "label": "Earn a recognized credential",
+                "value": "Earn a recognized credential"
+              },
+              {
+                "id": "primary_outcomes-option-8",
+                "label": "Launch a venture while retaining my job",
+                "value": "Launch a venture while retaining my job"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "all_observed_tools": [
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/custom/clarification-calibration/SKILL.md",
+        "description": "Load the clarification-calibration workflow before assessing whether user preferences are needed.",
+        "start_line": 1,
+        "end_line": 400
+      },
+      "id": "call_CXpJldDBPdziFFFSLpNcTx2l"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_CXpJldDBPdziFFFSLpNcTx2l",
+      "content": "Error: File not found: /mnt/skills/custom/clarification-calibration/SKILL.md",
+      "artifact": null
+    },
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/legacy/clarification-calibration/SKILL.md",
+        "description": "Load the required clarification-calibration workflow.",
+        "start_line": 1,
+        "end_line": 400
+      },
+      "id": "call_EZuN4xkSrEGemiCoRQArNTJm"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_EZuN4xkSrEGemiCoRQArNTJm",
+      "content": "---\nname: clarification-calibration\ndescription: Calibrate whether to ask for task-specific user information before decision-ready deep research. Use when missing user goals, constraints, or trade-offs could change the evidence, recommendations, or final decision; do not use for fact-only research.\n---\n\n# Clarification Calibration\n\nBefore searching, decide whether the instruction contains enough user-owned information to produce a decision-ready deliverable.\n\nKeep the user's message unchanged. Do not request or infer a hidden persona, evaluation criteria, or account history.\n\n## Decision rule\n\nClassify unresolved variables by ownership:\n\n- **User-owned:** goals, constraints, priorities, acceptable trade-offs, intended use, risk tolerance, resources, or personal circumstances. These may warrant clarification.\n- **Research-owned:** current facts, option availability, prices, regulations, empirical effectiveness, feasibility, or forecasts. Research these; do not ask the user to supply the answer.\n- **Agent-recommended:** choices the agent should recommend after research. Do not transfer the decision back to the user merely to avoid analysis.\n\nAsk only when all are true:\n\n1. The value is not already supported by strong evidence in the instruction.\n2. The user owns the value and can reasonably answer it.\n3. Different plausible answers would materially change the evidence gathered, shortlist, recommendation, action plan, or risk boundary.\n4. The expected decision value of the answer justifies the user burden.\n\nDo not ask about low-impact formatting preferences, facts that should be researched, or information that would not change the deliverable. Do not ask merely because some detail is absent.\n\nIf clarification is warranted, use `ask_clarification` before beginning research. Ask the smallest high-yield question or compact form that resolves the most influential uncertainty; do not impose a fixed number of questions. Explain briefly what decision the answer will change. Do not call search or other tools in the same turn.\n\nIf the instruction is already sufficient, proceed without asking and make any residual assumptions explicit in the research plan.\n\nAfter sufficient user-owned information is available, follow the `deep-research` skill: plan multiple research branches, fetch full sources, resolve conflicting evidence, and produce a source-grounded final deliverable. In the final report, visibly implement resolved user information in evidence selection, recommendations, and action steps rather than merely mentioning it.\n\nFor a counted Deep Research episode, do not draft the final report until the trace contains at least three distinct search queries or research branches and at least five successful, substantive `web_fetch` calls. A fetch result marked `Error` or containing fewer than 300 readable characters does not count. When the task permits, at least two fetched sources must be primary or authoritative. Search-result titles and snippets are discovery aids, not evidence; factual claims must be grounded in fetched content. Cite only sources whose content was successfully fetched in this run.",
+      "artifact": null
+    },
+    {
+      "name": "ask_clarification",
+      "args": {
+        "question": "To make the comparison and 1–2 year plan decision-ready, please provide the constraints below. These materially affect which programs are accessible and how the plan should balance structured study with venture experiments.",
+        "clarification_type": "missing_info",
+        "context": "Location determines degree, executive-education, and accelerator access; budget and available time drive feasibility; venture stage and format preferences change the recommended sequence. If you are genuinely undecided on a field, select “No preference / recommend options,” and I will preserve alternative pathways rather than assume.",
+        "options": null,
+        "fields": [
+          {
+            "name": "location",
+            "label": "Home city/country and acceptable travel radius",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., Toronto; local plus up to four international trips/year"
+          },
+          {
+            "name": "weekly_time",
+            "label": "Sustainable weekly time alongside work and family",
+            "type": "select",
+            "required": true,
+            "options": [
+              "3–5 hours",
+              "6–8 hours",
+              "9–12 hours",
+              "13–15 hours",
+              "Varies significantly"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "annual_budget",
+            "label": "Approximate annual out-of-pocket budget",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Under US$2,000",
+              "US$2,000–10,000",
+              "US$10,000–30,000",
+              "US$30,000–75,000",
+              "Over US$75,000",
+              "Flexible if ROI is compelling"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "venture_stage",
+            "label": "Current venture stage",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Exploring broadly; no idea yet",
+              "Several problem areas or ideas",
+              "One idea, not yet validated",
+              "Actively validating or prototyping",
+              "Operating an early venture"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "industry_focus",
+            "label": "Industry or venture focus, if any",
+            "type": "text",
+            "required": false,
+            "options": [],
+            "placeholder": "e.g., B2B SaaS, climate, healthcare—or “sector-agnostic”"
+          },
+          {
+            "name": "format_openness",
+            "label": "Formats you are genuinely open to",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Part-time degree",
+              "In-person executive education",
+              "Live online cohort",
+              "Self-paced online courses",
+              "Accelerator/incubator",
+              "Mentoring or peer network",
+              "Independent venture-building"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "primary_outcomes",
+            "label": "Choose up to three outcomes that matter most",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Find/validate a strong problem",
+              "Develop product and customer-discovery skills",
+              "Build a cofounder/team network",
+              "Gain access to mentors and operators",
+              "Learn fundraising and meet investors",
+              "Strengthen business-model and go-to-market skills",
+              "Earn a recognized credential",
+              "Launch a venture while retaining my job"
+            ],
+            "placeholder": ""
+          }
+        ]
+      },
+      "id": "call_txjE5a2jpQmuFGnmXugjJYzU"
+    },
+    {
+      "name": "ask_clarification",
+      "tool_call_id": "call_txjE5a2jpQmuFGnmXugjJYzU",
+      "content": "❓ Location determines degree, executive-education, and accelerator access; budget and available time drive feasibility; venture stage and format preferences change the recommended sequence. If you are genuinely undecided on a field, select “No preference / recommend options,” and I will preserve alternative pathways rather than assume.\n\nTo make the comparison and 1–2 year plan decision-ready, please provide the constraints below. These materially affect which programs are accessible and how the plan should balance structured study with venture experiments.\n\n  1. Home city/country and acceptable travel radius (required)\n  2. Sustainable weekly time alongside work and family (required) — options: 3–5 hours / 6–8 hours / 9–12 hours / 13–15 hours / Varies significantly\n  3. Approximate annual out-of-pocket budget (required) — options: Under US$2,000 / US$2,000–10,000 / US$10,000–30,000 / US$30,000–75,000 / Over US$75,000 / Flexible if ROI is compelling\n  4. Current venture stage (required) — options: Exploring broadly; no idea yet / Several problem areas or ideas / One idea, not yet validated / Actively validating or prototyping / Operating an early venture\n  5. Industry or venture focus, if any\n  6. Formats you are genuinely open to (required) — options: Part-time degree / In-person executive education / Live online cohort / Self-paced online courses / Accelerator/incubator / Mentoring or peer network / Independent venture-building (multiple allowed)\n  7. Choose up to three outcomes that matter most (required) — options: Find/validate a strong problem / Develop product and customer-discovery skills / Build a cofounder/team network / Gain access to mentors and operators / Learn fundraising and meet investors / Strengthen business-model and go-to-market skills / Earn a recognized credential / Launch a venture while retaining my job (multiple allowed)\n\nPlease reply with a value for each field.",
+      "artifact": {
+        "human_input": {
+          "version": 2,
+          "kind": "human_input_request",
+          "source": "ask_clarification",
+          "request_id": "clarification:call_txjE5a2jpQmuFGnmXugjJYzU",
+          "clarification_type": "missing_info",
+          "question": "To make the comparison and 1–2 year plan decision-ready, please provide the constraints below. These materially affect which programs are accessible and how the plan should balance structured study with venture experiments.",
+          "input_mode": "form",
+          "tool_call_id": "call_txjE5a2jpQmuFGnmXugjJYzU",
+          "context": "Location determines degree, executive-education, and accelerator access; budget and available time drive feasibility; venture stage and format preferences change the recommended sequence. If you are genuinely undecided on a field, select “No preference / recommend options,” and I will preserve alternative pathways rather than assume.",
+          "fields": [
+            {
+              "name": "location",
+              "label": "Home city/country and acceptable travel radius",
+              "type": "text",
+              "required": true,
+              "placeholder": "e.g., Toronto; local plus up to four international trips/year"
+            },
+            {
+              "name": "weekly_time",
+              "label": "Sustainable weekly time alongside work and family",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "weekly_time-option-1",
+                  "label": "3–5 hours",
+                  "value": "3–5 hours"
+                },
+                {
+                  "id": "weekly_time-option-2",
+                  "label": "6–8 hours",
+                  "value": "6–8 hours"
+                },
+                {
+                  "id": "weekly_time-option-3",
+                  "label": "9–12 hours",
+                  "value": "9–12 hours"
+                },
+                {
+                  "id": "weekly_time-option-4",
+                  "label": "13–15 hours",
+                  "value": "13–15 hours"
+                },
+                {
+                  "id": "weekly_time-option-5",
+                  "label": "Varies significantly",
+                  "value": "Varies significantly"
+                }
+              ]
+            },
+            {
+              "name": "annual_budget",
+              "label": "Approximate annual out-of-pocket budget",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "annual_budget-option-1",
+                  "label": "Under US$2,000",
+                  "value": "Under US$2,000"
+                },
+                {
+                  "id": "annual_budget-option-2",
+                  "label": "US$2,000–10,000",
+                  "value": "US$2,000–10,000"
+                },
+                {
+                  "id": "annual_budget-option-3",
+                  "label": "US$10,000–30,000",
+                  "value": "US$10,000–30,000"
+                },
+                {
+                  "id": "annual_budget-option-4",
+                  "label": "US$30,000–75,000",
+                  "value": "US$30,000–75,000"
+                },
+                {
+                  "id": "annual_budget-option-5",
+                  "label": "Over US$75,000",
+                  "value": "Over US$75,000"
+                },
+                {
+                  "id": "annual_budget-option-6",
+                  "label": "Flexible if ROI is compelling",
+                  "value": "Flexible if ROI is compelling"
+                }
+              ]
+            },
+            {
+              "name": "venture_stage",
+              "label": "Current venture stage",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "venture_stage-option-1",
+                  "label": "Exploring broadly; no idea yet",
+                  "value": "Exploring broadly; no idea yet"
+                },
+                {
+                  "id": "venture_stage-option-2",
+                  "label": "Several problem areas or ideas",
+                  "value": "Several problem areas or ideas"
+                },
+                {
+                  "id": "venture_stage-option-3",
+                  "label": "One idea, not yet validated",
+                  "value": "One idea, not yet validated"
+                },
+                {
+                  "id": "venture_stage-option-4",
+                  "label": "Actively validating or prototyping",
+                  "value": "Actively validating or prototyping"
+                },
+                {
+                  "id": "venture_stage-option-5",
+                  "label": "Operating an early venture",
+                  "value": "Operating an early venture"
+                }
+              ]
+            },
+            {
+              "name": "industry_focus",
+              "label": "Industry or venture focus, if any",
+              "type": "text",
+              "required": false,
+              "placeholder": "e.g., B2B SaaS, climate, healthcare—or “sector-agnostic”"
+            },
+            {
+              "name": "format_openness",
+              "label": "Formats you are genuinely open to",
+              "type": "multi_select",
+              "required": true,
+              "options": [
+                {
+                  "id": "format_openness-option-1",
+                  "label": "Part-time degree",
+                  "value": "Part-time degree"
+                },
+                {
+                  "id": "format_openness-option-2",
+                  "label": "In-person executive education",
+                  "value": "In-person executive education"
+                },
+                {
+                  "id": "format_openness-option-3",
+                  "label": "Live online cohort",
+                  "value": "Live online cohort"
+                },
+                {
+                  "id": "format_openness-option-4",
+                  "label": "Self-paced online courses",
+                  "value": "Self-paced online courses"
+                },
+                {
+                  "id": "format_openness-option-5",
+                  "label": "Accelerator/incubator",
+                  "value": "Accelerator/incubator"
+                },
+                {
+                  "id": "format_openness-option-6",
+                  "label": "Mentoring or peer network",
+                  "value": "Mentoring or peer network"
+                },
+                {
+                  "id": "format_openness-option-7",
+                  "label": "Independent venture-building",
+                  "value": "Independent venture-building"
+                }
+              ]
+            },
+            {
+              "name": "primary_outcomes",
+              "label": "Choose up to three outcomes that matter most",
+              "type": "multi_select",
+              "required": true,
+              "options": [
+                {
+                  "id": "primary_outcomes-option-1",
+                  "label": "Find/validate a strong problem",
+                  "value": "Find/validate a strong problem"
+                },
+                {
+                  "id": "primary_outcomes-option-2",
+                  "label": "Develop product and customer-discovery skills",
+                  "value": "Develop product and customer-discovery skills"
+                },
+                {
+                  "id": "primary_outcomes-option-3",
+                  "label": "Build a cofounder/team network",
+                  "value": "Build a cofounder/team network"
+                },
+                {
+                  "id": "primary_outcomes-option-4",
+                  "label": "Gain access to mentors and operators",
+                  "value": "Gain access to mentors and operators"
+                },
+                {
+                  "id": "primary_outcomes-option-5",
+                  "label": "Learn fundraising and meet investors",
+                  "value": "Learn fundraising and meet investors"
+                },
+                {
+                  "id": "primary_outcomes-option-6",
+                  "label": "Strengthen business-model and go-to-market skills",
+                  "value": "Strengthen business-model and go-to-market skills"
+                },
+                {
+                  "id": "primary_outcomes-option-7",
+                  "label": "Earn a recognized credential",
+                  "value": "Earn a recognized credential"
+                },
+                {
+                  "id": "primary_outcomes-option-8",
+                  "label": "Launch a venture while retaining my job",
+                  "value": "Launch a venture while retaining my job"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "final_text": "",
+  "run_error": null,
+  "started_at_utc": "2026-09-12T19:04:08.292303+00:00",
+  "completed_at_utc": "2026-09-12T19:04:39.055703+00:00",
+  "elapsed_seconds": 30.7634,
+  "trace_file": "turn_001_events.jsonl"
+}

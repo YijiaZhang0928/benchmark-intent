@@ -1,0 +1,736 @@
+{
+  "schema_version": "0.75",
+  "status": "awaiting_clarification",
+  "asked_clarification": true,
+  "clarification_calls": [
+    {
+      "name": "ask_clarification",
+      "args": {
+        "question": "To make the regional comparison, shortlist logic, and 1–2 year plan decision-ready without assuming personal preferences, please provide the following high-impact details.",
+        "clarification_type": "missing_info",
+        "context": "Citizenship/residency affects fees, visas, and funding eligibility; timing and academic preparation affect application strategy; career goals, location flexibility, and funding constraints materially change which PhD systems and programs are suitable.",
+        "options": null,
+        "fields": [
+          {
+            "name": "citizenship_current_study_country",
+            "label": "Citizenship(s) and country where you currently study",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "Example: Indian citizen studying in India"
+          },
+          {
+            "name": "graduation_intake",
+            "label": "Expected bachelor’s graduation and intended PhD intake",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "Example: graduate June 2027; target Fall 2027 or Fall 2028"
+          },
+          {
+            "name": "academic_profile",
+            "label": "Academic profile",
+            "type": "textarea",
+            "required": true,
+            "options": [],
+            "placeholder": "GPA and scale, approximate class rank if known, university context, key AI/math courses"
+          },
+          {
+            "name": "research_experience",
+            "label": "Current research and technical experience",
+            "type": "textarea",
+            "required": true,
+            "options": [],
+            "placeholder": "Research projects, publications/preprints, lab work, internships, open-source work, ML engineering"
+          },
+          {
+            "name": "career_goal",
+            "label": "Likely post-PhD goal",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Academic research/faculty",
+              "Industrial research scientist",
+              "Applied ML/engineering",
+              "Entrepreneurship/startups",
+              "Undecided—keep options open"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "funding_constraint",
+            "label": "Funding constraint",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Must be fully funded",
+              "Strongly prefer full funding; limited self-funding possible",
+              "Can consider partially funded programs",
+              "Funding is not a major constraint"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "geographic_constraints",
+            "label": "Geographic preferences or hard constraints",
+            "type": "textarea",
+            "required": false,
+            "options": [],
+            "placeholder": "Regions/countries to prioritize or exclude; climate, distance, visa, family, or mobility constraints—or write “none”"
+          },
+          {
+            "name": "language_status",
+            "label": "Language/test status",
+            "type": "textarea",
+            "required": false,
+            "options": [],
+            "placeholder": "English proficiency and TOEFL/IELTS status; any German/French/Japanese/Korean/Chinese ability"
+          },
+          {
+            "name": "research_interests",
+            "label": "AI interests beyond deep learning/NLP (optional)",
+            "type": "multi_select",
+            "required": false,
+            "options": [
+              "Foundation models / LLMs",
+              "Multimodal learning",
+              "Machine learning theory",
+              "AI safety / alignment",
+              "Robotics / embodied AI",
+              "Computer vision",
+              "Speech / audio",
+              "Reinforcement learning",
+              "Causal inference",
+              "AI for science / health",
+              "Efficient / edge AI",
+              "Human-centered AI",
+              "Still broadly undecided"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "program_structure",
+            "label": "Program structure you are willing to consider",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Direct-entry PhD after bachelor’s",
+              "Master’s-first route",
+              "Integrated MSc/PhD",
+              "Any route if well justified"
+            ],
+            "placeholder": ""
+          }
+        ]
+      },
+      "id": "call_pN8y7zQIu6Faaw8ONCPXcKXX"
+    }
+  ],
+  "clarification_artifacts": [
+    {
+      "human_input": {
+        "version": 2,
+        "kind": "human_input_request",
+        "source": "ask_clarification",
+        "request_id": "clarification:call_pN8y7zQIu6Faaw8ONCPXcKXX",
+        "clarification_type": "missing_info",
+        "question": "To make the regional comparison, shortlist logic, and 1–2 year plan decision-ready without assuming personal preferences, please provide the following high-impact details.",
+        "input_mode": "form",
+        "tool_call_id": "call_pN8y7zQIu6Faaw8ONCPXcKXX",
+        "context": "Citizenship/residency affects fees, visas, and funding eligibility; timing and academic preparation affect application strategy; career goals, location flexibility, and funding constraints materially change which PhD systems and programs are suitable.",
+        "fields": [
+          {
+            "name": "citizenship_current_study_country",
+            "label": "Citizenship(s) and country where you currently study",
+            "type": "text",
+            "required": true,
+            "placeholder": "Example: Indian citizen studying in India"
+          },
+          {
+            "name": "graduation_intake",
+            "label": "Expected bachelor’s graduation and intended PhD intake",
+            "type": "text",
+            "required": true,
+            "placeholder": "Example: graduate June 2027; target Fall 2027 or Fall 2028"
+          },
+          {
+            "name": "academic_profile",
+            "label": "Academic profile",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "GPA and scale, approximate class rank if known, university context, key AI/math courses"
+          },
+          {
+            "name": "research_experience",
+            "label": "Current research and technical experience",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "Research projects, publications/preprints, lab work, internships, open-source work, ML engineering"
+          },
+          {
+            "name": "career_goal",
+            "label": "Likely post-PhD goal",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "career_goal-option-1",
+                "label": "Academic research/faculty",
+                "value": "Academic research/faculty"
+              },
+              {
+                "id": "career_goal-option-2",
+                "label": "Industrial research scientist",
+                "value": "Industrial research scientist"
+              },
+              {
+                "id": "career_goal-option-3",
+                "label": "Applied ML/engineering",
+                "value": "Applied ML/engineering"
+              },
+              {
+                "id": "career_goal-option-4",
+                "label": "Entrepreneurship/startups",
+                "value": "Entrepreneurship/startups"
+              },
+              {
+                "id": "career_goal-option-5",
+                "label": "Undecided—keep options open",
+                "value": "Undecided—keep options open"
+              }
+            ]
+          },
+          {
+            "name": "funding_constraint",
+            "label": "Funding constraint",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "funding_constraint-option-1",
+                "label": "Must be fully funded",
+                "value": "Must be fully funded"
+              },
+              {
+                "id": "funding_constraint-option-2",
+                "label": "Strongly prefer full funding; limited self-funding possible",
+                "value": "Strongly prefer full funding; limited self-funding possible"
+              },
+              {
+                "id": "funding_constraint-option-3",
+                "label": "Can consider partially funded programs",
+                "value": "Can consider partially funded programs"
+              },
+              {
+                "id": "funding_constraint-option-4",
+                "label": "Funding is not a major constraint",
+                "value": "Funding is not a major constraint"
+              }
+            ]
+          },
+          {
+            "name": "geographic_constraints",
+            "label": "Geographic preferences or hard constraints",
+            "type": "textarea",
+            "required": false,
+            "placeholder": "Regions/countries to prioritize or exclude; climate, distance, visa, family, or mobility constraints—or write “none”"
+          },
+          {
+            "name": "language_status",
+            "label": "Language/test status",
+            "type": "textarea",
+            "required": false,
+            "placeholder": "English proficiency and TOEFL/IELTS status; any German/French/Japanese/Korean/Chinese ability"
+          },
+          {
+            "name": "research_interests",
+            "label": "AI interests beyond deep learning/NLP (optional)",
+            "type": "multi_select",
+            "required": false,
+            "options": [
+              {
+                "id": "research_interests-option-1",
+                "label": "Foundation models / LLMs",
+                "value": "Foundation models / LLMs"
+              },
+              {
+                "id": "research_interests-option-2",
+                "label": "Multimodal learning",
+                "value": "Multimodal learning"
+              },
+              {
+                "id": "research_interests-option-3",
+                "label": "Machine learning theory",
+                "value": "Machine learning theory"
+              },
+              {
+                "id": "research_interests-option-4",
+                "label": "AI safety / alignment",
+                "value": "AI safety / alignment"
+              },
+              {
+                "id": "research_interests-option-5",
+                "label": "Robotics / embodied AI",
+                "value": "Robotics / embodied AI"
+              },
+              {
+                "id": "research_interests-option-6",
+                "label": "Computer vision",
+                "value": "Computer vision"
+              },
+              {
+                "id": "research_interests-option-7",
+                "label": "Speech / audio",
+                "value": "Speech / audio"
+              },
+              {
+                "id": "research_interests-option-8",
+                "label": "Reinforcement learning",
+                "value": "Reinforcement learning"
+              },
+              {
+                "id": "research_interests-option-9",
+                "label": "Causal inference",
+                "value": "Causal inference"
+              },
+              {
+                "id": "research_interests-option-10",
+                "label": "AI for science / health",
+                "value": "AI for science / health"
+              },
+              {
+                "id": "research_interests-option-11",
+                "label": "Efficient / edge AI",
+                "value": "Efficient / edge AI"
+              },
+              {
+                "id": "research_interests-option-12",
+                "label": "Human-centered AI",
+                "value": "Human-centered AI"
+              },
+              {
+                "id": "research_interests-option-13",
+                "label": "Still broadly undecided",
+                "value": "Still broadly undecided"
+              }
+            ]
+          },
+          {
+            "name": "program_structure",
+            "label": "Program structure you are willing to consider",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              {
+                "id": "program_structure-option-1",
+                "label": "Direct-entry PhD after bachelor’s",
+                "value": "Direct-entry PhD after bachelor’s"
+              },
+              {
+                "id": "program_structure-option-2",
+                "label": "Master’s-first route",
+                "value": "Master’s-first route"
+              },
+              {
+                "id": "program_structure-option-3",
+                "label": "Integrated MSc/PhD",
+                "value": "Integrated MSc/PhD"
+              },
+              {
+                "id": "program_structure-option-4",
+                "label": "Any route if well justified",
+                "value": "Any route if well justified"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "all_observed_tools": [
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/legacy/clarification-calibration/SKILL.md",
+        "description": "Load the required clarification-calibration workflow before research.",
+        "start_line": 1,
+        "end_line": 400
+      },
+      "id": "call_tkaw3KQXGzXdONIxtNu9LPM2"
+    },
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/public/deep-research/SKILL.md",
+        "description": "Load the required deep-research workflow before web research.",
+        "start_line": 1,
+        "end_line": 500
+      },
+      "id": "call_z1c3JTtSm9FvgmPAgOjncarX"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_tkaw3KQXGzXdONIxtNu9LPM2",
+      "content": "---\nname: clarification-calibration\ndescription: Calibrate whether to ask for task-specific user information before decision-ready deep research. Use when missing user goals, constraints, or trade-offs could change the evidence, recommendations, or final decision; do not use for fact-only research.\n---\n\n# Clarification Calibration\n\nBefore searching, decide whether the instruction contains enough user-owned information to produce a decision-ready deliverable.\n\nKeep the user's message unchanged. Do not request or infer a hidden persona, evaluation criteria, or account history.\n\n## Decision rule\n\nClassify unresolved variables by ownership:\n\n- **User-owned:** goals, constraints, priorities, acceptable trade-offs, intended use, risk tolerance, resources, or personal circumstances. These may warrant clarification.\n- **Research-owned:** current facts, option availability, prices, regulations, empirical effectiveness, feasibility, or forecasts. Research these; do not ask the user to supply the answer.\n- **Agent-recommended:** choices the agent should recommend after research. Do not transfer the decision back to the user merely to avoid analysis.\n\nAsk only when all are true:\n\n1. The value is not already supported by strong evidence in the instruction.\n2. The user owns the value and can reasonably answer it.\n3. Different plausible answers would materially change the evidence gathered, shortlist, recommendation, action plan, or risk boundary.\n4. The expected decision value of the answer justifies the user burden.\n\nDo not ask about low-impact formatting preferences, facts that should be researched, or information that would not change the deliverable. Do not ask merely because some detail is absent.\n\nIf clarification is warranted, use `ask_clarification` before beginning research. Ask the smallest high-yield question or compact form that resolves the most influential uncertainty; do not impose a fixed number of questions. Explain briefly what decision the answer will change. Do not call search or other tools in the same turn.\n\nIf the instruction is already sufficient, proceed without asking and make any residual assumptions explicit in the research plan.\n\nAfter sufficient user-owned information is available, follow the `deep-research` skill: plan multiple research branches, fetch full sources, resolve conflicting evidence, and produce a source-grounded final deliverable. In the final report, visibly implement resolved user information in evidence selection, recommendations, and action steps rather than merely mentioning it.\n\nFor a counted Deep Research episode, do not draft the final report until the trace contains at least three distinct search queries or research branches and at least five successful, substantive `web_fetch` calls. A fetch result marked `Error` or containing fewer than 300 readable characters does not count. When the task permits, at least two fetched sources must be primary or authoritative. Search-result titles and snippets are discovery aids, not evidence; factual claims must be grounded in fetched content. Cite only sources whose content was successfully fetched in this run.",
+      "artifact": null
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_z1c3JTtSm9FvgmPAgOjncarX",
+      "content": "---\nname: deep-research\ndescription: Use this skill instead of WebSearch for ANY question requiring web research. Trigger on queries like \"what is X\", \"explain X\", \"compare X and Y\", \"research X\", or before content generation tasks. Provides systematic multi-angle research methodology instead of single superficial searches. Use this proactively when the user's question needs online information.\n---\n\n# Deep Research Skill\n\n## Overview\n\nThis skill provides a systematic methodology for conducting thorough web research. **Load this skill BEFORE starting any content generation task** to ensure you gather sufficient information from multiple angles, depths, and sources.\n\n## When to Use This Skill\n\n**Always load this skill when:**\n\n### Research Questions\n- User asks \"what is X\", \"explain X\", \"research X\", \"investigate X\"\n- User wants to understand a concept, technology, or topic in depth\n- The question requires current, comprehensive information from multiple sources\n- A single web search would be insufficient to answer properly\n\n### Content Generation (Pre-research)\n- Creating presentations (PPT/slides)\n- Creating frontend designs or UI mockups\n- Writing articles, reports, or documentation\n- Producing videos or multimedia content\n- Any content that requires real-world information, examples, or current data\n\n## Core Principle\n\n**Never generate content based solely on general knowledge.** The quality of your output directly depends on the quality and quantity of research conducted beforehand. A single search query is NEVER enough.\n\n## Research Methodology\n\n### Phase 1: Broad Exploration\n\nStart with broad searches to understand the landscape:\n\n1. **Initial Survey**: Search for the main topic to understand the overall context\n2. **Identify Dimensions**: From initial results, identify key subtopics, themes, angles, or aspects that need deeper exploration\n3. **Map the Territory**: Note different perspectives, stakeholders, or viewpoints that exist\n\nExample:\n```\nTopic: \"AI in healthcare\"\nInitial searches:\n- \"AI healthcare applications 2024\"\n- \"artificial intelligence medical diagnosis\"\n- \"healthcare AI market trends\"\n\nIdentified dimensions:\n- Diagnostic AI (radiology, pathology)\n- Treatment recommendation systems\n- Administrative automation\n- Patient monitoring\n- Regulatory landscape\n- Ethical considerations\n```\n\n### Phase 2: Deep Dive\n\nFor each important dimension identified, conduct targeted research:\n\n1. **Specific Queries**: Search with precise keywords for each subtopic\n2. **Multiple Phrasings**: Try different keyword combinations and phrasings\n3. **Fetch Full Content**: Use `web_fetch` to read important sources in full, not just snippets\n4. **Follow References**: When sources mention other important resources, search for those too\n\nExample:\n```\nDimension: \"Diagnostic AI in radiology\"\nTargeted searches:\n- \"AI radiology FDA approved systems\"\n- \"chest X-ray AI detection accuracy\"\n- \"radiology AI clinical trials results\"\n\nThen fetch and read:\n- Key research papers or summaries\n- Industry reports\n- Real-world case studies\n```\n\n### Phase 3: Diversity & Validation\n\nEnsure comprehensive coverage by seeking diverse information types:\n\n| Information Type | Purpose | Example Searches |\n|-----------------|---------|------------------|\n| **Facts & Data** | Concrete evidence | \"statistics\", \"data\", \"numbers\", \"market size\" |\n| **Examples & Cases** | Real-world applications | \"case study\", \"example\", \"implementation\" |\n| **Expert Opinions** | Authority perspectives | \"expert analysis\", \"interview\", \"commentary\" |\n| **Trends & Predictions** | Future direction | \"trends 2024\", \"forecast\", \"future of\" |\n| **Comparisons** | Context and alternatives | \"vs\", \"comparison\", \"alternatives\" |\n| **Challenges & Criticisms** | Balanced view | \"challenges\", \"limitations\", \"criticism\" |\n\n### Phase 4: Synthesis Check\n\nBefore proceeding to content generation, verify:\n\n- [ ] Have I searched from at least 3-5 different angles?\n- [ ] Have I fetched and read the most important sources in full?\n- [ ] Do I have concrete data, examples, and expert perspectives?\n- [ ] Have I explored both positive aspects and challenges/limitations?\n- [ ] Is my information current and from authoritative sources?\n\n**If any answer is NO, continue researching before generating content.**\n\n## Search Strategy Tips\n\n### Effective Query Patterns\n\n```\n# Be specific with context\n❌ \"AI trends\"\n✅ \"enterprise AI adoption trends 2024\"\n\n# Include authoritative source hints\n\"[topic] research paper\"\n\"[topic] McKinsey report\"\n\"[topic] industry analysis\"\n\n# Search for specific content types\n\"[topic] case study\"\n\"[topic] statistics\"\n\"[topic] expert interview\"\n\n# Use temporal qualifiers — always use the ACTUAL current year from <current_date>\n\"[topic] 2026\"   # ← replace with real current year, never hardcode a past year\n\"[topic] latest\"\n\"[topic] recent developments\"\n```\n\n### Temporal Awareness\n\n**Always check `<current_date>` in your context before forming ANY search query.**\n\n`<current_date>` gives you the full date: year, month, day, and weekday (e.g. `2026-02-28, Saturday`). Use the right level of precision depending on what the user is asking:\n\n| User intent | Temporal precision needed | Example query |\n|---|---|---|\n| \"today / this morning / just released\" | **Month + Day** | `\"tech news February 28 2026\"` |\n| \"this week\" | **Week range** | `\"technology releases week of Feb 24 2026\"` |\n| \"recently / latest / new\" | **Month** | `\"AI breakthroughs February 2026\"` |\n| \"this year / trends\" | **Year** | `\"software trends 2026\"` |\n\n**Rules:**\n- When the user asks about \"today\" or \"just released\", use **month + day + year** in your search queries to get same-day results\n- Never drop to year-only when day-level precision is needed — `\"tech news 2026\"` will NOT surface today's news\n- Try multiple phrasings: numeric form (`2026-02-28`), written form (`February 28 2026`), and relative terms (`today`, `this week`) across different queries\n\n❌ User asks \"what's new in tech today\" → searching `\"new technology 2026\"` → misses today's news\n✅ User asks \"what's new in tech today\" → searching `\"new technology February 28 2026\"` + `\"tech news today Feb 28\"` → gets today's results\n\n### When to Use web_fetch\n\nUse `web_fetch` to read full content when:\n- A search result looks highly relevant and authoritative\n- You need detailed information beyond the snippet\n- The source contains data, case studies, or expert analysis\n- You want to understand the full context of a finding\n\n### Iterative Refinement\n\nResearch is iterative. After initial searches:\n1. Review what you've learned\n2. Identify gaps in your understanding\n3. Formulate new, more targeted queries\n4. Repeat until you have comprehensive coverage\n\n## Quality Bar\n\nYour research is sufficient when you can confidently answer:\n- What are the key facts and data points?\n- What are 2-3 concrete real-world examples?\n- What do experts say about this topic?\n- What are the current trends and future directions?\n- What are the challenges or limitations?\n- What makes this topic relevant or important now?\n\n## Common Mistakes to Avoid\n\n- ❌ Stopping after 1-2 searches\n- ❌ Relying on search snippets without reading full sources\n- ❌ Searching only one aspect of a multi-faceted topic\n- ❌ Ignoring contradicting viewpoints or challenges\n- ❌ Using outdated information when current data exists\n- ❌ Starting content generation before research is complete\n\n## Output\n\nAfter completing research, you should have:\n1. A comprehensive understanding of the topic from multiple angles\n2. Specific facts, data points, and statistics\n3. Real-world examples and case studies\n4. Expert perspectives and authoritative sources\n5. Current trends and relevant context\n\n**Only then proceed to content generation**, using the gathered information to create high-quality, well-informed content.",
+      "artifact": null
+    },
+    {
+      "name": "ask_clarification",
+      "args": {
+        "question": "To make the regional comparison, shortlist logic, and 1–2 year plan decision-ready without assuming personal preferences, please provide the following high-impact details.",
+        "clarification_type": "missing_info",
+        "context": "Citizenship/residency affects fees, visas, and funding eligibility; timing and academic preparation affect application strategy; career goals, location flexibility, and funding constraints materially change which PhD systems and programs are suitable.",
+        "options": null,
+        "fields": [
+          {
+            "name": "citizenship_current_study_country",
+            "label": "Citizenship(s) and country where you currently study",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "Example: Indian citizen studying in India"
+          },
+          {
+            "name": "graduation_intake",
+            "label": "Expected bachelor’s graduation and intended PhD intake",
+            "type": "text",
+            "required": true,
+            "options": [],
+            "placeholder": "Example: graduate June 2027; target Fall 2027 or Fall 2028"
+          },
+          {
+            "name": "academic_profile",
+            "label": "Academic profile",
+            "type": "textarea",
+            "required": true,
+            "options": [],
+            "placeholder": "GPA and scale, approximate class rank if known, university context, key AI/math courses"
+          },
+          {
+            "name": "research_experience",
+            "label": "Current research and technical experience",
+            "type": "textarea",
+            "required": true,
+            "options": [],
+            "placeholder": "Research projects, publications/preprints, lab work, internships, open-source work, ML engineering"
+          },
+          {
+            "name": "career_goal",
+            "label": "Likely post-PhD goal",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Academic research/faculty",
+              "Industrial research scientist",
+              "Applied ML/engineering",
+              "Entrepreneurship/startups",
+              "Undecided—keep options open"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "funding_constraint",
+            "label": "Funding constraint",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Must be fully funded",
+              "Strongly prefer full funding; limited self-funding possible",
+              "Can consider partially funded programs",
+              "Funding is not a major constraint"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "geographic_constraints",
+            "label": "Geographic preferences or hard constraints",
+            "type": "textarea",
+            "required": false,
+            "options": [],
+            "placeholder": "Regions/countries to prioritize or exclude; climate, distance, visa, family, or mobility constraints—or write “none”"
+          },
+          {
+            "name": "language_status",
+            "label": "Language/test status",
+            "type": "textarea",
+            "required": false,
+            "options": [],
+            "placeholder": "English proficiency and TOEFL/IELTS status; any German/French/Japanese/Korean/Chinese ability"
+          },
+          {
+            "name": "research_interests",
+            "label": "AI interests beyond deep learning/NLP (optional)",
+            "type": "multi_select",
+            "required": false,
+            "options": [
+              "Foundation models / LLMs",
+              "Multimodal learning",
+              "Machine learning theory",
+              "AI safety / alignment",
+              "Robotics / embodied AI",
+              "Computer vision",
+              "Speech / audio",
+              "Reinforcement learning",
+              "Causal inference",
+              "AI for science / health",
+              "Efficient / edge AI",
+              "Human-centered AI",
+              "Still broadly undecided"
+            ],
+            "placeholder": ""
+          },
+          {
+            "name": "program_structure",
+            "label": "Program structure you are willing to consider",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Direct-entry PhD after bachelor’s",
+              "Master’s-first route",
+              "Integrated MSc/PhD",
+              "Any route if well justified"
+            ],
+            "placeholder": ""
+          }
+        ]
+      },
+      "id": "call_pN8y7zQIu6Faaw8ONCPXcKXX"
+    },
+    {
+      "name": "ask_clarification",
+      "tool_call_id": "call_pN8y7zQIu6Faaw8ONCPXcKXX",
+      "content": "❓ Citizenship/residency affects fees, visas, and funding eligibility; timing and academic preparation affect application strategy; career goals, location flexibility, and funding constraints materially change which PhD systems and programs are suitable.\n\nTo make the regional comparison, shortlist logic, and 1–2 year plan decision-ready without assuming personal preferences, please provide the following high-impact details.\n\n  1. Citizenship(s) and country where you currently study (required)\n  2. Expected bachelor’s graduation and intended PhD intake (required)\n  3. Academic profile (required)\n  4. Current research and technical experience (required)\n  5. Likely post-PhD goal (required) — options: Academic research/faculty / Industrial research scientist / Applied ML/engineering / Entrepreneurship/startups / Undecided—keep options open\n  6. Funding constraint (required) — options: Must be fully funded / Strongly prefer full funding; limited self-funding possible / Can consider partially funded programs / Funding is not a major constraint\n  7. Geographic preferences or hard constraints\n  8. Language/test status\n  9. AI interests beyond deep learning/NLP (optional) — options: Foundation models / LLMs / Multimodal learning / Machine learning theory / AI safety / alignment / Robotics / embodied AI / Computer vision / Speech / audio / Reinforcement learning / Causal inference / AI for science / health / Efficient / edge AI / Human-centered AI / Still broadly undecided (multiple allowed)\n  10. Program structure you are willing to consider (required) — options: Direct-entry PhD after bachelor’s / Master’s-first route / Integrated MSc/PhD / Any route if well justified (multiple allowed)\n\nPlease reply with a value for each field.",
+      "artifact": {
+        "human_input": {
+          "version": 2,
+          "kind": "human_input_request",
+          "source": "ask_clarification",
+          "request_id": "clarification:call_pN8y7zQIu6Faaw8ONCPXcKXX",
+          "clarification_type": "missing_info",
+          "question": "To make the regional comparison, shortlist logic, and 1–2 year plan decision-ready without assuming personal preferences, please provide the following high-impact details.",
+          "input_mode": "form",
+          "tool_call_id": "call_pN8y7zQIu6Faaw8ONCPXcKXX",
+          "context": "Citizenship/residency affects fees, visas, and funding eligibility; timing and academic preparation affect application strategy; career goals, location flexibility, and funding constraints materially change which PhD systems and programs are suitable.",
+          "fields": [
+            {
+              "name": "citizenship_current_study_country",
+              "label": "Citizenship(s) and country where you currently study",
+              "type": "text",
+              "required": true,
+              "placeholder": "Example: Indian citizen studying in India"
+            },
+            {
+              "name": "graduation_intake",
+              "label": "Expected bachelor’s graduation and intended PhD intake",
+              "type": "text",
+              "required": true,
+              "placeholder": "Example: graduate June 2027; target Fall 2027 or Fall 2028"
+            },
+            {
+              "name": "academic_profile",
+              "label": "Academic profile",
+              "type": "textarea",
+              "required": true,
+              "placeholder": "GPA and scale, approximate class rank if known, university context, key AI/math courses"
+            },
+            {
+              "name": "research_experience",
+              "label": "Current research and technical experience",
+              "type": "textarea",
+              "required": true,
+              "placeholder": "Research projects, publications/preprints, lab work, internships, open-source work, ML engineering"
+            },
+            {
+              "name": "career_goal",
+              "label": "Likely post-PhD goal",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "career_goal-option-1",
+                  "label": "Academic research/faculty",
+                  "value": "Academic research/faculty"
+                },
+                {
+                  "id": "career_goal-option-2",
+                  "label": "Industrial research scientist",
+                  "value": "Industrial research scientist"
+                },
+                {
+                  "id": "career_goal-option-3",
+                  "label": "Applied ML/engineering",
+                  "value": "Applied ML/engineering"
+                },
+                {
+                  "id": "career_goal-option-4",
+                  "label": "Entrepreneurship/startups",
+                  "value": "Entrepreneurship/startups"
+                },
+                {
+                  "id": "career_goal-option-5",
+                  "label": "Undecided—keep options open",
+                  "value": "Undecided—keep options open"
+                }
+              ]
+            },
+            {
+              "name": "funding_constraint",
+              "label": "Funding constraint",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "funding_constraint-option-1",
+                  "label": "Must be fully funded",
+                  "value": "Must be fully funded"
+                },
+                {
+                  "id": "funding_constraint-option-2",
+                  "label": "Strongly prefer full funding; limited self-funding possible",
+                  "value": "Strongly prefer full funding; limited self-funding possible"
+                },
+                {
+                  "id": "funding_constraint-option-3",
+                  "label": "Can consider partially funded programs",
+                  "value": "Can consider partially funded programs"
+                },
+                {
+                  "id": "funding_constraint-option-4",
+                  "label": "Funding is not a major constraint",
+                  "value": "Funding is not a major constraint"
+                }
+              ]
+            },
+            {
+              "name": "geographic_constraints",
+              "label": "Geographic preferences or hard constraints",
+              "type": "textarea",
+              "required": false,
+              "placeholder": "Regions/countries to prioritize or exclude; climate, distance, visa, family, or mobility constraints—or write “none”"
+            },
+            {
+              "name": "language_status",
+              "label": "Language/test status",
+              "type": "textarea",
+              "required": false,
+              "placeholder": "English proficiency and TOEFL/IELTS status; any German/French/Japanese/Korean/Chinese ability"
+            },
+            {
+              "name": "research_interests",
+              "label": "AI interests beyond deep learning/NLP (optional)",
+              "type": "multi_select",
+              "required": false,
+              "options": [
+                {
+                  "id": "research_interests-option-1",
+                  "label": "Foundation models / LLMs",
+                  "value": "Foundation models / LLMs"
+                },
+                {
+                  "id": "research_interests-option-2",
+                  "label": "Multimodal learning",
+                  "value": "Multimodal learning"
+                },
+                {
+                  "id": "research_interests-option-3",
+                  "label": "Machine learning theory",
+                  "value": "Machine learning theory"
+                },
+                {
+                  "id": "research_interests-option-4",
+                  "label": "AI safety / alignment",
+                  "value": "AI safety / alignment"
+                },
+                {
+                  "id": "research_interests-option-5",
+                  "label": "Robotics / embodied AI",
+                  "value": "Robotics / embodied AI"
+                },
+                {
+                  "id": "research_interests-option-6",
+                  "label": "Computer vision",
+                  "value": "Computer vision"
+                },
+                {
+                  "id": "research_interests-option-7",
+                  "label": "Speech / audio",
+                  "value": "Speech / audio"
+                },
+                {
+                  "id": "research_interests-option-8",
+                  "label": "Reinforcement learning",
+                  "value": "Reinforcement learning"
+                },
+                {
+                  "id": "research_interests-option-9",
+                  "label": "Causal inference",
+                  "value": "Causal inference"
+                },
+                {
+                  "id": "research_interests-option-10",
+                  "label": "AI for science / health",
+                  "value": "AI for science / health"
+                },
+                {
+                  "id": "research_interests-option-11",
+                  "label": "Efficient / edge AI",
+                  "value": "Efficient / edge AI"
+                },
+                {
+                  "id": "research_interests-option-12",
+                  "label": "Human-centered AI",
+                  "value": "Human-centered AI"
+                },
+                {
+                  "id": "research_interests-option-13",
+                  "label": "Still broadly undecided",
+                  "value": "Still broadly undecided"
+                }
+              ]
+            },
+            {
+              "name": "program_structure",
+              "label": "Program structure you are willing to consider",
+              "type": "multi_select",
+              "required": true,
+              "options": [
+                {
+                  "id": "program_structure-option-1",
+                  "label": "Direct-entry PhD after bachelor’s",
+                  "value": "Direct-entry PhD after bachelor’s"
+                },
+                {
+                  "id": "program_structure-option-2",
+                  "label": "Master’s-first route",
+                  "value": "Master’s-first route"
+                },
+                {
+                  "id": "program_structure-option-3",
+                  "label": "Integrated MSc/PhD",
+                  "value": "Integrated MSc/PhD"
+                },
+                {
+                  "id": "program_structure-option-4",
+                  "label": "Any route if well justified",
+                  "value": "Any route if well justified"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "final_text": "",
+  "run_error": null,
+  "started_at_utc": "2026-09-12T19:04:08.292662+00:00",
+  "completed_at_utc": "2026-09-12T19:05:12.820296+00:00",
+  "elapsed_seconds": 64.527634,
+  "trace_file": "turn_001_events.jsonl"
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.75",
+  "started_at_utc": "2026-09-12T19:04:08.292303+00:00",
+  "harness": "deerflow-2.0",
+  "harness_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model_config_name": "gpt-5.6-sol-codex",
+  "agent_name": "clarification-dr",
+  "thread_id": "v076-t3-i-r1",
+  "turn_index": 1,
+  "input_kind": "task_instruction",
+  "source_path": "/Users/lora/Documents/benchmark-intent/pilot/clarification_harness_3task_v0_76/inputs/T3_instruction.txt",
+  "input_sha256": "d34431c22d92a67df97a7f289f8e7602f1ca50de817aa79006ce86ac6dabd713",
+  "visible_prompt_wrapper": null,
+  "persona_visible_on_first_turn": false,
+  "rubric_visible": false,
+  "account_memory_allowed": false,
+  "subagents_enabled": false,
+  "plan_mode": false,
+  "recursion_limit": 140,
+  "non_interactive": false
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-M6",
+  "repeat": 2,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "9e2dabb5a4faa70ccf0b47db034016ebecbc5c99b5145bbed88ed3ff059415a1",
+  "report_sha256": "3e8290158a4bf70f4124ef2727ddaf94d5b511447c5cb720daa43a51ac7b0d33",
+  "started_at_utc": "2026-09-12T19:43:22.818208+00:00",
+  "completed_at_utc": "2026-09-12T19:43:40.551331+00:00",
+  "p_rubric": 10,
+  "rubrics": [
+    {
+      "id": "T3-R1",
+      "score": 2,
+      "evidence": "The executive recommendation allocates “50–60%” to “customer discovery and experiments” and says “do not begin with another broad degree.” Phases 1–3 require discovery conversations, demand/payment tests, and narrow solution pilots.",
+      "reason": "Practical venture-building is the primary learning path, with concrete activities and evidence gates. A further degree is explicitly subordinate and conditional."
+    },
+    {
+      "id": "T3-R2",
+      "score": 2,
+      "evidence": "Phase 0 defines maintenance weeks of 2–3 hours, standard weeks of 5–7 hours, and occasional sprint weeks of 8–12 hours, alongside protected family blocks. Path B says to “reject anything requiring 15–20 weekly hours.”",
+      "reason": "Work and family compatibility materially shapes the schedule and program selection. Intensive programs require explicit capacity testing and a decision to increase venture commitment."
+    },
+    {
+      "id": "T3-R3",
+      "score": 2,
+      "evidence": "Months 1–3 combine a lightweight course with “18–24 discovery conversations”; the Month 3 gate requires “A cheap next experiment.” Months 4–6 introduce demand and payment tests with advance, refine, stop, or explore decisions.",
+      "reason": "External testing starts alongside foundational learning rather than after extensive preparation. Low-cost experiments and staged validation determine whether further investment is warranted."
+    },
+    {
+      "id": "T3-R4",
+      "score": 2,
+      "evidence": "The practical venture-building section recommends assumptions mapping and the Business Model and Value Proposition Canvases. Phase 2 applies these to users, buyers, pricing, channels, and feasibility; Phase 3 tracks conversion, delivery cost, retention, and loss reasons.",
+      "reason": "Concrete frameworks and collected market evidence are integrated into real business decisions. Courses and mentoring must support live experiments and deliverables rather than remain abstract instruction."
+    },
+    {
+      "id": "T3-R5",
+      "score": 2,
+      "evidence": "The degree comparison weighs HEC’s €22,950–€24,950 tuition and approximately 20 weekly hours against duplicated MBA content and displaced venture work. The selection scorecard includes total cost and displaced time, with a veto for programs relying “primarily on prestige or generic content to justify the price.”",
+      "reason": "Cost, workload, and practical return directly govern prioritization and exclusions. Free foundational learning and inexpensive experiments lead, while expensive degrees, executive modules, and equity accelerators require specific incremental value."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 7669,
+    "output_tokens": 535,
+    "total_tokens": 8204,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 28
+    }
+  }
+}

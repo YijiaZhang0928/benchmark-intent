@@ -1,0 +1,246 @@
+{
+  "schema_version": "0.76",
+  "source_workbook_name": "0912_pdr_bench_15_reselected_clarification_gt_with_average_preferences.xlsx",
+  "source_workbook_sha256": "c47deaecb35db1d14b7766a7599b7d30bdd74e879420d5b1ad5887eb9c6f33c3",
+  "source_sheet": "15 Tasks",
+  "source_rows": [
+    2,
+    3,
+    4
+  ],
+  "cases": [
+    {
+      "case_id": "T1",
+      "source_sheet": "15 Tasks",
+      "source_row": 2,
+      "source_cells": {
+        "task_instruction": "A2",
+        "high_impact_preferences": "B2",
+        "hidden_persona": "C2",
+        "rubrics": "D2",
+        "acceptable_paraphrases": "E2",
+        "average_impact_preferences": "F2"
+      },
+      "instruction": "[Benchmark Task 1 | PDR source Task 1 | User1]\n\nI plan to apply for PhD programs in artificial intelligence abroad within the next 1–2 years. I am currently an undergraduate computer-science student with strong academic performance and an interest in AI, especially deep learning and NLP, but I have not yet decided on a specific research direction.\n\nPlease provide a comprehensive research-based comparison of suitable AI PhD directions and programs across major regions such as North America, Europe, and Asia. Cover research strengths, curriculum structures, academic resources, employment prospects, application requirements, language requirements, research/internship preparation, tuition, scholarship/funding mechanisms, and representative universities/programs.\n\nBased on these objective constraints, create a phased preparation and application plan for the next 1–2 years. The plan should be specific enough to guide research preparation, school/program selection, application-material preparation, and timeline management. Do not assume unstated personal preferences when trade-offs would materially change the recommendation.",
+      "high_impact_preferences": [
+        {
+          "id": "T1-P1",
+          "text": "Research orientation: applied / implementation-heavy / system-building AI research > purely abstract theory-only research."
+        },
+        {
+          "id": "T1-P2",
+          "text": "Learning/preparation style: self-directed projects, replication, coding and hands-on exploration > mainly classroom/course-based preparation."
+        },
+        {
+          "id": "T1-P3",
+          "text": "Career utility: preserve strong industry-research / employability optionality > optimize only for an academic-faculty trajectory."
+        },
+        {
+          "id": "T1-P4",
+          "text": "Program economics: strong funding / scholarships / cost-effectiveness > expensive prestige-first options."
+        },
+        {
+          "id": "T1-P5",
+          "text": "Decision style: evidence-based comparison of fit, outcomes and trade-offs > school-name/prestige as the dominant decision rule."
+        }
+      ],
+      "hidden_persona": "User1 — Li Chen, male, age 19–21.\n\nIDENTITY / EDUCATION\n- Undergraduate in Computer Science and Technology at a prestigious university in Jiangsu.\n- Excellent academic performance; school scholarships for two consecutive years.\n- Academic interests center on artificial intelligence and algorithm research, especially deep learning and natural language processing.\n- Grew up in Suzhou, Jiangsu.\n\nFAMILY / BACKGROUND\n- Parents are civil servants.\n- Warm family atmosphere; parents strongly support academic and future development.\n- Parents hope he can obtain a stable and promising job while still pursuing his interests and aspirations.\n- No current pets; kept goldfish as a child and likes small animals.\n- Suzhou's mix of historical culture and modernization shaped a meticulous, detail-oriented personality.\n\nDIGITAL / LEARNING BEHAVIOR\n- Uses PyCharm, VS Code and online learning platforms such as Coursera/Bilibili learning for 5+ hours daily.\n- Frequently reads technical blogs and GitHub.\n- Joined an online AI-development group.\n- Uses WeChat increasingly to discuss topics beyond study.\n- Often saves technical articles, programming tips, AI trends, code snippets and academic resources.\n- Particularly interested in technical details and practical application cases.\n- Reads technical books including AI textbooks and has started exploring cognitive psychology.\n\nDAILY ROUTINE / TIME\n- Usually sleeps around 11 PM and wakes around 7 AM.\n- Evenings are especially productive for study and project work.\n- Early mornings may be used for exercise or reading.\n- Strong planner: creates study plans/task lists in advance and follows them closely.\n- Often studies in university library/lab; increasingly uses off-campus cafes.\n- Recently attends more technology exchange events in the city center.\n\nPERSONALITY / DECISION STYLE\n- Introverted but highly passionate about technology.\n- Focused, patient and likes independent thinking.\n- When facing problems, proactively researches solutions.\n- Usually researches extensively before making an independent decision.\n- Detail-oriented and systematic.\n\nCONSUMPTION / SHOPPING\n- Rational consumer; emphasizes practicality and cost-effectiveness.\n- Main spending is on study materials, electronics and hardware accessories.\n- Recently willing to try some higher-end electronics/smart-home products when useful.\n- Generally frugal.\n\nTRAVEL / LIFESTYLE\n- Returns home during school breaks.\n- Recently planning solo travel to explore new cities/cultures.\n- Tends toward cost-effective hotels/youth hostels, values cleanliness and practicality.\n- Interested in technology exhibitions, museums and AI-related events.\n\nHEALTH / EXERCISE\n- Generally healthy.\n- Enjoys basketball and exercise.\n- Pays increasing attention to sleep quality and healthy routines.\n\nFINANCE\n- Income mainly from parents and scholarships; occasional competition/programming prizes.\n- Has some savings, no major assets/debt.\n- Financial style is frugal and planned.\n- Basic investment knowledge; tends toward funds/low-risk products.\n- Financial investment risk preference is conservative/low-risk.",
+      "rubrics": [
+        {
+          "id": "T1-R1",
+          "text": "The report should prioritize AI PhD directions/labs that combine rigorous research with substantial implementation, experimentation, systems building or real-world application, rather than steering the user mainly toward abstract theory-only paths."
+        },
+        {
+          "id": "T1-R2",
+          "text": "The preparation plan should rely materially on self-directed implementation projects, research replication, coding, open-source work and independent exploration, rather than mainly formal coursework."
+        },
+        {
+          "id": "T1-R3",
+          "text": "Program/direction recommendations should preserve strong industry-research and employability optionality through topic choice, lab ecosystem, internships or industry collaboration, rather than optimizing exclusively for an academic-faculty track."
+        },
+        {
+          "id": "T1-R4",
+          "text": "Funding, scholarships, assistantships and overall cost-effectiveness should materially affect the shortlist; expensive prestige-first options should not dominate without a compelling value justification."
+        },
+        {
+          "id": "T1-R5",
+          "text": "The final recommendation should explicitly compare fit, evidence, outcomes and trade-offs among options and should not rank choices primarily by school prestige or name recognition."
+        }
+      ],
+      "acceptable_clarification_paraphrases": "T1-P1\n- Are you more interested in applied AI research where you build and evaluate real systems, or in more abstract theoretical research?\n- How important is hands-on implementation or system building when choosing a PhD direction?\n- Would you prefer research with clear real-world applications, or primarily foundational theory?\n\nT1-P2\n- Do you learn best through self-directed projects and implementation, or through structured coursework?\n- Would you prefer a preparation plan centered on projects, replication and coding, or mainly formal classes?\n- How much do you want independent hands-on work to matter in your PhD preparation?\n\nT1-P3\n- How important is keeping strong industry-research career options open during and after the PhD?\n- Are you optimizing mainly for an academic career, or do you want the PhD to preserve strong industry employability?\n- Should program choice prioritize paths that keep both academia and industry research open?\n\nT1-P4\n- How important are full funding, scholarships and overall cost-effectiveness when choosing programs?\n- Would you accept a substantially more expensive program for prestige, or strongly prefer well-funded options?\n- How should I trade off school prestige against funding and total cost?\n\nT1-P5\n- When comparing programs, do you care more about concrete fit/outcomes and trade-offs, or institutional prestige?\n- How much weight should university ranking/name recognition have relative to research fit and career outcomes?\n- Would you prefer an evidence-based comparison even if it favors a less prestigious program?",
+      "average_impact_preferences": [
+        {
+          "id": "T1-A1",
+          "text": "Work/study environment: quiet independent study environment > highly social/cohort-heavy environment."
+        },
+        {
+          "id": "T1-A2",
+          "text": "Geography/lifestyle: access to technology ecosystems, museums/exhibitions and intellectually active cities > location being unimportant."
+        },
+        {
+          "id": "T1-A3",
+          "text": "Daily learning rhythm: flexible independent planning and evening-focused deep work > tightly scheduled externally managed study routines."
+        }
+      ],
+      "instruction_sha256": "fe5e88a84f3e80b7866e67b749ca949ad18ec0d23b131121fd015dc2f94a0a75"
+    },
+    {
+      "case_id": "T2",
+      "source_sheet": "15 Tasks",
+      "source_row": 3,
+      "source_cells": {
+        "task_instruction": "A3",
+        "high_impact_preferences": "B3",
+        "hidden_persona": "C3",
+        "rubrics": "D3",
+        "acceptable_paraphrases": "E3",
+        "average_impact_preferences": "F3"
+      },
+      "instruction": "[Benchmark Task 2 | PDR source Task 2 | User7]\n\nI plan to participate in an overseas exchange or short-term visiting program in the coming semester. I am currently a graduate student in a media/communication-related field. The program must be academically legitimate, practically feasible within one semester, and compatible with normal credit/academic requirements.\n\nPlease compare suitable exchange/visiting options across regions such as the United States, Europe, Japan and Singapore. Cover curriculum/teaching models, credit transfer, academic environment, living costs, visa and language requirements, scholarships/financial aid, research/networking value, cross-cultural communication value, and practical adaptation issues.\n\nPlease produce a prioritized shortlist and preparation plan. Do not assume unstated preferences about prestige, travel style, cultural experience or spending when those trade-offs materially affect the choice.",
+      "high_impact_preferences": [
+        {
+          "id": "T2-P1",
+          "text": "Program value: cultural/intellectual fit and meaningful immersion > institutional prestige alone."
+        },
+        {
+          "id": "T2-P2",
+          "text": "Academic content: interdisciplinary social/media/cultural learning > narrowly technical coursework."
+        },
+        {
+          "id": "T2-P3",
+          "text": "Experience depth: deeper engagement with fewer places/communities > maximizing destination count."
+        },
+        {
+          "id": "T2-P4",
+          "text": "Autonomy: self-guided exploration and flexible local experience > heavily packaged/group-managed activities."
+        },
+        {
+          "id": "T2-P5",
+          "text": "Spending style: cost-effective, locally distinctive accommodation/choices > premium convenience/luxury."
+        }
+      ],
+      "hidden_persona": "User7 — Xu Yang, male, age 22–25.\n\nIDENTITY / EDUCATION\n- Graduate student specializing in new media and public-opinion research.\n- Bachelor's degree in Journalism and Communication from a prestigious Beijing university.\n- Graduate work focuses on new-media technology and public-opinion analysis.\n- Grew up in Beijing; values social responsibility and personal fulfillment.\n\nFAMILY\n- Lives with parents in a harmonious family.\n- Father is a civil servant: rigorous, rule-oriented.\n- Mother is a middle-school teacher: gentle, patient, strong communicator.\n- Parents support academic/career choices while emphasizing independence and responsibility.\n- Family has a lively white Pomeranian named Xiaobai.\n\nLIVING ENVIRONMENT\n- Lives in a culturally rich Beijing community near parks, bookstores and coffee shops.\n- Grew up with strong access to educational/cultural resources, fostering interest in current affairs and social issues.\n\nDIGITAL / ACADEMIC BEHAVIOR\n- Uses Weibo, Zhihu and WeChat about 3 hours/day.\n- Roughly 1.5 hours/day on news/trending topics.\n- Follows academic experts and media professionals.\n- Likes commenting on/sharing in-depth content; occasionally writes original articles/opinions.\n- Proficient with Word, Excel and Python for research/content work.\n\nROUTINE / TIME\n- Usually sleeps around midnight, wakes around 8 AM; slightly later on weekends.\n- Keeps monthly budgets and tracks expenses.\n- Recently spends more on coffee beans/brewing equipment but remains rational overall.\n- Prefers evenings for reading/reflection; mornings for light exercise/breakfast.\n- Uses weekly goal lists but adjusts daily tasks flexibly; emphasizes efficiency over formalism.\n- Often visits university library, parks and music cafes; recently started weekly gym visits.\n\nPERSONALITY / DECISION STYLE\n- Calm, critical thinker, analytical and observant.\n- Likes getting to the essence of problems.\n- Makes decisions independently but considers authoritative opinions.\n- Strongly values data and factual support.\n- Good listener; communicates complex issues clearly.\n- Rational shopper; likes cost-effective products and checks reviews/reputation.\n\nLIFESTYLE / CONSUMPTION\n- Prefers light food; increasingly cooks Italian/Japanese dishes.\n- Prefers cost-effective homestays with local characteristics; values comfort and cultural experience.\n- Shops online for convenience.\n- Recently pays more attention to eco-friendly/sustainable brands.\n\nTRAVEL\n- Travels 2–3 times/year, mainly during holidays.\n- Recently prefers natural-scenery destinations.\n- Prefers self-guided trips and planning itineraries personally.\n- Explicitly values in-depth experiences over rushed sightseeing.\n- Interested in hiking and outdoor/travel videos.\n\nCONTENT / CULTURE\n- Saves articles about social issues, technology and communication research.\n- Watches documentaries, academic lectures and outdoor/travel videos.\n- Reads nonfiction and sociology; interested in Haruki Murakami.\n- Likes thoughtful opinions and culturally rich content.\n\nHEALTH\n- Runs twice/week (~4 km each).\n- Does yoga; occasional badminton.\n- Healthy overall; academic stress managed through exercise/meditation/music.\n\nFINANCE\n- Income mainly scholarships and part-time writing/submissions.\n- Some savings and study equipment; no debt.\n- Frugal, budget-conscious.\n- No real investment experience yet; learning basic finance.\n- Low investment risk tolerance, conservative.",
+      "rubrics": [
+        {
+          "id": "T2-R1",
+          "text": "The shortlist should give substantial weight to cultural immersion and intellectual fit and should not rank programs mainly by institutional prestige."
+        },
+        {
+          "id": "T2-R2",
+          "text": "Recommended coursework should emphasize communication, media, society, culture or adjacent interdisciplinary learning rather than predominantly narrow technical coursework."
+        },
+        {
+          "id": "T2-R3",
+          "text": "The proposed exchange experience should prioritize deeper engagement with the host university/community and fewer meaningful side trips rather than maximizing destination count."
+        },
+        {
+          "id": "T2-R4",
+          "text": "The plan should preserve substantial room for self-directed local exploration instead of relying mainly on prepackaged tours or rigidly managed group activities."
+        },
+        {
+          "id": "T2-R5",
+          "text": "Housing, travel and daily-expense recommendations should seek strong value-for-money and locally distinctive options rather than premium convenience/luxury."
+        }
+      ],
+      "acceptable_clarification_paraphrases": "T2-P1\n- Would you rather prioritize cultural/intellectual fit and immersion, or the highest-ranked institution?\n- How important is meaningful cultural experience compared with university prestige?\n- If a lower-ranked program offered a much better cultural and academic fit, would you prefer it?\n\nT2-P2\n- Are you more interested in interdisciplinary media/social/cultural coursework or narrowly technical classes?\n- What kind of courses would you most want during the exchange: media/society/culture, or technical specialization?\n- Should the program emphasize social and cultural learning over technical depth?\n\nT2-P3\n- Would you prefer to spend more time deeply experiencing fewer places, or visit as many destinations as possible?\n- How important is depth of local experience versus destination count?\n- Do you prefer slower immersion or a packed multi-city itinerary?\n\nT2-P4\n- Do you prefer exploring independently, or joining organized group activities and packaged trips?\n- How much freedom do you want to plan local activities yourself?\n- Would you rather have a flexible self-guided experience or a structured group program?\n\nT2-P5\n- For housing and travel, do you prefer good-value locally distinctive options or premium convenience?\n- How important is cost-effectiveness compared with higher-end accommodation?\n- Would you rather stay somewhere local and affordable, or pay more for convenience and luxury?",
+      "average_impact_preferences": [
+        {
+          "id": "T2-A1",
+          "text": "Living environment: culturally rich neighborhoods with bookstores/cafes/parks > purely convenience-oriented campus surroundings."
+        },
+        {
+          "id": "T2-A2",
+          "text": "Sustainability: environmentally responsible travel/living choices > sustainability being irrelevant."
+        },
+        {
+          "id": "T2-A3",
+          "text": "Activity mix: nature/outdoor experiences > predominantly indoor/urban consumption."
+        }
+      ],
+      "instruction_sha256": "d10c39474b28e3c20bf3226786c266c2da1737ccc26ca32ffcbc96ce96f95b24"
+    },
+    {
+      "case_id": "T3",
+      "source_sheet": "15 Tasks",
+      "source_row": 4,
+      "source_cells": {
+        "task_instruction": "A4",
+        "high_impact_preferences": "B4",
+        "hidden_persona": "C4",
+        "rubrics": "D4",
+        "acceptable_paraphrases": "E4",
+        "average_impact_preferences": "F4"
+      },
+      "instruction": "[Benchmark Task 3 | PDR source Task 3 | User10]\n\nI plan to systematically study entrepreneurship over the next 1–2 years so that I can prepare for launching my own startup in the future. I already have substantial professional and management experience and an MBA-level business background.\n\nPlease compare degree and non-degree entrepreneurship programs, executive education, accelerator programs, online courses, mentoring/networking routes and practical venture-building options. Cover curriculum, time commitment, cost, access to networks/mentors, hands-on opportunities, fundraising/business-model/product/market/team-management learning, and the value of each route.\n\nThen create a phased 1–2 year learning and experimentation plan that can coexist with my existing job and family responsibilities. Do not assume which education format or learning style I prefer when those choices would materially change the plan.",
+      "high_impact_preferences": [
+        {
+          "id": "T3-P1",
+          "text": "Learning emphasis: real venture projects/cases > another broad academic business degree."
+        },
+        {
+          "id": "T3-P2",
+          "text": "Format: flexible/modular path compatible with work/family > highly disruptive full-time study."
+        },
+        {
+          "id": "T3-P3",
+          "text": "Method: evidence-driven market experiments and staged validation > long preparation before testing ideas."
+        },
+        {
+          "id": "T3-P4",
+          "text": "Learning content: in-depth practical cases/data > abstract theory without application."
+        },
+        {
+          "id": "T3-P5",
+          "text": "Resource allocation: ROI/cost-effectiveness > expensive prestige-oriented programs."
+        }
+      ],
+      "hidden_persona": "User10 — Liu Qiang, male, age 30–35.\n\nIDENTITY / EDUCATION / CAREER\n- Marketing Department Manager in a foreign enterprise.\n- MBA from Shanghai Jiao Tong University, specializing in marketing and business management.\n- Excellent student; served as student-union vice president and organized many campus activities.\n- Grew up in traditional Jiangnan culture while influenced by Western management ideas.\n- Values family and career development; good at combining Eastern/Western thinking.\n\nFAMILY\n- Married, two children.\n- Wife is a primary-school teacher.\n- Daughter, age 8: likes painting/dance.\n- Son, age 5: likes building toys/basketball.\n- Family has a yellow Labrador, Xiao Huang.\n- Harmonious household emphasizing communication and mutual growth.\n- Liu is primary breadwinner; wife focuses more on children's education/household.\n\nLIVING / LOCATION\n- Lives in Pudong, Shanghai, in a high-end community with schools, malls and parks.\n- Hometown Suzhou; visits parents there 2–3 times/year.\n- Shanghai + Suzhou background shaped pragmatism and attention to quality of life.\n\nDIGITAL / PROFESSIONAL BEHAVIOR\n- Uses WeChat ~2h/day and LinkedIn ~1h/day for social/career purposes.\n- Uses Zhihu and Dedao for industry knowledge.\n- Active on LinkedIn and industry forums; participates in marketing-related group chats.\n- Explicitly prefers in-depth analysis and case studies.\n- Focuses on market trends and innovative management models.\n\nROUTINE / TIME\n- Wakes ~6:30 AM, sleeps ~10:30 PM.\n- Regular weekday commuting; weekends for family/personal activities.\n- Fixed monthly household budget.\n- Family trips periodically.\n- Business trips about twice/year.\n- High-efficiency work in mornings; meetings/team communication afternoons; evenings reading/project planning.\n- Uses fragmented time efficiently.\n\nPERSONALITY / DECISION STYLE\n- Pragmatic, rational, detail-oriented and efficiency-focused.\n- Handles multiple tasks well.\n- Strong future planning.\n- Independently evaluates decisions with data.\n- Family issues decided together with wife.\n- Comfortable with management and coordination.\n\nCONSUMPTION\n- Strong quality + cost-effectiveness orientation.\n- Prefers durable, higher-end household goods when worthwhile.\n- Will spend meaningfully on children's education.\n- Does not simply choose cheapest options; seeks quality/value balance.\n\nTRAVEL\n- Family-oriented trips.\n- Likes nature and historical/cultural experiences.\n- Self-guided; likes planning.\n- Values deeper experiences and family interaction.\n- Business hotels may be higher-end; family travel may favor warm/comfortable homestays.\n\nCONTENT\n- Reads management/business material and case studies, including Harvard Business Review-type content.\n- Interested in market trends, innovative management and business cases.\n\nFINANCE / RISK\n- Owns property, family car, savings; has mortgage.\n- Invests in stocks/funds.\n- Risk-conscious and attentive to risk-return balance.\n- Prefers long-term returns over short-term speculation.",
+      "rubrics": [
+        {
+          "id": "T3-R1",
+          "text": "The roadmap should prioritize practical venture-building, customer discovery, market testing and real cases/projects rather than recommending another broad academic business degree as the primary learning path."
+        },
+        {
+          "id": "T3-R2",
+          "text": "Recommended programs/resources should be modular, part-time or otherwise compatible with ongoing work and family responsibilities unless a disruptive option offers exceptional incremental value."
+        },
+        {
+          "id": "T3-R3",
+          "text": "The roadmap should introduce early, low-cost market experiments and staged validation rather than postponing real testing until extensive theoretical preparation is complete."
+        },
+        {
+          "id": "T3-R4",
+          "text": "Learning resources should emphasize in-depth cases, concrete frameworks, market data and application to real business decisions rather than predominantly abstract entrepreneurship theory."
+        },
+        {
+          "id": "T3-R5",
+          "text": "Cost, time and expected practical return should materially affect program selection; expensive prestige-oriented options should not dominate without a clear ROI advantage."
+        }
+      ],
+      "acceptable_clarification_paraphrases": "T3-P1\n- Would you rather learn entrepreneurship by building/testing a real venture, or through another formal academic program?\n- How important is hands-on venture work compared with classroom study?\n- Do you want practical startup experiments to be the core of the learning plan?\n\nT3-P2\n- How important is keeping the learning path flexible enough to fit around work and family?\n- Would you consider a disruptive full-time program, or strongly prefer modular/part-time options?\n- Should minimizing disruption to your current responsibilities be a major criterion?\n\nT3-P3\n- Do you prefer testing business ideas early with small experiments, or preparing extensively before validation?\n- How comfortable are you with learning through rapid market experiments?\n- Should the roadmap push you toward early customer/market validation?\n\nT3-P4\n- Do you learn entrepreneurship better from real cases/data or from abstract theory?\n- How important are concrete business cases and practical frameworks in the learning plan?\n- Would you prefer evidence-rich applied material over conceptual coursework?\n\nT3-P5\n- How strongly should cost and expected ROI influence which programs/resources you choose?\n- Would you pay a large premium for prestige, or prioritize value-for-money?\n- Should expensive programs be avoided unless they offer clear practical return?",
+      "average_impact_preferences": [
+        {
+          "id": "T3-A1",
+          "text": "Learning network: access to experienced practitioners/industry peers > learning in isolation."
+        },
+        {
+          "id": "T3-A2",
+          "text": "Family compatibility: preserve regular family time > entrepreneurship learning dominating evenings/weekends."
+        },
+        {
+          "id": "T3-A3",
+          "text": "Management learning: frameworks that improve team coordination/leadership > purely solo-founder technical content."
+        }
+      ],
+      "instruction_sha256": "d34431c22d92a67df97a7f289f8e7602f1ca50de817aa79006ce86ac6dabd713"
+    }
+  ],
+  "generated_input_hashes": {
+    "inputs/T1_instruction.txt": "a6655f7a89712aa784a42d0df77c3ad03fe6ed384089d2f2aeba39b759db0891",
+    "inputs/T1_full_persona.txt": "b8302b78664644558565b2d18ff0f8edcab9a85ef56d41015f152dcf11247c52",
+    "inputs/T2_instruction.txt": "95de322f574dd4b2f65a07ee510ff6e9112ff431f7af54239a61991b4cca2ac6",
+    "inputs/T2_full_persona.txt": "ef1faf194041a2b79049dfb710c41c5dd178ad3d511509eeb61bbfadb42244ac",
+    "inputs/T3_instruction.txt": "4846e1c709dc5c099937350feaa2c64bf8e01b0242b7776523f80768007af998",
+    "inputs/T3_full_persona.txt": "2ccf13296942d5b584f275b7d4f43b49c06b4d845bcece01cf3bf736cdd1279d"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.74",
+  "started_at_utc": "2026-09-12T19:45:16.636685+00:00",
+  "completed_at_utc": "2026-09-12T19:45:29.697705+00:00",
+  "harness": "open-deep-research-stock-clarification-node",
+  "harness_commit": "1b7d2e80db9faa586165c60e09096dbbfd483a64",
+  "adapter_source": "deerflow CodexChatModel plus JSON-schema parser",
+  "deerflow_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model": "gpt-5.6-sol",
+  "visible_prompt_wrapper": null,
+  "persona_visible": false,
+  "rubric_visible": false,
+  "search_api": "none",
+  "scope": "clarification_node_only_not_completed_deep_research",
+  "input_sha256": "d10c39474b28e3c20bf3226786c266c2da1737ccc26ca32ffcbc96ce96f95b24",
+  "messages": [
+    {
+      "type": "human",
+      "content": "[Benchmark Task 2 | PDR source Task 2 | User7]\n\nI plan to participate in an overseas exchange or short-term visiting program in the coming semester. I am currently a graduate student in a media/communication-related field. The program must be academically legitimate, practically feasible within one semester, and compatible with normal credit/academic requirements.\n\nPlease compare suitable exchange/visiting options across regions such as the United States, Europe, Japan and Singapore. Cover curriculum/teaching models, credit transfer, academic environment, living costs, visa and language requirements, scholarships/financial aid, research/networking value, cross-cultural communication value, and practical adaptation issues.\n\nPlease produce a prioritized shortlist and preparation plan. Do not assume unstated preferences about prestige, travel style, cultural experience or spending when those trade-offs materially affect the choice."
+    },
+    {
+      "type": "ai",
+      "content": "To produce a feasible, prioritized shortlist without assuming material preferences, please provide:\n\n1. **Home institution and country**, plus your **citizenship/passport country** (needed for exchange eligibility and visas).\n2. **Target semester and approximate dates/duration**.\n3. Whether your university has **partner institutions or an approved exchange list**; please share it if available. May I also consider independently arranged visiting/non-degree programs?\n4. Your **media/communication specialization, degree level**, and preferred study format (coursework, research placement, or a mix).\n5. The **credits or course types** you must transfer back and any minimum full-time enrollment requirement.\n6. Your **working/study languages and proficiency or test scores**.\n7. Your approximate **total or monthly budget**, and whether scholarships are necessary for participation.\n8. Any firm constraints concerning region, accessibility, housing, safety, work rights, or other practical needs."
+    }
+  ],
+  "asked_clarification": true,
+  "final_report_present": false
+}

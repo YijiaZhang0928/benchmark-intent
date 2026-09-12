@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.77 Three-task clarification-harness feasibility results - 2026-09-12
+
+- 从用户提供的 0912 workbook 冻结前 3 题、每题 5 条高影响偏好与 5 条 0/1/2 rubric；cold-start 首轮只传原 instruction，persona/rubric 不进入 agent 输入。
+- 在同一 DeerFlow 2.0 × `gpt-5.6-sol` 骨干内完成 ask/no-ask ablation，并在 T3 增加 full-persona/no-ask；7 份报告接受 `gpt-6-astra` 三重复盲评，共 21 份 judgment。
+- 六份报告通过 DR gate；T1 no-ask 虽有 30 次搜索与 26 个报告 URL，但 0 次正文 fetch，被排除主 P 对照。合格配对中 T2 ask−no-ask=+4.33、T3=0，均值 +2.17；严格 Coverage@HI 与 P 的描述性相关 `r=0.535`（n=5）。
+- 预登记 H3 未成立：T3 cold-start+ask 与 full-persona+no-ask 均为 10/10。六份合格报告中五份满分，暴露严重 rubric 天花板效应；三个 ask 条件分别问 8/8/7 个 atomic fields，均违反 ≤5 上限，不能称校准成功。
+- Open Deep Research stock node 的 T2/T3 clarification probe 会提问（8/5 个字段），T1 在 10 分钟工程超时后终止；这些不是完整 DR，未进入 P。Claude/Gemini/Kimi、OAgents、DeerFlow 1.x 与商业产品缺失单元全部显式记录，不做静默模型替换或跨家族结论。
+- 新增 `pilot/clarification_harness_3task_v0_76/` 的冻结设计、exact inputs、完整 traces、资格审计、严格问题覆盖编码、盲评、汇总、结果与 provider/harness 状态；本轮只支持方向性机制证据，不支持“一般来说提问总是更好”。
+
 ## v0.76 Open Deep Research IEO clarification A/B protocol - 2026-09-12
 
 - 在报告生成前锁定 PDR-T35 × User8 的 stock Open Deep Research vs IEO/ownership-aware clarification 对照；同一 `gpt-5.6-sol`、搜索/抓取工具、research budget、simulator、报告图和官方 PDR evaluator。

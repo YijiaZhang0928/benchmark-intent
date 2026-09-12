@@ -1,0 +1,247 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/clarification_harness_3task_v0_76/runs/T3/N/r1/turn_001_summary.json",
+  "distinct_search_queries": 20,
+  "fetch_attempts": 30,
+  "substantive_fetch_successes": 14,
+  "report_cited_url_count": 10,
+  "successful_fetched_domains": [
+    "entrepreneurship.mit.edu",
+    "executive.mit.edu",
+    "new.nsf.gov",
+    "www.antler.co",
+    "www.micromentor.org",
+    "www.sba.gov",
+    "www.startupschool.org",
+    "www.techstars.com",
+    "www.ycombinator.com"
+  ],
+  "declared_primary_domains": [
+    "new.nsf.gov",
+    "www.sba.gov",
+    "www.techstars.com",
+    "www.ycombinator.com"
+  ],
+  "matched_primary_domains": [
+    "new.nsf.gov",
+    "www.sba.gov",
+    "www.techstars.com",
+    "www.ycombinator.com"
+  ],
+  "structural_gate_pass": true,
+  "primary_source_gate": "pass",
+  "deep_research_qualified": true,
+  "fetches": [
+    {
+      "url": "https://www.jbs.cam.ac.uk/masters-degrees/mst-entrepreneurship/",
+      "domain": "www.jbs.cam.ac.uk",
+      "readable_characters": 288,
+      "substantive_success": false,
+      "error": "Error fetching https://www.jbs.cam.ac.uk/masters-degrees/mst-entrepreneurship/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.jbs.cam.ac.uk/masters-degrees/mst-entrepreneurship/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.jbs.cam.ac.uk/masters-degrees/mst-entrepreneurship/curriculum/",
+      "domain": "www.jbs.cam.ac.uk",
+      "readable_characters": 310,
+      "substantive_success": false,
+      "error": "Error fetching https://www.jbs.cam.ac.uk/masters-degrees/mst-entrepreneurship/curriculum/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.jbs.cam.ac.uk/masters-degrees/mst-entrepreneurship/curriculum/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.ycombinator.com/deal",
+      "domain": "www.ycombinator.com",
+      "readable_characters": 4991,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ycombinator.com/apply",
+      "domain": "www.ycombinator.com",
+      "readable_characters": 3487,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.techstars.com/accelerators",
+      "domain": "www.techstars.com",
+      "readable_characters": 1314,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.techstars.com/terms",
+      "domain": "www.techstars.com",
+      "readable_characters": 224,
+      "substantive_success": false,
+      "error": "Error fetching https://www.techstars.com/terms: HTTPStatusError: Client error '404 Not Found' for url 'https://www.techstars.com/terms'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.coursera.org/specializations/wharton-entrepreneurship",
+      "domain": "www.coursera.org",
+      "readable_characters": 292,
+      "substantive_success": false,
+      "error": "Error fetching https://www.coursera.org/specializations/wharton-entrepreneurship: HTTPStatusError: Client error '404 Not Found' for url 'https://www.coursera.org/specializations/wharton-entrepreneurship'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.score.org/find-mentor",
+      "domain": "www.score.org",
+      "readable_characters": 229,
+      "substantive_success": false,
+      "error": "Error fetching https://www.score.org/find-mentor: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.score.org/find-mentor/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.micromentor.org/",
+      "domain": "www.micromentor.org",
+      "readable_characters": 5757,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.startupschool.org/",
+      "domain": "www.startupschool.org",
+      "readable_characters": 3545,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.postgraduate.study.cam.ac.uk/courses/directory/bmjbstmse/study",
+      "domain": "www.postgraduate.study.cam.ac.uk",
+      "readable_characters": 310,
+      "substantive_success": false,
+      "error": "Error fetching https://www.postgraduate.study.cam.ac.uk/courses/directory/bmjbstmse/study: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.postgraduate.study.cam.ac.uk/courses/directory/bmjbstmse/study'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://executive.mit.edu/course/entrepreneurship-development-program/a056g00000URaaTAAT.html",
+      "domain": "executive.mit.edu",
+      "readable_characters": 1423,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.gsb.stanford.edu/exec-ed/programs/stanford-ignite",
+      "domain": "www.gsb.stanford.edu",
+      "readable_characters": 284,
+      "substantive_success": false,
+      "error": "Error fetching https://www.gsb.stanford.edu/exec-ed/programs/stanford-ignite: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.gsb.stanford.edu/exec-ed/programs/stanford-ignite'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://online.hbs.edu/courses/entrepreneurship-essentials/",
+      "domain": "online.hbs.edu",
+      "readable_characters": 118,
+      "substantive_success": false,
+      "error": "Error fetching https://online.hbs.edu/courses/entrepreneurship-essentials/: ValueError: Response exceeds 2000000 bytes"
+    },
+    {
+      "url": "https://www.sba.gov/local-assistance/resource-partners/score-business-mentoring",
+      "domain": "www.sba.gov",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.sba.gov/local-assistance/resource-partners/small-business-development-centers-sbdc",
+      "domain": "www.sba.gov",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.sba.gov/local-assistance/resource-partners/womens-business-centers",
+      "domain": "www.sba.gov",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://new.nsf.gov/funding/initiatives/i-corps/about-i-corps",
+      "domain": "new.nsf.gov",
+      "readable_characters": 3747,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.techstars.com/accelerator-hub",
+      "domain": "www.techstars.com",
+      "readable_characters": 2335,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.techstars.com/newsroom/investment-terms",
+      "domain": "www.techstars.com",
+      "readable_characters": 6235,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://online.hbs.edu/courses/entrepreneurship-essentials",
+      "domain": "online.hbs.edu",
+      "readable_characters": 117,
+      "substantive_success": false,
+      "error": "Error fetching https://online.hbs.edu/courses/entrepreneurship-essentials: ValueError: Response exceeds 2000000 bytes"
+    },
+    {
+      "url": "https://online.hbs.edu/courses/disruptive-strategy",
+      "domain": "online.hbs.edu",
+      "readable_characters": 109,
+      "substantive_success": false,
+      "error": "Error fetching https://online.hbs.edu/courses/disruptive-strategy: ValueError: Response exceeds 2000000 bytes"
+    },
+    {
+      "url": "https://www.babson.edu/graduate/academics/graduate-certificates/entrepreneurship/",
+      "domain": "www.babson.edu",
+      "readable_characters": 324,
+      "substantive_success": false,
+      "error": "Error fetching https://www.babson.edu/graduate/academics/graduate-certificates/entrepreneurship/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.babson.edu/graduate/academics/graduate-certificates/entrepreneurship/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.babson.edu/graduate/academics/part-time-business-programs/part-time-mba/",
+      "domain": "www.babson.edu",
+      "readable_characters": 330,
+      "substantive_success": false,
+      "error": "Error fetching https://www.babson.edu/graduate/academics/part-time-business-programs/part-time-mba/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.babson.edu/graduate/academics/part-time-business-programs/part-time-mba/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://entrepreneurship.mit.edu/accelerator/",
+      "domain": "entrepreneurship.mit.edu",
+      "readable_characters": 6485,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://execed-online.imperial.ac.uk/professional-certificate-programme-entrepreneurship",
+      "domain": "execed-online.imperial.ac.uk",
+      "readable_characters": 338,
+      "substantive_success": false,
+      "error": "Error fetching https://execed-online.imperial.ac.uk/professional-certificate-programme-entrepreneurship: HTTPStatusError: Client error '404 Not Found' for url 'https://execed-online.imperial.ac.uk/professional-certificate-programme-entrepreneurship'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.gsb.stanford.edu/exec-ed/programs/stanford-ignite/full-time",
+      "domain": "www.gsb.stanford.edu",
+      "readable_characters": 304,
+      "substantive_success": false,
+      "error": "Error fetching https://www.gsb.stanford.edu/exec-ed/programs/stanford-ignite/full-time: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.gsb.stanford.edu/exec-ed/programs/stanford-ignite/full-time'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.founderinstitute.com/program",
+      "domain": "www.founderinstitute.com",
+      "readable_characters": 101,
+      "substantive_success": false,
+      "error": "Error fetching https://www.founderinstitute.com/program: ConnectError: All connection attempts failed"
+    },
+    {
+      "url": "https://www.antler.co/residency",
+      "domain": "www.antler.co",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.entrepreneurship.org/learning-pathways/lean-startup",
+      "domain": "www.entrepreneurship.org",
+      "readable_characters": 288,
+      "substantive_success": false,
+      "error": "Error fetching https://www.entrepreneurship.org/learning-pathways/lean-startup: HTTPStatusError: Client error '404 Not Found' for url 'https://www.entrepreneurship.org/learning-pathways/lean-startup'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

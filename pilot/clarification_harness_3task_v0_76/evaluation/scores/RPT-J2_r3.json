@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-J2",
+  "repeat": 3,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "bb7a76108d1647855cb8b552de07b8fb4f29d160760185d5b59b52c8e9ff8d77",
+  "report_sha256": "4ffcc9a8c97fd4c11e8a602242cfc8323fbb5274b58a4d6b8810e6fbd705a6cb",
+  "started_at_utc": "2026-09-12T19:42:59.648629+00:00",
+  "completed_at_utc": "2026-09-12T19:43:23.797694+00:00",
+  "p_rubric": 6,
+  "rubrics": [
+    {
+      "id": "T2-R1",
+      "score": 2,
+      "evidence": "Waseda: “Rank above Europe or Singapore only if Japan/East Asia is directly relevant to your thesis or career and course/supervisor access is confirmed.” Its Japanese-based route offers “Much stronger immersion and local-network potential,” conditional on advanced Japanese. The research ranking puts “best confirmed supervisor and research group, regardless of region” first.",
+      "reason": "Intellectual and regional-cultural fit materially change the ranking, while immersion benefits are weighed against language barriers to meaningful participation. Institutional prestige is explicitly displaced by academic access and fit."
+    },
+    {
+      "id": "T2-R2",
+      "score": 2,
+      "evidence": "The recommended European package includes “political communication,” “journalism and platform governance,” “digital cultures,” “media industries,” “audience studies,” and “visual or film studies.” NTU selection requires confirmation of postgraduate communication-course access.",
+      "reason": "Communication, media, society, and interdisciplinary cultural study shape the recommended curricula and eligibility filters. Methods training supports those subjects rather than dominating them as narrow technical coursework."
+    },
+    {
+      "id": "T2-R3",
+      "score": 1,
+      "evidence": "“Cross-cultural value should be assessed by the interactions built into the program—mixed project teams, fieldwork, local-language learning, laboratories, student media, and research groups—not by tourism opportunities.” The arrival plan requires joining an academically relevant local network and a mixed-cultural student activity.",
+      "reason": "The report implements deeper host engagement through concrete actions, but does not address side-trip frequency or recommend fewer, more meaningful trips. The full engagement-versus-destination-count trade-off is only partially implemented."
+    },
+    {
+      "id": "T2-R4",
+      "score": 0,
+      "evidence": "The preparation and arrival plans cover academic approvals, faculty meetings, local networks, and student activities, but contain no provision for self-directed local exploration or protected discretionary time.",
+      "reason": "Neither substantial room for independent exploration nor a preference over packaged tours or rigid group schedules is established. Academic independence is not evidence of independent local exploration."
+    },
+    {
+      "id": "T2-R5",
+      "score": 1,
+      "evidence": "“A smaller Dutch, Belgian, German, Austrian, or Nordic partner city may offer essentially the same ECTS advantages at lower cost.” Tokyo is described as manageable with subsidized dormitory housing, and housing comparisons include deposits, utilities, furnishings, and commuting time.",
+      "reason": "Lower-cost locations and housing value receive actionable attention, but locally distinctive accommodation, economical local travel, and daily-spending choices are not developed. General affordability and financial-risk management only partially satisfy the rubric."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 7202,
+    "output_tokens": 717,
+    "total_tokens": 7919,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 185
+    }
+  }
+}

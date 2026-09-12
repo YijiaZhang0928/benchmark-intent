@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.74",
+  "started_at_utc": "2026-09-12T19:45:16.636673+00:00",
+  "completed_at_utc": "2026-09-12T19:45:26.366285+00:00",
+  "harness": "open-deep-research-stock-clarification-node",
+  "harness_commit": "1b7d2e80db9faa586165c60e09096dbbfd483a64",
+  "adapter_source": "deerflow CodexChatModel plus JSON-schema parser",
+  "deerflow_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model": "gpt-5.6-sol",
+  "visible_prompt_wrapper": null,
+  "persona_visible": false,
+  "rubric_visible": false,
+  "search_api": "none",
+  "scope": "clarification_node_only_not_completed_deep_research",
+  "input_sha256": "d34431c22d92a67df97a7f289f8e7602f1ca50de817aa79006ce86ac6dabd713",
+  "messages": [
+    {
+      "type": "human",
+      "content": "[Benchmark Task 3 | PDR source Task 3 | User10]\n\nI plan to systematically study entrepreneurship over the next 1–2 years so that I can prepare for launching my own startup in the future. I already have substantial professional and management experience and an MBA-level business background.\n\nPlease compare degree and non-degree entrepreneurship programs, executive education, accelerator programs, online courses, mentoring/networking routes and practical venture-building options. Cover curriculum, time commitment, cost, access to networks/mentors, hands-on opportunities, fundraising/business-model/product/market/team-management learning, and the value of each route.\n\nThen create a phased 1–2 year learning and experimentation plan that can coexist with my existing job and family responsibilities. Do not assume which education format or learning style I prefer when those choices would materially change the plan."
+    },
+    {
+      "type": "ai",
+      "content": "To tailor the comparisons and build a realistic 1–2 year plan, please specify:\n- Your country/city (and willingness to travel or relocate for programs)\n- The approximate weekly time you can commit alongside work and family\n- Your education/venture-development budget range\n- Whether in-person, online, hybrid, or any of these are feasible (you need not state a preference)\n- Any target industry, venture type, or startup idea/stage you already have; otherwise, confirm that the plan should include idea discovery and validation"
+    }
+  ],
+  "asked_clarification": true,
+  "final_report_present": false
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-W8",
+  "repeat": 3,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "1adfaeb245dd79bd5e167640d85552828c30ee0454513a25fd0569e07498cf62",
+  "report_sha256": "bda6a0654a2e553fe03faee772ef6c5de180a299f8837d9f98f2332352ed4bdf",
+  "started_at_utc": "2026-09-12T19:42:17.991595+00:00",
+  "completed_at_utc": "2026-09-12T19:42:38.132423+00:00",
+  "p_rubric": 10,
+  "rubrics": [
+    {
+      "id": "T1-R1",
+      "score": 2,
+      "evidence": "Section 1 recommends NLP paired with efficient inference/training, robustness/evaluation, retrieval, multimodal learning, or low-resource learning. It requires two research trials: “reproduce and stress-test a recent NLP paper” and “either profile/optimize an ML system, study robustness/evaluation, or work on multimodal data.”",
+      "reason": "The recommended directions combine methodological research with concrete experimentation and implementation. Project-based evidence determines the eventual specialization rather than steering the applicant toward theory-only research."
+    },
+    {
+      "id": "T1-R2",
+      "score": 2,
+      "evidence": "Phases 1–3 require a reproduction repository, correctly implemented baselines, versioned code, experiment logs, independent ownership of a follow-up question, ablations, failure analysis, and code/data release where possible. Phase 3 accepts a “substantive open-source contribution” as a research output.",
+      "reason": "Implementation, replication, and increasing independent research ownership form the core preparation sequence and its deliverables. Formal coursework supports rather than dominates the plan."
+    },
+    {
+      "id": "T1-R3",
+      "score": 2,
+      "evidence": "Section 6 directs applicants to investigate graduate destinations, research-internship participation, advisor permission for internships, and industry-collaboration IP. Section 10 recommends that industry-oriented applicants “target labs with strong internship records, systems infrastructure, and alumni in research-scientist or applied-scientist roles.”",
+      "reason": "Industry optionality affects topic recommendations, internship preparation, lab investigation, and final program selection. The report distinguishes several nonacademic career paths and does not require an academic-faculty commitment."
+    },
+    {
+      "id": "T1-R4",
+      "score": 2,
+      "evidence": "Section 7 assigns “Guaranteed funding and cost of living” 15% of program scoring and requires “funding that is workable without personal subsidy.” Section 9 states: “Do not enroll in an expensive, coursework-only master’s solely because it carries a prestigious name.”",
+      "reason": "Funding is both a weighted selection criterion and a minimum shortlist requirement. Net-cost calculations, regional funding checks, and rejection of unsupported prestige-driven master’s options make affordability consequential."
+    },
+    {
+      "id": "T1-R5",
+      "score": 2,
+      "evidence": "Section 7 weights advisor fit, recruiting evidence, recent research, student outcomes, funding, and resources without a prestige criterion. Section 10 compares routes conditionally: funded US and selected other programs for flexibility/direct bachelor’s entry; UK or European projects for focused study with research depth; and an RA year or research master’s if still undecided.",
+      "reason": "The final recommendations distinguish options using readiness, research fit, flexibility, employment goals, and financial risk. The faculty-first scoring process and explicit regional trade-offs replace prestige-based ranking with evidence-based selection."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 10259,
+    "output_tokens": 608,
+    "total_tokens": 10867,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 26
+    }
+  }
+}

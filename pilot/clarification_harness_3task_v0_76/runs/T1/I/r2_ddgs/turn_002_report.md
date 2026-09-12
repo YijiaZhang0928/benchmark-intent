@@ -1,0 +1,990 @@
+# AI PhD directions, regional comparison, and 1–2 year preparation plan
+
+**Evidence date:** September 12, 2026.
+
+## Executive recommendation
+
+Given your strong academics, implementation-heavy interests, lack of formal research experience so far, desire to preserve both industrial-research and academic options, and requirement for full funding, the best strategic positioning is:
+
+1. **Primary research direction:** applied NLP and language-model research, especially **evaluation, reliability, adaptation, retrieval, efficiency, or multilingual NLP**.
+2. **Secondary direction:** efficient deep-learning systems or multimodal learning, used to broaden your potential supervisor pool without making your profile look unfocused.
+3. **Preferred route:** apply primarily to **fully funded direct-entry or integrated PhDs**, while maintaining a separate list of **funded research master’s programs** as a bridge.
+4. **Timing:** unless you can obtain meaningful research experience and strong research-based recommendation letters very quickly, **Fall 2028 entry is the stronger base-case target**. Fall 2027 can remain an opportunistic early attempt rather than the only cycle.
+5. **Geographic strategy:** maintain three parallel portfolios:
+   - North American department-based PhDs;
+   - European salaried or institution-funded doctoral positions/programs;
+   - Singapore/Hong Kong and selected other Asian programs with explicit research scholarships.
+
+Do **not** commit to an unfunded taught master’s merely to improve prestige. Under your funding constraint, it should be considered only if an external scholarship covers tuition and realistic living costs.
+
+Your citizenship remains unknown, so visa eligibility, government-scholarship eligibility, export-control exposure, and post-study work rights cannot yet be ranked reliably. These should become mandatory verification fields when you build the final school list.
+
+---
+
+## 1. Research directions that fit your profile
+
+### 1.1 Applied NLP and language-model research — strongest current fit
+
+Potential subdirections include:
+
+- retrieval-augmented generation;
+- evaluation and benchmarking of language models;
+- hallucination, factuality, robustness, and calibration;
+- multilingual and low-resource NLP;
+- domain adaptation and parameter-efficient fine-tuning;
+- information extraction and question answering;
+- conversational systems and tool-using agents;
+- human evaluation and human–AI interaction;
+- efficient inference, compression, and serving of language models.
+
+This is the most natural starting point because it turns your existing NLP interest and coding orientation into research questions that can produce measurable artifacts: datasets, baselines, ablations, evaluation frameworks, and reproducible systems.
+
+CMU’s Language Technologies Institute illustrates the breadth of a research-oriented NLP doctorate: its curriculum includes human language for AI, deep learning, advanced NLP, search engines, large-language-model methods, speech technology, application engineering, and substantial directed research. The program expects original publications and prepares graduates for research-scientist, faculty, and entrepreneurial paths. [citation:CMU PhD in Language and Information Technology](https://www.lti.cs.cmu.edu/academics/phd-programs/phd-lti.html)
+
+**Best fit if you enjoy:** implementing models, constructing datasets, designing evaluations, conducting ablations, and diagnosing real-system failures.
+
+**Main risk:** an application framed only as “I like LLMs” will appear generic. You need evidence of a narrower problem orientation—for example, “reliable retrieval-grounded generation in specialized or multilingual settings.”
+
+---
+
+### 1.2 Efficient and systems-oriented deep learning — excellent secondary direction
+
+Representative topics:
+
+- efficient training and inference;
+- model compression, quantization, pruning, and distillation;
+- distributed training;
+- memory-efficient attention;
+- serving, latency, throughput, and energy measurement;
+- data pipelines and evaluation infrastructure;
+- edge or resource-constrained AI;
+- reproducible ML systems.
+
+This direction is especially suitable if your strongest comparative advantage becomes software engineering rather than mathematical theory. It also supports both research-scientist and ML-systems career paths.
+
+**Advantages**
+
+- Tangible, reproducible outputs.
+- Strong relevance to industrial research and engineering.
+- Easier to demonstrate systems competence through public code.
+- Can be combined with NLP—for example, efficient LLM inference or retrieval systems.
+
+**Risks**
+
+- A project that only wraps existing libraries is engineering, not necessarily research.
+- You must formulate hypotheses and compare against meaningful baselines.
+- Access to large compute may be a constraint, so favor questions that can be studied with smaller open models.
+
+---
+
+### 1.3 Reliable, responsible, and evaluative AI — strong complement to NLP
+
+Representative topics:
+
+- robustness and distribution shift;
+- uncertainty and calibration;
+- interpretability;
+- red-teaming and safety evaluation;
+- bias and multilingual fairness;
+- privacy-preserving learning;
+- data provenance and contamination;
+- evaluation validity and benchmark design.
+
+This direction can be highly implementation-heavy: build a benchmark, define failure categories, compare methods, and release tools or data. It also avoids requiring frontier-scale model training.
+
+**Advantages**
+
+- Compatible with modest compute.
+- Attractive to both academia and industrial model-evaluation teams.
+- Produces clear research artifacts.
+- Can differentiate your profile from applicants doing generic fine-tuning projects.
+
+**Risk:** avoid treating “responsible AI” as a purely rhetorical subject. Your work should have technical methodology, carefully defined metrics, statistical analysis, and reproducibility.
+
+---
+
+### 1.4 Multimodal learning — useful exploratory option
+
+Potential topics include vision-language models, document intelligence, speech-language systems, video-language understanding, and multimodal retrieval.
+
+It offers broad industrial applicability and can connect NLP with computer vision or speech. However, multimodal experimentation may require more data and compute. A sensible undergraduate entry point would be evaluation, retrieval, adaptation, or document understanding rather than pretraining a large model.
+
+---
+
+### 1.5 Domain-focused AI — good if genuine domain access emerges
+
+Examples include AI for science, healthcare, education, finance, law, and software engineering.
+
+Domain work is most compelling when you have:
+
+- access to realistic data;
+- a collaborating domain expert;
+- a well-defined user or scientific problem;
+- domain-appropriate evaluation rather than generic benchmark scores.
+
+Do not choose a domain merely because it appears employable. Choose it if you can obtain credible mentorship, data, and evaluation conditions.
+
+---
+
+### 1.6 Reinforcement learning, planning, and agents — explore cautiously
+
+This area may fit your interest in real systems, but the research can require substantial experimental infrastructure and stronger foundations in probability, optimization, and sequential decision-making.
+
+A focused project on agent evaluation, tool use, or reproducibility is more realistic initially than attempting large-scale reinforcement learning from scratch.
+
+---
+
+### 1.7 Theory-heavy ML — maintain literacy, but not the default specialization
+
+You will need solid foundations in probability, linear algebra, optimization, algorithms, and statistical learning regardless of direction. But based on your stated preferences, a doctorate centered almost entirely on proofs or abstract learning theory is unlikely to be the best initial target.
+
+Do not neglect theory; instead, use it to support rigorous empirical work.
+
+---
+
+## 2. Provisional direction ranking
+
+| Direction | Fit with hands-on preference | Feasible before application | Industry-research value | Academic optionality | Provisional priority |
+|---|---:|---:|---:|---:|---:|
+| Applied NLP/LLM evaluation and adaptation | Very high | High | Very high | Very high | 1 |
+| Efficient NLP/ML systems | Very high | Medium–high | Very high | High | 2 |
+| Reliable AI, robustness, and evaluation | High | High | Very high | Very high | 3 |
+| Multilingual/low-resource NLP | High | High | High | Very high | 4 |
+| Multimodal learning | High | Medium | Very high | High | 5 |
+| Domain-specific AI | High if data/mentor exists | Variable | High | High | Conditional |
+| RL/agents | Medium–high | Medium–low | High | High | Exploratory |
+| Pure ML theory | Low–medium | Low | Medium–high | Very high | Not primary |
+
+A coherent application theme could be:
+
+> “I want to build and evaluate reliable, efficient language systems, with particular interest in retrieval, multilingual behavior, and real-world deployment constraints.”
+
+That is specific enough to identify supervisors but broad enough to support several related applications. It should evolve based on your actual research results rather than being fixed now.
+
+---
+
+# 3. Regional comparison
+
+## 3.1 North America
+
+### Typical structure
+
+The dominant US model admits students into a multi-year PhD after a bachelor’s degree. It normally combines early coursework, qualifying or breadth requirements, research, teaching, and dissertation work.
+
+Stanford CS, for example, explicitly accepts applicants with the equivalent of a US bachelor’s degree and describes its PhD as a research-oriented program normally taking five to six years, with relatively few course requirements. [citation:Stanford CS PhD Admissions](https://www.cs.stanford.edu/admissions/phd-admissions)
+
+CMU LTI provides a more structured example: approximately eight graduate courses, proficiency requirements in programming, writing, presentation, and teaching, followed by intensive dissertation research. Its sample curriculum spans five years. [citation:CMU PhD in Language and Information Technology](https://www.lti.cs.cmu.edu/academics/phd-programs/phd-lti.html)
+
+Canada often offers both direct-entry PhDs and research-master’s-to-PhD pathways, but the exact entry route varies by department. For your final list, verify whether a Chinese four-year bachelor’s qualifies for direct PhD entry and whether funding is guaranteed for international students.
+
+### Research and academic resources
+
+North America offers:
+
+- very broad faculty coverage;
+- large AI/NLP/ML communities;
+- strong links to technology companies and research laboratories;
+- extensive seminar, internship, and cross-department opportunities;
+- flexibility to refine a topic after admission in many department-based programs.
+
+Representative ecosystems to investigate:
+
+- **Stanford:** Stanford NLP, Stanford AI Lab, human-centered AI, ML systems.
+- **Carnegie Mellon:** Language Technologies Institute, Machine Learning Department, Robotics Institute.
+- **UC Berkeley:** BAIR and related NLP, vision, robotics, and systems groups.
+- **University of Washington:** NLP, ML, systems, and Seattle technology ecosystem.
+- **University of Toronto / Vector Institute:** deep learning, NLP, reinforcement learning, and health AI.
+- **Université de Montréal / Mila:** deep learning, generative modeling, NLP, and responsible AI.
+- **UBC, McGill, University of Alberta:** additional strong research communities and potentially useful research-master’s routes.
+- **Georgia Tech, UIUC, UMass Amherst, UT Austin, UC San Diego, USC, Michigan, Maryland:** important additions once supervisor-level fit is assessed.
+
+This is a research universe, not a prestige-ordered shortlist.
+
+### Funding and cost
+
+The best US CS PhD offers typically combine tuition coverage with a stipend through fellowships, research assistantships, or teaching assistantships. Stanford states that all CS PhD students are guaranteed funding while making satisfactory academic progress. [citation:Stanford CS PhD Funding](https://www.cs.stanford.edu/phd-program-overview/funding)
+
+For every program, verify:
+
+1. whether funding is guaranteed or merely typical;
+2. guaranteed duration;
+3. summer funding;
+4. tuition and mandatory-fee coverage;
+5. health-insurance coverage;
+6. teaching or research workload;
+7. whether funding is tied to one supervisor;
+8. stipend relative to local rent.
+
+Your decision variable should be **net financial position**, not published tuition. A high-tuition program with a complete waiver can be less expensive than a nominally inexpensive program with weak living support.
+
+### Admissions
+
+Typical components include:
+
+- transcripts;
+- statement of purpose;
+- CV;
+- three recommendation letters;
+- English-language results when required;
+- sometimes research statements, personal statements, or video responses.
+
+At CMU LTI, the GRE is optional, TOEFL is required for non-native English speakers—IELTS may also be submitted—and applications require transcripts, a CV, statement of purpose, and three letters. A short video essay is optional but strongly recommended. For Fall 2027, the listed deadlines are November 18, 2026 for the early fee and December 9, 2026 for the final deadline. [citation:CMU PhD in Language and Information Technology](https://www.lti.cs.cmu.edu/academics/phd-programs/phd-lti.html)
+
+### Employment outlook
+
+North America is strongest when you prioritize:
+
+- access to large industrial research organizations;
+- internships during a longer doctorate;
+- movement among research scientist, applied scientist, and ML engineering roles;
+- broad academic networks.
+
+The disadvantages are long program duration, intense admissions competition, high living costs in major technology centers, and immigration uncertainty. Because citizenship is unknown, no specific visa or post-study-work conclusion should be drawn yet.
+
+---
+
+## 3.2 Continental Europe and Switzerland
+
+### Typical structure
+
+European doctorates are often more project- and supervisor-specific than US programs. Many expect a master’s degree and less preparatory coursework. Openings may resemble job applications attached to funded projects.
+
+ETH Zurich exemplifies the supervisor-centered model. Its standard CS doctorate expects a master’s degree in computer science or a related field. Applicants may contact a professor directly or enter a central pool; applications can be made throughout the year. Doctoral researchers are both employees and students and normally assist with teaching and student supervision. [citation:ETH Zurich CS Doctoral Application and Admission](https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html)
+
+EPFL EDIC is a significant exception for your direct-entry strategy. It accepts an appropriate rigorous four- or five-year bachelor’s or master’s degree. Admission is centralized; students do not need to secure an adviser before applying. The English-language program takes approximately four to six years, includes first-year advanced coursework, research projects, a candidacy examination, and teaching participation. [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/)
+
+### Research ecosystems to investigate
+
+- **ETH Zurich:** ML, NLP, computer vision, data systems, robotics, AI Center.
+- **EPFL:** NLP, ML, vision, data science, systems, human–computer interaction.
+- **ELLIS network:** distributed network of European ML institutes and labs.
+- **Max Planck Institutes and German universities:** project-based doctoral employment.
+- **CISPA:** reliable and secure AI, privacy, systems, and foundations.
+- **Technical University of Munich:** ML, robotics, autonomous systems, and industry connections.
+- **University of Amsterdam:** NLP, information retrieval, and ML.
+- **KU Leuven:** ML, language, vision, and data science.
+- **Aalto University:** ML, NLP, speech, and human-centered computing.
+- **University of Edinburgh:** long-established NLP, speech, and informatics community.
+- **UCL, Oxford, Cambridge, Imperial:** highly competitive UK options spanning ML, NLP, vision, and responsible AI.
+
+### Funding
+
+Switzerland is particularly attractive under your cost constraint. ETH says CS doctoral students generally hold employment contracts and that its applicable doctoral salary rates enable students to cover Swiss living expenses comfortably. [citation:ETH Zurich CS Doctoral Application and Admission](https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html)
+
+EPFL states that all admitted EDIC students receive financial support at competitive salary levels. Admission requires both committee acceptance and either an institutional fellowship or direct hiring by a laboratory. Its first-round fellowship can allow an initially unaffiliated student to explore laboratories before joining one. [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/)
+
+Elsewhere in Europe, distinguish among:
+
+- salaried employment contracts;
+- tax-free or taxable scholarships;
+- project-funded positions;
+- external national scholarships;
+- admission without funding.
+
+An admission offer without explicit living support does not satisfy your present constraint.
+
+### Admissions and language
+
+ETH requires a CV, statement of objectives, transcripts and degree records, and three references. It expects written and spoken English but does not require a language test; GRE scores are not mandatory. [citation:ETH Zurich CS Doctoral Application and Admission](https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html)
+
+EPFL requires transcripts, CV, statement of purpose, three recommendations, and identification documents. For applicants whose prior degree was not taught in English, its current EDIC requirements include TOEFL iBT 100 or IELTS Academic 7.0, among several accepted alternatives; GRE is optional. Its main deadline is December 1 for the following September, while April 15 is a smaller second round. [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/)
+
+### Employment outlook
+
+Europe is attractive for:
+
+- salaried doctoral employment;
+- international academic collaboration;
+- work in industrial research centers;
+- shorter, more focused research training where a master’s is already held;
+- access to multilingual NLP problems.
+
+Trade-offs include less freedom to change topics in project-tied positions, country-specific employment markets, and potential value of the local language outside international research teams.
+
+---
+
+## 3.3 United Kingdom
+
+The UK generally deserves a separate application strategy because its doctorates tend to be more research-focused from the outset than US programs. Applicants commonly need a relatively clear proposed topic and supervisor fit. Integrated doctoral-training routes can provide additional coursework or rotations, while ordinary DPhil/PhD routes may assume greater prior research preparation.
+
+Representative targets:
+
+- Oxford Computer Science;
+- Cambridge Computer Science and Technology;
+- UCL Computer Science;
+- Imperial College London;
+- University of Edinburgh School of Informatics.
+
+The main concern for you is **funding certainty**. UK admission and scholarship decisions can be separate, and international tuition can be substantial. Apply only when you are being considered for a studentship or scholarship covering:
+
+- international-rate tuition;
+- college or mandatory fees where applicable;
+- a realistic living stipend;
+- the full normal duration.
+
+Under your constraints, “admitted but unfunded” should be treated as a rejection unless separate funding is secured.
+
+---
+
+## 3.4 Singapore and Hong Kong
+
+### Structure and research environment
+
+Singapore and Hong Kong combine English-medium graduate education, concentrated technology ecosystems, strong links with Asian and international companies, and geographically convenient access from China.
+
+Representative programs:
+
+- **NUS School of Computing:** AI, NLP, data science, vision, systems, and trustworthy computing.
+- **NTU:** computer science, AI, speech, multimedia, robotics, and data science.
+- **HKUST:** CSE and interdisciplinary AI.
+- **CUHK:** NLP, speech, vision, and ML.
+- **HKU:** computer science, data science, and AI.
+- **City University of Hong Kong:** additional applied AI and engineering options.
+
+NUS’s CS PhD is a structured research program culminating in a dissertation; its current requirements include a public doctoral seminar and a closed oral examination as part of the thesis-proposal process. [citation:NUS PhD in Computer Science](https://www.comp.nus.edu.sg/programmes/pg/phdcs/)
+
+### Funding
+
+Funding commonly comes through university research scholarships, fellowships, assistantships, or competitive regional schemes. However, the stipend, tuition subsidy, service obligations, and funding duration must be checked program by program and for your citizenship category.
+
+For Hong Kong, assess both ordinary university postgraduate studentships and the Hong Kong PhD Fellowship Scheme, but do not assume that receiving program admission automatically means receiving the most competitive fellowship.
+
+### Advantages
+
+- English-language research environments.
+- Strong connections with Asian technology markets.
+- Often more structured than continental European positions.
+- Convenient travel and cultural proximity.
+- Good options for applied NLP, vision, speech, robotics, and financial or urban AI.
+
+### Risks and trade-offs
+
+- Smaller total faculty pools than the US.
+- Funding can be scholarship-dependent.
+- Housing costs can materially affect stipend sufficiency.
+- Post-PhD labor-market breadth differs among Singapore, Hong Kong, mainland China, and North America.
+
+---
+
+## 3.5 Japan, South Korea, and other Asian options
+
+Representative institutions include:
+
+- **KAIST, Seoul National University, POSTECH:** ML, NLP, vision, robotics, and systems.
+- **University of Tokyo, Kyoto University, Tokyo Institute of Science, RIKEN-linked labs:** robotics, language, vision, and scientific ML.
+- **MBZUAI in the UAE:** specialized AI programs in ML, NLP, computer vision, and related areas.
+
+These can be attractive when a laboratory offers full tuition support plus a stipend. However, assess:
+
+- whether admission is university-centered or supervisor-centered;
+- whether a master’s is required;
+- English-medium coursework and supervision;
+- local-language expectations for teaching or employment;
+- exact scholarship renewal conditions;
+- industrial-research opportunities available to international graduates.
+
+---
+
+# 4. Regional decision matrix
+
+| Factor | US/Canada | Continental Europe/Switzerland | UK | Singapore/Hong Kong | Japan/Korea/other Asia |
+|---|---|---|---|---|---|
+| Bachelor’s-to-PhD availability | Strong in US; variable in Canada | Variable; often master’s required, but exceptions such as EPFL | Possible, but research readiness matters | Often possible or integrated | Program-dependent |
+| Typical topic flexibility | High in many US departments | Lower in project-specific positions; higher in centralized programs | Medium–low | Medium | Often supervisor-dependent |
+| Coursework | Substantial to moderate | Usually lighter | Usually limited, except integrated routes | Moderate/structured | Variable |
+| Typical duration | Longer | Often shorter after master’s; EPFL is 4–6 years | Usually research-focused | Medium | Variable |
+| Funding model | Fellowship/RA/TA and tuition waiver | Salary, fellowship, or project contract | Studentship/scholarship | Research scholarship/fellowship | Scholarship or lab funding |
+| Industry-research ecosystem | Very strong | Strong but distributed | Strong in major centers | Strong and concentrated | Strong in selected sectors |
+| Main risk for you | Admissions intensity and immigration | Master’s requirement/topic lock-in | Unfunded international admission | Scholarship competition and housing costs | Language and supervisor dependence |
+| Best use in your portfolio | Main direct-entry portfolio | Salaried/direct-entry plus later post-master’s route | Selective fully funded applications | Main Asia portfolio | Targeted lab-level applications |
+
+---
+
+# 5. Representative program portfolio
+
+This is an **investigation list**, not a prediction of admission probability.
+
+## Portfolio A: direct-entry, highly competitive
+
+- Stanford CS
+- CMU LTI
+- CMU Machine Learning
+- UC Berkeley EECS
+- University of Washington CSE
+- EPFL EDIC
+- NUS Computer Science
+- NTU Computer Science
+- HKUST CSE
+- CUHK CSE
+- selected Oxford/Cambridge/UCL/Edinburgh fully funded routes
+- MBZUAI, if its current funding package and research fit remain suitable
+
+EPFL is particularly noteworthy because it explicitly permits an appropriate rigorous four- or five-year bachelor’s degree and funds admitted EDIC students. [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/)
+
+## Portfolio B: broader strong-fit direct-entry possibilities
+
+Depending on faculty fit:
+
+- UMass Amherst
+- Maryland
+- Georgia Tech
+- Michigan
+- UT Austin
+- UC San Diego
+- UIUC
+- USC
+- Northeastern
+- Stony Brook
+- Rutgers
+- Penn State
+- Ohio State
+- Virginia Tech
+- selected Canadian direct-entry programs
+- HKU and CityU Hong Kong
+
+Do not classify these mechanically as “safe.” Fully funded AI PhD admission is faculty- and research-dependent; conventional safety schools often do not exist.
+
+## Portfolio C: funded research-master’s bridge
+
+Investigate thesis-based, funded routes at:
+
+- Toronto/Vector;
+- UBC;
+- McGill/Mila;
+- Alberta;
+- Waterloo;
+- Simon Fraser;
+- selected European Erasmus Mundus or institution-funded research master’s programs;
+- research MPhil programs in Hong Kong;
+- integrated master’s/PhD programs in Singapore or elsewhere.
+
+A bridge program becomes attractive if, by application time, you still lack research letters, a substantial artifact, or clarity about your topic. It is unattractive if it requires major self-funding.
+
+## Portfolio D: master’s-required European PhD destinations
+
+Treat these mainly as second-stage targets if you first complete a research master’s:
+
+- ETH Zurich;
+- many German, Dutch, Nordic, Belgian, and French doctoral positions;
+- supervisor-specific European projects.
+
+ETH’s standard CS doctorate requires a relevant master’s, making it better viewed as a master’s-first destination unless you qualify for a special direct-doctorate route. [citation:ETH Zurich CS Doctoral Application and Admission](https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html)
+
+---
+
+# 6. What admissions committees will need to see
+
+Your scholarships and excellent academics help, but they do not replace evidence of research potential.
+
+## Highest-priority gaps
+
+### 1. Research experience
+
+You need experience with an open-ended question whose answer is not known in advance. A good project includes:
+
+- a literature review;
+- a clear hypothesis;
+- baseline implementation;
+- controlled experiments;
+- error analysis;
+- ablations;
+- limitations;
+- reproducible code;
+- a written technical report.
+
+### 2. Research-based recommendation letters
+
+The ideal letter describes:
+
+- how you handled an ambiguous research problem;
+- technical independence;
+- experimental judgment;
+- persistence when results failed;
+- quality of writing and communication;
+- comparison with other successful students.
+
+A generic course letter saying you earned a high grade has limited value.
+
+### 3. Technical direction
+
+You do not need to choose a dissertation topic now, but by application time you should be able to identify:
+
+- two or three related research questions;
+- faculty whose recent work connects to them;
+- why those questions matter;
+- what you have already attempted.
+
+### 4. English readiness
+
+Because your test status is unknown, assume testing may be required. Current examples vary sharply: ETH expects English proficiency but does not require a test; EPFL EDIC may require TOEFL 100 or IELTS 7.0 depending on prior language of instruction; CMU LTI requires TOEFL for non-native speakers, while accepting IELTS as an alternative. [citation:ETH Zurich CS Doctoral Application and Admission](https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html) [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/) [citation:CMU PhD in Language and Information Technology](https://www.lti.cs.cmu.edu/academics/phd-programs/phd-lti.html)
+
+### 5. Mathematical foundations
+
+Prioritize:
+
+- linear algebra;
+- probability and statistics;
+- optimization;
+- algorithms;
+- machine learning;
+- deep learning;
+- one NLP course;
+- research methods and experimental design.
+
+A weaker mark in a foundational subject should be addressed through later coursework or demonstrably rigorous project work.
+
+---
+
+# 7. Recommended research-preparation strategy
+
+## Project 1: reproducibility and extension
+
+Choose a recent paper using public code and manageable compute.
+
+Deliverables:
+
+1. reproducible environment;
+2. replication of one central result;
+3. documented discrepancies;
+4. at least two meaningful ablations;
+5. error analysis;
+6. six-to-eight-page technical report;
+7. clean public repository.
+
+Possible themes:
+
+- retrieval-augmented generation evaluation;
+- parameter-efficient multilingual adaptation;
+- hallucination detection;
+- model calibration;
+- small-language-model efficiency;
+- benchmark contamination;
+- robustness under prompt or distribution changes.
+
+Replication alone is preparation. Replication **plus a justified extension** is closer to research.
+
+## Project 2: original supervised question
+
+Conduct this with a faculty member or doctoral mentor. It should ideally produce one of:
+
+- workshop submission;
+- undergraduate thesis;
+- preprint;
+- dataset;
+- benchmark;
+- open-source research tool;
+- negative-results report with rigorous analysis.
+
+Publication is beneficial but not mandatory. Strong evidence of intellectual ownership and a detailed letter can be more valuable than nominal coauthorship with little contribution.
+
+## Internship strategy
+
+Priority order:
+
+1. academic research internship with close mentorship;
+2. industrial research internship involving experiments and possible publication;
+3. ML engineering internship with meaningful model/data/evaluation ownership;
+4. ordinary software internship;
+5. generic internship with no substantial technical ownership.
+
+For your goal, an academic lab that produces a strong recommendation may be more valuable than a recognizable corporate name where your work cannot be discussed.
+
+## Public research portfolio
+
+Maintain:
+
+- one concise academic-style website;
+- CV;
+- project summaries;
+- GitHub repositories with reproducibility instructions;
+- technical reports;
+- posters or presentations;
+- short descriptions of your personal contribution.
+
+Do not optimize for GitHub activity volume. Two serious repositories are better than twenty tutorial projects.
+
+---
+
+# 8. Phased 18–24 month plan
+
+Because the graduation and intake dates remain unspecified, the plan uses relative months.
+
+## Phase 0 — Weeks 1–2: establish the application control sheet
+
+Create one spreadsheet with:
+
+- university and program;
+- region;
+- application model: central, department, or advertised position;
+- bachelor’s eligibility;
+- faculty/labs;
+- funding guarantee;
+- tuition waiver;
+- stipend;
+- summer funding;
+- health insurance;
+- language requirement;
+- GRE policy;
+- deadline;
+- required documents;
+- recommendation status;
+- citizenship restrictions;
+- post-study-work notes;
+- application status.
+
+Also obtain:
+
+- official cumulative GPA;
+- rank or percentile, if available;
+- grading scale;
+- expected graduation date;
+- English-medium instruction documentation, if applicable;
+- complete course list.
+
+These facts are necessary before final school categorization.
+
+---
+
+## Phase 1 — Months 0–3: direction sampling and foundations
+
+### Research
+
+Read approximately 12–18 papers across three clusters:
+
+1. reliable/evaluative NLP;
+2. efficient NLP/ML systems;
+3. multilingual, retrieval, or multimodal NLP.
+
+For each cluster, write:
+
+- a one-page literature map;
+- recurring research questions;
+- standard datasets and metrics;
+- compute requirements;
+- three possible undergraduate projects.
+
+Select one primary cluster by the end of Month 2.
+
+### Technical preparation
+
+- Strengthen PyTorch, experiment management, Linux, Git, and reproducible environments.
+- Review probability, statistics, linear algebra, and optimization.
+- Learn to report variance, confidence intervals, dataset splits, and ablations.
+- Avoid relying exclusively on IDE-based workflows; become comfortable with remote servers, job schedulers, command-line tools, and configuration-driven experiments.
+
+### Mentorship
+
+Contact faculty at your university whose work overlaps the selected clusters. Do not begin with “I need a recommendation.” Present:
+
+- courses completed;
+- concrete technical skills;
+- papers read;
+- one reproducible project idea;
+- realistic weekly availability.
+
+**Milestone:** a faculty or doctoral mentor agrees to supervise a small research question.
+
+---
+
+## Phase 2 — Months 3–6: first serious research artifact
+
+Execute the replication-and-extension project.
+
+By Month 6, produce:
+
+- public or privately shareable code;
+- experiment log;
+- written report;
+- presentation;
+- clear account of failures and limitations;
+- next-step research proposal.
+
+Request critical feedback rather than early praise. The goal is to determine whether you enjoy the full research cycle, not merely model implementation.
+
+**Decision gate:** remain with the direction if you enjoy literature ambiguity, debugging, analysis, and writing—not just obtaining a final score.
+
+---
+
+## Phase 3 — Months 6–10: deepen research and pursue internship/thesis
+
+Start Project 2 under closer supervision.
+
+Target outcomes:
+
+- undergraduate thesis or research report;
+- submission to a suitable workshop or student venue if results warrant it;
+- meaningful open-source contribution;
+- poster or local presentation;
+- strong letter-writer relationship.
+
+Apply broadly for:
+
+- university research assistant roles;
+- summer research programs;
+- research internships;
+- industrial research or applied-science internships.
+
+Begin documenting your exact contribution weekly. This later improves the CV, statement, and recommendation letters.
+
+---
+
+## Phase 4 — Months 7–11: testing and initial school mapping
+
+### English test
+
+Take a diagnostic TOEFL or IELTS immediately. Unless exemption is certain, schedule the first official attempt early enough to retake.
+
+A sensible working target is at least:
+
+- TOEFL iBT 100+, or
+- IELTS Academic 7.0+,
+
+because EPFL EDIC currently uses those thresholds for applicants needing proof. Some selective programs or teaching roles may reward stronger speaking and writing performance. [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/)
+
+### GRE
+
+Do not invest heavily until each target’s policy is checked. CMU LTI and EPFL currently make it optional, while ETH does not require it. [citation:CMU PhD in Language and Information Technology](https://www.lti.cs.cmu.edu/academics/phd-programs/phd-lti.html) [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/) [citation:ETH Zurich CS Doctoral Application and Admission](https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html)
+
+Take it only if:
+
+- several serious targets require or meaningfully consider it;
+- your quantitative score can reinforce an unfamiliar grading record;
+- preparation will not displace research.
+
+---
+
+## Phase 5 — Months 9–12: build the longlist
+
+Construct a 25–35 program longlist, then evaluate supervisors rather than ranking universities alone.
+
+For every program, identify:
+
+- three plausible faculty members;
+- two recent papers per faculty member;
+- whether each appears to be accepting students;
+- overlap with your actual work;
+- adjacent faculty if the first adviser is unavailable;
+- collaboration and internship evidence;
+- funding source and duration.
+
+Discard programs with only one plausible supervisor unless the position is explicitly tied to that person and fully funded.
+
+### Recommended final distribution
+
+Approximately:
+
+- **5–7 high-competition programs**
+- **7–10 strong-fit programs**
+- **3–5 broader or emerging programs**
+- **3–6 funded research-master’s/integrated alternatives**
+
+These are uncertainty bands, not “reach/match/safety” guarantees.
+
+---
+
+## Phase 6 — Months 11–14: application materials
+
+### Statement of purpose
+
+Use the following structure:
+
+1. research problem that motivates you;
+2. one or two substantial research experiences;
+3. technical contribution and what you learned;
+4. current research questions;
+5. fit with specific faculty and resources;
+6. long-term interest in research without claiming certainty about academia versus industry.
+
+Avoid:
+
+- a childhood-interest narrative;
+- generic praise of AI;
+- listing tools without intellectual contribution;
+- naming faculty whose work you have not read;
+- asserting that prestige is the reason to apply.
+
+### CV
+
+Order sections as:
+
+1. education;
+2. research interests;
+3. research experience;
+4. publications/preprints or technical reports;
+5. selected projects;
+6. internships;
+7. honors and scholarships;
+8. skills;
+9. service or leadership.
+
+Your two consecutive scholarships belong under honors, but add selection criteria or percentage if officially available.
+
+### Recommendations
+
+Select three people who can collectively discuss:
+
+- research potential;
+- academic strength;
+- implementation ability and independence;
+- communication and collaboration.
+
+Ask at least six to eight weeks before the earliest deadline. Provide each recommender with:
+
+- CV;
+- transcript;
+- statement draft;
+- project summary;
+- deadline table;
+- reminders of your specific contributions.
+
+EPFL sends recommendation requests when the application is submitted and begins reviewing immediately after the deadline, so early submission is operationally important. [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/)
+
+---
+
+## Phase 7 — Months 14–17: submit and prepare for interviews
+
+For centralized programs, submit well before the deadline. For supervisor-driven European positions:
+
+- tailor each message;
+- reference a specific recent paper;
+- explain the technical connection to your work;
+- attach a concise CV;
+- link one serious artifact;
+- ask about a defined opening rather than requesting general mentorship.
+
+Prepare five-minute and fifteen-minute explanations of your research:
+
+- problem;
+- motivation;
+- baseline;
+- method;
+- experimental design;
+- results;
+- failures;
+- limitations;
+- next experiment.
+
+Expect questions about why a result occurred, not just what the result was.
+
+---
+
+## Phase 8 — Months 17–24: decisions or profile strengthening
+
+Evaluate offers using:
+
+1. adviser availability and mentoring record;
+2. research match;
+3. funding guarantee;
+4. students’ recent publications and placements;
+5. freedom to change advisers;
+6. compute and data access;
+7. internship policy;
+8. cost of living;
+9. visa and post-study-work position;
+10. student well-being and time to degree.
+
+Speak privately with at least two current students. Ask:
+
+- How often do you meet the adviser?
+- Who chooses projects?
+- Is funding secure if a project ends?
+- Can students change advisers?
+- What is the publication culture?
+- Are internships supported?
+- What happens when research fails?
+- How long do students actually take?
+
+If the first application cycle fails, use the next 6–12 months for deeper research rather than collecting additional superficial projects.
+
+---
+
+# 9. Fall 2027 versus Fall 2028 decision
+
+## Attempt Fall 2027 only if, by October 2026, you have:
+
+- confirmed degree eligibility and graduation timing;
+- at least one research-active recommender;
+- a substantial research or thesis artifact;
+- a coherent topic statement;
+- language scores or confirmed exemptions;
+- enough time for tailored applications.
+
+The Fall 2027 CMU LTI deadline is December 9, 2026, and EPFL’s principal deadline for the following September is December 1. [citation:CMU PhD in Language and Information Technology](https://www.lti.cs.cmu.edu/academics/phd-programs/phd-lti.html) [citation:EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/)
+
+Given your currently stated lack of formal research, **Fall 2028 is likely the more competitive primary cycle**. Applying hurriedly to a large Fall 2027 list would consume time better spent developing research evidence. A small Fall 2027 portfolio could still be justified if fees are manageable and your letters improve rapidly.
+
+---
+
+# 10. Funding acceptance rule
+
+Under your stated constraint, accept an offer only after obtaining written confirmation of:
+
+- full tuition coverage or waiver;
+- stipend amount and payment period;
+- guaranteed number of years;
+- summer support;
+- health insurance and mandatory fees;
+- TA/RA obligations;
+- conditions for renewal;
+- funding consequences of changing advisers;
+- realistic housing and living costs;
+- any external-scholarship restrictions.
+
+Do not equate a scholarship title with affordability. Compare:
+
+> annual after-tax stipend − rent − insurance − fees − necessary living costs.
+
+A salaried Swiss position, a US tuition-waiver-plus-stipend package, and an Asian research scholarship have different tax, benefit, and housing structures.
+
+---
+
+# 11. Immediate 30-day checklist
+
+1. Obtain your official GPA, grading scale, rank, expected graduation date, and course list.
+2. Take a TOEFL/IELTS diagnostic.
+3. Identify five local faculty members working in NLP, ML, information retrieval, multimodal learning, or ML systems.
+4. Read six papers across reliable NLP and efficient NLP systems.
+5. Choose one reproducible project with manageable compute.
+6. Write a two-page proposal with question, baseline, dataset, metrics, compute budget, and eight-week schedule.
+7. Meet potential research mentors.
+8. Create the program/funding spreadsheet.
+9. Review whether a credible Fall 2027 application is possible; otherwise formally set Fall 2028 as the primary cycle.
+10. Reserve at least 10–15 hours per week for research, sustained over semesters.
+
+---
+
+## Bottom line
+
+Your profile should not be presented as a general “AI enthusiast.” It should develop into that of an emerging researcher who can **build, evaluate, and explain reliable language systems**.
+
+The most defensible strategy is:
+
+- concentrate on applied NLP plus reliability or efficiency;
+- produce two deep research artifacts;
+- obtain at least two research-informed recommendations;
+- target fully funded direct-entry programs in North America, EPFL, Singapore, and Hong Kong;
+- use funded research master’s routes as bridges;
+- treat ETH and many continental European doctorates mainly as master’s-first or position-specific options;
+- avoid substantial self-funding;
+- use Fall 2028 as the base-case cycle unless research readiness develops unusually quickly.
+
+## Research limitations
+
+Official pages were successfully reviewed for Stanford CS, CMU LTI, ETH Zurich CS, EPFL EDIC, and NUS CS. Direct retrieval of the University of Toronto and Oxford program pages was blocked by their websites, and an NUS scholarship page did not return enough readable content. Therefore, precise Toronto, Oxford, and NUS funding figures have intentionally not been asserted. Current requirements and funding should be rechecked in the exact application cycle, particularly because your citizenship and degree date remain unresolved.
+
+# Sources
+
+### North America
+
+- [Stanford CS PhD Admissions](https://www.cs.stanford.edu/admissions/phd-admissions) - Degree eligibility, expected duration, and research orientation.
+- [Stanford CS PhD Funding](https://www.cs.stanford.edu/phd-program-overview/funding) - Funding guarantee for doctoral students making satisfactory progress.
+- [CMU PhD in Language and Information Technology](https://www.lti.cs.cmu.edu/academics/phd-programs/phd-lti.html) - Curriculum, research expectations, application requirements, tests, and Fall 2027 deadlines.
+
+### Europe
+
+- [ETH Zurich CS Doctoral Application and Admission](https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html) - Master’s requirement, supervisor and central application routes, English policy, employment status, and doctoral funding.
+- [EPFL EDIC Application](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/) - Bachelor’s eligibility, centralized admission, funding, curriculum structure, language scores, documents, and deadlines.
+
+### Asia
+
+- [NUS PhD in Computer Science](https://www.comp.nus.edu.sg/programmes/pg/phdcs/) - Doctoral thesis-proposal and examination structure.

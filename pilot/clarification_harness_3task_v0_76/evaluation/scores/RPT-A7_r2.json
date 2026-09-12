@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-A7",
+  "repeat": 2,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "07f81582f48cd7800d29ed02b340d5c6196796df284330776b2ca6348b80b899",
+  "report_sha256": "0815e685205c3b60e042a74765ebcdf463f0d117ca0f72d08f57925c762611d9",
+  "started_at_utc": "2026-09-12T19:42:36.698786+00:00",
+  "completed_at_utc": "2026-09-12T19:42:57.534829+00:00",
+  "p_rubric": 10,
+  "rubrics": [
+    {
+      "id": "T2-R1",
+      "score": 2,
+      "evidence": "Waseda ranks first for interdisciplinary media/society/culture fit and self-directed Tokyo immersion. The U.S. section states: “A professionally oriented program may provide less cultural and intellectual fit than Waseda or Amsterdam despite stronger name recognition.”",
+      "reason": "Intellectual fit and cultural immersion materially shape the ranking and regional trade-offs; institutional prestige does not override them."
+    },
+    {
+      "id": "T2-R2",
+      "score": 2,
+      "evidence": "The recommended semester portfolio includes “one advanced media/communication theory course,” “one public opinion, political communication, or research-methods course,” and “one culture/society/area-studies course.”",
+      "reason": "The concrete course-selection plan centers communication and interdisciplinary social-cultural learning rather than narrow technical training, consistent with the shortlisted programs."
+    },
+    {
+      "id": "T2-R3",
+      "score": 2,
+      "evidence": "For Singapore, the report recommends building the semester around “recurring involvement in one community, local-language exposure, and sustained field observation—not regional weekend travel.” After acceptance, it directs the student to join one recurring local activity.",
+      "reason": "The report explicitly prioritizes sustained host-community engagement over destination accumulation and implements that priority through preparation actions."
+    },
+    {
+      "id": "T2-R4",
+      "score": 2,
+      "evidence": "A stated reason for ranking Waseda first is “deep, self-directed engagement through neighborhoods, libraries, cultural institutions, media organizations, and local communities rather than packaged exchange tourism.” The plan also recommends a comparative research diary and local activity “rather than relying on packaged excursions.”",
+      "reason": "Self-directed local exploration affects the top recommendation and the proposed semester activities, rather than appearing only as an incidental aspiration."
+    },
+    {
+      "id": "T2-R5",
+      "score": 2,
+      "evidence": "The budget section prioritizes “university dormitory or residence with local and international residents,” then a “legitimate shared house or room with a normal commute,” with a “private studio only if other options fail.” U.S. options remain low-ranked unless their net semester costs are competitive.",
+      "reason": "Concrete housing priorities combine economy and local social contact, while total-cost comparisons and funding conditions consequentially shape program selection. Premium convenience is not the default."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 6828,
+    "output_tokens": 606,
+    "total_tokens": 7434,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 138
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.76",
+  "updated_at": "2026-09-12",
+  "controlled_cells": {
+    "harness": "DeerFlow 2.0",
+    "generator": "gpt-5.6-sol via Codex OAuth",
+    "judge": "gpt-6-astra via Codex OAuth",
+    "completed_reports": 7,
+    "deep_research_qualified_reports": 6,
+    "blind_judgments": 21,
+    "qualified_matched_ask_noask_tasks": ["T2", "T3"],
+    "excluded_primary_contrast": {
+      "run_id": "T1/N/r4_ddgs",
+      "reason": "30 searches, 0 substantive fetches; Deep Research qualification failed"
+    }
+  },
+  "open_deep_research_process_probes": {
+    "scope": "stock clarification node only; no P score",
+    "T1": {
+      "status": "timeout",
+      "timeout_minutes": 10,
+      "saved_result": false
+    },
+    "T2": {
+      "status": "completed",
+      "asked_clarification": true,
+      "atomic_questions": 8,
+      "output": "runs_open_deep_research/T2_clarification_probe.json"
+    },
+    "T3": {
+      "status": "completed",
+      "asked_clarification": true,
+      "atomic_questions": 5,
+      "output": "runs_open_deep_research/T3_clarification_probe.json"
+    }
+  },
+  "provider_and_harness_boundaries": {
+    "claude": "blocked: provider HTTP 401 account_insufficient",
+    "gemini": "blocked: GEMINI/GOOGLE API key unavailable",
+    "kimi": "blocked: MOONSHOT_API_KEY unavailable; ODR also needs a provider/base-URL adapter",
+    "oagents": "blocked for complete DR: SerpAPI/Jina retrieval credentials unavailable",
+    "deerflow_1x": "repository frozen but Codex OAuth/common retrieval adapter not integrated in this batch",
+    "chatgpt_deep_research": "not run: account-isolated cold-start product condition not frozen",
+    "perplexity_deep_research": "not run: no completed account-isolated product condition"
+  }
+}

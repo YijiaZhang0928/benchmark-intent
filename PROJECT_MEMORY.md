@@ -3,10 +3,18 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-12
-当前版本：v0.76（Open Deep Research IEO clarification A/B，运行前冻结）
+当前版本：v0.77（三题 clarification-harness feasibility 结果）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAA. 2026-09-12：前三题 clarification-harness feasibility 结果
+
+用户要求用 0912 workbook 前三题检验三个方向：clarification-supported harness 是否有更高 P、Coverage@HighImpact 是否与 P 正相关、以及 cold-start+ask 是否能超过 full-persona+no-ask。运行前冻结每题五条 0/1/2 rubric、严格 asked-and-resolved coverage、≤5 atomic questions、Deep Research gate 与 T3 作为 H3 case。主受控单元固定 DeerFlow 2.0 × `gpt-5.6-sol`，用 `gpt-6-astra` 对七份匿名报告各盲评三次。
+
+六份报告通过 DR gate；T1 no-ask 做了 30 次搜索但 0 次 fetch，虽然盲评仍是 10/10，主 P 对照排除。合格 ask/no-ask 配对只有 T2 与 T3：T2 差 +4.33，T3 差 0，平均 +2.17，因此 H1 仅部分支持。五个合格 cold-start cells 的 Coverage@HI 与 P 描述性相关 `r=0.535`，n=5 且不可作因果/总体推断，H2 只算方向证据。T3 cold-start+ask 与 full-persona+no-ask 都是 10/10，H3 不支持。
+
+六份合格报告中五份达到 10/10，说明 rubric 存在严重 ceiling；ask 条件又分别问 8/8/7 个字段，严格覆盖只有 0.4/0.4/0.8、precision 为 0.25/0.125/0.571，全部违反问题预算。Open Deep Research stock node 的 T2/T3 process probes 会提问 8/5 个字段，T1 超过 10 分钟工程超时；这些不是完整 DR，未评分。Claude/Gemini/Kimi、OAgents、DeerFlow 1.x 和商业产品缺失单元均显式记录，不能推出跨 harness 或跨模型家族优越性。下一步先把 policy 收紧为 ≤3 个会改变 source selection 的 user-owned trade-offs，并提高 rubric 的 counterfactual/consequential 难度。完整资产见 `pilot/clarification_harness_3task_v0_76/`。
 
 ## 0AAAAAAAAAAAAAAAAAA. 2026-09-12：Open Deep Research IEO A/B 运行前冻结
 

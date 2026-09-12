@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-J2",
+  "repeat": 1,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "bb7a76108d1647855cb8b552de07b8fb4f29d160760185d5b59b52c8e9ff8d77",
+  "report_sha256": "4ffcc9a8c97fd4c11e8a602242cfc8323fbb5274b58a4d6b8810e6fbd705a6cb",
+  "started_at_utc": "2026-09-12T19:42:41.412473+00:00",
+  "completed_at_utc": "2026-09-12T19:43:04.661105+00:00",
+  "p_rubric": 6,
+  "rubrics": [
+    {
+      "id": "T2-R1",
+      "score": 2,
+      "evidence": "Waseda recommendation: “Rank above Europe or Singapore only if Japan/East Asia is directly relevant to your thesis or career and course/supervisor access is confirmed.” Section 3 evaluates cultural development through “mixed project teams, fieldwork, local-language learning, laboratories, student media, and research groups—not by tourism opportunities.”",
+      "reason": "Intellectual fit explicitly changes regional prioritization, while substantive intercultural engagement informs the comparison and integration plan. Institutional prestige is explicitly rejected as the decisive filter."
+    },
+    {
+      "id": "T2-R2",
+      "score": 2,
+      "evidence": "The recommended European course package includes “political communication,” “journalism and platform governance,” “digital cultures,” “audience studies,” and “visual or film studies.” The preparation plan requires graduate-level partners in communication, media, journalism, information, cultural studies, or adjacent social sciences.",
+      "reason": "The shortlist and course-selection process consistently prioritize communication and sociocultural interdisciplinary learning. Methods training supports these fields rather than displacing them with narrow technical coursework."
+    },
+    {
+      "id": "T2-R3",
+      "score": 1,
+      "evidence": "The first-two-weeks plan requires: “Meet at least one relevant faculty member or research group” and “Join one academically relevant local network and one mixed-cultural student activity.” Cross-cultural value is distinguished from tourism opportunities.",
+      "reason": "Deeper host engagement is concretely implemented, but the report does not recommend fewer, more meaningful side trips or otherwise establish a travel strategy that favors depth over destination count."
+    },
+    {
+      "id": "T2-R4",
+      "score": 0,
+      "evidence": "The preparation plan includes academic networking and mixed-cultural activities, but provides no provision for self-directed local exploration or protected unstructured time.",
+      "reason": "Academic independence and organized integration opportunities do not establish substantial room for independent local exploration. The absence of packaged tours alone is insufficient evidence."
+    },
+    {
+      "id": "T2-R5",
+      "score": 1,
+      "evidence": "The European comparison suggests that a smaller partner city may offer the same ECTS advantages “at lower cost.” The Japan section contrasts subsidized dormitory housing with expensive private short-term accommodation, and the plan requires comparing deposits, utilities, furnishings, and commuting time.",
+      "reason": "Affordability and housing value materially influence recommendations, but locally distinctive housing, travel, and everyday spending options are not developed. The report implements cost control more clearly than the full value-for-money and local-distinctiveness criterion."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 7202,
+    "output_tokens": 693,
+    "total_tokens": 7895,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 182
+    }
+  }
+}

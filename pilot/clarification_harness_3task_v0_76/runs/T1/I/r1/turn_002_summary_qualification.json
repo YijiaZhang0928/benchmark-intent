@@ -1,0 +1,137 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/clarification_harness_3task_v0_76/runs/T1/I/r1/turn_002_summary.json",
+  "distinct_search_queries": 36,
+  "fetch_attempts": 14,
+  "substantive_fetch_successes": 13,
+  "report_cited_url_count": 13,
+  "successful_fetched_domains": [
+    "ai.ethz.ch",
+    "ellis.eu",
+    "fytgs.hkust.edu.hk",
+    "gradadmissions.stanford.edu",
+    "inf.ethz.ch",
+    "www.bristol.ac.uk",
+    "www.comp.nus.edu.sg",
+    "www.cs.cmu.edu",
+    "www.cs.stanford.edu",
+    "www.csd.cs.cmu.edu",
+    "www.ukri.org"
+  ],
+  "declared_primary_domains": [
+    "ai.ethz.ch",
+    "gradadmissions.stanford.edu",
+    "www.cs.cmu.edu",
+    "www.ukri.org"
+  ],
+  "matched_primary_domains": [
+    "ai.ethz.ch",
+    "gradadmissions.stanford.edu",
+    "www.cs.cmu.edu",
+    "www.ukri.org"
+  ],
+  "structural_gate_pass": true,
+  "primary_source_gate": "pass",
+  "deep_research_qualified": true,
+  "fetches": [
+    {
+      "url": "https://www.cs.cmu.edu/education/graduate-admissions",
+      "domain": "www.cs.cmu.edu",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.cs.cmu.edu/education/phd",
+      "domain": "www.cs.cmu.edu",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.csd.cs.cmu.edu/academics/doctoral/admissions",
+      "domain": "www.csd.cs.cmu.edu",
+      "readable_characters": 4985,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://ai.ethz.ch/research/phd-and-postdoc-programs/phd-fellowships.html",
+      "domain": "ai.ethz.ch",
+      "readable_characters": 5168,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html",
+      "domain": "inf.ethz.ch",
+      "readable_characters": 3451,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://ellis.eu/research/phd-postdoc/phd-postdoc-program-details",
+      "domain": "ellis.eu",
+      "readable_characters": 5248,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ukri.org/who-we-are/our-vision-and-strategy/tomorrows-technologies/how-we-work-in-ai/ukri-artificial-intelligence-centres-for-doctoral-training/",
+      "domain": "www.ukri.org",
+      "readable_characters": 6833,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.bristol.ac.uk/cdt/practice-oriented-ai/funding/",
+      "domain": "www.bristol.ac.uk",
+      "readable_characters": 2433,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.comp.nus.edu.sg/programmes/pg/phdcs/admissions/",
+      "domain": "www.comp.nus.edu.sg",
+      "readable_characters": 1357,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://fytgs.hkust.edu.hk/admissions/Admission-to-Hong-Kong-Campus/submitting-an-application/admission-requirements",
+      "domain": "fytgs.hkust.edu.hk",
+      "readable_characters": 1747,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://gradadmissions.stanford.edu/apply/eligibility",
+      "domain": "gradadmissions.stanford.edu",
+      "readable_characters": 2245,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.cs.stanford.edu/admissions/phd-admissions",
+      "domain": "www.cs.stanford.edu",
+      "readable_characters": 1488,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://gradadmissions.stanford.edu/apply/test-scores",
+      "domain": "gradadmissions.stanford.edu",
+      "readable_characters": 6194,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+      "domain": "hai.stanford.edu",
+      "readable_characters": 112,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (82 characters) from https://hai.stanford.edu/ai-index/2025-ai-index-report"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

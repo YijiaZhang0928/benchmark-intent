@@ -116,6 +116,23 @@ def main() -> int:
                 config.setdefault("configurable", {})["non_interactive"] = True
             return config
 
+        @staticmethod
+        def _get_tools(*, model_name: str | None, subagent_enabled: bool):
+            """Mirror the Gateway's non-interactive tool filtering in embedded mode.
+
+            DeerFlowClient assembles its own tool list and does not currently apply
+            the Gateway-only ``non_interactive`` filter.  Without this override an
+            embedded benchmark run can still call ``ask_clarification`` even though
+            its metadata says the condition is non-interactive.
+            """
+            tools = DeerFlowClient._get_tools(
+                model_name=model_name,
+                subagent_enabled=subagent_enabled,
+            )
+            if args.non_interactive:
+                tools = [tool for tool in tools if tool.name != "ask_clarification"]
+            return tools
+
     started = datetime.now(timezone.utc)
     input_kind = args.input_kind or ("task_instruction" if args.task_file else "simulator_reply")
     metadata = {
@@ -150,7 +167,11 @@ def main() -> int:
         thinking_enabled=True,
         subagent_enabled=False,
         plan_mode=False,
-        available_skills={"clarification-calibration", "deep-research"},
+        available_skills=(
+            {"deep-research"}
+            if args.non_interactive
+            else {"clarification-calibration", "deep-research"}
+        ),
         environment="askinfer-pilot",
     )
 

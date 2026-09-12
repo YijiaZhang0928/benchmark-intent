@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.76",
+  "audit_rule": "Binary strict credit: a high-impact preference counts only when a model-visible question targeted that trade-off and the user's answer resolved it. Volunteered information in an answer to an unrelated field is not credited.",
+  "unit_rule": "Each form field is one atomic question for burden accounting, even when its label or options bundle multiple outcomes.",
+  "runs": {
+    "T1/I/r1": {
+      "clarification_turns": 1,
+      "atomic_questions": 10,
+      "targeting_questions": 2,
+      "question_precision": 0.2,
+      "covered_preferences": ["T1-P3", "T1-P4"],
+      "not_covered": {
+        "T1-P1": "Research-interest and experience fields did not ask the applied-versus-theory trade-off; the answer volunteered it.",
+        "T1-P2": "The experience field asked what the user had done, not whether hands-on projects should dominate preparation; the answer volunteered it.",
+        "T1-P5": "No field asked evidence/fit versus prestige; the answer volunteered it under geographic constraints."
+      },
+      "coverage_at_high_impact": 0.4,
+      "budget_compliant": false
+    },
+    "T1/I/r2_ddgs": {
+      "clarification_turns": 1,
+      "atomic_questions": 8,
+      "targeting_questions": 2,
+      "question_precision": 0.25,
+      "covered_preferences": ["T1-P3", "T1-P4"],
+      "not_covered": {
+        "T1-P1": "The experience field did not ask the applied-versus-theory research preference; the answer volunteered it.",
+        "T1-P2": "No field asked project/replication preparation versus coursework; the answer volunteered it.",
+        "T1-P5": "No field asked evidence/fit versus prestige; the answer volunteered it."
+      },
+      "coverage_at_high_impact": 0.4,
+      "budget_compliant": false
+    },
+    "T2/I/r1": {
+      "clarification_turns": 1,
+      "atomic_questions": 8,
+      "targeting_questions": 1,
+      "question_precision": 0.125,
+      "covered_preferences": ["T2-P1", "T2-P2"],
+      "not_covered": {
+        "T2-P3": "No field asked depth in fewer places versus destination count; the answer volunteered it under constraints.",
+        "T2-P4": "No field asked self-guided versus packaged activities; the answer volunteered it under constraints.",
+        "T2-P5": "Budget and outcome fields targeted low cost, but not the locally distinctive accommodation versus premium-convenience trade-off; strict binary credit is withheld."
+      },
+      "coverage_at_high_impact": 0.4,
+      "budget_compliant": false
+    },
+    "T3/I/r1": {
+      "clarification_turns": 1,
+      "atomic_questions": 7,
+      "targeting_questions": 4,
+      "question_precision": 0.5714285714,
+      "covered_preferences": ["T3-P1", "T3-P2", "T3-P3", "T3-P5"],
+      "not_covered": {
+        "T3-P4": "The outcome field asked about practical skills but did not target cases/data versus abstract theory; the answer volunteered that contrast."
+      },
+      "coverage_at_high_impact": 0.8,
+      "budget_compliant": false
+    }
+  },
+  "cold_start_no_ask_rule": "Eligible instruction-only no-ask runs have zero clarification turns, questions, precision denominator, and Coverage@HighImpact by construction.",
+  "full_persona_rule": "Full-persona/no-ask is excluded from the Coverage@HighImpact association because the preferences are supplied in the initial context rather than recovered through clarification."
+}

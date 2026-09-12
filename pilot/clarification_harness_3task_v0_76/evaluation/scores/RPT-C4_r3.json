@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-C4",
+  "repeat": 3,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "f46f928478ea26e22f5e5a8d638c178ef55cc0f4c08dd59728a59e24f9b54ded",
+  "report_sha256": "4810a6d5d8d9ec5df5027d5bff73ec2010a790c44e676bf4f4e1ac041b93a390",
+  "started_at_utc": "2026-09-12T19:44:05.423260+00:00",
+  "completed_at_utc": "2026-09-12T19:44:24.701933+00:00",
+  "p_rubric": 10,
+  "rubrics": [
+    {
+      "id": "T3-R1",
+      "score": 2,
+      "evidence": "Final selection rules: “Choose independent venture building as the central learning mechanism regardless of which educational format you add.” Phases 2–4 require customer interviews, willingness-to-pay tests, an MVP and paid pilots.",
+      "reason": "Practical venture building determines the roadmap and its deliverables. A second general business degree is explicitly deprioritized and retained only for specific ecosystem or career-transition benefits."
+    },
+    {
+      "id": "T3-R2",
+      "score": 2,
+      "evidence": "The baseline is a “12-month validation track at 6–8 hours per week.” Phase 4 requires cohort work to coexist with employment, and the overload rules state: “A demanding cohort program should replace, not supplement, most self-study.”",
+      "reason": "Work and family constraints materially govern scheduling, course load and program selection. Intensive accelerators and full-time degrees are conditional options requiring an explicit career and family decision."
+    },
+    {
+      "id": "T3-R3",
+      "score": 2,
+      "evidence": "Phase 1 includes weekly interviews and applied work; Phase 2 conducts customer discovery in Months 2–4; Phase 3 requires the “cheapest credible test,” such as a concierge service, deposit or small paid pilot. The Month 6 gate directs weak ideas to be pivoted or archived.",
+      "reason": "Real customer contact starts during the compact foundation stage, followed by low-cost behavioral and payment tests. Explicit kill criteria and progression gates make validation consequential rather than postponing it until extensive study is complete."
+    },
+    {
+      "id": "T3-R4",
+      "score": 2,
+      "evidence": "Phase 3 says to use the Business Model Canvas “as a versioned hypothesis system” and “Update it only when evidence changes.” Required metrics include conversion to payment, repeat use, acquisition cost and refusal reasons; later phases require a 13-week cash forecast and financing scenarios.",
+      "reason": "Concrete frameworks and market evidence directly inform product, pricing, financing and continuation decisions. Although in-depth case study is less developed, the learning approach is clearly application-driven rather than predominantly theoretical."
+    },
+    {
+      "id": "T3-R5",
+      "score": 2,
+      "evidence": "The report rejects expensive programs that duplicate MBA content, sets lean and structured budget routes, and states: “If evidence is weak, pivot once or archive the idea. Do not respond by buying a more expensive course.” Degree evaluation includes tuition, lost compensation and family disruption.",
+      "reason": "Cost, workload, opportunity cost and practical incremental value materially shape the recommended sequence. Prestige-oriented options remain conditional and must justify their cost through relevant networks, capabilities or venture outcomes."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 7853,
+    "output_tokens": 574,
+    "total_tokens": 8427,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 36
+    }
+  }
+}

@@ -39,32 +39,65 @@ def web_search_tool(query: str, max_results: int = 5) -> str:
         max_results: Maximum number of normalized results, capped at 10.
     """
     max_results = max(1, min(int(max_results), 10))
-    response = httpx.get(
-        "https://html.duckduckgo.com/html/",
-        params={"q": query},
-        headers={"User-Agent": USER_AGENT},
-        timeout=30,
-        follow_redirects=False,
-    )
-    response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
     results = []
-    for node in soup.select(".result"):
-        anchor = node.select_one(".result__a")
-        if anchor is None or not anchor.get("href"):
-            continue
-        url = _clean_result_url(str(anchor["href"]))
-        if validate_public_http_url(url):
-            continue
-        results.append(
-            {
-                "title": anchor.get_text(" ", strip=True),
-                "url": url,
-                "content": "Open this URL with web_fetch before using it as evidence.",
-            }
+    try:
+        response = httpx.get(
+            "https://html.duckduckgo.com/html/",
+            params={"q": query},
+            headers={"User-Agent": USER_AGENT},
+            timeout=30,
+            follow_redirects=False,
         )
-        if len(results) >= max_results:
-            break
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+        for node in soup.select(".result"):
+            anchor = node.select_one(".result__a")
+            if anchor is None or not anchor.get("href"):
+                continue
+            url = _clean_result_url(str(anchor["href"]))
+            if validate_public_http_url(url):
+                continue
+            results.append(
+                {
+                    "title": anchor.get_text(" ", strip=True),
+                    "url": url,
+                    "content": "Open this URL with web_fetch before using it as evidence.",
+                    "source_engine": "duckduckgo_html",
+                }
+            )
+            if len(results) >= max_results:
+                break
+    except httpx.HTTPError:
+        results = []
+
+    # DuckDuckGo's anonymous HTML endpoint intermittently returns an empty page
+    # under sustained benchmark traffic.  Keep a no-key fallback so an outage is
+    # recorded as transport behavior rather than silently turning DR into a
+    # citation-free language-model answer.
+    if not results:
+        try:
+            from ddgs import DDGS
+
+            for item in DDGS(timeout=30).text(
+                query,
+                max_results=max_results,
+                backend="brave",
+            ) or []:
+                url = str(item.get("href") or item.get("url") or "")
+                if not url or validate_public_http_url(url):
+                    continue
+                results.append(
+                    {
+                        "title": str(item.get("title") or ""),
+                        "url": url,
+                        "content": "Open this URL with web_fetch before using it as evidence.",
+                        "source_engine": "ddgs_brave_fallback",
+                    }
+                )
+                if len(results) >= max_results:
+                    break
+        except Exception:
+            results = []
     return json.dumps(
         {"query": query, "total_results": len(results), "results": results},
         ensure_ascii=False,

@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.75",
+  "started_at_utc": "2026-09-12T19:12:57.873369+00:00",
+  "harness": "deerflow-2.0",
+  "harness_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model_config_name": "gpt-5.6-sol-codex",
+  "agent_name": "noask-dr",
+  "thread_id": "v076-t3-fn-r1",
+  "turn_index": 1,
+  "input_kind": "full_persona",
+  "source_path": "/Users/lora/Documents/benchmark-intent/pilot/clarification_harness_3task_v0_76/inputs/T3_full_persona.txt",
+  "input_sha256": "cf928c16be2a05aa24234c903134bb7ef2fdf466ff0b3e74082b744e26253514",
+  "visible_prompt_wrapper": null,
+  "persona_visible_on_first_turn": true,
+  "rubric_visible": false,
+  "account_memory_allowed": false,
+  "subagents_enabled": false,
+  "plan_mode": false,
+  "recursion_limit": 180,
+  "non_interactive": true
+}

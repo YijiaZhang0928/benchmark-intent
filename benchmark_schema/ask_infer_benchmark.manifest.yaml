@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.75"
-updated: "2026-09-10"
+manifest_version: "0.77"
+updated: "2026-09-12"
 status: working_hypothesis_frozen
 
 paper:
@@ -61,6 +61,10 @@ active_sources:
   abstract_claim_validation_question_audit: pilot/abstract_claim_validation_v0_75/evaluation/question_audit.csv
   abstract_claim_validation_preference_chain: pilot/abstract_claim_validation_v0_75/evaluation/preference_chain.json
   iclr_2027_abstract_claim_card: proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md
+  clarification_harness_3task_results: pilot/clarification_harness_3task_v0_76/RESULTS.md
+  clarification_harness_3task_design: pilot/clarification_harness_3task_v0_76/design.json
+  clarification_harness_3task_scores: pilot/clarification_harness_3task_v0_76/evaluation/aggregate_results.json
+  clarification_harness_3task_execution_status: pilot/clarification_harness_3task_v0_76/execution_status.json
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -294,6 +298,29 @@ scope:
     engineering_bounded_finalizer_used: [interactive, full_persona]
     counted_episode_eligible: false
     claim_boundary: one_task_directional_signal_only_no_recognition_action_gap_no_rank_reversal
+  clarification_harness_3task_feasibility:
+    package_version: "0.76"
+    release_version: "0.77"
+    status: directional_feasibility_not_confirmatory
+    task_ids: [PDR-T01, PDR-T02, PDR-T03]
+    controlled_harness: DeerFlow_2_0
+    generator: gpt-5.6-sol
+    judge: gpt-6-astra
+    report_count: 7
+    blind_judgment_count: 21
+    deep_research_qualified_report_count: 6
+    eligible_h1_task_count: 2
+    h1_mean_ask_minus_noask: 2.1666666666666665
+    h2_coverage_p_pearson: 0.5345224838248488
+    h2_cell_count: 5
+    h3_cold_ask_minus_full_noask: 0.0
+    qualified_ceiling_rate: 0.8333333333333334
+    ask_atomic_questions: {T1: 8, T2: 8, T3: 7}
+    question_cap_compliant: false
+    open_deep_research_scope: clarification_node_only
+    full_cross_harness_model_matrix_completed: false
+    counted_episode_eligible: false
+    claim_boundary: direction_only_no_general_asking_benefit_or_cross_harness_model_superiority
   pdr_overlap:
     source_tasks: 50
     selected_tasks: 15
@@ -311,6 +338,9 @@ reused_infrastructure:
   - rubric_provenance_and_matched_swapped_assets
 
 claim_boundaries:
+  - three_task_clarification_feasibility_does_not_show_general_asking_superiority
+  - task3_cold_ask_did_not_beat_full_persona_noask
+  - full_cross_harness_and_model_family_matrix_not_completed
   - no_rank_reversal_result_exists
   - abstract_v0_75_scores_are_not_confirmatory_because_two_conditions_failed_the_frozen_dr_gate
   - no_recognition_action_gap_was_observed_on_the_frozen_t35_units

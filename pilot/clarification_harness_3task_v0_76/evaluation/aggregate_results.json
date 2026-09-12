@@ -1,0 +1,160 @@
+{
+  "schema_version": "0.76",
+  "rows": [
+    {
+      "blind_label": "RPT-Q3",
+      "run_id": "T1/I/r2_ddgs",
+      "case_id": "T1",
+      "condition": "I",
+      "deep_research_qualified": true,
+      "p_repeats": [
+        10,
+        10,
+        10
+      ],
+      "p_mean": 10.0,
+      "p_median": 10,
+      "coverage_at_high_impact": 0.4,
+      "atomic_questions": 8,
+      "budget_compliant": false
+    },
+    {
+      "blind_label": "RPT-W8",
+      "run_id": "T1/N/r4_ddgs",
+      "case_id": "T1",
+      "condition": "N",
+      "deep_research_qualified": false,
+      "p_repeats": [
+        10,
+        10,
+        10
+      ],
+      "p_mean": 10.0,
+      "p_median": 10,
+      "coverage_at_high_impact": 0.0,
+      "atomic_questions": 0,
+      "budget_compliant": true
+    },
+    {
+      "blind_label": "RPT-A7",
+      "run_id": "T2/I/r1",
+      "case_id": "T2",
+      "condition": "I",
+      "deep_research_qualified": true,
+      "p_repeats": [
+        10,
+        10,
+        10
+      ],
+      "p_mean": 10.0,
+      "p_median": 10,
+      "coverage_at_high_impact": 0.4,
+      "atomic_questions": 8,
+      "budget_compliant": false
+    },
+    {
+      "blind_label": "RPT-J2",
+      "run_id": "T2/N/r1",
+      "case_id": "T2",
+      "condition": "N",
+      "deep_research_qualified": true,
+      "p_repeats": [
+        6,
+        5,
+        6
+      ],
+      "p_mean": 5.666666666666667,
+      "p_median": 6,
+      "coverage_at_high_impact": 0.0,
+      "atomic_questions": 0,
+      "budget_compliant": true
+    },
+    {
+      "blind_label": "RPT-M6",
+      "run_id": "T3/I/r1",
+      "case_id": "T3",
+      "condition": "I",
+      "deep_research_qualified": true,
+      "p_repeats": [
+        10,
+        10,
+        10
+      ],
+      "p_mean": 10.0,
+      "p_median": 10,
+      "coverage_at_high_impact": 0.8,
+      "atomic_questions": 7,
+      "budget_compliant": false
+    },
+    {
+      "blind_label": "RPT-F9",
+      "run_id": "T3/N/r1",
+      "case_id": "T3",
+      "condition": "N",
+      "deep_research_qualified": true,
+      "p_repeats": [
+        10,
+        10,
+        10
+      ],
+      "p_mean": 10.0,
+      "p_median": 10,
+      "coverage_at_high_impact": 0.0,
+      "atomic_questions": 0,
+      "budget_compliant": true
+    },
+    {
+      "blind_label": "RPT-C4",
+      "run_id": "T3/FN/r1",
+      "case_id": "T3",
+      "condition": "FN",
+      "deep_research_qualified": true,
+      "p_repeats": [
+        10,
+        10,
+        10
+      ],
+      "p_mean": 10.0,
+      "p_median": 10,
+      "coverage_at_high_impact": null,
+      "atomic_questions": null,
+      "budget_compliant": null
+    }
+  ],
+  "contrasts": {
+    "H1": {
+      "paired": [
+        {
+          "case_id": "T2",
+          "i_mean": 10.0,
+          "n_mean": 5.666666666666667,
+          "delta_i_minus_n": 4.333333333333333
+        },
+        {
+          "case_id": "T3",
+          "i_mean": 10.0,
+          "n_mean": 10.0,
+          "delta_i_minus_n": 0.0
+        }
+      ],
+      "mean_delta_i_minus_n": 2.1666666666666665,
+      "direction_supported": true,
+      "all_eligible_pairs_positive": false,
+      "eligible_pair_count": 2,
+      "excluded_pair": "T1 because the no-ask report made zero substantive fetches",
+      "interpretation_scope": "as-treated feasibility runs; clarification cells exceeded the frozen five-question cap"
+    },
+    "H2": {
+      "pearson_coverage_vs_p": 0.5345224838248488,
+      "direction_supported": true,
+      "n_cells": 5,
+      "excludes_full_persona": true
+    },
+    "H3": {
+      "t3_cold_start_ask": 10.0,
+      "t3_full_persona_no_ask": 10.0,
+      "delta": 0.0,
+      "direction_supported": false
+    }
+  }
+}

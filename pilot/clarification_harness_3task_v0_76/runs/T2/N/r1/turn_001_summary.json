@@ -1,0 +1,755 @@
+{
+  "schema_version": "0.75",
+  "status": "completed_without_clarification",
+  "asked_clarification": false,
+  "clarification_calls": [],
+  "clarification_artifacts": [],
+  "all_observed_tools": [
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/public/deep-research/SKILL.md",
+        "description": "Load the required deep-research workflow before researching exchange and visiting-study options.",
+        "start_line": 1,
+        "end_line": 400
+      },
+      "id": "call_V2ps3PfGgvU4Y9o0J5PA8beN"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_V2ps3PfGgvU4Y9o0J5PA8beN",
+      "content": "---\nname: deep-research\ndescription: Use this skill instead of WebSearch for ANY question requiring web research. Trigger on queries like \"what is X\", \"explain X\", \"compare X and Y\", \"research X\", or before content generation tasks. Provides systematic multi-angle research methodology instead of single superficial searches. Use this proactively when the user's question needs online information.\n---\n\n# Deep Research Skill\n\n## Overview\n\nThis skill provides a systematic methodology for conducting thorough web research. **Load this skill BEFORE starting any content generation task** to ensure you gather sufficient information from multiple angles, depths, and sources.\n\n## When to Use This Skill\n\n**Always load this skill when:**\n\n### Research Questions\n- User asks \"what is X\", \"explain X\", \"research X\", \"investigate X\"\n- User wants to understand a concept, technology, or topic in depth\n- The question requires current, comprehensive information from multiple sources\n- A single web search would be insufficient to answer properly\n\n### Content Generation (Pre-research)\n- Creating presentations (PPT/slides)\n- Creating frontend designs or UI mockups\n- Writing articles, reports, or documentation\n- Producing videos or multimedia content\n- Any content that requires real-world information, examples, or current data\n\n## Core Principle\n\n**Never generate content based solely on general knowledge.** The quality of your output directly depends on the quality and quantity of research conducted beforehand. A single search query is NEVER enough.\n\n## Research Methodology\n\n### Phase 1: Broad Exploration\n\nStart with broad searches to understand the landscape:\n\n1. **Initial Survey**: Search for the main topic to understand the overall context\n2. **Identify Dimensions**: From initial results, identify key subtopics, themes, angles, or aspects that need deeper exploration\n3. **Map the Territory**: Note different perspectives, stakeholders, or viewpoints that exist\n\nExample:\n```\nTopic: \"AI in healthcare\"\nInitial searches:\n- \"AI healthcare applications 2024\"\n- \"artificial intelligence medical diagnosis\"\n- \"healthcare AI market trends\"\n\nIdentified dimensions:\n- Diagnostic AI (radiology, pathology)\n- Treatment recommendation systems\n- Administrative automation\n- Patient monitoring\n- Regulatory landscape\n- Ethical considerations\n```\n\n### Phase 2: Deep Dive\n\nFor each important dimension identified, conduct targeted research:\n\n1. **Specific Queries**: Search with precise keywords for each subtopic\n2. **Multiple Phrasings**: Try different keyword combinations and phrasings\n3. **Fetch Full Content**: Use `web_fetch` to read important sources in full, not just snippets\n4. **Follow References**: When sources mention other important resources, search for those too\n\nExample:\n```\nDimension: \"Diagnostic AI in radiology\"\nTargeted searches:\n- \"AI radiology FDA approved systems\"\n- \"chest X-ray AI detection accuracy\"\n- \"radiology AI clinical trials results\"\n\nThen fetch and read:\n- Key research papers or summaries\n- Industry reports\n- Real-world case studies\n```\n\n### Phase 3: Diversity & Validation\n\nEnsure comprehensive coverage by seeking diverse information types:\n\n| Information Type | Purpose | Example Searches |\n|-----------------|---------|------------------|\n| **Facts & Data** | Concrete evidence | \"statistics\", \"data\", \"numbers\", \"market size\" |\n| **Examples & Cases** | Real-world applications | \"case study\", \"example\", \"implementation\" |\n| **Expert Opinions** | Authority perspectives | \"expert analysis\", \"interview\", \"commentary\" |\n| **Trends & Predictions** | Future direction | \"trends 2024\", \"forecast\", \"future of\" |\n| **Comparisons** | Context and alternatives | \"vs\", \"comparison\", \"alternatives\" |\n| **Challenges & Criticisms** | Balanced view | \"challenges\", \"limitations\", \"criticism\" |\n\n### Phase 4: Synthesis Check\n\nBefore proceeding to content generation, verify:\n\n- [ ] Have I searched from at least 3-5 different angles?\n- [ ] Have I fetched and read the most important sources in full?\n- [ ] Do I have concrete data, examples, and expert perspectives?\n- [ ] Have I explored both positive aspects and challenges/limitations?\n- [ ] Is my information current and from authoritative sources?\n\n**If any answer is NO, continue researching before generating content.**\n\n## Search Strategy Tips\n\n### Effective Query Patterns\n\n```\n# Be specific with context\n❌ \"AI trends\"\n✅ \"enterprise AI adoption trends 2024\"\n\n# Include authoritative source hints\n\"[topic] research paper\"\n\"[topic] McKinsey report\"\n\"[topic] industry analysis\"\n\n# Search for specific content types\n\"[topic] case study\"\n\"[topic] statistics\"\n\"[topic] expert interview\"\n\n# Use temporal qualifiers — always use the ACTUAL current year from <current_date>\n\"[topic] 2026\"   # ← replace with real current year, never hardcode a past year\n\"[topic] latest\"\n\"[topic] recent developments\"\n```\n\n### Temporal Awareness\n\n**Always check `<current_date>` in your context before forming ANY search query.**\n\n`<current_date>` gives you the full date: year, month, day, and weekday (e.g. `2026-02-28, Saturday`). Use the right level of precision depending on what the user is asking:\n\n| User intent | Temporal precision needed | Example query |\n|---|---|---|\n| \"today / this morning / just released\" | **Month + Day** | `\"tech news February 28 2026\"` |\n| \"this week\" | **Week range** | `\"technology releases week of Feb 24 2026\"` |\n| \"recently / latest / new\" | **Month** | `\"AI breakthroughs February 2026\"` |\n| \"this year / trends\" | **Year** | `\"software trends 2026\"` |\n\n**Rules:**\n- When the user asks about \"today\" or \"just released\", use **month + day + year** in your search queries to get same-day results\n- Never drop to year-only when day-level precision is needed — `\"tech news 2026\"` will NOT surface today's news\n- Try multiple phrasings: numeric form (`2026-02-28`), written form (`February 28 2026`), and relative terms (`today`, `this week`) across different queries\n\n❌ User asks \"what's new in tech today\" → searching `\"new technology 2026\"` → misses today's news\n✅ User asks \"what's new in tech today\" → searching `\"new technology February 28 2026\"` + `\"tech news today Feb 28\"` → gets today's results\n\n### When to Use web_fetch\n\nUse `web_fetch` to read full content when:\n- A search result looks highly relevant and authoritative\n- You need detailed information beyond the snippet\n- The source contains data, case studies, or expert analysis\n- You want to understand the full context of a finding\n\n### Iterative Refinement\n\nResearch is iterative. After initial searches:\n1. Review what you've learned\n2. Identify gaps in your understanding\n3. Formulate new, more targeted queries\n4. Repeat until you have comprehensive coverage\n\n## Quality Bar\n\nYour research is sufficient when you can confidently answer:\n- What are the key facts and data points?\n- What are 2-3 concrete real-world examples?\n- What do experts say about this topic?\n- What are the current trends and future directions?\n- What are the challenges or limitations?\n- What makes this topic relevant or important now?\n\n## Common Mistakes to Avoid\n\n- ❌ Stopping after 1-2 searches\n- ❌ Relying on search snippets without reading full sources\n- ❌ Searching only one aspect of a multi-faceted topic\n- ❌ Ignoring contradicting viewpoints or challenges\n- ❌ Using outdated information when current data exists\n- ❌ Starting content generation before research is complete\n\n## Output\n\nAfter completing research, you should have:\n1. A comprehensive understanding of the topic from multiple angles\n2. Specific facts, data points, and statistics\n3. Real-world examples and case studies\n4. Expert perspectives and authoritative sources\n5. Current trends and relevant context\n\n**Only then proceed to content generation**, using the gathered information to create high-quality, well-informed content.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:usc.edu incoming exchange students graduate Annenberg communication semester official",
+        "max_results": 5
+      },
+      "id": "call_rtfqAvEWYApA5SBjJBfP2hTS"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:uva.nl exchange students communication science graduate semester ECTS official",
+        "max_results": 5
+      },
+      "id": "call_K2gzFqxKPzcxaQpbMqafUgMW"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:gold.ac.uk study abroad media communications one semester postgraduate official",
+        "max_results": 5
+      },
+      "id": "call_c1cmBfQfgiNQhHB2OmbVQiH6"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:waseda.jp incoming exchange graduate school one semester media communication official 2026",
+        "max_results": 5
+      },
+      "id": "call_YM21rwUohpk8etEZ7nfUlJds"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ntu.edu.sg incoming exchange postgraduate Wee Kim Wee communication official semester",
+        "max_results": 5
+      },
+      "id": "call_Gi8ksTFvE0LJBGkvwXieuOnS"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:nus.edu.sg graduate exchange non graduating communication new media official",
+        "max_results": 5
+      },
+      "id": "call_AyYyCaRViFQwn3I45L8zmGVM"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:erasmus-plus.ec.europa.eu student mobility studies grant credit recognition learning agreement official",
+        "max_results": 5
+      },
+      "id": "call_CamHoYxrSqp0Cm3NZfwFXF34"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "official international exchange credit transfer ECTS 30 semester Europe Erasmus",
+        "max_results": 5
+      },
+      "id": "call_U1eALpEhsDyKcZfwtj0LTtdU"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_rtfqAvEWYApA5SBjJBfP2hTS",
+      "content": "{\n  \"query\": \"site:usc.edu incoming exchange students graduate Annenberg communication semester official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_K2gzFqxKPzcxaQpbMqafUgMW",
+      "content": "{\n  \"query\": \"site:uva.nl exchange students communication science graduate semester ECTS official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_c1cmBfQfgiNQhHB2OmbVQiH6",
+      "content": "{\n  \"query\": \"site:gold.ac.uk study abroad media communications one semester postgraduate official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_YM21rwUohpk8etEZ7nfUlJds",
+      "content": "{\n  \"query\": \"site:waseda.jp incoming exchange graduate school one semester media communication official 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_Gi8ksTFvE0LJBGkvwXieuOnS",
+      "content": "{\n  \"query\": \"site:ntu.edu.sg incoming exchange postgraduate Wee Kim Wee communication official semester\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_AyYyCaRViFQwn3I45L8zmGVM",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=site%3Anus.edu.sg+graduate+exchange+non+graduating+communication+new+media+official'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_CamHoYxrSqp0Cm3NZfwFXF34",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=site%3Aerasmus-plus.ec.europa.eu+student+mobility+studies+grant+credit+recognition+learning+agreement+official'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_U1eALpEhsDyKcZfwtj0LTtdU",
+      "content": "{\n  \"query\": \"official international exchange credit transfer ECTS 30 semester Europe Erasmus\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "USC international exchange students Annenberg communication incoming",
+        "max_results": 10
+      },
+      "id": "call_4pTjHDPVryvedFLyZAEypxVl"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "University Amsterdam exchange communication science incoming exchange courses",
+        "max_results": 10
+      },
+      "id": "call_UR0eiGd9xq06gMIfP53UE43U"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Goldsmiths study abroad media communications semester",
+        "max_results": 10
+      },
+      "id": "call_lvzTaACQobKKFSkJneV5mTuI"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Waseda University incoming exchange graduate students semester courses English",
+        "max_results": 10
+      },
+      "id": "call_MhkNVXDy8wqNkwtgw1Xhrup8"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_4pTjHDPVryvedFLyZAEypxVl",
+      "content": "{\n  \"query\": \"USC international exchange students Annenberg communication incoming\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_UR0eiGd9xq06gMIfP53UE43U",
+      "content": "{\n  \"query\": \"University Amsterdam exchange communication science incoming exchange courses\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_lvzTaACQobKKFSkJneV5mTuI",
+      "content": "{\n  \"query\": \"Goldsmiths study abroad media communications semester\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_MhkNVXDy8wqNkwtgw1Xhrup8",
+      "content": "{\n  \"query\": \"Waseda University incoming exchange graduate students semester courses English\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://education.ec.europa.eu/education-levels/higher-education/inclusive-and-connected-higher-education/european-credit-transfer-and-accumulation-system"
+      },
+      "id": "call_iieKKipZozlCgUqL5skR6H9G"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/studying-abroad"
+      },
+      "id": "call_z6gWYD0XlqIomdbQXnCMxaJc"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://j1visa.state.gov/programs/college-and-university-student"
+      },
+      "id": "call_Z09bxgy7kVcK7MhF6nXVZtza"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html"
+      },
+      "id": "call_R4O8GvAEz0NKxgnqFvlb0iRy"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.mofa.go.jp/j_info/visit/visa/long/visa6.html"
+      },
+      "id": "call_vqsRwL1QyVZYFYN7gZGqrSTA"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ica.gov.sg/reside/STP/apply/ihl"
+      },
+      "id": "call_DuxkGF8sxBO4zlGr91FnuJAZ"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.gov.uk/standard-visitor/visit-to-study"
+      },
+      "id": "call_4V2evRpeueC0q5iFtSK7WZUx"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education"
+      },
+      "id": "call_OmLl1eMZgxfN215qABlnfKF2"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_iieKKipZozlCgUqL5skR6H9G",
+      "content": "# European Credit Transfer and Accumulation System (ECTS)\n\nWhat is the European Credit Transfer and Accumulation System?\n-------------------------------------------------------------\n\nThe European Credit Transfer and Accumulation System (ECTS) is a tool of the [European Higher Education Area](http://www.ehea.info/index.php) for making studies and courses more transparent. It helps students to move between countries and to have their academic qualifications and study periods abroad recognised.\n\nECTS allows credits taken at one higher education institution to be counted towards a qualification studied for at another. ECTS credits represent learning based on defined learning outcomes and their associated workload.\n\nECTS enhances the flexibility of study programmes for students. It also supports the planning, delivery and evaluation of higher education programmes. It is a central tool in the [Bologna Process](/education-levels/higher-education/inclusive-and-connected-higher-education/bologna-process?), which aims to make national education systems more comparable internationally. ECTS also helps make other documents, such as the [Diploma Supplement](/education-levels/higher-education/inclusive-and-connected-higher-education/diploma-supplement?), clearer and easier to use in different countries.\n\nECTS has been adopted by most of the countries in the European Higher Education Area as the national credit system and is increasingly used elsewhere.\n\nWhy is ECTS needed?\n-------------------\n\nDifferences between national higher education systems can lead to problems concerning the [recognition of qualifications](/education-levels/higher-education/inclusive-and-connected-higher-education/automatic-recognition-of-qualifications?) and [mobility periods abroad](https://erasmus-plus.ec.europa.eu/about-erasmus/how-to-take-part). This issue is addressed in part by enhancing the comprehension of the learning outcomes and workload of programmes of study.\n\nECTS also makes it possible to blend different learning styles, such as university and work-based learning, within the same programme of study or through lifelong learning.\n\nHow does it work?\n-----------------\n\n60 ECTS credits are the equivalent of a full year of study or work. In a standard academic year, these credits are usually broken down into several smaller modules. A typical 'short cycle qualification' typically includes 90-120 ECTS credits. A ‘first cycle’ (or bachelor's) degree consists of either 180 or 240 ECTS credits.\n\nUsually a ‘second cycle’ (or master's) degree equates to 90 or 120 ECTS credits. The use of the ECTS at the ‘third cycle’, or Ph.D. level, varies.\n\nECTS is applied to support student mobility between higher education institutions. The course catalogues, [Learning Agreements](http://ec.europa.eu/programmes/erasmus-plus/resources/documents-for-applicants/learning-agreement_en) and Transcripts of Records help the recognition and transfer of credits earned by students during a mobility period abroad. The [ECTS Users' Guide](/document/ects-users-guide-2015?) describes the system and how it is used in greater detail.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_z6gWYD0XlqIomdbQXnCMxaJc",
+      "content": "# Studying abroad\n\nWho can apply\n-------------\n\n* students at short-cycle, Bachelor and Master levels\n* Doctoral candidates\n\nwho are\n\n* registered in a higher education institution that participates in the Erasmus+ programme ([download a list of these institutions](/resources-and-tools/documents-and-guidelines/higher-education-institutions-holding-an-eche-2021-2027))\n* enrolled in studies leading to a recognised degree or tertiary-level qualification\n\nYour study period abroad must be\n\n* relevant for your degree-related learning and personal development needs\n* part of the study programme that you are following\n\nDuration\n--------\n\n* **long-term** mobility: minimum of 2 months to a maximum of 12 months abroad (including blended mobilities with a virtual component)\n* **short-term** mobility: between 5 and 30 days abroad (these must be blended mobilities)\n* **maximum total duration**: 12 months within one study cycle. It is possible to do more than one exchange within that limit.\n\nPlease note that only doctoral candidates can do a short-term mobility without a virtual component.\n\nFor \"one-cycle\" courses such as medicine or architecture, you can go abroad with Erasmus+ for as long as 24 months.\n\n\"Cycle\" refers to the level of study as defined by the [European Qualifications Framework (EQF)](https://europass.europa.eu/en/description-eight-eqf-levels).\n\nCosts and financial support\n---------------------------\n\nGrant agreements are signed by your sending or receiving institution. They apply for funding on behalf of their students.\n\nIf you are accepted for a grant, you will sign a participant grant agreement with them.\n\nThe amount is a contribution to your travel and daily living costs.\n\nThe details of this grant depend on many different conditions, including the\n\n* differences in living costs between your country and the destination country\n* number of students applying for a grant\n* distance between countries and the availability of other grants\n\nAs an Erasmus+ student, you are exempt from fees for tuition, registration, examinations, and charges for access to laboratories or libraries at the receiving institution. Small fees for insurance or student union membership may still apply.\n\n### Other support\n\nThere is also extra support for students going on a traineeship, students with fewer opportunities or those from [outermost regions](https://ec.europa.eu/regional_policy/policy/themes/outermost-regions_en).\n\nYou may also be eligible for additional grants from your institution, government or other sources.\n\nVisit the [European Funding guide](https://www.european-funding-guide.eu/) or the [Study Portals](http://www.studyportals.com/).\n\n### Students with physical, mental or health-related conditions\n\nCheck with the Erasmus+ coordinator at your sending institution to see if you can apply for additional funding.\n\n[Read about inclusion support](/opportunities/individuals/students/students-and-staff-with-physical-mental-or-health-related-conditions)\n\n### Language learning\n\nAccess to Erasmus+ [Online Language Support](/resources-and-tools/online-linguistic-support?) can help you learn the language used for your studies.\n\nRecognising your studies\n------------------------\n\nBefore your study period abroad, you will sign a “learning agreement for studies” with your sending and receiving institutions.\n\nThis\n\n* defines how your activities abroad will be recognised\n* ensures the preparations are clear for all parties\n* sets the rights and responsibilities of the various parties\n\nYou will also receive the [Erasmus+ Student Charter](/resources-and-tools/erasmus-student-charter) explaining your rights and obligations.\n\nAfter your study period abroad\n\n* your receiving institution must give you and your sending institution a transcript of records which confirms completion and results achieved\n* your sending institution must recognise the credits (using [ECTS credits](https://education.ec.europa.eu/education-levels/higher-education/inclusive-and-connected-higher-education/european-credit-transfer-and-accumulation-system) or an equivalent system) and count them towards your degree, without any other requirements\n* your mobility period should be recorded in the [Diploma Supplement](https://education.ec.europa.eu/education-levels/higher-education/inclusive-and-connected-higher-education/diploma-supplement), depending on where your institution is based\n\nRequirements for participating higher education institutions\n------------------------------------------------------------\n\nThe sending institution and the receiving institution must have an [inter-institutional agreement](/resources-and-tools/mobility-and-learning-agreements/inter-institutional-agreements).\n\nBoth institutions must also hold the [Erasmus Charter for Higher Education](/resources-and-tools/erasmus-charter-for-higher-education) (if they are in EU Member States or third countries associated to the Erasmus+ programme). Institutions from third countries not associated to the Erasmus+ programme commit to the principles of the Charter when signing the inter-institutional agreements.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_Z09bxgy7kVcK7MhF6nXVZtza",
+      "content": "# College and University Student Program\n\nParticipants\n------------\n\n### College/University Students must:\n\n* Be financed directly or indirectly by the U.S. government, the government of their home country, an international organization of which the United States is a member by treaty or statute, or supported substantially by funding from any source other than personal or family funds;\n* Be carried out according to an agreement between the U.S. government and a foreign government, or according to a written agreement between American and foreign educational institutions, an American educational institution and a foreign government or a state or local government in the United States and a foreign government; or Student is participating in a student internship program that will fulfill the educational objectives for the student’s degree program in his or her home country; or\n* Pursue a non-degree program must be enrolled full-time in a prescribed course of study. The maximum duration of a non-degree program is 24 months inclusive of academic training.\n\n### Benefits\n\n**School Credit:** University/college students may engage in degree-granting programs until completion or non-degree granting programs for no more than 24 months.\n\n**Employment:** Students may engage in part-time employment under certain conditions, including good academic standing at their host institution.\n\n**Academic training:** Students may participate in academic training with or without wages or other remuneration during their studies with the approval of the academic dean or adviser and the responsible officer at their [sponsor organization](/participants/how-to-apply/sponsor-search/).\n\n### Opportunity for Academic Training Extensions in STEM Fields\n\nThe Directorate of Private Sector Exchange (Private Sector) is pleased to announce an initiative for College and University Student-category exchange visitors participating in academic training in the fields of science, technology, engineering, and mathematics (STEM). We introduce this opportunity in response to the recent [Joint Statement of Principles in Support of International Education](https://educationusa.state.gov/sites/default/files/intl_ed_joint_statement.pdf).  \n**[READ MORE](https://j1visa.state.gov/opportunity-for-academic-training-extensions-for-j-1-college-and-university-students-in-stem-fields/)**.\n\n### Early Career STEM Research Initiative\n\nThis research initiative seeks to support an increase in science, technology, engineering, and mathematics (STEM) students, professionals, and exchange visitors on educational and cultural exchange programs in the United States.  \n**[READ MORE](https://j1visa.state.gov/early-career-stem-research-initiative/)**.\n\n### Sponsors are required to:\n\n* Secure sufficient background information on the students to ensure that they have the academic credentials required for enrollment; or\n* Ensure that the foreign national has been admitted to, or accepted for a student internship program offered by, the post-secondary accredited academic institution.\n\n### Sponsors must ensure the following for participants:\n\n* Ensure that they pursue a full course of study at a post-secondary accredited academic institution in the United States.\n\n### Hosts\n\nHost institutions in the case of college/university students are typically the academic institution where they applied for enrollment, or the academic institution providing the student internship program.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_R4O8GvAEz0NKxgnqFvlb0iRy",
+      "content": "Error fetching https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html: HTTPStatusError: Client error '403 Forbidden' for url 'https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_vqsRwL1QyVZYFYN7gZGqrSTA",
+      "content": "# General visa: Student\n\n|  |  |\n| --- | --- |\n| Period of stay | A term of individually designated by the Minister of Justice (4 years and 3 months or less) |\n| Necessary documents | 1. Passport 2. One visa application form (nationals of Russia, CIS countries or Georgia need to submit two visa application forms) 3. One photograph (nationals of Russia, CIS countries or Georgia need to submit two photographs) 4. Certificate of Eligibility (Note) - the original or one copy (If you have an electronic Certificate of Eligibility, please present it at the visa application counter or submit a printed copy)   　Chinese nationals must also submit the following documents:   5. Copy of the Chinese Family Register 6. Temporary Residence Permit or Residence Certificate (If the applicant does not have a family register within the region under the jurisdiction of the embassy or consulate where the application will be made) 7. Questionnaire (This can be obtained from approved agencies or the website of Japanese embassy and consulates in China) 8. Graduation certificate 9. The employment certificate of the financial supporter   (Note) Depending on the nationality of the applicant, other documents may be necessary in addition to the above. For details please refer to [the website of a Japanese embassy or consulate in your area](/about/emb_cons/over/index.html).  (Note) What is a Certificate of Eligibility?   A Certificate of Eligibility, which is issued by a regional immigration authority under the jurisdiction of the Immigration Services Agency of Japan, certifies that the foreign national conforms to the conditions for landing in Japan (which means the activity stated in the application is not false and it is one of the activities (except Temporary Visitor) stipulated in the Immigration Control Act). For details, check the website of [the Immigration Services Agency of JAPAN](https://www.isa.go.jp/en/index.html)Open a New Window. (A proxy in Japan can make an application of COE)   By presenting COE, the visa application at the Embassy or Consulate-General and the landing examination at the passport control will be processed smoothly. However, please note that a COE does not guarantee the issuance of a visa.   A visa application for this type of visa could be made without COE. However, the applicant will be required to submit a large amount of verification documents and it could take a long time (several months) to process. |",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_DuxkGF8sxBO4zlGr91FnuJAZ",
+      "content": "# ICA | Institutes of Higher Learning\n\nYou will need to apply for a Student’s Pass if you are a foreigner who has been accepted for admission as a full-time matriculated or registered student at one of the following Institutes of Higher Learning (IHL) in Singapore.\n\nYou do not need to apply for a Student’s Pass if you hold a valid Dependant's Pass, Long-Term Visit Pass or Immigration Exemption Order.\n\nLocal universities\n------------------\n\n* National University of Singapore\n* Nanyang Technological University\n* Singapore Management University\n* Singapore Institute of Technology\n* Singapore University of Social Sciences\n* Singapore University of Technology and Design\n\nLocal polytechnics\n------------------\n\n* Nanyang Polytechnic\n* Ngee Ann Polytechnic\n* Republic Polytechnic\n* Singapore Polytechnic\n* Temasek Polytechnic\n\nOffshore institutes with local campuses\n---------------------------------------\n\n* École Supérieure des Sciences Economiques et Commerciales\n* INSEAD (Singapore)\n* SP Jain School of Global Management\n* DigiPen Institute of Technology\n* German Institute of Science and Technology – TUM Asia\n* Assas International School (Singapore)\n\n[Apply Online](/eservicesandforms/solar)\nDocuments Required\n\n![tooltip button](/Cwp/assets/ica/images/logo/tooltip-icon.svg)\n\nYou will need to provide original documents and official translations (for documents in languages other than English), as well as copies of the documents for ICA to retain.\n\nICA accepts:\n\n* Translations provided by the embassy of the country/ place that issued the document\n* Translations produced by a notary public in Singapore or the country/ place that issued the document\n* Privately created translations attested by the embassy of the country/ place that issued the document, or notarised by a notary public in Singapore or the country/ place that issued the document.\n\nICA does not endorse any private translation companies or entities. Insufficient documentation may result in non-acceptance of your application. You may be required to provide additional documents to support your application.\n\nYou will need the following documents/ information to complete your Student's Pass application, please have them ready before you apply:\n\n* The Registration Acknowledgement Letter from the school you plan to attend\n* Your travel document biodata page and birth certificate (if applicable)\n* Your personal information, including the list of countries / places you have previously resided in, your educational background, employment history and financial support\n* Your parents’, spouse's, and/or siblings’ personal information (if applicable)\n* Your residential address and contact details in Singapore\n* Your email address\n* Your recent, passport-sized, digital, colour photograph taken within the last three months. Please refer to the [photo guidelines](/photo-guidelines) for more information.\n\nProcedure\n\nYou will need to apply online using the e-Service at least two months and not more than three months before course begins.\n\nYou do not need to be in Singapore while your application is being processed. As such, we recommend you apply for a Student’s Pass before arriving in Singapore as you cannot extend your stay while processing is underway. If your application is approved,\nyou can then enter Singapore to complete the formalities required to issue your Student’s Pass.\n\nFees\n\nA non-refundable S$45 processing fee is payable.\n\nPayment can be made using:\n\n* Visa or MasterCard credit/debit card or,\n* American Express (AMEX) credit card or,\n* Internet Direct Debit (DBS/POSB, OCBC, UOB and Standard Chartered Bank Internet Banking accounts in Singapore) or,\n* PayNow.\n\nProcessing Time\n\nThe processing time for application is within one week (and within two weeks if Visa is required) (excluding the date of submission). Some applications may take longer time to process. You may enquire about the application status using the [e-Service](/eservicesandforms/solar).",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_4V2evRpeueC0q5iFtSK7WZUx",
+      "content": "# Visit the UK as a Standard Visitor\n\nYou can visit the UK for up to 6 months to:\n\n* study at an accredited institution (this includes English language courses)\n* do a short piece of research that’s relevant to your course overseas\n* do an ‘elective’ - an optional additional placement, if you’re studying medicine, veterinary medicine and science, nursing, midwifery or dentistry\n* sit an entrance exam, retake an exam or course module, or do a PhD oral exam (a viva)\n* do an unpaid clinical attachment if you’re a graduate from a medical, dental or nursing school\n* take the Objective Structured Clinical Examination (OSCE) test or the Professional and Linguistic Assessment Board (PLAB) test\n\nYou should:\n\n* check you meet the [basic eligibility requirements for a Standard Visitor](/standard-visitor/overview) and any relevant extra eligibility requirements listed below\n* prepare any required documents that prove your eligibility\n* [check if you need a visa to visit the UK](/check-uk-visa)\n* [apply for a Standard Visitor visa](/standard-visitor/apply-standard-visitor-visa) online - if you need one\n\nIf you’re visiting to study at an accredited institution\n--------------------------------------------------------\n\nYou must prove that:\n\n* you’ve been accepted onto a course provided by an [accredited UK institution](/visa-to-study-english/your-course)\n* the course is no more than 6 months long (unless it’s a distance learning course)\n\nThe accredited UK institution cannot be an academy or state-funded school.\n\n### Distance learning courses\n\nIf you’re doing a distance learning course, your course can last longer than 6 months. This is because most of your study will happen outside of the UK.\n\nYou can visit the UK to do certain activities as part of your course, for example:\n\n* attend induction weeks\n* do face-to-face intensive learning\n* have progress checks\n* sit exams or assessments\n\n### If you want to study for more than 6 months\n\nYou’ll need to apply for either a:\n\n* [Short-term study visa](/study-visit-visa) - for English Language courses up to 11 months\n* [Student visa](/student-visa) - for courses run by licensed student sponsors\n* [Child Student visa](/child-study-visa) - to study at an independent school if you’re between 4 and 17 years old\n\nIf you’re visiting to do a short piece of research\n--------------------------------------------------\n\nYou must prove that:\n\n* you’re at least 16 years old\n* you’re already enrolled on a course overseas that is the equivalent of a UK degree\n* you’ve been accepted by a UK higher education institution to take part in research that’s relevant to the course you’re studying overseas\n\nYou can visit for up to 6 months to do your research.\n\n### Documents you must provide\n\nYou’ll need to provide confirmation from your overseas course provider that the research or research tuition is part of, or relevant to, the course you’re doing overseas.\n\nIf you’re visiting to do an elective\n------------------------------------\n\nYou must prove that you’re:\n\n* at least 16 years old\n* already enrolled on a course overseas that is the equivalent of a UK degree - the course must be in medicine, veterinary medicine and science, nursing, midwifery or dentistry\n* doing an elective at a UK higher education institution as part of your course\n\nYou can visit for up to 6 months to do your elective.\n\n### Documents you must provide\n\nYour UK higher education provider will need to give written confirmation that you will not be treating patients or being paid for the elective.\n\nIf you’re visiting to do an unpaid clinical attachment or dental observer post\n------------------------------------------------------------------------------\n\nIf you’re an overseas graduate from a medical, dental or nursing school you can do an unpaid clinical attachment or dental observer post for up to 6 months.\n\nIf you want to stay longer than 6 months, you will need to pass the PLAB test and [apply to stay in the UK](/standard-visitor/extend-your-stay).\n\nYou must not treat patients.\n\n### Documents you must provide\n\nYou must provide written confirmation:\n\n* of your clinical attachment or dental observer post offer\n* that you’ve not done a clinical attachment or dental observer post in the UK before\n\nIf you’re taking the OSCE or PLAB test\n--------------------------------------\n\nYou can visit for up to 6 months to take the OSCE or PLAB test.\n\nIf you do not pass the PLAB test, you can [apply to stay in the UK](/standard-visitor/extend-your-stay) for a further 6 months to retake the test.\n\nIf you pass the PLAB test, you can [apply to stay in the UK](/standard-visitor/extend-your-stay) to do an unpaid clinical attachment or dental observer post. You can stay in the UK for up to 18 months in total.\n\n### Documents you must provide\n\nYou must provide a letter from the Nursing and Midwifery Council confirming your OSCE test registration.\n\nYou’ll need a letter from the General Medical Council confirming your PLAB test registration.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_OmLl1eMZgxfN215qABlnfKF2",
+      "content": "# Student residence permit for university or higher professional education\n\n*Last update: 8 June 2026*\n\nYou want a residence permit to study in the Netherlands at a university or institute of higher professional education (in Dutch: *hoger beroepsonderwijs or HBO*). Only this educational institution can apply for a residence permit for you. Find out what the requirements are and how your educational institution can apply for a student residence permit.\n\nYour situation\n--------------\n\nWe will first ask you a few questions. We use your answers to give you information that applies to your situation. Your details will not be saved or shared with others.\n\nWhat is your nationality?\n\nDo you already have a valid Dutch residence permit?\n\nYes\n\nNo\n\nDid you have a Dutch residence permit and did it expire less than 2 years ago? And do you still live in the Netherlands?\n\nYes\n\nNo",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "incoming graduate exchange communication university official Waseda",
+        "max_results": 10
+      },
+      "id": "call_tHs0GQUawSyeOrXCYyPG39Cr"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "incoming graduate exchange communication university Singapore official",
+        "max_results": 10
+      },
+      "id": "call_KgcsM3y0ClmPHgLuytWqRsPB"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "incoming graduate exchange media communication university Europe official",
+        "max_results": 10
+      },
+      "id": "call_jw30c6xsxtg9ALi2NQxPgrFz"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "incoming graduate exchange journalism communication university United States official",
+        "max_results": 10
+      },
+      "id": "call_6KZe8Oy82oPIWjwQXhOemJw8"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_tHs0GQUawSyeOrXCYyPG39Cr",
+      "content": "{\n  \"query\": \"incoming graduate exchange communication university official Waseda\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_KgcsM3y0ClmPHgLuytWqRsPB",
+      "content": "{\n  \"query\": \"incoming graduate exchange communication university Singapore official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_jw30c6xsxtg9ALi2NQxPgrFz",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=incoming+graduate+exchange+media+communication+university+Europe+official'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_6KZe8Oy82oPIWjwQXhOemJw8",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=incoming+graduate+exchange+journalism+communication+university+United+States+official'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.uva.nl/en/education/exchange/exchange-programmes/exchange-programmes.html"
+      },
+      "id": "call_lb0Owc3CGLBNvpud8cuLaHB7"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.uva.nl/en/education/practical-information/living-in-amsterdam/living-expenses/living-expenses.html"
+      },
+      "id": "call_LldvEhwMISHhm6hSk5zHENGn"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.waseda.jp/inst/cie/en/exchange/application"
+      },
+      "id": "call_GpI1awRDW9VjGtP1Ag8OXfUq"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.waseda.jp/fire/gsiccs/en/applicants/exchange"
+      },
+      "id": "call_BfX9xZAz4S4GEwDqez7uB6So"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006"
+      },
+      "id": "call_avCaVrSGQrYbWlUWwHHPp7J2"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes"
+      },
+      "id": "call_u8mda2unQpSOUyJxfsq9jE6F"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme"
+      },
+      "id": "call_oxzLNxLiLiN93gPTQvMUn6hx"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.american.edu/soc/graduate/nondegree.cfm"
+      },
+      "id": "call_fvAm0BdyY8Hh48CqujgNJY6A"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_lb0Owc3CGLBNvpud8cuLaHB7",
+      "content": "Error fetching https://www.uva.nl/en/education/exchange/exchange-programmes/exchange-programmes.html: HTTPStatusError: Client error '404 ' for url 'https://www.uva.nl/en/education/exchange/exchange-programmes/exchange-programmes.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_LldvEhwMISHhm6hSk5zHENGn",
+      "content": "# Living expenses and money matters\n\nThinking of studying with us? Expect to spend between €975 and €1,500 per month on living expenses. This includes rent but not tuition fees.\n\n**Costs are roughly as follows:**\n\n* visa/residence permit (if not EU national): €254, one-time fee\n* application fee (if not EU national/IB student): €100, one-time fee\n* accommodation: €650 - 1200 per month\n* general living expenses: €400 - €500 per month\n* insurance: €35 - €100 per month\n* books: €50 - €100 per month\n* public transport (optional): €40 - €100\n\n* [Important: covering your expenses](#Important-covering-your-expenses)\n\n  Make sure you have covered all your expenses for the entire period of studying abroad before you arrive in Amsterdam. It is very hard to find additional funding once you are in the Netherlands. Most scholarship programmes, for instance, will only accept applications while you are still in your home country, and finding work is very difficult if you don’t speak any Dutch.\n\n  If you need an entry visa for the Netherlands you have to submit proof that you have sufficient funds in your bank account to support yourself during your studies in Amsterdam.\n* [Dutch currency](#Dutch-currency)\n\n  Dutch currency is known as the euro, abbreviated by *eur* or €. The currency in circulation comes in the following forms: coins of one, two, five, ten, twenty and fifty eurocents, and one and two euro. Notes are available in denominations of €5, 10, 20, 50, 100, 200 and 500. Most shops do not accept bank notes of €100 or above.\n* [Cash dispensers (ATMs)](#Cash-dispensers-ATMs)\n\n  If you have a Cirrus, Plus, or Euro Card/ MasterCard bank card or a credit card with a four-digit PIN number, you will be able to withdraw money from your home bank account from one of the numerous cash dispensers in Amsterdam. Please inquire at your home bank about this service, its conditions and costs.\n* [Credit cards](#Credit-cards)\n\n  Credit cards are becoming more popular, although they are not as common as in the USA or France, and large payments are generally handled through a bank account. Make sure you have a bank card enabling you to draw money from a cash dispenser or that you have access to cash.\n* [Money exchange](#Money-exchange)\n\n  Money can be exchanged 24 hours a day, seven days a week at the Amsterdam Central Station (central railway station) and at Schiphol Airport.\n\n  In the Netherlands, you can generally pay with euros only. However, some tourist attractions may accept other currency as well.\n* [Public transport](#Public-transport)\n\n  Public transport in Amsterdam can be quite expensive, depending on how frequently you use it and the distances you travel. It will cost you around €70 - 100 per month maximum, unless you live outside of Amsterdam.\n\n  The cheapest and easiest way to travel in Amsterdam is by bicycle. Prices of second-hand bikes vary from €200 to €400. A decent lock costs approximately €50 or more.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_GpI1awRDW9VjGtP1Ag8OXfUq",
+      "content": "# Application\n\nWaseda University Overview\n--------------------------\n\n[![](https://www.waseda.jp/inst/cie/assets/uploads/2026/01/inbound-manga_banner_202601.jpg)](https://www.waseda.jp/inst/cie/news-en/43210)\n\n* [ University-wide Exchange Program brochure ╢](https://www.cie-waseda.jp/exchange-brochure/index.html#page=1)\n\n* [ WHY WASEDA? ╢](https://www.waseda.jp/inst/whywaseda/)\n\n* [ Waseda University Facts ╢](https://waseda.box.com/s/elfvbqtq5qpzq48me4w0d3dxtzdene34)\n\nApplication Guidelines\n----------------------\n\n* [ Application Guidelines for Waseda University Exchange Programs (AY 2027) ╢](https://www.waseda.jp/inst/cie/assets/uploads/2026/06/ba8ac5b2898a045bc89b972436d4b2ba.pdf)\n\n**◆ Appendixes  \n・[CHECKLIST for WASEDA Exchange Program Application](https://www.waseda.jp/inst/cie/assets/uploads/2026/06/55ae3f3a89b6a6116fbcf58927367857-1.pdf)  \n・[Schedules After Coming to Japan](https://www.waseda.jp/inst/cie/assets/uploads/2025/05/9fe3b09fbbc5295ddc93c1e11b43bb51.pdf)**\n\nLists of Schools (Requirements) for A.Y.2027 (Spring 2027 / Fall 2027 Enrollment)\n---------------------------------------------------------------------------------\n\nRead  the “Lists of Schools (Requirements)”  carefully to decide which school (major) and department you want to apply for.\n\n* [ Requirements for Undergraduate Schools (English based Program) ╢](https://www.waseda.jp/inst/cie/assets/uploads/2026/06/e4b83beb6ee3607bf5992252db1e8fae.pdf)\n* [ Requirements for Undergraduate Schools (Japanese based Program) ╢](https://www.waseda.jp/inst/cie/assets/uploads/2026/06/d52d923019011eab359629ebd4f0703e.pdf)\n* [ Requirements for Graduate Schools (English based Program) ╢](https://www.waseda.jp/inst/cie/assets/uploads/2026/06/4b4370d1666c886d96b8573cebd8d1fa.pdf)\n* [ Requirements for Graduate Schools (Japanese based Program) ╢](https://www.waseda.jp/inst/cie/assets/uploads/2026/06/dc3c48dd16c2b85ac8d7a74ba31fcafe.pdf)\n* [ Requirements for Japanese Language Program ╢](https://www.waseda.jp/inst/cie/assets/uploads/2026/06/b75696f8758143b83f82a77f1d5d6315.pdf)\n\n* Each schools/ graduate schools have their own specific requirement. Please check the “Lists of Schools (Requirements)” above carefully.\n* Applicants must meet ALL the requirements such as GPA and language proficiency.\n* For English-based programs, refer to the course lists (not available in some schools(major)) which are listed in “Note” of “Requirement and Course Lists”.  \n  For Japanese-taught programs, please refer to “Note” of “Requirements and Course Lists” and [Syllabus Search](https://www.wsl.waseda.jp/syllabus/JAA101.php?pLng=en).\n* All course lists and syllabus are as of AY2025 and subject to change in AY2026. Some courses may not be available every semester.\n* All students are required to complete registration within the designated period. However, due to capacity limitations in each academic year, some students—including regular (degree-seeking) students—may not be accommodated. In addition, since students manage their own course loads based on guidance from their schools, we cannot always guarantee that the required number of credits for each university will be fully met.\n* Some GRADUATE schools require permission from the prospective research supervisor BEFORE the application. Please refer to each requirement and  [Researcher Database](https://w-rdb.waseda.jp/search?m=home&l=en) (or [supervisor list](https://www.waseda.jp/fsci/EN/admissions_gs/#anc_4) for the School of Fundamental/ Creative/ Advanced Science and Engineering ) for contacts.\n\nPrivacy Notice\n--------------\n\n* [ Our Privacy Policy For Applicants, Students, and Alumni From Our Partner Universities In The European Economic Area and The United Kingdom With Student Exchange Agreements ╝ ╢](https://www.waseda.jp/inst/cie/assets/uploads/2022/08/FINAL_WASEDA_STUDENT_EXCHANGE_PN.pdf)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_BfX9xZAz4S4GEwDqez7uB6So",
+      "content": "Error fetching https://www.waseda.jp/fire/gsiccs/en/applicants/exchange: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/fire/gsiccs/en/applicants/exchange'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_avCaVrSGQrYbWlUWwHHPp7J2",
+      "content": "Error: Insufficient readable content (265 characters) from https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_u8mda2unQpSOUyJxfsq9jE6F",
+      "content": "# GEM Trailblazer (Semester Exchange)\n\n![](https://www.ntu.edu.sg/media/images/default-source/ogem/dsc_7821727f80c3-7ed9-47c3-88cd-cdae08f3fce3.jpg?sfvrsn=7f711c6d_3)\n\n[![GEM Trailblazer Information Sheet](https://www.ntu.edu.sg/media/images/default-source/ogem/gemt_infosheet_ay2324_webheader.png?sfvrsn=4e8b5ec7_0)](https://gem.ntu.edu.sg/_customtags/ct_FileRetrieve.cfm?File_ID=21429)\n\nThe **GEM Trailblazer (Semester Exchange)** programme allows international students to either study or conduct research for one or two semesters, while gaining credit towards their home degree. We welcome applications for undergraduate and postgraduate students from our partner universities. In order to participate, students must be nominated by their home universities.\n\n![earth-globe](https://www.ntu.edu.sg/media/images/default-source/ogem/earth-globe.png?sfvrsn=3087aad3_0)\n\nRanked 12th in the World (QS World University Rankings)\n\n![partners](https://www.ntu.edu.sg/media/images/default-source/ogem/partners.png?sfvrsn=75e994c_0)\n\n350+ Partner Instiutions in over 40+ countries\n\n![travel-and-tourism](https://www.ntu.edu.sg/media/images/default-source/ogem/travel-and-tourism.png?sfvrsn=7ea55f71_0)\n\nGateway to Southeast Asia and beyond\n\n**To apply to the Programme, you must fulfil the following eligbility criteria:**\n\n* My home university has an active formal agreement with NTU\n* I have been nominated by my\n  home university\n* I am a full-time, matriculated\n  student at my home university\n* I have completed at least two\n  semesters of study at my home\n  university (at least seven\n  semesters for Direct Masters\n  applicants intending to read\n  PG-level courses )\n* I have a CGPA of at least 3.3/5\n  or equivalent\n* I am proficient in the English\n  language\n\nIf your home university does not have an agreement with NTU, you will need to check back with your home university’s exchange office regarding the availability of exchange or other options that you can consider. You may also be interested to explore the [GEM Trailblazer Summer programme](/education/student-exchanges/exchange-programmes/inbound-programmes#Content_C011_Col01) as an alternative.\n\n|  |  |  |  |\n| --- | --- | --- | --- |\n| **Period of Exchange** | **Nomination period** | **Application period** | **Application outcome** |\n| Semester 1 (Fall, August - December) | 1 - 15 March | 1 - 30 March | Successful applicants will be notified via email about 6-8 weeks after the application deadline. |\n| Semester 2 (Spring, January - May) | 1 - 15 September | 1 - 30 September |\n\n*\\* Dates may be subject to change.*\n\n**Pre-application: Nomination**  \n***You must be nominated by your home university*** to the Programme. We will not review your application if we do not receive your nomination details.\n\n**Step 1: Begin your application**  \nUpon successful nomination, you will receive an email contaning instructions and the link to the application portal. Complete your application according to our requirements so as not to hold back the outcome of your application. The full list and details of the mandatory supporting documents is found on Page 4 of the [Information Sheet](https://gem.ntu.edu.sg/_customtags/ct_FileRetrieve.cfm?File_ID=21429).\n\nYou will be asked to indicate your interest in a minimum of 10 courses in your application. These courses must be approved by your home university and deemed necessary for your academic progression. To learn more about the courses offered to exchange students, refer to the 'Coursework' tab of the [Programme Brochure](https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006).\n\n**Step 2: Submit the application**  \nAfer completing your application full, ensure that it is submitted no later than the stipulated application deadline. We ask that you respond in a timely manner if we request for further details or clarifications.\n\n**Step 3: Accept the Offer**  \nIf your application is approved, you will receive the E-Welcome Package approximately 6 to 8 weeks after the application deadline. Upon accepting the Offer, you will have access to the GEM Trailblazer Exchange/Study Abroad Portal, which provides\nyou with one-stop information and access to the relevant\nadmissions matters that require your attention prior to arrival.\n\nAccepting the Offer kickstarts the admissions process that will ensure a smooth start at NTU. You will have access to the [Pre-Arrival and Welcome Guides](https://entuedu.sharepoint.com/sites/Student/dept/sasd/ogem/SitePages/GEM-Trailblazer.aspx) on the Student Intranet, which contains important information to help you prepare for your semester abroad. The GEM Trailblazer team will also advise you about matters concerning the Student's Pass, on-campus housing, course registration, and more.\n\nNTU does not offer any scholarships or financial assistance to exchange students. You must be prepared to cover the entire cost of studying abroad for the duration of your programme. Refer to the 'Financial' tab of the [Programme Brochure](https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006) for information about the estimated expenses you should plan for.\n\n**About the DUO-Singapore Fellowship Award *(by invitation only)***  \nThe Asia-Europe Meeting's (ASEM) DUO Fellowship Programme aims to promote student exchanges between European and Asian ASEM member countries. Under this programme, the DUO-Singapore Exchange Fellowship is awarded by the Singapore Government to Singapore and ASEAN students studying in Nanyang Technological University (NTU), National University of Singapore (NUS) and Singapore Management University (SMU). The Award is also open to students***from European ASEM countries*** (who come from universities with fee waiver arrangements with NTU, NUS and SMU)\n\nThe Award, based on merit, is for a pair of exchanges between a university in Singapore and its respective partner university in Europe in any academic field. Awardees will receive a maximum of €4,000 Euros for one semester of up to four months, which covers airfare, accommodation and living expenses.\n\nThis award is ***by invitation only*** and only applies to students participating in the GEM Trailblazer programme during Semester 1 of each academic year. The GEM Trailblazer Team will inform short-listed candidates and host universities accordingly.\n\n[![](https://www.ntu.edu.sg/media/images/default-source/accommodations/gemt_keydates-milestones_18092023.png?sfvrsn=d4f71058_1 \"GEMT_KeyDates+Milestones_18092023\")](https://www.ntu.edu.sg/media/images/default-source/accommodations/gemt_keydates-milestones_18092023.png?sfvrsn=d4f71058_1)\n\n### Ready to explore the GEM Trailblazer Exchange programme?\n\nOur programme brochure will tell you more about course selection, accomodation and more.\n\n[GEM Trailblazer Programme Brochure](https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006)\n\nWe are here to support you in your journey to becoming a global citizen! If you have a query about our inbound semester exchange programme, drop us an email at [GEM-Trailblazer@ntu.edu.sg](mailto:GEM-Trailblazer@ntu.edu.sg).",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_oxzLNxLiLiN93gPTQvMUn6hx",
+      "content": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_fvAm0BdyY8Hh48CqujgNJY6A",
+      "content": "Error fetching https://www.american.edu/soc/graduate/nondegree.cfm: HTTPStatusError: Client error '404 Not Found' for url 'https://www.american.edu/soc/graduate/nondegree.cfm'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"graduate exchange students\" \"communication\" university",
+        "max_results": 10
+      },
+      "id": "call_O5wHe1ENkRirWWKWNDl6bxOD"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"visiting student\" \"Media Studies\" graduate university semester",
+        "max_results": 10
+      },
+      "id": "call_PClLtteiymZhBuhIh3MrtwaD"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"postgraduate exchange students\" media communications",
+        "max_results": 10
+      },
+      "id": "call_9VgU98ZhrYnsOKi7kEfCi6NJ"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"Wee Kim Wee\" exchange postgraduate courses",
+        "max_results": 10
+      },
+      "id": "call_RJIEvfFVanOQ5q9ichuO90Uu"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"Graduate School of International Culture and Communication Studies\" exchange students",
+        "max_results": 10
+      },
+      "id": "call_OZqjgNPyWOgL4BUosKutMC2m"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"Communication Science\" \"exchange students\" Amsterdam master",
+        "max_results": 10
+      },
+      "id": "call_ryuyMWxI7W4nziRHeYDZ7c9o"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_O5wHe1ENkRirWWKWNDl6bxOD",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=%22graduate+exchange+students%22+%22communication%22+university'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_PClLtteiymZhBuhIh3MrtwaD",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=%22visiting+student%22+%22Media+Studies%22+graduate+university+semester'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_9VgU98ZhrYnsOKi7kEfCi6NJ",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=%22postgraduate+exchange+students%22+media+communications'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_RJIEvfFVanOQ5q9ichuO90Uu",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=%22Wee+Kim+Wee%22+exchange+postgraduate+courses'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_OZqjgNPyWOgL4BUosKutMC2m",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=%22Graduate+School+of+International+Culture+and+Communication+Studies%22+exchange+students'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_ryuyMWxI7W4nziRHeYDZ7c9o",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=%22Communication+Science%22+%22exchange+students%22+Amsterdam+master'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.bu.edu/abroad/for-international-students/incoming-exchange-students/"
+      },
+      "id": "call_ZH3swYWneTjI1NgwKkEGAuny"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.bu.edu/com/academics/graduate-programs/"
+      },
+      "id": "call_jcCSDq3KvmIYQJeqIHBl4o38"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.bu.edu/isso/getting-started/all-about-visas/student-visas/"
+      },
+      "id": "call_hZdYqu567UzRP4vgCaWGCNwh"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.bu.edu/finaid/aid-basics/cost-of-attendance/graduate/"
+      },
+      "id": "call_s0IdAtolkXnwtKSvQTVbqUSR"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes"
+      },
+      "id": "call_wV5FHrPzHzlDrFRAWuexAvzv"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ntu.edu.sg/life-at-ntu/accommodation/graduate-housing"
+      },
+      "id": "call_WwnppAnoR3fIfNxPEeMVRH9C"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ntu.edu.sg/admissions/graduate/financial-matters/cost-of-living"
+      },
+      "id": "call_ml9XjTPO6tuuOLx9epzXiaSW"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.waseda.jp/inst/cie/en/life/expense"
+      },
+      "id": "call_TK7xRFGQkQxxmCzAnag5ZApI"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_ZH3swYWneTjI1NgwKkEGAuny",
+      "content": "Error fetching https://www.bu.edu/abroad/for-international-students/incoming-exchange-students/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.bu.edu/abroad/for-international-students/incoming-exchange-students/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_jcCSDq3KvmIYQJeqIHBl4o38",
+      "content": "Error fetching https://www.bu.edu/com/academics/graduate-programs/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.bu.edu/com/academics/graduate-programs/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_hZdYqu567UzRP4vgCaWGCNwh",
+      "content": "Error fetching https://www.bu.edu/isso/getting-started/all-about-visas/student-visas/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.bu.edu/isso/getting-started/all-about-visas/student-visas/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_s0IdAtolkXnwtKSvQTVbqUSR",
+      "content": "# How Aid Works | Financial Assistance\n\n### The BU Promise\n\n##### If you’re admitted, finances shouldn’t stand in the way\n\nIntroducing the BU Promise. Beginning in the 2026–27 academic year, Boston University will meet 100 percent of demonstrated financial need for *first-time, first-year students who are US citizens and permanent residents*—without loans.  \n\nUnder this program, admitted first-year students from families with [annual household incomes](https://www.bu.edu/finaid/how-aid-works/eligibility/calculated-financial-eligibility/) below $200,000 and typical assets can expect to pay no more than $20,000 per academic year toward the cost of attendance. In other words, financial aid will cover full tuition **plus** a portion of standard housing and dining costs.  \n\nFamilies with a total income of $75,000 or less, with typical assets, can expect to pay nothing. \n\nFamilies earning more than $200,000 are also encouraged to apply. BU considers each family’s individual financial circumstances—including factors such as multiple children in college or a high cost of living—when determining need-based aid. \n\nStudents must [submit all required financial aid materials](https://www.bu.edu/finaid/undergraduate-students/first-year-students/incoming/) and meet [eligibility requirements](https://www.bu.edu/finaid/how-aid-works/eligibility/) to be considered for need-based aid. BU Financial Assistance will make final determinations regarding family contributions and financial aid awards based on each family’s circumstances.   \n  \nWith the BU Promise, your financial aid covers 100% of your demonstrated need without student loans. However, [Federal Direct Loans](https://www.bu.edu/finaid/how-aid-works/types-of-aid/loans/) may still be offered if you are eligible and families may still choose to borrow to help cover educational expenses.\n\nIn considering all circumstances impacting a family’s ability to pay for the cost of education, BU Financial Assistance reserves the right to make the final determination of an expected contribution and financial aid award.\n\n##### What will BU Cost you?\n\n| Total Household Income | Total Financial Aid | Net Cost of Attendance\\* |\n| --- | --- | --- |\n| $0 – $75,000 | Full Tuition + Standard Housing & Dining Plan (SHDP) | $0 |\n| $75,001 – $100,000 | Full Tuition + % SHDP | $10,000 or less |\n| $100,001 – $150,000 | Full Tuition + % SHDP | $15,000 or less |\n| $150,001 – $200,000 | Full Tuition + % SHDP | $20,000 or less |\n| $200,000 + | Tailored Financial Aid |  |\n\n*\\*Table illustrates sample costs for admitted first-year students starting in 2026/2027. Based on total household income with [typical assets](https://www.bu.edu/finaid/how-aid-works/eligibility/calculated-financial-eligibility/). Cost of Attendance based on standard Housing and Dining Plan cost for four years and standard 26/27 Tuition – $73,024.*",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_wV5FHrPzHzlDrFRAWuexAvzv",
+      "content": "Error fetching https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes: HTTPStatusError: Client error '404 Not Found' for url 'https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_WwnppAnoR3fIfNxPEeMVRH9C",
+      "content": "# Graduate Housing\n\nA vibrant university life awaits\n--------------------------------\n\n![](https://www.ntu.edu.sg/media/images/default-source/accommodations/accommodation-thumbnails/graduate-hall-2.png?sfvrsn=b51312e_2)\n\n![](https://www.ntu.edu.sg/media/images/default-source/ntu-site/student-affairs-thumbnails/student-life.png?sfvrsn=9b41967c_3)\n\n![CCO Student Hall Life 073ml](https://www.ntu.edu.sg/media/images/default-source/accommodations/cco-student-hall-life-073ml.jpg?sfvrsn=302a5811_0)\n\nOur Graduate Halls\n------------------\n\n[![GH1 Facade](https://www.ntu.edu.sg/media/images/default-source/a.-(do-not-use-please-use-designated-library)/gh1-facade.tmb-listing.png?sfvrsn=645a2f54_1)\n\n### Graduate Hall 1\n\nDouble Room | Single Room\nAir-con](https://www.ntu.edu.sg/life-at-ntu/accommodation/graduate-housing/detail/graduate-hall-1)\n\n[![GH Entrance Signage](https://www.ntu.edu.sg/media/images/default-source/a.-(do-not-use-please-use-designated-library)/gh-entrance-signage.tmb-listing.png?sfvrsn=7b6b6c95_1)\n\n### Graduate Hall 2\n\nDouble Room | Single Room\nAir-con](https://www.ntu.edu.sg/life-at-ntu/accommodation/graduate-housing/detail/graduate-hall-2)\n\nGraduate Halls 1 and 2 are available as an accommodation option for graduate students who may wish to apply to stay on-campus.\n\nPriority in allocation is given to incoming new graduate programme students on research programmes who have not domiciled in Singapore before.  In view of limited places on campus, submitting an application does not guarantee a place.\n\nUseful Information\n------------------\n\n#### [APPLY FOR GRADUATE HOUSING](/life-at-ntu/accommodation/graduate-housing/application)\n\n#### [FAQ](/life-at-ntu/accommodation/FAQ)\n\n#### [CONTACT US](/life-at-ntu/accommodation/graduate-housing/contact-us)\n\n#### [ALTERNATIVE HOUSING OPTIONS](/life-at-ntu/accommodation/alternative-housing-options)\n\n#### [HEALTH & SAFETY](/life-at-ntu/health-and-safety)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_ml9XjTPO6tuuOLx9epzXiaSW",
+      "content": "Error fetching https://www.ntu.edu.sg/admissions/graduate/financial-matters/cost-of-living: HTTPStatusError: Client error '404 Not Found' for url 'https://www.ntu.edu.sg/admissions/graduate/financial-matters/cost-of-living'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_TK7xRFGQkQxxmCzAnag5ZApI",
+      "content": "Error fetching https://www.waseda.jp/inst/cie/en/life/expense: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/inst/cie/en/life/expense'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://visp.wisc.edu/"
+      },
+      "id": "call_rmyyBuFAQmusy08Yq4g9eyKl"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://visp.wisc.edu/academics/"
+      },
+      "id": "call_jmSEu7CPpPuoWboj1ccHGEBg"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://visp.wisc.edu/cost/"
+      },
+      "id": "call_uq5tpBsSoBs2ToAObSbTXw5M"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://visp.wisc.edu/apply/"
+      },
+      "id": "call_VXjkkGTwYDwviBXF2C4jkDLk"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://guide.wisc.edu/graduate/communication-arts/communication-arts-ma/"
+      },
+      "id": "call_QgIH5nBuopuxlOvmPGbrm1lk"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://guide.wisc.edu/graduate/journalism-mass-communication/"
+      },
+      "id": "call_6iHavIuDxXe0rVnWKsAKYP6C"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://iss.wisc.edu/students/current-students/f1-information/full-time-enrollment-requirements/"
+      },
+      "id": "call_nURwIGzen7ZtWUiOED9gvhDw"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://international.wisc.edu/cost-of-attendance/"
+      },
+      "id": "call_ugce4NQMmsaU9MyOIYwI67lX"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_rmyyBuFAQmusy08Yq4g9eyKl",
+      "content": "# Visiting International Student Program\n\nThe Visiting International Student Program (VISP) welcomes students interested in short-term academic study at the University of Wisconsin-Madison.\n\n### Enroll in Coursework at a World-Class University\n\nVISP students enroll for one or more academic terms in regular university courses taught by world-class faculty at one of the nation’s top public research universities. Courses taken and grades received in this program will appear on an official University of Wisconsin-Madison transcript.\n\n### Receive Unmatched Student Support\n\nVISP staff provide personalized advising as well as a variety of cultural and social events to help students feel welcome on our campus. From football games, ice cream socials, advising events, and more, the VISP staff is here to support our students from application through the end of their time in our program.\n\n### Join us for the Fall, Spring, or Summer Term\n\nRead more about our [Admission process](https://visp.wisc.edu/admissions/), [Academics](https://visp.wisc.edu/academics/) at UW-Madison, and [About Madison](https://visp.wisc.edu/about-madison/) to learn if the Visiting International Student Program is right for you.\n\nExperience UW-Madison student life and apply to VISP today.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_jmSEu7CPpPuoWboj1ccHGEBg",
+      "content": "# Academics\n\nThe Visiting International Student Program (VISP) welcomes non-degree international students for short term study on our campus. VISP participants are official UW-Madison students who take courses with our university’s distinguished, world-class faculty.\n\nOur academic programs are ranked among the best in the nation with more than 5,000 courses taught in over [160 Academic Departments and Programs across 13 Schools and Colleges](http://www.wisc.edu/academics/). From Engineering to Anthropology or Mathematics to International Business, you are sure to find courses of interest during your time at UW-Madison.\n\n[Class Search](http://public.enroll.wisc.edu/)\n----------------------------------------------\n\nClick here to learn more about the wide variety of academic offerings at UW-Madison.\n\nVISP Track Offerings\n--------------------\n\n![Professor Eric Wilcots leads classroom lecture in front of eager students.](https://cdn.wiscweb.wisc.edu/wp-content/uploads/sites/46/2017/01/Wilcots_Eric_classroom16_9794-900x600.jpg)\n\n### Traditional VISP Track\n\nOur traditional VISP track students select from courses offered across our university's offerings. Depending on course availability, students can choose to focus on one or two academic areas or try courses in several departments to create the right schedule for them.\n\n### [Thematic VISP Tracks](https://visp.wisc.edu/thematic/)\n\nWith the help of UW-Madison academic departments, VISP offers a limited number of Thematic VISP Programs for students interested in the specialized programming.\n\nClick here to learn more about the Thematic VISP Program Tracks currently available.\n\nAdditional Information about Academics at UW-Madison\n----------------------------------------------------\n\nThis is an accordion element with a series of buttons that open and close related content panels.\n\n> Impressive labs, outstanding professors, and students committed to their studies.\n>\n> VISP participant\n\n### Interested in learning more?\n\nFill out this form to learn more about our non-degree programs.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_uq5tpBsSoBs2ToAObSbTXw5M",
+      "content": "# Cost of Attendance\n\nStudents on F-1/J-1 Visas\n-------------------------\n\nStudents requesting F-1 or J-1 visas are required to submit proof of financial resources for visa documents to be prepared. The following estimates are based on:\n\n* **Tuition and Segregated fees** covering the minimum number of credits for [full-time enrollment](https://visp.wisc.edu/fulltime/) as required by the F-1/J-1 visa for your educational level (undergraduate, graduate, or dissertator).\n* **Estimated living expenses** for the program duration.\\* This amount includes mandatory [Student Health Insurance Plan (SHIP)](https://www.uhs.wisc.edu/ship/), housing with utilities, food, books & supplies, the $100 semesterly International Student Services (ISS) fee and incidentals.\n\n**\\*\\*NEW living expense calculations starting Fall 2026\\*\\***The office of International Student Services is now requiring that students show 6 months of living expenses for a semester program or 12 months of living expenses for an academic year– up from the 4 and 9 months that were historically used for calculations. **This is true even if the student does not intend to arrive early and stay for their full grace period after the end of the semester.**\n\n* [Undergraduate Level](#undergraduate-level)\n* [Graduate Level](#graduate-level)\n* [Dissertator Level](#dissertator-level)\n\n**Undergraduate level VISP**: You will not have completed your undergraduate degree by the time you begin VISP.\n\n**Estimated Cost of Attendance for Undergraduate Level Students\\*\\***\n\n| **2026-27 Academic Year** | Fall*or*Spring  (1 semester) | Academic or Calendar Year  (2 semesters) |\n| --- | --- | --- |\n| **Tuition & Segregated Fees**Based on minimum enrollment of 12 credits each term | $23,466 | $46,932 |\n| **Estimated Living Expenses for 6 or 12 months**  **Note:** This includes a 4 month semester/9 month academic year + 2-4 additional months to cover early arrival and late departure. | $14,980 | $29,960 |\n| **Total Estimated Cost** | **$ 38,446** | **$ 76,892** |\n\n| Summer 2026 | 8-Week Session |\n| --- | --- |\n| **Tuition & Segregated Fees**Based on a minimum enrollment of 6 credits in the 8-week term | $11,298 |\n| **Estimated Living Expenses** | $5,060 |\n| **Total Estimated Cost** | **$16,358** |\n\n**Graduate level VISP**: You have or will have completed your undergraduate degree by the start of your VISP program and/or are currently enrolled in graduate-level coursework abroad.\n\n**Estimated Cost of Attendance for Graduate Level Students\\*\\***\n\n| 2026-27 Academic Year | Fall*or*Spring  (1 semester) | Academic or Calendar Year  (2 semesters) |\n| --- | --- | --- |\n| **Tuition & Segregated Fees\\***Based on minimum enrollment of 8 credits each term | $15,659 | $31,318 |\n| **Estimated Living Expenses for 6 or 12 months**  **Note:** This includes a 4 month semester/9 month academic year + 2-4 additional months to cover early arrival and late departure. | $14,980 | $29,960 |\n| **Total Estimated Cost** | **$ 30,639** | **$ 61,278** |\n\n| Summer 2026 | 8-Week Session |\n| --- | --- |\n| **Tuition & Segregated Fees\\***Based on minimum enrollment of 4 credits in the 8-week term | $7,539 |\n| **Estimated Living Expenses** | $5,060 |\n| **Total Estimated Cost** | **$12,599** |\n\n**Dissertator level VISP**: You have completed all PhD coursework requirements and are working on your dissertation OR you have completed your PhD.\n\n**Estimated Cost of Attendance for Dissertator Level Students\\*\\***\n\n| 2026-27 Academic Year | Fall*or*Spring  (1 semester) | Academic or Calendar Year  (2 semesters) |\n| --- | --- | --- |\n| **Tuition & Segregated Fees\\***Based on minimum enrollment of 3 credits each term | $5,900 | $11,800 |\n| **Estimated Living Expenses for 6 or 12 months**  **Note:** This includes a 4 month semester/9 month academic year + 2-4 additional months to cover early arrival and late departure. | $14,980 | $29,960 |\n| **Total Estimated Cost** | **$ 20,880** | **$ 41,760** |\n\n| Summer 2026 | 8-Week Session |\n| --- | --- |\n| **Tuition & Segregated Fees\\***Based on minimum of 3 credits in the 8-week term | $5,660 |\n| **Estimated Living Expenses** | $5,060 |\n| **Total Estimated Cost** | **$10,720** |\n\n\\*VISP students pay international tuition, which is calculated on a per-credit basis. Tuition is capped between 12-18 credits during the fall and spring terms; 6-9 credits during the summer term. Graduate, dissertator level students, and all students in the 4-week summer term will see higher tuition costs if they enroll in more than the [minimum enrollment requirement](https://visp.wisc.edu/fulltime/). The per-credit tuition rate is available below for your reference, and is based on the international column of the “Undergraduate & Special” tuition rate from the [Bursar’s Office](https://bursar.wisc.edu/tuition-and-fees) website.\n\n\\*\\*In addition to the tuition and segregated fees listed above, students will be charged a one-time official document fee of $130 by the Registrar’s Office to cover future transcript requests and other documents.\n\nStudents Without Enrollment Requirements\n----------------------------------------\n\n**2026-27 Academic Year Per-Credit  \nTuition Chart**\n\n| Number of Credits Taken | Tuition & Segregated Fees |\n| --- | --- |\n| 1 | $1,997 |\n| 2 | $3,948 |\n| 3 | $5,900 |\n| 4 | $7,852 |\n| 5 | $9,804 |\n| 6 | $11,755 |\n| 7 | $13,707 |\n| 8 | $15,659 |\n| 9 | $17,611 |\n| 10 | $19,562 |\n| 11 | $21,514 |\n| 12-18 credits | $23,466 |\n\n**Online-Only Students & Alternate Visa Situations**  \nStudents not on UW-Madison-issued F-1/J-1 visas have more flexibility in their enrollment. This group includes those studying with us online-only located outside of the U.S. taking part in special programs, individuals who hold dual citizenship, and those with other less-common visa situations.\n\nStudents without an enrollment requirement can enroll in as little as one credit or as many as 18 credits each fall or spring semester. Summer maximum enrollments vary by length of program.\n\nAll VISP students including this group are assessed tuition & fees on a per-credit basis using the chart to the left. This is based on the international column of the “Undergraduate & Special” tuition rate from the [Bursar’s Office](https://bursar.wisc.edu/tuition-and-fees/tuition-rates) website.\n\nNote: depending on your visa status, you may only be charged the non-resident rate instead of the international student rate, which would result in a nominal cost savings. If your bill is slightly lower than the amount listed here, that is likely the reason.\n\n**Additional Charges**In addition to the amounts listed on the chart to the left, students will be charged a one-time official document fee of $130 by the Registrar’s Office their first term of enrollment to cover future transcript requests and other documents. Additional fees may include electronic textbook fees, late payment fees, returned check fees, etc.\n\nBringing Dependents\n-------------------\n\nIf you are bringing any dependents with you to Madison (spouse or children) you will need to show additional amounts of funding to cover their expected living expenses. They will also need to receive visa paperwork from UW-Madison in order to enter the U.S.\n\nFunding Options\n---------------\n\nUW-Madison is unable to offer any need or merit-based individual scholarship support for our visiting international students. International students are not eligible for U.S. financial aid.\n\nYou may be able to secure outside scholarship support by looking at these [potential funding resources](https://iss.wisc.edu/students/new-students/funding-scholarships/) or by applying for scholarships from your home country or institution.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_VXjkkGTwYDwviBXF2C4jkDLk",
+      "content": "# How to Apply\n\nApply at least three months before your intended start date at UW-Madison. We do not have a fixed deadline to participate but completion of the entire admission process and visa application may require many months to complete. There are a limited number of spots available each semester, so apply early for best consideration.\n\n**Step 1:** Select the [VISP Track (traditional or a thematic option)](https://visp.wisc.edu/academics/) for your academic goals.\n\n**Step 2:** Complete the application [Click here to apply](https://madison.sis.wisc.edu/acsss)\n\nApplication tips: Over 99% of VISP participants are issued an **‘F-1 student visa.’** If you aren’t sure which type to request, please contact [VISP@dcs.wisc.edu](mailto:VISP@dcs.wisc.edu) for assistance. Please answer **‘NO’** to the **Residency Evaluation questions**. VISP Students cannot be legal residents of the state of Wisconsin.\n\n**Step 3:** You can either upload your application materials while submitting your application, **OR** submit scanned copies to [VISP@dcs.wisc.edu](mailto:VISP@dcs.wisc.edu) afterwards. However, please only email items that you were not able to upload in your application to avoid duplication.\n\n* Official **university transcripts** (undergraduate level students only)\n* **English proficiency exam scores** (TOEFL/TOEIC/IELTS/etc.), if required as outlined on our [VISP Eligibility page](https://visp.wisc.edu/eligibility/). Please do not have computerized scores sent to UW-Madison.\n* **Passport** information page\n* **Financial support documents** (bank statements and/or scholarship letters) showing at least the [minimum cost of attendance](https://visp.wisc.edu/cost/) if requesting an F-1/J-1 visa from our program. If the bank statement is not in your name, please provide a signed affidavit of financial support from the account holder. See a [sample bank statement](https://visp.wisc.edu/wp-content/uploads/sites/46/2017/01/Sample_bank_document.jpg) and [required affidavit of financial support](https://visp.wisc.edu/wp-content/uploads/sites/46/2017/01/Affidavit-of-Financial-Support_UW-Madison_2019.pdf) for assistance with this requirement. Note: The financial support documents can be sent after your admission.\n\n**Step 4:**VISP coordinators will be in touch with you within a few days after receiving your documents.\n\n**Questions?** Please contact the [VISP Coordinators](mailto:VISP@dcs.wisc.edu).\n\nAcademic Integrity in Applying\n------------------------------\n\nAs an applicant to VISP, by submitting your application, you certify that your application is complete and accurate. We hold you accountable to ensure the authenticity and honesty of your application, written statements, and additional materials subsequently submitted. Written statements and other application information submitted should come from the applicant directly as opposed being written or generated by a third party or tool (ChatGPT or other AI tool).",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_QgIH5nBuopuxlOvmPGbrm1lk",
+      "content": "# Communication Arts, MA < University of Wisconsin-Madison\n\n![In the foreground an instructor talks with two students, all looking at a computer, as a similar conversation happens in the background ](/gallery/grad-communicationarts-ma.jpg)\n\n*(Program note: Though terminal MA degrees may occasionally be awarded, the programs are designed with successful completion of the PhD as the goal.)*\n\nThe Department of Communication Arts at the University of Wisconsin–Madison has long been one of the world's leading centers for study and research in communication. It was the first department in the United States to award a PhD degree in the field, and its graduates serve on the faculties of leading universities, in research institutions, and in public and private agencies throughout this country and abroad.\n\nThe graduate programs in Communication Arts are designed to educate research scholars. Through intensive coursework within the department and in other departments, and through close professional association with appropriate faculty, graduate students in communication arts gain proficiency and sophistication in their chosen areas of study. Their attainment of doctoral degrees signifies their readiness to work as independent scholars in their areas and to make original contributions to human knowledge.\n\nAreas of Study\n--------------\n\nCommunication Arts offers four distinct areas of graduate study:\n\n### Communication Science1\n\nCommunication science is concerned with how people interact with one another in various means, modes, and contexts. It involves social scientific exploration utilizing both quantitative and qualitative methods. Reflecting the multi-faceted nature of the subject matter and a cross-disciplinary orientation of the field, students in communication science typically complete course work both in the department and in other social science fields. Graduate study in communication science is flexible and tailored to the individual. With a low faculty-to-student ratio and close collaboration with related academic units on campus, students have high access to faculty and with it, opportunities to work closely with faculty on research and broaden their horizon. Students are expected to develop fluency in at least two of the following areas:\n\n* *Social influence* that focuses interpersonal interactions, both online and offline, as well as group and organizational dynamics. It examines information exchange, persuasion, and other influence processes in various social contexts.\n* *Computer-mediated communication* that examines individuals' uses of the media with digital, interactive, and networking features, as well as the effects of such usage on self, relationships, group dynamics, and other social processes.\n* *Human development and communication* that addresses communication in relation to life cycle, focusing in particular on life cycle patterns in the means and modes of communication, as well as the effects of communicative engagement and media usage of youths and aging.\n* *Political communication* that focuses on patterns and effects of communication, both face-to-face and mediated, on the democratic process. In particular it concerns how communication shapes the public sphere, how public deliberation over political issues takes place, and how the media may be related to civic and political engagement.\n\n### Film1\n\nThe study of film concentrates primarily on motion picture history, theory, and criticism, approached through intensive critical analysis of individual films; research into the primary documents of filmmakers and the film industry; and the construction of theoretical models of film forms and styles, national cinemas, film genres, and the economics of the film industry. The program believes in the connection between film studies and film practice. Courses in film production enhance our understanding of motion picture history, theory, and criticism by revealing the practical decisions filmmakers confront. The program is not designed for students whose sole interest is in film production.\n\n### Media and Cultural Studies1\n\nThe media and cultural studies (MCS) program emphasizes the study of media in their historical, economic, social, and political context. MCS courses examine the cultural forms created and disseminated by media industries and the ways in which they resonate in everyday life, on the individual, national, and global level. Focusing primarily on sound and screen media—television, new media, film, popular music, radio, video games—but reaching out across boundaries, MCS encourages interdisciplinary and transmedia research. MCS courses draw on a broad range of cultural theories spanning a spectrum of concerns all centrally relevant to the functioning of sound and screen media in a diverse and globalizing cultural environment.\n\n### Rhetoric, Politics, and Culture1\n\nWhether speaking from the podium or chatting on Facebook, people use discourse to craft identities, enact social change, and form a shared sense of community. Seeking to better understand this social force, the study of discourse explores significant themes, trajectories, and transformations in politics and society while considering particular individuals and groups, cultures, eras, genres, and topics. Courses in this area explore issues of power, digital media, citizenship, gender, sexuality, race, ethnicity, globalization, religion, inclusion and exclusion, social status, and marginalization.\n\nGraduate work in rhetoric focuses on three interrelated areas: discourse, theory, and method. All three areas of study in rhetoric, politics, and culture are united by a common commitment to understanding the role of discourse in society as we act together to engage in culture and politics. Students are encouraged to investigate a wide range of discursive phenomena as they develop expertise that will empower them to conduct significant research and to take an active role in scholarly communities.\n\n1\n:   These tracks are internal to the program and represent different pathways a student can follow to earn this degree. Applicants choose their area of study when applying to the program; however, the specific area of study will not appear on the transcript.\n\nAdmissions\n----------\n\nThis master’s degree is awarded for completed coursework leading to the PhD. Students may not apply directly to the master’s program and should instead see the [admissions information for the PhD](https://guide.wisc.edu/graduate/communication-arts/communication-arts-phd/#text \"https://guide.wisc.edu/graduate/communication-arts/communication-arts-phd/#text\").\n\nFunding\n-------\n\n### Graduate School Resources\n\nThe Bursar’s Office provides information about [tuition and fees](https://bursar.wisc.edu/tuition-and-fees) associated with being a graduate student. Resources to help you afford graduate study might include assistantships, fellowships, traineeships, and financial aid. [Further funding information](https://grad.wisc.edu/funding/) is available from the Graduate School. Be sure to check with your program for individual policies and restrictions related to funding.\n\n*(Program note: Though terminal MA degrees may occasionally be awarded, the programs are designed with successful completion of the PhD as the goal.)*\n\nBeginning graduate students in Communication Arts receive 10 consecutive semesters of support. Funding comes in the form of teaching assistantships (TA), project assistantships (PA), lectureships (LSA), and fellowships. The funding package for graduate students includes full tuition remission, biweekly stipend, and benefits eligibility, including health insurance. To maintain their funding guarantee, students must remain in good standing (see the [Satisfactory Academic Progress section](https://commarts.wisc.edu/graduate/graduate-handbook/satisfactory-academic-progress/) of the Communication Arts Graduate Handbook section).\n\n### Graduate School–Supported Fellowships\n\nA limited number of fellowships are available funded through the graduate school. All students are considered for fellowships at the time of application and during the course of their studies; no separate application is necessary. These fellowships may be for terms from one semester to two years and include tuition remission and benefits including health insurance. Additional awards for dissertators (e.g. The Dana-Allen Award) are available through a competitive application process.\n\n### Department Awards\n\nThe Department of Communication Arts is pleased to be able to grant yearly monetary awards to graduate students based on scholastic performance. Nominations for the awards are generated by the faculty in the four areas of graduate study. To be eligible for consideration, graduate students must be continuing in the program, must be making satisfactory progress toward their degree, and must not have any incompletes on their transcript. The amount and number of awards vary from year to year depending on funds available. For full details on department awards, please see the [department's funding and financial information page](https://commarts.wisc.edu/graduate/graduate-handbook/funding-finance-resource-information/).\n\n### Funding for Conference Travel and Research\n\nThe Department of Communication Arts provides a once-per-academic-year travel stipend for those students who will be presenting papers at academic conferences. The Department also provides graduate students access to Marilynn R. Baxter Research Awards to carry out research for their dissertation projects or other publications in progress. More information on both of these funding sources can be found on Department's [professional development page in the Handbook](https://commarts.wisc.edu/graduate/graduate-handbook/professional-development-and-career-planning/).\n\n### Additional Early Dissertation Research Awards\n\nIn addition to the research funding above, the Department of Communication Arts also offers targeted funding during the early stages of dissertation planning and writing. This includes:\n\n* *Elliott Dissertation Scholarships:* Given to every student who successfully defends their dissertation proposal within a year of passing their preliminary exams.\n* *Betty and Vance Kepley Research Awards:* Awarded to one student annually, through a competitive application process, who faces significant research costs for their dissertation project and who proposes transformative ways to conduct research that otherwise would not have been possible.\n\nFor full details on department funding, please see the [department's funding and financial information page](https://commarts.wisc.edu/graduate/graduate-handbook/funding-finance-resource-information/).\n\nOn This Page\n\n* [Minimum Graduate School Requirements](#requirementstext)\n* [Major Requirements](#requirementstext)\n\nMinimum Graduate School Requirements\n------------------------------------\n\nReview the Graduate School minimum [degree requirements](/graduate/#requirementstext) and [policies](/graduate/#policiestext), in addition to the program requirements listed below.\n\nMajor Requirements\n------------------\n\n### Mode of Instruction\n\nMode of Instruction\n\n | Face to Face | Evening/Weekend | Online | Hybrid | Accelerated |\n| --- | --- | --- | --- | --- |\n| Yes | No | No | No | No |\n\n#### Mode of Instruction Definitions\n\n**Accelerated:** Accelerated programs are offered at a fast pace that condenses the time to completion. Students typically take enough credits aimed at completing the program in a year or two.\n\n**Evening/Weekend:** ​Courses meet on the UW–Madison campus only in evenings and/or on weekends to accommodate typical business schedules.  Students have the advantages of face-to-face courses with the flexibility to keep work and other life commitments.\n\n**Face-to-Face:** Courses typically meet during weekdays on the UW-Madison Campus.\n\n**Hybrid:** These programs combine face-to-face and online learning formats.  Contact the program for more specific",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_6iHavIuDxXe0rVnWKsAKYP6C",
+      "content": "Error: Insufficient readable content (221 characters) from https://guide.wisc.edu/graduate/journalism-mass-communication/",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_nURwIGzen7ZtWUiOED9gvhDw",
+      "content": "Error fetching https://iss.wisc.edu/students/current-students/f1-information/full-time-enrollment-requirements/: HTTPStatusError: Client error '404 Not Found' for url 'https://iss.wisc.edu/students/current-students/f1-information/full-time-enrollment-requirements/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_ugce4NQMmsaU9MyOIYwI67lX",
+      "content": "Error fetching https://international.wisc.edu/cost-of-attendance/: HTTPStatusError: Client error '404 Not Found' for url 'https://international.wisc.edu/cost-of-attendance/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    }
+  ],
+  "final_text": "# Exchange/Visiting-Study Decision Report\n\n**Planning date:** 12 September 2026  \n**Working assumption:** “Coming semester” means **January–May 2027**. If you mean a later term, use the same ranking but move the timeline forward. Because your home university, nationality, budget, and exchange agreements are unspecified, the recommendations below preserve those decision branches rather than assuming them.\n\n## Bottom line\n\nFor a graduate student in media/communication, the safest order is:\n\n1. **A tuition-waived formal exchange with graduate-level communication access**—preferably **NTU Singapore** or an **Erasmus+/European partner**.\n2. **Waseda University exchange** if its relevant graduate school confirms English-taught courses, sufficient seats, and any required supervisor approval.\n3. **A US formal partner exchange**, if your university has one and graduate communication courses are open.\n4. **University of Wisconsin–Madison VISP** as the strongest independent, academically legitimate fallback—but only if you can absorb a substantially higher cost.\n5. **A research-only visiting arrangement** only if your home degree can award research, independent-study, or thesis credits; otherwise it is academically valuable but creates unnecessary credit-transfer risk.\n\nThe decisive first filter is **not general institutional reputation**. It is whether your home university will approve a specific semester course plan in writing and whether the host guarantees access at the correct academic level.\n\n---\n\n## 1. Prioritized shortlist\n\n### Priority 1 — NTU Singapore GEM Trailblazer Semester Exchange\n\n**Best for:** English-medium study, Asia-focused media research, relatively straightforward academic and immigration administration, and a one-semester schedule.\n\nNTU’s official semester-exchange program accepts undergraduate and postgraduate students from partner universities for either coursework or research, with credit intended to count toward the home degree. Applicants must be nominated by a partner university, be full-time students, normally have completed at least two semesters, satisfy a stated GPA threshold, and be proficient in English. For **Spring 2027**, NTU currently lists **1–15 September 2026 for nomination and 1–30 September for application**, making this an urgent option if your home institution can still nominate you. Applicants identify at least ten possible courses, pre-approved as relevant to academic progression, because final enrollment is not assured in every requested class. [citation:NTU GEM Trailblazer Semester Exchange](https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes)\n\nFor media/communication, seek written confirmation that you may take postgraduate courses through the **Wee Kim Wee School of Communication and Information**, rather than assuming that general NTU admission guarantees school-level access.\n\n**Teaching and curriculum**\n\n- Predominantly English-medium.\n- Coursework tends to combine seminars, lectures, group projects, applied assignments, presentations, and continuous assessment.\n- A research-exchange route may be more valuable for thesis development, but should be selected only if your home university can convert supervised research into degree credit.\n- Singapore offers unusually strong access to research questions involving digital platforms, strategic communication, journalism, media governance, multilingual audiences, and Southeast Asian media systems.\n\n**Credit-transfer position**\n\nStrong, provided you are nominated under the formal exchange agreement. Obtain approval for:\n\n1. ten proposed courses,\n2. at least four or five acceptable substitutes,\n3. postgraduate-level status,\n4. the minimum and maximum academic load, and\n5. the conversion from NTU academic units to your home credits.\n\nDo not rely on course titles alone; submit syllabi, contact hours, assessment methods, and learning outcomes.\n\n**Visa and language**\n\nFull-time foreign students at Singapore’s recognized universities normally require a **Student’s Pass**. Singapore’s Immigration and Checkpoints Authority advises applying online between two and three months before the course begins. It lists a S$45 processing fee and a normal processing period of approximately one week, or two weeks if an entry visa is also required, although individual applications can take longer. [citation:Singapore ICA—Student’s Pass for Institutes of Higher Learning](https://www.ica.gov.sg/reside/STP/apply/ihl)\n\nEnglish is the academic and administrative language. Everyday multilingualism is a benefit for communication research but can require adjustment to local accents, discourse conventions, and classroom participation styles.\n\n**Funding and cost**\n\nNTU explicitly says it does **not normally provide scholarships or financial aid to exchange students**. A DUO-Singapore award of up to €4,000 exists for certain paired Europe–Singapore exchanges, but it is by invitation and should not be treated as dependable funding. [citation:NTU GEM Trailblazer Semester Exchange](https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes)\n\nHousing is a material risk: graduate on-campus accommodation is limited, and an application does not guarantee a place. [citation:NTU Graduate Housing](https://www.ntu.edu.sg/life-at-ntu/accommodation/graduate-housing)\n\n**Main weaknesses**\n\n- Requires an active institutional agreement and immediate nomination.\n- Housing can be scarce.\n- Course registration is not guaranteed.\n- Singapore is not a low-cost destination, especially if you must rent privately.\n- Highly structured regulation and campus processes may feel less flexible than a research-led European placement.\n\n**Recommendation:** Rank first if nomination remains possible and your home department pre-approves enough postgraduate communication courses.\n\n---\n\n### Priority 2 — European partner exchange, preferably through Erasmus+\n\n**Best for:** Low tuition exposure, predictable credit structure, comparative media research, and easy construction of a full-semester academic package.\n\nEurope has the strongest general framework for transparent credit recognition. Under the European Credit Transfer and Accumulation System, **60 ECTS represents a full academic year**, so a normal semester is approximately **30 ECTS**. ECTS records workload and learning outcomes, and course catalogues, learning agreements, and transcripts are specifically designed to support mobility and recognition. [citation:European Credit Transfer and Accumulation System](https://education.ec.europa.eu/education-levels/higher-education/inclusive-and-connected-higher-education/european-credit-transfer-and-accumulation-system)\n\nIf your home institution participates in Erasmus+, a study period may run from two to twelve months. A pre-departure learning agreement specifies recognition; the host supplies a transcript; and the sending institution is expected to count the agreed credits toward the degree. Erasmus students are normally exempt from host tuition, registration, examination, laboratory, and library fees, although insurance or student-union charges may remain. Grants contribute toward travel and living costs but vary by destination, distance, and available funding. [citation:Erasmus+ Studying Abroad](https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/studying-abroad)\n\n#### Recommended European profile\n\nPrioritize a partner institution offering a coherent English-taught graduate package in areas such as:\n\n- communication science and methods,\n- political communication,\n- journalism and platform governance,\n- digital cultures,\n- media industries,\n- audience studies,\n- strategic communication,\n- datafication and algorithmic media,\n- visual or film studies.\n\n**University of Amsterdam** is a plausible example because of Amsterdam’s communication-science and media-studies ecosystem, but it should only enter your final list if the relevant school confirms that exchange students at your level can enroll in the necessary courses.\n\n**Teaching and curriculum**\n\n- Usually seminar- and reading-intensive at the master’s level.\n- Greater emphasis on independent research, theory, critical writing, and student-led discussion than many lecture-centered systems.\n- Assessment may depend on one or two major papers or projects rather than frequent smaller assignments.\n- Excellent environment for comparative regulation, public-service media, political communication, digital platforms, European media policy, cultural studies, and qualitative or mixed-method research.\n\n**Credit-transfer position**\n\nPotentially the strongest of all regions because ECTS makes workload transparent. Nevertheless, **30 ECTS should not be converted mechanically into a fixed number of credits in another national system**; your registrar must approve the local conversion.\n\nUse an Erasmus learning agreement or equivalent departmental contract naming:\n\n- the host modules,\n- substitutes,\n- ECTS values,\n- home-course equivalents,\n- whether grades or only pass/fail status transfer,\n- treatment of failed or changed courses.\n\n**Costs**\n\nCosts differ sharply by city. Amsterdam officially advises students to expect approximately **€975–€1,500 per month**, excluding tuition, with accommodation alone estimated at €650–€1,200. The university also warns that housing and post-arrival funding are difficult to secure. [citation:University of Amsterdam Living Expenses](https://www.uva.nl/en/education/fees-and-funding/living-expenses.html)\n\nA smaller Dutch, Belgian, German, Austrian, or Nordic partner city may offer essentially the same ECTS advantages at lower cost. London, Amsterdam, Paris, Dublin, and Copenhagen should not be treated as representative of Europe generally.\n\n**Visa and language**\n\nVisa rules depend on both destination and nationality:\n\n- In the Netherlands, the educational institution—not the student acting alone—normally applies for the qualifying student residence permit. [citation:Netherlands IND Student Residence Permit](https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education)\n- The UK is outside Erasmus’s standard EU mobility framework. A person may study or conduct relevant short research for up to six months under the Standard Visitor route if its conditions are met, but nationality-specific visa requirements still apply. [citation:UK Standard Visitor—Study and Research](https://www.gov.uk/standard-visitor/visit-to-study)\n- English-taught courses do not eliminate everyday-language issues involving housing contracts, health care, local administration, or fieldwork participants.\n\n**Main weaknesses**\n\n- “Europe” is not one system for visas, costs, calendars, or teaching.\n- English-taught graduate exchange seats may be limited.\n- Housing shortages can outweigh tuition savings.\n- Some courses run in compact blocks rather than across the full semester, complicating home attendance or examination deadlines.\n\n**Recommendation:** Rank first instead of NTU if you have Erasmus eligibility, a suitable partner, and a meaningful grant or tuition waiver. Otherwise rank second.\n\n---\n\n### Priority 3 — Waseda University, Tokyo, university-wide exchange\n\n**Best for:** East Asian media research, Japanese communication environments, intercultural fieldwork, and access to Tokyo’s media and creative-industry networks.\n\nWaseda operates formal university-wide exchange routes with separate requirements for English-based and Japanese-based graduate programs. Requirements vary by graduate school and may include GPA and language thresholds. Some graduate schools require advance permission from a prospective research supervisor. Waseda also warns that course lists may change, capacity limitations can prevent enrollment, and it cannot always guarantee enough courses to satisfy the home university’s required credit load. [citation:Waseda University Exchange Application](https://www.waseda.jp/inst/cie/en/exchange/application)\n\n**Teaching and curriculum**\n\nTwo distinct models should not be conflated:\n\n1. **English-based coursework:** More accessible without advanced Japanese and appropriate for international communication, cultural studies, global media, and interdisciplinary work.\n2. **Japanese-based coursework or research:** Much stronger immersion and local-network potential, but meaningful participation usually requires advanced academic Japanese.\n\nGraduate research may involve a close relationship with one supervisor. That is valuable for thesis development but less useful if you need a broad package of transferable taught credits.\n\n**Credit-transfer position**\n\nModerate rather than automatically strong. Before accepting:\n\n- secure an indicative course list for the exact semester,\n- confirm which courses are graduate level,\n- check whether exchange students can enroll,\n- identify enough backup courses,\n- obtain home approval for Waseda’s credit/contact-hour structure,\n- establish what happens if capacity restrictions block the original choices.\n\nA research placement should be documented through a supervision plan, expected output, hours, assessment method, and corresponding home research credits.\n\n**Visa and language**\n\nJapan’s student-visa process normally uses a **Certificate of Eligibility**, often arranged through a proxy or host institution. The Ministry of Foreign Affairs notes that applying without a Certificate of Eligibility can require substantially more documentation and may take several months. [citation:Japan MOFA—Student Visa](https://www.mofa.go.jp/j_info/visit/visa/long/visa6.html)\n\nEnglish-based admission does not mean Japanese is unnecessary. Basic Japanese materially improves housing, health care, administration, daily relationships, and fieldwork. If your intended research involves Japanese news, social media, audiences, or organizations, language ability becomes an academic—not merely lifestyle—requirement.\n\n**Funding and cost**\n\nTreat scholarships such as institutionally nominated or external Japan-mobility awards as uncertain until Waseda and your home office confirm current eligibility. Do not construct the budget around an anticipated award.\n\nTokyo can be manageable with subsidized dormitory housing but significantly more expensive in private short-term accommodation. Include move-in fees, bedding, commuting, insurance, residence registration, and initial cash needs rather than comparing rent alone.\n\n**Main weaknesses**\n\n- Course availability and sufficient credit load are explicitly not guaranteed.\n- Academic calendars may not align cleanly with your home semester.\n- Research-focused admission may require finding a supervisor before application.\n- Language limitations can reduce the depth of local networking and fieldwork.\n\n**Recommendation:** Rank above Europe or Singapore only if Japan/East Asia is directly relevant to your thesis or career and course/supervisor access is confirmed.\n\n---\n\n### Priority 4 — United States: formal exchange first; UW–Madison VISP as the independent fallback\n\n**Best for:** Research-intensive communication training, close faculty engagement, methodological development, and access to large scholarly networks.\n\nThe United States offers strong graduate communication programs, but it is usually the most expensive region if you are not on a tuition-waived bilateral exchange. Therefore, first ask whether your university has a formal graduate exchange with a US institution. If not, the **University of Wisconsin–Madison Visiting International Student Program (VISP)** is a credible independent option.\n\nVISP admits international non-degree students for one or more terms. Participants enroll in regular university courses and receive an official UW–Madison transcript. [citation:UW–Madison Visiting International Student Program](https://visp.wisc.edu/)\n\nUW–Madison’s Communication Arts environment covers communication science, computer-mediated communication, political communication, film, media and cultural studies, and rhetoric, politics, and culture. Its graduate model emphasizes intensive research training, interdisciplinary coursework, and close faculty engagement. [citation:UW–Madison Communication Arts MA](https://guide.wisc.edu/graduate/communication-arts/communication-arts-ma/)\n\n**Teaching and curriculum**\n\n- Research seminars with heavy weekly reading.\n- Frequent participation, presentations, papers, and methodological assignments.\n- Strong distinction between graduate and undergraduate courses.\n- Excellent for political communication, media effects, computer-mediated communication, rhetoric, film and media history, cultural studies, and research methods.\n- The VISP traditional track permits selection from broad university offerings, subject to availability. [citation:UW–Madison VISP Academics](https://visp.wisc.edu/academics/)\n\n**Credit-transfer position**\n\nModerate to strong if planned properly. VISP produces an official transcript, but that alone does not guarantee recognition at home. Obtain approval for each course and confirm that non-degree enrollment does not alter graduate-level status.\n\nUS credits measure contact and academic work differently from ECTS. Your home institution should determine equivalencies from syllabi and workload rather than converting credits solely by number.\n\n**Costs and aid**\n\nThis is the major drawback. For 2026–27, UW estimates that a graduate-level VISP student requiring a visa must demonstrate approximately:\n\n- **US$15,659** in tuition and fees for the minimum eight-credit semester load;\n- **US$14,980** in estimated living expenses under its six-month financial calculation;\n- **US$30,639 total**, before a one-time document fee and possible additional charges.\n\nUW states that it does not offer individual need- or merit-based scholarships to VISP students and that international visitors are not eligible for US federal financial aid. [citation:UW–Madison VISP Cost of Attendance](https://visp.wisc.edu/cost/)\n\nThus, a tuition-waived US partner exchange may be competitive with Singapore or Europe; self-funded VISP generally is not.\n\n**Visa and language**\n\nVISP reports that more than 99% of its participants receive an **F-1 student visa** and asks applicants requesting visa documents to provide proof of the required financial resources. It advises applying at least three months before the term, noting that admission and visa processing may take several months. [citation:UW–Madison VISP Application](https://visp.wisc.edu/apply/)\n\nA J-1 exchange-student route may apply under certain institutional or funding arrangements. Official US guidance requires qualifying non-degree college/university participants to maintain a full course of study; applicable J-1 cases are usually based on institutional agreements or qualifying external support. [citation:US Exchange Visitor—College and University Student](https://j1visa.state.gov/programs/college-and-university-student)\n\nAcademic English requirements are normally stricter than conversational proficiency because seminars require rapid reading, discussion, and analytical writing.\n\n**Main weaknesses**\n\n- Highest likely total cost without a bilateral tuition waiver.\n- Health insurance and housing add substantial financial and administrative risk.\n- Visa proof-of-funds requirements can be demanding.\n- Course permission and graduate prerequisites may restrict the ideal schedule.\n\n**Recommendation:** Choose a US option when it offers a distinctive advisor, method, archive, laboratory, or professional network—not merely because it is in the United States.\n\n---\n\n## 2. Comparative decision matrix\n\nScores are relative planning judgments, not prestige rankings: **5 = generally favorable**, **1 = generally difficult**. “Conditional” means the score can change substantially with your home agreement or nationality.\n\n| Dimension | Europe/Erasmus partner | NTU Singapore exchange | Waseda exchange | US partner exchange | UW VISP self-funded |\n|---|---:|---:|---:|---:|---:|\n| Academic legitimacy | 5 | 5 | 5 | 5 | 5 |\n| One-semester fit | 5 | 5 | 4 | 4 | 5 |\n| Credit transparency | 5 | 4 | 3 | 4 | 3 |\n| English-only feasibility | 4 | 5 | 3–4 | 5 | 5 |\n| Communication/media relevance | 4–5 | 5 | 4–5 | 5 | 5 |\n| Tuition affordability | 5 with Erasmus | 4 with exchange waiver | 4 with exchange waiver | 4 with waiver | 1 |\n| Living-cost predictability | 3 | 3 | 3 | 2–3 | 3 |\n| Scholarship availability | 4 if Erasmus-eligible | 2 | 2–3 | 2–3 | 1 |\n| Research-network value | 4–5 | 5 | 5 with supervisor | 5 | 5 |\n| Low language-friction adaptation | 3–4 | 5 | 2–4 | 5 | 5 |\n| Cross-cultural contrast | 4–5 | 4–5 | 5 | 4 | 4 |\n| Current Spring 2027 feasibility | Institution-specific | **Urgent but explicit** | Verify immediately | Verify immediately | Apply promptly |\n\n---\n\n## 3. Trade-off-sensitive ranking\n\nBecause spending, cultural immersion, travel, and prestige preferences were not provided, there is no single honest ranking for every student.\n\n### If minimizing financial and credit risk is primary\n\n1. Erasmus+/European tuition-waived partner with a learning agreement  \n2. Tuition-waived NTU exchange  \n3. Tuition-waived Waseda exchange  \n4. Tuition-waived US bilateral exchange  \n5. Self-funded UW VISP\n\n### If English-medium practicality is primary\n\n1. NTU  \n2. US exchange/VISP  \n3. English-taught European partner  \n4. Waseda English-based program  \n5. Waseda Japanese-based program without advanced Japanese\n\n### If thesis or academic-research value is primary\n\n1. The institution with the best confirmed supervisor and research group, regardless of region  \n2. UW–Madison for communication theory/methods, if affordable  \n3. NTU for digital communication, journalism, strategic communication, and Southeast Asian media  \n4. Waseda for Japan/East Asia, intercultural communication, or local media research  \n5. A strong European communication-science or media-studies department with an appropriate methods seminar\n\n### If cross-cultural communication development is primary\n\n- **Waseda** offers the greatest likely linguistic and high-/low-context communication adjustment, but also the highest risk that language limitations restrict academic integration.\n- **Singapore** offers multilingual, multiethnic, and regional exposure while retaining English-medium academic administration.\n- **Europe** offers multinational student cohorts and strong opportunities for comparative media-policy work, with adaptation varying dramatically by city.\n- **United States** offers extensive classroom participation and professional networking, but English-medium ease may produce less linguistic challenge.\n\nCross-cultural value should be assessed by the interactions built into the program—mixed project teams, fieldwork, local-language learning, laboratories, student media, and research groups—not by tourism opportunities.\n\n---\n\n## 4. Non-negotiable academic safeguards\n\nDo not commit money until you have a document signed or confirmed by your program director, graduate coordinator, or registrar covering:\n\n1. **Student status:** formal exchange, non-degree visiting student, or visiting researcher.\n2. **Level:** courses must be recognized as graduate-level or approved exceptions.\n3. **Full-time load:** host immigration load and home credit load can differ.\n4. **Course equivalents:** required/core, elective, research, thesis, or surplus credit.\n5. **Minimum passing grade:** verify whether a host “pass” satisfies home requirements.\n6. **Grade treatment:** transferred letter grades, converted grades, or pass/fail only.\n7. **Changes after arrival:** name the person authorized to approve replacements quickly.\n8. **Transcript timing:** late transcripts can delay graduation or scholarship renewal.\n9. **Research-credit rules:** specify supervision, deliverables, hours, and assessment.\n10. **Graduation residency rules:** some universities require a final semester or minimum number of credits to be completed at home.\n\nThe safest plan is a **three-layer course portfolio**:\n\n- **Primary schedule:** a full approved load.\n- **Backup schedule:** at least 30–50% more approved courses than needed.\n- **Emergency schedule:** one broadly transferable methods, theory, or independent-study option.\n\n---\n\n## 5. Practical adaptation comparison\n\n### United States\n\nExpect frequent verbal participation, office-hour use, explicit rubrics, continuous assessment, and direct communication with faculty. Prepare for health-insurance complexity, tipping, credit-card dependence, large geographic distances, and housing contracts that may not align with a single semester.\n\n### Europe\n\nExpect greater academic independence and sometimes fewer but higher-stakes assessments. Confirm whether exams occur after the teaching period. Housing shortages may be more serious than visa administration. Learn basic local-language phrases even in English-taught programs, particularly for housing, government registration, and health care.\n\n### Japan\n\nExpect detailed administrative processes, indirect communication in some settings, greater importance of group norms, and possible separation between international and local student networks. Join a research seminar, student organization, language partner scheme, or collaborative project deliberately; English-only coursework alone may not produce deep integration.\n\n### Singapore\n\nExpect efficient but rule-focused administration, a fast academic pace, multilingual social environments, hot/humid weather, and potentially competitive housing. English makes daily adaptation comparatively easy, but local discourse conventions and culturally diverse group dynamics still provide substantial intercultural learning.\n\n---\n\n## 6. Preparation plan\n\n### Within 48 hours\n\n1. Ask your international office for the current list of **graduate-level** partners in communication, media, journalism, information, cultural studies, or adjacent social sciences.\n2. Ask specifically whether an **NTU Spring 2027 nomination can still be submitted by 15 September**.\n3. Obtain your home program’s exchange-credit policy, graduation residency rule, minimum enrollment, and thesis/research-credit rules.\n4. Create two budget ceilings:\n   - maximum total cost with tuition waiver;\n   - maximum total cost if tuition is charged.\n5. Eliminate any host that cannot issue an official transcript or formal research evaluation.\n\n### During the next seven days\n\nBuild a spreadsheet for four to six candidates with:\n\n- host and school/department;\n- exchange agreement status;\n- nomination and application deadlines;\n- semester dates, including examinations;\n- five primary and five backup courses;\n- language of each course;\n- graduate-level confirmation;\n- credit value and proposed home equivalent;\n- tuition status;\n- housing estimate and availability;\n- insurance;\n- visa type;\n- scholarship deadlines;\n- faculty/research-group fit.\n\nContact potential supervisors only where the program requires or encourages it. A concise message should name your current research question, method, expected semester output, and why that faculty member is specifically relevant.\n\n### By late September 2026\n\n- Submit NTU materials if nominated.\n- Request written preliminary credit approval.\n- Order official transcripts and language-test reports.\n- Renew your passport if it will not remain valid for the required post-program period.\n- Prepare proof of funds.\n- Seek two academic references if required.\n- Apply concurrently to one formal-exchange route and one legitimate fallback where rules permit; do not rely on a single capacity-constrained program.\n\n### October–November 2026\n\n- Finalize admission and scholarship applications.\n- Compare housing contracts for exact dates, deposits, cancellation terms, utilities, furnishings, and commuting time.\n- Confirm health-insurance coverage and exclusions.\n- Build a realistic semester budget with a 10–15% contingency.\n- Reconfirm that examination dates do not conflict with your home semester or thesis milestones.\n\n### Immediately after admission\n\n- Begin the destination-specific visa or Student’s Pass process.\n- Obtain final course approval, including backups.\n- Reserve housing only after checking refund conditions.\n- Register with disability, health, or academic-support services where relevant.\n- Arrange access to necessary archives, software, laboratories, recording equipment, or research participants.\n- Agree with your home advisor on a communication schedule and semester deliverable.\n\n### Four weeks before departure\n\n- Complete a short academic-language plan: seminar discussion, disciplinary writing, presentation conventions, and essential local vocabulary.\n- Review research ethics requirements. Do not assume home ethics approval permits overseas interviews or data collection.\n- Prepare electronic and paper copies of admission, insurance, finances, accommodation, prescriptions, and academic approvals.\n- Contact the host’s communication graduate association, relevant research lab, student media, or international-student mentor program.\n\n### During the first two weeks abroad\n\n- Verify actual enrollment and immediately obtain approval for substitutions.\n- Save syllabi, assessment briefs, reading lists, attendance records, and submitted work.\n- Meet at least one relevant faculty member or research group.\n- Join one academically relevant local network and one mixed-cultural student activity.\n- Avoid dropping or changing courses before both institutions approve the effect in writing.\n\n### Before returning\n\n- Confirm transcript delivery.\n- Obtain a supervisor letter for research work.\n- Archive syllabi and assessed work for credit evaluation.\n- Record research contacts with consent and professional context.\n- Produce a brief reflection linking intercultural learning to communication theory or professional practice; this often strengthens later fellowship, thesis, and employment applications.\n\n---\n\n## Final recommendation\n\nProceed with the following **parallel shortlist**:\n\n1. **NTU GEM Trailblazer, Spring 2027** — act immediately because the published nomination window closes on 15 September 2026.\n2. **Your strongest Erasmus+/ECTS partner with graduate communication access** — rank it first if it offers a grant, tuition waiver, approved 30-ECTS package, and manageable housing.\n3. **Waseda university-wide exchange** — pursue if East Asian media is academically relevant and Waseda confirms sufficient English-taught graduate courses or a suitable supervisor.\n4. **A tuition-waived US partner exchange** — pursue where a distinctive methodological or faculty advantage justifies the higher incidental cost.\n5. **UW–Madison VISP** — retain as an independent fallback only after confirming that approximately US$30,000 for the semester is acceptable or external funding is secured.\n\nIf no destination can provide advance credit approval, the most responsible alternative is to defer the exchange rather than risk delayed graduation. If a research visit can be credited as thesis or independent-study work, however, a supervisor-led Waseda, NTU, European, or US placement may remain feasible even when regular course availability is weak.\n\n## Sources\n\n### Mobility and credit frameworks\n\n- [European Credit Transfer and Accumulation System](https://education.ec.europa.eu/education-levels/higher-education/inclusive-and-connected-higher-education/european-credit-transfer-and-accumulation-system) - European Commission explanation of ECTS workload, documentation, and recognition.\n- [Erasmus+ Studying Abroad](https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/studying-abroad) - Official eligibility, duration, grants, tuition treatment, and learning-agreement requirements.\n\n### Singapore\n\n- [NTU GEM Trailblazer Semester Exchange](https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes) - Official eligibility, nomination, deadlines, coursework/research routes, funding, and credit information.\n- [Singapore ICA—Student’s Pass for Institutes of Higher Learning](https://www.ica.gov.sg/reside/STP/apply/ihl) - Official Student’s Pass process, documents, fees, and processing guidance.\n- [NTU Graduate Housing](https://www.ntu.edu.sg/life-at-ntu/accommodation/graduate-housing) - Official information on limited graduate accommodation.\n\n### Japan\n\n- [Waseda University Exchange Application](https://www.waseda.jp/inst/cie/en/exchange/application) - Official graduate-school requirements, language tracks, supervisor requirements, and course-capacity warnings.\n- [Japan MOFA—Student Visa](https://www.mofa.go.jp/j_info/visit/visa/long/visa6.html) - Official student-visa and Certificate of Eligibility requirements.\n\n### United States\n\n- [UW–Madison Visiting International Student Program](https://visp.wisc.edu/) - Official non-degree visiting-study status and transcript information.\n- [UW–Madison VISP Academics](https://visp.wisc.edu/academics/) - Course-selection and visiting-student academic model.\n- [UW–Madison Communication Arts MA](https://guide.wisc.edu/graduate/communication-arts/communication-arts-ma/) - Graduate research areas and instructional orientation.\n- [UW–Madison VISP Cost of Attendance](https://visp.wisc.edu/cost/) - Official 2026–27 tuition, living-cost, proof-of-funds, and funding figures.\n- [UW–Madison VISP Application](https://visp.wisc.edu/apply/) - Application lead time, documents, English proficiency, finances, and visa guidance.\n- [US Exchange Visitor—College and University Student](https://j1visa.state.gov/programs/college-and-university-student) - Official J-1 college and university student requirements.\n\n### Europe and the UK\n\n- [University of Amsterdam Living Expenses](https://www.uva.nl/en/education/fees-and-funding/living-expenses.html) - Official Amsterdam living-cost estimates and housing/funding cautions.\n- [Netherlands IND Student Residence Permit](https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education) - Official Dutch student-residence procedure.\n- [UK Standard Visitor—Study and Research](https://www.gov.uk/standard-visitor/visit-to-study) - Official rules for study or relevant research visits lasting up to six months.",
+  "run_error": null,
+  "started_at_utc": "2026-09-12T19:12:57.872983+00:00",
+  "completed_at_utc": "2026-09-12T19:19:21.426985+00:00",
+  "elapsed_seconds": 383.554002,
+  "trace_file": "turn_001_events.jsonl"
+}

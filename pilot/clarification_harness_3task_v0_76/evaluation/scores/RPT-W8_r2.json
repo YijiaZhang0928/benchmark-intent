@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-W8",
+  "repeat": 2,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "1adfaeb245dd79bd5e167640d85552828c30ee0454513a25fd0569e07498cf62",
+  "report_sha256": "bda6a0654a2e553fe03faee772ef6c5de180a299f8837d9f98f2332352ed4bdf",
+  "started_at_utc": "2026-09-12T19:42:15.673739+00:00",
+  "completed_at_utc": "2026-09-12T19:42:35.566364+00:00",
+  "p_rubric": 10,
+  "rubrics": [
+    {
+      "id": "T1-R1",
+      "score": 2,
+      "evidence": "Section 1 recommends NLP paired with efficient inference/training, robustness/evaluation, retrieval, multimodal learning, or low-resource learning. It requires two research trials: “reproduce and stress-test a recent NLP paper” and “either profile/optimize an ML system, study robustness/evaluation, or work on multimodal data.”",
+      "reason": "The recommended directions and direction-selection process prioritize rigorous empirical research, implementation, and systems experimentation rather than theory-only specialization."
+    },
+    {
+      "id": "T1-R2",
+      "score": 2,
+      "evidence": "Phases 1–3 require a reproduction repository, implemented baselines, versioned code, experiment logs, independent ownership of a follow-up question, ablations, failure analysis, and code/data release where possible. Phase 3 explicitly accepts a “substantive open-source contribution” as an output.",
+      "reason": "Hands-on implementation and increasingly independent research are central phased deliverables and provide evidence for applications; coursework is supplementary rather than the main preparation mechanism."
+    },
+    {
+      "id": "T1-R3",
+      "score": 2,
+      "evidence": "Section 10 recommends that industry-oriented applicants “target labs with strong internship records, systems infrastructure, and alumni in research-scientist or applied-scientist roles.” Section 7 weights student outcomes and resources, while Phase 7 includes internship policy and placement history in offer evaluation.",
+      "reason": "Industry optionality consequentially shapes lab selection and offer comparison, supported by career-specific topic guidance and research or engineering internship preparation."
+    },
+    {
+      "id": "T1-R4",
+      "score": 2,
+      "evidence": "Section 7 gives “Guaranteed funding and cost of living” a 15% shortlist weight and requires “funding that is workable without personal subsidy.” Section 9 warns against an “expensive, coursework-only master’s solely because it carries a prestigious name.” Section 5 supplies a net usable-funding calculation.",
+      "reason": "Funding is both a weighted selection criterion and a minimum eligibility condition. The report explicitly disfavors financially risky prestige purchases and operationalizes comparisons of actual support and living costs."
+    },
+    {
+      "id": "T1-R5",
+      "score": 2,
+      "evidence": "Section 7 scores advisor fit, recruitment evidence, recent research, outcomes, funding, and resources rather than prestige. Section 10 contrasts funded direct-entry programs for flexibility, focused UK/European doctorates for research-ready applicants, and a research master’s or RA year for applicants still undecided.",
+      "reason": "The final recommendations are conditional on preparation, flexibility, funding, and career goals, with concrete trade-offs and an evidence-based selection framework. Institutional name recognition is explicitly secondary."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 10259,
+    "output_tokens": 571,
+    "total_tokens": 10830,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 24
+    }
+  }
+}

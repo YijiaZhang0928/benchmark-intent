@@ -1,0 +1,796 @@
+{
+  "schema_version": "0.75",
+  "status": "completed_without_clarification",
+  "asked_clarification": false,
+  "clarification_calls": [],
+  "clarification_artifacts": [],
+  "all_observed_tools": [
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/public/deep-research/SKILL.md",
+        "description": "Load the required deep-research workflow before researching entrepreneurship education routes.",
+        "start_line": 1,
+        "end_line": 400
+      },
+      "id": "call_0kInlsSbjFneJgyvMk0XdNfm"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_0kInlsSbjFneJgyvMk0XdNfm",
+      "content": "---\nname: deep-research\ndescription: Use this skill instead of WebSearch for ANY question requiring web research. Trigger on queries like \"what is X\", \"explain X\", \"compare X and Y\", \"research X\", or before content generation tasks. Provides systematic multi-angle research methodology instead of single superficial searches. Use this proactively when the user's question needs online information.\n---\n\n# Deep Research Skill\n\n## Overview\n\nThis skill provides a systematic methodology for conducting thorough web research. **Load this skill BEFORE starting any content generation task** to ensure you gather sufficient information from multiple angles, depths, and sources.\n\n## When to Use This Skill\n\n**Always load this skill when:**\n\n### Research Questions\n- User asks \"what is X\", \"explain X\", \"research X\", \"investigate X\"\n- User wants to understand a concept, technology, or topic in depth\n- The question requires current, comprehensive information from multiple sources\n- A single web search would be insufficient to answer properly\n\n### Content Generation (Pre-research)\n- Creating presentations (PPT/slides)\n- Creating frontend designs or UI mockups\n- Writing articles, reports, or documentation\n- Producing videos or multimedia content\n- Any content that requires real-world information, examples, or current data\n\n## Core Principle\n\n**Never generate content based solely on general knowledge.** The quality of your output directly depends on the quality and quantity of research conducted beforehand. A single search query is NEVER enough.\n\n## Research Methodology\n\n### Phase 1: Broad Exploration\n\nStart with broad searches to understand the landscape:\n\n1. **Initial Survey**: Search for the main topic to understand the overall context\n2. **Identify Dimensions**: From initial results, identify key subtopics, themes, angles, or aspects that need deeper exploration\n3. **Map the Territory**: Note different perspectives, stakeholders, or viewpoints that exist\n\nExample:\n```\nTopic: \"AI in healthcare\"\nInitial searches:\n- \"AI healthcare applications 2024\"\n- \"artificial intelligence medical diagnosis\"\n- \"healthcare AI market trends\"\n\nIdentified dimensions:\n- Diagnostic AI (radiology, pathology)\n- Treatment recommendation systems\n- Administrative automation\n- Patient monitoring\n- Regulatory landscape\n- Ethical considerations\n```\n\n### Phase 2: Deep Dive\n\nFor each important dimension identified, conduct targeted research:\n\n1. **Specific Queries**: Search with precise keywords for each subtopic\n2. **Multiple Phrasings**: Try different keyword combinations and phrasings\n3. **Fetch Full Content**: Use `web_fetch` to read important sources in full, not just snippets\n4. **Follow References**: When sources mention other important resources, search for those too\n\nExample:\n```\nDimension: \"Diagnostic AI in radiology\"\nTargeted searches:\n- \"AI radiology FDA approved systems\"\n- \"chest X-ray AI detection accuracy\"\n- \"radiology AI clinical trials results\"\n\nThen fetch and read:\n- Key research papers or summaries\n- Industry reports\n- Real-world case studies\n```\n\n### Phase 3: Diversity & Validation\n\nEnsure comprehensive coverage by seeking diverse information types:\n\n| Information Type | Purpose | Example Searches |\n|-----------------|---------|------------------|\n| **Facts & Data** | Concrete evidence | \"statistics\", \"data\", \"numbers\", \"market size\" |\n| **Examples & Cases** | Real-world applications | \"case study\", \"example\", \"implementation\" |\n| **Expert Opinions** | Authority perspectives | \"expert analysis\", \"interview\", \"commentary\" |\n| **Trends & Predictions** | Future direction | \"trends 2024\", \"forecast\", \"future of\" |\n| **Comparisons** | Context and alternatives | \"vs\", \"comparison\", \"alternatives\" |\n| **Challenges & Criticisms** | Balanced view | \"challenges\", \"limitations\", \"criticism\" |\n\n### Phase 4: Synthesis Check\n\nBefore proceeding to content generation, verify:\n\n- [ ] Have I searched from at least 3-5 different angles?\n- [ ] Have I fetched and read the most important sources in full?\n- [ ] Do I have concrete data, examples, and expert perspectives?\n- [ ] Have I explored both positive aspects and challenges/limitations?\n- [ ] Is my information current and from authoritative sources?\n\n**If any answer is NO, continue researching before generating content.**\n\n## Search Strategy Tips\n\n### Effective Query Patterns\n\n```\n# Be specific with context\n❌ \"AI trends\"\n✅ \"enterprise AI adoption trends 2024\"\n\n# Include authoritative source hints\n\"[topic] research paper\"\n\"[topic] McKinsey report\"\n\"[topic] industry analysis\"\n\n# Search for specific content types\n\"[topic] case study\"\n\"[topic] statistics\"\n\"[topic] expert interview\"\n\n# Use temporal qualifiers — always use the ACTUAL current year from <current_date>\n\"[topic] 2026\"   # ← replace with real current year, never hardcode a past year\n\"[topic] latest\"\n\"[topic] recent developments\"\n```\n\n### Temporal Awareness\n\n**Always check `<current_date>` in your context before forming ANY search query.**\n\n`<current_date>` gives you the full date: year, month, day, and weekday (e.g. `2026-02-28, Saturday`). Use the right level of precision depending on what the user is asking:\n\n| User intent | Temporal precision needed | Example query |\n|---|---|---|\n| \"today / this morning / just released\" | **Month + Day** | `\"tech news February 28 2026\"` |\n| \"this week\" | **Week range** | `\"technology releases week of Feb 24 2026\"` |\n| \"recently / latest / new\" | **Month** | `\"AI breakthroughs February 2026\"` |\n| \"this year / trends\" | **Year** | `\"software trends 2026\"` |\n\n**Rules:**\n- When the user asks about \"today\" or \"just released\", use **month + day + year** in your search queries to get same-day results\n- Never drop to year-only when day-level precision is needed — `\"tech news 2026\"` will NOT surface today's news\n- Try multiple phrasings: numeric form (`2026-02-28`), written form (`February 28 2026`), and relative terms (`today`, `this week`) across different queries\n\n❌ User asks \"what's new in tech today\" → searching `\"new technology 2026\"` → misses today's news\n✅ User asks \"what's new in tech today\" → searching `\"new technology February 28 2026\"` + `\"tech news today Feb 28\"` → gets today's results\n\n### When to Use web_fetch\n\nUse `web_fetch` to read full content when:\n- A search result looks highly relevant and authoritative\n- You need detailed information beyond the snippet\n- The source contains data, case studies, or expert analysis\n- You want to understand the full context of a finding\n\n### Iterative Refinement\n\nResearch is iterative. After initial searches:\n1. Review what you've learned\n2. Identify gaps in your understanding\n3. Formulate new, more targeted queries\n4. Repeat until you have comprehensive coverage\n\n## Quality Bar\n\nYour research is sufficient when you can confidently answer:\n- What are the key facts and data points?\n- What are 2-3 concrete real-world examples?\n- What do experts say about this topic?\n- What are the current trends and future directions?\n- What are the challenges or limitations?\n- What makes this topic relevant or important now?\n\n## Common Mistakes to Avoid\n\n- ❌ Stopping after 1-2 searches\n- ❌ Relying on search snippets without reading full sources\n- ❌ Searching only one aspect of a multi-faceted topic\n- ❌ Ignoring contradicting viewpoints or challenges\n- ❌ Using outdated information when current data exists\n- ❌ Starting content generation before research is complete\n\n## Output\n\nAfter completing research, you should have:\n1. A comprehensive understanding of the topic from multiple angles\n2. Specific facts, data points, and statistics\n3. Real-world examples and case studies\n4. Expert perspectives and authoritative sources\n5. Current trends and relevant context\n\n**Only then proceed to content generation**, using the gathered information to create high-quality, well-informed content.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "2026 official entrepreneurship master's program tuition duration Imperial MSc Innovation Entrepreneurship Management official",
+        "max_results": 5
+      },
+      "id": "call_dlTQsDAi44DJGXfwbXuz3mBq"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "official NUS MSc Venture Creation tuition duration 2026",
+        "max_results": 5
+      },
+      "id": "call_6XTZjcRwIgfGoKmgKnghnvg0"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "official Stanford LEAD online business program tuition duration 2026",
+        "max_results": 5
+      },
+      "id": "call_WI47fr2XwvQHBHQHslFuDzMv"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "official MIT Sloan Entrepreneurship Development Program 2026 tuition duration",
+        "max_results": 5
+      },
+      "id": "call_7yrdqx9p26UNqT1AmPh1a0cg"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "official Wharton Entrepreneurship Acceleration Program online duration price",
+        "max_results": 5
+      },
+      "id": "call_HIdnTyJLWCVXoxGJaHSh8vHt"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "official Babson entrepreneurship executive education online program tuition duration 2026",
+        "max_results": 5
+      },
+      "id": "call_FtqpWJMV9aKN7PjC7ZRECh0k"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "official Y Combinator Startup School free online course curriculum",
+        "max_results": 5
+      },
+      "id": "call_kfSAQrtIy7Ucy8gPP20EWyd9"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "official Coursera Wharton Entrepreneurship specialization price duration curriculum",
+        "max_results": 5
+      },
+      "id": "call_WYYrIvyLMUaWZiRvz2VLImUy"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_dlTQsDAi44DJGXfwbXuz3mBq",
+      "content": "{\n  \"query\": \"2026 official entrepreneurship master's program tuition duration Imperial MSc Innovation Entrepreneurship Management official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_6XTZjcRwIgfGoKmgKnghnvg0",
+      "content": "{\n  \"query\": \"official NUS MSc Venture Creation tuition duration 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_WI47fr2XwvQHBHQHslFuDzMv",
+      "content": "{\n  \"query\": \"official Stanford LEAD online business program tuition duration 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_7yrdqx9p26UNqT1AmPh1a0cg",
+      "content": "{\n  \"query\": \"official MIT Sloan Entrepreneurship Development Program 2026 tuition duration\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_HIdnTyJLWCVXoxGJaHSh8vHt",
+      "content": "{\n  \"query\": \"official Wharton Entrepreneurship Acceleration Program online duration price\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_FtqpWJMV9aKN7PjC7ZRECh0k",
+      "content": "{\n  \"query\": \"official Babson entrepreneurship executive education online program tuition duration 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_kfSAQrtIy7Ucy8gPP20EWyd9",
+      "content": "{\n  \"query\": \"official Y Combinator Startup School free online course curriculum\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_WYYrIvyLMUaWZiRvz2VLImUy",
+      "content": "{\n  \"query\": \"official Coursera Wharton Entrepreneurship specialization price duration curriculum\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:imperial.ac.uk business-school MSc Innovation Entrepreneurship Management fees",
+        "max_results": 5
+      },
+      "id": "call_axPrRLJXusLXf6ktqLKXoyk6"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:enterprise.nus.edu.sg MSc Venture Creation fees duration",
+        "max_results": 5
+      },
+      "id": "call_mnWISlidkFFjEWbqjd0vKype"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:online.stanford.edu Stanford LEAD tuition one year",
+        "max_results": 5
+      },
+      "id": "call_lmlStjxmfGe8HHeziKOBsW2Y"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:executive.mit.edu entrepreneurship development program price",
+        "max_results": 5
+      },
+      "id": "call_XG6xu40U5IB1kq1GbNYLSLYb"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:executiveeducation.wharton.upenn.edu entrepreneurship acceleration program fee",
+        "max_results": 5
+      },
+      "id": "call_QBtz0Aol4yl2YRMkl3csnBfU"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:babson.edu executive education entrepreneurship programs price online",
+        "max_results": 5
+      },
+      "id": "call_H0cchGXFQHKbPAVYdaOvQ6Vn"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:startupschool.org curriculum free founders",
+        "max_results": 5
+      },
+      "id": "call_TmKloiyJePEnLiZdsSlHulWm"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:coursera.org specializations wharton entrepreneurship price duration",
+        "max_results": 5
+      },
+      "id": "call_vzh6BaC6IA3D4B52h3xFSJET"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_axPrRLJXusLXf6ktqLKXoyk6",
+      "content": "{\n  \"query\": \"site:imperial.ac.uk business-school MSc Innovation Entrepreneurship Management fees\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_mnWISlidkFFjEWbqjd0vKype",
+      "content": "{\n  \"query\": \"site:enterprise.nus.edu.sg MSc Venture Creation fees duration\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_lmlStjxmfGe8HHeziKOBsW2Y",
+      "content": "{\n  \"query\": \"site:online.stanford.edu Stanford LEAD tuition one year\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_XG6xu40U5IB1kq1GbNYLSLYb",
+      "content": "{\n  \"query\": \"site:executive.mit.edu entrepreneurship development program price\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_QBtz0Aol4yl2YRMkl3csnBfU",
+      "content": "{\n  \"query\": \"site:executiveeducation.wharton.upenn.edu entrepreneurship acceleration program fee\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_H0cchGXFQHKbPAVYdaOvQ6Vn",
+      "content": "{\n  \"query\": \"site:babson.edu executive education entrepreneurship programs price online\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_TmKloiyJePEnLiZdsSlHulWm",
+      "content": "{\n  \"query\": \"site:startupschool.org curriculum free founders\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_vzh6BaC6IA3D4B52h3xFSJET",
+      "content": "{\n  \"query\": \"site:coursera.org specializations wharton entrepreneurship price duration\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.imperial.ac.uk/business-school/masters/innovation-entrepreneurship-management/"
+      },
+      "id": "call_RlC44TcTj1Sm8vkcRiYPbM5a"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://mscventurecreation.nus.edu.sg/"
+      },
+      "id": "call_ogqHFGJp9NYZs3Aws4o1bunZ"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program"
+      },
+      "id": "call_GxJZvM6eNVISQ4gG8vsCWGzs"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://executive.mit.edu/course/entrepreneurship-development-program/a056g00000URaa3AAD.html"
+      },
+      "id": "call_Fb3sKbRDxYz8hqr0JVy0HCqg"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/entrepreneurship-acceleration-program-scaling-your-business/"
+      },
+      "id": "call_6n2zQHYYUAcEdhfc7Su79ifE"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.startupschool.org/"
+      },
+      "id": "call_WBVpT3n1so0YzrDoMmXDA4Lo"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.coursera.org/specializations/wharton-entrepreneurship"
+      },
+      "id": "call_vcRBR4KflMlNTNfeD7j8p4K8"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://fi.co/join"
+      },
+      "id": "call_GV9tqRS9nn0V7bM53vlnzoCu"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_RlC44TcTj1Sm8vkcRiYPbM5a",
+      "content": "# MSc Innovation, Entrepreneurship & Management\n\n![Imperial MSc Innovation, Entrepreneurship & Management student on campus in London writing an equation on a clear board](/business-school/sites/default/files/styles/wide_16_5_1100w/public/2026-04/Imperial_MSc%20Innovation%2C%20Entrepreneurship%20%26%20Management_0.jpg?h=a612ed85&itok=xawCv6Vm)\n\n**Choose start date:**\n\n**Start date:**  \nAugust 2027\n\n**Duration:**  \n12 months\n\n**Next application deadline:**  \n\n29 September 2026\n\n**Fee:**  \n\n£45,500\n\n**Location:**  \nLondon, UK\n\n2nd\n\nin the world (Imperial College London, QS World University Rankings 2027)\n\n3rd\n\nin Europe (Imperial College London, Times Higher Education World University Rankings 2026)\n\n#3\n\ncity for students (London, QS Best Student City Rankings 2027)\n\nDisrupt, innovate and ideate\n----------------------------\n\nMSc Innovation, Entrepreneurship & Management at Imperial is designed to empower the next generation of venture founders, venture builders, innovators, and investors to create and grow new business opportunities while considering the implications of social and environmental factors.\n\nThe programme equips you with the skills to create, manage, and deliver value through innovation. Taught by leading faculty and supported by a wide network of experts, entrepreneurs, and industry partners, it offers a uniquely Imperial perspective and the opportunity to develop valuable connections and achieve true business success.\n\nGet ready to join the next generation of entrepreneurial leaders within a forward-thinking business school.\n\n90%\n\nemployed within six months (Class of 2024)\n\n21%\n\nstarted their own business (Class of 2024)\n\n10+\n\nelective options\n\n4\n\npractical project options\n\n[Explore the programme](/business-school/masters/innovation-entrepreneurship-management/#programme-content)\n\n### White City campus\n\nOur White City campus is a hub for innovation, entrepreneurship, and multidisciplinary research. Facilities include: the Translation and Innovation Hub (I-HUB), The School of Public Health, Scale Space and the Molecular Sciences Research Hub.\n\n### Imperial Enterprise Lab\n\nThe Imperial Enterprise Lab is an initiative that supports entrepreneurship and innovation. A standout features is the Imperial Venture Mentoring Service, offering mentors with experience in entrepreneurship to help students launch their business.\n\n### Venture Catalyst Challenge (VCC)\n\nThe VCC is Imperial’s entrepreneurial contest for students, researchers, and alumni to develop innovative ideas, with £100,000 up for grabs. It includes workshops, alumni panels, expert meetings, and pitch training to bring your idea to life.\n\n### An inspiring community\n\nMeet like-minded people from diverse backgrounds and benefit from a collaborative learning environment. Engage with people that you may never usually cross paths with to expand your mind and develop as an entrepreneur.\n\n### Innovation and Entrepreneurship Club\n\nThis student-run club is for anyone with an interest in cultivating their innovative and entrepreneurial spirit. As a member, you will gain access to networking events, peer to peer development and a platform to discuss your innovative ideas.\n\n![London city tower bridge](/business-school/sites/default/files/styles/small_image_carousel/public/2023-07/london_river_view.jpg?itok=eHNHDWxr)\n\n### London location\n\nStudy in a global hub for business and finance, learn across our South Kensington and White City [campuses](https://www.imperial.ac.uk/business-school/programmes/imperial-advantage/london/#campus), and benefit from our relationships with major employers, offering valuable industry connections and helping you build a global perspective.\n\nProgramme content\n-----------------\n\nMSc Innovation, Entrepreneurship & Management is a one-year, full-time intensive programme where students are not simply taught the fundamental principles of innovation, entrepreneurship, and management, but where they truly get to experience the reality of generating real ideas, building and testing concepts, finding compatible co-founders, building a team, creating products, and launching and seeking funding for their new business by the end of the programme.\n\nThis programme is the place to build out your business idea, create an actual business, and take it to market. Whether you want to build the next billion-dollar start-up, create a new fashion brand, take innovative new foods to market, design a healthcare solution, build an app to make companies more efficient, or solve big societal challenges, MSc Innovation, Entrepreneurship & Management will help you build the capability and achieve your goals.\n\nThe normal working week runs from Monday to Friday, and we will schedule classes between 08.30 and 21.00.  You must attend 12-18 hours of lectures every week, which includes one evening class. For every hour in class, plan to spend 2-3 hours studying alone or with a group outside of class.\n\nWe are also pleased to offer an [optional extended term](https://www.imperial.ac.uk/business-school/masters/extended-term/), that will allow you to extend your programme duration to 16 months. This will give you the opportunity to commit to a longer Work Placement, gaining deeper work experience, global experience and earning additional credits. Please note, the extended term is subject to an additional tuition fee.\n\n*Please note, programme content is subject to change. Candidates that fail to successfully complete this degree are not entitled to a Postgraduate Certificate or Postgraduate Diploma.*\n\n[View an example MSc Innovation, Entrepreneurship & Management timetable](https://iem-timetable.business-degrees.imperial.ac.uk/p/1)\n\nThrough a combination of online pre-study modules and induction week, you will be ready to hit the ground running when your programme begins. This comprehensive preparation not only prepares you for the academic rigour ahead but also ensures you're thoroughly equipped to maximise the benefits of your programme.\n\n### Pre-study modules\n\nOnline | July-September\n\nBefore the start of your programme you will be expected to complete online pre-study modules which are delivered via Canvas, our virtual learning environment (VLE). These modules are designed to prepare you for the remainder of the programme.\n\n### Induction\n\nOn campus | Early September, compulsory\n\nYour MSc Innovation, Entrepreneurship & Management induction will be spent at our vibrant South Kensington campus in London. You will be invited to a welcome event where you can meet and network with your fellow students, distinguished faculty and dedicated programme staff, forging new connections and getting a taste of life at Imperial.\n\nA week in the life of an MSc Innovation, Entrepreneurship & Management student\n------------------------------------------------------------------------------\n\nAdmissions\n----------\n\n**Applications for our MSc Innovation, Entrepreneurship & Management 2027 intake are open.**\n\nDiscover our admissions process for the MSc Innovation, Entrepreneurship & Management including entry requirements, how to apply and key dates and deadlines.\n\nThis programme is highly competitive, so early application is advised; this will put you in a stronger position to be considered for a scholarship, and provide access to exclusive admitted students events.\n\n[How to apply](/business-school/masters/innovation-entrepreneurship-management/admissions/)\n\n### Fees and funding\n\nChoosing to pursue a Master's is one of the most important decisions you will make and is a substantial investment in yourself.\n\nMany of our students fund their studies through multiple funding sources. We offer a wide range of awards, including a number of scholarships to the most talented applicants. We’ve also provided information about the different financing options available to you.\n\nWhat our students say\n---------------------\n\n![](/business-school/sites/default/files/styles/testimonial_square_image/public/2023-07/babatunde_oguntade_iem_2023.jpg.webp?itok=OkFxHb8a)\n\n> “It was crucial for me to select a programme that had the right mix of innovation, business, technology, and leadership, and the IEM programme checked all the boxes. Now, nearing the end of the programme, I can confidently say that it is the perfect fit for me.”\n\n![IB Coffee Chats ](/business-school/sites/default/files/styles/focalpoint_5x3_960/public/2019-08/Coffee-chats-9-960-x-576.jpg?h=27a93da2&itok=kOHgyios)\n\n### Recruitment & Admissions team one-to-ones\n\nMultiple dates  \nIn person\n\nMeet with a member of our Recruitment & Admissions team in a city near you!\n\nDiscuss our MSc programmes and understand which is best for you, learn about the opportunities available for students at Imperial, and get tips on crafting an application that stands out.\n\nCareer impact\n-------------\n\nAt Imperial Business School, your career is our priority. We have a dedicated Careers team that is committed to helping you achieve your personal and professional goals. With close links to industry and a busy calendar of events, workshops, and personal development programmes, you will be prepared to enter a highly competitive recruitment market.\n\n*Employment outcomes below refer to the Class of 2024.*\n\n90\n%\n\nemployed within six months\n\n21\n%\n\nstarted their own business\n\n34\n%\n\nemployed in finance\n\nWhat our students say\n---------------------\n\n![](/business-school/sites/default/files/styles/testimonial_square_image/public/2022-01/Max%20Student%20profile%20crop.jpg.webp?itok=3Y8P2hYI)\n\n> “Imperial’s Career services have helped me in various workshops as well as one-on-one coaching sessions to explore my career aspirations and develop the skills I need to apply for jobs. All career consultants I have met were immensely helpful and had great expertise in their fields. I would advise everyone not to do this and to really make the most of the amazing opportunities Careers provide.”\n\nMax Fortmueller\n\nMSc Innovation, Entrepreneurship & Management - Class of 2022\n\n[Hear more from Max](/business-school/programmes/our-students/max-fortmueller/)\n\n![Gregory Theyel](/business-school/sites/default/files/styles/focalpoint_300_x_300/public/2026-01/Gregory%20Theyel_0.jpg?h=aa81dfca&itok=Tf6LpOAL)\n\n### Gregory Theyel\n\nProfessorial Teaching Fellow - Academic Director for MSc Innovation, Entrepreneurship & Management\n\n![Sankalp Chaturvedi](/business-school/sites/default/files/styles/focalpoint_300_x_300/public/2019-05/Chaturvedi%2C%20Sankalp.jpg?h=2fafd310&itok=9Bq22U5j)\n\n### Sankalp Chaturvedi\n\nProfessor of Organisational Behaviour & Leadership - Associate Dean (People and Culture)\n\n[Sankalp's Imperial Profile](https://profiles.imperial.ac.uk/sankalp.chaturvedi)\n\n![Aurelie Cnop](/business-school/sites/default/files/styles/focalpoint_300_x_300/public/2026-03/Aurelie%20Cnop.jpg?h=aa81dfca&itok=TQhENI7e)\n\n### Aurelie Cnop\n\nDigital Health Leadership and Health Policy Leadership Module Lead\n\nFrequently asked questions\n--------------------------\n\n### \n\nAll applications to our postgraduate programmes are made online – we do not accept paper applications. Please refer to the ‘How to apply’ section of each programme page. This details which documents you are required to submit with your application and the selection process.\n\n### \n\nAll of our programmes are academically rigorous and include a quantitative component. Therefore, all candidates are expected to have a basic level of mathematics before the start of the programme. The quantitative experience statement provides an opportunity to demonstrate this to the selection committee.\n\nIn the quantitative experience statement, you need to list up to five of the most quantitative modules or elements of your studies to date. You should detail:\n\n* The main topics of study (eg: algebra, probability etc)\n* The level of study (eg: high school, undergraduate degree, short course etc)\n\nThis will allow the selection committee to have an understanding of your quantitative experience to date.\n\nQuantitative experience is a ke",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_ogqHFGJp9NYZs3Aws4o1bunZ",
+      "content": "Error fetching https://mscventurecreation.nus.edu.sg/: ValueError: Error: URL host could not be resolved",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_GxJZvM6eNVISQ4gG8vsCWGzs",
+      "content": "Error fetching https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_Fb3sKbRDxYz8hqr0JVy0HCqg",
+      "content": "# Artificial Intelligence: Implications for Business Strategy\n\nThis online program from the MIT Sloan School of Management and the MIT Computer Science and Artificial Intelligence Laboratory (CSAIL) challenges common misconceptions surrounding AI and will equip and encourage you to embrace AI as part of a transformative toolkit. With a focus on the organizational and managerial implications of these technologies, rather than on their technical aspects, you’ll leave this course armed with the knowledge and confidence you need to pioneer its successful integration in business. Our curriculum has recently been refreshed to include the most modern and in-demand AI skills that allows our learners to meet growing demand for AI professionals.\n\nWhat is artificial intelligence (AI)? What does it mean for business? And how can your company take advantage of it? This online program, designed by the [MIT Sloan School of Management and the MIT Computer Science and Artificial Intelligence Laboratory (CSAIL)](https://www.csail.mit.edu/), will help you answer these questions.\n\nThrough an engaging mix of introductions to key technologies, business insights, case examples, and your own business-focused project, your learning journey will bring into sharp focus the reality of central AI technologies today and how they can be harnessed to support your business needs.\n\nFocusing on key AI technologies, such as machine learning, natural language processing, generative AI, and robotics, the course will help you understand the implications of these new technologies for business strategy, as well as the economic and societal issues they raise. MIT expert instructors examine how artificial intelligence will complement and strengthen our workforce rather than just eliminate jobs. Additionally, the program will emphasize how the collective intelligence of people and computers together can solve business problems that not long ago were considered impossible.\n\nWe do not recommend this program if you have already completed the *Navigating AI: Driving Business Impact and Developing Human Capability* course, as there is overlap, unless you are seeking a refresher of the content.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_6n2zQHYYUAcEdhfc7Su79ifE",
+      "content": "Error fetching https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/entrepreneurship-acceleration-program-scaling-your-business/: HTTPStatusError: Client error '403 Forbidden' for url 'https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/entrepreneurship-acceleration-program-scaling-your-business/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_WBVpT3n1so0YzrDoMmXDA4Lo",
+      "content": "# Startup School - The Best Online Resource for Founders\n\n![](https://bookface-static.ycombinator.com/assets/startupschool/world_map-3cabee65947eb0548c2c92f2e19c6dbf94f420145bf8064d4e05fad73a96b6af.svg)\n\nStartup School\n\nGet advice based on 15 years of YC's knowledge, stay accountable for weekly progress, and find your co-founder.\n\n* Get the essential advice for ambitious startup founders, taught by Y Combinator partners and industry leaders.\n* Go at your own pace. It will take approximately 7 weeks if you spend 1-2 hours/week.\n\n* It's for anyone at the early stages of building a startup, turning a side project into a company, or anyone curious to learn about becoming a founder.\n\nThe YC Curriculum\n\nLearn how to build a top startup - from the same people who helped Airbnb, Doordash, Stripe, Reddit, and Coinbase get started.\n\n![michael seibel](https://bookface-static.ycombinator.com/assets/startupschool/michael-f5a997b72ec2d30a80804eb3a67e645cea68ffa1199893c6cacafdd20b8761ac.jpg)\n\nHow to Plan your MVP\n\n![carolynn levy](https://bookface-static.ycombinator.com/assets/startupschool/carolynn-2e029b6061e85d6ffee0d05fc5dd3d605553a2575d206fb512b7c2c439d9f09e.png)\n\nModern Startup Funding\n\nCarolynn Levy, inventor of the SAFE\n\n![kat manalac](https://bookface-static.ycombinator.com/assets/startupschool/kat-83e549969fcf51d0286a04dcc09ce5d62bf4e7d4efb666d63ae47403bf6f5644.png)\n\nHow to Launch your Company in the Press\n\nKat Manalac, YC Head of Outreach\n\n![gustaf alstromer](https://bookface-static.ycombinator.com/assets/startupschool/gustaf-979b79e59225724bd80828c03b5bf9b592a8f2f635e758c56855b582b35a701a.png)\n\nHow to Get Users and Grow\n\nGustaf Alstromer, YC Partner & Former Head of Growth at Airbnb\n\n![ali rowghani](https://bookface-static.ycombinator.com/assets/startupschool/ali-d26bbd53fea62bff7786fd46944712edaab062e4862027256756752f0f02c660.jpg)\n\nHow to Lead Teams\n\nAli Rowghani, CFO of Pixar & COO of Twitter\n\n![dalton caldwell](https://bookface-static.ycombinator.com/assets/startupschool/dalton-200f6107c9e263f8a78ab398e29be463c86f1942299948f89f395b662e46dd05.png)\n\nHow and When to Apply to Y Combinator\n\nDalton Caldwell, YC Partner & Head of Admissions\n\n![mark zuckerberg](https://bookface-static.ycombinator.com/assets/startupschool/mark-3dc74b743c470eec9a5ff04a05406cf5cb8024c593b2f1a1758dbbed9e137e0d.jpg)\n\nThe Founding Story of Facebook\n\nMark Zuckerberg, Founder and CEO of Facebook\n\n![anne wojcicki](https://bookface-static.ycombinator.com/assets/startupschool/anne-9dd8bb9e66c59a90eafae91307a61760ac9c26442e83137971eb41369e73c5a1.jpg)\n\nOn Starting and Scaling 23andMe\n\nAnne Wojcicki, Co-Founder and CEO of 23andMe\n\n![blake scholl](https://bookface-static.ycombinator.com/assets/startupschool/boom-5a9d8bc32e89c782d738769220640579716ef2684756456f2bfacfcb51732b95.jpg)\n\nBoom: A Startup Building a Supersonic Jet\n\nBlake Scholl, Founder and CEO of Boom\n\n* YC Co-Founder Matching: the world's largest co-founder matching platform, with over 100,000 matches made\n* A weekly update tool to track your growth and progress\n\n*person*\n\n**Create your profile**\n\nLet other founders know your preferences for interests, skills, location, and more\n\n*arrow\\_forward*\n\n*search*\n\n**See potential co-founders**\n\nWe'll show you candidates best suited for you based on your requirements and preferences\n\n*arrow\\_forward*\n\n*hub*\n\n**Connect with your matches**\n\nSend invitations to founders that seem like a good fit, and explore the possibility of working together\n\nLearn from the best startup founders\n\n[Sign up](/users/sign_in?sign_up=true)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_vcRBR4KflMlNTNfeD7j8p4K8",
+      "content": "Error fetching https://www.coursera.org/specializations/wharton-entrepreneurship: HTTPStatusError: Client error '404 Not Found' for url 'https://www.coursera.org/specializations/wharton-entrepreneurship'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_GV9tqRS9nn0V7bM53vlnzoCu",
+      "content": "# Build an Amazing Company with Silicon Valley Experts\n\nThe Founder Institute provides a global support network and a proven methodology to get your startup to traction and funding\n\n![](/assets/svg-icons/fully_virtual-c86c848fe0bc4fb817f5cad8b3256ad243c4fdaa7f109e6aa40164cce9af2279.svg)Fully Virtual\n\n##### Program Dates\n\nOct 21, 2026\n\nJan 21, 2027\n\n##### Early Deadline\n\nSep 15, 2026\n\n##### Early Entrance Fee\n\n$1199\n$1649\n\n![zoom bg Image](/images/rectangle_zoom-startup.png)\n\nThe Agentic Experience\n----------------------\n\nYou don't have to do it alone. Alongside other like-minded entrepreneurs, you will build your business in a structured, proven process.\n\nSession Calendar\n----------------\n\nBelow are the dates for the upcoming program\n\nOnboarding\n\nOct 14, 2026\n\n06:00pm PDT\n\nKickoff\n\nOct 21, 2026\n\n06:00pm PDT\n\nVision\n\nOct 22, 2026\n\n06:00pm PDT\n\n[View Full curriculum](/program/13805)\n\nFeatured Grad\n-------------\n\n![FI Grad Company](https://fi-hatchbox-production-uploads.s3.amazonaws.com/drive/logo-udemy.png)\n\nFrom our Silicon Valley chapter, Udemy is the global leader in online learning, with nearly 200,000 courses. The company went public on the NASDAQ in October 2021, raising $421 million.\n\nEvents\n------\n\nJoin us for an upcoming event - local or global - to meet other founders and experts. Learn what you need to know now to scale your startup.\n\nLeadership\n----------\n\nOur leadership team are proven startup experts who know how to walk you through the challenges of your early-stage startup.\n\n![Christina Marie Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/3197886.jpg)\n\n### Christina Marie Reddick\n\nFounder @ Racedu\n\n![Mercedes Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/1956221.png)\n\n### Mercedes Bankston\n\nFounder @ Funderstar LTD\n\n![Preeti Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/3197885.jpg)\n\n### Preeti Tikekar\n\nFounder/CEO @ Membition\n\nMentors\n-------\n\nBuild a business efficiently through video conferences, office hours, and material reviews from a roster of top startup mentors.\n\n![Gary Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/4157.jpeg)\n\n### Gary Gaessler\n\nSaaS Community Builder @ Nylas, Co-Founder of CloudElements\n\n![Fabian Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/23973.png)\n\n### Fabian Geyrhalter\n\nFounder and Principal @ FINIEN\n\n![Srdjan Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/1089231.jpeg)\n\n### Srdjan Kovacevic\n\nVice President @ Sizmek, Inc.\n\n![Sree Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/3202724.jpg)\n\n### Sree Lekshmi\n\nCEO @ Stealth Mode Startup\n\n![Jonathan Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/2779394.jpg)\n\n### Jonathan Zaremski\n\nExec. for Product, Product Marketing, and Strategy @ Consulting & Stealth Startup\n\n![Andrea Image](https://s3.us-east-1.amazonaws.com/fi-hatchbox-production-uploads/users/2882477.jpg)\n\n### Andrea Monti\n\nManaging Director Impact and Sustainability @ Founder Institute\n\nFI Partners\n-----------\n\nGet special deals and support worth over $3 million from top support organizations and partners.\n\n[![Loyal VC](/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjgyOTU3MCwicHVyIjoiYmxvYl9pZCJ9fQ==--4d19833f97a76544e15403260debf33182f359ff/628e668556ba7b6661a5e77a_Loyal%20Logo%20No%20Icon.png)](http://loyal.vc/)[![Founder Capital](/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDgxMTQ5NywicHVyIjoiYmxvYl9pZCJ9fQ==--6600e65e14814515e70b3589441283541aaa220a/FC-logo.png)](https://foundercapital.vc/)\n\n[![.CO](https://fi-hatchbox-production-active-storage-blobs.s3.amazonaws.com/c3qs25bi2cdm3ci26q776bcrw1og)](http://fndri.com/goco_fi)\n\nHave any questions?\n-------------------\n\nApply\n-----\n\nor Apply with\n\nAlready Have an Account?\n[Sign In](#)",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Shanghai entrepreneurship executive education program CEIBS 2026 创业 官方 课程 学费",
+        "max_results": 10
+      },
+      "id": "call_z8VMhlfXVHV7WexrL389oAsI"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "上海交通大学 创业 创新 高管教育 课程 学费 官方 2026",
+        "max_results": 10
+      },
+      "id": "call_0z7VOo9bih6KnNVFUh4ycFTv"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "上海 创业 加速器 XNode program official startup 2026",
+        "max_results": 10
+      },
+      "id": "call_McTfDZwmVLQaXWg830gExOy0"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Shanghai startup incubator accelerator official Zhangjiang 2026 English",
+        "max_results": 10
+      },
+      "id": "call_YbRDnY63JZFlyzyV4VhdhsI2"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Shanghai startup networking mentoring Startup Grind Shanghai official 2026",
+        "max_results": 10
+      },
+      "id": "call_ZJNe3JtyVnw4rjZR4Bs8wrL2"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Entrepreneurs Organization Shanghai accelerator eligibility official",
+        "max_results": 10
+      },
+      "id": "call_vhaF2A6FKoKeaw7Qwn2yVeXf"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "HBS Online Entrepreneurship Essentials official duration price 2026",
+        "max_results": 10
+      },
+      "id": "call_BxVRh6jAnYfJD5BajlugHEC5"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "MITx entrepreneurship online course official Entrepreneurship 101 duration cost edX",
+        "max_results": 10
+      },
+      "id": "call_XbnYORsjLv4oQduvK6N2aLUK"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_z8VMhlfXVHV7WexrL389oAsI",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=Shanghai+entrepreneurship+executive+education+program+CEIBS+2026+%E5%88%9B%E4%B8%9A+%E5%AE%98%E6%96%B9+%E8%AF%BE%E7%A8%8B+%E5%AD%A6%E8%B4%B9'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_0z7VOo9bih6KnNVFUh4ycFTv",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=%E4%B8%8A%E6%B5%B7%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6+%E5%88%9B%E4%B8%9A+%E5%88%9B%E6%96%B0+%E9%AB%98%E7%AE%A1%E6%95%99%E8%82%B2+%E8%AF%BE%E7%A8%8B+%E5%AD%A6%E8%B4%B9+%E5%AE%98%E6%96%B9+2026'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_McTfDZwmVLQaXWg830gExOy0",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=%E4%B8%8A%E6%B5%B7+%E5%88%9B%E4%B8%9A+%E5%8A%A0%E9%80%9F%E5%99%A8+XNode+program+official+startup+2026'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_YbRDnY63JZFlyzyV4VhdhsI2",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=Shanghai+startup+incubator+accelerator+official+Zhangjiang+2026+English'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_ZJNe3JtyVnw4rjZR4Bs8wrL2",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=Shanghai+startup+networking+mentoring+Startup+Grind+Shanghai+official+2026'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_vhaF2A6FKoKeaw7Qwn2yVeXf",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=Entrepreneurs+Organization+Shanghai+accelerator+eligibility+official'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_BxVRh6jAnYfJD5BajlugHEC5",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=HBS+Online+Entrepreneurship+Essentials+official+duration+price+2026'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_XbnYORsjLv4oQduvK6N2aLUK",
+      "content": "Error: Tool 'web_search' failed with HTTPStatusError: Client error '403 Forbidden' for url 'https://html.duckduckgo.com/html/?q=MITx+entrepreneurship+online+course+official+Entrepreneurship+101+duration+cost+edX'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Continue with available context, or choose an alternative tool.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://online.hbs.edu/courses/entrepreneurship-essentials/"
+      },
+      "id": "call_m9DYtVBLNuR4MUURqdfZCnhh"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.edx.org/learn/entrepreneurship/massachusetts-institute-of-technology-entrepreneurship-101-who-is-your-customer"
+      },
+      "id": "call_1W0SSA0rcVydL7CHAP78eC0c"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.techstars.com/accelerators"
+      },
+      "id": "call_0yMIje4fprA6nhyeBYFkDVcF"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ycombinator.com/apply"
+      },
+      "id": "call_oD7IC3Y0PkJ7T5YwglBQlhkx"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ycombinator.com/deal"
+      },
+      "id": "call_lNiBPpimDHWHmUOLSlc7kMmr"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis"
+      },
+      "id": "call_7wxh6qxpWqADgvnjuilEOIAS"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://steveblank.com/2013/05/06/the-lean-launchpad-educators-course/"
+      },
+      "id": "call_KeY9cT8ckWBioNng9RnFYJUW"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_m9DYtVBLNuR4MUURqdfZCnhh",
+      "content": "Error fetching https://online.hbs.edu/courses/entrepreneurship-essentials/: ValueError: Response exceeds 2000000 bytes",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_1W0SSA0rcVydL7CHAP78eC0c",
+      "content": "Error fetching https://www.edx.org/learn/entrepreneurship/massachusetts-institute-of-technology-entrepreneurship-101-who-is-your-customer: HTTPStatusError: Client error '404 Not Found' for url 'https://www.edx.org/learn/entrepreneurship/massachusetts-institute-of-technology-entrepreneurship-101-who-is-your-customer'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_0yMIje4fprA6nhyeBYFkDVcF",
+      "content": "# Startup Accelerator Programs & Funding\n\n![](https://cdn.bfldr.com/70W92OEX/at/3m5vn8858jjq9xxs4jpnswtz/Demo23Day_-134_3.jpg?format=jpg)\n\nACCELERATORS\n\nTechstars Accelerators\n----------------------\n\nWhether you're building in a specialized industry or a thriving startup city, Techstars Accelerators connect you with the network, mentorship, and capital you need to grow.\n\nVerticals\n---------\n\nThe sectors where we are doubling down and can offer founders the deepest access to capital, domain expertise, and partnerships.\n\nAccelerators\n------------\n\nLaunch in a leading startup hub and connect with the investors, mentors, and networks that help startups scale.\n\n![Techstars founder pitching](https://cdn.bfldr.com/CBWQP80B/at/53c58kgthkqsfs247qm52mqq/founder_pitch_white_suit.png?format=png)\n\nReady to Apply to Techstars?\n----------------------------\n\nTechstars Accelerators give early-stage startups three months of intensive, mentorship-driven support, connecting you with the specialized expertise, global community, and capital you need to grow faster.\n\n[Apply Today](https://apply.techstars.com/)\n\n![Matt Oppenheimer](https://cdn.bfldr.com/CBWQP80B/at/qec87r-2m3zlc-1bhxe1/630x360Remitly-Matt-Oppenheimer-Shivaas-Gulati-Josh-Hug.png?format=png)\n\n> “None of this would have been possible without Techstars.”",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_oD7IC3Y0PkJ7T5YwglBQlhkx",
+      "content": "# Apply to YC | Y Combinator\n\nY Combinator is accepting applications for the Winter 2027 Batch funding cycle. The batch will take place from January to March in San Francisco.\n\nYou can also apply to future batches (Spring, Summer, and Fall) now - see more at [Early Decision](/early-decision).\n\nThe deadline to apply on-time is November 2 at 8pm PT; if you apply before the deadline, you will get a decision by December 11. If you apply after the deadline, we will still consider the application but can't promise exactly when we'll get back to you.\n\nAbout applying to YC\n--------------------\n\nIf you want to apply, please submit your [application online](https://apply.ycombinator.com/home).\n\nPeople who applied before the regular deadline will hear back by December 11. If you apply after the deadline, we'll still consider the application but can't promise exactly when we'll get back to you.\n\nWe encourage you to submit your application as soon as you're ready to apply.\n\nIf your application is promising, we will invite you to interview with us. Most interviews will be held by video conference in November and December. We typically make decisions the same day as your interview, and we give everyone who interviews detailed feedback on our decision.\n\nWe invest in companies as soon as they are accepted; we do not wait for the batch to start.\n\nAbout the batch\n---------------\n\nThe batch will take place in-person at YC's campus in San Francisco. It starts with a 3-day, in-person kick-off and features regular meetups in San Francisco. For more information, please read our [FAQs](/faq).\n\nDuring the batch, we invite eminent people from the startup world to speak. The founders of OpenAI, Airbnb, Stripe, and Doordash often come back to tell the inside story of what happened in the early days of their startups.\n\nEvery company works with a dedicated [YC General Partner](/partners), who gets to know them well and can help with a wide range of issues. Every YC general partner is a successful startup founder themselves, has advised hundreds of startups, and works closely with a small group of startups they personally hand-select every batch. [YC companies](/companies) are in a direct slack channel with their partner and meet weekly during the batch.\n\nSimilar to how many universities have a house model, each YC batch is actually several small, autonomous groups of companies. You go through YC as part of this small group of companies, have dinner with them each week, and build both personal and professional relationships. Many founders build lifelong friendships with the founders in their group.\n\nDuring and after the batch, we introduce founders to people who can help with any challenge. Often, this means founders of other YC companies. Today, The [YC alumni community](/about#community) is one of the most powerful communities in the world, and its members have a strong commitment to help one another.\n\nEach YC company gets access to $12M+ in free credits and deals from top partners, including OpenAI, Anthropic, AWS, Google Cloud, Azure, Stripe, and a long list of others.\n\nTowards the end of the batch, we help companies raise additional funds by introducing them to YC's extensive network of investors.\n\nYC doesn't end after 3 months. We continue to help founders for the life of their company, and beyond — and so does the YC alumni community. [Read more here](/about#advice).\n\nIf you have other questions, reach out via [email](mailto:apply@ycombinator.com).",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_lNiBPpimDHWHmUOLSlc7kMmr",
+      "content": "# The Y Combinator Standard Deal | Y Combinator\n\nYC's Standard Deal\n------------------\n\nWe have a standard deal for every company that is accepted to Y Combinator. We invest $500,000, and our investment gives YC 7% of your company plus an incremental equity amount that will be fixed when you raise money from other investors.\n\nThe YC investment is not contingent on hitting any milestones, and we do not wait until the batch program starts to invest. The day a company is accepted to YC, we commit to investing our standard deal and begin the process to do so immediately.\n\nIn addition to the YC investment, YC companies receive access to a wide range of resources. Here is a [full list](https://www.ycombinator.com/about) of the benefits and resources available to YC founders.\n\nThe Math\n--------\n\nThe way it works is this: we invest $500,000. $125,000 of our investment converts into a fixed 7%, and the other $375,000 is invested on an uncapped MFN SAFE.\n\nIf you're not familiar with uncapped MFN SAFEs, here's a quick example. In a typical scenario where you raise your next SAFEs at a $15M post-money valuation cap, the $375,000 MFN SAFE would convert into $375,000 / $15,000,000 = 2.5% of the company.\n\nYC also gets a right to continue to invest in subsequent rounds of financing you raise (a \"pro rata\" right). In many cases we have invested millions of dollars in companies by continuing to support them in later rounds.\n\nFinally, it's sometimes hard to compare offers from different accelerators. Importantly, we don't charge any fees to the companies to be part of YC. We understand the complex reasons that cause some accelerators to charge fees to the companies that participate in their programs, and while we don't think it's bad behavior, obviously founders should deduct those fees from the investment when they're thinking about those offers. We also try hard to avoid any \"gotcha\" terms like enhanced returns in downside exit scenarios and similar provisions.\n\nDetails of the investment\n-------------------------\n\nThis section sets out the details and mechanics of YC's investment, for those who are interested.\n\nOur $500K investment is made on 2 separate SAFEs at the same time, with an accompanying YC Agreement:\n\n* We invest $125,000 on a post-money SAFE in return for 7% of your company (the \"$125k SAFE\")\n* We invest $375,000 on an uncapped SAFE with a Most Favored Nation (\"MFN\") provision (the \"MFN SAFE\")\n* The YC Agreement sets out some YC-specific guidelines and rights, including a participation right to invest in the company's future financing rounds.\n\nIn this SAFE Conversion Financing, assuming all of the company's outstanding SAFEs were issued on a post-money basis, 3 things will happen simultaneously in the round - though the calculations are ordered specifically, as follows:\n\n1. All SAFEs and other convertible instruments convert into preferred shares\n2. A stock option pool is created or increased to a pre-agreed percentage of the company\n3. New money is invested in the company\n\nYC's $125k SAFE will convert in the priced round into 7% of the company's equity (including any existing option pool) after all the SAFEs and other convertible instruments have converted in conjunction with the priced round.\n\nYC's MFN SAFE will automatically convert in the priced round on the terms of the lowest cap SAFE (or other most favorable terms, such as a discount) issued between the specific MFN start date (around the start of the batch) and the priced round.\n\nThe priced round itself, and the creation or increase of the stock option pool, will dilute YC's ownership.\n\nThe pro rata right, mentioned above, means YC has the right to purchase a portion of the new money securities issued in the financing in order to help maintain our ownership stake. If we exercise the pro rata right, step #3 then includes our additional new money investment.\n\nAdditional Future Financing Rounds: When you conduct subsequent rounds of financing, we continue to have a participation right to help maintain our ownership stake.\n\nIncorporating\n-------------\n\nWe invest in US, Canada, Cayman, and Singapore corporations. If you haven't incorporated a company yet, don't worry about it; we will help you do that if you are accepted to YC.\n\nWe have startups that apply to YC from all around the world and many have already incorporated in their home countries. If you've already incorporated your startup in another country that is not one of the four above, you will need to \"flip\" your corporate structure to have a parent company in one of those four countries. In these cases, we introduce founders to lawyers who can work out the best process for doing this. Often, the original entity will become a subsidiary of a new parent company and will continue to operate in the startup's home country; the parent company will be the ultimate owner of all your startup's intellectual property and assets, but IP can be held at the subsidiary or parent level – that's your choice.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_7wxh6qxpWqADgvnjuilEOIAS",
+      "content": "# Plan your business - Small Business Administration\n\nThere’s no right or wrong way to write a business plan. What’s important is that your plan meets your needs.\n\nMost business plans fall into one of two common categories: traditional or lean startup.\n\nTraditional business plans are more common, use a standard structure, and encourage you to go into detail in each section. They tend to require more work upfront and can be dozens of pages long.\n\nLean startup business plans are less common but still use a standard structure. They focus on summarizing only the most important points of the key elements of your plan. They can take as little as one hour to make and are typically only one page.\n\nUse our tips to build your own business plan, or download examples.\n\n#### Traditional business plan\n\nThis type of plan is very detailed, takes more time to write, and is comprehensive. Lenders and investors commonly request this plan.\n\n#### General guidance\n\nYou might prefer a traditional business plan format if you’re very detail-oriented, want a comprehensive plan, or plan to request financing from traditional sources.\n\nWhen you write your business plan, you don’t have to stick to the exact business plan outline. Instead, use the sections that make the most sense for your business and your needs. Explore the nine most common sections, or download fictional examples of a traditional business plan from Rebecca, who owns a consulting firm, or Andrew, who owns a toy company.\n\n#### Common traditional business plan sections\n\n##### Executive summary\n\nBriefly tell your reader what your company is and why it will be successful. Include your mission statement, your product or service, and basic information about your company’s leadership team, employees, and location. You should also include financial information and high-level growth plans if you plan to ask for financing.\n\n##### Company description\n\nUse your company description to provide detailed information about your company. Go into detail about the problems your business solves. Be specific, and list out the consumers, organization, or businesses your company plans to serve.\n\nExplain the competitive advantages that will make your business a success. Are there experts on your team? Have you found the perfect location for your store? Your company description is the place to boast about your strengths.\n\n##### Market analysis\n\nYou’ll need a good understanding of your industry outlook and target market. Competitive research will show you what other businesses are doing and what their strengths are. In your market research, look for trends and themes. What do successful competitors do? Why does it work? Can you do it better? Now’s the time to answer these questions.\n\n##### Organization and management\n\nTell your reader how your company will be structured and who will run it.\n\nDescribe the [legal structure](https://www.sba.gov/counseling/launch-your-business/#business-structure) of your business. State whether you have or intend to incorporate your business as a C or an S corporation, form a general or limited partnership, or if you’re a sole proprietor or limited liability company (LLC).\n\nUse an organizational chart to lay out who’s in charge of what in your company. Show how each person’s unique experience will contribute to the success of your venture. Consider including resumes and CVs of key members of your team.\n\n##### Service or product line\n\nDescribe what you sell or what service you offer. Explain how it benefits your customers and what the product lifecycle looks like. Share your plans for intellectual property, like copyright or patent filings. If you’re doing [research and development](#market-research) for your service or product, explain it in detail.\n\n##### Marketing and sales\n\nThere’s no single way to approach a marketing strategy. Your strategy should evolve and change to fit your unique needs.\n\nYour goal in this section is to describe how you’ll attract and retain customers. You’ll also describe how a sale will actually happen. You’ll refer to this section later when you make financial projections, so make sure to thoroughly describe your complete marketing and sales strategies.\n\n##### Funding request\n\nIf you’re asking for funding, this is where you’ll outline your funding requirements. Your goal is to clearly explain how much funding you’ll need over the next five years and what you’ll use it for.\n\nSpecify whether you want debt or equity, the terms you’d like applied, and the length of time your request will cover. Give a detailed description of how you’ll use your funds. Specify if you need funds to buy equipment or materials, pay salaries, or cover specific bills until revenue increases. Always include a description of your future strategic financial plans, like paying off debt or selling your business.\n\n##### Financial projections\n\nSupplement your funding request with financial projections. Your goal is to convince the reader that your business is stable and will be a financial success.\n\nIf your business is already established, include income statements, balance sheets, and cash flow statements for the last three to five years. If you have other collateral you could put against a loan, make sure to list it now.\n\nProvide a prospective financial outlook for the next five years. Include forecasted income statements, balance sheets, cash flow statements, and capital expenditure budgets. For the first year, be even more specific and use quarterly — or even monthly — projections. Make sure to clearly explain your projections, and match them to your funding requests.\n\nThis is a great place to use graphs and charts to tell the financial story of your business.\n\n[Download Rebecca’s traditional business plan](https://www.sba.gov/document/support-rebeccas-business-plan-template-traditional)\n\n[Download Andrew’s traditional business plan](https://www.sba.gov/document/support-andrews-business-plan-template-traditional)\n\n#### Lean startup plan\n\nThis type of plan is high-level focus, fast to write, and contains key elements only. Some lenders and investors may ask for more information.\n\n#### General guidance\n\nYou might prefer a lean startup format if you want to explain or start your business quickly, your business is relatively simple, or you plan to regularly change and refine your business plan.\n\nLean startup formats are charts that use only a handful of elements to describe your company’s value proposition, infrastructure, customers, and finances. They’re useful for visualizing tradeoffs and fundamental facts about your company.\n\nExplore the nine most common sections, or download an example of a lean startup business plan written by a fictional business owner, Andrew, who owns a toy company.\n\n#### Common lean startup plan sections\n\nThere are different ways to develop a lean startup template. You can search the web to find free templates to build your business plan. We discuss nine components of a model business plan here:\n\n##### Key partnerships\n\nNote the other businesses or services you’ll work with to run your business. Think about suppliers, manufacturers, subcontractors, and similar strategic partners.\n\n##### Key activities\n\nList the ways your business will gain a competitive advantage. Highlight things like selling direct to consumers, or using technology to tap into the sharing economy.\n\n##### Key resources\n\nList any resource you’ll leverage to create value for your customer. Your most important assets could include staff, capital, or intellectual property. Don’t forget to leverage business resources that might be available to [women](https://www.sba.gov/about-sba/sba-locations/headquarters/office-of-entrepreneurial-development/#OWBO), [veterans](https://www.sba.gov/about-sba/sba-locations/headquarters/office-of-veterans-business-development/), [Native Americans](https://www.sba.gov/about-sba/sba-locations/headquarters/office-of-native-american-affairs/), and [HUBZone businesses](https://www.sba.gov/certifications/#hubzone).\n\n##### Value proposition\n\nMake a clear and compelling statement about the unique value your company brings to the market.\n\n##### Customer relationships\n\nDescribe how customers will interact with your business. Is it automated or personal? In person or online? Think through the customer experience from start to finish.\n\n##### Customer segments\n\nBe specific when you name your target market. Your business won’t be for everybody, so it’s important to have a clear sense of whom your business will serve.\n\n##### Channels\n\nList the most important ways you’ll talk to your customers. Most businesses use a mix of channels and optimize them over time.\n\n##### Cost structure\n\nWill your company focus on reducing cost or maximizing value? Define your strategy, then list the most significant costs you’ll face pursuing it.\n\n##### Revenue streams\n\nExplain how your company will actually make money. Some examples are direct sales, memberships fees, and selling advertising space. If your company has multiple revenue streams, list them all.\n\n[Download Andrew’s lean business plan](https://www.sba.gov/document/support-andrews-business-plan-template-lean)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_KeY9cT8ckWBioNng9RnFYJUW",
+      "content": "Error fetching https://steveblank.com/2013/05/06/the-lean-launchpad-educators-course/: HTTPStatusError: Client error '404 Not Found' for url 'https://steveblank.com/2013/05/06/the-lean-launchpad-educators-course/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://online.hbs.edu/courses/entrepreneurship-essentials/syllabus/"
+      },
+      "id": "call_TBoZo64KKWayiadK2jKhQOLT"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program/experience"
+      },
+      "id": "call_xsY8OXl3elCGZxJRgShcu0F6"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://executive.mit.edu/course/entrepreneurship-development-program/a056g00000URaa3AAD.html?request=true"
+      },
+      "id": "call_Xbe67D2ZG9wQTSOYPSyyrYEO"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.techstars.com/the-lineup"
+      },
+      "id": "call_c410SnSoXdNUBsDZN2Eg8m3A"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.techstars.com/accelerators/terms"
+      },
+      "id": "call_zH71IJzWnoaBhiiz9QlSTHAW"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.antler.co/residency"
+      },
+      "id": "call_szn4RW7aJITDGZ7ttUfHWVAY"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.micromentor.org/"
+      },
+      "id": "call_7F8TvBffHhYeBBm3RwbWPEyG"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.adplist.org/"
+      },
+      "id": "call_NhnFk6cVqprRYL9FkpCfpa8A"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.eonetwork.org/eo-accelerator"
+      },
+      "id": "call_a52NGNuFxptVkQBIxv7dOJOD"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.startupgrind.com/shanghai/"
+      },
+      "id": "call_wuyTdKFyiOBeg74WhztwYlfm"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_TBoZo64KKWayiadK2jKhQOLT",
+      "content": "Error: Insufficient readable content (56 characters) from https://online.hbs.edu/courses/entrepreneurship-essentials/syllabus/",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_xsY8OXl3elCGZxJRgShcu0F6",
+      "content": "Error fetching https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program/experience: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program/experience'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_Xbe67D2ZG9wQTSOYPSyyrYEO",
+      "content": "# Artificial Intelligence: Implications for Business Strategy\n\nThis online program from the MIT Sloan School of Management and the MIT Computer Science and Artificial Intelligence Laboratory (CSAIL) challenges common misconceptions surrounding AI and will equip and encourage you to embrace AI as part of a transformative toolkit. With a focus on the organizational and managerial implications of these technologies, rather than on their technical aspects, you’ll leave this course armed with the knowledge and confidence you need to pioneer its successful integration in business. Our curriculum has recently been refreshed to include the most modern and in-demand AI skills that allows our learners to meet growing demand for AI professionals.\n\nWhat is artificial intelligence (AI)? What does it mean for business? And how can your company take advantage of it? This online program, designed by the [MIT Sloan School of Management and the MIT Computer Science and Artificial Intelligence Laboratory (CSAIL)](https://www.csail.mit.edu/), will help you answer these questions.\n\nThrough an engaging mix of introductions to key technologies, business insights, case examples, and your own business-focused project, your learning journey will bring into sharp focus the reality of central AI technologies today and how they can be harnessed to support your business needs.\n\nFocusing on key AI technologies, such as machine learning, natural language processing, generative AI, and robotics, the course will help you understand the implications of these new technologies for business strategy, as well as the economic and societal issues they raise. MIT expert instructors examine how artificial intelligence will complement and strengthen our workforce rather than just eliminate jobs. Additionally, the program will emphasize how the collective intelligence of people and computers together can solve business problems that not long ago were considered impossible.\n\nWe do not recommend this program if you have already completed the *Navigating AI: Driving Business Impact and Developing Human Capability* course, as there is overlap, unless you are seeking a refresher of the content.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_c410SnSoXdNUBsDZN2Eg8m3A",
+      "content": "Error fetching https://www.techstars.com/the-lineup: HTTPStatusError: Client error '404 Not Found' for url 'https://www.techstars.com/the-lineup'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_zH71IJzWnoaBhiiz9QlSTHAW",
+      "content": "Error fetching https://www.techstars.com/accelerators/terms: HTTPStatusError: Client error '404 Not Found' for url 'https://www.techstars.com/accelerators/terms'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_szn4RW7aJITDGZ7ttUfHWVAY",
+      "content": "# Antler | Where Founders Go Further, Faster\n\nAntler is a global early-stage VC investing in the world's best founders from first check to IPO.\n-------------------------------------------------------------------------------------------------\n\n![Lovable](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/693fbd6f63da46b62e96bcbb_lovable-logo.png)\n\n![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a328e3bd4eb0334ece64e56_lovable-icon.png)\n\n![Lovable](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/693fbd6f63da46b62e96bcbb_lovable-logo.png)\n\n![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a328e3bd4eb0334ece64e56_lovable-icon.png)\n\n![Lovable](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/693fbd6f63da46b62e96bcbb_lovable-logo.png)\n\n![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a328e3bd4eb0334ece64e56_lovable-icon.png)\n\n![Lovable](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/693fbd6f63da46b62e96bcbb_lovable-logo.png)\n\n![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a328e3bd4eb0334ece64e56_lovable-icon.png)\n\n![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a328e3bd4eb0334ece64e56_lovable-icon.png)\n\n![Lovable](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/693fbd6f63da46b62e96bcbb_lovable-logo.png)\n\n![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a328e3bd4eb0334ece64e56_lovable-icon.png)\n\n![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a328e3bd4eb0334ece64e56_lovable-icon.png)\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c57c5fffe6599e0bf801_airalo-logo-white.png)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a44e4156900543a309fc321_Airalo-no-logo.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a44e4a168ced4eff5c96d07_bahadir.avif)](https://www.airalo.com/)\n\nAiralo is the world's first e-Sim unicorn, with the largest global eSim range.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a328a6dda3722e8ab39bd72_lovable-logo-white2.png)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c3ccc97c6d3176bd1261_portfolio_slide_lovable.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)](https://lovable.dev/)\n\nLovable is the world's leading platform for building software with AI.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c5bcfffc9269f07d3c0b_wrtn-logo-white.png)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a3f93eed9af6793d09bcefc_Wrtn-no-logo.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a3f91a5365b78bfbfe82a6c_wrtn-founder.avif)](https://wrtn.ai/)\n\nWrtn is redefining how millions of people across Asia use AI every day.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c91f2ad8ac5a41d0d49e_fluidstack_logo_white.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c9210cadbb6c511259ee_portfolio-slide_Fluidstack.avif)](https://fluidstack.io/)\n\nFluidstack powers the next generation of AI with the world's leading GPU cloud.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c87197ee2a01667377a4_micro1_logo_white.png)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c82dff61b85d685c0765_portfolio-slide_Micro1.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a3fea095002304ea70bfdc2_ali%20ansari.avif)](https://www.micro1.ai/)\n\nmicro1 is reinventing global hiring with an AI-native platform.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33cc43c5a0e61045edb6f0_salmon_logo_white.png)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33cc3e1842a5fa938a8895_portfolio-slide_Salmon.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)](https://salmon.ph/)\n\nSalmon is redefining banking and credit for millions of Filipinos.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a467042ab40162ae3a3ce74_peec-ai-logo-white.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a476ab724c7cdccff422af6_Peec-portfolio-card-no-logo.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a476adf7ec77946de1df6a9_marius.avif)](https://peec.ai/)\n\nPeec AI helps thousands of brands get discovered through AI search, and is one of Europe's fastest-growing companies.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a467042b6cc4bfd481bc386_hifi-logo-white.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a467043043fa45878bbbe21_Hi-fi-portfolio-card.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)](https://www.hifi.com/)\n\nHIFI is building the next generation of global payments infrastructure, powered by stablecoins.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a467042e242083a90032436_harper-logo-white.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a476f7550d93a822f914494_Harper-portfolio-card-no-icon.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a47736b2468a366e380699c_dakota-harper-ai.avif)](https://www.harperinsure.com/)\n\nHarper is transforming commercial insurance with AI, turning weeks of manual work into a 24 hour process.\n\n[![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c6fc74b66de6e5d3a072_pixverse_logo_white.png)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/6a33c75c8fab71185e57456d_portfolio_slide_Pixverse.avif)![](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/69c0ad48390f804523eb375c_Arrow.svg)](https://app.pixverse.ai/)\n\nPixVerse is redefining how the world creates video with AI.\n\nFurther *—faster*\n-----------------\n\nAntler is active across 30 locations globally, where we specialise in early-stage investments. We have the world’s fastest growing portfolio of AI companies.\n\n![founder-speaking-makeing-gesture](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/68d9e11d1cd6352b166d0c55_founder-speaking-makeing-gesture.avif)\n\n![antler investor speaking and holding a paper.](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/68c11320a40a0756230defe3_antler%20investor%20speaking%20and%20holding%20a%20paper.avif)\n\nAI founders\n-----------\n\nIf you’re looking to build the next category-defining company, there’s no better place to pursue your ambition.\n\nFor investors\n-------------\n\nJoin our global network of investors backing ambitious founders from inception.\n\nPORTFOLIO\n---------\n\nLearn more about Antler's early-stage investments from around the world.\n\nFind your location\n------------------\n\nExplore Antler locations around the world and find the best place to start and scale your company.\n\n![brisbane city skyline](https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/691fffc4edb05a06d2f82e5d_brisbane-city-skyline.avif)\n\nBUILD AND SCALE A *CATEGORY-DEFINING* COMPANY\n---------------------------------------------\n\nWith a presence in major technology ecosystems across the world we back the most driven entrepreneurs and give them the platform, capital, and community needed to create lasting impact.\n\n1,800\n\nportfolio companies\n\n12,000+\n\nfounder community\n\n26\n\nlocations worldwide\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/6a4393034f33bd54153f173d_wrtn-thumbnail.avif)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85efb051288798c8f8c3b_688ac9d3f34215e1d3cee174_wrtn%2520logo.avif)\n\nBacked by $73.5M in Series B funding, Wrtn is one of Asia’s most ambitious consumer AI companies.\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/69ef2e5c66ecb893a8913529_original-38FE9E41-687E-479F-B39E-674CDA811634%20(1)%20(2)%20(1).jpg)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/69ef2f7369eaa4a13d805c78_download%20(1).png)\n\nSalmon has raised $100M to build a digital bank for the Philippines’ mobile-first generation to redefine banking and credit for millions of users.\n\n‍\n\n‍\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85ef9dd879d8a97fe8c15_686e18cbb143d2c291a88ed8_Bahadir%25204%2520(1).avif)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85ef9dd879d8a97fe8c11_688ac9a9eed9538f85383b2c_Airalo.avif)\n\nAhmet Bahadir Ozdemir, CEO of the eSIM industry’s first unicorn, credits a down-to-earth approach for his company’s stunning rise.\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/69b8157061daf6128b70134c_Harper%20Founders%20Picture%20(7)%20(1)%20(1)%20(1).jpg)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/69b8165972a7f3f6ff265621_harper_name_logo.svg)\n\nHarper has raised $46.8M to rebuild commercial insurance from the ground up, replacing manual workflows with an AI-native operating model.\n\n‍\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85ef9dc7d9b9764a69a85_6880d8dd7e7d4a6e2bc85415_IMG_3106.avif)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85ef9dc7d9b9764a69a81_688acaa7dd3a8e17576ff465_Hifi%2520bridge%2520logo.avif)\n\nZach Walsh is shaking up FinTech with Stablecoins.\n\n‍\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85efb682a0e1eead3134a_67fde8c22fe8668181171407_AFR_Tactiq%2520Founders%2520Photo%25203%2520(1).avif)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85efb682a0e1eead3134d_688ac9eef37a84121b527c12_Taqtic%2520logo.avif)\n\nTactiq enables teams to capture insights from work meetings with AI-powered transcripts and detailed summaries — helping organizations access knowledge and share the right information quickly.\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85efacd62cde89ae97a9a_689c56faee18cc1a006e9d4b_cropped-Rama%2520Afullo%2520LinkedIn%2520Headshot.avif)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85efbcd62cde89ae97a9e_689c5795b4b3c6108944eb35_1725955623061-Satlyt%2520Logo%2520Social%2520Media%2520-%25201%2520Line.avif)\n\nAfter a career at SpaceX, Tesla and Google, Rama Afullo is now building an “Android for space” infrastructure layer for satellites.\n\n‍\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85ef9e2a4dba6d68b5429_67fc7ca4ef983d1659918423_Christian%252C%2520founder%2520of%2520fileAI.avif)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/68f85ef9e2a4dba6d68b542d_688aca1a9c0d0780699c0421_fileai%2520logo.avif)\n\nfileAI has raised $20M to tackle one of enterprise software’s most persistent problems: messy, unstructured business data.\n\n**‍**\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/69fdcaa70e9889939baa2ca8_Spiraldothealth-(1)%20(4).jpg)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/69fdcbb3783cdae3a60968e7_spirallogo.jpeg)\n\nTalha Basit is building the AI infrastructure for modern cancer care — helping clinicians make faster, more informed treatment decisions.\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/69a958e4d2e608c9f0058c96_20250718_100322_229268%20(1).jpg)\n\n![](https://cdn.prod.website-files.com/68d622fc073c7e5dead1105e/69a953fc790dbb994114d9f1_1740587948831.jpeg)\n\nIn just 18 months, Rebolt has grown from an idea i",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_7F8TvBffHhYeBBm3RwbWPEyG",
+      "content": "# Micromentor\n\nGrow your small business with advice from expert mentors\n--------------------------------------------------------\n\nMicromentor connects entrepreneurs with experienced, volunteer mentors, so they can grow their businesses with confidence.\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/3d5e3aba-c401-4fbd-85a6-5f44ce8d0e23/_-14.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/860384d2-4a42-49f8-918f-699e2fbb0541/Header-05.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/15fca132-a522-4335-802c-18b5b994bed2/nombres-11.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/293595fb-115a-4754-93fe-91697996cdf0/Header-06.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/7df0834b-079d-489e-a201-de7ad55f3835/Header-07.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/ad4d479c-9b86-46f4-9ea6-db5249494708/Header-09.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/be12fd80-a50e-4d38-9c54-4b8a398488ee/Header-04.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/8265269c-aac0-4bef-9e3e-2d37e24e5555/Header-03.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/f89fa6dd-aa61-4e8b-9153-7acf2b55c109/Header-10.png)\n\n*We offer free volunteer guidance and advice, but we do not provide funding or loans.*\n\nSmall businesses. Big dreams.\n\n* Eric, a seasoned entrepreneur and *super mentor*, values preparation. Having built and sold four companies, he pushes mentees to come prepared—ensuring every session is productive.\n* After 18 years in the Mexican food business, Adriana hit post-pandemic struggles. Mentors helped her rethink customer engagement and regain confidence in her brand’s unique identity.\n* Carrie, a Brain Health Expert and Life Coach, struggled with marketing. With guidance from MicroMentor mentors, she transformed her website and brand, gaining confidence to promote herself.\n* Natasha, a U.S. entrepreneur, struggled to grow her skincare business. With her mentor’s help, she refined pricing, expanded online, and built a loyal customer base.\n* At 42, Aduojo from Nigeria gave his feed business a boost with help from two mentors—one secured funding while the other strengthened his customer service and leadership.\n* At the helm of a digital transformation startup, Adriana found clarity through mentorship. With guidance on financial planning and business modeling, she's now better organized and ready to scale her venture.\n* Salam's \"Fitnessyogis,\" an online blend of yoga and fitness, hit a snag with monetization. His mentor, after sizing up the competition, recommended switching from subscriptions to one-time packages.\n* Hamsa moved from IT development to launching *Youniche Shop*, a store for custom handicrafts. With two MicroMentor mentors, she tackled startup logistics, market research, and successfully launched.\n\n20\n--\n\nHours of mentoring received per entrepreneur on average\n\nSurvival rate for early-stage mentored entrepreneurs\n\n83%\n---\n\nMentored entrepreneurs create twice as many new jobs as solo entrepreneurs\n\n2x\n--\n\nOf entrepreneurs do not have access to any other business development resources outside of Micromentor\n\n66%\n---\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/fb45ddf7-6493-420e-ba70-e1fe4a775335/Map_+Burbuja-05.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/f72ab805-2565-4013-9e4f-f3fbac5b1059/Mapa_+Fin-02.png)\n\n### Entrepreneurs\n\n• Business growth through mentorship\n\n• Strategic 1:1 advice for your journey\n\n• Free forever, for everyone\n\n### Business mentors\n\n• Build a smart, supportive network\n\n• Develop leadership and analytical skills\n\n• Make an impact like never before\n\n### How does it work?\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/a5dec788-5d6b-4f80-a3ab-45222742b7f4/Icons-11.png)\n\n#### Sign up\n\nComplete your profile as an entrepreneur or mentor, explain who you are, and outline your objectives.\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/7e4eae59-b942-43ce-883f-9496cc8f10a7/Icons-12.png)\n\n#### Search and select\n\nBrowse our community to find your ideal mentoring match.\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/fa656f70-3dba-45d6-8dcd-7f9603087209/Icons-13.png)\n\n#### Connect and grow together\n\nSend a compelling message requesting or offering your help.\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/971889f5-a847-44f0-b78a-ee7d1a9727e6/Cel.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/3aceee97-33cd-41cb-95ad-1342e8ba9437/phonematching.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/b0753184-466f-4630-b345-57bf1d7b9e2b/phonetailored.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/d5c3f535-8633-45db-a19d-4d062dfb26a2/phonecourses.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/2098cc92-b888-454d-b401-e3f96636a8ad/phonefree.png)\n\n![](https://images.squarespace-cdn.com/content/v1/670009b17a5a1b5c1124f7e4/64d124f0-118f-479b-abcf-a8023c74b3e9/Cell-07.png)\n\n### Micromentor delivers proven outcomes for small businesses around the world\n\nSince 2008, we have brought business mentorship to a global scale, fostering connections between entrepreneurs and mentors. Together, our community collaborates to launch, grow, and adapt resilient businesses.\n\nStart\n\nConnect\n\nGrow\n\n*We offer free volunteer guidance and advice, but we do not provide funding or loans.*",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_NhnFk6cVqprRYL9FkpCfpa8A",
+      "content": "Error fetching https://www.adplist.org/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.adplist.org/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_a52NGNuFxptVkQBIxv7dOJOD",
+      "content": "# EO Accelerator: Scaling Startups to $1M+ | Entrepreneurs' Organization\n\n![](/media/vcjns4w2/greek_accelerator_launch_1.png?cc=0.4516771280654766,0,0.311384452864975,0&width=390&height=788&v=1db2a2b67230430)\n\nEO Accelerator\nEmpowering Early-Stage and First-Time Entrepreneurs\n------------------------------------------------------------------\n\nSuccess Stories: Hear from Our Accelerator Graduates\n----------------------------------------------------\n\nOur Accelerator program has empowered thousands of early-stage entrepreneurs to achieve their  \n business goals. Here's what some of our graduates have to say about their experience:\n\n![](/media/3m0j4h1g/success-stories-1.png?width=2880&height=1340&v=1db3060943f4650)\n\nEOA has taught me the potential of my business and at the same time has given me the tools to achieve it with talks and examples from colleagues. Along the way I have achieved incredible networking.\n\n**María Inaly Morazán**, *EOA Nicaragua*\n\n![](/media/c0tdn1mr/maria.png)\n\n![](/media/m33brbxh/ale.png)\n\nEOA allowed me to grow my professional network in multiple ways… It also gave me the opportunity to open myself to new people who have become very close to my inner circle. It was an incredible experience that shaped a lot of my current mentality.\n\n**Alejandro Zelaya**, *EOA Graduate, EO Guatemala member*\n\nEOA has taught me the potential of my business and at the same time has given me the tools to achieve it with talks and examples from colleagues. Along the way I have achieved incredible networking.\n\n**María Inaly Morazán**, *EOA Nicaragua*\n\n![](/media/c0tdn1mr/maria.png)\n\nEOA allowed me to grow my professional network in multiple ways… It also gave me the opportunity to open myself to new people who have become very close to my inner circle. It was an incredible experience that shaped a lot of my current mentality.\n\n**Alejandro Zelaya**, *EOA Graduate, EO Guatemala member*\n\n![](/media/m33brbxh/ale.png)\n\nAccelerator Curriculum: \nCatapulting Your Business to the Next Level\n--------------------------------------------------------------------\n\nOur curriculum is designed to address four key pillars crucial for business growth:\n\n![cash](/media/uazbrb3n/cash.png)\n\n### Cash: Accelerate Cash Flow to Fuel Growth (Q1)\n\nExamine cash acceleration strategies to manage the balance between growth and cash flow.\n\n![strategy](/media/dw5lmezw/strategy-icon.png)\n\n### Strategy: Create Sustainable Top Line Growth (Q2)\n\nLearn to develop a clear brand promise and create strategies for sustainable revenue growth.\n\n![people](/media/eqypkhfr/people.png)\n\n### People: Attract and Retain Top Talent (Q3)\n\nDiscover how to become a magnet for A-players who are dedicated to results, ensuring the right people are in the right seats.\n\n![execution](/media/3gkpiwyf/execution.png)\n\n### Execution: Develop a Strategic Advantage (Q4)\n\nTighten your execution habits to improve gross margins and profitability while reducing time to completion.\n\n![map](/media/ukkdypjh/mapplusdoodles.png)\n\nGlobal Presence for Startups Worldwide\n--------------------------------------\n\nEO Accelerator operates in more than 90 cities globally, supporting startup and early-stage businesses across diverse markets and industries.\n\n![map](/media/ukkdypjh/mapplusdoodles.png)\n\n![waves](/media/ydccjhko/wavesplusdoodles.png)\n\nJoin the Next Wave of Startup Success Stories\n---------------------------------------------\n\nEO Accelerator is more than a networking group or learning program. It is a launchpad for your business and entrepreneurial journey. Gain the knowledge, network, and support needed to scale your startup and join a global community of successful entrepreneurs.\n\n[Apply to EO Accelerator](https://member.eonetwork.org/eo-accelerator/accelerator-application-form \"Apply to Accelerator\")\n\n### Have More Questions?\n\nWe understand that you may have more questions about the EO Accelerator program. To help, we have compiled a [comprehensive FAQ page](/accelerator/faqs) to address common inquiries about eligibility, program structure, costs, and the path to EO membership.\n\n### Ready to Accelerate Your Startup's Growth?\n\nTake the first step toward transforming your startup into a thriving business. Apply now to join EO Accelerator and unlock your potential as a growing entrepreneur.\n\n[Join the Accelerator Program](https://member.eonetwork.org/eo-accelerator/accelerator-application-form \"Join the Accelerator Program \")",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_wuyTdKFyiOBeg74WhztwYlfm",
+      "content": "# Shanghai | Startup Grind\n\nStartup Grind, the largest independent startup community, actively educating, inspiring, and connecting entrepreneurs in over 600 chapters within 125+ countries. The cornerstone of our community is regular events featuring successful local founders, innovators, educators, and investors who share lessons learned on the road to building great companies. Founded in Silicon Valley, we nurture startup ecosystems through events, media, and partnerships, helping millions of entrepreneurs build their businesses, connect with strategic partners, and secure funding. Active in Shanghai since 2013, Startup Grind is one of the city’s most active and vibrant startup community, gathering entrepreneurs, platforms, corporates, VCs and other thought leaders to help fuel innovation, economic growth, and prosperity.\n\nStartup Grind (创业磨坊) 起源于硅谷，是世界上最大的独立创业者社区，在全球 125个国家积极地启蒙、激励和连接大家。自 2013 年成立起，我们在上海定期举办社区活动，邀请拿到结果的创始人、大企业创新者、投资人和各思想领袖，分享在创业创新路上的各种所学所想。我们通过日常活动、内容和合作伙伴关系，帮助创业者拓展业务、对接战略合作以及获得投资。\n\nThe Shanghai Flagship Chapter is currently run by PROPELLER, a cross-border innovation studio connecting China's AI and robotics ecosystem with global markets. We operate at the intersection of globalization, education, technology intelligence, and venture building. From strategic intelligence to executive immersion, from partner scouting to joint venture creation, we help global innovators move beyond surface-level narratives and engage directly with the people, technologies, and opportunities shaping the future.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ceibs.edu/execed"
+      },
+      "id": "call_a84PtN7EiYMs0R9feBXnNura"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://emba.sjtu.edu.cn/"
+      },
+      "id": "call_4a8Rg9giTYdqNIjPq06ymqS1"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.xnode.com/"
+      },
+      "id": "call_TYoy99QGEpaG2yebgJ5YLWtB"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.investsh.org.cn/"
+      },
+      "id": "call_XMU0JQnmZWG3iAKWz0Z7Uqwn"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.chinaccelerator.com/"
+      },
+      "id": "call_ytq21RTm70jbvlrGt7AFSeHm"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.nvca.org/model-legal-documents/"
+      },
+      "id": "call_hyvPz4yckmWz9HhFKTZUiBwr"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.strategyzer.com/library/the-business-model-canvas"
+      },
+      "id": "call_uNJ5fl1GiMd54CQS59LujKQx"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.designkit.org/methods/the-field-guide-to-human-centered-design"
+      },
+      "id": "call_a63PGM42yzbWowKIyBCCBbC9"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_a84PtN7EiYMs0R9feBXnNura",
+      "content": "# Introduction | CEIBS\n\n#### OPEN ENROLMENT PROGRAMMES\n\nThe open-enrolment programmes feature general management, leadership, strategy, finance, marketing and innovation. Instructors elaborate on core management concepts and share the best management practice. Efficient teaching methods, such as class instruction, case studies, tutoring, experience-based teaching, reflective teaching, and benchmarking, are aimed at enhancing middle-and-top managers’ leadership so that they can be well-placed to meet challenges in an ever-changing business environment.\n\n**[> All Open Enrolment Programmes](/open-enrolment-programmes)**\n\n#### COMPANY SPECIFIC PROGRAMME (CSP)\n\nCo-developed by CEIBS faculty and company executives, company-specific programmes can meet the needs for talent development. The programmes popular with participants feature leadership development, innovative capability, and strategies for fast-growing markets. CEIBS faculty share up-to-date research findings with domestic and overseas companies to help them grapple with challenges faced. The latest list of customers includes Colgate, Danone, GE Healthcare, Johnson & Johnson, L'Oréal, PepsiCo, Philips, Rio Tinto Group, JD.com, New Oriental and Tencent.\n\n**[> More Details](/execed/company-specific-programmes)**\n\n---\n\n#### Top-ranked open programmes in mainland China\n\nNo international business school knows China better, and no China-based school knows the world better. The CEIBS Executive Education offers companies our unique value proposition of unbeatable China knowledge matched with world-class business management learning. Our extensive Open Programmes and Company Specific Programmes have assisted more than 13,000 organisations and more than 220,000 executives in developing business leadership skills for today and the future.\n\n---",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_4a8Rg9giTYdqNIjPq06ymqS1",
+      "content": "# 上海交通大学安泰经济与管理学院EMBA首页\n\n* [![](/emba/static/20268/178816865444167522_16191587.jpg)\n\n  交大安泰EMBA“知行天下”论坛郑州举行，陆铭解读中国经济结构转型\n\n  2026年8月29日，由上海交通大学安泰经济与管理学院、上海交通大学郑州研究院、郑州市科学技术局联合主办，上海交通大学河南校友会、交大安泰EMBA河...\n\n  08-31](https://mp.weixin.qq.com/s/5CV0QYTrIA9bekVqrJXHVA \"交大安泰EMBA“知行天下”论坛郑州举行，陆铭解读中国经济结构转型\")\n* [![](/emba/static/20268/17859114016818721_674736458.jpg)\n\n  交大安泰EMBA知行天下深圳开讲，解码三大商业新风口\n\n  上海交大安泰经管学院经济系教授、上海交大中国发展研究院院长何帆作主旨分享，拆解新技术、全球化、人口结构三大变量下的商业破局逻辑。现场近百位...\n\n  08-05](https://mp.weixin.qq.com/s/YNESNZ0Vi0ybwKv1a77oUw \"交大安泰EMBA知行天下深圳开讲，解码三大商业新风口\")\n* [![](/emba/static/20266/178228457006169574_132296193.png)\n\n  笃志向新·智引未来 | 交大安泰EMBA 2026级新生领导力课程——开拓篇\n\n  6月13至14日，交大安泰EMBA2026级新生领导力课程“开拓篇”如约启幕，在东方绿舟进行了为期两天的深度熔炼。\n\n  06-24](https://mp.weixin.qq.com/s/XNEGQ4OSPiE0E0IzjYIMLQ \"笃志向新·智引未来 | 交大安泰EMBA 2026级新生领导力课程——开拓篇\")\n* [![](/emba/static/20266/NEW_178036462032375262_678560272.jpg)\n\n  交大安泰MBA/EMBA校友跨越山海、回归融慧\n\n  5月30日，上海交通大学安泰经济与管理学院MBA/EMBA校友返校日在徐汇校区举办，重返校园，初心如昔。\n\n  05-30](https://mp.weixin.qq.com/s/NbT1VWmCVnOK2s57ZItq4Q \"交大安泰MBA/EMBA校友跨越山海、回归融慧\")\n\n* [![](/emba/static/20269/17882447197947497_319396355.png)\n\n  交大安泰EMBA高管AI决策实践营（9月13日）\n\n  2002年，上海交通大学安泰经济与管理学院EMBA经国务院学位办批准，成为中国首批获准开办的EMBA教育项目。项目秉承上海交通大学“天地交而万物通,上...\n\n  09-13](/emba/act/97895.html \"交大安泰EMBA高管AI决策实践营（9月13日）\")\n* [![](/emba/static/20269/178824546312589475_249851915.jpg)\n\n  交大安泰EMBA E堂大课（9月19日）\n\n  2002年，上海交通大学安泰经济与管理学院EMBA经国务院学位办批准，成为中国首批获准开办的EMBA教育项目。项目秉承上海交通大学“天地交而...\n\n  09-19](/emba/act/97897.html \"交大安泰EMBA E堂大课（9月19日）\")\n\n* [![](/emba/static/news/alumni/202512/1764651683814350_936851328.png)\n\n  交大安泰EMBA校友走进金山区活动举行\n\n  在长三角一体化国家战略向纵深推进的关键时期，6月20日-6月21日，交大安泰EMBA校友会以 “聚势长三角 智启新金山” 为主题，组织70余位校友理事及代...\n\n  06-12](https://mp.weixin.qq.com/s/XidfLM9vvWD2oIOFUVgSNA \"交大安泰EMBA校友走进金山区活动举行\")\n* [![](/emba/static/news/alumni/202512/1764651596309121_501708122.jpg)\n\n  廿念同心 • 聚鹏城，思源致远 • 启新程 —— 交大安泰EMBA 2003春五班再聚首\n\n  2025年8月9日上午，交大安泰EMBA 2003春五班（深圳班）毕业20周年座谈会在上海交大深圳行业研究院举行。26 位校友从四面八方奔赴而来，与学院领导、...\n\n  08-09](https://mp.weixin.qq.com/s/D3hfd4mVa7XxD19VejkCng \"廿念同心 • 聚鹏城，思源致远 • 启新程 —— 交大安泰EMBA 2003春五班再聚首\")\n* [![](/emba/static/news/alumni/202512/176465137812577633_2218177.jpg)\n\n  心之所向 锐不可当 | 交大安泰戈20回归日欢庆凯旋！\n\n  热血淬炼，风华尽显。戈20，作为戈赛历程中意义非凡的整数年，对交大安泰而言，更是一次身心的深刻历练，一段真情凝聚的珍贵记忆。十月金秋，150名...\n\n  11-02](https://mp.weixin.qq.com/s/FiyEm8FCgu-ym6qeMtKoWQ \"心之所向 锐不可当 | 交大安泰戈20回归日欢庆凯旋！\")\n* [![](/emba/static/news/alumni/202512/NEW_176465105687935480_908250358.jpg)\n\n  校友组织动态 | 交大安泰EMBA羽协闪耀第十二届全球商学院羽球赛\n\n  当岭南的鼓声与羽球的破空声共振，当精英的智慧与竞技的激情碰撞，2025年11月7日至9日，第十二届“赖茅·李宁杯”全球商学院EMBA羽毛球赛在广州国家...\n\n  11-09](https://mp.weixin.qq.com/s/ZO7atc_Or_HkxAqP_vgWSw \"校友组织动态 | 交大安泰EMBA羽协闪耀第十二届全球商学院羽球赛\")",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_TYoy99QGEpaG2yebgJ5YLWtB",
+      "content": "Error fetching https://www.xnode.com/: ValueError: Error: URL host could not be resolved",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_XMU0JQnmZWG3iAKWz0Z7Uqwn",
+      "content": "# Invest Shanghai\n\n![](//www.investsh.org.cn/upload/article/file/2026-08-03/58c8707a-1ebd-42aa-afcb-87bf9bb7dd10.jpg)\n\nAction Plan for Stabilizing and Optimizing Utilization of Foreign Investment\n\n![](//www.investsh.org.cn/upload/article/file/2026-08-03/bb56a4a4-eba3-4655-86fc-832bd692ddea.jpg)\n\nMeasures to Support the Implementation of High-Caliber Projects by...\n\n![](//www.investsh.org.cn/upload/article/file/2026-08-03/8ee62e81-56f6-4fff-8896-cefdde5f87be.jpg)\n\nAction plan sets goals for offshore finance in Shanghai\n\n![](//www.investsh.org.cn/upload/article/file/2026-08-03/c01bbd4b-a42e-43e3-87fb-32cef4e0ca1e.jpg)\n\nA GUIDE TO WORKING AND LIVING IN CHINA FOR BUSINESS EXPATRIATES\n\n[![](//www.investsh.org.cn/upload/article/file/2026-07-29/a03b3013-ca7e-43db-8914-0f91e652878c.png)](https://www.investsh.org.cn/upload/kzktVideo/20260729xuanchuanpian.mp4)\n\nSHANGHAI LET'S MEET\n\nINVESTMENT DYNAMICS\n-------------------\n\n09/11\n\n09/11\n\n09/11\n\n09/11\n\n### MATCHMAKE\n\n* ![](/invest/front_res/en/images/high-end.png)\n* ![](/invest/front_res/en/images/Biopharmaceuticals.png)\n* ![](/invest/front_res/en/images/New materials.png)\n* ![](/invest/front_res/en/images/Modern.png)\n* ![](/invest/front_res/en/images/jcdl.png)\n* ![](/invest/front_res/en/images/vehicles.png)\n* ![](/invest/front_res/en/images/xcl.png)\n* ![](/invest/front_res/en/images/AI_IC.png)\n* ![](/invest/front_res/en/images/dzxx.png)\n\n### START-BIZ\n\n* ![](/invest/front_res/en/images/xmsl-1.png)\n* ![](/invest/front_res/en/images/xmsl-2.png)\n* ![](/invest/front_res/en/images/xmsl-3.png)\n* ![](/invest/front_res/en/images/xmsl-4.png)\n\n### LOCATE\n\n* ![](/invest/front_res/en/images/xmxz-2.png)\n* ![](/invest/front_res/en/images/xmxz-3.png)\n* ![](/invest/front_res/en/images/xmxz-4.png)\n* ![](/invest/front_res/en/images/xmxz-5.png)\n\n### EXPAND\n\n* ![](/invest/front_res/en/images/qyfz-1.png)\n* ![](/invest/front_res/en/images/qyfz-2.png)\n* ![](/invest/front_res/en/images/wstsfw.png)\n* ![](/invest/front_res/en/images/tsqy.png)\n\n[International\nEconomic\nCenter](#jjzx)\n[International\nFinancial\nCenter](#jrzx)\n[International\nTrade\nCenter](#myzx)\n[International\nShipping\nCenter](#hyzx)\n[International Science\nand Technology\nInnovation Center](#kjcxzx)\n\n* Shanghai ranks fifth among global cities by economic size\n* In 2025, Shanghai’s GDP reached RMB 5.67 trillion, up 5.4% year on year\n* The output value of strategic emerging industries grew by 6.5%, accounting for 45% of the total output value of industrial enterprises above designated size\n* The combined scale of the three leading industries—integrated circuits, biomedicine and artificial intelligence—exceeded RMB 2 trillion\n* Shanghai ranks fourth globally in the number of headquarters of Fortune Global 500 companies",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_ytq21RTm70jbvlrGt7AFSeHm",
+      "content": "Error fetching https://www.chinaccelerator.com/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.chinaccelerator.com/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_hyvPz4yckmWz9HhFKTZUiBwr",
+      "content": "Error fetching https://www.nvca.org/model-legal-documents/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nvca.org/model-legal-documents/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_uNJ5fl1GiMd54CQS59LujKQx",
+      "content": "# Business Model Canvas – Download the Official Template\n\nThe official tool · From the creators\n\nDescribe how your business creates, delivers, and captures value on one page. Then challenge it, redesign it, and compare it to the alternatives.\n\n*The playbooks show you how to run it with your team.*\n\n$299/yr · All playbooks and templates · 14-day money-back guarantee\n\n#1\n\nMost popular tool to learn innovation & entrepreneurship\n\n200k+\n\nCompanies guided by Strategyzer frameworks\n\nTop 10\n\nMost cited business  book of all time  *(Financial Times)*\n\n178+\n\nCountries where our processes help empower teams\n\nNot just a download\n\n### Guided methods\n\nStep-by-step guidance for applying Strategyzer’s methods with your team, instead of just filling in a static template on your own.\n\nOne connected system\n\n### The full Strategyzer toolkit\n\nThe Business Model Canvas, the Value Proposition Canvas, the Testing Card, the Portfolio Map, and more: Strategyzer’s full library of interconnected tools and methods, ready to use.\n\nNot just a download\n\n### Ready-to-run sessions\n\nFacilitation guides, agendas, and digital whiteboards so you can run a session with your team this week, not next quarter.\n\nWhy use the Business Model Canvas?\n----------------------------------\n\n**Describe a business model on one page**  \nNine blocks cover who you serve, what you offer, how you deliver it, what it costs, and what it earns. Fill it once for one business model, not for the whole company.\n\n**See how the pieces depend on each other**  \nThe right side is the market. The left side is what it takes to serve that market, with value propositions sitting between them. Move a customer segment and the channels, activities, and costs all have to move with it.\n\n**Treat it as a claim, not a plan**  \nCost structure and revenue streams only hold if the seven blocks above them are right. Date and version the canvas, then redraw it as evidence comes in.\n\nThe Business Model Canvas comes from the best-selling book [Business Model Generation.](https://www.strategyzer.com/library/business-model-generation) It's the most used tool in the world for innovation and entrepreurship.\n\nInside the subscription\n\nSee what a playbook actually looks like\n---------------------------------------\n\nA playbook is not a course, a template pack, or a consulting engagement. It’s guided work that takes your team through a proven Strategyzer method one step at a time.\n\nSee Strategyzer Playbooks in action\n\nFour playbooks built on this tool\n\nYou have the tool.  Here's what teams do next\n---------------------------------------------\n\nEach one is a session you can run with your team this week,   \nwith the agenda and whiteboard included.\n\nStrategy\n\n### Competing on Business Models\n\nCompeting on Business Models is a hands-on playbook that helps teams design, refine, and communicate business models that stand out and scale.\n\nInnovation\n\n### 10x your business model with AI\n\nLearn how to use AI and the world's best business model patterns to step-by-step strengthen, evaluate, and 10x your Business Model Canvas.\n\nInnovation\n\n### How strong is your business model?\n\nAssess every aspect of your completed Business Model Canvas using the Strategyzer Questions for Leaders Assessment.\n\nInnovation\n\n### Idea generation for customer-centric growth\n\nGenerate customer-centric ideas rooted in real needs and build cross-functional momentum around testable innovation opportunities.\n\nDownload the Business Model Canvas\n----------------------------------\n\nGet the official Strategyzer template, ready to use with your team.\n\n* **High-resolution PDF**, sized to print large and put on a wall\n* **Made for working sessions**, offsites, classrooms, and solo drafts\n* **Works either way**, describing a business you run or designing one you don't yet\n* **Free to download** and to share with anyone on your team\n\nFill the nine blocks, see where the model holds and where it doesn't, then decide what to change.\n\nReady to go further?\n\nStart with the tool. Go further with Strategyzer Playbooks.\n-----------------------------------------------------------\n\n$299/yr · Cancel anytime · Team plans available",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_a63PGM42yzbWowKIyBCCBbC9",
+      "content": "Error fetching https://www.designkit.org/methods/the-field-guide-to-human-centered-design: HTTPStatusError: Client error '404 Not Found' for url 'https://www.designkit.org/methods/the-field-guide-to-human-centered-design'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    }
+  ],
+  "final_text": "# Entrepreneurship learning strategy for the next 1–2 years\n\n## Executive recommendation\n\nGiven your MBA, management experience, marketing expertise, family responsibilities, and need to protect your primary income, the highest-value route is **not another general business degree at the outset**. It is a portfolio combining:\n\n1. **Targeted online or executive coursework** to fill founder-specific gaps—customer discovery, product/MVP development, startup finance, fundraising, equity, and early-stage team formation.\n2. **A real side-venture laboratory** in which you interview customers, test propositions, build prototypes, and attempt small paid pilots.\n3. **A small mentor group and Shanghai-based founder network** for accountability, technical/product advice, and local market knowledge.\n4. **A cohort-based non-degree program or accelerator only after you have evidence of a real problem, an initial product, and sufficient commitment.**\n\nA degree should remain an optional branch if you later decide that you need a major career transition, an overseas ecosystem, a technical co-founder pool, or a formal credential. An accelerator should be treated as a **venture-scaling mechanism, not an entrepreneurship course**.\n\nThe recommended baseline is a **12-month validation track at 6–8 hours per week**, followed by a conditional 6–12 months of deeper venture building. This keeps the plan compatible with your job and family while still producing meaningful evidence about whether, what, and when to launch.\n\n---\n\n## 1. Comparison of the principal routes\n\nCosts below are planning ranges rather than quotations unless a specific current program is cited. Fees, cohort formats, travel requirements, and accelerator investment terms should be rechecked before applying.\n\n| Route | Typical curriculum and experience | Time commitment | Cost and opportunity cost | Network and mentors | Hands-on value | Best use for you |\n|---|---|---:|---:|---|---|---|\n| **Entrepreneurship degree** | Innovation theory, venture finance, product development, business models, leadership, electives, team projects, incubator access | Usually 10–24 months; often 30–50+ hours/week if full-time | Commonly several hundred thousand RMB plus travel/living expenses and potentially a year of salary | Usually strong, especially where the school has engineering, science, venture-capital, and alumni ecosystems | Moderate to very high, depending on whether students must build and test a venture | Major transition into a new geography, sector, or entrepreneurial ecosystem |\n| **University non-degree certificate or cohort program** | Condensed customer discovery, lean experimentation, finance, go-to-market, pitches, founder cases | Approximately 6–20 weeks; often 4–10 hours/week | Roughly ¥5,000–¥80,000, depending on institution and format | Moderate; quality depends heavily on cohort selection and alumni access | Moderate if assignments use your own venture; low if lecture-only | Structured learning and accountability without leaving work |\n| **Executive education** | Strategy, innovation leadership, corporate entrepreneurship, scaling, negotiation, finance; often case-intensive | Two days to several months; commonly modular | Roughly ¥15,000–¥150,000+; travel may be material | Strong peer network of senior managers; founder density varies | Usually moderate; stronger for strategic thinking than zero-to-one building | Filling one specific capability gap and expanding a senior network |\n| **Pre-seed founder program/incubator** | Idea selection, customer validation, co-founder formation, incorporation, MVP, pitch preparation | Often 8–16 weeks, 8–20 hours/week; some are nearly full-time | From free to several thousand USD; may include equity, investment rights, or program fees | High access to founders and mentors; investor access varies | High if participants are required to build and sell | Once you are prepared to run a serious side venture |\n| **Selective accelerator** | Rapid growth, product-market fit, metrics, hiring, fundraising, investor preparation | Usually about three months and highly intensive | Often takes equity rather than tuition; geographic and career disruption can be substantial | Potentially exceptional founder, investor, and alumni access | Very high—but only for an active startup | After an MVP, founder team, early adoption, and decision to pursue the company seriously |\n| **Self-paced online courses** | Customer discovery, entrepreneurship fundamentals, finance, business models, marketing, product, leadership | 1–5 hours/week per course; highly flexible | Free to approximately ¥10,000 per course or subscription series | Low unless there is an active community | Low by itself; high only when directly applied to experiments | Efficient foundation and gap-filling |\n| **Live online cohort courses** | Similar to online courses, but with deadlines, peer discussion, office hours, and capstone work | Often 4–10 hours/week for 6–12 weeks | Roughly ¥3,000–¥30,000+ | Moderate; sometimes strong within a narrow specialty | Moderate to high when the cohort critiques a real venture | Good if external accountability materially improves completion |\n| **Mentoring and founder communities** | Unstructured, problem-driven advice; introductions; peer learning | 2–6 hours/month plus events | Free to membership or event fees | Potentially high but variable | High when mentors review actual interviews, metrics, and decisions | Essential complement to every other route |\n| **Independent side-venture building** | Full cycle: problem discovery, prototype, sales, operations, finance, team, legal issues | Flexible; 5–12 hours/week is workable initially | Can begin below ¥10,000; increases with product and customer needs | Must be deliberately constructed | Highest direct learning value | Core of the recommended plan |\n| **Startup employment/advisory project** | Exposure to founder decisions, resource constraints, growth and operations | Advisory: 2–6 hours/week; employment: major career change | Low cash cost but possible career/conflict risk | Strong inside one venture | High, especially operationally | Alternative practical route if you do not yet have a suitable idea |\n\n### A concrete degree benchmark\n\nImperial College Business School’s MSc Innovation, Entrepreneurship & Management is a useful illustration of the degree route. Its August 2027 intake is listed as a **12-month, full-time London program costing £45,500**. Students attend 12–18 class hours per week and are told to allow another two to three hours of study for every classroom hour. The program includes idea generation, concept testing, co-founder and team formation, product creation, launch and funding work, plus access to an enterprise lab and venture mentoring service. Imperial reports that 21% of its Class of 2024 started a business. [citation:Imperial MSc Innovation, Entrepreneurship & Management](https://www.imperial.ac.uk/business-school/masters/innovation-entrepreneurship-management/)\n\nThat is potentially valuable for someone seeking complete immersion and an overseas network, but it would be difficult to reconcile with a Shanghai-based management job and two young children. Because you already hold an MBA, much of the general management curriculum would also be duplicative. The real incremental value would have to come from **technical talent, venture-building infrastructure, geographic mobility, and alumni access**, rather than the credential itself.\n\n---\n\n## 2. How well each route teaches the capabilities you need\n\nScores are relative: **5 = usually excellent**, **1 = usually weak**. Actual programs vary.\n\n| Route | Fundraising | Business model | Product/MVP | Market/customer discovery | Founder-team management | Practical execution |\n|---|---:|---:|---:|---:|---:|---:|\n| Entrepreneurship degree | 4 | 4 | 3–5 | 4 | 4 | 3–5 |\n| Non-degree cohort/certificate | 3 | 4 | 3 | 4 | 3 | 3–4 |\n| Executive education | 3 | 3–4 | 2 | 3 | 4 | 2–3 |\n| Pre-seed founder program | 3–4 | 5 | 4 | 5 | 4 | 5 |\n| Selective accelerator | 5 | 4 | 4–5 | 5 | 4 | 5 |\n| Self-paced online courses | 2–3 | 4 | 2–3 | 3–4 | 2 | 1–2 |\n| Mentoring/networking | 3–5 | 3–5 | 3–5 | 3–5 | 4–5 | 3 |\n| Independent venture | 3 | 5 | 5 | 5 | 5 if a team exists | 5 |\n| Startup advisory/part-time role | 3–4 | 4 | 3–4 | 4 | 5 | 5 |\n\n### Fundraising\n\nFundraising is partly teachable—capital strategy, dilution, pitch logic, financial models, due diligence and term-sheet concepts—but investor judgment and credibility arise from a real team, market evidence and traction. A conventional course cannot reproduce this.\n\nYC, for example, combines investment, dedicated partner access, weekly founder interaction and investor introductions. Its current standard deal is $500,000: $125,000 for 7% plus $375,000 on an uncapped MFN SAFE. This illustrates why accelerator “cost” must be evaluated as **future dilution and control implications**, not simply tuition. [citation:Y Combinator Standard Deal](https://www.ycombinator.com/deal)\n\nFor your first year, fundraising education should cover:\n\n- Bootstrapping versus equity capital\n- Angel, strategic and institutional capital\n- Cap tables and dilution\n- SAFE/convertible instruments and priced rounds\n- Investor targeting and due diligence\n- China-specific entity, tax, foreign-investment and data/IP issues\n- When *not* to raise money\n\nDo not optimize for pitching before you can demonstrate customer evidence.\n\n### Business-model learning\n\nThis is well served by courses, workshops and independent experiments. The Business Model Canvas organizes customers, value proposition, channels, relationships, resources, activities, partners, revenue and costs on one page. Its creators emphasize treating the canvas as a set of claims that should be redrawn as evidence arrives—not as a static plan. [citation:Strategyzer Business Model Canvas](https://www.strategyzer.com/library/the-business-model-canvas)\n\nYour MBA background means you probably do not need extensive instruction in strategy terminology. You need practice turning assumptions into:\n\n- Interview hypotheses\n- Landing-page or concierge tests\n- Pricing tests\n- Acquisition-cost estimates\n- Retention or repeat-use evidence\n- Unit economics and cash-flow scenarios\n\n### Product learning\n\nThis is likely one of your largest gaps if your career has been concentrated in marketing and management. Product capability is not the same as marketing research. It includes:\n\n- Converting customer problems into product requirements\n- Prioritizing features\n- Prototyping with no-code/AI tools\n- Product analytics\n- Usability testing\n- Managing technical uncertainty\n- Working effectively with engineers or technical co-founders\n\nA course can provide vocabulary, but an actual prototype and five usability sessions will normally teach more than another broad business module.\n\n### Market learning\n\nThis should be a comparative advantage for you, but startup discovery differs from corporate marketing. Early founders work with small samples, incomplete data and customers who may give misleadingly positive feedback. The goal is evidence of behavior—payment, usage, referral, repeat demand—not merely stated interest.\n\nThe U.S. Small Business Administration distinguishes detailed traditional plans from short lean plans and identifies market analysis, organization, product, marketing, funding and financial projections as core planning components. It also notes that lean plans can be reduced to a one-page model for rapid refinement. [citation:SBA Plan Your Business](https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis)\n\n### Team-management learning\n\nYour management background is useful but not sufficient. Founder teams differ from corporate teams because:\n\n- Roles and authority may be ambiguous.\n- Compensation may depend heavily on equity.\n- A co-founder is both a working partner and a major shareholder.\n- Early hires need unusually broad responsibilities.\n- The company may lack established processes, brand and cash security.\n- Founder conflict can destroy the venture even when the idea is promising.\n\nThe relevant learning is therefore co-founder assessment, vesting, decision rights, conflict resolution, early hiring, culture under uncertainty and founder succession—not another general leadership course.\n\n---\n\n## 3. Value assessment for your circumstances\n\n### Highest expected value: practical venture building plus targeted instruction\n\nThis route preserves your salary, lets you exploit your marketing and industry access, and converts abstract knowledge into evidence. It also accommodates uncertainty about whether you prefer self-paced, cohort-based, in-person or immersive formats.\n\nThe principal risk is that an unstructured side project becomes endless “research.” Counter this with deadlines, external mentors and measurable experiments.\n\n### High value: mentoring and Shanghai founder networks\n\nStartup Grind’s Shanghai chapter describes regular access to founders, corporate innovators, investors and ecosystem participants and has operated locally since 2013. This is useful as an accessible network-building route, although event attendance should be selective and relationship-oriented rather than a substitute for building. [citation:Startup Grind Shanghai](https://www.startupgrind.com/shanghai/)\n\nMicroMentor offers free volunteer mentoring and lets entrepreneurs search for and contact mentors. It explicitly does not provide funding; its value is advice and accountability. [citation:MicroMentor](https://www.micromentor.org/)\n\nAlso use your existing Shanghai Jiao Tong alumni network. Because you already possess access to a substantial business-school community, first extract more value from it before buying another alumni affiliation:\n\n- Identify alumni founders three to seven years ahead of you.\n- Seek product/technology leaders rather than more marketing peers.\n- Ask for monthly problem-solving conversations, not generic “mentoring.”\n- Offer reciprocal help on go-to-market, branding or customer acquisition.\n- Attend sector-specific events rather than broad entrepreneurship gatherings.\n\n### Medium-to-high value: selective non-degree or executive education\n\nCEIBS states that its open-enrolment executive programs cover management, leadership, strategy, finance, marketing and innovation using cases, tutoring and experience-based methods. It also reports serving more than 220,000 executives across more than 13,000 organizations. [citation:CEIBS Executive Education](https://www.ceibs.edu/execed)\n\nFor you, the test is not institutional prestige but curriculum specificity. A short program is worth paying for when it provides at least three of these:\n\n- Work on your actual venture\n- High-quality founder cohort\n- Repeated faculty or mentor feedback\n- Product/technology exposure\n- Investor or customer access\n- China-specific venture law and financing\n- Accountability over several weeks\n\nAvoid expensive programs dominated by general strategy, marketing or leadership content you have already covered.\n\n### Useful but incomplete: online courses\n\nYC Startup School can be completed at one’s own pace in approximately seven weeks at one to two hours per week. Its materials include MVP planning, funding, user growth and team leadership; it also offers progress tracking and a co-founder matching platform. [citation:Y Combinator Startup School](https://www.startupschool.org/)\n\nThis is an excellent low-risk starting point, but videos should never consume more than about one-third of your entrepreneurship time. Every learning module should produce a venture artifact or experiment.\n\n### Conditional value: founder programs and accelerators\n\nFounder Institute illustrates a structured virtual pre-seed option: the displayed October 2026–January 2027 cohort lists an early entrance fee of $1,199 and includes virtual sessions, mentors, office hours and structured company-building work. Exact terms and relevance to China-based founders require verification before applying. [citation:Founder Institute](https://fi.co/join)\n\nTechstars describes its accelerators as three months of intensive, mentorship-driven support connecting companies to expertise, community and capital. [citation:Techstars Accelerators](https://www.techstars.com/accelerators)\n\nYC’s current batch description includes dedicated general partners, weekly interaction, founder groups, alumni access and investor introductions; the Winter 2027 batch is scheduled in San Francisco, making participation difficult to combine with an ordinary full-time Shanghai role. [citation:Apply to Y Combinator](https://www.ycombinator.com/apply)\n\nApply only when:\n\n- You have a committed founding team or a compelling solo-founder case.\n- The problem and customer segment are specific.\n- There is an MVP or convincing prototype.\n- Users demonstrate meaningful behavior.\n- You can disclose and manage employer conflicts.\n- Your family agrees on time, travel, income and risk implications.\n- You are prepared for the possibility that acceptance triggers a leave or resignation decision.\n\n### Low current value: a second general business degree\n\nA degree becomes rational if you conclude that you need:\n\n- A full-time career reset\n- Relocation to another startup ecosystem\n- Deep access to engineers/scientists or research commercialization\n- A visa or geographic transition\n- Structured immersion that cannot coexist with your job\n- A major sector shift where institutional infrastructure is decisive\n\nOtherwise, its time and opportunity cost are hard to justify relative to building several real experiments.\n\n---\n\n# 4. Recommended phased 12–24 month plan\n\n## Operating constraints and consequential assumptions\n\nThe baseline assumes:\n\n- You retain your current job for at least the first 12 months.\n- You can allocate **6–8 hours in a normal week**, with a temporary ceiling of 10–12 hours during launches.\n- You will initially spend no more than an agreed “learning and experimentation budget.”\n- You will avoid ideas that misuse employer information, customer lists, intellectual property or paid working time.\n- You will not assume that outside investment is necessary.\n- Format preferences remain open; each phase includes self-paced, cohort and in-person branches.\n\nBefore starting, review your employment agreement for invention assignment, confidentiality, non-solicitation, non-compete or approval obligations, and obtain professional advice where needed.\n\n---\n\n## Phase 0 — Family, career and risk charter  \n**Weeks 1–2 | 3–5 total hours**\n\nCreate a one-page written charter with your wife covering:\n\n- Protected family periods\n- Weekly time ceiling\n- Initial cash budget\n- Activities requiring joint approval\n- Travel limits\n- Conditions under which you would take leave or resign\n- Minimum emergency-fund/runway threshold\n- What success and acceptable failure look like\n\nSuggested boundaries:\n\n- One fixed weekday evening for venture work\n- One early-morning block\n- One weekend block that does not consume the entire weekend\n- One family review every four weeks\n- No personal guarantee, debt or material equity investment during the discovery phase\n\nAlso establish an ethical firewall from your employer:\n\n- Separate device, cloud account, phone number and expense records\n- No work during employer hours\n- No use of confidential company research or customer data\n- Written log of idea origins and work performed\n- Avoid direct competition unless formally cleared\n\n**Deliverable:** family-and-career risk charter.\n\n---\n\n## Phase 1 — Founder gap diagnosis and compact foundation  \n**Months 1–2 | 5–6 hours/week**\n\n### Learning sequence\n\nCover six modules:\n\n1. Customer discovery and problem selection\n2. Business-model design and unit economics\n3. MVP and product management\n4. Startup accounting, cash flow and financing\n5. Co-founder, equity and early-team design\n6. China-relevant legal, tax, IP and data basics\n\nUse YC Startup School as a low-cost foundation, supplemented by one product-focused module and local professional guidance where legal details matter. The official curriculum includes MVP, funding, growth and leadership and is designed for early-stage or prospective founders. [citation:Y Combinator Startup School](https://www.startupschool.org/)\n\n### Format branches\n\n- **Self-paced branch:** two hours of content, two hours of applied work and one to two hours of interviews/networking weekly.\n- **Live cohort branch:** select one 6–10 week course that requires work on your own idea; cap total weekly load at eight hours.\n- **In-person executive branch:** take one focused weekend/module in product, innovation finance or venture creation—not general management.\n- **Degree-exploration branch:** attend information sessions and speak with alumni, but do not apply until the Month 6 decision gate.\n\n### Gap assessment\n\nScore yourself from 1–5 on:\n\n- Problem discovery\n- Product specification\n- Technical fluency\n- Experiment design\n- Startup finance\n- Venture fundraising\n- Founder-team design\n- Legal/regulatory awareness\n- Selling without an established corporate brand\n\n**Deliverables:** personal capability map; 12-month reading/course backlog capped at three active items.\n\n---\n\n## Phase 2 — Opportunity portfolio and customer discovery  \n**Months 2–4 | 6–8 hours/week**\n\nGenerate 10–15 opportunity hypotheses at the intersection of:\n\n- Problems you understand from legitimate public/professional experience\n- Customers you can reach ethically\n- Your marketing and management strengths\n- Trends in Shanghai and the Yangtze River Delta\n- Products that can be tested without large fixed investment\n\nDo not automatically select the most fashionable sector. Score each opportunity on:\n\n- Problem severity and frequency\n- Customer willingness and ability to pay\n- Ease of customer access\n- Competitive differentiation\n- Regulatory complexity\n- Capital intensity\n- Time to first experiment\n- Fit with family and career constraints\n- Founder advantage\n- Need for a technical co-founder\n\nSelect the top three and conduct **at least 12–15 interviews per hypothesis**, aiming for 40–50 interviews in total. Interviews should focus on past behavior, existing workarounds, expenditure, decision processes and urgency—not whether people “like” your idea.\n\n### Evidence required\n\nFor each hypothesis, document:\n\n- Customer segment\n- Job/problem\n- Current alternative\n- Economic or emotional cost\n- Buyer versus user\n- Trigger for purchase\n- Decision cycle\n- Regulatory or operational barriers\n- Disconfirming evidence\n\n**Kill criteria:** eliminate an opportunity if interviews reveal low urgency, inaccessible buyers, unacceptable employer conflict, excessive capital requirements, or no plausible test within eight weeks.\n\n**Deliverable:** evidence-based ranking of no more than two opportunities.\n\n---\n\n## Phase 3 — Prototype and willingness-to-pay tests  \n**Months 4–6 | 7–10 hours/week**\n\nFor the strongest opportunity, design the cheapest credible test:\n\n- Landing page plus interview follow-up\n- Clickable prototype\n- Manual “concierge” service\n- Paid workshop\n- Pre-order or refundable deposit\n- Small B2B pilot\n- No-code workflow\n- Channel or pricing experiment\n\nUse the Business Model Canvas as a versioned hypothesis system. Update it only when evidence changes. [citation:Strategyzer Business Model Canvas](https://www.strategyzer.com/library/the-business-model-canvas)\n\nTrack:\n\n- Number approached\n- Qualified conversations\n- Test users\n- Conversion to trial\n- Conversion to payment or formal pilot\n- Repeat use\n- Referral behavior\n- Acquisition time/cost\n- Gross-margin potential\n- Main reasons for refusal\n\n### Mentor structure\n\nRecruit three distinct advisers:\n\n1. **Founder mentor:** zero-to-one and fundraising experience\n2. **Product/technical mentor:** MVP feasibility, architecture and product process\n3. **Sector/customer mentor:** purchasing, regulation and domain reality\n\nHold one 45-minute session per mentor each month. Send a one-page pre-read containing the decision, evidence and questions. Do not build a ceremonial advisory board or promise equity at this stage.\n\n### Month 6 decision gate\n\nProceed only if you have at least two of the following:\n\n- Several customers willing to pay or sign a credible pilot\n- Repeat usage or strong engagement\n- A clearly quantified customer problem\n- A feasible product path\n- A customer-acquisition route you can test\n- A plausible margin/cash model\n- A potential complementary collaborator or co-founder\n\nIf evidence is weak, pivot once or archive the idea. Do not respond by buying a more expensive course.\n\n---\n\n## Phase 4 — Structured venture sprint  \n**Months 7–9 | 8–10 hours/week**\n\nChoose one of three branches based on evidence and your preferred level of structure.\n\n### Branch A: independent side-venture\n\nBest when schedule control is essential.\n\n- Build MVP version 1\n- Obtain 3–5 paid pilots or a relevant equivalent\n- Measure use and retention\n- Document customer onboarding and delivery\n- Build a rolling 13-week cash forecast\n- Run a monthly product review\n- Continue mentor meetings\n\n### Branch B: part-time cohort or pre-seed program\n\nBest when you need deadlines, peers, co-founder exposure or mentor access.\n\nSelection criteria:\n\n- Work can be performed alongside your job\n- Program accepts your stage and geography\n- Mentor biographies match your venture\n- The program has real alumni outcomes\n- Equity and IP terms are clear\n- Sessions do not repeatedly fall in unsuitable international time zones\n- At least half of assignments advance the actual venture\n\nFounder Institute is one possible benchmark for a structured virtual model, but compare local and regional options and inspect all contractual terms. [citation:Founder Institute](https://fi.co/join)\n\n### Branch C: executive education module\n\nBest when your venture evidence is sound but one gap is limiting progress—for example venture finance, product leadership or entrepreneurial negotiation.\n\nDo not use executive education as a substitute for weekly customer contact.\n\n**Deliverable:** functioning MVP, pilot results, cash model and evidence log.\n\n---\n\n## Phase 5 — Team, economics and launch-readiness  \n**Months 10–12 | 8–12 hours/week temporarily**\n\n### Team work\n\nIf a co-founder is needed, run a trial project before discussing permanent equity. Evaluate:\n\n- Shared ambition and time horizon\n- Risk tolerance\n- Integrity under pressure\n- Complementary skills\n- Decision-making style\n- Speed and quality of execution\n- Family/geographic constraints\n- Conflict behavior\n\nBefore incorporation or equity issuance, obtain jurisdiction-specific legal and tax advice. Address roles, vesting, IP ownership, deadlock, departure, decision rights and future financing.\n\n### Financial work\n\nBuild three scenarios:\n\n- **Bootstrap:** customer revenue funds development\n- **Part-time growth:** limited personal capital and contractors\n- **Externally financed:** capital supports faster product/team development\n\nFor each, estimate:\n\n- 18-month cash need\n- Gross margin\n- Customer acquisition cost\n- Payback period\n- Retention/repeat purchase\n- Founder compensation assumptions\n- Hiring milestones\n- Downside exposure\n\n### End-of-year decision\n\nChoose one:\n\n1. **Stop:** evidence is inadequate or risk/fit is poor.\n2. **Continue as controlled side venture:** promising but not yet career-replacing.\n3. **Commit to another six-month validation cycle:** additional evidence required.\n4. **Seek an accelerator or funding:** product, team and traction warrant it.\n5. **Prepare a staged career transition:** clear evidence plus family and financial readiness.\n6. **Pursue a degree:** ecosystem/geography/technical-access needs justify immersion.\n\nStopping a weak idea after disciplined testing is a successful outcome.\n\n---\n\n# 5. Optional Year 2 paths\n\n## Path 1 — Continue alongside employment  \n**Months 13–24**\n\nAppropriate when the venture is growing but remains operationally manageable.\n\nTargets might include:\n\n- 10–20 paying B2B customers, or a business-model-appropriate equivalent\n- Repeatable sales process\n- Stable delivery or product reliability\n- Demonstrated retention\n- Positive contribution margin\n- Documented operating procedures\n- One validated acquisition channel\n\nCap weekly work at a sustainable level and use contractors selectively. Reassess employer conflict and personal energy quarterly.\n\n## Path 2 — Accelerator and fundraising preparation\n\nAppropriate when faster execution is necessary and the opportunity could support venture-scale growth.\n\nPrepare:\n\n- Founder narrative\n- Product demo\n- Market and competition analysis\n- Cohort/retention/revenue data\n- Unit economics\n- Cap table\n- Incorporation/IP records\n- 18-month hiring and cash plan\n- Data room\n- Specific use of funds\n\nTechstars and YC represent intensive, mentorship-and-capital-oriented models rather than part-time education. YC’s current program is in person in San Francisco and includes weekly founder and partner engagement, so acceptance would likely require a major work/family decision. [citation:Apply to Y Combinator](https://www.ycombinator.com/apply)\n\n## Path 3 — Bootstrapped launch\n\nAppropriate for consulting, professional services, vertical SaaS, education, commerce or other models capable of early customer financing.\n\nPriorities:\n\n- Narrow customer segment\n- Standardized offering\n- Pricing discipline\n- Cash collection\n- Repeatability\n- Low fixed cost\n- Separation of founder time from scalable value\n\nThis may suit your risk-return orientation better than fundraising, provided the market does not require unusually rapid scale.\n\n## Path 4 — Degree or overseas ecosystem transition\n\nAppropriate only after explicit comparison of:\n\n- Tuition and living cost\n- Lost compensation\n- Family relocation/separation\n- Credential value\n- Access to technical collaborators\n- Post-program geographic plans\n- Venture-building resources\n- Alumni and investor relevance\n- Probability of producing a launchable venture\n\nUse a full economic calculation:\n\n> Total investment = tuition + travel/living increment + lost compensation + pension/benefit loss + family disruption cost + venture capital required.\n\nCompare that with investing the same resources into 12–18 months of protected venture-building time.\n\n---\n\n## 6. Sustainable weekly schedule\n\n### Normal six-to-eight-hour week\n\n| Time | Activity |\n|---|---|\n| One weekday morning, 60–75 minutes | Course or case study |\n| One weekday evening, 90 minutes | Synthesis, product planning or financial model |\n| Two commute/lunch blocks, 30–45 minutes each | Reading, interview preparation, mentor follow-up |\n| Saturday or Sunday, one three-hour protected block | Interviews, prototype, pilot or customer work |\n| 30 minutes weekly | Metrics and evidence review |\n| 45 minutes monthly | Family risk/capacity review |\n\nUse fragmented time for reading and administration, but reserve uninterrupted blocks for customer interviews, product work and strategic decisions.\n\n### Overload rules\n\nPause or reduce the program if, for three consecutive weeks:\n\n- Sleep or health deteriorates\n- Core job performance declines\n- Family commitments are repeatedly displaced\n- You are consuming content but not completing experiments\n- The project exceeds its agreed budget\n- Employer-conflict risk rises\n\nDo not schedule two substantial courses simultaneously. A demanding cohort program should replace, not supplement, most self-study.\n\n---\n\n## 7. Budget options without assuming your preferred format\n\n### Lean route: approximately ¥5,000–¥20,000 in Year 1\n\n- Low-cost/free online curriculum\n- Books and case materials\n- Prototype tools\n- Selective Shanghai events\n- Free mentor platforms\n- Limited legal/accounting consultation\n- Small customer experiments\n\nBest when you are disciplined and want maximum capital efficiency.\n\n### Structured route: approximately ¥30,000–¥100,000\n\n- One quality cohort-based certificate or executive module\n- Prototype and customer-testing budget\n- Professional legal/accounting advice\n- Sector conferences and curated founder events\n- Occasional specialist coaching\n\nBest when peer deadlines, live feedback and institutional access increase your execution rate.\n\n### Premium route: ¥100,000–¥300,000+ before any degree\n\n- Several executive modules or a major non-degree program\n- Travel and ecosystem immersion\n- Product contractors\n- Paid founder coaching\n- Larger pilot budget\n\nUse only if program-specific network and venture outcomes justify the price. Do not pay a premium merely to repeat MBA content.\n\n### Degree route\n\nPotentially several hundred thousand RMB in tuition plus living, travel and lost-income costs. Imperial’s cited program alone lists £45,500 tuition for its 2027 intake, before those additional costs. [citation:Imperial MSc Innovation, Entrepreneurship & Management](https://www.imperial.ac.uk/business-school/masters/innovation-entrepreneurship-management/)\n\n---\n\n## 8. Final selection rules\n\nChoose a **degree** if you need immersion, geographic transition and a new technical/investor ecosystem.\n\nChoose a **non-degree cohort** if you need structure and feedback but must remain employed.\n\nChoose **executive education** if one identifiable capability gap is holding back an otherwise active venture.\n\nChoose an **incubator or pre-seed program** if you have a defined problem and are ready to build repeatedly over several months.\n\nChoose an **accelerator** if you already have a serious startup, a suitable team and evidence that speed and external capital matter.\n\nChoose **self-paced courses** if flexibility and cost control dominate—but attach every module to a real deliverable.\n\nChoose **mentoring/networking** as a continuous layer, not as a standalone education plan.\n\nChoose **independent venture building** as the central learning mechanism regardless of which educational format you add.\n\nFor your current profile, the default sequence is:\n\n> **Targeted foundation → 40–50 customer interviews → prototype and paid test → mentors and local founder network → part-time cohort if needed → accelerator, degree or career transition only after evidence.**\n\nThis preserves downside protection while maximizing the probability that, within 12 months, you possess something more valuable than another credential: a tested opportunity, a clearer founder identity, a network built around actual work, and data for deciding whether to launch.\n\n## Sources\n\n- [Imperial MSc Innovation, Entrepreneurship & Management](https://www.imperial.ac.uk/business-school/masters/innovation-entrepreneurship-management/) - Official duration, tuition, workload, curriculum and venture-support information.\n- [Y Combinator Startup School](https://www.startupschool.org/) - Official self-paced curriculum, estimated workload, founder tools and co-founder matching.\n- [Apply to Y Combinator](https://www.ycombinator.com/apply) - Official batch format, partner access, founder community and investor-support information.\n- [Y Combinator Standard Deal](https://www.ycombinator.com/deal) - Official investment and equity terms.\n- [Techstars Accelerators](https://www.techstars.com/accelerators) - Official description of the three-month mentorship-driven accelerator model.\n- [Founder Institute](https://fi.co/join) - Current virtual cohort, fee, curriculum and mentoring benchmark.\n- [CEIBS Executive Education](https://www.ceibs.edu/execed) - Official description of open-enrolment executive-program subjects and teaching methods.\n- [Startup Grind Shanghai](https://www.startupgrind.com/shanghai/) - Shanghai founder-community and event information.\n- [MicroMentor](https://www.micromentor.org/) - Free volunteer mentoring model and platform process.\n- [Strategyzer Business Model Canvas](https://www.strategyzer.com/library/the-business-model-canvas) - Official business-model framework and experimentation guidance.\n- [SBA Plan Your Business](https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis) - Traditional and lean planning components, market analysis, funding and financial projections.",
+  "run_error": null,
+  "started_at_utc": "2026-09-12T19:12:57.873369+00:00",
+  "completed_at_utc": "2026-09-12T19:18:52.161764+00:00",
+  "elapsed_seconds": 354.288395,
+  "trace_file": "turn_001_events.jsonl"
+}

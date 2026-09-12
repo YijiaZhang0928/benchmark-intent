@@ -1,0 +1,265 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/clarification_harness_3task_v0_76/runs/T2/N/r1/turn_001_summary.json",
+  "distinct_search_queries": 22,
+  "fetch_attempts": 32,
+  "substantive_fetch_successes": 17,
+  "report_cited_url_count": 16,
+  "successful_fetched_domains": [
+    "education.ec.europa.eu",
+    "erasmus-plus.ec.europa.eu",
+    "guide.wisc.edu",
+    "ind.nl",
+    "j1visa.state.gov",
+    "visp.wisc.edu",
+    "www.bu.edu",
+    "www.gov.uk",
+    "www.ica.gov.sg",
+    "www.mofa.go.jp",
+    "www.ntu.edu.sg",
+    "www.uva.nl",
+    "www.waseda.jp"
+  ],
+  "declared_primary_domains": [
+    "education.ec.europa.eu",
+    "erasmus-plus.ec.europa.eu",
+    "j1visa.state.gov",
+    "www.ica.gov.sg"
+  ],
+  "matched_primary_domains": [
+    "education.ec.europa.eu",
+    "erasmus-plus.ec.europa.eu",
+    "j1visa.state.gov",
+    "www.ica.gov.sg"
+  ],
+  "structural_gate_pass": true,
+  "primary_source_gate": "pass",
+  "deep_research_qualified": true,
+  "fetches": [
+    {
+      "url": "https://education.ec.europa.eu/education-levels/higher-education/inclusive-and-connected-higher-education/european-credit-transfer-and-accumulation-system",
+      "domain": "education.ec.europa.eu",
+      "readable_characters": 3125,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/studying-abroad",
+      "domain": "erasmus-plus.ec.europa.eu",
+      "readable_characters": 5101,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://j1visa.state.gov/programs/college-and-university-student",
+      "domain": "j1visa.state.gov",
+      "readable_characters": 3458,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html",
+      "domain": "travel.state.gov",
+      "readable_characters": 312,
+      "substantive_success": false,
+      "error": "Error fetching https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html: HTTPStatusError: Client error '403 Forbidden' for url 'https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.mofa.go.jp/j_info/visit/visa/long/visa6.html",
+      "domain": "www.mofa.go.jp",
+      "readable_characters": 2451,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ica.gov.sg/reside/STP/apply/ihl",
+      "domain": "www.ica.gov.sg",
+      "readable_characters": 3966,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.gov.uk/standard-visitor/visit-to-study",
+      "domain": "www.gov.uk",
+      "readable_characters": 4982,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education",
+      "domain": "ind.nl",
+      "readable_characters": 877,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/exchange-programmes/exchange-programmes.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 323,
+      "substantive_success": false,
+      "error": "Error fetching https://www.uva.nl/en/education/exchange/exchange-programmes/exchange-programmes.html: HTTPStatusError: Client error '404 ' for url 'https://www.uva.nl/en/education/exchange/exchange-programmes/exchange-programmes.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.uva.nl/en/education/practical-information/living-in-amsterdam/living-expenses/living-expenses.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 2949,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/exchange/application",
+      "domain": "www.waseda.jp",
+      "readable_characters": 3855,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/fire/gsiccs/en/applicants/exchange",
+      "domain": "www.waseda.jp",
+      "readable_characters": 274,
+      "substantive_success": false,
+      "error": "Error fetching https://www.waseda.jp/fire/gsiccs/en/applicants/exchange: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/fire/gsiccs/en/applicants/exchange'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006",
+      "domain": "gem.ntu.edu.sg",
+      "readable_characters": 139,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (265 characters) from https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 7132,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 135,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme"
+    },
+    {
+      "url": "https://www.american.edu/soc/graduate/nondegree.cfm",
+      "domain": "www.american.edu",
+      "readable_characters": 264,
+      "substantive_success": false,
+      "error": "Error fetching https://www.american.edu/soc/graduate/nondegree.cfm: HTTPStatusError: Client error '404 Not Found' for url 'https://www.american.edu/soc/graduate/nondegree.cfm'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.bu.edu/abroad/for-international-students/incoming-exchange-students/",
+      "domain": "www.bu.edu",
+      "readable_characters": 322,
+      "substantive_success": false,
+      "error": "Error fetching https://www.bu.edu/abroad/for-international-students/incoming-exchange-students/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.bu.edu/abroad/for-international-students/incoming-exchange-students/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.bu.edu/com/academics/graduate-programs/",
+      "domain": "www.bu.edu",
+      "readable_characters": 264,
+      "substantive_success": false,
+      "error": "Error fetching https://www.bu.edu/com/academics/graduate-programs/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.bu.edu/com/academics/graduate-programs/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.bu.edu/isso/getting-started/all-about-visas/student-visas/",
+      "domain": "www.bu.edu",
+      "readable_characters": 302,
+      "substantive_success": false,
+      "error": "Error fetching https://www.bu.edu/isso/getting-started/all-about-visas/student-visas/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.bu.edu/isso/getting-started/all-about-visas/student-visas/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.bu.edu/finaid/aid-basics/cost-of-attendance/graduate/",
+      "domain": "www.bu.edu",
+      "readable_characters": 2876,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 304,
+      "substantive_success": false,
+      "error": "Error fetching https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes: HTTPStatusError: Client error '404 Not Found' for url 'https://www.ntu.edu.sg/wkwsci/admissions/programmes/graduate-programmes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/life-at-ntu/accommodation/graduate-housing",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 1927,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ntu.edu.sg/admissions/graduate/financial-matters/cost-of-living",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 312,
+      "substantive_success": false,
+      "error": "Error fetching https://www.ntu.edu.sg/admissions/graduate/financial-matters/cost-of-living: HTTPStatusError: Client error '404 Not Found' for url 'https://www.ntu.edu.sg/admissions/graduate/financial-matters/cost-of-living'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/life/expense",
+      "domain": "www.waseda.jp",
+      "readable_characters": 254,
+      "substantive_success": false,
+      "error": "Error fetching https://www.waseda.jp/inst/cie/en/life/expense: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/inst/cie/en/life/expense'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://visp.wisc.edu/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 1268,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://visp.wisc.edu/academics/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 2054,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://visp.wisc.edu/cost/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 7673,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://visp.wisc.edu/apply/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 2950,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://guide.wisc.edu/graduate/communication-arts/communication-arts-ma/",
+      "domain": "guide.wisc.edu",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://guide.wisc.edu/graduate/journalism-mass-communication/",
+      "domain": "guide.wisc.edu",
+      "readable_characters": 121,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (221 characters) from https://guide.wisc.edu/graduate/journalism-mass-communication/"
+    },
+    {
+      "url": "https://iss.wisc.edu/students/current-students/f1-information/full-time-enrollment-requirements/",
+      "domain": "iss.wisc.edu",
+      "readable_characters": 354,
+      "substantive_success": false,
+      "error": "Error fetching https://iss.wisc.edu/students/current-students/f1-information/full-time-enrollment-requirements/: HTTPStatusError: Client error '404 Not Found' for url 'https://iss.wisc.edu/students/current-students/f1-information/full-time-enrollment-requirements/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://international.wisc.edu/cost-of-attendance/",
+      "domain": "international.wisc.edu",
+      "readable_characters": 262,
+      "substantive_success": false,
+      "error": "Error fetching https://international.wisc.edu/cost-of-attendance/: HTTPStatusError: Client error '404 Not Found' for url 'https://international.wisc.edu/cost-of-attendance/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

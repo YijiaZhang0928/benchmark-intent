@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-Q3",
+  "repeat": 1,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "da68e8f39cbf2fefd3a7f092dda1e7d0f922d10fb455e2914ffa01aea7cd600b",
+  "report_sha256": "d0ea32d94e09378b262bb7b96b40c4065ec2d87fd46013cfce2f95f39816f0b9",
+  "started_at_utc": "2026-09-12T19:41:22.926687+00:00",
+  "completed_at_utc": "2026-09-12T19:41:42.901035+00:00",
+  "p_rubric": 10,
+  "rubrics": [
+    {
+      "id": "T1-R1",
+      "score": 2,
+      "evidence": "The executive recommendation prioritizes applied NLP evaluation, reliability, adaptation, retrieval, and efficiency. Section 1.7 states that a doctorate centered on proofs or abstract learning theory is not the default target: “use it to support rigorous empirical work.”",
+      "reason": "Implementation-intensive empirical research materially determines the direction ranking and recommended research theme, while theory-only specialization is explicitly deprioritized."
+    },
+    {
+      "id": "T1-R2",
+      "score": 2,
+      "evidence": "Section 7 requires paper replication, a justified extension, at least two ablations, error analysis, a technical report, and a clean repository. Phases 2–3 implement this through two research projects and meaningful open-source contributions.",
+      "reason": "The preparation plan depends on substantial coding, experimentation, independent exploration, and research artifacts, with coursework serving a supporting role rather than constituting the main preparation strategy."
+    },
+    {
+      "id": "T1-R3",
+      "score": 2,
+      "evidence": "The direction matrix explicitly compares “Industry-research value” and “Academic optionality.” Efficient deep-learning systems is recommended partly because it supports both research-scientist and ML-systems careers. Program screening requires “collaboration and internship evidence,” and offer evaluation includes placements and internship policy.",
+      "reason": "Industry optionality influences topic prioritization, program investigation, internship preparation, and final offer assessment rather than appearing only as a general career aspiration."
+    },
+    {
+      "id": "T1-R4",
+      "score": 2,
+      "evidence": "The report recommends fully funded direct-entry programs and funded research-master’s bridges; UK applications are restricted to fully funded routes. It states, “Under your constraints, ‘admitted but unfunded’ should be treated as a rejection unless separate funding is secured,” and requires comparison of after-tax stipend against living expenses.",
+      "reason": "Funding acts as an explicit inclusion and acceptance filter. EPFL is elevated for funded bachelor’s entry, self-funded bridges are discouraged, and affordability is assessed through net support rather than prestige or nominal tuition."
+    },
+    {
+      "id": "T1-R5",
+      "score": 2,
+      "evidence": "The direction matrix compares practical fit, preparation feasibility, industry value, and academic optionality. The regional matrix compares eligibility, flexibility, funding, and risks. The final strategy favors EPFL for funded direct entry while treating ETH primarily as a master’s-first destination; offer evaluation begins with adviser availability, research match, funding, and student publications and placements.",
+      "reason": "Recommendations distinguish options using concrete eligibility and funding evidence, research fit, career outcomes, and structural trade-offs. Named universities are an investigation list rather than the primary ranking basis, and final selection is explicitly supervisor- and evidence-centered."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 10006,
+    "output_tokens": 592,
+    "total_tokens": 10598,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 40
+    }
+  }
+}

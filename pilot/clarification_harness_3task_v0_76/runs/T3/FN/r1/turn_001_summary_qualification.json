@@ -1,0 +1,274 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/clarification_harness_3task_v0_76/runs/T3/FN/r1/turn_001_summary.json",
+  "distinct_search_queries": 24,
+  "fetch_attempts": 33,
+  "substantive_fetch_successes": 17,
+  "report_cited_url_count": 11,
+  "successful_fetched_domains": [
+    "emba.sjtu.edu.cn",
+    "executive.mit.edu",
+    "fi.co",
+    "www.antler.co",
+    "www.ceibs.edu",
+    "www.eonetwork.org",
+    "www.imperial.ac.uk",
+    "www.investsh.org.cn",
+    "www.micromentor.org",
+    "www.sba.gov",
+    "www.startupgrind.com",
+    "www.startupschool.org",
+    "www.strategyzer.com",
+    "www.techstars.com",
+    "www.ycombinator.com"
+  ],
+  "declared_primary_domains": [
+    "www.investsh.org.cn",
+    "www.sba.gov",
+    "www.techstars.com",
+    "www.ycombinator.com"
+  ],
+  "matched_primary_domains": [
+    "www.investsh.org.cn",
+    "www.sba.gov",
+    "www.techstars.com",
+    "www.ycombinator.com"
+  ],
+  "structural_gate_pass": true,
+  "primary_source_gate": "pass",
+  "deep_research_qualified": true,
+  "fetches": [
+    {
+      "url": "https://www.imperial.ac.uk/business-school/masters/innovation-entrepreneurship-management/",
+      "domain": "www.imperial.ac.uk",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://mscventurecreation.nus.edu.sg/",
+      "domain": "mscventurecreation.nus.edu.sg",
+      "readable_characters": 104,
+      "substantive_success": false,
+      "error": "Error fetching https://mscventurecreation.nus.edu.sg/: ValueError: Error: URL host could not be resolved"
+    },
+    {
+      "url": "https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program",
+      "domain": "www.gsb.stanford.edu",
+      "readable_characters": 328,
+      "substantive_success": false,
+      "error": "Error fetching https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://executive.mit.edu/course/entrepreneurship-development-program/a056g00000URaa3AAD.html",
+      "domain": "executive.mit.edu",
+      "readable_characters": 2183,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/entrepreneurship-acceleration-program-scaling-your-business/",
+      "domain": "executiveeducation.wharton.upenn.edu",
+      "readable_characters": 430,
+      "substantive_success": false,
+      "error": "Error fetching https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/entrepreneurship-acceleration-program-scaling-your-business/: HTTPStatusError: Client error '403 Forbidden' for url 'https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/entrepreneurship-acceleration-program-scaling-your-business/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.startupschool.org/",
+      "domain": "www.startupschool.org",
+      "readable_characters": 3545,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.coursera.org/specializations/wharton-entrepreneurship",
+      "domain": "www.coursera.org",
+      "readable_characters": 292,
+      "substantive_success": false,
+      "error": "Error fetching https://www.coursera.org/specializations/wharton-entrepreneurship: HTTPStatusError: Client error '404 Not Found' for url 'https://www.coursera.org/specializations/wharton-entrepreneurship'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://fi.co/join",
+      "domain": "fi.co",
+      "readable_characters": 3942,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://online.hbs.edu/courses/entrepreneurship-essentials/",
+      "domain": "online.hbs.edu",
+      "readable_characters": 118,
+      "substantive_success": false,
+      "error": "Error fetching https://online.hbs.edu/courses/entrepreneurship-essentials/: ValueError: Response exceeds 2000000 bytes"
+    },
+    {
+      "url": "https://www.edx.org/learn/entrepreneurship/massachusetts-institute-of-technology-entrepreneurship-101-who-is-your-customer",
+      "domain": "www.edx.org",
+      "readable_characters": 406,
+      "substantive_success": false,
+      "error": "Error fetching https://www.edx.org/learn/entrepreneurship/massachusetts-institute-of-technology-entrepreneurship-101-who-is-your-customer: HTTPStatusError: Client error '404 Not Found' for url 'https://www.edx.org/learn/entrepreneurship/massachusetts-institute-of-technology-entrepreneurship-101-who-is-your-customer'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.techstars.com/accelerators",
+      "domain": "www.techstars.com",
+      "readable_characters": 1314,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ycombinator.com/apply",
+      "domain": "www.ycombinator.com",
+      "readable_characters": 3487,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ycombinator.com/deal",
+      "domain": "www.ycombinator.com",
+      "readable_characters": 4991,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis",
+      "domain": "www.sba.gov",
+      "readable_characters": 9167,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://steveblank.com/2013/05/06/the-lean-launchpad-educators-course/",
+      "domain": "steveblank.com",
+      "readable_characters": 302,
+      "substantive_success": false,
+      "error": "Error fetching https://steveblank.com/2013/05/06/the-lean-launchpad-educators-course/: HTTPStatusError: Client error '404 Not Found' for url 'https://steveblank.com/2013/05/06/the-lean-launchpad-educators-course/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://online.hbs.edu/courses/entrepreneurship-essentials/syllabus/",
+      "domain": "online.hbs.edu",
+      "readable_characters": 126,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://online.hbs.edu/courses/entrepreneurship-essentials/syllabus/"
+    },
+    {
+      "url": "https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program/experience",
+      "domain": "www.gsb.stanford.edu",
+      "readable_characters": 350,
+      "substantive_success": false,
+      "error": "Error fetching https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program/experience: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.gsb.stanford.edu/exec-ed/programs/stanford-lead-online-business-program/experience'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://executive.mit.edu/course/entrepreneurship-development-program/a056g00000URaa3AAD.html?request=true",
+      "domain": "executive.mit.edu",
+      "readable_characters": 2183,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.techstars.com/the-lineup",
+      "domain": "www.techstars.com",
+      "readable_characters": 234,
+      "substantive_success": false,
+      "error": "Error fetching https://www.techstars.com/the-lineup: HTTPStatusError: Client error '404 Not Found' for url 'https://www.techstars.com/the-lineup'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.techstars.com/accelerators/terms",
+      "domain": "www.techstars.com",
+      "readable_characters": 250,
+      "substantive_success": false,
+      "error": "Error fetching https://www.techstars.com/accelerators/terms: HTTPStatusError: Client error '404 Not Found' for url 'https://www.techstars.com/accelerators/terms'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.antler.co/residency",
+      "domain": "www.antler.co",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.micromentor.org/",
+      "domain": "www.micromentor.org",
+      "readable_characters": 5757,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.adplist.org/",
+      "domain": "www.adplist.org",
+      "readable_characters": 210,
+      "substantive_success": false,
+      "error": "Error fetching https://www.adplist.org/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.adplist.org/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.eonetwork.org/eo-accelerator",
+      "domain": "www.eonetwork.org",
+      "readable_characters": 4432,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.startupgrind.com/shanghai/",
+      "domain": "www.startupgrind.com",
+      "readable_characters": 1537,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ceibs.edu/execed",
+      "domain": "www.ceibs.edu",
+      "readable_characters": 1815,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://emba.sjtu.edu.cn/",
+      "domain": "emba.sjtu.edu.cn",
+      "readable_characters": 2636,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.xnode.com/",
+      "domain": "www.xnode.com",
+      "readable_characters": 88,
+      "substantive_success": false,
+      "error": "Error fetching https://www.xnode.com/: ValueError: Error: URL host could not be resolved"
+    },
+    {
+      "url": "https://www.investsh.org.cn/",
+      "domain": "www.investsh.org.cn",
+      "readable_characters": 2737,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.chinaccelerator.com/",
+      "domain": "www.chinaccelerator.com",
+      "readable_characters": 226,
+      "substantive_success": false,
+      "error": "Error fetching https://www.chinaccelerator.com/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.chinaccelerator.com/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.nvca.org/model-legal-documents/",
+      "domain": "www.nvca.org",
+      "readable_characters": 248,
+      "substantive_success": false,
+      "error": "Error fetching https://www.nvca.org/model-legal-documents/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nvca.org/model-legal-documents/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.strategyzer.com/library/the-business-model-canvas",
+      "domain": "www.strategyzer.com",
+      "readable_characters": 4151,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.designkit.org/methods/the-field-guide-to-human-centered-design",
+      "domain": "www.designkit.org",
+      "readable_characters": 310,
+      "substantive_success": false,
+      "error": "Error fetching https://www.designkit.org/methods/the-field-guide-to-human-centered-design: HTTPStatusError: Client error '404 Not Found' for url 'https://www.designkit.org/methods/the-field-guide-to-human-centered-design'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

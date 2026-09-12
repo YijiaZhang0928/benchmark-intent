@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.76",
+  "blind_label": "RPT-A7",
+  "repeat": 3,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "prompt_sha256": "07f81582f48cd7800d29ed02b340d5c6196796df284330776b2ca6348b80b899",
+  "report_sha256": "0815e685205c3b60e042a74765ebcdf463f0d117ca0f72d08f57925c762611d9",
+  "started_at_utc": "2026-09-12T19:42:38.999107+00:00",
+  "completed_at_utc": "2026-09-12T19:42:58.805219+00:00",
+  "p_rubric": 10,
+  "rubrics": [
+    {
+      "id": "T2-R1",
+      "score": 2,
+      "evidence": "Waseda ranks first for interdisciplinary media/society/culture fit and Tokyo's opportunities for deep local engagement. The U.S. section states: “A professionally oriented program may provide less cultural and intellectual fit than Waseda or Amsterdam despite stronger name recognition.”",
+      "reason": "Intellectual fit and immersion materially shape the ranking and explicitly outweigh name recognition, while feasibility conditions determine whether those choices remain viable."
+    },
+    {
+      "id": "T2-R2",
+      "score": 2,
+      "evidence": "The recommended semester portfolio includes “one advanced media/communication theory course,” “one public opinion, political communication, or research-methods course,” and “one culture/society/area-studies course.”",
+      "reason": "The concrete course-selection plan centers communication and sociocultural learning, with methods as a complementary component rather than predominantly narrow technical training."
+    },
+    {
+      "id": "T2-R3",
+      "score": 2,
+      "evidence": "The NTU recommendation says to “build your semester around recurring involvement in one community, local-language exposure, and sustained field observation—not regional weekend travel.” The preparation plan also requires joining one recurring local activity.",
+      "reason": "The report operationally prioritizes sustained university/community engagement over destination accumulation through specific recurring commitments and an explicit travel trade-off."
+    },
+    {
+      "id": "T2-R4",
+      "score": 2,
+      "evidence": "A stated reason for ranking Waseda first is that Tokyo supports “deep, self-directed engagement through neighborhoods, libraries, cultural institutions, media organizations, and local communities rather than packaged exchange tourism.” The plan recommends a comparative research diary and local activities “rather than relying on packaged excursions.”",
+      "reason": "Self-directed exploration influences the leading recommendation and is carried into the activity plan through independent observation and locally chosen engagement instead of tour-led programming."
+    },
+    {
+      "id": "T2-R5",
+      "score": 2,
+      "evidence": "The budget section prioritizes “university dormitory or residence with local and international residents,” then a “legitimate shared house or room with a normal commute,” placing a “private studio only if other options fail.” Singapore's lower-cost scenario relies on campus accommodation and economical food choices.",
+      "reason": "Concrete housing priorities combine affordability and local contact while deprioritizing private convenience. Net-cost comparisons and economical daily-living assumptions also consequentially shape recommendations."
+    }
+  ],
+  "usage_metadata": {
+    "input_tokens": 6828,
+    "output_tokens": 589,
+    "total_tokens": 7417,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 107
+    }
+  }
+}

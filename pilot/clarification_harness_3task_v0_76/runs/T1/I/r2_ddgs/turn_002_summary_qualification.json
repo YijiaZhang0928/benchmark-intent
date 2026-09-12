@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/clarification_harness_3task_v0_76/runs/T1/I/r2_ddgs/turn_002_summary.json",
+  "distinct_search_queries": 30,
+  "fetch_attempts": 10,
+  "substantive_fetch_successes": 7,
+  "report_cited_url_count": 6,
+  "successful_fetched_domains": [
+    "fytgs.hkust.edu.hk",
+    "inf.ethz.ch",
+    "www.comp.nus.edu.sg",
+    "www.cs.stanford.edu",
+    "www.epfl.ch",
+    "www.lti.cs.cmu.edu"
+  ],
+  "declared_primary_domains": [
+    "comp.nus.edu.sg",
+    "cs.stanford.edu",
+    "inf.ethz.ch",
+    "lti.cs.cmu.edu"
+  ],
+  "matched_primary_domains": [
+    "inf.ethz.ch",
+    "www.comp.nus.edu.sg",
+    "www.cs.stanford.edu",
+    "www.lti.cs.cmu.edu"
+  ],
+  "structural_gate_pass": true,
+  "primary_source_gate": "pass",
+  "deep_research_qualified": true,
+  "fetches": [
+    {
+      "url": "https://www.cs.stanford.edu/admissions/phd-admissions",
+      "domain": "www.cs.stanford.edu",
+      "readable_characters": 1488,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.cs.stanford.edu/phd-program-overview/funding",
+      "domain": "www.cs.stanford.edu",
+      "readable_characters": 1281,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.lti.cs.cmu.edu/academics/phd-programs/phd-lti.html",
+      "domain": "www.lti.cs.cmu.edu",
+      "readable_characters": 8409,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://sgs.calendar.utoronto.ca/computer-science-computer-science-phd",
+      "domain": "sgs.calendar.utoronto.ca",
+      "readable_characters": 302,
+      "substantive_success": false,
+      "error": "Error fetching https://sgs.calendar.utoronto.ca/computer-science-computer-science-phd: HTTPStatusError: Client error '403 Forbidden' for url 'https://sgs.calendar.utoronto.ca/computer-science-computer-science-phd'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://inf.ethz.ch/doctorate/doctoral-study-program/application-and-admission.html",
+      "domain": "inf.ethz.ch",
+      "readable_characters": 3451,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-how-to-apply/",
+      "domain": "www.epfl.ch",
+      "readable_characters": 11641,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ox.ac.uk/admissions/graduate/courses/dphil-computer-science",
+      "domain": "www.ox.ac.uk",
+      "readable_characters": 304,
+      "substantive_success": false,
+      "error": "Error fetching https://www.ox.ac.uk/admissions/graduate/courses/dphil-computer-science: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.ox.ac.uk/admissions/graduate/courses/dphil-computer-science'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.comp.nus.edu.sg/programmes/pg/phdcs/",
+      "domain": "www.comp.nus.edu.sg",
+      "readable_characters": 1412,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship",
+      "domain": "nusgs.nus.edu.sg",
+      "readable_characters": 120,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship"
+    },
+    {
+      "url": "https://fytgs.hkust.edu.hk/admissions/Admission-to-Hong-Kong-Campus/submitting-an-application/scholarships-and-fees",
+      "domain": "fytgs.hkust.edu.hk",
+      "readable_characters": 1581,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

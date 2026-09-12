@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.76",
+  "created_at": "2026-09-12",
+  "status": "frozen_before_agent_generation",
+  "purpose": "Test whether clarification-enabled Deep Research harnesses recover high-impact preferences and improve fixed-rubric personalization on the first three reselected PDR tasks.",
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Clarification-supported harness conditions have higher mean P_rubric than clarification-disabled or not-usually-supported conditions.",
+      "primary_controlled_contrast": "same backbone and harness with clarification enabled versus disabled",
+      "ecological_contrast": "DeerFlow 2.0 and Open Deep Research versus DeerFlow 1.x, OAgents, and commercial Deep Research products"
+    },
+    {
+      "id": "H2",
+      "statement": "Coverage@HighImpact is positively associated with final P_rubric.",
+      "caveat": "Question count alone is not predicted to be monotonic; coverage and precision are the mechanism variables."
+    },
+    {
+      "id": "H3",
+      "statement": "For the preregistered Task 3 case, cold-start clarification-enabled P_rubric exceeds full-persona clarification-disabled P_rubric under the same backbone, tools, budget, and report contract."
+    }
+  ],
+  "primary_tasks": ["T1", "T2", "T3"],
+  "primary_metric": {
+    "name": "P_rubric",
+    "range": [0, 10],
+    "definition": "Sum of five fixed task-specific rubric scores, each scored 0=ignored/contradicted, 1=partial/non-consequential, 2=clear consequential implementation."
+  },
+  "process_metrics": {
+    "coverage_at_high_impact": "Number of five high-impact preferences recoverable from the answered clarification conversation divided by five.",
+    "clarification_turns": "Assistant turns containing one or more clarification questions before research.",
+    "atomic_questions": "Semantically independent requested fields or trade-offs, regardless of punctuation.",
+    "question_precision": "Atomic questions that target a high-impact preference divided by all atomic questions.",
+    "grounded_p": "Rubric credit retained only where the corresponding high-impact preference was recovered in clarification."
+  },
+  "controlled_pilot": {
+    "backbone": "gpt-5.6-sol",
+    "model_route": "Codex CLI OAuth",
+    "harness": "DeerFlow 2.0",
+    "harness_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+    "search_and_fetch": "frozen simple_http adapter",
+    "conditions": [
+      "instruction_only_clarification_enabled",
+      "instruction_only_clarification_disabled",
+      "T3_full_persona_clarification_disabled"
+    ],
+    "initial_repeats": 1,
+    "confirmatory_repeats_after_smoke": 3
+  },
+  "full_matrix_target": {
+    "open_harnesses": ["DeerFlow 1.x", "OAgents", "DeerFlow 2.0", "Open Deep Research"],
+    "model_families": ["GPT", "Claude", "Gemini", "Kimi"],
+    "commercial_products": ["Perplexity Deep Research", "GPT Deep Research"],
+    "missing_cell_policy": "Record unsupported or uncredentialed cells explicitly; never silently substitute another model."
+  },
+  "interaction_budget": {
+    "maximum_clarification_turns": 2,
+    "maximum_atomic_questions": 5,
+    "native_behavior_rule": "The exact workbook instruction is the first visible user message. Clarification support is supplied only by the frozen harness condition."
+  },
+  "deep_research_qualification": {
+    "minimum_distinct_queries_or_branches": 3,
+    "minimum_substantive_fetches": 5,
+    "minimum_cited_urls": 5,
+    "minimum_primary_or_authoritative_sources_when_applicable": 2,
+    "required": [
+      "auditable research plan",
+      "cross-source synthesis",
+      "claim-to-source links",
+      "tool, query, fetch, failure, and timestamp trace"
+    ]
+  },
+  "judging": {
+    "blind_to": ["harness", "condition", "model identity", "hypothesis"],
+    "judge_repeats": 3,
+    "adjudication": "A two-point disagreement on any 0/1/2 rubric item requires an additional adjudication pass.",
+    "official_pdr_p": "secondary only and never merged with P_rubric"
+  },
+  "claim_boundary": "Three tasks are a falsification-oriented pilot. Repeated generations diagnose within-cell variability but do not turn three tasks into a population sample."
+}
