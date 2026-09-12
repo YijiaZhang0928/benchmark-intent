@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.80
+## 当前方向：AskInfer-Bench v0.81
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -54,6 +54,8 @@ v0.79 完成 v0.76 预注册的 Open Deep Research IEO A/B。一次盲评 P-scor
 
 v0.80 将 0912 workbook 的 15 个 task 全部扩展为 task-specific 严格 rubric：每题 26 个原子评分叶、共 390 条，按 GOAL/CONT/PRES/ACTI 两层加权，加入 `0/2/4/6/8/10` 锚点、通用答案 6–7 分上限和 high-impact 反事实后果要求。另按 source task–persona exact pair 导入公开 PDR criteria：15 对中 8 对可用、共 301 条；其余 7 对只能报告 `P_strict`，不得冒充 `P_official`。`P_HI` 与 Coverage@HighImpact 分开记录，10 分只表示命名 score set 的满分，不表示所有高影响偏好均被提问。执行与预算说明见 [`pilot/h3_rubric_expansion_v0_80/`](pilot/h3_rubric_expansion_v0_80/)。
 
+v0.81 在新输出前冻结第二条 stock ODR vs IEO 对照。T35 的 safety/risk 漏问被重新拆解为“不可协商的安全底线”与“底线之上的用户风险/冗余偏好”，说明原 high-impact unit 粒度与 ownership 过粗。IEO-v2 新增 user answerability、research 后 residuality、具体 counterfactual change 与 normative-floor veto；holdout 预先选为 adapted Task9 / PDR-T21 × User12 投资题，包含 5 个 high 与 3 个 average user-owned units。`Recall@High` 保持主机制指标，`Recall@High+Average` 和 2:1 impact-weighted recall 只作预注册次指标并强制同报，禁止按结果换题或换口径。协议见 [`pilot/odr_ieo_v2_ab_v0_81/protocol.md`](pilot/odr_ieo_v2_ab_v0_81/protocol.md)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -68,6 +70,7 @@ v0.80 将 0912 workbook 的 15 个 task 全部扩展为 task-specific 严格 rub
 - [`pilot/abstract_claim_validation_v0_75/`](pilot/abstract_claim_validation_v0_75/)：PDR-T35 同-backbone N/I/F/R 摘要主张验证、11 字段审计、盲评分数、DR 资格审计和 claim boundary。
 - [`pilot/clarification_harness_3task_v0_76/`](pilot/clarification_harness_3task_v0_76/)：前三题同骨干 ask/no-ask、T3 full-persona/no-ask、ODR clarification probe 与 21 次盲评结果。
 - [`pilot/odr_ieo_ab_v0_76/`](pilot/odr_ieo_ab_v0_76/)：stock ODR vs IEO ODR 的运行前协议、完整报告/trace、question/preference chain、37-criterion 分解与一次同骨干盲评。
+- [`pilot/odr_ieo_v2_ab_v0_81/`](pilot/odr_ieo_v2_ab_v0_81/)：T35 ownership/granularity 诊断、Task21/User12 holdout、IEO-v2 与 high/high+average recall 的运行前冻结。
 - [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)：H3 四条件设计、官方/严格/反事实评分边界、天花板 gate、跨模型成功规则与 API 清单。
 - [`pilot/h3_rubric_expansion_v0_80/`](pilot/h3_rubric_expansion_v0_80/)：15 题严格 rubric 扩展、PDR exact-pair provenance、评分锚点、运行前冻结边界与首批 API 预算假设。
 - [`proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md`](proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md)：当前可写、禁止写、保守英文摘要与升级结果句。

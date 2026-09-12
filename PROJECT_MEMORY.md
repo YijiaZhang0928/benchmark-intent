@@ -3,10 +3,16 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-12
-当前版本：v0.80（15 题 task-specific rubric 扩展与 API 预算）
+当前版本：v0.81（IEO-v2 holdout A/B 运行前冻结）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAA. 2026-09-12：IEO-v2 holdout A/B 运行前冻结
+
+T35 漏掉的 `P02_SAFETY_RISK` 不能简单解释为模型没有问到一个普通用户偏好：该单元混合了 agent 无条件应守住的安全底线，以及用户可决定的额外冗余、重量、成本与保守程度。它因此暴露了 ontology 粒度与 ownership 标注问题。IEO-v2 在 influence/evidence/ownership 之外加入 user answerability、research 后 residuality、具体 counterfactual deliverable changes 与 normative-floor veto；只问用户现在能回答、且在负责研究之后仍会改变 evidence/shortlist/action 的值。
+
+下一条 holdout 在任何输出生成前按 workbook 字段与官方 criteria 可用性选定为 adapted Benchmark Task9 / PDR source Task21 / User12。五个 high-impact 单元为风险姿态、持有风格、科技倾斜、证据决策风格与分散化；三个 average-impact 单元为流动性、管理负担与选择性早期项目暴露。主机制量仍是 `Recall@High`，另预注册 `Recall@High+Average` 与 2:1 impact-weighted recall 并强制并列报告，禁止在看到结果后用次指标替换主指标或换题。stock ODR 与 IEO-v2 固定同一 `gpt-5.6-sol/high`、ODR 后续 graph、搜索/抓取、研究预算、deterministic selective-disclosure simulator 与 33 条未改 PDR criteria；IEO-v2 最多三问。因 instruction 来自 adapted workbook，最终分数必须称 `PDR-criteria score on adapted instruction`，不能作为官方 leaderboard P-score。协议与冻结代码位于 `pilot/odr_ieo_v2_ab_v0_81/`；结果必须在后续独立 commit 中记录。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAA. 2026-09-12：15 题 task-specific rubric 扩展与 API 预算
 

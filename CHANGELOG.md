@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.81 IEO-v2 holdout protocol - 2026-09-12
+
+- 将 T35 漏问的 safety/risk 单元拆解为不可协商的安全底线与底线之上的用户风险/冗余偏好，记录原 high-impact ontology 粒度与 ownership 混合问题。
+- IEO-v2 在 influence/evidence/ownership 之外新增 user answerability、research 后 residuality、具体 counterfactual deliverable change 和 normative-floor veto。
+- 在任何新输出前按 workbook annotation 与官方 criteria 可用性选定 adapted Task9 / PDR-T21 × User12 投资 holdout；冻结 5 个 high 与 3 个 average user-owned units。
+- 保留 `Recall@High` 为主机制量，预注册并强制同报 `Recall@High+Average` 与 2:1 impact-weighted recall；禁止结果后换题、拆并单元或用次指标替换主指标。
+- 冻结 stock ODR 与 IEO-v2 的同-backbone、同 research graph/tools/budget、同 simulator、最多一轮澄清与 33-leaf unchanged PDR evaluator；adapted instruction 的分数不称官方 leaderboard P-score。
+
 ## v0.80 Task-specific rubric expansion and API budget - 2026-09-12
 
 - Expanded all 15 workbook tasks to 26 task-specific `P_strict` leaves each, 390 total, with GOAL/CONT/PRES/ACTI two-level weights, `0/2/4/6/8/10` anchors, generic-answer caps, and high-impact counterfactual requirements.
