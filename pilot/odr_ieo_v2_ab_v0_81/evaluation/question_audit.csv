@@ -1,0 +1,12 @@
+condition,form_row,question_target,target_type,preference_units,high_units,average_units,persona_answerable,simulator_resolved,real_world_useful,notes
+stock,1,"tax jurisdiction; base currency; account type",user_owned_eligibility_fact,,, ,partial,false,true,"High consequence but not a scored preference; persona does not establish the values."
+stock,2,"investable amount; contribution pattern; withdrawals",user_owned_current_state,,, ,partial,false,true,"Useful portfolio-sizing state, but exact values are absent from persona and workbook GT."
+stock,3,"six-month deployment window versus holding horizon",user_owned_preference,T9-P2,T9-P2,,true,true,true,"Directly resolves holding style/horizon."
+stock,4,"drawdown tolerance and principal preservation",user_owned_preference,T9-P1,T9-P1,,true,true,true,"Directly resolves risk posture."
+stock,5,"liquidity reserve; emergency fund; high-interest debt",user_owned_current_state,T9-A1,,T9-A1,partial,true,true,"Direction is persona-supported; exact reserve is unknown."
+stock,6,"active-management burden; monitoring frequency; sector/ESG; instrument exclusions",mixed_user_owned,T9-P3;T9-A2,T9-P3,T9-A2,true,partial,true,"The frozen keyword simulator resolved A2 but missed the semantically asked P3 phrase 'sector or ESG preferences'; machine and semantic coding are both retained."
+stock,7,"current portfolio and investing experience",user_owned_current_state,,, ,partial,false,true,"Persona supports experience but not exact holdings; not a frozen preference unit."
+stock,8,"interpretation of 10% annualized target",task_semantics,,, ,true,false,true,"Clarifies the mathematical target; not a personalization preference."
+ieo,1,"deployment window versus withdrawal horizon",user_owned_preference,T9-P2,T9-P2,,true,true,true,"High influence, answerable, and counterfactually consequential."
+ieo,2,"tolerable temporary loss",user_owned_preference,T9-P1,T9-P1,,true,true,true,"High influence, answerable, and counterfactually consequential."
+ieo,3,"country of tax residence",user_owned_eligibility_fact,,, ,false,false,true,"Correct real-world gating question but not rewarded by the frozen PDR preference ontology; persona cannot answer it."

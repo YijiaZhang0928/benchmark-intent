@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.83 IEO-v2 negative clarification result - 2026-09-12
+
+- 记录完整 stock ODR 在 research compression/supervision 超过冻结 30 分钟硬上限且无 final report；排除该 run，不启动 IEO-v2 full run，因此不报告 P-score。
+- 对已冻结 clarification nodes 运行 post-timeout exploratory probe：machine-resolved high recall stock/IEO-v2 均为 0.40，high+average 为 0.50/0.25；semantic asked high 为 0.60/0.40。
+- 保留 stock simulator 对 `sector or ESG preferences` 的 regex false-negative，机器口径与人工语义口径并列，禁止把实现错误包装为 IEO gain。
+- IEO-v2 把顶层表单从 8 行降到 3 行、单位 yield 从 0.625 升至 0.667，但 tax residence 挤掉 sector preference，表现为更 selective 而非更 comprehensive。
+- `Recall@High+Average` 扩大而非缩小负差；结果不支持 IEO-v2 recall/P-score 优越性。
+- 新增 IEO-v3 spec：task-named preference first、六类 ownership/type 分离、三问预算 preference-slot protection、eligibility cap，以及 `Recall@AskableHigh` 与 `DecisionStateRecall` 分报。
+
 ## v0.82 Task-only cold starts and atomic micro-rubrics - 2026-09-12
 
 - Corrected the v0.80 cold-start leakage. The enriched source instructions are now explicitly non-cold-start provenance; a separate task-only input is supplied for all 15 tasks.

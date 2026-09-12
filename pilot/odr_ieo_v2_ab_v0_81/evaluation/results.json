@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.82",
+  "status": "exploratory_clarification_probe_only_full_ab_timed_out",
+  "case": "Adapted Benchmark Task9 / PDR-T21 x User12",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "high",
+  "full_report_comparison": {
+    "stock": "excluded_timeout_no_final_report",
+    "ieo_v2": "not_run_after_stock_timeout",
+    "pdr_criteria_score_available": false,
+    "reason": "The stock ODR graph exceeded the frozen 30-minute hard timeout while in research compression/supervision and produced no report."
+  },
+  "clarification_probe": {
+    "stock": {
+      "top_level_form_rows": 8,
+      "estimated_atomic_slots": 19,
+      "semantically_asked_units": ["T9-P1", "T9-P2", "T9-P3", "T9-A1", "T9-A2"],
+      "machine_resolved_units": ["T9-P1", "T9-P2", "T9-A1", "T9-A2"],
+      "recall_high_machine_resolved": {"numerator": 2, "denominator": 5, "value": 0.4},
+      "recall_high_plus_average_machine_resolved": {"numerator": 4, "denominator": 8, "value": 0.5},
+      "impact_weighted_recall_machine_resolved": {"numerator": 6, "denominator": 13, "value": 0.4615384615},
+      "recall_high_semantically_asked": {"numerator": 3, "denominator": 5, "value": 0.6},
+      "recall_high_plus_average_semantically_asked": {"numerator": 5, "denominator": 8, "value": 0.625},
+      "unique_unit_yield_per_form_row": 0.625,
+      "unique_unit_yield_per_estimated_atomic_slot": 0.2631578947
+    },
+    "ieo_v2": {
+      "top_level_form_rows": 3,
+      "estimated_atomic_slots": 3,
+      "semantically_asked_units": ["T9-P1", "T9-P2"],
+      "machine_resolved_units": ["T9-P1", "T9-P2"],
+      "recall_high_machine_resolved": {"numerator": 2, "denominator": 5, "value": 0.4},
+      "recall_high_plus_average_machine_resolved": {"numerator": 2, "denominator": 8, "value": 0.25},
+      "impact_weighted_recall_machine_resolved": {"numerator": 4, "denominator": 13, "value": 0.3076923077},
+      "recall_high_semantically_asked": {"numerator": 2, "denominator": 5, "value": 0.4},
+      "recall_high_plus_average_semantically_asked": {"numerator": 2, "denominator": 8, "value": 0.25},
+      "unique_unit_yield_per_form_row": 0.6666666667,
+      "unique_unit_yield_per_estimated_atomic_slot": 0.6666666667,
+      "policy_valid": true
+    },
+    "ieo_minus_stock": {
+      "recall_high_machine_resolved": 0.0,
+      "recall_high_plus_average_machine_resolved": -0.25,
+      "impact_weighted_recall_machine_resolved": -0.1538461538,
+      "recall_high_semantically_asked": -0.2,
+      "recall_high_plus_average_semantically_asked": -0.375,
+      "unique_unit_yield_per_form_row": 0.0416666667
+    }
+  },
+  "posthoc_askability_audit": {
+    "status": "exploratory_not_a_replacement_primary_metric",
+    "askable_high_units": ["T9-P1", "T9-P2", "T9-P3"],
+    "excluded_from_askable_high_denominator": {
+      "T9-P4": "Evidence-based financial analysis is largely a responsible agent/report requirement rather than a value the user must choose.",
+      "T9-P5": "The visible instruction already explicitly requests a diversified portfolio, so preference evidence is strong."
+    },
+    "stock_asked_recall": {"numerator": 3, "denominator": 3, "value": 1.0},
+    "ieo_v2_asked_recall": {"numerator": 2, "denominator": 3, "value": 0.6666666667}
+  },
+  "claim_decision": {
+    "ieo_v2_improves_recall": false,
+    "high_plus_average_rescues_result": false,
+    "ieo_v2_reduces_question_burden": true,
+    "ieo_v2_improves_question_unit_yield": true,
+    "p_score_claim_available": false,
+    "summary": "IEO-v2 was more selective but less comprehensive. The added average-impact metric widened the disadvantage rather than making the result favorable."
+  }
+}

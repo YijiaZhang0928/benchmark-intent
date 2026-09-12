@@ -1,0 +1,8 @@
+{
+  "condition": "stock",
+  "status": "excluded_engineering_timeout",
+  "reason": "The full Open Deep Research graph remained inside research compression/supervision for approximately 2.5 hours, exceeding the frozen 30-minute hard timeout. The process was interrupted and produced no final report; it is not scored and does not count as a generation.",
+  "observed_stage": "research compression/supervision after clarification",
+  "report_generated": false,
+  "score_eligible": false
+}

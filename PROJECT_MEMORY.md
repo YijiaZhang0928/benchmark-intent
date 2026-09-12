@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-12
-当前版本：v0.82（task-only cold start 与 67-leaf 微 rubric）
+当前版本：v0.83（IEO-v2 holdout negative clarification result）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-12：IEO-v2 holdout negative clarification result
+
+v0.81 protocol commit `54ebd99` 在任何新问题输出前已推送。完整 stock ODR run 随后在 clarification 之后的 research compression/supervision 挂起约 2.5 小时，超过冻结 30 分钟硬上限且无 final report；该 run 排除，IEO-v2 full run 不再启动，因此本轮没有合法 PDR-criteria score。为保留 what-to-ask 诊断，使用已冻结节点补跑 clarification-only probe，明确标为 post-timeout exploratory fallback。
+
+Stock 提出 8 个顶层表单行、约 19 个 atomic slots，语义上覆盖 T9-P1/P2/P3 与 T9-A1/A2；IEO-v2 只问 horizon、risk 与 tax residence，覆盖 T9-P1/P2。按机器实际 resolved，`Recall@High` 为 0.40 vs 0.40，`Recall@High+Average` 为 0.50 vs 0.25，2:1 weighted recall 为 0.462 vs 0.308；按问题语义，high recall 为 0.60 vs 0.40、high+average 为 0.625 vs 0.25。Stock 的 simulator regex 漏答了明问的 sector/ESG preference，机器与人工语义口径同时保留，不能把 bug 变成 IEO 优势。
+
+IEO-v2 的正面只在 burden/precision：3 个顶层问题而非 8 个，unique frozen-unit yield 0.667 vs 0.625；但它把一个提问预算分给真实世界很关键、却不属于 preference GT 且 persona 无法回答的 tax residence，导致 preference coverage 更低。加入 average-impact 并未救回结果，反而扩大负差。因此不能声称架构有效或 P-score 提升。
+
+进一步 askability audit 表明，impact 不是 clarification denominator 的充分条件：T9-P5 diversification 已被 instruction 强证据给出，T9-P4 data-driven analysis 更像 agent/report best practice；clean askable-high 是 P1/P2/P3，stock asked 3/3、IEO-v2 2/3。IEO-v3 应先覆盖 visible instruction 命名的 unresolved preference slots，再生成 latent preferences，并把 preference value、personal constraint/current-state、research-owned、agent-recommended 与 normative floor 分开；三问预算下至少两槽保护 preference class，eligibility/current-state 默认至多一槽。完整结果与新 spec 位于 `pilot/odr_ieo_v2_ab_v0_81/`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-12：task-only cold start 与 67-leaf 微 rubric
 

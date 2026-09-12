@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.82
+## 当前方向：AskInfer-Bench v0.83
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -57,6 +57,8 @@ v0.80 将 0912 workbook 的 15 个 task 全部扩展为 task-specific 严格 rub
 v0.81 在新输出前冻结第二条 stock ODR vs IEO 对照。T35 的 safety/risk 漏问被重新拆解为“不可协商的安全底线”与“底线之上的用户风险/冗余偏好”，说明原 high-impact unit 粒度与 ownership 过粗。IEO-v2 新增 user answerability、research 后 residuality、具体 counterfactual change 与 normative-floor veto；holdout 预先选为 adapted Task9 / PDR-T21 × User12 投资题，包含 5 个 high 与 3 个 average user-owned units。`Recall@High` 保持主机制指标，`Recall@High+Average` 和 2:1 impact-weighted recall 只作预注册次指标并强制同报，禁止按结果换题或换口径。协议见 [`pilot/odr_ieo_v2_ab_v0_81/protocol.md`](pilot/odr_ieo_v2_ab_v0_81/protocol.md)。
 
 v0.82 修正 cold-start 输入泄露：原 enriched instruction 仍含教育、职业、家庭或 preference-adjacent 信息，只保留作来源对照，不得送入 cold-start。15 题各新增一份 person-swap invariant 的 task-only input，只保留目标、交付物与时间/预算/物理等解题硬约束，并删除 persona、价值排序和显式 ask cue；ask/no-ask 两臂使用相同文本。`P_strict` 同时从每题 26 条扩展为 67 条、全表 1,005 条；每个 high-impact preference 拆成 11 个、average 拆成 4 个可独立判分的微 criterion，并新增 INTENT/SOURCE/EVIDENCE/TRADEOFF/DECISION/ACTION/TRACE 七维、span-level judge evidence 和 matched/swapped 区分度 gate。详见 [`pilot/h3_cold_start_micro_rubrics_v0_82/`](pilot/h3_cold_start_micro_rubrics_v0_82/)。
+
+v0.83 记录 Task21/User12 holdout 的负面 what-to-ask 结果。完整 stock ODR 在 research compression/supervision 超过 30 分钟硬上限且无 final report，故无 P-score；已冻结节点的 exploratory clarification probe 显示 machine-resolved high recall 两者同为 0.40，high+average 为 stock 0.50、IEO-v2 0.25，语义 asked high 为 0.60 vs 0.40。IEO-v2 从 8 个顶层表单行降到 3 个、每行 frozen-unit yield 小幅提高，但 tax residence 这一必要 personal constraint 挤掉了 sector preference，导致 coverage 更低；average-impact 没有“救”结果。新 [`IEO_V3_SPEC.md`](pilot/odr_ieo_v2_ab_v0_81/IEO_V3_SPEC.md) 将 preference、personal constraint/current state、research-owned、agent-recommended 与 normative floor 分型，并增加 instruction-named preference coverage 保护。
 
 ## 当前交付物
 
