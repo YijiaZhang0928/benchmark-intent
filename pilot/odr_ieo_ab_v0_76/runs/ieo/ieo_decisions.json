@@ -1,0 +1,100 @@
+[
+  {
+    "candidates": [
+      {
+        "name": "Destination, timing, elevation, and weather envelope",
+        "deliverable_influence": "high",
+        "evidence_strength": "weak",
+        "ownership": "user_owned",
+        "deliverable_consequence": "Determines required temperature ratings, storm protection, insulation, shelter strength, water treatment, footwear, and altitude-related safety equipment. Only “summer” is known, which varies substantially by region and elevation.",
+        "should_ask": true,
+        "question": "Where and in which summer months will you travel, and what maximum elevation and lowest expected nighttime temperature should the kit handle?"
+      },
+      {
+        "name": "Mountaineering technicality",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "ownership": "user_owned",
+        "deliverable_consequence": "Changes the safety boundary and whether the checklist needs only hiking equipment or specialized glacier, snow, rock, ice, climbing, and protective gear that also requires training.",
+        "should_ask": true,
+        "question": "By “mountaineering,” do you mean nontechnical mountain hiking/scrambling, snow travel, glacier travel, or technical rock/ice climbing?"
+      },
+      {
+        "name": "Maximum trip length without resupply",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "ownership": "user_owned",
+        "deliverable_consequence": "Controls backpack capacity, food and fuel capacity, battery strategy, water storage, first-aid quantities, and the appropriate balance between weight and durability.",
+        "should_ask": true,
+        "question": "What is the longest trip you expect to take without resupply?"
+      },
+      {
+        "name": "Total budget and purchasing flexibility",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "ownership": "user_owned",
+        "deliverable_consequence": "Materially changes the brand and product-tier shortlist, where premium spending should be prioritized, and whether rental or used technical equipment should be considered.",
+        "should_ask": true,
+        "question": "What is your total budget and currency for the complete kit, and are rental or used items acceptable?"
+      },
+      {
+        "name": "Solo versus group travel and shared equipment",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "ownership": "user_owned",
+        "deliverable_consequence": "Affects tent capacity, stove and cookware sizing, emergency communication redundancy, navigation backup, first-aid coverage, and distribution of carried weight.",
+        "should_ask": true,
+        "question": "Will you usually travel solo or with a group, and if with a group, which shelter and cooking items can be shared?"
+      },
+      {
+        "name": "Beginner experience level",
+        "deliverable_influence": "medium",
+        "evidence_strength": "strong",
+        "ownership": "user_owned",
+        "deliverable_consequence": "Supports beginner-friendly equipment, conservative safety margins, simpler systems, and explicit training or guide recommendations.",
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Fit and body measurements",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "ownership": "user_owned",
+        "deliverable_consequence": "Would refine backpack frame size, sleeping-system dimensions, footwear fit, and clothing cuts, but these can responsibly be addressed through fitting procedures rather than requiring personal measurements now.",
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Weight versus durability and comfort trade-off",
+        "deliverable_influence": "medium",
+        "evidence_strength": "weak",
+        "ownership": "agent_recommended",
+        "deliverable_consequence": "Influences whether the system emphasizes ultralight, balanced, or rugged equipment; the request already favors durability, functionality, and comfort, so research should compare and recommend a balanced configuration.",
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Current product specifications, prices, availability, and brand reliability",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "ownership": "research_owned",
+        "deliverable_consequence": "Determines the evidence-based brand and model shortlist and value assessment for the user’s market.",
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Need for technical equipment and professional instruction",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "ownership": "agent_recommended",
+        "deliverable_consequence": "Research should establish which activities require helmets, harnesses, ropes, crampons, ice axes, avalanche equipment, glacier rescue systems, guides, or formal training rather than treating gear as a substitute for competence.",
+        "should_ask": false,
+        "question": ""
+      }
+    ],
+    "need_clarification": true,
+    "selected_question": "1. Where and in which summer months will you travel, and what maximum elevation and lowest expected nighttime temperature should the kit handle?\n2. By “mountaineering,” do you mean nontechnical mountain hiking/scrambling, snow travel, glacier travel, or technical rock/ice climbing?\n3. What is the longest trip you expect to take without resupply?\n4. What is your total budget and currency for the complete kit, and are rental or used items acceptable?\n5. Will you usually travel solo or with a group, and if with a group, which shelter and cooking items can be shared?",
+    "verification": "Clarification is necessary because destination conditions and the meaning of mountaineering can change both the equipment list and its safety limits, while trip length, budget, and group structure materially change capacities and recommendations. All selected questions concern user-controlled plans or constraints not established in the conversation. Product selection, technical requirements, and value comparisons remain tasks for research rather than choices delegated to the user.",
+    "policy_valid": true
+  }
+]

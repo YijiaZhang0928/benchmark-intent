@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-12
-当前版本：v0.78（H3 2×2 测量修复与跨模型设计）
+当前版本：v0.79（Open Deep Research IEO clarification A/B 结果）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAA. 2026-09-12：Open Deep Research IEO A/B 结果
+
+运行前协议已在 commit `938cf38` 单独提交并推送。随后用 PDR-T35 × User8、同一 `gpt-5.6-sol/high`、同一 Open Deep Research 后续 graph、同一 search/fetch 与 research limits、同一 deterministic persona-bounded simulator 跑 stock clarification 与 IEO clarification 各一次，再用未改的 37 条官方 PDR personalization criteria、prompt、权重与 calculator 做单次盲评。P-score 为 stock 8.5462、IEO 9.1560，`IEO−stock=+0.6098`；四维差分别为 goal +0.50、content +0.31、presentation +0.62、actionability +0.82。
+
+该数字不能归因为更好的 clarification selection：两边都问 5 个 atomic questions，都只获取 P01 activity/environment 与 P03 budget/quality，high-impact recall 同为 2/3、delta-weighted coverage 同为 6/17，且都漏冻结的 P02 safety/risk。IEO 的 10-item candidate ledger 能正确区分 user-owned、research-owned 与 agent-recommended uncertainty，但选择的问题仍与 stock 几乎同构，优先问 itinerary parameters，而没有生成 latent risk-preference question。criterion decomposition 中只有 +0.2700/0.6098（44.3%）与两边共同获取的 P01/P03 相交，其余 +0.3398 来自未问单元。
+
+同时存在强 research-execution confound：stock 为 7 searches、4 fetch attempts、2 substantive fetches、7 cited URLs、1 authoritative domain，未通过冻结 DR gate；IEO 为 27/8/5/18/10，通过全部 gate。两者配置预算相同，但 stochastic supervisor/researcher depth 不同。因此本轮只支持“IEO full system 在一条样本上高 0.6098，且 routing 可审计”，不支持“IEO 已改善 what-to-ask”或因果增益。下一版架构应增加 user answerability，并单独生成会在 research 完成后仍改变推荐的 latent preference counterfactual；同时需要更严格地匹配实际 query/fetch budget 或做配对重复。
+
+首个 stock 工程 run 因 simulator 子字符串过宽而泄露未问偏好，且 adapter 漏注册 ODR Pydantic research tools，被运行时审计识别并在评分前排除，完整保存在 `engineering_failures/`。有效两臂修复后共享相同 implementation/adapter/tool hashes，且无 bounded finalizer。完整 transcript、IEO ledger、report、trace、盲评、criterion decomposition 和 validation 位于 `pilot/odr_ieo_ab_v0_76/`。
 
 ## 0AAAAAAAAAAAAAAAAAAAA. 2026-09-12：H3 2×2 测量修复与跨模型设计
 

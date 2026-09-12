@@ -1,0 +1,11 @@
+question_id,condition,question,preference_unit,delta,evidence_before,ownership,should_ask,answer_usable,reflected_in_report,classification
+S01,stock,"Location/conditions: region, temperature, precipitation, altitude, terrain",P01_ACTIVITY_ENVIRONMENT,high,weak,user_owned,yes,partial,yes,reasonable_missing_information
+S02,stock,"Trip format: duration, solo/group, backpacking/car camping",OUTSIDE_FROZEN_8_TRIP_FORMAT,high,none,user_owned,yes,no,branched,reasonable_but_persona_unresolved
+S03,stock,"Mountaineering scope: nontechnical vs technical snow/glacier/rock",P01_ACTIVITY_ENVIRONMENT,high,none,user_owned,yes,yes,yes,reasonable_scope_disambiguation
+S04,stock,"Budget and one-versatile-kit vs separate setups",P03_BUDGET_QUALITY,high,weak,mixed_user_and_agent,partial,yes,yes,mixed_budget_valid_setup_should_be_recommended
+S05,stock,"Purchasing market",P01_ACTIVITY_ENVIRONMENT;P03_BUDGET_QUALITY,high,none,user_owned,yes,yes,yes,reasonable_personal_context
+I01,ieo,"Destination/month/elevation/night temperature",P01_ACTIVITY_ENVIRONMENT,high,weak,user_owned,yes,partial,yes,reasonable_missing_information
+I02,ieo,"Mountaineering technicality",P01_ACTIVITY_ENVIRONMENT,high,none,user_owned,yes,yes,yes,reasonable_scope_disambiguation
+I03,ieo,"Longest trip without resupply",OUTSIDE_FROZEN_8_TRIP_FORMAT,high,none,user_owned,yes,no,branched,reasonable_but_persona_unresolved
+I04,ieo,"Total budget/currency and rental/used acceptance",P03_BUDGET_QUALITY,high,weak,user_owned,yes,yes,yes,reasonable_missing_information
+I05,ieo,"Solo/group and shared shelter/cooking",OUTSIDE_FROZEN_8_TRIP_FORMAT,high,none,user_owned,yes,no,branched,reasonable_but_persona_unresolved

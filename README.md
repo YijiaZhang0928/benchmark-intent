@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.78
+## 当前方向：AskInfer-Bench v0.79
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -50,6 +50,8 @@ v0.77 完成 0912 workbook 前三题的 DeerFlow 2.0 × `gpt-5.6-sol` feasibilit
 
 v0.78 将上述 `10/10` 重新定性为评分天花板，而不是“全部 high-impact preferences 均满足”。五条 `0/1/2` 自建 rubric 不是官方 PDR P-score；T3 题面还直接暴露 MBA、工作与家庭约束，五条方向又大多是通用创业最佳实践，所以不适合作为 H3 主识别题。新设计冻结为 `ask/no-ask × cold-start/PDR-full-persona` 四条件，官方 PDR 动态细 criteria 与权重产生 `P_official`，另报严格锚定 `P_strict`、反事实高影响链 `P_HI` 和 pairwise sensitivity，禁止把三者混称。T35×User8 仅作已观察过的开发/功效 case；确认性结论至少使用两个未看分数的 holdout，并在生成前冻结 current-state ledger、对称替代、模型/工具/预算和排除规则。见 [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)。
 
+v0.79 完成 v0.76 预注册的 Open Deep Research IEO A/B。一次盲评 P-score 为 stock 8.5462、IEO 9.1560，差 `+0.6098`；但两边都问 5 个 atomic questions、都只获取 P01 activity/environment 与 P03 budget/quality，high-impact recall 同为 2/3，且都漏 P02 safety/risk。IEO 正确把规格/价格路由为 research-owned、把重量/耐久和技术装备选择路由为 agent-recommended，却没有把 routing 转化为更好的 question selection。IEO 又做了 27 searches/5 substantive fetches并通过 DR gate，stock 只有 7/2 且失败；仅 44.3% 的 P-gain 与共同获取单元相交。因此当前结论是 system-level gain observed once，clarification mechanism not validated。完整结果见 [`pilot/odr_ieo_ab_v0_76/RESULTS.md`](pilot/odr_ieo_ab_v0_76/RESULTS.md)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -63,6 +65,7 @@ v0.78 将上述 `10/10` 重新定性为评分天花板，而不是“全部 high
 - [`pilot/dr_harness_backbone_integration_v0_74/`](pilot/dr_harness_backbone_integration_v0_74/)：DeerFlow/Open Deep Research exact-instruction 配置、provider 状态、simulator protocol、runner、审计器和完整 smoke trace。
 - [`pilot/abstract_claim_validation_v0_75/`](pilot/abstract_claim_validation_v0_75/)：PDR-T35 同-backbone N/I/F/R 摘要主张验证、11 字段审计、盲评分数、DR 资格审计和 claim boundary。
 - [`pilot/clarification_harness_3task_v0_76/`](pilot/clarification_harness_3task_v0_76/)：前三题同骨干 ask/no-ask、T3 full-persona/no-ask、ODR clarification probe 与 21 次盲评结果。
+- [`pilot/odr_ieo_ab_v0_76/`](pilot/odr_ieo_ab_v0_76/)：stock ODR vs IEO ODR 的运行前协议、完整报告/trace、question/preference chain、37-criterion 分解与一次同骨干盲评。
 - [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)：H3 四条件设计、官方/严格/反事实评分边界、天花板 gate、跨模型成功规则与 API 清单。
 - [`proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md`](proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md)：当前可写、禁止写、保守英文摘要与升级结果句。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。

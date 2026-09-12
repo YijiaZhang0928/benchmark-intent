@@ -1,0 +1,169 @@
+{
+  "schema_version": "0.76",
+  "status": "exploratory_system_gain_clarification_mechanism_not_validated",
+  "case": "PDR-T35 x User8",
+  "generation_repeats_per_condition": 1,
+  "judge_repeats_per_report": 1,
+  "judge_model": "gpt-5.6-sol",
+  "conditions": {
+    "stock": "stock Open Deep Research generic clarification",
+    "ieo": "Open Deep Research with influence-evidence-ownership clarification node"
+  },
+  "scores": {
+    "stock": 8.546199999999999,
+    "ieo": 9.155999999999999,
+    "ieo_minus_stock": 0.6098
+  },
+  "dimension_scores": {
+    "stock": {
+      "goal_alignment_weighted_avg": 8.77,
+      "content_alignment_weighted_avg": 8.909999999999998,
+      "presentation_fit_weighted_avg": 7.809999999999999,
+      "actionability_practicality_weighted_avg": 8.36
+    },
+    "ieo": {
+      "goal_alignment_weighted_avg": 9.269999999999998,
+      "content_alignment_weighted_avg": 9.219999999999997,
+      "presentation_fit_weighted_avg": 8.429999999999998,
+      "actionability_practicality_weighted_avg": 9.18
+    }
+  },
+  "clarification": {
+    "stock_atomic_questions": 5,
+    "ieo_atomic_questions": 5,
+    "stock_unique_frozen_units_asked": [
+      "P01_ACTIVITY_ENVIRONMENT",
+      "P03_BUDGET_QUALITY"
+    ],
+    "ieo_unique_frozen_units_asked": [
+      "P01_ACTIVITY_ENVIRONMENT",
+      "P03_BUDGET_QUALITY"
+    ],
+    "stock_high_impact_recall": {
+      "numerator": 2,
+      "denominator": 3,
+      "value": 0.6666666666666666
+    },
+    "ieo_high_impact_recall": {
+      "numerator": 2,
+      "denominator": 3,
+      "value": 0.6666666666666666
+    },
+    "stock_delta_weighted_coverage": {
+      "numerator": 6,
+      "denominator": 17,
+      "value": 0.35294117647058826
+    },
+    "ieo_delta_weighted_coverage": {
+      "numerator": 6,
+      "denominator": 17,
+      "value": 0.35294117647058826
+    },
+    "both_missed_high_impact_unit": "P02_SAFETY_RISK",
+    "research_owned_question_errors": {
+      "stock": 0,
+      "ieo": 0
+    },
+    "ieo_candidate_ledger_policy_valid": true,
+    "mechanism_result": "IEO made ownership routing auditable but did not improve selected-question coverage over stock ODR on the frozen ontology."
+  },
+  "deep_research": {
+    "stock": {
+      "condition": "stock",
+      "asked_clarification": true,
+      "simulator_answered_units": [
+        "P01_ACTIVITY_ENVIRONMENT",
+        "P03_BUDGET_QUALITY"
+      ],
+      "distinct_queries": 7,
+      "fetch_attempts": 4,
+      "substantive_fetches": 2,
+      "cited_urls": 7,
+      "cited_domains": [
+        "astm.org",
+        "cascadedesigns.com",
+        "cdc.gov",
+        "iso.org",
+        "plato-usa.org",
+        "webstore.ansi.org",
+        "wms.org"
+      ],
+      "authoritative_domains": [
+        "cdc.gov"
+      ],
+      "gates": {
+        "distinct_queries_at_least_3": true,
+        "substantive_fetches_at_least_5": false,
+        "cited_urls_at_least_5": true,
+        "authoritative_domains_at_least_2": false
+      },
+      "dr_qualified": false
+    },
+    "ieo": {
+      "condition": "ieo",
+      "asked_clarification": true,
+      "simulator_answered_units": [
+        "P01_ACTIVITY_ENVIRONMENT",
+        "P03_BUDGET_QUALITY"
+      ],
+      "distinct_queries": 27,
+      "fetch_attempts": 8,
+      "substantive_fetches": 5,
+      "cited_urls": 18,
+      "cited_domains": [
+        "12306.cn",
+        "abazhou.gov.cn",
+        "bigagnes.com",
+        "cascadedesigns.com",
+        "cdc.gov",
+        "cma.gov.cn",
+        "english.shanghai.gov.cn",
+        "epa.gov",
+        "garmin.com",
+        "gzz.gov.cn",
+        "iso.org",
+        "lnt.org",
+        "naturehike.com",
+        "news.weather.com.cn",
+        "theuiaa.org",
+        "wlt.sc.gov.cn",
+        "yjj.gzz.gov.cn"
+      ],
+      "authoritative_domains": [
+        "abazhou.gov.cn",
+        "cdc.gov",
+        "cma.gov.cn",
+        "english.shanghai.gov.cn",
+        "epa.gov",
+        "garmin.com",
+        "gzz.gov.cn",
+        "theuiaa.org",
+        "wlt.sc.gov.cn",
+        "yjj.gzz.gov.cn"
+      ],
+      "gates": {
+        "distinct_queries_at_least_3": true,
+        "substantive_fetches_at_least_5": true,
+        "cited_urls_at_least_5": true,
+        "authoritative_domains_at_least_2": true
+      },
+      "dr_qualified": true
+    }
+  },
+  "gain_alignment_diagnostic": {
+    "total_p_gain": 0.6098,
+    "criteria_intersecting_units_asked_by_both": 0.27,
+    "criteria_not_intersecting_units_asked_by_both": 0.3398,
+    "share_intersecting_units_asked_by_both": 0.44276812069531,
+    "warning": "Criteria may map to multiple units; this is descriptive alignment, not causal mediation. The two arms acquired the same frozen units and had different research depth."
+  },
+  "claim_decision": {
+    "full_system_p_score_improved_once": true,
+    "clarification_selection_improved": false,
+    "clean_causal_attribution_to_ieo": false,
+    "reason": "The selected preference units were identical, P02 remained missed, and IEO produced 27 searches/5 substantive fetches versus stock 7/2; stock failed the frozen DR gate while IEO passed."
+  },
+  "engineering_failures": [
+    "stock_r0_invalid_simulator_and_tool_binding was excluded before scoring because the simulator over-disclosed and the adapter omitted ConductResearch/ResearchComplete schemas."
+  ]
+}

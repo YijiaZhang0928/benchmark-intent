@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.76",
+  "reports": {
+    "RPT-K2": {
+      "condition": "stock",
+      "source": "runs/stock/report.md",
+      "blinded_report": "evaluation/reports/RPT-K2.md",
+      "sha256": "ebca0d798a69362b756e76f97dd57b8085683422497cfd94d9d573fc5242475f"
+    },
+    "RPT-Q7": {
+      "condition": "ieo",
+      "source": "runs/ieo/report.md",
+      "blinded_report": "evaluation/reports/RPT-Q7.md",
+      "sha256": "ecf2b0201a4560e65588f5f25a190df4790b817ce9e6655bd7560b13e77b663b"
+    }
+  }
+}

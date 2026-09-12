@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.78"
+manifest_version: "0.79"
 updated: "2026-09-12"
 status: working_hypothesis_frozen
 
@@ -68,6 +68,11 @@ active_sources:
   h3_factorial_redesign: pilot/h3_factorial_redesign_v0_78/design.json
   h3_factorial_scoring: pilot/h3_factorial_redesign_v0_78/SCORING.md
   h3_factorial_api_requirements: pilot/h3_factorial_redesign_v0_78/API_REQUIREMENTS.md
+  odr_ieo_ab_results: pilot/odr_ieo_ab_v0_76/RESULTS.md
+  odr_ieo_ab_protocol: pilot/odr_ieo_ab_v0_76/protocol.md
+  odr_ieo_ab_scores: pilot/odr_ieo_ab_v0_76/evaluation/results.json
+  odr_ieo_ab_question_audit: pilot/odr_ieo_ab_v0_76/evaluation/question_audit.csv
+  odr_ieo_ab_preference_chain: pilot/odr_ieo_ab_v0_76/evaluation/preference_chain.json
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -331,6 +336,29 @@ scope:
     published_bridge_pairs: 76
     selection_status: provisional_author_screen
     domain_quota_used: false
+  odr_ieo_ab:
+    package_version: "0.76"
+    release_version: "0.79"
+    status: exploratory_system_gain_clarification_mechanism_not_validated
+    task_id: PDR-T35
+    persona_id: User8
+    backbone: gpt-5.6-sol
+    conditions: [stock_open_deep_research, influence_evidence_ownership_clarification]
+    report_generation_repeats_per_condition: 1
+    blind_judge_repeats_per_report: 1
+    p_stock: 8.5462
+    p_ieo: 9.1560
+    ieo_minus_stock: 0.6098
+    atomic_questions: {stock: 5, ieo: 5}
+    high_impact_recall: {stock: 0.6666666666666666, ieo: 0.6666666666666666}
+    delta_weighted_coverage: {stock: 0.35294117647058826, ieo: 0.35294117647058826}
+    shared_missed_high_impact_unit: P02_SAFETY_RISK
+    distinct_searches: {stock: 7, ieo: 27}
+    substantive_fetches: {stock: 2, ieo: 5}
+    deep_research_gate_pass: {stock: false, ieo: true}
+    acquired_unit_intersection_gain_share: 0.44276812069531
+    counted_episode_eligible: false
+    claim_boundary: one_run_system_gain_with_research_depth_confound_no_clarification_selection_improvement
 
 reused_infrastructure:
   - interaction_env
@@ -341,6 +369,8 @@ reused_infrastructure:
   - rubric_provenance_and_matched_swapped_assets
 
 claim_boundaries:
+  - odr_ieo_ab_does_not_validate_better_question_selection
+  - odr_ieo_p_gain_is_confounded_by_research_depth_and_stock_dr_gate_failure
   - three_task_clarification_feasibility_does_not_show_general_asking_superiority
   - task3_cold_ask_did_not_beat_full_persona_noask
   - full_cross_harness_and_model_family_matrix_not_completed

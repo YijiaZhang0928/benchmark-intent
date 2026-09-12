@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.76",
+  "coding_note": "Reflected distinguishes persona-specific answer use from generic/default alignment. PDR score remains the deliverable outcome; this diagnostic does not replace it.",
+  "stock": {
+    "units": [
+      {"id": "P01_ACTIVITY_ENVIRONMENT", "relevant": true, "known": false, "asked": true, "resolved": true, "reflected": true, "source": "simulator_answer"},
+      {"id": "P02_SAFETY_RISK", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "strong_generic_default_not_acquired", "source": "report_default"},
+      {"id": "P03_BUDGET_QUALITY", "relevant": true, "known": false, "asked": true, "resolved": true, "reflected": true, "source": "simulator_answer"},
+      {"id": "P04_FITNESS_COMFORT_LOAD", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "generic_fit_protocol_not_persona_specific", "source": "report_default"},
+      {"id": "P05_TECH_NAVIGATION", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "generic_China_navigation_not_persona_specific", "source": "P01_location_plus_report_default"},
+      {"id": "P06_PHASED_BUY_STORAGE", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "partial_default", "source": "P01_location_plus_report_default"},
+      {"id": "P07_DECISION_PRESENTATION", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "strong_report_default", "source": "report_default"},
+      {"id": "P08_SUSTAINABILITY", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": false, "source": "none"}
+    ]
+  },
+  "ieo": {
+    "units": [
+      {"id": "P01_ACTIVITY_ENVIRONMENT", "relevant": true, "known": false, "asked": true, "resolved": true, "reflected": true, "source": "simulator_answer"},
+      {"id": "P02_SAFETY_RISK", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "strong_generic_default_not_acquired", "source": "report_default"},
+      {"id": "P03_BUDGET_QUALITY", "relevant": true, "known": false, "asked": true, "resolved": true, "reflected": true, "source": "simulator_answer"},
+      {"id": "P04_FITNESS_COMFORT_LOAD", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "strong_generic_fit_protocol_not_persona_specific", "source": "report_default"},
+      {"id": "P05_TECH_NAVIGATION", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "generic_China_navigation_not_persona_specific", "source": "P01_location_plus_report_default"},
+      {"id": "P06_PHASED_BUY_STORAGE", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "strong_default_without_small_apartment_evidence", "source": "P01_location_plus_report_default"},
+      {"id": "P07_DECISION_PRESENTATION", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "strong_report_default", "source": "report_default"},
+      {"id": "P08_SUSTAINABILITY", "relevant": true, "known": false, "asked": false, "resolved": false, "reflected": "minimal_default", "source": "report_default"}
+    ]
+  },
+  "comparison": {
+    "stock_high_impact_recall": "2/3",
+    "ieo_high_impact_recall": "2/3",
+    "stock_delta_weighted_coverage": "6/17",
+    "ieo_delta_weighted_coverage": "6/17",
+    "both_missed": "P02_SAFETY_RISK",
+    "conclusion": "No acquisition-policy improvement on the frozen preference ontology; both acquired and reflected the same two high-impact units."
+  }
+}

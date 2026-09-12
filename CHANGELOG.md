@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.79 Open Deep Research IEO clarification A/B result - 2026-09-12
+
+- 在独立 protocol commit 后完成 PDR-T35 × User8 的 stock ODR vs IEO ODR 同-backbone A/B；一次盲评 P-score 为 8.5462 vs 9.1560，差 `+0.6098`。
+- 两边都问 5 个 atomic questions、都只获取 P01/P03、high-impact recall 均为 2/3，并共同漏掉 P02 safety/risk；IEO routing ledger 可审计但没有改善 frozen-unit question selection。
+- IEO 为 27 searches/5 substantive fetches/18 cited URLs 并通过 DR gate，stock 为 7/2/7 且失败；只有 44.3% 的 P-gain 与共同获取单元相交，因此结果降级为 exploratory system-level gain，不能归因为 clarification policy。
+- 保存完整报告、transcript、IEO candidate ledger、research events、blind evaluator、37-criterion weighted decomposition、preference chain、question audit 和一个评分前排除的工程失败。
+- 架构诊断指向两个缺口：ownership 之外还需 user answerability；missing-field inventory 之外还需 latent preference counterfactual generation。
+
 ## v0.78 H3 2×2 measurement repair and cross-model design - 2026-09-12
 
 - Reclassified the v0.76 `10/10` values as a five-leaf ceiling failure rather than complete satisfaction of all high-impact preferences; the five-leaf sum is explicitly not the official PDR P-score.

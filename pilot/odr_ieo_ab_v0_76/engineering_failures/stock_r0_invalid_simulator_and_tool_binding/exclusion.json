@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.79",
+  "status": "excluded_before_scoring",
+  "condition_attempted": "stock",
+  "exclusion_detected_from": [
+    "transcript.jsonl",
+    "state.json",
+    "research_events.jsonl"
+  ],
+  "reasons": [
+    "The first deterministic simulator used substring rather than token/phrase boundaries, so words such as 'fit', 'map', and 'eco' matched unrelated text and disclosed P04, P05, P07, and P08 even though the stock question did not request them.",
+    "The initial Codex adapter registered LangChain BaseTool objects but silently omitted ODR's Pydantic ConductResearch and ResearchComplete schemas. The supervisor explicitly reported that it could not delegate research, and the trace contained zero search or fetch events."
+  ],
+  "report_scored": false,
+  "counts_as_generation_repeat": false,
+  "adaptive_result_selection": false,
+  "repair": "Added exact token/phrase matching to the simulator and Pydantic schema conversion to the adapter, verified all five ODR tools before restarting both valid arms, and retained the invalid artifacts unchanged."
+}
