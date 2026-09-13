@@ -3,10 +3,22 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-13
-当前版本：v0.84（strict cold-start + micro-rubric IEO-v3 replication protocol）
+当前版本：v0.85（strict cold-start + micro-rubric IEO-v3 replication result）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：IEO-v3 strict-cold-start 复现结果
+
+运行前协议已在 commit `292bd28` 单独推送。随后 Task21/User12 的 stock ODR 与 IEO-v3 都在 30 分钟内完成：stock 4 searches / 12 fetch attempts / 7 successful fetches / 3 report URLs，IEO-v3 7/7/5/14；报告长度约 49k/49k 字符，均为真实 ODR research graph 输出。
+
+主机制结果为负：两边都问并解析 T9-P1 risk、T9-P2 holding style 与 T9-A1 liquidity；都漏 clean askable-high T9-P3 technology/innovation tilt。`Recall@AskableHigh` 同为 2/3，原五 high 同为 2/5，high+average 同为 3/8。IEO-v3 把 stock 六行表单压成三行，resolved-unit yield 从 0.5 提至 1.0，且两边 acquired 3/3 均在 DECISION/ACTION/TRACE 至少一叶达到 6；但“更短”没有变成“更高关键偏好 recall”。
+
+67-leaf 单 pass 盲评得到 stock/IEO-v3 `P_strict=6.8583/7.1366`，差 `+0.2783`；`P_HI=7.08/7.40`，差 `+0.32`。未改 33-leaf `P_official=5.6226/5.6376`，差仅 `+0.0150`。strict 分差主要来自 EVIDENCE +0.870 与 T9-P4 data/financial-analysis best-practice 落实；TRADEOFF 反而 -0.435。T9-P4 没有通过 clarification 获取，P3 仍无 downstream reflection，因此不能把小 `P_strict` gain 归因于更好的 what-to-ask。
+
+IEO-v3 修复了 IEO-v2 把 tax residence 挤进三问的问题，但 task-only input 不再显式命名 sector preference，router 没有生成 technology-interest candidate，只生成 low-impact ethical exclusion。下一版需要 post-result 的 option-space personalization pass：对每个会改变 allocation/shortlist 的决策主动枚举 latent user-owned axes，并给三个问题加 semantic-diversity 约束，避免 risk/liquidity/horizon 聚类；必须在 fresh task 上冻结后再测。
+
+有效性警告：deterministic simulator 按冻结 unit 顺序而不是问题顺序编号答复，虽然两个报告仍落实 3/3 resolved units，但 positional alignment bug 必须保留；两臂实际研究路径不同；本题旧问题已见；n=1、单 generation、单 judge 不支持显著性或总体架构排名。完整结果位于 `pilot/odr_ieo_v3_micro_ab_v0_84/RESULTS.md`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：strict cold-start + micro-rubric IEO-v3 复现实验冻结
 

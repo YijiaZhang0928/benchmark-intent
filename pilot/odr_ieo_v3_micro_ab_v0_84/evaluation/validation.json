@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.85",
+  "checks": {
+    "strict_leaf_count_67": true,
+    "stock_final_report_present": true,
+    "stock_task_hash_matches": true,
+    "stock_rubric_hash_matches": true,
+    "stock_strict_report_hash_matches": true,
+    "stock_official_report_hash_matches": true,
+    "stock_all_strict_ids_once": true,
+    "stock_all_positive_spans_exact": true,
+    "stock_real_search_and_fetch": true,
+    "stock_one_clarification_turn": true,
+    "ieo_final_report_present": true,
+    "ieo_task_hash_matches": true,
+    "ieo_rubric_hash_matches": true,
+    "ieo_strict_report_hash_matches": true,
+    "ieo_official_report_hash_matches": true,
+    "ieo_all_strict_ids_once": true,
+    "ieo_all_positive_spans_exact": true,
+    "ieo_real_search_and_fetch": true,
+    "ieo_one_clarification_turn": true,
+    "same_generation_model": true,
+    "same_research_config": true,
+    "same_task": true,
+    "same_implementation": true,
+    "blind_map_complete": true
+  },
+  "passed": true,
+  "failed": []
+}

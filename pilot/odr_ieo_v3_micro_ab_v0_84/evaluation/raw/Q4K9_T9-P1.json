@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T9-P1-01",
+      "score": 10,
+      "evidence_span": "For a moderate investor who prioritizes downside control, family liquidity, and disciplined compounding, a defensible starting allocation is:",
+      "rationale": "Explicitly identifies moderate risk and downside control as priorities governing the recommended allocation."
+    },
+    {
+      "criterion_id": "T9-P1-02",
+      "score": 10,
+      "evidence_span": "Before buying any ETF or mutual fund, verify from the current issuer fact sheet and prospectus:\n\n1. Investment objective and tracked index.\n2. Expense ratio and any fee waivers.\n3. Holdings count and top-ten concentration.",
+      "rationale": "Specifies identifiable primary sources and concentration evidence to investigate before selecting investments, directly supporting diversification and downside-risk evaluation."
+    },
+    {
+      "criterion_id": "T9-P1-03",
+      "score": 10,
+      "evidence_span": "Short bonds offer less recession upside but less rate sensitivity; intermediate government bonds generally provide more diversification against deflationary recessions.",
+      "rationale": "Identifies specific defensive instruments and concrete mechanisms by which they address rate risk or recession losses, rather than merely describing them as safe."
+    },
+    {
+      "criterion_id": "T9-P1-04",
+      "score": 10,
+      "evidence_span": "| **Aggressive** | 85% | 10% | 3% | 2% | 6.2%–8.2% | 14%–18% | −40% to −55% |",
+      "rationale": "The named aggressive route has a concrete 85% equity allocation and quantified expected return, volatility, and severe drawdown estimates."
+    },
+    {
+      "criterion_id": "T9-P1-05",
+      "score": 10,
+      "evidence_span": "| **Recommended moderate** | 65% | 25% | 5% | 5% | 5.8%–7.2% | 10%–13% | −25% to −35% |\n| **Aggressive** | 85% | 10% | 3% | 2% | 6.2%–8.2% | 14%–18% | −40% to −55% |",
+      "rationale": "Directly compares the moderate and aggressive portfolios on identical allocation, return, volatility, and drawdown axes, showing the consequential increase in downside exposure."
+    },
+    {
+      "criterion_id": "T9-P1-06",
+      "score": 10,
+      "evidence_span": "Individual stocks are not needed to achieve the portfolio’s objective. A diversified index is more consistent with stable compounding and downside control.",
+      "rationale": "Selects the diversified-index route over individual stocks explicitly because it better supports stable compounding and downside control."
+    },
+    {
+      "criterion_id": "T9-P1-07",
+      "score": 10,
+      "evidence_span": "The 10.2% private-equity forecast does not make private equity suitable here. Private funds can involve long lockups, uncertain valuations, capital calls, high fees, manager-selection risk, and limited access—poor characteristics when family and mortgage liquidity are important.",
+      "rationale": "Rejects a named option whose forecast meets the return aspiration because pursuing that return would compromise the preferred liquidity and risk constraints."
+    },
+    {
+      "criterion_id": "T9-P1-08",
+      "score": 10,
+      "evidence_span": "If the external reserve is not yet fully funded, temporarily raise portfolio cash to 10%–20% and reduce equities one-for-one.",
+      "rationale": "Provides an executable conditional action that builds liquidity and reduces risky exposure by a specified corresponding amount."
+    },
+    {
+      "criterion_id": "T9-P1-09",
+      "score": 10,
+      "evidence_span": "If liquid coverage falls below 100% of known 12-month obligations, suspend risk purchases and rebuild cash.",
+      "rationale": "Defines a measurable liquidity threshold and the required defensive response when it is breached."
+    },
+    {
+      "criterion_id": "T9-P1-10",
+      "score": 10,
+      "evidence_span": "### Aggressive alternative\n\nUse this only if:\n\n- The horizon is at least 15 years.\n- Near-term liquidity needs are fully segregated.\n- A 50% temporary decline would not trigger selling.\n- Income and insurance are robust.\n- The investor accepts that even 85% equity does not make 10% the base case.",
+      "rationale": "Explicitly permits choosing the aggressive alternative under concrete horizon, liquidity, loss-tolerance, and financial-capacity conditions."
+    },
+    {
+      "criterion_id": "T9-P1-11",
+      "score": 10,
+      "evidence_span": "Avoid using high-yield bonds as the main defense. High-yield securities often behave like equities in recessions because credit spreads widen when stock prices fall. J.P. Morgan projects 6.1% for high yield versus 5.2% for investment-grade credit, but the incremental return comes with materially greater default and drawdown risk.[2]",
+      "rationale": "Links the need for a defensive allocation to recession co-movement and cited return-risk evidence, then explicitly excludes high-yield bonds from the main defensive role."
+    }
+  ]
+}

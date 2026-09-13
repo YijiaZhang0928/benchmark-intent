@@ -1,0 +1,206 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_official released criteria on strict cold-start task",
+  "blind_label": "R7M2",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "5036826e826e7b1d5476a665de12dc617195e4c98d7272964a6b966dc9ccb918",
+  "official_prompt_sha256": "1b3c044a15a16edb1051cae0db44f7d6382bc2d45d7d0974b9a561eb06656840",
+  "official_calculator_sha256": "2b576ec9ec8a201e5df3a331c454cfc641ad2acba68e0a468e8455bf216ab7ca",
+  "started_at_utc": "2026-09-13T20:51:49.349288+00:00",
+  "completed_at_utc": "2026-09-13T20:54:02.090545+00:00",
+  "p_official": 5.6226,
+  "dimension_scores": {
+    "goal_alignment_weighted_avg": 5.540000000000001,
+    "content_alignment_weighted_avg": 4.920000000000001,
+    "presentation_fit_weighted_avg": 7.000000000000001,
+    "actionability_practicality_weighted_avg": 5.660000000000001
+  },
+  "criteria": {
+    "goal_alignment": [
+      {
+        "criterion": "Goal–horizon–risk coherence with probabilistic framing",
+        "analysis": "The article responsibly identifies the conflict between a 10% return objective and moderate risk, quantifies expected returns, volatility and drawdowns, and estimates negative-year probabilities with model caveats. However, it does not translate 10% annualized into approximately 4.88% over six months or estimate six-month outcome probabilities. Its preferred allocation explicitly plans for 5%–6%, so it negotiates down rather than fulfills the stated return target. Distinguishing the six-month implementation period from the investment holding horizon is appropriate, but the assumed ten-year horizon needs confirmation.",
+        "target_score": 6
+      },
+      {
+        "criterion": "Human-capital and tech-concentration-aware asset allocation",
+        "analysis": "Global equities, a small/value allocation, high-quality bonds and gold provide useful diversification. The article also recommends counting business exposure, employment and property when assessing concentration. However, it never explicitly connects Zhang Yu's AI company ownership, consulting income and technology-focused angel investments to a shared technology risk factor. Generic employer-stock limits do not adequately address founder equity. There is no look-through assessment of technology exposure in global indexes or personalized liquid-portfolio allocation designed to offset his embedded tech beta.",
+        "target_score": 4
+      },
+      {
+        "criterion": "Liquidity, runway, and liability-aware design",
+        "analysis": "The emergency-reserve formula, three-to-twelve-month coverage framework, near-term spending segregation and mortgage decision tree are substantial strengths. Variable self-employed income, dependants and correlated employment risk are recognized as reasons for larger reserves. Nevertheless, the article does not actually apply these considerations to his entrepreneurial household, select a provisional reserve range, or distinguish startup operating runway from family liquidity. It also lacks arrangements for quarterly business travel and possible capital calls from existing angel investments.",
+        "target_score": 6
+      },
+      {
+        "criterion": "Quantitative risk management with explicit safeguards",
+        "analysis": "The article supplies numerical position limits, allocation bands, duration guidance, portfolio volatility estimates, downside deviation and multiple stress tests. It appropriately favors diversification and liquidity over unreliable stop-loss protection. However, drawdown figures are primarily estimates rather than enforceable risk-budget rules, and there is no VaR or expected shortfall analysis. Stress tests cover generic equity, rate and currency shocks but not a combined AI-sector downturn, founder-income interruption and RMB movement. The optional trend overlay lacks a fully specified signal and sizing methodology.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Implementable instrument mapping for a Beijing-based investor",
+        "analysis": "The article discusses fund selection, currency hedging, regulatory checks and broad implementation alternatives, but does not map its allocation to Mainland-accessible products. It omits A-share ETFs, domestic bond funds, QDII pathways, local money-market funds and suitable purchase channels. Treating country of residence as unspecified overlooks the supplied Beijing residence, although tax status and account eligibility still require confirmation. The heavy reliance on developed-market assets and currency-hedged bonds is not accompanied by evidence that appropriate RMB-based vehicles are accessible.",
+        "target_score": 2
+      },
+      {
+        "criterion": "Adaptive rebalancing and regime-aware adjustments",
+        "analysis": "Calendar reviews, numerical drift thresholds, contribution-first rebalancing and personal-circumstance triggers provide a disciplined, relatively low-maintenance framework. The article also identifies changes in real yields, inflation, valuations and credit spreads as reasons to review assumptions rather than chase headlines. However, most regime triggers lack precise thresholds or predefined allocation responses. The moving-average overlay leaves the lookback period and restoration signal unspecified. No adaptation explicitly links reduced founder income or deteriorating startup runway to portfolio risk reduction.",
+        "target_score": 7
+      },
+      {
+        "criterion": "KPI-driven performance tracking and automation in his workflow",
+        "analysis": "The monitoring framework is comprehensive: CAGR, real returns, money-weighted and time-weighted returns, Sharpe, Sortino, drawdown, liquidity coverage and a strategically weighted benchmark are all included with review frequencies. This fits his analytical decision style. However, the article provides no Notion dashboard structure, spreadsheet implementation, API ingestion, Slack alerts or reproducible calculation workflow. Hit rates and a structured decision log are absent. Automated contributions should not be confused with automated performance monitoring.",
+        "target_score": 6
+      },
+      {
+        "criterion": "Concise, data-first communication with options and trade-offs",
+        "analysis": "Allocation tables, numerical scenarios and explicit comparison of moderate and aggressive portfolios support independent, evidence-based decisions. A simplified implementation option is also useful. However, twenty sections repeatedly revisit the incompatibility of 10% returns with moderate risk, while elementary explanations occupy substantial space for a financially sophisticated reader. The report is structured but not concise, and it lacks a compact decision matrix or prioritized action sheet tailored to a busy founder.",
+        "target_score": 6
+      },
+      {
+        "criterion": "Costs, taxes, and compliance/operational friction awareness",
+        "analysis": "The article covers expense ratios, tracking difference, spreads, commissions, FX, custody, turnover, fund domicile and tax-sensitive rebalancing. It also correctly warns against generalizing U.S. tax-account examples. However, these remain jurisdiction-neutral principles rather than a usable Mainland implementation assessment. There is no discussion of applicable Chinese trading taxes, QDII subscription restrictions or premiums, local fund redemption fees, or cross-border access constraints. The assumed 0.2% annual implementation cost is not validated against available products.",
+        "target_score": 5
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "Entrepreneur Human-Capital and Tech-Concentration Offset in Portfolio Content",
+        "analysis": "The article includes broad sector limits, holdings-overlap checks and reminders to count business and employment exposure. Its defensive sleeves and small/value tilt could help offset some technology concentration. Nevertheless, it does not explicitly analyze his AI startup equity, tech consulting income and angel investments as interconnected risks. Existing private holdings are not integrated into a household balance sheet or illiquidity budget. Consequently, the allocation is a generic moderate portfolio rather than a deliberate counterweight to this entrepreneur's concentrated economic exposure.",
+        "target_score": 4
+      },
+      {
+        "criterion": "China-Specific Investable Universe, Access Pathways, and Cost Sensitivity",
+        "analysis": "The article acknowledges that capital controls, local regulation, currency conversion and fund domicile matter, but relegates China to an undifferentiated other-jurisdictions category. It names no domestic equity benchmarks, A-share ETFs, Chinese bond funds, gold ETFs or QDII products and provides no applicable offshore access pathway. RMB liabilities and local trading conventions are not operationalized. Extensive U.S. and European alternatives occupy space that would have been better used for a conditional Mainland investor implementation framework.",
+        "target_score": 1
+      },
+      {
+        "criterion": "Advanced Quantitative Depth Matching High Financial Literacy",
+        "analysis": "Arithmetic versus geometric returns, volatility drag, Sharpe and Sortino ratios, scenario analysis, correlation ranges and portfolio stress tests provide meaningful quantitative depth. However, portfolio volatility and downside-deviation estimates lack a reproducible covariance model or data methodology, and factor discussion stops largely at small/value exposure. Changing the Sortino minimum acceptable return while retaining the same downside-deviation denominator also weakens precision. Repeated introductory explanations and generic advice dilute the otherwise suitable technical content.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Data-Driven Monitoring and Workflow Integration",
+        "analysis": "The dashboard specifies relevant metrics, review intervals and a blended benchmark, giving a sound conceptual foundation for data-driven monitoring. Nevertheless, it contains no GitHub-based reproducible analysis, scheduled data pulls, broker-export workflow, Notion database design or Slack alert configuration. Data sources, observation frequency and operational calculation procedures are largely unspecified. A Python-based implementation could suit his technical background, but none is offered. The content therefore matches his analytical interests more than his actual working environment.",
+        "target_score": 4
+      },
+      {
+        "criterion": "Six-Month Horizon–Appropriate Instrument and Rebalance Design",
+        "analysis": "The six-month deployment schedule is explicit, uses liquid instruments and keeps undeployed funds in cash or short government instruments. Contribution-based rebalancing and the instruction not to evaluate a long-term strategy after six months are appropriate because the task specifies an implementation window, not necessarily a six-month holding period. Nevertheless, the article assumes a decade-plus horizon without confirmation and omits six-month return scenarios, redemption timing and a precise short-window liquidity map. Its long-duration investment assumptions are insufficiently connected to the implementation period.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Risk Management Framing Consistent with Moderate Risk Appetite",
+        "analysis": "The recommended 55% equity portfolio, substantial defensive assets, separate emergency reserve, numerical concentration caps and rejection of leverage align well with moderate risk tolerance. The article clearly labels the 85% equity alternative as aggressive and explains the limitations of stops, puts and inverse products. It also checks whether a roughly 20% loss would cause abandonment. Personal risk capacity remains unresolved, however, and the acceptable loss budget is not calibrated to his business commitments, household spending and existing private investments.",
+        "target_score": 8
+      },
+      {
+        "criterion": "Diversification Across Low-Correlation Sleeves with Quantified Rationale",
+        "analysis": "The article differentiates developed and emerging equities, small/value exposure, nominal and inflation-linked bonds, short government instruments, cash and gold. It supplies volatility and correlation ranges and demonstrates aggregate portfolio behavior under several shocks, including situations where stocks and bonds fall together. This goes beyond generic diversification advice. However, no full covariance matrix, marginal risk contributions or evidence supporting the estimates is provided, and diversification is not measured against his existing Beijing property and AI-business exposures.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Liquidity and Cash-Reserve Considerations for Family and Business Needs",
+        "analysis": "A separate emergency reserve, dedicated portfolio cash, short-duration holdings and protection of expenditures due within three years are well developed. Mortgage payments, education, healthcare and variable self-employed income are explicitly considered. However, these are presented as generic possibilities despite relevant household facts already being available. Business operating reserves, personal guarantees, angel-investment capital calls and boundaries between company and family funds are not addressed. The liquidity design is strong for a household but incomplete for this founder's combined financial responsibilities.",
+        "target_score": 6
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "Structured executive summary and layered information architecture",
+        "analysis": "The executive conclusion foregrounds expected returns, volatility, drawdowns and the central decision trade-off. Numbered sections then separate allocation, implementation, risk controls, taxes and monitoring, enabling selective reading. The simplified portfolio also offers an accessible entry point. However, technical derivations and jurisdictional alternatives are not moved into optional appendices, and the same return-target warning appears repeatedly. A one-page personalized summary followed by clearly designated reference material would better serve his limited attention.",
+        "target_score": 8
+      },
+      {
+        "criterion": "Quantitative presentation clarity (KPIs, definitions, and consistency)",
+        "analysis": "Tables and equations clearly distinguish nominal, real, arithmetic, geometric, gross and net returns. Risk-adjusted metrics, stress losses and benchmark weights are prominently presented. Weaknesses include the missing six-month equivalent of the target, unexplained downside-deviation assumptions and inconsistent precision across return summaries. Rebalancing guidance is also not fully reconciled: a 5% sleeve is assigned an approximately two-percentage-point threshold in the text but a one-point threshold in an example. These issues reduce reproducibility for a technically exacting reader.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Terminology precision and explanation balance",
+        "analysis": "The article accurately distinguishes investment vehicles from asset classes, cash from bond funds, drawdown from annual volatility, and arithmetic averages from compounded returns. Its explanations of hedging and leveraged-product limitations are generally clear. However, a reader with high financial literacy receives more elementary instruction than necessary. Some methodological shortcuts, particularly the Sortino calculations and loosely specified modeled risk estimates, need stronger qualification. More compact definitions and a technical appendix would improve the balance.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Visualization suitability and readability for portfolio and risk",
+        "analysis": "Allocation, risk-return, scenario, stress-test and dashboard tables are extensive and clearly labeled. They enable direct comparison of the moderate portfolio with the higher-equity alternative, including whether each reaches the 10% objective. No actual charts are supplied, so there is no allocation graphic, risk-return scatter, drawdown illustration or goal-path visualization. Several tables are wide and text-heavy, making them less convenient on mobile devices or in Slack. The tabular presentation is useful but could be more immediately visual.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Tool-friendly formatting (Notion/Sheets/Slack-ready)",
+        "analysis": "Markdown headings, numbered lists, bullet checklists and tables are broadly compatible with Notion and other documentation tools. The implementation steps and dashboard can be copied into a workspace with moderate effort. However, the formulas are rendered as LaTeX rather than spreadsheet-ready expressions, and there are no CSV templates, database field definitions, executable snippets or concise Slack-ready updates. Formatting supports manual reuse but not seamless operational adoption across his established toolset.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Navigation and cognitive load management",
+        "analysis": "Consistent numbering, short paragraphs, subheadings and bullet lists help navigate a long document. Assumptions and warnings are generally easy to locate. Nevertheless, there is no table of contents, quick-navigation guide or explicit distinction between essential decisions and optional reference sections. Repeated caveats, broad jurisdictional branches and foundational explanations increase reading effort substantially. For a founder balancing work and family, the report requires too much synthesis before the next actions become apparent.",
+        "target_score": 6
+      },
+      {
+        "criterion": "Localization of units and conventions",
+        "analysis": "Percentage-based allocations avoid inventing an investable amount, which is appropriate. However, the report does not use RMB as a provisional liability and reporting currency, name Mainland benchmarks or adopt local instrument and account conventions. It repeatedly treats location as unknown despite the stated Beijing residence. U.S.-centric references and generic international terminology add unnecessary interpretation work. Confirmation of tax residence is warranted, but it does not justify omitting all location-specific presentation.",
+        "target_score": 2
+      },
+      {
+        "criterion": "Risk communication formatting and placement",
+        "analysis": "Risk warnings appear prominently in the executive summary, alongside the aggressive alternative, within stress-test limitations and in the final recommendation. Scenario labels and bold drawdown figures make unfavorable outcomes difficult to overlook. The article consistently distinguishes illustrative assumptions from guarantees and explains that modeled losses can be exceeded. Some caveats are repetitive, but their placement effectively prevents the 10% objective from being mistaken for an assured return.",
+        "target_score": 9
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "Concrete, executable portfolio specification accessible in Mainland China",
+        "analysis": "Precise asset-class weights and a simplified one-to-three-fund framework provide a useful portfolio blueprint. However, no eligible fund names, tickers, domestic purchase channels or verified alternatives are supplied. The investor must independently determine how to obtain developed-market equities, small/value exposure, inflation-linked bonds and RMB-hedged defensive assets. QDII availability, subscription restrictions and offshore access are not resolved. As written, the allocation cannot be translated directly into a Mainland brokerage or fund-platform order list.",
+        "target_score": 3
+      },
+      {
+        "criterion": "Quantified risk controls and position sizing rules",
+        "analysis": "The article provides enforceable purchase limits for individual stocks, direct-stock sleeves, themes, issuers and speculative assets, along with duration guidance, cash ranges and allocation bands. Its no-leverage rule and preinvestment drawdown-tolerance check are useful safeguards. However, maximum drawdowns are forecasts rather than hard control rules, volatility is monitored without a complete sizing algorithm, and VaR-based or expected-shortfall limits are absent. Existing founder equity and angel positions are not incorporated into a total-wealth concentration budget.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Performance tracking and benchmarking framework with calculable metrics",
+        "analysis": "The article defines a strategically weighted benchmark, review frequencies and a broad KPI set, with explicit formulas for CAGR-related concepts, Sharpe and Sortino. It appropriately distinguishes money-weighted from time-weighted performance. However, it supplies no concrete index identifiers, broker-export process, spreadsheet formulas for cash-flow-adjusted returns, or automated data pipeline. Observation conventions and several modeled inputs remain unspecified. The framework is conceptually measurable but still requires considerable implementation work before it becomes a reliable personal dashboard.",
+        "target_score": 6
+      },
+      {
+        "criterion": "Rule-based rebalancing and dynamic adjustment triggers",
+        "analysis": "Quarterly monitoring, semiannual reviews, numerical drift triggers and an ordered sequence of contribution-first rebalancing actions make routine maintenance actionable. Changes in income, withdrawals, debt terms and fund characteristics also trigger review. However, conflicting small-sleeve threshold examples need clarification, and market-regime triggers mostly call for reassessment rather than define concrete adjustments. The optional trend rule lacks an exact moving-average period and full re-entry mechanics. The result is stronger for strategic rebalancing than for reproducible dynamic risk management.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Liquidity and cash management fit for an entrepreneur",
+        "analysis": "The reserve formula, near-term spending segregation, 5% portfolio cash and 10% short-government allocation offer meaningful protection against forced selling. The article correctly distinguishes insured deposits from money-market securities and recognizes variable income as a reason for larger buffers. It does not specify startup runway, capital-call reserves, local T+ settlement or redemption windows, holiday access, or cash arrangements during travel. The founder must therefore complete important operational and business-liquidity decisions before relying on the plan.",
+        "target_score": 6
+      },
+      {
+        "criterion": "Cost and tax practicality with net-of-fee estimates",
+        "analysis": "The article models returns after an illustrative 0.2% annual cost and discusses expense ratios, tracking difference, spreads, FX, platform charges and tax-aware turnover reduction. These are useful practical principles. However, the assumed cost is unsupported by a mapped product basket, and Mainland-specific taxes, domestic redemption schedules, QDII premiums and hedging costs are not quantified. Broad discussions of tax shelters and foreign loss-relief rules add little immediate value without determining which provisions actually apply to Zhang Yu.",
+        "target_score": 5
+      },
+      {
+        "criterion": "Operational execution plan and timeline",
+        "analysis": "The month-by-month checklist is clear and sequenced: establish reserves and policy, conduct account and fund due diligence, deploy 40% followed by three 20% tranches, automate contributions, audit costs and complete a final allocation review. Predetermined purchase dates reduce emotional timing decisions. However, no local broker workflow, order-type guidance, recurring time budget or travel-compatible execution arrangement is supplied. Account setup and monitoring automation remain generic rather than integrated with his tools and irregular entrepreneurial cash flows.",
+        "target_score": 7
+      },
+      {
+        "criterion": "Target feasibility and scenario/contingency planning",
+        "analysis": "The article rigorously explains why 10% is not a defensible central expectation for its moderate allocation and compares conservative, central and favorable outcomes with crash, inflation and currency stresses. It sensibly prioritizes contributions, horizon and spending adjustments over excessive risk-taking. However, scenarios are mainly ten-year or unspecified one-period illustrations rather than six-month distributions. There is no quantified six-month target probability or complete action matrix for underperformance, breached drawdown tolerance or simultaneous market losses and startup-income stress.",
+        "target_score": 6
+      }
+    ]
+  },
+  "usage_metadata": {
+    "input_tokens": 15783,
+    "output_tokens": 4362,
+    "total_tokens": 20145,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 80
+    }
+  }
+}

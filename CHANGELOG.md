@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.85 IEO-v3 strict-cold-start replication result - 2026-09-13
+
+- 两个完整 ODR 条件均在 30 分钟内完成；stock/IEO-v3 的 successful fetches 为 7/5，报告 unique URLs 为 3/14。
+- 两边均解析 risk、holding style 与 liquidity，`Recall@AskableHigh=2/3`、`Recall@High=2/5`、`Recall@High+Average=3/8`，IEO-v3 没有 recall gain。
+- IEO-v3 将 top-level question rows 从 6 降到 3，resolved-unit yield 从 0.5 升到 1.0；两边 resolved-to-reflected 均为 3/3。
+- 67-leaf single-pass blind `P_strict` 为 6.8583/7.1366（`+0.2783`），`P_HI` 为 7.08/7.40（`+0.32`）；unchanged 33-leaf `P_official` 为 5.6226/5.6376（`+0.0150`）。
+- Strict gain 主要来自 evidence 与未通过 clarification 获取的 data/analysis best practice；technology tilt 仍未问且无 downstream reflection，因此不能声称 what-to-ask 改善。
+- 记录 simulator answer-order mismatch、realized research-depth difference、seen-task 与 single-run/single-judge 限制；建议的 option-space latent-preference pass 只能在 fresh task 上预注册检验。
+
 ## v0.84 Strict cold-start and micro-rubric IEO-v3 protocol - 2026-09-13
 
 - 冻结 Task21/User12 的 corrected task-only cold-start：两臂只读取新版 workbook `15 Tasks!K10`，不读取 enriched instruction、persona、preference ledger 或 rubric。

@@ -1,0 +1,28 @@
+[
+  {
+    "condition": "stock",
+    "question_message": "To tailor the portfolio and assess whether the 10% annualized target is realistic, please provide:\n- Country of residence, base currency, and applicable account type(s) (taxable, retirement, etc.)\n- Amount to invest and any planned monthly contributions\n- Investment horizon and when withdrawals may begin\n- Risk tolerance, including the largest temporary loss you could accept (for example, 10%, 20%, or 30%+)\n- Liquidity needs and emergency savings already available\n- Existing investments, significant debts, and any asset or ethical restrictions",
+    "top_level_rows": 6,
+    "resolved_units": [
+      "T9-P1",
+      "T9-P2",
+      "T9-A1"
+    ],
+    "resolved_unit_yield_per_row": 0.5,
+    "simulator_answer_usable": true,
+    "simulator_order_warning": "Answers were emitted in frozen unit order rather than prompt order; values remained explicit and all three resolved units were reflected, but positional alignment is a validity warning."
+  },
+  {
+    "condition": "ieo",
+    "question_message": "1. What maximum peak-to-trough portfolio loss could you tolerate without abandoning the plan: about 10%, 20%, 30%, or more? This sets the growth/defensive allocation and downside controls.\n2. What portion of the portfolio do you want available for withdrawal during the next 12 months, and how quickly must it be accessible? This sets the liquid reserve and investable risk budget.\n3. What is the intended holding horizon before most of the money may be needed: under 3, 3–5, 5–10, or 10+ years? This determines whether the 10% objective is plausibly pursued and shapes the implementation path.",
+    "top_level_rows": 3,
+    "resolved_units": [
+      "T9-P1",
+      "T9-P2",
+      "T9-A1"
+    ],
+    "resolved_unit_yield_per_row": 1.0,
+    "simulator_answer_usable": true,
+    "simulator_order_warning": "Answers were emitted in frozen unit order rather than prompt order; values remained explicit and all three resolved units were reflected, but positional alignment is a validity warning."
+  }
+]

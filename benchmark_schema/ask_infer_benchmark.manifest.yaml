@@ -1,6 +1,6 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.82"
-updated: "2026-09-12"
+manifest_version: "0.85"
+updated: "2026-09-13"
 status: working_hypothesis_frozen
 
 paper:
@@ -75,6 +75,10 @@ active_sources:
   odr_ieo_ab_scores: pilot/odr_ieo_ab_v0_76/evaluation/results.json
   odr_ieo_ab_question_audit: pilot/odr_ieo_ab_v0_76/evaluation/question_audit.csv
   odr_ieo_ab_preference_chain: pilot/odr_ieo_ab_v0_76/evaluation/preference_chain.json
+  odr_ieo_v3_micro_protocol: pilot/odr_ieo_v3_micro_ab_v0_84/protocol.md
+  odr_ieo_v3_micro_results: pilot/odr_ieo_v3_micro_ab_v0_84/RESULTS.md
+  odr_ieo_v3_micro_scores: pilot/odr_ieo_v3_micro_ab_v0_84/evaluation/results.json
+  odr_ieo_v3_micro_preference_chain: pilot/odr_ieo_v3_micro_ab_v0_84/evaluation/preference_chain.csv
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
@@ -392,6 +396,27 @@ scope:
       matched_minus_swapped_minimum: 0.75
       minimum_high_impact_leaf_share_changing_by_two_points: 0.30
     claim_boundary: construction_is_more_granular_but_empirical_score_separation_requires_pre_run_calibration
+  odr_ieo_v3_micro_replication:
+    protocol_version: "0.84"
+    result_version: "0.85"
+    protocol_commit: 292bd28
+    status: efficiency_gain_without_recall_gain
+    task_id: PDR-T21
+    persona_id: User12
+    backbone: gpt-5.6-sol
+    judge: gpt-6-astra
+    conditions: [stock_open_deep_research, ieo_v3]
+    recall_askable_high: {stock: 0.6666666666666666, ieo_v3: 0.6666666666666666}
+    recall_high: {stock: 0.4, ieo_v3: 0.4}
+    recall_high_plus_average: {stock: 0.375, ieo_v3: 0.375}
+    top_level_question_rows: {stock: 6, ieo_v3: 3}
+    p_strict: {stock: 6.858327759197325, ieo_v3: 7.136588628762542, delta: 0.27826086956521756}
+    p_hi: {stock: 7.08, ieo_v3: 7.3999999999999995, delta: 0.3199999999999994}
+    p_official: {stock: 5.6226, ieo_v3: 5.637600000000001, delta: 0.015000000000000568}
+    successful_fetches: {stock: 7, ieo_v3: 5}
+    unique_report_urls: {stock: 3, ieo_v3: 14}
+    counted_episode_eligible: false
+    claim_boundary: seen_task_single_run_shows_question_efficiency_not_better_preference_recall
 
 reused_infrastructure:
   - interaction_env
@@ -407,6 +432,9 @@ claim_boundaries:
   - project_strict_score_is_not_official_pdr_p_score
   - rubric_expansion_does_not_preordain_model_ranking_or_validate_h3
   - odr_ieo_ab_does_not_validate_better_question_selection
+  - odr_ieo_v3_micro_gain_does_not_validate_better_question_selection
+  - odr_ieo_v3_micro_replication_is_not_a_fresh_holdout
+  - odr_ieo_v3_simulator_answer_order_mismatch_is_a_validity_warning
   - odr_ieo_p_gain_is_confounded_by_research_depth_and_stock_dr_gate_failure
   - three_task_clarification_feasibility_does_not_show_general_asking_superiority
   - task3_cold_ask_did_not_beat_full_persona_noask

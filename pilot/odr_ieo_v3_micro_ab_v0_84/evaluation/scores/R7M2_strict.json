@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "R7M2",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "5036826e826e7b1d5476a665de12dc617195e4c98d7272964a6b966dc9ccb918",
+  "rubric_sha256": "e42de8a4bd4d6f607a872ed6c217899f8fda75a20fffeda4024c468a4929324f",
+  "started_at_utc": "2026-09-13T20:46:31.514233+00:00",
+  "completed_at_utc": "2026-09-13T20:51:20.658825+00:00",
+  "p_strict": 6.858327759197325,
+  "p_hi": 7.08,
+  "dimension_scores": {
+    "INTENT": 7.6,
+    "SOURCE": 8.0,
+    "EVIDENCE": 7.304347826086956,
+    "TRADEOFF": 4.695652173913043,
+    "DECISION": 6.434782608695652,
+    "ACTION": 8.0,
+    "TRACE": 6.461538461538462
+  },
+  "high_dimension_scores": {
+    "INTENT": 7.6,
+    "SOURCE": 8.0,
+    "EVIDENCE": 7.8,
+    "TRADEOFF": 4.8,
+    "DECISION": 6.8,
+    "ACTION": 8.0,
+    "TRACE": 6.8
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T9-P1-01",
+      "score": 10,
+      "evidence_span": "A portfolio designed around **moderate risk, stable long-term compounding, family liquidity, disciplined rebalancing, and explicit downside control** should not use 10% as its central expected return.",
+      "rationale": "Explicitly prioritizes moderate risk and downside control over adopting the requested return as the central expectation."
+    },
+    {
+      "criterion_id": "T9-P1-02",
+      "score": 10,
+      "evidence_span": "The SEC’s investor guidance emphasizes that asset allocation is personal and depends primarily on time horizon and both the ability and willingness to accept losses.",
+      "rationale": "Identifies SEC guidance as evidence for evaluating allocation against loss tolerance and risk capacity, directly relevant to the stated downside-control preference."
+    },
+    {
+      "criterion_id": "T9-P1-03",
+      "score": 10,
+      "evidence_span": "For bonds:\n\n- Hedge approximately **80%–100% of foreign bond currency exposure** to the base currency.\n- Otherwise currency volatility may dominate the bond’s defensive role.",
+      "rationale": "Provides a concrete hedging specification and explains how it preserves the defensive function of the bond allocation."
+    },
+    {
+      "criterion_id": "T9-P1-04",
+      "score": 10,
+      "evidence_span": "An alternative with approximately **85% equities** makes a 10% nominal CAGR more attainable in a favorable decade, but its central modeled return remains closer to **6%–8%**, and a severe drawdown could reach **40%–55%**.",
+      "rationale": "Names an aggressive allocation and supplies quantified return and loss estimates illustrating its return-seeking character. The estimates are presented as modeled possibilities, not established outcomes."
+    },
+    {
+      "criterion_id": "T9-P1-05",
+      "score": 10,
+      "evidence_span": "| Stress | Assumed asset behavior | Moderate core | Growth alternative |\n|---|---|---:|---:|\n| Global equity crash | Developed –40%; EM –45%; small/value –50%; bonds +5%; gold +10% | **–21%** | **–35%** |",
+      "rationale": "Directly compares the moderate and aggressive alternatives under identical hypothetical market shocks, showing a consequential difference in downside exposure."
+    },
+    {
+      "criterion_id": "T9-P1-06",
+      "score": 10,
+      "evidence_span": "**High-quality defensive assets**\n\nUse government and investment-grade bonds rather than relying on high-yield bonds, which tend to behave more like equities during stress.",
+      "rationale": "Recommends named defensive instruments because their stress behavior better supports downside control than the alternative."
+    },
+    {
+      "criterion_id": "T9-P1-07",
+      "score": 10,
+      "evidence_span": "This is an **85% equity portfolio**. It should be classified as growth-oriented or aggressive rather than moderate.\n\nIt makes a 10% nominal CAGR more plausible in a favorable scenario, but:\n\n- It still does not justify expecting 10%.\n- It could lose approximately 30%–40% in a conventional equity crash.\n- A severe global crisis could produce a 40%–55% peak-to-trough loss.\n- It offers substantially less help during a sequence of poor equity returns.\n\nDo not adopt it unless the investor could continue holding and contributing after a loss of at least 40%.",
+      "rationale": "Downgrades an otherwise viable growth portfolio through an explicit adoption restriction because its aggressive return orientation brings substantially larger losses."
+    },
+    {
+      "criterion_id": "T9-P1-08",
+      "score": 10,
+      "evidence_span": "Separate emergency cash from investable capital.",
+      "rationale": "Gives an immediately executable Month 1 action that implements the report’s liquidity-based protection against forced sales."
+    },
+    {
+      "criterion_id": "T9-P1-09",
+      "score": 10,
+      "evidence_span": "Any individual stock: **maximum 2% of total portfolio** at purchase.",
+      "rationale": "Defines a usable numerical position-size limit that controls single-company downside exposure."
+    },
+    {
+      "criterion_id": "T9-P1-10",
+      "score": 10,
+      "evidence_span": "Consider the 85% equity version only if all of the following are true:\n\n- Horizon is at least 10–15 years.\n- Emergency and near-term reserves are complete.\n- Mortgage and other debt risks are manageable.\n- No large withdrawal is likely.\n- Income and insurance provide adequate risk capacity.\n- A 40%–50% temporary loss would not cause selling.\n- The investor explicitly accepts that downside control has become secondary to return seeking.",
+      "rationale": "States concrete horizon, liquidity, capacity, loss-tolerance, and preference conditions under which the aggressive alternative becomes appropriate."
+    },
+    {
+      "criterion_id": "T9-P1-11",
+      "score": 10,
+      "evidence_span": "**High-quality defensive assets**\n\nUse government and investment-grade bonds rather than relying on high-yield bonds, which tend to behave more like equities during stress.",
+      "rationale": "Within the downside-controls section, explicitly links the defensive objective to a stress-behavior fact and then to the decision to prefer government and investment-grade bonds."
+    },
+    {
+      "criterion_id": "T9-P2-01",
+      "score": 10,
+      "evidence_span": "A portfolio designed around **moderate risk, stable long-term compounding, family liquidity, disciplined rebalancing, and explicit downside control** should not use 10% as its central expected return.",
+      "rationale": "Explicitly prioritizes stable long-term compounding and subordinates the return target to that investment approach."
+    },
+    {
+      "criterion_id": "T9-P2-02",
+      "score": 10,
+      "evidence_span": "Investor.gov cautions that apparently small fees can materially affect long-term outcomes [3].",
+      "rationale": "Identifies a source specifically addressing how costs affect long-term wealth accumulation, a relevant evidence class for evaluating durable compounding."
+    },
+    {
+      "criterion_id": "T9-P2-03",
+      "score": 10,
+      "evidence_span": "Broad equity funds are preferable for the core because they spread exposure across companies, industries, and countries.",
+      "rationale": "Names an investment option and supplies a verifiable diversification characteristic supporting a more resilient long-term investment core."
+    },
+    {
+      "criterion_id": "T9-P2-04",
+      "score": 10,
+      "evidence_span": "These are unsuitable for the strategic core because daily reset, volatility compounding, financing costs, derivative exposure, and path dependence can cause long-term returns to differ materially from the stated daily multiple.",
+      "rationale": "In the inverse-and-leveraged-products section, identifies daily resetting and path dependence as concrete features distinguishing these short-horizon instruments from strategic holdings."
+    },
+    {
+      "criterion_id": "T9-P2-05",
+      "score": 10,
+      "evidence_span": "- Re-entry decisions become discretionary market timing.\n- They generate tax and transaction costs.\n\nUse position limits and asset allocation rather than mechanical stops for diversified long-term funds.",
+      "rationale": "Directly compares tactical stop-based trading with strategic allocation for long-term funds, identifying discretionary timing and costs as consequential differences."
+    },
+    {
+      "criterion_id": "T9-P2-06",
+      "score": 10,
+      "evidence_span": "Stocks are the main long-term growth engine but also the main drawdown source. Investor.gov notes that stocks historically have had higher risk and return than bonds or cash, while losses can be dramatic [2].\n\nBroad equity funds are preferable for the core because they spread exposure across companies, industries, and countries.",
+      "rationale": "Selects broad equity funds as the core because diversification addresses the drawdown risk of the portfolio's long-term growth engine."
+    },
+    {
+      "criterion_id": "T9-P2-07",
+      "score": 10,
+      "evidence_span": "Cryptoassets, if legally eligible and insisted upon: treat as speculative and cap around **0%–2%**; they are not necessary to meet the plan.",
+      "rationale": "Explicitly labels a named option speculative and downgrades it to an unnecessary, tightly capped allocation."
+    },
+    {
+      "criterion_id": "T9-P2-08",
+      "score": 10,
+      "evidence_span": "Reinvest distributions where tax-efficient.",
+      "rationale": "Provides an executable action that retains investment proceeds for further compounding."
+    },
+    {
+      "criterion_id": "T9-P2-09",
+      "score": 10,
+      "evidence_span": "Each tranche should be invested on predetermined dates regardless of headlines. Undeployed capital remains in cash or short government instruments. Do not suspend purchases because markets feel expensive or accelerate them because prices have recently risen.",
+      "rationale": "Defines a usable implementation sequence that maintains disciplined investing rather than speculative timing."
+    },
+    {
+      "criterion_id": "T9-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives conditions for higher equity exposure and liability hedging, but neither establishes when short-term speculation becomes preferable to long-term compounding."
+    },
+    {
+      "criterion_id": "T9-P2-11",
+      "score": 10,
+      "evidence_span": "An investor who changes strategy after a 35%–50% loss can permanently impair compounding. A lower-return portfolio that can be held consistently may produce a better realized result than a high-return design abandoned during a crash.",
+      "rationale": "Explicitly links preserving compounding to the consequence of abandoning a portfolio after severe losses, then draws the decision implication that a consistently holdable, lower-return portfolio can be preferable."
+    },
+    {
+      "criterion_id": "T9-P3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not identify technology or innovation exposure as a decision priority."
+    },
+    {
+      "criterion_id": "T9-P3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected specifically to evaluate technology or innovation exposure. General fund due diligence does not establish that research purpose."
+    },
+    {
+      "criterion_id": "T9-P3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a verifiable fact about its technology or innovation exposure."
+    },
+    {
+      "criterion_id": "T9-P3-04",
+      "score": 10,
+      "evidence_span": "Use a broad market index as the neutral reference:\n\n- Avoid deliberate sector bets in the core.",
+      "rationale": "The report identifies a broad-market-index route and explicitly specifies that its core avoids deliberate sector bets, providing a concrete sector-neutral construction fact."
+    },
+    {
+      "criterion_id": "T9-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare technology or innovation exposure with a sector-neutral portfolio on a common decision axis."
+    },
+    {
+      "criterion_id": "T9-P3-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No recommended option is selected because it provides technology or innovation exposure."
+    },
+    {
+      "criterion_id": "T9-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded because it favors sector neutrality; the report instead favors a broad, neutral core."
+    },
+    {
+      "criterion_id": "T9-P3-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The implementation schedule contains no executable step specifically implementing technology or innovation exposure."
+    },
+    {
+      "criterion_id": "T9-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides general sector and thematic limits, but no allocation, threshold, sequence rule, or checkpoint specifically for technology or innovation exposure."
+    },
+    {
+      "criterion_id": "T9-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Sector neutrality is recommended generally, but no concrete condition reverses a technology or innovation preference in its favor."
+    },
+    {
+      "criterion_id": "T9-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no visible chain connecting a technology or innovation preference to specific evidence and then to a decision or action."
+    },
+    {
+      "criterion_id": "T9-P4-01",
+      "score": 8,
+      "evidence_span": "Choose on **all-in cost, diversification, tracking, tax treatment, regulation, and operational suitability**, not the ETF or mutual-fund label.",
+      "rationale": "Explicitly prioritizes financially assessable characteristics over product labels in investment selection. The priority is clear, although expressed for vehicle selection rather than the overall asset-allocation methodology."
+    },
+    {
+      "criterion_id": "T9-P4-02",
+      "score": 10,
+      "evidence_span": "Actual expected returns should be refreshed using the then-current:\n\n- Sovereign yield curve.\n- Real yields.\n- Credit spreads.\n- Equity earnings and valuation measures.\n- Inflation expectations.\n- Currency-hedging costs.\n- Fund expenses and local taxes.",
+      "rationale": "Identifies specific financial evidence classes and explicitly connects their collection to updating portfolio return assumptions."
+    },
+    {
+      "criterion_id": "T9-P4-03",
+      "score": 8,
+      "evidence_span": "| Approximate net CAGR at 0.2% annual cost | 5.5%–5.9% | 6.0%–6.5% |",
+      "rationale": "Provides concrete, cost-adjusted modeled outcomes for the moderate core and growth alternative, enabling financial comparison of the options. These are explicitly illustrative estimates rather than independently established empirical results."
+    },
+    {
+      "criterion_id": "T9-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named narrative-led investment option is supported by a concrete contrast-side fact. References to headlines, unsupported forecasts, and feelings are generic behavioral warnings."
+    },
+    {
+      "criterion_id": "T9-P4-05",
+      "score": 8,
+      "evidence_span": "Each tranche should be invested on predetermined dates regardless of headlines. Undeployed capital remains in cash or short government instruments. Do not suspend purchases because markets feel expensive or accelerate them because prices have recently risen.",
+      "rationale": "Directly contrasts a predetermined implementation rule with intuition- and recent-performance-led purchase timing on the common axis of when to invest. The analytical side is a systematic schedule rather than an explicitly financial-data-derived allocation."
+    },
+    {
+      "criterion_id": "T9-P4-06",
+      "score": 4,
+      "evidence_span": "Broad equity funds are preferable for the core because they spread exposure across companies, industries, and countries.",
+      "rationale": "Names a recommended option and supplies a financial diversification rationale. It does not explicitly select that option because it enables data- or financial-analysis-driven allocation; that preference-specific causal link remains implicit."
+    },
+    {
+      "criterion_id": "T9-P4-07",
+      "score": 4,
+      "evidence_span": "### Market timing\n\nDo not change allocation based on headlines, recent returns, or unsupported forecasts.",
+      "rationale": "Explicitly rejects a named route when driven by narrative-like signals. However, it is a general prohibition rather than a comparison downgrading an otherwise viable, concretely evaluated option."
+    },
+    {
+      "criterion_id": "T9-P4-08",
+      "score": 10,
+      "evidence_span": "Direct regular contributions to the most underweight asset class.",
+      "rationale": "Provides an executable allocation action determined by measured deviation from target weights, directly implementing quantitative rather than intuitive allocation."
+    },
+    {
+      "criterion_id": "T9-P4-09",
+      "score": 10,
+      "evidence_span": "Rebalance when either the absolute or relative threshold is exceeded:\n\n- Major allocation above 10% target weight: **five percentage points** or **20% relative drift**.",
+      "rationale": "States a concrete, measurable threshold that determines when allocation changes should occur."
+    },
+    {
+      "criterion_id": "T9-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not identify any condition under which narrative- or intuition-led investing becomes preferable to analytical allocation."
+    },
+    {
+      "criterion_id": "T9-P4-11",
+      "score": 4,
+      "evidence_span": "Valuation should influence expected-return assumptions and contribution planning, not produce all-in/all-out decisions.",
+      "rationale": "Links a financial evidence category to planning consequences, but supplies no particular observed valuation fact in that chain. The required preference-to-specific-evidence-to-action linkage is incomplete."
+    },
+    {
+      "criterion_id": "T9-P5-01",
+      "score": 10,
+      "evidence_span": "1. Protect the family liquidity reserve and near-term obligations.\n2. Select a portfolio whose drawdown can actually be held through.\n3. Earn diversified market returns at low cost.",
+      "rationale": "The stated decision hierarchy explicitly prioritizes liquidity protection, tolerable drawdowns, and diversified market exposure."
+    },
+    {
+      "criterion_id": "T9-P5-02",
+      "score": 10,
+      "evidence_span": "Investor.gov warns that narrowly focused funds may not diversify a portfolio and recommends checking top holdings for overlap [1].",
+      "rationale": "An identifiable source and a specific evidence class—underlying holdings and overlap—are connected directly to evaluating diversification."
+    },
+    {
+      "criterion_id": "T9-P5-03",
+      "score": 10,
+      "evidence_span": "Broad equity funds are preferable for the core because they spread exposure across companies, industries, and countries.",
+      "rationale": "The named investment option has a concrete diversification mechanism rather than merely a favorable adjective."
+    },
+    {
+      "criterion_id": "T9-P5-04",
+      "score": 10,
+      "evidence_span": "| Direct stocks | Optional active/speculative sleeve | Extremely wide | Often 25%–60% per stock | Idiosyncratic | Up to 100% | Business failure, fraud, permanent capital loss |",
+      "rationale": "The direct-stock route is characterized with stock-specific volatility, idiosyncratic exposure, and potential total loss, providing concrete contrast-side facts about individual-security bets."
+    },
+    {
+      "criterion_id": "T9-P5-05",
+      "score": 10,
+      "evidence_span": "Broad equity funds are preferable for the core because they spread exposure across companies, industries, and countries. Direct stock selection should be optional and tightly limited.",
+      "rationale": "The report directly contrasts diversified funds with individual-stock selection on exposure breadth and assigns consequentially different portfolio roles."
+    },
+    {
+      "criterion_id": "T9-P5-06",
+      "score": 10,
+      "evidence_span": "Broad equity funds are preferable for the core because they spread exposure across companies, industries, and countries.",
+      "rationale": "Broad equity funds are explicitly preferred because of their diversification across multiple dimensions."
+    },
+    {
+      "criterion_id": "T9-P5-07",
+      "score": 10,
+      "evidence_span": "Broad equity funds are preferable for the core because they spread exposure across companies, industries, and countries. Direct stock selection should be optional and tightly limited.",
+      "rationale": "The report retains direct stocks as an available option but demotes them to a tightly limited optional role in its explicit diversification-based comparison."
+    },
+    {
+      "criterion_id": "T9-P5-08",
+      "score": 10,
+      "evidence_span": "Direct regular contributions to the most underweight asset class.",
+      "rationale": "This is an executable contribution-allocation action that maintains the diversified strategic allocation."
+    },
+    {
+      "criterion_id": "T9-P5-09",
+      "score": 10,
+      "evidence_span": "A 55% equity target triggers around 50% or 60%, subject to the exact sub-asset bands.",
+      "rationale": "The report supplies numerical allocation-drift thresholds for rebalancing."
+    },
+    {
+      "criterion_id": "T9-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The conditional growth alternative increases diversified equity exposure; it does not establish a condition under which concentrated high-conviction bets become preferable."
+    },
+    {
+      "criterion_id": "T9-P5-11",
+      "score": 10,
+      "evidence_span": "Broad equity funds are preferable for the core because they spread exposure across companies, industries, and countries.",
+      "rationale": "One explicit causal chain connects diversified exposure, the concrete fact of spreading investments across companies, industries, and countries, and selection of broad equity funds as the core."
+    },
+    {
+      "criterion_id": "T9-A1-01",
+      "score": 6,
+      "evidence_span": "A money-market fund is normally a security rather than an insured bank deposit, and local protections differ.",
+      "rationale": "Gives a concrete, verifiable protection distinction relevant to choosing an emergency-reserve vehicle. Generic cap of 6 applied."
+    },
+    {
+      "criterion_id": "T9-A1-02",
+      "score": 6,
+      "evidence_span": "The 5% portfolio-cash allocation is separate from the family emergency reserve. If the reserve is already conservatively invested and much larger than necessary, portfolio cash could be reduced and high-quality bonds increased.",
+      "rationale": "Explicitly distinguishes retaining portfolio cash from investing more in bonds, conditioning the latter on sufficient separate reserves. Generic cap of 6 applied."
+    },
+    {
+      "criterion_id": "T9-A1-03",
+      "score": 6,
+      "evidence_span": "The emergency reserve should generally be established before making irreversible mortgage prepayments.",
+      "rationale": "Liquidity changes the recommended ordering of capital uses: establishing the reserve takes priority over an illiquid mortgage prepayment. Generic cap of 6 applied."
+    },
+    {
+      "criterion_id": "T9-A1-04",
+      "score": 6,
+      "evidence_span": "Adopt the **55% equity moderate core** after establishing the emergency reserve and resolving the mortgage comparison.",
+      "rationale": "The final recommendation explicitly requires establishing the emergency reserve before adopting the portfolio and does not advocate sacrificing it to become fully invested. Generic cap of 6 applied."
+    },
+    {
+      "criterion_id": "T9-A2-01",
+      "score": 6,
+      "evidence_span": "**Mutual-fund advantages**\n\n- Automatic fractional purchases.\n- Convenient periodic contributions.\n- Trading at net asset value.\n- Potentially simpler rebalancing.",
+      "rationale": "Names mutual funds and gives concrete operational features supporting manageable implementation, including automatic purchases and simpler rebalancing. Generic cap of 6 applied."
+    },
+    {
+      "criterion_id": "T9-A2-02",
+      "score": 6,
+      "evidence_span": "- Avoid frequent tactical rebalancing.\n- Prefer contributions and distributions for rebalancing.",
+      "rationale": "Explicitly contrasts frequent tactical intervention with a more manageable contribution-based rebalancing approach. Generic cap of 6 applied."
+    },
+    {
+      "criterion_id": "T9-A2-03",
+      "score": 6,
+      "evidence_span": "### Small portfolio\n\nUse one to three broad funds:\n\n1. Global equity.\n2. High-quality bond or balanced fund.\n3. Cash/short government instrument.\n\nAvoid creating many tiny positions whose fees and administration overwhelm diversification benefits.",
+      "rationale": "Administrative manageability explicitly changes the recommendation toward one to three broad funds rather than numerous small positions. Generic cap of 6 applied."
+    },
+    {
+      "criterion_id": "T9-A2-04",
+      "score": 6,
+      "evidence_span": "- Monitor quarterly.\n- Conduct a formal review every six months.\n- Rebalance no more than once or twice per year unless a threshold or personal-risk trigger is reached.",
+      "rationale": "The recommended operating policy explicitly supports disciplined, relatively infrequent management. No selected option is justified by high-frequency monitoring without a disclosed trade-off. Generic cap of 6 applied."
+    },
+    {
+      "criterion_id": "T9-A3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named innovative or early-stage investment option is accompanied by a concrete, verifiable fact. Generic small-cap, direct-stock, and thematic categories do not establish such exposure."
+    },
+    {
+      "criterion_id": "T9-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly contrast selective innovative or early-stage exposure with an option providing no emerging-technology exposure."
+    },
+    {
+      "criterion_id": "T9-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Innovative or early-stage exposure is not used to change any recommendation, inclusion, exclusion, ranking, or stated fit judgment."
+    },
+    {
+      "criterion_id": "T9-A3-04",
+      "score": 4,
+      "evidence_span": "Any thematic or sector fund: **maximum 5%**.",
+      "rationale": "The policy accommodates limited thematic holdings rather than explicitly excluding emerging technology. This is only implicit compatibility: the final recommendation does not specifically address selective innovative or early-stage exposure."
+    }
+  ]
+}

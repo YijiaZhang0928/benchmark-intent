@@ -62,6 +62,8 @@ v0.83 记录 Task21/User12 holdout 的负面 what-to-ask 结果。完整 stock O
 
 v0.84 在用户批准后冻结同一 Task21/User12 的测量复现：两臂改用新版 workbook 的严格 task-only cold start 与 67-leaf micro-rubrics，stock ODR 对比 task-slot-first IEO-v3。主机制量为预审计的 risk / holding style / sector tilt `Recall@AskableHigh`，主最终量为 `P_strict(I3)-P_strict(S)`，另报 `P_HI` 与未改 33-leaf `P_official`。两边保持同 backbone、同研究图与工具预算，并在 runner 内施加 30 分钟硬停止；协议和冻结资产见 [`pilot/odr_ieo_v3_micro_ab_v0_84/`](pilot/odr_ieo_v3_micro_ab_v0_84/)。由于该任务旧版 clarification 已见，本轮不是 fresh holdout。
 
+v0.85 完成上述复现。两边都问到 risk、holding style、liquidity 并漏掉 technology/innovation tilt，`Recall@AskableHigh` 同为 2/3；IEO-v3 只把六行 stock 表单压到三行。67-leaf `P_strict` 为 6.8583 vs 7.1366（`+0.2783`），`P_HI` 差 `+0.32`，但未改 33-leaf `P_official` 差仅 `+0.0150`。严格分的小增益主要来自 evidence 和未通过 clarification 获取的 data-analysis best practice，而非更高 preference recall；结论是 efficiency gain、recall mechanism 未验证。完整报告、问题、搜索/抓取轨迹、盲评证据与限制见 [`RESULTS.md`](pilot/odr_ieo_v3_micro_ab_v0_84/RESULTS.md)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。

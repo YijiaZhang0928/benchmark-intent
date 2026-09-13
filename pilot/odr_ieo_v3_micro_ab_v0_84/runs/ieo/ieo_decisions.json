@@ -1,0 +1,256 @@
+[
+  {
+    "candidates": [
+      {
+        "name": "annualized_return_objective",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "return objective",
+        "deliverable_influence": "high",
+        "evidence_strength": "strong",
+        "answerability": "known_now",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A 10% nominal annualized objective requires a growth-oriented allocation and wider expected return range.",
+          "A lower objective would permit more bonds, cash, and downside protection."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "maximum_tolerable_drawdown",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "risk-versus-return trade-off",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A roughly 10% loss ceiling would require a more defensive allocation and make the 10% target less plausible.",
+          "Tolerance for 30% or larger drawdowns would support a higher equity allocation and fewer costly hedges."
+        ],
+        "should_ask": true,
+        "question": "What maximum peak-to-trough portfolio loss could you tolerate without abandoning the plan: about 10%, 20%, 30%, or more?"
+      },
+      {
+        "name": "investment_horizon",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "capital-use horizon",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A horizon under three years would favor capital preservation and make the stated return target unsuitable as a planning expectation.",
+          "A horizon of ten years or more would support greater equity exposure and allow recovery-focused rebalancing through market declines."
+        ],
+        "should_ask": true,
+        "question": "What is the intended holding horizon before most of the money may be needed: under 3, 3–5, 5–10, or 10+ years?"
+      },
+      {
+        "name": "liquidity_priority",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "liquidity-versus-return trade-off",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A substantial near-term liquidity preference would increase cash and short-duration instruments and reduce expected return.",
+          "Minimal withdrawal needs would allow more exposure to volatile or less-liquid growth assets."
+        ],
+        "should_ask": true,
+        "question": "What portion of the portfolio do you want available for withdrawal during the next 12 months, and how quickly must it be accessible?"
+      },
+      {
+        "name": "diversification_scope",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "diversification preference",
+        "deliverable_influence": "high",
+        "evidence_strength": "strong",
+        "answerability": "known_now",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Broad diversification supports global equities, multiple return drivers, and limits on concentrated positions.",
+          "A narrower mandate would concentrate sector, geographic, or instrument exposure and increase idiosyncratic risk."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "acceptable_management_burden",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "implementation involvement",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A low-maintenance preference would favor a few broad funds, automated contributions, and calendar rebalancing.",
+          "An active preference could support tactical bands, more holdings, and more frequent monitoring."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "tax_jurisdiction_and_account_type",
+        "source": "latent",
+        "variable_type": "current_state_fact",
+        "preference_class": "tax and product eligibility",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Tax-advantaged accounts could hold tax-inefficient bonds or funds and alter asset location.",
+          "Jurisdiction-specific restrictions could change fund domiciles, currency exposure, taxes, and available instruments."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "investable_amount_and_contribution_schedule",
+        "source": "latent",
+        "variable_type": "current_state_fact",
+        "preference_class": "implementation resources",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A small balance would favor fractional shares or a compact fund portfolio without minimum-heavy products.",
+          "Regular contributions would support staged deployment and contribution-based rebalancing during the six-month plan."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "existing_holdings_and_embedded_tax_gains",
+        "source": "latent",
+        "variable_type": "current_state_fact",
+        "preference_class": "starting portfolio state",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A greenfield portfolio could move directly toward the target allocation.",
+          "Concentrated legacy holdings or taxable gains would require a gradual transition and tax-aware sale schedule."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "emergency_reserve_and_high_cost_debt_status",
+        "source": "latent",
+        "variable_type": "current_state_fact",
+        "preference_class": "financial readiness",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Insufficient emergency savings would redirect early implementation toward a liquid reserve.",
+          "High-cost debt could take priority over funding a portfolio with uncertain returns."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "ethical_or_sector_exclusions",
+        "source": "latent",
+        "variable_type": "preference_value",
+        "preference_class": "values-based investment constraints",
+        "deliverable_influence": "low",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Explicit exclusions would replace broad benchmarks with screened funds and require tracking-error analysis.",
+          "No exclusions would allow the broadest, lowest-cost diversification set."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "capital_market_assumptions",
+        "source": "latent",
+        "variable_type": "research_owned",
+        "preference_class": "expected returns, volatility, and correlations",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Lower forward equity-return estimates would reduce confidence that the portfolio can reach 10% annualized.",
+          "Higher bond yields or changing correlations could increase the role of fixed income in diversification."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "specific_instrument_selection",
+        "source": "latent",
+        "variable_type": "agent_recommended",
+        "preference_class": "implementation vehicle choice",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Low-cost index funds would produce a simpler portfolio with lower manager-selection risk.",
+          "Active funds or individual stocks would require stronger due diligence, position limits, and closer monitoring."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "rebalancing_and_downside_control_method",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "portfolio-control design",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Threshold rebalancing would trigger trades when allocations breach set bands.",
+          "Calendar rebalancing with contribution-based corrections would reduce monitoring and transaction frequency."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "responsible_suitability_floor",
+        "source": "latent",
+        "variable_type": "normative_floor",
+        "preference_class": "financial safety minimum",
+        "deliverable_influence": "high",
+        "evidence_strength": "strong",
+        "answerability": "known_now",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "The report will present 10% as an uncertain objective rather than a guaranteed or reliably annual result.",
+          "The implementation plan will condition aggressive investing on adequate liquidity, diversification, and the absence of urgent high-cost obligations."
+        ],
+        "should_ask": false,
+        "question": ""
+      }
+    ],
+    "selected_variables": [
+      "maximum_tolerable_drawdown",
+      "liquidity_priority",
+      "investment_horizon"
+    ],
+    "need_clarification": true,
+    "selected_question": "1. What maximum peak-to-trough portfolio loss could you tolerate without abandoning the plan: about 10%, 20%, 30%, or more? This sets the growth/defensive allocation and downside controls.\n2. What portion of the portfolio do you want available for withdrawal during the next 12 months, and how quickly must it be accessible? This sets the liquid reserve and investable risk budget.\n3. What is the intended holding horizon before most of the money may be needed: under 3, 3–5, 5–10, or 10+ years? This determines whether the 10% objective is plausibly pursued and shapes the implementation path.",
+    "verification": "The three questions cover two distinct user-owned trade-offs—drawdown tolerance and liquidity priority—plus the essential time-horizon constraint. Market assumptions will be researched, instrument and control choices will be compared and recommended, and unasked account, tax, holdings, and financial-readiness facts can be handled with explicit conditional guidance rather than additional initial questions.",
+    "policy_valid": true,
+    "eligible_preference_count": 3
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T9-A2-01",
+      "score": 6,
+      "evidence_span": "Mutual funds transact once daily at net asset value, which removes intraday spread decisions",
+      "rationale": "Gives a concrete, verifiable fact about a named instrument category and explicitly links it to reduced operational decisions. Score capped at 6."
+    },
+    {
+      "criterion_id": "T9-A2-02",
+      "score": 4,
+      "evidence_span": "Stop-losses may be appropriate for a small speculative stock position, but they are usually unsuitable as the principal defense for a long-term index portfolio.",
+      "rationale": "Explicitly distinguishes speculative-stock and long-term-index approaches, but the distinction concerns risk-control suitability rather than very high-frequency monitoring. The monitoring-frequency preference axis is only implicit."
+    },
+    {
+      "criterion_id": "T9-A2-03",
+      "score": 6,
+      "evidence_span": "The simpler version reduces operational mistakes, tax lots, overlap, and rebalancing complexity.",
+      "rationale": "Explicitly uses manageability to justify the simpler recommended portfolio variant, making it a stated fit factor. Score capped at 6."
+    },
+    {
+      "criterion_id": "T9-A2-04",
+      "score": 6,
+      "evidence_span": "It is designed to support disciplined long-term compounding, not to maximize short-term upside.",
+      "rationale": "The final recommendation expressly prioritizes disciplined long-term investing, consistent with its rules-based deployment and threshold rebalancing. No selected option is justified by a preference for very high-frequency monitoring. Score capped at 6."
+    }
+  ]
+}

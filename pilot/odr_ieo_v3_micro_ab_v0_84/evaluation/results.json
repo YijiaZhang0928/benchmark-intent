@@ -1,0 +1,116 @@
+{
+  "schema_version": "0.85",
+  "case": {
+    "benchmark_task": "T09",
+    "pdr_task": 21,
+    "user": "User12"
+  },
+  "generation_model": "gpt-5.6-sol/high",
+  "judge_model": "gpt-6-astra/high",
+  "mechanism": {
+    "stock": {
+      "asked_clarification": true,
+      "resolved_units": [
+        "T9-P1",
+        "T9-P2",
+        "T9-A1"
+      ],
+      "recall_askable_high": 0.6666666666666666,
+      "recall_high": 0.4,
+      "recall_high_plus_average": 0.375,
+      "top_level_question_rows": 6,
+      "resolved_unit_yield_per_row": 0.5,
+      "resolved_to_reflected": 1.0
+    },
+    "ieo": {
+      "asked_clarification": true,
+      "resolved_units": [
+        "T9-P1",
+        "T9-P2",
+        "T9-A1"
+      ],
+      "recall_askable_high": 0.6666666666666666,
+      "recall_high": 0.4,
+      "recall_high_plus_average": 0.375,
+      "top_level_question_rows": 3,
+      "resolved_unit_yield_per_row": 1.0,
+      "resolved_to_reflected": 1.0
+    }
+  },
+  "outcomes": {
+    "stock": {
+      "p_strict": 6.858327759197325,
+      "p_hi": 7.08,
+      "p_official": 5.6226
+    },
+    "ieo": {
+      "p_strict": 7.136588628762542,
+      "p_hi": 7.3999999999999995,
+      "p_official": 5.637600000000001
+    },
+    "ieo_minus_stock": {
+      "p_strict": 0.27826086956521756,
+      "p_hi": 0.3199999999999994,
+      "p_official": 0.015000000000000568
+    },
+    "strict_dimension_scores": {
+      "INTENT": {
+        "stock": 7.6,
+        "ieo": 8.0,
+        "delta": 0.40000000000000036
+      },
+      "SOURCE": {
+        "stock": 8.0,
+        "ieo": 8.4,
+        "delta": 0.40000000000000036
+      },
+      "EVIDENCE": {
+        "stock": 7.304347826086956,
+        "ieo": 8.17391304347826,
+        "delta": 0.8695652173913038
+      },
+      "TRADEOFF": {
+        "stock": 4.695652173913043,
+        "ieo": 4.260869565217392,
+        "delta": -0.43478260869565144
+      },
+      "DECISION": {
+        "stock": 6.434782608695652,
+        "ieo": 6.782608695652174,
+        "delta": 0.3478260869565215
+      },
+      "ACTION": {
+        "stock": 8.0,
+        "ieo": 8.0,
+        "delta": 0.0
+      },
+      "TRACE": {
+        "stock": 6.461538461538462,
+        "ieo": 6.461538461538462,
+        "delta": 0.0
+      }
+    }
+  },
+  "deep_research": {
+    "stock": {
+      "searches": 4,
+      "fetch_attempts": 12,
+      "successful_fetches": 7,
+      "unique_report_urls": 3,
+      "report_characters": 49472
+    },
+    "ieo": {
+      "searches": 7,
+      "fetch_attempts": 7,
+      "successful_fetches": 5,
+      "unique_report_urls": 14,
+      "report_characters": 48629
+    }
+  },
+  "validity_warnings": [
+    "This reruns a previously inspected task and is not an independent holdout.",
+    "The deterministic simulator emitted answers in unit order, not question order; both reports nevertheless reflected every resolved unit.",
+    "Realized research traces differ: stock opened more sources, while IEO cited more unique URLs; report-score differences are not a pure clarification-selection effect.",
+    "One generation and one judge pass per arm do not support significance or a population-level architecture ranking."
+  ]
+}

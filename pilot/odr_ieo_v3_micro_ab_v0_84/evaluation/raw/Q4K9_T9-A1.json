@@ -1,0 +1,28 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T9-A1-01",
+      "score": 6,
+      "evidence_span": "Money-market funds are not the same as insured bank deposits.",
+      "rationale": "Provides a concrete, verifiable distinction between two named emergency-cash vehicles, relevant to the safety of the liquidity buffer. Score capped at 6."
+    },
+    {
+      "criterion_id": "T9-A1-02",
+      "score": 6,
+      "evidence_span": "Staging reduces timing regret and preserves flexibility, but it has an expected opportunity cost if markets rise because part of the money remains in cash.",
+      "rationale": "Explicitly distinguishes retaining cash during deployment from investing that money: cash preserves flexibility but sacrifices participation in rising markets. Score capped at 6."
+    },
+    {
+      "criterion_id": "T9-A1-03",
+      "score": 6,
+      "evidence_span": "Private funds can involve long lockups, uncertain valuations, capital calls, high fees, manager-selection risk, and limited access—poor characteristics when family and mortgage liquidity are important.",
+      "rationale": "Uses family and mortgage liquidity as an explicit suitability factor against private funds, rather than selecting them for their higher forecast return. Score capped at 6."
+    },
+    {
+      "criterion_id": "T9-A1-04",
+      "score": 6,
+      "evidence_span": "The recommended portfolio contains 5% cash in addition to this household reserve. If the external reserve is not yet fully funded, temporarily raise portfolio cash to 10%–20% and reduce equities one-for-one.",
+      "rationale": "The recommendation explicitly maintains both portfolio cash and a separate household reserve, with additional cash required if the reserve is incomplete. It does not prioritize full investment over the emergency buffer. Score capped at 6."
+    }
+  ]
+}

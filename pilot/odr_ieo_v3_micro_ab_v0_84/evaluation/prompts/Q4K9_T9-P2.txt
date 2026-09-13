@@ -1,0 +1,1022 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Design a diversified personal-investment portfolio and six-month implementation plan targeting an annualized return of at least 10% without promising guaranteed returns.
+
+Consider stocks, mutual funds and other appropriate instruments. Explain expected return and risk trade-offs, asset allocation, rebalancing, downside-risk management, liquidity, tracking metrics and adaptation to changing market conditions.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T9-P2-01",
+    "criterion": "The report states stable long-term compounding logic as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate stable long-term compounding logic.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-03",
+    "criterion": "The report provides concrete evidence about how an option supports stable long-term compounding logic.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-04",
+    "criterion": "The report provides concrete evidence about how an option reflects short-term speculation.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-05",
+    "criterion": "The report directly compares stable long-term compounding logic with short-term speculation.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-06",
+    "criterion": "At least one recommended option is selected because it supports stable long-term compounding logic.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors short-term speculation.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-08",
+    "criterion": "The plan contains one executable step that implements stable long-term compounding logic.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for stable long-term compounding logic.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-10",
+    "criterion": "The report states when short-term speculation would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T9-P2-11",
+    "criterion": "One visible chain links stable long-term compounding logic to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label Q4K9):
+# Six-Month Plan for a Diversified, Low-Cost, Downside-Aware Long-Term Portfolio
+
+**Assessment date: September 13, 2026**
+
+## Executive conclusion
+
+A long-term annualized return of **10% or more should be treated as a stretch outcome, not the expected return or a planning assumption**. Current institutional forecasts do not support 10% as the base case for a moderate-risk liquid portfolio:
+
+- J.P. Morgan’s 2026 long-term assumptions project approximately **6.4% a year for a USD 60/40 portfolio**, **6.9% for a diversified “60/40+” portfolio**, **6.7% for U.S. large-cap equities**, and **7.0% for global equities** over 10–15 years.[2]
+- Vanguard’s June 30, 2026 model projects only **4.2%–6.2% for U.S. equities**, **4.5%–6.5% for developed ex-U.S. equities**, and **2.0%–4.0% for emerging-market equities** over ten years.[3]
+- Both providers expressly state that forecasts are hypothetical, can change, exclude some real-world costs and taxes, and are not guarantees.[2][3]
+
+For a moderate investor who prioritizes downside control, family liquidity, and disciplined compounding, a defensible starting allocation is:
+
+| Strategic sleeve | Target | Policy range |
+|---|---:|---:|
+| Broad and factor equities | **65%** | **55%–70%** |
+| High-quality bonds, including inflation-linked bonds | **25%** | **20%–35%** |
+| Cash and money-market instruments | **5%** | **3%–15%** |
+| Gold and/or managed-futures diversifiers | **5%** | **0%–8%** |
+| **Total** | **100%** | |
+
+This portfolio has a reasonable long-term nominal planning range of approximately **5.8%–7.2% annually before personal taxes**, with expected volatility around **10%–13%** and a plausible severe bear-market drawdown of roughly **25%–35%**. These are broad planning estimates, not promises; an unusually severe or correlated crisis could produce a larger loss.
+
+A 10% annualized result remains possible in a strong equity decade, but it is not prudent to fund mortgage, retirement, or family commitments on that assumption. If financial goals require 10%, the safer responses are generally to increase contributions, extend the horizon, reduce future withdrawals, or reconsider the goal—not simply take more risk.
+
+---
+
+## 1. Critical suitability assumptions
+
+Because portfolio size, currency, jurisdiction, account type, income, mortgage terms, emergency savings, expected withdrawals, and maximum tolerable loss have not been specified, the recommendation must remain percentage-based and conditional.
+
+### The return objective
+
+The report assumes “10% annualized” means:
+
+- Nominal, not inflation-adjusted.
+- Measured over at least ten years, preferably 15 years or more.
+- Before personal taxes but after fund expenses.
+- In the investor’s home currency or another deliberately selected reporting currency.
+- A stretch objective rather than the return used to calculate whether family obligations can be met.
+
+If the objective is **10% after inflation**, **10% after tax**, or **10% over only three to five years**, it is incompatible with a moderate-risk, downside-prioritized portfolio.
+
+### The required reserve comes before the portfolio
+
+A household reserve should be separated from long-term risk capital before beginning the six-month deployment. The reserve should cover:
+
+1. Several months of essential household expenses.
+2. Mortgage payments and other contractual obligations.
+3. Known large expenditures over the next 12–24 months.
+4. A margin for job loss, medical costs, dependants, insurance deductibles, or a variable-rate mortgage reset.
+
+A reasonable starting framework is **6–12 months of essential expenses**, but the correct amount depends heavily on job security, number of earners, insurance, mortgage flexibility, and dependants. Someone with unstable income or a single household earner may need more.
+
+The recommended portfolio contains 5% cash in addition to this household reserve. If the external reserve is not yet fully funded, temporarily raise portfolio cash to 10%–20% and reduce equities one-for-one.
+
+### Mortgage considerations
+
+Mortgage prepayment can be economically attractive when the mortgage’s guaranteed after-tax cost is materially above the after-tax yield on high-quality bonds. However:
+
+- Prepayment reduces liquidity.
+- Early-repayment penalties may apply.
+- Tax deductibility varies.
+- A fixed low-rate mortgage may be valuable during inflation.
+- The emotional and cash-flow benefit of lower debt can justify prepayment even if expected equities have a higher return.
+
+Mortgage terms should therefore be reviewed alongside—not separately from—the investment plan.
+
+---
+
+## 2. Why 10% is not a sound base-case assumption
+
+### Current forward-looking evidence
+
+J.P. Morgan’s 2026 assumptions include:[2]
+
+- U.S. intermediate Treasuries: **4.0%**
+- U.S. long Treasuries: **4.9%**
+- U.S. investment-grade credit: **5.2%**
+- U.S. large-cap equities: **6.7%**
+- Global equities: **7.0%**
+- Emerging-market equities: **7.8%**
+- Broad commodities: **4.6%**
+- Gold: **5.5%**
+- Global core infrastructure: **6.5%**
+- Private equity: **10.2%**
+
+The 10.2% private-equity forecast does not make private equity suitable here. Private funds can involve long lockups, uncertain valuations, capital calls, high fees, manager-selection risk, and limited access—poor characteristics when family and mortgage liquidity are important. J.P. Morgan itself projects only 6.9% for a diversified 60/40+ portfolio containing substantial alternatives.[2]
+
+Vanguard is more cautious. Its June 2026 model reduced ten-year U.S. equity expectations from 4.9%–6.9% to **4.2%–6.2%**, citing increasingly elevated valuations.[3] Vanguard also emphasizes that valuation is a poor short-term timing tool and should not by itself drive abrupt allocation changes.
+
+BlackRock similarly warns that capital-market assumptions are illustrative, subject to model error, and exclude real-world taxes, fees, liquidity constraints, and trading effects.[4]
+
+### Current equity-market starting conditions
+
+As of August 31, 2026, MSCI reported that the MSCI ACWI Index contained **2,458 constituents** with a market capitalization of approximately **$104.04 trillion**. It reported a trailing P/E of **21.85**, forward P/E of **16.87**, price/book ratio of **3.80**, and dividend yield of **1.56%**.[1]
+
+The broad constituent count provides substantial company diversification, but capitalization weighting still creates concentration in the largest U.S. companies and technology-related businesses. A broad index eliminates most company-specific risk; it does not eliminate market, valuation, sector, or geopolitical risk.
+
+### Practical portfolio expectation
+
+Using the institutional assumptions as anchors, a 65/25/5/5 portfolio would be expected to compound closer to the mid-single or upper-single digits than 10%. A reasonable planning range is:
+
+- **Gross nominal return:** approximately 5.9%–7.4%
+- **After low fund expenses:** approximately 5.8%–7.2%
+- **After personal taxes:** highly jurisdiction- and account-dependent
+- **Expected long-run real return:** potentially 2.5%–4.5% if inflation averages 2.5%–3.5%
+
+Actual ten-year outcomes can fall well outside these ranges.
+
+---
+
+## 3. Recommended strategic allocation
+
+### Core allocation
+
+| Component | Target | Rebalancing range | Primary role |
+|---|---:|---:|---|
+| U.S. broad-market equity | **35%** | 30%–40% | Main growth engine |
+| International developed and emerging equity | **20%** | 16%–24% | Geographic, currency, and valuation diversification |
+| Global or U.S. quality factor | **5%** | 2%–8% | Tilt toward profitable, financially robust businesses |
+| Small-cap value factor | **5%** | 2%–8% | Diversify mega-cap growth exposure; possible long-run factor premium |
+| Short/intermediate government bonds | **10%** | 7%–13% | Capital stability, liquidity, recession defense |
+| Broad investment-grade bonds | **7%** | 5%–10% | Income and diversified high-quality credit exposure |
+| Short/intermediate inflation-linked bonds | **8%** | 5%–11% | Protection against unexpected inflation |
+| Cash or government money market | **5%** | 3%–15% | Liquidity, rebalancing reserve, near-term obligations |
+| Gold | **3%** | 0%–5% | Inflation, currency, and crisis diversifier |
+| Managed futures, optional | **2%** | 0%–4% | Potential trend-following diversification |
+| **Total** | **100%** | | |
+
+The ranges are policy limits, not independent choices that can all be moved to their maximum simultaneously. Total equity should normally stay between 55% and 70%, and total defensive assets between 25% and 45%.
+
+### A simpler version
+
+For a smaller portfolio, a beginner investor, or an account with transaction charges, use fewer funds:
+
+- 60% global all-cap equity index
+- 5% small-value or quality factor
+- 17% short/intermediate government and aggregate bonds
+- 8% short-term inflation-linked bonds
+- 5% cash
+- 5% gold or no diversifier, with that 5% added to bonds
+
+The simpler version reduces operational mistakes, tax lots, overlap, and rebalancing complexity.
+
+---
+
+## 4. Holding-level return, risk, cost, and liquidity expectations
+
+The ranges below are broad ten-year-plus planning assumptions in nominal terms. Volatility, drawdowns, and correlations are approximate historical behavior ranges—not precise predictions or fund-specific backtests through September 2026.
+
+Current product fees were not exposed consistently in the retrieved source extracts. Consequently, the fee figures below are **screening ranges**, and each fund’s live prospectus and fact sheet must be checked before purchase.
+
+| Asset | Expected nominal return | Approx. volatility | Severe historical-style drawdown | Approx. correlation with global equities | Acceptable annual fee |
+|---|---:|---:|---:|---:|---:|
+| U.S. broad equity | 4%–7% | 16%–20% | −45% to −60% | 0.85–1.00 | 0.03%–0.10% |
+| International broad equity | 4%–7% | 17%–23% | −45% to −60% | 0.70–0.90 | 0.05%–0.15% |
+| Quality equity | 4.5%–7.5% | 14%–19% | −40% to −55% | 0.85–0.98 | 0.10%–0.25% |
+| Small-cap value | 5%–8% | 20%–27% | −50% to −65% | 0.75–0.95 | 0.15%–0.35% |
+| Government bonds | 3%–5% | 3%–8% | −5% to −18% | −0.20 to +0.30 | 0.03%–0.12% |
+| Investment-grade bonds | 4%–5.5% | 5%–9% | −10% to −20% | −0.10 to +0.40 | 0.03%–0.12% |
+| Short/intermediate inflation-linked bonds | 3%–5% | 4%–8% | −7% to −15% | 0.00–0.40 | 0.03%–0.12% |
+| Treasury bills/money market | Rate-dependent, roughly 2.5%–4.5% long run | 0%–2% | 0% to −2% | Near zero | 0.00%–0.20% |
+| Gold | 3%–6% | 15%–22% | −30% to −45% | −0.10 to +0.20 | 0.10%–0.25% |
+| Managed futures | 3%–7% net, highly uncertain | 10%–16% | −15% to −30% | −0.20 to +0.20 | 0.70%–1.10% |
+
+Correlations are not stable. During liquidity crises, risky assets can become more positively correlated. Bonds can also fall with equities when inflation and rates rise sharply, as occurred in major rate-shock periods. Diversification reduces risk but does not guarantee a positive return.[3]
+
+### Broad U.S. equity
+
+A total-market fund should be the principal equity holding because it offers:
+
+- Thousands of companies.
+- Low turnover and cost.
+- High trading liquidity.
+- Broad exposure to sectors and market-cap segments.
+- Less company-specific risk than individual stocks.
+
+An example is Vanguard’s broad U.S. equity ETF profile for VTI.[6] Equivalent total-market products from other large providers may be used if their costs, tracking, spreads, securities-lending policies, and domicile are suitable.
+
+Principal risks are:
+
+- Large drawdowns during recessions or valuation compression.
+- Concentration in the largest companies.
+- U.S.-specific policy and currency exposure.
+- Growth/technology concentration in capitalization-weighted indexes.
+
+### International equity
+
+International equity reduces exclusive dependence on U.S. valuations, currency, regulation, and economic outcomes. A broad ex-U.S. fund such as VXUS is one implementation candidate.[7]
+
+It introduces:
+
+- Currency volatility.
+- Foreign withholding taxes.
+- Political, accounting, governance, and settlement risks.
+- Greater emerging-market volatility.
+- Different sector composition.
+
+International equities remain highly correlated with U.S. equities during global crises, so they diversify the source of return more than they provide immediate crash protection.
+
+### Quality factor
+
+A quality sleeve may emphasize profitable companies, stable earnings, and stronger balance sheets. It can modestly improve portfolio resilience, but:
+
+- Definitions differ by index provider.
+- Quality can become expensive.
+- It overlaps heavily with the broad index.
+- It is still equity and can experience large losses.
+- A factor can underperform for many years.
+
+Use only a transparent, diversified index with low turnover and no extreme sector bet. Quality should replace part of the broad equity allocation rather than be added as leverage-like extra equity.
+
+### Small-cap value
+
+A small-value sleeve can diversify mega-cap growth exposure and may offer a long-term factor premium, but no premium is guaranteed. It has greater volatility, tracking error, cyclicality, liquidity risk, and prolonged underperformance risk.
+
+AVUV is an example of an actively implemented small-value ETF whose official product materials should be reviewed before purchase.[8] Because it is not a purely mechanical capitalization-weighted index, its process, turnover, trading costs, tax distributions, and management risk require extra scrutiny.
+
+A 5% allocation is large enough to matter while limiting the behavioral risk of abandoning it after years of underperformance.
+
+### Government and investment-grade bonds
+
+The bond allocation should be high quality. Its main purposes are not to reach 10%, but to:
+
+- Reduce portfolio volatility.
+- Supply liquidity during equity declines.
+- Fund rebalancing purchases.
+- Match medium-term liabilities.
+- Provide contractual income.
+
+Avoid using high-yield bonds as the main defense. High-yield securities often behave like equities in recessions because credit spreads widen when stock prices fall. J.P. Morgan projects 6.1% for high yield versus 5.2% for investment-grade credit, but the incremental return comes with materially greater default and drawdown risk.[2]
+
+Duration should roughly match the timing of likely liabilities. Short bonds offer less recession upside but less rate sensitivity; intermediate government bonds generally provide more diversification against deflationary recessions.
+
+### Inflation-linked bonds
+
+Short- or intermediate-term government inflation-linked securities help protect purchasing power against unexpected inflation. VTIP is one U.S. implementation candidate.[9]
+
+They are not riskless:
+
+- Market values decline when real yields rise.
+- Inflation protection applies to the reference inflation index, which may differ from personal inflation.
+- Short-run returns can be negative.
+- Tax treatment can recognize inflation adjustments before cash is received in some jurisdictions.
+
+For a U.S. taxable investor, direct TIPS or TIPS funds may be more tax-efficient in a tax-deferred account because inflation principal adjustments can create current taxable income.
+
+### Cash and money-market instruments
+
+Cash is for liquidity and stability, not long-term growth. Appropriate vehicles may include:
+
+- Insured bank deposits within applicable limits.
+- Treasury bills.
+- Government money-market funds.
+- Very-short Treasury ETFs.
+
+VMFXX is an example of a government-oriented money-market candidate.[10] SGOV is an example of an ETF investing in very short Treasury securities.[14]
+
+Money-market funds are not the same as insured bank deposits. Review credit quality, maturity, fees, settlement, redemption rules, and applicable government protections. Very-short bond ETFs can fluctuate slightly and trade above or below net asset value.
+
+### Gold
+
+Gold has no contractual cash flow and should not be expected to compound like productive businesses. Its potential value is a low long-run correlation with equities, sensitivity to real rates and currencies, and occasional strength during inflation or crisis periods.
+
+Risks include:
+
+- Long periods with no real return.
+- High volatility.
+- Significant drawdowns.
+- Custody and trust-structure risk.
+- Potentially unfavorable collectibles taxation in the United States.
+
+A 3% allocation is sufficient; more than 5% is difficult to justify for this objective.
+
+### Managed futures
+
+A small managed-futures allocation may provide trend-following exposure across equity indexes, rates, currencies, and commodities. KMLM is one example with an official issuer page.[11]
+
+This sleeve is optional because:
+
+- Fees are much higher than index-fund fees.
+- Returns depend on model design and execution.
+- Strategies can suffer during trend reversals.
+- Tax and derivatives reporting may be complex.
+- Different managed-futures funds can behave very differently.
+- A 2% allocation may provide only modest portfolio benefit.
+
+If the investor does not understand the strategy, replace this 2% with government bonds or cash.
+
+### REITs, commodities, and private assets
+
+A dedicated REIT fund is unnecessary because broad stock indexes already contain listed real estate. A separate allocation would create a sector overweight and add interest-rate sensitivity.
+
+Broad commodities can help in inflationary shocks but have roll-yield, futures-curve, collateral, tax, and implementation risks. Gold is simpler at this portfolio size.
+
+Private equity, private credit, non-traded REITs, and infrastructure funds should generally be excluded until liquidity needs, portfolio size, manager access, fees, and the ability to tolerate years of lockup are known.
+
+---
+
+## 5. Individual stocks and active mutual funds
+
+### Individual stocks: target 0%, maximum 5%
+
+Individual stocks are not needed to achieve the portfolio’s objective. A diversified index is more consistent with stable compounding and downside control.
+
+If individual stocks are retained for interest or existing tax reasons:
+
+- Aggregate individual stocks should not exceed **5% of the portfolio**.
+- Each company should normally be limited to **1% at purchase** and **2% before mandatory trimming**.
+- The sleeve must be carved from broad equities, not added on top.
+- Employer stock should count toward the individual-stock and sector limits.
+- No margin, leveraged ETFs, concentrated options, or averaging down outside preset limits.
+- A stock should be sold if its position exceeds the limit, the original thesis is invalidated, fraud/governance risk emerges, or the investor can no longer independently monitor it—not merely because its price declined.
+
+A single stock can permanently lose most or all of its value. Its expected return is not automatically higher than the market simply because its risk is higher.
+
+### Actively managed mutual funds: default 0%
+
+Low-cost index funds should be the default. The S&P SPIVA research program provides relevant active-versus-passive evidence, although the numerical tables in the located 2025 report were not retrieved for this analysis.[13]
+
+An active fund may be justified only where:
+
+- The market is less efficiently indexed, such as certain small-cap, emerging-market, municipal, or specialized credit segments.
+- The manager has a clear, repeatable process.
+- The current management team—not merely the brand—has a relevant record.
+- Fees, turnover, tax distributions, capacity, and downside behavior are acceptable.
+- Net-of-fee performance is compared with an appropriate benchmark.
+- There are no sales loads, performance fees, or avoidable share-class expenses.
+- The fund does not duplicate existing holdings.
+
+An active-fund allocation should normally stay below **5%–10% in total** and replace the equivalent passive sleeve. Statutory prospectuses and filings can be checked through the SEC’s mutual-fund search.[12]
+
+In a taxable account, actively managed mutual funds can distribute capital gains even when the investor did not sell. This makes low-turnover ETFs or tax-managed funds more attractive.
+
+---
+
+## 6. Estimated portfolio-level risk and return
+
+### Base planning estimates
+
+For the recommended 65/25/5/5 allocation:
+
+| Measure | Reasonable planning range |
+|---|---:|
+| Long-term nominal return before personal taxes | **5.8%–7.2%** |
+| Long-term real return, assuming 2.5%–3.5% inflation | **2.5%–4.5%** |
+| Annualized volatility | **10%–13%** |
+| Ordinary correction | **−10% to −18%** |
+| Severe bear-market drawdown | **−25% to −35%** |
+| Exceptional adverse outcome | Potentially worse than **−35%** |
+| Expected weighted fund expense ratio | Approximately **0.08%–0.18%**, subject to product verification |
+| Reasonable holding period | **10–15+ years** |
+
+The expense estimate assumes inexpensive broad index funds and only a small allocation to higher-cost managed futures or active factor exposure. Bid-ask spreads, taxes, foreign withholding, advice fees, platform charges, and market impact are additional.
+
+### Why the downside can still be substantial
+
+If equities fell 50%, the 65% equity sleeve alone would subtract 32.5 percentage points. Bonds, cash, gold, and managed futures might cushion the loss, but their performance cannot be known in advance. A portfolio decline near 30% is therefore entirely plausible.
+
+Anyone likely to sell after a 20% decline should not begin with 65% equity.
+
+---
+
+## 7. Scenario analysis
+
+The following figures are illustrative scenario ranges, not forecasts with assigned probabilities. “Initial impact” refers to a plausible one-year or peak-to-trough shock; “longer-term return” refers broadly to a five- to ten-year annualized outcome.
+
+| Scenario | Plausible initial impact | Longer-term nominal annualized range | Is 10% plausible? |
+|---|---:|---:|---|
+| Base case: moderate growth and inflation | −10% to +12% in any year | **5.8%–7.2%** | Possible, but not the central case |
+| Bull market: strong productivity, broad earnings growth, stable inflation | Positive years of 10%–20% possible | **8%–11%** | Yes, near the upper end |
+| Bearish valuation compression or weak profits | **−20% to −30%** | **1%–5%** | Unlikely |
+| Recession with falling inflation and rates | **−15% to −25%** | **4.5%–7%** | Possible only after a strong recovery |
+| Persistent inflation or stagflation | **−10% to −25%** | **2%–6% nominal**, potentially poor real returns | Unlikely |
+| Orderly rising rates with resilient growth | **−5% to −15%** initially | **4.5%–7%**, improving as bonds reinvest at higher yields | Possible but not expected |
+| Severe financial crisis | **−25% to −40%** | Highly path-dependent | Not a sensible assumption |
+
+### Base case
+
+Broad equities remain the main return driver, while starting bond yields provide more prospective return than in the ultra-low-rate period. On present forecasts, the portfolio is more likely to compound around 6%–7% than 10%.
+
+### Bull case
+
+A combination of strong productivity, broadening earnings, stable inflation, and limited valuation compression could produce 10% or better. J.P. Morgan identifies AI adoption and capital investment as possible productivity supports but also warns that investors must distinguish winners from losers.[2] That observation does not justify concentrated technology speculation.
+
+### Bear market
+
+Expensive equities can fall sharply even without a deep recession. International diversification and factor tilts may not protect during a synchronized selloff. Cash and high-quality bonds provide the most dependable source of rebalancing liquidity.
+
+### Recession
+
+Government bonds may rise if inflation is controlled and central banks cut rates, partially offsetting equity losses. Investment-grade credit may still fall as spreads widen. The correct response is ordinarily to rebalance, not to sell equities after the decline.
+
+### Inflationary or stagflationary environment
+
+Nominal bonds and expensive growth equities can both fall when inflation and real rates rise. TIPS, cash that resets to higher rates, gold, and managed futures may help, but none is guaranteed. Shorter bond duration limits immediate rate sensitivity.
+
+### Rising rates without recession
+
+Bond prices may fall initially, but higher yields raise subsequent bond returns. Selling all bonds after rates rise would crystallize losses and surrender the benefit of reinvestment at higher yields.
+
+---
+
+## 8. Six-month implementation schedule
+
+Staging reduces timing regret and preserves flexibility, but it has an expected opportunity cost if markets rise because part of the money remains in cash. The schedule should be followed mechanically rather than accelerated or delayed based on headlines.
+
+### Before month one
+
+1. Establish the household emergency reserve.
+2. List all known cash needs over the next 24–36 months.
+3. Record mortgage rate, reset date, prepayment terms, and insurance protection.
+4. Choose the reporting currency.
+5. Identify taxable, tax-deferred, pension, and tax-free accounts.
+6. Write an investment-policy statement containing the target allocation, permitted ranges, rebalancing rules, and maximum acceptable drawdown.
+7. Transfer only long-term capital into the deployment account.
+
+### Deployment schedule
+
+The percentages below refer to the total long-term portfolio, not the emergency reserve.
+
+| Month | Amount allocated that month | Cumulative target established | Main action |
+|---|---:|---:|---|
+| **1** | **20%** | 20% | Establish full 5% portfolio cash, 8% government/IG bonds, 2% diversifiers, 5% broad equity |
+| **2** | **16%** | 36% | Add 8% broad equity, 6% bonds/TIPS, 2% diversifiers |
+| **3** | **16%** | 52% | Add 11% broad/factor equity, 4% bonds/TIPS, 1% diversifier |
+| **4** | **16%** | 68% | Add 13% broad/factor equity and 3% bonds |
+| **5** | **16%** | 84% | Add 15% equity and 1% bond |
+| **6** | **16%** | 100% | Add final 13% equity and 3% bonds; rebalance to strategic target |
+
+This deliberately establishes much of the defensive allocation first and backloads some equity risk. Within each equity purchase, buy the most underweight equity sleeve rather than duplicating the target percentages mechanically.
+
+### Rules during deployment
+
+- Invest on the same date or business-day window each month.
+- Do not pause solely because markets fell.
+- Do not accelerate solely because markets rose.
+- Use new contributions to buy the most underweight sleeve.
+- If equities fall enough to breach the lower policy band, normal rebalancing—not discretionary market timing—may bring them back to target.
+- If an unexpected family cash need emerges, stop new risky purchases and rebuild liquidity.
+- If existing assets have large embedded taxable gains, transition more slowly and use contributions, dividends, and tax-loss harvesting rather than selling immediately.
+
+For a very small portfolio, make fewer, larger trades or use a single global equity fund and two or three defensive funds.
+
+---
+
+## 9. Explicit downside-risk controls
+
+### Diversification rules
+
+1. **Total equity limit:** normally no more than 70%.
+2. **Individual stocks:** no more than 5% in aggregate.
+3. **Single-stock limit:** 1% at purchase, 2% mandatory-review threshold.
+4. **Sector concentration:** no deliberate sector overweight greater than 5 percentage points versus the global benchmark; ordinarily keep any intentional sector exposure below 25%.
+5. **Geographic concentration:** do not let domestic equity exceed approximately 70% of the equity sleeve unless currency, tax, or liability considerations justify home bias.
+6. **Emerging markets:** generally no more than 10%–15% of the total portfolio.
+7. **Below-investment-grade debt:** no dedicated allocation by default; maximum 5% if later justified.
+8. **Illiquid investments:** 0% until liquidity needs and portfolio size are known.
+9. **Leveraged and inverse funds:** 0%.
+10. **Unhedged derivatives or speculative options:** 0%.
+
+Broad-market ETFs can exceed normal “single holding” limits because their economic exposure is diversified. Concentration should be measured through underlying holdings, not merely ticker count.
+
+### Liquidity floor
+
+Maintain the greater of:
+
+- The dedicated household reserve;
+- Known obligations over the next 12 months;
+- The 5% portfolio cash target.
+
+If liquid coverage falls below 100% of known 12-month obligations, suspend risk purchases and rebuild cash. If income becomes unstable, extend coverage toward the upper end of the reserve range.
+
+### High-quality defensive assets
+
+The defensive allocation should emphasize:
+
+- Sovereign or government-backed securities.
+- Short/intermediate duration.
+- Investment-grade credit.
+- Inflation-linked government debt.
+- Government money-market instruments.
+
+Long-duration bonds can provide stronger recession protection but also greater inflation and rate risk. They should not dominate unless they match a long-dated liability.
+
+### No borrowing against the portfolio
+
+Do not use margin or investment-backed borrowing to pursue the 10% aspiration. Leverage raises forced-sale and sequence risk precisely when household cash flow may be under pressure.
+
+---
+
+## 10. Rebalancing policy
+
+### Review frequency
+
+- **Monthly:** monitor cash flows, liquidity, allocation drift, and contributions.
+- **Quarterly:** calculate performance and risk metrics; trade only if a threshold is crossed.
+- **Annually:** conduct a full investment-policy review, update assumptions, and rebalance if necessary.
+- **Event-driven:** review immediately after a major change in income, employment, mortgage terms, family needs, tax residency, or withdrawal schedule.
+
+### Thresholds
+
+Rebalance when any of the following occurs:
+
+- Total equity falls below **60%** or rises above **70%**.
+- Total bonds fall below **21%** or rise above **29%**.
+- Cash falls below **3%** before considering known obligations.
+- A major sleeve deviates by **5 percentage points** from target.
+- A sub-sleeve deviates by **2 percentage points** or **25% of its target**, whichever is smaller and economically meaningful.
+- An individual stock exceeds 2%.
+- A sector is more than 5 percentage points above the benchmark because of active holdings.
+- The portfolio cannot meet known 12-month cash needs from cash and short-duration assets.
+
+### Rebalancing order
+
+1. Direct contributions and distributions to underweight assets.
+2. Reinvest interest and dividends selectively rather than automatically.
+3. Trade in tax-advantaged accounts.
+4. Harvest losses where legally permitted.
+5. Sell appreciated taxable positions only after considering capital-gains tax.
+6. Avoid trades whose spreads, taxes, and fees outweigh the benefit of correcting small drift.
+
+At minimum, rebalance back to target once a year if no threshold has triggered. Rebalancing controls risk; it does not reliably increase returns.
+
+---
+
+## 11. Why stop-losses, options hedges, and tactical de-risking are not primary controls
+
+### Stop-loss orders
+
+Stop-losses can limit certain losses, but they have serious drawbacks:
+
+- They can execute far below the trigger during a market gap.
+- They repeatedly sell temporary volatility and create whipsaw losses.
+- They create taxes and transaction costs.
+- They require a disciplined re-entry rule.
+- They can convert a temporary diversified-market decline into a permanent loss.
+- ETF market prices can temporarily diverge from net asset value.
+
+The SEC explains that ETF investors face market-price, premium/discount, spread, liquidity, tracking, and trading risks.[5] Limit orders can control execution price but cannot guarantee execution.
+
+Stop-losses may be appropriate for a small speculative stock position, but they are usually unsuitable as the principal defense for a long-term index portfolio.
+
+### Protective put options
+
+Protective puts provide contractual downside protection for a defined period, but:
+
+- Premiums recur.
+- Implied volatility usually becomes expensive when protection is most desired.
+- Options expire.
+- Strike and maturity selection create basis risk.
+- Hedging can materially reduce long-run compound returns.
+- Tax and reporting can be complicated.
+- Investors frequently buy protection after volatility has already risen.
+
+A collar can reduce premium cost but caps upside. A permanent option hedge should be used only after modelling its recurring cost and comparing it with the simpler alternative of holding fewer equities.
+
+### Tactical de-risking
+
+Selling because recession risk, valuation, inflation, or political uncertainty has increased requires two correct decisions: when to exit and when to return. It also creates taxes and behavioral risk.
+
+Tactical changes should be limited to:
+
+- A maximum 5-percentage-point shift at an annual policy review.
+- A documented change in long-run expected returns, not headlines.
+- Changes in personal risk capacity or cash needs.
+- Correcting a duration or currency mismatch.
+- Rebalancing when policy bands are breached.
+
+Vanguard explicitly warns that valuations are poor predictors over short and intermediate horizons and should not be the primary reason for allocation changes.[3]
+
+---
+
+## 12. More conservative and more aggressive alternatives
+
+| Portfolio | Equities | Bonds | Cash | Diversifiers | Expected nominal return | Volatility | Severe plausible drawdown |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **Conservative** | 45% | 40% | 10% | 5% | 4.8%–6.3% | 7%–10% | −15% to −25% |
+| **Recommended moderate** | 65% | 25% | 5% | 5% | 5.8%–7.2% | 10%–13% | −25% to −35% |
+| **Aggressive** | 85% | 10% | 3% | 2% | 6.2%–8.2% | 14%–18% | −40% to −55% |
+
+### Conservative alternative
+
+Use this if:
+
+- A 15%–20% decline would cause plan abandonment.
+- Significant withdrawals are likely within five years.
+- Income is unstable.
+- The mortgage is variable or burdensome.
+- Emergency savings are incomplete.
+
+This option makes a 10% annualized result particularly unlikely, but it better protects financial and behavioral capacity.
+
+### Aggressive alternative
+
+Use this only if:
+
+- The horizon is at least 15 years.
+- Near-term liquidity needs are fully segregated.
+- A 50% temporary decline would not trigger selling.
+- Income and insurance are robust.
+- The investor accepts that even 85% equity does not make 10% the base case.
+
+Increasing equity from 65% to 85% raises drawdown risk more reliably than it raises expected return to 10%.
+
+---
+
+## 13. Adaptation to liquidity needs and loss tolerance
+
+### By maximum tolerable drawdown
+
+| Maximum loss the investor believes can be tolerated | Indicative equity range | Defensive allocation | Implication for 10% |
+|---|---:|---:|---|
+| About 10% | 25%–35% | 65%–75% | Not realistic as a planning return |
+| About 20% | 45%–55% | 45%–55% | Very unlikely |
+| About 30% | 60%–70% | 30%–40% | Possible in favorable periods, not base case |
+| 40% or more | 75%–85% | 15%–25% | More plausible, but still not assured |
+
+These are not guaranteed drawdown caps. Even conservative portfolios can exceed estimated losses in exceptional conditions.
+
+### By investment horizon
+
+- **Under three years:** money required should generally remain in cash, insured deposits, Treasury bills, or duration-matched high-quality bonds. Do not target 10%.
+- **Three to five years:** limit equities for required spending; use a liability-matching safe bucket.
+- **Five to ten years:** a 45%–60% equity allocation may be reasonable, depending on withdrawal flexibility.
+- **Ten to fifteen years:** the recommended 65% equity allocation becomes more defensible.
+- **Fifteen years or more:** 65%–75% equity may be suitable if the drawdown tolerance is genuine.
+
+### By expected withdrawals
+
+- If less than 5% of the portfolio may be needed over 12 months, the 5% cash target may suffice if the separate emergency reserve is complete.
+- If 5%–15% may be needed, hold that expected amount in cash and short-duration government bonds and reduce equity.
+- If more than 15% may be needed, treat the withdrawal pool as a separate short-horizon portfolio.
+- Any amount needed on a fixed date within three years should not depend on equity-market performance.
+
+---
+
+## 14. Monthly and quarterly tracking dashboard
+
+### Monthly metrics
+
+| Metric | Purpose |
+|---|---|
+| Ending value and net contributions | Separates saving from investment performance |
+| Time-weighted return | Measures portfolio-management performance independent of cash-flow timing |
+| Money-weighted return/XIRR | Measures the investor’s actual experience, including timing of deposits and withdrawals |
+| Current weights and drift | Identifies policy-band breaches |
+| Cash and near-cash balance | Confirms liquidity reserve |
+| Liquidity-coverage ratio | Cash plus assets realizable within approximately five business days divided by known 12-month obligations |
+| Dividend and interest income | Tracks income without treating it as additional return |
+| Fund expense ratio and platform fees | Monitors cost |
+| Realized gains and losses | Supports tax planning |
+| Largest company, fund, sector, and country exposures | Detects hidden concentration |
+| Transactions and turnover | Discourages unnecessary trading |
+
+### Quarterly risk metrics
+
+| Metric | Definition and use |
+|---|---|
+| Annualized volatility | Standard deviation of monthly returns, normally using a trailing 36-month window once enough history exists |
+| Maximum drawdown | Largest peak-to-trough decline since inception and over rolling periods |
+| Sharpe ratio | Excess return above an appropriate short-term risk-free rate divided by volatility |
+| Sortino ratio | Return above a chosen minimum acceptable return divided by downside deviation |
+| Benchmark-relative return | Portfolio return minus the policy benchmark |
+| Tracking error | Volatility of benchmark-relative returns |
+| Upside/downside capture | Behavior in positive and negative benchmark months |
+| Equity-bond correlation | Detects changing diversification behavior |
+| Duration and credit quality | Monitors bond sensitivity and default exposure |
+| Factor exposure | Identifies unintended value, growth, size, quality, or momentum bets |
+| Tax-cost ratio | Estimated loss of return to taxable distributions and realized gains |
+| Weighted expense ratio | Sum of each holding’s weight multiplied by its expense ratio |
+
+Sharpe and Sortino ratios should not be overinterpreted over short samples. A high ratio over one year may be luck, and maximum drawdown always understates risks not yet observed.
+
+### Benchmarks
+
+Use both:
+
+1. A simple reference benchmark, such as a global 60/40 stock-bond portfolio.
+2. A custom policy benchmark matching the strategic weights:
+   - 65% broad/factor equity indexes
+   - 10% government bond index
+   - 7% aggregate investment-grade bond index
+   - 8% short/intermediate inflation-linked bond index
+   - 5% three-month Treasury bill or local cash index
+   - 3% gold benchmark
+   - 2% managed-futures benchmark
+
+Performance should be judged over complete market cycles, not monthly rankings.
+
+---
+
+## 15. Objective triggers for changing the plan
+
+### Personal triggers
+
+Change the allocation when:
+
+- A major withdrawal becomes likely within three years.
+- Employment or income stability deteriorates.
+- Mortgage payments reset materially higher.
+- Insurance coverage becomes inadequate.
+- Dependants or care obligations increase.
+- Tax residency, account type, or reporting currency changes.
+- Actual drawdown behavior shows that stated risk tolerance was too optimistic.
+
+These are stronger reasons to change allocation than market forecasts.
+
+### Market and economic review triggers
+
+These should trigger analysis, not automatic buying or selling:
+
+- Long-term institutional expected-return assumptions move by more than roughly 1.5 percentage points across two consecutive updates.
+- Inflation remains materially above the central bank target for multiple quarters and market inflation expectations also rise.
+- Portfolio bond duration differs materially from the horizon of known liabilities.
+- A major fund changes its index, fee, management, securities-lending policy, tax structure, or domicile.
+- Bid-ask spreads or premiums/discounts become persistently abnormal.
+- A factor strategy no longer follows its stated methodology.
+- An active fund changes manager or exceeds its capacity.
+- Look-through concentration breaches a portfolio limit.
+
+Even then, changes should normally remain within policy ranges. An official recession declaration is not by itself a sell signal.
+
+---
+
+## 16. Tax, account, currency, and implementation considerations
+
+### Asset location
+
+Subject to local law:
+
+- Broad, low-turnover equity ETFs often fit taxable accounts.
+- Taxable bonds, REITs, and high-turnover strategies often fit tax-deferred accounts.
+- TIPS may fit tax-deferred accounts where inflation adjustments create current taxable income.
+- Foreign equities may fit taxable accounts if foreign-tax credits are available.
+- Highest expected-return assets may be appropriate in tax-free growth accounts, balanced against risk and withdrawal rules.
+
+### Tax-loss harvesting
+
+Tax-loss harvesting can improve after-tax results, but:
+
+- Wash-sale or equivalent rules may disallow losses.
+- “Substantially identical” is not always clearly defined.
+- Replacement funds should maintain market exposure without creating an impermissible match.
+- State, national, and cross-border rules differ.
+- Harvesting should not create large future gains without considering the investor’s expected future tax rate.
+
+### ETF taxation and trading
+
+ETFs can be tax-efficient but are not tax-free. Investors may owe tax on distributions, gains, foreign withholding, or special trust income.
+
+The SEC notes that ETFs trade intraday at market prices that can differ from net asset value.[5] To reduce trading friction:
+
+- Use limit orders.
+- Avoid the first and last minutes of the trading day.
+- Avoid trading when the fund’s underlying foreign market is closed if spreads are wide.
+- Check bid-ask spread, premium/discount, average volume, and underlying-asset liquidity.
+- Do not assume “commission-free” means cost-free.
+
+Mutual funds transact once daily at net asset value, which removes intraday spread decisions but may create capital-gain distributions and minimum-investment constraints.
+
+### Currency
+
+The bond and cash allocation should usually be in, or hedged to, the currency of future liabilities. A household with a mortgage denominated in euros, pounds, dollars, or another currency should not rely on unhedged foreign bonds to fund that liability.
+
+Equities can remain globally diversified and partly unhedged because currency exposure itself diversifies over long horizons, but the appropriate level depends on home currency and spending plans.
+
+### Cross-border fund domicile
+
+A non-U.S. investor should not automatically buy U.S.-domiciled ETFs. Consider:
+
+- Dividend withholding.
+- Treaty rates.
+- U.S.-situs estate-tax exposure.
+- Local reporting requirements.
+- Accumulating versus distributing share classes.
+- UCITS or locally domiciled equivalents.
+- Currency-hedged share classes.
+- Investor-protection and custody regimes.
+
+These questions can materially outweigh a few basis points of expense-ratio difference.
+
+---
+
+## 17. Product-selection checklist
+
+Before buying any ETF or mutual fund, verify from the current issuer fact sheet and prospectus:
+
+1. Investment objective and tracked index.
+2. Expense ratio and any fee waivers.
+3. Holdings count and top-ten concentration.
+4. Sector, country, currency, and market-cap exposure.
+5. Assets under management and fund age.
+6. Average spread, trading volume, and premium/discount history.
+7. Tracking difference, not just stated expense ratio.
+8. Portfolio turnover.
+9. Securities-lending revenue and counterparty arrangements.
+10. Distribution yield and tax character.
+11. Duration, yield to maturity, and credit quality for bonds.
+12. Derivatives, collateral, leverage, and counterparty risks.
+13. Fund domicile and withholding treatment.
+14. Whether the product issues ordinary tax forms or more complex reporting.
+15. Closure, liquidation, and index-change risk.
+
+A reasonable portfolio-level fund-expense objective is **below 0.20% annually**, excluding advice, tax, and trading costs. Higher-cost holdings must have a clearly defined diversification role.
+
+---
+
+## 18. Principal uncertainties and limitations
+
+- Capital-market forecasts are estimates, not facts. Vanguard’s model uses 10,000 simulations and warns that it may underestimate extreme outcomes absent from its historical sample.[3]
+- J.P. Morgan, Vanguard, BlackRock, and fund issuers sell investment products or services, creating potential commercial conflicts even when their research is useful.[2][3][4]
+- Index returns do not include all fees, taxes, spreads, or implementation effects.
+- Historical volatility and drawdown ranges depend on period, currency, index, and rebalancing frequency.
+- Correlations can change precisely when diversification is most needed.
+- The retrieved product-source extracts did not provide a complete, verified table of September 13, 2026 fees, yields, holdings, spreads, and performance. Current prospectuses must therefore be checked before trading.
+- Tax guidance here is general and primarily illustrates U.S.-style issues; local professional advice is necessary.
+- The portfolio cannot be finalized without the investor’s actual withdrawal horizon, income stability, mortgage terms, tax residency, account structure, currency, and maximum acceptable loss.
+
+## Bottom line
+
+The recommended 65% equity, 25% high-quality bond, 5% cash, and 5% diversifier portfolio is a reasonable compromise between growth and downside control. It is designed to support disciplined long-term compounding, not to maximize short-term upside.
+
+Its expected return is materially below 10% under current institutional base-case assumptions. The 10% objective should remain an aspirational upside outcome. Planning should use approximately 6%–7% nominal before personal taxes, accompanied by an acceptance that a temporary 25%–35% decline is possible.
+
+The most important controls are not predictive trading tools. They are:
+
+- A separately funded household reserve.
+- High-quality defensive assets.
+- Broad diversification.
+- Strict limits on individual stocks, sectors, and illiquid assets.
+- Six-month rules-based deployment.
+- Tax-aware threshold rebalancing.
+- Low fees and careful trade execution.
+- An allocation matched to actual cash needs and genuine loss tolerance.
+- Refusal to use leverage or speculative market timing to force a 10% result.
+
+### Sources
+
+[1] [MSCI — MSCI ACWI Index](https://www.msci.com/indexes/index/892400/msci-acwi-index)
+
+[2] [J.P. Morgan Asset Management — 2026 Long-Term Capital Market Assumptions release](https://am.jpmorgan.com/us/en/asset-management/adv/about-us/media/press-releases/jp-morgan-releases-2026-long-term-capital-market-assumptions/)
+
+[3] [Vanguard — Vanguard Capital Markets Model Forecasts, June 30, 2026 model run](https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/vemo-return-forecasts.html)
+
+[4] [BlackRock — Capital Market Assumptions](https://www.blackrock.com/institutions/en-us/insights/thought-leadership/capital-market-assumptions)
+
+[5] [Investor.gov — Updated Investor Bulletin: Exchange-Traded Funds](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24)
+
+[6] [Vanguard — VTI Total U.S. Stock Market ETF profile](https://investor.vanguard.com/investment-products/etfs/profile/vti)
+
+[7] [Vanguard — VXUS Total International Stock ETF profile](https://advisors.vanguard.com/investments/products/vxus/vanguard-total-international-stock-etf)
+
+[8] [Avantis Investors — AVUV U.S. Small Cap Value ETF](https://www.avantisinvestors.com/avantis-investments/avantis-us-small-cap-value-etf/)
+
+[9] [Vanguard — VTIP Short-Term Inflation-Protected Securities ETF](https://advisors.vanguard.com/investments/products/vtip/vanguard-short-term-inflation-protected-securities-etf)
+
+[10] [Vanguard — VMFXX Federal Money Market Fund](https://investor.vanguard.com/investment-products/mutual-funds/profile/vmfxx)
+
+[11] [KraneShares — KMLM Managed Futures ETF](https://kraneshares.com/etf/kmlm/)
+
+[12] [U.S. Securities and Exchange Commission — Mutual Funds Search](https://www.sec.gov/search-filings/mutual-funds-search)
+
+[13] [S&P Dow Jones Indices — SPIVA Europe Mid-Year 2025](https://www.spglobal.com/spdji/en/documents/spiva/spiva-europe-mid-year-2025.pdf)
+
+[14] [Vanguard — SGOV iShares 0–3 Month Treasury Bond ETF profile](https://investor.vanguard.com/investment-products/etfs/profile/sgov)
