@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.84 Strict cold-start and micro-rubric IEO-v3 protocol - 2026-09-13
+
+- 冻结 Task21/User12 的 corrected task-only cold-start：两臂只读取新版 workbook `15 Tasks!K10`，不读取 enriched instruction、persona、preference ledger 或 rubric。
+- 冻结 IEO-v3 task-slot-first、六类变量分型、三问中至少两问保护 preference value、eligibility/current-state 至多一问的 clarification policy。
+- 主机制量改为预先审计的 `Recall@AskableHigh`（risk / holding style / sector tilt）；原五项 high 与八项 high+average 保留并强制同报。
+- 主结果冻结为 67-leaf `P_strict`，另报 `P_HI` 与 unchanged 33-leaf `P_official`；每条 strict leaf 强制证据 span 或 `ABSENT`。
+- 固定 `gpt-5.6-sol/high`、同一 ODR 后续 graph/tools/budget，runner 内加入每臂 30 分钟 wall timeout；固定 `gpt-6-astra/high` 单次盲评。
+- 明确该 Task21 已见过旧版问题输出，因此本轮只算 architecture/measurement replication，不算 fresh confirmatory holdout。
+
 ## v0.83 IEO-v2 negative clarification result - 2026-09-12
 
 - 记录完整 stock ODR 在 research compression/supervision 超过冻结 30 分钟硬上限且无 final report；排除该 run，不启动 IEO-v2 full run，因此不报告 P-score。

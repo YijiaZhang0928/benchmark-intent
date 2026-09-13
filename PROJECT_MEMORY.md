@@ -2,11 +2,19 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-12
-当前版本：v0.83（IEO-v2 holdout negative clarification result）
+最后更新：2026-09-13
+当前版本：v0.84（strict cold-start + micro-rubric IEO-v3 replication protocol）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：strict cold-start + micro-rubric IEO-v3 复现实验冻结
+
+用户批准用 `0913_pdr_bench_15_cold_start_and_micro_rubrics_v0_82.xlsx` 重跑 Task21/User12 的 stock Open Deep Research vs 改造 clarification router。v0.84 已在任何新问题、报告和评分输出前冻结：两边逐字使用 `15 Tasks!K10` 的 task-only input；原 enriched instruction、persona、偏好单元、paraphrase 和 rubrics 全部对生成隐藏。Workbook hash、input hash、67 条 `P_strict`、33 条 released `P_official` 与八个 preference units 已机械快照到 `pilot/odr_ieo_v3_micro_ab_v0_84/task/`。
+
+IEO-v3 新增 task-slot-first 与六类变量分型，三问预算至少保护两个 distinct `preference_value` 槽，eligibility/current-state 默认至多一槽。主机制量预注册为 clean `Recall@AskableHigh`：T9-P1 risk、T9-P2 holding style、T9-P3 sector tilt；同时强制报告原五项 high 与 high+average 八项，不能为了漂亮结果换分母。主最终量为 67-leaf `P_strict(I3)-P_strict(S)`；另报 high-only `P_HI` 与未改 33-leaf `P_official`，三者不得混称。
+
+两臂固定同一 `gpt-5.6-sol/high`、ODR 后续 graph、search/fetch 与压缩/报告模型；研究预算缩为两并发单元、两轮 supervisor、每 researcher 六次工具，并在 runner 内执行 30 分钟硬停止，避免重现 v0.83 的 2.5 小时挂起。Judge 冻结为 `gpt-6-astra/high` 单 pass、opaque report labels、每个 micro leaf 必须最短 supporting span 或 `ABSENT`。该题此前的 clarification 输出已被观察，因此本轮是测量与架构 replication，不是独立 holdout，也不能单独支持显著性或总体排序。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-12：IEO-v2 holdout negative clarification result
 

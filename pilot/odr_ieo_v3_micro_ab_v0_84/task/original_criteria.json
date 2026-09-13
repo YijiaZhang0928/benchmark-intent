@@ -1,0 +1,307 @@
+{
+  "id": 103,
+  "domain": "Finance",
+  "language": "en",
+  "taskid": 21,
+  "userid": "User12",
+  "task": "I plan to make personal investments over the next six months with the goal of achieving an annualized return of at least 10%. I have no specific preference for the investment field or product type, which could include stocks, mutual funds, or other financial instruments. At the same time, I want to understand asset allocation strategies to better diversify risk and implement effective risk management during the investment process. Please provide me with targeted advice, including a personalized investment portfolio recommendation, as well as methods for tracking and evaluating my investment performance to ensure it aligns with my actual risk tolerance and market changes. I would like your professional guidance to help me plan my investments and achieve my financial objectives.",
+  "personalization_weights": {
+    "content_alignment": 0.16,
+    "goal_alignment": 0.33,
+    "presentation_fit": 0.09,
+    "actionability_practicality": 0.42
+  },
+  "quality_weights": {
+    "logical_coherence": 0.34,
+    "depth_insight": 0.43,
+    "clarity_readability": 0.23
+  },
+  "personalization_criterions": {
+    "goal_alignment": [
+      {
+        "criterion": "Goal–horizon–risk coherence with probabilistic framing",
+        "explanation": "Assess whether the plan explicitly converts the 10% annualized goal to a six-month target (~4.9%), quantifies expected return/volatility, sets a risk budget (e.g., acceptable max drawdown), and provides probability ranges under a moderate risk profile. This matches his analytical style and prevents overreach within a short horizon.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Human-capital and tech-concentration-aware asset allocation",
+        "explanation": "Check if the allocation reduces correlation to his tech-heavy career and angel bets by using diversifying assets (quality/value/low-beta factors, bonds, commodities, global exposures), explicitly acknowledging his embedded tech beta. This addresses a key implicit risk unique to him.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Liquidity, runway, and liability-aware design",
+        "explanation": "Evaluate whether the plan carves out emergency and operating buffers (family + startup runway, mortgage payments), avoids illiquid lockups, and plans for travel periods. This aligns with his family obligations, mortgage, and variable cash flows, lowering financial and psychological stress.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Quantitative risk management with explicit safeguards",
+        "explanation": "Assess inclusion of numeric guardrails (max drawdown limits, stop-loss or hedging rules, volatility-targeted sizing), stress tests (tech selloff, rate/rmb shocks), and downside metrics (VaR/expected shortfall). This fits his data-driven decision style and need for disciplined risk control.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Implementable instrument mapping for a Beijing-based investor",
+        "explanation": "Check whether recommendations map to accessible, low-cost vehicles (e.g., A-share ETFs, domestic bond funds, QDII global funds/ETFs, money-market funds), consider currency risk, and outline practical execution. This ensures personalization to his investing context and feasibility.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Adaptive rebalancing and regime-aware adjustments",
+        "explanation": "Evaluate whether the plan defines clear, testable rules tied to market regimes (e.g., trend filters, volatility bands, credit-spread thresholds) with a low-maintenance cadence (e.g., monthly) that suits his schedule, enabling alignment with changing markets and his risk tolerance.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "KPI-driven performance tracking and automation in his workflow",
+        "explanation": "Assess whether it specifies benchmarks, TWR/IRR, Sharpe, max drawdown, hit rates, and provides an automated tracking setup (Notion dashboards, Sheets formulas/APIs, Slack alerts, decision logs). This matches his toolset (GitHub/Slack/Notion), analytical habits, and time efficiency.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Concise, data-first communication with options and trade-offs",
+        "explanation": "Check that the report uses structured frameworks (e.g., core–satellite), tables/charts, and presents alternative portfolios with trade-offs so he can decide independently while leveraging team input. This aligns with his cognitive style and limited attention.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Costs, taxes, and compliance/operational friction awareness",
+        "explanation": "Evaluate whether the plan addresses expense ratios, trading costs, stamp duty, capital gains/tax treatment, and QDII/process constraints, favoring low-turnover, low-friction implementation that reduces maintenance burden and aligns with his family/work balance.",
+        "weight": 0.04
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "Entrepreneur Human-Capital and Tech-Concentration Offset in Portfolio Content",
+        "explanation": "Assess whether the report explicitly recognizes his significant exposure to AI/tech via startup equity and angel investments, and thus proposes allocations that deliberately diversify away from domestic tech beta and illiquidity (e.g., caps on tech sector, offsets via bonds/commodities/defensives), with reasoning tied to his personal balance sheet.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "China-Specific Investable Universe, Access Pathways, and Cost Sensitivity",
+        "explanation": "Evaluate whether instruments and examples are tailored to a Beijing-based investor: A-share/STAR/CSI ETFs, bond funds, money market funds, C-REITs, gold/commodity ETFs, Stock Connect usage, and QDII public funds for offshore exposure, including RMB/FX considerations and local fees/expense ratios to match his cost-effectiveness preference.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Advanced Quantitative Depth Matching High Financial Literacy",
+        "explanation": "Check for use of risk-adjusted metrics (Sharpe/Sortino), rolling drawdowns, factor exposures (e.g., China/tech factor, value/momentum/quality), scenario/regime analysis, and volatility targeting, avoiding beginner-level explanations and generic tips that would under-serve his analytical capability.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Data-Driven Monitoring and Workflow Integration",
+        "explanation": "Determine whether performance tracking and evaluation methods align with his GitHub/Slack/Notion and Python-centric habits—e.g., API-fed dashboards, automated alerts, scheduled data pulls, and reproducible metrics—so the content selection fits his established analytical workflow.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Six-Month Horizon–Appropriate Instrument and Rebalance Design",
+        "explanation": "Assess whether the content tailors the asset mix and rebalancing cadence to a six-month window—favoring liquid vehicles, controlled turnover, appropriate bond duration, and realistic short-horizon tilts—rather than long-horizon or illiquid strategies misaligned with his timeframe.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Risk Management Framing Consistent with Moderate Risk Appetite",
+        "explanation": "Evaluate whether the content selects risk controls consistent with moderate tolerance—e.g., explicit drawdown thresholds, position sizing limits, and hedging choices that avoid aggressive leverage or speculative derivatives—so the risk content fits his stated preferences.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Diversification Across Low-Correlation Sleeves with Quantified Rationale",
+        "explanation": "Check that diversification is not generic: the report should propose sleeves (e.g., gov/credit bonds, commodities/gold, REITs, cash-like funds) and show how correlations/volatilities contribute to total risk reduction, aligning with his desire to understand asset allocation strategies.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Liquidity and Cash-Reserve Considerations for Family and Business Needs",
+        "explanation": "Assess whether the content includes an explicit liquidity sleeve/emergency fund and prioritizes easy-to-liquidate holdings that reflect his mortgage, dependents, and entrepreneurial cashflow uncertainty, matching his life context and preference for manageable monitoring load.",
+        "weight": 0.06
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "Structured executive summary and layered information architecture",
+        "explanation": "Checks for a TL;DR with key targets/assumptions followed by modular sections (allocation, portfolio, risk controls, tracking) and optional appendices, enabling quick skim then deeper dive for a time-constrained technical reader.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Quantitative presentation clarity (KPIs, definitions, and consistency)",
+        "explanation": "Evaluates whether core metrics (e.g., annualized return, volatility, Sharpe, max drawdown, tracking vs benchmark) are foregrounded with concise definitions/units and consistent horizons (6-month vs annualized), suiting a data-driven decision style.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Terminology precision and explanation balance",
+        "explanation": "Assesses whether finance/quant terms are used accurately with brief inline clarifications on first use, avoiding fluff or over-simplification, matching a financially savvy, technical audience.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Visualization suitability and readability for portfolio and risk",
+        "explanation": "Checks for appropriate charts (allocation pie/bar, risk–return scatter, drawdown curve, performance vs benchmark, scenario tables) with clear labels, legends, colorblind-safe palette, and highlighted 10% target, improving rapid insight extraction.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Tool-friendly formatting (Notion/Sheets/Slack-ready)",
+        "explanation": "Evaluates whether tables, checklists, and formula/code blocks are copy-pasteable, with clean headings and numbering, enabling seamless use in the user's common tools without reformatting.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Navigation and cognitive load management",
+        "explanation": "Assesses presence of a table of contents, section numbering, callout boxes for assumptions/alerts, concise paragraphs, and bullet lists that reduce effort and speed reading.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Localization of units and conventions",
+        "explanation": "Checks for RMB currency notation, appropriate date/number formats, and benchmark naming conventions relevant to the user's context, avoiding friction caused by mismatched formats.",
+        "weight": 0.04
+      },
+      {
+        "criterion": "Risk communication formatting and placement",
+        "explanation": "Evaluates whether risk warnings, scenario labels (bull/base/bear), and key assumptions are visually separated and consistently formatted, keeping critical caveats visible without disrupting flow.",
+        "weight": 0.04
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "Concrete, executable portfolio specification accessible in Mainland China",
+        "explanation": "The report should provide precise target weights, instrument names/tickers (A‑share/ETF/mutual fund/QDII), a manageable number of positions, and purchase channels available to a Beijing-based retail investor. Without instrument-level specificity and local accessibility, the user cannot act.",
+        "weight": 0.22
+      },
+      {
+        "criterion": "Quantified risk controls and position sizing rules",
+        "explanation": "Provide numerical limits and rules (e.g., max position %, sector caps, volatility/VAR-based sizing, stop-loss or max drawdown thresholds, and cash buffer ranges). These translate risk management intent into enforceable actions aligned with the user’s moderate risk appetite.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Performance tracking and benchmarking framework with calculable metrics",
+        "explanation": "Define benchmarks (e.g., blended indices), KPIs (time-weighted return, Sharpe, max drawdown, hit rate), calculation methods, and review frequency, plus practical tooling (e.g., broker exports to Sheets/Notion). Measurable tracking is essential to judge progress toward the 10% annualized target.",
+        "weight": 0.15
+      },
+      {
+        "criterion": "Rule-based rebalancing and dynamic adjustment triggers",
+        "explanation": "Specify when and how to rebalance (e.g., drift >5% or quarterly), and adaptation rules tied to volatility regimes or drawdown thresholds. Clear triggers reduce ad-hoc decisions and keep the portfolio aligned with both market changes and evolving risk tolerance.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Liquidity and cash management fit for an entrepreneur",
+        "explanation": "Include an emergency fund, target cash slice, and instrument liquidity (T+ settlement, redemption windows, avoiding lockups). This ensures the user can meet business/family cash needs and avoid forced sales, crucial over a six-month deployment.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Cost and tax practicality with net-of-fee estimates",
+        "explanation": "Account for expense ratios, trading fees, stamp duties/taxes where applicable, and slippage; provide tactics to minimize costs (e.g., ETFs over higher-fee funds). The 10% target must be assessed on a net basis to be realistically actionable.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Operational execution plan and timeline",
+        "explanation": "Offer a step-by-step checklist (account/broker, order types, staging buys, schedule), time commitment estimates, and automation options the user can follow given a busy schedule. Execution clarity determines whether the plan can be implemented promptly and correctly.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Target feasibility and scenario/contingency planning",
+        "explanation": "Provide expected return/volatility ranges, base/bear/bull scenarios over six months, and pre-defined actions if performance deviates (e.g., cut risk if drawdown >X%). This grounds the 10% annualized goal in realistic outcomes and maps deviations to concrete responses.",
+        "weight": 0.05
+      }
+    ]
+  },
+  "quality_criterions": {
+    "depth_insight": [
+      {
+        "criterion": "Feasibility and Risk–Return Realism of the 10% Annualized Target",
+        "explanation": "Assesses whether the report translates the 10% annualized target into a six-month objective (~4.9%), estimates expected return/volatility of proposed portfolios, quantifies probability of success, and discusses required Sharpe/drawdown tradeoffs and path risk over a short horizon.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Personalization via Risk Profile to Policy Portfolio Mapping",
+        "explanation": "Evaluates depth in diagnosing risk willingness, capacity, and need (e.g., drawdown limits, liquidity needs) and converting them into a policy allocation and explicit risk budget (volatility or max drawdown) rather than generic risk labels.",
+        "weight": 0.11
+      },
+      {
+        "criterion": "Portfolio Construction Depth (Diversification Mechanics and Factor Exposures)",
+        "explanation": "Judges whether asset class and factor choices (equities, bonds, cash, alternatives; value/quality/momentum; duration) are justified with correlation/variance reasoning, contribution-to-risk analysis, and avoidance of hidden concentration.",
+        "weight": 0.17
+      },
+      {
+        "criterion": "Risk Management Framework and Risk Budgeting",
+        "explanation": "Assesses sophistication of position sizing (e.g., volatility targeting, risk parity, capped position risk), drawdown controls, hedging (e.g., collars), rebalancing bands, and their tradeoffs and limitations in a six-month context.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Scenario/Regime Planning and Stress Testing",
+        "explanation": "Evaluates whether the report considers plausible market regimes (risk-on/off, rate shocks, recession), performs historical/stylized stress tests, and specifies contingent actions or tilts tied to observable indicators.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Implementation and Product Selection Insight",
+        "explanation": "Looks at the practicality of instrument choices (ETFs, mutual funds, T-bills, options) including costs, liquidity, tracking error, tax considerations, and currency hedging, adding implementable value beyond abstract allocation.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Performance Tracking, Benchmarks, and Diagnostic Attribution",
+        "explanation": "Rates the rigor of monitoring: appropriate benchmarks/policy index, choice of TWR vs MWR, risk-adjusted metrics (Sharpe/Sortino, max drawdown), tracking error, and attribution (allocation/selection/timing) with decision rules for adjustments.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Originality and Actionable Edge Beyond Generic Advice",
+        "explanation": "Rewards non-obvious, implementable ideas (e.g., barbell with T-bills plus factor tilts, option collars targeting downside, probability-based target setting) that materially improve the plan’s efficacy or risk control.",
+        "weight": 0.06
+      }
+    ],
+    "logical_coherence": [
+      {
+        "criterion": "Goal–Constraint–Risk Profile Alignment Framework",
+        "explanation": "Logical coherence begins with clearly stated premises (10% annualized target, six-month horizon, risk tolerance, liquidity/constraints) and visible alignment: later recommendations must explicitly reference and honor these inputs.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Explicit Assumptions and Consistent Use",
+        "explanation": "Stating assumptions (expected returns/volatility/correlations, fees, taxes, rebalancing frequency) and applying them consistently prevents hidden leaps and ensures that calculations and conclusions are traceable and internally consistent.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Deductive Mapping from Objectives to Strategic Asset Allocation and Instruments",
+        "explanation": "A stepwise derivation from objectives and risk profile to strategic allocation (e.g., core–satellite) and then to specific vehicles (stocks, funds, bonds, alternatives) shows that the portfolio is reasoned, not asserted.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Feasibility and Risk–Return Consistency of the Target",
+        "explanation": "Converting the 10% annualized goal to a six-month benchmark and testing it against expected returns, drawdowns, and the investor’s risk tolerance ensures that the target and the plan are logically compatible.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Evidence–Claim Traceability",
+        "explanation": "Each key recommendation (allocation weights, instrument choice, risk limits) should cite relevant data or standard models/metrics, with a clear link from evidence to claim, avoiding unsupported assertions.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Section Transitions and Logical Flow",
+        "explanation": "Transitions should connect outputs to inputs across sections (objectives → allocation → instrument selection → risk controls → implementation → monitoring), avoiding logical gaps or abrupt jumps.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Implementation-to-Monitoring Feedback Coherence",
+        "explanation": "Position sizing, entry/exit, rebalancing, and risk limits must lead to monitoring metrics and decision rules that feed back into adjustments as markets or risk tolerance change, ensuring a closed logical loop from plan to adaptation.",
+        "weight": 0.1
+      }
+    ],
+    "clarity_readability": [
+      {
+        "criterion": "Task-tailored Structure and Navigability of Formatting/Layout",
+        "explanation": "Checks whether the report has a clean, scannable layout with a table of contents, clear heading hierarchy, and consistent styles organized around the investor workflow (goals, risk profiling, asset allocation, product selection, implementation, monitoring). White space, bullet points, and section summaries should make it easy to locate the portfolio recommendation and the tracking plan for the six-month horizon.",
+        "weight": 0.22
+      },
+      {
+        "criterion": "Clarity, Precision, and Readability of Language",
+        "explanation": "Assesses whether sentences are concise and unambiguous, terms are used consistently (e.g., annualized vs six-month return), and the tone is professional yet accessible. Focuses on grammar, active voice, and avoiding vague qualifiers so readers can quickly understand instructions and caveats without misreading intent.",
+        "weight": 0.22
+      },
+      {
+        "criterion": "Definition and User-friendly Explanation of Technical Terms and Metrics",
+        "explanation": "Evaluates whether financial jargon and metrics are clearly introduced and briefly explained at first use (e.g., CAGR/annualized return, volatility, max drawdown, Sharpe, beta, tracking error, rebalancing bands, stop-loss), with intuitive descriptions or micro-examples. A mini-glossary or callouts should lower the barrier for non-expert readers.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Effectiveness and Integrity of Data, Charts, and Visualizations",
+        "explanation": "Checks that charts/tables are well-chosen and legible (allocation pie/bar, risk–return scatter, drawdown curve, performance vs benchmark), with clear titles, axes, units, legends, and color-blind-friendly palettes. Annotations should highlight the 10% annualized target and monitoring thresholds, and captions should state the key takeaway without requiring guesswork.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Numerical Presentation, Units, and Assumptions Transparency",
+        "explanation": "Assesses whether numbers use consistent units/time bases (six-month vs annualized clearly reconciled), and whether assumptions (fees, taxes, compounding method, benchmark choice, data date) are plainly stated via footnotes or callouts. Tables should have clear column labels, sensible rounding, and avoid mixing gross/net returns without explicit labels.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Highlighting of Key Takeaways and Actionable Steps",
+        "explanation": "Evaluates whether the report surfaces critical points via an executive summary, callout boxes, and checklists (e.g., allocation snapshot, rebalancing triggers, monitoring cadence, KPI dashboard). A brief end-summary should restate what to do next so the reader can implement and track without wading through dense text.",
+        "weight": 0.1
+      }
+    ]
+  }
+}

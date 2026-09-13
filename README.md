@@ -60,6 +60,8 @@ v0.82 修正 cold-start 输入泄露：原 enriched instruction 仍含教育、�
 
 v0.83 记录 Task21/User12 holdout 的负面 what-to-ask 结果。完整 stock ODR 在 research compression/supervision 超过 30 分钟硬上限且无 final report，故无 P-score；已冻结节点的 exploratory clarification probe 显示 machine-resolved high recall 两者同为 0.40，high+average 为 stock 0.50、IEO-v2 0.25，语义 asked high 为 0.60 vs 0.40。IEO-v2 从 8 个顶层表单行降到 3 个、每行 frozen-unit yield 小幅提高，但 tax residence 这一必要 personal constraint 挤掉了 sector preference，导致 coverage 更低；average-impact 没有“救”结果。新 [`IEO_V3_SPEC.md`](pilot/odr_ieo_v2_ab_v0_81/IEO_V3_SPEC.md) 将 preference、personal constraint/current state、research-owned、agent-recommended 与 normative floor 分型，并增加 instruction-named preference coverage 保护。
 
+v0.84 在用户批准后冻结同一 Task21/User12 的测量复现：两臂改用新版 workbook 的严格 task-only cold start 与 67-leaf micro-rubrics，stock ODR 对比 task-slot-first IEO-v3。主机制量为预审计的 risk / holding style / sector tilt `Recall@AskableHigh`，主最终量为 `P_strict(I3)-P_strict(S)`，另报 `P_HI` 与未改 33-leaf `P_official`。两边保持同 backbone、同研究图与工具预算，并在 runner 内施加 30 分钟硬停止；协议和冻结资产见 [`pilot/odr_ieo_v3_micro_ab_v0_84/`](pilot/odr_ieo_v3_micro_ab_v0_84/)。由于该任务旧版 clarification 已见，本轮不是 fresh holdout。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -75,6 +77,7 @@ v0.83 记录 Task21/User12 holdout 的负面 what-to-ask 结果。完整 stock O
 - [`pilot/clarification_harness_3task_v0_76/`](pilot/clarification_harness_3task_v0_76/)：前三题同骨干 ask/no-ask、T3 full-persona/no-ask、ODR clarification probe 与 21 次盲评结果。
 - [`pilot/odr_ieo_ab_v0_76/`](pilot/odr_ieo_ab_v0_76/)：stock ODR vs IEO ODR 的运行前协议、完整报告/trace、question/preference chain、37-criterion 分解与一次同骨干盲评。
 - [`pilot/odr_ieo_v2_ab_v0_81/`](pilot/odr_ieo_v2_ab_v0_81/)：T35 ownership/granularity 诊断、Task21/User12 holdout、IEO-v2 与 high/high+average recall 的运行前冻结。
+- [`pilot/odr_ieo_v3_micro_ab_v0_84/`](pilot/odr_ieo_v3_micro_ab_v0_84/)：Task21/User12 strict cold-start、IEO-v3 policy、67-leaf micro-rubric 与 30 分钟硬停止的运行前复现协议。
 - [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)：H3 四条件设计、官方/严格/反事实评分边界、天花板 gate、跨模型成功规则与 API 清单。
 - [`pilot/h3_rubric_expansion_v0_80/`](pilot/h3_rubric_expansion_v0_80/)：15 题严格 rubric 扩展、PDR exact-pair provenance、评分锚点、运行前冻结边界与首批 API 预算假设。
 - [`pilot/h3_cold_start_micro_rubrics_v0_82/`](pilot/h3_cold_start_micro_rubrics_v0_82/)：15 题真正 task-only cold-start 输入、person-swap audit、七维 67-leaf 微 rubric 和 pre-run discrimination gate。
