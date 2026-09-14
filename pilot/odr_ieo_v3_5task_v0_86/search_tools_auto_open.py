@@ -38,11 +38,15 @@ async def web_search_tool(query: str, max_results: int = 6) -> str:
     raw = await asyncio.to_thread(base.web_search_tool.invoke, {"query": query, "max_results": max_results})
     payload = json.loads(raw)
     opened = []
-    for item in payload.get("results", [])[:2]:
+    for item in payload.get("results", []):
+        if len(opened) >= 2:
+            break
         url = item.get("url")
         if not url:
             continue
         content = await base.web_fetch_tool.ainvoke({"url": url})
+        if str(content).startswith("Error fetching "):
+            continue
         opened.append({"title": item.get("title", ""), "url": url, "content": str(content)[:8000]})
     payload["opened_sources"] = opened
     payload["instruction"] = "Use opened_sources as page-level evidence. Call web_fetch for other returned URLs when needed."

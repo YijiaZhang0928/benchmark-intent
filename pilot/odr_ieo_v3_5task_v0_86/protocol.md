@@ -17,6 +17,15 @@ report must contain at least five successful fetch events and at least 1,000 cha
 selection, prompts, simulator, model, clarification policies, rubrics, metrics and all other budgets
 remain unchanged. Engineering reruns replace, rather than supplement, the excluded attempts.
 
+## v0.88 under-fetch repair
+
+The v0.87 T01/T02 reruns were again excluded before scoring: completed cells obtained only two to
+four successful fetches because the auto-open tool tried exactly the first two URLs and stopped even
+when a URL was a blocked page or unsupported PDF. Incomplete cells were interrupted after this shared
+tool failure was established. v0.88 changes only that loop: for each search, traverse returned URLs
+until two successful readable pages are obtained or the result list is exhausted. Failed fetch attempts
+remain logged. The same five-fetch/1,000-character gate and every other frozen field remain unchanged.
+
 ## Selection
 
 Select the first five workbook-order task/persona rows that have released exact-pair PDR criteria,

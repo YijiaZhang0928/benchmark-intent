@@ -3,10 +3,14 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-13
-当前版本：v0.87（five-task DR auto-open engineering repair）
+当前版本：v0.88（five-task DR under-fetch repair）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：auto-open under-fetch 修复
+
+v0.87 仍未通过门：auto-open 只尝试搜索结果前两个 URL，遇到 403、PDF 或不可读页面后不补位，完成的 T01/T02 stock 仅 4/2 successful fetches；仍在运行的两个 IEO cell 在确认 shared tool failure 后中止。所有输出在评分前排除并保留。v0.88 的唯一改动是逐个尝试当前搜索返回的 URL，直到获得两个成功正文或结果耗尽；失败尝试继续记录。五 fetch、1,000 字符门与所有实验变量保持不变。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：五题 batch 的 DR 资格工程修复
 

@@ -1,5 +1,11 @@
 # benchmark-intent 设计迭代记录
 
+## v0.88 Five-task DR under-fetch repair - 2026-09-13
+
+- v0.87 auto-open 遇到前两个 URL 失败时不补位，完成的 T01/T02 stock 仅 4/2 successful fetches；全部在评分前排除。
+- 搜索后改为遍历结果，直到取得两个成功可读正文或列表耗尽；失败 URL 继续保留在 trace。
+- 五 fetch、1,000 字符门及任务、模型、clarification、simulator、rubric 和 metric 均不变。
+
 ## v0.87 Five-task DR auto-open repair - 2026-09-13
 
 - v0.86 首批 T01/T02 四 cell 均为 0 successful page fetch，且 T02 stock 仅 117 report characters；在评分前全部判为工程不合格并保留，不计 generation。

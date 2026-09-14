@@ -68,6 +68,8 @@ v0.86 将单行复现扩为五行批次，运行前固定为 workbook 顺序的 
 
 v0.87 在任何 batch 评分前识别并修复 ODR research gate：首批 T01/T02 四个 cell 全部只有 search、没有 page fetch，T02 stock 还只有 117 字符，故原样保留为 engineering failures、不评分。重跑工具对两臂统一采用 search 后自动打开前两个有效来源，并冻结每份至少 5 successful fetches、1,000 字符的有效门；其余实验设计不变。
 
+v0.88 修复 auto-open 的 under-fetch：v0.87 只尝试前两个 URL，若遇到 403/PDF 就停止，完成 cell 仍只有 2–4 个成功正文。新工具遍历当前搜索结果直到得到两个成功可读页面或列表耗尽；所有 v0.87 输出在评分前排除，五 fetch 门和其余设计不变。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
