@@ -26,6 +26,14 @@ tool failure was established. v0.88 changes only that loop: for each search, tra
 until two successful readable pages are obtained or the result list is exhausted. Failed fetch attempts
 remain logged. The same five-fetch/1,000-character gate and every other frozen field remain unchanged.
 
+## Pre-score evaluator-wrapper repair
+
+The first two blind evaluator launches terminated before constructing a judge or producing any score:
+Pydantic could not resolve the imported `CriterionScore` forward reference under the batch wrapper's
+module name. The wrapper now explicitly rebuilds the unchanged `BatchScores` schema with that existing
+type. Reports, blind labels, criteria, scoring prompt, judge model, and aggregation are unchanged; the
+same two labels are rerun from scratch.
+
 ## Selection
 
 Select the first five workbook-order task/persona rows that have released exact-pair PDR criteria,

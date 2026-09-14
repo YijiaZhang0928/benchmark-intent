@@ -22,6 +22,12 @@ def main() -> int:
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
     spec.loader.exec_module(module)
+    # The imported evaluator uses postponed annotations.  When it is loaded
+    # under a wrapper module name, Pydantic cannot discover CriterionScore via
+    # sys.modules, so resolve that forward reference explicitly before scoring.
+    module.BatchScores.model_rebuild(
+        _types_namespace={"CriterionScore": module.CriterionScore}
+    )
     module.ROOT = known.case_root.resolve()
     sys.path.insert(0, str(PROJECT / "pilot/odr_ieo_ab_v0_76"))
     sys.argv = [sys.argv[0], *remaining]
