@@ -3,10 +3,16 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-13
-当前版本：v0.85（strict cold-start + micro-rubric IEO-v3 replication result）
+当前版本：v0.86（five-task strict IEO-v3 batch protocol）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：五题 strict-cold-start IEO-v3 batch 冻结
+
+为回答“单行结果是否能扩展、能否稳定拉开差异”，v0.86 在任何 batch 输出前冻结五行：按 workbook 顺序取 released exact-pair 中前五项、排除已观察 T09，即 T01/T02/T05/T08/T11。选择规则与预期分差无关，五题全部纳入 paired mean，禁止结果后删负差。每题 stock ODR 与 IEO-v3 各一份，输入只用 K 列 task-only instruction，主分数是 67-leaf `P_strict` paired mean，主机制是各题预冻结 askable-high denominator 的 macro recall 差。
+
+沿用 `gpt-5.6-sol/high`、同一 ODR 后续 graph、同一搜索/抓取预算与 30 分钟硬停止。为修复 v0.85 simulator positional mismatch，本 batch 冻结 structured persona-bounded simulator：读取 hidden official persona + 八项 unit ledger，只回答当前问到的值、保持问题顺序、未知则明说，resolved IDs 另存；simulator 内容不进入 agent 的初始上下文。协议与冻结资产位于 `pilot/odr_ieo_v3_5task_v0_86/`；结果必须在独立 commit 中记录。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：IEO-v3 strict-cold-start 复现结果
 

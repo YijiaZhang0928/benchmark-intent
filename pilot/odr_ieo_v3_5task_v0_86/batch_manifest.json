@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.86",
+  "selection_rule": "first five workbook-order released exact pairs excluding previously observed T09",
+  "workbook_sha256": "9b0383ece9f4441b15c87f8b6d51a2ebf2465b0897b8a3ab2ae421ff15d5e7e5",
+  "cases": [
+    {
+      "benchmark_task_id": "T01",
+      "pdr_task_id": 1,
+      "user_id": "User1",
+      "source_row": 2,
+      "instruction_sha256": "c12e9bf7136079e865e80635754caa74ae7deacb399070f52bbd4969ccad1eeb",
+      "strict_rubrics_sha256": "6c540729b1a59e0d63b4fb86c80392b5d45fefce6bede6a3946db7893b5b2999",
+      "official_leaf_count": 34,
+      "askable_high_ids": [
+        "T1-P1",
+        "T1-P2",
+        "T1-P3",
+        "T1-P4"
+      ]
+    },
+    {
+      "benchmark_task_id": "T02",
+      "pdr_task_id": 2,
+      "user_id": "User7",
+      "source_row": 3,
+      "instruction_sha256": "b727e487c91eec5022df39c59db4bcc0e7da3a1f3780ccf34901d8bbfc8dd558",
+      "strict_rubrics_sha256": "7fc83a85f049705a704a5a128f48b42ca919c64ed5442c6c588e69a066092957",
+      "official_leaf_count": 38,
+      "askable_high_ids": [
+        "T2-P1",
+        "T2-P2",
+        "T2-P3",
+        "T2-P4",
+        "T2-P5"
+      ]
+    },
+    {
+      "benchmark_task_id": "T05",
+      "pdr_task_id": 7,
+      "user_id": "User12",
+      "source_row": 6,
+      "instruction_sha256": "02659524f4f5bce2913d25e2ec68ab355786ded9cb760f2ec80b936a6de759dd",
+      "strict_rubrics_sha256": "4c6709c9c8ee2d348be2db51fd48e97130968a346f9e7ce3767fc77b535a094a",
+      "official_leaf_count": 39,
+      "askable_high_ids": [
+        "T5-P1",
+        "T5-P2",
+        "T5-P3",
+        "T5-P5"
+      ]
+    },
+    {
+      "benchmark_task_id": "T08",
+      "pdr_task_id": 17,
+      "user_id": "User10",
+      "source_row": 9,
+      "instruction_sha256": "c2cc3e09d177f5242ad1d6abda2cbefcaae81a4dac4feedc2b25605c60810103",
+      "strict_rubrics_sha256": "db88dbad3435309fe9d3e546cb085b23cde2dbeb62cf461e0957eaa7b61ccf05",
+      "official_leaf_count": 40,
+      "askable_high_ids": [
+        "T8-P1",
+        "T8-P2",
+        "T8-P3",
+        "T8-P4",
+        "T8-P5"
+      ]
+    },
+    {
+      "benchmark_task_id": "T11",
+      "pdr_task_id": 30,
+      "user_id": "User12",
+      "source_row": 12,
+      "instruction_sha256": "66fffb2ef2fc9f6e31527e5239fbceeda5b4ea6157d82f559d3e6562a509324c",
+      "strict_rubrics_sha256": "264439212732e075b65bdf7e61bf2dd65f35e06ca5d74ea5e1484574b4b060ef",
+      "official_leaf_count": 44,
+      "askable_high_ids": [
+        "T11-P1",
+        "T11-P2",
+        "T11-P3",
+        "T11-P5"
+      ]
+    }
+  ]
+}

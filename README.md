@@ -64,6 +64,8 @@ v0.84 在用户批准后冻结同一 Task21/User12 的测量复现：两臂改�
 
 v0.85 完成上述复现。两边都问到 risk、holding style、liquidity 并漏掉 technology/innovation tilt，`Recall@AskableHigh` 同为 2/3；IEO-v3 只把六行 stock 表单压到三行。67-leaf `P_strict` 为 6.8583 vs 7.1366（`+0.2783`），`P_HI` 差 `+0.32`，但未改 33-leaf `P_official` 差仅 `+0.0150`。严格分的小增益主要来自 evidence 和未通过 clarification 获取的 data-analysis best practice，而非更高 preference recall；结论是 efficiency gain、recall mechanism 未验证。完整报告、问题、搜索/抓取轨迹、盲评证据与限制见 [`RESULTS.md`](pilot/odr_ieo_v3_micro_ab_v0_84/RESULTS.md)。
 
+v0.86 将单行复现扩为五行批次，运行前固定为 workbook 顺序的 T01/T02/T05/T08/T11，并排除已观察 T09。每题跑 stock ODR 与 IEO-v3、使用相同 task-only input 与 67-leaf rubric；主量为五题 paired mean `ΔP_strict` 和 macro `ΔRecall@AskableHigh`，禁止结果后只留正差。新 structured simulator 只回答当前问题并保持顺序，用于修复上一轮 positional mismatch。冻结协议见 [`pilot/odr_ieo_v3_5task_v0_86/`](pilot/odr_ieo_v3_5task_v0_86/)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。

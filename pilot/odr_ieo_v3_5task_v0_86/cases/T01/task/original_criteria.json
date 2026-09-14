@@ -1,0 +1,322 @@
+{
+  "id": 1,
+  "domain": "Education",
+  "language": "en",
+  "taskid": 1,
+  "userid": "User1",
+  "task": "I want to advance my academic qualifications. I plan to apply for PhD programs in artificial intelligence abroad within the next 1–2 years, but I have not yet decided on a specific research direction. I would like to understand the research strengths, curriculum structure, academic resources, and employment prospects of universities in different countries and regions (for example, North America, Europe, and Asia). At the same time, I care about the application requirements (language requirements, ways to strengthen my background, research or internship experience), tuition and scholarship policies, and how to create a competitive application plan based on my own circumstances. Please help me outline the characteristics of institutions and programs in the major countries/regions, list typical representative universities, and provide recommendations on choosing a direction and improving my background.",
+  "personalization_weights": {
+    "content_alignment": 0.19,
+    "goal_alignment": 0.33,
+    "presentation_fit": 0.1,
+    "actionability_practicality": 0.38
+  },
+  "quality_weights": {
+    "logical_coherence": 0.33,
+    "depth_insight": 0.46,
+    "clarity_readability": 0.21
+  },
+  "personalization_criterions": {
+    "goal_alignment": [
+      {
+        "criterion": "Direction discovery tailored to DL/NLP/algorithms with actionable validation steps",
+        "explanation": "Evaluate whether the article recognizes Li Chen’s undecided direction within DL/NLP/algorithms and provides a structured method to refine it (e.g., subfield map across foundation models, NLP, multimodal, ML theory/optimization, efficient/robust/trustworthy AI) plus concrete validation tasks suitable for his habits (paper replication, small evening micro-projects, curated reading lists, targeted open-source issues). This leverages his GitHub usage, evening productivity, and love for technical detail to reach a confident direction choice.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Advisor/lab and program matching with representative universities aligned to interests",
+        "explanation": "Assess whether the report maps his DL/NLP/algorithm interests to specific labs/advisors and programs across regions (e.g., LTI-like NLP groups, vision–language labs, ML theory labs), explaining fit (research themes, publication venues, advising style, funding norms) and listing representative universities as exemplars. This turns prestige into fit-centric targeting, critical for his evidence-based decision-making and competitiveness.",
+        "weight": 0.13
+      },
+      {
+        "criterion": "Region-specific ecosystem comparison through a Chinese applicant lens",
+        "explanation": "Check if differences among North America, Europe, and Asia are explained with specifics that matter to him: curriculum structures (coursework vs research-first), admissions models (cohort vs position-based), application process (portal vs supervisor-first), living costs, academic resources (institutes, compute), and typical funding patterns. It should highlight nuances relevant to Chinese applicants (e.g., contacting supervisors in EU/UK, funded positions in EU doctoral schools).",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Personalized 1–2-year milestone roadmap aligned with his time management",
+        "explanation": "Determine whether the article provides a quarter-by-quarter/monthly plan for tests (TOEFL/IELTS, GRE as needed), research outputs (submission targets like ACL/NeurIPS/ICLR/ICML), internships/RAships, open-source/Kaggle, advisor outreach, and document preparation. It should explicitly leverage his evening productivity and strict planning style to sequence tasks and de-risk deadlines across regions.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Background strengthening strategy leveraging current assets and channels",
+        "explanation": "Evaluate whether it builds on his strong GPA, scholarships, and GitHub habits to propose high-ROI steps: joining/initiating lab projects, aiming for workshop/short papers, competition strategy (Kaggle/CCF events), targeted open-source contributions that signal fit to labs, and China-based AI internships (e.g., major tech labs). It should define measurable goals (e.g., commits, issues, preprint timeline) matching his analytical mindset.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Clear, actionable application requirements and process guidance by region",
+        "explanation": "Assess whether language targets (TOEFL/IELTS section scores), GRE policies (optional/required), timeline of taking tests, recommendation letter strategy, SoP/portfolio tailoring for DL/NLP, and supervisor contact strategies (where applicable) are provided with concrete thresholds and steps. This reduces ambiguity and fits his preference for clear checklists.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Funding, tuition, and scholarship planning optimized for cost-effectiveness",
+        "explanation": "Check if the article quantifies funding odds and stipend ranges versus cost-of-living across regions, and enumerates scholarships suited to him (e.g., HKPFS, SINGA, CSC, Clarendon/EPSRC, Marie Skłodowska-Curie, Canadian/departmental funding). It should propose fallback financing routes (e.g., funded PhD first; if MS route, identify realistic scholarships) aligned with his frugal, risk-averse profile.",
+        "weight": 0.09
+      },
+      {
+        "criterion": "Employment outlook and immigration stability framing",
+        "explanation": "Evaluate whether it presents realistic placement outcomes by region (industry vs academia in AI hubs), visa pathways and durations (e.g., OPT/H-1B dynamics, UK Graduate Route/Skilled Worker, EU Blue Card, Singapore EP), and ties these to his and his parents’ preference for stability. It should recommend risk-mitigating country/program mixes reflecting his constraints.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Evidence-based, structured, and resource-linked presentation matching his analytical style",
+        "explanation": "Assess whether comparisons use appropriate data sources (e.g., CSRankings for subfield output, lab publication records, placement pages), avoid hype, and present information via matrices/checklists and curated resource links (reading lists, course sequences, compute/resource access). This aligns with his data-driven, detail-oriented decision process.",
+        "weight": 0.05
+      },
+      {
+        "criterion": "Integration of China-specific practicalities and timelines",
+        "explanation": "Check inclusion of Chinese applicant specifics: GPA conversion, transcript/translation tips, CSC timing, local test center scheduling, recommendation etiquette, domestic academic calendar alignment, and use of domestic summer research/RA opportunities. This ensures the plan is operational in his real context.",
+        "weight": 0.02
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "DL/NLP-centric Coverage of Research Strengths, Labs, and Courses",
+        "explanation": "Checks whether the report foregrounds deep learning and NLP when outlining research strengths, naming specific labs, faculty, and course clusters most relevant to these subfields, so the content aligns with Li’s declared interests and supports informed direction exploration.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Region-Specific AI Ecosystem Comparison for Chinese Applicants",
+        "explanation": "Evaluates whether the cross-region comparison (US/Canada, Europe, Asia) highlights differences that matter to a Chinese CS undergraduate—admissions model (advisor-first vs centralized), PhD structure, compute/lab resources, and field leadership—rather than generic country facts.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Funding, Tuition, and Scholarship Alignment with Cost-Conscious, Risk-Averse Profile",
+        "explanation": "Assesses whether content prioritizes fully funded models, tuition waivers, RA/TA packages, and region-specific scholarships (e.g., CSC, HKPFS, A*STAR, EU employment contracts, JSPS), and notes cost-of-living differences—reflecting Li’s frugality and need for financial stability.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Application Requirements and Background-Building Paths Tailored to a Chinese CS Junior’s Habits",
+        "explanation": "Checks that language test norms (TOEFL/IELTS, GRE optionality by region) and background-strengthening routes are selected for Li’s context—e.g., China-based RA options (Suzhou/Shanghai), open-source/NLP competitions, reading groups—matching his GitHub/online-learning behavior.",
+        "weight": 0.15
+      },
+      {
+        "criterion": "Technical Depth Appropriate to a High-Performing CS Student",
+        "explanation": "Ensures the coverage includes concrete technical markers (key venues like NeurIPS/ICML/ICLR/ACL, typical PhD coursework/prereqs in optimization/probability/ML systems, named labs/datasets/compute resources) rather than superficial descriptions.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Representative Universities Curated by Subfield and Tier Across Regions",
+        "explanation": "Evaluates whether the selected schools per region are curated for DL/NLP strength and spread across tiers (reach/target/conservative) to reflect Li’s rational, risk-managed approach, instead of an undifferentiated or prestige-only list.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Employment Prospects Contextualized to Stability and China-Linked Pathways",
+        "explanation": "Checks whether employment sections emphasize outcomes relevant to Li’s stability goals and background, including postdoc/industry pathways, visa durations, and links to China/Shanghai ecosystem roles and alumni pipelines.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Two-Year Runway Alignment of Resources and Milestones",
+        "explanation": "Assesses whether the content selection acknowledges a 1–2-year timeline by naming time-suitable resources (e.g., summer research programs, visiting student options, European/North American deadlines, Asia cycle) without prescribing step-by-step plans.",
+        "weight": 0.03
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "Professional, technical tone and concise logical flow appropriate for a CS undergraduate",
+        "explanation": "Assess whether the report adopts a precise, evidence-based style with clear reasoning and minimal fluff, matching the user's exposure to technical blogs and academic materials and reducing cognitive load.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Terminology handling and bilingual clarity (AI and admissions jargon)",
+        "explanation": "Check that AI terms (e.g., DL, NLP), admissions acronyms (TOEFL/IELTS/GRE), and program types are accurate, expanded on first use, and presented with brief Chinese explanations while preserving English originals to avoid ambiguity and aid further research.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Region-first macro-structure with a consistent subsection template and navigability",
+        "explanation": "Evaluate whether each region follows the same ordered subsections (research strengths → curriculum → resources → employment → requirements → tuition/scholarships), with numbered headings and a table of contents to support quick navigation and cross-region comparability.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Use of comparative tables/matrices for countries and representative universities",
+        "explanation": "Assess whether key dimensions are presented in compact tables (e.g., tuition ranges, funding prevalence, language requirements, employment outlook), enabling side-by-side comparison and easy screenshotting for later reference.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Scannability and micro-structure (executive summary, bullets, short paragraphs)",
+        "explanation": "Check for an upfront executive summary with key takeaways and whether sections use bullet points, short paragraphs, and highlight boxes to fit the user’s time management habits and improve on-screen readability.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Process visualization formatting (timeline/checklist for 1–2 year application plan)",
+        "explanation": "Evaluate whether the application process is presented with a clear visual timeline or checklist format (e.g., month markers, milestones, checkboxes) that makes sequencing and dependencies easy to grasp without judging the plan’s substantive content.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Source and link presentation (traceability and update timestamps)",
+        "explanation": "Assess whether official links are clearly labeled, placed near claims, and include access dates or version timestamps to support the user’s verification-oriented decision style.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Localization of units and formats (currency, scores, time zones)",
+        "explanation": "Check whether monetary values are shown in local currency plus RMB, exam scores are mapped to familiar scales/bands, and time frames are unambiguous, improving immediate comprehension for a Chinese student.",
+        "weight": 0.06
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "Executable 1–2 year application timeline with dated milestones and buffers",
+        "explanation": "Assesses whether the report provides a quarter-by-quarter (or month-by-month) schedule covering test prep/retakes, research outputs, internships, advisor outreach, document drafting, and submission deadlines by region, with contingency buffers. A dated sequence enables Li Chen to act immediately and track progress.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Background-building plan with measurable outputs and feasibility",
+        "explanation": "Evaluates whether the report translates 'strengthen background' into concrete deliverables (e.g., reproducibility projects, workshop/student-track submission, open-source contributions, targeted internships, advanced coursework) with specific metrics, tools, and timelines realistic for a Chinese CS undergrad.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Financial budgeting and scholarship acquisition plan",
+        "explanation": "Checks if the report itemizes tuition, living costs, and fees across regions; explains funding models (RA/TA, stipends) and lists scholarships (eligibility, competitiveness, deadlines, steps) like CSC, SINGA, DAAD, HKPFS, Clarendon, Gates. This enables cost-feasible decisions and concrete funding actions.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Research direction decision and validation framework",
+        "explanation": "Looks for a practical process to choose/validate a subfield (e.g., DL for vision vs NLP), including reading sprints, small reproduction projects, mentor consultations, seminar attendance, and a short trial proposal—plus a rubric and a target timeline to finalize direction. Direction choice drives all subsequent actions.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Region-specific application mechanics and requirements",
+        "explanation": "Assesses whether the report provides actionable, region-tailored checklists: required exams and thresholds, GRE policies, centralized vs PI-first applications, position-based hiring in Europe, typical funding structures, visa lead times, and where to find openings (e.g., FindAPhD, EURAXESS, lab pages).",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Shortlisting framework with fit rubric and matched examples",
+        "explanation": "Evaluates whether the report offers a step-by-step method and rubric to build a school/advisor list (reach/target/safety), using factors like advisor fit, recent publications, funding likelihood, and placements—plus concrete, tailored examples of labs/advisors in DL/NLP to jump-start his shortlist.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Application materials and advisor outreach toolkit",
+        "explanation": "Checks for SOP/research statement structures, CV checklist, writing timeline, sample cold-email templates to PIs, and a plan for securing strong recommendation letters (who to ask, when, what evidence to compile). These tools directly enable execution of critical application tasks.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Operational feasibility in Li Chen’s context (workload, access, buffers)",
+        "explanation": "Assesses whether recommendations are realistically executable given his semester load, evening study preference, and China-specific constraints (test center availability, resource accessibility, payment methods), with contingency plans for delays and exam retakes.",
+        "weight": 0.04
+      }
+    ]
+  },
+  "quality_criterions": {
+    "depth_insight": [
+      {
+        "criterion": "Comparative Regional Ecosystem Depth (Research, Program Structure, Resources, Employment)",
+        "explanation": "Assesses whether the report goes beyond listing countries to analyze mechanisms and trade-offs across North America, Europe, and Asia (e.g., funding models, cohort vs apprenticeship structures, doctoral networks, compute/access to industry labs, visa-to-employment pathways) and draws implications for the applicant.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Institution/Lab-Level Mapping to AI Subfields and Advisor Fit",
+        "explanation": "Evaluates the specificity and insight in linking AI subfields (e.g., ML theory, NLP, vision, robotics, systems/ML, safety, HCI+AI) to representative universities, labs, and supervisors, including advising styles, publication cultures, and lab resources, rather than relying on generic rankings.",
+        "weight": 0.15
+      },
+      {
+        "criterion": "Direction-Selection Framework and Trend Alignment",
+        "explanation": "Examines whether the report provides a rigorous method to choose a research direction based on the candidate’s skills, interests, and market/scientific trends (e.g., data/compute needs, methodological fit, emerging subfields), including pros/cons and switching costs.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Tailored 1–2 Year Background-Strengthening Roadmap",
+        "explanation": "Rates the depth and actionability of a staged plan with milestones (research outputs, RA/internships, targeted coursework/exams, open-source/preprints, networking for letters), explaining why each step materially increases admissions odds in specific regions/subfields.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Funding/Tuition/Scholarship and ROI Analysis",
+        "explanation": "Assesses whether the report quantifies stipends, tuition waivers, cost of living, scholarship competitiveness and obligations, funding stability, and compares ROI across regions/program types, surfacing non-obvious financial trade-offs.",
+        "weight": 0.11
+      },
+      {
+        "criterion": "Application Competitiveness Beyond Official Minimums",
+        "explanation": "Evaluates whether the report distinguishes published requirements from realistic competitive thresholds and tacit filters (e.g., publication norms by subfield, letter strength, GRE/test optional impacts, language test nuances), and prioritizes what truly moves the needle.",
+        "weight": 0.09
+      },
+      {
+        "criterion": "Employment Outcomes and Visa Pathway Insight",
+        "explanation": "Judges the depth of analysis connecting program features to post-PhD outcomes (industry vs academia), including visa routes, timelines, and region-specific employer ecosystems, to inform strategic region and program choice.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Risk, Constraints, and Scenario Planning",
+        "explanation": "Checks whether the report anticipates uncertainties (policy changes, funding cuts, lab fit/advisor availability, timeline slips) and proposes robust contingency strategies (portfolio breadth, alternative routes like MS-to-PhD, industrial PhDs).",
+        "weight": 0.05
+      },
+      {
+        "criterion": "Originality and Non-obvious, Actionable Insights",
+        "explanation": "Measures the presence of unique, high-value insights not found in brochures (e.g., EU doctoral networks, co-tutelle/industrial PhDs, region-specific fellowship levers, pitfalls like unfunded offers or pay-to-play ‘research’), yielding clear decision advantages.",
+        "weight": 0.07
+      }
+    ],
+    "logical_coherence": [
+      {
+        "criterion": "Task-Aligned Overall Framework (Scope and Ordering)",
+        "explanation": "Checks whether the report structures content to mirror the user’s task: region-by-region profiles (research strengths, curricula, resources, employment) → application requirements and funding → decision criteria → a phased application plan. Proper ordering prevents gaps and ensures later recommendations have a defined analytical foundation.",
+        "weight": 0.23
+      },
+      {
+        "criterion": "Criterion-Driven and Consistent Cross-Region Comparison",
+        "explanation": "Evaluates whether explicit comparison dimensions (e.g., research strengths, curriculum structure, academic resources, employment/visa outlook, admissions, funding) are defined and applied consistently to each region and representative universities, enabling logically defensible synthesis and trade-off conclusions.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Claim–Evidence Mapping and Relevance",
+        "explanation": "Assesses whether key claims about regions/programs (e.g., funding prevalence, curriculum models, typical admission expectations, employment pathways) are backed by specific, relevant evidence such as program policies, known examples, or publicly available norms, with appropriate scope qualifiers to avoid overgeneralization.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Premise-to-Recommendation Reasoning Chain",
+        "explanation": "Checks whether recommendations (subfield selection steps, lab/university shortlisting, testing schedule, research/internship strategy, scholarship targeting) explicitly reference earlier analysis and the user’s constraints (1–2 year timeline, undecided direction), showing clear prioritization, sequencing, and dependency logic from premises to conclusions.",
+        "weight": 0.25
+      },
+      {
+        "criterion": "Logical Transitions and Synthesis Across Sections",
+        "explanation": "Evaluates whether transitions summarize takeaways from regional analyses, connect them to comparative insights, and then to decision rules and the action plan, preventing logical jumps between sections and maintaining a coherent argumentative thread.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Internal Consistency and Assumption Management",
+        "explanation": "Examines whether assumptions (applicant profile, language testing timelines, funding norms, program structures) are explicitly stated and used consistently, with no contradictions across sections and with caveats for exceptions, ensuring stable premises throughout the reasoning.",
+        "weight": 0.06
+      }
+    ],
+    "clarity_readability": [
+      {
+        "criterion": "Structural Organization and Navigability",
+        "explanation": "Checks whether the report uses a clear, consistent hierarchy (e.g., by region → standardized subsections such as Research Strengths, Curriculum, Resources, Employment, Requirements, Finance, Application Plan), includes a clickable table of contents, and provides headings/anchors so readers can quickly locate specific topics or regions.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Formatting and Scanability",
+        "explanation": "Evaluates readability aids such as consistent heading levels, bullet lists for requirements and tips, numbered steps for application timelines, adequate white space, readable fonts/line spacing, and callout boxes for important notices—so key information can be scanned without reading dense paragraphs.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Language Clarity and Audience Fit",
+        "explanation": "Assesses whether the writing uses concise, plain, and professional language suitable for international readers; avoids ambiguity and long sentences; employs active voice; and maintains consistent terminology (e.g., PhD/Doctoral) to reduce cognitive load for non-native English speakers.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Use and Explanation of Technical Terms and Acronyms",
+        "explanation": "Checks that admissions and academic terms (e.g., GRE/TOEFL/IELTS, RA/TA, stipend vs. scholarship vs. fellowship, ECTS, GPA scales, PI, DPhil, OPT) are expanded on first use and/or listed in a short glossary, with units and scales clarified to prevent misinterpretation.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Effectiveness of Visuals and Comparative Presentation",
+        "explanation": "Evaluates whether tables, timelines, checklists, and charts are well-chosen and well-designed for comparison (e.g., standardized columns for regions/universities, budget breakdown charts, 1–2 year application Gantt), with informative titles, captions, legends, and clear takeaways.",
+        "weight": 0.17
+      },
+      {
+        "criterion": "Highlighting of Key Takeaways and Action Steps",
+        "explanation": "Assesses the presence and clarity of an executive summary, per-region key points, pros/cons lists, and ‘What to do next’ boxes or checklists that surface the most important information and actions without requiring readers to parse the full text.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Consistency and Cross-Section Comparability",
+        "explanation": "Checks that parallel sections follow the same order and labeling (e.g., each region uses the same subsections and table headers), and that data are normalized for easy comparison (e.g., local currency plus USD, unified date ranges, aligned language test thresholds).",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Accessibility and Internationalization",
+        "explanation": "Evaluates inclusive design features such as color-safe palettes, alt text for figures, patterns in addition to color, clear link formatting, unambiguous date formats (e.g., YYYY-MM-DD), currency conversions, and avoidance of culture-specific idioms—so the report is readable by a global audience.",
+        "weight": 0.05
+      }
+    ]
+  }
+}

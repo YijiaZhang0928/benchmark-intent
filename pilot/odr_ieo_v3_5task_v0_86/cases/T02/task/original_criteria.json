@@ -1,0 +1,342 @@
+{
+  "id": 10,
+  "domain": "Education",
+  "language": "en",
+  "taskid": 2,
+  "userid": "User7",
+  "task": "I plan to participate in an overseas exchange or short-term visiting program in the coming semester to broaden my international perspective and enhance my academic capabilities. However, I currently lack a systematic understanding of how to select a suitable program and prepare comprehensively. Please help me outline the characteristics of exchange or visiting programs in different countries (such as the United States, Europe, Japan, Singapore, etc.), including curriculum design and teaching models (e.g., interdisciplinary courses, practice-oriented courses), credit transfer mechanisms, cultural and academic atmosphere, living costs, visa and language requirements, cost structure, and available scholarships or financial aid. In addition, please analyze the practical value of these programs for future academic development and career competitiveness, including their impact on research capability enhancement, networking opportunities, and cross-cultural communication skills. Finally, provide practical suggestions for adapting to studying and living abroad, including techniques for quickly integrating into local classrooms and culture, psychological adjustment, and risk management strategies, so that I can make the most of the exchange opportunity within a short time and maximize both academic and professional gains.",
+  "personalization_weights": {
+    "content_alignment": 0.2,
+    "goal_alignment": 0.31,
+    "presentation_fit": 0.09,
+    "actionability_practicality": 0.4
+  },
+  "quality_weights": {
+    "logical_coherence": 0.34,
+    "depth_insight": 0.42,
+    "clarity_readability": 0.24
+  },
+  "personalization_criterions": {
+    "goal_alignment": [
+      {
+        "criterion": "Field-specific program and mentor matching (new media/public opinion)",
+        "explanation": "Assess whether the content maps US/Europe/Japan/Singapore options specifically to communication/media schools, computational social science labs, and public opinion/analytics courses; identifies potential mentors/groups, typical methods (NLP, network analysis, experiments), and data-access/regulatory contexts. This directly serves Xu Yang’s specialization and his goal of research capability enhancement.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Data-driven cross-country comparison and adjustable decision rubric",
+        "explanation": "Check for quantified matrices comparing countries/programs on curriculum model (interdisciplinary/practice), credit transfer ease, city-level living cost, visa lead time, language burden, scholarship likelihood, networking density; plus a scoring rubric with adjustable weights and instructions. This aligns with his data-oriented, tool-using decision style.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Total cost-of-attendance and scholarship path tailored to Chinese exchange students",
+        "explanation": "Evaluate whether the report provides per-country, city-specific budgets (tuition/fees under exchange vs visiting, housing, food, transport, insurance, visa, flights) and realistic funding sources (e.g., host exchange tuition waivers, JASSO/MEXT for Japan, DAAD-type short-term options, school-level travel grants, department awards), with success tips and ROI framing. This matches his frugality and low risk appetite.",
+        "weight": 0.13
+      },
+      {
+        "criterion": "Next-semester operational feasibility plan (timeline, checklists, buffers)",
+        "explanation": "Assess presence of a T−12 to T−0 week plan covering test booking, document preparation, advisor approvals, host nomination forms, DS-2019/CoE/Student Pass/SCHENGEN steps as applicable from Beijing, housing search milestones, and time buffers. This meets the urgent ‘coming semester’ constraint and his efficiency mindset.",
+        "weight": 0.11
+      },
+      {
+        "criterion": "Credit transfer mechanics and documentation to protect graduation",
+        "explanation": "Check whether the content shows how to pre-approve credits (syllabus mapping), convert ECTS/US credits to home-university credits, handle grading conversions/pass–fail options, and archive evidence (syllabi, transcripts, assessments) to avoid graduation delays. This fits his rational risk control and need for certainty.",
+        "weight": 0.09
+      },
+      {
+        "criterion": "Classroom and cultural integration tactics tailored to media/public opinion",
+        "explanation": "Evaluate whether it offers first-2-weeks integration playbooks for US/EU/JP/SG classrooms (participation norms, office hours, group work), scripts/templates for introducing China-related cases sensitively, and strategies that use his calm, analytical strengths to build presence. This targets his field’s discourse nuances and quick adaptation need.",
+        "weight": 0.09
+      },
+      {
+        "criterion": "Risk and ethics management aligned with low-risk appetite and research domain",
+        "explanation": "Assess coverage of health insurance selection, housing safety/scam avoidance, visa/status compliance, digital security, research ethics/IRB alignment across institutions, and data privacy (e.g., GDPR implications for public opinion/social media data). This reflects his conservative risk profile and the compliance demands of his research.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Networking and output plan for academic and career leverage",
+        "explanation": "Check for a concrete plan to identify target labs/scholars/seminars, outreach email templates, conference/event calendars, and deliverables (working paper, dataset, portfolio case) within one semester; plus how to sustain ties post-visit. This converts the exchange into measurable gains in reputation and opportunity.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Country-specific visa and language requirement granularity",
+        "explanation": "Evaluate clarity and accuracy of per-country visa pathways for short-term exchange (e.g., typical categories and steps) and language expectations (English tracks vs JLPT where relevant), including pointers to authoritative, up-to-date sources. This supports feasibility and reduces uncertainty.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Concise, evidence-backed style with actionable tools",
+        "explanation": "Assess whether the report uses clear logic, citations to authoritative sources, and provides ready-to-use tools (checklists, timelines, budget sheets, decision matrices), matching Xu Yang’s tool proficiency and efficiency-driven habits.",
+        "weight": 0.06
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "Field-Specific Fit to New Media/Public Opinion and Computational Methods",
+        "explanation": "Checks whether the report prioritizes programs, courses, and labs in computational social science, media analytics, digital journalism, platform governance, and policy-tech intersections, with concrete examples (e.g., social media analytics, NLP for public opinion, network analysis). This aligns content with Xu Yang’s specialization and avoids generic exchange advice.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Evidence- and Data-Backed Comparisons Across Regions",
+        "explanation": "Assesses whether key comparisons (costs, research outputs, acceptance/selectivity, class sizes, dataset availability) are quantified and sourced from reputable references (e.g., cost-of-living indices, subject rankings, official visa timelines). This matches his data-driven decision style and desire for authoritative information.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Budget and Funding Specificity for a Frugal, Low-Risk Student",
+        "explanation": "Evaluates whether the content breaks down total costs by city (rent, transport, food, insurance), clarifies exchange tuition waivers, and lists realistic scholarships/aid accessible to China-based exchange students (e.g., CSC/Chinese funding, host university bursaries), including visa work limits. This aligns with his conservative budget management.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Credit Transfer Mapping and One-Semester Timeline Fit",
+        "explanation": "Checks for explicit credit conversion (US credits↔Chinese credits; ECTS mapping), grade requirements, caps, and term calendars aligned to the next semester, highlighting risks to graduation progress. This reflects his need to optimize within a short exchange period.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Regional Differentiation of Platform Ecosystems, Data Access, and Regulation",
+        "explanation": "Assesses whether the report distinguishes the US, Europe, Japan, and Singapore by their dominant platforms (e.g., X/Reddit/YouTube, LINE), legal context (GDPR/DSA, POFMA), and API/data access feasibility for public opinion research. This directly affects the research value of the exchange for his field.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Visa, Language, and Compliance Realism for China-Based Applicants",
+        "explanation": "Evaluates whether the content covers visa categories and processing times from Beijing, realistic TOEFL/IELTS thresholds for exchange, Japanese daily-use expectations, and compliance constraints (work hours, insurance mandates) relevant to a Chinese student. This aligns with his risk-averse, rule-following context.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Career and Network Value Mapping to Media/Tech/Policy Ecosystems",
+        "explanation": "Checks whether the analysis links programs to specific conferences (e.g., ICA, AoIR), think tanks, university labs, media organizations, and alumni networks that matter for communication/public opinion careers, including relevance to the China job market and PhD pathways.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Tech Tool and Lab Infrastructure Alignment (Python/NLP/Data Pipelines)",
+        "explanation": "Assesses whether suggested courses/projects assume and build on Python/data analysis skills and whether host labs provide relevant infrastructure (APIs, compute clusters, datasets, secure data environments). This meets his technical profile and research workflow.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Cultural and Classroom Integration Tailored to a Chinese Graduate Student",
+        "explanation": "Evaluates whether integration advice addresses seminar participation norms, discussion etiquette, group project expectations, and high-/low-context differences specifically for US/Europe/Japan/Singapore, reflecting Xu Yang’s Beijing academic background and communication style.",
+        "weight": 0.04
+      },
+      {
+        "criterion": "Cross-Jurisdiction Ethics and Research Risk Considerations",
+        "explanation": "Checks if the content covers IRB/ethics processes, data privacy, scraping/ToS risks, and topic-sensitivity differences across regions, allowing a conservative, compliant approach to public opinion research topics.",
+        "weight": 0.04
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "Whether the overall structure and navigability align with the user's decision flow",
+        "explanation": "Assess if the report uses a clear hierarchy (e.g., by country→academic model→credits→costs→visa/scholarships→impact→adaptation), descriptive headings, numbered sections, and signposting/TOC so Xu Yang can jump directly to needed parts and trace steps logically.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Whether cross-country comparisons are presented with scannable matrices and standardized fields",
+        "explanation": "Evaluate use of side-by-side tables with consistent row labels (curriculum, credits, costs, visa, language, scholarships) to let him quickly contrast options and copy to Excel for further analysis.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Whether terminology usage is calibrated (Chinese core text with precise English acronyms and first-mention expansions)",
+        "explanation": "Check if key terms (e.g., ECTS, GPA, MOI, CPT/OPT, JASSO) are introduced with full names on first use and concise definitions, ensuring accessibility while preserving professional accuracy.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Whether numeric information is normalized and clearly formatted",
+        "explanation": "Assess currency conversion and unit consistency (e.g., CNY equivalents in parentheses, per-month vs per-semester costs), date formats, ranges, and category breakdowns to support his budget-conscious, data-oriented reading.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Whether the tone is analytical and evidence-signaling with transparent citations",
+        "explanation": "Evaluate if the language avoids marketing hype, uses neutral, precise phrasing, and provides source links/footnotes to official pages and recent policies, matching his trust in authoritative, verifiable information.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Whether visual aids (tables, timelines, flowcharts) are appropriate and mobile-readable",
+        "explanation": "Check that visuals are chosen to clarify processes (e.g., credit transfer or visa steps), have legible fonts, adequate contrast, and responsive-friendly widths so he can read comfortably on phone or laptop.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Whether layered presentation (executive summary, TL;DR, checklists) supports quick entry and deep dive",
+        "explanation": "Assess presence of a succinct overview with key comparisons, plus end-of-section checklists for preparation steps; this matches his time management habit and need for fast grasp plus detailed reference.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Whether cognitive load is managed through chunking and consistent formatting",
+        "explanation": "Evaluate short paragraphs, bullet lists, consistent styles for callouts (e.g., Tip/Risk/Policy), whitespace, and stable heading/bullet conventions to reduce fatigue and improve scanability.",
+        "weight": 0.08
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "Program fit decision framework tailored to new media/public opinion",
+        "explanation": "Assesses whether the report provides a weighted scoring rubric and shortlist method that operationalizes mentor/lab alignment, relevant course types (e.g., computational social science, data journalism, digital methods), calendar fit (one-semester/short-term), and city/country constraints, enabling Xu to rank options and choose quickly.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "End-to-end timeline and critical path for next semester",
+        "explanation": "Checks if the report gives a backward-planned schedule with specific milestones and time buffers for language tests, application materials, faculty approvals, credit pre-approval, scholarships, visa appointment/issuance, housing, and flight booking, so Xu can execute without missing deadlines.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Credit transfer feasibility and process readiness",
+        "explanation": "Evaluates whether the report details how to secure credit recognition: ECTS/US credit conversions, grade mapping, required syllabi, pre-approval forms, responsible offices/signatures, and timing, preventing non-transferable coursework.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Budgeting and funding plan with numeric estimates",
+        "explanation": "Looks for city-level monthly cost ranges (housing, food, transport), full one-semester cost structure (tuition/fees, insurance, visa, flights), a total budget, targeted scholarships/aid for PRC students, eligibility/timelines, and a gap-closing strategy (e.g., cheaper housing, flight timing).",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Visa, language, and compliance feasibility",
+        "explanation": "Determines if the report specifies typical language score thresholds, visa document checklists, proof-of-funds requirements, expected processing times by country (US/EU/Japan/Singapore), and research compliance steps (e.g., GDPR/PDPA, IRB or ethics approvals) relevant to public opinion research.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Academic integration and output plan",
+        "explanation": "Assesses whether the report proposes concrete weekly actions to gain academic value fast: joining labs/seminars, accessing datasets, setting deliverables (e.g., draft paper, poster, portfolio piece), and outlining classroom participation norms and collaboration tactics.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Cultural adaptation, mental health, and risk management protocols",
+        "explanation": "Checks for actionable strategies and resources: local classroom etiquette, conflict-resolution approaches, campus counseling and medical access, safety/emergency contacts, travel/health insurance scope, data security practices, and topic-sensitivity guidance for fieldwork abroad.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Ready-to-use checklists, templates, and tools",
+        "explanation": "Evaluates the presence of practical artifacts Xu can directly apply (application and visa checklists, budget spreadsheet, program scoring matrix, email outreach templates to professors/administrators), increasing execution likelihood.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Evidence-backed specifics with verification cues",
+        "explanation": "Considers whether key requirements (fees, score cutoffs, visa steps, scholarship criteria) are tied to official sources or include verification steps and update reminders, ensuring instructions are implementable and current.",
+        "weight": 0.05
+      },
+      {
+        "criterion": "Feasibility under Xu’s constraints (budget, low risk, schedule)",
+        "explanation": "Judges if recommendations incorporate cost-saving options, low-risk choices (e.g., safer cities, well-supported campuses), and a workload plan compatible with his routine and semester timing, making the plan realistically executable.",
+        "weight": 0.05
+      }
+    ]
+  },
+  "quality_criterions": {
+    "depth_insight": [
+      {
+        "criterion": "Comparative, mechanism-based differentiation across destinations",
+        "explanation": "Assesses whether the report goes beyond listing to explain how and why the US, Europe, Japan, Singapore, etc., differ on curriculum models (e.g., seminar vs lecture, interdisciplinary/practice), assessment norms, credit systems (e.g., ECTS vs US credits), visa/language constraints, and academic culture—and what these imply for a short-term exchange.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Goal–program fit framework with explicit trade-offs",
+        "explanation": "Evaluates whether the report provides a rigorous selection framework that links a student’s academic goals, research needs, time constraints, budget, language level, and risk tolerance to program types and countries, articulating trade-offs (e.g., research access vs coursework breadth, brand signaling vs cost, language immersion vs GPA security).",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Evidence and benchmarking to substantiate insights",
+        "explanation": "Checks whether key claims are grounded in credible ranges and examples (e.g., typical living costs by city, scholarship types and competitiveness, visa lead times, language score thresholds, common credit conversion ratios), strengthening the depth and credibility of insights.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Depth on credit transfer and academic integration risks",
+        "explanation": "Assesses whether the report unpacks how credit articulation works (e.g., syllabus matching, accreditation, ECTS to home conversion, pass/fail implications), identifies common pitfalls (timelines, course changes, exam formats), and proposes mitigation strategies to protect graduation timelines and GPA.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Cost structure analysis and funding/ROI strategy",
+        "explanation": "Evaluates whether the report decomposes total cost (tuition/fees, housing, insurance, visa, flights, opportunity costs), compares across destinations, surfaces funding sources (host/home scholarships, departmental grants), and assesses ROI via skill gains, network access, institutional signaling, and post-exchange leverage.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Causal mapping from program features to academic and career outcomes",
+        "explanation": "Assesses whether the report explains how specific features (e.g., lab placements, seminars, industry projects, conferences) translate into research capacity, publications, references, internships, and cross-cultural competence—highlighting high-leverage activities and how to secure them in a short stay.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Sophistication of adaptation and risk management strategies",
+        "explanation": "Evaluates whether adaptation guidance is theory-informed and actionable (e.g., first-2-weeks integration plan, navigating classroom discourse norms, intercultural communication tactics, academic integrity differences, mental health, safety/legal compliance, contingency plans for course/visa/housing risks).",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Originality and high-value, context-specific insights",
+        "explanation": "Rewards unique, actionable perspectives beyond common knowledge (e.g., how to approach PIs in Japan vs the US, leveraging ECTS project courses for portfolio value, timing scholarship cycles, negotiating course approvals), increasing practical decision value.",
+        "weight": 0.04
+      }
+    ],
+    "logical_coherence": [
+      {
+        "criterion": "Task-Aligned Overall Framework",
+        "explanation": "Checks whether the report is structured to mirror the task flow: (1) cross-country program features using fixed dimensions; (2) analysis of academic/career value; (3) preparation and adaptation strategies; and (4) an integrated synthesis. A task-aligned framework prevents topic drift and keeps the argumentation orderly.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Consistency of Comparative Dimensions Across Countries",
+        "explanation": "Assesses whether the same comparison axes (e.g., curriculum model, credit transfer, culture/academia, living costs, visa/language, cost structure, funding) are applied to each country, avoiding apples-to-oranges comparisons and ensuring logically valid cross-country contrasts.",
+        "weight": 0.13
+      },
+      {
+        "criterion": "Argument–Evidence Linkage and Traceability",
+        "explanation": "Evaluates whether claims about program features, costs, visas, credits, or scholarships are directly supported with data, policies, or concrete examples, and whether the source or basis is identifiable. Logical coherence requires that assertions be traceable to evidence.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Rigor of Premise-to-Conclusion Reasoning",
+        "explanation": "Checks the inferential steps from stated premises (e.g., program features and user goals) to conclusions (e.g., selection advice, preparation plan). Looks for explicit causal/mechanistic links, avoidance of leaps, and correct use of qualifiers (conditions under which conclusions hold).",
+        "weight": 0.24
+      },
+      {
+        "criterion": "Trade-off Analysis and Decision-Rule Transparency",
+        "explanation": "Assesses whether the report makes explicit how multiple factors (cost, credits, research fit, language, visa timing) are weighed to guide selection, e.g., via criteria prioritization, scoring, or decision trees, and how conflicts are resolved. This converts analysis into logically justified guidance.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Cross-Section Integration (Features → Value → Strategies)",
+        "explanation": "Evaluates whether the country-level features are explicitly linked to practical value (research capacity, networking, cross-cultural skills) and then to concrete adaptation tactics, ensuring that earlier analysis logically informs later recommendations.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Transitions and Logical Signposting",
+        "explanation": "Checks for clear transitions that explain why each section follows, how it builds on prior analysis, and what questions it answers next. Effective signposting prevents logical gaps between parts of the report.",
+        "weight": 0.04
+      },
+      {
+        "criterion": "Assumptions, Scope, and Boundary Conditions",
+        "explanation": "Assesses whether the report states key assumptions (discipline, budget range, language proficiency, program length) and scope limits, clarifying the conditions under which analyses and recommendations are valid, which is essential for logical precision.",
+        "weight": 0.03
+      }
+    ],
+    "clarity_readability": [
+      {
+        "criterion": "Task-aligned Structure and Layout (sections, headings, and wayfinding)",
+        "explanation": "Checks whether the report is organized around the reader’s decisions (e.g., country profiles, comparison matrix, credit transfer, costs, visas/language, scholarships, adaptation tips), with clear heading hierarchy, table of contents, numbered sections, adequate white space, and scannable bullets to help readers locate needed information fast.",
+        "weight": 0.22
+      },
+      {
+        "criterion": "Language Clarity, Brevity, and Professional Tone",
+        "explanation": "Assesses whether sentences are concise and unambiguous, grammar and spelling are correct, voice is active, and the tone is professional yet accessible to non-experts, reducing cognitive load without diluting meaning.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Terminology and Acronym Management",
+        "explanation": "Evaluates whether specialized terms and acronyms (e.g., ECTS, J-1, F-1, DS-2019, I-20, Erasmus+, JASSO) are expanded on first use, briefly defined, used consistently, and optionally consolidated in a glossary to lower the comprehension barrier.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Comparative Clarity and Normalization Across Countries",
+        "explanation": "Checks that cross-country content is presented on consistent dimensions (curriculum model, credit transfer, costs, visas, scholarships, culture), with normalized units (e.g., monthly costs, standardized credit mappings) and a stable table layout so readers can compare at a glance.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Effectiveness of Visuals (tables, timelines, flowcharts, cost breakdowns)",
+        "explanation": "Assesses whether visuals are readable and well-labeled (clear titles, legends, units, footnotes), use color/contrast appropriately, and match the information type (e.g., timeline for application schedule, flowchart for visa steps, table for credit mapping, stacked bars/pies for cost structure).",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Highlighting of Key Actions, Deadlines, and Risks",
+        "explanation": "Evaluates whether the report uses callouts, bolding, icons, and TL;DR/summary boxes to foreground time-critical items (application windows, visa lead times, scholarship deadlines) and risk alerts (compliance, insurance, safety), enabling quick action.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Consistency of Units, Currencies, and Formatting",
+        "explanation": "Checks for consistent use of units and formats (e.g., currency shown with rate/date, per-month vs per-semester costs, date format usage), numbering, citation/link style, and typography, preventing confusion during scanning and comparison.",
+        "weight": 0.06
+      }
+    ]
+  }
+}

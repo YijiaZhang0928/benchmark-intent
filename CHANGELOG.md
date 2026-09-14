@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.86 Five-task strict IEO-v3 batch protocol - 2026-09-13
+
+- 在输出前按 workbook 顺序冻结 T01/T02/T05/T08/T11：前五个 released exact pairs，排除已观察的 T09；禁止按结果筛除负差。
+- 每题 stock ODR 与 IEO-v3 各一份，只输入 K 列 task-only instruction；主结果为五题 mean paired `ΔP_strict`，主机制为 macro `ΔRecall@AskableHigh`。
+- 沿用同 backbone、同 ODR 后续 graph/search/fetch、同 30 分钟上限与每题 67 strict leaves。
+- 以 structured persona-bounded simulator 替换 regex，要求保持问题顺序、只回答当前问题、未知不编造并输出 resolved IDs。
+- 该批次扩大 breadth，但每 cell 仍仅 one generation/one judge，且部分任务在其他 harness 中出现过，不能作为显著性结论。
+
 ## v0.85 IEO-v3 strict-cold-start replication result - 2026-09-13
 
 - 两个完整 ODR 条件均在 30 分钟内完成；stock/IEO-v3 的 successful fetches 为 7/5，报告 unique URLs 为 3/14。

@@ -1,0 +1,362 @@
+{
+  "id": 33,
+  "domain": "Career",
+  "language": "en",
+  "taskid": 7,
+  "userid": "User12",
+  "task": "I plan to launch an online AI education startup targeting university students within the next year, with the core goal of significantly improving their learning efficiency through innovative courses and AI tools. However, I still need a systematic plan to ensure the project can progress from concept to execution. Please provide me with an actionable overall strategy that covers how to design and conduct multi-dimensional market research to accurately identify target needs, along with a ready-to-use business plan framework. Include specific recommendations for platform development in terms of functional architecture, technology stack selection, and iterative processes. Additionally, propose effective marketing and user engagement strategies tailored to the behavioral characteristics of university students, and help me assess the feasibility of different business models (such as subscription-based, value-added services, or campus partnerships) to ensure both short-term launch readiness and long-term scalability. Please also provide forward-looking advice on resource allocation, potential risks, and financing channels.",
+  "personalization_weights": {
+    "content_alignment": 0.18,
+    "goal_alignment": 0.32,
+    "presentation_fit": 0.08,
+    "actionability_practicality": 0.42
+  },
+  "quality_weights": {
+    "logical_coherence": 0.38,
+    "depth_insight": 0.42,
+    "clarity_readability": 0.2
+  },
+  "personalization_criterions": {
+    "goal_alignment": [
+      {
+        "criterion": "12-month, milestone-based execution roadmap for a lean, technical founding team",
+        "explanation": "Checks whether the article converts strategy into a quarter-by-quarter plan (MVP scope, pilot universities, metric gates, hiring sequence) that respects Zhang Yu’s weekday focus and morning decision windows, enabling disciplined progress from concept to launch within one year.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "China-adapted technical stack and architecture specificity",
+        "explanation": "Assesses whether platform guidance specifies concrete functional modules (RAG, LLM orchestration, content pipeline, analytics), tech stack options (e.g., React/Vue, Node/FastAPI, Postgres, Milvus), domestic LLM providers (Qwen/Baichuan/GLM), cloud choices (Alibaba/Tencent), and build-vs-buy trade-offs with cost/compliance in China.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Student-behavior-tailored product and GTM design",
+        "explanation": "Evaluates whether the plan aligns with Chinese university behaviors and seasonality: Bilibili/WeChat/QQ channels, campus clubs/ambassador programs, internship/exam cycles, pricing sensitivity, after-class usage windows, gamification/streaks, and mini-program/mobile-first delivery.",
+        "weight": 0.13
+      },
+      {
+        "criterion": "Operational definition and measurement of 'learning efficiency'",
+        "explanation": "Checks for a rigorous metric framework (e.g., time-to-mastery, quiz uplift, task-time reduction, retention, cohort L28) with instrumentation, A/B testing, and dashboards that match Zhang Yu’s data-driven style and prove value for students and partners.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Multi-dimensional market research plan leveraging founder networks",
+        "explanation": "Assesses whether the research design covers qualitative (interviews, campus ethnography), quantitative (surveys, conjoint), and in-product telemetry; segmentation (major/year/tier of school); and practical recruitment via Tsinghua/alumni, incubators, and campus organizations.",
+        "weight": 0.11
+      },
+      {
+        "criterion": "Business model feasibility with China-specific unit economics",
+        "explanation": "Evaluates whether the article compares subscription, freemium + value-added (certificates, mentoring), and campus partnerships/B2B2C using realistic student price points, conversion funnels, CAC/LTV, and institutional revenue-sharing typical in China’s higher-ed context.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Compliance, data privacy, and academic integrity safeguards",
+        "explanation": "Checks for concrete guidance on ICP filing, PIPL, 等保2.0, payments (WeChat/Alipay), content moderation, logging/governance for LLMs, and policies/features that deter cheating/plagiarism and enable instructor trust—crucial for university adoption.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Resource allocation and build-vs-buy decision logic",
+        "explanation": "Assesses whether the plan proposes a realistic budget and team plan (core hires, contractors), GPU vs cloud credits, third-party APIs vs self-hosted models, and prioritization that fits Zhang Yu’s moderate risk appetite and need for short-term launch with long-term scalability.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Founder-friendly deliverables and templates",
+        "explanation": "Checks for ready-to-use artifacts (business plan outline, PRD, architecture diagrams, market research protocols, experiment plans, campus ambassador playbook) that can be dropped into Notion/GitHub to accelerate team execution.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Use of China-local cases, benchmarks, and channels",
+        "explanation": "Evaluates whether examples and benchmarks reference local players (e.g., XuetangX, CSDN Academy, Youdao) and channels (Rain Classroom/Chaoxing integrations, Bilibili) to enhance contextual resonance and decision relevance.",
+        "weight": 0.04
+      },
+      {
+        "criterion": "Structured, data-first communication and decision frameworks",
+        "explanation": "Assesses whether the write-up uses clear frameworks (decision trees, scorecards, trade-off matrices), avoids fluff, and matches a Tsinghua-trained engineer’s expectation for rigor and reproducibility.",
+        "weight": 0.03
+      },
+      {
+        "criterion": "Financing and partnership roadmap aligned to founder networks",
+        "explanation": "Checks for actionable channels Zhang Yu can access (alumni funds, Zhongguancun/Haidian grants, cloud credits, corporate sponsors) and a BD plan leveraging his travel to Shenzhen/Hangzhou and incubator ties for pilots and partnerships.",
+        "weight": 0.02
+      }
+    ],
+    "content_alignment": [
+      {
+        "criterion": "China university student behavior and channel specificity",
+        "explanation": "Evaluate whether the content selects student insights and marketing/user engagement tactics that reflect Chinese campus realities (e.g., segmentation by 985/211 vs. non-key universities, major/grade cohorts; channels like Bilibili, WeChat Official Accounts and Mini Programs, QQ groups, Xiaohongshu, Douyin; campus ambassadors, student unions). This matches the target audience and Zhang Yu’s Beijing context, avoiding generic Western-centric advice.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "China-specific regulatory and data-compliance embedding",
+        "explanation": "Assess whether platform design and GTM content incorporate Chinese compliance requirements (PIPL, Data Security Law, CAC algorithm filing, ICP/备案, education content regulation) and model/provider compliance considerations. For an AI founder operating in China, including this depth is essential for realistic planning and strongly signals contextual alignment.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Advanced AI architecture and stack depth aligned to the China ecosystem",
+        "explanation": "Check that the report proposes technically credible, implementation-aware architecture choices (e.g., RAG tuned for Chinese, tokenization/segmentation issues, Milvus/FAISS, Qwen/GLM/ERNIE availability, on-prem vs. Aliyun/Tencent Cloud, serving with vLLM/Triton, observability/MLOps) with trade-off reasoning. This matches Zhang Yu’s expert background and need for depth beyond surface-level tool lists.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Metrics rigor for learning efficacy and product growth",
+        "explanation": "Evaluate whether the content selects quantitative frameworks that Zhang Yu cares about (learning efficacy measures like pre/post tests, time-on-task reduction, mastery curves; product metrics like activation, DAU/WAU/MAU, retention cohorts; growth economics like CAC/LTV, payback; A/B testing design). This aligns with his data-driven decision style and research orientation.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Business model feasibility tailored to China higher-ed context",
+        "explanation": "Assess whether the business model analysis reflects local realities (student pricing bands, WeChat/Alipay payments, B2B2C campus licensing cycles, partnerships with faculties/IT centers, value-added services such as verified certificates with local platforms, corporate sponsorship/internship pipelines). This ensures the content matches Zhang Yu’s market and investor mindset.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Competitive landscape relevance to Chinese AI-edtech",
+        "explanation": "Check whether competitors and benchmarks include current China-focused players (e.g., Youdao/NetEase offerings, Tencent Classroom, Chinese LLM study assistants like Kimi/Doubao/GLM-based tools, MOOC platforms such as icourse163/中国大学MOOC, Bilibili learning channels), rather than generic Western examples. This validates market research content selection for his context.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Alignment with founder’s operating toolchain and workflow",
+        "explanation": "Evaluate whether the plan references GitHub/Notion/Slack for internal execution (e.g., monorepo structure, CI/CD, issue templates, Notion OKR/BP templates, Slack + GitHub automation) and bridges to student-facing integrations common in China (e.g., WeChat Mini Programs). This respects Zhang Yu’s daily stack and increases content resonance.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Research-grounded and evidence-based content selection",
+        "explanation": "Assess whether recommendations reference learning science/AIED findings (retrieval practice, spaced repetition, mastery learning, RAG/LLM tutoring efficacy) and relevant case studies or benchmarks. As a Tsinghua-trained, publication-experienced founder, Zhang Yu expects research-backed content rather than opinion.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Local resource and financing channel alignment",
+        "explanation": "Evaluate whether resource allocation and financing advice includes Beijing/Zhongguancun incubators, municipal/MIIT/MOE grants, university-industry programs, and startup credits from Alibaba/Tencent Cloud; and leverages networks in Shenzhen/Hangzhou. This matches his geography and partnership habits, improving contextual relevance.",
+        "weight": 0.06
+      }
+    ],
+    "presentation_fit": [
+      {
+        "criterion": "Hierarchical structure and modular organization aligned to the task scope",
+        "explanation": "Check for a clear TOC, executive summary, and numbered sections that map 1:1 to the user's requested modules (market research, business plan, platform dev, marketing/engagement, business models, resource/risk/financing), with consistent subheadings and cross-references for easy navigation.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Analytical, concise, non-hype language tone",
+        "explanation": "Evaluate whether the report uses precise, objective language, strong verbs, and avoids vague buzzwords or salesy tone—matching a technical founder's preference for clarity and efficiency.",
+        "weight": 0.17
+      },
+      {
+        "criterion": "Terminology accuracy and depth calibration",
+        "explanation": "Assess correct usage of AI, product, and business terms (e.g., LLM, RICE, LTV/CAC), with acronyms expanded on first use and brief parenthetical definitions for less common terms to support rapid understanding without oversimplification.",
+        "weight": 0.15
+      },
+      {
+        "criterion": "Use of visual frameworks and text-friendly representations",
+        "explanation": "Check inclusion of architecture sketches, comparison tables, funnels, scoring matrices, and roadmap timelines rendered in tables/ASCII/monospace so they are copyable into Notion/Slack and legible without images.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Scannability and navigation aids",
+        "explanation": "Verify presence of TL;DR/key takeaways, numbered steps, bullet lists, section headers with consistent numbering, and brief section intros/outros that summarize 'So what' and 'Next steps' to support fast reading and team briefings.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Evidence transparency and reference formatting",
+        "explanation": "Evaluate whether data points include inline citations/links, date stamps, markets/regions, and clearly labeled assumptions or uncertainty—presented in a consistent citation/link style for credibility and quick source checks.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Collaboration-readiness for Notion/Slack/GitHub",
+        "explanation": "Assess whether the report offers copy-paste-ready templates (checklists, issue templates, OKR/KPI tables), code/command blocks in monospace, and clear section anchors to facilitate sharing and collaboration in the user's daily tools.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Localization and bilingual term mapping",
+        "explanation": "Check whether key terms and metrics include EN/zh mappings where helpful, RMB currency notation, and consistent date/number formats to minimize ambiguity for China-based stakeholders while preserving technical precision.",
+        "weight": 0.06
+      }
+    ],
+    "actionability_practicality": [
+      {
+        "criterion": "Phased 12-month execution roadmap with milestones, deliverables, and owners",
+        "explanation": "Evaluates whether the report lays out a realistic quarter-by-quarter (or sprint-level) plan with critical path, dependencies, stage gates (e.g., MVP readiness, PMF signal, monetization pilot), and named accountable roles so work can start immediately and progress can be tracked.",
+        "weight": 0.15
+      },
+      {
+        "criterion": "Operable market research plan linked to decisions",
+        "explanation": "Checks if research is fully executable: clear hypotheses, target segments, sampling frames on campus, channel access plans, instrument drafts (surveys/interview guides/usability scripts), sample sizes, incentives, timelines, and predefined decision thresholds that map to product features, pricing, and GTM choices.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "MVP scope, prioritization, and acceptance criteria",
+        "explanation": "Assesses whether the report defines a minimal, testable product that delivers measurable learning-efficiency value (must-haves vs. nice-to-haves), includes acceptance criteria, de-scoping rules, and a first sprint backlog so engineering can begin without ambiguity.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Technical feasibility and stack justification",
+        "explanation": "Looks for a concrete functional architecture and stack choice (build vs. buy for LLMs, backend/frontend, data, infra) justified by latency, cost, scalability, security/privacy, maintainability, and local compliance considerations, aligned with the team’s skills and vendor availability.",
+        "weight": 0.09
+      },
+      {
+        "criterion": "Iteration and experimentation operating cadence",
+        "explanation": "Evaluates whether there is a defined build–measure–learn loop with weekly/biweekly sprint rituals, experiment design templates, hypothesis backlogs, and release/feedback cadences to systematically reduce uncertainty and accelerate PMF discovery.",
+        "weight": 0.07
+      },
+      {
+        "criterion": "Resource allocation and budget realism (incl. runway & financing milestones)",
+        "explanation": "Checks if the report provides a headcount plan (roles, hire vs. outsource timing), costed budgets (engineering, model tokens/GPU, cloud, content, marketing), cash-flow/runway projections, and fundraising milestones tied to traction targets, enabling credible execution within constraints.",
+        "weight": 0.15
+      },
+      {
+        "criterion": "Business model feasibility and unit economics",
+        "explanation": "Assesses whether subscription, value-added, and campus partnership models are analyzed with concrete pricing, LTV/CAC, payback, gross margin structure, capacity constraints, and sensitivity/scenario analyses to support go/no-go and sequencing decisions.",
+        "weight": 0.13
+      },
+      {
+        "criterion": "GTM execution plan for university students",
+        "explanation": "Determines whether the report specifies channel playbooks tailored to students (e.g., campus ambassadors, societies, WeChat groups, Bilibili/Xiaohongshu content, campus events), funnel metrics (CTR, CVR, retention), test budgets, calendar, and partner outreach steps.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Risk, compliance, and contingency planning",
+        "explanation": "Checks for a risk register covering technical (model reliability/cost), academic integrity policies, data privacy (e.g., PIPL), campus access/approvals, content moderation, and vendor lock-in, each with early-warning indicators, mitigations, and fallback options.",
+        "weight": 0.05
+      },
+      {
+        "criterion": "KPI tree and analytics/instrumentation plan",
+        "explanation": "Evaluates whether the report defines leading/lagging metrics tied to the core goal (e.g., learning efficiency proxies like active learning minutes, quiz gains; plus DAU/WAU, activation, retention, ARPU), specifies analytics stack and event schema, and sets experiment success thresholds.",
+        "weight": 0.04
+      }
+    ]
+  },
+  "quality_criterions": {
+    "depth_insight": [
+      {
+        "criterion": "Depth of Problem–Solution Fit and Student Behavioral Insights",
+        "explanation": "Assesses whether the report segments university students meaningfully (e.g., majors, study workflows, academic year), articulates jobs-to-be-done (e.g., note synthesis, exam prep, coding/debugging), quantifies pains/benefits (hours saved, grade lift, cognitive load), and integrates behavioral drivers (price sensitivity, procrastination, social proof) to craft a differentiated value proposition.",
+        "weight": 0.13
+      },
+      {
+        "criterion": "Rigor and Actionability of Multi-dimensional Market Research Design",
+        "explanation": "Evaluates whether the research plan goes beyond surface surveys to include mixed methods (diary studies, campus intercepts, telemetry, cohort interviews), clear hypotheses, sampling frames (by departments/clubs), instrument design, bottom-up TAM/SAM/SOM sizing, and explicit decision linkages (how findings will drive product scope, pricing, GTM).",
+        "weight": 0.13
+      },
+      {
+        "criterion": "Validity in Measuring Learning Efficiency Outcomes",
+        "explanation": "Assesses whether the strategy proposes rigorous outcome validation (e.g., A/B tests, quasi-experiments/RCTs, pre-post designs) with metrics such as time-to-mastery, grade improvement, retention of knowledge, and addresses confounders, ethics, and instrumentation—demonstrating insight into proving the core promise.",
+        "weight": 0.09
+      },
+      {
+        "criterion": "Competitive Landscape and White-space/Differentiation Insight",
+        "explanation": "Evaluates whether the report maps direct and indirect competitors (LMS/LTI tools, LLM apps, study platforms), identifies substitution threats, adoption constraints in academia, and articulates a wedge strategy and defensibility (data moats, partnerships, proprietary content/tool synergy) rather than generic positioning.",
+        "weight": 0.09
+      },
+      {
+        "criterion": "Product/Platform Functional Architecture Grounded in User Workflows and AI Affordances",
+        "explanation": "Assesses whether the proposed feature set and architecture align tightly with target workflows (e.g., syllabus ingestion, automated quiz generation, code feedback, citation-aware assistance), distinguishes must-haves vs differentiators, anticipates content–tool interplay, and enables outcome measurement and LMS/LTI integrations.",
+        "weight": 0.11
+      },
+      {
+        "criterion": "Technology Stack Justification and Data/Privacy/MLOps Insight",
+        "explanation": "Evaluates whether stack choices (LLM provider vs open-source, retrieval/vector DB, orchestration, observability) are justified via constraints (cost, latency, safety, FERPA/GDPR), with thoughtful plans for prompt/retrieval, safety/citations, model monitoring, inference cost control, and data governance.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Depth of Iteration and Experimentation Strategy",
+        "explanation": "Assesses whether MVP scope and backlog prioritization are tied to falsifiable hypotheses and expected learning value, with a disciplined experimentation cadence (A/Bs, usability tests), clear success metrics (activation, cohort retention tied to learning outcomes), and feedback loops specific to student users.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Business Model Feasibility, Unit Economics, and Scalability Analysis",
+        "explanation": "Evaluates analytical comparison across subscription, freemium/value-added, and campus partnerships (B2B2C), including LTV/CAC drivers, seasonality sensitivity, pricing/packaging experiments, channel-specific CAC, cash flow timelines, and scalability paths (departmental licensing, SDK/LTI distribution).",
+        "weight": 0.11
+      },
+      {
+        "criterion": "Student-tailored Go-to-Market and Engagement Insight",
+        "explanation": "Assesses whether GTM leverages student-specific channels and behaviors (campus ambassadors, clubs, Discord/Reddit, TikTok/IG), includes credible referral and community mechanics, aligns to academic calendars, and defines evidence plans for growth (k-factor, activation/retention metrics) beyond generic tactics.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Risk Landscape Comprehensiveness and Mitigation Creativity",
+        "explanation": "Evaluates anticipation of academic integrity policies, hallucinations, copyright/content liability, dependency on LLM APIs, seasonality/churn, and proposes concrete mitigations (citation/attribution, guardrails, compliance modes, offline/backup models, policy-aligned use cases) with triggers and contingencies.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Resource Allocation and Financing Pathway Foresight",
+        "explanation": "Assesses whether resource phasing (team composition, content vs engineering), budget allocation (cloud/inference costs, content production, GTM), runway math tied to milestones and risks, and financing channels (grants/accelerators/strategic partners) are proposed with insight into de-risking the journey.",
+        "weight": 0.06
+      }
+    ],
+    "logical_coherence": [
+      {
+        "criterion": "End-to-End Strategic Framework Integrity",
+        "explanation": "Checks whether the report follows a coherent sequence from problem definition → market research plan → validated insights → product/tech decisions → marketing/partnership strategy → business model → resource/risk/financing → roadmap, with each stage specifying inputs and outputs so there are no logical jumps.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Needs-to-Solution Traceability (Market Insights → Features → Tech Stack)",
+        "explanation": "Assesses whether student needs discovered (e.g., study patterns, course pain points) are explicitly mapped to prioritized features and then to technology choices and architecture, including stated trade-offs that justify why the chosen stack best satisfies the validated requirements.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Evidence-Backed Recommendations",
+        "explanation": "Evaluates whether each recommendation (e.g., pricing, acquisition channels, partnership approach) cites relevant findings from the proposed research or credible benchmarks, avoiding unsupported claims and ensuring evidence directly supports the claim it is used for.",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Financial and Scalability Reasoning Chain",
+        "explanation": "Checks the logical derivation from user acquisition assumptions (funnel conversion, CAC) to revenue (pricing, ARPU), unit economics (LTV/CAC), capacity and cost structure (compute for AI features, support), and scalability conclusions, with clear intermediate steps and formulas.",
+        "weight": 0.18
+      },
+      {
+        "criterion": "Cross-Functional Consistency and Dependency Logic",
+        "explanation": "Assesses whether product, tech, marketing, partnerships, operations, compliance, and finance plans are mutually consistent and identify dependencies (e.g., campus partnerships require FERPA/GDPR compliance; marketing campaigns align with feature readiness and semester cycles).",
+        "weight": 0.14
+      },
+      {
+        "criterion": "Uncertainty Management, Scenarios, and Decision Gates",
+        "explanation": "Evaluates whether key uncertainties (e.g., adoption rates, model accuracy, campus procurement timelines) are linked to scenario/sensitivity analysis and explicit decision gates with criteria for pivot/continue, maintaining logical robustness under varying assumptions.",
+        "weight": 0.08
+      },
+      {
+        "criterion": "Section Transition Coherence (Logical Bridging)",
+        "explanation": "Checks whether transitions clearly connect why the next section follows from the previous one (e.g., how research findings inform MVP scope; how MVP metrics drive GTM choices), preventing logical breaks between major sections.",
+        "weight": 0.06
+      },
+      {
+        "criterion": "Assumption Explicitness and Testability Plan",
+        "explanation": "Assesses whether critical assumptions are explicitly listed, prioritized by impact/uncertainty, and tied to specific validation experiments (e.g., preorders, campus pilot MOUs), with pass/fail thresholds that logically determine subsequent actions.",
+        "weight": 0.04
+      }
+    ],
+    "clarity_readability": [
+      {
+        "criterion": "Structural Organization and Navigability",
+        "explanation": "Checks whether the report has a clear section hierarchy and wayfinding: a table of contents, numbered headings, consistent section templates (e.g., Objective → Steps → Deliverables → Owners → Timeline), and cross-references so readers can quickly locate parts like market research design, platform architecture, marketing, business models, risks, and financing.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Language Clarity and Action-Oriented Tone",
+        "explanation": "Evaluates whether sentences are concise and unambiguous, using active voice and imperative verbs for instructions (e.g., 'Run 20 student interviews'), with parallel structure in lists and consistent terminology, avoiding filler jargon and overly long sentences that obscure action steps.",
+        "weight": 0.2
+      },
+      {
+        "criterion": "Effectiveness of Visuals and Diagrams",
+        "explanation": "Assesses whether charts/diagrams (e.g., functional architecture, research workflow, Gantt timeline, marketing funnel, pricing comparison tables) are readable on-screen, with clear titles, labeled axes/units/legends, accessible color contrast, and a one-sentence takeaway caption so visuals stand alone and clarify text.",
+        "weight": 0.16
+      },
+      {
+        "criterion": "Terminology and Acronym Clarity",
+        "explanation": "Checks that technical and business terms (e.g., LLM, RAG, MLOps, MVP, CAC, LTV, ARPU) are defined at first use or in a glossary, acronyms are expanded on first mention, similar terms are distinguished, and labels for features/modules are used consistently to prevent confusion.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Scannability and Highlighting of Key Points",
+        "explanation": "Evaluates whether key information is easy to scan via bullet lists, numbered steps, checklists, callout boxes, and emphasis for deadlines, KPIs, and next actions; information is chunked with adequate white space so readers can quickly extract what to do and when.",
+        "weight": 0.12
+      },
+      {
+        "criterion": "Formatting Consistency and Typography Hygiene",
+        "explanation": "Assesses consistent fonts, heading sizes, spacing, bullet/numbering styles, table formatting, and uniform treatment of dates, currencies, and units; prevents visual noise that distracts from content and improves long-form reading comfort.",
+        "weight": 0.1
+      },
+      {
+        "criterion": "Quality of Executive Summary and Section Summaries",
+        "explanation": "Checks for a succinct executive summary and per-section TL;DRs that surface objectives, key recommendations, and next steps in 3–5 bullets, enabling busy readers to grasp the essentials rapidly without reading the full text.",
+        "weight": 0.1
+      }
+    ]
+  }
+}
