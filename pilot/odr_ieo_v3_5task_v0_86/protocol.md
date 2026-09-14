@@ -34,6 +34,16 @@ module name. The wrapper now explicitly rebuilds the unchanged `BatchScores` sch
 type. Reports, blind labels, criteria, scoring prompt, judge model, and aggregation are unchanged; the
 same two labels are rerun from scratch.
 
+## v0.89 hard wall-time enforcement
+
+The first v0.88 T02 pair remained blocked in synchronous webpage work beyond the frozen 30-minute
+limit because `asyncio.wait_for` cannot fire while the event loop is blocked by synchronous code.
+Both processes were terminated after the violation, and their input-only directories are retained
+under `engineering_failures/v088_wall_timeout/`; neither report nor score was produced. Before the
+T02 pair is restarted, v0.89 adds a POSIX process alarm using the already-frozen 1,800-second value.
+This changes only timeout enforcement, applies symmetrically to both conditions, and leaves prompts,
+models, tools, budgets, eligibility gates, selection, rubrics, and metrics unchanged.
+
 ## Selection
 
 Select the first five workbook-order task/persona rows that have released exact-pair PDR criteria,

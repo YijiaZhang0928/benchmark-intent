@@ -8,6 +8,7 @@ import asyncio
 import hashlib
 import importlib.util
 import json
+import signal
 import sys
 import traceback
 from datetime import datetime, timezone
@@ -112,6 +113,12 @@ def main() -> int:
     parser.add_argument("--recursion-limit", type=int, default=120)
     parser.add_argument("--timeout-seconds", type=int, default=1800)
     args = parser.parse_args()
+
+    def hard_timeout(_signum, _frame):
+        raise TimeoutError(f"hard wall timeout after {args.timeout_seconds} seconds")
+
+    previous_handler = signal.signal(signal.SIGALRM, hard_timeout)
+    signal.alarm(args.timeout_seconds)
     try:
         result = asyncio.run(asyncio.wait_for(run(args), timeout=args.timeout_seconds))
         print(json.dumps(result, ensure_ascii=False, indent=2))
@@ -127,6 +134,9 @@ def main() -> int:
         (args.output_dir / "failure.json").write_text(json.dumps(failure, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(failure, ensure_ascii=False, indent=2), file=sys.stderr)
         return 2
+    finally:
+        signal.alarm(0)
+        signal.signal(signal.SIGALRM, previous_handler)
 
 
 if __name__ == "__main__":
