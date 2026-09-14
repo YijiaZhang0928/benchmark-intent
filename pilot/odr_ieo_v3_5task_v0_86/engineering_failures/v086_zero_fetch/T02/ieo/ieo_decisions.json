@@ -1,0 +1,224 @@
+[
+  {
+    "candidates": [
+      {
+        "name": "home_degree_program_context",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "academic affiliation and program",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A named institution and degree program would allow the shortlist to be filtered for partner access, subject eligibility, academic level, and compatible courses.",
+          "It would permit institution-specific credit-conversion, residency-rule, preapproval, and transcript guidance instead of generic transfer caveats."
+        ],
+        "should_ask": true,
+        "question": "Which home degree program should I use for eligibility and credit matching, including your institution, degree level, and major or field?"
+      },
+      {
+        "name": "primary_program_objective",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "academic and experiential goals",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Prioritizing dependable transferable credit would favor established institutional exchanges with broad course catalogs and clear equivalencies.",
+          "Prioritizing research, professional networking, or cultural immersion would elevate specialist laboratories, project-based visiting schemes, or language-intensive destinations even when transfer is less automatic."
+        ],
+        "should_ask": true,
+        "question": "What should be the primary objective: dependable transferable credit, specialist coursework, research and professional networking, or language and cultural immersion?"
+      },
+      {
+        "name": "affordability_priority",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "cost-versus-opportunity trade-off",
+        "deliverable_influence": "high",
+        "evidence_strength": "weak",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A strict affordability priority would elevate low-fee exchanges, lower-cost cities, subsidized housing, and programs with realistic scholarship access.",
+          "A willingness to pay more for academic fit or reputation would keep expensive United States and Singapore options competitive when their curriculum or networks are stronger."
+        ],
+        "should_ask": true,
+        "question": "How should affordability affect the ranking: strict low-cost priority, balanced against academic fit, or secondary to academic quality and opportunity?"
+      },
+      {
+        "name": "intended_term",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "timing and availability",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A near-term intake would restrict the shortlist to programs whose nomination, application, visa, and housing deadlines remain feasible.",
+          "A later intake would permit options with annual application cycles and change the preparation plan, scholarship calendar, and course-availability evidence."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "hard_total_budget",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "financial eligibility and resources",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A low fixed ceiling would remove destinations whose tuition, housing, insurance, flights, and visa costs exceed the ceiling even with ordinary aid.",
+          "A higher ceiling would broaden the shortlist and shift financial analysis from basic feasibility toward value for money."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "language_proficiency",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "language readiness",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "English-only study would restrict Japan and parts of Europe to verified English-taught course inventories and may reduce local-language integration.",
+          "Relevant language proficiency would unlock local-language modules, wider research placements, and a different cultural-preparation plan."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "citizenship_and_passport_status",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "immigration and funding eligibility",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "One citizenship may qualify for visa waivers, simplified student permission, or nationality-restricted scholarships.",
+          "Another may require longer visa processing, proof of funds, biometrics, or additional health and security documentation, moving deadlines earlier."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "academic_standing_and_prerequisites",
+        "source": "latent",
+        "variable_type": "current_state_fact",
+        "preference_class": "academic eligibility",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Strong grades and completed prerequisites would preserve selective universities, advanced modules, and research placements in the shortlist.",
+          "Lower grades or missing prerequisites would shift recommendations toward broadly accessible exchanges and courses without advanced sequencing requirements."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "support_versus_independence_preference",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "support-versus-independence trade-off",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A preference for strong support would elevate partner exchanges with coordinated housing, orientation, advising, and established credit workflows.",
+          "Comfort with administrative independence would allow direct-enrollment and visiting-student options offering greater curricular flexibility but more self-managed applications, housing, and transfer approval."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "regional_priority_order",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "destination prioritization",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Evidence favoring Europe on cost, mobility, and semester compatibility would place European programs first.",
+          "Evidence favoring the United States, Japan, or Singapore for the selected field, research ecosystem, or networks would move that region to the top despite different costs and adaptation demands."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "academic_legitimacy_and_credit_bearing_floor",
+        "source": "task_slot",
+        "variable_type": "normative_floor",
+        "preference_class": "academic quality assurance",
+        "deliverable_influence": "high",
+        "evidence_strength": "strong",
+        "answerability": "known_now",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Programs lacking recognized institutional sponsorship, assessable academic work, or an official transcript would be excluded rather than merely ranked lower.",
+          "Formal university exchanges and documented visiting-student programs would receive preference over commercial study tours or noncredit experiences."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "program_offerings_costs_and_requirements",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "comparative program evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Verified current course catalogs, semester dates, fees, housing costs, visa rules, and scholarship terms would determine which programs remain feasible.",
+          "Evidence of discontinued intakes, restricted subjects, incompatible calendars, or unavailable aid would remove or downgrade otherwise attractive options."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "home_institution_credit_transfer_policy",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "credit recognition and approval",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A permissive preapproval and equivalency policy would support a broader range of partner and direct-enrollment programs.",
+          "Strict residency, grade, contact-hour, or partner-only rules would narrow the shortlist and add mandatory adviser and registrar approvals to the preparation plan."
+        ],
+        "should_ask": false,
+        "question": ""
+      }
+    ],
+    "selected_variables": [
+      "home_degree_program_context",
+      "primary_program_objective",
+      "affordability_priority"
+    ],
+    "need_clarification": true,
+    "selected_question": "1. Which home degree program should I use for eligibility and credit matching, including your institution, degree level, and major or field?\n2. What should be the primary objective: dependable transferable credit, specialist coursework, research and professional networking, or language and cultural immersion?\n3. How should affordability affect the ranking: strict low-cost priority, balanced against academic fit, or secondary to academic quality and opportunity?\n\nThese answers will determine eligibility and credit matching, the shortlist’s ranking criteria, and how strongly costs and financial aid shape the recommendations.",
+    "verification": "The selected questions cover the essential academic context and two distinct ranking values. Other unknowns such as intake term, citizenship, language level, grades, and a hard budget can initially be handled through dated scenarios, eligibility filters, and clearly stated assumptions without displacing the higher-impact questions.",
+    "policy_valid": true,
+    "eligible_preference_count": 3
+  }
+]

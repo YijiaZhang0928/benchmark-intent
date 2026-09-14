@@ -1,0 +1,208 @@
+[
+  {
+    "candidates": [
+      {
+        "name": "Preferred AI research themes or problems",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "research interests",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Interest in theoretical ML, alignment, or robustness would shift the shortlist toward theory-heavy groups and add proof, optimization, and research-reproduction preparation.",
+          "Interest in robotics, multimodal systems, or AI for science would prioritize programs with specialized hardware, datasets, laboratories, and domain partnerships, plus corresponding project preparation."
+        ],
+        "should_ask": true,
+        "question": "Which 1–3 AI problems or research themes most interest you?"
+      },
+      {
+        "name": "Primary post-PhD career objective",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "career outcome",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "An academic-research goal would emphasize advisor publication records, theory depth, teaching opportunities, and faculty-placement outcomes.",
+          "An industrial R&D or startup goal would give more weight to internships, applied infrastructure, technology-transfer support, employer links, and regional work opportunities."
+        ],
+        "should_ask": true,
+        "question": "What is your primary post-PhD objective: academic research, industrial R&D, entrepreneurship, or applied leadership?"
+      },
+      {
+        "name": "Current AI-PhD readiness profile",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "academic and research preparation",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A strong relevant degree, advanced mathematics, and substantial publications would support an ambitious research-intensive shortlist and a plan focused on advisor contact and proposal refinement.",
+          "Limited research or prerequisite coursework would produce a more conservative shortlist and a plan emphasizing coursework, supervised projects, research-assistant work, and possibly a research master's first."
+        ],
+        "should_ask": true,
+        "question": "What is your current AI-PhD readiness profile, including highest degree and field, grades, key math/CS coursework, research or publications, and substantial AI/software experience?"
+      },
+      {
+        "name": "Funding requirement and ability to self-fund",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "financial feasibility",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A fully funded-only requirement would exclude unfunded offers and prioritize salaried European positions, funded North American doctorates, and scholarship-secured Asian programs.",
+          "Meaningful self-funding capacity would permit tuition-bearing programs and bridge degrees, with the report comparing total cost and expected return more broadly."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Regional, mobility, and language preferences",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "destination preference",
+        "deliverable_influence": "medium",
+        "evidence_strength": "weak",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A North America preference would increase attention to cohort-based admissions, rotations, coursework, qualifying exams, and internship ecosystems.",
+          "A Europe or Asia preference would increase attention to direct-supervisor hiring, project-specific vacancies, salaried employment models, local-language expectations, and post-study mobility."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Preferred supervision and curriculum structure",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "learning and supervision style",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Preference for structured exploration would favor programs with rotations, substantial coursework, cohort support, and later advisor selection.",
+          "Preference for early independence would favor direct-entry laboratories, project-defined European positions, and programs with minimal required coursework."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Prestige, advisor fit, placement, and admission-risk trade-off",
+        "source": "latent",
+        "variable_type": "preference_value",
+        "preference_class": "program-selection trade-off",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A prestige-oriented posture would produce a more reach-heavy portfolio centered on globally prominent departments and laboratories.",
+          "A fit- and certainty-oriented posture would broaden the portfolio toward less famous programs with stronger advisor alignment, funding certainty, and recent placement evidence."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Citizenship and current country of residence",
+        "source": "latent",
+        "variable_type": "current_state_fact",
+        "preference_class": "visa and scholarship eligibility",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Eligibility for nationality-restricted scholarships or domestic-fee arrangements would add specific funding routes and potentially lower-cost programs.",
+          "Visa, export-control, or mobility restrictions would remove some laboratories or topics and add earlier immigration and document-processing milestones."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Current English and other relevant language-test status",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "language readiness",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Existing qualifying scores or an exemption would remove test preparation and permit earlier focus on research outputs and applications.",
+          "No qualifying score would add IELTS, TOEFL, or local-language preparation, test dates, retake buffers, and score-validity checks to the timeline."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Exact intended intake cycle",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "application timing",
+        "deliverable_influence": "medium",
+        "evidence_strength": "weak",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A 2027–2028 start would require immediate program triage, testing, references, and rapid conversion of current work into application evidence.",
+          "A 2028–2029 start would allow a longer research assistantship, stronger publications, deeper prerequisite study, and two staged application cycles."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Program-level strengths, curricula, resources, requirements, costs, funding, and outcomes",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "external program evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Programs with guaranteed multi-year funding and strong relevant faculty capacity would be promoted over nominally prestigious programs with uncertain supervision or support.",
+          "Programs with restrictive prerequisite, language, tuition, or application conditions would be downgraded or accompanied by explicit remediation steps."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Final regional weighting and reach-match portfolio",
+        "source": "latent",
+        "variable_type": "agent_recommended",
+        "preference_class": "application portfolio strategy",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Strong profile-to-lab alignment and ample funding opportunities could justify a concentrated portfolio of research-intensive programs.",
+          "A developing profile or uncertain supervisor availability would justify a diversified portfolio across regions, selectivity levels, and structured versus direct-hire models."
+        ],
+        "should_ask": false,
+        "question": ""
+      }
+    ],
+    "selected_variables": [
+      "Preferred AI research themes or problems",
+      "Primary post-PhD career objective",
+      "Current AI-PhD readiness profile"
+    ],
+    "need_clarification": true,
+    "selected_question": "1. Which 1–3 AI problems or research themes most interest you? This will determine which directions, laboratories, prerequisites, and projects the report emphasizes.\n2. What is your primary post-PhD objective: academic research, industrial R&D, entrepreneurship, or applied leadership? This will change how programs are weighted for publication culture, internships, industry links, and placement.\n3. What is your current AI-PhD readiness profile, including highest degree and field, grades, key math/CS coursework, research or publications, and substantial AI/software experience? This will determine the reach/match shortlist and the gaps addressed in the 1–2 year plan.",
+    "verification": "The questions cover two distinct user-owned preference classes and one essential current-state profile. Each has high influence, no visible answer, high post-research residuality, and concrete effects on the shortlist and preparation plan. Program facts will be researched, while funding, location, language, citizenship, and intake uncertainty can initially be handled through explicit conditional branches.",
+    "policy_valid": true,
+    "eligible_preference_count": 3
+  }
+]

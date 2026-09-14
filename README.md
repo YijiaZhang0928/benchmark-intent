@@ -66,6 +66,8 @@ v0.85 完成上述复现。两边都问到 risk、holding style、liquidity 并�
 
 v0.86 将单行复现扩为五行批次，运行前固定为 workbook 顺序的 T01/T02/T05/T08/T11，并排除已观察 T09。每题跑 stock ODR 与 IEO-v3、使用相同 task-only input 与 67-leaf rubric；主量为五题 paired mean `ΔP_strict` 和 macro `ΔRecall@AskableHigh`，禁止结果后只留正差。新 structured simulator 只回答当前问题并保持顺序，用于修复上一轮 positional mismatch。冻结协议见 [`pilot/odr_ieo_v3_5task_v0_86/`](pilot/odr_ieo_v3_5task_v0_86/)。
 
+v0.87 在任何 batch 评分前识别并修复 ODR research gate：首批 T01/T02 四个 cell 全部只有 search、没有 page fetch，T02 stock 还只有 117 字符，故原样保留为 engineering failures、不评分。重跑工具对两臂统一采用 search 后自动打开前两个有效来源，并冻结每份至少 5 successful fetches、1,000 字符的有效门；其余实验设计不变。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。

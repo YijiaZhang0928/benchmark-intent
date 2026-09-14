@@ -1,8 +1,21 @@
 # Five-task strict-cold-start IEO-v3 batch protocol (v0.86)
 
-Status: **locked before all five-task batch model outputs**
+Status: **v0.86 generation excluded before scoring; v0.87 engineering repair locked before reruns**
 
 Lock date: 2026-09-13
+
+## v0.87 pre-score engineering repair
+
+The first T01/T02 attempts under v0.86 produced zero successful page fetches in all four cells; T02
+stock also returned only 117 report characters. They are retained as engineering failures and are
+ineligible for scoring or generation counts. No rubric score was inspected.
+
+Before rerunning any cell, v0.87 freezes one symmetric tool repair: every `web_search` automatically
+opens the first two valid result URLs and returns their extracted page text, while explicit
+`web_fetch` remains available. Both stock and IEO-v3 use the byte-identical repaired tool. A scored
+report must contain at least five successful fetch events and at least 1,000 characters. The five-task
+selection, prompts, simulator, model, clarification policies, rubrics, metrics and all other budgets
+remain unchanged. Engineering reruns replace, rather than supplement, the excluded attempts.
 
 ## Selection
 

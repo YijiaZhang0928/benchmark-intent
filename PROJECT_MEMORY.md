@@ -3,10 +3,16 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-13
-当前版本：v0.86（five-task strict IEO-v3 batch protocol）
+当前版本：v0.87（five-task DR auto-open engineering repair）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：五题 batch 的 DR 资格工程修复
+
+v0.86 协议后首批 T01/T02 四个 cell 均完成模型流程，但全部只有 search、0 个 successful page fetch；T02 stock 的 final_report 仅 117 字符。它们在任何 rubric score 运行前被判为不满足用户要求的真实 Deep Research，完整移入 `engineering_failures/v086_zero_fetch/`，不计 generation，不评分，也不能作为有利或不利 system outcome。
+
+v0.87 在重跑前对两臂对称冻结唯一工程修复：`web_search` 自动打开前两个有效结果并返回页面正文，显式 `web_fetch` 仍保留；有效报告必须至少 5 个 successful fetch events 且至少 1,000 字符。五题选择、task-only inputs、simulator、backbone、clarification policy、rubrics、metrics 与其余研究预算均不变。该 repair 必须单独 commit 后才可重跑。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：五题 strict-cold-start IEO-v3 batch 冻结
 

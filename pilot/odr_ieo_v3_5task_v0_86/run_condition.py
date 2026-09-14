@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field
 ROOT = Path(__file__).resolve().parent
 PROJECT = ROOT.parents[1]
 BASE_PATH = PROJECT / "pilot/odr_ieo_v3_micro_ab_v0_84/run_condition.py"
+SEARCH_TOOLS_PATH = ROOT / "search_tools_auto_open.py"
 ACTIVE_CASE: Path | None = None
 
 
@@ -83,6 +84,7 @@ async def run(args: argparse.Namespace) -> dict:
     ACTIVE_CASE = args.case_root.resolve()
     case = json.loads((ACTIVE_CASE / "case.json").read_text(encoding="utf-8"))
     base.ROOT = ACTIVE_CASE
+    base.SEARCH_TOOLS_PATH = SEARCH_TOOLS_PATH
     base.simulator_answer = simulator_answer
     result = await base.run(args)
     result.update({

@@ -1,5 +1,12 @@
 # benchmark-intent 设计迭代记录
 
+## v0.87 Five-task DR auto-open repair - 2026-09-13
+
+- v0.86 首批 T01/T02 四 cell 均为 0 successful page fetch，且 T02 stock 仅 117 report characters；在评分前全部判为工程不合格并保留，不计 generation。
+- 对称修复 search tool：每次搜索自动打开前两个有效来源并返回正文，同时保留显式 fetch。
+- 新增 counted gate：每份报告至少 5 successful fetches 且至少 1,000 字符；不通过者不评分。
+- 其余任务集合、模型、simulator、clarification、rubric、metric 与预算完全不变；修复后重新运行替代不合格尝试。
+
 ## v0.86 Five-task strict IEO-v3 batch protocol - 2026-09-13
 
 - 在输出前按 workbook 顺序冻结 T01/T02/T05/T08/T11：前五个 released exact pairs，排除已观察的 T09；禁止按结果筛除负差。
