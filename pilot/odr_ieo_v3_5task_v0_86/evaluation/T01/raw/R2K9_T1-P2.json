@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T1-P2-01",
+      "score": 10,
+      "evidence_span": "During the next year, the primary goal should be one research-grade project rather than many disconnected activities. The project should combine:\n\n- a meaningful hypothesis;\n- strong retrieval or adaptation baselines;\n- efficient implementation;\n- robustness and error analysis;\n- reproducible code;\n- a credible technical paper.",
+      "rationale": "Explicitly prioritizes a substantial hands-on research project, including baseline work, implementation, experimentation, and reproducible code."
+    },
+    {
+      "criterion_id": "T1-P2-02",
+      "score": 10,
+      "evidence_span": "QLoRA demonstrates that meaningful adaptation research does not always require frontier-scale infrastructure: it reported fine-tuning a 65B model on one 48 GB GPU by combining frozen 4-bit weights with low-rank adapters [7].",
+      "rationale": "Selects a cited research result specifically to establish the infrastructure feasibility of conducting hands-on adaptation experiments."
+    },
+    {
+      "criterion_id": "T1-P2-03",
+      "score": 10,
+      "evidence_span": "QLoRA’s reported reduction from more than 780 GB for ordinary 16-bit fine-tuning of a 65B model to under 48 GB illustrates why efficiency research can make experiments accessible [7].",
+      "rationale": "Provides a named method and a verifiable memory-requirement comparison showing how the option enables accessible experimentation."
+    },
+    {
+      "criterion_id": "T1-P2-04",
+      "score": 4,
+      "evidence_span": "4.0 full-course equivalents for direct-entry students;",
+      "rationale": "Gives a concrete coursework requirement for Toronto's direct-entry route, but does not establish that this route is mainly classroom-based preparation. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T1-P2-05",
+      "score": 4,
+      "evidence_span": "3. solve written exercises, not only watch lectures;\n4. implement key methods from first principles;",
+      "rationale": "Contrasts active exercises and implementation with lecture-only learning, but does not directly compare the two preparation routes on a stated consequential decision axis. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T1-P2-06",
+      "score": 10,
+      "evidence_span": "### 1.1 Applied and domain-specific NLP\n\nThis includes classification, extraction, summarization, question answering, dialogue, translation, document processing, and adaptation to medicine, science, finance, law, education, patents, or software engineering.\n\n**Advantages**\n\n- Relatively accessible compute requirements.\n- Natural use of your implementation strength.\n- Many public datasets and reproducible baselines.",
+      "rationale": "Names a recommended research direction and explicitly gives implementation fit, accessible compute, and reproducible baselines as selection advantages."
+    },
+    {
+      "criterion_id": "T1-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named viable option is downgraded because it favors mainly classroom or course-based preparation."
+    },
+    {
+      "criterion_id": "T1-P2-08",
+      "score": 10,
+      "evidence_span": "Reproduce at least **two published baselines**.",
+      "rationale": "Provides an executable replication task with a concrete action object."
+    },
+    {
+      "criterion_id": "T1-P2-09",
+      "score": 10,
+      "evidence_span": "### Measurable milestones by December 31, 2026\n\n- Read and annotate **15–20 papers**.\n- Reproduce at least **two published baselines**.",
+      "rationale": "Defines a dated checkpoint and a numerical minimum for hands-on replication."
+    },
+    {
+      "criterion_id": "T1-P2-10",
+      "score": 4,
+      "evidence_span": "### If formal mathematics is weak\n\nOver the next two semesters:\n\n1. take graded linear algebra and probability/statistics;\n2. add optimization;",
+      "rationale": "Identifies weak formal mathematics as a concrete condition for adding graded courses, but does not say mainly course-based preparation should replace or outrank project-based preparation. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T1-P2-11",
+      "score": 4,
+      "evidence_span": "QLoRA’s reported reduction from more than 780 GB for ordinary 16-bit fine-tuning of a 65B model to under 48 GB illustrates why efficiency research can make experiments accessible [7].",
+      "rationale": "Explicitly links cited evidence to experimental accessibility, but this span does not complete a preference-to-evidence-to-selection/action chain. Connecting it to later project choices requires inference, so partial credit is capped."
+    }
+  ]
+}

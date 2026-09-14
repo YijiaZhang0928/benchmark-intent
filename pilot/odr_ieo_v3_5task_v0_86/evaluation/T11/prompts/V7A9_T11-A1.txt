@@ -1,0 +1,1849 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Develop a six-month plan for creating a media account that builds a distinctive brand in a niche area, attracts a stable audience and, if feasible, supports monetization.
+
+Cover niche selection, target audience, value proposition, brand voice, differentiated content themes, a three-month topic calendar, storytelling and interactive formats, platform selection, posting frequency, multi-platform coordination, engagement and community strategy, growth experiments, KPI tracking, monetization paths, resource allocation, competitive differentiation, risks and relevant domestic and international cases.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T11-A1-01",
+    "criterion": "The report gives one concrete fact relevant to include professional/knowledge-oriented channels.",
+    "criterion_explanation": "A named option has a verifiable fact tied to this average-impact preference.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T11-A1-02",
+    "criterion": "The report distinguishes include professional/knowledge-oriented channels from entertainment channels only.",
+    "criterion_explanation": "At least one option-level difference is explicit on the preference axis.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T11-A1-03",
+    "criterion": "The shortlist or recommendation uses include professional/knowledge-oriented channels as a tie-breaker or secondary fit factor.",
+    "criterion_explanation": "The preference changes one rank, inclusion, exclusion or stated fit judgment.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T11-A1-04",
+    "criterion": "The final recommendation does not contradict include professional/knowledge-oriented channels.",
+    "criterion_explanation": "No selected option is explicitly justified by the opposing value without a disclosed trade-off.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label V7A9):
+# Evidence-Based Six-Month Plan for a China-Based AI Applications, Industry, and Entrepreneurship Media Brand
+
+**Current as of September 14, 2026**
+
+## Executive recommendation
+
+The strongest lean positioning is not another general AI-news account, prompt library, or automated tool-review feed. Those categories are crowded, easy to copy, dependent on platform distribution, and especially vulnerable to factual mistakes, product obsolescence, homogeneous AI-generated content, and audience fatigue.
+
+The recommended brand is:
+
+> **A decision-grade “AI implementation ledger” for Chinese founders and operators: independently testing AI workflows, documenting cost, time saved, failure modes, compliance issues, and explaining which industry developments actually change a business decision.**
+
+A suitable working name is **“AI落地账本”**—literally, “AI Implementation Ledger”—with the tagline:
+
+> **不追每条新闻，只验证下一步行动。**  
+> Do not chase every headline; verify the next action.
+
+The default six-month strategy should be:
+
+- **Primary objective:** establish authority and a stable, qualified repeat audience.
+- **Supporting objectives:** build an owned or directly reachable audience, develop a credible public portfolio, conduct structured audience research, and validate lead-generation or paid-workshop demand.
+- **Monetization objective:** seek evidence of willingness to pay, but do not optimize primarily for advertising or immediate platform revenue.
+- **Primary platform:** WeChat Official Account as the canonical archive, trust layer, and conversion destination.
+- **Default supporting platform:** Zhihu for searchable, professional discovery if working text-first.
+- **Alternative supporting platform:** WeChat Channels if willing to produce screen-recorded, voice-over, or on-camera video.
+- **Expansion platforms:** Xiaohongshu for visual workflows and individual professionals; Bilibili for durable technical video; Douyin only when short-video production capacity and a repeatable visual format have been demonstrated.
+- **Lean cadence:** one flagship article, one native discovery adaptation, and one short-form derivative per week.
+- **Six-month output:** approximately 24 flagship pieces, 40–60 derivatives, at least 12 documented workflow tests, 8–12 operator interviews, and one or two original benchmark reports.
+- **Commercial sequence:** audience interviews → free diagnostic asset → small paid workshop or audit → case study → recurring B2B service, sponsorship, or paid product.
+
+Because creator expertise, existing audience, budget, available hours, and camera preference are unknown, the first month must function as a **positioning-validation sprint**, not merely a publishing launch.
+
+---
+
+## 1. Evidence base and important limitations
+
+The strongest current evidence in the research is China-specific regulatory and platform-policy material:
+
+- The national **Measures for Labeling AI-Generated and Synthetic Content** took effect on September 1, 2025 and impose explicit creator responsibilities for declaring generated or synthetic material. The rules cover text, images, audio, video, and virtual scenes and distinguish visible labels from technical metadata labels. Users publishing such material must proactively declare it and use the platform’s labeling function. Removing, concealing, or falsifying required labels is prohibited. [Measures for Labeling AI-Generated and Synthetic Content](https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm) [1]
+- WeChat Channels’ official standards provide detailed prohibitions covering false information, exaggerated headlines, fake engagement, induced sharing or liking, undisclosed advertising, infringement, privacy violations, bulk homogeneous content, and low-quality assembly. [Weixin Channels Operation Standards](https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_agreement&s=video) [2]
+- Zhihu states that originality, sustained vertical specialization, factual quality, saves, upvotes, and other feedback affect account quality and recommendation, while misinformation, plagiarism, aggregation, fabricated experience, clickbait, and emotional incitement can reduce account quality. [Zhihu Salt Score](https://www.zhihu.com/term/credit) [3]
+- WeChat Channels offers an original-content declaration and suspected-copy protection process for eligible accounts, although availability is determined by the system and was described as being in testing in the retrieved documentation. [WeChat Channels Original-Content Declaration Guide](https://findeross.weixin.qq.com/cgi-bin/mmfindernodelivecrmwebbroker-bin/helper-center/pages/JGJ5RCnIa4g2Y72h) [4]
+
+The available market and platform data are less complete. An accessible summary of a 2025 China social-media guide described continued growth in social-media users and time spent, a plateau in short-video user growth, and increasing importance of search, key-opinion sales, founder IP, and AI in marketing. It characterized WeChat as strengthening search and commerce, Xiaohongshu as oriented toward recommendation and buyer-driven commerce, Douyin toward full-funnel operations and founder IP, Bilibili toward vertical content and B2B marketing, and Zhihu toward professional content and knowledge co-creation. However, the retrieved summary did not provide the original methodology or detailed sample, so it should be treated as directional rather than definitive. [2025 China Social Media Platform Guide summary](https://www.sohu.com/a/879809965_121094725) [5]
+
+As of September 14, 2026, the research did **not** verify current creator-admission thresholds, revenue shares, or program eligibility for:
+
+- Douyin’s 巨量星图;
+- Xiaohongshu’s 蒲公英;
+- Bilibili’s current 花火 and creator-incentive programs;
+- Zhihu’s current paid-content and commercial programs;
+- WeChat Official Account 流量主 or Channels monetization;
+- platform-specific external-link and commercial-disclosure mechanics.
+
+These must be checked directly in the relevant creator dashboard before any platform-dependent monetization plan is activated. The official entry points include the [Douyin Creator Center](https://creator.douyin.com/?enter_from=home_class) [6], [Xiaohongshu Pugongying Help Center](https://pgy.xiaohongshu.com/help/home) [7], [WeChat Official Account Rule Center](https://mp.weixin.qq.com/webpoc/ruleCenter?type=oa) [8], and Bilibili’s creator-program documentation. Older program pages should not be assumed to state September 2026 requirements.
+
+Consequently, numeric targets below are **planning ranges**, not claimed industry benchmarks.
+
+---
+
+## 2. Niche assessment and recommended positioning
+
+### 2.1 Evaluation criteria
+
+Candidate niches should be judged on five factors:
+
+1. **Audience demand — 25%:** Is there a recurring, costly problem rather than temporary curiosity?
+2. **Competitive saturation — 20%:** Can a solo creator avoid competing directly with staffed newsrooms and mass-produced accounts?
+3. **Differentiated value — 25%:** Can the account generate evidence, access, judgment, or experience competitors cannot copy immediately?
+4. **Content sustainability — 15%:** Can the format be produced for at least six months without depending on constant breaking news?
+5. **Commercial potential — 15%:** Does the audience buy software, training, consulting, recruiting, data, events, or sponsorship?
+
+Scores below are strategic estimates for a lean creator, not measured market statistics.
+
+| Candidate sub-niche | Demand | Saturation advantage | Differentiation | Sustainability | Commercial potential | Weighted score |
+|---|---:|---:|---:|---:|---:|---:|
+| General AI news and model launches | 4.0 | 1.0 | 1.5 | 3.0 | 2.5 | **2.40/5** |
+| Generic AI tool and prompt tutorials | 4.5 | 1.5 | 2.0 | 2.5 | 3.0 | **2.75/5** |
+| AI-generated entertainment or automated content | 4.0 | 1.5 | 2.0 | 2.0 | 3.0 | **2.55/5** |
+| AI career and productivity education | 4.0 | 2.5 | 3.0 | 4.0 | 3.5 | **3.38/5** |
+| AI founder and industry analysis | 3.5 | 3.0 | 4.0 | 4.0 | 4.0 | **3.68/5** |
+| AI governance and compliance | 3.0 | 4.0 | 3.0 without legal expertise | 4.0 | 4.0 | **3.50/5** |
+| Tested AI workflows for Chinese small teams | 4.5 | 3.5 | 4.5 | 4.5 | 4.5 | **4.30/5** |
+| AI applications in an industry where the creator has deep expertise | 4.0 | 4.0 | 5.0 | 5.0 | 5.0 | **4.55/5** |
+
+### 2.2 Why general AI news is a weak primary niche
+
+General AI news has broad interest, but poor defensibility:
+
+- Large publications can publish faster and cover more companies.
+- Much of the content becomes obsolete within days.
+- Translation and summarization are easy to automate.
+- Breaking-news pressure increases hallucination and sourcing risk.
+- A few viral stories can conceal the absence of a stable repeat audience.
+- News aggregators have limited commercial differentiation unless they possess proprietary access or analysis.
+- WeChat explicitly restricts false information, misleading headlines, outdated event coverage, low-quality assembly, and batches of homogeneous content. [2]
+- Zhihu discourages aggregation, unauthorized republication, fabricated experience, and clickbait, while rewarding durable expertise and vertical specialization. [3]
+
+News should therefore be a **supporting input**, not the product. Every trend story should answer: “What decision changes, for whom, and based on what evidence?”
+
+### 2.3 Why generic tool tutorials are also weak
+
+Basic “five tools you must use” and prompt-template content can generate discovery, but it is difficult to sustain because:
+
+- Products change faster than editorial assets can be updated.
+- Vendors increasingly publish their own tutorials.
+- Tool lists are easy to copy.
+- Affiliate incentives can compromise perceived independence.
+- The content often attracts freebie-seekers rather than buyers or decision-makers.
+- Automated production encourages the homogeneous, assembled style explicitly disfavored by WeChat.
+- A tutorial may demonstrate novelty without proving business value, error rate, adoption cost, privacy safety, or human-correction effort.
+
+Two August 2026 articles alleged that numerous AI tutorial, AI comic-drama, and matrix-account creators had stopped publishing because of rising production costs, weaker distribution, copyright pressure, audience fatigue, and falling revenue. The articles’ dramatic statistics were not independently verified, so they should not be used as benchmarks. Their directional warning—that template-based AI content is fragile—is nevertheless consistent with official WeChat quality rules and the national labeling requirements. [Report on AI creators stopping updates](https://www.tahou.com/article/214862472510042117) [9] [China.com report on AI-creator stoppages](https://news.china.com/socialgd/10000169/20260818/49682623_all.html) [10]
+
+### 2.4 Recommended niche: verified AI implementation for operators
+
+The recommended niche combines the three requested themes without treating them equally:
+
+- **45% tested AI applications**
+- **20% decision-relevant AI industry signals**
+- **15% founder and operator cases**
+- **10% economics, vendor selection, and implementation strategy**
+- **10% governance, copyright, privacy, and trust**
+
+The account should answer five recurring questions:
+
+1. Which business task is worth applying AI to?
+2. How well does it work under realistic Chinese operating conditions?
+3. What does it cost after human review, integration, and failure correction?
+4. What can go wrong—factually, legally, operationally, or reputationally?
+5. What should a founder or team do next: adopt, test, buy, build, or wait?
+
+This positioning is stronger because the durable asset is not access to headlines. It is a growing proprietary record of:
+
+- repeatable test protocols;
+- dated screenshots and outputs;
+- time and cost measurements;
+- failure examples;
+- operator interviews;
+- corrected and updated evaluations;
+- longitudinal adoption cases.
+
+### 2.5 Narrow further when professional expertise exists
+
+If the creator has genuine professional depth in manufacturing, cross-border commerce, software development, legal operations, healthcare administration, education, marketing, or another field, that vertical should replace the generic “small-team” audience.
+
+For example:
+
+> “Verified AI workflows, vendor economics, and regulatory risks for Chinese cross-border e-commerce teams.”
+
+That is more defensible than “AI for everyone.” However, a regulated vertical such as medicine, finance, securities, or law should not be selected without appropriate qualifications and strict review. WeChat specifically prohibits unauthorized securities or futures advice and restricts misleading medical information. [2]
+
+If no deep industry expertise exists, the safest identity is:
+
+> **An independent implementation tester and evidence curator—not an omniscient AI expert.**
+
+Credibility should come from transparent methods rather than inflated credentials.
+
+---
+
+## 3. Priority audience personas
+
+These personas are starting hypotheses. They should be validated through at least 15 interviews in month one.
+
+### 3.1 Primary persona: the resource-constrained founder or operator
+
+**Working profile**
+
+- Founder, general manager, operations lead, or business-unit head.
+- Typically in a knowledge-intensive, professional-service, SaaS, e-commerce, agency, consulting, or digitally enabled business.
+- Responsible for a small or medium team and pressured to increase output without uncontrolled hiring.
+- Interested in AI but does not want to become a full-time tool researcher.
+
+**Core needs**
+
+- A short list of tasks worth automating.
+- Realistic estimates of time saved and human-review cost.
+- Buy-versus-build guidance.
+- Vendor-neutral comparisons.
+- Privacy and intellectual-property safeguards.
+- Examples from businesses of comparable size.
+- Help deciding what not to implement.
+- A way to explain AI investment to partners, staff, or management.
+
+**Likely media behavior to validate**
+
+- Uses WeChat for professional reading, peer sharing, private communication, and events.
+- Searches Zhihu or platform search when investigating a specific problem.
+- Watches short video when the workflow can be shown quickly.
+- Responds to founder interviews and practical checklists more than abstract model benchmarks.
+
+**Most useful content**
+
+- Decision trees.
+- Cost and implementation ledgers.
+- “What failed” case studies.
+- Procurement and vendor questions.
+- Short executive summaries with a downloadable or copyable checklist.
+
+### 3.2 Secondary persona: the AI, product, operations, or growth lead
+
+**Working profile**
+
+- Product manager, growth lead, automation lead, technical operations manager, or internal AI champion.
+- Must evaluate tools, persuade colleagues, and manage implementation.
+- More technically literate than the founder persona but still judged on business results.
+
+**Core needs**
+
+- Reproducible evaluations.
+- Integration and workflow diagrams.
+- Failure taxonomies.
+- Data and privacy requirements.
+- Evidence that can support an internal proposal.
+- Awareness of important model, platform, and regulatory changes.
+- Peer examples and templates.
+
+**Likely media behavior to validate**
+
+- Uses Zhihu for depth and search.
+- Uses Bilibili for longer demonstrations.
+- Uses WeChat to save, circulate, or discuss material internally.
+- May use Xiaohongshu for visual productivity and workflow ideas.
+- May follow global sources but needs Chinese-language context and local implementation implications.
+
+### 3.3 Commercially valuable secondary persona: the emerging entrepreneur or specialist consultant
+
+**Working profile**
+
+- Independent consultant, agency owner, content professional, or entrepreneur exploring an AI-enabled product or service.
+- Wants opportunity maps, go-to-market analysis, and founder lessons.
+
+**Core needs**
+
+- Evidence of paying demand.
+- Startup and product teardowns.
+- Pricing and distribution lessons.
+- Examples of defensible human-plus-AI services.
+- Clear distinctions between temporary tool arbitrage and durable businesses.
+
+This persona may be more likely to purchase workshops or templates, but it also attracts “make money quickly” content. The account should avoid exaggerated wealth narratives, which are explicitly identified as problematic in WeChat’s standards. [2]
+
+---
+
+## 4. Value proposition, brand identity, and voice
+
+### 4.1 Core value proposition
+
+> **For Chinese founders and implementation leads who need to decide where AI is worth using, AI落地账本 independently tests workflows, records total cost and failure modes, and converts industry change into practical adopt/buy/build/wait decisions. Unlike AI-news feeds and prompt libraries, every major conclusion is dated, sourced, reproducible, and updated when conditions change.**
+
+### 4.2 Brand promise
+
+Every flagship piece should contain at least four of the following:
+
+- a clearly defined business task;
+- the tested date, product, and version;
+- input assumptions;
+- a reproducible method;
+- evidence or screenshots;
+- total time and monetary cost;
+- human-correction effort;
+- observed errors;
+- data, privacy, or copyright concerns;
+- a conclusion for a specific persona;
+- a confidence rating;
+- a disclosure of access, sponsorship, affiliate interest, and AI assistance.
+
+### 4.3 Voice
+
+The voice should be:
+
+- **Practical:** starts with a job or decision, not a technological abstraction.
+- **Skeptical but not cynical:** tests vendor claims without dismissing all innovation.
+- **Calm:** avoids “revolutionary,” “everyone will lose their job,” and “must use.”
+- **Specific:** names assumptions, date, scope, and limitations.
+- **Economically literate:** includes labor, review, integration, subscription, and failure costs.
+- **Transparent:** distinguishes observation, vendor claim, expert opinion, and inference.
+- **Constructively opinionated:** gives a recommendation rather than hiding behind neutral summary.
+- **Respectful:** avoids personal attacks, manufactured controversy, and emotional incitement.
+
+### 4.4 Visual identity
+
+Use a “lab notebook” or “ledger” visual system:
+
+- Dark blue, white, and one high-contrast accent color.
+- Tables, annotated screenshots, decision trees, and before/after workflow maps.
+- A standard scorecard on every test:
+  - Value;
+  - Reliability;
+  - Setup effort;
+  - Human-review burden;
+  - Data risk;
+  - Total cost;
+  - Recommended user.
+- Avoid generic robot imagery, glowing brains, copied product artwork, and sensational thumbnails.
+- Add a visible label such as:
+  - `实测`
+  - `案例`
+  - `趋势判断`
+  - `合规`
+  - `商业合作`
+  - `AI生成/AI辅助说明`
+
+---
+
+## 5. Differentiated content pillars and recurring series
+
+### Pillar 1: Workflow Lab — 45%
+
+**Recurring series:** `AI工作流实测`
+
+Format:
+
+1. Business task.
+2. Existing process.
+3. Tested AI workflow.
+4. Inputs and tools.
+5. Three or more test runs where feasible.
+6. Time and cost.
+7. Error and correction log.
+8. Data/compliance considerations.
+9. Who should use it.
+10. Adopt, pilot, or avoid.
+
+Examples:
+
+- Can AI reduce competitor research from four hours to 90 minutes without inventing sources?
+- Comparing three ways to turn customer interviews into product insights.
+- AI-assisted proposal writing: where time is saved and where review time increases.
+- Can a customer-service knowledge base answer accurately from Chinese internal documents?
+- Meeting transcript to decision log: what survives human verification?
+
+### Pillar 2: Signal versus Noise — 20%
+
+**Recurring series:** `本周信号，不是新闻汇总`
+
+Each piece should cover no more than three developments:
+
+- What happened?
+- What is the primary source?
+- What actually changed?
+- Who is affected?
+- What remains uncertain?
+- What action is justified now?
+- What should be ignored until more evidence exists?
+
+This prevents overreliance on aggregation. At least 70% of each edition should be analysis, testing, or implication rather than summary.
+
+### Pillar 3: Founder and Operator Field Notes — 15%
+
+**Recurring series:** `落地30天后`
+
+Interview founders or team leads after an implementation has operated long enough to reveal problems.
+
+Focus on:
+
+- What was expected?
+- Who owned implementation?
+- What was abandoned?
+- Where did employees resist?
+- What hidden cost emerged?
+- What was the measured result?
+- What would the operator do differently?
+
+Avoid promotional founder profiles with no critical examination.
+
+### Pillar 4: AI Business and Startup Teardown — 10%
+
+**Recurring series:** `AI生意拆解`
+
+Framework:
+
+- Customer pain;
+- Buyer and budget owner;
+- Product wedge;
+- Distribution;
+- gross-margin pressure;
+- dependence on upstream models;
+- switching cost;
+- data advantage;
+- compliance exposure;
+- durable moat;
+- failure scenarios.
+
+Avoid stock recommendations or unauthorized financial advice.
+
+### Pillar 5: Trust, Governance, and Compliance — 10%
+
+**Recurring series:** `上线前检查`
+
+Topics:
+
+- AI-content labeling.
+- Copyright and training-data questions.
+- Employee use of consumer AI tools.
+- Customer-data protection.
+- Face and voice cloning.
+- Sponsored-content disclosure.
+- Verifying model-generated citations.
+- Creating an internal acceptable-use policy.
+
+The national AI-labeling rules should be treated as an operational requirement, not a footnote. [1]
+
+---
+
+## 6. Six-month objective hierarchy
+
+### 6.1 Comparison of possible primary objectives
+
+| Objective | Six-month advantage | Main weakness | Suitability under current uncertainty |
+|---|---|---|---|
+| Raw audience growth | Fast feedback and visible momentum | Encourages broad, shallow, viral content and vanity metrics | Supporting objective only |
+| Authority and portfolio | Controllable, cumulative, improves career and business options | May grow more slowly | **Best primary objective** |
+| Community development | Produces high-quality feedback and loyalty | Labor-intensive; premature groups become inactive | Begin small in months 2–3 |
+| Lead generation | Commercially efficient for a qualified B2B audience | Requires credible expertise and a clear offer | Supporting objective; elevate if expertise exists |
+| Direct revenue | Tests willingness to pay | Can damage trust or distort content before product-market fit | Validation objective, not primary |
+| Owned-audience development | Reduces platform dependence | “Ownership” is limited on closed platforms; migration is difficult | Important supporting objective |
+
+### 6.2 Recommended primary objective
+
+> **By the end of month six, establish recognizable authority around verified AI implementation decisions and build a repeat, qualified audience that returns for evidence rather than isolated news.**
+
+### 6.3 Supporting objectives
+
+1. Build a portfolio of 24 decision-grade flagship pieces.
+2. Develop 12 or more reproducible workflow tests.
+3. Conduct at least 30 audience or operator interviews.
+4. Build direct audience relationships through WeChat replies, consented contact lists, small groups, events, or an international email list where relevant.
+5. Generate qualified inbound questions and identify one repeated commercial problem.
+6. Run at least one paid demand test without depending on platform advertising revenue.
+7. Build a documented editorial and compliance workflow that can continue after month six.
+
+---
+
+## 7. KPI framework and six-month targets
+
+The following ranges are targets for planning, not platform benchmarks. The first four weeks should establish the account’s own baseline.
+
+### 7.1 North-star metric
+
+**Monthly Returning Qualified Audience (MRQA)**
+
+A qualified audience member is someone who fits a target persona and performs at least one meaningful action. A returning qualified member interacts with two or more pieces, attends an event, replies, submits a case, or returns during a subsequent 30-day period.
+
+Where platforms do not expose individual return behavior, use privacy-preserving proxies:
+
+- aggregate returning-reader data, if available;
+- repeated substantive replies;
+- repeat event attendance;
+- consented group participation;
+- repeated downloads or form submissions;
+- monthly audience surveys.
+
+### 7.2 Target ranges
+
+| Metric | Month 3 | Month 6 baseline target | Stretch target |
+|---|---:|---:|---:|
+| Flagship pieces published | 12 | 24 | 30 |
+| Test-based flagship pieces | 6 | 12 | 18 |
+| Native derivatives | 20–30 | 40–60 | 80 |
+| Audience/operator interviews | 20 | 30–40 | 60 |
+| Qualified followers or subscribers | 300–800 | 1,000–3,000 | 5,000+ |
+| Monthly returning qualified audience | 75–150 | 300+ | 800+ |
+| Substantive replies, DMs, or case submissions | 25 cumulative | 100 cumulative | 250 |
+| Operator/founder interviews published | 2 | 8–12 | 18 |
+| Original mini-reports or benchmark assets | 1 | 2 | 4 |
+| Qualified inbound commercial inquiries | 2–5 | 10–20 | 30+ |
+| Paid pilot customers | 0–1 | 1–3 | 5+ |
+| Six-month experimental revenue | Optional | RMB 0–30,000 | RMB 60,000+ |
+
+The revenue range is not a forecast. Zero revenue is acceptable if the account produces a strong portfolio, an engaged audience, and clear evidence for a later offer.
+
+### 7.3 Quality and trust targets
+
+- At least **90% cadence adherence**.
+- **100% of material factual claims traceable** to a source, test record, or named interview.
+- Every test shows its date, version, and limitations.
+- Every commercial relationship is disclosed.
+- Every piece containing publishable AI-generated or synthetic material uses the required platform declaration and visible disclosure.
+- Material errors corrected within 24 hours of confirmation.
+- No purchased followers, fake engagement, engagement rings, or incentivized sharing.
+- No single viral post should account for more than 25%–30% of six-month qualified audience growth; this is a stability check, not an absolute platform rule.
+
+### 7.4 Engagement definitions
+
+Use consistent formulas rather than platform vanity numbers:
+
+- **Meaningful engagement rate**  
+  `(saves + shares + substantive comments + qualified DMs) / unique views`
+- **Qualified follow conversion**  
+  `new followers matching a target persona / profile or landing-page visitors`
+- **Repeat proxy rate**  
+  `returning engaged audience / prior 30-day engaged audience`
+- **Lead conversion**  
+  `qualified commercial inquiries / people exposed to an offer CTA`
+- **Content efficiency**  
+  `qualified actions / production hours`
+- **Evidence density**  
+  `material claims with a traceable source or test / all material factual claims`
+
+After four weeks, evaluate content primarily against the account’s own rolling median, not an external benchmark.
+
+---
+
+## 8. Platform strategy
+
+## 8.1 Default lean platform stack
+
+### Primary: WeChat Official Account
+
+Use the Official Account as:
+
+- the canonical home for flagship analysis;
+- an archive of source-rich articles;
+- the destination for trust and conversion;
+- the location for correction notices and updated versions;
+- the entry point to events, consultations, or a consented community.
+
+**Recommended cadence:** one flagship article per week.
+
+**Why it fits**
+
+- Long-form content supports nuance, sources, and decision frameworks.
+- WeChat is useful for professional peer sharing and relationship-based conversion.
+- It supports an integrated path from article to reply, event, or service conversation.
+- The accessible 2025 platform-guide summary described WeChat as strengthening search and commerce, although that evidence lacked methodology. [5]
+
+**Constraint**
+
+Cold-start discovery is limited compared with recommendation-led platforms. WeChat therefore requires at least one discovery partner platform, collaborations, or direct professional distribution.
+
+### Default support: Zhihu
+
+Use Zhihu for:
+
+- high-intent questions;
+- durable explanatory answers;
+- expertise signals;
+- search discovery;
+- problem-first versions of flagship research.
+
+Zhihu’s official documentation directly states that sustained specialization and content quality influence recommendation and ranking. [3]
+
+**Recommended cadence:** one substantial native answer per week or three per month.
+
+Do not paste the entire WeChat article. Lead with the answer to a specific question, present evidence, address counterarguments, and keep the platform-native discussion self-contained.
+
+### Video test: WeChat Channels
+
+Use Channels for:
+
+- 45–90 second demonstrations;
+- screen recordings;
+- “one chart, one decision” explainers;
+- live Q&A;
+- clips from interviews.
+
+**Recommended cadence:** one or two short videos per week during an eight-week test.
+
+On-camera presence is not required. A screen recording with a clear human voice, annotated evidence, and subtitles can communicate authenticity. When eligible, use the original-content declaration process correctly; false declarations can result in capability restrictions. [4]
+
+### Month-two decision
+
+At the end of eight weeks:
+
+- Keep **Zhihu** if it produces search discovery, saves, substantive questions, or qualified professional followers.
+- Keep **Channels** if demonstrations substantially increase reach or trust.
+- Maintain both only if the same research package can support them without lowering flagship quality.
+
+## 8.2 Platform comparison
+
+| Platform | Best role | Strength for this niche | Main cost or risk | Lean recommendation |
+|---|---|---|---|---|
+| WeChat Official Account | Authority, archive, conversion | Depth, professional sharing, relationship-building | Weak cold start; closed-platform dependence | **Primary** |
+| WeChat Channels | Video discovery and live engagement | Fits WeChat relationship network; demonstrations | Video consistency and quality burden | Test for 8 weeks |
+| Zhihu | Searchable authority | Problem-led, professional, durable answers; verticality rewarded | Requires substantive native writing | **Default support for text-first creator** |
+| Xiaohongshu | Visual search and workflow discovery | Cards, checklists, productivity and entrepreneurial use cases | Commercial and diversion rules require current verification | Use instead of Zhihu when targeting individual professionals, creators, or marketers |
+| Bilibili | Long-form educational video | Screen-led technical demonstration and durable explainers | High editing cost and slower production | Add after month 3 if video capacity exists |
+| Douyin | Large-scale short-form discovery | Fast testing of hooks and founder IP | High cadence, short-form pressure, potentially shallow audience | Do not prioritize in lean baseline |
+| Jike or specialist communities | Listening and relationships | Dense professional feedback | Limited scale | Use for research, not as the content archive |
+| Kuaishou or Toutiao | Broader or alternative audiences | May fit specific regional or occupational personas | Weak fit without persona evidence | Do not use by default |
+
+For Xiaohongshu and Douyin, current AI-label, commercial-post, external-link, and creator-program details should be verified within the current official tools before launch. The research located first-party help centers but did not retrieve enough current policy text to state exact mechanics. [6][7]
+
+## 8.3 Native adaptation
+
+One research packet should create multiple native expressions, not identical copies.
+
+### WeChat Official Account
+
+- 1,800–3,000-word planning range.
+- Narrative opening based on a costly decision.
+- Method, evidence, chart, limitations, recommendation.
+- Source box and disclosure box.
+- CTA asking for a relevant experience or case.
+
+### Zhihu
+
+- Start with a direct answer.
+- Frame around a real question.
+- Explain assumptions and counterarguments.
+- Use citations and durable concepts.
+- Avoid a teaser whose only purpose is off-platform diversion.
+
+### WeChat Channels
+
+- One claim per video.
+- Open with the decision or surprising result.
+- Show a screen, output, or chart within the first few seconds.
+- Include subtitles.
+- State the limitation before the CTA.
+- Use the platform’s AI declaration function where required.
+
+### Xiaohongshu
+
+- Six to nine visual cards as a planning format.
+- First card: problem and result.
+- Middle cards: workflow, cost, errors, decision.
+- Final card: checklist or question.
+- Write a native caption rather than pasting a WeChat introduction.
+
+### Bilibili
+
+- Six-to-twelve-minute screen-led analysis as a planning range.
+- Show the entire test method and failed outputs.
+- Use chapters and a downloadable or copyable evaluation rubric.
+- If commercial co-publication is used, Bilibili’s official 花火 documentation describes a native joint-publication ordering mechanism involving multiple UP creators and blue-V accounts; current eligibility and pricing still require dashboard verification. [Bilibili Joint Submission Guide](https://www.bilibili.com/blackboard/activity-0hk0HUDjN2.html) [11]
+
+### Douyin
+
+- One problem, one proof, one caveat, one action.
+- Use series-based hooks rather than isolated trending commentary.
+- Publish only when at least three repeatable visual formats are available.
+
+## 8.4 International platforms
+
+International distribution should be added only when there is a clear international audience, bilingual capability, or cross-border business objective.
+
+### LinkedIn
+
+Best for:
+
+- bilingual B2B summaries;
+- founder and operator lessons;
+- cross-border AI implementation;
+- professional lead generation.
+
+Recommended only if target customers or collaborators operate internationally. Publish one English or bilingual adaptation per week, not a literal translation.
+
+### YouTube
+
+Best for:
+
+- long technical demonstrations;
+- global search;
+- interviews;
+- durable tutorials.
+
+Add only with sufficient video capacity. Two strong videos per month are preferable to an inconsistent weekly commitment.
+
+### Substack or another email platform
+
+Substack’s conceptual advantage is a direct subscription relationship and exportable subscriber list. Secondary sources describe free-plus-paid publishing, comments, chat, audio, video, and a 10% platform fee for paid subscriptions. [Substack creator-statistics compilation](https://seosandwitch.com/substack-creator-statistics/) [12]
+
+However, another secondary compilation estimates that 87.2% of Substack publications are English-language and that the United States generates about 51.1% of traffic. It also contains inconsistent chronology and traffic figures, so its numbers should not be treated as audited facts. [Substack Statistics and Facts](https://www.sci-tech-today.com/stats/substack-statistics/) [13]
+
+Substack is therefore not the default China strategy. Use it only after validating:
+
+- mainland accessibility;
+- payment and tax handling;
+- target-audience willingness to use email;
+- bilingual production capacity;
+- lawful data transfer and privacy procedures;
+- the need for an internationally portable subscriber list.
+
+### X
+
+X can support rapid global AI-industry participation but is volatile, news-heavy, and poorly suited as the canonical home. Use it only for international expert networking or source discovery.
+
+---
+
+## 9. Three-month editorial calendar
+
+### Standard weekly cadence
+
+- **Tuesday:** WeChat flagship article.
+- **Thursday:** Zhihu adaptation or Xiaohongshu card set.
+- **Friday or Saturday:** Channels short video or screen demonstration.
+- **Sunday:** community question, comment roundup, or correction/update note.
+- **Once per month:** live office hour or small online roundtable.
+
+The calendar assumes 10–15 hours per week. A creator with fewer than eight hours should publish the flagship piece every two weeks.
+
+### Month 1: Positioning and trust
+
+| Week | Flagship topic | Recurring series and structure | Derivatives | Interactive format and CTA |
+|---|---|---|---|---|
+| 1 | **“Do not start with tools: a map of 12 business tasks where AI may or may not be worth testing”** | Decision memo: task, value, risk, data sensitivity, recommendation | Zhihu answer on where small teams should begin; short video showing the matrix | Poll: Which task consumes the most team time? CTA: reply with role, task, and current process |
+| 2 | **“Can AI cut competitor research time without inventing sources? A controlled test”** | Workflow Lab: baseline process, three trials, citation errors, human-review time | Screen recording of one success and one failure; card set with verification checklist | Ask readers to submit a research task for an anonymized test |
+| 3 | **“A model launched—what actually changes for a 30-person company?”** | Signal versus Noise: source, change, uncertainty, action | One-chart video; Zhihu answer contrasting capability news with workflow impact | Ask: adopt, test, or wait? Collect reasons rather than simple votes |
+| 4 | **“Buy, build, or wait: an AI procurement decision tree for small teams”** | Decision framework: need, data, integration, switching cost, total cost | Downloadable or copyable checklist; 60-second walkthrough | Invite five founders or operators to a non-sales research interview |
+
+### Month 2: Repeatable workflow evidence
+
+| Week | Flagship topic | Recurring series and structure | Derivatives | Interactive format and CTA |
+|---|---|---|---|---|
+| 5 | **“AI-assisted sales research: faster prospect briefs, but what error rate is acceptable?”** | Workflow Lab with error taxonomy and review burden | Before/after video; Zhihu answer about using public data responsibly | Ask sales teams to rank accuracy, speed, and personalization |
+| 6 | **“Building a customer-service knowledge workflow from Chinese internal documents”** | Workflow map: ingestion, retrieval, confidence, escalation, privacy | Diagram cards; failed-answer video | Invite an operator to contribute an anonymized knowledge-base case |
+| 7 | **“AI content production after the labeling rules: a compliant human-plus-AI workflow”** | Governance plus Workflow Lab | Checklist covering text, image, audio, and video labels; short compliance explainer | CTA: submit the most confusing disclosure scenario |
+| 8 | **“Meeting transcript to decision log: where automation helps and where accountability must stay human”** | Test with missed decisions, hallucinations, and follow-up tracking | Screen demo; template; community challenge | Ask readers to test the template on a non-sensitive meeting and report one failure |
+
+### Month 3: Authority asset and commercial-problem discovery
+
+| Week | Flagship topic | Recurring series and structure | Derivatives | Interactive format and CTA |
+|---|---|---|---|---|
+| 9 | **“How to evaluate an AI-agent startup: buyer, distribution, gross-margin pressure, and upstream-model dependence”** | AI Business Teardown | Founder-oriented Zhihu answer; one-chart moat analysis | Ask founders which business assumption is hardest to verify |
+| 10 | **“AI-generated-content labeling: a creator and company implementation checklist”** | `上线前检查`, grounded in national rules | Text, image, audio, and video decision cards; compliance Q&A | Invite questions for a live session; do not present individual legal advice |
+| 11 | **“Thirty days after implementation: what one team abandoned and why”** | Founder/Operator Field Notes | Interview clips; failure timeline | Ask readers to nominate operators willing to discuss failed experiments |
+| 12 | **“The first 90-day AI implementation ledger: what worked, what failed, and what readers asked for”** | Original mini-report | Executive summary; chart thread; short retrospective video | CTA: join the next benchmark cohort or request the diagnostic checklist |
+
+### Calls to action by funnel stage
+
+Avoid asking for likes, follows, or shares in exchange for rewards. WeChat explicitly prohibits incentivized or coercive engagement. [2]
+
+Use CTAs that produce learning:
+
+- **Discovery:** “Which task causes the most recurring work?”
+- **Evidence:** “Submit an anonymized workflow for testing.”
+- **Community:** “What result contradicted your expectation?”
+- **Authority:** “Which assumption should be challenged?”
+- **Lead generation:** “Request the diagnostic rubric if your team is actively evaluating this workflow.”
+- **Commercial validation:** “Join the paid pilot only if this is an active business problem.”
+
+---
+
+## 10. Storytelling structures
+
+### 10.1 The decision memo
+
+1. The decision.
+2. Why it matters now.
+3. Available alternatives.
+4. Evaluation criteria.
+5. Evidence.
+6. Trade-offs.
+7. Recommendation by persona.
+8. What would change the recommendation.
+
+### 10.2 The lab note
+
+1. Hypothesis.
+2. Task and dataset.
+3. Baseline human process.
+4. Tool and version.
+5. Test protocol.
+6. Outputs.
+7. Errors.
+8. Human correction.
+9. Time and total cost.
+10. Reproducibility notes.
+11. Conclusion.
+
+### 10.3 The founder failure narrative
+
+1. Initial expectation.
+2. Trigger to adopt.
+3. Implementation owner.
+4. First apparent success.
+5. Hidden failure.
+6. Organizational or customer response.
+7. Economic result.
+8. Decision to continue, change, or stop.
+9. Lesson transferable to other teams.
+
+### 10.4 Signal versus noise
+
+1. Primary-source event.
+2. What headlines claim.
+3. What is actually new.
+4. Who is affected.
+5. What remains unknown.
+6. Immediate action.
+7. Revisit date.
+
+### 10.5 Evidence labels
+
+Each claim should carry an internal evidence grade:
+
+- **A:** government, regulator, official platform documentation, filing, or reproducible first-party data.
+- **B:** vendor documentation plus independent test.
+- **C:** named expert or operator interview.
+- **D:** reasoned inference or hypothesis.
+
+Grades do not need to appear beside every sentence, but each flagship article should contain a “Sources, confidence, and limitations” box.
+
+---
+
+## 11. Six-month roadmap
+
+## Month 1: Audience discovery and positioning validation
+
+### Objectives
+
+- Select the initial audience and task domain.
+- Establish the evidence and compliance system.
+- Publish four distinct pilot pieces.
+- Determine text-versus-video production fit.
+
+### Actions
+
+1. Audit 30–40 competing accounts across broad AI media, tool tutorials, workflow education, founder media, and industry-specific AI.
+2. Interview at least 15 target readers:
+   - What task is repeated?
+   - What has been tried?
+   - What failed?
+   - What is the cost of the problem?
+   - Who owns the decision?
+   - What source is trusted?
+   - Has the person paid for training, data, software, or advice?
+3. Create the brand name, tagline, visual template, disclosure policy, and correction log.
+4. Publish four pilot flagships representing different pillars.
+5. Test Zhihu and Channels as discovery supports.
+6. Build a simple audience-research form with explicit consent and data minimization.
+
+### Milestone
+
+Lock the positioning only if at least 10 interviews reveal a repeated problem and at least one pilot topic produces both engagement and substantive follow-up questions. Otherwise narrow the persona or workflow.
+
+## Month 2: Repeatability and series selection
+
+### Objectives
+
+- Identify two high-performing recurring series.
+- Create a production workflow that can operate for 12 more weeks.
+- Form a small founding-reader cohort.
+
+### Actions
+
+1. Publish four flagship articles and eight to twelve derivatives.
+2. Standardize the Workflow Lab scorecard.
+3. Recruit 20–40 founding readers for a consented feedback group or monthly roundtable.
+4. Track content by pillar, persona, format, production hours, and qualified action.
+5. Stop or revise the weakest format after at least four fair tests.
+6. Create a free diagnostic checklist tied to one repeated audience problem.
+
+### Milestone
+
+At least two content series should outperform the account median in qualified engagement or generate repeated audience questions. If none do, the positioning remains too broad or the proof is too weak.
+
+## Month 3: Publish an original authority asset
+
+### Objectives
+
+- Move from commentary to proprietary evidence.
+- Establish a recognizable editorial product.
+- Test whether the audience will exchange contact or participation for useful material.
+
+### Actions
+
+1. Publish a mini-benchmark using 10–20 tests, interviews, or structured responses.
+2. Run the first live Q&A or private roundtable.
+3. Conduct two practitioner collaborations.
+4. Publish the first “30 days later” implementation case.
+5. Build a one-page media and methodology kit.
+6. Ask the audience which repeated problem deserves a paid workshop or audit.
+
+### Milestone
+
+Reach a credible first core of repeat readers, ideally 75–150, and obtain at least five explicit statements of willingness to pay or organizational demand. These are signals, not proof of product-market fit.
+
+## Month 4: Community and offer validation
+
+### Objectives
+
+- Test a tightly scoped offer.
+- Increase repeat participation.
+- Avoid premature mass community building.
+
+### Actions
+
+1. Run a free office hour around one workflow.
+2. Offer a paid pilot:
+   - a 90-minute workshop;
+   - a workflow audit;
+   - a benchmark briefing;
+   - or a template pack with live explanation.
+3. Require prepayment or a deposit rather than relying on survey intent.
+4. Publish the methodology and disclose any commercial relationship.
+5. Introduce a monthly “reader experiment cohort.”
+
+### Milestone
+
+Proceed only if at least 10 people or two organizations make a real purchase commitment. If demand is weak, do not manufacture urgency; return to problem interviews.
+
+## Month 5: Case proof and partnerships
+
+### Objectives
+
+- Produce one credible outcome case.
+- Improve distribution through trusted partners.
+- Determine whether services or media products have stronger demand.
+
+### Actions
+
+1. Deliver one to three paid pilots.
+2. Measure starting condition, intervention, human effort, and outcome.
+3. Obtain permission before publishing a case; anonymize where necessary.
+4. Collaborate with:
+   - founders;
+   - incubators;
+   - university entrepreneurship centers;
+   - SaaS vendors;
+   - professional associations;
+   - specialist consultants;
+   - AI safety, privacy, or legal experts.
+5. Test one sponsored or vendor-supported piece only if editorial independence can be maintained.
+6. Create a formal sponsorship and conflict-of-interest policy.
+
+### Milestone
+
+At least one case should show a measurable outcome or a clearly documented negative result. A failed implementation can be valuable if honestly analyzed.
+
+## Month 6: Consolidation and scale decision
+
+### Objectives
+
+- Evaluate the niche, platforms, community, and commercial model.
+- Publish a six-month report.
+- Decide whether to scale, narrow, pivot, or remain portfolio-first.
+
+### Actions
+
+1. Publish the “Six-Month AI Implementation Ledger.”
+2. Review each content pillar against qualified audience, repeat behavior, leads, and production cost.
+3. Retire low-value series.
+4. Select one primary commercial path for months 7–12.
+5. Decide whether to hire an editor, video producer, researcher, or community operator.
+6. Back up content, source files, consent records, and audience data lawfully.
+7. Update all high-traffic evergreen pieces.
+
+### Month-six decision rules
+
+- **Scale the current niche** if repeat audience and qualified inbound both rise for two consecutive months.
+- **Narrow by industry or role** if workflow content succeeds but the audience is too heterogeneous.
+- **Shift toward lead generation** if a small audience generates repeated high-value business inquiries.
+- **Remain authority-first** if portfolio and collaboration value are strong but willingness to pay is weak.
+- **Do not add platforms** unless the current production system maintains at least 90% cadence adherence.
+
+---
+
+## 12. Community and engagement strategy
+
+### 12.1 Build a working group, not a fan group
+
+A small group of 30–100 relevant people is more useful than a large inactive chat.
+
+Entry should be based on:
+
+- role;
+- active workflow problem;
+- willingness to contribute evidence;
+- agreement to privacy and conduct rules.
+
+Suggested rhythm:
+
+- Monday: one implementation question.
+- Wednesday: one member case or failure.
+- Friday: one evidence summary.
+- Monthly: a 45-minute office hour.
+- Quarterly: a structured benchmark survey.
+
+### 12.2 Community rules
+
+- No scraping or republishing member discussions.
+- Obtain explicit permission for quotations.
+- Anonymize company information by default.
+- No unsolicited promotion.
+- No stock tips, medical claims, or sensitive data.
+- No confidential customer or employee information in AI tools.
+- Commercial partners must identify themselves.
+- AI-generated submissions must be declared.
+
+### 12.3 Audience-feedback loops
+
+Use four loops:
+
+1. **Comment loop:** classify questions by persona, workflow, urgency, and commercial value.
+2. **Interview loop:** speak monthly with five readers, including non-engagers and unfollowers where possible.
+3. **Content loop:** publish a response to repeated questions within two weeks.
+4. **Outcome loop:** revisit recommendations after 30 or 90 days and record what changed.
+
+Maintain a “reader language bank” of exact phrases used to describe problems. Use those phrases in titles without exaggeration.
+
+---
+
+## 13. Low-cost growth experiments
+
+Each experiment should have one hypothesis, one metric, a time limit, and a stop rule.
+
+| Experiment | Hypothesis | Test | Success criterion |
+|---|---|---|---|
+| Persona-specific opening | Naming a role and costly task will attract fewer but more qualified readers | Compare four role-specific pieces with four broad pieces | At least 25% higher meaningful engagement or qualified replies |
+| Negative-result series | Honest failure analysis creates more trust than success-only tutorials | Publish three “what failed” pieces | Above-median saves, shares, or operator submissions in at least two |
+| Zhihu search capture | A direct answer to an existing high-intent question will produce durable discovery | Publish one native answer weekly for eight weeks | Zhihu contributes at least 20% of qualified new followers or leads |
+| Short demonstration | Showing evidence will outperform talking-head opinion | Test screen demo, narrated chart, and talking head | Retain the format with the strongest completion and qualified action per production hour |
+| Founding-reader cohort | Small-group participation will improve repeat readership | Invite 20–40 readers to a monthly working session | At least 50% attend or contribute twice over two months |
+| Practitioner collaboration | Borrowed trust from a credible operator will attract better-fit followers | Co-produce two workflow cases | At least 50 qualified follows or five strong interview requests across both |
+| Mini-benchmark asset | Proprietary data will increase saves and inbound inquiries | Publish one 10–20-case report | At least twice the account median for qualified actions |
+| Paid workshop preorder | A repeated problem is strong enough to monetize | Offer a narrowly defined pilot with real payment | Ten individual buyers or two organizational commitments |
+| Evergreen update | Versioned updates compound trust and search value | Update three older pieces with changed tools or rules | Updated pieces regain at least 50% of initial 30-day reach |
+| Limited paid distribution | Promoting a proven organic winner can add retained readers | Spend a fixed RMB 300–500 test through an official ad product | Paid cohort’s 30-day retention is at least 80% of organic and cost fits expected customer value |
+
+Do not buy followers, views, comments, or likes. Do not run “share to unlock,” “like to enter,” or rewarded engagement campaigns. WeChat expressly prohibits fake engagement and incentivized sharing, following, liking, or commenting. [2]
+
+---
+
+## 14. Monetization paths, thresholds, and timing
+
+## 14.1 Principle
+
+A six-month account with a small but commercially relevant B2B audience can monetize earlier through services or workshops than through platform revenue. However, the creator must possess sufficient expertise to deliver value. A large follower count is not a substitute for competence.
+
+### Path 1: Workflow audit or implementation diagnostic
+
+**Earliest timing:** months 4–6.
+
+**Minimum evidence gate:**
+
+- At least 20 relevant interviews.
+- Three published workflow tests.
+- One repeat problem.
+- Five qualified inquiries or two organizational requests.
+- Clear boundaries concerning data, security, and implementation responsibility.
+
+**Illustrative price test, not a benchmark:**
+
+- RMB 3,000–10,000 for a narrowly scoped team diagnostic.
+- RMB 10,000–30,000 only where deep domain expertise and delivery capability exist.
+
+Do not sell implementation consulting if the account is still learning basic tools.
+
+### Path 2: Paid workshop
+
+**Earliest timing:** month 4.
+
+Possible topics:
+
+- Selecting the first three AI workflows for a small team.
+- Building a source-verification workflow.
+- AI-content production under labeling and copyright constraints.
+- Evaluating an AI vendor.
+
+**Go/no-go gate:**
+
+- 30-person waitlist or comparable organizational interest.
+- Ten paid individual seats or two company bookings.
+- Attendance above 70%.
+- Clear improvement from pre- to post-session assessment.
+- Refund and complaint rate below 10%.
+
+**Illustrative test range:**
+
+- RMB 99–399 for a public pilot session.
+- RMB 3,000–10,000 for a tailored company session.
+
+### Path 3: Templates, scorecards, or benchmark reports
+
+**Earliest timing:** months 4–6.
+
+Products:
+
+- AI workflow opportunity matrix.
+- Vendor evaluation scorecard.
+- Source-verification checklist.
+- AI acceptable-use policy starter.
+- Creator AI-disclosure checklist.
+- Benchmark report.
+
+Require at least 20 preorders or an organizational sponsor before building a large product.
+
+### Path 4: Sponsorship
+
+**Earliest timing:** preferably month 5 or later.
+
+Readiness conditions:
+
+- Eight weeks of consistent publishing.
+- A clear audience profile.
+- Stable median reach.
+- A media kit showing qualified actions, not only follower counts.
+- A written editorial-independence policy.
+- At least two non-sponsored reviews demonstrating the evaluation method.
+
+Sponsored content should:
+
+- be visibly labeled as advertising or commercial cooperation;
+- disclose free access, travel, equipment, affiliate payments, or other consideration;
+- separate sponsor claims from independently verified findings;
+- avoid guaranteed performance claims;
+- retain the right to publish negative findings or decline the deal.
+
+WeChat’s standards prohibit advertising that violates Chinese advertising requirements, including false or non-identifiable advertising. [2] Current Official Account and Channels marketing rules should also be checked before each campaign. [WeChat Channels Video Marketing Information Rules](https://developers.weixin.qq.com/doc/channels/Operating_Specifications/Store_Operation_Rules/Video_Marketing_Information.html) [14]
+
+### Path 5: Paid membership or community
+
+**Earliest timing:** after month 6 unless demand is unusually strong.
+
+Readiness gate:
+
+- At least 50 highly active core members.
+- At least 20 willing to pay before launch.
+- A service that requires continuity, such as:
+  - monthly workflow benchmarks;
+  - office hours;
+  - procurement updates;
+  - peer case exchange;
+  - document and template library.
+- Capacity for moderation and privacy protection.
+- Target monthly retention above 70% during the initial pilot.
+
+Do not charge merely for access to a chat group.
+
+### Path 6: Affiliate or referral income
+
+Use cautiously:
+
+- Recommend only products actually tested.
+- Disclose the relationship before the recommendation.
+- Explain alternatives and failure cases.
+- Never change rankings based on commission.
+- Verify the platform’s current link and commercial-reporting rules.
+
+### Path 7: Platform advertising or creator-revenue programs
+
+Treat this as optional upside, not the business model. Current eligibility thresholds and revenue mechanics were not verified in the research. Check the live creator dashboard before making projections.
+
+---
+
+## 15. Efficient content-production workflow
+
+### 15.1 Weekly workflow for a lean solo creator
+
+**Monday — Research and scoping, 2–3 hours**
+
+- Select one audience decision.
+- Write the hypothesis.
+- Identify primary sources.
+- Record test product, version, date, and price.
+- Prepare non-sensitive test data.
+
+**Tuesday — Testing or interviewing, 2–3 hours**
+
+- Run the workflow multiple times where feasible.
+- Record successful and failed outputs.
+- Measure human correction time.
+- Save screenshots and logs.
+- Confirm quotation permission.
+
+**Wednesday — Drafting, 2–3 hours**
+
+- Write the decision first.
+- Separate evidence from inference.
+- Add cost, risk, and limitations.
+- Draft source and disclosure boxes.
+
+**Thursday — Verification and editing, 1.5–2 hours**
+
+- Verify every factual claim.
+- Open original sources rather than relying on summaries.
+- Red-team the conclusion.
+- Check copyright, privacy, advertising, and AI-label requirements.
+- Confirm that the title matches the content.
+
+**Friday — Distribution and repurposing, 1.5–2 hours**
+
+- Publish or schedule the flagship.
+- Create one native text adaptation.
+- Create one short video or visual derivative.
+- Preserve required AI labels on exported material.
+
+**Weekend — Engagement and review, 1 hour**
+
+- Answer substantive questions.
+- Log objections and requests.
+- Correct mistakes.
+- Update the backlog.
+
+### 15.2 Recommended time allocation
+
+For a 12-hour week:
+
+| Function | Share | Hours |
+|---|---:|---:|
+| Research, testing, sourcing | 30% | 3.6 |
+| Writing or scripting | 25% | 3.0 |
+| Video, screenshots, and design | 15% | 1.8 |
+| Distribution and native adaptation | 10% | 1.2 |
+| Community and interviews | 12% | 1.4 |
+| Analytics, correction, and compliance | 8% | 1.0 |
+
+If quality begins to fall, reduce derivatives before reducing research or fact-checking.
+
+### 15.3 AI use inside production
+
+AI may assist with:
+
+- transcript cleanup;
+- outline alternatives;
+- extracting candidate questions;
+- formatting tables;
+- caption drafts;
+- identifying possible counterarguments;
+- translation drafts.
+
+AI should not be trusted without verification for:
+
+- quotations;
+- legal interpretations;
+- statistics;
+- current product specifications;
+- names and titles;
+- links or citations;
+- financial claims;
+- summaries of inaccessible sources;
+- sensitive political, medical, or public-safety matters.
+
+If generated text, image, audio, or video remains substantively in the published work, use the platform’s declaration feature and a clear editorial note. The national rules require proactive user declaration of generated or synthetic material. [1]
+
+---
+
+## 16. Resource and budget scenarios
+
+## 16.1 Lean solo baseline
+
+**Capacity:** 10–15 hours per week.
+
+**Platforms:** WeChat Official Account plus Zhihu; one Channels experiment per week.
+
+**Output:** one flagship and two derivatives weekly.
+
+**Illustrative monthly budget:** RMB 500–3,000.
+
+Possible allocation:
+
+- AI and research tools: RMB 200–800.
+- Transcription, storage, domain, form, or data tools: RMB 100–500.
+- Design or caption tools: RMB 0–300.
+- Occasional editing or specialist review: RMB 0–1,000.
+- Interview or event expenses: RMB 0–500.
+- Paid promotion: RMB 0 in the first six weeks; no more than RMB 300–500 per validated experiment thereafter.
+- Contingency, rights clearance, or professional advice: remaining budget.
+
+**Six-month illustrative budget:** RMB 5,000–18,000.
+
+A zero-budget version is possible using free tools, but professional review may be worthwhile for legal, privacy, or technical claims.
+
+## 16.2 Solo creator with only five hours per week
+
+- Publish one flagship every two weeks.
+- Use WeChat plus one text discovery platform.
+- Do not operate a chat community.
+- Replace weekly video with one monthly screen recording.
+- Target 12 excellent flagship pieces rather than 24.
+- Monetization should be postponed unless existing expertise already generates inbound demand.
+
+## 16.3 Creator willing to appear on camera
+
+- Use Channels as the main discovery layer.
+- Produce two short videos per week from one research package.
+- Add a monthly live Q&A.
+- Consider Douyin only after eight weeks of consistent Channels production.
+- Preserve the evidence-first visual system; do not become a personality-commentary feed.
+
+## 16.4 Creator unwilling to appear on camera
+
+- Use WeChat and Zhihu.
+- Produce screen recordings, slides, voice-over explainers, annotated documents, or audio interviews.
+- Human voice is preferable but not mandatory.
+- Do not use synthetic presenter faces or cloned voices merely to simulate authenticity.
+
+## 16.5 Subject-matter expert with limited media skill
+
+- Narrow immediately to the expert domain.
+- Make lead generation a co-primary objective.
+- Hire a part-time editor or producer.
+- Retain final approval over technical claims.
+- Publish fewer, denser pieces and more practitioner cases.
+
+## 16.6 Creator with little professional expertise
+
+- Position as a transparent tester and interviewer.
+- Avoid selling consulting during the first six months.
+- Partner with qualified practitioners.
+- Publish methods, failures, and questions.
+- Monetize later through media, research assistance, or sponsored access rather than unsupported advice.
+
+## 16.7 Two- or three-person team
+
+Suggested roles:
+
+- Research/editorial lead.
+- Video and design producer.
+- Distribution/community operator.
+
+Possible expansion:
+
+- Two flagship pieces per week.
+- Bilibili twice per month.
+- Channels two to three times per week.
+- More systematic interview and benchmark programs.
+
+Do not add Douyin, Xiaohongshu, Bilibili, and international platforms simultaneously. Add one platform per eight-week cycle.
+
+## 16.8 Larger budget
+
+Spend first on:
+
+1. research assistance;
+2. editing and verification;
+3. video production;
+4. specialist legal or compliance review;
+5. original data collection;
+6. community operations.
+
+Spend last on broad paid reach. Paid distribution cannot repair weak positioning.
+
+---
+
+## 17. Competitive white spaces and defensibility
+
+### 17.1 Crowded categories
+
+The visible Chinese AI-media landscape contains several heavily contested formats:
+
+- rapid model and funding news;
+- translated international announcements;
+- tool lists and prompt tutorials;
+- sensational predictions;
+- automated AI video or image accounts;
+- founder interviews that function mainly as promotion.
+
+Staffed publications such as 机器之心, 量子位, and 新智元 represent broad-news or high-volume competitive archetypes. Founder-oriented brands such as Founder Park represent a different archetype built around founder access and entrepreneurial conversation. The research did not retrieve audited first-party data on their internal economics, conversion, or production systems, so they should be treated as competitive references rather than proven causal case studies.
+
+A solo creator should not try to beat a newsroom on volume.
+
+### 17.2 White spaces
+
+#### 1. Local workflow economics
+
+Most product demos stop at output quality. The account should measure:
+
+- setup time;
+- employee training;
+- correction time;
+- API or subscription cost;
+- integration work;
+- privacy review;
+- failure cost;
+- total cost per accepted output.
+
+#### 2. Negative results
+
+Publish what failed, not only what worked. This is more difficult for sponsored media to do and creates durable trust.
+
+#### 3. Longitudinal follow-up
+
+Revisit a workflow after 30 and 90 days. The difference between demo success and operational adoption is a defensible editorial category.
+
+#### 4. Versioned knowledge
+
+Every evergreen piece should show:
+
+- original publication date;
+- last test date;
+- product version;
+- changed conclusion;
+- archived correction.
+
+#### 5. Compliance integrated into business analysis
+
+Do not isolate governance as a legal-news column. Include data, copyright, labeling, and disclosure inside every workflow test.
+
+#### 6. Chinese operating context
+
+Evaluate:
+
+- Chinese-language performance;
+- local platform integration;
+- invoicing and procurement;
+- data location and privacy;
+- local customer behavior;
+- support quality;
+- relevant Chinese platform rules.
+
+#### 7. Founder decision frameworks
+
+Move beyond profiles to reconstruct:
+
+- alternatives considered;
+- constraints;
+- wrong assumptions;
+- decision criteria;
+- opportunity cost.
+
+### 17.3 Defensible assets by month six
+
+- A consistent workflow-testing rubric.
+- A dated database of tests.
+- An archive of failed outputs.
+- A panel of founding readers.
+- Permissioned operator cases.
+- One or two proprietary benchmark reports.
+- A public correction log.
+- A recognizable visual scorecard.
+- A reputation for declining unsuitable sponsorships.
+
+These assets compound. News summaries do not.
+
+---
+
+## 18. Domestic and international case lessons
+
+## 18.1 Chinese broad AI publications
+
+**Transferable practice**
+
+- Clear taxonomy of models, companies, funding, products, and research.
+- Fast monitoring of primary sources.
+- Repeated editorial formats.
+- Access to founders and technical experts.
+
+**Not transferable to a lean creator**
+
+- Newsroom-level speed.
+- High publishing volume.
+- Broad subject coverage.
+- Dependence on constant announcements.
+
+**Recommended adaptation**
+
+Select one decision-relevant development each week and add original testing, economics, or interviews.
+
+## 18.2 Founder-oriented media
+
+**Transferable practice**
+
+- First-person founder stories.
+- Access-based differentiation.
+- Events and community as extensions of editorial work.
+- Editorial products organized around decisions and lessons rather than announcements.
+
+**Risk**
+
+Founder access can become uncritical promotion. Interviews should include failed experiments, unit economics, customer acquisition, and upstream dependencies.
+
+## 18.3 Zhihu’s vertical-expertise model
+
+Zhihu’s own account-quality documentation supports several transferable principles:
+
+- sustained vertical specialization;
+- objective and detailed content;
+- originality;
+- high-quality user feedback;
+- durable knowledge value;
+- avoidance of clickbait, fabricated experience, and aggregation. [3]
+
+This makes Zhihu particularly suitable for the text-first baseline.
+
+## 18.4 Chinese AI-content “shakeout” reports
+
+The August 2026 reports should be treated as cautionary anecdotes, not verified market studies. They nevertheless suggest five useful hypotheses to test:
+
+- basic tool tutorials are becoming commoditized;
+- AI-generated entertainment faces rising rights and quality pressure;
+- mass-produced matrix content is fragile;
+- production cost can rise while platform income falls;
+- human judgment, professional depth, and B2B delivery may be more durable.
+
+The transferable lesson is not that “AI content is dead.” It is that **publishing with AI is not itself a differentiated product**. [9][10]
+
+## 18.5 International niche newsletters
+
+Secondary Substack compilations cite The Pragmatic Engineer, Lenny’s Newsletter, Stratechery, and other specialist publications as high-revenue examples. The estimated revenues are not independently verified and should not be used as forecasts. [12][13]
+
+The transferable principles are:
+
+- define a high-value professional reader;
+- solve a repeated job-to-be-done;
+- combine free discovery with premium depth;
+- cultivate a direct subscription relationship;
+- use comments, chat, audio, video, or events to deepen retention;
+- build around expertise rather than general-interest reach.
+
+The non-transferable assumptions are equally important:
+
+- Substack’s ecosystem is strongly English-language and US-weighted.
+- Email behavior differs from WeChat-based professional consumption.
+- Payment, accessibility, privacy, tax, and conversion mechanics differ.
+- Foreign subscription prices do not establish Chinese willingness to pay.
+- Overseas creator-revenue outliers are not typical outcomes.
+
+The correct Chinese adaptation is therefore not “copy Substack.” It is to reproduce the underlying relationship model—direct, repeat, high-trust access—through locally appropriate and compliant channels.
+
+---
+
+## 19. Risk and compliance framework
+
+### 19.1 Factual errors and hallucinations
+
+**Risk:** AI news changes quickly, vendor claims are often ambiguous, and generated citations may be false.
+
+**Controls**
+
+- Open and archive primary sources.
+- Record publication and retrieval dates.
+- Verify quotations word for word.
+- Re-run tool tests before updating recommendations.
+- Never cite a search-result snippet as if the article was retrieved.
+- Use a second reviewer for high-risk pieces.
+- Publish a visible correction log.
+- Separate confirmed fact, vendor claim, test observation, and inference.
+
+### 19.2 Overreliance on news aggregation
+
+**Risk:** loss of differentiation, copyright problems, shallow retention, and dependence on publication speed.
+
+**Controls**
+
+- Cap pure news at 10% of output.
+- Require every trend piece to include a decision implication.
+- Require at least one original element: test, interview, model, dataset, or comparison.
+- Do not translate or summarize entire foreign articles.
+- Link to original sources.
+
+### 19.3 Loss of audience trust
+
+**Risk factors**
+
+- hidden sponsorship;
+- changing recommendations without explanation;
+- exaggerated titles;
+- selectively publishing successes;
+- undisclosed free access;
+- affiliate-driven rankings;
+- synthetic personas or fabricated experiences.
+
+**Controls**
+
+- Maintain a public editorial policy.
+- Label commercial relationships prominently.
+- Show negative results.
+- Publish version changes.
+- Refuse sponsor approval over independent conclusions.
+- Correct quickly and explain what changed.
+
+### 19.4 Inconsistent production
+
+**Controls**
+
+- Maintain a six-week backlog.
+- Use repeatable templates.
+- Batch interviews.
+- Produce derivatives only after the flagship is complete.
+- Keep two evergreen pieces ready.
+- Reduce platforms before reducing quality.
+- Take one planned maintenance week each quarter if necessary.
+
+### 19.5 Platform dependence
+
+**Controls**
+
+- Keep source files, images, and article archives outside the platform.
+- Maintain a consented contact list where lawful.
+- Use events and direct replies to create relationships.
+- Diversify only after the primary system works.
+- Avoid building revenue exclusively on creator-incentive programs.
+- Record which platform generated each qualified audience member or lead.
+
+### 19.6 Copyright
+
+WeChat prohibits plagiarism, copying, unauthorized搬运, and infringement of copyright, trademark, patent, name, portrait, and other rights. [2]
+
+Controls:
+
+- Use original screenshots and diagrams.
+- Confirm that vendor terms permit publication of outputs.
+- Quote briefly and link to the source.
+- Obtain permission for charts, interview recordings, and case materials.
+- Avoid unlicensed adaptations, copyrighted characters, face replacement, and cloned voices.
+- Keep written permissions and licenses.
+- Do not declare derivative or copied material as original; WeChat’s original declaration guide states that such works do not qualify. [4]
+
+### 19.7 Privacy and data protection
+
+WeChat prohibits unauthorized publication of identity numbers, contact information, addresses, WeChat IDs, photographs, and other private information. [2]
+
+Controls:
+
+- Never upload customer, employee, medical, financial, or confidential data into a public AI service without authorization and an appropriate legal basis.
+- Use synthetic or redacted examples.
+- Obtain explicit interview consent.
+- Allow interviewees to review factual quotations, without granting control over editorial conclusions.
+- Collect only necessary audience data.
+- Publish a privacy notice for forms, groups, events, and paid products.
+- Set retention and deletion periods.
+- Restrict access to raw data.
+
+### 19.8 AI-generated-content disclosure
+
+The national rules took effect on September 1, 2025. They require:
+
+- visible labeling appropriate to text, image, audio, video, or virtual scene;
+- proactive user declaration;
+- platform-provided labeling;
+- preservation of labels in exported files where applicable;
+- no malicious removal, alteration, concealment, or falsification of labels. [1]
+
+A conservative editorial rule is:
+
+> If substantive generated text, imagery, audio, video, or a virtual presenter remains in the published output, use the platform’s AI-content declaration control and include an editorial note explaining the tool and the human review.
+
+Where AI is used only privately for spelling suggestions or brainstorming and no generated material remains, keep an internal log and check the platform’s current interpretation. Ambiguous cases should be disclosed rather than concealed.
+
+### 19.9 Advertising and sponsorship
+
+Controls:
+
+- Use visible `广告`, `商业合作`, or equivalent labels.
+- Disclose free products, access, affiliate payments, and travel.
+- Do not make unsupported absolute claims.
+- Do not disguise marketing as neutral analysis.
+- Keep invoices, contracts, and substantiation.
+- Verify current platform-specific reporting and link rules.
+- Review tax and business-registration obligations with a qualified professional.
+
+### 19.10 Sensitive or prohibited subjects
+
+For an AI account, particularly high-risk areas include:
+
+- political rumors and unverified public events;
+- national-security or state-secret content;
+- manipulated public-figure video or audio;
+- public emergencies and disasters;
+- medical diagnosis or treatment claims;
+- securities, futures, or investment recommendations without authorization;
+- content involving minors;
+- fraud, evasion, surveillance, malware, or criminal instruction;
+- discriminatory or inflammatory group claims;
+- publication of private or confidential information.
+
+WeChat’s official standards contain broad restrictions in these areas and prohibit false information, misleading headlines, sensational fabrication, unauthorized financial recommendations, and various harmful-content categories. [2]
+
+### 19.11 Regulatory change
+
+Establish a monthly compliance review:
+
+- National cyberspace and AI rules.
+- Platform AI-labeling implementation.
+- Advertising rules.
+- Data and privacy requirements.
+- Copyright developments.
+- Creator-program and commercial-content policies.
+- Rules for live streaming, external links, and paid communities.
+
+Assign an owner even in a solo operation. Record the date of every review.
+
+---
+
+## 20. KPI dashboard and review cadence
+
+### Weekly dashboard
+
+| Category | Metrics |
+|---|---|
+| Production | Flagships completed, derivatives completed, hours per piece, cadence adherence |
+| Evidence | Primary sources used, test runs, unverifiable claims removed, correction count |
+| Reach | Unique views, search traffic, profile visits, new qualified followers |
+| Quality | Saves, shares, substantive comments, DMs, completion where available |
+| Retention | Returning readers, repeat respondents, repeat event participation |
+| Community | Active contributors, questions, cases submitted, event attendance |
+| Commercial | Qualified inquiries, calls, proposals, deposits, revenue, refunds |
+| Risk | AI labels applied, permissions stored, complaints, copyright or privacy incidents |
+
+### Review rhythm
+
+**Weekly, 30 minutes**
+
+- What produced the most qualified action per hour?
+- Which question repeated?
+- What evidence was weak?
+- Is next week’s piece still relevant?
+- Are any corrections required?
+
+**Monthly, two hours**
+
+- Compare pillars against rolling median.
+- Interview five readers.
+- Check platform policy updates.
+- Review audience quality, not only total followers.
+- Decide one experiment to stop, one to continue, and one to start.
+
+**End of month three**
+
+- Confirm or narrow the niche.
+- Choose Zhihu, Channels, or Xiaohongshu as the main discovery support.
+- Decide whether a paid demand test is justified.
+- Eliminate formats that require disproportionate effort.
+
+**End of month six**
+
+- Evaluate authority, stable audience, portfolio, community, leads, and revenue separately.
+- Do not call the project a failure merely because platform advertising income is low.
+- Choose the next six-month objective based on demonstrated strength.
+
+### Operating decision rules
+
+- **Double down on a pillar** when at least four pieces exceed the account median by 25% in meaningful engagement and also attract the intended persona.
+- **Revise or stop a pillar** after four fair tests remain below 70% of the median and generate no valuable interviews, leads, or learning.
+- **Keep a support platform** if it contributes at least 20% of qualified audience growth, has unique strategic value, or creates substantially better retention.
+- **Do not add another platform** if weekly production adherence is below 90%.
+- **Proceed with monetization** only after real payment or organizational commitment, not poll enthusiasm.
+- **Pause publishing** when material accuracy, labeling, privacy, or rights cannot be confirmed.
+
+---
+
+## Conclusion
+
+The most defensible six-month strategy is to become a trusted interpreter of **AI implementation decisions**, not a faster aggregator of AI announcements.
+
+The brand should be built around three forms of proof:
+
+1. **Reproducible workflow evidence**
+2. **Longitudinal founder and operator cases**
+3. **Transparent sourcing, disclosure, and correction**
+
+WeChat Official Account should serve as the primary authority and conversion layer. Zhihu is the default discovery partner for a text-first solo creator; Channels is the better alternative when screen demonstration or camera presence is practical. Xiaohongshu, Bilibili, Douyin, and international platforms should be added only when a specific audience and a sustainable native format justify the extra work.
+
+The first six months should optimize for:
+
+- 24 strong flagship assets;
+- a clear and repeatable testing method;
+- 30–40 audience conversations;
+- a qualified core that returns;
+- one proprietary benchmark;
+- and evidence of one commercial problem worth solving.
+
+Direct revenue is realistic through a workshop, diagnostic, or narrowly scoped B2B pilot if genuine expertise and demand exist. Platform advertising, mass sponsorship, and paid community should not be assumed. The account will remain distinctive only if it continually proves a difficult-to-copy claim:
+
+> **It does not merely tell readers what AI can do. It shows what happened when someone tried to use it, what it really cost, where it failed, and what decision should follow.**
+
+### Sources
+
+[1] Measures for Labeling AI-Generated and Synthetic Content — Chinese Government: https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm
+
+[2] Weixin Channels Operation Standards — WeChat: https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_agreement&s=video
+
+[3] Zhihu Salt Score — Zhihu: https://www.zhihu.com/term/credit
+
+[4] WeChat Channels Original-Content Declaration Guide — WeChat Channels: https://findeross.weixin.qq.com/cgi-bin/mmfindernodelivecrmwebbroker-bin/helper-center/pages/JGJ5RCnIa4g2Y72h
+
+[5] 2025 China Social Media Platform Guide summary — Sohu/参一江湖, April 4, 2025: https://www.sohu.com/a/879809965_121094725
+
+[6] Douyin Creator Center — Douyin: https://creator.douyin.com/?enter_from=home_class
+
+[7] Xiaohongshu Pugongying Help Center — Xiaohongshu: https://pgy.xiaohongshu.com/help/home
+
+[8] WeChat Official Account Rule Center — WeChat: https://mp.weixin.qq.com/webpoc/ruleCenter?type=oa
+
+[9] Report on AI creators stopping updates — 塔猴, August 2026: https://www.tahou.com/article/214862472510042117
+
+[10] China.com report on AI-creator stoppages — 中华网, August 18, 2026: https://news.china.com/socialgd/10000169/20260818/49682623_all.html
+
+[11] Bilibili Joint Submission Guide — Bilibili 花火: https://www.bilibili.com/blackboard/activity-0hk0HUDjN2.html
+
+[12] 100+ Substack Creator Statistics — SEO Sandwitch: https://seosandwitch.com/substack-creator-statistics/
+
+[13] Substack Statistics and Facts — Sci-Tech Today: https://www.sci-tech-today.com/stats/substack-statistics/
+
+[14] WeChat Channels Video Marketing Information Rules — WeChat Open Documentation: https://developers.weixin.qq.com/doc/channels/Operating_Specifications/Store_Operation_Rules/Video_Marketing_Information.html

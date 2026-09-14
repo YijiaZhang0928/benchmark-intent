@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "H4W7",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "c77d9e6693edc7b3be4ec9f31c60990abbd19a1d404e5bbbefd1d64deeec1ace",
+  "rubric_sha256": "4c6709c9c8ee2d348be2db51fd48e97130968a346f9e7ce3767fc77b535a094a",
+  "started_at_utc": "2026-09-14T03:51:52.902912+00:00",
+  "completed_at_utc": "2026-09-14T03:58:07.339879+00:00",
+  "p_strict": 7.349966555183947,
+  "p_hi": 7.72,
+  "dimension_scores": {
+    "INTENT": 9.2,
+    "SOURCE": 9.6,
+    "EVIDENCE": 6.434782608695652,
+    "TRADEOFF": 4.3478260869565215,
+    "DECISION": 6.869565217391304,
+    "ACTION": 10.0,
+    "TRACE": 6.76923076923077
+  },
+  "high_dimension_scores": {
+    "INTENT": 9.2,
+    "SOURCE": 9.6,
+    "EVIDENCE": 6.8,
+    "TRADEOFF": 4.8,
+    "DECISION": 7.6000000000000005,
+    "ACTION": 10.0,
+    "TRACE": 7.6000000000000005
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T5-P1-01",
+      "score": 10,
+      "evidence_span": "| AI tutor orchestration | Build | This is central to pedagogy and differentiation | Build |",
+      "rationale": "Explicitly prioritizes building proprietary AI-tutor orchestration because it is central to product differentiation."
+    },
+    {
+      "criterion_id": "T5-P1-02",
+      "score": 10,
+      "evidence_span": "Before release, create a benchmark set covering:\n\n- Factual questions.\n- Ambiguous questions.\n- Requests to complete an assessment.\n- Requests involving personal or confidential data.\n- Biased or discriminatory prompts.\n- Self-harm or crisis language.\n- Prompt injection.\n- Requests for fabricated citations.\n- Discipline-specific edge cases.\n- Accessibility-related interactions.",
+      "rationale": "Specifies concrete benchmark evidence for evaluating the differentiated AI tutor, including grounding, safety, assessment boundaries and discipline-specific behavior."
+    },
+    {
+      "criterion_id": "T5-P1-03",
+      "score": 8,
+      "evidence_span": "- Retrieve from approved course content.\n- Cite the lesson or source supporting its response.\n- Ask diagnostic questions before giving solutions.\n- Prefer hints and worked steps over final answers.\n- Refuse to complete protected assessments.",
+      "rationale": "The proposed tutor has concrete, testable software behaviors supporting educational differentiation. These are specified capabilities rather than demonstrated implementation or performance evidence."
+    },
+    {
+      "criterion_id": "T5-P1-04",
+      "score": 10,
+      "evidence_span": "Coursera Plus currently advertises access to more than 10,000 programs and a regular price of **$59 per month**, with localized pricing outside the United States.[5]",
+      "rationale": "Names a broad education-content alternative and supplies sourced, verifiable facts about its catalog breadth and subscription price."
+    },
+    {
+      "criterion_id": "T5-P1-05",
+      "score": 4,
+      "evidence_span": "A new venture cannot beat that breadth. It must compete on **relevance, project outcomes, guided practice, responsible use and institutional implementation**.",
+      "rationale": "Directly contrasts content breadth with an outcome-oriented educational offering, but does not explicitly compare technical AI/software differentiation against the generic offering on a common decision axis."
+    },
+    {
+      "criterion_id": "T5-P1-06",
+      "score": 10,
+      "evidence_span": "| AI tutor orchestration | Build | This is central to pedagogy and differentiation | Build |",
+      "rationale": "Names the recommended build option and explicitly gives its contribution to differentiation as the selection reason."
+    },
+    {
+      "criterion_id": "T5-P1-07",
+      "score": 4,
+      "evidence_span": "It should not try to compete with broad course libraries on content volume.",
+      "rationale": "Explicitly downgrades a content-volume strategy, but does not explicitly make preference for technically differentiated software the reason for that downgrade."
+    },
+    {
+      "criterion_id": "T5-P1-08",
+      "score": 10,
+      "evidence_span": "- Add tutor guardrails, citations and quotas.",
+      "rationale": "Provides an executable development action implementing concrete functionality in the AI tutor."
+    },
+    {
+      "criterion_id": "T5-P1-09",
+      "score": 10,
+      "evidence_span": "Tutor acceptable-response score of at least 90% on the curated benchmark and zero unresolved critical safety failures.",
+      "rationale": "Defines a measurable launch checkpoint specific to the AI product's response quality and safety."
+    },
+    {
+      "criterion_id": "T5-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not state a concrete condition under which a generic education-content or marketing offering becomes preferable to technically differentiated AI/software."
+    },
+    {
+      "criterion_id": "T5-P1-11",
+      "score": 4,
+      "evidence_span": "Coursera Plus currently advertises access to more than 10,000 programs and a regular price of **$59 per month**, with localized pricing outside the United States.[5] A new venture cannot beat that breadth. It must compete on **relevance, project outcomes, guided practice, responsible use and institutional implementation**.",
+      "rationale": "Shows competitor evidence leading to a differentiation decision, but the downstream preference is educational relevance and outcomes rather than explicitly technical AI/software differentiation. Connecting this chain to the proprietary tutor would require inference."
+    },
+    {
+      "criterion_id": "T5-P2-01",
+      "score": 10,
+      "evidence_span": "Services should support product adoption without turning the business into an unscalable consultancy.",
+      "rationale": "Explicitly prioritizes a scalable product business over expanding labor-intensive consulting services."
+    },
+    {
+      "criterion_id": "T5-P2-02",
+      "score": 8,
+      "evidence_span": "Use official pricing pages and calculators rather than static comparisons because charges depend on traffic, storage, egress, duration and region.[11][12][13]",
+      "rationale": "Identifies vendor pricing evidence specifically suited to evaluating software infrastructure economics at scale. It does not explicitly propose researching automation's ability to replace human service."
+    },
+    {
+      "criterion_id": "T5-P2-03",
+      "score": 10,
+      "evidence_span": "Supabase’s official pricing page includes managed PostgreSQL, authentication, storage, realtime features, edge functions, backups and enterprise security options.[10]",
+      "rationale": "Provides verifiable, sourced capabilities of a named managed-software option, including infrastructure services that avoid building and operating those functions manually."
+    },
+    {
+      "criterion_id": "T5-P2-04",
+      "score": 10,
+      "evidence_span": "cohorts generally improve support and completion but increase operating costs",
+      "rationale": "States a concrete operating-cost consequence of the cohort-based mentorship route rather than merely labeling it labor-intensive."
+    },
+    {
+      "criterion_id": "T5-P2-05",
+      "score": 10,
+      "evidence_span": "Self-paced scales faster; cohorts generally improve support and completion but increase operating costs",
+      "rationale": "Directly compares scalable self-paced delivery with supported cohorts, identifying consequential differences in scaling, support, completion and operating costs."
+    },
+    {
+      "criterion_id": "T5-P2-06",
+      "score": 8,
+      "evidence_span": "Use a modular curriculum graph so foundational content is reused rather than duplicated.",
+      "rationale": "Selects a concrete architecture because it enables reusable delivery at scale. The causal benefit is explicit, although automated execution or reduced human service is not stated in this recommendation."
+    },
+    {
+      "criterion_id": "T5-P2-07",
+      "score": 8,
+      "evidence_span": "| Over-customization | Each partner requests unique product | Configuration boundaries and paid services | Custom work exceeds 20% of engineering capacity |",
+      "rationale": "Treats partner-specific customization as a route to constrain because it consumes engineering capacity. This clearly limits labor-heavy customization, though it does not explicitly rank a named human-service offering below an automated alternative."
+    },
+    {
+      "criterion_id": "T5-P2-08",
+      "score": 10,
+      "evidence_span": "Improve automated lifecycle communications.",
+      "rationale": "Provides an executable, scheduled product-development action implementing software-automated user communications."
+    },
+    {
+      "criterion_id": "T5-P2-09",
+      "score": 10,
+      "evidence_span": "Set a provisional target of **$1–$3 per monthly active learner** for general tutor usage, excluding expensive code or media generation.",
+      "rationale": "Defines a measurable per-user cost target governing scalable AI tutoring, with an explicit scope and exclusion."
+    },
+    {
+      "criterion_id": "T5-P2-10",
+      "score": 8,
+      "evidence_span": "| Low completion | Less than 40% reach first project | Shorter modules, cohort support and onboarding revision | Two cohorts below 50% |",
+      "rationale": "Gives a concrete low-completion condition for adding cohort support. Human-supported delivery becomes a corrective option, although the report does not explicitly state that it should replace automated or self-paced delivery."
+    },
+    {
+      "criterion_id": "T5-P2-11",
+      "score": 4,
+      "evidence_span": "Self-paced scales faster; cohorts generally improve support and completion but increase operating costs",
+      "rationale": "Supplies a preference-relevant comparative claim, and self-paced delivery is recommended elsewhere. However, a complete automation-priority-to-evidence-to-selection chain is not explicitly traced; connecting those elements requires inference."
+    },
+    {
+      "criterion_id": "T5-P3-01",
+      "score": 8,
+      "evidence_span": "The most important first-year discipline is sequencing: **validate the problem, then payment, then learning efficacy, then institutional repeatability, and only then scale content and acquisition**. A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "The report explicitly prioritizes staged validation over substantial upfront platform development. Its early prototype and subsequent revision stages make this a task-specific measured-development priority."
+    },
+    {
+      "criterion_id": "T5-P3-02",
+      "score": 10,
+      "evidence_span": "- Deliver a manual two-week prototype to 20–30 students.\n- Test diagnostic, sample lesson, tutor workflow and capstone.\n- Observe learners completing tasks.",
+      "rationale": "Direct observation of students using a short prototype is an identifiable evidence class explicitly chosen to evaluate the initial product before further development."
+    },
+    {
+      "criterion_id": "T5-P3-03",
+      "score": 4,
+      "evidence_span": "Supabase’s official pricing page includes managed PostgreSQL, authentication, storage, realtime features, edge functions, backups and enterprise security options.[10]",
+      "rationale": "The report supplies verifiable capabilities for a named MVP infrastructure option, but does not explicitly connect those particular facts to faster delivery, measurement or iteration. The preference-specific evidentiary link remains implicit."
+    },
+    {
+      "criterion_id": "T5-P3-04",
+      "score": 4,
+      "evidence_span": "**Fully custom learning platform:** maximum differentiation but high time, accessibility and maintenance risk.",
+      "rationale": "A contrast-side option is named, but its disadvantages are generic risk characterizations. No concrete duration, delayed-feedback mechanism or other verifiable fact establishes a long closed-door polished build."
+    },
+    {
+      "criterion_id": "T5-P3-05",
+      "score": 8,
+      "evidence_span": "The most important first-year discipline is sequencing: **validate the problem, then payment, then learning efficacy, then institutional repeatability, and only then scale content and acquisition**. A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "This directly compares evidence-led staged development with building a broad platform before validation, identifying financial and execution risk as the consequential common decision axis."
+    },
+    {
+      "criterion_id": "T5-P3-06",
+      "score": 4,
+      "evidence_span": "- **Hosted conventional LMS:** fastest institutional familiarity, strong course-management features, weaker custom experience.\n- **Open-source LMS:** more control and lower license cost, but requires hosting, upgrades and security operations.\n- **Fully custom learning platform:** maximum differentiation but high time, accessibility and maintenance risk.\n- **Hybrid:** conventional LMS or structured content backend plus a custom student experience.\n\nThe hybrid option is usually best for the first year.",
+      "rationale": "The report recommends a named hybrid option alongside time-related trade-offs, but does not expressly state that supporting rapid MVP delivery, measurement and iteration is the causal reason for selecting it. That connection is implicit."
+    },
+    {
+      "criterion_id": "T5-P3-07",
+      "score": 8,
+      "evidence_span": "A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "The broad upfront-platform route is explicitly downgraded because it commits to development before validation gates. The report otherwise allows broader platform development after validation, making this a timing-specific rejection rather than a rejection of the option altogether."
+    },
+    {
+      "criterion_id": "T5-P3-08",
+      "score": 10,
+      "evidence_span": "- Analyze pilot drop-off and learning gains.\n- Revise weak modules and onboarding.",
+      "rationale": "These are executable actions that turn measured pilot performance into concrete product and curriculum revisions."
+    },
+    {
+      "criterion_id": "T5-P3-09",
+      "score": 10,
+      "evidence_span": "**Gate:** At least 70% finish the prototype and 80% rate usefulness at 4/5 or better.",
+      "rationale": "The prototype stage has explicit numerical completion and usefulness thresholds that serve as a usable development checkpoint."
+    },
+    {
+      "criterion_id": "T5-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not identify a condition under which a long closed-door polished build becomes preferable. Conditions for building infrastructure later or pursuing stronger credentials do not establish that reversal."
+    },
+    {
+      "criterion_id": "T5-P3-11",
+      "score": 10,
+      "evidence_span": "| Weak learning outcomes | Engagement without assessment gain | Revise pedagogy and assessment; external review | No meaningful gain after one revision cycle |",
+      "rationale": "The row explicitly connects measured learning evidence to a revision decision and a subsequent iteration checkpoint, providing a visible evidence-to-action chain."
+    },
+    {
+      "criterion_id": "T5-P4-01",
+      "score": 10,
+      "evidence_span": "Proceed only if the evidence meets predetermined thresholds.",
+      "rationale": "Explicitly makes evidence a prerequisite for proceeding with the startup, rather than merely a general aspiration."
+    },
+    {
+      "criterion_id": "T5-P4-02",
+      "score": 10,
+      "evidence_span": "Avoid asking only “Would you buy this?” Stated intent should be paired with behavioral tests.",
+      "rationale": "Identifies behavioral tests as necessary evidence to supplement stated purchasing intent and evaluate actual demand."
+    },
+    {
+      "criterion_id": "T5-P4-03",
+      "score": 10,
+      "evidence_span": "A WWC-reviewed randomized study found a statistically significant positive result for retrieval-practice studying compared with concept mapping, although the sample was only 40 students",
+      "rationale": "Provides a cited, verifiable experimental result supporting the named retrieval-practice option, including its sample-size limitation."
+    },
+    {
+      "criterion_id": "T5-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is established through a concrete fact as using intuition-only product decisions. Warnings against premature platform development do not establish that decision method."
+    },
+    {
+      "criterion_id": "T5-P4-05",
+      "score": 4,
+      "evidence_span": "validate the problem, then payment, then learning efficacy, then institutional repeatability, and only then scale content and acquisition**. A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "Compares evidence-gated development with building before validation on financial and execution risk. However, the alternative is not explicitly characterized as intuition-only decision-making, leaving the required contrast incomplete."
+    },
+    {
+      "criterion_id": "T5-P4-06",
+      "score": 10,
+      "evidence_span": "A WWC-reviewed randomized study found a statistically significant positive result for retrieval-practice studying compared with concept mapping, although the sample was only 40 students and does not by itself establish effectiveness for every domain.[8] Retrieval should therefore be part of the design, not treated as a complete pedagogy.",
+      "rationale": "Recommends retrieval practice because experimental evidence supports it, explicitly linking the selection to the study while respecting its limitations."
+    },
+    {
+      "criterion_id": "T5-P4-07",
+      "score": 4,
+      "evidence_span": "A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "Downgrades a named development route for preceding validation gates. This partially supports the criterion, but does not identify intuition-only decisions as its selection logic or establish that it is otherwise viable."
+    },
+    {
+      "criterion_id": "T5-P4-08",
+      "score": 10,
+      "evidence_span": "**Message test:** three landing-page propositions—career outcome, academic confidence and discipline productivity.",
+      "rationale": "Specifies an executable experiment with three concrete propositions to test for the proposed education startup."
+    },
+    {
+      "criterion_id": "T5-P4-09",
+      "score": 10,
+      "evidence_span": "| Payment | At least 5% place a deposit, or a paid concierge cohort fills 40 seats |",
+      "rationale": "Defines a numerical behavioral-validation checkpoint for willingness to pay."
+    },
+    {
+      "criterion_id": "T5-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is given under which intuition-only product decisions become preferable to evidence-based decisions."
+    },
+    {
+      "criterion_id": "T5-P4-11",
+      "score": 10,
+      "evidence_span": "A WWC-reviewed randomized study found a statistically significant positive result for retrieval-practice studying compared with concept mapping, although the sample was only 40 students and does not by itself establish effectiveness for every domain.[8] Retrieval should therefore be part of the design, not treated as a complete pedagogy.",
+      "rationale": "The cited experimental finding directly leads to a curriculum-design recommendation through an explicit causal statement, making the evidence-to-action chain visible."
+    },
+    {
+      "criterion_id": "T5-P5-01",
+      "score": 8,
+      "evidence_span": "Build a thin proprietary experience around bought infrastructure rather than creating a full learning-management system, code-execution environment or foundation model.",
+      "rationale": "The executive recommendation clearly prioritizes restrained development and deliberate build-versus-buy allocation. Efficiency is expressed through the chosen approach rather than explicitly named as the decision priority."
+    },
+    {
+      "criterion_id": "T5-P5-02",
+      "score": 10,
+      "evidence_span": "Use official pricing pages and calculators rather than static comparisons because charges depend on traffic, storage, egress, duration and region.[11][12][13]",
+      "rationale": "Identifies authoritative cost evidence and explicitly explains why it is needed to evaluate infrastructure choices and allocate resources accurately."
+    },
+    {
+      "criterion_id": "T5-P5-03",
+      "score": 8,
+      "evidence_span": "For a 500-student license at $35 per student:\n\n- Revenue: $17,500.\n- Implementation and faculty onboarding: $4,000.\n- Variable technology and support at $8 per student: $4,000.\n- First-year contribution: $9,500, or 54%.",
+      "rationale": "Provides concrete, checkable resource and contribution calculations for institutional licensing. These demonstrate the option's economics, although they are illustrative assumptions rather than observed operating evidence."
+    },
+    {
+      "criterion_id": "T5-P5-04",
+      "score": 4,
+      "evidence_span": "**Fully custom learning platform:** maximum differentiation but high time, accessibility and maintenance risk.",
+      "rationale": "Names a feature-expansion route and its resource disadvantages, but supplies no concrete supporting fact demonstrating wasteful expansion without evidence. The generic cap applies."
+    },
+    {
+      "criterion_id": "T5-P5-05",
+      "score": 10,
+      "evidence_span": "The most important first-year discipline is sequencing: **validate the problem, then payment, then learning efficacy, then institutional repeatability, and only then scale content and acquisition**. A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "Directly contrasts evidence-gated allocation with premature broad development, identifying financial and execution risk as the consequential difference."
+    },
+    {
+      "criterion_id": "T5-P5-06",
+      "score": 10,
+      "evidence_span": "Choose one country if legal budget is under $30,000 or the team lacks institutional compliance experience",
+      "rationale": "Explicitly selects a narrower launch option because available money or team expertise cannot support broader complexity."
+    },
+    {
+      "criterion_id": "T5-P5-07",
+      "score": 10,
+      "evidence_span": "A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "Explicitly downgrades broad platform development when undertaken before validation, giving increased financial and execution risk as the preference-specific reason."
+    },
+    {
+      "criterion_id": "T5-P5-08",
+      "score": 10,
+      "evidence_span": "Shut down idle sessions.",
+      "rationale": "Within lab-cost control, this is a directly executable action that prevents unnecessary compute expenditure."
+    },
+    {
+      "criterion_id": "T5-P5-09",
+      "score": 10,
+      "evidence_span": "Custom work exceeds 20% of engineering capacity",
+      "rationale": "Defines a measurable contingency trigger for over-customization, making resource allocation operational rather than merely directional."
+    },
+    {
+      "criterion_id": "T5-P5-10",
+      "score": 4,
+      "evidence_span": "Appropriate only if there is funding, established distribution or a multi-university commitment. More money should not be used to create many courses before demand is proven.",
+      "rationale": "Provides concrete conditions for choosing the higher-resource scenario, but explicitly continues to reject unsupported course expansion. It does not establish when the specified wasteful, evidence-free alternative becomes preferable."
+    },
+    {
+      "criterion_id": "T5-P5-11",
+      "score": 10,
+      "evidence_span": "Before retention is proven, customer acquisition cost should remain below approximately:\n\n\\[\n\\$78.29 / 3 = \\$26.10\n\\]\n\nThat produces a one-year contribution-LTV-to-CAC ratio of 3:1.",
+      "rationale": "Shows an explicit chain from uncertain retention and calculated contribution to a concrete acquisition-spending ceiling, with the intended efficiency ratio stated. The numerical evidence is a disclosed planning calculation."
+    },
+    {
+      "criterion_id": "T5-A1-01",
+      "score": 6,
+      "evidence_span": "Use two-person review for assessments.",
+      "rationale": "Specifies a concrete collaborative review practice in curriculum quality assurance, providing explicit evidence of team input. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T5-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly contrast team input or cross-functional discussion with founder-only decision-making. Staffing alternatives do not establish that decision-making distinction."
+    },
+    {
+      "criterion_id": "T5-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No shortlist ranking, inclusion, exclusion or secondary fit judgment explicitly turns on team input or cross-functional discussion."
+    },
+    {
+      "criterion_id": "T5-A1-04",
+      "score": 6,
+      "evidence_span": "Co-design the pilot problem and target cohort.",
+      "rationale": "The recommended partnership process explicitly supports collaborative input, and no selected option is justified by founder-only decision-making. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T5-A2-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides no concrete fact tied to protecting founder weekends or family time. Its founder-overload mitigation concerns execution capacity, not these personal-time boundaries."
+    },
+    {
+      "criterion_id": "T5-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison distinguishes protecting weekends or family time from an always-on founder schedule. Delivery-format comparisons address learner flexibility and operating costs instead."
+    },
+    {
+      "criterion_id": "T5-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Protecting weekends or family time is not used to rank, include, exclude or recommend any option, even as a secondary fit factor."
+    },
+    {
+      "criterion_id": "T5-A2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The recommendation does not explicitly endorse an always-on schedule, but it also provides no preference-specific evidence concerning founder weekends or family time. Under the supplied absent-evidence anchor, silence alone does not earn credit."
+    },
+    {
+      "criterion_id": "T5-A3-01",
+      "score": 6,
+      "evidence_span": "Supabase’s official pricing page includes managed PostgreSQL, authentication, storage, realtime features, edge functions, backups and enterprise security options.[10]",
+      "rationale": "Gives verifiable features of a named platform option, including backups and enterprise security, that bear directly on service quality and institutional credibility. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T5-A3-02",
+      "score": 4,
+      "evidence_span": "| Generic differentiation | Students compare it only on course price | Discipline projects, feedback and portfolio evidence |",
+      "rationale": "Explicitly contrasts price-only comparison with differentiation through educational quality and outcome evidence. However, it does not clearly distinguish named options positioned for credibility versus lowest cost, so the option-level requirement is incomplete."
+    },
+    {
+      "criterion_id": "T5-A3-03",
+      "score": 6,
+      "evidence_span": "Best balance between speed, quality and institutional readiness.",
+      "rationale": "The base-resource scenario receives an explicit best-fit judgment partly because of quality and institutional readiness, making credibility-related quality a secondary recommendation factor. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T5-A3-04",
+      "score": 6,
+      "evidence_span": "Make a public launch only after demonstrating student demand, measurable learning gains, safe tutor behavior, acceptable accessibility and viable contribution margins.",
+      "rationale": "The executive recommendation explicitly conditions launch on demonstrated educational quality, safety and accessibility rather than just low cost. It therefore supports a recommendation consistent with quality and credibility. The supplied generic cap limits the score to 6."
+    }
+  ]
+}

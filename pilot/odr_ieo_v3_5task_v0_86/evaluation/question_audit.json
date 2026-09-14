@@ -1,0 +1,116 @@
+[
+  {
+    "task": "T01",
+    "condition": "stock",
+    "question_message": "To tailor what counts as “abroad” and identify realistic AI PhD directions and programs, please provide:\n- Your citizenship and current country of study/residence\n- Current/highest degree, field, institution type, GPA or class rank, and expected graduation date\n- Main AI interests (e.g., machine learning, computer vision, NLP, robotics, AI safety, or interdisciplinary AI)\n- Research, publication, internship, and programming experience\n- English proficiency/test status and any other language constraints\n- Funding needs, budget limits, and preferred or excluded countries",
+    "simulator_answer": "- Citizenship is not specified. I currently study and reside in Jiangsu, China.\n- I am an undergraduate in Computer Science and Technology at a prestigious university in Jiangsu. My academic performance is excellent, and I have received school scholarships for two consecutive years. My exact GPA/class rank and expected graduation date are not specified.\n- My main interests are AI and algorithm research, especially deep learning and natural language processing. I prefer applied, implementation-heavy, system-building work over purely abstract theory.\n- I have substantial hands-on programming and self-directed learning experience using PyCharm, VS Code, GitHub, Coursera, and technical resources, and I have participated in programming competitions. Specific formal research projects, publications, internships, and programming languages are not specified.\n- My English proficiency, test status, and other language constraints are not specified.\n- Strong funding or scholarships and cost-effectiveness are important. No exact budget, preferred countries, or excluded countries are specified.",
+    "top_level_question_rows": 6,
+    "resolved_units": [
+      "T1-P1",
+      "T1-P2",
+      "T1-P4"
+    ],
+    "answer_yield": 0.5
+  },
+  {
+    "task": "T01",
+    "condition": "ieo",
+    "question_message": "1. Which AI research areas most interest you—or which 2–3 currently attract you if undecided? This will determine the lab shortlist and technical preparation plan.\n2. What is your primary intended post-PhD outcome: academia, industrial research, applied R&D/startup, or undecided? This will change how programs are weighted for publications, internships, industry links, and placement.\n3. What is your current academic and research-readiness profile (degree/field and expected graduation, grades or standing, math/programming preparation, and research/publications)? This will determine realistic program tiers and the 1–2 year gap-closing plan.",
+    "simulator_answer": "1. Deep learning and natural language processing interest me most, especially applied, implementation-heavy work.\n2. Industrial research is my primary intended outcome, while keeping strong employability and applied R&D options.\n3. I’m an undergraduate in Computer Science and Technology at a prestigious university in Jiangsu. My expected graduation date is not specified. I have excellent academic performance and received school scholarships for two consecutive years, but exact grades/rank are not specified. My preparation is strongest in programming and self-directed, hands-on learning through coding tools, online platforms, technical blogs, GitHub, and programming competitions. My formal math preparation and research/publication record are not specified.",
+    "top_level_question_rows": 3,
+    "resolved_units": [
+      "T1-P1",
+      "T1-P2",
+      "T1-P3"
+    ],
+    "answer_yield": 1.0
+  },
+  {
+    "task": "T02",
+    "condition": "stock",
+    "question_message": "To assess eligibility and credit transfer accurately, please provide:\n- Your home university and country\n- Degree level, field/major, and current year of study\n- Citizenship or passport(s), which affects visa requirements\n- Intended semester or approximate dates\n- Preferred instruction language(s) and any proficiency certifications\n- Approximate budget and whether your university has existing exchange partners in the United States, Europe, Japan, or Singapore",
+    "simulator_answer": "- Home university: name not specified; country: China.\n- Degree: graduate level; field: new media technology and public-opinion analysis; current year not specified.\n- Citizenship/passport(s): not specified.\n- Intended semester or dates: not specified.\n- Preferred instruction language(s) and proficiency certifications: not specified.\n- Budget: no specific amount, but cost-effective options are preferred; existing exchange partners in the listed regions are not specified.",
+    "top_level_question_rows": 6,
+    "resolved_units": [
+      "T2-P5"
+    ],
+    "answer_yield": 0.16666666666666666
+  },
+  {
+    "task": "T02",
+    "condition": "ieo",
+    "question_message": "1. What university and degree program are you currently in, including country, level, field, and year?\n2. Which outcome should dominate the ranking: smooth credit transfer, strongest curriculum, research/networking, or cross-cultural immersion?\n3. What financial posture should guide the ranking: lowest net cost, balanced value, or willingness to pay more for a stronger academic fit?\n\nThese answers will determine eligibility and credit matching, ranking weights, and the cost filters used for the shortlist and preparation plan.",
+    "simulator_answer": "1. I’m a graduate student in China focusing on new-media technology and public-opinion analysis. My exact university, degree title, and year are not specified.\n2. Cross-cultural immersion should dominate the ranking.\n3. Balanced value should guide it; I prefer cost-effective choices rather than simply the lowest cost.",
+    "top_level_question_rows": 3,
+    "resolved_units": [
+      "T2-P1",
+      "T2-P5"
+    ],
+    "answer_yield": 0.6666666666666666
+  },
+  {
+    "task": "T05",
+    "condition": "stock",
+    "question_message": "",
+    "simulator_answer": "",
+    "top_level_question_rows": 0,
+    "resolved_units": [],
+    "answer_yield": 0.0
+  },
+  {
+    "task": "T05",
+    "condition": "ieo",
+    "question_message": "1. What single learner outcome should the product optimize for at launch—for example, broad AI literacy, coursework support, job-ready skills, or research productivity? This will set the curriculum, MVP, positioning, and success metrics.\n2. Which country or region should be the first launch market? This will change market sizing, pricing, compliance, and campus-partnership strategy.\n3. What is the maximum cash budget available from concept through launch, excluding funding that has not yet been secured? This will determine staffing, build-versus-buy choices, pilot scope, marketing spend, and the financing gap.",
+    "simulator_answer": "1. No strong preference is established for a single launch learner outcome.\n2. The first launch country or region is not specified.\n3. The maximum secured cash budget is not specified.",
+    "top_level_question_rows": 3,
+    "resolved_units": [],
+    "answer_yield": 0.0
+  },
+  {
+    "task": "T08",
+    "condition": "stock",
+    "question_message": "Please provide the following essentials so I can compare realistic destinations and costs:\n- Departure city/country and intended July travel year (e.g., July 2027)\n- Number of travelers and approximate ages of the children and older adults\n- Total trip budget or preferred budget level, including flights\n- Preferred destination region or maximum travel time\n- Any specific mobility, accessibility, medical, dietary, or accommodation requirements",
+    "simulator_answer": "- Departure: Shanghai, China. July travel year is not specified.\n- Four travelers: two adults and two children, ages 8 and 5. No older adults are specified.\n- No fixed total budget is specified; prefer good quality and value for money, including flights.\n- No preferred region or maximum travel time is specified.\n- No specific mobility, accessibility, medical, or dietary requirements are specified. Prefer cozy, family-friendly accommodation.",
+    "top_level_question_rows": 5,
+    "resolved_units": [
+      "T8-A2",
+      "T8-P4"
+    ],
+    "answer_yield": 0.4
+  },
+  {
+    "task": "T08",
+    "condition": "ieo",
+    "question_message": "1. What city or airport will the group depart from? This changes feasible destinations, journey time, transportation, and cost.\n2. What is the maximum all-in budget for the entire group, in your preferred currency? This determines the lodging tier, transport mode, dining plan, and paid activities.\n3. Which should dominate the destination choice: easiest travel/accessibility, most dependable July beach weather, best value, calmest swimming, or widest activity mix? This changes the shortlist, ranking, and itinerary emphasis.",
+    "simulator_answer": "1. Shanghai; no strong airport preference.\n2. The maximum all-in budget and preferred currency are not specified.\n3. Best value should dominate, emphasizing high quality-to-cost rather than the cheapest option.",
+    "top_level_question_rows": 3,
+    "resolved_units": [
+      "T8-P4"
+    ],
+    "answer_yield": 0.3333333333333333
+  },
+  {
+    "task": "T11",
+    "condition": "stock",
+    "question_message": "To tailor the plan and define what counts as “domestic,” please specify:\n- **Primary country/market and content language**\n- **Account owner:** individual creator, business, or organization\n- **Relevant expertise/interests or niche constraints** (or confirm that the niche should be selected from scratch)\n- **Available resources:** approximate monthly budget, team size, and hours per week\n- **Any preferred or excluded platforms**",
+    "simulator_answer": "- 主要市场与语言：中国大陆，中文。\n- 账号主体：未明确指定。\n- 专长/细分领域：AI 应用案例、行业趋势与创业实践，侧重技术与商业结合。\n- 可用资源：倾向精益、高效率、重视投入产出比；月预算、团队人数和每周工时暂无明确数字。\n- 平台：偏好 Bilibili、LinkedIn 和专业技术论坛；暂无明确排除的平台。",
+    "top_level_question_rows": 5,
+    "resolved_units": [
+      "T11-A1",
+      "T11-P1",
+      "T11-P5"
+    ],
+    "answer_yield": 0.6
+  },
+  {
+    "task": "T11",
+    "condition": "ieo",
+    "question_message": "1. Which 2–4 subject areas do you want the account to focus on? This will determine the niche shortlist, positioning, and topic calendar.\n2. What is the account’s primary six-month outcome: audience growth, authority or portfolio building, community, lead generation, or direct revenue? This will change the KPIs, content mix, growth tests, and monetization timing.\n3. What country should “domestic” refer to? This will change the local cases, platform assumptions, regulations, and monetization options.",
+    "simulator_answer": "1. AI applications, AI industry trends, and entrepreneurship.\n2. No strong preference among those six-month outcomes.\n3. China.",
+    "top_level_question_rows": 3,
+    "resolved_units": [
+      "T11-P1"
+    ],
+    "answer_yield": 0.3333333333333333
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T5-P2-01",
+      "score": 4,
+      "evidence_span": "Build only capabilities that create differentiation:",
+      "rationale": "Software development is prioritized around differentiation, but scalable AI/software automation is not explicitly stated as the decision priority. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T5-P2-02",
+      "score": 10,
+      "evidence_span": "The [official OpenAI API pricing page](https://developers.openai.com/api/docs/pricing) illustrates current cost mechanics: separate input and output token rates, cached-input discounts, tool charges, and a reported 10% uplift for eligible regional-processing endpoints.",
+      "rationale": "An identifiable official source is used to investigate inference-cost mechanics relevant to economically scaling AI automation."
+    },
+    {
+      "criterion_id": "T5-P2-03",
+      "score": 10,
+      "evidence_span": "The [official OpenAI API pricing page](https://developers.openai.com/api/docs/pricing) illustrates current cost mechanics: separate input and output token rates, cached-input discounts",
+      "rationale": "The named API option has a verifiable, automation-specific cost feature: discounts for cached inputs. This is concrete evidence rather than a scalability adjective."
+    },
+    {
+      "criterion_id": "T5-P2-04",
+      "score": 10,
+      "evidence_span": "| Career Sprint | $99–$299 one time | Four-to-eight-week cohort, employer project, live sessions, feedback |",
+      "rationale": "The named Career Sprint route requires live sessions and feedback over a defined cohort duration, concretely specifying human-service delivery."
+    },
+    {
+      "criterion_id": "T5-P2-05",
+      "score": 4,
+      "evidence_span": "| Student tutors and academic-support centers | Human tutoring, writing centers, study-skills services | High trust and human judgment | Expensive to scale and inconsistently available |",
+      "rationale": "The competitor comparison identifies human-service scaling limitations, but does not directly compare automation and human service on a shared scalability axis with an explicit consequential difference. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T5-P2-06",
+      "score": 8,
+      "evidence_span": "Use lower-cost models for:\n\n- Classification.\n- Routing.\n- Simple explanations.\n- Quiz feedback.\n- Summaries of approved content.",
+      "rationale": "Lower-cost models are explicitly selected for repeatable automated tasks, supporting economical automation. The selection reason is concrete, although its connection to scaling is not stated directly here."
+    },
+    {
+      "criterion_id": "T5-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is explicitly downgraded because it relies on labor-intensive human service. Human-service costs are noted, but no resulting ranking decision is stated."
+    },
+    {
+      "criterion_id": "T5-P2-08",
+      "score": 10,
+      "evidence_span": "Build a simple concierge version of the tutor using curated content.",
+      "rationale": "This is an executable action with a concrete software object and specified grounding material, implementing automated tutoring."
+    },
+    {
+      "criterion_id": "T5-P2-09",
+      "score": 10,
+      "evidence_span": "Human review agreement with automated rubric feedback above 80% before scaling automated assessment.",
+      "rationale": "The report provides a numerical quality threshold and an explicit sequence rule governing the scaling of automated assessment."
+    },
+    {
+      "criterion_id": "T5-P2-10",
+      "score": 10,
+      "evidence_span": "| Inaccurate tutor output | Failed benchmark or student reports | RAG, citations, uncertainty, model routing | Human review and restrict tutor scope |",
+      "rationale": "Failed benchmarks or reported inaccurate output trigger human review and a restriction of automated tutoring, establishing a concrete boundary where human intervention becomes preferable."
+    },
+    {
+      "criterion_id": "T5-P2-11",
+      "score": 4,
+      "evidence_span": "Control cost through:\n\n- Hard token and tool-call budgets.\n- Response-length limits.\n- Prompt caching.",
+      "rationale": "The report supplies automation cost evidence elsewhere and recommends related cost controls, but does not explicitly connect a cited fact through a scalable-automation priority to this action. The complete chain would require inference, so partial credit is capped."
+    }
+  ]
+}

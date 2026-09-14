@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T5-P2-01",
+      "score": 10,
+      "evidence_span": "Services should support product adoption without turning the business into an unscalable consultancy.",
+      "rationale": "Explicitly prioritizes a scalable product business over expanding labor-intensive consulting services."
+    },
+    {
+      "criterion_id": "T5-P2-02",
+      "score": 8,
+      "evidence_span": "Use official pricing pages and calculators rather than static comparisons because charges depend on traffic, storage, egress, duration and region.[11][12][13]",
+      "rationale": "Identifies vendor pricing evidence specifically suited to evaluating software infrastructure economics at scale. It does not explicitly propose researching automation's ability to replace human service."
+    },
+    {
+      "criterion_id": "T5-P2-03",
+      "score": 10,
+      "evidence_span": "Supabase’s official pricing page includes managed PostgreSQL, authentication, storage, realtime features, edge functions, backups and enterprise security options.[10]",
+      "rationale": "Provides verifiable, sourced capabilities of a named managed-software option, including infrastructure services that avoid building and operating those functions manually."
+    },
+    {
+      "criterion_id": "T5-P2-04",
+      "score": 10,
+      "evidence_span": "cohorts generally improve support and completion but increase operating costs",
+      "rationale": "States a concrete operating-cost consequence of the cohort-based mentorship route rather than merely labeling it labor-intensive."
+    },
+    {
+      "criterion_id": "T5-P2-05",
+      "score": 10,
+      "evidence_span": "Self-paced scales faster; cohorts generally improve support and completion but increase operating costs",
+      "rationale": "Directly compares scalable self-paced delivery with supported cohorts, identifying consequential differences in scaling, support, completion and operating costs."
+    },
+    {
+      "criterion_id": "T5-P2-06",
+      "score": 8,
+      "evidence_span": "Use a modular curriculum graph so foundational content is reused rather than duplicated.",
+      "rationale": "Selects a concrete architecture because it enables reusable delivery at scale. The causal benefit is explicit, although automated execution or reduced human service is not stated in this recommendation."
+    },
+    {
+      "criterion_id": "T5-P2-07",
+      "score": 8,
+      "evidence_span": "| Over-customization | Each partner requests unique product | Configuration boundaries and paid services | Custom work exceeds 20% of engineering capacity |",
+      "rationale": "Treats partner-specific customization as a route to constrain because it consumes engineering capacity. This clearly limits labor-heavy customization, though it does not explicitly rank a named human-service offering below an automated alternative."
+    },
+    {
+      "criterion_id": "T5-P2-08",
+      "score": 10,
+      "evidence_span": "Improve automated lifecycle communications.",
+      "rationale": "Provides an executable, scheduled product-development action implementing software-automated user communications."
+    },
+    {
+      "criterion_id": "T5-P2-09",
+      "score": 10,
+      "evidence_span": "Set a provisional target of **$1–$3 per monthly active learner** for general tutor usage, excluding expensive code or media generation.",
+      "rationale": "Defines a measurable per-user cost target governing scalable AI tutoring, with an explicit scope and exclusion."
+    },
+    {
+      "criterion_id": "T5-P2-10",
+      "score": 8,
+      "evidence_span": "| Low completion | Less than 40% reach first project | Shorter modules, cohort support and onboarding revision | Two cohorts below 50% |",
+      "rationale": "Gives a concrete low-completion condition for adding cohort support. Human-supported delivery becomes a corrective option, although the report does not explicitly state that it should replace automated or self-paced delivery."
+    },
+    {
+      "criterion_id": "T5-P2-11",
+      "score": 4,
+      "evidence_span": "Self-paced scales faster; cohorts generally improve support and completion but increase operating costs",
+      "rationale": "Supplies a preference-relevant comparative claim, and self-paced delivery is recommended elsewhere. However, a complete automation-priority-to-evidence-to-selection chain is not explicitly traced; connecting those elements requires inference."
+    }
+  ]
+}

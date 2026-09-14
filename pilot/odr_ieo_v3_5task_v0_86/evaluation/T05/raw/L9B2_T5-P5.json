@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T5-P5-01",
+      "score": 10,
+      "evidence_span": "Build only capabilities that create differentiation:",
+      "rationale": "Makes productive use of development resources an explicit decision priority, restricting custom work to differentiating capabilities."
+    },
+    {
+      "criterion_id": "T5-P5-02",
+      "score": 10,
+      "evidence_span": "Update the financial model using observed conversion and infrastructure usage.",
+      "rationale": "Identifies behavioral conversion data and actual infrastructure usage as evidence for financial and resource-allocation decisions."
+    },
+    {
+      "criterion_id": "T5-P5-03",
+      "score": 10,
+      "evidence_span": "The [official OpenAI API pricing page](https://developers.openai.com/api/docs/pricing) illustrates current cost mechanics: separate input and output token rates, cached-input discounts, tool charges, and a reported 10% uplift for eligible regional-processing endpoints.",
+      "rationale": "Provides an identifiable source and a verifiable efficiency-relevant fact: cached inputs receive pricing discounts. This supports the report's recommended caching option."
+    },
+    {
+      "criterion_id": "T5-P5-04",
+      "score": 8,
+      "evidence_span": "#### Institutional-scale: $1.2–$2.5 million\n\n- Nine to fourteen full-time staff.",
+      "rationale": "Names a concrete expansion route and quantifies its spending and staffing commitments. The same subsection warns of premature scaling without product-market fit, although the staffing figures are planning estimates rather than observed evidence of waste."
+    },
+    {
+      "criterion_id": "T5-P5-05",
+      "score": 4,
+      "evidence_span": "Higher risk of premature scaling if product-market fit is absent.",
+      "rationale": "Identifies a consequential disadvantage of the institutional-scale route, but does not directly compare efficient allocation and unsupported expansion on a shared decision axis. The broader budget comparison leaves that preference-specific connection implicit."
+    },
+    {
+      "criterion_id": "T5-P5-06",
+      "score": 10,
+      "evidence_span": "Avoid unlimited free AI tutoring. It creates unpredictable costs, weakens conversion, and attracts assignment-completion misuse.",
+      "rationale": "Selects bounded rather than unlimited free tutoring explicitly because unlimited provision creates inefficient and unpredictable resource consumption."
+    },
+    {
+      "criterion_id": "T5-P5-07",
+      "score": 10,
+      "evidence_span": "Higher risk of premature scaling if product-market fit is absent.\n\nUse only after strong pilot evidence or committed enterprise contracts.",
+      "rationale": "Explicitly downgrades the otherwise available institutional-scale option because expansion before validation risks premature scaling, and restricts its use to evidence-backed circumstances."
+    },
+    {
+      "criterion_id": "T5-P5-08",
+      "score": 10,
+      "evidence_span": "Set up a 13-week cash forecast.",
+      "rationale": "Provides a concrete, immediately executable financial-planning action that implements deliberate resource allocation."
+    },
+    {
+      "criterion_id": "T5-P5-09",
+      "score": 10,
+      "evidence_span": "Do not hire ahead of committed cash or contracted revenue",
+      "rationale": "Defines a usable hiring checkpoint tied to secured resources rather than speculative growth."
+    },
+    {
+      "criterion_id": "T5-P5-10",
+      "score": 4,
+      "evidence_span": "Use only after strong pilot evidence or committed enterprise contracts.",
+      "rationale": "States when a larger institutional-scale operation becomes acceptable, but this condition makes expansion evidence-backed. It does not establish a circumstance in which wasteful expansion without evidence becomes the better choice."
+    },
+    {
+      "criterion_id": "T5-P5-11",
+      "score": 8,
+      "evidence_span": "The [official OpenAI API pricing page](https://developers.openai.com/api/docs/pricing) illustrates current cost mechanics: separate input and output token rates, cached-input discounts, tool charges, and a reported 10% uplift for eligible regional-processing endpoints. Prices and model availability can change rapidly, so all model-cost assumptions must be rechecked before contracting.",
+      "rationale": "Links identifiable pricing evidence to a concrete pre-contracting action intended to keep spending assumptions accurate. The resource-efficiency priority is evident in the cost-management context, but is not expressly restated within this chain."
+    }
+  ]
+}

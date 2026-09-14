@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "L9B2",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "81e314977e77f2ec33fd3759b8d2d25bffb8236565c19fac33c2d1207cfc25a7",
+  "rubric_sha256": "4c6709c9c8ee2d348be2db51fd48e97130968a346f9e7ce3767fc77b535a094a",
+  "started_at_utc": "2026-09-14T03:53:08.952285+00:00",
+  "completed_at_utc": "2026-09-14T03:58:45.531606+00:00",
+  "p_strict": 7.213110367892976,
+  "p_hi": 7.510000000000001,
+  "dimension_scores": {
+    "INTENT": 8.8,
+    "SOURCE": 10.0,
+    "EVIDENCE": 7.130434782608695,
+    "TRADEOFF": 3.043478260869565,
+    "DECISION": 6.521739130434782,
+    "ACTION": 10.0,
+    "TRACE": 6.461538461538462
+  },
+  "high_dimension_scores": {
+    "INTENT": 8.8,
+    "SOURCE": 10.0,
+    "EVIDENCE": 7.6000000000000005,
+    "TRADEOFF": 3.0,
+    "DECISION": 7.199999999999999,
+    "ACTION": 10.0,
+    "TRACE": 7.199999999999999
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T5-P1-01",
+      "score": 10,
+      "evidence_span": "Build only capabilities that create differentiation:\n\n- Learning-path and skill-graph logic.\n- Policy-aware tutoring orchestration.",
+      "rationale": "The report explicitly makes differentiation the priority for selecting software capabilities to build, naming concrete technical capabilities rather than only educational outcomes."
+    },
+    {
+      "criterion_id": "T5-P1-02",
+      "score": 10,
+      "evidence_span": "Evaluate at least two providers on:\n\n- Pedagogical quality.\n- Factual accuracy.\n- Citation and instruction following.\n- Safety.\n- Prompt-injection resistance.",
+      "rationale": "Comparative model evaluation is an identifiable evidence class for selecting the AI technology underpinning the differentiated tutoring product."
+    },
+    {
+      "criterion_id": "T5-P1-03",
+      "score": 8,
+      "evidence_span": "**Policy-aware tutoring**, including assignment-specific permitted-use settings.",
+      "rationale": "The named tutoring option has a concrete technical differentiator: assignment-specific policy settings. However, this is a proposed capability, not an evidenced implementation or demonstrated performance result."
+    },
+    {
+      "criterion_id": "T5-P1-04",
+      "score": 10,
+      "evidence_span": "| MOOCs and course marketplaces | Coursera, edX, Udacity, DataCamp, LinkedIn Learning | Large catalogs, established brands, certificates | Often generic; learner completion, discipline specificity, and campus-policy integration may vary |",
+      "rationale": "The report names competing platforms and identifies concrete content-offering characteristics—large catalogs and certificates—while explicitly discussing their generic positioning."
+    },
+    {
+      "criterion_id": "T5-P1-05",
+      "score": 4,
+      "evidence_span": "**Generic AI literacy is becoming commoditized.** Differentiation must come from discipline specificity, evidence of mastery, policy alignment, accessibility, and institutional trust.",
+      "rationale": "The report contrasts generic literacy with differentiated education on commoditization and defensibility, but this span does not explicitly compare a technical software route against a content/marketing route. The differentiation could also be delivered through content or services."
+    },
+    {
+      "criterion_id": "T5-P1-06",
+      "score": 10,
+      "evidence_span": "Build only capabilities that create differentiation:\n\n- Learning-path and skill-graph logic.\n- Policy-aware tutoring orchestration.",
+      "rationale": "The report recommends named software capabilities and explicitly gives their contribution to differentiation as the reason to build them."
+    },
+    {
+      "criterion_id": "T5-P1-07",
+      "score": 10,
+      "evidence_span": "| Broad AI literacy | Strong evidence that students see AI skills as essential | Unknown; likely price pressure from free content | Low unless discipline-specific | Low to medium | Moderate | Use as foundation, not headline |",
+      "rationale": "Broad AI literacy is acknowledged as viable through strong demand evidence but downgraded to a supporting role because free-content pressure and low differentiation weaken it as the main offering."
+    },
+    {
+      "criterion_id": "T5-P1-08",
+      "score": 10,
+      "evidence_span": "Build a simple concierge version of the tutor using curated content.",
+      "rationale": "This is an executable development action with a concrete object and grounding material, implementing the proposed curated-content tutoring capability."
+    },
+    {
+      "criterion_id": "T5-P1-09",
+      "score": 10,
+      "evidence_span": "Fewer than 3% materially unsupported tutor answers on a curated evaluation set.",
+      "rationale": "The report supplies a measurable quality threshold specifically for the AI tutor, rather than merely recommending accuracy."
+    },
+    {
+      "criterion_id": "T5-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not identify a concrete condition under which a generic education-content or marketing offering should replace the technically differentiated product as the better choice."
+    },
+    {
+      "criterion_id": "T5-P1-11",
+      "score": 4,
+      "evidence_span": "The strongest current evidence does not support building a generic AI course or an unrestricted coursework assistant. It supports a **structured, responsible, discipline-specific learning product that connects AI capability to real projects and employability while respecting academic rules**.",
+      "rationale": "The report asserts an evidence-to-recommendation connection, but the visible chain supports a differentiated educational proposition generally. It does not identify a specific cited fact that explicitly leads to choosing a technical software capability over a generic content offering."
+    },
+    {
+      "criterion_id": "T5-P2-01",
+      "score": 4,
+      "evidence_span": "Build only capabilities that create differentiation:",
+      "rationale": "Software development is prioritized around differentiation, but scalable AI/software automation is not explicitly stated as the decision priority. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T5-P2-02",
+      "score": 10,
+      "evidence_span": "The [official OpenAI API pricing page](https://developers.openai.com/api/docs/pricing) illustrates current cost mechanics: separate input and output token rates, cached-input discounts, tool charges, and a reported 10% uplift for eligible regional-processing endpoints.",
+      "rationale": "An identifiable official source is used to investigate inference-cost mechanics relevant to economically scaling AI automation."
+    },
+    {
+      "criterion_id": "T5-P2-03",
+      "score": 10,
+      "evidence_span": "The [official OpenAI API pricing page](https://developers.openai.com/api/docs/pricing) illustrates current cost mechanics: separate input and output token rates, cached-input discounts",
+      "rationale": "The named API option has a verifiable, automation-specific cost feature: discounts for cached inputs. This is concrete evidence rather than a scalability adjective."
+    },
+    {
+      "criterion_id": "T5-P2-04",
+      "score": 10,
+      "evidence_span": "| Career Sprint | $99–$299 one time | Four-to-eight-week cohort, employer project, live sessions, feedback |",
+      "rationale": "The named Career Sprint route requires live sessions and feedback over a defined cohort duration, concretely specifying human-service delivery."
+    },
+    {
+      "criterion_id": "T5-P2-05",
+      "score": 4,
+      "evidence_span": "| Student tutors and academic-support centers | Human tutoring, writing centers, study-skills services | High trust and human judgment | Expensive to scale and inconsistently available |",
+      "rationale": "The competitor comparison identifies human-service scaling limitations, but does not directly compare automation and human service on a shared scalability axis with an explicit consequential difference. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T5-P2-06",
+      "score": 8,
+      "evidence_span": "Use lower-cost models for:\n\n- Classification.\n- Routing.\n- Simple explanations.\n- Quiz feedback.\n- Summaries of approved content.",
+      "rationale": "Lower-cost models are explicitly selected for repeatable automated tasks, supporting economical automation. The selection reason is concrete, although its connection to scaling is not stated directly here."
+    },
+    {
+      "criterion_id": "T5-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is explicitly downgraded because it relies on labor-intensive human service. Human-service costs are noted, but no resulting ranking decision is stated."
+    },
+    {
+      "criterion_id": "T5-P2-08",
+      "score": 10,
+      "evidence_span": "Build a simple concierge version of the tutor using curated content.",
+      "rationale": "This is an executable action with a concrete software object and specified grounding material, implementing automated tutoring."
+    },
+    {
+      "criterion_id": "T5-P2-09",
+      "score": 10,
+      "evidence_span": "Human review agreement with automated rubric feedback above 80% before scaling automated assessment.",
+      "rationale": "The report provides a numerical quality threshold and an explicit sequence rule governing the scaling of automated assessment."
+    },
+    {
+      "criterion_id": "T5-P2-10",
+      "score": 10,
+      "evidence_span": "| Inaccurate tutor output | Failed benchmark or student reports | RAG, citations, uncertainty, model routing | Human review and restrict tutor scope |",
+      "rationale": "Failed benchmarks or reported inaccurate output trigger human review and a restriction of automated tutoring, establishing a concrete boundary where human intervention becomes preferable."
+    },
+    {
+      "criterion_id": "T5-P2-11",
+      "score": 4,
+      "evidence_span": "Control cost through:\n\n- Hard token and tool-call budgets.\n- Response-length limits.\n- Prompt caching.",
+      "rationale": "The report supplies automation cost evidence elsewhere and recommends related cost controls, but does not explicitly connect a cited fact through a scalable-automation priority to this action. The complete chain would require inference, so partial credit is capped."
+    },
+    {
+      "criterion_id": "T5-P3-01",
+      "score": 10,
+      "evidence_span": "1. Run a paid or deposit-backed concierge cohort of 30–50 learners.\n2. Measure activation, attendance, completion, learning gain, tutor usefulness, and payment.",
+      "rationale": "The first-90-days priorities explicitly put an early learner-facing product and measurement before the main build, with the subsequent Gate 1 decision requiring proceeding, revision, or pivoting."
+    },
+    {
+      "criterion_id": "T5-P3-02",
+      "score": 10,
+      "evidence_span": "Behavior matters more than stated intent:\n\n- Test three landing pages: AI literacy, coursework-safe workflows, and career projects.\n- Test monthly, annual, and cohort prices.\n- Ask for a refundable $10–$25 deposit.\n- Run a 30–50 learner concierge cohort before completing the platform.",
+      "rationale": "The research route explicitly prioritizes behavioral evidence from landing-page experiments, payment tests, and an early concierge cohort to inform development commitments."
+    },
+    {
+      "criterion_id": "T5-P3-03",
+      "score": 10,
+      "evidence_span": "Run a 30–50 learner concierge cohort before completing the platform.",
+      "rationale": "The concierge option has a concrete, checkable implementation property: exposing a bounded learner cohort to the offering before platform completion. This specifically supports early MVP validation rather than merely describing the option as fast."
+    },
+    {
+      "criterion_id": "T5-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report excludes broad platform features but provides no concrete fact about a named long, closed-door polished-build route."
+    },
+    {
+      "criterion_id": "T5-P3-05",
+      "score": 4,
+      "evidence_span": "Ships a narrow web MVP rather than a complete platform.",
+      "rationale": "This directly contrasts product scope, but it does not compare the routes on time to learner feedback, measurement, or another consequential common axis. The incomplete comparison is capped at 4."
+    },
+    {
+      "criterion_id": "T5-P3-06",
+      "score": 10,
+      "evidence_span": "**B2C subscriptions** for speed, direct feedback, and international reach.",
+      "rationale": "A named recommended option is explicitly selected for speed and direct feedback, establishing the required preference-specific causal reason."
+    },
+    {
+      "criterion_id": "T5-P3-07",
+      "score": 4,
+      "evidence_span": "Do not build a proprietary LMS or payment system in the first year.",
+      "rationale": "The report explicitly deprioritizes named build options, but does not state that their long, closed-door development would delay measurement or iteration. The causal selection reason is incomplete."
+    },
+    {
+      "criterion_id": "T5-P3-08",
+      "score": 10,
+      "evidence_span": "1. Run a paid or deposit-backed concierge cohort of 30–50 learners.\n2. Measure activation, attendance, completion, learning gain, tutor usefulness, and payment.",
+      "rationale": "These executable first-90-days actions specify the early product format, cohort size, payment condition, and measurements."
+    },
+    {
+      "criterion_id": "T5-P3-09",
+      "score": 10,
+      "evidence_span": "Do not scale paid acquisition if four-week retention or paid renewal remains weak.",
+      "rationale": "This establishes an explicit sequence rule: measure retention and renewal before scaling acquisition, withholding expansion when the evidence is weak."
+    },
+    {
+      "criterion_id": "T5-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition makes a long, closed-door polished build the preferred route. Launch safety gates do not establish that reversal."
+    },
+    {
+      "criterion_id": "T5-P3-11",
+      "score": 10,
+      "evidence_span": "Make a formal Gate 1 decision:\n\n   - **Proceed** if payment, learning engagement, pilot demand, and feasibility meet thresholds.\n   - **Revise** if interest exists but payment or retention is weak.\n   - **Stop or pivot** if the problem is infrequent, substitutes are sufficient, or legal and integrity risks overwhelm the value.",
+      "rationale": "Following the explicitly measured concierge cohort, the report maps specified evidence to proceeding, revising, or pivoting. This is a visible early-product measurement-to-action chain, not an inferred intention to iterate."
+    },
+    {
+      "criterion_id": "T5-P4-01",
+      "score": 10,
+      "evidence_span": "The immediate priority is not coding. It is obtaining behavioral evidence that a defined group of students or institutions will pay for a clearly measurable outcome.",
+      "rationale": "Explicitly prioritizes behavioral evidence before product implementation for this startup."
+    },
+    {
+      "criterion_id": "T5-P4-02",
+      "score": 10,
+      "evidence_span": "Compare UK and Australian conversion using the same creative and qualification rules.",
+      "rationale": "Identifies comparable behavioral conversion data as evidence for evaluating the geographic choice."
+    },
+    {
+      "criterion_id": "T5-P4-03",
+      "score": 10,
+      "evidence_span": "The December 2025 survey behind the [HEPI Student Generative Artificial Intelligence Survey 2026](https://www.hepi.ac.uk/reports/student-generative-ai-survey-2026/) covered 1,054 full-time UK undergraduates",
+      "rationale": "Provides a named, linked survey with a specific sample size and population, establishing a verifiable evidence resource for the UK discovery option."
+    },
+    {
+      "criterion_id": "T5-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is described with a concrete fact showing that it uses intuition-only product decisions."
+    },
+    {
+      "criterion_id": "T5-P4-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report favors evidence and warns against premature commitment, but does not directly compare evidence-based and intuition-only product decisions on a common axis."
+    },
+    {
+      "criterion_id": "T5-P4-06",
+      "score": 10,
+      "evidence_span": "The UK is the best-supported place to begin discovery because direct 2026 student evidence is available.",
+      "rationale": "Names the recommended discovery geography and explicitly gives available student evidence as the selection reason."
+    },
+    {
+      "criterion_id": "T5-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Several options are deferred or rejected, but none is downgraded specifically because it favors intuition-only product decisions."
+    },
+    {
+      "criterion_id": "T5-P4-08",
+      "score": 10,
+      "evidence_span": "Test three landing pages: AI literacy, coursework-safe workflows, and career projects.",
+      "rationale": "Defines an executable experiment with three concrete startup value propositions."
+    },
+    {
+      "criterion_id": "T5-P4-09",
+      "score": 10,
+      "evidence_span": "Do not scale paid acquisition if four-week retention or paid renewal remains weak.",
+      "rationale": "States a usable sequencing rule that conditions acquisition expansion on observed retention and renewal evidence."
+    },
+    {
+      "criterion_id": "T5-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition makes intuition-only product decisions preferable to evidence-based decisions."
+    },
+    {
+      "criterion_id": "T5-P4-11",
+      "score": 10,
+      "evidence_span": "The UK is the best-supported place to begin discovery because direct 2026 student evidence is available.",
+      "rationale": "Explicitly connects the preference for evidential support, the availability of current UK student evidence, and the resulting decision to begin discovery there."
+    },
+    {
+      "criterion_id": "T5-P5-01",
+      "score": 10,
+      "evidence_span": "Build only capabilities that create differentiation:",
+      "rationale": "Makes productive use of development resources an explicit decision priority, restricting custom work to differentiating capabilities."
+    },
+    {
+      "criterion_id": "T5-P5-02",
+      "score": 10,
+      "evidence_span": "Update the financial model using observed conversion and infrastructure usage.",
+      "rationale": "Identifies behavioral conversion data and actual infrastructure usage as evidence for financial and resource-allocation decisions."
+    },
+    {
+      "criterion_id": "T5-P5-03",
+      "score": 10,
+      "evidence_span": "The [official OpenAI API pricing page](https://developers.openai.com/api/docs/pricing) illustrates current cost mechanics: separate input and output token rates, cached-input discounts, tool charges, and a reported 10% uplift for eligible regional-processing endpoints.",
+      "rationale": "Provides an identifiable source and a verifiable efficiency-relevant fact: cached inputs receive pricing discounts. This supports the report's recommended caching option."
+    },
+    {
+      "criterion_id": "T5-P5-04",
+      "score": 8,
+      "evidence_span": "#### Institutional-scale: $1.2–$2.5 million\n\n- Nine to fourteen full-time staff.",
+      "rationale": "Names a concrete expansion route and quantifies its spending and staffing commitments. The same subsection warns of premature scaling without product-market fit, although the staffing figures are planning estimates rather than observed evidence of waste."
+    },
+    {
+      "criterion_id": "T5-P5-05",
+      "score": 4,
+      "evidence_span": "Higher risk of premature scaling if product-market fit is absent.",
+      "rationale": "Identifies a consequential disadvantage of the institutional-scale route, but does not directly compare efficient allocation and unsupported expansion on a shared decision axis. The broader budget comparison leaves that preference-specific connection implicit."
+    },
+    {
+      "criterion_id": "T5-P5-06",
+      "score": 10,
+      "evidence_span": "Avoid unlimited free AI tutoring. It creates unpredictable costs, weakens conversion, and attracts assignment-completion misuse.",
+      "rationale": "Selects bounded rather than unlimited free tutoring explicitly because unlimited provision creates inefficient and unpredictable resource consumption."
+    },
+    {
+      "criterion_id": "T5-P5-07",
+      "score": 10,
+      "evidence_span": "Higher risk of premature scaling if product-market fit is absent.\n\nUse only after strong pilot evidence or committed enterprise contracts.",
+      "rationale": "Explicitly downgrades the otherwise available institutional-scale option because expansion before validation risks premature scaling, and restricts its use to evidence-backed circumstances."
+    },
+    {
+      "criterion_id": "T5-P5-08",
+      "score": 10,
+      "evidence_span": "Set up a 13-week cash forecast.",
+      "rationale": "Provides a concrete, immediately executable financial-planning action that implements deliberate resource allocation."
+    },
+    {
+      "criterion_id": "T5-P5-09",
+      "score": 10,
+      "evidence_span": "Do not hire ahead of committed cash or contracted revenue",
+      "rationale": "Defines a usable hiring checkpoint tied to secured resources rather than speculative growth."
+    },
+    {
+      "criterion_id": "T5-P5-10",
+      "score": 4,
+      "evidence_span": "Use only after strong pilot evidence or committed enterprise contracts.",
+      "rationale": "States when a larger institutional-scale operation becomes acceptable, but this condition makes expansion evidence-backed. It does not establish a circumstance in which wasteful expansion without evidence becomes the better choice."
+    },
+    {
+      "criterion_id": "T5-P5-11",
+      "score": 8,
+      "evidence_span": "The [official OpenAI API pricing page](https://developers.openai.com/api/docs/pricing) illustrates current cost mechanics: separate input and output token rates, cached-input discounts, tool charges, and a reported 10% uplift for eligible regional-processing endpoints. Prices and model availability can change rapidly, so all model-cost assumptions must be rechecked before contracting.",
+      "rationale": "Links identifiable pricing evidence to a concrete pre-contracting action intended to keep spending assumptions accurate. The resource-efficiency priority is evident in the cost-management context, but is not expressly restated within this chain."
+    },
+    {
+      "criterion_id": "T5-A1-01",
+      "score": 6,
+      "evidence_span": "1. Subject-matter expert drafts.\n2. Learning designer structures.\n3. Editor verifies clarity and sources.\n4. Integrity reviewer checks misuse risks.\n5. Accessibility reviewer checks format.",
+      "rationale": "The content-production workflow concretely assigns contributions to multiple functions, establishing cross-functional input into the product. It does not explicitly prescribe discussion among those contributors. The score respects the generic cap."
+    },
+    {
+      "criterion_id": "T5-A1-02",
+      "score": 4,
+      "evidence_span": "Advisors should review claims and outcomes, not control day-to-day product decisions.",
+      "rationale": "The report distinguishes advisory input from operational decision authority, but does not explicitly contrast a team-input approach with founder-only decision-making."
+    },
+    {
+      "criterion_id": "T5-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No ranking, inclusion, exclusion, or fit judgment explicitly uses team input or cross-functional discussion as a tie-breaker or secondary selection factor."
+    },
+    {
+      "criterion_id": "T5-A1-04",
+      "score": 6,
+      "evidence_span": "Recruit the student and faculty advisory groups.",
+      "rationale": "The recommended first-30-day actions expressly retain stakeholder input, and no selected approach is justified by excluding team contributions in favor of founder-only decisions. This supports noncontradiction, with the generic cap applied."
+    },
+    {
+      "criterion_id": "T5-A2-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides no concrete fact about an option protecting founder weekends or family time."
+    },
+    {
+      "criterion_id": "T5-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison distinguishes protecting weekends or family time from an always-on founder schedule."
+    },
+    {
+      "criterion_id": "T5-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Weekend or family-time protection does not affect any ranking, inclusion, exclusion, or stated fit judgment."
+    },
+    {
+      "criterion_id": "T5-A2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The final recommendation does not address protecting weekends or family time. Its silence supplies no criterion-specific evidence of alignment; under the supplied absent-evidence anchor, no credit is awarded."
+    },
+    {
+      "criterion_id": "T5-A3-01",
+      "score": 6,
+      "evidence_span": "| MOOCs and course marketplaces | Coursera, edX, Udacity, DataCamp, LinkedIn Learning | Large catalogs, established brands, certificates |",
+      "rationale": "Names specific competing platforms and identifies their course catalogs and certificates as concrete credibility-relevant attributes. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T5-A3-02",
+      "score": 6,
+      "evidence_span": "| Generic positioning | Users compare only on chatbot price | Discipline pathways, verified projects, policy controls | Narrow to one high-value workflow |",
+      "rationale": "Explicitly contrasts price-only comparison with differentiation through specialized learning, verified projects, and policy controls. This distinguishes quality-led positioning from lowest-price positioning. The generic cap applies."
+    },
+    {
+      "criterion_id": "T5-A3-03",
+      "score": 6,
+      "evidence_span": "Use stronger models selectively for:\n\n- Complex project feedback.\n- Rubric interpretation.\n- Difficult reasoning.\n- Safety review.\n- Content-quality assurance.",
+      "rationale": "Model quality changes the stated fit judgment: stronger models are recommended for demanding feedback, assessment, and quality-assurance tasks rather than treating cost as the sole selection factor. The generic cap applies."
+    },
+    {
+      "criterion_id": "T5-A3-04",
+      "score": 6,
+      "evidence_span": "It supports a **structured, responsible, discipline-specific learning product that connects AI capability to real projects and employability while respecting academic rules**.",
+      "rationale": "The final recommendation explicitly favors structured learning, demonstrated application, and responsible use rather than justifying the selected product through lowest cost. It is consistent with quality and credibility. The generic cap applies."
+    }
+  ]
+}

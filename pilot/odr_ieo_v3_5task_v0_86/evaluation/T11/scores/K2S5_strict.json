@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "K2S5",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "50ab3ae02d06d27a6103e675d200f42fefb26e73f9030bf91ef470b395d63ef6",
+  "rubric_sha256": "264439212732e075b65bdf7e61bf2dd65f35e06ca5d74ea5e1484574b4b060ef",
+  "started_at_utc": "2026-09-14T04:10:56.557305+00:00",
+  "completed_at_utc": "2026-09-14T04:16:42.920724+00:00",
+  "p_strict": 7.050501672240802,
+  "p_hi": 7.08,
+  "dimension_scores": {
+    "INTENT": 10.0,
+    "SOURCE": 10.0,
+    "EVIDENCE": 5.478260869565217,
+    "TRADEOFF": 3.652173913043478,
+    "DECISION": 7.304347826086956,
+    "ACTION": 10.0,
+    "TRACE": 4.461538461538462
+  },
+  "high_dimension_scores": {
+    "INTENT": 10.0,
+    "SOURCE": 10.0,
+    "EVIDENCE": 5.3999999999999995,
+    "TRADEOFF": 3.5999999999999996,
+    "DECISION": 7.8,
+    "ACTION": 10.0,
+    "TRACE": 4.0
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T11-P1-01",
+      "score": 10,
+      "evidence_span": "中国大陆中文“AI落地案例、行业趋势与创业实践”专业媒体账号六个月创建与增长计划",
+      "rationale": "The report explicitly makes AI applications, industry trends, and entrepreneurial practice the account’s organizing niche rather than a generic technology-media objective."
+    },
+    {
+      "criterion_id": "T11-P1-02",
+      "score": 10,
+      "evidence_span": "如果无法取得真实企业案例，改为“公开案例复核+自建实验”，不得虚构企业背景。",
+      "rationale": "The research route identifies real enterprise cases, verification of public cases, and original experiments as evidence needed for the proposed AI implementation coverage."
+    },
+    {
+      "criterion_id": "T11-P1-03",
+      "score": 4,
+      "evidence_span": "| **企业AI落地证据与ROI** | **82** | 需求明确、商业价值高、可沉淀数据库 | 调研成本高，案例真实性难验证 |",
+      "rationale": "The named option is linked to the preferred niche, but its support consists of strategic ratings and asserted advantages. This is not a concrete verified fact demonstrating that the option supports the preference. The incomplete-evidence cap applies."
+    },
+    {
+      "criterion_id": "T11-P1-04",
+      "score": 10,
+      "evidence_span": "#### 量子位、机器之心、新智元等AI科技媒体\n\n典型优势：\n\n- 新闻速度；\n- 技术覆盖广；\n- 模型、论文和公司动态供给稳定；",
+      "rationale": "The report names identifiable media options and describes their coverage of models, papers, and company developments. That is a verifiable editorial characteristic of the technology-news side, rather than merely a generic warning about aggregation."
+    },
+    {
+      "criterion_id": "T11-P1-05",
+      "score": 10,
+      "evidence_span": "- 泛AI新闻：技术中等、商业验证低；\n- 工具清单：技术低、商业验证低；\n- 开发者社区：技术高、商业验证中低；\n- 创业媒体：技术中低、商业验证中等；\n- 咨询报告：技术和商业验证较高，但通常不连续公开；\n- **推荐账号**：位于“技术中高 + 商业验证高”的右上区域。",
+      "rationale": "The report directly compares generic AI news with the recommended account using common axes of technical depth and commercial verification, identifying materially stronger business verification as a differentiator."
+    },
+    {
+      "criterion_id": "T11-P1-06",
+      "score": 8,
+      "evidence_span": "| **企业AI落地证据与ROI** | **82** | 需求明确、商业价值高、可沉淀数据库 | 调研成本高，案例真实性难验证 |",
+      "rationale": "The highest-ranked option is enterprise AI implementation evidence and ROI, with business value and an accumulating evidence database given as selection advantages. The causal rationale clearly supports the applied-AI/business core, although industry trends and entrepreneurship are not expressly included in this selection explanation."
+    },
+    {
+      "criterion_id": "T11-P1-07",
+      "score": 10,
+      "evidence_span": "| 泛AI新闻和融资资讯 | 57 | 供给多、热点多 | 高度同质化、寿命短、难收费 |",
+      "rationale": "The report acknowledges the news-and-funding route’s viable supply and topicality advantages but ranks it lower because of homogenization, short content life, and weak monetization. This explicitly downgrades the aggregation-oriented alternative."
+    },
+    {
+      "criterion_id": "T11-P1-08",
+      "score": 10,
+      "evidence_span": "| 第6周 | **《一个三人创业团队，30天搭建AI内容工作流的完整账本》** | 创业实践日志；创业者、运营负责人 | B站、公众号、即刻/LinkedIn | 让观众预测哪一步最容易失败 | 每周构建日志、流程图、模板 | 系列订阅意愿、复访、投稿 |",
+      "rationale": "This scheduled content package gives an executable action: produce an AI-workflow implementation account for a startup, with a specified format, audience, distribution, interaction, and reusable outputs."
+    },
+    {
+      "criterion_id": "T11-P1-09",
+      "score": 10,
+      "evidence_span": "| 可验证AI落地案例 | 30% | 建立权威和差异化 | 收藏、关注、企业线索 |\n| ROI与技术商业模型 | 20% | 服务决策者 | 报告、咨询、培训意向 |\n| 失败案例与复盘 | 15% | 建立可信度 | 高质量讨论、投稿 |\n| 创业者实践日志 | 15% | 增强人物和故事性 | 复访、访谈、合作 |\n| 趋势判断 | 10% | 获取时效性流量 | 新用户触达 |\n| 对比实验与工具验证 | 10% | 提高观看体验和技术可信度 | 技术受众、搜索流量 |",
+      "rationale": "The report supplies usable percentage allocations across AI applications, business evaluation, entrepreneurial practice, and trends. These operationalize the preferred niche rather than merely endorsing it."
+    },
+    {
+      "criterion_id": "T11-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides narrower applied-AI fallback niches and limited uses for news, but no concrete condition under which generic technology-news aggregation becomes the better overall choice."
+    },
+    {
+      "criterion_id": "T11-P1-11",
+      "score": 4,
+      "evidence_span": "| **企业AI落地证据与ROI** | **82** | 需求明确、商业价值高、可沉淀数据库 | 调研成本高，案例真实性难验证 |",
+      "rationale": "There is a visible link between the preferred direction, asserted advantages, and selection. However, the advantages and score are strategic judgments, not a cited factual finding supporting that decision. The required preference-to-evidence-to-action chain is therefore incomplete."
+    },
+    {
+      "criterion_id": "T11-P2-01",
+      "score": 10,
+      "evidence_span": "### 1. 核心受众：企业AI实施者和业务负责人",
+      "rationale": "明确将企业AI实施者和业务负责人列为核心受众，直接体现专业实践者优先，而非泛化的增长目标。"
+    },
+    {
+      "criterion_id": "T11-P2-02",
+      "score": 10,
+      "evidence_span": "- 12—15次目标用户访谈；",
+      "rationale": "选择目标用户访谈作为首月研究证据来源；报告已将目标用户明确为企业实施者、负责人及技术和创业从业者，因此该研究路线可用于验证专业受众需求。"
+    },
+    {
+      "criterion_id": "T11-P2-03",
+      "score": 8,
+      "evidence_span": "#### GitHub\n\n适合：\n\n- 公开实验代码；\n- 案例数据模板；\n- ROI计算器；\n- 提示词和评测方法；\n- 资料库版本管理。",
+      "rationale": "为具名平台列出代码、评测方法和版本管理等可核查的具体支持方式，直接对应严肃AI实践。未进一步提供专业用户实际使用或效果的证据，故不满分。"
+    },
+    {
+      "criterion_id": "T11-P2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "没有提供某个具名选项服务大众娱乐受众的可核查事实。泛流量、工具清单和热点风险的描述不能替代娱乐受众方面的具体证据。"
+    },
+    {
+      "criterion_id": "T11-P2-05",
+      "score": 4,
+      "evidence_span": "- 需要零基础通识的大众；\n- 只关注副业、暴富或“无脑变现”的用户。\n\n这些人可以带来曝光，但不应决定账号内容方向。",
+      "rationale": "指出大众曝光与内容方向之间的取舍，但没有在共同决策轴上完整比较专业实践者与大众娱乐受众。对照侧只是邻近的大众用户类别，适用部分满足的上限。"
+    },
+    {
+      "criterion_id": "T11-P2-06",
+      "score": 8,
+      "evidence_span": "| AI编程与研发智能体 | 78 | 专业受众强、可演示 | 受众相对窄，技术更新快 |",
+      "rationale": "对具名候选方向给出较高评分，并明确以专业受众强作为优势；该方向也被列为后续首选收窄路线。支持专业受众的选择理由明确，但并非最终主定位的完整因果说明。"
+    },
+    {
+      "criterion_id": "T11-P2-07",
+      "score": 8,
+      "evidence_span": "#### 小红书、抖音\n\n不是前两个月优先渠道。只有当短视频切片能稳定产生目标岗位关注，而不是泛流量时再加入。",
+      "rationale": "明确降低两个可行渠道的优先级，并以目标岗位关注与泛流量的差别作为启用依据。因报告没有进一步明确泛流量就是大众娱乐受众，未给满分。"
+    },
+    {
+      "criterion_id": "T11-P2-08",
+      "score": 10,
+      "evidence_span": "| 第5周 | **《AI编程工具省下的时间，为什么没有变成研发产出？》** | 研发效能案例；研发负责人、开发者 | B站、掘金、GitHub、CSDN | 邀请团队提供匿名开发周期数据 | 技术附录、指标表、短视频 | GitHub收藏、技术讨论、目标岗位占比 |",
+      "rationale": "给出明确周次、专业受众、内容对象、发布渠道和数据征集动作，可直接执行以服务研发负责人和开发者。"
+    },
+    {
+      "criterion_id": "T11-P2-09",
+      "score": 10,
+      "evidence_span": "- 至少30%的高质量互动来自目标岗位；",
+      "rationale": "设定了可操作的受众质量比例门槛；目标岗位已在报告中明确为企业、技术和创业相关专业角色。"
+    },
+    {
+      "criterion_id": "T11-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "没有说明任何条件下应改以大众娱乐受众为更优选择。新增短视频平台仍以吸引目标岗位为条件，并未逆转受众优先级。"
+    },
+    {
+      "criterion_id": "T11-P2-11",
+      "score": 4,
+      "evidence_span": "- 将内容按行业、岗位、形式、证据等级分组；\n- 比较各组的收藏率、关注转化、复访、目标受众占比和线索；\n- 砍掉后四分之一的低效栏目；",
+      "rationale": "建立了专业受众指标通向栏目决策的未来验证流程，但没有呈现已经取得的偏好相关事实及其实际下游决策。缺少完整的现有证据链，按部分满足计分。"
+    },
+    {
+      "criterion_id": "T11-P3-01",
+      "score": 10,
+      "evidence_span": "| 专业门槛 | 10% | 是否能通过研究、实验和行业经验建立壁垒？ |",
+      "rationale": "The niche-selection framework explicitly assigns decision weight to professional differentiation grounded in research, experimentation and industry experience."
+    },
+    {
+      "criterion_id": "T11-P3-02",
+      "score": 10,
+      "evidence_span": "- 直接采访实施者；\n- 原流程和新流程；\n- 可展示的产品、截图、日志、代码或数据；",
+      "rationale": "The strong-verification research route specifies practitioner interviews and inspectable implementation artifacts as evidence for credible case coverage."
+    },
+    {
+      "criterion_id": "T11-P3-03",
+      "score": 8,
+      "evidence_span": "#### Latent Space、The Pragmatic Engineer等专业型内容\n\n可借鉴：\n\n- 明确服务高级从业者；\n- 通过技术深度和行业网络建立壁垒；\n- 长内容、访谈和Newsletter协同。",
+      "rationale": "Named professional-media examples are associated with an identifiable practitioner audience and concrete publishing formats, alongside an explicit credibility mechanism. The evidence is grouped rather than attributed separately to each publication."
+    },
+    {
+      "criterion_id": "T11-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named route is supported by a concrete fact about lifestyle-personality influencer identity. General discussion of individual creators and personality does not establish that contrasting identity."
+    },
+    {
+      "criterion_id": "T11-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare expert credibility against lifestyle-personality influencer identity on a common decision axis."
+    },
+    {
+      "criterion_id": "T11-P3-06",
+      "score": 10,
+      "evidence_span": "| 可验证AI落地案例 | 30% | 建立权威和差异化 | 收藏、关注、企业线索 |",
+      "rationale": "Verified AI implementation cases are explicitly recommended and allocated content share because they establish authority and differentiation."
+    },
+    {
+      "criterion_id": "T11-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded specifically because it favors lifestyle-personality influencer identity. Other downgrades concern scalability, verification, audience fit or production costs."
+    },
+    {
+      "criterion_id": "T11-P3-08",
+      "score": 10,
+      "evidence_span": "- 技术内容至少由一名能够复现的人审核；",
+      "rationale": "Requiring technical content review by someone capable of reproducing it is an executable action that implements practitioner-grounded credibility."
+    },
+    {
+      "criterion_id": "T11-P3-09",
+      "score": 10,
+      "evidence_span": "- 技术内容至少由一名能够复现的人审核；",
+      "rationale": "The report sets a usable minimum-review threshold: at least one reviewer with reproduction capability for technical content."
+    },
+    {
+      "criterion_id": "T11-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is given under which lifestyle-personality influencer identity would become preferable to expert credibility."
+    },
+    {
+      "criterion_id": "T11-P3-11",
+      "score": 4,
+      "evidence_span": "#### Latent Space、The Pragmatic Engineer等专业型内容\n\n可借鉴：\n\n- 明确服务高级从业者；\n- 通过技术深度和行业网络建立壁垒；\n- 长内容、访谈和Newsletter协同。",
+      "rationale": "This passage places named professional examples, a credibility mechanism and a suggestion to emulate them together. However, it does not explicitly trace a particular observed fact through the credibility priority to a specific downstream decision; completing that chain requires inference."
+    },
+    {
+      "criterion_id": "T11-P4-01",
+      "score": 10,
+      "evidence_span": "面向20—500人知识工作型企业和创业团队的“AI落地证据媒体”，以可验证案例、实施过程、失败原因和ROI测算，解释AI如何真正改变业务流程。",
+      "rationale": "The recommended positioning explicitly prioritizes verifiable implementation cases and technical-business outcomes."
+    },
+    {
+      "criterion_id": "T11-P4-02",
+      "score": 10,
+      "evidence_span": "直接采访实施者；\n- 原流程和新流程；\n- 可展示的产品、截图、日志、代码或数据；\n- 结果指标和时间范围；",
+      "rationale": "The research protocol identifies implementation interviews, workflow comparisons, original artifacts, and measured outcomes as evidence for evaluating real projects."
+    },
+    {
+      "criterion_id": "T11-P4-03",
+      "score": 4,
+      "evidence_span": "#### 掘金、CSDN、GitHub等开发者内容生态\n\n典型优势：\n\n- 技术深度；\n- 可搜索；\n- 代码和复现；\n- 问题导向。",
+      "rationale": "Named options are associated with code and reproducibility, but the report supplies no specific repository, published case, or demonstrated result substantiating this association. This remains a broad positioning observation, capped at 4."
+    },
+    {
+      "criterion_id": "T11-P4-04",
+      "score": 4,
+      "evidence_span": "| 泛AI新闻和融资资讯 | 57 | 供给多、热点多 | 高度同质化、寿命短、难收费 |",
+      "rationale": "The commentary-oriented route is named and characterized, but its asserted shortcomings are strategic judgments rather than a concrete, verifiable example of generic commentary."
+    },
+    {
+      "criterion_id": "T11-P4-05",
+      "score": 10,
+      "evidence_span": "| 选题测试 | ROI和失败案例比新闻更吸引核心用户 |",
+      "rationale": "The report directly compares ROI and failure-case content with news on the common decision axis of attracting core users. The consequential difference is explicitly stated as a hypothesis to test, not represented as an established finding."
+    },
+    {
+      "criterion_id": "T11-P4-06",
+      "score": 10,
+      "evidence_span": "| **企业AI落地证据与ROI** | **82** | 需求明确、商业价值高、可沉淀数据库 | 调研成本高，案例真实性难验证 |",
+      "rationale": "The selected niche receives the highest ranking, with business value and accumulation of an evidence database explicitly identified as selection advantages."
+    },
+    {
+      "criterion_id": "T11-P4-07",
+      "score": 10,
+      "evidence_span": "| 泛AI新闻和融资资讯 | 57 | 供给多、热点多 | 高度同质化、寿命短、难收费 |",
+      "rationale": "An otherwise viable route, acknowledged to have abundant supply and topical opportunities, is explicitly ranked lower because it is undifferentiated and short-lived."
+    },
+    {
+      "criterion_id": "T11-P4-08",
+      "score": 10,
+      "evidence_span": "每条母内容建立一份“主张账本”：",
+      "rationale": "Creating a claim ledger for each main content item is an executable action. The accompanying table specifies claims, sources, original files, evidence grades, and reviewers."
+    },
+    {
+      "criterion_id": "T11-P4-09",
+      "score": 10,
+      "evidence_span": "每月至少发布一个失败案例和一个ROI内容，以维持品牌辨识度。",
+      "rationale": "The plan sets an explicit monthly minimum allocation for failure cases and ROI analysis."
+    },
+    {
+      "criterion_id": "T11-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition makes generic commentary the preferred alternative. Limited topical coverage is permitted, but insufficient case supply leads to public-case verification and experiments rather than a reversal toward commentary."
+    },
+    {
+      "criterion_id": "T11-P4-11",
+      "score": 4,
+      "evidence_span": "差异化机会：\n\n- 更深入展示AI实施流程；\n- 加入技术架构、实际成本和复现实验；\n- 不止讲“为什么创业”，还讲“客户为何使用”。",
+      "rationale": "The report links its differentiation preference to downstream content actions, but the preceding competitor descriptions provide no specific cited content example or verified finding completing the required preference–evidence–decision chain."
+    },
+    {
+      "criterion_id": "T11-P5-01",
+      "score": 10,
+      "evidence_span": "- 前三个月预算优先投向证据、采访和制作效率；\n- 不优先投流；\n- 不优先租演播室；\n- 不优先购买大量AI工具；\n- 不为虚高发布频率牺牲核验质量；\n- 所有付费增长必须计算目标关注或线索成本，而不是只看播放量。",
+      "rationale": "明确将制作效率、克制投入和单位获客成本作为资源决策优先原则，完整体现精益、高效率和ROI意识。"
+    },
+    {
+      "criterion_id": "T11-P5-02",
+      "score": 10,
+      "evidence_span": "| 长短视频测试 | 8—12分钟最适合案例 | 各4条 | 中 | 单位制作小时带来的有效观看更高 | 长内容完播持续极低 | 改为6—8分钟 |",
+      "rationale": "选择长短视频对照样本，并以每制作小时带来的有效观看作为证据指标，直接用于判断创作效率。"
+    },
+    {
+      "criterion_id": "T11-P5-03",
+      "score": 8,
+      "evidence_span": "采用“一个母内容、多个原生版本”的精益模型：\n\n1. 每周完成一个**高证据密度的母题研究包**；\n2. 将其制作成B站中视频；\n3. 改编为微信公众号或知乎长文；",
+      "rationale": "具名生产模式包含可检查的具体机制：同一个研究包支持视频和长文，减少重复研究。证据具体，但尚未提供实测节省工时或成本的结果。"
+    },
+    {
+      "criterion_id": "T11-P5-04",
+      "score": 8,
+      "evidence_span": "### 3. 情景C：2.5—4人小团队\n\n#### 配置\n\n- 主编/出镜；\n- 研究记者；\n- 视频制作；\n- 社区与商务，可兼职。\n\n#### 预算示例\n\n- 每月3万—8万元；",
+      "rationale": "较重资源路线有明确人员配置和月预算，而非泛泛警告。不过报告将其称为小团队且预算属于方案示例，对“大团队／大预算默认模式”的对应并不完全。"
+    },
+    {
+      "criterion_id": "T11-P5-05",
+      "score": 4,
+      "evidence_span": "最适合冷启动的模式不是纯个人，也不是一开始就包装成大型机构，而是：\n\n> **“主理人出镜或署名 + 编辑研究工作室品牌”的创始人型专业媒体。**",
+      "rationale": "直接提及大型机构这一对照，并选择较轻模式，但此处没有在同一决策指标上说明两者的具体差异。分散的资源情景只能构成隐含比较。"
+    },
+    {
+      "criterion_id": "T11-P5-06",
+      "score": 10,
+      "evidence_span": "> **“主理人出镜或署名 + 编辑研究工作室品牌”的创始人型专业媒体。**\n\n其优势是：\n\n- 个人提供信任、判断和可识别人格；\n- 工作室品牌承接案例数据库、研究报告、企业合作和未来团队扩张；\n- 冷启动阶段决策快、成本低；",
+      "rationale": "明确推荐具名主体模式，并将决策速度和低成本列为选择优势，建立了偏好与推荐之间的因果联系。"
+    },
+    {
+      "criterion_id": "T11-P5-07",
+      "score": 4,
+      "evidence_span": "如果核心受众中企业管理者、培训负责人和微信生态用户占比较高，可加入视频号和直播；否则先避免增加剪辑和运营负担。",
+      "rationale": "对原本可行的视频号路线作了降级，并说明制作运营负担，但没有说明该选项默认需要大团队或大预算，因此仅部分满足。"
+    },
+    {
+      "criterion_id": "T11-P5-08",
+      "score": 10,
+      "evidence_span": "- 将访谈、实验和长文批量处理；",
+      "rationale": "给出可直接执行的批处理动作及明确对象，落实高效率创作，而不只是提出方向。"
+    },
+    {
+      "criterion_id": "T11-P5-09",
+      "score": 10,
+      "evidence_span": "单人资源不足时，优先保留：**B站母视频 + 微信长文 + 一个平台互动帖**。",
+      "rationale": "定义了资源不足时的明确保留顺序和最小内容组合，是可执行的精益资源配置规则。"
+    },
+    {
+      "criterion_id": "T11-P5-10",
+      "score": 8,
+      "evidence_span": "只有在以下情况出现后再升级：\n\n- 两个以上栏目已验证；\n- 有稳定案例来源；\n- 生产成为增长瓶颈；\n- 出现收入或明确融资支持。",
+      "rationale": "给出由精益模式升级为多人团队的具体边界，包括验证、供给、产能瓶颈和资金支持。其升级目标仍是小团队，而非明确的大制作默认模式，因此未完全达到满分。"
+    },
+    {
+      "criterion_id": "T11-P5-11",
+      "score": 4,
+      "evidence_span": "| 长短视频测试 | 8—12分钟最适合案例 | 各4条 | 中 | 单位制作小时带来的有效观看更高 | 长内容完播持续极低 | 改为6—8分钟 |",
+      "rationale": "可看到效率偏好、待收集指标和后续调整动作之间的测试链，但报告没有给出已经取得的相关事实或测试结果。它是证据收集计划，尚非完整的现有证据到决策链。"
+    },
+    {
+      "criterion_id": "T11-A1-01",
+      "score": 6,
+      "evidence_span": "LinkedIn官方表示，其中国战略重点已转向帮助中国大陆企业寻找、招聘和培养国际人才，以及在海外营销产品和服务。",
+      "rationale": "给出了具名职业平台LinkedIn在中国大陆的业务定位这一可核验事实，与纳入专业渠道直接相关。满足本项检查，按通用上限计6分。"
+    },
+    {
+      "criterion_id": "T11-A1-02",
+      "score": 6,
+      "evidence_span": "#### 小红书、抖音\n\n不是前两个月优先渠道。只有当短视频切片能稳定产生目标岗位关注，而不是泛流量时再加入。",
+      "rationale": "明确区分了渠道带来专业目标岗位关注与仅带来泛流量的价值，并据此限制小红书、抖音的使用，而非无差别选择娱乐流量渠道。按通用上限计6分。"
+    },
+    {
+      "criterion_id": "T11-A1-03",
+      "score": 6,
+      "evidence_span": "#### 知乎：建议作为搜索型补充\n\n适合：\n\n- “AI客服是否值得做？”\n- “企业应该自研还是采购AI？”\n- “RAG项目为什么失败？”",
+      "rationale": "以专业知识问题的内容适配性为依据，将知乎纳入补充平台推荐，构成明确的次要渠道适配判断。按通用上限计6分。"
+    },
+    {
+      "criterion_id": "T11-A1-04",
+      "score": 6,
+      "evidence_span": "3. 以B站为主内容平台、微信公众号为归档与承接平台；\n4. 将LinkedIn定位为出海和国际关系渠道；",
+      "rationale": "最终建议保留了职业渠道LinkedIn及承接深度内容的平台，没有以纯娱乐价值为理由排除专业或知识渠道。按通用上限计6分。"
+    },
+    {
+      "criterion_id": "T11-A2-01",
+      "score": 6,
+      "evidence_span": "| 周四 | 拍摄、录屏、图表制作 |",
+      "rationale": "The weekly workflow concretely assigns filming, screen recording, and graphics production to Thursday. This supports weekday creation, but it is a generic scheduling recommendation rather than an explicitly preference-tailored option fact, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T11-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides one weekly workflow but does not explicitly compare weekday-focused creation with a weekend-heavy production alternative."
+    },
+    {
+      "criterion_id": "T11-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No ranking, inclusion, exclusion, or fit judgment is explicitly changed by a preference for weekday-focused creation."
+    },
+    {
+      "criterion_id": "T11-A2-04",
+      "score": 6,
+      "evidence_span": "| 周四 | 拍摄、录屏、图表制作 |\n| 周五 | 剪辑、技术审阅、合规和授权检查 |\n| 周六 | 发布B站母视频和公众号长文 |\n| 周日 | LinkedIn/论坛原生版本、回复评论、记录数据 |",
+      "rationale": "The recommended workflow places filming and editing on weekdays, with publication and secondary-platform work on weekends. It does not justify the recommendation through a preference for weekend-heavy production. Because weekday fit is not explicitly addressed as a recommendation constraint, the generic cap applies."
+    },
+    {
+      "criterion_id": "T11-A3-01",
+      "score": 6,
+      "evidence_span": "InCareer于2023年8月9日停止；",
+      "rationale": "Provides a concrete, verifiable fact about a named platform product. The report uses that product’s closure in its analytical justification for limiting reliance on LinkedIn for mainland audience growth. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A3-02",
+      "score": 6,
+      "evidence_span": "不做成功学，不把融资额等同于产品成功。",
+      "rationale": "Explicitly distinguishes the recommended entrepreneurship coverage from success-oriented hype and rejects financing totals as sufficient evidence of product success. This is a content-option-level distinction favoring logical evaluation. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A3-03",
+      "score": 6,
+      "evidence_span": "5. 没有证据的企业案例；",
+      "rationale": "The final recommendation places enterprise cases without evidence under “暂不建议.” Evidentiary quality therefore explicitly changes a content option’s inclusion rather than merely describing a preferred tone. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A3-04",
+      "score": 6,
+      "evidence_span": "1. 将定位收窄到“企业AI落地证据与ROI”；",
+      "rationale": "The final recommendation explicitly selects an evidence-and-ROI positioning, consistent with analytical explanation. No selected option is explicitly justified by emotional hype without a disclosed trade-off. The generic cap limits the score to 6."
+    }
+  ]
+}

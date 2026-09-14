@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 10,
+      "evidence_span": "| Supervisor fit and availability | 25% |\n| Student outcomes and advising quality | 15% |\n| Research resources and compute | 15% |\n| Funding security and net cost | 15% |",
+      "rationale": "The offer-selection rubric explicitly prioritizes fit, observed student outcomes, resources, and financial trade-offs through decision weights."
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "For each target, record:\n\n- three potentially aligned faculty;\n- whether at least two appear to be recruiting;\n- current students’ publication venues;\n- recent student internships;\n- available compute;\n- funding duration;\n- tuition and fees;\n- internship policy;\n- graduation time;\n- placement outcomes;\n- visa implications.",
+      "rationale": "The research route identifies concrete evidence classes for comparing research fit, outcomes, resources, costs, and constraints across programs."
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 10,
+      "evidence_span": "The guaranteed funding period is **60 months for direct-entry students**. Toronto states that all full-time PhD students receive a package combining research and teaching assistantships intended to cover tuition and living costs [15][16].",
+      "rationale": "Toronto is a named option with a specific, source-linked funding guarantee that supports comparison of financial security and program trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is supported by a verifiable fact demonstrating prestige as its dominant selection rule. Descriptions of prestigious or selective programs do not establish that rule."
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 10,
+      "evidence_span": "They may be better targets than a more famous institution if several faculty align with your specific research question.",
+      "rationale": "The report directly compares faculty alignment with institutional fame on the common axis of application targeting and states that alignment can make the less-famous option preferable."
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 10,
+      "evidence_span": "### 1.2 Information retrieval and retrieval-augmented generation\n\nThis is probably the strongest bridge between applied NLP, industrial value, moderate compute, and publishable systems work.",
+      "rationale": "The report selects the named retrieval/RAG direction because it combines research fit, employment relevance, feasible resource demands, and publication potential."
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named viable option is downgraded specifically because its selection would be dominated by prestige. Downgrades elsewhere concern compute demands, preparation, cost, or supervision."
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "Before accepting, speak privately with at least two current students and, where possible, one recent graduate. Ask about:\n\n- meeting frequency;\n- feedback turnaround;\n- authorship norms;\n- expected work hours;\n- funding stability;\n- internship approval;\n- graduation expectations;\n- students who changed advisors;\n- treatment of negative results;\n- placement support.",
+      "rationale": "This is an executable evidence-gathering step with specified interviewees and concrete questions addressing advising, funding, flexibility, and career support."
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 10,
+      "evidence_span": "| Supervisor fit and availability | 25% |\n| Student outcomes and advising quality | 15% |\n| Research resources and compute | 15% |\n| Funding security and net cost | 15% |",
+      "rationale": "The report provides usable numerical allocations for comparing offers on fit, outcomes, resources, and financial trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state a condition under which prestige should become the dominant decision rule. Stronger credentials justify more aspirational applications, but not prestige-first selection."
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 10,
+      "evidence_span": "RAG is not automatically reliable. Recent research found substantial retriever degradation under minor query variations [6]. That makes robustness, evaluation, routing, and retrieval quality better research targets than merely assembling an existing RAG framework.",
+      "rationale": "A visible chain connects the reliability objective to a cited empirical finding and then to a consequential choice of research targets."
+    }
+  ]
+}

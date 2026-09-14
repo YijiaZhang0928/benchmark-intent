@@ -1,0 +1,1598 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare suitable artificial-intelligence PhD directions and programs abroad for an application horizon of roughly 1–2 years.
+
+Cover major regions including North America, Europe and Asia. Compare research strengths, curriculum structures, academic resources, employment prospects, application and language requirements, research/internship preparation, tuition, scholarship and funding mechanisms, and representative universities or programs.
+
+Produce a phased 1–2 year preparation and application plan covering research preparation, program selection, application materials and timeline management.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T1-P4-01",
+    "criterion": "The report states strong funding / scholarships / cost-effectiveness as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate strong funding / scholarships / cost-effectiveness.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-03",
+    "criterion": "The report provides concrete evidence about how an option supports strong funding / scholarships / cost-effectiveness.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-04",
+    "criterion": "The report provides concrete evidence about how an option reflects expensive prestige-first options.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-05",
+    "criterion": "The report directly compares strong funding / scholarships / cost-effectiveness with expensive prestige-first options.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-06",
+    "criterion": "At least one recommended option is selected because it supports strong funding / scholarships / cost-effectiveness.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors expensive prestige-first options.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-08",
+    "criterion": "The plan contains one executable step that implements strong funding / scholarships / cost-effectiveness.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for strong funding / scholarships / cost-effectiveness.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-10",
+    "criterion": "The report states when expensive prestige-first options would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P4-11",
+    "criterion": "One visible chain links strong funding / scholarships / cost-effectiveness to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label Q7M4):
+# AI PhD Directions and Funded Programs Outside Mainland China: Strategy for a 2027–2028 Application
+
+## Executive assessment
+
+Your present profile—strong undergraduate performance in Computer Science and Technology at a prestigious Jiangsu university, two consecutive university scholarships, substantial self-directed programming, familiarity with GitHub and technical learning platforms, and programming-competition experience—provides a credible foundation for doctoral preparation.
+
+However, the information currently available does **not yet establish PhD research readiness**. For research-intensive AI admissions, the decisive evidence will be:
+
+1. sustained work with a research supervisor;
+2. one or more technically serious, reproducible research projects;
+3. strong research-focused recommendation letters;
+4. evidence that you can formulate and test hypotheses, not merely complete courses or coding exercises;
+5. precise faculty and research-group fit;
+6. English-test readiness where required.
+
+The best intellectual fit is likely to be:
+
+- **applied NLP and language-model research**;
+- **LLM evaluation, adaptation and retrieval-augmented generation**;
+- **information retrieval and neural search**;
+- **efficient training and inference**;
+- **multimodal language–vision systems**;
+- **trustworthy and robust NLP**;
+- **AI systems and ML infrastructure**;
+- domain applications where implementation and empirical evaluation are central.
+
+For funding and cost-effectiveness, the strongest structural options are generally:
+
+- funded U.S. and Canadian research PhDs with written assistantship/fellowship support;
+- Swiss doctoral programs or fellowships;
+- salaried doctoral vacancies in Germany, the Netherlands and Scandinavia;
+- fully funded UK studentships or CDTs that explicitly cover international tuition;
+- Singapore and Hong Kong doctoral scholarships;
+- selected funded programs in South Korea and Japan.
+
+A critical distinction is that **admission is not always equivalent to funding**. This is especially important in the UK, Canada and some Asian programs. Do not accept an offer until tuition, mandatory fees, health insurance, stipend, summer support and funding duration are confirmed in writing.
+
+No credible funded AI PhD should be treated as genuinely “safe.” The reach/match/safer classifications below are therefore **relative and conditional**, not predictions.
+
+---
+
+## 1. Research directions best aligned with your preferences
+
+### 1.1 Applied NLP and language-model engineering
+
+This is the clearest fit if you enjoy implementing models, running controlled experiments and building usable systems.
+
+Good research questions include:
+
+- adapting language models to specialized or low-resource domains;
+- multilingual and Chinese–English NLP;
+- instruction tuning and parameter-efficient fine-tuning;
+- factuality, hallucination detection and uncertainty estimation;
+- tool-using and agentic language models;
+- long-context modeling and memory;
+- synthetic-data generation and filtering;
+- evaluation methodology;
+- data quality, contamination and benchmark reliability;
+- language-model serving, batching and latency optimization.
+
+This area is highly competitive. A generic “chatbot using an API” will not distinguish you. A strong project should identify a research gap, compare meaningful baselines, report ablations, use reproducible environments and analyze failure cases.
+
+### 1.2 Information retrieval, neural search and RAG
+
+Information retrieval is particularly suitable because it combines algorithms, deep learning, NLP, data engineering and system evaluation.
+
+Potential topics include:
+
+- dense and sparse retrieval;
+- learned reranking;
+- hybrid retrieval;
+- retrieval-augmented generation;
+- multilingual retrieval;
+- retrieval under distribution shift;
+- query reformulation;
+- citation attribution and evidence verification;
+- latency–accuracy trade-offs;
+- indexing and serving large embedding collections.
+
+This direction is often more experimentally tractable for an undergraduate than training large foundation models from scratch. It can produce strong research evidence using public benchmarks and moderate computing resources.
+
+### 1.3 Efficient AI and small-model research
+
+Efficient AI is an excellent fit if you like profiling, optimization and systems work.
+
+Relevant topics include:
+
+- quantization;
+- pruning and sparsity;
+- knowledge distillation;
+- low-rank adaptation;
+- mixture-of-experts routing;
+- efficient attention;
+- inference caching;
+- memory-efficient training;
+- model compression for edge devices;
+- throughput, latency and energy benchmarking.
+
+A compelling portfolio project could compare several compression or adaptation methods on multilingual NLP tasks while measuring not only accuracy but also GPU memory, tokens per second, energy estimates and robustness.
+
+### 1.4 AI systems and ML infrastructure
+
+This direction sits between systems and machine learning and is especially suitable for implementation-heavy work.
+
+Possible topics include:
+
+- distributed training;
+- inference-serving systems;
+- GPU scheduling;
+- data pipelines;
+- compiler support for deep learning;
+- vector databases;
+- experiment tracking and reproducibility;
+- model monitoring;
+- fault tolerance;
+- federated or privacy-preserving learning;
+- efficient deployment.
+
+Develop competence in Linux, Docker, CUDA concepts, profiling, networking, distributed systems and cluster schedulers. Compared with pure NLP, AI systems may also offer somewhat broader industry employment.
+
+### 1.5 Multimodal learning
+
+Multimodal research connects language with images, video, audio, documents or sensor data. Suitable subareas include:
+
+- vision–language models;
+- multimodal retrieval;
+- document intelligence;
+- video-language understanding;
+- speech–language systems;
+- multimodal agents;
+- grounded generation;
+- synthetic multimodal data.
+
+The main disadvantage is higher computing cost. Begin with retrieval, evaluation or parameter-efficient adaptation rather than full pretraining.
+
+### 1.6 Trustworthy and responsible AI
+
+Implementation-oriented trustworthy AI includes:
+
+- robustness testing;
+- adversarial evaluation;
+- bias measurement;
+- privacy;
+- model calibration;
+- interpretability tools;
+- red-teaming;
+- hallucination and factuality evaluation;
+- data provenance;
+- content authenticity;
+- safety of tool-using agents.
+
+This is a good fit when the work produces measurable methods or evaluation systems rather than remaining primarily philosophical or policy-oriented.
+
+### 1.7 Domain applications
+
+Promising applied domains include:
+
+- health and biomedical NLP;
+- scientific-document understanding;
+- education technology;
+- software engineering and code models;
+- cybersecurity;
+- finance;
+- legal-text processing;
+- digital humanities;
+- climate or environmental applications.
+
+Domain projects become much stronger when conducted with a domain expert and when data access, privacy and evaluation are handled rigorously.
+
+### Recommended priority order
+
+For your stated preferences, a practical initial ordering is:
+
+1. **Applied NLP + information retrieval/RAG**
+2. **Efficient LLM adaptation and inference**
+3. **AI systems for language models**
+4. **Trustworthy NLP and LLM evaluation**
+5. **Multimodal retrieval and document intelligence**
+6. **Domain-specific language technologies**
+
+This ordering is adaptable. After six to nine months of research exposure, specialization should be based on the work you actually enjoy and perform well, not on current publicity around LLMs.
+
+---
+
+## 2. Program structures and direct-entry implications
+
+### 2.1 United States
+
+A U.S. Computer Science PhD commonly lasts approximately five to six years and usually combines:
+
+- graduate coursework or breadth requirements;
+- early research with one or more faculty members;
+- qualifying, preliminary or candidacy requirements;
+- teaching or research-assistant duties;
+- a dissertation proposal;
+- original dissertation research and defense.
+
+Stanford explicitly describes its CS PhD as research-oriented, normally completed in **five to six years**, with relatively few course requirements. Its official page allows applicants holding a recognized degree equivalent to a U.S. bachelor’s degree; a CS bachelor’s is not mandatory, although strong quantitative and analytical preparation is expected. [Stanford CS PhD Admissions](https://www.cs.stanford.edu/admissions/phd-admissions) [1]
+
+Carnegie Mellon’s Computer Science Department explicitly states that a master’s degree is **not required**. Applicants enter in the fall, are not expected to secure an advisor before applying, and identify faculty whose interests align with theirs; formal advisor matching occurs after admission. [CMU CSD Doctoral Admissions](https://csd.cmu.edu/academics/doctoral/admissions) [2]
+
+Georgia Tech instructs students who ultimately seek a PhD to apply directly to the doctoral program rather than its separate MS. Its page says PhD candidates are **typically** offered a research or teaching assistantship providing a stipend and tuition remission. “Typically” is not the same as an unconditional guarantee. [Georgia Tech PhD CS Admissions Requirements](https://www.cc.gatech.edu/phd-cs-admissions-requirements) [3]
+
+**Implication:** A recognized Chinese bachelor’s degree can be sufficient for many U.S. PhDs. A master’s is generally not structurally necessary, but applicants must already demonstrate research potential.
+
+### 2.2 Canada
+
+Canadian structures are less uniform:
+
+- some departments admit exceptional bachelor’s graduates directly to a PhD;
+- some expect entry through a thesis-based MSc;
+- some allow transfer from an MSc to the PhD after satisfactory research progress;
+- supervisor support can be more important than in centralized U.S. admissions.
+
+Typical duration is roughly four to six years for direct entry and three to five years following a master’s, but this varies.
+
+Funding often combines supervisor grants, teaching assistantships and university fellowships. General scholarship pages should not be mistaken for department-level guarantees. McGill’s official funding lists show that award eligibility varies by citizenship, residency, field and student status, and its international-student page specifically directs applicants to their academic unit for exact funding. [McGill Doctoral Funding Opportunities](https://www.mcgill.ca/gps/funding/opportunities/phd) [4] [McGill International Student Funding](https://www.mcgill.ca/gps/funding/intl) [5]
+
+**Implication:** For McGill, Toronto, UBC, Waterloo and Alberta, verify whether the specific CS route permits direct entry from your bachelor’s degree and whether international tuition is covered by the package.
+
+### 2.3 United Kingdom
+
+A conventional UK PhD is usually shorter and more research-focused than a U.S. PhD, often approximately three to four years. It normally has:
+
+- limited formal coursework;
+- early commitment to a supervisor or project;
+- annual progress reviews;
+- a dissertation;
+- a final oral examination, or viva.
+
+A Centre for Doctoral Training, or CDT, usually adds structured coursework, cohort training and rotations or group projects, often extending the program to approximately four years.
+
+Imperial Computing normally expects a **First Class or Distinction-level master’s degree or equivalent**. Its official page states that bachelor’s-only candidates are not normally considered and may instead apply to an MSc first. Imperial offers up to 30 fully funded departmental studentships for home and overseas students each year and says more than 80% of its PhD students receive funding, but that still leaves admission and funding as separate decisions. [Imperial Computing PhD](https://www.imperial.ac.uk/computing/prospective-students/courses/phd/) [6]
+
+A specific Cambridge van der Schaar Lab recruitment page advertised four fully funded positions open to home and international students in generative AI, reality-centric AI, AI agents, scientific discovery, reinforcement learning and synthetic data. This is a good example of a project- or laboratory-funded UK route, but the continuing availability of these positions must be checked. [Cambridge Machine Learning and AI Recruitment](https://www.maths.cam.ac.uk/postgrad/phd-machine-learning-and-ai) [7]
+
+**Implication:** With only a bachelor’s, UK eligibility is program-specific. CDTs and integrated doctoral programs may be more realistic than departments that normally expect a master’s. Funding must explicitly cover both the international tuition rate and living stipend.
+
+### 2.4 Switzerland and continental Europe
+
+European doctoral structures vary sharply.
+
+- **Switzerland:** centralized doctoral schools and professor-funded positions coexist.
+- **Germany:** most CS doctorates expect a relevant master’s and are frequently attached to a research-chair or institute vacancy.
+- **Netherlands and Scandinavia:** PhD candidates are commonly salaried employees recruited for advertised projects.
+- **France and Belgium:** doctoral contracts or grant-funded positions are common, usually after a master’s.
+- **Austria:** institutes and universities may offer salaried or fellowship-funded positions, generally requiring master’s-equivalent preparation.
+
+EPFL’s EDIC program covers AI, data science, systems, cybersecurity and visual computing. It reports roughly 80 affiliated faculty, centralized competitive admissions, substantial academic and industrial partnerships and a first-year structure allowing students to explore research fields before fixing their preferred focus. It states that applications for the main round are due **December 1 at 23:59 CET starting in 2026**, with a smaller April 15 round mainly for local applicants. [EPFL EDIC](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/) [8]
+
+ETH Zurich offers standard doctoral study and a separate direct-doctorate route, but eligibility and funding for the latter are specialized and must be checked against the eventual cycle. It should not be assumed that a normal bachelor’s graduate is automatically eligible. [ETH Zurich Doctoral Studies](https://inf.ethz.ch/doctorate.html) [9] [ETH Direct Doctorate](https://ethz.ch/applications/teaching/en/applications/eapply/msc/mscdirectdoctorate.html) [10]
+
+**Implication:** If you do not complete a master’s, EPFL/ETH and other continental programs require careful degree-equivalency checking. Many German, Dutch and Scandinavian vacancies will require a master’s by the employment start date.
+
+### 2.5 Singapore
+
+Singapore offers structured PhDs combining coursework, qualifying examinations and supervised research.
+
+NTU’s College of Computing and Data Science accepts applicants with a strong bachelor’s degree with at least Honours/Distinction or equivalent. Applicants whose bachelor’s degree was not conducted in English are expected to provide TOEFL or IELTS. NTU also asks for a research proposal, résumé and academic references and says GRE/GATE evidence can strengthen an application. Its PhD has a formal full-time minimum of two years and maximum of five years, although a realistic research duration is usually closer to four or five years. [NTU CCDS PhD](https://www.ntu.edu.sg/education/graduate-programme/ccds-phd-computing-datascience) [11]
+
+NTU’s 2026 course listings provide evidence of active teaching in:
+
+- deep learning for NLP;
+- deep learning for data science;
+- visual understanding and generation;
+- reinforcement learning;
+- distributed systems;
+- computational intelligence.
+
+Relevant listed instructors included Luu Anh Tuan, Wang Wenya, Liu Ziwei, Li Boyang, Pan Xinggang and Stefano Albrecht. Their willingness to supervise new students must be checked individually.
+
+At NUS, the PhD includes a substantial thesis-proposal milestone. The official page states that candidates must pass the proposal by the end of Year 4, with a public doctoral seminar followed by a closed oral examination, and a maximum of two attempts. [NUS PhD in Computer Science](https://www.comp.nus.edu.sg/programmes/pg/phdcs/) [12]
+
+**Implication:** Singapore is one of the strongest direct-bachelor possibilities outside North America, but admission and scholarship selection are highly competitive.
+
+### 2.6 Hong Kong, Japan and South Korea
+
+These should remain in the search portfolio, although the current research record does not verify their 2027–2028 requirements.
+
+- **Hong Kong:** HKUST, CUHK and HKU are strong targets for NLP, multimodal learning, retrieval and AI systems. Direct-bachelor PhD entry and the Hong Kong PhD Fellowship Scheme can make this route cost-effective, but exact eligibility, stipend, tuition and deadline must be checked.
+- **South Korea:** KAIST, Seoul National University, POSTECH, UNIST and GIST offer strong AI ecosystems. Funding may combine tuition waivers, laboratory support and university scholarships. Professor contact can matter substantially.
+- **Japan:** the University of Tokyo, Science Tokyo, Kyoto University, OIST and RIKEN-linked laboratories are relevant. Some programs have English doctoral tracks, but many conventional doctorates expect a master’s and may use laboratory matching or entrance examinations. MEXT eligibility depends on nationality and application channel.
+- **Local language:** English may suffice for research in an international laboratory, but Japanese or Korean can materially improve daily life and local industry employment.
+
+---
+
+## 3. Region-by-region comparison
+
+| Region | Bachelor-to-PhD route | Typical structure | Funding model | Main advantages | Main risks |
+|---|---|---|---|---|---|
+| United States | Common at many CS departments | 5–6 years; coursework, research milestones, dissertation | RA, TA, fellowship; tuition remission often included | Broad faculty choice, strong computing and industry links, direct bachelor entry | Extremely selective; long duration; visa and internship rules; high living costs |
+| Canada | Possible but department-specific; MSc-first common | Approximately 4–6 years direct or 3–5 after MSc | Supervisor grants, TA, fellowships | Strong AI institutes, generally collaborative environment, industry links | International tuition may consume stipend; direct-entry rules vary |
+| United Kingdom | Bachelor-only often difficult for conventional PhD; CDT routes vary | 3–4 years; less coursework; supervisor/project focused | Studentships, UKRI/CDT, project funding | Shorter duration; excellent NLP and ML centers | Funding not automatic; international fee gaps; some departments expect a master’s |
+| Switzerland | Program-specific; standard doctorate often expects master’s-equivalent preparation | Approximately 4–5 years; centralized school or professor-funded | Salary, assistantship or fellowship | Excellent pay relative to many PhDs; strong research and industry | Very competitive; high living costs; direct-bachelor eligibility limited |
+| Germany/Netherlands/Scandinavia | Master’s usually expected | Advertised project; often employee status | Salary under employment contract | Transparent project funding, benefits, good cost-effectiveness | Narrow project fit; vacancy timing unpredictable; less flexibility after hiring |
+| Singapore | Direct strong-bachelor entry possible | Coursework, qualifying exam, proposal and thesis; usually 4–5 years | University scholarship, national fellowship, grant support | English-medium, close to China, strong industry and research links | Scholarship conditions and service obligations vary; intense competition |
+| Hong Kong | Direct bachelor routes often available | Structured PhD, commonly around 4 years | University funding, supervisor grants, HK fellowship | Strong regional NLP/AI ecosystem; geographic accessibility | Funding and political/immigration circumstances must be evaluated personally |
+| Japan/South Korea | Integrated and master’s-first routes vary | Laboratory-centered; coursework/exams vary | Government, university or laboratory scholarships | Strong robotics, multimodal, systems and industrial AI | Lab culture can be hierarchical; local-language advantage; funding may depend on supervisor |
+
+---
+
+## 4. Representative program assessment
+
+### 4.1 Highest-reach programs
+
+#### Stanford Computer Science
+
+**Best fit:** NLP, foundation models, LLM evaluation, efficient AI, AI systems, multimodal learning and human-centered AI.
+
+The [Stanford NLP Group](https://nlp.stanford.edu/prospective/) [13] and adjacent foundation-model and systems activity make Stanford exceptionally aligned with applied NLP. Faculty and laboratory availability should be checked immediately before applying; possible faculty discovery leads include researchers associated with Stanford NLP and foundation-model research rather than relying on a static name list.
+
+**Why it fits:**
+
+- direct application from an equivalent international bachelor’s degree;
+- low coursework burden relative to many U.S. programs;
+- very strong research and industry ecosystem;
+- broad opportunities across NLP, systems and trustworthy AI.
+
+**Risks:**
+
+- admission is exceptionally selective;
+- strong grades and coding experience alone are not sufficient;
+- compelling research evidence and unusually strong letters are normally needed;
+- housing and living costs are high.
+
+#### Carnegie Mellon School of Computer Science
+
+**Best fit:** NLP, speech, information retrieval, ML systems, robotics, multimodal AI and applied machine learning.
+
+The Computer Science Department does not require a master’s. Applicants should also investigate relevant School of Computer Science doctoral programs, including language- and machine-learning-oriented routes, because CMU does not automatically redirect an unsuccessful CS PhD application to another program.
+
+For the cycle displayed on the official page, the application opened September 9, 2026, with a cost-saving early deadline of **November 18, 2026 at 3 p.m. EST** and a final deadline of **December 9, 2026 at 3 p.m. EST**. These must be reconfirmed for 2027 or 2028 entry.
+
+**Why it fits:**
+
+- arguably one of the broadest applied AI environments;
+- unusually strong connection between NLP, retrieval, systems and engineering;
+- direct bachelor-to-PhD route;
+- no advisor agreement required before application to CSD.
+
+**Risks:** multiple overlapping programs make program selection important, and admission is extremely competitive.
+
+#### Berkeley EECS
+
+**Best fit:** deep learning, language, reinforcement learning, trustworthy ML, AI systems and scalable infrastructure.
+
+The official admissions and student-guide pages should be used to confirm current requirements and milestones. [Berkeley EECS Graduate Research Admissions](https://eecs.berkeley.edu/academics/graduate/research-programs/admissions/) [14] [Berkeley EECS PhD Student Guide](https://eecs.berkeley.edu/book/phd/) [15]
+
+**Why it fits:** outstanding interaction between algorithmic ML, systems and applied AI.
+
+**Risks:** exceptionally selective, expensive location and potentially intense research culture.
+
+#### University of Washington Allen School
+
+**Best fit:** NLP, multimodal AI, human-centered AI, ML and systems.
+
+The Allen School reports more than **3,500 PhD applications** annually for a target entering class of approximately **50–60**. It accepts applications once per year for autumn entry, with a published December 15 deadline on the current page. [UW Allen School PhD Admissions](https://www.cs.washington.edu/academics/graduate/phd-program/phd-admissions/) [16]
+
+This ratio is not an official admit rate, but it clearly indicates extreme selectivity.
+
+**Why it fits:** strong research ecosystem and proximity to major technology companies.
+
+**Risks:** funding details, English requirements and advisor availability must be reconfirmed from the current full program materials.
+
+#### EPFL EDIC
+
+**Best fit:** ML, data science, systems, multimodal research, efficient AI and interdisciplinary applications.
+
+The first-year exploration structure is valuable if you are choosing among NLP, efficient ML and systems. Faculty displayed by EPFL include Martin Jaggi, Robert West, Tanja Käser, Amir Zamir, Nicolas Flammarion, Edouard Bugnion and Babak Falsafi. This does not mean that every listed faculty member is recruiting.
+
+**Risks:** highly competitive centralized admission; Swiss living costs are high; the exact degree-equivalency requirement and compensation must be reconfirmed.
+
+#### ETH Zurich
+
+**Best fit:** NLP, ML systems, trustworthy AI, optimization and multimodal learning.
+
+The ETH AI Center fellowship and direct-doctorate pages should be checked alongside department-specific admissions. [ETH AI Center Doctoral Fellowships](https://ai.ethz.ch/research/phd-and-postdoc-programs/phd-fellowships.html) [17]
+
+**Risks:** normal doctoral routes often presume master’s-level preparation; the direct-doctorate route is specialized and should be treated as a reach rather than a standard bachelor-entry route.
+
+### 4.2 Strong reaches or conditional matches
+
+#### Georgia Tech Computer Science
+
+**Best fit:** NLP, interactive AI, machine learning, computer vision, multimodal systems and AI applications.
+
+Official admissions indicators include:
+
+- December 15 deadline;
+- desirable undergraduate GPA of **3.5/4.0**;
+- three recommendation letters, preferably academic;
+- GRE optional;
+- PhD candidates typically offered assistantships with stipend and tuition remission.
+
+The currently published English requirement says TOEFL is required for applicable applicants, with a stated minimum of 100 on the older scale and 5.0 on the new scale effective January 2026. It also lists IELTS 7.5 overall with section minimums. Because TOEFL scales and institutional wording are changing, confirm the exact test and score rules for the eventual cycle.
+
+Georgia Tech becomes a plausible conditional match only if you add real research experience and strong faculty recommendations.
+
+#### UMass Amherst
+
+**Best fit:** NLP, information retrieval, machine learning and applied language technology.
+
+UMass should be included because it has historically combined NLP and retrieval especially well. It is still highly selective in these areas. Current faculty membership, funding, application rules and recruitment status should be verified before inclusion in the final list.
+
+#### University of Maryland, UC San Diego, UIUC, Cornell and UT Austin
+
+These are valuable discovery targets for NLP, ML systems, efficient AI, databases, retrieval and multimodal research. In practice, many are closer to reaches than matches for an undergraduate without publications or extended research.
+
+A school should remain on the final list only if:
+
+- at least two or three potential supervisors fit;
+- those faculty appear active and likely to advise new students;
+- the program permits direct bachelor entry;
+- funding is normally provided;
+- the statement can explain a specific research connection.
+
+#### NUS Computer Science
+
+**Best fit:** NLP, information retrieval, multimedia, data mining, ML and systems.
+
+NUS combines strong regional industry links with a structured PhD. Relevant faculty and groups should be checked through the [NUS Machine Learning Group openings page](https://ml.comp.nus.edu.sg/openings.html) [18].
+
+NUS can be a reach or conditional match depending on GPA, rank, research evidence and recommendations. Scholarship selection may be at least as competitive as admission.
+
+#### NTU College of Computing and Data Science
+
+**Best fit:** deep-learning NLP, multimodal learning, visual generation, reinforcement learning and distributed systems.
+
+The current 2026 course activity closely matches your preferences. Direct bachelor eligibility is clearer than at Imperial or many continental European programs.
+
+**Risks:** the opened program page does not provide a department-wide funding guarantee. Check the [NTU Postgraduate Scholarships](https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/) [19] page and the exact scholarship offer. Confirm whether funding has a bond, teaching requirement, qualification condition or stipend change after candidacy.
+
+#### Imperial Computing
+
+Imperial is a strong research fit but a poor immediate structural fit if you apply with only a bachelor’s. It becomes more realistic after:
+
+- a research master’s;
+- an unusually strong bachelor’s record with substantial research;
+- or admission to an integrated/CDT route that explicitly accepts your qualifications.
+
+Do not assume admission means funding. The official page explicitly separates supervisor acceptance from scholarship decisions.
+
+#### Cambridge project-funded positions
+
+The van der Schaar Lab opportunity is a model for how UK applications can work: target a specific funded project whose methods match your portfolio. This is particularly suitable if you produce work on generative models, synthetic data, evaluation or AI for science.
+
+Specific openings are temporary. A position advertised in 2026 may no longer exist for a 2027 or 2028 application.
+
+### 4.3 Conditional matches and lower-variance alternatives
+
+#### McGill and the Mila ecosystem
+
+**Best fit:** NLP, reinforcement learning, deep learning and trustworthy AI.
+
+McGill can be attractive because of the broader Montreal AI ecosystem. However:
+
+- verify whether you qualify for direct PhD entry;
+- obtain a complete department-level funding statement;
+- calculate the effect of international tuition;
+- do not rely on external fellowships unless your citizenship and status clearly qualify.
+
+The [McGill CS PhD admission page](https://www.cs.mcgill.ca/graduate/future/phdadmission/) [20] and current deadlines should be checked in the application year.
+
+#### University of Alberta and Amii
+
+**Best fit:** reinforcement learning, representation learning, optimization and selected NLP or applied ML projects.
+
+Alberta may be a relatively more accessible option than Stanford or CMU, but funded admission is not safe. Its [Computing Science PhD program](https://www.ualberta.ca/en/computing-science/graduate-studies/programs-and-admissions/phd-program/index.html) [21] and [financial-support page](https://www.ualberta.ca/en/computing-science/graduate-studies/financial-support-and-awards/index.html) [22] should be checked for direct-entry and current guarantees.
+
+#### Edinburgh CDTs and responsible NLP
+
+Edinburgh is particularly relevant for NLP and ML systems. Potential routes include:
+
+- the [CDT in Machine Learning Systems](https://informatics.ed.ac.uk/cdt-in-machine-learning-systems) [23];
+- the [Responsible NLP CDT studentships](https://www.law.ed.ac.uk/news-events/news/applications-now-open-responsible-nlp-centre-doctoral-training-studentships-2026) [24].
+
+These cohort programs may offer a better transition from undergraduate study than a narrowly defined three-year UK PhD, but international tuition coverage and bachelor-entry requirements must be confirmed.
+
+#### UCL Foundational AI and Oxford Statistics and Machine Learning CDTs
+
+The [UCL Foundational AI CDT](https://www.ucl.ac.uk/engineering/foundational-ai-cdt) [25] and [Oxford Statistics and Machine Learning CDT](https://www.ox.ac.uk/admissions/graduate/courses/cdt-statistics-and-machine-learning) [26] are relevant structured options. They remain highly competitive and may lean more mathematical than your preferred profile, so fit depends on the specific project and curriculum.
+
+#### Salaried continental-European vacancies
+
+For cost-effectiveness, one of the best “lower-variance” strategies is to apply to exact-fit funded vacancies in:
+
+- Saarland University and Max Planck–linked groups;
+- Tübingen and ELLIS-linked laboratories;
+- Technical University of Munich;
+- universities and CWI in the Netherlands;
+- KU Leuven;
+- Aalto, KTH, Chalmers, DTU or Copenhagen;
+- ISTA or relevant Austrian groups.
+
+These are not necessarily easier academically. They can nevertheless be more predictable financially because the job advertisement normally identifies the project and employment terms. The disadvantages are:
+
+- most expect a master’s;
+- vacancies appear throughout the year;
+- fit is narrow;
+- there may be little freedom to change topics.
+
+---
+
+## 5. Prioritized but adaptable shortlist
+
+### 5.1 If you become a top-tier research applicant
+
+This scenario means approximately:
+
+- top 5–10% class rank or comparably strong transcript;
+- rigorous mathematics and core CS preparation;
+- 12–18 months of supervised research;
+- at least one excellent research letter;
+- a strong manuscript, workshop paper, preprint or equivalent research artifact;
+- excellent English communication.
+
+A balanced list could be:
+
+**Highest reaches**
+
+1. Stanford CS  
+2. CMU CSD or the most appropriate SCS language/ML doctorate  
+3. Berkeley EECS  
+4. UW Allen School  
+5. EPFL EDIC  
+6. ETH AI Center/CS  
+7. Cambridge funded AI project or advanced ML route  
+
+**Strong reaches/conditional matches**
+
+8. Georgia Tech CS  
+9. UMass Amherst CS  
+10. UC San Diego CSE  
+11. NUS CS  
+12. NTU CCDS  
+13. Edinburgh NLP or ML Systems route  
+14. McGill/Mila  
+15. one or two exact-fit salaried European vacancies  
+
+### 5.2 If grades are excellent but formal research remains limited
+
+This is closest to the profile currently documented.
+
+Prioritize:
+
+- Georgia Tech;
+- NTU;
+- NUS;
+- McGill or Alberta if direct-entry and funding are confirmed;
+- selected U.S. departments outside the smallest elite cohort;
+- structured UK CDTs that accept bachelor-level applicants;
+- Hong Kong programs with strong supervisor fit;
+- funded research MSc/MPhil routes;
+- full-time research-assistant or predoc positions.
+
+Apply to only a few top reaches unless a research supervisor can provide a very strong letter.
+
+### 5.3 If GPA/rank is below typical top-program levels or no research letter is available
+
+A direct PhD application would be premature. Better routes are:
+
+1. a funded research master’s or MPhil;
+2. a full-time research assistantship;
+3. a university or institute predoc;
+4. an honors thesis or extended undergraduate research year;
+5. a research-oriented position in a laboratory or industrial research team.
+
+A thesis-based master’s is preferable to an expensive coursework-only master’s unless the latter gives reliable access to research supervision.
+
+### 5.4 “Safer” should mean safer mechanism, not safe institution
+
+Relatively safer application mechanisms include:
+
+- applying to a professor-funded vacancy whose topic closely matches your previous work;
+- applying to a department where the supervisor has already discussed fit with you;
+- applying to a funded MPhil that can transfer to a PhD;
+- applying to multiple scholarship schemes in addition to the central admission;
+- including several departments with larger PhD cohorts.
+
+Simply choosing a lower-ranked university does not guarantee funded admission. Small laboratories may admit only one student or none in a particular year.
+
+---
+
+## 6. Admissions expectations and scenario thresholds
+
+### 6.1 GPA and class rank
+
+Your exact GPA and rank must be established immediately.
+
+Useful planning scenarios—not universal cutoffs—are:
+
+- **Top 5–10% or approximately 3.7–3.9/4.0 equivalent:** credible academic basis for elite applications if research is strong.
+- **Top 10–20% or approximately 3.5–3.7:** viable for many strong programs with excellent research fit and letters.
+- **Below approximately 3.5:** possible, but top departments become difficult unless there is unusually strong research or important context.
+
+Georgia Tech’s official “desirable minimum” is 3.5/4.0, but meeting it does not imply competitiveness. Chinese transcript conversion should not be performed informally unless the university requests it. Provide the original grading scale, class rank or percentile, and official English translation.
+
+### 6.2 Prerequisites
+
+Complete or document strength in:
+
+- linear algebra;
+- probability and statistics;
+- multivariable calculus;
+- optimization;
+- data structures and algorithms;
+- operating systems;
+- computer architecture;
+- databases;
+- computer networks;
+- software engineering;
+- machine learning;
+- deep learning;
+- NLP;
+- preferably information retrieval and distributed systems.
+
+For ML systems, add parallel computing and performance engineering. For mathematically oriented ML programs, add real analysis or advanced probability if available.
+
+### 6.3 Publications
+
+Publications are usually not a formal universal requirement, but they can substantially strengthen an application. Quality matters more than count.
+
+Evidence can include:
+
+- a peer-reviewed paper;
+- a workshop paper;
+- a technically credible preprint;
+- an undergraduate thesis;
+- a careful replication with new experiments;
+- a strong open-source research contribution;
+- a research report supported by a supervisor’s letter.
+
+Avoid low-quality or pay-to-publish venues. A rushed weak paper may damage credibility.
+
+### 6.4 Recommendation letters
+
+Most U.S. programs expect three letters. Georgia Tech explicitly asks for three and prefers academic recommenders.
+
+The strongest combination is:
+
+- two letters from research supervisors;
+- one from an advanced technical-course instructor or research internship mentor.
+
+A letter should describe:
+
+- what problem you worked on;
+- the independence you demonstrated;
+- technical depth;
+- persistence through failed experiments;
+- research judgment;
+- comparative standing among students;
+- communication and collaboration.
+
+A famous professor who barely knows you is usually less useful than an active researcher who supervised you closely.
+
+### 6.5 Statement of purpose or research proposal
+
+A strong statement should explain:
+
+1. the research problems that motivate you;
+2. what you actually did in previous projects;
+3. what failed and what you learned;
+4. why the target program has the right faculty and infrastructure;
+5. two or three plausible future questions;
+6. how your preparation supports those questions.
+
+Avoid generic claims such as “AI will transform the world.” Do not write separate unrelated paragraphs praising every faculty member.
+
+NTU explicitly asks for a well-crafted research proposal demonstrating research potential and motivation. For U.S. programs, a rigid multi-year proposal is usually less important than research maturity and faculty fit.
+
+### 6.6 CV and portfolio
+
+Your CV should contain:
+
+- education, GPA and rank if favorable;
+- scholarships;
+- research experience;
+- publications or manuscripts;
+- technical projects;
+- internships;
+- competitions;
+- open-source contributions;
+- selected coursework;
+- programming languages and tools;
+- English-test results;
+- links to GitHub, personal site and papers.
+
+Do not list routine Coursera certificates as if they were research achievements. They can support a skills section, but evidence of original work is more valuable.
+
+### 6.7 Coding and interviews
+
+Formal coding tests are not universal for PhD admissions, but interviews may probe:
+
+- your exact contribution to a project;
+- model and loss-function choices;
+- baseline selection;
+- data leakage;
+- statistical significance;
+- failure analysis;
+- computational complexity;
+- reproducibility;
+- future experiments;
+- faculty fit.
+
+You should be able to share your screen, explain code structure, derive core methods and discuss why results may not generalize.
+
+---
+
+## 7. English and local-language requirements
+
+### English testing
+
+Because your English-medium education and test status are unknown, assume a test may be required until an official waiver is confirmed.
+
+Recommended target levels for broad competitiveness:
+
+- TOEFL: approximately 100+ on the traditional scale where still used, preferably stronger speaking and writing;
+- IELTS: approximately 7.0–7.5 overall, with no weak section.
+
+These are planning targets, not universal requirements.
+
+Specific verified examples:
+
+- Georgia Tech lists TOEFL and IELTS requirements, including IELTS 7.5 overall and section minimums.
+- NTU asks for TOEFL or IELTS when the bachelor’s degree was not conducted in English and states that TOEFL/IELTS scores must be no more than two years old at application.
+- Stanford, CMU, UW, EPFL and other schools must be checked individually for current test formats and waiver criteria.
+
+Do not assume that taking some English-taught courses qualifies for a waiver. Many universities require the entire prior degree to have been taught in English, and some apply country- or institution-specific rules.
+
+### GRE
+
+GRE policy varies:
+
+- Georgia Tech says GRE is optional.
+- NTU says a strong GRE or GATE score can improve an application.
+- Other departments may not accept, require or consider it.
+
+Take the GRE only if:
+
+- a substantial portion of your target list considers it;
+- you can obtain a strong quantitative score without sacrificing research time;
+- it can compensate for unclear grading or limited advanced coursework.
+
+### Local languages
+
+No local language should normally be required for an English-language CS PhD at the programs discussed. Nevertheless:
+
+- French can help in Montreal or Lausanne;
+- German can help with employment in Germany, Austria and parts of Switzerland;
+- Japanese and Korean can materially broaden local industry options;
+- Mandarin or Cantonese may help with life and industry contacts in Hong Kong, although research can be English-medium.
+
+---
+
+## 8. Funding, costs and cost-effectiveness
+
+### 8.1 Funding models
+
+#### United States
+
+A strong offer normally includes:
+
+- full tuition remission;
+- annual stipend;
+- health-insurance contribution;
+- RA, TA or fellowship appointment;
+- multi-year support conditional on satisfactory progress.
+
+Georgia Tech explicitly states that PhD candidates are typically offered RA or TA funding with a stipend and tuition remission.
+
+Ask whether support is guaranteed for nine months or twelve, and whether summer funding depends on the advisor.
+
+#### Canada
+
+Funding commonly combines:
+
+- supervisor research grants;
+- teaching assistantships;
+- entrance awards;
+- provincial or federal fellowships;
+- university scholarships.
+
+International students must determine whether the funding package also covers the higher international tuition rate.
+
+#### United Kingdom
+
+Funding may come from:
+
+- departmental studentships;
+- UKRI or CDT awards;
+- research grants;
+- industry-funded projects;
+- university scholarships.
+
+Verify that an award covers:
+
+- the **international**, not merely home, tuition rate;
+- stipend for the full program;
+- research expenses;
+- any extension period.
+
+Imperial’s “more than 80% funded” statement means some students remain unfunded. A supervisor’s willingness to admit you is not necessarily a funding offer.
+
+#### Continental Europe and Switzerland
+
+Employee-status positions can be highly cost-effective because they usually provide:
+
+- a salary;
+- employee benefits;
+- pension or social-insurance contributions;
+- clearer contractual duration.
+
+Swiss pay is generally high but so are housing and daily expenses. Fellowship-funded positions may differ from employee contracts.
+
+EPFL also lists external opportunities such as Swiss Government Excellence Scholarships, which require professor backing, and CYD fellowships for cyber-defense research. [EPFL PhD Funding](https://www.epfl.ch/research/funding/individual/phd/) [27]
+
+#### Singapore and Hong Kong
+
+Funding may include:
+
+- tuition coverage;
+- monthly stipend;
+- university research scholarship;
+- national AI fellowship;
+- supervisor grant;
+- industry-linked scholarship.
+
+The [AI Singapore PhD Fellowship](https://aisingapore.org/research/phd-fellowship-programme/) [28] and [NUS AI Singapore Scholarship](https://nusgs.nus.edu.sg/scholarships/ai-singapore-scholarship) [29] should be checked for nationality, residency, bond and service-obligation rules.
+
+### 8.2 Planning-only living-cost ranges
+
+The following are broad planning estimates, not university quotations. City, housing, exchange rates and family circumstances can change them substantially.
+
+| Destination | Approximate annual living-cost planning range, excluding uncovered tuition |
+|---|---:|
+| United States | USD 20,000–45,000 |
+| Canada | CAD 18,000–32,000 |
+| UK outside London | GBP 15,000–25,000 |
+| London | GBP 22,000–35,000 |
+| Switzerland | CHF 25,000–38,000 |
+| Germany/Belgium/France | EUR 12,000–24,000 |
+| Netherlands/Scandinavia | EUR 18,000–32,000 equivalent |
+| Singapore | SGD 15,000–28,000 |
+| Hong Kong | HKD 100,000–180,000 |
+| Japan | JPY 1.2–2.4 million |
+| South Korea | KRW 12–24 million |
+
+Before accepting an offer, prepare a city-specific budget using net stipend after tax, university fees, rent, health insurance, visa costs and initial deposits.
+
+### 8.3 Funding-offer checklist
+
+Obtain written answers to:
+
+- Is tuition fully waived?
+- Are mandatory university fees covered?
+- Is health insurance included?
+- What is the gross and estimated net stipend?
+- Is funding nine or twelve months per year?
+- Is summer support guaranteed?
+- For how many years is funding guaranteed?
+- What progress conditions apply?
+- Is support tied to one supervisor’s grant?
+- How much teaching is required?
+- Are conference travel and computing expenses supported?
+- Are there citizenship restrictions?
+- Is there a scholarship bond or service obligation?
+- Can the stipend realistically cover local rent?
+
+A self-funded AI PhD is generally poor value and should be avoided unless there are exceptional personal reasons and ample independent resources.
+
+---
+
+## 9. Computing resources, datasets and research culture
+
+### Computing
+
+Do not evaluate a program only by university-wide claims about GPU clusters. Actual access may depend on:
+
+- the supervisor’s grants;
+- lab-specific hardware;
+- queueing priority;
+- cloud credits;
+- collaboration agreements;
+- whether students can use industry computing during internships;
+- export-control or data restrictions.
+
+EPFL describes EDIC as having generous resources and an extensive network of academic and industrial partners. NTU describes strong R&D infrastructure and global academic and industry partnerships. Neither statement substitutes for asking current students about queue time and practical access.
+
+Questions for prospective supervisors and students:
+
+- What GPUs are normally available to first-year students?
+- Is cluster access lab-specific?
+- How long are queues?
+- Are cloud costs covered?
+- Can students work with restricted or proprietary data?
+- Who owns code and models?
+- Are open-source releases encouraged?
+- How often do students intern?
+- Are students expected to maintain production systems for the lab?
+
+### Datasets and reproducibility
+
+A strong project portfolio should use documented, legally usable datasets. For NLP and retrieval, useful benchmark families include:
+
+- multilingual text classification;
+- semantic textual similarity;
+- BEIR-style information retrieval;
+- MTEB-style embedding evaluation;
+- question answering;
+- summarization;
+- factuality and hallucination evaluation;
+- document understanding;
+- public Chinese–English corpora.
+
+Each project should include:
+
+- data source and license;
+- preprocessing scripts;
+- train/dev/test separation;
+- random seeds;
+- environment lock file or container;
+- hyperparameter record;
+- compute budget;
+- baseline implementations;
+- ablations;
+- error analysis;
+- limitations and ethical considerations.
+
+### Research culture
+
+Program culture can vary more by laboratory than by university. Speak privately with at least two current students and ask about:
+
+- meeting frequency;
+- advisor responsiveness;
+- authorship practices;
+- pressure to publish;
+- expected work hours;
+- internship support;
+- graduation criteria;
+- funding stability;
+- student turnover;
+- advisor changes;
+- placement outcomes.
+
+---
+
+## 10. Internships, careers and immigration considerations
+
+Because citizenship is unspecified, immigration and scholarship conclusions must remain conditional.
+
+### United States
+
+Students usually study under F-1 status, with internships and post-graduation employment governed by rules such as CPT and OPT. STEM graduates may be eligible for an extension under qualifying circumstances, but rules, employer requirements and timing must be checked with official immigration and university sources.
+
+Risks include:
+
+- visa-processing uncertainty;
+- employer reluctance to sponsor long-term work visas;
+- nationality-sensitive export controls;
+- restrictions involving defense, advanced chips or controlled data;
+- advisor policies limiting internships.
+
+The industry market is strongest for candidates who combine research depth with systems capability: Python, PyTorch, distributed training, retrieval, cloud infrastructure and C++/CUDA.
+
+### Canada
+
+Canada can provide a comparatively attractive transition from study to employment, but post-graduation work and permanent-residence rules have changed frequently. Verify program eligibility, permit duration and provincial rules at the time of application.
+
+Toronto, Montreal, Vancouver, Waterloo and Edmonton offer different combinations of AI laboratories, startups and major-company research offices.
+
+### United Kingdom
+
+A shorter PhD can accelerate entry into employment, and London, Cambridge and Edinburgh have strong AI ecosystems. Post-study work arrangements must be reconfirmed for the graduation year. Long-term employment normally requires an appropriate sponsored route.
+
+### Switzerland and continental Europe
+
+Employment pathways are country-specific. A salaried doctorate can provide useful local employment history, but permanent employment may require:
+
+- a post-study job-search permit;
+- employer sponsorship;
+- local-language competence;
+- salary thresholds;
+- transition from student or researcher status.
+
+The Netherlands and Germany generally offer broad technology ecosystems; Switzerland offers high salaries but a smaller and highly selective labor market, with nationality-dependent work-permit constraints.
+
+### Singapore and Hong Kong
+
+Both offer close links between universities, government programs and technology companies. Long-term residence typically depends on employment and immigration criteria rather than simply completing a degree. Scholarship bonds or service requirements must be reviewed carefully.
+
+### Academic employment
+
+Academic careers require more than completing a PhD. Competitive faculty or research-scientist candidates usually need:
+
+- several strong papers;
+- a coherent research identity;
+- evidence of independent ideas;
+- collaboration and mentoring;
+- presentation skills;
+- often postdoctoral experience.
+
+For industry, systems-building evidence and internships can be as important as publication count.
+
+---
+
+## 11. Most important profile gaps to resolve
+
+### Priority 1: Exact academic standing
+
+Obtain:
+
+- current cumulative GPA;
+- major GPA;
+- official class rank or percentile;
+- grading-scale explanation;
+- expected graduation date;
+- list of completed and planned advanced courses.
+
+Without these, reach/match classification remains speculative.
+
+### Priority 2: Formal research experience
+
+Your current tools and self-study demonstrate initiative but not yet research capability.
+
+Target at least one sustained project lasting six to twelve months under a faculty member. The goal is to progress through:
+
+1. literature review;
+2. problem definition;
+3. baseline implementation;
+4. experimental design;
+5. failed and successful experiments;
+6. interpretation;
+7. paper-style writing.
+
+### Priority 3: Research recommendation letters
+
+Build relationships with two potential research recommenders. Begin early enough that they can observe your independence and growth.
+
+### Priority 4: Technical depth
+
+Confirm proficiency in:
+
+- Python;
+- PyTorch;
+- Hugging Face Transformers and Datasets;
+- Git and collaborative workflows;
+- Linux and shell scripting;
+- Docker;
+- experiment tracking;
+- SQL;
+- one systems language, preferably C++ or Rust;
+- distributed training concepts;
+- GPU profiling;
+- basic CUDA concepts;
+- SLURM or an equivalent cluster environment.
+
+Programming competitions are helpful evidence of algorithms and problem-solving, but they should be connected to research engineering rather than treated as a substitute for research.
+
+### Priority 5: Research writing and English
+
+Produce at least one substantial paper-style technical report in English. Take TOEFL or IELTS early enough to allow a retake.
+
+### Priority 6: Faculty-fit knowledge
+
+By application time, be able to name:
+
+- two or three research questions;
+- three to five influential recent papers for each;
+- several relevant laboratories;
+- why your past work prepares you for those groups.
+
+---
+
+## 12. Reproducible portfolio projects
+
+Complete two or three projects rather than many superficial demos.
+
+### Project A: Multilingual retrieval and RAG evaluation
+
+Build a Chinese–English retrieval system comparing:
+
+- BM25;
+- dense retrieval;
+- hybrid retrieval;
+- reranking;
+- RAG with and without retrieved evidence.
+
+Measure:
+
+- retrieval recall;
+- answer factuality;
+- citation support;
+- latency;
+- index size;
+- performance under noisy or out-of-domain queries.
+
+Add an original contribution such as adaptive retrieval, query decomposition or evidence-confidence estimation.
+
+### Project B: Efficient language-model adaptation
+
+Compare:
+
+- full fine-tuning;
+- LoRA or QLoRA;
+- distillation;
+- quantization;
+- smaller instruction-tuned models.
+
+Report:
+
+- task quality;
+- GPU memory;
+- wall-clock time;
+- tokens per second;
+- energy estimate;
+- robustness and calibration.
+
+Use multiple seeds and statistical uncertainty.
+
+### Project C: Trustworthy LLM evaluation
+
+Construct an evaluation framework for:
+
+- hallucination;
+- calibration;
+- prompt sensitivity;
+- data contamination;
+- adversarial instructions;
+- multilingual consistency.
+
+Release test cases, evaluation scripts and a model card. Avoid claiming a universal “safety score”; explain what each metric does and does not measure.
+
+### Project D: ML serving system
+
+Implement an inference server with:
+
+- dynamic batching;
+- caching;
+- quantized models;
+- request prioritization;
+- latency monitoring;
+- fault handling.
+
+Compare throughput and tail latency under controlled loads. This project can differentiate you from applicants who only train models.
+
+### Expected deliverables
+
+Each major project should have:
+
+- clean public repository;
+- reproducible setup;
+- tests;
+- documented data;
+- experiment scripts;
+- results table;
+- ablation study;
+- failure analysis;
+- paper-style PDF;
+- short demonstration;
+- issue tracker and release tag.
+
+---
+
+## 13. Preparation and application timeline
+
+## 13.1 Accelerated application in autumn 2026 for 2027 entry
+
+This is appropriate only if you are already close to graduation and already possess strong research evidence.
+
+### September 13–30, 2026
+
+- Confirm graduation eligibility for autumn 2027 enrollment.
+- Calculate GPA and obtain rank documentation.
+- Identify three recommenders.
+- Register immediately for TOEFL/IELTS if needed.
+- Build a list of no more than 12–15 programs.
+- Verify bachelor-entry eligibility and funding.
+- Draft CV and research statement.
+- Decide whether the record is strong enough to justify applying now.
+
+### October 2026
+
+- Finish a polished research manuscript or technical report.
+- Prepare transcripts and certified translations.
+- Ask recommenders formally and provide project summaries.
+- Customize statements by faculty fit.
+- Contact supervisors only where program culture makes this useful.
+- For Imperial, note that the first listed 2027-entry funding deadline was October 1, 2026; from September 13 this would be extremely rushed.
+
+### November–December 2026
+
+Current published examples include:
+
+- CMU cost-saving deadline: November 18, 2026;
+- CMU final deadline: December 9, 2026;
+- EPFL EDIC: December 1;
+- Georgia Tech: December 15;
+- UW: December 15.
+
+Submit at least several days early. Confirm that recommendation letters and official test scores have arrived.
+
+### January–April 2027
+
+- Prepare for research interviews.
+- Continue experiments; do not stop research after submitting.
+- Compare offers using the funding checklist.
+- Attend virtual visits and speak with current students.
+- Decline unfunded offers unless an independently sustainable plan exists.
+
+### May–August 2027
+
+- Complete degree and final transcript.
+- Handle visa, housing and financial documentation.
+- Read recent papers from the intended group.
+- Strengthen systems skills before enrollment.
+
+**Recommendation:** If you do not already have substantial supervised research by September 2026, this accelerated cycle is likely too early.
+
+---
+
+## 13.2 Roughly one-year preparation horizon: apply in autumn 2027
+
+### September–December 2026
+
+- Resolve GPA, rank, graduation date and English status.
+- Join an undergraduate research group.
+- Complete focused coursework in ML, NLP, probability and optimization.
+- Replicate one recent NLP or retrieval paper.
+- Learn PyTorch, Hugging Face, Linux and experiment tracking deeply.
+- Start a weekly paper-reading log.
+
+**Milestone by December:** reproducible replication repository and a supervisor who has seen your work.
+
+### January–April 2027
+
+- Convert replication into an original project.
+- Add baselines, ablations and error analysis.
+- Present results internally.
+- Begin a second project in efficient AI or ML systems.
+- Take an English test.
+- Apply for summer research internships or assistantships.
+
+**Milestone by April:** paper-style report, stable codebase and first research presentation.
+
+### May–August 2027
+
+- Work full-time on research or a technically relevant internship.
+- Attempt submission to a reputable workshop, conference or undergraduate research venue.
+- Prepare a personal research website.
+- Build a preliminary program list with at least two faculty fits per school.
+- Retake English test if necessary.
+- Request recommendation letters by August.
+
+**Milestone by August:** one substantial research artifact, two credible recommenders and a final test score.
+
+### September–December 2027
+
+- Finalize reach/match/relative-safety portfolio.
+- Verify 2028-entry rules and funding.
+- Write a core statement, then customize it.
+- Contact project-based European and UK supervisors where appropriate.
+- Apply for external scholarships in parallel.
+- Track each deadline, time zone, transcript rule and recommendation status.
+
+---
+
+## 13.3 Roughly two-year preparation horizon: apply in autumn 2028
+
+The two-year route is preferable if formal research is currently minimal.
+
+### September 2026–April 2027: foundations
+
+- Complete mathematical and ML prerequisites.
+- Join a research group.
+- Replicate a strong paper.
+- Learn rigorous experimental practice.
+- Improve technical English.
+- Select one primary direction and one adjacent direction.
+
+### May–December 2027: first original research cycle
+
+- Conduct a full-time summer research project.
+- Produce a manuscript or preprint.
+- Present at a university seminar.
+- Submit to a reputable venue where the work is ready.
+- Make a meaningful open-source contribution.
+- Learn Docker, distributed training and profiling.
+
+### January–August 2028: second research cycle
+
+- Lead a more independent project.
+- Pursue an internship in an academic lab or genuine R&D team.
+- Seek collaboration beyond your home group if useful.
+- Aim for a stronger paper submission.
+- Mentor a junior student or document team leadership.
+- Take final English tests.
+- Investigate exact supervisors and funding.
+
+### September–December 2028: applications
+
+- Apply to a balanced international portfolio.
+- Include direct PhDs, salaried vacancies and funded research-master’s contingencies.
+- Tailor each statement to current faculty work.
+- Prepare a short research talk and technical interview answers.
+- Keep research active until decisions are complete.
+
+**Ideal milestone by application:** two substantial research experiences, at least one paper-quality output, two strong research letters and clear specialization.
+
+---
+
+## 14. Supervisor outreach strategy
+
+Outreach is not equally useful everywhere.
+
+### Centralized U.S. programs
+
+For programs such as CMU CSD, prior advisor agreement is not expected. Send email only if:
+
+- the faculty member invites prospective-student contact;
+- you have a specific intellectual question;
+- your project closely relates to recent work;
+- the email is concise and individualized.
+
+Do not ask merely, “Will you admit me?”
+
+### UK and European project-based programs
+
+Contact is more important because admission may be tied to a supervisor or vacancy.
+
+A good email should contain:
+
+- one-sentence introduction;
+- degree and institution;
+- precise research interest;
+- one relevant project and result;
+- connection to one or two of the professor’s papers;
+- CV and research report link;
+- a direct question about openings or fit.
+
+### Singapore, Hong Kong, Japan and Korea
+
+Supervisor contact can be useful or required, depending on the program. Verify whether formal supervisor consent is needed before applying.
+
+---
+
+## 15. Contingency plans
+
+If direct PhD admission is unsuccessful, the strongest alternatives are:
+
+### Full-time research assistant or predoc
+
+Best when it provides:
+
+- close faculty supervision;
+- possibility of coauthorship;
+- regular research meetings;
+- access to computing;
+- a strong recommendation letter;
+- evidence of independent contribution.
+
+### Funded thesis-based master’s
+
+Prefer programs with:
+
+- explicit thesis requirement;
+- supervisor commitment;
+- stipend or tuition waiver;
+- possibility of PhD transfer;
+- strong publication culture.
+
+Avoid taking on major debt for a generic taught AI master’s solely to improve PhD admission.
+
+### Research-oriented industry role
+
+A role can help if it involves:
+
+- model training and evaluation;
+- retrieval or ranking;
+- ML infrastructure;
+- publications or open-source work;
+- collaboration with research scientists.
+
+Routine application development with little experimental research may not materially strengthen a PhD application.
+
+### Additional undergraduate research period
+
+If administratively possible, an honors thesis or extended final-year project may be more cost-effective than an unfunded foreign master’s.
+
+---
+
+## Final recommendation
+
+The most suitable overall strategy is to build a profile around **applied NLP plus one differentiating adjacent strength**:
+
+- NLP + information retrieval;
+- NLP + efficient inference;
+- NLP + ML systems;
+- NLP + trustworthy evaluation;
+- NLP + multimodal learning.
+
+If you establish top academic standing, complete at least one serious research project and obtain two strong research letters, direct-entry applications to U.S., Singaporean and selected Swiss programs become credible. Stanford, CMU, Berkeley, UW and EPFL should remain reaches regardless of profile strength. Georgia Tech, UMass, NUS, NTU, McGill, Alberta and selected UK or European project routes can form the middle of a balanced list, subject to supervisor fit and current funding.
+
+If substantial supervised research is not already present, applying immediately in autumn 2026 would be unnecessarily rushed. The better default is an autumn 2027 application after one intensive research year; autumn 2028 is stronger still if it allows a second research cycle, paper-quality output and significantly better recommendations.
+
+The eventual decision should be based not on university name alone but on four conditions:
+
+1. at least two suitable active supervisors;
+2. convincing evidence that students have practical access to computing;
+3. written full or strong funding;
+4. a laboratory culture in which you can build, experiment, publish and intern.
+
+### Sources
+
+[1] Stanford Computer Science, “PhD Admissions”: https://www.cs.stanford.edu/admissions/phd-admissions  
+[2] Carnegie Mellon University Computer Science Department, “Doctoral Admissions”: https://csd.cmu.edu/academics/doctoral/admissions  
+[3] Georgia Institute of Technology College of Computing, “Ph.D. CS Admissions Requirements”: https://www.cc.gatech.edu/phd-cs-admissions-requirements  
+[4] McGill Graduate and Postdoctoral Studies, “Doctoral Student Funding Opportunities”: https://www.mcgill.ca/gps/funding/opportunities/phd  
+[5] McGill Graduate and Postdoctoral Studies, “International Student & Postdoctoral Funding”: https://www.mcgill.ca/gps/funding/intl  
+[6] Imperial College London Department of Computing, “PhD”: https://www.imperial.ac.uk/computing/prospective-students/courses/phd/  
+[7] University of Cambridge, “Machine Learning and Artificial Intelligence”: https://www.maths.cam.ac.uk/postgrad/phd-machine-learning-and-ai  
+[8] EPFL, “EDIC—Computer and Communication Sciences”: https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/  
+[9] ETH Zurich Department of Computer Science, “Doctoral Studies”: https://inf.ethz.ch/doctorate.html  
+[10] ETH Zurich, “Direct Doctorate Programme”: https://ethz.ch/applications/teaching/en/applications/eapply/msc/mscdirectdoctorate.html  
+[11] Nanyang Technological University College of Computing and Data Science, “Doctor of Philosophy”: https://www.ntu.edu.sg/education/graduate-programme/ccds-phd-computing-datascience  
+[12] National University of Singapore Computing, “PhD in Computer Science”: https://www.comp.nus.edu.sg/programmes/pg/phdcs/  
+[13] Stanford Natural Language Processing Group, “Prospective Students”: https://nlp.stanford.edu/prospective/  
+[14] UC Berkeley EECS, “Graduate Research Program Admissions”: https://eecs.berkeley.edu/academics/graduate/research-programs/admissions/  
+[15] UC Berkeley EECS, “Ph.D. Student Guide”: https://eecs.berkeley.edu/book/phd/  
+[16] University of Washington Paul G. Allen School, “Ph.D. Admissions”: https://www.cs.washington.edu/academics/graduate/phd-program/phd-admissions/  
+[17] ETH AI Center, “Doctoral Fellowships”: https://ai.ethz.ch/research/phd-and-postdoc-programs/phd-fellowships.html  
+[18] National University of Singapore Machine Learning Group, “PhD Program in CS at NUS”: https://ml.comp.nus.edu.sg/openings.html  
+[19] Nanyang Technological University, “Postgraduate Scholarships”: https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/  
+[20] McGill School of Computer Science, “Ph.D. Admission”: https://www.cs.mcgill.ca/graduate/future/phdadmission/  
+[21] University of Alberta Computing Science, “Ph.D. Program”: https://www.ualberta.ca/en/computing-science/graduate-studies/programs-and-admissions/phd-program/index.html  
+[22] University of Alberta Computing Science, “Financial Support and Awards”: https://www.ualberta.ca/en/computing-science/graduate-studies/financial-support-and-awards/index.html  
+[23] University of Edinburgh, “CDT in Machine Learning Systems”: https://informatics.ed.ac.uk/cdt-in-machine-learning-systems  
+[24] University of Edinburgh, “Responsible NLP Centre for Doctoral Training Studentships 2026”: https://www.law.ed.ac.uk/news-events/news/applications-now-open-responsible-nlp-centre-doctoral-training-studentships-2026  
+[25] University College London, “UKRI Centre for Doctoral Training in Foundational Artificial Intelligence”: https://www.ucl.ac.uk/engineering/foundational-ai-cdt  
+[26] University of Oxford, “Statistics and Machine Learning EPSRC CDT”: https://www.ox.ac.uk/admissions/graduate/courses/cdt-statistics-and-machine-learning  
+[27] EPFL, “Fund Your PhD at EPFL”: https://www.epfl.ch/research/funding/individual/phd/  
+[28] AI Singapore, “PhD Fellowship Programme”: https://aisingapore.org/research/phd-fellowship-programme/  
+[29] NUS Graduate School, “AI Singapore Scholarship”: https://nusgs.nus.edu.sg/scholarships/ai-singapore-scholarship

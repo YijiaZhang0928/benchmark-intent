@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T5-P1-01",
+      "score": 10,
+      "evidence_span": "Build only capabilities that create differentiation:\n\n- Learning-path and skill-graph logic.\n- Policy-aware tutoring orchestration.",
+      "rationale": "The report explicitly makes differentiation the priority for selecting software capabilities to build, naming concrete technical capabilities rather than only educational outcomes."
+    },
+    {
+      "criterion_id": "T5-P1-02",
+      "score": 10,
+      "evidence_span": "Evaluate at least two providers on:\n\n- Pedagogical quality.\n- Factual accuracy.\n- Citation and instruction following.\n- Safety.\n- Prompt-injection resistance.",
+      "rationale": "Comparative model evaluation is an identifiable evidence class for selecting the AI technology underpinning the differentiated tutoring product."
+    },
+    {
+      "criterion_id": "T5-P1-03",
+      "score": 8,
+      "evidence_span": "**Policy-aware tutoring**, including assignment-specific permitted-use settings.",
+      "rationale": "The named tutoring option has a concrete technical differentiator: assignment-specific policy settings. However, this is a proposed capability, not an evidenced implementation or demonstrated performance result."
+    },
+    {
+      "criterion_id": "T5-P1-04",
+      "score": 10,
+      "evidence_span": "| MOOCs and course marketplaces | Coursera, edX, Udacity, DataCamp, LinkedIn Learning | Large catalogs, established brands, certificates | Often generic; learner completion, discipline specificity, and campus-policy integration may vary |",
+      "rationale": "The report names competing platforms and identifies concrete content-offering characteristics—large catalogs and certificates—while explicitly discussing their generic positioning."
+    },
+    {
+      "criterion_id": "T5-P1-05",
+      "score": 4,
+      "evidence_span": "**Generic AI literacy is becoming commoditized.** Differentiation must come from discipline specificity, evidence of mastery, policy alignment, accessibility, and institutional trust.",
+      "rationale": "The report contrasts generic literacy with differentiated education on commoditization and defensibility, but this span does not explicitly compare a technical software route against a content/marketing route. The differentiation could also be delivered through content or services."
+    },
+    {
+      "criterion_id": "T5-P1-06",
+      "score": 10,
+      "evidence_span": "Build only capabilities that create differentiation:\n\n- Learning-path and skill-graph logic.\n- Policy-aware tutoring orchestration.",
+      "rationale": "The report recommends named software capabilities and explicitly gives their contribution to differentiation as the reason to build them."
+    },
+    {
+      "criterion_id": "T5-P1-07",
+      "score": 10,
+      "evidence_span": "| Broad AI literacy | Strong evidence that students see AI skills as essential | Unknown; likely price pressure from free content | Low unless discipline-specific | Low to medium | Moderate | Use as foundation, not headline |",
+      "rationale": "Broad AI literacy is acknowledged as viable through strong demand evidence but downgraded to a supporting role because free-content pressure and low differentiation weaken it as the main offering."
+    },
+    {
+      "criterion_id": "T5-P1-08",
+      "score": 10,
+      "evidence_span": "Build a simple concierge version of the tutor using curated content.",
+      "rationale": "This is an executable development action with a concrete object and grounding material, implementing the proposed curated-content tutoring capability."
+    },
+    {
+      "criterion_id": "T5-P1-09",
+      "score": 10,
+      "evidence_span": "Fewer than 3% materially unsupported tutor answers on a curated evaluation set.",
+      "rationale": "The report supplies a measurable quality threshold specifically for the AI tutor, rather than merely recommending accuracy."
+    },
+    {
+      "criterion_id": "T5-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not identify a concrete condition under which a generic education-content or marketing offering should replace the technically differentiated product as the better choice."
+    },
+    {
+      "criterion_id": "T5-P1-11",
+      "score": 4,
+      "evidence_span": "The strongest current evidence does not support building a generic AI course or an unrestricted coursework assistant. It supports a **structured, responsible, discipline-specific learning product that connects AI capability to real projects and employability while respecting academic rules**.",
+      "rationale": "The report asserts an evidence-to-recommendation connection, but the visible chain supports a differentiated educational proposition generally. It does not identify a specific cited fact that explicitly leads to choosing a technical software capability over a generic content offering."
+    }
+  ]
+}

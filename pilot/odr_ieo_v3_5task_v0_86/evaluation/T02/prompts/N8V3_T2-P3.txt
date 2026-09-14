@@ -1,0 +1,1351 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare academically legitimate overseas exchange or short-term visiting programs that can be completed within one semester and can satisfy ordinary credit and academic requirements.
+
+Compare options in the United States, Europe, Japan and Singapore. Cover curriculum and teaching models, credit transfer, academic environment, living costs, visa and language requirements, scholarships or financial aid, research and networking value, cross-cultural value and practical adaptation issues.
+
+Produce a prioritized shortlist and preparation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T2-P3-01",
+    "criterion": "The report states deeper engagement with fewer places/communities as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate deeper engagement with fewer places/communities.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-03",
+    "criterion": "The report provides concrete evidence about how an option supports deeper engagement with fewer places/communities.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-04",
+    "criterion": "The report provides concrete evidence about how an option reflects maximizing destination count.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-05",
+    "criterion": "The report directly compares deeper engagement with fewer places/communities with maximizing destination count.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-06",
+    "criterion": "At least one recommended option is selected because it supports deeper engagement with fewer places/communities.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors maximizing destination count.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-08",
+    "criterion": "The plan contains one executable step that implements deeper engagement with fewer places/communities.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for deeper engagement with fewer places/communities.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-10",
+    "criterion": "The report states when maximizing destination count would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P3-11",
+    "criterion": "One visible chain links deeper engagement with fewer places/communities to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label N8V3):
+# Semester-Length Overseas Study Options for a China-Based Graduate Student in New Media and Public-Opinion Analysis
+
+## Executive conclusion
+
+As of **13 September 2026**, the most defensible options are not all equivalent. They fall into three categories:
+
+1. **Partner exchanges requiring a bilateral agreement and home-university nomination**  
+   These generally offer the best chance of tuition waiver, institutional support, visa sponsorship, and ordinary credit recognition. The strongest verified graduate-level choices are:
+   - **Nanyang Technological University GEM Trailblazer, Singapore**
+   - **Waseda University university-wide exchange, Japan**
+   - **University of Tokyo USTEP Type G, Japan**
+
+2. **Directly accessible, fee-paying visiting/free-mover study**  
+   These remain possible even without a partner agreement, but course access, tuition, housing, and credit recognition are less predictable:
+   - **Aarhus University Free Mover, Denmark**
+   - **Utrecht University Visiting Student/Free Mover, Netherlands**
+   - **Berkeley Global Access, United States**
+
+3. **Visiting-research or non-degree research status**  
+   These can be academically valuable but should not be treated as substitutes for ordinary coursework unless the Chinese home university agrees in writing to award research, practicum, thesis, or independent-study credit:
+   - **NTU Visiting Research Student**
+   - **University of Tokyo Graduate International Research Student**
+   - **University of Tsukuba Non-degree Research Student**, which explicitly carries **no credit** and therefore does not meet the ordinary credit-bearing requirement.
+
+The best overall option is likely **NTU GEM Trailblazer** if the home university has an active NTU agreement and graduate nomination quota. **Waseda** is arguably the best thematic partner option for media, political communication, public opinion, and interdisciplinary study, subject to school-specific access. **Aarhus** is the strongest documented independent European route because it has clear graduate-background and ECTS rules. **Berkeley Global Access** is the clearest verified direct US semester route, but it is likely to be expensive and has important graduate-course restrictions, including an explicit restriction on graduate Data Science enrollment.
+
+No option can be guaranteed to satisfy a Chinese graduate degree until the home university approves, in advance:
+
+- The host status and institutional route;
+- Each course or research activity;
+- Graduate academic level;
+- Workload and credit conversion;
+- Assessment and grading;
+- Degree-category substitution;
+- Minimum passing grade;
+- Transcript or research-evaluation documentation;
+- Any residency rule requiring credits to be earned at the Chinese university.
+
+## Scope, evidence standard, and major uncertainties
+
+The programs below were screened for the following:
+
+- Operation through an official university page;
+- Semester-length or potentially semester-length participation;
+- Graduate eligibility or plausible graduate access;
+- Credit-bearing coursework, or clearly identified research-only status;
+- Relevance to communication, new media, journalism, computational social science, public opinion, platform studies, data analytics, or related fields;
+- A host transcript, host credits, ECTS, local academic units, or another academically assessable record.
+
+All principal hosts are established degree-awarding universities rather than commercial study-abroad vendors. Nevertheless, formal recognition should still be checked through the relevant national education or accreditation register and the Chinese home university. Academic legitimacy of the university does not automatically make every non-degree route credit-bearing.
+
+Important variables remain unspecified:
+
+- Home university and department;
+- Existing bilateral agreements;
+- Current graduate year and degree regulations;
+- Passport or citizenship;
+- Intended semester;
+- Preferred teaching language;
+- IELTS, TOEFL, JLPT, or other evidence;
+- Budget;
+- Whether the student needs taught-course credit, research credit, or both.
+
+Consequently:
+
+- Partner-exchange eligibility cannot be assumed.
+- Visa instructions cannot be individualized.
+- English-taught course availability must be checked for the exact semester.
+- Costs shown in currencies should not be converted into RMB without using the rate at the time of budgeting.
+- “Transferable” host credits are not the same as “accepted” home-degree credits.
+- Undated official pages should be reconfirmed before application even where they were live during this research.
+
+## Comparison table
+
+**Confidence scale**
+
+- **High:** An official page verifies a current route, graduate eligibility, semester feasibility, and a credit or home-degree orientation.
+- **Medium:** The official route exists, but important questions such as course level, fees, transcript, or semester offerings remain unresolved.
+- **Low:** An official lead exists, but it was not sufficiently documented to support an application decision.
+- **Not suitable for ordinary coursework:** Research-only, explicitly non-credit, undergraduate-only, or otherwise mismatched.
+
+| Region and host | Route and access | Duration/load | Graduate-level and subject fit | Credit and assessment prospects | Costs and support | Status/confidence |
+|---|---|---|---|---|---|---|
+| **United States — UC Berkeley** | Berkeley Global Access; direct visiting-student route rather than necessarily partner-nominated | One semester or year; **12–18 Berkeley units per semester** | Thousands of courses; social sciences, statistics, computing, humanities and related areas. Some graduate courses require faculty/department approval. Graduate Data Science, Business, Economics, Physics, Law and other areas restrict visiting enrollment | Credit-bearing courses; Berkeley says units may be transferred home, but home recognition is separate. Exact transcript issuer, grading and assessment must be confirmed | Current tuition, insurance, housing and total cost were not verified. Expect a premium fee-paying route and high Bay Area living costs | **High for route; medium for field-specific graduate access** |
+| **United States — American University** | Official visiting-international-student lead; nomination/direct status not sufficiently verified | Potential semester route; exact load not verified | Strong potential thematic fit for political communication and public opinion, but visiting access to relevant graduate courses is unverified | Do not rely on transfer until course access, transcript and graduate status are confirmed | Current charges and aid not verified | **Low/conditional candidate** |
+| **United States — Columbia SPS** | Visiting-student route, apparently direct/fee-paying | Semester feasibility likely but exact current calendar/load was not verified | New York media environment is attractive, but SPS status does not automatically provide Columbia Journalism School or graduate departmental access | Confirm whether courses are graduate-level, transcript-bearing and acceptable to the home degree | Official tuition page exists, but current amount was not established in the research; likely high | **Medium as a route; low for Journalism access** |
+| **United States — Northwestern SPS** | Non-degree Special Student route | Semester possibility requires confirmation | Potential communication relevance, but international graduate eligibility and School of Communication access were not established | Transcript, course level and transfer status require written confirmation | Graduate housing and meal plans exist and are billed separately; current total cost not verified | **Low/conditional candidate** |
+| **United States — Harvard GSAS / Johns Hopkins VISP** | Official visiting routes, but sponsorship and status are program-specific | May support a semester or research visit; exact route must be verified | Excellent research environment, but course-credit access cannot be inferred from visiting status | Some visiting statuses may be research-only or non-degree without ordinary coursework | Likely expensive; current fee and funding details not verified | **Low unless a department confirms graded coursework** |
+| **Europe — Aarhus University** | **Direct Free Mover/Non-Exchange** application | EU students: **5–30 ECTS**; non-EU/EEA students: **30 ECTS** for the study/work permit, with at least 20 ECTS in one department | Relevant prior study is required. One campus, one faculty and no more than two departments; this can constrain interdisciplinary combinations | Taught courses can provide ECTS, subject to admission, available space, assessment and transcript. Course-specific teaching and grading must be checked | Fee-paying; invoice follows acceptance, but amount was not captured. No admission or course-place guarantee | **High for route; medium for exact media/CSS curriculum** |
+| **Europe — Utrecht University** | **Direct visiting/free-mover route**, including students whose universities lack an exchange agreement | One semester or year as part of the home degree | Promising for media, culture and social science, but faculty permission and graduate-course access must be confirmed | Strong conceptual transfer fit because the route is explicitly part of the home degree, but ECTS, transcript and grading details were not captured | Fees may apply. Free movers cannot use the university’s Reserved Accommodation Programme and must find housing independently | **High for route; medium for graduate/course details** |
+| **Europe — Erasmus+ partner mobility** | Requires institutional project/agreement, nomination and host acceptance; not a unilateral direct application | Usually one semester under the relevant institutional learning agreement | Depends entirely on the selected partner and course catalog | Usually the strongest European transfer structure because learning agreements and institutional recognition are built into mobility administration | Often host-tuition-waived; grants depend on the institutional project. China is a non-associated third country, so access depends on participating institutions and funding arrangements | **High as a framework; eligibility unknown** |
+| **Europe — University of Amsterdam / St. Gallen** | Official free-mover pages exist | Potential semester study | Both are plausible academically, but graduate access, current subject availability and fees were not verified | Do not rank above Aarhus or Utrecht without a current faculty decision and transcript/credit confirmation | Unknown | **Low/secondary leads** |
+| **Japan — Waseda University** | University-wide exchange; home-university agreement and nomination required | Spring or fall semester; AY2027 materials were live | Separate English- and Japanese-based graduate-school requirements. Potentially strong fit through political science, commerce, media and interdisciplinary areas. Some schools require prior supervisor consent | Credit-bearing exchange coursework is possible, but registration and sufficient credits are not guaranteed. Course capacity, prerequisites and semester offerings control | Exchange tuition arrangements depend on the agreement. Graduate School of Commerce asks for proof of more than **¥720,000 per semester** for living support, but this is a financial-capacity threshold rather than a cost quotation | **High** |
+| **Japan — University of Tokyo USTEP Type G** | Graduate exchange; **nomination required** | Semester timing available for spring/autumn admission; exact school rules vary | Status may be **Special Auditor** or **Special Research Student**. Graduate-school-specific qualifications and course access apply | Select Special Auditor status if ordinary coursework credit is needed. Research-student status may not produce ordinary course credits | UTokyo assists accepted students with the Certificate of Eligibility and gives housing guidance. Tuition waiver, scholarship and exact costs depend on the agreement and current fact sheet | **High for partner route; medium for credit until status is fixed** |
+| **Japan — UTokyo Information Science and Technology** | Direct, supervisor-dependent Graduate International Research Student | “Usually for one year”; one-semester feasibility was not established | Strong research fit for information science, technology and computational work | Non-degree supervised research; ordinary course credit and graded transcript were not established | Examination **¥9,800**, admission **¥84,600**, tuition **¥173,400 per term** as of April 2026 | **Medium as research route; not a primary one-semester coursework option** |
+| **Japan — University of Tsukuba research student** | Direct, adviser-consent route | Entry cycles in April, October and December | Potentially relevant supervised research | Explicitly **cannot earn credits**; unsuitable for ordinary credit-bearing coursework | Application fee **¥9,800**; other current costs not established | **Exclude for ordinary coursework** |
+| **Singapore — NTU GEM Trailblazer** | Partner exchange; active agreement, home nomination and NTU acceptance required | One or two semesters. Semester 1: August–December; Semester 2: January–May | Accepts postgraduate students. Direct-master’s applicants seeking postgraduate courses should have completed at least seven semesters. Potential fit through communication, information, social science and data-related offerings, but only courses opened to exchange students count | Designed to provide credit toward the home degree. Applicant lists at least ten preferred courses, preapproved by the home university, but enrollment is not guaranteed | NTU provides no general exchange scholarship or financial aid. Exchange tuition treatment depends on the agreement. DUO-Singapore is invitation-only and normally relevant to paired European–Singapore mobility, not a standard China route | **High; strongest Singapore option** |
+| **Singapore — NTU Visiting Research Student** | Direct/non-exchange research with NTU faculty and home-university endorsement | Up to two years; a semester appears possible but minimum duration must be confirmed. Full-time: **40 hours/week** | Strong for supervised research, labs, facilities and thesis-related work | The research must form part of the home degree, but the page does not promise academic units, grades or a transcript. Require an assessment plan and home research-credit approval | Registration **S$153**; non-lab fee **S$1,885 per six months** or lab fee **S$2,292 per six months**, not prorated; miscellaneous fees extra; no campus housing | **High as research route; medium-low for credit** |
+| **Singapore — NUS Non-Graduating/Incoming** | Official non-graduating and incoming-exchange frameworks exist; direct versus partner and graduate eligibility must be confirmed | Potential semester | Very promising subject fit through communications/new media, computing, data and social science, but no sufficiently verified graduate route was established | NUS issues official transcripts, but admission to graduate-level non-graduating coursework and applicable workload require confirmation | Fees, housing and aid not verified | **Medium-priority verification target** |
+| **Singapore — SMU Visiting Graduate Student** | Official graduate visiting-program page exists; details were not sufficiently verified | Potential research/graduate visit | Potential fit for computational social science, information systems, economics and public-policy research | Must establish whether the route awards graded coursework, research credit or only visiting status | Unknown | **Low until current graduate terms are obtained** |
+| **Singapore — SMU ISEP** | Partner exchange and nomination | One or two 16-week terms | Official page requires continuing **undergraduate** status and offers only undergraduate courses to exchange/visiting students | 2–4 SMU credits; one SMU credit equals 39 contact hours; assessed through participation, projects, presentations, tests and examinations | No SMU tuition under exchange agreement; mandatory fee **S$296.50/term**; estimated living cost **S$2,000–S$3,500/month** | **Exclude as a graduate route unless SMU grants a documented exception** |
+| **Singapore — SUTD inbound exchange** | Official inbound-exchange route | Potential semester | Attractive for technology and design, but graduate eligibility and course access were not verified | Credit and transcript details require confirmation | Unknown | **Low/secondary lead** |
+
+## Priority shortlist
+
+### Ranking criteria
+
+The shortlist gives the greatest weight to:
+
+1. **Credit certainty and transcriptability — 30%**
+2. **Graduate-level academic fit — 25%**
+3. **Documented semester feasibility — 15%**
+4. **Affordability or tuition-waiver potential — 15%**
+5. **Strength and recency of official evidence — 10%**
+6. **Housing, visa, and practical feasibility — 5%**
+
+The ranking is conditional: a highly ranked partner exchange becomes unavailable if there is no active agreement or nomination slot.
+
+### 1. NTU GEM Trailblazer — best overall if a partner agreement exists
+
+The [NTU GEM Trailblazer semester exchange](https://www.ntu.edu.sg/education/student-exchanges/exchange-programmes/inbound-programmes) [22] is the most clearly documented Singapore option for a current graduate student.
+
+Strengths:
+
+- Explicit postgraduate eligibility;
+- One- or two-semester structure;
+- Intended to provide home-degree credit;
+- Clear semester and application calendar;
+- English-language environment;
+- Strong potential fit in communication, information, computational social science and data-related fields;
+- Home approval of proposed courses is built into the application.
+
+Conditions and risks:
+
+- The Chinese university must have an active formal agreement and nominate the student.
+- Minimum CGPA is **3.3/5 or equivalent**.
+- At least two home-university semesters must be completed.
+- Students seeking direct-master’s/postgraduate courses should have completed at least seven semesters of prior university study.
+- The application must identify at least ten possible courses, but these are preferences rather than guaranteed registrations.
+- NTU states that it does not provide general scholarships or financial aid to exchange students.
+
+For **Spring 2027**, the published pattern is:
+
+- Home nomination: **1–15 September**
+- Student application: **1–30 September**
+- Semester: **January–May**
+
+As of 13 September 2026, a Spring 2027 nomination would therefore be urgent and potentially only two days from the usual nomination deadline.
+
+### 2. Waseda University exchange — best thematic Japan option
+
+The [Waseda university-wide exchange application page](https://www.waseda.jp/inst/cie/en/exchange/application) [17] had live **AY2027 Spring and Fall** materials as of the research date. It offers separate English- and Japanese-based graduate-school requirement lists.
+
+Strengths:
+
+- Graduate-school exchange is clearly contemplated.
+- English-based and Japanese-based pathways are distinguished.
+- Strong potential alignment with political communication, public opinion, journalism, digital culture, commerce, and interdisciplinary technology studies.
+- A partner exchange may provide host-tuition waiver and better home recognition.
+- Some graduate schools support research-supervisor engagement.
+
+Risks:
+
+- Existing agreement and nomination are required.
+- Every school sets its own GPA and language requirements.
+- Some graduate schools require supervisor permission before application.
+- Waseda explicitly says that capacity restrictions can prevent registration and that it cannot guarantee enough credits to satisfy the home university.
+- Course lists referred to on the page were based on AY2025 information and subject to later change.
+- Japanese-taught Graduate School of Commerce courses require **JLPT N1 or equivalent**.
+
+The [Waseda Graduate School of Commerce exchange instructions](https://www.waseda.jp/fcom/gsc/en/students/abroad) [18] also illustrate the documentation and visa process:
+
+- Nomination precedes access to the application forms.
+- Official transcript with grading-system explanation;
+- Passport;
+- Language evidence;
+- Certificate of Eligibility information;
+- Proof of funds exceeding **¥720,000 for one semester**;
+- Waseda submits the Certificate of Eligibility application and the student later applies for a Student visa at the relevant Japanese embassy or consulate.
+
+### 3. University of Tokyo USTEP Type G — best academic/research prestige with status caveat
+
+The [University of Tokyo USTEP Type G](https://www.u-tokyo.ac.jp/en/academics/ustep-type-g.html) [15] is specifically designed for graduate exchange students.
+
+Strengths:
+
+- Explicit graduate route;
+- Nomination and institutional administration support;
+- UTokyo assists with Certificate of Eligibility procedures;
+- Housing guidance and pre-arrival orientation are provided;
+- Strong potential access to information studies, social science, statistics, technology and interdisciplinary research.
+
+Critical distinction:
+
+- **Special Auditor:** the preferable status for taught, assessed coursework and possible ordinary credit.
+- **Special Research Student:** preferable for supervised research, but ordinary course credit cannot be assumed.
+
+The detailed credit load, scholarship rules, tuition waiver, transcript arrangements, English/Japanese thresholds and graduate-school restrictions were not visible in the material captured from the official page. These must be obtained from the current USTEP fact sheet and intended graduate school before nomination.
+
+### 4. Aarhus University Free Mover — best documented direct European option
+
+The [Aarhus Free Mover route](https://international.au.dk/education/admissions/freemoverstudents/) [12] is particularly useful where no bilateral agreement exists.
+
+Strengths:
+
+- Direct non-exchange application;
+- Explicit graduate academic-background requirement;
+- Clear ECTS rules;
+- A full **30 ECTS** semester for non-EU/EEA students aligns well with an ordinary European full-time semester;
+- Official transcript and course assessment are likely to be more suitable for home recognition than a research-only visit, although the transcript details must still be confirmed.
+
+Constraints:
+
+- Courses may be taken at only one location and within one faculty.
+- No more than two departments may be used.
+- At least 20 ECTS must be concentrated in one department for non-EU/EEA students.
+- Previous study must be academically relevant.
+- Admission and course enrollment depend on available space.
+- The university may confirm course eligibility only shortly before the semester begins.
+- Tuition is invoiced after acceptance, but the amount was not captured and must be obtained from the relevant faculty.
+- The Faculty of Health does not admit free movers.
+
+For this subject area, the principal problem is interdisciplinary design: mixing media studies, political science, data analytics and computing may cross faculty boundaries. A coherent 30-ECTS package should therefore be planned inside a single faculty wherever possible.
+
+### 5. Utrecht University Visiting Student — most flexible direct European route, but major housing risk
+
+The [Utrecht visiting/free-mover route](https://www.uu.nl/en/education/exchange-students/application/visiting-students) [11] explicitly permits individual study for one semester or a year as part of a degree at the home university, including possible applications where no exchange agreement exists.
+
+Strengths:
+
+- Direct application may be possible.
+- The program’s stated connection to the home degree is favorable for credit recognition.
+- Utrecht offers a strong academic environment for media, culture, social science and interdisciplinary humanities.
+
+Risks:
+
+- Acceptance is faculty-dependent.
+- Graduate-level access, ECTS load, tuition and exact course availability were not established.
+- Free movers cannot use Utrecht’s Reserved Accommodation Programme.
+- The university warns of very high housing demand, so admission should not be treated as practically viable until lawful accommodation is secured.
+
+Utrecht is an excellent academic candidate, but Aarhus currently has clearer study-load evidence.
+
+### 6. Berkeley Global Access — best verified direct US route
+
+[Berkeley Global Access](https://extension.berkeley.edu/international/academic/berkeley-global-access/visiting-student/) [1] is the strongest documented US direct option.
+
+Verified features:
+
+- One semester or one academic year;
+- **12–18 credit-bearing Berkeley units** per semester;
+- Courses alongside Berkeley students;
+- Research opportunities;
+- Potential access to some graduate courses with faculty and department approval;
+- Berkeley’s own statement that units may be transferred back to the home university;
+- Access to a large campus community and approximately 1,200 student organizations.
+
+Important limitations:
+
+- Graduate visiting enrollment is barred in Data Science, Business, Economics, Physics, Law and the College of Environmental Design, and the exclusions are stated to be non-exhaustive.
+- Prerequisites and space restrictions apply.
+- Access to Journalism, Information, Political Science, Sociology, Statistics or other intended courses must be confirmed individually.
+- The exact transcript issuer and transcript wording should be checked: the home university may distinguish a UC Berkeley campus transcript from a UC Berkeley Extension record.
+- Tuition, mandatory health insurance, housing and total cost were not verified in the gathered material.
+- Berkeley and the San Francisco Bay Area should be treated as a high-cost destination until a detailed budget proves otherwise.
+
+### 7. NUS Non-Graduating Study — high-potential verification target, not yet a firm recommendation
+
+NUS has official [non-graduating coursework](https://nus.edu.sg/registrar/prospective-students/non-graduating/coursework) [24], [incoming exchange](https://nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers) [25], and [official transcript](https://www.nus.edu.sg/registrar/student-records/transcripts/official-transcripts) [26] frameworks.
+
+NUS is potentially one of the strongest academic matches because of its communication/new-media, computing, data, sociology, political science and interdisciplinary offerings. However, the evidence gathered did not establish:
+
+- Whether an independently applying China-based graduate student is eligible;
+- Whether graduate-level courses are open to non-graduating visitors;
+- Whether nomination is required;
+- The applicable academic-unit load;
+- Current fees;
+- Housing eligibility;
+- The exact Student’s Pass process.
+
+NUS should be contacted early, but it should not replace a verified NTU or Waseda option until these points are resolved.
+
+## Best-value choices by region
+
+### United States
+
+**Best direct value relative to academic opportunity:** Berkeley Global Access, but only if the final course list contains enough approved graduate or advanced courses to justify the cost.
+
+**Potentially cheapest US model:** A formal partner exchange at any eligible US university under which host tuition is waived. No such agreement can be identified without the name of the Chinese home university.
+
+**Poor-value warning:** A high-priced visiting route that provides only undergraduate courses, non-degree continuing-education courses, or uncertain graduate registration is unlikely to be good value, even if the host university is prestigious.
+
+### Europe
+
+**Best documented direct value:** Aarhus, subject to the faculty tuition quotation.
+
+**Best flexible alternative:** Utrecht, if affordable housing can be secured.
+
+**Best possible value overall:** Erasmus+ or another bilateral exchange under which host tuition is waived and an institutional mobility grant is available. The [Erasmus+ 2026 Programme Guide](https://erasmus-plus.ec.europa.eu/resources-and-tools/documents-and-guidelines/erasmus-programme-guide-2026) [9], dated **12 November 2025**, governs the 2026 framework. China-based participation depends on an institutional project involving a non-associated third country; an individual student cannot independently claim an Erasmus grant. The [higher-education mobility funding framework](https://erasmus-plus.ec.europa.eu/opportunities/organisations/learning-mobility-of-individuals/higher-education-students-and-staff) [10] operates through eligible institutions, charters, consortia and approved mobility arrangements.
+
+### Japan
+
+**Best value:** Waseda or UTokyo partner exchange if host tuition is waived.
+
+**Lower published academic fee, but weaker credit case:** The direct UTokyo research-student route. Its academic charges total **¥267,800 per term before living costs** when the ¥9,800 examination fee, ¥84,600 admission fee and ¥173,400 term tuition are combined. However, the route is normally one year and ordinary course credit is unverified, so it is not necessarily better value for this objective.
+
+### Singapore
+
+**Best value and strongest verified graduate route:** NTU GEM Trailblazer under a tuition-waiver exchange agreement.
+
+**Potential research value:** NTU Visiting Research Student if the home university awards thesis or research credits.
+
+**Cost benchmark:** SMU estimates **S$2,000–S$3,500 per month** for exchange/visiting living expenses, including approximately:
+
+- Accommodation: S$1,000–S$2,000;
+- Food: S$700–S$900;
+- Transport: S$150–S$200;
+- Telecommunications: S$30–S$50;
+- Books: S$20–S$50;
+- Personal expenses: S$100–S$300.
+
+These figures come from the undergraduate-focused [SMU International Student Exchange Programme](https://geo.smu.edu.sg/study-in-smu/international-student-exchange-programme) [28], so they are best treated as a Singapore city-cost benchmark rather than a quotation for a graduate program.
+
+## Regional analysis
+
+## United States
+
+### Academic model and assessment
+
+US semester courses commonly use continuous assessment, seminar participation, essays, coding assignments, group projects, midterms and final examinations. The actual balance must be taken from each course syllabus; there is no single university-wide method that can safely be assumed.
+
+For transfer purposes, obtain:
+
+- Course number and academic level;
+- Number of semester units or credits;
+- Weekly contact hours;
+- Total expected workload;
+- Syllabus and learning outcomes;
+- Assessment percentages;
+- Final letter grade;
+- Official transcript notation;
+- Instructor or department confirmation that the course is graduate-level.
+
+A US “unit” or “credit” should not be converted mechanically into Chinese credits. Berkeley’s 12-unit minimum, for example, establishes the host workload but does not determine how many Chinese graduate credits will be awarded.
+
+### Immigration and minimum load
+
+Most full-semester international visiting students require either:
+
+- **F-1 student status**, based on a host-issued Form I-20; or
+- **J-1 exchange visitor status**, based on Form DS-2019.
+
+The host decides which status it will sponsor. Passport, residence, funding, program structure and exchange agreement may affect the route.
+
+The [NYU Short-Term International Student FAQ](https://www.nyu.edu/students/student-information-and-resources/student-visa-and-immigration/newly-admitted/short-term-international-student-FAQ.html) [2] provides a useful institution-specific benchmark: NYU-sponsored F-1 and J-1 visitors in fall or spring normally need 12 credits, or **9 credits when studying at graduate level**. This should not be generalized as the rule at Berkeley, Columbia or another host; each university’s international office must set the actual requirement.
+
+Budget for:
+
+- Visa application charge;
+- SEVIS I-901 fee where applicable;
+- Travel to a consular interview;
+- Passport renewal if needed;
+- University health insurance;
+- Tuberculosis or immunization documentation;
+- Housing deposits;
+- Local transport;
+- Books and software;
+- International flights.
+
+Visa appointments and administrative processing may be unpredictable. Admission should therefore be obtained at least three to five months before travel where possible.
+
+### Other US candidates
+
+The following are legitimate official leads but not sufficiently verified for firm ranking:
+
+- [Northwestern Non-degree Special Student](https://sps.northwestern.edu/non-degree-special-student/) [3]
+- [Harvard GSAS Visiting Students Program](https://gsas.harvard.edu/apply/visiting-students-program) [4]
+- [Columbia SPS Visiting Students](https://sps.columbia.edu/academics/visiting-students) [5]
+- [Columbia visiting-student fees](https://sps.columbia.edu/academics/visiting-students/tuition-fees) [6]
+- [American University Visiting International Students](https://www.american.edu/sis/sisabroad/international-students.cfm) [7]
+- [Johns Hopkins Visiting International Students](https://studyabroad.jhu.edu/visp-students/) [8]
+
+Before treating any of these as a credit-bearing graduate option, require written answers on graduate status, international visa sponsorship, departmental enrollment, transcript type, minimum load and tuition.
+
+## Europe
+
+### ECTS and credit transfer
+
+A conventional full-time European semester is normally organized around approximately **30 ECTS**, but the home university must still decide how those ECTS map into Chinese graduate credits. ECTS reflects overall workload, not simply classroom contact hours.
+
+A safe transfer package should include:
+
+- The official transcript showing ECTS and local grades;
+- Course descriptions and level;
+- Workload and contact-hour statement;
+- Assessment methods;
+- Completed learning agreement;
+- Grade-distribution table if available;
+- Faculty confirmation for any master’s-level classification.
+
+Do not self-convert ECTS into Chinese credits. Obtain an official written conversion or course-substitution decision before departure.
+
+### Aarhus teaching and practical issues
+
+Aarhus is the clearest independent route but places substantial academic constraints on the study plan. A candidate wanting media theory, computational methods, political science and data analytics may find those subjects spread over different departments or faculties. Because free movers are limited to one faculty and two departments, the proposed semester should be built around a coherent center of gravity, such as:
+
+- Media and communication plus adjacent digital-culture courses;
+- Political communication and public-opinion methods;
+- Social-data methods plus computational social science;
+- Digital design and platform studies.
+
+The student must show prior study in the requested subject area. Master’s applicants must provide bachelor-level transcripts as well as current university records. The faculty may request more documentation, and acceptance can remain uncertain until shortly before the semester.
+
+For non-EU/EEA passport holders, the verified 30-ECTS requirement is particularly important because Aarhus links it to the study-and-work permit.
+
+### Utrecht housing and integration
+
+Utrecht offers a flexible direct route, but housing may be the decisive constraint. A student should not pay non-refundable travel costs until:
+
+- The faculty has accepted the visiting study plan;
+- Tuition and refund terms are known;
+- A lawful rental has been secured;
+- The municipality-registration implications are understood;
+- The residence-permit process is confirmed.
+
+Private rentals should be checked for fraud, registration legality, contract duration, deposits and cancellation provisions.
+
+### Other European direct routes
+
+The following official pages are useful secondary verification targets:
+
+- [University of Amsterdam Independent Student Exchange/Free Mover](https://www.uva.nl/en/education/exchange/independent-student-exchange-free-mover/independent-student-exchange-free-mover.html) [13]
+- [University of St. Gallen Incoming Freemover](https://www.unisg.ch/en/studying/exchange-programme/incoming-guest-students/freemover/) [14]
+
+They should not be selected until current graduate eligibility, tuition, ECTS load, English-taught courses, transcript arrangements and housing eligibility are obtained.
+
+Several other surfaced routes should not presently be relied upon:
+
+- UC3M’s identified free-mover route was explicitly undergraduate.
+- Mannheim and Humboldt pages appeared to concern outgoing self-organized mobility.
+- European University Institute visiting status may be research-only or non-credit.
+- Alliance opportunities such as EDUC or RUN-EU may be restricted to member institutions.
+
+### European immigration
+
+The correct route depends on the destination, passport and length of stay.
+
+For a non-EU/EEA passport, a semester commonly requires:
+
+- National long-stay student visa, residence permit, or both;
+- Host admission or enrollment certificate;
+- Proof of funds;
+- Health insurance;
+- Accommodation evidence;
+- Passport validity;
+- Biometrics;
+- Local municipal or immigration registration after arrival.
+
+A short-stay Schengen authorization should not be assumed sufficient for a full academic semester. Denmark, the Netherlands, Switzerland and EU member states apply different national procedures. The host international office should identify the correct route in writing.
+
+The United Kingdom, if later considered, is outside the Schengen system and has separate Student/Visitor rules.
+
+## Japan
+
+### University of Tokyo USTEP Type G
+
+USTEP Type G requires nomination by the home university. Screening results are normally announced:
+
+- In early May for autumn admission;
+- In early December for spring admission.
+
+Successful applicants receive a Certificate of Admission. UTokyo assists with the Certificate of Eligibility and provides orientation, housing, course-registration and academic-procedure guidance. The [USTEP overview](https://www.u-tokyo.ac.jp/en/academics/ustep-overview.html) [16] should be checked alongside the intended graduate school’s current fact sheet.
+
+For credit-bearing study, obtain explicit confirmation that:
+
+- The nomination is for **Special Auditor**, not only Special Research Student;
+- The intended courses award UTokyo credits;
+- Graduate exchange students may register;
+- The courses will run in the relevant semester;
+- English-language instruction is confirmed;
+- A graded transcript will be issued;
+- The home graduate school accepts those credits.
+
+### Waseda language and course registration
+
+English-based graduate programs require the evidence specified by each school. In the Graduate School of Commerce:
+
+- Native English speakers need not submit a score;
+- A valid official English certificate is normally required;
+- A home-university letter may substitute where the current degree is officially taught primarily in English;
+- Japanese-taught Commerce courses require JLPT N1 or equivalent.
+
+That substitution should not be assumed for other Waseda schools.
+
+Waseda’s explicit warning about course capacity is important. The home university should preapprove more courses than are ultimately needed, ideally with:
+
+- First-choice courses;
+- Same-field substitutes;
+- Methodology substitutes;
+- One or two broadly applicable electives.
+
+### Direct UTokyo research student
+
+The [UTokyo Information Science and Technology research-student route](https://www.i.u-tokyo.ac.jp/edu/entra/research_students_e.shtml) [19] was updated in **July 2026**.
+
+It requires:
+
+1. Identifying a department and professor;
+2. Contacting the professor directly;
+3. Obtaining informal acceptance;
+4. Submitting a research plan, academic records, certificate, recommendation and CV;
+5. Completing the online application.
+
+Published cycles included:
+
+- October 2026 entry: 20 April–8 May 2026, already closed by the report date;
+- April 2027 entry: **19 October–6 November 2026**, with a 17:00 JST final deadline on 6 November.
+
+The research-student status is “usually for one year.” A one-semester appointment and any credit-bearing course registration must therefore be confirmed before applying. It is best treated as a research backup, not a substitute for USTEP Special Auditor status.
+
+### Tsukuba exclusion
+
+The [University of Tsukuba Non-degree Research Student](https://www.tsukuba.ac.jp/en/academics/international-research-students/) [20] may attend related classes with permission but **cannot earn credits**.
+
+For April 2027 entry, its published schedule was:
+
+- Online application: 15 September–2 October 2026;
+- Documents received: 15 September–13 October 2026;
+- Result: early December 2026.
+
+Although the cycle was current, the route does not satisfy ordinary taught-credit requirements. It is suitable only if the Chinese university awards independent research or thesis credit based on a supervisor report.
+
+An additional official lead is Hokkaido University’s [Special Auditor and Special Research Student](https://www.global.hokudai.ac.jp/admissions/special-auditor-special-research-student/) [21], but its current graduate eligibility, nomination rules, credits, fees and semester details were not verified.
+
+### Japanese visa, insurance and adaptation
+
+For a semester, the normal route is generally a **Student** status of residence supported by a Certificate of Eligibility. The university commonly submits or assists with the Certificate of Eligibility, after which the student applies at the appropriate Japanese embassy or consulate.
+
+Passport-specific details must be checked. A person with Japanese citizenship, including dual nationality, may be required to enter Japan using a Japanese passport; Waseda states that such applicants cannot use its Certificate of Eligibility process.
+
+Budget for:
+
+- Visa and document charges;
+- Proof-of-funds requirement;
+- Housing deposit, key money or agency fees where applicable;
+- National or university health-insurance obligations;
+- Local registration and residence card procedures;
+- Commuting;
+- Telephone/SIM service;
+- Bedding and household setup.
+
+English-taught graduate study is possible at some schools, but Japanese remains valuable for daily administration, housing, healthcare and campus integration. Japanese-taught graduate courses may require JLPT N1.
+
+## Singapore
+
+### NTU GEM Trailblazer
+
+NTU requires:
+
+- Active agreement with the home university;
+- Home nomination;
+- Full-time matriculation at the home university;
+- At least two semesters completed;
+- CGPA of at least 3.3/5 or equivalent;
+- English proficiency;
+- For Direct Masters students seeking postgraduate courses, at least seven completed semesters.
+
+The applicant must list at least ten courses, and the home university must approve them as relevant to academic progression. This creates a useful preliminary credit-control mechanism, but the ten courses are not registration guarantees.
+
+The best subject-fit targets would be courses opened to exchange students in areas such as:
+
+- Communication and information;
+- Media analytics;
+- Social science research methods;
+- Computational social science;
+- Political communication;
+- Data analysis;
+- Digital platforms.
+
+The exact list must come from the current exchange brochure and course-registration system. A course listed in NTU’s general catalog is not necessarily available to exchange students.
+
+### NTU visiting research
+
+The [NTU Visiting Research Student route](https://www.ntu.edu.sg/education/student-exchanges/visiting-research) [23] requires the research to be part of the home degree and endorsed by both the home university and NTU.
+
+Advantages:
+
+- Direct faculty supervision;
+- Research-facility access;
+- Potential thesis or dissertation relevance;
+- Possible one-semester design within the overall maximum.
+
+Disadvantages:
+
+- No campus accommodation;
+- Fees are charged in six-month blocks without proration;
+- Full-time expectation is 40 hours per week;
+- A Student’s Pass is required;
+- The pass does not permit employment or receipt of an allowance or stipend;
+- No academic-unit or transcript promise was identified.
+
+Before using this route for degree credit, require an agreement specifying:
+
+- Research title and objectives;
+- Weekly workload;
+- Deliverables;
+- Supervisor;
+- Assessment rubric;
+- Completion letter or official record;
+- Grade or pass/fail decision;
+- Number and category of Chinese research credits.
+
+Student’s Pass-related charges listed by NTU were:
+
+- Application processing: **S$45**
+- Issuance: **S$60**
+- Multiple Journey Visa if applicable: **S$30**
+
+### NUS, SMU and SUTD
+
+NUS remains a high-value target for direct inquiry, but no firm graduate recommendation should be made until its Registrar confirms the non-graduating graduate rules.
+
+SMU has an official [Visiting Graduate Student Programme](https://graduatestudies.smu.edu.sg/phd/visiting-graduate-student-programme) [27] and an active [2026 exchange/non-graduating matriculation page](https://matriculation.smu.edu.sg/non-graduating/2026) [29], but the detailed graduate eligibility, coursework, transcript and fees were not captured.
+
+SMU’s ordinary ISEP should not be used because its official page requires continuing undergraduate status and says only undergraduate courses are offered to exchange and visiting students.
+
+SUTD’s [inbound exchange page](https://www.sutd.edu.sg/campus-life/global-experience-and-exchange/student-exchange/inbound/inbound-exchange/) [30] is a legitimate official lead for technology-oriented study, but graduate access and credit rules remain unverified.
+
+## Credit-transfer assessment
+
+### Routes most likely to count toward ordinary degree requirements
+
+The strongest prospects are taught, assessed routes with a formal transcript:
+
+- NTU GEM Trailblazer;
+- Waseda exchange;
+- UTokyo USTEP Type G under Special Auditor status;
+- Aarhus Free Mover;
+- Utrecht Visiting Student;
+- Berkeley Global Access, provided transcript status and graduate-level access are accepted.
+
+These can reasonably count toward:
+
+- Graduate electives;
+- Research-methods requirements;
+- Interdisciplinary electives;
+- Field-specific electives;
+- Approved external study;
+- Practicum or project requirements, if the course structure matches.
+
+They are less likely to replace:
+
+- Mandatory Chinese political-theory or national curriculum courses;
+- Institution-specific research ethics or academic-writing requirements;
+- Thesis proposal, defense or residency milestones;
+- Core courses whose content and assessment differ substantially;
+- Credits that the degree regulations require to be completed in residence.
+
+### Routes that may count only as research or thesis activity
+
+- NTU Visiting Research Student;
+- UTokyo Graduate International Research Student;
+- UTokyo USTEP Special Research Student;
+- Similar Japanese Special Research Student statuses.
+
+They should be used only when the home university agrees to recognize:
+
+- Research practicum;
+- Thesis research;
+- Independent study;
+- Fieldwork;
+- Laboratory/research training;
+- Supervised project credit.
+
+### Route that is explicitly non-credit
+
+- University of Tsukuba Non-degree Research Student.
+
+Attendance at courses with instructor permission does not overcome the official statement that no credits can be earned.
+
+### Required preapproval package
+
+For each intended host course, prepare a table containing:
+
+| Item | Required evidence |
+|---|---|
+| Host course | Code, title, department and academic level |
+| Host credit | US units, ECTS, Japanese credits, NTU academic units or other system |
+| Workload | Contact hours plus independent-study expectations |
+| Content | Full syllabus and weekly topics |
+| Outcomes | Skills, methods and research competencies |
+| Assessment | Essays, exams, projects, presentations, coding, participation |
+| Home equivalent | Exact course substitution or elective category |
+| Grade rule | Minimum acceptable host grade and treatment of pass/fail |
+| Approval | Adviser, program director, college, graduate school and international office signatures |
+| Backup | Two or more substitute courses |
+| Record | Transcript issuer, delivery process and expected issuance date |
+
+Avoid informal statements such as “one US credit equals two ECTS” or “30 ECTS equals a fixed number of Chinese credits.” Credit conversion is controlled by the home university.
+
+## Academic and career value
+
+### New media and platform studies
+
+A semester abroad can provide exposure to:
+
+- Different platform-regulation systems;
+- Privacy and data-protection regimes;
+- Media ownership structures;
+- Press-freedom and journalism traditions;
+- Public-service and commercial media systems;
+- Cross-border platform governance;
+- Comparative audience behavior;
+- International approaches to misinformation and political communication.
+
+This is directly relevant to new-media and public-opinion analysis because theories and data practices are often institutionally and culturally specific.
+
+### Computational and public-opinion research
+
+The most valuable semester would combine:
+
+- Survey and polling methodology;
+- Quantitative social research;
+- Network analysis;
+- Natural-language processing;
+- Social-media analytics;
+- Causal inference;
+- Digital ethnography;
+- Platform or algorithm auditing;
+- Data visualization;
+- Political communication.
+
+Before applying, determine whether visitors can access:
+
+- Licensed datasets;
+- Survey archives;
+- high-performance computing;
+- proprietary social-media data;
+- research laboratories;
+- restricted library databases;
+- human-subjects or ethics-review processes.
+
+Some data licenses may be limited to degree students, employees, or physically present campus users. A visiting-student login does not necessarily grant access to every database.
+
+### Research supervision and networking
+
+Partner exchanges usually provide better campus integration than research-only status. Berkeley advertises access to extensive student organizations and coursework alongside Berkeley students. Waseda and UTokyo provide organized exchange administration. NTU provides pre-arrival and campus guidance.
+
+Research access is strongest where a named supervisor is secured before arrival. A productive project should have:
+
+- A narrowly defined research question;
+- A host faculty member;
+- Home-supervisor endorsement;
+- Data-access plan;
+- Ethics-review plan;
+- Interim milestones;
+- Final paper, code repository, presentation or research report;
+- Written evaluation.
+
+Industry and alumni benefits are likely strongest in:
+
+- Berkeley/San Francisco Bay Area for technology and platforms;
+- New York for journalism and media;
+- Washington, DC for political communication and policy;
+- Tokyo for Japanese media, technology and platform ecosystems;
+- Singapore for Southeast Asian digital markets, regional policy and multilingual public opinion;
+- Amsterdam/Utrecht/Aarhus for European media policy, digital culture and data governance.
+
+Visiting students may not receive the same career-service, internship or recruitment access as degree students. Student visa work restrictions may also prevent internships or paid research.
+
+## Costs, funding and cost control
+
+### Cost categories to compare
+
+Every budget should include:
+
+1. Host tuition or program fee;
+2. Home-university tuition that continues during the exchange;
+3. Application and registration fees;
+4. Visa, residence permit and biometric fees;
+5. Health insurance;
+6. Housing deposit and rent;
+7. Utilities and internet;
+8. Food;
+9. Local transport;
+10. Flights and airport transfers;
+11. Books, software and equipment;
+12. Currency fluctuation;
+13. Emergency reserve;
+14. Transcript delivery or document legalization;
+15. Cancellation and refund exposure.
+
+### Tuition models
+
+**Partner exchange**
+
+- The student commonly continues paying the home university.
+- Host tuition is often waived.
+- Administrative, insurance, housing and student-service fees may still apply.
+- The actual bilateral agreement controls; “exchange” does not universally mean zero host fees.
+
+**Direct free mover or visiting student**
+
+- Host tuition or per-course charges normally apply.
+- Scholarships are less common.
+- Housing assistance may be weaker.
+- Financial risk is higher if course registration is not guaranteed.
+
+**Visiting research**
+
+- Fees may be lower than full coursework, but the academic-credit return is less certain.
+- NTU charges by six-month block.
+- UTokyo charges examination, admission and term tuition.
+- Research status may not generate a graded transcript.
+
+### Scholarships and fee relief
+
+Potential sources, none guaranteed, include:
+
+- Home-university international mobility grants;
+- Chinese university “double first-class,” graduate innovation, or internationalization funding;
+- China Scholarship Council programs where the particular mobility type is eligible;
+- Faculty travel or research grants;
+- Host exchange scholarships;
+- Erasmus+ institutional mobility grants;
+- Japan Student Services Organization support for eligible exchange students;
+- MEXT routes, noting that UTokyo says MEXT university-recommendation research-student applications use separate procedures;
+- External foundations;
+- Supervisor-funded research, where immigration rules permit it.
+
+NTU explicitly states that it does not offer scholarships or financial assistance to ordinary exchange students. Its DUO-Singapore award is invitation-only and tied to eligible paired Europe–Singapore mobility, so a China-based student should not budget on receiving it.
+
+### Cost-saving priorities
+
+1. Seek a partner exchange before a direct visiting route.
+2. Ask whether home tuition continues and whether host tuition is waived.
+3. Compare the full semester total, not only tuition.
+4. Prefer guaranteed or institutionally supported housing where market shortages are severe.
+5. Avoid non-refundable payments until visa and course registration risks are understood.
+6. Preapprove backup courses to avoid paying for unusable credits.
+7. Ask whether public transport, insurance and student services are included.
+8. Apply for home funding before host admission where deadlines require it.
+9. Use university-approved housing channels and avoid informal deposits.
+10. Maintain an emergency reserve for currency changes and late housing.
+
+## Language, cultural and practical adaptation
+
+### Instruction language
+
+- **United States:** English; accepted test or waiver rules are program-specific.
+- **Europe:** Many master’s courses may be taught in English, but free-mover admission can still require evidence. The exact semester catalog controls.
+- **Japan:** English-based graduate tracks exist, but school-specific proof is required. Japanese-taught courses may require JLPT N1. Japanese is useful for daily life even in an English-based program.
+- **Singapore:** English is the main language of instruction. NTU requires proficiency but the verified page did not state a specific test threshold.
+
+If the student’s Chinese degree is taught in English, obtain an official medium-of-instruction letter. Some hosts may accept it; others may still require IELTS or TOEFL.
+
+### Housing
+
+Particularly serious risks are:
+
+- Utrecht: no reserved university housing for free movers;
+- NTU Visiting Research: no campus housing;
+- Singapore private rentals: high cost and legal restrictions on short-term residential rental;
+- Tokyo: upfront fees and small living spaces;
+- Berkeley: high-cost, competitive Bay Area market.
+
+Do not rely solely on social-media rental groups. Verify landlord identity, lawful registration, deposit terms, cancellation rules and commuting time.
+
+### Insurance and healthcare
+
+Ask whether the host requires:
+
+- University-sponsored insurance;
+- National health-insurance enrollment;
+- Private travel or medical insurance;
+- Vaccination records;
+- Tuberculosis screening;
+- Mental-health documentation;
+- Prescription translations.
+
+SMU’s undergraduate exchange miscellaneous fee includes medical insurance, but that does not establish coverage for its graduate program. Other hosts’ current premiums were not verified.
+
+### Technology and internet
+
+Plan for:
+
+- Multi-factor authentication requiring an international phone number;
+- Access to university VPNs and licensed databases;
+- Compatibility of Chinese mobile devices and payment applications;
+- International roaming or local SIM/eSIM;
+- Data storage and privacy rules;
+- Restrictions on exporting research data;
+- Platform API limits;
+- Institutional policies governing web scraping and social-media datasets.
+
+Research involving public opinion, social-media users or identifiable data may require host and home ethics approval. Cross-border transfer of personal data may be subject to Chinese, European, Japanese, Singaporean or US law.
+
+### Cultural and academic adjustment
+
+Likely adjustments include:
+
+- Greater emphasis on seminar participation;
+- Group work with multicultural teams;
+- Different citation and academic-integrity rules;
+- Less deference and more direct classroom discussion;
+- Independent reading and project management;
+- Strict attendance in some systems;
+- Different expectations for supervisor contact;
+- Different grading distributions.
+
+SMU, for example, explicitly uses seminars of about 35–45 students and may assess attendance, participation, projects, presentations, tests and final examinations. These details relate to its undergraduate exchange route, but illustrate the participatory model commonly encountered in Singapore.
+
+Accessibility or disability support should be arranged before acceptance. Ask what medical documentation is required, whether translations are needed, and whether visiting students can use academic accommodations, counseling and assistive technology.
+
+## Options to exclude or treat cautiously
+
+### Explicit exclusion
+
+- **University of Tsukuba Non-degree Research Student:** cannot earn credits.
+- **SMU International Student Exchange Programme:** undergraduate-only under its published eligibility and course rules.
+- **UC3M Free Mover Undergraduate:** wrong academic level.
+
+### Research-only unless proved otherwise
+
+- UTokyo Graduate International Research Student;
+- NTU Visiting Research Student;
+- UTokyo USTEP Special Research Student;
+- European University Institute visiting status;
+- Other Japanese “Research Student” or “Special Research Student” routes.
+
+### Academically ambiguous for this purpose
+
+- Commercially packaged “free mover” services;
+- Third-party listings that do not guarantee university admission;
+- Non-credit summer schools;
+- Continuing-education certificates without ordinary university credit;
+- Industry boot camps;
+- Cultural tours;
+- programs where the transcript issuer is unclear;
+- offerings with no assessment or only attendance certificates.
+
+A third-party directory can be used to discover universities, but host eligibility, accreditation, credits, fees and visas must be verified from the university or government.
+
+## Questions to resolve before applying
+
+### Questions for the Chinese home university
+
+1. Which US, European, Japanese and Singaporean universities have active graduate-level agreements?
+2. Is nomination available to this department and degree level?
+3. How many external credits may count toward the degree?
+4. Is there a residency requirement?
+5. Can overseas courses replace core courses, or only electives?
+6. Are research visits eligible for thesis, practicum or independent-study credit?
+7. What is the conversion method for US credits, ECTS, Japanese credits and Singapore academic units?
+8. Is there a minimum grade for recognition?
+9. Are pass/fail courses acceptable?
+10. Must courses be graduate-level at the host?
+11. Which officials must sign the learning agreement?
+12. What happens if a host course is cancelled or unavailable?
+13. Must substitutions be approved before registration?
+14. Does home tuition continue?
+15. Is there internal funding or a CSC nomination route?
+16. Must the student return an original sealed transcript?
+17. Are electronic transcripts accepted?
+18. Is translation, notarization or authentication required?
+19. Will the semester affect thesis proposal, annual review, scholarships or graduation timing?
+20. Can the student remain registered and insured in China while abroad?
+
+### Questions for every host
+
+1. Is the route operating for the intended semester?
+2. Does it accept graduate students enrolled at universities in China?
+3. Is a bilateral agreement or nomination mandatory?
+4. Is direct application allowed?
+5. What formal status will appear on the admission letter and transcript?
+6. Are the intended courses graduate-level and open to visitors?
+7. What prerequisites apply?
+8. Is registration guaranteed or competitive?
+9. What is the minimum immigration and academic load?
+10. What teaching language and evidence are required?
+11. Is a medium-of-instruction letter accepted?
+12. What are the teaching and assessment methods?
+13. Will a graded official transcript be issued?
+14. Who issues the transcript?
+15. When is it released?
+16. What are tuition, mandatory fees and refund rules?
+17. Is host tuition waived under the particular agreement?
+18. Are scholarships available to China-based graduate students?
+19. What visa document will the university issue?
+20. What insurance is mandatory?
+21. Is university housing available to this category?
+22. Can visiting students access libraries, datasets, labs and research computing?
+23. Can they receive ethics approval for research?
+24. Can they join student organizations and career events?
+25. Are there restrictions on internships, paid work or stipends?
+26. What accessibility services are available?
+27. What happens if fewer approved courses are available than required?
+
+## Preparation plan and adaptable timeline
+
+### Twelve to ten months before departure
+
+- Confirm the desired academic outcome: coursework credit, research credit, or both.
+- Obtain the Chinese graduate handbook and credit-transfer policy.
+- Meet the supervisor, program director, graduate school and international office.
+- Request the complete partner-university list and nomination quotas.
+- Build three pathways:
+  - Partner-exchange first choice;
+  - Direct free-mover second choice;
+  - Home-semester or later-semester contingency.
+- Check passport validity; aim for validity extending at least six months beyond the program, and longer where the host requires it.
+- Identify language tests and register early.
+- Create an initial budget covering all cost categories.
+
+### Ten to eight months before departure
+
+- Select eight to twelve possible host courses for each destination.
+- Download syllabi, not merely catalog summaries.
+- Identify course level, credits, prerequisites and assessment.
+- Prepare a preliminary learning agreement.
+- Ask the home university for written conditional preapproval.
+- For research routes, draft a two- to four-page proposal and contact possible supervisors.
+- Request official transcripts, enrollment certificate and grading-system explanation.
+- Request recommendation letters.
+- Start scholarship and internal-funding applications.
+
+### Eight to six months before departure
+
+- Obtain formal home nomination for partner exchanges.
+- Submit direct/free-mover applications.
+- Complete IELTS, TOEFL, JLPT or other required testing.
+- Obtain a medium-of-instruction certificate if useful.
+- Prepare proof of funds and sponsor letters.
+- Confirm whether the host accepts electronic records or requires originals.
+- Check housing opening dates and deposit rules.
+- Review visa instructions for the actual passport.
+
+### Current-cycle urgent actions as of 13 September 2026
+
+For a possible **Spring 2027** start:
+
+- **NTU:** verify partner status immediately. The normal nomination window is 1–15 September and application window 1–30 September.
+- **Waseda:** AY2027 materials are available; ask the home exchange office immediately for its internal nomination deadline.
+- **UTokyo USTEP:** ask the home university about the spring nomination cycle and graduate-school requirements.
+- **UTokyo Information Science and Technology research student:** professor contact and document preparation should begin before the 19 October–6 November 2026 application period, but first confirm one-semester feasibility and credit.
+- **Tsukuba research student:** the April 2027 application opens 15 September 2026, but the route is non-credit and should be used only with home research-credit approval.
+- **Aarhus/Utrecht:** request current Spring 2027 faculty instructions, fees and course availability immediately; the published information gathered did not establish deadlines.
+
+### Six to four months before departure
+
+- Accept the offer only after reviewing financial and academic conditions.
+- Finalize the learning agreement with approved backup courses.
+- Obtain the host visa document:
+  - I-20 or DS-2019 in the US;
+  - national admission/residence documentation in Europe;
+  - Certificate of Eligibility in Japan;
+  - Student’s Pass instructions in Singapore.
+- Pay required immigration fees.
+- Schedule embassy or consular appointments.
+- Apply for university housing or secure lawful private housing.
+- Purchase required health insurance only after checking host rules.
+- Arrange disability or accessibility accommodations.
+- Confirm funding release dates.
+
+### Four to two months before departure
+
+- Register for courses as early as permitted.
+- If registration is by bidding or capacity allocation, retain multiple approved alternatives.
+- Confirm the minimum full-time load.
+- Verify arrival, orientation and local-registration dates.
+- Book flexible travel.
+- Arrange telephone, banking and emergency funds.
+- Check data-security and research-ethics requirements.
+- Back up academic documents electronically and on paper.
+- Obtain translated prescriptions and medical records if needed.
+
+### Final month
+
+- Reconfirm visa issuance and entry rules.
+- Reconfirm housing and move-in instructions.
+- Obtain final home-university permission to leave.
+- Record all approved course substitutions.
+- Check insurance start and end dates.
+- Carry admission, funding, housing and insurance documents.
+- Confirm airport transport and emergency contacts.
+- Do not withdraw from home courses until overseas registration and visa status are secure.
+
+### During the semester
+
+- Complete registration before the deadline.
+- Preserve every syllabus and assessment brief.
+- Notify the home university before changing a course.
+- Keep evidence of contact hours and workload.
+- Meet the required immigration load.
+- Maintain attendance.
+- Request formal approval before dropping below full-time.
+- For research, obtain periodic written supervisor evaluations.
+- Confirm the transcript-delivery method before departure.
+
+### After the program
+
+- Request an official transcript sent directly to the Chinese university if required.
+- Obtain:
+  - Transcript;
+  - Grading-scale explanation;
+  - Enrollment and completion certificate;
+  - Course syllabi;
+  - Assessment records;
+  - Supervisor report for research;
+  - Credit/workload statement.
+- Submit the credit-recognition application promptly.
+- Use the preapproved learning agreement to support course substitution.
+- Appeal inconsistencies through the graduate school if the final recognition differs from the written preapproval.
+- Verify that recognized credits appear on the Chinese academic record well before graduation review.
+
+## Final recommendation
+
+The decision order should be:
+
+1. **Check partner status for NTU, Waseda and UTokyo immediately.**
+2. If a partner exists, compare the exact graduate course lists and tuition-waiver terms.
+3. If no suitable partner exists, seek direct faculty decisions from **Aarhus** and **Utrecht**.
+4. Consider **Berkeley Global Access** only after confirming an affordable total cost and access to a full, preapproved graduate-relevant schedule.
+5. Pursue **NUS** as a high-potential inquiry rather than a confirmed option.
+6. Use direct research-student routes only where the home university preapproves thesis, research or independent-study credit.
+7. Exclude explicitly non-credit and undergraduate-only routes from the ordinary graduate-credit plan.
+
+For the current profile, the strongest conditional pair is:
+
+- **Best partner-exchange choice:** NTU GEM Trailblazer or Waseda, depending on the home agreement and course list.
+- **Best independent choice:** Aarhus Free Mover, with Utrecht as the principal alternative.
+- **Best US direct choice:** Berkeley Global Access.
+- **Best research-only choice:** NTU Visiting Research Student, but only with a written home-credit and assessment agreement.
+
+### Sources
+
+[1] UC Berkeley Extension, Berkeley Global Access Visiting Student Programs: https://extension.berkeley.edu/international/academic/berkeley-global-access/visiting-student/
+
+[2] New York University, Short-Term International Student FAQ: https://www.nyu.edu/students/student-information-and-resources/student-visa-and-immigration/newly-admitted/short-term-international-student-FAQ.html
+
+[3] Northwestern University, Non-degree Special Student: https://sps.northwestern.edu/non-degree-special-student/
+
+[4] Harvard Kenneth C. Griffin Graduate School of Arts and Sciences, Visiting Students Program: https://gsas.harvard.edu/apply/visiting-students-program
+
+[5] Columbia University School of Professional Studies, Visiting Students: https://sps.columbia.edu/academics/visiting-students
+
+[6] Columbia University School of Professional Studies, Visiting Students Tuition and Fees: https://sps.columbia.edu/academics/visiting-students/tuition-fees
+
+[7] American University, Visiting International Students: https://www.american.edu/sis/sisabroad/international-students.cfm
+
+[8] Johns Hopkins University, Visiting International Students: https://studyabroad.jhu.edu/visp-students/
+
+[9] European Commission, Erasmus+ Programme Guide 2026: https://erasmus-plus.ec.europa.eu/resources-and-tools/documents-and-guidelines/erasmus-programme-guide-2026
+
+[10] European Commission, Funding for Higher Education Mobility Projects: https://erasmus-plus.ec.europa.eu/opportunities/organisations/learning-mobility-of-individuals/higher-education-students-and-staff
+
+[11] Utrecht University, Visiting Students: https://www.uu.nl/en/education/exchange-students/application/visiting-students
+
+[12] Aarhus University, Free Mover (Non-Exchange): https://international.au.dk/education/admissions/freemoverstudents/
+
+[13] University of Amsterdam, Independent Student Exchange (Free Mover): https://www.uva.nl/en/education/exchange/independent-student-exchange-free-mover/independent-student-exchange-free-mover.html
+
+[14] University of St. Gallen, Incoming Freemover Guest Students: https://www.unisg.ch/en/studying/exchange-programme/incoming-guest-students/freemover/
+
+[15] University of Tokyo, USTEP Type G for Graduates: https://www.u-tokyo.ac.jp/en/academics/ustep-type-g.html
+
+[16] University of Tokyo, Overview of USTEP: https://www.u-tokyo.ac.jp/en/academics/ustep-overview.html
+
+[17] Waseda University Center for International Education, Exchange Application: https://www.waseda.jp/inst/cie/en/exchange/application
+
+[18] Waseda University Graduate School of Commerce, Information for Exchange Students: https://www.waseda.jp/fcom/gsc/en/students/abroad
+
+[19] University of Tokyo Graduate School of Information Science and Technology, Graduate International Research Student: https://www.i.u-tokyo.ac.jp/edu/entra/research_students_e.shtml
+
+[20] University of Tsukuba, Non-degree Research Student: https://www.tsukuba.ac.jp/en/academics/international-research-students/
+
+[21] Hokkaido University, Special Auditor and Special Research Student: https://www.global.hokudai.ac.jp/admissions/special-auditor-special-research-student/
+
+[22] Nanyang Technological University, GEM Trailblazer Semester Exchange: https://www.ntu.edu.sg/education/student-exchanges/exchange-programmes/inbound-programmes
+
+[23] Nanyang Technological University, Visiting Research Students (Non-Graduating Non-Exchange): https://www.ntu.edu.sg/education/student-exchanges/visiting-research
+
+[24] National University of Singapore, Non-Graduating Coursework: https://nus.edu.sg/registrar/prospective-students/non-graduating/coursework
+
+[25] National University of Singapore, Incoming Exchange Students: https://nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers
+
+[26] National University of Singapore, Official Transcripts: https://www.nus.edu.sg/registrar/student-records/transcripts/official-transcripts
+
+[27] Singapore Management University, Visiting Graduate Student Programme: https://graduatestudies.smu.edu.sg/phd/visiting-graduate-student-programme
+
+[28] Singapore Management University, International Student Exchange Programme: https://geo.smu.edu.sg/study-in-smu/international-student-exchange-programme
+
+[29] Singapore Management University, Exchange/Non-graduating Matriculation 2026: https://matriculation.smu.edu.sg/non-graduating/2026
+
+[30] Singapore University of Technology and Design, Inbound Exchange: https://www.sutd.edu.sg/campus-life/global-experience-and-exchange/student-exchange/inbound/inbound-exchange/

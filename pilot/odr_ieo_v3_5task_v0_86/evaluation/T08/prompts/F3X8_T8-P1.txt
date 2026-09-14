@@ -1,0 +1,1117 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and plan a one-week family beach trip in July for a multigenerational group containing adults, active children and older adults who need adequate rest.
+
+Compare suitable beach destinations, July weather and seasonality, transportation, convenient accommodation, dining, medical and accessibility considerations, activities for different age groups, rest periods and a realistic overall budget range.
+
+Produce a complete one-week itinerary.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T8-P1-01",
+    "criterion": "The report states shared family interaction/balance as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate shared family interaction/balance.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-03",
+    "criterion": "The report provides concrete evidence about how an option supports shared family interaction/balance.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-04",
+    "criterion": "The report provides concrete evidence about how an option reflects optimizing around one age subgroup.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-05",
+    "criterion": "The report directly compares shared family interaction/balance with optimizing around one age subgroup.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-06",
+    "criterion": "At least one recommended option is selected because it supports shared family interaction/balance.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors optimizing around one age subgroup.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-08",
+    "criterion": "The plan contains one executable step that implements shared family interaction/balance.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for shared family interaction/balance.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-10",
+    "criterion": "The report states when optimizing around one age subgroup would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P1-11",
+    "criterion": "One visible chain links shared family interaction/balance to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label F3X8):
+# One-Week Family Beach Trip from Shanghai in July
+
+## Executive recommendation
+
+**Best overall: Sanur, Bali, Indonesia — 7 days/6 nights in one family-friendly base.**
+
+Sanur is the strongest all-round choice because July normally falls in Bali’s dry season, with warm but comparatively manageable temperatures, a warm sea, abundant sunshine, low monthly rainfall, and a reef-protected shoreline that is generally more suitable for young children than Bali’s exposed surf beaches. It also offers:
+
+- No meaningful jet lag from Shanghai: both use UTC+8.
+- A long, mostly level beachfront promenade for walking and cycling.
+- Many restaurants, supermarkets, pharmacies, spas, and private drivers nearby.
+- Family apartments and connecting-room resorts.
+- Easy half-day and full-day excursions without changing hotels.
+- Better odds of usable beach weather than Sanya and Qingdao, and less oppressive heat than Da Nang.
+
+The main disadvantages are the longer international journey, passport- and nationality-dependent entry rules, July peak-season prices, road congestion, variable beach depth at low tide, and inconsistent public lifeguard coverage.
+
+### Best alternatives
+
+1. **Qingdao** — best for a simple domestic trip, cooler weather and the lowest overall cost, but urban beaches are very crowded and July can be wet or foggy.
+2. **Da Nang/Hoi An coast** — best international value if a practical nonstop flight is available, but July is substantially hotter than Bali.
+3. **Sanya/Yalong Bay** — easiest full-service tropical resort holiday within China, but July is wet, very humid and exposed to typhoon disruption. It is not the strongest month for Sanya.
+
+All prices below are **planning ranges in CNY for an unspecified future July**, not live quotes. Air schedules, hotel prices, entry rules and attraction prices must be checked for the actual travel year.
+
+---
+
+## Evidence, date and forecast caveats
+
+This assessment is current to **September 13, 2026**. However:
+
+- The weather figures are historical averages, **not a forecast for a particular July**.
+- A meaningful daily forecast is generally unavailable until roughly 7–14 days before travel.
+- Climate datasets use different rainfall thresholds and averaging periods. For example, Bali sources agree on approximately 53–54 mm of July rain but report anywhere from 2 to 18 “rain days.” That difference probably reflects how a rain day is defined, rather than a real contradiction.
+- The Shanghai route information below describes **likely practical patterns**, not a promise that a particular nonstop service will operate in the eventual travel year.
+- Accommodation prices are realistic market-planning bands for a room configuration that legally accommodates two adults and two children. They are not hotel quotations and may exclude taxes, breakfast, extra beds or cancellation flexibility.
+- Traveler nationality is unknown. No international destination should be booked until every traveler’s eligibility is confirmed through the relevant immigration authority.
+
+For short-range warnings, use Indonesia’s [BMKG](https://www.bmkg.go.id/) [7], Vietnam’s [National Center for Hydro-Meteorological Forecasting](https://nchmf.gov.vn/) [8], or the [China Meteorological Administration](https://www.cma.gov.cn/en/) [9].
+
+---
+
+## Destination comparison at a glance
+
+| Factor | Sanur, Bali | Da Nang/Hoi An coast | Sanya/Yalong Bay | Qingdao |
+|---|---|---|---|---|
+| July air | About 28°C day, 24–25°C night | Roughly 32–36°C day, 25–26°C night | About 31°C day, 26–27°C night | About 30°C day, 20°C night |
+| Typical sea | About 27°C | Planning estimate about 29–30°C | Planning estimate about 29–30°C | Planning estimate about 23–25°C |
+| Rain | About 53–54 mm; generally dry-season showers | About 84–146 mm, depending on dataset | About 286 mm; wettest-month conditions | About 179 mm |
+| Humidity | About 73–80% | About 80–85% | About 72%, but feels hotter in wet conditions | Source reports 95%, probably using a different metric |
+| Sunshine | About 248–307 hours/month | About 317 hours/month in one dataset | Not established in the gathered evidence | About 321 hours/month |
+| Severe weather | Low tropical-cyclone exposure; rough seas and heavy showers still possible | Extreme heat, thunderstorms; tropical cyclones possible, although greater risk is often later | Significant typhoon and heavy-rain exposure | Heavy rain, fog and occasional typhoon remnants |
+| Crowds | International peak season | Domestic summer peak | School holiday demand, though weather suppresses some demand | Very crowded urban bathing season |
+| Beach style | Shallow reef lagoon, tides, boats | Long open sandy urban beach | Tropical resort bays | Cooler urban bathing beaches |
+| July verdict | **Genuinely good** | **Good with heat management** | **Conditional/weak** | **Good for urban beach touring, not guaranteed beach weather** |
+| Indicative 7-day total | ¥24,000–¥105,000 | ¥20,000–¥82,000 | ¥19,000–¥85,000 | ¥16,000–¥70,000 |
+
+The very broad total ranges reflect three different travel styles, airfare volatility and the absence of a fixed budget.
+
+---
+
+# Destination assessments
+
+## 1. Sanur, Bali
+
+### July weather and seasonality
+
+Two historical datasets put July daytime temperatures around **28°C**, nighttime temperatures around **24–25°C**, and sea temperature near **27°C**. Monthly rainfall is approximately **53–54 mm**. Reported humidity is **73–80%**, while sunshine ranges from **248 to 307 hours** [1][2].
+
+The [Denpasar July climate page](https://weather-and-climate.com/Denpasar-July-averages) uses 1976–2025 averages and classifies July among Bali’s better-weather months [2]. A second Copernicus-derived source, updated October 30, 2025, reports a maximum UV index of **11**, which is extreme [1].
+
+The reported 2 versus 18 rain days should be read as a definition issue. In practical terms, July usually has:
+
+- Many dry or mostly dry days.
+- Occasional brief showers.
+- Strong tropical sun even when the air feels breezy.
+- Southeast trade winds and possible choppy conditions outside protected water.
+- No guarantee against heavy rain, lightning, rough-sea warnings or flight disruption.
+
+Bali lies outside the principal western North Pacific typhoon tracks affecting Hainan and Vietnam. It can nevertheless experience strong wind, coastal swell and disruptions from regional weather or volcanic ash.
+
+**July verdict:** genuinely one of the best months for Bali, but also one of the busiest and most expensive.
+
+### Sea and beach safety
+
+Sanur’s offshore reef usually makes the nearshore water less energetic than exposed beaches such as Kuta, Canggu or Uluwatu. It is not risk-free:
+
+- At low tide the water can become extremely shallow, limiting swimming.
+- Coral fragments, rocks, sea grass and occasional marine life make water shoes useful.
+- Boat channels can have stronger current and traffic.
+- Public lifeguard coverage is not continuous along every section.
+- “Calm-looking” water is not a substitute for checking tides, flags and local advice.
+
+For children aged five and eight:
+
+- Choose the beach section directly in front of a reputable resort or staffed beach club.
+- Keep the five-year-old within arm’s reach.
+- Use properly fitted buoyancy aids, not inflatable toys as safety devices.
+- Do not allow swimming around jetties or boat channels.
+- Use the pool when the tide, wind, water quality or supervision is unsuitable.
+
+### Transport from Shanghai
+
+Likely patterns include:
+
+- **Nonstop PVG–DPS when scheduled:** approximately 6–7 hours in the air.
+- **One-stop service:** commonly via Hong Kong, Guangzhou, Xiamen, Kuala Lumpur, Singapore or another regional hub; total scheduled journey can exceed 10–14 hours.
+
+Indicative central-Shanghai-to-Sanur time:
+
+- Home to PVG: 1–1.5 hours.
+- International check-in and security: allow about 2.5–3 hours.
+- Flight: 6–7 hours nonstop.
+- Immigration, baggage and customs: 45–90 minutes, sometimes longer in peak periods.
+- Airport to Sanur: ordinarily 30–60 minutes, but congestion can push it beyond an hour.
+
+**Realistic door-to-door total:** approximately **10–12 hours nonstop** or **14–18 hours with a connection**.
+
+Use a prearranged hotel transfer or licensed airport transport. Grab and Gojek are useful locally, but pickup points and vehicle availability can vary. Ordinary cars may not carry child seats; request appropriate restraints from a private transfer company in advance. Avoid scooters with children.
+
+### Entry and passport issues
+
+Eligibility must be checked for each passport on the official [Indonesian eVisa portal](https://evisa.imigrasi.go.id/) [10]. Depending on nationality, travelers may qualify for visa-free admission, an e-visa, visa on arrival or may need advance approval.
+
+Common conditions for visa-on-arrival-eligible visitors have included:
+
+- Passport validity of at least six months at entry.
+- An onward or return ticket.
+- A 30-day stay, sometimes extendable once.
+- A fee around IDR500,000 per person, approximately ¥220–240 depending on exchange rates.
+
+These are not universal entitlements. Children normally require their own passports and entry authorization.
+
+Bali also applies a foreign-tourist levy, commonly IDR150,000 per person, through the official [Love Bali portal](https://lovebali.baliprov.go.id/) [11]. Verify exemptions and the exact amount for the actual travel date.
+
+Anyone resident in China on a foreign passport must also confirm that leaving China will not invalidate their Chinese visa or residence status and that they possess the right documents to re-enter.
+
+### Accommodation
+
+Sanur is preferable to Kuta for this family because it is quieter, easier to walk, less focused on nightlife and has a calmer shoreline. Central or south Sanur offers the best balance of beach access and dining. North Sanur can be quieter but less convenient for some family facilities.
+
+#### Indicative July room costs for four
+
+| Level | Suitable configuration | Approximate nightly cost |
+|---|---|---:|
+| Value | Two-bedroom apartment or modest family suite, 5–15 minutes from beach | ¥700–1,200 |
+| Comfortable | Two-bedroom serviced suite or two connecting resort rooms with breakfast/pool | ¥1,400–2,200 |
+| Higher comfort | Beachfront connecting rooms, large suite or villa in a luxury resort | ¥2,700–4,500+ |
+
+Potential fits include:
+
+- [Prime Plaza Suites Sanur](https://sanur.pphotels.com/) [16]: practical two-bedroom units, kitchen/living space and strong children’s facilities; the compromise is that it is not directly on the beach, so use the shuttle or arranged transport rather than treating it as a beachfront stay.
+- [Hyatt Regency Bali](https://www.hyatt.com/hyatt-regency/en-US/dpsbl-hyatt-regency-bali) [17]: beachfront grounds and pools; for four, obtain written confirmation of connecting rooms or an approved family configuration.
+- A verified two-bedroom apartment in central/south Sanur: often better value and cozier than two hotel rooms, but check pool fencing, stairs, noise, housekeeping and exact beach route.
+
+Do not assume that a “family room” permits two adults plus two children. Enter both children’s ages when booking and obtain written confirmation covering:
+
+- Maximum occupancy.
+- Bed arrangement.
+- Extra-bed charge.
+- Breakfast for both children.
+- Connecting-room guarantee rather than request.
+- Taxes and service charges.
+- Cancellation terms.
+- Construction or renovation noise.
+
+### Dining and everyday supplies
+
+Sanur has local Indonesian food, pizza, pasta, burgers, Japanese food, seafood and café breakfasts. Child-friendly choices include:
+
+- Nasi goreng or mie goreng with mild seasoning.
+- Chicken satay with sauce on the side.
+- Grilled chicken or fish with rice.
+- Soup, eggs, pancakes, toast and fresh fruit.
+- Pizza and pasta for familiar-food evenings.
+
+Indicative costs for four:
+
+- Simple local warung meal: **¥140–280**.
+- Comfortable casual restaurant: **¥300–550**.
+- Resort or premium beachfront restaurant: **¥600–1,000+**.
+- Groceries, fruit, snacks and water for a week: **¥350–700**, depending on imported products.
+
+Central Sanur has supermarkets and numerous Circle K, Indomaret and similar convenience stores. Use sealed or properly treated water for drinking and tooth brushing. Choose busy restaurants with good food turnover; ensure meat and seafood are thoroughly cooked. Ice is generally lower risk in reputable hotels and established restaurants than at improvised stalls.
+
+### Medical care and emergencies
+
+Sanur has pharmacies and outpatient clinics; more advanced private care is available in the Denpasar area. [Bali International Hospital](https://baliinternationalhospital.com/) [18] is a relevant Sanur-area provider, but current specialties, pediatric coverage, insurance billing and emergency capability should be confirmed before travel.
+
+Common numbers to save and reconfirm with the hotel:
+
+- **112:** general emergency where locally active.
+- **110:** police.
+- **118/119:** ambulance or medical emergency services, depending on local routing.
+
+Response and English-language capability can vary, so the hotel front desk and travel insurer’s assistance line may be the fastest practical coordinators.
+
+Insurance should cover:
+
+- Private hospitalization.
+- Pediatric treatment.
+- Medical evacuation.
+- Trip interruption and weather disruption.
+- Baggage delay.
+- Water activities that will actually be undertaken.
+- Any pre-existing conditions disclosed as required.
+
+Many policies exclude scooters, unlicensed driving, high-risk water sports, intoxication and known storms occurring before insurance was purchased.
+
+### Activities
+
+Good family options include:
+
+- Sanur beach, pool and promenade cycling.
+- Short outrigger or glass-bottom boat outing only in suitable weather and with child lifejackets.
+- [Bali Bird Park](https://www.bali-bird-park.com/) [15].
+- A short temple or craft-village visit.
+- A family cooking activity.
+- [Waterbom Bali](https://www.waterbom-bali.com/) [14], with adults supervising separately where rides have age or height restrictions.
+- Museum, café, massage rotation or indoor play on rainy afternoons.
+
+Avoid creating a trip dominated by long cross-island drives. Ubud, Uluwatu and Bali’s northern attractions can each involve much longer transfers than map distance suggests.
+
+---
+
+## 2. Da Nang and the Hoi An coast, Vietnam
+
+### July weather and seasonality
+
+The two gathered datasets differ considerably:
+
+- VietnamOnline’s 2010–2024 averages report **31.6°C highs, 24.8°C lows, 83.5 mm rain, six rainy days and 80.1% humidity** [3].
+- A Copernicus-derived page updated October 31, 2025 reports **36°C highs, 26°C lows, 146 mm rain, 18 rain days, 85% humidity and 317 sunshine hours** [4].
+
+Rather than selecting one number, plan for:
+
+- Daytime temperatures around **32–36°C**.
+- Warm nights around **25–26°C**.
+- Very warm sea, approximately **29–30°C** as a general planning estimate.
+- High humidity and extreme UV.
+- Heavy showers or thunderstorms despite strong sunshine.
+
+VietnamOnline recommends avoiding strenuous outdoor activity around 11:00–14:00 and using beaches before about 09:30 or from late afternoon [3]. This schedule is especially appropriate with a five-year-old.
+
+July is within the tropical-cyclone season, though central Vietnam’s highest storm risk is often later in the year. A cyclone or tropical disturbance can still cause dangerous surf and schedule disruption.
+
+**July verdict:** viable and good value, but only with strict heat management.
+
+### Beach safety and crowds
+
+My Khe and nearby beaches are long, sandy and convenient. They are also open-water beaches where waves and currents can change. Swim only:
+
+- In marked zones.
+- During staffed hours.
+- When flags permit.
+- Well away from fishing boats and drainage outlets.
+- Before lightning or storm cells arrive.
+
+Da Nang is a major domestic summer destination, so beachfront areas can be busy at sunrise and late afternoon. Midday may appear quieter because of the heat rather than because conditions are better.
+
+### Transport
+
+Likely options:
+
+- A seasonal or year-dependent nonstop PVG–DAD service, around four hours in the air.
+- One-stop flights through Guangzhou, Shenzhen, Hong Kong, Hanoi or Ho Chi Minh City.
+
+Approximate door-to-door time:
+
+- **Nonstop:** 7.5–9 hours.
+- **Connecting:** 11–16 hours.
+
+Transfers:
+
+- Da Nang airport to My Khe/An Thuong: roughly 15–30 minutes.
+- Airport to a resort south of the city: approximately 25–40 minutes.
+- Airport to An Bang/Hoi An: approximately 45–70 minutes.
+
+Grab and metered taxis are convenient. For Hoi An or Ba Na Hills, a private car is easier with two children. Request child restraints in advance.
+
+### Entry
+
+Nationality-dependent eligibility must be checked at Vietnam’s official [eVisa portal](https://evisa.gov.vn/) [12]. Vietnam has offered electronic visas to a broad range of nationalities for stays of up to 90 days, with single- and multiple-entry choices, but that does not justify assuming eligibility for unknown passports.
+
+Historically quoted government fees have been around US$25 for single entry and US$50 for multiple entry. Confirm:
+
+- Passport eligibility.
+- Required remaining validity.
+- Exact legal name and passport number.
+- Approved entry airport.
+- Processing time.
+- Whether a child needs an individual eVisa.
+- Re-entry documentation for China.
+
+Avoid third-party websites styled to look official.
+
+### Accommodation, dining and activities
+
+Best areas:
+
+- **My Khe/An Thuong:** walkable dining and strong value, but more urban and potentially noisy.
+- **Southern beachfront resort strip:** quieter and more self-contained, but greater reliance on taxis.
+- **An Bang:** attractive for a relaxed village feel, but the longer airport transfer and variable road/sidewalk conditions reduce convenience.
+
+Indicative nightly prices for four:
+
+- Value apartment/family room: **¥500–1,000**.
+- Comfortable resort or two-bedroom residence: **¥1,000–1,800**.
+- Higher-comfort beachfront resort: **¥2,000–3,500+**.
+
+Family meals generally cost:
+
+- Local noodles, rice, bánh mì or casual seafood: **¥120–250 for four**.
+- Comfortable restaurant: **¥250–500**.
+- Premium resort meal: **¥550–1,000+**.
+
+Suitable activities include My Khe beach, Hoi An’s old town in the late afternoon, the Cham Museum, a lantern craft, Ba Na Hills, swimming pools and light boat activities in safe conditions. Ba Na Hills can be much cooler—VietnamOnline cites roughly **17–20°C**—but is a long, busy and expensive outing [3]. Marble Mountains involve stairs and heat and are less suitable at midday.
+
+Emergency numbers are commonly:
+
+- **113:** police.
+- **114:** fire.
+- **115:** ambulance.
+
+Travel insurance should include private treatment and evacuation. Use bottled or treated water, established restaurants and fully cooked seafood.
+
+---
+
+## 3. Sanya, Hainan
+
+### July weather and seasonality
+
+Sanya averages about **31°C by day and 27°C at night** in July. The gathered 1976–2025 dataset reports approximately **286 mm of rain over 12 days**, describing July as the wettest month [5]. The sea is typically very warm, approximately **29–30°C**, but warm water does not mean safe water.
+
+Conditions can include:
+
+- Intense sun and high heat index.
+- Heavy late-day downpours.
+- Thunderstorms.
+- Tropical-cyclone watches and warnings.
+- Rough surf, beach closures and flight disruption.
+
+**July verdict:** possible for a resort-and-pool holiday, but not the best choice when the primary aim is reliable beach weather.
+
+### Yalong Bay versus Haitang Bay
+
+- **Yalong Bay** is the stronger beach choice for this family. It has a mature resort environment and usually offers more practical swimming access, subject to daily conditions.
+- **Haitang Bay** has newer luxury resorts and major attractions but is known for stronger open-water conditions. Some sections or resorts restrict or discourage sea swimming. Choose Haitang mainly for the resort, pools, aquarium and water park—not on the assumption of safe daily ocean swimming.
+
+Never enter the sea when a resort has closed its beach or raised warning flags.
+
+### Transport and local logistics
+
+Shanghai–Sanya nonstop flying time is normally around 3–3.5 hours when direct service is available.
+
+Door-to-door estimate:
+
+- Central Shanghai to departure airport: 1–1.5 hours.
+- Domestic-airport allowance: 2–2.5 hours.
+- Flight: 3–3.5 hours.
+- Baggage and transfer: 1–1.5 hours.
+
+**Total:** about **7–8.5 hours**.
+
+Sanya Phoenix Airport to:
+
+- Sanya Bay: about 20–35 minutes.
+- Yalong Bay: about 35–55 minutes.
+- Haitang Bay: about 45–75 minutes.
+
+A resort transfer or ride-hailing car is easiest. Confirm child restraints if wanted.
+
+For travelers already lawfully in China, there is no separate Hainan immigration process for an ordinary domestic trip. Foreign nationals should carry their passports, ensure the hotel can complete registration and check any travel-status questions with China’s [National Immigration Administration](https://en.nia.gov.cn/) [13].
+
+### Accommodation and costs
+
+Indicative July rates for a legal family-of-four configuration:
+
+- Value hotel/apartment: **¥700–1,400 per night**.
+- Comfortable Yalong Bay family resort: **¥1,400–2,600**.
+- Higher-comfort suite or Haitang Bay luxury resort: **¥2,800–5,000+**.
+
+Family resort dining can be expensive. Budget:
+
+- Casual local meal: **¥180–350 for four**.
+- Comfortable restaurant: **¥350–700**.
+- Luxury-resort buffet or premium seafood: **¥700–1,300+**.
+
+Activities include pools, water parks, aquariums, Nanshan cultural tourism, rainforest attractions and resort children’s clubs. Rainy-day alternatives are stronger in Haitang Bay, but travel between bays can be time-consuming.
+
+Emergency numbers in China:
+
+- **110:** police.
+- **119:** fire.
+- **120:** ambulance.
+
+Yalong Bay has access to Sanya hospitals, while the Hainan branch of the PLA General Hospital is in the Haitang Bay area. Confirm insurance direct-billing arrangements; many facilities require payment first.
+
+---
+
+## 4. Qingdao
+
+### July weather and seasonality
+
+The gathered Qingdao source, updated October 30, 2025, reports:
+
+- **30°C maximum, 25°C average and 20°C minimum**.
+- **179 mm precipitation over nine rainy days**.
+- **321 sunshine hours**.
+- Maximum UV index of **11** [6].
+
+Its 95% humidity figure likely uses a different measurement approach than the other destination datasets and should not be compared literally. The practical expectation is warm, humid coastal weather with possible fog, heavy rain and sunny spells.
+
+The sea is generally around **23–25°C** as a planning estimate: swimmable for many people, but noticeably cooler than Bali, Da Nang or Sanya.
+
+July risks include:
+
+- Heavy showers and local flooding.
+- Fog or low cloud.
+- Typhoon remnants or coastal wind.
+- Green-tide algae in some years.
+- Jellyfish or other seasonal marine warnings.
+- Extremely crowded bathing beaches.
+
+**July verdict:** a reasonable beach-and-city trip, especially for avoiding international formalities, but not a reliably dry tropical holiday.
+
+### Beach choice and safety
+
+- **Shinan urban beaches:** convenient for city attractions but often very crowded.
+- **Huangdao/Golden Beach:** more expansive and more resort-like, but farther from central-city attractions and the airport.
+
+Use only officially open bathing beaches and stay inside marked swimming areas. Follow closure notices, lifeguard directions and jellyfish or water-quality advisories.
+
+### Transport from Shanghai
+
+Likely options:
+
+- Frequent nonstop flights from Shanghai airports, around 1.5–2 hours in the air.
+- High-speed rail from Shanghai Hongqiao, generally around 6–7.5 hours depending on service and destination station.
+
+Estimated door-to-door:
+
+- Air: **5–6.5 hours**.
+- Rail: **8–9.5 hours**, but with less airport procedure and more freedom to move during the trip.
+
+Qingdao Jiaodong Airport to Shinan can take roughly 45–75 minutes; Huangdao may take 60–100 minutes depending on traffic and route. Qingdao has useful metro coverage, though taxis or ride-hailing are easier with tired children and beach gear.
+
+### Accommodation, dining and activities
+
+Indicative nightly family costs:
+
+- Value apartment or family room: **¥600–1,200**.
+- Comfortable hotel or two-room arrangement: **¥1,200–2,200**.
+- Higher-comfort seafront accommodation: **¥2,400–4,000+**.
+
+Meals:
+
+- Dumplings, noodles or home-style dishes: **¥120–250 for four**.
+- Comfortable local seafood meal: **¥300–700**.
+- Premium hotel or live-seafood dining: **¥700–1,200+**.
+
+Suitable activities include beach time, Qingdao Aquarium, Polar Ocean World, the Olympic Sailing Center, coastal walks, a short Laoshan excursion and the Tsingtao Brewery Museum. In bad weather, aquarium and museum options are stronger than in a remote beach resort.
+
+Emergency numbers are China’s **110, 119 and 120**. Qingdao has several major tertiary hospitals and generally the easiest medical and language logistics for a Shanghai-based domestic family.
+
+---
+
+# Accommodation comparison
+
+| Destination | Best family area | Strongest practical configuration | Quiet/rest considerations | July family rate |
+|---|---|---|---|---:|
+| Sanur | Central or south Sanur | Two-bedroom apartment or guaranteed connecting rooms | Avoid rooms beside road, bar, pool pump or construction | ¥700–4,500+ |
+| Da Nang | Southern My Khe or quieter resort strip | Two-bedroom residence or family suite | An Thuong can have traffic/nightlife noise | ¥500–3,500+ |
+| Sanya | Yalong Bay | Resort family room or connecting rooms | Ask about evening shows and renovation | ¥700–5,000+ |
+| Qingdao | Shinan for sightseeing; Huangdao for beach | Serviced apartment or two rooms | Beachfront public areas can be noisy in summer | ¥600–4,000+ |
+
+### Booking checklist for a family of four
+
+Before paying, obtain confirmation of:
+
+1. Legal occupancy for two adults, one eight-year-old and one five-year-old.
+2. Exact beds—not simply “bed subject to availability.”
+3. Connecting rooms if two rooms are required.
+4. Balcony locks and window safety.
+5. Pool depth, fencing and supervision.
+6. Breakfast inclusion for both children.
+7. Kitchen equipment if booking an apartment.
+8. Laundry access.
+9. Walking route to the beach, including road crossings.
+10. Noise from bars, events, construction and adjoining rooms.
+11. Refundability during severe weather or flight disruption.
+12. Taxes, service charges, resort fees and deposits.
+
+---
+
+# Comparative trip budgets
+
+## Seven-day/six-night total ranges for four
+
+| Destination | Value | Comfortable | Higher comfort |
+|---|---:|---:|---:|
+| Qingdao | ¥16,000–28,000 | ¥27,000–43,000 | ¥45,000–70,000 |
+| Sanya | ¥19,000–32,000 | ¥31,000–50,000 | ¥50,000–85,000 |
+| Da Nang | ¥20,000–34,000 | ¥32,000–50,000 | ¥52,000–82,000 |
+| Sanur, Bali | **¥24,000–38,000** | **¥40,000–61,000** | **¥66,000–105,000** |
+
+### What changes the total most
+
+- Nonstop versus connecting flights.
+- Weekend and school-holiday departure dates.
+- Whether checked baggage and seat selection are included.
+- One family suite versus two rooms.
+- Beachfront versus a short shuttle or walk.
+- Breakfast and children’s meal inclusions.
+- Refundable versus prepaid rates.
+- Private drivers and child-seat requests.
+- Water parks and organized excursions.
+- Nationality-dependent visas and levies.
+- Exchange rates and card fees.
+
+## Itemized Bali budget
+
+### Value trip
+
+| Item | Estimated cost |
+|---|---:|
+| Four round-trip Shanghai–Bali economy fares | ¥10,000–16,000 |
+| Six nights, family apartment/suite | ¥4,800–7,200 |
+| Airport and local transport | ¥1,000–1,600 |
+| Food and groceries | ¥3,000–4,500 |
+| Activities | ¥1,500–3,000 |
+| Insurance | ¥400–800 |
+| Visa/levy allowance if applicable | ¥300–1,300 |
+| Contingency | ¥2,200–3,600 |
+| **Total** | **about ¥24,000–38,000** |
+
+### Comfortable trip
+
+| Item | Estimated cost |
+|---|---:|
+| Four direct or well-timed economy fares | ¥16,000–24,000 |
+| Six nights, two-bedroom suite or connecting rooms | ¥8,400–13,200 |
+| Private transfers and several driver days | ¥1,800–3,000 |
+| Food | ¥5,000–7,500 |
+| Activities | ¥3,000–5,000 |
+| Insurance | ¥800–1,600 |
+| Visa/levy allowance | ¥300–1,300 |
+| Contingency | ¥3,600–5,800 |
+| **Total** | **about ¥40,000–61,000** |
+
+### Higher-comfort trip
+
+| Item | Estimated cost |
+|---|---:|
+| Flexible direct fares or premium economy where available | ¥24,000–36,000 |
+| Six nights in luxury beachfront rooms or suite | ¥16,000–27,000 |
+| Private transport and premium transfers | ¥3,500–6,000 |
+| Food | ¥8,000–12,000 |
+| Activities and private excursions | ¥6,000–10,000 |
+| Higher-limit insurance | ¥1,600–3,000 |
+| Visa/levy allowance | ¥300–1,300 |
+| Contingency | ¥6,000–10,000 |
+| **Total** | **about ¥66,000–105,000** |
+
+If all four travelers require visa on arrival plus the Bali levy, allow approximately **¥1,100–1,250 total**, subject to eligibility and exchange rates.
+
+---
+
+# Recommended seven-day Sanur itinerary
+
+## Trip assumptions
+
+- **Seven calendar days and six hotel nights.**
+- Day 1 is the outbound travel and arrival day.
+- Day 7 is the return travel day.
+- All six nights are in Sanur; there is no hotel change.
+- The itinerary assumes a flight arriving by mid-afternoon and a return flight leaving in the late afternoon or evening.
+- If actual flight times differ, remove activities rather than compressing them.
+- Shanghai and Bali are both UTC+8, so no clock-change jet lag is expected. Travel fatigue still warrants a light first day.
+- Daily cost estimates below cover local transport, meals and activities for four, **excluding flights and accommodation**.
+
+## Day 1 — Shanghai to Sanur
+
+### Morning
+
+- Simple breakfast at home.
+- Travel to PVG with a generous buffer.
+- Keep one set of children’s clothes, swimwear, medication and basic toiletries in hand luggage.
+
+### Afternoon
+
+- Fly to Denpasar.
+- Complete immigration, collect baggage and meet a prebooked driver.
+- Transfer to Sanur, normally 30–60 minutes but potentially longer in traffic.
+- Check in and inspect balcony locks, room configuration and pool access.
+
+### Evening
+
+- Early dinner near the hotel, ideally around Jalan Danau Tamblingan or the central Sanur beachfront.
+- Choose mild nasi goreng, grilled chicken, noodles, soup or pizza.
+- Ten-minute orientation walk only if the children still have energy.
+- Bedtime close to the normal Shanghai schedule.
+
+**Local cost:** ¥500–900.  
+**Weather alternative:** none needed beyond using covered airport transport.  
+**Do not add:** sunset temple visits or a second cross-island transfer.
+
+---
+
+## Day 2 — Sanur beach and pool orientation
+
+### Morning
+
+- Breakfast at the hotel or a nearby café.
+- Beach from approximately 08:00–10:00.
+- Check tide and flag conditions first.
+- Adults alternate close supervision of the five-year-old.
+- Use rash guards, hats and SPF 50+.
+
+### Midday and afternoon
+
+- Early lunch near the hotel.
+- Rest in the room from about **12:30–15:30**.
+- The younger child can nap; the eight-year-old can read, draw or watch a quiet program.
+- Pool from 16:00, provided it is supervised and not affected by lightning.
+
+### Evening
+
+- Short promenade walk.
+- Dinner in central Sanur.
+- Purchase bottled water, fruit, yogurt and snacks from a supermarket or convenience store.
+
+**Local cost:** ¥700–1,200.  
+**Rain alternative:** hotel kids’ room, a café with indoor seating, family board games and an early spa rotation for one adult at a time.
+
+---
+
+## Day 3 — Bali Bird Park and a light cultural stop
+
+### Morning
+
+- Depart around 08:00 by prebooked private car with suitable child restraints.
+- Visit Bali Bird Park for approximately 2.5–3 hours.
+- Keep the visit flexible; do not try to see every scheduled presentation.
+- Carry water and use mosquito repellent.
+
+### Afternoon
+
+- Early lunch in a reputable restaurant near the park or in the Sukawati/Batuan area.
+- Optional 30–45-minute temple or craft stop only if both children remain comfortable.
+- Return to Sanur by approximately 14:00.
+- Room rest until at least 16:30.
+
+### Evening
+
+- Quiet dinner close to the hotel.
+- Optional brief beachfront walk.
+
+**Local cost:** approximately ¥1,600–2,600, including admissions, car and meals.  
+**Rain alternative:** the bird park can function in intermittent rain, but in severe rain replace it with an indoor craft or cooking activity and keep the afternoon at the hotel.  
+**Safety:** do not let children touch wildlife without staff direction.
+
+---
+
+## Day 4 — Slow Sanur day and family cycling
+
+### Morning
+
+- Breakfast followed by a short promenade cycle or walk.
+- Use children’s helmets.
+- A five-year-old should use an appropriate child seat, trailer or correctly sized cycle rather than improvising.
+- Stop for juice or fruit in the Sindhu or central Sanur area.
+
+### Afternoon
+
+- Lunch, then mandatory downtime from approximately 12:30–15:30.
+- Pool or shallow beach play later in the afternoon, depending on tide.
+- One adult can take a massage while the other supervises, then swap if desired.
+
+### Evening
+
+- Early seafood or Indonesian dinner.
+- Optional low-key family cooking activity if it ends by about 20:30.
+
+**Local cost:** ¥900–1,600.  
+**Rain alternative:** cooking class, indoor play space, café and hotel pool only after lightning has fully cleared.
+
+---
+
+## Day 5 — Waterbom Bali
+
+### Morning
+
+- Leave around 08:15–08:30 for Waterbom.
+- Travel may take 35–70 minutes depending on traffic.
+- Arrive near opening time to reduce queues and heat exposure.
+- Establish a fixed meeting point.
+- Adults divide so one can stay with the five-year-old while the other accompanies the eight-year-old on appropriate rides.
+
+### Afternoon
+
+- Lunch inside the park.
+- Take a shaded rest period after lunch.
+- Leave by approximately 15:00–15:30 rather than staying until exhaustion.
+- Return to Sanur for showers and room rest.
+
+### Evening
+
+- Simple dinner near the hotel.
+- Early bedtime.
+
+**Local cost:** approximately ¥1,800–2,800.  
+**Rain alternative:** light rain may not stop all operations, but lightning or severe weather should cancel the water-park day. Substitute an indoor museum, craft activity or extended hotel day.  
+**Booking note:** confirm current opening days, height restrictions and refund terms through the official Waterbom site [14].
+
+---
+
+## Day 6 — Flexible beach morning and Nusa Dua or full Sanur rest day
+
+This day should remain flexible until the short-range forecast is known.
+
+### Option A: good weather and energetic family
+
+#### Morning
+
+- Private car to Nusa Dua after breakfast.
+- Use a resort-accessible or public beach section where swimming is officially permitted.
+- Stay only through late morning.
+- Do not assume all coastal areas are equally calm.
+
+#### Afternoon
+
+- Lunch in Nusa Dua.
+- Brief indoor stop at a shopping or cultural venue.
+- Return to Sanur by about 15:00 for room rest and packing.
+
+#### Evening
+
+- Final dinner in Sanur, preferably within walking distance of the hotel.
+
+### Option B: fatigue, rain or rough sea
+
+- Remain in Sanur.
+- Late breakfast.
+- Pool or beach only if conditions are suitable.
+- Long midday rest.
+- Souvenir shopping, café stop and packing.
+- Adults can alternate spa time without moving the children around the island.
+
+**Local cost:** ¥900–1,800.  
+**Important:** do not replace this with a Nusa Penida speedboat day. The boat journey, sea variability, road conditions and long excursion structure are poor matches for a restful trip with a five-year-old.
+
+---
+
+## Day 7 — Sanur to Shanghai
+
+### Morning
+
+- Breakfast and one final short beach walk.
+- No swimming if check-out or flight timing would create a rush.
+- Pack wet clothes in separate bags.
+- Confirm passports, entry documents for China, medications and charging equipment.
+
+### Afternoon/evening
+
+- Check out.
+- Allow substantial traffic contingency for the airport.
+- Arrive approximately three hours before an international departure.
+- Eat a simple pre-flight meal and maintain hydration.
+
+**Local cost:** ¥300–700, excluding airfare.  
+**If the flight leaves early:** remove the beach walk and use a packed breakfast.  
+**If the flight leaves late:** request late checkout or store luggage; do not spend the entire day in direct sun before a long flight.
+
+---
+
+# Health, safety and accessibility plan
+
+## Sun and heat
+
+Bali’s July maximum UV index is reported around **11**, Da Nang around **14**, and Qingdao around **11** [1][4][6]. For both children:
+
+- Apply broad-spectrum SPF 50+ 20–30 minutes before exposure.
+- Reapply after swimming and at least every two hours.
+- Use long-sleeved rash guards, hats and sunglasses.
+- Prioritize beach time before 10:00 and after 16:00.
+- Carry water and oral rehydration salts.
+- Stop activity for headache, unusual irritability, nausea, dizziness, cramps or reduced urination.
+
+Never leave a child in a parked vehicle, even briefly.
+
+## Water safety
+
+- An adult should remain within arm’s reach of the five-year-old in the sea.
+- Assign one supervising adult at a time; do not rely on general group awareness.
+- Use certified flotation devices of the correct size.
+- Check flags, tides and local warnings every day.
+- Leave the water immediately for thunder or lightning.
+- Do not swim after dark, around boats or in closed sections.
+- Confirm lifeguard coverage; never assume a hotel beach is continuously guarded.
+- Resort pools also require active adult supervision.
+
+## Food, water and minor illness
+
+Pack or know the local equivalent of:
+
+- Children’s fever medication with dosing instructions.
+- Thermometer.
+- Oral rehydration salts.
+- Plasters and antiseptic.
+- Motion-sickness treatment after medical advice.
+- Insect repellent.
+- Any regular medicine in original packaging.
+- Copies of prescriptions and insurance details.
+
+Seek medical care promptly for breathing difficulty, persistent vomiting, dehydration, severe abdominal pain, blood in stool, high fever, head injury or a significant marine sting.
+
+## Low-effort transport and accessibility
+
+No mobility needs were specified, but a lower-effort design benefits a five-year-old:
+
+- Use one hotel for all six nights.
+- Prebook airport transfers.
+- Use private cars for excursion days rather than multiple transport changes.
+- Carry a compact folding stroller if the five-year-old still uses one when tired.
+- Expect uneven pavements and occasional steps in Bali and Hoi An.
+- Sanur’s promenade is relatively easy but not perfectly level or obstruction-free.
+- Avoid scooters.
+- Keep one completely flexible day.
+
+---
+
+# Booking priorities
+
+## Before booking flights
+
+1. Confirm passport nationality and individual entry eligibility.
+2. Check passport expiry and blank-page requirements.
+3. Confirm the right to re-enter China after the trip.
+4. Compare nonstop flights on the exact dates, including baggage and seat-selection costs.
+5. Reject connections with very short transfers or overnight airport changes.
+6. Buy insurance as soon as non-refundable costs are committed.
+
+## Four to eight months before travel
+
+- Reserve a refundable family room, apartment or guaranteed connecting rooms.
+- Ask about July construction and event noise.
+- Request airport transfer pricing and child restraints.
+- Reserve preferred airline seats together.
+
+## One to two months before travel
+
+- Complete any visa process within the official validity window.
+- Pay the Bali levy through the official channel if applicable.
+- Reserve Waterbom and Bali Bird Park only on changeable terms.
+- Obtain written medical advice for any needed travel medicine.
+
+## Seven to fourteen days before travel
+
+- Monitor BMKG forecasts and marine warnings.
+- Recheck airline schedules.
+- Confirm transfer driver and hotel occupancy.
+- Review cancellation rights.
+- Shift outdoor plans away from the wettest or windiest forecast days.
+
+---
+
+# Packing list
+
+## Documents and money
+
+- Passports and copies.
+- Visa or eVisa evidence.
+- Chinese re-entry documents if relevant.
+- Travel-insurance certificate and assistance number.
+- Hotel and return-flight confirmations.
+- Payment cards plus modest cash.
+- Children’s emergency contact cards.
+
+## Beach and weather gear
+
+- SPF 50+ sunscreen in sufficient quantity.
+- UV-protective rash guards.
+- Wide-brim hats and sunglasses.
+- Proper child flotation aids.
+- Water shoes.
+- Compact rain jackets or ponchos.
+- Refillable bottles.
+- Waterproof phone pouch.
+- Dry bag for medicines and documents.
+
+## Family comfort
+
+- Compact stroller if still useful.
+- Familiar snacks.
+- Small activity kit for flights and midday rest.
+- Lightweight pajamas for air-conditioned rooms.
+- Thin sweater for aircraft and heavily air-conditioned spaces.
+- Laundry bag and a few detergent sheets.
+
+## Medical
+
+- Regular prescriptions in original packages.
+- Children’s pain/fever medication.
+- Oral rehydration salts.
+- Thermometer.
+- Insect repellent.
+- Basic wound-care supplies.
+- Motion-sickness medication only if suitable for the child’s age and health.
+
+---
+
+# Final decision
+
+For this family and an unspecified July, **Sanur offers the best balance of weather reliability, warm and relatively sheltered water, family accommodation, dining convenience, age-appropriate activities and adequate downtime**. Its higher transport cost is compensated by a substantially better seasonal fit than Sanya and more comfortable temperatures than Da Nang.
+
+Choose a different destination if one of these priorities dominates:
+
+- **Choose Qingdao** if avoiding international immigration, minimizing cost and shortening travel are most important.
+- **Choose Da Nang** if a convenient nonstop fare is available and the family tolerates intense heat.
+- **Choose Sanya** if the priority is a self-contained Chinese resort with pools and indoor attractions, and the family accepts that July beach conditions may be poor.
+
+For Bali, the best-value version is not the cheapest room or the busiest itinerary. It is a **two-bedroom Sanur base, direct flights if affordable, two paid family attractions, two slow beach/pool days, one flexible weather day and protected midday rest every day**.
+
+### Sources
+
+[1] NomadSeason, “July Weather in Denpasar: Temperatures, Humidity, Sunshine, and UV Index Guide,” updated October 30, 2025: https://nomadseason.com/weather/indonesia/bali/denpasar-july.html
+
+[2] Weather and Climate, “Denpasar Weather in July: Temperature & Rainfall,” including 1976–2025 averages: https://weather-and-climate.com/Denpasar-July-averages
+
+[3] VietnamOnline, “Da Nang Weather in July: Historical Temperature, Rainfall & Humidity,” 2010–2024 averages: https://www.vietnamonline.com/weather/da-nang/july.html
+
+[4] NomadSeason, “July Weather in Da Nang: Temperatures, Humidity, Sunshine, and UV Index Guide,” updated October 31, 2025: https://nomadseason.com/weather/vietnam/da-nang/da-nang-july.html
+
+[5] Weather and Climate, “Sanya Weather in July: Temperature & Rainfall,” including 1976–2025 averages: https://weather-and-climate.com/sanya-July-averages
+
+[6] NomadSeason, “July Weather in Qingdao: Temperatures, Humidity, Sunshine, and UV Index Guide,” updated October 30, 2025: https://nomadseason.com/weather/china/shandong/qingdao-july.html
+
+[7] Indonesia Agency for Meteorology, Climatology and Geophysics—BMKG: https://www.bmkg.go.id/
+
+[8] Vietnam National Center for Hydro-Meteorological Forecasting: https://nchmf.gov.vn/
+
+[9] China Meteorological Administration: https://www.cma.gov.cn/en/
+
+[10] Directorate General of Immigration, Indonesia—official eVisa portal: https://evisa.imigrasi.go.id/
+
+[11] Bali Provincial Government—official Love Bali tourist-levy portal: https://lovebali.baliprov.go.id/
+
+[12] Vietnam Immigration Department—official eVisa portal: https://evisa.gov.vn/
+
+[13] National Immigration Administration of China: https://en.nia.gov.cn/
+
+[14] Waterbom Bali—official site: https://www.waterbom-bali.com/
+
+[15] Bali Bird Park—official site: https://www.bali-bird-park.com/
+
+[16] Prime Plaza Suites Sanur—official site: https://sanur.pphotels.com/
+
+[17] Hyatt Regency Bali—official site: https://www.hyatt.com/hyatt-regency/en-US/dpsbl-hyatt-regency-bali
+
+[18] Bali International Hospital—official site: https://baliinternationalhospital.com/

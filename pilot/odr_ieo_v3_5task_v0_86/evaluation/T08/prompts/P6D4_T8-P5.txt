@@ -1,0 +1,1092 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and plan a one-week family beach trip in July for a multigenerational group containing adults, active children and older adults who need adequate rest.
+
+Compare suitable beach destinations, July weather and seasonality, transportation, convenient accommodation, dining, medical and accessibility considerations, activities for different age groups, rest periods and a realistic overall budget range.
+
+Produce a complete one-week itinerary.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T8-P5-01",
+    "criterion": "The report states self-planned/deeper experience as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate self-planned/deeper experience.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-03",
+    "criterion": "The report provides concrete evidence about how an option supports self-planned/deeper experience.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-04",
+    "criterion": "The report provides concrete evidence about how an option reflects generic mass-tour itinerary.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-05",
+    "criterion": "The report directly compares self-planned/deeper experience with generic mass-tour itinerary.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-06",
+    "criterion": "At least one recommended option is selected because it supports self-planned/deeper experience.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors generic mass-tour itinerary.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-08",
+    "criterion": "The plan contains one executable step that implements self-planned/deeper experience.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for self-planned/deeper experience.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-10",
+    "criterion": "The report states when generic mass-tour itinerary would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-P5-11",
+    "criterion": "One visible chain links self-planned/deeper experience to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label P6D4):
+# One-Week Multigenerational Family Beach Trip from Shanghai in July
+
+## Executive recommendation
+
+### Best overall value: Da Nang, Vietnam
+
+**Da Nang is the strongest value choice if every traveler can enter Vietnam easily and the selected July week has a convenient nonstop flight—or a reasonably timed one-stop itinerary—from Shanghai.** It combines:
+
+- A broad, sandy beach suitable for early-morning and late-afternoon swimming.
+- Generally favorable July sea conditions compared with many Southeast Asian alternatives.
+- A wide range of good-value four- and five-star hotels.
+- Short airport-to-beach transfers.
+- Affordable, varied food.
+- Strong options for children, adults, and older adults.
+- Easy cultural excursions to Hoi An, Son Tra Peninsula, and Ba Na Hills.
+- Enough indoor facilities and resort infrastructure to cope with heat or brief rain.
+
+Two Da Nang sources disagree somewhat about temperature and rainfall intensity, but both support the central conclusion: **July is hot, humid, sunny, and suitable for a beach trip if outdoor activity is avoided around midday.** VietnamOnline reports approximately **24.8–31.6°C, 83.5 mm of rain, six rainy days, and 80.1% humidity** [1]. Local Vietnam places July deep in central Vietnam’s dry season and describes the sea as warm and generally calm, while also warning about peak-season crowds and intense heat [2].
+
+### Best domestic alternative: Yalong Bay, Sanya
+
+Choose **Yalong Bay, Sanya** instead when:
+
+- Visa or passport uncertainty makes an international trip risky.
+- An older traveler needs the simplest possible journey and Chinese-language care.
+- A convenient Da Nang air itinerary is unavailable.
+- The family values a self-contained resort more than cultural sightseeing.
+
+Sanya is easier administratively and has frequent nonstop flights from Shanghai, but July is hotter, wetter, and more exposed to tropical-cyclone disruption. Yalong Bay is preferable to Haitang Bay for routine family swimming; Haitang Bay is better only when the resort’s pools and kids’ facilities—not the sea—are the main attraction.
+
+### Premium ease-and-standards alternative: Okinawa, Japan
+
+Choose **Okinawa** when:
+
+- The budget is materially higher.
+- Clean infrastructure, orderly transport, and service standards outweigh price.
+- The group can obtain the necessary Japanese entry permission.
+- A short nonstop flight is especially valuable.
+
+The researched PVG–Okinawa route took about **2 hours 40 minutes**, but operated only about four times weekly as of September 2026, reducing date flexibility [3]. Accommodation, meals, ground transport, and larger family-room configurations are usually more expensive than in Da Nang or Sanya.
+
+### Conditional recommendation
+
+Da Nang remains the best-value winner only if all of the following are satisfied:
+
+1. Every passport holder has confirmed Vietnam entry eligibility.
+2. Total scheduled journey time is approximately **six hours or less each way**, or the connection is easy enough for the older travelers.
+3. July return airfare is no more than roughly **CNY 3,000–3,500 per person** before optional baggage and seat fees.
+4. A suitable beachfront or near-beach room can be secured for roughly **CNY 900–1,800 per room per night**.
+
+If those conditions fail, **Yalong Bay becomes the safer overall choice**.
+
+---
+
+## Assumptions, scope, and uncertainty
+
+Because the exact travel year and party details remain open, the plan uses the following assumptions:
+
+- **Trip length:** Seven calendar days and six hotel nights.
+- **Season:** Any July; July 2026 observations and schedules are benchmarks, not promises for another year.
+- **Currency:** All principal budgets are in **Chinese yuan, CNY**.
+- **Illustrative exchange convention:** **CNY 1 ≈ VND 3,600**, used only to make Vietnamese meal prices understandable. Exchange rates and card conversion fees must be checked before payment.
+- **Room basis:** Standard room shared by two adults, or two adults and one child where the hotel’s occupancy rules permit.
+- **Hotel tier:** Well-reviewed upper-midscale or upscale accommodation, not the cheapest property and not ultra-luxury.
+- **Representative group:** Some group totals illustrate **four adults and two children using two rooms**. This is only a scaling example, not an assumption about the actual party.
+- **Mobility:** Older adults can walk short distances but need elevators, seats, shade, reliable vehicle access, and a substantial midday rest. Wheelchair users would require a separate property-level accessibility audit.
+- **Fares:** Planning ranges rather than live quotations. July school holidays, weekends, festivals, baggage, room occupancy, and exact booking timing can move prices substantially.
+
+The research pages were reviewed in **September 2026**. Since the intended July year has not been specified, all flight schedules, visa rules, hotel rates, attraction operating hours, and weather risks need to be rechecked after dates and passports are known.
+
+---
+
+## Focused destination comparison
+
+### Summary table
+
+| Destination | July weather and water | Journey from Shanghai | Value profile | Main weakness |
+|---|---|---|---|---|
+| **Da Nang** | About 25–32°C in one dataset; another source gives hotter daytime conditions up to about 36°C. Around 80% humidity. Approximately 84 mm rain/6 rainy days in one historical dataset. Warm, generally calm sea. | Roughly 3.5–4 hours airborne if nonstop operates; otherwise commonly a longer one-stop journey. Airport to My Khe about 15–25 minutes. | Excellent hotel, food, beach, and excursion quality relative to ground cost. | Visa/passport dependency; severe midday heat; July crowds; Shanghai schedule not verified in the research. |
+| **Yalong Bay, Sanya** | About 29–32°C by day; sea around 28–29°C. Approximately 145 mm rain and eight rainy days in the retrieved dataset. Very humid; tropical-storm risk. | Frequent nonstop flights; average flight time approximately 3h05. Airport to Yalong Bay roughly 40–60 minutes by road. | Best domestic resort-beach balance, with no international entry complication. | Humidity, showers and typhoons; good beachfront resorts and hotel meals can be costly. |
+| **Xiamen** | Working July planning range about 26–33°C, very humid, with heavy showers possible. Warm sea, but beaches are more urban and less consistently clear than Yalong Bay or Da Nang. | About 25 daily G/D train pairs in the retrieved schedule. Typical 5–6.5 hours; return second class approximately CNY 752–1,167. | Low transport cost, excellent city food and culture, simple domestic logistics. | Better as a coastal city break than a high-quality resort-beach holiday; typhoon exposure. |
+| **Okinawa** | Hot and humid, typically around 30°C; warm sea. Summer rainfall and typhoon exposure. Exact official Naha July table was not extracted and must be checked in JMA data. | PVG–OKA nonstop about 2h40; four weekly flights in the September 2026 route listing. Resort transfers may take 45–90 minutes. | High standards, attractive water and clean infrastructure. | High hotel, food, and transport costs; limited nonstop frequency; visa uncertainty. |
+| **Kota Kinabalu** | Around 30°C day/25°C night; 187 mm rain, 18 rainy days, 79% humidity. Showers often late afternoon or evening. | A nonstop route may operate seasonally, but no usable Shanghai schedule or fare was verified. | Affordable food and access to attractive offshore islands. | The best beaches require boat trips or an outlying resort; frequent rain; less convenient for mobility-limited travelers. |
+
+The temperature bands for Xiamen and Okinawa are working climatological planning ranges rather than figures extracted from completed official city tables. Those should be replaced with official monthly data once the exact dates are selected.
+
+---
+
+## Destination analysis
+
+## 1. Da Nang: best quality-to-cost balance
+
+### July weather and sea conditions
+
+VietnamOnline’s historical July data for 2010–2024 show:
+
+- Average minimum: **24.8°C**
+- Average maximum: **31.6°C**
+- Mean: about **27.7°C**
+- Rain: **83.5 mm**
+- Rainy days: about **six**
+- Relative humidity: **80.1%**
+- Daylight: approximately **13 hours** [1]
+
+A second source describes July as central Vietnam’s peak dry season, with stronger daytime heat—occasionally around **36°C**—but generally calm, warm water suitable for swimming and paddleboarding [2]. The difference probably reflects the use of city averages versus daytime and heat-exposure conditions.
+
+Practical interpretation:
+
+- Expect **hot, humid conditions rather than mild beach weather**.
+- The best beach periods are approximately **06:30–09:30** and **16:00–18:30**.
+- Avoid extended outdoor activity from approximately **11:00–15:30**.
+- Short intense showers remain possible even during the relatively dry season.
+- July is peak domestic and regional holiday season, so My Khe, Non Nuoc, Hoi An, and Ba Na Hills can be crowded.
+- If the Da Nang International Fireworks Festival extends into the selected July dates, riverfront traffic, room prices, and crowds can increase substantially [2].
+
+No beach should be presumed safe merely because average July conditions are calm. Wind, rip currents, lightning, or an offshore storm can change conditions quickly. Follow flags and lifeguard instructions and use a resort pool when the sea is closed.
+
+### Beach choice
+
+#### My Khe and Bac My An
+
+Best for groups prioritizing:
+
+- Restaurants within walking distance.
+- A short airport transfer.
+- Easy taxi access.
+- Pharmacies, shops, and city medical facilities.
+- A mix of beach time and sightseeing.
+
+Potential disadvantages:
+
+- The public beach and coastal road can be busy.
+- Nightlife or road noise can affect lower-floor rooms.
+- Not every “beach hotel” is directly on the sand; many are across a road.
+
+This is the best area for most multigenerational groups because older adults can rest at the hotel while the rest of the family reaches restaurants, the beach, cafés, or a pool without a long drive.
+
+#### Non Nuoc resort strip
+
+Best for:
+
+- Quiet beachfront surroundings.
+- Large pools and landscaped grounds.
+- Children’s facilities.
+- Longer periods spent inside the resort.
+
+Disadvantages:
+
+- Fewer independent restaurants within easy walking distance.
+- Greater dependence on taxis or ride-hailing.
+- Longer access to some hospitals and city services.
+- Resort food prices can reduce Da Nang’s value advantage.
+
+### Accommodation strategy
+
+No current hotel accessibility or room-inventory pages were captured in the research, so individual properties must be verified directly. Suitable candidates to investigate include established beach resorts around **Bac My An and Non Nuoc**, and reputable four- or five-star hotels near **My Khe**.
+
+Indicative July room ranges:
+
+| Accommodation type | Indicative room/night |
+|---|---:|
+| Good four-star hotel within 100–300 m of My Khe | **CNY 550–1,000** |
+| Upscale beachfront resort | **CNY 900–1,800** |
+| Larger suite or two-bedroom residence | **CNY 1,400–3,000** |
+| Extra bed | Commonly **CNY 180–450**, often with age restrictions |
+
+For a multigenerational group, the highest-value arrangement is often either:
+
+- Two adjacent or guaranteed connecting rooms, each with breakfast; or
+- A two-bedroom residence with two bathrooms and access to resort facilities.
+
+Before paying, obtain written answers to all of the following:
+
+- Are connecting rooms guaranteed, or only requested?
+- Is the entire route from vehicle drop-off to room, breakfast, pool, and beach step-free?
+- Are there elevators to every relevant floor?
+- Does the bathroom have a walk-in shower, grab bars, and a shower seat?
+- Is a wheelchair or beach wheelchair available?
+- Are there shaded pool loungers and accessible toilets?
+- Does the family room contain real beds, sofa beds, or rollaways?
+- Is breakfast included for children, and at what ages?
+- Are the rooms insulated from road, lift, function-room, and nightlife noise?
+- Can one room be placed close to the lobby while remaining quiet?
+- Does the kids’ club require parental supervision, and what ages does it accept?
+- Is there an indoor playroom if rain, lightning, or heat closes outdoor facilities?
+
+A room high enough to avoid traffic noise but not so remote that older travelers face long corridors is generally preferable. Request a room **away from lifts, ice machines, bars, and event spaces**, but close to the principal elevator bank.
+
+### Transportation
+
+- **Airport to My Khe:** approximately 15–25 minutes in normal traffic.
+- **Airport to Non Nuoc:** approximately 25–40 minutes.
+- **My Khe to Hoi An:** normally 45–60 minutes each way.
+- **Local transport:** pre-arranged van, metered taxi, or reputable app-based car.
+- **Best group solution:** one private air-conditioned van with low step-in height for airport transfers and major excursions.
+
+For mobility-limited travelers, a private van is much easier than splitting among motorcycles or small taxis. Confirm luggage capacity, child seats, and whether the driver will wait during short visits.
+
+### Food and dining
+
+Typical planning prices:
+
+| Meal type | Per person |
+|---|---:|
+| Local noodles, rice, bánh mì, or simple breakfast | **CNY 15–40** |
+| Casual sit-down Vietnamese meal | **CNY 35–80** |
+| Good seafood or international restaurant | **CNY 80–180** |
+| Upscale resort dinner | **CNY 180–350+** |
+| Coffee, juice, or dessert | **CNY 10–35** |
+
+Suitable foods for children and older adults include:
+
+- Phở or clear noodle soup.
+- Cháo, a rice porridge.
+- Plain rice with grilled chicken or fish.
+- Mì Quảng ordered with less chili.
+- Steamed vegetables.
+- Eggs, yogurt, bread, and fruit at breakfast.
+- Simple fresh spring rolls, provided ingredients are well chilled and freshly prepared.
+
+Ask for **“not spicy,” “less salt,” and “no fish sauce”** where necessary. For allergies, carry a translated allergy card; verbal explanations alone may not be enough.
+
+Food-safety measures:
+
+- Use sealed bottled or properly treated water if local-water tolerance is uncertain.
+- Avoid raw shellfish and seafood held at room temperature.
+- Choose busy establishments with high food turnover.
+- Confirm seafood prices by weight before ordering.
+- Avoid ice unless the restaurant uses commercial purified ice.
+- Wash or peel fruit.
+- Carry oral rehydration salts and the group’s usual gastrointestinal medicines after medical advice.
+
+### Medical and health considerations
+
+Da Nang has private and public hospitals, clinics, and pharmacies, but the exact insurer-approved provider must be confirmed shortly before travel. Possible planning leads include international-style clinics and larger hospitals in central Da Nang; verify current addresses, language coverage, opening hours, and direct billing with the insurer.
+
+For older travelers:
+
+- Keep accommodation in or near the city rather than at an isolated beach.
+- Carry a medication list, diagnoses, allergies, and copies of prescriptions.
+- Pack enough regular medication for the trip plus delay days.
+- Avoid dehydration; air-conditioned indoor time should be planned rather than treated as an emergency response.
+- Use non-slip footwear around pools and wet marble floors.
+
+Destination-specific health risks include:
+
+- Heat exhaustion and heatstroke.
+- Very high ultraviolet exposure.
+- Mosquito-borne illness, including dengue risk.
+- Gastrointestinal illness.
+- Marine stings, cuts, or coral injuries.
+- Slips on wet surfaces.
+- Motion sickness on speedboats.
+
+Travel insurance should cover:
+
+- Overseas outpatient and inpatient treatment.
+- Pre-existing conditions where relevant.
+- Medical evacuation.
+- Tropical-cyclone delay and cancellation.
+- Missed connections.
+- Nonrefundable hotel and tour costs.
+- Children’s treatment.
+- Mobility aids.
+- Boat and snorkeling activities if planned.
+
+---
+
+## 2. Yalong Bay, Sanya: best domestic alternative
+
+### Weather and seasonality
+
+The retrieved Yalong Bay July data show:
+
+- Average daytime temperature: approximately **31.5°C**
+- Average nighttime temperature: approximately **26.3°C**
+- Average sea temperature: approximately **29.2°C**
+- About **eight rainy days**
+- Approximately **145 mm of rain**
+- Around **5.9 sunshine hours daily** [4]
+
+The selected 2026 values on the same page showed average daytime and nighttime temperatures of approximately **29.6°C and 26.1°C**, with average sea temperature around **28.7°C** [4].
+
+July is humid, rainy, and within the tropical-cyclone season. The 2026 national disaster review provides a useful stress test: five tropical cyclones formed in the western North Pacific and South China Sea during July, three made landfall in China, and coastal storm-surge and damaging-wave events were above or slightly above recent averages [5]. That does not mean every July will be equally severe, but it demonstrates the need for flexible bookings and a no-boat fallback plan.
+
+### Bay selection
+
+The Sanya bay guide distinguishes the main areas clearly [6]:
+
+- **Yalong Bay:** Best beach-resort compromise and generally the preferred bay for a first family beach holiday.
+- **Haitang Bay:** Newer, spacious resorts and strong kids’ facilities, but rougher water; the pool may be more important than the sea.
+- **Dadonghai:** Best for restaurants and transport but busy and less resort-like.
+- **Sanya Bay:** Convenient for the airport and sunset, with lower prices, but weaker beach and swimming quality.
+
+For this trip, use **Yalong Bay**, not Haitang Bay, unless the family explicitly wants a pool-led mega-resort and accepts that sea swimming may be restricted.
+
+### Flights and transfers
+
+The Shanghai–Sanya route is well served, with average flight time around **3 hours 5 minutes** and multiple airlines operating nonstop services [7].
+
+Planning fares:
+
+- Return economy airfare: **CNY 1,600–3,600 per person**.
+- Peak weekends or late booking: potentially higher.
+- Phoenix Airport to Yalong Bay private vehicle: approximately **CNY 180–350 per vehicle each way**, depending on vehicle size and time.
+- Transfer time: roughly **40–60 minutes**, longer in congestion.
+
+### Hotels and value
+
+Indicative July prices:
+
+| Accommodation | Per room/night |
+|---|---:|
+| Good near-beach hotel | **CNY 600–1,200** |
+| Established beachfront resort | **CNY 1,000–2,500** |
+| Family suite or club-level room | **CNY 1,600–3,500+** |
+
+Yalong Bay resorts generally offer large pools, elevators, breakfast buffets, landscaped grounds, and beach access, but property-level accessibility varies. Some resorts have long distances between wings, villas, restaurants, and the beach. Ask for a room in the **main building near the breakfast restaurant and pool**, not a remote villa, for older adults.
+
+Yalong Bay has fewer inexpensive independent restaurants than Dadonghai. Hotel dining, taxis, and delivery should be included in the budget.
+
+### Food and safety
+
+Sanya is strong for seafood, coconut chicken hotpot, Hainanese chicken rice, noodles, tropical fruit, and qingbuliang desserts. The principal seafood precautions are:
+
+- Confirm the price per unit of weight.
+- Confirm cooking fees.
+- Do not let a driver choose a commission-paying restaurant.
+- Ask for shellfish to be drained before weighing.
+- Record the agreed price for an expensive order [6].
+
+### Medical and accessibility
+
+Sanya has hospitals and clinics, but access is easier from central Sanya than from some distant resort areas. Yalong Bay is a better medical-access compromise than the far end of Haitang Bay, although still not as convenient as an urban hotel.
+
+Use:
+
+- Hotel concierge support for the nearest 24-hour pharmacy.
+- A saved map route to an appropriate hospital.
+- Chinese emergency number **120** for ambulance services.
+- A private transfer plan in case ambulance waiting time is unsuitable for a non-life-threatening problem.
+
+Public beaches may have limited shade, seating, and accessible toilets. A resort-controlled beach and pool area is usually more practical for older adults, but lifeguard hours and swimming zones must be confirmed daily.
+
+---
+
+## 3. Xiamen: easiest low-cost coastal city break, but not the best beach
+
+Xiamen is attractive when low travel cost, domestic simplicity, food, and cultural sightseeing matter more than resort-grade water.
+
+### Transport
+
+The researched rail schedule showed roughly **25 daily G and D train pairs** between Shanghai and Xiamen [8]:
+
+- Fastest service: approximately **5h03–5h30**.
+- Other G trains: about **5.5–6.5 hours**.
+- Second-class fare: approximately **CNY 376–583.50 each way**.
+- Round trip: approximately **CNY 752–1,167**.
+
+Most trains leave **Shanghai Hongqiao Railway Station**. Many arrive at **Xiamen North**, which requires another **30–50 minutes** to central Xiamen; a taxi was estimated at around **CNY 70** [8].
+
+The train can be easier than flying for travelers who dislike airport security and checked baggage, but six hours seated plus station transfers may still tire older adults. First class may be worth the upgrade if the fare is reasonable.
+
+### Beach and weather limitations
+
+Xiamen’s beaches are convenient and scenic but generally less compelling for clear-water swimming than Yalong Bay, Da Nang, or Okinawa. July is hot, humid, crowded, and within Fujian’s tropical-cyclone season. The rail guide notes that Fujian lies in the Pacific typhoon belt and that most typhoon exposure is concentrated from July to September [8].
+
+Xiamen is therefore best framed as:
+
+- A coastal city holiday.
+- A food and culture trip with beach walks.
+- A lower-cost domestic fallback.
+
+It is not the best choice if excellent swimming water is the trip’s defining priority.
+
+### Gulangyu mobility warning
+
+Gulangyu is car-free; visitors walk or use limited electric carts [8]. That produces a quiet atmosphere but creates challenges for:
+
+- Wheelchair users.
+- Travelers with limited walking tolerance.
+- Families with luggage.
+- Strollers on uneven or crowded lanes.
+
+Visit as a day trip rather than sleeping there, and do not make Gulangyu central to the trip if an older traveler has significant mobility constraints.
+
+---
+
+## 4. Okinawa: best premium alternative
+
+### Flight convenience
+
+As of the route listing updated in September 2026:
+
+- PVG–OKA nonstop distance: 790 km.
+- Flight time: approximately **2h40**.
+- Operators: China Eastern and Spring Airlines.
+- Frequency: about **four flights weekly**.
+- Nonstop classes: economy and business [3].
+
+The relatively low frequency means the seven-day trip may have to fit the airline schedule rather than preferred dates.
+
+### Weather and typhoon exposure
+
+Okinawa is hot and humid in July, with temperatures typically around 30°C and warm swimming water. Summer rainfall and tropical cyclones remain important risks. The Japan Meteorological Agency provides official monthly temperature, rainfall, and humidity tables and should be used to retrieve current Naha station normals once dates are known [9].
+
+### Cost and logistics
+
+Indicative planning ranges:
+
+- Return airfare: **CNY 2,500–5,000 per person**.
+- Resort room: **CNY 1,200–2,600 per night**.
+- Larger family room: often **CNY 2,000–4,000+**.
+- Meals: **CNY 200–450 per person per day**.
+- Ground transport: often expensive, especially if the beach resort is far from Naha.
+
+A city stay in Naha is convenient but does not deliver the best resort beach. The attractive resort coast requires a longer transfer, often **45–90 minutes**, and may benefit from a private vehicle or rental car. Child-seat requirements and driving-license validity must be checked.
+
+Okinawa is most attractive when the family is willing to pay for:
+
+- A high-quality beachfront resort.
+- Private airport transfer.
+- Larger room or connecting rooms.
+- Strong insurance against typhoon disruption.
+
+---
+
+## 5. Kota Kinabalu: good island water, weaker multigenerational fit
+
+July averages in the retrieved 48-year dataset are:
+
+- Daytime: about **30°C**
+- Night: about **25°C**
+- Rain: approximately **187 mm**
+- Rainy days: about **18**
+- Humidity: approximately **79%**
+- Sunshine: approximately **205 hours monthly** [10]
+
+Rain often arrives in late afternoon or evening, so mornings can remain usable. The best beaches and snorkeling are generally on offshore islands or at outlying resorts rather than directly in the city.
+
+That creates drawbacks for this group:
+
+- Repeated boat boarding is inconvenient for limited mobility.
+- Island shade, accessible toilets, and comfortable seating may be uncertain.
+- Afternoon storms can alter return timing.
+- The city waterfront is not a substitute for a high-quality beachfront resort.
+
+Kota Kinabalu becomes more attractive if the group chooses a true beachfront resort and is content to spend most of the week there.
+
+---
+
+## Destinations not placed on the final shortlist
+
+### Phuket
+
+Phuket’s July southwest monsoon brings a higher chance of rough water, red-flag beach closures, rain, and rip currents. Resorts can be discounted, but that is poor value if sea swimming is a principal objective. It is better for travelers prioritizing spa, dining, and resort pools over dependable beach conditions.
+
+### Koh Samui
+
+Koh Samui often has better July conditions than Phuket, but Shanghai travel usually requires a connection, and airfares and beach-resort rates can be relatively high. It is better for a smaller, mobile group willing to accept longer travel for an island-resort atmosphere.
+
+### Bali
+
+Bali has one of the stronger July weather patterns in Southeast Asia and a deep resort market, but July is peak season. Longer travel, traffic, large resort-to-attraction distances, and higher airfares dilute its value for a one-week trip from Shanghai.
+
+### Qingdao and Weihai
+
+Their principal July advantage is a cooler northern-coast climate, making them attractive for families that cannot tolerate tropical heat. Their water is cooler and July beaches can be very crowded. The research did not obtain sufficiently reliable city-level weather, beach-management, hotel-rate, and transport data to rank them confidently. They deserve reconsideration if heat sensitivity dominates every other criterion.
+
+---
+
+## Value scoring
+
+The following is a planning judgment rather than a statistical rating:
+
+| Criterion | Weight | Da Nang | Sanya | Xiamen | Okinawa | Kota Kinabalu |
+|---|---:|---:|---:|---:|---:|---:|
+| Quality relative to total cost | 30% | 9 | 8 | 8 | 6 | 8 |
+| July beach conditions | 20% | 8.5 | 6.5 | 5.5 | 7.5 | 6 |
+| Travel convenience | 15% | 7* | 9 | 8 | 8 | 6.5* |
+| Multigenerational hotels and medical access | 15% | 8 | 8 | 7 | 8.5 | 6.5 |
+| Activity mix | 10% | 9 | 8 | 8 | 8 | 7.5 |
+| Entry simplicity | 10% | 5* | 10 | 10 | 5* | 5* |
+| **Weighted indication** |  | **8.0** | **8.0** | **7.6** | **7.0** | **6.8** |
+
+\*Highly dependent on flight schedule, passports, and visa eligibility.
+
+Da Nang and Sanya are close. Da Nang wins on the quality and cost of hotels, food, and excursions; Sanya wins on administrative and transport simplicity.
+
+---
+
+## Entry, documents, and booking feasibility
+
+Passport nationality and visa eligibility have not been specified, so no international destination should be booked on the assumption that entry is automatic.
+
+For every traveler, confirm:
+
+- Passport nationality.
+- Passport expiry date and required remaining validity.
+- Blank-page requirements.
+- Vietnam, Japan, or Malaysia visa/e-visa eligibility.
+- Whether children need separate visas.
+- Consent documents if a child travels without both legal guardians.
+- Right to re-enter mainland China after the trip.
+- Residence permit or Chinese visa validity for non-Chinese residents departing Shanghai.
+- Whether names on flight, hotel, insurance, and passports match exactly.
+
+Use only the destination’s official immigration authority for the final check. Avoid commercial “visa service” pages that resemble government sites.
+
+For domestic Sanya or Xiamen, verify the identification required for:
+
+- Flights or high-speed rail.
+- Children’s tickets.
+- Hotel registration.
+- Non-mainland-Chinese passport holders.
+
+---
+
+## Beach, mobility, and family-safety standards
+
+No destination guarantees continuous lifeguard coverage or full beach accessibility. Before booking, contact the hotel and ask for specific photographs or measurements rather than accepting a generic “accessible” label.
+
+### Essential checks
+
+- Step-free route from vehicle to lobby and room.
+- Elevator dimensions and backup access.
+- No unavoidable stairs between room, restaurant, pool, and beach.
+- Walk-in shower and grab bars.
+- Wheelchair-accessible toilet near the pool and beach.
+- Pool handrail or sloped entry.
+- Shaded loungers with back support.
+- Beach mats or firm pathways over sand.
+- Lifeguard hours and flag system.
+- Distance from room to the nearest seated rest point.
+- Availability of wheelchairs or mobility scooters.
+- Refrigerator for medicines.
+- On-call doctor or nearest 24-hour clinic.
+- Childproof balcony locks and pool supervision rules.
+
+### Universal beach precautions
+
+- Swim only in marked areas and during lifeguard hours.
+- Do not enter during red flags, lightning, strong wind, or rough surf.
+- Use flotation devices appropriate to the child’s swimming ability; inflatable toys are not life jackets.
+- Keep children within arm’s reach near water.
+- Wear reef-safe sunscreen, hats, and rash guards.
+- Use water shoes where coral, shells, or rocks are present.
+- Plan shade every 30–45 minutes for children and older adults.
+- Keep one adult free from alcohol and responsible for supervision.
+- Avoid boat excursions if boarding requires jumping, wading, or unsupported steps.
+
+---
+
+## Recommended seven-day Da Nang itinerary
+
+The plan assumes six nights near My Khe or Bac My An, daily breakfast, and a private vehicle for major outings. It deliberately avoids stacking full-day excursions.
+
+## Day 1 — Shanghai to Da Nang and gentle arrival
+
+### Schedule
+
+- Depart Shanghai with at least **three hours’ international-airport lead time**.
+- If nonstop service is available, prefer a late-morning departure that avoids waking older travelers before dawn.
+- If connecting, choose a connection of at least **90–120 minutes**, preferably in the same terminal and on one ticket.
+- Arrive, clear immigration and baggage claim.
+- Pre-arranged private van to hotel: approximately **20–40 minutes**, depending on location.
+- Check in and rest for **90 minutes**.
+- Short beach or promenade visit around **16:30–18:00**.
+- Early dinner close to the hotel.
+
+### Meal suggestion
+
+- Mì Quảng, chicken rice, steamed fish, or a simple hotel meal.
+- Avoid a large raw-seafood dinner immediately after travel.
+
+### Contingency
+
+If arrival is delayed, skip the beach. Have dinner in the hotel and move the orientation walk to Day 2.
+
+---
+
+## Day 2 — Easy beach-and-resort day
+
+### Morning
+
+- Breakfast: **07:00–08:00**.
+- Beach: **08:00–09:30**.
+- Children: sand play and supervised swimming.
+- Adults: swimming or beach walk.
+- Older adults: shaded seating close to hotel facilities.
+- Pool or kids’ club: **09:45–11:00**.
+
+### Midday
+
+- Early lunch around **11:15**.
+- Mandatory room rest from approximately **12:00–15:30**.
+- Curtains closed and air conditioning at a comfortable, not excessively cold, temperature.
+
+### Afternoon and evening
+
+- Pool or beach: **16:00–17:30**.
+- Sunset promenade.
+- Casual local dinner around **18:30**.
+- Return to hotel by **20:30**.
+
+### Rain or rough-sea alternative
+
+Use the indoor pool, children’s playroom, spa, café, mall, or a short museum visit. Do not replace unsafe sea swimming with an exposed shoreline walk during lightning.
+
+---
+
+## Day 3 — Son Tra Peninsula and Linh Ung Pagoda
+
+### Morning
+
+- Breakfast and relaxed start.
+- Depart around **08:00** in a private van.
+- Son Tra viewpoints and Linh Ung Pagoda: approximately **2.5–3 hours** including transport.
+- Keep walking optional; older adults should be able to wait in a shaded area or vehicle.
+
+### Midday
+
+- Return to the hotel by about **11:30**.
+- Lunch near the hotel.
+- Rest from **12:30–15:30**.
+
+### Late afternoon
+
+- Children and active adults: pool, paddleboarding, or supervised beach activity.
+- Older adults: massage, afternoon tea, or quiet balcony time.
+- Dinner at a reliable Vietnamese restaurant.
+
+### Contingency
+
+If heat, rain, or low cloud makes Son Tra uncomfortable, substitute an indoor museum and café. Do not drive exposed mountain roads in severe wind or poor visibility.
+
+---
+
+## Day 4 — Hoi An late-afternoon excursion
+
+Hoi An is most comfortable after the strongest heat but can become crowded in the evening.
+
+### Morning
+
+- Optional beach swim from **07:00–09:00**.
+- Unscheduled resort time.
+
+### Midday
+
+- Early lunch.
+- Long rest from **12:00–15:00**.
+
+### Afternoon and evening
+
+- Depart Da Nang around **15:30**.
+- Arrive Hoi An around **16:30**.
+- Old-town walk, café break, riverside dinner, and lantern atmosphere.
+- Total visit: approximately **3–3.5 hours**.
+- Return to Da Nang around **20:30–21:00**.
+
+### Accessibility
+
+Hoi An can be crowded and has uneven paving. Use a drop-off point close to the intended restaurant, keep the route short, and avoid an itinerary requiring repeated bridge crossings. A wheelchair user may need a more detailed route audit.
+
+### Split-group option
+
+Older adults may remain at the resort for dinner while children and active adults spend longer in Hoi An.
+
+### Rain alternative
+
+Visit earlier under covered conditions, or replace Hoi An with an indoor cooking demonstration, spa, mall, or hotel activity.
+
+---
+
+## Day 5 — Ba Na Hills or full resort recovery day
+
+Ba Na Hills provides cooler temperatures at altitude—VietnamOnline reports roughly **17–20°C** in the elevated area—but it is a long, crowded excursion with cable cars and significant walking [1].
+
+### Active-group plan
+
+- Depart by **07:00**.
+- Cable car and main attractions.
+- Early lunch.
+- Return by approximately **14:30–15:30**.
+- Rest for the remainder of the afternoon.
+
+### Older-adult alternative
+
+- Sleep later.
+- Slow breakfast.
+- Short shaded walk.
+- Spa, poolside rest, or café lunch.
+- Rejoin the group for dinner.
+
+### Important limitations
+
+Ba Na Hills may not suit:
+
+- Severe fear of heights.
+- Poor standing tolerance.
+- Travelers unable to manage queues.
+- Travelers who require guaranteed level surfaces throughout.
+
+### Weather alternative
+
+If the mountain forecast shows heavy rain, wind, or fog, convert Day 5 into a second beach-and-resort day and use an indoor museum or mall for two hours.
+
+---
+
+## Day 6 — Flexible family day with optional split activities
+
+This day acts as the trip’s weather buffer.
+
+### Option A: Calm sea and good forecast
+
+- Beach from **07:00–09:00**.
+- Children and active adults: short paddleboarding lesson or other hotel-supervised water activity.
+- Older adults: shaded beachfront breakfast or poolside rest.
+- Midday rest from **12:00–15:30**.
+- Final sunset beach time.
+- Celebration dinner.
+
+### Option B: Optional island or snorkeling excursion
+
+Cham Island can be attractive in July, but speedboat boarding and sea motion make it inappropriate as a compulsory whole-family activity. Only the active subgroup should go, and only if:
+
+- The marine forecast is favorable.
+- The operator supplies life jackets.
+- Insurance covers the activity.
+- The boat has safe boarding arrangements.
+- Return timing leaves a buffer.
+
+Older adults remain at the resort with another adult rather than being left alone.
+
+### Option C: Excessive heat or rain
+
+- Indoor play space.
+- Cooking class.
+- Spa.
+- Shopping mall.
+- Café and early dinner.
+- Pack gradually for departure.
+
+---
+
+## Day 7 — Departure
+
+- Early breakfast.
+- Optional 30-minute beach walk only if the flight timing allows.
+- Check medication, passports, chargers, and children’s documents.
+- Leave the hotel approximately **three hours before departure plus transfer time**.
+- Use the pre-arranged van.
+- Keep snacks, water, medicine, spare clothes, and one child activity in hand luggage.
+
+If the return flight requires a connection, avoid the last possible Shanghai arrival of the day. A weather cancellation is easier to manage when another service remains available.
+
+---
+
+## Budget estimates
+
+## Da Nang: recommended destination
+
+### Per-person and per-room planning ranges
+
+| Item | Adult or fare-paying traveler | Notes |
+|---|---:|---|
+| Return flight from Shanghai | **CNY 1,800–3,800** | Nonstop/one-stop, July; baggage may be extra |
+| Lodging, shared twin/double room | **CNY 2,700–5,400 per person** | Based on CNY 900–1,800 per room × 6 nights ÷ 2 |
+| Meals | **CNY 700–1,500** | Breakfast assumed included |
+| Airport and local transport | **CNY 300–750** | Shared private vans/taxis |
+| Activities | **CNY 400–1,200** | Depends heavily on Ba Na Hills and water activities |
+| Insurance | **CNY 150–400** | Age and medical history can raise premiums |
+| Visa/e-visa | **CNY 0–350+** | Entirely passport-dependent |
+| Contingency | **10–15%** | Weather changes, medical visits, fare differences |
+| **Indicative total per adult sharing** | **CNY 6,700–14,500** | Before single-room supplement |
+
+Children may save on some meals, hotel breakfast, and attractions, but international airfare is often close to the adult fare. Do not assume a large child discount.
+
+### Representative four-adult, two-child group
+
+Assuming two rooms that legally allow two adults plus one child:
+
+| Category | Group estimate |
+|---|---:|
+| Flights | **CNY 10,800–22,800** |
+| Two rooms for six nights | **CNY 10,800–21,600** |
+| Transfers and local vehicles | **CNY 1,800–4,000** |
+| Meals | **CNY 4,500–9,000** |
+| Activities | **CNY 2,400–6,000** |
+| Insurance | **CNY 900–2,000** |
+| Visas | **CNY 0–2,100+** |
+| Contingency | **CNY 3,200–8,000** |
+| **Illustrative group total** | **Approximately CNY 34,000–75,000** |
+
+A third room would add roughly **CNY 5,400–10,800** for six nights. A two-bedroom residence may be cheaper or more expensive than three rooms depending on occupancy and breakfast inclusion.
+
+---
+
+## Sanya budget
+
+| Item | Per person or room |
+|---|---:|
+| Return flight | **CNY 1,600–3,600 per person** |
+| Beachfront resort | **CNY 1,000–2,500 per room/night** |
+| Lodging per person sharing, six nights | **CNY 3,000–7,500** |
+| Meals | **CNY 1,000–2,200 per person** |
+| Transfers/local transport | **CNY 300–800 per person** |
+| Activities | **CNY 300–1,200 per person** |
+| Insurance | **CNY 80–300 per person** |
+| Contingency | **10–15%** |
+| **Indicative total per adult sharing** | **CNY 6,800–16,000** |
+
+Sanya can be cheaper than Da Nang when airfares are low and a value resort is secured, but a well-located Yalong Bay beachfront resort with restaurant meals can easily cost more.
+
+---
+
+## Okinawa budget
+
+| Item | Per person or room |
+|---|---:|
+| Return flight | **CNY 2,500–5,000 per person** |
+| Resort room | **CNY 1,200–2,600 per night** |
+| Lodging per person sharing, six nights | **CNY 3,600–7,800** |
+| Meals | **CNY 1,400–3,000 per person** |
+| Ground transport | **CNY 600–1,600 per person** |
+| Activities | **CNY 500–1,500 per person** |
+| Insurance | **CNY 200–500 per person** |
+| Visa | Passport-dependent |
+| Contingency | **10–15%** |
+| **Indicative total per adult sharing** | **CNY 10,000–22,000+** |
+
+Okinawa offers quality but is not the strongest value unless short flight time and Japanese service standards carry a high personal value.
+
+---
+
+## Xiamen budget
+
+| Item | Per person or room |
+|---|---:|
+| Return second-class rail | **CNY 752–1,167** |
+| Good hotel | **CNY 500–1,200 per room/night** |
+| Lodging per person sharing | **CNY 1,500–3,600** |
+| Meals | **CNY 700–1,500 per person** |
+| Local transport | **CNY 200–600 per person** |
+| Activities | **CNY 200–700 per person** |
+| Insurance | **CNY 50–200 per person** |
+| Contingency | **10–15%** |
+| **Indicative total per adult sharing** | **CNY 3,800–8,500** |
+
+This is the lowest total-cost option on the shortlist, but its beach quality is weaker. It is good value only if the family is happy with a coastal cultural holiday rather than a classic resort-beach week.
+
+---
+
+## Booking strategy
+
+### Before booking
+
+Obtain the following variables:
+
+1. Exact July year and dates.
+2. Number of adults and children.
+3. Children’s ages at check-in and flight date.
+4. Passport nationality and Chinese re-entry status.
+5. Mobility limitations and bathroom requirements.
+6. Number of rooms and whether connecting rooms are mandatory.
+7. Maximum walking distance.
+8. Preferred hotel meal plan.
+9. Medical conditions and insurance exclusions.
+10. All-in budget ceiling.
+
+### Booking order
+
+1. Confirm visas and passport validity.
+2. Compare flights from both PVG and SHA, including baggage and seats.
+3. Place a refundable hotel hold.
+4. Obtain written accessibility and room-configuration confirmation.
+5. Buy flights only after the room configuration is secured.
+6. Buy comprehensive insurance immediately after nonrefundable payments.
+7. Reserve airport transfers.
+8. Book only one major weather-sensitive excursion in advance.
+9. Leave Day 6 flexible.
+10. Recheck tropical-cyclone outlook and marine warnings 7 days, 72 hours, and 24 hours before departure.
+
+### Price triggers
+
+Da Nang should be reconsidered in favor of Sanya if:
+
+- Airfare exceeds about **CNY 3,500–4,000 per person**.
+- The itinerary requires two difficult connections.
+- Visa processing is uncertain.
+- Only isolated resorts with long hospital access remain available.
+- A tropical storm threatens central Vietnam during the travel window.
+
+Sanya should be reconsidered in favor of Xiamen or a northern coast if:
+
+- A named typhoon threatens Hainan.
+- Yalong Bay resort prices exceed the family’s value threshold.
+- Heat or humidity presents a medical concern.
+
+---
+
+## Final decision
+
+For a typical multigenerational family seeking high quality relative to total cost, **Da Nang offers the best balance of beach, resort quality, inexpensive dining, short local transfers, cultural variety, children’s activities, and restful pacing**. It is especially strong when the group stays around My Khe or Bac My An rather than in a remote resort strip.
+
+**Yalong Bay is the most robust alternative** because it removes visa and international-entry uncertainty and has frequent nonstop access from Shanghai. It should replace Da Nang whenever the latter’s flight schedule, visa process, or connection burden is unsuitable for the older travelers.
+
+**Okinawa is the premium alternative** for a group willing to pay more for a short flight, orderly infrastructure, and high service standards. It is not the best pure value, but it may be the best personal choice when ease, cleanliness, and predictability are weighted more heavily than total cost.
+
+Whatever destination is selected, July requires the same operating principle: **beach early, rest through the hottest hours, resume activity after 16:00, keep one day flexible, and never make a boat excursion essential to the trip.**
+
+### Sources
+
+[1] [VietnamOnline — Da Nang Weather in July: Historical Temperature, Rainfall & Humidity](https://www.vietnamonline.com/weather/da-nang/july.html)
+
+[2] [Local Vietnam — Da Nang in July: Weather & Beach Conditions](https://localvietnam.com/da-nang/da-nang-july-weather/)
+
+[3] [FlightConnections — Shanghai Pudong to Okinawa nonstop route and schedule](https://www.flightconnections.com/flights-from-pvg-to-oka)
+
+[4] [Weather-Stats — Yalong Bay July weather and sea temperature](https://weather-stats.com/china/yalong_bay/july)
+
+[5] [Ministry of Emergency Management of China — July 2026 national natural-disaster review](https://www.mem.gov.cn/xw/yjglbgzdt/202608/t20260814_680668.shtml)
+
+[6] [China Travel Radar — Sanya Travel Guide (2026): Which Bay to Stay In, Beaches & Local Traps](https://chinatravelradar.com/en/sanya/)
+
+[7] [Trip.com — Shanghai to Sanya route information](https://www.trip.com/flights/shanghai-to-sanya/airfares-sha-syx/)
+
+[8] [China Travel Flow — Shanghai to Xiamen Train: Duration, Price & Which Station to Use](https://chinatravelflow.com/en/trains/shanghai-to-xiamen-train)
+
+[9] [Japan Meteorological Agency — Tables of Monthly Climate Statistics](https://www.data.jma.go.jp/stats/data/en/smp/index.html)
+
+[10] [Weather-and-Climate — Kota Kinabalu July averages](https://weather-and-climate.com/Kota-Kinabalu-July-averages)
+
+[11] [China Meteorological Administration](https://www.cma.gov.cn/)
+
+[12] [Thai Meteorological Department — Monthly Weather Summary, July 2025](https://tmd.go.th/media/climate/climate-monthly/july-2025.pdf)

@@ -1,0 +1,254 @@
+[
+  {
+    "candidates": [
+      {
+        "name": "current academic enrollment profile",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "academic context",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "For an undergraduate STEM student, the report would prioritize compatible taught modules, laboratory access, prerequisites, and undergraduate credit conversion.",
+          "For a graduate humanities student, it would emphasize seminar availability, faculty supervision, research access, and graduate-level residency rules.",
+          "Knowing the home university would allow partner agreements, nomination requirements, calendars, and institution-specific transfer procedures to be checked."
+        ],
+        "should_ask": true,
+        "question": "What university and degree program are you currently in, including country, level, field, and year?"
+      },
+      {
+        "name": "primary academic and experiential objective",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "goal priority",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "If smooth credit transfer dominates, direct exchanges with transparent equivalencies and broad taught-course access would rank highest.",
+          "If research and networking dominate, visiting-student schemes with laboratory, faculty, or industry access would move up.",
+          "If cross-cultural immersion dominates, language exposure, local integration, and campus experience would receive greater weight."
+        ],
+        "should_ask": true,
+        "question": "Which outcome should dominate the ranking: smooth credit transfer, strongest curriculum, research/networking, or cross-cultural immersion?"
+      },
+      {
+        "name": "financial trade-off posture",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "cost versus opportunity trade-off",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A lowest-net-cost posture would prioritize affordable cities, exchange tuition arrangements, housing support, and realistically obtainable funding.",
+          "A balanced posture would retain moderately expensive options when their academic fit or credit certainty justifies the premium.",
+          "A fit-first posture would allow higher-cost destinations to rank well when their curriculum, research access, or networks are exceptional."
+        ],
+        "should_ask": true,
+        "question": "What financial posture should guide the ranking: lowest net cost, balanced value, or willingness to pay more for a stronger academic fit?"
+      },
+      {
+        "name": "target semester and application cycle",
+        "source": "latent",
+        "variable_type": "personal_constraint",
+        "preference_class": "timing constraint",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A near-term semester would eliminate programs whose nomination or scholarship deadlines have passed and produce an accelerated preparation plan.",
+          "A later semester would permit language preparation, prerequisite completion, and applications for annual funding rounds.",
+          "Spring versus autumn timing could change course availability and whether host and home academic calendars overlap."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "citizenship and country of residence",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "immigration eligibility context",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A passport eligible for visa-free short study could reduce processing time, documentation, and financial-proof requirements.",
+          "A nationality requiring a student visa could change feasible deadlines, work rights, insurance requirements, and the preparation sequence.",
+          "Residence status may affect which consulate has jurisdiction and which scholarships are available."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "coursework versus research format preference",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "learning format",
+        "deliverable_influence": "high",
+        "evidence_strength": "weak",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A coursework preference would favor exchanges with extensive catalogs, predictable assessment, and established credit conversion.",
+          "A research preference would favor supervised projects, laboratory placements, independent-study credit, and faculty matching.",
+          "A hybrid preference would elevate programs that combine taught modules with a credit-bearing research project."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "language comfort and willingness to study in another language",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "language and adaptation preference",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "An English-only requirement would restrict the shortlist to programs with enough English-taught credit-bearing courses.",
+          "Willingness to take local-language courses would expand curriculum choices and increase immersion value.",
+          "Limited local-language comfort would increase the importance of English-language administration, housing support, and orientation services."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "acceptable administrative and adaptation burden",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "implementation style",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A low-burden preference would favor structured exchanges with guaranteed housing, established equivalencies, and strong international offices.",
+          "Tolerance for complexity would keep independently arranged visiting programs and destinations with more demanding visa or housing processes in contention.",
+          "A need for extensive support would increase the weight assigned to orientation, disability services, language assistance, and emergency support."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "home-institution partnership and transfer rules",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "institutional eligibility evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "An active exchange agreement could provide nomination access, tuition reciprocity, established equivalencies, and simpler approval.",
+          "Without an agreement, the report would distinguish fee-paying visiting-student routes and flag additional transfer-risk controls.",
+          "A restrictive residency or minimum-grade rule could exclude otherwise attractive programs."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "current program availability and academic legitimacy",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "program validation evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A currently active, recognized, credit-bearing program with published admissions rules could enter the prioritized shortlist.",
+          "An inactive, non-credit, unrecognized, or marketing-only offering would be excluded.",
+          "Programs limited to partner nominations or particular majors would be labeled conditionally eligible rather than universally available."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "curriculum, teaching model, and credit compatibility evidence",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "academic-fit evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Detailed syllabi, compatible contact hours, and established conversion rules would increase a program's credit-transfer confidence.",
+          "Opaque module descriptions or incompatible assessment structures would lower the ranking and trigger a preapproval requirement.",
+          "Seminar, lecture, project, and laboratory models would be compared differently according to the student's discipline and objectives."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "verified costs, scholarships, visa rules, and language requirements",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "feasibility evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A program with tuition reciprocity, realistic scholarships, and affordable housing could outrank one with a stronger headline reputation but much higher net cost.",
+          "Long visa lead times, proof-of-funds rules, or language-test requirements could make an otherwise suitable option infeasible for a given cycle.",
+          "Guaranteed housing or substantial institutional support could improve both cost predictability and practical adaptability."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "shortlist weighting and final recommendation",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "decision method",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Strong evidence of credit reliability and affordability could place a less famous institution above a prestigious but uncertain option.",
+          "Exceptional research access could justify recommending a more complex visiting route when aligned with the stated primary goal.",
+          "The final shortlist can include a best overall option plus lower-cost, lower-risk, and research-focused alternatives."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "independent academic approval and compliance safeguards",
+        "source": "task_slot",
+        "variable_type": "normative_floor",
+        "preference_class": "responsible academic planning",
+        "deliverable_influence": "high",
+        "evidence_strength": "strong",
+        "answerability": "known_now",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "No program would be described as guaranteeing transfer unless the relevant home institution provides written approval.",
+          "The preparation plan would require syllabus review, credit preapproval, immigration compliance, adequate insurance, and deadline verification.",
+          "Options with misleading accreditation claims or unclear student status would be excluded regardless of cost or experiential appeal."
+        ],
+        "should_ask": false,
+        "question": ""
+      }
+    ],
+    "selected_variables": [
+      "current academic enrollment profile",
+      "primary academic and experiential objective",
+      "financial trade-off posture"
+    ],
+    "need_clarification": true,
+    "selected_question": "1. What university and degree program are you currently in, including country, level, field, and year?\n2. Which outcome should dominate the ranking: smooth credit transfer, strongest curriculum, research/networking, or cross-cultural immersion?\n3. What financial posture should guide the ranking: lowest net cost, balanced value, or willingness to pay more for a stronger academic fit?\n\nThese answers will determine eligibility and credit matching, ranking weights, and the cost filters used for the shortlist and preparation plan.",
+    "verification": "Clarification is needed because the academic eligibility context and two consequential ranking preferences are not visible. The questions are limited to one academic-profile item and two distinct user-owned priorities; nationality-specific visa details and exact timing can initially be handled conditionally.",
+    "policy_valid": true,
+    "eligible_preference_count": 5
+  }
+]

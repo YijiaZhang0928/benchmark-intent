@@ -1,0 +1,272 @@
+[
+  {
+    "candidates": [
+      {
+        "name": "primary_learner_outcome",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "educational_mission",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Prioritizing broad AI literacy would produce an accessible modular curriculum, competency assessments, and institution-wide positioning.",
+          "Prioritizing job-ready AI skills would produce portfolio projects, employer-aligned credentials, career-service partnerships, and employment-oriented success metrics."
+        ],
+        "should_ask": true,
+        "question": "What single learner outcome should the product optimize for at launch?"
+      },
+      {
+        "name": "initial_launch_geography",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "launch_market",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A United States launch would require US-specific market sizing, dollar pricing, state privacy analysis, and outreach to US campus stakeholders.",
+          "An EU launch would require country-level localization, GDPR and VAT planning, euro pricing, and a different university procurement strategy."
+        ],
+        "should_ask": true,
+        "question": "Which country or region should be the first launch market?"
+      },
+      {
+        "name": "prelaunch_cash_budget",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "resource_envelope",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A budget below roughly $100,000 would favor a narrow MVP, managed services, contractors, founder-led sales, and one or two campus pilots.",
+          "A budget above roughly $500,000 could support a dedicated team, more custom development, paid acquisition tests, and multiple concurrent pilots."
+        ],
+        "should_ask": true,
+        "question": "What is the maximum cash budget available from concept through launch, excluding funding that has not yet been secured?"
+      },
+      {
+        "name": "founder_team_capacity",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "execution_capacity",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A solo or nontechnical founding team would require a vendor-heavy stack, fractional specialists, and sequential milestones.",
+          "An experienced product, engineering, and education team could build more proprietary functionality and run development and campus validation in parallel."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "business_growth_objective",
+        "source": "latent",
+        "variable_type": "preference_value",
+        "preference_class": "business_ambition",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A bootstrapped-profitability objective would emphasize a narrow niche, early revenue, low acquisition costs, and controlled hiring.",
+          "A venture-scale growth objective would emphasize a larger addressable market, rapid geographic expansion, external financing, and aggressive team growth."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "risk_and_experimentation_posture",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "risk_posture",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A conservative posture would use limited pilots, stronger human review, smaller upfront commitments, and stricter rollout gates.",
+          "A more experimental posture would support broader betas, faster feature testing, greater automation, and larger contingency reserves."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "launch_deadline",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "timeline",
+        "deliverable_influence": "high",
+        "evidence_strength": "strong",
+        "answerability": "known_now",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Retaining the stated one-year deadline supports a phased discovery, MVP, pilot, and launch roadmap.",
+          "A substantially shorter deadline would require a narrower feature set, more off-the-shelf technology, and fewer prelaunch pilots."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "initial_beachhead_student_segment",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "customer_segmentation",
+        "deliverable_influence": "high",
+        "evidence_strength": "weak",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Targeting technical graduate students would favor advanced project work, research workflows, and discipline-specific distribution channels.",
+          "Targeting nontechnical undergraduates would favor foundational AI literacy, guided exercises, broad accessibility, and general-education partnerships."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "student_demand_and_unmet_needs",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "market_evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Evidence that employability is the dominant unmet need would shift the offering toward portfolios, credentials, and career outcomes.",
+          "Evidence that coursework support is dominant would shift the offering toward tutoring, LMS integration, study workflows, and academic-integrity controls."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "market_size_and_competitive_landscape",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "market_attractiveness",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A large, fragmented market with weak direct competitors would justify a broader launch and faster customer acquisition investment.",
+          "A crowded market with strong incumbents would require a narrower wedge, sharper differentiation, and partnership-led distribution."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "willingness_to_pay_and_buyer_identity",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "commercial_evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Strong student willingness to pay would support direct-to-consumer subscriptions and student-focused conversion funnels.",
+          "Low student willingness but meaningful institutional budgets would shift the plan toward campus licensing, longer sales cycles, and procurement readiness."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "mvp_feature_set",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "product_scope",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A content-led MVP would prioritize structured lessons, projects, assessments, and progress tracking.",
+          "An AI-coach-led MVP would prioritize conversational tutoring, personalization, retrieval, guardrails, and model-quality evaluation."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "technology_stack_and_build_buy_choices",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "implementation_strategy",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A managed-services approach would reduce launch time and staffing needs while increasing vendor dependency and variable costs.",
+          "A custom platform approach would increase development time and capital requirements while allowing stronger differentiation and control."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "pricing_and_packaging_model",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "monetization_design",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A freemium student subscription would require strong activation loops, usage limits, self-service conversion, and retention analytics.",
+          "Institutional licensing would require seat or cohort pricing, administrative features, procurement materials, and account-based sales."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "campus_partnership_and_financing_mix",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "go_to_market_and_capital_strategy",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A campus-led strategy would emphasize faculty champions, pilot evidence, integrations, procurement, and grant or strategic funding.",
+          "A direct-to-student strategy would emphasize ambassadors, creators, referral loops, paid acquisition tests, and financing tied to consumer-growth milestones."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "responsible_ai_privacy_accessibility_and_academic_integrity",
+        "source": "latent",
+        "variable_type": "normative_floor",
+        "preference_class": "responsible_practice",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Handling student records or integrating with university systems would trigger stronger privacy controls, contracts, auditability, and role-based access.",
+          "Offering generative academic assistance would require transparent AI limitations, citation support, misuse controls, accessibility testing, and institution-compatible integrity policies."
+        ],
+        "should_ask": false,
+        "question": ""
+      }
+    ],
+    "selected_variables": [
+      "primary_learner_outcome",
+      "initial_launch_geography",
+      "prelaunch_cash_budget"
+    ],
+    "need_clarification": true,
+    "selected_question": "1. What single learner outcome should the product optimize for at launch—for example, broad AI literacy, coursework support, job-ready skills, or research productivity? This will set the curriculum, MVP, positioning, and success metrics.\n2. Which country or region should be the first launch market? This will change market sizing, pricing, compliance, and campus-partnership strategy.\n3. What is the maximum cash budget available from concept through launch, excluding funding that has not yet been secured? This will determine staffing, build-versus-buy choices, pilot scope, marketing spend, and the financing gap.",
+    "verification": "The questions cover two distinct user-owned preferences and one essential resource constraint. All three are currently missing, likely answerable, materially affect the launch plan, and cannot be resolved through external research alone. Product features, technology, pricing, partnerships, financing options, and safeguards can then be researched, compared, and recommended.",
+    "policy_valid": true,
+    "eligible_preference_count": 2
+  }
+]

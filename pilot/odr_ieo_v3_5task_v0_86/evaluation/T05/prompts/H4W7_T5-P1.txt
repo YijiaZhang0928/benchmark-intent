@@ -1,0 +1,1802 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Develop a comprehensive strategy for launching an online AI-education startup for university students within the next year.
+
+Cover market research, target-user needs, business-plan structure, platform functionality, technology stack, iterative product development, marketing and user engagement, subscriptions, value-added services, campus partnerships, resource allocation, financing options, major risks and long-term scalability.
+
+The plan must be actionable from concept through launch.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T5-P1-01",
+    "criterion": "The report states technically differentiated AI/software product as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate technically differentiated AI/software product.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-03",
+    "criterion": "The report provides concrete evidence about how an option supports technically differentiated AI/software product.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-04",
+    "criterion": "The report provides concrete evidence about how an option reflects generic education-content/marketing offering.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-05",
+    "criterion": "The report directly compares technically differentiated AI/software product with generic education-content/marketing offering.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-06",
+    "criterion": "At least one recommended option is selected because it supports technically differentiated AI/software product.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors generic education-content/marketing offering.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-08",
+    "criterion": "The plan contains one executable step that implements technically differentiated AI/software product.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for technically differentiated AI/software product.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-10",
+    "criterion": "The report states when generic education-content/marketing offering would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T5-P1-11",
+    "criterion": "One visible chain links technically differentiated AI/software product to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label H4W7):
+# 12-Month Strategy for an Online AI-Education Startup Serving University Students
+
+## Executive recommendation
+
+The strongest default concept is an **applied, discipline-specific “AI Career Studio”** for university students: a platform that teaches students to use, evaluate and build with AI through short lessons, guided labs, authentic projects, responsible-AI practice and portfolio evidence.
+
+It should not try to compete with broad course libraries on content volume. Its differentiation should be:
+
+1. **University-student specificity:** curriculum mapped to disciplines, assessments, employability and academic-integrity requirements.
+2. **Learning by doing:** guided labs and portfolio projects rather than video consumption.
+3. **Responsible and verifiable AI use:** source verification, disclosure, privacy, bias evaluation and process evidence embedded throughout.
+4. **Outcome evidence:** assessed portfolios, skill diagnostics and optionally co-branded university credentials.
+5. **Supported completion:** adaptive pathways, constrained AI tutoring, peer accountability and optional human project review.
+6. **Institutional readiness:** accessibility, analytics, privacy controls, faculty dashboards and integration options.
+
+The default launch path should be:
+
+- Start in **one geography**, one primary language and one or two disciplines.
+- Offer a **six-to-eight-week, non-credit applied certificate**.
+- Use an asynchronous core with weekly optional clinics rather than a fully synchronous model.
+- Launch initially through **two to four campus pilots**, supplemented by direct-to-student acquisition.
+- Build a thin proprietary experience around bought infrastructure rather than creating a full learning-management system, code-execution environment or foundation model.
+- Use freemium content for acquisition, a **semester or annual student pass** for the core product, and separate institutional and mentored offerings.
+- Make a public launch only after demonstrating student demand, measurable learning gains, safe tutor behavior, acceptable accessibility and viable contribution margins.
+
+The 12-month period runs from **September 13, 2026 through September 12, 2027**. Because geography, budget, founders, credentials and subject focus remain unspecified, all financial and commercial numbers below are planning assumptions—not established market facts.
+
+---
+
+## 1. Decisions that must be made before committing to the product
+
+### 1.1 Open variables and their consequences
+
+| Variable | Lower-complexity choice | Higher-complexity choice | Decision criterion |
+|---|---|---|---|
+| Geography | One English-speaking country | EU or multi-country launch | Choose one country if legal budget is under $30,000 or the team lacks institutional compliance experience |
+| Budget | Founder-led, under $250,000 | $750,000+ funded team | A larger budget supports original labs, institutional integrations, richer accessibility testing and multiple tracks |
+| Founding team | Commercial founder plus technical founder | Team also includes learning scientist or university operator | If no pedagogical founder exists, appoint a paid learning-design lead before curriculum production |
+| Subject focus | One discipline and skill level | Multiple disciplines and beginner-to-builder levels | Start narrow unless at least three full-time curriculum staff or strong faculty partnerships are available |
+| Credential | Certificate of completion | University-endorsed, credit-bearing or accredited credential | Do not promise academic credit without a qualified awarding institution and jurisdiction-specific approval |
+| Delivery | Self-paced with optional clinics | Cohort-based mentorship | Self-paced scales faster; cohorts generally improve support and completion but increase operating costs |
+| Funding | Bootstrap and pilot revenue | Angel or venture funding | Venture capital is suitable only if pursuing a large platform and institutional-sales market, not a small course business |
+| Initial buyer | Student | University, department or employer | Student sales validate quickly; institutional sales improve distribution but have longer procurement cycles |
+| AI capability | Third-party models and labs | Self-hosted models and lab infrastructure | Buy first unless data residency, economics or distinctive pedagogy clearly justify building |
+
+### 1.2 Beachhead selection scorecard
+
+Evaluate each proposed segment on a 100-point score:
+
+- Severity and frequency of unmet need: **25**
+- Ease of reaching students through existing channels: **20**
+- Demonstrated willingness to pay: **20**
+- Founder and faculty subject expertise: **15**
+- Strength of portfolio and career outcomes: **10**
+- Regulatory and delivery simplicity: **10**
+
+A segment should score at least **70/100** and have a credible route to 500 students before full development.
+
+Promising alternatives include:
+
+- **AI for business and professional work:** large student population and clear workplace use cases, but substantial competition. Business, administration and law represented 22% of EU tertiary students in 2024.[3]
+- **AI for arts, humanities and social sciences:** potentially stronger unmet support need; HEPI found Arts and Humanities students especially likely to feel under-supported.[1] Willingness to pay must be tested carefully.
+- **AI application development for computing students:** stronger technical willingness to pay and measurable projects, but competition from coding platforms is intense.
+- **AI for research and postgraduate study:** high-value workflows and potential university sponsorship, but academic-integrity, research-ethics and data-security requirements are stricter.
+- **AI employability for final-year students:** clear job-to-be-done and career-center distribution, but requires employer validation and credible job-outcome evidence.
+
+A reasonable default is **AI for business, social-science and humanities students**, with an optional technical builder extension. This serves students whose programs may not already provide substantial AI instruction while avoiding direct competition with advanced machine-learning degrees.
+
+---
+
+## 2. Market opportunity, demand and competition
+
+### 2.1 Evidence of demand
+
+The clearest evidence is not a commercial market-revenue estimate but direct evidence of student behavior.
+
+HEPI’s March 2026 survey covered 1,054 full-time UK undergraduates and found:[1]
+
+- 95% used AI in at least one way.
+- 94% used generative AI to help with assessed work.
+- 68% considered AI skills essential for thriving in today’s world.
+- Only 48% felt teaching staff were helping them develop AI skills for their future careers.
+- Only 38% said their institutions provided AI tools.
+- 49% believed AI had improved their student experience.
+- Direct inclusion of AI-generated text in assessed work rose from 3% in 2024 to 8% in 2025 and 12% in 2026.
+- 65% said assessment had changed significantly in response to AI.
+
+This establishes a compelling problem: **student adoption is ahead of structured institutional support**. It does not establish worldwide demand, causation or willingness to pay because the sample was limited to UK full-time undergraduates.
+
+The Digital Education Council’s 2026 global survey addressed AI use, skills, classroom practices, assessment, institutional policy, academic integrity and equity across several regions, reinforcing that these are international institutional concerns.[2] Its publicly captured executive briefing did not provide enough sample detail or numerical findings to support global extrapolation.
+
+### 2.2 Addressable population
+
+Eurostat reported **19.1 million EU tertiary students in 2024**, including:[3]
+
+- 59.0% in bachelor’s programs.
+- 29.4% in master’s programs.
+- 7.9% in short-cycle tertiary education.
+- 3.8% in doctoral programs.
+
+This is an authoritative population benchmark, not a commercial market estimate. The UNESCO Institute for Statistics provides broader country and global education datasets, but the available research did not yield a current defensible worldwide tertiary-student count.[4]
+
+A transparent market-sizing model should therefore use three layers.
+
+#### Theoretical TAM
+
+\[
+\text{TAM users} = \text{tertiary students in chosen geography}
+\]
+
+For the EU benchmark:
+
+\[
+19.1\text{ million students}
+\]
+
+At an assumed annual price of $60–$180:
+
+\[
+19.1m \times \$60 = \$1.15b
+\]
+
+\[
+19.1m \times \$180 = \$3.44b
+\]
+
+This **$1.15–$3.44 billion range is a theoretical spending envelope**, not an estimate of current AI-education revenue. It assumes every EU tertiary student is eligible and willing to purchase, which is unrealistic.
+
+#### Serviceable available market
+
+Apply validated filters:
+
+\[
+\text{SAM} =
+\text{students in launch countries}
+\times
+\text{target disciplines}
+\times
+\text{language compatibility}
+\times
+\text{digital access}
+\times
+\text{demonstrated interest}
+\]
+
+For example, if research supports a 1.5 million-student reachable population and 20% have active intent:
+
+\[
+1.5m \times 20\% = 300,000\text{ prospective learners}
+\]
+
+At $120 annually, the serviceable revenue pool would be $36 million. Every factor must be replaced with primary survey, enrollment and channel data before it enters an investor model.
+
+#### Obtainable market
+
+A credible first launch target is bottom-up:
+
+- 3 universities × 250 licensed students = 750 seats.
+- 1,000 direct paying students.
+- Total initial paying or institution-funded learners = 1,750.
+- At $35 per institutional seat and $120 per direct learner:
+
+\[
+(750 \times \$35) + (1,000 \times \$120) = \$146,250
+\]
+
+This is a plausible early commercial target, not a forecast.
+
+### 2.3 Market trends
+
+The startup should be designed around six trends:
+
+1. **AI use is becoming normal rather than optional.** The strategic question is increasingly how well and responsibly students use AI.
+2. **Universities are revising assessments.** Products that merely generate answers will conflict with institutional incentives.
+3. **Students need discipline-specific applications.** Generic prompting content becomes commoditized quickly.
+4. **Employers increasingly expect evidence of application, not course attendance.**
+5. **Model and tool features change faster than university curriculum cycles.**
+6. **Institutions face simultaneous pressure around access, academic integrity, privacy and responsible use.**
+
+A credible market-growth rate cannot be calculated from the evidence collected. Vendor-produced global market CAGR estimates should not be inserted into the plan without reviewing methodology, segment definition and primary data.
+
+### 2.4 Competitive landscape and substitutes
+
+| Category | Strength | Weakness or opportunity |
+|---|---|---|
+| Broad MOOCs | Brand, scale, university and technology-company content | Low discipline personalization; completion and support may vary |
+| Technical learning platforms | Strong coding exercises and skill pathways | Often focused on technical learners rather than university-wide AI literacy |
+| AI-specialist course providers | Current content and expert instructors | May lack campus integration, accessibility, assessment governance and portfolios |
+| University courses | Academic legitimacy, possible credit and faculty access | Slow curriculum change; uneven availability across disciplines |
+| Cloud-provider learning | Often free or subsidized and tied to tools | Vendor-specific; may prioritize platform adoption |
+| Bootcamps | High support and career framing | Expensive and time intensive |
+| YouTube, blogs and newsletters | Free and current | Fragmented, little assessment or credential value |
+| General AI assistants | Immediate help and low friction | Unstructured learning, hallucinations, integrity risks and weak outcome evidence |
+| Student societies and peer workshops | Trusted campus distribution | Volunteer capacity and quality vary |
+| Faculty-created modules | Discipline relevance | Difficult to maintain and scale |
+
+Coursera Plus currently advertises access to more than 10,000 programs and a regular price of **$59 per month**, with localized pricing outside the United States.[5] A new venture cannot beat that breadth. It must compete on **relevance, project outcomes, guided practice, responsible use and institutional implementation**. Institutional offerings should also be compared against Coursera for Campus during procurement.[6]
+
+### 2.5 Barriers to entry
+
+Producing videos is easy; producing a trusted educational service is not. Important barriers include:
+
+- Credible learning and employment outcomes.
+- University procurement and security reviews.
+- Faculty trust and academic-integrity alignment.
+- Continually updating tool-specific content.
+- Reliable, safe AI tutoring.
+- Accessible labs and assessments.
+- Project-review operations.
+- Recognized or university-endorsed credentials.
+- Data-protection compliance across jurisdictions.
+- Brand trust in a market saturated with free material.
+- Distribution partnerships that competitors cannot quickly reproduce.
+
+These should become part of the company’s defensibility strategy rather than being treated merely as obstacles.
+
+---
+
+## 3. Target-user segmentation and jobs-to-be-done
+
+### 3.1 Core segments
+
+| Segment | Need and job-to-be-done | Learning preference | Affordability | Product implication |
+|---|---|---|---|---|
+| AI beginner in a nontechnical discipline | “Help me use AI effectively without damaging my learning or violating rules” | Short explanations, examples, templates and guided practice | High price sensitivity | Mobile-friendly foundation track; $0–$15 monthly entry |
+| Career-oriented final-year student | “Help me prove job-ready AI skills” | Projects, feedback, portfolio and interview practice | Medium willingness to pay if outcome is credible | Portfolio certificate and career-center partnerships |
+| Technical builder | “Help me build useful AI applications” | Code labs, APIs, debugging and capstones | Medium to high | Metered lab usage and technical track |
+| Research or postgraduate student | “Help me search, analyze, code and write responsibly” | Deep workshops, citations and research workflows | Often institution-funded | Data-security controls and research-integrity modules |
+| Time-poor working student | “Help me gain practical skills flexibly” | Asynchronous, modular, resumable learning | Medium | Self-paced program with optional clinics |
+| Low-income or bandwidth-constrained student | “Give me employable skills without costly tools or high data usage” | Downloadable text, low-bandwidth mode and scholarships | Very high sensitivity | Regional pricing, sponsored seats and lab quotas |
+| Disabled or neurodivergent student | “Let me participate without avoidable barriers” | Multiple formats, keyboard support and flexible pacing | Varies | WCAG 2.2 AA, transcripts, time adjustments and accessible alternatives |
+| Faculty or department buyer | “Help students use AI responsibly without increasing faculty workload” | Ready-to-deploy modules, dashboards and controls | Departmental budget | Faculty guide, LMS integration and cohort analytics |
+| Career-center buyer | “Improve employability and give employers evidence of skills” | Short credentials and career projects | Institutional | Employer-reviewed rubrics and outcome reporting |
+
+### 3.2 Jobs-to-be-done
+
+The product should address three kinds of jobs:
+
+- **Functional:** learn AI concepts, complete a project, automate a task, use AI in a discipline, prepare for employment.
+- **Emotional:** reduce anxiety about falling behind; gain confidence; avoid feeling dependent on AI.
+- **Social:** demonstrate competence to employers, faculty and peers through a trustworthy portfolio.
+
+HEPI’s qualitative responses illustrate the tension: some students use AI to save time and deepen analysis, while others feel they are “not using [their] brain at all.”[1] The curriculum must teach students when to use AI, when not to use it and how to retain independent judgment.
+
+---
+
+## 4. Primary research and validation program
+
+### 4.1 Discovery sample
+
+During the first eight weeks, conduct:
+
+- 40–60 student interviews across at least three disciplines.
+- 10–15 faculty or learning-technology interviews.
+- 8–12 career-center, employer or recruiter interviews.
+- 5–10 disability-service, privacy, IT or procurement interviews.
+- A survey of 300–600 students in the intended geography.
+- Five competitive-product walkthroughs with students.
+
+Recruit both enthusiasts and skeptical or low-use students. Include commuter, international, low-income, disabled and low-bandwidth learners.
+
+### 4.2 Student interview questions
+
+Ask for recent behavior rather than hypothetical opinions:
+
+- “Describe the last time you used AI for university work.”
+- “What were you trying to accomplish?”
+- “What did you distrust or have to verify?”
+- “What guidance did your university provide?”
+- “What would happen if you used the tool incorrectly?”
+- “What AI skill would most improve your employment prospects?”
+- “What online course did you last pay for, and why?”
+- “What caused you to stop an online course?”
+- “Would you rather pay for structured content, feedback, a credential, mentorship or employer access?”
+- “What accessibility, schedule, device or connectivity constraints affect you?”
+
+### 4.3 Survey design
+
+Measure:
+
+- Discipline, year and country.
+- AI-skill level using scenario-based questions, not self-label alone.
+- Frequency and type of AI use.
+- Institutional guidance and available tools.
+- Academic-integrity uncertainty.
+- Career objectives.
+- Preferred learning length and format.
+- Access to laptop, mobile and reliable broadband.
+- Accessibility requirements.
+- Past online-course spending.
+- Price sensitivity.
+- Importance of certificate, portfolio, academic credit and employer recognition.
+- Intent to enroll and willingness to make a refundable deposit.
+
+Avoid asking only “Would you buy this?” Stated intent should be paired with behavioral tests.
+
+### 4.4 Prototype and pricing tests
+
+Use four sequential tests:
+
+1. **Message test:** three landing-page propositions—career outcome, academic confidence and discipline productivity.
+2. **Format test:** self-paced, cohort-supported and project-review variants.
+3. **Price test:** Gabor-Granger or randomized price pages, followed by a refundable deposit.
+4. **Commitment test:** ask students to book a session, complete a diagnostic or place a $10–$25 refundable reservation.
+
+Possible initial ranges:
+
+- Free foundation module.
+- $12–$20 monthly.
+- $79–$149 semester pass.
+- $99–$179 annual student pass.
+- $199–$399 guided cohort.
+- $30–$80 per institutional learner annually, subject to volume and services.
+
+### 4.5 Validation gates
+
+Proceed only if the evidence meets predetermined thresholds.
+
+| Gate | Minimum evidence |
+|---|---|
+| Problem | At least 60% of target interviewees describe a recurring, material problem |
+| Demand | At least 15% of qualified landing-page visitors join a waitlist or begin a diagnostic |
+| Payment | At least 5% place a deposit, or a paid concierge cohort fills 40 seats |
+| Learning | Participants show at least a 20-percentage-point pre/post improvement on a valid assessment or a comparable rubric gain |
+| Completion | At least 50% complete the core pilot; target 65% with cohort support |
+| Satisfaction | Net Promoter Score above 30 and project usefulness above 4/5 |
+| Institutional | At least two signed pilot agreements or strong letters of intent |
+| Economics | Estimated contribution margin above 60% for the core direct product |
+| Safety | No unresolved critical privacy, security, accessibility or AI-safety findings |
+
+Failure should lead to narrowing, repositioning or changing the buyer—not automatically to more product development.
+
+---
+
+## 5. Value proposition, curriculum and credentials
+
+### 5.1 Recommended value proposition
+
+> **Build practical, responsible AI skills for your degree and career, complete real projects, and graduate with evidence employers and universities can trust.**
+
+For institutions:
+
+> **Give every student structured, discipline-relevant AI capability without requiring each faculty member to design and maintain a separate program.**
+
+### 5.2 Curriculum architecture
+
+Use a common foundation plus discipline and skill-level tracks.
+
+#### Common foundation
+
+1. What modern AI can and cannot do.
+2. Model limitations, hallucinations and uncertainty.
+3. Effective instructions, iteration and evaluation.
+4. Source verification and evidence.
+5. Academic integrity and transparent disclosure.
+6. Privacy, confidential information and intellectual property.
+7. Bias, fairness, accessibility and social impact.
+8. Human judgment and responsible workflow design.
+9. Career applications and portfolio documentation.
+
+#### Discipline tracks
+
+- Business: research, customer analysis, spreadsheet workflows, decision support and process automation.
+- Social sciences: literature synthesis, qualitative analysis and survey workflows.
+- Arts and humanities: source criticism, archives, creative assistance and authorship.
+- STEM: data analysis, simulations, technical communication and reproducibility.
+- Computing: APIs, retrieval, evaluation, agents, security and deployment.
+- Research: search, coding, synthesis, reproducible analysis and disclosure.
+
+#### Skill levels
+
+- **Explorer:** understands AI, risks and basic workflows.
+- **Practitioner:** applies AI independently and evaluates outputs.
+- **Builder:** creates applications or automations and evaluates technical performance.
+
+### 5.3 Learning design
+
+The Institute of Education Sciences describes practice guides as combining research reviews, practitioner experience and expert judgment.[7] Relevant principles should include:
+
+- Backward design from observable outcomes.
+- Short worked examples before independent practice.
+- Retrieval practice and spaced review.
+- Frequent low-stakes checks.
+- Mastery checkpoints with targeted remediation.
+- Authentic projects.
+- Reflection and explanation of reasoning.
+- Peer critique and comparison of alternative solutions.
+
+A WWC-reviewed randomized study found a statistically significant positive result for retrieval-practice studying compared with concept mapping, although the sample was only 40 students and does not by itself establish effectiveness for every domain.[8] Retrieval should therefore be part of the design, not treated as a complete pedagogy.
+
+### 5.4 Capstone evidence
+
+Every learner should produce:
+
+- A clearly defined problem.
+- A documented AI-assisted workflow.
+- Source and output verification.
+- Risk and limitation analysis.
+- An artifact such as analysis, prototype, presentation or application.
+- A process log showing where AI was used.
+- A reflection on human decisions.
+- An employer-readable skills statement.
+
+### 5.5 Credential strategy
+
+#### Stage 1: non-credit certificate
+
+Issue a verifiable certificate of completion and digital badge based on:
+
+- Identity verification proportionate to the credential.
+- Passing assessments.
+- A rubric-scored project.
+- AI-use disclosure.
+- Metadata describing skills, hours, evidence and assessment method.
+
+Do not call the product “accredited,” imply academic credit or use protected university terminology without authorization.
+
+#### Stage 2: co-branded university credential
+
+After pilot evidence:
+
+- University approves curriculum and assessment.
+- Responsibilities for assessment, student complaints and record retention are contractual.
+- Badge or certificate is co-branded.
+- Faculty review and quality assurance occur annually.
+
+#### Stage 3: stackable or credit-bearing pathway
+
+Only pursue this if:
+
+- Students demonstrably value credit more than portfolio evidence.
+- A recognized awarding institution owns or formally validates the credit.
+- Learning hours, outcomes and assessments meet institutional requirements.
+- The revenue and sales benefit justify slower approval and higher compliance costs.
+
+Premium credentials should be based on stronger assessment—not merely a higher fee.
+
+---
+
+## 6. Business model, pricing and unit economics
+
+### 6.1 Product ladder
+
+| Offering | Purpose | Illustrative price |
+|---|---|---:|
+| Free AI foundations module | Acquisition and trust | $0 |
+| Student monthly plan | Low-friction access | $12–$20/month |
+| Semester pass | Fits academic purchasing behavior | $79–$149 |
+| Annual pass | Better cash flow and retention | $99–$179/year |
+| Guided cohort | Clinics, deadlines and project feedback | $199–$399 |
+| Expert project review | Human feedback | $40–$150/project |
+| Mentorship package | Career or technical support | $150–$600 |
+| Institutional license | Campus or department access | $30–$80/student/year, with minimum contract |
+| Pilot package | Limited cohort and outcome report | $10,000–$30,000 |
+| Enterprise or employer program | Recruiting and workforce transition | Custom |
+
+Prices are hypotheses. They should be tested against local purchasing power, competitor pricing, taxes and institutional budgets.
+
+### 6.2 Freemium design
+
+Free access should include:
+
+- Skill diagnostic.
+- One foundation module.
+- A limited project template.
+- A small AI-tutor quota.
+- Community previews.
+- Scholarship application.
+
+Paid access should unlock:
+
+- Full pathways.
+- More lab and tutor usage.
+- Assessments and certificates.
+- Portfolio publishing.
+- Project review and career features.
+
+Do not provide unlimited model or lab usage in a low-price plan. Use transparent monthly limits and educationally justified controls rather than unexpected overage charges.
+
+### 6.3 Scholarships and regional pricing
+
+Use:
+
+- University-sponsored seats.
+- Need-based fee waivers.
+- Regional purchasing-power pricing.
+- Employer or cloud-provider scholarships.
+- Group discounts for student societies.
+- “Sponsor a student” contributions.
+
+Scholarship recipients should receive the same credential and learning experience. Avoid a visibly inferior tier.
+
+### 6.4 Illustrative B2C unit economics
+
+Assume:
+
+- Annual price: $119.
+- Payment and transaction allowance: 4% = $4.76.
+- Refund and credit reserve: 5% = $5.95.
+- AI and lab cost: $18.
+- Variable support and moderation: $12.
+
+\[
+\text{Contribution} =
+\$119-\$4.76-\$5.95-\$18-\$12
+=\$78.29
+\]
+
+\[
+\text{Contribution margin} = 65.8\%
+\]
+
+Before retention is proven, customer acquisition cost should remain below approximately:
+
+\[
+\$78.29 / 3 = \$26.10
+\]
+
+That produces a one-year contribution-LTV-to-CAC ratio of 3:1. If average paid life later reaches 1.5 years, a CAC below roughly $39 would retain the same ratio. This excludes fixed salaries and overhead.
+
+### 6.5 Illustrative institutional economics
+
+For a 500-student license at $35 per student:
+
+- Revenue: $17,500.
+- Implementation and faculty onboarding: $4,000.
+- Variable technology and support at $8 per student: $4,000.
+- First-year contribution: $9,500, or 54%.
+
+Renewal margins should improve because implementation work declines. If every customer requires extensive custom curriculum, single sign-on and reporting, the price must rise or the model will become a consultancy.
+
+### 6.6 KPI system
+
+#### North-star metric
+
+**Number of learners completing a verified, portfolio-quality AI project each month.**
+
+This is more meaningful than registrations or video views.
+
+#### Acquisition
+
+- Website-to-signup conversion.
+- Cost per qualified signup.
+- Cost per activated learner.
+- Customer acquisition cost by channel.
+- Ambassador and referral conversion.
+- Institutional lead-to-pilot conversion.
+
+#### Activation and engagement
+
+- Diagnostic completion.
+- First meaningful learning action within 24 hours.
+- First lab completion within seven days.
+- Weekly active learners.
+- Tutor sessions followed by independent work.
+- Community participation.
+
+#### Learning
+
+- Pre/post assessment gain.
+- Mastery by outcome.
+- Project-rubric score.
+- Retention after 30 or 90 days.
+- Learner ability to identify incorrect AI output.
+- Percentage using proper attribution and disclosure.
+
+#### Retention and revenue
+
+- Course completion.
+- Monthly and semester retention.
+- Trial-to-paid conversion.
+- Renewal and expansion.
+- Revenue per learner.
+- Gross and contribution margin.
+- Refund rate.
+- Scholarship utilization.
+
+#### Safety and quality
+
+- Tutor factual-acceptability score.
+- Unsupported-claim rate.
+- Critical safety failures.
+- Accessibility defects.
+- Privacy or security incidents.
+- Support-resolution time.
+- Assessment appeals.
+
+---
+
+## 7. Full business-plan structure
+
+The formal business plan should contain:
+
+1. **Executive summary:** problem, solution, target segment, traction, economics and funding need.
+2. **Founder-market fit:** educational, technical, commercial and institutional expertise.
+3. **Problem evidence:** primary interviews, surveys and behavioral data.
+4. **Market definition:** TAM, SAM and obtainable market using explicit assumptions.
+5. **Segment selection:** decision score and rejected alternatives.
+6. **Product and pedagogy:** outcomes, curriculum, assessment and evidence base.
+7. **Credential strategy:** completion, endorsement and credit pathways.
+8. **Competition and substitutes:** feature, price, brand, distribution and outcome comparisons.
+9. **Business model:** direct subscriptions, cohorts, licensing and services.
+10. **Go-to-market:** campus, content, ambassadors, partnerships and paid acquisition.
+11. **Institutional-sales plan:** buyer, procurement, pilot and renewal process.
+12. **Technology and data:** architecture, vendors, security and scaling.
+13. **Responsible-AI plan:** evaluation, monitoring and escalation.
+14. **Legal and regulatory plan:** geography-specific requirements.
+15. **Operations:** staffing, content production, support and quality assurance.
+16. **Financial model:** three-year income, cash flow, balance sheet, cohort economics and scenarios.
+17. **Funding strategy:** amount, instrument, timing and use of funds.
+18. **Milestones and gates:** monthly execution plan.
+19. **Risk register:** owner, probability, impact, indicator and contingency.
+20. **Appendices and data room:** research instruments, pilot results, contracts, architecture, policies and financial assumptions.
+
+---
+
+## 8. MVP and post-MVP product requirements
+
+### 8.1 MVP: required functionality
+
+#### Learner experience
+
+- Email and social sign-in.
+- Consent, age and privacy flows.
+- Onboarding and skill diagnostic.
+- Track and discipline selection.
+- Course player supporting text, video, transcripts and interactive checks.
+- Progress and mastery tracking.
+- Browser or externally hosted labs.
+- Projects with templates and rubrics.
+- Low-stakes quizzes and final assessment.
+- Constrained AI tutor.
+- Certificate and basic portfolio page.
+- Notifications and reminders.
+- Support and incident reporting.
+- A simple moderated cohort discussion area.
+
+#### Instructor and administrator experience
+
+- Student and cohort management.
+- Content publishing and versioning.
+- Assignment and rubric management.
+- Progress, completion and outcome dashboards.
+- Tutor-usage and quality monitoring.
+- Flagging and moderation.
+- Certificate issuance.
+- Data export and deletion.
+- Role-based permissions.
+- Audit logs for sensitive actions.
+
+### 8.2 Post-MVP functionality
+
+Add only after demand and learning outcomes are established:
+
+- Adaptive sequencing.
+- Personalized practice and revision plans.
+- Deeper LMS integration through LTI or related standards.
+- Enterprise single sign-on.
+- University-specific policies and tutor behavior.
+- Team projects and peer review.
+- Mentor marketplace.
+- Employer project challenges.
+- Skill graph and competency transcript.
+- Multilingual content.
+- Native mobile application.
+- Advanced proctoring only if genuinely necessary.
+- Recruiting and employer-searchable portfolios with explicit consent.
+- Credit-bearing pathways.
+- Institution-level benchmarking.
+
+### 8.3 AI tutor design
+
+The tutor should:
+
+- Retrieve from approved course content.
+- Cite the lesson or source supporting its response.
+- Ask diagnostic questions before giving solutions.
+- Prefer hints and worked steps over final answers.
+- Refuse to complete protected assessments.
+- State uncertainty and encourage verification.
+- Maintain a clear disclosure that the learner is interacting with AI.
+- Escalate technical, safeguarding and policy issues to a human.
+- Avoid pretending to be a friend, therapist, academic authority or employer.
+- Avoid using student conversations to train models by default.
+- Apply institution-specific academic-integrity rules.
+
+HEPI found that approximately 15% of respondents used AI for companionship, advice or loneliness.[1] The educational tutor should therefore maintain clear boundaries and route wellbeing concerns to qualified services rather than encouraging emotional dependence.
+
+### 8.4 AI quality evaluation
+
+Before release, create a benchmark set covering:
+
+- Factual questions.
+- Ambiguous questions.
+- Requests to complete an assessment.
+- Requests involving personal or confidential data.
+- Biased or discriminatory prompts.
+- Self-harm or crisis language.
+- Prompt injection.
+- Requests for fabricated citations.
+- Discipline-specific edge cases.
+- Accessibility-related interactions.
+
+Each release should be scored for:
+
+- Correctness.
+- Groundedness.
+- Citation quality.
+- Pedagogical helpfulness.
+- Refusal appropriateness.
+- Bias.
+- Privacy leakage.
+- Latency and cost.
+
+Use the NIST AI Risk Management Framework as a governance reference for mapping, measuring, managing and monitoring AI risks.[20]
+
+### 8.5 Academic-integrity controls
+
+Do not rely on AI-output detectors as proof of misconduct. Instead:
+
+- Use authentic and personalized tasks.
+- Require process notes and source disclosure.
+- Capture project iterations where proportionate.
+- Randomize data or scenarios.
+- Include brief oral or live verification for high-value credentials.
+- Require students to explain and defend decisions.
+- Clearly label when AI is permitted, restricted or prohibited.
+- Provide an appeal and human-review process.
+- Separate formative tutor help from summative assessment.
+
+### 8.6 Privacy and security
+
+Minimum controls should include:
+
+- Data minimization.
+- Encryption in transit and at rest.
+- Role-based access.
+- Multifactor authentication for administrators.
+- Short retention for raw tutor conversations.
+- Defined deletion schedules.
+- Vendor data-processing agreements.
+- No sale of student data.
+- No advertising based on sensitive learning behavior.
+- Server-side model credentials.
+- Secret rotation and dependency scanning.
+- Backups and tested restoration.
+- Central logging and incident response.
+- Penetration testing before major institutional launch.
+- Separate production and development environments.
+- Contractual restrictions on model-provider training with student content.
+
+### 8.7 Accessibility
+
+Target **WCAG 2.2 AA** from the first release, not as remediation after launch.[17]
+
+Requirements include:
+
+- Full keyboard operation.
+- Visible focus indicators.
+- Screen-reader-compatible structure.
+- Captions and transcripts.
+- Text alternatives for images and diagrams.
+- Sufficient contrast.
+- No color-only meaning.
+- Adjustable playback speed.
+- Reduced-motion support.
+- Flexible timing and assessment accommodations.
+- Accessible mathematical and code content.
+- Low-bandwidth pages and downloadable resources.
+- Alternatives to drag-and-drop, voice-only or webcam-dependent tasks.
+- Accessibility testing with disabled students and assistive technologies.
+
+---
+
+## 9. Technology strategy and build-versus-buy choices
+
+### 9.1 Recommended MVP architecture
+
+A pragmatic stack is:
+
+- **Frontend:** TypeScript and a mature web framework such as Next.js.
+- **Hosting:** managed deployment such as Vercel or Cloudflare initially.
+- **Application backend:** managed PostgreSQL, authentication and storage through Supabase, or equivalent.
+- **Learning content:** structured Markdown/MDX or H5P, optionally synchronized with an LMS.
+- **Labs:** purchased sandbox or hosted notebook service.
+- **AI:** server-side model gateway supporting multiple providers.
+- **Retrieval:** PostgreSQL with vector support before adopting a separate vector database.
+- **Payments:** hosted checkout and subscription billing such as Stripe.
+- **Analytics:** privacy-conscious product analytics plus a learning-event schema.
+- **Monitoring:** error tracking, uptime checks and OpenTelemetry-compatible observability.
+- **Communications:** managed email and calendar services.
+- **Administration:** custom lightweight operations console.
+
+Supabase’s official pricing page includes managed PostgreSQL, authentication, storage, realtime features, edge functions, backups and enterprise security options.[10] Its suitability depends on projected storage, egress, authentication volume, audit-log and compliance requirements.
+
+### 9.2 Build-versus-buy matrix
+
+| Component | Buy first | Build later when | Recommendation |
+|---|---|---|---|
+| Authentication | Managed auth | Identity is strategically distinctive or regulation requires specialized control | Buy |
+| Payments and tax | Hosted provider | Almost never for an early startup | Buy |
+| Video delivery | Managed video/CDN | Extremely high scale justifies optimization | Buy |
+| LMS fundamentals | Hosted LMS or thin custom layer | Learning flow itself is differentiated | Hybrid |
+| Code execution | Secure sandbox vendor | Lab volume makes vendor cost prohibitive or custom environments are core | Buy |
+| AI model | Commercial API or managed open model | Data residency, cost or unique quality justifies model operations | Buy and abstract |
+| AI tutor orchestration | Build | This is central to pedagogy and differentiation | Build |
+| Community | Existing community platform | Deep learning workflow integration is proven valuable | Buy initially |
+| Credential issuance | Badge/certificate service or simple signed records | Large credential network creates strategic value | Buy or light build |
+| Analytics | Managed analytics | Scale or institutional reporting requires warehouse control | Buy initially |
+| Content authoring | Standard tools | Distinctive simulations require custom authoring | Hybrid |
+| Portfolio | Build a simple version | It is central to outcome evidence | Build |
+
+### 9.3 LMS alternatives
+
+- **Hosted conventional LMS:** fastest institutional familiarity, strong course-management features, weaker custom experience.
+- **Open-source LMS:** more control and lower license cost, but requires hosting, upgrades and security operations.
+- **Fully custom learning platform:** maximum differentiation but high time, accessibility and maintenance risk.
+- **Hybrid:** conventional LMS or structured content backend plus a custom student experience.
+
+The hybrid option is usually best for the first year.
+
+### 9.4 Hosting alternatives
+
+| Option | Speed | Operations | Flexibility | Best fit |
+|---|---|---|---|---|
+| Vercel plus managed backend | Very fast | Low | Medium | Small product team optimizing for speed |
+| Cloudflare stack | Fast | Low to medium | Medium | Edge-heavy, bandwidth-sensitive applications |
+| AWS managed services | Medium | Medium to high | Very high | Institutional scale, specialized networking or compliance |
+| Self-hosted open source | Slow | High | Very high | Strong infrastructure team or strict sovereignty need |
+
+Use official pricing pages and calculators rather than static comparisons because charges depend on traffic, storage, egress, duration and region.[11][12][13]
+
+### 9.5 AI-model strategy
+
+Do not bind the product to a single model. The gateway should provide:
+
+- Provider-independent request format.
+- Routing by task difficulty.
+- Approved-model list.
+- Cost and token quotas.
+- Redaction of personal information.
+- Logging with sensitive-field suppression.
+- Evaluation by model version.
+- Prompt and content versioning.
+- Fallback provider.
+- Kill switch.
+- Institution-specific configuration.
+
+Model cost should be calculated as:
+
+\[
+\text{AI cost per active learner}
+=
+\sum(\text{input tokens} \times \text{input rate})
++
+\sum(\text{output tokens} \times \text{output rate})
++
+\text{retrieval}
++
+\text{evaluation overhead}
+\]
+
+Set a provisional target of **$1–$3 per monthly active learner** for general tutor usage, excluding expensive code or media generation. This is an internal design assumption.
+
+### 9.6 Lab-cost control
+
+- Set per-plan compute quotas.
+- Shut down idle sessions.
+- Prebuild environments.
+- Use lightweight simulations where full execution is unnecessary.
+- Cache datasets and package layers.
+- Display usage clearly.
+- Separate basic notebook access from GPU-intensive work.
+- Require approval for expensive workloads.
+
+### 9.7 Data architecture
+
+Maintain separate stores or logical boundaries for:
+
+- Account and billing information.
+- Learning records.
+- Project artifacts.
+- AI conversations.
+- Analytics events.
+- Institutional reporting.
+- Consent and deletion records.
+
+Institutional dashboards should use aggregated or role-authorized data. Employers should never receive individual learning data without informed, revocable student consent.
+
+---
+
+## 10. Campus and employer partnership strategy
+
+### 10.1 Stakeholders and incentives
+
+| Stakeholder | Their incentive | Offer |
+|---|---|---|
+| Department chair | Modern curriculum and student satisfaction | Ready-to-run discipline module and outcome report |
+| Faculty | Better AI use without excessive preparation | Faculty guide, assessment templates and office hours |
+| Learning-technology team | Controlled, supportable deployment | Integration plan, accessibility evidence and admin controls |
+| IT/security | Reduced vendor and data risk | Architecture, security questionnaire, DPA and incident plan |
+| Career center | Employability evidence | Portfolio projects, employer panels and completion analytics |
+| Disability service | Equal access | Accessibility conformance and testing involvement |
+| Student organizations | Relevant events and member value | Free workshops, ambassador funding and group access |
+| University leadership | Strategic AI capability | Institution-level dashboard and responsible-AI framework |
+| Employers | Better-prepared candidates | Project challenges and transparent skill rubrics |
+| Cloud providers | Student adoption and future developers | Credits, scholarships, speakers and co-marketing |
+
+### 10.2 Pilot proposal
+
+Offer an eight-week pilot for **100–300 students** containing:
+
+- Baseline diagnostic.
+- Six-week instructional core.
+- Weekly optional support.
+- One discipline-specific capstone.
+- Pre/post assessment.
+- Student and faculty survey.
+- Accessibility and support process.
+- Aggregate outcome report.
+- Defined data retention and deletion.
+- Clear restriction against using participation in formal grades unless separately agreed.
+
+Suggested commercial structures:
+
+- Free first pilot only if the institution provides recruitment access, faculty participation, data permissions and an agreed paid-conversion decision date.
+- Low-cost $10,000–$20,000 pilot.
+- Sponsored pilot funded by an employer or cloud partner.
+- Per-seat pilot with a minimum cohort fee.
+
+### 10.3 Pilot success measures
+
+- At least 50% core completion.
+- At least 70% of starters submit one project.
+- At least 20-percentage-point improvement on a validated assessment, or equivalent rubric gain.
+- At least 80% report clearer understanding of responsible AI use.
+- Faculty satisfaction of at least 4/5.
+- No critical privacy, safety or accessibility incidents.
+- A paid renewal decision within 30 days of the final report.
+
+Where practical and ethical, use a waitlist or randomized-encouragement design. Score projects with blinded rubrics to reduce evaluator bias.
+
+### 10.4 Partnership process
+
+1. Identify an internal champion.
+2. Obtain a discovery meeting and map decision-makers.
+3. Co-design the pilot problem and target cohort.
+4. Secure a letter of intent.
+5. Complete accessibility, privacy, insurance and security review.
+6. Execute pilot and data-processing agreements.
+7. Train faculty and student ambassadors.
+8. Deliver the pilot.
+9. Present outcomes.
+10. Convert to annual license before the budget cycle closes.
+
+University support is not one stakeholder. Faculty approval does not guarantee IT approval, procurement capacity or funding.
+
+---
+
+## 11. Positioning, acquisition and engagement
+
+### 11.1 Positioning
+
+Avoid generic claims such as “master AI.” Position around a concrete outcome:
+
+- “Build job-ready AI projects for your discipline.”
+- “Use AI confidently without outsourcing your thinking.”
+- “Learn the AI skills your course does not yet teach.”
+- “Graduate with proof, not just prompts.”
+
+Brand characteristics should be:
+
+- Trustworthy, not sensational.
+- Student-centered, not corporate.
+- Practical, not merely theoretical.
+- Ambitious without implying guaranteed employment.
+- Transparent about AI limitations.
+
+### 11.2 Acquisition channels
+
+| Channel | Role | Economic target |
+|---|---|---|
+| Faculty and department referrals | High-trust acquisition | CAC under $15 excluding sales labor |
+| Career centers | Career-oriented cohorts | Contract contribution at least 50% |
+| Student ambassadors | Campus awareness and events | CAC under $20 |
+| Student societies | Fast niche distribution | Cost per activated learner under $15 |
+| Search and educational content | Compounding organic demand | Six-to-twelve-month payback acceptable |
+| Webinars and workshops | Demonstrate teaching quality | 25% registration-to-attendance |
+| Referral program | Low-cost growth | At least 15% of active students refer |
+| Paid search/social | Controlled testing only | CAC under $26 until retention is proven |
+| Employer challenges | Credibility and sponsorship | Cover project and review costs |
+| Influencers or creators | Reach | Pay for qualified activation, not impressions |
+
+Ambassadors can receive:
+
+- $150–$400 per academic term.
+- Performance bonuses for activated learners, not raw signups.
+- Free premium access.
+- Facilitation training.
+- Public recognition and references.
+
+### 11.3 Launch funnel targets
+
+For an initial public-launch quarter:
+
+- 20,000 qualified website visitors.
+- 15% signup rate = 3,000 signups.
+- 50% activation = 1,500 activated learners.
+- 60% begin a module = 900 starters.
+- 20% of activated learners convert through trial, cohort or institutional funding = 300 paid/funded learners.
+- 60% of paid starters complete the core = 180 completers.
+- 15% of active students make a successful referral.
+
+These are target assumptions. Each channel needs its own cohort economics.
+
+### 11.4 Content strategy
+
+Publish material that demonstrates judgment rather than chasing every new tool:
+
+- Discipline-specific AI workflow examples.
+- “Allowed, restricted or risky?” academic scenarios.
+- AI-output verification challenges.
+- Faculty interviews.
+- Student project case studies.
+- Employer skill rubrics.
+- Model-comparison experiments.
+- Responsible-AI guides.
+- Short diagnostic quizzes.
+
+Use a **70/20/10 content portfolio**:
+
+- 70% durable concepts and workflows.
+- 20% discipline applications.
+- 10% current tools and model releases.
+
+### 11.5 Retention and engagement
+
+- Diagnostic-based onboarding.
+- Immediate first win within 15 minutes.
+- Weekly goals and progress reminders.
+- Cohort deadlines without blocking flexible learners.
+- Spaced retrieval and mastery review.
+- Project milestones.
+- Peer demonstration sessions.
+- Tutor follow-up that asks learners to apply the answer.
+- Portfolio publication celebration.
+- Alumni challenges.
+- New modules each academic term.
+- Career events and employer feedback.
+- Renewal reminders tied to new outcomes rather than generic discounts.
+
+Avoid manipulative streaks or notifications that reward screen time rather than learning.
+
+---
+
+## 12. Month-by-month roadmap
+
+### Month 1 — September 13 to October 12, 2026: define the thesis
+
+**Owners:** CEO/founder, product lead, learning lead.
+
+- Select two candidate countries and three candidate segments.
+- Establish the segment scorecard.
+- Conduct the first 20 student and five stakeholder interviews.
+- Draft problem statements and jobs-to-be-done.
+- Review credential and regulatory constraints.
+- Create risk register and preliminary financial model.
+- Recruit three faculty advisers.
+
+**Gate:** At least one segment shows recurring pain in 60% of interviews.
+
+### Month 2 — October 13 to November 12: test demand and pricing
+
+**Owners:** CEO, researcher/growth lead, product designer.
+
+- Complete 40–60 student interviews.
+- Launch survey to 300–600 students.
+- Test three landing-page propositions.
+- Run price and deposit experiments.
+- Interview career centers and employers.
+- Choose geography, discipline and initial buyer.
+
+**Gate:** At least 15% qualified signup intent and meaningful paid commitment.
+
+### Month 3 — November 13 to December 12: concierge prototype
+
+**Owners:** learning lead, SMEs, founder.
+
+- Deliver a manual two-week prototype to 20–30 students.
+- Test diagnostic, sample lesson, tutor workflow and capstone.
+- Observe learners completing tasks.
+- Score accessibility and low-bandwidth problems.
+- Draft curriculum map and assessment blueprint.
+- Obtain two campus pilot letters of intent.
+
+**Gate:** At least 70% finish the prototype and 80% rate usefulness at 4/5 or better.
+
+### Month 4 — December 13 to January 12, 2027: architecture and PRD
+
+**Owners:** CTO/product lead, security adviser, learning lead.
+
+- Finalize MVP product-requirements document.
+- Select hosting, backend, lab and model vendors.
+- Create data map and retention policy.
+- Build design system to WCAG 2.2 AA.
+- Define analytics events.
+- Create tutor evaluation set.
+- Finalize pilot agreements.
+
+**Gate:** Architecture and security review approved; no unowned P0 requirements.
+
+### Month 5 — January 13 to February 12: build alpha
+
+**Owners:** engineering lead, full-stack engineer, designer.
+
+- Implement authentication, onboarding, course player and progress.
+- Add diagnostic and assessments.
+- Integrate sandbox and AI gateway.
+- Add basic admin console.
+- Add billing in test mode.
+- Author first 30–40% of curriculum.
+- Establish automated tests and deployment pipeline.
+
+**Gate:** Internal users can complete an end-to-end lesson and project flow.
+
+### Month 6 — February 13 to March 12: content-complete alpha
+
+**Owners:** learning lead, SMEs, engineering, accessibility tester.
+
+- Finish pilot curriculum.
+- Implement certificates and portfolio.
+- Add tutor guardrails, citations and quotas.
+- Complete keyboard and screen-reader testing.
+- Conduct threat modeling.
+- Run 30–50-person closed alpha.
+- Train support and moderation team.
+
+**Gate:** No critical accessibility or security defect; tutor meets quality threshold on benchmark.
+
+### Month 7 — March 13 to April 12: paid pilot cohort
+
+**Owners:** pilot manager, learning lead, community manager.
+
+- Run a 40–80-student paid or deposit-backed cohort.
+- Conduct baseline and final assessments.
+- Measure completion, support demand and variable cost.
+- Hold weekly learner interviews.
+- Test project-review operations.
+
+**Gate:** At least 50% completion, NPS above 30 and contribution-margin path above 60%.
+
+### Month 8 — April 13 to May 12: iterate and harden
+
+**Owners:** product, engineering, data and learning leads.
+
+- Analyze pilot drop-off and learning gains.
+- Revise weak modules and onboarding.
+- Improve tutor benchmark performance.
+- Conduct privacy and security remediation.
+- Validate certificate and portfolio with ten employers.
+- Prepare institutional reporting.
+
+**Gate:** Learning outcomes and portfolio value are independently credible.
+
+### Month 9 — May 13 to June 12: university pilots
+
+**Owners:** partnerships lead, customer success, learning lead.
+
+- Launch two to four institutional pilots.
+- Train faculty and campus ambassadors.
+- Monitor completion and accessibility.
+- Begin renewal discussions before pilots end.
+- Produce case-study framework.
+- Add only essential institutional features.
+
+**Gate:** At least two institutions indicate paid renewal subject to final results.
+
+### Month 10 — June 13 to July 12: beta and acquisition engine
+
+**Owners:** growth lead, engineering, partnerships.
+
+- Open controlled public beta.
+- Launch content, referral and ambassador programs.
+- Test monthly versus semester pricing.
+- Improve automated lifecycle communications.
+- Add operational dashboards and cost alerts.
+- Finalize support and incident-response procedures.
+
+**Gate:** CAC below provisional cap and no deterioration in learner outcomes.
+
+### Month 11 — July 13 to August 12: launch readiness
+
+**Owners:** CTO, CEO, operations, legal counsel.
+
+- Complete penetration test and accessibility audit.
+- Close P0 defects.
+- Test backups and disaster recovery.
+- Complete subscription, refund and privacy disclosures.
+- Publish responsible-AI and academic-integrity policies.
+- Secure three launch partners.
+- Prepare press, faculty and ambassador launch kits.
+- Conduct load and failure testing.
+
+**Gate:** Formal launch-readiness review passes every criterion below.
+
+### Month 12 — August 13 to September 12: public launch
+
+**Owners:** CEO, growth, customer success and operations.
+
+- Open student subscriptions.
+- Launch institutional cohorts.
+- Run campus events and employer showcase.
+- Monitor support, model cost and conversion daily.
+- Publish pilot outcome report without overstating causation.
+- Start renewal and expansion sales.
+- Decide whether to raise capital for the next stage.
+
+**Milestone:** Public launch completed no later than September 12, 2027.
+
+### Launch criteria
+
+- 300 or more paid/funded learners, or an equivalent institutional pipeline.
+- Three contracted institutional or sponsor partners.
+- No unresolved critical security, privacy or accessibility issues.
+- Tutor acceptable-response score of at least 90% on the curated benchmark and zero unresolved critical safety failures.
+- Core completion at or above 50%.
+- Demonstrated learning improvement.
+- Contribution-margin path above 60%.
+- Median support first response under one business day.
+- Tested backup, incident and model-provider failure procedures.
+- At least nine months of runway after launch, or a credible financing close.
+
+---
+
+## 13. Staffing and operating budgets
+
+### 13.1 Lean team
+
+- Two founders: commercial/partnerships and technical/product.
+- Part-time learning designer.
+- Contract discipline experts.
+- Contract design/accessibility specialist.
+- Part-time community and support coordinator.
+- Fractional legal and privacy counsel.
+
+This works only if founders defer market salaries and buy most infrastructure.
+
+### 13.2 Base team
+
+- CEO or commercial founder.
+- CTO/product founder.
+- Full-stack engineer.
+- Learning-design lead.
+- Content producer or second learning designer.
+- Partnerships/customer-success lead.
+- Growth and community lead.
+- Part-time discipline experts.
+- Fractional legal, security and accessibility specialists.
+
+### 13.3 Higher-resource team
+
+Add:
+
+- Two additional engineers.
+- Data/AI engineer.
+- Product manager.
+- Multiple instructional designers and media producers.
+- Dedicated institutional salesperson.
+- Customer-success manager.
+- Career-program manager.
+- Security or platform engineer.
+- Full-time operations lead.
+
+### 13.4 Illustrative 12-month budgets
+
+USD estimates:
+
+| Category | Lean | Base | Higher-resource |
+|---|---:|---:|---:|
+| Fully loaded staffing | $90,000 | $360,000 | $1,100,000 |
+| Technology, AI and labs | $18,000 | $60,000 | $180,000 |
+| Curriculum and media | $25,000 | $90,000 | $300,000 |
+| Marketing and partnerships | $20,000 | $110,000 | $400,000 |
+| Legal, privacy, security and accessibility | $15,000 | $45,000 | $120,000 |
+| Insurance, administration and operations | $7,000 | $35,000 | $120,000 |
+| Contingency | $15,000 | $70,000 | $180,000 |
+| **Total** | **$190,000** | **$770,000** | **$2,400,000** |
+
+#### Lean scenario
+
+Best for experienced founders with strong university access. It should launch one track, use purchased tools and avoid complex integrations. Founder compensation is likely below market.
+
+#### Base scenario
+
+Best balance between speed, quality and institutional readiness. It supports one strong core program, two discipline variants and several pilots.
+
+#### Higher-resource scenario
+
+Appropriate only if there is funding, established distribution or a multi-university commitment. More money should not be used to create many courses before demand is proven.
+
+Add at least 10–15% contingency when launching across multiple jurisdictions or pursuing credit-bearing credentials.
+
+---
+
+## 14. Financing strategy
+
+### 14.1 Comparison of options
+
+| Source | Best timing | Suitability | Main trade-off |
+|---|---|---|---|
+| Bootstrapping | Months 1–6 | Strong for discovery and concierge pilots | Limits hiring and founder runway |
+| Customer prepayments | Months 2–8 | Excellent validation | Creates delivery obligations |
+| University support | Months 1–9 | Strong when founders have campus links | Can be slow and politically dependent |
+| Grants | Months 1–12 | Good for accessibility, pedagogy or responsible AI | Restricted use and long applications |
+| Competitions | Months 1–6 | Useful for small non-dilutive capital and visibility | Unpredictable and time-consuming |
+| Cloud credits | Months 3–12 | Useful for infrastructure and student labs | Can create vendor dependence |
+| Sponsorship | Months 3–12 | Good for scholarships and employer projects | Requires brand and editorial independence |
+| Accelerator | Months 3–9 | Useful for network, pilots and pre-seed | Equity dilution and program distraction |
+| Angel/pre-seed | After paid evidence | Suitable for base scenario | Dilution and pressure for fast growth |
+| Revenue-based financing | After recurring revenue | Suitable for predictable subscriptions | Expensive if margins or retention are weak |
+| Venture capital | After strong retention and scalable distribution | Suitable for global platform ambition | Requires venture-scale outcomes and dilution |
+
+### 14.2 Recommended financing sequence
+
+1. **Months 1–3:** founder capital, small grants, university support and refundable deposits.
+2. **Months 3–7:** paid concierge cohort, sponsored pilot and cloud credits.
+3. **Months 6–9:** accelerator or angel round if product and pilot gates are met.
+4. **Months 9–12:** pre-seed round only if retention, learning outcomes and distribution support scalable expansion.
+5. **After launch:** consider revenue-based finance only with predictable recurring revenue and positive contribution margins.
+
+### 14.3 Capital required
+
+- Lean: raise or commit approximately **$225,000**, giving contingency above the $190,000 plan.
+- Base: approximately **$900,000–$1.1 million**, allowing launch runway.
+- Higher-resource: **$2.5–$3.0 million**, justified only by institutional commitments or strong product traction.
+
+### 14.4 Investor readiness
+
+Before fundraising, prepare:
+
+- Paid conversion and cohort retention.
+- Contribution-margin model.
+- Pilot learning-outcome data.
+- Institutional letters of intent and contracts.
+- Acquisition economics by channel.
+- Product demo.
+- Responsible-AI and compliance plan.
+- Cap table and intellectual-property assignments.
+- Three-year financial model.
+- Security architecture.
+- Market assumptions with primary data.
+- Clear explanation of why the company is more defensible than a course creator using public AI tools.
+
+---
+
+## 15. Legal, regulatory, accreditation and ethical considerations
+
+This is a decision framework, not jurisdiction-specific legal advice.
+
+### 15.1 Jurisdiction decision tree
+
+For every market, determine:
+
+1. Where is the student located?
+2. Where is the contracting institution?
+3. Where is the company established?
+4. Where is data stored and processed?
+5. Is the learner a minor?
+6. Is the service direct-to-consumer or institution-provided?
+7. Does AI merely tutor, or does it make admission, grading, progression or disciplinary decisions?
+8. Is the credential non-credit, endorsed, regulated or credit-bearing?
+9. Are subscriptions automatically renewing?
+10. Are taxes, VAT or sales taxes due?
+
+### 15.2 European Union
+
+Important obligations may include:
+
+- GDPR lawful basis, transparency, minimization, data-subject rights and processor contracts.[16]
+- AI Act disclosure, literacy, risk-management and potentially high-risk requirements.[14][15]
+- Accessibility and consumer rules.
+- VAT and subscription-renewal disclosures.
+
+Under the EU AI Act, educational AI may receive stricter treatment when used for decisions such as access, admission, learning-outcome evaluation, educational level or examination monitoring. A tutor providing formative guidance is not automatically equivalent to a high-risk grading or admissions system, but its actual purpose and deployment matter.
+
+Avoid emotion-recognition or attention-inference features in education. Do not infer engagement, mood or honesty from webcam, voice or facial behavior.
+
+Because the 2026 implementation schedule may be affected by official amendments and transitional rules, verify every date against the European Commission timeline and EUR-Lex before launch.[14][15]
+
+### 15.3 United States
+
+When contracting with institutions, determine whether the company handles education records under FERPA and whether it qualifies under the relevant contractual exception.[18] Contracts commonly need to address:
+
+- Permitted educational purpose.
+- Institutional control.
+- Redisclosure restrictions.
+- Security and deletion.
+- Student access and correction.
+- Breach notification.
+
+Direct-to-consumer data may not be governed by FERPA but remains subject to consumer-protection, contractual and state privacy laws.
+
+University students are usually over 13, but age-gate the service. COPPA requirements become relevant if the product knowingly serves children under 13.[19]
+
+### 15.4 Other jurisdictions
+
+For the UK, Canada, Australia and other markets, validate:
+
+- Privacy and data-transfer rules.
+- Accessibility law.
+- Consumer and auto-renewal law.
+- Advertising and employment-outcome claims.
+- Credential and education-provider regulation.
+- Tax.
+- Minor and safeguarding duties.
+
+Do not assume GDPR compliance automatically satisfies other countries.
+
+### 15.5 Intellectual property
+
+Contracts and policies should address:
+
+- Ownership of company curriculum and software.
+- Written IP assignment from employees and contractors.
+- Faculty-contributed material.
+- Licensed readings, images, datasets and code.
+- Student ownership of projects.
+- Limited license needed to display student portfolios.
+- Consent for promotional case studies.
+- AI-provider terms for inputs and outputs.
+- Open-source license compliance.
+- Confidential employer or university data.
+- Removal and copyright-complaint process.
+
+### 15.6 Credential and advertising claims
+
+Avoid unsupported claims such as:
+
+- “Accredited” without accreditation.
+- “University approved” without authorization.
+- “Guaranteed job.”
+- “Industry recognized” without evidence.
+- “Bias free,” “hallucination free” or “100% accurate.”
+- “Detects AI cheating.”
+
+Publish the credential’s exact issuer, learning outcomes, assessment method and limitations.
+
+---
+
+## 16. Major risks, mitigations and contingency triggers
+
+| Risk | Early indicator | Mitigation | Contingency trigger |
+|---|---|---|---|
+| No willingness to pay | High interest but deposit rate under 5% | Narrow to stronger career outcome; sell through institutions | Two failed paid cohorts |
+| Generic differentiation | Students compare it only on course price | Discipline projects, feedback and portfolio evidence | Conversion remains below benchmark after message tests |
+| Low completion | Less than 40% reach first project | Shorter modules, cohort support and onboarding revision | Two cohorts below 50% |
+| Weak learning outcomes | Engagement without assessment gain | Revise pedagogy and assessment; external review | No meaningful gain after one revision cycle |
+| Tutor errors | High unsupported-claim rate | Retrieval, citations, evaluation, constrained use | Any unresolved critical safety failure |
+| Academic-integrity conflict | Faculty objections or misuse complaints | Assessment-specific tutor modes and process evidence | Partner suspends use |
+| Model dependency | Price increase or quality regression | Multi-provider gateway and quotas | Unit AI cost doubles |
+| Lab cost escalation | Compute exceeds budget per learner | Quotas, idle shutdown and lighter labs | Variable cost exceeds 25% of revenue |
+| Security breach | Unusual access or credential leakage | MFA, encryption, monitoring and response plan | Confirmed unauthorized access |
+| Privacy noncompliance | Unclear consent or deletion failures | Data map, DPA, retention automation | Inability to satisfy rights request |
+| Accessibility failure | Disabled users cannot complete tasks | WCAG-first design and external testing | Any core flow has a severe blocker |
+| Misleading credential | Student or regulator complaint | Precise claims and partner authorization | Partner disputes credential language |
+| University sales delay | Champion exists but procurement stalls | Multiple stakeholders and D2C fallback | No procurement progress for 90 days |
+| Over-customization | Each partner requests unique product | Configuration boundaries and paid services | Custom work exceeds 20% of engineering capacity |
+| Faculty resistance | Low referrals or public criticism | Faculty co-design and transparent policies | Two pilot cancellations |
+| Reputational harm | Tutor gives harmful advice or encourages dependency | Clear boundaries and human escalation | Serious public incident |
+| Content obsolescence | Tool lessons break frequently | Evergreen-first curriculum and quarterly review | More than 15% of lessons require urgent updates |
+| Poor hiring execution | Milestones repeatedly slip | Narrow scope and use experienced contractors | Two consecutive monthly gates missed |
+| Funding shortfall | Runway under six months | Reduce tracks, prioritize revenue and pause hiring | Runway reaches four months |
+| Founder overload | Support and sales displace product work | Standard operating procedures and early operations hire | Critical tasks delayed for two cycles |
+
+The kill-or-pivot decision should occur no later than Month 7 if paid demand, completion and institutional interest all remain below threshold.
+
+---
+
+## 17. Long-term scalability
+
+### 17.1 Curriculum expansion
+
+Expand in this order:
+
+1. Deepen the validated discipline.
+2. Add adjacent disciplines sharing 70% of the core.
+3. Add builder-level technical modules.
+4. Add postgraduate and researcher pathways.
+5. Add faculty-development programs.
+6. Add institution-specific or employer-sponsored projects.
+
+Use a modular curriculum graph so foundational content is reused rather than duplicated.
+
+### 17.2 Geographic expansion
+
+Enter a new country only after validating:
+
+- Language and examples.
+- Payment and purchasing power.
+- University structure.
+- Academic calendar.
+- Privacy and consumer rules.
+- Credential expectations.
+- Employer demand.
+- Accessibility.
+- Local support capacity.
+
+Localization must include examples, assessments, policy guidance and career context—not translation alone.
+
+### 17.3 Institutional-sales scale
+
+Create repeatable packages:
+
+- Campus-wide AI foundation.
+- Discipline pathways.
+- Final-year career certificate.
+- Faculty AI-literacy program.
+- Researcher program.
+- Employer-sponsored challenge.
+
+Standardize security documentation, accessibility evidence, data-processing terms, onboarding and outcome reports. Configuration should replace custom code.
+
+### 17.4 Platform architecture
+
+Scale gradually:
+
+- Separate AI, learning, billing and analytics services.
+- Introduce queues for long-running tutor and assessment work.
+- Partition institutional data logically or physically as required.
+- Use content and prompt versioning.
+- Introduce a warehouse for aggregate analytics.
+- Add region-specific storage only when required.
+- Maintain model-provider portability.
+- Run cost and performance testing before major campaigns.
+- Preserve manual override and kill-switch capability.
+
+### 17.5 Instructor and content quality
+
+- Maintain subject-owner accountability.
+- Require source and license checks.
+- Use two-person review for assessments.
+- Test every lab in production-like environments.
+- Review tool-specific content quarterly.
+- Review foundation content at least annually.
+- Monitor item difficulty and discrimination.
+- Calibrate project reviewers.
+- Retire content that lacks outcome value.
+
+### 17.6 Defensibility
+
+A durable advantage should come from:
+
+- Discipline-specific curriculum and assessment IP.
+- University distribution.
+- Employer-validated projects.
+- Longitudinal evidence connecting learning behavior, project quality and outcomes.
+- Trusted responsible-AI implementation.
+- Accessibility and institutional-readiness capabilities.
+- Faculty and reviewer network.
+- High-quality tutor evaluation datasets.
+- Credential reputation.
+
+The company should not describe personal student data as a “moat.” Defensibility should come from aggregated insight, content quality, relationships and execution—not data lock-in.
+
+### 17.7 Adjacent revenue streams
+
+After the core model works:
+
+- Faculty and staff training.
+- Career-center programs.
+- Employer-sponsored projects.
+- Recruiting introductions with student consent.
+- Project-review marketplace.
+- Mentor marketplace.
+- Premium assessments.
+- White-label institutional pathways.
+- Curriculum licensing.
+- API or LTI access to the tutor.
+- Responsible-AI policy and implementation services.
+- Alumni continuing education.
+- Corporate graduate-transition programs.
+
+Services should support product adoption without turning the business into an unscalable consultancy.
+
+---
+
+## 18. Immediate 30-day action plan
+
+By October 12, 2026, the founding team should have:
+
+1. Chosen no more than three segment hypotheses.
+2. Scored them using the 100-point framework.
+3. Interviewed at least 20 students and five institutional stakeholders.
+4. Recruited three faculty advisers.
+5. Built three proposition landing pages.
+6. Defined a refundable-deposit experiment.
+7. Drafted the six-week curriculum at outcome level.
+8. Identified two possible pilot universities.
+9. Created the initial privacy/data map.
+10. Produced a 12-month cash model for lean and base scenarios.
+11. Assigned a named owner to product, pedagogy, partnerships, engineering and compliance.
+12. Established written stop, pivot and proceed thresholds.
+
+The most important first-year discipline is sequencing: **validate the problem, then payment, then learning efficacy, then institutional repeatability, and only then scale content and acquisition**. A broad platform built before those gates would create the highest financial and execution risk.
+
+### Sources
+
+[1] [HEPI — Student Generative Artificial Intelligence Survey 2026](https://www.hepi.ac.uk/reports/student-generative-ai-survey-2026/)
+
+[2] [Digital Education Council — AI in Higher Education Global Survey 2026 Executive Briefing](https://www.digitaleducationcouncil.com/executive-briefings-event/digital-education-council-regional-ai-in-higher-education-survey-2026)
+
+[3] [Eurostat — Tertiary Education Statistics](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Tertiary_education_statistics)
+
+[4] [UNESCO Institute for Statistics — World Education Statistics 2025](https://www.uis.unesco.org/en/publication/world-education-statistics-2025)
+
+[5] [Coursera — Coursera Plus](https://www.coursera.org/courseraplus)
+
+[6] [Coursera — Compare Coursera for Campus Plans](https://www.coursera.org/campus/compare-plans)
+
+[7] [Institute of Education Sciences, What Works Clearinghouse — Practice Guides](https://ies.ed.gov/ncee/wwc/practiceguides)
+
+[8] [Institute of Education Sciences, What Works Clearinghouse — Retrieval Practice Study 67306](https://ies.ed.gov/ncee/wwc/Study/67306)
+
+[9] [Institute of Education Sciences — Using Technology to Support Postsecondary Student Learning](https://ies.ed.gov/ncee/wwc/PracticeGuide/25)
+
+[10] [Supabase — Pricing and Features](https://supabase.com/pricing)
+
+[11] [Vercel — Pricing Documentation](https://vercel.com/docs/pricing)
+
+[12] [Cloudflare — Plans and Pricing](https://www.cloudflare.com/plans/)
+
+[13] [Amazon Web Services — AWS Pricing Calculator](https://calculator.aws/)
+
+[14] [European Commission AI Act Service Desk — Implementation Timeline](https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act)
+
+[15] [EUR-Lex — Regulation (EU) 2024/1689, Artificial Intelligence Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng)
+
+[16] [EUR-Lex — Regulation (EU) 2016/679, General Data Protection Regulation](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
+
+[17] [World Wide Web Consortium — Web Content Accessibility Guidelines 2.2](https://www.w3.org/TR/WCAG22/)
+
+[18] [U.S. Department of Education — Family Educational Rights and Privacy Act](https://studentprivacy.ed.gov/ferpa)
+
+[19] [U.S. Federal Trade Commission — Children’s Online Privacy Protection Rule](https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa)
+
+[20] [National Institute of Standards and Technology — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)

@@ -1,6 +1,6 @@
 # Five-task strict-cold-start IEO-v3 batch protocol (v0.86)
 
-Status: **v0.86 generation excluded before scoring; v0.87 engineering repair locked before reruns**
+Status: **v0.90 complete; five qualified pairs scored and validated**
 
 Lock date: 2026-09-13
 

@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T11-P2-01",
+      "score": 10,
+      "evidence_span": "### 3.1 Primary persona: the resource-constrained founder or operator",
+      "rationale": "Explicitly prioritizes founders and operators as the primary audience."
+    },
+    {
+      "criterion_id": "T11-P2-02",
+      "score": 10,
+      "evidence_span": "Interview at least 15 target readers:\n   - What task is repeated?\n   - What has been tried?\n   - What failed?\n   - What is the cost of the problem?\n   - Who owns the decision?\n   - What source is trusted?\n   - Has the person paid for training, data, software, or advice?",
+      "rationale": "Selects direct audience interviews to establish professional workflow needs, decision ownership, trusted sources, and purchasing behavior."
+    },
+    {
+      "criterion_id": "T11-P2-03",
+      "score": 10,
+      "evidence_span": "Zhihu’s official documentation directly states that sustained specialization and content quality influence recommendation and ranking. [3]",
+      "rationale": "Provides a sourced, verifiable platform mechanism that supports sustained specialist content for the professional audience."
+    },
+    {
+      "criterion_id": "T11-P2-04",
+      "score": 4,
+      "evidence_span": "AI-generated entertainment faces rising rights and quality pressure;",
+      "rationale": "Identifies an entertainment route, but supplies only a cautionary hypothesis about production risks, not a concrete fact establishing its mass-entertainment audience characteristics. The partial-match cap applies."
+    },
+    {
+      "criterion_id": "T11-P2-05",
+      "score": 4,
+      "evidence_span": "| AI-generated entertainment or automated content | 4.0 | 1.5 | 2.0 | 2.0 | 3.0 | **2.55/5** |\n| AI career and productivity education | 4.0 | 2.5 | 3.0 | 4.0 | 3.5 | **3.38/5** |\n| AI founder and industry analysis | 3.5 | 3.0 | 4.0 | 4.0 | 4.0 | **3.68/5** |",
+      "rationale": "Compares entertainment and founder-oriented content niches on shared strategic axes, but does not directly compare professional audiences with mass-entertainment audiences. The audience-specific comparison remains incomplete."
+    },
+    {
+      "criterion_id": "T11-P2-06",
+      "score": 10,
+      "evidence_span": "| Zhihu | Searchable authority | Problem-led, professional, durable answers; verticality rewarded | Requires substantive native writing | **Default support for text-first creator** |",
+      "rationale": "Recommends a named platform and explicitly gives its professional, problem-led content fit as a selection reason."
+    },
+    {
+      "criterion_id": "T11-P2-07",
+      "score": 4,
+      "evidence_span": "| Douyin | Large-scale short-form discovery | Fast testing of hooks and founder IP | High cadence, short-form pressure, potentially shallow audience | Do not prioritize in lean baseline |",
+      "rationale": "Explicitly downgrades Douyin partly for potentially shallow audience acquisition, but does not establish that it favors a mass-entertainment audience. The preference-specific reason is only partial."
+    },
+    {
+      "criterion_id": "T11-P2-08",
+      "score": 10,
+      "evidence_span": "Interview founders or team leads after an implementation has operated long enough to reveal problems.",
+      "rationale": "Provides an executable action with a defined professional interview population and implementation-focused subject."
+    },
+    {
+      "criterion_id": "T11-P2-09",
+      "score": 10,
+      "evidence_span": "Lock the positioning only if at least 10 interviews reveal a repeated problem and at least one pilot topic produces both engagement and substantive follow-up questions. Otherwise narrow the persona or workflow.",
+      "rationale": "Defines a usable validation checkpoint for the founder/operator and workflow positioning, including a numeric threshold and a corrective decision."
+    },
+    {
+      "criterion_id": "T11-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not state a concrete condition under which a mass-entertainment audience would become preferable to the professional audience."
+    },
+    {
+      "criterion_id": "T11-P2-11",
+      "score": 10,
+      "evidence_span": "### Default support: Zhihu\n\nUse Zhihu for:\n\n- high-intent questions;\n- durable explanatory answers;\n- expertise signals;\n- search discovery;\n- problem-first versions of flagship research.\n\nZhihu’s official documentation directly states that sustained specialization and content quality influence recommendation and ranking. [3]\n\n**Recommended cadence:** one substantial native answer per week or three per month.",
+      "rationale": "Links the specialist, high-intent audience strategy to a cited platform ranking mechanism and then to a named platform recommendation and concrete publishing cadence."
+    }
+  ]
+}

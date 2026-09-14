@@ -1,0 +1,28 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T5-A3-01",
+      "score": 6,
+      "evidence_span": "| MOOCs and course marketplaces | Coursera, edX, Udacity, DataCamp, LinkedIn Learning | Large catalogs, established brands, certificates |",
+      "rationale": "Names specific competing platforms and identifies their course catalogs and certificates as concrete credibility-relevant attributes. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T5-A3-02",
+      "score": 6,
+      "evidence_span": "| Generic positioning | Users compare only on chatbot price | Discipline pathways, verified projects, policy controls | Narrow to one high-value workflow |",
+      "rationale": "Explicitly contrasts price-only comparison with differentiation through specialized learning, verified projects, and policy controls. This distinguishes quality-led positioning from lowest-price positioning. The generic cap applies."
+    },
+    {
+      "criterion_id": "T5-A3-03",
+      "score": 6,
+      "evidence_span": "Use stronger models selectively for:\n\n- Complex project feedback.\n- Rubric interpretation.\n- Difficult reasoning.\n- Safety review.\n- Content-quality assurance.",
+      "rationale": "Model quality changes the stated fit judgment: stronger models are recommended for demanding feedback, assessment, and quality-assurance tasks rather than treating cost as the sole selection factor. The generic cap applies."
+    },
+    {
+      "criterion_id": "T5-A3-04",
+      "score": 6,
+      "evidence_span": "It supports a **structured, responsible, discipline-specific learning product that connects AI capability to real projects and employability while respecting academic rules**.",
+      "rationale": "The final recommendation explicitly favors structured learning, demonstrated application, and responsible use rather than justifying the selected product through lowest cost. It is consistent with quality and credibility. The generic cap applies."
+    }
+  ]
+}

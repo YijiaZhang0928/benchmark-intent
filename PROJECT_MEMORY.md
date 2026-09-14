@@ -2,11 +2,21 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-13
-当前版本：v0.88（five-task DR under-fetch repair）
+最后更新：2026-09-14
+当前版本：v0.90（five-task strict-cold-start IEO-v3 result）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-14：五题 strict-cold-start IEO-v3 结果
+
+v0.86 运行前冻结的 workbook 行 2/3/6/9/12（T01/T02/T05/T08/T11）已全部完成 stock ODR 与 IEO-v3。10 个 counted cells 均使用 `gpt-5.6-sol/high`、相同 task-only K 列输入与 post-clarification ODR graph，并通过每份至少 5 successful fetches、1,000 字符的 DR 门；`gpt-6-astra/high` 以预先冻结的 10 个 opaque labels 单 pass 评分每题 67 个 `P_strict` leaves。自动校验确认 report/rubric hash、67 criterion coverage 和五个 paired aggregates。
+
+五题 mean `P_strict` 为 stock 5.9835、IEO-v3 6.9705，paired mean gain `+0.9870`，median `+0.8475`；4 正 1 负。逐题 delta：T01 `+0.1597`、T02 `+2.7203`、T05 `-0.1369`、T08 `+1.3445`、T11 `+0.8475`。mean `P_HI` 差 `+1.116`。这是固定多行上的明显 descriptive score separation，不是看分后筛选。
+
+但预注册 clarification mechanism 不成立：macro `Recall@AskableHigh` 0.330→0.320（`-0.010`），raw high recall 0.280→0.280，high+average 0.225→0.175。Stock 共 resolved 9 units，IEO-v3 7；IEO-v3 将 question rows 4.4→3.0、unit yield 0.333→0.467，并把 acquired units 7/7 落实到下游，表现为更精练和较好的 answer use，而非更全面 acquisition。T02 是唯一 clean mechanism-consistent case：critical recall 1/5→2/5、成功抓取反而 20→14，但 P gain `+2.7203`。T05 三问全部 persona-unsupported、recall 0→0 且降分；T08 recall 打平但 fetch 6→12；T11 recall 2/4→1/4 但 fetch 6→14。Aggregate IEO-v3 每题多 2.6 searches 与 2.4 successful fetches，因此总体 P gain 是 clarification、研究深度和报告执行的混合系统效应，不能归因为 better what-to-ask。
+
+工程有效性记录：v0.88 T02 pair 暴露 `asyncio.wait_for` 无法中断同步网页阻塞，两臂超过 30 分钟且仅有 input files，已终止并保留在 `engineering_failures/v088_wall_timeout/`；v0.89 在相同 1,800 秒值上增加 POSIX process alarm 后对称重跑。盲评第一次启动又在生成任何分数前因 Pydantic forward reference 失败；只显式 rebuild 原 schema 后以相同 labels 重跑。两项均未改报告、criteria、judge prompt 或选择。完整结果见 `pilot/odr_ieo_v3_5task_v0_86/RESULTS.md`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-13：auto-open under-fetch 修复
 

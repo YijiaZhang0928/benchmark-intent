@@ -70,6 +70,10 @@ v0.87 在任何 batch 评分前识别并修复 ODR research gate：首批 T01/T0
 
 v0.88 修复 auto-open 的 under-fetch：v0.87 只尝试前两个 URL，若遇到 403/PDF 就停止，完成 cell 仍只有 2–4 个成功正文。新工具遍历当前搜索结果直到得到两个成功可读页面或列表耗尽；所有 v0.87 输出在评分前排除，五 fetch 门和其余设计不变。
 
+v0.89 对 T02 的同步网页阻塞增加真实 1,800 秒进程级硬超时；超时的 input-only pair 原样保留并从头重跑。盲评包装器另在任何分数产生前修复 Pydantic forward-reference 装载问题，不改变报告、盲码、rubric、judge prompt 或评分模型。
+
+v0.90 完成固定五行结果。`P_strict` 从 stock 平均 5.9835 提高到 IEO-v3 6.9705，paired mean `+0.9870`、median `+0.8475`，4 正 1 负；但 macro `Recall@AskableHigh` 为 0.330→0.320（`-0.010`）。只有 T02 同时出现 critical recall 1/5→2/5、较少 fetch 与 `+2.7203` P gain；T05 问了三个 persona 无法回答的问题并降分，T08/T11 的正分差伴随相同或更差 recall 和更多研究。因此结果支持 system-level report gain，不验证更全面的 what-to-ask mechanism。见 [`RESULTS.md`](pilot/odr_ieo_v3_5task_v0_86/RESULTS.md)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。

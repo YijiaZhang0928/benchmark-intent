@@ -1,0 +1,81 @@
+task,condition,preference_id,impact,relevant,known_initially,asked_and_resolved,resolved,reflected,label
+T01,stock,T1-P1,high,True,False,True,True,True,Research orientation: applied / implementation-heavy / system-building AI research > purely abstract theory-only research.
+T01,stock,T1-P2,high,True,False,True,True,True,"Learning/preparation style: self-directed projects, replication, coding and hands-on exploration > mainly classroom/course-based preparation."
+T01,stock,T1-P3,high,True,False,False,False,True,Career utility: preserve strong industry-research / employability optionality > optimize only for an academic-faculty trajectory.
+T01,stock,T1-P4,high,True,False,True,True,True,Program economics: strong funding / scholarships / cost-effectiveness > expensive prestige-first options.
+T01,stock,T1-P5,high,True,False,False,False,True,"Decision style: evidence-based comparison of fit, outcomes and trade-offs > school-name/prestige as the dominant decision rule."
+T01,stock,T1-A1,average,True,False,False,False,False,Work/study environment: quiet independent study environment > highly social/cohort-heavy environment.
+T01,stock,T1-A2,average,True,False,False,False,True,"Geography/lifestyle: access to technology ecosystems, museums/exhibitions and intellectually active cities > location being unimportant."
+T01,stock,T1-A3,average,True,False,False,False,False,Daily learning rhythm: flexible independent planning and evening-focused deep work > tightly scheduled externally managed study routines.
+T01,ieo,T1-P1,high,True,False,True,True,True,Research orientation: applied / implementation-heavy / system-building AI research > purely abstract theory-only research.
+T01,ieo,T1-P2,high,True,False,True,True,True,"Learning/preparation style: self-directed projects, replication, coding and hands-on exploration > mainly classroom/course-based preparation."
+T01,ieo,T1-P3,high,True,False,True,True,True,Career utility: preserve strong industry-research / employability optionality > optimize only for an academic-faculty trajectory.
+T01,ieo,T1-P4,high,True,False,False,False,True,Program economics: strong funding / scholarships / cost-effectiveness > expensive prestige-first options.
+T01,ieo,T1-P5,high,True,False,False,False,True,"Decision style: evidence-based comparison of fit, outcomes and trade-offs > school-name/prestige as the dominant decision rule."
+T01,ieo,T1-A1,average,True,False,False,False,False,Work/study environment: quiet independent study environment > highly social/cohort-heavy environment.
+T01,ieo,T1-A2,average,True,False,False,False,True,"Geography/lifestyle: access to technology ecosystems, museums/exhibitions and intellectually active cities > location being unimportant."
+T01,ieo,T1-A3,average,True,False,False,False,False,Daily learning rhythm: flexible independent planning and evening-focused deep work > tightly scheduled externally managed study routines.
+T02,stock,T2-P1,high,True,False,False,False,False,Program value: cultural/intellectual fit and meaningful immersion > institutional prestige alone.
+T02,stock,T2-P2,high,True,False,False,False,True,Academic content: interdisciplinary social/media/cultural learning > narrowly technical coursework.
+T02,stock,T2-P3,high,True,False,False,False,False,Experience depth: deeper engagement with fewer places/communities > maximizing destination count.
+T02,stock,T2-P4,high,True,False,False,False,False,Autonomy: self-guided exploration and flexible local experience > heavily packaged/group-managed activities.
+T02,stock,T2-P5,high,True,False,True,True,False,"Spending style: cost-effective, locally distinctive accommodation/choices > premium convenience/luxury."
+T02,stock,T2-A1,average,True,False,False,False,False,Living environment: culturally rich neighborhoods with bookstores/cafes/parks > purely convenience-oriented campus surroundings.
+T02,stock,T2-A2,average,True,False,False,False,False,Sustainability: environmentally responsible travel/living choices > sustainability being irrelevant.
+T02,stock,T2-A3,average,True,False,False,False,True,Activity mix: nature/outdoor experiences > predominantly indoor/urban consumption.
+T02,ieo,T2-P1,high,True,False,True,True,True,Program value: cultural/intellectual fit and meaningful immersion > institutional prestige alone.
+T02,ieo,T2-P2,high,True,False,False,False,True,Academic content: interdisciplinary social/media/cultural learning > narrowly technical coursework.
+T02,ieo,T2-P3,high,True,False,False,False,True,Experience depth: deeper engagement with fewer places/communities > maximizing destination count.
+T02,ieo,T2-P4,high,True,False,False,False,False,Autonomy: self-guided exploration and flexible local experience > heavily packaged/group-managed activities.
+T02,ieo,T2-P5,high,True,False,True,True,True,"Spending style: cost-effective, locally distinctive accommodation/choices > premium convenience/luxury."
+T02,ieo,T2-A1,average,True,False,False,False,False,Living environment: culturally rich neighborhoods with bookstores/cafes/parks > purely convenience-oriented campus surroundings.
+T02,ieo,T2-A2,average,True,False,False,False,False,Sustainability: environmentally responsible travel/living choices > sustainability being irrelevant.
+T02,ieo,T2-A3,average,True,False,False,False,True,Activity mix: nature/outdoor experiences > predominantly indoor/urban consumption.
+T05,stock,T5-P1,high,True,False,False,False,True,Core advantage: technically differentiated AI/software product > generic education-content/marketing offering.
+T05,stock,T5-P2,high,True,False,False,False,True,Product leverage: scalable AI/software automation > labor-intensive human service.
+T05,stock,T5-P3,high,True,False,False,False,True,"Execution style: rapid MVP, measurement and iteration > long closed-door polished build."
+T05,stock,T5-P4,high,True,False,False,False,True,Decision process: data/logic/experiments > intuition-only product decisions.
+T05,stock,T5-P5,high,True,False,False,False,True,Resource strategy: high efficiency and deliberate resource allocation > wasteful feature/team expansion without evidence.
+T05,stock,T5-A1,average,True,False,False,False,True,Collaboration style: team input and cross-functional discussion > founder-only decision-making.
+T05,stock,T5-A2,average,True,False,False,False,False,Family/time constraint: protect weekends/family time where possible > always-on founder schedule.
+T05,stock,T5-A3,average,True,False,False,False,True,Product quality: quality/brand credibility > lowest-cost product positioning.
+T05,ieo,T5-P1,high,True,False,False,False,True,Core advantage: technically differentiated AI/software product > generic education-content/marketing offering.
+T05,ieo,T5-P2,high,True,False,False,False,True,Product leverage: scalable AI/software automation > labor-intensive human service.
+T05,ieo,T5-P3,high,True,False,False,False,True,"Execution style: rapid MVP, measurement and iteration > long closed-door polished build."
+T05,ieo,T5-P4,high,True,False,False,False,True,Decision process: data/logic/experiments > intuition-only product decisions.
+T05,ieo,T5-P5,high,True,False,False,False,True,Resource strategy: high efficiency and deliberate resource allocation > wasteful feature/team expansion without evidence.
+T05,ieo,T5-A1,average,True,False,False,False,True,Collaboration style: team input and cross-functional discussion > founder-only decision-making.
+T05,ieo,T5-A2,average,True,False,False,False,False,Family/time constraint: protect weekends/family time where possible > always-on founder schedule.
+T05,ieo,T5-A3,average,True,False,False,False,True,Product quality: quality/brand credibility > lowest-cost product positioning.
+T08,stock,T8-P1,high,True,False,False,False,True,Trip objective: shared family interaction/balance > optimizing around one age subgroup.
+T08,stock,T8-P2,high,True,False,False,False,True,"Planning/logistics: organized, convenient family logistics > high-friction adventure logistics."
+T08,stock,T8-P3,high,True,False,False,False,True,Pace: comfortable/moderate schedule with rest > tightly packed sightseeing.
+T08,stock,T8-P4,high,True,False,True,True,True,Value: high quality-to-cost value > either cheapest-possible or unnecessary luxury.
+T08,stock,T8-P5,high,True,False,False,False,False,Experience style: self-planned/deeper experience > generic mass-tour itinerary.
+T08,stock,T8-A1,average,True,False,False,False,True,Destination character: nature + historical/cultural elements > purely resort-only environment.
+T08,stock,T8-A2,average,True,False,True,True,True,Accommodation: warm/family-friendly lodging > business-style impersonal lodging.
+T08,stock,T8-A3,average,True,False,False,False,True,Activity planning: include age-appropriate child activities > adult-only itinerary with children accommodated secondarily.
+T08,ieo,T8-P1,high,True,False,False,False,True,Trip objective: shared family interaction/balance > optimizing around one age subgroup.
+T08,ieo,T8-P2,high,True,False,False,False,True,"Planning/logistics: organized, convenient family logistics > high-friction adventure logistics."
+T08,ieo,T8-P3,high,True,False,False,False,True,Pace: comfortable/moderate schedule with rest > tightly packed sightseeing.
+T08,ieo,T8-P4,high,True,False,True,True,True,Value: high quality-to-cost value > either cheapest-possible or unnecessary luxury.
+T08,ieo,T8-P5,high,True,False,False,False,True,Experience style: self-planned/deeper experience > generic mass-tour itinerary.
+T08,ieo,T8-A1,average,True,False,False,False,True,Destination character: nature + historical/cultural elements > purely resort-only environment.
+T08,ieo,T8-A2,average,True,False,False,False,True,Accommodation: warm/family-friendly lodging > business-style impersonal lodging.
+T08,ieo,T8-A3,average,True,False,False,False,True,Activity planning: include age-appropriate child activities > adult-only itinerary with children accommodated secondarily.
+T11,stock,T11-P1,high,True,False,True,True,True,Niche: AI applications + industry trends + entrepreneurship > generic technology-news aggregation.
+T11,stock,T11-P2,high,True,False,False,False,True,Audience: professional builders/founders/serious AI practitioners > mass entertainment audience.
+T11,stock,T11-P3,high,True,False,False,False,True,Voice: practitioner/expert credibility > lifestyle-personality influencer identity.
+T11,stock,T11-P4,high,True,False,False,False,True,Content evidence: real projects/cases/technical-business insight > generic commentary.
+T11,stock,T11-P5,high,True,False,True,True,True,"Resource model: lean, high-efficiency, ROI-conscious creation > large production team/budget by default."
+T11,stock,T11-A1,average,True,False,True,True,True,Platform mix: include professional/knowledge-oriented channels > entertainment channels only.
+T11,stock,T11-A2,average,True,False,False,False,True,Production schedule: weekday-focused creation > weekend-heavy production schedule.
+T11,stock,T11-A3,average,True,False,False,False,True,Content tone: analytical/logical explanation > purely emotional/hype-driven presentation.
+T11,ieo,T11-P1,high,True,False,True,True,True,Niche: AI applications + industry trends + entrepreneurship > generic technology-news aggregation.
+T11,ieo,T11-P2,high,True,False,False,False,True,Audience: professional builders/founders/serious AI practitioners > mass entertainment audience.
+T11,ieo,T11-P3,high,True,False,False,False,True,Voice: practitioner/expert credibility > lifestyle-personality influencer identity.
+T11,ieo,T11-P4,high,True,False,False,False,True,Content evidence: real projects/cases/technical-business insight > generic commentary.
+T11,ieo,T11-P5,high,True,False,False,False,True,"Resource model: lean, high-efficiency, ROI-conscious creation > large production team/budget by default."
+T11,ieo,T11-A1,average,True,False,False,False,True,Platform mix: include professional/knowledge-oriented channels > entertainment channels only.
+T11,ieo,T11-A2,average,True,False,False,False,True,Production schedule: weekday-focused creation > weekend-heavy production schedule.
+T11,ieo,T11-A3,average,True,False,False,False,True,Content tone: analytical/logical explanation > purely emotional/hype-driven presentation.

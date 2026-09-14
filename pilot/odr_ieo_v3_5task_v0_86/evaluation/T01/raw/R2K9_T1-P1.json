@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 10,
+      "evidence_span": "This is probably the strongest bridge between applied NLP, industrial value, moderate compute, and publishable systems work.",
+      "rationale": "The report explicitly prioritizes retrieval/RAG for its combination of applied NLP and publishable systems research."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 10,
+      "evidence_span": "QLoRA demonstrates that meaningful adaptation research does not always require frontier-scale infrastructure: it reported fine-tuning a 65B model on one 48 GB GPU by combining frozen 4-bit weights with low-rank adapters [7].",
+      "rationale": "A specific research source is used to assess whether implementation-heavy adaptation research is feasible with university-scale computing resources."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 10,
+      "evidence_span": "it reported fine-tuning a 65B model on one 48 GB GPU by combining frozen 4-bit weights with low-rank adapters [7].",
+      "rationale": "The QLoRA route has a concrete, cited implementation fact specifying model size, hardware capacity, and adaptation mechanism."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 2,
+      "evidence_span": "| Core deep-learning theory | Mature and prestigious | Very high | Low–medium | Often modest | Strong in top ML venues, highly selective | Moderate–high | Less aligned unless mathematics becomes a major strength |",
+      "rationale": "A theory route is named, but its characteristics are generic qualitative ratings. No concrete, verifiable fact establishes a purely abstract, theory-only research option."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 4,
+      "evidence_span": "| Core deep-learning theory | Mature and prestigious | Very high | Low–medium | Often modest | Strong in top ML venues, highly selective | Moderate–high | Less aligned unless mathematics becomes a major strength |",
+      "rationale": "The comparative table places core theory and applied directions on shared mathematics, systems, compute, and fit axes. However, it does not explicitly establish the requested contrast with purely abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 10,
+      "evidence_span": "Carnegie Mellon School of Computer Science | Machine Learning Department; Language Technologies Institute; Graham Neubig, Ameet Talwalkar, Carolyn Rosé, Maarten Sap; strong NLP, ML systems, speech, robotics, and industry [11][12] | Several separate PhD programs rather than one generic application. Excellent for implementation-heavy NLP and efficient ML",
+      "rationale": "Carnegie Mellon is specifically recommended for its support of implementation-heavy NLP and efficient machine learning."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 4,
+      "evidence_span": "| Core deep-learning theory | Mature and prestigious | Very high | Low–medium | Often modest | Strong in top ML venues, highly selective | Moderate–high | Less aligned unless mathematics becomes a major strength |",
+      "rationale": "An otherwise viable theory route is downgraded, but the stated qualification concerns mathematical strength rather than an explicit objection to purely abstract or theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "Reproduce at least **two published baselines**.",
+      "rationale": "Reproducing published baselines is an executable implementation step within the flagship applied-AI project plan."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "**5–6 hours:** experiments and implementation;",
+      "rationale": "The weekly routine assigns a concrete time allocation to experiments and implementation."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 4,
+      "evidence_span": "Less aligned unless mathematics becomes a major strength",
+      "rationale": "The report supplies a condition under which the theory route becomes more suitable, but does not state that theory-only research would then become the better choice."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 10,
+      "evidence_span": "RAG is not automatically reliable. Recent research found substantial retriever degradation under minor query variations [6]. That makes robustness, evaluation, routing, and retrieval quality better research targets than merely assembling an existing RAG framework.",
+      "rationale": "The report visibly connects applied RAG research to cited evidence of retriever degradation and then explicitly selects robustness, evaluation, routing, and retrieval quality as downstream research targets."
+    }
+  ]
+}

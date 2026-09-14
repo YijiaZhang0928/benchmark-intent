@@ -1,5 +1,12 @@
 {
-  "schema_version": "0.86",
+  "schema_version": "0.90",
+  "status": "complete",
+  "qualified_pairs": 5,
+  "counted_generation_cells": 10,
+  "judge_passes_per_cell": 1,
+  "results_sha256": "f812575b16545ff358badc2e62452e4605feaa6b66dfa2fbc9ffab228f6fc30f",
+  "results_markdown_sha256": "2583a14b7744da13d01d99f733a45c60804a9c0c3a2ea07aecc307545a8d987b",
+  "validation_sha256": "e83fa3accbabfb891a3b4d5f6a78be9898d35080828c17024f0c92e5162d8132",
   "selection_rule": "first five workbook-order released exact pairs excluding previously observed T09",
   "workbook_sha256": "9b0383ece9f4441b15c87f8b6d51a2ebf2465b0897b8a3ab2ae421ff15d5e7e5",
   "cases": [

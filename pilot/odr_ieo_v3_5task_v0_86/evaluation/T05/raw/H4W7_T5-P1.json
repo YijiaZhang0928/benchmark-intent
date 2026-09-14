@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T5-P1-01",
+      "score": 10,
+      "evidence_span": "| AI tutor orchestration | Build | This is central to pedagogy and differentiation | Build |",
+      "rationale": "Explicitly prioritizes building proprietary AI-tutor orchestration because it is central to product differentiation."
+    },
+    {
+      "criterion_id": "T5-P1-02",
+      "score": 10,
+      "evidence_span": "Before release, create a benchmark set covering:\n\n- Factual questions.\n- Ambiguous questions.\n- Requests to complete an assessment.\n- Requests involving personal or confidential data.\n- Biased or discriminatory prompts.\n- Self-harm or crisis language.\n- Prompt injection.\n- Requests for fabricated citations.\n- Discipline-specific edge cases.\n- Accessibility-related interactions.",
+      "rationale": "Specifies concrete benchmark evidence for evaluating the differentiated AI tutor, including grounding, safety, assessment boundaries and discipline-specific behavior."
+    },
+    {
+      "criterion_id": "T5-P1-03",
+      "score": 8,
+      "evidence_span": "- Retrieve from approved course content.\n- Cite the lesson or source supporting its response.\n- Ask diagnostic questions before giving solutions.\n- Prefer hints and worked steps over final answers.\n- Refuse to complete protected assessments.",
+      "rationale": "The proposed tutor has concrete, testable software behaviors supporting educational differentiation. These are specified capabilities rather than demonstrated implementation or performance evidence."
+    },
+    {
+      "criterion_id": "T5-P1-04",
+      "score": 10,
+      "evidence_span": "Coursera Plus currently advertises access to more than 10,000 programs and a regular price of **$59 per month**, with localized pricing outside the United States.[5]",
+      "rationale": "Names a broad education-content alternative and supplies sourced, verifiable facts about its catalog breadth and subscription price."
+    },
+    {
+      "criterion_id": "T5-P1-05",
+      "score": 4,
+      "evidence_span": "A new venture cannot beat that breadth. It must compete on **relevance, project outcomes, guided practice, responsible use and institutional implementation**.",
+      "rationale": "Directly contrasts content breadth with an outcome-oriented educational offering, but does not explicitly compare technical AI/software differentiation against the generic offering on a common decision axis."
+    },
+    {
+      "criterion_id": "T5-P1-06",
+      "score": 10,
+      "evidence_span": "| AI tutor orchestration | Build | This is central to pedagogy and differentiation | Build |",
+      "rationale": "Names the recommended build option and explicitly gives its contribution to differentiation as the selection reason."
+    },
+    {
+      "criterion_id": "T5-P1-07",
+      "score": 4,
+      "evidence_span": "It should not try to compete with broad course libraries on content volume.",
+      "rationale": "Explicitly downgrades a content-volume strategy, but does not explicitly make preference for technically differentiated software the reason for that downgrade."
+    },
+    {
+      "criterion_id": "T5-P1-08",
+      "score": 10,
+      "evidence_span": "- Add tutor guardrails, citations and quotas.",
+      "rationale": "Provides an executable development action implementing concrete functionality in the AI tutor."
+    },
+    {
+      "criterion_id": "T5-P1-09",
+      "score": 10,
+      "evidence_span": "Tutor acceptable-response score of at least 90% on the curated benchmark and zero unresolved critical safety failures.",
+      "rationale": "Defines a measurable launch checkpoint specific to the AI product's response quality and safety."
+    },
+    {
+      "criterion_id": "T5-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not state a concrete condition under which a generic education-content or marketing offering becomes preferable to technically differentiated AI/software."
+    },
+    {
+      "criterion_id": "T5-P1-11",
+      "score": 4,
+      "evidence_span": "Coursera Plus currently advertises access to more than 10,000 programs and a regular price of **$59 per month**, with localized pricing outside the United States.[5] A new venture cannot beat that breadth. It must compete on **relevance, project outcomes, guided practice, responsible use and institutional implementation**.",
+      "rationale": "Shows competitor evidence leading to a differentiation decision, but the downstream preference is educational relevance and outcomes rather than explicitly technical AI/software differentiation. Connecting this chain to the proprietary tutor would require inference."
+    }
+  ]
+}

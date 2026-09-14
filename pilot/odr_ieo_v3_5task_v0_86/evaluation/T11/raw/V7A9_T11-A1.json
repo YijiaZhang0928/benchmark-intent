@@ -1,0 +1,28 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T11-A1-01",
+      "score": 6,
+      "evidence_span": "Zhihu’s official documentation directly states that sustained specialization and content quality influence recommendation and ranking. [3]",
+      "rationale": "Gives a concrete, sourced platform fact relevant to using a knowledge-oriented channel: Zhihu rewards specialization and content quality. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-02",
+      "score": 6,
+      "evidence_span": "| Zhihu | Searchable authority | Problem-led, professional, durable answers; verticality rewarded | Requires substantive native writing | **Default support for text-first creator** |\n| Xiaohongshu | Visual search and workflow discovery | Cards, checklists, productivity and entrepreneurial use cases | Commercial and diversion rules require current verification | Use instead of Zhihu when targeting individual professionals, creators, or marketers |\n| Bilibili | Long-form educational video | Screen-led technical demonstration and durable explainers | High editing cost and slower production | Add after month 3 if video capacity exists |\n| Douyin | Large-scale short-form discovery | Fast testing of hooks and founder IP | High cadence, short-form pressure, potentially shallow audience | Do not prioritize in lean baseline |",
+      "rationale": "Explicitly contrasts professional, durable knowledge channels with a short-form reach-oriented option and its potentially shallow audience. This establishes an option-level distinction rather than treating all channels as entertainment distribution. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-03",
+      "score": 6,
+      "evidence_span": "**Default supporting platform:** Zhihu for searchable, professional discovery if working text-first.",
+      "rationale": "Professional discovery is an explicit fit factor supporting Zhihu’s inclusion as the default supporting platform. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-04",
+      "score": 6,
+      "evidence_span": "WeChat Official Account should serve as the primary authority and conversion layer. Zhihu is the default discovery partner for a text-first solo creator; Channels is the better alternative when screen demonstration or camera presence is practical.",
+      "rationale": "The final recommendation retains authority-oriented publishing and explicitly includes Zhihu. Its alternative is justified by demonstration format and production practicality, not an undisclosed preference for entertainment-only channels. The generic cap limits the score to 6."
+    }
+  ]
+}

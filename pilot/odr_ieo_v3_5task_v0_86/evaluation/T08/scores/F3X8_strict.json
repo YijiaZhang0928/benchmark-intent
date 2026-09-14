@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "F3X8",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "18c488c409d0dde81d0a7e0d25ba2c2854fb298f23ed467a646e3110650026a2",
+  "rubric_sha256": "db88dbad3435309fe9d3e546cb085b23cde2dbeb62cf461e0957eaa7b61ccf05",
+  "started_at_utc": "2026-09-14T04:00:00.099836+00:00",
+  "completed_at_utc": "2026-09-14T04:05:29.296957+00:00",
+  "p_strict": 6.257190635451506,
+  "p_hi": 6.16,
+  "dimension_scores": {
+    "INTENT": 6.8,
+    "SOURCE": 6.4,
+    "EVIDENCE": 7.043478260869565,
+    "TRADEOFF": 3.8260869565217392,
+    "DECISION": 5.565217391304348,
+    "ACTION": 8.6,
+    "TRACE": 6.615384615384616
+  },
+  "high_dimension_scores": {
+    "INTENT": 6.8,
+    "SOURCE": 6.4,
+    "EVIDENCE": 7.0,
+    "TRADEOFF": 3.5999999999999996,
+    "DECISION": 5.3999999999999995,
+    "ACTION": 8.6,
+    "TRACE": 6.4
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T8-P1-01",
+      "score": 4,
+      "evidence_span": "Sanur offers the best balance of weather reliability, warm and relatively sheltered water, family accommodation, dining convenience, age-appropriate activities and adequate downtime",
+      "rationale": "Explicitly values family activities and downtime, but does not identify shared interaction or balancing the needs of multiple generations as the decision priority."
+    },
+    {
+      "criterion_id": "T8-P1-02",
+      "score": 4,
+      "evidence_span": "[Prime Plaza Suites Sanur](https://sanur.pphotels.com/) [16]: practical two-bedroom units, kitchen/living space and strong children’s facilities",
+      "rationale": "Identifies an accommodation source relevant to shared space and children's activities, but does not explicitly select this evidence to evaluate shared family interaction or intergenerational balance."
+    },
+    {
+      "criterion_id": "T8-P1-03",
+      "score": 8,
+      "evidence_span": "[Prime Plaza Suites Sanur](https://sanur.pphotels.com/) [16]: practical two-bedroom units, kitchen/living space and strong children’s facilities",
+      "rationale": "Provides a named property's concrete shared-living-space and separate-bedroom configuration, relevant to family interaction and private rest. The connection to balancing the multigenerational group is not explicitly developed."
+    },
+    {
+      "criterion_id": "T8-P1-04",
+      "score": 10,
+      "evidence_span": "No mobility needs were specified, but a lower-effort design benefits a five-year-old:\n\n- Use one hotel for all six nights.",
+      "rationale": "Explicitly connects the selected single-base route to the needs of one age subgroup, with a concrete six-night accommodation arrangement."
+    },
+    {
+      "criterion_id": "T8-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not directly compare shared family interaction or intergenerational balance against optimizing the trip for one age subgroup."
+    },
+    {
+      "criterion_id": "T8-P1-06",
+      "score": 4,
+      "evidence_span": "Sanur offers the best balance of weather reliability, warm and relatively sheltered water, family accommodation, dining convenience, age-appropriate activities and adequate downtime",
+      "rationale": "Names Sanur and gives family amenities, activities and downtime as selection reasons, but does not explicitly make shared interaction or intergenerational balance the causal reason."
+    },
+    {
+      "criterion_id": "T8-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded because it favors one age subgroup over shared family balance. Rejecting Nusa Penida to accommodate a five-year-old is not that comparison."
+    },
+    {
+      "criterion_id": "T8-P1-08",
+      "score": 10,
+      "evidence_span": "Optional low-key family cooking activity if it ends by about 20:30.",
+      "rationale": "Provides an executable shared family activity with a concrete finishing-time constraint that preserves rest."
+    },
+    {
+      "criterion_id": "T8-P1-09",
+      "score": 10,
+      "evidence_span": "Rest in the room from about **12:30–15:30**.\n- The younger child can nap; the eight-year-old can read, draw or watch a quiet program.",
+      "rationale": "Defines a usable three-hour rest allocation with different quiet options, concretely balancing activity and rest within the family schedule."
+    },
+    {
+      "criterion_id": "T8-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The alternative-selection conditions concern cost, transport, heat and resort preferences, not a boundary at which optimizing for one age subgroup becomes preferable."
+    },
+    {
+      "criterion_id": "T8-P1-11",
+      "score": 4,
+      "evidence_span": "Sanur is preferable to Kuta for this family because it is quieter, easier to walk, less focused on nightlife and has a calmer shoreline.",
+      "rationale": "Connects concrete destination characteristics to a family-oriented selection, but leaves the required shared-interaction or intergenerational-balance preference implicit."
+    },
+    {
+      "criterion_id": "T8-P2-01",
+      "score": 10,
+      "evidence_span": "For Bali, the best-value version is not the cheapest room or the busiest itinerary. It is a **two-bedroom Sanur base, direct flights if affordable, two paid family attractions, two slow beach/pool days, one flexible weather day and protected midday rest every day**.",
+      "rationale": "Explicitly prioritizes a convenient single-base arrangement, simpler flights and organized rest over minimum cost or a busy itinerary."
+    },
+    {
+      "criterion_id": "T8-P2-02",
+      "score": 10,
+      "evidence_span": "Enter both children’s ages when booking and obtain written confirmation covering:\n\n- Maximum occupancy.\n- Bed arrangement.\n- Extra-bed charge.\n- Breakfast for both children.\n- Connecting-room guarantee rather than request.",
+      "rationale": "Identifies written accommodation confirmation as an evidence class for resolving practical family room and booking logistics."
+    },
+    {
+      "criterion_id": "T8-P2-03",
+      "score": 10,
+      "evidence_span": "[Prime Plaza Suites Sanur](https://sanur.pphotels.com/) [16]: practical two-bedroom units, kitchen/living space and strong children’s facilities",
+      "rationale": "Names a sourced accommodation option and concrete facilities that support convenient family accommodation."
+    },
+    {
+      "criterion_id": "T8-P2-04",
+      "score": 10,
+      "evidence_span": "a Nusa Penida speedboat day. The boat journey, sea variability, road conditions and long excursion structure are poor matches for a restful trip with a five-year-old.",
+      "rationale": "Names a specific excursion route and identifies its speedboat travel and extended excursion structure as concrete logistical friction."
+    },
+    {
+      "criterion_id": "T8-P2-05",
+      "score": 10,
+      "evidence_span": "No mobility needs were specified, but a lower-effort design benefits a five-year-old:\n\n- Use one hotel for all six nights.\n- Prebook airport transfers.\n- Use private cars for excursion days rather than multiple transport changes.",
+      "rationale": "Directly contrasts private excursion transport with multiple transport changes on the common axis of reducing family effort."
+    },
+    {
+      "criterion_id": "T8-P2-06",
+      "score": 10,
+      "evidence_span": "Sanur is preferable to Kuta for this family because it is quieter, easier to walk, less focused on nightlife and has a calmer shoreline.",
+      "rationale": "Explicitly selects Sanur over Kuta partly because its walkability and quieter setting make family logistics easier."
+    },
+    {
+      "criterion_id": "T8-P2-07",
+      "score": 10,
+      "evidence_span": "do not replace this with a Nusa Penida speedboat day. The boat journey, sea variability, road conditions and long excursion structure are poor matches for a restful trip with a five-year-old.",
+      "rationale": "Explicitly rejects a named alternative excursion because its transport demands and long structure conflict with a restful family plan."
+    },
+    {
+      "criterion_id": "T8-P2-08",
+      "score": 10,
+      "evidence_span": "Reserve a refundable family room, apartment or guaranteed connecting rooms.",
+      "rationale": "Provides an executable accommodation-booking action that implements convenient family logistics."
+    },
+    {
+      "criterion_id": "T8-P2-09",
+      "score": 10,
+      "evidence_span": "All six nights are in Sanur; there is no hotel change.",
+      "rationale": "Defines a concrete six-night single-base allocation that eliminates hotel-change logistics."
+    },
+    {
+      "criterion_id": "T8-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report never states a condition under which high-friction adventure logistics would become preferable. Its energetic-family option does not reverse its rejection of demanding excursion logistics."
+    },
+    {
+      "criterion_id": "T8-P2-11",
+      "score": 10,
+      "evidence_span": "[Prime Plaza Suites Sanur](https://sanur.pphotels.com/) [16]: practical two-bedroom units, kitchen/living space and strong children’s facilities; the compromise is that it is not directly on the beach, so use the shuttle or arranged transport rather than treating it as a beachfront stay.",
+      "rationale": "Links practical family accommodation to sourced facilities and then explicitly converts the non-beachfront location into a shuttle or arranged-transport action."
+    },
+    {
+      "criterion_id": "T8-P3-01",
+      "score": 10,
+      "evidence_span": "If actual flight times differ, remove activities rather than compressing them.",
+      "rationale": "Explicitly prioritizes a moderate pace over fitting in all activities."
+    },
+    {
+      "criterion_id": "T8-P3-02",
+      "score": 10,
+      "evidence_span": "VietnamOnline recommends avoiding strenuous outdoor activity around 11:00–14:00 and using beaches before about 09:30 or from late afternoon [3]. This schedule is especially appropriate with a five-year-old.",
+      "rationale": "An identifiable source provides time-specific evidence for evaluating a comfortable schedule with a midday activity break."
+    },
+    {
+      "criterion_id": "T8-P3-03",
+      "score": 10,
+      "evidence_span": "Shanghai and Bali are both UTC+8, so no clock-change jet lag is expected. Travel fatigue still warrants a light first day.",
+      "rationale": "Provides a verifiable destination-specific time-zone fact and explicitly connects it to travel fatigue and pacing."
+    },
+    {
+      "criterion_id": "T8-P3-04",
+      "score": 8,
+      "evidence_span": "do not replace this with a Nusa Penida speedboat day. The boat journey, sea variability, road conditions and long excursion structure are poor matches for a restful trip with a five-year-old.",
+      "rationale": "Names a contrasting excursion and identifies boat travel and a long excursion structure as concrete burdens. Its tightly packed character is less fully established because no duration or sightseeing sequence is supplied."
+    },
+    {
+      "criterion_id": "T8-P3-05",
+      "score": 8,
+      "evidence_span": "For Bali, the best-value version is not the cheapest room or the busiest itinerary. It is a **two-bedroom Sanur base, direct flights if affordable, two paid family attractions, two slow beach/pool days, one flexible weather day and protected midday rest every day**.",
+      "rationale": "Directly contrasts the busiest itinerary with a specifically allocated restful plan on a best-value axis, although the consequential disadvantages of the busy alternative are not developed in this comparison."
+    },
+    {
+      "criterion_id": "T8-P3-06",
+      "score": 10,
+      "evidence_span": "Sanur is preferable to Kuta for this family because it is quieter, easier to walk, less focused on nightlife and has a calmer shoreline.",
+      "rationale": "Explicitly selects a named destination over another because of characteristics supporting comfort and lower-effort days."
+    },
+    {
+      "criterion_id": "T8-P3-07",
+      "score": 10,
+      "evidence_span": "do not replace this with a Nusa Penida speedboat day. The boat journey, sea variability, road conditions and long excursion structure are poor matches for a restful trip with a five-year-old.",
+      "rationale": "Explicitly rejects a named excursion alternative because its long, travel-heavy structure conflicts with a restful trip."
+    },
+    {
+      "criterion_id": "T8-P3-08",
+      "score": 10,
+      "evidence_span": "Rest in the room from about **12:30–15:30**.",
+      "rationale": "Provides an executable rest action with a location and a defined time window."
+    },
+    {
+      "criterion_id": "T8-P3-09",
+      "score": 10,
+      "evidence_span": "Leave by approximately 15:00–15:30 rather than staying until exhaustion.",
+      "rationale": "Sets a usable departure threshold for the water-park outing explicitly to prevent exhaustion."
+    },
+    {
+      "criterion_id": "T8-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes tightly packed sightseeing the better choice. The energetic-family alternative remains a limited outing with room rest."
+    },
+    {
+      "criterion_id": "T8-P3-11",
+      "score": 10,
+      "evidence_span": "VietnamOnline recommends avoiding strenuous outdoor activity around 11:00–14:00 and using beaches before about 09:30 or from late afternoon [3]. This schedule is especially appropriate with a five-year-old.",
+      "rationale": "Visibly links cited scheduling evidence to the family's comfort needs and endorses the resulting morning/evening beach schedule and midday exertion break."
+    },
+    {
+      "criterion_id": "T8-P4-01",
+      "score": 10,
+      "evidence_span": "For Bali, the best-value version is not the cheapest room or the busiest itinerary.",
+      "rationale": "Explicitly prioritizes value rather than minimum spending or maximum activity."
+    },
+    {
+      "criterion_id": "T8-P4-02",
+      "score": 8,
+      "evidence_span": "Compare nonstop flights on the exact dates, including baggage and seat-selection costs.",
+      "rationale": "Identifies exact-date, inclusive flight pricing as evidence for comparing a convenient transport option on actual cost. The broader quality-to-cost research rationale is less explicit."
+    },
+    {
+      "criterion_id": "T8-P4-03",
+      "score": 10,
+      "evidence_span": "| Comfortable | Two-bedroom serviced suite or two connecting resort rooms with breakfast/pool | ¥1,400–2,200 |",
+      "rationale": "The Sanur accommodation table pairs a specific family accommodation configuration and useful amenities with a nightly price range, providing concrete quality-to-cost evidence."
+    },
+    {
+      "criterion_id": "T8-P4-04",
+      "score": 4,
+      "evidence_span": "**Qingdao** — best for a simple domestic trip, cooler weather and the lowest overall cost, but urban beaches are very crowded and July can be wet or foggy.",
+      "rationale": "Identifies the lowest-cost destination and practical disadvantages, but does not establish that its low-cost route represents cheapest-possible compromises. Luxury accommodation is also described elsewhere without establishing that it is unnecessary. Partial evidence is capped at 4."
+    },
+    {
+      "criterion_id": "T8-P4-05",
+      "score": 8,
+      "evidence_span": "For Bali, the best-value version is not the cheapest room or the busiest itinerary. It is a **two-bedroom Sanur base, direct flights if affordable, two paid family attractions, two slow beach/pool days, one flexible weather day and protected midday rest every day**.",
+      "rationale": "Directly contrasts the cheapest-room approach with a value-oriented package of space, travel convenience and selective paid activities. It does not quantify the extra expenditure or specify what the cheapest room would sacrifice."
+    },
+    {
+      "criterion_id": "T8-P4-06",
+      "score": 10,
+      "evidence_span": "**Sanur offers the best balance of weather reliability, warm and relatively sheltered water, family accommodation, dining convenience, age-appropriate activities and adequate downtime**. Its higher transport cost is compensated by a substantially better seasonal fit than Sanya and more comfortable temperatures than Da Nang.",
+      "rationale": "Names the recommended destination and explicitly justifies paying its higher transport cost through benefits relevant to the trip."
+    },
+    {
+      "criterion_id": "T8-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named viable option is lowered in rank specifically because it pursues cheapest-possible provision or unnecessary luxury. The stated downgrades concern weather, heat, convenience or fatigue."
+    },
+    {
+      "criterion_id": "T8-P4-08",
+      "score": 8,
+      "evidence_span": "Compare nonstop flights on the exact dates, including baggage and seat-selection costs.",
+      "rationale": "Provides an executable comparison step that combines a higher-convenience transport choice with its inclusive price. It implements value assessment, although it does not prescribe how much more to pay for that convenience."
+    },
+    {
+      "criterion_id": "T8-P4-09",
+      "score": 10,
+      "evidence_span": "For Bali, the best-value version is not the cheapest room or the busiest itinerary. It is a **two-bedroom Sanur base, direct flights if affordable, two paid family attractions, two slow beach/pool days, one flexible weather day and protected midday rest every day**.",
+      "rationale": "Explicitly links best value to a usable allocation: two paid attractions balanced with slow days, a flexible day and daily rest."
+    },
+    {
+      "criterion_id": "T8-P4-10",
+      "score": 10,
+      "evidence_span": "**Choose Qingdao** if avoiding international immigration, minimizing cost and shortening travel are most important.",
+      "rationale": "States a concrete priority boundary under which the identified lowest-cost alternative becomes preferable to the main recommendation."
+    },
+    {
+      "criterion_id": "T8-P4-11",
+      "score": 8,
+      "evidence_span": "**Sanur offers the best balance of weather reliability, warm and relatively sheltered water, family accommodation, dining convenience, age-appropriate activities and adequate downtime**. Its higher transport cost is compensated by a substantially better seasonal fit than Sanya and more comfortable temperatures than Da Nang.",
+      "rationale": "Provides a visible chain from benefits relative to expenditure, through comparative seasonal and temperature evidence, to selecting Sanur. The chain is explicit, though the concluding passage summarizes rather than repeats the numerical evidence."
+    },
+    {
+      "criterion_id": "T8-P5-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The stated priorities concern weather, convenience, family activities and rest, not self-planned travel or deeper experience."
+    },
+    {
+      "criterion_id": "T8-P5-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Sources support climate, entry requirements, accommodation and attractions, but none is identified as resolving a self-planned/deeper-experience question."
+    },
+    {
+      "criterion_id": "T8-P5-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a concrete fact explicitly establishing independent exploration or deeper engagement. General amenities and attraction descriptions do not establish this preference-specific support."
+    },
+    {
+      "criterion_id": "T8-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report describes crowds and long excursions but does not establish that a named option follows a generic mass-tour itinerary."
+    },
+    {
+      "criterion_id": "T8-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no direct comparison of self-planned/deeper experience and generic mass touring on a common decision axis."
+    },
+    {
+      "criterion_id": "T8-P5-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Recommendations are justified by seasonal suitability, cost, convenience and rest rather than by self-planned travel or deeper experience."
+    },
+    {
+      "criterion_id": "T8-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Options are downgraded for weather, travel burden, heat or safety. None is lowered in rank because it favors generic mass touring."
+    },
+    {
+      "criterion_id": "T8-P5-08",
+      "score": 4,
+      "evidence_span": "Optional 30–45-minute temple or craft stop only if both children remain comfortable.",
+      "rationale": "This supplies an actionable cultural-stop suggestion that could support deeper experience. However, the venue and form of engagement remain unspecified, and the connection to the preference is only implicit."
+    },
+    {
+      "criterion_id": "T8-P5-09",
+      "score": 4,
+      "evidence_span": "Optional low-key family cooking activity if it ends by about 20:30.",
+      "rationale": "A potentially experiential activity has a usable end-time checkpoint. The report does not specify local cultural engagement or link the checkpoint to independent/deeper travel, so support remains partial."
+    },
+    {
+      "criterion_id": "T8-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Conditional recommendations cover domestic convenience, heat tolerance and resort facilities, but no condition makes a generic mass-tour itinerary the better choice."
+    },
+    {
+      "criterion_id": "T8-P5-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No explicit chain connects the self-planned/deeper-experience preference to supporting evidence and then to a recommendation or action."
+    },
+    {
+      "criterion_id": "T8-A1-01",
+      "score": 6,
+      "evidence_span": "Suitable activities include My Khe beach, Hoi An’s old town in the late afternoon, the Cham Museum, a lantern craft",
+      "rationale": "The named Da Nang/Hoi An option explicitly combines a natural beach setting with identifiable historical and cultural attractions. These are concrete, verifiable offerings. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A1-02",
+      "score": 6,
+      "evidence_span": "In bad weather, aquarium and museum options are stronger than in a remote beach resort.",
+      "rationale": "The Qingdao assessment explicitly contrasts its natural-world and cultural attractions with a remote resort environment. This establishes an option-level difference on the preference axis, subject to the generic cap of 6."
+    },
+    {
+      "criterion_id": "T8-A1-03",
+      "score": 4,
+      "evidence_span": "Shinan for sightseeing; Huangdao for beach",
+      "rationale": "Sightseeing influences the recommended accommodation area, but the connection to nature plus historical/cultural elements is indirect. The destination rankings and final selection are explicitly driven by weather, cost, transport and convenience rather than this preference."
+    },
+    {
+      "criterion_id": "T8-A1-04",
+      "score": 6,
+      "evidence_span": "Day 3 — Bali Bird Park and a light cultural stop",
+      "rationale": "The recommended Sanur itinerary explicitly includes both nature and culture rather than prescribing a resort-only stay. The selected destination is not justified by an opposing preference. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A2-01",
+      "score": 6,
+      "evidence_span": "[Prime Plaza Suites Sanur](https://sanur.pphotels.com/) [16]: practical two-bedroom units, kitchen/living space and strong children’s facilities",
+      "rationale": "A named lodging option has concrete family-friendly features: two-bedroom units and kitchen/living space. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A2-02",
+      "score": 4,
+      "evidence_span": "A verified two-bedroom apartment in central/south Sanur: often better value and cozier than two hotel rooms",
+      "rationale": "The report explicitly contrasts apartment coziness with hotel rooms, but does not identify the hotel alternative as business-style or impersonal. The required distinction is only partially established."
+    },
+    {
+      "criterion_id": "T8-A2-03",
+      "score": 6,
+      "evidence_span": "A verified two-bedroom apartment in central/south Sanur: often better value and cozier than two hotel rooms",
+      "rationale": "Coziness is an explicit secondary fit factor for an apartment included among the potential accommodation fits. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A2-04",
+      "score": 6,
+      "evidence_span": "two-bedroom Sanur base, direct flights if affordable, two paid family attractions, two slow beach/pool days, one flexible weather day and protected midday rest every day",
+      "rationale": "The final recommendation selects a family-compatible two-bedroom base and does not justify any selected lodging by business-style impersonality. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A3-01",
+      "score": 10,
+      "evidence_span": "[Waterbom Bali](https://www.waterbom-bali.com/) [14], with adults supervising separately where rides have age or height restrictions.",
+      "rationale": "Names a child activity and identifies verifiable age or height restrictions relevant to choosing appropriate rides."
+    },
+    {
+      "criterion_id": "T8-A3-02",
+      "score": 6,
+      "evidence_span": "Sanur is preferable to Kuta for this family because it is quieter, easier to walk, less focused on nightlife and has a calmer shoreline.",
+      "rationale": "Explicitly contrasts family-oriented Sanur with nightlife-oriented Kuta. However, the difference concerns general destination atmosphere rather than explicitly contrasting age-appropriate child activities with an adult-only itinerary; the generic cap applies."
+    },
+    {
+      "criterion_id": "T8-A3-03",
+      "score": 10,
+      "evidence_span": "do not replace this with a Nusa Penida speedboat day. The boat journey, sea variability, road conditions and long excursion structure are poor matches for a restful trip with a five-year-old.",
+      "rationale": "Excludes a named excursion because its structure and conditions are unsuitable for a young child, making age-appropriate activity fit consequential to the recommendation."
+    },
+    {
+      "criterion_id": "T8-A3-04",
+      "score": 10,
+      "evidence_span": "Sanur offers the best balance of weather reliability, warm and relatively sheltered water, family accommodation, dining convenience, age-appropriate activities and adequate downtime",
+      "rationale": "The final recommendation explicitly includes age-appropriate activities as a benefit and does not justify the selected destination through an opposing adult-only preference."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T11-A2-01",
+      "score": 6,
+      "evidence_span": "| 周四 | 拍摄、录屏、图表制作 |",
+      "rationale": "The weekly workflow concretely assigns filming, screen recording, and graphics production to Thursday. This supports weekday creation, but it is a generic scheduling recommendation rather than an explicitly preference-tailored option fact, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T11-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides one weekly workflow but does not explicitly compare weekday-focused creation with a weekend-heavy production alternative."
+    },
+    {
+      "criterion_id": "T11-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No ranking, inclusion, exclusion, or fit judgment is explicitly changed by a preference for weekday-focused creation."
+    },
+    {
+      "criterion_id": "T11-A2-04",
+      "score": 6,
+      "evidence_span": "| 周四 | 拍摄、录屏、图表制作 |\n| 周五 | 剪辑、技术审阅、合规和授权检查 |\n| 周六 | 发布B站母视频和公众号长文 |\n| 周日 | LinkedIn/论坛原生版本、回复评论、记录数据 |",
+      "rationale": "The recommended workflow places filming and editing on weekdays, with publication and secondary-platform work on weekends. It does not justify the recommendation through a preference for weekend-heavy production. Because weekday fit is not explicitly addressed as a recommendation constraint, the generic cap applies."
+    }
+  ]
+}

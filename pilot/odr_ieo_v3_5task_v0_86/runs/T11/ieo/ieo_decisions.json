@@ -1,0 +1,224 @@
+[
+  {
+    "candidates": [
+      {
+        "name": "Preferred niche domains",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "domain interest",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A professional-expertise domain would favor authority-building content, educational series, and platforms such as LinkedIn or YouTube.",
+          "A visual hobby or lifestyle domain would favor demonstrations, transformations, short-form video, and platforms such as Instagram or TikTok."
+        ],
+        "should_ask": true,
+        "question": "Which 2–4 subject areas do you want the account to focus on?"
+      },
+      {
+        "name": "Primary six-month outcome",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "strategic goal",
+        "deliverable_influence": "high",
+        "evidence_strength": "weak",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Prioritizing audience growth would emphasize reach, sharing, collaborations, follower retention, and top-of-funnel KPIs.",
+          "Prioritizing revenue or leads would shift the calendar toward buyer problems, lead capture, offer validation, conversion KPIs, and earlier monetization tests."
+        ],
+        "should_ask": true,
+        "question": "What is the account’s primary six-month outcome: audience growth, authority or portfolio building, community, lead generation, or direct revenue?"
+      },
+      {
+        "name": "Domestic country",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "home market",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "The selected country will determine which local creator cases, regulations, cultural references, and platform conditions are analyzed.",
+          "Country-specific platform access, advertising markets, payment systems, and monetization eligibility may materially change the recommended channel mix and revenue paths."
+        ],
+        "should_ask": true,
+        "question": "What country should “domestic” refer to?"
+      },
+      {
+        "name": "Available weekly time and production budget",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "resource capacity",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A solo commitment of roughly five hours per week would require a small number of anchor posts, batch production, and extensive repurposing.",
+          "A larger time or cash budget would support frequent video, specialist editing, guest collaborations, paid experiments, and broader platform coverage."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Creator visibility and privacy preference",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "identity and privacy",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A faceless account would rely on narration, graphics, screen recordings, curated examples, and a brand-led identity.",
+          "An on-camera personal brand would use founder stories, live sessions, direct audience relationships, and personality-led differentiation."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Brand voice preference",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "communication style",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "An authoritative voice would favor evidence-led explainers, structured frameworks, expert interviews, and restrained visual branding.",
+          "An entertaining or provocative voice would favor strong hooks, humor, reactions, recurring characters, and trend-responsive formats."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Monetization boundaries",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "commercial model",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Accepting sponsorships and advertising would add brand-safety criteria, sponsor-ready series, media-kit milestones, and partnership outreach.",
+          "Preferring owned revenue would prioritize email capture, services, memberships, digital products, or affiliate offers tied closely to audience needs."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Target audience segment",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "audience strategy",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "medium",
+        "counterfactual_deliverable_changes": [
+          "A professional audience would shift topics toward work outcomes, credibility, case studies, and searchable long-form education.",
+          "A consumer or enthusiast audience would shift toward identity, aspiration, practical demonstrations, entertainment, and community participation."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Platform portfolio",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "distribution strategy",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A video-first portfolio would require filming workflows, strong opening hooks, thumbnails, retention analysis, and clip repurposing.",
+          "A text or newsletter-led portfolio would prioritize searchable evergreen posts, email capture, editorial depth, and lower-frequency cornerstone content."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Posting frequency and coordination model",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "operating cadence",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "medium",
+        "counterfactual_deliverable_changes": [
+          "A low-frequency model would center on one substantial weekly asset and a limited set of repurposed derivatives.",
+          "A high-frequency model would use repeatable short-form templates, batch production, rapid testing, and platform-specific publishing schedules."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Existing audience, accounts, and production assets",
+        "source": "latent",
+        "variable_type": "current_state_fact",
+        "preference_class": "starting position",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Starting from zero would require profile validation, seed distribution, direct outreach, and early collaboration tactics.",
+          "An existing audience, archive, mailing list, or production setup would support migration campaigns, content repackaging, and faster monetization tests."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Niche demand, competition, and case evidence",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "market evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Evidence of strong demand and weak specialist competition would support a focused niche and aggressive publishing experiments.",
+          "Evidence of saturation would lead to a narrower audience-problem intersection, a sharper format advantage, or rejection of the niche."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "Legal, platform-policy, and responsible-practice safeguards",
+        "source": "latent",
+        "variable_type": "normative_floor",
+        "preference_class": "compliance and safety",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "A regulated niche would require disclaimers, source standards, claim review, sponsorship disclosure, and stricter moderation rules.",
+          "A niche involving vulnerable groups or sensitive data would require privacy protections, consent practices, and limits on engagement or monetization tactics."
+        ],
+        "should_ask": false,
+        "question": ""
+      }
+    ],
+    "selected_variables": [
+      "Preferred niche domains",
+      "Primary six-month outcome",
+      "Domestic country"
+    ],
+    "need_clarification": true,
+    "selected_question": "1. Which 2–4 subject areas do you want the account to focus on? This will determine the niche shortlist, positioning, and topic calendar.\n2. What is the account’s primary six-month outcome: audience growth, authority or portfolio building, community, lead generation, or direct revenue? This will change the KPIs, content mix, growth tests, and monetization timing.\n3. What country should “domestic” refer to? This will change the local cases, platform assumptions, regulations, and monetization options.",
+    "verification": "These three answers resolve the highest-impact user-owned choices while keeping the questions atomic. Audience definition, platform mix, cadence, and monetization mechanisms can then be compared and recommended from evidence; unspecified resource levels can be covered with lean and expanded implementation scenarios, and legal or responsible-practice safeguards will be applied by default.",
+    "policy_valid": true,
+    "eligible_preference_count": 3
+  }
+]

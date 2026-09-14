@@ -1,0 +1,1589 @@
+# AI PhD Directions and Programs for 2027–2028 Applications
+
+**Assessment date: September 13, 2026**
+
+## Executive assessment
+
+Your strongest current assets—programming, implementation, self-directed technical learning, GitHub work, and competitions—fit applied AI research well. The main unknowns are your exact GPA or rank, mathematical depth, formal research experience, publications, graduation date, citizenship, language scores, budget, and geographic preferences. Those unknowns prevent a reliable admission-tier classification, but they do not prevent a strong strategic recommendation.
+
+The best-fit research direction is not simply “large language models.” A more defensible and employable specialization would be:
+
+> **Efficient, reliable, retrieval-grounded NLP/LLM systems, optionally extended to multilingual, domain-specific, or multimodal data.**
+
+This direction combines:
+
+- implementation-heavy model development;
+- retrieval and information systems;
+- parameter-efficient fine-tuning and inference;
+- rigorous evaluation, robustness, and factuality;
+- Chinese–English or other multilingual opportunities;
+- realistic research with university-scale rather than frontier-lab-scale compute;
+- clear relevance to industrial research and applied R&D.
+
+Three especially suitable versions are:
+
+1. **Efficient and robust retrieval-augmented generation**
+   - Hybrid retrieval, reranking, query robustness, citation grounding, evaluation, and latency.
+2. **Efficient domain adaptation of LLMs**
+   - LoRA/QLoRA, quantization, distillation, serving, synthetic-data quality, and domain evaluation.
+3. **Multimodal document intelligence**
+   - Retrieval and reasoning over text, tables, figures, scanned documents, and images, with grounding and uncertainty evaluation.
+
+This recommendation is supported by current research activity. ACL-family venues offer main-conference, Findings, workshop, student-research, system-demonstration, and industry-track routes [3][4]. Recent work identifies cross-modal alignment, retrieval, fusion, evaluation, and robustness as open multimodal-RAG problems [5], while query-level perturbations can significantly degrade commonly used RAG retrievers [6]. QLoRA demonstrates that meaningful adaptation research does not always require frontier-scale infrastructure: it reported fine-tuning a 65B model on one 48 GB GPU by combining frozen 4-bit weights with low-rank adapters [7].
+
+Industrial demand remains favorable but selective. Lightcast’s contribution to the 2026 Stanford AI Index reported AI skills in 2.5% of US job postings, a 55% year-over-year increase, while agentic-AI mentions grew sharply [1]. The US Bureau of Labor Statistics projects 22% employment growth for computer and information research scientists from 2025 to 2035 and reports a 2025 median annual wage of $140,300 [2]. These statistics do not guarantee PhD-level industrial-research positions, but they support building durable capability in model development, systems, retrieval, evaluation, and experimentation rather than only prompt engineering.
+
+---
+
+## 1. Best-fit research directions
+
+### Comparative assessment
+
+| Direction | Research maturity | Mathematics requirement | Systems requirement | Compute/data need | Publication opportunities | Industrial relevance | Fit for you |
+|---|---|---:|---:|---:|---|---|---|
+| Applied NLP and domain-specific NLP | Mature, with many open domain problems | Medium | Medium | Low–medium | Strong in ACL/EMNLP/NAACL, Findings, workshops, domain venues | Very high | Excellent |
+| Retrieval, search, and RAG | Mature retrieval foundations; rapidly developing LLM integration | Medium | Medium–high | Low–medium | Strong in ACL, SIGIR, CIKM, WSDM, KDD | Very high | Excellent |
+| Efficient training and inference | Mature systems foundations; fast-moving LLM methods | Medium–high | High | Medium; careful experiments can be modest | Strong in MLSys, NeurIPS, ICML, ICLR and systems venues | Extremely high | Excellent if you add systems depth |
+| Trustworthy, robust, and evaluative NLP | Mature concepts but many unresolved LLM-specific problems | Medium–high statistics | Medium | Low–medium | Strong across NLP and ML venues | Very high in regulated and customer-facing applications | Excellent |
+| Multimodal learning | Established vision-language field; rapidly evolving foundation models | Medium–high | Medium–high | Medium–very high | Strong in CVPR, ICCV, ECCV, ACL and ML venues | Very high | Strong, but scope must be controlled |
+| LLM post-training and alignment | Rapidly evolving; benchmarks and methods remain unstable | High statistics/optimization for rigorous work | Medium–high | Medium–very high | Strong but highly competitive | Very high | Strong if tied to efficiency/evaluation |
+| Agentic systems and tool use | Emerging and commercially active; evaluation remains immature | Medium | High | Medium | Many opportunities, but high risk of shallow work | High and growing | Good as a secondary theme |
+| Foundation-model pretraining/scaling | Technically mature but concentrated in large laboratories | High | Very high | Extremely high | Prestigious but difficult without exceptional resources | High at a small number of firms | Poor primary choice |
+| Core deep-learning theory | Mature and prestigious | Very high | Low–medium | Often modest | Strong in top ML venues, highly selective | Moderate–high | Less aligned unless mathematics becomes a major strength |
+| AI for science/medicine/law/finance | Domain-dependent; many open problems | Medium plus domain methods | Medium | Low–high | Domain and AI venues | High where data access exists | Strong if a good collaborator/data source is available |
+
+### 1.1 Applied and domain-specific NLP
+
+This includes classification, extraction, summarization, question answering, dialogue, translation, document processing, and adaptation to medicine, science, finance, law, education, patents, or software engineering.
+
+**Advantages**
+
+- Relatively accessible compute requirements.
+- Natural use of your implementation strength.
+- Many public datasets and reproducible baselines.
+- Clear industrial deployment pathways.
+- Easier to formulate measurable tasks than broad “general intelligence” projects.
+
+**Risks**
+
+- A simple “fine-tune model X on dataset Y” project is usually not a research contribution.
+- Domain work requires real error analysis and preferably collaboration with domain experts.
+- Some datasets have privacy, licensing, or annotation-quality limitations.
+
+**Strong research questions**
+
+- How can domain LLMs remain calibrated when domain knowledge changes?
+- Can compact models match larger models using high-quality retrieval and data selection?
+- How does bilingual or code-switched retrieval affect factuality?
+- Which domain-specific errors are hidden by aggregate benchmark scores?
+
+### 1.2 Information retrieval and retrieval-augmented generation
+
+This is probably the strongest bridge between applied NLP, industrial value, moderate compute, and publishable systems work.
+
+Research possibilities include:
+
+- sparse, dense, and hybrid retrieval;
+- learned reranking;
+- multilingual retrieval;
+- query rewriting and query-perturbation robustness;
+- multi-hop retrieval;
+- citation and provenance verification;
+- retrieval routing;
+- efficient indexing and vector search;
+- document chunking and structure-aware retrieval;
+- RAG evaluation and uncertainty estimation.
+
+RAG is not automatically reliable. Recent research found substantial retriever degradation under minor query variations [6]. That makes robustness, evaluation, routing, and retrieval quality better research targets than merely assembling an existing RAG framework.
+
+**Preparation emphasis**
+
+- Probability and information retrieval metrics.
+- BM25, inverted indices, dense embeddings, approximate nearest-neighbor search.
+- PyTorch and Hugging Face.
+- FAISS, Lucene/Anserini, or similar retrieval infrastructure.
+- Evaluation using recall, MRR, nDCG, answer correctness, citation support, latency, memory, and cost.
+
+### 1.3 Efficient model training and inference
+
+This is an excellent industrial-research direction because it combines algorithms and systems. Topics include:
+
+- LoRA and QLoRA;
+- quantization-aware fine-tuning;
+- distillation;
+- mixture-of-experts routing;
+- model pruning;
+- speculative decoding;
+- KV-cache management;
+- batching and scheduling;
+- long-context efficiency;
+- FlashAttention-style kernels;
+- memory-efficient distributed training;
+- inference engines and serving.
+
+QLoRA’s reported reduction from more than 780 GB for ordinary 16-bit fine-tuning of a 65B model to under 48 GB illustrates why efficiency research can make experiments accessible [7]. Its finding that a 9,000-example high-quality dataset could outperform a much larger dataset also highlights data quality and evaluation as research variables, not merely engineering details.
+
+**Additional preparation needed**
+
+- Computer architecture and GPU memory hierarchy.
+- Operating systems and concurrency.
+- Distributed systems.
+- Numerical precision and stability.
+- Profiling and benchmarking.
+- CUDA or Triton is helpful but not initially mandatory.
+
+### 1.4 Trustworthy, robust, and evaluative AI
+
+This includes:
+
+- hallucination and factuality;
+- uncertainty and calibration;
+- robustness to input changes;
+- adversarial and distribution-shift evaluation;
+- bias and fairness;
+- privacy and data leakage;
+- model auditing;
+- safety evaluation;
+- reproducibility and benchmark validity.
+
+This direction is particularly valuable when combined with an applied system. “Trustworthy AI” alone can become too broad; “robustness of multilingual medical RAG under query and corpus shift” is much more credible.
+
+It usually requires stronger statistics than ordinary application development:
+
+- confidence intervals and hypothesis testing;
+- bootstrap methods;
+- calibration metrics;
+- inter-annotator agreement;
+- causal reasoning where claims require it;
+- careful dataset construction and ablation studies.
+
+### 1.5 Multimodal learning
+
+Multimodal RAG combines text with images, audio, video, tables, or scientific figures. The ACL 2025 survey identifies open challenges in cross-modal alignment and reasoning, retrieval, fusion, robustness, datasets, benchmarks, and evaluation [5].
+
+For your profile, the most practical version is **multimodal document intelligence**, not pretraining a general vision-language model. Examples include:
+
+- technical-document QA over text, tables, and diagrams;
+- evidence retrieval from scientific papers;
+- bilingual OCR and layout-aware retrieval;
+- chart or figure grounding;
+- reliability of multimodal citations;
+- efficient multimodal indexing.
+
+### 1.6 LLM alignment, agents, and tool use
+
+These areas are industrially relevant, but they should be approached cautiously:
+
+- “Build an agent that uses tools” is usually a product demo, not research.
+- Evaluation remains difficult and often contaminated.
+- Expensive proprietary-model APIs can undermine reproducibility.
+- Results may depend heavily on prompt formatting or model version.
+
+A stronger question would be:
+
+> How does retrieval uncertainty affect an agent’s decision to invoke a search, database, or code-execution tool, and can a calibrated routing policy improve both reliability and cost?
+
+### Recommended research identity
+
+A compelling application identity would be:
+
+> “I am interested in developing efficient and reliable language-model systems that retrieve and reason over external, multilingual, or multimodal knowledge, with particular emphasis on robustness, reproducible evaluation, and deployment efficiency.”
+
+This is focused enough to look serious but broad enough to match NLP, IR, ML-systems, multimodal, and trustworthy-AI faculty.
+
+---
+
+## 2. How PhD structures differ by region
+
+| Feature | United States | Canada | United Kingdom | Continental Europe | Singapore/Hong Kong | Japan/South Korea | Mainland China |
+|---|---|---|---|---|---|---|---|
+| Bachelor’s-to-PhD | Common | Possible, but institution-dependent | Sometimes possible; strong preparation usually expected | Master’s normally required | Common or available at many universities | Often through integrated MS/PhD; Japan normally post-master | Direct or integrated routes exist, but rules vary |
+| Normal duration | 5–6 years | 4–6 years | 3–4 years | Usually 3–5 years | About 4 years after bachelor’s | 3 years after master’s; integrated routes longer | Often 4–5 years |
+| Coursework | Substantial early coursework | Moderate | Limited | Limited; training modules common | Moderate | Moderate, with lab and examination requirements | Moderate |
+| Rotations | Available in some programs, not universal | Less common | Uncommon | Uncommon; usually hired by a supervisor/project | Institution-dependent | Lab chosen relatively early | Supervisor-centered |
+| Qualifying/candidacy exam | Common | Common | Annual review/transfer rather than US-style qualifying exam | Progress reviews; structure varies | Common | Common | Common |
+| Funding model | Fellowship, RA, TA, tuition waiver | RA/TA/fellowship package | Studentship or scholarship; international fee gaps possible | Frequently salaried employee/project position | Scholarship, studentship, RA/TA | Tuition waiver and lab/scholarship stipend | Scholarship, assistantship, government support |
+| Admissions model | Annual department/program application | Annual program application | Program or project application | Often individual vacancy or supervisor-led application | Annual university application | University plus lab and sometimes entrance exam | University/school and supervisor |
+| Internship flexibility | Usually good with advisor approval and visa authorization | Usually good | Possible but shorter timeline constrains it | Contract and project rules matter | Common in industry-linked labs | Varies by supervisor | Varies substantially |
+
+### North American direct-entry model
+
+US programs commonly admit directly after a bachelor’s degree. Students usually complete:
+
+1. graduate coursework and breadth requirements;
+2. one or more qualifying, preliminary, or area examinations;
+3. advisor selection;
+4. candidacy or thesis proposal;
+5. several years of research;
+6. dissertation and oral defense.
+
+The longer duration provides time to develop from a strong programmer into a mature researcher. This makes the US particularly attractive if your mathematics or research experience is still incomplete. The disadvantages are extremely competitive admission, dependence on advisor fit, and immigration uncertainty.
+
+Canada is structurally similar but varies more in direct-entry policy. Toronto explicitly offers an international direct-entry PhD after a bachelor’s degree [15]. Other departments may prefer or require a research master’s.
+
+### European supervisor-led and project-based model
+
+The UK normally uses a three-to-four-year research doctorate with limited coursework. The applicant is expected to become productive quickly, so a master’s, thesis, or strong research record is often preferred even where a bachelor’s technically satisfies minimum eligibility.
+
+In Germany, Switzerland, the Netherlands, France, and Scandinavia:
+
+- a relevant master’s is normally required;
+- the student often applies to a specific advertised project or professor;
+- the doctorate may be an employment contract;
+- coursework is limited;
+- the research topic may be partially defined by a grant;
+- vacancies appear throughout the year rather than in one annual cycle.
+
+This structure can be financially attractive and highly focused, but it gives less time to explore fields or change advisors.
+
+### Asian structures
+
+Asia is heterogeneous:
+
+- **Singapore:** resembles a US-style PhD, often allowing bachelor’s entry, with coursework and qualifying examinations.
+- **Hong Kong:** commonly offers four-year PhDs after a bachelor’s degree and shorter routes after a research master’s.
+- **Japan:** the standard doctorate is normally three years after a master’s; laboratory matching and entrance examinations matter.
+- **South Korea:** doctoral and integrated MS/PhD routes coexist; laboratory fit and faculty funding are central.
+- **Mainland China:** direct and integrated routes exist, but structure varies by institution and applicant category.
+
+In Japan and South Korea, an English-language PhD may not require Japanese or Korean for admission, but local-language ability can substantially improve daily life, internships, and non-multinational employment.
+
+---
+
+## 3. Representative North American programs
+
+Faculty names below are **people or groups to investigate**, not confirmation that they will recruit in 2027 or 2028. Faculty affiliations, leave status, funding, and advising capacity must be checked directly before applying.
+
+### 3.1 United States
+
+| Program or ecosystem | Relevant strengths and possible faculty/labs | Structure and fit |
+|---|---|---|
+| Stanford CS | Stanford NLP Group; Christopher Manning, Percy Liang, Tatsunori Hashimoto; CRFM; strong ML systems and data infrastructure [10] | Stanford describes its PhD as research-oriented, normally 5–6 years, with relatively few formal course requirements. A recognized bachelor’s-equivalent degree is sufficient [8]. Extremely high-variance admission. |
+| Carnegie Mellon School of Computer Science | Machine Learning Department; Language Technologies Institute; Graham Neubig, Ameet Talwalkar, Carolyn Rosé, Maarten Sap; strong NLP, ML systems, speech, robotics, and industry [11][12] | Several separate PhD programs rather than one generic application. Excellent for implementation-heavy NLP and efficient ML, but applicants must choose the correct program. |
+| UC Berkeley EECS | BAIR; Dan Klein, Jacob Steinhardt, Ion Stoica, Joseph Gonzalez; NLP, robust ML, distributed systems, efficient serving | Strong combination of ML, NLP, and systems. Admission is exceptionally selective and advisor capacity matters greatly. |
+| University of Washington Allen School | Hannaneh Hajishirzi, Noah Smith and related NLP/AI groups; close connections with Allen Institute for AI and Seattle companies [13] | Strong applied NLP, reasoning, multimodal work, and industrial internship ecosystem. |
+| UMass Amherst Manning College of Information and Computer Sciences | Mohit Iyyer, Brendan O’Connor, James Allan; NLP, social-language analysis, IR and search [14] | Particularly attractive for combining NLP and information retrieval. Usually a stronger fit than programs focused almost entirely on frontier-scale models. |
+| UIUC Computer Science | Heng Ji, ChengXiang Zhai, Jiawei Han and broader NLP/IR/data-mining ecosystem | Strong in knowledge extraction, retrieval, data mining, and scalable systems; good applied-R&D placement. |
+| Georgia Tech Computer Science | Mark Riedl, Wei Xu and broader ML/systems faculty | Attractive for applied NLP, human-centered AI, language generation, and systems. |
+| Cornell Computer Science/Information Science | Yoav Artzi, Claire Cardie and related ML, language, and information-science groups | Strong language grounding, information extraction, and interdisciplinary work. |
+
+#### Stanford-specific confirmed information
+
+Stanford states that:
+
+- the CS PhD is normally completed in **5–6 years**;
+- a US bachelor’s degree or recognized international equivalent is sufficient;
+- no specific undergraduate major is required, but strong quantitative and analytical skills are important [8].
+
+For Autumn 2027 entry:
+
+- application opens: **mid-September 2026**;
+- application deadline: **December 8, 2026**;
+- decisions: **February 2027** [9].
+
+The Knight-Hennessy Scholars deadline for the 2027 cohort is **October 6, 2026 at 1 p.m. Pacific Time**. It is open to applicants of any country and provides up to three years of funding, but requires a separate scholarship application [9].
+
+Because September 13, 2026 is very close to these deadlines, Stanford 2027 is practical only if you already have strong recommenders, a research narrative, transcripts, and an application-ready project. Otherwise, 2028 is strategically preferable.
+
+### 3.2 Canada
+
+| Program or ecosystem | Relevant strengths | Structure and fit |
+|---|---|---|
+| University of Toronto CS + Vector ecosystem | Deep learning, representation learning, multimodal AI, health AI, optimization; faculty to investigate include Jimmy Ba, Roger Grosse, Bo Wang, Sanja Fidler | International direct-entry route is explicitly available. Five years after bachelor’s, four after master’s [15]. |
+| McGill or Université de Montréal + Mila | NLP, reinforcement learning, deep learning, responsible AI; faculty directory includes Siva Reddy, Jackie Cheung, Doina Precup, Aaron Courville and many others whose current availability must be checked [19] | Apply to the degree-granting university, not simply to Mila. Strong research community and industrial links in Montréal. |
+| UBC Computer Science | Machine learning, natural-language understanding and generation, text mining, multimodal interfaces, systems and high-performance computing [17] | Broad AI and systems coverage, with stated computing-industry contacts. Detailed bachelor’s-entry and funding terms must be checked on the live admissions page [18]. |
+| University of Waterloo CS | Information retrieval, data systems, ML; Jimmy Lin is especially relevant for search/RAG | Strong cooperative and industrial ecosystem; investigate direct-entry requirements and supervisor availability. |
+| University of Alberta Computing Science/Amii | Reinforcement learning, machine learning, optimization and applied AI | Less NLP-centered than Toronto, Montréal, or UMass, but strong if interests broaden toward learning systems. |
+
+#### Toronto-specific confirmed information
+
+Toronto explicitly offers:
+
+- a regular PhD after a suitable master’s;
+- an international **Direct-Entry PhD** after a bachelor’s [15].
+
+Direct-entry requirements include:
+
+- an appropriate bachelor’s degree;
+- at least an **A– equivalent average in relevant courses for consideration**;
+- English-language proficiency.
+
+The program requires:
+
+- 4.0 full-course equivalents for direct-entry students;
+- a first research presentation;
+- a qualifying oral examination;
+- approval of the thesis topic;
+- departmental and final oral thesis examinations.
+
+Normal duration is:
+
+- **five years** after a bachelor’s;
+- **four years** after a recognized master’s.
+
+The guaranteed funding period is **60 months for direct-entry students**. Toronto states that all full-time PhD students receive a package combining research and teaching assistantships intended to cover tuition and living costs [15][16].
+
+Toronto also identifies desirable preparation in:
+
+- second-year calculus, linear algebra, and probability;
+- upper-year algorithm design and analysis;
+- upper-year systems, such as operating systems, databases, architecture, or networks.
+
+For applicants without a Canadian degree, the GRE General Test is **strongly encouraged but not required**. Toronto reports that only 5–10% of applicants receive offers, so even meeting its published minimum cannot make it a “match” or “safe” program [15].
+
+#### UBC-specific confirmed information
+
+UBC lists research in:
+
+- machine learning;
+- natural-language understanding and generation;
+- text mining;
+- multimodal interfaces;
+- high-performance computing and systems;
+- optimization [17].
+
+It also states that the department has many computing-industry contacts and values research directed toward real-world applications.
+
+The published dates found for the upcoming cycle are:
+
+- application opens: **September 15, 2026**;
+- Canadian deadline: **December 15, 2026**;
+- international deadline: **December 15, 2026** [17].
+
+The live page should be checked for the associated entry term and for current funding, English, and degree requirements.
+
+### North American costs and funding
+
+These are **2026 planning ranges, not guaranteed quotations**:
+
+| Destination | Tuition before waiver | Typical living cost | Typical funded-PhD support |
+|---|---:|---:|---:|
+| US | US$40,000–70,000/year | US$20,000–45,000/year | Tuition waiver plus roughly US$35,000–55,000 stipend in many strong CS programs |
+| Canada | C$8,000–35,000/year depending on university/status | C$18,000–35,000/year | Roughly C$25,000–45,000 total annual package; whether tuition is deducted varies |
+
+For a US or Canadian PhD, compare the **net amount after tuition, mandatory fees, health insurance, and taxes**, not the headline stipend. Housing in the Bay Area, Seattle, Toronto, and Vancouver can materially reduce real purchasing power.
+
+A serious offer should specify:
+
+- number of guaranteed years;
+- academic-year versus 12-month support;
+- summer support;
+- tuition waiver;
+- health insurance;
+- mandatory student fees;
+- TA obligations;
+- expected annual stipend increases;
+- funding if the advisor loses a grant or leaves.
+
+---
+
+## 4. Representative European programs
+
+### 4.1 United Kingdom
+
+| Program | Relevant strengths | Typical structure |
+|---|---|---|
+| University of Edinburgh School of Informatics | Institute for Language, Cognition and Computation; Mirella Lapata, Ivan Titov, Bonnie Webber and broader NLP/speech faculty [21][22] | Usually 3–4 years, research-heavy, limited coursework, annual reviews. Excellent NLP concentration. |
+| University of Oxford DPhil in Computer Science | NLP, probabilistic ML, multimodal learning, robust AI; faculty to investigate include Phil Blunsom, Yarin Gal, Michael Bronstein [20] | Normally 3–4 years. Strong prior research preparation is important; college and scholarship processes add complexity. |
+| University of Cambridge PhD in Computer Science | NLP and computational linguistics; Anna Korhonen, Andreas Vlachos, Nigel Collier and related groups [23] | Usually 3–4 years; supervisor fit and research proposal are important. |
+| UCL Computer Science | NLP, knowledge representation, information extraction and ML; investigate Sebastian Riedel, Pontus Stenetorp and related groups | Strong access to London’s AI ecosystem; funding and international tuition must be checked carefully. |
+| Imperial College London | ML, data science, systems, trustworthy AI | More systems/ML-oriented than pure NLP; useful for efficient AI and applied R&D. |
+
+The UK can be attractive for a student who already has a clear question, thesis experience, and writing sample. It is less forgiving than a five-to-six-year US PhD if you still need substantial research exploration.
+
+### 4.2 Switzerland
+
+| Program | Relevant strengths | Typical structure |
+|---|---|---|
+| ETH Zürich Computer Science | NLP and computational linguistics, robust ML, data systems, optimization; investigate Ryan Cotterell, Andreas Krause, Ce Zhang and related groups | Master’s normally expected; students are often salaried doctoral employees. Typical duration around 4 years [24]. |
+| EPFL EDIC | NLP, machine learning, optimization, data systems; investigate Antoine Bosselut, Martin Jaggi, Robert West and related faculty | Doctoral school with centralized admission and later laboratory matching or direct lab recruitment; usually around 4–5 years [25]. |
+
+Switzerland offers excellent research and relatively high doctoral salaries, but living costs are also high. Access to large computing clusters depends on the laboratory and grants, not merely university membership.
+
+### 4.3 Germany
+
+| Program/ecosystem | Relevant strengths | Typical structure |
+|---|---|---|
+| Saarland Informatics Campus | Saarland University, MPI for Informatics, MPI for Software Systems, DFKI; strong NLP, speech, IR, formal methods and systems; investigate Vera Demberg, Dietrich Klakow and relevant MPI/DFKI groups [26] | Graduate-school or project-based admission; master’s normally required. Often funded through scholarships or employment contracts. |
+| TU Darmstadt/UKP Lab | Iryna Gurevych and a large applied NLP group working on argumentation, information extraction, trustworthy NLP and language technologies [28] | Usually apply to an advertised research position or contact an aligned professor; strong fit for reliable applied NLP. |
+| TUM/MCML ecosystem | ML, data, systems, computer vision, responsible AI; investigate Stephan Günnemann, Georg Groh and related groups | Usually supervisor/project-led, with master’s expected. Doctoral theses must be made publicly accessible under TUM rules [27]. |
+| Berlin ecosystem | TU Berlin, BIFOLD, Humboldt, industry labs | Strong data systems, ML, efficient AI and startup opportunities. Positions often appear as funded vacancies. |
+
+Many German positions use the public-sector **TV-L E13** salary scale at a stated percentage, such as 65%, 75%, or 100%. Always compare the percentage, contract duration, teaching load, and whether the position is explicitly intended to produce a doctorate.
+
+### 4.4 Netherlands, France, and Scandinavia
+
+| Destination | Representative options | Characteristics |
+|---|---|---|
+| Netherlands | University of Amsterdam, TU Delft, Eindhoven, Radboud, Vrije Universiteit Amsterdam | PhD candidates are commonly salaried employees. UvA is especially strong in IR, search, NLP, multimodal retrieval, and responsible AI; investigate Maarten de Rijke and Christof Monz. Vacancies are usually advertised individually [29]. |
+| France | Inria teams, Université Paris-Saclay, Sorbonne, Institut Polytechnique de Paris, ENS/PSL | Three-year doctoral contracts are common after a master’s. Strong mathematical and public-research environment; Inria publishes project vacancies centrally [30]. |
+| Finland | Aalto University, University of Helsinki | Salaried or grant-funded positions; strong ML, speech, NLP, and human-centered AI. |
+| Sweden | KTH, Chalmers, Linköping, Lund | PhD students are commonly employees; strong systems, ML, language technology, and industrial partnerships. |
+| Denmark | University of Copenhagen, DTU, Aarhus | Salaried doctoral employment; strong NLP, responsible AI, and data science. |
+| Norway | University of Oslo, NTNU | Salaried positions and good working conditions, but smaller market and high living costs. |
+
+### European cost and funding ranges
+
+| Destination | Student-paid tuition | Living-cost planning range | Typical support |
+|---|---:|---:|---|
+| UK | International tuition often £25,000–40,000/year | £15,000–25,000; London can be higher | Studentship around the UKRI minimum plus fees, but international fee coverage must be confirmed |
+| Switzerland | Often roughly CHF 1,500–4,000/year | CHF 24,000–36,000 | Salaried position, often roughly CHF 50,000–80,000 gross/year depending on institution and year |
+| Germany | Usually no standard doctoral tuition; semester charges apply | €12,000–20,000 | Scholarship or TV-L employment, often approximately €30,000–60,000 gross depending on contract percentage |
+| Netherlands | Normally no tuition for employed PhDs | €16,000–25,000 | Collective-agreement salary, commonly increasing annually |
+| France | Low registration fees in public institutions | €12,000–22,000 | Doctoral contract, roughly €2,100–2,600 gross/month depending on scheme |
+| Scandinavia | Usually none for employed PhDs | Equivalent of €18,000–30,000 | Salaried employee, often equivalent to €35,000–55,000 gross/year |
+
+These ranges vary by city, contract, taxation, collective bargaining, and funding body. A “fully funded” UK offer may still leave an international tuition gap, whereas a Dutch, German, Swiss, or Nordic employment contract normally treats the candidate as an employee.
+
+---
+
+## 5. Representative Asian programs
+
+### 5.1 Singapore
+
+| Program/ecosystem | Strengths | Structure |
+|---|---|---|
+| National University of Singapore School of Computing | NLP, IR, data mining, efficient systems, multimodal AI; investigate Min-Yen Kan, Bryan Hooi, Bingsheng He and relevant newer faculty [31] | Bachelor’s entry commonly possible; coursework, qualifying examination, research proposal and dissertation; often about 4 years. |
+| Nanyang Technological University | NLP, affective computing, multimodal AI, speech, data systems; investigate Erik Cambria and relevant CCDS faculty [33] | Bachelor’s or master’s routes depending on program; coursework and qualifying requirements. |
+| A*STAR-linked PhDs | Industrial and government research, speech/language, vision, trustworthy AI, high-performance computing | Often co-supervised with NUS, NTU, SUTD or overseas partners. Scholarship conditions require careful reading. |
+| SUTD | Applied AI, design, robotics, human-centered systems | Smaller faculty base; potentially good where a specific supervisor is highly aligned. |
+
+NUS Research Scholarships normally provide tuition support and a monthly stipend, with rates depending on citizenship and progression status [32]. Exact 2027–2028 amounts and any service obligations must be checked in the award terms.
+
+Singapore’s strengths include English-language instruction, a concentrated technology market, strong public AI investment, and multinational R&D. Its market is much smaller than the US, and post-graduation employment requires securing an appropriate work pass.
+
+### 5.2 Hong Kong
+
+| Program | Strengths | Structure |
+|---|---|---|
+| HKUST CSE | NLP, speech, multimodal AI, ML, data mining; investigate Pascale Fung and current CSE faculty [34] | Commonly four years after bachelor’s, shorter after a research master’s; coursework and qualifying/candidacy requirements. |
+| CUHK CSE/Engineering | Chinese NLP, speech, multimodal learning, information retrieval; investigate Kam-Fai Wong and relevant groups | Strong links to Shenzhen and Greater Bay Area companies. |
+| HKU Computer Science | NLP, data science, AI systems and multimodal work | Growing AI faculty base and industry access. |
+| Hong Kong Polytechnic University | Language technology, speech, applied AI | Useful for domain and multilingual language research. |
+
+The Hong Kong PhD Fellowship Scheme is open internationally and provides a stipend and conference/research-travel allowance, with exact amounts updated annually [35]. Universities also offer regular postgraduate studentships.
+
+Hong Kong offers English-medium doctoral study, close access to Shenzhen’s technology industry, and a relatively straightforward graduate immigration route compared with some destinations. The market is smaller than the US or mainland China but strong in finance, logistics, commerce, and regional R&D.
+
+### 5.3 Japan
+
+| Program/ecosystem | Strengths | Structure |
+|---|---|---|
+| University of Tokyo, Graduate School of Information Science and Technology | NLP, ML, robotics, vision; investigate Yusuke Miyao, Yutaka Matsuo and relevant current faculty [38] | Standard doctoral course normally follows a master’s and lasts three years; laboratory matching and entrance procedures matter. |
+| Kyoto University | Japanese NLP, knowledge processing, speech; Sadao Kurohashi’s ecosystem is particularly relevant | Usually master’s followed by a three-year doctorate. |
+| Institute of Science Tokyo | ML, systems, speech, data science | Laboratory-centered admissions and research. |
+| NAIST | NLP, speech, robotics and information science | Smaller, research-focused graduate university with strong laboratory structure. |
+| RIKEN AIP-linked programs | ML theory, optimization, NLP, trustworthy AI | Usually through university affiliation or joint supervision. |
+
+MEXT scholarships can cover tuition, travel, and stipend, but there are embassy-recommendation and university-recommendation routes with different calendars [39]. Japanese may not be required for an English-track doctorate, but it significantly improves local industrial employment options.
+
+### 5.4 South Korea
+
+| Program/ecosystem | Strengths | Structure |
+|---|---|---|
+| KAIST School of Computing | NLP, multimodal learning, robust ML, efficient systems; investigate Alice Oh, Sung Ju Hwang, Juho Lee and relevant faculty [36] | PhD and integrated MS/PhD routes; tuition support and laboratory stipends are common but must be confirmed in writing. |
+| Seoul National University CSE | ML, vision-language, robotics, systems; investigate Gunhee Kim and broader AI faculty [37] | Doctoral or combined routes; supervisor fit and lab funding matter. |
+| POSTECH CSE | Vision, multimodal AI, ML and systems | Smaller, research-intensive environment with close industrial ties. |
+| Yonsei and Korea University | Applied AI, NLP, data science | Wider variation in laboratory resources; fit should be evaluated supervisor by supervisor. |
+
+South Korea has strong semiconductor, electronics, platform, automotive, and robotics employers. Korean is often not required for the degree but may matter considerably for domestic employment outside globally oriented research teams.
+
+### 5.5 Mainland China
+
+Representative ecosystems include:
+
+- Tsinghua University;
+- Peking University;
+- Fudan University;
+- Shanghai Jiao Tong University;
+- Zhejiang University;
+- University of Chinese Academy of Sciences;
+- Westlake University.
+
+Relevant faculty ecosystems include Tsinghua NLP and knowledge-graph groups, Peking University NLP/data systems, Fudan NLP, and CAS institutes. International and domestic admission channels differ, and the appropriate route depends on citizenship and current student status. Tsinghua publishes international graduate-admission information centrally [40].
+
+The Chinese Government Scholarship and university-level scholarships can cover tuition, housing, insurance, and stipend, but eligibility, nomination, and post-award conditions depend on citizenship and scheme [41].
+
+For someone already studying in Jiangsu, mainland programs may provide strong research and industry access, but whether they count as “abroad” depends on your personal objective. They are still useful as a comparison or contingency, especially if they provide a substantially better supervisor and research environment than an unfunded overseas option.
+
+### Asian cost and funding ranges
+
+| Destination | Tuition before scholarship | Living-cost planning range | Typical funded support |
+|---|---:|---:|---|
+| Singapore | S$20,000–45,000/year before subsidy/waiver | S$15,000–30,000/year | Roughly S$2,700–4,000/month depending on scholarship and stage |
+| Hong Kong | Around HK$42,000–50,000/year | HK$100,000–200,000/year | Regular studentship or HKPFS, roughly HK$18,000–29,000/month depending on scheme |
+| Japan | National-university tuition around ¥535,800/year plus admission fee | ¥1.2–2.4 million/year | MEXT or university/lab support, often roughly ¥145,000–200,000/month |
+| South Korea | Roughly ₩6–16 million/year before waiver | ₩10–20 million/year | Tuition waiver plus highly variable lab/scholarship stipend |
+| Mainland China | Roughly RMB 30,000–80,000/year | RMB 30,000–90,000/year | CSC or university scholarship, often including tuition, housing/allowance, insurance, and stipend |
+
+Do not assume that “full scholarship” necessarily covers travel, visa costs, deposits, family expenses, summer months, or conference travel.
+
+---
+
+## 6. Research resources, publication culture, internships, and employment
+
+### 6.1 Computing infrastructure
+
+University-wide branding does not guarantee personal GPU access. Before choosing a laboratory, ask:
+
+- What GPUs are available to first-year students?
+- Is access shared, quota-based, or grant-specific?
+- Are cloud credits available?
+- Can students use national supercomputing facilities?
+- How long are queue times?
+- Does the lab support storage-intensive retrieval datasets?
+- Are proprietary industrial datasets available, and can resulting work be published?
+- Are compute costs included in the project budget?
+
+Strong ecosystems include:
+
+- Stanford NLP/CRFM and Bay Area infrastructure;
+- CMU and Pittsburgh’s language-technology ecosystem;
+- University of Washington and Allen Institute for AI;
+- Toronto plus Vector Institute;
+- Montréal plus Mila;
+- Edinburgh’s concentrated NLP community;
+- ETH/EPFL and Swiss national computing infrastructure;
+- Saarland’s university–MPI–DFKI cluster;
+- TUM and Munich Center for Machine Learning;
+- Singapore’s university–A*STAR–AI Singapore ecosystem;
+- Hong Kong–Shenzhen collaboration;
+- University of Tokyo/RIKEN;
+- KAIST and Korean industrial laboratories.
+
+Access normally depends more on the specific supervisor than on institutional prestige.
+
+### 6.2 Publication routes
+
+For your target areas:
+
+| Research area | Main venues |
+|---|---|
+| NLP/LLMs | ACL, EMNLP, NAACL, EACL, TACL, Computational Linguistics |
+| Information retrieval/RAG | SIGIR, WSDM, CIKM, ACL/EMNLP, KDD |
+| General ML | NeurIPS, ICML, ICLR, AISTATS |
+| Efficient ML systems | MLSys, NeurIPS/ICML/ICLR, OSDI, SOSP, NSDI, ASPLOS |
+| Multimodal/vision-language | CVPR, ICCV, ECCV, ACL/EMNLP, NeurIPS |
+| Data mining | KDD, WWW/The Web Conference, CIKM |
+| Domain NLP | BioNLP, ClinicalNLP, AMIA and domain workshops/journals |
+| Early-stage student work | ACL Student Research Workshop, carefully selected workshops, system demonstrations |
+
+ACL 2026 illustrates the diversity of legitimate routes: main conference, Findings, workshops, Student Research Workshop, system demonstrations, and industry track [3]. Findings and strong workshops are valid research outlets, but a workshop’s quality must be evaluated through its organizers, reviewing process, prior proceedings, and affiliation with a recognized conference.
+
+Avoid:
+
+- venues promising guaranteed or extremely rapid acceptance;
+- paying high fees without credible peer review;
+- journals with fabricated metrics;
+- splitting one weak contribution into many minimal papers;
+- treating an arXiv upload as equivalent to peer-reviewed publication;
+- adding authors who did not make a real contribution.
+
+A strong reproducible technical report, even without acceptance before applications, is more valuable than a low-quality publication.
+
+### 6.3 Conference support
+
+Conference funding varies by advisor and grant. Ask whether the lab covers:
+
+- registration;
+- visa fees;
+- airfare and accommodation;
+- one conference per accepted paper or per year;
+- non-author attendance;
+- summer schools;
+- student-volunteer participation.
+
+ACL 2026 advertised volunteer opportunities and diversity/virtual subsidies, but these are conference-specific and should not replace laboratory funding [3].
+
+### 6.4 Internship culture
+
+For industrial research, prioritize programs where students commonly intern after the second or third year. Relevant employers include:
+
+- major AI and cloud companies;
+- search, advertising, and recommendation firms;
+- enterprise software companies;
+- semiconductor and systems companies;
+- industrial laboratories in finance, medicine, automotive, robotics, and telecom;
+- national research institutes.
+
+An internship is most useful when it produces one or more of:
+
+- a publishable paper;
+- experience with large-scale infrastructure;
+- a research mentor and recommendation;
+- a clear industrial problem;
+- deployment or evaluation expertise unavailable at the university.
+
+A PhD with restrictive internship rules can still be excellent academically, but it is less aligned with your stated career goal.
+
+### 6.5 Employment prospects by subfield
+
+**Strongest medium-term combinations**
+
+1. **LLM/NLP plus retrieval and search**
+   - Search, enterprise knowledge, customer support, legal/medical information systems.
+2. **LLM/NLP plus inference and systems**
+   - Model platforms, cloud infrastructure, edge deployment, cost optimization.
+3. **Multimodal document AI**
+   - Finance, science, industrial documentation, e-commerce, insurance, education.
+4. **Trustworthy domain AI**
+   - Healthcare, finance, public services, cybersecurity, safety-critical applications.
+5. **Multilingual NLP**
+   - Global products, cross-border commerce, translation, content understanding.
+
+**More volatile paths**
+
+- generic prompt engineering;
+- benchmark-only chatbot tuning;
+- undifferentiated agent wrappers;
+- research requiring permanent access to proprietary frontier models;
+- narrow work around one commercial API.
+
+Industrial-research scientist roles usually expect a strong publication and experimentation record. Applied-scientist and advanced-R&D roles may place greater weight on engineering, system design, data, and deployment. Your programming strength provides a good base for both, but the PhD application must demonstrate that you can formulate and test research hypotheses rather than only build software.
+
+---
+
+## 7. Immigration and post-study work considerations
+
+Citizenship is unspecified, so no visa or fellowship eligibility should be assumed. Security screening, export-control rules, nationality-specific processing, and access to some sensitive research may also affect certain applicants.
+
+### United States
+
+F-1 students in eligible STEM programs may generally use:
+
+- up to 12 months of Optional Practical Training;
+- a possible 24-month STEM extension, subject to program, employer, and regulatory requirements [42].
+
+Long-term employment often requires transition to H-1B or another status, and ordinary cap-subject H-1B selection is uncertain. Universities and some research organizations may be cap-exempt. Immigration rules can change before graduation.
+
+### Canada
+
+Eligible graduates may obtain a Post-Graduation Work Permit, with doctoral graduates often qualifying for a permit of up to three years depending on current rules and program eligibility [43]. Permanent-residence pathways are policy-dependent and should not be treated as guaranteed.
+
+### United Kingdom
+
+The Graduate Route currently provides three years after completion of a PhD or other doctoral qualification [44]. A later transition to a sponsored work route is normally necessary. Recheck the rule near graduation because UK immigration policy changes frequently.
+
+### Germany
+
+Graduates of German universities can generally apply for a residence period of up to 18 months to seek qualified employment [45]. German ability expands the job market even where the doctorate itself is conducted in English.
+
+### Netherlands
+
+The Dutch orientation-year permit allows eligible graduates and researchers a period to seek employment or start a business [46]. Salary thresholds and eligibility dates should be verified when applying.
+
+### Switzerland
+
+Non-EU/EFTA graduates face more restrictive labor-market rules than EU/EFTA citizens. A limited job-search period is available, but employer sponsorship and labor-market conditions matter [47]. Switzerland is excellent for doctoral employment but less predictable for long-term residence if citizenship is outside the EU/EFTA area.
+
+### Hong Kong
+
+The Immigration Arrangements for Non-local Graduates permit eligible recent graduates to remain or return for employment under current IANG rules [48]. Exact duration and documentary requirements should be confirmed for the graduation year.
+
+### Singapore
+
+A Student’s Pass does not itself provide a broad post-study work entitlement. Graduates normally need an employer-sponsored Employment Pass or S Pass, subject to salary and eligibility rules [49].
+
+### Japan and South Korea
+
+Graduates may normally change to a job-seeking or employment-related residence status under country-specific rules. Local-language ability materially improves the range of qualifying employers. Check the Japanese Immigration Services Agency and Korean immigration portal for the rules current at graduation [50].
+
+---
+
+## 8. Application requirements and how your profile will be evaluated
+
+### 8.1 Degree eligibility
+
+- **US:** recognized bachelor’s equivalent normally sufficient.
+- **Canada:** bachelor’s direct entry exists at some institutions; Toronto explicitly provides it for international applicants [15]. Others may prefer a master’s.
+- **UK:** bachelor’s eligibility is possible in some cases, but successful applicants often have a master’s or substantial thesis research.
+- **Continental Europe:** a relevant master’s is normally required.
+- **Singapore/Hong Kong:** bachelor’s entry is commonly available.
+- **Japan:** doctorate normally follows a master’s.
+- **South Korea:** integrated MS/PhD routes can admit bachelor’s graduates.
+- **Mainland China:** direct or integrated routes exist but differ by institution and applicant category.
+
+If your graduation date makes a European master’s necessary, a research-focused master’s can be a strategically useful bridge rather than a delay.
+
+### 8.2 GPA and class rank
+
+“Excellent academic performance” must be converted into evidence:
+
+- cumulative GPA and grading scale;
+- major GPA;
+- class rank or percentile;
+- scholarship selection criteria;
+- grades in mathematics, algorithms, ML, systems, and advanced CS;
+- course difficulty;
+- any institutional explanation of grading.
+
+If your university does not issue rank, ask whether the department can provide a percentile statement or whether a recommender can contextualize your performance.
+
+### 8.3 Mathematics
+
+A strong programming profile does not compensate fully for weak mathematical preparation. At minimum, your transcript or portfolio should demonstrate:
+
+- linear algebra;
+- multivariable calculus;
+- probability;
+- mathematical statistics;
+- optimization;
+- discrete mathematics;
+- algorithms and complexity.
+
+For efficient LLM research, add:
+
+- numerical linear algebra;
+- numerical optimization;
+- parallel computing;
+- computer architecture;
+- operating systems;
+- distributed systems.
+
+For trustworthy AI, add:
+
+- statistical inference;
+- experimental design;
+- uncertainty and calibration;
+- ideally causal inference.
+
+### 8.4 Research and publications
+
+Publications are not universally required, especially for bachelor’s-entry North American programs. However, committees need evidence that you understand research as more than implementation.
+
+Useful evidence includes:
+
+- sustained work with a faculty supervisor;
+- a technically serious replication;
+- a thesis or research report;
+- negative-result analysis;
+- a benchmark or dataset with careful documentation;
+- an open-source contribution involving design or experiments;
+- a preprint with credible advisor involvement;
+- strong recommendation letters describing research independence.
+
+A polished but unpublished paper can be sufficient if recommenders explain its quality and your contribution.
+
+### 8.5 Programming portfolio
+
+A strong portfolio should contain only a few serious projects. Each flagship repository should include:
+
+- clear problem statement and research hypothesis;
+- reproducible environment;
+- training and evaluation scripts;
+- dataset sources and licenses;
+- fixed seeds and configuration files;
+- baseline implementations;
+- ablation studies;
+- error analysis;
+- latency, memory, and cost measurements;
+- model cards or data documentation;
+- limitations and ethical considerations;
+- concise technical report.
+
+Avoid presenting many tutorial-level repositories as equivalent to research.
+
+### 8.6 Standardized tests
+
+- **GRE:** policies vary. Many US departments no longer require it, but this must be checked for each cycle. Toronto strongly encourages, but does not require, the GRE for applicants without a Canadian degree [15].
+- **TOEFL/IELTS:** thresholds and waiver rules vary by university and the language of prior instruction. Stanford suggests completing English testing by October 2026 so scores arrive before its December deadline [9].
+- **Local language:** normally unnecessary for English-language AI PhDs in continental Europe, Singapore, Hong Kong, Japan, and South Korea, but there are program-specific exceptions.
+
+Do not take the GRE automatically. Take it only if:
+
+- a target requires it;
+- Toronto or another target strongly encourages it;
+- a high quantitative score would help compensate for unclear grading or limited formal mathematics.
+
+### 8.7 Recommendations
+
+Most programs request three letters. The ideal combination is:
+
+1. research supervisor who can assess originality and independence;
+2. advanced-course professor who can assess mathematical and technical strength;
+3. second research, project, or systems mentor.
+
+A famous but generic letter is weaker than a detailed letter from someone who supervised real work.
+
+Give recommenders:
+
+- CV;
+- transcript;
+- draft statement;
+- project report;
+- list of programs and deadlines;
+- short summary of your contributions;
+- reminders six, three, and one week before each deadline.
+
+### 8.8 Statement of purpose and research proposal
+
+A North American statement should explain:
+
+- the problems you want to study;
+- why they matter;
+- what you have already done;
+- what you learned from failures;
+- why two or three faculty or groups fit;
+- why the program’s structure supports your development.
+
+Do not write a long autobiography or claim that “AI will change the world.” Demonstrate research judgment.
+
+European and some Asian applications may require a more concrete proposal:
+
+- research question;
+- relation to prior literature;
+- proposed method;
+- data and evaluation;
+- expected contribution;
+- feasibility and risks.
+
+A proposal is not a permanent contract. Its purpose is to show that you can identify a tractable, meaningful problem.
+
+---
+
+## 9. Funding strategy
+
+### What “fully funded” should mean
+
+A satisfactory package should normally include:
+
+- full tuition waiver or direct payment;
+- stipend or salary for the expected duration;
+- health insurance or access to national coverage;
+- clear summer support;
+- reasonable teaching obligations;
+- research-computing support;
+- conference funding;
+- written renewal conditions.
+
+### Funding mechanisms
+
+**United States**
+
+- departmental fellowship;
+- research assistantship;
+- teaching assistantship;
+- university-wide fellowship;
+- external fellowship.
+
+The NSF Graduate Research Fellowship generally requires US citizenship, nationality, or permanent residence and therefore should not be assumed available to an international applicant [51].
+
+**Canada**
+
+- university funding package;
+- RA and TA support;
+- provincial or national awards, many with citizenship restrictions;
+- supervisor grants;
+- institute-linked awards such as those connected with Vector or Mila.
+
+**United Kingdom**
+
+- UKRI doctoral-training studentships;
+- university scholarships;
+- Clarendon, Gates Cambridge, or institution-specific schemes;
+- project studentships;
+- industrial CASE-style support.
+
+International applicants must verify whether both the stipend and the full international fee are covered. UKRI publishes current studentship guidance and minimum stipend information [52].
+
+**Continental Europe**
+
+- salaried doctoral employment;
+- grant-funded project position;
+- Marie Skłodowska-Curie Doctoral Network;
+- university fellowship;
+- national research-agency scholarship.
+
+**Asia**
+
+- NUS/NTU research scholarships;
+- A*STAR awards;
+- Hong Kong PhD Fellowship Scheme;
+- MEXT;
+- Korean university or government awards;
+- Chinese Government Scholarship and university scholarships.
+
+Read scholarship conditions for:
+
+- service obligations or bonds;
+- restrictions on internships;
+- repayment clauses;
+- outside-employment limitations;
+- intellectual-property rules;
+- country-of-return conditions.
+
+---
+
+## 10. Preliminary reach/match/risk-reduction framework
+
+There is no genuine “safe” fully funded AI PhD. Admission depends on research fit, faculty capacity, funding, letters, and the applicant pool. Even Toronto reports only a 5–10% offer rate [15].
+
+### Bucket A: high-variance aspirational programs
+
+Use approximately four to six applications from this category:
+
+- Stanford CS;
+- Carnegie Mellon MLD or LTI;
+- UC Berkeley EECS;
+- University of Toronto direct-entry PhD;
+- Oxford or Cambridge;
+- ETH Zürich or EPFL;
+- NUS.
+
+These become more plausible if you have:
+
+- top 5–10% class standing;
+- strong advanced mathematics;
+- sustained faculty-supervised research;
+- an excellent technical report or credible publication;
+- detailed research letters;
+- clear fit with multiple faculty.
+
+### Bucket B: highly competitive but potentially strong fit
+
+Use approximately six to eight:
+
+- UMass Amherst;
+- UIUC;
+- Georgia Tech;
+- University of Washington;
+- UBC;
+- McGill or Université de Montréal through Mila;
+- Waterloo;
+- Edinburgh;
+- Saarland;
+- TU Darmstadt;
+- University of Amsterdam;
+- TUM;
+- NTU;
+- HKUST or CUHK;
+- KAIST.
+
+These are not “easy.” They may be better targets than a more famous institution if several faculty align with your specific research question.
+
+### Bucket C: risk-reducing applications
+
+Use approximately three to five:
+
+- funded project vacancies in Germany;
+- salaried Dutch PhD positions;
+- Inria or French doctoral contracts;
+- Nordic salaried positions;
+- a research master’s leading to PhD;
+- strong Asian programs where a supervisor has confirmed funding and close fit;
+- a strong domestic research master’s or direct PhD as a contingency.
+
+Risk reduction should come from:
+
+- broader supervisor coverage;
+- confirmed project funding;
+- multiple application cycles;
+- including research-master’s options;
+- geographic diversification.
+
+It should not come from accepting an unfunded doctorate or choosing a weak supervisor solely because admission appears easier.
+
+### How to recalibrate the buckets
+
+| Missing information | Effect on shortlist |
+|---|---|
+| Exact university | Determines how international committees interpret grading and recommendations |
+| GPA and rank | Strongly affects direct-entry programs |
+| Graduation date | Determines whether 2027 is realistic or 2028 is preferable |
+| Mathematics courses | Determines readiness for ML/efficient-model research |
+| Research duration | Affects whether direct PhD or research master’s is wiser |
+| Publications/writing sample | Affects high-variance targets, but absence is not fatal |
+| Citizenship | Changes fellowship and immigration options |
+| English scores | Can remove programs from consideration if deadlines are missed |
+| Budget | Determines whether UK fee gaps or high-cost cities are viable |
+| Geographic preferences | Changes internship and immigration weighting |
+| Desired topic | Determines the actual supervisor shortlist |
+
+### Suggested final application portfolio
+
+If your profile proves to be top-decile academically with credible research:
+
+- 4–5 aspirational North American programs;
+- 4–5 fit-driven North American programs;
+- 3–5 European programs or funded vacancies;
+- 3–4 Asian programs;
+- 1–3 research-master’s or domestic contingencies.
+
+If research evidence remains limited by mid-2027:
+
+- reduce high-variance direct PhDs;
+- increase research master’s and funded RA options;
+- target 2028 rather than submitting weak 2027 applications;
+- preserve only a small number of 2027 applications where faculty fit is unusually strong.
+
+---
+
+## 11. Deadlines for 2027–2028 entry
+
+### Confirmed dates
+
+| Program/award | Confirmed date | Status |
+|---|---:|---|
+| Stanford CS PhD, Autumn 2027 | **December 8, 2026** | Confirmed [9] |
+| Stanford Knight-Hennessy, 2027 cohort | **October 6, 2026, 1 p.m. PT** | Confirmed [9] |
+| UBC CS PhD application opening | **September 15, 2026** | Confirmed on retrieved program page [17] |
+| UBC CS PhD Canadian/international deadline | **December 15, 2026** | Confirmed on retrieved program page; associated entry term should be rechecked [17] |
+
+### Estimates requiring verification
+
+| Destination/program type | Likely window | Confidence |
+|---|---|---|
+| Most US Fall 2027 CS PhDs | November–December 2026 | Typical pattern, not confirmed program by program |
+| Canadian September 2027 entry | November 2026–January 2027 | Typical pattern |
+| UK October 2027 entry and major scholarships | December 2026–January 2027 | Typical pattern |
+| EPFL/Swiss doctoral schools | Late 2026 and/or spring 2027 rounds | Program-specific |
+| Germany/Netherlands/France/Nordics | Rolling project vacancies throughout 2026–2028 | Position-specific |
+| Singapore August 2027 entry | Late 2026 to early 2027 | Program-specific |
+| Hong Kong 2027 entry/HKPFS | Typically early December 2026 | Must verify annually |
+| Japan April/October 2027 | Multiple university and scholarship calendars | Highly program-specific |
+| South Korea spring/fall entry | Usually several months before entry | Institution-specific |
+| Fall 2028 North American entry | Usually November–December 2027 | Estimated from normal annual cycles |
+
+Given the current date, the critical decision is:
+
+- **Apply for 2027 only if the core dossier is already substantially ready by October 2026.**
+- Otherwise, use the next year to build research depth and target 2028.
+
+---
+
+## 12. Phased preparation and application plan
+
+## 12.1 Next 0–3 months: September–December 2026
+
+### Decision point: 2027 versus 2028
+
+By **October 1, 2026**, answer:
+
+- What is the expected graduation date?
+- What is the exact cumulative and major GPA?
+- Is rank or percentile available?
+- Which math and systems courses appear on the transcript?
+- Is there a faculty member who can write a detailed research letter?
+- Is there already one project that could serve as a writing sample?
+- Can English scores be completed before deadlines?
+
+If at least four of the following are missing—research supervisor, research report, two strong academic letters, English score, transcript clarity, focused research statement—2028 should be the primary cycle.
+
+### Academic diagnostic
+
+Complete a two-week diagnostic:
+
+- linear algebra: eigenvalues, SVD, projections, matrix calculus;
+- probability: conditional probability, expectation, variance, Bayes rule;
+- statistics: estimation, confidence intervals, hypothesis testing;
+- optimization: gradients, convexity, SGD/Adam, regularization;
+- algorithms: graph algorithms, complexity, dynamic programming;
+- ML: bias–variance, generalization, loss functions, evaluation;
+- systems: memory hierarchy, parallelism, operating systems, networks.
+
+Produce a one-page gap table with:
+
+- topic;
+- current level;
+- evidence;
+- required level;
+- course or textbook;
+- completion date.
+
+### Project selection
+
+Choose one flagship project, preferably:
+
+**Option A: Robust bilingual RAG**
+
+- Chinese and English document corpus;
+- BM25, dense, and hybrid retrieval;
+- reranking;
+- query perturbation tests;
+- answer citation verification;
+- latency and memory analysis.
+
+**Option B: Efficient domain adaptation**
+
+- one open 7B–14B model;
+- full baseline on a smaller model;
+- LoRA and QLoRA;
+- 4-bit/8-bit inference;
+- data-quality ablations;
+- accuracy, memory, throughput, and calibration.
+
+**Option C: Multimodal document QA**
+
+- text, tables, and images;
+- retrieval baseline;
+- layout-aware or multimodal retriever;
+- grounded answer generation;
+- evidence and hallucination evaluation.
+
+### Measurable milestones by December 31, 2026
+
+- Read and annotate **15–20 papers**.
+- Reproduce at least **two published baselines**.
+- Create one clean repository with automated setup.
+- Produce initial error categories.
+- Identify **10–15 potential supervisors**.
+- Obtain exact transcript, grading scale, and scholarship documentation.
+- Draft a two-page research statement.
+- If applying in 2027, submit all applications before their confirmed deadlines.
+
+## 12.2 Months 3–6: December 2026–March 2027
+
+### Mathematics and systems
+
+Complete or audit:
+
+- one rigorous probability/statistics course;
+- one optimization or numerical linear algebra course;
+- one advanced ML/deep-learning course;
+- one systems course if efficient models are a target.
+
+Each course should produce visible evidence:
+
+- problem sets;
+- code;
+- concise technical notes;
+- one implementation from first principles.
+
+### Research development
+
+Turn the project from a demonstration into a study:
+
+1. Define one primary hypothesis.
+2. Select strong baselines.
+3. Pre-register the main evaluation plan in the repository.
+4. Run controlled ablations.
+5. Use multiple random seeds where training variance matters.
+6. Report confidence intervals where appropriate.
+7. Include negative results.
+8. Conduct qualitative error analysis.
+
+### Research-assistant search
+
+Contact local faculty first. A good message should include:
+
+- one-sentence introduction;
+- relevant course/project background;
+- one specific connection to the professor’s work;
+- concrete offer of 8–12 hours per week;
+- link to one polished repository;
+- attached one-page CV.
+
+Do not send generic mass email. Target five to eight faculty members or research groups over several weeks.
+
+### Milestones by March 31, 2027
+
+- One faculty-supervised or mentor-reviewed project.
+- A stable dataset and evaluation pipeline.
+- At least three competitive baselines.
+- One 4–6 page internal report.
+- One meaningful open-source pull request or documented issue resolution.
+- A shortlist of 20 programs narrowed to approximately 12–16.
+
+## 12.3 Months 6–12: March–September 2027
+
+### Research output
+
+By June:
+
+- complete the main experiments;
+- create tables and figures;
+- write limitations and ethical considerations;
+- have a supervisor review the draft.
+
+By August:
+
+- produce a full 6–10 page paper-style report;
+- release reproducible code where licensing allows;
+- submit only if the contribution is ready for a credible venue;
+- otherwise preserve it as a strong writing sample and continue improving it.
+
+### Publication strategy
+
+Potential routes include:
+
+- ACL/EMNLP/NAACL main or Findings;
+- SIGIR/CIKM/WSDM for retrieval;
+- MLSys or an established efficiency workshop;
+- ACL Student Research Workshop;
+- system demonstration;
+- a reputable domain workshop.
+
+A rejection from a strong venue can still produce useful reviews. Do not redirect weak work to a low-quality venue merely to claim a publication.
+
+### Open-source work
+
+Target projects such as:
+
+- Hugging Face Transformers or Datasets;
+- PyTorch;
+- vLLM;
+- llama.cpp;
+- FAISS;
+- Anserini/Pyserini;
+- benchmark repositories relevant to your project.
+
+A meaningful contribution includes tests, profiling, documentation of a difficult feature, performance improvement, or bug diagnosis—not merely a typo correction.
+
+### Internship and summer preparation
+
+Prepare for research or applied-science internships by practicing:
+
+- algorithms and data structures;
+- PyTorch implementation;
+- model debugging;
+- probability/statistics questions;
+- ML system design;
+- explanation of your research decisions;
+- coding under time constraints.
+
+Competitions should be used only if they contribute:
+
+- a relevant dataset;
+- team collaboration;
+- reproducible experimentation;
+- a top result that can be credibly explained.
+
+Do not allow competitions to replace supervised research.
+
+### Program research
+
+For each target, record:
+
+- three potentially aligned faculty;
+- whether at least two appear to be recruiting;
+- current students’ publication venues;
+- recent student internships;
+- available compute;
+- funding duration;
+- tuition and fees;
+- internship policy;
+- graduation time;
+- placement outcomes;
+- visa implications.
+
+### Milestones by September 2027
+
+- One complete research writing sample.
+- Two or three recommenders confirmed.
+- English score completed.
+- GRE completed only if strategically useful.
+- Final 12–18 application portfolio.
+- Draft SOP tailored to each research cluster.
+- Spreadsheet containing every document and deadline.
+
+## 12.4 Months 12–24: September 2027–September 2028
+
+### September–December 2027: main 2028 application season
+
+Weekly priorities:
+
+- 35% application writing and tailoring;
+- 25% continuing research;
+- 15% recommender coordination;
+- 10% faculty/program verification;
+- 10% interview preparation;
+- 5% scholarship and visa documentation.
+
+Complete applications at least seven days before deadlines.
+
+For each application:
+
+- name only faculty with genuine research overlap;
+- explain a research connection rather than praising prestige;
+- tailor the statement to program structure;
+- upload a concise portfolio index;
+- verify transcript translation and grading-scale documentation;
+- confirm English-score receipt;
+- submit fellowship applications separately where necessary.
+
+### January–April 2028: interviews and decisions
+
+Prepare a five-minute and a fifteen-minute research explanation covering:
+
+- problem;
+- why it matters;
+- prior work;
+- method;
+- your exact contribution;
+- results;
+- failure modes;
+- next experiment.
+
+Practice questions such as:
+
+- Why is this result not an artifact?
+- What baseline is missing?
+- What would you do with ten times more compute?
+- What would you do with one-tenth the compute?
+- How would you test generalization?
+- Why this laboratory?
+- What if the proposed topic fails?
+
+### Offer comparison
+
+Evaluate offers using a weighted rubric:
+
+| Factor | Suggested importance |
+|---|---:|
+| Supervisor fit and availability | 25% |
+| Student outcomes and advising quality | 15% |
+| Research resources and compute | 15% |
+| Funding security and net cost | 15% |
+| Internship and industry links | 10% |
+| Ability to change supervisor/topic | 5% |
+| Publication and conference support | 5% |
+| Local employment/immigration environment | 5% |
+| Personal and geographic fit | 5% |
+
+Before accepting, speak privately with at least two current students and, where possible, one recent graduate. Ask about:
+
+- meeting frequency;
+- feedback turnaround;
+- authorship norms;
+- expected work hours;
+- funding stability;
+- internship approval;
+- graduation expectations;
+- students who changed advisors;
+- treatment of negative results;
+- placement support.
+
+### If no satisfactory offer arrives
+
+Use one of these paths:
+
+1. research assistantship for 6–12 months;
+2. research-focused master’s with thesis;
+3. industrial ML engineering role while maintaining supervised research;
+4. additional application cycle with a stronger paper and letters;
+5. domestic graduate program with a substantially better supervisor fit.
+
+Do not start an unfunded or poorly supervised PhD solely to avoid waiting.
+
+---
+
+## 13. Recommended weekly routine
+
+For a normal academic term, target **12–16 focused hours per week** beyond required coursework:
+
+- **4 hours:** mathematics and theory;
+- **5–6 hours:** experiments and implementation;
+- **2 hours:** paper reading and notes;
+- **1–2 hours:** writing and figures;
+- **1 hour:** advisor/RA/outreach work;
+- **1 hour:** open-source contribution or systems profiling.
+
+Use a monthly research review:
+
+- What hypothesis was tested?
+- What result changed your belief?
+- What failed?
+- What is the next decisive experiment?
+- Is the work still publishable and feasible?
+- Is the repository reproducible by someone else?
+
+---
+
+## 14. Contingency plans for common gaps
+
+### If you have no publication
+
+Do not panic. Replace the missing publication with:
+
+- one excellent faculty-supervised report;
+- reproducible code;
+- a clear research question;
+- strong experimental design;
+- detailed recommendation letters;
+- evidence that a submission is in preparation, without overstating its status.
+
+### If formal mathematics is weak
+
+Over the next two semesters:
+
+1. take graded linear algebra and probability/statistics;
+2. add optimization;
+3. solve written exercises, not only watch lectures;
+4. implement key methods from first principles;
+5. ask a professor from one of these courses for a letter only if performance is exceptional.
+
+Avoid describing yourself as mathematically strong without transcript or work-product evidence.
+
+### If compute is limited
+
+Choose:
+
+- retrieval and reranking;
+- evaluation and robustness;
+- small-model distillation;
+- LoRA/QLoRA;
+- data quality and sampling;
+- efficient inference;
+- multilingual/domain datasets;
+- benchmarking and error analysis.
+
+Do not compete with industrial laboratories on raw model scale.
+
+### If faculty-supervised research is unavailable locally
+
+- seek cross-department collaborators;
+- contact laboratories at nearby universities;
+- apply to summer research programs;
+- contribute to a research-grade open-source project;
+- reproduce a recent paper and send a concise technical report to its authors;
+- consider a research master’s before PhD applications.
+
+### If English testing is a risk
+
+- take a diagnostic immediately;
+- schedule the first official test early enough for a retake;
+- practice technical speaking and research explanation, not only test templates;
+- verify each university’s waiver and score-validity rules.
+
+### If budget is restrictive
+
+Prioritize:
+
+- fully funded US/Canadian offers;
+- salaried continental-European positions;
+- Hong Kong, Singapore, Japanese, or Korean scholarships;
+- application-fee waivers where available;
+- programs that fund conference travel and health insurance.
+
+Treat an unfunded UK or North American doctorate as financially unsuitable unless you have independently decided that the full cost is affordable.
+
+---
+
+## Final recommendation
+
+The highest-value strategy is to build a coherent profile around:
+
+> **Efficient and trustworthy retrieval-grounded NLP, with multilingual or multimodal document applications.**
+
+During the next year, the primary goal should be one research-grade project rather than many disconnected activities. The project should combine:
+
+- a meaningful hypothesis;
+- strong retrieval or adaptation baselines;
+- efficient implementation;
+- robustness and error analysis;
+- reproducible code;
+- a credible technical paper.
+
+For program selection, prioritize supervisor clusters rather than rankings:
+
+- **North America:** Stanford, CMU, UMass Amherst, UIUC, Washington, Toronto, UBC, and Mila-affiliated programs.
+- **Europe:** Edinburgh, Oxford, Cambridge, ETH, EPFL, Saarland, TU Darmstadt, TUM, UvA, and funded Inria/Nordic vacancies.
+- **Asia:** NUS, NTU, HKUST, CUHK, KAIST, SNU, University of Tokyo/RIKEN, and appropriate leading mainland programs.
+
+If your exact profile reveals a very high class rank, rigorous mathematics, strong letters, and a credible research paper, expand the aspirational direct-entry PhD set. If research and mathematics remain undocumented, a research assistantship or thesis-based master’s followed by 2028 applications will probably produce better outcomes than rushing an underdeveloped 2027 application.
+
+## Sources
+
+[1] Lightcast, “The Stanford AI Index 2026”: https://lightcast.io/resources/research/stanford-ai-index-2026
+
+[2] U.S. Bureau of Labor Statistics, “Computer and Information Research Scientists”: https://www.bls.gov/ooh/computer-and-information-technology/computer-and-information-research-scientists.htm
+
+[3] Association for Computational Linguistics, “ACL 2026”: https://2026.aclweb.org/
+
+[4] EMNLP 2026, “Accepted Findings Papers”: https://2026.emnlp.org/program/find_papers/
+
+[5] ACL Anthology, “Ask in Any Modality: A Comprehensive Survey on Multimodal Retrieval-Augmented Generation”: https://aclanthology.org/2025.findings-acl.861/
+
+[6] ACL Anthology, “Investigating the Robustness of Retrieval-Augmented Generation at the Query Level”: https://aclanthology.org/2025.gem-1.38/
+
+[7] Dettmers et al., “QLoRA: Efficient Finetuning of Quantized LLMs”: https://arxiv.org/abs/2305.14314
+
+[8] Stanford Computer Science, “PhD Admissions”: https://www.cs.stanford.edu/admissions/phd-admissions
+
+[9] Stanford Computer Science, “Graduate Application Deadlines”: https://www.cs.stanford.edu/admissions-graduate-application-deadlines
+
+[10] Stanford NLP Group: https://nlp.stanford.edu/
+
+[11] Carnegie Mellon University, “Ph.D. Program in Machine Learning”: https://ml.cmu.edu/academics/machine-learning-phd
+
+[12] Carnegie Mellon University, Language Technologies Institute: https://www.lti.cs.cmu.edu/
+
+[13] University of Washington Paul G. Allen School, “Ph.D. Admissions”: https://www.cs.washington.edu/academics/graduate/phd-program/phd-admissions/
+
+[14] University of Massachusetts Amherst, “PhD in Computer Science”: https://www.umass.edu/graduate/academics/phd-computer-science
+
+[15] University of Toronto Computer Science, “Doctor of Philosophy”: https://web.cs.toronto.edu/graduate/phd
+
+[16] University of Toronto Computer Science, “Funding, Tuition Fees, and Awards”: https://web.cs.toronto.edu/graduate/funding-tuition-awards
+
+[17] University of British Columbia, “PhD in Computer Science”: https://www.grad.ubc.ca/prospective-students/graduate-degree-programs/phd-computer-science
+
+[18] University of British Columbia Computer Science, “Graduate Admissions”: https://www.cs.ubc.ca/students/grad/admissions
+
+[19] Mila, Faculty and Research Directory: https://mila.quebec/en/directory
+
+[20] University of Oxford, “DPhil in Computer Science”: https://www.ox.ac.uk/admissions/graduate/courses/dphil-computer-science
+
+[21] University of Edinburgh School of Informatics, “PhD and Research Degrees”: https://informatics.ed.ac.uk/postgraduate/research-degrees/phd
+
+[22] University of Edinburgh, Institute for Language, Cognition and Computation: https://web.inf.ed.ac.uk/ilcc
+
+[23] University of Cambridge, “PhD in Computer Science”: https://www.postgraduate.study.cam.ac.uk/courses/directory/cscspdpcs
+
+[24] ETH Zürich, “Doctorate”: https://ethz.ch/en/doctorate.html
+
+[25] EPFL, “EDIC—Computer and Communication Sciences”: https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/
+
+[26] Saarland Informatics Campus, Graduate School of Computer Science: https://www.graduateschool-computerscience.de/
+
+[27] Technical University of Munich, “Doctoral Studies”: https://www.tum.de/en/research/doctoral-studies
+
+[28] TU Darmstadt, UKP Lab: https://www.ukp.tu-darmstadt.de/
+
+[29] University of Amsterdam, “Doctoral Programme”: https://www.uva.nl/en/research/phd/doctoral-programme/doctoral-programme.html
+
+[30] Inria, Research and Doctoral Job Vacancies: https://jobs.inria.fr/public/classic/en/offres
+
+[31] National University of Singapore School of Computing, “PhD in Computer Science”: https://www.comp.nus.edu.sg/programmes/pg/phdcs/
+
+[32] NUS Graduate School, “NUS Research Scholarship”: https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship/
+
+[33] Nanyang Technological University, “Doctor of Philosophy Programme”: https://www.ntu.edu.sg/education/graduate-programme/doctor-of-philosophy-programme
+
+[34] Hong Kong University of Science and Technology, Department of Computer Science and Engineering: https://cse.hkust.edu.hk/
+
+[35] Hong Kong Research Grants Council, “Hong Kong PhD Fellowship Scheme”: https://cerg1.ugc.edu.hk/hkpfs/index.html
+
+[36] KAIST, International Graduate Admission: https://admission.kaist.ac.kr/intl-graduate/
+
+[37] Seoul National University, Graduate Admissions: https://en.snu.ac.kr/admission/graduate
+
+[38] University of Tokyo, Department of Computer Science: https://www.i.u-tokyo.ac.jp/edu/course/cs/index_e.shtml
+
+[39] Study in Japan, “MEXT Scholarships”: https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/
+
+[40] Tsinghua University, International Graduate Admissions: https://yz.tsinghua.edu.cn/en/
+
+[41] China Scholarship Council: https://www.csc.edu.cn/
+
+[42] U.S. Citizenship and Immigration Services, “Optional Practical Training Extension for STEM Students”: https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-extension-for-stem-students-stem-opt
+
+[43] Immigration, Refugees and Citizenship Canada, “Post-Graduation Work Permit”: https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/about.html
+
+[44] UK Government, “Graduate Visa”: https://www.gov.uk/graduate-visa
+
+[45] Make it in Germany, “Prospects after Graduation”: https://www.make-it-in-germany.com/en/study-vocational-training/studies-in-germany/prospects-after
+
+[46] Netherlands Immigration and Naturalisation Service, “Orientation Year”: https://ind.nl/en/residence-permits/work/residence-permit-for-orientation-year
+
+[47] Swiss State Secretariat for Migration, “Studying in Switzerland”: https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/auslaendische_studierende.html
+
+[48] Hong Kong Immigration Department, “Immigration Arrangements for Non-local Graduates”: https://www.immd.gov.hk/eng/services/visas/IANG.html
+
+[49] Singapore Ministry of Manpower, “Employment Pass”: https://www.mom.gov.sg/passes-and-permits/employment-pass
+
+[50] Immigration Services Agency of Japan, “Status of Residence”: https://www.moj.go.jp/isa/applications/status/index.html
+
+[51] National Science Foundation Graduate Research Fellowship Program, “Applicant Eligibility”: https://www.nsfgrfp.org/applicants/applicant-eligibility/
+
+[52] UK Research and Innovation, “Support for UKRI-Funded Students”: https://www.ukri.org/what-we-do/developing-people-and-skills/studentships/

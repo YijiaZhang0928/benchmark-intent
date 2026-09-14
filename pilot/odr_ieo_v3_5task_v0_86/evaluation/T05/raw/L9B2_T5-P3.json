@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T5-P3-01",
+      "score": 10,
+      "evidence_span": "1. Run a paid or deposit-backed concierge cohort of 30–50 learners.\n2. Measure activation, attendance, completion, learning gain, tutor usefulness, and payment.",
+      "rationale": "The first-90-days priorities explicitly put an early learner-facing product and measurement before the main build, with the subsequent Gate 1 decision requiring proceeding, revision, or pivoting."
+    },
+    {
+      "criterion_id": "T5-P3-02",
+      "score": 10,
+      "evidence_span": "Behavior matters more than stated intent:\n\n- Test three landing pages: AI literacy, coursework-safe workflows, and career projects.\n- Test monthly, annual, and cohort prices.\n- Ask for a refundable $10–$25 deposit.\n- Run a 30–50 learner concierge cohort before completing the platform.",
+      "rationale": "The research route explicitly prioritizes behavioral evidence from landing-page experiments, payment tests, and an early concierge cohort to inform development commitments."
+    },
+    {
+      "criterion_id": "T5-P3-03",
+      "score": 10,
+      "evidence_span": "Run a 30–50 learner concierge cohort before completing the platform.",
+      "rationale": "The concierge option has a concrete, checkable implementation property: exposing a bounded learner cohort to the offering before platform completion. This specifically supports early MVP validation rather than merely describing the option as fast."
+    },
+    {
+      "criterion_id": "T5-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report excludes broad platform features but provides no concrete fact about a named long, closed-door polished-build route."
+    },
+    {
+      "criterion_id": "T5-P3-05",
+      "score": 4,
+      "evidence_span": "Ships a narrow web MVP rather than a complete platform.",
+      "rationale": "This directly contrasts product scope, but it does not compare the routes on time to learner feedback, measurement, or another consequential common axis. The incomplete comparison is capped at 4."
+    },
+    {
+      "criterion_id": "T5-P3-06",
+      "score": 10,
+      "evidence_span": "**B2C subscriptions** for speed, direct feedback, and international reach.",
+      "rationale": "A named recommended option is explicitly selected for speed and direct feedback, establishing the required preference-specific causal reason."
+    },
+    {
+      "criterion_id": "T5-P3-07",
+      "score": 4,
+      "evidence_span": "Do not build a proprietary LMS or payment system in the first year.",
+      "rationale": "The report explicitly deprioritizes named build options, but does not state that their long, closed-door development would delay measurement or iteration. The causal selection reason is incomplete."
+    },
+    {
+      "criterion_id": "T5-P3-08",
+      "score": 10,
+      "evidence_span": "1. Run a paid or deposit-backed concierge cohort of 30–50 learners.\n2. Measure activation, attendance, completion, learning gain, tutor usefulness, and payment.",
+      "rationale": "These executable first-90-days actions specify the early product format, cohort size, payment condition, and measurements."
+    },
+    {
+      "criterion_id": "T5-P3-09",
+      "score": 10,
+      "evidence_span": "Do not scale paid acquisition if four-week retention or paid renewal remains weak.",
+      "rationale": "This establishes an explicit sequence rule: measure retention and renewal before scaling acquisition, withholding expansion when the evidence is weak."
+    },
+    {
+      "criterion_id": "T5-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition makes a long, closed-door polished build the preferred route. Launch safety gates do not establish that reversal."
+    },
+    {
+      "criterion_id": "T5-P3-11",
+      "score": 10,
+      "evidence_span": "Make a formal Gate 1 decision:\n\n   - **Proceed** if payment, learning engagement, pilot demand, and feasibility meet thresholds.\n   - **Revise** if interest exists but payment or retention is weak.\n   - **Stop or pivot** if the problem is infrequent, substitutes are sufficient, or legal and integrity risks overwhelm the value.",
+      "rationale": "Following the explicitly measured concierge cohort, the report maps specified evidence to proceeding, revising, or pivoting. This is a visible early-product measurement-to-action chain, not an inferred intention to iterate."
+    }
+  ]
+}

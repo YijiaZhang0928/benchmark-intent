@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "P6D4",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "1fcecd5b764a160bd1c62ddf33700197a7bce28cacfb91555302edaa7da5be90",
+  "rubric_sha256": "db88dbad3435309fe9d3e546cb085b23cde2dbeb62cf461e0957eaa7b61ccf05",
+  "started_at_utc": "2026-09-14T04:06:44.911021+00:00",
+  "completed_at_utc": "2026-09-14T04:12:01.510631+00:00",
+  "p_strict": 7.601672240802675,
+  "p_hi": 7.79,
+  "dimension_scores": {
+    "INTENT": 8.4,
+    "SOURCE": 7.6,
+    "EVIDENCE": 7.739130434782608,
+    "TRADEOFF": 5.913043478260869,
+    "DECISION": 7.565217391304348,
+    "ACTION": 9.2,
+    "TRACE": 7.538461538461539
+  },
+  "high_dimension_scores": {
+    "INTENT": 8.4,
+    "SOURCE": 7.6,
+    "EVIDENCE": 8.0,
+    "TRADEOFF": 6.2,
+    "DECISION": 7.8,
+    "ACTION": 9.2,
+    "TRACE": 8.0
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T8-P1-01",
+      "score": 10,
+      "evidence_span": "Da Nang offers the best balance of beach, resort quality, inexpensive dining, short local transfers, cultural variety, children’s activities, and restful pacing",
+      "rationale": "Explicitly treats balancing children's activities, rest, and other family needs as a destination-selection priority."
+    },
+    {
+      "criterion_id": "T8-P1-02",
+      "score": 8,
+      "evidence_span": "Before paying, obtain written answers to all of the following:\n\n- Are connecting rooms guaranteed, or only requested?\n- Is the entire route from vehicle drop-off to room, breakfast, pool, and beach step-free?",
+      "rationale": "Selects written property-level evidence about family room proximity and accessible shared facilities. This research route directly informs multigenerational balance, although its connection to shared interaction is not expressly explained."
+    },
+    {
+      "criterion_id": "T8-P1-03",
+      "score": 10,
+      "evidence_span": "This is the best area for most multigenerational groups because older adults can rest at the hotel while the rest of the family reaches restaurants, the beach, cafés, or a pool without a long drive.",
+      "rationale": "For My Khe and Bac My An, identifies nearby amenities as a concrete feature permitting older adults to rest while other family members remain active."
+    },
+    {
+      "criterion_id": "T8-P1-04",
+      "score": 10,
+      "evidence_span": "Cham Island can be attractive in July, but speedboat boarding and sea motion make it inappropriate as a compulsory whole-family activity. Only the active subgroup should go",
+      "rationale": "Names an option, identifies concrete physical demands, and explicitly assigns it to the active subgroup rather than the entire family."
+    },
+    {
+      "criterion_id": "T8-P1-05",
+      "score": 10,
+      "evidence_span": "Cham Island can be attractive in July, but speedboat boarding and sea motion make it inappropriate as a compulsory whole-family activity. Only the active subgroup should go",
+      "rationale": "Directly contrasts compulsory whole-family participation with an active-subgroup excursion on the common axis of boarding and motion tolerance, changing who should participate."
+    },
+    {
+      "criterion_id": "T8-P1-06",
+      "score": 10,
+      "evidence_span": "This is the best area for most multigenerational groups because older adults can rest at the hotel while the rest of the family reaches restaurants, the beach, cafés, or a pool without a long drive.",
+      "rationale": "Explicitly recommends My Khe and Bac My An because their location accommodates older adults' rest and other family members' activities simultaneously."
+    },
+    {
+      "criterion_id": "T8-P1-07",
+      "score": 10,
+      "evidence_span": "Cham Island can be attractive in July, but speedboat boarding and sea motion make it inappropriate as a compulsory whole-family activity. Only the active subgroup should go",
+      "rationale": "Downgrades an otherwise attractive named excursion from whole-family programming to an optional subgroup activity because its demands fit active travelers rather than the full group."
+    },
+    {
+      "criterion_id": "T8-P1-08",
+      "score": 10,
+      "evidence_span": "### Older-adult alternative\n\n- Sleep later.\n- Slow breakfast.\n- Short shaded walk.\n- Spa, poolside rest, or café lunch.\n- Rejoin the group for dinner.",
+      "rationale": "Provides executable rest-oriented activities for older adults and an explicit dinner reunion after the active group's Ba Na Hills excursion."
+    },
+    {
+      "criterion_id": "T8-P1-09",
+      "score": 10,
+      "evidence_span": "- Beach from **07:00–09:00**.\n- Children and active adults: short paddleboarding lesson or other hotel-supervised water activity.\n- Older adults: shaded beachfront breakfast or poolside rest.\n- Midday rest from **12:00–15:30**.\n- Final sunset beach time.\n- Celebration dinner.",
+      "rationale": "Defines a usable sequence and timed allocation that accommodates active and resting subgroups, followed by common evening activities."
+    },
+    {
+      "criterion_id": "T8-P1-10",
+      "score": 4,
+      "evidence_span": "Choose **Yalong Bay, Sanya** instead when:\n\n- Visa or passport uncertainty makes an international trip risky.\n- An older traveler needs the simplest possible journey and Chinese-language care.",
+      "rationale": "Gives a concrete condition under which older-traveler needs change the destination choice. However, it does not explicitly establish that optimizing for that subgroup becomes preferable to family balance; Sanya remains presented as a balanced family alternative."
+    },
+    {
+      "criterion_id": "T8-P1-11",
+      "score": 10,
+      "evidence_span": "This is the best area for most multigenerational groups because older adults can rest at the hotel while the rest of the family reaches restaurants, the beach, cafés, or a pool without a long drive.",
+      "rationale": "Provides a visible chain from multigenerational balance, through nearby amenities that accommodate simultaneous rest and activity, to recommending My Khe and Bac My An."
+    },
+    {
+      "criterion_id": "T8-P2-01",
+      "score": 10,
+      "evidence_span": "Best for groups prioritizing:\n\n- Restaurants within walking distance.\n- A short airport transfer.\n- Easy taxi access.\n- Pharmacies, shops, and city medical facilities.",
+      "rationale": "Explicitly identifies convenient transport, nearby dining, and nearby services as priorities for choosing the family’s beach area."
+    },
+    {
+      "criterion_id": "T8-P2-02",
+      "score": 10,
+      "evidence_span": "Before booking, contact the hotel and ask for specific photographs or measurements rather than accepting a generic “accessible” label.",
+      "rationale": "Selects direct hotel photographs and measurements as evidence for verifying practical accessibility and convenient family logistics."
+    },
+    {
+      "criterion_id": "T8-P2-03",
+      "score": 10,
+      "evidence_span": "**Airport to My Khe:** approximately 15–25 minutes in normal traffic.",
+      "rationale": "Provides a concrete, verifiable transfer-time estimate for a named accommodation area."
+    },
+    {
+      "criterion_id": "T8-P2-04",
+      "score": 10,
+      "evidence_span": "Gulangyu is car-free; visitors walk or use limited electric carts [8].",
+      "rationale": "Identifies a sourced transport constraint for a named option that creates higher-friction sightseeing logistics."
+    },
+    {
+      "criterion_id": "T8-P2-05",
+      "score": 10,
+      "evidence_span": "For mobility-limited travelers, a private van is much easier than splitting among motorcycles or small taxis.",
+      "rationale": "Directly compares coordinated group transport with fragmented motorcycle or taxi travel on the common axis of ease for mobility-limited travelers."
+    },
+    {
+      "criterion_id": "T8-P2-06",
+      "score": 10,
+      "evidence_span": "**Yalong Bay is the most robust alternative** because it removes visa and international-entry uncertainty and has frequent nonstop access from Shanghai.",
+      "rationale": "Names the recommended alternative and explicitly makes administrative simplicity and convenient flights causal selection reasons."
+    },
+    {
+      "criterion_id": "T8-P2-07",
+      "score": 10,
+      "evidence_span": "Bali has one of the stronger July weather patterns in Southeast Asia and a deep resort market, but July is peak season. Longer travel, traffic, large resort-to-attraction distances, and higher airfares dilute its value for a one-week trip from Shanghai.",
+      "rationale": "Acknowledges Bali’s viability while downgrading it for long journeys, traffic, and dispersed attractions."
+    },
+    {
+      "criterion_id": "T8-P2-08",
+      "score": 10,
+      "evidence_span": "Reserve airport transfers.",
+      "rationale": "Provides an executable booking action with a concrete object that implements organized arrival and departure logistics."
+    },
+    {
+      "criterion_id": "T8-P2-09",
+      "score": 10,
+      "evidence_span": "Buy flights only after the room configuration is secured.",
+      "rationale": "States a usable sequencing rule that prevents committing to flights before suitable family accommodation is confirmed."
+    },
+    {
+      "criterion_id": "T8-P2-10",
+      "score": 10,
+      "evidence_span": "Koh Samui often has better July conditions than Phuket, but Shanghai travel usually requires a connection, and airfares and beach-resort rates can be relatively high. It is better for a smaller, mobile group willing to accept longer travel for an island-resort atmosphere.",
+      "rationale": "Defines a concrete reversal condition: a smaller, mobile group that accepts longer travel for the island experience can prefer the higher-friction option."
+    },
+    {
+      "criterion_id": "T8-P2-11",
+      "score": 10,
+      "evidence_span": "This is the best area for most multigenerational groups because older adults can rest at the hotel while the rest of the family reaches restaurants, the beach, cafés, or a pool without a long drive.",
+      "rationale": "Within the My Khe and Bac My An discussion, explicitly links nearby amenities to independent rest and convenient activities, and then to selecting that area for the multigenerational group."
+    },
+    {
+      "criterion_id": "T8-P3-01",
+      "score": 10,
+      "evidence_span": "It deliberately avoids stacking full-day excursions.",
+      "rationale": "The itinerary explicitly prioritizes a moderate pace over consecutive demanding excursions, with rest incorporated throughout the schedule."
+    },
+    {
+      "criterion_id": "T8-P3-02",
+      "score": 10,
+      "evidence_span": "Two Da Nang sources disagree somewhat about temperature and rainfall intensity, but both support the central conclusion: **July is hot, humid, sunny, and suitable for a beach trip if outdoor activity is avoided around midday.**",
+      "rationale": "The report explicitly uses weather evidence from two sources to determine when outdoor activity should be avoided, directly informing rest-friendly scheduling."
+    },
+    {
+      "criterion_id": "T8-P3-03",
+      "score": 10,
+      "evidence_span": "This is the best area for most multigenerational groups because older adults can rest at the hotel while the rest of the family reaches restaurants, the beach, cafés, or a pool without a long drive.",
+      "rationale": "In the My Khe and Bac My An section, nearby amenities provide a concrete location-specific fact explaining how the accommodation area enables older adults to rest independently."
+    },
+    {
+      "criterion_id": "T8-P3-04",
+      "score": 4,
+      "evidence_span": "it is a long, crowded excursion with cable cars and significant walking [1].",
+      "rationale": "Ba Na Hills is identified as demanding, but the report does not establish that its route involves tightly packed sightseeing. Duration, crowds, and walking provide only partial contrast-side evidence."
+    },
+    {
+      "criterion_id": "T8-P3-05",
+      "score": 4,
+      "evidence_span": "## Day 5 — Ba Na Hills or full resort recovery day",
+      "rationale": "The report juxtaposes an excursion and recovery, but does not directly compare moderate pacing against tightly packed sightseeing on a common axis with an explicit consequential difference."
+    },
+    {
+      "criterion_id": "T8-P3-06",
+      "score": 10,
+      "evidence_span": "This is the best area for most multigenerational groups because older adults can rest at the hotel while the rest of the family reaches restaurants, the beach, cafés, or a pool without a long drive.",
+      "rationale": "The My Khe and Bac My An recommendation explicitly gives older adults' ability to rest while others access nearby activities as its causal selection reason."
+    },
+    {
+      "criterion_id": "T8-P3-07",
+      "score": 4,
+      "evidence_span": "Ba Na Hills may not suit:\n\n- Severe fear of heights.\n- Poor standing tolerance.\n- Travelers unable to manage queues.\n- Travelers who require guaranteed level surfaces throughout.",
+      "rationale": "The report limits an otherwise viable excursion for travelers with stamina or accessibility constraints. It does not explicitly downgrade that option because it favors tightly packed sightseeing."
+    },
+    {
+      "criterion_id": "T8-P3-08",
+      "score": 10,
+      "evidence_span": "Check in and rest for **90 minutes**.",
+      "rationale": "This is an immediately executable arrival-day action with a concrete rest duration."
+    },
+    {
+      "criterion_id": "T8-P3-09",
+      "score": 10,
+      "evidence_span": "Mandatory room rest from approximately **12:00–15:30**.",
+      "rationale": "The plan specifies a usable, protected allocation of three and a half hours for room rest."
+    },
+    {
+      "criterion_id": "T8-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition makes tightly packed sightseeing the preferred choice. Optional active-subgroup excursions do not establish that reversal."
+    },
+    {
+      "criterion_id": "T8-P3-11",
+      "score": 10,
+      "evidence_span": "This is the best area for most multigenerational groups because older adults can rest at the hotel while the rest of the family reaches restaurants, the beach, cafés, or a pool without a long drive.",
+      "rationale": "The My Khe and Bac My An section visibly connects the rest preference, the proximity of activities and amenities, and the resulting area recommendation in one explicit causal chain."
+    },
+    {
+      "criterion_id": "T8-P4-01",
+      "score": 10,
+      "evidence_span": "**Hotel tier:** Well-reviewed upper-midscale or upscale accommodation, not the cheapest property and not ultra-luxury.",
+      "rationale": "Explicitly prioritizes accommodation quality within a middle-to-upper value range rather than minimum price or luxury."
+    },
+    {
+      "criterion_id": "T8-P4-02",
+      "score": 10,
+      "evidence_span": "The Sanya bay guide distinguishes the main areas clearly [6]:",
+      "rationale": "Identifies a specific research source used to compare beach-resort quality, convenience, and price across Sanya bays, including Sanya Bay's lower prices and weaker swimming quality."
+    },
+    {
+      "criterion_id": "T8-P4-03",
+      "score": 8,
+      "evidence_span": "| Good four-star hotel within 100–300 m of My Khe | **CNY 550–1,000** |",
+      "rationale": "Provides a named location, accommodation standard, beach-distance range, and nightly price range that concretely support quality-to-cost value. The report labels these as indicative estimates rather than verified property quotations."
+    },
+    {
+      "criterion_id": "T8-P4-04",
+      "score": 10,
+      "evidence_span": "This is the lowest total-cost option on the shortlist, but its beach quality is weaker.",
+      "rationale": "Explicitly identifies Xiamen, in its budget section, as the cheapest shortlisted option and states its consequential quality disadvantage."
+    },
+    {
+      "criterion_id": "T8-P4-05",
+      "score": 10,
+      "evidence_span": "Resorts can be discounted, but that is poor value if sea swimming is a principal objective.",
+      "rationale": "Directly contrasts discounted Phuket accommodation with value measured by delivery of the trip's swimming objective."
+    },
+    {
+      "criterion_id": "T8-P4-06",
+      "score": 10,
+      "evidence_span": "For a typical multigenerational family seeking high quality relative to total cost, **Da Nang offers the best balance of beach, resort quality, inexpensive dining, short local transfers, cultural variety, children’s activities, and restful pacing**.",
+      "rationale": "Names Da Nang and explicitly makes quality relative to total cost the reason for recommending it."
+    },
+    {
+      "criterion_id": "T8-P4-07",
+      "score": 10,
+      "evidence_span": "This is the lowest total-cost option on the shortlist, but its beach quality is weaker. It is good value only if the family is happy with a coastal cultural holiday rather than a classic resort-beach week.",
+      "rationale": "Downgrades the otherwise viable Xiamen option because its lowest price comes with a weaker fit for the intended beach holiday."
+    },
+    {
+      "criterion_id": "T8-P4-08",
+      "score": 10,
+      "evidence_span": "For a multigenerational group, the highest-value arrangement is often either:\n\n- Two adjacent or guaranteed connecting rooms, each with breakfast; or\n- A two-bedroom residence with two bathrooms and access to resort facilities.",
+      "rationale": "Gives concrete accommodation configurations the family can select to implement the explicitly stated value preference."
+    },
+    {
+      "criterion_id": "T8-P4-09",
+      "score": 10,
+      "evidence_span": "Da Nang should be reconsidered in favor of Sanya if:\n\n- Airfare exceeds about **CNY 3,500–4,000 per person**.",
+      "rationale": "Defines an actionable price threshold that triggers reconsideration of the recommended destination."
+    },
+    {
+      "criterion_id": "T8-P4-10",
+      "score": 10,
+      "evidence_span": "It is good value only if the family is happy with a coastal cultural holiday rather than a classic resort-beach week.",
+      "rationale": "States a concrete preference boundary under which Xiamen, explicitly identified immediately beforehand as the lowest-cost option, becomes an appropriate value choice."
+    },
+    {
+      "criterion_id": "T8-P4-11",
+      "score": 10,
+      "evidence_span": "Phuket’s July southwest monsoon brings a higher chance of rough water, red-flag beach closures, rain, and rip currents. Resorts can be discounted, but that is poor value if sea swimming is a principal objective. It is better for travelers prioritizing spa, dining, and resort pools over dependable beach conditions.",
+      "rationale": "Connects July swimming-condition evidence to the quality-to-cost judgment and then to excluding Phuket from the beach-focused shortlist while identifying its alternative suitable use."
+    },
+    {
+      "criterion_id": "T8-P5-01",
+      "score": 2,
+      "evidence_span": "cultural variety",
+      "rationale": "Cultural variety is included among destination benefits, but self-planning or deeper experience is not stated as a decision priority."
+    },
+    {
+      "criterion_id": "T8-P5-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is explicitly selected to evaluate independent planning or depth of experience. The research focuses on weather, transportation, costs, and practical suitability."
+    },
+    {
+      "criterion_id": "T8-P5-03",
+      "score": 4,
+      "evidence_span": "Easy cultural excursions to Hoi An, Son Tra Peninsula, and Ba Na Hills.",
+      "rationale": "Named cultural excursions suggest opportunities beyond the beach, but the report does not establish a specific fact about independent access or deeper engagement. The preference-specific support remains implicit."
+    },
+    {
+      "criterion_id": "T8-P5-04",
+      "score": 4,
+      "evidence_span": "it is a long, crowded excursion with cable cars and significant walking",
+      "rationale": "Ba Na Hills has concrete excursion characteristics, but crowding and cable cars alone do not establish a generic mass-tour itinerary. The contrast-side connection is incomplete."
+    },
+    {
+      "criterion_id": "T8-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare self-planned or deeper travel with a generic mass-tour itinerary on a common decision axis."
+    },
+    {
+      "criterion_id": "T8-P5-06",
+      "score": 4,
+      "evidence_span": "Da Nang offers the best balance of beach, resort quality, inexpensive dining, short local transfers, cultural variety, children’s activities, and restful pacing",
+      "rationale": "The recommendation names Da Nang and includes cultural variety as a selection reason. However, cultural variety is not explicitly connected to self-planning or deeper experience, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T8-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded because it favors a generic mass-tour itinerary. Downgrades concern weather, expense, transportation, swimming quality, and mobility."
+    },
+    {
+      "criterion_id": "T8-P5-08",
+      "score": 8,
+      "evidence_span": "Arrive Hoi An around **16:30**.\n- Old-town walk, café break, riverside dinner, and lantern atmosphere.",
+      "rationale": "This is a concrete, executable sequence for independently experiencing Hoi An rather than simply purchasing an unspecified excursion. It implements self-directed local exploration, although deeper engagement is not developed explicitly."
+    },
+    {
+      "criterion_id": "T8-P5-09",
+      "score": 4,
+      "evidence_span": "Book only one major weather-sensitive excursion in advance.\n9. Leave Day 6 flexible.",
+      "rationale": "The plan gives a usable booking limit and flexible-day allocation. Their stated context is weather resilience, however, rather than preserving independent or deeper experience."
+    },
+    {
+      "criterion_id": "T8-P5-10",
+      "score": 4,
+      "evidence_span": "The family values a self-contained resort more than cultural sightseeing.",
+      "rationale": "This supplies a condition for choosing Sanya over the more culturally varied recommendation. A self-contained resort is not explicitly a generic mass-tour itinerary, so the required reversal is only partially represented."
+    },
+    {
+      "criterion_id": "T8-P5-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No visible chain explicitly connects a self-planned/deeper-experience preference to supporting evidence and then to a decision or action. Making that connection would require inferring the preference from cultural activities or flexible scheduling."
+    },
+    {
+      "criterion_id": "T8-A1-01",
+      "score": 6,
+      "evidence_span": "Ba Na Hills provides cooler temperatures at altitude—VietnamOnline reports roughly **17–20°C** in the elevated area",
+      "rationale": "Gives a concrete, attributed temperature fact about a named elevated nature excursion. This satisfies the factual check on the nature/cultural preference axis; the supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A1-02",
+      "score": 6,
+      "evidence_span": "The family values a self-contained resort more than cultural sightseeing.",
+      "rationale": "Explicitly contrasts resort-focused travel with cultural sightseeing as a reason to choose Yalong Bay instead of Da Nang. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A1-03",
+      "score": 6,
+      "evidence_span": "Xiamen is attractive when low travel cost, domestic simplicity, food, and cultural sightseeing matter more than resort-grade water.",
+      "rationale": "Cultural sightseeing explicitly changes the stated fit judgment for shortlisted Xiamen, serving as a secondary factor alongside cost and convenience. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A1-04",
+      "score": 6,
+      "evidence_span": "**Da Nang offers the best balance of beach, resort quality, inexpensive dining, short local transfers, cultural variety, children’s activities, and restful pacing**",
+      "rationale": "The final recommendation expressly includes cultural variety alongside beach and resort benefits, rather than justifying the winner through a resort-only preference. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A2-01",
+      "score": 6,
+      "evidence_span": "Yalong Bay resorts generally offer large pools, elevators, breakfast buffets, landscaped grounds, and beach access",
+      "rationale": "The named Yalong Bay lodging option has concrete family-relevant amenities, including pools and beach access. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly distinguish any lodging option’s warm or family-friendly character from business-style, impersonal lodging."
+    },
+    {
+      "criterion_id": "T8-A2-03",
+      "score": 6,
+      "evidence_span": "#### Non Nuoc resort strip\n\nBest for:\n\n- Quiet beachfront surroundings.\n- Large pools and landscaped grounds.\n- Children’s facilities.\n- Longer periods spent inside the resort.",
+      "rationale": "Children’s facilities explicitly contribute to the stated fit of the Non Nuoc lodging option. This satisfies the secondary-fit check, subject to the generic cap of 6."
+    },
+    {
+      "criterion_id": "T8-A2-04",
+      "score": 6,
+      "evidence_span": "For a multigenerational group, the highest-value arrangement is often either:\n\n- Two adjacent or guaranteed connecting rooms, each with breakfast; or\n- A two-bedroom residence with two bathrooms and access to resort facilities.",
+      "rationale": "The recommended lodging arrangements support family togetherness and practical family needs. No selected option is justified by impersonal or business-oriented character. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A3-01",
+      "score": 6,
+      "evidence_span": "**Haitang Bay:** Newer, spacious resorts and strong kids’ facilities, but rougher water; the pool may be more important than the sea.",
+      "rationale": "Provides a concrete child-relevant fact about a named destination: Haitang Bay resorts have strong children's facilities, with rougher sea conditions favoring pool activities. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A3-02",
+      "score": 6,
+      "evidence_span": "Children: sand play and supervised swimming.\n- Adults: swimming or beach walk.",
+      "rationale": "Explicitly distinguishes planned children's activities from adult activities, rather than merely having children accompany an adult-focused program. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A3-03",
+      "score": 6,
+      "evidence_span": "Da Nang offers the best balance of beach, resort quality, inexpensive dining, short local transfers, cultural variety, children’s activities, and restful pacing",
+      "rationale": "The final recommendation explicitly includes children's activities among the factors supporting Da Nang's overall fit. This establishes a secondary fit factor without requiring it to determine the ranking alone. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A3-04",
+      "score": 6,
+      "evidence_span": "Children and active adults: short paddleboarding lesson or other hotel-supervised water activity.",
+      "rationale": "The recommended itinerary positively includes children in supervised activities rather than justifying an adult-only program. No final selection is explicitly justified by excluding children's activities. The generic cap limits the score to 6."
+    }
+  ]
+}

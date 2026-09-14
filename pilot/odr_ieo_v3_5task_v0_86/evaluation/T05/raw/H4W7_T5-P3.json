@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T5-P3-01",
+      "score": 8,
+      "evidence_span": "The most important first-year discipline is sequencing: **validate the problem, then payment, then learning efficacy, then institutional repeatability, and only then scale content and acquisition**. A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "The report explicitly prioritizes staged validation over substantial upfront platform development. Its early prototype and subsequent revision stages make this a task-specific measured-development priority."
+    },
+    {
+      "criterion_id": "T5-P3-02",
+      "score": 10,
+      "evidence_span": "- Deliver a manual two-week prototype to 20–30 students.\n- Test diagnostic, sample lesson, tutor workflow and capstone.\n- Observe learners completing tasks.",
+      "rationale": "Direct observation of students using a short prototype is an identifiable evidence class explicitly chosen to evaluate the initial product before further development."
+    },
+    {
+      "criterion_id": "T5-P3-03",
+      "score": 4,
+      "evidence_span": "Supabase’s official pricing page includes managed PostgreSQL, authentication, storage, realtime features, edge functions, backups and enterprise security options.[10]",
+      "rationale": "The report supplies verifiable capabilities for a named MVP infrastructure option, but does not explicitly connect those particular facts to faster delivery, measurement or iteration. The preference-specific evidentiary link remains implicit."
+    },
+    {
+      "criterion_id": "T5-P3-04",
+      "score": 4,
+      "evidence_span": "**Fully custom learning platform:** maximum differentiation but high time, accessibility and maintenance risk.",
+      "rationale": "A contrast-side option is named, but its disadvantages are generic risk characterizations. No concrete duration, delayed-feedback mechanism or other verifiable fact establishes a long closed-door polished build."
+    },
+    {
+      "criterion_id": "T5-P3-05",
+      "score": 8,
+      "evidence_span": "The most important first-year discipline is sequencing: **validate the problem, then payment, then learning efficacy, then institutional repeatability, and only then scale content and acquisition**. A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "This directly compares evidence-led staged development with building a broad platform before validation, identifying financial and execution risk as the consequential common decision axis."
+    },
+    {
+      "criterion_id": "T5-P3-06",
+      "score": 4,
+      "evidence_span": "- **Hosted conventional LMS:** fastest institutional familiarity, strong course-management features, weaker custom experience.\n- **Open-source LMS:** more control and lower license cost, but requires hosting, upgrades and security operations.\n- **Fully custom learning platform:** maximum differentiation but high time, accessibility and maintenance risk.\n- **Hybrid:** conventional LMS or structured content backend plus a custom student experience.\n\nThe hybrid option is usually best for the first year.",
+      "rationale": "The report recommends a named hybrid option alongside time-related trade-offs, but does not expressly state that supporting rapid MVP delivery, measurement and iteration is the causal reason for selecting it. That connection is implicit."
+    },
+    {
+      "criterion_id": "T5-P3-07",
+      "score": 8,
+      "evidence_span": "A broad platform built before those gates would create the highest financial and execution risk.",
+      "rationale": "The broad upfront-platform route is explicitly downgraded because it commits to development before validation gates. The report otherwise allows broader platform development after validation, making this a timing-specific rejection rather than a rejection of the option altogether."
+    },
+    {
+      "criterion_id": "T5-P3-08",
+      "score": 10,
+      "evidence_span": "- Analyze pilot drop-off and learning gains.\n- Revise weak modules and onboarding.",
+      "rationale": "These are executable actions that turn measured pilot performance into concrete product and curriculum revisions."
+    },
+    {
+      "criterion_id": "T5-P3-09",
+      "score": 10,
+      "evidence_span": "**Gate:** At least 70% finish the prototype and 80% rate usefulness at 4/5 or better.",
+      "rationale": "The prototype stage has explicit numerical completion and usefulness thresholds that serve as a usable development checkpoint."
+    },
+    {
+      "criterion_id": "T5-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not identify a condition under which a long closed-door polished build becomes preferable. Conditions for building infrastructure later or pursuing stronger credentials do not establish that reversal."
+    },
+    {
+      "criterion_id": "T5-P3-11",
+      "score": 10,
+      "evidence_span": "| Weak learning outcomes | Engagement without assessment gain | Revise pedagogy and assessment; external review | No meaningful gain after one revision cycle |",
+      "rationale": "The row explicitly connects measured learning evidence to a revision decision and a subsequent iteration checkpoint, providing a visible evidence-to-action chain."
+    }
+  ]
+}

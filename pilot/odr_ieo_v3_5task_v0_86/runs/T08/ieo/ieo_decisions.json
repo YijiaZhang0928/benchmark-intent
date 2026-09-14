@@ -1,0 +1,208 @@
+[
+  {
+    "candidates": [
+      {
+        "name": "departure city or airport",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "trip_origin",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A nearby origin could favor a drive-to beach and eliminate airfare, airport transfers, and connection risks.",
+          "A distant origin could favor a nonstop-accessible destination, add flight and transfer costs, and require lighter arrival and departure days."
+        ],
+        "should_ask": true,
+        "question": "What city or airport will the group depart from?"
+      },
+      {
+        "name": "maximum all-in trip budget",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "spending_tolerance",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A lower ceiling would favor regional destinations, a self-catering rental, free activities, and limited private transportation.",
+          "A higher ceiling could support a beachfront resort, larger accessible accommodations, private transfers, and more paid excursions."
+        ],
+        "should_ask": true,
+        "question": "What is the maximum all-in budget for the entire group, in your preferred currency?"
+      },
+      {
+        "name": "dominant destination-selection priority",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "destination_tradeoff_priority",
+        "deliverable_influence": "high",
+        "evidence_strength": "weak",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Prioritizing easy travel and accessibility would elevate compact destinations with nonstop access, short transfers, and step-free amenities.",
+          "Prioritizing dependable weather, value, calm swimming, or activity variety would change the shortlist, destination ranking, and daily activity mix."
+        ],
+        "should_ask": true,
+        "question": "Which should dominate the destination choice: easiest travel/accessibility, most dependable July beach weather, best value, calmest swimming, or widest activity mix?"
+      },
+      {
+        "name": "exact party size and traveler ages",
+        "source": "task_slot",
+        "variable_type": "current_state_fact",
+        "preference_class": "party_composition",
+        "deliverable_influence": "high",
+        "evidence_strength": "weak",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A smaller group could use standard hotel rooms and compact vehicles, with lower fixed accommodation and transfer costs.",
+          "A larger group could require a multi-bedroom rental, several rooms or vehicles, advance group bookings, and a substantially different total budget."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "specific mobility or accessibility requirements",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "mobility_access_needs",
+        "deliverable_influence": "high",
+        "evidence_strength": "weak",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Step-free or limited-walking requirements would restrict lodging, beaches, transfers, restaurants, and excursions to verified accessible options.",
+          "Without material mobility limitations, the itinerary could include longer promenades, boat boarding, uneven historic areas, and a wider accommodation set."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "preferred daily pace and split-group flexibility",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "itinerary_pace",
+        "deliverable_influence": "medium",
+        "evidence_strength": "strong",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A strongly rest-oriented preference would create one main outing per day, long midday breaks, and early nearby dinners.",
+          "A split-group approach would schedule active child-focused excursions while older adults rest, followed by short shared activities."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "accommodation format",
+        "source": "task_slot",
+        "variable_type": "preference_value",
+        "preference_class": "lodging_style",
+        "deliverable_influence": "medium",
+        "evidence_strength": "weak",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "A villa or apartment preference would shift the plan toward kitchens, shared living space, grocery stops, and self-catered meals.",
+          "A resort or hotel preference would emphasize elevators, housekeeping, on-site dining, pools, organized activities, and room configuration."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "exact July travel week",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "date_window",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "possibly_undecided",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Early-July dates could encounter different holiday crowds, event calendars, pricing, and sea conditions than late July.",
+          "A fixed peak-week window could alter flight options, lodging availability, reservation lead times, and the realistic budget range."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "dietary restrictions and medical needs",
+        "source": "task_slot",
+        "variable_type": "personal_constraint",
+        "preference_class": "health_and_diet_constraints",
+        "deliverable_influence": "medium",
+        "evidence_strength": "none",
+        "answerability": "likely_known",
+        "residuality_after_research": "high",
+        "counterfactual_deliverable_changes": [
+          "Significant dietary restrictions would change restaurant recommendations, lodging-kitchen requirements, and grocery planning.",
+          "Medication, heat-sensitivity, or proximity-to-care needs would change destination screening, rest timing, insurance guidance, and medical-facility mapping."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "July weather, water conditions, crowds, and seasonality",
+        "source": "task_slot",
+        "variable_type": "research_owned",
+        "preference_class": "destination_evidence",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Evidence of excessive heat, storms, rough water, wildfire smoke, or peak overcrowding would lower a destination's ranking and alter outdoor timing.",
+          "Evidence of stable dry weather, comfortable water, and manageable crowds would support more beach time and fewer weather contingencies."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "best destination and itinerary structure",
+        "source": "task_slot",
+        "variable_type": "agent_recommended",
+        "preference_class": "recommended_trip_design",
+        "deliverable_influence": "high",
+        "evidence_strength": "none",
+        "answerability": "unknown",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "If a compact resort area ranks highest, the itinerary would minimize transfers and center activities around one accessible base.",
+          "If a broader coastal region ranks highest, the itinerary could include day trips, a rental vehicle, and more varied beaches and attractions."
+        ],
+        "should_ask": false,
+        "question": ""
+      },
+      {
+        "name": "family travel safety and responsible-practice minimums",
+        "source": "latent",
+        "variable_type": "normative_floor",
+        "preference_class": "safety_and_legal_minimum",
+        "deliverable_influence": "high",
+        "evidence_strength": "strong",
+        "answerability": "known_now",
+        "residuality_after_research": "low",
+        "counterfactual_deliverable_changes": [
+          "Destinations or activities with unacceptable swimming, heat, transport, legal, or medical risks would be excluded regardless of price.",
+          "The itinerary will include age-appropriate supervision, heat and sun precautions, realistic rest, safe transportation, and emergency-care information."
+        ],
+        "should_ask": false,
+        "question": ""
+      }
+    ],
+    "selected_variables": [
+      "departure city or airport",
+      "maximum all-in trip budget",
+      "dominant destination-selection priority"
+    ],
+    "need_clarification": true,
+    "selected_question": "1. What city or airport will the group depart from? This changes feasible destinations, journey time, transportation, and cost.\n2. What is the maximum all-in budget for the entire group, in your preferred currency? This determines the lodging tier, transport mode, dining plan, and paid activities.\n3. Which should dominate the destination choice: easiest travel/accessibility, most dependable July beach weather, best value, calmest swimming, or widest activity mix? This changes the shortlist, ranking, and itinerary emphasis.",
+    "verification": "These three answers resolve the most consequential user-owned unknowns while preserving two distinct preference choices. Exact weather, seasonality, transportation options, prices, medical access, and destination quality should be researched; the final destination and itinerary structure should then be recommended. Party-size-dependent costs can be presented transparently with scalable assumptions, while conservative accessibility and family-safety standards remain mandatory.",
+    "policy_valid": true,
+    "eligible_preference_count": 3
+  }
+]

@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "R2K9",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "eb40d433de4141df2c77504c0cce632fe01c32d170cfac628bfb7051ea8d2c02",
+  "rubric_sha256": "6c540729b1a59e0d63b4fb86c80392b5d45fefce6bede6a3946db7893b5b2999",
+  "started_at_utc": "2026-09-14T02:07:44.273505+00:00",
+  "completed_at_utc": "2026-09-14T02:13:11.014538+00:00",
+  "p_strict": 6.931438127090302,
+  "p_hi": 7.19,
+  "dimension_scores": {
+    "INTENT": 10.0,
+    "SOURCE": 10.0,
+    "EVIDENCE": 5.6521739130434785,
+    "TRADEOFF": 3.652173913043478,
+    "DECISION": 5.304347826086956,
+    "ACTION": 10.0,
+    "TRACE": 6.923076923076923
+  },
+  "high_dimension_scores": {
+    "INTENT": 10.0,
+    "SOURCE": 10.0,
+    "EVIDENCE": 6.0,
+    "TRADEOFF": 3.8000000000000003,
+    "DECISION": 5.800000000000001,
+    "ACTION": 10.0,
+    "TRACE": 7.6000000000000005
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 10,
+      "evidence_span": "This is probably the strongest bridge between applied NLP, industrial value, moderate compute, and publishable systems work.",
+      "rationale": "The report explicitly prioritizes retrieval/RAG for its combination of applied NLP and publishable systems research."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 10,
+      "evidence_span": "QLoRA demonstrates that meaningful adaptation research does not always require frontier-scale infrastructure: it reported fine-tuning a 65B model on one 48 GB GPU by combining frozen 4-bit weights with low-rank adapters [7].",
+      "rationale": "A specific research source is used to assess whether implementation-heavy adaptation research is feasible with university-scale computing resources."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 10,
+      "evidence_span": "it reported fine-tuning a 65B model on one 48 GB GPU by combining frozen 4-bit weights with low-rank adapters [7].",
+      "rationale": "The QLoRA route has a concrete, cited implementation fact specifying model size, hardware capacity, and adaptation mechanism."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 2,
+      "evidence_span": "| Core deep-learning theory | Mature and prestigious | Very high | Low–medium | Often modest | Strong in top ML venues, highly selective | Moderate–high | Less aligned unless mathematics becomes a major strength |",
+      "rationale": "A theory route is named, but its characteristics are generic qualitative ratings. No concrete, verifiable fact establishes a purely abstract, theory-only research option."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 4,
+      "evidence_span": "| Core deep-learning theory | Mature and prestigious | Very high | Low–medium | Often modest | Strong in top ML venues, highly selective | Moderate–high | Less aligned unless mathematics becomes a major strength |",
+      "rationale": "The comparative table places core theory and applied directions on shared mathematics, systems, compute, and fit axes. However, it does not explicitly establish the requested contrast with purely abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 10,
+      "evidence_span": "Carnegie Mellon School of Computer Science | Machine Learning Department; Language Technologies Institute; Graham Neubig, Ameet Talwalkar, Carolyn Rosé, Maarten Sap; strong NLP, ML systems, speech, robotics, and industry [11][12] | Several separate PhD programs rather than one generic application. Excellent for implementation-heavy NLP and efficient ML",
+      "rationale": "Carnegie Mellon is specifically recommended for its support of implementation-heavy NLP and efficient machine learning."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 4,
+      "evidence_span": "| Core deep-learning theory | Mature and prestigious | Very high | Low–medium | Often modest | Strong in top ML venues, highly selective | Moderate–high | Less aligned unless mathematics becomes a major strength |",
+      "rationale": "An otherwise viable theory route is downgraded, but the stated qualification concerns mathematical strength rather than an explicit objection to purely abstract or theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "Reproduce at least **two published baselines**.",
+      "rationale": "Reproducing published baselines is an executable implementation step within the flagship applied-AI project plan."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "**5–6 hours:** experiments and implementation;",
+      "rationale": "The weekly routine assigns a concrete time allocation to experiments and implementation."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 4,
+      "evidence_span": "Less aligned unless mathematics becomes a major strength",
+      "rationale": "The report supplies a condition under which the theory route becomes more suitable, but does not state that theory-only research would then become the better choice."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 10,
+      "evidence_span": "RAG is not automatically reliable. Recent research found substantial retriever degradation under minor query variations [6]. That makes robustness, evaluation, routing, and retrieval quality better research targets than merely assembling an existing RAG framework.",
+      "rationale": "The report visibly connects applied RAG research to cited evidence of retriever degradation and then explicitly selects robustness, evaluation, routing, and retrieval quality as downstream research targets."
+    },
+    {
+      "criterion_id": "T1-P2-01",
+      "score": 10,
+      "evidence_span": "During the next year, the primary goal should be one research-grade project rather than many disconnected activities. The project should combine:\n\n- a meaningful hypothesis;\n- strong retrieval or adaptation baselines;\n- efficient implementation;\n- robustness and error analysis;\n- reproducible code;\n- a credible technical paper.",
+      "rationale": "Explicitly prioritizes a substantial hands-on research project, including baseline work, implementation, experimentation, and reproducible code."
+    },
+    {
+      "criterion_id": "T1-P2-02",
+      "score": 10,
+      "evidence_span": "QLoRA demonstrates that meaningful adaptation research does not always require frontier-scale infrastructure: it reported fine-tuning a 65B model on one 48 GB GPU by combining frozen 4-bit weights with low-rank adapters [7].",
+      "rationale": "Selects a cited research result specifically to establish the infrastructure feasibility of conducting hands-on adaptation experiments."
+    },
+    {
+      "criterion_id": "T1-P2-03",
+      "score": 10,
+      "evidence_span": "QLoRA’s reported reduction from more than 780 GB for ordinary 16-bit fine-tuning of a 65B model to under 48 GB illustrates why efficiency research can make experiments accessible [7].",
+      "rationale": "Provides a named method and a verifiable memory-requirement comparison showing how the option enables accessible experimentation."
+    },
+    {
+      "criterion_id": "T1-P2-04",
+      "score": 4,
+      "evidence_span": "4.0 full-course equivalents for direct-entry students;",
+      "rationale": "Gives a concrete coursework requirement for Toronto's direct-entry route, but does not establish that this route is mainly classroom-based preparation. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T1-P2-05",
+      "score": 4,
+      "evidence_span": "3. solve written exercises, not only watch lectures;\n4. implement key methods from first principles;",
+      "rationale": "Contrasts active exercises and implementation with lecture-only learning, but does not directly compare the two preparation routes on a stated consequential decision axis. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T1-P2-06",
+      "score": 10,
+      "evidence_span": "### 1.1 Applied and domain-specific NLP\n\nThis includes classification, extraction, summarization, question answering, dialogue, translation, document processing, and adaptation to medicine, science, finance, law, education, patents, or software engineering.\n\n**Advantages**\n\n- Relatively accessible compute requirements.\n- Natural use of your implementation strength.\n- Many public datasets and reproducible baselines.",
+      "rationale": "Names a recommended research direction and explicitly gives implementation fit, accessible compute, and reproducible baselines as selection advantages."
+    },
+    {
+      "criterion_id": "T1-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named viable option is downgraded because it favors mainly classroom or course-based preparation."
+    },
+    {
+      "criterion_id": "T1-P2-08",
+      "score": 10,
+      "evidence_span": "Reproduce at least **two published baselines**.",
+      "rationale": "Provides an executable replication task with a concrete action object."
+    },
+    {
+      "criterion_id": "T1-P2-09",
+      "score": 10,
+      "evidence_span": "### Measurable milestones by December 31, 2026\n\n- Read and annotate **15–20 papers**.\n- Reproduce at least **two published baselines**.",
+      "rationale": "Defines a dated checkpoint and a numerical minimum for hands-on replication."
+    },
+    {
+      "criterion_id": "T1-P2-10",
+      "score": 4,
+      "evidence_span": "### If formal mathematics is weak\n\nOver the next two semesters:\n\n1. take graded linear algebra and probability/statistics;\n2. add optimization;",
+      "rationale": "Identifies weak formal mathematics as a concrete condition for adding graded courses, but does not say mainly course-based preparation should replace or outrank project-based preparation. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T1-P2-11",
+      "score": 4,
+      "evidence_span": "QLoRA’s reported reduction from more than 780 GB for ordinary 16-bit fine-tuning of a 65B model to under 48 GB illustrates why efficiency research can make experiments accessible [7].",
+      "rationale": "Explicitly links cited evidence to experimental accessibility, but this span does not complete a preference-to-evidence-to-selection/action chain. Connecting it to later project choices requires inference, so partial credit is capped."
+    },
+    {
+      "criterion_id": "T1-P3-01",
+      "score": 10,
+      "evidence_span": "For industrial research, prioritize programs where students commonly intern after the second or third year.",
+      "rationale": "Explicitly makes access to industrial-research internships a program-selection priority."
+    },
+    {
+      "criterion_id": "T1-P3-02",
+      "score": 10,
+      "evidence_span": "For each target, record:\n\n- three potentially aligned faculty;\n- whether at least two appear to be recruiting;\n- current students’ publication venues;\n- recent student internships;\n- available compute;\n- funding duration;\n- tuition and fees;\n- internship policy;\n- graduation time;\n- placement outcomes;\n- visa implications.",
+      "rationale": "Identifies student internships, internship policies, and placement outcomes as evidence to collect for evaluating programs' employment optionality."
+    },
+    {
+      "criterion_id": "T1-P3-03",
+      "score": 10,
+      "evidence_span": "UBC lists research in:\n\n- machine learning;\n- natural-language understanding and generation;\n- text mining;\n- multimodal interfaces;\n- high-performance computing and systems;\n- optimization [17].\n\nIt also states that the department has many computing-industry contacts and values research directed toward real-world applications.",
+      "rationale": "Names UBC and attributes a verifiable industry-connection and applied-research fact to the program rather than merely labeling its employment prospects favorably."
+    },
+    {
+      "criterion_id": "T1-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program or route is supported with a verifiable fact showing optimization exclusively for an academic-faculty career. The generic observation about restrictive internships does not meet this check."
+    },
+    {
+      "criterion_id": "T1-P3-05",
+      "score": 4,
+      "evidence_span": "A PhD with restrictive internship rules can still be excellent academically, but it is less aligned with your stated career goal.",
+      "rationale": "Contrasts academic quality with industrial-career alignment on internship access, but does not explicitly compare employment optionality against an exclusively faculty-oriented trajectory. The incomplete comparison receives no more than the generic cap."
+    },
+    {
+      "criterion_id": "T1-P3-06",
+      "score": 10,
+      "evidence_span": "### 1.3 Efficient model training and inference\n\nThis is an excellent industrial-research direction because it combines algorithms and systems.",
+      "rationale": "Names a recommended research direction and explicitly gives industrial-research suitability as a reason for recommending it."
+    },
+    {
+      "criterion_id": "T1-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable named option is downgraded because it favors an exclusively academic-faculty trajectory. Other downgrades concern compute, preparation, funding, or research fit."
+    },
+    {
+      "criterion_id": "T1-P3-08",
+      "score": 10,
+      "evidence_span": "Prepare for research or applied-science internships by practicing:\n\n- algorithms and data structures;\n- PyTorch implementation;\n- model debugging;\n- probability/statistics questions;\n- ML system design;\n- explanation of your research decisions;\n- coding under time constraints.",
+      "rationale": "The phased plan provides executable preparation activities explicitly directed toward research and applied-science internships."
+    },
+    {
+      "criterion_id": "T1-P3-09",
+      "score": 10,
+      "evidence_span": "| Internship and industry links | 10% |",
+      "rationale": "The offer-comparison rubric assigns a concrete decision weight to internship access and industry connections."
+    },
+    {
+      "criterion_id": "T1-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state a condition under which optimizing exclusively for an academic-faculty trajectory would become preferable."
+    },
+    {
+      "criterion_id": "T1-P3-11",
+      "score": 10,
+      "evidence_span": "The US Bureau of Labor Statistics projects 22% employment growth for computer and information research scientists from 2025 to 2035 and reports a 2025 median annual wage of $140,300 [2]. These statistics do not guarantee PhD-level industrial-research positions, but they support building durable capability in model development, systems, retrieval, evaluation, and experimentation rather than only prompt engineering.",
+      "rationale": "Explicitly links cited employment evidence to industrial-research prospects and then to a concrete skill-development decision, making the evidence-to-action chain visible."
+    },
+    {
+      "criterion_id": "T1-P4-01",
+      "score": 10,
+      "evidence_span": "| Funding security and net cost | 15% |",
+      "rationale": "The offer-selection rubric explicitly makes funding security and net cost a weighted decision priority."
+    },
+    {
+      "criterion_id": "T1-P4-02",
+      "score": 10,
+      "evidence_span": "International applicants must verify whether both the stipend and the full international fee are covered. UKRI publishes current studentship guidance and minimum stipend information [52].",
+      "rationale": "The report identifies official studentship guidance as evidence for checking stipend adequacy and international tuition coverage."
+    },
+    {
+      "criterion_id": "T1-P4-03",
+      "score": 10,
+      "evidence_span": "The guaranteed funding period is **60 months for direct-entry students**. Toronto states that all full-time PhD students receive a package combining research and teaching assistantships intended to cover tuition and living costs [15][16].",
+      "rationale": "Toronto is a named option with specific, source-cited facts about funding duration, mechanisms, and covered expenses."
+    },
+    {
+      "criterion_id": "T1-P4-04",
+      "score": 4,
+      "evidence_span": "| UK | International tuition often £25,000–40,000/year |",
+      "rationale": "The report supplies a concrete cost range for a named regional route, but does not establish that this route represents prestige-first selection. The required contrast is incomplete."
+    },
+    {
+      "criterion_id": "T1-P4-05",
+      "score": 4,
+      "evidence_span": "A “fully funded” UK offer may still leave an international tuition gap, whereas a Dutch, German, Swiss, or Nordic employment contract normally treats the candidate as an employee.",
+      "rationale": "This directly contrasts financial arrangements and identifies a consequential tuition-coverage difference. However, it does not compare funding-oriented selection with an explicitly expensive prestige-first alternative."
+    },
+    {
+      "criterion_id": "T1-P4-06",
+      "score": 10,
+      "evidence_span": "### If budget is restrictive\n\nPrioritize:\n\n- fully funded US/Canadian offers;\n- salaried continental-European positions;",
+      "rationale": "The report explicitly recommends named application routes because their funding structures address budget restrictions."
+    },
+    {
+      "criterion_id": "T1-P4-07",
+      "score": 4,
+      "evidence_span": "Treat an unfunded UK or North American doctorate as financially unsuitable unless you have independently decided that the full cost is affordable.",
+      "rationale": "Named routes are explicitly downgraded for financial reasons, but the report does not characterize them as prestige-first choices. That required element remains incomplete."
+    },
+    {
+      "criterion_id": "T1-P4-08",
+      "score": 10,
+      "evidence_span": "For each target, record:\n\n- three potentially aligned faculty;\n- whether at least two appear to be recruiting;\n- current students’ publication venues;\n- recent student internships;\n- available compute;\n- funding duration;\n- tuition and fees;",
+      "rationale": "The preparation plan gives an executable action: record funding duration, tuition, and fees for each target program."
+    },
+    {
+      "criterion_id": "T1-P4-09",
+      "score": 10,
+      "evidence_span": "Do not start an unfunded or poorly supervised PhD solely to avoid waiting.",
+      "rationale": "The plan establishes a usable acceptance boundary: avoiding delay is not sufficient grounds to start an unfunded doctorate."
+    },
+    {
+      "criterion_id": "T1-P4-10",
+      "score": 4,
+      "evidence_span": "Treat an unfunded UK or North American doctorate as financially unsuitable unless you have independently decided that the full cost is affordable.",
+      "rationale": "Affordability is a concrete condition that removes financial exclusion, but the report does not state when an expensive prestige-first option becomes the better choice."
+    },
+    {
+      "criterion_id": "T1-P4-11",
+      "score": 4,
+      "evidence_span": "### If budget is restrictive\n\nPrioritize:\n\n- fully funded US/Canadian offers;\n- salaried continental-European positions;",
+      "rationale": "The preference is explicitly connected to a recommendation, and concrete funding evidence appears elsewhere. However, no visible complete chain explicitly connects a particular cited funding fact to its downstream selection or action."
+    },
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 10,
+      "evidence_span": "| Supervisor fit and availability | 25% |\n| Student outcomes and advising quality | 15% |\n| Research resources and compute | 15% |\n| Funding security and net cost | 15% |",
+      "rationale": "The offer-selection rubric explicitly prioritizes fit, observed student outcomes, resources, and financial trade-offs through decision weights."
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "For each target, record:\n\n- three potentially aligned faculty;\n- whether at least two appear to be recruiting;\n- current students’ publication venues;\n- recent student internships;\n- available compute;\n- funding duration;\n- tuition and fees;\n- internship policy;\n- graduation time;\n- placement outcomes;\n- visa implications.",
+      "rationale": "The research route identifies concrete evidence classes for comparing research fit, outcomes, resources, costs, and constraints across programs."
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 10,
+      "evidence_span": "The guaranteed funding period is **60 months for direct-entry students**. Toronto states that all full-time PhD students receive a package combining research and teaching assistantships intended to cover tuition and living costs [15][16].",
+      "rationale": "Toronto is a named option with a specific, source-linked funding guarantee that supports comparison of financial security and program trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is supported by a verifiable fact demonstrating prestige as its dominant selection rule. Descriptions of prestigious or selective programs do not establish that rule."
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 10,
+      "evidence_span": "They may be better targets than a more famous institution if several faculty align with your specific research question.",
+      "rationale": "The report directly compares faculty alignment with institutional fame on the common axis of application targeting and states that alignment can make the less-famous option preferable."
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 10,
+      "evidence_span": "### 1.2 Information retrieval and retrieval-augmented generation\n\nThis is probably the strongest bridge between applied NLP, industrial value, moderate compute, and publishable systems work.",
+      "rationale": "The report selects the named retrieval/RAG direction because it combines research fit, employment relevance, feasible resource demands, and publication potential."
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named viable option is downgraded specifically because its selection would be dominated by prestige. Downgrades elsewhere concern compute demands, preparation, cost, or supervision."
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "Before accepting, speak privately with at least two current students and, where possible, one recent graduate. Ask about:\n\n- meeting frequency;\n- feedback turnaround;\n- authorship norms;\n- expected work hours;\n- funding stability;\n- internship approval;\n- graduation expectations;\n- students who changed advisors;\n- treatment of negative results;\n- placement support.",
+      "rationale": "This is an executable evidence-gathering step with specified interviewees and concrete questions addressing advising, funding, flexibility, and career support."
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 10,
+      "evidence_span": "| Supervisor fit and availability | 25% |\n| Student outcomes and advising quality | 15% |\n| Research resources and compute | 15% |\n| Funding security and net cost | 15% |",
+      "rationale": "The report provides usable numerical allocations for comparing offers on fit, outcomes, resources, and financial trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state a condition under which prestige should become the dominant decision rule. Stronger credentials justify more aspirational applications, but not prestige-first selection."
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 10,
+      "evidence_span": "RAG is not automatically reliable. Recent research found substantial retriever degradation under minor query variations [6]. That makes robustness, evaluation, routing, and retrieval quality better research targets than merely assembling an existing RAG framework.",
+      "rationale": "A visible chain connects the reliability objective to a cited empirical finding and then to a consequential choice of research targets."
+    },
+    {
+      "criterion_id": "T1-A1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a concrete fact tied to a quiet independent study environment. Research-focused structures and computing resources do not establish that environmental preference."
+    },
+    {
+      "criterion_id": "T1-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly distinguish any options by quiet independent study versus a highly social or cohort-heavy environment."
+    },
+    {
+      "criterion_id": "T1-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Quiet independent study does not change any shortlist inclusion, ranking, exclusion, or stated fit judgment."
+    },
+    {
+      "criterion_id": "T1-A1-04",
+      "score": 4,
+      "evidence_span": "For program selection, prioritize supervisor clusters rather than rankings:",
+      "rationale": "The final recommendation uses supervisor alignment rather than an explicitly opposing social preference. Noncontradiction is implicit, but the report does not explicitly address compatibility with quiet independent study, so a score above 4 is unsupported."
+    },
+    {
+      "criterion_id": "T1-A2-01",
+      "score": 6,
+      "evidence_span": "close connections with Allen Institute for AI and Seattle companies",
+      "rationale": "The University of Washington entry provides a concrete, named connection to Seattle’s technology ecosystem. Museums and exhibitions are not addressed. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T1-A2-02",
+      "score": 6,
+      "evidence_span": "Singapore’s strengths include English-language instruction, a concentrated technology market, strong public AI investment, and multinational R&D. Its market is much smaller than the US",
+      "rationale": "The report explicitly distinguishes Singapore’s concentrated technology ecosystem from the larger US market, rather than treating location as irrelevant. The cultural-access components are not compared. The generic cap applies."
+    },
+    {
+      "criterion_id": "T1-A2-03",
+      "score": 6,
+      "evidence_span": "Strong access to London’s AI ecosystem; funding and international tuition must be checked carefully.",
+      "rationale": "The UCL entry uses access to London’s AI ecosystem as an explicit positive program-fit judgment, alongside financial considerations. This satisfies the secondary-fit check for the technology component, although museums and exhibitions do not influence the recommendations. The generic cap applies."
+    },
+    {
+      "criterion_id": "T1-A2-04",
+      "score": 6,
+      "evidence_span": "**North America:** Stanford, CMU, UMass Amherst, UIUC, Washington, Toronto, UBC, and Mila-affiliated programs.",
+      "rationale": "The final recommendation retains programs whose technology-ecosystem connections are described earlier, including Washington, Toronto, and Mila-affiliated programs. No selected option is explicitly justified by location being unimportant or by avoiding intellectually active cities. The generic cap applies."
+    },
+    {
+      "criterion_id": "T1-A3-01",
+      "score": 4,
+      "evidence_span": "Stanford describes its PhD as research-oriented, normally 5–6 years, with relatively few formal course requirements.",
+      "rationale": "Gives a named program and a concrete structural fact potentially relevant to independent scheduling. However, the report does not connect that fact to flexible planning or evening-focused deep work."
+    },
+    {
+      "criterion_id": "T1-A3-02",
+      "score": 2,
+      "evidence_span": "The UK normally uses a three-to-four-year research doctorate with limited coursework.",
+      "rationale": "Provides an implicit scheduling-relevant distinction from the report’s coursework-heavy North American model, but does not explicitly distinguish independent, evening-focused work from externally managed study routines."
+    },
+    {
+      "criterion_id": "T1-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No shortlist inclusion, ranking, exclusion, or secondary fit judgment is attributed to flexible independent planning or evening-focused deep work."
+    },
+    {
+      "criterion_id": "T1-A3-04",
+      "score": 4,
+      "evidence_span": "During the next year, the primary goal should be one research-grade project rather than many disconnected activities.",
+      "rationale": "The final recommendation is compatible with concentrated independent work and does not explicitly favor externally managed routines. However, compatibility with flexible scheduling and evening work remains implicit rather than criterion-specifically established."
+    }
+  ]
+}

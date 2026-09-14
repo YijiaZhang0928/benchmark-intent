@@ -1,5 +1,19 @@
 # benchmark-intent 设计迭代记录
 
+## v0.90 Five-task strict IEO-v3 result - 2026-09-14
+
+- 完成预注册 workbook 行 2/3/6/9/12 的 10 个 counted Deep Research cells 与 10 次 67-leaf 单 pass 盲评；全部通过 fetch/长度/hash/criterion validation。
+- Mean `P_strict` 5.9835→6.9705，paired gain `+0.9870`，median `+0.8475`；4 正 1 负，未筛除不利任务。
+- Mean `P_HI` gain `+1.116`，但 macro `Recall@AskableHigh` 0.330→0.320（`-0.010`），high+average recall 0.225→0.175。
+- T02 是唯一 recall 与 P 同向、且 IEO fetch 更少的机制一致案例；T05 是 asked-but-unanswerable 负例，T08/T11 的 P gain 被更深研究混杂。
+- 结论限定为 system-level report gain；不宣称 IEO-v3 更全面地问到关键偏好。
+
+## v0.89 Hard timeout and pre-score evaluator repair - 2026-09-14
+
+- T02 v0.88 pair 被同步网页请求阻塞并超过 30 分钟；终止并保留 input-only 目录，不计 generation、不评分。
+- 在相同 1,800 秒值上加入 POSIX process alarm，使同步阻塞也受硬上限约束；其余条件不变。
+- 两个盲评首次启动在生成分数前因 Pydantic forward reference 失败；仅显式 rebuild 原 schema 后以相同盲码重跑。
+
 ## v0.88 Five-task DR under-fetch repair - 2026-09-13
 
 - v0.87 auto-open 遇到前两个 URL 失败时不补位，完成的 T01/T02 stock 仅 4/2 successful fetches；全部在评分前排除。
