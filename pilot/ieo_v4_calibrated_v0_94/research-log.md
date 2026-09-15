@@ -23,3 +23,15 @@
 - H2 will add one independent value/fit lens, explicitly label underlying values versus surface
   implementation choices, and reserve at most one surface-choice slot. No validation data informed
   this change.
+
+## 2026-09-15 — H2 development result and advancement decision
+
+- Macro `CandidateRecall@AskableHigh` increased from 0.567 (H1) to 0.833 (H2).
+- H2 V4R macro selected and strict-resolved recall were both 0.383, versus stock 0.150 selected
+  and 0.083 strict-resolved recall.
+- Mean atomic questions were 4.0 for V4R and 10.0 for the strict atomic decomposition of stock.
+- Question precision for any frozen preference unit was 0.500 for V4R and 0.048 for stock.
+- H2 V4R selected/resolved recall was slightly below H1 V4R (0.400), showing that expanded candidate
+  coverage did not fully transfer through the four-slot selector.
+- The original advancement gate nevertheless passed. The exact H2 implementation and calibrator_v1
+  advance unchanged to T08/T11 internal validation; no further development tuning is permitted.

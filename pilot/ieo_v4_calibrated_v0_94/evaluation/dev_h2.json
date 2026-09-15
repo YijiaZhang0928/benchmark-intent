@@ -1,0 +1,686 @@
+{
+  "schema_version": "0.94",
+  "judge": "gpt-6-astra/high",
+  "tasks": [
+    {
+      "task": "T01",
+      "askable_high_ids": [
+        "T1-P1",
+        "T1-P2",
+        "T1-P3",
+        "T1-P4"
+      ],
+      "candidate_ids_matching_any_unit": [
+        "T1-P1",
+        "T1-P2",
+        "T1-P3",
+        "T1-P4",
+        "T1-P5"
+      ],
+      "candidate_recall_askable_high": 1.0,
+      "arms": {
+        "stock": {
+          "atomic_questions": 19,
+          "selected_ids": [
+            "T1-P4"
+          ],
+          "selected_recall_askable_high": 0.25,
+          "resolved_ids": [
+            "T1-P4"
+          ],
+          "resolved_recall_askable_high": 0.25,
+          "question_precision_any_unit": 0.05263157894736842,
+          "simulator_claimed_resolved_ids": [
+            "T1-P1",
+            "T1-P2",
+            "T1-P4"
+          ],
+          "simulator_claimed_recall_askable_high": 0.75
+        },
+        "v4a": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "selected_recall_askable_high": 0.5,
+          "resolved_ids": [
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "resolved_recall_askable_high": 0.5,
+          "question_precision_any_unit": 0.75,
+          "simulator_claimed_resolved_ids": [
+            "T1-P1",
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "simulator_claimed_recall_askable_high": 0.75
+        },
+        "v4r": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "selected_recall_askable_high": 0.5,
+          "resolved_ids": [
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "resolved_recall_askable_high": 0.5,
+          "question_precision_any_unit": 0.75,
+          "simulator_claimed_resolved_ids": [
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "simulator_claimed_recall_askable_high": 0.5
+        }
+      },
+      "mapping": {
+        "stock_atomic_slots": [
+          {
+            "slot_id": "S01",
+            "atomic_request": "What citizenship or citizenships do you hold?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S02",
+            "atomic_request": "What is your current country of study or residence?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S03",
+            "atomic_request": "What is your current or highest degree?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S04",
+            "atomic_request": "What is your field of study?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S05",
+            "atomic_request": "What type of institution do you attend or did you attend?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S06",
+            "atomic_request": "What is your GPA or class rank?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S07",
+            "atomic_request": "What is your expected graduation date?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S08",
+            "atomic_request": "What are your main AI subject-area interests?",
+            "matched_preference_ids": [],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S09",
+            "atomic_request": "What research experience do you have?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S10",
+            "atomic_request": "What publication experience or publications do you have?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S11",
+            "atomic_request": "What internship experience do you have?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S12",
+            "atomic_request": "What programming experience do you have?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S13",
+            "atomic_request": "What is your English proficiency?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S14",
+            "atomic_request": "What is your English-language test status?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S15",
+            "atomic_request": "What other language constraints apply?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S16",
+            "atomic_request": "What funding support do you need?",
+            "matched_preference_ids": [
+              "T1-P4"
+            ],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S17",
+            "atomic_request": "What are your budget limits?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S18",
+            "atomic_request": "Which countries would you prefer?",
+            "matched_preference_ids": [],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S19",
+            "atomic_request": "Which countries would you exclude?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          }
+        ],
+        "preference_mappings": [
+          {
+            "preference_id": "T1-P1",
+            "matched_candidate_ids": [
+              "C03"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C03 elicits the desired form of research contribution, resolving implementation or system-building versus abstract theoretical contribution. C02 and S08 ask about AI specialization, which does not determine this orientation. Industry integration is also a distinct axis."
+          },
+          {
+            "preference_id": "T1-P2",
+            "matched_candidate_ids": [
+              "C18"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C18 directly contrasts formal coursework with learning through research immersion. Current research or programming experience does not establish a preferred learning method, and C13 asks about an artifact milestone rather than how the user prefers to prepare."
+          },
+          {
+            "preference_id": "T1-P3",
+            "matched_candidate_ids": [
+              "C01"
+            ],
+            "matched_v4a_selected_ids": [
+              "C01"
+            ],
+            "matched_v4r_selected_ids": [
+              "C01"
+            ],
+            "matched_stock_slot_ids": [],
+            "rationale": "C01 explicitly distinguishes academic, industrial and flexible post-PhD career objectives. C20 concerns industry engagement during the doctorate, not whether recommendations should preserve industry employability or optimize for faculty careers. Past internships do not resolve future career priorities."
+          },
+          {
+            "preference_id": "T1-P4",
+            "matched_candidate_ids": [
+              "C09"
+            ],
+            "matched_v4a_selected_ids": [
+              "C09"
+            ],
+            "matched_v4r_selected_ids": [
+              "C09"
+            ],
+            "matched_stock_slot_ids": [
+              "S16"
+            ],
+            "rationale": "C09 directly elicits the priority placed on dependable funding relative to another program benefit. S16 elicits required funding support and therefore addresses the funding component of this preference. C08 and S17 ask only for a financial ceiling, not the importance of funding or cost-effectiveness in program selection."
+          },
+          {
+            "preference_id": "T1-P5",
+            "matched_candidate_ids": [
+              "C21"
+            ],
+            "matched_v4a_selected_ids": [
+              "C21"
+            ],
+            "matched_v4r_selected_ids": [
+              "C21"
+            ],
+            "matched_stock_slot_ids": [],
+            "rationale": "C21 directly asks how fit and the research ecosystem should be weighted against institutional reputation in ranking programs. C15 instead elicits admissions-risk tolerance. None of the stock requests asks for the user's decision rule."
+          },
+          {
+            "preference_id": "T1-A1",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question asks about quiet independent working conditions versus a socially intensive or cohort-heavy environment. C19 concerns supervision, which does not establish the preferred social or physical study environment."
+          },
+          {
+            "preference_id": "T1-A2",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question elicits the importance of technology ecosystems, cultural amenities or intellectually active cities. Regional and country preferences, employment geography and settlement plans do not resolve these location attributes."
+          },
+          {
+            "preference_id": "T1-A3",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question asks about daily scheduling flexibility, independent time planning or evening-focused work. C19's supervision model and C18's coursework–research balance do not determine the user's preferred daily rhythm."
+          }
+        ]
+      }
+    },
+    {
+      "task": "T02",
+      "askable_high_ids": [
+        "T2-P1",
+        "T2-P2",
+        "T2-P3",
+        "T2-P4",
+        "T2-P5"
+      ],
+      "candidate_ids_matching_any_unit": [
+        "T2-P1",
+        "T2-P2",
+        "T2-P3",
+        "T2-P4",
+        "T2-P5"
+      ],
+      "candidate_recall_askable_high": 1.0,
+      "arms": {
+        "stock": {
+          "atomic_questions": 11,
+          "selected_ids": [
+            "T2-P2"
+          ],
+          "selected_recall_askable_high": 0.2,
+          "resolved_ids": [],
+          "resolved_recall_askable_high": 0.0,
+          "question_precision_any_unit": 0.09090909090909091,
+          "simulator_claimed_resolved_ids": [
+            "T2-P5"
+          ],
+          "simulator_claimed_recall_askable_high": 0.2
+        },
+        "v4a": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "selected_recall_askable_high": 0.4,
+          "resolved_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "resolved_recall_askable_high": 0.4,
+          "question_precision_any_unit": 0.5,
+          "simulator_claimed_resolved_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "simulator_claimed_recall_askable_high": 0.4
+        },
+        "v4r": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "selected_recall_askable_high": 0.4,
+          "resolved_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "resolved_recall_askable_high": 0.4,
+          "question_precision_any_unit": 0.5,
+          "simulator_claimed_resolved_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "simulator_claimed_recall_askable_high": 0.4
+        }
+      },
+      "mapping": {
+        "stock_atomic_slots": [
+          {
+            "slot_id": "S01",
+            "atomic_request": "What is your home university?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S02",
+            "atomic_request": "In which country is your home university?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S03",
+            "atomic_request": "What is your degree level?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S04",
+            "atomic_request": "What is your field or major?",
+            "matched_preference_ids": [
+              "T2-P2"
+            ],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S05",
+            "atomic_request": "What is your current year of study?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S06",
+            "atomic_request": "What citizenship or passport(s) do you hold?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S07",
+            "atomic_request": "What semester or approximate dates do you intend to study abroad?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S08",
+            "atomic_request": "Which language(s) of instruction do you prefer?",
+            "matched_preference_ids": [],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S09",
+            "atomic_request": "What language-proficiency certifications do you have?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S10",
+            "atomic_request": "What is your approximate budget?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S11",
+            "atomic_request": "Does your university have existing exchange partners in the United States, Europe, Japan, or Singapore?",
+            "matched_preference_ids": [],
+            "classification": "research-owned fact"
+          }
+        ],
+        "preference_mappings": [
+          {
+            "preference_id": "T2-P1",
+            "matched_candidate_ids": [
+              "C01"
+            ],
+            "matched_v4a_selected_ids": [
+              "C01"
+            ],
+            "matched_v4r_selected_ids": [
+              "C01"
+            ],
+            "matched_stock_slot_ids": [],
+            "rationale": "C01 elicits which kind of program value should dominate ranking, including cross-cultural growth versus other academic or career outcomes. C09 concerns credit-recognition risk, and C17 concerns desired cultural challenge; neither resolves the program-value priority. No stock slot asks what makes a program valuable to the user."
+          },
+          {
+            "preference_id": "T2-P2",
+            "matched_candidate_ids": [
+              "C02",
+              "C16"
+            ],
+            "matched_v4a_selected_ids": [
+              "C16"
+            ],
+            "matched_v4r_selected_ids": [
+              "C16"
+            ],
+            "matched_stock_slot_ids": [
+              "S04"
+            ],
+            "rationale": "C02 addresses the disciplinary-content component, while C16 directly distinguishes specialization, breadth, and interdisciplinary study. S04 addresses the disciplinary-field component only; it does not establish the preference for interdisciplinary breadth. C14 asks about teaching methods rather than academic content."
+          },
+          {
+            "preference_id": "T2-P3",
+            "matched_candidate_ids": [
+              "C19"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C19 directly asks about rooted engagement in one host community versus wider regional exploration. Destination-region preferences and exchange-partner availability do not resolve depth versus destination count."
+          },
+          {
+            "preference_id": "T2-P4",
+            "matched_candidate_ids": [
+              "C15"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C15 directly elicits organized support versus independent navigation abroad. C14 concerns autonomy in academic learning, not self-guided local exploration or packaged activities. No stock slot addresses experiential autonomy."
+          },
+          {
+            "preference_id": "T2-P5",
+            "matched_candidate_ids": [
+              "C18"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C18 addresses spending philosophy among affordable options: minimizing cost, optimizing value, or paying a premium. It does not separately elicit locally distinctive accommodation, but it resolves the cost/value-versus-premium axis. C06 and S10 concern budget capacity, not spending style."
+          },
+          {
+            "preference_id": "T2-A1",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question asks about neighborhood character or culturally rich surroundings versus campus convenience. Community rootedness in C19 is a different axis from the desired living environment."
+          },
+          {
+            "preference_id": "T2-A2",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No candidate or stock slot elicits the importance of environmental sustainability in travel or daily living."
+          },
+          {
+            "preference_id": "T2-A3",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question distinguishes nature and outdoor activities from indoor or urban consumption. Geographic exploration in C19 does not determine activity mix."
+          }
+        ]
+      }
+    },
+    {
+      "task": "T05",
+      "askable_high_ids": [
+        "T5-P1",
+        "T5-P2",
+        "T5-P3",
+        "T5-P5"
+      ],
+      "candidate_ids_matching_any_unit": [
+        "T5-P2",
+        "T5-P3"
+      ],
+      "candidate_recall_askable_high": 0.5,
+      "arms": {
+        "stock": {
+          "atomic_questions": 0,
+          "selected_ids": [],
+          "selected_recall_askable_high": 0.0,
+          "resolved_ids": [],
+          "resolved_recall_askable_high": 0.0,
+          "question_precision_any_unit": 0.0,
+          "simulator_claimed_resolved_ids": [],
+          "simulator_claimed_recall_askable_high": 0.0
+        },
+        "v4a": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T5-P2"
+          ],
+          "selected_recall_askable_high": 0.25,
+          "resolved_ids": [
+            "T5-P2"
+          ],
+          "resolved_recall_askable_high": 0.25,
+          "question_precision_any_unit": 0.25,
+          "simulator_claimed_resolved_ids": [
+            "T5-P2",
+            "T5-P5"
+          ],
+          "simulator_claimed_recall_askable_high": 0.5
+        },
+        "v4r": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T5-P2"
+          ],
+          "selected_recall_askable_high": 0.25,
+          "resolved_ids": [
+            "T5-P2"
+          ],
+          "resolved_recall_askable_high": 0.25,
+          "question_precision_any_unit": 0.25,
+          "simulator_claimed_resolved_ids": [
+            "T5-P2"
+          ],
+          "simulator_claimed_recall_askable_high": 0.25
+        }
+      },
+      "mapping": {
+        "stock_atomic_slots": [],
+        "preference_mappings": [
+          {
+            "preference_id": "T5-P1",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question asks whether technical AI/software differentiation should be the core advantage rather than content or marketing. C20 concerns technology ownership versus implementation speed, not the basis of competitive differentiation."
+          },
+          {
+            "preference_id": "T5-P2",
+            "matched_candidate_ids": [
+              "C07"
+            ],
+            "matched_v4a_selected_ids": [
+              "C07"
+            ],
+            "matched_v4r_selected_ids": [
+              "C07"
+            ],
+            "matched_stock_slot_ids": [],
+            "rationale": "C07 directly asks how central human teaching, mentoring, and review should be relative to self-paced and AI-led learning, resolving the human-service versus software-led delivery axis."
+          },
+          {
+            "preference_id": "T5-P3",
+            "matched_candidate_ids": [
+              "C06"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C06 directly addresses early real-world validation versus greater polish before exposure. C05 defines the launch milestone, and C20 trades implementation speed against technology ownership; neither independently resolves the iterative-validation versus polished-build preference."
+          },
+          {
+            "preference_id": "T5-P4",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question asks what role evidence, logic, or experiments should play in product decisions. C22 requests an empirical market finding, not a preference about the decision-making process."
+          },
+          {
+            "preference_id": "T5-P5",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question resolves resource-allocation discipline or evidence-gated expansion. C16 asks for a capital ceiling, while C19 concerns financing, control, and growth; neither establishes the preference for efficient resource use."
+          },
+          {
+            "preference_id": "T5-A1",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question addresses internal team participation versus founder-only decision-making. C11 concerns university influence, and C18 inventories existing assets rather than collaboration practices."
+          },
+          {
+            "preference_id": "T5-A2",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C17 asks for aggregate weekly operating capacity, not whether weekends or family time must be protected. Available hours alone do not resolve the scheduling-boundary versus always-on axis."
+          },
+          {
+            "preference_id": "T5-A3",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question directly trades product quality and brand credibility against lowest-cost positioning. C13 trades affordability against service intensity and revenue, while C06 trades pre-exposure polish against early validation; these are distinct axes."
+          }
+        ]
+      }
+    }
+  ],
+  "aggregate": {
+    "stock": {
+      "atomic_questions": 10,
+      "selected_recall_askable_high": 0.15,
+      "resolved_recall_askable_high": 0.08333333333333333,
+      "question_precision_any_unit": 0.04784688995215311
+    },
+    "v4a": {
+      "atomic_questions": 4,
+      "selected_recall_askable_high": 0.38333333333333336,
+      "resolved_recall_askable_high": 0.38333333333333336,
+      "question_precision_any_unit": 0.5
+    },
+    "v4r": {
+      "atomic_questions": 4,
+      "selected_recall_askable_high": 0.38333333333333336,
+      "resolved_recall_askable_high": 0.38333333333333336,
+      "question_precision_any_unit": 0.5
+    },
+    "candidate_recall_askable_high": 0.8333333333333334
+  }
+}

@@ -1,5 +1,5 @@
 project: ieo-v4-ask-what-matters
-status: h2_protocol_ready
+status: h2_internal_validation
 updated: 2026-09-15
 question: >-
   Can an explicit importance-evidence-ownership controller improve critical preference acquisition
@@ -15,9 +15,10 @@ hypotheses:
     prediction: V4R improves development ResolvedRecall@AskableHigh without exceeding stock mean burden by more than one atomic question
     observation: raw resolved recall improved, but candidate recall was unstable across tasks
   H2:
-    status: active
+    status: development_gate_passed
     intervention: add value-fit generation lens and underlying-value preference-potency term
     prediction: candidate and selected recall increase while the four-question cap is unchanged
+    observation: candidate recall increased to 0.833; selected/resolved recall 0.383; advance frozen controller to T08/T11
 stopping_rule:
   maximum_architecture_iterations: 2
   full_report_gate: development process gate in protocol.md

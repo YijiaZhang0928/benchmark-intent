@@ -31,6 +31,19 @@ ranked below generic high-confidence parameters.
 The next architecture change is consequently structural rather than a threshold sweep: add a
 value/fit enumerator and an explicit underlying-value versus implementation-choice representation.
 
+## H2 development observation
+
+The value/fit lens repaired candidate enumeration: macro critical candidate recall rose by 0.267 to
+0.833. Selection did not realize the entire gain. Under a fixed four-question budget, V4R selected
+and strictly resolved 0.383 of askable-high axes. This still exceeded stock while using fewer atomic
+questions, but was 0.017 below H1 V4R.
+
+The mechanism is now localized: the main remaining error is set selection among several plausible
+high-impact axes, not failure to articulate the task's personalization space. A global critical bonus
+can amplify a wrong importance estimate (for example credit-risk tolerance) as easily as a truly
+personal fit axis. Internal validation must therefore use the frozen H2 selector rather than another
+development-set adjustment.
+
 ## Lessons and constraints
 
 - Never use hidden task preferences to generate or select candidates.
