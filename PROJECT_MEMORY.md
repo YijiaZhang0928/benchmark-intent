@@ -16,6 +16,8 @@
 
 主矩阵纵轴改为三种 evidence context：严格 `COLD`；一个合并的 `NATURAL50_CONFLICT`，用自然 persona/history 暴露约 50% task-relevant preference mass 且包含至少一个冻结冲突；完整 `FULL` persona。横轴为 `NO_ASK` 与 stock `NATIVE_ASK`。前三个 workbook tasks × 三模型 × DeerFlow 2.0/ODR × 三 context × 两 policy，共 108 份完整 DR reports。主张是 outcome-first 的 `Ask > NoAsk`，question count 只是机制描述；H3 为 `COLD+ASK` 接近或超过 `FULL+NOASK`。
 
+No Ask 必须是 harness-matched baseline：DeerFlow 2.0 Ask 只与 DeerFlow 2.0 No Ask 配对，ODR Ask 只与 ODR No Ask 配对；不允许换第三个 harness。No-Ask 保留相同 backbone、下游 graph、研究/报告 prompts、search/fetch、预算、timeout 与输出 contract，并把 clarification node 实现为记录 `NO_ASK` 后立即继续的 deterministic pass-through，避免“删除节点”连带改变其他状态或流程。
+
 IEO 不进入初始 headline matrix。先从 108 份报告区分 acquisition、answer-use 与 research-depth 三类失败，再冻结 IEO-v4，并只在 COLD/NATURAL50_CONFLICT 的 Ask cells 加跑最多 36 份 development reports。完整修订见 `pilot/deliverable_first_3x2_3model_v0_93/PLAN.md`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：三模型 clarification routing 与 H3 2×2 计划

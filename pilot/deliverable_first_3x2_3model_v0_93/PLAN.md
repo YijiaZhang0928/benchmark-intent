@@ -35,6 +35,8 @@ The vertical axis has three settings.
 
 The scientific claim is therefore `NATIVE_ASK > NO_ASK` on final deliverables, especially under `COLD` and `NATURAL50_CONFLICT`. Question count is a mechanism descriptor, not the dependent variable.
 
+`NO_ASK` is always a **harness-matched baseline**. DeerFlow 2.0 Ask is compared with DeerFlow 2.0 No Ask; Open Deep Research Ask is compared with Open Deep Research No Ask. The No-Ask implementation keeps the same backbone, downstream graph, planning/research/report prompts, search and fetch tools, budgets, timeouts and output contract. Its clarification node remains in the state graph as a deterministic pass-through that records `NO_ASK` and immediately continues, so skipping clarification does not accidentally remove or reconfigure another stage. A third harness is never substituted for No Ask.
+
 ## Core matrix
 
 Run the first three workbook tasks using:
