@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.95-h2",
+  "provenance": "H2 architecture parameters locked after T01/T02/T05 H1 diagnosis and before H2 generation",
+  "answer_form_priors": {
+    "categorical_choice": 0.88,
+    "ordinal_tradeoff": 0.90,
+    "free_text_goal": 0.72,
+    "current_state": 0.82,
+    "exact_numeric": 0.48,
+    "eligibility_fact": 0.80,
+    "delegation_confirmation": 0.92
+  },
+  "preference_potency": {
+    "underlying_value": 1.00,
+    "goal": 0.95,
+    "constraint": 0.75,
+    "implementation_choice": 0.55,
+    "external_fact": 0.00
+  },
+  "v4a": {
+    "lambda_verification": 0.80,
+    "burden_penalty": 0.12,
+    "minimum_utility": 0.025,
+    "value_lens_bonus": 0.00,
+    "maximum_questions": 4,
+    "maximum_surface_choices": 1
+  },
+  "v4r": {
+    "lambda_verification": 1.25,
+    "burden_penalty": 0.08,
+    "minimum_utility": 0.010,
+    "critical_bonus": 0.22,
+    "value_lens_bonus": 0.12,
+    "critical_threshold": 0.42,
+    "maximum_questions": 4,
+    "maximum_surface_choices": 1
+  }
+}
+

@@ -56,6 +56,13 @@ class CanonicalCandidate(BaseModel):
         "normative_floor",
     ]
     ownership: Literal["user_owned", "mixed", "agent_owned", "research_owned", "normative"]
+    axis_level: Literal[
+        "underlying_value",
+        "goal",
+        "constraint",
+        "implementation_choice",
+        "external_fact",
+    ]
     answer_form: Literal[
         "categorical_choice",
         "ordinal_tradeoff",
@@ -78,7 +85,7 @@ class CanonicalCandidate(BaseModel):
 
 
 class CanonicalLedger(BaseModel):
-    candidates: list[CanonicalCandidate] = Field(min_length=5, max_length=20)
+    candidates: list[CanonicalCandidate] = Field(min_length=5, max_length=24)
 
 
 PASS_PROMPTS = {
@@ -113,6 +120,19 @@ merely because its value is absent. Generate 6-10 nonredundant candidates.
 VISIBLE TASK:
 {task}
 """,
+    "value": """You are the underlying-value and human-fit enumerator for a Deep Research
+clarification controller. Use only the visible task instruction. Deliberately ignore eligibility
+paperwork, exact current-state facts, and surface choices the researcher can recommend. Ask instead:
+after multiple options are feasible, what makes one genuinely fit this user's goals, identity,
+working or learning style, lived experience, autonomy, desired depth versus breadth, resource
+philosophy, speed-versus-polish posture, degree of human involvement or automation, and long-term
+optionality? For every major implementation choice, lift it to the underlying user-owned value or
+trade-off that would make the recommendation flip. Generate 6-10 atomic, task-specific candidates;
+do not add a generic value unless it would change the final report.
+
+VISIBLE TASK:
+{task}
+""",
 }
 
 
@@ -135,6 +155,15 @@ Evidence discipline:
 For explicit or inferred evidence, copy the shortest exact contiguous quote from the task. Otherwise
 use an empty quote. Never invent evidence. Produce a neutral atomic question and a low-burden
 verification version. A question may offer choices but must resolve only one preference axis.
+
+Also assign axis_level:
+- underlying_value: an enduring priority, trade-off, style or acceptable experience;
+- goal: the success outcome or intended use;
+- constraint: a fixed personal limit or eligibility fact;
+- implementation_choice: a surface product, market, program or execution choice that a competent
+  agent could normally compare and recommend;
+- external_fact: something research should determine.
+When possible, retain the underlying value instead of a surface implementation choice.
 
 VISIBLE TASK:
 {task}
@@ -217,6 +246,7 @@ def generate_candidate_pool(
             "directness": evidence.directness,
         }
         row["multi_lens_support"] = len({item[0] for item in row["source_proposal_ids"]})
+        row["value_lens_support"] = any(item.startswith("V") for item in row["source_proposal_ids"])
     return {
         "model": f"{model_name}/{reasoning_effort}",
         "candidate_input_visibility": "task instruction only",
@@ -256,6 +286,13 @@ def score_candidate(candidate: dict, calibrator: dict, policy: str) -> dict:
     params = calibrator[policy]
     i = candidate["importance"] / 5
     o = _ownership(candidate, policy)
+    p = calibrator.get("preference_potency", {
+        "underlying_value": 1.0,
+        "goal": 0.95,
+        "constraint": 0.75,
+        "implementation_choice": 0.55,
+        "external_fact": 0.0,
+    })[candidate["axis_level"]]
     a = calibrator["answer_form_priors"][candidate["answer_form"]]
     r = candidate["residuality_after_research"] / 5
     x = candidate["counterfactual_strength"] / 5
@@ -265,8 +302,8 @@ def score_candidate(candidate: dict, calibrator: dict, policy: str) -> dict:
     e = evidence["strength"]
     d = evidence["directness"]
     verification = (1 - e) + params["lambda_verification"] * e * (1 - d) * m
-    raw = i * o * a * r * x * verification - params["burden_penalty"] * b
-    critical_rank = i * m * x * (1 - d)
+    raw = i * p * o * a * r * x * verification - params["burden_penalty"] * b
+    critical_rank = i * p * m * x * (1 - d)
     critical_override = (
         policy == "v4r"
         and candidate["importance"] >= 4
@@ -275,17 +312,25 @@ def score_candidate(candidate: dict, calibrator: dict, policy: str) -> dict:
         and evidence["relation"] != "explicit"
         and candidate["ownership"] not in {"research_owned", "normative"}
         and candidate["candidate_kind"] not in {"research_fact", "normative_floor"}
+        and candidate["axis_level"] != "external_fact"
     )
-    score = raw + (params.get("critical_bonus", 0.0) if critical_override else 0.0)
+    value_bonus = (
+        params.get("value_lens_bonus", 0.0)
+        if candidate.get("value_lens_support") and candidate["axis_level"] in {"underlying_value", "goal"}
+        else 0.0
+    )
+    score = raw + (params.get("critical_bonus", 0.0) if critical_override else 0.0) + value_bonus
     return {
         **candidate,
         "answerability_calibrated": a,
         "ownership_weight": o,
+        "preference_potency": p,
         "utility_raw": raw,
         "utility": score,
         "critical_rank": critical_rank,
         "critical_override": critical_override,
-        "score_terms": {"I": i, "O": o, "A": a, "R": r, "X": x, "E": e, "D": d, "M": m, "B": b},
+        "value_lens_bonus_applied": value_bonus,
+        "score_terms": {"I": i, "P": p, "O": o, "A": a, "R": r, "X": x, "E": e, "D": d, "M": m, "B": b},
     }
 
 
@@ -293,6 +338,8 @@ def _eligible(row: dict, policy: str, minimum: float) -> bool:
     if row["ownership"] in {"research_owned", "normative"}:
         return False
     if row["candidate_kind"] in {"research_fact", "normative_floor"}:
+        return False
+    if row["axis_level"] == "external_fact":
         return False
     if row["validated_evidence"]["relation"] == "explicit":
         return False
@@ -310,26 +357,37 @@ def select_questions(pool: dict, calibrator: dict, policy: Literal["v4a", "v4r"]
     selected: list[dict] = []
     used_groups: set[str] = set()
     nonpreference_count = 0
+    surface_choice_count = 0
 
     def can_add(row: dict) -> bool:
-        nonlocal nonpreference_count
+        nonlocal nonpreference_count, surface_choice_count
         if row["overlap_group"] in used_groups:
             return False
         if row["candidate_kind"] in {"personal_constraint", "current_state"} and nonpreference_count >= 1:
             return False
+        if row["axis_level"] == "implementation_choice" and surface_choice_count >= params.get("maximum_surface_choices", 1):
+            return False
         return True
 
     def add(row: dict) -> None:
-        nonlocal nonpreference_count
+        nonlocal nonpreference_count, surface_choice_count
         selected.append(row)
         used_groups.add(row["overlap_group"])
         if row["candidate_kind"] in {"personal_constraint", "current_state"}:
             nonpreference_count += 1
+        if row["axis_level"] == "implementation_choice":
+            surface_choice_count += 1
 
     if policy == "v4r":
         critical = sorted(
             [row for row in eligible if row["critical_override"] and row["critical_rank"] >= params["critical_threshold"]],
-            key=lambda row: (row["critical_rank"], row["utility"], row["multi_lens_support"]),
+            key=lambda row: (
+                row["axis_level"] in {"underlying_value", "goal"},
+                row.get("value_lens_support", False),
+                row["critical_rank"],
+                row["utility"],
+                row["multi_lens_support"],
+            ),
             reverse=True,
         )
         for row in critical:
@@ -360,7 +418,7 @@ def select_questions(pool: dict, calibrator: dict, policy: Literal["v4a", "v4r"]
         })
     return {
         "policy": policy,
-        "formula": "I*O*A*R*X*((1-E)+lambda*E*(1-D)*M)-mu*B + critical_override_bonus",
+        "formula": "I*P*O*A*R*X*((1-E)+lambda*E*(1-D)*M)-mu*B + critical_override_bonus + value_lens_bonus",
         "calibrator_schema": calibrator["schema_version"],
         "question_cap": params["maximum_questions"],
         "selected": output_selected,
@@ -374,4 +432,3 @@ def format_question(selection: dict) -> str:
         return ""
     preface = "These answers would materially change the research recommendations:"
     return preface + "\n" + "\n".join(f"{index}. {question}" for index, question in enumerate(questions, 1))
-

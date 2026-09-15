@@ -15,6 +15,7 @@ def candidate(**overrides):
         "axis": "speed versus durability",
         "candidate_kind": "preference",
         "ownership": "user_owned",
+        "axis_level": "underlying_value",
         "answer_form": "ordinal_tradeoff",
         "importance": 5,
         "wrong_default_cost": 5,
@@ -27,6 +28,7 @@ def candidate(**overrides):
         "verification_question": "I infer speed matters most; should I optimize for it?",
         "rationale": "Changes the plan.",
         "multi_lens_support": 2,
+        "value_lens_support": True,
     }
     row.update(overrides)
     return row
@@ -89,3 +91,20 @@ def test_diversity_and_question_cap_are_deterministic():
     result = select_questions({"canonical_candidates": rows}, calibrator, "v4r")
     assert len(result["selected"]) == 4
     assert len({item["overlap_group"] for item in result["selected"]}) == 4
+
+
+def test_surface_implementation_choices_take_at_most_one_slot():
+    calibrator = load_calibrator(ROOT / "calibrator_v1.json")
+    rows = []
+    for index in range(6):
+        row = candidate(
+            candidate_id=f"C{index:02d}",
+            source_proposal_ids=[f"V{index:02d}"],
+            overlap_group=f"g{index}",
+            decision_slot=f"slot{index}",
+            axis=f"axis{index}",
+            axis_level="implementation_choice" if index < 5 else "underlying_value",
+        )
+        rows.append(enrich(row))
+    result = select_questions({"canonical_candidates": rows}, calibrator, "v4r")
+    assert sum(item["axis_level"] == "implementation_choice" for item in result["selected"]) <= 1
