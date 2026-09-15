@@ -1,0 +1,23 @@
+project: ieo-v4-ask-what-matters
+status: protocol_locked
+updated: 2026-09-15
+question: >-
+  Can an explicit importance-evidence-ownership controller improve critical preference acquisition
+  and P_strict under a stock-matched clarification burden?
+development_tasks: [T01, T02, T05]
+internal_validation_tasks: [T08, T11]
+untouched_future_tasks: 10
+current_hypothesis: H1
+hypotheses:
+  H1:
+    status: active
+    intervention: multi-lens candidate generation plus deterministic V4A/V4R selection
+    prediction: V4R improves development ResolvedRecall@AskableHigh without exceeding stock mean burden by more than one atomic question
+stopping_rule:
+  maximum_architecture_iterations: 2
+  full_report_gate: development process gate in protocol.md
+artifacts:
+  protocol: pilot/ieo_v4_calibrated_v0_94/protocol.md
+  findings: pilot/ieo_v4_calibrated_v0_94/findings.md
+  log: pilot/ieo_v4_calibrated_v0_94/research-log.md
+
