@@ -1,0 +1,470 @@
+{
+  "protocol_version": "v0.96",
+  "seed": "20260915",
+  "sampling_unit": "identity line or bullet fact; section headings excluded",
+  "sample_size_rule": "floor(n/2)",
+  "source_workbook": "/Users/lora/Documents/Codex/2026-09-12/a/outputs/0913_pdr_bench_15_cold_start_and_micro_rubrics_v0_82.xlsx",
+  "source_workbook_sha256": "9b0383ece9f4441b15c87f8b6d51a2ebf2465b0897b8a3ab2ae421ff15d5e7e5",
+  "source_asset": "/Users/lora/Documents/Codex/2026-09-12/a/workbook_read/eval_assets.json",
+  "tasks": [
+    {
+      "task_id": "T01",
+      "persona_unit_count": 44,
+      "selected_unit_count": 22,
+      "selected_fraction": 0.5,
+      "selected_units": [
+        {
+          "original_index": 0,
+          "section": "PROFILE",
+          "text": "User1 — Li Chen, male, age 19–21.",
+          "selection_hash": "061746679fa4a2c2c028063ba7ea43eee26f4c12fd47bffa23b6812edbe23b2f"
+        },
+        {
+          "original_index": 1,
+          "section": "IDENTITY / EDUCATION",
+          "text": "Undergraduate in Computer Science and Technology at a prestigious university in Jiangsu.",
+          "selection_hash": "4a2c1b4211fe38b42baa159276a0dd5eef8904cfaa9755e68ace026efb4b4092"
+        },
+        {
+          "original_index": 4,
+          "section": "IDENTITY / EDUCATION",
+          "text": "Grew up in Suzhou, Jiangsu.",
+          "selection_hash": "42180c0b01342ccf1748e412ea2280c43f5cdedec0418f54a0a012b2cfdcda5d"
+        },
+        {
+          "original_index": 5,
+          "section": "FAMILY / BACKGROUND",
+          "text": "Parents are civil servants.",
+          "selection_hash": "2b68caf5a87337f35a0f2e276768ec71b4e8dae63fb1a7f869afb6f9d8d9dd84"
+        },
+        {
+          "original_index": 6,
+          "section": "FAMILY / BACKGROUND",
+          "text": "Warm family atmosphere; parents strongly support academic and future development.",
+          "selection_hash": "3250ad406b196937d5fdff0fa104dfe8e5ae77c9a37e272b90ab2ad24035fc66"
+        },
+        {
+          "original_index": 10,
+          "section": "DIGITAL / LEARNING BEHAVIOR",
+          "text": "Uses PyCharm, VS Code and online learning platforms such as Coursera/Bilibili learning for 5+ hours daily.",
+          "selection_hash": "1f62eb09f2f7d910bceaa6c6237789676d1ac1d223ae5c2a8e44e9d14b057c2d"
+        },
+        {
+          "original_index": 13,
+          "section": "DIGITAL / LEARNING BEHAVIOR",
+          "text": "Uses WeChat increasingly to discuss topics beyond study.",
+          "selection_hash": "1c95539b968fea56d82ad07327198bee315319818526bae507463864972dad8e"
+        },
+        {
+          "original_index": 16,
+          "section": "DIGITAL / LEARNING BEHAVIOR",
+          "text": "Reads technical books including AI textbooks and has started exploring cognitive psychology.",
+          "selection_hash": "1e7f92f2856239c377d713017bd6cd8dcd5b5f7317604342f889f5acee467c41"
+        },
+        {
+          "original_index": 17,
+          "section": "DAILY ROUTINE / TIME",
+          "text": "Usually sleeps around 11 PM and wakes around 7 AM.",
+          "selection_hash": "23e1ccc525c166a140f785209fc2c4da5b4974b0388d1fc2f14707deb9c1aff1"
+        },
+        {
+          "original_index": 18,
+          "section": "DAILY ROUTINE / TIME",
+          "text": "Evenings are especially productive for study and project work.",
+          "selection_hash": "4689919bfd838de8902854a10d095957ff186522c62ef77a79c04d84d5de820e"
+        },
+        {
+          "original_index": 19,
+          "section": "DAILY ROUTINE / TIME",
+          "text": "Early mornings may be used for exercise or reading.",
+          "selection_hash": "0c4978f18c7ebacb0eeec0ae3d1455c0356d8214e6e7b26d69ff6e660255ab21"
+        },
+        {
+          "original_index": 20,
+          "section": "DAILY ROUTINE / TIME",
+          "text": "Strong planner: creates study plans/task lists in advance and follows them closely.",
+          "selection_hash": "3ff3326a0703a0497c31471af9418d9a78a0f22819e4173149e104b7cfe6662e"
+        },
+        {
+          "original_index": 22,
+          "section": "DAILY ROUTINE / TIME",
+          "text": "Recently attends more technology exchange events in the city center.",
+          "selection_hash": "57e42cb05d8cd82cdbaff48dd2d704990fad3b231789ab5faecb4fafe65c4f83"
+        },
+        {
+          "original_index": 24,
+          "section": "PERSONALITY / DECISION STYLE",
+          "text": "Focused, patient and likes independent thinking.",
+          "selection_hash": "5aef3ed090634861b2578194b762fe5bcaac4d79ead74d537d599a1877e523f1"
+        },
+        {
+          "original_index": 26,
+          "section": "PERSONALITY / DECISION STYLE",
+          "text": "Usually researches extensively before making an independent decision.",
+          "selection_hash": "1ebcf7a40802c01577b5a4c9e29004d2a610f0047cc4edac96457898ba0592ab"
+        },
+        {
+          "original_index": 29,
+          "section": "CONSUMPTION / SHOPPING",
+          "text": "Main spending is on study materials, electronics and hardware accessories.",
+          "selection_hash": "5d93c5ee71cf54ef2029fc0e619981eabe7728e88b8c52a4e38876e79414077b"
+        },
+        {
+          "original_index": 30,
+          "section": "CONSUMPTION / SHOPPING",
+          "text": "Recently willing to try some higher-end electronics/smart-home products when useful.",
+          "selection_hash": "5cf24f2a5c41f5cbb59b5174cd83bb2929d86c0207accfacf400bd9fc1a63392"
+        },
+        {
+          "original_index": 31,
+          "section": "CONSUMPTION / SHOPPING",
+          "text": "Generally frugal.",
+          "selection_hash": "56b9e60727981088ecaeeed0223fc26ec38131ff3f7921a7c2ee9baf2dfaf4cb"
+        },
+        {
+          "original_index": 36,
+          "section": "HEALTH / EXERCISE",
+          "text": "Generally healthy.",
+          "selection_hash": "5d93609509f95491ef4cd6eff7a820eb7874d4d96d554258971bcfcf6ab7c0d1"
+        },
+        {
+          "original_index": 37,
+          "section": "HEALTH / EXERCISE",
+          "text": "Enjoys basketball and exercise.",
+          "selection_hash": "1959a4fff5752f5d0cc8ab80ed40ae9bbf38a5d691b8fd94a401b9e100e296c8"
+        },
+        {
+          "original_index": 38,
+          "section": "HEALTH / EXERCISE",
+          "text": "Pays increasing attention to sleep quality and healthy routines.",
+          "selection_hash": "35bc475f8a2149d39a3b9ed08cd3403421a72acd2fa0bf15ac67b7eb9fedd838"
+        },
+        {
+          "original_index": 39,
+          "section": "FINANCE",
+          "text": "Income mainly from parents and scholarships; occasional competition/programming prizes.",
+          "selection_hash": "51c6a077682d674973077b86481eb274385733b07e6ffaad3a244a59ad3e3687"
+        }
+      ],
+      "cold_instruction_sha256": "933064c2eff55184e40e6be886da13af47a87e1c7c24db19d8a5fccd04ffed4a",
+      "raw50_input_path": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_raw50_ask_noask_3task_v0_96/inputs/T01_raw50.txt",
+      "raw50_input_sha256": "ea1bcf758c418e868a875c6d0be571a7c895b2d190f79cba27fb35881cde35bd"
+    },
+    {
+      "task_id": "T02",
+      "persona_unit_count": 50,
+      "selected_unit_count": 25,
+      "selected_fraction": 0.5,
+      "selected_units": [
+        {
+          "original_index": 3,
+          "section": "IDENTITY / EDUCATION",
+          "text": "Graduate work focuses on new-media technology and public-opinion analysis.",
+          "selection_hash": "35b8992ea9105577873c90ee4060bdb34ac8f2eb9756d75eba09660f024e6288"
+        },
+        {
+          "original_index": 4,
+          "section": "IDENTITY / EDUCATION",
+          "text": "Grew up in Beijing; values social responsibility and personal fulfillment.",
+          "selection_hash": "2dc7f8f012eb9235f88e1c2e39fd25c47250996d85b5354c9a57810468753de0"
+        },
+        {
+          "original_index": 5,
+          "section": "FAMILY",
+          "text": "Lives with parents in a harmonious family.",
+          "selection_hash": "44debac822b7f7bc85f77884939552646b112f33dd60d9c4ebec931923b52325"
+        },
+        {
+          "original_index": 6,
+          "section": "FAMILY",
+          "text": "Father is a civil servant: rigorous, rule-oriented.",
+          "selection_hash": "2bdfd6698b16928f506f65a059d6ccae79808e1484152339c000b24a3ca53978"
+        },
+        {
+          "original_index": 11,
+          "section": "LIVING ENVIRONMENT",
+          "text": "Grew up with strong access to educational/cultural resources, fostering interest in current affairs and social issues.",
+          "selection_hash": "26dd9115b8e79ce6ade88266b7bfbd425f63a0b2c7f614227c007d3f6f0fe2e4"
+        },
+        {
+          "original_index": 13,
+          "section": "DIGITAL / ACADEMIC BEHAVIOR",
+          "text": "Roughly 1.5 hours/day on news/trending topics.",
+          "selection_hash": "016303687e858795c99c30b1917eeeb8236a756b5f9fc63d2dc1ffb3af23a715"
+        },
+        {
+          "original_index": 16,
+          "section": "DIGITAL / ACADEMIC BEHAVIOR",
+          "text": "Proficient with Word, Excel and Python for research/content work.",
+          "selection_hash": "3d3342c598aa8f4f48558151bb99f79ab2276a8520bae6fd57b60924d189c644"
+        },
+        {
+          "original_index": 19,
+          "section": "ROUTINE / TIME",
+          "text": "Recently spends more on coffee beans/brewing equipment but remains rational overall.",
+          "selection_hash": "058bbb65582a540aad091289148a86d517e901fc47fa59afadb99ae1ec0caf8e"
+        },
+        {
+          "original_index": 20,
+          "section": "ROUTINE / TIME",
+          "text": "Prefers evenings for reading/reflection; mornings for light exercise/breakfast.",
+          "selection_hash": "1dd8b46d6d7570a6a740a4c8c152618bea2b2a6bdd077785bd5be09a4120f62c"
+        },
+        {
+          "original_index": 22,
+          "section": "ROUTINE / TIME",
+          "text": "Often visits university library, parks and music cafes; recently started weekly gym visits.",
+          "selection_hash": "5f4596906f64309fcce3c26a3729545e4e6cfa13d034ced348f8f71a437d1a93"
+        },
+        {
+          "original_index": 23,
+          "section": "PERSONALITY / DECISION STYLE",
+          "text": "Calm, critical thinker, analytical and observant.",
+          "selection_hash": "1665266a07d52f606ede81d71e24d2e3d38e38ee4dbd400a77280657463ca85d"
+        },
+        {
+          "original_index": 24,
+          "section": "PERSONALITY / DECISION STYLE",
+          "text": "Likes getting to the essence of problems.",
+          "selection_hash": "306a322ccc7229792daaf357776a275c5f604e99d9779a869dd55c850884c65d"
+        },
+        {
+          "original_index": 25,
+          "section": "PERSONALITY / DECISION STYLE",
+          "text": "Makes decisions independently but considers authoritative opinions.",
+          "selection_hash": "4b9a95bd45b36a1664df9b4f7905a697edb101786db4e0bc49605fa667206f47"
+        },
+        {
+          "original_index": 27,
+          "section": "PERSONALITY / DECISION STYLE",
+          "text": "Good listener; communicates complex issues clearly.",
+          "selection_hash": "2d9ee99ce70fd0f5ddb7e99e18dbcab45a1cdbd81e42f51b339def570a3206e5"
+        },
+        {
+          "original_index": 31,
+          "section": "LIFESTYLE / CONSUMPTION",
+          "text": "Shops online for convenience.",
+          "selection_hash": "39a7a62c75030017882be438d80cc2932f8ecdf23c30bb8ce684553e4eb67da2"
+        },
+        {
+          "original_index": 33,
+          "section": "TRAVEL",
+          "text": "Travels 2–3 times/year, mainly during holidays.",
+          "selection_hash": "1106bb67bafa7d7176720ee3327dd335d42e80a98168917ce3007aa790c8326c"
+        },
+        {
+          "original_index": 38,
+          "section": "CONTENT / CULTURE",
+          "text": "Saves articles about social issues, technology and communication research.",
+          "selection_hash": "2b393828f39ac2b8bbe7bb06e7725535f60cbc45b08895c2ec14c524023d3393"
+        },
+        {
+          "original_index": 39,
+          "section": "CONTENT / CULTURE",
+          "text": "Watches documentaries, academic lectures and outdoor/travel videos.",
+          "selection_hash": "129564f8f44acf63d4180e6187e3b0e1867133346e5e841ad4f465c34872e1b6"
+        },
+        {
+          "original_index": 40,
+          "section": "CONTENT / CULTURE",
+          "text": "Reads nonfiction and sociology; interested in Haruki Murakami.",
+          "selection_hash": "3813a85edac3a8a6e9a4a48e25b5f4878915dec52aa84a045439268edff66c7c"
+        },
+        {
+          "original_index": 41,
+          "section": "CONTENT / CULTURE",
+          "text": "Likes thoughtful opinions and culturally rich content.",
+          "selection_hash": "0fe080e7578998bb3db0ba3534385576db41fcbd35191d63b5434147387d4a38"
+        },
+        {
+          "original_index": 42,
+          "section": "HEALTH",
+          "text": "Runs twice/week (~4 km each).",
+          "selection_hash": "126f443c93e2cc3d6cf3c40f516b1ec515201e61206971134107b3fb4c7293a4"
+        },
+        {
+          "original_index": 43,
+          "section": "HEALTH",
+          "text": "Does yoga; occasional badminton.",
+          "selection_hash": "382e6aaad8918ba641eea9ff2d50eb36d7b67a58275c91818d30340d05c26fc3"
+        },
+        {
+          "original_index": 44,
+          "section": "HEALTH",
+          "text": "Healthy overall; academic stress managed through exercise/meditation/music.",
+          "selection_hash": "13441f0afca9fbb6b98c2f029f9fa35b527479b6e992702435d1431bc6e0effd"
+        },
+        {
+          "original_index": 45,
+          "section": "FINANCE",
+          "text": "Income mainly scholarships and part-time writing/submissions.",
+          "selection_hash": "50ff6e4e5c670dedfe292758fe09b4951e7ba9e8f8374db9b1e3df55e6075311"
+        },
+        {
+          "original_index": 46,
+          "section": "FINANCE",
+          "text": "Some savings and study equipment; no debt.",
+          "selection_hash": "0569ac56cb03b45fed99f62724976a4e642aa483f83e4a7b332ba6a395f6bc48"
+        }
+      ],
+      "cold_instruction_sha256": "77a97106fe1c78458f6eb8961a7c64e4f7c4ee613a32336485b1b74b554fdd4b",
+      "raw50_input_path": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_raw50_ask_noask_3task_v0_96/inputs/T02_raw50.txt",
+      "raw50_input_sha256": "42af9e5a692e7eae217493fdaa84774ec0a4b44c3244219f3faac566262a4578"
+    },
+    {
+      "task_id": "T03",
+      "persona_unit_count": 49,
+      "selected_unit_count": 24,
+      "selected_fraction": 0.4897959183673469,
+      "selected_units": [
+        {
+          "original_index": 2,
+          "section": "IDENTITY / EDUCATION / CAREER",
+          "text": "MBA from Shanghai Jiao Tong University, specializing in marketing and business management.",
+          "selection_hash": "66d67f9f4cccc1d75f8776098ce449214432aba7baa288627f2192787eeb5adc"
+        },
+        {
+          "original_index": 5,
+          "section": "IDENTITY / EDUCATION / CAREER",
+          "text": "Values family and career development; good at combining Eastern/Western thinking.",
+          "selection_hash": "6fa8b95c7884bafe3281742c08c646656f75f91d180a5c0beba5dbb11fee9715"
+        },
+        {
+          "original_index": 8,
+          "section": "FAMILY",
+          "text": "Daughter, age 8: likes painting/dance.",
+          "selection_hash": "7c3a0a22c2ae55c5fed637fe33e4b2c53095b652ff8b43bce2757bc0d98f60a5"
+        },
+        {
+          "original_index": 10,
+          "section": "FAMILY",
+          "text": "Family has a yellow Labrador, Xiao Huang.",
+          "selection_hash": "2a191dd8e23b27d978ca3e0bb40ac0e83503c08a854d7e31061b1c28c7a08ecd"
+        },
+        {
+          "original_index": 11,
+          "section": "FAMILY",
+          "text": "Harmonious household emphasizing communication and mutual growth.",
+          "selection_hash": "276848f6b4ea47561a20afe878c6b5a558f5dd056b584c0e4d03349c8808855e"
+        },
+        {
+          "original_index": 12,
+          "section": "FAMILY",
+          "text": "Liu is primary breadwinner; wife focuses more on children's education/household.",
+          "selection_hash": "17022fc6b3c412295850920fda989ad8aed554960fdaa398987725adc8a6a796"
+        },
+        {
+          "original_index": 13,
+          "section": "LIVING / LOCATION",
+          "text": "Lives in Pudong, Shanghai, in a high-end community with schools, malls and parks.",
+          "selection_hash": "4138c7aae509f8dea502fbda512cbd688fbc3413f6264d098ee755f46bcb4280"
+        },
+        {
+          "original_index": 15,
+          "section": "LIVING / LOCATION",
+          "text": "Shanghai + Suzhou background shaped pragmatism and attention to quality of life.",
+          "selection_hash": "87f91f105dfa47c99828c3c740d73cea3f5448d9f84a26f8d77bb73a10951da2"
+        },
+        {
+          "original_index": 17,
+          "section": "DIGITAL / PROFESSIONAL BEHAVIOR",
+          "text": "Uses Zhihu and Dedao for industry knowledge.",
+          "selection_hash": "6770f72ef36ec70bf5037097811c016e930f022d7a235976edfce4c702f5ba7f"
+        },
+        {
+          "original_index": 20,
+          "section": "DIGITAL / PROFESSIONAL BEHAVIOR",
+          "text": "Focuses on market trends and innovative management models.",
+          "selection_hash": "71cdceb74b0573ef7deb2b57db7eb93f87a85a0de2d35df267efab6087af94ac"
+        },
+        {
+          "original_index": 23,
+          "section": "ROUTINE / TIME",
+          "text": "Fixed monthly household budget.",
+          "selection_hash": "5ebbb18a3ef7fe4a0c9b44fec0a12de5e547c690e5228f288865573c40336ab9"
+        },
+        {
+          "original_index": 24,
+          "section": "ROUTINE / TIME",
+          "text": "Family trips periodically.",
+          "selection_hash": "64ae6d4b37dc91ae4306e6a05ed243fb2500738831e1ea3855e14ad20019a171"
+        },
+        {
+          "original_index": 26,
+          "section": "ROUTINE / TIME",
+          "text": "High-efficiency work in mornings; meetings/team communication afternoons; evenings reading/project planning.",
+          "selection_hash": "3a093714f2e91626864bd973d53b7eb9a97367b302ee209791743cd35a0f9157"
+        },
+        {
+          "original_index": 28,
+          "section": "PERSONALITY / DECISION STYLE",
+          "text": "Pragmatic, rational, detail-oriented and efficiency-focused.",
+          "selection_hash": "36e86e5ef95280b6992116d7f5ed1c18809076a5cd454dbd47c8073af0a5b7b0"
+        },
+        {
+          "original_index": 32,
+          "section": "PERSONALITY / DECISION STYLE",
+          "text": "Family issues decided together with wife.",
+          "selection_hash": "86dd3cd88bf0473a8bd7b123ab032340caa831803691e6b59e9338cbc53f3c6b"
+        },
+        {
+          "original_index": 35,
+          "section": "CONSUMPTION",
+          "text": "Prefers durable, higher-end household goods when worthwhile.",
+          "selection_hash": "85fdbcb14b6f632232a396fcc8c6a872d94efc793746d8d18e79c3ce3f842ffa"
+        },
+        {
+          "original_index": 36,
+          "section": "CONSUMPTION",
+          "text": "Will spend meaningfully on children's education.",
+          "selection_hash": "061d84812c8cd26daf4c710b0c115416834089abe3cbecf5c7409060dbf26800"
+        },
+        {
+          "original_index": 38,
+          "section": "TRAVEL",
+          "text": "Family-oriented trips.",
+          "selection_hash": "788e5dca567428e27f315323d7e4eb2e1963ed1d999d112b3e2a1aaaeadfd458"
+        },
+        {
+          "original_index": 40,
+          "section": "TRAVEL",
+          "text": "Self-guided; likes planning.",
+          "selection_hash": "590bb35e42e819a946b46ae3a369f82d4e99d7ffa889f4d6dc61af890a6644f5"
+        },
+        {
+          "original_index": 41,
+          "section": "TRAVEL",
+          "text": "Values deeper experiences and family interaction.",
+          "selection_hash": "609e8928f9161e2a9eb68e9f233116e469e744943ab447f322720d5e085e96ea"
+        },
+        {
+          "original_index": 43,
+          "section": "CONTENT",
+          "text": "Reads management/business material and case studies, including Harvard Business Review-type content.",
+          "selection_hash": "3a6c1b59ba69cdfd5e11c9ab737413353285e504010b6806531b917bd547ba29"
+        },
+        {
+          "original_index": 44,
+          "section": "CONTENT",
+          "text": "Interested in market trends, innovative management and business cases.",
+          "selection_hash": "340851489b8148416e395b49bbfa87941cac11c6b901ff7e60d8b624dfd7eff1"
+        },
+        {
+          "original_index": 46,
+          "section": "FINANCE / RISK",
+          "text": "Invests in stocks/funds.",
+          "selection_hash": "0911829f4e9317ead49b174343ed6f08e982d3506c4b7e34a2626375c913a2df"
+        },
+        {
+          "original_index": 47,
+          "section": "FINANCE / RISK",
+          "text": "Risk-conscious and attentive to risk-return balance.",
+          "selection_hash": "45a76f7cc9d7408f64c3f9c3e70276b936eca7c2f3f5b5e4ddfb343a4368778c"
+        }
+      ],
+      "cold_instruction_sha256": "a98d4cc7b875bff66eda3d7fb90c24bd704cbaa5de34344e72289886fa47dbef",
+      "raw50_input_path": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_raw50_ask_noask_3task_v0_96/inputs/T03_raw50.txt",
+      "raw50_input_sha256": "ebdca97716d599347e02fab3296396849e25a8d18cd061e6d9407a32e5f7cf6c"
+    }
+  ]
+}
