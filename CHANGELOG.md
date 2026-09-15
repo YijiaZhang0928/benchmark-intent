@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.92 Three-model clarification-routing plan - 2026-09-15
+
+- 将 `ASK_USER / INFER_FROM_EVIDENCE / RESEARCH / BRANCH / DEFAULT` 定义为 ask-capable harness 的来源路由，不作为“多问比不问好”的替代假设；cold-start + ask 下，高影响未知偏好优先询问，branch 只作无法取得答案后的降级。
+- 综合既有证据将问题拆成 native product non-initiation、DeerFlow 2.0 burden/over-bundling、stock ODR 低收益槽位，以及 IEO-v3 高精度但 low-recall/latent-axis miss；下游 answer use 不是当前首要瓶颈。
+- 冻结 Stage A：十个 development tasks × 三模型 × 四种 clarification policy × 两重复，共 240 个 clarification-only episodes；用 routing confusion matrix、Recall@AskableHigh、precision、semantic diversity 和 over-ask index 决定 IEO-v4 是否进入全报告。
+- 冻结 Stage B：五个 untouched holdouts × 三模型 × task-only/full-persona × ask/no-ask × 两重复，共 120 份同 ODR graph 报告；主测 `C1-C0` 与 H3 `C1-F0`，并报告研究深度与 common-quality no-harm。
+- 记录满意度构念边界与 USD 140–160 初始 API/search 余额建议；Kimi 与 native DR products 延后为 ecological extension，避免污染核心因果对照。
+
 ## v0.90 Five-task strict IEO-v3 result - 2026-09-14
 
 - 完成预注册 workbook 行 2/3/6/9/12 的 10 个 counted Deep Research cells 与 10 次 67-leaf 单 pass 盲评；全部通过 fetch/长度/hash/criterion validation。

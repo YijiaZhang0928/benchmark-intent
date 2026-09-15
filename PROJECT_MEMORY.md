@@ -2,11 +2,23 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-14
-当前版本：v0.90（five-task strict-cold-start IEO-v3 result）
+最后更新：2026-09-15
+当前版本：v0.92（three-model clarification-routing experiment plan）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：三模型 clarification routing 与 H3 2×2 计划
+
+用户追问 `ask user / infer by evidence / offer multiple ways` 是否偏离“模型多问比直接推断更好”的原假设。新决定将这些词明确为 ask-capable harness 内部的来源路由，而不是四个竞争实验条件：高影响、弱证据、user-owned 且现在可回答的值走 `ASK_USER`；已有明确授权证据走 `INFER_FROM_EVIDENCE`；外部事实走 `RESEARCH`；用户无法回答、拒答、离线或问题预算耗尽时才用 `BRANCH` 暴露条件分支；低影响可逆细节或不可协商正确性底线走 `DEFAULT`。cold-start + ask 条件下，未知高影响偏好不得先 branch 逃避提问。
+
+综合 v0.66–v0.90，现有失败不是统一 over-asking：原生 DR 产品常见 zero-ask/non-initiation；早期 DeerFlow 2.0 首三题问 8/8/7 个顶层字段，存在 burden 与粗 rubric ceiling；stock ODR 往往覆盖较广但 bundling/低收益 state 槽较多；IEO-v3 将 question rows 4.4→3.0、unit yield 0.333→0.467、acquired answer use 达 7/7，却没有提高 macro `Recall@AskableHigh`（0.330→0.320），并在 latent option-space axis、persona-answerability 和 slot allocation 上失败。五题 `P_strict` +0.987 同时伴随更深研究，不能归因为 what-to-ask。
+
+v0.92 冻结两阶段计划。Stage A 在十个 development tasks 上做三模型（`gpt-5.6-sol`、`claude-sonnet-5`、`gemini-3.8-flash`）× DeerFlow 2.0 stock / ODR stock / IEO-v4 / OracleTop3 × 两重复，共 240 个 clarification-only episodes，先定位 under-ask、over-ask、wrong-axis、unsupported inference 与错误来源路由。IEO-v4 只有在 macro `Recall@AskableHigh` 至少提升 0.10、precision 不下降超过 0.10 时进入 Stage B。
+
+Stage B 将五个 untouched holdouts 做 task-only/full-persona × ask/no-ask 2×2，同三模型、两重复、统一 ODR graph/search/fetch，共 120 份 DR reports。主量为 frozen 67-leaf `P_strict`；主对比包括 `C1-C0`、`F0-C0`、`F1-F0` 与 H3 的 `C1-F0`。H3 只有在三模型 mean 都为正、至少四个 holdout pooled direction 为正、paired bootstrap interval 排除零且 common quality 无实质损伤时才计支持。P-score 测 report fit，不等于满意度；真实 satisfaction 结论仍需参与者对 usefulness、personalization、question relevance、burden 与 reuse intention 的盲评。
+
+预算按既有 ODR 平均约 18.8k input / 19.7k output tokens/report 估算：OpenAI USD 100、Anthropic USD 20、Gemini USD 10、Tavily free 1,000 credits 后 USD 10 PAYG（或 USD 30 Project），建议初始总额 USD 140–160。完整计划见 `pilot/clarification_routing_3model_v0_92/PLAN.md`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-14：五题 strict-cold-start IEO-v3 结果
 

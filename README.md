@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.83
+## 当前方向：AskInfer-Bench v0.92
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -74,6 +74,8 @@ v0.89 对 T02 的同步网页阻塞增加真实 1,800 秒进程级硬超时；�
 
 v0.90 完成固定五行结果。`P_strict` 从 stock 平均 5.9835 提高到 IEO-v3 6.9705，paired mean `+0.9870`、median `+0.8475`，4 正 1 负；但 macro `Recall@AskableHigh` 为 0.330→0.320（`-0.010`）。只有 T02 同时出现 critical recall 1/5→2/5、较少 fetch 与 `+2.7203` P gain；T05 问了三个 persona 无法回答的问题并降分，T08/T11 的正分差伴随相同或更差 recall 和更多研究。因此结果支持 system-level report gain，不验证更全面的 what-to-ask mechanism。见 [`RESULTS.md`](pilot/odr_ieo_v3_5task_v0_86/RESULTS.md)。
 
+v0.92 将下一步收敛为来源路由与 untouched-holdout 因果验证。`ASK_USER / INFER_FROM_EVIDENCE / RESEARCH / BRANCH / DEFAULT` 是同一 ask-capable harness 内部的动作选择：它防止把外部事实推给用户，也防止用无依据推断替代高影响偏好提问。Stage A 用十个 development tasks、三模型和四种 clarification policy 做 240 个低成本 first-turn episodes；Stage B 用五个未见 holdout、三模型、两重复做 task-only/full-persona × ask/no-ask 的 120 份同 ODR graph 报告。当前优化目标是固定三问 burden 下提高 `Recall@AskableHigh`，不是继续压缩问题数。完整方案与 API 预算见 [`pilot/clarification_routing_3model_v0_92/PLAN.md`](pilot/clarification_routing_3model_v0_92/PLAN.md)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -93,6 +95,7 @@ v0.90 完成固定五行结果。`P_strict` 从 stock 平均 5.9835 提高到 IE
 - [`pilot/h3_factorial_redesign_v0_78/`](pilot/h3_factorial_redesign_v0_78/)：H3 四条件设计、官方/严格/反事实评分边界、天花板 gate、跨模型成功规则与 API 清单。
 - [`pilot/h3_rubric_expansion_v0_80/`](pilot/h3_rubric_expansion_v0_80/)：15 题严格 rubric 扩展、PDR exact-pair provenance、评分锚点、运行前冻结边界与首批 API 预算假设。
 - [`pilot/h3_cold_start_micro_rubrics_v0_82/`](pilot/h3_cold_start_micro_rubrics_v0_82/)：15 题真正 task-only cold-start 输入、person-swap audit、七维 67-leaf 微 rubric 和 pre-run discrimination gate。
+- [`pilot/clarification_routing_3model_v0_92/`](pilot/clarification_routing_3model_v0_92/)：三模型 clarification routing 诊断、untouched-holdout 2×2 H3、成功门与 API/search 预算计划。
 - [`proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md`](proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md)：当前可写、禁止写、保守英文摘要与升级结果句。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
 - [`proposal_assets/AskInfer-Bench_评测框架_v0.62.png`](proposal_assets/AskInfer-Bench_评测框架_v0.62.png)：3200×1800 主图；同名 SVG 可编辑。
