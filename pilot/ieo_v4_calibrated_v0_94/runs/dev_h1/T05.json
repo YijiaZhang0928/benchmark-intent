@@ -1,0 +1,3455 @@
+{
+  "schema_version": "0.94",
+  "task": "T05",
+  "phase": "development",
+  "generated_at_utc": "2026-09-15T23:25:13.303524+00:00",
+  "model": "gpt-5.6-sol/high",
+  "task_visibility": "instruction only",
+  "task_sha256": "02659524f4f5bce2913d25e2ec68ab355786ded9cb760f2ec80b936a6de759dd",
+  "calibrator_sha256": "f262b9a28cda5f5bde27c7dd6b331c901ab3c836b6f1ca608ed7daa7c0efd49c",
+  "candidate_pool": {
+    "model": "gpt-5.6-sol/high",
+    "candidate_input_visibility": "task instruction only",
+    "passes": {
+      "decision": [
+        {
+          "proposal_id": "D01",
+          "decision_slot": "strategic_goal",
+          "axis": "Primary launch objective",
+          "question": "What should the startup optimize for during its first year after launch?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Rapid student adoption and engagement",
+            "Early recurring-revenue validation",
+            "Measurable learning and career outcomes",
+            "Institutional credibility and campus contracts"
+          ],
+          "report_changes": [
+            "Changes the recommended success metrics, milestones, and experiment priorities",
+            "Changes whether product, revenue, outcomes measurement, or partnerships receive the most resources",
+            "Changes how launch readiness and first-year performance are evaluated"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D02",
+          "decision_slot": "beachhead_audience",
+          "axis": "Initial university-student segment",
+          "question": "Which student segment should be the initial beachhead market?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Nontechnical students seeking practical AI literacy",
+            "Computer science and engineering students building AI skills",
+            "Career-focused students preparing for AI-related employment",
+            "Students seeking responsible academic productivity tools"
+          ],
+          "report_changes": [
+            "Changes the needs-assessment framework and competitor set",
+            "Changes the curriculum, platform functionality, and value proposition",
+            "Changes acquisition channels, messaging, and campus partners"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D03",
+          "decision_slot": "launch_market_scope",
+          "axis": "Geographic scope",
+          "question": "What geographic scope should the first launch target?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "One university or local campus cluster",
+            "One country",
+            "Several countries with similar language and regulations",
+            "Global English-language launch"
+          ],
+          "report_changes": [
+            "Changes market sizing, localization, pricing, and regulatory analysis",
+            "Changes partnership strategy and the number of institutions needed before launch",
+            "Changes support, infrastructure, and marketing complexity"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D04",
+          "decision_slot": "core_offering",
+          "axis": "Initial educational offering",
+          "question": "What should be the core paid learning experience at launch?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Self-paced courses and guided learning paths",
+            "Cohort-based courses with live instruction",
+            "AI tutor with adaptive practice and projects",
+            "Project-based career academy with mentoring"
+          ],
+          "report_changes": [
+            "Changes the minimum viable product and platform feature priorities",
+            "Changes instructor, mentor, content-production, and support requirements",
+            "Changes unit economics, engagement mechanisms, and product-development sequence"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D05",
+          "decision_slot": "revenue_model",
+          "axis": "Subscription and payment model",
+          "question": "Which primary revenue model should the plan be designed around?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Freemium student subscription",
+            "Paid student subscription with a free trial",
+            "Course or credential purchases",
+            "University-funded licenses with student access"
+          ],
+          "report_changes": [
+            "Changes pricing research, conversion funnel, and financial projections",
+            "Changes which value-added services and retention tactics are recommended",
+            "Changes whether sales efforts focus on individual students or institutional buyers"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D06",
+          "decision_slot": "distribution_strategy",
+          "axis": "Role of campus partnerships",
+          "question": "How central should university and campus-organization partnerships be to initial distribution?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Direct-to-student first; partnerships are optional",
+            "Balanced direct acquisition and campus partnerships",
+            "Partnership-led, with direct marketing as support",
+            "Institutional adoption required before broad student launch"
+          ],
+          "report_changes": [
+            "Changes the go-to-market sequence and allocation between digital marketing and partnership sales",
+            "Changes the types of pilots, ambassadors, faculty sponsors, and university agreements proposed",
+            "Changes expected sales-cycle length, launch dependencies, and acquisition costs"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D07",
+          "decision_slot": "product_build_strategy",
+          "axis": "Speed versus technical control",
+          "question": "What implementation style should guide the first version of the platform?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "No-code or low-code for maximum launch speed",
+            "Managed services and APIs with limited custom development",
+            "Custom application using established cloud and AI services",
+            "Highly controlled proprietary stack despite slower delivery"
+          ],
+          "report_changes": [
+            "Changes the recommended technology stack and architecture",
+            "Changes development cost, staffing needs, vendor dependence, and delivery schedule",
+            "Changes the roadmap for security, data portability, and future scalability"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D08",
+          "decision_slot": "prelaunch_budget",
+          "axis": "Available cash budget",
+          "question": "What is the maximum cash budget available from concept through launch, excluding any financing not yet secured?",
+          "answer_form": "exact_numeric",
+          "plausible_answers": [
+            "$25,000",
+            "$100,000",
+            "$300,000",
+            "$1,000,000"
+          ],
+          "report_changes": [
+            "Changes staffing, outsourcing, platform scope, and marketing allocations",
+            "Changes the feasible depth of content production, pilots, and compliance work",
+            "Changes contingency reserves and which launch milestones can be funded concurrently"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D09",
+          "decision_slot": "financing_preference",
+          "axis": "Preferred financing path",
+          "question": "Which financing path should the strategy prioritize?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Bootstrap from founder resources and early revenue",
+            "Grants, competitions, and university-backed funding",
+            "Angel or pre-seed equity investment",
+            "Strategic corporate or education-sector investors"
+          ],
+          "report_changes": [
+            "Changes the financing timeline, milestones, and evidence required before fundraising",
+            "Changes growth expectations, ownership implications, and financial-risk assumptions",
+            "Changes which partnerships, pitch materials, and revenue milestones are emphasized"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D10",
+          "decision_slot": "risk_posture",
+          "axis": "Acceptable product and compliance risk",
+          "question": "How conservative should the launch be regarding student data, AI-generated guidance, academic-integrity concerns, and unproven learning claims?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Highly conservative: minimal data, narrow AI use, and independently supported claims",
+            "Moderate: controlled AI features with strong safeguards and pilot evidence",
+            "Growth-oriented: broader personalization and rapid experimentation within legal requirements",
+            "Aggressive: maximize feature innovation and address controls after validation"
+          ],
+          "report_changes": [
+            "Changes data collection, model usage, moderation, security, and governance requirements",
+            "Changes which features can enter the MVP and how quickly experiments can run",
+            "Changes legal review, institutional acceptability, reputational safeguards, and launch criteria"
+          ],
+          "source_pass": "decision"
+        }
+      ],
+      "flip": [
+        {
+          "proposal_id": "F01",
+          "decision_slot": "core_value_proposition",
+          "axis": "Primary learner outcome",
+          "question": "Which learner outcome should the startup optimize for first?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Academic performance and course mastery",
+            "Career readiness and employability"
+          ],
+          "report_changes": [
+            "If academic performance is primary, the plan will prioritize curriculum-aligned tutoring, study planning, faculty/LMS integrations, and mastery or retention metrics.",
+            "If employability is primary, the plan will prioritize portfolio projects, interview preparation, industry credentials, employer partnerships, and job-readiness metrics."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F02",
+          "decision_slot": "commercial_model",
+          "axis": "Primary paying customer",
+          "question": "Should the initial business model sell primarily to individual students or to universities?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Direct-to-student subscriptions",
+            "University-funded licenses"
+          ],
+          "report_changes": [
+            "For direct-to-student sales, the deliverable will emphasize self-service onboarding, monthly pricing, creator and ambassador acquisition, referral loops, and consumer CAC-to-LTV targets.",
+            "For university-funded licenses, it will emphasize paid institutional pilots, annual contracts, procurement timelines, SSO/LMS support, administrator reporting, and a campus sales pipeline."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F03",
+          "decision_slot": "initial_market_scope",
+          "axis": "Geographic launch breadth",
+          "question": "How geographically concentrated should the first-year launch be?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Concentrate on one campus or metro area",
+            "Launch nationally across multiple universities"
+          ],
+          "report_changes": [
+            "A concentrated launch will produce a campus-by-campus playbook, dense local partnerships, in-person research, and milestones based on penetration and retention in the initial market.",
+            "A national launch will produce remote acquisition campaigns, standardized onboarding, multi-campus support operations, and milestones based on scalable acquisition and cross-campus conversion."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F04",
+          "decision_slot": "learning_experience",
+          "axis": "Instructional delivery model",
+          "question": "Should the core experience be primarily self-paced or cohort-based?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Self-paced AI-guided learning",
+            "Scheduled cohorts with live human instruction"
+          ],
+          "report_changes": [
+            "A self-paced model will prioritize an adaptive AI tutor, asynchronous exercises, automated feedback, round-the-clock support, and software-oriented unit economics.",
+            "A cohort model will prioritize live-class tooling, scheduling, peer accountability, instructor recruitment, community management, and cohort-level completion economics."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F05",
+          "decision_slot": "pricing_strategy",
+          "axis": "Access versus service depth",
+          "question": "Should pricing optimize for broad affordability or for a premium high-touch experience?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Low-cost, broad-access offering",
+            "Premium, high-touch offering"
+          ],
+          "report_changes": [
+            "The broad-access plan will include a free or inexpensive entry tier, usage limits, institution-sponsored access, scalable support, and conversion assumptions based on high user volume.",
+            "The premium plan will include higher subscription prices, mentoring, portfolio reviews, career services, smaller service capacity, and retention assumptions based on individualized outcomes."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F06",
+          "decision_slot": "technology_strategy",
+          "axis": "Technology ownership",
+          "question": "Should the product favor rapid assembly with managed AI services or greater ownership of the AI stack?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Managed APIs and off-the-shelf services",
+            "Self-hosted or substantially proprietary AI stack"
+          ],
+          "report_changes": [
+            "A managed-services strategy will specify a lean engineering team, API-based architecture, vendor abstraction, rapid prototyping milestones, and explicit inference-cost and vendor-dependency controls.",
+            "A proprietary-stack strategy will add model evaluation and fine-tuning work, MLOps and GPU resources, specialized hiring, defensible-IP milestones, and a longer technical validation phase."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F07",
+          "decision_slot": "financing_strategy",
+          "axis": "Ownership versus externally funded growth",
+          "question": "How much ownership dilution is acceptable to finance growth?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Avoid equity dilution and bootstrap",
+            "Accept equity dilution to accelerate growth"
+          ],
+          "report_changes": [
+            "A bootstrap strategy will emphasize pre-sales, grants, service revenue, conservative hiring, short payback periods, and a path toward operating breakeven.",
+            "An equity-funded strategy will include seed-round milestones, a pitch narrative, investor materials, faster hiring and marketing scenarios, and traction targets suitable for the next financing round."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F08",
+          "decision_slot": "resource_allocation",
+          "axis": "Pre-launch capital ceiling",
+          "question": "What is the maximum amount of capital the founder is willing to commit before launch?",
+          "answer_form": "exact_numeric",
+          "plausible_answers": [
+            "$25,000",
+            "$250,000"
+          ],
+          "report_changes": [
+            "At a $25,000 ceiling, the budget will rely on no-code or managed tools, founder-led sales, contractors, narrow pilot scope, and minimal paid acquisition.",
+            "At a $250,000 ceiling, the budget can support an in-house product team, stronger security and analytics, original content production, several campus pilots, and controlled paid-marketing experiments."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F09",
+          "decision_slot": "launch_definition",
+          "axis": "Required launch maturity",
+          "question": "What should count as achieving launch within the next year?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "A paid, controlled campus pilot",
+            "A publicly available, self-service product"
+          ],
+          "report_changes": [
+            "If a paid pilot counts as launch, the roadmap will permit manual operations, limited integrations, a small user cohort, and explicit pilot acceptance and learning criteria.",
+            "If public self-service availability is required, the roadmap will move scalable billing, onboarding, reliability, security, support workflows, and production analytics into the pre-launch critical path."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F10",
+          "decision_slot": "data_product_policy",
+          "axis": "Privacy versus personalization",
+          "question": "Beyond mandatory compliance, should the product minimize retained learner data or use richer data for personalization?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Minimize data collection and retention",
+            "Use consented longitudinal data for deeper personalization"
+          ],
+          "report_changes": [
+            "A data-minimizing approach will specify short retention periods, limited integrations, opt-in personalization, simpler learner profiles, and product differentiation centered on trust.",
+            "A personalization-first approach will specify durable learner profiles, progress-history analysis, cross-session recommendations, granular consent controls, stronger data governance, and personalization-quality evaluations."
+          ],
+          "source_pass": "flip"
+        }
+      ],
+      "ontology": [
+        {
+          "proposal_id": "O01",
+          "decision_slot": "launch_success_metric",
+          "axis": "Primary launch-year success outcome",
+          "question": "Which outcome should define success at the end of the first launch year?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Strong student adoption and monthly active use",
+            "Paid-subscriber growth and recurring revenue",
+            "Demonstrable learning-outcome improvement",
+            "University pilots and institutional contracts"
+          ],
+          "report_changes": [
+            "Sets the KPI hierarchy, milestone gates, and experiment design.",
+            "Changes whether the plan prioritizes reach, monetization, efficacy evidence, or institutional sales.",
+            "Determines the evidence required before scaling investment."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O02",
+          "decision_slot": "beachhead_audience",
+          "axis": "Initial student segment",
+          "question": "Which university-student segment should be the initial beachhead audience?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "First-year undergraduates",
+            "Upper-year undergraduates",
+            "Master's and professional students",
+            "Doctoral and research students"
+          ],
+          "report_changes": [
+            "Refocuses market sizing, personas, and target-user research.",
+            "Changes product workflows, willingness-to-pay assumptions, and engagement tactics.",
+            "Determines the most relevant courses, campus organizations, and partnership targets."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O03",
+          "decision_slot": "core_student_job",
+          "axis": "Primary student use case",
+          "question": "What should be the product's primary student use case at launch?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Course tutoring and concept explanation",
+            "Study planning and exam preparation",
+            "AI and career-skill development",
+            "Research and academic-writing support"
+          ],
+          "report_changes": [
+            "Defines the MVP feature set and required AI capabilities.",
+            "Changes the competitor set, user-research questions, and value proposition.",
+            "Shapes engagement loops, content requirements, and academic-integrity safeguards."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O04",
+          "decision_slot": "commercialization_motion",
+          "axis": "Primary payer and distribution model",
+          "question": "Which commercialization motion should lead the launch strategy?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Student-paid direct subscriptions",
+            "Freemium student acquisition with premium upgrades",
+            "University-sponsored access or campus licensing",
+            "Hybrid direct-to-student and institutional sales"
+          ],
+          "report_changes": [
+            "Rebuilds pricing, unit economics, and revenue forecasts around the selected payer.",
+            "Changes the sales cycle, marketing channels, and campus-partnership plan.",
+            "Determines whether LMS, SSO, procurement, and institutional reporting capabilities are launch requirements."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O05",
+          "decision_slot": "launch_jurisdiction",
+          "axis": "Initial geographic market",
+          "question": "Which jurisdiction should be the initial launch market?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "United States",
+            "United Kingdom",
+            "An EU member state",
+            "Another specified country or region"
+          ],
+          "report_changes": [
+            "Localizes market sizing, competitors, pricing, and academic calendars.",
+            "Changes privacy, consumer-protection, accessibility, and education-compliance analysis.",
+            "Determines relevant universities, payment systems, and partnership practices."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O06",
+          "decision_slot": "mvp_tradeoff",
+          "axis": "Speed versus launch quality and scope",
+          "question": "What launch posture should guide the trade-off between speed, cost, and product completeness?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Fastest possible validation with a narrow prototype",
+            "Lean but reliable semester-ready MVP",
+            "Polished multi-feature product before public launch",
+            "Institution-grade product with security and integrations"
+          ],
+          "report_changes": [
+            "Changes feature sequencing, build-versus-buy decisions, and validation depth.",
+            "Adjusts staffing, budget allocation, and technical-debt tolerance.",
+            "Revises the roadmap and criteria for moving from pilot to public launch."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O07",
+          "decision_slot": "academic_integrity_posture",
+          "axis": "Academic-integrity control level",
+          "question": "How restrictive should the product be in preventing uses that could violate university academic-integrity rules?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Primarily user responsibility with clear disclosures",
+            "Moderate guardrails and prohibited-use detection",
+            "Strict course-aware controls and auditability",
+            "Institution-configurable enforcement aligned to campus policy"
+          ],
+          "report_changes": [
+            "Changes prompting controls, monitoring, citations, and audit-log requirements.",
+            "Affects legal and reputational risk analysis and university-partnership readiness.",
+            "Alters onboarding language, acceptable-use policies, and moderation costs."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O08",
+          "decision_slot": "service_automation_level",
+          "axis": "Automation versus human support",
+          "question": "How much human instruction or coaching should accompany the AI product at launch?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Fully self-service AI platform",
+            "AI-first with limited expert office hours",
+            "Hybrid AI plus recurring human coaching",
+            "Mentor-led service with AI augmentation"
+          ],
+          "report_changes": [
+            "Changes staffing needs, gross-margin assumptions, and operational complexity.",
+            "Determines which value-added services and subscription tiers are viable.",
+            "Alters quality assurance, instructor recruitment, and capacity-planning sections."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O09",
+          "decision_slot": "capital_envelope",
+          "axis": "Pre-launch resource envelope",
+          "question": "What maximum capital envelope should the plan assume through launch, in USD-equivalent terms?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Under $50,000",
+            "$50,000–$250,000",
+            "$250,000–$1 million",
+            "More than $1 million"
+          ],
+          "report_changes": [
+            "Sets feasible hiring, technology, content, and marketing allocations.",
+            "Changes the recommended financing sources and fundraising timeline.",
+            "Determines whether the roadmap relies on contractors, third-party AI services, or proprietary development."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O10",
+          "decision_slot": "long_term_destination",
+          "axis": "Preferred long-term expansion path",
+          "question": "Which long-term strategic destination should the launch preserve the most optionality for?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Broad consumer learning platform",
+            "Deep specialization in one academic or career domain",
+            "Institutional education infrastructure provider",
+            "Credential, tutoring, and career-services marketplace"
+          ],
+          "report_changes": [
+            "Changes architecture choices, data strategy, and defensibility priorities.",
+            "Reorients partnership sequencing and later-stage revenue opportunities.",
+            "Determines which capabilities should be built as scalable foundations rather than temporary launch features."
+          ],
+          "source_pass": "ontology"
+        }
+      ]
+    },
+    "canonical_candidates": [
+      {
+        "candidate_id": "C01",
+        "source_proposal_ids": [
+          "D01",
+          "O01"
+        ],
+        "decision_slot": "launch_success_outcome",
+        "overlap_group": "launch_objective_and_metrics",
+        "axis": "Primary first-year success outcome",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which outcome should be the primary measure of success in the first year: student adoption, recurring revenue, demonstrated learner outcomes, or institutional traction?",
+        "verification_question": "For the first-year north-star metric, choose one: adoption, revenue, learner outcomes, or institutional contracts.",
+        "rationale": "D01 and O01 are semantic duplicates. The answer changes KPI hierarchy, milestone gates, experiment priorities, and the allocation of resources across growth, monetization, efficacy, and institutional sales.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C02",
+        "source_proposal_ids": [
+          "D02"
+        ],
+        "decision_slot": "beachhead_need_segment",
+        "overlap_group": "initial_target_audience",
+        "axis": "Initial audience segment by student need",
+        "candidate_kind": "agent_choice",
+        "ownership": "mixed",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which need-based student segment should be the initial beachhead: practical AI literacy, technical AI skill building, career preparation, or responsible academic productivity?",
+        "verification_question": "Which initial need should the product serve: AI literacy, technical skills, career preparation, or academic productivity?",
+        "rationale": "This is distinct from academic level: students at the same level may have different needs. Market evidence can inform the recommendation, but founder capabilities and mission leave meaningful residual choice.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C03",
+        "source_proposal_ids": [
+          "O02"
+        ],
+        "decision_slot": "beachhead_academic_stage",
+        "overlap_group": "initial_target_audience",
+        "axis": "Initial audience segment by academic stage",
+        "candidate_kind": "agent_choice",
+        "ownership": "mixed",
+        "answer_form": "categorical_choice",
+        "importance": 4,
+        "wrong_default_cost": 3,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which academic stage should the initial audience occupy: first-year undergraduate, upper-year undergraduate, master's or professional, or doctoral and research?",
+        "verification_question": "Choose the initial student level: first-year, upper-year, master's/professional, or doctoral/research.",
+        "rationale": "Academic stage affects personas, purchasing power, workflows, course context, and campus channels. It is not a duplicate of the need-based segmentation axis.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C04",
+        "source_proposal_ids": [
+          "F01",
+          "O03"
+        ],
+        "decision_slot": "primary_learner_job",
+        "overlap_group": "learner_value_proposition",
+        "axis": "Primary learner job to be done",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which learner job should anchor the launch product: course mastery, study and exam planning, AI and career-skill development, or research and academic-writing support?",
+        "verification_question": "What should the product help with first: course mastery, study planning, career skills, or research and writing?",
+        "rationale": "F01's academic-versus-career outcome distinction and O03's use cases resolve the same underlying choice about the principal learner value. This choice drives the MVP, content, competitors, safeguards, and outcome metrics.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C05",
+        "source_proposal_ids": [
+          "D03",
+          "F03"
+        ],
+        "decision_slot": "launch_geographic_breadth",
+        "overlap_group": "initial_market_scope",
+        "axis": "Geographic concentration of the first launch",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How geographically concentrated should the initial launch be, from one campus or local cluster through a national, multi-country, or global launch?",
+        "verification_question": "Choose a launch breadth: one campus or cluster, one country, several similar countries, or global English-language.",
+        "rationale": "D03 and F03 both concern launch breadth. The answer changes localization, acquisition density, partnership coverage, support complexity, and scaling milestones.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C06",
+        "source_proposal_ids": [
+          "O05"
+        ],
+        "decision_slot": "launch_jurisdiction",
+        "overlap_group": "initial_market_scope",
+        "axis": "Initial launch jurisdiction",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which country or regulatory jurisdiction should be the initial launch market?",
+        "verification_question": "What country or region should the launch plan assume?",
+        "rationale": "Jurisdiction is separate from geographic breadth: a focused or broad launch still requires a concrete legal and commercial starting market. Hidden founder location, network, and operating constraints cannot be determined through market research alone.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C07",
+        "source_proposal_ids": [
+          "D04",
+          "F04"
+        ],
+        "decision_slot": "core_learning_format",
+        "overlap_group": "learning_experience_model",
+        "axis": "Core instructional format at launch",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What should be the core launch experience: self-paced guided learning, scheduled live cohorts, an adaptive AI tutor with projects, or a project-based academy with mentoring?",
+        "verification_question": "Choose the core format: self-paced, live cohort, adaptive AI tutor, or mentored project academy.",
+        "rationale": "D04 and F04 overlap on instructional delivery. The selected format materially changes platform functionality, content production, staffing, engagement design, delivery schedule, and unit economics.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C08",
+        "source_proposal_ids": [
+          "F05",
+          "O08"
+        ],
+        "decision_slot": "service_intensity",
+        "overlap_group": "human_support_and_access_positioning",
+        "axis": "Human-service intensity and access tradeoff",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Where should the launch offering sit on the continuum from low-cost self-service automation to premium mentor-led support?",
+        "verification_question": "Choose the service level: self-service, limited expert help, recurring coaching, or mentor-led.",
+        "rationale": "F05 and O08 express the same service-depth continuum from scalable broad access to high-touch delivery. It affects pricing, staffing, capacity, gross margin, and viable value-added services.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C09",
+        "source_proposal_ids": [
+          "D05",
+          "F02",
+          "O04"
+        ],
+        "decision_slot": "primary_payer",
+        "overlap_group": "commercialization_model",
+        "axis": "Primary paying customer at launch",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?",
+        "verification_question": "Who pays first: students, universities, or both?",
+        "rationale": "The payer distinction is the common core of D05, F02, and O04. It changes sales cycles, product requirements, procurement work, acquisition channels, pricing logic, and financial projections.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C10",
+        "source_proposal_ids": [
+          "D05",
+          "O04"
+        ],
+        "decision_slot": "student_payment_structure",
+        "overlap_group": "commercialization_model",
+        "axis": "Student-facing payment structure",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "categorical_choice",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "If students can purchase directly, which payment structure should lead: freemium upgrades, a paid subscription with a trial, or one-time course or credential purchases?",
+        "verification_question": "For direct student sales, choose: freemium, trial-to-subscription, or one-time purchases.",
+        "rationale": "This separates billing mechanics from the primary-payer axis. The answer changes the conversion funnel, retention model, packaging, usage limits, and revenue forecasting.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C11",
+        "source_proposal_ids": [
+          "D06"
+        ],
+        "decision_slot": "campus_partnership_role",
+        "overlap_group": "distribution_strategy",
+        "axis": "Centrality of campus partnerships to distribution",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 3,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How central should university and campus-organization partnerships be to initial distribution, relative to direct student acquisition?",
+        "verification_question": "Choose the distribution posture: direct-first, balanced, partnership-led, or institution-required.",
+        "rationale": "Campus partnerships can be important even when students are the payer, so this is distinct from the commercial-model axis. It changes launch dependencies, sales-cycle length, pilot design, and marketing allocation.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C12",
+        "source_proposal_ids": [
+          "D07",
+          "F06"
+        ],
+        "decision_slot": "technology_ownership",
+        "overlap_group": "product_build_strategy",
+        "axis": "Speed versus ownership of the technology stack",
+        "candidate_kind": "agent_choice",
+        "ownership": "agent_owned",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 2,
+        "residuality_after_research": 2,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How should the first platform trade rapid assembly with managed services against control through custom or proprietary technology?",
+        "verification_question": "Choose the build posture: low-code, managed APIs, custom cloud application, or substantially proprietary stack.",
+        "rationale": "D07 and F06 are semantic duplicates. This is primarily an implementation recommendation that should follow budget, timing, risk, and differentiation requirements, though it remains consequential enough to retain.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C13",
+        "source_proposal_ids": [
+          "D08",
+          "F08"
+        ],
+        "decision_slot": "founder_cash_ceiling",
+        "overlap_group": "prelaunch_resources",
+        "axis": "Maximum usable founder cash before launch",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "exact_numeric",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 2,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What is the maximum founder-controlled cash that is both available and acceptable to commit before launch, excluding unsecured future financing?",
+        "verification_question": "What is the pre-launch founder cash ceiling in USD or local-currency equivalent?",
+        "rationale": "D08 and F08 both seek the binding founder-funded ceiling. This hidden constraint determines feasible staffing, product scope, content production, compliance work, pilots, marketing, and contingency reserves.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C14",
+        "source_proposal_ids": [
+          "O09"
+        ],
+        "decision_slot": "total_capital_envelope",
+        "overlap_group": "prelaunch_resources",
+        "axis": "Total planned capital envelope through launch",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?",
+        "verification_question": "Choose the total launch envelope: under $50k, $50k–$250k, $250k–$1m, or over $1m.",
+        "rationale": "The total plan envelope is not identical to currently available founder cash because it may include financing. It sets the scale of hiring, technology, content, marketing, and fundraising work.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C15",
+        "source_proposal_ids": [
+          "D09",
+          "F07"
+        ],
+        "decision_slot": "financing_path",
+        "overlap_group": "financing_strategy",
+        "axis": "Ownership dilution versus externally funded growth",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How should the financing strategy trade preserving ownership against accepting external capital to accelerate growth?",
+        "verification_question": "Choose a financing posture: bootstrap, non-dilutive funding, angel or pre-seed equity, or strategic investment.",
+        "rationale": "D09 and F07 overlap on financing source and dilution tolerance. This is founder-owned because research can compare options but cannot determine acceptable ownership loss or financing risk.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C16",
+        "source_proposal_ids": [
+          "F09",
+          "O06"
+        ],
+        "decision_slot": "launch_readiness_threshold",
+        "overlap_group": "launch_maturity",
+        "axis": "Required product maturity for the one-year launch",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?",
+        "verification_question": "What counts as launch: controlled pilot, reliable MVP, public self-service, or institution-grade release?",
+        "rationale": "F09 and O06 concern the same launch-readiness threshold. The answer changes the critical path for billing, onboarding, integrations, reliability, security, support, analytics, and manual operations.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C17",
+        "source_proposal_ids": [
+          "F10",
+          "D10"
+        ],
+        "decision_slot": "learner_data_policy",
+        "overlap_group": "product_risk_posture",
+        "axis": "Data minimization versus personalization",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 5,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Beyond mandatory compliance, should the product minimize retained learner data or use consented longitudinal data for deeper personalization?",
+        "verification_question": "Choose the data posture: minimize retention, balanced personalization, or personalization-first with consent.",
+        "rationale": "F10 isolates the learner-data component of D10's broader risk posture. The answer changes profiles, retention periods, integrations, consent controls, governance, trust positioning, and personalization capabilities.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C18",
+        "source_proposal_ids": [
+          "O07",
+          "D10"
+        ],
+        "decision_slot": "academic_integrity_controls",
+        "overlap_group": "product_risk_posture",
+        "axis": "Academic-integrity control level",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 5,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 3,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Above any mandatory institutional rules, how restrictive should the product be in preventing academically improper use?",
+        "verification_question": "Choose the integrity posture: disclosures, moderate guardrails, strict controls, or institution-configurable enforcement.",
+        "rationale": "O07 makes the academic-integrity component of D10 atomic. Applicable policy establishes a floor, while the degree of additional detection, auditability, and enforcement remains a strategic choice.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C19",
+        "source_proposal_ids": [
+          "D10"
+        ],
+        "decision_slot": "learning_claims_evidence_floor",
+        "overlap_group": "product_risk_posture",
+        "axis": "Minimum substantiation for learning-outcome claims",
+        "candidate_kind": "normative_floor",
+        "ownership": "normative",
+        "answer_form": "eligibility_fact",
+        "importance": 4,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 1,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What minimum evidence is required before the startup makes learning-outcome or efficacy claims?",
+        "verification_question": "For launch claims, use: no efficacy claims, pilot-supported claims, or independently validated claims.",
+        "rationale": "D10 includes the risk of unproven learning claims. Truthful, adequately substantiated claims are a normative floor rather than a discretionary user preference, so this candidate is retained for deterministic rejection or policy handling.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C20",
+        "source_proposal_ids": [
+          "O10"
+        ],
+        "decision_slot": "long_term_destination",
+        "overlap_group": "scalability_direction",
+        "axis": "Preferred long-term expansion path",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "categorical_choice",
+        "importance": 4,
+        "wrong_default_cost": 3,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which long-term destination should the launch preserve the most optionality for: a broad consumer platform, deep domain specialization, institutional infrastructure, or a credential and services marketplace?",
+        "verification_question": "Choose the long-term direction: broad consumer, specialized domain, institutional infrastructure, or services marketplace.",
+        "rationale": "The long-term destination affects which architecture, data, partnership, and defensibility capabilities should be built as scalable foundations rather than temporary launch features.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      }
+    ]
+  },
+  "arms": {
+    "v4a": {
+      "selection": {
+        "policy": "v4a",
+        "formula": "I*O*A*R*X*((1-E)+lambda*E*(1-D)*M)-mu*B + critical_override_bonus",
+        "calibrator_schema": "0.94",
+        "question_cap": 4,
+        "selected": [
+          {
+            "candidate_id": "C09",
+            "source_proposal_ids": [
+              "D05",
+              "F02",
+              "O04"
+            ],
+            "decision_slot": "primary_payer",
+            "overlap_group": "commercialization_model",
+            "axis": "Primary paying customer at launch",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?",
+            "verification_question": "Who pays first: students, universities, or both?",
+            "rationale": "The payer distinction is the common core of D05, F02, and O04. It changes sales cycles, product requirements, procurement work, acquisition channels, pricing logic, and financial projections.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.84,
+            "utility": 0.84,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C14",
+            "source_proposal_ids": [
+              "O09"
+            ],
+            "decision_slot": "total_capital_envelope",
+            "overlap_group": "prelaunch_resources",
+            "axis": "Total planned capital envelope through launch",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?",
+            "verification_question": "Choose the total launch envelope: under $50k, $50k–$250k, $250k–$1m, or over $1m.",
+            "rationale": "The total plan envelope is not identical to currently available founder cash because it may include financing. It sets the scale of hiring, technology, content, marketing, and fundraising work.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.664,
+            "utility": 0.664,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C16",
+            "source_proposal_ids": [
+              "F09",
+              "O06"
+            ],
+            "decision_slot": "launch_readiness_threshold",
+            "overlap_group": "launch_maturity",
+            "axis": "Required product maturity for the one-year launch",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?",
+            "verification_question": "What counts as launch: controlled pilot, reliable MVP, public self-service, or institution-grade release?",
+            "rationale": "F09 and O06 concern the same launch-readiness threshold. The answer changes the critical path for billing, onboarding, integrations, reliability, security, support, analytics, and manual operations.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.545,
+            "utility": 0.545,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C17",
+            "source_proposal_ids": [
+              "F10",
+              "D10"
+            ],
+            "decision_slot": "learner_data_policy",
+            "overlap_group": "product_risk_posture",
+            "axis": "Data minimization versus personalization",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Beyond mandatory compliance, should the product minimize retained learner data or use consented longitudinal data for deeper personalization?",
+            "verification_question": "Choose the data posture: minimize retention, balanced personalization, or personalization-first with consent.",
+            "rationale": "F10 isolates the learner-data component of D10's broader risk posture. The answer changes profiles, retention periods, integrations, consent controls, governance, trust positioning, and personalization capabilities.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.545,
+            "utility": 0.545,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            },
+            "question": "Beyond mandatory compliance, should the product minimize retained learner data or use consented longitudinal data for deeper personalization?",
+            "question_mode": "neutral"
+          }
+        ],
+        "scored_candidates": [
+          {
+            "candidate_id": "C01",
+            "source_proposal_ids": [
+              "D01",
+              "O01"
+            ],
+            "decision_slot": "launch_success_outcome",
+            "overlap_group": "launch_objective_and_metrics",
+            "axis": "Primary first-year success outcome",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which outcome should be the primary measure of success in the first year: student adoption, recurring revenue, demonstrated learner outcomes, or institutional traction?",
+            "verification_question": "For the first-year north-star metric, choose one: adoption, revenue, learner outcomes, or institutional contracts.",
+            "rationale": "D01 and O01 are semantic duplicates. The answer changes KPI hierarchy, milestone gates, experiment priorities, and the allocation of resources across growth, monetization, efficacy, and institutional sales.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.532,
+            "utility": 0.532,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02"
+            ],
+            "decision_slot": "beachhead_need_segment",
+            "overlap_group": "initial_target_audience",
+            "axis": "Initial audience segment by student need",
+            "candidate_kind": "agent_choice",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which need-based student segment should be the initial beachhead: practical AI literacy, technical AI skill building, career preparation, or responsible academic productivity?",
+            "verification_question": "Which initial need should the product serve: AI literacy, technical skills, career preparation, or academic productivity?",
+            "rationale": "This is distinct from academic level: students at the same level may have different needs. Market evidence can inform the recommendation, but founder capabilities and mission leave meaningful residual choice.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.4176000000000001,
+            "utility": 0.4176000000000001,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C03",
+            "source_proposal_ids": [
+              "O02"
+            ],
+            "decision_slot": "beachhead_academic_stage",
+            "overlap_group": "initial_target_audience",
+            "axis": "Initial audience segment by academic stage",
+            "candidate_kind": "agent_choice",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which academic stage should the initial audience occupy: first-year undergraduate, upper-year undergraduate, master's or professional, or doctoral and research?",
+            "verification_question": "Choose the initial student level: first-year, upper-year, master's/professional, or doctoral/research.",
+            "rationale": "Academic stage affects personas, purchasing power, workflows, course context, and campus channels. It is not a duplicate of the need-based segmentation axis.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.25286400000000003,
+            "utility": 0.25286400000000003,
+            "critical_rank": 0.384,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.65,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C04",
+            "source_proposal_ids": [
+              "F01",
+              "O03"
+            ],
+            "decision_slot": "primary_learner_job",
+            "overlap_group": "learner_value_proposition",
+            "axis": "Primary learner job to be done",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which learner job should anchor the launch product: course mastery, study and exam planning, AI and career-skill development, or research and academic-writing support?",
+            "verification_question": "What should the product help with first: course mastery, study planning, career skills, or research and writing?",
+            "rationale": "F01's academic-versus-career outcome distinction and O03's use cases resolve the same underlying choice about the principal learner value. This choice drives the MVP, content, competitors, safeguards, and outcome metrics.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.4176000000000001,
+            "utility": 0.4176000000000001,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C05",
+            "source_proposal_ids": [
+              "D03",
+              "F03"
+            ],
+            "decision_slot": "launch_geographic_breadth",
+            "overlap_group": "initial_market_scope",
+            "axis": "Geographic concentration of the first launch",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How geographically concentrated should the initial launch be, from one campus or local cluster through a national, multi-country, or global launch?",
+            "verification_question": "Choose a launch breadth: one campus or cluster, one country, several similar countries, or global English-language.",
+            "rationale": "D03 and F03 both concern launch breadth. The answer changes localization, acquisition density, partnership coverage, support complexity, and scaling milestones.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.3344000000000001,
+            "utility": 0.3344000000000001,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "O05"
+            ],
+            "decision_slot": "launch_jurisdiction",
+            "overlap_group": "initial_market_scope",
+            "axis": "Initial launch jurisdiction",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which country or regulatory jurisdiction should be the initial launch market?",
+            "verification_question": "What country or region should the launch plan assume?",
+            "rationale": "Jurisdiction is separate from geographic breadth: a focused or broad launch still requires a concrete legal and commercial starting market. Hidden founder location, network, and operating constraints cannot be determined through market research alone.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.532,
+            "utility": 0.532,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C07",
+            "source_proposal_ids": [
+              "D04",
+              "F04"
+            ],
+            "decision_slot": "core_learning_format",
+            "overlap_group": "learning_experience_model",
+            "axis": "Core instructional format at launch",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What should be the core launch experience: self-paced guided learning, scheduled live cohorts, an adaptive AI tutor with projects, or a project-based academy with mentoring?",
+            "verification_question": "Choose the core format: self-paced, live cohort, adaptive AI tutor, or mentored project academy.",
+            "rationale": "D04 and F04 overlap on instructional delivery. The selected format materially changes platform functionality, content production, staffing, engagement design, delivery schedule, and unit economics.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.4176000000000001,
+            "utility": 0.4176000000000001,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C08",
+            "source_proposal_ids": [
+              "F05",
+              "O08"
+            ],
+            "decision_slot": "service_intensity",
+            "overlap_group": "human_support_and_access_positioning",
+            "axis": "Human-service intensity and access tradeoff",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Where should the launch offering sit on the continuum from low-cost self-service automation to premium mentor-led support?",
+            "verification_question": "Choose the service level: self-service, limited expert help, recurring coaching, or mentor-led.",
+            "rationale": "F05 and O08 express the same service-depth continuum from scalable broad access to high-touch delivery. It affects pricing, staffing, capacity, gross margin, and viable value-added services.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.3344000000000001,
+            "utility": 0.3344000000000001,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C09",
+            "source_proposal_ids": [
+              "D05",
+              "F02",
+              "O04"
+            ],
+            "decision_slot": "primary_payer",
+            "overlap_group": "commercialization_model",
+            "axis": "Primary paying customer at launch",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?",
+            "verification_question": "Who pays first: students, universities, or both?",
+            "rationale": "The payer distinction is the common core of D05, F02, and O04. It changes sales cycles, product requirements, procurement work, acquisition channels, pricing logic, and financial projections.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.84,
+            "utility": 0.84,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C10",
+            "source_proposal_ids": [
+              "D05",
+              "O04"
+            ],
+            "decision_slot": "student_payment_structure",
+            "overlap_group": "commercialization_model",
+            "axis": "Student-facing payment structure",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "If students can purchase directly, which payment structure should lead: freemium upgrades, a paid subscription with a trial, or one-time course or credential purchases?",
+            "verification_question": "For direct student sales, choose: freemium, trial-to-subscription, or one-time purchases.",
+            "rationale": "This separates billing mechanics from the primary-payer axis. The answer changes the conversion funnel, retention model, packaging, usage limits, and revenue forecasting.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.25286400000000003,
+            "utility": 0.25286400000000003,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.65,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C11",
+            "source_proposal_ids": [
+              "D06"
+            ],
+            "decision_slot": "campus_partnership_role",
+            "overlap_group": "distribution_strategy",
+            "axis": "Centrality of campus partnerships to distribution",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How central should university and campus-organization partnerships be to initial distribution, relative to direct student acquisition?",
+            "verification_question": "Choose the distribution posture: direct-first, balanced, partnership-led, or institution-required.",
+            "rationale": "Campus partnerships can be important even when students are the payer, so this is distinct from the commercial-model axis. It changes launch dependencies, sales-cycle length, pilot design, and marketing allocation.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.2595200000000001,
+            "utility": 0.2595200000000001,
+            "critical_rank": 0.384,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C12",
+            "source_proposal_ids": [
+              "D07",
+              "F06"
+            ],
+            "decision_slot": "technology_ownership",
+            "overlap_group": "product_build_strategy",
+            "axis": "Speed versus ownership of the technology stack",
+            "candidate_kind": "agent_choice",
+            "ownership": "agent_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 2,
+            "residuality_after_research": 2,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How should the first platform trade rapid assembly with managed services against control through custom or proprietary technology?",
+            "verification_question": "Choose the build posture: low-code, managed APIs, custom cloud application, or substantially proprietary stack.",
+            "rationale": "D07 and F06 are semantic duplicates. This is primarily an implementation recommendation that should follow budget, timing, risk, and differentiation requirements, though it remains consequential enough to retain.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.2,
+            "utility_raw": 0.006080000000000023,
+            "utility": 0.006080000000000023,
+            "critical_rank": 0.25600000000000006,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.2,
+              "A": 0.9,
+              "R": 0.4,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.4,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C13",
+            "source_proposal_ids": [
+              "D08",
+              "F08"
+            ],
+            "decision_slot": "founder_cash_ceiling",
+            "overlap_group": "prelaunch_resources",
+            "axis": "Maximum usable founder cash before launch",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "exact_numeric",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is the maximum founder-controlled cash that is both available and acceptable to commit before launch, excluding unsecured future financing?",
+            "verification_question": "What is the pre-launch founder cash ceiling in USD or local-currency equivalent?",
+            "rationale": "D08 and F08 both seek the binding founder-funded ceiling. This hidden constraint determines feasible staffing, product scope, content production, compliance work, pilots, marketing, and contingency reserves.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.4,
+            "utility": 0.4,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.48,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C14",
+            "source_proposal_ids": [
+              "O09"
+            ],
+            "decision_slot": "total_capital_envelope",
+            "overlap_group": "prelaunch_resources",
+            "axis": "Total planned capital envelope through launch",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?",
+            "verification_question": "Choose the total launch envelope: under $50k, $50k–$250k, $250k–$1m, or over $1m.",
+            "rationale": "The total plan envelope is not identical to currently available founder cash because it may include financing. It sets the scale of hiring, technology, content, marketing, and fundraising work.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.664,
+            "utility": 0.664,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C15",
+            "source_proposal_ids": [
+              "D09",
+              "F07"
+            ],
+            "decision_slot": "financing_path",
+            "overlap_group": "financing_strategy",
+            "axis": "Ownership dilution versus externally funded growth",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How should the financing strategy trade preserving ownership against accepting external capital to accelerate growth?",
+            "verification_question": "Choose a financing posture: bootstrap, non-dilutive funding, angel or pre-seed equity, or strategic investment.",
+            "rationale": "D09 and F07 overlap on financing source and dilution tolerance. This is founder-owned because research can compare options but cannot determine acceptable ownership loss or financing risk.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.536,
+            "utility": 0.536,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C16",
+            "source_proposal_ids": [
+              "F09",
+              "O06"
+            ],
+            "decision_slot": "launch_readiness_threshold",
+            "overlap_group": "launch_maturity",
+            "axis": "Required product maturity for the one-year launch",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?",
+            "verification_question": "What counts as launch: controlled pilot, reliable MVP, public self-service, or institution-grade release?",
+            "rationale": "F09 and O06 concern the same launch-readiness threshold. The answer changes the critical path for billing, onboarding, integrations, reliability, security, support, analytics, and manual operations.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.545,
+            "utility": 0.545,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C17",
+            "source_proposal_ids": [
+              "F10",
+              "D10"
+            ],
+            "decision_slot": "learner_data_policy",
+            "overlap_group": "product_risk_posture",
+            "axis": "Data minimization versus personalization",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Beyond mandatory compliance, should the product minimize retained learner data or use consented longitudinal data for deeper personalization?",
+            "verification_question": "Choose the data posture: minimize retention, balanced personalization, or personalization-first with consent.",
+            "rationale": "F10 isolates the learner-data component of D10's broader risk posture. The answer changes profiles, retention periods, integrations, consent controls, governance, trust positioning, and personalization capabilities.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.545,
+            "utility": 0.545,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C18",
+            "source_proposal_ids": [
+              "O07",
+              "D10"
+            ],
+            "decision_slot": "academic_integrity_controls",
+            "overlap_group": "product_risk_posture",
+            "axis": "Academic-integrity control level",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 3,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Above any mandatory institutional rules, how restrictive should the product be in preventing academically improper use?",
+            "verification_question": "Choose the integrity posture: disclosures, moderate guardrails, strict controls, or institution-configurable enforcement.",
+            "rationale": "O07 makes the academic-integrity component of D10 atomic. Applicable policy establishes a floor, while the degree of additional detection, auditability, and enforcement remains a strategic choice.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.31100000000000005,
+            "utility": 0.31100000000000005,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 0.6,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C19",
+            "source_proposal_ids": [
+              "D10"
+            ],
+            "decision_slot": "learning_claims_evidence_floor",
+            "overlap_group": "product_risk_posture",
+            "axis": "Minimum substantiation for learning-outcome claims",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "eligibility_fact",
+            "importance": 4,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What minimum evidence is required before the startup makes learning-outcome or efficacy claims?",
+            "verification_question": "For launch claims, use: no efficacy claims, pilot-supported claims, or independently validated claims.",
+            "rationale": "D10 includes the risk of unproven learning claims. Truthful, adequately substantiated claims are a normative floor rather than a discretionary user preference, so this candidate is retained for deterministic rejection or policy handling.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.8,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.039999999999999994,
+            "utility": -0.039999999999999994,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.0,
+              "A": 0.8,
+              "R": 0.2,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C20",
+            "source_proposal_ids": [
+              "O10"
+            ],
+            "decision_slot": "long_term_destination",
+            "overlap_group": "scalability_direction",
+            "axis": "Preferred long-term expansion path",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which long-term destination should the launch preserve the most optionality for: a broad consumer platform, deep domain specialization, institutional infrastructure, or a credential and services marketplace?",
+            "verification_question": "Choose the long-term direction: broad consumer, specialized domain, institutional infrastructure, or services marketplace.",
+            "rationale": "The long-term destination affects which architecture, data, partnership, and defensibility capabilities should be built as scalable foundations rather than temporary launch features.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.25286400000000003,
+            "utility": 0.25286400000000003,
+            "critical_rank": 0.384,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.65,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          }
+        ]
+      },
+      "question": "These answers would materially change the research recommendations:\n1. Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?\n2. Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?\n3. What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?\n4. Beyond mandatory compliance, should the product minimize retained learner data or use consented longitudinal data for deeper personalization?",
+      "simulator_answer": "1. No strong preference is established.\n2. The total resource envelope is not specified.\n3. A narrow controlled pilot.\n4. No strong preference is established beyond mandatory compliance.",
+      "resolved_unit_ids": [
+        "T5-P3"
+      ],
+      "atomic_question_count": 4
+    },
+    "v4r": {
+      "selection": {
+        "policy": "v4r",
+        "formula": "I*O*A*R*X*((1-E)+lambda*E*(1-D)*M)-mu*B + critical_override_bonus",
+        "calibrator_schema": "0.94",
+        "question_cap": 4,
+        "selected": [
+          {
+            "candidate_id": "C09",
+            "source_proposal_ids": [
+              "D05",
+              "F02",
+              "O04"
+            ],
+            "decision_slot": "primary_payer",
+            "overlap_group": "commercialization_model",
+            "axis": "Primary paying customer at launch",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?",
+            "verification_question": "Who pays first: students, universities, or both?",
+            "rationale": "The payer distinction is the common core of D05, F02, and O04. It changes sales cycles, product requirements, procurement work, acquisition channels, pricing logic, and financial projections.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8533333333333334,
+            "utility": 1.0733333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C16",
+            "source_proposal_ids": [
+              "F09",
+              "O06"
+            ],
+            "decision_slot": "launch_readiness_threshold",
+            "overlap_group": "launch_maturity",
+            "axis": "Required product maturity for the one-year launch",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?",
+            "verification_question": "What counts as launch: controlled pilot, reliable MVP, public self-service, or institution-grade release?",
+            "rationale": "F09 and O06 concern the same launch-readiness threshold. The answer changes the critical path for billing, onboarding, integrations, reliability, security, support, analytics, and manual operations.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.7833333333333334,
+            "utility": 1.0033333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "O05"
+            ],
+            "decision_slot": "launch_jurisdiction",
+            "overlap_group": "initial_market_scope",
+            "axis": "Initial launch jurisdiction",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which country or regulatory jurisdiction should be the initial launch market?",
+            "verification_question": "What country or region should the launch plan assume?",
+            "rationale": "Jurisdiction is separate from geographic breadth: a focused or broad launch still requires a concrete legal and commercial starting market. Hidden founder location, network, and operating constraints cannot be determined through market research alone.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.7653333333333334,
+            "utility": 0.9853333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Which country or regulatory jurisdiction should be the initial launch market?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C14",
+            "source_proposal_ids": [
+              "O09"
+            ],
+            "decision_slot": "total_capital_envelope",
+            "overlap_group": "prelaunch_resources",
+            "axis": "Total planned capital envelope through launch",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?",
+            "verification_question": "Choose the total launch envelope: under $50k, $50k–$250k, $250k–$1m, or over $1m.",
+            "rationale": "The total plan envelope is not identical to currently available founder cash because it may include financing. It sets the scale of hiring, technology, content, marketing, and fundraising work.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.6773333333333335,
+            "utility": 0.8973333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?",
+            "question_mode": "neutral"
+          }
+        ],
+        "scored_candidates": [
+          {
+            "candidate_id": "C01",
+            "source_proposal_ids": [
+              "D01",
+              "O01"
+            ],
+            "decision_slot": "launch_success_outcome",
+            "overlap_group": "launch_objective_and_metrics",
+            "axis": "Primary first-year success outcome",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which outcome should be the primary measure of success in the first year: student adoption, recurring revenue, demonstrated learner outcomes, or institutional traction?",
+            "verification_question": "For the first-year north-star metric, choose one: adoption, revenue, learner outcomes, or institutional contracts.",
+            "rationale": "D01 and O01 are semantic duplicates. The answer changes KPI hierarchy, milestone gates, experiment priorities, and the allocation of resources across growth, monetization, efficacy, and institutional sales.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.7653333333333334,
+            "utility": 0.9853333333333334,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02"
+            ],
+            "decision_slot": "beachhead_need_segment",
+            "overlap_group": "initial_target_audience",
+            "axis": "Initial audience segment by student need",
+            "candidate_kind": "agent_choice",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which need-based student segment should be the initial beachhead: practical AI literacy, technical AI skill building, career preparation, or responsible academic productivity?",
+            "verification_question": "Which initial need should the product serve: AI literacy, technical skills, career preparation, or academic productivity?",
+            "rationale": "This is distinct from academic level: students at the same level may have different needs. Market evidence can inform the recommendation, but founder capabilities and mission leave meaningful residual choice.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.6069333333333334,
+            "utility": 0.8269333333333334,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C03",
+            "source_proposal_ids": [
+              "O02"
+            ],
+            "decision_slot": "beachhead_academic_stage",
+            "overlap_group": "initial_target_audience",
+            "axis": "Initial audience segment by academic stage",
+            "candidate_kind": "agent_choice",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which academic stage should the initial audience occupy: first-year undergraduate, upper-year undergraduate, master's or professional, or doctoral and research?",
+            "verification_question": "Choose the initial student level: first-year, upper-year, master's/professional, or doctoral/research.",
+            "rationale": "Academic stage affects personas, purchasing power, workflows, course context, and campus channels. It is not a duplicate of the need-based segmentation axis.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.3788373333333334,
+            "utility": 0.3788373333333334,
+            "critical_rank": 0.384,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C04",
+            "source_proposal_ids": [
+              "F01",
+              "O03"
+            ],
+            "decision_slot": "primary_learner_job",
+            "overlap_group": "learner_value_proposition",
+            "axis": "Primary learner job to be done",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which learner job should anchor the launch product: course mastery, study and exam planning, AI and career-skill development, or research and academic-writing support?",
+            "verification_question": "What should the product help with first: course mastery, study planning, career skills, or research and writing?",
+            "rationale": "F01's academic-versus-career outcome distinction and O03's use cases resolve the same underlying choice about the principal learner value. This choice drives the MVP, content, competitors, safeguards, and outcome metrics.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.6069333333333334,
+            "utility": 0.8269333333333334,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C05",
+            "source_proposal_ids": [
+              "D03",
+              "F03"
+            ],
+            "decision_slot": "launch_geographic_breadth",
+            "overlap_group": "initial_market_scope",
+            "axis": "Geographic concentration of the first launch",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How geographically concentrated should the initial launch be, from one campus or local cluster through a national, multi-country, or global launch?",
+            "verification_question": "Choose a launch breadth: one campus or cluster, one country, several similar countries, or global English-language.",
+            "rationale": "D03 and F03 both concern launch breadth. The answer changes localization, acquisition density, partnership coverage, support complexity, and scaling milestones.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.4917333333333334,
+            "utility": 0.7117333333333334,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "O05"
+            ],
+            "decision_slot": "launch_jurisdiction",
+            "overlap_group": "initial_market_scope",
+            "axis": "Initial launch jurisdiction",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which country or regulatory jurisdiction should be the initial launch market?",
+            "verification_question": "What country or region should the launch plan assume?",
+            "rationale": "Jurisdiction is separate from geographic breadth: a focused or broad launch still requires a concrete legal and commercial starting market. Hidden founder location, network, and operating constraints cannot be determined through market research alone.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.7653333333333334,
+            "utility": 0.9853333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C07",
+            "source_proposal_ids": [
+              "D04",
+              "F04"
+            ],
+            "decision_slot": "core_learning_format",
+            "overlap_group": "learning_experience_model",
+            "axis": "Core instructional format at launch",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What should be the core launch experience: self-paced guided learning, scheduled live cohorts, an adaptive AI tutor with projects, or a project-based academy with mentoring?",
+            "verification_question": "Choose the core format: self-paced, live cohort, adaptive AI tutor, or mentored project academy.",
+            "rationale": "D04 and F04 overlap on instructional delivery. The selected format materially changes platform functionality, content production, staffing, engagement design, delivery schedule, and unit economics.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.6069333333333334,
+            "utility": 0.8269333333333334,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C08",
+            "source_proposal_ids": [
+              "F05",
+              "O08"
+            ],
+            "decision_slot": "service_intensity",
+            "overlap_group": "human_support_and_access_positioning",
+            "axis": "Human-service intensity and access tradeoff",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Where should the launch offering sit on the continuum from low-cost self-service automation to premium mentor-led support?",
+            "verification_question": "Choose the service level: self-service, limited expert help, recurring coaching, or mentor-led.",
+            "rationale": "F05 and O08 express the same service-depth continuum from scalable broad access to high-touch delivery. It affects pricing, staffing, capacity, gross margin, and viable value-added services.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.4917333333333334,
+            "utility": 0.7117333333333334,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C09",
+            "source_proposal_ids": [
+              "D05",
+              "F02",
+              "O04"
+            ],
+            "decision_slot": "primary_payer",
+            "overlap_group": "commercialization_model",
+            "axis": "Primary paying customer at launch",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?",
+            "verification_question": "Who pays first: students, universities, or both?",
+            "rationale": "The payer distinction is the common core of D05, F02, and O04. It changes sales cycles, product requirements, procurement work, acquisition channels, pricing logic, and financial projections.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8533333333333334,
+            "utility": 1.0733333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C10",
+            "source_proposal_ids": [
+              "D05",
+              "O04"
+            ],
+            "decision_slot": "student_payment_structure",
+            "overlap_group": "commercialization_model",
+            "axis": "Student-facing payment structure",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "If students can purchase directly, which payment structure should lead: freemium upgrades, a paid subscription with a trial, or one-time course or credential purchases?",
+            "verification_question": "For direct student sales, choose: freemium, trial-to-subscription, or one-time purchases.",
+            "rationale": "This separates billing mechanics from the primary-payer axis. The answer changes the conversion funnel, retention model, packaging, usage limits, and revenue forecasting.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.3788373333333334,
+            "utility": 0.5988373333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C11",
+            "source_proposal_ids": [
+              "D06"
+            ],
+            "decision_slot": "campus_partnership_role",
+            "overlap_group": "distribution_strategy",
+            "axis": "Centrality of campus partnerships to distribution",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How central should university and campus-organization partnerships be to initial distribution, relative to direct student acquisition?",
+            "verification_question": "Choose the distribution posture: direct-first, balanced, partnership-led, or institution-required.",
+            "rationale": "Campus partnerships can be important even when students are the payer, so this is distinct from the commercial-model axis. It changes launch dependencies, sales-cycle length, pilot design, and marketing allocation.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.3880533333333334,
+            "utility": 0.3880533333333334,
+            "critical_rank": 0.384,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C12",
+            "source_proposal_ids": [
+              "D07",
+              "F06"
+            ],
+            "decision_slot": "technology_ownership",
+            "overlap_group": "product_build_strategy",
+            "axis": "Speed versus ownership of the technology stack",
+            "candidate_kind": "agent_choice",
+            "ownership": "agent_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 2,
+            "residuality_after_research": 2,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How should the first platform trade rapid assembly with managed services against control through custom or proprietary technology?",
+            "verification_question": "Choose the build posture: low-code, managed APIs, custom cloud application, or substantially proprietary stack.",
+            "rationale": "D07 and F06 are semantic duplicates. This is primarily an implementation recommendation that should follow budget, timing, risk, and differentiation requirements, though it remains consequential enough to retain.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.026666666666666665,
+            "utility": -0.026666666666666665,
+            "critical_rank": 0.25600000000000006,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.0,
+              "A": 0.9,
+              "R": 0.4,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.4,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C13",
+            "source_proposal_ids": [
+              "D08",
+              "F08"
+            ],
+            "decision_slot": "founder_cash_ceiling",
+            "overlap_group": "prelaunch_resources",
+            "axis": "Maximum usable founder cash before launch",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "exact_numeric",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is the maximum founder-controlled cash that is both available and acceptable to commit before launch, excluding unsecured future financing?",
+            "verification_question": "What is the pre-launch founder cash ceiling in USD or local-currency equivalent?",
+            "rationale": "D08 and F08 both seek the binding founder-funded ceiling. This hidden constraint determines feasible staffing, product scope, content production, compliance work, pilots, marketing, and contingency reserves.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.42666666666666664,
+            "utility": 0.6466666666666666,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.48,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C14",
+            "source_proposal_ids": [
+              "O09"
+            ],
+            "decision_slot": "total_capital_envelope",
+            "overlap_group": "prelaunch_resources",
+            "axis": "Total planned capital envelope through launch",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?",
+            "verification_question": "Choose the total launch envelope: under $50k, $50k–$250k, $250k–$1m, or over $1m.",
+            "rationale": "The total plan envelope is not identical to currently available founder cash because it may include financing. It sets the scale of hiring, technology, content, marketing, and fundraising work.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.6773333333333335,
+            "utility": 0.8973333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C15",
+            "source_proposal_ids": [
+              "D09",
+              "F07"
+            ],
+            "decision_slot": "financing_path",
+            "overlap_group": "financing_strategy",
+            "axis": "Ownership dilution versus externally funded growth",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How should the financing strategy trade preserving ownership against accepting external capital to accelerate growth?",
+            "verification_question": "Choose a financing posture: bootstrap, non-dilutive funding, angel or pre-seed equity, or strategic investment.",
+            "rationale": "D09 and F07 overlap on financing source and dilution tolerance. This is founder-owned because research can compare options but cannot determine acceptable ownership loss or financing risk.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5493333333333335,
+            "utility": 0.7693333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C16",
+            "source_proposal_ids": [
+              "F09",
+              "O06"
+            ],
+            "decision_slot": "launch_readiness_threshold",
+            "overlap_group": "launch_maturity",
+            "axis": "Required product maturity for the one-year launch",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?",
+            "verification_question": "What counts as launch: controlled pilot, reliable MVP, public self-service, or institution-grade release?",
+            "rationale": "F09 and O06 concern the same launch-readiness threshold. The answer changes the critical path for billing, onboarding, integrations, reliability, security, support, analytics, and manual operations.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.7833333333333334,
+            "utility": 1.0033333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C17",
+            "source_proposal_ids": [
+              "F10",
+              "D10"
+            ],
+            "decision_slot": "learner_data_policy",
+            "overlap_group": "product_risk_posture",
+            "axis": "Data minimization versus personalization",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Beyond mandatory compliance, should the product minimize retained learner data or use consented longitudinal data for deeper personalization?",
+            "verification_question": "Choose the data posture: minimize retention, balanced personalization, or personalization-first with consent.",
+            "rationale": "F10 isolates the learner-data component of D10's broader risk posture. The answer changes profiles, retention periods, integrations, consent controls, governance, trust positioning, and personalization capabilities.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.7833333333333334,
+            "utility": 1.0033333333333334,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C18",
+            "source_proposal_ids": [
+              "O07",
+              "D10"
+            ],
+            "decision_slot": "academic_integrity_controls",
+            "overlap_group": "product_risk_posture",
+            "axis": "Academic-integrity control level",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 3,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Above any mandatory institutional rules, how restrictive should the product be in preventing academically improper use?",
+            "verification_question": "Choose the integrity posture: disclosures, moderate guardrails, strict controls, or institution-configurable enforcement.",
+            "rationale": "O07 makes the academic-integrity component of D10 atomic. Applicable policy establishes a floor, while the degree of additional detection, auditability, and enforcement remains a strategic choice.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.4593333333333333,
+            "utility": 0.6793333333333333,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 0.6,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C19",
+            "source_proposal_ids": [
+              "D10"
+            ],
+            "decision_slot": "learning_claims_evidence_floor",
+            "overlap_group": "product_risk_posture",
+            "axis": "Minimum substantiation for learning-outcome claims",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "eligibility_fact",
+            "importance": 4,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What minimum evidence is required before the startup makes learning-outcome or efficacy claims?",
+            "verification_question": "For launch claims, use: no efficacy claims, pilot-supported claims, or independently validated claims.",
+            "rationale": "D10 includes the risk of unproven learning claims. Truthful, adequately substantiated claims are a normative floor rather than a discretionary user preference, so this candidate is retained for deterministic rejection or policy handling.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.8,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.026666666666666665,
+            "utility": -0.026666666666666665,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.0,
+              "A": 0.8,
+              "R": 0.2,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C20",
+            "source_proposal_ids": [
+              "O10"
+            ],
+            "decision_slot": "long_term_destination",
+            "overlap_group": "scalability_direction",
+            "axis": "Preferred long-term expansion path",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which long-term destination should the launch preserve the most optionality for: a broad consumer platform, deep domain specialization, institutional infrastructure, or a credential and services marketplace?",
+            "verification_question": "Choose the long-term direction: broad consumer, specialized domain, institutional infrastructure, or services marketplace.",
+            "rationale": "The long-term destination affects which architecture, data, partnership, and defensibility capabilities should be built as scalable foundations rather than temporary launch features.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.3788373333333334,
+            "utility": 0.3788373333333334,
+            "critical_rank": 0.384,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.9,
+              "A": 0.88,
+              "R": 0.8,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          }
+        ]
+      },
+      "question": "These answers would materially change the research recommendations:\n1. Who should be the primary paying customer at launch: individual students, universities, or a deliberate hybrid of both?\n2. What maturity threshold must be reached to count as launch: a narrow controlled pilot, a reliable semester-ready MVP, a public self-service product, or an institution-grade product?\n3. Which country or regulatory jurisdiction should be the initial launch market?\n4. Including capital that the strategy may seek to raise, what total resource envelope should the plan assume through launch?",
+      "simulator_answer": "1. No strong preference between individual students, universities, or a hybrid.\n2. A narrow controlled pilot, enabling rapid measurement and iteration.\n3. The initial country or regulatory jurisdiction is not specified.\n4. No total resource envelope is specified; it should be allocated efficiently and expanded only with evidence.",
+      "resolved_unit_ids": [
+        "T5-P3"
+      ],
+      "atomic_question_count": 4
+    }
+  }
+}

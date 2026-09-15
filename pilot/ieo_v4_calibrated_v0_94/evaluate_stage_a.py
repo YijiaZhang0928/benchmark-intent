@@ -83,6 +83,17 @@ def ratio(numerator: set[str], denominator: set[str]) -> float:
     return len(numerator & denominator) / len(denominator) if denominator else 0.0
 
 
+def strict_resolution(arm: dict, askable: set[str]) -> None:
+    """Require both semantic question match and a simulator-supported answer."""
+    selected = set(arm["selected_ids"])
+    simulator_claimed = set(arm["resolved_ids"])
+    strict = selected & simulator_claimed
+    arm["simulator_claimed_resolved_ids"] = sorted(simulator_claimed)
+    arm["simulator_claimed_recall_askable_high"] = ratio(simulator_claimed, askable)
+    arm["resolved_ids"] = sorted(strict)
+    arm["resolved_recall_askable_high"] = ratio(strict, askable)
+
+
 def evaluate_task(task: str, run_root: Path, judge_name: str, effort: str) -> dict:
     from langchain_core.messages import HumanMessage
 
@@ -150,6 +161,8 @@ def evaluate_task(task: str, run_root: Path, judge_name: str, effort: str) -> di
             "resolved_recall_askable_high": ratio(resolved, askable),
             "question_precision_any_unit": len(matched_selected_candidates) / count if count else 0.0,
         }
+    for values in arm_metrics.values():
+        strict_resolution(values, askable)
     return {
         "task": task,
         "askable_high_ids": sorted(askable),
@@ -167,9 +180,21 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--judge", default="gpt-6-astra")
     parser.add_argument("--reasoning-effort", default="high")
+    parser.add_argument("--reuse-existing", action="store_true")
     args = parser.parse_args()
     tasks = [item.strip() for item in args.tasks.split(",") if item.strip()]
-    rows = [evaluate_task(task, args.run_root, args.judge, args.reasoning_effort) for task in tasks]
+    if args.reuse_existing:
+        existing = json.loads(args.output.read_text(encoding="utf-8"))
+        rows = existing["tasks"]
+        for row in rows:
+            askable = set(row["askable_high_ids"])
+            for arm in ("stock", "v4a", "v4r"):
+                # Restore the raw simulator claim if this file has already been recomputed.
+                if "simulator_claimed_resolved_ids" in row["arms"][arm]:
+                    row["arms"][arm]["resolved_ids"] = row["arms"][arm]["simulator_claimed_resolved_ids"]
+                strict_resolution(row["arms"][arm], askable)
+    else:
+        rows = [evaluate_task(task, args.run_root, args.judge, args.reasoning_effort) for task in tasks]
     aggregate = {}
     for arm in ("stock", "v4a", "v4r"):
         aggregate[arm] = {

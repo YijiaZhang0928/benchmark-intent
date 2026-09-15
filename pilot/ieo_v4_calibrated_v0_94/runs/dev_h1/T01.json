@@ -1,0 +1,3112 @@
+{
+  "schema_version": "0.94",
+  "task": "T01",
+  "phase": "development",
+  "generated_at_utc": "2026-09-15T23:10:33.562039+00:00",
+  "model": "gpt-5.6-sol/high",
+  "task_visibility": "instruction only",
+  "task_sha256": "c12e9bf7136079e865e80635754caa74ae7deacb399070f52bbd4969ccad1eeb",
+  "calibrator_sha256": "f262b9a28cda5f5bde27c7dd6b331c901ab3c836b6f1ca608ed7daa7c0efd49c",
+  "candidate_pool": {
+    "model": "gpt-5.6-sol/high",
+    "candidate_input_visibility": "task instruction only",
+    "passes": {
+      "decision": [
+        {
+          "proposal_id": "D01",
+          "decision_slot": "research_direction_focus",
+          "axis": "Primary AI research theme",
+          "question": "What AI research theme should anchor the program search and comparison?",
+          "answer_form": "free_text_goal",
+          "plausible_answers": [
+            "Foundation models, NLP, or multimodal AI",
+            "Computer vision, robotics, or autonomous systems",
+            "Machine learning theory, optimization, or trustworthy AI",
+            "AI for science, health, or another application domain"
+          ],
+          "report_changes": [
+            "Changes which departments, laboratories, supervisors, and representative programs receive emphasis.",
+            "Changes the recommended prerequisite coursework, research projects, and publication venues in the preparation plan.",
+            "Changes how program research strengths are evaluated and ranked."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D02",
+          "decision_slot": "career_outcome",
+          "axis": "Primary post-PhD objective",
+          "question": "Which post-PhD outcome should the recommendations optimize for?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Academic faculty or university research",
+            "Industrial research scientist roles",
+            "Applied AI engineering or product leadership",
+            "Entrepreneurship or public-interest research"
+          ],
+          "report_changes": [
+            "Changes the weighting of publication culture, teaching opportunities, internships, industry partnerships, and commercialization support.",
+            "Changes which employment outcomes and regional labor markets receive the most attention.",
+            "Changes the recommended activities during the 1–2 year preparation period."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D03",
+          "decision_slot": "program_ranking_rule",
+          "axis": "Dominant program-selection priority",
+          "question": "When strong options involve trade-offs, which factor should dominate the final ranking?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Supervisor and research fit over institutional prestige",
+            "Research resources and placement outcomes over cost",
+            "Guaranteed funding and affordability over prestige",
+            "Overall reputation and international mobility over narrow fit"
+          ],
+          "report_changes": [
+            "Changes the scoring framework and ordering of representative programs.",
+            "Changes how adviser fit, university reputation, funding, resources, and employment outcomes are balanced.",
+            "Changes which compromises are explicitly flagged as acceptable or unfavorable."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D04",
+          "decision_slot": "regional_weighting",
+          "axis": "Geographic priority",
+          "question": "Which region should receive the greatest weight in the personalized shortlist, while the report still compares North America, Europe, and Asia?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "North America",
+            "Europe",
+            "Asia",
+            "No regional preference"
+          ],
+          "report_changes": [
+            "Changes the number and prominence of programs shortlisted from each region.",
+            "Changes emphasis on regional degree structures, application calendars, visas, and post-study employment pathways.",
+            "Changes the sequencing of region-specific application tasks."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D05",
+          "decision_slot": "language_mobility_constraint",
+          "axis": "Language-environment flexibility",
+          "question": "What language environment are you willing to accept for study, daily life, and possible post-PhD employment?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "English-only environment",
+            "English-taught PhD, with willingness to learn the local language",
+            "Comfortable studying or working in another specified language",
+            "Language environment is not a constraint"
+          ],
+          "report_changes": [
+            "Changes which countries and programs are treated as practically suitable rather than merely academically strong.",
+            "Changes whether local-language preparation is included in the timeline.",
+            "Changes the assessment of internships and long-term employment prospects outside English-speaking markets."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D06",
+          "decision_slot": "funding_floor",
+          "axis": "Minimum acceptable funding arrangement",
+          "question": "What is the minimum funding arrangement you would accept for a PhD abroad?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Guaranteed full tuition coverage plus a living stipend",
+            "Full tuition coverage, with partial responsibility for living costs",
+            "Partial scholarship or assistantship is acceptable",
+            "Self-funding is possible"
+          ],
+          "report_changes": [
+            "Changes which programs and countries remain financially viable.",
+            "Changes the comparison of assistantships, salaried doctoral employment, scholarships, and tuition-waiver models.",
+            "Changes whether external scholarship applications become a major preparation-plan workstream."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D07",
+          "decision_slot": "application_portfolio_risk",
+          "axis": "Admissions-risk tolerance",
+          "question": "How should the application portfolio balance highly selective programs against admission probability?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Reach-heavy: prioritize top research matches despite low admission odds",
+            "Balanced: mix reach, target, and comparatively safer options",
+            "Conservative: prioritize funded options with stronger admission feasibility"
+          ],
+          "report_changes": [
+            "Changes the recommended mix and number of reach, target, and safer applications.",
+            "Changes how heavily selectivity and supervisor capacity affect program ranking.",
+            "Changes whether the plan emphasizes ambitious publication goals or broader application coverage."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D08",
+          "decision_slot": "preparation_baseline",
+          "axis": "Current research-readiness stage",
+          "question": "Which description best matches your current AI research preparation?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Relevant coursework but little or no research experience",
+            "Completed substantial projects or a thesis",
+            "Research-assistant experience with a strong supervisor letter possible",
+            "Peer-reviewed publication or equivalent mature research output"
+          ],
+          "report_changes": [
+            "Changes whether the plan begins with foundational coursework, portfolio projects, research assistance, or publication development.",
+            "Changes the realistic competitiveness bands used for the initial program shortlist.",
+            "Changes the recommended timing for contacting prospective supervisors and requesting references."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D09",
+          "decision_slot": "weekly_preparation_capacity",
+          "axis": "Available weekly preparation time",
+          "question": "How many hours per week can you reliably devote to PhD preparation before applications are submitted?",
+          "answer_form": "exact_numeric",
+          "plausible_answers": [
+            "5 hours",
+            "10 hours",
+            "15 hours",
+            "20 hours"
+          ],
+          "report_changes": [
+            "Changes the pace and number of simultaneous research, testing, networking, and application tasks.",
+            "Changes whether the plan recommends one intensive research project or several parallel preparation activities.",
+            "Changes milestone spacing and contingency buffers."
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D10",
+          "decision_slot": "submission_horizon",
+          "axis": "Target time to first applications",
+          "question": "Approximately how many months from now do you intend to submit your first PhD applications?",
+          "answer_form": "exact_numeric",
+          "plausible_answers": [
+            "12 months",
+            "18 months",
+            "24 months"
+          ],
+          "report_changes": [
+            "Changes the month-by-month sequencing of research preparation, language or standardized tests, supervisor outreach, and document drafting.",
+            "Changes whether the strategy targets the nearest viable cycle or allows an additional cycle for profile improvement.",
+            "Changes the urgency and scope of publication, recommendation-letter, and scholarship preparation."
+          ],
+          "source_pass": "decision"
+        }
+      ],
+      "flip": [
+        {
+          "proposal_id": "F01",
+          "decision_slot": "post_phd_career_target",
+          "axis": "Primary career objective",
+          "question": "Which post-PhD career outcome should the recommendations optimize for?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Research-intensive academic career",
+            "Industrial AI research or applied-science role",
+            "AI startup or entrepreneurship",
+            "Government or public-interest research"
+          ],
+          "report_changes": [
+            "If academia is primary, rank programs by publication mentorship, faculty placement, teaching opportunities, and preparation for postdoctoral or faculty searches.",
+            "If industry, entrepreneurship, or public service is primary, give more weight to internships, employer or agency partnerships, technology-transfer support, alumni outcomes, and location-specific job access."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F02",
+          "decision_slot": "ai_specialization",
+          "axis": "Preferred AI research direction",
+          "question": "Which AI research direction should anchor the program and preparation shortlist?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Machine-learning theory and foundations",
+            "Natural language processing and foundation models",
+            "Computer vision, multimodal AI, or robotics",
+            "Trustworthy, safe, or human-centered AI"
+          ],
+          "report_changes": [
+            "For theory or trustworthy-AI goals, emphasize mathematical depth, statistics, formal methods, evaluation research, and faculty publishing in the selected specialty.",
+            "For language, multimodal, vision, or robotics goals, emphasize access to computing, datasets, laboratories, physical testbeds, and relevant research-engineering preparation."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F03",
+          "decision_slot": "regional_weighting",
+          "axis": "Geographic priority",
+          "question": "Which region should receive the greatest weight in the actionable shortlist?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "North America",
+            "Europe",
+            "Asia",
+            "No regional preference"
+          ],
+          "report_changes": [
+            "If one region is preferred, allocate most detailed program profiles, deadlines, and preparation advice to that region while retaining summary comparisons for the other two.",
+            "If there is no regional preference, construct matched North American, European, and Asian shortlists and rank them using common funding, research-fit, and career criteria."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F04",
+          "decision_slot": "personal_financing_limit",
+          "axis": "Maximum out-of-pocket cost",
+          "question": "What is the maximum annual amount, in USD equivalent, you are willing to pay after guaranteed funding?",
+          "answer_form": "exact_numeric",
+          "plausible_answers": [
+            "$0 per year",
+            "$10,000 per year",
+            "$25,000 per year",
+            "$50,000 per year"
+          ],
+          "report_changes": [
+            "At a zero or low limit, exclude or strongly downgrade offers without guaranteed tuition coverage and a sufficient stipend, and focus the funding section on assistantships, fellowships, and fee waivers.",
+            "At a higher limit, include otherwise strong self-funded or partially funded options and add a net-cost comparison covering tuition, stipend, living costs, and funding risk."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F05",
+          "decision_slot": "doctoral_training_model",
+          "axis": "Preferred PhD structure",
+          "question": "What balance between structured training and immediate research do you prefer?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Immediate research with minimal required coursework",
+            "Mostly research with some advanced coursework",
+            "Coursework, examinations, or rotations before specialization",
+            "Strongly structured cohort-based training"
+          ],
+          "report_changes": [
+            "For a research-first preference, prioritize direct-entry lab or supervisor models and make early advisor matching and proposal development central to the application plan.",
+            "For a structured preference, prioritize programs with rotations, taught modules, qualifying milestones, and flexibility to select a supervisor or topic after enrollment."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F06",
+          "decision_slot": "application_timing_strategy",
+          "axis": "Speed versus profile strength",
+          "question": "How should the plan trade an earlier application against additional time to strengthen your research profile?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Apply in the earliest feasible cycle",
+            "Use roughly 18 months for balanced preparation",
+            "Use the full two years to maximize competitiveness",
+            "Delay if necessary until there is a strong research output"
+          ],
+          "report_changes": [
+            "For the earliest cycle, recommend programs compatible with the current profile and compress advisor outreach, testing, references, and statement preparation into immediate milestones.",
+            "For a strength-first approach, build the plan around a longer research assistantship or thesis, a submission-quality project, stronger recommendations, and the later application cycle."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F07",
+          "decision_slot": "industry_experience_priority",
+          "axis": "Importance of PhD internships",
+          "question": "How important is access to industry or research-lab internships during the PhD?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Essential",
+            "Strongly preferred",
+            "Useful but secondary",
+            "Not a priority"
+          ],
+          "report_changes": [
+            "If internships are essential, rank programs by internship policies, nearby AI employers, faculty-industry collaborations, leave flexibility, and demonstrated student participation.",
+            "If internships are secondary or unnecessary, rank sustained advisor access, uninterrupted publication time, academic collaborations, and research continuity more heavily."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F08",
+          "decision_slot": "language_flexibility",
+          "axis": "Willingness to use a local language",
+          "question": "How much local-language learning are you willing to undertake for study and daily life?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "English-only environment required",
+            "Willing to learn basic local language",
+            "Willing to reach working proficiency",
+            "Already open to multilingual study or work"
+          ],
+          "report_changes": [
+            "If English-only is required, filter the shortlist toward fully English-language programs and locations where teaching, administration, internships, and daily academic work are accessible in English.",
+            "If local-language learning is acceptable, retain a broader set of European and Asian programs and add staged language milestones to the 1–2 year preparation plan."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F09",
+          "decision_slot": "post_graduation_residence",
+          "axis": "Importance of remaining in the host country",
+          "question": "How important is the option to remain and work in the host country after graduation?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Critical",
+            "Strong preference",
+            "Helpful but not decisive",
+            "I expect to return home or move elsewhere"
+          ],
+          "report_changes": [
+            "If remaining is critical, give post-study work pathways, local AI labor markets, employer concentration, and geographic mobility substantial weight in regional and program rankings.",
+            "If return or onward mobility is expected, emphasize internationally portable research reputation, global alumni networks, transferable skills, and collaborations connected to the intended destination."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F10",
+          "decision_slot": "application_portfolio_risk",
+          "axis": "Admissions risk tolerance",
+          "question": "How selective should the application portfolio be relative to the strength of your eventual profile?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Reach-heavy portfolio",
+            "Balanced mix of selectivity levels",
+            "Lower-variance portfolio with more attainable options"
+          ],
+          "report_changes": [
+            "For a reach-heavy strategy, concentrate the shortlist on highly selective labs and add stronger publication, networking, and faculty-fit milestones plus contingency planning for another cycle.",
+            "For a balanced or lower-variance strategy, broaden the number of programs, supervisors, regions, and institution tiers while enforcing minimum standards for funding and research fit."
+          ],
+          "source_pass": "flip"
+        }
+      ],
+      "ontology": [
+        {
+          "proposal_id": "O01",
+          "decision_slot": "research_focus",
+          "axis": "Preferred AI research direction",
+          "question": "Which AI research area should anchor the program search and preparation plan?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Foundational machine learning, optimization, or theory",
+            "Generative AI, NLP, or multimodal systems",
+            "Computer vision, robotics, or embodied AI",
+            "AI applied to science, health, society, or another domain"
+          ],
+          "report_changes": [
+            "Prioritizes universities, laboratories, advisers, and curricula strong in the selected area",
+            "Changes the recommended mathematics, coursework, projects, and publication preparation",
+            "Changes the relevant internship venues and employment outlook comparison"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O02",
+          "decision_slot": "career_outcome",
+          "axis": "Primary post-PhD career objective",
+          "question": "What is the main outcome the PhD should optimize for?",
+          "answer_form": "free_text_goal",
+          "plausible_answers": [
+            "Research-faculty career",
+            "Industrial research scientist role",
+            "Applied AI or engineering leadership",
+            "Entrepreneurship or public-interest research"
+          ],
+          "report_changes": [
+            "Changes how programs are ranked across publication strength, teaching preparation, industry access, and commercialization support",
+            "Changes the employment-prospect analysis and recommended internship strategy",
+            "Changes which research outputs and professional networks the preparation plan emphasizes"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O03",
+          "decision_slot": "academic_baseline",
+          "axis": "Current academic background",
+          "question": "What is your highest completed or in-progress degree and its field?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Bachelor's in computer science, AI, mathematics, or a closely related field",
+            "Master's in a closely related field",
+            "Degree in another quantitative or engineering field",
+            "Degree with limited quantitative or computing preparation"
+          ],
+          "report_changes": [
+            "Determines likely eligibility for direct-entry versus master's-required PhD structures",
+            "Changes prerequisite-course and bridging recommendations",
+            "Changes the realistic application timeline and regional program fit"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O04",
+          "decision_slot": "research_readiness",
+          "axis": "Current research experience level",
+          "question": "How much relevant research experience do you currently have?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "No formal research experience yet",
+            "Course projects or a short research assistantship",
+            "Substantial thesis or laboratory experience without publications",
+            "Publications, preprints, or strong ongoing research with recommendation support"
+          ],
+          "report_changes": [
+            "Changes the balance between research preparation and immediate application activity",
+            "Determines whether the plan prioritizes assistantships, thesis work, replication projects, or publication submission",
+            "Changes the recommended selectivity and number of reach programs"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O05",
+          "decision_slot": "financial_constraint",
+          "axis": "Required funding level",
+          "question": "What funding condition must a suitable PhD offer satisfy?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Full tuition waiver and living stipend are mandatory",
+            "Full tuition coverage is mandatory, but some living-cost contribution is possible",
+            "Partial self-funding is acceptable for a strong fit",
+            "Program quality takes priority over total cost"
+          ],
+          "report_changes": [
+            "Filters out programs or regions whose normal funding model does not meet the constraint",
+            "Changes the tuition, stipend, scholarship, and cost-of-living comparison",
+            "Changes whether external fellowships and pre-application scholarship deadlines are central to the plan"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O06",
+          "decision_slot": "regional_scope",
+          "axis": "Geographic mobility constraints",
+          "question": "How broadly are you willing and able to relocate within North America, Europe, and Asia?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "All three regions are genuinely open",
+            "Only selected countries within each region are viable",
+            "One or two regions are strongly preferred",
+            "Relocation is constrained by family, safety, climate, or other personal factors"
+          ],
+          "report_changes": [
+            "Changes which countries and representative programs receive detailed coverage",
+            "Changes cost-of-living, visa, employment, and post-study mobility comparisons",
+            "Prevents unsuitable locations from being ranked highly despite academic strength"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O07",
+          "decision_slot": "eligibility_context",
+          "axis": "Citizenship and residency eligibility context",
+          "question": "What citizenship or permanent-residency status should be used when evaluating visas, scholarships, security restrictions, and tuition classifications?",
+          "answer_form": "eligibility_fact",
+          "plausible_answers": [
+            "International applicant in every target region",
+            "Citizen or permanent resident in one target region",
+            "Dual or multiple citizenship creates eligibility in more than one region",
+            "There are known visa, sanctions, or research-access constraints"
+          ],
+          "report_changes": [
+            "Changes scholarship and domestic-versus-international tuition eligibility",
+            "Changes visa, security-clearance, export-control, and laboratory-access caveats",
+            "Changes post-study work and immigration-pathway comparisons"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O08",
+          "decision_slot": "language_readiness",
+          "axis": "Language and testing readiness",
+          "question": "What is your current readiness for English or other required instructional-language tests?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Already meet likely requirements or qualify for waivers",
+            "Likely need an English test but expect to meet requirements soon",
+            "Need substantial language preparation",
+            "Open to programs requiring a non-English local language"
+          ],
+          "report_changes": [
+            "Changes which programs are feasible and whether language waivers may apply",
+            "Adds or removes language study and testing milestones from the phased plan",
+            "Changes the evaluation of teaching-assistant eligibility and local employment accessibility"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O09",
+          "decision_slot": "doctoral_structure",
+          "axis": "Preferred doctoral training structure",
+          "question": "Which PhD structure best matches your desired balance of coursework, flexibility, and speed?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Coursework-heavy, flexible North American-style training",
+            "Shorter project-defined or adviser-linked European-style training",
+            "Structured Asian program with laboratory affiliation and coursework",
+            "No structural preference; optimize for research fit and funding"
+          ],
+          "report_changes": [
+            "Changes the relative weighting of North American, European, and Asian programs",
+            "Changes whether adviser contact, advertised project applications, or centralized admissions are prioritized",
+            "Changes expected duration, curriculum comparison, and application sequencing"
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O10",
+          "decision_slot": "portfolio_risk",
+          "axis": "Admissions risk posture",
+          "question": "How should the application portfolio trade prestige and research upside against admission probability?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Concentrate on elite, high-risk programs",
+            "Use a balanced mix of reach, target, and safer options",
+            "Prioritize programs with stronger admission odds and reliable funding",
+            "Apply broadly across countries and program tiers"
+          ],
+          "report_changes": [
+            "Changes the number and selectivity distribution of recommended programs",
+            "Changes how much the report emphasizes rankings versus adviser fit and funding reliability",
+            "Changes the application workload, contingency planning, and timing strategy"
+          ],
+          "source_pass": "ontology"
+        }
+      ]
+    },
+    "canonical_candidates": [
+      {
+        "candidate_id": "C01",
+        "source_proposal_ids": [
+          "D01",
+          "F02",
+          "O01"
+        ],
+        "decision_slot": "ai_research_direction",
+        "overlap_group": "research_specialization",
+        "axis": "Preferred AI research direction",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "free_text_goal",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 2,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which AI research direction should anchor the program search and preparation plan?",
+        "verification_question": "Which is closest: theory, language or multimodal AI, vision or robotics, trustworthy AI, or an application domain?",
+        "rationale": "D01, F02, and O01 ask the same specialization question. The answer changes adviser and laboratory fit, prerequisite preparation, research resources, projects, venues, and the program shortlist.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C02",
+        "source_proposal_ids": [
+          "D02",
+          "F01",
+          "O02"
+        ],
+        "decision_slot": "post_phd_career_objective",
+        "overlap_group": "career_outcome",
+        "axis": "Primary post-PhD career objective",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which post-PhD career outcome should the recommendations primarily optimize for?",
+        "verification_question": "Should I optimize mainly for academia, industrial research, applied leadership, entrepreneurship, or public-interest work?",
+        "rationale": "D02, F01, and O02 are semantic duplicates. Career intent changes the weighting of publication culture, teaching, internships, employer access, commercialization support, and employment outcomes.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C03",
+        "source_proposal_ids": [
+          "D03"
+        ],
+        "decision_slot": "program_ranking_priority",
+        "overlap_group": "program_selection_rule",
+        "axis": "Dominant program-selection priority",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 5,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 5,
+        "burden": 2,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "When strong programs involve trade-offs, which consideration should dominate their ranking?",
+        "verification_question": "Should the ranking prioritize research fit, resources and placement, funding and affordability, or reputation and mobility?",
+        "rationale": "The agent can recommend a defensible scoring method, but the dominant trade-off reflects the user's values. It can substantially reorder otherwise suitable programs.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C04",
+        "source_proposal_ids": [
+          "D04",
+          "F03"
+        ],
+        "decision_slot": "regional_weighting",
+        "overlap_group": "geographic_priority",
+        "axis": "Preferred regional emphasis",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which region, if any, should receive the greatest weight in the actionable shortlist?",
+        "verification_question": "Should I emphasize North America, Europe, Asia, or weight all three equally?",
+        "rationale": "D04 and F03 are duplicates. The task requires coverage of all three regions but does not reveal which region should receive more detailed or actionable treatment.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C05",
+        "source_proposal_ids": [
+          "O06"
+        ],
+        "decision_slot": "relocation_feasibility",
+        "overlap_group": "geographic_constraints",
+        "axis": "Breadth of feasible relocation",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 2,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How broadly are you willing and able to relocate across North America, Europe, and Asia?",
+        "verification_question": "Are all three regions genuinely open for relocation, or are any regions or countries off-limits?",
+        "rationale": "Relocation feasibility is distinct from regional preference: a region may be attractive yet personally infeasible. This constraint prevents academically strong but unusable locations from entering the shortlist.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C06",
+        "source_proposal_ids": [
+          "D05",
+          "F08"
+        ],
+        "decision_slot": "local_language_flexibility",
+        "overlap_group": "language_environment",
+        "axis": "Maximum local-language commitment",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 4,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What level of local-language learning are you willing to undertake for life and work abroad?",
+        "verification_question": "Do you require an English-only environment, or could you learn a local language to basic or working proficiency?",
+        "rationale": "D05 and F08 concern the same willingness axis. It affects country feasibility, daily life, internships, teaching opportunities, and access to local employment.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C07",
+        "source_proposal_ids": [
+          "D06",
+          "F04",
+          "O05"
+        ],
+        "decision_slot": "financial_contribution_limit",
+        "overlap_group": "funding_constraint",
+        "axis": "Maximum acceptable out-of-pocket cost after guaranteed funding",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "exact_numeric",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 2,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What is the maximum annual amount you could personally pay after guaranteed tuition support, stipends, and scholarships?",
+        "verification_question": "Is your annual out-of-pocket limit closest to $0, $10,000, $25,000, or a higher amount in USD equivalent?",
+        "rationale": "D06, F04, and O05 express the same financial viability threshold through funding arrangements or personal contribution. A numeric ceiling operationalizes the minimum acceptable funding level without assuming that self-funding is possible.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C08",
+        "source_proposal_ids": [
+          "D07",
+          "F10",
+          "O10"
+        ],
+        "decision_slot": "application_portfolio_risk",
+        "overlap_group": "admissions_risk",
+        "axis": "Admissions-risk tolerance",
+        "candidate_kind": "preference",
+        "ownership": "mixed",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How should the application portfolio trade research upside and prestige against admission probability?",
+        "verification_question": "Would you prefer a reach-heavy, balanced, or lower-variance application portfolio?",
+        "rationale": "D07, F10, and O10 are duplicates. Profile research can inform admission feasibility, but the acceptable level of portfolio risk remains partly a personal choice.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C09",
+        "source_proposal_ids": [
+          "D08",
+          "O04"
+        ],
+        "decision_slot": "research_readiness",
+        "overlap_group": "applicant_baseline",
+        "axis": "Current AI research experience level",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "current_state",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What is your current level of relevant AI research experience?",
+        "verification_question": "Which is closest: coursework only, substantial project or thesis, research-assistant experience, or publication-level work?",
+        "rationale": "D08 and O04 ask the same readiness question. The answer changes competitiveness estimates, the starting phase of the plan, publication goals, supervisor outreach, and reference strategy.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C10",
+        "source_proposal_ids": [
+          "D09"
+        ],
+        "decision_slot": "weekly_preparation_capacity",
+        "overlap_group": "preparation_capacity",
+        "axis": "Reliable weekly preparation time",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "exact_numeric",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How many hours per week can you reliably devote to PhD preparation before applications are submitted?",
+        "verification_question": "Should the plan assume about 5, 10, 15, or 20 hours per week?",
+        "rationale": "Weekly capacity determines the feasible pace, number of parallel activities, milestone spacing, and contingency buffers in the preparation plan.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C11",
+        "source_proposal_ids": [
+          "D10",
+          "F06"
+        ],
+        "decision_slot": "first_application_timing",
+        "overlap_group": "application_timing",
+        "axis": "Target timing for first applications",
+        "candidate_kind": "personal_constraint",
+        "ownership": "mixed",
+        "answer_form": "exact_numeric",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 4,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "explicit",
+        "visible_evidence_quote": "application horizon of roughly 1–2 years",
+        "neutral_question": "Within the stated 1–2 year horizon, approximately how many months from now should the first applications be submitted?",
+        "verification_question": "Should I plan around 12, 18, or 24 months?",
+        "rationale": "D10 and F06 both govern whether the plan targets an earlier cycle or uses more time for profile development. The task explicitly supplies a 1–2 year window, but the point within that window can be calibrated jointly from user urgency and profile needs.",
+        "validated_evidence": {
+          "relation": "explicit",
+          "quote_valid": true,
+          "strength": 1.0,
+          "directness": 1.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C12",
+        "source_proposal_ids": [
+          "F05",
+          "O09"
+        ],
+        "decision_slot": "doctoral_training_structure",
+        "overlap_group": "program_structure",
+        "axis": "Preferred balance of structured training and immediate research",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What balance between structured coursework or rotations and immediate adviser-led research do you prefer?",
+        "verification_question": "Do you prefer research-first training, a mixed model, or strongly structured coursework and rotations?",
+        "rationale": "F05 and O09 describe the same structural trade-off. It affects regional fit, program duration, adviser matching, application channels, and curriculum comparisons.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C13",
+        "source_proposal_ids": [
+          "F07"
+        ],
+        "decision_slot": "phd_internship_priority",
+        "overlap_group": "experiential_training",
+        "axis": "Importance of internship access during the PhD",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 3,
+        "wrong_default_cost": 3,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 3,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How important is access to industry or external research-laboratory internships during the PhD?",
+        "verification_question": "Are internships essential, strongly preferred, useful but secondary, or unimportant?",
+        "rationale": "Internship priority can change the weighting of program policies, employer proximity, industry partnerships, leave flexibility, and uninterrupted academic research time.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C14",
+        "source_proposal_ids": [
+          "F09"
+        ],
+        "decision_slot": "post_graduation_residence",
+        "overlap_group": "post_study_mobility",
+        "axis": "Importance of remaining in the host country after graduation",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How important is the ability to remain and work in the PhD host country after graduation?",
+        "verification_question": "Is staying in the host country critical, preferred, merely helpful, or not expected?",
+        "rationale": "This preference determines how heavily post-study work rights, immigration pathways, local labor markets, and employer concentration should influence regional and program rankings.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C15",
+        "source_proposal_ids": [
+          "O03"
+        ],
+        "decision_slot": "academic_baseline",
+        "overlap_group": "applicant_baseline",
+        "axis": "Current degree level and academic field",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "current_state",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What is your highest completed or in-progress degree, and in what field?",
+        "verification_question": "Do you currently have or expect a bachelor's or master's degree in CS, AI, mathematics, engineering, or another field?",
+        "rationale": "Academic background is distinct from research experience. It affects formal eligibility, direct-entry options, prerequisite gaps, bridging work, and realistic regional timelines.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C16",
+        "source_proposal_ids": [
+          "O07"
+        ],
+        "decision_slot": "citizenship_residency_context",
+        "overlap_group": "legal_eligibility",
+        "axis": "Citizenship and permanent-residency context",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "eligibility_fact",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 2,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What citizenship or permanent-residency context should be used when assessing international-study eligibility?",
+        "verification_question": "Will you be an international applicant in every target region, or do you hold citizenship or permanent residency in any of them?",
+        "rationale": "This fact changes visa pathways, tuition classification, scholarship eligibility, post-study work rights, and possible security or research-access restrictions. It cannot be reliably inferred from the task.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C17",
+        "source_proposal_ids": [
+          "O08"
+        ],
+        "decision_slot": "language_testing_readiness",
+        "overlap_group": "language_readiness",
+        "axis": "Current readiness for required language tests",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "current_state",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What is your current readiness for English or other required instructional-language tests?",
+        "verification_question": "Do you already meet likely requirements or qualify for a waiver, or should the plan include test preparation?",
+        "rationale": "Testing readiness is distinct from willingness to learn a local language. It determines immediate eligibility and whether language study, exam booking, waiver checks, or teaching-assistant preparation must enter the timeline.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      }
+    ]
+  },
+  "arms": {
+    "v4a": {
+      "selection": {
+        "policy": "v4a",
+        "formula": "I*O*A*R*X*((1-E)+lambda*E*(1-D)*M)-mu*B + critical_override_bonus",
+        "calibrator_schema": "0.94",
+        "question_cap": 4,
+        "selected": [
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02",
+              "F01",
+              "O02"
+            ],
+            "decision_slot": "post_phd_career_objective",
+            "overlap_group": "career_outcome",
+            "axis": "Primary post-PhD career objective",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which post-PhD career outcome should the recommendations primarily optimize for?",
+            "verification_question": "Should I optimize mainly for academia, industrial research, applied leadership, entrepreneurship, or public-interest work?",
+            "rationale": "D02, F01, and O02 are semantic duplicates. Career intent changes the weighting of publication culture, teaching, internships, employer access, commercialization support, and employment outcomes.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.84,
+            "utility": 0.84,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Which post-PhD career outcome should the recommendations primarily optimize for?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C05",
+            "source_proposal_ids": [
+              "O06"
+            ],
+            "decision_slot": "relocation_feasibility",
+            "overlap_group": "geographic_constraints",
+            "axis": "Breadth of feasible relocation",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How broadly are you willing and able to relocate across North America, Europe, and Asia?",
+            "verification_question": "Are all three regions genuinely open for relocation, or are any regions or countries off-limits?",
+            "rationale": "Relocation feasibility is distinct from regional preference: a region may be attractive yet personally infeasible. This constraint prevents academically strong but unusable locations from entering the shortlist.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8,
+            "utility": 0.8,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            },
+            "question": "How broadly are you willing and able to relocate across North America, Europe, and Asia?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C01",
+            "source_proposal_ids": [
+              "D01",
+              "F02",
+              "O01"
+            ],
+            "decision_slot": "ai_research_direction",
+            "overlap_group": "research_specialization",
+            "axis": "Preferred AI research direction",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "free_text_goal",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which AI research direction should anchor the program search and preparation plan?",
+            "verification_question": "Which is closest: theory, language or multimodal AI, vision or robotics, trustworthy AI, or an application domain?",
+            "rationale": "D01, F02, and O01 ask the same specialization question. The answer changes adviser and laboratory fit, prerequisite preparation, research resources, projects, venues, and the program shortlist.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.72,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.64,
+            "utility": 0.64,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.72,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            },
+            "question": "Which AI research direction should anchor the program search and preparation plan?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C12",
+            "source_proposal_ids": [
+              "F05",
+              "O09"
+            ],
+            "decision_slot": "doctoral_training_structure",
+            "overlap_group": "program_structure",
+            "axis": "Preferred balance of structured training and immediate research",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What balance between structured coursework or rotations and immediate adviser-led research do you prefer?",
+            "verification_question": "Do you prefer research-first training, a mixed model, or strongly structured coursework and rotations?",
+            "rationale": "F05 and O09 describe the same structural trade-off. It affects regional fit, program duration, adviser matching, application channels, and curriculum comparisons.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.536,
+            "utility": 0.536,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            },
+            "question": "What balance between structured coursework or rotations and immediate adviser-led research do you prefer?",
+            "question_mode": "neutral"
+          }
+        ],
+        "scored_candidates": [
+          {
+            "candidate_id": "C01",
+            "source_proposal_ids": [
+              "D01",
+              "F02",
+              "O01"
+            ],
+            "decision_slot": "ai_research_direction",
+            "overlap_group": "research_specialization",
+            "axis": "Preferred AI research direction",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "free_text_goal",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which AI research direction should anchor the program search and preparation plan?",
+            "verification_question": "Which is closest: theory, language or multimodal AI, vision or robotics, trustworthy AI, or an application domain?",
+            "rationale": "D01, F02, and O01 ask the same specialization question. The answer changes adviser and laboratory fit, prerequisite preparation, research resources, projects, venues, and the program shortlist.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.72,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.64,
+            "utility": 0.64,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.72,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02",
+              "F01",
+              "O02"
+            ],
+            "decision_slot": "post_phd_career_objective",
+            "overlap_group": "career_outcome",
+            "axis": "Primary post-PhD career objective",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which post-PhD career outcome should the recommendations primarily optimize for?",
+            "verification_question": "Should I optimize mainly for academia, industrial research, applied leadership, entrepreneurship, or public-interest work?",
+            "rationale": "D02, F01, and O02 are semantic duplicates. Career intent changes the weighting of publication culture, teaching, internships, employer access, commercialization support, and employment outcomes.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.84,
+            "utility": 0.84,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C03",
+            "source_proposal_ids": [
+              "D03"
+            ],
+            "decision_slot": "program_ranking_priority",
+            "overlap_group": "program_selection_rule",
+            "axis": "Dominant program-selection priority",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "When strong programs involve trade-offs, which consideration should dominate their ranking?",
+            "verification_question": "Should the ranking prioritize research fit, resources and placement, funding and affordability, or reputation and mobility?",
+            "rationale": "The agent can recommend a defensible scoring method, but the dominant trade-off reflects the user's values. It can substantially reorder otherwise suitable programs.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.3880000000000001,
+            "utility": 0.3880000000000001,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C04",
+            "source_proposal_ids": [
+              "D04",
+              "F03"
+            ],
+            "decision_slot": "regional_weighting",
+            "overlap_group": "geographic_priority",
+            "axis": "Preferred regional emphasis",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which region, if any, should receive the greatest weight in the actionable shortlist?",
+            "verification_question": "Should I emphasize North America, Europe, Asia, or weight all three equally?",
+            "rationale": "D04 and F03 are duplicates. The task requires coverage of all three regions but does not reveal which region should receive more detailed or actionable treatment.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5232,
+            "utility": 0.5232,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C05",
+            "source_proposal_ids": [
+              "O06"
+            ],
+            "decision_slot": "relocation_feasibility",
+            "overlap_group": "geographic_constraints",
+            "axis": "Breadth of feasible relocation",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How broadly are you willing and able to relocate across North America, Europe, and Asia?",
+            "verification_question": "Are all three regions genuinely open for relocation, or are any regions or countries off-limits?",
+            "rationale": "Relocation feasibility is distinct from regional preference: a region may be attractive yet personally infeasible. This constraint prevents academically strong but unusable locations from entering the shortlist.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8,
+            "utility": 0.8,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "D05",
+              "F08"
+            ],
+            "decision_slot": "local_language_flexibility",
+            "overlap_group": "language_environment",
+            "axis": "Maximum local-language commitment",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What level of local-language learning are you willing to undertake for life and work abroad?",
+            "verification_question": "Do you require an English-only environment, or could you learn a local language to basic or working proficiency?",
+            "rationale": "D05 and F08 concern the same willingness axis. It affects country feasibility, daily life, internships, teaching opportunities, and access to local employment.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5232,
+            "utility": 0.5232,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C07",
+            "source_proposal_ids": [
+              "D06",
+              "F04",
+              "O05"
+            ],
+            "decision_slot": "financial_contribution_limit",
+            "overlap_group": "funding_constraint",
+            "axis": "Maximum acceptable out-of-pocket cost after guaranteed funding",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "exact_numeric",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is the maximum annual amount you could personally pay after guaranteed tuition support, stipends, and scholarships?",
+            "verification_question": "Is your annual out-of-pocket limit closest to $0, $10,000, $25,000, or a higher amount in USD equivalent?",
+            "rationale": "D06, F04, and O05 express the same financial viability threshold through funding arrangements or personal contribution. A numeric ceiling operationalizes the minimum acceptable funding level without assuming that self-funding is possible.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.4,
+            "utility": 0.4,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.48,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C08",
+            "source_proposal_ids": [
+              "D07",
+              "F10",
+              "O10"
+            ],
+            "decision_slot": "application_portfolio_risk",
+            "overlap_group": "admissions_risk",
+            "axis": "Admissions-risk tolerance",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How should the application portfolio trade research upside and prestige against admission probability?",
+            "verification_question": "Would you prefer a reach-heavy, balanced, or lower-variance application portfolio?",
+            "rationale": "D07, F10, and O10 are duplicates. Profile research can inform admission feasibility, but the acceptable level of portfolio risk remains partly a personal choice.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.65,
+            "utility_raw": 0.3344000000000001,
+            "utility": 0.3344000000000001,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.65,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C09",
+            "source_proposal_ids": [
+              "D08",
+              "O04"
+            ],
+            "decision_slot": "research_readiness",
+            "overlap_group": "applicant_baseline",
+            "axis": "Current AI research experience level",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is your current level of relevant AI research experience?",
+            "verification_question": "Which is closest: coursework only, substantial project or thesis, research-assistant experience, or publication-level work?",
+            "rationale": "D08 and O04 ask the same readiness question. The answer changes competitiveness estimates, the starting phase of the plan, publication goals, supervisor outreach, and reference strategy.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7799999999999999,
+            "utility": 0.7799999999999999,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C10",
+            "source_proposal_ids": [
+              "D09"
+            ],
+            "decision_slot": "weekly_preparation_capacity",
+            "overlap_group": "preparation_capacity",
+            "axis": "Reliable weekly preparation time",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "exact_numeric",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How many hours per week can you reliably devote to PhD preparation before applications are submitted?",
+            "verification_question": "Should the plan assume about 5, 10, 15, or 20 hours per week?",
+            "rationale": "Weekly capacity determines the feasible pace, number of parallel activities, milestone spacing, and contingency buffers in the preparation plan.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.26720000000000005,
+            "utility": 0.26720000000000005,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.48,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C11",
+            "source_proposal_ids": [
+              "D10",
+              "F06"
+            ],
+            "decision_slot": "first_application_timing",
+            "overlap_group": "application_timing",
+            "axis": "Target timing for first applications",
+            "candidate_kind": "personal_constraint",
+            "ownership": "mixed",
+            "answer_form": "exact_numeric",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "application horizon of roughly 1–2 years",
+            "neutral_question": "Within the stated 1–2 year horizon, approximately how many months from now should the first applications be submitted?",
+            "verification_question": "Should I plan around 12, 18, or 24 months?",
+            "rationale": "D10 and F06 both govern whether the plan targets an earlier cycle or uses more time for profile development. The task explicitly supplies a 1–2 year window, but the point within that window can be calibrated jointly from user urgency and profile needs.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 0.65,
+            "utility_raw": -0.039999999999999994,
+            "utility": -0.039999999999999994,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.65,
+              "A": 0.48,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C12",
+            "source_proposal_ids": [
+              "F05",
+              "O09"
+            ],
+            "decision_slot": "doctoral_training_structure",
+            "overlap_group": "program_structure",
+            "axis": "Preferred balance of structured training and immediate research",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What balance between structured coursework or rotations and immediate adviser-led research do you prefer?",
+            "verification_question": "Do you prefer research-first training, a mixed model, or strongly structured coursework and rotations?",
+            "rationale": "F05 and O09 describe the same structural trade-off. It affects regional fit, program duration, adviser matching, application channels, and curriculum comparisons.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.536,
+            "utility": 0.536,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C13",
+            "source_proposal_ids": [
+              "F07"
+            ],
+            "decision_slot": "phd_internship_priority",
+            "overlap_group": "experiential_training",
+            "axis": "Importance of internship access during the PhD",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 3,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 3,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How important is access to industry or external research-laboratory internships during the PhD?",
+            "verification_question": "Are internships essential, strongly preferred, useful but secondary, or unimportant?",
+            "rationale": "Internship priority can change the weighting of program policies, employer proximity, industry partnerships, leave flexibility, and uninterrupted academic research time.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.28400000000000003,
+            "utility": 0.28400000000000003,
+            "critical_rank": 0.216,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.6,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.6,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C14",
+            "source_proposal_ids": [
+              "F09"
+            ],
+            "decision_slot": "post_graduation_residence",
+            "overlap_group": "post_study_mobility",
+            "axis": "Importance of remaining in the host country after graduation",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How important is the ability to remain and work in the PhD host country after graduation?",
+            "verification_question": "Is staying in the host country critical, preferred, merely helpful, or not expected?",
+            "rationale": "This preference determines how heavily post-study work rights, immigration pathways, local labor markets, and employer concentration should influence regional and program rankings.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.536,
+            "utility": 0.536,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C15",
+            "source_proposal_ids": [
+              "O03"
+            ],
+            "decision_slot": "academic_baseline",
+            "overlap_group": "applicant_baseline",
+            "axis": "Current degree level and academic field",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is your highest completed or in-progress degree, and in what field?",
+            "verification_question": "Do you currently have or expect a bachelor's or master's degree in CS, AI, mathematics, engineering, or another field?",
+            "rationale": "Academic background is distinct from research experience. It affects formal eligibility, direct-entry options, prerequisite gaps, bridging work, and realistic regional timelines.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7799999999999999,
+            "utility": 0.7799999999999999,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C16",
+            "source_proposal_ids": [
+              "O07"
+            ],
+            "decision_slot": "citizenship_residency_context",
+            "overlap_group": "legal_eligibility",
+            "axis": "Citizenship and permanent-residency context",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "eligibility_fact",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What citizenship or permanent-residency context should be used when assessing international-study eligibility?",
+            "verification_question": "Will you be an international applicant in every target region, or do you hold citizenship or permanent residency in any of them?",
+            "rationale": "This fact changes visa pathways, tuition classification, scholarship eligibility, post-study work rights, and possible security or research-access restrictions. It cannot be reliably inferred from the task.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.8,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7200000000000001,
+            "utility": 0.7200000000000001,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.8,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C17",
+            "source_proposal_ids": [
+              "O08"
+            ],
+            "decision_slot": "language_testing_readiness",
+            "overlap_group": "language_readiness",
+            "axis": "Current readiness for required language tests",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is your current readiness for English or other required instructional-language tests?",
+            "verification_question": "Do you already meet likely requirements or qualify for a waiver, or should the plan include test preparation?",
+            "rationale": "Testing readiness is distinct from willingness to learn a local language. It determines immediate eligibility and whether language study, exam booking, waiver checks, or teaching-assistant preparation must enter the timeline.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.48480000000000006,
+            "utility": 0.48480000000000006,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          }
+        ]
+      },
+      "question": "These answers would materially change the research recommendations:\n1. Which post-PhD career outcome should the recommendations primarily optimize for?\n2. How broadly are you willing and able to relocate across North America, Europe, and Asia?\n3. Which AI research direction should anchor the program search and preparation plan?\n4. What balance between structured coursework or rotations and immediate adviser-led research do you prefer?",
+      "simulator_answer": "1. Strong industry-research employability and career optionality, rather than a faculty-only path.\n2. Relocation flexibility across North America, Europe, and Asia is not specified.\n3. Applied deep learning and natural language processing, emphasizing implementation and system-building over theory alone.\n4. Earlier hands-on, adviser-led research, with structured coursework or rotations playing a secondary role.",
+      "resolved_unit_ids": [
+        "T1-P3",
+        "T1-P1",
+        "T1-P2"
+      ],
+      "atomic_question_count": 4
+    },
+    "v4r": {
+      "selection": {
+        "policy": "v4r",
+        "formula": "I*O*A*R*X*((1-E)+lambda*E*(1-D)*M)-mu*B + critical_override_bonus",
+        "calibrator_schema": "0.94",
+        "question_cap": 4,
+        "selected": [
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02",
+              "F01",
+              "O02"
+            ],
+            "decision_slot": "post_phd_career_objective",
+            "overlap_group": "career_outcome",
+            "axis": "Primary post-PhD career objective",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which post-PhD career outcome should the recommendations primarily optimize for?",
+            "verification_question": "Should I optimize mainly for academia, industrial research, applied leadership, entrepreneurship, or public-interest work?",
+            "rationale": "D02, F01, and O02 are semantic duplicates. Career intent changes the weighting of publication culture, teaching, internships, employer access, commercialization support, and employment outcomes.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8533333333333334,
+            "utility": 1.0733333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Which post-PhD career outcome should the recommendations primarily optimize for?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C05",
+            "source_proposal_ids": [
+              "O06"
+            ],
+            "decision_slot": "relocation_feasibility",
+            "overlap_group": "geographic_constraints",
+            "axis": "Breadth of feasible relocation",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How broadly are you willing and able to relocate across North America, Europe, and Asia?",
+            "verification_question": "Are all three regions genuinely open for relocation, or are any regions or countries off-limits?",
+            "rationale": "Relocation feasibility is distinct from regional preference: a region may be attractive yet personally infeasible. This constraint prevents academically strong but unusable locations from entering the shortlist.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8266666666666667,
+            "utility": 1.0466666666666666,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            },
+            "question": "How broadly are you willing and able to relocate across North America, Europe, and Asia?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C01",
+            "source_proposal_ids": [
+              "D01",
+              "F02",
+              "O01"
+            ],
+            "decision_slot": "ai_research_direction",
+            "overlap_group": "research_specialization",
+            "axis": "Preferred AI research direction",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "free_text_goal",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which AI research direction should anchor the program search and preparation plan?",
+            "verification_question": "Which is closest: theory, language or multimodal AI, vision or robotics, trustworthy AI, or an application domain?",
+            "rationale": "D01, F02, and O01 ask the same specialization question. The answer changes adviser and laboratory fit, prerequisite preparation, research resources, projects, venues, and the program shortlist.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.72,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.6666666666666666,
+            "utility": 0.8866666666666666,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.72,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            },
+            "question": "Which AI research direction should anchor the program search and preparation plan?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C03",
+            "source_proposal_ids": [
+              "D03"
+            ],
+            "decision_slot": "program_ranking_priority",
+            "overlap_group": "program_selection_rule",
+            "axis": "Dominant program-selection priority",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "When strong programs involve trade-offs, which consideration should dominate their ranking?",
+            "verification_question": "Should the ranking prioritize research fit, resources and placement, funding and affordability, or reputation and mobility?",
+            "rationale": "The agent can recommend a defensible scoring method, but the dominant trade-off reflects the user's values. It can substantially reorder otherwise suitable programs.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.5946666666666668,
+            "utility": 0.8146666666666668,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.6666666666666666
+            },
+            "question": "When strong programs involve trade-offs, which consideration should dominate their ranking?",
+            "question_mode": "neutral"
+          }
+        ],
+        "scored_candidates": [
+          {
+            "candidate_id": "C01",
+            "source_proposal_ids": [
+              "D01",
+              "F02",
+              "O01"
+            ],
+            "decision_slot": "ai_research_direction",
+            "overlap_group": "research_specialization",
+            "axis": "Preferred AI research direction",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "free_text_goal",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which AI research direction should anchor the program search and preparation plan?",
+            "verification_question": "Which is closest: theory, language or multimodal AI, vision or robotics, trustworthy AI, or an application domain?",
+            "rationale": "D01, F02, and O01 ask the same specialization question. The answer changes adviser and laboratory fit, prerequisite preparation, research resources, projects, venues, and the program shortlist.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.72,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.6666666666666666,
+            "utility": 0.8866666666666666,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.72,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02",
+              "F01",
+              "O02"
+            ],
+            "decision_slot": "post_phd_career_objective",
+            "overlap_group": "career_outcome",
+            "axis": "Primary post-PhD career objective",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which post-PhD career outcome should the recommendations primarily optimize for?",
+            "verification_question": "Should I optimize mainly for academia, industrial research, applied leadership, entrepreneurship, or public-interest work?",
+            "rationale": "D02, F01, and O02 are semantic duplicates. Career intent changes the weighting of publication culture, teaching, internships, employer access, commercialization support, and employment outcomes.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8533333333333334,
+            "utility": 1.0733333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C03",
+            "source_proposal_ids": [
+              "D03"
+            ],
+            "decision_slot": "program_ranking_priority",
+            "overlap_group": "program_selection_rule",
+            "axis": "Dominant program-selection priority",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "When strong programs involve trade-offs, which consideration should dominate their ranking?",
+            "verification_question": "Should the ranking prioritize research fit, resources and placement, funding and affordability, or reputation and mobility?",
+            "rationale": "The agent can recommend a defensible scoring method, but the dominant trade-off reflects the user's values. It can substantially reorder otherwise suitable programs.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.5946666666666668,
+            "utility": 0.8146666666666668,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C04",
+            "source_proposal_ids": [
+              "D04",
+              "F03"
+            ],
+            "decision_slot": "regional_weighting",
+            "overlap_group": "geographic_priority",
+            "axis": "Preferred regional emphasis",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which region, if any, should receive the greatest weight in the actionable shortlist?",
+            "verification_question": "Should I emphasize North America, Europe, Asia, or weight all three equally?",
+            "rationale": "D04 and F03 are duplicates. The task requires coverage of all three regions but does not reveal which region should receive more detailed or actionable treatment.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5365333333333334,
+            "utility": 0.7565333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C05",
+            "source_proposal_ids": [
+              "O06"
+            ],
+            "decision_slot": "relocation_feasibility",
+            "overlap_group": "geographic_constraints",
+            "axis": "Breadth of feasible relocation",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How broadly are you willing and able to relocate across North America, Europe, and Asia?",
+            "verification_question": "Are all three regions genuinely open for relocation, or are any regions or countries off-limits?",
+            "rationale": "Relocation feasibility is distinct from regional preference: a region may be attractive yet personally infeasible. This constraint prevents academically strong but unusable locations from entering the shortlist.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8266666666666667,
+            "utility": 1.0466666666666666,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "D05",
+              "F08"
+            ],
+            "decision_slot": "local_language_flexibility",
+            "overlap_group": "language_environment",
+            "axis": "Maximum local-language commitment",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What level of local-language learning are you willing to undertake for life and work abroad?",
+            "verification_question": "Do you require an English-only environment, or could you learn a local language to basic or working proficiency?",
+            "rationale": "D05 and F08 concern the same willingness axis. It affects country feasibility, daily life, internships, teaching opportunities, and access to local employment.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5365333333333334,
+            "utility": 0.7565333333333334,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C07",
+            "source_proposal_ids": [
+              "D06",
+              "F04",
+              "O05"
+            ],
+            "decision_slot": "financial_contribution_limit",
+            "overlap_group": "funding_constraint",
+            "axis": "Maximum acceptable out-of-pocket cost after guaranteed funding",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "exact_numeric",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is the maximum annual amount you could personally pay after guaranteed tuition support, stipends, and scholarships?",
+            "verification_question": "Is your annual out-of-pocket limit closest to $0, $10,000, $25,000, or a higher amount in USD equivalent?",
+            "rationale": "D06, F04, and O05 express the same financial viability threshold through funding arrangements or personal contribution. A numeric ceiling operationalizes the minimum acceptable funding level without assuming that self-funding is possible.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.42666666666666664,
+            "utility": 0.6466666666666666,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.48,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C08",
+            "source_proposal_ids": [
+              "D07",
+              "F10",
+              "O10"
+            ],
+            "decision_slot": "application_portfolio_risk",
+            "overlap_group": "admissions_risk",
+            "axis": "Admissions-risk tolerance",
+            "candidate_kind": "preference",
+            "ownership": "mixed",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How should the application portfolio trade research upside and prestige against admission probability?",
+            "verification_question": "Would you prefer a reach-heavy, balanced, or lower-variance application portfolio?",
+            "rationale": "D07, F10, and O10 are duplicates. Profile research can inform admission feasibility, but the acceptable level of portfolio risk remains partly a personal choice.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 0.9,
+            "utility_raw": 0.4917333333333334,
+            "utility": 0.7117333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.9,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C09",
+            "source_proposal_ids": [
+              "D08",
+              "O04"
+            ],
+            "decision_slot": "research_readiness",
+            "overlap_group": "applicant_baseline",
+            "axis": "Current AI research experience level",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is your current level of relevant AI research experience?",
+            "verification_question": "Which is closest: coursework only, substantial project or thesis, research-assistant experience, or publication-level work?",
+            "rationale": "D08 and O04 ask the same readiness question. The answer changes competitiveness estimates, the starting phase of the plan, publication goals, supervisor outreach, and reference strategy.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7933333333333333,
+            "utility": 1.0133333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C10",
+            "source_proposal_ids": [
+              "D09"
+            ],
+            "decision_slot": "weekly_preparation_capacity",
+            "overlap_group": "preparation_capacity",
+            "axis": "Reliable weekly preparation time",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "exact_numeric",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How many hours per week can you reliably devote to PhD preparation before applications are submitted?",
+            "verification_question": "Should the plan assume about 5, 10, 15, or 20 hours per week?",
+            "rationale": "Weekly capacity determines the feasible pace, number of parallel activities, milestone spacing, and contingency buffers in the preparation plan.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.28053333333333336,
+            "utility": 0.5005333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.48,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C11",
+            "source_proposal_ids": [
+              "D10",
+              "F06"
+            ],
+            "decision_slot": "first_application_timing",
+            "overlap_group": "application_timing",
+            "axis": "Target timing for first applications",
+            "candidate_kind": "personal_constraint",
+            "ownership": "mixed",
+            "answer_form": "exact_numeric",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 4,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "application horizon of roughly 1–2 years",
+            "neutral_question": "Within the stated 1–2 year horizon, approximately how many months from now should the first applications be submitted?",
+            "verification_question": "Should I plan around 12, 18, or 24 months?",
+            "rationale": "D10 and F06 both govern whether the plan targets an earlier cycle or uses more time for profile development. The task explicitly supplies a 1–2 year window, but the point within that window can be calibrated jointly from user urgency and profile needs.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 0.9,
+            "utility_raw": -0.026666666666666665,
+            "utility": -0.026666666666666665,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.9,
+              "A": 0.48,
+              "R": 0.8,
+              "X": 1.0,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C12",
+            "source_proposal_ids": [
+              "F05",
+              "O09"
+            ],
+            "decision_slot": "doctoral_training_structure",
+            "overlap_group": "program_structure",
+            "axis": "Preferred balance of structured training and immediate research",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What balance between structured coursework or rotations and immediate adviser-led research do you prefer?",
+            "verification_question": "Do you prefer research-first training, a mixed model, or strongly structured coursework and rotations?",
+            "rationale": "F05 and O09 describe the same structural trade-off. It affects regional fit, program duration, adviser matching, application channels, and curriculum comparisons.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5493333333333335,
+            "utility": 0.7693333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C13",
+            "source_proposal_ids": [
+              "F07"
+            ],
+            "decision_slot": "phd_internship_priority",
+            "overlap_group": "experiential_training",
+            "axis": "Importance of internship access during the PhD",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 3,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 3,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How important is access to industry or external research-laboratory internships during the PhD?",
+            "verification_question": "Are internships essential, strongly preferred, useful but secondary, or unimportant?",
+            "rationale": "Internship priority can change the weighting of program policies, employer proximity, industry partnerships, leave flexibility, and uninterrupted academic research time.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.29733333333333334,
+            "utility": 0.29733333333333334,
+            "critical_rank": 0.216,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.6,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.6,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C14",
+            "source_proposal_ids": [
+              "F09"
+            ],
+            "decision_slot": "post_graduation_residence",
+            "overlap_group": "post_study_mobility",
+            "axis": "Importance of remaining in the host country after graduation",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How important is the ability to remain and work in the PhD host country after graduation?",
+            "verification_question": "Is staying in the host country critical, preferred, merely helpful, or not expected?",
+            "rationale": "This preference determines how heavily post-study work rights, immigration pathways, local labor markets, and employer concentration should influence regional and program rankings.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5493333333333335,
+            "utility": 0.7693333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C15",
+            "source_proposal_ids": [
+              "O03"
+            ],
+            "decision_slot": "academic_baseline",
+            "overlap_group": "applicant_baseline",
+            "axis": "Current degree level and academic field",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is your highest completed or in-progress degree, and in what field?",
+            "verification_question": "Do you currently have or expect a bachelor's or master's degree in CS, AI, mathematics, engineering, or another field?",
+            "rationale": "Academic background is distinct from research experience. It affects formal eligibility, direct-entry options, prerequisite gaps, bridging work, and realistic regional timelines.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7933333333333333,
+            "utility": 1.0133333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C16",
+            "source_proposal_ids": [
+              "O07"
+            ],
+            "decision_slot": "citizenship_residency_context",
+            "overlap_group": "legal_eligibility",
+            "axis": "Citizenship and permanent-residency context",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "eligibility_fact",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What citizenship or permanent-residency context should be used when assessing international-study eligibility?",
+            "verification_question": "Will you be an international applicant in every target region, or do you hold citizenship or permanent residency in any of them?",
+            "rationale": "This fact changes visa pathways, tuition classification, scholarship eligibility, post-study work rights, and possible security or research-access restrictions. It cannot be reliably inferred from the task.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.8,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7466666666666667,
+            "utility": 0.9666666666666667,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.8,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C17",
+            "source_proposal_ids": [
+              "O08"
+            ],
+            "decision_slot": "language_testing_readiness",
+            "overlap_group": "language_readiness",
+            "axis": "Current readiness for required language tests",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is your current readiness for English or other required instructional-language tests?",
+            "verification_question": "Do you already meet likely requirements or qualify for a waiver, or should the plan include test preparation?",
+            "rationale": "Testing readiness is distinct from willingness to learn a local language. It determines immediate eligibility and whether language study, exam booking, waiver checks, or teaching-assistant preparation must enter the timeline.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.4981333333333334,
+            "utility": 0.7181333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          }
+        ]
+      },
+      "question": "These answers would materially change the research recommendations:\n1. Which post-PhD career outcome should the recommendations primarily optimize for?\n2. How broadly are you willing and able to relocate across North America, Europe, and Asia?\n3. Which AI research direction should anchor the program search and preparation plan?\n4. When strong programs involve trade-offs, which consideration should dominate their ranking?",
+      "simulator_answer": "1. Preserve strong industry-research and employability options rather than optimizing only for a faculty career.\n2. My willingness and ability to relocate across North America, Europe, and Asia is not specified.\n3. Applied, implementation-heavy deep learning and natural language processing.\n4. Strong funding and cost-effectiveness should dominate over prestige alone.",
+      "resolved_unit_ids": [
+        "T1-P3",
+        "T1-P1",
+        "T1-P4"
+      ],
+      "atomic_question_count": 4
+    }
+  }
+}

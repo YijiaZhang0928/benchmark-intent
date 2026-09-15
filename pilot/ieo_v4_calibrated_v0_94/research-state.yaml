@@ -1,5 +1,5 @@
 project: ieo-v4-ask-what-matters
-status: protocol_locked
+status: h2_protocol_ready
 updated: 2026-09-15
 question: >-
   Can an explicit importance-evidence-ownership controller improve critical preference acquisition
@@ -7,12 +7,17 @@ question: >-
 development_tasks: [T01, T02, T05]
 internal_validation_tasks: [T08, T11]
 untouched_future_tasks: 10
-current_hypothesis: H1
+current_hypothesis: H2
 hypotheses:
   H1:
-    status: active
+    status: completed_exploratory
     intervention: multi-lens candidate generation plus deterministic V4A/V4R selection
     prediction: V4R improves development ResolvedRecall@AskableHigh without exceeding stock mean burden by more than one atomic question
+    observation: raw resolved recall improved, but candidate recall was unstable across tasks
+  H2:
+    status: active
+    intervention: add value-fit generation lens and underlying-value preference-potency term
+    prediction: candidate and selected recall increase while the four-question cap is unchanged
 stopping_rule:
   maximum_architecture_iterations: 2
   full_report_gate: development process gate in protocol.md
@@ -20,4 +25,3 @@ artifacts:
   protocol: pilot/ieo_v4_calibrated_v0_94/protocol.md
   findings: pilot/ieo_v4_calibrated_v0_94/findings.md
   log: pilot/ieo_v4_calibrated_v0_94/research-log.md
-

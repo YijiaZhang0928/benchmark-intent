@@ -20,6 +20,17 @@ Multi-lens enumeration should increase candidate coverage. A deterministic verif
 should then favor high-importance/high-wrong-default-cost axes over visible but low-impact missing
 facts, while a four-question diversity cap should control burden.
 
+## H1 development observation
+
+H1 controlled burden and improved raw resolved recall, but the mechanism was not yet stable. The
+candidate pool fully covered T01, covered only one of five T02 askable-high axes, and covered two of
+four T05 askable-high axes. The failure was not mainly answerability calibration: important axes were
+missing at generation time, or present but represented as a surface product/program choice and then
+ranked below generic high-confidence parameters.
+
+The next architecture change is consequently structural rather than a threshold sweep: add a
+value/fit enumerator and an explicit underlying-value versus implementation-choice representation.
+
 ## Lessons and constraints
 
 - Never use hidden task preferences to generate or select candidates.

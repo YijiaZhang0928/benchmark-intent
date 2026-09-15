@@ -1,0 +1,3378 @@
+{
+  "schema_version": "0.94",
+  "task": "T02",
+  "phase": "development",
+  "generated_at_utc": "2026-09-15T23:17:28.896983+00:00",
+  "model": "gpt-5.6-sol/high",
+  "task_visibility": "instruction only",
+  "task_sha256": "b727e487c91eec5022df39c59db4bcc0e7da3a1f3780ccf34901d8bbfc8dd558",
+  "calibrator_sha256": "f262b9a28cda5f5bde27c7dd6b331c901ab3c836b6f1ca608ed7daa7c0efd49c",
+  "candidate_pool": {
+    "model": "gpt-5.6-sol/high",
+    "candidate_input_visibility": "task instruction only",
+    "passes": {
+      "decision": [
+        {
+          "proposal_id": "D01",
+          "decision_slot": "credit_receiving_institution",
+          "axis": "Home institution",
+          "question": "Which home university or college must approve and receive the overseas credits?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "A specific named university",
+            "A university system with centralized transfer rules",
+            "Not yet enrolled or institution undecided"
+          ],
+          "report_changes": [
+            "Use institution-specific exchange agreements and transfer-credit policies",
+            "Distinguish preapproved partners from programs requiring individual petitions",
+            "Tailor the preparation plan to the relevant approval offices and deadlines"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D02",
+          "decision_slot": "applicant_degree_level",
+          "axis": "Current degree level",
+          "question": "What degree level will you be pursuing during the overseas term?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Undergraduate",
+            "Master's",
+            "Doctoral",
+            "Other or undecided"
+          ],
+          "report_changes": [
+            "Filter programs by academic-level eligibility",
+            "Adjust expectations for coursework, independent study, and research access",
+            "Compare credit loads using the appropriate undergraduate or graduate standard"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D03",
+          "decision_slot": "academic_field_fit",
+          "axis": "Field of study",
+          "question": "What primary academic field must the program support?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Engineering or computer science",
+            "Business or economics",
+            "Humanities or social sciences",
+            "Natural or life sciences"
+          ],
+          "report_changes": [
+            "Prioritize institutions with relevant courses, laboratories, or faculty",
+            "Evaluate curriculum equivalencies within the specified field",
+            "Identify discipline-specific prerequisites and scheduling constraints"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D04",
+          "decision_slot": "participation_timing",
+          "axis": "Target term",
+          "question": "Which semester and year are you targeting for the program?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Next autumn semester",
+            "Next spring semester",
+            "A specific later semester",
+            "Flexible or undecided"
+          ],
+          "report_changes": [
+            "Check only programs operating during the target period",
+            "Align application, nomination, housing, visa, and scholarship deadlines",
+            "Build a preparation timeline with an appropriate lead time"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D05",
+          "decision_slot": "visa_eligibility_profile",
+          "axis": "Passport citizenship",
+          "question": "Which passport citizenship will you use for the program application and visa process?",
+          "answer_form": "eligibility_fact",
+          "plausible_answers": [
+            "United States passport",
+            "European Union or EEA passport",
+            "Japanese passport",
+            "Another specified passport"
+          ],
+          "report_changes": [
+            "Apply destination-specific visa and entry rules to the shortlist",
+            "Estimate realistic processing times, fees, and documentation burdens",
+            "Flag options with material immigration or work-permission constraints"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D06",
+          "decision_slot": "preferred_academic_model",
+          "axis": "Program format",
+          "question": "Which academic model do you prefer for the semester abroad?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Conventional taught courses with grades",
+            "Research placement or laboratory attachment",
+            "Mixed coursework and supervised research",
+            "No strong preference"
+          ],
+          "report_changes": [
+            "Rank programs according to the preferred teaching and assessment model",
+            "Change the balance between course catalogs and faculty-supervision opportunities",
+            "Adjust the application plan for proposals, portfolios, or faculty outreach"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D07",
+          "decision_slot": "shortlist_ranking_objective",
+          "axis": "Primary objective",
+          "question": "Which outcome should have the greatest weight in the prioritized shortlist?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Reliable degree credit and on-time progression",
+            "Academic prestige, research value, and faculty access",
+            "Low total cost and administrative simplicity",
+            "Cross-cultural immersion and international networking"
+          ],
+          "report_changes": [
+            "Reweight the comparison criteria and final rankings",
+            "Change which strengths and weaknesses are treated as decisive",
+            "Tailor the preparation plan toward the selected outcome"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D08",
+          "decision_slot": "financial_resource_limit",
+          "axis": "Maximum budget",
+          "question": "What is the maximum total out-of-pocket amount you can spend for tuition differences, travel, housing, insurance, visa costs, and daily living expenses?",
+          "answer_form": "exact_numeric",
+          "plausible_answers": [
+            "8,000 USD",
+            "15,000 USD",
+            "25,000 USD",
+            "40,000 USD"
+          ],
+          "report_changes": [
+            "Exclude or downgrade options exceeding the stated ceiling",
+            "Compare destinations using total net cost rather than living costs alone",
+            "Set the required scholarship or financial-aid target for each option"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D09",
+          "decision_slot": "credit_transfer_risk_tolerance",
+          "axis": "Acceptable credit-transfer risk",
+          "question": "How much uncertainty in final credit approval are you willing to accept?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Only formally preapproved credits",
+            "Minor uncertainty if written provisional approval is available",
+            "Case-by-case review is acceptable for a stronger program",
+            "Substantial uncertainty is acceptable for exceptional academic value"
+          ],
+          "report_changes": [
+            "Determine whether nonpartner visiting programs remain eligible for the shortlist",
+            "Weight formal articulation agreements versus academic upside",
+            "Add stronger contingency steps such as syllabus review and backup course selection"
+          ],
+          "source_pass": "decision"
+        },
+        {
+          "proposal_id": "D10",
+          "decision_slot": "instruction_language_constraint",
+          "axis": "Language of instruction",
+          "question": "What language-of-instruction constraint should the shortlist follow?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "English-taught study only",
+            "Mostly English with optional local-language courses",
+            "Local-language coursework is acceptable at my current proficiency",
+            "Willing to complete intensive language preparation beforehand"
+          ],
+          "report_changes": [
+            "Filter programs by actual instructional and assessment language",
+            "Add any language-test or proficiency prerequisites to the preparation plan",
+            "Adjust the cultural-immersion assessment and course-selection strategy"
+          ],
+          "source_pass": "decision"
+        }
+      ],
+      "flip": [
+        {
+          "proposal_id": "F01",
+          "decision_slot": "program eligibility and curriculum-fit shortlist",
+          "axis": "academic discipline",
+          "question": "Which academic discipline must the overseas program primarily support?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Engineering or computer science",
+            "Business or economics",
+            "Humanities or social sciences",
+            "Natural or life sciences"
+          ],
+          "report_changes": [
+            "Prioritize institutions with a one-semester course portfolio in the selected discipline and demote destinations offering mainly unrelated electives.",
+            "Replace the generic curriculum comparison with discipline-specific course examples, teaching methods, facilities, faculty links and likely credit equivalents."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F02",
+          "decision_slot": "eligible program type",
+          "axis": "current degree level",
+          "question": "What degree level will you be enrolled in during the overseas term?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Undergraduate",
+            "Taught master's",
+            "Research master's",
+            "Doctoral"
+          ],
+          "report_changes": [
+            "For an undergraduate or taught master's student, emphasize course-based exchanges with a full transferable credit load; for a research student, prioritize visiting-student or supervised-research arrangements.",
+            "Tailor the preparation plan to the relevant eligibility evidence, such as transcripts and course approvals for taught programs or a research proposal and host-supervisor consent for research visits."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F03",
+          "decision_slot": "credit-transfer filtering",
+          "axis": "required role of transferred credits",
+          "question": "What must the overseas credits count toward in your home degree?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Major or core requirements",
+            "A required subject elective",
+            "Unrestricted degree electives",
+            "Any approved credit toward enrollment or progression"
+          ],
+          "report_changes": [
+            "If major or core credit is required, rank only options with close syllabus matches and realistic preapproval; if unrestricted credit is acceptable, retain broader interdisciplinary programs.",
+            "Change the credit-transfer table from a general workload conversion to a course-by-course equivalency and approval checklist when specific degree requirements must be met."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F04",
+          "decision_slot": "overall shortlist ranking",
+          "axis": "primary academic objective",
+          "question": "Which single outcome should carry the most weight in the final ranking?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Reliable progress toward degree requirements",
+            "Access to research, laboratories or faculty mentors",
+            "Career networking and employer exposure",
+            "Cross-cultural learning and international experience"
+          ],
+          "report_changes": [
+            "Reweight the comparison matrix toward transfer certainty, research access, career networks or cultural immersion according to the selected objective.",
+            "Revise the top recommendations and preparation milestones—for example, emphasizing course preapproval for degree progress or early faculty outreach for research access."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F05",
+          "decision_slot": "financial feasibility cutoff",
+          "axis": "maximum personal expenditure",
+          "question": "What is the maximum amount you can personally spend for the entire overseas term, including travel, housing, insurance and daily living costs?",
+          "answer_form": "exact_numeric",
+          "plausible_answers": [
+            "USD 5,000",
+            "USD 10,000",
+            "USD 15,000",
+            "USD 25,000"
+          ],
+          "report_changes": [
+            "Apply the stated amount as an all-in affordability ceiling and remove or flag programs whose estimated personal cost exceeds it.",
+            "At a lower ceiling, prioritize low-cost cities, subsidized housing and fee-waiver exchanges; at a higher ceiling, retain expensive metropolitan options with stronger academic or networking fit."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F06",
+          "decision_slot": "funding-contingent shortlist",
+          "axis": "dependence on scholarships or fee waivers",
+          "question": "Can you participate if no scholarship, grant or host tuition waiver is awarded?",
+          "answer_form": "eligibility_fact",
+          "plausible_answers": [
+            "Yes, external funding is optional",
+            "Only if host tuition is waived",
+            "Only with partial living-cost support",
+            "No, near-full funding is required"
+          ],
+          "report_changes": [
+            "If funding is optional, rank programs mainly on academic fit; if funding is required, prioritize options with applicable, sufficiently large and realistically timed awards.",
+            "Add scholarship deadlines, nomination dependencies, award coverage and a funding contingency decision date to the preparation plan."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F07",
+          "decision_slot": "geographic ordering of the shortlist",
+          "axis": "preferred destination region",
+          "question": "Which region should receive first priority when academically comparable options exist?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "United States",
+            "Europe",
+            "Japan",
+            "Singapore"
+          ],
+          "report_changes": [
+            "Place the preferred region's strongest eligible programs at the top while retaining representative alternatives from the other required regions for comparison.",
+            "Expand the preferred region's discussion of visa steps, housing, academic culture, local costs and adaptation issues, while summarizing those details for lower-priority regions."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F08",
+          "decision_slot": "language-feasible program filter",
+          "axis": "acceptable language of assessed coursework",
+          "question": "How much assessed coursework are you willing and qualified to take in a language other than English?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "None; all assessed courses must be in English",
+            "Only a small portion alongside mostly English coursework",
+            "A substantial portion if language support is available",
+            "A full local-language course load"
+          ],
+          "report_changes": [
+            "An English-only answer will prioritize English-taught tracks in Europe, Japan and Singapore; greater flexibility will add academically strong local-language options.",
+            "Scale the preparation plan from basic survival-language study to formal proficiency testing and academic-language preparation based on the chosen tolerance."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F09",
+          "decision_slot": "academic-environment fit ranking",
+          "axis": "preferred teaching and assessment model",
+          "question": "Which teaching model would you prefer for the overseas term?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Lectures with examinations",
+            "Small seminars with essays or discussion",
+            "Team-based projects and continuous assessment",
+            "Laboratory or supervised research"
+          ],
+          "report_changes": [
+            "Rerank programs according to the prevalence of the selected class format and assessment model rather than relying only on institutional reputation.",
+            "Change the academic-adaptation section to address the relevant demands, such as high-stakes exams, seminar participation, team coordination or laboratory onboarding."
+          ],
+          "source_pass": "flip"
+        },
+        {
+          "proposal_id": "F10",
+          "decision_slot": "intake and application eligibility",
+          "axis": "available academic period",
+          "question": "Which academic period can you spend abroad?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "August–December term",
+            "January–May term",
+            "Summer or other intensive term",
+            "Either main semester"
+          ],
+          "report_changes": [
+            "Exclude programs whose teaching calendar, examination period or minimum duration does not fit the available period and rerank the remaining regional options.",
+            "Build the preparation plan backward from the applicable nomination, application, housing and visa deadlines; a flexible answer will allow the plan to target the strongest intake."
+          ],
+          "source_pass": "flip"
+        }
+      ],
+      "ontology": [
+        {
+          "proposal_id": "O01",
+          "decision_slot": "transfer_ecosystem",
+          "axis": "home_institution",
+          "question": "What home institution should be used to assess exchange agreements, residency rules, and credit-transfer approval?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "A specific named university",
+            "A university system or consortium",
+            "No specific institution; use a general framework",
+            "Compare rules for several named institutions"
+          ],
+          "report_changes": [
+            "A named institution enables verification of bilateral partners, preapproved courses, and residency requirements.",
+            "An institution-agnostic answer would replace definitive transfer claims with a general due-diligence framework.",
+            "A consortium or multi-institution scope would favor programs recognized across the specified network."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O02",
+          "decision_slot": "curriculum_fit",
+          "axis": "academic_field",
+          "question": "Which academic field or degree major must the destination curriculum support?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "Engineering or computer science",
+            "Business or economics",
+            "Humanities or social sciences",
+            "Natural or health sciences"
+          ],
+          "report_changes": [
+            "The program pool and course-level comparison would be restricted to relevant departments.",
+            "Credit-transfer analysis would focus on field-specific prerequisites, labs, sequencing, and accreditation constraints.",
+            "The shortlist would prioritize institutions with suitable faculty, facilities, and research networks."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O03",
+          "decision_slot": "eligibility_screen",
+          "axis": "academic_level",
+          "question": "What will the student's academic level be during the overseas term?",
+          "answer_form": "eligibility_fact",
+          "plausible_answers": [
+            "Second-year undergraduate",
+            "Third- or fourth-year undergraduate",
+            "Master's student",
+            "Doctoral student"
+          ],
+          "report_changes": [
+            "Programs unavailable to the stated level would be removed.",
+            "Course rigor, prerequisites, and expected teaching model would be assessed at the appropriate level.",
+            "The research and networking analysis would distinguish taught-course access from graduate research access."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O04",
+          "decision_slot": "application_timeline",
+          "axis": "target_term",
+          "question": "Which academic term and year is the program intended for?",
+          "answer_form": "free_text_goal",
+          "plausible_answers": [
+            "Fall 2026",
+            "Spring 2027",
+            "Summer 2027",
+            "Any term within the next two years"
+          ],
+          "report_changes": [
+            "The report would verify term-specific availability, deadlines, and course calendars.",
+            "The preparation plan would be scheduled backward from nomination, application, visa, housing, and scholarship deadlines.",
+            "Calendar mismatches with the home institution would affect the shortlist."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O05",
+          "decision_slot": "credit_outcome",
+          "axis": "credit_application",
+          "question": "What must the transferred credit satisfy for the overseas term to count academically?",
+          "answer_form": "categorical_choice",
+          "plausible_answers": [
+            "Required major or core courses",
+            "General-education requirements",
+            "Unrestricted electives",
+            "Any transcripted credit sufficient for full-time status"
+          ],
+          "report_changes": [
+            "Major or core credit would require close syllabus, contact-hour, prerequisite, and assessment matching.",
+            "Elective credit would allow a broader range of interdisciplinary and culturally focused programs.",
+            "Full-time-status needs would shift attention to minimum course loads and credit equivalencies."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O06",
+          "decision_slot": "academic_risk_filter",
+          "axis": "transfer_certainty",
+          "question": "How much uncertainty in final credit approval is acceptable?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Only courses formally preapproved before departure",
+            "Allow programs with documented equivalency precedents",
+            "Accept case-by-case faculty review",
+            "Accept meaningful transfer risk for a stronger experience"
+          ],
+          "report_changes": [
+            "A low-risk posture would prioritize existing exchange partners and published equivalency databases.",
+            "Moderate tolerance would admit direct-enrollment options with detailed syllabi and prior transfer evidence.",
+            "High tolerance would broaden the shortlist but add contingency courses and approval checkpoints to the plan."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O07",
+          "decision_slot": "financial_feasibility",
+          "axis": "all_in_budget_ceiling",
+          "question": "What is the maximum all-in out-of-pocket budget for the semester, stated as an amount and currency?",
+          "answer_form": "exact_numeric",
+          "plausible_answers": [
+            "USD 10,000",
+            "USD 20,000",
+            "EUR 15,000",
+            "JPY 2,500,000"
+          ],
+          "report_changes": [
+            "Tuition, housing, food, insurance, travel, visa, and local transport would be compared against the ceiling.",
+            "High-cost destinations could be removed or retained only where aid makes them feasible.",
+            "The scholarship section would quantify the funding gap rather than merely list awards."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O08",
+          "decision_slot": "visa_eligibility",
+          "axis": "passport_jurisdiction",
+          "question": "Which passport or passports will the student use for immigration purposes?",
+          "answer_form": "eligibility_fact",
+          "plausible_answers": [
+            "United States passport",
+            "EU or EEA passport",
+            "Japanese or Singaporean passport",
+            "Another specified passport"
+          ],
+          "report_changes": [
+            "Visa categories, processing times, proof-of-funds rules, and work permissions would be tailored to the passport.",
+            "Destinations offering visa-free study or simpler procedures could move higher in the shortlist.",
+            "The preparation plan would include jurisdiction-specific document and appointment requirements."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O09",
+          "decision_slot": "language_access",
+          "axis": "instruction_language_capability",
+          "question": "In which languages can the student successfully complete university-level coursework?",
+          "answer_form": "current_state",
+          "plausible_answers": [
+            "English only",
+            "English plus Japanese at JLPT N2 or higher",
+            "English plus one European language at B2 or higher",
+            "Multiple languages at academic proficiency"
+          ],
+          "report_changes": [
+            "English-only status would restrict the course pool and may favor dedicated international programs.",
+            "Local-language proficiency would unlock regular university courses and deeper cultural integration.",
+            "The preparation plan would add required language tests or pre-semester language study where needed."
+          ],
+          "source_pass": "ontology"
+        },
+        {
+          "proposal_id": "O10",
+          "decision_slot": "shortlist_ranking",
+          "axis": "primary_success_criterion",
+          "question": "Which outcome should have the greatest weight when prioritizing the shortlist?",
+          "answer_form": "ordinal_tradeoff",
+          "plausible_answers": [
+            "Maximum certainty of degree progress",
+            "Strongest research and faculty access",
+            "Lowest total cost and best aid prospects",
+            "Best international network and cross-cultural experience"
+          ],
+          "report_changes": [
+            "Degree progress would emphasize course matching and transfer reliability.",
+            "Research priority would elevate lab access, faculty supervision, and project-based programs.",
+            "Cost priority would emphasize exchange tuition arrangements, affordable cities, and attainable aid.",
+            "Networking or cultural priority would favor internationally connected campuses and strong local integration."
+          ],
+          "source_pass": "ontology"
+        }
+      ]
+    },
+    "canonical_candidates": [
+      {
+        "candidate_id": "C01",
+        "source_proposal_ids": [
+          "D01",
+          "O01"
+        ],
+        "decision_slot": "credit_receiving_institution",
+        "overlap_group": "home_transfer_context",
+        "axis": "Home institution for credit approval",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "current_state",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which home institution must approve and receive the overseas credits?",
+        "verification_question": "What is your home institution, or is it still undecided?",
+        "rationale": "The institution determines applicable exchange agreements, residency rules, approval offices, transfer policies, and whether institution-specific conclusions are possible.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C02",
+        "source_proposal_ids": [
+          "D02",
+          "F02",
+          "O03"
+        ],
+        "decision_slot": "applicant_academic_level",
+        "overlap_group": "academic_eligibility_profile",
+        "axis": "Academic level during the overseas term",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "current_state",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What will your academic level be during the overseas term?",
+        "verification_question": "Will you be an undergraduate, master's student, doctoral student, or something else?",
+        "rationale": "Degree level materially changes program eligibility, suitable course rigor, transferable workload, and whether taught or research-oriented opportunities are realistic.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C03",
+        "source_proposal_ids": [
+          "D03",
+          "F01",
+          "O02"
+        ],
+        "decision_slot": "academic_field_fit",
+        "overlap_group": "curriculum_fit",
+        "axis": "Required academic field",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "current_state",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which academic field or degree major must the destination curriculum support?",
+        "verification_question": "What is your primary field or major?",
+        "rationale": "The field controls which departments, courses, laboratories, prerequisites, faculty links, and credit equivalencies should be evaluated.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C04",
+        "source_proposal_ids": [
+          "D04",
+          "F10",
+          "O04"
+        ],
+        "decision_slot": "participation_timing",
+        "overlap_group": "calendar_feasibility",
+        "axis": "Target academic term and year",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "current_state",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which academic term and year are available for the overseas program?",
+        "verification_question": "Which term are you targeting, or are either main semester and the year flexible?",
+        "rationale": "A target period is required to verify actual intakes, calendar compatibility, examinations, nomination deadlines, visa lead times, housing, and scholarship dates.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C05",
+        "source_proposal_ids": [
+          "D05",
+          "O08"
+        ],
+        "decision_slot": "visa_eligibility_profile",
+        "overlap_group": "immigration_feasibility",
+        "axis": "Passport jurisdiction",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "eligibility_fact",
+        "importance": 4,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which passport or passports would you use for immigration purposes?",
+        "verification_question": "What passport citizenship should the visa comparison use?",
+        "rationale": "Passport jurisdiction is a user-specific fact that determines applicable visa categories, entry privileges, proof-of-funds rules, processing burdens, and work permissions.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C06",
+        "source_proposal_ids": [
+          "D06"
+        ],
+        "decision_slot": "preferred_participation_mode",
+        "overlap_group": "academic_experience_model",
+        "axis": "Coursework versus research participation",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Do you prefer taught coursework, supervised research, or a mixture of both?",
+        "verification_question": "Which sounds best: courses, research, a mix, or no preference?",
+        "rationale": "This resolves the high-level participation mode, which changes the eligible program type, application materials, faculty outreach, assessment expectations, and transfer-credit strategy.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C07",
+        "source_proposal_ids": [
+          "F09"
+        ],
+        "decision_slot": "preferred_teaching_and_assessment_style",
+        "overlap_group": "academic_experience_model",
+        "axis": "Teaching and assessment style",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 3,
+        "wrong_default_cost": 3,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 3,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which teaching and assessment style would you prefer during the overseas term?",
+        "verification_question": "Do you prefer exams, seminars and essays, team projects, laboratory work, or no strong preference?",
+        "rationale": "This is distinct from choosing coursework versus research: it addresses pedagogy and assessment within the chosen participation mode and can rerank academically comparable programs.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C08",
+        "source_proposal_ids": [
+          "D07",
+          "F04",
+          "O10"
+        ],
+        "decision_slot": "shortlist_ranking_objective",
+        "overlap_group": "ranking_priorities",
+        "axis": "Primary success criterion",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "Which single outcome should receive the greatest weight in the prioritized shortlist?",
+        "verification_question": "What matters most: reliable degree progress, research and faculty access, low net cost, career networking, or cross-cultural experience?",
+        "rationale": "The task requests prioritization but supplies no weighting among several competing outcomes, so plausible answers can substantially reverse the final ranking.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C09",
+        "source_proposal_ids": [
+          "D08",
+          "F05",
+          "O07"
+        ],
+        "decision_slot": "financial_resource_limit",
+        "overlap_group": "financial_feasibility",
+        "axis": "All-in out-of-pocket budget ceiling",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "exact_numeric",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 2,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What is the maximum all-in amount you can personally spend for the overseas term, and in which currency?",
+        "verification_question": "What approximate total budget and currency should be used, including travel, housing, insurance, visa costs, tuition differences, and living expenses?",
+        "rationale": "A personal ceiling cannot be learned through research and determines which destinations are feasible, the size of any funding gap, and whether expensive options should be excluded.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C10",
+        "source_proposal_ids": [
+          "D09",
+          "O06"
+        ],
+        "decision_slot": "credit_transfer_risk_tolerance",
+        "overlap_group": "credit_transfer_requirements",
+        "axis": "Acceptable transfer-approval uncertainty",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How much uncertainty in final credit approval are you willing to accept?",
+        "verification_question": "Should the shortlist require formal preapproval, allow documented precedents, permit case-by-case review, or accept meaningful risk for a stronger experience?",
+        "rationale": "Risk tolerance determines whether direct-enrollment and individually petitioned options remain viable and how heavily existing agreements and contingency courses should be weighted.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C11",
+        "source_proposal_ids": [
+          "D10",
+          "F08"
+        ],
+        "decision_slot": "acceptable_instruction_language",
+        "overlap_group": "language_feasibility",
+        "axis": "Acceptable amount of non-English assessed coursework",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "ordinal_tradeoff",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "How much assessed coursework, if any, may be taught in a language other than English?",
+        "verification_question": "Must all assessed courses be in English, or would you accept some or all local-language coursework?",
+        "rationale": "This constraint changes the available course pool, especially in Europe and Japan, and determines whether language preparation or proficiency testing belongs in the plan.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C12",
+        "source_proposal_ids": [
+          "O09"
+        ],
+        "decision_slot": "academic_language_capability",
+        "overlap_group": "language_feasibility",
+        "axis": "Current university-level language proficiency",
+        "candidate_kind": "current_state",
+        "ownership": "user_owned",
+        "answer_form": "current_state",
+        "importance": 4,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 2,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "In which languages can you currently complete university-level coursework, including any known proficiency levels?",
+        "verification_question": "Besides English, do you have academic proficiency or a test level in Japanese or a European language?",
+        "rationale": "Current capability is distinct from willingness to study in another language and determines whether local-language courses and their formal entry requirements are realistically accessible.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C13",
+        "source_proposal_ids": [
+          "F03",
+          "O05"
+        ],
+        "decision_slot": "required_credit_application",
+        "overlap_group": "credit_transfer_requirements",
+        "axis": "Degree requirement the transferred credit must fulfill",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What must the overseas credit count toward in your home degree?",
+        "verification_question": "Must it satisfy major or core courses, a particular elective category, unrestricted electives, or only full-time progress?",
+        "rationale": "Required major or core credit demands close course-level equivalence, while unrestricted elective or enrollment credit permits a much broader program pool.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C14",
+        "source_proposal_ids": [
+          "F06"
+        ],
+        "decision_slot": "funding_dependency",
+        "overlap_group": "financial_feasibility",
+        "axis": "Dependence on scholarships or tuition waivers",
+        "candidate_kind": "personal_constraint",
+        "ownership": "user_owned",
+        "answer_form": "eligibility_fact",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "What level of scholarship, grant, or host tuition waiver is necessary for you to participate?",
+        "verification_question": "Could you participate without aid, or do you require a tuition waiver, partial support, or near-full funding?",
+        "rationale": "Funding dependence is not fully captured by a gross budget ceiling because uncertain awards, tuition-waiver conditions, and award timing can independently determine feasibility.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C15",
+        "source_proposal_ids": [
+          "F07"
+        ],
+        "decision_slot": "preferred_destination_region",
+        "overlap_group": "geographic_scope",
+        "axis": "Regional priority among comparable options",
+        "candidate_kind": "preference",
+        "ownership": "user_owned",
+        "answer_form": "categorical_choice",
+        "importance": 3,
+        "wrong_default_cost": 2,
+        "residuality_after_research": 5,
+        "counterfactual_strength": 3,
+        "burden": 1,
+        "evidence_relation": "absent",
+        "visible_evidence_quote": "",
+        "neutral_question": "When options are academically and financially comparable, should any destination region receive priority?",
+        "verification_question": "Do you favor the United States, Europe, Japan, Singapore, or have no regional preference?",
+        "rationale": "A regional preference can change ordering and depth of coverage without overriding the explicit requirement to compare all four regions.",
+        "validated_evidence": {
+          "relation": "absent",
+          "quote_valid": false,
+          "strength": 0.0,
+          "directness": 0.0
+        },
+        "multi_lens_support": 1
+      },
+      {
+        "candidate_id": "C16",
+        "source_proposal_ids": [
+          "D01",
+          "O01"
+        ],
+        "decision_slot": "academic_legitimacy_floor",
+        "overlap_group": "program_admissibility_floors",
+        "axis": "Academic legitimacy requirement",
+        "candidate_kind": "normative_floor",
+        "ownership": "normative",
+        "answer_form": "delegation_confirmation",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 1,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "explicit",
+        "visible_evidence_quote": "academically legitimate",
+        "neutral_question": "Should every shortlisted option meet a verifiable academic-legitimacy standard?",
+        "verification_question": "Confirm: include only academically legitimate programs?",
+        "rationale": "The task directly establishes academic legitimacy as a minimum admissibility condition rather than an unresolved preference; it should be enforced, not guessed or traded away.",
+        "validated_evidence": {
+          "relation": "explicit",
+          "quote_valid": true,
+          "strength": 1.0,
+          "directness": 1.0
+        },
+        "multi_lens_support": 2
+      },
+      {
+        "candidate_id": "C17",
+        "source_proposal_ids": [
+          "D04",
+          "F10",
+          "O04"
+        ],
+        "decision_slot": "maximum_program_duration",
+        "overlap_group": "program_admissibility_floors",
+        "axis": "One-semester duration limit",
+        "candidate_kind": "normative_floor",
+        "ownership": "normative",
+        "answer_form": "delegation_confirmation",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 1,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "explicit",
+        "visible_evidence_quote": "within one semester",
+        "neutral_question": "Must every recommended program be completable within one semester?",
+        "verification_question": "Confirm: exclude options that require more than one semester?",
+        "rationale": "The maximum duration is directly specified and should operate as a hard filter, independently of the still-unknown target term and year.",
+        "validated_evidence": {
+          "relation": "explicit",
+          "quote_valid": true,
+          "strength": 1.0,
+          "directness": 1.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C18",
+        "source_proposal_ids": [
+          "D09",
+          "F03",
+          "O05",
+          "O06"
+        ],
+        "decision_slot": "minimum_credit_and_academic_viability",
+        "overlap_group": "program_admissibility_floors",
+        "axis": "Credible path to ordinary credit and academic satisfaction",
+        "candidate_kind": "normative_floor",
+        "ownership": "normative",
+        "answer_form": "delegation_confirmation",
+        "importance": 5,
+        "wrong_default_cost": 5,
+        "residuality_after_research": 1,
+        "counterfactual_strength": 5,
+        "burden": 1,
+        "evidence_relation": "explicit",
+        "visible_evidence_quote": "satisfy ordinary credit and academic requirements",
+        "neutral_question": "Must each shortlisted option have a credible path to satisfying ordinary credit and academic requirements?",
+        "verification_question": "Confirm: exclude programs with no realistic route to acceptable academic credit?",
+        "rationale": "The task directly states a minimum credit and academic outcome. The precise credit category and acceptable approval risk remain separate user-owned axes.",
+        "validated_evidence": {
+          "relation": "explicit",
+          "quote_valid": true,
+          "strength": 1.0,
+          "directness": 1.0
+        },
+        "multi_lens_support": 3
+      },
+      {
+        "candidate_id": "C19",
+        "source_proposal_ids": [
+          "F07"
+        ],
+        "decision_slot": "required_regional_coverage",
+        "overlap_group": "geographic_scope",
+        "axis": "Coverage of all specified regions",
+        "candidate_kind": "normative_floor",
+        "ownership": "normative",
+        "answer_form": "delegation_confirmation",
+        "importance": 4,
+        "wrong_default_cost": 4,
+        "residuality_after_research": 1,
+        "counterfactual_strength": 4,
+        "burden": 1,
+        "evidence_relation": "explicit",
+        "visible_evidence_quote": "United States, Europe, Japan and Singapore",
+        "neutral_question": "Should the comparison retain representative options from every specified region?",
+        "verification_question": "Confirm: compare the United States, Europe, Japan, and Singapore even if one region is preferred?",
+        "rationale": "The task explicitly requires comparison across all four regions. A regional preference may affect ordering or detail but should not silently remove required coverage.",
+        "validated_evidence": {
+          "relation": "explicit",
+          "quote_valid": true,
+          "strength": 1.0,
+          "directness": 1.0
+        },
+        "multi_lens_support": 1
+      }
+    ]
+  },
+  "arms": {
+    "v4a": {
+      "selection": {
+        "policy": "v4a",
+        "formula": "I*O*A*R*X*((1-E)+lambda*E*(1-D)*M)-mu*B + critical_override_bonus",
+        "calibrator_schema": "0.94",
+        "question_cap": 4,
+        "selected": [
+          {
+            "candidate_id": "C10",
+            "source_proposal_ids": [
+              "D09",
+              "O06"
+            ],
+            "decision_slot": "credit_transfer_risk_tolerance",
+            "overlap_group": "credit_transfer_requirements",
+            "axis": "Acceptable transfer-approval uncertainty",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How much uncertainty in final credit approval are you willing to accept?",
+            "verification_question": "Should the shortlist require formal preapproval, allow documented precedents, permit case-by-case review, or accept meaningful risk for a stronger experience?",
+            "rationale": "Risk tolerance determines whether direct-enrollment and individually petitioned options remain viable and how heavily existing agreements and contingency courses should be weighted.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.86,
+            "utility": 0.86,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "How much uncertainty in final credit approval are you willing to accept?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C08",
+            "source_proposal_ids": [
+              "D07",
+              "F04",
+              "O10"
+            ],
+            "decision_slot": "shortlist_ranking_objective",
+            "overlap_group": "ranking_priorities",
+            "axis": "Primary success criterion",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which single outcome should receive the greatest weight in the prioritized shortlist?",
+            "verification_question": "What matters most: reliable degree progress, research and faculty access, low net cost, career networking, or cross-cultural experience?",
+            "rationale": "The task requests prioritization but supplies no weighting among several competing outcomes, so plausible answers can substantially reverse the final ranking.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.84,
+            "utility": 0.84,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Which single outcome should receive the greatest weight in the prioritized shortlist?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02",
+              "F02",
+              "O03"
+            ],
+            "decision_slot": "applicant_academic_level",
+            "overlap_group": "academic_eligibility_profile",
+            "axis": "Academic level during the overseas term",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What will your academic level be during the overseas term?",
+            "verification_question": "Will you be an undergraduate, master's student, doctoral student, or something else?",
+            "rationale": "Degree level materially changes program eligibility, suitable course rigor, transferable workload, and whether taught or research-oriented opportunities are realistic.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7799999999999999,
+            "utility": 0.7799999999999999,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "What will your academic level be during the overseas term?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "D06"
+            ],
+            "decision_slot": "preferred_participation_mode",
+            "overlap_group": "academic_experience_model",
+            "axis": "Coursework versus research participation",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Do you prefer taught coursework, supervised research, or a mixture of both?",
+            "verification_question": "Which sounds best: courses, research, a mix, or no preference?",
+            "rationale": "This resolves the high-level participation mode, which changes the eligible program type, application materials, faculty outreach, assessment expectations, and transfer-credit strategy.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5232,
+            "utility": 0.5232,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            },
+            "question": "Do you prefer taught coursework, supervised research, or a mixture of both?",
+            "question_mode": "neutral"
+          }
+        ],
+        "scored_candidates": [
+          {
+            "candidate_id": "C01",
+            "source_proposal_ids": [
+              "D01",
+              "O01"
+            ],
+            "decision_slot": "credit_receiving_institution",
+            "overlap_group": "home_transfer_context",
+            "axis": "Home institution for credit approval",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which home institution must approve and receive the overseas credits?",
+            "verification_question": "What is your home institution, or is it still undecided?",
+            "rationale": "The institution determines applicable exchange agreements, residency rules, approval offices, transfer policies, and whether institution-specific conclusions are possible.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7799999999999999,
+            "utility": 0.7799999999999999,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02",
+              "F02",
+              "O03"
+            ],
+            "decision_slot": "applicant_academic_level",
+            "overlap_group": "academic_eligibility_profile",
+            "axis": "Academic level during the overseas term",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What will your academic level be during the overseas term?",
+            "verification_question": "Will you be an undergraduate, master's student, doctoral student, or something else?",
+            "rationale": "Degree level materially changes program eligibility, suitable course rigor, transferable workload, and whether taught or research-oriented opportunities are realistic.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7799999999999999,
+            "utility": 0.7799999999999999,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C03",
+            "source_proposal_ids": [
+              "D03",
+              "F01",
+              "O02"
+            ],
+            "decision_slot": "academic_field_fit",
+            "overlap_group": "curriculum_fit",
+            "axis": "Required academic field",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which academic field or degree major must the destination curriculum support?",
+            "verification_question": "What is your primary field or major?",
+            "rationale": "The field controls which departments, courses, laboratories, prerequisites, faculty links, and credit equivalencies should be evaluated.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7799999999999999,
+            "utility": 0.7799999999999999,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C04",
+            "source_proposal_ids": [
+              "D04",
+              "F10",
+              "O04"
+            ],
+            "decision_slot": "participation_timing",
+            "overlap_group": "calendar_feasibility",
+            "axis": "Target academic term and year",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which academic term and year are available for the overseas program?",
+            "verification_question": "Which term are you targeting, or are either main semester and the year flexible?",
+            "rationale": "A target period is required to verify actual intakes, calendar compatibility, examinations, nomination deadlines, visa lead times, housing, and scholarship dates.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7799999999999999,
+            "utility": 0.7799999999999999,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C05",
+            "source_proposal_ids": [
+              "D05",
+              "O08"
+            ],
+            "decision_slot": "visa_eligibility_profile",
+            "overlap_group": "immigration_feasibility",
+            "axis": "Passport jurisdiction",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "eligibility_fact",
+            "importance": 4,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which passport or passports would you use for immigration purposes?",
+            "verification_question": "What passport citizenship should the visa comparison use?",
+            "rationale": "Passport jurisdiction is a user-specific fact that determines applicable visa categories, entry privileges, proof-of-funds rules, processing burdens, and work permissions.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.8,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.6000000000000001,
+            "utility": 0.6000000000000001,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.8,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "D06"
+            ],
+            "decision_slot": "preferred_participation_mode",
+            "overlap_group": "academic_experience_model",
+            "axis": "Coursework versus research participation",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Do you prefer taught coursework, supervised research, or a mixture of both?",
+            "verification_question": "Which sounds best: courses, research, a mix, or no preference?",
+            "rationale": "This resolves the high-level participation mode, which changes the eligible program type, application materials, faculty outreach, assessment expectations, and transfer-credit strategy.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5232,
+            "utility": 0.5232,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C07",
+            "source_proposal_ids": [
+              "F09"
+            ],
+            "decision_slot": "preferred_teaching_and_assessment_style",
+            "overlap_group": "academic_experience_model",
+            "axis": "Teaching and assessment style",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 3,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 3,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which teaching and assessment style would you prefer during the overseas term?",
+            "verification_question": "Do you prefer exams, seminars and essays, team projects, laboratory work, or no strong preference?",
+            "rationale": "This is distinct from choosing coursework versus research: it addresses pedagogy and assessment within the chosen participation mode and can rerank academically comparable programs.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.27680000000000005,
+            "utility": 0.27680000000000005,
+            "critical_rank": 0.216,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.6,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.6,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C08",
+            "source_proposal_ids": [
+              "D07",
+              "F04",
+              "O10"
+            ],
+            "decision_slot": "shortlist_ranking_objective",
+            "overlap_group": "ranking_priorities",
+            "axis": "Primary success criterion",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which single outcome should receive the greatest weight in the prioritized shortlist?",
+            "verification_question": "What matters most: reliable degree progress, research and faculty access, low net cost, career networking, or cross-cultural experience?",
+            "rationale": "The task requests prioritization but supplies no weighting among several competing outcomes, so plausible answers can substantially reverse the final ranking.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.84,
+            "utility": 0.84,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C09",
+            "source_proposal_ids": [
+              "D08",
+              "F05",
+              "O07"
+            ],
+            "decision_slot": "financial_resource_limit",
+            "overlap_group": "financial_feasibility",
+            "axis": "All-in out-of-pocket budget ceiling",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "exact_numeric",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is the maximum all-in amount you can personally spend for the overseas term, and in which currency?",
+            "verification_question": "What approximate total budget and currency should be used, including travel, housing, insurance, visa costs, tuition differences, and living expenses?",
+            "rationale": "A personal ceiling cannot be learned through research and determines which destinations are feasible, the size of any funding gap, and whether expensive options should be excluded.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.4,
+            "utility": 0.4,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.48,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C10",
+            "source_proposal_ids": [
+              "D09",
+              "O06"
+            ],
+            "decision_slot": "credit_transfer_risk_tolerance",
+            "overlap_group": "credit_transfer_requirements",
+            "axis": "Acceptable transfer-approval uncertainty",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How much uncertainty in final credit approval are you willing to accept?",
+            "verification_question": "Should the shortlist require formal preapproval, allow documented precedents, permit case-by-case review, or accept meaningful risk for a stronger experience?",
+            "rationale": "Risk tolerance determines whether direct-enrollment and individually petitioned options remain viable and how heavily existing agreements and contingency courses should be weighted.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.86,
+            "utility": 0.86,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C11",
+            "source_proposal_ids": [
+              "D10",
+              "F08"
+            ],
+            "decision_slot": "acceptable_instruction_language",
+            "overlap_group": "language_feasibility",
+            "axis": "Acceptable amount of non-English assessed coursework",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How much assessed coursework, if any, may be taught in a language other than English?",
+            "verification_question": "Must all assessed courses be in English, or would you accept some or all local-language coursework?",
+            "rationale": "This constraint changes the available course pool, especially in Europe and Japan, and determines whether language preparation or proficiency testing belongs in the plan.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.68,
+            "utility": 0.68,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C12",
+            "source_proposal_ids": [
+              "O09"
+            ],
+            "decision_slot": "academic_language_capability",
+            "overlap_group": "language_feasibility",
+            "axis": "Current university-level language proficiency",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 4,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "In which languages can you currently complete university-level coursework, including any known proficiency levels?",
+            "verification_question": "Besides English, do you have academic proficiency or a test level in Japanese or a European language?",
+            "rationale": "Current capability is distinct from willingness to study in another language and determines whether local-language courses and their formal entry requirements are realistically accessible.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5760000000000001,
+            "utility": 0.5760000000000001,
+            "critical_rank": 0.8,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C13",
+            "source_proposal_ids": [
+              "F03",
+              "O05"
+            ],
+            "decision_slot": "required_credit_application",
+            "overlap_group": "credit_transfer_requirements",
+            "axis": "Degree requirement the transferred credit must fulfill",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What must the overseas credit count toward in your home degree?",
+            "verification_question": "Must it satisfy major or core courses, a particular elective category, unrestricted electives, or only full-time progress?",
+            "rationale": "Required major or core credit demands close course-level equivalence, while unrestricted elective or enrollment credit permits a much broader program pool.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.84,
+            "utility": 0.84,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C14",
+            "source_proposal_ids": [
+              "F06"
+            ],
+            "decision_slot": "funding_dependency",
+            "overlap_group": "financial_feasibility",
+            "axis": "Dependence on scholarships or tuition waivers",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "eligibility_fact",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What level of scholarship, grant, or host tuition waiver is necessary for you to participate?",
+            "verification_question": "Could you participate without aid, or do you require a tuition waiver, partial support, or near-full funding?",
+            "rationale": "Funding dependence is not fully captured by a gross budget ceiling because uncertain awards, tuition-waiver conditions, and award timing can independently determine feasibility.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.8,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.76,
+            "utility": 0.76,
+            "critical_rank": 1.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.8,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C15",
+            "source_proposal_ids": [
+              "F07"
+            ],
+            "decision_slot": "preferred_destination_region",
+            "overlap_group": "geographic_scope",
+            "axis": "Regional priority among comparable options",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 3,
+            "wrong_default_cost": 2,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 3,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "When options are academically and financially comparable, should any destination region receive priority?",
+            "verification_question": "Do you favor the United States, Europe, Japan, Singapore, or have no regional preference?",
+            "rationale": "A regional preference can change ordering and depth of coverage without overriding the explicit requirement to compare all four regions.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.27680000000000005,
+            "utility": 0.27680000000000005,
+            "critical_rank": 0.144,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.6,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.6,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.4,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C16",
+            "source_proposal_ids": [
+              "D01",
+              "O01"
+            ],
+            "decision_slot": "academic_legitimacy_floor",
+            "overlap_group": "program_admissibility_floors",
+            "axis": "Academic legitimacy requirement",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "delegation_confirmation",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "academically legitimate",
+            "neutral_question": "Should every shortlisted option meet a verifiable academic-legitimacy standard?",
+            "verification_question": "Confirm: include only academically legitimate programs?",
+            "rationale": "The task directly establishes academic legitimacy as a minimum admissibility condition rather than an unresolved preference; it should be enforced, not guessed or traded away.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.92,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.039999999999999994,
+            "utility": -0.039999999999999994,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.0,
+              "A": 0.92,
+              "R": 0.2,
+              "X": 1.0,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C17",
+            "source_proposal_ids": [
+              "D04",
+              "F10",
+              "O04"
+            ],
+            "decision_slot": "maximum_program_duration",
+            "overlap_group": "program_admissibility_floors",
+            "axis": "One-semester duration limit",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "delegation_confirmation",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "within one semester",
+            "neutral_question": "Must every recommended program be completable within one semester?",
+            "verification_question": "Confirm: exclude options that require more than one semester?",
+            "rationale": "The maximum duration is directly specified and should operate as a hard filter, independently of the still-unknown target term and year.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.92,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.039999999999999994,
+            "utility": -0.039999999999999994,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.0,
+              "A": 0.92,
+              "R": 0.2,
+              "X": 1.0,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C18",
+            "source_proposal_ids": [
+              "D09",
+              "F03",
+              "O05",
+              "O06"
+            ],
+            "decision_slot": "minimum_credit_and_academic_viability",
+            "overlap_group": "program_admissibility_floors",
+            "axis": "Credible path to ordinary credit and academic satisfaction",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "delegation_confirmation",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "satisfy ordinary credit and academic requirements",
+            "neutral_question": "Must each shortlisted option have a credible path to satisfying ordinary credit and academic requirements?",
+            "verification_question": "Confirm: exclude programs with no realistic route to acceptable academic credit?",
+            "rationale": "The task directly states a minimum credit and academic outcome. The precise credit category and acceptable approval risk remain separate user-owned axes.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.92,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.039999999999999994,
+            "utility": -0.039999999999999994,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.0,
+              "A": 0.92,
+              "R": 0.2,
+              "X": 1.0,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C19",
+            "source_proposal_ids": [
+              "F07"
+            ],
+            "decision_slot": "required_regional_coverage",
+            "overlap_group": "geographic_scope",
+            "axis": "Coverage of all specified regions",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "delegation_confirmation",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "United States, Europe, Japan and Singapore",
+            "neutral_question": "Should the comparison retain representative options from every specified region?",
+            "verification_question": "Confirm: compare the United States, Europe, Japan, and Singapore even if one region is preferred?",
+            "rationale": "The task explicitly requires comparison across all four regions. A regional preference may affect ordering or detail but should not silently remove required coverage.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.92,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.039999999999999994,
+            "utility": -0.039999999999999994,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.0,
+              "A": 0.92,
+              "R": 0.2,
+              "X": 0.8,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          }
+        ]
+      },
+      "question": "These answers would materially change the research recommendations:\n1. How much uncertainty in final credit approval are you willing to accept?\n2. Which single outcome should receive the greatest weight in the prioritized shortlist?\n3. What will your academic level be during the overseas term?\n4. Do you prefer taught coursework, supervised research, or a mixture of both?",
+      "simulator_answer": "1. No strong preference is specified regarding uncertainty in final credit approval.\n2. Cultural/intellectual fit and meaningful immersion should receive the greatest weight.\n3. Graduate level.\n4. No strong preference is specified between taught coursework, supervised research, or a mixture.",
+      "resolved_unit_ids": [
+        "T2-P1"
+      ],
+      "atomic_question_count": 4
+    },
+    "v4r": {
+      "selection": {
+        "policy": "v4r",
+        "formula": "I*O*A*R*X*((1-E)+lambda*E*(1-D)*M)-mu*B + critical_override_bonus",
+        "calibrator_schema": "0.94",
+        "question_cap": 4,
+        "selected": [
+          {
+            "candidate_id": "C10",
+            "source_proposal_ids": [
+              "D09",
+              "O06"
+            ],
+            "decision_slot": "credit_transfer_risk_tolerance",
+            "overlap_group": "credit_transfer_requirements",
+            "axis": "Acceptable transfer-approval uncertainty",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How much uncertainty in final credit approval are you willing to accept?",
+            "verification_question": "Should the shortlist require formal preapproval, allow documented precedents, permit case-by-case review, or accept meaningful risk for a stronger experience?",
+            "rationale": "Risk tolerance determines whether direct-enrollment and individually petitioned options remain viable and how heavily existing agreements and contingency courses should be weighted.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8733333333333334,
+            "utility": 1.0933333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "How much uncertainty in final credit approval are you willing to accept?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C08",
+            "source_proposal_ids": [
+              "D07",
+              "F04",
+              "O10"
+            ],
+            "decision_slot": "shortlist_ranking_objective",
+            "overlap_group": "ranking_priorities",
+            "axis": "Primary success criterion",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which single outcome should receive the greatest weight in the prioritized shortlist?",
+            "verification_question": "What matters most: reliable degree progress, research and faculty access, low net cost, career networking, or cross-cultural experience?",
+            "rationale": "The task requests prioritization but supplies no weighting among several competing outcomes, so plausible answers can substantially reverse the final ranking.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8533333333333334,
+            "utility": 1.0733333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "Which single outcome should receive the greatest weight in the prioritized shortlist?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02",
+              "F02",
+              "O03"
+            ],
+            "decision_slot": "applicant_academic_level",
+            "overlap_group": "academic_eligibility_profile",
+            "axis": "Academic level during the overseas term",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What will your academic level be during the overseas term?",
+            "verification_question": "Will you be an undergraduate, master's student, doctoral student, or something else?",
+            "rationale": "Degree level materially changes program eligibility, suitable course rigor, transferable workload, and whether taught or research-oriented opportunities are realistic.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7933333333333333,
+            "utility": 1.0133333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            },
+            "question": "What will your academic level be during the overseas term?",
+            "question_mode": "neutral"
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "D06"
+            ],
+            "decision_slot": "preferred_participation_mode",
+            "overlap_group": "academic_experience_model",
+            "axis": "Coursework versus research participation",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Do you prefer taught coursework, supervised research, or a mixture of both?",
+            "verification_question": "Which sounds best: courses, research, a mix, or no preference?",
+            "rationale": "This resolves the high-level participation mode, which changes the eligible program type, application materials, faculty outreach, assessment expectations, and transfer-credit strategy.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5365333333333334,
+            "utility": 0.7565333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            },
+            "question": "Do you prefer taught coursework, supervised research, or a mixture of both?",
+            "question_mode": "neutral"
+          }
+        ],
+        "scored_candidates": [
+          {
+            "candidate_id": "C01",
+            "source_proposal_ids": [
+              "D01",
+              "O01"
+            ],
+            "decision_slot": "credit_receiving_institution",
+            "overlap_group": "home_transfer_context",
+            "axis": "Home institution for credit approval",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which home institution must approve and receive the overseas credits?",
+            "verification_question": "What is your home institution, or is it still undecided?",
+            "rationale": "The institution determines applicable exchange agreements, residency rules, approval offices, transfer policies, and whether institution-specific conclusions are possible.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7933333333333333,
+            "utility": 1.0133333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C02",
+            "source_proposal_ids": [
+              "D02",
+              "F02",
+              "O03"
+            ],
+            "decision_slot": "applicant_academic_level",
+            "overlap_group": "academic_eligibility_profile",
+            "axis": "Academic level during the overseas term",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What will your academic level be during the overseas term?",
+            "verification_question": "Will you be an undergraduate, master's student, doctoral student, or something else?",
+            "rationale": "Degree level materially changes program eligibility, suitable course rigor, transferable workload, and whether taught or research-oriented opportunities are realistic.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7933333333333333,
+            "utility": 1.0133333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C03",
+            "source_proposal_ids": [
+              "D03",
+              "F01",
+              "O02"
+            ],
+            "decision_slot": "academic_field_fit",
+            "overlap_group": "curriculum_fit",
+            "axis": "Required academic field",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which academic field or degree major must the destination curriculum support?",
+            "verification_question": "What is your primary field or major?",
+            "rationale": "The field controls which departments, courses, laboratories, prerequisites, faculty links, and credit equivalencies should be evaluated.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7933333333333333,
+            "utility": 1.0133333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C04",
+            "source_proposal_ids": [
+              "D04",
+              "F10",
+              "O04"
+            ],
+            "decision_slot": "participation_timing",
+            "overlap_group": "calendar_feasibility",
+            "axis": "Target academic term and year",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which academic term and year are available for the overseas program?",
+            "verification_question": "Which term are you targeting, or are either main semester and the year flexible?",
+            "rationale": "A target period is required to verify actual intakes, calendar compatibility, examinations, nomination deadlines, visa lead times, housing, and scholarship dates.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7933333333333333,
+            "utility": 1.0133333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C05",
+            "source_proposal_ids": [
+              "D05",
+              "O08"
+            ],
+            "decision_slot": "visa_eligibility_profile",
+            "overlap_group": "immigration_feasibility",
+            "axis": "Passport jurisdiction",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "eligibility_fact",
+            "importance": 4,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which passport or passports would you use for immigration purposes?",
+            "verification_question": "What passport citizenship should the visa comparison use?",
+            "rationale": "Passport jurisdiction is a user-specific fact that determines applicable visa categories, entry privileges, proof-of-funds rules, processing burdens, and work permissions.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.8,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.6133333333333335,
+            "utility": 0.8333333333333335,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.8,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C06",
+            "source_proposal_ids": [
+              "D06"
+            ],
+            "decision_slot": "preferred_participation_mode",
+            "overlap_group": "academic_experience_model",
+            "axis": "Coursework versus research participation",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Do you prefer taught coursework, supervised research, or a mixture of both?",
+            "verification_question": "Which sounds best: courses, research, a mix, or no preference?",
+            "rationale": "This resolves the high-level participation mode, which changes the eligible program type, application materials, faculty outreach, assessment expectations, and transfer-credit strategy.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.5365333333333334,
+            "utility": 0.7565333333333334,
+            "critical_rank": 0.5120000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.8,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C07",
+            "source_proposal_ids": [
+              "F09"
+            ],
+            "decision_slot": "preferred_teaching_and_assessment_style",
+            "overlap_group": "academic_experience_model",
+            "axis": "Teaching and assessment style",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 3,
+            "wrong_default_cost": 3,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 3,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which teaching and assessment style would you prefer during the overseas term?",
+            "verification_question": "Do you prefer exams, seminars and essays, team projects, laboratory work, or no strong preference?",
+            "rationale": "This is distinct from choosing coursework versus research: it addresses pedagogy and assessment within the chosen participation mode and can rerank academically comparable programs.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.29013333333333335,
+            "utility": 0.29013333333333335,
+            "critical_rank": 0.216,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.6,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.6,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.6,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C08",
+            "source_proposal_ids": [
+              "D07",
+              "F04",
+              "O10"
+            ],
+            "decision_slot": "shortlist_ranking_objective",
+            "overlap_group": "ranking_priorities",
+            "axis": "Primary success criterion",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "Which single outcome should receive the greatest weight in the prioritized shortlist?",
+            "verification_question": "What matters most: reliable degree progress, research and faculty access, low net cost, career networking, or cross-cultural experience?",
+            "rationale": "The task requests prioritization but supplies no weighting among several competing outcomes, so plausible answers can substantially reverse the final ranking.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8533333333333334,
+            "utility": 1.0733333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C09",
+            "source_proposal_ids": [
+              "D08",
+              "F05",
+              "O07"
+            ],
+            "decision_slot": "financial_resource_limit",
+            "overlap_group": "financial_feasibility",
+            "axis": "All-in out-of-pocket budget ceiling",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "exact_numeric",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What is the maximum all-in amount you can personally spend for the overseas term, and in which currency?",
+            "verification_question": "What approximate total budget and currency should be used, including travel, housing, insurance, visa costs, tuition differences, and living expenses?",
+            "rationale": "A personal ceiling cannot be learned through research and determines which destinations are feasible, the size of any funding gap, and whether expensive options should be excluded.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.48,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.42666666666666664,
+            "utility": 0.6466666666666666,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.48,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C10",
+            "source_proposal_ids": [
+              "D09",
+              "O06"
+            ],
+            "decision_slot": "credit_transfer_risk_tolerance",
+            "overlap_group": "credit_transfer_requirements",
+            "axis": "Acceptable transfer-approval uncertainty",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How much uncertainty in final credit approval are you willing to accept?",
+            "verification_question": "Should the shortlist require formal preapproval, allow documented precedents, permit case-by-case review, or accept meaningful risk for a stronger experience?",
+            "rationale": "Risk tolerance determines whether direct-enrollment and individually petitioned options remain viable and how heavily existing agreements and contingency courses should be weighted.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8733333333333334,
+            "utility": 1.0933333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C11",
+            "source_proposal_ids": [
+              "D10",
+              "F08"
+            ],
+            "decision_slot": "acceptable_instruction_language",
+            "overlap_group": "language_feasibility",
+            "axis": "Acceptable amount of non-English assessed coursework",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "ordinal_tradeoff",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "How much assessed coursework, if any, may be taught in a language other than English?",
+            "verification_question": "Must all assessed courses be in English, or would you accept some or all local-language coursework?",
+            "rationale": "This constraint changes the available course pool, especially in Europe and Japan, and determines whether language preparation or proficiency testing belongs in the plan.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.9,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.6933333333333335,
+            "utility": 0.9133333333333334,
+            "critical_rank": 0.6400000000000001,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.9,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C12",
+            "source_proposal_ids": [
+              "O09"
+            ],
+            "decision_slot": "academic_language_capability",
+            "overlap_group": "language_feasibility",
+            "axis": "Current university-level language proficiency",
+            "candidate_kind": "current_state",
+            "ownership": "user_owned",
+            "answer_form": "current_state",
+            "importance": 4,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 2,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "In which languages can you currently complete university-level coursework, including any known proficiency levels?",
+            "verification_question": "Besides English, do you have academic proficiency or a test level in Japanese or a European language?",
+            "rationale": "Current capability is distinct from willingness to study in another language and determines whether local-language courses and their formal entry requirements are realistically accessible.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.82,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.6026666666666667,
+            "utility": 0.8226666666666667,
+            "critical_rank": 0.8,
+            "critical_override": true,
+            "score_terms": {
+              "I": 0.8,
+              "O": 1.0,
+              "A": 0.82,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.6666666666666666
+            }
+          },
+          {
+            "candidate_id": "C13",
+            "source_proposal_ids": [
+              "F03",
+              "O05"
+            ],
+            "decision_slot": "required_credit_application",
+            "overlap_group": "credit_transfer_requirements",
+            "axis": "Degree requirement the transferred credit must fulfill",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What must the overseas credit count toward in your home degree?",
+            "verification_question": "Must it satisfy major or core courses, a particular elective category, unrestricted electives, or only full-time progress?",
+            "rationale": "Required major or core credit demands close course-level equivalence, while unrestricted elective or enrollment credit permits a much broader program pool.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.8533333333333334,
+            "utility": 1.0733333333333335,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C14",
+            "source_proposal_ids": [
+              "F06"
+            ],
+            "decision_slot": "funding_dependency",
+            "overlap_group": "financial_feasibility",
+            "axis": "Dependence on scholarships or tuition waivers",
+            "candidate_kind": "personal_constraint",
+            "ownership": "user_owned",
+            "answer_form": "eligibility_fact",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "What level of scholarship, grant, or host tuition waiver is necessary for you to participate?",
+            "verification_question": "Could you participate without aid, or do you require a tuition waiver, partial support, or near-full funding?",
+            "rationale": "Funding dependence is not fully captured by a gross budget ceiling because uncertain awards, tuition-waiver conditions, and award timing can independently determine feasibility.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.8,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.7733333333333334,
+            "utility": 0.9933333333333334,
+            "critical_rank": 1.0,
+            "critical_override": true,
+            "score_terms": {
+              "I": 1.0,
+              "O": 1.0,
+              "A": 0.8,
+              "R": 1.0,
+              "X": 1.0,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C15",
+            "source_proposal_ids": [
+              "F07"
+            ],
+            "decision_slot": "preferred_destination_region",
+            "overlap_group": "geographic_scope",
+            "axis": "Regional priority among comparable options",
+            "candidate_kind": "preference",
+            "ownership": "user_owned",
+            "answer_form": "categorical_choice",
+            "importance": 3,
+            "wrong_default_cost": 2,
+            "residuality_after_research": 5,
+            "counterfactual_strength": 3,
+            "burden": 1,
+            "evidence_relation": "absent",
+            "visible_evidence_quote": "",
+            "neutral_question": "When options are academically and financially comparable, should any destination region receive priority?",
+            "verification_question": "Do you favor the United States, Europe, Japan, Singapore, or have no regional preference?",
+            "rationale": "A regional preference can change ordering and depth of coverage without overriding the explicit requirement to compare all four regions.",
+            "validated_evidence": {
+              "relation": "absent",
+              "quote_valid": false,
+              "strength": 0.0,
+              "directness": 0.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.88,
+            "ownership_weight": 1.0,
+            "utility_raw": 0.29013333333333335,
+            "utility": 0.29013333333333335,
+            "critical_rank": 0.144,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.6,
+              "O": 1.0,
+              "A": 0.88,
+              "R": 1.0,
+              "X": 0.6,
+              "E": 0.0,
+              "D": 0.0,
+              "M": 0.4,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C16",
+            "source_proposal_ids": [
+              "D01",
+              "O01"
+            ],
+            "decision_slot": "academic_legitimacy_floor",
+            "overlap_group": "program_admissibility_floors",
+            "axis": "Academic legitimacy requirement",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "delegation_confirmation",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "academically legitimate",
+            "neutral_question": "Should every shortlisted option meet a verifiable academic-legitimacy standard?",
+            "verification_question": "Confirm: include only academically legitimate programs?",
+            "rationale": "The task directly establishes academic legitimacy as a minimum admissibility condition rather than an unresolved preference; it should be enforced, not guessed or traded away.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 2,
+            "answerability_calibrated": 0.92,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.026666666666666665,
+            "utility": -0.026666666666666665,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.0,
+              "A": 0.92,
+              "R": 0.2,
+              "X": 1.0,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C17",
+            "source_proposal_ids": [
+              "D04",
+              "F10",
+              "O04"
+            ],
+            "decision_slot": "maximum_program_duration",
+            "overlap_group": "program_admissibility_floors",
+            "axis": "One-semester duration limit",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "delegation_confirmation",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "within one semester",
+            "neutral_question": "Must every recommended program be completable within one semester?",
+            "verification_question": "Confirm: exclude options that require more than one semester?",
+            "rationale": "The maximum duration is directly specified and should operate as a hard filter, independently of the still-unknown target term and year.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.92,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.026666666666666665,
+            "utility": -0.026666666666666665,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.0,
+              "A": 0.92,
+              "R": 0.2,
+              "X": 1.0,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C18",
+            "source_proposal_ids": [
+              "D09",
+              "F03",
+              "O05",
+              "O06"
+            ],
+            "decision_slot": "minimum_credit_and_academic_viability",
+            "overlap_group": "program_admissibility_floors",
+            "axis": "Credible path to ordinary credit and academic satisfaction",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "delegation_confirmation",
+            "importance": 5,
+            "wrong_default_cost": 5,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 5,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "satisfy ordinary credit and academic requirements",
+            "neutral_question": "Must each shortlisted option have a credible path to satisfying ordinary credit and academic requirements?",
+            "verification_question": "Confirm: exclude programs with no realistic route to acceptable academic credit?",
+            "rationale": "The task directly states a minimum credit and academic outcome. The precise credit category and acceptable approval risk remain separate user-owned axes.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 3,
+            "answerability_calibrated": 0.92,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.026666666666666665,
+            "utility": -0.026666666666666665,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 1.0,
+              "O": 0.0,
+              "A": 0.92,
+              "R": 0.2,
+              "X": 1.0,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 1.0,
+              "B": 0.3333333333333333
+            }
+          },
+          {
+            "candidate_id": "C19",
+            "source_proposal_ids": [
+              "F07"
+            ],
+            "decision_slot": "required_regional_coverage",
+            "overlap_group": "geographic_scope",
+            "axis": "Coverage of all specified regions",
+            "candidate_kind": "normative_floor",
+            "ownership": "normative",
+            "answer_form": "delegation_confirmation",
+            "importance": 4,
+            "wrong_default_cost": 4,
+            "residuality_after_research": 1,
+            "counterfactual_strength": 4,
+            "burden": 1,
+            "evidence_relation": "explicit",
+            "visible_evidence_quote": "United States, Europe, Japan and Singapore",
+            "neutral_question": "Should the comparison retain representative options from every specified region?",
+            "verification_question": "Confirm: compare the United States, Europe, Japan, and Singapore even if one region is preferred?",
+            "rationale": "The task explicitly requires comparison across all four regions. A regional preference may affect ordering or detail but should not silently remove required coverage.",
+            "validated_evidence": {
+              "relation": "explicit",
+              "quote_valid": true,
+              "strength": 1.0,
+              "directness": 1.0
+            },
+            "multi_lens_support": 1,
+            "answerability_calibrated": 0.92,
+            "ownership_weight": 0.0,
+            "utility_raw": -0.026666666666666665,
+            "utility": -0.026666666666666665,
+            "critical_rank": 0.0,
+            "critical_override": false,
+            "score_terms": {
+              "I": 0.8,
+              "O": 0.0,
+              "A": 0.92,
+              "R": 0.2,
+              "X": 0.8,
+              "E": 1.0,
+              "D": 1.0,
+              "M": 0.8,
+              "B": 0.3333333333333333
+            }
+          }
+        ]
+      },
+      "question": "These answers would materially change the research recommendations:\n1. How much uncertainty in final credit approval are you willing to accept?\n2. Which single outcome should receive the greatest weight in the prioritized shortlist?\n3. What will your academic level be during the overseas term?\n4. Do you prefer taught coursework, supervised research, or a mixture of both?",
+      "simulator_answer": "1. No strong preference is established regarding uncertainty in final credit approval.\n2. Cultural/intellectual fit and meaningful immersion should receive the greatest weight.\n3. Graduate level.\n4. No strong preference is established among taught coursework, supervised research, or a mixture.",
+      "resolved_unit_ids": [
+        "T2-P1"
+      ],
+      "atomic_question_count": 4
+    }
+  }
+}
