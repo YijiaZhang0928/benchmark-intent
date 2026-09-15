@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.95 DeerFlow 2.0 strict-cold three-task diagnostic - 2026-09-15
+
+- 用新版 workbook `K2:K4` 的真正 task-only 输入运行前三题；agent 使用 DeerFlow 2.0 stock clarification prompt 与 public deep-research skill，不可见项目自定义 calibration skill。
+- 三题均触发澄清，第一轮共 30 atomic fields，T01 另有 8 个重复/补充字段；严格 direct-target coding 只覆盖 6/15 high-impact preference axes。
+- 单次 67-leaf 盲评得到 T01/T02/T03 `P_strict=5.7787/3.4819/8.3171`，消除了旧五项 rubric 的 10/10 天花板。
+- T02 为唯一结构合格主结果；T01 少一个 successful fetch，T03 在完整 final text 后 graph recursion failure，两者保留为 exploratory engineering outcomes。
+- 结论收紧为 constraint-first clarification diagnosis：系统会问，但主要询问 eligibility/profile/timing 等槽位，并不稳定发现改变推荐逻辑的 personalization trade-offs；未运行 matched NoAsk，因此不报告 Ask gain。
+
 ## v0.93 Deliverable-first three-context matrix - 2026-09-15
 
 - 接受用户对 clarification-only Stage A 的有效性异议：所有主实验 cell 必须跑到完整 Deep Research 交付物，clarification 只保留为 acquisition-to-use 过程日志。

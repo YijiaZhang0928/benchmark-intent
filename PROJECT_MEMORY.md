@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-15
-当前版本：v0.93（deliverable-first three-context Ask/No-Ask matrix）
+当前版本：v0.95（DeerFlow 2.0 stock-prompt strict-cold diagnostic）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：DeerFlow 2.0 strict-cold 三题诊断
+
+应用户要求，前三个 workbook tasks 使用 `15 Tasks!K2:K4` 的严格 task-only 输入，运行 DeerFlow 2.0 frozen checkout `0d4925305a6330a3442dcd336ed25750aea87cbd`、`gpt-5.6-sol-codex/high` 与 stock lead-agent clarification prompt。该条件仅暴露 public `deep-research` skill，不暴露项目自定义 `clarification-calibration` skill；隐藏 persona 仅由 simulator 在 agent 提问后按字段选择性回答，未知值明确标为未知。
+
+三题全部主动澄清。第一轮分别有 10/11/9 个 atomic fields，T01 又追加 8 字段第二轮；严格语义编码仅有 6/15 个 high-impact preference axes 被直接 targeting，`Recall@High=0.40`，若把 T01 重复追问计入 burden，direct target precision 为 `6/38=0.158`。主要槽位是 eligibility、background、timing、region、budget、language 与 startup state；T01 第二轮重复追问 citizenship/GPA/graduation/English/research output/intake，仍未补齐 applied-vs-theory、project-vs-coursework 与 fit-vs-prestige。
+
+67-leaf single-pass blind scores 为 T01 `P_strict=5.7787/P_HI=6.07`、T02 `3.4819/3.59`、T03 `8.3171/8.59`。只有 T02 通过结构门并以五个 official-university fetches 通过人工 primary-source review；T01 仅四个 successful fetches，T03 在完整 final text 后撞 graph recursion limit，因此两者分数只作 exploratory。三报告均值 `P_strict=5.86` 不可当确认性估计。
+
+本轮否定两个过度简化：cold-start ask 并非必然低分，DeerFlow 也并非完全不问；但 clarification support 没有自然转化为 preference-sensitive elicitation。最稳结论是 stock policy 呈 constraint-first field collection，且 high P 可能由 generic best-practice alignment 而非 preference acquisition 产生。尚未运行 matched NoAsk，不能估计 Ask 的 paired P gain。完整摘要见 `pilot/deerflow_stock_cold_3task_v0_95/RESULTS.md`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：改为 deliverable-first 三情境矩阵
 

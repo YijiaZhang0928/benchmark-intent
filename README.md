@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.93
+## 当前方向：AskInfer-Bench v0.95
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -77,6 +77,8 @@ v0.90 完成固定五行结果。`P_strict` 从 stock 平均 5.9835 提高到 IE
 v0.92 将下一步收敛为来源路由与 untouched-holdout 因果验证。`ASK_USER / INFER_FROM_EVIDENCE / RESEARCH / BRANCH / DEFAULT` 是同一 ask-capable harness 内部的动作选择：它防止把外部事实推给用户，也防止用无依据推断替代高影响偏好提问。Stage A 用十个 development tasks、三模型和四种 clarification policy 做 240 个低成本 first-turn episodes；Stage B 用五个未见 holdout、三模型、两重复做 task-only/full-persona × ask/no-ask 的 120 份同 ODR graph 报告。当前优化目标是固定三问 burden 下提高 `Recall@AskableHigh`，不是继续压缩问题数。完整方案与 API 预算见 [`pilot/clarification_routing_3model_v0_92/PLAN.md`](pilot/clarification_routing_3model_v0_92/PLAN.md)。
 
 v0.93 根据用户对 construct validity 的修正，将主实验改为 deliverable-first：不再把 clarification-only 输出当主要阶段，每个 cell 都完成澄清或禁问、搜索、综合与最终报告。主矩阵为前三题 × 三模型 × DeerFlow 2.0/ODR × `COLD / NATURAL50_CONFLICT / FULL` × `NO_ASK / NATIVE_ASK`，共 108 份完整报告；Natural persona 用自然 history 暴露约 50% task-relevant preference mass，并加入至少一个预冻结冲突。`OracleTop3` 因使用 top-3 GT 选问而退出主矩阵；IEO-v4 等 stock 结果定位 acquisition/use/execution failure 后再作 36 份以内的开发扩展。见 [`pilot/deliverable_first_3x2_3model_v0_93/`](pilot/deliverable_first_3x2_3model_v0_93/)。
+
+v0.95 用新版 workbook `K2:K4` 的严格 task-only 输入测试 DeerFlow 2.0 stock clarification prompt。三题首轮共 30 个字段，T01 又追加 8 个字段，但直接命中的 high-impact preference axes 只有 6/15；问题主要集中在 eligibility、profile、time、region、budget 与 language。67-leaf 盲评的 `P_strict` 为 T01 5.7787、T02 3.4819、T03 8.3171；只有 T02 是结构合格主结果，T01 少一个成功 fetch，T03 完整输出后 graph recursion failure。当前结论不是“DeerFlow 不问”或“cold start 一定低分”，而是 stock clarification 呈 constraint-first、preference-recall 较低，并且高 P 可能来自 generic best-practice alignment。见 [`pilot/deerflow_stock_cold_3task_v0_95/RESULTS.md`](pilot/deerflow_stock_cold_3task_v0_95/RESULTS.md)。
 
 ## 当前交付物
 

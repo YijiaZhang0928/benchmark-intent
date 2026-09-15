@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.93"
+manifest_version: "0.95"
 updated: "2026-09-15"
 status: working_hypothesis_frozen
 
@@ -28,6 +28,7 @@ active_sources:
   pdr_minimum_product_pilot: pilot/pdr_interactive_personalization_pilot_01/metadata.json
   pdr_minimum_product_pilot_results: pilot/pdr_interactive_personalization_pilot_01/evaluation/summary.md
   pdr_minimum_product_pilot_diagnostics: pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_diagnostics.md
+  deerflow_stock_cold_3task_results: pilot/deerflow_stock_cold_3task_v0_95/RESULTS.md
   pdr_minimum_product_criterion_unit_map: pilot/pdr_interactive_personalization_pilot_01/evaluation/criterion_preference_unit_map.json
   pdr_minimum_product_preference_units: pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_units.json
   pdr_minimum_product_preference_chain: pilot/pdr_interactive_personalization_pilot_01/evaluation/preference_chain_matrix.md
@@ -422,6 +423,23 @@ scope:
     unique_report_urls: {stock: 3, ieo_v3: 14}
     counted_episode_eligible: false
     claim_boundary: seen_task_single_run_shows_question_efficiency_not_better_preference_recall
+  deerflow_stock_cold_3task:
+    package_version: "0.95"
+    status: one_qualified_two_exploratory_constraint_first_diagnostic
+    source_input_column: "15 Tasks!K2:K4"
+    harness_commit: 0d4925305a6330a3442dcd336ed25750aea87cbd
+    backbone: gpt-5.6-sol
+    judge: gpt-6-astra
+    first_turn_atomic_fields: {T01: 10, T02: 11, T03: 9}
+    extra_atomic_fields: {T01: 8, T02: 0, T03: 0}
+    direct_high_impact_targets: {T01: 2, T02: 1, T03: 3}
+    direct_high_impact_recall: 0.4
+    p_strict: {T01: 5.778662207357859, T02: 3.481872909698997, T03: 8.3171237458194}
+    p_hi: {T01: 6.07, T02: 3.5900000000000003, T03: 8.59}
+    successful_fetches: {T01: 4, T02: 5, T03: 11}
+    counted_status: {T01: exploratory_under_fetch, T02: structurally_qualified, T03: exploratory_graph_recursion_failure}
+    matched_noask_completed: false
+    claim_boundary: stock_prompt_asks_but_is_constraint_first_and_does_not_establish_ask_gain
 
 reused_infrastructure:
   - interaction_env
@@ -442,6 +460,7 @@ claim_boundaries:
   - odr_ieo_v3_simulator_answer_order_mismatch_is_a_validity_warning
   - odr_ieo_p_gain_is_confounded_by_research_depth_and_stock_dr_gate_failure
   - three_task_clarification_feasibility_does_not_show_general_asking_superiority
+  - deerflow_stock_cold_three_task_pilot_has_only_one_qualified_report_and_no_matched_noask
   - task3_cold_ask_did_not_beat_full_persona_noask
   - full_cross_harness_and_model_family_matrix_not_completed
   - no_rank_reversal_result_exists
