@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.94",
+  "provenance": "hand-initialized priors frozen before H1 development generation",
+  "answer_form_priors": {
+    "categorical_choice": 0.88,
+    "ordinal_tradeoff": 0.90,
+    "free_text_goal": 0.72,
+    "current_state": 0.82,
+    "exact_numeric": 0.48,
+    "eligibility_fact": 0.80,
+    "delegation_confirmation": 0.92
+  },
+  "v4a": {
+    "lambda_verification": 0.80,
+    "burden_penalty": 0.12,
+    "minimum_utility": 0.025,
+    "maximum_questions": 4
+  },
+  "v4r": {
+    "lambda_verification": 1.25,
+    "burden_penalty": 0.08,
+    "minimum_utility": 0.010,
+    "critical_bonus": 0.22,
+    "critical_threshold": 0.50,
+    "maximum_questions": 4
+  }
+}
+
