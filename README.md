@@ -2,7 +2,7 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.92
+## 当前方向：AskInfer-Bench v0.93
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
 
@@ -76,6 +76,8 @@ v0.90 完成固定五行结果。`P_strict` 从 stock 平均 5.9835 提高到 IE
 
 v0.92 将下一步收敛为来源路由与 untouched-holdout 因果验证。`ASK_USER / INFER_FROM_EVIDENCE / RESEARCH / BRANCH / DEFAULT` 是同一 ask-capable harness 内部的动作选择：它防止把外部事实推给用户，也防止用无依据推断替代高影响偏好提问。Stage A 用十个 development tasks、三模型和四种 clarification policy 做 240 个低成本 first-turn episodes；Stage B 用五个未见 holdout、三模型、两重复做 task-only/full-persona × ask/no-ask 的 120 份同 ODR graph 报告。当前优化目标是固定三问 burden 下提高 `Recall@AskableHigh`，不是继续压缩问题数。完整方案与 API 预算见 [`pilot/clarification_routing_3model_v0_92/PLAN.md`](pilot/clarification_routing_3model_v0_92/PLAN.md)。
 
+v0.93 根据用户对 construct validity 的修正，将主实验改为 deliverable-first：不再把 clarification-only 输出当主要阶段，每个 cell 都完成澄清或禁问、搜索、综合与最终报告。主矩阵为前三题 × 三模型 × DeerFlow 2.0/ODR × `COLD / NATURAL50_CONFLICT / FULL` × `NO_ASK / NATIVE_ASK`，共 108 份完整报告；Natural persona 用自然 history 暴露约 50% task-relevant preference mass，并加入至少一个预冻结冲突。`OracleTop3` 因使用 top-3 GT 选问而退出主矩阵；IEO-v4 等 stock 结果定位 acquisition/use/execution failure 后再作 36 份以内的开发扩展。见 [`pilot/deliverable_first_3x2_3model_v0_93/`](pilot/deliverable_first_3x2_3model_v0_93/)。
+
 ## 当前交付物
 
 - [`proposal/AskInfer-Bench_研究Proposal.md`](proposal/AskInfer-Bench_研究Proposal.md)：完整研究问题、数据构造、Ask/Infer 条件、指标、统计、风险与停止门。
@@ -96,6 +98,7 @@ v0.92 将下一步收敛为来源路由与 untouched-holdout 因果验证。`ASK
 - [`pilot/h3_rubric_expansion_v0_80/`](pilot/h3_rubric_expansion_v0_80/)：15 题严格 rubric 扩展、PDR exact-pair provenance、评分锚点、运行前冻结边界与首批 API 预算假设。
 - [`pilot/h3_cold_start_micro_rubrics_v0_82/`](pilot/h3_cold_start_micro_rubrics_v0_82/)：15 题真正 task-only cold-start 输入、person-swap audit、七维 67-leaf 微 rubric 和 pre-run discrimination gate。
 - [`pilot/clarification_routing_3model_v0_92/`](pilot/clarification_routing_3model_v0_92/)：三模型 clarification routing 诊断、untouched-holdout 2×2 H3、成功门与 API/search 预算计划。
+- [`pilot/deliverable_first_3x2_3model_v0_93/`](pilot/deliverable_first_3x2_3model_v0_93/)：前三题、三模型、双 harness、三种 persona context 与 Ask/NoAsk 的完整交付物优先矩阵。
 - [`proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md`](proposal/AskInfer-Bench_ICLR2027摘要主张卡_v0.75.md)：当前可写、禁止写、保守英文摘要与升级结果句。
 - [`data/pdr_diagnostic_slice_v0_61/selected_15.md`](data/pdr_diagnostic_slice_v0_61/selected_15.md)：PDR 50→15 人类可读结果；同目录含 50 题全表、协议、JSONL 与校验脚本。
 - [`proposal_assets/AskInfer-Bench_评测框架_v0.62.png`](proposal_assets/AskInfer-Bench_评测框架_v0.62.png)：3200×1800 主图；同名 SVG 可编辑。

@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.93 Deliverable-first three-context matrix - 2026-09-15
+
+- 接受用户对 clarification-only Stage A 的有效性异议：所有主实验 cell 必须跑到完整 Deep Research 交付物，clarification 只保留为 acquisition-to-use 过程日志。
+- 将 `OracleTop3` 定义为利用参与者 top-3 crucial preference GT 选问的 upper bound，并从自然系统主比较移除。
+- 将 context 纵轴扩为 `COLD / NATURAL50_CONFLICT / FULL`；Natural 条件暴露约 50% task-relevant preference mass，并包含至少一个输出前冻结的真实冲突或歧义。
+- 冻结前三题 × 三模型 × DeerFlow 2.0/ODR × 三 context × NoAsk/NativeAsk 的 108 份完整报告；主看 final `P_strict/P_HI` 与 Ask-NoAsk paired differences。
+- IEO-v4 改为 stock matrix 诊断后的 development extension，只补跑 COLD/NATURAL50_CONFLICT Ask cells，最多 36 份完整报告。
+
 ## v0.92 Three-model clarification-routing plan - 2026-09-15
 
 - 将 `ASK_USER / INFER_FROM_EVIDENCE / RESEARCH / BRANCH / DEFAULT` 定义为 ask-capable harness 的来源路由，不作为“多问比不问好”的替代假设；cold-start + ask 下，高影响未知偏好优先询问，branch 只作无法取得答案后的降级。

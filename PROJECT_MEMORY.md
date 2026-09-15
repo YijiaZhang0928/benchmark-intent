@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-15
-当前版本：v0.92（three-model clarification-routing experiment plan）
+当前版本：v0.93（deliverable-first three-context Ask/No-Ask matrix）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：改为 deliverable-first 三情境矩阵
+
+用户指出 clarification-only Stage A 无法测量 cold-start agent 在获得部分偏好后的推理、研究与交付能力，且其目标是不同设定下 Ask 相对“想当然推断或泛泛分支”的最终效果，而不是只做问题选择的因果分解。v0.93 接受该修正：所有 counted cells 均跑到完整报告；clarification metrics 只作为过程日志，主比较回到 final deliverable 的 `P_strict/P_HI`、通用质量、unsupported-assumption penalty 与 specificity。
+
+`OracleTop3` 明确定义为利用参与者问卷中 top-3 crucial preferences 直接选择三问的 GT-aware upper bound；因它不代表模型自然行为，从主矩阵移除，仅可在 development appendix 作为 ceiling。
+
+主矩阵纵轴改为三种 evidence context：严格 `COLD`；一个合并的 `NATURAL50_CONFLICT`，用自然 persona/history 暴露约 50% task-relevant preference mass 且包含至少一个冻结冲突；完整 `FULL` persona。横轴为 `NO_ASK` 与 stock `NATIVE_ASK`。前三个 workbook tasks × 三模型 × DeerFlow 2.0/ODR × 三 context × 两 policy，共 108 份完整 DR reports。主张是 outcome-first 的 `Ask > NoAsk`，question count 只是机制描述；H3 为 `COLD+ASK` 接近或超过 `FULL+NOASK`。
+
+IEO 不进入初始 headline matrix。先从 108 份报告区分 acquisition、answer-use 与 research-depth 三类失败，再冻结 IEO-v4，并只在 COLD/NATURAL50_CONFLICT 的 Ask cells 加跑最多 36 份 development reports。完整修订见 `pilot/deliverable_first_3x2_3model_v0_93/PLAN.md`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：三模型 clarification routing 与 H3 2×2 计划
 

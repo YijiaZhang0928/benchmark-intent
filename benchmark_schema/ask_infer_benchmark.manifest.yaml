@@ -1,5 +1,5 @@
 manifest_name: ask_infer_benchmark
-manifest_version: "0.92"
+manifest_version: "0.93"
 updated: "2026-09-15"
 status: working_hypothesis_frozen
 
@@ -83,6 +83,7 @@ active_sources:
   odr_ieo_v3_5task_manifest: pilot/odr_ieo_v3_5task_v0_86/batch_manifest.json
   odr_ieo_v3_5task_auto_open_tool: pilot/odr_ieo_v3_5task_v0_86/search_tools_auto_open.py
   clarification_routing_3model_plan: pilot/clarification_routing_3model_v0_92/PLAN.md
+  deliverable_first_3context_plan: pilot/deliverable_first_3x2_3model_v0_93/PLAN.md
   case_schema: benchmark_schema/ask_infer_case.schema.yaml
   evaluation_protocol: benchmark_schema/ask_infer_evaluation.protocol.yaml
   pdr_task_screen: data/pdr_diagnostic_slice_v0_61/screening_50.csv
