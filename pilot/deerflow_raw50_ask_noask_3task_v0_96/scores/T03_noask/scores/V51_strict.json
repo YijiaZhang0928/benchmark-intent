@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "V51",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "314368479b1405c42de3cdcd53c53f9872cc89c9e716e17029426895c0469611",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-16T00:08:28.943513+00:00",
+  "completed_at_utc": "2026-09-16T00:10:21.774263+00:00",
+  "p_strict": 0.20000000000000004,
+  "p_hi": 0.20000000000000004,
+  "dimension_scores": {
+    "INTENT": 1.6,
+    "SOURCE": 0.0,
+    "EVIDENCE": 0.0,
+    "TRADEOFF": 0.0,
+    "DECISION": 0.0,
+    "ACTION": 0.4,
+    "TRACE": 0.0
+  },
+  "high_dimension_scores": {
+    "INTENT": 1.6,
+    "SOURCE": 0.0,
+    "EVIDENCE": 0.0,
+    "TRADEOFF": 0.0,
+    "DECISION": 0.0,
+    "ACTION": 0.4,
+    "TRACE": 0.0
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state real venture projects or cases as a decision priority."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No sources or evidence types for evaluating real venture projects or cases are identified."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a concrete fact about real venture projects or cases."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides no concrete fact about a broad academic business degree or corresponding route."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no comparison between real venture projects or cases and a broad academic business degree."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended because it supports real venture projects or cases."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded for favoring a broad academic business degree."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no executable venture-project or case-based step."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The proposed default time and budget do not define a rule or allocation for real venture projects or cases."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which a broad academic business degree becomes the better choice."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no visible chain linking a preference for real venture projects or cases to evidence and a decision or action."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 4,
+      "evidence_span": "employed throughout, 8–12 hours per week",
+      "rationale": "The proposed default preserves employment and limits weekly commitment, partially expressing work compatibility. It does not explicitly prioritize a flexible or modular learning path."
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No sources or evidence classes are identified for evaluating program flexibility or compatibility with work and family."
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named learning option is supported by a verifiable flexibility-related fact."
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report asks about full-time study but supplies no concrete fact about a named option or route's disruptive requirements."
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No substantive comparison identifies a consequential difference between flexible learning and full-time study."
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No learning option is recommended because it supports work-compatible flexibility."
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded because of full-time study or its disruption."
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no executable learning or experimentation step implementing a flexible path."
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 4,
+      "evidence_span": "employed throughout, 8–12 hours per week",
+      "rationale": "The default scenario supplies a concrete weekly time allowance compatible with continued employment. However, it remains a proposed planning assumption rather than an allocation or rule within an actual plan."
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Asking whether a career break is possible does not state a condition under which full-time study becomes the better choice."
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No evidence about a learning option is linked to the flexibility preference and a downstream decision or action."
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state evidence-driven market experiments or staged validation as a decision priority."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No sources or evidence types for evaluating market experiments and staged validation are identified."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a concrete fact about market experimentation or staged validation."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is described with a concrete fact showing long preparation before testing ideas."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare evidence-driven experimentation with long preparation before testing."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended because it supports market experiments and staged validation."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No viable option is downgraded for favoring long preparation before testing ideas."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no executable market experiment or staged-validation step."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The proposed time and budget defaults do not define a rule or checkpoint for market experimentation or staged validation."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which long preparation before testing ideas would become preferable."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No visible chain links a preference for market experiments and staged validation to evidence and a downstream decision or action."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state in-depth practical cases or data as a decision priority."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No sources or evidence types for evaluating practical cases or data are identified."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a concrete fact about practical cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is shown to emphasize abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare practical cases or data with abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended because it supports practical cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded for favoring abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no executable learning step implementing practical cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The suggested time and budget parameters do not define a rule or checkpoint for practical cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which abstract theory without application would become the better choice."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No visible chain links a practical-cases/data preference to evidence and a downstream decision or action."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 4,
+      "evidence_span": "international options included only when their incremental value is compelling",
+      "rationale": "This implies attention to value, but does not explicitly state ROI or cost-effectiveness as a decision priority."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No research source or evidence class is identified for evaluating ROI or cost-effectiveness."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a verifiable cost-effectiveness fact."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route has a concrete fact establishing its expensive, prestige-oriented character."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare cost-effective routes with expensive prestige-oriented programs."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No learning option is recommended because of its ROI or cost-effectiveness."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded for prioritizing expensive prestige."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides clarification questions rather than an executable plan step implementing cost-effectiveness."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The hypothetical budget is not a cost-effectiveness allocation rule, and 'incremental value is compelling' supplies no usable threshold or checkpoint."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition establishes when expensive prestige-oriented programs would become the better choice."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no evidence-backed chain connecting cost-effectiveness to a decision or action."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report names no learning option and provides no concrete fact about access to experienced practitioners or industry peers."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report makes no option-level comparison between practitioner or peer access and isolated learning."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no shortlist or recommendation using practitioner or peer access as a fit factor."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides clarification questions and a default scenario, not a final recommendation. Non-contradiction cannot be credited in the absence of a recommendation."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named learning option has a concrete fact tied to preserving regular family time."
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare options on preserving family time versus occupying evenings or weekends."
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no shortlist or recommendation whose ranking or fit judgment uses family time."
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No final recommendation is provided. The proposed default scenario does not establish a recommendation consistent with preserving regular family time."
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides no named learning option or concrete fact about frameworks for team coordination or leadership."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare team coordination or leadership frameworks with solo-founder technical content."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No shortlist or recommendation uses team coordination or leadership frameworks as a fit factor."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no final recommendation or selected option to assess against the preference. Clarification questions and a proposed default scenario do not establish this condition."
+    }
+  ]
+}

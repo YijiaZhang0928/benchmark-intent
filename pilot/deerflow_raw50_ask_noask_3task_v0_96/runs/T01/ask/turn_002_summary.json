@@ -1,0 +1,920 @@
+{
+  "schema_version": "0.75",
+  "status": "failed",
+  "asked_clarification": false,
+  "clarification_calls": [],
+  "clarification_artifacts": [],
+  "all_observed_tools": [
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/public/deep-research/SKILL.md",
+        "description": "Load the deep-research workflow for the international AI PhD comparison.",
+        "start_line": 1,
+        "end_line": 300
+      },
+      "id": "call_8S7fe5EAUXKBWZufnkwWfKYV"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_8S7fe5EAUXKBWZufnkwWfKYV",
+      "content": "---\nname: deep-research\ndescription: Use this skill instead of WebSearch for ANY question requiring web research. Trigger on queries like \"what is X\", \"explain X\", \"compare X and Y\", \"research X\", or before content generation tasks. Provides systematic multi-angle research methodology instead of single superficial searches. Use this proactively when the user's question needs online information.\n---\n\n# Deep Research Skill\n\n## Overview\n\nThis skill provides a systematic methodology for conducting thorough web research. **Load this skill BEFORE starting any content generation task** to ensure you gather sufficient information from multiple angles, depths, and sources.\n\n## When to Use This Skill\n\n**Always load this skill when:**\n\n### Research Questions\n- User asks \"what is X\", \"explain X\", \"research X\", \"investigate X\"\n- User wants to understand a concept, technology, or topic in depth\n- The question requires current, comprehensive information from multiple sources\n- A single web search would be insufficient to answer properly\n\n### Content Generation (Pre-research)\n- Creating presentations (PPT/slides)\n- Creating frontend designs or UI mockups\n- Writing articles, reports, or documentation\n- Producing videos or multimedia content\n- Any content that requires real-world information, examples, or current data\n\n## Core Principle\n\n**Never generate content based solely on general knowledge.** The quality of your output directly depends on the quality and quantity of research conducted beforehand. A single search query is NEVER enough.\n\n## Research Methodology\n\n### Phase 1: Broad Exploration\n\nStart with broad searches to understand the landscape:\n\n1. **Initial Survey**: Search for the main topic to understand the overall context\n2. **Identify Dimensions**: From initial results, identify key subtopics, themes, angles, or aspects that need deeper exploration\n3. **Map the Territory**: Note different perspectives, stakeholders, or viewpoints that exist\n\nExample:\n```\nTopic: \"AI in healthcare\"\nInitial searches:\n- \"AI healthcare applications 2024\"\n- \"artificial intelligence medical diagnosis\"\n- \"healthcare AI market trends\"\n\nIdentified dimensions:\n- Diagnostic AI (radiology, pathology)\n- Treatment recommendation systems\n- Administrative automation\n- Patient monitoring\n- Regulatory landscape\n- Ethical considerations\n```\n\n### Phase 2: Deep Dive\n\nFor each important dimension identified, conduct targeted research:\n\n1. **Specific Queries**: Search with precise keywords for each subtopic\n2. **Multiple Phrasings**: Try different keyword combinations and phrasings\n3. **Fetch Full Content**: Use `web_fetch` to read important sources in full, not just snippets\n4. **Follow References**: When sources mention other important resources, search for those too\n\nExample:\n```\nDimension: \"Diagnostic AI in radiology\"\nTargeted searches:\n- \"AI radiology FDA approved systems\"\n- \"chest X-ray AI detection accuracy\"\n- \"radiology AI clinical trials results\"\n\nThen fetch and read:\n- Key research papers or summaries\n- Industry reports\n- Real-world case studies\n```\n\n### Phase 3: Diversity & Validation\n\nEnsure comprehensive coverage by seeking diverse information types:\n\n| Information Type | Purpose | Example Searches |\n|-----------------|---------|------------------|\n| **Facts & Data** | Concrete evidence | \"statistics\", \"data\", \"numbers\", \"market size\" |\n| **Examples & Cases** | Real-world applications | \"case study\", \"example\", \"implementation\" |\n| **Expert Opinions** | Authority perspectives | \"expert analysis\", \"interview\", \"commentary\" |\n| **Trends & Predictions** | Future direction | \"trends 2024\", \"forecast\", \"future of\" |\n| **Comparisons** | Context and alternatives | \"vs\", \"comparison\", \"alternatives\" |\n| **Challenges & Criticisms** | Balanced view | \"challenges\", \"limitations\", \"criticism\" |\n\n### Phase 4: Synthesis Check\n\nBefore proceeding to content generation, verify:\n\n- [ ] Have I searched from at least 3-5 different angles?\n- [ ] Have I fetched and read the most important sources in full?\n- [ ] Do I have concrete data, examples, and expert perspectives?\n- [ ] Have I explored both positive aspects and challenges/limitations?\n- [ ] Is my information current and from authoritative sources?\n\n**If any answer is NO, continue researching before generating content.**\n\n## Search Strategy Tips\n\n### Effective Query Patterns\n\n```\n# Be specific with context\n❌ \"AI trends\"\n✅ \"enterprise AI adoption trends 2024\"\n\n# Include authoritative source hints\n\"[topic] research paper\"\n\"[topic] McKinsey report\"\n\"[topic] industry analysis\"\n\n# Search for specific content types\n\"[topic] case study\"\n\"[topic] statistics\"\n\"[topic] expert interview\"\n\n# Use temporal qualifiers — always use the ACTUAL current year from <current_date>\n\"[topic] 2026\"   # ← replace with real current year, never hardcode a past year\n\"[topic] latest\"\n\"[topic] recent developments\"\n```\n\n### Temporal Awareness\n\n**Always check `<current_date>` in your context before forming ANY search query.**\n\n`<current_date>` gives you the full date: year, month, day, and weekday (e.g. `2026-02-28, Saturday`). Use the right level of precision depending on what the user is asking:\n\n| User intent | Temporal precision needed | Example query |\n|---|---|---|\n| \"today / this morning / just released\" | **Month + Day** | `\"tech news February 28 2026\"` |\n| \"this week\" | **Week range** | `\"technology releases week of Feb 24 2026\"` |\n| \"recently / latest / new\" | **Month** | `\"AI breakthroughs February 2026\"` |\n| \"this year / trends\" | **Year** | `\"software trends 2026\"` |\n\n**Rules:**\n- When the user asks about \"today\" or \"just released\", use **month + day + year** in your search queries to get same-day results\n- Never drop to year-only when day-level precision is needed — `\"tech news 2026\"` will NOT surface today's news\n- Try multiple phrasings: numeric form (`2026-02-28`), written form (`February 28 2026`), and relative terms (`today`, `this week`) across different queries\n\n❌ User asks \"what's new in tech today\" → searching `\"new technology 2026\"` → misses today's news\n✅ User asks \"what's new in tech today\" → searching `\"new technology February 28 2026\"` + `\"tech news today Feb 28\"` → gets today's results\n\n### When to Use web_fetch\n\nUse `web_fetch` to read full content when:\n- A search result looks highly relevant and authoritative\n- You need detailed information beyond the snippet\n- The source contains data, case studies, or expert analysis\n- You want to understand the full context of a finding\n\n### Iterative Refinement\n\nResearch is iterative. After initial searches:\n1. Review what you've learned\n2. Identify gaps in your understanding\n3. Formulate new, more targeted queries\n4. Repeat until you have comprehensive coverage\n\n## Quality Bar\n\nYour research is sufficient when you can confidently answer:\n- What are the key facts and data points?\n- What are 2-3 concrete real-world examples?\n- What do experts say about this topic?\n- What are the current trends and future directions?\n- What are the challenges or limitations?\n- What makes this topic relevant or important now?\n\n## Common Mistakes to Avoid\n\n- ❌ Stopping after 1-2 searches\n- ❌ Relying on search snippets without reading full sources\n- ❌ Searching only one aspect of a multi-faceted topic\n- ❌ Ignoring contradicting viewpoints or challenges\n- ❌ Using outdated information when current data exists\n- ❌ Starting content generation before research is complete\n\n## Output\n\nAfter completing research, you should have:\n1. A comprehensive understanding of the topic from multiple angles\n2. Specific facts, data points, and statistics\n3. Real-world examples and case studies\n4. Expert perspectives and authoritative sources\n5. Current trends and relevant context\n\n**Only then proceed to content generation**, using the gathered information to create high-quality, well-informed content.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:cs.stanford.edu PhD admissions funding tuition requirements TOEFL 2026 computer science Stanford official AI curriculum qualifying examination rotations internship",
+        "max_results": 5
+      },
+      "id": "call_u4o2o8rAY8x3ZGOKsr3q86Vw"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:cs.cmu.edu PhD machine learning admissions funding requirements 2026 official CMU",
+        "max_results": 5
+      },
+      "id": "call_t9UJ0SeZ2hhXW6F33vhy9mxN"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:cs.toronto.edu PhD computer science admissions funding international tuition requirements 2026 official",
+        "max_results": 5
+      },
+      "id": "call_QNNwmu6SPOuaSbtHnpmNqMDn"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ox.ac.uk DPhil computer science admissions funding fees English language 2026 official",
+        "max_results": 5
+      },
+      "id": "call_CICToClvYh5BeKFhyOHCUjQ0"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ucl.ac.uk prospective-students graduate research MPhil PhD computer science fees funding English 2026 official",
+        "max_results": 5
+      },
+      "id": "call_FR6eC1GUyKcxe3M5uJdX7exo"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ethz.ch doctorate computer science salary tuition admission requirements English official 2026",
+        "max_results": 5
+      },
+      "id": "call_yhCbkt9vzflMVi3Mzk6SGosr"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:epfl.ch education phd computer science funding salary tuition admissions English official",
+        "max_results": 5
+      },
+      "id": "call_88Y9xPjMwqYD2x38GhYQr8Xm"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:nus.edu.sg computing phd admission requirements tuition scholarship stipend GRE TOEFL 2026 official",
+        "max_results": 5
+      },
+      "id": "call_SieFOLuo2q4L4yQTU82DCSzF"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ntu.edu.sg computing PhD admissions requirements scholarship stipend international 2026 official",
+        "max_results": 5
+      },
+      "id": "call_HAar663Y18tJoWZH4OGRcuFZ"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ust.hk PhD computer science admissions requirements scholarship stipend tuition 2026 official",
+        "max_results": 5
+      },
+      "id": "call_yfal4UOFrrW1pUa2wmezLwuB"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_u4o2o8rAY8x3ZGOKsr3q86Vw",
+      "content": "{\n  \"query\": \"site:cs.stanford.edu PhD admissions funding tuition requirements TOEFL 2026 computer science Stanford official AI curriculum qualifying examination rotations internship\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"PhD Admissions - Computer Science\",\n      \"url\": \"https://www.cs.stanford.edu/admissions/phd-admissions\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"PhD | Program Requirements - Computer Science\",\n      \"url\": \"https://www.cs.stanford.edu/phd-program-requirements\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Admissions - Computer Science\",\n      \"url\": \"https://www.cs.stanford.edu/admissions\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Funding | Computer Science - cs.stanford.edu\",\n      \"url\": \"https://www.cs.stanford.edu/phd-program-overview/funding\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Admissions - Computer Science\",\n      \"url\": \"https://www.cs.stanford.edu/admissions-student-resources\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_t9UJ0SeZ2hhXW6F33vhy9mxN",
+      "content": "{\n  \"query\": \"site:cs.cmu.edu PhD machine learning admissions funding requirements 2026 official CMU\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_QNNwmu6SPOuaSbtHnpmNqMDn",
+      "content": "{\n  \"query\": \"site:cs.toronto.edu PhD computer science admissions funding international tuition requirements 2026 official\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Doctor of Philosophy (PhD) - Department of Computer Science, University ...\",\n      \"url\": \"https://web.cs.toronto.edu/graduate/phd\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Funding, Tuition Fees, and Awards - Department of Computer Science ...\",\n      \"url\": \"https://web.cs.toronto.edu/graduate/funding-tuition-awards\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"PDF Graduate Handbook\",\n      \"url\": \"https://www.cs.toronto.edu/dcs/graddocs/2026/PhD-Handbook_2026-2027.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"PDF Student Handbook - cs.toronto.edu\",\n      \"url\": \"https://www.cs.toronto.edu/dcs/graddocs/2025/PhD-handbook_2025-2026.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Graduate Forms and Handbooks - Department of Computer Science ...\",\n      \"url\": \"https://web.cs.toronto.edu/graduate/forms-and-handbooks\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_CICToClvYh5BeKFhyOHCUjQ0",
+      "content": "{\n  \"query\": \"site:ox.ac.uk DPhil computer science admissions funding fees English language 2026 official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_FR6eC1GUyKcxe3M5uJdX7exo",
+      "content": "{\n  \"query\": \"site:ucl.ac.uk prospective-students graduate research MPhil PhD computer science fees funding English 2026 official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_yhCbkt9vzflMVi3Mzk6SGosr",
+      "content": "{\n  \"query\": \"site:ethz.ch doctorate computer science salary tuition admission requirements English official 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_88Y9xPjMwqYD2x38GhYQr8Xm",
+      "content": "{\n  \"query\": \"site:epfl.ch education phd computer science funding salary tuition admissions English official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_SieFOLuo2q4L4yQTU82DCSzF",
+      "content": "{\n  \"query\": \"site:nus.edu.sg computing phd admission requirements tuition scholarship stipend GRE TOEFL 2026 official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_HAar663Y18tJoWZH4OGRcuFZ",
+      "content": "{\n  \"query\": \"site:ntu.edu.sg computing PhD admissions requirements scholarship stipend international 2026 official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_yfal4UOFrrW1pUa2wmezLwuB",
+      "content": "{\n  \"query\": \"site:ust.hk PhD computer science admissions requirements scholarship stipend tuition 2026 official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Carnegie Mellon Machine Learning PhD admissions financial support official",
+        "max_results": 5
+      },
+      "id": "call_IFV0QBCUwlcrX2wUdCSc3Z6L"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "Oxford DPhil Computer Science entry requirements fees funding official",
+        "max_results": 5
+      },
+      "id": "call_yyJiJLp7ooYQI4UBBmd1OTHm"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "UCL Computer Science MPhil PhD entry requirements fees funding official",
+        "max_results": 5
+      },
+      "id": "call_jfD4wtFNEBTp2dJ1WqeY8PP4"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "ETH Zurich computer science doctorate admission employment salary official",
+        "max_results": 5
+      },
+      "id": "call_VT5inKufaikxWG1E73BbSIMI"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "EPFL EDIC PhD admissions funding salary official",
+        "max_results": 5
+      },
+      "id": "call_atKnIKlH7iiF8CX56JGSN227"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NUS Computing PhD admissions scholarship stipend official",
+        "max_results": 5
+      },
+      "id": "call_DHrDVKf0RdSLRON8qOgR6Ny4"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NTU Singapore computer science engineering PhD admission scholarship stipend official",
+        "max_results": 5
+      },
+      "id": "call_gkU38WqHVvdzRYqcZuEVTQKA"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "HKUST computer science engineering PhD admission funding scholarship official",
+        "max_results": 5
+      },
+      "id": "call_IG38b9p5kq4AWVHMJxJeoaYU"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "KAIST computer science PhD international admission scholarship English official",
+        "max_results": 5
+      },
+      "id": "call_6cIry0D3BdWRf3I8ToAAH6nt"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "University of Tokyo computer science PhD international English program MEXT scholarship official",
+        "max_results": 5
+      },
+      "id": "call_HXQviHzbuyj0YpHBwrya24WA"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_IFV0QBCUwlcrX2wUdCSc3Z6L",
+      "content": "{\n  \"query\": \"Carnegie Mellon Machine Learning PhD admissions financial support official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_yyJiJLp7ooYQI4UBBmd1OTHm",
+      "content": "{\n  \"query\": \"Oxford DPhil Computer Science entry requirements fees funding official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_jfD4wtFNEBTp2dJ1WqeY8PP4",
+      "content": "{\n  \"query\": \"UCL Computer Science MPhil PhD entry requirements fees funding official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_VT5inKufaikxWG1E73BbSIMI",
+      "content": "{\n  \"query\": \"ETH Zurich computer science doctorate admission employment salary official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_atKnIKlH7iiF8CX56JGSN227",
+      "content": "{\n  \"query\": \"EPFL EDIC PhD admissions funding salary official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_DHrDVKf0RdSLRON8qOgR6Ny4",
+      "content": "{\n  \"query\": \"NUS Computing PhD admissions scholarship stipend official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_gkU38WqHVvdzRYqcZuEVTQKA",
+      "content": "{\n  \"query\": \"NTU Singapore computer science engineering PhD admission scholarship stipend official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_IG38b9p5kq4AWVHMJxJeoaYU",
+      "content": "{\n  \"query\": \"HKUST computer science engineering PhD admission funding scholarship official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_6cIry0D3BdWRf3I8ToAAH6nt",
+      "content": "{\n  \"query\": \"KAIST computer science PhD international admission scholarship English official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_HXQviHzbuyj0YpHBwrya24WA",
+      "content": "{\n  \"query\": \"University of Tokyo computer science PhD international English program MEXT scholarship official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.cs.stanford.edu/admissions/phd-admissions"
+      },
+      "id": "call_0JCo1bCrcSvlSVIvZgFlUSqq"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.cs.stanford.edu/phd-program-requirements"
+      },
+      "id": "call_4PfNQReDeS3Zp2k9VBlb2qrQ"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.cs.stanford.edu/phd-program-overview/funding"
+      },
+      "id": "call_kZEgZdqecOvTyoOSTsTyXbu8"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://web.cs.toronto.edu/graduate/phd"
+      },
+      "id": "call_ybVIyEQv7KnzSXFVeKKhVeQx"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://web.cs.toronto.edu/graduate/funding-tuition-awards"
+      },
+      "id": "call_cHsGn4SlNowrDOwUJaCEdIOW"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "computer science PhD Europe paid employee doctoral candidates ETH EPFL ELLIS programs",
+        "max_results": 10
+      },
+      "id": "call_AL1KWeh8Pf5w79us908FcZVS"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "artificial intelligence PhD Singapore Hong Kong scholarship NUS NTU HKUST",
+        "max_results": 10
+      },
+      "id": "call_PrBP30EsLXgNZCl0as6rhHMP"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "UK computer science DPhil PhD funded studentship Oxford Cambridge UCL Edinburgh application requirements",
+        "max_results": 10
+      },
+      "id": "call_8uMNXKnLld1qv7ljAounlNv0"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "AI PhD career outcomes industry research scientist job outlook computer information research scientists 2026",
+        "max_results": 10
+      },
+      "id": "call_DQ1DGxF2ONGnAyzAhJmK4Um9"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "international student PhD computer science United States F-1 CPT internship rules official USCIS",
+        "max_results": 10
+      },
+      "id": "call_jLHfe6KHHy0niQ7eA6U2SWTs"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_0JCo1bCrcSvlSVIvZgFlUSqq",
+      "content": "# PhD Admissions\n\nMain content start\n\nOverview\n--------\n\nThe Computer Science Department PhD program is a top-ranked research-oriented program, typically completed in 5-6 years. There are very few course requirements and the emphasis is on preparation for a career in Computer Science research.\n\n### **Eligibility**\n\nTo be eligible for admission in a Stanford graduate program, applicants must meet:\n\n* **Degree level**. Applicants must hold, or expect to hold before enrollment at Stanford, a Bachelor's degree from a U.S. college or University accredited by a regional accrediting association.\n  + Applicants from institutions outside of the United States must hold the equivalent of a United States Bachelor's degree from a college or University of recognized good standing. See detailed information by region on[Stanford Graduate Admissions](https://gradadmissions.stanford.edu/apply/eligibility) website.\n* **Area of undergraduate study**. While we do not require a specific undergraduate coursework, it is important that applicants have strong quantitative and analytical skills; a Bachelor's degree in Computer Science is not required.\n\nAny questions about the admissions eligibility should be directed to[admissions@cs.stanford.edu](mailto:admissions@cs.stanford.edu).\n\nApplication Checklist\n---------------------\n\nA completed online application must be submitted by the CS Department application deadline.\n\n[Learn about the checklist](/admissions/graduate-application-checklists)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_4PfNQReDeS3Zp2k9VBlb2qrQ",
+      "content": "# PhD | Program Requirements\n\nOverview\n--------\n\nOn average, the program is completed in five to six years, depending on the student’s research and progress. First-year students have the opportunity to rotate in three different labs before selecting their advisor. \n\nThe Computer Science Department also believes that teaching is an integral and important part of graduate-level education in Computer Science. In pursuing the PhD degree, students have clear and defined milestones that help guide them to the successful completion of their dissertation and oral defense. This includes a cumulative list of requirements to be completed in order for students to confer their PhD degree in Computer Science.\n\n**For any questions related to CS PhD milestone requirements, please email**[**phdstudentservices@cs.stanford.edu**](mailto:phdstudentservices@cs.stanford.edu)\n\n**Form/s should be submitted as a PDF and emailed to**[**phdstudentservices@cs.stanford.edu**](mailto:phdstudentservices@cs.stanford.edu) Jay Subramanian, Director of Graduate Admissions and PhD Program, approves all forms on behalf of the Department chair. The CS PhD Student Services Team will collect her signature after you submit your form/s.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_kZEgZdqecOvTyoOSTsTyXbu8",
+      "content": "# Funding\n\nMain content start\n\nOverview\n--------\n\nAs stated on the [Financial Aid](https://engineering.stanford.edu/admission-aid/financial-aid) page of the School of Engineering website, all CS PhD students are guaranteed funding as long as they make satisfactory academic progress.\n\nAcceptance of an award of financial support from Stanford obliges the student to inform the degree program of any other aid received. The Stanford award may be adjusted accordingly. Because graduate students often receive funding from multiple sources while at Stanford, it is important to know and abide by the policy conditions of each funding source. Receiving financial support from one source may prohibit additional support from another.  In cases where a student has multiple sources of funding for tuition or health insurance, outside funds must be used before university funds.\n\nWhenever you receive other fellowships, scholarships, awards, or external sources of support, such as competitive grants or government scholarships, which will provide financial support towards your doctoral studies at Stanford, please let Jayanthi Subramanian at [jayanthi@stanford.edu](mailto:jayanthi@stanford.edu) know.    Your Stanford funding package gets reconfigured based off of your external funds.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_ybVIyEQv7KnzSXFVeKKhVeQx",
+      "content": "# Doctor of Philosophy (PhD) — Department of Computer Science, University of Toronto\n\nThe PhD program provides advanced depth and breadth of computer science, and culminates in a dissertation that makes a significant and original contribution to computer science research under the guidance of a faculty member.\n\nAdmission to the program is either after the completion of a master’s degree equivalent to our MSc program or directly from an undergraduate program (referred to below as \"Direct-Entry PhD\"). Domestic students without an appropriate master's degree should apply to the [MSc program](https://web.cs.toronto.edu/graduate/msc) and enter the PhD upon completion of their MSc. The Direct-Entry PhD is intended for international students.\n\nProgram Overview\n----------------\n\n**Program requirements:**\n\n* **Coursework**. Students must successfully complete a total of 2.0 full-course equivalents (FCEs) for the PhD program and a total of 4.0 full-course equivalents (FCEs) for the Direct-Entry PhD. The courses must satisfy breadth requirements to ensure a broad and well-balanced knowledge of computer science.\n* **Presentation of a research project** in the first supervisory committee meeting. Students who completed their MSc within the Department of Computer Science will present the project they completed in CSC4000Y. Students who did not complete their MSc within the department will present an equivalent research project.\n* **Qualifying oral examination**.\n* **Thesis topic**, which must be approved by the supervisory committee no later than one year after the successful completion of the qualifying oral examination.\n* **Thesis**. Students must pass the departmental thesis examination before the SGS Final Oral Examination can be scheduled.\n\n  A timeline of milestones for satisfactory progress is outlined in the [Department of Computer Science PhD handbook](https://web.cs.toronto.edu/graduate/forms-and-handbooks).\n\n**Program Length:**\n\n* 4 years for PhD after a recognized master’s degree\n* 5 years for Direct-Entry PhD after a recognized bachelor’s degree\n\n**Guaranteed Funding Period:**\n\n* 44\\* months if master's degree was completed in this department\n* 48 months if master's degree was completed elsewhere\n* 60 months for Direct-Entry PhD\n\n*\\*Commencing Fall 2026.*\n\nResearch Areas\n--------------\n\nFaculty members of the Department of Computer Science offer supervision in a [wide range of topics](/graduate/research-interests) in computer science.\n\nSupervisor\n----------\n\nAll PhD students are assigned a supervisor or research group based on the research interests indicated in their application. Supervisors advise on course and research topic selection and provide continuing help during the student’s research.\n\nFunding, Awards, and Tuition\n----------------------------\n\nWe offer a funding package to all of our full-time PhD students. The package is composed of a research assistantship and teaching assistantships. This provides funding for the costs of living and for the cost of tuition. Applicants are automatically considered for entrance awards and are encouraged to apply for external awards for which they are eligible.\n\nVisit our [Funding, Tuition Fees, and Awards page](/graduate/funding-tuition-awards) for more information.\n\nAdmission Requirements\n----------------------\n\n### Minimum Requirements for the PhD Program:\n\n* Completion of an appropriate master's degree (except for Direct-Entry PhD)\n* A standing that is equivalent to at least B+ (U of T 77–79% or 3.3/4.0) over the full master’s program\n* [English-language proficiency according to University requirements](/graduate/english-language-proficiency).\n\n### Minimum Requirements for the Direct-Entry PhD:\n\n* Completion of an appropriate bachelor’s degree with a minimum A– equivalent average in relevant courses for consideration\n* [English-language proficiency according to University requirements](/graduate/english-language-proficiency).\n\nApplications are evaluated in their totality: grades, statement of purpose, letters of reference, and any supplementary information submitted are all taken into account.\n\nAdmission decisions are made in the context of all other applications in the same admission cycle. For this reason, the graduate office and individual faculty cannot respond to requests for evaluation of applications in isolation. Admission to our graduate programs is very competitive and meeting the minimum admission requirements does not guarantee admission: only 5–10% of applicants receive an offer of admission.\n\n### Non-Canadian Degree Equivalencies\n\nFor information on degree equivalencies, please use the School of Graduate Studies’ [International Credentials Equivalencies Tool](https://www.sgs.utoronto.ca/admissions/admission-requirements/international-credentials-equivalencies/).\n\nWe do **not** require a third-party credential evaluation assessment, such as WES.\n\n### Applicants without a prior degree in Computer Science\n\nIt is possible to gain admission to our graduate programs with an undergraduate degree in a field other than computer science. All successful applicants, however, must have a background in basic university-level mathematics and substantial experience in computer science. Specifically, we look for:\n\n* second-year courses in calculus, linear algebra, and probability;\n* a third- or fourth-year course in algorithm design and analysis; and\n* a third- or fourth-year course in computer systems, e.g., operating systems, database systems, computer architecture, or computer networks.\n\n### GRE Test Scores\n\nApplicants who do not have a Canadian university degree are strongly encouraged, but not required, to submit scores from the [GRE General Test](https://www.ets.org/gre/revised_general/about/?WT.ac=grehome_greabout_a_150213). All scores submitted to institution code 0982 will be available for review by the Department of Computer Science.\n\n**GRE institution code:** 0982  \n**U of T computer science code:** 0402\n\nApplication Process\n-------------------\n\nApplications will be open for September entry each year.   \n***Applications for Fall 2026 will open on October 1, 2025.***\n\n[Learn more about the application process](/graduate/how-to-apply).\n\n### **Peer-matching program for applicants from underrepresented groups**\n\nThe [Toronto Graduate Application Assistance Program (GAAP)](https://sites.google.com/view/torontogaap) is a student-run, volunteer-led program that provides feedback on application materials to applicants from underrepresented groups applying to our thesis-based programs. In this peer-matching program, prospective students will be matched with a current student (or recent graduate) who will provide feedback on the statement of purpose (SoP) and CV.\n\nQuestions?\n----------\n\nVisit the [Frequently Asked Questions (FAQ) page](/graduate/faq) to get answers to common questions. For questions not answered in the FAQ, contact the Graduate Office by email at [gradapplications.cs@utoronto.ca](mailto:gradapplications.cs@utoronto.ca?).",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_cHsGn4SlNowrDOwUJaCEdIOW",
+      "content": "# Funding, Tuition Fees and Awards — Department of Computer Science, University of Toronto\n\n**\\***16 months funding based on typical registration sequence: FWS-F. Leaves may impact the tuition portion of your funding package.\n\nDepartment of Computer Science Funding Packages\n-----------------------------------------------\n\n### Basic funding package\n\nThe basic funding package includes tuition, research, and teaching assistantships and is based on the [Faculty of Arts and Science](https://www.artsci.utoronto.ca/graduate/graduate-funding/how-graduate-funding-works) minimum financial support package.\n\n### Department of Computer Science Enhanced Funding Package\n\nThe Department of Computer Science offers an enhanced funding package above the Faculty of Arts and Science Minimum Financial Support Package. The enhanced package ensures that students have a take-home living allowance of **$39,500 after tuition and incidentals** are paid. This is composed of research, teaching assistantships, and the Departmental Fellowship.\n\n### Departmental Fellowship\n\nThe Department will also provide **up to $17,250 CAD** (for those admitted in 2026–2027). This fellowship does not require any extra duties on your part. Its only purpose is to support your regular activities of research and study in our graduate program. Students in good academic standing **must apply** for the Departmental Fellowship, which involves informing the Department of Computer Science Graduate Office of the amount and sources of your external scholarships, external stipends, and external paid employment. If you have such income, the amount of your departmental fellowship may be reduced in whole or in part.\n\n***Major Scholarships and Awards*** are a component of the funding package for many students. All graduate students are required to apply for and accept external awards for which they are eligible. The funding package may be revised at any point to include major awards, including retroactive awards a*nd award upgrades, which are received during the timeframe covered by this funding letter.* **Students are required to report any such financial awards valued at more than $10,000 CAD to the Graduate Office.**\n\nReceipts of an external award valued at more than $10,000 may result in a further enhancement to the student’s annual financial support package. For students who win large or multiple concurrent awards, the RAship will be reduced so that either the student's total non-TA funding (including scholarships) is no larger than $60,000, or the RAship has been reduced to zero.\n\nTuition Fees\n------------\n\n**Domestic Students (Canadian Citizens and Permanent Residents) — MSc/PhD**\n\n2026–2027 Academic Year  \n$8,622.39 CAD PhD students  \n$9,608.48 CAD Continuing MSc students  \n$9,892.39 CAD Incoming MSc students  \nIncludes incidental and ancillary fees\n\n**International Students — MSc/PhD**\n\n2026-2027 Academic Year  \n$9,570.39 CAD Incoming PhD students  \n$36,700.39 CAD incoming MSc students  \nIncludes incidental and ancillary fees\n\nAwards\n------\n\nAll accepted students are considered for entrance awards. Recipients will be notified in their offer of admission.\n\nSignificant financial top-ups are offered to holders of certain fellowships and scholarships (CGRS-M, OGS, etc).\n\n### Internal Awards\n\nThe Department of Computer Science and the University of Toronto are proud to offer entrance awards to outstanding applicants. Prospective students do not need to apply for these awards as they will be nominated by the admissions committee; awards will be included in offer packages. These awards include:\n\n* C. David Naylor University Fellowship\n* Connaught International Scholarship\n* Departmental Entrance Scholarship\n* Faculty of Arts & Science Top (FAST) Doctoral Fellowship\n* Master's Student Recruitment Award\n* Wolfond Scholarship Program in Wireless Information Technology\n* and more\n\n### External Awards\n\nProspective students may apply to these awards prior to receiving an offer from the Department of Computer Science. Please note deadlines below.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_AL1KWeh8Pf5w79us908FcZVS",
+      "content": "{\n  \"query\": \"computer science PhD Europe paid employee doctoral candidates ETH EPFL ELLIS programs\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_PrBP30EsLXgNZCl0as6rhHMP",
+      "content": "{\n  \"query\": \"artificial intelligence PhD Singapore Hong Kong scholarship NUS NTU HKUST\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_8uMNXKnLld1qv7ljAounlNv0",
+      "content": "{\n  \"query\": \"UK computer science DPhil PhD funded studentship Oxford Cambridge UCL Edinburgh application requirements\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_DQ1DGxF2ONGnAyzAhJmK4Um9",
+      "content": "{\n  \"query\": \"AI PhD career outcomes industry research scientist job outlook computer information research scientists 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_jLHfe6KHHy0niQ7eA6U2SWTs",
+      "content": "{\n  \"query\": \"international student PhD computer science United States F-1 CPT internship rules official USCIS\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ml.cmu.edu/academics/primary-ms-machine-learning-masters.html"
+      },
+      "id": "call_IpDaiffHQf64jN6Lcp8koh6W"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ml.cmu.edu/academics/machine-learning-phd.html"
+      },
+      "id": "call_IW9bEJMTt4EeNxDzZocQx310"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.cs.cmu.edu/academics/doctoral/admissions"
+      },
+      "id": "call_TRFMtG1ctgJPlXO90Nbg0Uat"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ox.ac.uk/admissions/graduate/courses/dphil-computer-science"
+      },
+      "id": "call_jTGBVdbEB8t2uWbw7aQtlNQl"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.postgraduate.study.cam.ac.uk/courses/directory/cscspdpcs"
+      },
+      "id": "call_r3i2jVNOItL8sRKYVgEnBb2k"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ucl.ac.uk/prospective-students/graduate/research-degrees/computer-science-mphil-phd"
+      },
+      "id": "call_p2kLq9TZwaGur6tMzK7aUA64"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://ethz.ch/en/doctorate/doctoral-study-programmes.html"
+      },
+      "id": "call_7pxmrjspof8kqctMOih2n5sa"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://ethz.ch/en/doctorate/registration-admission.html"
+      },
+      "id": "call_hpChqF9vUVzuFGESOeZQ3wJM"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/"
+      },
+      "id": "call_3A1Cq9ldZYeot0EuZ0WsVkg3"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://ellis.eu/phd-postdoc"
+      },
+      "id": "call_PjEe7LtImX1mMC3U3MNpWCqe"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_IpDaiffHQf64jN6Lcp8koh6W",
+      "content": "# Master's in Machine Learning - Machine Learning - CMU - Carnegie Mellon University\n\n### What are the prerequisites? Do I need an undergraduate degree in computer science? What test scores do I need?\n\nWe welcome applicants from a variety of backgrounds and an undergraduate degree in computer science is not required.\n\nIncoming students must have a strong background in computer science, including a solid understanding of complexity theory and good programming skills, as well as a good background in mathematics. Specifically, the first-year courses assume at least one year of college-level probability and statistics, as well as matrix algebra and multivariate calculus.\n\nFor our introductory machine learning course, our [self-assessment test](http://www.cs.cmu.edu/%7Ewcohen/10-601/self-assessment/Intro_ML_Self_Evaluation.pdf) will give you some idea of the background we expect students to have. (For the M.S., you're looking at the \"modest requirements.\") Generally, you need to have some reasonable programming skills, with experience in Matlab/R/scipy-numpy being especially helpful and Java and Python being more useful than C; and a solid math background, especially in probability/statistics, linear algebra, and matrix and tensor calculus.\n\nThe average scores of accepted applicants for the MS in Machine Learning for fall 2025 were as follows:\n\n* Undergraduate Overall GPA: 3.9/4.0 or 9.5/10.0.\n* GRE Quantitative: 169 (88th percentile)\n* GRE Verbal: 160 (80th percentile)\n* GRE Analytical Writing: 4.1 (63rd percentile)\n* TOEFL: 111\n\nScores varied significantly and are only a small portion of applicants' qualifications. We do take people with a range of backgrounds for the master's program. For information about our selectivity rate and other statistics, refer to [the comparison table of all SCS master's programs](https://www.cs.cmu.edu/academics/masters/programs-comparison).\n\n### Are GRE scores required?\n\nFor applicants applying to the MS in Machine Learning program in Fall 2025 for a start date of August 2026, GRE scores are **optional**.  \nWe do not require or expect applicants to take a GRE Subject Test.\n\n### Is it possible to complete the degree online?\n\nNo. At this time, we do not offer online or distance-learning classes. You must be physically present in Pittsburgh and able to attend classes on campus to complete the program.\n\n### Is it possible to complete the degree part-time?\n\nYes, you can study part-time as long as you can attend classes. International students should be aware that student visas require students to complete the program full-time and finish by the end of their third semester (in December).\n\n### Is it possible to apply or begin the program in spring?\n\nNo. Applications are accepted only in December and students must begin the program in August. We cannot make exceptions to this due to the timing of our Core courses.\n\n### Can I switch between the Master's in Machine Learning and Master's in Machine Learning - Advanced Study?\n\nNo. Applicants must choose to apply to one program, the other program, or both. If an applicant is admitted to both programs, they must choose which program they're entering when they accept their offer of admission. It isn't possible to switch programs later.\n\n### Can I transfer in from another university or from another program at CMU?\n\nNo, you may not simply transfer into our program. You must submit an application and be accepted into the program, following the same application procedure as other applicants. Furthermore, the machine learning program does not accept transfer credit from other universities, although in certain situations a specific course requirement may be waived and an additional elective may be taken in its place.\n\nCurrent CMU undergraduates may be able to apply for the [fifth-year master's](https://ml.cmu.edu/academics/5th-year-ms), which begins immediately after they have completed their bachelor's degree.\n\n### I already have a master's degree. Can I still apply?\n\nYes, we welcome applicants from all backgrounds. As with all applicants, make sure that your statement of purpose makes it clear why you believe an additional master's will help you achieve your goals.\n\n### How does the Master's in Machine Learning program compare with other programs at CMU?\n\n### Is this a STEM program?\n\nYes. As a program in Carnegie Mellon's School of Computer Science, the Master's in Machine Learning is a STEM program.\n\n### Where are your graduates working?\n\n### When should I apply? When will I hear back?\n\nThe application deadline can be found on the [SCS Master's Admissions](https://admissions.scs.cmu.edu/portal/apply_gr) page. It changes from year to year, but is generally in late November or early December. You should expect an email response sometime in February. If you apply to multiple programs, you should expect to receive separate responses from each program.\n\n### Where can I find more information?",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_IW9bEJMTt4EeNxDzZocQx310",
+      "content": "# Ph.D. Program in Machine Learning - Machine Learning - CMU - Carnegie Mellon University\n\nCarnegie Mellon University's doctoral program in machine learning is designed to train students to become tomorrow's leaders through a combination of interdisciplinary coursework, hands-on applications and cutting-edge research. Graduates of the machine learning Ph.D. program are uniquely positioned to pioneer new developments in the field and to be leaders in both industry and academia.\n\nUnderstanding the most effective ways to use the vast amount of data now being stored is a significant challenge to society — and therefore to science and technology — as it seeks to obtain a return on the huge investment being made in computerization and data collection. Advances in the development of automated techniques for data analysis and decision-making require interdisciplinary work in areas such as machine learning algorithms and foundations, statistics, complexity theory, optimization, data mining, and more.\n\nThe Ph.D. Program in Machine Learning is for students interested in machine learning research. [Contact us](https://www.ml.cmu.edu/about/contact-us.html \"contact the Machine Learning Department at Carnegie Mellon University\") with questions and concerns.\n\n**The Ph.D. program is a full-time, in-person commitment and is not offered online or part-time.**\n\n[**Ph.D. Requirements**](https://ml.cmu.edu/current-students/phd-requirements)\n------------------------------------------------------------------------------\n\nFinancial Support\n-----------------\n\nIt will be our responsibility, not yours, to worry about your tuition and stipend while you are in our program. We are committed to providing you with full tuition and stipend support for the coming academic year. We intend to continue this support as long as you make satisfactory progress in our program. Students who do not have external financial support will be funded via graduate assistantships, awarded for a nine-month period from September to May, which would normally come from their adviser’s grants. Because of that, specific research opportunities may be constrained by funding availability. Students who have partial external financial support will be supplemented to bring them to the full level of support, and often receive an additional supplement on top of that. If you have dependents, we will also pay you a dependency allowance that is 10% of the MLD monthly base stipend per eligible dependent, unless you have a spouse or qualifying domestic partner who earns more than $500 per month.\n\nApplication Information\n-----------------------\n\n### Application Information\n\n[SCS Graduate Admissions Overview](https://www.cs.cmu.edu/academics/graduate-admissions)\n\n#### GRE scores are OPTIONAL.\n\nThe committee uses GRE scores to gauge quantitative skills, and to a lesser extent, also verbal skills.\n\n#### Proof of English Language Proficiency\n\nIf you will be studying on an F-1 or J-1 visa, and English is not your native language (\"native language\" meaning spoken at home and from birth), we are required to formally evaluate your English proficiency. We require applicants who will be studying on an F-1 or J-1 visa, and for whom English is not a native language, to demonstrate English proficiency via one of these standardized tests: TOEFL (preferred), IELTS or Duolingo.\n\nWe do not issue waivers for nonnative speakers of English. In particular, we do not issue waivers based on previous study at a U.S. high school, college or university. We also do not issue waivers based on previous study at an English-language high school, college or university outside the United States. No amount of educational experience in English, regardless of which country it occurred in, will result in a test waiver.\n\nAdditional details about English proficiency requirements are provided on the  [FAQ](https://cs.cmu.edu/academics/faq)  page.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_TRFMtG1ctgJPlXO90Nbg0Uat",
+      "content": "Error fetching https://www.cs.cmu.edu/academics/doctoral/admissions: HTTPStatusError: Client error '404 Not Found' for url 'https://www.cs.cmu.edu/education/doctoral/admissions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_jTGBVdbEB8t2uWbw7aQtlNQl",
+      "content": "Error fetching https://www.ox.ac.uk/admissions/graduate/courses/dphil-computer-science: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.ox.ac.uk/admissions/graduate/courses/dphil-computer-science'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_r3i2jVNOItL8sRKYVgEnBb2k",
+      "content": "Error fetching https://www.postgraduate.study.cam.ac.uk/courses/directory/cscspdpcs: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.postgraduate.study.cam.ac.uk/courses/directory/cscspdpcs'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_p2kLq9TZwaGur6tMzK7aUA64",
+      "content": "Error fetching https://www.ucl.ac.uk/prospective-students/graduate/research-degrees/computer-science-mphil-phd: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.ucl.ac.uk/prospective-students/graduate/research-degrees/computer-science-mphil-phd'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_7pxmrjspof8kqctMOih2n5sa",
+      "content": "# Doctoral study programmes\n\nAt ETH Zurich, doctorates are not organised within an overall doctoral study programme in the way that students may be familiar with from other universities. Each doctoral student is free to select and assemble the components of their doctoral studies for him or herself. However, the departments do have the option of organising and offering their range of courses for doctoral studies in the form of doctoral programmes.\n\nThe Life Science Zurich Graduate School, for example, offers this kind of programme. There are 16 highly competitive doctoral programmes, run jointly by ETH Zurich and the University of Zurich. The aim is to attract the most promising young scientists from across the world by offering a comprehensive and challenging education for doctoral students in biosciences.\n\nIf you are interested in one of the doctoral programmes available at ETH Zurich, please visit the following pages:\n\n* [external page\n  Life Science Zurich Graduate School](http://www.lifescience-graduateschool.uzh.ch/en.html)\n* [external page\n  Zurich Graduate School Mathematics](http://www.zgsm.ch/)\n* [external page\n  Zurich Graduate School in Computational Science and Engineering CSE](http://www.csz.uzh.ch/)\n* [Architecture & Technology (A&T) Doctoral Programme](https://ita.arch.ethz.ch/Doctoral-Program.html)\n* [gta Doctoral Programme](https://gta.arch.ethz.ch/en/programmes/gta-doctoral-programme.html)\n\nJoint Doctoral Programs\n-----------------------\n\nGraduates of the following programs will obtain a joint doctoral degree certificate from ETH Zurich and the partner institution.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_hpChqF9vUVzuFGESOeZQ3wJM",
+      "content": "# Registration for the doctorate\n\nHeader\n------\n\n---\n\n### Services\n\n* [Student portal](/students/en.html)\n* [Alumni association](https://www.alumni.ethz.ch/en/)\n* [Staffnet](/staffnet/en.html)\n* [Contact](/en/utils/contact.html \"Open contact information\")\n* [Login](/login/en.html?resource=%2Fcontent%2Fmain%2Fen%2Fdoktorat%2Fanmeldung-zulassung.html \"Login with ETH user account\")\n\n### Search\n\n[Search](/en/utils/search.html)\n\nen\n\n### Departments\n\n* [ETH Zurich](https://ethz.ch/en.html \"ETH Zurich homepage\")\n* Select a department\n\n\n### Language Selection\n\n* en\n\n### You are here\n\n* [Homepage](/en.html)\n* [Doctorate](/en/doctorate.html)\n* [Registration/Admission](#)\n\n[Contact the Doctoral Administration](/en/doctorate.html#ContactDA2)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_3A1Cq9ldZYeot0EuZ0WsVkg3",
+      "content": "# EDIC - Computer and Communication Sciences\n\n**The Doctoral Program in Computer and Communication Sciences (EDIC)** covers all areas of computer science and of information and communication theory. It spans across theoretical approaches to interdisciplinary applications of artificial intelligence, data science, computer systems, cybersecurity and visual computing. With roughly eighty faculty members across campus affiliated with the program, it is one of the largest and most competitive doctoral programs at EPFL.\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2020/06/EDIC_1440x810px.jpg)\n\nAbout the program\n-----------------\n\nThe EDIC program offers training to ambitious and talented individuals who aspire to be at the core of the ongoing technological revolution, where information is driving innovation. Students collaborate with internationally recognized, [award-winning faculty](https://www.epfl.ch/schools/ic/about/awards/) and benefit from the vibrant intellectual environment, the generous resources, and the exceptional network of academic and industrial partners.\n\nWe value a working culture of close interaction between students and [faculty](https://www.epfl.ch/schools/ic/about/faculty-members/), where collaborations foster an interdisciplinary approach to the next great challenge in the broad field of computer science. The diversity and ambition of the student body is on par with top research universities worldwide, and our students compete for, and are recognized internationally by prestigious industrial [PhD fellowships and awards](https://www.epfl.ch/schools/ic/about/awards/phd/). The [program alumni](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-alumni-testimonials/) pursue stellar international careers in [academia](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/edic-computer-and-communication-sciences/edic-alumni-in-academia/), industrial leadership or [entrepreneurial ventures](https://www.epfl.ch/schools/ic/innovation/).\n\n### Applying to EDIC\n\nThe admission process is centralized and is very competitive to grant access to the best candidates.\n\n**Deadlines:** Applications must be submitted **prior to December 15** (starting from 2026, the deadline will be December 1, 23:59 CET) to enroll the following September. A second, smaller round of admission is available mainly for local applicants, with a deadline **on April 15**.\n\n**Fellowship program:** The fellowship program is a unique feature of EDIC. During their 1st year, PhD candidates are given the opportunity to explore different fields before deciding on one preferred area of research focus.\n\n\n\n### Inspiring Journeys: Meet Our EDIC PhD Graduates\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/11/Kristina_Gligoric-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/11/Amedeo_Roberto_Esposito-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/11/Vinitra_Paola-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/11/Amir_Shaikhha-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/11/Anastasiia_Koloskova-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/11/Deblina_Bhattacharjee-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/11/Tiziano_Piccardi-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/11/Sena_Kiciroglu-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/10/Oguzhan_Kar-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/10/Dina_Mahmoud-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/10/Himanshu_Verma-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/10/Aida_Mousavifar-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/10/Marco_Mondelli-1-1024x576.jpg)\n\n***Check out our 2025 Campaign on [LinkedIn](https://www.linkedin.com/company/28868190)!***\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2025/08/EDIC_research2.jpg)\n\nResearch in the IC School spans a broad range of topics in computer science and communications, including digital education, computer architecture, systems & networking, programming languages and verification, databases, cryptograph, security & privacy, signal and image processing, algorithmic and information theory, artificial intelligence, machine learning, and data science. The program is funded through a variety of public and private sources, including the Swiss Confederation, the European Union, private foundations, and industrial partners.\n\n### Faculty spotlight\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Mark_Pauly-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Sanidhya_Kashyap-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Martin_Jaggi-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Tanja_Kaser-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Robert_West-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Mirjana_Stojilovic-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Nicolas_Macris-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Anastasia_Ailamaki-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Lenka_Zdeborova-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Edouard_Bugnion-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Wenzel_Jakob-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Amir_Zamir-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Mathias_Payer-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Paolo_Ienne-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Mika_Goos-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Alessandro_Chiesa-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Nicolas_Flammarion-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Babak_Falsafi-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Robert_West-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Mirjana_Stojilovic-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Sabine_Ssstrunk-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Patrick_Tiran-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Ola_Svensson-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Anne-Marie_Kermarrec-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Mark_Pauly-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Tanja_Kaser-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Martin_Jaggi-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Alessandro_Chiesa-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Antoine_Bosselut-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Rachid_Guerraoui-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Giovanni_De_Micheli-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Pascal_Fua-1-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Babak_Falsafi-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Sanidhya_Kashyap-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Amir_Zamir-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Patrick_Tiran-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Giovanni_De_Micheli-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Anastasia_Ailamaki-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Haitham_Al-Hassanieh-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Mathias_Payer-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Lenka_Zdeborova-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Rachid_Guerraoui-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Ola_Svensson-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Mika_Goos-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Sabine_Ssstrunk-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Wenzel_Jakob-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Nicolas_Macris-1024x576.jpg)\n\n![](https://www.epfl.ch/education/phd/edic-computer-and-communication-sciences/wp-content/uploads/2024/09/Nicolas_Flammarion-1024x576.jpg)\n\n![](https://www.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_PjEe7LtImX1mMC3U3MNpWCqe",
+      "content": "# PhD & Postdoc Program\n\nThe ELLIS PhD & Postdoc Program pairs outstanding students with leading researchers across Europe in machine learning, AI and related fields, and offers international exchanges, joint supervision, and a vibrant research community.\n\n![blue outline icon two people each with a speech bubble talking to each other](/img/containers/assets/ellis-phd-dual-supervision-discussion-icon.png/f90c9b47794c693bc1e12a4848548ef8/ellis-phd-dual-supervision-discussion-icon.webp)\n\nDual supervision spanning 2 European countries\n\n![blue outline icon 3 arrows going in different directions](/img/containers/assets/ellis-phd-3-tracks-arrows-icon.png/ea83a4e8798c38338b5e33113cab288f/ellis-phd-3-tracks-arrows-icon.webp)\n\nChoose from 3 tracks of study\n\n![blue outline icon finger touching a central point with lines coming out of it](/img/containers/assets/ellis-phd-central-app-control-center-icon.png/be547866cbf6644ee1c2ad2807a4e2d8/ellis-phd-central-app-control-center-icon.webp)\n\n1 centralised application to 50-100 institutions\n\n![blue outline icon 2 hands holding puzzle pieces fitting together](/img/containers/assets/ellis-phd-cross-sector-collaborate-icon.png/0cb8cc9217f34f0dc82c7d9021e14097/ellis-phd-cross-sector-collaborate-icon.webp)\n\nCross-sector collaboration\n\n![blue outline icon earth with 2 point marked and arrows pointing to them](/img/containers/assets/ellis-phd-research-exchange-icon.png/cdd23a5a247f68b9d14e1e1e09b85600/ellis-phd-research-exchange-icon.webp)\n\n6-month research exchange in Europe\n\n\"I joined the ELLIS PhD Program to be part of a vibrant European research network and connect with experts across diverse fields. It has already accelerated my work through opportunities like attending the FoMo Winter School in Amsterdam, a 6-month exchange in Lisbon, and presenting at the EDS in Warsaw. ELLIS not only helped me complete impactful projects but also opened the door to exciting new ideas and collaborations.\"\n\n![Wafaa Mohammed](/img/containers/assets/wafaa-mohammed.png/41f89be10b5ba38e83bf39f5ee1c9adc/wafaa-mohammed.webp)\n\nWafaa Mohammed\n\nPhD Student, University of Amsterdam\n\nHear perspectives from ELLIS PhD alumni on the ELLIS PhD Program: its benefits and challenges, its impact on their careers, and their views on the future of AI research.\n\nHow to join the Program\n-----------------------\n\nFind out about the requirements, benefits and application process\n\n[Read More](/research/phd-postdoc/guidelines-phd-central-recruiting \"Join as a student\")\n\nELLIS Fellows & Scholars with advising privileges may apply to be ELLIS PhD Advisors\n\n[Read More](/research/phd-postdoc/become-phd-advisor \"Join as an advisor\")",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.comp.nus.edu.sg/programmes/pg/phdcs/"
+      },
+      "id": "call_n0MW7xc6jfnNKhVYnywLW0Ih"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.comp.nus.edu.sg/programmes/pg/phdcs/admissions/"
+      },
+      "id": "call_SSZZP00kcMkh2vtUREQ9rcdf"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship/"
+      },
+      "id": "call_BKmrzKaeaCHeAosaKGcXujJc"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ntu.edu.sg/graduate-college/admissions/programme/school-of-computer-science-and-engineering"
+      },
+      "id": "call_w0qy2pRhVoulydbqJeq3Ky1U"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://fytgs.hkust.edu.hk/prospective-students/programs/pg/comp"
+      },
+      "id": "call_reFySflX41ZLGmsQz48QTfSN"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://fytgs.hkust.edu.hk/prospective-students/scholarship-fees/research-postgraduate"
+      },
+      "id": "call_W5obGSm03NeqFojYAtFvmtou"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://cse.ust.hk/pg/admissions/"
+      },
+      "id": "call_rjUJlKTVCDs7OpV4dcSuIyW8"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://admission.kaist.ac.kr/intl-graduate/Admission/Guideline"
+      },
+      "id": "call_ud4v6nstOXaCPbOjLE694HYW"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.u-tokyo.ac.jp/en/prospective-students/graduate_course_list.html"
+      },
+      "id": "call_43CPFm3ChqXXAeOiYCbrnzC3"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"
+      },
+      "id": "call_RPcBRsJYePCy0rrxxHu1IybV"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_n0MW7xc6jfnNKhVYnywLW0Ih",
+      "content": "# PhD in Computer Science - NUS Computing\n\nThe Thesis Proposal is an important component of the PhD programme. It should highlight the significance of the research topic, its goal, the approach adopted, and work to be done. It should be precise and convincing to the examiners that the candidate is proposing a novel area of research and the goal is achievable.\n\nA PhD candidate must pass his/her thesis proposal by the end of Year 4. The proposal will be examined by two faculty members of SoC who are familiar with the area of research in the proposal. A maximum of two attempts are allowed.\n\nThe PhD candidature of a student will be terminated if s/he fails to pass the Thesis Proposal. Such student, subject to the approval of the School, may proceed to obtain an MSc degree by completing a dissertation and meeting all the requirements of an MSc degree.\n\nThe Thesis Proposal comprises of an open seminar presentation (doctoral seminar), followed by a closed-door oral examination.\n\nThe doctoral seminar is a public talk that is open to both staff and students, and should take about 30 minutes. The seminar, which should include any research findings or work from published papers, will be graded on a satisfactory/ unsatisfactory (S/U) basis.\n\nA close-door oral examination will follow after the seminar presentation. The student is expected to answer satisfactorily any questions raised by the evaluators.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_SSZZP00kcMkh2vtUREQ9rcdf",
+      "content": "# Admission Requirements - NUS Computing\n\n**Important**: The University has not engaged any external agencies to undertake graduate student recruitment on its behalf. Candidates interested in our graduate programmes are advised to apply directly to the University and not through any agents. Candidates who apply through agents will not have any added advantage in gaining admission and the University reserves the right to reject such applications without giving reasons.\n\nThe normal minimum entry qualifications for admission to the programme by research are a good relevant bachelor’s degree/master’s degree. Candidates applying for [Research Scholarships](http://www.nus.edu.sg/admissions/graduate-studies/scholarships.php) must have obtained a bachelor’s degree with at least a 2nd Class Upper Honours, or its equivalent in Computing or related discipline. Candidates should have the ability to pursue research in the candidate’s proposed field of advanced study.\n\nThe University will conduct overseas interviews for foreign students who have applied for the Research Scholarships. These interviews will be held in mid-March (for the August intake) and mid-August (for January intake). Applicants will be notified of the date, time and venue of the interviews in advance. Applicants should inform the University of any change in their postal addresses.",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_BKmrzKaeaCHeAosaKGcXujJc",
+      "content": "Error: Insufficient readable content (56 characters) from https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship/",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_w0qy2pRhVoulydbqJeq3Ky1U",
+      "content": "Error fetching https://www.ntu.edu.sg/graduate-college/admissions/programme/school-of-computer-science-and-engineering: HTTPStatusError: Client error '404 Not Found' for url 'https://www.ntu.edu.sg/graduate-college/admissions/programme/school-of-computer-science-and-engineering'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_reFySflX41ZLGmsQz48QTfSN",
+      "content": "Error fetching https://fytgs.hkust.edu.hk/prospective-students/programs/pg/comp: HTTPStatusError: Client error '404 Not Found' for url 'https://fytgs.hkust.edu.hk/prospective-students/programs/pg/comp'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_W5obGSm03NeqFojYAtFvmtou",
+      "content": "Error fetching https://fytgs.hkust.edu.hk/prospective-students/scholarship-fees/research-postgraduate: HTTPStatusError: Client error '404 Not Found' for url 'https://fytgs.hkust.edu.hk/prospective-students/scholarship-fees/research-postgraduate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_rjUJlKTVCDs7OpV4dcSuIyW8",
+      "content": "# Postgraduate Admissions | HKUST CSE\n\nAccording to the latest [Times\nHigher Education World University Rankings](https://www.timeshighereducation.com/world-university-rankings/2026/subject-ranking/computer-science), CSE department is ranked 1st\nin Hong Kong in the Subject of *Computer Science*. Our department has\nproduced pioneering work in several areas, including but not limited to,\nartificial intelligence, cybersecurity, data and knowledge management,\nhuman-computer interaction, networking and computer systems, software\nengineering and programming languages, theoretical computer science, and\nvision and graphics.\n\nOur department consists of over 50 faculty members, about 80 MPhil\nstudents and 430 PhD students. The MPhil study takes two years, and\nthe PhD study four to five years. Many of our postgraduate alumni work at\nmajor IT companies such as Baidu, Facebook, Google, Huawei, IBM,\nMicrosoft, and Tencent, and a significant number of our PhD graduates\npursue their careers at research institutes and universities all over the\nworld. If interested, please check out the departmental web page on [where do our PhD graduates go](/pg/ourgraduates/).\n\nPostgraduate students have sufficient scholarship support during their\nstudy at HKUST. Each student will receive a generous scholarship of\napproximately HKD229,620 (USD29,200) per year. The annual tuition for the\n2026/27 academic year is HKD47,000 (USD6,000), which is subject to annual\nadjustments. Local research postgraduate students may be eligible for the\nTuition Waiver Scheme introduced by the HKSAR Government.\n\nWe recruit postgraduate students in two phases. The first phase, [early recruiting](/pg/admissions/recruiting/), runs from\nlate April to mid-August and targets excellent MPhil and PhD applicants.\n\nAfter the early recruiting phase, applicants can still send regular\napplication packages to the [HKUST Postgraduate\nAdmissions](https://fytgs.hkust.edu.hk/admissions/Admission-to-Hong-Kong-Campus/submitting-an-application/online-application).\n\nIf you have any questions, feel free to contact\n.\n\n---\n\n[FAQ](/pg/admissions/faq/)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_ud4v6nstOXaCPbOjLE694HYW",
+      "content": "Error fetching https://admission.kaist.ac.kr/intl-graduate/Admission/Guideline: HTTPStatusError: Client error '404 Not Found' for url 'https://admission.kaist.ac.kr/intl-graduate/Admission/Guideline'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_43CPFm3ChqXXAeOiYCbrnzC3",
+      "content": "# The University of Tokyo\n\n*Graduate Degree Programs Offered in English*\n---------------------------------------------\n\nM: Master’s degree　D: Doctoral degree　P: Professional degree\n\n| Graduate School | Program Title | Degree and Intake | Field of Study/Keyword |\n| --- | --- | --- | --- |\n| [Medicine](/en/academics/grad_medicine.html) | [Global Health Sciences: Program in International Health](https://www.sih.m.u-tokyo.ac.jp/home-en/) | M: Apr  D: Apr/Oct | Global health leadership, life sciences x social sciences, translational public health |\n| [Engineering](/en/academics/grad_engineering.html) | [International Graduate Program in the Field of Civil Engineering and Infrastructure Studies](https://www.civil.t.u-tokyo.ac.jp/en/) | M: Apr/Oct  D: Apr/Oct | Infrastructure technologies, natural disaster risk management, international infrastructure projects |\n| [International Multidisciplinary Engineering Graduate Program](https://www.ime.t.u-tokyo.ac.jp/) | M: Apr/Oct  D: Apr/Oct | Mechanical engineering, electrical engineering and information systems, materials engineering, aeronautics and astronautics, chemical system engineering, precision engineering, bioengineering, English program for non-Japanese with scholarship and direct entry to postgraduate degree program |\n| [Graduate Programs for International Students in Urban and Environmental Studies](https://www.due.t.u-tokyo.ac.jp/english/) | M: Oct  D: Oct | Urban planning, urban environmental engineering, sustainable cities |\n| [Special Graduate Program in Resilience Engineering (Systems Innovation Course)](https://www.sys.t.u-tokyo.ac.jp/en/admissions/english-special-graduate-program-in-resilience-engineering/) | M: Apr/Oct  D: Apr/Oct | Resilience engineering, system thinking, integration of engineering knowledge |\n| [Special Graduate Program in Resilience Engineering (Nuclear Engineering and Management Course)](https://www.n.t.u-tokyo.ac.jp/prospective/special-graduate/?lang=en) | M: Apr/Oct  D: Apr/Oct | Resilience engineering, interdisciplinarity, sustainable society |\n| [International Bioengineering Course in Master’s Global 30 Program (G30-IBP)](https://www.global30.t.u-tokyo.ac.jp/g30_hp/international-bioengineering.html) | M: Oct | Mechanobioengineering, bioelectronics, chemical bioengineering |\n| [Architecture and Urban Design Course in Master’s Global 30 Program (G30-UDA)](https://www.global30.t.u-tokyo.ac.jp/g30_hp/architecture-and-urban-design.html) | M: Oct | Architecture and urban design, interdisciplinary design research, emerging built environments |\n| [International Technology Management Course in the Department of Technology Management for Innovation (TMI) in Master’s Global 30 Program (G30-TMI)](https://www.global30.t.u-tokyo.ac.jp/g30_hp/international-technology-management.html) | M: Oct | Innovation management, technology management, project-based training |\n| [International Graduate Program in Chemistry and Biotechnology](https://www.chembio.t.u-tokyo.ac.jp/e/admission/exam_special.html) | M: Apr/Oct  D: Apr/Oct | Chemistry and biotechnology, organic chemistry and life science, molecule |\n| [Science](/en/academics/grad_science.html) | [Graduate Program for International Students](https://www.s.u-tokyo.ac.jp/en/admission/) | M: Apr/Oct  D: Apr/Oct | Physics, astronomy, Earth and planetary science, chemistry, biological sciences |\n| [Global Science Graduate Course (GSGC)](https://www.s.u-tokyo.ac.jp/GSGC/) | M: Oct  D: Oct | Physics, astronomy, Earth and planetary science, chemistry, biological sciences |\n| [Agricultural and Life Sciences](/en/academics/grad_agriculture.html) | [International Program in Agricultural Development Studies (IPADS)](https://ipads.a.u-tokyo.ac.jp/) | M: Oct  D: Oct | Issue orientation, transdisciplinarity, global scope |\n| [Economics](/en/academics/grad_economics.html) | [Department of Economics at Division of Economics](https://www.student.e.u-tokyo.ac.jp/grad/m-nyushi-e.html) | M: Apr/Oct  D: Apr/Oct | Macroeconomics, microeconomics, econometrics |\n| [Arts and Sciences](/en/academics/grad_arts_sciences.html) | [Graduate Program on Global Society (GSP)](https://gsp.c.u-tokyo.ac.jp/) | M: Sep  D: Sep | Area studies, cultural studies, language and literature studies, social and international studies |\n| [Graduate Program on Environmental Sciences (GPES)](https://gpes.c.u-tokyo.ac.jp/) | M: Apr/Sep  D: Apr/Sep | Interdisciplinary (natural science, social science, and humanities) Global (global scale problems) Holistic (holistic view of how environmental systems, human society, and technology interact) |\n| [Frontier Sciences](/en/academics/grad_frontier.html) | [Environmental Studies Program-Asian Development Bank (ADB) Japan Scholarship Program](https://www.k.u-tokyo.ac.jp/en/exam/master/foreign_research_students/adb_jsp/) | M: Oct | Environmental studies, international studies, sustainability |\n| [Graduate Program in Sustainability Science (GPSS)](https://www.sustainability.k.u-tokyo.ac.jp/en/) | M: Apr/Oct  D: Apr/Oct | Sustainability science, transdisciplinarity, inclusive society |\n| [Interdisciplinary Information Studies](/en/academics/grad_interdisciplinary.html) | [Information, Technology, and Society in Asia (ITASIA)](https://itasia.iii.u-tokyo.ac.jp/) | M: Oct  D: Oct | Information technology, Asia, transdisciplinarity |\n| [Public Policy](/en/academics/grad_public_policy.html) | [Master of Public Policy, International Program (MPP/IP)](https://www.pp.u-tokyo.ac.jp/en/mppip/) | P: Apr/Sep | Economic policy, finance and development, public management, international relations |\n| [Department of International Public Policy](https://www.pp.u-tokyo.ac.jp/en/education/doctoral-course/) | D: Apr/Sep | International security, international finance and development, science and technology policy |",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "call_RPcBRsJYePCy0rrxxHu1IybV",
+      "content": "# Japanese Government (MEXT) Scholarship\n\nTypes\n-----\n\nAs seen in the chart below, there are seven types of the Japanese Government (Monbukagakusho) Scholarship program. They are Research students, Teacher training students, Undergraduate students, Japanese studies students, college of technology students, Specialized training college students, and Young Leaders Program (YLP) students.  \nThose who wish to study abroad are required to apply in one of two ways: embassy recommendation or university recommendation. Please see the application selection process for details.\n\nWith regard to application qualifications and procedures, in addition to the actual contents, there are also cases when detailed requirements are established. Because of this, be sure to confirm the latest edition of the application guidelines. If the application qualifications differ from the application guidelines, the contents of the guidelines should be followed.\n\n### Types and Their Status\n\n|  | Research students | Teacher training students | Undergraduate students | Japanese studies students | College of technology students | Specialized training college students | Young leaders program (YLP) students (\\*2) |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| Embassy recommendation | Yes | Yes | Yes | Yes | Yes | Yes | No |\n| University recommendation (\\*1) | Yes | No | Yes | Yes | Yes (Recommendation by College of technology) | No | No |\n| Level of studies | Graduate school level | | Undergraduate level | | | | Graduate school level |\n| Duration | [Embassy Recommendation]  Irregular course: within 2 years  Regular course: standard school year (when necessary, 6 months preliminary education will be added) [University Recommendation]  Duration depends on each school's quota (Up to a standard school year) | Within 1 year and 6 months including Japanese language education | [Embassy Recommendation] 5 years including Japanese language training (7 years for medicine, dentistry, pharmacy and veterinary science)  [University Recommendation] Up to a standard school year (Normally, there is no preliminary education) | One academic year | 4 years including Japanese language training (4 years and 6 months for merchant marine studies) | 3 years including Japanese language training | 1 year |\n| Preliminary training of Japanese etc.(\\*3) | 6 months (Only those who need this training) | | 1 year(ABK College, Osaka University) | None | 1 year (JASSO Tokyo Japanese Language Education Center) | 1 year (Bunka Institute of Language, JASSO Osaka Japanese Language Education Center) | None |\n| Field of study | Major in field of specialty at a graduate school etc. | Teacher training at a University | Undergraduate education | Special training in Japanese language or Japanese culture | Transfer to the third year of College of technology | Specialized courses | Master course at a graduate school |\n| Scholarship | ¥143,000～145,000 per month | | ¥117,000 per month | | | | ￥242,000 per month |\n| Tuition | Exempted | | | | | | |\n| Travel allowance | Round-trip travel expenses (airfare) provided | | | | | | |\n\n∗1 Not all universities maintain their own recommendation quotas.   \n∗2 Recommendations from official overseas recommending organizations  \n∗3 The institutions offering \"Preliminary training of Japanese etc.\" may change.\n\n### Eligibility\n\n|  |  |\n| --- | --- |\n| Research students | You must be under 35 years of age and be eligible for admission to a master's program or a doctoral program (first or second stage) at a Japanese graduate school. |\n| Teacher training students | You must be under 35 years of age and a graduate of a college or teacher training college. You must have at least five years of active experience as a teacher in a primary, secondary, or teacher training college in your home country. (Please note that college and university teachers currently in active service are not considered for this scholarship). |\n| Undergraduate students | You must be under 25 years of age and have completed 12 years of school education or have completed courses in a school comparable to a Japanese high school (includes prospective graduates). |\n| Japanese studies students | You must be between 18 and 29 years old. You must be enrolled as an undergraduate student in a faculty or school related to Japanese language or Japanese culture in a university outside Japan at the time of coming to Japan and must remain enrolled in the home institution when you return to your home country. |\n| College of technology students | You must be under 25 years of age and have completed education for 11 or more years (includes prospective graduates). |\n| Specialized training college students | You must be under 25 years of age and have completed 12 years of schooling or have completed school education comparable to a Japanese high school (includes prospective graduates). |\n| Young Leaders Program (YLP) students | You must be under 40 years of age (in principle), and university or college graduates who have practical work experience, young public administrators, etc. who are expected to play active role in Asia and other countries. |\n\n### Examinations Required for Embassy Recommendation\n\n|  |  |\n| --- | --- |\n| Research students | Japanese and English |\n| Teacher training students | Japanese and English |\n| Undergraduate students | Japanese, English, mathematics, science  (\\*Only science faculty examinees are required to choose two out of the following three subjects: chemistry, physics, or biology) |\n| Japanese studies students | Japanese |\n| College of technology students | Japanese, English, mathematics, and physics or chemistry |\n| Specialized training college students | Japanese, English, and mathematics |\n\nApplication Process\n-------------------\n\nThere are two ways to apply for a Japanese Government Scholarship: by applying to the Ministry of Education, Culture, Sports, Science and Technology (MEXT) with a recommendation from a Japanese embassy or other Japanese diplomatic mission in your country, or by applying to the MEXT with a recommendation from a Japanese university.\n\n### 1. Embassy recommendation\n\nIn this type of scholarship, scholarship recipients are recruited and initially screened by a Japanese embassy (or consulate general, depending on the country).\n\nSome application requirements are more detailed than those listed here, so please check with the Japanese embassy or other Japanese diplomatic mission in your country.\n\nThe type and field of application may vary from country to country. Please check with the Japanese embassy or other Japanese diplomatic mission in your country to see if there are any openings in the type and field you wish to apply for.\n\nIn addition, all required documents and interviews will be conducted by the Japanese embassy or other diplomatic mission abroad in your country.\n\n### 2. University recommendation\n\nUniversity recommendation is a scheme in which Japanese universities etc. recruit scholarship candidates based on their student-exchange agreements with schools overseas.\n\nAfter a screening of candidates, universities recommend them to Japanese Ministry of Education, Culture, Sports, Science and Technology (MEXT) as potential recipients. Programs offered within this scheme are Research students, Undergraduate students, Japanese and Japanese culture students, as well as College of Technology.\n\nMEXT scholarship recipients recommended by university usually arrive in Japan in September or October, but some arrive in late March or early April.\n\nFor university recommendations, not all universities in Japan are able to recommend international students.\n\nOnly a select number of universities approved by the MEXT can make recommendations to the MEXT, and only those universities that are judged to be outstanding and deserving of the scholarship can make recommendations to the MEXT.\n\nTherefore, if you are interested in applying for a scholarship with a recommendation from a university, you need to check first whether the school you are interested in has a recommendation quota.\n\nApplication requirements and academic standards vary depending on the accepting university.\n\nIn addition, the scholarship period and eligibility may vary depending on the type of recommendation framework a university has, so please check with the university you wish to enroll in for details.\n\n[Japanese Government (MEXT) Scholarship Applicant Qualifying Examinations - Subject Test Questions](/en/planning/scholarships/mext-scholarships/examination.html)\n-----------------------------------------------------------------------------------------------------------------------------------------------------------------\n\nWe have posted past test questions as samples.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:gradschool.princeton.edu computer science PhD admission financial support TOEFL GRE official 2026 Princeton",
+        "max_results": 5
+      },
+      "id": "call_Wt2FqOBa0xTPjhmFsgAVnI4F"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:eecs.berkeley.edu academics graduate PhD admissions funding official 2026",
+        "max_results": 5
+      },
+      "id": "call_1oPCOvY6R053ZAp0cAxsRwIK"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:cs.washington.edu academics phd admissions funding official Allen School 2026",
+        "max_results": 5
+      },
+      "id": "call_s03VeFcvlDJN6W2L6nz93s0U"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ed.ac.uk studying postgraduate degrees research computer-science-informatics PhD fees funding entry requirements 2026",
+        "max_results": 5
+      },
+      "id": "call_ffc3X0gKa3njqmyssV1Bsyuy"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ox.ac.uk admissions graduate courses dphil computer science 2026 fees entry requirements English",
+        "max_results": 10
+      },
+      "id": "call_h66Qg2wMI0Ik7fu6n4lACbYd"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:cam.ac.uk postgraduate study PhD computer science 2026 requirements fees funding",
+        "max_results": 10
+      },
+      "id": "call_5ruWI82YCiVo2cTAxaOYclSG"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ntu.edu.sg PhD computer science engineering admissions research scholarship stipend 2026",
+        "max_results": 10
+      },
+      "id": "call_GLUwMh3yOmrCb3RyuS2ZdN3U"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:kaist.ac.kr graduate admissions international scholarship tuition stipend computer science",
+        "max_results": 10
+      },
+      "id": "call_Mm2s76kmFd3shs2pWwwWTdyr"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:ai.stanford.edu Stanford AI lab research areas NLP human centered official",
+        "max_results": 5
+      },
+      "id": "call_aPf7xRBPeZKCNKZhZXk0x9lq"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "site:vectorinstitute.ai graduate research AI ecosystem Toronto internships careers official",
+        "max_results": 5
+      },
+      "id": "call_EwjaWNxZH8Zxb6JW5MCBEB4U"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_Wt2FqOBa0xTPjhmFsgAVnI4F",
+      "content": "{\n  \"query\": \"site:gradschool.princeton.edu computer science PhD admission financial support TOEFL GRE official 2026 Princeton\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_1oPCOvY6R053ZAp0cAxsRwIK",
+      "content": "{\n  \"query\": \"site:eecs.berkeley.edu academics graduate PhD admissions funding official 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_s03VeFcvlDJN6W2L6nz93s0U",
+      "content": "{\n  \"query\": \"site:cs.washington.edu academics phd admissions funding official Allen School 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_ffc3X0gKa3njqmyssV1Bsyuy",
+      "content": "{\n  \"query\": \"site:ed.ac.uk studying postgraduate degrees research computer-science-informatics PhD fees funding entry requirements 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_h66Qg2wMI0Ik7fu6n4lACbYd",
+      "content": "{\n  \"query\": \"site:ox.ac.uk admissions graduate courses dphil computer science 2026 fees entry requirements English\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_5ruWI82YCiVo2cTAxaOYclSG",
+      "content": "{\n  \"query\": \"site:cam.ac.uk postgraduate study PhD computer science 2026 requirements fees funding\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_GLUwMh3yOmrCb3RyuS2ZdN3U",
+      "content": "{\n  \"query\": \"site:ntu.edu.sg PhD computer science engineering admissions research scholarship stipend 2026\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_Mm2s76kmFd3shs2pWwwWTdyr",
+      "content": "{\n  \"query\": \"site:kaist.ac.kr graduate admissions international scholarship tuition stipend computer science\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_aPf7xRBPeZKCNKZhZXk0x9lq",
+      "content": "{\n  \"query\": \"site:ai.stanford.edu Stanford AI lab research areas NLP human centered official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "call_EwjaWNxZH8Zxb6JW5MCBEB4U",
+      "content": "{\n  \"query\": \"site:vectorinstitute.ai graduate research AI ecosystem Toronto internships careers official\",\n  \"total_results\": 0,\n  \"results\": []\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://eecs.berkeley.edu/academics/graduate/research-programs/admissions/"
+      },
+      "id": "call_RmmzTt2r58L8dYmn9qKSw6ug"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://eecs.berkeley.edu/academics/graduate/research-programs/graduate-research-program-admissions-faq/"
+      },
+      "id": "call_MsjRkX31TmcTIWypIktBBPq2"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.cs.washington.edu/academics/phd/admissions"
+      },
+      "id": "call_rEpK7itl9yY8LIhEzaWLFNxo"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.cs.washington.edu/academics/phd/requirements"
+      },
+      "id": "call_5atRv5TPiJTnA07nRTffFFBL"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://mila.quebec/en/prospective-students/academic-programs"
+      },
+      "id": "call_CCmuZBgKLOdJcCYheaEbcBUB"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ed.ac.uk/studying/postgraduate/degrees/index.php?r=site/view&id=497"
+      },
+      "id": "call_nWzmvGLJp7mbcppNQ8hTLv7k"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.inf.ed.ac.uk/postgraduate/research-degrees/"
+      },
+      "id": "call_SOLJ66uCesjlN6p1TIU5eft9"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://ethz.ch/en/doctorate/financial.html"
+      },
+      "id": "call_7SUMEduBi0is3lFDxKBpLS3b"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://ethz.ch/staffnet/en/employment-and-work/employment/working-hours/salary.html"
+      },
+      "id": "call_NKk6Ujr1JMt74J137J3ifcqQ"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.epfl.ch/education/phd/doctoral-studies-structure/doctoral-students-salary/"
+      },
+      "id": "call_W8eeEq1czVvx0J4kZF2MTw7P"
+    }
+  ],
+  "final_text": "",
+  "run_error": {
+    "type": "GraphRecursionError",
+    "message": "Recursion limit of 100 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/lora/Documents/benchmark-intent/pilot/dr_harness_backbone_integration_v0_74/run_deerflow_episode.py\", line 187, in main\n    for event in client.stream(\n  File \"/Users/lora/Documents/benchmark-intent/tmp/deer-flow/backend/packages/harness/deerflow/client.py\", line 761, in stream\n    event = next(inner)\n            ^^^^^^^^^^^\n  File \"/Users/lora/Documents/benchmark-intent/tmp/deer-flow/backend/packages/harness/deerflow/client.py\", line 988, in _stream_turn\n    for item in _stream_with_sandbox_lease_cleanup(agent_items, context):\n  File \"/Users/lora/Documents/benchmark-intent/tmp/deer-flow/backend/packages/harness/deerflow/client.py\", line 99, in _stream_with_sandbox_lease_cleanup\n    yield from items\n  File \"/Users/lora/Documents/benchmark-intent/tmp/deer-flow/backend/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py\", line 3011, in stream\n    raise GraphRecursionError(msg)\nlanggraph.errors.GraphRecursionError: Recursion limit of 100 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT\n"
+  },
+  "started_at_utc": "2026-09-15T23:55:34.575993+00:00",
+  "completed_at_utc": "2026-09-15T23:57:32.529477+00:00",
+  "elapsed_seconds": 117.953484,
+  "trace_file": "turn_002_events.jsonl"
+}

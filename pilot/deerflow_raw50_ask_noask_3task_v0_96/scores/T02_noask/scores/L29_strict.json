@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "L29",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "38cd1464db5ecd644e8db709bdd7d191f283a2a368dc204037ed99128e0ba0a7",
+  "rubric_sha256": "7fc83a85f049705a704a5a128f48b42ca919c64ed5442c6c588e69a066092957",
+  "started_at_utc": "2026-09-16T00:04:34.738541+00:00",
+  "completed_at_utc": "2026-09-16T00:06:23.073383+00:00",
+  "p_strict": 0.0,
+  "p_hi": 0.0,
+  "dimension_scores": {
+    "INTENT": 0.0,
+    "SOURCE": 0.0,
+    "EVIDENCE": 0.0,
+    "TRADEOFF": 0.0,
+    "DECISION": 0.0,
+    "ACTION": 0.0,
+    "TRACE": 0.0
+  },
+  "high_dimension_scores": {
+    "INTENT": 0.0,
+    "SOURCE": 0.0,
+    "EVIDENCE": 0.0,
+    "TRADEOFF": 0.0,
+    "DECISION": 0.0,
+    "ACTION": 0.0,
+    "TRACE": 0.0
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T2-P1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state cultural/intellectual fit and meaningful immersion as a decision priority."
+    },
+    {
+      "criterion_id": "T2-P1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is identified for evaluating cultural/intellectual fit and meaningful immersion."
+    },
+    {
+      "criterion_id": "T2-P1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program or institution is supported by a verifiable fact about fit or immersion."
+    },
+    {
+      "criterion_id": "T2-P1-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route has a verifiable fact demonstrating institutional prestige alone."
+    },
+    {
+      "criterion_id": "T2-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare fit and immersion with institutional prestige on a common decision axis."
+    },
+    {
+      "criterion_id": "T2-P1-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended because it supports cultural/intellectual fit and meaningful immersion."
+    },
+    {
+      "criterion_id": "T2-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is named and downgraded for favoring institutional prestige alone."
+    },
+    {
+      "criterion_id": "T2-P1-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no executable preparation step implementing cultural/intellectual fit and meaningful immersion."
+    },
+    {
+      "criterion_id": "T2-P1-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint is defined for fit and immersion."
+    },
+    {
+      "criterion_id": "T2-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is stated under which institutional prestige alone would become the better choice."
+    },
+    {
+      "criterion_id": "T2-P1-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No visible chain connects the specified preference to evidence and then to a decision or action."
+    },
+    {
+      "criterion_id": "T2-P2-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report asks for research priorities but does not state interdisciplinary social/media/cultural learning as a decision priority."
+    },
+    {
+      "criterion_id": "T2-P2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected to evaluate interdisciplinary social/media/cultural learning."
+    },
+    {
+      "criterion_id": "T2-P2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program or option is supported by a concrete fact about interdisciplinary social/media/cultural learning."
+    },
+    {
+      "criterion_id": "T2-P2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route has a verifiable fact demonstrating narrowly technical coursework."
+    },
+    {
+      "criterion_id": "T2-P2-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare interdisciplinary social/media/cultural learning with narrowly technical coursework."
+    },
+    {
+      "criterion_id": "T2-P2-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended because it supports interdisciplinary social/media/cultural learning."
+    },
+    {
+      "criterion_id": "T2-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is named and downgraded for favoring narrowly technical coursework."
+    },
+    {
+      "criterion_id": "T2-P2-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report requests information but provides no executable step implementing interdisciplinary social/media/cultural learning."
+    },
+    {
+      "criterion_id": "T2-P2-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint is defined for interdisciplinary social/media/cultural learning."
+    },
+    {
+      "criterion_id": "T2-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which narrowly technical coursework would become the better choice."
+    },
+    {
+      "criterion_id": "T2-P2-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no visible chain connecting the specified learning preference to evidence and then to a decision or action."
+    },
+    {
+      "criterion_id": "T2-P3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state deeper engagement with fewer places or communities as a decision priority."
+    },
+    {
+      "criterion_id": "T2-P3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is identified to evaluate deeper engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a concrete fact about deeper engagement."
+    },
+    {
+      "criterion_id": "T2-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is supported by a concrete fact about maximizing destination count."
+    },
+    {
+      "criterion_id": "T2-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare deeper engagement with maximizing destination count."
+    },
+    {
+      "criterion_id": "T2-P3-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended because it supports deeper engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No viable option is downgraded for favoring destination count."
+    },
+    {
+      "criterion_id": "T2-P3-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no executable step implementing deeper engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint governs deeper engagement."
+    },
+    {
+      "criterion_id": "T2-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report states no condition under which maximizing destination count would become preferable."
+    },
+    {
+      "criterion_id": "T2-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No visible chain links a deeper-engagement preference to evidence and a resulting decision or action."
+    },
+    {
+      "criterion_id": "T2-P4-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state self-guided exploration or flexible local experience as a decision priority."
+    },
+    {
+      "criterion_id": "T2-P4-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is identified for evaluating self-guided exploration or flexible local experience."
+    },
+    {
+      "criterion_id": "T2-P4-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a concrete fact about self-guided exploration or flexible local experience."
+    },
+    {
+      "criterion_id": "T2-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route has a concrete fact establishing heavily packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare self-guided experiences with packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended because it supports self-guided exploration or flexible local experience."
+    },
+    {
+      "criterion_id": "T2-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded for favoring packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides no executable step implementing self-guided exploration or flexible local experience."
+    },
+    {
+      "criterion_id": "T2-P4-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint is specified for self-guided exploration or flexible local experience."
+    },
+    {
+      "criterion_id": "T2-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report states no condition under which packaged or group-managed activities would become the better choice."
+    },
+    {
+      "criterion_id": "T2-P4-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No visible chain links the specified preference to evidence and then to a decision or action."
+    },
+    {
+      "criterion_id": "T2-P5-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state cost-effective, locally distinctive accommodation or choices as a decision priority."
+    },
+    {
+      "criterion_id": "T2-P5-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence type is identified for evaluating cost-effective, locally distinctive accommodation or choices."
+    },
+    {
+      "criterion_id": "T2-P5-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a verifiable fact about cost-effective, locally distinctive accommodation or choices."
+    },
+    {
+      "criterion_id": "T2-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route has a concrete fact demonstrating premium convenience or luxury."
+    },
+    {
+      "criterion_id": "T2-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare cost-effective, locally distinctive choices with premium convenience or luxury."
+    },
+    {
+      "criterion_id": "T2-P5-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended because it supports cost-effective, locally distinctive accommodation or choices."
+    },
+    {
+      "criterion_id": "T2-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is named and downgraded for favoring premium convenience or luxury."
+    },
+    {
+      "criterion_id": "T2-P5-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no executable step implementing cost-effective, locally distinctive accommodation or choices."
+    },
+    {
+      "criterion_id": "T2-P5-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint is defined for cost-effective, locally distinctive accommodation or choices."
+    },
+    {
+      "criterion_id": "T2-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which premium convenience or luxury becomes the better choice."
+    },
+    {
+      "criterion_id": "T2-P5-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No visible chain connects the specified preference to evidence and then to a decision or action."
+    },
+    {
+      "criterion_id": "T2-A1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report names no program option and provides no concrete fact about culturally rich neighborhoods with bookstores, cafes, or parks."
+    },
+    {
+      "criterion_id": "T2-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report makes no option-level comparison between culturally rich neighborhoods and convenience-oriented campus surroundings."
+    },
+    {
+      "criterion_id": "T2-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no shortlist or recommendation using neighborhood cultural richness as a tie-breaker or secondary fit factor."
+    },
+    {
+      "criterion_id": "T2-A1-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no final recommendation or selected option, so the required recommendation-level condition is absent."
+    },
+    {
+      "criterion_id": "T2-A2-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no concrete fact about environmentally responsible travel or living for a named option."
+    },
+    {
+      "criterion_id": "T2-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no option-level distinction concerning environmentally responsible travel or living."
+    },
+    {
+      "criterion_id": "T2-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No shortlist or recommendation is provided, and environmental responsibility is not used as a secondary fit factor or tie-breaker."
+    },
+    {
+      "criterion_id": "T2-A2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no final recommendation to evaluate. The absence of an explicit contradiction does not supply evidence of a recommendation satisfying this criterion."
+    },
+    {
+      "criterion_id": "T2-A3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no concrete fact about nature or outdoor experiences for any named option."
+    },
+    {
+      "criterion_id": "T2-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison distinguishes nature or outdoor experiences from indoor or urban consumption."
+    },
+    {
+      "criterion_id": "T2-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains no shortlist or recommendation using nature or outdoor experiences as a fit factor."
+    },
+    {
+      "criterion_id": "T2-A3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no final recommendation or selected option to assess for consistency with nature or outdoor experiences."
+    }
+  ]
+}

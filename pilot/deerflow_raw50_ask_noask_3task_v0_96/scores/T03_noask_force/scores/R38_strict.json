@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "R38",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "3cd8121f955a2ccefacd852233cf51d6a3308055ffbe1add151a513c73fa3011",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-16T00:20:51.360889+00:00",
+  "completed_at_utc": "2026-09-16T00:26:23.558408+00:00",
+  "p_strict": 8.636789297658863,
+  "p_hi": 8.94,
+  "dimension_scores": {
+    "INTENT": 10.0,
+    "SOURCE": 10.0,
+    "EVIDENCE": 7.913043478260869,
+    "TRADEOFF": 6.869565217391304,
+    "DECISION": 8.695652173913043,
+    "ACTION": 10.0,
+    "TRACE": 7.846153846153847
+  },
+  "high_dimension_scores": {
+    "INTENT": 10.0,
+    "SOURCE": 10.0,
+    "EVIDENCE": 8.2,
+    "TRADEOFF": 7.199999999999999,
+    "DECISION": 9.399999999999999,
+    "ACTION": 10.0,
+    "TRACE": 8.4
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 10,
+      "evidence_span": "1. **Systematic side-venture experiments — highest value**",
+      "rationale": "Explicitly ranks real venture experimentation as the highest-value learning route."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 10,
+      "evidence_span": "4. What percentage of participants are still operating after 12 and 24 months?\n5. May three recent alumni be contacted directly?",
+      "rationale": "The program due-diligence process identifies venture-operation outcomes and recent alumni testimony as evidence for evaluating practical program value."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 10,
+      "evidence_span": "Antler Singapore’s October 2026 residency illustrates an Asia-accessible alternative. It is a six-week, full-commitment program focused on product launch, early users, acquisition channels, go-to-market strategy, pitching, and fundraising.",
+      "rationale": "Names a program and provides verifiable details about its support for actual product launch and early customer acquisition."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 10,
+      "evidence_span": "A strong entrepreneurship degree can cover opportunity recognition, accounting, entrepreneurial finance, business models, innovation strategy, operations, intellectual property, organizational design, negotiation, venture capital, and capstone venture-building.",
+      "rationale": "Identifies the degree route and specifies its broad academic business curriculum rather than merely labeling it theoretical."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 8,
+      "evidence_span": "#### Limitations for this profile\n\n- Significant overlap with an existing MBA.\n- High opportunity cost for a primary breadwinner.\n- Academic exercises do not necessarily create genuine customer demand.\n- Networks can be broad but not relevant to the chosen industry.\n- Completion can create the illusion of progress while postponing market contact.",
+      "rationale": "Compares degree-based exercises with real market engagement on the consequential axis of customer demand and delayed market contact. The practical alternative is explicit, but a particular venture-building route is not named within this comparison."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 10,
+      "evidence_span": "#### Verdict\n\n**Good for months 6–12**, once there is a defined problem and early MVP—not as a substitute for choosing a market.\n\n---\n\n### E. Accelerators",
+      "rationale": "The incubator/pre-accelerator recommendation is expressly tied to developing a defined real problem and existing MVP rather than replacing market work with education."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 10,
+      "evidence_span": "Given the profile provided, the best route is **not another general business degree**. An MBA in marketing and management already covers much of the conceptual territory that a second MBA or broad entrepreneurship master’s would repeat.",
+      "rationale": "Explicitly downgrades a second MBA or broad entrepreneurship master’s because it repeats general academic business content."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 10,
+      "evidence_span": "**Concierge MVP:** manually deliver the result.",
+      "rationale": "Provides an executable venture-building action within the planned experiment sequence."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 10,
+      "evidence_span": "A suitable allocation is approximately **10% formal learning, 20% networking and mentoring, and 70% venture-building**.",
+      "rationale": "Defines a usable allocation that gives most effort to real venture-building."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 10,
+      "evidence_span": "A second degree ranks relatively low unless it delivers one of three scarce assets that cannot be obtained more efficiently:\n\n1. access to a technical or scientific ecosystem;\n2. a deliberate international relocation;\n3. a truly exceptional founder/investor network.",
+      "rationale": "States concrete conditions under which the otherwise disfavored degree route would become preferable, including an explicit efficiency boundary."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 8,
+      "evidence_span": "- **Steve Blank’s “How to Build a Startup”:** a free, 14-lesson Udacity course based on customer development and “getting out of the building” to gather feedback and iterate. [citation:Udacity — How to Build a Startup](https://www.udacity.com/course/how-to-build-a-startup--ep245)\n\n#### Strengths\n\n- Very low financial and scheduling risk.\n- Useful for establishing a shared vocabulary with a co-founder.\n- Can be applied immediately to a real experiment.\n- International perspective complements China-focused managerial experience.\n\n#### Weaknesses\n\n- Video completion is not evidence of entrepreneurial ability.\n- Limited personalized feedback.\n- Weak network compared with in-person programs.\n- Easy to accumulate courses without building anything.\n\n#### Recommended use\n\nEvery module should generate a venture artifact:",
+      "rationale": "Connects a cited customer-development curriculum to real experimentation and required venture artifacts. The chain is visible, although the downstream rule applies to online learning generally rather than explicitly to the named course."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 10,
+      "evidence_span": "The first 9–12 months should preserve income and family stability.",
+      "rationale": "Explicitly makes compatibility with employment income and family stability a priority for the initial pathway."
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 10,
+      "evidence_span": "The displayed cohort is time-zone-specific rather than Shanghai-specific, so practicality and legal/equity conditions require verification. [citation:Founder Institute](https://fi.co/join)",
+      "rationale": "Identifies an official program source and cohort scheduling evidence that must be checked to establish whether the virtual route is practically compatible with the learner’s location and schedule."
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 10,
+      "evidence_span": "**YC Startup School:** self-paced and free, estimated at seven weeks with one to two hours per week.",
+      "rationale": "Provides a named option with concrete pacing and weekly workload facts supporting flexible participation."
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 10,
+      "evidence_span": "| Second degree: MSc/Master’s in Entrepreneurship | 10–24 months, often full-time | Roughly US$30,000–100,000+, plus lost earnings and relocation |",
+      "rationale": "Gives a specific degree route’s duration, full-time format, lost earnings, and relocation burden."
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 10,
+      "evidence_span": "| Second degree: MSc/Master’s in Entrepreneurship | 10–24 months, often full-time | Roughly US$30,000–100,000+, plus lost earnings and relocation | Strong cohort and alumni network; variable investor access | Moderate; often includes capstone/incubator work | Moderate | Major career or geographic reset, immigration, research commercialization |\n| Part-time degree/EMBA entrepreneurship track | 12–24 months, 8–15 hours/week | Often RMB 200,000–800,000+ | Strong local executive network | Low–moderate unless tied to a real venture | Moderate | Executives needing a new network and credential |",
+      "rationale": "Directly compares full-time and part-time routes on common commitment and cost axes, identifying lost earnings and relocation for the full-time route versus a bounded weekly workload for the part-time route."
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 10,
+      "evidence_span": "Build and sell a narrow product or service outside working hours. This is the recommended starting route because it preserves household cash flow.",
+      "rationale": "Explicitly recommends an outside-working-hours venture because it preserves household income."
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 8,
+      "evidence_span": "#### Limitations for this profile\n\n- Significant overlap with an existing MBA.\n- High opportunity cost for a primary breadwinner.\n- Academic exercises do not necessarily create genuine customer demand.\n- Networks can be broad but not relevant to the chosen industry.\n- Completion can create the illusion of progress while postponing market contact.\n\n#### Verdict\n\n**Low priority.**",
+      "rationale": "Downgrades degree programs and explicitly includes the breadwinner’s opportunity cost as a reason. The connection is strong, although the verdict applies to degrees generally rather than isolating full-time study."
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 10,
+      "evidence_span": "| One weekday evening, 90 minutes | Course work or financial/product skills |",
+      "rationale": "Provides an executable learning block within the recommended employed-phase schedule, implementing study alongside ongoing work."
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 10,
+      "evidence_span": "Protect family sustainability through:\n\n- at least two startup-free evenings each week;\n- one protected family day each weekend;",
+      "rationale": "Defines explicit weekly allocation rules protecting family time during the learning and venture-building pathway."
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 8,
+      "evidence_span": "A second degree ranks relatively low unless it delivers one of three scarce assets that cannot be obtained more efficiently:\n\n1. access to a technical or scientific ecosystem;\n2. a deliberate international relocation;\n3. a truly exceptional founder/investor network.",
+      "rationale": "States concrete conditions that could reverse the low ranking of the degree route, which the comparison describes as often full-time. It does not explicitly establish when full-time study would outperform a flexible degree or other flexible route delivering those assets."
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 10,
+      "evidence_span": "Build and sell a narrow product or service outside working hours. This is the recommended starting route because it preserves household cash flow.",
+      "rationale": "Provides a visible chain from work-compatible delivery, through preserved household cash flow, to selection as the recommended starting route."
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 10,
+      "evidence_span": "Do not spend the first year preparing to become an entrepreneur. Spend it running increasingly realistic, capped-downside entrepreneurial experiments.",
+      "rationale": "Explicitly prioritizes progressively staged experiments over prolonged preparation."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 10,
+      "evidence_span": "**Steve Blank’s “How to Build a Startup”:** a free, 14-lesson Udacity course based on customer development and “getting out of the building” to gather feedback and iterate. [citation:Udacity — How to Build a Startup](https://www.udacity.com/course/how-to-build-a-startup--ep245)",
+      "rationale": "Identifies and links a specific source whose customer-development and iterative-feedback methods directly address experimental market validation."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 10,
+      "evidence_span": "**Steve Blank’s “How to Build a Startup”:** a free, 14-lesson Udacity course based on customer development and “getting out of the building” to gather feedback and iterate.",
+      "rationale": "Provides a verifiable curriculum fact about a named option: it teaches gathering customer feedback and iterating rather than merely studying entrepreneurship."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 4,
+      "evidence_span": "Completion can create the illusion of progress while postponing market contact.",
+      "rationale": "The degree discussion identifies the contrasting risk, but this is a generic warning rather than a verifiable fact establishing that a particular program delays testing. Program durations elsewhere do not establish when market testing occurs."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 10,
+      "evidence_span": "**Do not spend the first year preparing to become an entrepreneur. Spend it running increasingly realistic, capped-downside entrepreneurial experiments.**\n\nBy month 12, the intended output is not another credential. It is a body of evidence: customer interviews, failed and successful tests, paying users, a product, a potential team, unit economics, and a clear decision about whether—and how—to commit full-time.",
+      "rationale": "Directly compares alternative uses of the first year and identifies the consequential difference: a credential versus market evidence supporting a commitment decision."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 10,
+      "evidence_span": "Before building software, manually deliver the result for five to ten customers. This tests whether customers value the outcome without incurring technical-development cost.",
+      "rationale": "Recommends the concierge-MVP route specifically because it tests customer value before committing to software development."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 10,
+      "evidence_span": "- Completion can create the illusion of progress while postponing market contact.\n\n#### Verdict\n\n**Low priority.**",
+      "rationale": "Explicitly includes delayed market contact among the reasons for assigning degree programs low priority."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 10,
+      "evidence_span": "**Commitment test:** request a meeting, data access, signed letter of intent, refundable deposit, or paid diagnostic.",
+      "rationale": "Provides an executable market-validation action that requests observable customer commitment."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 10,
+      "evidence_span": "The experiment fund should be released in stages. For example:\n\n- first RMB 10,000 after problem validation;\n- next RMB 20,000 after pilot commitment;\n- larger product spending only after actual usage or revenue.",
+      "rationale": "Defines explicit funding allocations and evidence-dependent sequencing rules for increasing commitment."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 4,
+      "evidence_span": "A second degree ranks relatively low unless it delivers one of three scarce assets that cannot be obtained more efficiently:\n\n1. access to a technical or scientific ecosystem;\n2. a deliberate international relocation;\n3. a truly exceptional founder/investor network.",
+      "rationale": "Gives concrete conditions for reconsidering a degree, but does not establish when delaying idea testing for lengthy preparation would be preferable. That preference reversal remains implicit."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 10,
+      "evidence_span": "Before building software, manually deliver the result for five to ten customers. This tests whether customers value the outcome without incurring technical-development cost.\n\nExample progression:\n\n> spreadsheet/manual service → repeatable workflow → no-code interface → lightweight product → engineered platform.",
+      "rationale": "Shows a complete local chain: seek evidence of customer value, obtain it through manual delivery, and stage product-development commitment rather than building the engineered platform first."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 10,
+      "evidence_span": "By month 12, the intended output is not another credential. It is a body of evidence: customer interviews, failed and successful tests, paying users, a product, a potential team, unit economics, and a clear decision about whether—and how—to commit full-time.",
+      "rationale": "Explicitly prioritizes detailed, practical venture evidence over credentials and makes that evidence the basis for commitment decisions."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 10,
+      "evidence_span": "Ask about past behavior, current spending, and actual workflow.",
+      "rationale": "Identifies specific firsthand evidence classes for customer research that can establish practical demand rather than hypothetical approval."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 8,
+      "evidence_span": "**Steve Blank’s “How to Build a Startup”:** a free, 14-lesson Udacity course based on customer development and “getting out of the building” to gather feedback and iterate.",
+      "rationale": "Provides a named, sourced option and a verifiable connection to gathering practical customer evidence. It does not establish the depth of the course’s cases or data analysis."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report offers generic cautions about academic exercises and passive course completion, but no concrete, verifiable fact establishing that a particular option delivers abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 4,
+      "evidence_span": "Formal programs teach models; venture-building teaches judgment.",
+      "rationale": "Directly contrasts formal and experiential learning, but does not specifically compare in-depth cases/data against theory without application on a developed decision axis. The generic cap applies."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 8,
+      "evidence_span": "Online learning is the most efficient way to establish foundational methods. edX identifies common entrepreneurship topics including market research, market positioning, business-model development, data analytics, and financial-risk assessment; it also highlights leadership, communications, strategy, and finance as complementary founder capabilities. [citation:edX Entrepreneurship Courses](https://www.edx.org/learn/entrepreneurship)\n\nTwo particularly practical starting points are:\n\n- **YC Startup School:** self-paced and free, estimated at seven weeks with one to two hours per week. Its curriculum includes MVP planning, startup funding, user acquisition, press, and team leadership. It also offers progress tracking and co-founder matching. [citation:Y Combinator Startup School](https://www.startupschool.org/)\n- **Steve Blank’s “How to Build a Startup”:** a free, 14-lesson Udacity course based on customer development and “getting out of the building” to gather feedback and iterate.",
+      "rationale": "Recommends named practical starting points and connects the Udacity choice to collecting feedback and iterating. Practical evidence collection is explicit, although in-depth treatment is not established."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 8,
+      "evidence_span": "- Academic exercises do not necessarily create genuine customer demand.\n- Networks can be broad but not relevant to the chosen industry.\n- Completion can create the illusion of progress while postponing market contact.\n\n#### Verdict\n\n**Low priority.** Consider only a specialized program—such as technology commercialization, AI/product engineering, healthcare innovation, or family-business transformation—rather than another general entrepreneurship qualification.",
+      "rationale": "Explicitly lowers the priority of a general entrepreneurship degree partly because academic work can postpone genuine market contact. The contrast is qualified rather than demonstrating that the route necessarily favors unapplied theory."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 10,
+      "evidence_span": "- interview 10–15 prospective customers;\n- interview five industry experts or channel partners;\n- map current workarounds and spending;\n- identify the budget owner and purchasing process;\n- estimate market from the bottom up;\n- test whether the problem is urgent enough to change behavior.",
+      "rationale": "Provides executable research actions that gather detailed practical customer, purchasing, spending, and market evidence."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 10,
+      "evidence_span": "Proceed only with an opportunity that has at least:\n\n- 15 interviews in the same identifiable segment;\n- repeated evidence of one high-frequency or high-cost problem;\n- five prospects willing to review a solution;\n- two willing to pilot;\n- a credible path to reaching the first 50 customers.",
+      "rationale": "Defines an explicit progression gate with concrete evidence thresholds for customer discovery and pilot commitment."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Conditions favoring degrees concern networks, specialization, or relocation, not a condition under which abstract theory without application becomes preferable."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 4,
+      "evidence_span": "Before building software, manually deliver the result for five to ten customers. This tests whether customers value the outcome without incurring technical-development cost.",
+      "rationale": "Connects a practical testing preference to an executable action and its intended evidence. However, it does not complete the required chain through an existing cited fact or finding to a downstream decision; the evidence remains prospective."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 10,
+      "evidence_span": "For this profile, the highest expected return comes from:",
+      "rationale": "Explicitly identifies expected return as the basis for choosing the recommended learning pathway."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 10,
+      "evidence_span": "Before paying for any course, incubator, or accelerator, ask:\n\n1. How many mentor hours are guaranteed rather than merely available?",
+      "rationale": "Selects a concrete evidence type—guaranteed mentor hours—to assess the value received before purchasing a program."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 10,
+      "evidence_span": "**YC Startup School:** self-paced and free, estimated at seven weeks with one to two hours per week.",
+      "rationale": "Provides verifiable financial-cost and time-commitment facts for a named learning option."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 10,
+      "evidence_span": "| Part-time degree/EMBA entrepreneurship track | 12–24 months, 8–15 hours/week | Often RMB 200,000–800,000+ | Strong local executive network | Low–moderate unless tied to a real venture | Moderate | Executives needing a new network and credential |",
+      "rationale": "Identifies an expensive credential-oriented route and supplies a concrete cost range, alongside its network and credential benefits."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 8,
+      "evidence_span": "A second degree ranks relatively low unless it delivers one of three scarce assets that cannot be obtained more efficiently:",
+      "rationale": "Directly compares the incremental value of a second degree against more efficient ways to obtain the same benefits. The comparison is explicit, although it does not quantify the difference or name the competing route within this statement."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 10,
+      "evidence_span": "**High priority throughout the full 1–2 years.** The existing MBA alumni base makes this especially cost-effective.",
+      "rationale": "Prioritizes mentoring and networking explicitly because using the existing alumni base is cost-effective."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 10,
+      "evidence_span": "#### Limitations for this profile\n\n- Significant overlap with an existing MBA.\n- High opportunity cost for a primary breadwinner.\n- Academic exercises do not necessarily create genuine customer demand.\n- Networks can be broad but not relevant to the chosen industry.\n- Completion can create the illusion of progress while postponing market contact.\n\n#### Verdict\n\n**Low priority.**",
+      "rationale": "Downgrades the degree route after explicitly identifying high opportunity cost and redundant learning as limitations, despite previously acknowledging its benefits."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 10,
+      "evidence_span": "Complete:\n\n1. YC Startup School, using its seven-week structure and weekly progress tracking. [citation:Y Combinator Startup School](https://www.startupschool.org/)\n2. Udacity’s free customer-development course.",
+      "rationale": "The phased plan specifies completing a named free course, providing an executable cost-effective learning action."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 10,
+      "evidence_span": "The experiment fund should be released in stages. For example:\n\n- first RMB 10,000 after problem validation;\n- next RMB 20,000 after pilot commitment;\n- larger product spending only after actual usage or revenue.",
+      "rationale": "Defines concrete spending allocations and evidence gates that prevent larger expenditures before validation."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 10,
+      "evidence_span": "A second degree ranks relatively low unless it delivers one of three scarce assets that cannot be obtained more efficiently:\n\n1. access to a technical or scientific ecosystem;\n2. a deliberate international relocation;\n3. a truly exceptional founder/investor network.",
+      "rationale": "States specific conditions under which the otherwise downgraded degree becomes preferable, with the additional requirement that its benefits cannot be obtained more efficiently."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 10,
+      "evidence_span": "**High priority throughout the full 1–2 years.** The existing MBA alumni base makes this especially cost-effective.",
+      "rationale": "Provides a visible chain from a concrete available resource—the existing MBA alumni base—to cost-effectiveness and the decision to prioritize mentoring and networking throughout the plan."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 6,
+      "evidence_span": "Techstars describes its accelerator as **three months of intensive, mentorship-driven support**, providing connections to specialized expertise, a global community, and capital.",
+      "rationale": "Names a specific program and gives a verifiable fact about its mentorship format and access to specialist expertise and a practitioner community. Score capped at the supplied generic cap of 6."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 6,
+      "evidence_span": "Weak network compared with in-person programs.",
+      "rationale": "Explicitly contrasts online courses with in-person programs on network access, distinguishing relatively isolated study from more connected learning. Score capped at the supplied generic cap of 6."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 6,
+      "evidence_span": "A selective executive program only if it provides a particularly valuable network or technical bridge.",
+      "rationale": "Makes network value an explicit condition for including executive education in the recommended pathway, rather than merely describing networking as a benefit. Score capped at the supplied generic cap of 6."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 6,
+      "evidence_span": "2. **Targeted mentors and SJTU/Shanghai/Suzhou founder networks**",
+      "rationale": "The final ranking explicitly prioritizes mentors and founder networks. No selected route is justified by a preference for isolation, and online learning is recommended as a foundation rather than a standalone substitute. Score capped at the supplied generic cap of 6."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 6,
+      "evidence_span": "**YC Startup School:** self-paced and free, estimated at seven weeks with one to two hours per week.",
+      "rationale": "Provides a named option with a concrete, sourced weekly commitment and self-paced format relevant to preserving regular family time. The supplied cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 4,
+      "evidence_span": "Protect family sustainability through:\n\n- at least two startup-free evenings each week;\n- one protected family day each weekend;",
+      "rationale": "Explicitly identifies regular family-time protections, but does not explicitly contrast options according to whether entrepreneurship learning preserves or dominates evenings and weekends. Differences in general scheduling intensity only partially establish the required option-level distinction."
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 4,
+      "evidence_span": "| Time compatibility | 5% |",
+      "rationale": "Makes time compatibility a secondary factor in program selection. However, the selection rule does not specifically connect that factor to preserving regular family time, so the required causal link to ranking or fit remains incomplete."
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 6,
+      "evidence_span": "- at least two startup-free evenings each week;\n- one protected family day each weekend;",
+      "rationale": "The recommended pathway explicitly protects recurring family time. More intensive later commitments are conditional, and no selected option is justified by a preference for learning to dominate evenings or weekends. The supplied cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 6,
+      "evidence_span": "Its curriculum includes MVP planning, startup funding, user acquisition, press, and team leadership.",
+      "rationale": "The report gives a concrete curriculum fact about the named YC Startup School option that directly concerns team leadership. The supplied generic cap is applied."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 4,
+      "evidence_span": "| Executive education | 4 | 3 | 3 | 3 | 4 | 4 | 2 |\n| Online courses | 4 | 3 | 4 | 3 | 2 | 1–2 | 1 |",
+      "rationale": "The capability table explicitly rates executive education higher than online courses for team management. However, it does not distinguish coordination or leadership frameworks from purely solo-founder technical content; indeed, the report also attributes team-leadership content to an online course."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 2,
+      "evidence_span": "a cohort containing relevant customers or co-founders;",
+      "rationale": "Access to potential co-founders is included in the executive-education selection rule, providing limited team-related fit evidence. However, this concerns network composition, not coordination or leadership frameworks, and the report does not explicitly use those frameworks to change an option's ranking or inclusion."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 6,
+      "evidence_span": "**Accelerator after MVP, team, and traction**",
+      "rationale": "The final ranking retains a team-readiness condition for the accelerator route and does not justify a selected option by preferring solo technical learning over team coordination or leadership. This is consistent with the report's prescribed co-founder agreements and operating cadence. The supplied generic cap is applied."
+    }
+  ]
+}

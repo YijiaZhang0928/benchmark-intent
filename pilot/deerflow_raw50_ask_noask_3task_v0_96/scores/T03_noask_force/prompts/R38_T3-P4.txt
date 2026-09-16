@@ -1,0 +1,1121 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare routes for systematically learning entrepreneurship and preparing to launch a startup over the next 1–2 years.
+
+Compare degree and non-degree programs, executive education, accelerators, online courses, mentoring and networking routes, and practical venture-building options. Cover curriculum, time commitment, cost, mentor and network access, hands-on opportunities, fundraising, business-model, product, market and team-management learning, and the value of each route.
+
+Produce a phased 1–2 year learning and experimentation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T3-P4-01",
+    "criterion": "The report states in-depth practical cases/data as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate in-depth practical cases/data.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-03",
+    "criterion": "The report provides concrete evidence about how an option supports in-depth practical cases/data.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-04",
+    "criterion": "The report provides concrete evidence about how an option reflects abstract theory without application.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-05",
+    "criterion": "The report directly compares in-depth practical cases/data with abstract theory without application.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-06",
+    "criterion": "At least one recommended option is selected because it supports in-depth practical cases/data.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors abstract theory without application.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-08",
+    "criterion": "The plan contains one executable step that implements in-depth practical cases/data.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for in-depth practical cases/data.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-10",
+    "criterion": "The report states when abstract theory without application would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P4-11",
+    "criterion": "One visible chain links in-depth practical cases/data to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label R38):
+# Entrepreneurship Learning and Startup-Launch Roadmap  
+**Planning horizon: September 2026–September 2028**
+
+## Executive recommendation
+
+Given the profile provided, the best route is **not another general business degree**. An MBA in marketing and management already covers much of the conceptual territory that a second MBA or broad entrepreneurship master’s would repeat. The more important gaps are likely to be:
+
+- identifying a sufficiently painful customer problem;
+- conducting rigorous customer discovery rather than relying on managerial intuition;
+- turning a problem into an MVP;
+- product and technology decision-making;
+- founder-led sales and distribution;
+- startup finance, capitalization, and fundraising;
+- choosing and managing co-founders;
+- operating with uncertainty and limited resources.
+
+The highest-value strategy is therefore a **portfolio pathway**:
+
+1. **A low-cost online startup curriculum** for common language and methods.
+2. **Immediate, structured customer discovery** around two or three opportunity areas.
+3. **A small real venture experiment**, launched without leaving the current job.
+4. **A founder peer group plus two or three specialist mentors** in Shanghai/Suzhou and, where useful, Singapore.
+5. **A selective executive program only if it provides a particularly valuable network or technical bridge.**
+6. **An accelerator application only after there is a committed team, a product, and early evidence of demand.**
+
+A suitable allocation is approximately **10% formal learning, 20% networking and mentoring, and 70% venture-building**. The first 9–12 months should preserve income and family stability. A full-time transition should occur only after predetermined evidence gates are met.
+
+---
+
+## 1. Comparison of the main routes
+
+Costs below are indicative planning ranges as of September 2026. Program prices, cohort dates, admissions criteria, and equity terms should be reconfirmed before applying. USD/RMB equivalents are intentionally approximate because exchange rates and taxes vary.
+
+| Route | Typical commitment | Typical direct cost | Network and mentoring | Hands-on learning | Fundraising access | Best use |
+|---|---:|---:|---|---|---|---|
+| Second degree: MSc/Master’s in Entrepreneurship | 10–24 months, often full-time | Roughly US$30,000–100,000+, plus lost earnings and relocation | Strong cohort and alumni network; variable investor access | Moderate; often includes capstone/incubator work | Moderate | Major career or geographic reset, immigration, research commercialization |
+| Part-time degree/EMBA entrepreneurship track | 12–24 months, 8–15 hours/week | Often RMB 200,000–800,000+ | Strong local executive network | Low–moderate unless tied to a real venture | Moderate | Executives needing a new network and credential |
+| University executive education | 3 days–8 weeks; intensive or blended | Roughly US$2,000–20,000 | Potentially strong but short-lived | Moderate when project-based | Low–moderate | Filling a defined gap and gaining a curated peer network |
+| Online certificate or MOOC | 7–14 weeks, 2–6 hours/week | Free to roughly US$3,000 | Usually weak; sometimes cohort-based | Low unless paired with a real project | Very low | Efficient foundation and vocabulary |
+| Structured pre-accelerator/incubator | 3–16 weeks, 5–15 hours/week | Free to several thousand dollars; sometimes future equity obligations | Strong founder peers and scheduled mentors | High | Moderate | Moving from idea to validated concept/MVP |
+| Accelerator | 6 weeks–4 months, normally full-time | Usually equity rather than tuition | Very strong if program–venture fit is good | Very high | High; often includes demo day and introductions | Venture already has a committed team and initial evidence |
+| Independent mentoring and founder networks | 2–5 hours/week over 6–18 months | Free to RMB 5,000+ per month, depending on coach | Potentially excellent, but quality is uneven | High when mentors review live work | Moderate through warm introductions | Personalizing learning and preventing avoidable mistakes |
+| Startup employment/advisory role | 5–40 hours/week | Usually paid, or compensated with equity | Deep operator network | Very high | Indirect | Learning startup execution from inside |
+| Corporate venture or intrapreneurship project | 10–30% of working time | Usually employer-funded | Strong corporate/customer access | High, although less founder risk | Low–moderate | Testing entrepreneurial fit while protecting income |
+| Independent venture experiments | 6–12 hours/week initially | RMB 5,000–100,000 per experiment | Must be built deliberately | Highest direct learning | Initially low | Best route for proving founder–market fit |
+| Search fund or small-business acquisition | 12–24 months to search/acquire | Significant diligence and acquisition capital | Investor/operator network | High, but different from zero-to-one startup creation | High for acquisition finance | Experienced manager who prefers operating cash flow over invention |
+
+### Bottom line
+
+For this profile, the highest expected return comes from:
+
+> **Online foundation → customer discovery → small MVP → recurring-revenue test → mentor board → appropriate incubator/accelerator → staged career transition.**
+
+A second degree ranks relatively low unless it delivers one of three scarce assets that cannot be obtained more efficiently:
+
+1. access to a technical or scientific ecosystem;
+2. a deliberate international relocation;
+3. a truly exceptional founder/investor network.
+
+---
+
+## 2. What each route actually teaches
+
+### A. Degree programs
+
+A strong entrepreneurship degree can cover opportunity recognition, accounting, entrepreneurial finance, business models, innovation strategy, operations, intellectual property, organizational design, negotiation, venture capital, and capstone venture-building.
+
+#### Strengths
+
+- Structured and comprehensive.
+- Provides sustained peer interaction.
+- Gives access to professors, alumni, laboratories, competitions, and university incubators.
+- Useful for candidates moving from a non-business discipline into entrepreneurship.
+- Can offer a protected period for exploration.
+
+#### Limitations for this profile
+
+- Significant overlap with an existing MBA.
+- High opportunity cost for a primary breadwinner.
+- Academic exercises do not necessarily create genuine customer demand.
+- Networks can be broad but not relevant to the chosen industry.
+- Completion can create the illusion of progress while postponing market contact.
+
+#### Verdict
+
+**Low priority.** Consider only a specialized program—such as technology commercialization, AI/product engineering, healthcare innovation, or family-business transformation—rather than another general entrepreneurship qualification.
+
+---
+
+### B. Executive education
+
+Executive entrepreneurship programs generally compress business-model design, innovation, venture finance, leadership, and pitching into an intensive format. Their most important value is often not the content but the **peer cohort, faculty access, and institutional network**.
+
+#### Strengths
+
+- Compatible with an executive career.
+- Curated participants can become customers, partners, advisers, or investors.
+- Good for reframing established-company thinking.
+- More discussion and feedback than a self-paced course.
+
+#### Weaknesses
+
+- Expensive per teaching hour.
+- Relationships may fade unless followed up systematically.
+- Short programs cannot replace repeated selling, hiring, and product iteration.
+- Global programs may teach fundraising conventions that do not fully fit mainland China.
+
+#### Selection rule
+
+Do not buy executive education merely for content. Enrol only if the program provides at least two of the following:
+
+- a cohort containing relevant customers or co-founders;
+- faculty with direct startup-building experience;
+- repeated review of the participant’s real venture;
+- access to an active alumni founder network;
+- investor or corporate-partner interaction;
+- a China–global bridge relevant to the venture.
+
+#### Verdict
+
+**Potentially useful, but optional.** Choose one targeted program after an opportunity area has been selected—not before.
+
+---
+
+### C. Online courses
+
+Online learning is the most efficient way to establish foundational methods. edX identifies common entrepreneurship topics including market research, market positioning, business-model development, data analytics, and financial-risk assessment; it also highlights leadership, communications, strategy, and finance as complementary founder capabilities. [citation:edX Entrepreneurship Courses](https://www.edx.org/learn/entrepreneurship)
+
+Two particularly practical starting points are:
+
+- **YC Startup School:** self-paced and free, estimated at seven weeks with one to two hours per week. Its curriculum includes MVP planning, startup funding, user acquisition, press, and team leadership. It also offers progress tracking and co-founder matching. [citation:Y Combinator Startup School](https://www.startupschool.org/)
+- **Steve Blank’s “How to Build a Startup”:** a free, 14-lesson Udacity course based on customer development and “getting out of the building” to gather feedback and iterate. [citation:Udacity — How to Build a Startup](https://www.udacity.com/course/how-to-build-a-startup--ep245)
+
+#### Strengths
+
+- Very low financial and scheduling risk.
+- Useful for establishing a shared vocabulary with a co-founder.
+- Can be applied immediately to a real experiment.
+- International perspective complements China-focused managerial experience.
+
+#### Weaknesses
+
+- Video completion is not evidence of entrepreneurial ability.
+- Limited personalized feedback.
+- Weak network compared with in-person programs.
+- Easy to accumulate courses without building anything.
+
+#### Recommended use
+
+Every module should generate a venture artifact:
+
+| Learning topic | Required output |
+|---|---|
+| Customer discovery | Interview guide and interview notes |
+| Market selection | Market map and initial beachhead segment |
+| Business model | Business Model Canvas plus key assumptions |
+| MVP | Prototype, landing page, concierge service, or demo |
+| Growth | Channel tests and acquisition metrics |
+| Finance | 24-month cash-flow model and unit economics |
+| Fundraising | Investor narrative, deck, data room checklist |
+| Leadership | Co-founder agreement and operating cadence |
+
+#### Verdict
+
+**Essential as a foundation, insufficient as a standalone route.**
+
+---
+
+### D. Incubators and pre-accelerators
+
+These programs occupy the space between education and investment. They usually provide deadlines, mentor sessions, pitch practice, peer accountability, and sometimes office space, credits, corporate introductions, or grants.
+
+Founder Institute provides an example of a structured virtual route: the referenced 2026 cohort runs from October 2026 to January 2027, lists an early fee of US$1,199 and a standard fee of US$1,649, and includes video conferences, office hours, mentor reviews, and a formal curriculum. The displayed cohort is time-zone-specific rather than Shanghai-specific, so practicality and legal/equity conditions require verification. [citation:Founder Institute](https://fi.co/join)
+
+#### Strengths
+
+- Useful deadlines and accountability.
+- Founder peers reduce isolation.
+- More applied than a course.
+- May help find co-founders and early advisers.
+- Often possible to participate while employed.
+
+#### Weaknesses
+
+- Mentor quality varies considerably.
+- Some programs optimize for pitch performance rather than customer value.
+- “Perks” and events can distract from selling.
+- The incubator’s industry and investor network may not fit the venture.
+
+#### Verdict
+
+**Good for months 6–12**, once there is a defined problem and early MVP—not as a substitute for choosing a market.
+
+---
+
+### E. Accelerators
+
+A true accelerator is designed to increase the speed of an already committed venture. It is normally intense, milestone-driven, and connected to investors.
+
+Techstars describes its accelerator as **three months of intensive, mentorship-driven support**, providing connections to specialized expertise, a global community, and capital. [citation:Techstars Accelerators](https://www.techstars.com/accelerators)
+
+YC offers particularly explicit financing terms: US$500,000, comprising US$125,000 for 7% and US$375,000 through an uncapped MFN SAFE. YC also receives participation rights in subsequent rounds. International applicants should note that YC invests in US, Canadian, Cayman, or Singapore corporations and may require a qualifying parent structure. [citation:Y Combinator Standard Deal](https://www.ycombinator.com/deal)
+
+Antler Singapore’s October 2026 residency illustrates an Asia-accessible alternative. It is a six-week, full-commitment program focused on product launch, early users, acquisition channels, go-to-market strategy, pitching, and fundraising. Its published initial structure is US$100,000 for 10% plus US$50,000 through an uncapped MFN SAFE, with no residency fee; Antler also describes potential matching and follow-on capital. [citation:Antler Singapore](https://www.antler.co/location/singapore)
+
+#### Strengths
+
+- Highest concentration of mentors, founders, and investors.
+- Forces speed and focus.
+- Strong coaching on narrative, metrics, fundraising, and hiring.
+- Brand endorsement can help recruiting and capital raising.
+- Particularly valuable for a global or venture-scale technology company.
+
+#### Weaknesses
+
+- Equity is often far more expensive than tuition if the company succeeds.
+- Usually incompatible with a normal executive workload.
+- Standardized growth expectations may be wrong for a profitable niche business.
+- Global accelerators can create structural, tax, foreign-exchange, data, and intellectual-property complications for China-based founders.
+- Admission itself requires evidence of execution.
+
+#### Verdict
+
+**Apply only after validation.** The appropriate time is when there is:
+
+- a committed founding team;
+- a working MVP;
+- a clearly identified customer;
+- evidence such as pilots, usage, paid orders, or strong retention;
+- willingness to work full-time;
+- a venture whose scale justifies external equity.
+
+---
+
+### F. Mentoring and networking
+
+This route is often undervalued because it lacks a credential. A well-designed “personal board” can be more useful than a general course.
+
+Build a four-person advisory circle:
+
+1. **Industry adviser:** understands the customer, purchasing process, regulation, and competition.
+2. **Product/technology adviser:** helps translate customer problems into a feasible product.
+3. **Founder/operator adviser:** has hired, sold, and managed cash under startup conditions.
+4. **Finance/legal adviser:** understands fundraising, cap tables, contracts, IP, and mainland/cross-border structures.
+
+Use a monthly 60-minute advisory meeting with:
+
+- previous commitments;
+- key metrics;
+- decisions required;
+- current risks;
+- next four-week milestones.
+
+Do not begin by asking prominent people to “be my mentor.” Ask for a specific 25-minute discussion about a concrete problem, show that prior advice was implemented, and let the relationship develop through repeated evidence of execution.
+
+#### Useful network sources
+
+- Shanghai Jiao Tong alumni;
+- former MBA classmates;
+- industry associations;
+- Zhangjiang and other Pudong innovation communities;
+- Suzhou industrial and manufacturing ecosystems;
+- startup demo days;
+- product-manager and engineering communities;
+- angel-investor events;
+- supplier and distributor networks;
+- China–Singapore and China–global founder communities.
+
+#### Verdict
+
+**High priority throughout the full 1–2 years.** The existing MBA alumni base makes this especially cost-effective.
+
+---
+
+### G. Practical venture-building routes
+
+Formal programs teach models; venture-building teaches judgment. Several practical routes are available.
+
+#### 1. Side venture
+
+Build and sell a narrow product or service outside working hours. This is the recommended starting route because it preserves household cash flow.
+
+Good experiment types include:
+
+- paid industry research or decision-support product;
+- AI-assisted B2B workflow;
+- specialist consultancy converted into a repeatable service;
+- premium family or education service;
+- cross-border market-entry service;
+- community plus subscription product;
+- niche digital product;
+- enterprise pilot using existing domain access.
+
+The opportunity should be chosen from actual professional advantages, not from generic trend lists.
+
+#### 2. Concierge MVP
+
+Before building software, manually deliver the result for five to ten customers. This tests whether customers value the outcome without incurring technical-development cost.
+
+Example progression:
+
+> spreadsheet/manual service → repeatable workflow → no-code interface → lightweight product → engineered platform.
+
+#### 3. Join or advise an early-stage startup
+
+A part-time advisory or operating role can expose the learner to fundraising, product prioritization, hiring, and customer acquisition. The role should have clear deliverables rather than honorary “adviser” status.
+
+#### 4. Corporate venture
+
+If permitted by the employer, lead an internal new-business initiative with its own customer discovery, P&L, and milestones. This offers access to customers and resources but provides less exposure to personal financial risk.
+
+#### 5. Acquisition entrepreneurship
+
+Instead of inventing a new company, search for a profitable small firm whose owner wants to retire or exit, then improve its marketing, digital operations, or product portfolio.
+
+This route fits a pragmatic, management-oriented, risk-conscious founder, but it requires:
+
+- deal sourcing;
+- financial and legal diligence;
+- debt/equity structuring;
+- transition planning;
+- operational improvement capability.
+
+It is attractive when the goal is ownership and cash flow, rather than building a venture-capital-scale technology company.
+
+---
+
+## 3. Capability coverage
+
+Scores below are relative: **1 = weak; 5 = strong**.
+
+| Route | Business model | Product/MVP | Market/sales | Finance/fundraising | Team management | Mentor/network | Real execution |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Entrepreneurship degree | 4 | 3 | 3 | 4 | 4 | 4 | 2–3 |
+| Executive education | 4 | 3 | 3 | 3 | 4 | 4 | 2 |
+| Online courses | 4 | 3 | 4 | 3 | 2 | 1–2 | 1 |
+| Pre-accelerator | 4 | 4 | 4 | 3 | 3 | 4 | 4 |
+| Accelerator | 4 | 5 | 5 | 5 | 4 | 5 | 5 |
+| Independent mentoring | 3–5 | 3–5 | 3–5 | 3–5 | 3–5 | 4 | 4 |
+| Startup employment | 3 | 4 | 4 | 3 | 4 | 4 | 5 |
+| Corporate venture | 4 | 4 | 4 | 2 | 4 | 3 | 4 |
+| Side venture | 5 | 5 | 5 | 3 | 2–4 | 2 | 5 |
+| Acquisition route | 4 | 2 | 4 | 5 | 5 | 4 | 5 |
+
+No single route covers everything. In particular:
+
+- Courses provide frameworks but little behavioral change.
+- Accelerators provide capital and speed but are premature without evidence.
+- Building provides the best learning but can reproduce blind spots without mentors.
+- Degrees provide breadth but may not create urgency.
+- Mentors improve judgment but cannot make decisions for the founder.
+
+---
+
+## 4. Recommended personalized pathway
+
+### Why this pathway fits
+
+The user appears to have:
+
+- business and marketing education;
+- managerial and communication experience;
+- an established Shanghai network;
+- a strong preference for rational, planned decision-making;
+- meaningful family and breadwinner obligations;
+- willingness to pay for quality, but not without clear value;
+- regular evening learning time and high-efficiency mornings.
+
+The plan should therefore avoid a dramatic, poorly validated career break. It should use **evidence-gated commitment**.
+
+### Recommended weekly schedule during the employed phase
+
+| Time | Activity |
+|---|---|
+| Two weekday mornings, 60–75 minutes each | Market research, synthesis, experiment design |
+| One weekday evening, 90 minutes | Course work or financial/product skills |
+| One weekday lunch or afternoon slot | Customer or expert interview |
+| Saturday morning, 3 hours | MVP building, pilot delivery, or co-founder work |
+| Sunday evening, 30 minutes | Weekly metrics and family calendar review |
+| Monthly half-day | Adviser review and strategic retrospective |
+
+Total: approximately **7–9 hours per week** initially, rising to **10–15 hours** after a promising problem is found.
+
+Protect family sustainability through:
+
+- at least two startup-free evenings each week;
+- one protected family day each weekend;
+- no venture work during agreed family trips;
+- a monthly discussion with the spouse covering time, cash, stress, and next-stage risk.
+
+---
+
+# 5. Phased 18–24 month plan
+
+## Phase 0 — Set the risk architecture  
+**Weeks 1–2**
+
+### Actions
+
+1. Write a one-page founder thesis:
+   - Why entrepreneurship?
+   - What type of company?
+   - China, cross-border, or global?
+   - Venture-scale or profitable SME?
+   - Desired personal role?
+   - What sacrifices are unacceptable?
+
+2. Establish household constraints:
+   - minimum household liquidity;
+   - maximum experiment budget;
+   - maximum unpaid period;
+   - insurance and education commitments;
+   - conditions for leaving employment.
+
+3. Review employment contract:
+   - confidentiality;
+   - non-compete;
+   - inventions and intellectual-property ownership;
+   - moonlighting;
+   - customer and employee solicitation.
+
+4. Define initial founder scorecard:
+   - domain advantage;
+   - access to customers;
+   - urgency of problem;
+   - willingness to pay;
+   - solution feasibility;
+   - gross-margin potential;
+   - repeatability;
+   - regulatory burden;
+   - founder motivation.
+
+### Deliverables
+
+- Founder thesis.
+- Household risk agreement.
+- Legal/conflict checklist.
+- Opportunity scorecard.
+- Calendar with protected family and venture time.
+
+### Budget
+
+RMB 0–5,000, excluding professional legal advice if needed.
+
+---
+
+## Phase 1 — Build the foundation and opportunity pipeline  
+**Months 1–3**
+
+### Learning
+
+Complete:
+
+1. YC Startup School, using its seven-week structure and weekly progress tracking. [citation:Y Combinator Startup School](https://www.startupschool.org/)
+2. Udacity’s free customer-development course. [citation:Udacity — How to Build a Startup](https://www.udacity.com/course/how-to-build-a-startup--ep245)
+3. Targeted modules in:
+   - startup accounting and cash management;
+   - product management;
+   - technology/AI literacy;
+   - China company, tax, data, and employment basics.
+
+Do not take multiple overlapping entrepreneurship courses.
+
+### Market work
+
+Select **three opportunity arenas**, preferably where there is existing access and credibility. For each:
+
+- interview 10–15 prospective customers;
+- interview five industry experts or channel partners;
+- map current workarounds and spending;
+- identify the budget owner and purchasing process;
+- estimate market from the bottom up;
+- test whether the problem is urgent enough to change behavior.
+
+Total target: **40–50 interviews**.
+
+### Questions to answer
+
+- What event triggers the customer to seek a solution?
+- What do they do now?
+- What does the current method cost?
+- Who feels the pain, who approves, and who pays?
+- Why has the problem not already been solved?
+- Would the customer pilot something within 30 days?
+- What evidence would justify purchase?
+
+Avoid asking, “Do you like my idea?” Ask about past behavior, current spending, and actual workflow.
+
+### Networking
+
+- Reconnect with 15 relevant SJTU/MBA alumni.
+- Attend two focused industry or founder events per month.
+- Conduct one operator conversation per week.
+- Begin building a list of possible technical collaborators.
+
+### Gate at month 3
+
+Proceed only with an opportunity that has at least:
+
+- 15 interviews in the same identifiable segment;
+- repeated evidence of one high-frequency or high-cost problem;
+- five prospects willing to review a solution;
+- two willing to pilot;
+- a credible path to reaching the first 50 customers.
+
+If no problem passes, return to discovery rather than building a product.
+
+---
+
+## Phase 2 — Run two low-cost venture experiments  
+**Months 4–6**
+
+Choose the strongest two opportunities and run one experiment for each.
+
+### Experiment sequence
+
+1. **Problem test:** landing page, webinar, report, community event, or outreach campaign.
+2. **Commitment test:** request a meeting, data access, signed letter of intent, refundable deposit, or paid diagnostic.
+3. **Concierge MVP:** manually deliver the result.
+4. **Pricing test:** offer two or three price points.
+5. **Channel test:** compare warm introductions, outbound sales, partnerships, and content.
+
+### Metrics
+
+Use behavior rather than praise:
+
+- response rate;
+- qualified-conversation rate;
+- pilot acceptance;
+- payment or deposit rate;
+- time to value;
+- repeat use;
+- referral rate;
+- contribution margin;
+- founder hours per delivery.
+
+### Product learning
+
+Build only the minimum needed to test the central assumption. If the hypothesis concerns willingness to pay, do not spend two months perfecting software.
+
+### Mentor board
+
+Recruit three advisers:
+
+- customer/industry;
+- product/technology;
+- finance/founder operations.
+
+Meet monthly. Offer compensation only after establishing mutual fit; possible structures include paid consultations, small project fees, or carefully vested advisory equity.
+
+### Gate at month 6
+
+Continue one venture only if it achieves at least three of the following:
+
+- three or more paying customers;
+- five active pilot users;
+- at least 30% repeated usage in an appropriate interval;
+- measurable customer benefit;
+- gross-margin path consistent with the model;
+- customer referrals;
+- a clear economic buyer;
+- increasing rather than decreasing founder conviction.
+
+Terminate or redesign weak experiments. Treat shutdown as learning, not failure.
+
+---
+
+## Phase 3 — Build an MVP and founder operating system  
+**Months 7–9**
+
+### MVP
+
+Turn the winning concierge solution into a repeatable product or productized service.
+
+Required artifacts:
+
+- product requirements document;
+- prioritized user stories;
+- prototype;
+- measurement plan;
+- onboarding process;
+- customer-support workflow;
+- security and data checklist;
+- version-one pricing.
+
+### Team and co-founder learning
+
+Do not select a co-founder primarily through friendship or shared enthusiasm. Run a 6–10 week working trial involving:
+
+- a customer problem;
+- difficult prioritization;
+- missed deadlines;
+- disagreement about product;
+- a small budget;
+- direct customer contact.
+
+Discuss explicitly:
+
+- full-time timing;
+- equity;
+- vesting;
+- salaries;
+- decision rights;
+- geographic plans;
+- risk tolerance;
+- family obligations;
+- departure arrangements;
+- intellectual property.
+
+Use four-year vesting with a cliff or another professionally advised equivalent rather than fully granting founder equity on day one.
+
+### Financial model
+
+Create:
+
+- 24-month monthly cash-flow model;
+- base, downside, and upside scenarios;
+- customer acquisition cost;
+- gross margin;
+- contribution margin;
+- payback period;
+- runway;
+- hiring triggers;
+- funding need and use of funds.
+
+### Gate at month 9
+
+Target one or more of:
+
+- 10 paying customers in a low-ticket B2B/productized service;
+- three meaningful enterprise pilots;
+- RMB 20,000–50,000 monthly recurring or repeatable revenue;
+- strong usage evidence for a pre-revenue product;
+- written commitments from design partners.
+
+These figures are decision guides, not universal definitions of product–market fit.
+
+---
+
+## Phase 4 — Add structured external pressure  
+**Months 10–12**
+
+This is the appropriate point to join a high-quality incubator or pre-accelerator.
+
+### Program-selection scorecard
+
+Score each candidate from 1–5:
+
+| Criterion | Weight |
+|---|---:|
+| Relevant customer introductions | 20% |
+| Mentor quality and availability | 15% |
+| Founder and alumni quality | 15% |
+| Fit with industry and geography | 15% |
+| Product and growth support | 10% |
+| Investor access | 10% |
+| Time compatibility | 5% |
+| Financial cost | 5% |
+| Equity/legal burden | 5% |
+
+Reject programs scoring below 70/100 or lacking credible references from former participants.
+
+### Fundraising preparation
+
+Prepare:
+
+- 10–12 slide pitch deck;
+- one-page summary;
+- cap table;
+- founder biographies;
+- incorporation and IP documents;
+- customer pipeline;
+- product demo;
+- 24-month financial plan;
+- metrics definitions;
+- data room;
+- list of target investors;
+- explanation of why external capital is necessary.
+
+### Fundraising curriculum
+
+Learn:
+
+- dilution and ownership;
+- pre-money versus post-money valuation;
+- SAFE/conversion mechanics;
+- liquidation preference;
+- pro rata rights;
+- option pools;
+- board rights;
+- founder vesting;
+- runway and milestone financing.
+
+The YC deal demonstrates why terms must be evaluated as a package: its US$500,000 combines a fixed 7% component with an uncapped MFN SAFE, so the ultimate dilution is greater than the initial 7%. [citation:Y Combinator Standard Deal](https://www.ycombinator.com/deal)
+
+### Year-one decision
+
+At month 12, choose among:
+
+1. **Stop:** weak demand or poor founder fit.
+2. **Continue part-time:** encouraging evidence but insufficient income or repeatability.
+3. **Negotiate reduced employment:** stronger evidence, growing pipeline.
+4. **Transition full-time:** committed team, meaningful demand, sufficient runway.
+5. **Pursue acquisition instead:** founder strengths fit operations better than zero-to-one creation.
+
+---
+
+## Phase 5 — Scale evidence, not activity  
+**Months 13–18**
+
+### If still employed
+
+Increase to 12–15 venture hours per week and seek:
+
+- repeatable lead generation;
+- repeatable onboarding;
+- lower delivery effort;
+- customer retention;
+- better unit economics;
+- a technical/product partner;
+- three to six months of visible pipeline.
+
+### If full-time
+
+Run a 90-day operating plan:
+
+- weekly customer/revenue targets;
+- fortnightly product releases;
+- weekly cash review;
+- monthly investor/adviser update;
+- hiring only against explicit bottlenecks;
+- founder-role definitions;
+- customer concentration limits.
+
+### Accelerator decision
+
+Apply to an accelerator if the company is venture-scale and the program provides a genuine advantage.
+
+- Techstars may suit a venture needing a three-month mentorship and investor network. [citation:Techstars Accelerators](https://www.techstars.com/accelerators)
+- Antler Singapore may suit a team ready for six weeks of full commitment and Southeast Asian/global expansion, but its 10% component and uncapped SAFE must be weighed carefully. [citation:Antler Singapore](https://www.antler.co/location/singapore)
+- YC may suit a highly scalable global company prepared for its investment and corporate-structure requirements. [citation:Y Combinator Standard Deal](https://www.ycombinator.com/deal)
+
+Do not apply merely for prestige. Define in advance what the accelerator must unlock:
+
+- a particular market;
+- technical talent;
+- enterprise partners;
+- credible lead investors;
+- global fundraising;
+- rapid product iteration.
+
+---
+
+## Phase 6 — Launch, fund, or remain capital-efficient  
+**Months 19–24**
+
+Choose one of three strategic paths.
+
+### Path A: Bootstrapped/profitable company
+
+Use when:
+
+- customers pay early;
+- growth can be financed from revenue;
+- the market is attractive but not necessarily venture-scale;
+- founder control and family stability are priorities.
+
+Focus on:
+
+- cash conversion;
+- gross margin;
+- repeatable sales;
+- operational automation;
+- selective hiring;
+- customer concentration;
+- dividend versus reinvestment policy.
+
+### Path B: Venture-funded startup
+
+Use when:
+
+- speed materially changes the outcome;
+- the market is very large;
+- network effects, technology, or scale matter;
+- capital can create defensible advantage;
+- the team accepts dilution and high-growth expectations.
+
+Raise enough to achieve the next value-inflecting milestone, generally with an 18–24 month planning runway rather than simply maximizing the round.
+
+### Path C: Corporate partnership or spinout
+
+Use when:
+
+- the venture needs enterprise distribution, manufacturing, data, or regulatory support;
+- a strategic partner can accelerate adoption;
+- independence can be protected contractually.
+
+Negotiate carefully around:
+
+- exclusivity;
+- IP ownership;
+- data rights;
+- channel conflicts;
+- minimum purchase commitments;
+- rights of first refusal;
+- change-of-control clauses.
+
+---
+
+## 6. Career-exit and risk gates
+
+Because the user is the primary breadwinner, resignation should be based on observable evidence rather than motivation alone.
+
+### Suggested full-time transition checklist
+
+Move full-time only when most of the following are true:
+
+- spouse agrees after reviewing a written downside plan;
+- 12–18 months of essential household expenditure is protected;
+- venture capital is not counted until legally closed and funded;
+- health and major family insurance are secured;
+- there is a committed co-founder or a credible solo-founder execution model;
+- employment/IP conflicts have been cleared;
+- at least one acquisition channel has shown repeatability;
+- customers show payment, usage, or contractual commitment;
+- the founder can explain exactly what full-time effort will unlock;
+- there is a 90-day plan and a shutdown/reassessment threshold.
+
+### Experiment-budget approach
+
+A conservative two-year learning-and-testing budget could be:
+
+| Category | Indicative budget |
+|---|---:|
+| Online courses/books/tools | RMB 2,000–15,000 |
+| Events, communities, local travel | RMB 5,000–20,000 |
+| Specialist mentors/legal/accounting | RMB 15,000–60,000 |
+| MVPs and experiments | RMB 20,000–100,000 |
+| Optional executive program | RMB 20,000–150,000+ |
+| Optional accelerator travel/relocation | Separate decision |
+| Household runway | At least 12–18 months of essential expenditure before leaving employment |
+
+The experiment fund should be released in stages. For example:
+
+- first RMB 10,000 after problem validation;
+- next RMB 20,000 after pilot commitment;
+- larger product spending only after actual usage or revenue.
+
+---
+
+## 7. Learning priorities by founder gap
+
+The existing MBA means introductory marketing and general strategy should receive relatively little time.
+
+### Highest-priority learning
+
+1. **Customer discovery**
+   - interviewing without leading;
+   - identifying purchasing triggers;
+   - differentiating user, buyer, and approver.
+
+2. **Product**
+   - MVP scope;
+   - prototyping;
+   - product analytics;
+   - usability;
+   - build/buy/partner decisions.
+
+3. **Technology literacy**
+   - working with technical co-founders;
+   - architecture trade-offs;
+   - AI capabilities and limitations;
+   - security and data governance;
+   - estimating development complexity.
+
+4. **Founder-led sales**
+   - account selection;
+   - outreach;
+   - discovery calls;
+   - proposals;
+   - pilot design;
+   - negotiation;
+   - closing and expansion.
+
+5. **Startup finance**
+   - unit economics;
+   - runway;
+   - scenario planning;
+   - cap tables;
+   - financing instruments.
+
+6. **Founder and team management**
+   - co-founder conflict;
+   - role definition;
+   - early hiring;
+   - incentives and vesting;
+   - feedback;
+   - performance under ambiguity.
+
+### Lower-priority learning
+
+- general branding;
+- conventional corporate strategic planning;
+- broad management theory;
+- repeated case-study programs without live venture work;
+- pitch training before customer discovery.
+
+---
+
+## 8. Program due-diligence questions
+
+Before paying for any course, incubator, or accelerator, ask:
+
+1. How many mentor hours are guaranteed rather than merely available?
+2. Who are the actual mentors for this cohort?
+3. How many introductions are relevant to the chosen industry?
+4. What percentage of participants are still operating after 12 and 24 months?
+5. May three recent alumni be contacted directly?
+6. What equity, warrants, SAFE rights, fees, or future obligations exist?
+7. Who owns work and IP created during the program?
+8. Are mentors or sponsors entitled to invest?
+9. Is the program designed for idea-stage, MVP-stage, or revenue-stage companies?
+10. What does the weekly schedule require?
+11. Does it require local incorporation, relocation, or full-time attendance?
+12. Is investor access real or mostly a public demo day?
+13. Is the network active in mainland China, Southeast Asia, or the target global market?
+14. Does the program create customer access or mainly educational content?
+
+---
+
+## Final route ranking
+
+For this specific profile:
+
+1. **Systematic side-venture experiments — highest value**
+2. **Targeted mentors and SJTU/Shanghai/Suzhou founder networks**
+3. **Free or low-cost online startup curriculum**
+4. **Industry-specific incubator or pre-accelerator after initial validation**
+5. **Startup advisory/operator experience**
+6. **Accelerator after MVP, team, and traction**
+7. **Targeted executive education for a defined network or skill gap**
+8. **Acquisition entrepreneurship as an attractive alternative path**
+9. **Second general business or entrepreneurship degree — lowest incremental value**
+
+The critical principle is:
+
+> **Do not spend the first year preparing to become an entrepreneur. Spend it running increasingly realistic, capped-downside entrepreneurial experiments.**
+
+By month 12, the intended output is not another credential. It is a body of evidence: customer interviews, failed and successful tests, paying users, a product, a potential team, unit economics, and a clear decision about whether—and how—to commit full-time.
+
+## Sources
+
+### Founder education and curricula
+
+- [Y Combinator Startup School](https://www.startupschool.org/) - Free, self-paced founder curriculum, progress tracking, and co-founder matching.
+- [Udacity — How to Build a Startup](https://www.udacity.com/course/how-to-build-a-startup--ep245) - Free customer-development course taught by Steve Blank and Kathleen Mullaney.
+- [edX Entrepreneurship Courses](https://www.edx.org/learn/entrepreneurship) - Overview of entrepreneurship, market research, business models, finance, leadership, and communication curricula.
+- [Founder Institute](https://fi.co/join) - Example of a structured virtual pre-accelerator with mentors, office hours, curriculum, and cohort deadlines.
+
+### Accelerators and financing
+
+- [Techstars Accelerators](https://www.techstars.com/accelerators) - Official overview of its three-month, mentorship-driven accelerator format.
+- [Y Combinator Standard Deal](https://www.ycombinator.com/deal) - Official investment terms, SAFE structure, pro rata rights, fees, and incorporation requirements.
+- [Antler Singapore](https://www.antler.co/location/singapore) - Official residency schedule, program focus, mentorship, investment structure, and follow-on-capital description.
+- [Antler Global](https://www.antler.co/residency) - Overview of Antler’s global founder, adviser, and early-stage investment platform.

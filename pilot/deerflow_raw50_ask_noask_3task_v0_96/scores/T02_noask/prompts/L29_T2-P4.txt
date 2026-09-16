@@ -1,0 +1,202 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare academically legitimate overseas exchange or short-term visiting programs that can be completed within one semester and can satisfy ordinary credit and academic requirements.
+
+Compare options in the United States, Europe, Japan and Singapore. Cover curriculum and teaching models, credit transfer, academic environment, living costs, visa and language requirements, scholarships or financial aid, research and networking value, cross-cultural value and practical adaptation issues.
+
+Produce a prioritized shortlist and preparation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T2-P4-01",
+    "criterion": "The report states self-guided exploration and flexible local experience as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate self-guided exploration and flexible local experience.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-03",
+    "criterion": "The report provides concrete evidence about how an option supports self-guided exploration and flexible local experience.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-04",
+    "criterion": "The report provides concrete evidence about how an option reflects heavily packaged/group-managed activities.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-05",
+    "criterion": "The report directly compares self-guided exploration and flexible local experience with heavily packaged/group-managed activities.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-06",
+    "criterion": "At least one recommended option is selected because it supports self-guided exploration and flexible local experience.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors heavily packaged/group-managed activities.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-08",
+    "criterion": "The plan contains one executable step that implements self-guided exploration and flexible local experience.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for self-guided exploration and flexible local experience.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-10",
+    "criterion": "The report states when heavily packaged/group-managed activities would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P4-11",
+    "criterion": "One visible chain links self-guided exploration and flexible local experience to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label L29):
+To produce a shortlist that is genuinely eligible, credit-bearing, and realistic, I need a few essential details:
+
+1. **Home university, school/department, and degree level**  
+   For example: master’s student at ___ University, School of Journalism and Communication. Credit-transfer rules and partner nominations are institution-specific.
+
+2. **Nationality/passport and current country of enrollment**  
+   These determine visa requirements and eligibility for programs in the US, Europe, Japan, and Singapore.
+
+3. **Target semester and maximum duration**  
+   For example: Spring 2027, no more than 16 weeks. Please include any fixed arrival/return dates.
+
+4. **Language credentials**  
+   Current or expected TOEFL/IELTS score, and any Japanese or European-language ability. Also indicate whether an entirely English-taught program is required.
+
+5. **Budget ceiling**  
+   Please give either a total budget or monthly living-cost limit, and clarify whether tuition must be waived through an exchange agreement.
+
+6. **Preferred academic format**  
+   Choose any that apply:
+   - Regular taught courses with transferable credits
+   - Visiting graduate student/research attachment
+   - Combination of coursework and supervised research
+   - Intensive short-term or summer/winter program
+
+7. **Credit and graduation requirements**  
+   How many home-university credits must be earned? Must the courses count toward the major, or can they be electives? Does your university require prior approval or have a list of recognized partner institutions?
+
+8. **Research priorities**  
+   Please rank the most important areas, such as computational communication, social-media analysis, public opinion, political communication, digital sociology, platform governance, AI and society, or data journalism.
+
+9. **Any destination or institutional preferences**  
+   For example: major global city, strong quantitative methods, access to policy institutions, lower cost, prestigious university, Mandarin-friendly environment, or potential PhD networking.
+
+If some details are unknown, provide your best estimate. A compact reply in the following format is enough:
+
+> Home university/degree:  
+> Passport/current location:  
+> Target semester/dates:  
+> Languages/scores:  
+> Total budget:  
+> Preferred format:  
+> Required credits:  
+> Research priorities:  
+> Other preferences:
+
+Once provided, I can compare concrete, academically legitimate programs—including eligibility, curriculum, transfer mechanics, costs, visas, funding, research fit, and practical adaptation—and produce a prioritized shortlist and preparation timeline.

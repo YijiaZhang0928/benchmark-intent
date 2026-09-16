@@ -1,0 +1,84 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare suitable artificial-intelligence PhD directions and programs abroad for an application horizon of roughly 1–2 years.
+
+Cover major regions including North America, Europe and Asia. Compare research strengths, curriculum structures, academic resources, employment prospects, application and language requirements, research/internship preparation, tuition, scholarship and funding mechanisms, and representative universities or programs.
+
+Produce a phased 1–2 year preparation and application plan covering research preparation, program selection, application materials and timeline management.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T1-A2-01",
+    "criterion": "The report gives one concrete fact relevant to access to technology ecosystems, museums/exhibitions and intellectually active cities.",
+    "criterion_explanation": "A named option has a verifiable fact tied to this average-impact preference.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-A2-02",
+    "criterion": "The report distinguishes access to technology ecosystems, museums/exhibitions and intellectually active cities from location being unimportant.",
+    "criterion_explanation": "At least one option-level difference is explicit on the preference axis.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-A2-03",
+    "criterion": "The shortlist or recommendation uses access to technology ecosystems, museums/exhibitions and intellectually active cities as a tie-breaker or secondary fit factor.",
+    "criterion_explanation": "The preference changes one rank, inclusion, exclusion or stated fit judgment.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-A2-04",
+    "criterion": "The final recommendation does not contradict access to technology ecosystems, museums/exhibitions and intellectually active cities.",
+    "criterion_explanation": "No selected option is explicitly justified by the opposing value without a disclosed trade-off.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label C17):
+To tailor the comparison and 1–2 year application plan, please clarify these points:
+
+1. **Current year and expected graduation date** — e.g., sophomore graduating June 2028.
+2. **Academic standing** — approximate GPA, class rank, and any especially strong or weak core courses.
+3. **Current AI interests** — such as machine learning theory, computer vision, NLP/LLMs, robotics, AI systems, trustworthy AI, computational neuroscience, or undecided.
+4. **Research experience** — labs, papers, competitions, substantial projects, internships, and relationships with potential recommendation writers.
+5. **English and other languages** — current TOEFL/IELTS/GRE status and willingness to study in a non-English-speaking country.
+6. **Financial constraints** — must the PhD be fully funded, and is there a maximum acceptable personal contribution?
+7. **Career preference** — academic research, industrial research, engineering, entrepreneurship, or undecided.
+8. **Geographic constraints** — any preferred or excluded countries, and whether immigration or long-term residence prospects matter.
+
+If some details are unknown, you can simply say **“use reasonable defaults.”** I will then produce a current, source-cited comparison of North America, Europe, and Asia, followed by a personalized phased preparation and application plan.

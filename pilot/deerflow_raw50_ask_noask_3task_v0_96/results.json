@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.96",
+  "experiment_id": "deerflow-raw50-ask-noask-3task-v0.96",
+  "status": "completed_with_engineering_failures",
+  "frozen_seed": "20260915",
+  "raw50_units": {
+    "T01": "22/44",
+    "T02": "25/50",
+    "T03": "24/49"
+  },
+  "clarification_process": {
+    "asked_task_rate": "3/3",
+    "question_turns": {"T01": 1, "T02": 2, "T03": 1},
+    "question_items": {"T01": 8, "T02": 14, "T03": 9},
+    "total_question_items": 31,
+    "author_coded_direct_high_impact_targets": {"T01": 2, "T02": 2, "T03": 4},
+    "direct_high_impact_coverage": "8/15",
+    "direct_target_precision": "8/31"
+  },
+  "cells": {
+    "T01_ASK": {"status": "GraphRecursionError_no_report", "p_strict": null, "p_hi": null},
+    "T01_NOASK_FORCE": {"status": "report_complete_zero_substantive_fetches_judge_failed_after_high_subset", "p_strict": null, "p_hi_recovered": 6.38},
+    "T02_ASK": {"status": "GraphRecursionError_complete_report_recovered_exploratory", "p_strict": 3.5630769230769235, "p_hi": 3.7},
+    "T02_NOASK_FORCE": {"status": "GraphRecursionError_no_report", "p_strict": null, "p_hi": null},
+    "T03_ASK": {"status": "completed", "p_strict": 7.669899665551839, "p_hi": 7.85},
+    "T03_NOASK_FORCE": {"status": "completed", "p_strict": 8.636789297658863, "p_hi": 8.94}
+  },
+  "valid_paired_content_comparison": {
+    "task": "T03",
+    "ask_minus_noask_p_strict": -0.966889632107024,
+    "ask_minus_noask_p_hi": -1.0899999999999999
+  },
+  "raw50_ask_vs_prior_cold_ask": {
+    "scoreable_tasks": ["T02", "T03"],
+    "mean_raw50_p_strict": 5.616488294314381,
+    "mean_cold_p_strict": 5.899498327759199,
+    "delta_raw50_minus_cold_p_strict": -0.283010033444818,
+    "mean_raw50_p_hi": 5.775,
+    "mean_cold_p_hi": 6.09,
+    "delta_raw50_minus_cold_p_hi": -0.3149999999999995
+  },
+  "invalid_tool_only_noask": {
+    "manipulation_check": "failed_all_three_stopped_with_prose_clarification_request",
+    "p_strict": {"T01": 0.0, "T02": 0.0, "T03": 0.2},
+    "pooled_with_force_complete": false
+  }
+}

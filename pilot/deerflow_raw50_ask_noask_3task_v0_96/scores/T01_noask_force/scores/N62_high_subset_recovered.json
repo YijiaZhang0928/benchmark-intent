@@ -1,0 +1,350 @@
+{
+  "schema_version": "0.96-recovery",
+  "score_name": "P_HI v0.82 recovered from completed high-impact judge batches",
+  "blind_label": "N62",
+  "recovery_reason": "The strict judge failed later on average-preference criterion T1-A1-04; all 55 high-impact criteria had already passed validation and been written.",
+  "p_strict": null,
+  "p_hi": 6.380000000000001,
+  "high_dimension_scores": {
+    "INTENT": 8.4,
+    "SOURCE": 9.2,
+    "EVIDENCE": 5.6000000000000005,
+    "TRADEOFF": 2.8000000000000003,
+    "DECISION": 5.2,
+    "ACTION": 9.4,
+    "TRACE": 6.4
+  },
+  "criterion_count": 55,
+  "criterion_scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 10,
+      "evidence_span": "Choose two candidate themes—preferably **AI systems/trustworthy models** and either **embodied AI** or **human-centered AI**.",
+      "rationale": "Explicitly prioritizes an AI-systems research theme in the applicant’s direction-selection decision."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 8,
+      "evidence_span": "Access to compute, data, robots, collaborators, or experimental facilities | 10%",
+      "rationale": "The laboratory-evaluation framework identifies concrete resource evidence relevant to implementation-heavy and experimental research. It does not explicitly assess laboratories’ records of building or deploying systems."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 8,
+      "evidence_span": "Carnegie Mellon’s School of Computer Science offers distinct doctoral homes—including machine learning, robotics, language technologies, computer science, and human-computer interaction",
+      "rationale": "Provides a verifiable institutional fact: CMU offers dedicated doctoral pathways in areas such as robotics that support systems-oriented research. The evidence is program-level rather than a concrete laboratory project or implementation resource."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 4,
+      "evidence_span": "For theory-heavy programs, proof-based mathematics is important.",
+      "rationale": "Identifies a factual characteristic of theory-heavy preparation, but does not establish that any named option conducts purely abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 8,
+      "evidence_span": "For theory-heavy programs, proof-based mathematics is important. For AI systems, operating systems, architecture, distributed computing and performance engineering matter.",
+      "rationale": "Directly compares theory-heavy and systems research on the common axis of prerequisite preparation, with consequential differences in course selection. The contrast is with theory-heavy programs rather than explicitly theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 10,
+      "evidence_span": "### Option A — AI systems + trustworthy foundation models\n\nThis is the safest broad recommendation for a computer-science undergraduate.\n\nPossible questions:\n\n- How can multimodal or language models be evaluated reliably under distribution shift?\n- Can inference be accelerated without materially degrading factuality or calibration?\n- How can retrieval or tool use improve reliability in a specialized domain?\n- What compression or quantization methods preserve reasoning performance?\n\nThis direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "Names and recommends a specific research route, then explicitly gives its support for engineering ability and experimental rigor as a selection reason."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named, otherwise viable option is downgraded because it favors purely abstract theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "Release clean code, environment instructions, and experiment logs.",
+      "rationale": "Provides an executable step with concrete implementation artifacts to produce and release as part of the flagship research project."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "Reproduce two or three strong baselines.",
+      "rationale": "Defines a quantitative implementation checkpoint within the recommended flagship-project workflow."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not state a concrete condition under which purely abstract theory-only research would become preferable to the recommended systems-oriented direction."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 4,
+      "evidence_span": "This direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "Connects the recommended route to engineering and experimental priorities, but supplies a general assertion rather than concrete cited evidence completing the preference–evidence–decision chain."
+    },
+    {
+      "criterion_id": "T1-P2-01",
+      "score": 4,
+      "evidence_span": "The decisive objective for the next year is not collecting many certificates. It is producing **one credible body of research** and earning **two detailed research letters**.",
+      "rationale": "The report explicitly prioritizes research output, but does not state self-directed, hands-on exploration as the decision priority. Research credentials are a broader objective, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T1-P2-02",
+      "score": 8,
+      "evidence_span": "| Quality and independence of current students | 10% |\n| Access to compute, data, robots, collaborators, or experimental facilities | 10% |",
+      "rationale": "The laboratory-selection framework identifies student independence and access to experimental resources as evidence classes to investigate. These directly help evaluate independent, hands-on research, although replication and coding opportunities are not separately investigated."
+    },
+    {
+      "criterion_id": "T1-P2-03",
+      "score": 4,
+      "evidence_span": "This direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "This describes the proposed AI-systems/trustworthy-models direction, but supplies no concrete program mechanism or demonstrated opportunity supporting independent projects, replication, or coding. The broad characterization earns only partial credit."
+    },
+    {
+      "criterion_id": "T1-P2-04",
+      "score": 8,
+      "evidence_span": "US computer-science PhDs generally offer the broadest early-stage curriculum: advanced courses, seminars, qualifying requirements, teaching, and several years of dissertation research.",
+      "rationale": "The named US doctoral route has concrete course- and qualification-based structural features. This establishes the classroom-oriented contrast, although the report does not characterize the preparation as mainly classroom-based."
+    },
+    {
+      "criterion_id": "T1-P2-05",
+      "score": 4,
+      "evidence_span": "The decisive objective for the next year is not collecting many certificates. It is producing **one credible body of research** and earning **two detailed research letters**.",
+      "rationale": "The report contrasts research production with collecting certificates, but certificates are not explicitly classroom-based preparation. It does not directly compare the two preparation modes on a shared axis with a stated consequential difference."
+    },
+    {
+      "criterion_id": "T1-P2-06",
+      "score": 8,
+      "evidence_span": "### Option A — AI systems + trustworthy foundation models\n\nThis is the safest broad recommendation for a computer-science undergraduate.\n\nPossible questions:\n\n- How can multimodal or language models be evaluated reliably under distribution shift?\n- Can inference be accelerated without materially degrading factuality or calibration?\n- How can retrieval or tool use improve reliability in a specialized domain?\n- What compression or quantization methods preserve reasoning performance?\n\nThis direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "The report recommends a named direction and supports it through engineering, experimentation, and feasible computing requirements. This is a clear hands-on selection rationale, though self-directed work and replication are not explicitly named as the reason."
+    },
+    {
+      "criterion_id": "T1-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable named option is downgraded because it favors classroom- or course-based preparation."
+    },
+    {
+      "criterion_id": "T1-P2-08",
+      "score": 10,
+      "evidence_span": "Reproduce one compact paper in each of the two strongest directions.",
+      "rationale": "This is an executable replication task in the phased preparation plan, with a concrete action and object."
+    },
+    {
+      "criterion_id": "T1-P2-09",
+      "score": 10,
+      "evidence_span": "1. Reproduce two or three strong baselines.\n2. Identify a measurable limitation.\n3. Propose one focused method or evaluation framework.",
+      "rationale": "The flagship-project plan gives both a numerical replication target and an ordered progression from reproduction to identifying a limitation and proposing an extension."
+    },
+    {
+      "criterion_id": "T1-P2-10",
+      "score": 4,
+      "evidence_span": "This is appropriate for a young applicant who has strong fundamentals but has not yet fixed a narrow research topic.",
+      "rationale": "The report identifies an applicant condition favoring the broader US curriculum. It does not explicitly say that mainly classroom-based preparation becomes preferable to hands-on research under that condition, so the reversal remains incomplete."
+    },
+    {
+      "criterion_id": "T1-P2-11",
+      "score": 4,
+      "evidence_span": "This direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "The statement provides a hands-on rationale for a recommendation, but not a concrete supporting fact that completes an explicit preference-to-evidence-to-decision chain. The evidence link remains a broad assertion."
+    },
+    {
+      "criterion_id": "T1-P3-01",
+      "score": 8,
+      "evidence_span": "**United States/Canada:** primary choice if seeking broad coursework, freedom to explore before fixing a dissertation topic, and access to major AI research and industry ecosystems.",
+      "rationale": "The executive recommendation explicitly treats access to research and industry ecosystems as a selection priority, although preserving career optionality is not articulated as a distinct overarching objective."
+    },
+    {
+      "criterion_id": "T1-P3-02",
+      "score": 10,
+      "evidence_span": "- Are internships encouraged?\n- How are computing resources allocated?\n- What happens if a project fails or grant funding ends?\n- Does the adviser expect nights and weekends?\n- Where did the previous five graduates go?",
+      "rationale": "The report directs the applicant to ask current students about internship support and graduate destinations, identifiable evidence types for evaluating industry access and employment outcomes."
+    },
+    {
+      "criterion_id": "T1-P3-03",
+      "score": 8,
+      "evidence_span": "Singapore also provides access to A*STAR institutes and regional technology-company laboratories.",
+      "rationale": "Singapore is a named regional option with a concrete claim about access to research institutes and company laboratories. This supports industry-research opportunities, though program-specific access mechanisms or outcomes are not documented."
+    },
+    {
+      "criterion_id": "T1-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program or route is described with a verifiable fact establishing an exclusively academic-faculty orientation."
+    },
+    {
+      "criterion_id": "T1-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare preserving industry/employment options against optimizing exclusively for an academic-faculty career."
+    },
+    {
+      "criterion_id": "T1-P3-06",
+      "score": 10,
+      "evidence_span": "**Singapore and Hong Kong:** strong English-medium, well-funded, geographically closer options with good access to Asian research and technology markets.",
+      "rationale": "The recommended regional strategy names Singapore and Hong Kong and explicitly includes access to research and technology markets among the reasons to select them."
+    },
+    {
+      "criterion_id": "T1-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded because it favors an academic-faculty-only trajectory."
+    },
+    {
+      "criterion_id": "T1-P3-08",
+      "score": 10,
+      "evidence_span": "For each offer, compare:\n\n- Adviser and co-adviser options\n- Guaranteed funding duration\n- Net stipend after tuition, fees, tax and housing\n- Computing and experimental resources\n- Internship policy\n- Student outcomes",
+      "rationale": "The offer-evaluation phase contains an executable instruction to compare internship policies and student outcomes, directly incorporating industry access and employability into the decision."
+    },
+    {
+      "criterion_id": "T1-P3-09",
+      "score": 4,
+      "evidence_span": "| Student publication and placement record | 10% |",
+      "rationale": "The report supplies a usable allocation for placement evidence, but combines it with publications and does not specify industry placement, employment optionality, or an internship-related threshold."
+    },
+    {
+      "criterion_id": "T1-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which an exclusively academic-faculty strategy would become preferable."
+    },
+    {
+      "criterion_id": "T1-P3-11",
+      "score": 4,
+      "evidence_span": "**United States/Canada:** primary choice if seeking broad coursework, freedom to explore before fixing a dissertation topic, and access to major AI research and industry ecosystems.",
+      "rationale": "This links an industry-access preference to a regional recommendation, but the supporting ecosystem description remains general. The report does not visibly connect a concrete preference-specific finding to a downstream decision in a complete evidence-to-action chain."
+    },
+    {
+      "criterion_id": "T1-P4-01",
+      "score": 10,
+      "evidence_span": "The applicant should **not pay full international tuition for a conventional computer-science/AI PhD** unless there is an exceptional and carefully evaluated reason.",
+      "rationale": "Explicitly makes avoiding full international PhD tuition a decision priority."
+    },
+    {
+      "criterion_id": "T1-P4-02",
+      "score": 10,
+      "evidence_span": "[Stanford Computer Science PhD Funding](https://www.cs.stanford.edu/phd-program-overview/funding) - Official doctoral funding information.",
+      "rationale": "Identifies an official, program-specific source for evaluating doctoral funding."
+    },
+    {
+      "criterion_id": "T1-P4-03",
+      "score": 10,
+      "evidence_span": "ETH Zürich and EPFL are exceptional options for ML theory, robotics, vision, AI systems, optimization, scientific computing, and interdisciplinary AI. Doctoral candidates are commonly employed and salaried rather than charged a US-style tuition bill.",
+      "rationale": "Names two institutions and provides a verifiable funding-mechanism fact: doctoral employment with a salary."
+    },
+    {
+      "criterion_id": "T1-P4-04",
+      "score": 4,
+      "evidence_span": "Confirm explicitly whether the **international fee differential** is covered. Partial awards can leave a substantial gap.",
+      "rationale": "The UK funding discussion identifies a concrete type of potential expense, but does not establish a named option as an expensive prestige-first choice. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T1-P4-05",
+      "score": 2,
+      "evidence_span": "Do not accept solely because of university prestige.",
+      "rationale": "Discourages prestige-only selection, but does not directly compare funded and expensive prestige-first options on a common axis with a consequential difference."
+    },
+    {
+      "criterion_id": "T1-P4-06",
+      "score": 10,
+      "evidence_span": "**Continental Europe:** primary choice if already able to identify a narrow topic and supervisor; particularly attractive because many doctoral researchers are salaried employees.",
+      "rationale": "Recommends a named regional route and explicitly gives salaried doctoral employment as a reason."
+    },
+    {
+      "criterion_id": "T1-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named, otherwise viable option is explicitly downgraded because it represents an expensive prestige-first choice."
+    },
+    {
+      "criterion_id": "T1-P4-08",
+      "score": 10,
+      "evidence_span": "For each offer, compare:\n\n- Adviser and co-adviser options\n- Guaranteed funding duration\n- Net stipend after tuition, fees, tax and housing",
+      "rationale": "The offer-evaluation phase supplies an executable action with concrete funding and net-cost comparison objects."
+    },
+    {
+      "criterion_id": "T1-P4-09",
+      "score": 10,
+      "evidence_span": "consider US offers only after examining the written guarantee, expected duration, summer support, health insurance, fees, teaching obligations, and local cost of living.",
+      "rationale": "Defines an explicit checkpoint: examine specified funding and cost conditions before considering US offers."
+    },
+    {
+      "criterion_id": "T1-P4-10",
+      "score": 2,
+      "evidence_span": "unless there is an exceptional and carefully evaluated reason.",
+      "rationale": "Allows an unspecified exception to avoiding full tuition, but provides no concrete condition under which an expensive prestige-first option becomes preferable."
+    },
+    {
+      "criterion_id": "T1-P4-11",
+      "score": 10,
+      "evidence_span": "**Continental Europe:** primary choice if already able to identify a narrow topic and supervisor; particularly attractive because many doctoral researchers are salaried employees.",
+      "rationale": "Explicitly connects the financial advantage of salaried doctoral employment to the attractiveness and recommendation of the continental European route."
+    },
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 10,
+      "evidence_span": "Do not select solely by university ranking. For every prospective adviser, score the following from 0 to 5:",
+      "rationale": "The accompanying weighted rubric explicitly prioritizes research fit, advising evidence, resources, funding, graduate outcomes, and personal sustainability rather than university ranking."
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "Questions to ask current students after admission or serious faculty engagement:",
+      "rationale": "Current students are an identifiable evidence source, and the ensuing questions specifically investigate mentoring, funding, resources, internships, graduation time, and graduate placements."
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 10,
+      "evidence_span": "Carnegie Mellon’s School of Computer Science offers distinct doctoral homes—including machine learning, robotics, language technologies, computer science, and human-computer interaction—making it especially valuable for applicants with a well-defined subfield",
+      "rationale": "The report provides a verifiable structural fact about a named institution and explicitly explains its relevance to subfield fit. An official program source immediately follows."
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report lists prestigious institutions and selectivity tiers, but provides no concrete, verifiable example of an option using school prestige as the dominant decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 8,
+      "evidence_span": "A specific professor at a less famous institution may be the best global match for a narrow topic.",
+      "rationale": "This directly contrasts institutional fame with research match on the common axis of program selection, showing that the preferred institution can change. The contrast is less complete about outcomes and other trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 10,
+      "evidence_span": "### Option A — AI systems + trustworthy foundation models\n\nThis is the safest broad recommendation for a computer-science undergraduate.\n\nPossible questions:\n\n- How can multimodal or language models be evaluated reliably under distribution shift?\n- Can inference be accelerated without materially degrading factuality or calibration?\n- How can retrieval or tool use improve reliability in a specialized domain?\n- What compression or quantization methods preserve reasoning performance?\n\nThis direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "The named recommended direction is justified through applicant-skill fit and an explicit resource trade-off, rather than reputation."
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 4,
+      "evidence_span": "Include a wider range of institutions and avoid an application list composed entirely of famous foundation-model groups.",
+      "rationale": "The report discourages a fame-concentrated application strategy, but does not name an otherwise viable program or laboratory and explicitly lower its rank for prestige-dominant selection. Credit is capped for this incomplete contrast."
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "Read three recent papers from every serious prospective adviser.",
+      "rationale": "This is an executable, evidence-gathering action for assessing research fit, embedded in the shortlist-construction phase."
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 10,
+      "evidence_span": "| Match with the applicant’s actual research question | 25% |",
+      "rationale": "The adviser-evaluation rubric assigns a concrete weight to research fit, implementing a usable allocation rule within its specified 0–5 scoring system."
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is given under which prestige-dominant selection becomes preferable."
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 10,
+      "evidence_span": "Carnegie Mellon’s School of Computer Science offers distinct doctoral homes—including machine learning, robotics, language technologies, computer science, and human-computer interaction—making it especially valuable for applicants with a well-defined subfield [citation:CMU School of Computer Science Doctoral Programs](https://www.cs.cmu.edu/education/phd).",
+      "rationale": "The report visibly links subfield fit to a cited fact about distinct doctoral programs and then to a favorable conditional assessment of CMU."
+    }
+  ]
+}

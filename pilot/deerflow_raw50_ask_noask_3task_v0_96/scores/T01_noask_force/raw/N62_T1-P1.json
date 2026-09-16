@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 10,
+      "evidence_span": "Choose two candidate themes—preferably **AI systems/trustworthy models** and either **embodied AI** or **human-centered AI**.",
+      "rationale": "Explicitly prioritizes an AI-systems research theme in the applicant’s direction-selection decision."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 8,
+      "evidence_span": "Access to compute, data, robots, collaborators, or experimental facilities | 10%",
+      "rationale": "The laboratory-evaluation framework identifies concrete resource evidence relevant to implementation-heavy and experimental research. It does not explicitly assess laboratories’ records of building or deploying systems."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 8,
+      "evidence_span": "Carnegie Mellon’s School of Computer Science offers distinct doctoral homes—including machine learning, robotics, language technologies, computer science, and human-computer interaction",
+      "rationale": "Provides a verifiable institutional fact: CMU offers dedicated doctoral pathways in areas such as robotics that support systems-oriented research. The evidence is program-level rather than a concrete laboratory project or implementation resource."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 4,
+      "evidence_span": "For theory-heavy programs, proof-based mathematics is important.",
+      "rationale": "Identifies a factual characteristic of theory-heavy preparation, but does not establish that any named option conducts purely abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 8,
+      "evidence_span": "For theory-heavy programs, proof-based mathematics is important. For AI systems, operating systems, architecture, distributed computing and performance engineering matter.",
+      "rationale": "Directly compares theory-heavy and systems research on the common axis of prerequisite preparation, with consequential differences in course selection. The contrast is with theory-heavy programs rather than explicitly theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 10,
+      "evidence_span": "### Option A — AI systems + trustworthy foundation models\n\nThis is the safest broad recommendation for a computer-science undergraduate.\n\nPossible questions:\n\n- How can multimodal or language models be evaluated reliably under distribution shift?\n- Can inference be accelerated without materially degrading factuality or calibration?\n- How can retrieval or tool use improve reliability in a specialized domain?\n- What compression or quantization methods preserve reasoning performance?\n\nThis direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "Names and recommends a specific research route, then explicitly gives its support for engineering ability and experimental rigor as a selection reason."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named, otherwise viable option is downgraded because it favors purely abstract theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "Release clean code, environment instructions, and experiment logs.",
+      "rationale": "Provides an executable step with concrete implementation artifacts to produce and release as part of the flagship research project."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "Reproduce two or three strong baselines.",
+      "rationale": "Defines a quantitative implementation checkpoint within the recommended flagship-project workflow."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not state a concrete condition under which purely abstract theory-only research would become preferable to the recommended systems-oriented direction."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 4,
+      "evidence_span": "This direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "Connects the recommended route to engineering and experimental priorities, but supplies a general assertion rather than concrete cited evidence completing the preference–evidence–decision chain."
+    }
+  ]
+}

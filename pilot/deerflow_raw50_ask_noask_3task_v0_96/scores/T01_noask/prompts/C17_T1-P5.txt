@@ -1,0 +1,168 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare suitable artificial-intelligence PhD directions and programs abroad for an application horizon of roughly 1–2 years.
+
+Cover major regions including North America, Europe and Asia. Compare research strengths, curriculum structures, academic resources, employment prospects, application and language requirements, research/internship preparation, tuition, scholarship and funding mechanisms, and representative universities or programs.
+
+Produce a phased 1–2 year preparation and application plan covering research preparation, program selection, application materials and timeline management.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T1-P5-01",
+    "criterion": "The report states evidence-based comparison of fit, outcomes and trade-offs as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate evidence-based comparison of fit, outcomes and trade-offs.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-03",
+    "criterion": "The report provides concrete evidence about how an option supports evidence-based comparison of fit, outcomes and trade-offs.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-04",
+    "criterion": "The report provides concrete evidence about how an option reflects school-name/prestige as the dominant decision rule.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-05",
+    "criterion": "The report directly compares evidence-based comparison of fit, outcomes and trade-offs with school-name/prestige as the dominant decision rule.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-06",
+    "criterion": "At least one recommended option is selected because it supports evidence-based comparison of fit, outcomes and trade-offs.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors school-name/prestige as the dominant decision rule.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-08",
+    "criterion": "The plan contains one executable step that implements evidence-based comparison of fit, outcomes and trade-offs.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for evidence-based comparison of fit, outcomes and trade-offs.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-10",
+    "criterion": "The report states when school-name/prestige as the dominant decision rule would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T1-P5-11",
+    "criterion": "One visible chain links evidence-based comparison of fit, outcomes and trade-offs to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label C17):
+To tailor the comparison and 1–2 year application plan, please clarify these points:
+
+1. **Current year and expected graduation date** — e.g., sophomore graduating June 2028.
+2. **Academic standing** — approximate GPA, class rank, and any especially strong or weak core courses.
+3. **Current AI interests** — such as machine learning theory, computer vision, NLP/LLMs, robotics, AI systems, trustworthy AI, computational neuroscience, or undecided.
+4. **Research experience** — labs, papers, competitions, substantial projects, internships, and relationships with potential recommendation writers.
+5. **English and other languages** — current TOEFL/IELTS/GRE status and willingness to study in a non-English-speaking country.
+6. **Financial constraints** — must the PhD be fully funded, and is there a maximum acceptable personal contribution?
+7. **Career preference** — academic research, industrial research, engineering, entrepreneurship, or undecided.
+8. **Geographic constraints** — any preferred or excluded countries, and whether immigration or long-term residence prospects matter.
+
+If some details are unknown, you can simply say **“use reasonable defaults.”** I will then produce a current, source-cited comparison of North America, Europe, and Asia, followed by a personalized phased preparation and application plan.

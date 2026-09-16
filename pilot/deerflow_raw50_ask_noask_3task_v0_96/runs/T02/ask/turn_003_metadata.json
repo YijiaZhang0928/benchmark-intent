@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.75",
+  "started_at_utc": "2026-09-15T23:57:28.401580+00:00",
+  "harness": "deerflow-2.0",
+  "harness_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model_config_name": "gpt-5.6-sol-codex",
+  "agent_name": "stock-cold-dr",
+  "thread_id": "raw50-v096-t02-ask",
+  "turn_index": 3,
+  "input_kind": "simulator_reply",
+  "source_path": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_raw50_ask_noask_3task_v0_96/replies/T02_turn2.txt",
+  "input_sha256": "7d63cb59311bce70be9f12400d965595ce9e671a578ad680bd46c2c9f45438e3",
+  "visible_prompt_wrapper": null,
+  "persona_visible_on_first_turn": null,
+  "rubric_visible": false,
+  "account_memory_allowed": false,
+  "subagents_enabled": false,
+  "plan_mode": false,
+  "recursion_limit": 100,
+  "non_interactive": false
+}

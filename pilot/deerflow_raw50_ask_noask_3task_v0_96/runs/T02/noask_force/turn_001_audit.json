@@ -1,0 +1,193 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_raw50_ask_noask_3task_v0_96/runs/T02/noask_force/turn_001_summary.json",
+  "distinct_search_queries": 20,
+  "fetch_attempts": 24,
+  "substantive_fetch_successes": 9,
+  "report_cited_url_count": 0,
+  "successful_fetched_domains": [
+    "erasmus-plus.ec.europa.eu",
+    "j1visa.state.gov",
+    "www.ica.gov.sg",
+    "www.ntu.edu.sg",
+    "www.sciencespo.fr",
+    "www.uva.nl",
+    "www.waseda.jp"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 139,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 7132,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/exchange",
+      "domain": "www.waseda.jp",
+      "readable_characters": 1675,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.u-tokyo.ac.jp/adm/go-global/en/program-list-USTEP.html",
+      "domain": "www.u-tokyo.ac.jp",
+      "readable_characters": 98,
+      "substantive_success": false,
+      "error": "Error fetching https://www.u-tokyo.ac.jp/adm/go-global/en/program-list-USTEP.html: ConnectTimeout:"
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/exchange.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 4446,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.sciencespo.fr/students/en/study/academic/exchange/",
+      "domain": "www.sciencespo.fr",
+      "readable_characters": 286,
+      "substantive_success": false,
+      "error": "Error fetching https://www.sciencespo.fr/students/en/study/academic/exchange/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.sciencespo.fr/students/en/study/academic/exchange/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.american.edu/spexs/washingtonsemester/",
+      "domain": "www.american.edu",
+      "readable_characters": 262,
+      "substantive_success": false,
+      "error": "Error fetching https://www.american.edu/spexs/washingtonsemester/: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.american.edu/spexs/washingtonsemester/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://j1visa.state.gov/programs/college-and-university-student/",
+      "domain": "j1visa.state.gov",
+      "readable_characters": 3458,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/academic-climate-and-teaching-at-the-uva/academic-climate-and-teaching-at-the-uva.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 720,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/costs-of-living/costs-of-living.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 353,
+      "substantive_success": false,
+      "error": "Error fetching https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/costs-of-living/costs-of-living.html: HTTPStatusError: Client error '404 ' for url 'https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/costs-of-living/costs-of-living.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/application-and-admission/application-and-admission.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 347,
+      "substantive_success": false,
+      "error": "Error fetching https://www.uva.nl/en/education/exchange/application-and-admission/application-and-admission.html: HTTPStatusError: Client error '404 ' for url 'https://www.uva.nl/en/education/exchange/application-and-admission/application-and-admission.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.sciencespo.fr/students/en/study/academic/exchange-students/",
+      "domain": "www.sciencespo.fr",
+      "readable_characters": 304,
+      "substantive_success": false,
+      "error": "Error fetching https://www.sciencespo.fr/students/en/study/academic/exchange-students/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.sciencespo.fr/students/en/study/academic/exchange-students/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.sciencespo.fr/international/en/content/exchange-programme/",
+      "domain": "www.sciencespo.fr",
+      "readable_characters": 497,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/exchange-and-visiting-studies",
+      "domain": "www.helsinki.fi",
+      "readable_characters": 402,
+      "substantive_success": false,
+      "error": "Error fetching https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/exchange-and-visiting-studies: HTTPStatusError: Client error '404 Not Found' for url 'https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/exchange-and-visiting-studies'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.helsinki.fi/en/admissions-and-education/student-life/cost-living",
+      "domain": "www.helsinki.fi",
+      "readable_characters": 314,
+      "substantive_success": false,
+      "error": "Error fetching https://www.helsinki.fi/en/admissions-and-education/student-life/cost-living: HTTPStatusError: Client error '404 Not Found' for url 'https://www.helsinki.fi/en/admissions-and-education/student-life/cost-living'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/studying-abroad",
+      "domain": "erasmus-plus.ec.europa.eu",
+      "readable_characters": 5101,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes/academic-information",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 362,
+      "substantive_success": false,
+      "error": "Error fetching https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes/academic-information: HTTPStatusError: Client error '404 Not Found' for url 'https://www.ntu.edu.sg/education/student-exchanges/exchange-programmes/inbound-programmes/academic-information'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/life-at-ntu/accommodation/graduate-housing",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 1927,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ica.gov.sg/reside/STP/apply/ihl",
+      "domain": "www.ica.gov.sg",
+      "readable_characters": 3966,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.nus.edu.sg/registrar/academic-information-policies/non-graduating/non-graduating-programme",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 160,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/registrar/academic-information-policies/non-graduating/non-graduating-programme"
+    },
+    {
+      "url": "https://nus.edu.sg/osa/student-services/hostel-admission/non-graduating",
+      "domain": "nus.edu.sg",
+      "readable_characters": 129,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://nus.edu.sg/osa/student-services/hostel-admission/non-graduating"
+    },
+    {
+      "url": "https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 139,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers"
+    },
+    {
+      "url": "https://www.nus.edu.sg/gro/docs/default-source/prog/sep/sep-information-sheet.pdf",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 324,
+      "substantive_success": false,
+      "error": "Error fetching https://www.nus.edu.sg/gro/docs/default-source/prog/sep/sep-information-sheet.pdf: HTTPStatusError: Client error '404 Not Found' for url 'https://www.nus.edu.sg/gro/docs/default-source/prog/sep/sep-information-sheet.pdf'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/sss/about-us/communication-and-information",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 292,
+      "substantive_success": false,
+      "error": "Error fetching https://www.ntu.edu.sg/sss/about-us/communication-and-information: HTTPStatusError: Client error '404 Not Found' for url 'https://www.ntu.edu.sg/sss/about-us/communication-and-information'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

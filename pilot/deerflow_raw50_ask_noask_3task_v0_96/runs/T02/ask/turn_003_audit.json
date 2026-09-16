@@ -1,0 +1,235 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_raw50_ask_noask_3task_v0_96/runs/T02/ask/turn_003_summary.json",
+  "distinct_search_queries": 24,
+  "fetch_attempts": 30,
+  "substantive_fetch_successes": 18,
+  "report_cited_url_count": 14,
+  "successful_fetched_domains": [
+    "extension.berkeley.edu",
+    "studies.ku.dk",
+    "visp.wisc.edu",
+    "www.ntu.edu.sg",
+    "www.u-tokyo.ac.jp",
+    "www.uva.nl",
+    "www.waseda.jp"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 135,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/education/student-exchanges/inbound-programmes",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 7132,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/exchange.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 4446,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://studies.ku.dk/study-abroad/exchange/",
+      "domain": "studies.ku.dk",
+      "readable_characters": 8040,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.sciencespo.fr/students/en/study/academic/exchange/",
+      "domain": "www.sciencespo.fr",
+      "readable_characters": 286,
+      "substantive_success": false,
+      "error": "Error fetching https://www.sciencespo.fr/students/en/study/academic/exchange/: HTTPStatusError: Client error '404 Not Found' for url 'https://www.sciencespo.fr/students/en/study/academic/exchange/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/exchange",
+      "domain": "www.waseda.jp",
+      "readable_characters": 1675,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.u-tokyo.ac.jp/en/academics/ustep.html",
+      "domain": "www.u-tokyo.ac.jp",
+      "readable_characters": 614,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://visp.wisc.edu/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 1268,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://gsas.harvard.edu/program/special-students",
+      "domain": "gsas.harvard.edu",
+      "readable_characters": 260,
+      "substantive_success": false,
+      "error": "Error fetching https://gsas.harvard.edu/program/special-students: HTTPStatusError: Client error '403 Forbidden' for url 'https://gsas.harvard.edu/program/special-students'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://extension.berkeley.edu/international/academic/",
+      "domain": "extension.berkeley.edu",
+      "readable_characters": 838,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://visp.wisc.edu/admissions/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 791,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://visp.wisc.edu/academics/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 2054,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://visp.wisc.edu/cost/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 7673,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://visp.wisc.edu/admissions/graduate-students/",
+      "domain": "visp.wisc.edu",
+      "readable_characters": 264,
+      "substantive_success": false,
+      "error": "Error fetching https://visp.wisc.edu/admissions/graduate-students/: HTTPStatusError: Client error '404 Not Found' for url 'https://visp.wisc.edu/admissions/graduate-students/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/global-exchange-programme/global-exchange-programme.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 2285,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/academic-climate-and-teaching-at-the-uva/academic-climate-and-teaching-at-the-uva.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 720,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/course-information/course-information.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 365,
+      "substantive_success": false,
+      "error": "Error fetching https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/course-information/course-information.html: HTTPStatusError: Client error '404 ' for url 'https://www.uva.nl/en/education/exchange/on-exchange-at-the-uva/course-information/course-information.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://studies.ku.dk/study-abroad/exchange/course-information/",
+      "domain": "studies.ku.dk",
+      "readable_characters": 11999,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://studies.ku.dk/study-abroad/exchange/academic-matters/",
+      "domain": "studies.ku.dk",
+      "readable_characters": 9712,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://studies.ku.dk/study-abroad/exchange/housing-and-economy/",
+      "domain": "studies.ku.dk",
+      "readable_characters": 290,
+      "substantive_success": false,
+      "error": "Error fetching https://studies.ku.dk/study-abroad/exchange/housing-and-economy/: HTTPStatusError: Client error '404 Not Found' for url 'https://studies.ku.dk/study-abroad/exchange/housing-and-economy/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.u-tokyo.ac.jp/en/academics/ustep-type-g.html",
+      "domain": "www.u-tokyo.ac.jp",
+      "readable_characters": 2361,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.u-tokyo.ac.jp/en/academics/ustep-overview.html",
+      "domain": "www.u-tokyo.ac.jp",
+      "readable_characters": 1001,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.u-tokyo.ac.jp/en/academics/ustep-type-u.html",
+      "domain": "www.u-tokyo.ac.jp",
+      "readable_characters": 6122,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/exchange/application",
+      "domain": "www.waseda.jp",
+      "readable_characters": 3855,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.waseda.jp/inst/cie/en/exchange/requirements",
+      "domain": "www.waseda.jp",
+      "readable_characters": 272,
+      "substantive_success": false,
+      "error": "Error fetching https://www.waseda.jp/inst/cie/en/exchange/requirements: HTTPStatusError: Client error '404 Not Found' for url 'https://www.waseda.jp/inst/cie/en/exchange/requirements'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+      "url": "https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 139,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers"
+    },
+    {
+      "url": "https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme/incoming-exchange-students",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 162,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme/incoming-exchange-students"
+    },
+    {
+      "url": "https://www.nus.edu.sg/registrar/academic-information-policies/non-graduating/modular-system",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 150,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/registrar/academic-information-policies/non-graduating/modular-system"
+    },
+    {
+      "url": "https://www.nus.edu.sg/osa/student-services/hostel-admission/non-graduating",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 133,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/osa/student-services/hostel-admission/non-graduating"
+    },
+    {
+      "url": "https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme/other-non-graduating-students",
+      "domain": "www.nus.edu.sg",
+      "readable_characters": 165,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.nus.edu.sg/registrar/academic-activities/non-graduating-programme/other-non-graduating-students"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

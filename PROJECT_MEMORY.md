@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-15
-当前版本：v0.95（DeerFlow 2.0 stock-prompt strict-cold diagnostic）
+当前版本：v0.96（DeerFlow 2.0 RAW50 Ask/No-Ask pilot）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：DeerFlow 2.0 RAW50 Ask/No-Ask 三题 pilot
+
+按用户要求，对 workbook 前三题把 persona 事实按固定 seed `20260915` 随机抽取一半并追加到严格 cold-start instruction；T01/T02/T03 分别冻结为 22/44、25/50、24/49 条。该条件命名为 `RAW50`，明确不等于 50% task-relevant preference mass，也不按输出或 preference coverage 重抽样。
+
+三个 Ask cell 均继续发起澄清，问题项为 8/14/9；单人诊断编码的 direct high-impact target coverage 为 8/15、precision 为 8/31。相较 strict-cold v0.95 的 6/15 与 6/38，偏好相关性略升，但仍主要做 eligibility、current-state、budget、timing 和 program-format 收集。Ask 运行中 T01 无报告递归失败、T02 完整报告后递归失败、T03 正常完成。
+
+原始 no-ask 只关闭 `ask_clarification` 工具后，三题都在 prose 中请求更多信息并停止，实际 P_strict 为 0/0/0.2；这被标记为 manipulation failure，不能当 Ask gain。随后在新输出前冻结 `NOASK_FORCE_COMPLETE`：同 DeerFlow commit、backbone、deep-research skill、输入与 non-interactive flag，只增加不得提问、必须用标注假设完成报告的 agent policy。修复后 T01/T03 正常交付，T02 无报告递归失败。
+
+唯一完整 paired content task 是 T03：Ask `P_strict/P_HI=7.6699/7.85`，No-Ask `8.6368/8.94`，Ask−NoAsk 为 `−0.9669/−1.09`。No-Ask 优势主要来自 SOURCE、EVIDENCE 与 TRACE；这可能是 clarification 与 research budget/attention 竞争，也可能是单次生成方差，不能据 n=1 确认机制。RAW50 Ask 相对 prior cold Ask：T02 `+0.0812`、T03 `−0.6472`；两题均值差 `−0.2830`，T01 则 operational failure。当前决定是：不声称 Ask 优于 No-Ask；先在 T03 做固定预算多重复，再决定是否把相同协议迁移到 ODR。完整结果见 `pilot/deerflow_raw50_ask_noask_3task_v0_96/RESULTS.md`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：DeerFlow 2.0 strict-cold 三题诊断
 

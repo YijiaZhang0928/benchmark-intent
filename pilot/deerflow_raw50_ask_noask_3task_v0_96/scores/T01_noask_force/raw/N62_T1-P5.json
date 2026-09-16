@@ -1,0 +1,70 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 10,
+      "evidence_span": "Do not select solely by university ranking. For every prospective adviser, score the following from 0 to 5:",
+      "rationale": "The accompanying weighted rubric explicitly prioritizes research fit, advising evidence, resources, funding, graduate outcomes, and personal sustainability rather than university ranking."
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "Questions to ask current students after admission or serious faculty engagement:",
+      "rationale": "Current students are an identifiable evidence source, and the ensuing questions specifically investigate mentoring, funding, resources, internships, graduation time, and graduate placements."
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 10,
+      "evidence_span": "Carnegie Mellon’s School of Computer Science offers distinct doctoral homes—including machine learning, robotics, language technologies, computer science, and human-computer interaction—making it especially valuable for applicants with a well-defined subfield",
+      "rationale": "The report provides a verifiable structural fact about a named institution and explicitly explains its relevance to subfield fit. An official program source immediately follows."
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report lists prestigious institutions and selectivity tiers, but provides no concrete, verifiable example of an option using school prestige as the dominant decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 8,
+      "evidence_span": "A specific professor at a less famous institution may be the best global match for a narrow topic.",
+      "rationale": "This directly contrasts institutional fame with research match on the common axis of program selection, showing that the preferred institution can change. The contrast is less complete about outcomes and other trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 10,
+      "evidence_span": "### Option A — AI systems + trustworthy foundation models\n\nThis is the safest broad recommendation for a computer-science undergraduate.\n\nPossible questions:\n\n- How can multimodal or language models be evaluated reliably under distribution shift?\n- Can inference be accelerated without materially degrading factuality or calibration?\n- How can retrieval or tool use improve reliability in a specialized domain?\n- What compression or quantization methods preserve reasoning performance?\n\nThis direction rewards both engineering ability and experimental rigor, and does not require the applicant to compete solely on access to enormous computing clusters.",
+      "rationale": "The named recommended direction is justified through applicant-skill fit and an explicit resource trade-off, rather than reputation."
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 4,
+      "evidence_span": "Include a wider range of institutions and avoid an application list composed entirely of famous foundation-model groups.",
+      "rationale": "The report discourages a fame-concentrated application strategy, but does not name an otherwise viable program or laboratory and explicitly lower its rank for prestige-dominant selection. Credit is capped for this incomplete contrast."
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "Read three recent papers from every serious prospective adviser.",
+      "rationale": "This is an executable, evidence-gathering action for assessing research fit, embedded in the shortlist-construction phase."
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 10,
+      "evidence_span": "| Match with the applicant’s actual research question | 25% |",
+      "rationale": "The adviser-evaluation rubric assigns a concrete weight to research fit, implementing a usable allocation rule within its specified 0–5 scoring system."
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is given under which prestige-dominant selection becomes preferable."
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 10,
+      "evidence_span": "Carnegie Mellon’s School of Computer Science offers distinct doctoral homes—including machine learning, robotics, language technologies, computer science, and human-computer interaction—making it especially valuable for applicants with a well-defined subfield [citation:CMU School of Computer Science Doctoral Programs](https://www.cs.cmu.edu/education/phd).",
+      "rationale": "The report visibly links subfield fit to a cited fact about distinct doctoral programs and then to a favorable conditional assessment of CMU."
+    }
+  ]
+}

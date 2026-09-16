@@ -1,0 +1,860 @@
+{
+  "schema_version": "0.75",
+  "status": "awaiting_clarification",
+  "asked_clarification": true,
+  "clarification_calls": [
+    {
+      "name": "ask_clarification",
+      "args": {
+        "question": "To make the comparison and 1–2 year plan decision-ready rather than generic, please provide the following details.",
+        "clarification_type": "missing_info",
+        "context": "Program fit, cost, admissions, network value, and venture-building sequence depend heavily on the intended startup, geography, available time, budget, and willingness to leave or reduce current employment.",
+        "options": null,
+        "fields": [
+          {
+            "name": "startup_focus",
+            "label": "Likely startup sector/problem (or 2–3 areas under consideration)",
+            "type": "textarea",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., B2B AI/SaaS, consumer brand, education, healthcare, manufacturing technology; include any initial idea"
+          },
+          {
+            "name": "target_market",
+            "label": "Primary target market/geography",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Mainland China",
+              "Greater China / Asia",
+              "United States",
+              "Europe",
+              "Global / undecided"
+            ],
+            "placeholder": "Select all that apply"
+          },
+          {
+            "name": "current_stage",
+            "label": "Current venture stage",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Exploring—no idea yet",
+              "Several ideas, not validated",
+              "One idea selected",
+              "Customer discovery underway",
+              "MVP or side project underway",
+              "Existing business seeking a new venture"
+            ],
+            "placeholder": "Choose the closest match"
+          },
+          {
+            "name": "time_available",
+            "label": "Realistic weekly time for learning and venture work",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Under 5 hours",
+              "5–10 hours",
+              "10–15 hours",
+              "15–25 hours",
+              "Full-time or nearly full-time"
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "budget",
+            "label": "Total 1–2 year learning/program budget (excluding startup capital)",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Under US$2,000 / RMB 15,000",
+              "US$2,000–10,000 / RMB 15,000–70,000",
+              "US$10,000–30,000 / RMB 70,000–215,000",
+              "US$30,000–80,000 / RMB 215,000–575,000",
+              "Above US$80,000 / RMB 575,000",
+              "Undecided—compare tiers"
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "program_format",
+            "label": "Formats you would seriously consider",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Another full degree",
+              "Part-time degree",
+              "Short executive education",
+              "Accelerator/incubator",
+              "Online courses",
+              "Mentoring/coaching",
+              "Founder communities/networking",
+              "Build-first/self-directed route"
+            ],
+            "placeholder": "Select all realistic options"
+          },
+          {
+            "name": "career_constraints",
+            "label": "Employment and family constraints over the next two years",
+            "type": "textarea",
+            "required": true,
+            "options": [],
+            "placeholder": "Can you take leave, reduce work, travel internationally, or relocate? Note preferred evenings/weekends and any hard limits."
+          },
+          {
+            "name": "funding_goal",
+            "label": "Likely funding path",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Bootstrap/revenue-funded",
+              "Angel or seed VC",
+              "Corporate/strategic funding",
+              "Grants/government support",
+              "Undecided—compare routes"
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "language",
+            "label": "Preferred learning language",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Chinese",
+              "English",
+              "Bilingual Chinese/English"
+            ],
+            "placeholder": "Choose one"
+          }
+        ]
+      },
+      "id": "call_CqTmH8TUBwnGzdM5s7X3YDk6"
+    }
+  ],
+  "clarification_artifacts": [
+    {
+      "human_input": {
+        "version": 2,
+        "kind": "human_input_request",
+        "source": "ask_clarification",
+        "request_id": "clarification:call_CqTmH8TUBwnGzdM5s7X3YDk6",
+        "clarification_type": "missing_info",
+        "question": "To make the comparison and 1–2 year plan decision-ready rather than generic, please provide the following details.",
+        "input_mode": "form",
+        "tool_call_id": "call_CqTmH8TUBwnGzdM5s7X3YDk6",
+        "context": "Program fit, cost, admissions, network value, and venture-building sequence depend heavily on the intended startup, geography, available time, budget, and willingness to leave or reduce current employment.",
+        "fields": [
+          {
+            "name": "startup_focus",
+            "label": "Likely startup sector/problem (or 2–3 areas under consideration)",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "e.g., B2B AI/SaaS, consumer brand, education, healthcare, manufacturing technology; include any initial idea"
+          },
+          {
+            "name": "target_market",
+            "label": "Primary target market/geography",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              {
+                "id": "target_market-option-1",
+                "label": "Mainland China",
+                "value": "Mainland China"
+              },
+              {
+                "id": "target_market-option-2",
+                "label": "Greater China / Asia",
+                "value": "Greater China / Asia"
+              },
+              {
+                "id": "target_market-option-3",
+                "label": "United States",
+                "value": "United States"
+              },
+              {
+                "id": "target_market-option-4",
+                "label": "Europe",
+                "value": "Europe"
+              },
+              {
+                "id": "target_market-option-5",
+                "label": "Global / undecided",
+                "value": "Global / undecided"
+              }
+            ],
+            "placeholder": "Select all that apply"
+          },
+          {
+            "name": "current_stage",
+            "label": "Current venture stage",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "current_stage-option-1",
+                "label": "Exploring—no idea yet",
+                "value": "Exploring—no idea yet"
+              },
+              {
+                "id": "current_stage-option-2",
+                "label": "Several ideas, not validated",
+                "value": "Several ideas, not validated"
+              },
+              {
+                "id": "current_stage-option-3",
+                "label": "One idea selected",
+                "value": "One idea selected"
+              },
+              {
+                "id": "current_stage-option-4",
+                "label": "Customer discovery underway",
+                "value": "Customer discovery underway"
+              },
+              {
+                "id": "current_stage-option-5",
+                "label": "MVP or side project underway",
+                "value": "MVP or side project underway"
+              },
+              {
+                "id": "current_stage-option-6",
+                "label": "Existing business seeking a new venture",
+                "value": "Existing business seeking a new venture"
+              }
+            ],
+            "placeholder": "Choose the closest match"
+          },
+          {
+            "name": "time_available",
+            "label": "Realistic weekly time for learning and venture work",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "time_available-option-1",
+                "label": "Under 5 hours",
+                "value": "Under 5 hours"
+              },
+              {
+                "id": "time_available-option-2",
+                "label": "5–10 hours",
+                "value": "5–10 hours"
+              },
+              {
+                "id": "time_available-option-3",
+                "label": "10–15 hours",
+                "value": "10–15 hours"
+              },
+              {
+                "id": "time_available-option-4",
+                "label": "15–25 hours",
+                "value": "15–25 hours"
+              },
+              {
+                "id": "time_available-option-5",
+                "label": "Full-time or nearly full-time",
+                "value": "Full-time or nearly full-time"
+              }
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "budget",
+            "label": "Total 1–2 year learning/program budget (excluding startup capital)",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "budget-option-1",
+                "label": "Under US$2,000 / RMB 15,000",
+                "value": "Under US$2,000 / RMB 15,000"
+              },
+              {
+                "id": "budget-option-2",
+                "label": "US$2,000–10,000 / RMB 15,000–70,000",
+                "value": "US$2,000–10,000 / RMB 15,000–70,000"
+              },
+              {
+                "id": "budget-option-3",
+                "label": "US$10,000–30,000 / RMB 70,000–215,000",
+                "value": "US$10,000–30,000 / RMB 70,000–215,000"
+              },
+              {
+                "id": "budget-option-4",
+                "label": "US$30,000–80,000 / RMB 215,000–575,000",
+                "value": "US$30,000–80,000 / RMB 215,000–575,000"
+              },
+              {
+                "id": "budget-option-5",
+                "label": "Above US$80,000 / RMB 575,000",
+                "value": "Above US$80,000 / RMB 575,000"
+              },
+              {
+                "id": "budget-option-6",
+                "label": "Undecided—compare tiers",
+                "value": "Undecided—compare tiers"
+              }
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "program_format",
+            "label": "Formats you would seriously consider",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              {
+                "id": "program_format-option-1",
+                "label": "Another full degree",
+                "value": "Another full degree"
+              },
+              {
+                "id": "program_format-option-2",
+                "label": "Part-time degree",
+                "value": "Part-time degree"
+              },
+              {
+                "id": "program_format-option-3",
+                "label": "Short executive education",
+                "value": "Short executive education"
+              },
+              {
+                "id": "program_format-option-4",
+                "label": "Accelerator/incubator",
+                "value": "Accelerator/incubator"
+              },
+              {
+                "id": "program_format-option-5",
+                "label": "Online courses",
+                "value": "Online courses"
+              },
+              {
+                "id": "program_format-option-6",
+                "label": "Mentoring/coaching",
+                "value": "Mentoring/coaching"
+              },
+              {
+                "id": "program_format-option-7",
+                "label": "Founder communities/networking",
+                "value": "Founder communities/networking"
+              },
+              {
+                "id": "program_format-option-8",
+                "label": "Build-first/self-directed route",
+                "value": "Build-first/self-directed route"
+              }
+            ],
+            "placeholder": "Select all realistic options"
+          },
+          {
+            "name": "career_constraints",
+            "label": "Employment and family constraints over the next two years",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "Can you take leave, reduce work, travel internationally, or relocate? Note preferred evenings/weekends and any hard limits."
+          },
+          {
+            "name": "funding_goal",
+            "label": "Likely funding path",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "funding_goal-option-1",
+                "label": "Bootstrap/revenue-funded",
+                "value": "Bootstrap/revenue-funded"
+              },
+              {
+                "id": "funding_goal-option-2",
+                "label": "Angel or seed VC",
+                "value": "Angel or seed VC"
+              },
+              {
+                "id": "funding_goal-option-3",
+                "label": "Corporate/strategic funding",
+                "value": "Corporate/strategic funding"
+              },
+              {
+                "id": "funding_goal-option-4",
+                "label": "Grants/government support",
+                "value": "Grants/government support"
+              },
+              {
+                "id": "funding_goal-option-5",
+                "label": "Undecided—compare routes",
+                "value": "Undecided—compare routes"
+              }
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "language",
+            "label": "Preferred learning language",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "id": "language-option-1",
+                "label": "Chinese",
+                "value": "Chinese"
+              },
+              {
+                "id": "language-option-2",
+                "label": "English",
+                "value": "English"
+              },
+              {
+                "id": "language-option-3",
+                "label": "Bilingual Chinese/English",
+                "value": "Bilingual Chinese/English"
+              }
+            ],
+            "placeholder": "Choose one"
+          }
+        ]
+      }
+    }
+  ],
+  "all_observed_tools": [
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/custom/clarification-calibration/SKILL.md",
+        "description": "Load the clarification workflow for decision-ready research.",
+        "start_line": 1,
+        "end_line": 240
+      },
+      "id": "call_0XtV2ky60yvQflIRXYGDrC8D"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "call_0XtV2ky60yvQflIRXYGDrC8D",
+      "content": "Error: File not found: /mnt/skills/custom/clarification-calibration/SKILL.md",
+      "artifact": null
+    },
+    {
+      "name": "ask_clarification",
+      "args": {
+        "question": "To make the comparison and 1–2 year plan decision-ready rather than generic, please provide the following details.",
+        "clarification_type": "missing_info",
+        "context": "Program fit, cost, admissions, network value, and venture-building sequence depend heavily on the intended startup, geography, available time, budget, and willingness to leave or reduce current employment.",
+        "options": null,
+        "fields": [
+          {
+            "name": "startup_focus",
+            "label": "Likely startup sector/problem (or 2–3 areas under consideration)",
+            "type": "textarea",
+            "required": true,
+            "options": [],
+            "placeholder": "e.g., B2B AI/SaaS, consumer brand, education, healthcare, manufacturing technology; include any initial idea"
+          },
+          {
+            "name": "target_market",
+            "label": "Primary target market/geography",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Mainland China",
+              "Greater China / Asia",
+              "United States",
+              "Europe",
+              "Global / undecided"
+            ],
+            "placeholder": "Select all that apply"
+          },
+          {
+            "name": "current_stage",
+            "label": "Current venture stage",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Exploring—no idea yet",
+              "Several ideas, not validated",
+              "One idea selected",
+              "Customer discovery underway",
+              "MVP or side project underway",
+              "Existing business seeking a new venture"
+            ],
+            "placeholder": "Choose the closest match"
+          },
+          {
+            "name": "time_available",
+            "label": "Realistic weekly time for learning and venture work",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Under 5 hours",
+              "5–10 hours",
+              "10–15 hours",
+              "15–25 hours",
+              "Full-time or nearly full-time"
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "budget",
+            "label": "Total 1–2 year learning/program budget (excluding startup capital)",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Under US$2,000 / RMB 15,000",
+              "US$2,000–10,000 / RMB 15,000–70,000",
+              "US$10,000–30,000 / RMB 70,000–215,000",
+              "US$30,000–80,000 / RMB 215,000–575,000",
+              "Above US$80,000 / RMB 575,000",
+              "Undecided—compare tiers"
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "program_format",
+            "label": "Formats you would seriously consider",
+            "type": "multi_select",
+            "required": true,
+            "options": [
+              "Another full degree",
+              "Part-time degree",
+              "Short executive education",
+              "Accelerator/incubator",
+              "Online courses",
+              "Mentoring/coaching",
+              "Founder communities/networking",
+              "Build-first/self-directed route"
+            ],
+            "placeholder": "Select all realistic options"
+          },
+          {
+            "name": "career_constraints",
+            "label": "Employment and family constraints over the next two years",
+            "type": "textarea",
+            "required": true,
+            "options": [],
+            "placeholder": "Can you take leave, reduce work, travel internationally, or relocate? Note preferred evenings/weekends and any hard limits."
+          },
+          {
+            "name": "funding_goal",
+            "label": "Likely funding path",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Bootstrap/revenue-funded",
+              "Angel or seed VC",
+              "Corporate/strategic funding",
+              "Grants/government support",
+              "Undecided—compare routes"
+            ],
+            "placeholder": "Choose one"
+          },
+          {
+            "name": "language",
+            "label": "Preferred learning language",
+            "type": "select",
+            "required": true,
+            "options": [
+              "Chinese",
+              "English",
+              "Bilingual Chinese/English"
+            ],
+            "placeholder": "Choose one"
+          }
+        ]
+      },
+      "id": "call_CqTmH8TUBwnGzdM5s7X3YDk6"
+    },
+    {
+      "name": "ask_clarification",
+      "tool_call_id": "call_CqTmH8TUBwnGzdM5s7X3YDk6",
+      "content": "❓ Program fit, cost, admissions, network value, and venture-building sequence depend heavily on the intended startup, geography, available time, budget, and willingness to leave or reduce current employment.\n\nTo make the comparison and 1–2 year plan decision-ready rather than generic, please provide the following details.\n\n  1. Likely startup sector/problem (or 2–3 areas under consideration) (required)\n  2. Primary target market/geography (required) — options: Mainland China / Greater China / Asia / United States / Europe / Global / undecided (multiple allowed)\n  3. Current venture stage (required) — options: Exploring—no idea yet / Several ideas, not validated / One idea selected / Customer discovery underway / MVP or side project underway / Existing business seeking a new venture\n  4. Realistic weekly time for learning and venture work (required) — options: Under 5 hours / 5–10 hours / 10–15 hours / 15–25 hours / Full-time or nearly full-time\n  5. Total 1–2 year learning/program budget (excluding startup capital) (required) — options: Under US$2,000 / RMB 15,000 / US$2,000–10,000 / RMB 15,000–70,000 / US$10,000–30,000 / RMB 70,000–215,000 / US$30,000–80,000 / RMB 215,000–575,000 / Above US$80,000 / RMB 575,000 / Undecided—compare tiers\n  6. Formats you would seriously consider (required) — options: Another full degree / Part-time degree / Short executive education / Accelerator/incubator / Online courses / Mentoring/coaching / Founder communities/networking / Build-first/self-directed route (multiple allowed)\n  7. Employment and family constraints over the next two years (required)\n  8. Likely funding path (required) — options: Bootstrap/revenue-funded / Angel or seed VC / Corporate/strategic funding / Grants/government support / Undecided—compare routes\n  9. Preferred learning language (required) — options: Chinese / English / Bilingual Chinese/English\n\nPlease reply with a value for each field.",
+      "artifact": {
+        "human_input": {
+          "version": 2,
+          "kind": "human_input_request",
+          "source": "ask_clarification",
+          "request_id": "clarification:call_CqTmH8TUBwnGzdM5s7X3YDk6",
+          "clarification_type": "missing_info",
+          "question": "To make the comparison and 1–2 year plan decision-ready rather than generic, please provide the following details.",
+          "input_mode": "form",
+          "tool_call_id": "call_CqTmH8TUBwnGzdM5s7X3YDk6",
+          "context": "Program fit, cost, admissions, network value, and venture-building sequence depend heavily on the intended startup, geography, available time, budget, and willingness to leave or reduce current employment.",
+          "fields": [
+            {
+              "name": "startup_focus",
+              "label": "Likely startup sector/problem (or 2–3 areas under consideration)",
+              "type": "textarea",
+              "required": true,
+              "placeholder": "e.g., B2B AI/SaaS, consumer brand, education, healthcare, manufacturing technology; include any initial idea"
+            },
+            {
+              "name": "target_market",
+              "label": "Primary target market/geography",
+              "type": "multi_select",
+              "required": true,
+              "options": [
+                {
+                  "id": "target_market-option-1",
+                  "label": "Mainland China",
+                  "value": "Mainland China"
+                },
+                {
+                  "id": "target_market-option-2",
+                  "label": "Greater China / Asia",
+                  "value": "Greater China / Asia"
+                },
+                {
+                  "id": "target_market-option-3",
+                  "label": "United States",
+                  "value": "United States"
+                },
+                {
+                  "id": "target_market-option-4",
+                  "label": "Europe",
+                  "value": "Europe"
+                },
+                {
+                  "id": "target_market-option-5",
+                  "label": "Global / undecided",
+                  "value": "Global / undecided"
+                }
+              ],
+              "placeholder": "Select all that apply"
+            },
+            {
+              "name": "current_stage",
+              "label": "Current venture stage",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "current_stage-option-1",
+                  "label": "Exploring—no idea yet",
+                  "value": "Exploring—no idea yet"
+                },
+                {
+                  "id": "current_stage-option-2",
+                  "label": "Several ideas, not validated",
+                  "value": "Several ideas, not validated"
+                },
+                {
+                  "id": "current_stage-option-3",
+                  "label": "One idea selected",
+                  "value": "One idea selected"
+                },
+                {
+                  "id": "current_stage-option-4",
+                  "label": "Customer discovery underway",
+                  "value": "Customer discovery underway"
+                },
+                {
+                  "id": "current_stage-option-5",
+                  "label": "MVP or side project underway",
+                  "value": "MVP or side project underway"
+                },
+                {
+                  "id": "current_stage-option-6",
+                  "label": "Existing business seeking a new venture",
+                  "value": "Existing business seeking a new venture"
+                }
+              ],
+              "placeholder": "Choose the closest match"
+            },
+            {
+              "name": "time_available",
+              "label": "Realistic weekly time for learning and venture work",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "time_available-option-1",
+                  "label": "Under 5 hours",
+                  "value": "Under 5 hours"
+                },
+                {
+                  "id": "time_available-option-2",
+                  "label": "5–10 hours",
+                  "value": "5–10 hours"
+                },
+                {
+                  "id": "time_available-option-3",
+                  "label": "10–15 hours",
+                  "value": "10–15 hours"
+                },
+                {
+                  "id": "time_available-option-4",
+                  "label": "15–25 hours",
+                  "value": "15–25 hours"
+                },
+                {
+                  "id": "time_available-option-5",
+                  "label": "Full-time or nearly full-time",
+                  "value": "Full-time or nearly full-time"
+                }
+              ],
+              "placeholder": "Choose one"
+            },
+            {
+              "name": "budget",
+              "label": "Total 1–2 year learning/program budget (excluding startup capital)",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "budget-option-1",
+                  "label": "Under US$2,000 / RMB 15,000",
+                  "value": "Under US$2,000 / RMB 15,000"
+                },
+                {
+                  "id": "budget-option-2",
+                  "label": "US$2,000–10,000 / RMB 15,000–70,000",
+                  "value": "US$2,000–10,000 / RMB 15,000–70,000"
+                },
+                {
+                  "id": "budget-option-3",
+                  "label": "US$10,000–30,000 / RMB 70,000–215,000",
+                  "value": "US$10,000–30,000 / RMB 70,000–215,000"
+                },
+                {
+                  "id": "budget-option-4",
+                  "label": "US$30,000–80,000 / RMB 215,000–575,000",
+                  "value": "US$30,000–80,000 / RMB 215,000–575,000"
+                },
+                {
+                  "id": "budget-option-5",
+                  "label": "Above US$80,000 / RMB 575,000",
+                  "value": "Above US$80,000 / RMB 575,000"
+                },
+                {
+                  "id": "budget-option-6",
+                  "label": "Undecided—compare tiers",
+                  "value": "Undecided—compare tiers"
+                }
+              ],
+              "placeholder": "Choose one"
+            },
+            {
+              "name": "program_format",
+              "label": "Formats you would seriously consider",
+              "type": "multi_select",
+              "required": true,
+              "options": [
+                {
+                  "id": "program_format-option-1",
+                  "label": "Another full degree",
+                  "value": "Another full degree"
+                },
+                {
+                  "id": "program_format-option-2",
+                  "label": "Part-time degree",
+                  "value": "Part-time degree"
+                },
+                {
+                  "id": "program_format-option-3",
+                  "label": "Short executive education",
+                  "value": "Short executive education"
+                },
+                {
+                  "id": "program_format-option-4",
+                  "label": "Accelerator/incubator",
+                  "value": "Accelerator/incubator"
+                },
+                {
+                  "id": "program_format-option-5",
+                  "label": "Online courses",
+                  "value": "Online courses"
+                },
+                {
+                  "id": "program_format-option-6",
+                  "label": "Mentoring/coaching",
+                  "value": "Mentoring/coaching"
+                },
+                {
+                  "id": "program_format-option-7",
+                  "label": "Founder communities/networking",
+                  "value": "Founder communities/networking"
+                },
+                {
+                  "id": "program_format-option-8",
+                  "label": "Build-first/self-directed route",
+                  "value": "Build-first/self-directed route"
+                }
+              ],
+              "placeholder": "Select all realistic options"
+            },
+            {
+              "name": "career_constraints",
+              "label": "Employment and family constraints over the next two years",
+              "type": "textarea",
+              "required": true,
+              "placeholder": "Can you take leave, reduce work, travel internationally, or relocate? Note preferred evenings/weekends and any hard limits."
+            },
+            {
+              "name": "funding_goal",
+              "label": "Likely funding path",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "funding_goal-option-1",
+                  "label": "Bootstrap/revenue-funded",
+                  "value": "Bootstrap/revenue-funded"
+                },
+                {
+                  "id": "funding_goal-option-2",
+                  "label": "Angel or seed VC",
+                  "value": "Angel or seed VC"
+                },
+                {
+                  "id": "funding_goal-option-3",
+                  "label": "Corporate/strategic funding",
+                  "value": "Corporate/strategic funding"
+                },
+                {
+                  "id": "funding_goal-option-4",
+                  "label": "Grants/government support",
+                  "value": "Grants/government support"
+                },
+                {
+                  "id": "funding_goal-option-5",
+                  "label": "Undecided—compare routes",
+                  "value": "Undecided—compare routes"
+                }
+              ],
+              "placeholder": "Choose one"
+            },
+            {
+              "name": "language",
+              "label": "Preferred learning language",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "id": "language-option-1",
+                  "label": "Chinese",
+                  "value": "Chinese"
+                },
+                {
+                  "id": "language-option-2",
+                  "label": "English",
+                  "value": "English"
+                },
+                {
+                  "id": "language-option-3",
+                  "label": "Bilingual Chinese/English",
+                  "value": "Bilingual Chinese/English"
+                }
+              ],
+              "placeholder": "Choose one"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "final_text": "",
+  "run_error": null,
+  "started_at_utc": "2026-09-15T23:54:22.901356+00:00",
+  "completed_at_utc": "2026-09-15T23:54:45.451464+00:00",
+  "elapsed_seconds": 22.550108,
+  "trace_file": "turn_001_events.jsonl"
+}

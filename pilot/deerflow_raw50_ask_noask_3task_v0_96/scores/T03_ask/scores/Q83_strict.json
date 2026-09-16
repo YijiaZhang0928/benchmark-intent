@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "Q83",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "16a4edb3a2b3c6a6e08c526022b8ef4c26ca46daf8f7b7feead79b0e4447cbb6",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-16T00:08:28.943553+00:00",
+  "completed_at_utc": "2026-09-16T00:14:05.997218+00:00",
+  "p_strict": 7.669899665551839,
+  "p_hi": 7.85,
+  "dimension_scores": {
+    "INTENT": 10.0,
+    "SOURCE": 6.0,
+    "EVIDENCE": 6.521739130434782,
+    "TRADEOFF": 6.956521739130435,
+    "DECISION": 8.956521739130434,
+    "ACTION": 10.0,
+    "TRACE": 6.307692307692308
+  },
+  "high_dimension_scores": {
+    "INTENT": 10.0,
+    "SOURCE": 6.0,
+    "EVIDENCE": 6.6,
+    "TRADEOFF": 7.4,
+    "DECISION": 9.399999999999999,
+    "ACTION": 10.0,
+    "TRACE": 6.4
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 10,
+      "evidence_span": "Reject programs that score poorly on applied work, cohort quality or stage relevance, regardless of brand.",
+      "rationale": "Explicitly makes applied venture work a program-selection priority rather than merely a learning objective."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 4,
+      "evidence_span": "11. Evidence of alumni outcomes.\n12. Ability to leave with a tested artifact.",
+      "rationale": "Identifies relevant evaluation dimensions, but does not explicitly choose a source or evidence class to verify the substance of real venture projects or cases. The alumni-outcome evidence remains general."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 4,
+      "evidence_span": "| Hands-on work | Often case- or project-based; real customer validation may be limited |",
+      "rationale": "Describes project-based learning at the route level, but does not establish a concrete, verifiable project or case feature of a named program. The named executive programs are not individually substantiated on this preference."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 10,
+      "evidence_span": "| Curriculum | Broad, structured coverage of entrepreneurship, finance, innovation, leadership and venture strategy |",
+      "rationale": "The second-degree route is explicitly characterized by a concrete list of broad business subjects, establishing the academic-breadth side of the contrast."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 10,
+      "evidence_span": "Because the user already possesses an MBA, another general entrepreneurship or management degree is unlikely to provide sufficient incremental return. The full economic cost should include foregone earnings, disruption to family life, and delay in testing a venture—not just tuition.",
+      "rationale": "Directly compares another broad degree against venture testing on incremental return and opportunity cost, identifying delayed experimentation as a consequential difference."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 10,
+      "evidence_span": "Do not select executive education mainly by brand. Require:\n\n- A venture project built into the program.",
+      "rationale": "Makes support for an actual venture project an explicit causal requirement for selecting the recommended executive-education option."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 10,
+      "evidence_span": "| Main limitation | Expensive and frequently too theoretical; repeats much of an MBA |\n| Fit for this profile | **Low by default** |",
+      "rationale": "Explicitly downgrades the second-degree route because it repeats broad MBA learning and is too theoretical."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 10,
+      "evidence_span": "- Convert pilots into paid contracts.\n- Test two price points.",
+      "rationale": "Provides executable venture-building actions with concrete commercial objects."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 10,
+      "evidence_span": "Adopt a **one-third learning, two-thirds application** rule.",
+      "rationale": "Defines a usable allocation rule that reserves most effort for applying learning through real experiments."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 10,
+      "evidence_span": "It should be considered only if it delivers at least one scarce asset that cannot be obtained efficiently elsewhere:\n\n- Deep technical education needed for the intended venture.\n- A highly specific industry ecosystem.\n- Access to a new country or geographic market.\n- A concentrated pool of potential cofounders.\n- A planned career break that already has family support.\n- A credential required for a broader professional transition.",
+      "rationale": "States concrete conditions under which a second degree can overcome its default disadvantage, including obtaining an otherwise inefficiently accessible required credential or ecosystem."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 4,
+      "evidence_span": "The ideal timing is around **months 6–12**, when the user has a real opportunity, customer evidence and concrete questions. Before then, lower-cost experiments will produce more useful information.",
+      "rationale": "Links the preference for real experimentation to a downstream timing decision, but does not complete the chain with concrete, cited evidence about an option's actual venture-project provision. The supporting comparison remains an assertion."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 10,
+      "evidence_span": "A schedule compatible with employment and family responsibilities.",
+      "rationale": "The report explicitly makes employment and family compatibility a required program-selection criterion."
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 4,
+      "evidence_span": "9. Schedule and family compatibility.",
+      "rationale": "The evaluation framework identifies the relevant question, and the report supplies official program sources. However, it does not identify schedules, attendance requirements, participant accounts, or another evidence class specifically to resolve work/family compatibility."
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 4,
+      "evidence_span": "| Time | Flexible; typically 3–8 hours weekly |",
+      "rationale": "The report gives a concrete time range for online learning generally, but does not attach a verifiable flexibility or scheduling fact to a specific named program. The named resources are presented as examples rather than individually researched scheduling options."
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 10,
+      "evidence_span": "| Time | Commonly 10–14 intensive weeks; often effectively full-time |",
+      "rationale": "The accelerator route has a concrete duration and explicit effectively full-time commitment, establishing the disruptive contrast."
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 8,
+      "evidence_span": "The full economic cost should include foregone earnings, disruption to family life, and delay in testing a venture—not just tuition.",
+      "rationale": "The report contrasts degrees' lost earnings and family disruption with practical venture-building that explicitly preserves income while remaining employed. These use common employment and family-impact axes, although the comparison is distributed across route sections rather than stated together."
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 10,
+      "evidence_span": "This approach preserves income while generating evidence about market demand, working style, cofounder compatibility and personal motivation.",
+      "rationale": "This explicitly supplies income preservation as a benefit supporting the highly recommended practical venture-building route, directly addressing compatibility with continued employment."
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 10,
+      "evidence_span": "Because the user already possesses an MBA, another general entrepreneurship or management degree is unlikely to provide sufficient incremental return. The full economic cost should include foregone earnings, disruption to family life, and delay in testing a venture—not just tuition.",
+      "rationale": "The otherwise viable second-degree route is downgraded, with foregone earnings and family disruption explicitly included among the reasons."
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 10,
+      "evidence_span": "| One weekday evening, 90 minutes | Structured learning and synthesis |",
+      "rationale": "The plan assigns a concrete learning activity to a bounded evening block within its expressly work/family-compatible weekly schedule."
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 10,
+      "evidence_span": "If the project consistently requires more than 10 hours weekly, agree on the increase with the family rather than allowing startup work to expand invisibly.",
+      "rationale": "The plan defines a usable time threshold and requires family agreement before increasing the commitment."
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 8,
+      "evidence_span": "| Fit for this profile | **Low now; potentially high after validation** |",
+      "rationale": "The effectively full-time accelerator route can reverse from low to high suitability after validation. The accompanying application conditions require intensive founder availability and family acceptance, although this is a conditional improvement in suitability rather than an explicit declaration that it becomes better than the flexible route."
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 4,
+      "evidence_span": "This approach preserves income while generating evidence about market demand, working style, cofounder compatibility and personal motivation.",
+      "rationale": "The report connects employment compatibility to its practical venture-building recommendation, but does not complete the required chain through a specific cited or verified option-level scheduling fact. Its flexibility evidence remains general route descriptions and proposed allocations."
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 10,
+      "evidence_span": "A practical default commitment is **7–10 hours per week for the first six months**, increasing only when evidence justifies it.",
+      "rationale": "Explicitly makes evidence a condition for increasing commitment, within a build-first strategy centered on customer discovery and market experiments."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 8,
+      "evidence_span": "11. Evidence of alumni outcomes.\n12. Ability to leave with a tested artifact.\n\nReject programs that score poorly on applied work, cohort quality or stage relevance, regardless of brand.",
+      "rationale": "Identifies relevant evidence classes for evaluating programs and ties applied work to selection. It does not specify how to verify whether alumni outcomes or tested artifacts demonstrate genuine staged market validation."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 8,
+      "evidence_span": "- A manual or concierge service before developing software.",
+      "rationale": "The practical venture-building route offers a concrete mechanism for testing a service before investing in software. This supports staged experimentation, although the report provides no documented implementation or outcome for a particular program."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 4,
+      "evidence_span": "| Time | Usually 1–2 years; potentially 15–40 hours weekly |",
+      "rationale": "Provides a concrete duration for the second-degree route, but does not establish that market testing must wait until that preparation is completed. The later reference to delayed testing is a general opportunity-cost warning."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 10,
+      "evidence_span": "The ideal timing is around **months 6–12**, when the user has a real opportunity, customer evidence and concrete questions. Before then, lower-cost experiments will produce more useful information.",
+      "rationale": "Directly compares early experiments with undertaking executive education earlier, using information value and timing as the decision axes."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 10,
+      "evidence_span": "This approach preserves income while generating evidence about market demand, working style, cofounder compatibility and personal motivation.",
+      "rationale": "Explicitly explains the value of the recommended practical venture-building route in terms of generating market and founder evidence while limiting commitment."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 10,
+      "evidence_span": "Because the user already possesses an MBA, another general entrepreneurship or management degree is unlikely to provide sufficient incremental return. The full economic cost should include foregone earnings, disruption to family life, and delay in testing a venture—not just tuition.",
+      "rationale": "Names and downgrades another degree, explicitly including delayed venture testing among the reasons for its poor return."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 10,
+      "evidence_span": "For each domain:\n\n- Interview 10–15 potential customers.\n- Study current workarounds and purchasing behavior.\n- Identify who controls the budget.\n- Estimate the cost of the problem.\n- Test whether customers will introduce others.",
+      "rationale": "Provides executable customer-discovery actions with concrete subjects and quantities, feeding the subsequent opportunity-selection gate."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 10,
+      "evidence_span": "Advance only one opportunity unless both have strong paid evidence.",
+      "rationale": "States a usable advancement and allocation rule explicitly conditioned on market evidence."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 4,
+      "evidence_span": "- Deep technical education needed for the intended venture.",
+      "rationale": "Identifies a concrete condition under which a second degree could become worthwhile. It does not explicitly establish that extended preparation before any idea testing becomes preferable."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 10,
+      "evidence_span": "Minimum evidence should include at least one of:\n\n- A paying customer.\n- A signed pilot.\n- A deposit or pre-order.\n- Several written letters of intent from qualified buyers.\n- Repeated active usage of a prototype.\n- A clearly superior channel insight demonstrated by an experiment.\n\nIf neither opportunity passes, return to exploration.",
+      "rationale": "Makes the chain explicit: staged validation requires specified customer or behavioral evidence, and failure to obtain it triggers a return to exploration rather than further commitment."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 10,
+      "evidence_span": "At the end of the first year, the most valuable outcome is not a certificate. It is a body of evidence: interviewed customers, tested offers, product behavior, revenue signals, team experience, realistic economics and a clear decision about whether to commit.",
+      "rationale": "Explicitly prioritizes a detailed body of practical evidence for the launch decision over an educational credential."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 4,
+      "evidence_span": "11. Evidence of alumni outcomes.\n12. Ability to leave with a tested artifact.",
+      "rationale": "Identifies relevant program-evaluation evidence, but does not specify sources or a research approach for establishing the depth of practical cases or data available through a program."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 4,
+      "evidence_span": "Customer-discovery course → 20 interview notes and a problem map.",
+      "rationale": "Gives a concrete practical-data output for a learning route, but this is a prescribed assignment rather than a verifiable fact about what an identified option actually provides."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 2,
+      "evidence_span": "Expensive and frequently too theoretical; repeats much of an MBA",
+      "rationale": "Characterizes second degrees as theoretical, but supplies no specific curriculum or assessment fact demonstrating theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 4,
+      "evidence_span": "Watching courses without conducting experiments should not count as startup progress.",
+      "rationale": "Directly contrasts passive study with experimentation on the axis of startup progress, but does not fully compare in-depth practical cases or data against abstract theoretical instruction."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 10,
+      "evidence_span": "This approach preserves income while generating evidence about market demand, working style, cofounder compatibility and personal motivation.",
+      "rationale": "The practical venture-building route is recommended because it generates concrete evidence across several important venture and founder decisions."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 4,
+      "evidence_span": "| Main limitation | Expensive and frequently too theoretical; repeats much of an MBA |\n| Fit for this profile | **Low by default** |",
+      "rationale": "Places a theoretical-content criticism next to a low rating for another degree, but does not explicitly establish lack of practical cases or application as the causal reason for downgrading it."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 10,
+      "evidence_span": "For each domain:\n- Interview 10–15 potential customers.\n- Study current workarounds and purchasing behavior.\n- Identify who controls the budget.\n- Estimate the cost of the problem.",
+      "rationale": "Provides executable steps to collect detailed, decision-relevant customer and commercial data."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 10,
+      "evidence_span": "Advance only one opportunity unless both have strong paid evidence.\n\nMinimum evidence should include at least one of:\n\n- A paying customer.\n- A signed pilot.\n- A deposit or pre-order.",
+      "rationale": "Defines a concrete progression checkpoint tied to observable practical market evidence."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Conditions for reconsidering a degree concern technical education, networks, geography or credentials; none explicitly makes abstract theory without application the better choice."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 4,
+      "evidence_span": "The ideal timing is around **months 6–12**, when the user has a real opportunity, customer evidence and concrete questions. Before then, lower-cost experiments will produce more useful information.",
+      "rationale": "Links a preference for useful practical evidence to sequencing experiments before executive education, but provides no concrete cited fact about an option that completes the preference–evidence–decision chain."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 10,
+      "evidence_span": "strong concern for return on time and money—the best route is **not another general-management degree**.",
+      "rationale": "Explicitly makes return on both time and money a priority governing route selection."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 10,
+      "evidence_span": "10. Total monetary and opportunity cost.\n11. Evidence of alumni outcomes.",
+      "rationale": "The program-evaluation scorecard identifies cost and outcome evidence to gather before purchasing a program, enabling cost-effectiveness assessment."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 10,
+      "evidence_span": "Y Combinator’s published standard deal invests US$500,000: US$125,000 for 7% and US$375,000 through an uncapped most-favored-nation SAFE.",
+      "rationale": "Provides a concrete, verifiable capital-versus-equity fact for a named option, supporting evaluation of its economic value rather than treating it as free education."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 10,
+      "evidence_span": "| Planning cost | Approximately US$30,000–200,000+, plus travel and substantial opportunity cost |\n| Mentors/network | Strongest when the school has an active founder, technical and investor ecosystem |\n| Hands-on work | Highly variable; may include incubators, capstones and pitch competitions |\n| Fundraising value | Mainly indirect, through reputation and alumni relationships |\n| Main value | Credential, structured immersion, career transition and geographic network |",
+      "rationale": "The second-degree route has a concrete estimated cost range and explicitly identifies reputation and credentials as benefits, establishing the expensive prestige-oriented contrast."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 10,
+      "evidence_span": "The ideal timing is around **months 6–12**, when the user has a real opportunity, customer evidence and concrete questions. Before then, lower-cost experiments will produce more useful information.",
+      "rationale": "Directly compares executive education with lower-cost experimentation on useful information gained, and identifies a consequential timing difference."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 10,
+      "evidence_span": "This approach preserves income while generating evidence about market demand, working style, cofounder compatibility and personal motivation.",
+      "rationale": "Gives an explicit cost-effectiveness reason for the recommended practical venture-building route: retaining income while obtaining several kinds of decision-relevant evidence."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 10,
+      "evidence_span": "Because the user already possesses an MBA, another general entrepreneurship or management degree is unlikely to provide sufficient incremental return. The full economic cost should include foregone earnings, disruption to family life, and delay in testing a venture—not just tuition.",
+      "rationale": "Downgrades another degree because its incremental return does not justify its full economic cost."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 10,
+      "evidence_span": "Select the best two opportunity theses. For each, run two or three experiments:\n\n- Landing-page test.\n- Paid workshop or advisory offer.\n- Manual service prototype.",
+      "rationale": "The low-cost market-experiment phase specifies executable tests that obtain market evidence before substantial investment."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 10,
+      "evidence_span": "The premium route should require a written investment thesis: what scarce asset will be acquired, why it cannot be acquired more cheaply, and which venture milestone it should improve.",
+      "rationale": "Defines a usable cost-effectiveness checkpoint for premium spending, requiring a cheaper-alternative test and an explicit venture benefit."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 10,
+      "evidence_span": "This is the earliest stage at which premium executive education may be justified. Enroll only if a program directly addresses a current bottleneck",
+      "rationale": "Provides a concrete boundary for switching to premium executive education: a sufficiently developed venture with a current bottleneck the program directly addresses."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 10,
+      "evidence_span": "Because the user already possesses an MBA, another general entrepreneurship or management degree is unlikely to provide sufficient incremental return. The full economic cost should include foregone earnings, disruption to family life, and delay in testing a venture—not just tuition.",
+      "rationale": "Explicitly links the reported existing MBA to insufficient incremental return and the decision to downgrade another degree, while identifying the economic costs supporting that decision."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 6,
+      "evidence_span": "Techstars describes its accelerators as three-month, mentorship-driven programs providing specialized expertise, community and access to capital.",
+      "rationale": "Provides a concrete, verifiable fact about a named program’s practitioner and community access. Score limited by the supplied cap."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 6,
+      "evidence_span": "| Mentors/network | Usually weak unless live cohorts, office hours or peer groups are included |",
+      "rationale": "Explicitly distinguishes online study with limited interpersonal access from versions offering live cohorts, office hours or peers. Score limited by the supplied cap."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 6,
+      "evidence_span": "Do not select executive education mainly by brand. Require:\n\n- A venture project built into the program.\n- Direct feedback from active founders and investors.\n- A cohort relevant to the intended market.",
+      "rationale": "Uses access to active practitioners and relevant peers as explicit program-selection requirements, affecting which executive programs qualify for recommendation. Score limited by the supplied cap."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 6,
+      "evidence_span": "Online foundation → customer discovery → small paid experiments → mentor board → focused Shanghai networking",
+      "rationale": "The final recommended sequence includes both mentoring and networking rather than justifying learning in isolation. Score limited by the supplied cap."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 6,
+      "evidence_span": "Techstars describes its accelerators as three-month, mentorship-driven programs",
+      "rationale": "Provides a concrete duration for a named option, relevant to assessing its demands on regular family time. The fact does not establish a family-compatible weekly schedule; the generic cap is applied."
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 4,
+      "evidence_span": "The full economic cost should include foregone earnings, disruption to family life, and delay in testing a venture—not just tuition.",
+      "rationale": "Explicitly identifies family disruption as a disadvantage of another degree. However, it does not explicitly contrast options in terms of preserving regular family time versus entrepreneurship dominating evenings and weekends."
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 6,
+      "evidence_span": "Do not select executive education mainly by brand. Require:\n\n- A venture project built into the program.\n- Direct feedback from active founders and investors.\n- A cohort relevant to the intended market.\n- Alumni access after the program.\n- Product, experimentation and entrepreneurial-finance content—not just innovation strategy.\n- A schedule compatible with employment and family responsibilities.",
+      "rationale": "Family-compatible scheduling explicitly affects which executive programs qualify for selection. This is a secondary fit requirement, although it is not applied to distinguish particular named programs. The generic cap is applied."
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 6,
+      "evidence_span": "If the project consistently requires more than 10 hours weekly, agree on the increase with the family rather than allowing startup work to expand invisibly.",
+      "rationale": "The recommended plan explicitly guards against startup work encroaching on family time without agreement. No selected route is justified by prioritizing unrestricted evening or weekend work; the generic cap is applied."
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 6,
+      "evidence_span": "Run a **six- to eight-week cofounder trial** before discussing permanent equity. The trial should test:\n\n- Reliability.\n- Speed and quality of decisions.\n- Conflict behavior.",
+      "rationale": "The practical venture-building route provides a concrete, time-bounded team-assessment framework addressing decision-making and conflict. This is criterion-specific evidence; the supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 2,
+      "evidence_span": "| Online curriculum | 4 | 3 | 3 | 2 | 3 | 1–2 | 2* | 5 |",
+      "rationale": "The comparison assigns online learning a team-management rating, providing limited evidence of differentiation on team learning. It does not explicitly distinguish coordination or leadership frameworks from purely solo-founder technical content."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 6,
+      "evidence_span": "Enroll only if a program directly addresses a current bottleneck—for example:\n\n- Technology commercialization.\n- Entrepreneurial finance.\n- Product leadership.\n- Cross-border expansion.\n- Venture leadership.",
+      "rationale": "Product and venture leadership explicitly influence whether executive education should be selected, making leadership a secondary fit factor. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 6,
+      "evidence_span": "**Online foundation → customer discovery → small paid experiments → mentor board → focused Shanghai networking → MVP and cofounder trial → selective executive education → revenue validation → funding decision → accelerator only if justified.**",
+      "rationale": "The final recommendation retains the cofounder trial and mentoring rather than justifying a selected route through an opposing preference for exclusively solo technical learning. The supplied generic cap limits the score to 6."
+    }
+  ]
+}

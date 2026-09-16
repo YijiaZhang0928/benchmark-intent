@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.96 DeerFlow 2.0 RAW50 Ask/No-Ask pilot - 2026-09-15
+
+- 在任何新输出前固定 seed `20260915`，按 persona 原子事实随机抽取一半：T01/T02/T03 为 22/44、25/50、24/49；同题 Ask/No-Ask 使用 byte-identical RAW50 输入，不按 preference coverage 或结果重抽样。
+- 三个 Ask cell 均触发澄清，共 31 个问题项；单人诊断 direct high-impact coverage 为 8/15、precision 为 8/31。T01 无报告递归失败，T02 报告后递归失败，T03 正常完成。
+- 发现原始 non-interactive 只移除工具、未阻止 prose clarification，三题都停止在问题清单，故将其标记为 `NOASK_TOOL_OFF_INVALID`，不得用于 Ask 内容效应。
+- 在修复输出前冻结同 harness/backbone/input 的 `NOASK_FORCE_COMPLETE` agent policy；T01/T03 完整交付，T02 无报告失败。唯一完整配对 T03 为 Ask `7.6699/7.85`、No-Ask `8.6368/8.94`，Ask−NoAsk `−0.9669/−1.09`。
+- RAW50 Ask 在可评分的 T02/T03 上比 prior strict-cold Ask 平均低 `0.2830 P_strict` 和 `0.315 P_HI`，但 task-level 为一升一降，且 T01 失败；结论限于弱趋势与 routing/stability diagnosis，不宣称一般效应。
+- 新增 `pilot/deerflow_raw50_ask_noask_3task_v0_96/` 的 protocol、sample manifest、冻结输入、完整 traces/reports、blind scores、manipulation repair amendment 与结果摘要。
+
 ## v0.95 DeerFlow 2.0 strict-cold three-task diagnostic - 2026-09-15
 
 - 用新版 workbook `K2:K4` 的真正 task-only 输入运行前三题；agent 使用 DeerFlow 2.0 stock clarification prompt 与 public deep-research skill，不可见项目自定义 calibration skill。

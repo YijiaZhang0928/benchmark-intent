@@ -2,9 +2,11 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.95
+## 当前方向：AskInfer-Bench v0.96
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
+
+v0.96 完成前三题的 DeerFlow 2.0 `RAW50 × Ask/No-Ask` pilot：运行前以固定 seed 随机抽取每题一半原始 persona facts，同一输入配对 Ask 与 No-Ask。三题 Ask 仍全部提问，共 31 个问题项，单人诊断编码直接覆盖 8/15 个 high-impact preference axes；T01 无报告失败、T02 报告生成后递归失败、T03 正常完成。原始“只关 clarification tool”的 No-Ask 三题都把问题清单当 final answer，故判 manipulation failure；预冻结 force-complete 修复后，T01/T03 交付报告、T02 失败。唯一完整内容配对 T03 为 Ask `P_strict=7.6699`、No-Ask `8.6368`，Ask 低 `0.9669`；RAW50 Ask 在 T02/T03 的均值比 strict-cold Ask 低 `0.2830`。该结果不支持“Ask 必然更好”，只支持继续研究已有 persona 下的 clarification calibration、研究预算竞争和 no-ask completion routing。完整资产见 [`pilot/deerflow_raw50_ask_noask_3task_v0_96/RESULTS.md`](pilot/deerflow_raw50_ask_noask_3task_v0_96/RESULTS.md)。
 
 项目评价两种现实情境：用户在线但不主动补全 specification 时，agent 能否用少量问题获取真正改变交付物的 task-specific preferences；用户离线时，agent 能否只从授权 history 的证据做推断，并避免无依据投射。Ask 覆盖 Deep Research、repository coding 和 data analysis；Infer 首版只做 Deep Research。
 
