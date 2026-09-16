@@ -1,0 +1,794 @@
+{
+  "schema_version": "ieo-v05-offline-ablation-v1",
+  "splits": {
+    "development": {
+      "variants": {
+        "full_simple": {
+          "tasks": [
+            {
+              "task": "T01",
+              "selected_candidate_ids": [
+                "C01",
+                "C04",
+                "C09",
+                "C21"
+              ],
+              "selected_axes": [
+                "priority study region",
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "funding security versus exceptional research fit",
+                "intended post-PhD career outcome"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            {
+              "task": "T02",
+              "selected_candidate_ids": [
+                "C01",
+                "C09",
+                "C14",
+                "C17"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Preferred teaching, assessment, and learner-autonomy model",
+                "Desired level of linguistic and cultural friction"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T2-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.25
+            },
+            {
+              "task": "T05",
+              "selected_candidate_ids": [
+                "C05",
+                "C06",
+                "C07",
+                "C11"
+              ],
+              "selected_axes": [
+                "Early validation versus pre-launch polish and trust",
+                "Institutional alignment versus product independence",
+                "Minimum state that counts as launch",
+                "Intensity of human guidance in the learning experience"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.5
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.39999999999999997,
+            "question_precision_any_unit": 0.5,
+            "atomic_questions": 4.0
+          }
+        },
+        "no_depth": {
+          "tasks": [
+            {
+              "task": "T01",
+              "selected_candidate_ids": [
+                "C01",
+                "C02",
+                "C04",
+                "C21"
+              ],
+              "selected_axes": [
+                "priority study region",
+                "intended post-PhD career outcome",
+                "preferred AI research direction",
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.5
+            },
+            {
+              "task": "T02",
+              "selected_candidate_ids": [
+                "C01",
+                "C05",
+                "C09",
+                "C14"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Target term and available dates",
+                "Preferred teaching, assessment, and learner-autonomy model"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T2-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.25
+            },
+            {
+              "task": "T05",
+              "selected_candidate_ids": [
+                "C05",
+                "C06",
+                "C07",
+                "C11"
+              ],
+              "selected_axes": [
+                "Early validation versus pre-launch polish and trust",
+                "Minimum state that counts as launch",
+                "Institutional alignment versus product independence",
+                "Intensity of human guidance in the learning experience"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.5
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.31666666666666665,
+            "question_precision_any_unit": 0.4166666666666667,
+            "atomic_questions": 4.0
+          }
+        },
+        "no_directness": {
+          "tasks": [
+            {
+              "task": "T01",
+              "selected_candidate_ids": [
+                "C01",
+                "C04",
+                "C09",
+                "C21"
+              ],
+              "selected_axes": [
+                "priority study region",
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "funding security versus exceptional research fit",
+                "intended post-PhD career outcome"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            {
+              "task": "T02",
+              "selected_candidate_ids": [
+                "C01",
+                "C09",
+                "C14",
+                "C17"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Preferred teaching, assessment, and learner-autonomy model",
+                "Desired level of linguistic and cultural friction"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T2-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.25
+            },
+            {
+              "task": "T05",
+              "selected_candidate_ids": [
+                "C05",
+                "C06",
+                "C07",
+                "C11"
+              ],
+              "selected_axes": [
+                "Early validation versus pre-launch polish and trust",
+                "Institutional alignment versus product independence",
+                "Minimum state that counts as launch",
+                "Intensity of human guidance in the learning experience"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.5
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.39999999999999997,
+            "question_precision_any_unit": 0.5,
+            "atomic_questions": 4.0
+          }
+        },
+        "no_override": {
+          "tasks": [
+            {
+              "task": "T01",
+              "selected_candidate_ids": [
+                "C01",
+                "C02",
+                "C09",
+                "C21"
+              ],
+              "selected_axes": [
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "funding security versus exceptional research fit",
+                "intended post-PhD career outcome",
+                "preferred AI research direction"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            {
+              "task": "T02",
+              "selected_candidate_ids": [
+                "C01",
+                "C09",
+                "C11",
+                "C16"
+              ],
+              "selected_axes": [
+                "Depth in the current field versus intellectual breadth",
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Acceptable language of credit-bearing instruction"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "selected_recall_askable_high": 0.4,
+              "question_precision_any_unit": 0.5
+            },
+            {
+              "task": "T05",
+              "selected_candidate_ids": [
+                "C07",
+                "C13",
+                "C19",
+                "C21"
+              ],
+              "selected_axes": [
+                "Intensity of human guidance in the learning experience",
+                "Affordability versus premium outcome intensity",
+                "Personalization benefit versus student privacy and control",
+                "Founder control and sustainability versus accelerated external-capital growth"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T5-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.3833333333333333,
+            "question_precision_any_unit": 0.5,
+            "atomic_questions": 4.0
+          }
+        },
+        "decision_slot_only": {
+          "tasks": [
+            {
+              "task": "T01",
+              "selected_candidate_ids": [
+                "C01",
+                "C02",
+                "C04",
+                "C06"
+              ],
+              "selected_axes": [
+                "priority study region",
+                "intended post-PhD career outcome",
+                "preferred AI research direction",
+                "preferred post-PhD employment region"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T1-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            {
+              "task": "T02",
+              "selected_candidate_ids": [
+                "C01",
+                "C05",
+                "C08",
+                "C09"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Target term and available dates",
+                "Preference among destination regions when options are comparable"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T2-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.25
+            },
+            {
+              "task": "T05",
+              "selected_candidate_ids": [
+                "C05",
+                "C06",
+                "C07",
+                "C19"
+              ],
+              "selected_axes": [
+                "Early validation versus pre-launch polish and trust",
+                "Minimum state that counts as launch",
+                "Intensity of human guidance in the learning experience",
+                "Founder control and sustainability versus accelerated external-capital growth"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.5
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.31666666666666665,
+            "question_precision_any_unit": 0.3333333333333333,
+            "atomic_questions": 4.0
+          }
+        }
+      },
+      "v04_reference": {
+        "T01": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "selected_recall_askable_high": 0.5,
+          "resolved_ids": [
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "resolved_recall_askable_high": 0.5,
+          "question_precision_any_unit": 0.75,
+          "simulator_claimed_resolved_ids": [
+            "T1-P3",
+            "T1-P4",
+            "T1-P5"
+          ],
+          "simulator_claimed_recall_askable_high": 0.5
+        },
+        "T02": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "selected_recall_askable_high": 0.4,
+          "resolved_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "resolved_recall_askable_high": 0.4,
+          "question_precision_any_unit": 0.5,
+          "simulator_claimed_resolved_ids": [
+            "T2-P1",
+            "T2-P2"
+          ],
+          "simulator_claimed_recall_askable_high": 0.4
+        },
+        "T05": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T5-P2"
+          ],
+          "selected_recall_askable_high": 0.25,
+          "resolved_ids": [
+            "T5-P2"
+          ],
+          "resolved_recall_askable_high": 0.25,
+          "question_precision_any_unit": 0.25,
+          "simulator_claimed_resolved_ids": [
+            "T5-P2"
+          ],
+          "simulator_claimed_recall_askable_high": 0.25
+        }
+      },
+      "v04_reference_aggregate": {
+        "selected_recall_askable_high": 0.3833333333333333,
+        "question_precision_any_unit": 0.5,
+        "atomic_questions": 4.0
+      }
+    },
+    "validation": {
+      "variants": {
+        "full_simple": {
+          "tasks": [
+            {
+              "task": "T08",
+              "selected_candidate_ids": [
+                "C06",
+                "C08",
+                "C13",
+                "C23"
+              ],
+              "selected_axes": [
+                "Advance structure versus day-to-day adaptability",
+                "Minimum mobility-accessibility standard",
+                "Primary destination-selection priority",
+                "Tolerance for July weather disruption risk"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            },
+            {
+              "task": "T11",
+              "selected_candidate_ids": [
+                "C14",
+                "C16",
+                "C17",
+                "C22"
+              ],
+              "selected_axes": [
+                "Revenue ambition versus trust, accessibility, and editorial independence",
+                "Near-term algorithmic discovery versus durable direct audience relationships",
+                "Desired degree of audience influence over content and community activity",
+                "Acceptable level of editorial boldness and polarization"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.0,
+            "question_precision_any_unit": 0.0,
+            "atomic_questions": 4.0
+          }
+        },
+        "no_depth": {
+          "tasks": [
+            {
+              "task": "T08",
+              "selected_candidate_ids": [
+                "C06",
+                "C08",
+                "C13",
+                "C23"
+              ],
+              "selected_axes": [
+                "Minimum mobility-accessibility standard",
+                "Advance structure versus day-to-day adaptability",
+                "Primary destination-selection priority",
+                "Tolerance for July weather disruption risk"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            },
+            {
+              "task": "T11",
+              "selected_candidate_ids": [
+                "C14",
+                "C16",
+                "C17",
+                "C22"
+              ],
+              "selected_axes": [
+                "Revenue ambition versus trust, accessibility, and editorial independence",
+                "Near-term algorithmic discovery versus durable direct audience relationships",
+                "Desired degree of audience influence over content and community activity",
+                "Acceptable level of editorial boldness and polarization"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.0,
+            "question_precision_any_unit": 0.0,
+            "atomic_questions": 4.0
+          }
+        },
+        "no_directness": {
+          "tasks": [
+            {
+              "task": "T08",
+              "selected_candidate_ids": [
+                "C06",
+                "C08",
+                "C13",
+                "C23"
+              ],
+              "selected_axes": [
+                "Advance structure versus day-to-day adaptability",
+                "Minimum mobility-accessibility standard",
+                "Primary destination-selection priority",
+                "Tolerance for July weather disruption risk"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            },
+            {
+              "task": "T11",
+              "selected_candidate_ids": [
+                "C14",
+                "C16",
+                "C17",
+                "C22"
+              ],
+              "selected_axes": [
+                "Revenue ambition versus trust, accessibility, and editorial independence",
+                "Near-term algorithmic discovery versus durable direct audience relationships",
+                "Desired degree of audience influence over content and community activity",
+                "Acceptable level of editorial boldness and polarization"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.0,
+            "question_precision_any_unit": 0.0,
+            "atomic_questions": 4.0
+          }
+        },
+        "no_override": {
+          "tasks": [
+            {
+              "task": "T08",
+              "selected_candidate_ids": [
+                "C06",
+                "C08",
+                "C16",
+                "C18"
+              ],
+              "selected_axes": [
+                "Primary destination-selection priority",
+                "Tolerance for July weather disruption risk",
+                "Communal connection versus private retreat",
+                "Whole-family togetherness versus subgroup autonomy"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [
+                "T8-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T8-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.5
+            },
+            {
+              "task": "T11",
+              "selected_candidate_ids": [
+                "C03",
+                "C05",
+                "C08",
+                "C23"
+              ],
+              "selected_axes": [
+                "Primary change loyal followers should experience",
+                "Long-term asset the account should become",
+                "Primary criterion for selecting among viable niches",
+                "Local cultural specificity versus international scalability"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.1,
+            "question_precision_any_unit": 0.25,
+            "atomic_questions": 4.0
+          }
+        },
+        "decision_slot_only": {
+          "tasks": [
+            {
+              "task": "T08",
+              "selected_candidate_ids": [
+                "C06",
+                "C08",
+                "C13",
+                "C15"
+              ],
+              "selected_axes": [
+                "Minimum mobility-accessibility standard",
+                "Primary destination-selection priority",
+                "Tolerance for July weather disruption risk",
+                "Accommodation service model"
+              ],
+              "atomic_questions": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            },
+            {
+              "task": "T11",
+              "selected_candidate_ids": [
+                "C04",
+                "C10",
+                "C14"
+              ],
+              "selected_axes": [
+                "Acceptable level of editorial boldness and polarization",
+                "Acceptable dependence of the brand on the creator's public identity and visibility",
+                "Primary audience segment served during the first six months"
+              ],
+              "atomic_questions": 3,
+              "matched_any_unit_ids": [
+                "T11-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T11-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.3333333333333333
+            }
+          ],
+          "aggregate": {
+            "selected_recall_askable_high": 0.125,
+            "question_precision_any_unit": 0.16666666666666666,
+            "atomic_questions": 3.5
+          }
+        }
+      },
+      "v04_reference": {
+        "T08": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T8-P1"
+          ],
+          "selected_recall_askable_high": 0.2,
+          "resolved_ids": [
+            "T8-P1"
+          ],
+          "resolved_recall_askable_high": 0.2,
+          "question_precision_any_unit": 0.5,
+          "simulator_claimed_resolved_ids": [
+            "T8-A3",
+            "T8-P1",
+            "T8-P4"
+          ],
+          "simulator_claimed_recall_askable_high": 0.4
+        },
+        "T11": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T11-P3"
+          ],
+          "selected_recall_askable_high": 0.25,
+          "resolved_ids": [
+            "T11-P3"
+          ],
+          "resolved_recall_askable_high": 0.25,
+          "question_precision_any_unit": 0.25,
+          "simulator_claimed_resolved_ids": [
+            "T11-P3"
+          ],
+          "simulator_claimed_recall_askable_high": 0.25
+        }
+      },
+      "v04_reference_aggregate": {
+        "selected_recall_askable_high": 0.225,
+        "question_precision_any_unit": 0.375,
+        "atomic_questions": 4.0
+      }
+    }
+  }
+}
