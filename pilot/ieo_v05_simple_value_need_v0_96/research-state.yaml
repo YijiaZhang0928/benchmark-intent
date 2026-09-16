@@ -1,0 +1,8 @@
+project: ieo-v05-simple-formula
+status: protocol_locked
+baseline_tag: v04_architect
+development_tasks: [T01, T02, T05]
+validation_tasks: [T08, T11]
+current_phase: offline_development_screen
+stop_rule: one frozen validation pass; no post-validation tuning
+
