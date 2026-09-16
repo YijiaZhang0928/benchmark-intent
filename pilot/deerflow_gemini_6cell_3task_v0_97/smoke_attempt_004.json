@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.97",
+  "counted": false,
+  "contains_private_task_data": false,
+  "requested_model": "gemini-3.1-pro-preview",
+  "thinking_level": "high",
+  "credential_profile": "replacement key from a user-confirmed paid Google AI project",
+  "provider_result": "passed",
+  "text_content_python_type": "list",
+  "text_block_types": [
+    "text"
+  ],
+  "normalized_text": "GEMINI_TEXT_OK",
+  "text_smoke": "PASS",
+  "tool_content_python_type": "list",
+  "tool_call_count": 1,
+  "tool_call_names": [
+    "gemini_smoke_probe"
+  ],
+  "tool_call_args": [
+    {
+      "value": "GEMINI_TOOL_OK"
+    }
+  ],
+  "tool_smoke": "PASS",
+  "automatic_retry_performed": false,
+  "formal_report_started": false
+}

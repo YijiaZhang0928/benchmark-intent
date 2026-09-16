@@ -14,7 +14,7 @@
 
 No-Ask 改为 harness-matched control：两臂保留相同 stock SOUL、public `deep-research` skill、工具和提示。No-Ask 只把 `disable_clarification=true` 放入 DeerFlow runtime context；模型仍可产生 `ask_clarification` 调用，但中间件将其转为固定的“用户不在线，请按现有信息继续并声明假设”工具结果。为使 embedded client 真正传递该参数，本地 DeerFlow checkout 增加一项 context plumbing，15 个相关本地测试通过；runner 同时记录 attempted/presented/suppressed 三类状态。旧 v0.96 的 tool-removal 与 force-complete SOUL 不进入新主比较。
 
-Gemini key 已安全写入 ignored `.env`，权限为 `600`，验证时只检查存在性与长度，不输出密钥。首个不计分 smoke 使用 checkout 示例中的 `gemini-2.5-pro`，Google 返回 404；用户随后批准冻结 `gemini-3.1-pro-preview/high`，第二个 smoke 因错误账号项目无付费额度返回 429。用户再将 `.env` 替换为其确认已付费项目的 key；attempt 003 已成功收到 provider response，证明付费 API 可用，但最小脚本只接受纯字符串逐字等于 `GEMINI_TEXT_OK`，该 gate 失败后没有继续 tool test，也没有保存内容块结构。它必须保留为 engineering smoke failure，不能事后改 pass；下一次需经用户批准，以 DeerFlow 的内容块 normalization 做独立 attempt。另修正本地 LangChain 适配字段为 `google_api_key`、provider retry 为 0。v0.97 已冻结 model/design，18-cell 正式运行仍等待 smoke 通过。
+Gemini key 已安全写入 ignored `.env`，权限为 `600`，验证时只检查存在性与长度，不输出密钥。attempt 001 为旧模型 404；attempt 002 因错误账号项目无付费额度返回 429；替换为用户确认已付费项目的 key 后，attempt 003 收到 response，但纯字符串 gate 失败且未继续 tool test。用户显式批准的新 attempt 004 使用 `DeerFlowClient._extract_text`：Gemini 返回 `list` 中一个 `text` block，规范化后精确为 `GEMINI_TEXT_OK`；第二次调用精确生成一个 `gemini_smoke_probe(value=GEMINI_TOOL_OK)`，文本与工具 gate 均通过。attempt 003 仍保留为失败，不追溯改写。另修正本地 LangChain 适配字段为 `google_api_key`、provider retry 为 0。v0.97 已冻结 model/design 并通过 API/tool smoke，18-cell counted reports 尚未启动。
 
 跨设定假设 `COLD_ASK ≈ RAW50_NOASK` 被预先写成描述性 closeness：前三题 mean `P_strict` 绝对差不超过 0.5，同时必须逐题报告；n=3 单生成不能称为统计等价或论文级证据。协议与输入见 `pilot/deerflow_gemini_6cell_3task_v0_97/`。
 
