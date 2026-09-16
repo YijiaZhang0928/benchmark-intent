@@ -1,0 +1,140 @@
+{
+  "schema_version": "ieo-v06-posthoc-regression-v1",
+  "splits": {
+    "development": {
+      "v06": {
+        "tasks": [
+          {
+            "task": "T01",
+            "selected_candidate_ids": [
+              "C01",
+              "C09",
+              "C17",
+              "C20"
+            ],
+            "selected_axes": [
+              "early specialization versus exploration before advisor commitment",
+              "funding security versus exceptional research fit",
+              "desired degree of industry integration during the PhD",
+              "intended post-PhD career outcome"
+            ],
+            "verification_candidate_ids": [],
+            "atomic_questions": 4,
+            "selected_recall_askable_high": 0.5,
+            "question_precision_any_unit": 0.5,
+            "v04_mapped_selected_id_overlap": 2
+          },
+          {
+            "task": "T02",
+            "selected_candidate_ids": [
+              "C09",
+              "C16",
+              "C17",
+              "C20"
+            ],
+            "selected_axes": [
+              "Depth in the current field versus intellectual breadth",
+              "Tolerance for application complexity and execution risk",
+              "Tolerance for uncertainty in final credit recognition",
+              "Desired level of linguistic and cultural friction"
+            ],
+            "verification_candidate_ids": [
+              "C09",
+              "C17"
+            ],
+            "atomic_questions": 4,
+            "selected_recall_askable_high": 0.2,
+            "question_precision_any_unit": 0.25,
+            "v04_mapped_selected_id_overlap": 1
+          },
+          {
+            "task": "T05",
+            "selected_candidate_ids": [
+              "C07",
+              "C08",
+              "C09",
+              "C21"
+            ],
+            "selected_axes": [
+              "Intensity of human guidance in the learning experience",
+              "Guided structure versus learner autonomy",
+              "Curriculum breadth versus specialization depth",
+              "Personalization benefit versus student privacy and control"
+            ],
+            "verification_candidate_ids": [],
+            "atomic_questions": 4,
+            "selected_recall_askable_high": 0.25,
+            "question_precision_any_unit": 0.25,
+            "v04_mapped_selected_id_overlap": 1
+          }
+        ],
+        "aggregate": {
+          "selected_recall_askable_high": 0.31666666666666665,
+          "question_precision_any_unit": 0.3333333333333333,
+          "atomic_questions": 4.0
+        }
+      },
+      "v04_reference_aggregate": {
+        "selected_recall_askable_high": 0.3833333333333333,
+        "question_precision_any_unit": 0.5,
+        "atomic_questions": 4.0
+      }
+    },
+    "posthoc_regression": {
+      "v06": {
+        "tasks": [
+          {
+            "task": "T08",
+            "selected_candidate_ids": [
+              "C07",
+              "C08",
+              "C16",
+              "C18"
+            ],
+            "selected_axes": [
+              "Low-friction reliability versus distinctive experience",
+              "Communal connection versus private retreat",
+              "Whole-family togetherness versus subgroup autonomy",
+              "Tolerance for July weather disruption risk"
+            ],
+            "verification_candidate_ids": [],
+            "atomic_questions": 4,
+            "selected_recall_askable_high": 0.4,
+            "question_precision_any_unit": 0.75,
+            "v04_mapped_selected_id_overlap": 2
+          },
+          {
+            "task": "T11",
+            "selected_candidate_ids": [
+              "C08",
+              "C18",
+              "C20",
+              "C23"
+            ],
+            "selected_axes": [
+              "Local cultural specificity versus international scalability",
+              "Rapid publishing and feedback versus polished, durable work",
+              "Authentic role through which the creator establishes distinctiveness and credibility",
+              "Long-term asset the account should become"
+            ],
+            "verification_candidate_ids": [],
+            "atomic_questions": 4,
+            "selected_recall_askable_high": 0.25,
+            "question_precision_any_unit": 0.25,
+            "v04_mapped_selected_id_overlap": 1
+          }
+        ],
+        "aggregate": {
+          "selected_recall_askable_high": 0.325,
+          "question_precision_any_unit": 0.5,
+          "atomic_questions": 4.0
+        }
+      },
+      "v04_reference_aggregate": {
+        "selected_recall_askable_high": 0.225,
+        "question_precision_any_unit": 0.375,
+        "atomic_questions": 4.0
+      }
+    }
+  }
+}
