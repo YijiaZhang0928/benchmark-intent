@@ -51,7 +51,8 @@ def json_default(value):
 
 async def run(args: argparse.Namespace) -> dict:
     case_root = args.case_root.resolve()
-    stage = json.loads(args.stage_a_result.resolve().read_text(encoding="utf-8"))
+    stage_a_path = args.stage_a_result.resolve()
+    stage = json.loads(stage_a_path.read_text(encoding="utf-8"))
     arm = stage["arms"]["v4r"]
     task_path = case_root / "task/instruction.txt"
     rubric_path = case_root / "task/strict_rubrics.json"
@@ -148,7 +149,7 @@ async def run(args: argparse.Namespace) -> dict:
         "report_characters": len(report),
         "task_sha256": sha256(task_path),
         "strict_rubrics_sha256": sha256(rubric_path),
-        "stage_a_result_sha256": sha256(args.stage_a_result.resolve()),
+        "stage_a_result_sha256": sha256(stage_a_path),
         "implementation_sha256": sha256(Path(__file__)),
         "open_deep_research_commit": git_commit(odr_root),
         "deerflow_provider_commit": git_commit(deerflow_root),
@@ -170,6 +171,7 @@ def main() -> int:
     parser.add_argument("--recursion-limit", type=int, default=120)
     parser.add_argument("--timeout-seconds", type=int, default=1800)
     args = parser.parse_args()
+    failure_dir = args.output_dir.resolve()
 
     def hard_timeout(_signum, _frame):
         raise TimeoutError(f"hard wall timeout after {args.timeout_seconds} seconds")
@@ -181,7 +183,7 @@ def main() -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
     except Exception as exc:
-        args.output_dir.mkdir(parents=True, exist_ok=True)
+        failure_dir.mkdir(parents=True, exist_ok=True)
         failure = {
             "schema_version": "0.95",
             "error_type": type(exc).__name__,
@@ -189,7 +191,7 @@ def main() -> int:
             "traceback": traceback.format_exc(),
             "failed_at_utc": datetime.now(timezone.utc).isoformat(),
         }
-        (args.output_dir / "failure.json").write_text(json.dumps(failure, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (failure_dir / "failure.json").write_text(json.dumps(failure, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(failure, ensure_ascii=False, indent=2), file=sys.stderr)
         return 2
     finally:

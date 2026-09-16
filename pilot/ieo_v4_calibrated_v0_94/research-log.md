@@ -46,3 +46,14 @@
   different preference axis.
 - The process gate passes. Frozen V4R transcripts now advance to the common ODR report graph and
   unchanged P_strict evaluator.
+
+## 2026-09-15 — T08 post-generation metadata repair
+
+- T08 completed research, produced a 44,194-character report, six searches and eight successful
+  fetches.
+- Metadata construction then failed because a relative stage-A path was resolved after the runner
+  changed into the ODR repository.
+- The report, state and research events predate the error and pass the qualification gate. They are
+  retained without regeneration. A deterministic finalizer reconstructs metadata and marks the
+  engineering recovery explicitly.
+- The runner now resolves all artifact paths before changing directories; T11 uses the repaired runner.
