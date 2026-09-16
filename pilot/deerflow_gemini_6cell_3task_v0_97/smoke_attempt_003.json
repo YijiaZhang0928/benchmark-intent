@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.97",
+  "counted": false,
+  "contains_private_task_data": false,
+  "requested_model": "gemini-3.1-pro-preview",
+  "thinking_level": "high",
+  "credential_profile": "replacement key from a user-confirmed paid Google AI project",
+  "provider_result": "response_received",
+  "text_smoke": "failed_exact_match",
+  "text_response_persisted": false,
+  "tool_smoke": "not_run_after_text_gate_failure",
+  "automatic_retry_performed": false,
+  "diagnostic": "The validator accepted only a plain string equal to GEMINI_TEXT_OK. Gemini may have returned structured content blocks, but the response shape was not persisted, so this remains an unconfirmed engineering hypothesis rather than a corrected result.",
+  "next_action": "Run a separately recorded attempt using DeerFlow's content-block normalization, then test one forced custom tool call."
+}
