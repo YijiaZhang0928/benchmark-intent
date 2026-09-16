@@ -137,3 +137,11 @@ Before any H2 generation, one permitted structural iteration is frozen:
 
 No threshold sweep is permitted after H2 development results. If H2 passes the original advancement
 gate, the exact H2 controller and calibrator advance to T08/T11.
+
+## Frozen full-report integration
+
+For each advancing task, the saved task-only instruction, saved V4R question and saved simulator reply
+are passed to the same Open Deep Research graph used by v0.90 with clarification disabled inside the
+graph. Research model, search/fetch implementation, token limits, concurrency, researcher iterations,
+tool-call limits and 1,800-second wall timeout are unchanged. The graph receives no persona, preference
+unit or rubric. Each report must have at least five successful fetches and 1,000 characters to qualify.
