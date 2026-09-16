@@ -5,7 +5,7 @@
 - 将 Gemini pilot 扩为前三题 × `COLD/RAW50/RAW100` × `ASK/NOASK`，共 18 个 planned report cells；RAW50 固定复用 v0.96 抽样，RAW100 暴露全部 raw persona facts。
 - RAW50 与 RAW100 使用相同中性 context header，去除 `incomplete/complete` 提示词，避免 persona 充足性标签混杂 clarification 行为。
 - 用 DeerFlow 内置 `disable_clarification` 替代 tool removal/force-complete SOUL；embedded client 补充 runtime context plumbing，runner 新增 clarification attempted/presented/suppressed 审计字段，15 个相关本地测试通过。
-- Gemini key 已以权限 `600` 写入 ignored `.env`；首个不计分 `gemini-2.5-pro` smoke 得到 provider 404（新用户不可用），按协议未自动重试，正式模型等待用户确认 `gemini-3.1-pro-preview`。
+- Gemini key 已以权限 `600` 写入 ignored `.env`；首个不计分 `gemini-2.5-pro` smoke 得到 provider 404。用户随后冻结 `gemini-3.1-pro-preview/high`，第二个 smoke 得到 429（该项目 Pro free-tier request/input-token quota 为 0）；两次均未自动重试，正式运行等待用户启用 Google Cloud Billing。
 - 新增 `pilot/deerflow_gemini_6cell_3task_v0_97/` 的 draft protocol、冻结输入生成器、18-cell input manifest 与去敏 smoke failure record。
 
 ## v0.96 DeerFlow 2.0 RAW50 Ask/No-Ask pilot - 2026-09-15

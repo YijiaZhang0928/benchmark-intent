@@ -4,7 +4,7 @@
 
 - ID: `deerflow-gemini-6cell-3task-v0.97`
 - Type: experiment protocol
-- Status: DRAFT — six-cell design fixed; provider model replacement awaiting user confirmation
+- Status: FROZEN BEFORE COUNTED OUTPUTS — blocked on paid API billing activation
 - Date: 2026-09-15
 - Tasks: T01–T03
 - Planned reports: 18 (3 tasks × 3 persona contexts × 2 clarification policies)
@@ -80,4 +80,8 @@ The requested cross-setting hypothesis is secondary: `COLD_ASK` is considered de
 
 ## Current provider status
 
-The first unscored connectivity attempt used `gemini-2.5-pro` because it was the model in the checked-out DeerFlow example config. Google returned `404 NOT_FOUND` and stated that this model is no longer available to new users, recommending `gemini-3.1-pro-preview`. No second attempt was made. The formal Gemini model ID remains unset until the user approves the replacement.
+The first unscored connectivity attempt used `gemini-2.5-pro` because it was the model in the checked-out DeerFlow example config. Google returned `404 NOT_FOUND` and stated that this model is no longer available to new users, recommending `gemini-3.1-pro-preview`.
+
+The user then approved and froze `gemini-3.1-pro-preview` with `thinking_level=high`. The second unscored attempt reached the model but returned `429 RESOURCE_EXHAUSTED`: the project had zero free-tier request and input-token quota for Gemini 3.1 Pro. No automatic retry was made. Formal runs remain blocked until the user activates Google Cloud Billing and explicitly reports completion.
+
+Model rationale: Google's official model page describes Gemini 3.1 Pro Preview as optimized for agentic workflows requiring precise tool use and reliable multi-step execution, with a 1,048,576-token input limit, 65,536-token output limit, function calling, structured outputs, thinking and search grounding. It is therefore capability-matched to Deep Research, but the preview lifecycle is a reproducibility limitation. Exact model ID, date, thinking level and failure records must remain in all result artifacts.

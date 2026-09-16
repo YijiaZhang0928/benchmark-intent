@@ -1,0 +1,15 @@
+# Secret-free frozen model profile. The actual key remains only in ignored .env.
+models:
+  - name: gemini-3.1-pro-preview
+    display_name: Gemini 3.1 Pro Preview (Google AI Studio)
+    use: langchain_google_genai:ChatGoogleGenerativeAI
+    model: gemini-3.1-pro-preview
+    google_api_key: $GEMINI_API_KEY
+    timeout: 600.0
+    max_retries: 0
+    max_output_tokens: 16384
+    context_window: 1048576
+    supports_thinking: true
+    supports_vision: true
+    when_thinking_enabled:
+      thinking_level: high
