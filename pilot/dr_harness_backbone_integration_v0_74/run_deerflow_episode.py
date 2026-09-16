@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import re
+import signal
 import subprocess
 import sys
 import traceback
@@ -30,7 +31,14 @@ def parse_args() -> argparse.Namespace:
     source.add_argument("--reply-file", type=Path)
     parser.add_argument(
         "--input-kind",
-        choices=["task_instruction", "full_persona", "simulator_reply", "engineering_control"],
+        choices=[
+            "task_instruction",
+            "persona_context_50",
+            "persona_context_100",
+            "full_persona",
+            "simulator_reply",
+            "engineering_control",
+        ],
         help="Explicit provenance label; defaults from --task-file/--reply-file.",
     )
     parser.add_argument(
@@ -59,8 +67,33 @@ def parse_args() -> argparse.Namespace:
         default=True,
         help="Enable or disable provider thinking support for this run.",
     )
+    parser.add_argument(
+        "--disable-account-memory",
+        action="store_true",
+        help=(
+            "Disable both account-memory injection and account-memory writes "
+            "before the agent graph is assembled."
+        ),
+    )
+    thread_state = parser.add_mutually_exclusive_group()
+    thread_state.add_argument(
+        "--expect-new-thread",
+        action="store_true",
+        help="Fail closed if the checkpointer already contains this thread ID.",
+    )
+    thread_state.add_argument(
+        "--expect-existing-thread",
+        action="store_true",
+        help="Fail closed unless the checkpointer already contains this thread ID.",
+    )
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--recursion-limit", type=int, default=100)
+    parser.add_argument(
+        "--timeout-seconds",
+        type=int,
+        default=None,
+        help="Hard wall-clock limit for this turn; timeout is recorded as a failure and is never retried.",
+    )
     return parser.parse_args()
 
 
@@ -103,6 +136,8 @@ def main() -> int:
     args = parse_args()
     if args.non_interactive and args.disable_clarification:
         raise SystemExit("--non-interactive and --disable-clarification are mutually exclusive")
+    if args.timeout_seconds is not None and args.timeout_seconds < 1:
+        raise SystemExit("--timeout-seconds must be at least 1")
     root = args.deerflow_root.expanduser().resolve()
     output_dir = args.output_dir.expanduser().resolve()
     if not THREAD_RE.fullmatch(args.thread_id):
@@ -172,10 +207,17 @@ def main() -> int:
         "input_sha256": hashlib.sha256(message.encode("utf-8")).hexdigest(),
         "visible_prompt_wrapper": None,
         "persona_visible_on_first_turn": (
-            input_kind == "full_persona" if args.task_file else None
+            input_kind in {"persona_context_50", "persona_context_100", "full_persona"}
+            if args.task_file
+            else None
         ),
         "rubric_visible": False,
         "account_memory_allowed": False,
+        "account_memory_enforcement": (
+            "runtime_disabled_read_write_and_flush"
+            if args.disable_account_memory
+            else "not_enforced"
+        ),
         "subagents_enabled": False,
         "plan_mode": False,
         "recursion_limit": args.recursion_limit,
@@ -190,6 +232,14 @@ def main() -> int:
         ),
         "thinking_enabled": args.thinking_enabled,
         "available_skills": args.available_skills,
+        "expected_thread_state": (
+            "new"
+            if args.expect_new_thread
+            else "existing"
+            if args.expect_existing_thread
+            else "unchecked"
+        ),
+        "timeout_seconds": args.timeout_seconds,
     }
     metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -210,6 +260,32 @@ def main() -> int:
         environment="askinfer-pilot",
     )
 
+    if args.disable_account_memory:
+        # This process owns a private AppConfig instance for this benchmark turn.
+        # Disable all three account-memory paths before graph assembly:
+        # DynamicContextMiddleware reads (injection_enabled), MemoryMiddleware
+        # writes (enabled), and the summarization pre-compaction flush (enabled).
+        client._app_config.memory.enabled = False
+        client._app_config.memory.injection_enabled = False
+        from deerflow.config.memory_config import set_memory_config
+
+        set_memory_config(client._app_config.memory)
+        if client._app_config.memory.enabled or client._app_config.memory.injection_enabled:
+            raise RuntimeError("Account-memory isolation assertion failed")
+
+    if args.expect_new_thread or args.expect_existing_thread:
+        thread_snapshot = client.get_thread(args.thread_id)
+        checkpoints = thread_snapshot.get("checkpoints", [])
+        exists = bool(checkpoints)
+        if args.expect_new_thread and exists:
+            raise SystemExit(
+                f"Isolation assertion failed: thread {args.thread_id!r} already has {len(checkpoints)} checkpoint(s)"
+            )
+        if args.expect_existing_thread and not exists:
+            raise SystemExit(
+                f"Continuation assertion failed: thread {args.thread_id!r} has no checkpoint history"
+            )
+
     clarification_calls: list[dict[str, Any]] = []
     clarification_artifacts: list[dict[str, Any]] = []
     tools: list[dict[str, Any]] = []
@@ -218,7 +294,16 @@ def main() -> int:
 
     run_error: dict[str, Any] | None = None
     with trace_path.open("w", encoding="utf-8") as trace_file:
+        previous_alarm_handler = None
         try:
+            if args.timeout_seconds is not None:
+                def _raise_turn_timeout(_signum, _frame):
+                    raise TimeoutError(
+                        f"DeerFlow turn exceeded hard timeout of {args.timeout_seconds} seconds"
+                    )
+
+                previous_alarm_handler = signal.signal(signal.SIGALRM, _raise_turn_timeout)
+                signal.alarm(args.timeout_seconds)
             for event in client.stream(
                 message,
                 thread_id=args.thread_id,
@@ -262,6 +347,11 @@ def main() -> int:
                 "traceback": traceback.format_exc(),
             }
             trace_file.write(json.dumps({"type": "runner-error", "data": run_error}, ensure_ascii=False) + "\n")
+        finally:
+            if args.timeout_seconds is not None:
+                signal.alarm(0)
+                if previous_alarm_handler is not None:
+                    signal.signal(signal.SIGALRM, previous_alarm_handler)
 
     completed = datetime.now(timezone.utc)
     final_text = ""

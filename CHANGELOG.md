@@ -7,6 +7,8 @@
 - 用 DeerFlow 内置 `disable_clarification` 替代 tool removal/force-complete SOUL；embedded client 补充 runtime context plumbing，runner 新增 clarification attempted/presented/suppressed 审计字段，15 个相关本地测试通过。
 - Gemini key 已以权限 `600` 写入 ignored `.env`；attempt 001/002/003 分别保留旧模型 404、错误项目 429 与纯字符串校验失败。用户显式批准 attempt 004 后，DeerFlow 内容块 normalization 得到精确文本，且 Gemini 准确生成一次冻结参数的 custom tool call；API 与工具 gate 均通过，旧失败不追溯改写。
 - 新增 `pilot/deerflow_gemini_6cell_3task_v0_97/` 的 draft protocol、冻结输入生成器、18-cell input manifest 与去敏 smoke failure record。
+- 在首份 counted report 前补上硬隔离：18 个 cell 使用唯一 thread/output、新进程与空 checkpoint 预检；真正关闭 memory injection、memory write 和 pre-compaction flush。修复了旧 `account_memory_allowed: false` 只有记录、没有执行效果的问题。
+- 冻结 seed `20260915` 的 18-cell 执行顺序、1,800 秒 turn hard timeout、最多三次 clarification answer 与 stop-on-first-failure/no-retry 规则；同一 Ask cell 内可续接 clarification，跨 cell 不得共享 checkpoint、workspace、summary 或 report。
 
 ## v0.96 DeerFlow 2.0 RAW50 Ask/No-Ask pilot - 2026-09-15
 

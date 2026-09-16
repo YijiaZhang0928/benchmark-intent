@@ -2,9 +2,11 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
-## 当前方向：AskInfer-Bench v0.96
+## 当前方向：AskInfer-Bench v0.97
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。
+
+v0.97 已冻结 DeerFlow 2.0 × `gemini-3.1-pro-preview/high` 的前三题六组实验：`COLD/RAW50/RAW100 × ASK/NOASK`，共 18 份 planned reports。No-Ask 保留同一 clarification tool、prompt、skill 与研究流程，只把澄清尝试转换为固定的 proceed-with-assumptions 工具结果；Gemini 文本与工具调用 smoke 已通过。正式输出前又完成 memory/window 硬隔离：18 个 cell 均有独立 thread、输出目录和新进程，账户 memory 的注入、写入与压缩前 flush 全部关闭；仅同一 Ask cell 内允许续接它刚提出的问题和用户模拟回答。执行顺序、hard timeout 与 stop-on-failure 规则见 [`execution_manifest.json`](pilot/deerflow_gemini_6cell_3task_v0_97/execution_manifest.json)。
 
 v0.96 完成前三题的 DeerFlow 2.0 `RAW50 × Ask/No-Ask` pilot：运行前以固定 seed 随机抽取每题一半原始 persona facts，同一输入配对 Ask 与 No-Ask。三题 Ask 仍全部提问，共 31 个问题项，单人诊断编码直接覆盖 8/15 个 high-impact preference axes；T01 无报告失败、T02 报告生成后递归失败、T03 正常完成。原始“只关 clarification tool”的 No-Ask 三题都把问题清单当 final answer，故判 manipulation failure；预冻结 force-complete 修复后，T01/T03 交付报告、T02 失败。唯一完整内容配对 T03 为 Ask `P_strict=7.6699`、No-Ask `8.6368`，Ask 低 `0.9669`；RAW50 Ask 在 T02/T03 的均值比 strict-cold Ask 低 `0.2830`。该结果不支持“Ask 必然更好”，只支持继续研究已有 persona 下的 clarification calibration、研究预算竞争和 no-ask completion routing。完整资产见 [`pilot/deerflow_raw50_ask_noask_3task_v0_96/RESULTS.md`](pilot/deerflow_raw50_ask_noask_3task_v0_96/RESULTS.md)。
 

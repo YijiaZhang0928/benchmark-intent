@@ -8,6 +8,14 @@
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
 
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：v0.97 counted batch 的 memory/window 硬隔离
+
+用户批准 Gemini 18-cell 正式 batch，并明确要求不同 task 与 setting 必须是新 window、不得共享记忆。启动前代码审计发现 DeerFlow `config.yaml` 的 `memory.enabled` 与 `memory.injection_enabled` 默认均为 true；旧 runner 的 `account_memory_allowed: false` 仅是 metadata，不能证明实际隔离。正式 counted reports 尚未开始，因此没有受污染输出。
+
+v0.97 runner 现把隔离变成可执行约束：每个 cell 使用唯一 thread ID、唯一输出目录与新 OS process；新 thread 若已有 checkpoint 或输出目录非空则 fail closed。每个进程在 agent graph assembly 前同时关闭 memory injection、post-turn memory write 与 summarization pre-compaction flush，并在启动检查中确认两项 memory gates 为 false、18/18 frozen thread 均无历史。只有同一 Ask cell 内的 clarification request、simulator reply 与最终报告复用该 cell 的 checkpoint；跨 task/context/policy 一律不复用。
+
+18 个 cell 的固定随机顺序、thread/output mapping、1,800 秒 turn timeout、provider zero retry 与最多三次 clarification answer 已在首份 counted output 前写入 `execution_manifest.json`。任何 cell failure/timeout 都停止 batch，不自动重跑。该修复属于 measurement validity：否则账户级 memory 可能把早期 persona/答案泄漏到后续 COLD 或 No-Ask cell，直接破坏 2×3 对照。
+
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：Gemini 六组设计与 matched No-Ask 修复
 
 用户将 Gemini pilot 扩为 `COLD/RAW50/RAW100 × ASK/NOASK` 六组，前三题共 18 份 planned reports。RAW50 继续复用 v0.96 固定 seed `20260915` 的 22/44、25/50、24/49 persona 原子事实，但六组新版把 RAW50/RAW100 的上下文标题统一为中性的 `Available user profile context:`，不再显示 `incomplete/complete`，避免标签本身提示是否应提问。RAW100 是 `full_hidden_persona_for_user_simulator` 中全部原子事实，不等于 preference oracle。
