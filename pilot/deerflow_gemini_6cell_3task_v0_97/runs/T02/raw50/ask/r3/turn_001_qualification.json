@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T02/raw50/ask/r3/turn_001_summary.json",
+  "distinct_search_queries": 15,
+  "fetch_attempts": 4,
+  "substantive_fetch_successes": 2,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "www.ntu.edu.sg",
+    "www.uva.nl"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://www.uva.nl/en/education/exchange/independent-student-exchange-free-mover/independent-student-exchange-free-mover.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 1067,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.ntu.edu.sg/education/student-exchanges/visiting-research",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 2750,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://sps.columbia.edu/academics/visiting-students/visiting-graduate-program",
+      "domain": "sps.columbia.edu",
+      "readable_characters": 318,
+      "substantive_success": false,
+      "error": "Error fetching https://sps.columbia.edu/academics/visiting-students/visiting-graduate-program: HTTPStatusError: Client error '403 Forbidden' for url 'https://sps.columbia.edu/academics/visiting-students/visiting-graduate-program'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://nus.edu.sg/registrar/administrative-policies-procedures/non-graduating/non-graduating-fees",
+      "domain": "nus.edu.sg",
+      "readable_characters": 156,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://nus.edu.sg/registrar/administrative-policies-procedures/non-graduating/non-graduating-fees"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

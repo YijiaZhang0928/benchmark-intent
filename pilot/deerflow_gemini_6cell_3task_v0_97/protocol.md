@@ -102,6 +102,8 @@ R2 then stopped after 68.83 seconds with `GraphRecursionError` at the frozen rec
 
 The user explicitly approved r3 after reviewing the r2 recursion-budget failure. R3 preserves the same 18 input hashes, seeded order, model, thinking level, harness, skills, policy manipulation, simulator, clarification cap, output contract, memory isolation, provider zero retry and 1,800-second outer timeout. The sole new change is a uniform `recursion_limit=200` for every Ask and No-Ask cell. R3 uses new `-r3` threads and `/r3` output directories, remains stop-on-first-failure, and never reads or overwrites r1/r2 state.
 
+R3 completed all 18 reports. Before judgment, the frozen structural audit found 1/18 structural passes; manual primary-source review failed that sole candidate, leaving 0 confirmatory-score-eligible reports. To diagnose report personalization without concealing this failure, all 18 reports are nevertheless scored once as explicitly exploratory using opaque labels, `gpt-6-astra/high`, and the frozen 67-leaf `P_strict/P_HI` rubric. The blind scoring manifest and report hashes are frozen before the first judgment.
+
 ## Current provider status
 
 The first unscored connectivity attempt used `gemini-2.5-pro` because it was the model in the checked-out DeerFlow example config. Google returned `404 NOT_FOUND` and stated that this model is no longer available to new users, recommending `gemini-3.1-pro-preview`.

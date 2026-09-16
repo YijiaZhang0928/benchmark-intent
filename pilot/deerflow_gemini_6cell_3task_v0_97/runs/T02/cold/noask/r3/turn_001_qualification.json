@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T02/cold/noask/r3/turn_001_summary.json",
+  "distinct_search_queries": 16,
+  "fetch_attempts": 5,
+  "substantive_fetch_successes": 1,
+  "report_cited_url_count": 5,
+  "successful_fetched_domains": [
+    "www.globalstudyboard.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://www.globalstudyboard.com/guides/erasmus-plus-exchange-during-your-degree-explained",
+      "domain": "www.globalstudyboard.com",
+      "readable_characters": 7907,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers",
+      "domain": "nus.edu.sg",
+      "readable_characters": 135,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers"
+    },
+    {
+      "url": "https://xpjapan.net/japan-student-visa-complete-guide-2026/",
+      "domain": "xpjapan.net",
+      "readable_characters": 280,
+      "substantive_success": false,
+      "error": "Error fetching https://xpjapan.net/japan-student-visa-complete-guide-2026/: HTTPStatusError: Client error '403 Forbidden' for url 'https://xpjapan.net/japan-student-visa-complete-guide-2026/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://oia.colmex.mx/wp-content/uploads/2025/08/tokio-fact-sheet-2025-2026.pdf",
+      "domain": "oia.colmex.mx",
+      "readable_characters": 48,
+      "substantive_success": false,
+      "error": "Error: Unsupported content type: application/pdf"
+    },
+    {
+      "url": "https://visafortheunitedstates.com/visa-types/student-visa/j1-exchange-visitor-visa-guide/",
+      "domain": "visafortheunitedstates.com",
+      "readable_characters": 342,
+      "substantive_success": false,
+      "error": "Error fetching https://visafortheunitedstates.com/visa-types/student-visa/j1-exchange-visitor-visa-guide/: HTTPStatusError: Client error '403 Forbidden' for url 'https://visafortheunitedstates.com/visa-types/student-visa/j1-exchange-visitor-visa-guide/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

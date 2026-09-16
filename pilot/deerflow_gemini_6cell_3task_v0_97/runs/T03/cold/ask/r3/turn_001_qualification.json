@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T03/cold/ask/r3/turn_001_summary.json",
+  "distinct_search_queries": 10,
+  "fetch_attempts": 6,
+  "substantive_fetch_successes": 6,
+  "report_cited_url_count": 6,
+  "successful_fetched_domains": [
+    "expansary.com",
+    "hub.causo.ai",
+    "mentorme.com",
+    "notes.suhaib.in",
+    "www.entelliz.co.uk",
+    "www.roundfunded.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": true,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://www.roundfunded.com/en/blogs/antler-vs-y-combinator-which-accelerator-2026",
+      "domain": "www.roundfunded.com",
+      "readable_characters": 7782,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://hub.causo.ai/guides/how-to-apply-to-south-park-commons-2026",
+      "domain": "hub.causo.ai",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://mentorme.com/blog/self-taught-entrepreneur-vs-mba-which-is-better-for-founders",
+      "domain": "mentorme.com",
+      "readable_characters": 11999,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://expansary.com/blog/entrepreneurship-course-vs-mba",
+      "domain": "expansary.com",
+      "readable_characters": 9990,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://notes.suhaib.in/docs/trends/harvard-vs-stanford-the-executive-education-roi-showdown-for-2026/",
+      "domain": "notes.suhaib.in",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.entelliz.co.uk/versus/reforge-vs-maven-growth-training/",
+      "domain": "www.entelliz.co.uk",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

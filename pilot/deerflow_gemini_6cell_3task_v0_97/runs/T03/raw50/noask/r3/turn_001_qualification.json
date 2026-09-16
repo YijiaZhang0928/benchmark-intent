@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T03/raw50/noask/r3/turn_001_summary.json",
+  "distinct_search_queries": 3,
+  "fetch_attempts": 2,
+  "substantive_fetch_successes": 2,
+  "report_cited_url_count": 0,
+  "successful_fetched_domains": [
+    "cn.ceibs.edu",
+    "www.stdaily.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://cn.ceibs.edu/ecamp/application",
+      "domain": "cn.ceibs.edu",
+      "readable_characters": 744,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.stdaily.com/web/gdxw/2026-05/06/content_512299.html",
+      "domain": "www.stdaily.com",
+      "readable_characters": 2707,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

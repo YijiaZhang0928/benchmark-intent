@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T01/raw100/ask/r3/turn_001_summary.json",
+  "distinct_search_queries": 3,
+  "fetch_attempts": 4,
+  "substantive_fetch_successes": 4,
+  "report_cited_url_count": 0,
+  "successful_fetched_domains": [
+    "ai.ethz.ch",
+    "bestcampus.org",
+    "jobsbyculture.com",
+    "scholarshipden.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://ai.ethz.ch/research/phd-and-postdoc-programs/phd-fellowships.html",
+      "domain": "ai.ethz.ch",
+      "readable_characters": 5214,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://jobsbyculture.com/blog/ai-engineer-researcher-salary-2026",
+      "domain": "jobsbyculture.com",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://bestcampus.org/scholarships/hong-kong-phd-fellowship-scheme/",
+      "domain": "bestcampus.org",
+      "readable_characters": 3803,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://scholarshipden.com/singapore-international-graduate-award-singa-2026/",
+      "domain": "scholarshipden.com",
+      "readable_characters": 8005,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

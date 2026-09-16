@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T03/raw100/ask/r3/turn_001_summary.json",
+  "distinct_search_queries": 7,
+  "fetch_attempts": 3,
+  "substantive_fetch_successes": 2,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "cn.ceibs.edu",
+    "www.failory.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://www.failory.com/startups/china-accelerators-incubators",
+      "domain": "www.failory.com",
+      "readable_characters": 7825,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://cn.ceibs.edu/ecamp/application",
+      "domain": "cn.ceibs.edu",
+      "readable_characters": 744,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/1946220053734356109",
+      "domain": "zhuanlan.zhihu.com",
+      "readable_characters": 258,
+      "substantive_success": false,
+      "error": "Error fetching https://zhuanlan.zhihu.com/p/1946220053734356109: HTTPStatusError: Client error '403 Forbidden' for url 'https://zhuanlan.zhihu.com/p/1946220053734356109'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

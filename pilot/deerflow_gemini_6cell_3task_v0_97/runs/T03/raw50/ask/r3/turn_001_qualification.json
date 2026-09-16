@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T03/raw50/ask/r3/turn_001_summary.json",
+  "distinct_search_queries": 6,
+  "fetch_attempts": 2,
+  "substantive_fetch_successes": 0,
+  "report_cited_url_count": 3,
+  "successful_fetched_domains": [],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://zhuanlan.zhihu.com/p/2016126567739307389",
+      "domain": "zhuanlan.zhihu.com",
+      "readable_characters": 258,
+      "substantive_success": false,
+      "error": "Error fetching https://zhuanlan.zhihu.com/p/2016126567739307389: HTTPStatusError: Client error '403 Forbidden' for url 'https://zhuanlan.zhihu.com/p/2016126567739307389'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/355490462",
+      "domain": "zhuanlan.zhihu.com",
+      "readable_characters": 238,
+      "substantive_success": false,
+      "error": "Error fetching https://zhuanlan.zhihu.com/p/355490462: HTTPStatusError: Client error '403 Forbidden' for url 'https://zhuanlan.zhihu.com/p/355490462'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

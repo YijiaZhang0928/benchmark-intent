@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T01/cold/ask/r3/turn_001_summary.json",
+  "distinct_search_queries": 8,
+  "fetch_attempts": 3,
+  "substantive_fetch_successes": 3,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "admit-lab.com",
+    "cerg1.ugc.edu.hk",
+    "relocateatlas.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://admit-lab.com/blog/uk-phd-vs-us-phd/",
+      "domain": "admit-lab.com",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://relocateatlas.com/blog/ai-phd-stipend-by-country",
+      "domain": "relocateatlas.com",
+      "readable_characters": 9997,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://cerg1.ugc.edu.hk/hkpfs/index.html",
+      "domain": "cerg1.ugc.edu.hk",
+      "readable_characters": 2517,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

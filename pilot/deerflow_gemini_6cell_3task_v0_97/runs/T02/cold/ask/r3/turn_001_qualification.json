@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T02/cold/ask/r3/turn_001_summary.json",
+  "distinct_search_queries": 10,
+  "fetch_attempts": 5,
+  "substantive_fetch_successes": 4,
+  "report_cited_url_count": 6,
+  "successful_fetched_domains": [
+    "degreecalc.com",
+    "erasmus-plus.ec.europa.eu",
+    "www.u-tokyo.ac.jp"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://degreecalc.com/blog/study-abroad-costs/",
+      "domain": "degreecalc.com",
+      "readable_characters": 11999,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
+      "domain": "erasmus-plus.ec.europa.eu",
+      "readable_characters": 5101,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers",
+      "domain": "nus.edu.sg",
+      "readable_characters": 135,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://nus.edu.sg/gro/global-programmes/student-exchange/incoming-exchangers"
+    },
+    {
+      "url": "https://www.u-tokyo.ac.jp/en/academics/student_exchange.html",
+      "domain": "www.u-tokyo.ac.jp",
+      "readable_characters": 514,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.u-tokyo.ac.jp/en/academics/ustep.html",
+      "domain": "www.u-tokyo.ac.jp",
+      "readable_characters": 614,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

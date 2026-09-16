@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T01/raw50/noask/r3/turn_001_summary.json",
+  "distinct_search_queries": 10,
+  "fetch_attempts": 5,
+  "substantive_fetch_successes": 3,
+  "report_cited_url_count": 3,
+  "successful_fetched_domains": [
+    "abroad.nacnano.dev",
+    "aisingapore.org",
+    "www.cio.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://abroad.nacnano.dev/country-comparison",
+      "domain": "abroad.nacnano.dev",
+      "readable_characters": 5276,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://scholarshiphunter.app/blog/phd-artificial-intelligence-funding",
+      "domain": "scholarshiphunter.app",
+      "readable_characters": 128,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://scholarshiphunter.app/blog/phd-artificial-intelligence-funding"
+    },
+    {
+      "url": "https://aisingapore.org/research/phd-fellowship-programme/",
+      "domain": "aisingapore.org",
+      "readable_characters": 4664,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.cio.com/article/350315/top-10-ai-graduate-degree-programs.html",
+      "domain": "www.cio.com",
+      "readable_characters": 11101,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://research.com/online-degrees/artificial-intelligence/step-by-step-guide-to-applying-to-ai-doctorate-degree-programs",
+      "domain": "research.com",
+      "readable_characters": 406,
+      "substantive_success": false,
+      "error": "Error fetching https://research.com/online-degrees/artificial-intelligence/step-by-step-guide-to-applying-to-ai-doctorate-degree-programs: HTTPStatusError: Client error '403 Forbidden' for url 'https://research.com/online-degrees/artificial-intelligence/step-by-step-guide-to-applying-to-ai-doctorate-degree-programs'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T03/cold/noask/r3/turn_001_summary.json",
+  "distinct_search_queries": 11,
+  "fetch_attempts": 5,
+  "substantive_fetch_successes": 4,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "ncide.com",
+    "online.hbs.edu",
+    "www.scaler.com",
+    "www.teachfloor.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://www.reddit.com/r/MBA/comments/cwalh5/for_entrepreneurship_mba_vs_incubators/",
+      "domain": "www.reddit.com",
+      "readable_characters": 142,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://www.reddit.com/r/MBA/comments/cwalh5/for_entrepreneurship_mba_vs_incubators/"
+    },
+    {
+      "url": "https://online.hbs.edu/blog/post/startup-incubator-vs-accelerator",
+      "domain": "online.hbs.edu",
+      "readable_characters": 11044,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://ncide.com/venture-builder-vs-accelerator",
+      "domain": "ncide.com",
+      "readable_characters": 8468,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021",
+      "domain": "www.teachfloor.com",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.scaler.com/school-of-business/guide/mba-for-entrepreneurs",
+      "domain": "www.scaler.com",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

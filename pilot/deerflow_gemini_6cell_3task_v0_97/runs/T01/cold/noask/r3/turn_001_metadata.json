@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.75",
+  "started_at_utc": "2026-09-16T18:22:19.562244+00:00",
+  "harness": "deerflow-2.0",
+  "harness_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "model_config_name": "gemini-3.1-pro-preview",
+  "agent_name": "stock-cold-dr",
+  "thread_id": "v097-g31-t01-cold-noask-r3",
+  "turn_index": 1,
+  "input_kind": "task_instruction",
+  "source_path": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/inputs/T01_cold.txt",
+  "input_sha256": "933064c2eff55184e40e6be886da13af47a87e1c7c24db19d8a5fccd04ffed4a",
+  "visible_prompt_wrapper": null,
+  "persona_visible_on_first_turn": false,
+  "rubric_visible": false,
+  "account_memory_allowed": false,
+  "account_memory_enforcement": "runtime_disabled_read_write_and_flush",
+  "subagents_enabled": false,
+  "plan_mode": false,
+  "recursion_limit": 200,
+  "non_interactive": false,
+  "disable_clarification": true,
+  "clarification_policy": "suppressed_with_proceed_result",
+  "thinking_enabled": true,
+  "available_skills": [
+    "deep-research"
+  ],
+  "expected_thread_state": "new",
+  "timeout_seconds": 1800
+}

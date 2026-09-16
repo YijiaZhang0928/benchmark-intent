@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T02/raw100/noask/r3/turn_001_summary.json",
+  "distinct_search_queries": 16,
+  "fetch_attempts": 7,
+  "substantive_fetch_successes": 4,
+  "report_cited_url_count": 5,
+  "successful_fetched_domains": [
+    "www.keio.ac.jp",
+    "www.lse.ac.uk",
+    "www.ntu.edu.sg",
+    "www.uva.nl"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://sps.columbia.edu/academics/visiting-students/visiting-graduate-program",
+      "domain": "sps.columbia.edu",
+      "readable_characters": 318,
+      "substantive_success": false,
+      "error": "Error fetching https://sps.columbia.edu/academics/visiting-students/visiting-graduate-program: HTTPStatusError: Client error '403 Forbidden' for url 'https://sps.columbia.edu/academics/visiting-students/visiting-graduate-program'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://www.lse.ac.uk/study-at-lse/graduate/vrs-media-and-communications",
+      "domain": "www.lse.ac.uk",
+      "readable_characters": 6352,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.uva.nl/en/education/exchange/independent-student-exchange-free-mover/independent-student-exchange-free-mover.html",
+      "domain": "www.uva.nl",
+      "readable_characters": 1067,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.keio.ac.jp/en/st/admissions-en/visiting_students_new/",
+      "domain": "www.keio.ac.jp",
+      "readable_characters": 7400,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://nus.edu.sg/registrar/academic-information-policies/non-graduating",
+      "domain": "nus.edu.sg",
+      "readable_characters": 131,
+      "substantive_success": false,
+      "error": "Error: Insufficient readable content (56 characters) from https://nus.edu.sg/registrar/academic-information-policies/non-graduating"
+    },
+    {
+      "url": "https://www.ntu.edu.sg/wkwsci/research/visitingresearchstudents",
+      "domain": "www.ntu.edu.sg",
+      "readable_characters": 4750,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.csc.edu.cn/article/3801",
+      "domain": "www.csc.edu.cn",
+      "readable_characters": 242,
+      "substantive_success": false,
+      "error": "Error fetching https://www.csc.edu.cn/article/3801: HTTPStatusError: Client error '412 Precondition Failed' for url 'https://www.csc.edu.cn/article/3801'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/412"
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

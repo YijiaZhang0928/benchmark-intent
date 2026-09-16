@@ -13,6 +13,7 @@
 - 用户随后明确批准完整 r2；在任何 r2 输出前冻结新的 18 个 thread/output mapping 并确认全部为空。r2 不改实验设计，只启用已审计的 outer timeout，继续执行首错即停、cell 内零自动重试。
 - r2 首 cell 在 68.83 秒、52 个 tool records 后触发 `GraphRecursionError`（limit 100），没有 clarification 或 final text；因此 0/18 完成并停止。提高 recursion limit 被标记为需要新 run label 与再次授权的预算修订。
 - 用户明确批准 r3：18 个 cell 一律把 recursion limit 提到 200，其余设计、顺序、隔离、timeout 与 zero-retry 不变；r3 使用全新 thread/output namespace。
+- r3 18/18 报告全部完成，但 9/9 Ask cells 均未提问；结构门仅 1/18 通过且人工 primary-source review 失败，因而 confirmatory eligible 为 0。冻结 opaque-label 单次 exploratory `P_strict/P_HI` scoring，用于诊断而不把这批包装成 DR-qualified 证据。
 
 ## v0.96 DeerFlow 2.0 RAW50 Ask/No-Ask pilot - 2026-09-15
 

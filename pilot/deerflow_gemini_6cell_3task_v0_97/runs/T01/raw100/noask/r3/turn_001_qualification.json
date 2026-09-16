@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T01/raw100/noask/r3/turn_001_summary.json",
+  "distinct_search_queries": 8,
+  "fetch_attempts": 4,
+  "substantive_fetch_successes": 4,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "admit-lab.com",
+    "aisingapore.org",
+    "cerg1.ugc.edu.hk",
+    "inomics.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://inomics.com/advice/5-key-differences-between-american-and-european-style-phd-programs-1528200",
+      "domain": "inomics.com",
+      "readable_characters": 9568,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://admit-lab.com/blog/how-to-plan-your-phd-application/",
+      "domain": "admit-lab.com",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://aisingapore.org/research/phd-fellowship-programme/",
+      "domain": "aisingapore.org",
+      "readable_characters": 4664,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://cerg1.ugc.edu.hk/hkpfs/index.html",
+      "domain": "cerg1.ugc.edu.hk",
+      "readable_characters": 2517,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

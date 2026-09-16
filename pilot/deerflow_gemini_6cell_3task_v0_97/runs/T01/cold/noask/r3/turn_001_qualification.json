@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T01/cold/noask/r3/turn_001_summary.json",
+  "distinct_search_queries": 7,
+  "fetch_attempts": 2,
+  "substantive_fetch_successes": 2,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "studyinfocentre.com",
+    "towardsdatascience.com"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://towardsdatascience.com/my-journey-to-phd-admission-in-artificial-intelligence-35593adb923f/",
+      "domain": "towardsdatascience.com",
+      "readable_characters": 12000,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://studyinfocentre.com/blog/india/career/phd-europe-vs-usa",
+      "domain": "studyinfocentre.com",
+      "readable_characters": 10305,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}

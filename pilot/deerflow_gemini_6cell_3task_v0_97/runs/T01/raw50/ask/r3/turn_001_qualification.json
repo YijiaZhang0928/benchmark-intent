@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.74",
+  "summary_file": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/runs/T01/raw50/ask/r3/turn_001_summary.json",
+  "distinct_search_queries": 4,
+  "fetch_attempts": 3,
+  "substantive_fetch_successes": 2,
+  "report_cited_url_count": 4,
+  "successful_fetched_domains": [
+    "edurank.org",
+    "www.cs.stanford.edu"
+  ],
+  "declared_primary_domains": [],
+  "matched_primary_domains": [],
+  "structural_gate_pass": false,
+  "primary_source_gate": "manual_review_required",
+  "deep_research_qualified": false,
+  "fetches": [
+    {
+      "url": "https://studyinternational.com/news/highest-phd-stipends/",
+      "domain": "studyinternational.com",
+      "readable_characters": 276,
+      "substantive_success": false,
+      "error": "Error fetching https://studyinternational.com/news/highest-phd-stipends/: HTTPStatusError: Client error '403 Forbidden' for url 'https://studyinternational.com/news/highest-phd-stipends/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "url": "https://edurank.org/cs/ai/",
+      "domain": "edurank.org",
+      "readable_characters": 7270,
+      "substantive_success": true,
+      "error": null
+    },
+    {
+      "url": "https://www.cs.stanford.edu/admissions/phd-admissions",
+      "domain": "www.cs.stanford.edu",
+      "readable_characters": 1488,
+      "substantive_success": true,
+      "error": null
+    }
+  ],
+  "note": "A run is qualified only after both the structural gate and the primary-source gate pass."
+}
