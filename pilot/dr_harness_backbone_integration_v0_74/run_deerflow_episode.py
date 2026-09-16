@@ -38,6 +38,27 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Set DeerFlow's non_interactive runtime flag and remove ask_clarification.",
     )
+    parser.add_argument(
+        "--disable-clarification",
+        action="store_true",
+        help=(
+            "Keep the same prompt, skills, and ask_clarification tool, but set "
+            "DeerFlow's runtime disable_clarification context so attempted "
+            "questions receive a deterministic proceed-with-assumptions result."
+        ),
+    )
+    parser.add_argument(
+        "--available-skill",
+        action="append",
+        dest="available_skills",
+        help="Skill allowlist entry; repeat for multiple skills.",
+    )
+    parser.add_argument(
+        "--thinking-enabled",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Enable or disable provider thinking support for this run.",
+    )
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--recursion-limit", type=int, default=100)
     return parser.parse_args()
@@ -80,6 +101,8 @@ def extract_tool_calls(data: dict[str, Any]) -> list[dict[str, Any]]:
 
 def main() -> int:
     args = parse_args()
+    if args.non_interactive and args.disable_clarification:
+        raise SystemExit("--non-interactive and --disable-clarification are mutually exclusive")
     root = args.deerflow_root.expanduser().resolve()
     output_dir = args.output_dir.expanduser().resolve()
     if not THREAD_RE.fullmatch(args.thread_id):
@@ -157,6 +180,16 @@ def main() -> int:
         "plan_mode": False,
         "recursion_limit": args.recursion_limit,
         "non_interactive": args.non_interactive,
+        "disable_clarification": args.disable_clarification,
+        "clarification_policy": (
+            "tool_removed"
+            if args.non_interactive
+            else "suppressed_with_proceed_result"
+            if args.disable_clarification
+            else "ask_capable"
+        ),
+        "thinking_enabled": args.thinking_enabled,
+        "available_skills": args.available_skills,
     }
     metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -164,11 +197,13 @@ def main() -> int:
         config_path=str(root / "config.yaml"),
         model_name=args.model,
         agent_name=args.agent,
-        thinking_enabled=True,
+        thinking_enabled=args.thinking_enabled,
         subagent_enabled=False,
         plan_mode=False,
         available_skills=(
-            {"deep-research"}
+            set(args.available_skills)
+            if args.available_skills
+            else {"deep-research"}
             if args.non_interactive
             else {"clarification-calibration", "deep-research"}
         ),
@@ -188,6 +223,7 @@ def main() -> int:
                 message,
                 thread_id=args.thread_id,
                 recursion_limit=args.recursion_limit,
+                disable_clarification=args.disable_clarification,
             ):
                 record = {"type": event.type, "data": event.data}
                 trace_file.write(json.dumps(record, ensure_ascii=False, default=json_default) + "\n")
@@ -267,6 +303,7 @@ def main() -> int:
         final_text = next((value for value in reversed(candidates) if value), "")
 
     asked = bool(clarification_calls or clarification_artifacts)
+    clarification_presented = bool(clarification_artifacts) and not args.disable_clarification
     if run_error:
         status = "failed"
     elif final_text:
@@ -281,6 +318,9 @@ def main() -> int:
         "schema_version": "0.75",
         "status": status,
         "asked_clarification": asked,
+        "clarification_attempted": asked,
+        "clarification_presented": clarification_presented,
+        "clarification_suppressed": bool(args.disable_clarification and asked),
         "clarification_calls": clarification_calls,
         "clarification_artifacts": clarification_artifacts,
         "all_observed_tools": tools,

@@ -3,10 +3,20 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-15
-当前版本：v0.96（DeerFlow 2.0 RAW50 Ask/No-Ask pilot）
+当前版本：v0.97-draft（DeerFlow 2.0 × Gemini 六组 Ask/No-Ask pilot）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：Gemini 六组设计与 matched No-Ask 修复
+
+用户将 Gemini pilot 扩为 `COLD/RAW50/RAW100 × ASK/NOASK` 六组，前三题共 18 份 planned reports。RAW50 继续复用 v0.96 固定 seed `20260915` 的 22/44、25/50、24/49 persona 原子事实，但六组新版把 RAW50/RAW100 的上下文标题统一为中性的 `Available user profile context:`，不再显示 `incomplete/complete`，避免标签本身提示是否应提问。RAW100 是 `full_hidden_persona_for_user_simulator` 中全部原子事实，不等于 preference oracle。
+
+No-Ask 改为 harness-matched control：两臂保留相同 stock SOUL、public `deep-research` skill、工具和提示。No-Ask 只把 `disable_clarification=true` 放入 DeerFlow runtime context；模型仍可产生 `ask_clarification` 调用，但中间件将其转为固定的“用户不在线，请按现有信息继续并声明假设”工具结果。为使 embedded client 真正传递该参数，本地 DeerFlow checkout 增加一项 context plumbing，15 个相关本地测试通过；runner 同时记录 attempted/presented/suppressed 三类状态。旧 v0.96 的 tool-removal 与 force-complete SOUL 不进入新主比较。
+
+Gemini key 已安全写入 ignored `.env`，权限为 `600`，验证时只检查存在性与长度，不输出密钥。首个不计分 smoke 使用 checkout 示例中的 `gemini-2.5-pro`，Google 返回 404，说明该模型不再向新用户开放并建议 `gemini-3.1-pro-preview`；按实验协议未自动重试或切换模型。另修正本地 LangChain 适配字段为 `google_api_key`、provider retry 为 0。v0.97 当前为 draft，等待用户确认是否冻结 `gemini-3.1-pro-preview` 后再做第二次 smoke 和正式 18-cell 运行。
+
+跨设定假设 `COLD_ASK ≈ RAW50_NOASK` 被预先写成描述性 closeness：前三题 mean `P_strict` 绝对差不超过 0.5，同时必须逐题报告；n=3 单生成不能称为统计等价或论文级证据。协议与输入见 `pilot/deerflow_gemini_6cell_3task_v0_97/`。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：DeerFlow 2.0 RAW50 Ask/No-Ask 三题 pilot
 

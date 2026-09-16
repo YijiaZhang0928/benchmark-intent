@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.97",
+  "counted": false,
+  "contains_private_task_data": false,
+  "requested_model": "gemini-2.5-pro",
+  "provider_result": "failed",
+  "error_code": 404,
+  "error_status": "NOT_FOUND",
+  "provider_message": "This model models/gemini-2.5-pro is no longer available to new users. Please update your code to use models/gemini-3.1-pro-preview for the latest features and improvements.",
+  "automatic_retry_performed": false,
+  "next_model": null,
+  "notes": "The API key was present and accepted far enough to reach model resolution. The local DeerFlow example used an obsolete gemini_api_key field; the installed adapter expects google_api_key."
+}

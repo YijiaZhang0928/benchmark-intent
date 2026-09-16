@@ -1,0 +1,15 @@
+diff --git a/backend/packages/harness/deerflow/client.py b/backend/packages/harness/deerflow/client.py
+--- a/backend/packages/harness/deerflow/client.py
++++ b/backend/packages/harness/deerflow/client.py
+@@
+         "authz_attributes",
++        # Runtime-only interaction policy used by matched No-Ask experiments.
++        "disable_clarification",
+@@
+             **kwargs: Override client defaults (model_name, thinking_enabled,
+                 plan_mode, subagent_enabled, recursion_limit). Trusted embedded
+                 callers may also provide user_id, user_role, oauth_provider,
+                 oauth_id, channel_user_id, is_internal, and authz_attributes.
++                ``disable_clarification=True`` keeps the clarification tool and
++                prompt unchanged but converts a clarification attempt into a
++                proceed-with-assumptions tool result.
