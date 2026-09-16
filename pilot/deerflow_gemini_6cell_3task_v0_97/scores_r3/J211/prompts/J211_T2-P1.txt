@@ -1,0 +1,245 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare academically legitimate overseas exchange or short-term visiting programs that can be completed within one semester and can satisfy ordinary credit and academic requirements.
+
+Compare options in the United States, Europe, Japan and Singapore. Cover curriculum and teaching models, credit transfer, academic environment, living costs, visa and language requirements, scholarships or financial aid, research and networking value, cross-cultural value and practical adaptation issues.
+
+Produce a prioritized shortlist and preparation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T2-P1-01",
+    "criterion": "The report states cultural/intellectual fit and meaningful immersion as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate cultural/intellectual fit and meaningful immersion.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-03",
+    "criterion": "The report provides concrete evidence about how an option supports cultural/intellectual fit and meaningful immersion.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-04",
+    "criterion": "The report provides concrete evidence about how an option reflects institutional prestige alone.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-05",
+    "criterion": "The report directly compares cultural/intellectual fit and meaningful immersion with institutional prestige alone.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-06",
+    "criterion": "At least one recommended option is selected because it supports cultural/intellectual fit and meaningful immersion.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors institutional prestige alone.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-08",
+    "criterion": "The plan contains one executable step that implements cultural/intellectual fit and meaningful immersion.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for cultural/intellectual fit and meaningful immersion.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-10",
+    "criterion": "The report states when institutional prestige alone would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-P1-11",
+    "criterion": "One visible chain links cultural/intellectual fit and meaningful immersion to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label J211):
+Here is a comprehensive research report comparing short-term (one-semester) exchange and visiting programs across the United States, Europe, Japan, and Singapore. 
+
+## Executive Summary & Comparison Matrix
+
+When selecting a one-semester academic program, the optimal choice depends heavily on your primary objective: whether you are seeking academic rigor, cultural immersion, research networking, or affordability.
+
+| Feature | United States | Europe (Erasmus+ network) | Japan | Singapore |
+| :--- | :--- | :--- | :--- | :--- |
+| **Teaching Model** | Continuous assessment, highly interactive | Lecture-heavy, large final exams | Mixed; specialized seminars (*Zemi*) | Highly competitive, fast-paced |
+| **Credit System** | US Credits (15/sem) | ECTS (30/sem) | Japanese Credits (14-20/sem) | Units/AUs (15-20/sem) |
+| **Cost of Living** | Very High ($10k-$15k/sem) | Low to High (€4k-€8k/sem) | Moderate (favorable exchange rate) | High (housing is expensive) |
+| **Language Req** | English (TOEFL/IELTS) | Varies (Many 100% English tracks) | English tracks or JLPT N2/N1 | English (IELTS/TOEFL) |
+| **Top Scholarship** | Fulbright (limited for short-term) | Erasmus+ Grant | JASSO Scholarship | TF LEaRN / DUO-Singapore |
+
+---
+
+## 1. United States: The Immersive & Interactive Experience
+US universities offer vibrant campus lives and immense networking value but come with high financial barriers unless a bilateral exchange agreement exists.
+
+*   **Curriculum & Teaching:** The US uses a continuous assessment model. Your grade depends on participation, weekly quizzes, midterms, group projects, and a final exam. Classes are highly interactive.
+*   **Credit Transfer:** Typically, students take 12 to 15 US credits per semester (roughly equivalent to 24–30 ECTS). Syllabi are detailed, making home-university credit mapping relatively straightforward.
+*   **Costs & Visas:** If applying outside a bilateral agreement (as a "Visiting Student," e.g., UC Berkeley BISP or Columbia), you pay US tuition ($15,000–$30,000+/semester). Living costs easily add $10,000. You will enter on a **J-1 Exchange Visitor Visa** (if funded/bilateral) or an **F-1 Student Visa** [citation:US Department of State](https://travel.state.gov/content/travel/en/us-visas/study/exchange.html).
+*   **Research & Networking:** Unparalleled. US professors hold frequent "office hours," and undergraduate research is highly encouraged. It is an ideal environment to secure letters of recommendation for future graduate studies.
+*   **Cross-Cultural Adaptation:** Social integration is easy due to abundant campus clubs (fraternities, intramural sports). However, outside major cities, the US is highly car-dependent, which can restrict mobility.
+
+## 2. Europe: The Hub of Culture and Mobility
+Driven by the Erasmus+ framework and the Bologna Process, Europe offers the most seamless credit transfer system globally and incredible opportunities for travel.
+
+*   **Curriculum & Teaching:** Emphasizes independent study. Many courses base 70–100% of the final grade on a single written or oral exam at the end of the semester.
+*   **Credit Transfer:** Europe uses the **ECTS (European Credit Transfer System)**, standardizing 30 ECTS per semester [citation:ECTS Users Guide](https://www.globalstudyboard.com/guides/erasmus-plus-exchange-during-your-degree-explained). Before departure, students sign a "Learning Agreement" ensuring guaranteed automatic credit transfer to their home institution.
+*   **Costs & Visas:** Tuition is usually waived via bilateral agreements. Living costs vary wildly—Scandinavia and Switzerland are expensive, while Southern and Eastern Europe are highly affordable (€4,000–€7,000/semester). Non-EU students require a **Schengen Type-D Student Visa**.
+*   **Scholarships:** The **Erasmus+ Grant** offers excellent financial aid (€350–€1,200/month depending on your home/host country).
+*   **Cross-Cultural Adaptation:** You have access to dozens of countries via cheap trains and flights. The main hurdle is the language barrier in daily life, even though your university courses will be taught in English.
+
+## 3. Japan: Tradition meets Specialized Research
+Programs like USTEP (University of Tokyo) or exchanges at Waseda and Keio provide a unique cultural immersion, made currently attractive by the weakened Yen.
+
+*   **Curriculum & Teaching:** Universities offer specific English-taught tracks for international students (global studies, business). A unique feature is the *Zemi* (seminar), a tight-knit research group led by a professor, which is excellent for networking.
+*   **Credit Transfer:** 1 Japanese credit usually represents 45 hours of study (equivalent to ~1.5 to 2 ECTS). Credit mapping requires strict administrative approval from your home university.
+*   **Costs & Visas:** Japan requires a **Student Visa**, which is initiated by the university securing a **Certificate of Eligibility (COE)** from immigration [citation:Japan Student Visa Guide](https://japan-visa.com/coe). Due to the exchange rate, living costs are currently very reasonable (approx. $3,500–$5,500/semester).
+*   **Scholarships:** The **JASSO Scholarship** provides ¥80,000 per month and is widely available for short-term exchange students [citation:JASSO](https://www.studyinjapan.go.jp/en/about/support-program.html).
+*   **Cross-Cultural Adaptation:** Japan is remarkably safe but has high bureaucratic hurdles (opening a bank account, city hall registration). While campuses are globalized, English proficiency in the general public is low. JLPT N2/N1 is required if you wish to take mainstream classes taught in Japanese.
+
+## 4. Singapore: The Asian Academic Powerhouse
+National University of Singapore (NUS) and Nanyang Technological University (NTU) rank among the best in the world, offering high-intensity English-medium education.
+
+*   **Curriculum & Teaching:** Fast-paced and highly competitive, known for strict "bell-curve" grading. It is academically demanding but highly respected globally.
+*   **Credit Transfer:** NUS uses "Units" and NTU uses "Academic Units (AUs)." A typical semester load is 15 to 20 Units/AUs.
+*   **Costs & Visas:** You will apply for a **Student's Pass (STP)** via the SOLAR system [citation:NUS Admissions](https://nus.edu.sg/admissions/). Tuition is waived on exchange, but Singapore's living costs are extremely high. On-campus housing is limited and not guaranteed for exchange students. If forced off-campus, rent can consume $1,000+ per month. 
+*   **Scholarships:** The **TF LEaRN Programme** (Temasek Foundation) is a prestigious scholarship for Asian student leaders, and DUO-Singapore exists for European exchanges.
+*   **Cross-Cultural Adaptation:** English is the primary language (though Singlish takes brief acclimatization). It is a highly modern, efficient, and diverse gateway hub to Southeast Asia, offering incredible corporate networking opportunities.
+
+---
+
+## Prioritized Shortlist (By Objective)
+
+1. **Top Choice for Seamless Academics & Travel: Europe (Erasmus+).** Standardized ECTS and Learning Agreements guarantee credit transfer, and the cultural exposure is unmatched. Best overall ROI.
+2. **Top Choice for Elite Networking & Grad-School Prep: United States.** Unmatched access to professors, vibrant campus life, and prestige, though it requires securing a bilateral waiver to avoid massive tuition fees.
+3. **Top Choice for Asian Business/Tech & English Medium: Singapore.** Unbeatable for students wanting exposure to Asian markets without a language barrier, though academically stressful.
+4. **Top Choice for Specialized Tech/Humanities & Culture: Japan.** Offers the best financial reality (due to JASSO and currency rates) and deep cultural immersion, though bureaucratic friction is higher.
+
+---
+
+## Preparation Plan (12-Month Timeline)
+
+**12 - 9 Months Before Departure:**
+*   **Research Bilateral Agreements:** Visit your home university’s International Office. You *must* go where they have agreements to avoid paying host tuition.
+*   **Identify Goal Fit:** Ensure the partner university offers courses in your major (e.g., don't choose a tech school in Europe if you need humanities credits).
+*   **Language & GPA:** Take TOEFL/IELTS/JLPT if required. Maintain a high GPA, as spots for top destinations (like NUS or UC Berkeley) are highly competitive.
+
+**8 - 6 Months Before:**
+*   **Internal Application:** Apply through your home university to be nominated for the exchange.
+*   **Financial Planning:** Apply for regional scholarships (JASSO, Erasmus+, TF LEaRN) as soon as you are nominated.
+
+**5 - 3 Months Before:**
+*   **Host University Application:** Once nominated, apply directly to the host university. 
+*   **Course Mapping (Crucial):** Create a spreadsheet linking host courses to your home degree requirements. Get written approval (Learning Agreement) from your academic advisor.
+
+**2 - 1 Months Before:**
+*   **Visa Processing:** Apply for your J-1, Schengen Type-D, COE, or Student's Pass. **Do not book flights until the visa is approved.**
+*   **Housing:** Secure on-campus dorms immediately upon acceptance. If going to Singapore or major European cities (like Amsterdam or Munich), start searching for off-campus housing right away, as markets are extremely tight. 
+
+## Sources
+
+*   [US Department of State: Exchange Visitor Visas](https://travel.state.gov/content/travel/en/us-visas/study/exchange.html) - Official guidelines for the J-1 visa program.
+*   [Global Study Board: Erasmus+ Exchange Explained](https://www.globalstudyboard.com/guides/erasmus-plus-exchange-during-your-degree-explained) - Guide on ECTS and Learning Agreements.
+*   [JASSO Support Programs](https://www.studyinjapan.go.jp/en/about/support-program.html) - Official Japan Student Services Organization scholarship information.
+*   [Japan Visa Guide: COE Process](https://japan-visa.com/coe) - Details on the Certificate of Eligibility requirement for Japan.
+*   [NUS Admissions & Incoming Exchange](https://nus.edu.sg/admissions/) - Official National University of Singapore hub for incoming students and visa processing.

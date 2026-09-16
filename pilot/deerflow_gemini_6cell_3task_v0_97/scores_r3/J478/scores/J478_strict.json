@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J478",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "d918c9834872e58105a1138f0e4968fff9521db393684b2bba0c4dca430b141a",
+  "rubric_sha256": "6c540729b1a59e0d63b4fb86c80392b5d45fefce6bede6a3946db7893b5b2999",
+  "started_at_utc": "2026-09-16T19:39:18.865168+00:00",
+  "completed_at_utc": "2026-09-16T19:43:14.627768+00:00",
+  "p_strict": 3.410234113712374,
+  "p_hi": 3.4000000000000004,
+  "dimension_scores": {
+    "INTENT": 4.4,
+    "SOURCE": 4.0,
+    "EVIDENCE": 4.08695652173913,
+    "TRADEOFF": 0.5217391304347826,
+    "DECISION": 1.5652173913043477,
+    "ACTION": 9.0,
+    "TRACE": 2.6153846153846154
+  },
+  "high_dimension_scores": {
+    "INTENT": 4.4,
+    "SOURCE": 4.0,
+    "EVIDENCE": 4.4,
+    "TRADEOFF": 0.4,
+    "DECISION": 1.7999999999999998,
+    "ACTION": 9.0,
+    "TRACE": 1.6
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 4,
+      "evidence_span": "Identify 1–2 professors at your university in Jiangsu who work on AI, ideally with interdisciplinary applications.",
+      "rationale": "The preference for applications is partly expressed in supervisor identification, but applied, implementation-heavy, or system-building research is not explicitly established as a program-selection priority."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected specifically to evaluate whether programs support applied or system-building research. Paper reading and replication are preparation activities, not a preference-specific program-evaluation route."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 2,
+      "evidence_span": "**Research Strengths:** Applied AI, Computer Vision, Natural Language Processing, and Smart City technologies.",
+      "rationale": "The Asia section identifies relevant research areas, but supplies no concrete program feature, project, facility, or other verifiable fact showing how a named option supports implementation-heavy research."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Descriptions of European theoretical depth and Max Planck foundational research do not establish that any option conducts purely abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare applied research with theory-only research on a common decision axis or identify a consequential difference between them."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Named destinations are recommended for funding, lifestyle, and safety, while research directions are recommended for interdisciplinary fit and perceived competition. No named option is selected explicitly because it supports applied or system-building research."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable named option is downgraded because it favors theory-only research. The criticism of pure deep learning concerns saturation, not theoretical orientation."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "Read 2–3 papers per week during your morning routine. Replicate their code in PyCharm/VS Code during the evenings.",
+      "rationale": "Replicating the code of selected research papers is a concrete, executable implementation activity in the preparation plan."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "Use your productive evening blocks (when you use VS Code/PyCharm) strictly for lab experiments, coding, and paper drafting.",
+      "rationale": "The report explicitly allocates evening work blocks to activities that include implementation and experiments, providing a usable scheduling rule rather than merely recommending applied work."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is given under which theory-only research would become the better choice."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contains implementation activities but no visible chain connecting an applied-research preference to supporting evidence and then to a resulting decision or action."
+    },
+    {
+      "criterion_id": "T1-P2-01",
+      "score": 4,
+      "evidence_span": "Use your productive evening blocks (when you use VS Code/PyCharm) strictly for lab experiments, coding, and paper drafting.",
+      "rationale": "Hands-on research and coding receive explicit preparation priority, but the report does not establish them as a priority for choosing directions or programs."
+    },
+    {
+      "criterion_id": "T1-P2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected to evaluate opportunities for self-directed projects, replication, coding, or hands-on exploration."
+    },
+    {
+      "criterion_id": "T1-P2-03",
+      "score": 4,
+      "evidence_span": "Programs are shorter (3–4 years) and purely research-focused.",
+      "rationale": "The European route is described as research-focused, but no concrete program feature establishes support for self-directed projects, replication, or coding. This is only partial, generic support."
+    },
+    {
+      "criterion_id": "T1-P2-04",
+      "score": 10,
+      "evidence_span": "The first two years include heavy coursework, followed by dedicated research.",
+      "rationale": "The North American PhD route has an explicit, verifiable contrast-side structural claim: an initial two-year period with heavy coursework before dedicated research."
+    },
+    {
+      "criterion_id": "T1-P2-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Regional curriculum descriptions do not directly compare hands-on preparation with classroom-based preparation or explain a consequential difference between those approaches."
+    },
+    {
+      "criterion_id": "T1-P2-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The program recommendations are justified by funding, safety, lifestyle, and subject interests, not support for self-directed projects, replication, or coding."
+    },
+    {
+      "criterion_id": "T1-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No viable option is downgraded because it favors classroom or course-based preparation."
+    },
+    {
+      "criterion_id": "T1-P2-08",
+      "score": 10,
+      "evidence_span": "Read 2–3 papers per week during your morning routine. Replicate their code in PyCharm/VS Code during the evenings.",
+      "rationale": "This is an executable hands-on step with a concrete object: replicate the code from the papers read."
+    },
+    {
+      "criterion_id": "T1-P2-09",
+      "score": 10,
+      "evidence_span": "Use your productive evening blocks (when you use VS Code/PyCharm) strictly for lab experiments, coding, and paper drafting.",
+      "rationale": "The report provides a usable allocation rule reserving evening work blocks for experiments, coding, and research writing."
+    },
+    {
+      "criterion_id": "T1-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is given under which mainly classroom-based preparation would become preferable."
+    },
+    {
+      "criterion_id": "T1-P2-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report recommends hands-on actions but does not visibly connect the preference to supporting evidence and then to a resulting decision or action."
+    },
+    {
+      "criterion_id": "T1-P3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The stated priorities concern funding, academic rigor, and well-being, not preserving industry-research or employability options."
+    },
+    {
+      "criterion_id": "T1-P3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected to investigate industry access, employment outcomes, or career optionality."
+    },
+    {
+      "criterion_id": "T1-P3-03",
+      "score": 4,
+      "evidence_span": "North America remains the epicenter of AI research, offering massive compute resources and tight integration with tech giants (Google, OpenAI, Meta).",
+      "rationale": "This associates a regional option with industry, but provides no concrete program-level partnership, internship mechanism, or employment outcome. The generic assertion receives only partial credit."
+    },
+    {
+      "criterion_id": "T1-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a verifiable feature establishing an exclusively academic-faculty orientation. Foundational research and research-focused curricula do not establish that orientation."
+    },
+    {
+      "criterion_id": "T1-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare industry-employment optionality against an academic-faculty-only trajectory on a common decision axis."
+    },
+    {
+      "criterion_id": "T1-P3-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Recommendations are justified by research interests, funding, safety, and lifestyle rather than industry-research or employability optionality."
+    },
+    {
+      "criterion_id": "T1-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded because it favors an academic-faculty-only trajectory."
+    },
+    {
+      "criterion_id": "T1-P3-08",
+      "score": 10,
+      "evidence_span": "Attend local tech exchange events in the city center to network with industry/academic researchers.",
+      "rationale": "This is an executable preparation step with a concrete action and venue type that builds connections to industry researchers while retaining academic connections."
+    },
+    {
+      "criterion_id": "T1-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The plan supplies general phases but no threshold, allocation, sequence rule, or checkpoint specifically governing industry-research or employability optionality."
+    },
+    {
+      "criterion_id": "T1-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which optimizing exclusively for an academic-faculty career would become preferable."
+    },
+    {
+      "criterion_id": "T1-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly connect a career-optionality preference to supporting evidence and then to a selection or action. Its industry references and networking step do not form that chain."
+    },
+    {
+      "criterion_id": "T1-P4-01",
+      "score": 10,
+      "evidence_span": "fully funded programs that offer a good balance of stipend, academic rigor, and well-being are key priorities.",
+      "rationale": "Explicitly makes full funding and stipend adequacy decision priorities."
+    },
+    {
+      "criterion_id": "T1-P4-02",
+      "score": 10,
+      "evidence_span": "[ETH AI Center Fellowships](https://ai.ethz.ch/research/phd-and-postdoc-programs/phd-fellowships.html) - Details on funding, salaries, and fellowship structures for AI PhDs at ETH Zurich.",
+      "rationale": "Identifies a specific source and explicitly connects it to funding, salary, and fellowship evidence."
+    },
+    {
+      "criterion_id": "T1-P4-03",
+      "score": 10,
+      "evidence_span": "Generous government fellowships exist, such as the Hong Kong PhD Fellowship Scheme (HKPFS) or the Singapore International Graduate Award (SINGA). Stipends are robust (~$25,000–$35,000 USD)",
+      "rationale": "Names funding options and supplies a numerical stipend range, rather than relying solely on favorable adjectives."
+    },
+    {
+      "criterion_id": "T1-P4-04",
+      "score": 4,
+      "evidence_span": "though tech hubs (Bay Area, Boston) are expensive.",
+      "rationale": "Identifies expensive locations, but provides only a generic cost characterization, not a concrete fact about a named prestige-first program or route. Partial evidence is capped at 4."
+    },
+    {
+      "criterion_id": "T1-P4-05",
+      "score": 4,
+      "evidence_span": "look closely at **Switzerland/Germany** (high pay, great work-life balance) and **Canada/Singapore** (strong funding, safe). Keep US top tiers as reach schools.",
+      "rationale": "Juxtaposes funding-favored destinations with prestigious US alternatives, but does not directly compare their costs or funding on a common axis. The comparison remains implicit and capped at 4."
+    },
+    {
+      "criterion_id": "T1-P4-06",
+      "score": 10,
+      "evidence_span": "Based on your frugal nature and desire for a healthy lifestyle, look closely at **Switzerland/Germany** (high pay, great work-life balance) and **Canada/Singapore** (strong funding, safe).",
+      "rationale": "Explicitly recommends named destination options because of frugality, high pay, and strong funding."
+    },
+    {
+      "criterion_id": "T1-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is explicitly downgraded because it is expensive or prestige-first. Calling US top-tier programs reach schools does not establish that causal reason."
+    },
+    {
+      "criterion_id": "T1-P4-08",
+      "score": 10,
+      "evidence_span": "Evaluate them based on the advisor's mentoring style, lab culture, and stipend-to-living-cost ratio.",
+      "rationale": "Provides an executable action: evaluate received offers using their stipend-to-living-cost ratio."
+    },
+    {
+      "criterion_id": "T1-P4-09",
+      "score": 10,
+      "evidence_span": "**March–April:** Receive offers. Evaluate them based on the advisor's mentoring style, lab culture, and stipend-to-living-cost ratio.",
+      "rationale": "Defines a dated offer-evaluation checkpoint that explicitly includes cost-effectiveness."
+    },
+    {
+      "criterion_id": "T1-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "States no concrete condition under which an expensive prestige-first option becomes preferable."
+    },
+    {
+      "criterion_id": "T1-P4-11",
+      "score": 4,
+      "evidence_span": "Based on your frugal nature and desire for a healthy lifestyle, look closely at **Switzerland/Germany** (high pay, great work-life balance) and **Canada/Singapore** (strong funding, safe).",
+      "rationale": "Visibly links the funding preference to recommendations, but the connecting evidence consists of generic pay and funding characterizations. It does not explicitly carry a concrete cited funding fact through to the decision, so the incomplete chain is capped at 4."
+    },
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 4,
+      "evidence_span": "fully funded programs that offer a good balance of stipend, academic rigor, and well-being are key priorities.",
+      "rationale": "States fit and financial trade-offs as priorities, but does not explicitly prioritize evidence-based comparison of fit, outcomes, and trade-offs. The generic cap applies."
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "[ETH AI Center Fellowships](https://ai.ethz.ch/research/phd-and-postdoc-programs/phd-fellowships.html) - Details on funding, salaries, and fellowship structures for AI PhDs at ETH Zurich.",
+      "rationale": "Identifies an official, program-specific source and the financial evidence it provides, directly supporting evaluation of funding and financial trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 10,
+      "evidence_span": "PhD candidates in countries like Switzerland and Germany are often treated as regular employees rather than students.",
+      "rationale": "Provides a concrete, verifiable structural fact about named regional options that matters to employment status and financial trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Prestigious universities and a ranking source are mentioned, but no concrete fact demonstrates an option or route using prestige as its dominant decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare evidence-based selection against prestige-dominant selection on a common decision axis."
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 8,
+      "evidence_span": "Based on your frugal nature and desire for a healthy lifestyle, look closely at **Switzerland/Germany** (high pay, great work-life balance) and **Canada/Singapore** (strong funding, safe).",
+      "rationale": "Explicitly recommends named regional options because of financial and lifestyle fit. The causal selection reason is clear, although comparative outcomes evidence and supporting substantiation are limited."
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Calling US top-tier schools reach options does not establish that any option is downgraded because it favors prestige-dominant decision-making."
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "Evaluate them based on the advisor's mentoring style, lab culture, and stipend-to-living-cost ratio.",
+      "rationale": "Gives an executable offer-evaluation action with concrete dimensions covering supervisory fit, research environment, and financial trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 10,
+      "evidence_span": "**March–April:** Receive offers. Evaluate them based on the advisor's mentoring style, lab culture, and stipend-to-living-cost ratio.",
+      "rationale": "Defines a dated, post-offer checkpoint for evaluating concrete fit and financial comparison criteria."
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which prestige should become the dominant decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 4,
+      "evidence_span": "Based on your frugal nature and desire for a healthy lifestyle, look closely at **Switzerland/Germany** (high pay, great work-life balance)",
+      "rationale": "Shows a partial preference-to-recommendation chain, but its supporting claims are qualitative. A complete chain from the stated evidence-based comparison preference through a cited concrete fact to the decision is not explicit, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T1-A1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a concrete fact about a quiet environment or conditions for independent study. Research-focused curricula and work-life balance do not establish those conditions."
+    },
+    {
+      "criterion_id": "T1-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly distinguish any options by quiet independent study versus a highly social or cohort-heavy environment."
+    },
+    {
+      "criterion_id": "T1-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Quiet independent study does not change any ranking, inclusion, exclusion, or fit judgment. Program selection instead uses funding, work-life balance, and safety."
+    },
+    {
+      "criterion_id": "T1-A1-04",
+      "score": 6,
+      "evidence_span": "look closely at **Switzerland/Germany** (high pay, great work-life balance) and **Canada/Singapore** (strong funding, safe). Keep US top tiers as reach schools.",
+      "rationale": "The recommendation justifies its selections through pay, work-life balance, funding, and safety, not an opposing preference for highly social or cohort-heavy environments. It therefore does not contradict quiet independent study; the generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T1-A2-01",
+      "score": 6,
+      "evidence_span": "North America remains the epicenter of AI research, offering massive compute resources and tight integration with tech giants (Google, OpenAI, Meta).",
+      "rationale": "Provides a concrete regional claim about access to the technology ecosystem, naming industry organizations. It does not address museums or exhibitions or give institution-specific access details. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T1-A2-02",
+      "score": 4,
+      "evidence_span": "North America remains the epicenter of AI research",
+      "rationale": "Implicitly differentiates North America through technology-ecosystem prominence, but does not explicitly compare options on ecosystem or cultural-city access, or distinguish this preference from treating location as unimportant."
+    },
+    {
+      "criterion_id": "T1-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The shortlist uses funding, lifestyle, safety, and academic competitiveness. Technology-ecosystem access, museums/exhibitions, and intellectually active cities are not used to change an inclusion, ranking, or fit judgment."
+    },
+    {
+      "criterion_id": "T1-A2-04",
+      "score": 6,
+      "evidence_span": "look closely at **Switzerland/Germany** (high pay, great work-life balance) and **Canada/Singapore** (strong funding, safe). Keep US top tiers as reach schools.",
+      "rationale": "The recommendation justifies its selections through funding, work-life balance, and safety, not through an opposing preference such as location being unimportant. This satisfies the narrow noncontradiction check without demonstrating affirmative use of the preference. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T1-A3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program has a concrete fact tied to independent scheduling or evening-focused work. The evening-work advice concerns personal preparation, not a program's scheduling conditions."
+    },
+    {
+      "criterion_id": "T1-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly distinguish options by scheduling autonomy, evening-work compatibility, or externally managed routines. Coursework and research-structure differences are not linked to this preference axis."
+    },
+    {
+      "criterion_id": "T1-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The shortlist uses funding, healthy lifestyle, safety, and work-life balance. It does not use independent planning or evening-focused deep work to change an option's rank, inclusion, or stated fit."
+    },
+    {
+      "criterion_id": "T1-A3-04",
+      "score": 6,
+      "evidence_span": "look closely at **Switzerland/Germany** (high pay, great work-life balance) and **Canada/Singapore** (strong funding, safe). Keep US top tiers as reach schools.",
+      "rationale": "The recommendation justifies selected options through pay, work-life balance, funding, and safety—not tightly scheduled or externally managed routines. It therefore does not explicitly contradict the preference. The supplied generic cap limits the score to 6."
+    }
+  ]
+}

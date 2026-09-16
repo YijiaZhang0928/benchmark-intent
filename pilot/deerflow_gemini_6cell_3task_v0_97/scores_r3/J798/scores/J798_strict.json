@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J798",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "64cdc47227a9c72fd7949a1df300ef1cf56c32c0fc123f84b6e793ef59b340cd",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-16T19:07:32.669414+00:00",
+  "completed_at_utc": "2026-09-16T19:12:31.051544+00:00",
+  "p_strict": 6.863545150501672,
+  "p_hi": 7.02,
+  "dimension_scores": {
+    "INTENT": 9.2,
+    "SOURCE": 2.8,
+    "EVIDENCE": 8.17391304347826,
+    "TRADEOFF": 4.608695652173913,
+    "DECISION": 6.956521739130435,
+    "ACTION": 9.6,
+    "TRACE": 8.461538461538462
+  },
+  "high_dimension_scores": {
+    "INTENT": 9.2,
+    "SOURCE": 2.8,
+    "EVIDENCE": 8.4,
+    "TRADEOFF": 4.8,
+    "DECISION": 7.199999999999999,
+    "ACTION": 9.6,
+    "TRACE": 8.8
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 10,
+      "evidence_span": "拥抱**“非正式学习（线上免费顶级资源） + 强实战试错（Side-project） + 校友网络互补（找技术大牛）”**的路径。",
+      "rationale": "The report explicitly prioritizes practical venture experimentation as part of its preferred learning route."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not identify sources or evidence types for evaluating programs' real venture projects or cases. Its reading sources concern market trends rather than this program-selection question."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 10,
+      "evidence_span": "完整刷一遍 **YC Startup School**（免费），学习如何做用户访谈、如何定价、如何做MVP。",
+      "rationale": "The named course is linked to concrete, verifiable venture-building instruction: customer interviews, pricing, and MVP development."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 10,
+      "evidence_span": "#### 1. 传统学位教育与高管教育（Executive Education）\n*如：中欧创业营、交大/复旦EMBA创新课程*\n* **课程核心**：战略升级、企业治理、哈佛商业评论（HBR）式的经典商业案例。",
+      "rationale": "The report names degree/executive-education options and describes their broad strategy, governance, and business-case curriculum, providing a concrete contrast-side claim."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 10,
+      "evidence_span": "YC Startup School是你现在的必修课，奇绩创坛则是你产品跑出雏形后的最佳跳板。它们补足了MBA教育中缺乏的“极早期创业实操”和“产品极速迭代”能力。",
+      "rationale": "The report directly compares the named practical routes with MBA education on early-stage execution and product iteration, identifying the capability difference driving the choice."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 10,
+      "evidence_span": "YC Startup School是你现在的必修课，奇绩创坛则是你产品跑出雏形后的最佳跳板。它们补足了MBA教育中缺乏的“极早期创业实操”和“产品极速迭代”能力。",
+      "rationale": "The named recommendations are explicitly justified by their support for early venture execution and rapid product iteration."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 10,
+      "evidence_span": "**当前阶段性价比极低**。中欧创业营等项目通常要求企业已有A轮融资或达到一定规模。你已经有交大MBA，再花巨资读高管教育不仅加重家庭固定财务负担，且无法解决你“寻找PMF（产品市场契合度）”的当务之急。",
+      "rationale": "The report downgrades a named executive-education option because additional education after an MBA does not address the immediate practical venture task of finding product-market fit."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 10,
+      "evidence_span": "使用无代码工具（如Bubble、Feishu多维表格、各种AI建站工具），或者拉拢第一阶段认识的技术校友，做一个非常简陋的产品雏形。",
+      "rationale": "The plan specifies an executable venture-building action: produce a basic prototype using identified tools or a technical collaborator."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 10,
+      "evidence_span": "拿出一小部分家庭固定预算中的“风险投资/股票基金”额度（比如5000-10000元），在小红书、知乎或特定微信群做灰度测试。",
+      "rationale": "The plan provides a concrete budget allocation and channels for a real market experiment."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition makes another broad academic business degree the better choice. References to later use of existing MBA knowledge do not reverse the recommendation."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 10,
+      "evidence_span": "*如：奇绩创坛（MiraclePlus）、YC Startup School（线上）*\n* **课程核心**：原汁原味的“从0到1”、打造MVP（最小可行性产品）、高频客户访谈、增长黑客。\n* **时间投入**：YC线上可完全自主安排；奇绩创坛等线下营如果在通过筛选后，需要极高强度的3个月全身心投入。\n* **资金成本**：免费（甚至机构会给你投资换取股份）。\n* **实战与融资**：极强。直接对接一线早期投资机构，高压路演（Demo Day）。\n* **对你的价值**：**极高**。YC Startup School是你现在的必修课，奇绩创坛则是你产品跑出雏形后的最佳跳板。它们补足了MBA教育中缺乏的“极早期创业实操”和“产品极速迭代”能力。",
+      "rationale": "The passage links the preference for practical early-stage learning to concrete curriculum and pitch opportunities, then explicitly recommends the named options because they supply those capabilities."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 10,
+      "evidence_span": "在不辞职、不影响主要收入和家庭生活质量（周末遛狗、陪女儿画画、家庭出游）的前提下，通过极低成本测试市场，是去风险化的最佳手段。",
+      "rationale": "明确将保留工作收入、保护家庭生活作为创业准备路径的前提，并优先推荐兼容这些约束的兼职试错方式。"
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "报告列出了学习资源和项目安排，但没有选择用于核实工作、家庭兼容性的研究来源或证据类型，例如官方课表、出勤要求或在职学员访谈。"
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 10,
+      "evidence_span": "YC线上可完全自主安排",
+      "rationale": "对已命名的YC线上学习选项给出了具体的时间安排机制，而非仅称其灵活。"
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 10,
+      "evidence_span": "奇绩创坛等线下营如果在通过筛选后，需要极高强度的3个月全身心投入。",
+      "rationale": "报告对命名的线下加速器路线给出了持续三个月、全身心投入的具体高干扰性时间要求。"
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 10,
+      "evidence_span": "YC线上可完全自主安排；奇绩创坛等线下营如果在通过筛选后，需要极高强度的3个月全身心投入。",
+      "rationale": "在同一时间投入维度上，直接比较自主安排的线上路线和三个月高强度投入的线下路线，差异明确且影响工作家庭兼容性。"
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 10,
+      "evidence_span": "* **时间投入**：利用你“早晨的高效工作时间”和“晚间的项目规划时间”。\n* **对你的价值**：**无可替代**。结合你“务实、理性、关注风险收益比”的特质，在不辞职、不影响主要收入和家庭生活质量（周末遛狗、陪女儿画画、家庭出游）的前提下，通过极低成本测试市场，是去风险化的最佳手段。",
+      "rationale": "报告推荐个人实战型兼职创业，并明确以利用早晚时段、不辞职和不影响家庭生活作为选择理由。"
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "高管教育被降级的理由是成本、已有MBA背景和与早期创业需求不匹配，而不是全日制学习造成的干扰。奇绩创坛虽被描述为高强度，也未因此被明确降低推荐等级。"
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 10,
+      "evidence_span": "**线上自学**：利用晚间时间，完整刷一遍 **YC Startup School**（免费），学习如何做用户访谈、如何定价、如何做MVP。",
+      "rationale": "行动包含明确课程、学习内容和晚间执行时段，可直接实施，并落实兼容日间工作的学习方式。"
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 10,
+      "evidence_span": "考虑到你需要平衡家庭（妻子、8岁女儿、金毛小黄）、维持固定家庭开销，并在高档社区保持一定的生活品质，你的创业路径必须是**“副业试错（Side-project） -> 数据验证 -> 获取外部资金 -> 全职All-in”**的渐进式路线。",
+      "rationale": "明确将家庭与收入约束转化为可用的阶段顺序规则：先兼职试错和验证，再获得资金，最后转为全职。"
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 10,
+      "evidence_span": "YC Startup School是你现在的必修课，奇绩创坛则是你产品跑出雏形后的最佳跳板。",
+      "rationale": "给出了从当前线上学习转向高投入加速器的具体边界：产品形成雏形后，奇绩创坛成为最佳跳板；报告此前已明确该路线需要三个月全身心投入。"
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 10,
+      "evidence_span": "* **时间投入**：利用你“早晨的高效工作时间”和“晚间的项目规划时间”。\n* **对你的价值**：**无可替代**。结合你“务实、理性、关注风险收益比”的特质，在不辞职、不影响主要收入和家庭生活质量（周末遛狗、陪女儿画画、家庭出游）的前提下，通过极低成本测试市场，是去风险化的最佳手段。",
+      "rationale": "同一段落形成可见链条：兼职实战使用早晚时段这一具体安排，支持保留工作和家庭生活的偏好，因此被评为无可替代并推荐作为市场测试手段。"
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 10,
+      "evidence_span": "你的创业路径必须是**“副业试错（Side-project） -> 数据验证 -> 获取外部资金 -> 全职All-in”**的渐进式路线。",
+      "rationale": "Explicitly makes experimentation and data validation prerequisites for escalating commitment."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 10,
+      "evidence_span": "完整刷一遍 **YC Startup School**（免费），学习如何做用户访谈、如何定价、如何做MVP。",
+      "rationale": "Identifies a specific learning source for customer interviews, pricing, and MVP methods directly relevant to conducting market validation."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 10,
+      "evidence_span": "*如：奇绩创坛（MiraclePlus）、YC Startup School（线上）*\n* **课程核心**：原汁原味的“从0到1”、打造MVP（最小可行性产品）、高频客户访谈、增长黑客。",
+      "rationale": "Attributes concrete validation-supporting curriculum elements—MVP development and frequent customer interviews—to named options."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 4,
+      "evidence_span": "* **时间投入**：通常为在职周末上课，持续1-2年。",
+      "rationale": "Provides a concrete duration for the degree/executive-education route, but does not establish that participants must complete this preparation before testing ideas. The missing temporal link limits credit."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 4,
+      "evidence_span": "放弃那些动辄几十万的高管学位项目，把钱留在家庭稳健理财里。拥抱**“非正式学习（线上免费顶级资源） + 强实战试错（Side-project） + 校友网络互补（找技术大牛）”**的路径。",
+      "rationale": "Contrasts executive degrees with practical experimentation, principally on cost and usefulness. It does not directly compare testing early against postponing tests until after lengthy preparation."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 10,
+      "evidence_span": "通过极低成本测试市场，是去风险化的最佳手段。",
+      "rationale": "In the practical venture-building route's value assessment, explicitly selects low-cost market testing as the best means of reducing risk."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 4,
+      "evidence_span": "你已经有交大MBA，再花巨资读高管教育不仅加重家庭固定财务负担，且无法解决你“寻找PMF（产品市场契合度）”的当务之急。",
+      "rationale": "Downgrades executive education for financial burden and failure to address immediate PMF needs, but does not explicitly downgrade it because lengthy preparation delays idea testing."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 10,
+      "evidence_span": "拿出一小部分家庭固定预算中的“风险投资/股票基金”额度（比如5000-10000元），在小红书、知乎或特定微信群做灰度测试。",
+      "rationale": "Supplies an executable market-testing step with an allocated budget and specified channels within the MVP-validation phase."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 10,
+      "evidence_span": "拿着已经有初步数据（或种子用户）的MVP，申请顶尖孵化器",
+      "rationale": "Defines an explicit sequence checkpoint: obtain initial MVP data or seed users before applying to an incubator."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition makes lengthy preparation before testing the preferred route. Later usefulness of management knowledge does not establish such a reversal."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 10,
+      "evidence_span": "*如：奇绩创坛（MiraclePlus）、YC Startup School（线上）*\n* **课程核心**：原汁原味的“从0到1”、打造MVP（最小可行性产品）、高频客户访谈、增长黑客。\n* **时间投入**：YC线上可完全自主安排；奇绩创坛等线下营如果在通过筛选后，需要极高强度的3个月全身心投入。\n* **资金成本**：免费（甚至机构会给你投资换取股份）。\n* **实战与融资**：极强。直接对接一线早期投资机构，高压路演（Demo Day）。\n* **对你的价值**：**极高**。YC Startup School是你现在的必修课，奇绩创坛则是你产品跑出雏形后的最佳跳板。它们补足了MBA教育中缺乏的“极早期创业实操”和“产品极速迭代”能力。",
+      "rationale": "Connects concrete MVP and customer-interview curriculum to a recommendation to take YC now and use MiraclePlus after a product prototype exists, explicitly explaining the selection through early-stage practice and rapid iteration."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 6,
+      "evidence_span": "你的创业路径必须是**“副业试错（Side-project） -> 数据验证 -> 获取外部资金 -> 全职All-in”**的渐进式路线。",
+      "rationale": "Explicitly prioritizes data validation before financing and full-time commitment. It does not specifically prioritize in-depth cases or detailed empirical analysis when choosing learning routes."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 4,
+      "evidence_span": "获取真实的早期客户（Paying Customers）",
+      "rationale": "Identifies real paying customers as a practical evidence source, but does not select sources for assessing the depth of cases or data offered by learning options."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 6,
+      "evidence_span": "*如：奇绩创坛（MiraclePlus）、YC Startup School（线上）*\n* **课程核心**：原汁原味的“从0到1”、打造MVP（最小可行性产品）、高频客户访谈、增长黑客。",
+      "rationale": "Names options and identifies frequent customer interviews as concrete practical-data work. However, the programs are grouped together, and the report supplies no detail establishing the depth of their cases or data analysis."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 4,
+      "evidence_span": "**实战与落地**：偏弱，更多是“秀肌”或“认知升级”，较少涉及从0到1的双手沾泥（Hands-on）。",
+      "rationale": "Characterizes the executive-education route as weak on application, but this is a general assessment rather than a concrete, verifiable curricular fact showing abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 4,
+      "evidence_span": "它们补足了MBA教育中缺乏的“极早期创业实操”和“产品极速迭代”能力。",
+      "rationale": "Directly contrasts accelerator learning with MBA education on practical startup capabilities. It does not specifically compare in-depth cases or data with unapplied abstract theory."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 4,
+      "evidence_span": "YC Startup School是你现在的必修课，奇绩创坛则是你产品跑出雏形后的最佳跳板。它们补足了MBA教育中缺乏的“极早期创业实操”和“产品极速迭代”能力。",
+      "rationale": "Names recommended options and gives practical capability development as the causal reason. The reason does not specifically concern in-depth cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 4,
+      "evidence_span": "你已经有交大MBA，再花巨资读高管教育不仅加重家庭固定财务负担，且无法解决你“寻找PMF（产品市场契合度）”的当务之急。",
+      "rationale": "Explicitly downgrades executive education for cost and insufficient help with product-market fit. It does not explicitly attribute the downgrade to favoring abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 8,
+      "evidence_span": "**市场验证**：拿出一小部分家庭固定预算中的“风险投资/股票基金”额度（比如5000-10000元），在小红书、知乎或特定微信群做灰度测试。",
+      "rationale": "Provides an executable practical market-testing step with a budget and identified channels. This generates real-world evidence, though the depth of collection and analysis is unspecified."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 8,
+      "evidence_span": "拿着已经有初步数据（或种子用户）的MVP，申请顶尖孵化器",
+      "rationale": "Sets a usable sequence rule: obtain preliminary data or seed users before applying to an incubator. It establishes an evidence checkpoint, but not a threshold for in-depth data or case analysis."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes abstract theory without application the better choice. The later value attributed to management knowledge concerns applying that knowledge, not reversing the preference toward unapplied theory."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 4,
+      "evidence_span": "拿着已经有初步数据（或种子用户）的MVP，申请顶尖孵化器",
+      "rationale": "Links prospective practical evidence to a downstream action, but does not provide a complete chain from a stated preference for in-depth cases/data through a cited supporting fact to that action."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 10,
+      "evidence_span": "你的创业准备不能是“破釜沉舟”式的盲目冒险，而必须是一场**高度计划性、低机会成本、逐步去风险化（De-risking）的系统工程**。",
+      "rationale": "Explicitly makes low opportunity cost a governing priority for startup preparation."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides cost assertions but identifies no source or evidence-gathering route chosen to evaluate program ROI or cost-effectiveness."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 10,
+      "evidence_span": "完整刷一遍 **YC Startup School**（免费），学习如何做用户访谈、如何定价、如何做MVP。",
+      "rationale": "Names a specific option, states its verifiable zero-price feature, and identifies the practical learning it provides."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 10,
+      "evidence_span": "放弃那些动辄几十万的高管学位项目",
+      "rationale": "Identifies the executive-degree route and gives a concrete monetary magnitude for its expense, rather than merely calling it expensive."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 10,
+      "evidence_span": "放弃那些动辄几十万的高管学位项目，把钱留在家庭稳健理财里。拥抱**“非正式学习（线上免费顶级资源） + 强实战试错（Side-project） + 校友网络互补（找技术大牛）”**的路径。",
+      "rationale": "Directly contrasts expensive executive degrees with free learning and practical alternatives on expenditure, and identifies preserving funds as a consequential difference."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 10,
+      "evidence_span": "在不辞职、不影响主要收入和家庭生活质量（周末遛狗、陪女儿画画、家庭出游）的前提下，通过极低成本测试市场，是去风险化的最佳手段。",
+      "rationale": "Selects practical side-project market testing as the best approach because it combines very low expenditure with preservation of existing income."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 10,
+      "evidence_span": "放弃那些动辄几十万的高管学位项目，把钱留在家庭稳健理财里。",
+      "rationale": "Explicitly rejects executive-degree programs because of their high financial cost and recommends retaining the money instead."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 10,
+      "evidence_span": "**线上自学**：利用晚间时间，完整刷一遍 **YC Startup School**（免费），学习如何做用户访谈、如何定价、如何做MVP。",
+      "rationale": "The phased plan contains an executable action: complete a named free course during evening hours."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 10,
+      "evidence_span": "用最少的时间和金钱（几千块以内）推向市场，获取真实的早期客户（Paying Customers）。",
+      "rationale": "Sets a usable expenditure ceiling of a few thousand yuan for bringing the initial product to market and seeking paying customers."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state any condition under which expensive prestige-oriented education would become the better choice. Program eligibility requirements do not establish such a reversal."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 10,
+      "evidence_span": "**当前阶段性价比极低**。中欧创业营等项目通常要求企业已有A轮融资或达到一定规模。你已经有交大MBA，再花巨资读高管教育不仅加重家庭固定财务负担，且无法解决你“寻找PMF（产品市场契合度）”的当务之急。",
+      "rationale": "Provides an explicit chain from program stage requirements and limited relevance to the immediate PMF need, through added financial burden, to a low cost-effectiveness rating and downgrade."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 10,
+      "evidence_span": "中欧创业营等项目通常要求企业已有A轮融资或达到一定规模。",
+      "rationale": "The report names a program and states an admissions-related fact indicating access to peers who already operate funded or established businesses."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 4,
+      "evidence_span": "非正式学习（线上免费顶级资源） + 强实战试错（Side-project） + 校友网络互补（找技术大牛）",
+      "rationale": "The report separates online learning from alumni networking, but presents them as complementary components rather than explicitly comparing practitioner access with isolated learning. The required option-level contrast is only implicit."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 10,
+      "evidence_span": "交大理工科背景强，你在营销和管理上强，去校友网络里找一个“有技术但缺商业化能力”的技术大牛做合伙人，是最优解。",
+      "rationale": "Access to technically experienced alumni explicitly drives the judgment that this networking route is an optimal fit for finding a complementary cofounder."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 10,
+      "evidence_span": "拥抱**“非正式学习（线上免费顶级资源） + 强实战试错（Side-project） + 校友网络互补（找技术大牛）”**的路径。",
+      "rationale": "The final recommendation explicitly includes access to experienced technical alumni. It does not justify any selected route by a preference for isolation."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 6,
+      "evidence_span": "YC线上可完全自主安排",
+      "rationale": "报告给出了具名选项YC线上课程可自主安排时间这一具体事实，与保留固定家庭时间直接相关。按通用上限计6分。"
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 6,
+      "evidence_span": "YC线上可完全自主安排；奇绩创坛等线下营如果在通过筛选后，需要极高强度的3个月全身心投入。",
+      "rationale": "明确对比了自主安排的线上学习与连续三个月高强度全身心投入的线下营，呈现了可控制学习时间和学习占据生活时间的选项差异。按通用上限计6分。"
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 6,
+      "evidence_span": "在不辞职、不影响主要收入和家庭生活质量（周末遛狗、陪女儿画画、家庭出游）的前提下，通过极低成本测试市场，是去风险化的最佳手段。",
+      "rationale": "报告将保留周末陪伴和家庭活动明确作为兼职实战路径的适配因素，并据此评价该路径为最佳手段，而非仅泛泛提及家庭责任。按通用上限计6分。"
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 6,
+      "evidence_span": "创业会不可避免地挤压家庭时间。通过制度化来保障生活质量（如规定每周日无论如何不排会议，专门陪女儿画画和遛狗）。",
+      "rationale": "虽然最终路线包含全职创业，但报告明确披露了家庭时间受挤压的权衡，并提出固定每周日陪伴家庭的边界；没有以未披露的相反价值为所选路线辩护。按通用上限计6分。"
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 4,
+      "evidence_span": "发挥你交大MBA“团队管理”的绝对优势，招募并管理核心团队。",
+      "rationale": "The report links a named degree route to team management, but provides no concrete coordination or leadership framework and no verifiable program fact about learning one."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison explicitly distinguishes team-coordination or leadership frameworks from purely solo-founder technical content."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No inclusion, exclusion, ranking, or fit judgment uses team-coordination or leadership frameworks as a secondary factor. Recommendations instead emphasize cost, risk, practical validation, and complementary technical expertise."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 6,
+      "evidence_span": "发挥你交大MBA“团队管理”的绝对优势，招募并管理核心团队。",
+      "rationale": "The recommended plan explicitly includes managing a core team, and no selected route is justified by rejecting coordination or leadership in favor of exclusively solo technical work. This is compatible but generic support rather than endorsement of a specific framework, so the generic cap applies."
+    }
+  ]
+}

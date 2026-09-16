@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J778",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "65097a93f5d8ab12e5ee891c67dcdfafe74a756072868a088216bcf43ba554bb",
+  "rubric_sha256": "7fc83a85f049705a704a5a128f48b42ca919c64ed5442c6c588e69a066092957",
+  "started_at_utc": "2026-09-16T18:45:12.958097+00:00",
+  "completed_at_utc": "2026-09-16T18:49:38.918733+00:00",
+  "p_strict": 4.27484949832776,
+  "p_hi": 4.120000000000001,
+  "dimension_scores": {
+    "INTENT": 8.8,
+    "SOURCE": 2.8000000000000003,
+    "EVIDENCE": 4.0,
+    "TRADEOFF": 1.5652173913043477,
+    "DECISION": 4.869565217391305,
+    "ACTION": 5.2,
+    "TRACE": 4.461538461538462
+  },
+  "high_dimension_scores": {
+    "INTENT": 8.8,
+    "SOURCE": 2.8000000000000003,
+    "EVIDENCE": 3.8000000000000003,
+    "TRADEOFF": 1.2,
+    "DECISION": 4.8,
+    "ACTION": 5.2,
+    "TRACE": 4.0
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T2-P1-01",
+      "score": 10,
+      "evidence_span": "#### 🥇 Priority 1: Japan (The \"Cultural & Financial Ideal\")\n**Why:** It is the absolute best match for your lifestyle and budget.",
+      "rationale": "The first-ranked recommendation explicitly prioritizes cultural and lifestyle fit; its accompanying discussion identifies reflective academic surroundings and culturally immersive activities."
+    },
+    {
+      "criterion_id": "T2-P1-02",
+      "score": 4,
+      "evidence_span": "For Japan, research traditional but cost-effective homestays or shared houses (Sharehouse) that offer a cultural experience.",
+      "rationale": "The research direction targets cultural experience, but it does not identify a source or evidence class for determining whether accommodation actually enables meaningful immersion."
+    },
+    {
+      "criterion_id": "T2-P1-03",
+      "score": 4,
+      "evidence_span": "Japan offers highly established English-taught media programs (like UTokyo's ITASIA or Waseda's GSICCS)",
+      "rationale": "Named programs and their language and disciplinary orientation provide limited intellectual-fit evidence. The report does not supply an option-specific concrete feature supporting meaningful cultural immersion; those claims remain regional and generalized."
+    },
+    {
+      "criterion_id": "T2-P1-04",
+      "score": 10,
+      "evidence_span": "The University of Amsterdam (UvA) consistently ranks #1 globally in Communication and Media Studies",
+      "rationale": "A named institution is associated with a concrete, externally checkable ranking, supplying explicit prestige-side evidence."
+    },
+    {
+      "criterion_id": "T2-P1-05",
+      "score": 4,
+      "evidence_span": "While academically brilliant, the astronomical costs, car-dependent lifestyle, and extroverted networking culture contradict your budget-conscious, low-risk, and reflective personality.",
+      "rationale": "The report contrasts academic appeal with practical and personal fit. It does not directly distinguish institutional prestige alone from cultural/intellectual fit and meaningful immersion on a clearly stated common decision axis."
+    },
+    {
+      "criterion_id": "T2-P1-06",
+      "score": 10,
+      "evidence_span": "The academic environment is quiet and analytical, perfectly suiting your introverted, reflective nature. Your weekends can be spent doing exactly what you love: reading Haruki Murakami in Tokyo cafes, staying in culturally rich homestays, and hiking in natural scenery. \n**Target:** University of Tokyo (ITASIA/GSII) or Waseda University (GSICCS).",
+      "rationale": "The first-priority recommendation names target institutions and expressly gives intellectual temperament and cultural experiences as selection reasons."
+    },
+    {
+      "criterion_id": "T2-P1-07",
+      "score": 4,
+      "evidence_span": "#### 📉 Priority 4: United States (The \"Academic Pinnacle, but Low Feasibility\")\n**Why:** While academically brilliant, the astronomical costs, car-dependent lifestyle, and extroverted networking culture contradict your budget-conscious, low-risk, and reflective personality.",
+      "rationale": "The US route is explicitly downgraded despite academic appeal, but the stated reasons are expense and lifestyle mismatch—not that the route favors institutional prestige alone."
+    },
+    {
+      "criterion_id": "T2-P1-08",
+      "score": 10,
+      "evidence_span": "Map out local indie bookstores and coffee roasters in your host city (e.g., Jimbocho in Tokyo or the Canal Ring in Amsterdam).",
+      "rationale": "This is an executable action with concrete cultural destinations, implementing the report's stated reading and local-cultural interests."
+    },
+    {
+      "criterion_id": "T2-P1-09",
+      "score": 10,
+      "evidence_span": "**Months 10-12: Lifestyle & Academic Transition**\n* **Routine Adjustment**: Continue your yoga and 4km runs. Research local parks and running routes near your host university. \n* **Cultural Prep**: Map out local indie bookstores and coffee roasters in your host city (e.g., Jimbocho in Tokyo or the Canal Ring in Amsterdam).",
+      "rationale": "The plan assigns concrete cultural preparation to a specified three-month window, providing a usable temporal allocation rather than an undated aspiration."
+    },
+    {
+      "criterion_id": "T2-P1-10",
+      "score": 4,
+      "evidence_span": "Only consider if your university offers a fully-funded, tuition-waived exchange program.",
+      "rationale": "Full funding establishes a concrete boundary for considering the US route. It does not establish when institutional prestige alone would become the better choice or reverse the ranking."
+    },
+    {
+      "criterion_id": "T2-P1-11",
+      "score": 4,
+      "evidence_span": "If you want top-tier academic prestige in Communication (UvA) mixed with a strong sociological perspective, this is it. It supports your independent, slow-paced lifestyle.",
+      "rationale": "The recommendation connects a claimed intellectual orientation and lifestyle compatibility to an option, but the preference-specific evidence is asserted rather than concretely established. A complete evidence-to-decision chain for meaningful immersion is missing."
+    },
+    {
+      "criterion_id": "T2-P2-01",
+      "score": 10,
+      "evidence_span": "If you want top-tier academic prestige in Communication (UvA) mixed with a strong sociological perspective, this is it.",
+      "rationale": "The shortlist explicitly presents communication combined with a sociological perspective as a reason to prioritize an option, establishing the requested interdisciplinary learning priority."
+    },
+    {
+      "criterion_id": "T2-P2-02",
+      "score": 2,
+      "evidence_span": "Download syllabi from UTokyo, UvA, and NUS, and create an Excel matrix mapping their courses to your Beijing university's graduation requirements.",
+      "rationale": "Syllabi are an identifiable evidence class that could reveal interdisciplinary content, but the stated purpose is graduation-credit mapping, not evaluating social/media/cultural learning. The preference-specific research purpose is missing."
+    },
+    {
+      "criterion_id": "T2-P2-03",
+      "score": 4,
+      "evidence_span": "Heavily seminar-based with a strong emphasis on the sociology of media, political communication, and critical theory.",
+      "rationale": "The report identifies concrete teaching and subject characteristics relevant to the preference. However, these claims describe Europe collectively rather than establish a verifiable curriculum fact for a particular named option."
+    },
+    {
+      "criterion_id": "T2-P2-04",
+      "score": 2,
+      "evidence_span": "Cutting-edge focus on data journalism, computational communication, and Asian public opinion.",
+      "rationale": "The Singapore section identifies computational subject matter, but these subjects themselves combine technical and social/media content. It does not establish narrowly technical coursework in a named option."
+    },
+    {
+      "criterion_id": "T2-P2-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no direct comparison of interdisciplinary learning and narrowly technical coursework on a shared academic decision axis. Comparisons involving cultural exploration concern lifestyle and surroundings."
+    },
+    {
+      "criterion_id": "T2-P2-06",
+      "score": 10,
+      "evidence_span": "If you want top-tier academic prestige in Communication (UvA) mixed with a strong sociological perspective, this is it.",
+      "rationale": "Within the second-priority recommendation, UvA is explicitly recommended for combining communication with a sociological perspective, supplying both the named option and the preference-specific selection reason."
+    },
+    {
+      "criterion_id": "T2-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded because its coursework is narrowly technical. Singapore's stated disadvantages are rent, urbanization, and fewer cultural-exploration opportunities."
+    },
+    {
+      "criterion_id": "T2-P2-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The preparation plan does not specify an action implementing interdisciplinary social/media/cultural learning. Credit mapping, portfolio preparation, homestay searches, and bookstore mapping are not explicitly connected to that academic learning objective."
+    },
+    {
+      "criterion_id": "T2-P2-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No course allocation, threshold, sequence rule, or checkpoint is defined for interdisciplinary social/media/cultural learning."
+    },
+    {
+      "criterion_id": "T2-P2-10",
+      "score": 4,
+      "evidence_span": "If your primary goal is to leverage your Python and data analysis skills for cutting-edge new media research, NUS/NTU are phenomenal.",
+      "rationale": "The report supplies a concrete condition favoring a computationally oriented option. However, it does not establish that narrowly technical coursework becomes preferable to interdisciplinary learning; the stated goal remains new media research."
+    },
+    {
+      "criterion_id": "T2-P2-11",
+      "score": 4,
+      "evidence_span": "If you want top-tier academic prestige in Communication (UvA) mixed with a strong sociological perspective, this is it.",
+      "rationale": "The preference and recommendation are visibly connected, but the supporting description is general. A concrete option-specific fact establishing interdisciplinary learning is not explicitly carried through to this decision, leaving the evidence link incomplete."
+    },
+    {
+      "criterion_id": "T2-P3-01",
+      "score": 4,
+      "evidence_span": "a preference for deep cultural immersion and natural scenery",
+      "rationale": "Deep cultural immersion is explicitly valued, but concentrating engagement in fewer places or communities is not stated as a decision priority."
+    },
+    {
+      "criterion_id": "T2-P3-02",
+      "score": 4,
+      "evidence_span": "research traditional but cost-effective homestays or shared houses (Sharehouse) that offer a cultural experience",
+      "rationale": "Accommodation research is directed toward cultural experience, providing a partially relevant evidence route. It does not explicitly investigate sustained engagement with fewer communities."
+    },
+    {
+      "criterion_id": "T2-P3-03",
+      "score": 2,
+      "evidence_span": "Aligns flawlessly with your love for Haruki Murakami, Japanese cuisine, light/healthy food, and cost-effective cultural homestays.",
+      "rationale": "The Japan discussion mentions a potentially immersive accommodation type, but supplies no verifiable fact about a named program's provision for deeper, sustained community engagement."
+    },
+    {
+      "criterion_id": "T2-P3-04",
+      "score": 4,
+      "evidence_span": "take self-planned train trips across Europe to capture travel videos",
+      "rationale": "The recommended European route includes cross-Europe travel, partially reflecting destination breadth. It supplies neither an explicit destination-maximizing strategy nor a concrete itinerary establishing destination count."
+    },
+    {
+      "criterion_id": "T2-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare concentrated community engagement with maximizing destinations on a common decision axis."
+    },
+    {
+      "criterion_id": "T2-P3-06",
+      "score": 4,
+      "evidence_span": "Your weekends can be spent doing exactly what you love: reading Haruki Murakami in Tokyo cafes, staying in culturally rich homestays, and hiking in natural scenery.",
+      "rationale": "Cultural experiences help justify Japan's first-place recommendation, but the selection rationale does not explicitly favor deeper engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded because it favors maximizing destination count."
+    },
+    {
+      "criterion_id": "T2-P3-08",
+      "score": 4,
+      "evidence_span": "Map out local indie bookstores and coffee roasters in your host city",
+      "rationale": "This is an executable, locally focused preparation action. However, it does not establish sustained participation or deeper relationships within a limited set of communities."
+    },
+    {
+      "criterion_id": "T2-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint governs concentrated cultural engagement. The general preparation timeline does not provide such a rule."
+    },
+    {
+      "criterion_id": "T2-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no concrete condition under which maximizing destination count would become preferable."
+    },
+    {
+      "criterion_id": "T2-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No explicit chain connects the preference for deeper engagement with fewer communities to a supporting fact and then to a decision or action. General cultural-fit claims do not establish that chain."
+    },
+    {
+      "criterion_id": "T2-P4-01",
+      "score": 10,
+      "evidence_span": "It supports your independent, slow-paced lifestyle. You can cook Italian food easily, commute by bicycle, and take self-planned train trips across Europe to capture travel videos.",
+      "rationale": "The prioritized shortlist explicitly treats independent living and self-planned exploration as reasons to prefer Europe."
+    },
+    {
+      "criterion_id": "T2-P4-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not identify a source or evidence class for assessing freedom to explore or flexibility of local experiences. Its identified sources address rankings, funding, academic administration, and visas."
+    },
+    {
+      "criterion_id": "T2-P4-03",
+      "score": 4,
+      "evidence_span": "the rail network is ideal for your self-guided, natural-scenery travel style.",
+      "rationale": "This connects a regional transport feature to independent exploration, but supplies no concrete option-specific transport, scheduling, or program-flexibility fact. The generic claim receives only partial credit."
+    },
+    {
+      "criterion_id": "T2-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program or route is described as having packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare independent exploration with packaged or group-managed activities on a common decision axis."
+    },
+    {
+      "criterion_id": "T2-P4-06",
+      "score": 10,
+      "evidence_span": "Priority 2: Europe - Netherlands or Nordics (The \"Academic & Lifestyle Balance\")\n**Why:** If you want top-tier academic prestige in Communication (UvA) mixed with a strong sociological perspective, this is it. It supports your independent, slow-paced lifestyle. You can cook Italian food easily, commute by bicycle, and take self-planned train trips across Europe to capture travel videos.",
+      "rationale": "The Europe recommendation explicitly names independent living and self-planned travel as selection reasons."
+    },
+    {
+      "criterion_id": "T2-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Lower-ranked destinations are penalized for costs, urbanization, infrastructure, or social environment—not for packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-08",
+      "score": 10,
+      "evidence_span": "Map out local indie bookstores and coffee roasters in your host city (e.g., Jimbocho in Tokyo or the Canal Ring in Amsterdam).",
+      "rationale": "Mapping specific local destinations is an executable preparation step supporting self-guided local exploration."
+    },
+    {
+      "criterion_id": "T2-P4-09",
+      "score": 4,
+      "evidence_span": "**Months 10-12: Lifestyle & Academic Transition**",
+      "rationale": "The timeline places local-exploration preparation in a defined period, but does not establish a substantive allocation, threshold, dependency, or checkpoint governing independent exploration itself."
+    },
+    {
+      "criterion_id": "T2-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is given under which packaged or group-managed activities would become preferable."
+    },
+    {
+      "criterion_id": "T2-P4-11",
+      "score": 4,
+      "evidence_span": "It supports your independent, slow-paced lifestyle. You can cook Italian food easily, commute by bicycle, and take self-planned train trips across Europe to capture travel videos.",
+      "rationale": "The recommendation visibly connects the preference to suggested experiences, but the evidence link remains generic rather than a concrete, cited option-specific fact."
+    },
+    {
+      "criterion_id": "T2-P5-01",
+      "score": 10,
+      "evidence_span": "#### 🥇 Priority 1: Japan (The \"Cultural & Financial Ideal\")",
+      "rationale": "The first-priority designation explicitly elevates the combined cultural and financial preference; its accompanying explanation specifies frugality and culturally rich homestays."
+    },
+    {
+      "criterion_id": "T2-P5-02",
+      "score": 4,
+      "evidence_span": "[JASSO Student Exchange Support](https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html) - Official financial aid details for short-term exchange students in Japan.",
+      "rationale": "An identifiable source supports the financial side, but the report does not identify accommodation listings, local housing sources, or other evidence capable of evaluating both affordability and local distinctiveness. Partial credit is capped."
+    },
+    {
+      "criterion_id": "T2-P5-03",
+      "score": 8,
+      "evidence_span": "Due to the current weak Yen, living costs (including dorm/homestay) can be managed under 100,000 JPY (~4,700 RMB) per month [citation:JASSO Student Exchange Support](https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html).",
+      "rationale": "The Japan option includes a quantitative, checkable living-cost claim explicitly encompassing homestays. However, the estimate is not tied to a particular accommodation offering, and the cited scholarship source does not clearly substantiate that housing-cost claim."
+    },
+    {
+      "criterion_id": "T2-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report describes expensive destinations but supplies no concrete premium-convenience or luxury feature of an accommodation option or route."
+    },
+    {
+      "criterion_id": "T2-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Comparisons concern destination costs, academic value, and cultural fit, not locally distinctive budget choices versus premium convenience or luxury."
+    },
+    {
+      "criterion_id": "T2-P5-06",
+      "score": 10,
+      "evidence_span": "It is the absolute best match for your lifestyle and budget. The JASSO scholarship covers your low living expenses, allowing you to maintain your frugality without sacrificing quality of life. The academic environment is quiet and analytical, perfectly suiting your introverted, reflective nature. Your weekends can be spent doing exactly what you love: reading Haruki Murakami in Tokyo cafes, staying in culturally rich homestays, and hiking in natural scenery.",
+      "rationale": "The Japan first-priority recommendation explicitly gives affordability and culturally rich homestays as reasons for selection."
+    },
+    {
+      "criterion_id": "T2-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Singapore and the United States are downgraded for costs and lifestyle mismatches, but neither is downgraded for favoring premium convenience or luxury."
+    },
+    {
+      "criterion_id": "T2-P5-08",
+      "score": 10,
+      "evidence_span": "For Japan, research traditional but cost-effective homestays or shared houses (Sharehouse) that offer a cultural experience.",
+      "rationale": "This is an executable housing-research action with concrete accommodation categories and explicit affordability and cultural-experience requirements."
+    },
+    {
+      "criterion_id": "T2-P5-09",
+      "score": 4,
+      "evidence_span": "For Europe, apply for university housing immediately, as the European housing crisis is severe.",
+      "rationale": "The report supplies a housing sequence rule, but does not establish that this housing implements the combined affordability and local-distinctiveness preference. The Japan housing instruction gives a direction rather than a selection threshold or checkpoint."
+    },
+    {
+      "criterion_id": "T2-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The fully funded United States exception changes destination feasibility, but no condition makes premium convenience or luxury the better accommodation or lifestyle choice."
+    },
+    {
+      "criterion_id": "T2-P5-11",
+      "score": 8,
+      "evidence_span": "The JASSO scholarship covers your low living expenses, allowing you to maintain your frugality without sacrificing quality of life. The academic environment is quiet and analytical, perfectly suiting your introverted, reflective nature. Your weekends can be spent doing exactly what you love: reading Haruki Murakami in Tokyo cafes, staying in culturally rich homestays, and hiking in natural scenery.",
+      "rationale": "Within the Japan first-priority rationale, scholarship support connects affordability to the recommendation and culturally rich homestays. The chain is visible, but its accommodation-specific evidentiary link is weaker: the report does not demonstrate the cost or availability of those homestays."
+    },
+    {
+      "criterion_id": "T2-A1-01",
+      "score": 6,
+      "evidence_span": "Map out local indie bookstores and coffee roasters in your host city (e.g., Jimbocho in Tokyo or the Canal Ring in Amsterdam).",
+      "rationale": "Names specific neighborhoods in proposed host cities and connects them to bookstores and coffee establishments. This supplies a concrete location-level fact relevant to the preference; the supplied cap is applied."
+    },
+    {
+      "criterion_id": "T2-A1-02",
+      "score": 2,
+      "evidence_span": "While adaptation is effortless (safe, familiar culture), it may lack the \"deep, distant cultural shock\" and vast natural landscapes you seek",
+      "rationale": "The Singapore discussion loosely distinguishes easy adaptation from cultural exploration. It does not explicitly contrast bookstore/cafe/park-rich neighborhoods with convenience-oriented campus surroundings."
+    },
+    {
+      "criterion_id": "T2-A1-03",
+      "score": 6,
+      "evidence_span": "Your weekends can be spent doing exactly what you love: reading Haruki Murakami in Tokyo cafes, staying in culturally rich homestays, and hiking in natural scenery.",
+      "rationale": "This appears in the justification for first-priority Japan and explicitly uses culturally engaging cafe life as a secondary fit factor. The supplied cap is applied."
+    },
+    {
+      "criterion_id": "T2-A1-04",
+      "score": 6,
+      "evidence_span": "reading Haruki Murakami in Tokyo cafes, staying in culturally rich homestays, and hiking in natural scenery",
+      "rationale": "The highest-priority recommendation is justified by compatible cultural and outdoor activities, not by an opposing preference for purely convenient surroundings. No selected option is explicitly justified by that opposing value without a disclosed trade-off. The supplied cap is applied."
+    },
+    {
+      "criterion_id": "T2-A2-01",
+      "score": 6,
+      "evidence_span": "You can cook Italian food easily, commute by bicycle, and take self-planned train trips across Europe to capture travel videos.",
+      "rationale": "The Europe shortlist identifies cycling and rail travel as available choices relevant to environmentally responsible mobility. The claim is regional rather than verified for a particular host institution, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T2-A2-02",
+      "score": 4,
+      "evidence_span": "Additionally, the car-dependent infrastructure and expensive \"healthy\" food options might disrupt your routine of walking to parks, cafes, and bookstores.",
+      "rationale": "The report contrasts US car dependence with walking and, elsewhere, European cycling and rail options. However, it frames these differences around personal routines rather than environmental responsibility, leaving the required preference-axis distinction implicit."
+    },
+    {
+      "criterion_id": "T2-A2-03",
+      "score": 4,
+      "evidence_span": "It supports your independent, slow-paced lifestyle. You can cook Italian food easily, commute by bicycle, and take self-planned train trips across Europe to capture travel videos.",
+      "rationale": "Cycling and train travel support Europe's stated shortlist fit, but the justification is lifestyle and travel interests. Environmental responsibility is not explicitly used as a secondary selection factor."
+    },
+    {
+      "criterion_id": "T2-A2-04",
+      "score": 6,
+      "evidence_span": "You can cook Italian food easily, commute by bicycle, and take self-planned train trips across Europe to capture travel videos.",
+      "rationale": "The shortlist positively presents lower-impact transport choices, and no selected option is explicitly justified by disregard for environmental responsibility. This supports noncontradiction, but the environmental alignment remains generic rather than an explicit recommendation principle, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T2-A3-01",
+      "score": 4,
+      "evidence_span": "The proximity to nature (hiking, mountains) suits your exercise habits.",
+      "rationale": "The Japan discussion mentions outdoor activities, but gives no named natural destination, route, or concrete access detail tied to either university. The required concrete option-level fact is only partly present."
+    },
+    {
+      "criterion_id": "T2-A3-02",
+      "score": 6,
+      "evidence_span": "the highly urbanized environment, which offers fewer natural landscapes and deep cultural exploration opportunities compared to Japan or Europe.",
+      "rationale": "The Singapore recommendation explicitly contrasts its urban environment with greater natural-landscape opportunities in Japan and Europe. The comparison is criterion-specific but geographically broad, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T2-A3-03",
+      "score": 6,
+      "evidence_span": "The downside is the high rent and the highly urbanized environment, which offers fewer natural landscapes and deep cultural exploration opportunities compared to Japan or Europe.",
+      "rationale": "The third-priority Singapore recommendation explicitly uses limited natural landscapes as a negative fit factor relative to higher-ranked destinations. This satisfies the secondary-fit check at a broad regional level, subject to the generic cap."
+    },
+    {
+      "criterion_id": "T2-A3-04",
+      "score": 6,
+      "evidence_span": "Your weekends can be spent doing exactly what you love: reading Haruki Murakami in Tokyo cafes, staying in culturally rich homestays, and hiking in natural scenery.",
+      "rationale": "The first-priority Japan recommendation explicitly supports hiking alongside urban cultural activities rather than justifying the choice against outdoor experiences. The support remains generic rather than identifying a concrete outdoor opportunity, so the generic cap applies."
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J347",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "94596d2a1fb499069adbf5fe063dbdfa4a4a0a9339f7367d48893bd3ef9411ba",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-16T19:47:08.996967+00:00",
+  "completed_at_utc": "2026-09-16T20:32:23.336990+00:00",
+  "p_strict": 7.288160535117058,
+  "p_hi": 7.380000000000001,
+  "dimension_scores": {
+    "INTENT": 7.6,
+    "SOURCE": 7.2,
+    "EVIDENCE": 8.08695652173913,
+    "TRADEOFF": 4.173913043478261,
+    "DECISION": 6.869565217391304,
+    "ACTION": 10.0,
+    "TRACE": 8.307692307692308
+  },
+  "high_dimension_scores": {
+    "INTENT": 7.6,
+    "SOURCE": 7.2,
+    "EVIDENCE": 8.0,
+    "TRADEOFF": 4.4,
+    "DECISION": 7.199999999999999,
+    "ACTION": 10.0,
+    "TRACE": 8.4
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 10,
+      "evidence_span": "The ideal path for you must balance **high-quality, part-time knowledge acquisition (especially in product and 0-to-1 execution)** with **low-risk practical validation**",
+      "rationale": "The report explicitly makes practical venture validation a priority for choosing the learning path."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 8,
+      "evidence_span": "[Antler](https://www.antler.co/) - Global Day-Zero venture capital and accelerator matching model.",
+      "rationale": "An identifiable official source addresses founder matching and venture investment, providing relevant evidence for evaluating real venture-building support. The research rationale is not explicitly framed around evaluating project-based learning."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 10,
+      "evidence_span": "**Antler** is a \"Day Zero\" investor that accepts individuals, helps you find a tech co-founder, and invests seed capital (usually around $100k-$250k globally) if you pass the committee [citation:Antler](https://www.antler.co/).",
+      "rationale": "A named option has concrete, checkable mechanisms for supporting an actual venture: co-founder matching and conditional seed investment."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 10,
+      "evidence_span": "#### 1. Degree Programs (e.g., MBA, EMBA)\n*   **Curriculum & Focus:** Broad business management, finance, strategy.",
+      "rationale": "The MBA/EMBA route is explicitly identified with broad business-management subjects, supplying the required contrast-side curriculum fact."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 4,
+      "evidence_span": "Repeating this route offers diminishing returns and is too theoretical for a 0-to-1 startup launch.",
+      "rationale": "The report contrasts degree theory with startup-launch needs, but does not directly compare a real-project learning route against a broad degree on a specified common axis. The comparison remains incomplete and receives the generic cap."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 10,
+      "evidence_span": "#### 6. Practical Venture-Building (Side Hustle / MVP)\n*   **Curriculum:** The real world. Testing business models, customer acquisition costs (CAC), and product viability.\n*   **Time & Cost:** Weekends/evenings; self-funded (e.g., 10k-30k RMB of your own savings).\n*   **Value for You:** **Maximum.** Validating an idea while keeping your foreign enterprise salary protects your family's budget and mortgage obligations.",
+      "rationale": "The practical MVP route receives the highest value rating specifically because it enables actual idea validation while preserving employment income."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 10,
+      "evidence_span": "**Value for You:** **Low.** You already hold an MBA from Shanghai Jiao Tong University. Repeating this route offers diminishing returns and is too theoretical for a 0-to-1 startup launch.",
+      "rationale": "The degree route is explicitly downgraded because it repeats broad academic preparation rather than meeting practical launch needs."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 10,
+      "evidence_span": "Develop a \"No-Code\" MVP or a lightweight prototype with your newly found technical partner.",
+      "rationale": "This is an executable venture-building step with a concrete action and deliverable."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 10,
+      "evidence_span": "Spend a strict, pre-approved budget (e.g., 20,000 RMB) to test customer acquisition.",
+      "rationale": "The plan specifies a bounded financial allocation for a real venture experiment."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes another broad academic business degree the better choice. The later recommendation concerns executive education, not another degree."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 8,
+      "evidence_span": "**Antler** is a \"Day Zero\" investor that accepts individuals, helps you find a tech co-founder, and invests seed capital (usually around $100k-$250k globally) if you pass the committee [citation:Antler](https://www.antler.co/). This is highly suitable for corporate executives transitioning.",
+      "rationale": "The cited founder-matching and investment mechanisms visibly lead to a favorable suitability decision for an actual venture transition. The chain supports practical venture building, although the real-project learning preference is not expressly restated within it."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 10,
+      "evidence_span": "To honor your family commitments, fixed monthly budget, and pragmatic risk-conscious nature, your plan must be a **staged de-risking process**. You will use your fragmented time for learning, validate the market on weekends, and only quit your job when external validation (funding/traction) is secured.",
+      "rationale": "Explicitly prioritizes learning around family commitments and continued employment."
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 4,
+      "evidence_span": "**Time & Cost:** Part-time (usually 3-4 days a month); High cost (e.g., CEIBS Entrepreneurship Camp tuition is approximately 368,000 RMB for 2026) [citation:创业营 | CEIBS](https://cn.ceibs.edu/ecamp/application).",
+      "rationale": "An identifiable official source accompanies scheduling information, but the citation is specifically attached to tuition. The report does not explicitly identify sources or evidence to verify work/family compatibility, attendance requirements, or modular delivery. Partial support is capped at 4."
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 10,
+      "evidence_span": "#### 4. Online Courses & Bootcamps (e.g., Reforge, Dedao)\n*   **Curriculum & Focus:** Tactical frameworks. Platforms like Reforge (approx. $1,500–$2,000/year) focus heavily on product management, growth loops, and tech-driven models [citation:Reforge Pricing](https://www.reforge.com/pricing).\n*   **Time & Cost:** Low cost; asynchronous and highly flexible.",
+      "rationale": "Names Reforge and Dedao and identifies asynchronous delivery, a concrete format feature supporting flexible learning rather than merely calling the options flexible."
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 10,
+      "evidence_span": "#### 3. Accelerators & Incubators (e.g., Antler China, MiraclePlus)\n*   **Curriculum & Focus:** Intense 0-to-1 execution, product-market fit (PMF), pitching.\n*   **Time & Cost:** Full-time commitment (1-3 months).",
+      "rationale": "Provides a concrete full-time commitment and duration for a named learning route with named examples."
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 4,
+      "evidence_span": "You will use your fragmented time for learning, validate the market on weekends, and only quit your job when external validation (funding/traction) is secured.",
+      "rationale": "Contrasts employment-compatible learning with a later job exit, but does not directly compare flexible learning and disruptive full-time study on a common axis with an explicit consequential difference. Separate route descriptions only partially establish that comparison."
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 10,
+      "evidence_span": "**Value for You:** **Maximum.** Validating an idea while keeping your foreign enterprise salary protects your family's budget and mortgage obligations.",
+      "rationale": "Explicitly gives practical venture-building the highest value because it preserves employment income and protects family finances."
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded because of disruptive full-time study. Degrees are downgraded for duplication and theoretical content; executive education is deferred for venture-stage fit; full-time accelerators are rated extremely highly."
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 10,
+      "evidence_span": "**Mornings (6:30 AM - 7:30 AM):** Enroll in a high-end tactical bootcamp like **Reforge**. Focus strictly on Product Strategy and Retention.",
+      "rationale": "Provides an executable enrollment and study action with a specific morning slot that implements the employment-compatible learning plan."
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 10,
+      "evidence_span": "Agree on a schedule where 2-3 evenings a week are for your startup research, but weekends are fiercely protected for family trips, your daughter's dance, and your son's basketball.",
+      "rationale": "Defines a usable weekly allocation for research and an explicit boundary protecting family time."
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 8,
+      "evidence_span": "**Do not resign from your corporate job until you are accepted into a funded accelerator or secure a seed round.** Once you secure ~$100k+ in seed funding, you can safely transition to full-time founder status",
+      "rationale": "Provides a concrete funding or funded-accelerator condition for reversing the stay-employed approach. This supports the full-time accelerator route, although the reversal is framed principally as becoming a full-time founder rather than choosing full-time study."
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 10,
+      "evidence_span": "#### 6. Practical Venture-Building (Side Hustle / MVP)\n*   **Curriculum:** The real world. Testing business models, customer acquisition costs (CAC), and product viability.\n*   **Time & Cost:** Weekends/evenings; self-funded (e.g., 10k-30k RMB of your own savings).\n*   **Value for You:** **Maximum.** Validating an idea while keeping your foreign enterprise salary protects your family's budget and mortgage obligations.",
+      "rationale": "Connects a concrete evenings/weekends format to preserving salary and family finances, then explicitly assigns the route maximum value. The preference, supporting fact, and selection consequence are visible together."
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 10,
+      "evidence_span": "your plan must be a **staged de-risking process**. You will use your fragmented time for learning, validate the market on weekends, and only quit your job when external validation (funding/traction) is secured.",
+      "rationale": "Explicitly prioritizes market validation and makes external evidence a gate for the full-time transition."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 10,
+      "evidence_span": "Gather hard data. As a rational, data-driven manager, use this phase to prove whether customers will actually pay for the solution.",
+      "rationale": "Identifies customer payment evidence as the evidence class needed to evaluate the venture during validation."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 8,
+      "evidence_span": "**MiraclePlus (formerly YC China)** is elite and intensive, usually investing ~$300k, but requires a formed team and initial MVP [citation:MiraclePlus](https://www.miracleplus.com/cn/).",
+      "rationale": "Provides a sourced, checkable MVP entry requirement for a named option, supporting staged progression. It does not establish how the accelerator itself conducts evidence-driven market experiments."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 4,
+      "evidence_span": "**Time & Cost:** 2+ years part-time; High cost (500k+ RMB).",
+      "rationale": "The degree route has a concrete long-duration fact, but the report does not establish that participants must complete this preparation before testing ideas. The incomplete contrast is capped."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 4,
+      "evidence_span": "Repeating this route offers diminishing returns and is too theoretical for a 0-to-1 startup launch.",
+      "rationale": "Contrasts theoretical degree learning with startup-launch needs, but does not directly compare delayed testing against staged experiments on a common consequential axis. The comparison remains partial."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 10,
+      "evidence_span": "#### 6. Practical Venture-Building (Side Hustle / MVP)\n*   **Curriculum:** The real world. Testing business models, customer acquisition costs (CAC), and product viability.\n*   **Time & Cost:** Weekends/evenings; self-funded (e.g., 10k-30k RMB of your own savings).\n*   **Value for You:** **Maximum.** Validating an idea while keeping your foreign enterprise salary protects your family's budget and mortgage obligations.",
+      "rationale": "Explicitly recommends the side-hustle/MVP route because it enables practical validation before risking the primary income."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 4,
+      "evidence_span": "**Value for You:** **Low.** You already hold an MBA from Shanghai Jiao Tong University. Repeating this route offers diminishing returns and is too theoretical for a 0-to-1 startup launch.",
+      "rationale": "Downgrades the degree route for redundancy and theoretical emphasis, not explicitly because it postpones market testing. The preference-specific causal reason is incomplete."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 10,
+      "evidence_span": "Run targeted LinkedIn and WeChat campaigns. Spend a strict, pre-approved budget (e.g., 20,000 RMB) to test customer acquisition.",
+      "rationale": "Provides an executable market experiment with specified channels, an action, a budget, and a learning objective."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 10,
+      "evidence_span": "only quit your job when external validation (funding/traction) is secured.",
+      "rationale": "Defines a usable sequence rule: obtain external validation before committing to full-time entrepreneurship."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes lengthy preparation before testing preferable. Deferring executive education until after Series A is not such a reversal."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 10,
+      "evidence_span": "*   With MVP data in hand, apply to top-tier accelerators. \n    *   **Target 1: Antler China.** Ideal if you are still finalizing your team, as they pay a stipend and help match founders before investing.\n    *   **Target 2: MiraclePlus.** Ideal if your MVP is gaining strong traction and you have a solid tech co-founder.",
+      "rationale": "Makes an explicit evidence-to-action chain: collect MVP data before accelerator applications, then use demonstrated traction and team readiness to select MiraclePlus."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 4,
+      "evidence_span": "**high-quality, part-time knowledge acquisition (especially in product and 0-to-1 execution)** with **low-risk practical validation**",
+      "rationale": "Practical validation is an explicit priority, but the report does not identify depth of practical cases or data as a criterion for choosing learning routes."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 4,
+      "evidence_span": "Continue using Dedao/Zhihu for macro-level Chinese market trends and case studies.",
+      "rationale": "Identifiable sources are selected for case studies, but the report does not specify evidence for evaluating their practical depth or data quality."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 4,
+      "evidence_span": "**Curriculum:** The real world. Testing business models, customer acquisition costs (CAC), and product viability.",
+      "rationale": "The practical venture-building route identifies relevant testing activities, but supplies no concrete case, dataset, or verifiable example demonstrating in-depth treatment."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 4,
+      "evidence_span": "Repeating this route offers diminishing returns and is too theoretical for a 0-to-1 startup launch.",
+      "rationale": "The degree route is characterized as too theoretical, but no verifiable curriculum or delivery fact establishes that it lacks application."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 4,
+      "evidence_span": "By substituting expensive degrees with highly tactical online courses",
+      "rationale": "The report contrasts degrees with tactical courses, but does not directly compare in-depth cases/data against unapplied theory on a developed common decision axis."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 4,
+      "evidence_span": "**Value for You:** **Maximum.** Validating an idea while keeping your foreign enterprise salary protects your family's budget and mortgage obligations.",
+      "rationale": "Practical venture-building is strongly recommended, but the stated causal reason is financial protection rather than access to in-depth practical cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 10,
+      "evidence_span": "**Value for You:** **Low.** You already hold an MBA from Shanghai Jiao Tong University. Repeating this route offers diminishing returns and is too theoretical for a 0-to-1 startup launch.",
+      "rationale": "The MBA/degree route is explicitly downgraded, with excessive theory relative to startup application given as a reason."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 10,
+      "evidence_span": "Run targeted LinkedIn and WeChat campaigns. Spend a strict, pre-approved budget (e.g., 20,000 RMB) to test customer acquisition.",
+      "rationale": "This is an executable venture experiment with specified channels, an action, a budget, and a practical measurement objective."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 10,
+      "evidence_span": "With MVP data in hand, apply to top-tier accelerators.",
+      "rationale": "The plan states a usable sequence rule: obtain practical MVP data before applying to accelerators."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes abstract theory without application preferable. The later executive-education recommendation is justified by networking and scaling needs, not a reversal toward unapplied theory."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 4,
+      "evidence_span": "Gather hard data. As a rational, data-driven manager, use this phase to prove whether customers will actually pay for the solution.",
+      "rationale": "The report connects a data-oriented preference to a proposed validation action, but does not complete a visible chain through an observed or cited preference-specific fact to a downstream decision."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 4,
+      "evidence_span": "By substituting expensive degrees with highly tactical online courses",
+      "rationale": "This implies a preference for cost-effective learning, but the report does not explicitly state ROI or cost-effectiveness as a decision priority. Its explicit organizing priority is financial and family-risk reduction."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 10,
+      "evidence_span": "[Reforge Pricing](https://www.reforge.com/pricing) - Tactical product and growth curriculum costs.",
+      "rationale": "An identifiable pricing source is included specifically to establish curriculum costs, providing evidence needed to evaluate cost-effectiveness."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 10,
+      "evidence_span": "Platforms like Reforge (approx. $1,500–$2,000/year) focus heavily on product management, growth loops, and tech-driven models [citation:Reforge Pricing](https://www.reforge.com/pricing).",
+      "rationale": "The report gives a named option's checkable annual price alongside the learning benefits purchased, providing concrete cost-effectiveness evidence."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 10,
+      "evidence_span": "CEIBS Entrepreneurship Camp tuition is approximately 368,000 RMB for 2026",
+      "rationale": "The report supplies a specific tuition figure for a named high-end executive education program."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 10,
+      "evidence_span": "By substituting expensive degrees with highly tactical online courses",
+      "rationale": "The report directly contrasts expensive degree education with tactical online learning and identifies a consequential choice: replacing the former with the latter."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 10,
+      "evidence_span": "**Value for You:** **Maximum.** Validating an idea while keeping your foreign enterprise salary protects your family's budget and mortgage obligations.",
+      "rationale": "Practical venture validation is assigned the highest value specifically because it preserves salary and household financial resources, an explicit opportunity-cost advantage."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 4,
+      "evidence_span": "**Value for You:** **Low.** You already hold an MBA from Shanghai Jiao Tong University. Repeating this route offers diminishing returns and is too theoretical for a 0-to-1 startup launch.",
+      "rationale": "Degree programs are explicitly downgraded, but the stated reasons are redundant education and theoretical content, not their expense or prestige orientation. High cost is listed separately without an explicit causal connection to the downgrade."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 10,
+      "evidence_span": "Run targeted LinkedIn and WeChat campaigns. Spend a strict, pre-approved budget (e.g., 20,000 RMB) to test customer acquisition.",
+      "rationale": "This is an executable, budget-constrained experiment that purchases customer-acquisition evidence before larger investment."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 10,
+      "evidence_span": "Spend a strict, pre-approved budget (e.g., 20,000 RMB) to test customer acquisition.",
+      "rationale": "The plan specifies a usable spending-allocation rule for market testing, with a concrete example amount."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 10,
+      "evidence_span": "Once your startup hits Series A and stabilizes, *then* consider using company resources to enroll in an Executive Education program like the CEIBS Entrepreneurship Camp to build out your high-level B2B and investor network.",
+      "rationale": "Series A funding and operating stability provide a concrete boundary after which the expensive executive program becomes appropriate for its network benefits."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 10,
+      "evidence_span": "**Value for You:** **Low.** You already hold an MBA from Shanghai Jiao Tong University. Repeating this route offers diminishing returns and is too theoretical for a 0-to-1 startup launch.",
+      "rationale": "The report visibly links a stated fact—already possessing an MBA—to diminished incremental returns and then to a low-value decision on further degree education."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 10,
+      "evidence_span": "programs like CEIBS typically require you to already be the CEO/Founder of an A-round company or a \"hidden champion\"",
+      "rationale": "The named program has a concrete admissions requirement relevant to the experience of peers participants can access."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 4,
+      "evidence_span": "**Time & Cost:** Low cost; asynchronous and highly flexible.",
+      "rationale": "The online-course description suggests independent learning, while other routes discuss networks. However, asynchronous delivery does not establish isolation, and the report does not explicitly contrast practitioner or peer access with isolated learning."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 10,
+      "evidence_span": "Tapping into the SJTU engineering and computer science alumni network is your best route to finding a reliable CTO/technical co-founder.",
+      "rationale": "Access to technically skilled peers explicitly determines the report's best-route judgment for co-founder sourcing."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 10,
+      "evidence_span": "substituting cold networking with your existing SJTU alumni base",
+      "rationale": "The final recommendation explicitly retains access to an established peer network rather than favoring isolation. No selected option is justified by avoiding practitioners or peers."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 10,
+      "evidence_span": "*   **Time & Cost:** Low cost; asynchronous and highly flexible.",
+      "rationale": "The Reforge/Dedao online-learning option supplies a concrete delivery-format fact: asynchronous participation. This is directly relevant to fitting learning around regular family time."
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 4,
+      "evidence_span": "You can easily consume this during your 6:30 AM mornings or daily commute.",
+      "rationale": "The online-course option explicitly fits mornings or commuting, whereas practical venture-building is assigned evenings/weekends elsewhere. However, the option comparison does not explicitly distinguish protecting family time from learning dominating evenings/weekends; that preference contrast remains implicit."
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 4,
+      "evidence_span": "To honor your family commitments, fixed monthly budget, and pragmatic risk-conscious nature, your plan must be a **staged de-risking process**.",
+      "rationale": "Family commitments broadly inform the plan, but the report mainly uses financial security and learning needs to justify option rankings. It does not clearly identify preservation of regular family time as changing an option's rank, inclusion, exclusion, or comparative fit."
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 8,
+      "evidence_span": "Agree on a schedule where 2-3 evenings a week are for your startup research, but weekends are fiercely protected for family trips, your daughter's dance, and your son's basketball.",
+      "rationale": "The recommended schedule explicitly protects regular family activities and limits startup evenings. No option is justified by a preference for sacrificing family time. However, the earlier instruction to validate the market on weekends creates an unresolved inconsistency, so the recommendation is not completely noncontradictory."
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 6,
+      "evidence_span": "#### 2. Executive Education (e.g., CEIBS Entrepreneurship Camp)\n*   **Curriculum & Focus:** Scaling, organizational design, industry networking.",
+      "rationale": "The report attributes organizational-design learning to a named executive-education option, providing a curriculum fact relevant to team coordination and leadership. It does not identify a specific framework; the generic cap applies."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly distinguish team-coordination or leadership frameworks from purely solo-founder technical content. Separate descriptions of organizational design and product learning do not establish that contrast."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No recommendation or ranking explicitly uses team-coordination or leadership frameworks as a secondary fit factor. Co-founder matching and technical-partner access are recommended, but these are not coordination or leadership frameworks."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 6,
+      "evidence_span": "Focus entirely on fundraising (networking with VCs) and high-level team management.",
+      "rationale": "The final phase explicitly includes team management, and no selected route is justified by rejecting coordination or leadership in favor of solo technical work. This supports non-contradiction, although no particular leadership framework is recommended; the generic cap applies."
+    }
+  ]
+}

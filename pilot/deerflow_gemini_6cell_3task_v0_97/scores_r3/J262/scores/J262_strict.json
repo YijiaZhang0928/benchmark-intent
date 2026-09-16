@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J262",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "a8bf8cce71109968c5af27b328238f4a41cbd8a23895c3d1b865d35b6d51ac3e",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-16T19:20:03.396729+00:00",
+  "completed_at_utc": "2026-09-16T19:26:38.017157+00:00",
+  "p_strict": 6.496789297658863,
+  "p_hi": 6.620000000000001,
+  "dimension_scores": {
+    "INTENT": 8.0,
+    "SOURCE": 6.4,
+    "EVIDENCE": 7.6521739130434785,
+    "TRADEOFF": 4.782608695652174,
+    "DECISION": 4.521739130434782,
+    "ACTION": 10.0,
+    "TRACE": 5.846153846153847
+  },
+  "high_dimension_scores": {
+    "INTENT": 8.0,
+    "SOURCE": 6.4,
+    "EVIDENCE": 8.0,
+    "TRADEOFF": 5.2,
+    "DECISION": 4.4,
+    "ACTION": 10.0,
+    "TRACE": 6.0
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 8,
+      "evidence_span": "specialized paths like accelerators, founder fellowships, and cohort-based courses have emerged as the fastest and most practical vehicles for actually building a company.",
+      "rationale": "The report prioritizes routes that enable actual company building. This expresses the venture-building preference, although it does not explicitly make real-project or case participation a program-selection requirement."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 4,
+      "evidence_span": "Detailed terms and curriculum insights for modern founder fellowships.",
+      "rationale": "The report identifies a source containing relevant curriculum information, but does not explicitly select evidence to establish whether participants work on real ventures or cases."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 10,
+      "evidence_span": "Extreme focus on iterating quickly, tracking weekly growth metrics, talking to users, and prepping for Demo Day fundraising.",
+      "rationale": "Under the named accelerator route, the report identifies concrete venture activities: user conversations, iteration, weekly growth tracking, and fundraising preparation. These are checkable mechanisms rather than merely practical-sounding adjectives."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 10,
+      "evidence_span": "**Curriculum:** Broad foundational frameworks (accounting, operations, HR, strategy). It is designed primarily to manage existing businesses rather than build from scratch",
+      "rationale": "The degree-program section explicitly identifies its broad business subjects and contrasts its management orientation with starting a venture."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 8,
+      "evidence_span": "While traditional MBAs and executive education programs still offer unparalleled legacy networks and credibility, specialized paths like accelerators, founder fellowships, and cohort-based courses have emerged as the fastest and most practical vehicles for actually building a company.",
+      "rationale": "The report directly contrasts the routes' value for startup preparation: institutional networks and credibility versus faster practical company building. The comparison does not specifically examine project or case requirements against degree coursework."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 4,
+      "evidence_span": "**Tactical Learning:** Enroll in a targeted cohort course (e.g., on Maven) for lean startup methodology and customer discovery.",
+      "rationale": "Maven is recommended for venture-relevant learning, but the report does not say it is selected because the course includes real venture projects or cases. The plan's separate MVP-building activity does not establish that causal selection reason."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 4,
+      "evidence_span": "When you hit a wall (e.g., B2B sales), buy a $200 tactical course or reach out to an industry mentor rather than returning to a broad curriculum.",
+      "rationale": "The report explicitly deprioritizes broad study in favor of targeted learning during execution. However, it does not identify a particular degree option here or explicitly connect the downgrade to that option's academic-degree orientation."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 10,
+      "evidence_span": "Build 2–3 weekend MVPs (using no-code/AI tools) and pitch them to niche communities to gauge organic interest.",
+      "rationale": "This is an executable venture-project step with concrete outputs and a specified market-testing action."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 10,
+      "evidence_span": "**Outcome:** Exit this phase with a registered corporate entity, a co-founder, and a validated prototype.",
+      "rationale": "The plan defines a concrete venture-building checkpoint at the end of Phase 2, including a validated prototype."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 10,
+      "evidence_span": "**Best for:** Founders targeting highly regulated, capital-intensive industries (healthcare, defense, fintech) where institutional trust is required on day one, or those needing a hard career pivot",
+      "rationale": "The degree-program section gives explicit conditions under which that route becomes preferable: immediate institutional credibility requirements or a substantial career pivot."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 4,
+      "evidence_span": "Apply to Y Combinator or a tier-1 Founder Fellowship (like SPC’s $1M for 7% track). At this stage, they are evaluating your *speed of iteration in the last 6 months* and your *why now* argument",
+      "rationale": "The report links an application action to a stated evaluation fact about venture iteration. It does not complete the required chain by explicitly linking the preference for real-project learning to evidence that this option delivers it and then to the selection decision."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 8,
+      "evidence_span": "Build foundational startup knowledge and run low-fidelity experiments while maintaining your primary income.",
+      "rationale": "Preserving employment income is an explicit priority for the initial learning phase. The report does not extend work/family compatibility into a general decision priority across the full roadmap."
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 4,
+      "evidence_span": "Cost and ROI breakdown of short courses versus 2-year degrees.",
+      "rationale": "The source description identifies comparative duration evidence relevant to modular learning, but does not identify evidence selected to resolve compatibility with employment or family commitments."
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 10,
+      "evidence_span": "Maven operates on a course-by-course marketplace model",
+      "rationale": "The named option has a concrete, verifiable modular enrollment model, rather than merely being described as flexible."
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 4,
+      "evidence_span": "**Cost & Time:** $100,000–$200,000+ over 1–2 years",
+      "rationale": "The degree route has concrete cost and duration figures, but the report does not establish full-time attendance requirements or resulting work/family disruption."
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 4,
+      "evidence_span": "Closes specific knowledge gaps immediately without pausing your career.",
+      "rationale": "Career continuity is explicitly identified as an advantage of online courses, but the report does not directly compare it with a specified full-time study route on the same axis."
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 4,
+      "evidence_span": "Enroll in a targeted cohort course (e.g., on Maven) for lean startup methodology and customer discovery.",
+      "rationale": "Maven is recommended within the income-preserving phase, but the stated selection reason is curriculum rather than its modular format or compatibility with work/family."
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is explicitly downgraded because full-time study would disrupt work or family commitments."
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 10,
+      "evidence_span": "Build 2–3 weekend MVPs (using no-code/AI tools) and pitch them to niche communities to gauge organic interest.",
+      "rationale": "This is an executable venture-building action explicitly scheduled for weekends, implementing a work-compatible experimentation path."
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 10,
+      "evidence_span": "### Phase 1: Foundations & Ideation (Months 1–4)\n*   **Goal:** Build foundational startup knowledge and run low-fidelity experiments while maintaining your primary income.",
+      "rationale": "The plan allocates the first four months to learning and experimentation while preserving primary income, providing a concrete time-bounded sequencing rule."
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 4,
+      "evidence_span": "Founders targeting highly regulated, capital-intensive industries (healthcare, defense, fintech) where institutional trust is required on day one, or those needing a hard career pivot",
+      "rationale": "The report gives concrete circumstances favoring degrees, but does not establish when those benefits justify choosing disruptive full-time study over a work-compatible route."
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 4,
+      "evidence_span": "Closes specific knowledge gaps immediately without pausing your career.",
+      "rationale": "The report identifies a work-compatible benefit and separately recommends online courses, but does not explicitly connect a cited scheduling or modularity fact to the preference and resulting selection."
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 10,
+      "evidence_span": "This roadmap relies on progressive commitment—spending the least amount of money/equity early on to validate ideas, then using high-leverage networks once traction is achieved.",
+      "rationale": "Explicitly prioritizes validation before increasing commitment and accessing higher-leverage networks."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 10,
+      "evidence_span": "Begin tracking weekly growth metrics (MRR, DAU) strictly. These numbers will be your leverage for Phase 4.",
+      "rationale": "Identifies specific market-performance evidence classes and explains their role in progressing to the fundraising stage."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 10,
+      "evidence_span": "**Curriculum:** Extreme focus on iterating quickly, tracking weekly growth metrics, talking to users, and prepping for Demo Day fundraising. Antler focuses more heavily on matching solo founders to build teams, whereas YC prefers established teams [citation:Antler vs YC](https://www.roundfunded.com/en/blogs/antler-vs-y-combinator-which-accelerator-2026).",
+      "rationale": "Provides concrete, sourced curriculum claims for the named accelerator route: user conversations and weekly growth measurement support iterative market validation."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 4,
+      "evidence_span": "**Cost & Time:** $100,000–$200,000+ over 1–2 years [citation:MBA vs Course](https://expansary.com/blog/entrepreneurship-course-vs-mba).",
+      "rationale": "Establishes the degree route's long duration, but does not establish that participants postpone testing ideas until after that preparation."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 4,
+      "evidence_span": "While traditional MBAs and executive education programs still offer unparalleled legacy networks and credibility, specialized paths like accelerators, founder fellowships, and cohort-based courses have emerged as the fastest and most practical vehicles for actually building a company.",
+      "rationale": "Contrasts traditional education with faster company-building routes, but does not directly compare their timing of market experiments or staged validation."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 10,
+      "evidence_span": "**Hands-on Experimentation:** Build 2–3 weekend MVPs (using no-code/AI tools) and pitch them to niche communities to gauge organic interest. Do not incorporate yet.",
+      "rationale": "Recommends the practical MVP-building route specifically to obtain market-interest evidence before committing to incorporation."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 4,
+      "evidence_span": "When you hit a wall (e.g., B2B sales), buy a $200 tactical course or reach out to an industry mentor rather than returning to a broad curriculum.",
+      "rationale": "Explicitly favors targeted learning over a broad curriculum, but the stated reason is addressing a skill bottleneck, not avoiding long preparation before testing ideas."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 10,
+      "evidence_span": "Build 2–3 weekend MVPs (using no-code/AI tools) and pitch them to niche communities to gauge organic interest.",
+      "rationale": "Supplies an executable market experiment with concrete prototypes, an audience, and an observable purpose."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 10,
+      "evidence_span": "Build 2–3 weekend MVPs (using no-code/AI tools) and pitch them to niche communities to gauge organic interest. Do not incorporate yet.",
+      "rationale": "Defines an experiment allocation and a sequence rule: test several lightweight prototypes before incorporation."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 4,
+      "evidence_span": "**Best for:** Founders targeting highly regulated, capital-intensive industries (healthcare, defense, fintech) where institutional trust is required on day one, or those needing a hard career pivot",
+      "rationale": "Provides concrete circumstances favoring the degree route, but does not say those circumstances justify delaying idea testing during lengthy preparation."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 10,
+      "evidence_span": "**Preparation:** Begin tracking weekly growth metrics (MRR, DAU) strictly. These numbers will be your leverage for Phase 4.\n\n### Phase 4: Acceleration & Fundraising (Months 17–24)\n*   **Goal:** Secure institutional funding and transition from a scrappy project to a scaling business.\n*   **Actionable Steps:**\n    *   **Apply for Top-Tier Capital:** Apply to Y Combinator or a tier-1 Founder Fellowship (like SPC’s $1M for 7% track). At this stage, they are evaluating your *speed of iteration in the last 6 months* and your *why now* argument [citation:Antler vs YC](https://www.roundfunded.com/en/blogs/antler-vs-y-combinator-which-accelerator-2026).",
+      "rationale": "Explicitly connects collecting market-performance evidence to a later application stage and supplies a cited evaluation fact explaining the relevance of the preceding iteration history."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 4,
+      "evidence_span": "the fastest and most practical vehicles for actually building a company",
+      "rationale": "Prioritizes practical venture building, but does not explicitly prioritize in-depth practical cases or data when choosing a learning route."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 4,
+      "evidence_span": "Detailed terms and curriculum insights for modern founder fellowships.",
+      "rationale": "Identifies a source covering program curricula, but does not select sources or evidence types specifically to evaluate the depth of practical cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 8,
+      "evidence_span": "**Curriculum:** Extreme focus on iterating quickly, tracking weekly growth metrics, talking to users, and prepping for Demo Day fundraising.",
+      "rationale": "The named accelerator route includes concrete practical-data activities: weekly growth tracking and user conversations. This supports data-based learning, although the depth of instruction or analysis is not established."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 4,
+      "evidence_span": "Broad foundational frameworks (accounting, operations, HR, strategy). It is designed primarily to manage existing businesses rather than build from scratch",
+      "rationale": "Provides a specific contrast for degree programs, but broad frameworks and existing-business management do not establish abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 4,
+      "evidence_span": "While traditional MBAs and executive education programs still offer unparalleled legacy networks and credibility, specialized paths like accelerators, founder fellowships, and cohort-based courses have emerged as the fastest and most practical vehicles for actually building a company.",
+      "rationale": "Contrasts routes on practical startup preparation, but does not directly compare in-depth cases/data against theory lacking application."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 4,
+      "evidence_span": "**Tactical Learning:** Enroll in a targeted cohort course (e.g., on Maven) for lean startup methodology and customer discovery.",
+      "rationale": "Recommends Maven for applied learning topics, but does not give access to in-depth practical cases or data as the selection reason."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 4,
+      "evidence_span": "When you hit a wall (e.g., B2B sales), buy a $200 tactical course or reach out to an industry mentor rather than returning to a broad curriculum.",
+      "rationale": "Downgrades a broad curriculum in favor of immediate practical help, but does not establish that the downgraded route favors abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 10,
+      "evidence_span": "Begin tracking weekly growth metrics (MRR, DAU) strictly.",
+      "rationale": "Defines an executable practical-data activity with specific metrics and a recurring collection cadence."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 10,
+      "evidence_span": "Begin tracking weekly growth metrics (MRR, DAU) strictly. These numbers will be your leverage for Phase 4.",
+      "rationale": "Sets a weekly data-tracking allocation and explicitly sequences that evidence before the subsequent acceleration and fundraising phase."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes abstract theory without application the better choice. Conditions favoring degrees concern credibility, industry requirements, or career transitions instead."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 4,
+      "evidence_span": "Begin tracking weekly growth metrics (MRR, DAU) strictly. These numbers will be your leverage for Phase 4.",
+      "rationale": "Links practical data collection to a downstream fundraising purpose, but does not provide the complete chain from an explicit preference for in-depth cases/data through a cited supporting fact to the decision."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 10,
+      "evidence_span": "This roadmap relies on progressive commitment—spending the least amount of money/equity early on to validate ideas, then using high-leverage networks once traction is achieved.",
+      "rationale": "Explicitly makes minimizing early cash and equity expenditure relative to validation progress a planning priority."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 10,
+      "evidence_span": "[Entrepreneurship Course vs MBA: Which Is Worth It in 2026?](https://expansary.com/blog/entrepreneurship-course-vs-mba) - Cost and ROI breakdown of short courses versus 2-year degrees.",
+      "rationale": "Identifies a specific source and explicitly describes its relevance to evaluating comparative cost and ROI."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 10,
+      "evidence_span": "South Park Commons Member Residency. It is free, equity-free, and places you among 175+ elite builders",
+      "rationale": "Provides concrete, verifiable claims about a named option's financial cost, equity cost, and network benefit."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 10,
+      "evidence_span": "### 2. Executive Education (Harvard OPM, Stanford Ignite, etc.)\n*   **Cost & Time:** $75,000–$80,000+ for intensive modules",
+      "rationale": "Names prestige-oriented executive programs and attaches a concrete high-cost claim to the route."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 4,
+      "evidence_span": "Closes specific knowledge gaps immediately without pausing your career. No prestige network, but massive practical ROI.",
+      "rationale": "Contrasts practical ROI with prestige access, but does not directly compare the cost-effectiveness of this route against an identified expensive prestige program on a shared decision axis."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 8,
+      "evidence_span": "apply to a program like the South Park Commons Member Residency. It is free, equity-free, and places you among 175+ elite builders",
+      "rationale": "Recommends a named option and immediately supplies a cost-and-benefit justification. The causal selection reason is clear in context, although not expressly framed as choosing it because of superior ROI."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 2,
+      "evidence_span": "buy a $200 tactical course or reach out to an industry mentor rather than returning to a broad curriculum.",
+      "rationale": "Deprioritizes broad education in favor of targeted help, but neither names a prestige-oriented option being downgraded nor explicitly attributes the downgrade to its expensive prestige orientation."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 10,
+      "evidence_span": "When you hit a wall (e.g., B2B sales), buy a $200 tactical course or reach out to an industry mentor rather than returning to a broad curriculum.",
+      "rationale": "Provides an executable, bounded-cost action for addressing an actual learning bottleneck rather than purchasing broad education."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 10,
+      "evidence_span": "spending the least amount of money/equity early on to validate ideas, then using high-leverage networks once traction is achieved.",
+      "rationale": "States a usable sequence rule: minimize expenditure during validation and defer higher-leverage network commitments until traction."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 10,
+      "evidence_span": "**Best for:** Founders targeting highly regulated, capital-intensive industries (healthcare, defense, fintech) where institutional trust is required on day one, or those needing a hard career pivot",
+      "rationale": "The degree-program section supplies concrete circumstances in which the expensive formal route becomes the preferred fit."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 8,
+      "evidence_span": "apply to a program like the South Park Commons Member Residency. It is free, equity-free, and places you among 175+ elite builders [citation:SPC Application Guide](https://hub.causo.ai/guides/how-to-apply-to-south-park-commons-2026).",
+      "rationale": "Links an application recommendation to cited evidence of zero cash/equity cost and network access within the cost-minimizing plan. The preference-to-evidence-to-action chain is visible, though the causal ROI connection is not fully stated in the recommendation itself."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 10,
+      "evidence_span": "apply to a program like the South Park Commons Member Residency. It is free, equity-free, and places you among 175+ elite builders",
+      "rationale": "Names a specific program and provides a concrete, verifiable claim about access to a community of industry peers."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 4,
+      "evidence_span": "Unstructured but highly collaborative. Focuses on peer-led learning",
+      "rationale": "Describes fellowships as collaborative and peer-led, but does not explicitly contrast practitioner or peer access with learning in isolation. The separate self-taught route makes that distinction only implicit."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 10,
+      "evidence_span": "If you have deep technical skills but lack a firm idea, apply to a program like the South Park Commons Member Residency. It is free, equity-free, and places you among 175+ elite builders",
+      "rationale": "The phased recommendation includes a named residency for a specific founder profile, with access to other builders explicitly presented as a fit benefit alongside cost and equity terms."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 10,
+      "evidence_span": "Start attending local meetups and engaging in digital founder communities to naturally expand your circle of builders.",
+      "rationale": "The final plan explicitly recommends peer-network access. Its practical and self-taught components are not justified by avoiding practitioners or peers, and later steps also retain mentoring and community access."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Program durations and costs are provided, but no named option has a concrete scheduling fact tied to preserving regular family time."
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison distinguishes protecting family time from learning that dominates evenings or weekends."
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Recommendations use cost, equity, traction, skills, and network access as fit factors, but do not use preservation of family time."
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 0,
+      "evidence_span": "Build 2–3 weekend MVPs",
+      "rationale": "The recommended plan explicitly assigns venture-building work to weekends without acknowledging a family-time trade-off or providing protections for regular family time."
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 6,
+      "evidence_span": "Harvard focuses on deep networking and traditional legacy leadership",
+      "rationale": "The report attributes leadership-focused curriculum to a named executive-education option. This is relevant evidence, but it does not identify a concrete coordination or leadership framework or explain its application, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 2,
+      "evidence_span": "Harvard focuses on deep networking and traditional legacy leadership; Stanford focuses heavily on innovation, product, and AI-driven organizational transformation",
+      "rationale": "The comparison partially contrasts leadership-oriented and product-oriented curricula. It does not explicitly distinguish team-coordination frameworks from purely solo-founder technical content; organizational transformation is not characterized as solo-founder learning."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 6,
+      "evidence_span": "founders who already have a growing business but lack formalized leadership and scaling frameworks.",
+      "rationale": "The executive-education best-fit recommendation explicitly uses a need for leadership frameworks as a fit factor. The treatment remains generic rather than identifying particular frameworks or their coordination benefits, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 6,
+      "evidence_span": "transition your focus to team management, scaling product lines, and preparing for Series A.",
+      "rationale": "The final plan explicitly includes team management and does not justify its selected routes by rejecting leadership or team coordination. However, it does not recommend specific leadership frameworks, so the generic cap applies."
+    }
+  ]
+}

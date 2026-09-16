@@ -1,0 +1,240 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare routes for systematically learning entrepreneurship and preparing to launch a startup over the next 1–2 years.
+
+Compare degree and non-degree programs, executive education, accelerators, online courses, mentoring and networking routes, and practical venture-building options. Cover curriculum, time commitment, cost, mentor and network access, hands-on opportunities, fundraising, business-model, product, market and team-management learning, and the value of each route.
+
+Produce a phased 1–2 year learning and experimentation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T3-P3-01",
+    "criterion": "The report states evidence-driven market experiments and staged validation as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate evidence-driven market experiments and staged validation.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-03",
+    "criterion": "The report provides concrete evidence about how an option supports evidence-driven market experiments and staged validation.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-04",
+    "criterion": "The report provides concrete evidence about how an option reflects long preparation before testing ideas.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-05",
+    "criterion": "The report directly compares evidence-driven market experiments and staged validation with long preparation before testing ideas.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-06",
+    "criterion": "At least one recommended option is selected because it supports evidence-driven market experiments and staged validation.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors long preparation before testing ideas.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-08",
+    "criterion": "The plan contains one executable step that implements evidence-driven market experiments and staged validation.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for evidence-driven market experiments and staged validation.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-10",
+    "criterion": "The report states when long preparation before testing ideas would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P3-11",
+    "criterion": "One visible chain links evidence-driven market experiments and staged validation to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label J798):
+这是一个非常契合你当前阶段的命题。作为家里的主要经济支柱（Primary Breadwinner）、拥有上海交大MBA背景，且具备强烈家庭责任感和风险意识（Risk-conscious）的职场中坚力量，你的创业准备不能是“破釜沉舟”式的盲目冒险，而必须是一场**高度计划性、低机会成本、逐步去风险化（De-risking）的系统工程**。
+
+你已经具备了极好的商业管理与营销底子（交大MBA），所以你不需要再回去补习“基础管理学”或“财务101”，你需要的是**“从0到1的实战方法论”、“前沿技术/市场洞察”以及“高质量的早期创业圈层”**。
+
+以下是为你量身定制的创业学习路径横向对比，以及未来1-2年的分阶段行动计划。
+
+---
+
+### 一、 创业学习与准备路径深度横向对比
+
+#### 1. 传统学位教育与高管教育（Executive Education）
+*如：中欧创业营、交大/复旦EMBA创新课程*
+* **课程核心**：战略升级、企业治理、哈佛商业评论（HBR）式的经典商业案例。
+* **时间投入**：通常为在职周末上课，持续1-2年。
+* **资金成本**：极高（通常在30-70万人民币）。
+* **圈层与人脉**：极高，多为已成规模企业的一号位或A轮以上创始人。
+* **实战与落地**：偏弱，更多是“秀肌”或“认知升级”，较少涉及从0到1的双手沾泥（Hands-on）。
+* **对你的价值**：**当前阶段性价比极低**。中欧创业营等项目通常要求企业已有A轮融资或达到一定规模。你已经有交大MBA，再花巨资读高管教育不仅加重家庭固定财务负担，且无法解决你“寻找PMF（产品市场契合度）”的当务之急。
+
+#### 2. 商业创新社群与非学位研学（Non-degree & Communities）
+*如：得到高研院、混沌学园*
+* **课程核心**：前沿市场趋势、颠覆式创新模型、认知迭代。
+* **时间投入**：灵活，线上+线下周末工作坊。
+* **资金成本**：中低（1-2万人民币/年），完全在你的家庭固定预算可承受范围内。
+* **圈层与人脉**：大厂中高管、转型期的中小企业家、潜在合伙人。
+* **对你的价值**：**中高**。这非常契合你目前使用“得到”、“知乎”的数字阅读习惯。可以在你晚间阅读/项目规划的时间段进行，是拓展上海本地跨界人脉、寻找创业灵感和技术合伙人的好去处。
+
+#### 3. 顶尖创业孵化器与加速器（Accelerators）
+*如：奇绩创坛（MiraclePlus）、YC Startup School（线上）*
+* **课程核心**：原汁原味的“从0到1”、打造MVP（最小可行性产品）、高频客户访谈、增长黑客。
+* **时间投入**：YC线上可完全自主安排；奇绩创坛等线下营如果在通过筛选后，需要极高强度的3个月全身心投入。
+* **资金成本**：免费（甚至机构会给你投资换取股份）。
+* **实战与融资**：极强。直接对接一线早期投资机构，高压路演（Demo Day）。
+* **对你的价值**：**极高**。YC Startup School是你现在的必修课，奇绩创坛则是你产品跑出雏形后的最佳跳板。它们补足了MBA教育中缺乏的“极早期创业实操”和“产品极速迭代”能力。
+
+#### 4. 导师制、创投圈与校友网络（Mentoring & Networking）
+*如：交大校友会（上海/张江）、地方产业园加速器（如大零号湾）*
+* **获取成本**：极低（主要靠个人软实力和社交时间）。
+* **对你的价值**：**极高**。上海+交大的背景是你最大的隐形资产。交大理工科背景强，你在营销和管理上强，去校友网络里找一个“有技术但缺商业化能力”的技术大牛做合伙人，是最优解。
+
+#### 5. 个人实战型创投（Practical Venture-Building / Side Hustle）
+*如：独立开发、兼职打造MVP、无代码/低代码验证商业模式*
+* **时间投入**：利用你“早晨的高效工作时间”和“晚间的项目规划时间”。
+* **对你的价值**：**无可替代**。结合你“务实、理性、关注风险收益比”的特质，在不辞职、不影响主要收入和家庭生活质量（周末遛狗、陪女儿画画、家庭出游）的前提下，通过极低成本测试市场，是去风险化的最佳手段。
+
+---
+
+### 二、 1-2年系统化学习与试错计划（Phased Plan）
+
+考虑到你需要平衡家庭（妻子、8岁女儿、金毛小黄）、维持固定家庭开销，并在高档社区保持一定的生活品质，你的创业路径必须是**“副业试错（Side-project） -> 数据验证 -> 获取外部资金 -> 全职All-in”**的渐进式路线。
+
+#### 第一阶段：认知洗脱与灵感捕获（第1-6个月）—— “寻找问题”
+* **核心目标**：清洗大厂/MBA的“大公司病”思维，掌握早期创业精益方法论，锁定1-3个潜在创业方向。
+* **行动清单**：
+  1. **线上自学**：利用晚间时间，完整刷一遍 **YC Startup School**（免费），学习如何做用户访谈、如何定价、如何做MVP。
+  2. **趋势输入**：继续通过“得到”、“知乎”以及《哈佛商业评论》捕捉宏观趋势，重点关注结合你东/西方思维优势的出海业务，或切中中产阶级消费升级（如高端耐用品、教育科技、宠物经济等你自己熟悉的领域）的痛点。
+  3. **校友社交**：每个月安排2次下午茶或晚饭，定向约见交大校友中的创业者或张江/浦东的硬科技从业者。不要聊“我想创业”，而是聊“你们行业最近有什么未被满足的痛点”。
+
+#### 第二阶段：最小可行性产品（MVP）构建与验证（第7-12个月）—— “低成本试错”
+* **核心目标**：在不辞职的前提下，用最少的时间和金钱（几千块以内）推向市场，获取真实的早期客户（Paying Customers）。
+* **行动清单**：
+  1. **时间管理**：利用你“早晨的高效期”推进核心产品设计或营销文案；“下午”处理现职工作；“晚上”看数据和复盘。
+  2. **实战落地**：如果你不是技术出身，使用无代码工具（如Bubble、Feishu多维表格、各种AI建站工具），或者拉拢第一阶段认识的技术校友，做一个非常简陋的产品雏形。
+  3. **市场验证**：拿出一小部分家庭固定预算中的“风险投资/股票基金”额度（比如5000-10000元），在小红书、知乎或特定微信群做灰度测试。
+  4. **家庭沟通**：在这个阶段，你可能周末会有一些时间用于跑客户。务必发挥你们家庭“注重沟通与共同成长”的特质，与妻子同步你的进度，将部分非核心的市场调研当做周末出游的顺带任务（比如做线下消费考察）。
+
+#### 第三阶段：孵化器加速与种子轮融资（第13-18个月）—— “引入外部杠杆”
+* **核心目标**：拿着已经有初步数据（或种子用户）的MVP，申请顶尖孵化器，用别人的钱为你的风险兜底。
+* **行动清单**：
+  1. **申请孵化器**：以创始人身份申请**奇绩创坛（MiraclePlus）**或其他位于上海的顶级加速器（如Plug and Play中国、微软加速器等）。
+  2. **压力测试与迭代**：如果入选，你将经历几个月极高强度的“打磨商业模式-路演-被挑战”的循环。这里不仅考验你的营销底子，还极度考验你对产品和市场的敏感度。
+  3. **融资决策**：如果此时有天使或VC愿意给出实质性的Term Sheet（投资意向书），且资金足以覆盖你至少18-24个月的生活成本与团队工资。此时，才是你正式考虑向现在的公司提交辞呈的时刻。
+
+#### 第四阶段：全职起盘与团队管理（第19-24个月）—— “正规军作战”
+* **核心目标**：完成身份转换，从“打工人”彻底变为“一号位”。
+* **行动清单**：
+  1. **建班子**：发挥你交大MBA“团队管理”的绝对优势，招募并管理核心团队。你之前的系统化管理知识在这一刻开始发挥巨大价值。
+  2. **调整生活节奏**：创业会不可避免地挤压家庭时间。通过制度化来保障生活质量（如规定每周日无论如何不排会议，专门陪女儿画画和遛狗）。你理性的性格有助于设定这种边界。
+  3. **财务隔离**：严格隔离家庭账户与公司账户。即便创业，也不轻易动用原定用于女儿教育和高品质生活的核心存款。
+
+### 总结与建议
+对于你而言，最大的优势是**“不缺管理常识、不缺本地资源、执行力强”**；最大的陷阱是**“追求完美、机会成本高、盲目离职”**。
+
+放弃那些动辄几十万的高管学位项目，把钱留在家庭稳健理财里。拥抱**“非正式学习（线上免费顶级资源） + 强实战试错（Side-project） + 校友网络互补（找技术大牛）”**的路径。用未来一年的早晨和夜晚，先在水面下把那艘小船造好，等看到市场确定的浪潮时，再全职扬帆起航。

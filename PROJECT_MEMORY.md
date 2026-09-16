@@ -26,6 +26,8 @@ r2 execution-order 1 `T02_RAW100_ASK_R2` 在 68.83 秒后以明确 `GraphRecursi
 
 r3 generation 18/18 完成、0 failure，但 9/9 Ask-capable cells 都没有发起 clarification，simulator 从未被调用。该结果直接表明 `gemini-3.1-pro-preview/high + stock DeerFlow 2.0` 的 native policy 在 COLD/RAW50/RAW100 上均出现 clarification non-initiation；因此 Ask-NoAsk 配对不是 acquired-answer treatment effect，只能分析“允许但未使用 clarification”的 intent-to-treat/system-level difference。结构审计仅 1/18 通过 query/fetch/citation 门，且该 cell 的成功来源人工复核为 secondary，故 0/18 confirmatory-score eligible。为完整诊断而非选择性丢弃，18 份仍按冻结 67-leaf rubric 做一次 opaque-label exploratory score，评分清单/hashes 在 judge 前冻结。
 
+exploratory scoring 于 2026-09-16 18:45 UTC 启动，固定 `gpt-6-astra/high`、每报告一次 judgment、首错即停。前 11 个 blind labels 均产出完整 67-leaf score；第 12 个 `J987`（冻结映射为 T01/COLD/ASK）在 criterion `T1-A1-04` 上返回 positive score without evidence，被 evaluator fail-closed 拒绝，并于 20:35 UTC 停止。没有自动重试，失败 label 的 partial prompts/raw outputs 与 11 份完成结果均保留。由于只完成 11/18，不计算或发布六组 aggregate/H3 判定；继续必须由用户明确批准只重试 `J987`，保持相同 report/rubric/label/judge/reasoning/validator，再继续未评分 labels。
+
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：Gemini 六组设计与 matched No-Ask 修复
 
 用户将 Gemini pilot 扩为 `COLD/RAW50/RAW100 × ASK/NOASK` 六组，前三题共 18 份 planned reports。RAW50 继续复用 v0.96 固定 seed `20260915` 的 22/44、25/50、24/49 persona 原子事实，但六组新版把 RAW50/RAW100 的上下文标题统一为中性的 `Available user profile context:`，不再显示 `incomplete/complete`，避免标签本身提示是否应提问。RAW100 是 `full_hidden_persona_for_user_simulator` 中全部原子事实，不等于 preference oracle。

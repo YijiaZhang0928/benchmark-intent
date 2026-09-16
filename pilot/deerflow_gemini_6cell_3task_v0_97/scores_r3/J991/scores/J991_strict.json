@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J991",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "733e650fb3c55ad263955c9e7cbf53771cb28a52ecf618ffad9377a7635c5ed1",
+  "rubric_sha256": "6c540729b1a59e0d63b4fb86c80392b5d45fefce6bede6a3946db7893b5b2999",
+  "started_at_utc": "2026-09-16T19:26:39.137841+00:00",
+  "completed_at_utc": "2026-09-16T19:30:45.483128+00:00",
+  "p_strict": 3.1936454849498332,
+  "p_hi": 3.18,
+  "dimension_scores": {
+    "INTENT": 3.2,
+    "SOURCE": 5.6,
+    "EVIDENCE": 3.7391304347826084,
+    "TRADEOFF": 0.8695652173913043,
+    "DECISION": 0.0,
+    "ACTION": 9.4,
+    "TRACE": 2.153846153846154
+  },
+  "high_dimension_scores": {
+    "INTENT": 3.2,
+    "SOURCE": 5.6,
+    "EVIDENCE": 4.0,
+    "TRADEOFF": 0.8,
+    "DECISION": 0.0,
+    "ACTION": 9.4,
+    "TRACE": 1.6
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report lists applied fields and hands-on preparation, but does not state applied or system-building research as a decision priority."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 4,
+      "evidence_span": "Look for specific Principal Investigators (PIs) whose recent publications align with your interests.",
+      "rationale": "Recent publications are an identifiable evidence class for evaluating research fit, but the report does not select them specifically to assess implementation-heavy or system-building research. This generic guidance receives only partial credit."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 2,
+      "evidence_span": "World-leading hub for cutting-edge ML, GenAI, and industry collaboration. Unmatched integration with tech giants (Google, OpenAI, Meta).",
+      "rationale": "The North America discussion suggests industry-connected research, but supplies no concrete collaboration, implementation resource, or system-building activity for a named program. The broad regional claim is only weak partial support."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 2,
+      "evidence_span": "**Research Strengths:** Theoretical ML, Robotics, Computer Vision, and AI Safety.",
+      "rationale": "The Europe discussion mentions theoretical ML, but does not establish a purely abstract, theory-only route or provide a concrete fact about one."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no direct comparison of implementation-heavy and theory-only research on a common decision axis."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is recommended because it supports applied or system-building research."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded for favoring purely abstract theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "Build a GitHub portfolio demonstrating clean, reproducible AI experiments.",
+      "rationale": "This is an executable implementation-oriented action with a concrete output: a portfolio of reproducible AI experiments."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "### Phase 1: Foundation & Research Preparation (Months 1–12)\n* **Deepen Knowledge:** Take advanced graduate-level courses in your chosen AI subfield. Read current pre-prints on arXiv and proceedings from top conferences (NeurIPS, CVPR, ACL, ICML).\n* **Hands-on Research / Internships:** Join a university lab or secure an industry R&D internship (e.g., working with PyTorch/TensorFlow). \n* **Target Publications:** Your primary goal in this phase is to co-author a paper. Even a workshop paper or a solid preprint demonstrates your ability to conduct independent research.\n* **Open Source / Portfolio:** Build a GitHub portfolio demonstrating clean, reproducible AI experiments.",
+      "rationale": "The plan explicitly allocates months 1–12 to hands-on research and building a reproducible AI experiment portfolio, providing a usable implementation-preparation time window."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which purely abstract theory-only research would become the better choice."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The hands-on preparation advice is not linked to an explicit applied-research preference and a supporting fact that produces a decision or action."
+    },
+    {
+      "criterion_id": "T1-P2-01",
+      "score": 4,
+      "evidence_span": "Build a GitHub portfolio demonstrating clean, reproducible AI experiments.",
+      "rationale": "The report recommends practical, reproducible work, but does not explicitly establish self-directed projects, replication, and coding as a decision priority."
+    },
+    {
+      "criterion_id": "T1-P2-02",
+      "score": 4,
+      "evidence_span": "A firsthand account of building a research portfolio, selecting advisors, and timeline management for AI PhD applications.",
+      "rationale": "The identified source concerns research portfolios, but the report does not explicitly use it to evaluate opportunities for self-directed, hands-on preparation."
+    },
+    {
+      "criterion_id": "T1-P2-03",
+      "score": 4,
+      "evidence_span": "Programs are strictly focused on research from day one.",
+      "rationale": "The European route receives a concrete research-structure claim, but this does not establish support for self-directed projects, replication, coding, or hands-on exploration specifically."
+    },
+    {
+      "criterion_id": "T1-P2-04",
+      "score": 10,
+      "evidence_span": "The first 1–2 years focus heavily on coursework and qualifying exams before transitioning to pure research.",
+      "rationale": "The North American route explicitly includes an initial preparation period dominated by coursework and qualifying exams, providing a verifiable contrast-side structural claim."
+    },
+    {
+      "criterion_id": "T1-P2-05",
+      "score": 4,
+      "evidence_span": "The first 1–2 years focus heavily on coursework and qualifying exams before transitioning to pure research.",
+      "rationale": "The regional comparison contrasts coursework-heavy beginnings with immediate research elsewhere, but does not directly compare self-directed practical preparation against classroom preparation or explain a preference-specific consequence."
+    },
+    {
+      "criterion_id": "T1-P2-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is recommended because it supports self-directed projects, replication, coding, or hands-on exploration."
+    },
+    {
+      "criterion_id": "T1-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded for favoring classroom or course-based preparation."
+    },
+    {
+      "criterion_id": "T1-P2-08",
+      "score": 10,
+      "evidence_span": "Build a GitHub portfolio demonstrating clean, reproducible AI experiments.",
+      "rationale": "This is an executable practical step with a concrete output: a portfolio of reproducible AI experiments."
+    },
+    {
+      "criterion_id": "T1-P2-09",
+      "score": 10,
+      "evidence_span": "Your primary goal in this phase is to co-author a paper. Even a workshop paper or a solid preprint demonstrates your ability to conduct independent research.",
+      "rationale": "Within the months 1–12 research-preparation phase, the report sets a concrete independent-research output checkpoint and specifies acceptable output forms."
+    },
+    {
+      "criterion_id": "T1-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which mainly classroom or course-based preparation becomes preferable."
+    },
+    {
+      "criterion_id": "T1-P2-11",
+      "score": 4,
+      "evidence_span": "Your primary goal in this phase is to co-author a paper. Even a workshop paper or a solid preprint demonstrates your ability to conduct independent research.",
+      "rationale": "The report links a practical research output to demonstrating independent research ability, but does not complete a visible chain from the stated preference through option-specific evidence to a resulting decision or action."
+    },
+    {
+      "criterion_id": "T1-P3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report discusses employment but never states that preserving industry-research or employability optionality is a decision priority."
+    },
+    {
+      "criterion_id": "T1-P3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected specifically to evaluate industry-research access or employability optionality."
+    },
+    {
+      "criterion_id": "T1-P3-03",
+      "score": 4,
+      "evidence_span": "Unmatched integration with tech giants (Google, OpenAI, Meta).",
+      "rationale": "This associates North America with named industry employers, but supplies no concrete collaboration, internship mechanism, placement result, or other verifiable option-specific fact. The generic cap applies."
+    },
+    {
+      "criterion_id": "T1-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a fact showing an exclusively academic-faculty orientation. Research-focused curricula do not establish that career orientation."
+    },
+    {
+      "criterion_id": "T1-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare preserving industry optionality with optimizing exclusively for an academic-faculty career."
+    },
+    {
+      "criterion_id": "T1-P3-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is explicitly recommended because it preserves industry-research or employability optionality."
+    },
+    {
+      "criterion_id": "T1-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded for favoring an academic-faculty-only trajectory."
+    },
+    {
+      "criterion_id": "T1-P3-08",
+      "score": 10,
+      "evidence_span": "secure an industry R&D internship (e.g., working with PyTorch/TensorFlow).",
+      "rationale": "Securing an industry R&D internship is an explicit, executable preparation action that builds industry-research experience."
+    },
+    {
+      "criterion_id": "T1-P3-09",
+      "score": 4,
+      "evidence_span": "### Phase 1: Foundation & Research Preparation (Months 1–12)\n* **Deepen Knowledge:** Take advanced graduate-level courses in your chosen AI subfield. Read current pre-prints on arXiv and proceedings from top conferences (NeurIPS, CVPR, ACL, ICML).\n* **Hands-on Research / Internships:** Join a university lab or secure an industry R&D internship (e.g., working with PyTorch/TensorFlow).",
+      "rationale": "The internship alternative is placed within months 1–12, providing partial scheduling guidance. However, no threshold, allocation, sequence requirement, or checkpoint specifically ensures industry optionality; joining a university lab alone satisfies the stated alternative. The generic cap applies."
+    },
+    {
+      "criterion_id": "T1-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report states no condition under which exclusively optimizing for an academic-faculty trajectory would become preferable."
+    },
+    {
+      "criterion_id": "T1-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Industry-related descriptions and the internship action are not explicitly connected through a preference-to-evidence-to-decision chain."
+    },
+    {
+      "criterion_id": "T1-P4-01",
+      "score": 4,
+      "evidence_span": "Compare funding offers, lab culture, and advisor fit before accepting.",
+      "rationale": "Funding is a decision consideration, but strong funding, scholarships, or cost-effectiveness is not explicitly established as a priority."
+    },
+    {
+      "criterion_id": "T1-P4-02",
+      "score": 10,
+      "evidence_span": "[AISG PhD Fellowship Programme](https://aisingapore.org/research/phd-fellowship-programme/) - Official details regarding Singapore's government-funded AI PhD scholarship tracks and requirements.",
+      "rationale": "The report identifies an official source specifically for investigating scholarship mechanisms and requirements."
+    },
+    {
+      "criterion_id": "T1-P4-03",
+      "score": 10,
+      "evidence_span": "government scholarships which offer very high, tax-free stipends. Examples include SINGA (Singapore), HKPFS (Hong Kong), and MEXT (Japan)",
+      "rationale": "Named scholarship routes are associated with a verifiable funding feature—tax-free stipends—rather than only a favorable adjective."
+    },
+    {
+      "criterion_id": "T1-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is described with a concrete fact establishing an expensive, prestige-first alternative."
+    },
+    {
+      "criterion_id": "T1-P4-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Regional funding descriptions do not directly compare funding-oriented choices against expensive prestige-first options."
+    },
+    {
+      "criterion_id": "T1-P4-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Programs and scholarships are listed, but no named option is recommended because of its funding or cost-effectiveness."
+    },
+    {
+      "criterion_id": "T1-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is downgraded for prioritizing expensive prestige. The general warning against choosing by rankings does not supply that decision."
+    },
+    {
+      "criterion_id": "T1-P4-08",
+      "score": 10,
+      "evidence_span": "Compare funding offers, lab culture, and advisor fit before accepting.",
+      "rationale": "Comparing funding offers is an executable action with a concrete object in the application plan."
+    },
+    {
+      "criterion_id": "T1-P4-09",
+      "score": 10,
+      "evidence_span": "Compare funding offers, lab culture, and advisor fit before accepting.",
+      "rationale": "The plan explicitly places funding-offer comparison before acceptance, establishing a usable sequence rule."
+    },
+    {
+      "criterion_id": "T1-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which an expensive prestige-first option would become preferable."
+    },
+    {
+      "criterion_id": "T1-P4-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Funding facts and a funding-comparison action appear separately, but no explicit chain connects a funding preference to a specific fact and its downstream decision or action."
+    },
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 8,
+      "evidence_span": "**Decision (March - April):** Compare funding offers, lab culture, and advisor fit before accepting.",
+      "rationale": "Makes comparison of concrete offer conditions and research fit a decision priority. Employment or graduate outcomes are not explicitly included in that priority."
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "Look for specific Principal Investigators (PIs) whose recent publications align with your interests.",
+      "rationale": "Identifies recent publications as an evidence class specifically for evaluating research fit."
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 8,
+      "evidence_span": "### Europe (UK, Germany, Switzerland, France)\n* **Research Strengths:** Theoretical ML, Robotics, Computer Vision, and AI Safety. Strong public research institutes (e.g., Max Planck).\n* **Curriculum Structure:** 3–4 years. Programs are strictly focused on research from day one. **A Master’s degree is almost always required** for admission",
+      "rationale": "Provides checkable duration, structure, and entry-qualification claims about the European route that bear on applicant fit and trade-offs. These are broad regional generalizations rather than evidence about an individual program."
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is supported with a fact showing prestige as the applicant's dominant selection rule. Admissions emphasis on undergraduate pedigree does not establish that decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 4,
+      "evidence_span": "Do not just pick universities based on global rankings. Look for specific Principal Investigators (PIs) whose recent publications align with your interests.",
+      "rationale": "Contrasts ranking-based selection with publication-based research fit, but does not identify a consequential difference in outcomes or trade-offs between the two approaches. The incomplete comparison receives the generic cap."
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Representative programs are listed, but none is selected or recommended because of an explicit evidence-based assessment of fit, outcomes, or trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named viable option is downgraded for relying on prestige. The general warning against rankings does not identify such an option."
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "Look for specific Principal Investigators (PIs) whose recent publications align with your interests. Create a spreadsheet tracking 15-20 potential advisors",
+      "rationale": "Provides an executable selection step: identify advisors using publication alignment and record the candidates in a spreadsheet."
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 10,
+      "evidence_span": "**Decision (March - April):** Compare funding offers, lab culture, and advisor fit before accepting.",
+      "rationale": "Defines a dated decision checkpoint and an explicit sequence rule: compare funding, culture, and fit before accepting an offer."
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "States no condition under which prestige should become the dominant decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 4,
+      "evidence_span": "Look for specific Principal Investigators (PIs) whose recent publications align with your interests. Create a spreadsheet tracking 15-20 potential advisors",
+      "rationale": "Links the fit preference to a proposed evidence class and an action, but supplies no actual advisor-specific publication fact that leads to a downstream choice. The required evidence-to-decision chain is therefore incomplete."
+    },
+    {
+      "criterion_id": "T1-A1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a concrete fact about a quiet, independent study environment. Research-focused curricula and work-life balance do not establish that environment."
+    },
+    {
+      "criterion_id": "T1-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not distinguish options by quiet independent study versus highly social or cohort-heavy environments."
+    },
+    {
+      "criterion_id": "T1-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Quiet independent study is not used to change any shortlist inclusion, ranking, or fit judgment."
+    },
+    {
+      "criterion_id": "T1-A1-04",
+      "score": 4,
+      "evidence_span": "Compare funding offers, lab culture, and advisor fit before accepting.",
+      "rationale": "The final selection advice does not explicitly favor a social or cohort-heavy environment, so it does not contradict the preference. However, it remains generic and does not explicitly preserve quiet independent study as a recommendation factor."
+    },
+    {
+      "criterion_id": "T1-A2-01",
+      "score": 6,
+      "evidence_span": "World-leading hub for cutting-edge ML, GenAI, and industry collaboration. Unmatched integration with tech giants (Google, OpenAI, Meta).",
+      "rationale": "The North America option supplies a concrete ecosystem-access claim naming technology companies. This is relevant to the technology component, but remains regional and generic, with no museum, exhibition, or city-specific access facts. The generic cap applies."
+    },
+    {
+      "criterion_id": "T1-A2-02",
+      "score": 4,
+      "evidence_span": "Strong ties to both Western and Eastern tech ecosystems.",
+      "rationale": "The Asia option receives a distinct ecosystem characterization compared with North America's integration with named technology companies. However, the access difference is only implicit; the report does not explicitly compare location-sensitive cultural or intellectual opportunities."
+    },
+    {
+      "criterion_id": "T1-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No shortlist inclusion, ranking, exclusion, or fit judgment uses technology-ecosystem access, museums, exhibitions, or intellectually active cities as a secondary factor."
+    },
+    {
+      "criterion_id": "T1-A2-04",
+      "score": 4,
+      "evidence_span": "Compare funding offers, lab culture, and advisor fit before accepting.",
+      "rationale": "The final decision guidance does not explicitly favor location indifference or otherwise contradict the preference. However, compatibility is only implicit: it neither recommends a specific option on this axis nor acknowledges the preference or a related trade-off."
+    },
+    {
+      "criterion_id": "T1-A3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a concrete fact about scheduling autonomy or evening-focused work. Research-focused curricula and general work-life balance do not establish those conditions."
+    },
+    {
+      "criterion_id": "T1-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The regional curriculum comparison does not explicitly distinguish independent, flexible scheduling from externally managed routines or address evening deep work."
+    },
+    {
+      "criterion_id": "T1-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No shortlist inclusion, ranking, or fit judgment uses scheduling flexibility or evening-focused deep work as a secondary selection factor."
+    },
+    {
+      "criterion_id": "T1-A3-04",
+      "score": 4,
+      "evidence_span": "Compare funding offers, lab culture, and advisor fit before accepting.",
+      "rationale": "The closing selection advice is compatible with the preference and does not favor externally imposed routines. However, compatibility is only implicit: it neither selects an option nor explicitly protects independent scheduling or evening work."
+    }
+  ]
+}

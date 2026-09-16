@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J143",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "3994b51f216d88f7ee12d8e28ef0ae3b632c418c03ac8d222219d96499de0bf7",
+  "rubric_sha256": "7fc83a85f049705a704a5a128f48b42ca919c64ed5442c6c588e69a066092957",
+  "started_at_utc": "2026-09-16T18:49:40.273595+00:00",
+  "completed_at_utc": "2026-09-16T19:07:31.448765+00:00",
+  "p_strict": 3.201404682274248,
+  "p_hi": 3.1000000000000005,
+  "dimension_scores": {
+    "INTENT": 6.4,
+    "SOURCE": 1.6,
+    "EVIDENCE": 4.3478260869565215,
+    "TRADEOFF": 0.7826086956521738,
+    "DECISION": 3.8260869565217392,
+    "ACTION": 2.0,
+    "TRACE": 3.6923076923076925
+  },
+  "high_dimension_scores": {
+    "INTENT": 6.4,
+    "SOURCE": 1.6,
+    "EVIDENCE": 4.4,
+    "TRADEOFF": 0.4,
+    "DECISION": 3.8000000000000003,
+    "ACTION": 2.0,
+    "TRACE": 3.2
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T2-P1-01",
+      "score": 10,
+      "evidence_span": "Offers the best ROI for your budget, deep cultural resonance (Murakami, sociology), a calm environment for reading/reflection",
+      "rationale": "The top-choice rationale explicitly makes cultural resonance and an intellectually compatible daily environment reasons for prioritization."
+    },
+    {
+      "criterion_id": "T2-P1-02",
+      "score": 4,
+      "evidence_span": "Start researching local coffee roasters, parks for your 4km runs, and university gym access in your target city",
+      "rationale": "The report identifies local amenities to investigate for lifestyle compatibility, but does not identify evidence sources for evaluating intellectual fit or meaningful cultural immersion. The listed institutional sources address program administration rather than this preference."
+    },
+    {
+      "criterion_id": "T2-P1-03",
+      "score": 10,
+      "evidence_span": "Waseda is Haruki Murakami’s alma mater",
+      "rationale": "This is a named institution with a verifiable cultural connection directly relevant to the literary interest used in the report's fit assessment, rather than merely a favorable adjective."
+    },
+    {
+      "criterion_id": "T2-P1-04",
+      "score": 10,
+      "evidence_span": "UvA ranks #1 globally in Communication",
+      "rationale": "The report supplies a concrete, verifiable ranking claim for a named option, providing evidence on institutional prestige."
+    },
+    {
+      "criterion_id": "T2-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Although the report mentions both prestige and cultural fit, it does not directly compare them on a common decision axis or explain a consequential trade-off between them."
+    },
+    {
+      "criterion_id": "T2-P1-06",
+      "score": 10,
+      "evidence_span": "**Top Choice: Japan (Waseda / UTokyo)**\n   - **Why**: Offers the best ROI for your budget, deep cultural resonance (Murakami, sociology), a calm environment for reading/reflection",
+      "rationale": "The recommendation names the options and explicitly gives cultural resonance and intellectual lifestyle compatibility as selection reasons."
+    },
+    {
+      "criterion_id": "T2-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Options are downgraded for housing, admission restrictions, costs, or lifestyle mismatch, not because they favor institutional prestige alone."
+    },
+    {
+      "criterion_id": "T2-P1-08",
+      "score": 4,
+      "evidence_span": "Start researching local coffee roasters, parks for your 4km runs, and university gym access in your target city to ensure your healthy routines continue uninterrupted.",
+      "rationale": "This is an executable action for practical lifestyle fit, but maintaining exercise and coffee routines does not explicitly implement intellectual engagement or meaningful cultural immersion."
+    },
+    {
+      "criterion_id": "T2-P1-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The plan sets administrative phases and credit-mapping targets, but no usable threshold, allocation, sequence rule, or checkpoint for cultural/intellectual fit and immersion."
+    },
+    {
+      "criterion_id": "T2-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is stated under which institutional prestige alone would become the better choice."
+    },
+    {
+      "criterion_id": "T2-P1-11",
+      "score": 8,
+      "evidence_span": "**Top Choice: Japan (Waseda / UTokyo)**\n   - **Why**: Offers the best ROI for your budget, deep cultural resonance (Murakami, sociology)",
+      "rationale": "The report links the stated Murakami interest to Waseda's identified alumni connection and then explicitly uses Murakami-related cultural resonance to justify its top choice. This is a visible fit-to-fact-to-decision chain, although it does not establish how that connection produces meaningful immersion during the semester."
+    },
+    {
+      "criterion_id": "T2-P2-01",
+      "score": 10,
+      "evidence_span": "Academically unparalleled for your focus on social responsibility and critical public opinion.",
+      "rationale": "The shortlist explicitly treats social and public-opinion learning as a reason to prioritize the European options, rather than relying solely on generic academic quality."
+    },
+    {
+      "criterion_id": "T2-P2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected specifically to evaluate interdisciplinary social/media/cultural learning. Syllabi are proposed for credit mapping, while the listed sources address program administration and eligibility."
+    },
+    {
+      "criterion_id": "T2-P2-03",
+      "score": 8,
+      "evidence_span": "Heavily theoretical, focusing on digital rights, the European public sphere, and critical sociology.",
+      "rationale": "The Sciences Po/UvA section identifies concrete curricular subjects spanning media, politics, and sociology. This is preference-specific factual content, although it is grouped across two institutions without identifying particular courses or documenting their availability."
+    },
+    {
+      "criterion_id": "T2-P2-04",
+      "score": 4,
+      "evidence_span": "Highly rigorous, fast-paced, and data-driven. Your Python and Excel skills will be a massive advantage here for computational public-opinion analysis.",
+      "rationale": "The NTU/NUS section describes a technical orientation, but provides no specific technical course or curricular restriction establishing narrowly technical coursework. Computational public-opinion analysis can itself be interdisciplinary."
+    },
+    {
+      "criterion_id": "T2-P2-05",
+      "score": 4,
+      "evidence_span": "Best place to leverage your Python/data skills in a highly legitimate, rule-oriented environment. Very practical, though slightly lacking in the deep, relaxed \"music cafe and sociology\" vibe you enjoy.",
+      "rationale": "The report contrasts technical-skill utility with a sociology-oriented experience, but the latter is framed as lifestyle atmosphere. It does not directly compare the two kinds of coursework on a common academic decision axis."
+    },
+    {
+      "criterion_id": "T2-P2-06",
+      "score": 10,
+      "evidence_span": "**Second Choice: Europe (Sciences Po / UvA via Home University Exchange)**\n   - **Why**: Academically unparalleled for your focus on social responsibility and critical public opinion.",
+      "rationale": "The recommendation names the options and explicitly makes social/public-opinion academic fit a reason for selecting them."
+    },
+    {
+      "criterion_id": "T2-P2-07",
+      "score": 4,
+      "evidence_span": "**Third Choice: Singapore (NTU / NUS)**\n   - **Why**: Best place to leverage your Python/data skills in a highly legitimate, rule-oriented environment. Very practical, though slightly lacking in the deep, relaxed \"music cafe and sociology\" vibe you enjoy.",
+      "rationale": "Singapore is ranked lower and contrasted with the desired sociology-oriented experience. However, the stated limitation concerns atmosphere, not a demonstrated preference for narrowly technical coursework."
+    },
+    {
+      "criterion_id": "T2-P2-08",
+      "score": 4,
+      "evidence_span": "In your statement of purpose, highlight how you blend data analysis with sociological inquiry (e.g., using Python to scrape new media for public opinion trends).",
+      "rationale": "This is an executable application-writing step with explicitly interdisciplinary content. It presents existing interests or abilities rather than implementing an interdisciplinary learning activity, course selection, or study project."
+    },
+    {
+      "criterion_id": "T2-P2-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint specifically governs interdisciplinary social/media/cultural learning. The timeline and program-count instructions concern general preparation."
+    },
+    {
+      "criterion_id": "T2-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state a concrete condition under which narrowly technical coursework would become preferable."
+    },
+    {
+      "criterion_id": "T2-P2-11",
+      "score": 4,
+      "evidence_span": "Heavily theoretical, focusing on digital rights, the European public sphere, and critical sociology. Perfect for exploring your interest in \"social responsibility.\"",
+      "rationale": "The report explicitly connects curricular subjects to the learning preference, and later recommends the European options for that preference. However, it does not explicitly carry this particular factual evidence into a decision or action; the final link requires inference."
+    },
+    {
+      "criterion_id": "T2-P3-01",
+      "score": 2,
+      "evidence_span": "deep cultural resonance (Murakami, sociology)",
+      "rationale": "Cultural depth appears as a selection consideration, but the report does not prioritize deeper engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected to investigate sustained engagement with fewer places or communities. The sources address general program arrangements."
+    },
+    {
+      "criterion_id": "T2-P3-03",
+      "score": 4,
+      "evidence_span": "Japanese graduate seminars (*Zemi*) are small, reading-intensive, and highly focused on getting to the essence of social issues.",
+      "rationale": "The Japan section describes a concrete teaching format potentially relevant to sustained engagement. However, this is a general claim about Japanese seminars, not a verified feature of a named exchange option explicitly supporting deeper community engagement."
+    },
+    {
+      "criterion_id": "T2-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route has a concrete feature concerning maximizing the number of destinations visited."
+    },
+    {
+      "criterion_id": "T2-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare deeper engagement with fewer communities against maximizing destination count."
+    },
+    {
+      "criterion_id": "T2-P3-06",
+      "score": 2,
+      "evidence_span": "Offers the best ROI for your budget, deep cultural resonance (Murakami, sociology), a calm environment for reading/reflection, and excellent public safety for your evening routines and runs.",
+      "rationale": "The top-ranked Japan option is partly selected for cultural resonance, but the causal rationale does not identify sustained engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Options are downgraded for housing, admission restrictions, cost, or personal fit, not for favoring destination count."
+    },
+    {
+      "criterion_id": "T2-P3-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The preparation plan contains academic and logistical actions, but no executable action specifically implementing deeper engagement with fewer communities."
+    },
+    {
+      "criterion_id": "T2-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No allocation, threshold, sequence rule, or checkpoint governs sustained engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which maximizing destination count would become preferable."
+    },
+    {
+      "criterion_id": "T2-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no explicit chain linking a preference for deeper engagement with fewer communities to supporting evidence and a downstream decision or action."
+    },
+    {
+      "criterion_id": "T2-P4-01",
+      "score": 2,
+      "evidence_span": "your calm, independent nature",
+      "rationale": "Independence is mentioned as a fit consideration, but self-guided exploration and flexible local experience are not stated as decision priorities."
+    },
+    {
+      "criterion_id": "T2-P4-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected to evaluate freedom for self-guided exploration or flexible local experiences. The identified sources concern exchange admission, fees, and program arrangements."
+    },
+    {
+      "criterion_id": "T2-P4-03",
+      "score": 4,
+      "evidence_span": "beautiful parks (e.g., Yoyogi Park or the Imperial Palace loop) for your 4km runs",
+      "rationale": "The Japan option includes concrete local destinations for individual recreation, but the report does not establish how the program permits self-guided exploration or flexible use of time."
+    },
+    {
+      "criterion_id": "T2-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is shown to involve packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare independent local exploration with packaged or group-managed activities on a common decision axis."
+    },
+    {
+      "criterion_id": "T2-P4-06",
+      "score": 4,
+      "evidence_span": "deep cultural resonance (Murakami, sociology), a calm environment for reading/reflection, and excellent public safety for your evening routines and runs",
+      "rationale": "These are explicit reasons for recommending Japan and partly support individual local experiences. However, self-guided exploration and flexibility are not given as causal selection reasons."
+    },
+    {
+      "criterion_id": "T2-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Options are downgraded for cost, housing, admission restrictions, or cultural fit—not for packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-08",
+      "score": 4,
+      "evidence_span": "Start researching local coffee roasters, parks for your 4km runs, and university gym access in your target city",
+      "rationale": "This is an executable action with concrete local research objects. Its stated purpose is maintaining routines, however, rather than implementing self-guided exploration and flexible local experience."
+    },
+    {
+      "criterion_id": "T2-P4-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No usable threshold, allocation, sequence rule, or checkpoint specifically governs independent exploration or flexible local experiences."
+    },
+    {
+      "criterion_id": "T2-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which packaged or group-managed activities would become preferable."
+    },
+    {
+      "criterion_id": "T2-P4-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No explicit chain connects the specified preference to supporting evidence and then to a decision or action. Connecting the local amenities and routine-maintenance advice to that preference would require inference."
+    },
+    {
+      "criterion_id": "T2-P5-01",
+      "score": 8,
+      "evidence_span": "Offers the best ROI for your budget, deep cultural resonance (Murakami, sociology)",
+      "rationale": "The top-choice justification explicitly prioritizes value and culturally distinctive experiences together. It does not extend that priority explicitly to accommodation selection."
+    },
+    {
+      "criterion_id": "T2-P5-02",
+      "score": 4,
+      "evidence_span": "[Waseda Exchange Program](https://www.waseda.jp/inst/cie/en/exchange) - Details on Student Exchange Programs at Waseda University.",
+      "rationale": "The report uses an identifiable program source to discuss funding, but identifies no source or evidence class for evaluating inexpensive, locally distinctive housing or everyday choices. The evidence supports only the general affordability component."
+    },
+    {
+      "criterion_id": "T2-P5-03",
+      "score": 4,
+      "evidence_span": "often provide pathways to the JASSO scholarship (approx. 80,000 JPY/month) for short-term students.",
+      "rationale": "The Waseda discussion supplies a concrete funding amount relevant to affordability. It does not provide a verifiable fact about the cost or local distinctiveness of accommodation or other specific living choices."
+    },
+    {
+      "criterion_id": "T2-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named accommodation or program route is shown to provide premium convenience or luxury. High tuition and expensive city housing alone do not establish that contrast."
+    },
+    {
+      "criterion_id": "T2-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare inexpensive, locally distinctive choices against premium convenience or luxury on a common decision axis."
+    },
+    {
+      "criterion_id": "T2-P5-06",
+      "score": 8,
+      "evidence_span": "**Top Choice: Japan (Waseda / UTokyo)**\n   - **Why**: Offers the best ROI for your budget, deep cultural resonance (Murakami, sociology)",
+      "rationale": "The named first-choice option is explicitly selected for budget value and distinctive cultural fit. The causal justification is clear at the destination level, though it does not identify a particular value-oriented accommodation choice."
+    },
+    {
+      "criterion_id": "T2-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The United States is downgraded for expense and networking culture, not because it favors premium convenience or luxury. No other option receives the required preference-specific downgrade."
+    },
+    {
+      "criterion_id": "T2-P5-08",
+      "score": 4,
+      "evidence_span": "If Japan, apply for university dorms or look into share-houses.",
+      "rationale": "This is an executable accommodation step with concrete objects. However, the report does not establish that these options are cost-effective and locally distinctive; that preference alignment remains implicit."
+    },
+    {
+      "criterion_id": "T2-P5-09",
+      "score": 4,
+      "evidence_span": "If choosing Europe or Singapore, secure housing immediately upon acceptance.",
+      "rationale": "The report provides a usable housing timing rule, but the rule addresses securing housing generally rather than selecting for affordability and local distinctiveness."
+    },
+    {
+      "criterion_id": "T2-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is given under which premium convenience or luxury would become preferable."
+    },
+    {
+      "criterion_id": "T2-P5-11",
+      "score": 4,
+      "evidence_span": "Apply for the JASSO scholarship (if Japan)",
+      "rationale": "This action connects to the earlier scholarship amount and therefore provides a partial affordability evidence-to-action chain. No visible chain links a concrete fact about inexpensive, locally distinctive living choices to a resulting decision or action."
+    },
+    {
+      "criterion_id": "T2-A1-01",
+      "score": 6,
+      "evidence_span": "beautiful parks (e.g., Yoyogi Park or the Imperial Palace loop)",
+      "rationale": "The Japan option names concrete, verifiable park destinations relevant to the preference. However, it does not identify a culturally rich neighborhood surrounding either university. The generic cap is applied."
+    },
+    {
+      "criterion_id": "T2-A1-02",
+      "score": 4,
+      "evidence_span": "Less \"romantic\" cultural depth than Europe/Japan, but functionally unbeatable.",
+      "rationale": "The Singapore discussion explicitly contrasts cultural depth with practical functionality across options. This only partially satisfies the check because it does not distinguish culturally rich neighborhoods from convenience-oriented campus surroundings."
+    },
+    {
+      "criterion_id": "T2-A1-03",
+      "score": 6,
+      "evidence_span": "Very practical, though slightly lacking in the deep, relaxed \"music cafe and sociology\" vibe you enjoy.",
+      "rationale": "The Singapore shortlist entry uses cafe-related cultural atmosphere as a secondary fit limitation. This is explicit recommendation-level evidence, although no neighborhood is identified. The generic cap is applied."
+    },
+    {
+      "criterion_id": "T2-A1-04",
+      "score": 6,
+      "evidence_span": "deep cultural resonance (Murakami, sociology), a calm environment for reading/reflection",
+      "rationale": "The top-choice Japan recommendation is justified partly by cultural and reading-oriented qualities, not by an opposing preference. Singapore's practical advantages are also accompanied by a disclosed cultural-atmosphere trade-off. The generic cap is applied."
+    },
+    {
+      "criterion_id": "T2-A2-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a concrete fact tied to environmentally responsible travel or living. Parks and running are discussed as lifestyle amenities, not environmental considerations."
+    },
+    {
+      "criterion_id": "T2-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report makes no option-level distinction concerning environmental responsibility or the relevance of sustainability."
+    },
+    {
+      "criterion_id": "T2-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The shortlist uses academic, financial, cultural, and lifestyle factors, but environmental responsibility does not affect any rank or stated fit judgment."
+    },
+    {
+      "criterion_id": "T2-A2-04",
+      "score": 4,
+      "evidence_span": "Offers the best ROI for your budget, deep cultural resonance (Murakami, sociology), a calm environment for reading/reflection, and excellent public safety for your evening routines and runs.",
+      "rationale": "The recommendation does not explicitly favor environmentally irresponsible choices. However, its justifications are environmentally neutral, with no criterion-specific environmental evidence to support a score above 4."
+    },
+    {
+      "criterion_id": "T2-A3-01",
+      "score": 6,
+      "evidence_span": "beautiful parks (e.g., Yoyogi Park or the Imperial Palace loop) for your 4km runs.",
+      "rationale": "The Japan option names concrete outdoor locations suitable for running. This supplies an option-specific outdoor fact; the supplied cap is applied."
+    },
+    {
+      "criterion_id": "T2-A3-02",
+      "score": 6,
+      "evidence_span": "Great gym and coffee culture, though safety for evening outdoor runs requires more vigilance than in Beijing or Tokyo.",
+      "rationale": "The United States option explicitly contrasts gym and coffee amenities with outdoor running conditions and distinguishes its outdoor safety considerations from Tokyo's. The supplied cap is applied."
+    },
+    {
+      "criterion_id": "T2-A3-03",
+      "score": 6,
+      "evidence_span": "excellent public safety for your evening routines and runs.",
+      "rationale": "This appears in the justification for Japan as the top choice, making outdoor running suitability a secondary recommendation factor. The supplied cap is applied."
+    },
+    {
+      "criterion_id": "T2-A3-04",
+      "score": 6,
+      "evidence_span": "**Top Choice: Japan (Waseda / UTokyo)**\n   - **Why**: Offers the best ROI for your budget, deep cultural resonance (Murakami, sociology), a calm environment for reading/reflection, and excellent public safety for your evening routines and runs.",
+      "rationale": "The final top recommendation explicitly supports running rather than favoring indoor consumption at its expense. The remaining shortlist justifications do not explicitly reject outdoor experiences in favor of an opposing value. The supplied cap is applied."
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J759",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "43f9a3adee7f146bc3083cb656731fbcdfd7c98abb15dc705f00a0433385e05d",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-16T19:30:46.671713+00:00",
+  "completed_at_utc": "2026-09-16T19:35:57.876502+00:00",
+  "p_strict": 6.958528428093645,
+  "p_hi": 7.3100000000000005,
+  "dimension_scores": {
+    "INTENT": 7.6,
+    "SOURCE": 6.8,
+    "EVIDENCE": 8.0,
+    "TRADEOFF": 6.173913043478261,
+    "DECISION": 5.739130434782608,
+    "ACTION": 9.2,
+    "TRACE": 5.846153846153847
+  },
+  "high_dimension_scores": {
+    "INTENT": 7.6,
+    "SOURCE": 6.8,
+    "EVIDENCE": 8.4,
+    "TRADEOFF": 7.0,
+    "DECISION": 6.2,
+    "ACTION": 9.2,
+    "TRACE": 6.4
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 10,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "The report explicitly prioritizes learning through venture-building over a traditional degree when selecting the learning approach."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 10,
+      "evidence_span": "you learn strictly by co-building alongside a seasoned operational team [citation:Venture Builder vs. Accelerator vs. VC: Complete Comparison 2026](https://ncide.com/venture-builder-vs-accelerator).",
+      "rationale": "An identifiable source is used to establish whether the venture-builder route involves actual co-building, directly addressing the project-based learning question."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 10,
+      "evidence_span": "#### 5. Practical Venture-Building (Venture Studios / Builders)\n*   **Curriculum:** No formal classes; you learn strictly by co-building alongside a seasoned operational team",
+      "rationale": "The named venture-studio route has a concrete learning mechanism: co-building a venture with an operational team rather than attending formal classes."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 10,
+      "evidence_span": "#### 1. Degree Programs (MBA / M.Sc. in Entrepreneurship)\n*   **Curriculum:** Broad business fundamentals. Covers finance, accounting, legal structuring, go-to-market strategies, and organizational behavior",
+      "rationale": "The degree route is explicitly identified and its broad academic business curriculum is specified through concrete subject areas."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 10,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "The report directly compares the practical and degree routes on cost and speed and states consequential differences."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 10,
+      "evidence_span": "*   **Goal:** Learn Product and Business Model mechanics through raw experimentation.\n*   **Action:** Bootstrapping a side-project or joining a local/university Incubator.",
+      "rationale": "The plan selects a side-project or incubator specifically to learn through practical venture experimentation."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 4,
+      "evidence_span": "**Fundraising & Business/Product Learning:** Strong on theoretical business models and cap table math; less practical on rapid MVP iteration.",
+      "rationale": "The degree route is criticized for theoretical rather than practical learning. However, its lower priority is explicitly justified elsewhere by cost and speed, not clearly by its broad academic curriculum. The preference-specific downgrade is therefore incomplete."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 10,
+      "evidence_span": "Build a Minimum Viable Product (MVP). You don't need code; use Bubble, Webflow, or Zapier. Test monetization early to learn unit economics.",
+      "rationale": "This is an executable venture-building step with a concrete output, suggested implementation tools, and an actual commercial experiment."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 10,
+      "evidence_span": "**Deliverable:** A live MVP with early traction (first 10-100 paying customers or highly engaged beta users).",
+      "rationale": "The plan defines a concrete venture-project checkpoint using a live product and a quantified initial-user or customer target."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 10,
+      "evidence_span": "**Overall Value:** Best if you are building in a heavily regulated or capital-intensive space (e.g., Biotech, Enterprise SaaS) where credibility and investor access gate everything.",
+      "rationale": "The degree section supplies an explicit boundary condition under which the degree becomes the preferred route: ventures constrained by credibility and investor access in regulated or capital-intensive markets."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 4,
+      "evidence_span": "*   **Hands-on Opportunities:** High. Most curriculums require you to build a project, write, or launch a micro-product.",
+      "rationale": "The report provides project-related evidence for cohort courses and later recommends such courses, but it does not explicitly connect that evidence to their selection. Following a complete preference-to-evidence-to-decision chain would require inference."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 10,
+      "evidence_span": "**Goal:** Close critical tactical gaps without quitting your day job; find a co-founder.",
+      "rationale": "Keeping employment while learning is explicitly stated as a planning priority."
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 10,
+      "evidence_span": "**Time Commitment:** 4 to 12 weeks, usually part-time (5-10 hours/week) [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).",
+      "rationale": "The report uses an identifiable course-comparison source to establish duration and weekly workload, evidence directly relevant to evaluating compatibility with continued employment."
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 10,
+      "evidence_span": "#### 4. Cohort-Based Online Courses (e.g., On Deck, Reforge, Maven)\n*   **Curriculum:** Hyper-specific, tactical skill acquisition (e.g., \"No-code MVP building\", \"Product-Led Growth\", \"Founder Sales\"). \n*   **Time Commitment:** 4 to 12 weeks, usually part-time (5-10 hours/week)",
+      "rationale": "The named course route and examples have concrete duration and weekly workload facts supporting a modular, part-time approach."
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 10,
+      "evidence_span": "**Time Commitment:** 1 to 2 years (full-time).\n*   **Cost:** Very high. Top programs range from $100,000 to $200,000+, plus the opportunity cost of foregone salary.",
+      "rationale": "The degree-program section provides concrete full-time duration and explicitly identifies lost salary, establishing the disruptive contrast."
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 4,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "The report directly compares speed and cost, and separately supplies full-time and part-time workloads. It does not directly frame the consequential difference as preserving work or family commitments versus disrupting them."
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 10,
+      "evidence_span": "**Overall Value:** The highest ROI for closing specific skill gaps quickly while maintaining a day job. Perfect for early idea validation.",
+      "rationale": "The report favors cohort-based online courses explicitly because they allow skill development while retaining a day job."
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 2,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "A traditional degree is downgraded, but the stated reasons are cost and speed rather than disruption from full-time study. The required causal reason is missing."
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 10,
+      "evidence_span": "**Goal:** Close critical tactical gaps without quitting your day job; find a co-founder.\n*   **Action:** Enroll in 1-2 cohort-based courses (e.g., an On Deck Founder Fellowship or a Maven course on No-Code MVP building).",
+      "rationale": "The plan gives an executable enrollment action, with named examples, explicitly tied to continuing employment."
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 10,
+      "evidence_span": "#### Phase 1: Knowledge & Network Seeding (Months 1–4)\n*   **Goal:** Close critical tactical gaps without quitting your day job; find a co-founder.\n*   **Action:** Enroll in 1-2 cohort-based courses (e.g., an On Deck Founder Fellowship or a Maven course on No-Code MVP building).",
+      "rationale": "The plan allocates one to two courses to the first four months and explicitly makes this a work-preserving phase."
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 10,
+      "evidence_span": "**Overall Value:** Best if you are building in a heavily regulated or capital-intensive space (e.g., Biotech, Enterprise SaaS) where credibility and investor access gate everything.",
+      "rationale": "For the degree route, previously identified as full-time, the report states a concrete condition under which it is best: credibility and investor-access barriers in regulated or capital-intensive ventures."
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 10,
+      "evidence_span": "**Time Commitment:** 4 to 12 weeks, usually part-time (5-10 hours/week) [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).\n*   **Cost:** Low to Medium ($500 to $5,000+) [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).\n*   **Mentor/Network Access:** Strong peer accountability. Programs like On Deck (approx. $3,000 - $10,000) offer massive networks of operators and potential co-founders globally [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).\n*   **Hands-on Opportunities:** High. Most curriculums require you to build a project, write, or launch a micro-product.\n*   **Overall Value:** The highest ROI for closing specific skill gaps quickly while maintaining a day job.",
+      "rationale": "The same course-route assessment connects cited part-time workload evidence to an explicit favorable judgment for maintaining employment; the plan subsequently selects that route for its work-preserving first phase."
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 4,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "The report prioritizes iterative practical learning, but does not explicitly make market evidence and staged validation the governing decision priority."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 4,
+      "evidence_span": "Analysis of business school ROI versus bootstrapping.",
+      "rationale": "The research includes a relevant comparison source, but does not identify sources or evidence types specifically selected to evaluate experimental learning and staged validation."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 8,
+      "evidence_span": "Highly practical, sprint-based. Focuses strictly on product-market fit, growth metrics, and investor pitching",
+      "rationale": "The accelerator section supplies concrete curriculum characteristics relevant to evidence-driven market learning, rather than merely describing the route as practical."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 4,
+      "evidence_span": "Strong on theoretical business models and cap table math; less practical on rapid MVP iteration.",
+      "rationale": "This identifies a concrete contrast for degree programs, but does not establish that they require lengthy preparation before ideas can be tested."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 4,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "The report directly compares iterative learning with degrees on cost and speed. It does not specifically compare staged market validation against delaying idea testing."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 10,
+      "evidence_span": "The highest ROI for closing specific skill gaps quickly while maintaining a day job. Perfect for early idea validation.",
+      "rationale": "The cohort-based online course route is explicitly recommended in part because it supports early idea validation."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 4,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "The report lowers the relative attractiveness of a degree because of cost and speed, but does not explicitly downgrade it for postponing market testing."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 10,
+      "evidence_span": "Test monetization early to learn unit economics.",
+      "rationale": "This is an executable market experiment within the MVP phase, with monetization as the concrete testing object and unit economics as the learning objective."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 10,
+      "evidence_span": "Apply to and join a top-tier Accelerator (e.g., Y Combinator, Techstars, 500 Global) using your MVP's traction.",
+      "rationale": "The plan establishes a usable sequence: develop MVP traction before using that evidence to pursue an accelerator."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 4,
+      "evidence_span": "Best if you are building in a heavily regulated or capital-intensive space (e.g., Biotech, Enterprise SaaS) where credibility and investor access gate everything.",
+      "rationale": "The report gives a concrete condition favoring a degree, but does not explain when prolonged preparation before testing ideas becomes preferable."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 8,
+      "evidence_span": "Apply to and join a top-tier Accelerator (e.g., Y Combinator, Techstars, 500 Global) using your MVP's traction.",
+      "rationale": "The plan visibly connects market evidence from the MVP to a downstream progression decision, making traction an explicit basis for advancing to the accelerator stage."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 4,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "Prioritizes practical learning, but does not explicitly prioritize in-depth practical cases or data when choosing routes."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The sources support general route comparisons; none is identified as a way to evaluate the depth of practical cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 4,
+      "evidence_span": "Mostly taught via case studies, though you can test ideas safely.",
+      "rationale": "Identifies case-study teaching within the degree route, but provides no concrete information about case depth, underlying data, or detailed practical analysis."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 8,
+      "evidence_span": "**Hands-on Opportunities:** Low. Primarily classroom and framework-based.",
+      "rationale": "Explicitly characterizes the executive-education route as primarily framework-based with little hands-on application. It stops short of establishing that application is absent."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 4,
+      "evidence_span": "Strong on theoretical business models and cap table math; less practical on rapid MVP iteration.",
+      "rationale": "Contrasts theoretical and practical learning within the degree route, but does not directly compare in-depth cases or data against theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 4,
+      "evidence_span": "**Overall Value:** The highest ROI for closing specific skill gaps quickly while maintaining a day job. Perfect for early idea validation.",
+      "rationale": "Favors cohort-based courses for tactical learning and validation, but does not select them because of in-depth practical cases or data."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is explicitly downgraded because it favors abstract theory without application. The degree comparison favors alternatives on cost and speed instead."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 8,
+      "evidence_span": "**Deliverable:** 50+ user interviews and a validated problem statement.",
+      "rationale": "Provides an executable customer-data collection and synthesis step. The report does not specify interview depth or a detailed analysis method."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 10,
+      "evidence_span": "**Deliverable:** 50+ user interviews and a validated problem statement.",
+      "rationale": "Sets a usable numerical threshold for practical customer-data gathering and an accompanying validation checkpoint."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 4,
+      "evidence_span": "Best if you are building in a heavily regulated or capital-intensive space (e.g., Biotech, Enterprise SaaS) where credibility and investor access gate everything.",
+      "rationale": "Gives a concrete condition favoring the degree route, but the reason is credibility and access, not a demonstrated preference reversal toward abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No explicit chain connects a preference for in-depth practical cases or data to a supporting fact and then to a route decision or action."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 10,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "The report explicitly makes lower cost and faster preparation reasons for choosing its proposed learning approach."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 10,
+      "evidence_span": "[MBA for Entrepreneurs: Do You Really Need One?](https://www.scaler.com/school-of-business/guide/mba-for-entrepreneurs) - Analysis of business school ROI versus bootstrapping.",
+      "rationale": "An identifiable source is explicitly included to evaluate business-school ROI against bootstrapping."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 10,
+      "evidence_span": "Programs like On Deck (approx. $3,000 - $10,000) offer massive networks of operators and potential co-founders globally",
+      "rationale": "The named option has a checkable price range paired with a specific benefit, providing concrete cost-and-value evidence."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 10,
+      "evidence_span": "Top programs range from $100,000 to $200,000+, plus the opportunity cost of foregone salary.",
+      "rationale": "The degree-program section gives a concrete cost range and opportunity cost for top-tier MBA and entrepreneurship programs."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 10,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "The report directly compares its practical learning route with traditional degrees on cost and time, identifying consequential differences."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 10,
+      "evidence_span": "The highest ROI for closing specific skill gaps quickly while maintaining a day job. Perfect for early idea validation.",
+      "rationale": "The cohort-based course route is recommended for early validation explicitly because of its ROI and compatibility with continued employment."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 8,
+      "evidence_span": "an iterative, \"learn-by-doing\" approach is drastically cheaper and faster than a traditional degree.",
+      "rationale": "Traditional degrees are deprioritized in favor of the cheaper practical plan. The cost-based downgrade is clear, although prestige itself is not explicitly identified as the reason for their expense or lower priority."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 10,
+      "evidence_span": "Enroll in 1-2 cohort-based courses (e.g., an On Deck Founder Fellowship or a Maven course on No-Code MVP building).",
+      "rationale": "The plan gives an executable enrollment action implementing the cohort-based route previously identified as offering the highest ROI."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 4,
+      "evidence_span": "**Goal:** Close critical tactical gaps without quitting your day job; find a co-founder.",
+      "rationale": "Preserving employment provides a partial cost-conscious constraint, but the report does not explicitly connect a usable spending threshold, ROI checkpoint, or resource-allocation rule to cost-effectiveness."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 10,
+      "evidence_span": "Best if you are building in a heavily regulated or capital-intensive space (e.g., Biotech, Enterprise SaaS) where credibility and investor access gate everything.",
+      "rationale": "The degree-program section supplies a concrete condition under which the expensive route becomes preferable: credibility and investor access are binding requirements."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 10,
+      "evidence_span": "**Cost:** Low to Medium ($500 to $5,000+) [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).\n*   **Mentor/Network Access:** Strong peer accountability. Programs like On Deck (approx. $3,000 - $10,000) offer massive networks of operators and potential co-founders globally [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).\n*   **Hands-on Opportunities:** High. Most curriculums require you to build a project, write, or launch a micro-product.\n*   **Overall Value:** The highest ROI for closing specific skill gaps quickly while maintaining a day job. Perfect for early idea validation.",
+      "rationale": "Within one route assessment, cited prices and concrete network and project benefits lead to an explicit ROI judgment and a recommendation for early idea validation; the plan subsequently selects this route."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 6,
+      "evidence_span": "Programs like On Deck (approx. $3,000 - $10,000) offer massive networks of operators and potential co-founders globally",
+      "rationale": "Names an option and states a checkable fact about access to operators and potential co-founders. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report describes practitioner and peer access across routes, but does not explicitly contrast any option with learning in isolation."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 6,
+      "evidence_span": "Great for solo founders needing a shared workspace and periodic advice before they have an MVP",
+      "rationale": "The mentoring-and-incubator route receives an explicit fit judgment based on access to shared space and advice, making interpersonal support a selection factor. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 6,
+      "evidence_span": "leverage the accelerator network to pivot or join a Venture Studio as an Entrepreneur-in-Residence (EIR) to build a new idea with a de-risked team.",
+      "rationale": "The final plan explicitly recommends using a network or building alongside a team, and no selected route is justified by a preference for isolation. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 4,
+      "evidence_span": "4 to 12 weeks, usually part-time (5-10 hours/week)",
+      "rationale": "The cohort-course section provides a concrete workload relevant to available family time and names example providers. However, the workload is category-wide rather than verified for a specific named program, and its compatibility with regular family time is not established."
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report contrasts part-time and intensive full-time routes, but never explicitly distinguishes preserving regular family time from learning that dominates evenings or weekends."
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Family time does not affect any ranking, inclusion, exclusion, or stated fit judgment. Maintaining a day job is a different preference and does not establish this criterion."
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The final plan provides no evidence that regular family time is preserved or that relevant trade-offs are disclosed. Its progression into an intensive accelerator and full-time scaling does not establish compatibility with this preference."
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 6,
+      "evidence_span": "Concentrated frameworks on strategy, leadership, and innovation (e.g., Stanford GSB Exec Ed, Wharton).",
+      "rationale": "Names executive-education options and identifies leadership frameworks as curriculum content. This supplies a relevant option-specific fact, although no particular framework is identified. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 2,
+      "evidence_span": "Concentrated frameworks on strategy, leadership, and innovation (e.g., Stanford GSB Exec Ed, Wharton).",
+      "rationale": "Leadership-framework content is identified separately from the technical courses discussed elsewhere, but the report never explicitly contrasts team-coordination frameworks with purely solo-founder technical content. The required option-level distinction is only implicit."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 2,
+      "evidence_span": "**Goal:** Learn to scale, manage a team, and prepare for institutional fundraising.",
+      "rationale": "Team-management learning appears as a goal of the recommended accelerator phase. However, the report does not identify coordination or leadership frameworks as a tie-breaker or explain that their availability changes an option's inclusion, ranking, or fit."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 6,
+      "evidence_span": "**Focus Area:** Hiring, culture building, and transitioning from \"builder\" to \"manager/CEO.\"",
+      "rationale": "The final phase explicitly includes leadership and team-building development. No selected route is justified by avoiding team coordination or favoring exclusively solo technical work. This supports noncontradiction, subject to the generic cap of 6."
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare routes for systematically learning entrepreneurship and preparing to launch a startup over the next 1–2 years.
+
+Compare degree and non-degree programs, executive education, accelerators, online courses, mentoring and networking routes, and practical venture-building options. Cover curriculum, time commitment, cost, mentor and network access, hands-on opportunities, fundraising, business-model, product, market and team-management learning, and the value of each route.
+
+Produce a phased 1–2 year learning and experimentation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T3-A3-01",
+    "criterion": "The report gives one concrete fact relevant to frameworks that improve team coordination/leadership.",
+    "criterion_explanation": "A named option has a verifiable fact tied to this average-impact preference.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-A3-02",
+    "criterion": "The report distinguishes frameworks that improve team coordination/leadership from purely solo-founder technical content.",
+    "criterion_explanation": "At least one option-level difference is explicit on the preference axis.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-A3-03",
+    "criterion": "The shortlist or recommendation uses frameworks that improve team coordination/leadership as a tie-breaker or secondary fit factor.",
+    "criterion_explanation": "The preference changes one rank, inclusion, exclusion or stated fit judgment.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-A3-04",
+    "criterion": "The final recommendation does not contradict frameworks that improve team coordination/leadership.",
+    "criterion_explanation": "No selected option is explicitly justified by the opposing value without a disclosed trade-off.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label J262):
+Here is a comprehensive research report comparing the different routes for learning entrepreneurship and preparing to launch a startup in 2026, followed by a phased 1–2 year action plan.
+
+## Executive Summary
+
+The landscape of entrepreneurship education has bifurcated. While traditional MBAs and executive education programs still offer unparalleled legacy networks and credibility, specialized paths like accelerators, founder fellowships, and cohort-based courses have emerged as the fastest and most practical vehicles for actually building a company. Data shows that less than 10% of the fastest-growing company founders hold MBAs [citation:Self-Taught vs MBA](https://mentorme.com/blog/self-taught-entrepreneur-vs-mba-which-is-better-for-founders), indicating a massive shift toward "learning by doing" supplemented by just-in-time community and tactical education.
+
+---
+
+## Comparison of Entrepreneurship Routes
+
+### 1. Degree Programs (MBA / Master's in Entrepreneurship)
+*   **Cost & Time:** $100,000–$200,000+ over 1–2 years [citation:MBA vs Course](https://expansary.com/blog/entrepreneurship-course-vs-mba). 
+*   **Curriculum:** Broad foundational frameworks (accounting, operations, HR, strategy). It is designed primarily to manage existing businesses rather than build from scratch [citation:MBA vs Course](https://expansary.com/blog/entrepreneurship-course-vs-mba).
+*   **Value & Network:** Extremely high if attending a Top 10 program (Harvard, Stanford). It provides an elite alumni network and credibility. 
+*   **Best for:** Founders targeting highly regulated, capital-intensive industries (healthcare, defense, fintech) where institutional trust is required on day one, or those needing a hard career pivot [citation:Self-Taught vs MBA](https://mentorme.com/blog/self-taught-entrepreneur-vs-mba-which-is-better-for-founders).
+
+### 2. Executive Education (Harvard OPM, Stanford Ignite, etc.)
+*   **Cost & Time:** $75,000–$80,000+ for intensive modules (hybrid or on-campus) taking weeks to months [citation:Harvard vs Stanford](https://notes.suhaib.in/docs/trends/harvard-vs-stanford-the-executive-education-roi-showdown-for-2026/).
+*   **Curriculum:** Harvard focuses on deep networking and traditional legacy leadership; Stanford focuses heavily on innovation, product, and AI-driven organizational transformation [citation:Harvard vs Stanford](https://notes.suhaib.in/docs/trends/harvard-vs-stanford-the-executive-education-roi-showdown-for-2026/).
+*   **Value & Network:** Offers a prestigious brand and a network of seasoned executives. 
+*   **Best for:** Established professionals, late-stage career transitioners, or founders who already have a growing business but lack formalized leadership and scaling frameworks. 
+
+### 3. Founder Fellowships (South Park Commons, On Deck)
+*   **Cost & Time:** 
+    *   *Residency:* Free, taking ~6 months (pre-idea/team stage). 
+    *   *Fellowship:* 8-week bootcamp plus lifetime community access. For SPC, founders give 7% equity for $400k upfront (and a guaranteed $600k in the next round) [citation:SPC Application Guide](https://hub.causo.ai/guides/how-to-apply-to-south-park-commons-2026).
+*   **Curriculum:** Unstructured but highly collaborative. Focuses on peer-led learning, customer discovery, white-glove VC introductions, and finding product-market fit.
+*   **Value & Network:** Evaluates founders on "velocity plus acceleration"—rewarding intellectual curiosity and rapid iteration. SPC boasts over 1,300 alumni and ~$1M in software/AI credits [citation:SPC Application Guide](https://hub.causo.ai/guides/how-to-apply-to-south-park-commons-2026).
+*   **Best for:** Elite technologists, engineers, and domain experts leaving big-tech/labs who need a high-signal community to figure out *what* to build.
+
+### 4. Accelerators (Y Combinator, Antler, Techstars)
+*   **Cost & Time:** 10–13 weeks intensive. Costs 6–10% equity in exchange for capital (e.g., $100k–$500k) [citation:Antler vs YC](https://www.roundfunded.com/en/blogs/antler-vs-y-combinator-which-accelerator-2026). Acceptance rates are notoriously low (1–3%).
+*   **Curriculum:** Extreme focus on iterating quickly, tracking weekly growth metrics, talking to users, and prepping for Demo Day fundraising. Antler focuses more heavily on matching solo founders to build teams, whereas YC prefers established teams [citation:Antler vs YC](https://www.roundfunded.com/en/blogs/antler-vs-y-combinator-which-accelerator-2026).
+*   **Value & Network:** Gold standard for fundraising preparation, forcing mechanism for speed, and access to hundreds of active seed funds.
+*   **Best for:** Teams with early traction ready to scale, or (in Antler's case) strong solo founders looking for a co-founder and rapid validation. 
+
+### 5. Online Cohort Courses (Reforge, Maven)
+*   **Cost & Time:** $50–$2,000; typically takes 4–12 weeks [citation:MBA vs Course](https://expansary.com/blog/entrepreneurship-course-vs-mba). Reforge charges an annual $1,995 for platform access, while Maven operates on a course-by-course marketplace model [citation:Reforge vs Maven](https://www.entelliz.co.uk/versus/reforge-vs-maven-growth-training/).
+*   **Curriculum:** Highly tactical. Maven offers targeted skills (e.g., AI workflows, GTM motion), while Reforge provides an overarching operating system for product, growth, and retention frameworks [citation:Reforge vs Maven](https://www.entelliz.co.uk/versus/reforge-vs-maven-growth-training/).
+*   **Value & Network:** Closes specific knowledge gaps immediately without pausing your career. No prestige network, but massive practical ROI.
+*   **Best for:** Operators and early-stage founders who need to learn how to solve an immediate bottleneck (e.g., pricing, growth, marketing) this week.
+
+### 6. Self-Taught & Practical Venture Building
+*   **Cost & Time:** $0 (beyond operations). 
+*   **Curriculum:** Learned through trial, error, and building in public.
+*   **Value & Network:** Builds an incredibly high tolerance for ambiguity [citation:Self-Taught vs MBA](https://mentorme.com/blog/self-taught-entrepreneur-vs-mba-which-is-better-for-founders). Allows you to retain 100% equity and move quickly. 
+*   **Best for:** Bootstrappers and technical founders in fast-moving spaces (e.g., AI, crypto) where formal curriculums become outdated before graduation.
+
+---
+
+## Phased 1–2 Year Learning & Launch Plan
+
+This roadmap relies on progressive commitment—spending the least amount of money/equity early on to validate ideas, then using high-leverage networks once traction is achieved. 
+
+### Phase 1: Foundations & Ideation (Months 1–4)
+*   **Goal:** Build foundational startup knowledge and run low-fidelity experiments while maintaining your primary income.
+*   **Actionable Steps:**
+    *   **Tactical Learning:** Enroll in a targeted cohort course (e.g., on Maven) for lean startup methodology and customer discovery. If you need comprehensive growth frameworks, consider a Reforge membership.
+    *   **Hands-on Experimentation:** Build 2–3 weekend MVPs (using no-code/AI tools) and pitch them to niche communities to gauge organic interest. Do not incorporate yet.
+    *   **Networking:** Start attending local meetups and engaging in digital founder communities to naturally expand your circle of builders.
+
+### Phase 2: Incubation & Co-Founder Matching (Months 5–10)
+*   **Goal:** Transition from side projects to a committed path, find a co-founder, and finalize your core market.
+*   **Actionable Steps:**
+    *   **Fellowships/Residencies:** If you have deep technical skills but lack a firm idea, apply to a program like the South Park Commons Member Residency. It is free, equity-free, and places you among 175+ elite builders [citation:SPC Application Guide](https://hub.causo.ai/guides/how-to-apply-to-south-park-commons-2026).
+    *   **Pre-Team Accelerators:** Alternatively, apply to Antler or Entrepreneur First. These programs are explicitly designed to match solo founders and provide early stipends to de-risk the jump to full-time entrepreneurship. 
+    *   **Outcome:** Exit this phase with a registered corporate entity, a co-founder, and a validated prototype.
+
+### Phase 3: Building & Customer Acquisition (Months 11–16)
+*   **Goal:** Reach early revenue (or massive user engagement) to prove "founder-market fit" and execution velocity.
+*   **Actionable Steps:**
+    *   **Self-Taught Execution:** Focus intensely on unit economics, user retention, and shipping speed. Let the market be your classroom. 
+    *   **Skill Gaps:** Utilize just-in-time mentorship. When you hit a wall (e.g., B2B sales), buy a $200 tactical course or reach out to an industry mentor rather than returning to a broad curriculum.
+    *   **Preparation:** Begin tracking weekly growth metrics (MRR, DAU) strictly. These numbers will be your leverage for Phase 4.
+
+### Phase 4: Acceleration & Fundraising (Months 17–24)
+*   **Goal:** Secure institutional funding and transition from a scrappy project to a scaling business.
+*   **Actionable Steps:**
+    *   **Apply for Top-Tier Capital:** Apply to Y Combinator or a tier-1 Founder Fellowship (like SPC’s $1M for 7% track). At this stage, they are evaluating your *speed of iteration in the last 6 months* and your *why now* argument [citation:Antler vs YC](https://www.roundfunded.com/en/blogs/antler-vs-y-combinator-which-accelerator-2026).
+    *   **Parallel Fundraising:** Run a parallel pre-seed round with angel investors while waiting for accelerator decisions. 
+    *   **Outcome:** Close your seed round and transition your focus to team management, scaling product lines, and preparing for Series A. 
+
+---
+
+## Sources
+*   [Self-Taught Entrepreneur vs MBA: Which Path Actually Builds Better Founders?](https://mentorme.com/blog/self-taught-entrepreneur-vs-mba-which-is-better-for-founders) - Analysis of self-taught routes versus formal MBA education.
+*   [Entrepreneurship Course vs MBA: Which Is Worth It in 2026?](https://expansary.com/blog/entrepreneurship-course-vs-mba) - Cost and ROI breakdown of short courses versus 2-year degrees.
+*   [Harvard vs. Stanford: The Executive Education ROI Showdown for 2026](https://notes.suhaib.in/docs/trends/harvard-vs-stanford-the-executive-education-roi-showdown-for-2026/) - Comparison of high-end executive education programs and their focus areas.
+*   [South Park Commons application 2026: 8 steps, $1M terms, what gets cut](https://hub.causo.ai/guides/how-to-apply-to-south-park-commons-2026) - Detailed terms and curriculum insights for modern founder fellowships.
+*   [Antler vs Y Combinator: Which Accelerator is Right for Your Startup in 2026](https://www.roundfunded.com/en/blogs/antler-vs-y-combinator-which-accelerator-2026) - Acceptance criteria and equity terms for leading accelerators.
+*   [Reforge vs Maven for Growth Training](https://www.entelliz.co.uk/versus/reforge-vs-maven-growth-training/) - Evaluation of cohort-based tactical startup training models.

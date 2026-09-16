@@ -1,0 +1,250 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare routes for systematically learning entrepreneurship and preparing to launch a startup over the next 1–2 years.
+
+Compare degree and non-degree programs, executive education, accelerators, online courses, mentoring and networking routes, and practical venture-building options. Cover curriculum, time commitment, cost, mentor and network access, hands-on opportunities, fundraising, business-model, product, market and team-management learning, and the value of each route.
+
+Produce a phased 1–2 year learning and experimentation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T3-P2-01",
+    "criterion": "The report states flexible/modular path compatible with work/family as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate flexible/modular path compatible with work/family.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-03",
+    "criterion": "The report provides concrete evidence about how an option supports flexible/modular path compatible with work/family.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-04",
+    "criterion": "The report provides concrete evidence about how an option reflects highly disruptive full-time study.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-05",
+    "criterion": "The report directly compares flexible/modular path compatible with work/family with highly disruptive full-time study.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-06",
+    "criterion": "At least one recommended option is selected because it supports flexible/modular path compatible with work/family.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors highly disruptive full-time study.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-08",
+    "criterion": "The plan contains one executable step that implements flexible/modular path compatible with work/family.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for flexible/modular path compatible with work/family.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-10",
+    "criterion": "The report states when highly disruptive full-time study would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P2-11",
+    "criterion": "One visible chain links flexible/modular path compatible with work/family to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label J759):
+Here is a comprehensive research report comparing the systematic routes for learning entrepreneurship and preparing to launch a startup, followed by a phased 1–2 year action plan. 
+
+### Executive Summary
+When preparing to launch a startup, the choice of learning route depends heavily on what you are missing—be it capital, network, a technical team, or specific business acumen. While traditional models like an MBA provide a broad safety net and deep networks, modern routes like accelerators, cohort-based courses, and venture studios offer faster, hyper-focused, and often more cost-effective ways to learn by building [citation:MBA for Entrepreneurs: Do You Really Need One?](https://www.scaler.com/school-of-business/guide/mba-for-entrepreneurs). 
+
+---
+
+### Comparison of Entrepreneurship Learning Routes
+
+#### 1. Degree Programs (MBA / M.Sc. in Entrepreneurship)
+*   **Curriculum:** Broad business fundamentals. Covers finance, accounting, legal structuring, go-to-market strategies, and organizational behavior [citation:MBA for Entrepreneurs: Do You Really Need One?](https://www.scaler.com/school-of-business/guide/mba-for-entrepreneurs).
+*   **Time Commitment:** 1 to 2 years (full-time).
+*   **Cost:** Very high. Top programs range from $100,000 to $200,000+, plus the opportunity cost of foregone salary.
+*   **Mentor/Network Access:** Exceptional. Provides a dense pool of potential co-founders, alumni connections, and warm lines to investors.
+*   **Hands-on Opportunities:** Moderate to High (if the school has on-campus incubators/labs). Mostly taught via case studies, though you can test ideas safely.
+*   **Fundraising & Business/Product Learning:** Strong on theoretical business models and cap table math; less practical on rapid MVP iteration.
+*   **Overall Value:** Best if you are building in a heavily regulated or capital-intensive space (e.g., Biotech, Enterprise SaaS) where credibility and investor access gate everything. It also provides a strong corporate safety net if the startup fails [citation:MBA for Entrepreneurs: Do You Really Need One?](https://www.scaler.com/school-of-business/guide/mba-for-entrepreneurs).
+
+#### 2. Non-Degree / Executive Education 
+*   **Curriculum:** Concentrated frameworks on strategy, leadership, and innovation (e.g., Stanford GSB Exec Ed, Wharton).
+*   **Time Commitment:** 1 to 6 weeks, or spread over a few months part-time.
+*   **Cost:** High for the duration ($5,000 - $40,000).
+*   **Mentor/Network Access:** Excellent for connecting with corporate executives and later-stage operators, but less dense with hungry, early-stage technical founders.
+*   **Hands-on Opportunities:** Low. Primarily classroom and framework-based. 
+*   **Fundraising & Business/Product Learning:** Focuses on team management, market analysis, and corporate intrapreneurship over tactical early-stage fundraising.
+*   **Overall Value:** Best for mid-career professionals looking to transition to entrepreneurship without leaving their jobs, or those aiming to build B2B businesses targeting enterprise clients.
+
+#### 3. Accelerators (e.g., Y Combinator, Techstars)
+*   **Curriculum:** Highly practical, sprint-based. Focuses strictly on product-market fit, growth metrics, and investor pitching [citation:Startup Incubator vs. Accelerator: Which Is Right for You?](https://online.hbs.edu/blog/post/startup-incubator-vs-accelerator).
+*   **Time Commitment:** 3 to 6 months of intense, full-time work.
+*   **Cost:** You don't pay; they pay you. Usually provides $25,000 to $500,000 in exchange for 5-10% equity [citation:Startup Incubator vs. Accelerator: Which Is Right for You?](https://online.hbs.edu/blog/post/startup-incubator-vs-accelerator).
+*   **Mentor/Network Access:** Unmatched for fundraising. Intense mentorship from industry leaders and a tight-knit cohort of peer founders [citation:Startup Incubator vs. Accelerator: Which Is Right for You?](https://online.hbs.edu/blog/post/startup-incubator-vs-accelerator).
+*   **Hands-on Opportunities:** 100%. You learn by executing your own business model.
+*   **Fundraising & Business/Product Learning:** The absolute gold standard for fundraising prep. Learning is purely survival-driven and tactical.
+*   **Overall Value:** Best if you already have a technical team and a Minimum Viable Product (MVP), and are ready to scale rapidly [citation:Startup Incubator vs. Accelerator: Which Is Right for You?](https://online.hbs.edu/blog/post/startup-incubator-vs-accelerator).
+
+#### 4. Cohort-Based Online Courses (e.g., On Deck, Reforge, Maven)
+*   **Curriculum:** Hyper-specific, tactical skill acquisition (e.g., "No-code MVP building", "Product-Led Growth", "Founder Sales"). 
+*   **Time Commitment:** 4 to 12 weeks, usually part-time (5-10 hours/week) [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).
+*   **Cost:** Low to Medium ($500 to $5,000+) [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).
+*   **Mentor/Network Access:** Strong peer accountability. Programs like On Deck (approx. $3,000 - $10,000) offer massive networks of operators and potential co-founders globally [citation:11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021).
+*   **Hands-on Opportunities:** High. Most curriculums require you to build a project, write, or launch a micro-product.
+*   **Overall Value:** The highest ROI for closing specific skill gaps quickly while maintaining a day job. Perfect for early idea validation.
+
+#### 5. Practical Venture-Building (Venture Studios / Builders)
+*   **Curriculum:** No formal classes; you learn strictly by co-building alongside a seasoned operational team [citation:Venture Builder vs. Accelerator vs. VC: Complete Comparison 2026](https://ncide.com/venture-builder-vs-accelerator).
+*   **Time Commitment:** 3 to 7 years (full life cycle) [citation:Venture Builder vs. Accelerator vs. VC: Complete Comparison 2026](https://ncide.com/venture-builder-vs-accelerator).
+*   **Cost:** Retainer model ($0–$30k/month) or high equity sacrifices (giving up 10-60% to the studio) [citation:Venture Builder vs. Accelerator vs. VC: Complete Comparison 2026](https://ncide.com/venture-builder-vs-accelerator).
+*   **Mentor/Network Access:** You are literally assigned a CTO, marketers, and legal team [citation:Venture Builder vs. Accelerator vs. VC: Complete Comparison 2026](https://ncide.com/venture-builder-vs-accelerator).
+*   **Overall Value:** Best for capital owners, industry experts, or traditional business owners who have a massive market insight but lack the technical ability to build a product themselves [citation:Venture Builder vs. Accelerator vs. VC: Complete Comparison 2026](https://ncide.com/venture-builder-vs-accelerator).
+
+#### 6. Mentoring & Incubators
+*   **Curriculum:** Unstructured, resource-driven support.
+*   **Time Commitment:** 1 to 5 years, flexible [citation:Startup Incubator vs. Accelerator: Which Is Right for You?](https://online.hbs.edu/blog/post/startup-incubator-vs-accelerator).
+*   **Cost:** Usually free or a small equity/fee arrangement.
+*   **Overall Value:** Great for solo founders needing a shared workspace and periodic advice before they have an MVP [citation:Startup Incubator vs. Accelerator: Which Is Right for You?](https://online.hbs.edu/blog/post/startup-incubator-vs-accelerator).
+
+---
+
+### Phased 1–2 Year Learning & Experimentation Plan
+
+If your goal is to systematically build the capability to launch a venture within 1-2 years, an iterative, "learn-by-doing" approach is drastically cheaper and faster than a traditional degree. 
+
+#### Phase 1: Knowledge & Network Seeding (Months 1–4)
+*   **Goal:** Close critical tactical gaps without quitting your day job; find a co-founder.
+*   **Action:** Enroll in 1-2 cohort-based courses (e.g., an On Deck Founder Fellowship or a Maven course on No-Code MVP building).
+*   **Focus Area:** Customer discovery and Market learning. 
+*   **Deliverable:** 50+ user interviews and a validated problem statement. A mapped network of 10+ potential technical or operational co-founders.
+
+#### Phase 2: The Practical Sandbox / MVP Build (Months 5–9)
+*   **Goal:** Learn Product and Business Model mechanics through raw experimentation.
+*   **Action:** Bootstrapping a side-project or joining a local/university Incubator. 
+*   **Focus Area:** Build a Minimum Viable Product (MVP). You don't need code; use Bubble, Webflow, or Zapier. Test monetization early to learn unit economics.
+*   **Deliverable:** A live MVP with early traction (first 10-100 paying customers or highly engaged beta users). 
+
+#### Phase 3: The Accelerator Sprint (Months 10–14)
+*   **Goal:** Learn to scale, manage a team, and prepare for institutional fundraising.
+*   **Action:** Apply to and join a top-tier Accelerator (e.g., Y Combinator, Techstars, 500 Global) using your MVP's traction. 
+*   **Focus Area:** Intense go-to-market execution, cap table management, and perfecting the investor pitch. 
+*   **Deliverable:** A successful "Demo Day" presentation resulting in a Seed round of capital. 
+
+#### Phase 4: Full-Time Venture & Scaling (Months 15–24)
+*   **Goal:** Master team management and operational growth. 
+*   **Action:** Transition full-time (if you haven't already). Alternatively, if the MVP failed, leverage the accelerator network to pivot or join a Venture Studio as an Entrepreneur-in-Residence (EIR) to build a new idea with a de-risked team.
+*   **Focus Area:** Hiring, culture building, and transitioning from "builder" to "manager/CEO."
+*   **Deliverable:** A scaling business model ready for Series A, or a clean failure providing the exact credentials to build the next one faster.
+
+---
+
+### Sources
+* [MBA for Entrepreneurs: Do You Really Need One?](https://www.scaler.com/school-of-business/guide/mba-for-entrepreneurs) - Analysis of business school ROI versus bootstrapping.
+* [Startup Incubator vs. Accelerator: Which Is Right for You?](https://online.hbs.edu/blog/post/startup-incubator-vs-accelerator) - Harvard Business School Online breakdown of early-stage funding ecosystems.
+* [11 Best Cohort-Based Courses in 2026 (Ranked)](https://www.teachfloor.com/blog/8-best-cohort-based-courses-of-2021) - Guide to structured, peer-led adult learning programs for founders.
+* [Venture Builder vs. Accelerator vs. VC: Complete Comparison 2026](https://ncide.com/venture-builder-vs-accelerator) - In-depth breakdown of venture studios and alternative equity structures.
