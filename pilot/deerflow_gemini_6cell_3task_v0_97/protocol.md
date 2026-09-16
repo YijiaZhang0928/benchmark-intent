@@ -4,7 +4,7 @@
 
 - ID: `deerflow-gemini-6cell-3task-v0.97`
 - Type: experiment protocol
-- Status: R1 stopped on first-cell hard timeout; explicitly authorized R2 frozen before outputs
+- Status: R1 and R2 both stopped on execution-order 1; 0 completed reports, no retries
 - Date: 2026-09-15
 - Tasks: T01–T03
 - Planned reports: 18 (3 tasks × 3 persona contexts × 2 clarification policies)
@@ -95,6 +95,8 @@ After the r1 first-cell timeout was preserved and reported, the user explicitly 
 - remains stop-on-first-failure and zero-retry within r2.
 
 The r1 partial trace remains an engineering failure and is never relabeled as an r2 output.
+
+R2 then stopped after 68.83 seconds with `GraphRecursionError` at the frozen recursion limit of 100. The trace contains 52 observed tool records, no clarification request and no final-report text. No later r2 cell started. Raising the recursion limit would change the execution budget and therefore requires a new, explicitly approved run label rather than an automatic retry.
 
 ## Current provider status
 

@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.97-r2",
+  "run_label": "r2",
+  "manifest": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/execution_manifest_r2.json",
+  "started_at_utc": "2026-09-16T18:06:31.142916+00:00",
+  "requested_order_range": [
+    1,
+    18
+  ],
+  "completed": [],
+  "failed": {
+    "type": "RuntimeError",
+    "message": "Cell T02_RAW100_ASK_R2 failed without retry: exit=2, status=failed",
+    "failed_at_utc": "2026-09-16T18:07:42.035942+00:00"
+  }
+}

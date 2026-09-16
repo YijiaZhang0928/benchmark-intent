@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.97-r2",
+  "cell_id": "T02_RAW100_ASK_R2",
+  "thread_id": "v097-g31-t02-raw100-ask-r2",
+  "failure_type": "GraphRecursionError",
+  "recursion_limit": 100,
+  "elapsed_seconds": 68.830594,
+  "trace_event_count": 96,
+  "trace_values_events": 23,
+  "trace_tool_message_events": 26,
+  "trace_ai_message_events": 46,
+  "observed_tool_records": 52,
+  "asked_clarification": false,
+  "final_text_characters": 0,
+  "final_report_present": false,
+  "score_eligible": false,
+  "automatic_retry": false,
+  "batch_continued": false,
+  "failed_at_utc": "2026-09-16T18:07:42.035942+00:00",
+  "note": "The graph exhausted the frozen recursion limit during research before producing final report text. R2 stopped immediately; no later cell started."
+}

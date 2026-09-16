@@ -1,0 +1,377 @@
+{
+  "schema_version": "0.75",
+  "status": "failed",
+  "asked_clarification": false,
+  "clarification_attempted": false,
+  "clarification_presented": false,
+  "clarification_suppressed": false,
+  "clarification_calls": [],
+  "clarification_artifacts": [],
+  "all_observed_tools": [
+    {
+      "name": "read_file",
+      "args": {
+        "path": "/mnt/skills/public/deep-research/SKILL.md"
+      },
+      "id": "0f7fac12-eb39-4742-a189-3ee8f5ef6b56"
+    },
+    {
+      "name": "read_file",
+      "tool_call_id": "0f7fac12-eb39-4742-a189-3ee8f5ef6b56",
+      "content": "---\nname: deep-research\ndescription: Use this skill instead of WebSearch for ANY question requiring web research. Trigger on queries like \"what is X\", \"explain X\", \"compare X and Y\", \"research X\", or before content generation tasks. Provides systematic multi-angle research methodology instead of single superficial searches. Use this proactively when the user's question needs online information.\n---\n\n# Deep Research Skill\n\n## Overview\n\nThis skill provides a systematic methodology for conducting thorough web research. **Load this skill BEFORE starting any content generation task** to ensure you gather sufficient information from multiple angles, depths, and sources.\n\n## When to Use This Skill\n\n**Always load this skill when:**\n\n### Research Questions\n- User asks \"what is X\", \"explain X\", \"research X\", \"investigate X\"\n- User wants to understand a concept, technology, or topic in depth\n- The question requires current, comprehensive information from multiple sources\n- A single web search would be insufficient to answer properly\n\n### Content Generation (Pre-research)\n- Creating presentations (PPT/slides)\n- Creating frontend designs or UI mockups\n- Writing articles, reports, or documentation\n- Producing videos or multimedia content\n- Any content that requires real-world information, examples, or current data\n\n## Core Principle\n\n**Never generate content based solely on general knowledge.** The quality of your output directly depends on the quality and quantity of research conducted beforehand. A single search query is NEVER enough.\n\n## Research Methodology\n\n### Phase 1: Broad Exploration\n\nStart with broad searches to understand the landscape:\n\n1. **Initial Survey**: Search for the main topic to understand the overall context\n2. **Identify Dimensions**: From initial results, identify key subtopics, themes, angles, or aspects that need deeper exploration\n3. **Map the Territory**: Note different perspectives, stakeholders, or viewpoints that exist\n\nExample:\n```\nTopic: \"AI in healthcare\"\nInitial searches:\n- \"AI healthcare applications 2024\"\n- \"artificial intelligence medical diagnosis\"\n- \"healthcare AI market trends\"\n\nIdentified dimensions:\n- Diagnostic AI (radiology, pathology)\n- Treatment recommendation systems\n- Administrative automation\n- Patient monitoring\n- Regulatory landscape\n- Ethical considerations\n```\n\n### Phase 2: Deep Dive\n\nFor each important dimension identified, conduct targeted research:\n\n1. **Specific Queries**: Search with precise keywords for each subtopic\n2. **Multiple Phrasings**: Try different keyword combinations and phrasings\n3. **Fetch Full Content**: Use `web_fetch` to read important sources in full, not just snippets\n4. **Follow References**: When sources mention other important resources, search for those too\n\nExample:\n```\nDimension: \"Diagnostic AI in radiology\"\nTargeted searches:\n- \"AI radiology FDA approved systems\"\n- \"chest X-ray AI detection accuracy\"\n- \"radiology AI clinical trials results\"\n\nThen fetch and read:\n- Key research papers or summaries\n- Industry reports\n- Real-world case studies\n```\n\n### Phase 3: Diversity & Validation\n\nEnsure comprehensive coverage by seeking diverse information types:\n\n| Information Type | Purpose | Example Searches |\n|-----------------|---------|------------------|\n| **Facts & Data** | Concrete evidence | \"statistics\", \"data\", \"numbers\", \"market size\" |\n| **Examples & Cases** | Real-world applications | \"case study\", \"example\", \"implementation\" |\n| **Expert Opinions** | Authority perspectives | \"expert analysis\", \"interview\", \"commentary\" |\n| **Trends & Predictions** | Future direction | \"trends 2024\", \"forecast\", \"future of\" |\n| **Comparisons** | Context and alternatives | \"vs\", \"comparison\", \"alternatives\" |\n| **Challenges & Criticisms** | Balanced view | \"challenges\", \"limitations\", \"criticism\" |\n\n### Phase 4: Synthesis Check\n\nBefore proceeding to content generation, verify:\n\n- [ ] Have I searched from at least 3-5 different angles?\n- [ ] Have I fetched and read the most important sources in full?\n- [ ] Do I have concrete data, examples, and expert perspectives?\n- [ ] Have I explored both positive aspects and challenges/limitations?\n- [ ] Is my information current and from authoritative sources?\n\n**If any answer is NO, continue researching before generating content.**\n\n## Search Strategy Tips\n\n### Effective Query Patterns\n\n```\n# Be specific with context\n❌ \"AI trends\"\n✅ \"enterprise AI adoption trends 2024\"\n\n# Include authoritative source hints\n\"[topic] research paper\"\n\"[topic] McKinsey report\"\n\"[topic] industry analysis\"\n\n# Search for specific content types\n\"[topic] case study\"\n\"[topic] statistics\"\n\"[topic] expert interview\"\n\n# Use temporal qualifiers — always use the ACTUAL current year from <current_date>\n\"[topic] 2026\"   # ← replace with real current year, never hardcode a past year\n\"[topic] latest\"\n\"[topic] recent developments\"\n```\n\n### Temporal Awareness\n\n**Always check `<current_date>` in your context before forming ANY search query.**\n\n`<current_date>` gives you the full date: year, month, day, and weekday (e.g. `2026-02-28, Saturday`). Use the right level of precision depending on what the user is asking:\n\n| User intent | Temporal precision needed | Example query |\n|---|---|---|\n| \"today / this morning / just released\" | **Month + Day** | `\"tech news February 28 2026\"` |\n| \"this week\" | **Week range** | `\"technology releases week of Feb 24 2026\"` |\n| \"recently / latest / new\" | **Month** | `\"AI breakthroughs February 2026\"` |\n| \"this year / trends\" | **Year** | `\"software trends 2026\"` |\n\n**Rules:**\n- When the user asks about \"today\" or \"just released\", use **month + day + year** in your search queries to get same-day results\n- Never drop to year-only when day-level precision is needed — `\"tech news 2026\"` will NOT surface today's news\n- Try multiple phrasings: numeric form (`2026-02-28`), written form (`February 28 2026`), and relative terms (`today`, `this week`) across different queries\n\n❌ User asks \"what's new in tech today\" → searching `\"new technology 2026\"` → misses today's news\n✅ User asks \"what's new in tech today\" → searching `\"new technology February 28 2026\"` + `\"tech news today Feb 28\"` → gets today's results\n\n### When to Use web_fetch\n\nUse `web_fetch` to read full content when:\n- A search result looks highly relevant and authoritative\n- You need detailed information beyond the snippet\n- The source contains data, case studies, or expert analysis\n- You want to understand the full context of a finding\n\n### Iterative Refinement\n\nResearch is iterative. After initial searches:\n1. Review what you've learned\n2. Identify gaps in your understanding\n3. Formulate new, more targeted queries\n4. Repeat until you have comprehensive coverage\n\n## Quality Bar\n\nYour research is sufficient when you can confidently answer:\n- What are the key facts and data points?\n- What are 2-3 concrete real-world examples?\n- What do experts say about this topic?\n- What are the current trends and future directions?\n- What are the challenges or limitations?\n- What makes this topic relevant or important now?\n\n## Common Mistakes to Avoid\n\n- ❌ Stopping after 1-2 searches\n- ❌ Relying on search snippets without reading full sources\n- ❌ Searching only one aspect of a multi-faceted topic\n- ❌ Ignoring contradicting viewpoints or challenges\n- ❌ Using outdated information when current data exists\n- ❌ Starting content generation before research is complete\n\n## Output\n\nAfter completing research, you should have:\n1. A comprehensive understanding of the topic from multiple angles\n2. Specific facts, data points, and statistics\n3. Real-world examples and case studies\n4. Expert perspectives and authoritative sources\n5. Current trends and relevant context\n\n**Only then proceed to content generation**, using the gathered information to create high-quality, well-informed content.\n",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"visiting graduate student\" \"visiting student\" media communication US university",
+        "max_results": 5
+      },
+      "id": "09df152f-3725-425e-b56c-aba5c92ecb0c"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"visiting student\" University of Amsterdam communication exchange",
+        "max_results": 5
+      },
+      "id": "2946ee48-2585-4375-abf2-b9db028fd2d0"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "max_results": 5,
+        "query": "UTokyo USTEP exchange program graduate"
+      },
+      "id": "957f9e77-a083-4573-a3df-86ddd8157385"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "max_results": 5,
+        "query": "NUS \"Non-Graduating\" programme graduate exchange"
+      },
+      "id": "6d8a2488-0d76-4135-b45f-d774c13b103f"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "09df152f-3725-425e-b56c-aba5c92ecb0c",
+      "content": "{\n  \"query\": \"\\\"visiting graduate student\\\" \\\"visiting student\\\" media communication US university\",\n  \"total_results\": 2,\n  \"results\": [\n    {\n      \"title\": \"Visiting Graduate Student and Visiting Graduate Scholars Policies\",\n      \"url\": \"https://homewoodgrad.jhu.edu/academics/visiting-grad-student-scholar-policies/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Visiting Graduate Students and Visiting Graduate Student Scholars ...\",\n      \"url\": \"https://engineering.jhu.edu/case/visiting-graduate-students-and-visiting-graduate-student-scholars/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "2946ee48-2585-4375-abf2-b9db028fd2d0",
+      "content": "{\n  \"query\": \"\\\"visiting student\\\" University of Amsterdam communication exchange\",\n  \"total_results\": 1,\n  \"results\": [\n    {\n      \"title\": \"Independent student exchange (free mover) - University of Amsterdam\",\n      \"url\": \"https://www.uva.nl/en/education/exchange/independent-student-exchange-free-mover/independent-student-exchange-free-mover.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "957f9e77-a083-4573-a3df-86ddd8157385",
+      "content": "{\n  \"query\": \"UTokyo USTEP exchange program graduate\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"University-wide Student Exchange Program (USTEP) | The University of Tokyo\",\n      \"url\": \"https://www.u-tokyo.ac.jp/en/academics/ustep.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"University-wide Student Exchange Program (USTEP) | Go ... - 東京大学\",\n      \"url\": \"https://www.u-tokyo.ac.jp/adm/go-global/en/program-list-USTEP.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Application for The University of Tokyo University-wide Student ...\",\n      \"url\": \"https://www.globalkomaba.c.u-tokyo.ac.jp/news/nid00001491.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Faculty/Graduate School of Economics, UTokyo For Current Students\",\n      \"url\": \"https://www.student.e.u-tokyo.ac.jp/is/haken-e.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"[Japan] University of Tokyo - the University-Wide Student Exchange ...\",\n      \"url\": \"https://oia.ugm.ac.id/2026/08/02/japan-university-of-tokyo-the-university-wide-student-exchange-program-ustep-for-spring-2027-admission/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "6d8a2488-0d76-4135-b45f-d774c13b103f",
+      "content": "{\n  \"query\": \"NUS \\\"Non-Graduating\\\" programme graduate exchange\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"NUS Office of the University Registrar\",\n      \"url\": \"https://nus.edu.sg/registrar/academic-information-policies/non-graduating\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"NUS Office of the University Registrar\",\n      \"url\": \"https://nus.edu.sg/registrar/prospective-students/non-graduating/coursework\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Non-Graduating (Exchange & Non-Exchange) Students\",\n      \"url\": \"https://fass.nus.edu.sg/ecs/non-graduating-exchange-non-exchange-students/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Home [www.comp.nus.edu.sg]\",\n      \"url\": \"https://www.comp.nus.edu.sg/~ngne/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Non-Graduating Programme - NUS Nursing\",\n      \"url\": \"https://medicine.nus.edu.sg/nursing/education-programmes/postgraduate/non-graduating-programme/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "max_results": 5,
+        "query": "visiting graduate student program media communication USC Annenberg"
+      },
+      "id": "e610b6e3-afac-4ec6-8d41-efd95b784103"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "visiting student LSE graduate media communications",
+        "max_results": 5
+      },
+      "id": "8398b58a-d7c9-41a4-922e-ce03c7cfd05f"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "\"visiting student\" University of Amsterdam cost living exchange",
+        "max_results": 5
+      },
+      "id": "2bf07931-485b-4b9b-808d-025b1c82225a"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NTU GEM Trailblazer graduate exchange cost of living",
+        "max_results": 5
+      },
+      "id": "aafa3ffa-8a8f-4d64-811e-89f05bb5fff2"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "e610b6e3-afac-4ec6-8d41-efd95b784103",
+      "content": "{\n  \"query\": \"visiting graduate student program media communication USC Annenberg\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Graduate Programs - USC Annenberg School for Communication and Journalism\",\n      \"url\": \"https://annenberg.usc.edu/academics/graduate-programs\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"School of Communication | USC Annenberg School for Communication and ...\",\n      \"url\": \"https://annenberg.usc.edu/communication\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"PDF 2024-25 USC Annenberg PhD Student Handbook\",\n      \"url\": \"https://assets.uscannenberg.org/docs/phd-handbook/2024-25-phd-handbook.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"USC Annenberg School for Communication and Journalism\",\n      \"url\": \"https://catalogue.usc.edu/preview_entity.php?catoid=18&ent_oid=3970\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"USC Annenberg International Programs\",\n      \"url\": \"https://international.uscannenberg.org/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "8398b58a-d7c9-41a4-922e-ce03c7cfd05f",
+      "content": "{\n  \"query\": \"visiting student LSE graduate media communications\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Visiting Research Student in Media and Communications - LSE\",\n      \"url\": \"https://www.lse.ac.uk/study-at-lse/graduate/vrs-media-and-communications\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Visiting Research Student in Media and Communications\",\n      \"url\": \"https://g5admissions.com/g5-programmes/lse/visiting-research-student-in-media-and-communications\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Visiting Appointments Scheme - LSE\",\n      \"url\": \"https://www.lse.ac.uk/media-and-communications/people/secure/visiting-appointments-scheme\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"MSc Media and Communications - LSE\",\n      \"url\": \"https://www.lse.ac.uk/study-at-lse/graduate/msc-media-and-communications\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Visiting Research Student in M - London School o | Educatly\",\n      \"url\": \"https://www.educatly.com/program/716695/visiting-research-student-in-media-and-communications\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "2bf07931-485b-4b9b-808d-025b1c82225a",
+      "content": "{\n  \"query\": \"\\\"visiting student\\\" University of Amsterdam cost living exchange\",\n  \"total_results\": 1,\n  \"results\": [\n    {\n      \"title\": \"Independent student exchange (free mover) - University of Amsterdam\",\n      \"url\": \"https://www.uva.nl/en/education/exchange/independent-student-exchange-free-mover/independent-student-exchange-free-mover.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"ddgs_brave_fallback\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "aafa3ffa-8a8f-4d64-811e-89f05bb5fff2",
+      "content": "{\n  \"query\": \"NTU GEM Trailblazer graduate exchange cost of living\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"GEM Trailblazer (Semester Exchange) | NTU Singapore\",\n      \"url\": \"https://www.ntu.edu.sg/education/student-exchanges/exchange-programmes/inbound-programmes\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"NTU - Exchange\",\n      \"url\": \"https://gem.ntu.edu.sg/index.cfm\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"NTU GEM Exchange & Course Matching | NTU Links\",\n      \"url\": \"https://www.ntulinks.com/exchange\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Global Education | NTU Singapore\",\n      \"url\": \"https://www.ntu.edu.sg/education/student-exchanges\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Programmes > NTU - Exchange\",\n      \"url\": \"https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.lse.ac.uk/study-at-lse/graduate/vrs-media-and-communications"
+      },
+      "id": "b107940e-24ac-4b69-9301-2d24a4095265"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://nus.edu.sg/registrar/prospective-students/non-graduating/coursework"
+      },
+      "id": "5b528a3f-e619-4257-a838-ef45e585e5d8"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.u-tokyo.ac.jp/en/academics/ustep.html"
+      },
+      "id": "2269b678-817c-4e10-96e4-2cf2886faf57"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.uva.nl/en/education/exchange/independent-student-exchange-free-mover/independent-student-exchange-free-mover.html"
+      },
+      "id": "28567124-01ff-49e1-9b62-3bc84240d466"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "b107940e-24ac-4b69-9301-2d24a4095265",
+      "content": "# Visiting Research Student in Media and Communications\n\n* [Introduction](#overview__introduction)\n\n### Introduction\n\nWe welcome research students from other universities to spend from one term up to one academic year at LSE as a Visiting Research Student (VRS).\n\nThe VRS scheme allows students who are registered as\ndoctoral researcher at other institutions to participate in research activities\nin the department and the School, to interact with other research students, and\nto benefit from the expertise of LSE faculty, the training offered by the [PhD Academy](https://info.lse.ac.uk/current-students/phd-academy), and\n[LSE Library](https://www.lse.ac.uk/library) facilities. Note that\nVisiting Research Students don’t have access to any LSE taught courses.\n\nWe welcome applications that complement the academic\ninterests of faculty members in the department and we recommend that you\ninvestigate their [research interests](https://www.lse.ac.uk/media-and-communications/people) before applying. Once you have found an academic whose research interests are relevant to your own you should contact them directly, outlining your proposed area of research, to see if they’ll agree, in principle, to act as an advisor during your time at LSE.\n\nAs a VRS, you won’t be able to take accredited or examined courses or be fully supervised in the same way as an LSE doctoral student. You’ll be able to participate in doctoral workshops and research seminars, interact with other doctoral students, and discuss your research with your nominated advisor. You’re expected to be self-funded.\n\nBecause of its emphasis on independent research, the VRS scheme is better suited to students who are at an advanced stage in their doctoral training and research.\n\n*Visit the [School’s Calendar](https://www.lse.ac.uk/resources/calendar/research.htm) for the general regulations governing visiting research students.*\n\nDiscover more about our students and department.\n\n* [Meet the department](#why-study-with-us__meet-the-department)\n* [Why LSE](#why-study-with-us__why-lse)\n\n### Meet the department\n\nThe Department of\nMedia and Communications is a world-leading centre for education and research\nin the field. Our department is ranked first in the UK and sixth globally\nfor communication and media studies ([QS World University Rankings by Subject 2026](https://www.topuniversities.com/university-subject-rankings/communication-media-studies)).\n\nWe offer students\na wide selection of [programmes](https://www.lse.ac.uk/media-and-communications/study/our-programmes), including master’s degrees, doctoral\nresearch training and short courses. At any one time, we have around 270\nmaster’s students and 30 PhD students from around the world – all varying in\nage, professional experience and backgrounds.\n\nWithin the department, our research is organised around four key themes: media culture and identities, media participation and politics, communication histories and futures, and communication technology, rights and justice. The outputs from our research are shared with organisations such as the BBC, Facebook, Google, UNICEF, Ofcom and the UK/EU governments.\n\nLSE’s location at the heart of London, one of the world's media capitals, allows us to foster close links with media and communications industries and policymakers.\n\nGraduates from our programmes progress to interesting roles in broadcasting, journalism, advertising, new media industries, political marketing, market research, regulation and policy, media management and research in the public and private sectors.\n\n* [Overview](#your-application__overview)\n\n### Overview\n\nTo apply as a visiting research student, you apply in the same way as for our MPhil/PhD programmes, with the same entry criteria. Find the entry criteria for the [MPhil/PhD Media and Communications](/study-at-lse/graduate/mphilphd-media-and-communications).\n\nWe welcome\napplications for research programmes that complement the academic interests of our\nstaff at LSE. For this reason, we recommend that you take a look at our [staff research interests](https://www.lse.ac.uk/media-and-communications/people) before\napplying.\n\nWe carefully consider each application and take into account all the information included on your form, such as your:\n\n* academic achievement (including existing and pending qualifications)\n* statement of academic purpose\n* references\n* CV\n* outline research proposal\n* sample of written work.\n\n[See further information on supporting documents](https://www.lse.ac.uk/study-at-lse/Graduate/Prospective-students/Supporting-documents).\n\nYou may need to provide evidence of your English language proficiency. [See our English language requirements](https://www.lse.ac.uk/study-at-lse/Graduate/Prospective-students/Entry-requirements/English-language-requirements).\n\nCompetition for places at LSE is strong. So, even if you meet the minimum entry requirements, this does not guarantee you an offer of a place.\n\nHowever, please don’t feel deterred from applying – we want to hear from all suitably qualified students. Think carefully about how you can put together the strongest possible application to help you stand out from other students.\n\nThe\n[table of fees](https://info.lse.ac.uk/staff/divisions/Planning-Division/Table-of-Fees) shows the latest tuition fees for all programmes offered by the School.\n\n* [Home](#fees-and-funding__home)\n* [Overseas](#fees-and-funding__overseas)\n\n### Home\n\n£104\n\nHome student fee per calendar week (2026/27)\n\nFor this programme, all students pay the same tuition fees, regardless of their fee status. Fees are payable for all calendar weeks, during and outside of term.\n\n* [Explore LSE](#discover-more__explore-more)\n\n### Explore LSE\n\n#### [Student support](https://www.lse.ac.uk/student-life/Campus-life/Support-during-your-studies)\n\nFind out more about our academic guidance, advice and pastoral care\n\n![A group of students sitting with an advisor at a LSE LIFE session ](/all-images/16-9-ratio-lse-life-6166.x53dba4e9.jpg?w=560&h=336&q=85&f=webp)\n\n#### [Accommodation](https://www.lse.ac.uk/student-life/accommodation)\n\nExplore the accommodation services we offer to our students\n\n![Two students taking part in Action for Happiness held in LSE Residences during London Wellbeing Week 2020.](/all-images/16-9-ratio-wellbeing-week-9873.xa41ea4a3.jpg?w=560&h=336&q=85&f=webp)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "5b528a3f-e619-4257-a838-ef45e585e5d8",
+      "content": "Error: Insufficient readable content (56 characters) from https://nus.edu.sg/registrar/prospective-students/non-graduating/coursework",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "2269b678-817c-4e10-96e4-2cf2886faf57",
+      "content": "# The University of Tokyo\n\n*University-wide Student Exchange Program (USTEP)*\n--------------------------------------------------\n\nThe University of Tokyo (UTokyo) accepts exchange students from partner universities with which the University has entered into a Memorandum of Understanding concerning student exchange. Applications to USTEP will be accepted through the partner universities’ offices responsible for student exchange.\n\n* [Overview of USTEP](/en/academics/ustep-overview.html)\n* [Type G (For Graduates)](/en/academics/ustep-type-g.html)\n* [Type U (For Undergraduates)](/en/academics/ustep-type-u.html)",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "28567124-01ff-49e1-9b62-3bc84240d466",
+      "content": "# Independent student exchange (free mover)\n\nIf your university does not have a formal exchange agreement with the University of Amsterdam, you may apply to study at the UvA as an independent visiting student (free mover). Free movers are non-degree seeking, fee-paying visiting students. You may attend the UvA for a maximum of two semesters (12 months).\n\n### Economics and Business\n\nCurrently, this is the only Faculty Level Exchange programme that accepts applications by independent students. For more information on the study programme, entry requirements, application procedure and costs, please check the [Exchange programme page of Economics and Business](https://www.uva.nl/en/programmes/exchange/economics-and-business/economics-and-business.html).\n\nPlease note: only students with an EU / EEA nationality can be accepted to the freemover programme.\n\nUvA degree programmes\n---------------------\n\nIf you are interested in obtaining a full degree at the University of Amsterdam, you can enrol in in one of the English-taught Bachelor’s or Master's programmes.",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NUS Non-Graduating coursework fees graduate",
+        "max_results": 5
+      },
+      "id": "34c10345-454b-4ee0-84af-9ef8da11a718"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NTU GEM Trailblazer fees exchange non-graduating",
+        "max_results": 5
+      },
+      "id": "87b6648b-180b-415a-87a1-532f05ce1555"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "USC Annenberg visiting scholar student tuition fee",
+        "max_results": 5
+      },
+      "id": "c05b4bbd-7549-4992-9915-54858350e869"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "University of Tokyo USTEP type G graduate",
+        "max_results": 5
+      },
+      "id": "a22de235-3feb-411a-8a34-ff4e29e45c4d"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "34c10345-454b-4ee0-84af-9ef8da11a718",
+      "content": "{\n  \"query\": \"NUS Non-Graduating coursework fees graduate\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"NUS Office of the University Registrar\",\n      \"url\": \"https://nus.edu.sg/registrar/administrative-policies-procedures/non-graduating/non-graduating-fees\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"NUS Office of the University Registrar\",\n      \"url\": \"https://nus.edu.sg/registrar/administrative-policies-procedures/graduate/graduate-fees\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Fees - NUS Faculty of Arts & Social Sciences\",\n      \"url\": \"https://fass.nus.edu.sg/graduate/coursework-programmes/fees-gradcoursework/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Non-Graduating (Exchange & Non-Exchange) Students\",\n      \"url\": \"https://fass.nus.edu.sg/ecs/non-graduating-exchange-non-exchange-students/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Tuition Fees - College of Design and Engineering\",\n      \"url\": \"https://cde.nus.edu.sg/graduate/graduate-programmes-by-coursework/tuition-fees/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "87b6648b-180b-415a-87a1-532f05ce1555",
+      "content": "{\n  \"query\": \"NTU GEM Trailblazer fees exchange non-graduating\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"GEM Trailblazer (Semester Exchange) | NTU Singapore\",\n      \"url\": \"https://www.ntu.edu.sg/education/student-exchanges/exchange-programmes/inbound-programmes\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"NTU - Exchange\",\n      \"url\": \"https://gem.ntu.edu.sg/index.cfm\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"GEM Trailblazer (Semester Exchange) | NTU Singapore\",\n      \"url\": \"https://wcms-uat-admin.ntu.edu.sg/education/student-exchanges/exchange-programmes/inbound-programmes\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"[Singapore] Nanyang Technological University - GEM Trailblazer Exchange ...\",\n      \"url\": \"https://oia.ugm.ac.id/2025/02/26/singapore-nanyang-technological-university-gem-trailblazer-exchange-ay-25-26-semester-1/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Visiting Research Students (Non-Graduating Non-Exchange) - NTU Singapore\",\n      \"url\": \"https://www.ntu.edu.sg/education/student-exchanges/visiting-research\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "c05b4bbd-7549-4992-9915-54858350e869",
+      "content": "{\n  \"query\": \"USC Annenberg visiting scholar student tuition fee\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Tuition, Financial Aid and Scholarships - USC Annenberg School for ...\",\n      \"url\": \"https://annenberg.usc.edu/admissions/tuition-and-financial-aid\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"USC \\\"Sticker Shock\\\": New analysis ranks USC as fourth most expensive ...\",\n      \"url\": \"https://www.uscannenbergmedia.com/2026/09/15/usc-sticker-shock-new-analysis-ranks-usc-as-fourth-most-expensive-university/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Tuition and Fees - Office of Academic Records and Registrar\",\n      \"url\": \"https://arr.usc.edu/tuition-and-fees/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"J-1 Exchange Visitor Funding Requirements - USC OIS\",\n      \"url\": \"https://ois.usc.edu/getting-started/j1-exchange-visitor-funding-requirements/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Annenberg Scholarships and Awards | USC Annenberg School for ...\",\n      \"url\": \"https://annenberg.usc.edu/current-students/resources/annenberg-scholarships-and-awards\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "a22de235-3feb-411a-8a34-ff4e29e45c4d",
+      "content": "{\n  \"query\": \"University of Tokyo USTEP type G graduate\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Type G (For Graduates) | The University of Tokyo\",\n      \"url\": \"https://www.u-tokyo.ac.jp/en/academics/ustep-type-g.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"University-wide Student Exchange Program (USTEP) | The University of Tokyo\",\n      \"url\": \"https://www.u-tokyo.ac.jp/en/academics/ustep.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"USTEP Type G | Website for International Students\",\n      \"url\": \"https://www.u-tokyo.ac.jp/adm/inbound/en/programs-ex-ustep-g.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"PDF Overview of USTEP Type U Type G - studyabroad.ntu.edu.tw\",\n      \"url\": \"https://studyabroad.ntu.edu.tw/wp-content/uploads/2024/11/400245538.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"[Japan] University of Tokyo - the University-Wide Student Exchange ...\",\n      \"url\": \"https://oia.ugm.ac.id/2026/08/02/japan-university-of-tokyo-the-university-wide-student-exchange-program-ustep-for-spring-2027-admission/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://nus.edu.sg/registrar/administrative-policies-procedures/non-graduating/non-graduating-fees"
+      },
+      "id": "d52fd1c2-d141-4e3c-96aa-350c9c161b03"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ntu.edu.sg/education/student-exchanges/exchange-programmes/inbound-programmes"
+      },
+      "id": "f21fb03a-f756-4694-a8b0-d8f2ab4bacb4"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://ois.usc.edu/getting-started/j1-exchange-visitor-funding-requirements/"
+      },
+      "id": "c624515c-4992-40ff-8de1-dabf25a21485"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.u-tokyo.ac.jp/en/academics/ustep-type-g.html"
+      },
+      "id": "66979679-8cfe-4f4d-a08f-e3569cb0c00b"
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "d52fd1c2-d141-4e3c-96aa-350c9c161b03",
+      "content": "Error: Insufficient readable content (56 characters) from https://nus.edu.sg/registrar/administrative-policies-procedures/non-graduating/non-graduating-fees",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "f21fb03a-f756-4694-a8b0-d8f2ab4bacb4",
+      "content": "# GEM Trailblazer (Semester Exchange)\n\n![](https://www.ntu.edu.sg/media/images/default-source/ogem/dsc_7821727f80c3-7ed9-47c3-88cd-cdae08f3fce3.jpg?sfvrsn=7f711c6d_3)\n\n[![GEM Trailblazer Information Sheet](https://www.ntu.edu.sg/media/images/default-source/ogem/gemt_infosheet_ay2324_webheader.png?sfvrsn=4e8b5ec7_0)](https://gem.ntu.edu.sg/_customtags/ct_FileRetrieve.cfm?File_ID=21429)\n\nThe **GEM Trailblazer (Semester Exchange)** programme allows international students to either study or conduct research for one or two semesters, while gaining credit towards their home degree. We welcome applications for undergraduate and postgraduate students from our partner universities. In order to participate, students must be nominated by their home universities.\n\n![earth-globe](https://www.ntu.edu.sg/media/images/default-source/ogem/earth-globe.png?sfvrsn=3087aad3_0)\n\nRanked 12th in the World (QS World University Rankings)\n\n![partners](https://www.ntu.edu.sg/media/images/default-source/ogem/partners.png?sfvrsn=75e994c_0)\n\n350+ Partner Instiutions in over 40+ countries\n\n![travel-and-tourism](https://www.ntu.edu.sg/media/images/default-source/ogem/travel-and-tourism.png?sfvrsn=7ea55f71_0)\n\nGateway to Southeast Asia and beyond\n\n**To apply to the Programme, you must fulfil the following eligbility criteria:**\n\n* My home university has an active formal agreement with NTU\n* I have been nominated by my\n  home university\n* I am a full-time, matriculated\n  student at my home university\n* I have completed at least two\n  semesters of study at my home\n  university (at least seven\n  semesters for Direct Masters\n  applicants intending to read\n  PG-level courses )\n* I have a CGPA of at least 3.3/5\n  or equivalent\n* I am proficient in the English\n  language\n\nIf your home university does not have an agreement with NTU, you will need to check back with your home university’s exchange office regarding the availability of exchange or other options that you can consider. You may also be interested to explore the [GEM Trailblazer Summer programme](/education/student-exchanges/exchange-programmes/inbound-programmes#Content_C011_Col01) as an alternative.\n\n|  |  |  |  |\n| --- | --- | --- | --- |\n| **Period of Exchange** | **Nomination period** | **Application period** | **Application outcome** |\n| Semester 1 (Fall, August - December) | 1 - 15 March | 1 - 30 March | Successful applicants will be notified via email about 6-8 weeks after the application deadline. |\n| Semester 2 (Spring, January - May) | 1 - 15 September | 1 - 30 September |\n\n*\\* Dates may be subject to change.*\n\n**Pre-application: Nomination**  \n***You must be nominated by your home university*** to the Programme. We will not review your application if we do not receive your nomination details.\n\n**Step 1: Begin your application**  \nUpon successful nomination, you will receive an email contaning instructions and the link to the application portal. Complete your application according to our requirements so as not to hold back the outcome of your application. The full list and details of the mandatory supporting documents is found on Page 4 of the [Information Sheet](https://gem.ntu.edu.sg/_customtags/ct_FileRetrieve.cfm?File_ID=21429).\n\nYou will be asked to indicate your interest in a minimum of 10 courses in your application. These courses must be approved by your home university and deemed necessary for your academic progression. To learn more about the courses offered to exchange students, refer to the 'Coursework' tab of the [Programme Brochure](https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006).\n\n**Step 2: Submit the application**  \nAfer completing your application full, ensure that it is submitted no later than the stipulated application deadline. We ask that you respond in a timely manner if we request for further details or clarifications.\n\n**Step 3: Accept the Offer**  \nIf your application is approved, you will receive the E-Welcome Package approximately 6 to 8 weeks after the application deadline. Upon accepting the Offer, you will have access to the GEM Trailblazer Exchange/Study Abroad Portal, which provides\nyou with one-stop information and access to the relevant\nadmissions matters that require your attention prior to arrival.\n\nAccepting the Offer kickstarts the admissions process that will ensure a smooth start at NTU. You will have access to the [Pre-Arrival and Welcome Guides](https://entuedu.sharepoint.com/sites/Student/dept/sasd/ogem/SitePages/GEM-Trailblazer.aspx) on the Student Intranet, which contains important information to help you prepare for your semester abroad. The GEM Trailblazer team will also advise you about matters concerning the Student's Pass, on-campus housing, course registration, and more.\n\nNTU does not offer any scholarships or financial assistance to exchange students. You must be prepared to cover the entire cost of studying abroad for the duration of your programme. Refer to the 'Financial' tab of the [Programme Brochure](https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006) for information about the estimated expenses you should plan for.\n\n**About the DUO-Singapore Fellowship Award *(by invitation only)***  \nThe Asia-Europe Meeting's (ASEM) DUO Fellowship Programme aims to promote student exchanges between European and Asian ASEM member countries. Under this programme, the DUO-Singapore Exchange Fellowship is awarded by the Singapore Government to Singapore and ASEAN students studying in Nanyang Technological University (NTU), National University of Singapore (NUS) and Singapore Management University (SMU). The Award is also open to students***from European ASEM countries*** (who come from universities with fee waiver arrangements with NTU, NUS and SMU)\n\nThe Award, based on merit, is for a pair of exchanges between a university in Singapore and its respective partner university in Europe in any academic field. Awardees will receive a maximum of €4,000 Euros for one semester of up to four months, which covers airfare, accommodation and living expenses.\n\nThis award is ***by invitation only*** and only applies to students participating in the GEM Trailblazer programme during Semester 1 of each academic year. The GEM Trailblazer Team will inform short-listed candidates and host universities accordingly.\n\n[![](https://www.ntu.edu.sg/media/images/default-source/accommodations/gemt_keydates-milestones_18092023.png?sfvrsn=d4f71058_1 \"GEMT_KeyDates+Milestones_18092023\")](https://www.ntu.edu.sg/media/images/default-source/accommodations/gemt_keydates-milestones_18092023.png?sfvrsn=d4f71058_1)\n\n### Ready to explore the GEM Trailblazer Exchange programme?\n\nOur programme brochure will tell you more about course selection, accomodation and more.\n\n[GEM Trailblazer Programme Brochure](https://gem.ntu.edu.sg/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10006)\n\nWe are here to support you in your journey to becoming a global citizen! If you have a query about our inbound semester exchange programme, drop us an email at [GEM-Trailblazer@ntu.edu.sg](mailto:GEM-Trailblazer@ntu.edu.sg).",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "c624515c-4992-40ff-8de1-dabf25a21485",
+      "content": "Error fetching https://ois.usc.edu/getting-started/j1-exchange-visitor-funding-requirements/: HTTPStatusError: Client error '403 Forbidden' for url 'https://ois.usc.edu/getting-started/j1-exchange-visitor-funding-requirements/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "tool_call_id": "66979679-8cfe-4f4d-a08f-e3569cb0c00b",
+      "content": "# The University of Tokyo\n\n*How to Participate in USTEP Type G*\n------------------------------------\n\n**STEP 1: Explore and Plan**  \nBegin your journey by thoroughly reviewing the program details to ensure USTEP aligns with your academic goals.\n\nStudent Status (Special Auditor or Special Research Student): See ***1. Qualifications***  \nCourse Catalogue and Academic Calendar: See ***2. Courses and Academic Calendar***  \nFinancial Information and Scholarship: See ***3. Financial Information***  \nHousing and Insurance: See ***4. Additional Information***\n\n**STEP 2: Prepare**  \nCarefully review the eligibility criteria to ensure you meet all requirements before applying. Note that the specific requirements differ depending on the Graduate School.\n\nEligibility Requirements: See ***1. Qualifications***\n\n**STEP 3: Apply**  \nTo apply for USTEP, you must first be nominated by your home university. Once nominated, you will receive detailed application instructions, including a link to the online application form. All required documents must be submitted by the specified deadline.\n\nHow to Apply: See ***7. Nomination/Application Procedure***\n\n**STEP 4: After You Apply**  \nScreening results are announced in early May for Autumn Admission and early December for Spring Admission. Successful applicants will receive an official Certificate of Admission (CoA) from UTokyo. UTokyo will also assist with the visa application process, including applying for the issuance of the Certificate of Eligibility (CoE). In addition, accepted students will receive guidance on the housing application process, including options for university accommodations.\n\n**STEP 5: Pre-Arrival Preparation and Enrollment**  \nPrior to arriving in Japan, accepted students will be provided with guidance and assistance related to the orientation schedule, housing arrangements, course registration, academic procedures, and other essential preparations before departure.\n\n*1. Qualifications*\n-------------------\n\nExpand\n\n*2. Courses and Academic Calendar*\n----------------------------------\n\nExpand\n\n*3. Financial Information*\n--------------------------\n\nExpand\n\n*4. Additional Information*\n---------------------------\n\nExpand\n\n*5. FAQs*\n---------\n\nExpand\n\n*6. Inquiries*\n--------------\n\nExpand\n\n*7. Nomination / Application Procedure*\n---------------------------------------\n\nExpand",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "NTU WKWSCI graduate exchange program",
+        "max_results": 5
+      },
+      "id": "27d34957-a2a3-4c54-abee-aa165eb3fec3"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "UTokyo Interfaculty Initiative in Information Studies exchange English courses",
+        "max_results": 5
+      },
+      "id": "1b3c009b-3ef9-45e3-8b14-cce70da2f9a2"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "JASSO scholarship exchange student amount 2024 2025",
+        "max_results": 5
+      },
+      "id": "3dbb5f16-0d7b-4b74-8a24-11a38916723f"
+    },
+    {
+      "name": "web_search",
+      "args": {
+        "query": "University of Amsterdam communication science exchange master",
+        "max_results": 5
+      },
+      "id": "2eed1821-3891-4b6b-8eaa-a1cca028cdee"
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "27d34957-a2a3-4c54-abee-aa165eb3fec3",
+      "content": "{\n  \"query\": \"NTU WKWSCI graduate exchange program\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Exchange | Wee Kim Wee School of Communication and Information | NTU ...\",\n      \"url\": \"https://www.ntu.edu.sg/wkwsci/admissions/student-exchange\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"WKWSCI Graduate Programmes - NTU Singapore\",\n      \"url\": \"https://www.ntu.edu.sg/wkwsci/admissions/graduate-programmes\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"NTU - Exchange\",\n      \"url\": \"https://gem.ntu.edu.sg/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Exchange - NTU Study Abroad | 國立臺灣大學海外教育資訊網\",\n      \"url\": \"https://studyabroad.ntu.edu.tw/en/exchange-student/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Home - NTU Study Abroad | 國立臺灣大學海外教育資訊網\",\n      \"url\": \"https://studyabroad.ntu.edu.tw/en/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "1b3c009b-3ef9-45e3-8b14-cce70da2f9a2",
+      "content": "{\n  \"query\": \"UTokyo Interfaculty Initiative in Information Studies exchange English courses\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Graduate School of Interdisciplinary Information Studies | The ...\",\n      \"url\": \"https://www.u-tokyo.ac.jp/en/academics/grad_interdisciplinary.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Graduate School of Interdisciplinary Information Studies\",\n      \"url\": \"https://www.u-tokyo.ac.jp/en/whyutokyo/g_09.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Study Abroad (Exchange Program etc) - 東京大学\",\n      \"url\": \"https://www.i.u-tokyo.ac.jp/exchange_program_outbound_e.shtml\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"The University of Tokyo Online Course Catalogue - 東京大学\",\n      \"url\": \"https://catalog.he.u-tokyo.ac.jp/?interface_language=en\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"東京大学大学院 情報学環・学際情報学府 - The University of Tokyo Interfaculty Initiative ...\",\n      \"url\": \"https://www.iii.u-tokyo.ac.jp/\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "3dbb5f16-0d7b-4b74-8a24-11a38916723f",
+      "content": "{\n  \"query\": \"JASSO scholarship exchange student amount 2024 2025\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Student Exchange Support Program (Scholarship for Study in Japan under ...\",\n      \"url\": \"https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Scholarships for Study in Japan | JASSO\",\n      \"url\": \"https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"PDF ★PDFにする予定のファイル - Keio\",\n      \"url\": \"https://www.ic.keio.ac.jp/en/files/2024/2/29/CEMS_jasso_guide_202425.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"JASSO Scholarships for International Students in Japan\",\n      \"url\": \"https://www.isepstudyabroad.org/planning/finances/study-abroad-scholarships/japan-student-services-organization-scholarships\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"PDF Guidelines for Japan Association Student Service Organization (JASSO)\",\n      \"url\": \"https://www.queensu.ca/ipo/sites/ipowww/files/uploaded_files/KGU/Guide For JASSO Scholarship.pdf\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_search",
+      "tool_call_id": "2eed1821-3891-4b6b-8eaa-a1cca028cdee",
+      "content": "{\n  \"query\": \"University of Amsterdam communication science exchange master\",\n  \"total_results\": 5,\n  \"results\": [\n    {\n      \"title\": \"Master's in Communication Science - University of Amsterdam\",\n      \"url\": \"https://www.uva.nl/en/about-the-uva/organisation/faculties/faculty-of-social-and-behavioural-sciences/education/communication-science/masters.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Exchange - University of Amsterdam\",\n      \"url\": \"https://www.uva.nl/en/education/exchange/exchange.html\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Master's Communication Science - VU Amsterdam\",\n      \"url\": \"https://vu.nl/en/education/master/communication-science\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"MSc Communication Science Program By University of Amsterdam |Top ...\",\n      \"url\": \"https://www.topuniversities.com/universities/university-amsterdam/postgrad/msc-communication-science\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    },\n    {\n      \"title\": \"Course Catalogue - Universiteit van Amsterdam\",\n      \"url\": \"https://student.uva.nl/en/information/course-catalogue\",\n      \"content\": \"Open this URL with web_fetch before using it as evidence.\",\n      \"source_engine\": \"duckduckgo_html\"\n    }\n  ]\n}",
+      "artifact": null
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html"
+      },
+      "id": "75e1aa3a-29d8-405e-aeba-3dc31245294a"
+    },
+    {
+      "name": "web_fetch",
+      "args": {
+        "url": "https://www.ntu.edu.sg/wkwsci/admissions/student-exchange"
+      },
+      "id": "c7f5954e-16d1-4d13-9845-fa94c9825af6"
+    }
+  ],
+  "final_text": "",
+  "run_error": {
+    "type": "GraphRecursionError",
+    "message": "Recursion limit of 100 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/lora/Documents/benchmark-intent/pilot/dr_harness_backbone_integration_v0_74/run_deerflow_episode.py\", line 307, in main\n    for event in client.stream(\n  File \"/Users/lora/Documents/benchmark-intent/tmp/deer-flow/backend/packages/harness/deerflow/client.py\", line 765, in stream\n    event = next(inner)\n            ^^^^^^^^^^^\n  File \"/Users/lora/Documents/benchmark-intent/tmp/deer-flow/backend/packages/harness/deerflow/client.py\", line 995, in _stream_turn\n    for item in _stream_with_sandbox_lease_cleanup(agent_items, context):\n  File \"/Users/lora/Documents/benchmark-intent/tmp/deer-flow/backend/packages/harness/deerflow/client.py\", line 103, in _stream_with_sandbox_lease_cleanup\n    yield from items\n  File \"/Users/lora/Documents/benchmark-intent/tmp/deer-flow/backend/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py\", line 3011, in stream\n    raise GraphRecursionError(msg)\nlanggraph.errors.GraphRecursionError: Recursion limit of 100 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT\n"
+  },
+  "started_at_utc": "2026-09-16T18:06:32.713395+00:00",
+  "completed_at_utc": "2026-09-16T18:07:41.543989+00:00",
+  "elapsed_seconds": 68.830594,
+  "trace_file": "turn_001_events.jsonl"
+}
