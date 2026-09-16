@@ -35,3 +35,14 @@
   coverage did not fully transfer through the four-slot selector.
 - The original advancement gate nevertheless passed. The exact H2 implementation and calibrator_v1
   advance unchanged to T08/T11 internal validation; no further development tuning is permitted.
+
+## 2026-09-15 — H2 internal-validation clarification result
+
+- On frozen T08/T11, H2 V4R macro strict selected/resolved recall was 0.225 versus stock 0.125.
+- Mean atomic question count was 4.0 versus stock 12.0 after strict decomposition.
+- Precision for any frozen preference unit was 0.375 versus stock 0.182.
+- Candidate recall was 0.675, again leaving a selector gap.
+- T08 improved from 0.00 to 0.20 strict resolved recall; T11 tied stock at 0.25 while recovering a
+  different preference axis.
+- The process gate passes. Frozen V4R transcripts now advance to the common ODR report graph and
+  unchanged P_strict evaluator.

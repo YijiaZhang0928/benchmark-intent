@@ -44,6 +44,16 @@ can amplify a wrong importance estimate (for example credit-risk tolerance) as e
 personal fit axis. Internal validation must therefore use the frozen H2 selector rather than another
 development-set adjustment.
 
+## Internal-validation clarification observation
+
+The frozen controller retained a modest advantage on T08/T11: critical resolved recall increased by
+0.10 while question precision roughly doubled and atomic burden fell by two-thirds. The effect was not
+uniform—T08 improved, T11 tied—and therefore supports only a small exploratory mechanism claim.
+
+The candidate-to-selection gap persisted (0.675 candidate recall versus 0.225 selected/resolved
+recall). The method can now articulate many consequential preferences, but importance estimation and
+four-slot set selection remain the limiting components.
+
 ## Lessons and constraints
 
 - Never use hidden task preferences to generate or select candidates.

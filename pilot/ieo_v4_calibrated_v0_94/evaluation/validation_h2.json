@@ -1,0 +1,476 @@
+{
+  "schema_version": "0.94",
+  "judge": "gpt-6-astra/high",
+  "tasks": [
+    {
+      "task": "T08",
+      "askable_high_ids": [
+        "T8-P1",
+        "T8-P2",
+        "T8-P3",
+        "T8-P4",
+        "T8-P5"
+      ],
+      "candidate_ids_matching_any_unit": [
+        "T8-P1",
+        "T8-P2",
+        "T8-P3"
+      ],
+      "candidate_recall_askable_high": 0.6,
+      "arms": {
+        "stock": {
+          "atomic_questions": 13,
+          "selected_ids": [],
+          "selected_recall_askable_high": 0.0,
+          "resolved_ids": [],
+          "resolved_recall_askable_high": 0.0,
+          "question_precision_any_unit": 0.0,
+          "simulator_claimed_resolved_ids": [
+            "T8-A2",
+            "T8-P4"
+          ],
+          "simulator_claimed_recall_askable_high": 0.2
+        },
+        "v4a": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T8-P1"
+          ],
+          "selected_recall_askable_high": 0.2,
+          "resolved_ids": [
+            "T8-P1"
+          ],
+          "resolved_recall_askable_high": 0.2,
+          "question_precision_any_unit": 0.25,
+          "simulator_claimed_resolved_ids": [
+            "T8-P1"
+          ],
+          "simulator_claimed_recall_askable_high": 0.2
+        },
+        "v4r": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T8-P1"
+          ],
+          "selected_recall_askable_high": 0.2,
+          "resolved_ids": [
+            "T8-P1"
+          ],
+          "resolved_recall_askable_high": 0.2,
+          "question_precision_any_unit": 0.5,
+          "simulator_claimed_resolved_ids": [
+            "T8-A3",
+            "T8-P1",
+            "T8-P4"
+          ],
+          "simulator_claimed_recall_askable_high": 0.4
+        }
+      },
+      "mapping": {
+        "stock_atomic_slots": [
+          {
+            "slot_id": "S01",
+            "atomic_request": "What is the departure city and country?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S02",
+            "atomic_request": "What is the intended July travel year?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S03",
+            "atomic_request": "How many travelers are going?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S04",
+            "atomic_request": "What are the children's approximate ages?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S05",
+            "atomic_request": "What are the older adults' approximate ages?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S06",
+            "atomic_request": "What is the total trip budget or preferred budget level, including flights?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S07",
+            "atomic_request": "What destination region is preferred?",
+            "matched_preference_ids": [],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S08",
+            "atomic_request": "What is the maximum acceptable travel time?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S09",
+            "atomic_request": "Are there specific mobility requirements?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S10",
+            "atomic_request": "Are there specific accessibility requirements?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S11",
+            "atomic_request": "Are there specific medical requirements?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S12",
+            "atomic_request": "Are there specific dietary requirements?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S13",
+            "atomic_request": "Are there specific accommodation requirements?",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          }
+        ],
+        "preference_mappings": [
+          {
+            "preference_id": "T8-P1",
+            "matched_candidate_ids": [
+              "C16",
+              "C18"
+            ],
+            "matched_v4a_selected_ids": [
+              "C16"
+            ],
+            "matched_v4r_selected_ids": [
+              "C16",
+              "C18"
+            ],
+            "matched_stock_slot_ids": [],
+            "rationale": "C18 directly asks about whole-family interaction versus age-group separation. C16 addresses that shared-versus-generation-specific balance in accommodation space. C06 asks for an unrestricted ranking priority rather than resolving the family-interaction axis specifically. Traveler counts and ages do not establish how the generations should share the trip."
+          },
+          {
+            "preference_id": "T8-P2",
+            "matched_candidate_ids": [
+              "C07",
+              "C21"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C07 directly tests low-friction predictability against added travel and coordination. C21 tests convenience, buffers, and fallback planning against cost and spontaneity. C23 instead concerns advance commitment versus adaptability, which does not by itself establish logistical friction. A travel-time ceiling is only a particular constraint, not this broader logistics tradeoff."
+          },
+          {
+            "preference_id": "T8-P3",
+            "matched_candidate_ids": [
+              "C17"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C17 directly resolves how much rest to protect at the expense of activities. Mobility requirements and traveler ages cannot substitute for a preference about itinerary pace."
+          },
+          {
+            "preference_id": "T8-P4",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question directly asks about quality relative to cost versus minimizing expenditure or pursuing luxury. C05 and S06 establish budget scale; C22 establishes spending-category priority. Neither resolves the value orientation."
+          },
+          {
+            "preference_id": "T8-P5",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question directly distinguishes self-planned, deeper engagement from a generic mass-tour itinerary. C19 distinguishes concentrated experiences from breadth, not independent or immersive travel from standardized touring. C07 concerns logistical friction, and C23 concerns scheduling commitment."
+          },
+          {
+            "preference_id": "T8-A1",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question asks whether the destination should combine nature and historical or cultural experiences rather than be resort-only. Geographic region, international eligibility, water conditions, and accommodation service model do not resolve destination character."
+          },
+          {
+            "preference_id": "T8-A2",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C15 addresses accommodation service model, and C16 addresses shared versus private space; neither establishes warm, family-friendly atmosphere versus business-style impersonality. S13 is a generic request for accommodation requirements, not a question resolving that atmosphere axis."
+          },
+          {
+            "preference_id": "T8-A3",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question directly asks whether age-appropriate children's activities should be an explicit planning priority. Knowing children's ages establishes suitability constraints, not that priority. C18 concerns group coordination, and C19 concerns depth versus variety rather than child-centered inclusion."
+          }
+        ]
+      }
+    },
+    {
+      "task": "T11",
+      "askable_high_ids": [
+        "T11-P1",
+        "T11-P2",
+        "T11-P3",
+        "T11-P5"
+      ],
+      "candidate_ids_matching_any_unit": [
+        "T11-P1",
+        "T11-P2",
+        "T11-P3"
+      ],
+      "candidate_recall_askable_high": 0.75,
+      "arms": {
+        "stock": {
+          "atomic_questions": 11,
+          "selected_ids": [
+            "T11-A1",
+            "T11-P1"
+          ],
+          "selected_recall_askable_high": 0.25,
+          "resolved_ids": [
+            "T11-A1",
+            "T11-P1"
+          ],
+          "resolved_recall_askable_high": 0.25,
+          "question_precision_any_unit": 0.36363636363636365,
+          "simulator_claimed_resolved_ids": [
+            "T11-A1",
+            "T11-P1",
+            "T11-P5"
+          ],
+          "simulator_claimed_recall_askable_high": 0.5
+        },
+        "v4a": {
+          "atomic_questions": 4,
+          "selected_ids": [],
+          "selected_recall_askable_high": 0.0,
+          "resolved_ids": [],
+          "resolved_recall_askable_high": 0.0,
+          "question_precision_any_unit": 0.0,
+          "simulator_claimed_resolved_ids": [
+            "T11-P3"
+          ],
+          "simulator_claimed_recall_askable_high": 0.25
+        },
+        "v4r": {
+          "atomic_questions": 4,
+          "selected_ids": [
+            "T11-P3"
+          ],
+          "selected_recall_askable_high": 0.25,
+          "resolved_ids": [
+            "T11-P3"
+          ],
+          "resolved_recall_askable_high": 0.25,
+          "question_precision_any_unit": 0.25,
+          "simulator_claimed_resolved_ids": [
+            "T11-P3"
+          ],
+          "simulator_claimed_recall_askable_high": 0.25
+        }
+      },
+      "mapping": {
+        "stock_atomic_slots": [
+          {
+            "slot_id": "S01",
+            "atomic_request": "Specify the primary country or market.",
+            "matched_preference_ids": [],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S02",
+            "atomic_request": "Specify the content language.",
+            "matched_preference_ids": [],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S03",
+            "atomic_request": "Identify whether the account owner is an individual creator, business, or organization.",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S04",
+            "atomic_request": "Describe relevant existing expertise.",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S05",
+            "atomic_request": "Identify subject interests relevant to selecting the niche.",
+            "matched_preference_ids": [
+              "T11-P1"
+            ],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S06",
+            "atomic_request": "Specify niche constraints, or confirm that the niche should be selected from scratch.",
+            "matched_preference_ids": [
+              "T11-P1"
+            ],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S07",
+            "atomic_request": "Provide the approximate available monthly budget.",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S08",
+            "atomic_request": "Provide the available team size.",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S09",
+            "atomic_request": "Provide the available hours per week.",
+            "matched_preference_ids": [],
+            "classification": "personal constraint/current state"
+          },
+          {
+            "slot_id": "S10",
+            "atomic_request": "Identify preferred platforms.",
+            "matched_preference_ids": [
+              "T11-A1"
+            ],
+            "classification": "task-specific preference"
+          },
+          {
+            "slot_id": "S11",
+            "atomic_request": "Identify excluded platforms.",
+            "matched_preference_ids": [
+              "T11-A1"
+            ],
+            "classification": "task-specific preference"
+          }
+        ],
+        "preference_mappings": [
+          {
+            "preference_id": "T11-P1",
+            "matched_candidate_ids": [
+              "C02"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [
+              "S05",
+              "S06"
+            ],
+            "rationale": "C02 and the stock requests for subject interests and niche constraints elicit the desired thematic anchor. C03 asks how to choose a niche, rather than which subject should anchor it; C19 asks about depth versus breadth, not the preferred subject domain. Existing expertise alone does not establish the desired niche."
+          },
+          {
+            "preference_id": "T11-P2",
+            "matched_candidate_ids": [
+              "C04"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "C04 directly identifies the intended audience segment. C05 concerns the benefit followers should receive, not whether those followers should be professionals or a mass entertainment audience. The stock message does not ask for an audience segment."
+          },
+          {
+            "preference_id": "T11-P3",
+            "matched_candidate_ids": [
+              "C18"
+            ],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [
+              "C18"
+            ],
+            "matched_stock_slot_ids": [],
+            "rationale": "C18 directly asks which role should establish the creator's distinctiveness and credibility. C10 instead asks about dependence on public identity and visibility; an expert or a lifestyle personality could have either level of visibility. Account ownership and existing expertise do not resolve the desired authority persona."
+          },
+          {
+            "preference_id": "T11-P4",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question directly elicits whether content should rely on real projects, cases, and technical-business evidence rather than generic commentary. Authority role, specialist depth, existing assets, and production polish are distinct axes."
+          },
+          {
+            "preference_id": "T11-P5",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "Available budget, team size, and weekly hours measure resource constraints, not a preference for lean, efficient, ROI-conscious production. C20 concerns speed versus polish, and C21 concerns human involvement versus automation; neither directly resolves the preferred resource-investment model."
+          },
+          {
+            "preference_id": "T11-A1",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [
+              "S10",
+              "S11"
+            ],
+            "rationale": "Preferred and excluded platforms directly elicit platform inclusion and exclusion choices, including a professional or knowledge-oriented mix. C11 asks about sustainable content medium, while C22 asks about discovery versus direct audience relationships; neither resolves this platform-category preference."
+          },
+          {
+            "preference_id": "T11-A2",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question asks how production should be distributed between weekdays and weekends. Weekly hours measure total capacity, and speed versus polish concerns a production tradeoff rather than calendar placement."
+          },
+          {
+            "preference_id": "T11-A3",
+            "matched_candidate_ids": [],
+            "matched_v4a_selected_ids": [],
+            "matched_v4r_selected_ids": [],
+            "matched_stock_slot_ids": [],
+            "rationale": "No question asks about analytical or logical explanation versus emotional or hype-driven presentation. C14 addresses boldness and polarization, which can coexist with either presentation style; C18 addresses authority role rather than explanatory tone."
+          }
+        ]
+      }
+    }
+  ],
+  "aggregate": {
+    "stock": {
+      "atomic_questions": 12,
+      "selected_recall_askable_high": 0.125,
+      "resolved_recall_askable_high": 0.125,
+      "question_precision_any_unit": 0.18181818181818182
+    },
+    "v4a": {
+      "atomic_questions": 4,
+      "selected_recall_askable_high": 0.1,
+      "resolved_recall_askable_high": 0.1,
+      "question_precision_any_unit": 0.125
+    },
+    "v4r": {
+      "atomic_questions": 4,
+      "selected_recall_askable_high": 0.225,
+      "resolved_recall_askable_high": 0.225,
+      "question_precision_any_unit": 0.375
+    },
+    "candidate_recall_askable_high": 0.675
+  }
+}
