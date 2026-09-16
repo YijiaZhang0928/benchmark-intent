@@ -22,6 +22,8 @@ v0.97 runner 现把隔离变成可执行约束：每个 cell 使用唯一 thread
 
 r2 execution-order 1 `T02_RAW100_ASK_R2` 在 68.83 秒后以明确 `GraphRecursionError` 退出：冻结 `recursion_limit=100` 被耗尽，trace 有 96 events、52 个 observed tool records、0 clarification、0 final text。按规则 r2 立即停止，0/18 完整报告，后续 cell 未启动、未评分、未重试。该失败表明当前 recursion budget 与 Gemini 在 DeerFlow deep-research graph 中的搜索/fetch 行为不匹配；提高上限是 execution-budget amendment，必须以新 run label 和用户新批准执行，不能追溯修改 r2。
 
+用户随后明确批准 r3，把所有 Ask/No-Ask cell 的 recursion limit 从 100 统一提高到 200；这是唯一新的预算变化。r3 继续用原 18 input hashes、seeded order、Gemini/high、DeerFlow、simulator、clarification cap、1,800 秒 outer timeout、memory hard-off 与首错即停规则，并使用新的 18 个 `-r3` thread 和 `/r3` outputs。r1/r2 保持 immutable failures。
+
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：Gemini 六组设计与 matched No-Ask 修复
 
 用户将 Gemini pilot 扩为 `COLD/RAW50/RAW100 × ASK/NOASK` 六组，前三题共 18 份 planned reports。RAW50 继续复用 v0.96 固定 seed `20260915` 的 22/44、25/50、24/49 persona 原子事实，但六组新版把 RAW50/RAW100 的上下文标题统一为中性的 `Available user profile context:`，不再显示 `incomplete/complete`，避免标签本身提示是否应提问。RAW100 是 `full_hidden_persona_for_user_simulator` 中全部原子事实，不等于 preference oracle。

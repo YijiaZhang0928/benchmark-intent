@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the explicitly authorized r2 of the frozen Gemini × DeerFlow v0.97 pilot."""
+"""Run the explicitly authorized r3 of the frozen Gemini × DeerFlow v0.97 pilot."""
 
 from __future__ import annotations
 
@@ -28,7 +28,8 @@ AGENT = "stock-cold-dr"
 SEED = 20260915
 MAX_CLARIFICATION_ANSWERS = 3
 TURN_TIMEOUT_SECONDS = 1800
-RUN_LABEL = "r2"
+RUN_LABEL = "r3"
+RECURSION_LIMIT = 200
 
 
 class SimulatorResponse(BaseModel):
@@ -81,19 +82,23 @@ def planned_cells() -> list[dict[str, Any]]:
 def write_execution_manifest(cells: list[dict[str, Any]]) -> Path:
     path = HERE / f"execution_manifest_{RUN_LABEL}.json"
     expected = {
-        "schema_version": "0.97-r2",
+        "schema_version": "0.97-r3",
         "created_before_counted_outputs": True,
         "run_label": RUN_LABEL,
-        "authorization": "User explicitly approved a fresh full-batch rerun on 2026-09-16.",
-        "preserved_failed_run": "execution_manifest.json / runs/.../r1",
-        "allowed_engineering_change": "outer subprocess hard timeout added after r1 blocking-call overrun",
-        "experimental_design_change": None,
+        "authorization": "User explicitly approved r3 with recursion_limit raised to 200 on 2026-09-16.",
+        "preserved_failed_runs": ["execution_manifest.json / runs/.../r1", "execution_manifest_r2.json / runs/.../r2"],
+        "allowed_engineering_changes": [
+            "outer subprocess hard timeout added after r1 blocking-call overrun",
+            "recursion_limit raised uniformly from 100 to 200 after r2 GraphRecursionError",
+        ],
+        "experimental_design_change": "uniform execution-budget increase only",
         "seed": SEED,
         "model": MODEL,
         "agent": AGENT,
         "thinking_level": "high",
         "provider_max_retries": 0,
         "turn_timeout_seconds": TURN_TIMEOUT_SECONDS,
+        "recursion_limit": RECURSION_LIMIT,
         "max_clarification_answers_per_ask_cell": MAX_CLARIFICATION_ANSWERS,
         "isolation": {
             "fresh_os_process_per_turn": True,
@@ -195,6 +200,8 @@ def run_turn(
         "--expect-new-thread" if expect_new else "--expect-existing-thread",
         "--timeout-seconds",
         str(TURN_TIMEOUT_SECONDS),
+        "--recursion-limit",
+        str(RECURSION_LIMIT),
         "--output-dir",
         cell["output_dir"],
     ]
@@ -211,7 +218,7 @@ def run_turn(
         )
     except subprocess.TimeoutExpired as exc:
         failure = {
-            "schema_version": "0.97-r2",
+            "schema_version": "0.97-r3",
             "cell_id": cell["cell_id"],
             "thread_id": cell["thread_id"],
             "failure_type": "outer_process_hard_timeout",
@@ -315,7 +322,7 @@ def main() -> int:
     assets = load_assets()
     status_path = HERE / f"execution_status_{RUN_LABEL}.json"
     status: dict[str, Any] = {
-        "schema_version": "0.97-r2",
+        "schema_version": "0.97-r3",
         "run_label": RUN_LABEL,
         "manifest": str(manifest_path),
         "started_at_utc": utc_now(),

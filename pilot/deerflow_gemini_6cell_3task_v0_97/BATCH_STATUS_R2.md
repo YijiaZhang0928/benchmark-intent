@@ -17,3 +17,5 @@
 R2 used new thread and output paths and did not read r1 state. The failure occurred during the research graph after multiple search/fetch rounds and before any final-report text. This is an operational harness-budget failure, not a personalization score and not evidence for or against Ask.
 
 Any subsequent run with a higher recursion limit would be a separately authorized protocol amendment and a new run label. R2 remains immutable.
+
+The user subsequently approved r3 with a uniform recursion limit of 200. This note does not alter r2's failed status.

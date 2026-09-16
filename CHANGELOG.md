@@ -12,6 +12,7 @@
 - 正式 batch 在第 1 个 `T02_RAW100_ASK_R1` cell 停止：73 个 trace events 后阻塞，进程内 alarm 未及时中断；2,081 秒时 SIGTERM，0 个完整报告、0 个评分、无后续 cell、无重试。保留 partial trace 和 failure record，并给未来另行批准的运行增加 outer subprocess timeout。
 - 用户随后明确批准完整 r2；在任何 r2 输出前冻结新的 18 个 thread/output mapping 并确认全部为空。r2 不改实验设计，只启用已审计的 outer timeout，继续执行首错即停、cell 内零自动重试。
 - r2 首 cell 在 68.83 秒、52 个 tool records 后触发 `GraphRecursionError`（limit 100），没有 clarification 或 final text；因此 0/18 完成并停止。提高 recursion limit 被标记为需要新 run label 与再次授权的预算修订。
+- 用户明确批准 r3：18 个 cell 一律把 recursion limit 提到 200，其余设计、顺序、隔离、timeout 与 zero-retry 不变；r3 使用全新 thread/output namespace。
 
 ## v0.96 DeerFlow 2.0 RAW50 Ask/No-Ask pilot - 2026-09-15
 
