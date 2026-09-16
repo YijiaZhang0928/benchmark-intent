@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J3N7",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "08ba4c6b313c3b66edb7b806c432228359fe9c40d58842300dac4643c70f6c17",
+  "rubric_sha256": "264439212732e075b65bdf7e61bf2dd65f35e06ca5d74ea5e1484574b4b060ef",
+  "started_at_utc": "2026-09-16T00:48:44.006031+00:00",
+  "completed_at_utc": "2026-09-16T00:54:00.227910+00:00",
+  "p_strict": 7.880066889632108,
+  "p_hi": 8.11,
+  "dimension_scores": {
+    "INTENT": 9.6,
+    "SOURCE": 10.0,
+    "EVIDENCE": 6.782608695652174,
+    "TRADEOFF": 5.913043478260869,
+    "DECISION": 7.6521739130434785,
+    "ACTION": 10.0,
+    "TRACE": 6.461538461538462
+  },
+  "high_dimension_scores": {
+    "INTENT": 9.6,
+    "SOURCE": 10.0,
+    "EVIDENCE": 7.0,
+    "TRADEOFF": 6.2,
+    "DECISION": 8.2,
+    "ACTION": 10.0,
+    "TRACE": 6.8
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T11-P1-01",
+      "score": 10,
+      "evidence_span": "The strongest initial niche is:\n\n> **Evidence-tested AI applications, product building, and startup economics for technical founders and hands-on product operators.**\n\nThis combines three connected needs:\n\n- Evaluating whether AI applications genuinely work.\n- Understanding how to build and operate AI-enabled products.\n- Interpreting industry developments through product, technical, and commercial consequences.",
+      "rationale": "Explicitly prioritizes a niche combining practical AI applications, industry interpretation, and entrepreneurship."
+    },
+    {
+      "criterion_id": "T11-P1-02",
+      "score": 10,
+      "evidence_span": "Every test should state:\n\n- Task and intended user.\n- Baseline.\n- Inputs and constraints.\n- Model or tool version.\n- Evaluation rubric.\n- Results.\n- Failure cases.\n- Cost and time.\n- Data-handling considerations.\n- What the result does and does not establish.",
+      "rationale": "Specifies concrete evidence classes for evaluating the recommended applied-AI niche, including comparative results, version information, operational constraints, and economics."
+    },
+    {
+      "criterion_id": "T11-P1-03",
+      "score": 8,
+      "evidence_span": "YouTube is the best default primary platform because the account’s core differentiation depends on demonstrations, evidence, technical explanation, and narrative depth. Long-form videos can combine screen recordings, diagrams, code, business analysis, and personal delivery.",
+      "rationale": "Names an option and identifies observable format capabilities supporting technical demonstrations and business analysis. The connection to industry trends and entrepreneurship is less explicit in this factual support."
+    },
+    {
+      "criterion_id": "T11-P1-04",
+      "score": 10,
+      "evidence_span": "### Ben’s Bites and The Rundown AI: newsletter aggregation\n\n[Ben’s Bites](https://www.bensbites.com/) [10] and [The Rundown AI](https://www.therundown.ai/) [11] illustrate the market for fast, accessible AI briefings.",
+      "rationale": "Names two identifiable aggregation options and states their briefing format, providing a verifiable contrast-side characteristic."
+    },
+    {
+      "criterion_id": "T11-P1-05",
+      "score": 10,
+      "evidence_span": "Unlike AI-news feeds, generic educators, or promotional influencers, it tests claims in real workflows, exposes failure cases and costs, connects technical choices to business consequences, and distinguishes verified evidence from firsthand experience and opinion.",
+      "rationale": "Directly compares the preferred operator-lab approach with news feeds on validation and decision usefulness, identifying consequential differences."
+    },
+    {
+      "criterion_id": "T11-P1-06",
+      "score": 10,
+      "evidence_span": "The strongest initial niche is:\n\n> **Evidence-tested AI applications, product building, and startup economics for technical founders and hands-on product operators.**\n\nThis combines three connected needs:\n\n- Evaluating whether AI applications genuinely work.\n- Understanding how to build and operate AI-enabled products.\n- Interpreting industry developments through product, technical, and commercial consequences.",
+      "rationale": "Selects the operator-lab niche and explains its selection through the three preference-specific needs it combines."
+    },
+    {
+      "criterion_id": "T11-P1-07",
+      "score": 10,
+      "evidence_span": "Transferable lesson: consistent filtering and concise packaging solve a genuine audience problem.\n\nStrategic warning: aggregation is increasingly easy to reproduce with AI. A new account should not compete with established briefing products unless it has a distinctive geography, sector, proprietary dataset, or practitioner lens.",
+      "rationale": "Acknowledges aggregation as viable but explicitly downgrades competing with established briefing products because their aggregation function is readily reproducible."
+    },
+    {
+      "criterion_id": "T11-P1-08",
+      "score": 10,
+      "evidence_span": "Publish one technical test, one build log, one business teardown, and one trend interpretation.",
+      "rationale": "Provides executable publication actions that collectively implement AI applications, entrepreneurship, and industry interpretation."
+    },
+    {
+      "criterion_id": "T11-P1-09",
+      "score": 10,
+      "evidence_span": "A news item qualifies only if it materially affects:\n\n- Product capability.\n- Build-versus-buy decisions.\n- Costs.\n- Distribution.\n- Regulation.\n- Customer demand.\n- Competitive structure.",
+      "rationale": "Defines an actionable editorial qualification rule linking industry developments to applied-AI and entrepreneurial decisions rather than unrestricted news coverage."
+    },
+    {
+      "criterion_id": "T11-P1-10",
+      "score": 4,
+      "evidence_span": "A new account should not compete with established briefing products unless it has a distinctive geography, sector, proprietary dataset, or practitioner lens.",
+      "rationale": "States conditions under which aggregation competition might be viable, but does not say when generic technology-news aggregation would become better than the recommended niche. The required reversal remains incomplete."
+    },
+    {
+      "criterion_id": "T11-P1-11",
+      "score": 8,
+      "evidence_span": "| **2: Sep 28–Oct 4** | Experiment: AI-assisted research workflow versus manual baseline | “It was faster—but was it actually better?” | Directly addresses the speed-versus-quality gap found in workplace research | Vote on which workflow should be tested next | Short before/after clip, checklist, downloadable rubric | Timed baseline, fixed task, scoring rubric, screen recording |",
+      "rationale": "Explicitly links an applied-AI evidence gap from workplace research to a scheduled experiment with a baseline and rubric. This is a visible evidence-to-action chain, though the industry-trend and entrepreneurship components of the combined priority are not explicitly carried through this chain."
+    },
+    {
+      "criterion_id": "T11-P2-01",
+      "score": 10,
+      "evidence_span": "### Primary audience: technical founders and hands-on AI product operators",
+      "rationale": "Explicitly identifies founders and hands-on practitioners as the primary audience."
+    },
+    {
+      "criterion_id": "T11-P2-02",
+      "score": 10,
+      "evidence_span": "| Positioning interviews | Weeks 1–2 | Interview 10–15 target users; test three descriptions of the account |",
+      "rationale": "Selects direct interviews with the defined target users as evidence for evaluating positioning."
+    },
+    {
+      "criterion_id": "T11-P2-03",
+      "score": 10,
+      "evidence_span": "[Latent Space](https://www.latent.space/) [8] illustrates a hybrid structure combining technical media, interviews, newsletter-style publishing, and community positioning.\n\nTransferable lesson: high-context practitioner conversations can become both media and network infrastructure.",
+      "rationale": "Names a sourced example, identifies concrete formats, and explicitly explains its practitioner-specific value."
+    },
+    {
+      "criterion_id": "T11-P2-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a concrete fact about serving a mass entertainment audience. Broad top-of-funnel reach alone does not establish entertainment orientation."
+    },
+    {
+      "criterion_id": "T11-P2-05",
+      "score": 4,
+      "evidence_span": "A piece should normally serve the primary audience first. Secondary audiences may benefit, but the topic should not be broadened merely to maximize impressions.",
+      "rationale": "Contrasts professional audience fit with broader reach, but does not directly compare practitioners with a mass entertainment audience. The incomplete contrast is capped at 4."
+    },
+    {
+      "criterion_id": "T11-P2-06",
+      "score": 10,
+      "evidence_span": "LinkedIn is appropriate for:\n\n- Professional audience discovery.",
+      "rationale": "Explicitly recommends a named platform because it provides access to a professional audience."
+    },
+    {
+      "criterion_id": "T11-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Options are downgraded for weak differentiation, aggregation, or insufficient operating relevance, but none is explicitly downgraded because it favors mass entertainment audiences."
+    },
+    {
+      "criterion_id": "T11-P2-08",
+      "score": 10,
+      "evidence_span": "Interview 10–15 target audience members.",
+      "rationale": "Provides an executable research action directed at the explicitly defined professional target audience."
+    },
+    {
+      "criterion_id": "T11-P2-09",
+      "score": 10,
+      "evidence_span": "At least 60% of interviewed target users should recognize the described problem as relevant. If they do not, narrow or change the promise before increasing production.",
+      "rationale": "Defines a numerical validation threshold and a consequential sequence rule for the target audience."
+    },
+    {
+      "criterion_id": "T11-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not state a condition under which a mass entertainment audience would become preferable."
+    },
+    {
+      "criterion_id": "T11-P2-11",
+      "score": 4,
+      "evidence_span": "YouTube is the best default primary platform because the account’s core differentiation depends on demonstrations, evidence, technical explanation, and narrative depth. Long-form videos can combine screen recordings, diagrams, code, business analysis, and personal delivery.",
+      "rationale": "Links concrete platform capabilities to a selection decision, but the professional-audience preference is only implicit within this chain. A complete preference-to-evidence-to-action linkage would require inference, so the score is capped at 4."
+    },
+    {
+      "criterion_id": "T11-P3-01",
+      "score": 10,
+      "evidence_span": "The exact niche should be narrowed further around the area where the strongest firsthand evidence exists",
+      "rationale": "Explicitly makes firsthand practitioner authority a priority governing niche selection."
+    },
+    {
+      "criterion_id": "T11-P3-02",
+      "score": 10,
+      "evidence_span": "### Credibility signals\n\nUse proof rather than self-description:\n\n- Public experiment methodology.\n- Repositories, notebooks, code samples, and templates.",
+      "rationale": "Identifies concrete evidence classes specifically for establishing credibility rather than relying on asserted expertise."
+    },
+    {
+      "criterion_id": "T11-P3-03",
+      "score": 10,
+      "evidence_span": "GitHub is not a broad discovery platform, but it can materially strengthen credibility by hosting:\n\n- Code.\n- Evaluation scripts.\n- Prompt and configuration files.\n- Reproducible notebooks.",
+      "rationale": "Names a platform and explains its verifiable artifact-hosting capabilities as concrete support for practitioner credibility."
+    },
+    {
+      "criterion_id": "T11-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named lifestyle-personality route or case receives a verifiable contrast-side fact. General descriptions of influencers and personal brands do not supply that evidence."
+    },
+    {
+      "criterion_id": "T11-P3-05",
+      "score": 8,
+      "evidence_span": "an expert brand can be built through consistent, specific documentation rather than a highly polished influencer persona.",
+      "rationale": "Directly contrasts documentation-led expert branding with persona-led influencer branding on the basis of brand construction. The lifestyle dimension and its consequences are less fully specified."
+    },
+    {
+      "criterion_id": "T11-P3-06",
+      "score": 10,
+      "evidence_span": "The most plausible starting end state is an **expert-led personal brand with an owned editorial archive and selective service monetization**. That is a starting hypothesis, not a permanent destination. It requires the least institutional complexity and makes authentic firsthand authority central.",
+      "rationale": "Names the recommended model and explicitly gives authentic firsthand authority as a selection reason."
+    },
+    {
+      "criterion_id": "T11-P3-07",
+      "score": 4,
+      "evidence_span": "Thumbnails based on a decision tension rather than exaggerated facial expressions.",
+      "rationale": "Downgrades a recognizable personality-centered presentation tactic, but does not explicitly attribute that downgrade to avoiding lifestyle-personality influencer identity. The causal preference link remains implicit."
+    },
+    {
+      "criterion_id": "T11-P3-08",
+      "score": 10,
+      "evidence_span": "Create an experiment template and corrections page.",
+      "rationale": "Provides concrete, executable production actions that implement evidence-based authority and accountability."
+    },
+    {
+      "criterion_id": "T11-P3-09",
+      "score": 10,
+      "evidence_span": "Every test should state:\n\n- Task and intended user.\n- Baseline.\n- Inputs and constraints.\n- Model or tool version.\n- Evaluation rubric.\n- Results.\n- Failure cases.\n- Cost and time.\n- Data-handling considerations.\n- What the result does and does not establish.",
+      "rationale": "Defines a mandatory, usable reporting checklist for substantiating practitioner claims."
+    },
+    {
+      "criterion_id": "T11-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not identify a concrete condition under which lifestyle-personality influencer identity should replace the expert-credibility preference."
+    },
+    {
+      "criterion_id": "T11-P3-11",
+      "score": 10,
+      "evidence_span": "[Simon Willison’s public site](https://simonwillison.net/) [7] demonstrates the value of:\n\n- Dated technical notes.\n- Firsthand experiments.\n- Direct links to sources and artifacts.\n- Rapid observations alongside deeper explanations.\n- A searchable archive that compounds over time.\n\nTransferable lesson: an expert brand can be built through consistent, specific documentation rather than a highly polished influencer persona.",
+      "rationale": "Links a cited practitioner case and its observable documentation practices to the explicit expert-brand preference and the downstream recommendation to build through consistent documentation."
+    },
+    {
+      "criterion_id": "T11-P4-01",
+      "score": 10,
+      "evidence_span": "The exact niche should be narrowed further around the area where the strongest firsthand evidence exists",
+      "rationale": "Explicitly makes firsthand evidence a priority governing niche selection."
+    },
+    {
+      "criterion_id": "T11-P4-02",
+      "score": 10,
+      "evidence_span": "Repeat experiments where stochastic output could materially alter the result.",
+      "rationale": "Specifies repeated experimental evidence to resolve uncertainty in practical technical evaluations."
+    },
+    {
+      "criterion_id": "T11-P4-03",
+      "score": 10,
+      "evidence_span": "[Simon Willison’s public site](https://simonwillison.net/) [7] demonstrates the value of:\n\n- Dated technical notes.\n- Firsthand experiments.\n- Direct links to sources and artifacts.",
+      "rationale": "Names an identifiable practitioner case and supplies verifiable features supporting firsthand technical insight."
+    },
+    {
+      "criterion_id": "T11-P4-04",
+      "score": 4,
+      "evidence_span": "| Generic educator | Accessibility | Examples may be artificial or generic | Use real operating constraints and artifacts |",
+      "rationale": "Identifies a contrast-side route, but its conditional characterization is not a concrete, verifiable example of generic commentary. The generic cap applies."
+    },
+    {
+      "criterion_id": "T11-P4-05",
+      "score": 10,
+      "evidence_span": "Unlike AI-news feeds, generic educators, or promotional influencers, it tests claims in real workflows, exposes failure cases and costs, connects technical choices to business consequences, and distinguishes verified evidence from firsthand experience and opinion.",
+      "rationale": "Directly contrasts generic media with practical evidence on decision usefulness, identifying workflow validation, costs, and business consequences as consequential differences."
+    },
+    {
+      "criterion_id": "T11-P4-06",
+      "score": 10,
+      "evidence_span": "YouTube is the best default primary platform because the account’s core differentiation depends on demonstrations, evidence, technical explanation, and narrative depth.",
+      "rationale": "Names the recommended platform and explicitly gives its support for evidence-based technical demonstrations as the selection reason."
+    },
+    {
+      "criterion_id": "T11-P4-07",
+      "score": 8,
+      "evidence_span": "It is sufficiently focused because it excludes:\n\n- Breaking news without analysis.\n- Generic “top ten AI tools” content.\n- Prompt collections detached from real workflows.",
+      "rationale": "Explicitly excludes named content routes for lacking analytical or real-workflow depth. Their status as otherwise viable alternatives is less explicit."
+    },
+    {
+      "criterion_id": "T11-P4-08",
+      "score": 10,
+      "evidence_span": "Compare a manual and AI-assisted baseline.",
+      "rationale": "Provides an executable comparative experiment with concrete objects, directly implementing practical evidence generation."
+    },
+    {
+      "criterion_id": "T11-P4-09",
+      "score": 10,
+      "evidence_span": "### Pillar 1: Tested AI applications — 30%",
+      "rationale": "Defines an explicit content allocation for tested applications rather than merely recommending evidence-based content."
+    },
+    {
+      "criterion_id": "T11-P4-10",
+      "score": 8,
+      "evidence_span": "| Demonstration versus commentary | Weeks 3–6 | Compare a hands-on test with a trend commentary piece | Medium | Demonstrations generate materially more saves, email signups, or practitioner replies | Production cost is over twice as high without deeper outcomes |",
+      "rationale": "Establishes a concrete cost-and-outcome boundary for stopping or revising demonstrations relative to commentary. It does not expressly state that generic commentary should then become the preferred choice."
+    },
+    {
+      "criterion_id": "T11-P4-11",
+      "score": 8,
+      "evidence_span": "| **2: Sep 28–Oct 4** | Experiment: AI-assisted research workflow versus manual baseline | “It was faster—but was it actually better?” | Directly addresses the speed-versus-quality gap found in workplace research |",
+      "rationale": "Visibly connects practical workflow testing to a research finding and a scheduled experiment. The connection is explicit, but the supporting finding is summarized rather than specifically cited or quantified within this chain."
+    },
+    {
+      "criterion_id": "T11-P5-01",
+      "score": 8,
+      "evidence_span": "Validate niche and audience before investing heavily.",
+      "rationale": "Explicitly prioritizes validation before substantial spending in the lean resource option. Efficiency and return-consciousness are supported, although lean creation is not stated as the governing priority for the entire plan."
+    },
+    {
+      "criterion_id": "T11-P5-02",
+      "score": 10,
+      "evidence_span": "Compare audience growth, return behavior, revenue, authority, and production cost by pillar.",
+      "rationale": "Specifies identifiable internal evidence classes that allow production costs to be evaluated against audience and business returns."
+    },
+    {
+      "criterion_id": "T11-P5-03",
+      "score": 8,
+      "evidence_span": "### Lean option\n\n**Time:** 6–8 hours per week.  \n**Budget:** Approximately US$50–300 per month, adjusted to local costs.",
+      "rationale": "Gives concrete time and budget specifications for a named lean option. These support its low-resource character, but are planning estimates rather than demonstrated efficiency or ROI results."
+    },
+    {
+      "criterion_id": "T11-P5-04",
+      "score": 10,
+      "evidence_span": "### Better-resourced option\n\n**Time:** 25–40 creator/team hours per week.  \n**Budget:** Approximately US$5,000–15,000 per month.",
+      "rationale": "The named higher-resource route explicitly incorporates substantial weekly labor and monthly expenditure as its operating configuration."
+    },
+    {
+      "criterion_id": "T11-P5-05",
+      "score": 8,
+      "evidence_span": "#### Lean\n\n- Two substantial anchor pieces per month.\n- Two short posts per week.\n- Newsletter twice per month.\n- One live session per month.\n- Prioritize screen recordings, simple editing, and written frameworks.\n\nBest when the creator has fewer than eight hours per week.\n\n#### Balanced — recommended\n\n- One anchor per week.\n- Two or three derivative posts.\n- Weekly concise newsletter.\n- Monthly live session.\n- One reusable artifact every two weeks.\n\nBest when 10–15 hours per week are available.\n\n#### High-polish\n\n- Two deeply produced anchors per month.\n- Original motion graphics and custom diagrams.\n- Research support and technical review.\n- Multiple platform-native derivatives.\n- Quarterly flagship report or documentary case.\n\nBest when there is a team and at least 25 hours per week.",
+      "rationale": "Directly compares lean and high-polish routes on weekly labor, staffing, output, and production complexity. The consequential resource difference is explicit, but comparative ROI is not established."
+    },
+    {
+      "criterion_id": "T11-P5-06",
+      "score": 10,
+      "evidence_span": "The most plausible starting end state is an **expert-led personal brand with an owned editorial archive and selective service monetization**. That is a starting hypothesis, not a permanent destination. It requires the least institutional complexity and makes authentic firsthand authority central.",
+      "rationale": "Names a recommended model and explicitly gives minimal institutional complexity as a selection reason."
+    },
+    {
+      "criterion_id": "T11-P5-07",
+      "score": 10,
+      "evidence_span": "### DeepLearning.AI: education-led authority\n\n[DeepLearning.AI](https://www.deeplearning.ai/) [9] represents an education-business model in which recurring editorial communication supports courses and a larger learning ecosystem.\n\nTransferable lesson: free educational material can support a durable education brand when learning outcomes and curriculum are clear.\n\nRisk: this is an institutional model with resources, reputation, and production capacity that a new solo creator should not imitate directly.",
+      "rationale": "Acknowledges the education model's value but explicitly downgrades direct imitation because of its institutional resources and production capacity."
+    },
+    {
+      "criterion_id": "T11-P5-08",
+      "score": 10,
+      "evidence_span": "Record and index the session. Extract durable answers rather than expecting the full replay to perform.",
+      "rationale": "Provides executable actions for turning a live session into reusable content, implementing production efficiency without requiring an invented action."
+    },
+    {
+      "criterion_id": "T11-P5-09",
+      "score": 10,
+      "evidence_span": "Begin with a small capped test, such as US$200–500, adjusted for local purchasing power. Stop if paid visitors do not consume or convert like qualified organic visitors.",
+      "rationale": "Defines both a spending allocation and a performance-based stop rule, directly operationalizing ROI-conscious resource use."
+    },
+    {
+      "criterion_id": "T11-P5-10",
+      "score": 10,
+      "evidence_span": "#### High-polish\n\n- Two deeply produced anchors per month.\n- Original motion graphics and custom diagrams.\n- Research support and technical review.\n- Multiple platform-native derivatives.\n- Quarterly flagship report or documentary case.\n\nBest when there is a team and at least 25 hours per week. High polish should improve comprehension and trust, not merely aesthetics.",
+      "rationale": "States a concrete staffing and time boundary under which the more production-intensive route is preferable, with an additional requirement that polish improve audience value."
+    },
+    {
+      "criterion_id": "T11-P5-11",
+      "score": 4,
+      "evidence_span": "| Demonstration versus commentary | Weeks 3–6 | Compare a hands-on test with a trend commentary piece | Medium | Demonstrations generate materially more saves, email signups, or practitioner replies | Production cost is over twice as high without deeper outcomes |",
+      "rationale": "Connects efficiency-sensitive evidence to a stop-or-revise decision, but only as a proposed experiment. It does not supply an observed or cited option-specific finding that has already led to the decision, so the evidence chain remains incomplete."
+    },
+    {
+      "criterion_id": "T11-A1-01",
+      "score": 6,
+      "evidence_span": "#### Complementary: LinkedIn\n\nLinkedIn is appropriate for:\n\n- Professional audience discovery.",
+      "rationale": "Names LinkedIn and identifies its professional-audience discovery function, a concrete platform characteristic relevant to including professional channels. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-02",
+      "score": 6,
+      "evidence_span": "| LinkedIn | High for B2B professionals | Medium to high inside professional network | Text, carousels, short video, polls | High | Low | Low to medium | Leads, partnerships, workshops, sponsors |\n| Newsletter/site | High for returning audience | Low without external distribution | Briefs, essays, resources | Low | High | Medium | Paid subscriptions, products, services |\n| X or similar real-time network | High among some AI communities | Fast but volatile | Commentary, threads, live discussion | High | Low | High attention burden | Sponsorships, leads, subscriptions where available |\n| TikTok/Reels/Shorts | Broad top-of-funnel | Potentially high | Short demonstrations and myth correction | Very high | Low | Medium | Awareness, sponsors, commerce depending on market |",
+      "rationale": "Explicitly distinguishes LinkedIn's B2B professional audience from the broad top-of-funnel audience of TikTok/Reels/Shorts. This establishes an option-level professional-versus-broad-reach difference rather than treating all channels alike. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-03",
+      "score": 6,
+      "evidence_span": "YouTube is the best default primary platform because the account’s core differentiation depends on demonstrations, evidence, technical explanation, and narrative depth.",
+      "rationale": "Knowledge-oriented content requirements explicitly determine YouTube's fit and selection as the primary platform. The preference therefore affects the recommendation, rather than merely appearing in a list of features. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-04",
+      "score": 6,
+      "evidence_span": "- **Primary professional distribution and conversation channel:** LinkedIn.\n- **Owned relationship:** Email newsletter and simple website/archive.\n- **Proof layer:** GitHub, downloadable artifacts, experiment logs, templates, and source notes.",
+      "rationale": "The recommended channel system explicitly includes professional distribution and knowledge artifacts, with no entertainment-only justification contradicting that inclusion. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A2-01",
+      "score": 4,
+      "evidence_span": "- **Tuesday:** Practitioner field note or carousel.\n- **Thursday:** Anchor YouTube video.",
+      "rationale": "Names concrete weekday publishing commitments, but does not specify weekday creation or production time. The creation preference is only implicitly supported."
+    },
+    {
+      "criterion_id": "T11-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not explicitly compare weekday-focused creation with weekend-heavy production. The operating options differ by workload and polish, not by weekday versus weekend scheduling."
+    },
+    {
+      "criterion_id": "T11-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No niche, platform, or operating-model recommendation uses weekday-focused creation to change a ranking, inclusion, exclusion, or fit judgment."
+    },
+    {
+      "criterion_id": "T11-A2-04",
+      "score": 4,
+      "evidence_span": "- **Tuesday:** Practitioner field note or carousel.\n- **Thursday:** Anchor YouTube video.",
+      "rationale": "The recommended cadence includes substantial weekday releases and does not explicitly justify any option by weekend-heavy production. However, publication timing does not establish a weekday-focused creation schedule, and the cadence also includes weekend releases, so support is partial."
+    },
+    {
+      "criterion_id": "T11-A3-01",
+      "score": 6,
+      "evidence_span": "YouTube is the best default primary platform because the account’s core differentiation depends on demonstrations, evidence, technical explanation, and narrative depth. Long-form videos can combine screen recordings, diagrams, code, business analysis, and personal delivery.",
+      "rationale": "Names a platform and gives a concrete, verifiable format capability relevant to analytical explanation. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A3-02",
+      "score": 6,
+      "evidence_span": "Unlike AI-news feeds, generic educators, or promotional influencers, it tests claims in real workflows, exposes failure cases and costs, connects technical choices to business consequences, and distinguishes verified evidence from firsthand experience and opinion.",
+      "rationale": "Explicitly contrasts the recommended evidence-based approach with promotional presentation, identifying testing and causal business analysis as differences. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A3-03",
+      "score": 6,
+      "evidence_span": "It is sufficiently focused because it excludes:\n\n- Breaking news without analysis.",
+      "rationale": "Analytical explanation explicitly affects inclusion: breaking-news content lacking analysis is excluded from the recommended niche. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A3-04",
+      "score": 6,
+      "evidence_span": "The account should never knowingly trade accuracy for excitement.",
+      "rationale": "The recommendation explicitly prioritizes accuracy over excitement and does not justify a selected option through an undisclosed opposing preference. The generic cap limits the score to 6."
+    }
+  ]
+}

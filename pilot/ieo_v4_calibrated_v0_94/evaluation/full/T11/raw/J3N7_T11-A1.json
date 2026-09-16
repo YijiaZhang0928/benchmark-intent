@@ -1,0 +1,28 @@
+{
+  "scores": [
+    {
+      "criterion_id": "T11-A1-01",
+      "score": 6,
+      "evidence_span": "#### Complementary: LinkedIn\n\nLinkedIn is appropriate for:\n\n- Professional audience discovery.",
+      "rationale": "Names LinkedIn and identifies its professional-audience discovery function, a concrete platform characteristic relevant to including professional channels. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-02",
+      "score": 6,
+      "evidence_span": "| LinkedIn | High for B2B professionals | Medium to high inside professional network | Text, carousels, short video, polls | High | Low | Low to medium | Leads, partnerships, workshops, sponsors |\n| Newsletter/site | High for returning audience | Low without external distribution | Briefs, essays, resources | Low | High | Medium | Paid subscriptions, products, services |\n| X or similar real-time network | High among some AI communities | Fast but volatile | Commentary, threads, live discussion | High | Low | High attention burden | Sponsorships, leads, subscriptions where available |\n| TikTok/Reels/Shorts | Broad top-of-funnel | Potentially high | Short demonstrations and myth correction | Very high | Low | Medium | Awareness, sponsors, commerce depending on market |",
+      "rationale": "Explicitly distinguishes LinkedIn's B2B professional audience from the broad top-of-funnel audience of TikTok/Reels/Shorts. This establishes an option-level professional-versus-broad-reach difference rather than treating all channels alike. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-03",
+      "score": 6,
+      "evidence_span": "YouTube is the best default primary platform because the account’s core differentiation depends on demonstrations, evidence, technical explanation, and narrative depth.",
+      "rationale": "Knowledge-oriented content requirements explicitly determine YouTube's fit and selection as the primary platform. The preference therefore affects the recommendation, rather than merely appearing in a list of features. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T11-A1-04",
+      "score": 6,
+      "evidence_span": "- **Primary professional distribution and conversation channel:** LinkedIn.\n- **Owned relationship:** Email newsletter and simple website/archive.\n- **Proof layer:** GitHub, downloadable artifacts, experiment logs, templates, and source notes.",
+      "rationale": "The recommended channel system explicitly includes professional distribution and knowledge artifacts, with no entertainment-only justification contradicting that inclusion. The supplied generic cap limits the score to 6."
+    }
+  ]
+}

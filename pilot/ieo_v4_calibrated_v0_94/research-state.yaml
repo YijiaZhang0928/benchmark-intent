@@ -1,5 +1,5 @@
 project: ieo-v4-ask-what-matters
-status: h2_full_reports_running
+status: exploratory_internal_validation_complete
 updated: 2026-09-15
 question: >-
   Can an explicit importance-evidence-ownership controller improve critical preference acquisition
@@ -19,6 +19,16 @@ hypotheses:
     intervention: add value-fit generation lens and underlying-value preference-potency term
     prediction: candidate and selected recall increase while the four-question cap is unchanged
     observation: candidate recall increased to 0.833; selected/resolved recall 0.383; advance frozen controller to T08/T11
+final_internal_validation:
+  tasks: [T08, T11]
+  mean_atomic_questions_stock: 12.0
+  mean_atomic_questions_v4r: 4.0
+  mean_resolved_recall_stock: 0.125
+  mean_resolved_recall_v4r: 0.225
+  mean_p_strict_stock: 6.653846153846154
+  mean_p_strict_v4r: 7.076354515050168
+  mean_p_strict_delta: 0.4225083612040139
+  claim: exploratory process signal; end-to-end P-score effect confounded by research depth
 stopping_rule:
   maximum_architecture_iterations: 2
   full_report_gate: development process gate in protocol.md

@@ -1,0 +1,187 @@
+{
+  "schema_version": "0.95",
+  "status": "exploratory_internal_validation_complete",
+  "tasks": [
+    {
+      "task": "T08",
+      "candidate_recall_askable_high": 0.6,
+      "stock": {
+        "atomic_questions": 13,
+        "selected_ids": [],
+        "selected_recall_askable_high": 0.0,
+        "resolved_ids": [],
+        "resolved_recall_askable_high": 0.0,
+        "question_precision_any_unit": 0.0,
+        "simulator_claimed_resolved_ids": [
+          "T8-A2",
+          "T8-P4"
+        ],
+        "simulator_claimed_recall_askable_high": 0.2,
+        "reflected_ids": [],
+        "reflected_recall_askable_high": 0.0,
+        "p_strict": 6.257190635451506,
+        "p_hi": 6.16,
+        "searches": 3,
+        "successful_fetches": 6,
+        "report_characters": 44136
+      },
+      "v4r": {
+        "atomic_questions": 4,
+        "selected_ids": [
+          "T8-P1"
+        ],
+        "selected_recall_askable_high": 0.2,
+        "resolved_ids": [
+          "T8-P1"
+        ],
+        "resolved_recall_askable_high": 0.2,
+        "question_precision_any_unit": 0.5,
+        "simulator_claimed_resolved_ids": [
+          "T8-A3",
+          "T8-P1",
+          "T8-P4"
+        ],
+        "simulator_claimed_recall_askable_high": 0.4,
+        "reflected_ids": [
+          "T8-P1"
+        ],
+        "reflected_recall_askable_high": 0.2,
+        "p_strict": 6.272642140468228,
+        "p_hi": 6.4,
+        "searches": 6,
+        "successful_fetches": 8,
+        "report_characters": 43791
+      },
+      "ieo_v3_reference": {
+        "p_strict": 7.601672240802675,
+        "p_hi": 7.79,
+        "searches": 6,
+        "successful_fetches": 12,
+        "report_characters": 44510
+      },
+      "deltas": {
+        "resolved_recall_v4r_minus_stock": 0.2,
+        "reflected_recall_v4r_minus_stock": 0.2,
+        "p_strict_v4r_minus_stock": 0.015451505016722322,
+        "p_strict_v4r_minus_ieo_v3": -1.329030100334447
+      }
+    },
+    {
+      "task": "T11",
+      "candidate_recall_askable_high": 0.75,
+      "stock": {
+        "atomic_questions": 11,
+        "selected_ids": [
+          "T11-A1",
+          "T11-P1"
+        ],
+        "selected_recall_askable_high": 0.25,
+        "resolved_ids": [
+          "T11-A1",
+          "T11-P1"
+        ],
+        "resolved_recall_askable_high": 0.25,
+        "question_precision_any_unit": 0.36363636363636365,
+        "simulator_claimed_resolved_ids": [
+          "T11-A1",
+          "T11-P1",
+          "T11-P5"
+        ],
+        "simulator_claimed_recall_askable_high": 0.5,
+        "reflected_ids": [
+          "T11-A1",
+          "T11-P1"
+        ],
+        "reflected_recall_askable_high": 0.25,
+        "p_strict": 7.050501672240802,
+        "p_hi": 7.08,
+        "searches": 3,
+        "successful_fetches": 6,
+        "report_characters": 24931
+      },
+      "v4r": {
+        "atomic_questions": 4,
+        "selected_ids": [
+          "T11-P3"
+        ],
+        "selected_recall_askable_high": 0.25,
+        "resolved_ids": [
+          "T11-P3"
+        ],
+        "resolved_recall_askable_high": 0.25,
+        "question_precision_any_unit": 0.25,
+        "simulator_claimed_resolved_ids": [
+          "T11-P3"
+        ],
+        "simulator_claimed_recall_askable_high": 0.25,
+        "reflected_ids": [
+          "T11-P3"
+        ],
+        "reflected_recall_askable_high": 0.25,
+        "p_strict": 7.880066889632108,
+        "p_hi": 8.11,
+        "searches": 8,
+        "successful_fetches": 6,
+        "report_characters": 73428
+      },
+      "ieo_v3_reference": {
+        "p_strict": 7.897993311036791,
+        "p_hi": 8.08,
+        "searches": 12,
+        "successful_fetches": 14,
+        "report_characters": 79930
+      },
+      "deltas": {
+        "resolved_recall_v4r_minus_stock": 0.0,
+        "reflected_recall_v4r_minus_stock": 0.0,
+        "p_strict_v4r_minus_stock": 0.8295652173913055,
+        "p_strict_v4r_minus_ieo_v3": -0.017926421404682813
+      }
+    }
+  ],
+  "aggregate": {
+    "tasks": 2,
+    "candidate_recall_askable_high": 0.675,
+    "stock": {
+      "atomic_questions": 12,
+      "selected_recall_askable_high": 0.125,
+      "resolved_recall_askable_high": 0.125,
+      "reflected_recall_askable_high": 0.125,
+      "question_precision_any_unit": 0.18181818181818182,
+      "p_strict": 6.653846153846154,
+      "p_hi": 6.62,
+      "searches": 3,
+      "successful_fetches": 6,
+      "report_characters": 34533.5
+    },
+    "v4r": {
+      "atomic_questions": 4,
+      "selected_recall_askable_high": 0.225,
+      "resolved_recall_askable_high": 0.225,
+      "reflected_recall_askable_high": 0.225,
+      "question_precision_any_unit": 0.375,
+      "p_strict": 7.076354515050168,
+      "p_hi": 7.255,
+      "searches": 7,
+      "successful_fetches": 7,
+      "report_characters": 58609.5
+    },
+    "ieo_v3_reference": {
+      "p_strict": 7.749832775919733,
+      "p_hi": 7.9350000000000005,
+      "searches": 9,
+      "successful_fetches": 13,
+      "report_characters": 62220
+    },
+    "deltas": {
+      "resolved_recall_v4r_minus_stock": 0.1,
+      "reflected_recall_v4r_minus_stock": 0.1,
+      "p_strict_v4r_minus_stock": 0.4225083612040139,
+      "p_strict_v4r_minus_ieo_v3": -0.6734782608695653,
+      "atomic_questions_v4r_minus_stock": -8,
+      "searches_v4r_minus_stock": 4,
+      "successful_fetches_v4r_minus_stock": 1
+    }
+  },
+  "claim_boundary": "Two already-observed internal-validation tasks, one generation and one judge pass per cell; research depth and report length are not matched."
+}

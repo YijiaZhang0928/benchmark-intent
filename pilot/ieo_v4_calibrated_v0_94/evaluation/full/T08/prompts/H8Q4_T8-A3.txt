@@ -1,0 +1,976 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and plan a one-week family beach trip in July for a multigenerational group containing adults, active children and older adults who need adequate rest.
+
+Compare suitable beach destinations, July weather and seasonality, transportation, convenient accommodation, dining, medical and accessibility considerations, activities for different age groups, rest periods and a realistic overall budget range.
+
+Produce a complete one-week itinerary.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T8-A3-01",
+    "criterion": "The report gives one concrete fact relevant to include age-appropriate child activities.",
+    "criterion_explanation": "A named option has a verifiable fact tied to this average-impact preference.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-A3-02",
+    "criterion": "The report distinguishes include age-appropriate child activities from adult-only itinerary with children accommodated secondarily.",
+    "criterion_explanation": "At least one option-level difference is explicit on the preference axis.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-A3-03",
+    "criterion": "The shortlist or recommendation uses include age-appropriate child activities as a tie-breaker or secondary fit factor.",
+    "criterion_explanation": "The preference changes one rank, inclusion, exclusion or stated fit judgment.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T8-A3-04",
+    "criterion": "The final recommendation does not contradict include age-appropriate child activities.",
+    "criterion_explanation": "No selected option is explicitly justified by the opposing value without a disclosed trade-off.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label H8Q4):
+# Best July Beach Vacation for a Multigenerational Family
+
+## Executive recommendation
+
+**Best overall provisional choice: Vilamoura–Quarteira in Portugal’s Algarve, using a seven-night base in western Quarteira or on the Quarteira–Vilamoura boundary.**
+
+This area offers the strongest overall balance of:
+
+- Very low typical July rainfall.
+- Warm—but usually less oppressive than many Mediterranean or tropical alternatives—summer weather.
+- Sandy beaches with unusually strong documented accessibility infrastructure.
+- A flat waterfront setting that makes it easy for older adults to shorten or skip activities.
+- Restaurants, supermarkets, shade rental, first aid, adapted toilets, beach walkways, and public transportation close to the sand.
+- A broad choice of apartments, aparthotels, and villas suitable for shared family space.
+- A useful international airport at Faro, ordinarily about a half-hour road transfer away.
+- Enough activities for children without requiring the entire week to revolve around excursions.
+
+The official Municipality of Loulé pages identify **both Vilamoura and Quarteira as Blue Flag and Accessible Beaches**. Documented facilities include ramps, rigid and flexible walkways over the sand, amphibious chairs, adapted toilets, first aid, shade rental, restaurants, supermarkets, public transport, and accessible parking. Quarteira also has an extensive waterfront promenade and interconnected beach routes, while Vilamoura adds a marina, shops, terraces, and water activities. See the official [Vilamoura Beach page](https://www.cm-loule.pt/pt/menu/639/praia-de-vilamoura.aspx) [4] and [Quarteira Beach page](https://www.cm-loule.pt/pt/menu/640/praia-de-quarteira.aspx) [5].
+
+The recommendation is **conditional rather than universal** because the departure city, nationality, travelers’ ages and health, exact year and dates, and budget are unknown. In particular:
+
+- **If the family is based in the western United States**, San Diego may be more practical and could become the best choice once flight time, jet lag, and medical convenience are included.
+- **If warm seawater is more important than heat and storm risk**, Mallorca or leeward Oahu may be preferred.
+- **If an older traveler has a condition requiring frequent specialist care**, proximity to a major hospital could outweigh the Algarve’s climate and beach-access advantages.
+- **If the party cannot use stairs or walk more than a short distance**, the exact accommodation—not merely the destination—will determine whether the trip works.
+
+The sample itinerary below assumes **seven nights, Saturday 10 July through Saturday 17 July 2027**, solely to make the plan concrete. These dates have not been selected based on live airfare or lodging availability and can be shifted within July.
+
+---
+
+## Assumptions and evidence limitations
+
+### Working assumptions
+
+For planning and budgeting, the illustrative party is:
+
+- Eight travelers.
+- Six adults, including two older adults.
+- Two children.
+- Seven nights.
+- No known dietary restrictions.
+- No known need for a wheelchair, oxygen, dialysis, temperature-sensitive medication, or continuous specialist care.
+- A preference for a shared apartment or villa rather than separate hotel rooms.
+- A willingness to use taxis or a prearranged van instead of renting several cars.
+
+These are **not inferred facts about the actual family**. They are only a scalable benchmark.
+
+### Climate evidence and forecasts
+
+The climate figures below are historical planning averages, not forecasts. A useful daily forecast will not exist until close to departure, and meaningful forecasts for heat, wind, surf, smoke, or thunderstorms generally require checking again approximately 7–10 days before travel.
+
+Portugal’s meteorological authority, IPMA, publishes climatological normals for multiple 30-year periods and explains how its temperature and precipitation series are validated and homogenized. The relevant official document is the [1991–2020 Faro climate-normal PDF](https://www.ipma.pt/bin/file.data/climate-normal/cn_91-20_FARO.pdf) [1], within IPMA’s broader [Climate Normals service](https://www.ipma.pt/en/oclima/normais.clima/) [2].
+
+The numerical Faro figures available in the gathered research came from a secondary July compilation rather than an extracted table in the IPMA PDF. That compilation reports:
+
+- Average high: approximately **28°C/82°F**.
+- Average low: approximately **19°C/66°F**.
+- Monthly mean: approximately **24°C/74°F**.
+- Rainfall: approximately **10 mm**.
+- Rain occurrence: approximately **one day during July**.
+- Average humidity: approximately **60%**.
+- Sunshine: approximately **12 hours a day**.
+- Sea temperature: approximately **22°C/72°F**.
+
+These should be treated as planning values and cross-checked against the official IPMA PDF before making a weather-sensitive decision. See [Faro July averages](https://www.holiday-weather.com/faro/averages/july) [3].
+
+Comparable official numerical station data were not fully extracted for San Diego, Mallorca, or Oahu during the underlying research. Their values below are therefore **rounded climatological planning ranges**, with lower evidentiary confidence than the Algarve assessment. Official U.S. figures can be checked through [NOAA U.S. Climate Normals](https://www.ncei.noaa.gov/access/us-climate-normals/) [7] and [NOAA Climate Data Online](https://www.ncei.noaa.gov/cdo-web/) [8], while Mallorca data should be checked through [AEMET’s climatological values service](https://www.aemet.es/en/serviciosclimaticos/datosclimatologicos/valoresclimatologicos) [10].
+
+### Prices
+
+All monetary amounts are broad **planning allowances prepared as of 15 September 2026**, not live quotations. July pricing can vary dramatically by exact week, cancellation terms, bedroom count, events, and booking date. Airfare cannot responsibly be quoted as a single universal amount without a departure city.
+
+---
+
+## Shortlist and side-by-side comparison
+
+| Destination | Typical July planning conditions | Serious seasonal risks | Sea and beach experience | July crowds and price | Transport burden | Overall fit |
+|---|---|---|---|---|---|---|
+| **Vilamoura–Quarteira, Algarve** | About 28°C high, 19°C low; roughly 10 mm rain and one rain day; moderate coastal humidity | Inland wildfire and smoke possible; heat spikes; windy afternoons; no meaningful Atlantic hurricane exposure | Long sandy beaches; Atlantic water around 22°C can feel cool; occasional swell, currents, or shore break | Peak season; busy and expensive, but services fully open | About 25–35 minutes by road from Faro Airport under ordinary conditions | **Best overall balance** |
+| **San Diego, California** | Roughly 24–26°C high and 18–20°C low; almost no July rain; morning coastal cloud possible | Wildfire and smoke risk, especially inland; earthquakes; tropical cyclone impact extremely rare | Pacific water commonly around 20–22°C; cool for some children and older adults; surf and rip currents | Peak domestic season; high lodging and parking prices | Short transfers from SAN; good if flying domestically; car need depends on neighborhood | **Best for many U.S.-based families** |
+| **Mallorca, Spain** | Roughly 30–32°C high and 21–23°C low; usually dry; humid nights possible | Heat waves, wildfire, occasional short Mediterranean storm; no normal Atlantic hurricane exposure | Warmer sea, often 25–26°C; many protected coves, but some involve stairs or steep approaches | Very crowded; high hotel, villa, car-rental, and beach-area prices | Excellent air access through Palma; resort transfers range from short to more than an hour | Strong if warm water matters more than heat |
+| **Leeward Oahu, Hawaii** | Roughly 30–31°C high and 24°C low; humid; brief showers possible, generally drier leeward | July is within Central Pacific hurricane season; heat, high UV, wildfire, and ocean hazards | Warm sea around 26–27°C; excellent swimming when calm; surf and currents vary sharply by beach | Very high lodging and food costs; crowded year-round | Long-haul for most travelers; Waikiki is transit-friendly, Ko Olina less so | Excellent beaches, but less suitable for low disruption tolerance |
+
+### Ranking for low weather-disruption tolerance
+
+1. **Algarve**
+2. **San Diego**
+3. **Mallorca**
+4. **Leeward Oahu**
+
+San Diego arguably has the lowest rain risk, but the Algarve wins overall because its sea is generally somewhat warmer, its selected beaches have stronger documented accessibility infrastructure, its waterfront base is compact, and it combines beach, marina, dining, culture, and excursions without requiring a car every day.
+
+---
+
+## Destination assessments
+
+## 1. Vilamoura–Quarteira, Portugal
+
+### July weather and seasonality
+
+July is genuinely one of the best months for an Algarve beach holiday when the priority is avoiding persistent rain. The historic pattern is hot, sunny, and very dry. Rain, when it occurs, is more likely to be an isolated event than a multi-day tropical washout.
+
+Important qualifications include:
+
+- Temperatures can exceed the average substantially during a heat episode.
+- Coastal breezes may make afternoons comfortable but can also make umbrellas difficult to use and the ocean choppy.
+- Atlantic upwelling can make the water feel colder than the air temperature suggests.
+- July has very long daylight—roughly 14½ hours—allowing beach time to be shifted to early morning or late afternoon.
+- Tropical cyclones are not a normal July threat in the Algarve.
+- Wildfire is the principal serious seasonal hazard. The immediate urban coast is less exposed than inland forest and scrub, but smoke, road restrictions, or canceled inland excursions remain possible. Official warnings should be checked with [Portugal’s National Authority for Emergency and Civil Protection](https://prociv.gov.pt/en/) [12].
+
+July is high season, so almost all visitor services are open. The downside is crowding, higher prices, restaurant pressure, and more beach noise. Routine seasonal closures are unlikely, but beaches or activities can close temporarily because of wind, dangerous water, fire, or extreme heat.
+
+### Beach and sea conditions
+
+Quarteira and Vilamoura have broad sandy beaches with developed facilities. The municipal pages document first aid but do not, in the material reviewed, establish exact July lifeguard hours or operating rules for amphibious chairs. Confirm those details shortly before travel.
+
+The ocean is suitable for family swimming on calm days, but this is an Atlantic coast rather than a protected tropical lagoon. Families should:
+
+- Use a supervised bathing zone.
+- Observe the beach-flag system.
+- Keep children close in breaking waves.
+- Avoid swimming near structures or where currents are visible.
+- Check tides through the [Portuguese Hydrographic Institute](https://www.hidrografico.pt/prev.mare) [6].
+- Treat inflatable toys as toys, not flotation or rescue devices.
+
+### Transportation
+
+Faro Airport is the useful gateway. The official airport site should be checked for current transportation and passenger-assistance arrangements: [Faro Airport](https://www.ana.pt/en/fao/home) [13].
+
+Planning assumptions:
+
+- Faro Airport to Vilamoura or Quarteira: ordinarily about **25–35 minutes by private vehicle**, longer during peak traffic.
+- A private van is preferable to several taxis for a large family because it reduces luggage handling, waiting, and the risk of the group becoming separated.
+- Public transportation is less expensive but likely to involve more waiting and luggage management. It is not the preferred arrival solution for tired children or older adults.
+- Travelers arriving through Lisbon can use rail toward the Algarve, but Loulé station is outside the beach district and requires an onward taxi. Check schedules directly with [Comboios de Portugal](https://www.cp.pt/passageiros/en) [14].
+- A rental car is not essential if the accommodation is near the beach and promenade. One or two day rentals or taxis for excursions may be more economical and less stressful.
+- Parking is available but becomes more difficult in July. Vilamoura Beach has an organized paid lot, while Quarteira has parking along the avenue and nearby streets.
+
+For families traveling from North America, an overnight stop in Lisbon may be worthwhile if a same-day connection would create an extremely long travel day.
+
+### Accommodation strategy
+
+The best format is a **three- or four-bedroom air-conditioned apartment or aparthotel**, rather than several small hotel rooms. The ideal location is:
+
+- In western Quarteira or near the Passeio das Dunas.
+- Within approximately 300–500 metres of the beach.
+- Within an equally short walk of groceries and several restaurants.
+- Away from the noisiest marina nightlife.
+- On a level route without steep ramps or extensive cobbles.
+
+Required filters should include:
+
+- Elevator from street and parking level to the apartment.
+- Step-free entry or a precise count of unavoidable steps.
+- At least two full bathrooms; three are preferable for eight people.
+- Effective air conditioning in bedrooms as well as the living area.
+- A generous living/dining room with seating for the entire party.
+- A real dining table, not merely stools at a breakfast bar.
+- Laundry facilities.
+- A proper kitchen and full-size refrigerator.
+- Pool with shade, provided the pool area is safely fenced or controlled for children.
+- Balcony or terrace with shade.
+- Bedrooms not directly over a bar, restaurant, service alley, or main road.
+- Blackout curtains.
+- Flexible or partially refundable cancellation terms.
+- Clear written confirmation of elevator dimensions and shower configuration if mobility is limited.
+
+“Accessible property” should never be accepted as a complete description. Request photographs and measurements of:
+
+- The entrance threshold.
+- Elevator door and cabin.
+- Hallway width.
+- Shower lip and grab bars.
+- Toilet transfer space.
+- Balcony threshold.
+- Route from property to promenade.
+- Pool access.
+
+A detached villa can provide more shared space, but it often introduces steps, a longer walk, dependence on a car, and maintenance or pool-safety concerns. A large apartment near the promenade is usually better for this trip.
+
+### Dining and groceries
+
+Both official beach pages document nearby cafés, restaurants, and supermarkets. Quarteira is generally the more practical zone for everyday groceries and casual meals, while Vilamoura Marina has a broader resort-oriented dining selection and higher prices.
+
+A sensible rhythm is:
+
+- Breakfast in the apartment.
+- Simple lunch at home or a beachfront café.
+- Dinner out every second night.
+- Takeaway or a home-prepared dinner after excursions.
+
+The area should handle mixed appetites well through grilled fish, chicken, meat, rice, potatoes, salads, pizza, pasta, burgers, and international resort restaurants. Vegetarian food is usually obtainable, but strict vegan, gluten-free, halal, kosher, or severe-allergy requirements must be checked directly with restaurants. For serious allergies, translated allergy cards and a kitchen are valuable.
+
+During July:
+
+- Reserve popular marina restaurants several days ahead.
+- Choose early dinners if young children become tired.
+- Avoid committing to a formal dinner immediately after a boat excursion.
+- Confirm whether outdoor seating has shade rather than assuming it does.
+- Ask specifically about cross-contamination if an allergy is medically significant.
+
+### Medical and practical safety
+
+Central Quarteira and Vilamoura have pharmacies, but the exact distance and opening hours depend on the accommodation. Before booking, map:
+
+1. The nearest pharmacy.
+2. An after-hours pharmacy.
+3. The nearest urgent-care option.
+4. Hospital de Loulé or another appropriate local facility.
+5. The route to the public hospital in Faro.
+
+As a rough geographic planning assumption, a hospital in Loulé is likely to be about 15–25 minutes away by road and Faro-area hospital care about 25–40 minutes away, depending on traffic and the exact starting point. These are not guaranteed emergency response times.
+
+Portugal’s emergency number is **112**. Each traveler should carry:
+
+- Passport or national identification.
+- Insurance details.
+- Medication list using generic drug names.
+- Allergy and condition summary.
+- Emergency contact information.
+- Enough prescription medication for the trip plus a small delay margin.
+
+Travel insurance should include medical treatment, repatriation or evacuation, cancellation, interruption, and coverage of pre-existing conditions where needed. Eligible European travelers should bring an EHIC or GHIC but should not treat it as a substitute for insurance.
+
+### Accessibility
+
+The destination has unusually strong documented beach infrastructure, but conservative planning remains necessary:
+
+- Beach mats improve sand access but may not extend all the way to the waterline.
+- Amphibious-chair use may be limited to certain hours, staffing levels, weather, or advance reservations.
+- Accessible toilets may not meet every traveler’s transfer or assistance needs.
+- The promenade is easier than old-town streets, which can have cobbles and irregular surfaces.
+- Marina boats may involve sloped gangways, gaps, or steps.
+- A “short walk” in summer heat can be demanding for an older adult.
+- Shade availability should be reserved rather than assumed.
+
+Quarteira’s promenade provides the easiest low-effort environment. Older adults can turn back independently, stop at a café, or return to the apartment without interrupting the rest of the group.
+
+---
+
+## 2. San Diego, California
+
+### Why it is a strong alternative
+
+San Diego is the strongest alternative if the group is U.S.-based or if medical convenience is a major concern. July is characteristically dry, daytime heat is moderated near the coast, and major urban medical services are readily available.
+
+Typical coastal planning conditions are:
+
+- Highs around 24–26°C/75–79°F.
+- Lows around 18–20°C/64–68°F.
+- Almost no measurable July rain.
+- Occasional morning marine cloud, especially early in the month.
+- Sea temperatures around 20–22°C/68–72°F.
+
+The principal drawback is that the Pacific can feel cold, especially to small children and older adults. Wetsuits may improve enjoyment for active children.
+
+### Risks and tradeoffs
+
+- Wildfire is primarily an inland risk, but smoke and regional travel disruption can affect the coast.
+- Heat can be significantly more severe away from the ocean.
+- Rip currents and shore break are important beach hazards.
+- Earthquakes are a low-probability, year-round hazard.
+- Direct tropical cyclone impacts are exceptionally unusual, although distant systems can sometimes influence surf or humidity.
+- July lodging, parking, and attraction prices are high.
+
+Current fire conditions should be checked through [CAL FIRE](https://www.fire.ca.gov/incidents) [11], while climate normals are available from NOAA [7][8].
+
+### Practical bases
+
+- **Coronado:** broad beach, flatter terrain, resort atmosphere, but high cost and bridge or ferry dependence.
+- **Mission Bay:** calm-water recreation and family resorts, though some areas are less walkable for dining.
+- **La Jolla Shores:** excellent family beach and activities, but expensive and busy.
+- **Del Mar:** compact and pleasant, but less convenient to the airport and some attractions.
+
+A car may be unnecessary in a carefully selected beachfront base but is useful for the zoo, museums, and excursions. Parking fees can materially increase the budget.
+
+**When San Diego becomes the better recommendation:** west-coast U.S. origin, serious jet-lag concerns, need for major hospital access, preference for mild air temperatures, or no interest in international travel.
+
+---
+
+## 3. Mallorca, Spain
+
+### Why it made the shortlist
+
+Mallorca combines dry July weather with much warmer Mediterranean water than the Algarve or San Diego. It also has numerous family hotels, villas, and apartments and excellent air connections through Palma de Mallorca.
+
+Typical July planning conditions:
+
+- Highs around 30–32°C/86–90°F.
+- Lows around 21–23°C/70–73°F.
+- Low monthly rainfall, commonly concentrated in one or two brief events.
+- Sea temperatures around 25–26°C/77–79°F.
+- Long daylight of approximately 14½ hours.
+
+### Main disadvantages
+
+- Heat waves can make midday outdoor activity unsafe or unpleasant.
+- Humid nights may interfere with sleep if air conditioning is weak.
+- July is extremely crowded.
+- Wildfire can disrupt rural areas and mountain excursions.
+- Parking and rental-car availability can be difficult.
+- Some picturesque coves have steep roads, stairs, rocks, limited shade, or a long walk from parking.
+- Short Mediterranean thunderstorms can produce localized downpours or rough seas, even though persistent rain is uncommon.
+
+For multigenerational use, a flat purpose-built resort such as Playa de Muro or parts of Alcúdia would usually be more practical than a cliffside cove. Mallorca is the best alternative if warm, calm-looking water is a higher priority than avoiding heat.
+
+---
+
+## 4. Leeward Oahu, Hawaii
+
+### Strengths
+
+Leeward and south-shore Oahu provide:
+
+- Warm water.
+- Excellent beach infrastructure.
+- Many family activities.
+- Major medical services in Honolulu.
+- Strong resort accommodation.
+- Waikiki’s walkability and public transportation.
+
+Typical July planning conditions include highs around 30–31°C/86–88°F, warm nights near 24°C/75°F, high humidity, and seawater around 26–27°C/79–81°F.
+
+### Why it ranks lower
+
+July lies within Central Pacific hurricane season. A direct strike is uncommon in any given week, but the possibility is meaningful when tolerance for severe disruption is low. The islands can also experience:
+
+- Strong UV exposure.
+- Heat stress.
+- Wildfire and smoke.
+- High surf or dangerous currents.
+- Brief showers.
+- Long-haul fatigue.
+- Very high food and lodging prices.
+
+Waikiki is practical without a car but busy and urban. Ko Olina offers protected lagoons and a calmer resort atmosphere but increases reliance on a rental car or expensive transfers.
+
+Tropical systems should be monitored through the [National Hurricane Center and Central Pacific products](https://www.nhc.noaa.gov/) [9].
+
+---
+
+## Why other low-rain options were not prioritized
+
+A Danish Baltic or similar northern European coast may have very long July daylight and less severe heat, but it has cooler water, less dependable beach warmth, and a greater chance of changeable or showery weather. It does not fit a low-tolerance-for-weather-disruption beach brief as well as the Algarve or San Diego.
+
+Caribbean, Gulf Coast, and much of coastal Mexico were not prioritized because July combines heat, humidity, thunderstorm frequency, and tropical-storm exposure. Lower package prices would not compensate for that added disruption risk under the stated priorities.
+
+---
+
+## Recommended accommodation plan in the Algarve
+
+### Preferred configuration
+
+For the illustrative group of eight:
+
+- Three bedrooms if children can share and sleeping arrangements are flexible.
+- Four bedrooms if adults need conventional beds.
+- At least two bathrooms; three is a worthwhile improvement.
+- One large living/dining room.
+- Full kitchen and laundry.
+- Air conditioning in every sleeping room.
+- Elevator and step-free entrance.
+- Pool with shade.
+- Beach, grocery, and dinner options within a 5–10-minute level walk.
+
+### Preferred location
+
+The best micro-location is **western Quarteira close to the Passeio das Dunas, or the eastern edge of Vilamoura near the beach but not directly over the marina nightlife**.
+
+This location offers:
+
+- Quarteira’s promenade and practical shops.
+- Easy access to Vilamoura Marina.
+- Multiple beaches without driving.
+- Short return trips for midday rest.
+- Freedom for older adults to opt out without needing a vehicle.
+- A flatter environment than many historic or cliff-backed beach towns.
+
+### Most valuable optional upgrade
+
+The best comfort upgrade is **not a premium excursion or sea-view room**. It is paying more for a genuinely suitable apartment:
+
+- 300 metres or less from the beach and dining.
+- Reliable elevator.
+- Strong air conditioning.
+- An extra bathroom.
+- Quiet bedrooms.
+- Pool and shaded outdoor space.
+- Flexible cancellation.
+
+A planning premium of approximately **€75–€175 per night** over a cheaper inland or less accessible property could substantially improve the entire week. It reduces taxis, heat exposure, coordination problems, and the need to wake resting older adults whenever others want to go out.
+
+---
+
+# Seven-night Algarve itinerary
+
+## Itinerary principles
+
+This schedule assumes arrival on **Saturday 10 July 2027** and departure on **Saturday 17 July 2027**.
+
+It is intentionally unhurried:
+
+- Most days contain only one principal activity.
+- Beach time is concentrated in the cooler morning or late afternoon.
+- A rest period of roughly 13:00–16:00 or 16:30 is protected daily.
+- Only one day uses a significant age-appropriate split.
+- Excursions can be canceled without leaving a major hole in the week.
+- No long driving day is included.
+- Older adults can return to the apartment independently on most days.
+
+## Day 1 — Arrival and recovery
+
+### Arrival
+
+- Fly into Faro.
+- Use a prebooked private van with child seats if required.
+- Allow approximately 25–35 minutes of driving plus airport and loading time.
+- Ask the driver to stop briefly at a supermarket only if the flight arrives early enough and everyone has energy.
+
+### Afternoon
+
+- Check in.
+- Confirm elevator, air conditioning, hot water, pool rules, and emergency exits.
+- Unpack essential medication and refrigerate it immediately if necessary.
+- Rest for at least two hours.
+
+### Evening
+
+Take a 30–60-minute orientation walk on the Quarteira promenade or toward Vilamoura Beach. Identify:
+
+- Nearest supermarket.
+- Pharmacy.
+- Taxi pickup point.
+- Accessible route to the beach.
+- Beach-access mat.
+- Shaded café.
+- Nearest adapted public toilet.
+
+Have an early, casual dinner near the apartment. Avoid booking a formal marina restaurant because flight delays and fatigue are common.
+
+**Poor-weather or fatigue backup:** grocery delivery or takeaway, followed by an early night.
+
+---
+
+## Day 2 — Quarteira beach and promenade
+
+### Morning
+
+- Breakfast in the apartment.
+- Beach session from approximately 09:00 to 11:30.
+- Rent shade rather than carrying heavy equipment.
+- Children can swim and play close to the supervised area.
+- Older adults can alternate between the promenade, shaded seating, and a short beach visit.
+
+### Lunch and rest
+
+- Light lunch in the apartment or at a promenade café.
+- Rest from approximately 13:00 to 16:30.
+
+### Late afternoon
+
+- Return to the beach or pool for 60–90 minutes.
+- Walk a short section of the promenade.
+- Stop whenever older travelers prefer rather than setting a fixed distance.
+
+### Dinner
+
+Choose a casual Quarteira restaurant with grilled fish, chicken, rice, salads, pasta, and simple children’s food.
+
+**Backup:** pool time, board games, or a café visit if wind or surf makes the beach unsuitable.
+
+---
+
+## Day 3 — Vilamoura Marina and short family boat option
+
+### Morning
+
+Walk or take a short taxi to Vilamoura Marina. Allow time for:
+
+- A slow marina circuit.
+- Coffee or juice.
+- Shops and boat viewing.
+- A short visit to a nearby cultural site if the group is interested.
+
+A two- or three-hour boat trip can be booked only if:
+
+- The forecast is calm.
+- Boarding is suitable for all travelers.
+- Shade and a toilet are available.
+- Motion sickness has been considered.
+- The cancellation policy is reasonable.
+
+Do not choose a long, high-speed cave tour for the entire family unless everyone is comfortable with waves and prolonged sitting.
+
+### Lunch and rest
+
+Eat a simple marina lunch or return to the apartment. Rest through the hottest part of the day.
+
+### Evening
+
+Pool or Vilamoura Beach, followed by a reserved marina dinner.
+
+**Low-effort alternative:** skip the boat and remain around the marina.  
+**Poor-weather backup:** extended lunch, shopping, and an early return to the apartment.
+
+---
+
+## Day 4 — Loulé market and old town
+
+### Morning
+
+Take a taxi or private transfer to Loulé, ordinarily a relatively short inland journey. Limit the visit to approximately three hours door to door.
+
+Potential stops:
+
+- Municipal market.
+- Historic centre.
+- Shaded café.
+- A small museum or church if open and appropriate.
+
+The historic area may have cobbles and uneven surfaces, so this day should be optional for anyone with balance difficulties.
+
+### Lunch and rest
+
+Return to the apartment before the peak afternoon heat. Have lunch at home and rest.
+
+### Late afternoon
+
+Choose between:
+
+- Pool.
+- Short beach visit.
+- Promenade ice cream.
+- Quiet apartment time.
+
+### Dinner
+
+Home-cooked dinner or takeaway. This keeps the week from becoming a continuous sequence of restaurant meals.
+
+**Backup:** if heat or fire conditions are poor inland, replace Loulé with another local beach-and-pool day.
+
+---
+
+## Day 5 — Ria Formosa and Faro
+
+### Morning
+
+Arrange a transfer to Faro or another suitable Ria Formosa departure point. Choose a short, family-oriented nature cruise of approximately 2–3 hours rather than a full-day island itinerary.
+
+Before booking, confirm:
+
+- Boarding steps and gangway.
+- Shade.
+- Toilet availability.
+- Life jackets in children’s sizes.
+- Total time sitting in the boat.
+- Walking requirements at any stop.
+- Cancellation for wind.
+
+The wetlands offer birdlife, scenery, and a non-beach nature experience that most ages can enjoy together.
+
+### Lunch
+
+Have lunch in Faro or near the departure point. Keep it informal.
+
+### Afternoon
+
+Return to the apartment for a substantial rest. Do not combine this with another major attraction.
+
+### Evening
+
+Light dinner near Quarteira or in the apartment.
+
+**Poor-weather backup:** Faro’s indoor cultural options, a long lunch, shopping, or a complete rest day.
+
+---
+
+## Day 6 — Limited split day
+
+This is the only planned generation-specific split.
+
+### Active option
+
+Adults and active children can visit a nearby water park or choose a short cycling or water-sports session. Allow approximately 4–6 hours including transportation.
+
+Verify:
+
+- Child height and age restrictions.
+- Shade and locker availability.
+- Footwear rules.
+- Medical exclusions.
+- Cancellation terms.
+- Whether waiting areas are suitable for nonparticipants.
+
+### Rest option
+
+Older adults and anyone needing a slower day can remain near the apartment for:
+
+- Pool.
+- Café breakfast.
+- Short promenade walk.
+- Massage or spa treatment.
+- Reading or a nap.
+- A brief shaded beach visit.
+
+### Evening reunion
+
+Meet for a relaxed family dinner in Quarteira. Avoid an elaborate late reservation after an active day.
+
+**Whole-family alternative:** replace the split with a second beach morning and shared marina lunch.
+
+---
+
+## Day 7 — Flexible favorite-day repeat
+
+No major excursion should be scheduled on the final full day.
+
+### Morning
+
+The family chooses its favorite:
+
+- Quarteira Beach.
+- Vilamoura Beach.
+- Pool.
+- Marina.
+- Short cycle outing for active members.
+- Café and promenade for older adults.
+
+### Afternoon
+
+- Long rest.
+- Pack most luggage.
+- Confirm airport transfer.
+- Review medication and travel documents.
+- Check flight status.
+
+### Evening
+
+Have a final early dinner, ideally at a restaurant already visited and known to suit the group. A familiar venue reduces the chance of a disappointing or excessively long last evening.
+
+**Backup:** takeaway and sunset from the promenade.
+
+---
+
+## Day 8 — Departure
+
+- Eat breakfast in the apartment.
+- Leave extra time for elevator use, luggage, child seats, and airport assistance.
+- Use the prebooked private van.
+- For a Schengen or long-haul departure, follow the airline and Faro Airport’s current arrival-time guidance rather than relying on a generic rule.
+- Keep medication, spare clothing, insurance documents, and basic food in carry-on bags.
+
+---
+
+## Why this itinerary is realistic
+
+The plan has only three substantive off-site activities: Vilamoura Marina, Loulé, and the Ria Formosa/Faro outing. None requires a full day. The remaining time stays close to the accommodation.
+
+This structure works for a multigenerational group because:
+
+- Older adults are never required to complete consecutive strenuous days.
+- Children receive daily physical activity.
+- The family spends most of the week together.
+- The only planned split is limited and purposeful.
+- Every afternoon has a recovery window.
+- Most plans can be abandoned without losing prepaid full-day costs.
+- The apartment is used as an active part of the vacation, not merely a place to sleep.
+
+---
+
+## Budget
+
+## Benchmark budget for eight travelers
+
+The following assumes six adults, including two older adults, plus two children, for seven nights in July. All figures are in euros.
+
+| Category | Planning range | Notes |
+|---|---:|---|
+| Airfare from within Europe | €1,200–€3,600 total | Rough allowance of €150–€450 per person; baggage and route matter greatly |
+| Airfare from North America | €5,600–€11,200 total | Rough allowance of €700–€1,400 per person; not a quote |
+| Accommodation | €2,450–€5,600 | Approximately €350–€800 a night for a suitable three- or four-bedroom unit |
+| Food and groceries | €2,200–€4,100 | Breakfasts at home, mixed lunches, several restaurant dinners |
+| Airport and local transport | €400–€900 | Private airport van, taxis, and excursion transfers; rental car would alter this |
+| Activities | €500–€1,500 | Boat trip, water park or cycling, museums, and rentals |
+| Taxes, cleaning, deposits, fees | €200–€600 | Highly property-dependent; refundable deposits not counted as final spend |
+| Travel insurance | €400–€1,200 | Approximately €50–€150 per traveler, or more for age/medical coverage |
+| Contingency | €700–€1,500 | Roughly 10% of land spending |
+| **Estimated land total** | **€6,850–€15,400** | Excludes airfare |
+| **With intra-European airfare** | **€8,050–€19,000** | Broad planning range |
+| **With North American airfare** | **€12,450–€26,600** | Broad planning range |
+
+### Scalable unit estimates
+
+- Accommodation: **€350–€800 per family unit per night**.
+- Adult food: **€45–€80 per day**.
+- Child food: **€25–€50 per day**.
+- Activities: **€60–€190 per person over the week**, depending on boat and water-park choices.
+- Insurance: often **€50–€150 per person**, but age, residence, trip cost, and medical conditions can increase this materially.
+- Contingency: **8–12%** of nonrefundable and in-destination expenses.
+
+A family of four sharing part of a larger apartment should not simply divide the accommodation by room count; ensuite bathrooms, bed quality, and who receives the larger rooms affect a fair allocation.
+
+### Ways to control cost without reducing comfort
+
+- Stay on the Quarteira side rather than directly on Vilamoura Marina.
+- Cook breakfast and several dinners.
+- Avoid a full-week rental car.
+- Choose one paid boat trip and one active attraction rather than daily excursions.
+- Book a refundable apartment early.
+- Walk between Quarteira and Vilamoura when temperatures allow.
+
+Do not save money by choosing a property far inland, without air conditioning, or without an elevator. Those compromises would directly undermine the group’s rest and independence.
+
+---
+
+## Health, heat, sun, and water plan
+
+### Heat and sun
+
+- Schedule active outdoor time before noon and after approximately 16:00.
+- Use broad-spectrum high-SPF sunscreen and reapply after swimming.
+- Provide hats, UV shirts, and refillable water bottles.
+- Ensure older adults drink regularly even if they do not feel thirsty.
+- Avoid excessive alcohol at lunch.
+- Keep medications out of hot vehicles and direct sun.
+- Confirm with a clinician whether any traveler’s medication increases sun sensitivity or dehydration risk.
+
+### Water safety
+
+- Use supervised swimming zones.
+- Follow local flag warnings.
+- Do not assume a Blue Flag award means calm water.
+- Keep young children within immediate reach.
+- Use properly fitted life jackets on boats.
+- Ask about sea conditions before any cruise.
+- Cancel rather than forcing a boat outing on a windy day.
+
+### Medical preparation
+
+Before final payment, identify whether anyone has:
+
+- Limited walking tolerance.
+- Fall risk.
+- Cardiac or respiratory disease.
+- Heat intolerance.
+- Severe allergy.
+- Diabetes requiring refrigeration.
+- Anticoagulation.
+- Recent surgery.
+- Dialysis or infusion requirements.
+- A need for oxygen or powered mobility equipment.
+
+Any of these could change the preferred property or destination. For example, a traveler requiring frequent specialist care may be better served by San Diego or by staying closer to Faro rather than in a resort district.
+
+---
+
+## Passport, visa, and insurance issues
+
+Portugal and Spain are in the Schengen Area. Entry eligibility, required passport validity, the 90-in-180-day limit for many visa-exempt visitors, and any electronic travel-authorization rules depend on citizenship and residence. These must be checked through the official [EU travel portal](https://travel-europe.europa.eu/index_en) [15] and the appropriate Portuguese consular authority.
+
+Do not book nonrefundable international travel until confirming:
+
+- Nationality of every traveler.
+- Passport expiry dates.
+- Consent documentation if a child travels without both legal guardians.
+- Visa requirements.
+- Transit visa requirements for connecting countries.
+- Insurance coverage for pre-existing conditions.
+- Whether mobility equipment can be carried without charge.
+- Airline arrangements for medications, oxygen, or assistance.
+
+The insurance policy should ideally cover:
+
+- Trip cancellation and interruption.
+- Medical treatment abroad.
+- Medical evacuation and repatriation.
+- Pre-existing conditions where applicable.
+- Missed connections.
+- Weather-related delay.
+- Lost or delayed baggage.
+- Rental-car excess if renting.
+- Financial failure where relevant.
+
+Purchase timing matters because pre-existing-condition waivers and cancellation coverage may require buying soon after the first trip payment.
+
+---
+
+## Booking timeline
+
+### 9–12 months before travel
+
+- Supply origin, party size, ages, nationality, medical and mobility details.
+- Check passports and visas.
+- Compare Algarve with San Diego using actual door-to-door travel time.
+- Shortlist refundable three- or four-bedroom properties.
+- Investigate insurance before making large nonrefundable payments.
+
+### 6–9 months before
+
+- Book the apartment with flexible cancellation.
+- Book flights once the preferred schedule and price are acceptable.
+- Reserve airport assistance if required.
+- Reserve a private airport van with appropriate child seats.
+- Record cancellation deadlines.
+
+### 3–6 months before
+
+- Select one boat excursion and one optional active outing.
+- Ask the municipality, beach concessionaire, or accommodation about amphibious-chair procedures and lifeguard hours.
+- Map pharmacies, urgent care, and hospitals.
+- Arrange any specialist medical planning.
+
+### 1–2 months before
+
+- Reserve one or two high-priority dinners.
+- Confirm bedding, bathrooms, elevator, air conditioning, laundry, and check-in procedure.
+- Obtain translated allergy or medical cards.
+- Confirm mobility-equipment transport.
+- Buy or organize sun-protective clothing.
+
+### 7–10 days before
+
+- Review the first useful weather forecast.
+- Check regional fire conditions.
+- Check wind, surf, and marine forecasts.
+- Reconfirm transfers and airline assistance.
+- Cancel or modify sea activities if conditions look poor.
+
+### 24–72 hours before each activity
+
+- Check official warnings again.
+- Confirm boat operation and boarding requirements.
+- Verify beach flags and tides.
+- Adjust the day around fatigue and heat rather than forcing the original schedule.
+
+---
+
+## Information still needed before reservations
+
+The following details could materially change the recommendation:
+
+1. **Departure city or cities.**
+2. **Exact July year and preferred date range.**
+3. **Number of travelers.**
+4. **Children’s ages, swimming ability, and child-seat needs.**
+5. **Older adults’ walking tolerance and stair tolerance.**
+6. **Use of a cane, walker, wheelchair, scooter, oxygen, or refrigerated medication.**
+7. **Any cardiac, respiratory, balance, heat-sensitivity, or other medical limitations.**
+8. **Nationalities, passport expiry dates, and visa constraints.**
+9. **Dietary restrictions and severity of any allergies.**
+10. **Required bedroom and bathroom count.**
+11. **Whether children can share rooms or beds.**
+12. **Accommodation budget and total trip budget.**
+13. **Preference for pool versus immediate beachfront location.**
+14. **Willingness to rent a car.**
+15. **Tolerance for long-haul flights and connections.**
+16. **Need for a hospital or specialist within a specified travel time.**
+17. **Whether seven nights or six nights is preferred.**
+18. **Whether the group values warmer water enough to accept more heat or tropical-weather risk.**
+
+---
+
+## Final conclusion
+
+For an origin-neutral, multigenerational July beach trip with low tolerance for persistent rain or severe seasonal disruption, **Vilamoura–Quarteira is the best overall provisional choice**.
+
+Its greatest strengths are not simply sunshine and beaches. They are the combination of a reliably dry July pattern, two adjoining developed beach districts, flat waterfront movement, documented accessible beach equipment, nearby food and groceries, and the ability to structure every day around a midday rest.
+
+The main tradeoffs are peak-season crowding, elevated prices, potentially cool Atlantic water, occasional wind or rough sea, and Portugal’s summer wildfire risk away from the immediate coast. These are more manageable for this brief than Oahu’s tropical-season exposure, Mallorca’s greater heat, or the cold-water and cost tradeoffs of San Diego.
+
+**San Diego should replace the Algarve as the leading choice if the group is based in western North America, requires major-city medical access, or strongly prioritizes the easiest journey over warmer water and an international setting.** Mallorca becomes more attractive if warm swimming water is paramount; Oahu becomes more attractive if tropical scenery and warm water justify higher cost, humidity, long-haul travel, and a nonzero hurricane-season risk.
+
+### Sources
+
+[1] IPMA — 1991–2020 Faro Climate-Normal PDF: https://www.ipma.pt/bin/file.data/climate-normal/cn_91-20_FARO.pdf
+
+[2] IPMA — Climate Normals: https://www.ipma.pt/en/oclima/normais.clima/
+
+[3] Holiday Weather — Faro July Averages: https://www.holiday-weather.com/faro/averages/july
+
+[4] Municipality of Loulé — Vilamoura Beach: https://www.cm-loule.pt/pt/menu/639/praia-de-vilamoura.aspx
+
+[5] Municipality of Loulé — Quarteira Beach: https://www.cm-loule.pt/pt/menu/640/praia-de-quarteira.aspx
+
+[6] Portuguese Hydrographic Institute — Tide Tables: https://www.hidrografico.pt/prev.mare
+
+[7] NOAA NCEI — U.S. Climate Normals: https://www.ncei.noaa.gov/access/us-climate-normals/
+
+[8] NOAA NCEI — Climate Data Online: https://www.ncei.noaa.gov/cdo-web/
+
+[9] NOAA National Hurricane Center and Central Pacific Products: https://www.nhc.noaa.gov/
+
+[10] AEMET — Climatological Values: https://www.aemet.es/en/serviciosclimaticos/datosclimatologicos/valoresclimatologicos
+
+[11] CAL FIRE — Current Incidents: https://www.fire.ca.gov/incidents
+
+[12] Portugal National Authority for Emergency and Civil Protection: https://prociv.gov.pt/en/
+
+[13] ANA Airports — Faro Airport: https://www.ana.pt/en/fao/home
+
+[14] Comboios de Portugal — Passenger Rail: https://www.cp.pt/passageiros/en
+
+[15] European Union — Official Travel to Europe Portal: https://travel-europe.europa.eu/index_en

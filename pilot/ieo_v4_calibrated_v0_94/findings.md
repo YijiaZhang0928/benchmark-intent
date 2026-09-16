@@ -54,6 +54,23 @@ The candidate-to-selection gap persisted (0.675 candidate recall versus 0.225 se
 recall). The method can now articulate many consequential preferences, but importance estimation and
 four-slot set selection remain the limiting components.
 
+## Final exploratory conclusion
+
+The explicit H2 controller demonstrates a real but modest ask-what-matters process signal over stock
+ODR: it asks one-third as many atomic questions, doubles question precision, and improves critical
+acquisition/reflection by 0.10. The score outcome is heterogeneous. One task is nearly unchanged and
+one improves substantially, yielding +0.423 mean P_strict.
+
+The result does not establish superiority over prior IEO-v3 or DeerFlow 2.0. Compared with the saved
+IEO-v3 reports, H2 has lower P_strict but far lower research depth. Compared with stock ODR, H2 uses
+more searches and slightly more successful fetches, so final-report improvement is partly confounded.
+
+The strongest paper contribution supported by this pilot is architectural and diagnostic: separating
+candidate, selected, resolved and reflected recall reveals that value/fit enumeration can recover the
+right personalization space, while set selection under a tight burden remains unsolved. The next
+confirmatory experiment should freeze H2, match research depth exactly, run untouched tasks and add
+repeats rather than tune this validation set.
+
 ## Lessons and constraints
 
 - Never use hidden task preferences to generate or select candidates.

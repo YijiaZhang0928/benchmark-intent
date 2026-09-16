@@ -57,3 +57,17 @@
   retained without regeneration. A deterministic finalizer reconstructs metadata and marks the
   engineering recovery explicitly.
 - The runner now resolves all artifact paths before changing directories; T11 uses the repaired runner.
+
+## 2026-09-15 — Final internal-validation synthesis
+
+- Both V4R reports passed the five-successful-fetch and 1,000-character DR gates.
+- Mean strict critical resolved and reflected recall increased from 0.125 to 0.225.
+- Mean atomic questions fell from 12.0 to 4.0; question precision rose from 0.182 to 0.375.
+- Mean P_strict increased from 6.654 to 7.076 (`+0.423`). T08 was nearly flat (`+0.015`), while
+  T11 improved by `+0.830`.
+- V4R remained below the prior IEO-v3 reference by `-0.673` mean P_strict. The old IEO-v3 reports
+  also used much greater research depth (13 versus 7 successful fetches on average).
+- V4R used four more searches and one more successful fetch than stock on average, so the P-score
+  improvement is an end-to-end harness effect, not a clean causal clarification-policy estimate.
+- The bounded experiment stops here. The continuation heartbeat is paused and no post-validation
+  parameter tuning is performed.

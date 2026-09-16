@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "H8Q4",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "963e669f61dcaa8c8effe9b741c3756f6322ba1c692fb4d6ba2a32f184ea22e3",
+  "rubric_sha256": "db88dbad3435309fe9d3e546cb085b23cde2dbeb62cf461e0957eaa7b61ccf05",
+  "started_at_utc": "2026-09-16T00:43:12.609434+00:00",
+  "completed_at_utc": "2026-09-16T00:48:28.110328+00:00",
+  "p_strict": 6.272642140468228,
+  "p_hi": 6.4,
+  "dimension_scores": {
+    "INTENT": 7.6,
+    "SOURCE": 5.2,
+    "EVIDENCE": 6.08695652173913,
+    "TRADEOFF": 4.3478260869565215,
+    "DECISION": 6.0,
+    "ACTION": 9.4,
+    "TRACE": 7.230769230769231
+  },
+  "high_dimension_scores": {
+    "INTENT": 7.6,
+    "SOURCE": 5.2,
+    "EVIDENCE": 6.2,
+    "TRADEOFF": 4.8,
+    "DECISION": 6.0,
+    "ACTION": 9.4,
+    "TRACE": 7.6000000000000005
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T8-P1-01",
+      "score": 10,
+      "evidence_span": "This structure works for a multigenerational group because:\n\n- Older adults are never required to complete consecutive strenuous days.\n- Children receive daily physical activity.\n- The family spends most of the week together.",
+      "rationale": "Explicitly treats shared family time and balancing children's activity with older adults' rest as reasons for the itinerary's design."
+    },
+    {
+      "criterion_id": "T8-P1-02",
+      "score": 8,
+      "evidence_span": "The official Municipality of Loulé pages identify **both Vilamoura and Quarteira as Blue Flag and Accessible Beaches**. Documented facilities include ramps, rigid and flexible walkways over the sand, amphibious chairs, adapted toilets, first aid, shade rental, restaurants, supermarkets, public transport, and accessible parking.",
+      "rationale": "Identifies official evidence addressing whether family beach activities can accommodate older adults alongside other travelers. The connection to shared interaction is less explicit than the accessibility connection."
+    },
+    {
+      "criterion_id": "T8-P1-03",
+      "score": 10,
+      "evidence_span": "Quarteira’s promenade provides the easiest low-effort environment. Older adults can turn back independently, stop at a café, or return to the apartment without interrupting the rest of the group.",
+      "rationale": "Names an option and explains a concrete spatial feature that supports different energy levels without disrupting the family's activities."
+    },
+    {
+      "criterion_id": "T8-P1-04",
+      "score": 4,
+      "evidence_span": "### Active option\n\nAdults and active children can visit a nearby water park or choose a short cycling or water-sports session. Allow approximately 4–6 hours including transportation.",
+      "rationale": "Describes an active-child-oriented route, but supplies only generic activity choices and a proposed duration, rather than a verifiable fact about an identified subgroup-optimized option."
+    },
+    {
+      "criterion_id": "T8-P1-05",
+      "score": 4,
+      "evidence_span": "**Whole-family alternative:** replace the split with a second beach morning and shared marina lunch.",
+      "rationale": "Contrasts a split day with shared activities, but does not directly compare family balance against optimizing the trip around one age subgroup or explain a consequential difference on a common decision axis."
+    },
+    {
+      "criterion_id": "T8-P1-06",
+      "score": 10,
+      "evidence_span": "The best micro-location is **western Quarteira close to the Passeio das Dunas, or the eastern edge of Vilamoura near the beach but not directly over the marina nightlife**.\n\nThis location offers:\n\n- Quarteira’s promenade and practical shops.\n- Easy access to Vilamoura Marina.\n- Multiple beaches without driving.\n- Short return trips for midday rest.\n- Freedom for older adults to opt out without needing a vehicle.",
+      "rationale": "Recommends a specific base because it combines convenient activities with independent rest and opt-outs for older adults."
+    },
+    {
+      "criterion_id": "T8-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is explicitly downgraded because it favors one age subgroup. Destination downgrades instead concern weather, cost, travel burden, and accessibility."
+    },
+    {
+      "criterion_id": "T8-P1-08",
+      "score": 10,
+      "evidence_span": "### Evening reunion\n\nMeet for a relaxed family dinner in Quarteira. Avoid an elaborate late reservation after an active day.",
+      "rationale": "Provides an executable reunion activity that restores shared family time after the generation-specific split while respecting fatigue."
+    },
+    {
+      "criterion_id": "T8-P1-09",
+      "score": 10,
+      "evidence_span": "Only one day uses a significant age-appropriate split.",
+      "rationale": "Sets a clear allocation rule limiting subgroup separation during the week."
+    },
+    {
+      "criterion_id": "T8-P1-10",
+      "score": 10,
+      "evidence_span": "**If an older traveler has a condition requiring frequent specialist care**, proximity to a major hospital could outweigh the Algarve’s climate and beach-access advantages.",
+      "rationale": "States a concrete medical boundary under which prioritizing an older traveler's requirements should override the otherwise preferred destination advantages."
+    },
+    {
+      "criterion_id": "T8-P1-11",
+      "score": 8,
+      "evidence_span": "The best micro-location is **western Quarteira close to the Passeio das Dunas, or the eastern edge of Vilamoura near the beach but not directly over the marina nightlife**.\n\nThis location offers:\n\n- Quarteira’s promenade and practical shops.\n- Easy access to Vilamoura Marina.\n- Multiple beaches without driving.\n- Short return trips for midday rest.\n- Freedom for older adults to opt out without needing a vehicle.",
+      "rationale": "Links the selected location's practical features to balancing activities and older adults' independent rest, then to a concrete accommodation-location decision. The chain is stronger for multigenerational balance than for shared interaction specifically."
+    },
+    {
+      "criterion_id": "T8-P2-01",
+      "score": 10,
+      "evidence_span": "A private van is preferable to several taxis for a large family because it reduces luggage handling, waiting, and the risk of the group becoming separated.",
+      "rationale": "Explicitly prioritizes coordinated, convenient family transportation and identifies the logistical burdens to minimize."
+    },
+    {
+      "criterion_id": "T8-P2-02",
+      "score": 10,
+      "evidence_span": "The official Municipality of Loulé pages identify **both Vilamoura and Quarteira as Blue Flag and Accessible Beaches**. Documented facilities include ramps, rigid and flexible walkways over the sand, amphibious chairs, adapted toilets, first aid, shade rental, restaurants, supermarkets, public transport, and accessible parking.",
+      "rationale": "Identifies official municipal evidence covering accessibility, nearby services, and transportation needed to evaluate convenient family logistics."
+    },
+    {
+      "criterion_id": "T8-P2-03",
+      "score": 10,
+      "evidence_span": "Quarteira also has an extensive waterfront promenade and interconnected beach routes",
+      "rationale": "Provides a concrete, verifiable infrastructure fact about a named destination that supports convenient movement between family activities."
+    },
+    {
+      "criterion_id": "T8-P2-04",
+      "score": 8,
+      "evidence_span": "Travelers arriving through Lisbon can use rail toward the Algarve, but Loulé station is outside the beach district and requires an onward taxi.",
+      "rationale": "Identifies a named route and a concrete additional transfer burden. This establishes higher-friction logistics, although the route is not specifically presented as an adventure-oriented alternative."
+    },
+    {
+      "criterion_id": "T8-P2-05",
+      "score": 8,
+      "evidence_span": "A detached villa can provide more shared space, but it often introduces steps, a longer walk, dependence on a car, and maintenance or pool-safety concerns. A large apartment near the promenade is usually better for this trip.",
+      "rationale": "Directly compares accommodation options on walking, accessibility, and vehicle dependence, with a consequential preference for the apartment. The higher-friction option is not explicitly adventure-oriented."
+    },
+    {
+      "criterion_id": "T8-P2-06",
+      "score": 10,
+      "evidence_span": "the Algarve wins overall because its sea is generally somewhat warmer, its selected beaches have stronger documented accessibility infrastructure, its waterfront base is compact, and it combines beach, marina, dining, culture, and excursions without requiring a car every day.",
+      "rationale": "Explicitly selects the Algarve partly because its compact base, accessible infrastructure, and reduced car dependence simplify family logistics."
+    },
+    {
+      "criterion_id": "T8-P2-07",
+      "score": 8,
+      "evidence_span": "Do not choose a long, high-speed cave tour for the entire family unless everyone is comfortable with waves and prolonged sitting.",
+      "rationale": "Downgrades an identifiable adventure option because its duration and physical demands burden the family. It names a tour type rather than a specific route or operator and emphasizes participant tolerance more than organizational complexity."
+    },
+    {
+      "criterion_id": "T8-P2-08",
+      "score": 10,
+      "evidence_span": "Reserve a private airport van with appropriate child seats.",
+      "rationale": "Gives an executable booking action that directly implements coordinated family transportation."
+    },
+    {
+      "criterion_id": "T8-P2-09",
+      "score": 10,
+      "evidence_span": "A rest period of roughly 13:00–16:00 or 16:30 is protected daily.",
+      "rationale": "Defines a usable daily allocation that coordinates activities around older adults' recovery needs."
+    },
+    {
+      "criterion_id": "T8-P2-10",
+      "score": 8,
+      "evidence_span": "Oahu becomes more attractive if tropical scenery and warm water justify higher cost, humidity, long-haul travel, and a nonzero hurricane-season risk.",
+      "rationale": "States a concrete preference boundary under which a more burdensome destination gains appeal. However, becoming more attractive is weaker than explicitly becoming the better choice, and adventure logistics are not the sole tradeoff."
+    },
+    {
+      "criterion_id": "T8-P2-11",
+      "score": 10,
+      "evidence_span": "the Algarve wins overall because its sea is generally somewhat warmer, its selected beaches have stronger documented accessibility infrastructure, its waterfront base is compact, and it combines beach, marina, dining, culture, and excursions without requiring a car every day.",
+      "rationale": "Provides a visible causal chain from documented accessibility and compact, car-light logistics to the destination-selection decision."
+    },
+    {
+      "criterion_id": "T8-P3-01",
+      "score": 10,
+      "evidence_span": "It is intentionally unhurried:\n\n- Most days contain only one principal activity.\n- Beach time is concentrated in the cooler morning or late afternoon.\n- A rest period of roughly 13:00–16:00 or 16:30 is protected daily.",
+      "rationale": "Explicitly prioritizes an unhurried schedule, limited daily activity, and protected rest."
+    },
+    {
+      "criterion_id": "T8-P3-02",
+      "score": 8,
+      "evidence_span": "“Accessible property” should never be accepted as a complete description. Request photographs and measurements of:\n\n- The entrance threshold.\n- Elevator door and cabin.\n- Hallway width.\n- Shower lip and grab bars.\n- Toilet transfer space.\n- Balcony threshold.\n- Route from property to promenade.\n- Pool access.",
+      "rationale": "Identifies concrete evidence types for evaluating low-effort accommodation and movement. The connection to physical comfort is clear, although the research instruction does not expressly connect these checks to scheduling rest."
+    },
+    {
+      "criterion_id": "T8-P3-03",
+      "score": 10,
+      "evidence_span": "Quarteira’s promenade provides the easiest low-effort environment. Older adults can turn back independently, stop at a café, or return to the apartment without interrupting the rest of the group.",
+      "rationale": "Names an option and describes specific features of its use that enable shorter activities and independent rest, rather than relying on a comfort adjective alone."
+    },
+    {
+      "criterion_id": "T8-P3-04",
+      "score": 4,
+      "evidence_span": "Choose a short, family-oriented nature cruise of approximately 2–3 hours rather than a full-day island itinerary.",
+      "rationale": "Provides a concrete duration contrast for the Ria Formosa outing, but does not identify a specific tightly packed sightseeing route or establish its activity density. Evidence is partial and capped."
+    },
+    {
+      "criterion_id": "T8-P3-05",
+      "score": 4,
+      "evidence_span": "Choose a short, family-oriented nature cruise of approximately 2–3 hours rather than a full-day island itinerary.",
+      "rationale": "Directly compares shorter and longer excursions on duration, but does not explicitly compare rest-oriented scheduling against tightly packed sightseeing or state the consequential difference within that comparison."
+    },
+    {
+      "criterion_id": "T8-P3-06",
+      "score": 10,
+      "evidence_span": "The best micro-location is **western Quarteira close to the Passeio das Dunas, or the eastern edge of Vilamoura near the beach but not directly over the marina nightlife**.\n\nThis location offers:\n\n- Quarteira’s promenade and practical shops.\n- Easy access to Vilamoura Marina.\n- Multiple beaches without driving.\n- Short return trips for midday rest.\n- Freedom for older adults to opt out without needing a vehicle.",
+      "rationale": "Recommends a named location and explicitly gives convenient midday rest and independent opting out as selection reasons."
+    },
+    {
+      "criterion_id": "T8-P3-07",
+      "score": 4,
+      "evidence_span": "Choose a short, family-oriented nature cruise of approximately 2–3 hours rather than a full-day island itinerary.",
+      "rationale": "Downgrades a longer excursion alternative, but neither names a specific otherwise viable itinerary nor establishes tightly packed sightseeing as the reason for rejecting it."
+    },
+    {
+      "criterion_id": "T8-P3-08",
+      "score": 10,
+      "evidence_span": "Rest from approximately 13:00 to 16:30.",
+      "rationale": "Provides an immediately executable rest step in the Day 2 itinerary."
+    },
+    {
+      "criterion_id": "T8-P3-09",
+      "score": 10,
+      "evidence_span": "A rest period of roughly 13:00–16:00 or 16:30 is protected daily.",
+      "rationale": "Defines a usable daily time allocation for rest."
+    },
+    {
+      "criterion_id": "T8-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes tightly packed sightseeing the better choice. Conditional destination changes concern travel burden, medical access, weather, or water temperature instead."
+    },
+    {
+      "criterion_id": "T8-P3-11",
+      "score": 10,
+      "evidence_span": "The best micro-location is **western Quarteira close to the Passeio das Dunas, or the eastern edge of Vilamoura near the beach but not directly over the marina nightlife**.\n\nThis location offers:\n\n- Quarteira’s promenade and practical shops.\n- Easy access to Vilamoura Marina.\n- Multiple beaches without driving.\n- Short return trips for midday rest.\n- Freedom for older adults to opt out without needing a vehicle.",
+      "rationale": "Makes a visible chain from local proximity and vehicle-free access, to convenient rest and independent withdrawal, to the recommended accommodation location."
+    },
+    {
+      "criterion_id": "T8-P4-01",
+      "score": 8,
+      "evidence_span": "Ways to control cost without reducing comfort",
+      "rationale": "Explicitly prioritizes preserving comfort while controlling cost, which expresses quality-to-cost value. It is a subsidiary planning priority rather than the stated primary destination-selection objective."
+    },
+    {
+      "criterion_id": "T8-P4-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or research evidence class is explicitly selected to evaluate quality relative to cost. The cited research addresses climate, accessibility, transportation, and safety; prices are planning allowances."
+    },
+    {
+      "criterion_id": "T8-P4-03",
+      "score": 8,
+      "evidence_span": "Quarteira is generally the more practical zone for everyday groceries and casual meals, while Vilamoura Marina has a broader resort-oriented dining selection and higher prices.",
+      "rationale": "Provides a concrete, checkable comparison linking Quarteira's practical dining and grocery provision to the marina's higher prices. The value evidence is qualitative rather than supported by researched price comparisons."
+    },
+    {
+      "criterion_id": "T8-P4-04",
+      "score": 8,
+      "evidence_span": "A planning premium of approximately **€75–€175 per night** over a cheaper inland or less accessible property",
+      "rationale": "Identifies a cheaper accommodation route and quantifies its estimated price advantage while identifying location or accessibility compromises. This is a planning estimate for an accommodation category, not evidence about a specific researched property."
+    },
+    {
+      "criterion_id": "T8-P4-05",
+      "score": 10,
+      "evidence_span": "A planning premium of approximately **€75–€175 per night** over a cheaper inland or less accessible property could substantially improve the entire week. It reduces taxis, heat exposure, coordination problems, and the need to wake resting older adults whenever others want to go out.",
+      "rationale": "Directly compares a higher-value accommodation upgrade with cheaper accommodation on the common axis of additional spending versus practical benefits, identifying consequential differences."
+    },
+    {
+      "criterion_id": "T8-P4-06",
+      "score": 10,
+      "evidence_span": "### Ways to control cost without reducing comfort\n\n- Stay on the Quarteira side rather than directly on Vilamoura Marina.",
+      "rationale": "Explicitly recommends Quarteira over the marina because it controls cost without sacrificing comfort."
+    },
+    {
+      "criterion_id": "T8-P4-07",
+      "score": 8,
+      "evidence_span": "Do not save money by choosing a property far inland, without air conditioning, or without an elevator. Those compromises would directly undermine the group’s rest and independence.",
+      "rationale": "Downgrades identifiable lower-cost accommodation configurations because their savings undermine necessary quality. The rejected options are categories rather than specific otherwise-viable properties."
+    },
+    {
+      "criterion_id": "T8-P4-08",
+      "score": 10,
+      "evidence_span": "### Ways to control cost without reducing comfort\n\n- Stay on the Quarteira side rather than directly on Vilamoura Marina.",
+      "rationale": "Gives an executable accommodation-location choice explicitly tied to retaining comfort while reducing cost."
+    },
+    {
+      "criterion_id": "T8-P4-09",
+      "score": 10,
+      "evidence_span": "Choose one paid boat trip and one active attraction rather than daily excursions.",
+      "rationale": "Defines a concrete paid-activity allocation within the report's cost-control-without-reducing-comfort strategy."
+    },
+    {
+      "criterion_id": "T8-P4-10",
+      "score": 4,
+      "evidence_span": "Oahu becomes more attractive if tropical scenery and warm water justify higher cost, humidity, long-haul travel, and a nonzero hurricane-season risk.",
+      "rationale": "States a condition favoring a more expensive destination, but does not establish that this reverses the choice toward unnecessary luxury or cheapest-possible travel. The required contrast is only partially present."
+    },
+    {
+      "criterion_id": "T8-P4-11",
+      "score": 10,
+      "evidence_span": "The best comfort upgrade is **not a premium excursion or sea-view room**. It is paying more for a genuinely suitable apartment:\n\n- 300 metres or less from the beach and dining.\n- Reliable elevator.\n- Strong air conditioning.\n- An extra bathroom.\n- Quiet bedrooms.\n- Pool and shaded outdoor space.\n- Flexible cancellation.\n\nA planning premium of approximately **€75–€175 per night** over a cheaper inland or less accessible property could substantially improve the entire week. It reduces taxis, heat exposure, coordination problems, and the need to wake resting older adults whenever others want to go out.",
+      "rationale": "Provides a visible chain from prioritizing useful comfort over premium extras, through specified accommodation features and an estimated incremental cost, to the decision to spend more on the apartment."
+    },
+    {
+      "criterion_id": "T8-P5-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report prioritizes weather reliability, accessibility, convenience, and rest, not self-planned or deeper experience."
+    },
+    {
+      "criterion_id": "T8-P5-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Sources address climate, accessibility, transport, and safety; none is identified as evidence for evaluating self-planned or deeper experience."
+    },
+    {
+      "criterion_id": "T8-P5-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is supported by a verifiable fact specifically establishing its suitability for self-planned or deeper experience. Local attractions and mobility advantages are not linked to that preference."
+    },
+    {
+      "criterion_id": "T8-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not identify a named mass-tour itinerary or provide a concrete fact about its standardized structure."
+    },
+    {
+      "criterion_id": "T8-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no direct comparison between self-planned/deeper travel and a generic mass-tour itinerary on a common decision axis."
+    },
+    {
+      "criterion_id": "T8-P5-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Recommendations are justified by climate, access, comfort, and logistics, rather than explicitly by self-planned or deeper experience."
+    },
+    {
+      "criterion_id": "T8-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Alternatives are downgraded for weather, heat, cost, or transport burdens, not for favoring generic mass-tour itineraries."
+    },
+    {
+      "criterion_id": "T8-P5-08",
+      "score": 10,
+      "evidence_span": "Take a taxi or private transfer to Loulé, ordinarily a relatively short inland journey. Limit the visit to approximately three hours door to door.\n\nPotential stops:\n\n- Municipal market.\n- Historic centre.\n- Shaded café.\n- A small museum or church if open and appropriate.",
+      "rationale": "This is an executable independently arranged local outing, specifying transport, destination, duration, and cultural stops rather than leaving the action to be invented."
+    },
+    {
+      "criterion_id": "T8-P5-09",
+      "score": 4,
+      "evidence_span": "Limit the visit to approximately three hours door to door.",
+      "rationale": "The independently arranged Loulé outing has a usable time limit, but the limit serves pacing and heat management rather than explicitly protecting deeper or self-planned experience. Credit is therefore capped for the incomplete preference-specific link."
+    },
+    {
+      "criterion_id": "T8-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Conditions for switching destinations are supplied, but no condition makes a generic mass-tour itinerary preferable to self-planned/deeper travel."
+    },
+    {
+      "criterion_id": "T8-P5-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No visible chain explicitly connects the specified preference to supporting evidence and then to a recommendation or action."
+    },
+    {
+      "criterion_id": "T8-A1-01",
+      "score": 6,
+      "evidence_span": "The wetlands offer birdlife, scenery, and a non-beach nature experience that most ages can enjoy together.",
+      "rationale": "The Ria Formosa itinerary identifies a concrete nature feature: wetlands with birdlife. This satisfies the single-fact check; the supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report includes nature and cultural outings but does not explicitly contrast an option offering these elements with a purely resort-only environment."
+    },
+    {
+      "criterion_id": "T8-A1-03",
+      "score": 6,
+      "evidence_span": "the Algarve wins overall because its sea is generally somewhat warmer, its selected beaches have stronger documented accessibility infrastructure, its waterfront base is compact, and it combines beach, marina, dining, culture, and excursions without requiring a car every day.",
+      "rationale": "Culture and excursions explicitly contribute to the Algarve’s winning fit judgment alongside other factors. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A1-04",
+      "score": 6,
+      "evidence_span": "The plan has only three substantive off-site activities: Vilamoura Marina, Loulé, and the Ria Formosa/Faro outing.",
+      "rationale": "The recommended trip retains the historical-town and nature outings rather than selecting or justifying a resort-only experience. No opposing-value justification contradicts this preference. The supplied generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T8-A2-01",
+      "score": 4,
+      "evidence_span": "A broad choice of apartments, aparthotels, and villas suitable for shared family space.",
+      "rationale": "The report identifies family-oriented accommodation availability in the recommended destination, but does not name a lodging property with a verifiable family-friendly feature. Its detailed amenity lists are booking requirements rather than established property facts."
+    },
+    {
+      "criterion_id": "T8-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly distinguish warm or family-friendly lodging from business-style, impersonal lodging. Comparing apartment space with small hotel rooms does not establish that distinction."
+    },
+    {
+      "criterion_id": "T8-A2-03",
+      "score": 6,
+      "evidence_span": "The best format is a **three- or four-bedroom air-conditioned apartment or aparthotel**, rather than several small hotel rooms.",
+      "rationale": "Family-suitable accommodation configuration explicitly changes the recommended lodging format. However, this remains a generic format recommendation rather than a comparison of named properties, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T8-A2-04",
+      "score": 6,
+      "evidence_span": "A large apartment near the promenade is usually better for this trip.",
+      "rationale": "The selected accommodation format is consistent with family-friendly lodging, and no selected option is justified by business-style impersonality. The recommendation is generic rather than property-specific, so the generic cap applies."
+    },
+    {
+      "criterion_id": "T8-A3-01",
+      "score": 6,
+      "evidence_span": "The principal drawback is that the Pacific can feel cold, especially to small children and older adults. Wetsuits may improve enjoyment for active children.",
+      "rationale": "The San Diego assessment identifies a concrete swimming-related condition affecting small children and an adaptation for active children. This supports age-appropriate beach activity planning. The supplied generic cap is applied."
+    },
+    {
+      "criterion_id": "T8-A3-02",
+      "score": 4,
+      "evidence_span": "Adults and active children can visit a nearby water park or choose a short cycling or water-sports session.",
+      "rationale": "The split-day plan explicitly provides activities for active children rather than requiring everyone to follow the older adults’ rest option. However, it does not explicitly contrast child-inclusive planning with an adult-only itinerary in which children are accommodated secondarily."
+    },
+    {
+      "criterion_id": "T8-A3-03",
+      "score": 6,
+      "evidence_span": "Enough activities for children without requiring the entire week to revolve around excursions.",
+      "rationale": "This is explicitly listed among the reasons the recommended Algarve base offers the strongest overall balance, making child activities a secondary fit factor. The supplied generic cap is applied."
+    },
+    {
+      "criterion_id": "T8-A3-04",
+      "score": 6,
+      "evidence_span": "Children receive daily physical activity.",
+      "rationale": "The recommended itinerary explicitly preserves daily activity for children, and the final destination recommendation does not justify excluding their needs in favor of adult-only activities. The supplied generic cap is applied."
+    }
+  ]
+}

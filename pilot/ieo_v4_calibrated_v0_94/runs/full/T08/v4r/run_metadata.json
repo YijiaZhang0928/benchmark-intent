@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.95",
+  "task": "T08",
+  "condition": "ieo_v4r_h2",
+  "started_at_utc": null,
+  "completed_at_utc": "2026-09-16T00:28:44.408937+00:00",
+  "persona_visible": false,
+  "rubric_visible": false,
+  "frozen_transcript": true,
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "high",
+  "router_model_calls": 5,
+  "clarification_atomic_questions": 4,
+  "simulator_answered_units": [
+    "T8-P1",
+    "T8-P4",
+    "T8-A3"
+  ],
+  "search_event_count": 6,
+  "fetch_event_count": 10,
+  "successful_fetch_count": 8,
+  "report_characters": 43791,
+  "task_sha256": "c2cc3e09d177f5242ad1d6abda2cbefcaae81a4dac4feedc2b25605c60810103",
+  "strict_rubrics_sha256": "db88dbad3435309fe9d3e546cb085b23cde2dbeb62cf461e0957eaa7b61ccf05",
+  "stage_a_result_sha256": "3beaba1aca005215288448d7d565a4917d61659f0da5e3ca924b7d98de06aad2",
+  "implementation_sha256": "040311d601faee65295422ee16dfe26148d5bc22de96fa9154eb954162d064ec",
+  "wall_timeout_seconds": 1800,
+  "engineering_recovery": {
+    "reason": "relative stage-A path was resolved after chdir during metadata construction",
+    "generation_rerun": false,
+    "report_and_research_events_preexisted": true
+  }
+}

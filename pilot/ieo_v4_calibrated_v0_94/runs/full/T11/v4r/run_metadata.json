@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.95",
+  "task": "T11",
+  "condition": "ieo_v4r_h2",
+  "started_at_utc": "2026-09-16T00:29:38.549432+00:00",
+  "completed_at_utc": "2026-09-16T00:42:56.957622+00:00",
+  "persona_visible": false,
+  "rubric_visible": false,
+  "frozen_transcript": true,
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "high",
+  "router_model_calls": 5,
+  "clarification_atomic_questions": 4,
+  "simulator_answered_units": [
+    "T11-P3"
+  ],
+  "research_config": {
+    "allow_clarification": false,
+    "research_model": "codex:gpt-5.6-sol",
+    "compression_model": "codex:gpt-5.6-sol",
+    "final_report_model": "codex:gpt-5.6-sol",
+    "summarization_model": "codex:gpt-5.6-sol",
+    "research_model_max_tokens": 7000,
+    "compression_model_max_tokens": 6000,
+    "final_report_model_max_tokens": 9000,
+    "max_concurrent_research_units": 2,
+    "max_researcher_iterations": 2,
+    "max_react_tool_calls": 6,
+    "max_structured_output_retries": 3,
+    "search_api": "none"
+  },
+  "search_event_count": 8,
+  "fetch_event_count": 9,
+  "successful_fetch_count": 6,
+  "report_characters": 73428,
+  "task_sha256": "66fffb2ef2fc9f6e31527e5239fbceeda5b4ea6157d82f559d3e6562a509324c",
+  "strict_rubrics_sha256": "264439212732e075b65bdf7e61bf2dd65f35e06ca5d74ea5e1484574b4b060ef",
+  "stage_a_result_sha256": "7640bf64927ddb3a51a5c8e0f339ffded28aa1c47117d4863c4eb703aaf75ad3",
+  "implementation_sha256": "040311d601faee65295422ee16dfe26148d5bc22de96fa9154eb954162d064ec",
+  "open_deep_research_commit": "1b7d2e80db9faa586165c60e09096dbbfd483a64",
+  "deerflow_provider_commit": "0d4925305a6330a3442dcd336ed25750aea87cbd",
+  "wall_timeout_seconds": 1800
+}
