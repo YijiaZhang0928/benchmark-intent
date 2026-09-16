@@ -4,7 +4,7 @@
 
 - ID: `deerflow-gemini-6cell-3task-v0.97`
 - Type: experiment protocol
-- Status: BATCH STOPPED ON FIRST CELL — hard timeout, 0 completed reports, no retry
+- Status: R1 stopped on first-cell hard timeout; explicitly authorized R2 frozen before outputs
 - Date: 2026-09-15
 - Tasks: T01–T03
 - Planned reports: 18 (3 tasks × 3 persona contexts × 2 clarification policies)
@@ -84,6 +84,17 @@ The requested cross-setting hypothesis is secondary: `COLD_ASK` is considered de
 - A smoke test uses only synthetic non-private text and is never scored.
 - A report must pass the existing DeerFlow structural gate before its P score is used as confirmatory evidence; operational failures remain reported.
 - No headline conclusion is supported by this three-task single-generation pilot alone. Further generations and untouched tasks are required for a paper-level claim.
+
+## Explicitly authorized r2 amendment (2026-09-16)
+
+After the r1 first-cell timeout was preserved and reported, the user explicitly approved a fresh full-batch rerun. The r2 run:
+
+- retains all 18 inputs, their hashes, seeded execution order, model, thinking level, harness, skills, policies, simulator, clarification cap and score rules;
+- uses 18 new `-r2` thread IDs and 18 new `/r2` output directories, without reading or overwriting r1 state;
+- retains the same 1,800-second limit and adds an outer subprocess timeout so a blocking provider call cannot evade process termination;
+- remains stop-on-first-failure and zero-retry within r2.
+
+The r1 partial trace remains an engineering failure and is never relabeled as an r2 output.
 
 ## Current provider status
 

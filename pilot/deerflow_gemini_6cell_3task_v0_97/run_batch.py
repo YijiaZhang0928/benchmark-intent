@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the frozen 18-cell Gemini × DeerFlow v0.97 pilot without retries."""
+"""Run the explicitly authorized r2 of the frozen Gemini × DeerFlow v0.97 pilot."""
 
 from __future__ import annotations
 
@@ -28,6 +28,7 @@ AGENT = "stock-cold-dr"
 SEED = 20260915
 MAX_CLARIFICATION_ANSWERS = 3
 TURN_TIMEOUT_SECONDS = 1800
+RUN_LABEL = "r2"
 
 
 class SimulatorResponse(BaseModel):
@@ -57,10 +58,10 @@ def planned_cells() -> list[dict[str, Any]]:
         task_id = task["task_id"]
         for context in ("cold", "raw50", "raw100"):
             for policy in ("ask", "noask"):
-                slug = f"v097-g31-{task_id.lower()}-{context}-{policy}-r1"
+                slug = f"v097-g31-{task_id.lower()}-{context}-{policy}-{RUN_LABEL}"
                 cells.append(
                     {
-                        "cell_id": f"{task_id}_{context.upper()}_{policy.upper()}_R1",
+                        "cell_id": f"{task_id}_{context.upper()}_{policy.upper()}_{RUN_LABEL.upper()}",
                         "task_id": task_id,
                         "task_index": int(task_id[1:]) - 1,
                         "context": context,
@@ -68,7 +69,7 @@ def planned_cells() -> list[dict[str, Any]]:
                         "thread_id": slug,
                         "input_path": str(HERE / task["input_paths"][context]),
                         "input_sha256": task["input_sha256"][context],
-                        "output_dir": str(HERE / "runs" / task_id / context / policy / "r1"),
+                        "output_dir": str(HERE / "runs" / task_id / context / policy / RUN_LABEL),
                     }
                 )
     random.Random(SEED).shuffle(cells)
@@ -78,10 +79,15 @@ def planned_cells() -> list[dict[str, Any]]:
 
 
 def write_execution_manifest(cells: list[dict[str, Any]]) -> Path:
-    path = HERE / "execution_manifest.json"
+    path = HERE / f"execution_manifest_{RUN_LABEL}.json"
     expected = {
-        "schema_version": "0.97",
+        "schema_version": "0.97-r2",
         "created_before_counted_outputs": True,
+        "run_label": RUN_LABEL,
+        "authorization": "User explicitly approved a fresh full-batch rerun on 2026-09-16.",
+        "preserved_failed_run": "execution_manifest.json / runs/.../r1",
+        "allowed_engineering_change": "outer subprocess hard timeout added after r1 blocking-call overrun",
+        "experimental_design_change": None,
         "seed": SEED,
         "model": MODEL,
         "agent": AGENT,
@@ -205,7 +211,7 @@ def run_turn(
         )
     except subprocess.TimeoutExpired as exc:
         failure = {
-            "schema_version": "0.97",
+            "schema_version": "0.97-r2",
             "cell_id": cell["cell_id"],
             "thread_id": cell["thread_id"],
             "failure_type": "outer_process_hard_timeout",
@@ -307,9 +313,10 @@ def main() -> int:
     cells = planned_cells()
     manifest_path = write_execution_manifest(cells)
     assets = load_assets()
-    status_path = HERE / "execution_status.json"
+    status_path = HERE / f"execution_status_{RUN_LABEL}.json"
     status: dict[str, Any] = {
-        "schema_version": "0.97",
+        "schema_version": "0.97-r2",
+        "run_label": RUN_LABEL,
         "manifest": str(manifest_path),
         "started_at_utc": utc_now(),
         "requested_order_range": [args.start_order, args.stop_order],

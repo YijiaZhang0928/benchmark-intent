@@ -18,6 +18,8 @@ v0.97 runner 现把隔离变成可执行约束：每个 cell 使用唯一 thread
 
 同日启动正式 batch 后，execution-order 1 的 `T02_RAW100_ASK_R1` 在约一分钟内写出 73 个 trace events（15 values、11 tool、47 AI），随后阻塞且没有 final-state event、summary 或 report。进程内 `SIGALRM=1800s` 没有在 blocking call 中生效；检测时已到 2,081 秒，按冻结规则向该 cell 发送 SIGTERM，并停止整个 batch。0/18 reports 完成，未启动任何后续 cell，未评分且未重试。为防未来另行批准的运行再次发生超限，batch wrapper 新增独立的 outer subprocess timeout；这是工程修复，不构成对本失败 cell 的重跑授权。
 
+用户于 2026-09-16 明确批准新的完整 `r2` batch。r2 保持相同 18 个输入/hash、seeded order、Gemini model/thinking、DeerFlow harness、Ask/NoAsk 操纵、simulator、三次回答上限和评分规则；唯一允许的工程变化是已记录的 outer subprocess timeout。r2 使用全新的 18 个 `-r2` thread 和 `/r2` 输出目录，启动前复核 18/18 thread 无 checkpoint、18/18 output dirs 为空、memory read/write gates 仍为 false。r1 永久保留为 failure，不会覆盖或混入 r2。
+
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：Gemini 六组设计与 matched No-Ask 修复
 
 用户将 Gemini pilot 扩为 `COLD/RAW50/RAW100 × ASK/NOASK` 六组，前三题共 18 份 planned reports。RAW50 继续复用 v0.96 固定 seed `20260915` 的 22/44、25/50、24/49 persona 原子事实，但六组新版把 RAW50/RAW100 的上下文标题统一为中性的 `Available user profile context:`，不再显示 `incomplete/complete`，避免标签本身提示是否应提问。RAW100 是 `full_hidden_persona_for_user_simulator` 中全部原子事实，不等于 preference oracle。
