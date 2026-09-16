@@ -9,6 +9,7 @@
 - 新增 `pilot/deerflow_gemini_6cell_3task_v0_97/` 的 draft protocol、冻结输入生成器、18-cell input manifest 与去敏 smoke failure record。
 - 在首份 counted report 前补上硬隔离：18 个 cell 使用唯一 thread/output、新进程与空 checkpoint 预检；真正关闭 memory injection、memory write 和 pre-compaction flush。修复了旧 `account_memory_allowed: false` 只有记录、没有执行效果的问题。
 - 冻结 seed `20260915` 的 18-cell 执行顺序、1,800 秒 turn hard timeout、最多三次 clarification answer 与 stop-on-first-failure/no-retry 规则；同一 Ask cell 内可续接 clarification，跨 cell 不得共享 checkpoint、workspace、summary 或 report。
+- 正式 batch 在第 1 个 `T02_RAW100_ASK_R1` cell 停止：73 个 trace events 后阻塞，进程内 alarm 未及时中断；2,081 秒时 SIGTERM，0 个完整报告、0 个评分、无后续 cell、无重试。保留 partial trace 和 failure record，并给未来另行批准的运行增加 outer subprocess timeout。
 
 ## v0.96 DeerFlow 2.0 RAW50 Ask/No-Ask pilot - 2026-09-15
 

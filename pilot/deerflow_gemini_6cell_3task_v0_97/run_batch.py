@@ -194,8 +194,34 @@ def run_turn(
     ]
     if cell["policy"] == "noask":
         cmd.append("--disable-clarification")
-    completed = subprocess.run(cmd, cwd=PROJECT, env=os.environ.copy(), text=True)
     output_dir = Path(cell["output_dir"])
+    try:
+        completed = subprocess.run(
+            cmd,
+            cwd=PROJECT,
+            env=os.environ.copy(),
+            text=True,
+            timeout=TURN_TIMEOUT_SECONDS,
+        )
+    except subprocess.TimeoutExpired as exc:
+        failure = {
+            "schema_version": "0.97",
+            "cell_id": cell["cell_id"],
+            "thread_id": cell["thread_id"],
+            "failure_type": "outer_process_hard_timeout",
+            "timeout_seconds": TURN_TIMEOUT_SECONDS,
+            "returncode": None,
+            "automatic_retry": False,
+            "score_eligible": False,
+            "failed_at_utc": utc_now(),
+        }
+        output_dir.mkdir(parents=True, exist_ok=True)
+        (output_dir / "failure.json").write_text(
+            json.dumps(failure, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        raise RuntimeError(
+            f"Cell {cell['cell_id']} exceeded outer {TURN_TIMEOUT_SECONDS}s hard timeout; batch stopped without retry"
+        ) from exc
     summaries = sorted(output_dir.glob("turn_*_summary.json"))
     if not summaries:
         raise RuntimeError(f"Turn process produced no summary for {cell['cell_id']} (exit={completed.returncode})")

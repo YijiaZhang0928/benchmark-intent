@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.97",
+  "manifest": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/execution_manifest.json",
+  "started_at_utc": "2026-09-16T02:16:12.065111+00:00",
+  "requested_order_range": [
+    1,
+    18
+  ],
+  "completed": [],
+  "failed": {
+    "type": "RuntimeError",
+    "message": "Turn process produced no summary for T02_RAW100_ASK_R1 (exit=-15)",
+    "failed_at_utc": "2026-09-16T02:50:53.342747+00:00"
+  }
+}

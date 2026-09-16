@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.97",
+  "cell_id": "T02_RAW100_ASK_R1",
+  "thread_id": "v097-g31-t02-raw100-ask-r1",
+  "failure_type": "hard_timeout_not_delivered_during_blocking_call",
+  "configured_timeout_seconds": 1800,
+  "observed_elapsed_seconds_before_termination": 2081,
+  "termination_signal": "SIGTERM",
+  "returncode": -15,
+  "trace_event_count": 73,
+  "trace_values_events": 15,
+  "trace_tool_events": 11,
+  "trace_ai_events": 47,
+  "final_state_event_present": false,
+  "final_report_present": false,
+  "score_eligible": false,
+  "automatic_retry": false,
+  "batch_continued": false,
+  "failed_at_utc": "2026-09-16T02:50:53.342747+00:00",
+  "note": "The in-process SIGALRM was configured but did not interrupt the blocking call. The operator terminated the cell after detecting the overrun. No later cell was started."
+}

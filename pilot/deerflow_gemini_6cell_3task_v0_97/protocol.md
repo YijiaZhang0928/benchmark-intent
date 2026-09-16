@@ -4,7 +4,7 @@
 
 - ID: `deerflow-gemini-6cell-3task-v0.97`
 - Type: experiment protocol
-- Status: FROZEN BEFORE COUNTED OUTPUTS — API text and tool-call smoke passed; formal reports not started
+- Status: BATCH STOPPED ON FIRST CELL — hard timeout, 0 completed reports, no retry
 - Date: 2026-09-15
 - Tasks: T01–T03
 - Planned reports: 18 (3 tasks × 3 persona contexts × 2 clarification policies)
