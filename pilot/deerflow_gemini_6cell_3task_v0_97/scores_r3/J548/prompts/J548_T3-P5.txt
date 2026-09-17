@@ -1,0 +1,234 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare routes for systematically learning entrepreneurship and preparing to launch a startup over the next 1–2 years.
+
+Compare degree and non-degree programs, executive education, accelerators, online courses, mentoring and networking routes, and practical venture-building options. Cover curriculum, time commitment, cost, mentor and network access, hands-on opportunities, fundraising, business-model, product, market and team-management learning, and the value of each route.
+
+Produce a phased 1–2 year learning and experimentation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T3-P5-01",
+    "criterion": "The report states ROI/cost-effectiveness as a decision priority.",
+    "criterion_explanation": "The preferred value is explicit and is not replaced by a generic objective.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-02",
+    "criterion": "The research route includes sources or evidence types needed to evaluate ROI/cost-effectiveness.",
+    "criterion_explanation": "At least one identifiable source or evidence class is chosen because it can resolve this preference-specific question.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-03",
+    "criterion": "The report provides concrete evidence about how an option supports ROI/cost-effectiveness.",
+    "criterion_explanation": "A named option has one verifiable preference-specific fact; an adjective alone does not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-04",
+    "criterion": "The report provides concrete evidence about how an option reflects expensive prestige-oriented programs.",
+    "criterion_explanation": "A named option or route has one verifiable contrast-side fact; generic warnings do not count.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-05",
+    "criterion": "The report directly compares ROI/cost-effectiveness with expensive prestige-oriented programs.",
+    "criterion_explanation": "The comparison uses a common decision axis and identifies a consequential difference.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-06",
+    "criterion": "At least one recommended option is selected because it supports ROI/cost-effectiveness.",
+    "criterion_explanation": "The recommendation names the option and gives this preference as a causal selection reason.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-07",
+    "criterion": "At least one otherwise viable option is downgraded because it favors expensive prestige-oriented programs.",
+    "criterion_explanation": "The report names the option and the preference-specific reason for lowering its rank.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-08",
+    "criterion": "The plan contains one executable step that implements ROI/cost-effectiveness.",
+    "criterion_explanation": "The step has a concrete action object and can be carried out without inventing the missing action.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-09",
+    "criterion": "The plan defines one threshold, allocation, sequence rule or checkpoint for ROI/cost-effectiveness.",
+    "criterion_explanation": "The report states a usable rule rather than only recommending the direction.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-10",
+    "criterion": "The report states when expensive prestige-oriented programs would become the better choice.",
+    "criterion_explanation": "A concrete condition or boundary reverses the choice, demonstrating calibration rather than unconditional advocacy.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T3-P5-11",
+    "criterion": "One visible chain links ROI/cost-effectiveness to evidence and then to a decision or action.",
+    "criterion_explanation": "The same preference, cited fact and downstream consequence can be followed without inference by the judge.",
+    "impact_tier": "high",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 5,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label J548):
+Given your profile—an SJTU MBA, a pragmatic primary breadwinner in Shanghai, and a risk-conscious planner who values family life—your journey from 0 to 1 needs to be highly efficient, low-risk, and practical. You already have the theoretical business foundation; what you need now is a systematic approach to finding product-market fit (PMF), building a team, and executing without immediately jeopardizing your family’s financial stability.
+
+Here is a detailed comparison of the routes available to you, followed by a highly customized 1–2 year experimentation plan.
+
+### 1. Comparison of Entrepreneurship Learning Routes
+
+#### Degree vs. Non-Degree Programs
+*   **Value for You:** **Low.** 
+*   **Why:** You already hold an MBA from a top-tier institution (SJTU). Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic "dirty work" of a startup. 
+*   **Cost/Time:** High cost; 1–2 years full-time.
+
+#### Executive Education (e.g., CEIBS Entrepreneurship Camp, SJTU EMBA extensions)
+*   **Value for You:** **Medium.**
+*   **Focus:** Excellent for high-level networking, B2B resource integration, and scaling existing businesses.
+*   **Cost/Time:** Very expensive; usually requires block time on weekends (which competes with your family time, daughter's dance/painting classes, and trips).
+*   **Verdict:** Skip this for now. It’s better suited for scaling from 1 to 100 rather than 0 to 1.
+
+#### Accelerators & Incubators (e.g., Y Combinator, MiraclePlus / 奇绩创坛, SJTU Grand NeoBay)
+*   **Value for You:** **Very High.**
+*   **Focus:** Hands-on PMF, relentless product iteration, fundraising, and direct mentorship from successful founders [citation:MiraclePlus](https://www.miracleplus.com/).
+*   **Local Advantage:** You have a massive advantage through the SJTU alumni network. Shanghai's "Grand NeoBay" (大零号湾) near SJTU has recently launched extensive incubator spaces [citation:Grand NeoBay Incubator](https://news.sjtu.edu.cn/jdyw/20260528/223259.html), offering immense resources for alumni ventures.
+*   **Cost/Time:** Usually takes 3–5% equity; requires intense focus (often full-time for 3 months once accepted).
+
+#### Online Courses & Micro-learning (e.g., YC Startup School, Dedao New Business School)
+*   **Value for You:** **High (for early stages).**
+*   **Focus:** Agile learning on market trends, product mechanics, and lean startup frameworks. Dedao’s "New Business School" (得到新商学) is specifically designed as a peer-to-peer community for entrepreneurs [citation:Dedao New Business School](https://dbs.luojilab.com/). 
+*   **Cost/Time:** Low cost, fitting perfectly into your fixed household budget and your routine of high-efficiency morning learning and evening reading.
+
+#### Practical Venture Building / Startup Studios (Side-Hustle Model)
+*   **Value for You:** **Maximum.**
+*   **Focus:** Working with a technical co-founder while you handle the marketing/business management as a "Venture Builder." You test ideas using minimal capital and time constraints.
+*   **Cost/Time:** Sweat equity, utilizing your evenings for project planning. It shields your family from financial risk until the concept is proven.
+
+---
+
+### 2. Your Customized 1–2 Year Phased Plan
+
+This plan is built around your specific routine: utilizing your highly efficient mornings for cognitive input, your evenings for strategic project planning, and preserving weekends for your family, Xiao Huang (your Labrador), and quality of life.
+
+#### Phase 1: Cognitive Realignment & Ideation (Months 1–4)
+*   **Goal:** Update your tech/market knowledge, identify a specific problem, and find potential co-founders without spending capital.
+*   **Daily Routine Integration:**
+    *   **Mornings (6:00 - 7:30 AM):** Consume free, high-density startup content. Go through **YC Startup School** (free online) to learn the Silicon Valley 0-1 framework, combining it with your Eastern management knowledge. Follow macro trends via Dedao/Zhihu.
+    *   **Afternoons/Networking:** Use your current job’s afternoon meeting slots to practice pitching concepts internally or to industry contacts.
+    *   **Evenings:** Read HBR case studies specifically focused on failed startups to understand risk pitfalls. 
+*   **Milestone:** Generate 3 solid business hypotheses.
+
+#### Phase 2: Lean Experimentation & The Sandbox (Months 5–10)
+*   **Goal:** Test your hypotheses in the real world (Customer Discovery) without quitting your job.
+*   **Actionable Steps:**
+    *   **Venture Building:** Allocate a small portion of your fixed monthly budget to run lean tests. Buy domains, build no-code landing pages, and run targeted WeChat/Baidu ads to test conversion rates for your ideas.
+    *   **Customer Interviews:** Talk to 50 potential customers. Since you live in Pudong, leverage your high-end community network if you are testing B2C (e.g., premium education, durable consumer goods) or your SJTU/professional network for B2B.
+*   **Family Alignment:** Involve your wife in the discussions. Treat this phase like a stock/fund investment—you are risking a small, predefined amount of time and money to gauge the return. 
+*   **Milestone:** Achieve your first dollar of revenue or a waitlist of 500+ qualified leads.
+
+#### Phase 3: Team Assembly & Incubation (Months 11–16)
+*   **Goal:** Build an MVP (Minimum Viable Product) and tap into formal mentorship.
+*   **Actionable Steps:**
+    *   **Network Leverage:** Re-engage with the SJTU alumni network. Visit the Grand NeoBay incubators [citation:Grand NeoBay Incubator](https://news.sjtu.edu.cn/jdyw/20260528/223259.html) in Minhang on a weekend. Look for a technical co-founder who complements your marketing/management background.
+    *   **Accelerator Application:** Apply for part-time incubators or programs like MiraclePlus [citation:MiraclePlus](https://www.miracleplus.com/). The application process itself will force you to refine your business model, market size, and unit economics.
+*   **Milestone:** A working MVP and a committed founding team.
+
+#### Phase 4: The "Trigger Point" & Go-to-Market (Months 17–24)
+*   **Goal:** Secure funding, scale the product, and transition to full-time entrepreneurship.
+*   **Actionable Steps:**
+    *   **The Family Board Meeting:** Sit down with your wife. Because you are the primary breadwinner, you need a "Go/No-Go" trigger. (e.g., *“If we secure 2M RMB in seed funding and have 10 paying enterprise clients, I will quit my job.”*)
+    *   **Fundraising:** Pitch to early-stage VCs or angel investors. Your profile—a pragmatic, mature, SJTU MBA with a validated MVP—is highly attractive to investors who prefer stability and execution over pure hype.
+*   **Milestone:** Seed funding secured; transition out of corporate life.
+
+### Summary of Your Entrepreneurial Edge
+Your biggest asset is your **rational pragmatism**. Unlike 22-year-old founders who can afford to burn years on unvalidated ideas, you will use your evenings for meticulous project planning and your fixed budget for calculated risks. By leveraging your SJTU alumni network (especially emerging hubs like NeoBay) and modern online business communities (Dedao), you can systematically de-risk your startup journey over the next two years while keeping your family household harmonious and secure.
+
+---
+
+### Sources
+*   [Grand NeoBay Incubator](https://news.sjtu.edu.cn/jdyw/20260528/223259.html) - Official news regarding Shanghai Jiao Tong University's Grand NeoBay startup incubator launch and facilities.
+*   [MiraclePlus](https://www.miracleplus.com/) - Official website of MiraclePlus (奇绩创坛), founded by Qi Lu, providing accelerator programs and early-stage startup funding in China.
+*   [Dedao New Business School](https://dbs.luojilab.com/) - Platform offering peer-to-peer business and entrepreneurship learning programs.

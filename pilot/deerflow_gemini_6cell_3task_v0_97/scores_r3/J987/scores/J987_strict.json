@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J987",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "80955d6aa2153bf0c3df5cbb7381c44684993b38958e33eb8cca8fae8219347d",
+  "rubric_sha256": "6c540729b1a59e0d63b4fb86c80392b5d45fefce6bede6a3946db7893b5b2999",
+  "started_at_utc": "2026-09-17T01:55:41.060721+00:00",
+  "completed_at_utc": "2026-09-17T01:59:13.595167+00:00",
+  "p_strict": 3.3186622073578596,
+  "p_hi": 3.3200000000000003,
+  "dimension_scores": {
+    "INTENT": 2.4000000000000004,
+    "SOURCE": 4.8,
+    "EVIDENCE": 4.782608695652174,
+    "TRADEOFF": 2.1739130434782608,
+    "DECISION": 0.6956521739130435,
+    "ACTION": 6.6,
+    "TRACE": 2.769230769230769
+  },
+  "high_dimension_scores": {
+    "INTENT": 2.4000000000000004,
+    "SOURCE": 4.8,
+    "EVIDENCE": 5.0,
+    "TRADEOFF": 2.0,
+    "DECISION": 0.8,
+    "ACTION": 6.6,
+    "TRACE": 2.4
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state applied or system-building research as a program-selection priority. Hands-on skill preparation does not establish that preference."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected specifically to assess implementation-heavy or system-building research. Tracking papers aligned with unspecified interests is generic."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 2,
+      "evidence_span": "State-of-the-art labs with exceptional strengths in computer vision, robotics, and applied AI (fintech, smart cities).",
+      "rationale": "The Asia section asserts applied research strengths, but supplies no concrete program-level resource, project, or other verifiable supporting fact. This is a generic characterization rather than concrete evidence."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The reference to Europe's theoretical foundations does not establish purely abstract, theory-only research for any named option or route."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no direct comparison of applied research and theory-only research on a common decision axis."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is recommended because it supports applied or system-building AI research."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded for favoring purely abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "Master frameworks (PyTorch, TensorFlow) and engage in hands-on projects, open-source contributions, or reproduce existing ML papers.",
+      "rationale": "The plan explicitly gives executable implementation-oriented preparation actions, including reproducing existing ML papers using named frameworks."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "### Phase 1: Research Preparation & Profiling (Months 1–6)\n* **Skill Building:** Deepen your AI fundamentals. Master frameworks (PyTorch, TensorFlow) and engage in hands-on projects, open-source contributions, or reproduce existing ML papers.",
+      "rationale": "The plan explicitly allocates implementation-oriented activities to months 1–6, providing a usable time allocation rather than only recommending the direction."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which purely abstract, theory-only research would become the better choice."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not visibly connect an applied-research preference to supporting evidence and then to a selection decision or action."
+    },
+    {
+      "criterion_id": "T1-P2-01",
+      "score": 4,
+      "evidence_span": "Master frameworks (PyTorch, TensorFlow) and engage in hands-on projects, open-source contributions, or reproduce existing ML papers.",
+      "rationale": "The report recommends coding, projects, and replication as preparation activities, but does not establish them as a priority governing program decisions."
+    },
+    {
+      "criterion_id": "T1-P2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is explicitly chosen to assess opportunities for self-directed projects, replication, coding, or hands-on exploration."
+    },
+    {
+      "criterion_id": "T1-P2-03",
+      "score": 4,
+      "evidence_span": "There is little to no formal coursework or US-style qualifying exams. You are expected to execute a predefined research proposal immediately.",
+      "rationale": "The European route has a concrete research-first structural description. However, executing predefined research does not establish support for self-directed projects, replication, coding, or exploratory practical work."
+    },
+    {
+      "criterion_id": "T1-P2-04",
+      "score": 10,
+      "evidence_span": "The first 1–2 years focus heavily on coursework and passing qualifying exams before transitioning into full-time dissertation research.",
+      "rationale": "The report explicitly attributes a predominantly coursework-and-examination initial preparation period to the North American route, providing a concrete contrast-side fact."
+    },
+    {
+      "criterion_id": "T1-P2-05",
+      "score": 4,
+      "evidence_span": "Do you want structured coursework to explore (US), or do you want to dive straight into a hyper-specific niche (Europe)?",
+      "rationale": "The report directly contrasts coursework-based exploration with immediate specialization. It does not directly compare coursework with self-directed projects, replication, or coding on a consequential decision axis."
+    },
+    {
+      "criterion_id": "T1-P2-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program or route is recommended because it supports the specified practical, self-directed preparation preference."
+    },
+    {
+      "criterion_id": "T1-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded because of its emphasis on classroom or course-based preparation."
+    },
+    {
+      "criterion_id": "T1-P2-08",
+      "score": 10,
+      "evidence_span": "reproduce existing ML papers",
+      "rationale": "This is an executable replication activity explicitly included in the research-preparation phase."
+    },
+    {
+      "criterion_id": "T1-P2-09",
+      "score": 4,
+      "evidence_span": "### Phase 1: Research Preparation & Profiling (Months 1–6)\n* **Skill Building:** Deepen your AI fundamentals. Master frameworks (PyTorch, TensorFlow) and engage in hands-on projects, open-source contributions, or reproduce existing ML papers.",
+      "rationale": "The report places practical preparation within a six-month phase, but specifies no project completion threshold, effort allocation, dependency rule, or concrete progress checkpoint."
+    },
+    {
+      "criterion_id": "T1-P2-10",
+      "score": 4,
+      "evidence_span": "Do you want structured coursework to explore (US), or do you want to dive straight into a hyper-specific niche (Europe)?",
+      "rationale": "The report associates coursework with exploration, suggesting a possible suitability distinction. It does not state a concrete condition under which mainly course-based preparation should replace the practical-project approach."
+    },
+    {
+      "criterion_id": "T1-P2-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not explicitly connect the specified practical-learning preference to supporting evidence and then to a resulting selection or action."
+    },
+    {
+      "criterion_id": "T1-P3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report discusses career prospects but never states preserving industry-research or employability optionality as a decision priority."
+    },
+    {
+      "criterion_id": "T1-P3-02",
+      "score": 4,
+      "evidence_span": "Germany and other EU countries have streamlined researcher visas that are easily converted into long-term work permits [citation:AI PhD Stipends by Country](https://relocateatlas.com/blog/ai-phd-stipend-by-country).",
+      "rationale": "A cited source supports a relevant employment-access question. However, the report does not explicitly select sources or evidence to assess preservation of industry-research optionality, so only partial credit is warranted."
+    },
+    {
+      "criterion_id": "T1-P3-03",
+      "score": 10,
+      "evidence_span": "The US has the largest AI industry job market, and students use the OPT framework to transition to competitive H-1B visas.",
+      "rationale": "The named US option is supported by concrete, verifiable claims about industry employment opportunities and a post-study employment mechanism."
+    },
+    {
+      "criterion_id": "T1-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a concrete fact demonstrating optimization exclusively for an academic-faculty trajectory. The broad characterization of Europe as more academic does not establish this."
+    },
+    {
+      "criterion_id": "T1-P3-05",
+      "score": 4,
+      "evidence_span": "Europe leans slightly more toward academic/institutional research roles compared to the US startup frenzy.",
+      "rationale": "The report contrasts regions on career orientation, but does not directly compare preserving industry optionality against an academic-faculty-only strategy or explain a consequential trade-off between those strategies."
+    },
+    {
+      "criterion_id": "T1-P3-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is recommended with preserving industry-research or employability optionality given as its selection reason."
+    },
+    {
+      "criterion_id": "T1-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded because it favors an academic-faculty-only trajectory."
+    },
+    {
+      "criterion_id": "T1-P3-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The plan includes general technical and research preparation, but no action specifically implements preservation of industry-research or employment options."
+    },
+    {
+      "criterion_id": "T1-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The timeline and shortlist size are generic application rules; no threshold, allocation, sequence rule, or checkpoint addresses industry-research or employability optionality."
+    },
+    {
+      "criterion_id": "T1-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which optimizing exclusively for an academic-faculty trajectory would become preferable."
+    },
+    {
+      "criterion_id": "T1-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Employment-related facts are not linked to an explicit optionality preference and a resulting selection or action."
+    },
+    {
+      "criterion_id": "T1-P4-01",
+      "score": 4,
+      "evidence_span": "goes beyond university prestige; it dictates your working style, funding structure, and long-term career trajectory",
+      "rationale": "Funding is identified as a decision consideration, but strong funding, scholarships, or cost-effectiveness is not explicitly prioritized."
+    },
+    {
+      "criterion_id": "T1-P4-02",
+      "score": 10,
+      "evidence_span": "[AI PhD Stipends by Country](https://relocateatlas.com/blog/ai-phd-stipend-by-country) - Analysis of AI PhD compensation models, cost of living ratios, and European salaried structures.",
+      "rationale": "The report identifies a source specifically covering compensation and living-cost ratios, directly supporting evaluation of funding and cost-effectiveness."
+    },
+    {
+      "criterion_id": "T1-P4-03",
+      "score": 10,
+      "evidence_span": "The Hong Kong PhD Fellowship Scheme (HKPFS) provides an annual stipend of ~US$44,150 plus travel allowances",
+      "rationale": "A named fellowship has a concrete, verifiable funding amount and an additional financial benefit."
+    },
+    {
+      "criterion_id": "T1-P4-04",
+      "score": 4,
+      "evidence_span": "In the UK, funding is *not* automatic. It is highly competitive (e.g., UKRI studentships), and international tuition gaps sometimes have to be covered by the student unless a full scholarship (like Clarendon or Gates) is secured",
+      "rationale": "The UK route has a concrete potential out-of-pocket cost, but the report does not identify it as an expensive prestige-first route. The contrast is therefore incomplete."
+    },
+    {
+      "criterion_id": "T1-P4-05",
+      "score": 4,
+      "evidence_span": "In Continental Europe (e.g., Germany, Netherlands, Switzerland, Nordics), PhD candidates are usually salaried government employees with real contracts, pension contributions, and healthcare benefits [citation:AI PhD Stipends by Country](https://relocateatlas.com/blog/ai-phd-stipend-by-country). The EU-wide Marie Skłodowska-Curie Actions (MSCA) offer highly competitive fixed living allowances. \nIn the UK, funding is *not* automatic.",
+      "rationale": "The report contrasts regional funding security on a common financial axis, but does not directly compare funding-first choices with prestige-first choices."
+    },
+    {
+      "criterion_id": "T1-P4-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No program or route is explicitly selected because of its funding, scholarships, or cost-effectiveness."
+    },
+    {
+      "criterion_id": "T1-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable named option is downgraded for being an expensive prestige-first choice."
+    },
+    {
+      "criterion_id": "T1-P4-08",
+      "score": 10,
+      "evidence_span": "Separately apply for fellowships like HKPFS (Hong Kong), DAAD (Germany), or specific UKRI opportunities",
+      "rationale": "The plan gives an executable funding action with named fellowship targets."
+    },
+    {
+      "criterion_id": "T1-P4-09",
+      "score": 4,
+      "evidence_span": "which often have their own early deadlines",
+      "rationale": "The report flags separate funding deadlines, but does not establish a usable funding-specific threshold, allocation, sequence rule, or checkpoint."
+    },
+    {
+      "criterion_id": "T1-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition explains when an expensive prestige-first option would become preferable."
+    },
+    {
+      "criterion_id": "T1-P4-11",
+      "score": 4,
+      "evidence_span": "Separately apply for fellowships like HKPFS (Hong Kong), DAAD (Germany), or specific UKRI opportunities",
+      "rationale": "HKPFS appears both in the funding evidence and in the application actions, but the report does not explicitly connect a funding priority through that evidence to the action. Completing the causal chain would require inference."
+    },
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 4,
+      "evidence_span": "a strategic choice that goes beyond university prestige; it dictates your working style, funding structure, and long-term career trajectory.",
+      "rationale": "Identifies fit, funding and career consequences as considerations beyond prestige, but does not explicitly prioritize evidence-based comparison as the decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "[AI PhD Stipends by Country](https://relocateatlas.com/blog/ai-phd-stipend-by-country) - Analysis of AI PhD compensation models, cost of living ratios, and European salaried structures.",
+      "rationale": "Identifies a source specifically relevant to comparing financial outcomes and funding trade-offs across destinations."
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 10,
+      "evidence_span": "The Hong Kong PhD Fellowship Scheme (HKPFS) provides an annual stipend of ~US$44,150 plus travel allowances [citation:Hong Kong PhD Fellowship Scheme](https://cerg1.ugc.edu.hk/hkpfs/index.html).",
+      "rationale": "Provides a concrete, externally checkable funding fact about a named option, supporting comparison of financial trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is documented as using prestige as its dominant decision rule. Listing prominent universities does not establish that rule."
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 4,
+      "evidence_span": "a strategic choice that goes beyond university prestige; it dictates your working style, funding structure, and long-term career trajectory.",
+      "rationale": "Contrasts prestige with substantive considerations in general terms, but does not compare the two decision rules on a common axis or establish a consequential difference between them."
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 8,
+      "evidence_span": "Decide which system fits your working style. Do you want structured coursework to explore (US), or do you want to dive straight into a hyper-specific niche (Europe)?",
+      "rationale": "Conditionally recommends named regional routes according to working-style fit and structural differences. The selection rationale is explicit, although no option is finally selected through a fuller comparison of outcomes and trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable named option is downgraded because it favors prestige-led selection."
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "Track faculty whose recent papers align with your interests.",
+      "rationale": "Gives an executable evidence-based fit assessment: identify faculty and compare their recent research with the applicant's interests."
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 8,
+      "evidence_span": "### Phase 2: Program Selection & Networking (Months 7–12)\n* **Standardized Tests:** Take the TOEFL/IELTS. Take the GRE if your target US programs still require it.\n* **Shortlist Programs:** Build a list of 10-15 programs balancing reach, target, and safety options. Track faculty whose recent papers align with your interests.",
+      "rationale": "Sets a months 7–12 checkpoint and a 10–15-program shortlist target alongside research-fit evidence collection. It does not specify how that evidence determines inclusion, weighting or rejection."
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "States no concrete condition under which prestige should become the dominant decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 8,
+      "evidence_span": "Decide which system fits your working style. Do you want structured coursework to explore (US), or do you want to dive straight into a hyper-specific niche (Europe)?",
+      "rationale": "Links a fit preference to stated structural differences and then to a regional choice. The chain is visible but conditional and limited to working style rather than a documented selection based on multiple outcomes and trade-offs."
+    },
+    {
+      "criterion_id": "T1-A1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option has a concrete fact explicitly tied to a quiet, independent study environment. Differences in coursework and research structure do not establish that environment."
+    },
+    {
+      "criterion_id": "T1-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not distinguish any options by quiet independent study versus a highly social or cohort-heavy environment."
+    },
+    {
+      "criterion_id": "T1-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Quiet independent study is not used to change a ranking, inclusion, exclusion, or fit judgment."
+    },
+    {
+      "criterion_id": "T1-A1-04",
+      "score": 4,
+      "evidence_span": "Build a list of 10-15 programs balancing reach, target, and safety options. Track faculty whose recent papers align with your interests.",
+      "rationale": "The shortlist advice does not favor a highly social or cohort-heavy environment, so it does not explicitly contradict the preference. However, it provides no criterion-specific assurance of quiet independent study fit, limiting credit to implicit noncontradiction."
+    },
+    {
+      "criterion_id": "T1-A2-01",
+      "score": 6,
+      "evidence_span": "Massive synergy with the tech industry (Silicon Valley, Toronto AI hubs).",
+      "rationale": "Names concrete technology ecosystems relevant to North American study options. This supports the technology-access component, although museums and exhibitions are not covered. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T1-A2-02",
+      "score": 6,
+      "evidence_span": "Europe leans slightly more toward academic/institutional research roles compared to the US startup frenzy.",
+      "rationale": "Explicitly distinguishes European and US options by their academic versus startup ecosystems, rather than treating location as irrelevant. Cultural amenities are not compared. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T1-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No inclusion, exclusion, ranking, or stated fit judgment uses technology ecosystems, museums, exhibitions, or intellectually active cities as a secondary selection factor."
+    },
+    {
+      "criterion_id": "T1-A2-04",
+      "score": 4,
+      "evidence_span": "Build a list of 10-15 programs balancing reach, target, and safety options. Track faculty whose recent papers align with your interests.",
+      "rationale": "The shortlist guidance is compatible with the preference and does not justify options by an opposing value. However, it provides no explicit city-access consideration or final option selection demonstrating preference-aligned recommendations."
+    },
+    {
+      "criterion_id": "T1-A3-01",
+      "score": 4,
+      "evidence_span": "There is little to no formal coursework or US-style qualifying exams.",
+      "rationale": "The European option includes a concrete structural fact potentially relevant to independent planning. However, the report does not connect reduced coursework to scheduling flexibility or evening-focused work, nor establish those conditions at a named program."
+    },
+    {
+      "criterion_id": "T1-A3-02",
+      "score": 4,
+      "evidence_span": "Do you want structured coursework to explore (US), or do you want to dive straight into a hyper-specific niche (Europe)?",
+      "rationale": "This explicitly contrasts regional study structures, partially addressing the preference axis. It does not distinguish independent scheduling and evening work from externally managed routines; research specialization is not equivalent to scheduling autonomy."
+    },
+    {
+      "criterion_id": "T1-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No shortlist inclusion, exclusion, ranking, or stated fit judgment uses flexible independent planning or evening-focused deep work as a secondary factor."
+    },
+    {
+      "criterion_id": "T1-A3-04",
+      "score": 4,
+      "evidence_span": "Track faculty whose recent papers align with your interests.",
+      "rationale": "The selection advice prioritizes research alignment and does not explicitly recommend externally controlled schedules. This is compatible with the preference, but the report provides no final option-level recommendation explicitly establishing or preserving that compatibility."
+    }
+  ]
+}

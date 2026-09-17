@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J777",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "4278b15a440db13ade71ef5ca7abd9d1a7b6e60c93123ea7c18296a7b23819e9",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-17T02:13:07.191712+00:00",
+  "completed_at_utc": "2026-09-17T02:17:49.660005+00:00",
+  "p_strict": 5.873846153846154,
+  "p_hi": 5.99,
+  "dimension_scores": {
+    "INTENT": 6.0,
+    "SOURCE": 6.800000000000001,
+    "EVIDENCE": 6.434782608695652,
+    "TRADEOFF": 2.3478260869565215,
+    "DECISION": 5.304347826086956,
+    "ACTION": 10.0,
+    "TRACE": 5.538461538461538
+  },
+  "high_dimension_scores": {
+    "INTENT": 6.0,
+    "SOURCE": 6.800000000000001,
+    "EVIDENCE": 6.6,
+    "TRADEOFF": 2.2,
+    "DECISION": 5.6000000000000005,
+    "ACTION": 10.0,
+    "TRACE": 6.0
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 4,
+      "evidence_span": "your gaps lie in 0-to-1 product development, startup fundraising, and technical execution.",
+      "rationale": "Practical startup capabilities are identified as learning needs, but real venture projects or cases are not explicitly stated as a program-selection priority. The partial-evidence cap applies."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 4,
+      "evidence_span": "[Startup Studio vs Venture Builder: A Comprehensive Analysis](https://hidayatrizvi.com/startup-studio-vs-venture-builder/) - Breakdown of resource sharing and equity models for working professionals.",
+      "rationale": "The source addresses resources available for venture building, but the report does not explicitly select evidence to evaluate actual venture-project or case-learning opportunities. The preference-specific research connection is incomplete."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 10,
+      "evidence_span": "#### 5. Practical Venture Builders & Startup Studios\n*e.g., eFounders, Science Inc., or Corporate Venture Builders*\n* **Curriculum**: Playbook-driven execution. You skip the ideation phase and execute a validated idea using the studio's resources.",
+      "rationale": "The report names options and describes a concrete mechanism for working on a real venture: executing an idea with studio resources. This goes beyond an adjective about practical learning."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 4,
+      "evidence_span": "#### 1. Degree & Executive Education (Non-Degree)\n*e.g., University Entrepreneurship Certificates (Wharton, MIT)*\n* **Curriculum**: Broad management, corporate innovation, case-study-based strategy.",
+      "rationale": "A named route has concrete broad-business curriculum content, but the examples are certificates and non-degree executive education rather than another broad academic business degree. The contrast-side condition is only partially established."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 4,
+      "evidence_span": "**Hands-on & Learning Focus**: Heavy on business models and team management, but weak on agile product building and 0-to-1 market testing.",
+      "rationale": "The report contrasts traditional business learning with practical startup work on a common learning-focus axis. However, it does not directly compare real venture projects or cases against another broad academic business degree."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 8,
+      "evidence_span": "A venture builder provides a salary (protecting your mortgage and family budget) and a tech team, allowing you to leverage your marketing and management strengths immediately as a CEO/founder.",
+      "rationale": "The venture-builder recommendation is causally supported by access to a technical team and immediate founder execution. Real venture participation is a selection reason, although learning through projects or cases is not explicitly articulated."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 4,
+      "evidence_span": "**Value for Liu Qiang: LOW.** You already have a top-tier MBA from SJTU. Taking more traditional executive classes is redundant, expensive, and does not provide the gritty tech-founder network you need.",
+      "rationale": "Traditional executive education is explicitly downgraded for duplicating an existing MBA and lacking a founder network. The report does not downgrade an actual additional broad academic degree, so the named contrast is incomplete."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 10,
+      "evidence_span": "Build landing pages (using no-code tools) and run small ad campaigns to see if customers actually click and pay for your proposed solution.",
+      "rationale": "This is an executable venture experiment with concrete action objects and an observable customer-response outcome."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 10,
+      "evidence_span": "Allocate a strictly capped micro-budget (e.g., 2,000 RMB/month) for software subscriptions and ad testing.",
+      "rationale": "The plan supplies a usable monthly spending allocation for practical venture experimentation."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which another broad academic business degree would become the better choice."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 4,
+      "evidence_span": "**Value for Liu Qiang: HIGH.** This model fits your risk profile perfectly. A venture builder provides a salary (protecting your mortgage and family budget) and a tech team, allowing you to leverage your marketing and management strengths immediately as a CEO/founder.",
+      "rationale": "A venture-support fact is visibly linked to a recommendation, but the stated preference driving that chain is financial risk protection rather than learning through real venture projects or cases. The required preference-to-evidence-to-decision chain is incomplete."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 10,
+      "evidence_span": "**Value for Liu Qiang: VERY HIGH.** It fits perfectly into your fragmented morning/evening routine.",
+      "rationale": "The report explicitly assigns very high value to a route because it accommodates the learner's existing schedule, making compatibility a decision priority."
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 8,
+      "evidence_span": "**Time & Cost**: Highly flexible/asynchronous (2–5 hours/week). YC is free [citation:Y Combinator - Startup School - The Best Resource for Founders](https://www.startupschool.org/)",
+      "rationale": "An identifiable official program source accompanies preference-specific information about asynchronous participation and weekly workload. However, the citation is directly attached to the price claim rather than explicitly identified as evidence for scheduling compatibility."
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 10,
+      "evidence_span": "*e.g., Y Combinator (YC) Startup School, Reforge*\n* **Curriculum**: 0-to-1 MVP building, product-market fit (YC), and advanced growth loops/product management (Reforge).\n* **Time & Cost**: Highly flexible/asynchronous (2–5 hours/week).",
+      "rationale": "The report names options and supplies concrete scheduling facts: asynchronous delivery and a quantified weekly commitment."
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 10,
+      "evidence_span": "#### 4. Accelerators & Incubators\n*e.g., Y Combinator, MiraclePlus (奇绩创坛), Antler*\n* **Curriculum**: Intense, milestone-driven growth with weekly office hours from top-tier partners.\n* **Time & Cost**: Requires full-time commitment (3–6 months).",
+      "rationale": "The accelerator learning route is explicitly identified as requiring three to six months of full-time commitment, providing a concrete contrast-side fact."
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 4,
+      "evidence_span": "You cannot join an accelerator *now* because you cannot safely quit your job without validation.",
+      "rationale": "The report separately discusses flexible online learning and full-time accelerators, but it does not directly compare the two on a common decision axis. This span establishes the full-time route's consequence without explicitly contrasting it with the flexible alternative."
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 10,
+      "evidence_span": "#### 2. Online Courses & Frameworks\n*e.g., Y Combinator (YC) Startup School, Reforge*\n* **Curriculum**: 0-to-1 MVP building, product-market fit (YC), and advanced growth loops/product management (Reforge).\n* **Time & Cost**: Highly flexible/asynchronous (2–5 hours/week). YC is free [citation:Y Combinator - Startup School - The Best Resource for Founders](https://www.startupschool.org/); Reforge is ~$2,000/year.\n* **Mentor/Network Access**: Global online peer matching.\n* **Hands-on & Learning Focus**: Extremely actionable. Deep focus on product development, market validation, and early-stage fundraising logic.\n* **Value for Liu Qiang: VERY HIGH.** It fits perfectly into your fragmented morning/evening routine.",
+      "rationale": "The report names the online options and explicitly recommends their route because it fits the learner's available morning and evening time."
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 10,
+      "evidence_span": "**Value for Liu Qiang: HIGH (But for Phase 4).** You cannot join an accelerator *now* because you cannot safely quit your job without validation.",
+      "rationale": "An otherwise highly valued accelerator route is explicitly deferred because participation would require an unsafe departure from employment."
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 10,
+      "evidence_span": "Enroll in **YC Startup School** (Free). Consume their content during your morning high-efficiency hours or evening reading time.",
+      "rationale": "This is an executable enrollment and study action that schedules learning around existing responsibilities."
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 10,
+      "evidence_span": "Dedicate 1 weekend afternoon per week to attending tech/startup meetups in Shanghai or organizing dinners with SJTU engineering alumni.",
+      "rationale": "The plan specifies a concrete weekly allocation for networking outside the working week."
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 10,
+      "evidence_span": "You only resign from your foreign enterprise job *if* the startup has secured enough funding to pay you a base salary that covers your fixed household expenses (mortgage, children's education, basic living) for the next 18 months, *or* if you join a Venture Builder that guarantees that salary.",
+      "rationale": "Within the full-time transition phase, the report gives an explicit financial boundary for switching from employment-compatible preparation to full-time venture-building and accelerator participation."
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 10,
+      "evidence_span": "**Time & Cost**: Highly flexible/asynchronous (2–5 hours/week). YC is free [citation:Y Combinator - Startup School - The Best Resource for Founders](https://www.startupschool.org/); Reforge is ~$2,000/year.\n* **Mentor/Network Access**: Global online peer matching.\n* **Hands-on & Learning Focus**: Extremely actionable. Deep focus on product development, market validation, and early-stage fundraising logic.\n* **Value for Liu Qiang: VERY HIGH.** It fits perfectly into your fragmented morning/evening routine.",
+      "rationale": "The online-course evaluation visibly links concrete asynchronous workload information to compatibility with the learner's routine and then to a very-high-value decision."
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 8,
+      "evidence_span": "You cannot join an accelerator *now* because you cannot safely quit your job without validation.",
+      "rationale": "Validation explicitly governs the timing of a major commitment. Market experiments appear in the phased plan, although the report frames its overarching priority primarily as financial de-risking."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 10,
+      "evidence_span": "run small ad campaigns to see if customers actually click and pay for your proposed solution.",
+      "rationale": "Customer clicks and payments are identifiable behavioral evidence types explicitly chosen to evaluate market demand."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 8,
+      "evidence_span": "0-to-1 MVP building, product-market fit (YC)",
+      "rationale": "The report attributes specific validation-related curriculum content to YC Startup School. It does not provide a concrete program mechanism for staged validation."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is shown to require prolonged preparation before testing ideas. Executive education's duration and weak testing emphasis do not establish that sequence."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare early evidence-driven testing against prolonged preparation on a common decision axis."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 4,
+      "evidence_span": "It bridges your gap between corporate marketing and tech-product iteration without risking your household budget.",
+      "rationale": "The online-learning recommendation cites product iteration as a benefit, but does not explicitly select the route because it enables market experiments and staged validation."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Executive education is downgraded for redundancy, expense, and network mismatch—not because it delays testing through prolonged preparation."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 10,
+      "evidence_span": "Build landing pages (using no-code tools) and run small ad campaigns to see if customers actually click and pay for your proposed solution.",
+      "rationale": "This is an executable market experiment with concrete implementation actions and observable customer responses."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 10,
+      "evidence_span": "Allocate a strictly capped micro-budget (e.g., 2,000 RMB/month) for software subscriptions and ad testing.",
+      "rationale": "The plan provides a usable monthly resource allocation for market experimentation."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition makes prolonged preparation before testing preferable. Conditions for delaying resignation concern household finances rather than delaying experiments."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 4,
+      "evidence_span": "You handle customer interviews, B2B sales, and marketing, while your co-founder builds. Rely heavily on data to evaluate if the business model is sustainable.",
+      "rationale": "The passage connects evidence-generating activities to an evaluation, but does not complete a visible chain through a specific cited finding to a downstream decision or action."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 4,
+      "evidence_span": "Rely heavily on data to evaluate if the business model is sustainable.",
+      "rationale": "Explicitly prioritizes data for venture evaluation, but does not establish in-depth practical cases/data as a priority for choosing learning routes. Partial coverage is capped at 4."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 4,
+      "evidence_span": "Read case studies on product-led growth (PLG).",
+      "rationale": "Identifies a relevant evidence class, but does not explain how it will establish the depth of practical cases/data offered by learning options. Partial coverage is capped at 4."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a concrete fact about its use of in-depth practical cases or data. Descriptions of actionable curricula and hands-on execution do not establish this."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 4,
+      "evidence_span": "Heavy on business models and team management, but weak on agile product building and 0-to-1 market testing.",
+      "rationale": "The degree/executive-education route is explicitly described as weak in applied startup work. However, this is a broad characterization rather than a concrete, verifiable fact demonstrating abstract theory without application. Partial coverage is capped at 4."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare in-depth practical cases/data against abstract theory without application on a common decision axis."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 2,
+      "evidence_span": "It bridges your gap between corporate marketing and tech-product iteration without risking your household budget.",
+      "rationale": "The online-course recommendation partly rests on applied learning, but its selection is not causally attributed to in-depth practical cases/data. This is only weakly related support."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Executive education is downgraded for redundancy, expense, and unsuitable networking—not explicitly because it favors abstract theory without application."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 10,
+      "evidence_span": "Build landing pages (using no-code tools) and run small ad campaigns to see if customers actually click and pay for your proposed solution.",
+      "rationale": "Provides an executable experiment that generates practical behavioral and payment data for the proposed venture."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 10,
+      "evidence_span": "Allocate a strictly capped micro-budget (e.g., 2,000 RMB/month) for software subscriptions and ad testing.",
+      "rationale": "Defines a concrete monthly allocation and spending cap for the practical data-generating testing step."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which abstract theory without application becomes the better choice."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 4,
+      "evidence_span": "You and your wife sit down and review the data. You only resign from your foreign enterprise job *if* the startup has secured enough funding to pay you a base salary that covers your fixed household expenses (mortgage, children's education, basic living) for the next 18 months",
+      "rationale": "Links reviewing practical financial evidence to a concrete decision gate, but does not connect the preference for in-depth practical cases/data to a cited fact and its downstream consequence. The complete required chain is missing, so partial credit is capped at 4."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 4,
+      "evidence_span": "Taking more traditional executive classes is redundant, expensive, and does not provide the gritty tech-founder network you need.",
+      "rationale": "Cost relative to incremental learning and network benefits informs this judgment, but the report does not explicitly state ROI or cost-effectiveness as a decision priority. Its explicit overarching priority is financial risk reduction."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 8,
+      "evidence_span": "[Y Combinator - Startup School - The Best Resource for Founders](https://www.startupschool.org/) - Comprehensive free curriculum for early-stage founders.",
+      "rationale": "An identifiable official source supplies both price and curriculum evidence relevant to cost-effectiveness. The report does not explicitly explain that the source was selected to evaluate ROI."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 10,
+      "evidence_span": "YC is free [citation:Y Combinator - Startup School - The Best Resource for Founders](https://www.startupschool.org/)",
+      "rationale": "A named learning option has a concrete, verifiable cost fact supported by an identifiable source."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 10,
+      "evidence_span": "*e.g., University Entrepreneurship Certificates (Wharton, MIT)*\n* **Curriculum**: Broad management, corporate innovation, case-study-based strategy.\n* **Time & Cost**: 1–4 weeks (Exec Ed); highly expensive ($3,000–$15,000+).",
+      "rationale": "The report names prestigious university examples and provides a concrete price range and duration for their route, rather than merely warning that prestige can be expensive."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 4,
+      "evidence_span": "**Value for Liu Qiang: LOW.** You already have a top-tier MBA from SJTU. Taking more traditional executive classes is redundant, expensive, and does not provide the gritty tech-founder network you need.",
+      "rationale": "The route-by-route ratings imply a cost-and-learning-value contrast with online courses, but the report does not directly articulate that comparison on a shared cost-effectiveness axis."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 8,
+      "evidence_span": "**Value for Liu Qiang: VERY HIGH.** It fits perfectly into your fragmented morning/evening routine. It bridges your gap between corporate marketing and tech-product iteration without risking your household budget.",
+      "rationale": "The online-course route is recommended because it supplies relevant learning while protecting the budget. This supports cost-effectiveness, although the causal explanation emphasizes affordability and financial safety rather than comparative returns."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 10,
+      "evidence_span": "**Value for Liu Qiang: LOW.** You already have a top-tier MBA from SJTU. Taking more traditional executive classes is redundant, expensive, and does not provide the gritty tech-founder network you need.",
+      "rationale": "Traditional executive education is explicitly downgraded because its expense buys redundant learning and an unsuitable network. The associated route names Wharton and MIT."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 10,
+      "evidence_span": "**Action**: Enroll in **YC Startup School** (Free).",
+      "rationale": "The plan provides an immediately executable enrollment action that implements a zero-tuition learning choice."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 10,
+      "evidence_span": "**Budget**: Allocate a strictly capped micro-budget (e.g., 2,000 RMB/month) for software subscriptions and ad testing.",
+      "rationale": "The plan specifies a usable monthly spending cap for venture experiments, implementing cost discipline through an explicit allocation rule."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes expensive prestige-oriented education the better choice. The later accelerator recommendation is conditional on venture readiness, not a reversal of the education cost-effectiveness judgment."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 8,
+      "evidence_span": "**Time & Cost**: Highly flexible/asynchronous (2–5 hours/week). YC is free [citation:Y Combinator - Startup School - The Best Resource for Founders](https://www.startupschool.org/); Reforge is ~$2,000/year.\n* **Mentor/Network Access**: Global online peer matching.\n* **Hands-on & Learning Focus**: Extremely actionable. Deep focus on product development, market validation, and early-stage fundraising logic.\n* **Value for Liu Qiang: VERY HIGH.** It fits perfectly into your fragmented morning/evening routine. It bridges your gap between corporate marketing and tech-product iteration without risking your household budget.",
+      "rationale": "The section visibly connects sourced cost evidence and relevant learning benefits to a high-value recommendation justified by budget protection. The chain is present, but frames the preference primarily as affordability rather than explicitly as ROI."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 6,
+      "evidence_span": "Antler specifically helps individuals form teams",
+      "rationale": "Names a specific provider and a verifiable mechanism for accessing potential founder peers. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 4,
+      "evidence_span": "Highly flexible/asynchronous (2–5 hours/week).",
+      "rationale": "The online-course format implicitly contrasts with the report's peer-led communities and practitioner networks, but asynchronous learning is not necessarily isolated. No explicit option-level distinction between practitioner access and learning in isolation is made."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 6,
+      "evidence_span": "Taking more traditional executive classes is redundant, expensive, and does not provide the gritty tech-founder network you need.",
+      "rationale": "Lack of a relevant practitioner network explicitly contributes to the low-fit judgment for executive education. This satisfies the secondary-fit-factor check, subject to the generic cap of 6."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 6,
+      "evidence_span": "Dedicate 1 weekend afternoon per week to attending tech/startup meetups in Shanghai or organizing dinners with SJTU engineering alumni.",
+      "rationale": "The final phased plan explicitly includes access to startup and engineering peers. No selected route is justified by a preference for isolation. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 6,
+      "evidence_span": "*e.g., Y Combinator (YC) Startup School, Reforge*\n* **Curriculum**: 0-to-1 MVP building, product-market fit (YC), and advanced growth loops/product management (Reforge).\n* **Time & Cost**: Highly flexible/asynchronous (2–5 hours/week).",
+      "rationale": "Named online options have a concrete weekly workload and asynchronous format relevant to preserving regular family time. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 2,
+      "evidence_span": "Highly flexible/asynchronous (2–5 hours/week).",
+      "rationale": "Scheduling flexibility provides an implicit distinction from more demanding routes, but the report does not explicitly compare options in terms of preserving family time versus consuming evenings and weekends."
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 2,
+      "evidence_span": "It fits perfectly into your fragmented morning/evening routine.",
+      "rationale": "Schedule compatibility contributes to the online route's favorable fit judgment, but preserving regular family time is not identified as the reason for that judgment. Financial protection elsewhere does not establish family-time protection."
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 0,
+      "evidence_span": "Operate as a \"nights and weekends\" founder.",
+      "rationale": "The recommended plan explicitly assigns venture-building to nights and weekends without disclosing the family-time trade-off or protecting recurring family time. Its financial safeguards do not resolve this conflict."
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 4,
+      "evidence_span": "Heavy on business models and team management, but weak on agile product building and 0-to-1 market testing.",
+      "rationale": "The executive-education route, illustrated by Wharton and MIT certificates, includes team management. However, this is a broad curriculum characterization, not a concrete fact about a framework for improving coordination or leadership."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 4,
+      "evidence_span": "Heavy on business models and team management, but weak on agile product building and 0-to-1 market testing.",
+      "rationale": "The report explicitly contrasts team-management content with product-building content at the route level. It does not distinguish coordination or leadership frameworks from specifically solo-founder technical instruction, so the required distinction is incomplete."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 2,
+      "evidence_span": "allowing you to leverage your marketing and management strengths immediately as a CEO/founder.",
+      "rationale": "Management is mentioned in the favorable fit judgment for venture builders, but the benefit is leveraging existing strengths. The recommendation does not use learning coordination or leadership frameworks as a tie-breaker or secondary fit factor."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 6,
+      "evidence_span": "You handle customer interviews, B2B sales, and marketing, while your co-founder builds.",
+      "rationale": "The final plan explicitly supports complementary team responsibilities rather than justifying a solo-founder approach that opposes coordination or leadership. This supports non-contradiction; the supplied generic cap limits the score to 6."
+    }
+  ]
+}

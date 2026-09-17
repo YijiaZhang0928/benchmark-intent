@@ -16,6 +16,8 @@
 - r3 18/18 报告全部完成，但 9/9 Ask cells 均未提问；结构门仅 1/18 通过且人工 primary-source review 失败，因而 confirmatory eligible 为 0。冻结 opaque-label 单次 exploratory `P_strict/P_HI` scoring，用于诊断而不把这批包装成 DR-qualified 证据。
 - r3 exploratory 盲评在 11/18 个有效分数后按首错即停规则中止：`J987` 的 judge 对 `T1-A1-04` 给出正分但没有 evidence，严格校验拒绝该响应。已保留 11 份完整评分与失败目录，未自动重试，也不从不完整集合报告六组 aggregate；继续需用户显式批准同 label/same judge 的失败项重试。
 - 用户于 2026-09-16 批准 r3 scoring retry-1，并要求在 9 月 18 日 abstract 截止前不要因可恢复的 judge 格式错误反复人工停批。补充协议冻结：11 份有效分数不重算；失败 partial 先归档；未完成 label 只对识别出的 validation/schema failure 允许最多三次总尝试，首个 validator-pass 分数即为唯一有效 judgment；timeout/provider/未知失败仍停批。
+- retry-1 完成 18/18 个 67-leaf blind scores；`J987` 第二次总尝试通过，其余新增 6 份一次通过。六组 mean `P_strict` 为 COLD Ask/NoAsk `4.127/4.004`、RAW50 `4.541/5.092`、RAW100 `4.903/4.423`；全 9 对 Ask−NoAsk 约 `+0.017`，5/9 为正，方向不稳定。
+- `COLD_ASK−RAW50_NOASK=-0.965`，不满足预设 ±0.5 closeness；`COLD_ASK−RAW100_NOASK=-0.295`，数值接近但仅 1/3 任务为正。因 9/9 Ask cells 实际未问、0/18 confirmatory eligible，这些只能诊断 native clarification non-initiation 与生成方差，不能作为“提问提高 P”的因果证据。
 
 ## v0.96 DeerFlow 2.0 RAW50 Ask/No-Ask pilot - 2026-09-15
 

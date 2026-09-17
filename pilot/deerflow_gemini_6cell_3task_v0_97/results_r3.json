@@ -1,0 +1,569 @@
+{
+  "schema_version": "0.97-r3-results-1",
+  "scope": "exploratory_only",
+  "validation": {
+    "reports": 18,
+    "scores": 18,
+    "criteria_per_score": 67,
+    "report_hashes_match": true,
+    "rubric_hashes_match": true,
+    "judge_model": "gpt-6-astra",
+    "judge_reasoning_effort": "high",
+    "invalid_attempts_archived": 1
+  },
+  "treatment_uptake": {
+    "ask_capable_cells": 9,
+    "cells_with_clarification": 0,
+    "total_questions": 0,
+    "rate": 0.0
+  },
+  "dr_qualification": {
+    "structural_gate_pass": 1,
+    "confirmatory_score_eligible": 0
+  },
+  "cell_scores": [
+    {
+      "blind_label": "J987",
+      "task_id": "T01",
+      "context": "cold",
+      "policy": "ask",
+      "p_strict": 3.3186622073578596,
+      "p_hi": 3.3200000000000003,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J991",
+      "task_id": "T01",
+      "context": "cold",
+      "policy": "noask",
+      "p_strict": 3.1936454849498332,
+      "p_hi": 3.18,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J478",
+      "task_id": "T01",
+      "context": "raw50",
+      "policy": "ask",
+      "p_strict": 3.410234113712374,
+      "p_hi": 3.4000000000000004,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J717",
+      "task_id": "T01",
+      "context": "raw50",
+      "policy": "noask",
+      "p_strict": 4.30113712374582,
+      "p_hi": 4.390000000000001,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J616",
+      "task_id": "T01",
+      "context": "raw100",
+      "policy": "ask",
+      "p_strict": 3.1446822742474922,
+      "p_hi": 3.3000000000000003,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J704",
+      "task_id": "T01",
+      "context": "raw100",
+      "policy": "noask",
+      "p_strict": 4.230234113712375,
+      "p_hi": 4.280000000000001,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J686",
+      "task_id": "T02",
+      "context": "cold",
+      "policy": "ask",
+      "p_strict": 2.5664214046822744,
+      "p_hi": 2.64,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J211",
+      "task_id": "T02",
+      "context": "cold",
+      "policy": "noask",
+      "p_strict": 1.859464882943144,
+      "p_hi": 1.88,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J143",
+      "task_id": "T02",
+      "context": "raw50",
+      "policy": "ask",
+      "p_strict": 3.201404682274248,
+      "p_hi": 3.1000000000000005,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J491",
+      "task_id": "T02",
+      "context": "raw50",
+      "policy": "noask",
+      "p_strict": 4.112307692307693,
+      "p_hi": 3.8,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J778",
+      "task_id": "T02",
+      "context": "raw100",
+      "policy": "ask",
+      "p_strict": 4.27484949832776,
+      "p_hi": 4.120000000000001,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J880",
+      "task_id": "T02",
+      "context": "raw100",
+      "policy": "noask",
+      "p_strict": 3.1642809364548494,
+      "p_hi": 3.04,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J262",
+      "task_id": "T03",
+      "context": "cold",
+      "policy": "ask",
+      "p_strict": 6.496789297658863,
+      "p_hi": 6.620000000000001,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": true,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J759",
+      "task_id": "T03",
+      "context": "cold",
+      "policy": "noask",
+      "p_strict": 6.958528428093645,
+      "p_hi": 7.3100000000000005,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J548",
+      "task_id": "T03",
+      "context": "raw50",
+      "policy": "ask",
+      "p_strict": 7.012307692307693,
+      "p_hi": 7.239999999999999,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J798",
+      "task_id": "T03",
+      "context": "raw50",
+      "policy": "noask",
+      "p_strict": 6.863545150501672,
+      "p_hi": 7.02,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J347",
+      "task_id": "T03",
+      "context": "raw100",
+      "policy": "ask",
+      "p_strict": 7.288160535117058,
+      "p_hi": 7.380000000000001,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    },
+    {
+      "blind_label": "J777",
+      "task_id": "T03",
+      "context": "raw100",
+      "policy": "noask",
+      "p_strict": 5.873846153846154,
+      "p_hi": 5.99,
+      "question_count": 0,
+      "asked_clarification": false,
+      "structural_gate_pass": false,
+      "confirmatory_score_eligible": false
+    }
+  ],
+  "condition_summary": [
+    {
+      "context": "cold",
+      "policy": "ask",
+      "n": 3,
+      "mean_p_strict": 4.127291,
+      "mean_p_hi": 4.193333,
+      "questions": 0
+    },
+    {
+      "context": "cold",
+      "policy": "noask",
+      "n": 3,
+      "mean_p_strict": 4.00388,
+      "mean_p_hi": 4.123333,
+      "questions": 0
+    },
+    {
+      "context": "raw50",
+      "policy": "ask",
+      "n": 3,
+      "mean_p_strict": 4.541315,
+      "mean_p_hi": 4.58,
+      "questions": 0
+    },
+    {
+      "context": "raw50",
+      "policy": "noask",
+      "n": 3,
+      "mean_p_strict": 5.09233,
+      "mean_p_hi": 5.07,
+      "questions": 0
+    },
+    {
+      "context": "raw100",
+      "policy": "ask",
+      "n": 3,
+      "mean_p_strict": 4.902564,
+      "mean_p_hi": 4.933333,
+      "questions": 0
+    },
+    {
+      "context": "raw100",
+      "policy": "noask",
+      "n": 3,
+      "mean_p_strict": 4.422787,
+      "mean_p_hi": 4.436667,
+      "questions": 0
+    }
+  ],
+  "paired_ask_minus_noask": [
+    {
+      "task_id": "T01",
+      "context": "cold",
+      "ask_p_strict": 3.318662,
+      "noask_p_strict": 3.193645,
+      "delta_p_strict": 0.125017,
+      "ask_p_hi": 3.32,
+      "noask_p_hi": 3.18,
+      "delta_p_hi": 0.14
+    },
+    {
+      "task_id": "T02",
+      "context": "cold",
+      "ask_p_strict": 2.566421,
+      "noask_p_strict": 1.859465,
+      "delta_p_strict": 0.706957,
+      "ask_p_hi": 2.64,
+      "noask_p_hi": 1.88,
+      "delta_p_hi": 0.76
+    },
+    {
+      "task_id": "T03",
+      "context": "cold",
+      "ask_p_strict": 6.496789,
+      "noask_p_strict": 6.958528,
+      "delta_p_strict": -0.461739,
+      "ask_p_hi": 6.62,
+      "noask_p_hi": 7.31,
+      "delta_p_hi": -0.69
+    },
+    {
+      "task_id": "T01",
+      "context": "raw50",
+      "ask_p_strict": 3.410234,
+      "noask_p_strict": 4.301137,
+      "delta_p_strict": -0.890903,
+      "ask_p_hi": 3.4,
+      "noask_p_hi": 4.39,
+      "delta_p_hi": -0.99
+    },
+    {
+      "task_id": "T02",
+      "context": "raw50",
+      "ask_p_strict": 3.201405,
+      "noask_p_strict": 4.112308,
+      "delta_p_strict": -0.910903,
+      "ask_p_hi": 3.1,
+      "noask_p_hi": 3.8,
+      "delta_p_hi": -0.7
+    },
+    {
+      "task_id": "T03",
+      "context": "raw50",
+      "ask_p_strict": 7.012308,
+      "noask_p_strict": 6.863545,
+      "delta_p_strict": 0.148763,
+      "ask_p_hi": 7.24,
+      "noask_p_hi": 7.02,
+      "delta_p_hi": 0.22
+    },
+    {
+      "task_id": "T01",
+      "context": "raw100",
+      "ask_p_strict": 3.144682,
+      "noask_p_strict": 4.230234,
+      "delta_p_strict": -1.085552,
+      "ask_p_hi": 3.3,
+      "noask_p_hi": 4.28,
+      "delta_p_hi": -0.98
+    },
+    {
+      "task_id": "T02",
+      "context": "raw100",
+      "ask_p_strict": 4.274849,
+      "noask_p_strict": 3.164281,
+      "delta_p_strict": 1.110569,
+      "ask_p_hi": 4.12,
+      "noask_p_hi": 3.04,
+      "delta_p_hi": 1.08
+    },
+    {
+      "task_id": "T03",
+      "context": "raw100",
+      "ask_p_strict": 7.288161,
+      "noask_p_strict": 5.873846,
+      "delta_p_strict": 1.414314,
+      "ask_p_hi": 7.38,
+      "noask_p_hi": 5.99,
+      "delta_p_hi": 1.39
+    }
+  ],
+  "paired_summary": [
+    {
+      "context": "cold",
+      "mean_delta_p_strict": 0.123411,
+      "mean_delta_p_hi": 0.07,
+      "positive_tasks_p_strict": 2,
+      "positive_tasks_p_hi": 2
+    },
+    {
+      "context": "raw50",
+      "mean_delta_p_strict": -0.551014,
+      "mean_delta_p_hi": -0.49,
+      "positive_tasks_p_strict": 1,
+      "positive_tasks_p_hi": 1
+    },
+    {
+      "context": "raw100",
+      "mean_delta_p_strict": 0.479777,
+      "mean_delta_p_hi": 0.496667,
+      "positive_tasks_p_strict": 2,
+      "positive_tasks_p_hi": 2
+    }
+  ],
+  "cross_comparisons": [
+    {
+      "contrast": "cold_ask_minus_raw50_noask",
+      "mean_delta_p_strict": -0.965039,
+      "mean_delta_p_hi": -0.876667,
+      "positive_tasks_p_strict": 0,
+      "per_task": [
+        {
+          "task_id": "T01",
+          "delta_p_strict": -0.982475,
+          "delta_p_hi": -1.07
+        },
+        {
+          "task_id": "T02",
+          "delta_p_strict": -1.545886,
+          "delta_p_hi": -1.16
+        },
+        {
+          "task_id": "T03",
+          "delta_p_strict": -0.366756,
+          "delta_p_hi": -0.4
+        }
+      ],
+      "descriptively_close_abs_le_0_5": false
+    },
+    {
+      "contrast": "cold_ask_minus_raw100_noask",
+      "mean_delta_p_strict": -0.295496,
+      "mean_delta_p_hi": -0.243333,
+      "positive_tasks_p_strict": 1,
+      "per_task": [
+        {
+          "task_id": "T01",
+          "delta_p_strict": -0.911572,
+          "delta_p_hi": -0.96
+        },
+        {
+          "task_id": "T02",
+          "delta_p_strict": -0.59786,
+          "delta_p_hi": -0.4
+        },
+        {
+          "task_id": "T03",
+          "delta_p_strict": 0.622943,
+          "delta_p_hi": 0.63
+        }
+      ],
+      "descriptively_close_abs_le_0_5": true
+    }
+  ],
+  "task_rankings": [
+    {
+      "task_id": "T01",
+      "ranking": [
+        {
+          "rank": 1,
+          "condition": "raw50_noask",
+          "p_strict": 4.301137
+        },
+        {
+          "rank": 2,
+          "condition": "raw100_noask",
+          "p_strict": 4.230234
+        },
+        {
+          "rank": 3,
+          "condition": "raw50_ask",
+          "p_strict": 3.410234
+        },
+        {
+          "rank": 4,
+          "condition": "cold_ask",
+          "p_strict": 3.318662
+        },
+        {
+          "rank": 5,
+          "condition": "cold_noask",
+          "p_strict": 3.193645
+        },
+        {
+          "rank": 6,
+          "condition": "raw100_ask",
+          "p_strict": 3.144682
+        }
+      ]
+    },
+    {
+      "task_id": "T02",
+      "ranking": [
+        {
+          "rank": 1,
+          "condition": "raw100_ask",
+          "p_strict": 4.274849
+        },
+        {
+          "rank": 2,
+          "condition": "raw50_noask",
+          "p_strict": 4.112308
+        },
+        {
+          "rank": 3,
+          "condition": "raw50_ask",
+          "p_strict": 3.201405
+        },
+        {
+          "rank": 4,
+          "condition": "raw100_noask",
+          "p_strict": 3.164281
+        },
+        {
+          "rank": 5,
+          "condition": "cold_ask",
+          "p_strict": 2.566421
+        },
+        {
+          "rank": 6,
+          "condition": "cold_noask",
+          "p_strict": 1.859465
+        }
+      ]
+    },
+    {
+      "task_id": "T03",
+      "ranking": [
+        {
+          "rank": 1,
+          "condition": "raw100_ask",
+          "p_strict": 7.288161
+        },
+        {
+          "rank": 2,
+          "condition": "raw50_ask",
+          "p_strict": 7.012308
+        },
+        {
+          "rank": 3,
+          "condition": "cold_noask",
+          "p_strict": 6.958528
+        },
+        {
+          "rank": 4,
+          "condition": "raw50_noask",
+          "p_strict": 6.863545
+        },
+        {
+          "rank": 5,
+          "condition": "cold_ask",
+          "p_strict": 6.496789
+        },
+        {
+          "rank": 6,
+          "condition": "raw100_noask",
+          "p_strict": 5.873846
+        }
+      ]
+    }
+  ],
+  "interpretation_limits": [
+    "Ask-capable cells asked zero questions, so Ask-NoAsk differences are not effects of acquired clarification answers.",
+    "Zero reports were confirmatory-score eligible; all P scores are exploratory diagnostics.",
+    "There is one generation and one valid judge score per cell across only three tasks; no significance or equivalence claim is supported."
+  ]
+}

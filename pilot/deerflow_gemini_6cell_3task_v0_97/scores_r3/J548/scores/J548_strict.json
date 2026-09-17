@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J548",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "cf05db3f910772a7d9c0d1341ed04b60a624ad659f858d6d4c079aac6ecfbbd1",
+  "rubric_sha256": "32fb89d4415c2f9ec5f4183819b3815dc2d32a78349bdddf616376a0e5ffb32c",
+  "started_at_utc": "2026-09-17T02:08:06.757192+00:00",
+  "completed_at_utc": "2026-09-17T02:13:06.005621+00:00",
+  "p_strict": 7.012307692307693,
+  "p_hi": 7.239999999999999,
+  "dimension_scores": {
+    "INTENT": 8.0,
+    "SOURCE": 6.8,
+    "EVIDENCE": 6.869565217391304,
+    "TRADEOFF": 3.391304347826087,
+    "DECISION": 8.08695652173913,
+    "ACTION": 10.0,
+    "TRACE": 6.923076923076923
+  },
+  "high_dimension_scores": {
+    "INTENT": 8.0,
+    "SOURCE": 6.8,
+    "EVIDENCE": 7.199999999999999,
+    "TRADEOFF": 3.5999999999999996,
+    "DECISION": 8.6,
+    "ACTION": 10.0,
+    "TRACE": 7.199999999999999
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T3-P1-01",
+      "score": 10,
+      "evidence_span": "#### Practical Venture Building / Startup Studios (Side-Hustle Model)\n*   **Value for You:** **Maximum.**",
+      "rationale": "Explicitly assigns the highest decision value to practical venture building."
+    },
+    {
+      "criterion_id": "T3-P1-02",
+      "score": 10,
+      "evidence_span": "[Grand NeoBay Incubator](https://news.sjtu.edu.cn/jdyw/20260528/223259.html) - Official news regarding Shanghai Jiao Tong University's Grand NeoBay startup incubator launch and facilities.",
+      "rationale": "Identifies official reporting about incubator facilities as evidence for evaluating access to real venture-building opportunities."
+    },
+    {
+      "criterion_id": "T3-P1-03",
+      "score": 10,
+      "evidence_span": "Shanghai's \"Grand NeoBay\" (大零号湾) near SJTU has recently launched extensive incubator spaces [citation:Grand NeoBay Incubator](https://news.sjtu.edu.cn/jdyw/20260528/223259.html), offering immense resources for alumni ventures.",
+      "rationale": "Provides a specific, cited claim about a named option supplying physical incubator spaces for ventures, rather than merely describing it as practical."
+    },
+    {
+      "criterion_id": "T3-P1-04",
+      "score": 4,
+      "evidence_span": "Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management)",
+      "rationale": "Identifies academic content on the contrast side, but offers a generic characterization of another degree rather than a concrete curriculum fact about an identifiable broad business-degree option."
+    },
+    {
+      "criterion_id": "T3-P1-05",
+      "score": 10,
+      "evidence_span": "Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup.",
+      "rationale": "Directly contrasts additional academic theory with practical startup work on incremental learning value and the associated time and money expenditure."
+    },
+    {
+      "criterion_id": "T3-P1-06",
+      "score": 10,
+      "evidence_span": "#### Practical Venture Building / Startup Studios (Side-Hustle Model)\n*   **Value for You:** **Maximum.**\n*   **Focus:** Working with a technical co-founder while you handle the marketing/business management as a \"Venture Builder.\" You test ideas using minimal capital and time constraints.",
+      "rationale": "Recommends the practical venture-building route at the highest value level and explains its value through actual co-founder work and idea testing."
+    },
+    {
+      "criterion_id": "T3-P1-07",
+      "score": 10,
+      "evidence_span": "#### Degree vs. Non-Degree Programs\n*   **Value for You:** **Low.** \n*   **Why:** You already hold an MBA from a top-tier institution (SJTU). Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup.",
+      "rationale": "Explicitly downgrades the additional-degree route because it would repeat academic business learning instead of supplying practical startup experience."
+    },
+    {
+      "criterion_id": "T3-P1-08",
+      "score": 10,
+      "evidence_span": "Buy domains, build no-code landing pages, and run targeted WeChat/Baidu ads to test conversion rates for your ideas.",
+      "rationale": "Provides executable venture experiments with concrete artifacts, channels, and a measurement objective."
+    },
+    {
+      "criterion_id": "T3-P1-09",
+      "score": 10,
+      "evidence_span": "**Milestone:** Achieve your first dollar of revenue or a waitlist of 500+ qualified leads.",
+      "rationale": "Defines a measurable checkpoint for the real-world experimentation phase."
+    },
+    {
+      "criterion_id": "T3-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes another broad academic business degree the preferred choice. The scaling-stage qualification concerns executive education instead."
+    },
+    {
+      "criterion_id": "T3-P1-11",
+      "score": 4,
+      "evidence_span": "**Network Leverage:** Re-engage with the SJTU alumni network. Visit the Grand NeoBay incubators [citation:Grand NeoBay Incubator](https://news.sjtu.edu.cn/jdyw/20260528/223259.html) in Minhang on a weekend. Look for a technical co-founder who complements your marketing/management background.",
+      "rationale": "Links a cited incubator option to a concrete venture-building action, but does not explicitly connect the real-project learning preference to a supporting fact and then make that fact the reason for the action. The complete causal chain remains implicit."
+    },
+    {
+      "criterion_id": "T3-P2-01",
+      "score": 10,
+      "evidence_span": "This plan is built around your specific routine: utilizing your highly efficient mornings for cognitive input, your evenings for strategic project planning, and preserving weekends for your family",
+      "rationale": "Explicitly prioritizes fitting learning and experimentation around an existing routine while protecting family time."
+    },
+    {
+      "criterion_id": "T3-P2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The cited sources concern incubator facilities, accelerator support, and peer learning. None is selected to establish scheduling flexibility, modular delivery, or compatibility with work and family."
+    },
+    {
+      "criterion_id": "T3-P2-03",
+      "score": 8,
+      "evidence_span": "**Mornings (6:00 - 7:30 AM):** Consume free, high-density startup content. Go through **YC Startup School** (free online)",
+      "rationale": "Names a concrete online learning option and places it in a bounded morning slot. Online delivery is a verifiable flexibility-related fact, although the report does not establish self-paced access or required workload."
+    },
+    {
+      "criterion_id": "T3-P2-04",
+      "score": 10,
+      "evidence_span": "Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup. \n*   **Cost/Time:** High cost; 1–2 years full-time.",
+      "rationale": "The degree route has a concrete full-time duration, alongside an explicit statement of its substantial time burden."
+    },
+    {
+      "criterion_id": "T3-P2-05",
+      "score": 4,
+      "evidence_span": "**Cost/Time:** Low cost, fitting perfectly into your fixed household budget and your routine of high-efficiency morning learning and evening reading.",
+      "rationale": "The report evaluates online learning and full-time degrees on time and cost, but leaves the consequential comparison between their work/family disruption largely implicit."
+    },
+    {
+      "criterion_id": "T3-P2-06",
+      "score": 10,
+      "evidence_span": "**Cost/Time:** Low cost, fitting perfectly into your fixed household budget and your routine of high-efficiency morning learning and evening reading.",
+      "rationale": "The highly rated Online Courses & Micro-learning route, including YC Startup School and Dedao, is recommended with explicit reference to fitting the household budget and existing daily routine."
+    },
+    {
+      "criterion_id": "T3-P2-07",
+      "score": 10,
+      "evidence_span": "*   **Value for You:** **Low.** \n*   **Why:** You already hold an MBA from a top-tier institution (SJTU). Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup. \n*   **Cost/Time:** High cost; 1–2 years full-time.",
+      "rationale": "Downgrades the degree route and explicitly includes its substantial time cost and one-to-two-year full-time commitment among the reasons."
+    },
+    {
+      "criterion_id": "T3-P2-08",
+      "score": 10,
+      "evidence_span": "**Mornings (6:00 - 7:30 AM):** Consume free, high-density startup content. Go through **YC Startup School** (free online)",
+      "rationale": "Provides an executable learning action using a named online program within a specific morning time slot."
+    },
+    {
+      "criterion_id": "T3-P2-09",
+      "score": 10,
+      "evidence_span": "utilizing your highly efficient mornings for cognitive input, your evenings for strategic project planning, and preserving weekends for your family",
+      "rationale": "Defines a usable time-allocation rule that separates learning and venture planning from protected family weekends."
+    },
+    {
+      "criterion_id": "T3-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives conditions for leaving employment to pursue entrepreneurship, but none for choosing disruptive full-time study instead of flexible learning."
+    },
+    {
+      "criterion_id": "T3-P2-11",
+      "score": 8,
+      "evidence_span": "**Mornings (6:00 - 7:30 AM):** Consume free, high-density startup content. Go through **YC Startup School** (free online)",
+      "rationale": "The family-preserving plan connects an online program's delivery format to a concrete morning learning action. The chain is visible, but supporting evidence about actual scheduling freedom or workload is limited."
+    },
+    {
+      "criterion_id": "T3-P3-01",
+      "score": 8,
+      "evidence_span": "You test ideas using minimal capital and time constraints.\n*   **Cost/Time:** Sweat equity, utilizing your evenings for project planning. It shields your family from financial risk until the concept is proven.",
+      "rationale": "The report prioritizes low-cost testing and withholding financial exposure until proof, establishing a validation-first approach. The priority is expressed through practical risk management rather than an explicit evidence-based decision framework."
+    },
+    {
+      "criterion_id": "T3-P3-02",
+      "score": 10,
+      "evidence_span": "Buy domains, build no-code landing pages, and run targeted WeChat/Baidu ads to test conversion rates for your ideas.",
+      "rationale": "Conversion rates from targeted advertising and landing pages are an identifiable evidence class explicitly chosen to test venture ideas."
+    },
+    {
+      "criterion_id": "T3-P3-03",
+      "score": 10,
+      "evidence_span": "**Venture Building:** Allocate a small portion of your fixed monthly budget to run lean tests. Buy domains, build no-code landing pages, and run targeted WeChat/Baidu ads to test conversion rates for your ideas.",
+      "rationale": "The named venture-building route has a concrete experimental mechanism: small-budget landing-page and advertising tests that generate measurable conversion evidence."
+    },
+    {
+      "criterion_id": "T3-P3-04",
+      "score": 4,
+      "evidence_span": "Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup. \n*   **Cost/Time:** High cost; 1–2 years full-time.",
+      "rationale": "The degree route has a concrete preparation duration and a theory-versus-practice contrast. However, the report does not establish that testing ideas must wait until that preparation ends."
+    },
+    {
+      "criterion_id": "T3-P3-05",
+      "score": 4,
+      "evidence_span": "Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup.",
+      "rationale": "This directly contrasts theoretical preparation with practical startup work, but does not directly compare delayed testing against evidence-driven experiments or staged validation on a common decision axis."
+    },
+    {
+      "criterion_id": "T3-P3-06",
+      "score": 10,
+      "evidence_span": "#### Practical Venture Building / Startup Studios (Side-Hustle Model)\n*   **Value for You:** **Maximum.**\n*   **Focus:** Working with a technical co-founder while you handle the marketing/business management as a \"Venture Builder.\" You test ideas using minimal capital and time constraints.\n*   **Cost/Time:** Sweat equity, utilizing your evenings for project planning. It shields your family from financial risk until the concept is proven.",
+      "rationale": "The side-hustle venture-building route receives the highest recommendation because it enables constrained testing and protects finances until the concept is proven."
+    },
+    {
+      "criterion_id": "T3-P3-07",
+      "score": 4,
+      "evidence_span": "#### Degree vs. Non-Degree Programs\n*   **Value for You:** **Low.** \n*   **Why:** You already hold an MBA from a top-tier institution (SJTU). Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup.",
+      "rationale": "Another degree is explicitly downgraded for lengthy, costly, redundant theory. Delaying market experiments is not explicitly given as the reason, so the preference-specific causal link remains incomplete."
+    },
+    {
+      "criterion_id": "T3-P3-08",
+      "score": 10,
+      "evidence_span": "Buy domains, build no-code landing pages, and run targeted WeChat/Baidu ads to test conversion rates for your ideas.",
+      "rationale": "This is an executable market experiment with concrete tools, actions, and a measurable outcome."
+    },
+    {
+      "criterion_id": "T3-P3-09",
+      "score": 10,
+      "evidence_span": "**Milestone:** Achieve your first dollar of revenue or a waitlist of 500+ qualified leads.",
+      "rationale": "The experimentation phase ends with an explicit validation checkpoint based on revenue or a quantified qualified-lead threshold."
+    },
+    {
+      "criterion_id": "T3-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no concrete condition under which lengthy preparation before testing ideas would become preferable."
+    },
+    {
+      "criterion_id": "T3-P3-11",
+      "score": 10,
+      "evidence_span": "Because you are the primary breadwinner, you need a \"Go/No-Go\" trigger. (e.g., *“If we secure 2M RMB in seed funding and have 10 paying enterprise clients, I will quit my job.”*)",
+      "rationale": "The report visibly links staged commitment to specified financial and paying-customer evidence, then to the decision to leave employment. This is an explicit conditional evidence-to-action chain, not a claim that validation has already occurred."
+    },
+    {
+      "criterion_id": "T3-P4-01",
+      "score": 4,
+      "evidence_span": "your journey from 0 to 1 needs to be highly efficient, low-risk, and practical.",
+      "rationale": "Practicality is an explicit priority, but in-depth practical cases or data are not stated as a decision priority."
+    },
+    {
+      "criterion_id": "T3-P4-02",
+      "score": 10,
+      "evidence_span": "Read HBR case studies specifically focused on failed startups to understand risk pitfalls.",
+      "rationale": "Identifies a specific source and evidence class—HBR failed-startup case studies—and explains the practical question they should help resolve."
+    },
+    {
+      "criterion_id": "T3-P4-03",
+      "score": 4,
+      "evidence_span": "Read HBR case studies specifically focused on failed startups to understand risk pitfalls.",
+      "rationale": "Names a relevant case-study source, but does not provide a concrete case, dataset, or verifiable detail demonstrating the depth of an option's practical evidence."
+    },
+    {
+      "criterion_id": "T3-P4-04",
+      "score": 4,
+      "evidence_span": "Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup.",
+      "rationale": "Characterizes the degree route as theoretical rather than applied, but provides no verifiable curriculum or delivery fact establishing that contrast."
+    },
+    {
+      "criterion_id": "T3-P4-05",
+      "score": 4,
+      "evidence_span": "offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup.",
+      "rationale": "Directly contrasts theory with practical startup work, but does not compare in-depth cases or data against theory on a developed common decision axis."
+    },
+    {
+      "criterion_id": "T3-P4-06",
+      "score": 4,
+      "evidence_span": "*   **Value for You:** **Maximum.**\n*   **Focus:** Working with a technical co-founder while you handle the marketing/business management as a \"Venture Builder.\" You test ideas using minimal capital and time constraints.",
+      "rationale": "Highly recommends venture building and associates it with testing ideas, but does not explicitly make access to in-depth cases or data the causal selection reason."
+    },
+    {
+      "criterion_id": "T3-P4-07",
+      "score": 10,
+      "evidence_span": "#### Degree vs. Non-Degree Programs\n*   **Value for You:** **Low.** \n*   **Why:** You already hold an MBA from a top-tier institution (SJTU). Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup.",
+      "rationale": "Explicitly downgrades another degree and gives redundant theoretical learning instead of practical startup work as a reason."
+    },
+    {
+      "criterion_id": "T3-P4-08",
+      "score": 10,
+      "evidence_span": "Buy domains, build no-code landing pages, and run targeted WeChat/Baidu ads to test conversion rates for your ideas.",
+      "rationale": "Provides executable venture experiments that collect practical market-response data."
+    },
+    {
+      "criterion_id": "T3-P4-09",
+      "score": 10,
+      "evidence_span": "**Customer Interviews:** Talk to 50 potential customers.",
+      "rationale": "Defines a concrete numerical allocation for gathering practical customer evidence."
+    },
+    {
+      "criterion_id": "T3-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which abstract theory without application becomes the better choice."
+    },
+    {
+      "criterion_id": "T3-P4-11",
+      "score": 4,
+      "evidence_span": "Read HBR case studies specifically focused on failed startups to understand risk pitfalls.",
+      "rationale": "Connects a practical evidence source to a learning action and purpose, but supplies no actual case finding or cited fact that leads to a downstream decision."
+    },
+    {
+      "criterion_id": "T3-P5-01",
+      "score": 8,
+      "evidence_span": "Going back for another degree will cost immense time and money, offering redundant theoretical knowledge",
+      "rationale": "The report makes cost relative to incremental learning value a decision priority, although it does not explicitly label this priority ROI or cost-effectiveness."
+    },
+    {
+      "criterion_id": "T3-P5-02",
+      "score": 4,
+      "evidence_span": "Official website of MiraclePlus (奇绩创坛), founded by Qi Lu, providing accelerator programs and early-stage startup funding in China.",
+      "rationale": "An identifiable official source could inform financial value, but the report does not select it specifically to investigate costs, returns, or cost-effectiveness."
+    },
+    {
+      "criterion_id": "T3-P5-03",
+      "score": 10,
+      "evidence_span": "Go through **YC Startup School** (free online)",
+      "rationale": "A named learning option has a concrete, verifiable cost fact: it is free."
+    },
+    {
+      "criterion_id": "T3-P5-04",
+      "score": 8,
+      "evidence_span": "#### Executive Education (e.g., CEIBS Entrepreneurship Camp, SJTU EMBA extensions)\n*   **Value for You:** **Medium.**\n*   **Focus:** Excellent for high-level networking, B2B resource integration, and scaling existing businesses.\n*   **Cost/Time:** Very expensive; usually requires block time on weekends",
+      "rationale": "The report names executive programs and describes a concrete time burden alongside their expense and networking orientation. However, the financial cost remains unquantified and the facts are generalized across the examples."
+    },
+    {
+      "criterion_id": "T3-P5-05",
+      "score": 4,
+      "evidence_span": "*   **Cost/Time:** Low cost, fitting perfectly into your fixed household budget",
+      "rationale": "The report separately evaluates low-cost courses and expensive degree or executive routes, but does not directly compare them on a shared cost-effectiveness measure or explicitly state their consequential difference in one comparison."
+    },
+    {
+      "criterion_id": "T3-P5-06",
+      "score": 8,
+      "evidence_span": "#### Online Courses & Micro-learning (e.g., YC Startup School, Dedao New Business School)\n*   **Value for You:** **High (for early stages).**\n*   **Focus:** Agile learning on market trends, product mechanics, and lean startup frameworks. Dedao’s \"New Business School\" (得到新商学) is specifically designed as a peer-to-peer community for entrepreneurs [citation:Dedao New Business School](https://dbs.luojilab.com/). \n*   **Cost/Time:** Low cost, fitting perfectly into your fixed household budget",
+      "rationale": "The report recommends the named online-learning route and explicitly links its suitability to low cost and budget fit. The causal selection reason is clear, though framed more as affordability than return per unit of expenditure."
+    },
+    {
+      "criterion_id": "T3-P5-07",
+      "score": 10,
+      "evidence_span": "*   **Value for You:** **Low.** \n*   **Why:** You already hold an MBA from a top-tier institution (SJTU). Going back for another degree will cost immense time and money, offering redundant theoretical knowledge",
+      "rationale": "Another degree is explicitly downgraded because its substantial time and monetary costs would purchase redundant learning after an existing top-tier MBA."
+    },
+    {
+      "criterion_id": "T3-P5-08",
+      "score": 10,
+      "evidence_span": "Go through **YC Startup School** (free online) to learn the Silicon Valley 0-1 framework",
+      "rationale": "The plan gives an executable learning action using a named free resource."
+    },
+    {
+      "criterion_id": "T3-P5-09",
+      "score": 10,
+      "evidence_span": "#### Phase 1: Cognitive Realignment & Ideation (Months 1–4)\n*   **Goal:** Update your tech/market knowledge, identify a specific problem, and find potential co-founders without spending capital.",
+      "rationale": "The plan sets a usable zero-capital spending constraint for the first four months of learning and exploration."
+    },
+    {
+      "criterion_id": "T3-P5-10",
+      "score": 10,
+      "evidence_span": "**Verdict:** Skip this for now. It’s better suited for scaling from 1 to 100 rather than 0 to 1.",
+      "rationale": "The executive-education verdict identifies a concrete stage boundary: these expensive programs become more suitable when scaling an established venture rather than creating one."
+    },
+    {
+      "criterion_id": "T3-P5-11",
+      "score": 10,
+      "evidence_span": "*   **Value for You:** **Low.** \n*   **Why:** You already hold an MBA from a top-tier institution (SJTU). Going back for another degree will cost immense time and money, offering redundant theoretical knowledge (business models, team management) rather than the pragmatic \"dirty work\" of a startup.",
+      "rationale": "The report visibly links an existing MBA and consequent learning redundancy to the additional degree's time and monetary costs, then to a low-value decision."
+    },
+    {
+      "criterion_id": "T3-A1-01",
+      "score": 6,
+      "evidence_span": "Dedao’s \"New Business School\" (得到新商学) is specifically designed as a peer-to-peer community for entrepreneurs",
+      "rationale": "Provides a concrete, verifiable claim about a named option offering access to entrepreneurial peers. Score capped at 6 under the supplied generic cap."
+    },
+    {
+      "criterion_id": "T3-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report describes mentorship and peer communities but does not explicitly contrast an option offering practitioner or peer access with learning in isolation."
+    },
+    {
+      "criterion_id": "T3-A1-03",
+      "score": 6,
+      "evidence_span": "By leveraging your SJTU alumni network (especially emerging hubs like NeoBay) and modern online business communities (Dedao), you can systematically de-risk your startup journey",
+      "rationale": "The recommendation includes named networks and communities because their access is presented as helping reduce startup risk, making it an explicit secondary fit factor. Score capped at 6 under the supplied generic cap."
+    },
+    {
+      "criterion_id": "T3-A1-04",
+      "score": 6,
+      "evidence_span": "By leveraging your SJTU alumni network (especially emerging hubs like NeoBay) and modern online business communities (Dedao)",
+      "rationale": "The concluding recommendation explicitly incorporates alumni and entrepreneurial-community access and does not justify a selected route by preferring isolation. Score capped at 6 under the supplied generic cap."
+    },
+    {
+      "criterion_id": "T3-A2-01",
+      "score": 6,
+      "evidence_span": "usually requires block time on weekends (which competes with your family time, daughter's dance/painting classes, and trips).",
+      "rationale": "The executive-education section, naming CEIBS Entrepreneurship Camp and SJTU EMBA extensions, supplies a scheduling fact directly relevant to family time. However, this is a general category-level claim rather than a verified schedule for either named program; the generic cap applies."
+    },
+    {
+      "criterion_id": "T3-A2-02",
+      "score": 6,
+      "evidence_span": "usually requires block time on weekends (which competes with your family time, daughter's dance/painting classes, and trips).",
+      "rationale": "Executive education is explicitly identified as competing with family time, unlike the proposed weekend-preserving learning plan. The option-level distinction is present, but the schedule comparison remains general; the generic cap applies."
+    },
+    {
+      "criterion_id": "T3-A2-03",
+      "score": 6,
+      "evidence_span": "*   **Cost/Time:** Very expensive; usually requires block time on weekends (which competes with your family time, daughter's dance/painting classes, and trips).\n*   **Verdict:** Skip this for now.",
+      "rationale": "Family-time competition is an explicit disadvantage immediately preceding the recommendation to skip executive education, supporting its use as a secondary fit factor. The report does not isolate its effect from cost and venture-stage considerations; the generic cap applies."
+    },
+    {
+      "criterion_id": "T3-A2-04",
+      "score": 6,
+      "evidence_span": "utilizing your highly efficient mornings for cognitive input, your evenings for strategic project planning, and preserving weekends for your family",
+      "rationale": "The recommended plan explicitly preserves regular weekend family time while disclosing evening project work. Although a later incubator visit uses a weekend, the recommendation does not justify sacrificing regular family time as a desirable value. Protection of family time remains a general planning commitment rather than a consistently specified schedule; the generic cap applies."
+    },
+    {
+      "criterion_id": "T3-A3-01",
+      "score": 2,
+      "evidence_span": "redundant theoretical knowledge (business models, team management)",
+      "rationale": "The report attributes team-management content to degree study, but gives no concrete fact about a named coordination or leadership framework."
+    },
+    {
+      "criterion_id": "T3-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison explicitly distinguishes team-coordination or leadership frameworks from purely solo-founder technical content."
+    },
+    {
+      "criterion_id": "T3-A3-03",
+      "score": 2,
+      "evidence_span": "Working with a technical co-founder while you handle the marketing/business management as a \"Venture Builder.\"",
+      "rationale": "The highest-valued route includes complementary co-founder responsibilities, providing partial evidence of team-oriented fit. However, no coordination or leadership framework explicitly changes the recommendation or serves as a secondary selection factor."
+    },
+    {
+      "criterion_id": "T3-A3-04",
+      "score": 6,
+      "evidence_span": "Look for a technical co-founder who complements your marketing/management background.",
+      "rationale": "The phased recommendation supports complementary teamwork and does not justify an option through an opposing preference for solo technical work. This is generic alignment rather than evidence about a particular coordination or leadership framework, so the generic cap applies."
+    }
+  ]
+}

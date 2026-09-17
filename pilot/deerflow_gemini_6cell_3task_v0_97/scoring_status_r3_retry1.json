@@ -1,0 +1,134 @@
+{
+  "schema_version": "0.97-r3-score-retry1-1",
+  "authorization": "explicit user approval on 2026-09-16",
+  "started_at_utc": "2026-09-17T01:55:39.855404+00:00",
+  "carried_forward_valid_scores": 11,
+  "completed": [
+    {
+      "blind_label": "J778",
+      "p_strict": 4.27484949832776,
+      "p_hi": 4.120000000000001,
+      "completed_at_utc": "2026-09-16T18:49:39.188601+00:00"
+    },
+    {
+      "blind_label": "J143",
+      "p_strict": 3.201404682274248,
+      "p_hi": 3.1000000000000005,
+      "completed_at_utc": "2026-09-16T19:07:31.657519+00:00"
+    },
+    {
+      "blind_label": "J798",
+      "p_strict": 6.863545150501672,
+      "p_hi": 7.02,
+      "completed_at_utc": "2026-09-16T19:12:31.263498+00:00"
+    },
+    {
+      "blind_label": "J491",
+      "p_strict": 4.112307692307693,
+      "p_hi": 3.8,
+      "completed_at_utc": "2026-09-16T19:20:02.463323+00:00"
+    },
+    {
+      "blind_label": "J262",
+      "p_strict": 6.496789297658863,
+      "p_hi": 6.620000000000001,
+      "completed_at_utc": "2026-09-16T19:26:38.220060+00:00"
+    },
+    {
+      "blind_label": "J991",
+      "p_strict": 3.1936454849498332,
+      "p_hi": 3.18,
+      "completed_at_utc": "2026-09-16T19:30:45.668057+00:00"
+    },
+    {
+      "blind_label": "J759",
+      "p_strict": 6.958528428093645,
+      "p_hi": 7.3100000000000005,
+      "completed_at_utc": "2026-09-16T19:35:58.096877+00:00"
+    },
+    {
+      "blind_label": "J211",
+      "p_strict": 1.859464882943144,
+      "p_hi": 1.88,
+      "completed_at_utc": "2026-09-16T19:39:17.913900+00:00"
+    },
+    {
+      "blind_label": "J478",
+      "p_strict": 3.410234113712374,
+      "p_hi": 3.4000000000000004,
+      "completed_at_utc": "2026-09-16T19:43:14.819925+00:00"
+    },
+    {
+      "blind_label": "J616",
+      "p_strict": 3.1446822742474922,
+      "p_hi": 3.3000000000000003,
+      "completed_at_utc": "2026-09-16T19:47:08.076763+00:00"
+    },
+    {
+      "blind_label": "J347",
+      "p_strict": 7.288160535117058,
+      "p_hi": 7.380000000000001,
+      "completed_at_utc": "2026-09-16T20:32:23.589150+00:00"
+    },
+    {
+      "blind_label": "J987",
+      "p_strict": 3.3186622073578596,
+      "p_hi": 3.3200000000000003,
+      "completed_at_utc": "2026-09-17T01:59:13.790959+00:00",
+      "valid_attempt": 2
+    },
+    {
+      "blind_label": "J880",
+      "p_strict": 3.1642809364548494,
+      "p_hi": 3.04,
+      "completed_at_utc": "2026-09-17T02:03:39.267912+00:00",
+      "valid_attempt": 1
+    },
+    {
+      "blind_label": "J704",
+      "p_strict": 4.230234113712375,
+      "p_hi": 4.280000000000001,
+      "completed_at_utc": "2026-09-17T02:08:05.780145+00:00",
+      "valid_attempt": 1
+    },
+    {
+      "blind_label": "J548",
+      "p_strict": 7.012307692307693,
+      "p_hi": 7.239999999999999,
+      "completed_at_utc": "2026-09-17T02:13:06.187327+00:00",
+      "valid_attempt": 1
+    },
+    {
+      "blind_label": "J777",
+      "p_strict": 5.873846153846154,
+      "p_hi": 5.99,
+      "completed_at_utc": "2026-09-17T02:17:49.843748+00:00",
+      "valid_attempt": 1
+    },
+    {
+      "blind_label": "J686",
+      "p_strict": 2.5664214046822744,
+      "p_hi": 2.64,
+      "completed_at_utc": "2026-09-17T02:21:33.099559+00:00",
+      "valid_attempt": 1
+    },
+    {
+      "blind_label": "J717",
+      "p_strict": 4.30113712374582,
+      "p_hi": 4.390000000000001,
+      "completed_at_utc": "2026-09-17T02:25:49.804719+00:00",
+      "valid_attempt": 1
+    }
+  ],
+  "invalid_attempts": [
+    {
+      "blind_label": "J987",
+      "attempt": 1,
+      "source": "original r3 scoring run",
+      "reason": "positive score without evidence for T1-A1-04",
+      "archive": "/Users/lora/Documents/benchmark-intent/pilot/deerflow_gemini_6cell_3task_v0_97/scoring_failures_r3/retry1/J987/attempt_001_original"
+    }
+  ],
+  "failed": null,
+  "completed_at_utc": "2026-09-17T02:25:49.805353+00:00"
+}

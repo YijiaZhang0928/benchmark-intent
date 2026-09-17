@@ -30,6 +30,10 @@ exploratory scoring 于 2026-09-16 18:45 UTC 启动，固定 `gpt-6-astra/high`�
 
 用户同日批准 scoring retry-1，并明确提出 9 月 18 日晚需拿到 abstract 结论、可恢复评分格式错误不要每次人工停下。新 amendment 在任何 retry output 前冻结：11 份有效分数 byte-for-byte carry forward；原 `J987` partial 归档；report/rubric/hash/blind label/judge/reasoning/validator 全不变；未完成 label 仅在命中预列 validation/schema marker 时最多允许三次总尝试，invalid response 不算 judgment，首个 validator-pass score 是唯一有效分数。timeout、provider/process、未知错误或第三次 invalid 仍 fail-closed。
 
+retry-1 于 2026-09-17 02:25 UTC 完成：`J987` 第二次总尝试通过，后六个 label 均首次通过；最终 18/18 score files 每份 67 unique criteria，report/rubric hashes 全匹配。六组 mean `P_strict/P_HI`：COLD Ask `4.127/4.193`、COLD NoAsk `4.004/4.123`、RAW50 Ask `4.541/4.580`、RAW50 NoAsk `5.092/5.070`、RAW100 Ask `4.903/4.933`、RAW100 NoAsk `4.423/4.437`。matched Ask−NoAsk 分别为 COLD `+0.123/+0.070`、RAW50 `−0.551/−0.490`、RAW100 `+0.480/+0.497`；全九对 mean ΔP_strict 约 `+0.017`，5/9 positive，排序跨任务不稳定。
+
+跨 setting：`COLD_ASK−RAW50_NOASK=-0.965`，不满足预设 abs≤0.5；`COLD_ASK−RAW100_NOASK=-0.295`，满足描述性接近但仅 T03 为正（逐题 `−0.912/−0.598/+0.623`）。这不能验证 H3 mechanism，因为 COLD Ask 没有发生任何 clarification；也不能从 0/18 confirmatory eligible 的单生成 pilot 得出一般效果。可写入 abstract 的稳健诊断是：clarification capability 不等于 calibrated elicitation；stock DeerFlow+Gemini 即使在 strict cold start 也 0/3 发问，三 context 合计 0/9，显示 harness 不知道何时需要询问 personalization preferences。
+
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：Gemini 六组设计与 matched No-Ask 修复
 
 用户将 Gemini pilot 扩为 `COLD/RAW50/RAW100 × ASK/NOASK` 六组，前三题共 18 份 planned reports。RAW50 继续复用 v0.96 固定 seed `20260915` 的 22/44、25/50、24/49 persona 原子事实，但六组新版把 RAW50/RAW100 的上下文标题统一为中性的 `Available user profile context:`，不再显示 `incomplete/complete`，避免标签本身提示是否应提问。RAW100 是 `full_hidden_persona_for_user_simulator` 中全部原子事实，不等于 preference oracle。

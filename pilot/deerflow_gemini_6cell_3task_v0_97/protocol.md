@@ -110,6 +110,8 @@ After 11 valid blind scores, the original scoring process stopped on `J987` beca
 
 Retry-1 preserves every generated report, rubric, opaque label, report/rubric hash, judge model (`gpt-6-astra`), reasoning level (`high`) and validator rule. The partial original `J987` directory is archived before retry. A validation-invalid response is not counted as a judgment; for each unfinished label, the runner permits at most three total attempts only when stderr matches a frozen validation/schema marker, archives each invalid attempt, and accepts the first and only validator-passing score. A timeout, provider/process failure, unknown error or third invalid response still stops the batch. The 11 previously valid scores are carried forward byte-for-byte and never regenerated.
 
+Retry-1 completed with 18/18 validator-passing scores. `J987` passed on its second total attempt; all other newly scored labels passed on their first attempts. Aggregate results and interpretation are recorded in `RESULTS_R3.md` and `results_r3.json`; they remain exploratory because no report passed the full confirmatory qualification gate and no Ask-capable cell actually asked.
+
 ## Current provider status
 
 The first unscored connectivity attempt used `gemini-2.5-pro` because it was the model in the checked-out DeerFlow example config. Google returned `404 NOT_FOUND` and stated that this model is no longer available to new users, recommending `gemini-3.1-pro-preview`.

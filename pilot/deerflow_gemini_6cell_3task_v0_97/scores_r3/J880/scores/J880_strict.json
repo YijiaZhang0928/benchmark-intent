@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J880",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "d74a306fbe812c6effd9caf9c9ec99cba9ac5f137c3c71540776ded9cebd6637",
+  "rubric_sha256": "7fc83a85f049705a704a5a128f48b42ca919c64ed5442c6c588e69a066092957",
+  "started_at_utc": "2026-09-17T01:59:14.778892+00:00",
+  "completed_at_utc": "2026-09-17T02:03:39.069568+00:00",
+  "p_strict": 3.1642809364548494,
+  "p_hi": 3.04,
+  "dimension_scores": {
+    "INTENT": 6.4,
+    "SOURCE": 1.6,
+    "EVIDENCE": 3.391304347826087,
+    "TRADEOFF": 1.0434782608695652,
+    "DECISION": 3.4782608695652173,
+    "ACTION": 4.0,
+    "TRACE": 3.5384615384615388
+  },
+  "high_dimension_scores": {
+    "INTENT": 6.4,
+    "SOURCE": 1.6,
+    "EVIDENCE": 3.4,
+    "TRADEOFF": 0.8,
+    "DECISION": 3.4,
+    "ACTION": 4.0,
+    "TRACE": 2.8000000000000003
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T2-P1-01",
+      "score": 8,
+      "evidence_span": "第一选择是日本（如早稻田大学或庆应义塾大学）。它在学术含金量、极致的性价比（低花费高品质）以及文化契合度上达到了完美的平衡，最适合预算有限但追求高知文化体验的你。",
+      "rationale": "Cultural fit and intellectually enriching cultural experience explicitly influence the first priority. Meaningful immersion is less clearly distinguished from enjoying the destination's cultural amenities."
+    },
+    {
+      "criterion_id": "T2-P1-02",
+      "score": 4,
+      "evidence_span": "庆应义塾大学访问（研究）学生官方招生说明",
+      "rationale": "An identifiable official source could establish academic participation opportunities, but the report does not select evidence specifically to investigate intellectual fit or meaningful cultural immersion. The generic cap applies."
+    },
+    {
+      "criterion_id": "T2-P1-03",
+      "score": 6,
+      "evidence_span": "日本顶尖私立大学（如早稻田大学的国际传播研究科GSICCS）和庆应义塾大学都提供完善的英语授课访学及客座研究项目",
+      "rationale": "The report attributes specific teaching and research participation opportunities to named institutions, providing a checkable basis for intellectual engagement. However, its cultural-immersion claims concern Japan generally rather than concrete features of these programs."
+    },
+    {
+      "criterion_id": "T2-P1-04",
+      "score": 10,
+      "evidence_span": "阿姆斯特丹大学（UvA）在传播学领域长期位居世界第一",
+      "rationale": "This is an explicit, verifiable prestige claim about a named institution, distinct from evidence of personal fit or immersion."
+    },
+    {
+      "criterion_id": "T2-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare fit and immersion against institutional prestige alone on a common decision axis. Balancing academic value, costs and culture does not establish that contrast."
+    },
+    {
+      "criterion_id": "T2-P1-06",
+      "score": 10,
+      "evidence_span": "第二选择是欧洲（如荷兰阿姆斯特丹大学或德国顶尖高校）。它能为你提供顶配的学术理论环境和跨文化视野，若选择德国高校还能大幅压缩学费开支，高度满足你的社会学探索欲和自然深度游偏好。",
+      "rationale": "The recommendation names Amsterdam and explicitly connects its selection to intellectual interests, cross-cultural experience and preferred forms of deeper exploration."
+    },
+    {
+      "criterion_id": "T2-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The United States is downgraded for financial pressure, not for favoring prestige over fit or immersion. No other named option is downgraded for the required reason."
+    },
+    {
+      "criterion_id": "T2-P1-08",
+      "score": 10,
+      "evidence_span": "瞄准上述目标院校中与你研究方向契合的教授，发送邮件请求作为 Visiting Student 加入其课题组以获取接收函。",
+      "rationale": "Emailing research-aligned professors to request participation in their groups is an executable action implementing intellectual fit and substantive academic immersion."
+    },
+    {
+      "criterion_id": "T2-P1-09",
+      "score": 4,
+      "evidence_span": "收到录取后，按规定办理学生签证，并提前在相关平台上预订带有当地文化特色、高性价比的民宿",
+      "rationale": "There is a sequence for booking culturally distinctive accommodation, but no usable threshold, allocation or checkpoint for substantive immersion or intellectual fit. Cultural styling alone only partially addresses the criterion."
+    },
+    {
+      "criterion_id": "T2-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The funding exception for American programs addresses affordability. It does not state a condition under which institutional prestige alone should take priority over fit and immersion."
+    },
+    {
+      "criterion_id": "T2-P1-11",
+      "score": 4,
+      "evidence_span": "第三选择是新加坡（如南洋理工大学）。作为学术理性和数据驱动的硬核平替，适合你在精进新媒体研究方法和Python数据应用时选择。",
+      "rationale": "The report links an intellectual preference to a recommendation, but does not complete the chain with a concrete, cited program fact establishing the claimed methodological fit. Its cited NTU details establish the visiting route and fees instead. The generic cap applies."
+    },
+    {
+      "criterion_id": "T2-P2-01",
+      "score": 8,
+      "evidence_span": "它能为你提供顶配的学术理论环境和跨文化视野，若选择德国高校还能大幅压缩学费开支，高度满足你的社会学探索欲",
+      "rationale": "The recommendation explicitly values sociological exploration and cross-cultural academic perspectives. These are decision priorities, although their interdisciplinary integration with media studies is not fully articulated."
+    },
+    {
+      "criterion_id": "T2-P2-02",
+      "score": 4,
+      "evidence_span": "[Visiting Research Student in Media and Communications - LSE](https://www.lse.ac.uk/study-at-lse/graduate/vrs-media-and-communications)",
+      "rationale": "An identifiable official media-and-communications program source is included. The report does not explain how this source or another evidence class will establish interdisciplinary social/media/cultural learning opportunities."
+    },
+    {
+      "criterion_id": "T2-P2-03",
+      "score": 4,
+      "evidence_span": "英国的伦敦政治经济学院（LSE）也设有专门的媒体与传播客座研究项目，不过该项目更偏向纯研究，不含授课学分",
+      "rationale": "This supplies a named option and a verifiable media-related academic route. It does not establish how that route integrates social, media, and cultural learning; the broader claims about sociological depth are regional generalizations."
+    },
+    {
+      "criterion_id": "T2-P2-04",
+      "score": 2,
+      "evidence_span": "新加坡的新媒体研究非常注重定量分析和数据驱动",
+      "rationale": "The report mentions a technical methodological emphasis, but only as a generalization about Singapore. It supplies no named option's verifiable narrowly technical coursework or curriculum restriction."
+    },
+    {
+      "criterion_id": "T2-P2-05",
+      "score": 4,
+      "evidence_span": "第三选择是新加坡（如南洋理工大学）。作为学术理性和数据驱动的硬核平替，适合你在精进新媒体研究方法和Python数据应用时选择。",
+      "rationale": "Calling Singapore a data-driven alternative suggests a contrast with the preceding social and cultural recommendations. However, the report does not directly compare interdisciplinary learning and narrowly technical coursework on a shared decision axis with an explicit consequential difference."
+    },
+    {
+      "criterion_id": "T2-P2-06",
+      "score": 8,
+      "evidence_span": "第二选择是欧洲（如荷兰阿姆斯特丹大学或德国顶尖高校）。它能为你提供顶配的学术理论环境和跨文化视野，若选择德国高校还能大幅压缩学费开支，高度满足你的社会学探索欲",
+      "rationale": "The report names Amsterdam within a recommended option and explicitly makes theoretical learning, cross-cultural perspectives, and sociological exploration reasons for choosing it. The interdisciplinary media connection remains less explicit."
+    },
+    {
+      "criterion_id": "T2-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is explicitly downgraded because it favors narrowly technical coursework. Singapore's technical emphasis is presented positively, while the United States is downgraded for financial reasons."
+    },
+    {
+      "criterion_id": "T2-P2-08",
+      "score": 4,
+      "evidence_span": "你需要准备一份详尽的英文研究计划（Research Proposal），建议在其中融入你擅长的Python舆情数据分析案例",
+      "rationale": "Preparing a proposal incorporating public-opinion data analysis is executable and media-related. However, the step emphasizes technical methods rather than explicitly implementing interdisciplinary social/media/cultural learning."
+    },
+    {
+      "criterion_id": "T2-P2-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The plan provides no course allocation, threshold, sequence rule, or checkpoint specifically governing interdisciplinary social/media/cultural learning."
+    },
+    {
+      "criterion_id": "T2-P2-10",
+      "score": 4,
+      "evidence_span": "适合你在精进新媒体研究方法和Python数据应用时选择",
+      "rationale": "This identifies a goal under which the technically oriented Singapore option would be suitable. It does not explicitly establish when narrowly technical coursework becomes better than interdisciplinary learning or reverses the ranking."
+    },
+    {
+      "criterion_id": "T2-P2-11",
+      "score": 4,
+      "evidence_span": "欧洲项目的优势在于批判性思维和深厚的社会学底蕴，非常适合你探究社会议题和舆情本质。",
+      "rationale": "The report links a claimed academic characteristic to social and public-opinion learning goals, which also inform its European recommendation. The chain remains incomplete because the characteristic is a broad regional assertion rather than concrete, cited evidence of an option's interdisciplinary learning provision."
+    },
+    {
+      "criterion_id": "T2-P3-01",
+      "score": 2,
+      "evidence_span": "自然深度游偏好",
+      "rationale": "The report recognizes depth of travel as a preference, but does not prioritize engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected to investigate sustained engagement with fewer places or communities. The listed sources concern academic program arrangements."
+    },
+    {
+      "criterion_id": "T2-P3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option is supported by a concrete fact demonstrating deeper engagement with fewer places or communities. Cultural amenities and general descriptions of immersion do not establish this."
+    },
+    {
+      "criterion_id": "T2-P3-04",
+      "score": 4,
+      "evidence_span": "便利的申根区自助游",
+      "rationale": "The report identifies Schengen-area travel convenience as a feature of the European route, providing limited contrast-side support. It does not establish a destination-maximizing itinerary or concrete multi-destination program structure."
+    },
+    {
+      "criterion_id": "T2-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare depth of engagement against destination count on a common decision axis."
+    },
+    {
+      "criterion_id": "T2-P3-06",
+      "score": 2,
+      "evidence_span": "第二选择是欧洲（如荷兰阿姆斯特丹大学或德国顶尖高校）。它能为你提供顶配的学术理论环境和跨文化视野，若选择德国高校还能大幅压缩学费开支，高度满足你的社会学探索欲和自然深度游偏好。",
+      "rationale": "The European recommendation partly invokes deep travel as a selection reason, but does not connect selection to sustained engagement with fewer places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded for favoring destination count. The report's negative assessments concern costs and academic fit."
+    },
+    {
+      "criterion_id": "T2-P3-08",
+      "score": 4,
+      "evidence_span": "瞄准上述目标院校中与你研究方向契合的教授，发送邮件请求作为 Visiting Student 加入其课题组以获取接收函。",
+      "rationale": "Emailing a professor to join a specific research group is executable and could support engagement with an academic community. However, the report frames it as securing admission, not as implementing deeper engagement with fewer communities."
+    },
+    {
+      "criterion_id": "T2-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint governs depth of local engagement or limits the number of places or communities."
+    },
+    {
+      "criterion_id": "T2-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which maximizing destination count becomes preferable."
+    },
+    {
+      "criterion_id": "T2-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "There is no explicit chain connecting the preference for deeper engagement with fewer places or communities to a supporting fact and then to a decision or action."
+    },
+    {
+      "criterion_id": "T2-P4-01",
+      "score": 4,
+      "evidence_span": "便利的申根区自助游，能极大满足你对深度游的渴望",
+      "rationale": "The report values self-guided travel and deep exploration, but does not explicitly establish flexibility in local experiences as a decision priority."
+    },
+    {
+      "criterion_id": "T2-P4-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected to investigate independent exploration or flexibility in local experiences. The cited sources concern academic program arrangements."
+    },
+    {
+      "criterion_id": "T2-P4-03",
+      "score": 4,
+      "evidence_span": "便利的申根区自助游",
+      "rationale": "This provides a relevant regional travel consideration, but not a concrete program-specific fact establishing support for independent exploration and flexible local experiences."
+    },
+    {
+      "criterion_id": "T2-P4-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is described as having packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not compare independent local exploration with packaged or group-managed activities."
+    },
+    {
+      "criterion_id": "T2-P4-06",
+      "score": 4,
+      "evidence_span": "第二选择是欧洲（如荷兰阿姆斯特丹大学或德国顶尖高校）。它能为你提供顶配的学术理论环境和跨文化视野，若选择德国高校还能大幅压缩学费开支，高度满足你的社会学探索欲和自然深度游偏好。",
+      "rationale": "Named European options are recommended partly for exploration and deep travel, but independent control and flexibility are not stated as the causal selection reason."
+    },
+    {
+      "criterion_id": "T2-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded for packaged or group-managed activities. The explicit downgrade of American options concerns financial costs."
+    },
+    {
+      "criterion_id": "T2-P4-08",
+      "score": 4,
+      "evidence_span": "提前在相关平台上预订带有当地文化特色、高性价比的民宿",
+      "rationale": "Booking culturally distinctive accommodation is an executable step toward local experience, but the step does not explicitly implement self-guided exploration or preserve flexibility."
+    },
+    {
+      "criterion_id": "T2-P4-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No threshold, allocation, sequence rule, or checkpoint governs independent exploration or flexible local experiences."
+    },
+    {
+      "criterion_id": "T2-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no condition under which packaged or group-managed activities would become preferable."
+    },
+    {
+      "criterion_id": "T2-P4-11",
+      "score": 2,
+      "evidence_span": "便利的申根区自助游，能极大满足你对深度游的渴望",
+      "rationale": "This links a regional travel consideration to an exploration preference, but does not visibly carry that specific fact into a decision or action. Connecting it to the later European recommendation requires inference."
+    },
+    {
+      "criterion_id": "T2-P5-01",
+      "score": 10,
+      "evidence_span": "提前在相关平台上预订带有当地文化特色、高性价比的民宿",
+      "rationale": "The report explicitly directs the accommodation choice toward both local cultural character and value for money."
+    },
+    {
+      "criterion_id": "T2-P5-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The identified sources concern academic programs, not evaluating affordable, locally distinctive accommodation or experiences. Unspecified booking platforms do not establish a preference-specific research route."
+    },
+    {
+      "criterion_id": "T2-P5-03",
+      "score": 4,
+      "evidence_span": "如果选择德国的高校（如慕尼黑大学），通常可免除学费，仅需极少的注册费。",
+      "rationale": "A named option has a concrete cost-related claim, but this does not establish locally distinctive accommodation or a specific affordable local experience. The preference-specific evidence is incomplete."
+    },
+    {
+      "criterion_id": "T2-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "High tuition and living costs are mentioned, but no named option has a concrete premium-convenience or luxury feature."
+    },
+    {
+      "criterion_id": "T2-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare locally distinctive, economical choices against premium convenience or luxury on a common decision axis."
+    },
+    {
+      "criterion_id": "T2-P5-06",
+      "score": 10,
+      "evidence_span": "第一选择是日本（如早稻田大学或庆应义塾大学）。它在学术含金量、极致的性价比（低花费高品质）以及文化契合度上达到了完美的平衡",
+      "rationale": "Japan and named universities are explicitly ranked first because of the combination of value for money and cultural fit. This satisfies the criterion for recommended choices, even though a particular lodging option is not named."
+    },
+    {
+      "criterion_id": "T2-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The United States is downgraded for financial burden, not because a named option favors premium convenience or luxury."
+    },
+    {
+      "criterion_id": "T2-P5-08",
+      "score": 10,
+      "evidence_span": "提前在相关平台上预订带有当地文化特色、高性价比的民宿",
+      "rationale": "Booking a locally distinctive, good-value homestay is an executable action with a concrete accommodation object and explicit preference requirements."
+    },
+    {
+      "criterion_id": "T2-P5-09",
+      "score": 4,
+      "evidence_span": "收到录取后，按规定办理学生签证，并提前在相关平台上预订带有当地文化特色、高性价比的民宿",
+      "rationale": "The report supplies a general post-admission sequence, but no preference-specific budget threshold, allocation, comparison order, or verification checkpoint. The instruction to book in advance remains only a partial operational rule."
+    },
+    {
+      "criterion_id": "T2-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition makes premium convenience or luxury preferable. Full funding is discussed as a condition for considering the United States, but that is not identified as a premium-convenience or luxury choice."
+    },
+    {
+      "criterion_id": "T2-P5-11",
+      "score": 4,
+      "evidence_span": "第二选择是欧洲（如荷兰阿姆斯特丹大学或德国顶尖高校）。它能为你提供顶配的学术理论环境和跨文化视野，若选择德国高校还能大幅压缩学费开支，高度满足你的社会学探索欲和自然深度游偏好。",
+      "rationale": "There is a partial chain from lower tuition and cultural interests to a regional recommendation. However, the report does not connect concrete evidence about an affordable, locally distinctive accommodation or experience to its selection or booking action."
+    },
+    {
+      "criterion_id": "T2-A1-01",
+      "score": 4,
+      "evidence_span": "日本的文化环境完美契合你的喜好：随处可见的高品质咖啡馆、二手书店以及适合徒步的自然风光",
+      "rationale": "The report mentions relevant amenities for Japan, but only as a broad national characterization. It supplies no concrete neighborhood-level fact tied to a named university option."
+    },
+    {
+      "criterion_id": "T2-A1-02",
+      "score": 4,
+      "evidence_span": "虽然文化上缺少了一些欧洲的慵懒和日本的文艺，但华人社会和英语环境能让你零障碍融入",
+      "rationale": "The Singapore discussion explicitly contrasts cultural atmosphere with ease of adaptation. However, it does not distinguish bookstore/cafe/park-rich neighborhoods from convenience-oriented campus surroundings."
+    },
+    {
+      "criterion_id": "T2-A1-03",
+      "score": 6,
+      "evidence_span": "第一选择是日本（如早稻田大学或庆应义塾大学）。它在学术含金量、极致的性价比（低花费高品质）以及文化契合度上达到了完美的平衡",
+      "rationale": "Cultural fit explicitly contributes to the first-place recommendation for named Japanese options. The earlier Japan discussion defines that fit through cafes, secondhand bookstores, and nature. The generic cap limits credit to 6 because the treatment remains broad rather than neighborhood-specific."
+    },
+    {
+      "criterion_id": "T2-A1-04",
+      "score": 6,
+      "evidence_span": "最适合预算有限但追求高知文化体验的你",
+      "rationale": "The leading recommendation is expressly justified by cultural experience, consistent with the stated preference. No shortlisted option is justified by rejecting that preference; Singapore's weaker cultural fit is disclosed as a trade-off. The generic cap applies."
+    },
+    {
+      "criterion_id": "T2-A2-01",
+      "score": 2,
+      "evidence_span": "欧洲浓厚的阅读氛围、环保可持续的社会理念以及便利的申根区自助游",
+      "rationale": "Mentions sustainability in connection with Europe, but supplies no concrete, verifiable fact about environmentally responsible travel or living at a named option."
+    },
+    {
+      "criterion_id": "T2-A2-02",
+      "score": 4,
+      "evidence_span": "欧洲浓厚的阅读氛围、环保可持续的社会理念",
+      "rationale": "Associates Europe specifically with sustainability, providing a partial option-level distinction. It does not distinguish actual environmentally responsible travel or living choices across options."
+    },
+    {
+      "criterion_id": "T2-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No ranking, inclusion, exclusion, or fit judgment is explicitly changed by environmentally responsible travel or living. Nature tourism and cultural preferences do not establish this link."
+    },
+    {
+      "criterion_id": "T2-A2-04",
+      "score": 6,
+      "evidence_span": "它在学术含金量、极致的性价比（低花费高品质）以及文化契合度上达到了完美的平衡",
+      "rationale": "The first-choice recommendation is justified by academic quality, affordability, and cultural fit, not by an environmentally opposing value. No shortlisted option is explicitly justified by environmentally irresponsible choices. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T2-A3-01",
+      "score": 4,
+      "evidence_span": "日本的文化环境完美契合你的喜好：随处可见的高品质咖啡馆、二手书店以及适合徒步的自然风光",
+      "rationale": "The report associates Japan with hiking opportunities, but gives no concrete outdoor location, access detail, or other specific verifiable fact tied to a named university option."
+    },
+    {
+      "criterion_id": "T2-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison explicitly distinguishes nature or outdoor experiences from predominantly indoor or urban consumption."
+    },
+    {
+      "criterion_id": "T2-A3-03",
+      "score": 6,
+      "evidence_span": "第二选择是欧洲（如荷兰阿姆斯特丹大学或德国顶尖高校）。它能为你提供顶配的学术理论环境和跨文化视野，若选择德国高校还能大幅压缩学费开支，高度满足你的社会学探索欲和自然深度游偏好。",
+      "rationale": "The shortlist explicitly uses nature-oriented travel as a secondary fit justification for its second-ranked option. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T2-A3-04",
+      "score": 6,
+      "evidence_span": "高度满足你的社会学探索欲和自然深度游偏好",
+      "rationale": "The final shortlist positively invokes nature-oriented travel, and no selected option is explicitly justified by preferring indoor or urban consumption over outdoor experiences. The generic cap limits the score to 6."
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J704",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "4245e32b6d0d48cab121865821a17d4076e7b76ff74286d9a8a00cf15318a73a",
+  "rubric_sha256": "6c540729b1a59e0d63b4fb86c80392b5d45fefce6bede6a3946db7893b5b2999",
+  "started_at_utc": "2026-09-17T02:03:40.225453+00:00",
+  "completed_at_utc": "2026-09-17T02:08:05.598850+00:00",
+  "p_strict": 4.230234113712375,
+  "p_hi": 4.280000000000001,
+  "dimension_scores": {
+    "INTENT": 6.4,
+    "SOURCE": 4.8,
+    "EVIDENCE": 4.434782608695652,
+    "TRADEOFF": 0.8695652173913043,
+    "DECISION": 2.9565217391304346,
+    "ACTION": 8.0,
+    "TRACE": 4.615384615384616
+  },
+  "high_dimension_scores": {
+    "INTENT": 6.4,
+    "SOURCE": 4.8,
+    "EVIDENCE": 4.4,
+    "TRADEOFF": 0.8,
+    "DECISION": 3.4,
+    "ACTION": 8.0,
+    "TRACE": 4.4
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 4,
+      "evidence_span": "Focus on technical details and practical NLP application cases",
+      "rationale": "Practical AI work is emphasized in application materials, but it is not explicitly stated as a priority for choosing research directions or programs."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected specifically to evaluate whether programs support applied or system-building AI research. GitHub reproduction is a preparation activity, not a program-evaluation method."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report supplies no concrete, verifiable fact showing how a named option supports applied or system-building research. The regional description of strength in applied AI is only a general characterization."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is characterized with a verifiable fact about purely abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare applied research with theory-only research on a common decision axis."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Recommendations are justified by NLP leadership, employment, funding, proximity, and entry requirements—not by support for applied or system-building research."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Europe is downgraded for degree requirements and financial concerns, not for favoring theory-only research. No other option is downgraded on that basis."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "Dedicate 1-2 hours of your evening PyCharm/VS Code time specifically to reproducing state-of-the-art NLP papers from GitHub.",
+      "rationale": "Reproducing NLP papers using code is a concrete, executable implementation-heavy research preparation step."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "Dedicate 1-2 hours of your evening PyCharm/VS Code time specifically to reproducing state-of-the-art NLP papers from GitHub.",
+      "rationale": "The plan explicitly allocates 1–2 hours of evening coding time to implementation-based NLP reproduction."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition or boundary is given under which theory-only research would become the better choice."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not connect an applied-research preference to supporting evidence and then to a consequent decision or action in a visible chain."
+    },
+    {
+      "criterion_id": "T1-P2-01",
+      "score": 4,
+      "evidence_span": "Dedicate 1-2 hours of your evening PyCharm/VS Code time specifically to reproducing state-of-the-art NLP papers from GitHub.",
+      "rationale": "Explicitly recommends hands-on replication, but does not state that self-directed, practical work is a decision priority for choosing directions or programs. Partial evidence is capped at 4."
+    },
+    {
+      "criterion_id": "T1-P2-02",
+      "score": 4,
+      "evidence_span": "reproducing state-of-the-art NLP papers from GitHub",
+      "rationale": "Identifies papers and GitHub as resources for replication, but not as evidence selected to evaluate whether programs support this preparation preference. Partial evidence is capped at 4."
+    },
+    {
+      "criterion_id": "T1-P2-03",
+      "score": 4,
+      "evidence_span": "You often have the freedom to rotate between labs before committing to a specific advisor.",
+      "rationale": "The North American route offers a concrete exploratory mechanism, but the report does not establish support for self-directed projects, replication, or coding through that mechanism. Partial evidence is capped at 4."
+    },
+    {
+      "criterion_id": "T1-P2-04",
+      "score": 10,
+      "evidence_span": "The first 1–2 years involve intensive coursework and qualifying exams before transitioning into full-time independent research.",
+      "rationale": "Provides a concrete contrast-side fact for the named North American route: its initial preparation is dominated by coursework and exams before independent research."
+    },
+    {
+      "criterion_id": "T1-P2-05",
+      "score": 4,
+      "evidence_span": "The strongest letters will come from professors you did research with, not just classes you got an 'A' in.",
+      "rationale": "Directly contrasts research experience and classroom performance on recommendation-letter strength. However, it does not specifically compare self-directed projects, replication, coding, or hands-on exploration with course-based preparation. Partial evidence is capped at 4."
+    },
+    {
+      "criterion_id": "T1-P2-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No recommended option is selected because it supports the specified practical, self-directed preparation preference. Recommendations instead rely on research prominence, employment, funding, proximity, and eligibility."
+    },
+    {
+      "criterion_id": "T1-P2-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option is downgraded for favoring classroom-based preparation. Europe is downgraded because of master's eligibility and assumed financial costs."
+    },
+    {
+      "criterion_id": "T1-P2-08",
+      "score": 10,
+      "evidence_span": "Dedicate 1-2 hours of your evening PyCharm/VS Code time specifically to reproducing state-of-the-art NLP papers from GitHub.",
+      "rationale": "Provides an executable hands-on action: use a coding environment and GitHub implementations to reproduce NLP research."
+    },
+    {
+      "criterion_id": "T1-P2-09",
+      "score": 10,
+      "evidence_span": "Dedicate 1-2 hours of your evening PyCharm/VS Code time specifically to reproducing state-of-the-art NLP papers from GitHub.",
+      "rationale": "Defines a usable time allocation of one to two evening hours specifically for coding-based paper replication."
+    },
+    {
+      "criterion_id": "T1-P2-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not state a condition under which mainly classroom- or course-based preparation would become preferable."
+    },
+    {
+      "criterion_id": "T1-P2-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The replication action is not linked to a cited preference-specific fact and a resulting decision. No complete preference-to-evidence-to-consequence chain is visible."
+    },
+    {
+      "criterion_id": "T1-P3-01",
+      "score": 10,
+      "evidence_span": "Given your meticulous nature, background in NLP/Deep Learning, and your parents' preference for financial stability and strong employment prospects, this guide evaluates the best artificial intelligence PhD routes abroad",
+      "rationale": "The report explicitly frames strong employment prospects as a priority guiding its evaluation of PhD routes."
+    },
+    {
+      "criterion_id": "T1-P3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected to investigate industry-research opportunities or employment outcomes. The identified sources concern program structures, funding, and application preparation."
+    },
+    {
+      "criterion_id": "T1-P3-03",
+      "score": 4,
+      "evidence_span": "High direct pipeline to Big Tech AI labs (OpenAI, Google DeepMind, Meta AI) and top-tier academic positions.",
+      "rationale": "The North American route is associated with named industry employers, but the report supplies no concrete placement, partnership, internship mechanism, or other verifiable support for the asserted pipeline."
+    },
+    {
+      "criterion_id": "T1-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program or route is shown through a concrete fact to favor an exclusively academic-faculty trajectory."
+    },
+    {
+      "criterion_id": "T1-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare preserving industry or employment options against optimizing exclusively for faculty careers."
+    },
+    {
+      "criterion_id": "T1-P3-06",
+      "score": 10,
+      "evidence_span": "**Top Tier Target (Direct PhD): United States & Canada.** Apply for fully-funded US/Canadian PhDs. The US is the undisputed leader in NLP, and graduation guarantees a highly stable, elite tech career.",
+      "rationale": "The report names US/Canadian PhDs as its top recommendation and explicitly gives an industry-employment outcome as a selection reason. The employment guarantee is unjustified, but the required recommendation and causal reason are observable."
+    },
+    {
+      "criterion_id": "T1-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Europe is downgraded because of master's prerequisites and presumed financial costs, not because it favors an academic-faculty-only trajectory."
+    },
+    {
+      "criterion_id": "T1-P3-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The plan contains research and application actions, but none explicitly implements industry-research or employability optionality. Treating general research preparation as such would require an unstated inference."
+    },
+    {
+      "criterion_id": "T1-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The numerical targets and regional application allocation are not explicitly tied to preserving industry-research or employment options."
+    },
+    {
+      "criterion_id": "T1-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No condition is stated under which an exclusively academic-faculty-oriented route would become preferable."
+    },
+    {
+      "criterion_id": "T1-P3-11",
+      "score": 4,
+      "evidence_span": "**Top Tier Target (Direct PhD): United States & Canada.** Apply for fully-funded US/Canadian PhDs. The US is the undisputed leader in NLP, and graduation guarantees a highly stable, elite tech career.",
+      "rationale": "An employment-based reason visibly leads to a recommendation, but the evidence link consists of unsupported generalizations and a career guarantee rather than a concrete, substantiated employment fact. The chain is therefore incomplete."
+    },
+    {
+      "criterion_id": "T1-P4-01",
+      "score": 10,
+      "evidence_span": "Apply for fully-funded US/Canadian PhDs.",
+      "rationale": "The strategic recommendation explicitly makes full funding a requirement of the targeted PhD route."
+    },
+    {
+      "criterion_id": "T1-P4-02",
+      "score": 10,
+      "evidence_span": "[AISG PhD Fellowship Programme](https://aisingapore.org/research/phd-fellowship-programme/) - Official details on Singapore's national AI PhD fellowship funding, stipends, and focus areas.",
+      "rationale": "An identifiable official source is explicitly selected for information about fellowship funding and stipends."
+    },
+    {
+      "criterion_id": "T1-P4-03",
+      "score": 10,
+      "evidence_span": "The **AISG PhD Fellowship** offers a competitive stipend of up to S$6,700/month, full tuition, and up to S$8,000 for conference travel",
+      "rationale": "The named fellowship has concrete, verifiable funding benefits, including a stipend amount and tuition coverage."
+    },
+    {
+      "criterion_id": "T1-P4-04",
+      "score": 4,
+      "evidence_span": "going to Europe would mean paying for a 1–2 year Master's first",
+      "rationale": "The report identifies a named regional route and an additional expense, but does not establish that this route is prestige-first. The incomplete contrast is capped at 4."
+    },
+    {
+      "criterion_id": "T1-P4-05",
+      "score": 4,
+      "evidence_span": "These offer massive stipends with zero financial risk to your parents, accept Bachelor's graduates directly, and keep you in time zones closer to your family in Suzhou.\n3.  **Bypass Europe (For Now):** Since most European PhDs require a Master’s degree, going to Europe would mean paying for a 1–2 year Master's first—which conflicts with your frugal, low-financial-risk profile.",
+      "rationale": "The recommendations contrast funded direct-entry routes with a route requiring additional paid study on financial-risk grounds. However, the contrasting route is not identified as prestige-first, so the specified comparison is incomplete."
+    },
+    {
+      "criterion_id": "T1-P4-06",
+      "score": 10,
+      "evidence_span": "Apply for the AISG Fellowship (Singapore) and HKPFS (Hong Kong). These offer massive stipends with zero financial risk to your parents",
+      "rationale": "Named fellowships are recommended explicitly because of their stipends and claimed financial protection."
+    },
+    {
+      "criterion_id": "T1-P4-07",
+      "score": 4,
+      "evidence_span": "**Bypass Europe (For Now):** Since most European PhDs require a Master’s degree, going to Europe would mean paying for a 1–2 year Master's first—which conflicts with your frugal, low-financial-risk profile.",
+      "rationale": "Europe is explicitly downgraded because of an asserted additional educational cost. The report does not connect this route to prestige-first selection, leaving the criterion only partly satisfied."
+    },
+    {
+      "criterion_id": "T1-P4-08",
+      "score": 10,
+      "evidence_span": "**HKPFS Initial Deadline (Dec 1):** Submit the initial application to the Hong Kong Research Grants Council",
+      "rationale": "The phased plan specifies an executable fellowship-application action with a concrete recipient."
+    },
+    {
+      "criterion_id": "T1-P4-09",
+      "score": 10,
+      "evidence_span": "**HKPFS Initial Deadline (Dec 1):** Submit the initial application to the Hong Kong Research Grants Council",
+      "rationale": "The plan provides a dated checkpoint for applying to a funding scheme, rather than merely advising the applicant to seek funding."
+    },
+    {
+      "criterion_id": "T1-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is given under which an expensive prestige-first option would become preferable."
+    },
+    {
+      "criterion_id": "T1-P4-11",
+      "score": 10,
+      "evidence_span": "**Bypass Europe (For Now):** Since most European PhDs require a Master’s degree, going to Europe would mean paying for a 1–2 year Master's first—which conflicts with your frugal, low-financial-risk profile.",
+      "rationale": "The passage explicitly links the cost-conscious preference to an asserted prerequisite and its financial consequence, then uses that chain to justify bypassing Europe."
+    },
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 4,
+      "evidence_span": "Weigh offers based on advisor fit, NLP lab resources, and stipend amount.",
+      "rationale": "Makes fit and financial considerations decision priorities, but does not explicitly prioritize evidence-based comparison encompassing outcomes and trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "[5 key differences between American- and European-style PhD programs](https://inomics.com/advice/5-key-differences-between-american-and-european-style-phd-programs-1528200) - Detailed breakdown of structural, funding, and cultural differences across global academic systems.",
+      "rationale": "Identifies a source specifically for comparing structural and financial differences relevant to program fit and trade-offs."
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 10,
+      "evidence_span": "The **AISG PhD Fellowship** offers a competitive stipend of up to S$6,700/month, full tuition, and up to S$8,000 for conference travel [citation:AISG PhD Fellowship Programme](https://aisingapore.org/research/phd-fellowship-programme/).",
+      "rationale": "Provides a named option with concrete, source-linked funding facts that support comparison of financial suitability and academic support."
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 2,
+      "evidence_span": "The US is the undisputed leader in NLP, and graduation guarantees a highly stable, elite tech career.",
+      "rationale": "Suggests reputation-based reasoning for the US route, but supplies neither a verifiable prestige-specific fact nor evidence that school name is the dominant decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Does not directly compare evidence-based selection with prestige-led selection on a common decision axis."
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 10,
+      "evidence_span": "Apply for the AISG Fellowship (Singapore) and HKPFS (Hong Kong). These offer massive stipends with zero financial risk to your parents, accept Bachelor's graduates directly, and keep you in time zones closer to your family in Suzhou.",
+      "rationale": "Explicitly recommends named funding routes because of financial support, entry eligibility, and geographic fit rather than school name. The absolute risk claim is overstated, but the preference-specific selection reasons are explicit."
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Europe is downgraded for degree prerequisites and assumed costs, not because it favors prestige as the dominant decision rule."
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "Curate a spreadsheet of 10–15 programs (e.g., 8 US/Canada, 3 Singapore, 3 Hong Kong). Look specifically for professors whose NLP research aligns with the papers you saved from your technical blog reading.",
+      "rationale": "Provides an executable program-selection action using identifiable research evidence to assess supervisor fit."
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 10,
+      "evidence_span": "**Decision (March-April):** Weigh offers based on advisor fit, NLP lab resources, and stipend amount.",
+      "rationale": "Defines a dated decision checkpoint with explicit comparison dimensions covering research fit, resources, and financial support."
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "States no condition under which prestige should become the dominant selection rule."
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 8,
+      "evidence_span": "**Bypass Europe (For Now):** Since most European PhDs require a Master’s degree, going to Europe would mean paying for a 1–2 year Master's first—which conflicts with your frugal, low-financial-risk profile.",
+      "rationale": "Explicitly links a financial-risk preference to an entry-requirement claim and then to a decision to bypass Europe. The chain is visible, but its assertion that a prerequisite master's necessarily entails paying is insufficiently supported."
+    },
+    {
+      "criterion_id": "T1-A1-01",
+      "score": 4,
+      "evidence_span": "This means less flexibility to change topics, but highly focused, uninterrupted research.",
+      "rationale": "The European option is described as supporting uninterrupted research, which partially addresses independent study. However, no concrete fact establishes a quiet study environment at a named institution or program."
+    },
+    {
+      "criterion_id": "T1-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report compares coursework and research structures but does not distinguish options by quiet independent study versus a highly social or cohort-heavy environment."
+    },
+    {
+      "criterion_id": "T1-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Recommendations use research strength, funding, degree eligibility, and family proximity. Quiet independent study does not affect any ranking, inclusion, exclusion, or fit judgment."
+    },
+    {
+      "criterion_id": "T1-A1-04",
+      "score": 4,
+      "evidence_span": "Weigh offers based on advisor fit, NLP lab resources, and stipend amount.",
+      "rationale": "The final decision guidance does not explicitly favor a social or cohort-heavy environment, so it does not directly contradict the preference. However, it provides no criterion-specific evidence that quiet independent study is protected or considered."
+    },
+    {
+      "criterion_id": "T1-A2-01",
+      "score": 6,
+      "evidence_span": "Very strong in regional hubs (DeepMind London, Mistral AI, HuggingFace, Aleph Alpha).",
+      "rationale": "Naming DeepMind London supplies a concrete technology-ecosystem fact for the European option. Museums and exhibitions are not covered. The generic cap limits the score to 6."
+    },
+    {
+      "criterion_id": "T1-A2-02",
+      "score": 4,
+      "evidence_span": "Excellent gateway to both Asian tech giants (ByteDance, Tencent, Alibaba) and Western tech companies with Asian HQs.",
+      "rationale": "The Asia option is characterized by region-specific technology access, partially establishing a location-dependent difference. However, the report does not explicitly contrast options on urban intellectual, cultural, or technology-ecosystem access as a location preference."
+    },
+    {
+      "criterion_id": "T1-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The recommendations and final selection factors do not use access to technology ecosystems, museums/exhibitions, or intellectually active cities as a tie-breaker or secondary fit factor. Research leadership, career outcomes, finances, degree eligibility, and family proximity drive the recommendations instead."
+    },
+    {
+      "criterion_id": "T1-A2-04",
+      "score": 6,
+      "evidence_span": "**Top Tier Target (Direct PhD): United States & Canada.** Apply for fully-funded US/Canadian PhDs. The US is the undisputed leader in NLP, and graduation guarantees a highly stable, elite tech career.",
+      "rationale": "The leading recommendation is justified by funding, research strength, and technology-career prospects, not by location being unimportant or by avoiding active cities. No selected option is explicitly justified by the opposing preference. This meets the noncontradiction check, subject to the generic cap of 6."
+    },
+    {
+      "criterion_id": "T1-A3-01",
+      "score": 4,
+      "evidence_span": "The first 1–2 years involve intensive coursework and qualifying exams before transitioning into full-time independent research.",
+      "rationale": "The North American option includes a concrete structural fact relevant to independent research. However, it does not establish flexibility in daily planning or compatibility with evening-focused work."
+    },
+    {
+      "criterion_id": "T1-A3-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison explicitly distinguishes flexible, evening-oriented work from externally managed schedules. The discussion of flexibility concerns lab and research-topic choice instead."
+    },
+    {
+      "criterion_id": "T1-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The shortlist is justified by research reputation, funding, proximity, and degree-entry requirements. Independent planning and evening-focused work do not change any ranking, inclusion, exclusion, or stated fit judgment."
+    },
+    {
+      "criterion_id": "T1-A3-04",
+      "score": 6,
+      "evidence_span": "Weigh offers based on advisor fit, NLP lab resources, and stipend amount.",
+      "rationale": "The final decision advice uses factors that do not contradict independent planning or evening-focused work. No selected option is explicitly justified by tightly scheduled, externally managed routines. The generic cap limits the score to 6."
+    }
+  ]
+}

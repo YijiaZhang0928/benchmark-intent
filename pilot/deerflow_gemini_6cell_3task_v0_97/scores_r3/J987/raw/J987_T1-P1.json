@@ -2,33 +2,33 @@
   "scores": [
     {
       "criterion_id": "T1-P1-01",
-      "score": 2,
-      "evidence_span": "engage in hands-on projects, open-source contributions, or reproduce existing ML papers",
-      "rationale": "Hands-on preparation is encouraged, but applied or system-building research is not stated as a priority for choosing a PhD direction or program."
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state applied or system-building research as a program-selection priority. Hands-on skill preparation does not establish that preference."
     },
     {
       "criterion_id": "T1-P1-02",
-      "score": 2,
-      "evidence_span": "Track faculty whose recent papers align with your interests.",
-      "rationale": "Faculty papers are an identifiable evidence class, but the report does not select or examine them specifically to assess implementation-heavy research."
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No source or evidence class is selected specifically to assess implementation-heavy or system-building research. Tracking papers aligned with unspecified interests is generic."
     },
     {
       "criterion_id": "T1-P1-03",
-      "score": 0,
-      "evidence_span": "ABSENT",
-      "rationale": "Regional claims about applied AI strengths and lists of universities do not provide a concrete, verifiable fact about how a named option supports implementation-heavy research."
+      "score": 2,
+      "evidence_span": "State-of-the-art labs with exceptional strengths in computer vision, robotics, and applied AI (fintech, smart cities).",
+      "rationale": "The Asia section asserts applied research strengths, but supplies no concrete program-level resource, project, or other verifiable supporting fact. This is a generic characterization rather than concrete evidence."
     },
     {
       "criterion_id": "T1-P1-04",
       "score": 0,
       "evidence_span": "ABSENT",
-      "rationale": "The reference to European theoretical foundations does not identify a theory-only option or provide a verifiable contrast-side fact."
+      "rationale": "The reference to Europe's theoretical foundations does not establish purely abstract, theory-only research for any named option or route."
     },
     {
       "criterion_id": "T1-P1-05",
       "score": 0,
       "evidence_span": "ABSENT",
-      "rationale": "The report compares regional structures, but never directly compares applied research with purely abstract theory-only research on a common decision axis."
+      "rationale": "There is no direct comparison of applied research and theory-only research on a common decision axis."
     },
     {
       "criterion_id": "T1-P1-06",
@@ -40,31 +40,31 @@
       "criterion_id": "T1-P1-07",
       "score": 0,
       "evidence_span": "ABSENT",
-      "rationale": "No otherwise viable option is downgraded for favoring theory-only research."
+      "rationale": "No otherwise viable option is downgraded for favoring purely abstract, theory-only research."
     },
     {
       "criterion_id": "T1-P1-08",
       "score": 10,
-      "evidence_span": "reproduce existing ML papers",
-      "rationale": "This is an executable implementation-oriented research preparation step with a concrete action and object."
+      "evidence_span": "Master frameworks (PyTorch, TensorFlow) and engage in hands-on projects, open-source contributions, or reproduce existing ML papers.",
+      "rationale": "The plan explicitly gives executable implementation-oriented preparation actions, including reproducing existing ML papers using named frameworks."
     },
     {
       "criterion_id": "T1-P1-09",
-      "score": 4,
+      "score": 10,
       "evidence_span": "### Phase 1: Research Preparation & Profiling (Months 1–6)\n* **Skill Building:** Deepen your AI fundamentals. Master frameworks (PyTorch, TensorFlow) and engage in hands-on projects, open-source contributions, or reproduce existing ML papers.",
-      "rationale": "Hands-on work is placed within a six-month preparation phase, but this is a generic phase allocation rather than a defined applied-research threshold, dedicated allocation, or completion checkpoint."
+      "rationale": "The plan explicitly allocates implementation-oriented activities to months 1–6, providing a usable time allocation rather than only recommending the direction."
     },
     {
       "criterion_id": "T1-P1-10",
       "score": 0,
       "evidence_span": "ABSENT",
-      "rationale": "The report gives no condition under which purely abstract theory-only research becomes the better choice."
+      "rationale": "No condition is stated under which purely abstract, theory-only research would become the better choice."
     },
     {
       "criterion_id": "T1-P1-11",
       "score": 0,
       "evidence_span": "ABSENT",
-      "rationale": "No visible chain connects an applied-research preference to supporting evidence and then to a selection decision or action."
+      "rationale": "The report does not visibly connect an applied-research preference to supporting evidence and then to a selection decision or action."
     }
   ]
 }

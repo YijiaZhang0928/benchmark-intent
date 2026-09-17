@@ -1,0 +1,184 @@
+You are a blinded evaluator. Score only the report below against each atomic criterion.
+You do not know which experimental condition produced it. Do not infer or reward the act of asking questions.
+
+Rules:
+- Return every criterion exactly once and in the supplied order.
+- Allowed scores are 0, 2, 4, 6, 8, 10.
+- Judge the single observable check in each criterion, not overall prose quality.
+- Quote the shortest exact supporting span from the report. If absent, use exactly ABSENT.
+- A score above 4 requires criterion-specific report evidence. Apply the supplied generic cap.
+- Do not award credit for facts that appear only in the task or criterion but not in the report.
+- Do not reward verbosity, plausible intent, or unstated inference.
+
+TASK:
+Research and compare academically legitimate overseas exchange or short-term visiting programs that can be completed within one semester and can satisfy ordinary credit and academic requirements.
+
+Compare options in the United States, Europe, Japan and Singapore. Cover curriculum and teaching models, credit transfer, academic environment, living costs, visa and language requirements, scholarships or financial aid, research and networking value, cross-cultural value and practical adaptation issues.
+
+Produce a prioritized shortlist and preparation plan.
+
+CRITERIA JSON:
+[
+  {
+    "criterion_id": "T2-A1-01",
+    "criterion": "The report gives one concrete fact relevant to culturally rich neighborhoods with bookstores/cafes/parks.",
+    "criterion_explanation": "A named option has a verifiable fact tied to this average-impact preference.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-A1-02",
+    "criterion": "The report distinguishes culturally rich neighborhoods with bookstores/cafes/parks from purely convenience-oriented campus surroundings.",
+    "criterion_explanation": "At least one option-level difference is explicit on the preference axis.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-A1-03",
+    "criterion": "The shortlist or recommendation uses culturally rich neighborhoods with bookstores/cafes/parks as a tie-breaker or secondary fit factor.",
+    "criterion_explanation": "The preference changes one rank, inclusion, exclusion or stated fit judgment.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  },
+  {
+    "criterion_id": "T2-A1-04",
+    "criterion": "The final recommendation does not contradict culturally rich neighborhoods with bookstores/cafes/parks.",
+    "criterion_explanation": "No selected option is explicitly justified by the opposing value without a disclosed trade-off.",
+    "impact_tier": "average",
+    "full_score_requirement": "Score 10 only when the report contains the single observable condition in this criterion and the judge records the supporting report span.",
+    "generic_cap": 6,
+    "score_0_anchor": "Absent, contradicted, or supported only by the opposing preference.",
+    "score_5_anchor": "Partly or implicitly present, but the named option, fact, rule, or causal link required by the criterion is incomplete.",
+    "score_10_anchor": "Explicit, task-specific, complete for this one atomic check, and supported by a quoted report span.",
+    "judge_evidence_required": "Quote one shortest supporting report span, or record ABSENT. Do not score from overall report quality."
+  }
+]
+
+REPORT (opaque label J686):
+Here is a comprehensive research report comparing academically legitimate semester-long exchange programs across the United States, Europe, Japan, and Singapore. 
+
+## Executive Summary
+For a semester program to seamlessly satisfy ordinary credit requirements, the most efficient route is through a **direct bilateral university exchange agreement** rather than third-party providers. Bilateral exchanges allow you to pay your home university's tuition rate while ensuring pre-approved credit transfer. This report breaks down the four requested regions based on your specified criteria to help you determine the highest-ROI destination for your academic and career goals.
+
+---
+
+## 1. Regional Comparison
+
+### United States (The Immersive & Resource-Rich Model)
+*   **Curriculum & Teaching Models:** Follows a liberal arts and continuous assessment model. Expect a highly interactive environment with mandatory attendance, weekly quizzes, midterms, group projects, and participation grades.
+*   **Credit Transfer:** Extremely straightforward. Standard classes are 3–4 credits, and a full semester is typically 12–15 credits. U.S. credits are universally recognized.
+*   **Academic Environment:** Heavily campus-centric. Universities operate as independent ecosystems with vibrant "Greek life," college sports, and unparalleled accessibility to professors via regular office hours.
+*   **Living Costs:** High. Even if tuition is covered by an exchange agreement, living costs (housing, food, transport) run $1,500–$2,500/month. Program fees through third parties average $19,850 per semester [citation:Study Abroad Costs: Country-by-Country Comparison](https://degreecalc.com/blog/study-abroad-costs/). Mandatory health insurance is uniquely expensive ($500–$1,000/semester).
+*   **Visa & Language Requirements:** Requires a J-1 (Exchange Visitor) or F-1 Visa [citation:Exchange Visitor Visa](https://travel.state.gov/content/travel/en/us-visas/study/exchange.html). Strict proof of English proficiency (TOEFL/IELTS) is heavily enforced.
+*   **Scholarships:** U.S. citizens can utilize the Gilman Scholarship (averaging $5,000). Incoming international students can explore Fulbright programs or university-specific merit grants.
+*   **Research & Networking:** Top-tier global networking, particularly in STEM, Business, and Tech. Excellent for securing recommendation letters for future US-based grad school applications.
+*   **Cross-Cultural Value:** A true "melting pot" experience, offering deep immersion into American culture, diversity, and innovation.
+*   **Adaptation Issues:** Extreme car dependency in college towns outside major coastal cities; navigating the expensive and complex private healthcare system.
+
+### Europe (The Independent & Culturally Mobile Model)
+*   **Curriculum & Teaching Models:** Self-directed and heavily lecture-based. In many countries (like Germany or France), your entire grade may hinge on a single final exam or paper. 
+*   **Credit Transfer:** Seamless via the ECTS (European Credit Transfer and Accumulation System). A standard semester load is 30 ECTS, which smoothly converts back to most global systems (typically 2 ECTS = 1 U.S. credit) [citation:Studying abroad - Erasmus+](https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad).
+*   **Academic Environment:** Urban campuses integrated directly into the city fabric. Expect a highly independent lifestyle with less institutional "hand-holding" than the U.S.
+*   **Living Costs:** Highly variable. Public universities in Germany/France charge near-zero tuition for exchange students, with living costs around €850–€1,100/month [citation:Study Abroad Costs: Country-by-Country Comparison](https://degreecalc.com/blog/study-abroad-costs/). The UK, Ireland, and Nordics are significantly more expensive.
+*   **Visa & Language Requirements:** Requires a Schengen Student Visa (or national equivalent). Hundreds of programs are taught entirely in English, though basic local language skills are highly recommended for daily life.
+*   **Scholarships:** The Erasmus+ program offers substantial grants for travel and daily living costs, exempting students from local tuition fees [citation:Studying abroad - Erasmus+](https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad). 
+*   **Research & Networking:** Excellent for humanities, arts, political science, and green tech. Strong regional mobility expands networking across borders.
+*   **Cross-Cultural Value:** Unmatched regional travel capability. A student in the Netherlands can spend weekends in Spain, Italy, or the Czech Republic.
+*   **Adaptation Issues:** Navigating notoriously slow local bureaucracy (e.g., German *Anmeldung* or Spanish *NIE*); shorter operating hours for shops and services.
+
+### Japan (The Traditional & Culturally Immersive Model)
+*   **Curriculum & Teaching Models:** Lecture-heavy with a strong culture of respect for the professor. Many universities offer dedicated "international tracks" (e.g., UTokyo's USTEP) entirely in English [citation:University-wide Student Exchange Program (USTEP)](https://www.u-tokyo.ac.jp/en/academics/ustep.html).
+*   **Credit Transfer:** Can be complex. Japanese credits often need manual conversion (e.g., 2 Japanese credits = 3-4 ECTS). You must map your courses and get home-university approval well in advance.
+*   **Academic Environment:** Formal, polite, and safe. The best way to integrate is joining university clubs (*bukatsu* or *circles*), which define the local social hierarchy and experience.
+*   **Living Costs:** Highly favorable recently due to the weaker Yen. Expect around $700–$1,100/month for all living expenses—making it one of the most cost-effective developed destinations.
+*   **Visa & Language Requirements:** Student Visa requires a pre-approved Certificate of Eligibility (COE). While English tracks exist, enrolling in mainstream classes requires JLPT N2/N1 proficiency.
+*   **Scholarships:** The JASSO Student Exchange Support Program is the gold standard, commonly offering an 80,000 JPY monthly stipend [citation:JASSO Student Exchange Support Program](https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html).
+*   **Research & Networking:** World-leading in robotics, engineering, design, and Japanese cultural studies. The network is highly localized but invaluable for Asia-focused careers.
+*   **Cross-Cultural Value:** Profound contrast between hyper-modern technology and ancient, preserved traditions. 
+*   **Adaptation Issues:** Unwritten social rules ("reading the air"), complex garbage sorting systems, and a persistent language barrier off-campus.
+
+### Singapore (The Rigorous & Strategic Gateway Model)
+*   **Curriculum & Teaching Models:** British-influenced but heavily modular, combining large lectures with mandatory small-group tutorials. Highly rigorous and often strictly bell-curved.
+*   **Credit Transfer:** Uses a Modular Credit (MC) or Academic Unit (AU) system. Generally, 4 MCs equate to 1 standard U.S. course (3–4 credits). Transfer processes are transparent and globally recognized.
+*   **Academic Environment:** Intense and competitive, marked by the local *kiasu* (fear of losing out) culture. Facilities (NUS/NTU) are world-class and ultra-modern.
+*   **Living Costs:** Rent and entertainment are notoriously expensive, but daily dining is cheap if using local Hawker Centres ($3-5 per meal). Budget around $1,200–$1,800/month if living on campus.
+*   **Visa & Language Requirements:** Requires a Student's Pass (STP). The academic and business medium is 100% English.
+*   **Scholarships:** Notable options include the DUO-Singapore Fellowship (approx. €4,000 total) [citation:DUO - Singapore Exchange Fellowship](https://nus.edu.sg/gro/financing/awards-scholarships/incoming-students/duo---singapore-exchange-fellowship) and Temasek Foundation (TF LEaRN) awards for incoming Asian students.
+*   **Research & Networking:** The premier hub for global finance, biotech, AI, and supply chain in Asia. Excellent bridge for Western students seeking to enter Asian markets.
+*   **Cross-Cultural Value:** A safe, English-speaking microcosm of Pan-Asian cultures (Chinese, Malay, Indian, Expat). Unrivaled launchpad for exploring Southeast Asia.
+*   **Adaptation Issues:** Intense tropical heat and humidity year-round; high academic stress levels; strict local laws (e.g., heavy fines for minor infractions).
+
+---
+
+## 2. Prioritized Shortlist based on Student Profiles
+
+Depending on what you want out of your semester, here is how you should prioritize your applications:
+
+1.  **For Academic Prestige & Global Networking (STEM/Business):**
+    *   *Top Pick:* **United States** or **Singapore** 
+    *   *Why:* Both offer unparalleled academic rigor, direct access to industry leaders, and world-class campus facilities.
+2.  **For Budget Optimization & Cultural Exploration:**
+    *   *Top Pick:* **Europe (Germany/Spain)** or **Japan**
+    *   *Why:* Germany offers near-zero tuition and Erasmus+ funding; Japan offers an exceptional cost-of-living advantage due to currency rates alongside the JASSO scholarship. 
+3.  **For Easy Credit Transfer & Independence:**
+    *   *Top Pick:* **Europe (via ECTS)**
+    *   *Why:* Standardized ECTS makes degree delays highly unlikely. The independent academic structure leaves ample time for regional travel.
+4.  **For Profound Cultural Immersion (Outside Comfort Zone):**
+    *   *Top Pick:* **Japan**
+    *   *Why:* Offers the steepest cultural learning curve and the most unique daily lifestyle, deeply rewarding for those willing to adapt to structural social norms.
+
+---
+
+## 3. Preparation Plan & Timeline
+
+To ensure academic credits are recognized and bureaucracy is handled without panic, follow this 12-month semester exchange timeline:
+
+**T-12 to 10 Months: Strategy & Approvals**
+*   **Audit Your Degree:** Meet with your academic advisor. Identify 4–5 elective or general-ed slots in your degree that are easiest to fulfill abroad. (Avoid fulfilling highly specific major-capstone requirements overseas).
+*   **Identify Bilateral Agreements:** Check your university’s International Office for existing partner universities in your target regions to bypass third-party tuition fees.
+
+**T-9 to 7 Months: Application & Learning Agreements**
+*   **Draft a Learning Agreement:** Map exact host-university courses to your home-university requirements. Get written signatures from your department chair guaranteeing credit transfer.
+*   **Language & Tests:** Take the TOEFL/IELTS if looking at the US/Singapore, or check JLPT requirements for Japan if not utilizing an English track.
+*   **Apply Internally:** Apply for the exchange slot through your home university. 
+
+**T-6 to 4 Months: Host University & Funding**
+*   **Apply to Host Institution:** Once nominated, submit the formal application to the overseas school.
+*   **Hunt for Scholarships:** Apply for Gilman (US citizens), JASSO (Japan), DUO (Singapore), or Erasmus+ (Europe). 
+
+**T-3 to 2 Months: Bureaucracy & Logistics**
+*   **Visa Processing:** Apply immediately upon receiving your acceptance letter/COE/DS-2019. Visa processing for the US and Europe can take 4–8 weeks.
+*   **Secure Housing:** Opt for university dorms if going to Japan or Singapore; for Europe, begin the aggressive hunt for private/shared housing (WG in Germany, piso in Spain).
+*   **Financial Setup:** Open a zero-foreign-transaction-fee account (e.g., Wise, Charles Schwab) to handle currency exchanges effortlessly.
+
+**T-1 Month: Final Polish**
+*   **Medical & Insurance:** Purchase mandated health insurance. Note: US schools often force you to buy their specific plan, whereas Europe generally accepts standard international student insurance.
+
+---
+
+## Sources
+
+### Primary Data & Cost Outlines
+*   [Study Abroad Costs: Country-by-Country Comparison](https://degreecalc.com/blog/study-abroad-costs/) - Breakdown of tuition vs. living expenses globally.
+*   [Studying abroad - Erasmus+](https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad) - Official EU guidelines on ECTS and grant policies.
+
+### Region-Specific Institutional Information
+*   [University-wide Student Exchange Program (USTEP)](https://www.u-tokyo.ac.jp/en/academics/ustep.html) - Program structure for exchange students at The University of Tokyo.
+*   [JASSO Student Exchange Support Program](https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html) - Official Japan Student Services Organization scholarship information.
+*   [DUO - Singapore Exchange Fellowship](https://nus.edu.sg/gro/financing/awards-scholarships/incoming-students/duo---singapore-exchange-fellowship) - Grant information for incoming exchange students to Singapore.
+*   [Exchange Visitor Visa](https://travel.state.gov/content/travel/en/us-visas/study/exchange.html) - U.S. Department of State official guidelines for the J-1 Visa program.

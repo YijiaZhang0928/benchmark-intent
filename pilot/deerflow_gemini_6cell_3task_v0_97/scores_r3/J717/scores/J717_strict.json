@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.84",
+  "score_name": "P_strict v0.82",
+  "blind_label": "J717",
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeat": 1,
+  "report_sha256": "e93da995c6e379ae6999ca8c6d855e811662c6efe0a469ec6fbfc0a01e96068a",
+  "rubric_sha256": "6c540729b1a59e0d63b4fb86c80392b5d45fefce6bede6a3946db7893b5b2999",
+  "started_at_utc": "2026-09-17T02:21:34.073071+00:00",
+  "completed_at_utc": "2026-09-17T02:25:49.616243+00:00",
+  "p_strict": 4.30113712374582,
+  "p_hi": 4.390000000000001,
+  "dimension_scores": {
+    "INTENT": 5.2,
+    "SOURCE": 5.6,
+    "EVIDENCE": 5.391304347826087,
+    "TRADEOFF": 1.7391304347826086,
+    "DECISION": 2.0869565217391304,
+    "ACTION": 8.0,
+    "TRACE": 3.8461538461538463
+  },
+  "high_dimension_scores": {
+    "INTENT": 5.2,
+    "SOURCE": 5.6,
+    "EVIDENCE": 5.6000000000000005,
+    "TRADEOFF": 1.7999999999999998,
+    "DECISION": 2.4,
+    "ACTION": 8.0,
+    "TRACE": 3.5999999999999996
+  },
+  "criterion_scores": [
+    {
+      "criterion_id": "T1-P1-01",
+      "score": 4,
+      "evidence_span": "跨界思考与硬核落地",
+      "rationale": "Implementation is praised as a personal strength, but applied or system-building AI research is not explicitly established as a program-selection priority."
+    },
+    {
+      "criterion_id": "T1-P1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report identifies general program sources and cognitive-AI literature, but does not select an evidence class to assess implementation-heavy or system-building research."
+    },
+    {
+      "criterion_id": "T1-P1-03",
+      "score": 4,
+      "evidence_span": "MIT**：EECS与脑与认知科学系（BCS）有深度合作，重点研究具身智能和强化学习的认知基础",
+      "rationale": "A named university is associated with potentially relevant research areas, but no concrete implementation, deployed system, experimental facility, or comparable fact establishes support for implementation-heavy research."
+    },
+    {
+      "criterion_id": "T1-P1-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named option or route is supported by a fact showing purely abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare implementation-heavy and theory-only research on a common decision axis."
+    },
+    {
+      "criterion_id": "T1-P1-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Named recommendations are justified through cognitive-science interests, funding, or regional considerations, not explicitly through support for implementation-heavy research."
+    },
+    {
+      "criterion_id": "T1-P1-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable named option is downgraded for favoring abstract, theory-only research."
+    },
+    {
+      "criterion_id": "T1-P1-08",
+      "score": 10,
+      "evidence_span": "在PyCharm/VS Code中复现论文代码，推进实验室项目",
+      "rationale": "Reproducing research-paper code is a concrete, executable implementation-focused research action."
+    },
+    {
+      "criterion_id": "T1-P1-09",
+      "score": 10,
+      "evidence_span": "**晚间攻坚（20:00-23:00）**：利用你高效的夜间状态，在PyCharm/VS Code中复现论文代码，推进实验室项目。",
+      "rationale": "The plan explicitly allocates a three-hour evening block to code reproduction and laboratory project work."
+    },
+    {
+      "criterion_id": "T1-P1-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is given under which purely abstract, theory-only research would become preferable."
+    },
+    {
+      "criterion_id": "T1-P1-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Although the plan includes coding, it does not visibly connect an applied-research preference to supporting evidence and then to a resulting selection or action."
+    },
+    {
+      "criterion_id": "T1-P2-01",
+      "score": 8,
+      "evidence_span": "将重点**从纯粹的上课/刷网课，完全转移到实验室科研产出和海外教授联络上**",
+      "rationale": "明确将实践性科研产出置于上课之上，构成准备路线的优先级；但未明确把自主项目和自主探索本身列为项目选择标准。"
+    },
+    {
+      "criterion_id": "T1-P2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "没有指定用来考察项目自主性、代码复现机会或动手探索支持程度的来源或证据类型。所列来源主要用于地区政策、资金及研究方向介绍。"
+    },
+    {
+      "criterion_id": "T1-P2-03",
+      "score": 8,
+      "evidence_span": "欧洲（英国/欧陆）—— “工作导向、学制短、需对口”\n*   **学制与课程**：英国通常3-4年，欧陆（德国、瑞士等）3-5年。**极少强制课程**，第一天起就直接进入课题研究。",
+      "rationale": "欧洲路线具有少量强制课程、入学即开展研究的具体结构性事实，支持研究实践；但没有进一步说明自主项目、代码复现或探索自主权。"
+    },
+    {
+      "criterion_id": "T1-P2-04",
+      "score": 10,
+      "evidence_span": "北美（美国/加拿大）—— “高风险、高回报、资源顶配”\n*   **学制与课程**：通常为5-6年。前两年以高强度授课（Coursework）和实验室轮转（Rotation）为主",
+      "rationale": "明确命名北美路线，并给出前两年以高强度课程及轮转为主的可核查结构事实，具体呈现了课程导向的一侧。"
+    },
+    {
+      "criterion_id": "T1-P2-05",
+      "score": 10,
+      "evidence_span": "将重点**从纯粹的上课/刷网课，完全转移到实验室科研产出和海外教授联络上**。AI PhD不看重你上了多少课，只看重你“能否创造新知识”。",
+      "rationale": "以博士申请所重视的研究贡献为共同轴，直接比较课程学习和科研产出，并据此提出改变准备重心的明确后果。"
+    },
+    {
+      "criterion_id": "T1-P2-06",
+      "score": 4,
+      "evidence_span": "将重点**从纯粹的上课/刷网课，完全转移到实验室科研产出和海外教授联络上**",
+      "rationale": "推荐了实践性科研路线，但未明确说明某个所推荐项目或具体机会因支持自主项目、复现或动手探索而被选中；因果选择理由不完整。"
+    },
+    {
+      "criterion_id": "T1-P2-07",
+      "score": 8,
+      "evidence_span": "将重点**从纯粹的上课/刷网课，完全转移到实验室科研产出和海外教授联络上**。AI PhD不看重你上了多少课，只看重你“能否创造新知识”。",
+      "rationale": "明确降低了纯上课或网课准备路线的优先级，并用科研产出相对课程数量的价值解释这一取舍；但未落实到一个具体课程项目或学校选项。"
+    },
+    {
+      "criterion_id": "T1-P2-08",
+      "score": 10,
+      "evidence_span": "在PyCharm/VS Code中复现论文代码，推进实验室项目。",
+      "rationale": "提供了可直接执行的代码复现及实验室项目推进动作，而非仅表达实践导向。"
+    },
+    {
+      "criterion_id": "T1-P2-09",
+      "score": 10,
+      "evidence_span": "**晚间攻坚（20:00-23:00）**：利用你高效的夜间状态，在PyCharm/VS Code中复现论文代码，推进实验室项目。",
+      "rationale": "将论文代码复现和科研项目安排在明确的三小时时段，形成可执行的时间分配规则。"
+    },
+    {
+      "criterion_id": "T1-P2-10",
+      "score": 4,
+      "evidence_span": "前两年以高强度授课（Coursework）和实验室轮转（Rotation）为主，非常适合本科直博生打下坚实基础。",
+      "rationale": "说明了课程较多的路线对本科直博生打基础的价值，但没有明确给出何种基础不足或其他条件会使课程准备优于实践科研。"
+    },
+    {
+      "criterion_id": "T1-P2-11",
+      "score": 4,
+      "evidence_span": "将重点**从纯粹的上课/刷网课，完全转移到实验室科研产出和海外教授联络上**。AI PhD不看重你上了多少课，只看重你“能否创造新知识”。",
+      "rationale": "可见实践偏好与准备行动之间的联系，但中间依据仅是笼统的招生价值断言，没有把具体选项的支持事实或引用证据连接到该决定。"
+    },
+    {
+      "criterion_id": "T1-P3-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not state preservation of industry-research or employability options as a decision priority. Its explicit priorities concern interdisciplinary research fit, funding, and affordability."
+    },
+    {
+      "criterion_id": "T1-P3-02",
+      "score": 8,
+      "evidence_span": "[AI/ML Graduate Programs Guide](https://abroad.nacnano.dev/country-comparison) - 全球AI与机器学习硕博项目政策、工签及市场分析",
+      "rationale": "The report identifies a source covering work permits and AI employment markets, directly relevant evidence for evaluating employability options. It does not explicitly frame source selection around preserving industry-research optionality."
+    },
+    {
+      "criterion_id": "T1-P3-03",
+      "score": 10,
+      "evidence_span": "**多伦多大学/麦吉尔大学 (加拿大)**：不仅拥有顶级AI机构（如Mila, Vector Institute），且毕业后提供最长3年的毕业工签（PGWP），政策比美国H1-B稳定得多",
+      "rationale": "Named university options are associated with a concrete, verifiable postgraduation work-permit provision that supports access to employment beyond academia."
+    },
+    {
+      "criterion_id": "T1-P3-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No named program or route is described with a concrete fact demonstrating optimization exclusively for an academic-faculty career. Research intensity and academic preparation alone do not establish that contrast."
+    },
+    {
+      "criterion_id": "T1-P3-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report does not directly compare industry/employability optionality with an exclusively academic-faculty trajectory on a common decision axis."
+    },
+    {
+      "criterion_id": "T1-P3-06",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Although several programs are recommended and some employment-related facts appear elsewhere, no recommendation explicitly gives preservation of industry-research or employability options as its selection reason."
+    },
+    {
+      "criterion_id": "T1-P3-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No otherwise viable option is downgraded because it favors an academic-faculty-only trajectory."
+    },
+    {
+      "criterion_id": "T1-P3-08",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The plan specifies academic research, university-based summer research, applications, and financial comparison, but no executable step specifically implements preservation of industry-research or employability options."
+    },
+    {
+      "criterion_id": "T1-P3-09",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report provides general preparation targets and timelines, but no threshold, allocation, sequencing rule, or checkpoint for preserving industry or employment optionality."
+    },
+    {
+      "criterion_id": "T1-P3-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No concrete condition is stated under which an exclusively academic-faculty trajectory would become preferable."
+    },
+    {
+      "criterion_id": "T1-P3-11",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Employment-related evidence is not explicitly connected to an optionality priority and then to a downstream selection or action. Establishing that chain would require inference."
+    },
+    {
+      "criterion_id": "T1-P4-01",
+      "score": 10,
+      "evidence_span": "符合你追求高性价比和减轻父母负担的需求",
+      "rationale": "明确将高性价比和减轻家庭经济负担列为申请决策需求。"
+    },
+    {
+      "criterion_id": "T1-P4-02",
+      "score": 10,
+      "evidence_span": "[AISG PhD Fellowship Programme](https://aisingapore.org/research/phd-fellowship-programme/) - 新加坡AI博士全额奖学金（每月6700新币）官方要求与申请细则",
+      "rationale": "列出可识别的奖学金官方来源，并明确其用于了解资助金额、要求及申请细则。"
+    },
+    {
+      "criterion_id": "T1-P4-03",
+      "score": 10,
+      "evidence_span": "AI Singapore (AISG) 博士奖学金提供高达每月**S$6,700**的津贴，全免学费，外加S$8,000的国际会议差旅费",
+      "rationale": "为具名奖学金提供具体、可核查的津贴、学费减免和差旅资助信息，而非仅作慷慨等定性描述。"
+    },
+    {
+      "criterion_id": "T1-P4-04",
+      "score": 4,
+      "evidence_span": "英国：全奖博士申请难度大，国际生常需自费或竞争极少的工业界赞助金（如DeepMind Fellowship）。",
+      "rationale": "明确指出英国路线可能需要自费，提供了费用侧的部分对照证据；但未将该路线与声望优先的选择联系起来，按不完整条件适用上限。"
+    },
+    {
+      "criterion_id": "T1-P4-05",
+      "score": 4,
+      "evidence_span": "欧陆（如德国马普所、瑞士ETH）：博士被视为**全职员工**（Employee），签订正式工作合同，薪水丰厚，社会地位高。但慕尼黑工大（TUM）等开始对非欧盟学生收取一定学费，需注意 [citation:AI/ML Graduate Programs Guide](https://abroad.nacnano.dev/country-comparison)。\n    *   英国：全奖博士申请难度大，国际生常需自费或竞争极少的工业界赞助金（如DeepMind Fellowship）。",
+      "rationale": "在共同的资金轴上对照了欧陆受薪路线与英国可能自费的路线，但没有直接比较高性价比选择与声望优先选择，条件仅部分满足。"
+    },
+    {
+      "criterion_id": "T1-P4-06",
+      "score": 4,
+      "evidence_span": "*主申（Match）*：NUS, NTU (重点冲击AISG Fellowship), 多伦多大学。",
+      "rationale": "具名推荐与奖学金目标相邻出现，但未明确说明因资助或性价比优势而将这些项目列为主申；因果选择理由仍属隐含。"
+    },
+    {
+      "criterion_id": "T1-P4-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "没有明确将某个原本可行的具名选项因费用高或声望优先而降低排名。对英国资助困难的说明本身不构成降级决定。"
+    },
+    {
+      "criterion_id": "T1-P4-08",
+      "score": 10,
+      "evidence_span": "拿到Offer后，仔细对比生活成本。",
+      "rationale": "给出可执行的财务行动：收到录取后比较生活成本，行动对象和实施时点均明确。"
+    },
+    {
+      "criterion_id": "T1-P4-09",
+      "score": 10,
+      "evidence_span": "拿到Offer后，仔细对比生活成本。",
+      "rationale": "明确设置收到录取后的成本比较检查点，满足时间顺序或检查点要求；不必另有数值门槛。"
+    },
+    {
+      "criterion_id": "T1-P4-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "未给出任何具体条件，说明何时昂贵、声望优先的路线应反而成为更好的选择。"
+    },
+    {
+      "criterion_id": "T1-P4-11",
+      "score": 4,
+      "evidence_span": "绝大多数顶尖AI PhD提供**全额奖学金**（Tuition Waiver + 每月$2,500-$4,500的TA/RA Stipend），完全覆盖生活费，符合你追求高性价比和减轻父母负担的需求。",
+      "rationale": "明确连接了资助事实与高性价比偏好，但该链条未进一步明确导向具体选校决定或行动。其他位置的推荐需要推断才能接入，因此仅部分满足。"
+    },
+    {
+      "criterion_id": "T1-P5-01",
+      "score": 4,
+      "evidence_span": "拿到Offer后，仔细对比生活成本。",
+      "rationale": "明确提出比较实际成本，但没有将基于证据的适配度、结果与权衡比较明确确立为总体决策优先原则。"
+    },
+    {
+      "criterion_id": "T1-P5-02",
+      "score": 10,
+      "evidence_span": "[AI/ML Graduate Programs Guide](https://abroad.nacnano.dev/country-comparison) - 全球AI与机器学习硕博项目政策、工签及市场分析",
+      "rationale": "列明可识别的来源及其证据范围，直接用于评估项目政策、毕业后工作机会和地区市场差异。"
+    },
+    {
+      "criterion_id": "T1-P5-03",
+      "score": 10,
+      "evidence_span": "**CMU (卡内基梅隆大学)**：提供罕见的神经计算与机器学习联合博士项目（Joint PhD in Neural Computation & Machine Learning），完美契合你的兴趣",
+      "rationale": "为具名大学提供可核查的联合博士项目名称，并直接说明该项目与研究兴趣的适配关系，不只是给出评价形容词。"
+    },
+    {
+      "criterion_id": "T1-P5-04",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "虽列出名校并使用冲刺等分组，但没有提供具名选项以学校声望为主导决策规则的具体事实。"
+    },
+    {
+      "criterion_id": "T1-P5-05",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "没有在共同决策维度上直接比较证据驱动选择与声望主导选择，也没有说明二者产生的后果差异。"
+    },
+    {
+      "criterion_id": "T1-P5-06",
+      "score": 8,
+      "evidence_span": "**CMU (卡内基梅隆大学)**：提供罕见的神经计算与机器学习联合博士项目（Joint PhD in Neural Computation & Machine Learning），完美契合你的兴趣",
+      "rationale": "明确以研究兴趣适配解释具名项目的吸引力，且该项目被纳入申请名单；但未完全明确将这一理由表述为优先推荐它的选择规则。"
+    },
+    {
+      "criterion_id": "T1-P5-07",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "没有具名选项因声望主导的选择逻辑而被降低优先级。"
+    },
+    {
+      "criterion_id": "T1-P5-08",
+      "score": 10,
+      "evidence_span": "拿到Offer后，仔细对比生活成本。",
+      "rationale": "提供可执行的行动：在获得录取后比较候选方案的生活成本，直接落实经济结果与权衡的比较。"
+    },
+    {
+      "criterion_id": "T1-P5-09",
+      "score": 10,
+      "evidence_span": "拿到Offer后，仔细对比生活成本。",
+      "rationale": "明确以获得录取为比较成本的时间检查点，构成可使用的顺序规则，而非仅泛泛建议重视成本。"
+    },
+    {
+      "criterion_id": "T1-P5-10",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "未给出任何使学校声望主导选择变得更优的条件或边界。"
+    },
+    {
+      "criterion_id": "T1-P5-11",
+      "score": 10,
+      "evidence_span": "**资金与学费**：绝大多数顶尖AI PhD提供**全额奖学金**（Tuition Waiver + 每月$2,500-$4,500的TA/RA Stipend），完全覆盖生活费，符合你追求高性价比和减轻父母负担的需求。",
+      "rationale": "同一段明确连接经济适配偏好、具体资助金额与机制，以及北美全奖方案符合该需求的评价结论，形成可直接追踪的偏好—证据—判断链。"
+    },
+    {
+      "criterion_id": "T1-A1-01",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "The report gives no named option a concrete fact about a quiet, independent study environment. Curriculum intensity and research focus are not explicitly connected to that environment."
+    },
+    {
+      "criterion_id": "T1-A1-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No option-level comparison distinguishes quiet independent study from a highly social or cohort-heavy environment."
+    },
+    {
+      "criterion_id": "T1-A1-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "Quiet independent study does not affect any shortlist inclusion, ranking, exclusion, or stated program-fit judgment. The reference to independent thinking concerns preparing supervisor emails, not selecting programs."
+    },
+    {
+      "criterion_id": "T1-A1-04",
+      "score": 4,
+      "evidence_span": "将重点**从纯粹的上课/刷网课，完全转移到实验室科研产出和海外教授联络上**",
+      "rationale": "The final recommendation does not explicitly justify a selected option through a highly social or cohort-heavy environment. However, it is neutral about quiet independent study rather than affirmatively protecting that preference, so support is only implicit."
+    },
+    {
+      "criterion_id": "T1-A2-01",
+      "score": 6,
+      "evidence_span": "**多伦多大学/麦吉尔大学 (加拿大)**：不仅拥有顶级AI机构（如Mila, Vector Institute）",
+      "rationale": "将具名大学与具名AI研究机构联系起来，提供了与科技生态资源相关的具体事实。未涉及博物馆或展览资源；按所给通用上限计6分。"
+    },
+    {
+      "criterion_id": "T1-A2-02",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "虽然介绍了部分地区的AI资源，但没有明确比较不同选项在城市科技、文化或智识活动可及性上的差异，也没有将这种区位偏好与地点不重要的取向区分开。"
+    },
+    {
+      "criterion_id": "T1-A2-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "选校分档及最终建议没有使用城市科技生态、博物馆展览或智识活动资源作为次要匹配因素或取舍依据。"
+    },
+    {
+      "criterion_id": "T1-A2-04",
+      "score": 4,
+      "evidence_span": "*主申（Match）*：NUS, NTU (重点冲击AISG Fellowship), 多伦多大学。",
+      "rationale": "推荐名单没有以远离科技或文化资源、或者地点不重要为理由选择项目，因此未出现明确冲突。但这种相容性仅为隐含，最终建议没有直接确认该偏好，故不超过4分。"
+    },
+    {
+      "criterion_id": "T1-A3-01",
+      "score": 6,
+      "evidence_span": "英国通常3-4年，欧陆（德国、瑞士等）3-5年。**极少强制课程**，第一天起就直接进入课题研究。",
+      "rationale": "The report gives a concrete curricular claim about identified European options: few compulsory courses and immediate research involvement. This is relevant to independent scheduling, but it does not establish evening-work flexibility or program-specific scheduling rules. The generic cap applies."
+    },
+    {
+      "criterion_id": "T1-A3-02",
+      "score": 4,
+      "evidence_span": "**极少强制课程**，第一天起就直接进入课题研究。",
+      "rationale": "This implicitly contrasts with the report’s description of intensive coursework and rotations in North America. However, the comparison is not explicitly framed as independent, evening-focused work versus externally managed schedules, so the preference-axis distinction remains incomplete."
+    },
+    {
+      "criterion_id": "T1-A3-03",
+      "score": 0,
+      "evidence_span": "ABSENT",
+      "rationale": "No shortlist inclusion, ranking, exclusion, or program-fit judgment uses independent planning or evening-focused deep work as a deciding factor. The personalized evening preparation schedule does not affect program recommendations."
+    },
+    {
+      "criterion_id": "T1-A3-04",
+      "score": 6,
+      "evidence_span": "将重点**从纯粹的上课/刷网课，完全转移到实验室科研产出和海外教授联络上**",
+      "rationale": "The final recommendation emphasizes research output and faculty contact, without justifying any selected option through tightly scheduled or externally managed study. It does not contradict the preference, but provides no explicit scheduling-fit assurance; the generic cap applies."
+    }
+  ]
+}
