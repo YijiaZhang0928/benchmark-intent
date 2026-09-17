@@ -15,6 +15,7 @@
 - 用户明确批准 r3：18 个 cell 一律把 recursion limit 提到 200，其余设计、顺序、隔离、timeout 与 zero-retry 不变；r3 使用全新 thread/output namespace。
 - r3 18/18 报告全部完成，但 9/9 Ask cells 均未提问；结构门仅 1/18 通过且人工 primary-source review 失败，因而 confirmatory eligible 为 0。冻结 opaque-label 单次 exploratory `P_strict/P_HI` scoring，用于诊断而不把这批包装成 DR-qualified 证据。
 - r3 exploratory 盲评在 11/18 个有效分数后按首错即停规则中止：`J987` 的 judge 对 `T1-A1-04` 给出正分但没有 evidence，严格校验拒绝该响应。已保留 11 份完整评分与失败目录，未自动重试，也不从不完整集合报告六组 aggregate；继续需用户显式批准同 label/same judge 的失败项重试。
+- 用户于 2026-09-16 批准 r3 scoring retry-1，并要求在 9 月 18 日 abstract 截止前不要因可恢复的 judge 格式错误反复人工停批。补充协议冻结：11 份有效分数不重算；失败 partial 先归档；未完成 label 只对识别出的 validation/schema failure 允许最多三次总尝试，首个 validator-pass 分数即为唯一有效 judgment；timeout/provider/未知失败仍停批。
 
 ## v0.96 DeerFlow 2.0 RAW50 Ask/No-Ask pilot - 2026-09-15
 

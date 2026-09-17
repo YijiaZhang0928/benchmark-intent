@@ -25,3 +25,5 @@ The frozen Deep Research structural gate passed 1/18 reports. Manual review foun
 - Automatic action: stopped immediately, preserved all completed scores and the partial failed directory, performed no retry
 
 No six-cell aggregate or hypothesis decision is reported from this incomplete score set. Continuing requires an explicit amendment authorizing a retry of `J987`; the retry must keep the same report, rubric, blind label, judge model, reasoning level and validation rules, then resume only the remaining unscored labels.
+
+The user approved scoring retry-1 on 2026-09-16. Before any retry output, the amendment freezes preservation of all 11 valid scores, archival of invalid partial outputs, and at most three total attempts per unfinished label only for recognized validation/schema failures. Non-validation failures remain fail-closed.

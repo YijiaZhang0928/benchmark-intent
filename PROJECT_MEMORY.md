@@ -28,6 +28,8 @@ r3 generation 18/18 完成、0 failure，但 9/9 Ask-capable cells 都没有发�
 
 exploratory scoring 于 2026-09-16 18:45 UTC 启动，固定 `gpt-6-astra/high`、每报告一次 judgment、首错即停。前 11 个 blind labels 均产出完整 67-leaf score；第 12 个 `J987`（冻结映射为 T01/COLD/ASK）在 criterion `T1-A1-04` 上返回 positive score without evidence，被 evaluator fail-closed 拒绝，并于 20:35 UTC 停止。没有自动重试，失败 label 的 partial prompts/raw outputs 与 11 份完成结果均保留。由于只完成 11/18，不计算或发布六组 aggregate/H3 判定；继续必须由用户明确批准只重试 `J987`，保持相同 report/rubric/label/judge/reasoning/validator，再继续未评分 labels。
 
+用户同日批准 scoring retry-1，并明确提出 9 月 18 日晚需拿到 abstract 结论、可恢复评分格式错误不要每次人工停下。新 amendment 在任何 retry output 前冻结：11 份有效分数 byte-for-byte carry forward；原 `J987` partial 归档；report/rubric/hash/blind label/judge/reasoning/validator 全不变；未完成 label 仅在命中预列 validation/schema marker 时最多允许三次总尝试，invalid response 不算 judgment，首个 validator-pass score 是唯一有效分数。timeout、provider/process、未知错误或第三次 invalid 仍 fail-closed。
+
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：Gemini 六组设计与 matched No-Ask 修复
 
 用户将 Gemini pilot 扩为 `COLD/RAW50/RAW100 × ASK/NOASK` 六组，前三题共 18 份 planned reports。RAW50 继续复用 v0.96 固定 seed `20260915` 的 22/44、25/50、24/49 persona 原子事实，但六组新版把 RAW50/RAW100 的上下文标题统一为中性的 `Available user profile context:`，不再显示 `incomplete/complete`，避免标签本身提示是否应提问。RAW100 是 `full_hidden_persona_for_user_simulator` 中全部原子事实，不等于 preference oracle。

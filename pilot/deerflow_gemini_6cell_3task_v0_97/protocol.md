@@ -104,6 +104,12 @@ The user explicitly approved r3 after reviewing the r2 recursion-budget failure.
 
 R3 completed all 18 reports. Before judgment, the frozen structural audit found 1/18 structural passes; manual primary-source review failed that sole candidate, leaving 0 confirmatory-score-eligible reports. To diagnose report personalization without concealing this failure, all 18 reports are nevertheless scored once as explicitly exploratory using opaque labels, `gpt-6-astra/high`, and the frozen 67-leaf `P_strict/P_HI` rubric. The blind scoring manifest and report hashes are frozen before the first judgment.
 
+## Explicitly authorized r3 scoring retry-1 amendment (2026-09-16)
+
+After 11 valid blind scores, the original scoring process stopped on `J987` because the judge assigned a positive score to `T1-A1-04` without evidence and the strict validator rejected the response. The user explicitly approved resuming and requested that recoverable scoring-format failures not repeatedly halt progress before the September 18 abstract deadline.
+
+Retry-1 preserves every generated report, rubric, opaque label, report/rubric hash, judge model (`gpt-6-astra`), reasoning level (`high`) and validator rule. The partial original `J987` directory is archived before retry. A validation-invalid response is not counted as a judgment; for each unfinished label, the runner permits at most three total attempts only when stderr matches a frozen validation/schema marker, archives each invalid attempt, and accepts the first and only validator-passing score. A timeout, provider/process failure, unknown error or third invalid response still stops the batch. The 11 previously valid scores are carried forward byte-for-byte and never regenerated.
+
 ## Current provider status
 
 The first unscored connectivity attempt used `gemini-2.5-pro` because it was the model in the checked-out DeerFlow example config. Google returned `404 NOT_FOUND` and stated that this model is no longer available to new users, recommending `gemini-3.1-pro-preview`.
