@@ -1,5 +1,14 @@
 # benchmark-intent 设计迭代记录
 
+## v0.102 main-matrix completion priority and Claude 15-task ODR extension - 2026-09-18
+
+- Corrected the live execution scope: Gemini stock DeerFlow is already complete at 90/90; the active primary work is only the missing OpenAI and Claude stock cells, while Gemini IEO/ODR remains a three-task secondary check.
+- Updated the completion heartbeat so it will not expand the paused IEO or matched-ODR matrices.
+- Verified OpenAI credit restoration with a minimal official `gpt-5.6-sol` Responses call, then launched the 23 untouched r5 repair cells in three disjoint ranges.
+- Preserved the pre-restoration r5 quota failure and added a fresh single-cell r6 repair namespace instead of overwriting it.
+- Added `pilot/claude_odr_6cell_15task_v0_102/`, a frozen 72-cell T04–T15 extension that reuses the exact Claude Sonnet 5 stock-ODR implementation from v0.100.
+- Frozen the 72-cell input/rubric/output manifest before generation and launched three disjoint shards with per-cell process, graph, thread, and directory isolation.
+
 ## v0.101 stock/IEO attribution repair and extension - 2026-09-18
 
 - Corrected the current IEO-v04 interpretation: the 17/18 positive comparison is cross-system because downstream harness/search paths are not fully matched; router-only attribution is deferred to a matched ODR rerun.

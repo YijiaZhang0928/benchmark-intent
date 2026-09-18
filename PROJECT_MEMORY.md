@@ -3,10 +3,18 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-18
-当前版本：v0.101（stock/IEO归因修正、matched ODR pilot与15题扩展）
+当前版本：v0.102（主矩阵完成优先级修正与Claude stock ODR 15题扩展）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-18：优先补齐OpenAI/Claude主矩阵
+
+用户纠正执行优先级：Gemini的原始stock DeerFlow `15 tasks × 6 settings`已经90/90完成并评分，不得把新的Gemini ODR/IEO前三题检查称为Gemini主矩阵尚未完成。当前主线只补齐OpenAI与Claude各自的90格stock矩阵；Gemini接IEO/Open Deep Research只保留前三题作为次级harness检查。15题IEO扩展和额外matched-ODR cells暂停，避免消耗Claude/OpenAI预算并混淆进度。
+
+OpenAI在新一轮极小官方Responses调用中已不再返回`credit_balance_exhausted`，`gpt-5.6-sol`正常完成，说明自动续费已形成可用额度。原66/90 clean基础上，24个缺失格已按冻结r5 manifest续跑：23个未触碰输出分成三个互斥区间；此前在余额恢复前失败的r5 order 1保留原目录，并以单格r6新thread/新目录修复。每格继续使用stock DeerFlow、相同context/policy、recursion budget、simulator与memory hard-off。
+
+Claude主矩阵此前并非15题：`pilot/claude_odr_6cell_3task_v0_100/`只覆盖T01–T03。新增`pilot/claude_odr_6cell_15task_v0_102/`补T04–T15共72格，薄wrapper复用v0.100原始cell实现，仅扩展允许的task ID；manifest在输出前冻结原实现与wrapper hashes、72个input/rubric hashes及输出路径。三个互斥shard已启动；每格为新OS process、新graph state、新thread ID、新output directory、跨格无memory。T01–T03的credit repair继续独立运行，失败格不覆盖，后续只能以新repair label补齐。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-18：stock/IEO归因修正与15题扩展
 

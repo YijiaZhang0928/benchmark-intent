@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.102-openai-credit-restored-repair-1",
+  "created_before_retry_output": true,
+  "source_manifest": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/execution_manifest_openai_r5_final_repair.json",
+  "reason": "r5 order 1 was attempted before API credits became usable; all other r5 cells were untouched",
+  "automatic_retry": false,
+  "acceptance_rule": "Exactly one visible final report, at least 1000 characters, no quota/billing marker, no sandbox attachment link",
+  "cells": [
+    {
+      "cell_id": "OPENAI_T04_RAW50_NOASK_R6_CREDIT_RESTORED",
+      "provider": "openai",
+      "model_profile": "gpt-5.6-sol-api",
+      "model_id": "gpt-5.6-sol",
+      "task_id": "T04",
+      "task_index": 3,
+      "context": "raw50",
+      "policy": "noask",
+      "thread_id": "v099-g56s-t04-raw50-noask-r6credit",
+      "input_path": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/inputs/T04_raw50.txt",
+      "input_sha256": "b0515e3598ac4539b81c2447f5d84786306d70b0939fb12edda28abd0f2500a2",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/runs/openai_credit_restored/T04/raw50/noask/r6",
+      "reused_counted_first3": false,
+      "extension_execution_order": 36,
+      "source_cell_id": "OPENAI_T04_RAW50_NOASK_R5_FINAL_REPAIR",
+      "repair_order": 1
+    }
+  ]
+}
