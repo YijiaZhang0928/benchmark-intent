@@ -2,11 +2,21 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-15
-当前版本：v0.97-draft（DeerFlow 2.0 × Gemini 六组 Ask/No-Ask pilot）
+最后更新：2026-09-18
+当前版本：v0.101（stock/IEO归因修正、matched ODR pilot与15题扩展）
 当前分支：`main`
 
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
+
+## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-18：stock/IEO归因修正与15题扩展
+
+用户希望把三家模型的六个stock settings与IEO扩展到15题，并用Open Deep Research对前三题做同条件复现。复核实现后修正了一个重要归因边界：现有IEO-v04最终报告使用Open Deep Research graph；OpenAI/Gemini的stock报告来自DeerFlow 2.0，Claude虽为stock ODR但搜索transport也不同。因此“IEO 17/18高于stock Ask、mean +0.820 P”只能称跨系统工程信号，不能把全部增益归因给clarification router。总状态、详细解读和IEO结果页已同步降级表述。
+
+术语现冻结为：`stock DeerFlow`指DeerFlow原仓库默认澄清策略；`stock ODR`指Open Deep Research原生clarification node；`IEO`是研究前的clarification router/controller，先决定ASK_USER/INFER/RESEARCH/BRANCH/DEFAULT，再把冻结问答交给ODR下游graph，并非单一prompt挂件。IEO原则上可移植到ODR，但效果必须在同ODR graph、同搜索、同research budget、同simulator和同judge下验证。
+
+新增两个预运行包：`pilot/ieo_v04_architect_3family_15task_v0_101/`冻结三家×15题×COLD/RAW50/RAW100的45个IEO Ask cells/家族；`pilot/odr_stock_matched_3family_3task_v0_101/`冻结三家×前三题×三context×stock Ask/NoAsk的18个新ODR cells/家族，并与同配置IEO形成三臂匹配。IEO NoAsk不另造重复arm；在router禁用时使用同ODR下游的stock NoAsk作为基线。
+
+实时provider检查：OpenAI仍返回`credit_balance_exhausted`，自动续费尚未形成可用API余额；Claude调用已越过即时余额门并进入完整研究；Gemini完成一个matched ODR cell后触发250 requests/day上限，API给出约3.5小时重置时间。失败cell保留且不计零，重置后必须用新repair label与新输出目录续跑。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-15：v0.97 counted batch 的 memory/window 硬隔离
 

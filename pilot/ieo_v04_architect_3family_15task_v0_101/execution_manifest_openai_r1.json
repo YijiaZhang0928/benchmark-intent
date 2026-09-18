@@ -1,0 +1,374 @@
+{
+  "schema_version": "0.101-ieo-v04-15task-provider-batch-1",
+  "created_before_counted_outputs": true,
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "seed": 20260918,
+  "frozen_tag": "v04_architect",
+  "frozen_commit": "2feeb48480474b12880cf4516b348085262facf3",
+  "router_arm": "v4r",
+  "automatic_experiment_retries": 0,
+  "runner_sha256": "2785ccb92538731a5ff585d6c96a567bed0b7ed37902b126bd2a2a0b80702c1c",
+  "cells": [
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T15_COLD_R1",
+      "task_id": "T15",
+      "context": "cold",
+      "input_sha256": "edae8e9d820e2c818e96a060376ca38dae9c4f4968e84c9d1b9b4bfa1b3394b7",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T15/cold/r1",
+      "execution_order": 1
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T10_RAW100_R1",
+      "task_id": "T10",
+      "context": "raw100",
+      "input_sha256": "0b9f885a03674883db8873970277b1b4d6b64f10bd064b34730ad9fc5744a502",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T10/raw100/r1",
+      "execution_order": 2
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T06_RAW50_R1",
+      "task_id": "T06",
+      "context": "raw50",
+      "input_sha256": "c03e9356f8a0faa2434e28f8909214a2d4118d6d7314f04e023a7d26b7828179",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T06/raw50/r1",
+      "execution_order": 3
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T08_COLD_R1",
+      "task_id": "T08",
+      "context": "cold",
+      "input_sha256": "c2cc3e09d177f5242ad1d6abda2cbefcaae81a4dac4feedc2b25605c60810103",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T08/cold/r1",
+      "execution_order": 4
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T01_COLD_R1",
+      "task_id": "T01",
+      "context": "cold",
+      "input_sha256": "c12e9bf7136079e865e80635754caa74ae7deacb399070f52bbd4969ccad1eeb",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T01/cold/r1",
+      "execution_order": 5
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T05_RAW100_R1",
+      "task_id": "T05",
+      "context": "raw100",
+      "input_sha256": "a827ba2b854ab65aaac362734b073261c70c0a7de2c45fc7471a42063d587dc5",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T05/raw100/r1",
+      "execution_order": 6
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T14_COLD_R1",
+      "task_id": "T14",
+      "context": "cold",
+      "input_sha256": "0e04a2e595f3f23cce4ed07737d79326c485e5d09aba1650dd46109bef27bf23",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T14/cold/r1",
+      "execution_order": 7
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T11_RAW100_R1",
+      "task_id": "T11",
+      "context": "raw100",
+      "input_sha256": "78b0668db7d3acda7ed6156a15e26b4a1b805671b0aa225fc4438910401c22bc",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T11/raw100/r1",
+      "execution_order": 8
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T08_RAW100_R1",
+      "task_id": "T08",
+      "context": "raw100",
+      "input_sha256": "5df2bdd08ec3f64e5bfce41a662fe56376d49c47daf43ad156324ca7f7b20f1a",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T08/raw100/r1",
+      "execution_order": 9
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T14_RAW100_R1",
+      "task_id": "T14",
+      "context": "raw100",
+      "input_sha256": "0309cb301ce95c06cf387f90ac0c307ecca3c72d716629e995dd999ea1a54880",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T14/raw100/r1",
+      "execution_order": 10
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T09_RAW100_R1",
+      "task_id": "T09",
+      "context": "raw100",
+      "input_sha256": "839eceec6867a52b4fe098295121417c56c94d185c7626e1f6a6ab63b2d39412",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T09/raw100/r1",
+      "execution_order": 11
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T01_RAW100_R1",
+      "task_id": "T01",
+      "context": "raw100",
+      "input_sha256": "cc2dcf10fdf1e082e2d31484d9d6bf4354c41d8cd126fb0e6ffe1b42d8d2f3ad",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T01/raw100/r1",
+      "execution_order": 12
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T12_RAW50_R1",
+      "task_id": "T12",
+      "context": "raw50",
+      "input_sha256": "b5e585482593c9bf306e2e7091537993127f73f60ca0e18b8889165f5bbba8e2",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T12/raw50/r1",
+      "execution_order": 13
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T02_RAW50_R1",
+      "task_id": "T02",
+      "context": "raw50",
+      "input_sha256": "2fb81dc3e36c1f3c119c0be85c9779cdf771ceaf0c7c0155e2054ef2ed9464e8",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T02/raw50/r1",
+      "execution_order": 14
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T10_COLD_R1",
+      "task_id": "T10",
+      "context": "cold",
+      "input_sha256": "bc9bbbedc36058ad6f50c7ecd15155ccaebbf31cb1cdc731e788c52e63088c24",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T10/cold/r1",
+      "execution_order": 15
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T10_RAW50_R1",
+      "task_id": "T10",
+      "context": "raw50",
+      "input_sha256": "eac53b2df445e7c80dc554b15a7dfdcd83bb20f75558ccd223bdea95e514ec7b",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T10/raw50/r1",
+      "execution_order": 16
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T13_COLD_R1",
+      "task_id": "T13",
+      "context": "cold",
+      "input_sha256": "83c4c6290e12f00b7fe85547cdf20130b0615d898fb06f76d38d4a3cad6d1dde",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T13/cold/r1",
+      "execution_order": 17
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T06_RAW100_R1",
+      "task_id": "T06",
+      "context": "raw100",
+      "input_sha256": "28521a83d4cffccb5464ff6aac61e64a8907d7650dee3a67fbb9be296fafc036",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T06/raw100/r1",
+      "execution_order": 18
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T14_RAW50_R1",
+      "task_id": "T14",
+      "context": "raw50",
+      "input_sha256": "01f7abc82c2498eedd281da84139dcbf2f8ea7def348b925adebb252103e9884",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T14/raw50/r1",
+      "execution_order": 19
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T03_COLD_R1",
+      "task_id": "T03",
+      "context": "cold",
+      "input_sha256": "c9e64cbc50a16e6667e3b3fdc241cb1e06aaacaa4100dcc20a3ad8bd558dab8c",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T03/cold/r1",
+      "execution_order": 20
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T13_RAW100_R1",
+      "task_id": "T13",
+      "context": "raw100",
+      "input_sha256": "eeb7e8bbc1c73224ee912cfa7e1fa670ed9cc5a8d27a10e8a3cb92fa6884c228",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T13/raw100/r1",
+      "execution_order": 21
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T12_COLD_R1",
+      "task_id": "T12",
+      "context": "cold",
+      "input_sha256": "320feeb6b0681860b9232baaeae9161be9fcb69e88e709423856b1fe9e05e874",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T12/cold/r1",
+      "execution_order": 22
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T12_RAW100_R1",
+      "task_id": "T12",
+      "context": "raw100",
+      "input_sha256": "5467004a01fb1ca90eb2e99d1269c3f4de7d99e2543b6c6b6019c12fceee14be",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T12/raw100/r1",
+      "execution_order": 23
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T04_RAW50_R1",
+      "task_id": "T04",
+      "context": "raw50",
+      "input_sha256": "b0515e3598ac4539b81c2447f5d84786306d70b0939fb12edda28abd0f2500a2",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T04/raw50/r1",
+      "execution_order": 24
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T03_RAW50_R1",
+      "task_id": "T03",
+      "context": "raw50",
+      "input_sha256": "bd2c7ff928872ea452f81ddb3c201738f27bf15d7ada22bbbdaf6ca9e193c3d7",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T03/raw50/r1",
+      "execution_order": 25
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T09_RAW50_R1",
+      "task_id": "T09",
+      "context": "raw50",
+      "input_sha256": "a0e367a101c66d8b2a82d3031881d87a2fdad72fbc7ad06d790067eba2b9a459",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T09/raw50/r1",
+      "execution_order": 26
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T06_COLD_R1",
+      "task_id": "T06",
+      "context": "cold",
+      "input_sha256": "966332dc394693c3ab17715738b216f6509448a41bfaa94249766c8220b96e62",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T06/cold/r1",
+      "execution_order": 27
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T15_RAW100_R1",
+      "task_id": "T15",
+      "context": "raw100",
+      "input_sha256": "f02afc19679d6a5f8b5c07e577f0e303e5c0240cd682264e7c03de62277a114a",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T15/raw100/r1",
+      "execution_order": 28
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T08_RAW50_R1",
+      "task_id": "T08",
+      "context": "raw50",
+      "input_sha256": "dc129d03e55edfcf2135544f93e97279eca33532673994f75f85d60ed3fd3922",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T08/raw50/r1",
+      "execution_order": 29
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T07_RAW100_R1",
+      "task_id": "T07",
+      "context": "raw100",
+      "input_sha256": "bc3d7b9cdbf10333bc4f3a69ecf52a835cfb40b4a0b2dafe80ca8c20fc667cd1",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T07/raw100/r1",
+      "execution_order": 30
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T13_RAW50_R1",
+      "task_id": "T13",
+      "context": "raw50",
+      "input_sha256": "096db8e4a75dd585093c1dbb50d3d7a766160f3a116514ff3fad412814e75b18",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T13/raw50/r1",
+      "execution_order": 31
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T11_RAW50_R1",
+      "task_id": "T11",
+      "context": "raw50",
+      "input_sha256": "7a32216538fc2756b7cb62c496d5da4108fc41d02d31d6d408a5cfa087c136f6",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T11/raw50/r1",
+      "execution_order": 32
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T15_RAW50_R1",
+      "task_id": "T15",
+      "context": "raw50",
+      "input_sha256": "e44d24dda95506882b10c8e30a398eb97286fe5bfc40d9242fe63cfe67bffd87",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T15/raw50/r1",
+      "execution_order": 33
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T02_COLD_R1",
+      "task_id": "T02",
+      "context": "cold",
+      "input_sha256": "b727e487c91eec5022df39c59db4bcc0e7da3a1f3780ccf34901d8bbfc8dd558",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T02/cold/r1",
+      "execution_order": 34
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T04_RAW100_R1",
+      "task_id": "T04",
+      "context": "raw100",
+      "input_sha256": "0b0a4570dba01597d5390dfeea8b2a88526a9b1d02827b809b28bb8c800690e0",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T04/raw100/r1",
+      "execution_order": 35
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T03_RAW100_R1",
+      "task_id": "T03",
+      "context": "raw100",
+      "input_sha256": "4fbc90ced19f2c32a994a09a5b13721828413b7ca340ca20700ab60dd684ba40",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T03/raw100/r1",
+      "execution_order": 36
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T09_COLD_R1",
+      "task_id": "T09",
+      "context": "cold",
+      "input_sha256": "4033b60ac43e9462f658c537830926f6281a00edb84352ef278bf5c9844143f6",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T09/cold/r1",
+      "execution_order": 37
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T11_COLD_R1",
+      "task_id": "T11",
+      "context": "cold",
+      "input_sha256": "66fffb2ef2fc9f6e31527e5239fbceeda5b4ea6157d82f559d3e6562a509324c",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T11/cold/r1",
+      "execution_order": 38
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T04_COLD_R1",
+      "task_id": "T04",
+      "context": "cold",
+      "input_sha256": "c323677659028e313ef0815cd50b75d74ad734351d339db8be3d0450881f7a24",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T04/cold/r1",
+      "execution_order": 39
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T05_RAW50_R1",
+      "task_id": "T05",
+      "context": "raw50",
+      "input_sha256": "b38cb22efb55191a5c81816904125061c528defa2e96e8c93e2074bed1dc6a6f",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T05/raw50/r1",
+      "execution_order": 40
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T05_COLD_R1",
+      "task_id": "T05",
+      "context": "cold",
+      "input_sha256": "02659524f4f5bce2913d25e2ec68ab355786ded9cb760f2ec80b936a6de759dd",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T05/cold/r1",
+      "execution_order": 41
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T01_RAW50_R1",
+      "task_id": "T01",
+      "context": "raw50",
+      "input_sha256": "875e8004afc26ee5c1f13f9f8e1bdc9300fe11690fef8bc4a45eee494e4d8eab",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T01/raw50/r1",
+      "execution_order": 42
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T07_COLD_R1",
+      "task_id": "T07",
+      "context": "cold",
+      "input_sha256": "aa70936ed0199752ae243de660eebdfa11f79e004d37ff4bc25aa248309bdc71",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T07/cold/r1",
+      "execution_order": 43
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T07_RAW50_R1",
+      "task_id": "T07",
+      "context": "raw50",
+      "input_sha256": "cac6376018c410d61e0fe902499270af4905383c8ecd207f13d0dc5f91d8f635",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T07/raw50/r1",
+      "execution_order": 44
+    },
+    {
+      "cell_id": "IEO_V04_15_OPENAI_T02_RAW100_R1",
+      "task_id": "T02",
+      "context": "raw100",
+      "input_sha256": "87cf477ebe6fedcaf310b84e55ae52c8574abcd90aa3e95060858079a1a16c72",
+      "output_dir": "/Users/lora/Documents/benchmark-intent/pilot/ieo_v04_architect_3family_15task_v0_101/runs/openai/T02/raw100/r1",
+      "execution_order": 45
+    }
+  ]
+}

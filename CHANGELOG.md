@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.101 stock/IEO attribution repair and extension - 2026-09-18
+
+- Corrected the current IEO-v04 interpretation: the 17/18 positive comparison is cross-system because downstream harness/search paths are not fully matched; router-only attribution is deferred to a matched ODR rerun.
+- Defined `stock DeerFlow`, `stock Open Deep Research`, and IEO as distinct experimental objects.
+- Added the frozen three-family, 15-task IEO extension package with 45 Ask cells per family across COLD/RAW50/RAW100.
+- Added a matched stock-ODR three-task package using the same ODR graph, common search/fetch tools, research limits and simulator as the IEO full-report path.
+- Recorded live provider boundaries: OpenAI credit balance is still unavailable, Claude restored enough to start a full cell, and Gemini reached its daily request quota after one new matched-ODR report.
+
 ## v0.97-draft DeerFlow 2.0 × Gemini six-cell pilot - 2026-09-15
 
 - 将 Gemini pilot 扩为前三题 × `COLD/RAW50/RAW100` × `ASK/NOASK`，共 18 个 planned report cells；RAW50 固定复用 v0.96 抽样，RAW100 暴露全部 raw persona facts。
