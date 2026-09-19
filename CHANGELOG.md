@@ -11,6 +11,9 @@
 - First completion check recovered 17 additional clean OpenAI reports, bringing the stock matrix to 83/90; seven cells again returned quota/billing pseudo-reports and were left unretried pending a new credit-state check.
 - Froze a blinded 17-report scoring manifest with report hashes and launched three disjoint `gpt-6-astra/high` judge shards using the same 67-leaf `P_strict v0.82` rubric.
 - Recorded Claude's completed first-three repair as 3 successes and 2 new failures, plus early extension failures, without overwriting or automatically retrying any failed output.
+- Completed blind scoring for all 17 newly recovered OpenAI reports with zero judge failures; a subsequent low-cost OpenAI check confirmed a new usable-credit state.
+- Froze and launched a fresh r7 repair for the final seven OpenAI cells rather than reusing any quota-contaminated directory.
+- Completed the first Claude extension pass at 30/72 clean; 36 cells failed on Anthropic credit balance and six produced no final report. The full Claude matrix is 45/90 clean, and a fresh minimal Sonnet 5 check still failed for insufficient credit, so no Claude repair was started.
 
 ## v0.101 stock/IEO attribution repair and extension - 2026-09-18
 
