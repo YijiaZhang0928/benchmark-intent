@@ -6,6 +6,12 @@
 当前版本：v0.102（主矩阵完成优先级修正与Claude stock ODR 15题扩展）
 当前分支：`main`
 
+## 2026-09-18：Claude P 评分暂缓与 judge 成本/偏差审计
+
+按用户最新优先级停止新的 Claude 报告生成。现有 Claude × stock ODR 报告清点为 43 份实质正文，其中 12 份已有可比的 normalized `P_strict v0.82` 分数，31 份待评；另有 2 份只有 API 错误，不计可评分报告。31 份已在首次新增 judgment 前冻结盲码、报告与 rubric 哈希；一次 `gpt-6-astra/high` 评分启动后，用户质疑成本及同族 judge 偏差，立即中断且未产生完整新分数，原 partial 文件保留，不可当零分或有效 judgment。
+
+此前把 OpenAI Platform 的 `$93.77/$100` API spend 误认为该 judge 的预算约束，应予纠正：当前 67-leaf strict 评分代码使用 `CodexJSONChatModel`，继承的 `CodexChatModel` 通过 Codex 登录态连接 `chatgpt.com/backend-api/codex/responses`，并不使用用户充值的 OpenAI API key。审计发现本地 239 份 `*_strict.json` 均为 `gpt-6-astra/high`，且 239 个 report hash 唯一；这套评分没有可直接分摊的 OpenAI API 按次美元账单，但确实消耗 Codex 使用额度或 credits。现有评分产物未保存逐请求完整用量/信用扣减，因此不能给出历史 239 次 judgment 的准确美元等价成本；OpenAI API 控制台的 `$93.77` 不能冒充 judge 花费。用户的同族评判担忧成立，已有 Astra 对 GPT 报告的分数仅作单 judge exploratory 结果；任何新的 paid scoring 暂停，待冻结跨家族/人工校准方案及预算后再启动，不得把不同 judge 的原始分数混合为同一量表。
+
 沟通偏好：与用户讨论方案时，不默认使用未解释的项目缩写或过度压缩表达。首次出现 `seed`、`task shell`、`task family`、`ledger`、`contract`、`direction node`、`leaf`、`frozen harness` 等术语时，必须说明它具体是什么、由谁创建、何时冻结、输入输出是什么、为什么需要，以及给出贯穿式实例。准确性优先，但不能用简略术语代替推理步骤。
 
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-18：优先补齐OpenAI/Claude主矩阵

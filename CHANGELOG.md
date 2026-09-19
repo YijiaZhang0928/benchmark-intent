@@ -1,5 +1,12 @@
 # benchmark-intent 设计迭代记录
 
+## v0.102 Claude judge cost and bias audit - 2026-09-18
+
+- Stopped new Claude generation and froze a 31-report pending blind-score manifest: 43 substantive stock-ODR reports, 12 comparably scored, and two excluded API-error texts.
+- Interrupted the single new `gpt-6-astra/high` judgment after the user raised cost and same-family-bias concerns; no complete new P score was produced.
+- Corrected the billing attribution: the strict evaluator calls the Codex OAuth endpoint, not the funded OpenAI API key. The 239 local strict score files all use Astra/high, but their Codex quota/credit dollar equivalent is not recorded; the OpenAI API `$93.77` spend must not be attributed to P judging.
+- Paused all paid judging pending a cross-family/human calibration protocol and explicit cost scope. Existing Astra-on-GPT scores remain exploratory, not bias-controlled confirmatory evidence.
+
 ## v0.102 main-matrix completion priority and Claude 15-task ODR extension - 2026-09-18
 
 - Corrected the live execution scope: Gemini stock DeerFlow is already complete at 90/90; the active primary work is only the missing OpenAI and Claude stock cells, while Gemini IEO/ODR remains a three-task secondary check.
