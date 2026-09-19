@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.102-openai-r7-clean4-blind-score-1",
+  "provider": "openai",
+  "partial_dataset": true,
+  "created_before_first_judgment": true,
+  "judge_model": "gpt-6-astra",
+  "judge_reasoning_effort": "high",
+  "judge_repeats": 1,
+  "rubric": "P_strict v0.82, 67 leaves per task",
+  "entries": [
+    {
+      "blind_label": "OX3600",
+      "provider": "openai",
+      "cell_id": "OPENAI_T14_RAW100_ASK_R7_REMAINING",
+      "task_id": "T14",
+      "context": "raw100",
+      "policy": "ask",
+      "question_count": 2,
+      "report_path": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/runs/openai_remaining_r7/T14/raw100/ask/r7/turn_003_report.md",
+      "report_sha256": "f3e7e99bcd86ca056792dfcbc3310a0cf6bc9ca3aac6f0f49f792a1cf6c003bc",
+      "case_root": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/cases/T14"
+    },
+    {
+      "blind_label": "OX1226",
+      "provider": "openai",
+      "cell_id": "OPENAI_T14_RAW50_ASK_R7_REMAINING",
+      "task_id": "T14",
+      "context": "raw50",
+      "policy": "ask",
+      "question_count": 2,
+      "report_path": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/runs/openai_remaining_r7/T14/raw50/ask/r7/turn_003_report.md",
+      "report_sha256": "0304987382e69928809d81906a57d80dbdd570744e99319adac1b0b7ecd1c535",
+      "case_root": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/cases/T14"
+    },
+    {
+      "blind_label": "OX4719",
+      "provider": "openai",
+      "cell_id": "OPENAI_T13_RAW50_ASK_R7_REMAINING",
+      "task_id": "T13",
+      "context": "raw50",
+      "policy": "ask",
+      "question_count": 2,
+      "report_path": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/runs/openai_remaining_r7/T13/raw50/ask/r7/turn_003_report.md",
+      "report_sha256": "9870f0e25e18ac436acfc39d9ebabeea7327e1da1daadd485ed7214bc93d277a",
+      "case_root": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/cases/T13"
+    },
+    {
+      "blind_label": "OX5446",
+      "provider": "openai",
+      "cell_id": "OPENAI_T14_COLD_NOASK_R7_REMAINING",
+      "task_id": "T14",
+      "context": "cold",
+      "policy": "noask",
+      "question_count": 0,
+      "report_path": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/runs/openai_remaining_r7/T14/cold/noask/r7/turn_001_report.md",
+      "report_sha256": "437da372effcbbfbd10f721e02cf0c95574f0868e18ccbf1e0d8efd8dc9e8054",
+      "case_root": "/Users/lora/Documents/benchmark-intent/pilot/pdr15_6cell_3family_v0_99/cases/T14"
+    }
+  ]
+}

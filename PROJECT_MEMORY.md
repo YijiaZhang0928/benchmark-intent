@@ -20,6 +20,8 @@ Claude主矩阵此前并非15题：`pilot/claude_odr_6cell_3task_v0_100/`只覆�
 
 下一次heartbeat显示OpenAI 17份新报告已17/17完成盲评、0 judge failure。新的极小`gpt-5.6-sol` Responses check再次成功，构成r5失败后的外部额度状态变化证据；因此七个剩余OpenAI cells以新r7 manifest、thread和output namespace分两组恢复运行。Anthropic同一时点的极小Sonnet 5检查仍明确返回`credit balance is too low`，所以Claude不启动任何repair。Claude T04–T15首轮最终为30 success/42 failure，其中36是余额不足，6是无final report；连同T01–T03现有15/18 clean，Claude主矩阵当前45/90 clean，等待Anthropic额度恢复后才可继续。
 
+r7的7个OpenAI cells得到4 clean/3 quota pseudo-reports，主矩阵达到87/90；四份新报告在judgment前冻结盲码/hash并启动两组评分。新一次OpenAI极小check虽成功，但同一轮深度研究仍出现quota pseudo-report，因此不得把小调用通过解释成足够支付剩余深度研究，三格继续保留为pending而非零分或自动反复重试。Anthropic小调用仍明确余额不足。Gemini日额度恢复后的极小`gemini-3.1-pro-preview`检查成功，次级IEO/ODR前三题仅缺T01/T02 COLD两格，已用全新r8输出空间和冻结manifest启动；不扩展到15题或额外ODR arm。
+
 ## 0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. 2026-09-18：stock/IEO归因修正与15题扩展
 
 用户希望把三家模型的六个stock settings与IEO扩展到15题，并用Open Deep Research对前三题做同条件复现。复核实现后修正了一个重要归因边界：现有IEO-v04最终报告使用Open Deep Research graph；OpenAI/Gemini的stock报告来自DeerFlow 2.0，Claude虽为stock ODR但搜索transport也不同。因此“IEO 17/18高于stock Ask、mean +0.820 P”只能称跨系统工程信号，不能把全部增益归因给clarification router。总状态、详细解读和IEO结果页已同步降级表述。
