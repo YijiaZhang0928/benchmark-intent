@@ -1,5 +1,11 @@
 # benchmark-intent 设计迭代记录
 
+## v0.105 IEO-v4 transfer-claim design gate - 2026-09-19
+
+- Added a draft, not-yet-frozen validation design distinguishing non-inferior OOD performance from a stronger “more stable OOD” claim.
+- Required blinded independent label adjudication, fair and training-size-aware learned baselines, identical candidate/downstream resources, whole-task/domain holdouts, and task/domain-cluster analysis.
+- Marked the existing five tasks as development-only for this claim; sample count and cross-agent scope remain open user decisions. No new model or report experiment was run.
+
 ## v0.104 IEO-v4 heuristic vs learned reranker offline pilot - 2026-09-19
 
 - Reused five H2 task-only candidate pools and existing post-hoc preference mappings; no new provider, simulator, or report runs.

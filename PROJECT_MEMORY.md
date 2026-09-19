@@ -3,8 +3,12 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-19
-当前版本：v0.104（IEO-v4 显式规则与 learned reranker 离线小实验）
+当前版本：v0.105（IEO-v4 跨域稳定性主张的验证门槛草案）
 当前分支：`main`
+
+## 2026-09-19：如何把五题 pilot 升级为“规则跨域更稳”
+
+用户询问如何扩大结论。当前建议不是把 v0.104 的五题重跑更多 seed，而是先明确可证伪的主张范围与终点：有限 benchmark 不能证明规则“普遍”优越；先限定为 Deep Research 的任务特定偏好澄清，分开“同域新题”“全新 DR 领域”“coding/data agent”三个外推层级。`competitive OOD` 应预冻结非劣效 margin，并在同四问预算下比较严格 resolved high-impact recall、无效问率与报告 no-harm；`more stable OOD` 还需证明 OOD/ID 退化与领域低尾表现确有优势，不能只靠低 ID 分数造成小退化。学习基线需比三题 logistic 更强：训练域内分组调参的 logistic/小 MLP/至少一个表格排序器和训练任务数 learning curve；规则本身冻结。两臂共用候选池、生成器、模型版本、约束、下游 graph 与 judge；标签由不知道两臂排序/选中的独立人工标注，因为现有 H2 mapping 提示曾暴露 v4 selected IDs。分析单位为 task/domain，不是 candidate；新 24–40 题先估计方差和标注质量，再基于 cluster power simulation 冻结正式样本数；`8 domains × 8 new tasks` 仅为规划量级，不是功效承诺。不得用旧五题或已观察的 T08/T11 冒充 untouched holdout。待用户决定两项：DR-only 还是含 coding/data；目标是“低数据下不输”还是“严格 OOD 更稳”。详见 `pilot/ieo_v4_calibrated_v0_94/TRANSFER_CLAIM_DESIGN_NOTE.md`；本轮是设计讨论，没有运行新的模型或冻结正式 protocol。
 
 ## 2026-09-19：IEO-v4 frozen heuristic vs logistic reranker 离线小实验
 
