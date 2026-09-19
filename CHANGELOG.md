@@ -8,6 +8,9 @@
 - Preserved the pre-restoration r5 quota failure and added a fresh single-cell r6 repair namespace instead of overwriting it.
 - Added `pilot/claude_odr_6cell_15task_v0_102/`, a frozen 72-cell T04–T15 extension that reuses the exact Claude Sonnet 5 stock-ODR implementation from v0.100.
 - Frozen the 72-cell input/rubric/output manifest before generation and launched three disjoint shards with per-cell process, graph, thread, and directory isolation.
+- First completion check recovered 17 additional clean OpenAI reports, bringing the stock matrix to 83/90; seven cells again returned quota/billing pseudo-reports and were left unretried pending a new credit-state check.
+- Froze a blinded 17-report scoring manifest with report hashes and launched three disjoint `gpt-6-astra/high` judge shards using the same 67-leaf `P_strict v0.82` rubric.
+- Recorded Claude's completed first-three repair as 3 successes and 2 new failures, plus early extension failures, without overwriting or automatically retrying any failed output.
 
 ## v0.101 stock/IEO attribution repair and extension - 2026-09-18
 
