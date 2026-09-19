@@ -1,0 +1,226 @@
+{
+  "schema_version": "0.102-sol-transport-plan-1",
+  "manifest_sha256": "87eb75f44034164029f99775894a8ee59eff35281f3ffc9d6b4b782c990bd2d7",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "medium",
+  "pairing_rule": "Every available Ask/NoAsk pair uses one payment route; route is by task/context, not observed score",
+  "api_max_estimated_usd": 5.5,
+  "codex_min_credit_balance": 100,
+  "assignments": [
+    {
+      "index": 1,
+      "blind_label": "CL60374",
+      "transport": "codex"
+    },
+    {
+      "index": 2,
+      "blind_label": "CL57225",
+      "transport": "openai-api"
+    },
+    {
+      "index": 3,
+      "blind_label": "CL57361",
+      "transport": "codex"
+    },
+    {
+      "index": 4,
+      "blind_label": "CL89020",
+      "transport": "codex"
+    },
+    {
+      "index": 5,
+      "blind_label": "CL45680",
+      "transport": "codex"
+    },
+    {
+      "index": 6,
+      "blind_label": "CL44760",
+      "transport": "openai-api"
+    },
+    {
+      "index": 7,
+      "blind_label": "CL16620",
+      "transport": "codex"
+    },
+    {
+      "index": 8,
+      "blind_label": "CL16127",
+      "transport": "codex"
+    },
+    {
+      "index": 9,
+      "blind_label": "CL81555",
+      "transport": "openai-api"
+    },
+    {
+      "index": 10,
+      "blind_label": "CL33652",
+      "transport": "codex"
+    },
+    {
+      "index": 11,
+      "blind_label": "CL26536",
+      "transport": "openai-api"
+    },
+    {
+      "index": 12,
+      "blind_label": "CL62643",
+      "transport": "codex"
+    },
+    {
+      "index": 13,
+      "blind_label": "CL18760",
+      "transport": "openai-api"
+    },
+    {
+      "index": 14,
+      "blind_label": "CL96357",
+      "transport": "codex"
+    },
+    {
+      "index": 15,
+      "blind_label": "CL25628",
+      "transport": "codex"
+    },
+    {
+      "index": 16,
+      "blind_label": "CL62118",
+      "transport": "openai-api"
+    },
+    {
+      "index": 17,
+      "blind_label": "CL29508",
+      "transport": "codex"
+    },
+    {
+      "index": 18,
+      "blind_label": "CL11467",
+      "transport": "openai-api"
+    },
+    {
+      "index": 19,
+      "blind_label": "CL51681",
+      "transport": "codex"
+    },
+    {
+      "index": 20,
+      "blind_label": "CL93061",
+      "transport": "openai-api"
+    },
+    {
+      "index": 21,
+      "blind_label": "CL65531",
+      "transport": "codex"
+    },
+    {
+      "index": 22,
+      "blind_label": "CL89281",
+      "transport": "codex"
+    },
+    {
+      "index": 23,
+      "blind_label": "CL15739",
+      "transport": "codex"
+    },
+    {
+      "index": 24,
+      "blind_label": "CL24339",
+      "transport": "openai-api"
+    },
+    {
+      "index": 25,
+      "blind_label": "CL35985",
+      "transport": "codex"
+    },
+    {
+      "index": 26,
+      "blind_label": "CL74535",
+      "transport": "codex"
+    },
+    {
+      "index": 27,
+      "blind_label": "CL41745",
+      "transport": "codex"
+    },
+    {
+      "index": 28,
+      "blind_label": "CL32846",
+      "transport": "codex"
+    },
+    {
+      "index": 29,
+      "blind_label": "CL76378",
+      "transport": "openai-api"
+    },
+    {
+      "index": 30,
+      "blind_label": "CL30809",
+      "transport": "codex"
+    },
+    {
+      "index": 31,
+      "blind_label": "CL60341",
+      "transport": "openai-api"
+    },
+    {
+      "index": 32,
+      "blind_label": "CL51728",
+      "transport": "codex"
+    },
+    {
+      "index": 33,
+      "blind_label": "CL19320",
+      "transport": "openai-api"
+    },
+    {
+      "index": 34,
+      "blind_label": "CL60385",
+      "transport": "codex"
+    },
+    {
+      "index": 35,
+      "blind_label": "CL94617",
+      "transport": "openai-api"
+    },
+    {
+      "index": 36,
+      "blind_label": "CL84892",
+      "transport": "openai-api"
+    },
+    {
+      "index": 37,
+      "blind_label": "CL46651",
+      "transport": "codex"
+    },
+    {
+      "index": 38,
+      "blind_label": "CL47420",
+      "transport": "openai-api"
+    },
+    {
+      "index": 39,
+      "blind_label": "CL47259",
+      "transport": "openai-api"
+    },
+    {
+      "index": 40,
+      "blind_label": "CL70526",
+      "transport": "codex"
+    },
+    {
+      "index": 41,
+      "blind_label": "CL18713",
+      "transport": "openai-api"
+    },
+    {
+      "index": 42,
+      "blind_label": "CL55806",
+      "transport": "codex"
+    },
+    {
+      "index": 43,
+      "blind_label": "CL20062",
+      "transport": "openai-api"
+    }
+  ]
+}

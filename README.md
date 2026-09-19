@@ -2,6 +2,8 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
+最新 Claude 结果（v0.103）：现有 stock Open Deep Research 的 43/43 份可评分报告已用同一 `gpt-5.6-sol/medium` judge 和冻结 67-leaf `P_strict` rubric 评分；2 份 API 错误文字排除。13 个同任务同 context 的 Ask/NoAsk 完整配对中 Ask 胜 7 个，平均差仅 `+0.038 P`；COLD Ask 对 RAW100 NoAsk 的 6 个描述性比较胜 3 个，平均差 `+0.172 P`。这批不平衡、单次生成的探索性数据不能支持稳定 Ask 增益。完整六组分数、费用估算和 QA 边界见 [Claude Sol 评分结果](pilot/claude_odr_6cell_3task_v0_100/RESULTS_STOCK_SOL_GROUP23.md)。
+
 ## 当前方向：AskInfer-Bench v0.97
 
 工作题名：**Ask or Infer? Evaluating Task-Specific Personalization in Research, Coding, and Data-Analysis Agents**。

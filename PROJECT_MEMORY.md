@@ -3,8 +3,16 @@
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
 最后更新：2026-09-18
-当前版本：v0.102（主矩阵完成优先级修正与Claude stock ODR 15题扩展）
+当前版本：v0.103（Claude stock ODR 可评分报告的 Sol 盲评完成）
 当前分支：`main`
+
+## 2026-09-18：按用户预算改用 GPT-5.6 Sol 完成 Claude P 评分
+
+用户明确授权用 `gpt-5.6-sol/medium` 给现有 Claude 报告评分，只要求 Claude 家族内部 setting 趋势，不要求与此前 Astra 分数绝对可比。冻结 43 份实质报告的盲码、报告及 `P_strict v0.82` 67-leaf rubric 哈希；另 2 份 API 错误文字不计零分。使用同一评分 prompt、67 条 criteria 和聚合公式，固定 23/23/21 三块完成 43/43 份，0 份待评，旧 Astra 分数不混入。为控制支付，25 份走 Codex credits、18 份走 OpenAI API；每个完整 Ask/NoAsk 同任务同 context 配对均使用同一 transport。API 路径按公开单价的 token 用量估算约 `$4.887`，不是账单确认金额；Codex 路径按 API 单价折算约 `$7.344`，不代表实际 credits 消耗。
+
+可用样本的六组均值依次为 COLD Ask/NoAsk `5.835/4.012`（n=11/6）、RAW50 `6.782/6.269`（n=5/8）、RAW100 `5.703/6.407`（n=6/7）。这些是不平衡样本均值，不能直接推断处理效应。13 个同任务同 context 的完整配对中 Ask 赢 7 个，平均 `ΔP=+0.038`；6 个 COLD Ask 对 RAW100 NoAsk 的 H3 描述性比较中胜 3 个，平均 `ΔP=+0.172`。Ask policy 的 22 份报告有 21 份确实发起一次 clarification turn，NoAsk 的 21 份为 0；单轮问题是否抓住重要偏好尚未在此评分中判定。当前不支持“问总比不问好”或“cold+ask 稳定优于 full+noask”的强主张，但支持继续做问题质量和 acquisition-to-use 分析。报告长度和 DR 资格不齐、单 cell 一次生成、样本稀疏且选择性缺失、单一 judge，所有结果只作探索性。
+
+QA：对 2,032 条正分 criterion 的 evidence span 做确定性审计，1,643 条为原文精确子串、287 条去除 Markdown/空白后匹配、102 条仍不匹配；后者标作人工复核项，不能凭此自动改零或宣称全部有证据。评分文件、逐 cell 数值和完整方法见 `pilot/claude_odr_6cell_3task_v0_100/RESULTS_STOCK_SOL_GROUP23.md` 与 `scored_rows_stock_sol_group23.json`。下一步如要把趋势写入摘要，应先做报告资格、证据 span 与 question/preference chain 的人工抽样审计，不能从 Ask/NoAsk 标签直接声称提问产生了因果增益。
 
 ## 2026-09-18：Claude P 评分暂缓与 judge 成本/偏差审计
 

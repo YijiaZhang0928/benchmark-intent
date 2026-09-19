@@ -1,5 +1,12 @@
 # benchmark-intent 设计迭代记录
 
+## v0.103 Claude stock ODR Sol P scoring - 2026-09-18
+
+- 按用户预算授权以 `gpt-5.6-sol/medium` 和冻结的 67-leaf `P_strict v0.82` 评分全部 43 份可评分 Claude 报告；2 份 API 错误文字排除。旧 Astra 评分不与本次混合。
+- 将一次报告评分拆为固定 23/23/21 criteria 三块，保留相同聚合公式；冻结盲码、报告/rubric 哈希和 payment routing，13 个完整 Ask/NoAsk 配对均保持同一路由。
+- 完成 43/43、0 judge failures；六组可用样本均值及 13 个配对详见 `pilot/claude_odr_6cell_3task_v0_100/RESULTS_STOCK_SOL_GROUP23.md`。配对 Ask 胜 7/13，平均 `ΔP=+0.038`；H3 胜 3/6，平均 `ΔP=+0.172`，不支持稳定优势的强结论。
+- 22 份 Ask-policy 报告中 21 份实际发起 clarification，NoAsk 21 份为 0。API 18 份的 list-price token 估算 `$4.887`；Codex 25 份按 API 价折算 `$7.344`，后者不是实际付款。2,032 条正分证据中有 102 条原文/格式归一后仍无法匹配，列为人工 QA 项。
+
 ## v0.102 Claude judge cost and bias audit - 2026-09-18
 
 - Stopped new Claude generation and froze a 31-report pending blind-score manifest: 43 substantive stock-ODR reports, 12 comparably scored, and two excluded API-error texts.
