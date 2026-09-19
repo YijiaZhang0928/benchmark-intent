@@ -2,9 +2,15 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-18
-当前版本：v0.103（Claude stock ODR 可评分报告的 Sol 盲评完成）
+最后更新：2026-09-19
+当前版本：v0.104（IEO-v4 显式规则与 learned reranker 离线小实验）
 当前分支：`main`
+
+## 2026-09-19：IEO-v4 frozen heuristic vs logistic reranker 离线小实验
+
+用户提出审稿人可能质疑“为什么不用 learn policy”，要求在 `pilot/ieo_v4_calibrated_v0_94/` 上比较显式决策规则与学习排序器。已用原 H2 五题候选池和既有事后偏好映射完成无新 API 调用的候选选择小实验。训练标签为候选是否语义命中预冻结 `askable-high` 偏好单元，不是 v4 自己的选择，也不是最终报告收益。logistic 只用 `[I,P,O,R,X,A,E,D,M,B]` 十个数值特征；按任务/域整体分组，保持同候选池、结构性 veto、去重、每题四问上限。主划分在开发 T01/T02/T05 的 65 个候选（12 正例）训练，在内部验证 T08/T11 的 46 个候选（8 正例）测试，不调验证参数。
+
+主划分冻结 v4r 的高影响可问单元 selected recall 为 `0.225`（2/9），logistic 为 `0`（0/9），两臂均每题 4 问；question precision 为 `0.375` vs `0`。五题留一 task 与三 domain 留出均为 macro recall `0.320` vs `0.230`、precision `0.400` vs `0.250`；两类诊断不是独立复现，且 v4r 已在开发题上调整过，所以只有原 3→2 时序划分相对可信。五题共 111 候选、20 正例，单一 Astra 事后标签的原 mapping prompt 还展示 v4 选中 ID，可能偏向规则；单候选池、未模拟 learned 选问的回答/报告，都禁止外推到“规则 OOD 更稳”或 final P 增益。论文级下一门：更多真正 untouched task/domain、对双方选问盲化的人类复核标签、预冻结模型与预算，并用匹配下游图完成 answer-to-report 测试。脚本与完整数字见 `pilot/ieo_v4_calibrated_v0_94/RESULTS_LEARNED_RERANKER.md`。
 
 ## 2026-09-18：按用户预算改用 GPT-5.6 Sol 完成 Claude P 评分
 

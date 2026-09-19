@@ -1,5 +1,12 @@
 # benchmark-intent 设计迭代记录
 
+## v0.104 IEO-v4 heuristic vs learned reranker offline pilot - 2026-09-19
+
+- Reused five H2 task-only candidate pools and existing post-hoc preference mappings; no new provider, simulator, or report runs.
+- Added a fixed ten-feature, task-grouped logistic reranker and compared it with saved frozen v4r selections under the same four-question and structural constraints.
+- Original development→internal-validation split: selected askable-high recall `0.225` (2/9) for v4r versus `0` for logistic, both at four questions per task. Task/domain leave-out diagnostics: macro recall `0.320` versus `0.230`.
+- Documented proxy-label, five-task sample, prior heuristic tuning, no answer/report evaluation, and no general OOD-superiority claim in `pilot/ieo_v4_calibrated_v0_94/RESULTS_LEARNED_RERANKER.md`.
+
 ## v0.103 Claude stock ODR Sol P scoring - 2026-09-18
 
 - 按用户预算授权以 `gpt-5.6-sol/medium` 和冻结的 67-leaf `P_strict v0.82` 评分全部 43 份可评分 Claude 报告；2 份 API 错误文字排除。旧 Astra 评分不与本次混合。

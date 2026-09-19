@@ -2,6 +2,8 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
+IEO-v4 的一个离线学习策略小实验（v0.104）用五题既有候选池比较冻结显式规则与仅用十个候选特征的 logistic reranker。原 3→2 内部验证划分中，规则覆盖 2/9 个高影响可问偏好单元，logistic 覆盖 0/9；两者每题均选四问。样本及标签不足以支持一般性的 OOD 优越结论，也未测试回答或最终报告。见 [实验结果](pilot/ieo_v4_calibrated_v0_94/RESULTS_LEARNED_RERANKER.md)。
+
 最新 Claude 结果（v0.103）：现有 stock Open Deep Research 的 43/43 份可评分报告已用同一 `gpt-5.6-sol/medium` judge 和冻结 67-leaf `P_strict` rubric 评分；2 份 API 错误文字排除。13 个同任务同 context 的 Ask/NoAsk 完整配对中 Ask 胜 7 个，平均差仅 `+0.038 P`；COLD Ask 对 RAW100 NoAsk 的 6 个描述性比较胜 3 个，平均差 `+0.172 P`。这批不平衡、单次生成的探索性数据不能支持稳定 Ask 增益。完整六组分数、费用估算和 QA 边界见 [Claude Sol 评分结果](pilot/claude_odr_6cell_3task_v0_100/RESULTS_STOCK_SOL_GROUP23.md)。
 
 ## 当前方向：AskInfer-Bench v0.97

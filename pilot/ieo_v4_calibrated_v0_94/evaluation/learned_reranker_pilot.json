@@ -1,0 +1,984 @@
+{
+  "schema_version": "0.1",
+  "feature_order": [
+    "I",
+    "P",
+    "O",
+    "R",
+    "X",
+    "A",
+    "E",
+    "D",
+    "M",
+    "B"
+  ],
+  "target": "candidate semantically maps to a frozen askable-high preference unit",
+  "label_source": "existing dev_h2/validation_h2 post-hoc mappings",
+  "model": "StandardScaler + class-balanced logistic regression, C=1, seed=20260919",
+  "selection": "frozen structural vetoes, overlap diversity, <=1 state, <=1 surface, top 4",
+  "caveat": "Historical heuristic was developed on T01/T02/T05; only fixed 3-to-2 split preserves original validation order. No new questions, simulator answers, or reports were generated.",
+  "fixed_dev_to_validation": {
+    "folds": [
+      {
+        "train_tasks": [
+          "T01",
+          "T02",
+          "T05"
+        ],
+        "test_tasks": [
+          "T08",
+          "T11"
+        ],
+        "training": {
+          "candidates": 65,
+          "positive_candidates": 12
+        },
+        "results": [
+          {
+            "task": "T08",
+            "candidate_count": 23,
+            "positive_candidate_count": 5,
+            "heuristic": {
+              "selected_ids": [
+                "C16",
+                "C18",
+                "C22",
+                "C08"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T8-P1"
+              ],
+              "covered_count": 1,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.2,
+              "question_precision": 0.5
+            },
+            "learned": {
+              "selected_ids": [
+                "C23",
+                "C12",
+                "C09",
+                "C20"
+              ],
+              "questions": 4,
+              "covered_units": [],
+              "covered_count": 0,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.0,
+              "question_precision": 0.0
+            },
+            "learned_probabilities": {
+              "C01": 0.312171,
+              "C02": 0.067645,
+              "C03": 0.067645,
+              "C04": 0.188424,
+              "C05": 0.060263,
+              "C06": 0.11564,
+              "C07": 0.117853,
+              "C08": 0.115782,
+              "C09": 0.375235,
+              "C10": 0.185051,
+              "C11": 0.189274,
+              "C12": 0.543272,
+              "C13": 0.075992,
+              "C14": 0.076089,
+              "C15": 0.011477,
+              "C16": 0.251717,
+              "C17": 0.661291,
+              "C18": 0.251717,
+              "C19": 0.177729,
+              "C20": 0.306855,
+              "C21": 0.296733,
+              "C22": 0.251455,
+              "C23": 0.744672
+            }
+          },
+          {
+            "task": "T11",
+            "candidate_count": 23,
+            "positive_candidate_count": 3,
+            "heuristic": {
+              "selected_ids": [
+                "C23",
+                "C05",
+                "C20",
+                "C18"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T11-P3"
+              ],
+              "covered_count": 1,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.25,
+              "question_precision": 0.25
+            },
+            "learned": {
+              "selected_ids": [
+                "C17",
+                "C13",
+                "C14",
+                "C19"
+              ],
+              "questions": 4,
+              "covered_units": [],
+              "covered_count": 0,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.0,
+              "question_precision": 0.0
+            },
+            "learned_probabilities": {
+              "C01": 0.177268,
+              "C02": 0.061213,
+              "C03": 0.251455,
+              "C04": 0.01147,
+              "C05": 0.161472,
+              "C06": 0.311873,
+              "C07": 0.029654,
+              "C08": 0.251717,
+              "C09": 0.152719,
+              "C10": 0.313364,
+              "C11": 0.313066,
+              "C12": 0.307126,
+              "C13": 0.368426,
+              "C14": 0.296733,
+              "C15": 0.004499,
+              "C16": 0.242522,
+              "C17": 0.536673,
+              "C18": 0.0907,
+              "C19": 0.296733,
+              "C20": 0.115782,
+              "C21": 0.146993,
+              "C22": 0.11295,
+              "C23": 0.162982
+            }
+          }
+        ]
+      }
+    ],
+    "aggregate": {
+      "tasks": 2,
+      "heuristic": {
+        "selected_askable_high_recall": 0.225,
+        "question_precision": 0.375,
+        "questions": 4,
+        "total_covered_units": 2,
+        "total_askable_units": 9
+      },
+      "learned": {
+        "selected_askable_high_recall": 0.0,
+        "question_precision": 0.0,
+        "questions": 4,
+        "total_covered_units": 0,
+        "total_askable_units": 9
+      },
+      "learned_minus_heuristic_recall": -0.225
+    }
+  },
+  "leave_one_task_out": {
+    "folds": [
+      {
+        "train_tasks": [
+          "T02",
+          "T05",
+          "T08",
+          "T11"
+        ],
+        "test_tasks": [
+          "T01"
+        ],
+        "training": {
+          "candidates": 90,
+          "positive_candidates": 16
+        },
+        "results": [
+          {
+            "task": "T01",
+            "candidate_count": 21,
+            "positive_candidate_count": 4,
+            "heuristic": {
+              "selected_ids": [
+                "C09",
+                "C21",
+                "C01",
+                "C17"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "covered_count": 2,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.5,
+              "question_precision": 0.5
+            },
+            "learned": {
+              "selected_ids": [
+                "C19",
+                "C03",
+                "C18",
+                "C07"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T1-P1",
+                "T1-P2"
+              ],
+              "covered_count": 2,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.5,
+              "question_precision": 0.5
+            },
+            "learned_probabilities": {
+              "C01": 0.609728,
+              "C02": 0.609728,
+              "C03": 0.693714,
+              "C04": 0.244869,
+              "C05": 0.113283,
+              "C06": 0.566671,
+              "C07": 0.682141,
+              "C08": 0.176033,
+              "C09": 0.667486,
+              "C10": 0.364362,
+              "C11": 0.291769,
+              "C12": 0.373918,
+              "C13": 0.657989,
+              "C14": 0.400066,
+              "C15": 0.531362,
+              "C16": 0.643039,
+              "C17": 0.626901,
+              "C18": 0.690973,
+              "C19": 0.719406,
+              "C20": 0.702364,
+              "C21": 0.658315
+            }
+          }
+        ]
+      },
+      {
+        "train_tasks": [
+          "T01",
+          "T05",
+          "T08",
+          "T11"
+        ],
+        "test_tasks": [
+          "T02"
+        ],
+        "training": {
+          "candidates": 91,
+          "positive_candidates": 14
+        },
+        "results": [
+          {
+            "task": "T02",
+            "candidate_count": 20,
+            "positive_candidate_count": 6,
+            "heuristic": {
+              "selected_ids": [
+                "C09",
+                "C01",
+                "C16",
+                "C20"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "covered_count": 2,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.4,
+              "question_precision": 0.5
+            },
+            "learned": {
+              "selected_ids": [
+                "C16",
+                "C09",
+                "C01",
+                "C20"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "covered_count": 2,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.4,
+              "question_precision": 0.5
+            },
+            "learned_probabilities": {
+              "C01": 0.581593,
+              "C02": 0.263219,
+              "C03": 0.355727,
+              "C04": 0.381043,
+              "C05": 0.275353,
+              "C06": 0.113115,
+              "C07": 0.299681,
+              "C08": 0.17176,
+              "C09": 0.607819,
+              "C10": 0.430973,
+              "C11": 0.460428,
+              "C12": 0.421178,
+              "C13": 0.003949,
+              "C14": 0.491648,
+              "C15": 0.350971,
+              "C16": 0.610424,
+              "C17": 0.518847,
+              "C18": 0.518847,
+              "C19": 0.378717,
+              "C20": 0.529033
+            }
+          }
+        ]
+      },
+      {
+        "train_tasks": [
+          "T01",
+          "T02",
+          "T08",
+          "T11"
+        ],
+        "test_tasks": [
+          "T05"
+        ],
+        "training": {
+          "candidates": 87,
+          "positive_candidates": 18
+        },
+        "results": [
+          {
+            "task": "T05",
+            "candidate_count": 24,
+            "positive_candidate_count": 2,
+            "heuristic": {
+              "selected_ids": [
+                "C07",
+                "C21",
+                "C13",
+                "C19"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T5-P2"
+              ],
+              "covered_count": 1,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.25,
+              "question_precision": 0.25
+            },
+            "learned": {
+              "selected_ids": [
+                "C02",
+                "C08",
+                "C09",
+                "C07"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T5-P2"
+              ],
+              "covered_count": 1,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.25,
+              "question_precision": 0.25
+            },
+            "learned_probabilities": {
+              "C01": 0.637297,
+              "C02": 0.794313,
+              "C03": 0.454415,
+              "C04": 0.173716,
+              "C05": 0.205802,
+              "C06": 0.608966,
+              "C07": 0.70092,
+              "C08": 0.735679,
+              "C09": 0.735679,
+              "C10": 0.280555,
+              "C11": 0.649062,
+              "C12": 0.509039,
+              "C13": 0.693899,
+              "C14": 0.486465,
+              "C15": 0.007149,
+              "C16": 0.181278,
+              "C17": 0.245861,
+              "C18": 0.364659,
+              "C19": 0.614147,
+              "C20": 0.007389,
+              "C21": 0.70092,
+              "C22": 0.000268,
+              "C23": 0.2048,
+              "C24": 0.148678
+            }
+          }
+        ]
+      },
+      {
+        "train_tasks": [
+          "T01",
+          "T02",
+          "T05",
+          "T11"
+        ],
+        "test_tasks": [
+          "T08"
+        ],
+        "training": {
+          "candidates": 88,
+          "positive_candidates": 15
+        },
+        "results": [
+          {
+            "task": "T08",
+            "candidate_count": 23,
+            "positive_candidate_count": 5,
+            "heuristic": {
+              "selected_ids": [
+                "C16",
+                "C18",
+                "C22",
+                "C08"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T8-P1"
+              ],
+              "covered_count": 1,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.2,
+              "question_precision": 0.5
+            },
+            "learned": {
+              "selected_ids": [
+                "C12",
+                "C23",
+                "C11",
+                "C08"
+              ],
+              "questions": 4,
+              "covered_units": [],
+              "covered_count": 0,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.0,
+              "question_precision": 0.0
+            },
+            "learned_probabilities": {
+              "C01": 0.451612,
+              "C02": 0.127387,
+              "C03": 0.127387,
+              "C04": 0.483381,
+              "C05": 0.194484,
+              "C06": 0.489962,
+              "C07": 0.361137,
+              "C08": 0.495506,
+              "C09": 0.461875,
+              "C10": 0.39618,
+              "C11": 0.505556,
+              "C12": 0.681866,
+              "C13": 0.208629,
+              "C14": 0.212315,
+              "C15": 0.166117,
+              "C16": 0.446411,
+              "C17": 0.450622,
+              "C18": 0.446411,
+              "C19": 0.417675,
+              "C20": 0.434738,
+              "C21": 0.38174,
+              "C22": 0.440936,
+              "C23": 0.590907
+            }
+          }
+        ]
+      },
+      {
+        "train_tasks": [
+          "T01",
+          "T02",
+          "T05",
+          "T08"
+        ],
+        "test_tasks": [
+          "T11"
+        ],
+        "training": {
+          "candidates": 88,
+          "positive_candidates": 17
+        },
+        "results": [
+          {
+            "task": "T11",
+            "candidate_count": 23,
+            "positive_candidate_count": 3,
+            "heuristic": {
+              "selected_ids": [
+                "C23",
+                "C05",
+                "C20",
+                "C18"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T11-P3"
+              ],
+              "covered_count": 1,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.25,
+              "question_precision": 0.25
+            },
+            "learned": {
+              "selected_ids": [
+                "C14",
+                "C19",
+                "C08",
+                "C03"
+              ],
+              "questions": 4,
+              "covered_units": [],
+              "covered_count": 0,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.0,
+              "question_precision": 0.0
+            },
+            "learned_probabilities": {
+              "C01": 0.626292,
+              "C02": 0.156086,
+              "C03": 0.706176,
+              "C04": 0.005173,
+              "C05": 0.443308,
+              "C06": 0.211168,
+              "C07": 0.160192,
+              "C08": 0.714103,
+              "C09": 0.133161,
+              "C10": 0.245023,
+              "C11": 0.237969,
+              "C12": 0.126298,
+              "C13": 0.182047,
+              "C14": 0.758434,
+              "C15": 0.006907,
+              "C16": 0.662407,
+              "C17": 0.682633,
+              "C18": 0.287971,
+              "C19": 0.758434,
+              "C20": 0.377125,
+              "C21": 0.482454,
+              "C22": 0.529627,
+              "C23": 0.520077
+            }
+          }
+        ]
+      }
+    ],
+    "aggregate": {
+      "tasks": 5,
+      "heuristic": {
+        "selected_askable_high_recall": 0.32,
+        "question_precision": 0.4,
+        "questions": 4,
+        "total_covered_units": 7,
+        "total_askable_units": 22
+      },
+      "learned": {
+        "selected_askable_high_recall": 0.23,
+        "question_precision": 0.25,
+        "questions": 4,
+        "total_covered_units": 5,
+        "total_askable_units": 22
+      },
+      "learned_minus_heuristic_recall": -0.09
+    }
+  },
+  "leave_one_domain_out": {
+    "domains": {
+      "education": [
+        "T01",
+        "T02"
+      ],
+      "business_media": [
+        "T05",
+        "T11"
+      ],
+      "travel": [
+        "T08"
+      ]
+    },
+    "folds": [
+      {
+        "train_tasks": [
+          "T05",
+          "T08",
+          "T11"
+        ],
+        "test_tasks": [
+          "T01",
+          "T02"
+        ],
+        "training": {
+          "candidates": 70,
+          "positive_candidates": 10
+        },
+        "results": [
+          {
+            "task": "T01",
+            "candidate_count": 21,
+            "positive_candidate_count": 4,
+            "heuristic": {
+              "selected_ids": [
+                "C09",
+                "C21",
+                "C01",
+                "C17"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "covered_count": 2,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.5,
+              "question_precision": 0.5
+            },
+            "learned": {
+              "selected_ids": [
+                "C09",
+                "C21",
+                "C01",
+                "C02"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "covered_count": 2,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.5,
+              "question_precision": 0.5
+            },
+            "learned_probabilities": {
+              "C01": 0.586758,
+              "C02": 0.586758,
+              "C03": 0.428923,
+              "C04": 0.194623,
+              "C05": 0.116671,
+              "C06": 0.363782,
+              "C07": 0.15821,
+              "C08": 0.167693,
+              "C09": 0.650328,
+              "C10": 0.32541,
+              "C11": 0.503186,
+              "C12": 0.347943,
+              "C13": 0.531989,
+              "C14": 0.166623,
+              "C15": 0.343233,
+              "C16": 0.595553,
+              "C17": 0.428228,
+              "C18": 0.172119,
+              "C19": 0.318204,
+              "C20": 0.453802,
+              "C21": 0.627044
+            }
+          },
+          {
+            "task": "T02",
+            "candidate_count": 20,
+            "positive_candidate_count": 6,
+            "heuristic": {
+              "selected_ids": [
+                "C09",
+                "C01",
+                "C16",
+                "C20"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "covered_count": 2,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.4,
+              "question_precision": 0.5
+            },
+            "learned": {
+              "selected_ids": [
+                "C09",
+                "C10",
+                "C01",
+                "C16"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "covered_count": 2,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.4,
+              "question_precision": 0.5
+            },
+            "learned_probabilities": {
+              "C01": 0.580049,
+              "C02": 0.243659,
+              "C03": 0.32541,
+              "C04": 0.347943,
+              "C05": 0.304772,
+              "C06": 0.167693,
+              "C07": 0.153076,
+              "C08": 0.07549,
+              "C09": 0.604416,
+              "C10": 0.581131,
+              "C11": 0.41938,
+              "C12": 0.503186,
+              "C13": 0.014055,
+              "C14": 0.381585,
+              "C15": 0.145883,
+              "C16": 0.428923,
+              "C17": 0.405669,
+              "C18": 0.405669,
+              "C19": 0.084984,
+              "C20": 0.36699
+            }
+          }
+        ]
+      },
+      {
+        "train_tasks": [
+          "T01",
+          "T02",
+          "T08"
+        ],
+        "test_tasks": [
+          "T05",
+          "T11"
+        ],
+        "training": {
+          "candidates": 64,
+          "positive_candidates": 15
+        },
+        "results": [
+          {
+            "task": "T05",
+            "candidate_count": 24,
+            "positive_candidate_count": 2,
+            "heuristic": {
+              "selected_ids": [
+                "C07",
+                "C21",
+                "C13",
+                "C19"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T5-P2"
+              ],
+              "covered_count": 1,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.25,
+              "question_precision": 0.25
+            },
+            "learned": {
+              "selected_ids": [
+                "C11",
+                "C08",
+                "C09",
+                "C06"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T5-P3"
+              ],
+              "covered_count": 1,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.25,
+              "question_precision": 0.25
+            },
+            "learned_probabilities": {
+              "C01": 0.588891,
+              "C02": 0.380859,
+              "C03": 0.003966,
+              "C04": 0.005789,
+              "C05": 0.016682,
+              "C06": 0.690204,
+              "C07": 0.684289,
+              "C08": 0.770405,
+              "C09": 0.770405,
+              "C10": 0.016237,
+              "C11": 0.775236,
+              "C12": 0.010887,
+              "C13": 0.681659,
+              "C14": 0.335719,
+              "C15": 8.6e-05,
+              "C16": 0.142189,
+              "C17": 0.18367,
+              "C18": 0.216674,
+              "C19": 0.614912,
+              "C20": 8.7e-05,
+              "C21": 0.684289,
+              "C22": 0.0,
+              "C23": 0.002732,
+              "C24": 0.206207
+            }
+          },
+          {
+            "task": "T11",
+            "candidate_count": 23,
+            "positive_candidate_count": 3,
+            "heuristic": {
+              "selected_ids": [
+                "C23",
+                "C05",
+                "C20",
+                "C18"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T11-P3"
+              ],
+              "covered_count": 1,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.25,
+              "question_precision": 0.25
+            },
+            "learned": {
+              "selected_ids": [
+                "C14",
+                "C19",
+                "C08",
+                "C03"
+              ],
+              "questions": 4,
+              "covered_units": [],
+              "covered_count": 0,
+              "askable_count": 4,
+              "selected_askable_high_recall": 0.0,
+              "question_precision": 0.0
+            },
+            "learned_probabilities": {
+              "C01": 0.55224,
+              "C02": 0.160914,
+              "C03": 0.709489,
+              "C04": 0.003966,
+              "C05": 0.489163,
+              "C06": 0.21462,
+              "C07": 0.148599,
+              "C08": 0.711987,
+              "C09": 0.13737,
+              "C10": 0.225036,
+              "C11": 0.222924,
+              "C12": 0.18367,
+              "C13": 0.258336,
+              "C14": 0.717597,
+              "C15": 0.004272,
+              "C16": 0.618545,
+              "C17": 0.665068,
+              "C18": 0.271312,
+              "C19": 0.717597,
+              "C20": 0.360359,
+              "C21": 0.465863,
+              "C22": 0.485846,
+              "C23": 0.513456
+            }
+          }
+        ]
+      },
+      {
+        "train_tasks": [
+          "T01",
+          "T02",
+          "T05",
+          "T11"
+        ],
+        "test_tasks": [
+          "T08"
+        ],
+        "training": {
+          "candidates": 88,
+          "positive_candidates": 15
+        },
+        "results": [
+          {
+            "task": "T08",
+            "candidate_count": 23,
+            "positive_candidate_count": 5,
+            "heuristic": {
+              "selected_ids": [
+                "C16",
+                "C18",
+                "C22",
+                "C08"
+              ],
+              "questions": 4,
+              "covered_units": [
+                "T8-P1"
+              ],
+              "covered_count": 1,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.2,
+              "question_precision": 0.5
+            },
+            "learned": {
+              "selected_ids": [
+                "C12",
+                "C23",
+                "C11",
+                "C08"
+              ],
+              "questions": 4,
+              "covered_units": [],
+              "covered_count": 0,
+              "askable_count": 5,
+              "selected_askable_high_recall": 0.0,
+              "question_precision": 0.0
+            },
+            "learned_probabilities": {
+              "C01": 0.451612,
+              "C02": 0.127387,
+              "C03": 0.127387,
+              "C04": 0.483381,
+              "C05": 0.194484,
+              "C06": 0.489962,
+              "C07": 0.361137,
+              "C08": 0.495506,
+              "C09": 0.461875,
+              "C10": 0.39618,
+              "C11": 0.505556,
+              "C12": 0.681866,
+              "C13": 0.208629,
+              "C14": 0.212315,
+              "C15": 0.166117,
+              "C16": 0.446411,
+              "C17": 0.450622,
+              "C18": 0.446411,
+              "C19": 0.417675,
+              "C20": 0.434738,
+              "C21": 0.38174,
+              "C22": 0.440936,
+              "C23": 0.590907
+            }
+          }
+        ]
+      }
+    ],
+    "aggregate": {
+      "tasks": 5,
+      "heuristic": {
+        "selected_askable_high_recall": 0.32,
+        "question_precision": 0.4,
+        "questions": 4,
+        "total_covered_units": 7,
+        "total_askable_units": 22
+      },
+      "learned": {
+        "selected_askable_high_recall": 0.23,
+        "question_precision": 0.25,
+        "questions": 4,
+        "total_covered_units": 5,
+        "total_askable_units": 22
+      },
+      "learned_minus_heuristic_recall": -0.09
+    }
+  }
+}
