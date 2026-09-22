@@ -2,6 +2,8 @@
 
 > 跨 Session 继续项目前，先读 [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md)。它是当前研究决定、开放问题和交付协议的状态真源。
 
+IEO-v04 middleware 的五题离线组件消融（v0.106）已完成：在两道内部验证题上，冻结 v04R 的高影响可问偏好 selected recall 为 `0.225`；去掉 critical priority 或间接证据衰减均为 `0.100`，仅使用 decision-lens 候选为 `0.125`。去掉数值偏好深度、回答可能性先验或 burden 惩罚没有改变这两题的选择。强 prompt-only 对照首个真实模型请求遭遇 HTTP 503，尚无有效问题，不能声称 middleware 胜过 prompt；本轮也没有新报告 P 分数。逐题数据、失败边界和下一步匹配实验见 [v0.106 结果](pilot/ieo_v04_middleware_ablation_v0_106/RESULTS.md)。
+
 IEO-v4 的一个离线学习策略小实验（v0.104）用五题既有候选池比较冻结显式规则与仅用十个候选特征的 logistic reranker。原 3→2 内部验证划分中，规则覆盖 2/9 个高影响可问偏好单元，logistic 覆盖 0/9；两者每题均选四问。样本及标签不足以支持一般性的 OOD 优越结论，也未测试回答或最终报告。见 [实验结果](pilot/ieo_v4_calibrated_v0_94/RESULTS_LEARNED_RERANKER.md)。
 
 要升级为跨域稳定性主张，先冻结范围、盲化标签、强学习基线和真正未见的整领域测试；当前是[设计草案](pilot/ieo_v4_calibrated_v0_94/TRANSFER_CLAIM_DESIGN_NOTE.md)，尚未运行或冻结正式实验。

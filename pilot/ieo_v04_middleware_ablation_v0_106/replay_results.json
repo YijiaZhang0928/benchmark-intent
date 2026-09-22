@@ -1,0 +1,1008 @@
+{
+  "schema_version": "ieo-v04-component-replay-v1",
+  "frozen_tag": "v04_architect",
+  "calibrator_sha256": "f5f40d640ca1b462624daa492990a6f3e5f077ef984c7115a6c193bc0ad2c87b",
+  "variants": [
+    "v04r_frozen",
+    "no_depth_factor",
+    "no_evidence_attenuation",
+    "no_critical_priority",
+    "no_answerability_prior",
+    "no_burden_penalty",
+    "decision_lens_subset"
+  ],
+  "splits": {
+    "development": {
+      "tasks": [
+        {
+          "task": "T01",
+          "source_hashes": {
+            "run": "e98aa87a81e1397023825d424a3de28f1d05b039a5a517c31b6faf2a34f03b6e",
+            "evaluation": "91862b6ca9eac15939a4c2cacea901d35e0cee2a791dfbba089b1bb79aa0030c"
+          },
+          "candidate_count": 21,
+          "askable_high_ids": [
+            "T1-P1",
+            "T1-P2",
+            "T1-P3",
+            "T1-P4"
+          ],
+          "candidate_high_ceiling": 1.0,
+          "arms": {
+            "v04r_frozen": {
+              "selected_candidate_ids": [
+                "C09",
+                "C21",
+                "C01",
+                "C17"
+              ],
+              "selected_axes": [
+                "funding security versus exceptional research fit",
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "intended post-PhD career outcome",
+                "early specialization versus exploration before advisor commitment"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            "no_depth_factor": {
+              "selected_candidate_ids": [
+                "C09",
+                "C01",
+                "C21",
+                "C17"
+              ],
+              "selected_axes": [
+                "funding security versus exceptional research fit",
+                "intended post-PhD career outcome",
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "early specialization versus exploration before advisor commitment"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            "no_evidence_attenuation": {
+              "selected_candidate_ids": [
+                "C09",
+                "C21",
+                "C01",
+                "C17"
+              ],
+              "selected_axes": [
+                "funding security versus exceptional research fit",
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "intended post-PhD career outcome",
+                "early specialization versus exploration before advisor commitment"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            "no_critical_priority": {
+              "selected_candidate_ids": [
+                "C09",
+                "C21",
+                "C01",
+                "C17"
+              ],
+              "selected_axes": [
+                "funding security versus exceptional research fit",
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "intended post-PhD career outcome",
+                "early specialization versus exploration before advisor commitment"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            "no_answerability_prior": {
+              "selected_candidate_ids": [
+                "C21",
+                "C09",
+                "C01",
+                "C17"
+              ],
+              "selected_axes": [
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "funding security versus exceptional research fit",
+                "intended post-PhD career outcome",
+                "early specialization versus exploration before advisor commitment"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            "no_burden_penalty": {
+              "selected_candidate_ids": [
+                "C09",
+                "C21",
+                "C01",
+                "C17"
+              ],
+              "selected_axes": [
+                "funding security versus exceptional research fit",
+                "relative priority of advisor fit, ecosystem resilience, and institutional reputation",
+                "intended post-PhD career outcome",
+                "early specialization versus exploration before advisor commitment"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T1-P3",
+                "T1-P4",
+                "T1-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3",
+                "T1-P4"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.75
+            },
+            "decision_lens_subset": {
+              "selected_candidate_ids": [
+                "C01",
+                "C02",
+                "C15",
+                "C06"
+              ],
+              "selected_axes": [
+                "intended post-PhD career outcome",
+                "preferred AI research direction",
+                "admissions risk tolerance",
+                "preferred post-PhD employment region"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T1-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T1-P3"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            }
+          }
+        },
+        {
+          "task": "T02",
+          "source_hashes": {
+            "run": "4f3dcd2a1128ea64041aaa735588de21a88bf0c464a2d8c9c7762e9016929be1",
+            "evaluation": "91862b6ca9eac15939a4c2cacea901d35e0cee2a791dfbba089b1bb79aa0030c"
+          },
+          "candidate_count": 20,
+          "askable_high_ids": [
+            "T2-P1",
+            "T2-P2",
+            "T2-P3",
+            "T2-P4",
+            "T2-P5"
+          ],
+          "candidate_high_ceiling": 1.0,
+          "arms": {
+            "v04r_frozen": {
+              "selected_candidate_ids": [
+                "C09",
+                "C01",
+                "C16",
+                "C20"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Depth in the current field versus intellectual breadth",
+                "Tolerance for application complexity and execution risk"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "selected_recall_askable_high": 0.4,
+              "question_precision_any_unit": 0.5
+            },
+            "no_depth_factor": {
+              "selected_candidate_ids": [
+                "C09",
+                "C01",
+                "C16",
+                "C20"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Depth in the current field versus intellectual breadth",
+                "Tolerance for application complexity and execution risk"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "selected_recall_askable_high": 0.4,
+              "question_precision_any_unit": 0.5
+            },
+            "no_evidence_attenuation": {
+              "selected_candidate_ids": [
+                "C09",
+                "C01",
+                "C17",
+                "C18"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Desired level of linguistic and cultural friction",
+                "Lowest cost versus strategic investment among affordable options"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T2-P1",
+                "T2-P5"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1",
+                "T2-P5"
+              ],
+              "selected_recall_askable_high": 0.4,
+              "question_precision_any_unit": 0.5
+            },
+            "no_critical_priority": {
+              "selected_candidate_ids": [
+                "C09",
+                "C01",
+                "C16",
+                "C11"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Depth in the current field versus intellectual breadth",
+                "Acceptable language of credit-bearing instruction"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "selected_recall_askable_high": 0.4,
+              "question_precision_any_unit": 0.5
+            },
+            "no_answerability_prior": {
+              "selected_candidate_ids": [
+                "C09",
+                "C01",
+                "C16",
+                "C20"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Depth in the current field versus intellectual breadth",
+                "Tolerance for application complexity and execution risk"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "selected_recall_askable_high": 0.4,
+              "question_precision_any_unit": 0.5
+            },
+            "no_burden_penalty": {
+              "selected_candidate_ids": [
+                "C09",
+                "C01",
+                "C16",
+                "C20"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Depth in the current field versus intellectual breadth",
+                "Tolerance for application complexity and execution risk"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1",
+                "T2-P2"
+              ],
+              "selected_recall_askable_high": 0.4,
+              "question_precision_any_unit": 0.5
+            },
+            "decision_lens_subset": {
+              "selected_candidate_ids": [
+                "C09",
+                "C01",
+                "C11",
+                "C08"
+              ],
+              "selected_axes": [
+                "Tolerance for uncertainty in final credit recognition",
+                "Dominant outcome for shortlist ranking",
+                "Acceptable language of credit-bearing instruction",
+                "Preference among destination regions when options are comparable"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T2-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T2-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.25
+            }
+          }
+        },
+        {
+          "task": "T05",
+          "source_hashes": {
+            "run": "15224768d78dc5497e1b9b95694e9d324175d41bc5265ef465f10f1885c1eef6",
+            "evaluation": "91862b6ca9eac15939a4c2cacea901d35e0cee2a791dfbba089b1bb79aa0030c"
+          },
+          "candidate_count": 24,
+          "askable_high_ids": [
+            "T5-P1",
+            "T5-P2",
+            "T5-P3",
+            "T5-P5"
+          ],
+          "candidate_high_ceiling": 0.5,
+          "arms": {
+            "v04r_frozen": {
+              "selected_candidate_ids": [
+                "C07",
+                "C21",
+                "C13",
+                "C19"
+              ],
+              "selected_axes": [
+                "Intensity of human guidance in the learning experience",
+                "Personalization benefit versus student privacy and control",
+                "Affordability versus premium outcome intensity",
+                "Founder control and sustainability versus accelerated external-capital growth"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T5-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "no_depth_factor": {
+              "selected_candidate_ids": [
+                "C07",
+                "C21",
+                "C01",
+                "C13"
+              ],
+              "selected_axes": [
+                "Intensity of human guidance in the learning experience",
+                "Personalization benefit versus student privacy and control",
+                "Primary first-year success outcome",
+                "Affordability versus premium outcome intensity"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T5-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "no_evidence_attenuation": {
+              "selected_candidate_ids": [
+                "C07",
+                "C06",
+                "C21",
+                "C13"
+              ],
+              "selected_axes": [
+                "Intensity of human guidance in the learning experience",
+                "Early validation versus pre-launch polish and trust",
+                "Personalization benefit versus student privacy and control",
+                "Affordability versus premium outcome intensity"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2",
+                "T5-P3"
+              ],
+              "selected_recall_askable_high": 0.5,
+              "question_precision_any_unit": 0.5
+            },
+            "no_critical_priority": {
+              "selected_candidate_ids": [
+                "C07",
+                "C21",
+                "C13",
+                "C19"
+              ],
+              "selected_axes": [
+                "Intensity of human guidance in the learning experience",
+                "Personalization benefit versus student privacy and control",
+                "Affordability versus premium outcome intensity",
+                "Founder control and sustainability versus accelerated external-capital growth"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T5-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "no_answerability_prior": {
+              "selected_candidate_ids": [
+                "C07",
+                "C13",
+                "C21",
+                "C19"
+              ],
+              "selected_axes": [
+                "Intensity of human guidance in the learning experience",
+                "Affordability versus premium outcome intensity",
+                "Personalization benefit versus student privacy and control",
+                "Founder control and sustainability versus accelerated external-capital growth"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T5-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "no_burden_penalty": {
+              "selected_candidate_ids": [
+                "C07",
+                "C19",
+                "C21",
+                "C13"
+              ],
+              "selected_axes": [
+                "Intensity of human guidance in the learning experience",
+                "Founder control and sustainability versus accelerated external-capital growth",
+                "Personalization benefit versus student privacy and control",
+                "Affordability versus premium outcome intensity"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T5-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "decision_lens_subset": {
+              "selected_candidate_ids": [
+                "C07",
+                "C19",
+                "C02",
+                "C01"
+              ],
+              "selected_axes": [
+                "Intensity of human guidance in the learning experience",
+                "Founder control and sustainability versus accelerated external-capital growth",
+                "Learner group the initial product must serve best",
+                "Primary first-year success outcome"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T5-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T5-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            }
+          }
+        }
+      ],
+      "macro": {
+        "v04r_frozen": {
+          "selected_recall_askable_high": 0.3833333333333333,
+          "question_precision_any_unit": 0.5,
+          "question_count": 4.0
+        },
+        "no_depth_factor": {
+          "selected_recall_askable_high": 0.3833333333333333,
+          "question_precision_any_unit": 0.5,
+          "question_count": 4.0
+        },
+        "no_evidence_attenuation": {
+          "selected_recall_askable_high": 0.4666666666666666,
+          "question_precision_any_unit": 0.5833333333333334,
+          "question_count": 4.0
+        },
+        "no_critical_priority": {
+          "selected_recall_askable_high": 0.3833333333333333,
+          "question_precision_any_unit": 0.5,
+          "question_count": 4.0
+        },
+        "no_answerability_prior": {
+          "selected_recall_askable_high": 0.3833333333333333,
+          "question_precision_any_unit": 0.5,
+          "question_count": 4.0
+        },
+        "no_burden_penalty": {
+          "selected_recall_askable_high": 0.3833333333333333,
+          "question_precision_any_unit": 0.5,
+          "question_count": 4.0
+        },
+        "decision_lens_subset": {
+          "selected_recall_askable_high": 0.2333333333333333,
+          "question_precision_any_unit": 0.25,
+          "question_count": 4.0
+        }
+      }
+    },
+    "internal_validation": {
+      "tasks": [
+        {
+          "task": "T08",
+          "source_hashes": {
+            "run": "3beaba1aca005215288448d7d565a4917d61659f0da5e3ca924b7d98de06aad2",
+            "evaluation": "7358b93bcc63261a9c72d7b89d5baec26c2869ed8f93763fd2baa5dca0c0be55"
+          },
+          "candidate_count": 23,
+          "askable_high_ids": [
+            "T8-P1",
+            "T8-P2",
+            "T8-P3",
+            "T8-P4",
+            "T8-P5"
+          ],
+          "candidate_high_ceiling": 0.6,
+          "arms": {
+            "v04r_frozen": {
+              "selected_candidate_ids": [
+                "C16",
+                "C18",
+                "C22",
+                "C08"
+              ],
+              "selected_axes": [
+                "Communal connection versus private retreat",
+                "Whole-family togetherness versus subgroup autonomy",
+                "Preferred allocation of discretionary spending",
+                "Tolerance for July weather disruption risk"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T8-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T8-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.5
+            },
+            "no_depth_factor": {
+              "selected_candidate_ids": [
+                "C16",
+                "C18",
+                "C22",
+                "C08"
+              ],
+              "selected_axes": [
+                "Communal connection versus private retreat",
+                "Whole-family togetherness versus subgroup autonomy",
+                "Preferred allocation of discretionary spending",
+                "Tolerance for July weather disruption risk"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T8-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T8-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.5
+            },
+            "no_evidence_attenuation": {
+              "selected_candidate_ids": [
+                "C23",
+                "C16",
+                "C18",
+                "C22"
+              ],
+              "selected_axes": [
+                "Advance structure versus day-to-day adaptability",
+                "Communal connection versus private retreat",
+                "Whole-family togetherness versus subgroup autonomy",
+                "Preferred allocation of discretionary spending"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T8-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T8-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.5
+            },
+            "no_critical_priority": {
+              "selected_candidate_ids": [
+                "C08",
+                "C06",
+                "C16",
+                "C18"
+              ],
+              "selected_axes": [
+                "Tolerance for July weather disruption risk",
+                "Primary destination-selection priority",
+                "Communal connection versus private retreat",
+                "Whole-family togetherness versus subgroup autonomy"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T8-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T8-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.5
+            },
+            "no_answerability_prior": {
+              "selected_candidate_ids": [
+                "C16",
+                "C18",
+                "C22",
+                "C06"
+              ],
+              "selected_axes": [
+                "Communal connection versus private retreat",
+                "Whole-family togetherness versus subgroup autonomy",
+                "Preferred allocation of discretionary spending",
+                "Primary destination-selection priority"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T8-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T8-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.5
+            },
+            "no_burden_penalty": {
+              "selected_candidate_ids": [
+                "C16",
+                "C18",
+                "C22",
+                "C08"
+              ],
+              "selected_axes": [
+                "Communal connection versus private retreat",
+                "Whole-family togetherness versus subgroup autonomy",
+                "Preferred allocation of discretionary spending",
+                "Tolerance for July weather disruption risk"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T8-P1"
+              ],
+              "matched_askable_high_ids": [
+                "T8-P1"
+              ],
+              "selected_recall_askable_high": 0.2,
+              "question_precision_any_unit": 0.5
+            },
+            "decision_lens_subset": {
+              "selected_candidate_ids": [
+                "C08",
+                "C06",
+                "C01",
+                "C15"
+              ],
+              "selected_axes": [
+                "Tolerance for July weather disruption risk",
+                "Primary destination-selection priority",
+                "Departure location or locations",
+                "Accommodation service model"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            }
+          }
+        },
+        {
+          "task": "T11",
+          "source_hashes": {
+            "run": "7640bf64927ddb3a51a5c8e0f339ffded28aa1c47117d4863c4eb703aaf75ad3",
+            "evaluation": "7358b93bcc63261a9c72d7b89d5baec26c2869ed8f93763fd2baa5dca0c0be55"
+          },
+          "candidate_count": 23,
+          "askable_high_ids": [
+            "T11-P1",
+            "T11-P2",
+            "T11-P3",
+            "T11-P5"
+          ],
+          "candidate_high_ceiling": 0.75,
+          "arms": {
+            "v04r_frozen": {
+              "selected_candidate_ids": [
+                "C23",
+                "C05",
+                "C20",
+                "C18"
+              ],
+              "selected_axes": [
+                "Long-term asset the account should become",
+                "Primary change loyal followers should experience",
+                "Rapid publishing and feedback versus polished, durable work",
+                "Authentic role through which the creator establishes distinctiveness and credibility"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T11-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T11-P3"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "no_depth_factor": {
+              "selected_candidate_ids": [
+                "C23",
+                "C05",
+                "C20",
+                "C18"
+              ],
+              "selected_axes": [
+                "Long-term asset the account should become",
+                "Primary change loyal followers should experience",
+                "Rapid publishing and feedback versus polished, durable work",
+                "Authentic role through which the creator establishes distinctiveness and credibility"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T11-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T11-P3"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "no_evidence_attenuation": {
+              "selected_candidate_ids": [
+                "C16",
+                "C23",
+                "C05",
+                "C22"
+              ],
+              "selected_axes": [
+                "Revenue ambition versus trust, accessibility, and editorial independence",
+                "Long-term asset the account should become",
+                "Primary change loyal followers should experience",
+                "Near-term algorithmic discovery versus durable direct audience relationships"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            },
+            "no_critical_priority": {
+              "selected_candidate_ids": [
+                "C23",
+                "C20",
+                "C16",
+                "C05"
+              ],
+              "selected_axes": [
+                "Long-term asset the account should become",
+                "Rapid publishing and feedback versus polished, durable work",
+                "Revenue ambition versus trust, accessibility, and editorial independence",
+                "Primary change loyal followers should experience"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [],
+              "matched_askable_high_ids": [],
+              "selected_recall_askable_high": 0.0,
+              "question_precision_any_unit": 0.0
+            },
+            "no_answerability_prior": {
+              "selected_candidate_ids": [
+                "C05",
+                "C23",
+                "C20",
+                "C18"
+              ],
+              "selected_axes": [
+                "Primary change loyal followers should experience",
+                "Long-term asset the account should become",
+                "Rapid publishing and feedback versus polished, durable work",
+                "Authentic role through which the creator establishes distinctiveness and credibility"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T11-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T11-P3"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "no_burden_penalty": {
+              "selected_candidate_ids": [
+                "C23",
+                "C05",
+                "C20",
+                "C18"
+              ],
+              "selected_axes": [
+                "Long-term asset the account should become",
+                "Primary change loyal followers should experience",
+                "Rapid publishing and feedback versus polished, durable work",
+                "Authentic role through which the creator establishes distinctiveness and credibility"
+              ],
+              "question_count": 4,
+              "matched_any_unit_ids": [
+                "T11-P3"
+              ],
+              "matched_askable_high_ids": [
+                "T11-P3"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.25
+            },
+            "decision_lens_subset": {
+              "selected_candidate_ids": [
+                "C10",
+                "C04",
+                "C14"
+              ],
+              "selected_axes": [
+                "Acceptable dependence of the brand on the creator's public identity and visibility",
+                "Primary audience segment served during the first six months",
+                "Acceptable level of editorial boldness and polarization"
+              ],
+              "question_count": 3,
+              "matched_any_unit_ids": [
+                "T11-P2"
+              ],
+              "matched_askable_high_ids": [
+                "T11-P2"
+              ],
+              "selected_recall_askable_high": 0.25,
+              "question_precision_any_unit": 0.3333333333333333
+            }
+          }
+        }
+      ],
+      "macro": {
+        "v04r_frozen": {
+          "selected_recall_askable_high": 0.225,
+          "question_precision_any_unit": 0.375,
+          "question_count": 4.0
+        },
+        "no_depth_factor": {
+          "selected_recall_askable_high": 0.225,
+          "question_precision_any_unit": 0.375,
+          "question_count": 4.0
+        },
+        "no_evidence_attenuation": {
+          "selected_recall_askable_high": 0.1,
+          "question_precision_any_unit": 0.25,
+          "question_count": 4.0
+        },
+        "no_critical_priority": {
+          "selected_recall_askable_high": 0.1,
+          "question_precision_any_unit": 0.25,
+          "question_count": 4.0
+        },
+        "no_answerability_prior": {
+          "selected_recall_askable_high": 0.225,
+          "question_precision_any_unit": 0.375,
+          "question_count": 4.0
+        },
+        "no_burden_penalty": {
+          "selected_recall_askable_high": 0.225,
+          "question_precision_any_unit": 0.375,
+          "question_count": 4.0
+        },
+        "decision_lens_subset": {
+          "selected_recall_askable_high": 0.125,
+          "question_precision_any_unit": 0.16666666666666666,
+          "question_count": 3.5
+        }
+      }
+    }
+  }
+}

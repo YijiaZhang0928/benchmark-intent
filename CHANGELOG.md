@@ -1,5 +1,12 @@
 # benchmark-intent 设计迭代记录
 
+## v0.106 IEO-v04 middleware component ablation - 2026-09-21
+
+- Froze a five-task offline component-replay protocol before a new strong prompt-only baseline attempt; reused H2 candidate pools and mapped askable-high preference units without new persona or rubric exposure.
+- Verified exact frozen-v04R selection reproduction on all five tasks. On two internal-validation tasks, selected high recall was `0.225` for v04R, `0.100` without critical priority, `0.100` when inferred evidence was treated as absent in the numeric term, and `0.125` with a decision-lens-only candidate subset. Numeric depth, answerability-prior and burden-penalty removals were null on these two tasks.
+- A prompt-only local launch failed before any provider request due to escaped-JSON formatting; after that bug fix, the first real `gpt-5.6-sol/high` request returned HTTP 503. No valid prompt-only output or report P score exists, and no automatic retry or transport substitution was made.
+- Documented the small internally observed sample, possible post-hoc mapping bias, approximate generator-lens ablation and the need for one-call plus compute-matched prompt baselines under the same downstream Deep Research conditions in `pilot/ieo_v04_middleware_ablation_v0_106/RESULTS.md`.
+
 ## v0.105 IEO-v4 transfer-claim design gate - 2026-09-19
 
 - Added a draft, not-yet-frozen validation design distinguishing non-inferior OOD performance from a stronger “more stable OOD” claim.

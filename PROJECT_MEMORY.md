@@ -2,9 +2,17 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-19
-当前版本：v0.105（IEO-v4 跨域稳定性主张的验证门槛草案）
+最后更新：2026-09-21
+当前版本：v0.106（IEO-v04 middleware 小型组件消融）
 当前分支：`main`
+
+## 2026-09-21：IEO-v04 middleware 小型组件消融与 prompt 对照失败
+
+用户要求检验“简单 prompt engineering 是否足够”及 middleware 的正常组件消融。先在任何新 prompt-only 输出前冻结 `pilot/ieo_v04_middleware_ablation_v0_106/PROTOCOL.md`：沿用 v04 H2 五题候选池、原选问、既有偏好映射，逐项重放去掉数值偏好深度、间接证据衰减、critical priority、回答可能性先验、burden 惩罚，以及仅保留 decision-lens 支持候选的近似多视角消融；所有臂保留四问上限及相同结构 veto。T01/T02/T05 为开发，T08/T11 为内部验证，不冒充真正 untouched holdout。保存 `run_replay.py`、逐题 source hashes 与 `replay_results.json`，完整 v04R 重算选问 ID 与已存五题逐项一致。
+
+内部验证两题的宏平均 `SelectedRecall@AskableHigh` / 问题精度：v04R `0.225/0.375`；去掉 critical priority `0.100/0.250`；把间接证据在数值项中当缺失 `0.100/0.250`；decision-lens subset `0.125/0.167`，且每题平均仅 3.5 问；去掉数值 P、answerability prior 或 burden penalty 都与 v04R 相同。开发三题中，去掉间接证据衰减反而把 recall `0.383→0.467`，说明效果方向跨 split 不稳，不能声称所有公式项必要。候选池本身在 T08/T11 只能覆盖 3/5、3/4 个高影响可问单元，选问器无法补回漏生成的轴。标签为事后单 LLM 映射，原评估 prompt 曾暴露 v04 选中 ID，存在可能偏向 v04 的标注风险；所有数字仅是探索性 selected-ask，不是 simulator resolved 或最终 P 分数。
+
+强 one-call prompt-only baseline 固定为同 `gpt-5.6-sol/high`、原 task-only 输入、0–4 个原子问题，并显式要求关注会改变交付物的用户拥有偏好、避免外部事实和表面缺失。首次本地 launch 因 JSON 示例花括号转义错误在任何 provider request 前停止；修正后首次真实 T01 请求从 Codex response endpoint 返回 HTTP 503，0 个有效输出。按无自动重试规则，没有把其记零、换 provider 或继续其余题。`RESULTS.md` 明确：本轮未证明“prompt engineering 不如 middleware”；论文级对照仍须同 backbone/harness/预算的强 one-call 与 compute-matched prompt，独立盲化 question mapping，回答、报告和 P-score 级测试。
 
 ## 2026-09-19：如何把五题 pilot 升级为“规则跨域更稳”
 
