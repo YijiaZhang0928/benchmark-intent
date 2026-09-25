@@ -1,5 +1,13 @@
 # benchmark-intent 设计迭代记录
 
+## v0.107 blinded user-simulator protocol - 2026-09-24
+
+- Added a successor user-simulator contract for future episodes while leaving all counted historical runners frozen. The response model receives one natural-language user-state list with deterministic order randomization and no harness/condition identity, rubric IDs, importance tiers, graph weights, acceptable paraphrases, judge information, or duplicate persona block.
+- Replaced simulator-reported resolved-unit IDs with a harness-owned policy ledger. New traces explicitly mark formal semantic preference coverage as `not_computed`; paper-facing coverage requires an independent mapper or a condition-blinded human audit using the new audit schema.
+- Added `SimulatorGenerationConfig` and trace metadata for provider, exact model snapshot, temperature, top-p, seed, output cap, thinking mode, response format, and both format and transport retry limits. The provider-neutral backend now passes the frozen config on every call.
+- Selected `qwen3.7-flash-2026-07-15` in non-thinking JSON Schema mode as the provisional independent simulator for a held-out probe, based on official price and protocol fit. No provider call was made. A conservative 100-episode envelope is 5M input plus 1M output tokens, about CNY 1.8 at the listed price; the runbook uses a CNY 5 hard stop.
+- Recorded the validity boundary: one independent profile-conditioned LLM simulator is consistent with prior interactive-agent benchmarks, but it supports a controlled simulated-user-channel claim, not equivalence to real users. All counted exchanges require a blinded fidelity audit; a second simulator or human response study remains a robustness extension rather than a prerequisite for the first run.
+
 ## v0.106 IEO-v04 middleware component ablation - 2026-09-21
 
 - Froze a five-task offline component-replay protocol before a new strong prompt-only baseline attempt; reused H2 candidate pools and mapped askable-high preference units without new persona or rubric exposure.

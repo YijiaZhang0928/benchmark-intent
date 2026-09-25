@@ -1,6 +1,6 @@
 {
   "artifact": "deepalign_bench_interaction_environment",
-  "version": "0.58.0",
+  "version": "0.59.0",
   "status": "runnable_reference_implementation",
   "python": ">=3.10",
   "runtime_dependencies": [],
@@ -11,7 +11,8 @@
     "InteractionEnvironment.export_trace",
     "run_episode",
     "load_case",
-    "JSONLLMSimulatorBackend"
+    "JSONLLMSimulatorBackend",
+    "SimulatorGenerationConfig"
   ],
   "modes": ["oracle", "naive", "interactive"],
   "entrypoints": {
@@ -27,5 +28,5 @@
     "PYTHONPATH=src python3 -m deepalign_bench --mode interactive --seed 7",
     "pip install -e ."
   ],
-  "claim_boundary": "Reference harness behavior is tested; human simulator validity requires separate calibration."
+  "claim_boundary": "Reference harness behavior is tested; policy-authorized state is not formal semantic coverage, and human simulator validity requires separate calibration."
 }

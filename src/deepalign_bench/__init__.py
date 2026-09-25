@@ -1,6 +1,11 @@
 """Public API for DeepAlign-Bench interaction environments."""
 
-from .backends import JSONLLMSimulatorBackend, RuleBasedSimulatorBackend, SimulatorBackend
+from .backends import (
+    JSONLLMSimulatorBackend,
+    RuleBasedSimulatorBackend,
+    SimulatorBackend,
+    SimulatorGenerationConfig,
+)
 from .environment import InteractionEnvironment
 from .io import case_from_dict, load_case, write_trace
 from .models import (
@@ -45,6 +50,7 @@ __all__ = [
     "RevealStrategy",
     "RuleBasedSimulatorBackend",
     "SimulatorBackend",
+    "SimulatorGenerationConfig",
     "StepResult",
     "Task",
     "case_from_dict",
@@ -53,4 +59,4 @@ __all__ = [
     "write_trace",
 ]
 
-__version__ = "0.58.0"
+__version__ = "0.59.0"

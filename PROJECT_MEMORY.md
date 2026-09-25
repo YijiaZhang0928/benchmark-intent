@@ -2,9 +2,21 @@
 
 > 新 Session 必读。本文档记录已经达成的研究决定、理由、开放问题和交付协议；它不是聊天逐字稿。每次发生实质性讨论或修改时，都要同步更新本文档、受影响的交付物与 `CHANGELOG.md`，完成校验后 commit 并 push。
 
-最后更新：2026-09-21
-当前版本：v0.106（IEO-v04 middleware 小型组件消融）
+最后更新：2026-09-24
+当前版本：v0.107（盲化 user simulator successor protocol）
 当前分支：`main`
+
+## 2026-09-24：独立、盲化、可审计的 user simulator successor protocol
+
+用户希望未来新 harness 使用与报告 backbone 和 judge 家族无关的 DeepSeek/Qwen/Kimi simulator，并要求修复现有 runner 暴露 impact tier、rubric ID、重复 persona、自报 resolved units，以及只在 prompt 中口头声称 deterministic 的问题。历史 runner 和已计数结果保持冻结，不回写；它们仍须在论文限制中披露这些风险。新增 `pilot/user_simulator_blinding_v0_107/` 作为未来 episode 的迁移入口，并把通用 `deepalign_bench` interaction package 升为 0.59。
+
+新 response prompt 只收到公开 task、当前问题、同 episode 历史，以及策略已授权的单份自然语言 user state；条目按 task+question 的稳定哈希打乱。它不知道 generator/harness/setting、内部 preference/rubric ID、high/average impact、importance/graph weight、允许问法、judge、报告或分数。问题到 state 的分类器只看到没有 value 的描述和每轮 opaque key `S001...`，这些 key 不携带权重。Simulator 输出只含自然语言 answer，不再自报 resolved units。内部 `revealed_attribute_ids` 仅是披露策略账本；新 trace 将正式语义 coverage 标为 `not_computed`，必须由独立 mapper 或不知道实验条件的人审阅 question-answer pair 后产生，审计 schema 已冻结。
+
+可复现元数据现强制记录 provider、精确 snapshot、temperature、top_p、seed、最大输出、thinking mode、response format、格式修复次数和 transport retry 次数；推荐冻结值为 `qwen3.7-flash-2026-07-15`、non-thinking、temperature 0、top_p 1、512 output tokens、JSON Schema、两类 retry 均为 0、harness seed `20260924`。这是暂定 simulator，须先通过 answerable/absent/uncertain/multi-part/leading/private/adjacent held-out probes，并在查看目标系统 P 分数前冻结。没有进行任何付费模型调用。
+
+费用以 100 episodes 的保守上界 5M input + 1M output 估算：Qwen 官方 Global/Beijing 32K 内价格为 CNY 0.2/M input、CNY 0.8/M output，总计约 CNY 1.8；CNY 10 已足够，若平台最低充值或含 probe 可充 CNY 20，但 harness 在实际 billed spend 达 CNY 5 时硬停检查。DeepSeek Flash 相同 token envelope 在峰时约 USD 2.70、非峰时约 USD 1.35，是可用备选。Kimi 当前网页价格表不能由审计工具稳定提取，且其能力定位对短结构化回答没有明显必要优势，因此本轮不推荐为最低成本方案。
+
+方法主张边界：τ-bench、ClarifyBench、AskBench、ClearVQA 等均提供 LLM user simulator 先例，所以一个独立、profile-grounded simulator 可以作为首轮受控实验通道；但 SimulatorArena 与 Lost in Simulation 显示 simulator 对真人的贴合和模型选择敏感。首轮不强制第二 simulator 或真人逐题回答，前提是全部 simulator exchanges 做盲化 fidelity/invention/overdisclosure 审计，并将论文 wording 限定为 controlled simulated-user channel；若要写“符合真实用户回答”或做强外部效度主张，则必须增加 sim-to-real 校准或至少第二独立 simulator 稳健性检查。
 
 ## 2026-09-21：IEO-v04 middleware 小型组件消融与 prompt 对照失败
 

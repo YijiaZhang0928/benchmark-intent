@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://askinfer-bench.local/user-simulator-coverage-audit-v1.schema.json",
+  "title": "Blinded user-simulator exchange audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "episode_id",
+    "auditor_id",
+    "auditor_blinded_to_condition",
+    "exchanges"
+  ],
+  "properties": {
+    "episode_id": {"type": "string", "minLength": 1},
+    "auditor_id": {"type": "string", "minLength": 1},
+    "auditor_blinded_to_condition": {"const": true},
+    "exchanges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "turn_index",
+          "question",
+          "answer",
+          "profile_faithful",
+          "unsupported_invention",
+          "direct_answer",
+          "overdisclosure",
+          "resolved_user_state_keys"
+        ],
+        "properties": {
+          "turn_index": {"type": "integer", "minimum": 1},
+          "question": {"type": "string"},
+          "answer": {"type": "string"},
+          "profile_faithful": {"type": "boolean"},
+          "unsupported_invention": {"type": "boolean"},
+          "direct_answer": {"type": "boolean"},
+          "overdisclosure": {"type": "boolean"},
+          "resolved_user_state_keys": {
+            "type": "array",
+            "items": {"type": "string"},
+            "uniqueItems": true
+          },
+          "notes": {"type": "string"}
+        }
+      }
+    }
+  }
+}

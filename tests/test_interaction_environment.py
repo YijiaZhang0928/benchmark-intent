@@ -21,6 +21,7 @@ from deepalign_bench import (
     RevealRule,
     RevealStrategy,
     RuleBasedSimulatorBackend,
+    SimulatorGenerationConfig,
     Task,
     load_case,
     run_episode,
@@ -128,17 +129,19 @@ class InteractionEnvironmentTests(unittest.TestCase):
 
     def test_structured_llm_backend_never_receives_denied_value_in_interactive_mode(self) -> None:
         calls: list[str] = []
+        configs: list[SimulatorGenerationConfig] = []
 
-        def completion(messages) -> str:
+        def completion(messages, config) -> str:
             payload = messages[-1]["content"]
             calls.append(payload)
-            if "attribute_descriptors_without_values" in payload:
+            configs.append(config)
+            if "state_descriptors_without_values" in payload:
                 return json.dumps(
                     {
                         "is_question": True,
                         "matches": [
                             {
-                                "attribute_id": "budget",
+                                "state_key": "S001",
                                 "confidence": 0.99,
                                 "evidence": "budget",
                             }
@@ -149,14 +152,27 @@ class InteractionEnvironmentTests(unittest.TestCase):
             return json.dumps(
                 {
                     "response": "We can spend up to USD 1,200 per year.",
-                    "disclosed_attribute_ids": ["budget"],
                 }
             )
+
+        config = SimulatorGenerationConfig(
+            provider="qwen",
+            model="qwen3.7-flash-2026-07-15",
+            model_snapshot="qwen3.7-flash-2026-07-15",
+            temperature=0.0,
+            top_p=1.0,
+            seed=20260924,
+            max_output_tokens=512,
+            thinking_mode="disabled",
+            response_format="json_schema",
+            format_retry_limit=0,
+            transport_retry_limit=0,
+        )
 
         env = InteractionEnvironment(
             self.case,
             EnvironmentMode.INTERACTIVE,
-            backend=JSONLLMSimulatorBackend(completion),
+            backend=JSONLLMSimulatorBackend(completion, config),
         )
         env.reset(seed=1)
         result = env.step("What budget can you spend?")
@@ -166,6 +182,28 @@ class InteractionEnvironmentTests(unittest.TestCase):
         self.assertNotIn("Northstar Biologics", calls[1])
         self.assertNotIn("USD 1,200", calls[0])
         self.assertIn("USD 1,200", calls[1])
+        self.assertEqual(configs, [config, config])
+        self.assertNotIn('"mode"', calls[1])
+        self.assertNotIn('"attribute_id"', calls[0])
+        self.assertNotIn('"attribute_id"', calls[1])
+        self.assertNotIn('"importance"', calls[0])
+        self.assertNotIn('"importance"', calls[1])
+        self.assertNotIn('"disclosed_attribute_ids"', calls[1])
+        trace = env.export_trace()
+        self.assertEqual(
+            trace["simulator_backend"]["generation"]["model_snapshot"],
+            "qwen3.7-flash-2026-07-15",
+        )
+        self.assertFalse(
+            trace["simulator_backend"]["blinding"][
+                "simulator_self_reports_resolved_units"
+            ]
+        )
+        self.assertEqual(
+            trace["coverage_measurement"]["formal_semantic_coverage"],
+            "not_computed",
+        )
+        self.assertTrue(trace["coverage_measurement"]["policy_ledger_only"])
 
     def test_unmatched_question_does_not_reveal_anything(self) -> None:
         env = InteractionEnvironment(self.case, EnvironmentMode.INTERACTIVE)

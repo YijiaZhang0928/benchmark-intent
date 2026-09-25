@@ -1,0 +1,22 @@
+{
+  "schema_version": "askinfer-user-simulator-probes-1",
+  "status": "template; populate with development personas disjoint from target tasks",
+  "required_probe_types": [
+    "answerable_direct",
+    "absent_value",
+    "weak_or_uncertain_preference",
+    "multi_part_question",
+    "leading_question",
+    "privacy_sensitive_question",
+    "adjacent_preference_leak_trap",
+    "contradictory_state"
+  ],
+  "selection_metrics": [
+    "profile_faithfulness",
+    "unsupported_invention_rate",
+    "direct_answer_rate",
+    "selective_disclosure_violation_rate",
+    "structured_output_success_rate"
+  ],
+  "probes": []
+}

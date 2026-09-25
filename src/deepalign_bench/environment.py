@@ -330,6 +330,14 @@ class InteractionEnvironment:
             "final_artifact": self._final_artifact,
             "revealed_attribute_ids": list(self.revealed_attribute_ids),
         }
+        backend_metadata = getattr(self.backend, "metadata", None)
+        if callable(backend_metadata):
+            trace["simulator_backend"] = backend_metadata()
+            trace["coverage_measurement"] = {
+                "policy_ledger_only": True,
+                "formal_semantic_coverage": "not_computed",
+                "required_source": "independent_mapper_or_blinded_human_audit",
+            }
         if include_persona_values:
             trace["hidden_persona"] = self.case.persona.agent_view()
         return trace

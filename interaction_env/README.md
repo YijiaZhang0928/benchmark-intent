@@ -77,20 +77,41 @@ For an existing agent framework, make a thin adapter from `AgentContext` to that
 
 ## Use an LLM user simulator
 
-`JSONLLMSimulatorBackend` accepts any callable that consumes OpenAI-style chat messages and returns a JSON string. It is deliberately provider-neutral:
+`JSONLLMSimulatorBackend` accepts any callable that consumes OpenAI-style chat messages plus a frozen generation configuration and returns a JSON string. It is deliberately provider-neutral:
 
 ```python
-from deepalign_bench import JSONLLMSimulatorBackend, InteractionEnvironment
+from deepalign_bench import (
+    JSONLLMSimulatorBackend,
+    InteractionEnvironment,
+    SimulatorGenerationConfig,
+)
 
-def completion(messages):
-    # Call the provider/model selected by the benchmark runner and return text.
-    return my_client.complete(messages)
+config = SimulatorGenerationConfig(
+    provider="qwen",
+    model="qwen3.7-flash-2026-07-15",
+    model_snapshot="qwen3.7-flash-2026-07-15",
+    temperature=0.0,
+    top_p=1.0,
+    seed=20260924,
+    max_output_tokens=512,
+    thinking_mode="disabled",
+    response_format="json_schema",
+    format_retry_limit=0,
+    transport_retry_limit=0,
+)
 
-backend = JSONLLMSimulatorBackend(completion)
+def completion(messages, generation_config):
+    # Map every frozen generation_config field to the provider request and
+    # return the JSON text. Do not silently substitute provider defaults.
+    return my_client.complete(messages, generation_config)
+
+backend = JSONLLMSimulatorBackend(completion, config)
 env = InteractionEnvironment(case, "interactive", backend=backend)
 ```
 
-The classifier prompt contains attribute IDs, names, aliases, keywords, and descriptions, but never hidden values. Case construction rejects descriptors containing an attribute's configured literal markers. In Interactive mode, the response prompt contains only values that passed the reveal policy for that turn. The environment filters unknown IDs and fails closed if a denied attribute's configured literal marker appears in the response. Production cases should supply `leak_markers` for sensitive facts whose value is too short, common, or likely to be paraphrased; semantic descriptor leakage and response paraphrases still require an external audit.
+The classifier sees value-free descriptors under turn-local opaque keys such as `S001`; internal rubric-style IDs never enter the prompt. The response prompt contains only values that passed the reveal policy for that turn. It omits mode, harness, generator identity, internal IDs, importance values, graph weights, rubric tiers, and evaluation metadata. State rows are deterministically shuffled by task and question so source order cannot act as a priority cue. Case construction rejects descriptors containing an attribute's configured literal markers. The environment fails closed if a denied attribute's configured literal marker appears in the response. Production cases should supply `leak_markers` for sensitive facts whose value is too short, common, or likely to be paraphrased; semantic descriptor leakage and response paraphrases still require an external audit.
+
+The simulator returns only natural-language response text. It does not report resolved preference IDs. The internal revealed-ID ledger records what the frozen policy authorized for interaction-state bookkeeping; it is not formal semantic preference coverage. Paper-facing coverage requires an independent mapper or a blinded human audit of question-answer pairs.
 
 In Naive mode the same backend receives the complete persona and no reveal-policy decision is applied. This is the intended baseline, but it means Naive-vs-Interactive differences combine access control with user-behavior policy. They must not be interpreted as a pure agent capability effect.
 
@@ -118,6 +139,8 @@ Every turn records:
 - literal leakage blocked by the environment;
 - the natural user response and final artifact.
 
+For an LLM backend, the trace also records provider, exact model snapshot, temperature, top-p, seed, maximum output tokens, thinking mode, response format, prompt version, and both format and transport retry limits.
+
 Trace exports do not embed the complete hidden persona unless `include_persona_values=True`. However, user responses and the final artifact remain in the trace and can contain attributes disclosed during interaction. Treat all raw traces as restricted research data. A public release should remove or transform message content and publish only the permissioned/minimized view.
 
 ## Measurement boundaries
@@ -126,5 +149,5 @@ Trace exports do not embed the complete hidden persona unless `include_persona_v
 - The importance graph and reveal policy must be frozen before target-agent outputs and grounded in user-confirmed disclosure permissions. They are experimental controls, not inferred psychological truth.
 - Oracle is an information upper-bound condition, not a guaranteed performance ceiling: an agent can still misuse a complete persona.
 - Naive can leak irrelevant or sensitive facts; Interactive can under-disclose because of classifier or policy errors. Both failure types are part of the benchmark trace.
-- Rule-based responses are for deterministic tests and baseline diagnosis. Claims about realistic interaction require a fixed LLM backend plus human sim-to-real validation.
+- Rule-based responses are for deterministic tests and baseline diagnosis. A fixed, independently sourced LLM simulator supports claims about a controlled profile-grounded response channel. Claims of equivalence to unrestricted human interaction require separate sim-to-real evidence.
 - Compare systems within the same case, mode, backend, seed schedule, tool/evidence budget, and maximum turn count. Report task-family clustered uncertainty; turns and attributes are not independent samples.
