@@ -1,9 +1,9 @@
 {
   "schema_version": "askinfer-user-simulator-config-1",
-  "status": "frozen candidate; no provider calls yet",
+  "status": "frozen quality-first candidate; no provider calls yet",
   "provider": "alibaba-cloud-model-studio",
-  "model": "qwen3.7-flash-2026-07-15",
-  "model_snapshot": "qwen3.7-flash-2026-07-15",
+  "model": "qwen3.7-max-2026-05-20",
+  "model_snapshot": "qwen3.7-max-2026-05-20",
   "thinking_mode": "disabled",
   "temperature": 0.0,
   "top_p": 1.0,
@@ -12,8 +12,10 @@
   "response_format": "json_schema",
   "format_retry_limit": 0,
   "transport_retry_limit": 0,
-  "batch_stop_spend_cny": 5.0,
+  "batch_stop_spend_cny": 300.0,
   "planned_episode_cap": 100,
+  "planned_question_cap": 400,
+  "planned_provider_call_cap": 800,
   "selection_rule": "held-out simulator probes only; never select or tune on downstream P scores",
   "formal_coverage_source": "independent mapping or blinded human audit; never simulator self-report"
 }

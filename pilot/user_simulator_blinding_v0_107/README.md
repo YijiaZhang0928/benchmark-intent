@@ -9,7 +9,7 @@ later with the frozen configuration in `qwen_simulator_config.json`.
 ## Primary simulator
 
 - Provider: Alibaba Cloud Model Studio / Qwen
-- Exact snapshot: `qwen3.7-flash-2026-07-15`
+- Exact snapshot: `qwen3.7-max-2026-05-20`
 - Mode: non-thinking
 - Temperature: `0.0`
 - Top-p: `1.0`
@@ -19,9 +19,11 @@ later with the frozen configuration in `qwen_simulator_config.json`.
 - Transport retries: `0`
 - Seed recorded by the harness: `20260924`
 
-The snapshot is selected on cost and protocol fit, not on downstream P score.
-The official China-region list price on 2026-09-24 is CNY 0.2 per million input
-tokens and CNY 0.8 per million output tokens.  It supports JSON Schema output.
+The snapshot is selected for stronger instruction following under a USD 50 total
+budget, not on downstream P score.  The official Global list price on
+2026-09-24 is CNY 12 per million input tokens and CNY 36 per million output
+tokens; the Singapore International price is CNY 18.736 / 56.207.  It supports
+JSON Schema output.
 
 ## Blinding and leakage controls
 
@@ -59,11 +61,20 @@ Freeze the model before looking at target-system P scores.  At minimum, audit
 all counted simulator exchanges for profile faithfulness, unsupported
 invention, direct answer, and selective-disclosure compliance.
 
+Run every held-out probe three times even at temperature zero and accept the
+snapshot only if JSON validity is 100%, profile faithfulness and direct-answer
+rates are at least 95%, unsupported invention and overdisclosure are at most
+2%, and semantic repeat consistency is at least 90%.  These are simulator QA
+gates, not downstream P-score criteria.
+
 ## Cost envelope for 100 episodes
 
-The simulator itself is inexpensive relative to deep-research generation.  A
-conservative envelope of 5 million input plus 1 million output tokens costs
-about CNY 1.8 at the listed Qwen price.  CNY 10 covers that envelope by more
-than five times; CNY 20 is a practical top-up if the console requires a larger
-minimum or the probe phase is included.  Stop the simulator batch if billed
-spend reaches CNY 5 and inspect token usage before continuing.
+Four clarification turns across 100 episodes imply up to 400 question-answer
+turns.  The current architecture uses one classifier call and one response call
+per turn, or up to 800 provider calls.  API calls are billed by tokens, not by
+call count.  A conservative envelope of 5 million input plus 1 million output
+tokens costs CNY 96 at the Global price or about CNY 150 at the Singapore
+International price.  A CNY 300 top-up remains below USD 50 at ordinary
+exchange rates and leaves room for the repeated probe.  Stop the entire
+simulator batch if billed spend reaches CNY 300; never retry or continue after
+that boundary without a new explicit budget decision.

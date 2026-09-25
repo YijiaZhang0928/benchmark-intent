@@ -88,8 +88,8 @@ from deepalign_bench import (
 
 config = SimulatorGenerationConfig(
     provider="qwen",
-    model="qwen3.7-flash-2026-07-15",
-    model_snapshot="qwen3.7-flash-2026-07-15",
+    model="qwen3.7-max-2026-05-20",
+    model_snapshot="qwen3.7-max-2026-05-20",
     temperature=0.0,
     top_p=1.0,
     seed=20260924,
