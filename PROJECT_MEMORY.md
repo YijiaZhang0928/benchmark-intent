@@ -8,11 +8,15 @@
 
 ## 2026-09-24：独立、盲化、可审计的 user simulator successor protocol
 
+用户充值并明确授权在 CNY 10 上限内运行 Qwen Max simulator probe。Key 只存于 macOS Keychain，未写入仓库、日志或聊天。先用一次 36 input + 5 output token 的最小调用确认 `qwen3.7-max-2026-05-20` 精确模型名、JSON Schema 与 non-thinking 参数可用；随后完成八类 synthetic development probes × 三次重复，每次包含一次 value-free classifier 与一次 response，共 48 次 probe calls。全程 zero retry、无 provider/schema/parser failure；probe 用量 7,341 input + 1,270 output tokens。按较贵的 Singapore International 列表价保守估算 probe CNY 0.2089、连同 connectivity CNY 0.2099；这不是结算账单。没有启动任何 target episode。
+
+24/24 response 均为合法 schema、profile faithful、direct answer，0/24 unsupported invention、0/24 adjacent/private overdisclosure；24/24 classifier 均命中预期 opaque state keys；每类三次回答语义一致。因这是设计者按显式 synthetic expectation 做的 development audit，只能通过基础 instruction-following/repeatability gate，不能作为 simulator 与真人等价或 target validity 的证据。主实验 counted exchanges 仍必须由不知道 condition 的独立审阅产生 fidelity/coverage 记录。
+
 用户希望未来新 harness 使用与报告 backbone 和 judge 家族无关的 DeepSeek/Qwen/Kimi simulator，并要求修复现有 runner 暴露 impact tier、rubric ID、重复 persona、自报 resolved units，以及只在 prompt 中口头声称 deterministic 的问题。历史 runner 和已计数结果保持冻结，不回写；它们仍须在论文限制中披露这些风险。新增 `pilot/user_simulator_blinding_v0_107/` 作为未来 episode 的迁移入口，并把通用 `deepalign_bench` interaction package 升为 0.59。
 
 新 response prompt 只收到公开 task、当前问题、同 episode 历史，以及策略已授权的单份自然语言 user state；条目按 task+question 的稳定哈希打乱。它不知道 generator/harness/setting、内部 preference/rubric ID、high/average impact、importance/graph weight、允许问法、judge、报告或分数。问题到 state 的分类器只看到没有 value 的描述和每轮 opaque key `S001...`，这些 key 不携带权重。Simulator 输出只含自然语言 answer，不再自报 resolved units。内部 `revealed_attribute_ids` 仅是披露策略账本；新 trace 将正式语义 coverage 标为 `not_computed`，必须由独立 mapper 或不知道实验条件的人审阅 question-answer pair 后产生，审计 schema 已冻结。
 
-可复现元数据现强制记录 provider、精确 snapshot、temperature、top_p、seed、最大输出、thinking mode、response format、格式修复次数和 transport retry 次数。用户将 simulator 总预算放宽到 USD 50 并要求优先保证稳定质量，因此推荐冻结值升级为 `qwen3.7-max-2026-05-20`、non-thinking、temperature 0、top_p 1、512 output tokens、JSON Schema、两类 retry 均为 0、harness seed `20260924`。这是暂定 simulator，须先把 answerable/absent/uncertain/multi-part/leading/private/adjacent held-out probes 各重复三次；通过门槛为 JSON 100%、profile faithfulness/direct answer ≥95%、unsupported invention/overdisclosure ≤2%、语义重复一致性 ≥90%。选择和验收必须在查看目标系统 P 分数前完成。没有进行任何付费模型调用。
+可复现元数据现强制记录 provider、精确 snapshot、temperature、top_p、seed、最大输出、thinking mode、response format、格式修复次数和 transport retry 次数。用户将 simulator 总预算放宽到 USD 50 并要求优先保证稳定质量，因此冻结 `qwen3.7-max-2026-05-20`、non-thinking、temperature 0、top_p 1、512 output tokens、JSON Schema、两类 retry 均为 0、harness seed `20260924`。模型已通过 answerable/absent/uncertain/multi-part/leading/private/adjacent/contradictory 八类 held-out synthetic probes 各三次的开发门槛；选择和验收未使用目标系统 P 分数。
 
 费用按 100 episodes、每个最多四个 clarification turns 重新核算：每 turn 一次 question-to-state classifier 加一次自然语言 response，最多约 800 provider calls；调用次数本身不计价，实际按 tokens。保守上界 5M input + 1M output 在 Qwen Max Global 价为 CNY 96，在 Singapore International 价约 CNY 150。推荐充值 CNY 300，并把同一数值设为不可自动越过的全批次 hard stop，按通常汇率仍低于 USD 50；若 probe 不过门则不启动正式 100 episodes。DeepSeek Flash 保留为以后 20% sensitivity subset 的低成本备选，不混入主 batch。
 

@@ -1,6 +1,6 @@
 # Blinded user-simulator protocol v0.107
 
-Status: implementation-ready for new episodes; no provider calls have been made.
+Status: held-out synthetic probe passed; no target episodes have been run.
 
 This successor protocol leaves all counted historical runners unchanged.  New
 episodes should use `deepalign_bench.JSONLLMSimulatorBackend` version 0.59 or
@@ -78,3 +78,22 @@ International price.  A CNY 300 top-up remains below USD 50 at ordinary
 exchange rates and leaves room for the repeated probe.  Stop the entire
 simulator batch if billed spend reaches CNY 300; never retry or continue after
 that boundary without a new explicit budget decision.
+
+## Executed probe result
+
+On 2026-09-24 the exact snapshot completed eight synthetic probe types with
+three repeats each. Each repeat used one value-free classifier call and one
+response call: 48 provider calls total, plus one earlier minimal connectivity
+call. There were no retries or failed calls. The 48-call probe used 7,341
+input and 1,270 output tokens. At the conservative Singapore International
+prices, probe plus connectivity cost is estimated at CNY 0.210; this is a
+list-price estimate rather than a settled invoice.
+
+All 24 response outputs were valid schema objects, directly answered the
+question, stayed faithful to the supplied state, and avoided unsupported facts
+and adjacent-state disclosure. All 24 classifier outputs matched the expected
+state keys. The three repeats for each probe were semantically consistent.
+This small synthetic development check passes the frozen gate, but it is not a
+human-validity study and does not replace blinded audit of counted exchanges.
+See `qwen_max_probe_results.json` for raw text and usage and
+`qwen_max_probe_audit.json` for the item-level audit.

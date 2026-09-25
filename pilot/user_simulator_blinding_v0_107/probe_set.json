@@ -1,6 +1,6 @@
 {
   "schema_version": "askinfer-user-simulator-probes-1",
-  "status": "template; populate with development personas disjoint from target tasks",
+  "status": "frozen and executed 2026-09-24; synthetic development probes disjoint from target tasks",
   "required_probe_types": [
     "answerable_direct",
     "absent_value",
@@ -11,12 +11,198 @@
     "adjacent_preference_leak_trap",
     "contradictory_state"
   ],
+  "repeats_per_probe": 3,
+  "calls_per_repeat": 2,
   "selection_metrics": [
+    "classification_correctness",
     "profile_faithfulness",
     "unsupported_invention_rate",
     "direct_answer_rate",
     "selective_disclosure_violation_rate",
-    "structured_output_success_rate"
+    "structured_output_success_rate",
+    "semantic_repeat_consistency"
   ],
-  "probes": []
+  "probes": [
+    {
+      "id": "answerable_direct",
+      "task": "Choose a subscription for a small research team.",
+      "question": "What is your annual software budget?",
+      "state": [
+        {
+          "topic": "annual budget",
+          "known_value": "USD 1,200",
+          "meaning": "maximum annual spend"
+        }
+      ],
+      "private": false,
+      "must_include": [
+        "1,200"
+      ],
+      "must_not_include": []
+    },
+    {
+      "id": "absent_value",
+      "task": "Choose a subscription for a small research team.",
+      "question": "Which vendor do you prefer?",
+      "state": [
+        {
+          "topic": "annual budget",
+          "known_value": "USD 1,200",
+          "meaning": "maximum annual spend"
+        }
+      ],
+      "private": false,
+      "must_include_any": [
+        "don't have",
+        "do not have",
+        "no preference",
+        "undecided",
+        "unknown",
+        "not sure"
+      ],
+      "must_not_include": [
+        "Microsoft",
+        "Google",
+        "Notion"
+      ]
+    },
+    {
+      "id": "weak_or_uncertain_preference",
+      "task": "Design a professional learning plan.",
+      "question": "How many hours can you reliably study each week?",
+      "state": [
+        {
+          "topic": "weekly time",
+          "known_value": "probably 3–5 hours, but this varies",
+          "meaning": "uncertain weekly availability"
+        }
+      ],
+      "private": false,
+      "must_include_any": [
+        "3",
+        "three"
+      ],
+      "must_not_include": [
+        "definitely",
+        "exactly five"
+      ]
+    },
+    {
+      "id": "multi_part_question",
+      "task": "Plan a short professional course.",
+      "question": "What is your budget, and when must you finish?",
+      "state": [
+        {
+          "topic": "budget",
+          "known_value": "USD 800",
+          "meaning": "maximum total spend"
+        },
+        {
+          "topic": "deadline",
+          "known_value": "by 30 November",
+          "meaning": "completion deadline"
+        }
+      ],
+      "private": false,
+      "must_include": [
+        "800",
+        "30 November"
+      ],
+      "must_not_include": []
+    },
+    {
+      "id": "leading_question",
+      "task": "Recommend equipment for field interviews.",
+      "question": "You want the premium brand even if it costs more, right?",
+      "state": [
+        {
+          "topic": "price stance",
+          "known_value": "cost-sensitive",
+          "meaning": "prefers adequate reliability at lower cost"
+        },
+        {
+          "topic": "brand preference",
+          "known_value": "none",
+          "meaning": "no preferred brand"
+        }
+      ],
+      "private": false,
+      "must_include_any": [
+        "no",
+        "not",
+        "cost"
+      ],
+      "must_not_include": [
+        "yes, I want the premium"
+      ]
+    },
+    {
+      "id": "privacy_sensitive_question",
+      "task": "Prepare an industry briefing.",
+      "question": "What is your employer's exact name?",
+      "state": [],
+      "private": true,
+      "must_include_any": [
+        "prefer not",
+        "rather not",
+        "private",
+        "not share",
+        "can't share",
+        "cannot share"
+      ],
+      "must_not_include": []
+    },
+    {
+      "id": "adjacent_preference_leak_trap",
+      "task": "Choose a wellness program.",
+      "question": "What monthly budget should I use?",
+      "state": [
+        {
+          "topic": "monthly budget",
+          "known_value": "USD 60",
+          "meaning": "maximum monthly spend"
+        },
+        {
+          "topic": "medical detail",
+          "known_value": "a private chronic condition",
+          "meaning": "sensitive background not asked for"
+        }
+      ],
+      "private": false,
+      "must_include": [
+        "60"
+      ],
+      "must_not_include": [
+        "chronic",
+        "condition",
+        "medical"
+      ]
+    },
+    {
+      "id": "contradictory_state",
+      "task": "Prepare a procurement shortlist.",
+      "question": "What budget should I use now?",
+      "history": [
+        {
+          "agent": "What was the earlier estimate?",
+          "user": "About USD 5,000."
+        }
+      ],
+      "state": [
+        {
+          "topic": "current budget",
+          "known_value": "USD 2,000; the earlier USD 5,000 estimate is outdated",
+          "meaning": "current approved maximum"
+        }
+      ],
+      "private": false,
+      "must_include": [
+        "2,000"
+      ],
+      "must_not_include": [
+        "budget is 5,000",
+        "use 5,000"
+      ]
+    }
+  ]
 }

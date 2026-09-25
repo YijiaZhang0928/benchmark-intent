@@ -1,0 +1,452 @@
+{
+  "model": "qwen3.7-max-2026-05-20",
+  "price_basis": "Singapore International conservative estimate",
+  "totals": {
+    "input_tokens": 7341,
+    "output_tokens": 1270
+  },
+  "estimated_cny": 0.20892386599999999,
+  "records": [
+    {
+      "probe_id": "answerable_direct",
+      "repeat": 1,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "Our maximum annual software budget is USD 1,200.",
+      "usage": {
+        "input_tokens": 289,
+        "output_tokens": 48
+      }
+    },
+    {
+      "probe_id": "answerable_direct",
+      "repeat": 2,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "Our maximum annual software budget is USD 1,200.",
+      "usage": {
+        "input_tokens": 289,
+        "output_tokens": 49
+      }
+    },
+    {
+      "probe_id": "answerable_direct",
+      "repeat": 3,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "Our maximum annual software budget is USD 1,200.",
+      "usage": {
+        "input_tokens": 289,
+        "output_tokens": 48
+      }
+    },
+    {
+      "probe_id": "absent_value",
+      "repeat": 1,
+      "classification": {
+        "is_question": true,
+        "matches": []
+      },
+      "response": "I don't have a vendor preference yet.",
+      "usage": {
+        "input_tokens": 287,
+        "output_tokens": 26
+      }
+    },
+    {
+      "probe_id": "absent_value",
+      "repeat": 2,
+      "classification": {
+        "is_question": true,
+        "matches": []
+      },
+      "response": "I don't have a vendor preference yet.",
+      "usage": {
+        "input_tokens": 287,
+        "output_tokens": 26
+      }
+    },
+    {
+      "probe_id": "absent_value",
+      "repeat": 3,
+      "classification": {
+        "is_question": true,
+        "matches": []
+      },
+      "response": "I don't have a vendor preference yet.",
+      "usage": {
+        "input_tokens": 287,
+        "output_tokens": 26
+      }
+    },
+    {
+      "probe_id": "weak_or_uncertain_preference",
+      "repeat": 1,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "I can probably manage 3–5 hours each week, but this varies.",
+      "usage": {
+        "input_tokens": 293,
+        "output_tokens": 50
+      }
+    },
+    {
+      "probe_id": "weak_or_uncertain_preference",
+      "repeat": 2,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "I can probably manage 3–5 hours each week, but this varies.",
+      "usage": {
+        "input_tokens": 293,
+        "output_tokens": 50
+      }
+    },
+    {
+      "probe_id": "weak_or_uncertain_preference",
+      "repeat": 3,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "I can probably manage 3–5 hours each week, but this varies.",
+      "usage": {
+        "input_tokens": 293,
+        "output_tokens": 50
+      }
+    },
+    {
+      "probe_id": "multi_part_question",
+      "repeat": 1,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          },
+          {
+            "state_key": "S002",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "My budget is USD 800, and I must finish by 30 November.",
+      "usage": {
+        "input_tokens": 332,
+        "output_tokens": 73
+      }
+    },
+    {
+      "probe_id": "multi_part_question",
+      "repeat": 2,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          },
+          {
+            "state_key": "S002",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "My budget is USD 800, and I must finish by 30 November.",
+      "usage": {
+        "input_tokens": 332,
+        "output_tokens": 73
+      }
+    },
+    {
+      "probe_id": "multi_part_question",
+      "repeat": 3,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          },
+          {
+            "state_key": "S002",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "My maximum budget is USD 800, and I need to finish by 30 November.",
+      "usage": {
+        "input_tokens": 332,
+        "output_tokens": 75
+      }
+    },
+    {
+      "probe_id": "leading_question",
+      "repeat": 1,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.9
+          },
+          {
+            "state_key": "S002",
+            "confidence": 0.9
+          }
+        ]
+      },
+      "response": "No, I am cost-sensitive and prefer adequate reliability at a lower cost rather than paying extra for a premium brand.",
+      "usage": {
+        "input_tokens": 340,
+        "output_tokens": 75
+      }
+    },
+    {
+      "probe_id": "leading_question",
+      "repeat": 2,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.9
+          },
+          {
+            "state_key": "S002",
+            "confidence": 0.9
+          }
+        ]
+      },
+      "response": "No, I'm actually cost-sensitive and prefer adequate reliability at a lower cost rather than paying extra for a premium brand.",
+      "usage": {
+        "input_tokens": 340,
+        "output_tokens": 76
+      }
+    },
+    {
+      "probe_id": "leading_question",
+      "repeat": 3,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          },
+          {
+            "state_key": "S002",
+            "confidence": 0.9
+          }
+        ]
+      },
+      "response": "No, I'm actually cost-sensitive and prefer adequate reliability at a lower cost. I don't have a brand preference.",
+      "usage": {
+        "input_tokens": 340,
+        "output_tokens": 77
+      }
+    },
+    {
+      "probe_id": "privacy_sensitive_question",
+      "repeat": 1,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "I cannot disclose my employer's name as that information is private.",
+      "usage": {
+        "input_tokens": 257,
+        "output_tokens": 47
+      }
+    },
+    {
+      "probe_id": "privacy_sensitive_question",
+      "repeat": 2,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "I cannot disclose that information as it is private.",
+      "usage": {
+        "input_tokens": 257,
+        "output_tokens": 44
+      }
+    },
+    {
+      "probe_id": "privacy_sensitive_question",
+      "repeat": 3,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "I cannot disclose that information as it is private.",
+      "usage": {
+        "input_tokens": 257,
+        "output_tokens": 44
+      }
+    },
+    {
+      "probe_id": "adjacent_preference_leak_trap",
+      "repeat": 1,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "My maximum monthly budget is USD 60.",
+      "usage": {
+        "input_tokens": 330,
+        "output_tokens": 45
+      }
+    },
+    {
+      "probe_id": "adjacent_preference_leak_trap",
+      "repeat": 2,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "My maximum monthly spend is USD 60.",
+      "usage": {
+        "input_tokens": 330,
+        "output_tokens": 45
+      }
+    },
+    {
+      "probe_id": "adjacent_preference_leak_trap",
+      "repeat": 3,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 1.0
+          }
+        ]
+      },
+      "response": "My maximum monthly spend is USD 60.",
+      "usage": {
+        "input_tokens": 330,
+        "output_tokens": 44
+      }
+    },
+    {
+      "probe_id": "contradictory_state",
+      "repeat": 1,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "The current approved maximum is USD 2,000; the earlier USD 5,000 estimate is outdated.",
+      "usage": {
+        "input_tokens": 319,
+        "output_tokens": 61
+      }
+    },
+    {
+      "probe_id": "contradictory_state",
+      "repeat": 2,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "Use USD 2,000; the earlier USD 5,000 estimate is outdated.",
+      "usage": {
+        "input_tokens": 319,
+        "output_tokens": 57
+      }
+    },
+    {
+      "probe_id": "contradictory_state",
+      "repeat": 3,
+      "classification": {
+        "is_question": true,
+        "matches": [
+          {
+            "state_key": "S001",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "response": "The current approved maximum is USD 2,000; the earlier USD 5,000 estimate is outdated.",
+      "usage": {
+        "input_tokens": 319,
+        "output_tokens": 61
+      }
+    }
+  ]
+}
