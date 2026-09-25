@@ -4,7 +4,8 @@ Date: 2026-09-24
 
 Model requested: `qwen3.7-max-2026-05-20`
 
-Status: PASS for future counted-episode use; no target episode was run.
+Status: PASS as a synthetic development probe; exact production-prompt
+revalidation is pending and no target episode was run.
 
 ## Execution
 
@@ -42,3 +43,10 @@ instruction following and repeat stability on eight controlled cases. It does
 not establish equivalence to real users or guarantee performance on target
 episodes. Counted exchanges still require the separate condition-blinded audit,
 and formal preference coverage must never come from simulator self-report.
+
+The executed probe used a 160-token maximum for both classifier and response
+calls. Its system prompts were shorter than the production adapter prompts, and
+the candidate production configuration specifies a 512-token maximum. These
+results therefore validate the executed probe messages rather than a
+byte-identical production configuration. Exact production-prompt revalidation
+is required before counted episodes.

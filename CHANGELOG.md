@@ -1,5 +1,10 @@
 # benchmark-intent 设计迭代记录
 
+## v0.108 simulator reproducibility audit - 2026-09-24
+
+- Added a reproducibility and audit method card that separates observed probe evidence from pending main-experiment evidence. Corrected the readiness claim: the executed probe used shorter prompts and a 160-token maximum, while the candidate production adapter specifies the fuller prompt and 512 tokens. Counted episodes remain gated on exact production-prompt revalidation.
+- Froze a prospective 100% dual-annotator exchange audit with pre-adjudication agreement, explicit violation denominators, Wilson intervals, and task-level clustered uncertainty. Current v0.107 main-experiment audit size is n=0, so violation rates and inter-annotator agreement remain undefined.
+
 ## v0.107 blinded user-simulator protocol - 2026-09-24
 
 - Executed the user-authorized `qwen3.7-max-2026-05-20` held-out synthetic probe under a CNY 10 cap: 48 probe calls plus one connectivity call, zero retries/failures, 7,341 input and 1,270 output probe tokens, and CNY 0.2099 total conservative list-price estimate including connectivity. No target episode was run.

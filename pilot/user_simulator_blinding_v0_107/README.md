@@ -1,6 +1,7 @@
 # Blinded user-simulator protocol v0.107
 
-Status: held-out synthetic probe passed; no target episodes have been run.
+Status: synthetic development probe passed; exact production-prompt
+revalidation is still required and no target episodes have been run.
 
 This successor protocol leaves all counted historical runners unchanged.  New
 episodes should use `deepalign_bench.JSONLLMSimulatorBackend` version 0.59 or
@@ -97,3 +98,11 @@ This small synthetic development check passes the frozen gate, but it is not a
 human-validity study and does not replace blinded audit of counted exchanges.
 See `qwen_max_probe_results.json` for raw text and usage and
 `qwen_max_probe_audit.json` for the item-level audit.
+
+The probe runner used a 160-token maximum for classifier and response calls,
+whereas the candidate production configuration specifies 512. Its system
+prompts were semantically similar to, but shorter than, the production adapter's
+prompts. The probe therefore does not establish byte-identical production-prompt
+validation. Rerun the same frozen templates through the exact production adapter
+before counted episodes. `METHOD_CARD.md` records this boundary, the prospective
+two-annotator audit protocol, and the current `n=0` main-experiment audit status.

@@ -1232,6 +1232,7 @@ v0.23 取代 v0.22 中所有 S4、re-anchor 和 recovery 设计，但保留 v0.2
 
 ## 9. 版本摘要
 
+- v0.108：复核 simulator 复现材料时发现，已执行的 24-response synthetic probe 使用较短 system prompts 和 160-token 上限，而候选 production adapter 使用完整 prompt 和 512-token 上限；因此把结论收紧为开发 probe 通过，正式 episode 前仍须用 exact production prompt/parameters 重验。新增 `pilot/user_simulator_blinding_v0_107/METHOD_CARD.md`，冻结未来 counted exchanges 的 100% 双人独立盲审、分歧仲裁、binary label 原始一致率/Cohen κ/positive-negative agreement、resolved-state exact/Jaccard、Wilson CI 与 task-clustered uncertainty。当前 v0.107 target exchange n=0，主实验违规率和标注一致性均未定义；T16-T20 旧 Gemini simulator 暴露 high/average 标签，不能视为满足 v0.107。
 - v0.12：建立五平面 Evaluation Atlas、行为算子、rubric compiler 和两个月冻结范围。
 - v0.13：增加完整人话版与导师汇报版。
 - v0.14：增加 10 页正式 Proposal 精简版。
